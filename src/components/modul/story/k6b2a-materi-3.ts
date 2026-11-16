@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, batang, emo, garis, kartu, kotak, teks } from "./k6b2a-gambar";
 import { bersih, k, tambah } from "./k6b2a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 6. Latihan 1 dan Latihan 2: antrean wahana dan minuman Banyu ------------------------------ */
 export const ADEGAN_LATIHAN21: AdeganStory = {
@@ -130,11 +131,7 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   judul: "Ayo berefleksi dan penutup Subbab A",
   sumber: "Buku Siswa hlm. 55 dan Buku Panduan Guru",
   latar: "#F5F3FF",
-  kutipan: [
-    "Dari aktivitas yang telah kalian lakukan pada subbab ini",
-    "Ada berapa cara yang kalian ketahui untuk menyatakan rasio",
-    "Tuliskan contoh rasio dari ukuran atau jumlah benda yang ada di sekitar kalian",
-  ],
+  kutipan: kutipanLokal("k6b2a-materi-3.ts:1"),
   ketukan: [
     k(
       "Di akhir subbab A ada refleksi. Pertama, ada berapa cara yang kamu ketahui untuk menyatakan rasio? Ada dua cara.",

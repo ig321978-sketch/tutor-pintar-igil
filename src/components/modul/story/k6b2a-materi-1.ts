@@ -1,8 +1,9 @@
 import type { AdeganStory } from "./logika-story";
 import { W, balon, bibit, bulat, cemara, deret, emo, garis, kartu, kotak, panah, pucukMerah, teks } from "./k6b2a-gambar";
 import { bersih, hapus, k, sorotkan, tambah } from "./k6b2a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
-/* ------------------------------ 1. Poster Gerakan Satu Juta Pohon dan Pak Wayan ------------------------------ */
+/* ------------------------------ 1. Poster Gerakan Satu Juta Pohon dan Pak Malosi ------------------------------ */
 export const ADEGAN_PEMBUKA: AdeganStory = {
   id: "pembuka-pohon",
   judul: "Poster Gerakan Satu Juta Pohon",
@@ -18,9 +19,9 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("Pohon", emo("pe", 150, 116, "🌳", 24)),
     ),
     k(
-      "Pak Wayan, guru matematika, mendekati mereka. Gerakan itu diperingati setiap tanggal sepuluh Januari untuk menyelamatkan hutan dan menjaga lingkungan.",
+      "Pak Malosi, guru matematika, mendekati mereka. Gerakan itu diperingati setiap tanggal sepuluh Januari untuk menyelamatkan hutan dan menjaga lingkungan.",
       bersih(0),
-      tambah("Wayan", emo("wy", 60, 120, "👨", 34), teks("wyt", 60, 142, "Pak Wayan", 8.4)),
+      tambah("Malosi", emo("wy", 60, 120, "👨", 34), teks("wyt", 60, 142, "Pak Malosi", 8.4)),
       tambah("tanggal", kotak("kal", 150, 40, 90, 74, W.putih, W.merah, { rx: 6 }), kotak("kalh", 150, 40, 90, 20, W.merah, W.merah, { rx: 6 }), teks("kal1", 195, 100, "10", 28, W.merah), teks("kal2", 195, 55, "Januari", 11, W.putih)),
       tambah("hutan", emo("h1", 180, 168, "🌲", 28), emo("h2", 215, 168, "🌳", 28), emo("h3", 250, 168, "🌲", 28)),
       tambah("lingkungan.", teks("lg", 215, 192, "selamatkan hutan", 8.6, W.hijau)),
@@ -50,10 +51,10 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("rasio.", kotak("rs", 90, 160, 120, 28, W.krem, W.ungu, { rx: 8 }), teks("rst", 150, 179, "konsep rasio", 12, W.ungu)),
     ),
     k(
-      "Seorang siswa bertanya, apa itu rasio, Pak? Pak Wayan menjawab, rasio adalah perbandingan dua besaran yang sejenis.",
+      "Seorang siswa bertanya, apa itu rasio, Pak? Pak Malosi menjawab, rasio adalah perbandingan dua besaran yang sejenis.",
       bersih(0),
       tambah("siswa", emo("q1", 50, 150, "👧", 32), balon("bq", 100, 40, ["apa itu rasio, Pak?"], 110, W.putih, 8)),
-      tambah("Wayan", emo("q2", 250, 150, "👨", 32), balon("bw", 200, 90, ["rasio: perbandingan", "dua besaran sejenis"], 140, "#FEF9C3", 7.4)),
+      tambah("Malosi", emo("q2", 250, 150, "👨", 32), balon("bw", 200, 90, ["rasio: perbandingan", "dua besaran sejenis"], 140, "#FEF9C3", 7.4)),
     ),
     k(
       "Mengapa kita harus memperhatikan jarak, Pak? Mari kita pelajari rasio, supaya bisa menjawabnya dan memakainya dalam kehidupan sehari-hari.",
@@ -78,15 +79,7 @@ export const ADEGAN_TUJUAN: AdeganStory = {
   judul: "Tujuan, pertanyaan pemantik, kata kunci, dan peta konsep",
   sumber: "Buku Siswa hlm. 48–49",
   latar: "#FFF7ED",
-  kutipan: [
-    "memahami konsep rasio dan menggunakan bahasa rasio untuk menjelaskan hubungan perbandingan antara dua besaran",
-    "menentukan kesamaan rasio dengan menggunakan tabel rasio",
-    "menentukan rasio satuan",
-    "menentukan rasio bagian terhadap bagian dan rasio bagian terhadap keseluruhan",
-    "Bagaimana memodelkan permasalahan ke dalam tabel rasio",
-    "Rasio, kesamaan rasio, rasio pada durasi waktu, rasio satuan, kotak rasio, tabel rasio",
-    "Peta Konsep",
-  ],
+  kutipan: kutipanLokal("k6b2a-materi-1.ts:1"),
   ketukan: [
     k(
       "Bab ini punya empat tujuan. Pertama, memahami konsep rasio dan memakai bahasa rasio untuk menjelaskan perbandingan antara dua besaran.",
@@ -141,13 +134,7 @@ export const ADEGAN_MENGINGAT: AdeganStory = {
   judul: "Ayo mengingat kembali faktor, kelipatan, dan pecahan",
   sumber: "Buku Siswa hlm. 49",
   latar: "#F5F3FF",
-  kutipan: [
-    "operasi hitung perkalian dan pembagian bilangan bulat, serta faktor dan kelipatan dari suatu bilangan",
-    "Apakah perbedaan dari faktor dan kelipatan suatu bilangan",
-    "Apakah 2 merupakan faktor atau kelipatan dari 10",
-    "Sebutkan tiga bilangan yang merupakan kelipatan dari bilangan 6",
-    "Tuliskan bentuk pecahan yang mewakili bagian yang hilang pada Gambar 2.2",
-  ],
+  kutipan: kutipanLokal("k6b2a-materi-1.ts:2"),
   ketukan: [
     k(
       "Sebelum mulai, kita ingat dulu perkalian dan pembagian bilangan bulat, serta faktor dan kelipatan. Semuanya akan dipakai dalam rasio.",

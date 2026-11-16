@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { SEPATU, W, barisTempat, emo, kartu, kartuSepatu, kepalaTempat, kotak, panah, teks } from "./k5b9b-gambar";
 import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k5b9b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 function kartuAngkaPapan(id: string, x: number, isi: string, nama: string) {
   return [kotak(`${id}-k`, x, 64, 94, 56, W.putih, W.biru, { rx: 8 }), teks(`${id}-n`, x + 47, 82, nama, 7.6, W.ungu), teks(`${id}-t`, x + 47, 108, isi, 16)];
@@ -12,7 +13,7 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
   judul: "Pembuka Sub-Bab B: membandingkan dan mengurutkan",
   sumber: "Buku Siswa hlm. 284; Buku Panduan Guru hlm. 404–405",
   latar: "#EEF2FF",
-  kutipan: ["Mengurutkan dan Membandingkan Bilangan Sampai"],
+  kutipan: kutipanLokal("k5b9b-materi-1.ts:1"),
   ketukan: [
     k(
       "Selamat datang di Sub-Bab B. Di sini kita belajar membandingkan dua bilangan dan mengurutkan bilangan sampai 1.000.000.",
@@ -60,17 +61,17 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
 /* ------------------------------ 2. Eksplorasi 9.2A: tiga harga sepatu (hlm. 284) ------------------------------ */
 export const ADEGAN_SEPATU_HARGA: AdeganStory = {
   id: "sepatu-harga",
-  judul: "Harga sepatu Komang, Lukas, dan Nisa",
+  judul: "Harga sepatu Igil, Kira, dan Halim",
   sumber: "Materi: harga tiga sepatu",
   latar: "#FFF7ED",
-  kutipan: ["Eksplorasi 9.2A", "Harga Sepatu Komang", "Rp342.231,00", "Rp432.543,00", "Rp232.231,00", "Bagaimana caramu mengurutkan harga dari yang termahal", "sampai yang termurah? Ayo kita selidiki!"],
+  kutipan: kutipanLokal("k5b9b-materi-1.ts:2"),
   ketukan: [
     k(
-      "Mari mulai dengan sebuah masalah. Tiga anak membeli sepatu. Harga sepatu Komang 342.231 rupiah, sepatu Lukas 432.543 rupiah, dan sepatu Nisa 232.231 rupiah.",
+      "Mari mulai dengan sebuah masalah. Tiga anak membeli sepatu. Harga sepatu Igil 342.231 rupiah, sepatu Kira 432.543 rupiah, dan sepatu Halim 232.231 rupiah.",
       tambah(0, teks("jud", 150, 24, "Harga tiga sepatu", 13, W.ungu)),
-      tambah("Komang", kartuSepatu("s1", 10, 48, "Komang", "342.231", W.krem)),
-      tambah("Lukas", kartuSepatu("s2", 107, 48, "Lukas", "432.543", W.hijauMuda)),
-      tambah("Nisa", kartuSepatu("s3", 204, 48, "Nisa", "232.231", W.muda)),
+      tambah("Igil", kartuSepatu("s1", 10, 48, "Igil", "342.231", W.krem)),
+      tambah("Kira", kartuSepatu("s2", 107, 48, "Kira", "432.543", W.hijauMuda)),
+      tambah("Halim", kartuSepatu("s3", 204, 48, "Halim", "232.231", W.muda)),
     ),
     k(
       "Pertanyaan pertama: bagaimana caramu mengurutkan harga dari yang termahal sampai yang termurah? Ayo kita selidiki!",
@@ -102,23 +103,23 @@ export const ADEGAN_SEPATU_TABEL: AdeganStory = {
   judul: "Mengisi tabel nilai tempat tiga sepatu",
   sumber: "Materi: tabel nilai tempat sepatu",
   latar: "#FEFCE8",
-  kutipan: ["Harga sepatu Komang", "Harga sepatu Lukas", "Harga sepatu Nisa", "Ribuan Ratusan Puluhan Satuan"],
+  kutipan: kutipanLokal("k5b9b-materi-1.ts:3"),
   ketukan: [
     k(
-      "Kita isi tabelnya. Sepatu Komang 342.231: ratus ribuan 3, puluh ribuan 4, ribuan 2, ratusan 2, puluhan 3, dan satuan 1.",
-      tambah(0, teks("jud", 150, 22, "Tabel nilai tempat", 12, W.ungu), teks("cap", 150, 44, "Komang: 342.231", 11, W.merah)),
+      "Kita isi tabelnya. Sepatu Igil 342.231: ratus ribuan 3, puluh ribuan 4, ribuan 2, ratusan 2, puluhan 3, dan satuan 1.",
+      tambah(0, teks("jud", 150, 22, "Tabel nilai tempat", 12, W.ungu), teks("cap", 150, 44, "Igil: 342.231", 11, W.merah)),
       tambah(0, kepalaTempat("kp", Y_TABEL)),
-      tambah("Komang", barisTempat("r0", yBaris(0), SEPATU[0].angka, "Komang", W.krem)),
+      tambah("Igil", barisTempat("r0", yBaris(0), SEPATU[0].angka, "Igil", W.krem)),
     ),
     k(
-      "Sepatu Lukas 432.543: ratus ribuan 4, puluh ribuan 3, ribuan 2, ratusan 5, puluhan 4, dan satuan 3.",
-      ubah(0, { id: "cap", isi: "Lukas: 432.543" }),
-      tambah("Lukas", barisTempat("r1", yBaris(1), SEPATU[1].angka, "Lukas", W.hijauMuda)),
+      "Sepatu Kira 432.543: ratus ribuan 4, puluh ribuan 3, ribuan 2, ratusan 5, puluhan 4, dan satuan 3.",
+      ubah(0, { id: "cap", isi: "Kira: 432.543" }),
+      tambah("Kira", barisTempat("r1", yBaris(1), SEPATU[1].angka, "Kira", W.hijauMuda)),
     ),
     k(
-      "Sepatu Nisa 232.231: ratus ribuan 2, puluh ribuan 3, ribuan 2, ratusan 2, puluhan 3, dan satuan 1.",
-      ubah(0, { id: "cap", isi: "Nisa: 232.231" }),
-      tambah("Nisa", barisTempat("r2", yBaris(2), SEPATU[2].angka, "Nisa", W.muda)),
+      "Sepatu Halim 232.231: ratus ribuan 2, puluh ribuan 3, ribuan 2, ratusan 2, puluhan 3, dan satuan 1.",
+      ubah(0, { id: "cap", isi: "Halim: 232.231" }),
+      tambah("Halim", barisTempat("r2", yBaris(2), SEPATU[2].angka, "Halim", W.muda)),
     ),
     k(
       "Perhatikan, angka ketiga sepatu tampak mirip, tetapi nilainya berbeda. Yang kita lihat adalah angka pada tiap kolom, mulai dari kiri.",

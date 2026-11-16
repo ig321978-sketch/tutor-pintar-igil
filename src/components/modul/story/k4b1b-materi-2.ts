@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bangun, emo, isiTempat, judul, kardus, kartu, kartuAngka, kepalaTempat, selTempat, teks } from "./k4b1b-gambar";
 import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const KARDUS_X = [10, 83, 156, 229];
 
@@ -15,14 +16,7 @@ export const ADEGAN_AMBIL: AdeganStory = {
   judul: "Aktivitas 2: ambil kartu dari kardus",
   sumber: "Materi: ambil kartu dari kardus",
   latar: "#F5F3FF",
-  kutipan: [
-    "Ambil satu kartu bilangan dari masing-masing kardus dan susunlah menjadi bilangan empat angka.",
-    "Catatlah di buku tulis kalian angka yang tertera pada kartu bilangan yang diperoleh dari setiap kardus.",
-    "Tentukan nilai tempat dari setiap angka yang diperoleh dari masing-masing kardus.",
-    "Jika keempat angka tersebut disusun menjadi bilangan 4 angka, dapatkan kalian menyatakan bilangan tersebut?",
-    "kartu bilangan 7 dari kardus ribuan, kartu bilangan 5 dari kardus ratusan, kartu bilangan 0 dari kardus puluhan dan kartu bilangan 8 dari kardus satuan.",
-    "kardus tadi dapat dikatakan sebagai nilai tempat.",
-  ],
+  kutipan: kutipanLokal("k4b1b-materi-2.ts:1"),
   ketukan: [
     k(
       SUARA_M1,
@@ -69,17 +63,7 @@ export const ADEGAN_CONTOH: AdeganStory = {
   judul: "Contoh dari struk: 2.150",
   sumber: "Materi: contoh nilai tempat 2.150",
   latar: "#FFFBEB",
-  kutipan: [
-    "2.150 dibaca : dua ribu seratus lima puluh",
-    "Angka 2 menempati nilai tempat “ribuan”",
-    "Angka 1 menempati nilai tempat “ratusan”",
-    "Angka 5 menempati nilai tempat “puluhan”",
-    "Angka 0 menempati nilai tempat “satuan”",
-    "Penulisan nilai tempat ribuan, ratusan, puluhan dan satuan.",
-    "Nah, setelah melakukan aktivitas apakah kalian sudah paham dengan nilai tempat?",
-    "Ayo, kerjakan secara mandiri untuk mencari nilai tempat sesuai dengan harga struk belanja di atas.",
-    "Baik Pak",
-  ],
+  kutipan: kutipanLokal("k4b1b-materi-2.ts:2"),
   ketukan: [
     k(
       SUARA_C1,
@@ -143,14 +127,7 @@ export const ADEGAN_LATIH_SATU: AdeganStory = {
   judul: "Berlatih: letakkan angka pada tempatnya",
   sumber: "Materi: latihan letak angka",
   latar: "#F0F9FF",
-  kutipan: [
-    "Ayo Berlatih",
-    "Tuliskan bilangan yang terdiri atas 4 angka dan letakkan setiap angka sesuai nilai tempatnya.",
-    "Coba kalian tuliskan bilangan yang terdiri atas 4 angka dan letakkan masing-masing angka sesuai nilai tempatnya.",
-    "a. 7.812",
-    "Kemungkinan jawaban peserta didik: 6.923; 7.922; 8.920; 5.900 atau 1.934, dst",
-    "kemungkinan jawaban peserta didik: 5.161; 7.111; 8.231; 1.211 atau 3.191, dst.",
-  ],
+  kutipan: kutipanLokal("k4b1b-materi-2.ts:3"),
   ketukan: [
     k(
       SUARA_L1,
@@ -221,16 +198,7 @@ export const ADEGAN_LATIH_DUA: AdeganStory = {
   judul: "Berlatih: tempat angka 6",
   sumber: "Materi: latihan tempat angka 6",
   latar: "#FFF7ED",
-  kutipan: [
-    "Tulis nilai tempat dari angka 6 dari bilangan berikut.",
-    "Puluhan",
-    "8.463",
-    "4.675",
-    "6.789",
-    "1.236",
-    "Tulis nilai tempat dari angka 6 dari bilangan berikut!",
-    "a. puluhan b. ratusan c. ribuan d. satuan",
-  ],
+  kutipan: kutipanLokal("k4b1b-materi-2.ts:4"),
   ketukan: [
     k(
       SUARA_D1,

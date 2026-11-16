@@ -2,29 +2,21 @@ import type { AdeganStory } from "./logika-story";
 import { EKS, EKS_JAJAR, EKS_LAYANG, EKS_SEGITIGA_ATAS, EKS_SEGITIGA_BAWAH, W, dasarEks, emo, hurufEks, judul, kartu, lukis, potong, teks } from "./k5b5c-gambar";
 import { bersih, hapus, k, redamkan, sorotkan, tambah } from "./k5b5c-bantu";
 import { OX, OY, S } from "./k5b5c-materi-1";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const HURUF = hurufEks("h", OX, OY, S);
 
-/* ------------------------------ 5. Cara Komang: jajargenjang dan segitiga (hlm. 158-159; Panduan Guru hlm. 230-231) ------------------------------ */
+/* ------------------------------ 5. Cara Wei: jajargenjang dan segitiga (hlm. 158-159; Panduan Guru hlm. 230-231) ------------------------------ */
 export const ADEGAN_CARA_KOMANG: AdeganStory = {
   id: "cara-komang",
-  judul: "Cara Komang: jajargenjang dan segitiga",
-  sumber: "Materi: cara Komang memecah bangun",
+  judul: "Cara Wei: jajargenjang dan segitiga",
+  sumber: "Materi: cara Wei memecah bangun",
   latar: "#FDF2F8",
-  kutipan: [
-    "Cara Komang",
-    "tinggi 1",
-    "tinggi 2",
-    "menjadi 2, yaitu",
-    "jajargenjang dan",
-    "Luas daerah jajargenjang",
-    "luas daerah jajargenjang + luas daerah",
-    "= 10 + 5 = 15 satuan luas",
-  ],
+  kutipan: kutipanLokal("k5b5c-materi-2.ts:1"),
   ketukan: [
     k(
-      "Cara Komang: bangun juga dibagi menjadi dua, yaitu jajargenjang dan segitiga. Garis pembaginya mendatar dari A ke C.",
-      tambah(0, judul("Cara Komang", W.ungu)),
+      "Cara Wei: bangun juga dibagi menjadi dua, yaitu jajargenjang dan segitiga. Garis pembaginya mendatar dari A ke C.",
+      tambah(0, judul("Cara Wei", W.ungu)),
       tambah(0, ...dasarEks("e", OX, OY, S)),
       tambah("jajargenjang", lukis("kj", OX, OY, S, EKS_JAJAR, W.langit, W.oranye)),
       tambah("segitiga.", lukis("ks", OX, OY, S, EKS_SEGITIGA_BAWAH, W.krem, W.oranye)),
@@ -58,10 +50,10 @@ export const ADEGAN_CARA_KOMANG: AdeganStory = {
       tambah("ditambah", ...kartu("hs", 40, 140, 220, 38, W.emas, ["10 + 5 = 15 satuan luas"], 12)),
     ),
     k(
-      "Hasilnya sama dengan cara Yohana, yaitu lima belas satuan luas. Jadi cara Komang dan cara Yohana sepakat: bangun yang sama boleh dipecah dengan cara berbeda, dan luasnya tetap sama.",
+      "Hasilnya sama dengan cara Upe, yaitu lima belas satuan luas. Jadi cara Wei dan cara Upe sepakat: bangun yang sama boleh dipecah dengan cara berbeda, dan luasnya tetap sama.",
       hapus(0, "hs-k", "hs-t0", "n1", "n2", "pb"),
-      tambah("Yohana,", ...kartu("hy", 14, 134, 134, 30, W.hijauMuda, ["Yohana: 10 + 5 = 15"], 9)),
-      tambah("Komang", ...kartu("hk", 152, 134, 134, 30, W.pink, ["Komang: 10 + 5 = 15"], 9)),
+      tambah("Upe,", ...kartu("hy", 14, 134, 134, 30, W.hijauMuda, ["Upe: 10 + 5 = 15"], 9)),
+      tambah("Wei", ...kartu("hk", 152, 134, 134, 30, W.pink, ["Wei: 10 + 5 = 15"], 9)),
       tambah("tetap", ...kartu("hz", 70, 172, 160, 22, W.emas, ["luas tetap sama"], 9.6)),
     ),
   ],
@@ -73,29 +65,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Hati-hati: kesalahan yang sering terjadi",
   sumber: "Materi: kesalahan umum bangun gabungan",
   latar: "#FFFBEB",
-  kutipan: [
-    "Miskonsepsi yang dapat terjadi pada Subbab C adalah sebagai berikut",
-    "kesulitan",
-    "bangun-bangun datar",
-    "yang menyusun suatu bangun gabungan",
-    "cara coba-coba",
-    "memikirkan bangun yang sesuai untuk",
-    "mengisi bagian sisanya",
-    "elemen-elemen yang dibutuhkan untuk menghitung luas",
-    "bagian yang merupakan alas dan",
-    "tinggi dari suatu segitiga",
-    "menentukan diagonal-diagonal layang-layang",
-    "posisi bangun yang menyusun",
-    "terbalik atau miring",
-    "alasnya justru terletak di atas",
-    "karena posisi segitiga yang terbalik",
-    "Diferensiasi",
-    "mengembangkan pola",
-    "berpikir kreatif peserta didik",
-    "bentuk bangun gabungan",
-    "terdiri atas 2 bangun",
-    "datar sederhana",
-  ],
+  kutipan: kutipanLokal("k5b5c-materi-2.ts:2"),
   ketukan: [
     k(
       "Hati-hati, ada dua kesalahan yang sering terjadi. Pertama, kita sulit mengenali bangun-bangun datar yang menyusun bangun gabungan.",
@@ -121,12 +91,12 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
       tambah("diagonal", teks("tb-d", 150, 150, "tinggi tetap tegak lurus ke alas", 9, W.hijau)),
     ),
     k(
-      "Contohnya pada bangun tadi. Cara Yohana dan cara Komang sama-sama memakai segitiga yang alasnya justru di atas, karena segitiganya terbalik.",
+      "Contohnya pada bangun tadi. Cara Upe dan cara Wei sama-sama memakai segitiga yang alasnya justru di atas, karena segitiganya terbalik.",
       bersih(0),
       tambah(0, judul("segitiga terbalik pada bangun tadi")),
       tambah(0, ...dasarEks("e", OX, OY, S)),
-      tambah("Yohana", lukis("ys", OX, OY, S, EKS_SEGITIGA_ATAS, W.krem, W.oranye)),
-      tambah("Komang", lukis("ks", OX, OY, S, EKS_SEGITIGA_BAWAH, W.langit, W.oranye)),
+      tambah("Upe", lukis("ys", OX, OY, S, EKS_SEGITIGA_ATAS, W.krem, W.oranye)),
+      tambah("Wei", lukis("ks", OX, OY, S, EKS_SEGITIGA_BAWAH, W.langit, W.oranye)),
       tambah("alasnya", ...kartu("m3", 166, 40, 126, 44, W.krem, ["alas segitiga EDC", "ada di atas"], 8.8)),
       tambah("terbalik.", ...kartu("m4", 166, 96, 126, 30, W.pink, ["perlu dicermati"], 8.8)),
     ),
@@ -151,18 +121,7 @@ export const ADEGAN_PENGUATAN: AdeganStory = {
   judul: "Penguatan: empat langkah dan renungan",
   sumber: "Materi: rangkuman langkah dan renungan",
   latar: "#F0FDF4",
-  kutipan: [
-    "Di akhir eksplorasi, guru perlu memberikan penguatan kembali tentang cara",
-    "menghitung luas daerah bangun gabungan",
-    "Releksi",
-    "pertanyaan releksi nomor 13 dan 14",
-    "Aku bisa mendekomposisi daerah bangun gabungan ke dalam",
-    "bangun-bangun penyusunnya",
-    "Aku bisa menemukan cara menghitung luas daerah bangun gabungan",
-    "Berilah tanda",
-    "centang",
-    "kolom yang sesuai",
-  ],
+  kutipan: kutipanLokal("k5b5c-materi-2.ts:3"),
   ketukan: [
     k(
       "Mari kita kuatkan lagi cara menghitung luas daerah bangun gabungan. Ada empat langkah yang perlu kamu ingat.",

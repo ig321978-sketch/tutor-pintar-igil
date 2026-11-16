@@ -31,12 +31,12 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("Keempat", kartu("m4", 156, 112, 134, 66, "#BFDBFE", ["Commutative", "Multiply Check", "tukar urutan kali"], 8.6)),
     ),
     k(
-      "Setiap metode kita pelajari dalam dua tahap, yaitu konsep lalu penerapan, dengan contoh dari kebun Agam dan soal cerita.",
+      "Setiap metode kita pelajari dalam dua tahap, yaitu konsep lalu penerapan, dengan contoh dari kebun Wei dan soal cerita.",
       bersih(0),
       tambah(0, judul("konsep, lalu penerapan")),
       tambah("konsep", ...kartu("c1", 30, 60, 100, 50, "#FEF9C3", ["konsep", "cara kerja"], 10)),
       tambah("penerapan", panah("cp", 134, 85, 32, 0, W.hijau, 3, { gambar: true }), ...kartu("c2", 170, 60, 100, 50, "#DCFCE7", ["penerapan", "soal cerita"], 10)),
-      tambah("Agam", emo("ag", 150, 168, "👦", 32)),
+      tambah("Wei", emo("ag", 150, 168, "👦", 32)),
     ),
   ],
 };

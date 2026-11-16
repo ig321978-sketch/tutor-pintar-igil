@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { KELOMPOK_MEMBESAR, W, benda, emo, judul, kartu, kotak, teks } from "./k4b3a-gambar";
 import { bersih, idx, k, sorotkan, tambah } from "./k4b3a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab dan tujuan (Buku Siswa hlm. 85–86; Panduan Guru hlm. 121) ------------------------------ */
 const SUARA_P1 = "Selamat datang di bab tiga, Pola Gambar dan Pola Bilangan. Buku membuka dengan tantangan: dapatkah kalian menentukan banyak kartu yang dibutuhkan untuk setiap tingkat berdasarkan pola yang sudah ada?";
@@ -24,24 +25,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 3: tantangan dan tujuan pembelajaran",
   sumber: "Buku Siswa hlm. 85–86; Panduan Guru hlm. 121",
   latar: "#FFF7ED",
-  kutipan: [
-    "Pola gambar dan pola bilangan menggunakan operasi bilangan cacah",
-    "Dapatkah kalian menentukan banyak kartu yang dibutuhkan",
-    "untuk setiap tingkat berdasarkan pola yang sudah ada?",
-    "ayo ingat kembali operasi penjumlahan dan pengurangan pada bilangan.",
-    "Tujuan Pembelajaran",
-    "Setelah mempelajari bab ini kalian mampu:",
-    "menemukan pola gambar membesar dan mengecil",
-    "membuat pola gambar membesar dan mengecil",
-    "menemukan pola bilangan membesar dan mengecil",
-    "Kata Kunci",
-    "Pola Gambar, Pola Bilangan",
-    "1. Tujuan Pembelajaran",
-    "Setelah mempelajari bab ini, peserta didik dapat:",
-    "1.1 mengidentifikasi pola gambar membesar dan mengecil yang melibatkan",
-    "1.2 mengembangkan pola gambar membesar dan mengecil yang melibatkan",
-    "penjumlahan dan pengurangan pada bilangan cacah sampai 100",
-  ],
+  kutipan: kutipanLokal("k4b3a-materi-1.ts:1"),
   ketukan: [
     k(
       SUARA_P1,
@@ -100,22 +84,7 @@ export const ADEGAN_PETA: AdeganStory = {
   judul: "Peta konsep, gambaran umum, dan skema pembelajaran",
   sumber: "Buku Siswa hlm. 86; Panduan Guru hlm. 122–123",
   latar: "#F0FDF4",
-  kutipan: [
-    "Peta Konsep",
-    "Pola gambar membesar",
-    "Pola gambar mengecil",
-    "Pola bilangan membesar",
-    "2. Peta Konsep",
-    "3. Gambaran Umum Bab",
-    "untuk menentukan banyak benda sesuai pola gambar yang diberikan baik itu",
-    "mengidentifikasi, meniru,",
-    "4. Keterampilan yang Dilatih",
-    "4. Berkomunikasi",
-    "5. Skema Pembelajaran",
-    "5 JP",
-    "Metode Diskusi dan Tanya Jawab",
-    "Aktivitas 2.",
-  ],
+  kutipan: kutipanLokal("k4b3a-materi-1.ts:2"),
   ketukan: [
     k(
       SUARA_K1,
@@ -167,21 +136,7 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
   judul: "Panduan Guru: pengalaman belajar dan pemanasan",
   sumber: "Panduan Guru hlm. 124–125",
   latar: "#FFFBEB",
-  kutipan: [
-    "6. Panduan Pembelajaran",
-    "A. Pola Gambar",
-    "Pengalaman Belajar",
-    "pola gambar membesar (melibatkan operasi penjumlahan bilangan cacah)",
-    "memprediksi fenomena alam seperti gempa bumi, angin topan",
-    "Kebutuhan Sarana Prasarana dan Media",
-    "1. Alat tulis",
-    "3. Batu kerikil/kelereng",
-    "Apersepsi",
-    "Apakah kalian pernah bermain kartu",
-    "Stimulus (Pemanasan)",
-    "Guru menggambar di papan tulis berupa deret kumpulan gambar",
-    "Guru tidak perlu memberikan jawaban yang benar",
-  ],
+  kutipan: kutipanLokal("k4b3a-materi-1.ts:3"),
   ketukan: [
     k(
       SUARA_G1,
@@ -239,27 +194,7 @@ export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
   judul: "Aktivitas 1: pola gambar membesar",
   sumber: "Materi: Pola gambar membesar",
   latar: "#F0F9FF",
-  kutipan: [
-    "A. Pola Gambar",
-    "Tahukah kalian? Susunan gambar yang ditata",
-    "dapat membentuk sebuah pola tertentu",
-    "1. Pola Gambar Membesar",
-    "Aktivitas 1",
-    "Alat dan Bahan: Kelereng/batu kerikil, alat tulis, kertas",
-    "Buatlah 4 kelompok beranggotakan 5-6 orang.",
-    "Susunlah kelereng/batu kerikil menjadi 3 kumpulan sesuai tabel berikut.",
-    "Setiap kelompok menghitung banyaknya benda serta selisihnya dari setiap",
-    "Temukan pola gambar masing-masing dengan berdiskusi sesama anggota",
-    "Mintalah bantuan guru jika dibutuhkan.",
-    "Bagaimana pola yang terbentuk dari pola gambar yang diberikan?",
-    "Berapa benda yang dibutuhkan untuk kumpulan ke-4 yang sesuai pola",
-    "Semakin banyak atau semakin sedikit?",
-    "Apa yang kalian dapat simpulkan?",
-    "Presentasikan hasil diskusi kelompok di depan kelas.",
-    "Guru membagi peserta didik menjadi 4 kelompok yang heterogen",
-    "terkait pola gambar membesar yang berbeda-beda.",
-    "Dapatkah menemukan pola gambar",
-  ],
+  kutipan: kutipanLokal("k4b3a-materi-1.ts:4"),
   ketukan: [
     k(
       SUARA_AK1,

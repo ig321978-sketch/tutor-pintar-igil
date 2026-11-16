@@ -61,7 +61,7 @@ export const APEM = [
   { hari: "Sabtu", n: 29 },
 ] as const;
 
-/** Hasil panen tomat Pak Chandra, Tabel 8.7 (hlm. 252), dalam kg. */
+/** Hasil panen tomat Pak Malosi, Tabel 8.7 (hlm. 252), dalam kg. */
 export const TOMAT = [
   { minggu: 1, n: 10 },
   { minggu: 2, n: 14 },

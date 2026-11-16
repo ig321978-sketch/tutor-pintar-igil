@@ -4,6 +4,7 @@
 // hitungan mandiri (kelipatan, KPK, tanggal jadwal latihan dengan Date), persamaan di gambar, tabel bilangan 1-50, deret kelipatan bersel,
 // irisan dua lingkaran, garis hari jadwal, emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b2b.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -189,7 +190,7 @@ const jadwal = (bulan, hari, langkah, banyak) => Array.from({ length: banyak }, 
   sama(persekutuan(3, 4, 60).filter((n) => n % 5 === 0), [60], "kelipatan persekutuan 3, 4, dan 5 sampai 60 hanya 60");
   sama(persekutuan(3, 5, 105).filter((n) => n % 7 === 0), [105], "kelipatan persekutuan 3, 5, dan 7 sampai 105 hanya 105");
   sama(persekutuan(3, 4, 12), [12], "3 dan 4 sama pertama di 12 (Eksplorasi 2.2B)");
-  sama(persekutuan(3, 5, 15), [15], "3 dan 5 sama pertama di 15 (Asep dan Lukas)");
+  sama(persekutuan(3, 5, 15), [15], "3 dan 5 sama pertama di 15 (Kira dan Halim)");
   sama(persekutuan(2, 5, 10), [10], "2 dan 5 sama pertama di 10 (Dinda dan Amelia)");
   // Hasil kali bukan selalu KPK (miskonsepsi 2): 6 x 8 = 48 tetapi KPK 24; 5 x 7 = 35 sama dengan KPK karena FPB = 1.
   sama([6 * 8, kpk(6, 8), fpb(6, 8)], [48, 24, 2], "miskonsepsi: 6 x 8 = 48 bukan KPK (24), FPB 2");
@@ -197,22 +198,22 @@ const jadwal = (bulan, hari, langkah, banyak) => Array.from({ length: banyak }, 
   sama([12 % 3, 12 % 4, 12 % 5 !== 0], [0, 0, true], "miskonsepsi 3: 12 kelipatan 3 dan 4 tetapi bukan 5");
   // Tanggal jadwal latihan (tahun 2022), dihitung dengan Date.
   const nisa = tanggal(8, 3, kpk(3, 4));
-  sama([nisa.bulan, nisa.hari], [8, 15], "Nisa dan Yohana: 3 Agustus + 12 hari = 15 Agustus");
+  sama([nisa.bulan, nisa.hari], [8, 15], "Malosi dan Igil: 3 Agustus + 12 hari = 15 Agustus");
   const asep = tanggal(8, 20, kpk(3, 5));
-  sama([asep.bulan, asep.hari, 20 + kpk(3, 5), 20 + kpk(3, 5) - 31], [9, 4, 35, 4], "Asep dan Lukas: 20 + 15 = 35, 35 - 31 = 4 September");
+  sama([asep.bulan, asep.hari, 20 + kpk(3, 5), 20 + kpk(3, 5) - 31], [9, 4, 35, 4], "Kira dan Halim: 20 + 15 = 35, 35 - 31 = 4 September");
   const dinda = tanggal(7, 14, kpk(2, 5));
   sama([dinda.bulan, dinda.hari], [7, 24], "Dinda dan Amelia: 14 Juli + 10 hari = 24 Juli");
   const warung = tanggal(9, 20, kpk(3, 5, 7));
   sama([warung.tahun, warung.bulan, warung.hari], [2023, 1, 3], "Warung: 20 September + 105 hari = 3 Januari 2023");
-  // Jadwal pada kalender: Lukas tiap 5 hari dan Asep tiap 3 hari mulai 20 Agustus; pertemuan pertama setelah 20 Agustus.
+  // Jadwal pada kalender: Halim tiap 5 hari dan Kira tiap 3 hari mulai 20 Agustus; pertemuan pertama setelah 20 Agustus.
   const lukas = jadwal(8, 20, 5, 5);
   const asepJ = jadwal(8, 20, 3, 7);
-  sama(lukas.map((t) => t.hari), [20, 25, 30, 4, 9], "jadwal Lukas pada kalender");
-  sama(asepJ.map((t) => t.hari), [20, 23, 26, 29, 1, 4, 7], "jadwal Asep pada kalender (1 September ada, tidak terlewat)");
-  const kunciPanduan = [20, 23, 26, 29, 4, 7]; // daftar Asep di Panduan Guru hlm. 57 melewatkan 1 September
-  cek(!kunciPanduan.includes(1) && asepJ.some((t) => t.bulan === 9 && t.hari === 1), "temuan: daftar Asep di Panduan Guru melewatkan 1 September");
+  sama(lukas.map((t) => t.hari), [20, 25, 30, 4, 9], "jadwal Halim pada kalender");
+  sama(asepJ.map((t) => t.hari), [20, 23, 26, 29, 1, 4, 7], "jadwal Kira pada kalender (1 September ada, tidak terlewat)");
+  const kunciPanduan = [20, 23, 26, 29, 4, 7]; // daftar Kira di Panduan Guru hlm. 57 melewatkan 1 September
+  cek(!kunciPanduan.includes(1) && asepJ.some((t) => t.bulan === 9 && t.hari === 1), "temuan: daftar Kira di Panduan Guru melewatkan 1 September");
   const pertama = asepJ.slice(1).find((t) => lukas.some((u) => u.bulan === t.bulan && u.hari === t.hari));
-  sama([pertama.bulan, pertama.hari], [9, 4], "pertemuan pertama Asep dan Lukas lewat kalender = 4 September");
+  sama([pertama.bulan, pertama.hari], [9, 4], "pertemuan pertama Kira dan Halim lewat kalender = 4 September");
   // Kunci Ayo Berlatih: kelipatan 6 yang benar dan kesalahan ketik di kunci
   sama(kelipatanN(6, 9), [6, 12, 18, 24, 30, 36, 42, 48, 54], "kelipatan 6 yang benar (kunci menulis 32 setelah 24)");
   cek(32 % 6 !== 0 && 30 % 6 === 0, "32 bukan kelipatan 6, 30 kelipatan 6");
@@ -439,15 +440,15 @@ const KELOMPOK_TANGGAL = new Set(["lk", "ap"]);
   stat.deret += n;
 }
 
-/* ------------------------------ Jadwal di kalender (Asep dan Lukas), kartu tanggal, dan garis hari ------------------------------ */
+/* ------------------------------ Jadwal di kalender (Kira dan Halim), kartu tanggal, dan garis hari ------------------------------ */
 {
   const a = adegan(M, "diskusi-asep-lukas");
   const t = akhirAdegan(a, 5);
   const lk = kelompokSel(t).get("lk").map((_, q) => angkaSel(t, "lk", q));
   const ap = kelompokSel(t).get("ap").map((_, q) => angkaSel(t, "ap", q));
-  sama(lk, jadwal(8, 20, 5, 5).map((x) => x.hari), "diskusi: sel jadwal Lukas = hari-hari latihan dari kalender");
-  sama(ap, jadwal(8, 20, 3, 7).map((x) => x.hari), "diskusi: sel jadwal Asep = hari-hari latihan dari kalender");
-  // sel yang ditandai emas: 4 September (indeks 3 pada Lukas dan 5 pada Asep)
+  sama(lk, jadwal(8, 20, 5, 5).map((x) => x.hari), "diskusi: sel jadwal Halim = hari-hari latihan dari kalender");
+  sama(ap, jadwal(8, 20, 3, 7).map((x) => x.hari), "diskusi: sel jadwal Kira = hari-hari latihan dari kalender");
+  // sel yang ditandai emas: 4 September (indeks 3 pada Halim dan 5 pada Kira)
   cek(warnaSel(t, "lk", 3) === WARNA.emas && warnaSel(t, "ap", 5) === WARNA.emas && lk[3] === 4 && ap[5] === 4, "diskusi: 4 September ditandai pada kedua jadwal");
   cek([0, 1, 2, 4].every((q) => warnaSel(t, "lk", q) === WARNA.putih) && [0, 1, 2, 3, 4, 6].every((q) => warnaSel(t, "ap", q) === WARNA.putih), "diskusi: hanya 4 September yang ditandai");
   cek(teksId(t, "bt") === "bersama lagi: 4 September", "diskusi: teks pertemuan pertama 4 September");
@@ -475,7 +476,7 @@ const KELOMPOK_TANGGAL = new Set(["lk", "ap"]);
 }
 
 {
-  // Garis hari Meeting Cycle: tanda tiap hari, titik Nisa tiap 3 hari, titik Yohana tiap 4 hari, bertemu di hari 12
+  // Garis hari Meeting Cycle: tanda tiap hari, titik Malosi tiap 3 hari, titik Igil tiap 4 hari, bertemu di hari 12
   const a = adegan(U, "luar-siklus");
   const t = akhirAdegan(a);
   const X0 = 24;
@@ -488,10 +489,10 @@ const KELOMPOK_TANGGAL = new Set(["lk", "ap"]);
   const hariDot = (pre) => t.filter((o) => o.id.startsWith(pre) && o.t === "bulat").map((o) => ({ d: Number(o.id.slice(pre.length)), o }));
   const nisa = hariDot("gn");
   const yohana = hariDot("gy");
-  sama(nisa.map((x) => x.d), [3, 6, 9, 12], "siklus: titik Nisa pada hari kelipatan 3 sampai 12");
-  sama(yohana.map((x) => x.d), [4, 8, 12], "siklus: titik Yohana pada hari kelipatan 4 sampai 12");
+  sama(nisa.map((x) => x.d), [3, 6, 9, 12], "siklus: titik Malosi pada hari kelipatan 3 sampai 12");
+  sama(yohana.map((x) => x.d), [4, 8, 12], "siklus: titik Igil pada hari kelipatan 4 sampai 12");
   cek([...nisa, ...yohana].every((x) => Math.abs(x.o.x - (X0 + x.d * LANGKAH)) < 0.01), "siklus: tiap titik tepat di atas tanda harinya");
-  sama(nisa.map((x) => x.d).filter((d) => yohana.some((y) => y.d === d)), [12], "siklus: Nisa dan Yohana bertemu pertama di hari 12 (KPK 3 dan 4)");
+  sama(nisa.map((x) => x.d).filter((d) => yohana.some((y) => y.d === d)), [12], "siklus: Malosi dan Igil bertemu pertama di hari 12 (KPK 3 dan 4)");
   const gv = t.find((o) => o.id === "gv");
   cek(!!gv && Math.abs(gv.x - (X0 + 12 * LANGKAH)) < 0.01 && gv.x2 === 0, "siklus: garis penanda tegak lurus tepat di hari 12");
   stat.garisHari += 6;
@@ -552,7 +553,7 @@ const KELOMPOK_TANGGAL = new Set(["lk", "ap"]);
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
   cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Tepuk Bilangan", "Latihan Renang", "Latihan 1", "Latihan 2", "Warung Kelontong", "kelipatan persekutuan terkecil", "Dinda", "Amelia", "Asep", "Lukas", "Nisa", "Yohana"]) cek(materi.includes(kata), `video materi memuat "${kata}"`);
+  for (const kata of ["Tepuk Bilangan", "Latihan Renang", "Latihan 1", "Latihan 2", "Warung Kelontong", "kelipatan persekutuan terkecil", "Dinda", "Amelia", "Kira", "Halim", "Malosi", "Igil"]) cek(materi.includes(kata), `video materi memuat "${kata}"`);
   for (const kata of ["Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat ${kata}`);
   const idsM = M_VIDEO.adegan.map((a) => a.id);
   const idsU = U.adegan.map((a) => a.id);
@@ -604,7 +605,7 @@ const KELOMPOK_TANGGAL = new Set(["lk", "ap"]);
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(n >= 90, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 90, `jumlah kutipan buku yang diperiksa (${n})`);
     stat.kutipan = n;
   }
 }
@@ -625,7 +626,7 @@ const KELOMPOK_TANGGAL = new Set(["lk", "ap"]);
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b2b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b2b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b2b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b2b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

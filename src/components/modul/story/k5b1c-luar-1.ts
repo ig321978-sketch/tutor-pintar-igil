@@ -19,7 +19,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana kita menyusun sebuah bilangan dari uang, atau menguraikannya kembali? Guru di berbagai negara punya cara berbeda. Di video ini ada empat metode, dengan angka dari uang Asep, Lukas, dan Komang.",
+      "Bagaimana kita menyusun sebuah bilangan dari uang, atau menguraikannya kembali? Guru di berbagai negara punya cara berbeda. Di video ini ada empat metode, dengan angka dari uang Malosi, Igil, dan Kira.",
       tambah(0, judul("4 metode dari luar")),
       tambah("menyusun", ...kartu("p1", 30, 40, 100, 44, W.krem, ["uang", "3, 8, 6"], 10)),
       tambah("menguraikannya", panah("pa", 134, 62, 32, 0, W.merah, 2.4), ...kartu("p2", 170, 40, 100, 44, W.hijauMuda, ["bilangan", "38.600"], 10)),
@@ -35,13 +35,13 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("Money", ...kartu("m4", 12, 148, 276, 30, W.pink, ["4. Money Composition"], 9.6)),
     ),
     k(
-      "Semuanya memakai uang yang sama, milik Asep, Lukas, dan Komang. Uang Asep tiga puluh delapan ribu enam ratus, uang Lukas enam puluh tiga ribu lima ratus, dan Komang membayar empat puluh lima ribu enam ratus.",
+      "Semuanya memakai uang yang sama, milik Malosi, Igil, dan Kira. Uang Malosi tiga puluh delapan ribu enam ratus, uang Igil enam puluh tiga ribu lima ratus, dan Kira membayar empat puluh lima ribu enam ratus.",
       bersih(0),
       tambah(0, judul("Angka yang dipakai")),
-      tambah("Asep", ...kartu("b1", 16, 50, 84, 52, W.langit, ["Asep", "38.600"], 10)),
-      tambah("Lukas", ...kartu("b2", 108, 50, 84, 52, W.pink, ["Lukas", "63.500"], 10)),
-      tambah("Komang", ...kartu("b3", 200, 50, 84, 52, W.hijauMuda, ["Komang", "45.600"], 10)),
-      tambah("membayar", teks("b4", 150, 134, "uang Asep, uang Lukas, harga Komang", 9, W.hitam)),
+      tambah("Malosi", ...kartu("b1", 16, 50, 84, 52, W.langit, ["Malosi", "38.600"], 10)),
+      tambah("Igil", ...kartu("b2", 108, 50, 84, 52, W.pink, ["Igil", "63.500"], 10)),
+      tambah("Kira", ...kartu("b3", 200, 50, 84, 52, W.hijauMuda, ["Kira", "45.600"], 10)),
+      tambah("membayar", teks("b4", 150, 134, "uang Malosi, uang Igil, harga Kira", 9, W.hitam)),
     ),
     k(
       "Kita mulai dari yang paling dasar: menulis bilangan sebagai jumlah nilai tiap angkanya.",
@@ -67,7 +67,7 @@ export const ADEGAN_LUAR_URAIAN: AdeganStory = {
       tambah("uraian", ...kartu("kk", 50, 122, 200, 36, W.hijauMuda, ["bentuk uraian"], 11)),
     ),
     k(
-      "Ambil tiga puluh delapan ribu enam ratus, yang tadi adalah uang Asep. Tiap angkanya punya tempat sendiri.",
+      "Ambil tiga puluh delapan ribu enam ratus, yang tadi adalah uang Malosi. Tiap angkanya punya tempat sendiri.",
       bersih(0),
       tambah(0, judul("Expanded Form")),
       tambah("Ambil", bingkai("ud", G_KOMP, 2, ["angka", "nilai"]), teks("hb", 150, 118, "38.600", 14, W.hijau)),
@@ -94,13 +94,13 @@ export const ADEGAN_LUAR_URAIAN: AdeganStory = {
 /* ------------------------------ 3. Expanded Form: penerapan ------------------------------ */
 export const ADEGAN_LUAR_URAIAN_TERAPAN: AdeganStory = {
   id: "luar-uraian-terapan",
-  judul: "Expanded Form pada uang Lukas dan harga Komang",
+  judul: "Expanded Form pada uang Igil dan harga Kira",
   sumber: "Metode luar: Expanded Form, penerapan",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapkan pada uang Lukas, enam puluh tiga ribu lima ratus. Angkanya enam, tiga, lima, nol, nol.",
-      tambah(0, judul("Expanded Form: uang Lukas")),
+      "Terapkan pada uang Igil, enam puluh tiga ribu lima ratus. Angkanya enam, tiga, lima, nol, nol.",
+      tambah(0, judul("Expanded Form: uang Igil")),
       tambah("Terapkan", bingkai("ul", G_KOMP, 2, ["angka", "nilai"]), teks("hb", 150, 118, "63.500", 14, W.hijau)),
       tambah("Angkanya", ...barisAngka("ul", ["6", "3", "5", "0", "0"])),
     ),
@@ -111,18 +111,18 @@ export const ADEGAN_LUAR_URAIAN_TERAPAN: AdeganStory = {
       tambah("bernilai@3", isiSel("ul", G_KOMP, 1, 2, "500", 8.6, W.hijau), isiSel("ul", G_KOMP, 1, 3, "0", 8.6, W.hijau), isiSel("ul", G_KOMP, 1, 4, "0", 8.6, W.hijau)),
     ),
     k(
-      "Bentuk uraian uang Lukas: enam puluh ribu tambah tiga ribu tambah lima ratus.",
+      "Bentuk uraian uang Igil: enam puluh ribu tambah tiga ribu tambah lima ratus.",
       tambah("uraian", rumus("ur", 152, "63.500 = 60.000 + 3.000 + 500", 10, W.coklat)),
     ),
     k(
-      "Sekarang harga peralatan Komang, empat puluh lima ribu enam ratus. Angkanya empat, lima, enam, nol, nol.",
+      "Sekarang harga peralatan Kira, empat puluh lima ribu enam ratus. Angkanya empat, lima, enam, nol, nol.",
       bersih(0),
-      tambah(0, judul("Expanded Form: harga Komang")),
+      tambah(0, judul("Expanded Form: harga Kira")),
       tambah("Sekarang", bingkai("uk", G_KOMP, 2, ["angka", "nilai"]), teks("hb", 150, 118, "45.600", 14, W.hijau)),
       tambah("Angkanya", ...barisAngka("uk", ["4", "5", "6", "0", "0"])),
     ),
     k(
-      "Nilainya empat puluh ribu, lima ribu, dan enam ratus. Perhatikan, angka empat, lima, enam inilah yang kita pakai pada Cara satu uang Komang.",
+      "Nilainya empat puluh ribu, lima ribu, dan enam ratus. Perhatikan, angka empat, lima, enam inilah yang kita pakai pada Cara satu uang Kira.",
       tambah("Nilainya", ...barisNilai("uk", ["40.000", "5.000", "600", "0", "0"])),
       tambah("Cara", rumus("ur", 152, "45.600 = 40.000 + 5.000 + 600", 10, W.coklat)),
       tambah("satu", ...kartu("cr", 70, 164, 160, 28, W.krem, ["Cara 1: 4, 5, 6"], 9.4)),
@@ -161,16 +161,16 @@ export const ADEGAN_LUAR_TUKAR: AdeganStory = {
       tambah("seribuan", teks("fo", 156, 152, "10 lembar 1.000", 8.4, W.biru, { anchor: "start" })),
     ),
     k(
-      "Penukaran seperti ini yang kita pakai pada empat cara uang Komang: pindah antar tempat, tanpa mengubah jumlah uang.",
+      "Penukaran seperti ini yang kita pakai pada empat cara uang Kira: pindah antar tempat, tanpa mengubah jumlah uang.",
       bersih(0),
       tambah(0, judul("Menukar tidak mengubah nilai")),
-      tambah("empat", ...kartu("g1", 30, 50, 240, 44, W.hijauMuda, ["4 cara uang Komang", "pindah antar tempat"], 10)),
+      tambah("empat", ...kartu("g1", 30, 50, 240, 44, W.hijauMuda, ["4 cara uang Kira", "pindah antar tempat"], 10)),
       tambah("tanpa", ...kartu("g2", 30, 108, 240, 44, W.krem, ["jumlah uang", "tetap sama"], 10.4)),
     ),
   ],
 };
 
-/* ------------------------------ 5. Flexible Grouping: penerapan pada empat cara uang Komang ------------------------------ */
+/* ------------------------------ 5. Flexible Grouping: penerapan pada empat cara uang Kira ------------------------------ */
 const baris = (id: string, i: number) => {
   const [p, r, s] = CARA_KOMANG[i];
   return [isiSel(id, G_CARA, i, 0, String(p)), isiSel(id, G_CARA, i, 1, String(r)), isiSel(id, G_CARA, i, 2, String(s)), isiSel(id, G_CARA, i, 3, "0"), isiSel(id, G_CARA, i, 4, "0")];
@@ -178,7 +178,7 @@ const baris = (id: string, i: number) => {
 
 export const ADEGAN_LUAR_TUKAR_TERAPAN: AdeganStory = {
   id: "luar-tukar-terapan",
-  judul: "Flexible Grouping pada empat cara uang Komang",
+  judul: "Flexible Grouping pada empat cara uang Kira",
   sumber: "Metode luar: Flexible Grouping, penerapan",
   latar: "#EFF6FF",
   ketukan: [

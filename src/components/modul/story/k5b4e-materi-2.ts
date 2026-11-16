@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { KOMANG_RECT, TITIK_EKSTRA, TITIK_DENAH, W, denahBingkai, denahHuruf, denahRuang, denahSisi, denahTepi, kartu, kotak, layar, teks, judul } from "./k5b4e-gambar";
 import { bersih, hapus, k, tambah } from "./k5b4e-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Denah di sisi kiri kanvas: pojok kiri-atas (22, 36), 11 piksel per meter. */
 const OX = 22;
@@ -28,24 +29,10 @@ const baris = (id: string, i: number, isi: string, u = 9.6, warna: string = W.bi
 /* ------------------------------ 5. Mencari sisi yang belum diketahui (Buku Siswa hlm. 127; Panduan Guru hlm. 164) ------------------------------ */
 export const ADEGAN_SISI_HILANG: AdeganStory = {
   id: "sisi-hilang",
-  judul: "Cara Asep: mencari sisi yang belum diketahui",
+  judul: "Cara Wei: mencari sisi yang belum diketahui",
   sumber: "Materi: mencari sisi yang belum diketahui",
   latar: "#FFFBEB",
-  kutipan: [
-    "Perhatikan persegi panjang",
-    "AOPN.",
-    "AB = AO – …",
-    "Karena BO = CD, maka",
-    "= 8 – … = … .",
-    "Apakah AB = MN? … .",
-    "Maka, MN = … m.",
-    "JD = … + … + …",
-    "JD = JI + IE + ED",
-    "Apakah IE = HF? … .",
-    "Selanjutnya, perhatikan jarak",
-    "titik J hingga D dan jarak titik I",
-    "hingga E.",
-  ],
+  kutipan: kutipanLokal("k5b4e-materi-2.ts:1"),
   ketukan: [
     k(
       "Mulai dari A B. Perhatikan persegi panjang A O P N. Panjang A O adalah delapan meter, yaitu lebar ruang keluarga.",
@@ -98,22 +85,10 @@ export const ADEGAN_SISI_HILANG: AdeganStory = {
 /* ------------------------------ 6. Menjumlahkan keliling (Buku Siswa hlm. 128; Panduan Guru hlm. 165) ------------------------------ */
 export const ADEGAN_JUMLAH_ASEP: AdeganStory = {
   id: "jumlah-asep",
-  judul: "Cara Asep: menjumlahkan semua sisi terluar",
+  judul: "Cara Wei: menjumlahkan semua sisi terluar",
   sumber: "Materi: menjumlahkan semua sisi terluar",
   latar: "#F0FDF4",
-  kutipan: [
-    "Semua panjang sisi yang Asep",
-    "dibutuhkan sudah diketahui,",
-    "maka,",
-    "keliling denah =",
-    "AB + BC + CD + DE + EF + FG + GH + HI + IJ + JK + KL + LM + MN",
-    "+ NA",
-    "AB + BC + CD + (JI + DE) + EF +",
-    "FG + GH + HI + JK + KL + LM +",
-    "MN + NA",
-    "Dengan demikian diperoleh",
-    "kelilingnya … m.",
-  ],
+  kutipan: kutipanLokal("k5b4e-materi-2.ts:2"),
   ketukan: [
     k(
       "Semua panjang sisi sudah diketahui. Keliling denah adalah A B ditambah B C ditambah C D, dan seterusnya sampai N A, empat belas sisi.",
@@ -143,7 +118,7 @@ export const ADEGAN_JUMLAH_ASEP: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 7. Cara Komang dan perbandingan (Buku Siswa hlm. 126 sampai 128; Panduan Guru hlm. 164 sampai 165) ------------------------------ */
+/* ------------------------------ 7. Cara Malosi dan perbandingan (Buku Siswa hlm. 126 sampai 128; Panduan Guru hlm. 164 sampai 165) ------------------------------ */
 const komang = (id: string, kode: string, warna: string): Obj => {
   const [x1, y1, x2, y2] = KOMANG_RECT[kode];
   const [x, y] = layar(OX, OY, S, [x1, y2]);
@@ -153,36 +128,14 @@ const kelompok = (awalan: string, nama: string[], warna: string): Obj[] => nama.
 
 export const ADEGAN_KOMANG: AdeganStory = {
   id: "cara-komang",
-  judul: "Cara Komang: persegi besar yang melingkupi denah",
-  sumber: "Materi: Cara Komang dan persegi besar",
+  judul: "Cara Malosi: persegi besar yang melingkupi denah",
+  sumber: "Materi: Cara Malosi dan persegi besar",
   latar: "#EFF6FF",
-  kutipan: [
-    "Aku hanya",
-    "membagi denah",
-    "menjadi 3 persegi",
-    "panjang. Setelah",
-    "itu, aku membuat",
-    "persegi besar yang melingkupi",
-    "semua persegi panjang yang",
-    "ada dan mencari kesamaan",
-    "ukuran-ukurannya.",
-    "Pertama, carilah ruas garis",
-    "yang sama panjang antara",
-    "sisi-sisi persegi panjang dan",
-    "persegi terluar.",
-    "Sisi-sisi mendatar atas",
-    "Sisi-sisi mendatar bagian bawah",
-    "Sisi-sisi vertikal kiri",
-    "Sisi-sisi vertikal kanan",
-    "keliling denah = keliling persegi",
-    "Di akhir eksplorasi, guru perlu memberikan penguatan kembali tentang",
-    "cara menghitung keliling bangun gabungan beraturan serta memastikan",
-    "pemahaman peserta didik melalui kegiatan tanya jawab.",
-  ],
+  kutipan: kutipanLokal("k5b4e-materi-2.ts:3"),
   ketukan: [
     k(
-      "Cara Komang berbeda. Komang membagi denah menjadi tiga persegi panjang, lalu membuat persegi besar yang melingkupi semua persegi panjang itu.",
-      tambah(0, judul("Cara Komang")),
+      "Cara Malosi berbeda. Malosi membagi denah menjadi tiga persegi panjang, lalu membuat persegi besar yang melingkupi semua persegi panjang itu.",
+      tambah(0, judul("Cara Malosi")),
       tambah("tiga", komang("kk", "kiri", W.hijauMuda), komang("kt", "tengah", W.jingga), komang("kn", "kanan", W.langit)),
       tambah("persegi@2", denahBingkai("bk", OX, OY, S, W.hijau, { z: 7 })),
       tambah("semua", teks("pb", PX, 90, "persegi besar", 10, W.hijau), teks("pb2", PX, 106, "12 m × 12 m", 10, W.hijau)),
@@ -214,11 +167,11 @@ export const ADEGAN_KOMANG: AdeganStory = {
       tambah("empat@2", teks("kb2", 150, 184, "4 × 12 = 48 m", 15, W.merah)),
     ),
     k(
-      "Dua cara, satu hasil: empat puluh delapan meter. Cara Asep menjumlahkan empat belas sisi, cara Komang memakai persegi besar.",
+      "Dua cara, satu hasil: empat puluh delapan meter. Cara Wei menjumlahkan empat belas sisi, cara Malosi memakai persegi besar.",
       bersih(0),
       tambah(0, judul("Dua cara, satu hasil")),
-      tambah("Asep", ...kartu("v1", 14, 40, 128, 70, W.krem, ["Cara Asep", "14 sisi satu per satu", "48 m"], 9)),
-      tambah("Komang", ...kartu("v2", 158, 40, 128, 70, W.langit, ["Cara Komang", "persegi besar 12 × 12", "48 m"], 9)),
+      tambah("Wei", ...kartu("v1", 14, 40, 128, 70, W.krem, ["Cara Wei", "14 sisi satu per satu", "48 m"], 9)),
+      tambah("Malosi", ...kartu("v2", 158, 40, 128, 70, W.langit, ["Cara Malosi", "persegi besar 12 × 12", "48 m"], 9)),
       tambah("hasil:", teks("v3", 150, 150, "hasil sama: 48 m", 13, W.hijau)),
     ),
     k(

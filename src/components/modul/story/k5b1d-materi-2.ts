@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, garis, judul, kartu, kotak, panah, tabel, teks } from "./k5b1d-gambar";
 import { bersih, k, tambah, ubah } from "./k5b1d-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Eksplorasi 1.5 dan 1.6, Permasalahan 1: angpau (Buku Siswa hlm. 21 sampai 23) ------------------------------ */
 export const ADEGAN_ANGPAU_1: AdeganStory = {
@@ -8,24 +9,7 @@ export const ADEGAN_ANGPAU_1: AdeganStory = {
   judul: "Dua belas angpau",
   sumber: "Materi: mengalikan uang angpau",
   latar: "#FEF2F2",
-  kutipan: [
-    "Ayo Berpikir Kreatif",
-    "Adakah cara lain untuk menyelesaikan hitungan pada kegiatan Ayo Berlatih?",
-    "Jika ada, bagaimana caranya? Tuliskan dalam buku tulismu.",
-    "Perkalian dan Pembagian Bilangan Cacah Sampai 100.000",
-    "Eksplorasi 1.5",
-    "Yohana siswa keturunan Tionghoa.",
-    "yaitu amplop yang berisi uang.",
-    "Pada Imlek tahun ini, Yohana mendapat 12 angpau yang setiap amplopnya berisi Rp5.000,00.",
-    "Berapakah jumlah uang yang diperoleh Yohana?",
-    "Eksplorasi 1.6",
-    "Memisahkan angka dari pengali pada nilai tempat",
-    "2 × 5.000 = 10.000",
-    "10 × 5.000 = 50.000",
-    "60.000",
-    "Cara 2. Cara bersusun",
-    "Jadi, uang yang diperoleh Yohana adalah",
-  ],
+  kutipan: kutipanLokal("k5b1d-materi-2.ts:1"),
   ketukan: [
     k(
       "Berpikir kreatif: adakah cara lain untuk hitungan latihan tadi? Tuliskan di kertasmu. Lalu kita beralih ke perkalian dan pembagian.",
@@ -34,7 +18,7 @@ export const ADEGAN_ANGPAU_1: AdeganStory = {
       tambah("beralih", ...kartu("kd", 30, 130, 240, 34, W.langit, ["berikutnya: perkalian dan pembagian"], 9.4)),
     ),
     k(
-      "Perhatikan cerita berikutnya. Yohana keturunan Tionghoa, dan tiap Imlek ia mendapat angpau, amplop berisi uang. Tahun ini dua belas angpau, tiap amplop lima ribu rupiah. Berapa jumlah uangnya?",
+      "Perhatikan cerita berikutnya. Halim keturunan Tionghoa, dan tiap Imlek ia mendapat angpau, amplop berisi uang. Tahun ini dua belas angpau, tiap amplop lima ribu rupiah. Berapa jumlah uangnya?",
       bersih(0),
       tambah(0, judul("Cerita angpau")),
       tambah("amplop@1", emo("ap", 56, 96, "🧧", 40)),
@@ -62,7 +46,7 @@ export const ADEGAN_ANGPAU_1: AdeganStory = {
       tambah("sepuluh@1", teks("m5", 150, 98, "10.000", 14, W.biru, { anchor: "end" }), teks("m5n", 162, 98, "2 × 5.000", 8.6, W.coklat, { anchor: "start" })),
       tambah("sepuluh@2", teks("m6", 150, 116, "50.000", 14, W.biru, { anchor: "end" }), teks("m6n", 162, 116, "10 × 5.000", 8.6, W.coklat, { anchor: "start" })),
       tambah("dijumlahkan", teks("m7", 84, 116, "+", 14, W.merah), garis("m8", 88, 122, 66, 0, W.biru, 1.6), teks("m9", 150, 142, "60.000", 15, W.hijau, { anchor: "end" })),
-      tambah("rupiah.", ...kartu("m10", 70, 156, 160, 34, W.hijauMuda, ["uang Yohana: Rp60.000"], 10)),
+      tambah("rupiah.", ...kartu("m10", 70, 156, 160, 34, W.hijauMuda, ["uang Halim: Rp60.000"], 10)),
     ),
   ],
 };
@@ -73,18 +57,10 @@ export const ADEGAN_ANGPAU_2: AdeganStory = {
   judul: "Membagi enam puluh empat ribu rupiah",
   sumber: "Materi: membagi uang angpau",
   latar: "#F5F3FF",
-  kutipan: [
-    "Permasalahan 2",
-    "Orang tua Yohana mempunyai uang Rp64.000,00 dan meminta Yohana membagikannya kepada 4 anak yang tinggal di samping rumahnya.",
-    "Berapakah uang yang diterima setiap anak?",
-    "Tuliskan kalimat matematika dari permasalahan di atas.",
-    "Ayo berhitunglah dengan cara yang pernah kamu pelajari sebelumnya.",
-    "Ayo Berpikir Kritis",
-    "Coba diskusikan dengan kelompokmu hal berikut ini.",
-  ],
+  kutipan: kutipanLokal("k5b1d-materi-2.ts:2"),
   ketukan: [
     k(
-      "Sekarang masalah kedua: orang tua Yohana punya uang enam puluh empat ribu rupiah dan meminta Yohana membagikannya kepada empat anak tetangga. Berapa uang yang diterima setiap anak?",
+      "Sekarang masalah kedua: orang tua Halim punya uang enam puluh empat ribu rupiah dan meminta Halim membagikannya kepada empat anak tetangga. Berapa uang yang diterima setiap anak?",
       tambah(0, judul("Masalah kedua")),
       tambah("enam", ...kartu("b1", 90, 28, 120, 30, W.krem, ["Rp64.000"], 12)),
       tambah("empat@2", emo("c1", 60, 120, "🧒", 30), emo("c2", 120, 120, "🧒", 30), emo("c3", 180, 120, "🧒", 30), emo("c4", 240, 120, "🧒", 30)),
@@ -140,19 +116,7 @@ export const ADEGAN_BUAH: AdeganStory = {
   judul: "Latihan 1: harga buah di toko Zafran",
   sumber: "Materi: harga buah di toko Zafran",
   latar: "#FFF7ED",
-  kutipan: [
-    "Toko Zafran menjual beberapa jenis buah, di antaranya mangga, alpukat, jeruk, buah naga, dan kelengkeng.",
-    "Harga satu bungkus mangga Rp23.500,00",
-    "harga satu bungkus jeruk Rp17.000,00",
-    "harga satu bungkus kelengkeng Rp34.000,00",
-    "harga satu bungkus buah naga Rp15.000,00",
-    "dan harga satu bungkus alpukat Rp32.000,00",
-    "Harga buah paling mahal yaitu alpukat.",
-    "Harga buah yang paling murah yaitu buah naga.",
-    "Harga dua bungkus buah naga lebih mahal daripada satu bungkus alpukat.",
-    "Harga tiga bungkus jeruk sama dengan harga satu bungkus kelengkeng.",
-    "Pilihlah pernyataan yang sesuai dengan isi teks di atas dengan memberikan tanda centang",
-  ],
+  kutipan: kutipanLokal("k5b1d-materi-2.ts:3"),
   ketukan: [
     k(
       "Latihan satu dan dua memakai satu cerita. Toko Zafran menjual mangga, alpukat, jeruk, buah naga, dan kelengkeng. Harga satu bungkus mangga dua puluh tiga ribu lima ratus, jeruk tujuh belas ribu.",
@@ -200,11 +164,11 @@ const yChip = (i: number) => 24 + i * 29;
 const chipB = (i: number) => [kotak(`cb${i}`, 234, yChip(i), 58, 20, W.langit, W.biru, { rx: 6 }), teks(`cbt${i}`, 263, yChip(i) + 13.4, KOLOM_B[i], 8.2, W.biru)];
 const yBaris = (i: number) => 34 + i * 29;
 const PASANGAN: { label: string; hitung: string; ke: number; ukuran?: number }[] = [
-  { label: "Yohana: 2 mangga + 1 jeruk", hitung: "2 × 23.500 + 17.000 = 64.000", ke: 3 },
-  { label: "Nisa: Rp100.000, beli 2 mangga + 2 naga", hitung: "100.000 − (47.000 + 30.000) = 23.000", ke: 4 },
-  { label: "Yohana: termurah + termahal", hitung: "15.000 + 34.000 = 49.000", ke: 0 },
-  { label: "Komang: satu bungkus tiap buah", hitung: "23.500 + 17.000 + 34.000 + 15.000 + 32.000 = 121.500", ke: 1, ukuran: 6.9 },
-  { label: "Lukas 2 naga, Nisa 1 kelengkeng", hitung: "34.000 − 30.000 = 4.000", ke: 5 },
+  { label: "Halim: 2 mangga + 1 jeruk", hitung: "2 × 23.500 + 17.000 = 64.000", ke: 3 },
+  { label: "Kira: Rp100.000, beli 2 mangga + 2 naga", hitung: "100.000 − (47.000 + 30.000) = 23.000", ke: 4 },
+  { label: "Halim: termurah + termahal", hitung: "15.000 + 34.000 = 49.000", ke: 0 },
+  { label: "Upe: satu bungkus tiap buah", hitung: "23.500 + 17.000 + 34.000 + 15.000 + 32.000 = 121.500", ke: 1, ukuran: 6.9 },
+  { label: "Igil 2 naga, Kira 1 kelengkeng", hitung: "34.000 − 30.000 = 4.000", ke: 5 },
   { label: "Ibu: 100.000 untuk 2 anak; tiap anak 1 jeruk + 2 naga", hitung: "17.000 + 30.000 = 47.000", ke: 2 },
 ];
 const pasang = (i: number) => {
@@ -218,22 +182,7 @@ export const ADEGAN_PASANGAN: AdeganStory = {
   judul: "Latihan 2: memasangkan Kolom A dengan Kolom B",
   sumber: "Materi: memasangkan hitungan dan hasil",
   latar: "#F0FDFA",
-  kutipan: [
-    "Pasangkan pernyataan di Kolom A dan pernyataan di Kolom B secara tepat, dengan cara memberi garis.",
-    "Yohana membeli dua bungkus mangga dan satu bungkus jeruk.",
-    "Nisa mempunyai uang Rp100.000,00 dan ia membeli dua bungkus mangga dan dua bungkus buah naga.",
-    "Yohana hendak membeli buah dengan harga termurah dan harga termahal.",
-    "Komang membeli buah mangga, alpukat, kelengkeng, jeruk, dan buah naga masing-masing satu bungkus.",
-    "Lukas membeli dua bungkus buah naga dan Nisa membeli satu bungkus kelengkeng.",
-    "Berapakah selisih uang yang harus dibayarkan?",
-    "Ibu mempunyai uang Rp100.000,00 dan dibagikan sama rata pada kedua anaknya.",
-    "Rp49.000,00",
-    "Rp121.500,00",
-    "Rp47.000,00",
-    "Rp64.000,00",
-    "Rp23.000,00",
-    "Rp4.000,00",
-  ],
+  kutipan: kutipanLokal("k5b1d-materi-2.ts:4"),
   ketukan: [
     k(
       "Latihan dua memasangkan Kolom A dengan Kolom B. Kolom B berisi enam harga: empat puluh sembilan ribu, seratus dua puluh satu ribu lima ratus, empat puluh tujuh ribu, enam puluh empat ribu, dua puluh tiga ribu, empat ribu.",
@@ -246,22 +195,22 @@ export const ADEGAN_PASANGAN: AdeganStory = {
       tambah(37, ...chipB(5)),
     ),
     k(
-      "Yohana membeli dua mangga dan satu jeruk: empat puluh tujuh ribu ditambah tujuh belas ribu sama dengan enam puluh empat ribu. Nisa punya seratus ribu, membeli dua mangga dan dua buah naga, sisanya dua puluh tiga ribu.",
-      tambah("Yohana", ...pasang(0)),
+      "Halim membeli dua mangga dan satu jeruk: empat puluh tujuh ribu ditambah tujuh belas ribu sama dengan enam puluh empat ribu. Kira punya seratus ribu, membeli dua mangga dan dua buah naga, sisanya dua puluh tiga ribu.",
+      tambah("Halim", ...pasang(0)),
       tambah("sama", garisPasang(0)),
-      tambah("Nisa", ...pasang(1)),
+      tambah("Kira", ...pasang(1)),
       tambah("sisanya", garisPasang(1)),
     ),
     k(
-      "Yohana membeli termurah dan termahal: lima belas ribu ditambah tiga puluh empat ribu, empat puluh sembilan ribu. Komang membeli satu bungkus tiap buah, jumlahnya seratus dua puluh satu ribu lima ratus.",
-      tambah("Yohana", ...pasang(2)),
+      "Halim membeli termurah dan termahal: lima belas ribu ditambah tiga puluh empat ribu, empat puluh sembilan ribu. Upe membeli satu bungkus tiap buah, jumlahnya seratus dua puluh satu ribu lima ratus.",
+      tambah("Halim", ...pasang(2)),
       tambah("sembilan", garisPasang(2)),
-      tambah("Komang", ...pasang(3)),
+      tambah("Upe", ...pasang(3)),
       tambah("jumlahnya", garisPasang(3)),
     ),
     k(
-      "Lukas membeli dua buah naga dan Nisa satu kelengkeng, selisihnya empat ribu. Ibu membagi seratus ribu untuk dua anak; tiap anak membayar satu jeruk dan dua buah naga, empat puluh tujuh ribu. Semua pasangan sudah cocok.",
-      tambah("Lukas", ...pasang(4)),
+      "Igil membeli dua buah naga dan Kira satu kelengkeng, selisihnya empat ribu. Ibu membagi seratus ribu untuk dua anak; tiap anak membayar satu jeruk dan dua buah naga, empat puluh tujuh ribu. Semua pasangan sudah cocok.",
+      tambah("Igil", ...pasang(4)),
       tambah("selisihnya", garisPasang(4)),
       tambah("Ibu", ...pasang(5)),
       tambah("tiap", garisPasang(5)),

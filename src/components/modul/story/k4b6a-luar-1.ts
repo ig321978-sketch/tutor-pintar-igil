@@ -11,7 +11,7 @@ const IKON_METODE = ["🔑", "📝", "🔎", "🧮"];
 const SUARA_O1 = "Bagaimana cara menyajikan dan membaca data dengan gambar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari pelajaran tadi.";
 const SUARA_O2 = "Empat metode itu: Pictograph Key, Categorical Tally, Read then Compare, dan Scale Multiply.";
 const SUARA_O3 = "Semuanya menjawab pertanyaan yang sama, tetapi caranya berbeda: membaca keterangan, menghitung dengan turus, membaca lalu membandingkan, dan mengalikan dengan skala.";
-const SUARA_O4 = "Angkanya dari pelajaran tadi: warna kesukaan siswa, mainan Karel, bacaan yang dipinjam di perpustakaan, dan jumlah siswa tiap kelas.";
+const SUARA_O4 = "Angkanya dari pelajaran tadi: warna kesukaan siswa, mainan Kira, bacaan yang dipinjam di perpustakaan, dan jumlah siswa tiap kelas.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
@@ -46,7 +46,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       bersih(0),
       tambah(0, judul("Angka dari pelajaran tadi")),
       tambah("warna", ...kartu("a1", 14, 34, 272, 30, W.hijauMuda, ["warna kesukaan: 4, 2, 1, 5 siswa"], 9)),
-      tambah("Karel,", ...kartu("a2", 14, 72, 272, 30, W.langit, ["mainan Karel: 6, 4, 3, 1, 9"], 9)),
+      tambah("Kira,", ...kartu("a2", 14, 72, 272, 30, W.langit, ["mainan Kira: 6, 4, 3, 1, 9"], 9)),
       tambah("perpustakaan,", ...kartu("a3", 14, 110, 272, 30, W.krem, ["bacaan dipinjam: 12, 6, 9, 3, 12, 14"], 9)),
       tambah("kelas.", ...kartu("a4", 14, 148, 272, 30, W.pink, ["gambar siswa tiap kelas: 6, 6, 7, 8, 5, 7"], 8.6)),
     ),
@@ -200,8 +200,8 @@ export const ADEGAN_LUAR_TURUS: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 5. Categorical Tally: penerapan pada mainan Karel (Buku Siswa hlm. 181) ------------------------------ */
-const SUARA_TT1 = "Terapkan pada mainan Karel. Daftar yang ia sebut: enam mobil, empat robot, tiga pesawat, satu puzzle, dan sembilan kelereng. Kita turuskan satu per satu.";
+/* ------------------------------ 5. Categorical Tally: penerapan pada mainan Kira (Buku Siswa hlm. 181) ------------------------------ */
+const SUARA_TT1 = "Terapkan pada mainan Kira. Daftar yang ia sebut: enam mobil, empat robot, tiga pesawat, satu puzzle, dan sembilan kelereng. Kita turuskan satu per satu.";
 const SUARA_TT2 = "Mobil: satu kelompok lima dan satu garis, jadi enam. Kelereng: satu kelompok lima dan empat garis, jadi sembilan.";
 const SUARA_TT3 = "Jumlah turus seluruhnya: enam, empat, tiga, satu, dan sembilan. Hasilnya dua puluh tiga, sama dengan hitungan tadi.";
 const SUARA_TT4 = "Dari turus ini, piktogram tinggal menggambar satu gambar untuk setiap garis. Kelereng sembilan turus menjadi sembilan gambar.";
@@ -211,13 +211,13 @@ const turusKarel = (i: number) => turus(`tk${i}`, 84, yBaris(i), KAREL[i]);
 
 export const ADEGAN_LUAR_TURUS_TERAPAN: AdeganStory = {
   id: "luar-turus-terapan",
-  judul: "Categorical Tally pada mainan Karel",
+  judul: "Categorical Tally pada mainan Kira",
   sumber: "Metode luar: Categorical Tally",
   latar: "#EFF6FF",
   ketukan: [
     k(
       SUARA_TT1,
-      tambah(0, judul("Turus mainan Karel")),
+      tambah(0, judul("Turus mainan Kira")),
       ...NAMA_KAREL.map((n, i) => tambah(idx(SUARA_TT1, ["mobil", "robot", "pesawat", "puzzle", "kelereng"][i]), teks(`tn${i}`, 14, yBaris(i) + 11, n, 8.6, W.biru, { anchor: "start" }), ...turusKarel(i))),
     ),
     k(

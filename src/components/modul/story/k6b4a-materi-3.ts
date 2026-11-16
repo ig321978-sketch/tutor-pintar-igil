@@ -13,24 +13,24 @@ const penanda = (id: string, tick: number, warna: string, label: string) => [kot
 
 export const ADEGAN_RAK: AdeganStory = {
   id: "rak-lemari",
-  judul: "Rak komik Dhien dan teka-teki lemari Ayah",
+  judul: "Rak komik Kira dan teka-teki lemari Ayah",
   sumber: "Materi: rak komik dan teka-teki lemari",
   latar: "#FDECD2",
   ketukan: [
     k(
-      "Untuk memilih bacaan, Dhien melihat isi rak komiknya. Ada tiga komik putih, enam komik merah, dan satu komik kuning.",
+      "Untuk memilih bacaan, Kira melihat isi rak komiknya. Ada tiga komik putih, enam komik merah, dan satu komik kuning.",
       tambah("rak", RAK.objs[0]),
       tambah("putih", RAK.ids[0].map((id) => RAK.objs.find((o) => o.id === id)!), balon("g0", 41, 22, ["3", "Komik putih"], 44)),
       tambah("merah", RAK.ids[1].map((id) => RAK.objs.find((o) => o.id === id)!), balon("g1", 100, 22, ["6", "Komik merah"], 44)),
       tambah("kuning", RAK.ids[2].map((id) => RAK.objs.find((o) => o.id === id)!), balon("g2", 146, 22, ["1", "Komik kuning"], 44)),
     ),
-    k("Dhien menaruh semua komiknya di lantai dan mengambil satu komik secara acak.", tambah("lantai", kotak("lantai", 0, 96, 300, 6, "#E7C9A5", "none", { z: -1, rx: 0 })), tambah("mengambil", emo("tangan", 100, 120, "👆", 24)), tambah("acak", teks("acak", 150, 118, "acak: tanpa memilih", 8.5, W.ungu)), sorotkan("acak", "rk-buku5")),
+    k("Kira menaruh semua komiknya di lantai dan mengambil satu komik secara acak.", tambah("lantai", kotak("lantai", 0, 96, 300, 6, "#E7C9A5", "none", { z: -1, rx: 0 })), tambah("mengambil", emo("tangan", 100, 120, "👆", 24)), tambah("acak", teks("acak", 150, 118, "acak: tanpa memilih", 8.5, W.ungu)), sorotkan("acak", "rk-buku5")),
     k("Berapa semua komiknya? Tiga ditambah enam ditambah satu, hasilnya sepuluh komik.", hapus(0, "tangan", "acak"), tambah(3, teks("hit", 220, 66, "3", 14, W.merah)), ubah(5, { id: "hit", isi: "3 + 6" }), ubah(7, { id: "hit", isi: "3 + 6 + 1" }), tambah(9, teks("hasil", 220, 84, "= 10 komik", 11, W.merah))),
     k("Komik merah paling banyak, enam komik dari sepuluh. Jadi mengambil komik merah sangat mungkin.", tambah(0, SK7.semua), sorotkan("merah", ...RAK.ids[1]), tambah("sangat", penanda("pm", 3, "#EF4444", "6")), sorotkan("sangat", "s7-b3-k")),
     k("Komik putih ada tiga, lebih sedikit dari merah, jadi mengambil komik putih mungkin. Komik kuning hanya satu, jadi kurang mungkin.", redamkan(0, ...RAK.ids[1], "s7-b3-k"), sorotkan("putih", ...RAK.ids[0]), tambah("mungkin,", penanda("pp", 2, W.putih, "3")), tambah("kuning", penanda("pk", 1, "#FDBA74", "1")), sorotkan("kuning", ...RAK.ids[2]), redamkan("kuning", ...RAK.ids[0])),
     k("Komik hitam tidak ada di rak, jumlahnya nol. Mengambil komik hitam tidak mungkin.", redamkan(0, ...RAK.ids[2]), tambah("hitam", penanda("ph", 0, W.hitam, "0")), sorotkan("tidak", "s7-b0-k")),
     k("Jadi, makin banyak jumlah sebuah warna daripada warna lain, makin ke kanan letaknya di skala.", tambah("makin@1", panah("arah", 36, 188, 228, 0, W.merah, 3, { gambar: true })), tambah("kanan", teks("ak", 150, 200, "makin banyak, makin ke kanan", 8.5, W.merah))),
-    k("Sekarang Tantangan: bisakah kita menebak warna dan jumlah pakaian di lemari Ayah Dhien? Ada tiga petunjuk.", bersih(0), tambah(0, emo("lemari", 150, 70, "👕", 50), teks("jud", 150, 130, "Lemari pakaian Ayah Dhien", 11)), tambah("menebak", emo("q", 190, 56, "❓", 24)), tambah("tiga", teks("p1", 70, 168, "petunjuk 1", 9, W.ungu), teks("p2", 150, 168, "petunjuk 2", 9, W.ungu), teks("p3", 230, 168, "petunjuk 3", 9, W.ungu))),
+    k("Sekarang Tantangan: bisakah kita menebak warna dan jumlah pakaian di lemari Ayah Kira? Ada tiga petunjuk.", bersih(0), tambah(0, emo("lemari", 150, 70, "👕", 50), teks("jud", 150, 130, "Lemari pakaian Ayah Kira", 11)), tambah("menebak", emo("q", 190, 56, "❓", 24)), tambah("tiga", teks("p1", 70, 168, "petunjuk 1", 9, W.ungu), teks("p2", 150, 168, "petunjuk 2", 9, W.ungu), teks("p3", 230, 168, "petunjuk 3", 9, W.ungu))),
     k(
       "Petunjuk pertama: skala peluang saat Ayah mengambil pakaian secara acak. Petunjuk kedua: Ayah punya enam belas pakaian. Petunjuk ketiga: setidaknya ada satu pakaian berwarna hitam.",
       bersih(0),

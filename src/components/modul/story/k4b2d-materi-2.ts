@@ -1,6 +1,7 @@
 import type { Aksi, AdeganStory } from "./logika-story";
 import { LATIHAN_DUA, LATIHAN_SATU, LATIHAN_TIGA, W, barisTabel, batang, emo, judul, kartu, kisi, latihanSatu, pecahan, teks } from "./k4b2d-gambar";
 import { bersih, k, sorotkan, tambah } from "./k4b2d-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Hati-hati dengan nol (catatan video, bukan dari buku; Buku Siswa hlm. 72-73) ------------------------------ */
 const SUARA_H1 = "Satu hal perlu hati-hati: nol koma nol tujuh dan nol koma tujuh bukan bilangan yang sama. Nol koma nol tujuh adalah tujuh per seratus, sedangkan nol koma tujuh adalah tujuh per sepuluh.";
@@ -12,14 +13,7 @@ export const ADEGAN_HATI_HATI: AdeganStory = {
   judul: "Hati-hati dengan nol sesudah koma",
   sumber: "Materi: nol sesudah koma",
   latar: "#FEF2F2",
-  kutipan: [
-    "Karena terdapat 1 angka di belakang koma, maka nilai penyebut 10",
-    "Karena terdapat 2 angka di belakang koma, maka nilai penyebut 100",
-    "bisa dituliskan dalam bentuk desimal menjadi 0,07.",
-    "itu bisa dituliskan dalam bentuk desimal 0,01. Apakah",
-    "dapat kita tuliskan",
-    "menjadi 0,3 Ibu?",
-  ],
+  kutipan: kutipanLokal("k4b2d-materi-2.ts:1"),
   ketukan: [
     k(
       SUARA_H1,
@@ -77,14 +71,7 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
   judul: "Latihan 1: bagian dalam kotak menjadi pecahan dan desimal",
   sumber: "Materi: latihan bagian dalam kotak",
   latar: "#FFFBEB",
-  kutipan: [
-    "Ayo Berlatih",
-    "1. Nyatakan bagian yang berada dalam kotak sebagai pecahan biasa,",
-    "kemudian ubahlah menjadi pecahan desimal.",
-    "4 10 = 0,4 5 10 = 0,5 3 10 = 0,3",
-    "0,4",
-    "Ayo Berlatih 1. Nyatakan bagian yang berada dalam kotak sebagai pecahan biasa,",
-  ],
+  kutipan: kutipanLokal("k4b2d-materi-2.ts:2"),
   ketukan: [
     k(
       SUARA_L1,
@@ -133,13 +120,7 @@ export const ADEGAN_BERLATIH_DUA: AdeganStory = {
   judul: "Latihan 2: persepuluhan menjadi desimal",
   sumber: "Materi: latihan persepuluhan",
   latar: "#F0F9FF",
-  kutipan: [
-    "2. Ubahlah pecahan biasa berikut menjadi pecahan desimal persepuluhan!",
-    "2. Ubahkan pecahan biasa berikut menjadi pecahan desimal persepuluhan",
-    "a. 1 10 = 0,1 b. 5 10 = 0,5 c.",
-    "9 10 = 0,9",
-    "Ayo Berlatih",
-  ],
+  kutipan: kutipanLokal("k4b2d-materi-2.ts:3"),
   ketukan: [
     k(
       SUARA_M1,
@@ -193,14 +174,7 @@ export const ADEGAN_BERLATIH_TIGA: AdeganStory = {
   judul: "Latihan 3: perseratusan menjadi desimal",
   sumber: "Materi: latihan perseratusan",
   latar: "#FDF4FF",
-  kutipan: [
-    "3. Ubahlah pecahan biasa berikut menjadi pecahan desimal perseratusan!",
-    "3. Ubahlah pecahan biasa berikut menjadi pecahan desimal perseratusan!",
-    "9 10 = 0,9 15 100 = 0,15 62 100 = 0,62 81 100 = 0,81",
-    "15 100 = 0,15",
-    "62 100 = 0,62",
-    "81 100 = 0,81",
-  ],
+  kutipan: kutipanLokal("k4b2d-materi-2.ts:4"),
   ketukan: [
     k(
       SUARA_N1,

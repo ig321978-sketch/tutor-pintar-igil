@@ -3,6 +3,7 @@
 // pemisahan materi dan metode luar, kutipan buku dan Buku Panduan Guru (bila PDF ada), geometri gambar dihitung mandiri
 // (sisi sejajar, sudut, diagonal, sumbu simetri, golongan bangun, kunci Uji Kompetensi), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b7b.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -179,7 +180,7 @@ const akhirKe = (a) => a.ketukan.length - 1;
   cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
-  for (const kata of ["membandingkan", "berpikir kritis", "Hati-hati", "Renungan", "Uji", "Tantangan", "sedotan", "Nisa", "Komang", "Asep", "Yohana", "Lukas", "diraba", "trapesium sama kaki", "belah ketupat adalah"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
+  for (const kata of ["membandingkan", "berpikir kritis", "Hati-hati", "Renungan", "Uji", "Tantangan", "sedotan", "Malosi", "Igil", "Kira", "Halim", "Wei", "diraba", "trapesium sama kaki", "belah ketupat adalah"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luarb-trapesium", "luarb-trapesium-terapan", "luarb-hierarki", "luarb-hierarki-terapan", "luarb-matriks", "luarb-matriks-terapan", "luarb-diagonal", "luarb-diagonal-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   sama(M_VIDEO.adegan.map((a) => a.id), ["sapaan", "trapesium", "trapesium-def", "jajar-periksa", "jajar-simpul", "persegi-panjang", "sedotan", "belah-ketupat", "persegi", "layang", "refleksi", "uji"], "urutan adegan video materi");
@@ -484,7 +485,7 @@ const SF = Object.fromEntries(Object.keys(G.BENTUK).map((b) => [b, sifat(b)]));
       n += 1;
       cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
-    cek(n >= 80, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 80, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -505,7 +506,7 @@ const SF = Object.fromEntries(Object.keys(G.BENTUK).map((b) => [b, sifat(b)]));
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     cek(!/Math\.random/.test(s), `${f}: tanpa Math.random`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b7b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b7b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b7b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b7b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

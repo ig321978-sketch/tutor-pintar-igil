@@ -4,6 +4,7 @@
 // uraian susun panjang, balok satuan dan batang puluhan, garis bilangan berskala, jumlah sebagian, serta hitungan mandiri semua kunci Panduan Guru (termasuk kunci nomor 1b yang keliru),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b1e.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -368,7 +369,7 @@ const kataPos = (kt, kata) => L.posisiKata(kt.suara, kata);
   sama([2, 1, 0].map((c) => `${G.kolomJumlah([189, 245], c).suku.join(" + ")} = ${G.kolomJumlah([189, 245], c).jumlah}`), ["9 + 5 = 14", "1 + 8 + 4 = 13", "1 + 1 + 2 = 4"], "langkah buku hlm. 31: 9 + 5 = 14, 1 + 8 + 4 = 13, 1 + 1 + 2 = 4");
 
   // Tabel susun pada gambar.
-  susunOk(T(M, "toni-pendek"), "tp", [131, 321], "Pak Toni susun pendek");
+  susunOk(T(M, "toni-pendek"), "tp", [131, 321], "Pak Igil susun pendek");
   sama([2, 1, 0].map((c) => nilaiId(T(M, "toni-pendek"), `tp-e${c}`)), ["1 + 1 = 2", "3 + 2 = 5", "1 + 3 = 4"], "buku hlm. 29: 1 + 1 = 2, 3 + 2 = 5, 1 + 3 = 4 (dari kanan)");
   susunOk(T(M, "buku-tiga"), "t3", [124, 411, 363], "tiga perpustakaan susun pendek");
   susunOk(T(M, "simpan-pendek", 3), "sp", [189, 245], "keranjang jeruk susun pendek");
@@ -408,9 +409,9 @@ const kataPos = (kt, kata) => L.posisiKata(kt.suara, kata);
   // Uraian susun panjang dan rantai persamaan.
   {
     const o1 = T(M, "toni-panjang");
-    uraiOk(o1, "b1", "u1", "Toni 131");
-    uraiOk(o1, "b2", "u2", "Toni 321");
-    rantaiOk(o1, ["u3", "u4", "u5"], 452, "Toni susun panjang");
+    uraiOk(o1, "b1", "u1", "Igil 131");
+    uraiOk(o1, "b2", "u2", "Igil 321");
+    rantaiOk(o1, ["u3", "u4", "u5"], 452, "Igil susun panjang");
     const o2 = T(M, "buku-tiga", 4);
     uraiOk(o2, "v1", "w1", "124");
     uraiOk(o2, "v2", "w2", "411");
@@ -608,8 +609,8 @@ const kataPos = (kt, kata) => L.posisiKata(kt.suara, kata);
       }
     }
     stat.kutipan = n;
-    cek(n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
     // Bagian Buku Siswa dan Panduan Guru yang dipakai tiap adegan ada pada rentangnya.
     const siswaE = bersih(bagian[0].slice(0)).slice(awalBs, akhirBs);
     cek(siswaE.includes("5. kerjakan soal cerita berikut!") && siswaE.includes("ayo berlatih") && siswaE.includes("ayo mengamati"), "Buku Siswa E memuat Ayo Mengamati, Ayo Berlatih, dan soal cerita nomor 5");
@@ -642,7 +643,7 @@ const kataPos = (kt, kata) => L.posisiKata(kt.suara, kata);
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b1e-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1e sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b1e-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1e sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

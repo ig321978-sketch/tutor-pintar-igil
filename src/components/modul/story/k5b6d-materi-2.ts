@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { RUBRIK_PROYEK, W, baris, busurDerajat, busurSudut, bulat, emo, garis, jalur, kartu, panah, sinar, sudut, teks, titikSudut, ujung } from "./k5b6d-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b6d-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const jud = (isi: string, y = 20, u = 12): Obj => teks("jud", 150, y, isi, u, W.ungu);
 const ids = (a: Obj[]): string[] => a.map((o) => o.id);
@@ -35,7 +36,7 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   judul: "Latihan 1: gambar a, b, dan c",
   sumber: "Materi: Latihan satu, gambar a sampai c",
   latar: "#F0FDF4",
-  kutipan: ["Ayo Berlatih", "Salin gambar titik sudut dan kaki sudut berikut di buku kalian", "kemudian gambarlah sudut sesuai dengan ukuran yang diminta", "Peserta didik mungkin akan ada yang beranggapan bahwa saat melukis", "salah satu kaki sudutnya harus selalu mendatar", "Bagian ini menyajikan berbagai posisi kaki sudut yang tidak selalu mendatar"],
+  kutipan: kutipanLokal("k5b6d-materi-2.ts:1"),
   ketukan: [
     k(
       "Latihan satu: salin titik sudut dan kaki sudut ke kertasmu, lalu gambarlah sudut sesuai ukuran yang diminta. Ada lima gambar, a sampai e.",
@@ -90,7 +91,7 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
   judul: "Latihan 1d, 1e, dan 2: kaki sudut tidak selalu mendatar",
   sumber: "Materi: Latihan satu d, e, dan Latihan dua",
   latar: "#ECFEFF",
-  kutipan: ["Gambarlah sudut dengan ukuran berikut", "Bentuk dan arah sudut bebas, asalkan ukurannya sesuai", "Pastikan peserta didik membuat sudut dengan berbagai variasi kaki sudut", "Sebaiknya kaki sudut tidak selalu mendatar", "Guru berlaku sebagai fasilitator", "berkeliling untuk melihat langsung perkembangan"],
+  kutipan: kutipanLokal("k5b6d-materi-2.ts:2"),
   ketukan: [
     k(
       "Gambar d: sudut lima puluh dua derajat dari kaki yang miring ke kiri bawah. Hasilnya sudut lancip, dan kaki kedua tepat mendatar.",
@@ -141,7 +142,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Hati-hati: kesalahan saat melukis sudut",
   sumber: "Materi: hati-hati saat melukis sudut",
   latar: "#FFF1F2",
-  kutipan: ["Beberapa kesalahan yang mungkin dilakukan peserta didik saat melukis sudut", "Peserta didik salah arah membaca skala pada busur", "menggambar sudut 120", "Sudut yang terbentuk bukan 120", "Apakah kalian yakin sudut kalian berukuran 120", "Sudut 120o termasuk sudut tumpul atau lancip", "selalu menunjukkan skala 0", "meyakini bahwa salah satu kaki sudut harus selalu mendatar", "Bagi peserta didik dengan kecepatan belajar tinggi"],
+  kutipan: kutipanLokal("k5b6d-materi-2.ts:3"),
   ketukan: [
     k(
       "Hati-hati, ada dua kesalahan yang sering terjadi saat melukis sudut. Pertama, salah membaca arah skala pada busur derajat.",
@@ -218,7 +219,7 @@ export const ADEGAN_PROYEK: AdeganStory = {
   judul: "Proyek Kelompok: menjadi ahli tata kota",
   sumber: "Materi: proyek menjadi ahli tata kota",
   latar: "#F5F3FF",
-  kutipan: ["Proyek Kelompok: Menjadi Ahli Tata Kota", "Kegiatan ini dilakukan secara berkelompok", "Kertas gambar", "Penggaris", "Busur derajat", "Pensil warna/spidol/krayon", "Memuat fasilitas umum yang penting", "Menggunakan semua jenis sudut yang pernah dipelajari", "Mencantumkan ukuran sudut pada rancangan kalian", "Membuat desain sekreatif mungkin", "DENAH KOTA PERMAI INDAH", "Ketepatan ukuran sudut yang digunakan", "Kelengkapan fasilitas umum yang dicantumkan", "Kerja sama dalam kelompok", "Kreativitas desain tata kota", "Rubrik penilaian proyek kelompok adalah sebagai berikut"],
+  kutipan: kutipanLokal("k5b6d-materi-2.ts:4"),
   ketukan: [
     k(
       "Proyek kelompok: menjadi ahli tata kota. Kelompok beranggotakan tiga sampai empat anak, dan proyek boleh dikerjakan pada jam pelajaran atau di luar jam pelajaran.",

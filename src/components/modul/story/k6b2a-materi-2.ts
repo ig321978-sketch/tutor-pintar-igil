@@ -108,7 +108,7 @@ export const ADEGAN_EKSPLORASI22: AdeganStory = {
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Pak Wayan mengajak siswa menanam pohon di kebun sekolah. Di sisi kiri kebun ditanam pohon pucuk merah, dan di sisi kanan ditanam pohon cemara.",
+      "Pak Malosi mengajak siswa menanam pohon di kebun sekolah. Di sisi kiri kebun ditanam pohon pucuk merah, dan di sisi kanan ditanam pohon cemara.",
       tambah(0, teks("jud", 150, 24, "Kebun sekolah", 12, W.ungu), kotak("tanah", 0, 152, 300, 22, "#A16207", "#78350F", { rx: 0 })),
       tambah("kiri", pm(3), teks("lk", 68, 190, "kiri: pucuk merah", 8.6, W.merah)),
       tambah("kanan", cm(0), teks("lr", 225, 190, "kanan: cemara", 8.6, W.hijau)),

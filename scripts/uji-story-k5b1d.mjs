@@ -4,6 +4,7 @@
 // hitungan mandiri (penjumlahan, pengurangan, perkalian, pembagian, hitung bersusun beserta simpanan dan pinjaman, nilai tempat, kunci Ayo Berlatih dan Uji Kompetensi,
 // komposisi uang, soal pengayaan), geometri gambar, emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b1d.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -231,7 +232,7 @@ const teksAdegan = (v, id) => new Set(adegan(v, id).ketukan.flatMap((kt, i) => L
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,eks-14-cerita,eks-14-cara,berlatih-lukas,angpau-1,angpau-2,berlatih-buah,berlatih-pasangan,uk-1,uk-2", "urutan adegan materi");
   cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Cara Yohana", "Cara Lukas", "Berdiskusi", "Latihan 1", "Latihan 2", "angpau", "Berpikir kreatif", "Berpikir kritis", "Uji 1", "Uji 5", "Zafran", "Nisa"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat ${kata}`);
+  for (const kata of ["Cara Halim", "Cara Igil", "Berdiskusi", "Latihan 1", "Latihan 2", "angpau", "Berpikir kreatif", "Berpikir kritis", "Uji 1", "Uji 5", "Zafran", "Kira"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-sa", "luar-sa-terapan", "luar-rg", "luar-rg-terapan", "luar-ef", "luar-ef-terapan", "luar-ic", "luar-ic-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
   cek(M_VIDEO.adegan.length === 10 && U.adegan.length === 11, "10 adegan materi diputar dan 11 adegan metode luar");
@@ -365,9 +366,9 @@ const teksAdegan = (v, id) => new Set(adegan(v, id).ketukan.flatMap((kt, i) => L
 /* ------------------------------ Data buku, dihitung ulang mandiri ------------------------------ */
 {
   sama([57500 + 22000, 12 * 5000, 64000 / 4, 4 * 16], [79500, 60000, 16000, 64], "Eksplorasi 1.4 sampai 1.6");
-  sama([50000 + 7000 + 500, 20000 + 2000, 50000 + 20000 + 7000 + 2000 + 500], [57500, 22000, 79500], "uraian nilai tempat Cara Yohana");
+  sama([50000 + 7000 + 500, 20000 + 2000, 50000 + 20000 + 7000 + 2000 + 500], [57500, 22000, 79500], "uraian nilai tempat Cara Halim");
   sama([32500 + 13250, 47900 - (32500 + 13250)], [45750, 2150], "Ayo Berlatih: ayam taliwang dan plencing kangkung");
-  sama([40000 + 7000 + 900, 40000 + 5000 + 700 + 50], [47900, 45750], "uraian susun panjang Lukas");
+  sama([40000 + 7000 + 900, 40000 + 5000 + 700 + 50], [47900, 45750], "uraian susun panjang Igil");
   // Ayo Berlatih nomor 1 dan 2: harga buah
   const H = { mangga: 23500, jeruk: 17000, kelengkeng: 34000, naga: 15000, alpukat: 32000 };
   const nama = Object.keys(H);
@@ -452,8 +453,8 @@ const teksAdegan = (v, id) => new Set(adegan(v, id).ketukan.flatMap((kt, i) => L
     return Number(`0${[1, 2, 3, 4, 5].map(sel).join("")}`);
   };
   sama(bacaTabel(M, "pembuka-d", 2, "nt", 1), 57500, "tabel nilai tempat pembuka: 57.500");
-  sama([bacaTabel(M, "eks-14-cara", 4, "lk", 1), bacaTabel(M, "eks-14-cara", 4, "lk", 2)], [57500, 22000], "tabel nilai tempat Cara Lukas: Ibu dan Ayah");
-  sama(bacaTabel(M, "eks-14-cara", 4, "lj", 0), 79500, "tabel nilai tempat Cara Lukas: jumlah");
+  sama([bacaTabel(M, "eks-14-cara", 4, "lk", 1), bacaTabel(M, "eks-14-cara", 4, "lk", 2)], [57500, 22000], "tabel nilai tempat Cara Igil: Ibu dan Ayah");
+  sama(bacaTabel(M, "eks-14-cara", 4, "lj", 0), 79500, "tabel nilai tempat Cara Igil: jumlah");
   sama([bacaTabel(M, "uk-1", 0, "u1", 1), bacaTabel(M, "uk-1", 0, "u1", 2)], [50303, 33403], "tabel nilai tempat Uji Kompetensi 1");
   sama(urut(G.KEPALA_NILAI_TEMPAT), urut(["Puluh Ribuan", "Ribuan", "Ratusan", "Puluhan", "Satuan"]), "kepala kolom nilai tempat");
   // Perkiraan dan pembulatan di metode luar
@@ -542,7 +543,7 @@ const teksAdegan = (v, id) => new Set(adegan(v, id).ketukan.flatMap((kt, i) => L
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(n >= 120, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 120, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -562,7 +563,7 @@ const teksAdegan = (v, id) => new Set(adegan(v, id).ketukan.flatMap((kt, i) => L
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b1d-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b1d sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b1d-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b1d sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

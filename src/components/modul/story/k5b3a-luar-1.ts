@@ -4,7 +4,7 @@ import { bersih, k, tambah } from "./k5b3a-bantu";
 
 /** Garis bilangan 0 sampai 1 untuk metode garis bilangan dan patokan: titik 0 di x = 40, satu satuan 220 piksel. */
 export const G01 = { x: 40, satuan: 220, y: 100 };
-/** Garis bilangan 2 sampai 3 untuk pita Nisa: titik 2 di x = 30, satu satuan 230 piksel. */
+/** Garis bilangan 2 sampai 3 untuk pita Igil: titik 2 di x = 30, satu satuan 230 piksel. */
 export const G23 = { x: 30, satuan: 230, y: 100, awal: 2 };
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
@@ -15,11 +15,11 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana kita membandingkan dan mengurutkan pecahan? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari lompatan Yohana dan pita Nisa.",
+      "Bagaimana kita membandingkan dan mengurutkan pecahan? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari lompatan Malosi dan pita Igil.",
       tambah(0, judul("Empat metode dari luar")),
       tambah("pecahan?", ...pai("pp", 62, 112, 32, 4, 1)),
       tambah("berbagai", emo("gl", 170, 104, "🌍", 50)),
-      tambah("angka", teks("pa", 150, 176, "lompatan Yohana dan pita Nisa", 9.4, W.biru)),
+      tambah("angka", teks("pa", 150, 176, "lompatan Malosi dan pita Igil", 9.4, W.biru)),
     ),
     k(
       "Empat metode itu: Number Line Fractions, Equivalent Fractions, Mixed to Improper, dan Benchmark Half Comparison.",
@@ -40,11 +40,11 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("ukuran", ...kartu("ig", 50, 136, 200, 34, W.emas, ["pecahan sebanding"], 10)),
     ),
     k(
-      "Angkanya: lompatan Yohana dua dan tiga per empat, tiga dan satu per dua, serta tujuh per delapan meter, juga pita Nisa dua dan dua per lima, dua dan satu per empat, serta dua dan satu per dua meter.",
+      "Angkanya: lompatan Malosi dua dan tiga per empat, tiga dan satu per dua, serta tujuh per delapan meter, juga pita Igil dua dan dua per lima, dua dan satu per empat, serta dua dan satu per dua meter.",
       bersih(0),
       tambah(0, judul("Angka dari dua cerita")),
-      tambah("Yohana", ...kartu("a1", 14, 38, 272, 50, W.hijauMuda, ["lompatan Yohana", "2 3/4 m, 3 1/2 m, 7/8 m"], 9.6)),
-      tambah("Nisa", ...kartu("a2", 14, 104, 272, 50, W.langit, ["pita Nisa", "2 2/5 m, 2 1/4 m, 2 1/2 m"], 9.6)),
+      tambah("Malosi", ...kartu("a1", 14, 38, 272, 50, W.hijauMuda, ["lompatan Malosi", "2 3/4 m, 3 1/2 m, 7/8 m"], 9.6)),
+      tambah("Igil", ...kartu("a2", 14, 104, 272, 50, W.langit, ["pita Igil", "2 2/5 m, 2 1/4 m, 2 1/2 m"], 9.6)),
     ),
   ],
 };
@@ -94,7 +94,7 @@ export const ADEGAN_LUAR_GARIS: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Number Line Fractions: penerapan pada pita Nisa ------------------------------ */
+/* ------------------------------ 3. Number Line Fractions: penerapan pada pita Igil ------------------------------ */
 const garis23 = (id: string) => garisBilangan(id, G23.x, G23.y, G23.satuan, 3, 10, G23.awal);
 const titikPita = (indeks: number, bawah: number, warna: string) => {
   const c = PITA[indeks];
@@ -104,13 +104,13 @@ const titikPita = (indeks: number, bawah: number, warna: string) => {
 
 export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
   id: "luar-garis-terapan",
-  judul: "Number Line Fractions pada pita Nisa",
+  judul: "Number Line Fractions pada pita Igil",
   sumber: "Metode luar: Number Line Fractions",
   latar: "#F5F3FF",
   ketukan: [
     k(
-      "Terapkan pada pita Nisa. Karena bulatnya sama, yaitu dua, kita cukup memperbesar bagian antara dua dan tiga pada garis bilangan.",
-      tambah(0, judul("Pita Nisa pada garis bilangan")),
+      "Terapkan pada pita Igil. Karena bulatnya sama, yaitu dua, kita cukup memperbesar bagian antara dua dan tiga pada garis bilangan.",
+      tambah(0, judul("Pita Igil pada garis bilangan")),
       tambah("Karena", ...garis23("pt")),
       tambah("memperbesar", teks("pz", 150, 150, "perbesar bagian dari 2 sampai 3", 9.4, W.ungu)),
     ),
@@ -124,7 +124,7 @@ export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
       tambah("tepat", ...titikPita(2, 14, W.biru)),
     ),
     k(
-      "Baca dari kiri ke kanan: dua dan satu per empat, dua dan dua per lima, lalu dua dan satu per dua. Itu urutan pita Nisa dari yang terpendek.",
+      "Baca dari kiri ke kanan: dua dan satu per empat, dua dan dua per lima, lalu dua dan satu per dua. Itu urutan pita Igil dari yang terpendek.",
       tambah(9, teks("o1", G23.x + (2.25 - 2) * G23.satuan, G23.y - 22, "1", 12, W.merah)),
       tambah(14, teks("o2", G23.x + (2.4 - 2) * G23.satuan, G23.y - 22, "2", 12, W.hijau)),
       tambah(20, teks("o3", G23.x + (2.5 - 2) * G23.satuan, G23.y - 22, "3", 12, W.biru)),
@@ -175,18 +175,18 @@ export const ADEGAN_LUAR_SENILAI: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 5. Equivalent Fractions: penerapan pada lompatan Yohana ------------------------------ */
+/* ------------------------------ 5. Equivalent Fractions: penerapan pada lompatan Malosi ------------------------------ */
 const bar = (id: string, y: number, pembilang: number, warna: string) => kotak(id, 30, y, pembilang * 6, 20, warna, W.biru, { rx: 4 });
 
 export const ADEGAN_LUAR_SENILAI_TERAPAN: AdeganStory = {
   id: "luar-senilai-terapan",
-  judul: "Equivalent Fractions pada lompatan Yohana",
+  judul: "Equivalent Fractions pada lompatan Malosi",
   sumber: "Metode luar: Equivalent Fractions",
   latar: "#F0F9FF",
   ketukan: [
     k(
-      "Terapkan pada lompatan Yohana, yang sudah berbentuk sebelas per empat, tujuh per dua, dan tujuh per delapan. Penyebutnya berbeda, KPK-nya delapan, jadi semuanya diubah ke per delapan.",
-      tambah(0, judul("Lompatan Yohana")),
+      "Terapkan pada lompatan Malosi, yang sudah berbentuk sebelas per empat, tujuh per dua, dan tujuh per delapan. Penyebutnya berbeda, KPK-nya delapan, jadi semuanya diubah ke per delapan.",
+      tambah(0, judul("Lompatan Malosi")),
       tambah("sebelas", ...kartu("y1", 10, 40, 86, 34, W.hijauMuda, ["11/4"], 14)),
       tambah("tujuh", ...kartu("y2", 107, 40, 86, 34, W.langit, ["7/2"], 14)),
       tambah("tujuh@2", ...kartu("y3", 204, 40, 86, 34, W.krem, ["7/8"], 14)),

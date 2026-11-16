@@ -3,6 +3,7 @@
 // pemisahan materi dan metode luar, kata terlarang (video diputar seperti guru mengajar), kutipan buku (bila PDF ada), hitungan mandiri (gambar kali nilai satu gambar, jumlah, selisih),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b8b.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -195,7 +196,7 @@ const U = V.VIDEO_LUAR_K5B8B;
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,teka-satu,teka-dua,kue-tradisional,apem-tabel,apem-piktogram,apem-salah,apem-hitung,tomat-data,tomat-piktogram,tomat-jawab,kesalahan-refleksi", "urutan adegan materi");
-  for (const kata of ["Anggi", "kue apem", "Pak Chandra", "tomat", "teka-teki", "Latihan 1", "Latihan 5", "Tantangan", "Hati-hati", "Renungan", "keterangan gambar", "198", "59\\.400", "piktogram adalah penyajian data"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
+  for (const kata of ["Igil", "kue apem", "Pak Malosi", "tomat", "teka-teki", "Latihan 1", "Latihan 5", "Tantangan", "Hati-hati", "Renungan", "keterangan gambar", "198", "59\\.400", "piktogram adalah penyajian data"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luarb-legenda", "luarb-legenda-terapan", "luarb-simbol", "luarb-simbol-terapan", "luarb-cari", "luarb-cari-terapan", "luarb-ubah", "luarb-ubah-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[1].id === "luarb-pembuka" && U.adegan[U.adegan.length - 1].id === "luarb-ringkas" && M_VIDEO.adegan.length === 12 && U.adegan.length === 11, "11 adegan materi diputar ditambah sapaan dan 10 adegan metode luar ditambah sapaan");
@@ -222,7 +223,7 @@ const U = V.VIDEO_LUAR_K5B8B;
   sama(APEM.map(([, n]) => potong(n)), [[10, 0], [8, 3], [7, 2], [9, 1], [6, 3], [7, 1]], "gambar utuh dan sisa tiap hari");
   sama(APEM.map(([, n]) => potong(n)[0] * 4 + potong(n)[1]), APEM.map(([, n]) => n), "utuh kali 4 ditambah sisa sama dengan data");
   sama(APEM.reduce((t, [, n]) => t + n, 0), 198, "total penjualan apem 198");
-  sama((1500 - 1200) * 198, 59400, "keuntungan ibu Anggi 59.400");
+  sama((1500 - 1200) * 198, 59400, "keuntungan ibu Igil 59.400");
   sama(9 * 4, 36, "Kamis digambar 9 utuh baru 36");
   cek(9 * 4 !== 37 && 37 - 36 === 1, "Kamis kurang satu kue (seperempat gambar)");
   // panen tomat
@@ -318,7 +319,7 @@ const U = V.VIDEO_LUAR_K5B8B;
       n += 1;
       cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
-    cek(n >= 30, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 30, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -339,7 +340,7 @@ const U = V.VIDEO_LUAR_K5B8B;
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     // larangan berbagi visual: berkas k5b8b hanya mengimpor logika dan berkas k5b8b sendiri
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b8b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b8b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b8b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b8b sendiri (${impor.join(", ")})`);
   }
   // mesin tidak memakai kit visual lama
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");

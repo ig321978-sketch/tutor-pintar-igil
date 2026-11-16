@@ -5,6 +5,7 @@
 // (36 tanpa 6, 54 memuat 4 tanpa 6) dicocokkan dengan teks PDF, persamaan di gambar, sisa bagi, geometri gambar (pita yang dipotong,
 // lingkaran faktor dan kurung pasangan, kisi susunan, tabel potongan, tangga uji bagi), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b2c.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -703,7 +704,7 @@ const nilaiEkspresi = (s) => {
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,eks-23a,tabel-12,eks-23b,pasangan-faktor,berlatih-24-36,berlatih-54-72-96,penutup-c", "urutan adegan materi");
-  for (const kata of ["Nisa", "Latihan", "Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat ${kata}`);
+  for (const kata of ["Igil", "Latihan", "Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-pasangan", "luar-pasangan-terapan", "luar-pelangi", "luar-pelangi-terapan", "luar-susunan", "luar-susunan-terapan", "luar-tangga", "luar-tangga-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
   cek(U.adegan[1].id === "luar-pembuka" && U.adegan[0].id === "sapaan", "video metode luar: sapaan lalu pembuka");
@@ -729,7 +730,7 @@ const nilaiEkspresi = (s) => {
         cek(bukuRaw.includes(rapikan(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
     stat.kutipan = n;
   }
 }
@@ -750,7 +751,7 @@ const nilaiEkspresi = (s) => {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b2c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b2c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b2c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b2c sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

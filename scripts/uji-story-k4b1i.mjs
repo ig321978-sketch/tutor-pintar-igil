@@ -4,6 +4,7 @@
 // deret faktor (sama dengan pembagi habis) dan deret kelipatan (beda tetap), garis bilangan lompatan, jumlah pensil dan kelereng, tabel faktor/beras/keterbagian/nilai tempat/rubrik,
 // kisi saringan 1-40 (hasil saringan mandiri), hitungan mandiri kunci jawaban (Uji Kompetensi, Pengayaan), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b1i.mjs   (PEMICU=1 mencetak kata pemicu tiap aksi untuk ditinjau)
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -439,7 +440,7 @@ const semuaDeretAkhir = []; // { adegan, pre, nilai[] }
   ["sa", "sb", "sc", "sd"].forEach((L2, i) => periksaGaris(`luar-sk-terapan#${i + 1}`, akhirAdegan(skt, i), L2, LU.GARIS_BIL[L2]));
   // beda dan batas tiap soal buku
   const beda = (c) => c.nilai.slice(1).map((v, i) => v - c.nilai[i]);
-  sama(beda(LU.GARIS_BIL.sk), [2, 2, 2, 2, 2, 2, 2], "Karel: lompat dua");
+  sama(beda(LU.GARIS_BIL.sk), [2, 2, 2, 2, 2, 2, 2], "Wei: lompat dua");
   sama(beda(LU.GARIS_BIL.sa), [6, 6, 6, 6, 6, 6, 6], "Latihan 2: lompat enam");
   sama(beda(LU.GARIS_BIL.sb), [5, 5, 5, 5], "Latihan 3: lompat lima");
   sama(beda(LU.GARIS_BIL.sc), [4, 4, 4, 4, 4, 4], "Uji Kompetensi 14: lompat empat");
@@ -483,7 +484,7 @@ const semuaDeretAkhir = []; // { adegan, pre, nilai[] }
     }
   });
   sama([...new Set(dijumpai)].sort((x, y) => x - y), [1, 2, 3, 4, 6], "pensil dibagi kepada 1, 2, 3, 4, 6 anak");
-  // kelereng Karel (2 per hari) dan Slamet (3 per hari), tujuh hari
+  // kelereng Wei (2 per hari) dan Malosi (3 per hari), tujuh hari
   for (const [pre, per, nilaiDeret] of [["kh", 2, "kt"], ["sh", 3, "ks"]]) {
     const a = adegan(M, pre === "kh" ? "kelipatan-karel" : "mencoba-slamet");
     const objs = akhirAdegan(a, 0);
@@ -668,10 +669,10 @@ const semuaDeretAkhir = []; // { adegan, pre, nilai[] }
   // kelipatan
   const kel = (b, bat) => Array.from({ length: 12 }, (_, i) => b * (i + 1)).filter(bat);
   sama([kel(6, (v) => v < 40), kel(5, (v) => v > 17 && v < 35), kel(3, (v) => v < 30), kel(4, (v) => v > 7 && v < 25), kel(3, () => true).slice(0, 6)], [[6, 12, 18, 24, 30, 36], [20, 25, 30], [3, 6, 9, 12, 15, 18, 21, 24, 27], [8, 12, 16, 20, 24], [3, 6, 9, 12, 15, 18]], "kelipatan Ayo Berlatih dan Uji Kompetensi 7 dan 14");
-  // Karel dan Slamet, kartu Andi
-  sama([Array.from({ length: 7 }, (_, i) => 2 * (i + 1)), Array.from({ length: 7 }, (_, i) => 3 * (i + 1))], [[2, 4, 6, 8, 10, 12, 14], [3, 6, 9, 12, 15, 18, 21]], "kelereng Karel dan Slamet");
-  sama([Math.floor(6 / 2) * 4, [1, 3, 5].map((h) => 4 * ((h + 1) / 2))], [12, [4, 8, 12]], "kartu Andi: hari 1, 3, 5 dan hari ke-6 = 12");
-  sama([2 + 2 + 2 + 2, 4 * 2], [8, 8], "hari ke-4 Karel: 2 + 2 + 2 + 2 = 4 × 2 = 8");
+  // Wei dan Malosi, kartu Upe
+  sama([Array.from({ length: 7 }, (_, i) => 2 * (i + 1)), Array.from({ length: 7 }, (_, i) => 3 * (i + 1))], [[2, 4, 6, 8, 10, 12, 14], [3, 6, 9, 12, 15, 18, 21]], "kelereng Wei dan Malosi");
+  sama([Math.floor(6 / 2) * 4, [1, 3, 5].map((h) => 4 * ((h + 1) / 2))], [12, [4, 8, 12]], "kartu Upe: hari 1, 3, 5 dan hari ke-6 = 12");
+  sama([2 + 2 + 2 + 2, 4 * 2], [8, 8], "hari ke-4 Wei: 2 + 2 + 2 + 2 = 4 × 2 = 8");
   // lampu: tiap dua menit dari 18.10
   sama([0, 1, 2, 3].map((i) => `18.${10 + 2 * i}`), ["18.10", "18.12", "18.14", "18.16"], "lampu merah: 18.10, 18.12, 18.14, 18.16");
   // Uji Kompetensi 3-6 dan cerita
@@ -715,7 +716,7 @@ const semuaDeretAkhir = []; // { adegan, pre, nilai[] }
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi punya kutipan buku");
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi punya kutipan buku");
     // kunci yang dipakai video benar-benar ada di Panduan Guru
     const bgSaja = bersih(bagian[1]);
     for (const s of ["jawaban a = 10, b = 5, c = 4, dan d = 10", "jawaban b = 24, b = 16, c = 12, d = 6, dan e = 8", "faktor dari 24 adalah 1,2,3,4,6,8,12,24", "faktor dari 25 adalah 1,5,25", "faktor dari 52 adalah 1,2,4,13,26,52", "3,6,9,12,15,18,21", "kelipatan dari 3 adalah 3,6,9,12,15,18", "20,25,30", "12 kartu anime", "8.002", "delapan ribu dua", "898", "836", "741", "1.029", "388", "378", "223", "423", "84", "225", "132", "3, 6, 9, 12, 15, 18, 21, 24, 27", "8, 12, 16, 20, 24", "256 – 179 = 77", "36 + 111 – 54 = 93", "(128 + 76) : 6 = 34", "24 x 8 = 192", "(3 x 30) : 5 = 90 : 5 = 18", "3.990 buah mangga", "725 kilogram buah", "= 96 pensil tulis", "= 629", "18.10, 18.12, 18.14, 18.16"]) cek(bgSaja.includes(bersih(s)), `Panduan Guru memuat kunci "${s}"`);
@@ -743,7 +744,7 @@ const semuaDeretAkhir = []; // { adegan, pre, nilai[] }
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b1i-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1i sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b1i-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1i sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

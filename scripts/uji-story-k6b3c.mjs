@@ -404,7 +404,7 @@ const semuaKata = (a, b) => {
   for (const f of berkas.filter((x) => x.startsWith("k6b3c-"))) {
     const s = readFileSync(new URL(f, folder), "utf8");
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k6b3c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas k6b3c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k6b3c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas k6b3c sendiri (${impor.join(", ")})`);
   }
   // mesin tidak memakai kit visual lama
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");

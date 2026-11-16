@@ -122,7 +122,7 @@ export const ADEGAN_LUAR_SENILAI: AdeganStory = {
 
 /* ------------------------------ 3. Equivalent Fractions: penerapan pada coklat dan kertas ------------------------------ */
 const SUARA_T1 = "Terapkan pada coklat tadi. Satu batang dibagi enam, satu batang dibagi tiga. Dua potong dari enam dan satu potong dari tiga menutupi panjang yang sama.";
-const SUARA_T2 = "Jadi dua per enam senilai dengan satu per tiga. Bagian Putu pada kedua batang coklat sama besar, walau satu batang punya enam potong dan satu lagi tiga potong.";
+const SUARA_T2 = "Jadi dua per enam senilai dengan satu per tiga. Bagian Malosi pada kedua batang coklat sama besar, walau satu batang punya enam potong dan satu lagi tiga potong.";
 const SUARA_T3 = "Terapkan pada kertas lipat tadi. Kertas pertama punya empat bagian dengan satu bagian diwarnai. Kertas kedua punya enam belas bagian dengan empat bagian diwarnai.";
 const SUARA_T4 = "Daerah yang diwarnai sama luas, jadi satu per empat senilai dengan empat per enam belas. Dua tulisan, satu nilai yang sama.";
 
@@ -134,7 +134,7 @@ export const ADEGAN_LUAR_SENILAI_TERAPAN: AdeganStory = {
   ketukan: [
     k(
       SUARA_T1,
-      tambah(0, judul("Coklat: bagian Putu")),
+      tambah(0, judul("Coklat: bagian Malosi")),
       tambah(0, kepala(0)),
       tambah("enam,", ...batang("ca", 30, 70, 200, 26, 6, [0, 1], W.arsir, W.cok)),
       tambah("tiga.", ...batang("cb", 30, 110, 200, 26, 3, [0], W.arsir, W.cok)),

@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, denahLabel, denahNama, denahRuang, denahSisi, denahTepi, emo, judul, kartu, kotak, teks } from "./k5b4e-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b4e-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Denah di sisi kiri kanvas: pojok kiri-atas (22, 36), 11 piksel per meter (lebar dan tinggi 132). */
 const OX = 22;
@@ -13,7 +14,7 @@ const TY = 34;
 const ruang = (id: string, ox: number, oy: number, kode?: string[]): Obj[] => denahRuang(id, ox, oy, S, kode);
 const nama = (id: string, kode?: string[]): Obj[] => denahNama(id, OX, OY, S, kode);
 const tepi = (id: string, warna: string = W.merah, o: Partial<Obj> = {}): Obj => denahTepi(id, OX, OY, S, warna, 2.4, { z: 5, ...o });
-/** Panjang sisi yang sudah diketahui pada Cara Asep (Buku Siswa hlm. 126): tanda tanya untuk AB, DE, IJ, dan MN. */
+/** Panjang sisi yang sudah diketahui pada Cara Wei (Buku Siswa hlm. 126): tanda tanya untuk AB, DE, IJ, dan MN. */
 export const SISI_DIKETAHUI: [string, string][] = [["BC", "4"], ["CD", "6"], ["EF", "4"], ["FG", "4"], ["GH", "4"], ["HI", "4"], ["JK", "2"], ["KL", "4"], ["LM", "4"], ["NA", "4"]];
 const labelDiketahui = (id: string): Obj[] => SISI_DIKETAHUI.map(([n, v]) => denahLabel(`${id}-${n}`, OX, OY, S, n, v, 6.6, W.biru));
 
@@ -23,13 +24,7 @@ export const ADEGAN_PEMBUKA_E: AdeganStory = {
   judul: "Pembuka Sub-Bab E: Keliling Bangun Gabungan",
   sumber: "Panduan Guru hlm. 116 dan hlm. 160–161",
   latar: "#F0F9FF",
-  kutipan: [
-    "terbimbing terhadap cara-cara menemukan keliling bangun gabungan",
-    "bangun gabungan adalah denah rumah",
-    "harus sudah mampu menghitung keliling berbagai macam bangun datar",
-    "yang dijumlahkan adalah panjang sisi-sisi terluar (tepian)",
-    "dengan mendekomposisi denah rumah ke dalam beberapa bangun datar",
-  ],
+  kutipan: kutipanLokal("k5b4e-materi-1.ts:1"),
   ketukan: [
     k(
       "Sub-Bab E, Keliling Bangun Gabungan, penutup Bab empat. Menurut Buku Panduan Guru, pengalaman belajarnya berupa penemuan terbimbing, dan konteks yang dipakai adalah denah rumah.",
@@ -78,18 +73,7 @@ export const ADEGAN_DENAH_E: AdeganStory = {
   judul: "Denah rumah dan dinding terluar",
   sumber: "Materi: denah rumah dan dinding luar",
   latar: "#FFF7ED",
-  kutipan: [
-    "Pernahkah kalian melihat denah rumah atau gedung?",
-    "Gambar 4.6 Denah Rumah",
-    "Di manakah kalian sering menemukannya? Kira-kira untuk apa, ya?",
-    "Aku sering melihatnya di depan lift gedung. Jadi,",
-    "kita bisa tahu arah keluar jika terjadi kebakaran.",
-    "Waktu membangun rumah, biasanya orang",
-    "menggambar denahnya terlebih dahulu.",
-    "Perhatikan dinding terluar dari denah rumah di atas.",
-    "Dapatkah kalian menghitung kelilingnya? Bagaimana caranya?",
-    "dengan pengandaian akan merenovasi dinding-dinding terluar.",
-  ],
+  kutipan: kutipanLokal("k5b4e-materi-1.ts:2"),
   ketukan: [
     k(
       "Sekarang kita mulai dengan sebuah pertanyaan. Pernahkah kamu melihat denah rumah atau gedung? Perhatikan denah rumah ini.",
@@ -127,17 +111,7 @@ export const ADEGAN_DUGAAN: AdeganStory = {
   judul: "Dugaan: semua sisi dijumlahkan atau hanya sisi terluar",
   sumber: "Materi: dugaan cara menghitung keliling",
   latar: "#FDF4FF",
-  kutipan: [
-    "Mungkin harus diukur",
-    "satu per satu sisi-sisinya,",
-    "lalu dijumlahkan.",
-    "Namun, tidak semua",
-    "sisi-sisi bangun",
-    "penyusunnya",
-    "dijumlahkan.",
-    "menjumlahkan keliling bangun-bangun datar penyusunnya satu per",
-    "hanya sisi-sisi terluar saja yang dijumlahkan",
-  ],
+  kutipan: kutipanLokal("k5b4e-materi-1.ts:3"),
   ketukan: [
     k(
       "Dua teman memberi dugaan. Yang pertama: mungkin harus diukur satu per satu sisi-sisinya, lalu dijumlahkan.",
@@ -165,31 +139,17 @@ export const ADEGAN_DUGAAN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 4. Cara Asep: bangun penyusun dan sisi yang belum diketahui (Buku Siswa hlm. 126 sampai 127; Panduan Guru hlm. 163 sampai 164) ------------------------------ */
+/* ------------------------------ 4. Cara Wei: bangun penyusun dan sisi yang belum diketahui (Buku Siswa hlm. 126 sampai 127; Panduan Guru hlm. 163 sampai 164) ------------------------------ */
 export const ADEGAN_ASEP_1: AdeganStory = {
   id: "cara-asep-1",
-  judul: "Cara Asep: bangun penyusun denah",
-  sumber: "Materi: Cara Asep, bangun penyusun denah",
+  judul: "Cara Wei: bangun penyusun denah",
+  sumber: "Materi: Cara Wei, bangun penyusun denah",
   latar: "#F0FDF4",
-  kutipan: [
-    "Aku menggambar",
-    "bangun-bangun",
-    "datar yang menyusun",
-    "denah, lalu",
-    "menuliskan ukuran panjang",
-    "dinding terluar di setiap sisi.",
-    "masih ada bagian yang",
-    "belum diketahui.",
-    "Bangun datar apa saja yang disusun oleh Asep?",
-    "Persegi panjang dan persegi",
-    "Keliling bangun gabungan itu bisa dihitung jika panjang",
-    "semua sisinya telah diketahui.",
-    "MN, AB, DE, dan IJ.",
-  ],
+  kutipan: kutipanLokal("k5b4e-materi-1.ts:4"),
   ketukan: [
     k(
-      "Cara Asep. Asep menggambar bangun penyusun denah: dapur, kamar mandi, ruang keluarga, ruang tamu, dan dua kamar. Lalu ia menuliskan ukuran dinding terluar.",
-      tambah(0, judul("Cara Asep")),
+      "Cara Wei. Wei menggambar bangun penyusun denah: dapur, kamar mandi, ruang keluarga, ruang tamu, dan dua kamar. Lalu ia menuliskan ukuran dinding terluar.",
+      tambah(0, judul("Cara Wei")),
       tambah("dapur,", ...ruang("as", OX, OY, ["dapur"]), ...nama("asn", ["dapur"])),
       tambah("mandi,", ...ruang("as", OX, OY, ["mandi"]), ...nama("asn", ["mandi"])),
       tambah("keluarga,", ...ruang("as", OX, OY, ["keluarga"]), ...nama("asn", ["keluarga"])),
@@ -198,7 +158,7 @@ export const ADEGAN_ASEP_1: AdeganStory = {
       tambah("ukuran", ...labelDiketahui("ds")),
     ),
     k(
-      "Bangun datar apa yang disusun Asep? Persegi dan persegi panjang. Dapur dan kedua kamar berbentuk persegi, empat kali empat. Ruangan lainnya berbentuk persegi panjang.",
+      "Bangun datar apa yang disusun Wei? Persegi dan persegi panjang. Dapur dan kedua kamar berbentuk persegi, empat kali empat. Ruangan lainnya berbentuk persegi panjang.",
       tambah("Persegi", ...kartu("g1", 172, 40, 118, 50, W.krem, ["persegi:", "dapur dan dua kamar"], 8.4)),
       tambah("Ruang", ...kartu("g2", 172, 100, 118, 60, W.hijauMuda, ["persegi panjang:", "ruang tamu, ruang", "keluarga, kamar mandi"], 8.4)),
     ),

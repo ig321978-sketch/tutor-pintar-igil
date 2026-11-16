@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, busurSemua, daftar, deret, emo, judul, kartu, kotak, muncul, panah, suku, tabel, teks } from "./k4b3b-gambar";
 import { bersih, k, tambah } from "./k4b3b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Sub-Bab B (Buku Siswa hlm. 95; Panduan Guru hlm. 129-130) ------------------------------ */
 export const ADEGAN_PEMBUKA_B: AdeganStory = {
@@ -8,18 +9,7 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
   judul: "Sub-Bab B: Pola Bilangan",
   sumber: "Buku Siswa hlm. 95; Panduan Guru hlm. 129–130",
   latar: "#F0F9FF",
-  kutipan: [
-    "B. Pola Bilangan",
-    "Setelah mempelajari materi",
-    "Pola bilangan membesar (melibatkan operasi penjumlahan bilangan cacah)",
-    "pola bilangan mengecil (melibatkan operasi pengurangan bilangan cacah)",
-    "mengidentifikasi pola bilangan membesar dan mengecil yang melibatkan penjumlahan dan pengurangan pada bilangan cacah sampai 100",
-    "Alat tulis",
-    "Kertas HVS",
-    "Banyak ilmuwan yang memanfaatkan pola bilangan untuk memprediksi fenomena alam",
-    "Apakah kalian dapat menemukan pola dari deret bilangan tersebut?",
-    "Sebelum memasuki pembelajaran guru dapat mengingatkan kembali",
-  ],
+  kutipan: kutipanLokal("k4b3b-materi-1.ts:1"),
   ketukan: [
     k(
       "Sub-Bab B, Pola Bilangan. Guru menulis di papan: satu, tiga, lima, tujuh. Lalu dua, empat, enam, delapan. Lalu sepuluh, tujuh, empat, satu. Dapatkah murid menentukan pola bilangannya?",
@@ -83,19 +73,7 @@ export const ADEGAN_MENGAMATI: AdeganStory = {
   judul: "Ayo Mengamati dan Ayo Berpikir",
   sumber: "Materi: mengamati dan berpikir",
   latar: "#FFFBEB",
-  kutipan: [
-    "Dapatkah kalian mengisi angka berikutnya?",
-    "Ada berapa bilangan yang terdapat di sana?",
-    "Apakah kalian dapat menentukan bilangan ke-6",
-    "12 ibu",
-    "Jawaban kamu kurang tepat",
-    "Untuk mengetahui pola penyusunannya adalah dengan cara mengamati hubungan bilangan yang satu dengan yang lainnya",
-    "Betul sekali, dengan memperhatikan tabel",
-    "adalah 13 (11 + 2)",
-    "ajak peserta didik untuk menuliskannya dalam tabel analisis",
-    "Guru dapat memberikan contoh lain dari pola bilangan yang mengecil.",
-    "Guru juga memberikan contoh soal pola bilangan dalam kehidupan sehari-hari",
-  ],
+  kutipan: kutipanLokal("k4b3b-materi-1.ts:2"),
   ketukan: [
     k(
       "Ayo mengamati. Di papan tertulis tiga, lima, tujuh, sembilan, sebelas, dan seterusnya. Dapatkah kalian mengisi angka berikutnya?",
@@ -149,15 +127,7 @@ export const ADEGAN_KASUS_1: AdeganStory = {
   judul: "Kasus 1: pola membesar",
   sumber: "Materi: pola membesar",
   latar: "#F0FDF4",
-  kutipan: [
-    "Perhatikan berbagai macam kasus pola bilangan berikut.",
-    "Kasus 1 :",
-    "1, 4, 7, 10, …",
-    "selisih antarbilangan selalu sama yaitu +3",
-    "adalah 10 + 3 = 13",
-    "bilangan yang muncul setelahnya selalu lebih besar daripada bilangan yang ada sebelumnya",
-    "pada pola tersebut bilangan semakin membesar",
-  ],
+  kutipan: kutipanLokal("k4b3b-materi-1.ts:3"),
   ketukan: [
     k(
       "Kasus satu: satu, empat, tujuh, sepuluh, dan seterusnya. Selisih antarbilangan selalu sama, yaitu tambah tiga.",
@@ -198,18 +168,7 @@ export const ADEGAN_KASUS_2: AdeganStory = {
   judul: "Kasus 2 dan Ingat!",
   sumber: "Materi: pola mengecil dan ciri pola",
   latar: "#FEF2F2",
-  kutipan: [
-    "Kasus 2 :",
-    "23, 18, 13, 8, ...",
-    "selisih antar bilangan selalu sama yaitu -5",
-    "adalah 8 - 5 = 3",
-    "bilangan yang muncul setelahnya selalu lebih kecil daripada bilangan yang ada sebelumnya",
-    "pada pola tersebut bilangan semakin mengecil",
-    "Pola bilangan adalah suatu susunan bilangan yang mempunyai aturan dalam proses penyusunannya",
-    "Pola bilangan ini dapat membesar maupun mengecil menyesuaikan aturan",
-    "3, 5, 7, 9, 11, ... disebut pola bilangan membesar",
-    "32, 28, 24, 20, 16, ... disebut pola bilangan mengecil",
-  ],
+  kutipan: kutipanLokal("k4b3b-materi-1.ts:4"),
   ketukan: [
     k(
       "Kasus dua: dua puluh tiga, delapan belas, tiga belas, delapan. Selisih antarbilangan selalu sama, yaitu kurang lima.",
@@ -275,18 +234,7 @@ export const ADEGAN_TELUR: AdeganStory = {
   judul: "Contoh: hasil panen telur",
   sumber: "Materi: pola dengan tabel, hasil panen telur",
   latar: "#FFF7ED",
-  kutipan: [
-    "Seorang peternak telur ayam mencatat hasil panen selama 5 hari berturut-",
-    "Pada hari pertama tercatat 20 buah telur, pada hari kedua 28 buah telur",
-    "Banyak telur yang dipanen pada",
-    "hari kelima adalah ...",
-    "Hasil Panen",
-    "Beda dengan",
-    "20 +8 +8 +8 +8",
-    "lebih banyak 8 butir dari hari",
-    "sebelumnya, sehingga untuk hari selanjutnya didapatkan",
-    "Jadi banyak telur yang dipanen pada hari kelima adalah 52 butir.",
-  ],
+  kutipan: kutipanLokal("k4b3b-materi-1.ts:5"),
   ketukan: [
     k(
       "Contoh: seorang peternak mencatat telur lima hari berturut-turut. Hari pertama dua puluh butir, hari kedua dua puluh delapan, hari ketiga tiga puluh enam, dan seterusnya. Berapa telur pada hari kelima?",

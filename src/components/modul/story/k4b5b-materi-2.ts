@@ -2,6 +2,7 @@ import type { AdeganStory, Obj } from "./logika-story";
 import { PAVING, PERAHU, type Titik } from "./k4b5b-data";
 import { W, idDari, judul, kartu, keping, panah, poli, rumahAdat, skala, tabel, teks } from "./k4b5b-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b5b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 6. Dekomposisi: ayo mengamati (Buku Siswa hlm. 170; Panduan Guru hlm. 198–200) ------------------------------ */
 export const ADEGAN_MENGAMATI_DEK: AdeganStory = {
@@ -9,18 +10,7 @@ export const ADEGAN_MENGAMATI_DEK: AdeganStory = {
   judul: "Dekomposisi: ayo mengamati rumah adat",
   sumber: "Materi: mengurai bangun datar",
   latar: "#FFFBEB",
-  kutipan: [
-    "2. Dekomposisi Bangun Datar",
-    "Indonesia memiliki banyak suku dan kebudayaan yang beragam.",
-    "Salah satu kebudayaan tersebut yaitu rumah adat.",
-    "Utari sedang mengamati rumah adat masyarakat jawa.",
-    "Apakah kalian bisa menunjukkan bentuk-bentuk bangun datar pada rumah adat Jawa?",
-    "Bisa Bapak.",
-    "menyajikan, menganalisis dan mengurai (dekomposisi) bangun datar menjadi beberapa bangun datar",
-    "dan menentukan cara mengurai yang mungkin suatu bangun datar yang diberikan/diketahui",
-    "Mengurai bangun datar berarti mengurai satu bangun datar sehingga menjadi beberapa bangun datar.",
-    "bangun-bangun lainnya (pot bunga, gambar orang menari, roket, rumah, jembatan, dan sebagainya)",
-  ],
+  kutipan: kutipanLokal("k4b5b-materi-2.ts:1"),
   ketukan: [
     k(
       "Dekomposisi bangun datar. Ayo mengamati: Indonesia memiliki banyak suku dan kebudayaan, salah satunya rumah adat. Utari mengamati rumah adat masyarakat Jawa.",
@@ -62,20 +52,7 @@ export const ADEGAN_AKTIVITAS_7: AdeganStory = {
   judul: "Kegiatan mengurai rumah adat",
   sumber: "Materi: mengurai rumah adat",
   latar: "#F0FDFA",
-  kutipan: [
-    "Aktivitas 7. Dekomposisi Bangun Datar",
-    "penggaris",
-    "Buatlah kelompok dengan anggota 3-4 orang.",
-    "Perhatikan rumah adat masyarakat jawa dengan atap “KAMPUNG”.",
-    "Carilah jenis bangun datar yang ada pada gambar rumah tersebut dan catatlah pada buku tulis kalian seperti pada tabel berikut.",
-    "Bentuk Bangun Datar Nama Banyaknya",
-    "Trapesium",
-    "Diskusi bersama anggota kelompok, ada berapa jenis bangun datar yang kalian peroleh? Sebutkan.",
-    "Presentasikan hasilnya di depan kelas dengan percaya diri.",
-    "dapatkah kalian menyimpulkan apakah dekomposisi bangun datar itu?",
-    "Guru memberi kesempatan setiap kelompok untuk mempresentasikan hasil diskusi kelompok.",
-    "Guru bersama peserta didik merumuskan kesimpulan.",
-  ],
+  kutipan: kutipanLokal("k4b5b-materi-2.ts:2"),
   ketukan: [
     k(
       "Kegiatan kedua, mengurai bangun datar. Alat: alat tulis dan penggaris. Kelompok tiga sampai empat orang memperhatikan rumah adat Jawa dengan atap Kampung.",
@@ -129,15 +106,7 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   judul: "Latihan 1: perahu layar",
   sumber: "Materi: perahu layar",
   latar: "#EFF6FF",
-  kutipan: [
-    "Kerjakan soal berikut pada buku tulis kalian.",
-    "Lakukan dekomposisi berbagai macam bangun datar yang ada pada",
-    "No Nama Bangun Datar Gambar Banyaknya",
-    "Guru meminta kepada seluruh peserta didik mengerjakan Latihan 3 sebagai berikut.",
-    "Coba uraikan (dekomposisi) berbagai macam bangun datar yang ada pada",
-    "Jajargenjang",
-    "Persegi",
-  ],
+  kutipan: kutipanLokal("k4b5b-materi-2.ts:3"),
   ketukan: [
     k(
       "Latihan satu: lakukan dekomposisi berbagai bangun datar pada gambar perahu layar. Isi tabel: nomor, nama bangun datar, gambar, dan banyaknya.",
@@ -174,12 +143,7 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
   judul: "Latihan 2: motif paving",
   sumber: "Materi: motif paving",
   latar: "#F7FEE7",
-  kutipan: [
-    "Lakukan dekomposisi berbagai macam bangun datar yang ada pada",
-    "Setelah kalian mengamati gambar di atas, apa saja bangun datar yang",
-    "menyusun motif paving di atas?",
-    "Lingkari setiap bangun berikut yang menyusun motif paving pada gambar",
-  ],
+  kutipan: kutipanLokal("k4b5b-materi-2.ts:4"),
   ketukan: [
     k(
       "Latihan dua: lakukan dekomposisi bangun datar pada gambar motif paving. Lingkari setiap bangun, dari sebelas pilihan, yang menyusun motif paving.",

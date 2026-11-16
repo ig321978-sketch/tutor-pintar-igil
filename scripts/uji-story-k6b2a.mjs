@@ -150,10 +150,10 @@ for (const v of VIDEO) {
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,pembuka-pohon,eksplorasi21-paket,eksplorasi22-kebun,latihan21-wahana", "urutan adegan materi");
-  for (const kata of ["Gerakan Satu Juta Pohon", "Pak Wayan", "jarak", "Artus", "mangga", "jambu", "pucuk merah", "cemara", "FPB", "terhadap", "setiap", "roller coaster", "komidi putar", "bianglala", "rumah hantu", "Banyu", "Latihan", "Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["Gerakan Satu Juta Pohon", "Pak Malosi", "jarak", "Artus", "mangga", "jambu", "pucuk merah", "cemara", "FPB", "terhadap", "setiap", "roller coaster", "komidi putar", "bianglala", "rumah hantu", "Banyu", "Latihan", "Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   // Isi lengkap (termasuk adegan yang tidak diputar) tetap memuat butir tujuan, mengingat, dan refleksi.
   const penuh = teksVideo(MFULL);
-  for (const kata of ["Gerakan Satu Juta Pohon", "Pak Wayan", "Tujuan Pembelajaran", "Pertanyaan Pemantik", "Kata Kunci", "peta konsep", "Mengingat Kembali", "faktor", "kelipatan", "pecahan", "Ayo Berefleksi"]) cek(new RegExp(kata, "i").test(penuh), `materi lengkap memuat ${kata}`);
+  for (const kata of ["Gerakan Satu Juta Pohon", "Pak Malosi", "Tujuan Pembelajaran", "Pertanyaan Pemantik", "Kata Kunci", "peta konsep", "Mengingat Kembali", "faktor", "kelipatan", "pecahan", "Ayo Berefleksi"]) cek(new RegExp(kata, "i").test(penuh), `materi lengkap memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luara-bahasa", "luara-bahasa-terapan", "luara-urutan", "luara-urutan-terapan", "luara-fpb", "luara-fpb-terapan", "luara-banding", "luara-banding-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[1].id === "luara-pembuka" && U.adegan[U.adegan.length - 1].id === "luara-ringkas" && M_VIDEO.adegan.length === 5 && U.adegan.length === 11, "5 adegan materi diputar (dengan sapaan) dan 11 adegan metode luar (dengan sapaan)");
@@ -246,7 +246,7 @@ for (const v of VIDEO) {
   for (const f of berkas.filter((x) => x.startsWith("k6b2a-"))) {
     const s = readFileSync(new URL(f, folder), "utf8");
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k6b2a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k6b2a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k6b2a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k6b2a sendiri (${impor.join(", ")})`);
   }
   // mesin tidak memakai kit visual lama
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");

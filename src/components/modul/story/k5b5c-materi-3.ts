@@ -4,6 +4,7 @@ import {
   W, bulat, deret, idDeret, idKartu, judul, kartu, lukis, petak, potong, tabel, teks,
 } from "./k5b5c-gambar";
 import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k5b5c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Letak bangun Uji Kompetensi pada gambar (pojok kiri-atas dan piksel per satuan). */
 export const LETAK_UJI = {
@@ -21,14 +22,7 @@ export const ADEGAN_UJI_1: AdeganStory = {
   judul: "Empat uji, mulai dari Uji 1",
   sumber: "Materi: Uji 1, layang-layang",
   latar: "#FFF1F2",
-  kutipan: [
-    "Uji Kompetensi",
-    "Cobalah menghitung luas daerah bangun gabungan berikut",
-    "18 cm",
-    "24 cm",
-    "= 216",
-    "Jadi, luas daerah layang-layang 216 cm2",
-  ],
+  kutipan: kutipanLokal("k5b5c-materi-3.ts:1"),
   ketukan: [
     k(
       "Sekarang kita masuk ke bagian uji. Perintahnya, cobalah menghitung luas daerah bangun gabungan berikut. Ada empat soal.",
@@ -67,16 +61,7 @@ export const ADEGAN_UJI_2: AdeganStory = {
   judul: "Uji 2: jajargenjang dan segitiga",
   sumber: "Materi: Uji 2, jajargenjang dan segitiga",
   latar: "#FFF7ED",
-  kutipan: [
-    "8 cm",
-    "16 cm",
-    "12 cm",
-    "Luas = Luas daerah jajargenjang + Luas",
-    "daerah segitiga",
-    "= 224",
-    "Jadi, luas daerah bangun gabungan",
-    "tersebut 224 cm2",
-  ],
+  kutipan: kutipanLokal("k5b5c-materi-3.ts:2"),
   ketukan: [
     k(
       "Uji dua adalah bangun gabungan: jajargenjang di atas dan segitiga di bawahnya. Ukurannya enam belas, delapan, dan dua belas sentimeter.",
@@ -124,18 +109,7 @@ export const ADEGAN_UJI_3: AdeganStory = {
   judul: "Uji 3: bangun A pada petak, dua cara",
   sumber: "Materi: Uji 3, bangun pada petak",
   latar: "#F0FDFA",
-  kutipan: [
-    "Cara 1",
-    "Cara 2",
-    "luas daerah layang-layang +",
-    "luas daerah trapesium",
-    "= 10 + 12",
-    "= 22",
-    "= 2 + 20",
-    "luas daerah segitiga + luas",
-    "Jadi, luas daerah bangun gabungan",
-    "adalah 22 satuan luas",
-  ],
+  kutipan: kutipanLokal("k5b5c-materi-3.ts:3"),
   ketukan: [
     k(
       "Uji tiga digambar di atas petak. Bangun A boleh dipecah dengan dua cara. Kita lihat cara pertama dulu.",
@@ -202,16 +176,7 @@ export const ADEGAN_UJI_4: AdeganStory = {
   judul: "Uji 4: bangun B pada petak",
   sumber: "Materi: Uji 4, bangun pada petak",
   latar: "#FEFCE8",
-  kutipan: [
-    "luas daerah persegi panjang 1 +",
-    "luas daerah persegi panjang 2 + luas daerah trapesium",
-    "= 8 + 6",
-    "(sisi atas + sisi bawah)",
-    "(2 + 1)",
-    "= 20",
-    "(3 + 1)",
-    "= 22",
-  ],
+  kutipan: kutipanLokal("k5b5c-materi-3.ts:4"),
   ketukan: [
     k(
       "Uji empat juga di atas petak. Bangun B terdiri atas dua persegi panjang dan satu trapesium di sisi kanan.",
@@ -254,18 +219,7 @@ export const ADEGAN_RUBRIK: AdeganStory = {
   judul: "Rubrik penilaian Uji Kompetensi",
   sumber: "Panduan Guru hlm. 238–241",
   latar: "#F5F3FF",
-  kutipan: [
-    "Rubrik Penilaian",
-    "Tabel 5.15 Rubrik Penilaian Uji Kompetensi",
-    "TOTAL SKOR",
-    "Peserta didik tidak",
-    "menjawab sama sekali",
-    "Peserta didik hanya",
-    "memberikan hasil akhir",
-    "dan masih kurang tepat",
-    "dilengkapi satuan",
-    "cara mengerjakan yang runtut",
-  ],
+  kutipan: kutipanLokal("k5b5c-materi-3.ts:5"),
   ketukan: [
     k(
       "Panduan Guru memberi rubrik penilaian Uji Kompetensi. Skor maksimum nomor 1 adalah 4, nomor 2 adalah 6, nomor 3 dan nomor 4 masing-masing 10.",

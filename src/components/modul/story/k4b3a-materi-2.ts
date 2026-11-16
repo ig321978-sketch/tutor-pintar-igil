@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { JERUK, JERUK_TABEL, KELOMPOK_MEMBESAR, KELOMPOK_MENGECIL, PERMEN_TABEL, W, barisTabel, benda, emo, judul, kartu, kotak, panah, teks } from "./k4b3a-gambar";
 import { bersih, idx, k, sebar, sorotkan, tambah, ubah } from "./k4b3a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const WARNA_KEL = [W.biruMuda, W.oranye, W.hijau, W.merahTua] as const;
 const KOL_SEL = [58, 44, 44, 44, 44, 50];
@@ -19,17 +20,7 @@ export const ADEGAN_AKTIVITAS_SATU_HASIL: AdeganStory = {
   judul: "Hitungan Aktivitas 1: selisih dan kumpulan ke-4",
   sumber: "Materi: Selisih dan kumpulan ke-4",
   latar: "#EFF6FF",
-  kutipan: [
-    "Kumpulan-1",
-    "Selisih/beda dengan",
-    "kumpulan sebelumnya",
-    "Bagaimana selisih/perbedaan banyaknya benda pada kumpulan ke-1",
-    "dan ke-2, kumpulan ke-2 dan ke-3? apakah sama atau berbeda?",
-    "Berapa benda yang dibutuhkan untuk kumpulan ke-4",
-    "Semakin banyak atau semakin sedikit?",
-    "Guru memberikan pemahaman bahwa pola gambar membesar artinya",
-    "benda yang muncul setelahnya semakin banyak.",
-  ],
+  kutipan: kutipanLokal("k4b3a-materi-2.ts:1"),
   ketukan: [
     k(
       SUARA_H1,
@@ -80,23 +71,7 @@ export const ADEGAN_AMATI_JERUK: AdeganStory = {
   judul: "Ayo Mengamati: jeruk dan tabel sampai kumpulan ke-7",
   sumber: "Materi: Jeruk dan tabel kumpulan ke-7",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ayo Mengamati",
-    "Dapatkah kalian menentukan banyak jeruk selanjutnya sesuai pola tersebut?",
-    "Agar dapat menjawab pertanyaan tersebut, ingatlah kembali materi",
-    "penjumlahan dan pengurangan bilangan cacah yang sudah kalian pelajari",
-    "bagaimana bentuk kumpulan yang ke 7?",
-    "Pada gambar terlihat jelas, kelompok pertama berisi",
-    "tinggal menambahkan",
-    "2 buah jeruk sesuai pola tersebut.",
-    "Jadi banyak jeruk pada kumpulan ke 7 adalah",
-    "2 + 2 + 2 + 2 + 2 + 2 + 2 atau 14 ya Bu??",
-    "Betul sekali, bisa menggunakan",
-    "Kumpulan 7",
-    "12 + 2",
-    "Ajak peserta didik untuk berpikir bagaimana menentukan pola sesuai pola",
-    "Guru dapat memberikan contoh lain dari pola gambar yang membesar.",
-  ],
+  kutipan: kutipanLokal("k4b3a-materi-2.ts:2"),
   ketukan: [
     k(
       SUARA_J1,
@@ -173,22 +148,7 @@ export const ADEGAN_AKTIVITAS_DUA: AdeganStory = {
   judul: "Aktivitas 2: pola gambar mengecil",
   sumber: "Materi: Pola gambar mengecil",
   latar: "#F5F3FF",
-  kutipan: [
-    "2. Pola Gambar Mengecil",
-    "Pada materi sebelumnya, kita sudah mempelajari materi pola",
-    "gambar membesar, artinya semakin ke kanan maka jumlah",
-    "Tahukah kalian bahwa pola gambar juga ada yang mengecil?",
-    "Aktivitas 2",
-    "Alat dan Bahan: Kelereng/batu kerikil, pensil, kertas",
-    "Buatlah 4 kelompok beranggotakan 5-6 orang.",
-    "Susunlah kelereng/batu kerikil menjadi 3 kumpulan sesuai tabel berikut.",
-    "Setiap kelompok menghitung banyaknya benda serta selisihnya, dari setiap",
-    "Apa yang dapat kalian simpulkan?",
-    "Presentasikan hasil diskusi kelompok didepan kelas.",
-    "terkait pola gambar mengecil yang berbeda-beda.",
-    "Dapatkah menemukan pola gambar",
-    "Guru dapat memberikan contoh lain dari pola gambar yang mengecil.",
-  ],
+  kutipan: kutipanLokal("k4b3a-materi-2.ts:3"),
   ketukan: [
     k(
       SUARA_B1,
@@ -246,19 +206,7 @@ export const ADEGAN_AMATI_PERMEN: AdeganStory = {
   judul: "Ayo Mengamati: permen dan tabel sampai kumpulan ke-5",
   sumber: "Materi: Permen dan tabel kumpulan ke-5",
   latar: "#FDF2F8",
-  kutipan: [
-    "Kumpulan 1",
-    "Di dalam gambar hanya ada 3 kumpulan permen yang semakin",
-    "bagaimana bentuk kumpulan yang ke-5 ?",
-    "Bagaimana cara menentukannya?",
-    "Banyak Permen",
-    "Uraian",
-    "Berdasarkan hasil analisis pada tabel tersebut, tampak terlihat bahwa banyak",
-    "permen yang ada pada kumpulan ke-5 ada sebanyak 1 buah.",
-    "semakin lama semakin sedikit atau mengecil.",
-    "pola gambar mempunyai dua tipe",
-    "pola gambar mengecil (benda yang muncul setelahnya semakin sedikit)",
-  ],
+  kutipan: kutipanLokal("k4b3a-materi-2.ts:4"),
   ketukan: [
     k(
       SUARA_M1,

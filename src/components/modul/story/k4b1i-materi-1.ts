@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, bagiBenda, barisTabel, daftar, deret, emo, idDari, judul, kartu, suku, tabel, teks } from "./k4b1i-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k4b1i-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Sub-Bab I (Buku Siswa hlm. 48; Panduan Guru hlm. 70-71) ------------------------------ */
 export const ADEGAN_PEMBUKA_I: AdeganStory = {
@@ -8,19 +9,7 @@ export const ADEGAN_PEMBUKA_I: AdeganStory = {
   judul: "Sub-Bab I: Faktor dan Kelipatan",
   sumber: "Materi: faktor dan kelipatan",
   latar: "#FDF2F8",
-  kutipan: [
-    "I. Faktor dan Kelipatan",
-    "Memahami konsep faktor dari bilangan cacah",
-    "Memahami konsep kelipatan dari bilangan cacah",
-    "pensil, buku tulis, kelereng",
-    "pengembangan dari konsep pembagian dan perkalian",
-    "Faktor dari bilangan adalah bilangan yang habis membagi bilangan tersebut",
-    "Kelipatan dari bilangan cacah adalah bilangan-bilangan yang merupakan hasil kali bilangan tersebut dengan bilangan asli",
-    "Bagaimana menentukan faktor suatu bilangan?",
-    "Bagaimana menentukan kelipatan suatu bilangan?",
-    "Terdapat beberapa permen yang akan dibagi",
-    "Guru tidak perlu memberikan jawaban yang benar",
-  ],
+  kutipan: kutipanLokal("k4b1i-materi-1.ts:1"),
   ketukan: [
     k(
       "Sekarang kita belajar faktor dan kelipatan. Ada dua hal yang akan kamu pahami: faktor dari bilangan cacah, dan kelipatan dari bilangan cacah.",
@@ -87,34 +76,25 @@ export const ADEGAN_FAKTOR_12: AdeganStory = {
   judul: "Mengamati: faktor dari 12",
   sumber: "Materi: faktor dari 12",
   latar: "#FFFBEB",
-  kutipan: [
-    "Pak Guru mempunyai 12 buah pensil tulis",
-    "Pensil dibagikan hanya kepada Azizah",
-    "Pensil dibagikan kepada Azizah dan Putu.",
-    "Dari kelima kejadian di atas, dapat dituliskan.",
-    "Faktor atau pembagi dari 12 adalah 1, 2, 3, 4, 6 dan 12",
-    "Guru meminta peserta didik untuk mengamati ilustrasi.",
-    "menyiapkan benda selain pensil",
-    "Guru dapat menarik karakteristik bilangan prima",
-  ],
+  kutipan: kutipanLokal("k4b1i-materi-1.ts:2"),
   ketukan: [
     k(
-      "Perhatikan. Ada dua belas pensil yang akan dibagikan. Jika hanya untuk Azizah, dua belas bagi satu sama dengan dua belas.",
+      "Perhatikan. Ada dua belas pensil yang akan dibagikan. Jika hanya untuk Igil, dua belas bagi satu sama dengan dua belas.",
       bersih(0),
       tambah(0, judul("Mengamati")),
       tambah("pensil", ...PEN("p1", 1)),
-      tambah("Azizah,", ...kartu("e1", 60, 84, 180, 28, W.krem, ["untuk Azizah saja"], 9.6)),
+      tambah("Igil,", ...kartu("e1", 60, 84, 180, 28, W.krem, ["untuk Igil saja"], 9.6)),
       tambah("sama", ...kartu("q1", 60, 124, 180, 30, W.hijauMuda, ["12 : 1 = 12"], 11)),
     ),
     k(
-      "Dibagikan kepada Azizah dan Putu: dua belas bagi dua sama dengan enam. Lalu kepada Azizah, Putu, dan Helen: dua belas bagi tiga sama dengan empat.",
+      "Dibagikan kepada Igil dan Kira: dua belas bagi dua sama dengan enam. Lalu kepada Igil, Kira, dan Halim: dua belas bagi tiga sama dengan empat.",
       bersih(0),
       tambah(0, judul("Mengamati")),
-      tambah("Putu:", ...PEN("p2", 2)),
+      tambah("Kira:", ...PEN("p2", 2)),
       tambah("enam.", ...kartu("q2", 60, 84, 180, 30, W.hijauMuda, ["12 : 2 = 6"], 11)),
       tambah("enam.", ...kartu("r2", 60, 124, 180, 28, W.krem, ["tiap anak 6 pensil"], 9.6)),
-      hapus("Helen:", ...idDari(PEN("p2", 2)), "q2-k", "q2-t0", "r2-k", "r2-t0"),
-      tambah("Helen:", ...PEN("p3", 3)),
+      hapus("Halim:", ...idDari(PEN("p2", 2)), "q2-k", "q2-t0", "r2-k", "r2-t0"),
+      tambah("Halim:", ...PEN("p3", 3)),
       tambah("empat.", ...kartu("q3", 60, 84, 180, 30, W.hijauMuda, ["12 : 3 = 4"], 11)),
       tambah("empat.", ...kartu("r3", 60, 124, 180, 28, W.krem, ["tiap anak 4 pensil"], 9.6)),
     ),
@@ -187,11 +167,7 @@ export const ADEGAN_BUKAN_FAKTOR: AdeganStory = {
   judul: "Mengapa 5 bukan faktor dari 12?",
   sumber: "Materi: bukan faktor dan faktor 20",
   latar: "#F0F9FF",
-  kutipan: [
-    "Mengapa 5 bukan merupakan faktor atau pembagi dari 12?",
-    "Karena sisa bagi 12 dengan 5 tidak sama dengan 0",
-    "Faktor atau pembagi dari 20 adalah 1, 2, 4, 5, 10, dan 20",
-  ],
+  kutipan: kutipanLokal("k4b1i-materi-1.ts:3"),
   ketukan: [
     k(
       "Coba jawab: mengapa lima bukan faktor atau pembagi dari dua belas? Karena sisa bagi dua belas dengan lima tidak sama dengan nol.",
@@ -237,11 +213,7 @@ export const ADEGAN_BERLATIH_FAKTOR_1: AdeganStory = {
   judul: "Latihan 1: tabel faktor 20 dan 48",
   sumber: "Materi: tabel faktor 20 dan 48",
   latar: "#F0FDF4",
-  kutipan: [
-    "Isilah titik-titik pada tabel berikut dengan pembagi atau faktor dari bilangan 20 dan 48",
-    "Jawaban a = 10, b = 5, c = 4, dan d = 10",
-    "Jawaban b = 24, b = 16, c = 12, d = 6, dan e = 8",
-  ],
+  kutipan: kutipanLokal("k4b1i-materi-1.ts:4"),
   ketukan: [
     k(
       "Latihan satu: isilah titik-titik pada tabel dengan faktor dari dua puluh dan empat puluh delapan.",
@@ -284,7 +256,7 @@ export const ADEGAN_BERLATIH_FAKTOR_2: AdeganStory = {
   judul: "Latihan 2: faktor 24, 25, dan 52",
   sumber: "Materi: faktor 24, 25, dan 52",
   latar: "#FEFCE8",
-  kutipan: ["Tuliskan semua faktor dari", "Faktor dari 24 adalah 1,2,3,4,6,8,12,24", "Faktor dari 25 adalah 1,5,25", "Faktor dari 52 adalah 1,2,4,13,26,52"],
+  kutipan: kutipanLokal("k4b1i-materi-1.ts:5"),
   ketukan: [
     k(
       "Latihan dua: tuliskan semua faktor dari dua puluh empat, dua puluh lima, dan lima puluh dua.",
@@ -332,15 +304,10 @@ export const ADEGAN_BERAS: AdeganStory = {
   judul: "Latihan 3: membagi beras sepuluh kilogram",
   sumber: "Materi: membagi 10 kg beras",
   latar: "#FFF7ED",
-  kutipan: [
-    "Slamet membantu ibu membagikan beras kepada masyarakat kurang mampu",
-    "Total beras yang dibagikan oleh Ibu Slamet 10 kg",
-    "Guru harus mengingatkan konsep faktor",
-    "kemungkinan banyaknya orang yang mendapatakan beras adalah 10 orang, 5 orang, 2 orang, 1 orang karena memiliki sisa",
-  ],
+  kutipan: kutipanLokal("k4b1i-materi-1.ts:6"),
   ketukan: [
     k(
-      "Latihan tiga. Slamet membagikan sepuluh kilogram beras kepada beberapa orang dengan berat sama. Berapa kemungkinan banyaknya orang?",
+      "Latihan tiga. Malosi membagikan sepuluh kilogram beras kepada beberapa orang dengan berat sama. Berapa kemungkinan banyaknya orang?",
       bersih(0),
       tambah(0, judul("Latihan 3")),
       tambah("beras", emo("bs0", 150, 78, "🌾", 40)),

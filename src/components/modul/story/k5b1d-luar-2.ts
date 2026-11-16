@@ -133,9 +133,9 @@ export const ADEGAN_LUAR_IC_TERAPAN: AdeganStory = {
       tambah("kembali", emo("h3", 150, 150, "✅", 30)),
     ),
     k(
-      "Periksa pengurangan sisa uang Lukas: dua ribu seratus lima puluh ditambah empat puluh lima ribu tujuh ratus lima puluh kembali ke empat puluh tujuh ribu sembilan ratus.",
+      "Periksa pengurangan sisa uang Igil: dua ribu seratus lima puluh ditambah empat puluh lima ribu tujuh ratus lima puluh kembali ke empat puluh tujuh ribu sembilan ratus.",
       bersih(0),
-      tambah(0, judul("Periksa sisa uang Lukas")),
+      tambah(0, judul("Periksa sisa uang Igil")),
       tambah("Periksa", teks("i1", 150, 58, "47.900 − 45.750 = 2.150", 14, W.biru)),
       tambah("ditambah", teks("i2", 150, 100, "2.150 + 45.750 = 47.900", 14, W.merah)),
       tambah("kembali", emo("i3", 150, 150, "✅", 30)),

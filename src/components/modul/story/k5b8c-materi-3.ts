@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, batangGandaH, batangGandaV, batangH, batangV, emo, kartu, kotak, lambangBulat, legenda, panah, sumbuH, sumbuV, tabel, teks, type GH, type GV } from "./k5b8c-gambar";
 import { bersih, k, sorotkan, tambah } from "./k5b8c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 8. Diagram batang ganda ------------------------------ */
 const SISWA: [string, number, number][] = [
@@ -17,16 +18,10 @@ export const ADEGAN_GABUNG_83E: AdeganStory = {
   judul: "Menggabung dua diagram menjadi batang ganda",
   sumber: "Materi: diagram batang ganda",
   latar: "#FFF7ED",
-  kutipan: [
-    "Eksplorasi 8.3E",
-    "Berapa selisih banyaknya siswa laki-laki dan perempuan pada tahun 2019",
-    "Berapa banyaknya semua siswa kelas V SD Pancasila pada tahun 2021",
-    "disebut sebagai diagram batang ganda",
-    "Apakah sembarang dua data dapat dibuat diagram batang ganda",
-  ],
+  kutipan: kutipanLokal("k5b8c-materi-3.ts:1"),
   ketukan: [
     k(
-      "Sekarang diagram batang ganda. Yohana punya ide, gabungkan diagram siswa laki-laki dan perempuan. Tahunnya sama, jadi bisa digabung dan lebih mudah dibandingkan.",
+      "Sekarang diagram batang ganda. Wei punya ide, gabungkan diagram siswa laki-laki dan perempuan. Tahunnya sama, jadi bisa digabung dan lebih mudah dibandingkan.",
       tambah(0, teks("jud", 150, 24, "Diagram Batang Ganda", 13, W.ungu)),
       tambah("laki-laki", ...kartu("c1", 20, 46, 110, 44, W.langit, ["Diagram siswa", "laki-laki"], 8.6)),
       tambah("perempuan", ...kartu("c2", 170, 46, 110, 44, W.mawar, ["Diagram siswa", "perempuan"], 8.6)),
@@ -87,11 +82,11 @@ const KALORI: [string, number, boolean][] = [
   ["Sayuran hijau", 60, true],
 ];
 const NILAI: [string, number, number][] = [
-  ["Lukas", 65, 80],
-  ["Nisa", 70, 85],
-  ["Komang", 50, 90],
-  ["Asep", 90, 75],
-  ["Yohana", 85, 80],
+  ["Kira", 65, 80],
+  ["Halim", 70, 85],
+  ["Igil", 50, 90],
+  ["Upe", 90, 75],
+  ["Wei", 85, 80],
   ["Robert", 90, 65],
 ];
 const GD: GV = { x: 40, y: 146, w: 232, h: 96, maks: 100, langkah: 25 };
@@ -101,13 +96,7 @@ export const ADEGAN_LATIHAN_DATA: AdeganStory = {
   judul: "Latihan: kalori makanan dan nilai ulangan",
   sumber: "Materi: kalori makanan dan nilai ulangan",
   latar: "#F0F9FF",
-  kutipan: [
-    "Kandungan Kalori Per 100 Gram Makanan",
-    "Kalori adalah satuan energi",
-    "Berapa kandungan kalori yang terdapat pada 100 gram tempe goreng",
-    "Daftar Nilai Ulangan Matematika",
-    "nilai siapakah yang mengalami kenaikan paling tinggi",
-  ],
+  kutipan: kutipanLokal("k5b8c-materi-3.ts:2"),
   ketukan: [
     k(
       "Latihan pertama, diagram kalori setiap seratus gram makanan. Kalori adalah satuan energi. Kalori tertinggi pada daging sapi, terendah pada sayuran hijau.",
@@ -119,9 +108,9 @@ export const ADEGAN_LATIHAN_DATA: AdeganStory = {
       sorotkan("terendah", "kk6-k"),
     ),
     k(
-      "Seratus gram tempe goreng mengandung dua ratus empat puluh kilokalori. Lalu Asep makan lima puluh gram nasi putih, lima puluh gram daging ayam, dan seratus gram sayuran.",
+      "Seratus gram tempe goreng mengandung dua ratus empat puluh kilokalori. Lalu Upe makan lima puluh gram nasi putih, lima puluh gram daging ayam, dan seratus gram sayuran.",
       bersih(0),
-      tambah(0, teks("jud", 150, 18, "Kalori yang dimakan Asep", 11, W.ungu)),
+      tambah(0, teks("jud", 150, 18, "Kalori yang dimakan Upe", 11, W.ungu)),
       tambah("tempe", ...kartu("t0", 30, 28, 240, 30, W.krem, ["tempe goreng 100 g: 240 kkal"], 9)),
       tambah("nasi", ...kartu("t1", 10, 68, 88, 46, W.mint, ["50 g nasi putih", "65"], 8.4)),
       tambah("ayam,", ...kartu("t2", 106, 68, 88, 46, W.mawar, ["50 g daging ayam", "130"], 8.4)),
@@ -132,9 +121,9 @@ export const ADEGAN_LATIHAN_DATA: AdeganStory = {
       tambah("Totalnya", teks("tt", 150, 146, "65 + 130 + 60 = 255", 13, W.ungu)),
     ),
     k(
-      "Berikutnya Lukas makan nasi tiga ratus gram, ayam dua ratus gram, sayuran seratus gram, camilan tiga ratus kilokalori, dan mi instan tiga ratus lima puluh kilokalori.",
+      "Berikutnya Kira makan nasi tiga ratus gram, ayam dua ratus gram, sayuran seratus gram, camilan tiga ratus kilokalori, dan mi instan tiga ratus lima puluh kilokalori.",
       bersih(0),
-      tambah(0, teks("jud", 150, 18, "Makan Lukas dalam sehari", 10, W.ungu)),
+      tambah(0, teks("jud", 150, 18, "Makan Kira dalam sehari", 10, W.ungu)),
       tambah("nasi", ...kartu("e1", 10, 28, 88, 40, W.mint, ["nasi 300 g", "390"], 8.4)),
       tambah("ayam", ...kartu("e2", 106, 28, 88, 40, W.mawar, ["ayam 200 g", "520"], 8.4)),
       tambah("sayuran", ...kartu("e3", 202, 28, 88, 40, W.langit, ["sayuran 100 g", "60"], 8.4)),
@@ -142,29 +131,29 @@ export const ADEGAN_LATIHAN_DATA: AdeganStory = {
       tambah("instan", ...kartu("e5", 106, 76, 88, 40, W.jeruk, ["mi instan", "350"], 8.4)),
     ),
     k(
-      "Totalnya seribu enam ratus dua puluh kilokalori, di bawah kebutuhan dua ribu seratus. Jadi makan Lukas tidak berlebihan.",
+      "Totalnya seribu enam ratus dua puluh kilokalori, di bawah kebutuhan dua ribu seratus. Jadi makan Kira tidak berlebihan.",
       tambah("Totalnya", teks("et", 150, 142, "390 + 520 + 60 + 300 + 350 = 1.620", 10.4, W.ungu)),
       tambah("kebutuhan", teks("ek", 150, 164, "kebutuhan anak laki-laki 2.100", 8.8, W.hijau), emo("ok", 150, 190, "✅", 16)),
     ),
     k(
-      "Latihan kedua, nilai ulangan pertama dan kedua. Lukas enam puluh lima dan delapan puluh, Nisa tujuh puluh dan delapan puluh lima, Komang lima puluh dan sembilan puluh.",
+      "Latihan kedua, nilai ulangan pertama dan kedua. Kira enam puluh lima dan delapan puluh, Halim tujuh puluh dan delapan puluh lima, Igil lima puluh dan sembilan puluh.",
       bersih(0),
       tambah(0, teks("jud", 150, 16, "Latihan: nilai ulangan Matematika", 9.4, W.ungu)),
       tambah("Latihan", ...tabel("nl", 40, 24, [76, 72, 72], 19, [["Nama", "Ulangan ke-1", "Ulangan ke-2"]], 7.4)),
       ...NILAI.slice(0, 3).map(([nama, a, b], i) => tambah(nama, ...barisTabel(`nl${i}`, 40, 43 + i * 19, [76, 72, 72], 19, [nama, String(a), String(b)], 8))),
     ),
     k(
-      "Asep sembilan puluh dan tujuh puluh lima, Yohana delapan puluh lima dan delapan puluh, Robert sembilan puluh dan enam puluh lima.",
+      "Upe sembilan puluh dan tujuh puluh lima, Wei delapan puluh lima dan delapan puluh, Robert sembilan puluh dan enam puluh lima.",
       ...NILAI.slice(3).map(([nama, a, b], i) => tambah(nama, ...barisTabel(`nl${i + 3}`, 40, 43 + (i + 3) * 19, [76, 72, 72], 19, [nama, String(a), String(b)], 8))),
     ),
     k(
-      "Dalam diagram batang ganda, kenaikan tertinggi dialami Komang, naik empat puluh. Penurunan terbanyak dialami Robert, turun dua puluh lima.",
+      "Dalam diagram batang ganda, kenaikan tertinggi dialami Igil, naik empat puluh. Penurunan terbanyak dialami Robert, turun dua puluh lima.",
       bersih(0),
       tambah(0, teks("jud", 150, 12, "Nilai ulangan ke-1 dan ke-2", 8.6, W.ungu)),
       tambah("diagram", ...sumbuV("gd", GD), ...legenda("lg", 70, 17, "Ulangan ke-1", "Ulangan ke-2", 74)),
       tambah("ganda,", ...NILAI.flatMap(([nama, a, b], i) => batangGandaV(`n${i}`, GD, i, 6, a, b, nama))),
-      tambah("Komang,", ...kartu("kn", 40, 164, 100, 34, W.mint, ["Komang naik", "90 - 50 = 40"], 8.2)),
-      sorotkan("Komang,", "n2a-k", "n2b-k"),
+      tambah("Igil,", ...kartu("kn", 40, 164, 100, 34, W.mint, ["Igil naik", "90 - 50 = 40"], 8.2)),
+      sorotkan("Igil,", "n2a-k", "n2b-k"),
       tambah("Robert,", ...kartu("rb", 160, 164, 100, 34, W.mawar, ["Robert turun", "90 - 65 = 25"], 8.2)),
       sorotkan("Robert,", "n5a-k", "n5b-k"),
     ),
@@ -199,14 +188,7 @@ export const ADEGAN_UJI_12: AdeganStory = {
   judul: "Renungan, Uji 1, dan Uji 2",
   sumber: "Materi: renungan, Uji 1, dan Uji 2",
   latar: "#FEFCE8",
-  kutipan: [
-    "Setelah mempelajari materi terkait data, isilah tabel berikut sesuai dengan pemahaman kalian",
-    "Aku dapat membuat diagram batang ganda",
-    "Buatlah diagram batang berdasarkan data pada Tabel 8.13 tersebut",
-    "Ayo Menabung",
-    "Satu set peralatan gambar dengan kualitas yang baik harganya Rp150.000,00",
-    "manakah dari dua diagram batang berikut yang benar",
-  ],
+  kutipan: kutipanLokal("k5b8c-materi-3.ts:3"),
   ketukan: [
     k(
       "Renungan. Bisakah aku membuat diagram batang tegak, mendatar, dan ganda, lalu membaca dan menganalisis datanya?",
@@ -235,7 +217,7 @@ export const ADEGAN_UJI_12: AdeganStory = {
       tambah("turun", teks("tr", 150, 158, "36 - 24 = 12", 13, W.ungu)),
     ),
     k(
-      "Uji dua, tabungan Nisa. Satu lingkaran mewakili empat ribu rupiah. Minggu pertama tujuh belas ribu, lalu dua puluh empat ribu, dua puluh satu ribu, delapan belas ribu, dan dua puluh tiga ribu.",
+      "Uji dua, tabungan Halim. Satu lingkaran mewakili empat ribu rupiah. Minggu pertama tujuh belas ribu, lalu dua puluh empat ribu, dua puluh satu ribu, delapan belas ribu, dan dua puluh tiga ribu.",
       bersih(0),
       tambah(0, teks("jud", 150, 16, "Uji 2: 1 lingkaran = Rp4.000", 8.8, W.ungu)),
       ...TABUNG.map(([minggu, lingkaran, nilai], i) =>
@@ -243,7 +225,7 @@ export const ADEGAN_UJI_12: AdeganStory = {
       ),
     ),
     k(
-      "Paling banyak minggu kedua. Selisih minggu kedua dan kelima hanya seribu. Total seratus tiga ribu, kurang dari seratus lima puluh ribu, jadi Nisa masih perlu menabung empat puluh tujuh ribu.",
+      "Paling banyak minggu kedua. Selisih minggu kedua dan kelima hanya seribu. Total seratus tiga ribu, kurang dari seratus lima puluh ribu, jadi Halim masih perlu menabung empat puluh tujuh ribu.",
       bersih(0),
       tambah(0, teks("jud", 150, 20, "Jawaban Uji 2", 11, W.ungu)),
       tambah("banyak", ...kartu("j1", 16, 30, 268, 30, W.krem, ["paling banyak: minggu 2"], 9)),
@@ -289,12 +271,7 @@ export const ADEGAN_UJI_3: AdeganStory = {
   judul: "Uji 3 dan tantangan menu sehari",
   sumber: "Materi: Uji 3 dan tantangan menu sehari",
   latar: "#F0FDF4",
-  kutipan: [
-    "Pengguna Internet di Indonesia",
-    "Data Pengguna Internet di Indonesia Per Januari 2021",
-    "Tentukan total persentase pengguna internet dari kelompok umur 35 sampai 44 tahun",
-    "Urutkan banyaknya pengguna internet dari yang paling rendah ke yang paling tinggi",
-  ],
+  kutipan: kutipanLokal("k5b8c-materi-3.ts:4"),
   ketukan: [
     k(
       "Uji tiga, pengguna internet menurut kelompok umur, dalam diagram batang laki-laki dan perempuan. Kelompok dua puluh lima sampai tiga puluh empat tahun adalah yang tertinggi.",

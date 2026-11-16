@@ -1,31 +1,25 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bagi, botol, emo, gelas, kartu, pecahan, teks } from "./k6b1b-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k6b1b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
-/* ------------------------------ 1. Agam, botol, dan gelas (cerita pembuka) ------------------------------ */
+/* ------------------------------ 1. Malosi, botol, dan gelas (cerita pembuka) ------------------------------ */
 export const ADEGAN_BOTOL: AdeganStory = {
   id: "botol-agam",
-  judul: "Agam, botol, dan gelas",
-  sumber: "Materi: cerita Agam dan botol",
+  judul: "Malosi, botol, dan gelas",
+  sumber: "Materi: cerita Malosi dan botol",
   latar: "#ECFEFF",
-  kutipan: [
-    "B. Pembagian Pecahan",
-    "1. Pembagian Pecahan dengan Bilangan Asli",
-    "Agam memiliki sebuah botol air minum",
-    "Botol tersebut berisi air sebanyak 1 liter",
-    "Agam akan membagi air tersebut ke dalam beberapa gelas secara merata",
-    "Bantulah Agam untuk menentukan",
-  ],
+  kutipan: kutipanLokal("k6b1b-materi-1.ts:1"),
   ketukan: [
     k(
-      "Perhatikan cerita Agam. Agam memiliki sebuah botol air minum. Botol itu berisi air sebanyak 1 liter.",
+      "Perhatikan cerita Malosi. Malosi memiliki sebuah botol air minum. Botol itu berisi air sebanyak 1 liter.",
       bersih(0),
-      tambah("Agam", emo("ag", 70, 120, "👦", 36), teks("agt", 70, 142, "Agam", 9)),
+      tambah("Malosi", emo("ag", 70, 120, "👦", 36), teks("agt", 70, 142, "Malosi", 9)),
       tambah("botol", botol("bt", 140, 60, W.air)),
       tambah("liter.", teks("bl", 147, 112, "1 liter", 11, W.biru)),
     ),
     k(
-      "Agam akan membagi air itu rata ke beberapa gelas. Berapa air di setiap gelas?",
+      "Malosi akan membagi air itu rata ke beberapa gelas. Berapa air di setiap gelas?",
       tambah("gelas", gelas("g0", 215, 110), gelas("g1", 238, 110), gelas("g2", 261, 110)),
       tambah("rata", teks("sm", 238, 142, "dibagi sama rata", 8.4, W.hijau)),
       tambah("Berapa", teks("tn", 150, 190, "berapa air di tiap gelas?", 10, W.merah)),
@@ -33,7 +27,7 @@ export const ADEGAN_BOTOL: AdeganStory = {
     k(
       "Ada tiga pertanyaan. Bagian a: 1 liter dibagi rata ke 3 gelas. Bagian b: setengah liter. Bagian c: sepertiga liter.",
       bersih(0),
-      tambah("pertanyaan.", teks("jud", 150, 22, "Tiga pertanyaan Agam", 12, W.ungu)),
+      tambah("pertanyaan.", teks("jud", 150, 22, "Tiga pertanyaan Malosi", 12, W.ungu)),
       tambah("dibagi", kartu("qa", 14, 36, 272, 40, W.muda, ["a. 1 liter dibagi rata ke 3 gelas"], 9.2)),
       tambah("setengah", kartu("qb", 14, 86, 272, 40, W.hijauMuda, ["b. 1/2 liter dibagi rata ke 3 gelas"], 9.2)),
       tambah("sepertiga", kartu("qc", 14, 136, 272, 40, W.krem, ["c. 1/3 liter dibagi rata ke 3 gelas"], 9.2)),
@@ -51,17 +45,10 @@ export const ADEGAN_EKSPLOR13A: AdeganStory = {
   judul: "Bagian a: 1 liter ke 3 gelas",
   sumber: "Materi: satu liter ke tiga gelas",
   latar: "#F0F9FF",
-  kutipan: [
-    "Eksplorasi 1.3",
-    "Ayo membantu Agam untuk menghitung banyak air di dalam masing-masing gelas",
-    "Misalkan 1 liter air di dalam botol digambarkan 1 kotak penuh",
-    "Gambarlah/arsirlah bagian yang menunjukkan bagian air di setiap gelas",
-    "Diperoleh setiap bagian bernilai",
-    "Jadi, setiap gelas akan terisi",
-  ],
+  kutipan: kutipanLokal("k6b1b-materi-1.ts:2"),
   ketukan: [
     k(
-      "Mari kita kerjakan bagian a. Botol Agam berisi 1 liter air, digambarkan sebagai satu kotak penuh.",
+      "Mari kita kerjakan bagian a. Botol Malosi berisi 1 liter air, digambarkan sebagai satu kotak penuh.",
       tambah(0, teks("jud", 150, 24, "Bagian a: 1 liter ke 3 gelas", 12, W.ungu)),
       tambah("Botol", bagi("b", PX, 90, PW, 28, 1, 1)),
       tambah("liter", teks("tl", 150, 78, "1 liter = 1 kotak penuh", 10)),
@@ -104,15 +91,10 @@ export const ADEGAN_EKSPLOR13BC: AdeganStory = {
   judul: "Bagian b dan c: setengah dan sepertiga liter",
   sumber: "Materi: setengah dan sepertiga liter",
   latar: "#F0FDF4",
-  kutipan: [
-    "Jika botol Agam berisi",
-    "Gambarlah/arsirlah bagian yang menunjukkan banyak air di dalam botol",
-    "Diperoleh setiap bagian bernilai",
-    "setiap gelas akan terisi",
-  ],
+  kutipan: kutipanLokal("k6b1b-materi-1.ts:3"),
   ketukan: [
     k(
-      "Bagian b. Sekarang botol Agam hanya berisi setengah liter air, lalu dituang rata ke 3 gelas.",
+      "Bagian b. Sekarang botol Malosi hanya berisi setengah liter air, lalu dituang rata ke 3 gelas.",
       tambah(0, teks("jud", 150, 24, "Bagian b: setengah liter", 12, W.ungu)),
       tambah("botol", bagi("b", PX, 80, PW, 28, 2, 0)),
       ubah("setengah", { id: "b0", warna: W.air }),
@@ -167,16 +149,7 @@ export const ADEGAN_KESIMPULAN13: AdeganStory = {
   judul: "Kesimpulan: pecahan dibagi bilangan asli",
   sumber: "Materi: kesimpulan pecahan dibagi asli",
   latar: "#FFF7ED",
-  kutipan: [
-    "Apa yang dapat kalian simpulkan",
-    "bagiannya bertambah banyak tetapi nilainya",
-    "tergantung dari faktor pembagiannya",
-    "Ingatlah kembali pelajaran sebelumnya",
-    "Intuisi Bilangan",
-    "Membagi pecahan dengan bilangan asli berarti membagi pecahan",
-    "menjadi beberapa bagian sebanyak bilangan aslinya",
-    "Hasil pembagiannya menunjukkan nilai setiap bagian",
-  ],
+  kutipan: kutipanLokal("k6b1b-materi-1.ts:4"),
   ketukan: [
     k(
       "Dari bagian a, b, dan c, bagian pecahan bertambah banyak tetapi nilainya makin kecil, tergantung faktor pembaginya.",

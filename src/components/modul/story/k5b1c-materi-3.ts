@@ -1,8 +1,9 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bingkai, emo, isiSel, judul, kartu, kotak, teks, type Grid } from "./k5b1c-gambar";
 import { bersih, hapus, k, tambah } from "./k5b1c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
-/** Tabel empat cara uang Komang (Buku Siswa hlm. 17): label Cara 1 sampai Cara 4 dan lima kolom nilai tempat. */
+/** Tabel empat cara uang Kira (Buku Siswa hlm. 17): label Cara 1 sampai Cara 4 dan lima kolom nilai tempat. */
 export const G_CARA: Grid = { x: 8, y: 28, labelW: 34, colW: 50, rowH: 20, headH: 16 };
 export const LABEL_CARA = ["Cara 1", "Cara 2", "Cara 3", "Cara 4"];
 /** Empat cara membayar Rp45.600: banyak lembar sepuluh ribuan, lembar seribuan, dan keping seratusan. Dihitung dan diuji mandiri; buku dan Panduan Guru tidak memberi kunci. */
@@ -18,16 +19,16 @@ const barisCara = (id: string, i: number): ReturnType<typeof isiSel>[] => {
   return [isiSel(id, G_CARA, i, 0, String(p)), isiSel(id, G_CARA, i, 1, String(r)), isiSel(id, G_CARA, i, 2, String(s)), isiSel(id, G_CARA, i, 3, "0"), isiSel(id, G_CARA, i, 4, "0")];
 };
 
-/* ------------------------------ 9. Empat cara uang Komang (Buku Siswa hlm. 16 dan 17) ------------------------------ */
+/* ------------------------------ 9. Empat cara uang Kira (Buku Siswa hlm. 16 dan 17) ------------------------------ */
 export const ADEGAN_CARA_KOMANG: AdeganStory = {
   id: "cara-komang",
-  judul: "Empat cara uang Komang",
-  sumber: "Materi: empat cara uang Komang",
+  judul: "Empat cara uang Kira",
+  sumber: "Materi: empat cara uang Kira",
   latar: "#F5F3FF",
-  kutipan: ["Puluh Ribuan Ribuan Ratusan Puluhan Satuan", "Cara 1", "Cara 2", "Cara 3", "Cara 4", "Komang membeli peralatan sekolah senilai Rp45.600,00."],
+  kutipan: kutipanLokal("k5b1c-materi-3.ts:1"),
   ketukan: [
     k(
-      "Ayo cari cara pertama. Komang tidak mungkin memakai lima lembar sepuluh ribuan, karena lima puluh ribu sudah lebih besar dari empat puluh lima ribu enam ratus. Jadi paling banyak empat lembar.",
+      "Ayo cari cara pertama. Kira tidak mungkin memakai lima lembar sepuluh ribuan, karena lima puluh ribu sudah lebih besar dari empat puluh lima ribu enam ratus. Jadi paling banyak empat lembar.",
       tambah(0, judul("Menemukan empat cara")),
       tambah("lima", ...kartu("c1", 14, 36, 128, 46, W.merahMuda, ["5 lembar 10.000", "jadi 50.000"], 9)),
       tambah("empat@2", ...kartu("c2", 158, 36, 128, 46, W.krem, ["harga", "Rp45.600"], 9.4)),
@@ -65,8 +66,8 @@ export const ADEGAN_CARA_KOMANG: AdeganStory = {
       tambah("seratusan", { id: "e1", t: "teks", x: 150, y: 146, isi: "30.000 + 14.000 + 1.600 = 45.600", u: 9.4, warna: W.coklat }),
     ),
     k(
-      "Keempat cara memakai uang yang berbeda, tetapi semuanya tepat empat puluh lima ribu enam ratus rupiah, dan tidak ada yang melebihi uang Komang. Cara lain tidak ada.",
-      tambah("semuanya", ...kartu("ok", 20, 158, 260, 34, W.hijauMuda, ["✓ semua tepat Rp45.600, tidak melebihi uang Komang"], 8.6)),
+      "Keempat cara memakai uang yang berbeda, tetapi semuanya tepat empat puluh lima ribu enam ratus rupiah, dan tidak ada yang melebihi uang Kira. Cara lain tidak ada.",
+      tambah("semuanya", ...kartu("ok", 20, 158, 260, 34, W.hijauMuda, ["✓ semua tepat Rp45.600, tidak melebihi uang Kira"], 8.6)),
       hapus("Cara", "e1"),
       tambah("lain", emo("em", 150, 140, "🔎", 18)),
     ),
@@ -81,18 +82,7 @@ export const ADEGAN_PERAN: AdeganStory = {
   judul: "Peran guru, respons, dan antisipasi",
   sumber: "Panduan Guru hlm. 30 dan 31",
   latar: "#FFFBEB",
-  kutipan: [
-    "Tabel 1.4 Peran Guru dan Respons Peserta Didik terhadap Pembelajaran",
-    "Guru menyampaikan tujuan dan instruksi dengan jelas terkait kegiatan eksplorasi yang dilakukan, yaitu komposisi dan dekomposisi bilangan sampai 100.000.",
-    "Peserta didik dengan tingkat pemahaman yang baik akan dapat melakukan komposisi dan dekomposisi uang yang diberikan guru.",
-    "Mungkin ada peserta didik yang hanya mampu melakukan komposisi dan dekomposisi dengan satu cara.",
-    "Mungkin akan ada peserta didik yang tidak dapat melakukan komposisi.",
-    "Guru menjadi fasilitator.",
-    "Jika masih ada yang belum tepat, berikan bimbingan kepada kelompok tersebut.",
-    "Akhir Pembelajaran",
-    "Berikan kesempatan kepada peserta didik untuk mempresentasikan hasil kerjanya.",
-    "Peserta didik mengerjakan latihan.",
-  ],
+  kutipan: kutipanLokal("k5b1c-materi-3.ts:2"),
   ketukan: [
     k(
       "Tujuan kegiatan ini: memberikan komposisi dan dekomposisi sampai seratus ribu lewat percobaan dan eksplorasi. Di akhir, peserta didik menyampaikan kesimpulan tentang komposisi uang.",
@@ -142,7 +132,7 @@ export const ADEGAN_RANGKUM: AdeganStory = {
   judul: "Rangkuman komposisi dan dekomposisi",
   sumber: "Materi: rangkuman komposisi",
   latar: "#F0F9FF",
-  kutipan: ["Ajak peserta didik untuk menyimpulkan cara melakukan komposisi dan dekomposisi bilangan dengan menggunakan pecahan uang atau dengan menggunakan cara lain."],
+  kutipan: kutipanLokal("k5b1c-materi-3.ts:3"),
   ketukan: [
     k(
       "Kita rangkum. Komposisi: banyak lembar dan keping uang kita tulis di tabel nilai tempat, lalu nilai tiap kolom dikumpulkan menjadi satu bilangan.",
@@ -151,11 +141,11 @@ export const ADEGAN_RANGKUM: AdeganStory = {
       tambah("tabel", emo("q2", 150, 150, "💰", 32)),
     ),
     k(
-      "Contohnya uang Asep: tiga, delapan, enam menjadi tiga puluh delapan ribu enam ratus. Uang Lukas: enam, tiga, lima menjadi enam puluh tiga ribu lima ratus.",
+      "Contohnya uang Malosi: tiga, delapan, enam menjadi tiga puluh delapan ribu enam ratus. Uang Igil: enam, tiga, lima menjadi enam puluh tiga ribu lima ratus.",
       bersih(0),
       tambah(0, judul("Komposisi: dua contoh")),
-      tambah("Asep", ...kartu("q3", 20, 44, 260, 44, W.langit, ["Asep: 3, 8, 6 menjadi 38.600"], 10)),
-      tambah("Lukas", ...kartu("q4", 20, 104, 260, 44, W.pink, ["Lukas: 6, 3, 5 menjadi 63.500"], 10)),
+      tambah("Malosi", ...kartu("q3", 20, 44, 260, 44, W.langit, ["Malosi: 3, 8, 6 menjadi 38.600"], 10)),
+      tambah("Igil", ...kartu("q4", 20, 104, 260, 44, W.pink, ["Igil: 6, 3, 5 menjadi 63.500"], 10)),
     ),
     k(
       "Dekomposisi: dari satu bilangan kita cari lembar dan kepingnya. Harga empat puluh lima ribu enam ratus bisa diuraikan dengan empat cara berbeda.",
@@ -229,14 +219,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Miskonsepsi dan diferensiasi",
   sumber: "Panduan Guru hlm. 31",
   latar: "#FEF2F2",
-  kutipan: [
-    "Miskonsepsi",
-    "Kesalahan yang sering terjadi adalah peserta didik jarang menggunakan permasalahan kontekstual untuk menyelesaikan masalah.",
-    "Kemungkinan peserta didik kurang memahami soal cerita yang disajikan",
-    "Diferensiasi",
-    "Bagi peserta didik dengan kecepatan belajar tinggi (advanced), minta mereka mengerjakan eksplorasi tanpa bantuan,",
-    "serta mampu menggunakan berbagai cara untuk menentukan komposisi dan dekomposisi bilangan.",
-  ],
+  kutipan: kutipanLokal("k5b1c-materi-3.ts:4"),
   ketukan: [
     k(
       "Miskonsepsi. Kesalahan yang sering terjadi: peserta didik jarang memakai permasalahan kontekstual untuk menyelesaikan masalah.",
@@ -249,12 +232,12 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
       tambah("kurang", ...kartu("m3", 24, 148, 252, 40, W.krem, ["kurang paham soal cerita", "penerapan sehari-hari terbatas"], 8.8)),
     ),
     k(
-      "Contohnya cerita Asep, Lukas, dan Komang di buku: ketiganya soal kontekstual tentang uang.",
+      "Contohnya cerita Malosi, Igil, dan Kira di buku: ketiganya soal kontekstual tentang uang.",
       bersih(0),
       tambah(0, judul("Soal kontekstual di buku")),
-      tambah("Asep", emo("n1", 50, 70, "💵", 28), ...kartu("n1k", 14, 84, 80, 34, W.langit, ["Asep"], 10)),
-      tambah("Lukas", emo("n2", 150, 70, "💵", 28), ...kartu("n2k", 110, 84, 80, 34, W.pink, ["Lukas"], 10)),
-      tambah("Komang", emo("n3", 250, 70, "💵", 28), ...kartu("n3k", 206, 84, 80, 34, W.hijauMuda, ["Komang"], 10)),
+      tambah("Malosi", emo("n1", 50, 70, "💵", 28), ...kartu("n1k", 14, 84, 80, 34, W.langit, ["Malosi"], 10)),
+      tambah("Igil", emo("n2", 150, 70, "💵", 28), ...kartu("n2k", 110, 84, 80, 34, W.pink, ["Igil"], 10)),
+      tambah("Kira", emo("n3", 250, 70, "💵", 28), ...kartu("n3k", 206, 84, 80, 34, W.hijauMuda, ["Kira"], 10)),
     ),
     k(
       "Diferensiasi. Bagi peserta didik dengan kecepatan belajar tinggi, minta mereka mengerjakan eksplorasi tanpa bantuan.",
@@ -264,8 +247,8 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
       tambah("tanpa", ...kartu("d2", 24, 96, 252, 44, W.hijauMuda, ["eksplorasi", "tanpa bantuan"], 10.4)),
     ),
     k(
-      "Mereka juga diminta mampu memakai berbagai cara untuk menentukan komposisi dan dekomposisi bilangan, seperti empat cara uang Komang tadi.",
-      tambah("berbagai", ...kartu("d3", 24, 148, 252, 40, W.krem, ["berbagai cara, seperti", "4 cara uang Komang"], 9.4)),
+      "Mereka juga diminta mampu memakai berbagai cara untuk menentukan komposisi dan dekomposisi bilangan, seperti empat cara uang Kira tadi.",
+      tambah("berbagai", ...kartu("d3", 24, 148, 252, 40, W.krem, ["berbagai cara, seperti", "4 cara uang Kira"], 9.4)),
     ),
   ],
 };
@@ -276,13 +259,7 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   judul: "Refleksi nomor 6 dan 7",
   sumber: "Buku Siswa hlm. 26; Panduan Guru hlm. 31",
   latar: "#FDF2F8",
-  kutipan: [
-    "Releksi",
-    "Guru dapat menutup pembelajaran dengan meminta peserta didik melakukan",
-    "Aku dapat menyusun/komposisi bilangan cacah sampai 100.000.",
-    "Aku dapat menguraikan/dekomposisi bilangan cacah sampai 100.000.",
-    "Berilah tanda centang (√) pada kolom yang sesuai.",
-  ],
+  kutipan: kutipanLokal("k5b1c-materi-3.ts:5"),
   ketukan: [
     k(
       "Refleksi. Guru menutup pembelajaran dengan meminta peserta didik merefleksikan apa yang sudah dipelajari.",
@@ -312,7 +289,7 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
       tambah("dekomposisi", emo("n7e", 150, 144, "🧩", 30)),
     ),
     k(
-      "Jawab Ya bila kamu sudah bisa membuktikannya dengan uang Asep, Lukas, dan Komang. Jika belum, ulangi tabel nilai tempatnya sampai lancar.",
+      "Jawab Ya bila kamu sudah bisa membuktikannya dengan uang Malosi, Igil, dan Kira. Jika belum, ulangi tabel nilai tempatnya sampai lancar.",
       bersih(0),
       tambah(0, judul("Jawab dengan jujur")),
       tambah("Ya", ...kartu("y1", 30, 60, 110, 44, W.hijauMuda, ["Ya", "sudah bisa"], 10)),

@@ -1,6 +1,7 @@
 import type { AdeganStory, Aksi } from "./logika-story";
 import { W, barisFrek, emo, idBarisFrek, judul, kartu, kepalaFrek, panah, tabel, teks } from "./k5b8a-gambar";
 import { bersih, hapus, k, sorotkan, tambah } from "./k5b8a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Latihan bersama: mengumpulkan data sendiri ------------------------------ */
 const KOL_SEPATU = [80, 90, 50];
@@ -11,16 +12,7 @@ export const ADEGAN_SEPATU: AdeganStory = {
   judul: "Latihan bersama: data ukuran sepatu",
   sumber: "Materi: data ukuran sepatu",
   latar: "#ECFEFF",
-  kutipan: [
-    "Eksplorasi 8.1B",
-    "Ayo Bekerja Sama",
-    "coba kumpulkan data ukuran sepatu",
-    "Tanyailah teman kalian satu per satu",
-    "Buatlah tabel frekuensi dari hasil pengukuran yang kalian",
-    "saran apa yang akan kalian berikan kepada pedagang sepatu",
-    "Ayo presentasikan hasil kerja kalian di depan kelas",
-    "Bandingkan",
-  ],
+  kutipan: kutipanLokal("k5b8a-materi-3.ts:1"),
   ketukan: [
     k(
       "Sekarang giliran kalian mengumpulkan data sendiri, yaitu ukuran sepatu teman sekelas, secara berkelompok.",
@@ -101,16 +93,7 @@ export const ADEGAN_LATIHAN: AdeganStory = {
   judul: "Latihan: nilai ulangan Matematika SD Mekarsari",
   sumber: "Materi: tabel frekuensi nilai ulangan",
   latar: "#FDF4FF",
-  kutipan: [
-    "Ayo Berlatih",
-    "Data berikut menunjukkan hasil ulangan Matematika siswa kelas V",
-    "SD Mekarsari",
-    "Tabel 8.5 Hasil Ulangan Matematika Siswa Kelas V SD Mekarsari",
-    "Berapa nilai tertinggi pada hasil ulangan Matematika tersebut",
-    "Ada berapa siswa yang mendapat nilai tertinggi",
-    "Jika siswa dengan nilai kurang dari 70 harus mengikuti remedi",
-    "ada berapa siswa yang mengikuti remedi",
-  ],
+  kutipan: kutipanLokal("k5b8a-materi-3.ts:2"),
   ketukan: [
     k(
       "Sekarang Latihan satu. Ini data nilai ulangan Matematika siswa kelas lima SD Mekarsari: ada dua puluh lima nilai, dari empat puluh sampai seratus.",
@@ -164,12 +147,7 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   judul: "Hati-hati, tantangan, dan renungan",
   sumber: "Materi: pesan guru dan renungan",
   latar: "#F0F9FF",
-  kutipan: [
-    "Setelah mempelajari materi terkait data, isilah tabel berikut sesuai",
-    "Aku dapat mengumpulkan data sederhana dari",
-    "lingkungan sekitar",
-    "Aku dapat menyajikan hasil pengumpulan data",
-  ],
+  kutipan: kutipanLokal("k5b8a-materi-3.ts:3"),
   ketukan: [
     k(
       "Hati-hati, ada kesalahan yang sering terjadi: hasil pengamatan terlewat atau terhitung dua kali. Turus membantu kita menghindarinya.",

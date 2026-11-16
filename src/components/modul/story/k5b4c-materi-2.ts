@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bangunC, emo, garis, judul, kartu, labelSisi, sisiGaris, teks } from "./k5b4c-gambar";
 import { bersih, k, tambah, ubah } from "./k5b4c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Eksplorasi 4.3B bagian a: jajargenjang (hlm. 119; Panduan Guru hlm. 142 sampai 144) ------------------------------ */
 export const ADEGAN_EKS_43B_JAJAR: AdeganStory = {
@@ -8,27 +9,7 @@ export const ADEGAN_EKS_43B_JAJAR: AdeganStory = {
   judul: "Keliling jajargenjang",
   sumber: "Materi: keliling jajargenjang",
   latar: "#FEF9C3",
-  kutipan: [
-    "Eksplorasi 4.3B",
-    "Ayo Berlatih",
-    "Apakah nama bangun datar berikut?",
-    "Apakah ada sisi-",
-    "sisi yang sama",
-    "panjang?",
-    "Bagaimana cara menghitung kelilingnya?",
-    "peserta didik diminta menemukan cara menghitung keliling",
-    "jajargenjang dan layang-layang dengan mengingat cara menghitung keliling",
-    "persegi panjang.",
-    "Keliling = 5 + 3 + 5 + 3",
-    "= 5 + 5 + 3 + 3",
-    "= (2 x 5) + (2 x 3)",
-    "= 10 + 6",
-    "sisi alas",
-    "sisi samping",
-    "Pada jajargenjang, keliling dihitung dengan cara menjumlahkan dua kali",
-    "sisi alas dan dua kali sisi sampingnya.",
-    "Keliling = (2 x panjang sisi alas) + (2 x panjang sisi samping)",
-  ],
+  kutipan: kutipanLokal("k5b4c-materi-2.ts:1"),
   ketukan: [
     k(
       "Sekarang bangun kedua. Perhatikan bangun dengan sisi lima sentimeter dan tiga sentimeter. Apa namanya? Jajargenjang. Apakah ada sisi yang sama panjang?",
@@ -82,28 +63,7 @@ export const ADEGAN_EKS_43B_LAYANG: AdeganStory = {
   judul: "Keliling layang-layang",
   sumber: "Materi: keliling layang-layang",
   latar: "#FDF2F8",
-  kutipan: [
-    "Layang-layang",
-    "Adakah sisi-sisinya yang sama panjang?",
-    "menjumlahkan sisi-sisi layang-layang,",
-    "mengelompokkan",
-    "pasangan sisi-sisi yang",
-    "sama panjang, dan",
-    "mengubahnya menjadi",
-    "bentuk perkalian.",
-    "sisi pendek",
-    "sisi panjang",
-    "Keliling = 2 + 2 + 4 + 4",
-    "= (2 x 2) + (2 x 4)",
-    "= 4 + 8",
-    "Keliling = sisi pendek+ sisi pendek +",
-    "sisi panjang + sisi panjang",
-    "= (2 x sisi pendek)",
-    "+ (2 x sisi panjang)",
-    "Pada layang-layang, keliling dihitung dengan cara",
-    "menjumlahkan dua kali sisi pendek dan dua kali sisi panjang.",
-    "Keliling = (2 x sisi pendek) + (2 x sisi panjang)",
-  ],
+  kutipan: kutipanLokal("k5b4c-materi-2.ts:2"),
   ketukan: [
     k(
       "Sekarang layang-layang. Dua sisinya bertanda dua sentimeter dan dua sisi lainnya empat sentimeter. Apakah ada sisi yang sama panjang?",
@@ -159,25 +119,7 @@ export const ADEGAN_EKS_43C_PERSEGI: AdeganStory = {
   judul: "Keliling persegi",
   sumber: "Materi: keliling persegi",
   latar: "#F0FDF4",
-  kutipan: [
-    "Eksplorasi 4.3C",
-    "Perhatikan bangun datar berikut.",
-    "Apa nama bangun datar di samping?",
-    "Apakah ada sisi-sisi yang sama panjang?",
-    "Ternyata semua",
-    "sisinya sama panjang.",
-    "Keliling = 3 + … + … + …",
-    "= … × 3",
-    "Dengan demikian, diperoleh kelilingnya",
-    "Keliling = sisi + … + … + …",
-    "= … × sisi.",
-    "Pada persegi, keliling dihitung dengan cara menghitung",
-    "empat kali panjang sisinya.",
-    "Keliling = 4 × panjang sisinya",
-    "banyaknya sisi-sisi yang sama panjang akan menjadi pengali dalam",
-    "rumus keliling.",
-    "panjang sisi-sisi tersebut dikali 4 saat menghitung kelilingnya.",
-  ],
+  kutipan: kutipanLokal("k5b4c-materi-2.ts:3"),
   ketukan: [
     k(
       "Sekarang persegi. Perhatikan bangun ini. Salah satu sisinya tiga sentimeter. Apa namanya? Ukur sisi lain dengan penggaris. Apakah ada sisi yang sama panjang?",
@@ -233,22 +175,7 @@ export const ADEGAN_EKS_43D_BELAH: AdeganStory = {
   judul: "Keliling belah ketupat",
   sumber: "Materi: keliling belah ketupat",
   latar: "#FFF7ED",
-  kutipan: [
-    "Eksplorasi 4.3D",
-    "Apakah nama bangun datar berikut?",
-    "Bagaimana cara menghitung kelilingnya?",
-    "yang sama panjang?",
-    "Ayo Mengingat Kembali",
-    "Ingatlah bahwa keliling bangun datar merupakan jumlahan",
-    "panjang sisi-sisinya.",
-    "Belah ketupat",
-    "Keliling = 3 + 3 + 3 + 3",
-    "= 4 x 3",
-    "= 12",
-    "Seperti halnya persegi, keliling belah ketupat dihitung dengan",
-    "cara menghitung empat kali panjang sisinya.",
-    "Keliling = 4 x panjang sisi",
-  ],
+  kutipan: kutipanLokal("k5b4c-materi-2.ts:4"),
   ketukan: [
     k(
       "Sekarang belah ketupat. Apa nama bangun ini? Bagaimana cara menghitung kelilingnya? Apakah ada sisi yang sama panjang?",

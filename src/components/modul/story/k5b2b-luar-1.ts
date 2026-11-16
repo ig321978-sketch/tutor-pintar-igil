@@ -32,13 +32,13 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("Bedanya", teks("q2", 150, 136, "cara mencarinya yang berbeda", 10.4, W.merah)),
     ),
     k(
-      "Angka yang kita pakai sama seperti tadi: empat dan lima, enam dan delapan, tiga, empat, dan lima, serta jadwal renang Nisa, Yohana, Asep, dan Lukas.",
+      "Angka yang kita pakai sama seperti tadi: empat dan lima, enam dan delapan, tiga, empat, dan lima, serta jadwal renang Malosi, Igil, Kira, dan Halim.",
       bersih(0),
       tambah(0, judul("Angka yang kita pakai")),
       tambah("empat", ...kartu("a1", 14, 34, 128, 40, W.hijauMuda, ["KPK 4 dan 5"], 9.4), ...kartu("a2", 158, 34, 128, 40, W.langit, ["KPK 6 dan 8"], 9.4)),
       tambah("tiga,", ...kartu("a3", 14, 88, 128, 40, W.krem, ["KPK 3, 4, dan 5"], 9.4)),
       tambah("jadwal", ...kartu("a4", 158, 88, 128, 40, W.pink, ["jadwal renang"], 9.4)),
-      tambah("Nisa,", teks("a5", 150, 156, "Nisa, Yohana, Asep, dan Lukas", 9.4, W.coklat)),
+      tambah("Malosi,", teks("a5", 150, 156, "Malosi, Igil, Kira, dan Halim", 9.4, W.coklat)),
     ),
   ],
 };

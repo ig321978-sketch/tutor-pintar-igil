@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { LATIHAN_DUA, LATIHAN_SATU, W, deret, emo, fmt, judul, kartu, kotak, selTabel, tabelNilai, teks } from "./k4b1c-gambar";
 import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Membandingkan dari ribuan (Buku Siswa hlm. 18; Panduan Guru hlm. 41) ------------------------------ */
 const SUARA_R1 = "Setelah aktivitas tiga, perhatikan penjelasan ini. Bilangan delapan ribu tujuh ratus lima puluh kita tulis pada tabel nilai tempat: ribuan delapan, ratusan tujuh, puluhan lima, satuan nol.";
@@ -13,14 +14,7 @@ export const ADEGAN_RIBUAN: AdeganStory = {
   judul: "Membandingkan dua bilangan mulai dari ribuan",
   sumber: "Materi: bandingkan mulai dari ribuan",
   latar: "#EFF6FF",
-  kutipan: [
-    "Setelah melakukan aktivitas 3, perhatikan penjelasan berikut dengan cermat.",
-    "Bandingkan angka pada tempat ribuan.",
-    "Angka pada tempat ribuan untuk 8.750 adalah 8.",
-    "Karena 8 lebih dari 7. Jadi, 8.750 lebih dari 7.500.",
-    "Dapat ditulis 8.750 > 7.500. Keterangan: untuk tanda",
-    "melibatkan nilai tempat setiap angka dari bilangan cacah yang akan dibandingkan",
-  ],
+  kutipan: kutipanLokal("k4b1c-materi-2.ts:1"),
   ketukan: [
     k(
       SUARA_R1,
@@ -68,19 +62,7 @@ export const ADEGAN_LANJUT: AdeganStory = {
   judul: "Ribuan sama: bandingkan puluhan atau satuan",
   sumber: "Materi: ribuan sama, lanjut ke kanan",
   latar: "#FFFBEB",
-  kutipan: [
-    "Perhatikan bilangan 4.352 dan 4.365, selanjutnya kita bandingkan nilai tempat",
-    "masing-masing adalah sama, maka kita bandingkan angka pada nilai tempat puluhan.",
-    "Angka pada tempat puluhan untuk 4.352 adalah 5.",
-    "Angka pada tempat puluhan untuk 4.365 adalah 6.",
-    "Karena 5 kurang dari 6. Jadi, 4.352 kurang dari 4.365.",
-    "Dapat ditulis 4.352 < 4.365. Keterangan: untuk tanda",
-    "Perhatikan bilangan 4.352 dan 4.355",
-    "Angka pada tempat satuan untuk 4.352 adalah 2.",
-    "Angka pada tempat satuan untuk 4.355 adalah 5.",
-    "Karena 2 kurang dari 5. Jadi, 4.352 kurang dari 4.355.",
-    "Dapat ditulis 4.352 < 4.355.",
-  ],
+  kutipan: kutipanLokal("k4b1c-materi-2.ts:2"),
   ketukan: [
     k(
       SUARA_B1,
@@ -138,17 +120,7 @@ export const ADEGAN_SAMA: AdeganStory = {
   judul: "Bilangan sama dan aturan membandingkan",
   sumber: "Materi: bilangan sama dan aturan",
   latar: "#F5F3FF",
-  kutipan: [
-    "Perhatikan bilangan 4.352 dan 4.352, selanjutnya kita bandingkan nilai tempat",
-    "Angka pada nilai tempat ribuan, ratusan, puluhan dan satuan adalah sama.",
-    "Jadi, 4.352 sama dengan 4.352.",
-    "Dapat ditulis 4.352 = 4.352.",
-    "Kalian sudah membandingkan dua bilangan menggunakan notasi",
-    "Jadi, untuk membandingkan bilangan empat angka, pertama kita",
-    "bandingkan angka pada nilai tempat ribuan. Jika angka pada nilai tempat",
-    "ribuan adalah sama, maka kita bandingkan angka pada nilai tempat ratusan.",
-    "Untuk membandingkan bilangan empat angka, pertama kita bandingkan",
-  ],
+  kutipan: kutipanLokal("k4b1c-materi-2.ts:3"),
   ketukan: [
     k(
       SUARA_S1,
@@ -202,17 +174,7 @@ export const ADEGAN_LATIH_SATU: AdeganStory = {
   judul: "Latihan 1: temukan yang lebih besar",
   sumber: "Materi: latihan membandingkan",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ayo Berlatih",
-    "Salin dan jawablah soal berikut pada buku tulis kalian.",
-    "1. Bandingkan bilangan berikut dan temukan yang lebih besar!",
-    "a. 5.734 dan 4.312",
-    "b. 5.614 dan 5.368",
-    "c. 7.124 dan 7.197",
-    "a. 5.734 dan 4.312? 5.734",
-    "b. 5.614 dan 5.368? 5.614",
-    "c. 7.124 dan 7.197? 7.197",
-  ],
+  kutipan: kutipanLokal("k4b1c-materi-2.ts:4"),
   ketukan: [
     k(
       SUARA_T1,
@@ -257,26 +219,7 @@ export const ADEGAN_LATIH_DUA: AdeganStory = {
   judul: "Latihan 2: isi tanda perbandingan",
   sumber: "Materi: latihan isi tanda",
   latar: "#FEF2F2",
-  kutipan: [
-    "2. Isilah dengan tanda",
-    "pada kotak berikut ini!",
-    "4.435",
-    "3.345",
-    "9.999",
-    "9.998",
-    "1.001",
-    "1.002",
-    "8.765",
-    "4.567",
-    "5.787",
-    "7.654",
-    "7.777",
-    "a. 4.435 > 3.345",
-    "b. 9.999 > 9.998",
-    "c. 1.001 < 1.002",
-    "d. 8.765 = 8.765",
-    "e. 4.567 < 5.787",
-  ],
+  kutipan: kutipanLokal("k4b1c-materi-2.ts:5"),
   ketukan: [
     k(SUARA_U1, tambah(0, judul("Latihan 2: tanda > < =")), tambah(idx(SUARA_U1, "lima", 2), ...barisU(0)), isiTanda("jadi", 0)),
     k(SUARA_U2, tambah(idx(SUARA_U2, "delapan", 1), ...barisU(1)), isiTanda("jadi", 1)),

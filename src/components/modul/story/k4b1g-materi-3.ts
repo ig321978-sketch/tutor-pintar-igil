@@ -1,6 +1,7 @@
 import type { AdeganStory, Aksi } from "./logika-story";
 import { W, barisTabel, emo, judul, kartu, kelompok, kelompokAngka, sisi, susunHasil, susunSimpan, susunSoal, teks } from "./k4b1g-gambar";
 import { bersih, idx, k, sorotkan, tambah } from "./k4b1g-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Ayo Berlatih nomor 1 (Buku Siswa hlm. 43; Panduan Guru hlm. 62) ------------------------------ */
 const SUARA_L1 = "Sekarang giliran kamu berlatih: lima perkalian. Tiga puluh dua kali tiga, dua puluh empat kali dua, tiga puluh tujuh kali dua, lima puluh dua kali lima, empat puluh delapan kali tujuh.";
@@ -38,21 +39,7 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
   judul: "Latihan 1: lima perkalian",
   sumber: "Materi: latihan perkalian bersusun",
   latar: "#EEF2FF",
-  kutipan: [
-    "Ayo Berlatih",
-    "Salin dan kerjakan soal berikut pada buku tulis kalian.",
-    "Selesaikan perkalian berikut dengan cara susun panjang atau cara pendek!",
-    "32 × 3 = ...",
-    "24 × 2 = ...",
-    "37 × 2 = ...",
-    "52 × 5 = ...",
-    "48 × 7 = ...",
-    "32 × 3 = 96",
-    "24 × 2 = 48",
-    "37 × 2 = 74",
-    "52 × 5 = 260",
-    "48 × 7 = 336",
-  ],
+  kutipan: kutipanLokal("k4b1g-materi-3.ts:1"),
   ketukan: [
     k(
       SUARA_L1,
@@ -131,7 +118,7 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
 };
 
 /* ------------------------------ 10. Ayo Berlatih nomor 2 a sampai c (Buku Siswa hlm. 43; Panduan Guru hlm. 62–63) ------------------------------ */
-const SUARA_E1 = "Soal cerita dua a: Asep punya dua belas ayam, tiap ayam menghabiskan tiga mangkok makanan sehari. Dua belas kali tiga sama dengan tiga puluh enam mangkok.";
+const SUARA_E1 = "Soal cerita dua a: Halim punya dua belas ayam, tiap ayam menghabiskan tiga mangkok makanan sehari. Dua belas kali tiga sama dengan tiga puluh enam mangkok.";
 const SUARA_E2 = "Soal b: dua rak buku, setiap rak berisi empat puluh lima buku. Dua kali empat puluh lima sama dengan sembilan puluh buku.";
 const SUARA_E3 = "Soal c: empat belas baju seragam, tiap baju tujuh kancing. Empat belas kali tujuh sama dengan sembilan puluh delapan kancing. Cara panjang memeriksa: tujuh puluh tambah dua puluh delapan.";
 const SUARA_E4 = "Mari kita periksa tiga hasilnya: tiga puluh enam, sembilan puluh, dan sembilan puluh delapan.";
@@ -141,25 +128,12 @@ export const ADEGAN_BERLATIH_DUA_A: AdeganStory = {
   judul: "Latihan 2: soal cerita a sampai c",
   sumber: "Materi: soal cerita perkalian",
   latar: "#F0FDFA",
-  kutipan: [
-    "Kerjakan soal cerita berikut!",
-    "Asep memiliki 12 ayam, setiap ayam dalam satu hari menghabiskan 3",
-    "Berapa mangkok makanan yang harus disediakan Asep setiap harinya?",
-    "Perpustakaan SD Pelangi memiliki 2 rak buku, setiap rak berisi 45 buku.",
-    "Ibu sedang memasang kancing pada 14 baju seragam.",
-    "Setiap baju membutuhkan 7 kancing.",
-    "12 x 3 = 36",
-    "Jadi, dalam sehari Asep harus menyediakan 36 mangkok makanan",
-    "2 x 45 = 90",
-    "Jadi, jumlah keseluruhan buku dalam perpustakaan SD Pelangi adalah 90 buku",
-    "14 x 7 = 98",
-    "Jadi, jumlah kancing yang harus disiapkan Ibu untuk seluruh baju seragam adalah 98 kancing",
-  ],
+  kutipan: kutipanLokal("k4b1g-materi-3.ts:2"),
   ketukan: [
     k(
       SUARA_E1,
-      tambah(0, judul("2 a: ayam Asep")),
-      tambah("Asep", ...kelompok("ay", 22, 34, 12, 3, 6, 40, 30, 3, W.jingga, W.hijauMuda)),
+      tambah(0, judul("2 a: ayam Halim")),
+      tambah("Halim", ...kelompok("ay", 22, 34, 12, 3, 6, 40, 30, 3, W.jingga, W.hijauMuda)),
       tambah("tiap", teks("ayt", 150, 124, "12 ayam × 3 mangkok", 10, W.biru)),
       tambah("sama", teks("ayh", 150, 150, "12 × 3 = 36 mangkok", 13, W.hijau)),
     ),
@@ -193,7 +167,7 @@ export const ADEGAN_BERLATIH_DUA_A: AdeganStory = {
 };
 
 /* ------------------------------ 11. Ayo Berlatih nomor 2 d dan e (Buku Siswa hlm. 43; Panduan Guru hlm. 63–64) ------------------------------ */
-const SUARA_F1 = "Soal d: Azizah punya dua puluh satu kucing, dan tiap kucing berkaki empat. Dua puluh satu kali empat sama dengan delapan puluh empat kaki.";
+const SUARA_F1 = "Soal d: Upe punya dua puluh satu kucing, dan tiap kucing berkaki empat. Dua puluh satu kali empat sama dengan delapan puluh empat kaki.";
 const SUARA_F2 = "Soal e: SD Anggrek mengirim tiga belas siswa dari tiap kelas. Misalkan ada enam kelas yang ikut lomba.";
 const SUARA_F3 = "Ada enam kelas, tiap kelas tiga belas siswa. Jadi tiga belas kali enam sama dengan tujuh puluh delapan siswa.";
 
@@ -202,24 +176,12 @@ export const ADEGAN_BERLATIH_DUA_B: AdeganStory = {
   judul: "Latihan 2: soal cerita d dan e",
   sumber: "Materi: soal cerita perkalian",
   latar: "#FFF7ED",
-  kutipan: [
-    "Azizah sangat menyukai kucing",
-    "Berapakah jumlah kaki keseluruhan kucing Azizah?",
-    "SD Anggrek mengirimkan siswa-siswinya mengikuti lomba di tingkat",
-    "Setiap tingkat kelas diwajibkan mengirimkan 13 siswa",
-    "Berapa keseluruhan siswa yang dikirim SD Anggrek untuk mengikuti lomba di tingkat kecamatan?",
-    "kucing Azizah = 21 ekor",
-    "setiap kucing memiliki 4 kaki",
-    "21 x 4 = 84",
-    "Terdapat 6 kelas yang dikutkan lomba.",
-    "13 x 6 = 78",
-    "Jadi, jumlah keseluruhan siswa SD Anggrek yang mengikuti lomba adalah 78 siswa",
-  ],
+  kutipan: kutipanLokal("k4b1g-materi-3.ts:3"),
   ketukan: [
     k(
       SUARA_F1,
-      tambah(0, judul("2 d: kaki kucing Azizah")),
-      tambah("Azizah", ...kelompok("kd", 8, 34, 21, 4, 7, 38, 22, 2, W.hitam, W.krem)),
+      tambah(0, judul("2 d: kaki kucing Upe")),
+      tambah("Upe", ...kelompok("kd", 8, 34, 21, 4, 7, 38, 22, 2, W.hitam, W.krem)),
       tambah("tiap", teks("kdt", 150, 126, "21 kucing × 4 kaki", 10, W.biru)),
       tambah("sama", teks("kdh", 150, 150, "21 × 4 = 84 kaki", 13, W.hijau)),
     ),
@@ -253,21 +215,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Kesalahan yang sering terjadi",
   sumber: "Materi: kesalahan yang sering terjadi",
   latar: "#FEF2F2",
-  kutipan: [
-    "Miskonsepsi",
-    "Miskonsepsi yang sering terjadi dalam operasi perkalian, yaitu",
-    "Peserta didik masih banyak salah memahami konsep perkalian.",
-    "3 x 2 = 2 + 2 + 2 (benar)",
-    "3 x 2 = 3 + 3 (salah)",
-    "Teknik menyusun, peserta didik salah paham yang mana yang disimpan",
-    "Diferensiasi",
-    "Bagi peserta didik yang kecepatan belajarnya tinggi (advanced), minta",
-    "mereka mengerjakan latihan tanpa bantuan.",
-    "guru dapat memberikan pengayaan.",
-    "Peserta didik yang memiliki kemampuan matematika rendah, guru",
-    "memberikan latihan secara berulang atau mengulangi penjelasan",
-    "Berikan perkalian bilangan yang tidak menyimpan",
-  ],
+  kutipan: kutipanLokal("k4b1g-materi-3.ts:4"),
   ketukan: [
     k(
       SUARA_G1,

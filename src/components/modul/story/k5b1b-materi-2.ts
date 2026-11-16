@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { DAKON, W, emo, judul, kartu, selKolom, tabelTempat, tabelUrut, teks } from "./k5b1b-gambar";
 import { bersih, hapus, k, tambah, ubah, warnai } from "./k5b1b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Tabel nilai tempat harga papan dakon (hitungan mandiri dari Buku Siswa hlm. 11–12) ------------------------------ */
 const TP = tabelTempat("tp", 10, 34, DAKON.map((d) => ({ nama: d.nama, n: d.harga })));
@@ -12,7 +13,7 @@ export const ADEGAN_TABEL: AdeganStory = {
   judul: "Tabel nilai tempat harga papan dakon",
   sumber: "Materi: tabel nilai tempat",
   latar: "#F5F3FF",
-  kutipan: ["Kartu 1 : …. diperoleh nama : ….", "Kartu 2 : …. diperoleh nama : ….", "Nilai Tempat"],
+  kutipan: kutipanLokal("k5b1b-materi-2.ts:1"),
   ketukan: [
     k(
       "Kita isi tabel nilai tempat dari harga papan dakon. Papan a, lima puluh enam ribu lima ratus enam puluh. Puluh ribuannya lima, ribuannya enam, ratusannya lima, puluhannya enam, satuannya nol.",
@@ -53,11 +54,7 @@ export const ADEGAN_PERCAKAPAN: AdeganStory = {
   judul: "Ayo Menyimak Percakapan",
   sumber: "Materi: puluh ribuan dan ribuan",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ayo Menyimak Percakapan",
-    "Harga papan dakon mana yang angka puluh ribuannya paling kecil?",
-    "Jika nilai puluh ribuan dua papan dakon tersebut sama, papan dakon mana yang angka ribuannya lebih besar?",
-  ],
+  kutipan: kutipanLokal("k5b1b-materi-2.ts:2"),
   ketukan: [
     k(
       "Ayo Menyimak Percakapan. Seorang anak bertanya, harga papan dakon mana yang angka puluh ribuannya paling kecil? Jawaban teman bicaranya masih kosong, kita isi bersama.",
@@ -106,12 +103,7 @@ export const ADEGAN_URUT: AdeganStory = {
   judul: "Mengurutkan harga papan dakon",
   sumber: "Materi: mengurutkan harga",
   latar: "#F0FDF4",
-  kutipan: [
-    "Ayo kita cari tahu bersama dengan mengurutkan harganya.",
-    "Ayo sekarang urutkan harga dari yang paling murah.",
-    "Ayo sekarang urutkan harga dari yang paling mahal.",
-    "No. Papan Dakon Harga Dakon",
-  ],
+  kutipan: kutipanLokal("k5b1b-materi-2.ts:3"),
   ketukan: [
     k(
       "Menurutmu, papan dakon mana yang paling murah dan paling mahal? Ayo kita cari tahu bersama dengan mengurutkan harganya.",
@@ -157,16 +149,7 @@ export const ADEGAN_KRITIS: AdeganStory = {
   judul: "Berpikir kritis: mainan A atau mainan B",
   sumber: "Materi: berpikir kritis",
   latar: "#FEF2F2",
-  kutipan: [
-    "Ayo Berpikir Kritis",
-    "Terdapat 2 jenis mainan, yaitu mainan A dan mainan B.",
-    "Mainan A harganya lebih murah daripada mainan B.",
-    "Namun, mainan A lebih cepat rusak daripada mainan B.",
-    "Mainan manakah yang akan kalian pilih? Apa alasannya?",
-    "bisa saja siswa membeli mainan dengan",
-    "harga murah walaupun kualitas lebih rendah.",
-    "Ajaklah mereka untuk dapat mengambil keputusan secara tepat.",
-  ],
+  kutipan: kutipanLokal("k5b1b-materi-2.ts:4"),
   ketukan: [
     k(
       "Berpikir kritis. Ada dua jenis mainan, yaitu mainan A dan mainan B.",

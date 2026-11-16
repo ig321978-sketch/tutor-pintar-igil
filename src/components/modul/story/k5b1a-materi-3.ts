@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { NILAI_TEMPAT, W, angkaTabel, emo, garis, judul, kartu, kotak, lambang, tabelTempat, teks } from "./k5b1a-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k5b1a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Ayo Berlatih nomor 1: tiga harga pada gambar (Buku Siswa hlm. 8; Panduan Guru hlm. 24) ------------------------------ */
 /** Tabel nilai tempat untuk 44.567 pada soal 1c. */
@@ -14,20 +15,7 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   judul: "Latihan 1: menulis dan membaca tiga harga",
   sumber: "Materi: latihan menulis dan membaca harga",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ayo Berlatih",
-    "1. Tuliskan bilangan yang terdapat pada gambar di bawah ini serta",
-    "cara membacanya",
-    "Dibaca: ....................................",
-    "Rp15.950,00",
-    "Rp16.667,00",
-    "Rp44.567,00",
-    "Rp15.590,00",
-    "a Dibaca: lima belas ribu lima ratus sembilan puluh.",
-    "Dibaca: enam belas ribu enam ratus enam puluh",
-    "Dibaca: empat puluh empat ribu lima ratus enam",
-    "Rp16.667,00",
-  ],
+  kutipan: kutipanLokal("k5b1a-materi-3.ts:1"),
   ketukan: [
     k(
       "Sekarang berlatih. Tuliskan bilangan yang terdapat pada gambar, serta cara membacanya. Ada tiga gambar, yaitu gelang, gelas, dan kotak pensil, masing-masing dengan label harga.",
@@ -122,28 +110,7 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
   judul: "Latihan 2 dan 3: menghubungkan cara baca dan melengkapi tabel",
   sumber: "Materi: latihan menghubungkan dan tabel",
   latar: "#F5F3FF",
-  kutipan: [
-    "2. Hubungkan cara baca bilangan berikut ini dengan bilangannya.",
-    "Tiga belas ribu empat ratus",
-    "lima puluh enam",
-    "88.976",
-    "54.675",
-    "40.350",
-    "25.786",
-    "13.456",
-    "3. Lengkapilah tabel berikut.",
-    "Bilangan Dibaca Nilai Tempat dari Bilangan",
-    "87.986",
-    "Lima puluh enam ribu",
-    "Puluh ribuan dan satuan",
-    "Delapan puluh tujuh ribu",
-    "sembilan ratus delapan puluh enam",
-    "ribuan",
-    "ratusan",
-    "(...) bebas sesuai",
-    "Lima puluh enam ribu tujuh",
-    "ratus depalan puluh enam",
-  ],
+  kutipan: kutipanLokal("k5b1a-materi-3.ts:2"),
   ketukan: [
     k(
       SUARA_D1,
@@ -203,23 +170,7 @@ export const ADEGAN_PENUTUP: AdeganStory = {
   judul: "Penutup: hati-hati, tantangan, renungan, dan ringkasan",
   sumber: "Materi: penutup, tantangan, dan ringkasan",
   latar: "#FFF1F2",
-  kutipan: [
-    "Saat membaca dan menuliskan bilangan 100.000 dan nilai tempatnya,",
-    "kemungkinan peserta didik belum memahami konsep memisahkan bilangan",
-    "satuan, puluhan, ribuan, dan puluh ribuan.",
-    "Bagi peserta didik dengan kecepatan belajar tinggi (advanced), minta mereka",
-    "mengerjakan Ayo Berpikir Kritis dan Ayo Berpikir Kreatif, atau mengerjakan",
-    "latihan tanpa bantuan.",
-    "Guru menjadi fasilitator.",
-    "Berikan kesempatan kepada setiap peserta didik untuk menyampaikan hasil",
-    "diskusi dan menanggapi.",
-    "Soal dapat dikerjakan di sekolah atau dijadikan PR.",
-    "Aku dapat membaca bilangan cacah",
-    "Aku dapat menuliskan bilangan cacah",
-    "Aku dapat menentukan nilai tempat",
-    "Berilah tanda centang",
-    "100.000.",
-  ],
+  kutipan: kutipanLokal("k5b1a-materi-3.ts:3"),
   ketukan: [
     k(
       SUARA_P1,

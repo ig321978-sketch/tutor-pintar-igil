@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisanKotak, emo, kartu, kartuAngka, kotak, panah, teks } from "./k5b9b-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k5b9b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 8. Ayo Berlatih 1: tanda lebih besar, lebih kecil, sama dengan (hlm. 287) ------------------------------ */
 const SOAL_TANDA = [
@@ -24,7 +25,7 @@ export const ADEGAN_LATIHAN_TANDA: AdeganStory = {
   judul: "Latihan 1: memakai tanda lebih besar, lebih kecil, atau sama dengan",
   sumber: "Materi: Latihan 1, tanda bilangan",
   latar: "#F5F3FF",
-  kutipan: ["Tunjukkan hubungan antara kedua bilangan berikut dengan", "menggunakan tanda", "a. 445.000 ... 545.000", "b. 657.000 ... 675.000", "c. 876.000 ... 867.000", "d. 126.789 ... 126.789", "e. 876.987 ... 876.789"],
+  kutipan: kutipanLokal("k5b9b-materi-3.ts:1"),
   ketukan: [
     k(
       "Sekarang Latihan 1. Tunjukkan hubungan dua bilangan memakai tanda lebih besar, lebih kecil, atau sama dengan.",
@@ -80,7 +81,7 @@ export const ADEGAN_LATIHAN_BARISAN: AdeganStory = {
   judul: "Latihan 2: melengkapi barisan bilangan",
   sumber: "Materi: Latihan 2, barisan bilangan",
   latar: "#ECFDF5",
-  kutipan: ["Isilah dengan bilangan-bilangan yang urutannya sesuai", "a. 978.500 979.500 982.500", "b. 500.000 700.000", "c. 462.370 462.410 462.430"],
+  kutipan: kutipanLokal("k5b9b-materi-3.ts:2"),
   ketukan: [
     k(
       "Latihan 2. Lengkapi barisan bilangan sampai urutannya sesuai. Cari dulu selisih dari dua bilangan yang berdekatan.",
@@ -133,7 +134,7 @@ export const ADEGAN_REFLEKSI_B: AdeganStory = {
   judul: "Hati-hati, tantangan, dan renungan",
   sumber: "Materi: hati-hati dan renungan",
   latar: "#FFF1F2",
-  kutipan: ["Aku dapat membandingkan dua bilangan", "Aku dapat mengurutkan beberapa bilangan"],
+  kutipan: kutipanLokal("k5b9b-materi-3.ts:3"),
   ketukan: [
     k(
       "Hati-hati dengan kesalahan yang sering terjadi: menganggap angka paling belakang menentukan urutan. Padahal angka paling kiri yang pertama kita lihat.",

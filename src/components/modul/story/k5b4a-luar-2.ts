@@ -134,10 +134,10 @@ export const ADEGAN_LUAR_LOOP: AdeganStory = {
 export const kecilkan = (d: string, f: number): string => d.replace(/-?\d+(?:\.\d+)?/g, (n) => (Number(n) * f).toFixed(1));
 const FM = 0.5;
 const SEL = [
-  { id: "mn", x: 24, y: 34, nama: "Nisa", rute: RUTE.nisa, warna: W.merah },
-  { id: "ml", x: 176, y: 34, nama: "Lukas", rute: RUTE.lukas, warna: W.ungu },
-  { id: "my", x: 24, y: 114, nama: "Yohana", rute: RUTE.yohana, warna: W.coklat },
-  { id: "ma", x: 176, y: 114, nama: "Asep", rute: RUTE.asep, warna: W.biru },
+  { id: "mn", x: 24, y: 34, nama: "Igil", rute: RUTE.nisa, warna: W.merah },
+  { id: "ml", x: 176, y: 34, nama: "Kira", rute: RUTE.lukas, warna: W.ungu },
+  { id: "my", x: 24, y: 114, nama: "Halim", rute: RUTE.yohana, warna: W.coklat },
+  { id: "ma", x: 176, y: 114, nama: "Upe", rute: RUTE.asep, warna: W.biru },
 ];
 const mini = (i: number): Obj[] => [...lapangan(SEL[i].id, SEL[i].x, SEL[i].y, LAP.pw * FM, LAP.ph * FM), jalur(`${SEL[i].id}-r`, SEL[i].x, SEL[i].y, kecilkan(SEL[i].rute, FM), "none", SEL[i].warna, { tebal: 2, gambar: true }), bulat0(`${SEL[i].id}-st`, SEL[i].x, SEL[i].y + LAP.ph * FM)];
 const bulat0 = (id: string, x: number, y: number): Obj => ({ id, t: "bulat", x, y, r: 3, warna: W.merah, garis: W.putih, tebal: 1 });
@@ -150,31 +150,31 @@ export const ADEGAN_LUAR_LOOP_TERAPAN: AdeganStory = {
   latar: "#FAF5FF",
   ketukan: [
     k(
-      "Uji rute Nisa. Ia berhenti di sudut seberang, bukan di titik awal, dan hanya memakai satu sisi. Dua pertanyaan dijawab tidak, jadi rute Nisa bukan keliling.",
+      "Uji rute Igil. Ia berhenti di sudut seberang, bukan di titik awal, dan hanya memakai satu sisi. Dua pertanyaan dijawab tidak, jadi rute Igil bukan keliling.",
       tambah(0, judul("Uji empat rute")),
-      tambah("Nisa.", ...mini(0)),
+      tambah("Igil.", ...mini(0)),
       tambah("seberang,", vonis(0, "berhenti di titik awal? tidak", W.merah)),
-      tambah("tidak,", teks("mn-v2", 24 + (LAP.pw * FM) / 2, 34 + LAP.ph * FM + 24, "Nisa: bukan keliling", 7.8, W.merah)),
+      tambah("tidak,", teks("mn-v2", 24 + (LAP.pw * FM) / 2, 34 + LAP.ph * FM + 24, "Igil: bukan keliling", 7.8, W.merah)),
     ),
     k(
-      "Rute Lukas dan Yohana. Lukas hanya memakai satu sisi yang pendek. Yohana lewat tengah dan berhenti jauh dari titik awal. Keduanya gagal uji.",
-      tambah("Lukas", ...mini(1)),
+      "Rute Kira dan Halim. Kira hanya memakai satu sisi yang pendek. Halim lewat tengah dan berhenti jauh dari titik awal. Keduanya gagal uji.",
+      tambah("Kira", ...mini(1)),
       tambah("sisi", vonis(1, "tiap sisi sekali? tidak", W.merah)),
-      tambah("Yohana", ...mini(2)),
+      tambah("Halim", ...mini(2)),
       tambah("jauh", vonis(2, "berhenti di titik awal? tidak", W.merah)),
-      tambah("gagal", teks("ml-v2", 176 + (LAP.pw * FM) / 2, 34 + LAP.ph * FM + 24, "Lukas: bukan keliling", 7.8, W.merah), teks("my-v2", 24 + (LAP.pw * FM) / 2, 114 + LAP.ph * FM + 24, "Yohana: bukan keliling", 7.8, W.merah)),
+      tambah("gagal", teks("ml-v2", 176 + (LAP.pw * FM) / 2, 34 + LAP.ph * FM + 24, "Kira: bukan keliling", 7.8, W.merah), teks("my-v2", 24 + (LAP.pw * FM) / 2, 114 + LAP.ph * FM + 24, "Halim: bukan keliling", 7.8, W.merah)),
     ),
     k(
-      "Rute Asep. Ia berhenti di titik awal dan tiap sisi dilalui tepat satu kali. Dua jawaban ya, jadi rute Asep adalah keliling: seratus tambah lima puluh tambah seratus tambah lima puluh sama dengan tiga ratus meter.",
-      tambah("Asep.", ...mini(3)),
+      "Rute Upe. Ia berhenti di titik awal dan tiap sisi dilalui tepat satu kali. Dua jawaban ya, jadi rute Upe adalah keliling: seratus tambah lima puluh tambah seratus tambah lima puluh sama dengan tiga ratus meter.",
+      tambah("Upe.", ...mini(3)),
       tambah("tepat", vonis(3, "dua jawaban: ya", W.hijau), emo("ma-ok", 176 + 14, 114 + LAP.ph * FM - 6, "✅", 14)),
       tambah("seratus", teks("ma-v2", 176 + (LAP.pw * FM) / 2, 114 + LAP.ph * FM + 24, "100 + 50 + 100 + 50 = 300", 7.8, W.biru)),
     ),
     k(
-      "Hasilnya, keempat rute sama-sama tiga ratus meter, tetapi hanya rute Asep yang merupakan keliling lapangan. Panjang saja tidak cukup, bentuk rutenya juga harus tepat.",
+      "Hasilnya, keempat rute sama-sama tiga ratus meter, tetapi hanya rute Upe yang merupakan keliling lapangan. Panjang saja tidak cukup, bentuk rutenya juga harus tepat.",
       ubah("Hasilnya,", ...["mn", "ml", "my"].flatMap((id) => ["lp", "gt", "bt", "r", "st", "v", "v2"].map((b) => ({ id: `${id}-${b}`, op: 0.3 })))),
       tambah("keempat", teks("hk", 145, 60, "semua 300 m", 8.4, W.ungu)),
-      tambah("hanya", teks("hn", 150, 196, "hanya Asep = keliling", 9.4, W.hijau)),
+      tambah("hanya", teks("hn", 150, 196, "hanya Upe = keliling", 9.4, W.hijau)),
     ),
   ],
 };

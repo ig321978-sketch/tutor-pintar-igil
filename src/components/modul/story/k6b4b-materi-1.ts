@@ -2,8 +2,9 @@ import type { AdeganStory } from "./logika-story";
 import { W, balon, emo, kotak, panah, teks } from "./k6b4a-gambar"
 import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k6b4a-bantu";
 import { daduTitik, kerumunan, koin } from "./k6b4b-gambar";
+import { kutipanLokal } from "./kutipan-lokal";
 
-/* ------------------------------ 1. Dhien dan jumlah peserta lomba ------------------------------ */
+/* ------------------------------ 1. Halim dan jumlah peserta lomba ------------------------------ */
 const SD = kerumunan("sd", 31, 68, 12, 4, 14, "#FDE68A", 4.5);
 const SMP = kerumunan("smp", 116.5, 58, 35, 7, 10.5, "#BBF7D0", 3.8);
 const SMA = kerumunan("sma", 209, 64, 27, 9, 9.5, "#BFDBFE", 3.6);
@@ -11,15 +12,15 @@ const kotakKategori = (id: string, x: number, w: number, judul: string) => [kota
 
 export const ADEGAN_LOMBA: AdeganStory = {
   id: "lomba-peserta",
-  judul: "Dhien dan jumlah peserta lomba",
-  sumber: "Materi: Dhien dan lomba menyanyi",
+  judul: "Halim dan jumlah peserta lomba",
+  sumber: "Materi: Halim dan lomba menyanyi",
   latar: "#FFF0F5",
-  kutipan: ["Dhien akhirnya memberanikan diri untuk mengikuti lomba menyanyi", "total hanya ada 12 peserta", "ada 35 peserta"],
+  kutipan: kutipanLokal("k6b4b-materi-1.ts:1"),
   ketukan: [
-    k("Dhien akhirnya memberanikan diri untuk mengikuti lomba menyanyi. Di bagian ini, kita belajar membandingkan peluang.", tambah(0, teks("jud", 150, 26, "Membandingkan Peluang Kejadian", 11, W.ungu)), tambah("Dhien", emo("dhien", 90, 110, "👧", 44)), tambah("menyanyi", emo("mik", 150, 110, "🎤", 40)), tambah("membandingkan", teks("bd", 150, 164, "peluang mana yang lebih besar?", 9.5, W.merah))),
+    k("Halim akhirnya memberanikan diri untuk mengikuti lomba menyanyi. Di bagian ini, kita belajar membandingkan peluang.", tambah(0, teks("jud", 150, 26, "Membandingkan Peluang Kejadian", 11, W.ungu)), tambah("Halim", emo("dhien", 90, 110, "👧", 44)), tambah("menyanyi", emo("mik", 150, 110, "🎤", 40)), tambah("membandingkan", teks("bd", 150, 164, "peluang mana yang lebih besar?", 9.5, W.merah))),
     k("Di kategori satu untuk siswa SD kelas empat sampai enam, hanya ada dua belas peserta.", bersih(0), tambah(0, kotakKategori("c1", 8, 88, "Kategori 1: SD kelas 4–6")), tambah("belas", SD.objs, teks("n1", 52, 138, "12 peserta", 10, W.merah))),
     k("Di kategori dua untuk siswa SMP ada tiga puluh lima peserta, sedangkan kategori tiga untuk siswa SMA ada dua puluh tujuh peserta.", tambah("dua", kotakKategori("c2", 100, 96, "Kategori 2: SMP")), tambah("lima", SMP.objs, teks("n2", 148, 138, "35 peserta", 10, W.merah)), tambah("tiga@2", kotakKategori("c3", 202, 90, "Kategori 3: SMA")), tambah("tujuh", SMA.objs, teks("n3", 247, 138, "27 peserta", 10, W.merah))),
-    k("Ayah, Ibu, dan saudara Dhien datang untuk menyemangati. Dhien gugup dan berkata, peluang aku menang sangat kecil!", bersih(0), tambah("Ayah,", emo("kel", 60, 150, "👪", 42)), tambah("Dhien", emo("dhien", 130, 150, "👧", 34)), tambah("gugup", emo("keringat", 160, 130, "😰", 22)), tambah("peluang", balon("kata", 215, 52, ["Peluang aku", "menang sangat", "kecil!"], 92)), tambah("kecil!", teks("kc", 215, 120, "kecil?", 14, W.merah))),
+    k("Ayah, Ibu, dan saudara Halim datang untuk menyemangati. Halim gugup dan berkata, peluang aku menang sangat kecil!", bersih(0), tambah("Ayah,", emo("kel", 60, 150, "👪", 42)), tambah("Halim", emo("dhien", 130, 150, "👧", 34)), tambah("gugup", emo("keringat", 160, 130, "😰", 22)), tambah("peluang", balon("kata", 215, 52, ["Peluang aku", "menang sangat", "kecil!"], 92)), tambah("kecil!", teks("kc", 215, 120, "kecil?", 14, W.merah))),
     k(
       "Keluarganya menjawab: di kategori SMP ada tiga puluh lima peserta dan SMA ada dua puluh tujuh peserta. Kamu hanya berkompetisi dengan sebelas peserta lainnya.",
       bersih(0),
@@ -29,11 +30,11 @@ export const ADEGAN_LOMBA: AdeganStory = {
       sorotkan("tujuh", ...SMA.ids),
       redamkan("Kamu", ...SMP.ids, ...SMA.ids),
       ubah("Kamu", { id: "sd-0", warna: W.merah, r: 6 }),
-      tambah("sebelas", teks("sebelas", 52, 138, "Dhien + 11 lainnya", 8.5, W.merah)),
+      tambah("sebelas", teks("sebelas", 52, 138, "Halim + 11 lainnya", 8.5, W.merah)),
     ),
     k("Peluang kamu menang masih sangat besar, kata mereka. Suara nyanyianmu juga sangat merdu, jangan patah semangat dulu.", bersih(0), tambah("Peluang", teks("pb", 150, 56, "peluang menang", 13, W.ungu), teks("sb", 150, 84, "SANGAT BESAR", 20, W.hijau, { garis: W.emas })), tambah("merdu,", emo("n1", 70, 140, "🎵", 30), emo("n2", 150, 150, "🎶", 30), emo("n3", 230, 140, "🎵", 30)), tambah("semangat", teks("sm", 150, 190, "jangan patah semangat", 10, W.merah))),
-    k("Menurut kalian, apakah peluang menang Dhien termasuk besar atau kecil? Coba jelaskan alasan kalian.", bersih(0), tambah("Menurut", emo("pikir", 150, 56, "🧠", 38)), tambah("besar", kotak("pb", 24, 92, 110, 54, "#BBF7D0", W.hijau, { rx: 12 }), teks("pbt", 79, 126, "BESAR?", 16, W.hijau)), tambah("kecil?", kotak("pk", 166, 92, 110, 54, "#FECACA", W.merah, { rx: 12 }), teks("pkt", 221, 126, "KECIL?", 16, W.merah)), tambah("alasan", teks("al", 150, 180, "jelaskan alasanmu", 10, W.ungu))),
-    k("Kalau Dhien sekarang sudah SMP, apakah peluang menangnya lebih besar atau lebih kecil? Diskusikan dengan teman sebangkumu.", bersih(0), tambah("SMP,", kotak("c2", 100, 40, 96, 90, W.putih, W.biru, { rx: 8 }), teks("c2j", 148, 54, "Kategori SMP", 8, W.ungu), ...SMP.objs.map((o) => ({ ...o, y: (o.y ?? 0) - 6 }))), tambah("lebih", teks("lb", 60, 170, "lebih besar?", 12, W.hijau), teks("lk", 240, 170, "lebih kecil?", 12, W.merah)), tambah("Diskusikan", emo("teman", 150, 190, "👥", 24))),
+    k("Menurut kalian, apakah peluang menang Halim termasuk besar atau kecil? Coba jelaskan alasan kalian.", bersih(0), tambah("Menurut", emo("pikir", 150, 56, "🧠", 38)), tambah("besar", kotak("pb", 24, 92, 110, 54, "#BBF7D0", W.hijau, { rx: 12 }), teks("pbt", 79, 126, "BESAR?", 16, W.hijau)), tambah("kecil?", kotak("pk", 166, 92, 110, 54, "#FECACA", W.merah, { rx: 12 }), teks("pkt", 221, 126, "KECIL?", 16, W.merah)), tambah("alasan", teks("al", 150, 180, "jelaskan alasanmu", 10, W.ungu))),
+    k("Kalau Halim sekarang sudah SMP, apakah peluang menangnya lebih besar atau lebih kecil? Diskusikan dengan teman sebangkumu.", bersih(0), tambah("SMP,", kotak("c2", 100, 40, 96, 90, W.putih, W.biru, { rx: 8 }), teks("c2j", 148, 54, "Kategori SMP", 8, W.ungu), ...SMP.objs.map((o) => ({ ...o, y: (o.y ?? 0) - 6 }))), tambah("lebih", teks("lb", 60, 170, "lebih besar?", 12, W.hijau), teks("lk", 240, 170, "lebih kecil?", 12, W.merah)), tambah("Diskusikan", emo("teman", 150, 190, "👥", 24))),
   ],
 };
 
@@ -46,7 +47,7 @@ export const ADEGAN_EKSPLORASI42: AdeganStory = {
   judul: "Latihan bersama: bermain lempar koin dan dadu",
   sumber: "Materi: bermain lempar koin dan dadu",
   latar: "#EAFBF0",
-  kutipan: ["Bermain Lempar Koin dan Dadu", "Ronde 1: Koin", "Ronde 3: Koin dan Dadu"],
+  kutipan: kutipanLokal("k6b4b-materi-1.ts:2"),
   ketukan: [
     k("Latihan bersama pertama: bermain lempar koin dan dadu. Dalam kelompok dua orang, kalian bermain selama tiga ronde.", tambah(0, teks("jud", 150, 28, "Latihan bersama", 13, W.ungu)), tambah("kelompok", orang("o1", 90, "pemain 1"), orang("o2", 210, "pemain 2")), tambah("tiga", teks("r1", 80, 150, "ronde 1", 10), teks("r2", 150, 150, "ronde 2", 10), teks("r3", 220, 150, "ronde 3", 10))),
     k("Untuk menang, kalian harus melempar koin dengan sisi gambar, atau dadu dengan angka enam.", bersih(0), tambah("koin", koin("kg", 90, 80, "G", 26), teks("kgt", 90, 124, "gambar", 9)), tambah("gambar,", emo("ok1", 120, 52, "✅", 18)), tambah("dadu", ...daduTitik("d6", 210, 80, 6, 46), teks("dt", 210, 124, "angka 6", 9)), tambah("enam.", emo("ok2", 238, 52, "✅", 18)), tambah("menang,", teks("mn", 150, 170, "syarat menang", 11, W.merah))),
@@ -66,7 +67,7 @@ export const ADEGAN_BANDING: AdeganStory = {
   judul: "Membandingkan peluang dalam permainan",
   sumber: "Materi: membandingkan peluang permainan",
   latar: "#EEF2FF",
-  kutipan: ["Peluang menang kamu ada 1 dari 2", "Permainan kurang adil adalah saat kemungkinan setiap pemain untuk menang tidak sama"],
+  kutipan: kutipanLokal("k6b4b-materi-1.ts:3"),
   ketukan: [
     k("Saat melempar koin, peluang kalian untuk menang lebih besar, karena hanya ada dua kemungkinan kejadian: menang atau kalah.", tambah(0, ...koin("k", 150, 52, "G", 22)), tambah("dua", panah("a1", 130, 78, -50, 30, W.biru, 2.5, { gambar: true }), panah("a2", 170, 78, 50, 30, W.biru, 2.5, { gambar: true }), teks("n2", 150, 180, "2 kemungkinan", 10, W.ungu)), tambah("menang", kotak("m", 40, 118, 80, 40, "#BBF7D0", W.hijau, { rx: 10 }), teks("mt", 80, 144, "menang", 12, W.hijau)), tambah("kalah.", kotak("kl", 180, 118, 80, 40, "#FECACA", W.merah, { rx: 10 }), teks("klt", 220, 144, "kalah", 12, W.merah))),
     k("Peluang menang kamu ada satu dari dua jumlah kemungkinan yang ada. Cukup besar, bukan?", sorotkan("Peluang", "m"), tambah("satu", teks("e1", 150, 100, "1 dari 2", 18, W.ungu, { garis: W.emas })), tambah("Cukup", emo("ok", 150, 184, "👍", 24))),

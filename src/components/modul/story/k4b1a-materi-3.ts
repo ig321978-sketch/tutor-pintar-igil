@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { LATIHAN_DUA, LATIHAN_SATU, LATIHAN_TIGA, TABEL_EMPAT, TEMPAT, W, barisTabel, emo, garis, judul, kartu, kotak, papanIsi, papanKepala, rb, teks } from "./k4b1a-gambar";
 import { bersih, hapus, k, sorotkan, tambah } from "./k4b1a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Menulis angka menjadi nama bilangan (Buku Siswa hlm. 9) ------------------------------ */
 const SUARA_N1 = "Sekarang arah sebaliknya: kita mengubah angka menjadi nama bilangan. Contoh pertama, angka empat, tiga, dua, dan tujuh pada ribuan, ratusan, puluhan, dan satuan.";
@@ -19,18 +20,7 @@ export const ADEGAN_NAMA: AdeganStory = {
   judul: "Mengubah angka menjadi nama bilangan, termasuk nol",
   sumber: "Materi: nama bilangan dan nol",
   latar: "#FDF4FF",
-  kutipan: [
-    "Cara menulis bilangan 4.327 ke dalam nama bilangan",
-    "Tentukan bilangan yang menunjukkan ribuan, yaitu 4, ditulis",
-    "Tentukan bilangan yang menunjukkan satuan, yaitu 7, ditulis",
-    "Sehingga nama bilangan tersebut adalah",
-    "Cara menulis bilangan 1.025 ke dalam nama bilangan",
-    "Tentukan bilangan yang menunjukkan ribuan, yaitu 1, ditulis",
-    "Pada ratusan tertulis bilangan 0, maka bilangan ratusan tidak dituliskan",
-    "Tentukan bilangan yang menunjukkan puluhan, yaitu , ditulis",
-    "Tentukan bilangan yang menunjukkan satuan, yaitu 5, ditulis",
-    "Jika pada ratusan, puluhan dan satuan tertulis bilangan 0 maka bilangan tersebut tidak dituliskan",
-  ],
+  kutipan: kutipanLokal("k4b1a-materi-3.ts:1"),
   ketukan: [
     k(
       SUARA_N1,
@@ -107,15 +97,7 @@ export const ADEGAN_LATIHAN_SATU: AdeganStory = {
   judul: "Latihan membaca bilangan: empat gambar",
   sumber: "Materi: latihan membaca bilangan",
   latar: "#EFF6FF",
-  kutipan: [
-    "Ayo Berlatih",
-    "Kerjakan latihan berikut dengan cermat",
-    "Tuliskan bilangan yang terdapat pada gambar di bawah ini serta cara membacanya.",
-    "a. 5.091 dibaca lima ribu sembilan puluh satu",
-    "b. 4.884 dibaca empat ribu delapan ratus delapan puluh empat",
-    "c. 5.780 dibaca lima ribu tujuh ratus delapan puluh",
-    "d. 1.206 dibaca seribu dua ratus enam",
-  ],
+  kutipan: kutipanLokal("k4b1a-materi-3.ts:2"),
   ketukan: [
     k(
       SUARA_L1,
@@ -173,9 +155,9 @@ export const ADEGAN_LATIHAN_SATU: AdeganStory = {
 };
 
 /* ------------------------------ 11. Ayo Berlatih nomor 2 dan 3 (Buku Siswa hlm. 11; Panduan Guru hlm. 33) ------------------------------ */
-const SUARA_D1 = "Latihan kedua: Slamet membeli makanan ringan seharga tujuh ribu tiga ratus lima puluh rupiah. Uang Slamet sembilan ribu lima ratus rupiah, dan kembaliannya dua ribu seratus lima puluh rupiah.";
+const SUARA_D1 = "Latihan kedua: Halim membeli makanan ringan seharga tujuh ribu tiga ratus lima puluh rupiah. Uang Halim sembilan ribu lima ratus rupiah, dan kembaliannya dua ribu seratus lima puluh rupiah.";
 const SUARA_D2 = "Sekarang kita baca tiga bilangan itu. Tujuh ribu tiga ratus lima puluh, sembilan ribu lima ratus, dan dua ribu seratus lima puluh.";
-const SUARA_D3 = "Mari kita periksa: harga ditambah kembalian harus sama dengan uang Slamet. Tujuh ribu tiga ratus lima puluh ditambah dua ribu seratus lima puluh sama dengan sembilan ribu lima ratus. Cocok.";
+const SUARA_D3 = "Mari kita periksa: harga ditambah kembalian harus sama dengan uang Halim. Tujuh ribu tiga ratus lima puluh ditambah dua ribu seratus lima puluh sama dengan sembilan ribu lima ratus. Cocok.";
 const SUARA_D4 = "Latihan ketiga: hubungkan bilangan dengan cara membacanya. Ada empat bilangan dan empat nama, urutannya diacak.";
 const SUARA_D5 = "Kita hubungkan: dua ribu sembilan ratus tiga dihubungkan dengan bilangan pertama. Dua ribu seratus empat puluh lima dihubungkan dengan bilangan kedua.";
 const SUARA_D6 = "Lalu enam ribu dua dihubungkan dengan bilangan ketiga, dan sembilan ribu empat puluh lima dengan bilangan keempat. Pada enam ribu dua, nol di ratusan dan puluhan tetap menjaga tempat.";
@@ -188,26 +170,14 @@ export const ADEGAN_LATIHAN_DUA: AdeganStory = {
   judul: "Latihan membaca dan menghubungkan bilangan",
   sumber: "Materi: membaca dan menghubungkan",
   latar: "#F0FDF4",
-  kutipan: [
-    "Helen membantu Ibu menjual makanan ringan di warung.",
-    "Slamet membeli makanan ringan seharga Rp7.350,00.",
-    "Slamet mempunyai pecahan uang Rp9.500,00.",
-    "mendapatkan kembalian sebesar Rp2.150,00.",
-    "Hubungkan antara bilangan dengan cara membacanya.",
-    "Coba kalian baca bilangan 7.350! dibaca tujuh ribu tiga ratus lima puluh",
-    "Coba kalian baca bilangan 2.150! dibaca dua ribu seratus lima puluh",
-    "2.903 terhubung dengan dua ribu sembilan ratus tiga",
-    "2.145 terhubung dengan dua ribu seratus empat puluh lima",
-    "6.002 terhubung dengan enam ribu dua",
-    "9.045 terhubung dengan sembilan ribu empat puluh lima",
-  ],
+  kutipan: kutipanLokal("k4b1a-materi-3.ts:3"),
   ketukan: [
     k(
       SUARA_D1,
-      tambah(0, judul("Slamet di warung")),
-      tambah("Slamet", emo("sl", 40, 96, "🧒", 36)),
+      tambah(0, judul("Halim di warung")),
+      tambah("Halim", emo("sl", 40, 96, "🧒", 36)),
       tambah("seharga", ...kartu("d1", 76, 34, 210, 30, W.hijauMuda, [`harga makanan: Rp${rb(LATIHAN_DUA[0][0])}`], 9.4)),
-      tambah("Uang", ...kartu("d2", 76, 74, 210, 30, W.langit, [`uang Slamet: Rp${rb(LATIHAN_DUA[1][0])}`], 9.4)),
+      tambah("Uang", ...kartu("d2", 76, 74, 210, 30, W.langit, [`uang Halim: Rp${rb(LATIHAN_DUA[1][0])}`], 9.4)),
       tambah("kembaliannya", ...kartu("d3", 76, 114, 210, 30, W.krem, [`kembalian: Rp${rb(LATIHAN_DUA[2][0])}`], 9.4)),
     ),
     k(
@@ -222,7 +192,7 @@ export const ADEGAN_LATIHAN_DUA: AdeganStory = {
       SUARA_D3,
       bersih(0),
       tambah(0, judul("Kita periksa hitungannya", W.hijau)),
-      tambah("harga", teks("f1", 150, 56, "harga + kembalian = uang Slamet", 9.4, W.coklat)),
+      tambah("harga", teks("f1", 150, 56, "harga + kembalian = uang Halim", 9.4, W.coklat)),
       tambah("Tujuh", teks("f2", 150, 98, "7.350 + 2.150 = 9.500", 17, W.merah)),
       tambah("Cocok.", emo("f3", 150, 150, "✅", 34)),
     ),
@@ -263,22 +233,7 @@ export const ADEGAN_LATIHAN_EMPAT: AdeganStory = {
   judul: "Latihan terakhir, kesalahan umum, dan kerja kelompok",
   sumber: "Materi: latihan terakhir dan pesan guru",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ambil kartu bilangan dengan 4 angka yang berbeda dari 0, 1, … sampai 9.",
-    "Susunlah 4 bilangan yang mungkin dapat terbentuk.",
-    "Tuliskan dalam tabel seperti di bawah ini.",
-    "Tabel berikut merupakan kemungkinan jawaban peserta didik dan masih ada kemungkinan yang lain.",
-    "bila terdapat angka nol terambil pada kotak ribuan maka dapat dijelaskan bukan termasuk bilangan ribuan",
-    "misalnya 0036 maka dapat dijelaskan hanya sebagai bilangan puluhan dan satuan saja, yaitu tiga puluh enam.",
-    "Miskonsepsi",
-    "kesalahan bila terdapat 0 (nol) pada nilai tempat ratusan atau puluhan.",
-    "Diferensiasi",
-    "Bagi peserta didik yang kecepatan belajarnya tinggi (advanced), minta mereka mengerjakan Latihan tanpa bantuan.",
-    "Guru juga dapat memberikan soal-soal tambahan.",
-    "Metode pembelajaran yang disarankan untuk sub bab ini adalah Diskusi dan Tanya Jawab",
-    "ditentukan ketua kelompok adalah peserta didik dengan tingkat kemampuan tinggi dengan anggota kelompok tingkat kemampuan sedang atau kurang.",
-    "Apabila karakteristik peserta didik di sekolah/kelas tidak terdapat peserta didik dengan kemampuan tinggi",
-  ],
+  kutipan: kutipanLokal("k4b1a-materi-3.ts:4"),
   ketukan: [
     k(
       SUARA_E1,

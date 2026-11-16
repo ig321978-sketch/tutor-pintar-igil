@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, bulat, emo, garis, judul, kartu, kotak, panah, poligon, tabel, teks } from "./k5b6a-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k5b6a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab: tujuan dan kata kunci (hlm. 163 sampai 164) ------------------------------ */
 const WARNA_BARIS = [W.krem, W.langit, W.hijauMuda, W.pink, W.jingga, W.merahMuda];
@@ -14,13 +15,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 6: tujuan dan kata kunci",
   sumber: "Buku Siswa hlm. 163–164",
   latar: "#FFF7ED",
-  kutipan: [
-    "Pada bab ini kalian akan belajar lebih mendalam tentang sudut.",
-    "Kalian akan menemukan sudut siku-siku di lingkungan sekitar,",
-    "memahami bagian-bagian sudut, menyebutkan jenis-jenis",
-    "derajat, membandingkan besar sudut, dan menggambar sudut dengan ukuran tertentu.",
-    "Sudut, sudut siku-siku, kaki sudut, titik sudut, sudut lancip, sudut",
-  ],
+  kutipan: kutipanLokal("k5b6a-materi-1.ts:1"),
   ketukan: [
     k(
       "Selamat datang di bab enam, Sudut. Di bab ini kalian akan belajar lebih mendalam tentang sudut.",
@@ -65,7 +60,7 @@ export const ADEGAN_PETA: AdeganStory = {
   judul: "Peta konsep bab Sudut",
   sumber: "Buku Siswa hlm. 164",
   latar: "#F5F3FF",
-  kutipan: ["Peta Konsep", "Melukis Sudut", "Sudut Siku-Siku", "Pengertian"],
+  kutipan: kutipanLokal("k5b6a-materi-1.ts:2"),
   ketukan: [
     k(
       "Ini peta konsep bab enam. Di tengah ada kata sudut. Dari sana tumbuh empat cabang: sudut siku-siku, pengertian sudut, mengukur dan membandingkan sudut, dan melukis sudut.",
@@ -118,15 +113,7 @@ export const ADEGAN_SEKITAR: AdeganStory = {
   judul: "Sudut di sekitar kita",
   sumber: "Materi: sudut di sekitar kita",
   latar: "#ECFEFF",
-  kutipan: [
-    "Sudut di Sekitar Kita",
-    "Kalian mungkin sering mengatakan",
-    "pojokan permukaan meja",
-    "tersebut adalah contoh sudut dalam kehidupan sehari-hari",
-    "Gambar 6.1 Contoh Sudut dalam Kehidupan Sehari-Hari",
-    "pada benda di sekitar kalian?",
-    "Ayo, coba temukan sebanyak mungkin.",
-  ],
+  kutipan: kutipanLokal("k5b6a-materi-1.ts:3"),
   ketukan: [
     k(
       "Sekarang kita mulai dengan sudut di sekitar kita. Kalian mungkin sering mengatakan pojokan permukaan meja atau pojokan papan tulis.",
@@ -169,16 +156,7 @@ export const ADEGAN_MENGINGAT: AdeganStory = {
   judul: "Ayo Mengingat Kembali dan gambaran bab",
   sumber: "Buku Siswa hlm. 165; Panduan Guru hlm. 249, 250, 252",
   latar: "#FFFBEB",
-  kutipan: [
-    "Ayo Mengingat Kembali",
-    "Di kelas IV, kalian sudah pernah belajar tentang bangun datar,",
-    "Tabel 6.1 Bangun Datar dan Banyaknya Sudut",
-    "untuk menentukan banyaknya sudut yang dimiliki oleh bangun datar tertentu",
-    "Mengapa harus dimulai dari sudut siku-siku?",
-    "mudah mengenali sudut yang lebih kecil dan lebih besar dari sudut siku-siku",
-    "Skema Pembelajaran",
-    "Menemukan sudut siku-siku di lingkungan sekitar",
-  ],
+  kutipan: kutipanLokal("k5b6a-materi-1.ts:4"),
   ketukan: [
     k(
       "Sebelum mulai, ayo mengingat kembali. Di kelas empat kalian sudah belajar bangun datar. Salin tabel berikut di buku tugas, lalu lengkapi nama bangun datar dan banyaknya sudut.",

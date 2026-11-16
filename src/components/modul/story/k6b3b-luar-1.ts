@@ -68,7 +68,7 @@ export const ADEGAN_LUAR_PROYEKSI: AdeganStory = {
       tambah("atas", ROW("r3", 118, 126, ["tampak atas", "hilang: tinggi"], "#FDE68A")),
     ),
     k(
-      "Pada susunan Anike, lebar tiga, tinggi dua, dan kedalaman satu. Maka tampak depan berukuran tiga kali dua kotak, tampak kanan satu kali dua, dan tampak atas tiga kali satu.",
+      "Pada susunan Kira, lebar tiga, tinggi dua, dan kedalaman satu. Maka tampak depan berukuran tiga kali dua kotak, tampak kanan satu kali dua, dan tampak atas tiga kali satu.",
       bersih(0),
       tambah(0, susunanIso("a", 18, 114, 20, ANIKE).objs),
       tambah("lebar", teks("dl", 60, 160, "lebar 3", 9, W.merah)),
@@ -120,7 +120,7 @@ export const ADEGAN_LUAR_MATRIKS: AdeganStory = {
       tambah("matriks", teks("mt", 150, 176, "matriks tinggi", 11, W.ungu)),
     ),
     k(
-      "Susunan Anike hanya satu baris dan tiga kolom, dengan tinggi satu, dua, dan satu. Kubus hijau yang menumpuk membuat kolom tengah bertinggi dua.",
+      "Susunan Kira hanya satu baris dan tiga kolom, dengan tinggi satu, dua, dan satu. Kubus hijau yang menumpuk membuat kolom tengah bertinggi dua.",
       bersih(0),
       tambah(0, susunanIso("a", 18, 120, 20, ANIKE).objs, teks("mt", 225, 62, "matriks tinggi", 10, W.ungu)),
       tambah("satu@2", kolomAnike(0)),

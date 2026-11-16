@@ -34,10 +34,10 @@ export const ADEGAN_LUAR_LAZIM: AdeganStory = {
       tambah("hasilnya", rumus("lt", 170, "45.600", 20, W.hijau)),
     ),
     k(
-      "Bilangan lazim ini sama dengan harga peralatan sekolah Komang. Jadi Cara tiga benar.",
+      "Bilangan lazim ini sama dengan harga peralatan sekolah Kira. Jadi Cara tiga benar.",
       bersih(0),
       tambah(0, judul("Hasilnya cocok")),
-      tambah("harga", ...kartu("lh", 50, 50, 200, 44, W.krem, ["harga Komang", "Rp45.600"], 11)),
+      tambah("harga", ...kartu("lh", 50, 50, 200, 44, W.krem, ["harga Kira", "Rp45.600"], 11)),
       tambah("benar", emo("lv", 150, 140, "✅", 36)),
     ),
     k(
@@ -50,7 +50,7 @@ export const ADEGAN_LUAR_LAZIM: AdeganStory = {
 /* ------------------------------ 7. Standard Form Return: penerapan ------------------------------ */
 export const ADEGAN_LUAR_LAZIM_TERAPAN: AdeganStory = {
   id: "luar-lazim-terapan",
-  judul: "Standard Form Return pada Cara 2, uang Asep, dan uang Lukas",
+  judul: "Standard Form Return pada Cara 2, uang Malosi, dan uang Igil",
   sumber: "Metode luar: Standard Form Return, penerapan",
   latar: "#FEFCE8",
   ketukan: [
@@ -66,21 +66,21 @@ export const ADEGAN_LUAR_LAZIM_TERAPAN: AdeganStory = {
       tambah("hasilnya", rumus("pv", 170, "45.600", 20, W.hijau)),
     ),
     k(
-      "Sekarang periksa uang Asep. Tiga puluh ribu, delapan ribu, dan enam ratus kembali menjadi tiga puluh delapan ribu enam ratus.",
+      "Sekarang periksa uang Malosi. Tiga puluh ribu, delapan ribu, dan enam ratus kembali menjadi tiga puluh delapan ribu enam ratus.",
       bersih(0),
-      tambah(0, judul("Periksa uang Asep")),
+      tambah(0, judul("Periksa uang Malosi")),
       tambah("Tiga", rumus("pw", 80, "30.000 + 8.000 + 600", 14, W.coklat)),
       tambah("kembali", rumus("px", 126, "38.600", 24, W.hijau)),
-      tambah("kembali", ...kartu("py", 60, 150, 180, 34, W.hijauMuda, ["sama dengan bilangan Asep"], 9.6)),
+      tambah("kembali", ...kartu("py", 60, 150, 180, 34, W.hijauMuda, ["sama dengan bilangan Malosi"], 9.6)),
     ),
     k(
-      "Terakhir periksa uang Lukas. Enam puluh ribu, tiga ribu, dan lima ratus kembali menjadi enam puluh tiga ribu lima ratus.",
+      "Terakhir periksa uang Igil. Enam puluh ribu, tiga ribu, dan lima ratus kembali menjadi enam puluh tiga ribu lima ratus.",
       bersih(0),
-      tambah(0, judul("Periksa uang Lukas")),
-      tambah("Terakhir", ...kartu("q1", 30, 40, 240, 34, W.pink, ["Lukas: 6 lembar, 3 lembar, 5 keping"], 9.4)),
+      tambah(0, judul("Periksa uang Igil")),
+      tambah("Terakhir", ...kartu("q1", 30, 40, 240, 34, W.pink, ["Igil: 6 lembar, 3 lembar, 5 keping"], 9.4)),
       tambah("Enam", rumus("q2", 100, "60.000 + 3.000 + 500", 12, W.coklat)),
       tambah("menjadi", rumus("q3", 128, "63.500", 18, W.hijau)),
-      tambah("kembali", ...kartu("q4", 30, 146, 240, 34, W.hijauMuda, ["sama dengan bilangan Lukas"], 10)),
+      tambah("kembali", ...kartu("q4", 30, 146, 240, 34, W.hijauMuda, ["sama dengan bilangan Igil"], 10)),
     ),
   ],
 };
@@ -103,9 +103,9 @@ export const ADEGAN_LUAR_UANG: AdeganStory = {
       tambah("kecil", emo("me", 150, 150, "💵", 32)),
     ),
     k(
-      "Contoh uang Asep: tiga lembar sepuluh ribuan, delapan lembar seribuan, enam keping seratusan. Susun uangnya dari yang terbesar.",
+      "Contoh uang Malosi: tiga lembar sepuluh ribuan, delapan lembar seribuan, enam keping seratusan. Susun uangnya dari yang terbesar.",
       bersih(0),
-      tambah(0, judul("Uang Asep disusun")),
+      tambah(0, judul("Uang Malosi disusun")),
       tambah("tiga", ...labelBaris("x", 3, 8, 6)),
       tambah("tiga", ...barisUang("xp", 130, 52, 3, "p")),
       tambah("delapan", ...barisUang("xr", 130, 92, 8, "r")),
@@ -121,40 +121,40 @@ export const ADEGAN_LUAR_UANG: AdeganStory = {
       tambah("Jadi", rumus("v4", 176, "jumlah 38.600", 14, W.hijau)),
     ),
     k(
-      "Uang Lukas disusun dengan cara yang sama: enam lembar, tiga lembar, dan lima keping, sehingga bernilai enam puluh tiga ribu lima ratus.",
+      "Uang Igil disusun dengan cara yang sama: enam lembar, tiga lembar, dan lima keping, sehingga bernilai enam puluh tiga ribu lima ratus.",
       bersih(0),
-      tambah(0, judul("Uang Lukas disusun")),
+      tambah(0, judul("Uang Igil disusun")),
       tambah("enam", ...kartu("w1", 30, 40, 240, 30, W.lembarP, ["6 lembar 10.000 = 60.000"], 9.4)),
       tambah("tiga", ...kartu("w2", 30, 80, 240, 30, W.lembarR, ["3 lembar 1.000 = 3.000"], 9.4)),
       tambah("lima", ...kartu("w3", 30, 120, 240, 30, W.keping, ["5 keping 100 = 500"], 9.4)),
       tambah("bernilai", rumus("w4", 176, "jumlah 63.500", 14, W.hijau)),
     ),
     k(
-      "Metode ini cocok saat uang yang tersedia terbatas, seperti uang Komang, karena kita tahu apa yang bisa diambil lebih dulu.",
+      "Metode ini cocok saat uang yang tersedia terbatas, seperti uang Kira, karena kita tahu apa yang bisa diambil lebih dulu.",
       bersih(0),
       tambah(0, judul("Cocok untuk uang terbatas")),
       tambah("terbatas", emo("ut", 150, 80, "💰", 36)),
-      tambah("Komang", ...kartu("uk", 40, 100, 220, 44, W.krem, ["uang Komang terbatas", "ambil dari yang terbesar"], 10)),
+      tambah("Kira", ...kartu("uk", 40, 100, 220, 44, W.krem, ["uang Kira terbatas", "ambil dari yang terbesar"], 10)),
     ),
   ],
 };
 
-/* ------------------------------ 9. Money Composition: penerapan pada batas uang Komang ------------------------------ */
+/* ------------------------------ 9. Money Composition: penerapan pada batas uang Kira ------------------------------ */
 export const ADEGAN_LUAR_UANG_TERAPAN: AdeganStory = {
   id: "luar-uang-terapan",
-  judul: "Money Composition pada uang Komang",
+  judul: "Money Composition pada uang Kira",
   sumber: "Metode luar: Money Composition, penerapan",
   latar: "#FDF2F8",
   ketukan: [
     k(
-      "Sekarang bayar empat puluh lima ribu enam ratus dengan uang Komang. Mulai dari sepuluh ribuan: lima lembar berarti lima puluh ribu, terlalu banyak. Jadi ambil empat lembar, empat puluh ribu.",
+      "Sekarang bayar empat puluh lima ribu enam ratus dengan uang Kira. Mulai dari sepuluh ribuan: lima lembar berarti lima puluh ribu, terlalu banyak. Jadi ambil empat lembar, empat puluh ribu.",
       tambah(0, judul("Bayar Rp45.600")),
       tambah("sepuluh", ...kartu("o1", 16, 36, 268, 30, W.lembarP, ["mulai dari 10.000"], 9.4)),
       tambah("lima", ...kartu("o2", 16, 76, 268, 30, W.merahMuda, ["5 lembar: 50.000, terlalu banyak"], 9.4)),
       tambah("empat@2", ...kartu("o3", 16, 116, 268, 30, W.hijauMuda, ["4 lembar: 40.000, boleh"], 9.4)),
     ),
     k(
-      "Sisanya lima ribu enam ratus. Seribuan Komang ada lima belas lembar, jadi ambil lima lembar.",
+      "Sisanya lima ribu enam ratus. Seribuan Kira ada lima belas lembar, jadi ambil lima lembar.",
       bersih(0),
       tambah(0, judul("Sisa dibayar seribuan")),
       tambah("Sisanya", ...kartu("o4", 16, 40, 268, 30, W.krem, ["sisa 5.600"], 10)),
@@ -167,13 +167,13 @@ export const ADEGAN_LUAR_UANG_TERAPAN: AdeganStory = {
       hapus("ambil", "o4-k", "o4-t0"),
     ),
     k(
-      "Batas uang Komang penting. Misalnya setelah empat lembar sepuluh ribuan, kalau hanya tiga lembar seribuan, sisanya dua ribu enam ratus harus dibayar dengan dua puluh enam keping seratusan. Komang hanya punya enam belas keping, jadi tidak bisa.",
+      "Batas uang Kira penting. Misalnya setelah empat lembar sepuluh ribuan, kalau hanya tiga lembar seribuan, sisanya dua ribu enam ratus harus dibayar dengan dua puluh enam keping seratusan. Kira hanya punya enam belas keping, jadi tidak bisa.",
       bersih(0),
-      tambah(0, judul("Batas uang Komang", W.merah)),
+      tambah(0, judul("Batas uang Kira", W.merah)),
       tambah("Misalnya", ...kartu("b1", 16, 36, 268, 28, W.hijauMuda, ["4 lembar 10.000"], 9)),
       tambah("tiga", ...kartu("b2", 16, 70, 268, 28, W.lembarR, ["3 lembar 1.000, sisa 2.600"], 9)),
       tambah("dua@2", ...kartu("b3", 16, 104, 268, 28, W.keping, ["perlu 26 keping 100"], 9)),
-      tambah("enam@2", ...kartu("b4", 16, 138, 268, 28, W.merahMuda, ["Komang hanya punya 16 keping"], 9)),
+      tambah("enam@2", ...kartu("b4", 16, 138, 268, 28, W.merahMuda, ["Kira hanya punya 16 keping"], 9)),
       tambah("bisa", emo("b5", 150, 190, "🚫", 16)),
     ),
     k(
@@ -207,13 +207,13 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("Money", ...kartu("r4", 16, 40, 268, 40, W.pink, ["Money Composition", "susun dari uang terbesar"], 9.4)),
     ),
     k(
-      "Uang Asep tiga puluh delapan ribu enam ratus, uang Lukas enam puluh tiga ribu lima ratus, dan Komang punya empat cara untuk empat puluh lima ribu enam ratus.",
+      "Uang Malosi tiga puluh delapan ribu enam ratus, uang Igil enam puluh tiga ribu lima ratus, dan Kira punya empat cara untuk empat puluh lima ribu enam ratus.",
       bersih(0),
       tambah(0, judul("Angka yang dipakai")),
-      tambah("Asep", ...kartu("s1", 16, 50, 84, 52, W.langit, ["Asep", "38.600"], 10)),
-      tambah("Lukas", ...kartu("s2", 108, 50, 84, 52, W.pink, ["Lukas", "63.500"], 10)),
-      tambah("Komang", ...kartu("s3", 200, 50, 84, 52, W.hijauMuda, ["Komang", "45.600"], 10)),
-      tambah("empat", teks("s4", 150, 134, "4 cara untuk uang Komang", 9.4, W.ungu)),
+      tambah("Malosi", ...kartu("s1", 16, 50, 84, 52, W.langit, ["Malosi", "38.600"], 10)),
+      tambah("Igil", ...kartu("s2", 108, 50, 84, 52, W.pink, ["Igil", "63.500"], 10)),
+      tambah("Kira", ...kartu("s3", 200, 50, 84, 52, W.hijauMuda, ["Kira", "45.600"], 10)),
+      tambah("empat", teks("s4", 150, 134, "4 cara untuk uang Kira", 9.4, W.ungu)),
     ),
     k(
       "Pilih metode sesuai soal: uraikan untuk membaca nilai, tukar untuk mencari cara lain, periksa kembali untuk memastikan, dan susun dari uang bila uangnya terbatas.",

@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { LATIHAN, W, barisTabel, batang, emo, garis, jembatan, judul, kartu, kisi, pecahan, teks } from "./k4b2c-gambar";
 import { bersih, idx, k, tambah, ubah } from "./k4b2c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Ayo Berlatih nomor 2 (Buku Siswa hlm. 70; Panduan Guru hlm. 103) ------------------------------ */
 const SUARA_N1 = "Soal kedua: gambar kiri terdiri atas enam kotak dengan dua kotak diarsir, gambar kanan tiga kotak dengan satu kotak diarsir. Titik-titik diisi pecahan tiap gambar.";
@@ -13,14 +14,7 @@ export const ADEGAN_BERLATIH_DUA: AdeganStory = {
   judul: "Latihan kedua: dua per enam dan satu per tiga",
   sumber: "Materi: Latihan pecahan senilai (2)",
   latar: "#FFF1F2",
-  kutipan: [
-    "Ayo Berlatih",
-    "Isilah titik-titik dibawah ini dengan bilangan pecahan sesuai daerah yang",
-    "Isilah titik-titik dibawah ini sesuai daerah yang diarsir!",
-    "Dikatakan pecahan senilai, karena pecahan",
-    "apabila disederhanakan",
-    "memperoleh hasil yang sama yaitu",
-  ],
+  kutipan: kutipanLokal("k4b2c-materi-3.ts:1"),
   ketukan: [
     k(
       SUARA_N1,
@@ -67,13 +61,7 @@ export const ADEGAN_BERLATIH_TIGA: AdeganStory = {
   judul: "Latihan ketiga dan tiga pasangan senilai",
   sumber: "Materi: Latihan pecahan senilai (3)",
   latar: "#FDF2F8",
-  kutipan: [
-    "Ayo Berlatih",
-    "Isilah titik-titik dibawah ini dengan bilangan pecahan sesuai daerah yang",
-    "Dikatakan pecahan senilai, karena pecahan",
-    "apabila disederhanakan",
-    "memperoleh hasil yang sama yaitu",
-  ],
+  kutipan: kutipanLokal("k4b2c-materi-3.ts:2"),
   ketukan: [
     k(
       SUARA_Q1,
@@ -125,14 +113,7 @@ export const ADEGAN_CATATAN: AdeganStory = {
   judul: "Pesan guru: cek silang dan kesalahan umum",
   sumber: "Materi: Cek silang dan kesalahan umum",
   latar: "#F8FAFC",
-  kutipan: [
-    "Pecahan dapat dikatakan senilai apabila pecahan tersebut mempunyai nilai atau bentuk paling sederhana yang sama dengan cara menyamakan penyebutnya.",
-    "Dikatakan pecahan senilai, karena pecahan",
-    "Tahukah Kalian",
-    "Cara mencari pecahan yang senilai:",
-    "Buatlah tiga buah gambar yang menunjukkan pecahan senilai!",
-    "Guru menyampaikan kesimpulan dari aktivitas yang dilakukan dengan menyatakan bahwa:",
-  ],
+  kutipan: kutipanLokal("k4b2c-materi-3.ts:3"),
   ketukan: [
     k(
       SUARA_G1,
@@ -193,20 +174,7 @@ export const ADEGAN_DIFERENSIASI: AdeganStory = {
   judul: "Cara belajar dan ringkasan pecahan senilai",
   sumber: "Materi: Cara belajar dan ringkasan",
   latar: "#F5F3FF",
-  kutipan: [
-    "Diferensiasi",
-    "Karakteristik peserta didik di masing-masing sekolah akan berbeda-beda,",
-    "kondisi seperti ini hanya guru yang memahami.",
-    "Model pembelajaran yang disarankan untuk bab ini adalah Problem Based Learning.",
-    "Pembentukan kelompok dapat berdasarkan pada karakteristik atau keberagaman peserta didik",
-    "tingkat kemampuan tinggi dengan anggota kelompok tingkat kemampuan sedang atau kurang.",
-    "Bagi peserta didik yang kecepatan belajarnya tinggi (advanced), minta mereka mengerjakan Latihan tanpa bantuan.",
-    "Guru juga dapat memberikan soal-soal tambahan.",
-    "guru dapat mendampingi peserta didik yang mengalami kesulitan.",
-    "Apabila karakteristik peserta didik di sekolah/kelas tidak terdapat",
-    "semua anggota kelompok dapat bekerja sama untuk menyelesaikan masalah/soal yang diberikan oleh guru.",
-    "guru dapat menerapkan metode diskusi dengan melibatkan peserta didik dalam Pecahan senilai.",
-  ],
+  kutipan: kutipanLokal("k4b2c-materi-3.ts:4"),
   ketukan: [
     k(
       SUARA_D1,

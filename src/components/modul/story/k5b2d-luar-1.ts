@@ -36,7 +36,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("jalan", teks("g4", 150, 164, "jalan menemukannya berbeda", 10.4, W.merah)),
     ),
     k(
-      "Angka yang kita pakai: dua belas dan delapan belas, pasangan lain, pasangan delapan dan dua puluh, mawar Nisa, dan paket Dania.",
+      "Angka yang kita pakai: dua belas dan delapan belas, pasangan lain, pasangan delapan dan dua puluh, mawar Kira, dan paket Dania.",
       bersih(0),
       tambah(0, judul("Angka yang kita pakai")),
       tambah("belas", ...kartu("a1", 14, 32, 272, 28, W.hijauMuda, ["daftar: 12 dan 18; 18 dan 24; 14 dan 28"], 8.6)),

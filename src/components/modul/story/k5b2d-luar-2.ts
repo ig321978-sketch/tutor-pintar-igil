@@ -51,13 +51,13 @@ export const ADEGAN_LUAR_EUCLID: AdeganStory = {
 /* ------------------------------ 7. Euclid Preview: penerapan ------------------------------ */
 export const ADEGAN_LUAR_EUCLID_TERAPAN: AdeganStory = {
   id: "luar-euclid-terapan",
-  judul: "Euclid Preview pada mawar Nisa dan contoh lain",
+  judul: "Euclid Preview pada mawar Kira dan contoh lain",
   sumber: "Metode luar: Euclid Preview",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      "Terapkan pada mawar Nisa, dua puluh empat dan delapan belas. Selisihnya enam, jadi pasangan menjadi delapan belas dan enam.",
-      tambah(0, judul("Mawar Nisa: 24 dan 18")),
+      "Terapkan pada mawar Kira, dua puluh empat dan delapan belas. Selisihnya enam, jadi pasangan menjadi delapan belas dan enam.",
+      tambah(0, judul("Mawar Kira: 24 dan 18")),
       tambah("Selisihnya", teks("t1", 150, 54, "24 − 18 = 6", 14, W.biru)),
       tambah("menjadi", teks("t2", 150, 72, "pasangan baru: 18 dan 6", 9.4, W.hijau)),
     ),
@@ -69,12 +69,12 @@ export const ADEGAN_LUAR_EUCLID_TERAPAN: AdeganStory = {
       tambah("menjadi@2", teks("t6", 150, 156, "pasangan baru: 6 dan 6", 9.4, W.hijau)),
     ),
     k(
-      "Pasangan sudah sama pada enam. Jadi FPB dua puluh empat dan delapan belas adalah enam, sama dengan banyak vas yang Nisa butuhkan.",
+      "Pasangan sudah sama pada enam. Jadi FPB dua puluh empat dan delapan belas adalah enam, sama dengan banyak vas yang Kira butuhkan.",
       bersih(0),
       tambah(0, judul("Hasil: FPB 24 dan 18")),
       tambah("Pasangan", teks("h1", 150, 74, "6 dan 6", 24, W.coklat)),
       tambah("Jadi", teks("h2", 150, 112, "FPB dari 24 dan 18 adalah 6", 12, W.hijau)),
-      tambah("vas", emo("h3", 150, 156, "🏺", 30), teks("h4", 150, 190, "6 vas untuk Nisa", 9.6, W.coklat)),
+      tambah("vas", emo("h3", 150, 156, "🏺", 30), teks("h4", 150, 190, "6 vas untuk Kira", 9.6, W.coklat)),
     ),
     k(
       "Contoh kedua: empat puluh dua dan dua belas. Cara cepat memakai sisa pembagian: empat puluh dua dibagi dua belas sama dengan tiga sisa enam.",
@@ -146,13 +146,13 @@ export const ADEGAN_LUAR_PAKET: AdeganStory = {
 /* ------------------------------ 9. Equal Packing: penerapan ------------------------------ */
 export const ADEGAN_LUAR_PAKET_TERAPAN: AdeganStory = {
   id: "luar-paket-terapan",
-  judul: "Equal Packing pada mawar Nisa dan paket Dania",
+  judul: "Equal Packing pada mawar Kira dan paket Dania",
   sumber: "Metode luar: Equal Packing",
   latar: "#FEF2F2",
   ketukan: [
     k(
-      "Terapkan pada mawar Nisa, dua puluh empat mawar merah dan delapan belas mawar putih. Vas paling banyak sama dengan FPB keduanya, yaitu enam vas.",
-      tambah(0, judul("Mawar Nisa: vas terbanyak")),
+      "Terapkan pada mawar Kira, dua puluh empat mawar merah dan delapan belas mawar putih. Vas paling banyak sama dengan FPB keduanya, yaitu enam vas.",
+      tambah(0, judul("Mawar Kira: vas terbanyak")),
       tambah("merah", ...kartu("n1", 20, 40, 260, 34, W.merahMuda, ["24 mawar merah"], 10)),
       tambah("putih.", ...kartu("n2", 20, 84, 260, 34, W.putih, ["18 mawar putih"], 10)),
       tambah("FPB", teks("n3", 150, 148, "FPB dari 24 dan 18 adalah 6", 12, W.hijau)),

@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, daftar, emo, judul, kartu, kisi100, tabel, teks } from "./k4b2e-gambar";
 import { bersih, k, tambah } from "./k4b2e-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Uji Kompetensi 1-4: pecahan (Buku Siswa hlm. 83; Panduan Guru hlm. 111-112) ------------------------------ */
 export const ADEGAN_UK_PECAHAN: AdeganStory = {
@@ -8,16 +9,7 @@ export const ADEGAN_UK_PECAHAN: AdeganStory = {
   judul: "Latihan: membandingkan pecahan",
   sumber: "Materi: membandingkan pecahan",
   latar: "#FFF7ED",
-  kutipan: [
-    "Uji Kompetensi",
-    "Bandingkan 2 pecahan di bawah ini dengan tanda",
-    "Urutkan pecahan berikut dari yang terkecil",
-    "Ibu mempunyai satu buah semangka",
-    "Siapakah yang menerima bagian semangka paling besar",
-    "Siapakah yang menerima bagian roti paling sedikit",
-    "Jawab: Putu",
-    "Jawab: Wiwin",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-3.ts:1"),
   ketukan: [
     k(
       "Sebagai penutup bab, mari berlatih. Coba bandingkan dua pecahan. Satu per tiga kurang dari satu per satu. Satu per tujuh kurang dari satu per lima. Lima per sembilan lebih dari tiga per sembilan.",
@@ -53,13 +45,13 @@ export const ADEGAN_UK_PECAHAN: AdeganStory = {
       tambah("dan", ...kartu("u2e", 20, 176, 260, 22, W.krem, ["e. 12/16, 14/16, 15/16"], 10.4)),
     ),
     k(
-      "Sekarang cerita semangka: seperempat untuk Helen, sisanya untuk Putu. Helen mendapat satu per empat, Putu tiga per empat. Bagian terbesar milik Putu.",
+      "Sekarang cerita semangka: seperempat untuk Kira, sisanya untuk Halim. Kira mendapat satu per empat, Halim tiga per empat. Bagian terbesar milik Halim.",
       bersih(0),
       tambah(0, judul("Cerita semangka")),
       tambah(0, emo("u3", 150, 82, "🍉", 40)),
-      tambah("Helen", ...kartu("u3a", 20, 100, 120, 28, W.pink, ["Helen = 1/4"], 11)),
-      tambah("Putu@2", ...kartu("u3b", 160, 100, 120, 28, W.hijauMuda, ["Putu = 3/4"], 11)),
-      tambah("Bagian", ...kartu("u3c", 60, 144, 180, 30, W.krem, ["paling besar: Putu"], 11)),
+      tambah("Kira", ...kartu("u3a", 20, 100, 120, 28, W.pink, ["Kira = 1/4"], 11)),
+      tambah("Halim@2", ...kartu("u3b", 160, 100, 120, 28, W.hijauMuda, ["Halim = 3/4"], 11)),
+      tambah("Bagian", ...kartu("u3c", 60, 144, 180, 30, W.krem, ["paling besar: Halim"], 11)),
     ),
     k(
       "Sekarang cerita roti: Wiwin mendapat satu per tiga roti, Tomas dua per tiga. Penyebutnya sama dan satu kurang dari dua, jadi paling sedikit Wiwin.",
@@ -79,14 +71,7 @@ export const ADEGAN_UK_DESIMAL: AdeganStory = {
   judul: "Latihan: pecahan ke desimal",
   sumber: "Materi: pecahan ke desimal",
   latar: "#F0FDF4",
-  kutipan: [
-    "Ubahkan pecahan biasa berikut menjadi pecahan desimal persepuluhan",
-    "Ubahkan pecahan biasa berikut menjadi pecahan desimal perseratusan",
-    "= 0,3",
-    "= 2,5",
-    "= 0,81",
-    "= 0,99",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-3.ts:2"),
   ketukan: [
     k(
       "Sekarang ubah ke desimal persepuluhan. Tiga per sepuluh jadi nol koma tiga, empat per sepuluh nol koma empat, dua per sepuluh nol koma dua, enam per sepuluh nol koma enam, dua puluh lima per sepuluh dua koma lima.",
@@ -158,16 +143,7 @@ export const ADEGAN_UK_PERSEN: AdeganStory = {
   judul: "Latihan: desimal dan persen",
   sumber: "Materi: desimal dan persen",
   latar: "#FDF4FF",
-  kutipan: [
-    "Ubahlah pecahan desimal perseratusan berikut menjadi bentuk persen",
-    "Ubahlah bentuk persen berikut menjadi bentuk pecahan desimal",
-    "d. 20,05 = 2005 %",
-    "d. 455% = 4,55",
-    "Suatu sekolah memilih 30 siswa dari 100 orang siswa yang akan diikutkan lomba berlari",
-    "= 0,30 = 30%",
-    "Nazilla bisa menjawab dengan benar 6 pertanyaan dari 10 soal yang diberikan",
-    "x 100% = 60%",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-3.ts:3"),
   ketukan: [
     k(
       "Sekarang desimal perseratusan menjadi persen. Nol koma nol lima menjadi lima persen. Nol koma dua lima menjadi dua puluh lima persen. Satu koma tiga delapan menjadi seratus tiga puluh delapan persen. Dua puluh koma nol lima menjadi dua ribu lima persen.",
@@ -233,7 +209,7 @@ const TAB_KUNCI = tabel(
   [36, 240],
   [
     ["soal", "kunci Uji Kompetensi"],
-    ["3", "Helen 1/4, Putu 3/4; terbesar Putu"],
+    ["3", "Kira 1/4, Halim 3/4; terbesar Halim"],
     ["4", "paling sedikit: Wiwin"],
     ["5", "0,3  0,4  0,2  0,6  2,5"],
     ["6", "0,81  0,79  0,45  0,66  0,99"],
@@ -250,14 +226,7 @@ export const ADEGAN_RUBRIK_E: AdeganStory = {
   judul: "Rubrik Penilaian dan kunci",
   sumber: "Panduan Guru hlm. 111–116",
   latar: "#F8FAFC",
-  kutipan: [
-    "B. Rubrik Penilaian Pengetahuan",
-    "Tabel 2.2 Pedoman Penilaian Hasil Belajar",
-    "Peserta didik tidak menjawab sama sekali",
-    "Peserta didik bisa menjawab tetapi kurang lengkap",
-    "Peserta didik bisa menjawab dengan benar",
-    "x 100% = 60%",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-3.ts:4"),
   ketukan: [
     k(
       "Rubrik penilaian pengetahuan di Panduan Guru memuat sepuluh butir. Skor nol bila murid tidak menjawab sama sekali, lima bila menjawab tetapi kurang lengkap, dan sepuluh bila menjawab dengan benar.",
@@ -285,11 +254,11 @@ export const ADEGAN_RUBRIK_E: AdeganStory = {
       tambah("Nilai@2", ...kartu("r5", 30, 90, 240, 30, W.langit, ["skor murid ÷ skor maksimum"], 10.4)),
     ),
     k(
-      "Rekap kunci soal tiga sampai sepuluh: Putu terbesar, Wiwin paling sedikit, lalu desimal persepuluhan, desimal perseratusan, persen, kembali ke desimal, tiga puluh persen, dan enam puluh persen.",
+      "Rekap kunci soal tiga sampai sepuluh: Halim terbesar, Wiwin paling sedikit, lalu desimal persepuluhan, desimal perseratusan, persen, kembali ke desimal, tiga puluh persen, dan enam puluh persen.",
       bersih(0),
       tambah(0, judul("Rekap kunci")),
       tambah("Rekap", ...barisTabel(TAB_KUNCI, "rk", 0)),
-      tambah("Putu", ...barisTabel(TAB_KUNCI, "rk", 1)),
+      tambah("Halim", ...barisTabel(TAB_KUNCI, "rk", 1)),
       tambah("Wiwin", ...barisTabel(TAB_KUNCI, "rk", 2)),
       tambah("persepuluhan,", ...barisTabel(TAB_KUNCI, "rk", 3)),
       tambah("perseratusan,", ...barisTabel(TAB_KUNCI, "rk", 4)),
@@ -307,21 +276,7 @@ export const ADEGAN_REFLEKSI_E: AdeganStory = {
   judul: "Refleksi dan Remedial",
   sumber: "Buku Siswa hlm. 84; Panduan Guru hlm. 116–118",
   latar: "#F0F9FF",
-  kutipan: [
-    "Refleksi",
-    "Dalam bab ini, kalian sudah mempelajari pecahan dan juga lambangnya",
-    "Adakah bagian yang masih dirasa sulit",
-    "Perbanyaklah mengerjakan latihan soal",
-    "Manfaat apa yang kalian dapatkan setelah mempelajari bab ini",
-    "membagi kue atau coklat menjadi beberapa bagian yang sama",
-    "dapat menghitung diskon menggunakan persen",
-    "Apa yang sudah berjalan baik di dalam kelas",
-    "Panduan Remedial",
-    "Pemberian bimbingan secara individu",
-    "Pemberian bimbingan secara berkelompok",
-    "Pemberian pembelajaran berulang dengan metode dan media yang berbeda",
-    "Tutor sebaya",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-3.ts:5"),
   ketukan: [
     k(
       "Refleksi untuk seluruh bab: kalian sudah mempelajari pecahan dan lambangnya, juga cara membandingkan dua pecahan. Adakah bagian yang sulit? Diskusikan dengan teman, minta bantuan guru, dan perbanyak latihan soal.",
@@ -369,17 +324,7 @@ export const ADEGAN_PENGAYAAN_1E: AdeganStory = {
   judul: "Pengayaan: tantangan 1 sampai 3",
   sumber: "Materi: pengayaan",
   latar: "#FFFBEB",
-  kutipan: [
-    "Pedoman untuk Pengayaan",
-    "diberikan pecahan, pecahan desimal atau persen dengan angka yang berbeda",
-    "Belajar kelompok",
-    "Belajar mandiri",
-    "Soal-soal Pengayaan",
-    "Putu memiliki sebuah kue brownies",
-    "memotong kue brownies tersebut menjadi 10 bagian",
-    "Jumlah tepung dan gula untuk membuat Prol Tape",
-    "Maka helen harus membayar seharga Rp25.000,00",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-3.ts:6"),
   ketukan: [
     k(
       "Kamu yang sudah lancar boleh mencoba tantangan dengan angka yang berbeda untuk pecahan, desimal, atau persen. Belajar kelompok: memecahkan masalah dunia nyata. Belajar mandiri: membuat proyek, lalu menjadi tutor bagi teman.",
@@ -397,22 +342,22 @@ export const ADEGAN_PENGAYAAN_1E: AdeganStory = {
       tambah("Suwar", ...kartu("p1b", 12, 90, 276, 34, W.hijauMuda, ["Suwar Suwir: 2½ + 1 = 3½ kilo"], 11)),
     ),
     k(
-      "Tantangan kedua: Putu memotong brownies menjadi sepuluh bagian dan memberi empat bagian kepada Karel. Karel menerima empat per sepuluh bagian, yaitu nol koma empat, atau empat puluh persen.",
+      "Tantangan kedua: Halim memotong brownies menjadi sepuluh bagian dan memberi empat bagian kepada Upe. Upe menerima empat per sepuluh bagian, yaitu nol koma empat, atau empat puluh persen.",
       bersih(0),
       tambah(0, judul("Pengayaan 2: brownies")),
-      tambah("Putu", ...kartu("p2a", 12, 40, 150, 28, W.krem, ["4 dari 10 bagian"], 10)),
-      tambah("Karel", ...kartu("p2b", 12, 84, 150, 28, W.langit, ["4/10 = 0,4"], 11)),
+      tambah("Halim", ...kartu("p2a", 12, 40, 150, 28, W.krem, ["4 dari 10 bagian"], 10)),
+      tambah("Upe", ...kartu("p2b", 12, 84, 150, 28, W.langit, ["4/10 = 0,4"], 11)),
       tambah("persen.", ...kartu("p2c", 12, 128, 150, 30, W.pink, ["0,4 = 40%"], 11)),
       tambah("sepuluh", ...kisi100("kg", 180, 50, 10, 40)),
     ),
     k(
-      "Tantangan ketiga: Edamame lima puluh ribu rupiah per kilogram. Helen membeli setengah kilogram, jadi membayar dua puluh lima ribu rupiah.",
+      "Tantangan ketiga: Edamame lima puluh ribu rupiah per kilogram. Kira membeli setengah kilogram, jadi membayar dua puluh lima ribu rupiah.",
       bersih(0),
       tambah(0, judul("Pengayaan 3: Edamame")),
       tambah("Edamame", ...kartu("p3a", 12, 40, 276, 30, W.krem, ["1 kilogram: Rp50.000"], 10.4)),
-      tambah("setengah", ...kartu("p3b", 12, 84, 276, 30, W.langit, ["Helen beli 1/2 kilogram"], 10.4)),
+      tambah("setengah", ...kartu("p3b", 12, 84, 276, 30, W.langit, ["Kira beli 1/2 kilogram"], 10.4)),
       tambah("jadi", ...kartu("p3c", 12, 128, 276, 30, W.hijauMuda, ["1/2 × 50.000 = 25.000"], 10.4)),
-      tambah("membayar", ...kartu("p3d", 12, 168, 276, 26, W.pink, ["Helen membayar Rp25.000"], 10.4)),
+      tambah("membayar", ...kartu("p3d", 12, 168, 276, 26, W.pink, ["Kira membayar Rp25.000"], 10.4)),
     ),
   ],
 };
@@ -423,19 +368,10 @@ export const ADEGAN_PENGAYAAN_2E: AdeganStory = {
   judul: "Pengayaan: tantangan 4 dan 5",
   sumber: "Materi: pengayaan dan diskon",
   latar: "#FEF2F2",
-  kutipan: [
-    "Edamame dan Suwar Suwir adalah salah satu jajanan khas Kota Jember",
-    "manakah yang paling berat dari kedua",
-    "Slamet melihat satu bungkus Edamame yang diskon 5%",
-    "Kasir seharusnya menjawab....dari harga Edamame",
-    "Jadi, Edamame adalah oleh-oleh yang paling berat dibawa oleh Slamet",
-    "Diskon 5 % =",
-    "Maka helen harus membayar seharga Rp25.000,00",
-    "Maka kue brownies yang diterima stanley sebanyak",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-3.ts:7"),
   ketukan: [
     k(
-      "Tantangan keempat: Slamet membeli satu bungkus Edamame setengah kilogram dan satu bungkus Suwar Suwir seperempat kilogram. Setengah lebih besar daripada seperempat, jadi Edamame lebih berat.",
+      "Tantangan keempat: Wei membeli satu bungkus Edamame setengah kilogram dan satu bungkus Suwar Suwir seperempat kilogram. Setengah lebih besar daripada seperempat, jadi Edamame lebih berat.",
       bersih(0),
       tambah(0, judul("Pengayaan 4: oleh-oleh")),
       tambah("Edamame", ...kartu("p4a", 20, 40, 120, 28, W.hijauMuda, ["Edamame 1/2 kg"], 10)),
@@ -471,17 +407,7 @@ export const ADEGAN_PENUTUP_E: AdeganStory = {
   judul: "Orang tua, sumber bacaan, penutup bab",
   sumber: "Panduan Guru hlm. 120; Buku Siswa hlm. 75–84",
   latar: "#F0FDF4",
-  kutipan: [
-    "Interaksi dengan Orang Tua",
-    "Guru setiap semester mengadakan rapat dengan orang tua peserta didik",
-    "Guru dapat membuat grup komunitas untuk setiap kelas dengan para orang tua peserta didik",
-    "Setiap diakhir bab terdapat pengayaan dengan memanfaatkan teknologi yaitu barcode",
-    "Guru menyediakan setiap minggu untuk konseling orang tua peserta didik",
-    "Guru dapat juga mengunjungi orang tua khusus untuk peserta didik yang mengalami kesulitan",
-    "Guru mengadakan seminar atau layanan konsultasi tiap bulan",
-    "Sumber Bacaan",
-    "https://buku.kemdikbud.go.id/",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-3.ts:8"),
   ketukan: [
     k(
       "Interaksi dengan orang tua, enam hal: rapat tiap semester, grup komunitas kelas, barcode pengayaan di akhir bab, konseling tiap minggu, kunjungan bagi murid yang kesulitan, dan seminar atau konsultasi tiap bulan.",

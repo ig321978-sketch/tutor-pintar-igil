@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, judul, kartu, kotak, panah, rangkaPikto, barisPikto, teks, type Pikto } from "./k4b6a-gambar";
 import { bersih, idx, k, redamkan, sorotkan, tambah, ubah } from "./k4b6a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab dan tujuan (Buku Siswa hlm. 177–178; Panduan Guru hlm. 215) ------------------------------ */
 const TUJUAN = ["menampilkan data dalam diagram gambar (piktogram)", "menafsirkan data dari diagram gambar (piktogram)", "menampilkan data dalam diagram batang", "menafsirkan data dari diagram batang"];
@@ -19,19 +20,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 6: tujuan pembelajaran",
   sumber: "Buku Siswa hlm. 177–178; Panduan Guru hlm. 215",
   latar: "#FFF7ED",
-  kutipan: [
-    "Pernahkah kalian mengamati gambar seperti ini?",
-    "Apa yang kalian pahami",
-    "dari gambar tersebut?",
-    "Setelah mempelajari bab ini kalian mampu:",
-    "menampilkan data dalam bentuk",
-    "diagram gambar (piktogram)",
-    "menafsirkan data dari diagram gambar",
-    "Setelah mempelajari bab ini, peserta didik diharapkan dapat:",
-    "1.1 menyajikan data dalam bentuk piktogram",
-    "1.2 menginterpretasikan data dalam bentuk piktogram",
-    "1.3 menyajikan data dalam bentuk diagram batang",
-  ],
+  kutipan: kutipanLokal("k4b6a-materi-1.ts:1"),
   ketukan: [
     k(
       SUARA_P1,
@@ -92,25 +81,7 @@ export const ADEGAN_PETA: AdeganStory = {
   judul: "Peta konsep, gambaran umum, dan skema pembelajaran",
   sumber: "Buku Siswa hlm. 178; Panduan Guru hlm. 216–217",
   latar: "#F0FDF4",
-  kutipan: [
-    "Peta Konsep",
-    "Penyajian Data",
-    "Menganalisis dan",
-    "Diagram Gambar",
-    "Kata Kunci",
-    "Piktogram,",
-    "3. Gambaran Umum Bab",
-    "peserta didik akan belajar menyajikan, menganalisis dan",
-    "menginterpretasi piktogram dan diagram batang",
-    "menyajikan data dengan skala satu satuan",
-    "mempermudah peserta didik dalam membaca data",
-    "4. Keterampilan yang Dilatih",
-    "1. Menyajikan data",
-    "3. Menginterpretasi data",
-    "Tabel 6.1 Skema Pembelajaran",
-    "10 JP",
-    "5 JP",
-  ],
+  kutipan: kutipanLokal("k4b6a-materi-1.ts:2"),
   ketukan: [
     k(
       SUARA_K1,
@@ -151,24 +122,7 @@ export const ADEGAN_PEMANASAN: AdeganStory = {
   judul: "Pengalaman belajar, sarana, apersepsi, dan pemantik",
   sumber: "Panduan Guru hlm. 217–218",
   latar: "#FFFBEB",
-  kutipan: [
-    "Pengalaman Belajar",
-    "Sebelum memasuki materi mengenai piktogram, guru diharapkan",
-    "menyajikan, menganalisis dan menginterpretasi data dalam piktogram",
-    "(skala satu satuan)",
-    "Kebutuhan Sarana Prasarana dan Media",
-    "Benda-benda yang dapat dihitung di lingkungan siswa",
-    "Apersepsi",
-    "Piktogram disebut juga dengan diagram gambar.",
-    "menggunakan gambar untuk menunjukkan",
-    "banyak data",
-    "gambar menyatakan berapa banyak datanya",
-    "Pertanyaan Esensi/Pemantik:",
-    "1. Apakah piktogram?",
-    "2. Bagaimana menyajikan piktogram",
-    "data terbesar adalah data paling banyak dan data terkecil adalah data",
-    "paling sedikit",
-  ],
+  kutipan: kutipanLokal("k4b6a-materi-1.ts:3"),
   ketukan: [
     k(SUARA_S1, tambah(0, judul("Pengalaman belajar")), tambah("pengalaman", ...kartu("e1", 20, 34, 260, 34, W.hijauMuda, ["menyajikan data dalam piktogram"], 8.8)), tambah("menganalisis,", ...kartu("e2", 20, 76, 260, 34, W.langit, ["menganalisis data piktogram"], 8.8)), tambah("menginterpretasi", ...kartu("e3", 20, 118, 260, 34, W.krem, ["menginterpretasi data piktogram"], 8.8)), tambah("skala", ...kartu("e4", 60, 160, 180, 28, W.emas, ["skala satu satuan"], 9.2))),
     k(
@@ -224,27 +178,7 @@ export const ADEGAN_AKTIVITAS1: AdeganStory = {
   judul: "Kegiatan: penyajian piktogram",
   sumber: "Materi: penyajian piktogram",
   latar: "#FFF7ED",
-  kutipan: [
-    "A. Piktogram",
-    "Kalau ibu punya",
-    "beberapa benda",
-    "yang dapat dihitung,",
-    "bagaimana cara",
-    "menyajikannya?",
-    "Aktivitas 1. Penyajian Piktogram",
-    "Alat tulis (benda) dalam tas sekolah",
-    "1. Buatlah kelompok dengan jumlah anggota kelompok 3 – 4 anak.",
-    "2. Keluarkan alat tulis (benda) dari tas sekolah",
-    "3. Catat semua benda yang ada dan tulis berapa jumlahnya",
-    "4. Gambarlah tabel dengan dua kolom, kolom 1 menyatakan alat tulis (benda)",
-    "dan kolom 2 menyatakan banyaknya",
-    "Buku Paket",
-    "Buku Tulis",
-    "sebanyak jumlah alat tulis",
-    "Guru membentuk kelompok heterogen (berdasarkan karakteristik dan",
-    "keberagaman peserta didik)",
-    "Guru memberikan contoh cara mengisi beberapa bagian pada tabel",
-  ],
+  kutipan: kutipanLokal("k4b6a-materi-1.ts:4"),
   ketukan: [
     k(SUARA_A1, tambah(0, judul("A. Piktogram")), tambah("pertanyaan", emo("ib", 60, 90, "👩", 44)), tambah("beberapa", ...kartu("ib2", 100, 50, 180, 70, W.langit, ["Kalau ibu punya beberapa", "benda yang dapat dihitung,", "bagaimana menyajikannya?"], 8.6)), tambah("kegiatan", ...kartu("ib3", 40, 140, 220, 34, W.emas, ["Kegiatan: penyajian piktogram"], 9.2))),
     k(

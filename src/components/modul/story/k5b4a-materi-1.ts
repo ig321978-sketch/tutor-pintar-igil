@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { TITIK_DENAH, W, bingkai, emo, garis, jalur, judul, kartu, kotak, panah, poligon, teks } from "./k5b4a-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k5b4a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab: tujuan (Buku Siswa hlm. 105; Panduan Guru hlm. 113) ------------------------------ */
 export const ADEGAN_PEMBUKA: AdeganStory = {
@@ -8,15 +9,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 4: tujuan pembelajaran",
   sumber: "Buku Siswa hlm. 105; Panduan Guru hlm. 113",
   latar: "#FFF7ED",
-  kutipan: [
-    "Setelah mempelajari bab ini, diharapkan kalian mampu mengetahui",
-    "kapan kalian harus menggunakan keliling bangun datar.",
-    "kalian diharapkan mampu menemukan cara menghitung keliling",
-    "berbagai bangun datar.",
-    "mengenali situasi soal yang melibatkan keliling bangun datar;",
-    "menemukan keliling berbagai bangun datar sebagai jumlahan panjang",
-    "mendekomposisi bangun datar gabungan, lalu menemukan cara",
-  ],
+  kutipan: kutipanLokal("k5b4a-materi-1.ts:1"),
   ketukan: [
     k(
       "Selamat datang di bab empat, Keliling Bangun Datar. Setelah mempelajari bab ini, kalian diharapkan mampu mengetahui kapan harus menggunakan keliling bangun datar.",
@@ -67,15 +60,7 @@ export const ADEGAN_PETA: AdeganStory = {
   judul: "Peta konsep, kata kunci, dan lima subbab",
   sumber: "Buku Siswa hlm. 106; Panduan Guru hlm. 114–117",
   latar: "#F5F3FF",
-  kutipan: [
-    "Peta Konsep",
-    "Kata Kunci",
-    "Bangun datar, bangun gabungan, belah ketupat, jajargenjang,",
-    "layang-layang, persegi, persegi panjang, trapesium, keliling.",
-    "Bab ini terdiri atas lima subbab. Subbab A mendiskusikan tentang",
-    "keliling bangun datar. Pada subbab ini, peserta didik tidak langsung diberi tahu",
-    "menggunakan konteks benteng yang mengelilingi Keraton Yogyakarta.",
-  ],
+  kutipan: kutipanLokal("k5b4a-materi-1.ts:2"),
   ketukan: [
     k(
       "Ini peta konsep bab empat. Di tengah ada keliling bangun datar. Cabangnya segitiga, segi empat, segi banyak, dan bangun gabungan.",
@@ -134,14 +119,14 @@ export const ADEGAN_PETA: AdeganStory = {
       tambah("rute", emo("rt", 214, 140, "🏃", 34), teks("rtt", 214, 160, "siswa memunculkannya", 8.2, W.hijau)),
     ),
     k(
-      "Jadi hari ini kita masuk subbab A, Apakah Keliling Bangun Datar Itu? Kita mulai dari benteng, pagar, dan bingkai, lalu cerita lari Asep.",
+      "Jadi hari ini kita masuk subbab A, Apakah Keliling Bangun Datar Itu? Kita mulai dari benteng, pagar, dan bingkai, lalu cerita lari Upe.",
       bersih(0),
       tambah(0, judul("Subbab A")),
       tambah("Apakah", ...kartu("jd", 30, 34, 240, 40, W.hijauMuda, ["A. Apakah Keliling", "Bangun Datar Itu?"], 10)),
       tambah("benteng,", emo("e1", 60, 118, "🏰", 34)),
       tambah("pagar,", emo("e2", 120, 118, "🏠", 34)),
       tambah("bingkai,", emo("e3", 180, 118, "🖼", 34)),
-      tambah("Asep.", emo("e4", 240, 118, "🏃", 34), teks("e4t", 150, 160, "dari benteng sampai lapangan", 9, W.ungu)),
+      tambah("Upe.", emo("e4", 240, 118, "🏃", 34), teks("e4t", 150, 160, "dari benteng sampai lapangan", 9, W.ungu)),
     ),
   ],
 };
@@ -160,15 +145,7 @@ export const ADEGAN_BENTENG: AdeganStory = {
   judul: "Berpikir kritis: Benteng Baluwarti",
   sumber: "Materi: Benteng Baluwarti dan keliling",
   latar: "#FEF3C7",
-  kutipan: [
-    "Dalam kehidupan sehari-hari, kita sering menghitung keliling suatu",
-    "Benteng Baluwarti (kiri) adalah benteng pertahanan yang",
-    "Perhatikan denah benteng tersebut (kanan). Berbentuk apakah",
-    "berbagai bangun datar, ya. Bangun apa saja yang dapat kalian",
-    "panjang keseluruhan benteng yang hendak dipugar. Kita dapat",
-    "Coba pikirkan. Bagaimana cara kalian menghitung kelilingnya?",
-    "Etnomatematika adalah pendekatan pembelajaran",
-  ],
+  kutipan: kutipanLokal("k5b4a-materi-1.ts:3"),
   ketukan: [
     k(
       "Mari kita mulai dengan berpikir kritis. Dalam kehidupan sehari-hari, kita sering menghitung keliling suatu benda untuk berbagai keperluan. Lihat gambar Benteng Baluwarti dan denahnya.",
@@ -228,15 +205,7 @@ export const ADEGAN_SEKELILING: AdeganStory = {
   judul: "Benda sekeliling: pagar dan bingkai foto",
   sumber: "Materi: pagar dan bingkai foto",
   latar: "#F0FDF4",
-  kutipan: [
-    "Sekarang, perhatikan sekeliling kalian.",
-    "kalian hitung kelilingnya?",
-    "pagar yang mengelilingi rumah atau kebun? Bagaimana cara",
-    "Pernah jugakah kalian",
-    "Denah kompleks istana, kebun, dan foto merupakan contoh benda-",
-    "belajar menghitung keliling bangun datar.",
-    "Alat tulis: pulpen, pensil, penggaris, spidol.",
-  ],
+  kutipan: kutipanLokal("k5b4a-materi-1.ts:4"),
   ketukan: [
     k(
       "Sekarang perhatikan sekeliling kalian. Benda apa saja yang biasa kalian hitung kelilingnya? Seperti benteng, pernahkah kalian melihat pagar yang mengelilingi rumah atau kebun?",

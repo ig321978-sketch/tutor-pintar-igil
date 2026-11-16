@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { LATIHAN5, W, daduIso, emo, kartu, kubusMuka, mukaDadu, panah, susunanIso, tampak, teks } from "./k6b3b-gambar";
 import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k6b3b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const ambil = (objs: Obj[], ...ids: string[]) => objs.filter((o) => ids.includes(o.id));
 
@@ -15,7 +16,7 @@ export const ADEGAN_LATIHAN32: AdeganStory = {
   judul: "Latihan: menggambar dan menyusun dari tampak",
   sumber: "Materi: menggambar dan menyusun tampak",
   latar: "#EEF9FF",
-  kutipan: ["Gambarkan kubus berikut dari tiga arah yang berbeda", "Sebuah kubus dengan sisi berwarna-warni dilihat dari tiga arah berbeda", "Berikut adalah tampilan susunan kubus dari berbagai arah", "Gunakan kubus kalian dan tentukan susunan yang dimaksud"],
+  kutipan: kutipanLokal("k6b3b-materi-3.ts:1"),
   ketukan: [
     k(
       "Latihan satu: sebuah kubus punya sisi atas merah, sisi kiri biru, dan sisi kanan kuning. Gambarlah kubus itu dari tiga arah.",
@@ -95,7 +96,7 @@ export const ADEGAN_DADU: AdeganStory = {
   judul: "Latihan: dadu dan sisi yang kosong",
   sumber: "Materi: dadu dan sisi yang kosong",
   latar: "#FFF8E1",
-  kutipan: ["Gambarkan tampilannya dari tiga arah yang berbeda", "Jika mata dadu pada dua sisi yang berlawanan berjumlah 7", "ada berapa mata dadu pada sisi yang kosong?"],
+  kutipan: kutipanLokal("k6b3b-materi-3.ts:2"),
   ketukan: [
     k(
       "Latihan empat, bagian a: sebuah dadu menampakkan tiga sisi. Atas enam mata, kiri empat mata, dan kanan lima mata. Gambarkan tampilannya dari tiga arah yang berbeda.",
@@ -151,7 +152,7 @@ export const ADEGAN_UJI_REFLEKSI: AdeganStory = {
   judul: "Uji dadu bergambar dan renungan",
   sumber: "Materi: dadu bergambar dan renungan",
   latar: "#F4EEFF",
-  kutipan: ["Gambarkan dadu berikut jika dilihat dari tiga arah yang berbeda", "Apakah saya dapat menggambarkan tampilan bangun ruang dari berbagai arah?", "Apakah saya dapat menyusun susunan kubus jika diketahui tampilannya dari berbagai arah?"],
+  kutipan: kutipanLokal("k6b3b-materi-3.ts:3"),
   ketukan: [
     k(
       "Uji satu: sebuah dadu bergambar segitiga di sisi atas, persegi di sisi kiri, dan lingkaran di sisi kanan. Gambarkan dari tiga arah yang berbeda.",

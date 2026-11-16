@@ -13,7 +13,7 @@ export const ADEGAN_LUAR_C_PEMBUKA: AdeganStory = {
   latar: "#F5F3FF",
   ketukan: [
     k(
-      "Ada empat metode luar untuk bilangan desimal. Tiap metode kita lihat konsepnya, lalu kita terapkan pada contoh dari cerita Agam dan timbangan buah.",
+      "Ada empat metode luar untuk bilangan desimal. Tiap metode kita lihat konsepnya, lalu kita terapkan pada contoh dari cerita Igil dan timbangan buah.",
       tambah(0, teks("jud", 150, 26, "Empat Metode Luar", 15, W.ungu)),
       tambah("metode", emo("alat", 150, 76, "🧰", 34)),
       tambah("konsepnya", kartu("kn", 40, 100, 100, 44, W.krem, ["konsep"], 11)),

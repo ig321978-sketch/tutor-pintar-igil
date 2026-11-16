@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { ANIKE, CONTOH_A, CONTOH_B, CONTOH_C, CONTOH_D, W, emo, kartu, kubusMuka, panah, susunanIso, tampak, teks } from "./k6b3b-gambar";
 import { bersih, k, pudarkan, tambah, ubah } from "./k6b3b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 3. Langkah 2 sampai 5 dan diskusi a sampai e ------------------------------ */
 const FRAME_AB = tampak("v", 0, 0, 16, ["bm"]).objs;
@@ -11,10 +12,10 @@ export const ADEGAN_REKONSTRUKSI: AdeganStory = {
   judul: "Menggambar, bertukar gambar, dan merekonstruksi",
   sumber: "Materi: menggambar dan merekonstruksi",
   latar: "#F1F9EE",
-  kutipan: ["Cobalah menggambar seperti Anike untuk susunan kubus berikut", "Tukarkan gambar kalian dengan gambar kelompok lain", "Apakah rekonstruksi kalian berhasil?", "Bagaimana jika kalian hanya diberi tampilan dari dua arah?", "Apakah menggambarkan penampakan dari lebih banyak arah akan menolong?", "Dapatkah kalian menentukan susunan kubus yang dapat ditampilkan dengan tampilan dari satu arah saja?"],
+  kutipan: kutipanLokal("k6b3b-materi-2.ts:1"),
   ketukan: [
     k(
-      "Sekarang giliran kalian. Langkah kedua: coba gambar seperti Anike untuk susunan kubus yang diberikan. Langkah ketiga: buatlah susunan kubusmu sendiri, lalu gambarkan dari tiga arah.",
+      "Sekarang giliran kalian. Langkah kedua: coba gambar seperti Kira untuk susunan kubus yang diberikan. Langkah ketiga: buatlah susunan kubusmu sendiri, lalu gambarkan dari tiga arah.",
       tambah("Langkah", kartu("s2", 24, 34, 252, 56, W.putih, ["langkah 2: gambar tampak", "dari susunan yang diberi"], 9.5), emo("pn", 262, 70, "✏", 20)),
       tambah("Langkah@2", kartu("s3", 24, 104, 252, 56, W.putih, ["langkah 3: susunan kubusmu sendiri", "digambar dari tiga arah"], 9.5), emo("bt", 262, 140, "🧱", 20)),
     ),
@@ -72,7 +73,7 @@ export const ADEGAN_PEMBAHASAN: AdeganStory = {
   judul: "Pembahasan: dari arah berbeda dan perspektif orang lain",
   sumber: "Materi: arah berbeda dan perspektif",
   latar: "#FFF1F6",
-  kutipan: ["Bangun ruang terlihat berbeda dari arah berbeda", "dengan mengetahui tampak bangun ruang dari berbagai arah", "orang melihat sisi atau perspektif", "penting bagi kita untuk melihat terlebih dahulu perspektif orang lain"],
+  kutipan: kutipanLokal("k6b3b-materi-2.ts:2"),
   ketukan: [
     k(
       "Mari kita simpulkan: bangun ruang terlihat berbeda dari arah yang berbeda. Sebaliknya, kalau kita tahu tampaknya dari berbagai arah, kita dapat menentukan bangun ruang yang dimaksud.",

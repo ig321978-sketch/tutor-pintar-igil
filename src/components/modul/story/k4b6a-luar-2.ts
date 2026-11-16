@@ -224,7 +224,7 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       SUARA_R3,
       bersih(0),
       tambah(0, judul("Cocok dengan hitungan tadi")),
-      tambah("mainan,", ...kartu("cb0", 14, 34, 272, 30, W.hijauMuda, ["mainan Karel: 23"], 9.6)),
+      tambah("mainan,", ...kartu("cb0", 14, 34, 272, 30, W.hijauMuda, ["mainan Kira: 23"], 9.6)),
       tambah("bacaan,", ...kartu("cb1", 14, 72, 272, 30, W.langit, ["bacaan dipinjam seminggu: 56"], 9.6)),
       tambah("siswa.", ...kartu("cb2", 14, 110, 272, 30, W.krem, ["siswa seluruh kelas: 156"], 9.6)),
       tambah(idx(SUARA_R3, "seratus"), emo("cb3", 150, 180, "✅", 26)),

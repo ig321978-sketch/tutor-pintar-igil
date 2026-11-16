@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, diagramTegak, emo, garis, judul, kartu, kotak, panah, teks } from "./k4b6b-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k4b6b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Sub-Bab B (Buku Siswa hlm. 187; Panduan Guru hlm. 223–224) ------------------------------ */
 export const ADEGAN_PEMBUKA_B: AdeganStory = {
@@ -8,19 +9,7 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
   judul: "Pembuka Sub-Bab B: Diagram Batang",
   sumber: "Buku Siswa hlm. 187; Panduan Guru hlm. 223–224",
   latar: "#F0F9FF",
-  kutipan: [
-    "Menyajikan data selain menggunakan diagram gambar, dapat pula disajikan dalam diagram batang.",
-    "menyajikan, menganalisis dan menginterpretasi data dalam diagram batang (skala satu satuan) dengan tepat dan benar",
-    "Benda-benda yang dapat dihitung di lingkungan siswa",
-    "Diagram batang adalah diagram dengan menggunakan persegipanjang untuk menunjukkan banyak dari setiap kategori.",
-    "Diagram batang dapat disajikan dalam bentuk mendatar atau tegak.",
-    "Diagram batang baik digunakan untuk menyajikan dan membandingkan data tiap kategori.",
-    "Apakah diagram batang?",
-    "Sebutkan jenis bentuk diagram batang!",
-    "Bagaimana menyajikan diagram batang?",
-    "Bagaimana menganalisis dan mengintepretasikan diagram batang?",
-    "Guru dapat memberikan contoh data yang lain dari lingkungan sekitar siswa",
-  ],
+  kutipan: kutipanLokal("k4b6b-materi-1.ts:1"),
   ketukan: [
     k(
       "Sub-Bab B, Diagram Batang. Menyajikan data selain memakai diagram gambar, dapat pula memakai diagram batang. Setelah belajar, peserta didik mampu menyajikan, menganalisis, dan menafsirkan data dalam diagram batang dengan skala satu satuan.",
@@ -68,20 +57,7 @@ export const ADEGAN_AKTIVITAS_3: AdeganStory = {
   judul: "Kegiatan: penyajian diagram batang tegak",
   sumber: "Materi: diagram batang tegak",
   latar: "#FFF7ED",
-  kutipan: [
-    "Aktivitas 3. Penyajian Diagram Batang Tegak",
-    "Alat tulis yang dibawa",
-    "Keluarkanlah alat tulis (benda) dalam tas sekolah yang dibawa oleh setiap anggota kelompok",
-    "Catatlah semua benda dan tulis juga jumlahnya",
-    "Buatlah garis tegak (sumbu tegak) yang tegak lurus dengan garis mendatar (sumbu datar)",
-    "dengan garis tegak sebagai banyak alat tulis dan garis mendatar sebagai nama alat tulis",
-    "Buatlah batang-batang persegi panjang sesuai banyak alat tulis dalam tas sekolah.",
-    "Hasil akhir pada Langkah 4 kegiatan Aktivitas 3 disebut diagram batang, yaitu diagram yang menggunakan persegi panjang untuk memberikan informasi jumlah kategori/item.",
-    "Diagram batang adalah diagram dengan menggunakan persegi panjang untuk menunjukkan banyak dari setiap kategori",
-    "Guru memandu dalam membuat kelompok heterogen",
-    "Bagian-bagian diagram antara lain: sumbu tegak, sumbu datar.",
-    "Guru dapat pula meminta satu kelompok untuk mempresentasikan hasil kerja kelompok",
-  ],
+  kutipan: kutipanLokal("k4b6b-materi-1.ts:2"),
   ketukan: [
     k(
       "Sekarang kita membuat diagram batang tegak. Siapkan alat tulis yang kalian bawa. Bentuklah kelompok, tiga sampai empat anak, lalu setiap anak mengeluarkan alat tulis dari tas sekolah.",
@@ -145,20 +121,7 @@ export const ADEGAN_MENGAMATI: AdeganStory = {
   judul: "Mengamati diagram batang ekstrakurikuler",
   sumber: "Materi: diagram batang tegak",
   latar: "#F0FDF4",
-  kutipan: [
-    "Perhatikan diagram batang untuk data banyaknya siswa yang mengikuti ekstrakurikuler.",
-    "berapa banyak siswa yang mengikuti catur?",
-    "banyaknya siswa yang mengikuti catur ada 2 siswa Bu.",
-    "Ekstrakurikuler apa yang paling disukai anak-anak?",
-    "yang paling banyak diikuti siswa adalah sepak bola",
-    "persegi panjang yang paling tinggi dengan banyak siswa 9",
-    "Berdasarkan penyajian Langkah 4 Aktivitas 3, jawablah pertanyaan berikut:",
-    "Alat tulis apakah yang paling banyak?",
-    "Alat tulis apakah yang paling sedikit?",
-    "Berapa jumlah keseluruhan alat tulis yang terdapat dalam tas sekolah kelompok kalian?",
-    "Berapa buku tulis yang kelompok kalian bawa?",
-    "Guru dapat mengulang percakapan yang ada dengan salah satu peserta didik.",
-  ],
+  kutipan: kutipanLokal("k4b6b-materi-1.ts:3"),
   ketukan: [
     k(
       "Sekarang perhatikan diagram batang untuk data banyaknya siswa yang mengikuti ekstrakurikuler. Sumbu tegak menunjukkan banyak siswa dari nol sampai sepuluh, sumbu datar menunjukkan nama ekstrakurikuler.",
@@ -216,22 +179,7 @@ export const ADEGAN_AKTIVITAS_4: AdeganStory = {
   judul: "Kegiatan: penyajian diagram batang mendatar",
   sumber: "Materi: diagram batang mendatar",
   latar: "#FDF2F8",
-  kutipan: [
-    "Aktivitas 4. Penyajian Diagram Batang Mendatar",
-    "Bunga di halaman sekolah",
-    "perhatikanlah warna-warna bunga yang terdapat di halaman sekolah",
-    "Catatlah semua data dan tulis juga jumlahnya",
-    "dengan garis tegak sebagai warna bunga dan garis mendatar sebagai jumlah bunga",
-    "Buatlah batang-batang persegi panjang mendatar sesuai banyak warna bunga.",
-    "Warna bunga apakah yang paling banyak?",
-    "Warna bunga apakah yang paling sedikit?",
-    "Berapa jumlah keseluruhan bunga yang terdapat di halaman sekolah",
-    "Hasil akhir pada langkah 4 kegiatan aktivitas 3 di sebut diagram batang mendatar.",
-    "Membaca diagram batang bentuk tegak dengan memperhatikan tinggi persegi panjang",
-    "Membaca diagram batang bentuk mendatar dengan memperhatikan lebar persegi panjang",
-    "jika di sekolah tidak terdapat bunga, maka guru dapat menggantinya dengan benda lain",
-    "Guru dapat menjelaskan pula perbedaan batang persegi panjang pada diagram batang tegak dan diagram batang mendatar.",
-  ],
+  kutipan: kutipanLokal("k4b6b-materi-1.ts:4"),
   ketukan: [
     k(
       "Kegiatan berikutnya, membuat diagram batang mendatar. Kelompok tetap sama, lalu kita belajar di luar kelas. Siapkan bunga di kebun sekolah atau depan kelas. Jika tidak ada bunga, boleh memakai benda lain.",

@@ -1,9 +1,10 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, emo, judul, kartu, kepalaTempat, selTempat, teks } from "./k4b1b-gambar";
 import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
-/* ------------------------------ 9. Ayo Berlatih nomor 3: Slamet membeli kue (Buku Siswa hlm. 15; Panduan Guru hlm. 37–38) ------------------------------ */
-const SUARA_T1 = "Sekarang soal cerita: Azizah membantu Ibu menjual kue. Slamet membeli kue seharga tujuh ribu tiga ratus lima puluh rupiah, dan membayar dengan uang sembilan ribu lima ratus rupiah. Sisa uangnya dua ribu seratus lima puluh rupiah.";
+/* ------------------------------ 9. Ayo Berlatih nomor 3: Upe membeli kue (Buku Siswa hlm. 15; Panduan Guru hlm. 37–38) ------------------------------ */
+const SUARA_T1 = "Sekarang soal cerita: Wei membantu Ibu menjual kue. Upe membeli kue seharga tujuh ribu tiga ratus lima puluh rupiah, dan membayar dengan uang sembilan ribu lima ratus rupiah. Sisa uangnya dua ribu seratus lima puluh rupiah.";
 const SUARA_T2 = "Soal a, bilangan tujuh ribu tiga ratus lima puluh. Angka tujuh di ribuan, angka tiga di ratusan, angka lima di puluhan, dan angka nol di satuan.";
 const SUARA_T3 = "Soal b, bilangan sembilan ribu lima ratus. Angka sembilan di ribuan, angka lima di ratusan, dan angka nol di puluhan maupun di satuan.";
 const SUARA_T4 = "Soal c, dua ribu seratus lima puluh, sama dengan struk: dua di ribuan, satu di ratusan, lima di puluhan, nol di satuan. Hitung: sembilan ribu lima ratus dikurangi tujuh ribu tiga ratus lima puluh, hasilnya dua ribu seratus lima puluh.";
@@ -17,28 +18,17 @@ const tabelSoal = (suara: string, bilangan: string, angka: (string | number)[], 
 
 export const ADEGAN_LATIH_TIGA: AdeganStory = {
   id: "berlatih-tiga",
-  judul: "Soal cerita: Slamet membeli kue",
-  sumber: "Materi: soal cerita Slamet membeli kue",
+  judul: "Soal cerita: Upe membeli kue",
+  sumber: "Materi: soal cerita Upe membeli kue",
   latar: "#FDF2F8",
-  kutipan: [
-    "Azizah membantu Ibu menjual kue buatan Ibu ke temannya.",
-    "Slamet membeli kue seharga Rp7.350,00.",
-    "Slamet mempunyai pecahan uang Rp9.500,00 di saku bajunya.",
-    "sisa uangnya sebesar Rp2.150,00.",
-    "Tentukan nilai tempat dari 7.350",
-    "Tentukan nilai tempat dari 9.500",
-    "Tentukan nilai tempat dari 2.150",
-    "Angka 7 menempati nilai tempat ribuan",
-    "Angka 9 menempati nilai tempat ribuan",
-    "Angka 2 menempati nilai tempat ribuan",
-  ],
+  kutipan: kutipanLokal("k4b1b-materi-3.ts:1"),
   ketukan: [
     k(
       SUARA_T1,
-      tambah(0, judul("Soal cerita: Slamet membeli kue")),
+      tambah(0, judul("Soal cerita: Upe membeli kue")),
       tambah("menjual", emo("ke", 36, 80, "🧁", 34)),
       tambah("seharga", ...kartu("hg", 70, 34, 216, 36, W.hijauMuda, ["harga kue: Rp7.350,00"], 10)),
-      tambah("membayar", ...kartu("um", 70, 78, 216, 36, W.langit, ["uang Slamet: Rp9.500,00"], 10)),
+      tambah("membayar", ...kartu("um", 70, 78, 216, 36, W.langit, ["uang Upe: Rp9.500,00"], 10)),
       tambah("Sisa", ...kartu("ss", 70, 122, 216, 36, W.krem, ["sisa uang: Rp2.150,00"], 10)),
     ),
     k(
@@ -85,14 +75,7 @@ export const ADEGAN_KUNCI_EMPAT: AdeganStory = {
   judul: "Melengkapi tabel bilangan",
   sumber: "Materi: tabel bilangan",
   latar: "#F0FDF4",
-  kutipan: [
-    "Salin tabel berikut lalu lengkapilah dengan bilangan!",
-    "No Lambang Bilangan Ribuan Ratusan Puluhan Satuan",
-    "6.192",
-    "2.910",
-    "4.128",
-    "9.217",
-  ],
+  kutipan: kutipanLokal("k4b1b-materi-3.ts:2"),
   ketukan: [
     k(
       SUARA_N1,
@@ -137,15 +120,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Hati-hati: membaca dan mengisi tabel nilai tempat",
   sumber: "Materi: kesalahan yang sering terjadi",
   latar: "#FEF2F2",
-  kutipan: [
-    "Miskonsepsi pada materi nilai tempat adalah",
-    "Peserta didik terkadang membaca bilangan sesuai dengan nilai tempatnya.",
-    "Misal: 2.345 dibaca dua ribuan tiga ratusan empat puluhan lima.",
-    "Seharusnya dua ribu tiga ratus empat puluh lima.",
-    "peserta didik masih menuliskan nilainya, misalnya",
-    "1.234 1.000 200 30 4",
-    "seharusnya:",
-  ],
+  kutipan: kutipanLokal("k4b1b-materi-3.ts:3"),
   ketukan: [
     k(
       SUARA_X1,
@@ -190,16 +165,7 @@ export const ADEGAN_DIFERENSIASI: AdeganStory = {
   judul: "Pesan belajar dan metode kelompok",
   sumber: "Materi: belajar bersama kelompok",
   latar: "#F5F3FF",
-  kutipan: [
-    "Diferensiasi",
-    "Bagi peserta didik yang kecepatan belajarnya tinggi (advanced), minta mereka mengerjakan Latihan tanpa bantuan.",
-    "Guru juga dapat memberikan soal-soal tambahan.",
-    "guru dapat mendampingi peserta didik yang mengalami kesulitan.",
-    "Metode pembelajaran yang disarankan untuk subbab ini adalah Diskusi dan Tanya Jawab",
-    "yang mengutamakan pada produk hasil karya peserta didik bersama kelompoknya.",
-    "ditentukan ketua kelompok adalah peserta didik dengan tingkat kemampuan tinggi dengan anggota kelompok tingkat kemampuan sedang atau kurang.",
-    "Apabila karakteristik peserta didik di sekolah/kelas tidak terdapat peserta didik dengan kemampuan tinggi",
-  ],
+  kutipan: kutipanLokal("k4b1b-materi-3.ts:4"),
   ketukan: [
     k(
       SUARA_F1,

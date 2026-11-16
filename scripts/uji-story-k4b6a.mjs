@@ -4,6 +4,7 @@
 // hitungan mandiri (jumlah tiap tabel, kunci Panduan Guru, perkalian skala), geometri gambar (sel tabel piktogram, baris kunci, turus kelompok lima),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b6a.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -188,7 +189,7 @@ const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.
   cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
-  for (const kata of ["Karel", "warna kesukaan", "kelereng", "Latihan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat ${kata}`);
+  for (const kata of ["Kira", "warna kesukaan", "kelereng", "Latihan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat ${kata}`);
   cek(!/Peta konsep|Apersepsi|Pengalaman belajar|Tujuan pembelajaran|Bab 6/.test(teksVideo(M_VIDEO)), "video materi yang diputar tanpa adegan administratif (pembuka, peta konsep, pemanasan)");
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-kunci", "luar-kunci-terapan", "luar-turus", "luar-turus-terapan", "luar-baca", "luar-baca-terapan", "luar-skala", "luar-skala-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
@@ -300,13 +301,13 @@ const iconBaris = (objs, id, n) => Array.from({ length: n }, (_, i) => objs.filt
 const nilaiBaris = (objs, id, n) => Array.from({ length: n }, (_, i) => nilaiId(objs, `${id}-n${i}`));
 {
   sama(M2.KELAS, BUKU_DATA.kelas, "data benda kelas");
-  sama(M2.KAREL, BUKU_DATA.karel, "data mainan Karel");
+  sama(M2.KAREL, BUKU_DATA.karel, "data mainan Kira");
   sama(M2.WARNA, BUKU_DATA.warna, "data warna kesukaan");
   sama(M3.KELERENG, BUKU_DATA.kelereng, "data kelereng");
   sama(M3.BUKU, BUKU_DATA.buku, "data buku dipinjam");
   sama(M3.GAMBAR_KELAS, BUKU_DATA.gambarKelas, "data gambar siswa tiap kelas");
   sama(jumlah(BUKU_DATA.kelas), 12, "jumlah benda kelas");
-  sama(jumlah(BUKU_DATA.karel), 23, "jumlah mainan Karel (buku: 23)");
+  sama(jumlah(BUKU_DATA.karel), 23, "jumlah mainan Kira (buku: 23)");
   sama(jumlah(BUKU_DATA.warna), 12, "jumlah siswa warna kesukaan (buku: 12)");
   sama(jumlah(BUKU_DATA.kelereng), 30, "jumlah kelereng");
   sama(jumlah(BUKU_DATA.buku), 56, "jumlah buku seminggu (kunci Panduan Guru: 56)");
@@ -329,8 +330,8 @@ const nilaiBaris = (objs, id, n) => Array.from({ length: n }, (_, i) => nilaiId(
 
   // Banyak gambar pada gambar tiap tabel sama dengan data buku.
   sama(iconBaris(T(M, "benda-kelas", 0), "kl", 4), BUKU_DATA.kelas, "gambar benda kelas");
-  sama(iconBaris(T(M, "mainan-karel", 0), "kr", 5), BUKU_DATA.karel, "gambar mainan Karel");
-  sama(nilaiBaris(T(M, "mainan-karel", 1), "kr", 5), BUKU_DATA.karel.map(String), "angka jumlah mainan Karel");
+  sama(iconBaris(T(M, "mainan-karel", 0), "kr", 5), BUKU_DATA.karel, "gambar mainan Kira");
+  sama(nilaiBaris(T(M, "mainan-karel", 1), "kr", 5), BUKU_DATA.karel.map(String), "angka jumlah mainan Kira");
   sama(iconBaris(T(M, "warna-kesukaan", 0), "wk", 4), BUKU_DATA.warna, "gambar warna kesukaan");
   sama(nilaiBaris(T(M, "warna-kesukaan", 2), "wk", 4), BUKU_DATA.warna.map(String), "angka warna kesukaan");
   sama(Array.from({ length: 6 }, (_, i) => nilaiId(T(M, "berlatih-satu", 1), `dt${i}`)), BUKU_DATA.kelereng.map(String), "tabel data kelereng");
@@ -355,7 +356,7 @@ const nilaiBaris = (objs, id, n) => Array.from({ length: n }, (_, i) => nilaiId(
   sama([nilaiId(kartuSiswa, "sz2-t0"), nilaiId(kartuSiswa, "sz2-t1")], [BUKU_DATA.gambarKelas.map((n) => n * 4).join(" + "), `= ${jumlah(BUKU_DATA.gambarKelas) * 4} siswa`], "metode luar: jumlah baris demi baris");
   // Pembuka metode luar memuat angka-angka yang sama dengan data buku.
   const ob = T(U, "luar-pembuka", 3);
-  sama([nilaiId(ob, "a1-t0"), nilaiId(ob, "a2-t0"), nilaiId(ob, "a3-t0"), nilaiId(ob, "a4-t0")], [`warna kesukaan: ${BUKU_DATA.warna.join(", ")} siswa`, `mainan Karel: ${BUKU_DATA.karel.join(", ")}`, `bacaan dipinjam: ${BUKU_DATA.buku.join(", ")}`, `gambar siswa tiap kelas: ${BUKU_DATA.gambarKelas.join(", ")}`], "metode luar: pembuka memuat data buku");
+  sama([nilaiId(ob, "a1-t0"), nilaiId(ob, "a2-t0"), nilaiId(ob, "a3-t0"), nilaiId(ob, "a4-t0")], [`warna kesukaan: ${BUKU_DATA.warna.join(", ")} siswa`, `mainan Kira: ${BUKU_DATA.karel.join(", ")}`, `bacaan dipinjam: ${BUKU_DATA.buku.join(", ")}`, `gambar siswa tiap kelas: ${BUKU_DATA.gambarKelas.join(", ")}`], "metode luar: pembuka memuat data buku");
   // Pictograph Key: gambar yang sama dengan kunci 1, 2, 5 untuk tiga gambar.
   const kk = T(U, "luar-kunci", 1);
   sama([1, 2, 5].map((s, i) => nilaiId(kk, `r${i + 1}t`)), [1, 2, 5].map((s) => `skala ${s}: ${3 * s} siswa`), "metode luar: tiga gambar dikali kunci");
@@ -399,7 +400,7 @@ const cekPikto = (objs, nama, id, baris) => {
 };
 {
   cekPikto(T(M, "benda-kelas", 0), "benda kelas", "kl", 4);
-  cekPikto(T(M, "mainan-karel", 0), "mainan Karel", "kr", 5);
+  cekPikto(T(M, "mainan-karel", 0), "mainan Kira", "kr", 5);
   cekPikto(T(M, "aktivitas-satu", 3), "Aktivitas 1", "al", 3);
   cekPikto(T(M, "aktivitas-dua", 2), "Aktivitas 2", "bg", 3);
   cekPikto(T(M, "warna-kesukaan", 0), "warna kesukaan", "wk", 4);
@@ -436,7 +437,7 @@ const cekPikto = (objs, nama, id, baris) => {
     for (let i = 1; i < tegak.length; i += 1) cek(tegak[i].x > tegak[i - 1].x, `${nama}: garis tegak ${tegak[i].id} di kanan garis sebelumnya`);
   };
   const tk = T(U, "luar-turus-terapan", 0);
-  BUKU_DATA.karel.forEach((n, i) => cekTurus(tk, `turus Karel baris ${i + 1}`, `tk${i}`, n, 84));
+  BUKU_DATA.karel.forEach((n, i) => cekTurus(tk, `turus Kira baris ${i + 1}`, `tk${i}`, n, 84));
   cekTurus(T(U, "luar-turus", 2), "turus tiga belas", "b", 13, 100);
   cekTurus(T(U, "luar-turus", 1), "turus lima", "a", 5, 134);
   cekTurus(T(U, "luar-turus", 0), "turus tiga", "t1", 3, 130);
@@ -471,8 +472,8 @@ function objs0(objs, awalan) {
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(M.adegan.every((a) => (a.kutipan ?? []).length >= 5), "tiap adegan materi memuat paling sedikit 5 kutipan buku");
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.every((a) => (a.kutipan ?? []).length >= 5), "tiap adegan materi memuat paling sedikit 5 kutipan buku");
     cek(!/b\. diagram batang/.test(bersih(bagian[0])), "Buku Siswa PDF 189-198 tidak memuat judul subbab B");
     // Angka dalam kunci Panduan Guru dan teks Buku Siswa yang dipakai video.
     const guru = bersih(bagian[2]);
@@ -501,7 +502,7 @@ function objs0(objs, awalan) {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b6a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b6a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b6a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b6a sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

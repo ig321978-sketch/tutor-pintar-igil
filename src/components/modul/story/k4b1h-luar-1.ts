@@ -103,18 +103,18 @@ export const ADEGAN_LUAR_BAGI_RATA: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Fair Share: penerapan (permen Pak Wicak, soal a dan e) ------------------------------ */
-const SUARA_Q1 = "Terapkan pada permen Pak Wicak: empat puluh delapan permen untuk empat anak. Bagikan bergiliran, setiap putaran memberi satu permen kepada tiap anak.";
+/* ------------------------------ 3. Fair Share: penerapan (permen Pak Malosi, soal a dan e) ------------------------------ */
+const SUARA_Q1 = "Terapkan pada permen Pak Malosi: empat puluh delapan permen untuk empat anak. Bagikan bergiliran, setiap putaran memberi satu permen kepada tiap anak.";
 const SUARA_Q2 = "Setelah dua belas putaran permen habis. Setiap anak mendapat dua belas permen, jadi empat puluh delapan dibagi empat sama dengan dua belas.";
 const SUARA_Q3 = "Soal pertama: tiga puluh enam permen untuk dua anak. Bagi bergiliran sampai habis, tiap anak mendapat delapan belas. Tini menerima delapan belas.";
-const SUARA_Q4 = "Soal berikutnya: lima puluh lima gantungan kunci untuk lima orang. Setiap orang mendapat sebelas, jadi Asep mendapat sebelas.";
+const SUARA_Q4 = "Soal berikutnya: lima puluh lima gantungan kunci untuk lima orang. Setiap orang mendapat sebelas, jadi Igil mendapat sebelas.";
 
 const WD4 = [0, 1, 2, 3];
-const NAMA5 = ["Azizah", "Karel", "Slamet", "Asep", "Helen"];
+const NAMA5 = ["Wei", "Kira", "Halim", "Igil", "Upe"];
 
 export const ADEGAN_LUAR_BAGI_RATA_TERAPAN: AdeganStory = {
   id: "luar-bagi-rata-terapan",
-  judul: "Fair Share pada soal: 48 permen, Tini, dan Asep",
+  judul: "Fair Share pada soal: 48 permen, Tini, dan Igil",
   sumber: "Metode luar: Fair Share, 48 permen",
   latar: "#FEFCE8",
   ketukan: [
@@ -151,7 +151,7 @@ export const ADEGAN_LUAR_BAGI_RATA_TERAPAN: AdeganStory = {
       tambah("gantungan", ...NAMA5.flatMap((n, i) => kartu(`ge${i}`, 6 + i * 58, 50, 54, 56, [W.hijauMuda, W.langit, W.krem, W.pink, W.lavender][i], [n, "?"], 8.4))),
       tambah("Setiap", teks("qf", 150, 140, "55 : 5 = ?", 20, W.biru)),
       ubah("sebelas", { id: "qf", isi: "55 : 5 = 11" }, ...NAMA5.map((_, i) => ({ id: `ge${i}-t1`, isi: "11" }))),
-      sorotkan("Asep", "ge3-k"),
+      sorotkan("Igil", "ge3-k"),
     ),
   ],
 };

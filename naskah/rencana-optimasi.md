@@ -22,3 +22,10 @@ Tambah `rujukan` dan `status` ke tipe adegan; konten lama otomatis "disetujui"; 
 Generator soal berparameter memakai pola yang ada; uji kunci jawaban; subagen pemeriksa (Haiku) hanya untuk daftar periksa; perbarui skill `standar-modul-smiscpa`.
 
 ## Plugin code intelligence — saran saja, tanpa dipasang.
+
+## Langkah cepat Kelas 4 sampai 6 (sementara) — dikerjakan
+Status: **Story Kelas 4, 5, dan 6 berstatus DRAF-PERLU-TULIS-ULANG** (belum orisinal; soal dan struktur masih mengikuti buku).
+- Teks `kutipan` (720 blok di 184 berkas) dipindah ke `sumber/kutipan.json` (di luar git) lewat `scripts/pisah-kutipan.mjs`; berkas Story memanggil `kutipanLokal("<berkas>:<n>")` (`src/components/modul/story/kutipan-lokal.ts`, kosong di aplikasi). Skrip uji memuatnya lewat `scripts/muat-kutipan-lokal.mjs`; tanpa `sumber/kutipan.json` pemeriksaan kutipan dilewati.
+- Nama tokoh buku diganti dengan enam tokoh IGIL lewat `scripts/ganti-nama-tokoh-buku.mjs` (Story dan uji Story Kelas 4 sampai 6). Gelar dewasa ("Pak", "Bu", "Ibu") masih menempel; perlu ditulis ulang.
+- Belum disentuh: nama tokoh buku di tahap lain (lab, simulasi, data) Kelas 3 sampai 6, riwayat git lama (kutipan sudah ter-push), dan kemiripan kalimat/soal (454 kalimat dengan runtun 8 kata sama).
+- Berikutnya: tulis ulang per bab dengan pola Kelas 1 sampai 3 (cerita, soal, tokoh orisinal; uji tanpa salinan buku).

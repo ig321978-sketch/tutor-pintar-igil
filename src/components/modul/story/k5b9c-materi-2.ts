@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, angka, barisTabel, deretLembar, emo, kartu, keping, tempat, teks } from "./k5b9c-gambar";
 import { bersih, hapus, k, tambah } from "./k5b9c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Latihan 2: soal jam tangan ------------------------------ */
 const Y_UANG = [30, 56, 82, 108, 134];
@@ -12,12 +13,7 @@ export const ADEGAN_JAM_SOAL: AdeganStory = {
   judul: "Latihan 2: membayar jam tangan",
   sumber: "Materi: membayar jam tangan",
   latar: "#FFFBEB",
-  kutipan: [
-    "Eksplorasi 9.3B",
-    "Ibu akan membeli jam tangan seharga Rp345.600,00",
-    "Berapakah komposisi uang yang mungkin bisa digunakan Ibu untuk membayar",
-    "2 lembar 100 ribuan, 3 lembar 50 ribuan, 4 lembar 20 ribuan, 2 lembar 10 ribuan, 2 lembar 5 ribuan, 3 keping 5 ratusan, dan 3 keping seratusan",
-  ],
+  kutipan: kutipanLokal("k5b9c-materi-2.ts:1"),
   ketukan: [
     k(
       "Latihan dua. Ibu ingin membeli jam tangan seharga tiga ratus empat puluh lima ribu enam ratus rupiah. Pertanyaannya: komposisi uang apa saja yang bisa dipakai untuk membayar?",
@@ -88,11 +84,7 @@ export const ADEGAN_JAM_CARA: AdeganStory = {
   judul: "Latihan 2: empat cara membayar",
   sumber: "Materi: empat cara membayar",
   latar: "#F0FDF4",
-  kutipan: [
-    "Cara 1 Cara 2 Cara 3 Cara 4",
-    "Eksplorasi 9.3B",
-    "Berapakah komposisi uang yang mungkin bisa digunakan Ibu untuk membayar",
-  ],
+  kutipan: kutipanLokal("k5b9c-materi-2.ts:2"),
   ketukan: [
     k(
       "Kita cari semua cara membayar tiga ratus empat puluh lima ribu enam ratus. Bagian enam ratus selalu satu keping lima ratus dan satu keping seratus. Sisanya, tiga ratus empat puluh lima ribu, disusun dari lembaran.",
@@ -157,14 +149,7 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   judul: "Refleksi dan saran Buku Panduan Guru",
   sumber: "Buku Siswa hlm. 290; Buku Panduan Guru hlm. 408–409",
   latar: "#F5F3FF",
-  kutipan: [
-    "Setelah mempelajari materi terkait bilangan sampai 1.000.000",
-    "Aku dapat membaca bilangan cacah sampai",
-    "Aku dapat membandingkan dua bilangan",
-    "Aku dapat mengurutkan beberapa bilangan",
-    "Aku dapat menyusun atau komposisi bilangan",
-    "Aku dapat menguraikan atau dekomposisi",
-  ],
+  kutipan: kutipanLokal("k5b9c-materi-2.ts:3"),
   ketukan: [
     k(
       "Setelah belajar bilangan sampai 1.000.000, buku mengajak kita merefleksi dengan tujuh pernyataan, centang Ya atau Tidak.",

@@ -4,6 +4,7 @@
 // (sudut jarum jam, pecahan putaran, penjumlahan), geometri gambar (busur sudut, kipas, jarum jam, skala busur derajat, tanda siku-siku),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b6c.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -375,7 +376,7 @@ const objId = (objs, id) => objs.find((o) => o.id === id);
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,kipas-sudut,bagian-busur,cara-ukur,salah-baca,eks-kipas,eks-siku-jodoh,miskonsepsi-lebar,jenis-lain,tantangan-refleks,berlatih-jam-1,berlatih-jam-2,refleksi-penutup", "urutan adegan materi");
   cek(U.adegan[0].id === "sapaan" && U.adegan[1].id === "luar-pembuka", "video metode luar: sapaan lalu pembuka");
-  for (const kata of ["Tari", "pakarena", "Sulawesi Selatan", "kipas lipat", "Nisa", "busur derajat", "titik pusat", "garis dasar", "skala", "derajat", "sudut siku-siku", "lancip", "tumpul", "refleks", "sudut nol", "sudut lurus", "sudut penuh", "Tantangan", "Tahukah", "Latihan", "Hati-hati", "Renungan", "salah membaca skala", "jarak ujung kaki|jarak antara ujung kaki"]) cek(new RegExp(kata.replace(/\./g, "\\."), "i").test(materi), `video materi memuat ${kata}`);
+  for (const kata of ["Tari", "pakarena", "Sulawesi Selatan", "kipas lipat", "Wei", "busur derajat", "titik pusat", "garis dasar", "skala", "derajat", "sudut siku-siku", "lancip", "tumpul", "refleks", "sudut nol", "sudut lurus", "sudut penuh", "Tantangan", "Tahukah", "Latihan", "Hati-hati", "Renungan", "salah membaca skala", "jarak ujung kaki|jarak antara ujung kaki"]) cek(new RegExp(kata.replace(/\./g, "\\."), "i").test(materi), `video materi memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-protokol", "luar-protokol-terapan", "luar-patokan", "luar-patokan-terapan", "luar-derajat", "luar-derajat-terapan", "luar-muka-jam", "luar-muka-jam-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(M_VIDEO.adegan.length === 13 && M.adegan.length === 13 && U.adegan.length === 11, "13 adegan materi diputar (sapaan dan 12 isi; pembuka sub-bab tetap di berkas) dan 11 adegan metode luar");
@@ -477,7 +478,7 @@ const objId = (objs, id) => objs.find((o) => o.id === id);
       n += 1;
       cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
-    cek(n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -497,7 +498,7 @@ const objId = (objs, id) => objs.find((o) => o.id === id);
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b6c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b6c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b6c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b6c sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

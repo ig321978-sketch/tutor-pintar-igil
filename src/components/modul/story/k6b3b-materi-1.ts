@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { ANIKE, W, emo, kartu, kisi, panah, susunanIso, tampak, teks } from "./k6b3b-gambar";
 import { bersih, k, pudarkan, redamkan, sorotkan, tambah } from "./k6b3b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Arsitek, gambar tampak, dan pertanyaan pemantik ------------------------------ */
 const T_DEPAN = ".h.|bmk".split("|");
@@ -16,7 +17,7 @@ export const ADEGAN_ARSITEK: AdeganStory = {
   judul: "Arsitek, gambar tampak, dan pertanyaan awal",
   sumber: "Materi: arsitek dan gambar tampak",
   latar: "#EEF4FF",
-  kutipan: ["Umumnya bangunan memiliki tampilan yang berbeda-beda tergantung dilihat dari sisi mana", "arsitek membuat gambar tampak beberapa arah agar rancangannya dapat dipahami dan direalisasikan", "Apakah bangun ruang terlihat sama dari semua arah?"],
+  kutipan: kutipanLokal("k6b3b-materi-1.ts:1"),
   ketukan: [
     k(
       "Sub-bab B: Visualisasi Spasial. Satu bangunan yang sama bisa tampak sangat berbeda, kalau kita memandangnya dari sisi yang berbeda.",
@@ -58,37 +59,37 @@ export const ADEGAN_ARSITEK: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 2. Eksplorasi 3.2: gambar Anike ------------------------------ */
+/* ------------------------------ 2. Eksplorasi 3.2: gambar Kira ------------------------------ */
 const ANI = (p: string, ox: number, oy: number, s: number) => susunanIso(p, ox, oy, s, ANIKE);
 const PANAH_LIHAT = (id: string, y: number, isi: string) => teks(id, 232, y, isi, 9.5, W.ungu);
 
 export const ADEGAN_ANIKE: AdeganStory = {
   id: "eksplorasi-32",
-  judul: "Melihat dari berbagai sisi: gambar Anike",
-  sumber: "Materi: gambar Anike",
+  judul: "Melihat dari berbagai sisi: gambar Kira",
+  sumber: "Materi: gambar Kira",
   latar: "#FFF6E5",
-  kutipan: ["Saat istirahat, Tigor dan Tenri melihat Anike sedang menggambar di bukunya", "Aku sedang menggambar susunan kubus ini dari berbagai arah yang berbeda", "Terlihat berbeda jika dilihat dari arah berbeda", "Bantulah Anike mewarnai gambarnya sesuai warna kubus yang terlihat dari tiap arah"],
+  kutipan: kutipanLokal("k6b3b-materi-1.ts:2"),
   ketukan: [
     k(
-      "Latihan bersama: melihat dari berbagai sisi. Saat istirahat, Tigor dan Tenri melihat Anike sedang menggambar di kertasnya.",
+      "Latihan bersama: melihat dari berbagai sisi. Saat istirahat, Halim dan Upe melihat Kira sedang menggambar di kertasnya.",
       tambah(0, teks("jud", 150, 24, "Latihan bersama", 13, W.ungu)),
-      tambah("Tigor", emo("tg", 50, 78, "🧒", 32), teks("tgn", 50, 96, "Tigor", 8)),
-      tambah("Tenri", emo("tn", 104, 78, "🧒", 32), teks("tnn", 104, 96, "Tenri", 8)),
-      tambah("Anike", emo("an", 240, 78, "👧", 32), teks("ann", 240, 96, "Anike", 8)),
+      tambah("Halim", emo("tg", 50, 78, "🧒", 32), teks("tgn", 50, 96, "Halim", 8)),
+      tambah("Upe", emo("tn", 104, 78, "🧒", 32), teks("tnn", 104, 96, "Upe", 8)),
+      tambah("Kira", emo("an", 240, 78, "👧", 32), teks("ann", 240, 96, "Kira", 8)),
       tambah("kertasnya", kartu("bk", 62, 110, 176, 66, W.putih, [], 8), teks("bd", 98, 124, "depan", 8), teks("bkn", 150, 124, "kanan", 8), teks("ba", 204, 124, "atas", 8), kisi("fd", 80, 132, 12, 3, 2), kisi("fk", 144, 132, 12, 1, 2), kisi("fa", 186, 138, 12, 3, 1)),
     ),
     k(
-      "Anike menggambar susunan kubus ini dari tiga arah: depan, kanan, dan atas. Tenri berkata, ini seperti saat kita menggambar Fort Rotterdam!",
+      "Kira menggambar susunan kubus ini dari tiga arah: depan, kanan, dan atas. Upe berkata, ini seperti saat kita menggambar Fort Rotterdam!",
       bersih(0),
       tambah(0, ANI("a", 40, 118, 22).objs),
       tambah("tiga", teks("dl", 232, 52, "dilihat dari:", 9, W.biru)),
       tambah("depan,", PANAH_LIHAT("l1", 76, "depan")),
       tambah("kanan,", PANAH_LIHAT("l2", 100, "kanan")),
       tambah("atas.", PANAH_LIHAT("l3", 124, "atas")),
-      tambah("Tenri", kartu("bn", 96, 150, 180, 30, W.putih, ["seperti menggambar Fort Rotterdam!"], 8)),
+      tambah("Upe", kartu("bn", 96, 150, 180, 30, W.putih, ["seperti menggambar Fort Rotterdam!"], 8)),
     ),
     k(
-      "Tugas pertama: bantulah Anike mewarnai gambarnya, sesuai warna kubus yang terlihat dari tiap arah. Mari kita kerjakan satu per satu.",
+      "Tugas pertama: bantulah Kira mewarnai gambarnya, sesuai warna kubus yang terlihat dari tiap arah. Mari kita kerjakan satu per satu.",
       bersih(0),
       tambah(0, ANI("a", 20, 112, 20).objs),
       tambah("mewarnai", emo("pn", 150, 40, "🖍", 26), teks("pnt", 150, 56, "warnai sesuai kubus", 8.5, W.ungu)),
@@ -136,7 +137,7 @@ export const ADEGAN_ANIKE: AdeganStory = {
       tambah("tidak", teks("tm", 211, 140, "merah tertutup", 9, W.merah)),
     ),
     k(
-      "Jadi susunan kubus Anike memakai empat kubus. Tiga tampak itu saling cocok, karena semuanya berasal dari satu susunan yang sama.",
+      "Jadi susunan kubus Kira memakai empat kubus. Tiga tampak itu saling cocok, karena semuanya berasal dari satu susunan yang sama.",
       bersih(0),
       tambah(0, ANI("a", 100, 128, 22).objs),
       tambah("Jadi", teks("jml", 150, 26, "4 kubus", 14, W.merah, { garis: W.emas })),

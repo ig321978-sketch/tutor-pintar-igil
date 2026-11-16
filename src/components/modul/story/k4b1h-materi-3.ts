@@ -1,37 +1,25 @@
 import type { AdeganStory } from "./logika-story";
 import { CERITA, W, barisTabel, benda, bersusun, emo, judul, kaleng, kartu, teks } from "./k4b1h-gambar";
 import { bersih, idx, k, sorotkan, tambah, ubah } from "./k4b1h-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 8. Soal cerita a, b, e: dibagi sama banyak (Buku Siswa hlm. 47; Panduan Guru hlm. 67-69) ------------------------------ */
 const SUARA_H1 = "Soal cerita a: Ayah mendapat satu kaleng berisi tiga puluh enam butir permen, dibagi sama banyak kepada Tono dan Tini. Tiga puluh enam dibagi dua hasilnya delapan belas, jadi Tini menerima delapan belas permen.";
-const SUARA_H2 = "Soal b: Pak Bejo memanen enam puluh empat buah alpukat, dibagi sama rata kepada tiga tetangga dan juga untuk dirinya. Jadi pembaginya empat, bukan tiga.";
-const SUARA_H3 = "Enam puluh empat dibagi empat hasilnya enam belas. Tiap tetangga menerima enam belas alpukat. Hati-hati, jangan lupa menghitung Pak Bejo sendiri.";
-const SUARA_H4 = "Soal e: Putu membeli lima puluh lima gantungan kunci, dibagikan sama banyak kepada Azizah, Karel, Slamet, Asep, dan Helen. Lima puluh lima dibagi lima hasilnya sebelas, jadi Asep mendapat sebelas.";
-const SUARA_H5 = "Ketiga soal ini sama dengan permen Pak Wicak: satu jumlah besar dibagi sama banyak kepada beberapa orang, dan jawabannya cocok dengan hitungan kita.";
+const SUARA_H2 = "Soal b: Pak Wei memanen enam puluh empat buah alpukat, dibagi sama rata kepada tiga tetangga dan juga untuk dirinya. Jadi pembaginya empat, bukan tiga.";
+const SUARA_H3 = "Enam puluh empat dibagi empat hasilnya enam belas. Tiap tetangga menerima enam belas alpukat. Hati-hati, jangan lupa menghitung Pak Wei sendiri.";
+const SUARA_H4 = "Soal e: Malosi membeli lima puluh lima gantungan kunci, dibagikan sama banyak kepada Wei, Kira, Halim, Igil, dan Upe. Lima puluh lima dibagi lima hasilnya sebelas, jadi Igil mendapat sebelas.";
+const SUARA_H5 = "Ketiga soal ini sama dengan permen Pak Malosi: satu jumlah besar dibagi sama banyak kepada beberapa orang, dan jawabannya cocok dengan hitungan kita.";
 
 const [C_A, C_B, , , C_E] = CERITA;
 const H3 = bersusun("cb", 20, 44, C_B[1], C_B[0]);
-const NAMA_E = ["Azizah", "Karel", "Slamet", "Asep", "Helen"];
+const NAMA_E = ["Wei", "Kira", "Halim", "Igil", "Upe"];
 
 export const ADEGAN_CERITA_BAGI: AdeganStory = {
   id: "cerita-bagi",
   judul: "Soal cerita a, b, dan e: dibagi sama banyak",
   sumber: "Materi: soal cerita pembagian",
   latar: "#FFF7ED",
-  kutipan: [
-    "Kerjakan soal cerita berikut:",
-    "Ayah mendapat hadiah satu kaleng permen yang berisi 36 butir permen.",
-    "Berapa permen yang diterima Tini?",
-    "Jadi, Tini memperoleh 18 permen",
-    "Pak Bejo memanen 64 buah alpukat.",
-    "Pak Bejo membagi sama rata hasil panennya kepada 3 tetangganya dan juga untuk dirinya.",
-    "jumlah tetangga Pak Bejo dan dirinya = 4 keluarga.",
-    "Jumlah masing-masing tetangga Pak Bejo menerima 16 buah alpukat",
-    "Putu membeli 55 gantungan kunci khas Bali.",
-    "kepada Azizah, Karel, Slamet, Asep, dan Helen dengan sama banyak.",
-    "Berapa Asep mendapatkan gantungan kunci dari Putu?",
-    "jadi, Asep menerima gantungan kunci dari Putu sebanyak 11 gantungan kunci.",
-  ],
+  kutipan: kutipanLokal("k4b1h-materi-3.ts:1"),
   ketukan: [
     k(
       SUARA_H1,
@@ -50,8 +38,8 @@ export const ADEGAN_CERITA_BAGI: AdeganStory = {
       tambah(0, judul("Soal cerita b")),
       tambah("Pak", emo("al", 40, 66, "🥑", 30), teks("alt", 40, 86, "64 buah", 9, W.coklat)),
       tambah("tiga", ...[0, 1, 2].map((i) => emo(`tg${i}`, 100 + i * 52, 70, "🏠", 26)), ...[0, 1, 2].map((i) => teks(`tgt${i}`, 100 + i * 52, 88, `tetangga ${i + 1}`, 7.4, W.biru))),
-      tambah("dirinya.", emo("pb", 262, 70, "👨", 26), teks("pbt", 262, 88, "Pak Bejo", 7.6, W.biru)),
-      tambah("empat@2", ...kartu("pc", 20, 108, 260, 40, W.emas, ["3 tetangga + Pak Bejo = 4 bagian"], 9.6)),
+      tambah("dirinya.", emo("pb", 262, 70, "👨", 26), teks("pbt", 262, 88, "Pak Wei", 7.6, W.biru)),
+      tambah("empat@2", ...kartu("pc", 20, 108, 260, 40, W.emas, ["3 tetangga + Pak Wei = 4 bagian"], 9.6)),
       tambah("bukan", ...kartu("pd", 20, 158, 260, 32, W.merahMuda, ["pembagi 4, bukan 3"], 9.6)),
     ),
     k(
@@ -62,18 +50,18 @@ export const ADEGAN_CERITA_BAGI: AdeganStory = {
       tambah("hasilnya", ...H3.tahap.flat()),
       tambah("hasilnya", ...kartu("pe", 120, 40, 168, 40, W.emas, ["64 : 4 = 16", "hasil: 16"], 10)),
       tambah("Tiap", ...kartu("pf", 120, 94, 168, 36, W.hijauMuda, ["tiap tetangga: 16 alpukat"], 9)),
-      tambah("Hati-hati,", ...kartu("pg", 120, 144, 168, 36, W.merahMuda, ["awas: jangan lupa Pak Bejo"], 9)),
+      tambah("Hati-hati,", ...kartu("pg", 120, 144, 168, 36, W.merahMuda, ["awas: jangan lupa Pak Wei"], 9)),
     ),
     k(
       SUARA_H4,
       bersih(0),
       tambah(0, judul("Soal cerita e")),
-      tambah("Putu", emo("gk", 34, 160, "🔑", 26), teks("gkt", 34, 182, "55 buah", 8.6, W.coklat)),
+      tambah("Malosi", emo("gk", 34, 160, "🔑", 26), teks("gkt", 34, 182, "55 buah", 8.6, W.coklat)),
       ...NAMA_E.map((n, i) => tambah(idx(SUARA_H4, n), ...kartu(`ge${i}`, 6 + i * 58, 36, 54, 52, [W.hijauMuda, W.langit, W.krem, W.pink, W.lavender][i], [n, "?"], 8.4))),
       tambah("dibagi", teks("gq", 160, 130, "55 : 5 = ?", 20, W.biru)),
       ubah("sebelas", { id: "gq", isi: "55 : 5 = 11" }),
       ubah("sebelas", ...NAMA_E.map((_, i) => ({ id: `ge${i}-t1`, isi: "11" }))),
-      sorotkan("Asep", "ge3-k"),
+      sorotkan("Igil", "ge3-k"),
     ),
     k(
       SUARA_H5,
@@ -101,16 +89,7 @@ export const ADEGAN_CERITA_KOTAK: AdeganStory = {
   judul: "Soal cerita c dan d: berapa kotak yang diperlukan",
   sumber: "Materi: soal cerita banyak kotak",
   latar: "#F0F9FF",
-  kutipan: [
-    "Ibu mempunyai sebanyak 81 kue yang akan diletakkan pada kotak kue.",
-    "Setiap kotak kue berisi 3 kue.",
-    "Berapa kotak yang harus disiapkan ibu ?",
-    "jadi, kotak yang harus disiapkan ibu untuk meletakkan kue adalah 27 kotak.",
-    "Peternak ayam petelur hari ini mendapatkan 96 butir telur.",
-    "masing-masing kotak telur memuat 8 telur.",
-    "Berapakah jumlah kotak telur yang diperlukan?",
-    "jadi, jumlah kotak telur yang diperlukan adalah 12 kotak",
-  ],
+  kutipan: kutipanLokal("k4b1h-materi-3.ts:2"),
   ketukan: [
     k(
       SUARA_I1,
@@ -169,17 +148,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Kesalahan umum, pengayaan, dan pemeriksaan",
   sumber: "Materi: kesalahan umum dan pengayaan",
   latar: "#FDF2F8",
-  kutipan: [
-    "Miskonsepsi yang sering terjadi dalam operasi pembagian",
-    "Peserta didik tidak membagikan benda sama rata.",
-    "Peserta lupa tidak membagi angka 0 yang terletak di posisi puluhan.",
-    "Istilah hasil bagi dan sisa bagi. Peserta didik sering terbalik menyebutkan.",
-    "Diferensiasi",
-    "berilah peserta didik masalah pembagian yang tidak habis dibagi.",
-    "Arahkan peserta didik untuk menentukan hasil bagi dan sisa bagi.",
-    "guru memberikan latihan secara berulang atau mengulangi penjelasan secara personal.",
-    "dimulai dari dibawah 50.",
-  ],
+  kutipan: kutipanLokal("k4b1h-materi-3.ts:3"),
   ketukan: [
     k(
       SUARA_J1,

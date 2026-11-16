@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, angka, emo, kartu, idAngka, tempat, teks } from "./k5b9c-gambar";
 import { bersih, hapus, k, tambah } from "./k5b9c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 8. Uji 1 sampai 3: menulis, membaca, dan menyusun bilangan ------------------------------ */
 const TX = 18;
@@ -13,16 +14,7 @@ export const ADEGAN_UJI_ANGKA: AdeganStory = {
   judul: "Uji 1 sampai 3: menulis, membaca, dan menyusun bilangan",
   sumber: "Materi: Uji 1 sampai 3",
   latar: "#FFF7ED",
-  kutipan: [
-    "Nyatakan bilangan berikut dalam bentuk angka",
-    "Lima ratus lima puluh ribu tiga ratus tiga",
-    "Sembilan ratus ribu tiga puluh tiga ribu empat ratus tiga",
-    "Bacalah bilangan berikut",
-    "Jumlah penduduk Kabupaten Sumba Barat tahun 2021",
-    "Ibu membeli rak mainan seharga Rp345.675,00",
-    "Tuliskan bilangan berikut dalam bentuk angka, kemudian",
-    "Bilangan yang merupakan jumlah dari 3 ratus ribuan, 2 puluh",
-  ],
+  kutipan: kutipanLokal("k5b9c-materi-3.ts:1"),
   ketukan: [
     k(
       "Mari kerjakan Uji satu a: lima ratus lima puluh ribu tiga ratus tiga. Kolom ribuan dan puluhan tidak disebut, jadi diisi nol. Hasilnya lima ratus lima puluh ribu tiga ratus tiga.",
@@ -107,13 +99,7 @@ export const ADEGAN_UJI_PERNYATAAN: AdeganStory = {
   judul: "Uji 4: benar atau salah",
   sumber: "Materi: Uji 4, benar atau salah",
   latar: "#FDF2F8",
-  kutipan: [
-    "Pilihlah pernyataan berikut yang benar dan salah sesuai dengan",
-    "Dua ratus tujuh puluh lima ribu lebih banyak",
-    "Urutan bilangan dari yang terkecil ke yang",
-    "Sembilan ratus ribu dua puluh lima lebih kecil",
-    "Jika kita mempunyai 2 ratus ribuan",
-  ],
+  kutipan: kutipanLokal("k5b9c-materi-3.ts:2"),
   ketukan: [
     k(
       "Uji empat a: dua ratus tujuh puluh lima ribu dibandingkan dua ratus lima puluh enam ribu. Ratus ribuan sama-sama dua, puluh ribuan tujuh lawan lima. Jadi pernyataan benar.",
@@ -183,13 +169,7 @@ export const ADEGAN_UJI_PASANG: AdeganStory = {
   judul: "Uji 5, Tantangan, dan Renungan",
   sumber: "Materi: Uji 5, Tantangan, Renungan",
   latar: "#F0FDF4",
-  kutipan: [
-    "Pasangkan Bagian A dengan Bagian B secara tepat",
-    "Ibu akan membeli seragam sekolah",
-    "Nisa mempunyai uang Rp250.000,00",
-    "Kelompok Komang berhasil mengumpulkan",
-    "Komang mempunyai uang lima ratus",
-  ],
+  kutipan: kutipanLokal("k5b9c-materi-3.ts:3"),
   ketukan: [
     k(
       "Uji lima menjodohkan soal dengan jawaban. Ibu membeli seragam seharga empat ratus lima puluh ribu rupiah dan punya empat lembar seratus ribuan, empat lembar sepuluh ribuan, dan tiga lembar seribuan.",
@@ -205,18 +185,18 @@ export const ADEGAN_UJI_PASANG: AdeganStory = {
       tambah("Kurangnya", teks("q5", 150, 178, "450.000 - 443.000 = 7.000", 10, W.merah)),
     ),
     k(
-      "Nisa punya dua ratus lima puluh ribu rupiah dan menerima kembalian lima belas ribu empat ratus rupiah. Harga barangnya dua ratus lima puluh ribu kurang lima belas ribu empat ratus, yaitu dua ratus tiga puluh empat ribu enam ratus.",
+      "Halim punya dua ratus lima puluh ribu rupiah dan menerima kembalian lima belas ribu empat ratus rupiah. Harga barangnya dua ratus lima puluh ribu kurang lima belas ribu empat ratus, yaitu dua ratus tiga puluh empat ribu enam ratus.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Uang Nisa dan harga barang", 12, W.ungu)),
-      tambah("Nisa", ...kartu("ns", 40, 40, 220, 34, W.mint, ["uang 250.000, kembalian 15.400"], 10)),
+      tambah(0, teks("jud", 150, 22, "Uang Halim dan harga barang", 12, W.ungu)),
+      tambah("Halim", ...kartu("ns", 40, 40, 220, 34, W.mint, ["uang 250.000, kembalian 15.400"], 10)),
       tambah("Harga", teks("q6", 150, 110, "250.000 - 15.400 = 234.600", 13, W.hijau)),
     ),
     k(
-      "Kelompok Yohana mengumpulkan tiga ratus empat puluh lima ribu enam ratus rupiah, dan kelompok Komang tiga ratus lima puluh empat ribu lima ratus. Dana terbanyak milik Komang: puluh ribuan empat lawan lima.",
+      "Kelompok Upe mengumpulkan tiga ratus empat puluh lima ribu enam ratus rupiah, dan kelompok Kira tiga ratus lima puluh empat ribu lima ratus. Dana terbanyak milik Kira: puluh ribuan empat lawan lima.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Dana dua kelompok", 12, W.ungu)),
-      tambah("Yohana", ...kartu("yh", 20, 38, 120, 44, W.mawar, ["Yohana", "345.600"], 11)),
-      tambah("Komang", ...kartu("km", 160, 38, 120, 44, W.mint, ["Komang", "354.500"], 11)),
+      tambah("Upe", ...kartu("yh", 20, 38, 120, 44, W.mawar, ["Upe", "345.600"], 11)),
+      tambah("Kira", ...kartu("km", 160, 38, 120, 44, W.mint, ["Kira", "354.500"], 11)),
       tambah("puluh@3", teks("q7", 150, 112, "puluh ribuan: 4 lawan 5", 11, W.biru)),
       tambah("milik", emo("pk", 220, 150, "👑", 26), teks("q8", 150, 184, "354.500 lebih banyak", 11, W.hijau)),
     ),

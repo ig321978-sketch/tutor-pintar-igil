@@ -2,7 +2,7 @@ import type { Obj } from "./logika-story";
 
 /**
  * Gambar khusus Story Kelas 5 Bab 3 Sub-Bab A (membandingkan dan mengurutkan pecahan): lingkaran dan batang pecahan, garis bilangan, kisi dan segitiga berpetak,
- * serta data lompatan Yohana (Buku Siswa hlm. 71 sampai 74) dan pita Nisa (hlm. 75). Berkas ini TIDAK dipakai bab lain.
+ * serta data lompatan Malosi (Buku Siswa hlm. 71 sampai 74) dan pita Igil (hlm. 75). Berkas ini TIDAK dipakai bab lain.
  * Semua fungsi mengembalikan data benda (Obj) untuk mesin Story.
  */
 
@@ -71,13 +71,13 @@ export const poligon = (id: string, x: number, y: number, p: Titik[], warna: str
 /* ------------------------------ Data buku ------------------------------ */
 
 export type Campuran = { bulat: number; p: number; q: number };
-/** Tiga lompatan Yohana (Buku Siswa hlm. 71): 2 3/4 m, 3 1/2 m, dan 7/8 m. */
+/** Tiga lompatan Malosi (Buku Siswa hlm. 71): 2 3/4 m, 3 1/2 m, dan 7/8 m. */
 export const LOMPATAN: Campuran[] = [
   { bulat: 2, p: 3, q: 4 },
   { bulat: 3, p: 1, q: 2 },
   { bulat: 0, p: 7, q: 8 },
 ];
-/** Tiga potongan pita Nisa (Buku Siswa hlm. 75): 2 2/5 m, 2 1/4 m, 2 1/2 m. */
+/** Tiga potongan pita Igil (Buku Siswa hlm. 75): 2 2/5 m, 2 1/4 m, 2 1/2 m. */
 export const PITA: Campuran[] = [
   { bulat: 2, p: 2, q: 5 },
   { bulat: 2, p: 1, q: 4 },

@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisSel, emo, irisan, judul, kartu, papan, teks, warnaiLubang } from "./k5b2d-gambar";
 import { bersih, k, tambah, ubah } from "./k5b2d-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Faktor persekutuan dan FPB dari dua belas dan delapan belas (Buku Siswa hlm. 48; Panduan Guru hlm. 69) ------------------------------ */
 export const ADEGAN_FAKTOR_PERSEKUTUAN: AdeganStory = {
@@ -8,18 +9,7 @@ export const ADEGAN_FAKTOR_PERSEKUTUAN: AdeganStory = {
   judul: "Faktor persekutuan dan FPB dari 12 dan 18",
   sumber: "Materi: faktor persekutuan dan FPB",
   latar: "#EFF6FF",
-  kutipan: [
-    "Faktor dari 12 adalah 1, 2, 3, 4, 6, dan 12.",
-    "Faktor dari 18 adalah 1, 2, 3, 6, dan 18.",
-    "Dapat kita cermati bahwa ternyata 12 dan 18 memiliki faktor",
-    "yang sama, yaitu 1, 2, 3, dan 6.",
-    "Dalam matematika, faktor-faktor yang sama",
-    "antara bilangan 12 dan 18 disebut faktor",
-    "persekutuan dari 12 dan 18.",
-    "Dari bilangan 1, 2, 3, dan 6, 6 adalah yang paling besar",
-    "persekutuan terbesar (FPB) dari 12 dan 18.",
-    "Faktor persekutuan sama dengan faktor yang sama.",
-  ],
+  kutipan: kutipanLokal("k5b2d-materi-2.ts:1"),
   ketukan: [
     k(
       "Dari permainan tadi, faktor dua belas adalah satu, dua, tiga, empat, enam, dan dua belas.",
@@ -69,21 +59,7 @@ export const ADEGAN_EKS_A_AB: AdeganStory = {
   judul: "Bermain congklak: soal a dan b",
   sumber: "Materi: bermain congklak, dua pasangan",
   latar: "#FFF7ED",
-  kutipan: [
-    "Eksplorasi 2.4A",
-    "Ayo Bermain Congklak",
-    "Bermainlah secara berpasangan.",
-    "Gunakan aturan permainan congklak seperti pada bagian Ayo",
-    "Temukan FPB dari pasangan bilangan berikut dengan",
-    "menggunakan bantuan permainan congklak.",
-    "a. 6 dan 12",
-    "warnai lubang congklak",
-    "yang berisi 2 biji congklak.",
-    "Faktor persekutuan 6 dan 12 adalah 1, 2, 3, 6",
-    "FPB dari 6 dan 12 adalah 6",
-    "b. 8 dan 20",
-    "1, 2, 4 4 1, 2, 4 4",
-  ],
+  kutipan: kutipanLokal("k5b2d-materi-2.ts:2"),
   ketukan: [
     k(
       "Sekarang kita bermain congklak lagi. Bermainlah berpasangan dengan aturan tadi, lalu temukan FPB tiap pasangan bilangan dengan papan congklak.",
@@ -137,25 +113,7 @@ export const ADEGAN_EKS_A_C: AdeganStory = {
   judul: "Bermain congklak: soal c dan tantangan",
   sumber: "Materi: pasangan lain dan tantangan",
   latar: "#FEFCE8",
-  kutipan: [
-    "c. 12 dan 28",
-    "Faktor persekutuan 12 dan 28 adalah",
-    "FPB dari 12 dan 28 adalah",
-    "Guru berperan sebagai pengamat dan fasilitator.",
-    "Jika ada kelompok yang melakukan kesalahan atau tidak mengikuti aturan,",
-    "tidak perlu untuk diingatkan.",
-    "Bagi peserta didik yang tidak memahami instruksi, ulangi lagi aturan permainan",
-    "minta mereka untuk menuliskan terlebih dahulu faktor bilangan yang akan dimainkan",
-    "Soal Tambahan",
-    "temukan faktor persekutuan dan faktor persekutuan terbesar dari pasangan bilangan",
-    "1. 18 dan 24",
-    "2. 14 dan 28",
-    "3. 15 dan 20",
-    "4. 13 dan 26",
-    "5. 20 dan 28",
-    "Berikan kesempatan kepada kelompok untuk presentasi.",
-    "Akan lebih baik jika ada hasil yang berbeda sehingga peserta didik dapat mengamati perbedaannya.",
-  ],
+  kutipan: kutipanLokal("k5b2d-materi-2.ts:3"),
   ketukan: [
     k(
       "Soal c: dua belas dan dua puluh delapan. Faktor dua belas: satu, dua, tiga, empat, enam, dua belas. Faktor dua puluh delapan: satu, dua, empat, tujuh, empat belas, dua puluh delapan.",
@@ -207,40 +165,20 @@ export const ADEGAN_EKS_A_C: AdeganStory = {
 /* ------------------------------ 8. Eksplorasi 2.4B: masalah bunga mawar (Buku Siswa hlm. 51; Panduan Guru hlm. 72 dan 73) ------------------------------ */
 export const ADEGAN_EKS_B_MASALAH: AdeganStory = {
   id: "eks-24b-masalah",
-  judul: "Membantu Nisa mengatur mawar",
-  sumber: "Materi: membantu Nisa mengatur mawar",
+  judul: "Membantu Kira mengatur mawar",
+  sumber: "Materi: membantu Kira mengatur mawar",
   latar: "#FFF1F2",
-  kutipan: [
-    "Eksplorasi 2.4B",
-    "Ayo Membantu",
-    "Pagi ini ibunya Nisa membeli bunga mawar merah dan mawar putih.",
-    "Beliau membeli 24 tangkai mawar merah dan 18 tangkai bunga",
-    "mawar putih.",
-    "Selanjutnya, beliau meminta Nisa untuk mengatur",
-    "bunga-bunga tersebut pada vas bunga.",
-    "banyaknya setiap jenis bunga di setiap vas harus sama",
-    "sebanyak-banyaknya ke dalam",
-    "vas yang memungkinkan.",
-    "Paling banyak, aku butuh berapa vas, ya?",
-    "Ada berapa mawar setiap vasnya?",
-    "Tabel 2.2 Banyaknya Bunga dan Vas yang Diperlukan",
-    "Banyaknya bunga mawar merah di setiap vas 1 2 3 4 6 8 12 24",
-    "Vas yang diperlukan 24 12 8 6 4 3 2 1",
-    "Banyaknya bunga mawar putih di setiap vas 1 2 3 6 9 18",
-    "Vas yang diperlukan 18 9 6 3 2 1",
-    "Menyampaikan tujuan dari kegiatan pada bagian ini mengamati tentang",
-    "aplikasi FPB untuk menyelesaikan masalah",
-  ],
+  kutipan: kutipanLokal("k5b2d-materi-2.ts:4"),
   ketukan: [
     k(
-      "Mari membantu Nisa. Pagi ini ibunya Nisa membeli dua puluh empat tangkai mawar merah dan delapan belas tangkai mawar putih.",
-      tambah(0, judul("Membantu Nisa")),
+      "Mari membantu Kira. Pagi ini ibunya Kira membeli dua puluh empat tangkai mawar merah dan delapan belas tangkai mawar putih.",
+      tambah(0, judul("Membantu Kira")),
       tambah("ibunya", emo("w1", 80, 90, "🌹", 40)),
       tambah("merah", ...kartu("mr", 130, 56, 150, 34, W.merahMuda, ["24 tangkai mawar merah"], 9.4)),
       tambah("putih.", ...kartu("mp", 130, 104, 150, 34, W.putih, ["18 tangkai mawar putih"], 9.4)),
     ),
     k(
-      "Ibu meminta Nisa mengatur bunga pada vas. Pesannya: tiap jenis bunga di setiap vas harus sama banyak, dan bunga dimasukkan sebanyak-banyaknya ke vas yang memungkinkan.",
+      "Ibu meminta Kira mengatur bunga pada vas. Pesannya: tiap jenis bunga di setiap vas harus sama banyak, dan bunga dimasukkan sebanyak-banyaknya ke vas yang memungkinkan.",
       bersih(0),
       tambah(0, judul("Pesan ibu")),
       tambah("vas.", emo("vs", 150, 76, "🏺", 36)),
@@ -248,9 +186,9 @@ export const ADEGAN_EKS_B_MASALAH: AdeganStory = {
       tambah("sebanyak-banyaknya", ...kartu("p2", 20, 140, 260, 30, W.hijauMuda, ["bunga masuk sebanyak-banyaknya"], 9.4)),
     ),
     k(
-      "Nisa bertanya: paling banyak aku butuh berapa vas, dan ada berapa mawar di setiap vasnya? Tujuannya, kita memakai FPB untuk menyelesaikan masalah.",
+      "Kira bertanya: paling banyak aku butuh berapa vas, dan ada berapa mawar di setiap vasnya? Tujuannya, kita memakai FPB untuk menyelesaikan masalah.",
       bersih(0),
-      tambah(0, judul("Pertanyaan Nisa")),
+      tambah(0, judul("Pertanyaan Kira")),
       tambah("paling", ...kartu("q1", 20, 44, 260, 36, W.pink, ["paling banyak butuh berapa vas?"], 9.6)),
       tambah("ada", ...kartu("q2", 20, 92, 260, 36, W.langit, ["ada berapa mawar di setiap vas?"], 9.6)),
       tambah("Tujuannya,", teks("q3", 150, 160, "tujuan: pakai FPB untuk masalah", 10, W.hijau)),

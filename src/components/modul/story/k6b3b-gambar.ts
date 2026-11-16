@@ -99,7 +99,7 @@ export function susunanIso(p: string, ox: number, oy: number, s: number, daftar:
 
 /* ------------------------------ Contoh susunan dalam buku ------------------------------ */
 
-/** Gambar Anike (Eksplorasi 3.2): deretan tiga kubus biru, merah, kuning; kubus hijau di atas kubus merah. */
+/** Gambar Kira (Eksplorasi 3.2): deretan tiga kubus biru, merah, kuning; kubus hijau di atas kubus merah. */
 export const ANIKE: Kubus[] = [
   { u: 0, v: 0, z: 0, w: "b" },
   { u: 1, v: 0, z: 0, w: "m" },

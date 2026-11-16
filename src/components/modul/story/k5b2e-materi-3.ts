@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, judul, kartu, tabel, teks } from "./k5b2e-gambar";
 import { bersih, k, tambah } from "./k5b2e-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Miskonsepsi, diferensiasi, dan Refleksi 8 sampai 9 (Panduan Guru hlm. 83 sampai 84) ------------------------------ */
 export const ADEGAN_MISKONSEPSI: AdeganStory = {
@@ -8,21 +9,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Hati-hati: tiga kesalahan yang sering terjadi",
   sumber: "Materi: kesalahan yang sering terjadi",
   latar: "#FEF2F2",
-  kutipan: [
-    "Kesalahan yang mungkin dilakukan peserta didik saat menentukan KPK dan FPB menggunakan faktorisasi prima adalah sebagai berikut.",
-    "Mencari KPK hanya dengan mengalikan faktor prima yang sama, tidak mengalikan faktor prima yang lainnya.",
-    "KPK = 2 × 2 × 3 × 3 = 36",
-    "padahal seharusnya KPK = 2 × 2 × 3 × 3 × 3 = 108.",
-    "Menentukan KPK dengan mengalikan semua faktor prima di kedua bilangan yang akan dicari KPK-nya.",
-    "KPK = 2 × 2 × 2 × 2 × 3 × 3 × 3 = 3.888",
-    "Saat menentukan FPB, bilangan prima yang berpasangan dituliskan semuanya.",
-    "FPB = 2 × 2 × 2 × 2 × 3 × 3 × 3 × 3 = 1.296",
-    "seharusnya bilangan prima yang memiliki pasangan cukup dituliskan sekali saja sehingga jawaban yang tepat adalah FPB = 2 × 2 × 3 × 3 = 36.",
-    "Bagi peserta didik yang kecepatan belajarnya tinggi (advanced), minta mereka mengerjakan latihan tanpa bantuan.",
-    "Aku dapat menyebutkan bilangan prima.",
-    "Aku dapat membuat faktorisasi prima suatu bilangan.",
-    "menjawab pertanyaan releksi nomor 8 dan 9 pada tabel releksi di buku siswa.",
-  ],
+  kutipan: kutipanLokal("k5b2e-materi-3.ts:1"),
   ketukan: [
     k(
       "Hati-hati, kesalahan pertama: KPK dicari hanya dari faktor prima yang sama. Untuk tiga puluh enam dan seratus delapan hasilnya tiga puluh enam, padahal KPK-nya seratus delapan.",
@@ -70,21 +57,7 @@ export const ADEGAN_UK_1: AdeganStory = {
   judul: "Uji 1: KPK dan FPB empat kelompok bilangan",
   sumber: "Materi: Uji 1 KPK dan FPB",
   latar: "#F0F9FF",
-  kutipan: [
-    "Tentukan KPK dan FPB dari pasangan bilangan berikut.",
-    "a. 45 dan 135",
-    "b. 96 dan 120",
-    "c. 24, 36, dan 60",
-    "d. 80, 120, dan 160",
-    "FPB = 3 × 3 × 5 = 45",
-    "KPK = 3 × 3 × 3 × 5 = 135",
-    "FPB = 2 × 2 × 2 × 3 = 24",
-    "KPK = 2 × 2 × 2 × 2 × 2 × 3 × 5 = 480",
-    "FPB = 2 × 2 × 3 = 12",
-    "KPK = 2 × 2 × 3 × 2 × 3 × 5 = 360",
-    "FPB = 2 × 2 × 2 × 5 = 40",
-    "KPK = 2 × 2 × 2 × 2 × 2 × 3 × 5 = 480",
-  ],
+  kutipan: kutipanLokal("k5b2e-materi-3.ts:2"),
   ketukan: [
     k(
       "Uji satu a: empat puluh lima dan seratus tiga puluh lima. Empat puluh lima adalah tiga, tiga, lima. Seratus tiga puluh lima adalah tiga, tiga, tiga, lima. FPB-nya empat puluh lima, KPK-nya seratus tiga puluh lima.",
@@ -128,23 +101,7 @@ export const ADEGAN_UK_2: AdeganStory = {
   judul: "Uji 2 sampai 4: kelompok belajar, lampu, kalender",
   sumber: "Materi: Uji 2 sampai 4",
   latar: "#FFFBEB",
-  kutipan: [
-    "Kelas V SD Mutiara Indah terdiri atas 12 siswa perempuan dan 18 siswa laki-laki.",
-    "Banyaknya siswa perempuan dan laki-laki di setiap kelompok harus sama.",
-    "Paling banyak, ada berapa kelompok yang dapat dibentuk?",
-    "Jadi, paling banyak dapat dibentuk 6 kelompok dengan anggota terdiri atas 3 orang siswa laki-laki dan 2 orang siswa perempuan.",
-    "menyala merah setiap 15 detik, 24 detik, dan 36 detik sekali.",
-    "menyala merah secara bersamaan pada pukul 15:30.",
-    "KPK dari 15, 24, dan 36 adalah",
-    "360 detik atau setelah 6 menit (1 menit = 60 detik).",
-    "pukul 15.30 + 6 menit, yaitu pukul 15.41.",
-    "Pahing terjadi setiap 5 hari sekali.",
-    "Pernyataan salah: Pasaran berulang setiap 5 hari sekali.",
-    "maka Pon selanjutnya bertepatan dengan hari Jumat.",
-    "Tanggal 24 Agustus berjarak 5 hari dari tanggal 19 Agustus.",
-    "Satu pasaran dalam kalender Bali dan Jawa adalah 5 hari.",
-    "Sabtu Kliwon selanjutnya jatuh pada tanggal 1 Oktober 2022.",
-  ],
+  kutipan: kutipanLokal("k5b2e-materi-3.ts:3"),
   ketukan: [
     k(
       "Uji dua, kelompok belajar: dua belas siswa perempuan dan delapan belas siswa laki-laki. FPB-nya enam, jadi paling banyak enam kelompok, masing-masing tiga laki-laki dan dua perempuan.",
@@ -196,25 +153,7 @@ export const ADEGAN_PENUTUP_E: AdeganStory = {
   judul: "Rubrik, remedial, pengayaan, interaksi dengan orang tua, dan sumber bacaan",
   sumber: "Panduan Guru hlm. 90–96",
   latar: "#F0FDF4",
-  kutipan: [
-    "Tabel 2.5 Rubrik Penilaian Uji Kompetensi",
-    "Remedial diberikan jika peserta didik belum mencapai kriteria minimum",
-    "Bimbingan individu",
-    "Bimbingan kelompok",
-    "Pembelajaran ulang menggunakan metode dan media yang berbeda",
-    "Pada saat tes ulang, tingkat kesulitan soal dapat diturunkan.",
-    "Kegiatan pengayaan dapat diberikan soal-soal AKM",
-    "Pada hari Minggu, Dania membuat kue nastar dan kue kacang.",
-    "Hasilnya 60 buah kue nastar dan 72 kue kacang.",
-    "Paket kue tidak cukup untuk dibagikan kepada seluruh teman Dania.",
-    "bus jurusan 3A datang setiap 20 menit sekali, bus jurusan 2B setiap 15 menit sekali dan bus jurusan 1D setiap 30 menit sekali.",
-    "KPK dari 15 menit, 20 menit, dan 30 menit adalah 60 menit atau 1 jam.",
-    "paling banyak, ada berapa siswa di setiap baris?",
-    "Paduan suara yang terbentuk terdiri atas 5 baris, yaitu 3 baris siswa perempuan dan 2 baris siswa laki-laki.",
-    "orang tua dapat dilibatkan dalam membuat papan congklak yang terbuat dari kardus bekas dan gelas air mineral bekas.",
-    "Game interaktif menentukan KPK dan FPB.",
-    "Game ini berbasis Geogebra",
-  ],
+  kutipan: kutipanLokal("k5b2e-materi-3.ts:4"),
   ketukan: [
     k(
       "Rubrik Uji Kompetensi: tiap butir skor tertingginya empat. Nomor satu dinilai dari banyaknya soal benar beserta caranya, nomor dua sampai empat dari konsep, kerunutan cara, dan jawaban akhir.",

@@ -96,14 +96,14 @@ export const ADEGAN_LUAR_SIKLUS: AdeganStory = {
   latar: "#F0F9FF",
   ketukan: [
     k(
-      "Metode keempat, Meeting Cycle, siklus bertemu. Dua jadwal yang berulang akan bertemu lagi setelah sejumlah hari yang sama dengan KPK-nya. Mulai dari Nisa yang berlatih tiap tiga hari.",
+      "Metode keempat, Meeting Cycle, siklus bertemu. Dua jadwal yang berulang akan bertemu lagi setelah sejumlah hari yang sama dengan KPK-nya. Mulai dari Malosi yang berlatih tiap tiga hari.",
       tambah(0, judul("Meeting Cycle")),
       tambah("jadwal", ...garisHari("gh", X0, 100, 12, LANGKAH)),
-      tambah("Nisa", teks("ln", 150, 62, "Nisa: tiap 3 hari", 10, W.hijau), ...titikHari("gn", [3, 6, 9, 12], 84, W.hijauPita)),
+      tambah("Malosi", teks("ln", 150, 62, "Malosi: tiap 3 hari", 10, W.hijau), ...titikHari("gn", [3, 6, 9, 12], 84, W.hijauPita)),
     ),
     k(
-      "Yohana berlatih tiap empat hari, jadi pada hari keempat, kedelapan, dan kedua belas.",
-      tambah("Yohana", teks("ly", 150, 156, "Yohana: tiap 4 hari", 10, W.coklat), ...titikHari("gy", [4, 8, 12], 132, W.jingga)),
+      "Igil berlatih tiap empat hari, jadi pada hari keempat, kedelapan, dan kedua belas.",
+      tambah("Igil", teks("ly", 150, 156, "Igil: tiap 4 hari", 10, W.coklat), ...titikHari("gy", [4, 8, 12], 132, W.jingga)),
     ),
     k(
       "Hari pertama yang ditempati keduanya adalah hari kedua belas. Itulah satu siklus, dan panjang siklus sama dengan KPK tiga dan empat.",
@@ -126,16 +126,16 @@ export const ADEGAN_LUAR_SIKLUS_TERAPAN: AdeganStory = {
   latar: "#F0F9FF",
   ketukan: [
     k(
-      "Nisa dan Yohana berlatih tiap tiga dan empat hari, jadi siklusnya dua belas hari. Mulai tanggal tiga Agustus, mereka bertemu lagi tanggal lima belas Agustus.",
-      tambah(0, judul("Nisa dan Yohana")),
+      "Malosi dan Igil berlatih tiap tiga dan empat hari, jadi siklusnya dua belas hari. Mulai tanggal tiga Agustus, mereka bertemu lagi tanggal lima belas Agustus.",
+      tambah(0, judul("Malosi dan Igil")),
       tambah("siklusnya", teks("a1", 150, 60, "KPK 3 dan 4 = 12", 14, W.biru)),
       tambah("tanggal", teks("a2", 150, 100, "3 + 12 = 15", 22, W.hitam)),
       tambah("lima", ...kartu("a3", 60, 120, 180, 44, W.hijauMuda, ["3 Agustus + 12 hari", "= 15 Agustus"], 10.4)),
     ),
     k(
-      "Asep dan Lukas berlatih tiap tiga dan lima hari, siklusnya lima belas hari. Mulai tanggal dua puluh Agustus, dua puluh ditambah lima belas sama dengan tiga puluh lima.",
+      "Kira dan Halim berlatih tiap tiga dan lima hari, siklusnya lima belas hari. Mulai tanggal dua puluh Agustus, dua puluh ditambah lima belas sama dengan tiga puluh lima.",
       bersih(0),
-      tambah(0, judul("Asep dan Lukas")),
+      tambah(0, judul("Kira dan Halim")),
       tambah("siklusnya", teks("b1", 150, 64, "KPK 3 dan 5 = 15", 14, W.biru)),
       tambah("dua", teks("b2", 150, 112, "20 + 15 = 35", 22, W.hitam)),
     ),

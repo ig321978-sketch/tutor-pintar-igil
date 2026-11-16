@@ -4,6 +4,7 @@
 // kutipan buku terhadap teks PDF (pdftotext -enc UTF-8), hitungan mandiri (kelipatan, tabel 1 sampai 50 dan 1 sampai 100, kunci kelipatan 9 yang kurang,
 // aturan habis dibagi, pola angka satuan), geometri gambar (kisi angka, lingkaran pemain, garis lompat), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b2a.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -188,7 +189,7 @@ const objId = (objs, id) => objs.find((o) => o.id === id);
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,latihan-renang,tepuk-aturan,tepuk-lanjut,tabel-tiga,berlatih-tujuh,berlatih-sembilan,berlatih-enam-delapan,penutup-guru", "urutan adegan materi");
   cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Latihan Renang", "Nisa", "Yohana", "Tepuk Bilangan Kelipatan", "Asep", "Latihan 1", "Latihan 2", "Hati-hati", "Tantangan", "Renungan", "tabel", "kelipatan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["Latihan Renang", "Wei", "Malosi", "Tepuk Bilangan Kelipatan", "Igil", "Latihan 1", "Latihan 2", "Hati-hati", "Tantangan", "Renungan", "tabel", "kelipatan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-lompat", "luar-lompat-terapan", "luar-seratus", "luar-seratus-terapan", "luar-cek", "luar-cek-terapan", "luar-satuan", "luar-satuan-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
   cek(U.adegan[1].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
@@ -401,10 +402,10 @@ const T = (id, ke) => akhirAdegan(adegan(M, id), ke);
     cek(bar.every((o, i) => i === 0 || o.y - bar[i - 1].y === 32), "jarak antarbatang sama");
     sama(nilaiId(jp, "tot"), "Total 24 JP", "total jam pelajaran");
   }
-  // Latihan renang: Nisa tiap 3 hari, Yohana tiap 4 hari, 3 Agustus; hanya pertanyaan.
+  // Latihan renang: Wei tiap 3 hari, Malosi tiap 4 hari, 3 Agustus; hanya pertanyaan.
   {
     const a = adegan(M, "latihan-renang");
-    sama([nilaiId(akhirAdegan(a, 1), "jn-t1"), nilaiId(akhirAdegan(a, 1), "jy-t1")], ["3 hari sekali", "4 hari sekali"], "jadwal Nisa dan Yohana");
+    sama([nilaiId(akhirAdegan(a, 1), "jn-t1"), nilaiId(akhirAdegan(a, 1), "jy-t1")], ["3 hari sekali", "4 hari sekali"], "jadwal Wei dan Malosi");
     sama(nilaiId(akhirAdegan(a, 2), "tg-t0"), "3 Agustus", "tanggal latihan bersama");
     cek(L.teksTerlihat(akhirAdegan(a, 3)).includes("Kapan latihan bersama lagi?"), "pertanyaan kapan latihan bersama lagi");
   }
@@ -705,8 +706,8 @@ const T2 = (id, ke) => akhirAdegan(adegan(U, id), ke);
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(M.adegan.every((a) => (a.kutipan ?? []).length >= 5), "tiap adegan materi memuat paling sedikit 5 kutipan buku");
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.every((a) => (a.kutipan ?? []).length >= 5), "tiap adegan materi memuat paling sedikit 5 kutipan buku");
     // Subbab A tidak memuat butir subbab B pada rentang halaman yang dipakai (Buku Siswa berhenti sebelum "B. Kelipatan Persekutuan").
     cek(!/b\. kelipatan persekutuan/.test(bersih(bagian[0])), "Buku Siswa PDF 45-53 tidak memuat subbab B");
     // Tiga keganjilan buku yang dicatat di video: duplikat kata "kelipatan kelipatan" (hlm. 34), ejaan "Erasthotenes" di kata kunci (hlm. 30), dan kunci kelipatan 9 yang berhenti di 81.
@@ -731,7 +732,7 @@ const T2 = (id, ke) => akhirAdegan(adegan(U, id), ke);
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b2a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b2a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b2a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b2a sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

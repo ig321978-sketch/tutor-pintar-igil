@@ -96,7 +96,7 @@ export const ADEGAN_LUAR_REKONSTRUKSI: AdeganStory = {
       tambah("beberapa", susunanIso("b", 124, 168, 12, CONTOH_A).objs, susunanIso("c", 206, 168, 12, CONTOH_B).objs, teks("bt", 150, 190, "beberapa susunan cocok", 8.5, W.merah)),
     ),
     k(
-      "Contoh Anike. Tampak atas: tiga sel berjajar, jadi matriksnya satu baris tiga kolom. Tampak depan bertinggi satu, dua, satu, jadi tiap sel terisi tepat setinggi itu. Hasilnya satu susunan, empat kubus.",
+      "Contoh Kira. Tampak atas: tiga sel berjajar, jadi matriksnya satu baris tiga kolom. Tampak depan bertinggi satu, dua, satu, jadi tiap sel terisi tepat setinggi itu. Hasilnya satu susunan, empat kubus.",
       bersih(0),
       tambah("atas:", teks("ta", 54, 40, "tampak atas", 8.5, W.ungu), tampak("t", 24, 48, 24, ["kkk"]).objs),
       tambah("matriksnya", teks("tm", 218, 40, "matriks tinggi", 8.5, W.ungu), ...matriks("m", 182, 48, 24, [[1, 2, 1]]).objs),

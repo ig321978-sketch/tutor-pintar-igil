@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, judul, kartu, kubusDi, teks } from "./k4b4b-gambar";
 import { bersih, k, tambah } from "./k4b4b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 6. Ayo Berlatih: jumlah dan konversi (Buku Siswa hlm. 132; Panduan Guru hlm. 158-159) ------------------------------ */
 export const ADEGAN_BERLATIH_KONVERSI: AdeganStory = {
@@ -8,18 +9,7 @@ export const ADEGAN_BERLATIH_KONVERSI: AdeganStory = {
   judul: "Latihan: jumlah volume dan konversi",
   sumber: "Materi: jumlah dan konversi volume",
   latar: "#FEFCE8",
-  kutipan: [
-    "Pada gambar di atas, sebutkan volume dari ketiga kotak susu tersebut?",
-    "Jumlahkan volume ketiga kotak susu tersebut dalam satuan mililiter?",
-    "250 ml + 200 ml + 1.000 ml = 1.450 ml",
-    "Konversikan volume berikut ke dalam liter dan mililiter",
-    "75.000 ml",
-    "9.485 ml",
-    "23.456 ml",
-    "75.000 ml = 75 x 1.000 ml",
-    "9 l 485 ml",
-    "23 l 456 ml",
-  ],
+  kutipan: kutipanLokal("k4b4b-materi-2.ts:1"),
   ketukan: [
     k(
       "Latihan satu: tiga kotak susu bertuliskan dua ratus mililiter, dua ratus lima puluh mililiter, dan seribu mililiter. Jumlahkan dalam mililiter.",
@@ -63,19 +53,7 @@ export const ADEGAN_BERLATIH_HITUNG: AdeganStory = {
   judul: "Latihan: tangki air dan penjual susu",
   sumber: "Materi: hitungan liter dan mililiter",
   latar: "#F5F3FF",
-  kutipan: [
-    "Sebuah tangki air berisi 2.225 liter air.",
-    "Pada siang hari 975 liter 325",
-    "air dipompa keluar dari tangki. Berapa banyak air yang tersisa di tangki?",
-    "2.225 l – 975 l = 1.250 l",
-    "Jadi, volume air yang tersisa di tangka adalah 1.249 l 675 ml.",
-    "Tips: Guru harus menyediakan cara yang lain, misalkan mengonversi liter ke mililiter terlebih dahulu.",
-    "Seorang tukang susu menjual 55 liter 575",
-    "40 liter 480",
-    "60 liter 825",
-    "Kumpulkan yang memiliki satuan sama:",
-    "Jadi, jumlah susu yang dijual oleh tukang susu adalah 156 l 880 ml.",
-  ],
+  kutipan: kutipanLokal("k4b4b-materi-2.ts:2"),
   ketukan: [
     k(
       "Latihan tiga: tangki berisi dua ribu dua ratus dua puluh lima liter air. Dipompa keluar sembilan ratus tujuh puluh lima liter tiga ratus dua puluh lima mililiter. Berapa sisanya?",
@@ -126,18 +104,7 @@ export const ADEGAN_AKTIVITAS_4: AdeganStory = {
   judul: "Percobaan: volume dengan kubus satuan",
   sumber: "Materi: volume dengan kubus satuan",
   latar: "#F0FDF4",
-  kutipan: [
-    "Aktivitas 4 : Konsep Volume dengan Kubus Satuan",
-    "Kardus",
-    "Kubus satuan",
-    "Letakkan kubus satuan ke dalam kardus.",
-    "Selanjutnya, Susunlah kubus satuan agar menjadi berbagai bangun.",
-    "Apakah hasil menyusun bangun dengan kubus satuan berbeda?",
-    "Dadu merupakan benda pejal.",
-    "Tidak cocok Pak.",
-    "Kita biasanya menggunakan mililiter dan liter untuk benda cair.",
-    "maka volume kardus adalah banyaknya kubus satuan yang mengisi penuh kardus tersebut.",
-  ],
+  kutipan: kutipanLokal("k4b4b-materi-2.ts:3"),
   ketukan: [
     k(
       "Percobaan kedua, kubus satuan. Kelompok memasukkan kubus ke dalam kardus sampai penuh, lalu menyusunnya menjadi berbagai bangun. Apakah susunannya berbeda?",
@@ -157,7 +124,7 @@ export const ADEGAN_AKTIVITAS_4: AdeganStory = {
       tambah("empat", ...kartu("k6", 50, 146, 200, 30, W.hijauMuda, ["bentuk beda, volume sama"], 9.4)),
     ),
     k(
-      "Helen punya mainan dadu, benda pejal. Mililiter dan liter tidak cocok untuk dadu, karena biasanya dipakai untuk benda cair. Maka dipakai kubus satuan.",
+      "Igil punya mainan dadu, benda pejal. Mililiter dan liter tidak cocok untuk dadu, karena biasanya dipakai untuk benda cair. Maka dipakai kubus satuan.",
       bersih(0),
       tambah(0, judul("Dadu: benda pejal")),
       tambah("dadu,", emo("k7", 150, 84, "🎲", 44)),
@@ -173,21 +140,7 @@ export const ADEGAN_CM3_M3: AdeganStory = {
   judul: "Sentimeter kubik dan meter kubik",
   sumber: "Materi: sentimeter kubik dan meter kubik",
   latar: "#EFF6FF",
-  kutipan: [
-    "Volume kubus satuan di atas adalah 1 cm³.",
-    "Kita menggunakan cm³ untuk wadah kecil.",
-    "Kalian dapat membacanya sebagai sentimeter kubik.",
-    "Bagaimana jika benda atau wadahnya besar?",
-    "Volume kubus satuan di atas adalah 1 m³.",
-    "Kita menggunakan m³ untuk wadah besar.",
-    "Kita membacanya sebagai meter kubik.",
-    "Kita sudah belajar satuan volume meliputi mililiter, liter, sentimeter kubik, dan",
-    "1 cm³ = 1 mℓ",
-    "1 m³ = 1.000 liter",
-    "satuan baku panjang misalkan km, hm, dam, m, dm, cm, mm.",
-    "km3, hm3, dam3, m3, dm3, cm3, mm3",
-    "m3 ke cm3 dikalikan 100, seharusnya dikalikan 1003",
-  ],
+  kutipan: kutipanLokal("k4b4b-materi-2.ts:4"),
   ketukan: [
     k(
       "Kubus rusuk satu sentimeter bervolume satu sentimeter kubik, untuk wadah kecil. Kubus rusuk satu meter bervolume satu meter kubik, untuk wadah besar seperti bak mandi.",
@@ -237,18 +190,7 @@ export const ADEGAN_KUBUS_MENCOBA: AdeganStory = {
   judul: "Menghitung kubus satuan",
   sumber: "Materi: menghitung kubus satuan",
   latar: "#FFFBEB",
-  kutipan: [
-    "Tentukan volume bangun berikut dengan cermat.",
-    "Volume bangun (i) adalah 24 cm³",
-    "adalah 9 cm³",
-    "Tentukan volume dari gambar A, B, C, D dengan menggunakan satuan volume.",
-    "Volume bangun A adalah 9 cm3",
-    "Volume bangun B adalah 8 cm3",
-    "Volume bangun C adalah 12 cm3",
-    "Volume bangun D adalah 18 cm3",
-    "Apakah ada bangun yang memiliki volume yang sama?",
-    "Tidak ada bangun yang memiliki volume sama.",
-  ],
+  kutipan: kutipanLokal("k4b4b-materi-2.ts:5"),
   ketukan: [
     k(
       "Ayo mencoba: tentukan volume bangun satu. Lapisan bawah dua belas kubus, lalu dua lapisan masing-masing enam kubus. Dua belas ditambah enam ditambah enam sama dengan dua puluh empat sentimeter kubik.",

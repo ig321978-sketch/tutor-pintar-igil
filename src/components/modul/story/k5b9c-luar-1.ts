@@ -97,10 +97,10 @@ export const ADEGAN_LUAR_C_SEBAGIAN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Part-Whole Place Model: penerapan pada uang Yosep dan Komang ------------------------------ */
+/* ------------------------------ 3. Part-Whole Place Model: penerapan pada uang Yosep dan Kira ------------------------------ */
 export const ADEGAN_LUAR_C_SEBAGIAN_TERAPAN: AdeganStory = {
   id: "luarc-sebagian-terapan",
-  judul: "Part-Whole Place Model pada uang Yosep dan Komang",
+  judul: "Part-Whole Place Model pada uang Yosep dan Kira",
   sumber: "Metode luar: Part-Whole, contoh uang Yosep",
   latar: "#F0FDF4",
   ketukan: [
@@ -130,7 +130,7 @@ export const ADEGAN_LUAR_C_SEBAGIAN_TERAPAN: AdeganStory = {
       tambah("cocok", emo("ck", 24, 198, "✅", 14)),
     ),
     k(
-      "Bandingkan dengan uang Komang yang bagiannya empat, sembilan, dan tiga: bagian ratus ribuannya lebih kecil, jadi empat ratus sembilan puluh tiga ribu lebih kecil dari enam ratus dua puluh tiga ribu.",
+      "Bandingkan dengan uang Kira yang bagiannya empat, sembilan, dan tiga: bagian ratus ribuannya lebih kecil, jadi empat ratus sembilan puluh tiga ribu lebih kecil dari enam ratus dua puluh tiga ribu.",
       ubah(0, { id: "ws-t0", isi: "493.000" }, { id: "dg0", isi: "4" }, { id: "dg1", isi: "9" }, { id: "dg2", isi: "3" }, { id: "n0", isi: "400.000" }, { id: "n1", isi: "90.000" }, { id: "n2", isi: "3.000" }, { id: "jm", isi: "400.000 + 90.000 + 3.000 = 493.000" }),
       tambah("Bandingkan", teks("bd", 150, 162, "623.000 lebih besar dari 493.000", 8, W.merah)),
     ),

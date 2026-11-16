@@ -4,6 +4,7 @@
 // hitungan mandiri (sisi denah, luas dan keliling ruangan, sekat, bingkai 12 kali 12, kunci Uji Kompetensi 1 sampai 5, soal pengayaan, contoh miskonsepsi),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b4e.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -136,15 +137,15 @@ const jarak = (a, b) => Math.hypot(b[0] - a[0], b[1] - a[1]);
   }
   sama(sekat, 28, "panjang sekat antar ruangan = 28");
   sama(jml(kelRuang) - 48, 2 * sekat, "104 - 48 = 56 = 2 kali sekat");
-  // Tiga persegi panjang Cara Komang menutupi denah tanpa tumpang tindih: 2 x 4, 6 x 12, 4 x 8 (buku: 4m x ?, 12m x 6m, 8m x 4m).
+  // Tiga persegi panjang Cara Malosi menutupi denah tanpa tumpang tindih: 2 x 4, 6 x 12, 4 x 8 (buku: 4m x ?, 12m x 6m, 8m x 4m).
   const kr = G.KOMANG_RECT;
-  sama(Object.values(kr).map((r) => (r[2] - r[0]) * (r[3] - r[1])), [8, 72, 32], "luas tiga persegi panjang Komang");
-  sama(Object.values(kr).reduce((t, r) => t + (r[2] - r[0]) * (r[3] - r[1]), 0), 112, "tiga persegi panjang Komang meliputi 112 m2");
+  sama(Object.values(kr).map((r) => (r[2] - r[0]) * (r[3] - r[1])), [8, 72, 32], "luas tiga persegi panjang Malosi");
+  sama(Object.values(kr).reduce((t, r) => t + (r[2] - r[0]) * (r[3] - r[1]), 0), 112, "tiga persegi panjang Malosi meliputi 112 m2");
   const komangDi = (x, y) => Object.values(kr).filter((r) => x > r[0] && x < r[2] && y > r[1] && y < r[3]).length;
   let cocokK = true;
   for (let x = -1.75; x < 10; x += 0.5) for (let y = 0.25; y < 12; y += 0.5) if (komangDi(x, y) !== (masuk(poli, x, y) ? 1 : 0)) cocokK = false;
-  cek(cocokK, "tiga persegi panjang Komang menutupi denah tepat satu kali");
-  sama([kr.tengah[3] - kr.tengah[1], kr.tengah[2] - kr.tengah[0], kr.kanan[3] - kr.kanan[1], kr.kanan[2] - kr.kanan[0]], [12, 6, 8, 4], "12m x 6m dan 8m x 4m pada gambar Komang");
+  cek(cocokK, "tiga persegi panjang Malosi menutupi denah tepat satu kali");
+  sama([kr.tengah[3] - kr.tengah[1], kr.tengah[2] - kr.tengah[0], kr.kanan[3] - kr.kanan[1], kr.kanan[2] - kr.kanan[0]], [12, 6, 8, 4], "12m x 6m dan 8m x 4m pada gambar Malosi");
   // Pengelompokan sisi berdasarkan arah luar: atas, bawah, kiri, kanan masing-masing berjumlah 12.
   const per = (arah) => G.SISI_DENAH.filter((n) => G.LUAR_SISI[n][0] === arah[0] && G.LUAR_SISI[n][1] === arah[1]);
   sama(per([0, -1]).sort(), ["HI", "JK", "KL", "MN"], "sisi menghadap atas");
@@ -411,7 +412,7 @@ const panjangGaris = (objs, id, skalaPx = S) => {
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,denah-rumah,dugaan-keliling,cara-asep-1,sisi-hilang,jumlah-asep,cara-komang,miskonsepsi-1,miskonsepsi-2,uji-kompetensi-1,uji-kompetensi-2,pengayaan-cat", "urutan adegan materi");
   cek(U.adegan[0].id === "sapaan" && U.adegan[1].id === "luar-pembuka", "video metode luar: sapaan lalu pembuka");
-  for (const kata of ["Asep", "Komang", "denah", "Hati-hati", "Tantangan", "Renungan", "Uji 1", "Uji 2", "persegi besar", "dinding terluar", "sekat", "tumpang tindih", "bangun gabungan", "galon"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["Wei", "Malosi", "denah", "Hati-hati", "Tantangan", "Renungan", "Uji 1", "Uji 2", "persegi besar", "dinding terluar", "sekat", "tumpang tindih", "bangun gabungan", "galon"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-opo", "luar-opo-terapan", "luar-br", "luar-br-terapan", "luar-ml", "luar-ml-terapan", "luar-cpb", "luar-cpb-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
   cek(M_VIDEO.adegan.length === 12 && M.adegan.length === 13 && U.adegan.length === 11, "12 adegan materi diputar (13 di berkas) dan 11 adegan metode luar");
@@ -462,7 +463,7 @@ const panjangGaris = (objs, id, skalaPx = S) => {
 
 /* ------------------------------ Hitungan isi, dihitung mandiri ------------------------------ */
 {
-  // Sisi hilang (Cara Asep).
+  // Sisi hilang (Cara Wei).
   {
     const a = adegan(M, "sisi-hilang");
     const t0 = akhirAdegan(a, 0);
@@ -494,7 +495,7 @@ const panjangGaris = (objs, id, skalaPx = S) => {
     sama([nilaiId(t2, "n1"), nilaiId(t2, "n2")], [`${KUNCI_JUMLAH.slice(0, 7).join(" + ")} = 28`, `${KUNCI_JUMLAH.slice(7).join(" + ")} = 20`], "suku dijumlahkan sama dengan kunci buku");
     sama(nilaiId(akhirAdegan(a, 3), "n3"), "28 + 20 = 48", "jumlah akhir 48");
   }
-  // Cara Komang: kelompok sisi di gambar dihitung dari panjang garis.
+  // Cara Malosi: kelompok sisi di gambar dihitung dari panjang garis.
   {
     const a = adegan(M, "cara-komang");
     const t1 = akhirAdegan(a, 1);
@@ -508,7 +509,7 @@ const panjangGaris = (objs, id, skalaPx = S) => {
     sama(["DE", "FG", "GH", "IJ"].map((n) => panjangGaris(t3, `kn${n}`)), [2, 4, 4, 2], "sisi kanan pada gambar");
     sama([nilaiId(t3, "g3"), nilaiId(t3, "g4")], ["kiri: 4 + 4 + 4 = 12", "kanan: 2 + 4 + 4 + 2 = 12"], "jumlah sisi kiri dan kanan");
     const t0 = akhirAdegan(a, 0);
-    sama(["kk", "kt", "kn"].map((id) => ada(t0, id)), [true, true, true], "tiga persegi panjang Komang");
+    sama(["kk", "kt", "kn"].map((id) => ada(t0, id)), [true, true, true], "tiga persegi panjang Malosi");
     const bk = t0.find((o) => o.id === "bk");
     sama([bk.w, bk.h], [12 * S, 12 * S], "bingkai persegi besar 12 kali 12");
     sama(nilaiId(akhirAdegan(a, 4), "kb2"), "4 × 12 = 48 m", "keliling 4 kali 12");
@@ -710,7 +711,7 @@ const panjangGaris = (objs, id, skalaPx = S) => {
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(n >= 80, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 80, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -730,7 +731,7 @@ const panjangGaris = (objs, id, skalaPx = S) => {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b4e-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b4e sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b4e-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b4e sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

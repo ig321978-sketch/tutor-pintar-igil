@@ -64,7 +64,7 @@ export const fmt = (n: number): string => String(n).replace(/\B(?=(\d{3})+(?!\d)
 /** Uang seperti di buku: "Rp57.500". */
 export const rp = (n: number): string => `Rp${fmt(n)}`;
 
-/* ------------------------------ Tabel nilai tempat (Buku Siswa hlm. 18, Cara Lukas) ------------------------------ */
+/* ------------------------------ Tabel nilai tempat (Buku Siswa hlm. 18, Cara Igil) ------------------------------ */
 
 export const KEPALA_NILAI_TEMPAT = ["Puluh Ribuan", "Ribuan", "Ratusan", "Puluhan", "Satuan"];
 const digitKolom = (n: number): string[] => String(n).padStart(5, "0").split("");

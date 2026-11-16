@@ -1,37 +1,28 @@
 import type { AdeganStory } from "./logika-story";
 import { W, batangMini, donat, emo, judul, kartu, panah, tabel, teks } from "./k5b8a-gambar";
 import { bersih, hapus, k, sorotkan, tambah } from "./k5b8a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
-/* ------------------------------ 1. Pembuka bab: Anggi dan donat (hlm. 235 sampai 238) ------------------------------ */
+/* ------------------------------ 1. Pembuka bab: Wei dan donat (hlm. 235 sampai 238) ------------------------------ */
 const WARNA_DONAT = ["#7C3F1D", "#FDE68A", "#F472B6", "#D6A66B"];
 
 export const ADEGAN_PEMBUKA: AdeganStory = {
   id: "pembuka-donat",
-  judul: "Pembuka Bab 8: Anggi menjual donat",
+  judul: "Pembuka Bab 8: Wei menjual donat",
   sumber: "Buku Siswa hlm. 235–238",
   latar: "#FFF7ED",
-  kutipan: [
-    "Data Membantu Membuat Keputusan",
-    "Di SD Pancasila saat jam istirahat",
-    "Anggi bercita-cita menjadi pengusaha makanan",
-    "Setiap hari, Anggi menjual empat macam rasa donat, yaitu cokelat, keju, stroberi, dan kacang",
-    "Tabel 8.1 Hasil Penjualan Donat Anggi",
-    "Tabel berikut menunjukkan hasil penjualan donat Anggi selama satu minggu",
-    "ia tidak akan menjual donat rasa kacang lagi",
-    "ia akan menambah banyaknya donat rasa cokelat",
-    "data sangat membantu dalam mengambil keputusan",
-  ],
+  kutipan: kutipanLokal("k5b8a-materi-1.ts:1"),
   ketukan: [
     k(
-      "Bab 8 membahas data. Di SD Pancasila saat jam istirahat, Yohana melihat Anggi sedang makan donat.",
+      "Bab 8 membahas data. Di SD Pancasila saat jam istirahat, Malosi melihat Wei sedang makan donat.",
       tambah(0, judul("Bab 8 Data")),
       tambah("SD", teks("sk", 150, 40, "SD Pancasila, jam istirahat", 9, W.hijau)),
-      tambah("Yohana", emo("yh", 56, 118, "👧", 40), teks("yht", 56, 144, "Yohana", 8.6)),
-      tambah("Anggi", emo("an", 244, 118, "🧒", 40), teks("ant", 244, 144, "Anggi", 8.6)),
+      tambah("Malosi", emo("yh", 56, 118, "👧", 40), teks("yht", 56, 144, "Malosi", 8.6)),
+      tambah("Wei", emo("an", 244, 118, "🧒", 40), teks("ant", 244, 144, "Wei", 8.6)),
       tambah("donat.", emo("dn", 150, 124, "🍩", 36)),
     ),
     k(
-      "Nisa dan Yohana ingin membeli donat juga. Anggi menjual empat rasa donat, yaitu cokelat, keju, stroberi, dan kacang.",
+      "Igil dan Malosi ingin membeli donat juga. Wei menjual empat rasa donat, yaitu cokelat, keju, stroberi, dan kacang.",
       bersih(0),
       tambah(0, judul("empat rasa donat")),
       tambah("cokelat,", ...donat("d0", 48, 96, 20, WARNA_DONAT[0]), teks("dt0", 48, 130, "cokelat", 8.6)),
@@ -40,9 +31,9 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("kacang.", ...donat("d3", 252, 96, 20, WARNA_DONAT[3]), teks("dt3", 252, 130, "kacang", 8.6)),
     ),
     k(
-      "Anggi bercita-cita menjadi pengusaha makanan. Setiap hari ia mencatat hasil penjualan donatnya selama satu minggu, dari Senin sampai Sabtu.",
+      "Wei bercita-cita menjadi pengusaha makanan. Setiap hari ia mencatat hasil penjualan donatnya selama satu minggu, dari Senin sampai Sabtu.",
       bersih(0),
-      tambah(0, judul("Catatan Anggi, satu minggu")),
+      tambah(0, judul("Catatan Wei, satu minggu")),
       tambah("pengusaha", emo("pk", 150, 66, "📒", 30)),
       tambah("Senin", ...kartu("h0", 28, 88, 76, 28, W.krem, ["Senin"], 9), ...kartu("h1", 112, 88, 76, 28, W.krem, ["Selasa"], 9), ...kartu("h2", 196, 88, 76, 28, W.krem, ["Rabu"], 9)),
       tambah("Sabtu.", ...kartu("h3", 28, 124, 76, 28, W.krem, ["Kamis"], 9), ...kartu("h4", 112, 124, 76, 28, W.krem, ["Jumat"], 9), ...kartu("h5", 196, 124, 76, 28, W.krem, ["Sabtu"], 9)),
@@ -50,18 +41,18 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
     k(
       "Hasil catatan itu dimuat dalam Tabel 8.1 pada halaman 237. Mari kita baca tabelnya.",
       bersih(0),
-      tambah(0, teks("jud", 150, 18, "Tabel 8.1 Hasil Penjualan Donat Anggi", 10.4, W.ungu)),
+      tambah(0, teks("jud", 150, 18, "Tabel 8.1 Hasil Penjualan Donat Wei", 10.4, W.ungu)),
       tambah("Tabel", ...tabel("t", 26, 30, [48, 50, 50, 50, 50], [["Hari", "Cokelat", "Keju", "Stroberi", "Kacang"], ["Senin", "3", "6", "4", "4"], ["Selasa", "4", "4", "6", "3"], ["Rabu", "5", "3", "4", "2"], ["Kamis", "5", "4", "5", "1"], ["Jumat", "6", "3", "3", "0"], ["Sabtu", "7", "5", "4", "0"]], 17, 8.4)),
       tambah("halaman", teks("hl", 66, 166, "hlm. 237", 8.6, W.ungu)),
     ),
     k(
-      "Anggi melihat donat kacang paling sedikit terjual, sedangkan donat cokelat terjual makin banyak dari hari ke hari.",
+      "Wei melihat donat kacang paling sedikit terjual, sedangkan donat cokelat terjual makin banyak dari hari ke hari.",
       sorotkan("kacang", "t-s04", "t-t04"),
       sorotkan("cokelat", "t-s01", "t-t01"),
       tambah("sedikit", teks("n1", 150, 180, "kacang turun, cokelat naik", 10, W.merah)),
     ),
     k(
-      "Maka Anggi memutuskan tidak menjual donat kacang lagi dan menambah donat cokelat. Data membantu Anggi mengambil keputusan.",
+      "Maka Wei memutuskan tidak menjual donat kacang lagi dan menambah donat cokelat. Data membantu Wei mengambil keputusan.",
       bersih(0),
       tambah(0, judul("data membantu keputusan")),
       tambah("tidak", ...kartu("kp1", 20, 44, 120, 56, W.merahMuda, ["tidak jual", "donat kacang"], 9.6)),
@@ -80,15 +71,10 @@ const barisBilangan = (id: string, y: number, nama: string, nilai: number[], war
 
 export const ADEGAN_TABEL_DONAT: AdeganStory = {
   id: "tabel-donat",
-  judul: "Membaca Tabel 8.1 donat Anggi",
+  judul: "Membaca Tabel 8.1 donat Wei",
   sumber: "Buku Siswa hlm. 237–238",
   latar: "#FEFCE8",
-  kutipan: [
-    "donat rasa kacang adalah yang paling sedikit terjual setiap harinya",
-    "Banyaknya donat rasa kacang yang terjual mengalami",
-    "bahkan ada hari ketika donat rasa kacang tidak terjual sama sekali",
-    "donat rasa cokelat yang terjual mengalami kenaikan setiap hari",
-  ],
+  kutipan: kutipanLokal("k5b8a-materi-1.ts:2"),
   ketukan: [
     k(
       "Perhatikan donat kacang dari Senin sampai Sabtu: empat, tiga, dua, satu, lalu nol dan nol. Banyaknya turun, sampai tidak terjual sama sekali.",
@@ -125,16 +111,7 @@ export const ADEGAN_TUJUAN: AdeganStory = {
   judul: "Tujuan, peta konsep, dan kata kunci Bab 8",
   sumber: "Buku Siswa hlm. 235–236 dan Buku Panduan Guru hlm. 345–348",
   latar: "#F5F3FF",
-  kutipan: [
-    "Tujuan Pembelajaran",
-    "Pada bab ini kalian akan diajak untuk mengumpulkan data",
-    "sederhana dari lingkungan sekitar kalian, kemudian menyajikannya",
-    "dengan menggunakan tabel frekuensi sederhana",
-    "Peta Konsep",
-    "Pengumpulan Data",
-    "Kata Kunci",
-    "Data, frekuensi, turus, tabel frekuensi, piktogram, diagram batang",
-  ],
+  kutipan: kutipanLokal("k5b8a-materi-1.ts:3"),
   ketukan: [
     k(
       "Tujuan bab ini: mengumpulkan data sederhana dari lingkungan sekitar, lalu menyajikannya dengan tabel frekuensi sederhana.",
@@ -186,16 +163,7 @@ export const ADEGAN_MENGINGAT: AdeganStory = {
   judul: "Ayo Mengingat Kembali: data dan diagram batang kelas IV",
   sumber: "Buku Siswa hlm. 238–239",
   latar: "#F0FDFA",
-  kutipan: [
-    "Ayo Mengingat Kembali",
-    "Di kelas IV kalian sudah pernah belajar tentang penyajian data",
-    "Data adalah sekumpulan informasi atau fakta",
-    "menggunakan kata, kalimat, angka, gambar, atau simbol",
-    "data tentang tinggi badan, data jarak rumah ke sekolah, data makanan favorit, data cara berangkat ke sekolah",
-    "Gambar 8.2 Diagram Batang Cara Berangkat ke Sekolah Siswa Kelas V SD Pancasila",
-    "Ada berapa siswa yang berangkat ke sekolah dengan berjalan",
-    "Cara apa yang paling banyak digunakan siswa kelas V SD",
-  ],
+  kutipan: kutipanLokal("k5b8a-materi-1.ts:4"),
   ketukan: [
     k(
       "Ayo Mengingat Kembali. Di kelas empat kita sudah belajar penyajian data. Data adalah sekumpulan informasi atau fakta.",

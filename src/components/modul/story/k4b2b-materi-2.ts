@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { KUNCI_EMPAT, LATIHAN_EMPAT, W, barisTabel, batang, emo, judul, kartu, pecahan, segienam, teks } from "./k4b2b-gambar";
 import { bersih, idx, k, sorotkan, tambah, warnai } from "./k4b2b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Ayo Berlatih 3: tiga segi enam (Buku Siswa hlm. 65; Panduan Guru hlm. 98) ------------------------------ */
 const SUARA_H1 = "Soal ketiga memakai tiga segi enam, masing-masing dibagi enam segitiga sama besar. Banyak segitiga yang diarsir: lima, tiga, dan satu.";
@@ -16,7 +17,7 @@ export const ADEGAN_BERLATIH_TIGA: AdeganStory = {
   judul: "Latihan: tiga segi enam",
   sumber: "Materi: latihan tiga segi enam",
   latar: "#FEF2F2",
-  kutipan: ["Lengkapi titik-titik dibawah ini!", "Bab 2 | Pecahan"],
+  kutipan: kutipanLokal("k4b2b-materi-2.ts:1"),
   ketukan: [
     k(
       SUARA_H1,
@@ -81,7 +82,7 @@ export const ADEGAN_BERLATIH_EMPAT: AdeganStory = {
   judul: "Latihan: lima pasang pecahan",
   sumber: "Materi: latihan lima pasang pecahan",
   latar: "#F5F3FF",
-  kutipan: ["Isilah titik-titik berikut dengan notasi", "atau", "Bab 2 | Pecahan"],
+  kutipan: kutipanLokal("k4b2b-materi-2.ts:2"),
   ketukan: [
     k(
       SUARA_E1,
@@ -126,32 +127,26 @@ export const ADEGAN_BERLATIH_EMPAT: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 7. Ayo Berlatih 5: tongkat Asep dan Azizah (Buku Siswa hlm. 65; Panduan Guru hlm. 99) ------------------------------ */
-const SUARA_T1 = "Soal cerita terakhir. Asep punya tongkat sepanjang tiga per enam meter, dan Azizah punya tongkat dua per enam meter. Siapa yang tongkatnya lebih panjang?";
+/* ------------------------------ 7. Ayo Berlatih 5: tongkat Wei dan Malosi (Buku Siswa hlm. 65; Panduan Guru hlm. 99) ------------------------------ */
+const SUARA_T1 = "Soal cerita terakhir. Wei punya tongkat sepanjang tiga per enam meter, dan Malosi punya tongkat dua per enam meter. Siapa yang tongkatnya lebih panjang?";
 const SUARA_T2 = "Penyebutnya sama, yaitu enam, jadi cukup bandingkan pembilang. Tiga lebih dari dua, sehingga tiga per enam lebih dari dua per enam.";
-const SUARA_T3 = "Jadi tongkat yang lebih panjang adalah tongkat Asep. Selisihnya satu bagian, yaitu satu per enam meter."
-const SUARA_T4 = "Coba kamu cek lagi: kalau tongkat Asep dipotong satu bagian, panjangnya sama dengan tongkat Azizah. Jadi memang beda panjangnya satu bagian.";
+const SUARA_T3 = "Jadi tongkat yang lebih panjang adalah tongkat Wei. Selisihnya satu bagian, yaitu satu per enam meter."
+const SUARA_T4 = "Coba kamu cek lagi: kalau tongkat Wei dipotong satu bagian, panjangnya sama dengan tongkat Malosi. Jadi memang beda panjangnya satu bagian.";
 
 export const ADEGAN_BERLATIH_LIMA: AdeganStory = {
   id: "berlatih-lima",
-  judul: "Latihan: tongkat Asep dan Azizah",
+  judul: "Latihan: tongkat Wei dan Malosi",
   sumber: "Materi: soal cerita tongkat",
   latar: "#ECFDF5",
-  kutipan: [
-    "Asep mempunyai tongkat sepanjang",
-    "Azizah mempunyai tongkat",
-    "Bandingkan panjang tongkat keduanya. Tongkat",
-    "siapakah yang lebih panjang?",
-    "Jawab: jadi tongkat yang lebih Panjang adalah tongkat Asep",
-  ],
+  kutipan: kutipanLokal("k4b2b-materi-2.ts:3"),
   ketukan: [
     k(
       SUARA_T1,
       tambah(0, judul("Soal cerita: tongkat")),
-      tambah("Asep", teks("tl1", 34, 66, "Asep", 9, W.biru), ...batang("ta", 70, 50, 180, 26, 6, 0)),
+      tambah("Wei", teks("tl1", 34, 66, "Wei", 9, W.biru), ...batang("ta", 70, 50, 180, 26, 6, 0)),
       warnai("tiga", W.emas, "ta-b0", "ta-b1", "ta-b2"),
       tambah("tiga", teks("tm1", 276, 66, "3/6 m", 8.6, W.coklat)),
-      tambah("Azizah", teks("tl2", 34, 112, "Azizah", 9, W.biru), ...batang("tz", 70, 96, 180, 26, 6, 0)),
+      tambah("Malosi", teks("tl2", 34, 112, "Malosi", 9, W.biru), ...batang("tz", 70, 96, 180, 26, 6, 0)),
       warnai("dua", W.emas, "tz-b0", "tz-b1"),
       tambah("dua", teks("tm2", 276, 112, "2/6 m", 8.6, W.coklat)),
       tambah("Siapa", teks("tq", 150, 160, "siapa yang lebih panjang?", 10, W.merah)),
@@ -161,7 +156,7 @@ export const ADEGAN_BERLATIH_LIMA: AdeganStory = {
       bersih(0),
       tambah(0, judul("Penyebut sama: bandingkan pembilang")),
       tambah("Penyebutnya", ...kartu("tc", 40, 30, 220, 30, W.krem, ["penyebut sama, yaitu 6"], 9)),
-      tambah("sehingga", teks("td4", 90, 82, "Asep", 9, W.biru), teks("td5", 210, 82, "Azizah", 9, W.biru)),
+      tambah("sehingga", teks("td4", 90, 82, "Wei", 9, W.biru), teks("td5", 210, 82, "Malosi", 9, W.biru)),
       tambah(idx(SUARA_T2, "Tiga"), ...pecahan("td1", 90, 108, 3, 6, 24)),
       tambah("lebih", teks("td2", 150, 118, ">", 28, W.merah)),
       tambah(idx(SUARA_T2, "dua", 2), ...pecahan("td3", 210, 108, 2, 6, 24)),
@@ -169,10 +164,10 @@ export const ADEGAN_BERLATIH_LIMA: AdeganStory = {
     k(
       SUARA_T3,
       bersih(0),
-      tambah(0, judul("Jawaban: tongkat Asep")),
-      tambah(0, teks("tj1", 34, 66, "Asep", 9, W.biru), ...batang("ta", 70, 50, 180, 26, 6, 3)),
-      tambah(0, teks("tj2", 34, 112, "Azizah", 9, W.biru), ...batang("tz", 70, 96, 180, 26, 6, 2)),
-      sorotkan("Asep.", "ta-b0", "ta-b1", "ta-b2"),
+      tambah(0, judul("Jawaban: tongkat Wei")),
+      tambah(0, teks("tj1", 34, 66, "Wei", 9, W.biru), ...batang("ta", 70, 50, 180, 26, 6, 3)),
+      tambah(0, teks("tj2", 34, 112, "Malosi", 9, W.biru), ...batang("tz", 70, 96, 180, 26, 6, 2)),
+      sorotkan("Wei.", "ta-b0", "ta-b1", "ta-b2"),
       tambah("Jadi", emo("tj3", 150, 150, "✅", 26)),
       tambah("Selisihnya", teks("tj4", 150, 188, "selisih: 1 bagian = 1/6 m", 9.4, W.coklat)),
     ),
@@ -180,8 +175,8 @@ export const ADEGAN_BERLATIH_LIMA: AdeganStory = {
       SUARA_T4,
       bersih(0),
       tambah(0, judul("Cek: potong satu bagian")),
-      tambah(0, teks("tk1", 34, 66, "Asep", 9, W.biru), ...batang("ta", 70, 50, 180, 26, 6, 3), teks("tk2", 34, 112, "Azizah", 9, W.biru), ...batang("tz", 70, 96, 180, 26, 6, 2)),
-      tambah("dipotong", ...kartu("tk3", 40, 140, 220, 30, W.merahMuda, ["Asep dipotong 1 bagian"], 9)),
+      tambah(0, teks("tk1", 34, 66, "Wei", 9, W.biru), ...batang("ta", 70, 50, 180, 26, 6, 3), teks("tk2", 34, 112, "Malosi", 9, W.biru), ...batang("tz", 70, 96, 180, 26, 6, 2)),
+      tambah("dipotong", ...kartu("tk3", 40, 140, 220, 30, W.merahMuda, ["Wei dipotong 1 bagian"], 9)),
       tambah("sama", ...kartu("tk4", 40, 176, 220, 20, W.hijauMuda, ["jadi sama panjang"], 8.6)),
     ),
   ],
@@ -198,27 +193,7 @@ export const ADEGAN_DIFERENSIASI_B: AdeganStory = {
   judul: "Belajar bersama",
   sumber: "Materi: belajar bersama",
   latar: "#F5F3FF",
-  kutipan: [
-    "Diferensiasi",
-    "Karakteristik peserta didik di masing-masing sekolah akan berbeda-beda",
-    "kondisi seperti ini hanya guru yang memahami.",
-    "Model pembelajaran yang",
-    "disarankan untuk bab ini adalah Problem Based Learning.",
-    "Pembentukan",
-    "kelompok dapat berdasarkan pada karakteristik atau keberagaman",
-    "ditentukan ketua kelompok adalah peserta didik dengan",
-    "tingkat kemampuan tinggi dengan anggota kelompok tingkat kemampuan",
-    "sedang atau kurang.",
-    "(advanced), minta mereka mengerjakan latihan tanpa bantuan.",
-    "dapat memberikan soal-soal tambahan.",
-    "mendampingi peserta didik yang mengalami kesulitan.",
-    "Apabila karakteristik peserta didik di sekolah/kelas tidak terdapat",
-    "peserta didik dengan kemampuan tinggi",
-    "semua anggota kelompok dapat bekerja sama untuk",
-    "menyelesaikan masalah/soal yang diberikan oleh guru.",
-    "menerapkan metode diskusi dengan melibatkan peserta didik dalam",
-    "pecahan dengan penyebut yang sama.",
-  ],
+  kutipan: kutipanLokal("k4b2b-materi-2.ts:4"),
   ketukan: [
     k(
       SUARA_D1,
@@ -255,7 +230,7 @@ export const ADEGAN_DIFERENSIASI_B: AdeganStory = {
 };
 
 /* ------------------------------ 9. Rekap kunci, catatan temuan, dan ringkasan (Panduan Guru hlm. 98–99) ------------------------------ */
-const SUARA_R1 = "Mari kita rekap jawabannya. Soal pertama lebih dari, soal kedua kurang dari, soal ketiga lima per enam, tiga per enam, satu per enam. Soal keempat: kurang, kurang, lebih, lebih, kurang. Soal kelima: tongkat Asep.";
+const SUARA_R1 = "Mari kita rekap jawabannya. Soal pertama lebih dari, soal kedua kurang dari, soal ketiga lima per enam, tiga per enam, satu per enam. Soal keempat: kurang, kurang, lebih, lebih, kurang. Soal kelima: tongkat Wei.";
 const SUARA_R2 = "Sebelum selesai, coba kamu urutkan sendiri tiga pecahan ini dari kecil ke besar: dua per sembilan, tujuh per sembilan, dan lima per sembilan.";
 const SUARA_R2B = "Lihat pembilangnya, lalu susun: dua per sembilan, lima per sembilan, tujuh per sembilan. Penyebutnya sama, jadi cukup pembilang yang kita urutkan.";
 const SUARA_R3 = "Hati-hati, kesalahan yang sering terjadi: melihat penyebut yang besar, seperti tiga belas, lalu mengira pecahannya besar. Padahal penyebutnya sama, jadi yang dibandingkan hanya pembilang.";
@@ -266,12 +241,7 @@ export const ADEGAN_RINGKAS_B: AdeganStory = {
   judul: "Rekap dan ringkasan",
   sumber: "Materi: rekap dan ringkasan",
   latar: "#FFFBEB",
-  kutipan: [
-    "Lengkapi titik-titik dibawah ini!",
-    "Jawab: jadi tongkat yang lebih Panjang adalah tongkat Asep",
-    "Membandingkan dua pecahan yang lebih kecil, lebih besar, atau sama besar",
-    "Membandingkan pecahan dengan penyebut yang sama",
-  ],
+  kutipan: kutipanLokal("k4b2b-materi-2.ts:5"),
   ketukan: [
     k(
       SUARA_R1,
@@ -280,7 +250,7 @@ export const ADEGAN_RINGKAS_B: AdeganStory = {
       tambah(idx(SUARA_R1, "kedua"), ...barisTabelKunci(1, ["2", "kurang dari: 2/6 < 4/6"])),
       tambah(idx(SUARA_R1, "ketiga"), ...barisTabelKunci(2, ["3", "5/6 > 3/6 > 1/6"])),
       tambah(idx(SUARA_R1, "keempat"), ...barisTabelKunci(3, ["4", "< < > > <"])),
-      tambah(idx(SUARA_R1, "kelima"), ...barisTabelKunci(4, ["5", "tongkat Asep (3/6 > 2/6)"])),
+      tambah(idx(SUARA_R1, "kelima"), ...barisTabelKunci(4, ["5", "tongkat Wei (3/6 > 2/6)"])),
     ),
     k(
       SUARA_R2,

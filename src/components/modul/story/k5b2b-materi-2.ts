@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, deretAngka, emo, idSel, judul, kartu, kelipatan, tabelAngka, teks, tulisKelipatan } from "./k5b2b-gambar";
 import { bersih, hapus, k, sorotkan, tambah, warnai } from "./k5b2b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const dari1Sampai = (n: number) => Array.from({ length: n }, (_, i) => i + 1);
 const KELIPATAN_2_SD_50 = dari1Sampai(50).filter((n) => n % 2 === 0);
@@ -13,16 +14,7 @@ export const ADEGAN_TABEL: AdeganStory = {
   judul: "Tabel bilangan: kelipatan 2 dan 3",
   sumber: "Materi: tabel kelipatan 2 dan 3",
   latar: "#FFF7ED",
-  kutipan: [
-    "Salin tabel berikut di buku tugasmu, kemudian temukan lagi",
-    "bilangan kelipatan 2 dan 3 pada tabel tersebut.",
-    "Warnai bilangan",
-    "yang merupakan kelipatan 2 dan 3, ya.",
-    "mewarnai bilangan kelipatan 2 dan 3 hasil dari menghafal saat bermain tepuk",
-    "ada juga yang mungkin menandai kelipatan 2 terlebih dahulu,",
-    "Terima dan apresiasi semua pendapat peserta didik.",
-    "arahkan mereka agar tidak terjadi miskonsepsi.",
-  ],
+  kutipan: kutipanLokal("k5b2b-materi-2.ts:1"),
   ketukan: [
     k(
       "Setelah bermain, salin tabel bilangan satu sampai lima puluh di kertasmu. Lalu temukan lagi bilangan kelipatan dua dan tiga pada tabel itu.",
@@ -75,18 +67,7 @@ export const ADEGAN_DEFINISI: AdeganStory = {
   judul: "Kelipatan persekutuan dan KPK",
   sumber: "Materi: kelipatan persekutuan dan KPK",
   latar: "#EFF6FF",
-  kutipan: [
-    "Pada tabel sebelumnya, kalian menemukan bilangan-bilangan",
-    "yang merupakan kelipatan 2 dan juga kelipatan 3.",
-    "Dalam Matematika, bilangan kelipatan yang sama itu disebut",
-    "kelipatan persekutuan.",
-    "Dari semua bilangan kelipatan persekutuan, bilangan",
-    "kelipatan yang paling kecil disebut kelipatan persekutuan terkecil",
-    "Berapa kelipatan persekutuan terkecil dari 2 dan 3?",
-    "Penguatan konsep dituliskan di papan tulis.",
-    "Bilangan 2 dan 3 memiliki kelipatan yang sama, yaitu 6, 12, 18,",
-    "KPK dari 2 dan 3 adalah 6.",
-  ],
+  kutipan: kutipanLokal("k5b2b-materi-2.ts:2"),
   ketukan: [
     k(
       "Pada tabel tadi kita menemukan bilangan yang merupakan kelipatan dua dan juga kelipatan tiga. Contohnya enam, dua belas, dan delapan belas.",
@@ -132,17 +113,7 @@ export const ADEGAN_CARA_KPK: AdeganStory = {
   judul: "Cara menentukan KPK dari 4 dan 5",
   sumber: "Materi: cara mencari KPK 4 dan 5",
   latar: "#FEFCE8",
-  kutipan: [
-    "Bagaimana cara menentukan KPK dari dua bilangan atau lebih?",
-    "Sebagai contoh kita akan mencari KPK dari 4 dan 5.",
-    "Tuliskan bilangan kelipatan 4 dan kelipatan 5.",
-    "Bandingkan bilangan-bilangan kelipatan 4 dan kelipatan 5",
-    "kemudian tandai bilangan yang sama.",
-    "Bilangan-bilangan yang sama tersebut adalah bilangan",
-    "persekutuan dari 4 dan 5. KPK adalah bilangan persekutuan",
-    "yang paling kecil sehingga bilangan persekutuan terkecil (KPK)",
-    "dari 4 dan 5 adalah 20.",
-  ],
+  kutipan: kutipanLokal("k5b2b-materi-2.ts:3"),
   ketukan: [
     k(
       "Bagaimana cara menentukan KPK dari dua bilangan atau lebih? Sebagai contoh, kita akan mencari KPK dari empat dan lima.",
@@ -177,38 +148,22 @@ export const ADEGAN_CARA_KPK: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 7. Eksplorasi 2.2B: Latihan Renang Nisa dan Yohana (Buku Siswa hlm. 41; Panduan Guru hlm. 56) ------------------------------ */
+/* ------------------------------ 7. Eksplorasi 2.2B: Latihan Renang Malosi dan Igil (Buku Siswa hlm. 41; Panduan Guru hlm. 56) ------------------------------ */
 export const ADEGAN_RENANG: AdeganStory = {
   id: "renang-nisa-yohana",
-  judul: "Latihan Renang Nisa dan Yohana",
-  sumber: "Materi: latihan renang Nisa dan Yohana",
+  judul: "Latihan Renang Malosi dan Igil",
+  sumber: "Materi: latihan renang Malosi dan Igil",
   latar: "#F0F9FF",
-  kutipan: [
-    "Eksplorasi 2.2B",
-    "Latihan Renang",
-    "Nisa dan Yohana latihan renang di tempat",
-    "yang sama. Nisa berlatih setiap 3 hari",
-    "sekali dan Yohana berlatih setiap 4 hari",
-    "Hari ini, tanggal 3 Agustus, Nisa dan",
-    "Yohana berlatih renang bersama-sama.",
-    "Kapan mereka akan berlatih renang bersama",
-    "Yohana menggunakan cara berikut untuk mencari tahu kapan",
-    "waktu paling dekat mereka akan berlatih bersama lagi.",
-    "Jadi, waktu paling dekat bagi Yohana dan Nisa untuk berlatih",
-    "3 Agustus + 12 hari, yaitu tanggal 15 Agustus.",
-    "Sebelum memulai kegiatan ini, sampaikan kepada peserta didik tentang",
-    "manfaat belajar KPK, contohnya menyelesaikan masalah terkait jadwal latihan",
-    "Menyiapkan fotokopi atau print out kalender Agustus dan September 2022.",
-  ],
+  kutipan: kutipanLokal("k5b2b-materi-2.ts:4"),
   ketukan: [
     k(
-      "Latihan Renang. Nisa dan Yohana latihan renang di tempat yang sama. Nisa berlatih setiap tiga hari sekali, dan Yohana setiap empat hari sekali.",
+      "Latihan Renang. Malosi dan Igil latihan renang di tempat yang sama. Malosi berlatih setiap tiga hari sekali, dan Igil setiap empat hari sekali.",
       tambah(0, judul("Latihan Renang")),
-      tambah("Nisa", emo("n1", 70, 78, "🏊", 36), ...kartu("n2", 20, 96, 100, 40, W.hijauMuda, ["Nisa", "tiap 3 hari"], 9.6)),
-      tambah("Yohana", emo("y1", 230, 78, "🏊", 36), ...kartu("y2", 180, 96, 100, 40, W.langit, ["Yohana", "tiap 4 hari"], 9.6)),
+      tambah("Malosi", emo("n1", 70, 78, "🏊", 36), ...kartu("n2", 20, 96, 100, 40, W.hijauMuda, ["Malosi", "tiap 3 hari"], 9.6)),
+      tambah("Igil", emo("y1", 230, 78, "🏊", 36), ...kartu("y2", 180, 96, 100, 40, W.langit, ["Igil", "tiap 4 hari"], 9.6)),
     ),
     k(
-      "Hari ini, tanggal tiga Agustus, Nisa dan Yohana berlatih renang bersama. Kapan mereka akan berlatih bersama kembali?",
+      "Hari ini, tanggal tiga Agustus, Malosi dan Igil berlatih renang bersama. Kapan mereka akan berlatih bersama kembali?",
       bersih(0),
       tambah(0, judul("Hari ini: 3 Agustus")),
       tambah("tanggal", ...kartu("hr", 60, 44, 180, 44, W.krem, ["3 Agustus", "berlatih bersama"], 10.4)),
@@ -216,19 +171,19 @@ export const ADEGAN_RENANG: AdeganStory = {
       tambah("kembali?", emo("kq", 150, 178, "❓", 28)),
     ),
     k(
-      "Yohana memakai cara berikut untuk mencari tahu kapan waktu paling dekat mereka berlatih bersama lagi. Ia menulis kelipatan tiga dan kelipatan empat.",
+      "Igil memakai cara berikut untuk mencari tahu kapan waktu paling dekat mereka berlatih bersama lagi. Ia menulis kelipatan tiga dan kelipatan empat.",
       bersih(0),
-      tambah(0, judul("Cara Yohana: tulis kelipatan")),
+      tambah(0, judul("Cara Igil: tulis kelipatan")),
       tambah("kelipatan", teks("y3", 150, 62, tulisKelipatan(3, 9), 8, W.coklat)),
       tambah("empat.", teks("y4", 150, 92, tulisKelipatan(4, 9), 8, W.hijau)),
     ),
     k(
-      "Bilangan yang sama pertama kali adalah dua belas. Artinya, setelah dua belas hari, Nisa dan Yohana bertemu lagi di tempat latihan.",
+      "Bilangan yang sama pertama kali adalah dua belas. Artinya, setelah dua belas hari, Malosi dan Igil bertemu lagi di tempat latihan.",
       tambah("dua@2", teks("yb", 150, 130, "yang sama pertama: 12", 13, W.merah)),
       tambah("bertemu", emo("yc", 150, 176, "🤝", 28)),
     ),
     k(
-      "Jadi waktu paling dekat bagi Yohana dan Nisa untuk berlatih bersama lagi adalah tanggal tiga Agustus ditambah dua belas hari, yaitu tanggal lima belas Agustus.",
+      "Jadi waktu paling dekat bagi Igil dan Malosi untuk berlatih bersama lagi adalah tanggal tiga Agustus ditambah dua belas hari, yaitu tanggal lima belas Agustus.",
       bersih(0),
       tambah(0, judul("Bersama lagi: 15 Agustus")),
       tambah("tanggal", teks("h1", 150, 62, "3 Agustus + 12 hari", 14, W.hitam)),

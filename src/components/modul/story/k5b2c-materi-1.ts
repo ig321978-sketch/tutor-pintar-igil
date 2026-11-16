@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bulat, emo, judul, kartu, kotak, garis, pita, teks, panah } from "./k5b2c-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b2c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Subbab C (Panduan Guru hlm. 61; Buku Siswa hlm. 43) ------------------------------ */
 export const ADEGAN_PEMBUKA: AdeganStory = {
@@ -8,16 +9,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Subbab C: Faktor",
   sumber: "Panduan Guru hlm. 61; Buku Siswa hlm. 43",
   latar: "#EFF6FF",
-  kutipan: [
-    "C. Faktor",
-    "Pengalaman Belajar",
-    "Setelah mempelajari bagian C ini, peserta didik diharapkan dapat menentukan faktor dari suatu bilangan.",
-    "Eksplorasi 2.3A",
-    "Ayo Berkreasi",
-    "Eksplorasi 2.3B",
-    "Ayo Menemukan Faktor dari 18",
-    "Ayo Berlatih",
-  ],
+  kutipan: kutipanLokal("k5b2c-materi-1.ts:1"),
   ketukan: [
     k(
       "Subbab C, Faktor. Di subbab sebelumnya kita belajar kelipatan dan kelipatan persekutuan terkecil, atau KPK. Sekarang kita belajar hal baru, yaitu faktor.",
@@ -58,18 +50,7 @@ export const ADEGAN_SARANA: AdeganStory = {
   judul: "Sarana, media, dan apersepsi",
   sumber: "Panduan Guru hlm. 61; Buku Siswa hlm. 43",
   latar: "#FFFBEB",
-  kutipan: [
-    "Kebutuhan Sarana Prasarana dan Media Pembelajaran",
-    "Alat tulis",
-    "Penggaris",
-    "Gunting",
-    "Kertas berpetak ukuran 1 cm x 1 cm",
-    "Pensil warna, krayon, atau spidol warna.",
-    "Sebelum memulai topik yang baru, coba ingat kembali materi yang sudah dipelajari pada pertemuan sebelumnya, yaitu tentang KPK.",
-    "Pastikan semua peserta didik memahami KPK dengan baik.",
-    "Jika lebih dari 50% peserta didik belum memahami dengan baik, ulangi kembali materi tersebut secara singkat dengan memberikan beberapa soal latihan.",
-    "Jika hanya sedikit yang belum paham, dapat diberikan bimbingan individu kepada peserta didik yang belum paham tersebut.",
-  ],
+  kutipan: kutipanLokal("k5b2c-materi-1.ts:2"),
   ketukan: [
     k(
       "Kebutuhan sarana dan media pembelajaran: alat tulis, penggaris, dan gunting. Ada juga kertas berpetak berukuran satu sentimeter kali satu sentimeter.",
@@ -122,17 +103,7 @@ export const ADEGAN_PERMEN: AdeganStory = {
   judul: "Pemanasan: membagi permen",
   sumber: "Panduan Guru hlm. 61–62",
   latar: "#FDF2F8",
-  kutipan: [
-    "Mulai kegiatan pada bagian ini dengan bercerita pada peserta didik tentang cara membagi permen.",
-    "Ibu guru memiliki 6 buah permen.",
-    "Permen tersebut dibagikan sama banyak kepada 3 orang siswa dan tidak ada permen tersisa.",
-    "Apakah hal ini mungkin dilakukan?",
-    "Selanjutnya, bagaimana jika permen tersebut hendak dibagikan sama banyak kepada 4 orang siswa, apakah akan ada sisa?",
-    "3 adalah faktor dari 6, karena 3 dapat membagi habis 6; sedangkan 4 bukan faktor dari 6, karena 4 tidak membagi habis 6.",
-    "Jika 6 dibagi 4, maka akan ada sisanya.",
-    "mempelajari faktor dapat membantu menyelesaikan masalah dalam kehidupan sehari-hari.",
-    "Masalah tentang cara membagi permen adalah masalah sederhana yang sering kita jumpai.",
-  ],
+  kutipan: kutipanLokal("k5b2c-materi-1.ts:3"),
   ketukan: [
     k(
       "Pemanasan. Guru bercerita tentang cara membagi permen. Ibu guru memiliki enam buah permen.",
@@ -201,19 +172,7 @@ export const ADEGAN_GURU: AdeganStory = {
   judul: "Persiapan dan pelaksanaan guru",
   sumber: "Panduan Guru hlm. 62–64",
   latar: "#F0FDF4",
-  kutipan: [
-    "Hal-hal yang perlu dilakukan guru sebelum kegiatan dimulai adalah sebagai berikut.",
-    "Membuat kelompok kecil dengan anggota 3–4 orang.",
-    "Memastikan setiap kelompok memiliki perlengkapan lengkap.",
-    "Meminta setiap kelompok untuk membuat 6 buah potongan kertas berpetak dengan panjang setiap potongan adalah 12 petak.",
-    "Ukuran petak sebaiknya 1 cm x 1 cm agar lebih mudah diamati.",
-    "Jika guru kesulitan mendapatkan kertas ukuran tersebut, guru dapat mencetak sendiri, kemudian memperbanyaknya.",
-    "Pastikan setiap anggota kelompok bekerja sama dan semuanya bekerja.",
-    "Selain diskusi, tujuan kerja kelompok adalah agar kegiatan mewarnai petak-petak kertas menjadi lebih cepat.",
-    "Menyampaikan tugas kepada setiap kelompok, yaitu mereka harus membagi setiap potongan kertas dengan panjang 12 kotak menjadi bagian yang sama panjang dan tidak boleh ada sisa.",
-    "Mungkin ada peserta didik yang mengalami kesulitan dan akhirnya memotong kertas menjadi potongan yang tidak sama panjang atau menjadi beberapa potongan yang sama panjang, tetapi memberikan sisa potongan.",
-    "lakukan bimbingan kepada kelompok yang masih kesulitan dengan memberikan satu contoh.",
-  ],
+  kutipan: kutipanLokal("k5b2c-materi-1.ts:4"),
   ketukan: [
     k(
       "Persiapan guru untuk Eksplorasi dua titik tiga A. Pertama, buat kelompok kecil beranggotakan tiga sampai empat orang, dan pastikan tiap kelompok punya perlengkapan lengkap.",

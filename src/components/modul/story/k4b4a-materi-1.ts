@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, judul, kartu, kotak, panah, tabel, teks } from "./k4b4a-gambar";
 import { bersih, idx, k, sorotkan, tambah, ubah } from "./k4b4a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab dan tujuan (Buku Siswa hlm. 103–104; Panduan Guru hlm. 145) ------------------------------ */
 const SUARA_P1 = "Selamat datang di bab empat, Pengukuran Luas dan Volume. Buku membuka dengan pertanyaan: jika kalian mengamati lantai, dinding, pintu, atau jendela minimarket, dapatkah luasnya ditentukan dengan satuan baku atau tidak baku?";
@@ -13,19 +14,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 4: tujuan pembelajaran",
   sumber: "Buku Siswa hlm. 103–104; Panduan Guru hlm. 145",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ketika kalian ingin membeli minuman kemasan",
-    "mengamati lantai, dinding, pintu, atau jendela minimarket",
-    "kalian menentukan luasnya dengan satuan baku atau tidak baku?",
-    "Tujuan Pembelajaran",
-    "Setelah mempelajari bab ini kalian mampu:",
-    "mengukur luas dengan satuan baku dan",
-    "menduga luas dengan satuan baku dan",
-    "Kata Kunci",
-    "Setelah mempelajari bab ini, peserta didik dapat:",
-    "1.1 mengukur luas menggunakan satuan tidak baku dan satuan baku",
-    "1.2 mengestimasi luas menggunakan satuan tidak baku dan satuan baku",
-  ],
+  kutipan: kutipanLokal("k4b4a-materi-1.ts:1"),
   ketukan: [
     k(
       SUARA_P1,
@@ -74,22 +63,7 @@ export const ADEGAN_PETA: AdeganStory = {
   judul: "Peta konsep, gambaran umum, dan skema pembelajaran",
   sumber: "Buku Siswa hlm. 105; Panduan Guru hlm. 146–147",
   latar: "#F0FDF4",
-  kutipan: [
-    "Peta Konsep",
-    "Pengukuran luas menggunakan",
-    "satuan tidak baku",
-    "Pengukuran Luas dan Volume",
-    "Pengukuran Volume",
-    "2. Peta Konsep:",
-    "3. Gambaran Umum Bab",
-    "berbagai benda yang ada di sekitarnya yang berbentuk persegi maupun persegi panjang",
-    "mengonversi dari satuan baku sentimeter persegi menjadi meter persegi atau",
-    "4. Keterampilan yang Dilatih",
-    "5. Berpikir kreatif",
-    "5. Skema Pembelajaran",
-    "Topik A:",
-    "15 JP",
-  ],
+  kutipan: kutipanLokal("k4b4a-materi-1.ts:2"),
   ketukan: [
     k(
       SUARA_K1,
@@ -149,22 +123,7 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
   judul: "Panduan Guru: pengalaman belajar dan pemanasan",
   sumber: "Panduan Guru hlm. 148–149",
   latar: "#FFFBEB",
-  kutipan: [
-    "A. Pengukuran Luas",
-    "a. Mengukur luas dengan satuan tidak baku.",
-    "b. Mengukur luas dengan satuan baku.",
-    "c. Mengonversi antara satuan baku.",
-    "Kebutuhan Sarana Prasarana dan Media",
-    "1. Kertas karton besar dan kecil",
-    "2. Uang kertas mainan",
-    "Apersepsi",
-    "Satuan luas tidak baku adalah",
-    "satuan luas yang belum dibakukan",
-    "Stimulus (Pemanasan)",
-    "bagaimana menentukan luas permukaan lantai kelas?",
-    "bagaimana jika ukuran keramiknya berbeda?",
-    "Guru tidak perlu memberikan jawaban yang benar",
-  ],
+  kutipan: kutipanLokal("k4b4a-materi-1.ts:3"),
   ketukan: [
     k(
       SUARA_G1,
@@ -217,23 +176,7 @@ export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
   judul: "Aktivitas 1: Konsep Luas",
   sumber: "Materi: Konsep Luas",
   latar: "#F0F9FF",
-  kutipan: [
-    "Aktivitas 1 : Konsep Luas",
-    "Kertas origami",
-    "Uang kertas mainan",
-    "Kertas karton kecil dan besar",
-    "Buatlah kelompok yang beranggotakan 3-4 orang",
-    "sehingga menutupi kertas karton kecil tanpa celah",
-    "Ulangi langkah 2 sampai 4 pada kertas karton besar.",
-    "Catatlah",
-    "dalam tabel berikut.",
-    "Banyaknya Uang",
-    "Bandingkan banyaknya kertas origami, buku tulis, dan uang kertas",
-    "Tulis kesimpulan yang kalian peroleh dari hasil aktivitas tersebut.",
-    "Presentasikan hasil diskusi kelompok di depan kelas.",
-    "harus menutupi semua kertas karton tanpa celah.",
-    "harus seragam.",
-  ],
+  kutipan: kutipanLokal("k4b4a-materi-1.ts:4"),
   ketukan: [
     k(
       SUARA_AK1,

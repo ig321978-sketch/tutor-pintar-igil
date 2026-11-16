@@ -4,6 +4,7 @@
 // hitungan mandiri (luas ruangan denah, total 39, luas bangun A sampai G, petak utuh dan sebagian, bentuk setelah dipotong-tempel),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b5a.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -265,7 +266,7 @@ const luasPoli = (objs, id, s) => luasTali(jalurDari(objs, id)) / (s * s);
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,alun-alun,denah-ubin,benar-salah,satuan-luas,ukur-ruang-tamu,ukur-kamar-dapur,latihan-abcd,cara-yohana,miskonsepsi-refleksi", "urutan adegan materi");
-  for (const kata of ["Alun-Alun Utara", "Denah rumah", "ubin", "satuan luas", "cm²", "m²", "Yohana", "Lukas", "Latihan 1", "Hati-hati", "Tantangan", "Renungan", "kertas berpetak", "persegi satuan", "ruang tamu", "kamar tidur", "dapur", "kamar mandi"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["Alun-Alun Utara", "Denah rumah", "ubin", "satuan luas", "cm²", "m²", "Kira", "Halim", "Latihan 1", "Hati-hati", "Tantangan", "Renungan", "kertas berpetak", "persegi satuan", "ruang tamu", "kamar tidur", "dapur", "kamar mandi"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-usc", "luar-usc-terapan", "luar-array", "luar-array-terapan", "luar-konservasi", "luar-konservasi-terapan", "luar-grid", "luar-grid-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
   cek(U.adegan[1].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas" && M_VIDEO.adegan.length === 10 && U.adegan.length === 11, "10 adegan materi diputar (dengan sapaan) dan 11 adegan metode luar");
@@ -345,23 +346,23 @@ const luasPoli = (objs, id, s) => luasTali(jalurDari(objs, id)) / (s * s);
     const t3 = akhirAdegan(a, 2);
     sama(["E", "F", "G"].map((h) => t3.filter((o) => o.id.startsWith(`es${h}-`)).length), [6, 6, 8], "petak tidak utuh E, F, G pada gambar");
   }
-  // Cara Yohana: E tangga 1+3+5, F persegi panjang 5 kali 3, G 8 utuh dan 2 setengahan; luas tidak berubah.
+  // Cara Kira: E tangga 1+3+5, F persegi panjang 5 kali 3, G 8 utuh dan 2 setengahan; luas tidak berubah.
   {
     const a = adegan(M, "cara-yohana");
     const t1 = akhirAdegan(a, 0);
-    hampir(luasPoli(t1, "e1", 16), 9, 1e-9, "Yohana: E awal luas 9");
-    hampir(luasPoli(t1, "e2", 16), 9, 1e-9, "Yohana: E setelah diubah luas 9");
+    hampir(luasPoli(t1, "e1", 16), 9, 1e-9, "Kira: E awal luas 9");
+    hampir(luasPoli(t1, "e2", 16), 9, 1e-9, "Kira: E setelah diubah luas 9");
     sama(nilaiId(akhirAdegan(a, 1), "hs-t0"), "1 + 3 + 5 = 9", "jumlah baris tangga E");
     const t3 = akhirAdegan(a, 2);
     hampir(luasPoli(t3, "eo", 14), luasPoli(t3, "eb", 14), 1e-9, "luas E sebelum dan sesudah sama");
     sama(nilaiId(t3, "tn"), "=", "tanda sama dengan setelah jawaban tidak berubah");
     const t4 = akhirAdegan(a, 3);
-    hampir(luasPoli(t4, "f1", 16), 15, 1e-9, "Yohana: F awal luas 15");
-    hampir(luasPoli(t4, "f2", 16), 15, 1e-9, "Yohana: F setelah diubah luas 15");
+    hampir(luasPoli(t4, "f1", 16), 15, 1e-9, "Kira: F awal luas 15");
+    hampir(luasPoli(t4, "f2", 16), 15, 1e-9, "Kira: F setelah diubah luas 15");
     hampir(luasTali(jalurDari(t4, "fp")) / 256, luasTali(jalurDari(t4, "fq")) / 256, 1e-9, "bagian yang dipindah sama luas");
     const t5 = akhirAdegan(a, 4);
-    hampir(luasPoli(t5, "g1", 14), 9, 1e-9, "Yohana: G awal luas 9");
-    hampir(luasPoli(t5, "g2", 14), 9, 1e-9, "Yohana: G setelah diubah luas 9");
+    hampir(luasPoli(t5, "g1", 14), 9, 1e-9, "Kira: G awal luas 9");
+    hampir(luasPoli(t5, "g2", 14), 9, 1e-9, "Kira: G setelah diubah luas 9");
     sama(nilaiId(t5, "gj-t0"), "8 + 1/2 + 1/2 = 9", "jumlah G");
     const t6 = akhirAdegan(adegan(M, "miskonsepsi-refleksi"), 0);
     hampir(luasPoli(t6, "m1", 14), luasPoli(t6, "m2", 14), 1e-9, "miskonsepsi 1: dua bentuk luasnya sama");
@@ -429,7 +430,7 @@ const luasPoli = (objs, id, s) => luasTali(jalurDari(objs, id)) / (s * s);
       sama([nilaiId(tt, `gu${h}-t0`), nilaiId(tt, `gs${h}-t0`), nilaiId(tt, `gj${h}-t0`)], [`utuh: ${hit.utuh}`, `sebagian: ${hit.sebagian}`, `${hit.utuh} + ${hit.sebagian}/2 = ${hit.utuh + hit.sebagian / 2}`], `rincian grid bangun ${h}`);
     });
     const t4 = akhirAdegan(b, 3);
-    sama([1, 2, 3].map((r) => [nilaiId(t4, `pk-t${r}0`), Number(nilaiId(t4, `pk-t${r}1`)), Number(nilaiId(t4, `pk-t${r}2`))]), [["E", 9, 9], ["F", 15, 15], ["G", 9, 9]], "tabel perkiraan grid sama dengan cara Yohana");
+    sama([1, 2, 3].map((r) => [nilaiId(t4, `pk-t${r}0`), Number(nilaiId(t4, `pk-t${r}1`)), Number(nilaiId(t4, `pk-t${r}2`))]), [["E", 9, 9], ["F", 15, 15], ["G", 9, 9]], "tabel perkiraan grid sama dengan cara Kira");
   }
   // Ringkasan: kunci.
   {
@@ -462,7 +463,7 @@ const luasPoli = (objs, id, s) => luasTali(jalurDari(objs, id)) / (s * s);
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -482,7 +483,7 @@ const luasPoli = (objs, id, s) => luasTali(jalurDari(objs, id)) / (s * s);
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b5a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b5a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b5a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b5a sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

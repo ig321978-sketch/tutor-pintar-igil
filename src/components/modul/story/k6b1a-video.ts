@@ -7,7 +7,7 @@ import { ADEGAN_LUAR_PANAH, ADEGAN_LUAR_PANAH_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEG
 
 /**
  * Kelas 6 Bab 1 Sub-Bab A (Perkalian Pecahan), termasuk pembuka bab: video materi kurikulum dan video metode luar, dua video terpisah.
- * Adegan administratif (pembuka bab dengan Agam dan penampungan air, tujuan dan peta konsep, mengingat kembali, dan refleksi) tetap ada di berkas materi, tetapi tidak diputar.
+ * Adegan administratif (pembuka bab dengan Wei dan penampungan air, tujuan dan peta konsep, mengingat kembali, dan refleksi) tetap ada di berkas materi, tetapi tidak diputar.
  */
 export const VIDEO_MATERI_K6B1A: VideoStory = {
   id: "k6b1a-materi",

@@ -4,6 +4,7 @@
 // (luas bangun dari titik-titiknya, luas dengan hitung titik petak, jumlah bagian, hitungan di teks gambar), geometri gambar
 // (bentuk potongan sebangun dengan data, diagonal tegak lurus, sisi sejajar, letak dan skala), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b5c.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -128,7 +129,7 @@ for (const [nama, t, luas] of DATA) {
   hampir(luasCacah(t), luas, Math.max(0.15, luas * 0.01), `luas ${nama} (cacah titik contoh) sama dengan data buku`);
 }
 // Bagian menyusun seluruhnya: jumlah dan selisih.
-sama([BUKU.eks.layang + BUKU.eks.segitigaAtas, BUKU.eks.jajar + BUKU.eks.segitigaBawah], [15, 15], "cara Yohana dan cara Komang sama-sama 15");
+sama([BUKU.eks.layang + BUKU.eks.segitigaAtas, BUKU.eks.jajar + BUKU.eks.segitigaBawah], [15, 15], "cara Upe dan cara Wei sama-sama 15");
 sama(BUKU.uji2.jajar + BUKU.uji2.segitiga, 224, "soal 2: 128 + 96");
 sama([BUKU.uji3.layang + BUKU.uji3.trap1, BUKU.uji3.segitiga + BUKU.uji3.trap2], [22, 22], "soal 3: dua cara sama-sama 22");
 sama(BUKU.uji4.pp1 + BUKU.uji4.pp2 + BUKU.uji4.trap, 20, "soal 4: 8 + 6 + 6");
@@ -191,8 +192,8 @@ sama([8 + 6 + (0.5 * (3 + 1) * 4), 8 + 6 + (0.5 * (1 + 2) * 4)], [BUKU.uji4.rubr
   };
   const pusat = (t) => [jml(t.map((p) => p[0])) / t.length, jml(t.map((p) => p[1])) / t.length];
   const susun = [
-    ["Yohana", G.EKS_BANGUN, [G.EKS_LAYANG, G.EKS_SEGITIGA_ATAS]],
-    ["Komang", G.EKS_BANGUN, [G.EKS_JAJAR, G.EKS_SEGITIGA_BAWAH]],
+    ["Upe", G.EKS_BANGUN, [G.EKS_LAYANG, G.EKS_SEGITIGA_ATAS]],
+    ["Wei", G.EKS_BANGUN, [G.EKS_JAJAR, G.EKS_SEGITIGA_BAWAH]],
     ["soal 2", G.UJI2, [G.UJI2_JAJAR, G.UJI2_SEGITIGA]],
     ["soal 3 cara 1", G.UJI3, [G.UJI3_LAYANG, G.UJI3_TRAP_1]],
     ["soal 3 cara 2", G.UJI3, [G.UJI3_SEGITIGA, G.UJI3_TRAP_2]],
@@ -455,7 +456,7 @@ const nilaiId = (objs, id) => objs.find((o) => o.id === id)?.isi;
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,eksplorasi-bangun,cara-yohana,cara-komang,kesulitan-bangun-gabungan,penguatan-refleksi,uji-1,uji-2,uji-3,uji-4", "urutan adegan materi");
   cek(U.adegan[0].id === "sapaan" && U.adegan[1].id === "luar-pembuka", "video metode luar: sapaan lalu pembuka");
-  for (const kata of ["Cara Yohana", "Cara Komang", "layang-layang", "jajargenjang", "segitiga", "trapesium", "bangun gabungan", "Hati-hati", "Tantangan", "Renungan", "Uji 1", "Uji 2", "Uji 3", "Uji 4", "tidak langsung diketahui|belum diketahui|tidak tertulis|belum tertulis", "alasnya justru di atas|alasnya di atas|alasnya berada di atas|alas ada di atas", "dua ratus dua puluh empat", "dua ratus enam belas", "dua puluh dua"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat "${kata}"`);
+  for (const kata of ["Cara Upe", "Cara Wei", "layang-layang", "jajargenjang", "segitiga", "trapesium", "bangun gabungan", "Hati-hati", "Tantangan", "Renungan", "Uji 1", "Uji 2", "Uji 3", "Uji 4", "tidak langsung diketahui|belum diketahui|tidak tertulis|belum tertulis", "alasnya justru di atas|alasnya di atas|alasnya berada di atas|alas ada di atas", "dua ratus dua puluh empat", "dua ratus enam belas", "dua puluh dua"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-additif", "luar-additif-terapan", "luar-komposit", "luar-komposit-terapan", "luar-kurang", "luar-kurang-terapan", "luar-kekal", "luar-kekal-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
   cek(M_VIDEO.adegan.length === 10 && M.adegan.length === 12 && U.adegan.length === 11, "10 adegan materi diputar (12 di berkas) dan 11 adegan metode luar");
@@ -480,12 +481,12 @@ const nilaiId = (objs, id) => objs.find((o) => o.id === id)?.isi;
       cek(jarak([huruf.x, huruf.y], [PENTAGON.ox + p[0] * PENTAGON.s, PENTAGON.oy + p[1] * PENTAGON.s]) < 16, `huruf ${h} berada di dekat titik sudutnya`);
     }
   }
-  // Ketukan hitungan cara Yohana dan Komang.
+  // Ketukan hitungan cara Upe dan Wei.
   {
     const y = akhirAdegan(adegan(M, "cara-yohana"));
-    sama(["hs-t0"].map((id) => nilaiId(y, id)), ["10 + 5 = 15 satuan luas"], "cara Yohana: jumlah akhir");
+    sama(["hs-t0"].map((id) => nilaiId(y, id)), ["10 + 5 = 15 satuan luas"], "cara Upe: jumlah akhir");
     const km = akhirAdegan(adegan(M, "cara-komang"));
-    sama([nilaiId(km, "hy-t0"), nilaiId(km, "hk-t0")], ["Yohana: 10 + 5 = 15", "Komang: 10 + 5 = 15"], "kedua cara berujung 15");
+    sama([nilaiId(km, "hy-t0"), nilaiId(km, "hk-t0")], ["Upe: 10 + 5 = 15", "Wei: 10 + 5 = 15"], "kedua cara berujung 15");
   }
   // Uji Kompetensi: hasil akhir tiap soal.
   {
@@ -545,7 +546,7 @@ const nilaiId = (objs, id) => objs.find((o) => o.id === id)?.isi;
       n += 1;
       cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
-    cek(n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -565,7 +566,7 @@ const nilaiId = (objs, id) => objs.find((o) => o.id === id)?.isi;
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b5c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b5c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b5c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b5c sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

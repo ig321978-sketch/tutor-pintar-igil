@@ -1,12 +1,13 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, emo, kartu, kotak, panah, tabel, teks } from "./k6b1c-gambar";
 import { bersih, k, sorotkan, tambah } from "./k6b1c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Jarak rumah ke sekolah dan nilai tempat ------------------------------ */
 const LB = [58, 52];
 const kiriData = [
   ["Alma", "2,3"],
-  ["Budi", "10,9"],
+  ["Kira", "10,9"],
   ["Anita", "1,9"],
   ["Fadilah", "4,7"],
   ["Musa", "11,3"],
@@ -16,7 +17,7 @@ const kananData = [
   ["Rido", "3,6"],
   ["Dias", "3,1"],
   ["Fatim", "2,8"],
-  ["Andi", "1,5"],
+  ["Halim", "1,5"],
 ];
 const TP = [44, 50, 50, 66, 70];
 const nilaiTempat = (id: string, y: number, jarak: string, p: string, s: string, pr: string, ps: string) => barisTabel(id, 10, y, TP, 22, [jarak, p, s, pr, ps], 8.4);
@@ -26,41 +27,33 @@ export const ADEGAN_JARAK: AdeganStory = {
   judul: "Jarak rumah ke sekolah dan nilai tempat",
   sumber: "Materi: jarak rumah ke sekolah",
   latar: "#EFF6FF",
-  kutipan: [
-    "Membandingkan dan Mengurutkan Bilangan Desimal",
-    "Agam mendapat tugas untuk mencari data jarak dari rumah ke sekolah 10 orang temannya di sekolah",
-    "Bantulah Agam untuk menyusun kembali tabelnya dengan mengurutkan mulai dari yang jarak rumahnya ke sekolah yang terdekat",
-    "Siapakah yang paling jauh jarak rumahnya ke sekolah",
-    "Siapakah yang jarak dari rumahnya ke sekolah paling dekat",
-    "Tentukan nilai tempat dari data masing-masing jarak rumah ke sekolah tersebut",
-    "Puluhan Satuan Persepuluhan Perseratusan",
-  ],
+  kutipan: kutipanLokal("k6b1c-materi-2.ts:1"),
   ketukan: [
     k(
-      "Sekarang kita belajar membandingkan dan mengurutkan desimal. Agam mendapat tugas mencari data jarak rumah ke sekolah dari sepuluh temannya.",
+      "Sekarang kita belajar membandingkan dan mengurutkan desimal. Igil mendapat tugas mencari data jarak rumah ke sekolah dari sepuluh temannya.",
       tambah(0, teks("jud", 150, 24, "Membandingkan dan Mengurutkan", 12, W.ungu)),
-      tambah("Agam", emo("ag", 70, 100, "👦", 36), teks("agt", 70, 122, "Agam", 8.6)),
+      tambah("Igil", emo("ag", 70, 100, "👦", 36), teks("agt", 70, 122, "Igil", 8.6)),
       tambah("sekolah", emo("sk", 230, 100, "🏫", 36), teks("skt", 230, 122, "sekolah", 8.6), panah("pj", 98, 96, 100, 0, W.hijau, 2.5, { gambar: true })),
       tambah("sepuluh", teks("sp", 150, 176, "10 teman, 10 jarak (km)", 11, W.merah)),
     ),
     k(
-      "Datanya begini, dalam kilometer: Alma dua koma tiga, Budi sepuluh koma sembilan, Anita satu koma sembilan, Fadilah empat koma tujuh, dan Musa sebelas koma tiga.",
+      "Datanya begini, dalam kilometer: Alma dua koma tiga, Kira sepuluh koma sembilan, Anita satu koma sembilan, Fadilah empat koma tujuh, dan Musa sebelas koma tiga.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Jarak rumah ke sekolah (km)", 11, W.ungu), tabel("tl", 10, 34, LB, 22, [["Nama", "km"]], 8.4)),
       tambah("Alma", barisTabel("r1", 10, 56, LB, 22, kiriData[0], 8.4)),
-      tambah("Budi", barisTabel("r2", 10, 78, LB, 22, kiriData[1], 8.4)),
+      tambah("Kira", barisTabel("r2", 10, 78, LB, 22, kiriData[1], 8.4)),
       tambah("Anita", barisTabel("r3", 10, 100, LB, 22, kiriData[2], 8.4)),
       tambah("Fadilah", barisTabel("r4", 10, 122, LB, 22, kiriData[3], 8.4)),
       tambah("Musa", barisTabel("r5", 10, 144, LB, 22, kiriData[4], 8.4)),
     ),
     k(
-      "Berikutnya: Rini dua koma enam, Rido tiga koma enam, Dias tiga koma satu, Fatim dua koma delapan, dan Andi satu koma lima.",
+      "Berikutnya: Rini dua koma enam, Rido tiga koma enam, Dias tiga koma satu, Fatim dua koma delapan, dan Halim satu koma lima.",
       tambah(0, tabel("tr", 150, 34, LB, 22, [["Nama", "km"]], 8.4)),
       tambah("Rini", barisTabel("q1", 150, 56, LB, 22, kananData[0], 8.4)),
       tambah("Rido", barisTabel("q2", 150, 78, LB, 22, kananData[1], 8.4)),
       tambah("Dias", barisTabel("q3", 150, 100, LB, 22, kananData[2], 8.4)),
       tambah("Fatim", barisTabel("q4", 150, 122, LB, 22, kananData[3], 8.4)),
-      tambah("Andi", barisTabel("q5", 150, 144, LB, 22, kananData[4], 8.4)),
+      tambah("Halim", barisTabel("q5", 150, 144, LB, 22, kananData[4], 8.4)),
     ),
     k(
       "Sekarang tentukan nilai tempat tiap jarak. Jarak dua koma tiga punya dua satuan dan tiga persepuluhan. Jarak sepuluh koma sembilan punya satu puluhan, nol satuan, dan sembilan persepuluhan.",
@@ -80,7 +73,7 @@ export const ADEGAN_JARAK: AdeganStory = {
 
 /* ------------------------------ 2. Tabel terurut dari terdekat ------------------------------ */
 const urutKiri = [
-  ["Andi", "1,5"],
+  ["Halim", "1,5"],
   ["Anita", "1,9"],
   ["Alma", "2,3"],
   ["Rini", "2,6"],
@@ -90,7 +83,7 @@ const urutKanan = [
   ["Dias", "3,1"],
   ["Rido", "3,6"],
   ["Fadilah", "4,7"],
-  ["Budi", "10,9"],
+  ["Kira", "10,9"],
   ["Musa", "11,3"],
 ];
 
@@ -99,28 +92,24 @@ export const ADEGAN_URUT: AdeganStory = {
   judul: "Tabel jarak diurutkan dari terdekat",
   sumber: "Materi: tabel dari yang terdekat",
   latar: "#F0FDF4",
-  kutipan: [
-    "Isilah tabel berikut ini sesuai dengan jarak rumah ke sekolah dari yang terdekat",
-    "Siswa yang jarak rumahnya ke sekolah paling jauh adalah",
-    "Siswa yang jarak rumahnya ke sekolah paling dekat adalah",
-  ],
+  kutipan: kutipanLokal("k6b1c-materi-2.ts:2"),
   ketukan: [
     k(
-      "Sekarang isi tabel dari yang terdekat. Terdekat adalah Andi satu koma lima, lalu Anita satu koma sembilan, Alma dua koma tiga, Rini dua koma enam, dan Fatim dua koma delapan.",
+      "Sekarang isi tabel dari yang terdekat. Terdekat adalah Halim satu koma lima, lalu Anita satu koma sembilan, Alma dua koma tiga, Rini dua koma enam, dan Fatim dua koma delapan.",
       tambah(0, teks("jud", 150, 22, "Urutan dari terdekat", 12, W.ungu), tabel("tl", 10, 34, LB, 22, [["Nama", "km"]], 8.4)),
-      tambah("Andi", barisTabel("a1", 10, 56, LB, 22, urutKiri[0], 8.4)),
+      tambah("Halim", barisTabel("a1", 10, 56, LB, 22, urutKiri[0], 8.4)),
       tambah("Anita", barisTabel("a2", 10, 78, LB, 22, urutKiri[1], 8.4)),
       tambah("Alma", barisTabel("a3", 10, 100, LB, 22, urutKiri[2], 8.4)),
       tambah("Rini", barisTabel("a4", 10, 122, LB, 22, urutKiri[3], 8.4)),
       tambah("Fatim", barisTabel("a5", 10, 144, LB, 22, urutKiri[4], 8.4)),
     ),
     k(
-      "Berikutnya Dias tiga koma satu, Rido tiga koma enam, Fadilah empat koma tujuh, Budi sepuluh koma sembilan, dan terakhir Musa sebelas koma tiga.",
+      "Berikutnya Dias tiga koma satu, Rido tiga koma enam, Fadilah empat koma tujuh, Kira sepuluh koma sembilan, dan terakhir Musa sebelas koma tiga.",
       tambah(0, tabel("tr", 150, 34, LB, 22, [["Nama", "km"]], 8.4)),
       tambah("Dias", barisTabel("b1", 150, 56, LB, 22, urutKanan[0], 8.4)),
       tambah("Rido", barisTabel("b2", 150, 78, LB, 22, urutKanan[1], 8.4)),
       tambah("Fadilah", barisTabel("b3", 150, 100, LB, 22, urutKanan[2], 8.4)),
-      tambah("Budi", barisTabel("b4", 150, 122, LB, 22, urutKanan[3], 8.4)),
+      tambah("Kira", barisTabel("b4", 150, 122, LB, 22, urutKanan[3], 8.4)),
       tambah("Musa", barisTabel("b5", 150, 144, LB, 22, urutKanan[4], 8.4)),
     ),
     k(
@@ -129,9 +118,9 @@ export const ADEGAN_URUT: AdeganStory = {
       tambah("jauh", teks("jh", 215, 184, "paling jauh: Musa, 11,3 km", 9.4, W.merah)),
     ),
     k(
-      "Dan yang paling dekat? Andi, dengan jarak satu koma lima kilometer.",
-      sorotkan("Andi", "a1-s0", "a1-s1"),
-      tambah("dekat", teks("dk", 75, 184, "paling dekat: Andi, 1,5 km", 9.4, W.hijau)),
+      "Dan yang paling dekat? Halim, dengan jarak satu koma lima kilometer.",
+      sorotkan("Halim", "a1-s0", "a1-s1"),
+      tambah("dekat", teks("dk", 75, 184, "paling dekat: Halim, 1,5 km", 9.4, W.hijau)),
     ),
   ],
 };
@@ -145,17 +134,7 @@ export const ADEGAN_NILAI_TEMPAT: AdeganStory = {
   judul: "Nilai tempat, 2,49 dan 2,9, mengurutkan",
   sumber: "Materi: nilai tempat dan urutan",
   latar: "#FFF7ED",
-  kutipan: [
-    "Untuk membandingkan dua bilangan desimal, kalian dapat menggunakan nilai tempat dari bilangan desimal tersebut",
-    "Bilangan desimal diletakkan di sebelah kanan tanda koma",
-    "bilangan asli diletakkan di sebelah kiri tanda koma",
-    "Untuk mengurutkan bilangan desimal dari yang terbesar ke yang terkecil",
-    "Nilai tempat dapat membantu kalian untuk menentukan bilangan mana yang lebih besar atau lebih kecil dari yang lainnya",
-    "Ayo Menggunakan Teknologi",
-    "Ada siswa yang mengatakan bahwa 2,49 lebih besar dari 2,9 karena 49 lebih besar dari 9",
-    "Bagaimana pendapat kalian",
-    "Urutan dari yang terdekat ke yang terjauh adalah 0,9 km, 1,9 km, 2,3 km, 2,6 km, dan 3,6 km",
-  ],
+  kutipan: kutipanLokal("k6b1c-materi-2.ts:3"),
   ketukan: [
     k(
       "Sekarang pembahasannya. Untuk membandingkan dua desimal, gunakan nilai tempat. Bilangan asli ada di sebelah kiri tanda koma, dan bagian desimal ada di sebelah kanan.",

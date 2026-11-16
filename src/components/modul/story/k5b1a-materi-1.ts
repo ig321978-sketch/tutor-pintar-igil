@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, judul, kartu, panah, teks } from "./k5b1a-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k5b1a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab: tujuan (Buku Siswa hlm. 1; Panduan Guru hlm. 15) ------------------------------ */
 const KATA_TUJUAN = ["membaca", "menuliskan", "menentukan", "membandingkan", "mengurutkan", "komposisi", "dekomposisi", "operasi bilangan", "memecahkan masalah"];
@@ -14,20 +15,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 1: tujuan pembelajaran",
   sumber: "Buku Siswa hlm. 1; Panduan Guru hlm. 15–17",
   latar: "#FFF7ED",
-  kutipan: [
-    "Setelah mempelajari bab ini, diharapkan kalian dapat",
-    "membaca, menuliskan, menentukan, membandingkan,",
-    "dekomposisi, menghitung operasi bilangan, dan",
-    "memecahkan masalah yang berkaitan dengan bilangan",
-    "cacah sampai 100.000.",
-    "Setelah mempelajari bab ini, peserta didik diharapkan dapat",
-    "1.1 membaca bilangan cacah sampai 100.000,",
-    "1.2 menuliskan bilangan cacah sampai 100.000,",
-    "1.3 menentukan nilai tempat bilangan cacah sampai 100.000,",
-    "1.9 memecahkan masalah yang berkaitan dengan bilangan cacah sampai",
-    "Bab ini bertujuan untuk mengenalkan peserta didik pada bilangan cacah",
-    "Bab ini diawali dengan kegiatan peserta didik mengingat",
-  ],
+  kutipan: kutipanLokal("k5b1a-materi-1.ts:1"),
   ketukan: [
     k(
       "Selamat datang di bab satu, Bilangan Cacah Sampai seratus ribu. Setelah mempelajari bab ini, kalian diharapkan dapat membaca, menuliskan, menentukan, membandingkan, mengurutkan, menyusun, menguraikan, menghitung operasi bilangan, dan memecahkan masalah.",
@@ -94,16 +82,7 @@ export const ADEGAN_PETA: AdeganStory = {
   judul: "Peta konsep, kata kunci, dan skema empat subbab",
   sumber: "Buku Siswa hlm. 2; Panduan Guru hlm. 16–18",
   latar: "#F5F3FF",
-  kutipan: [
-    "Peta Konsep",
-    "Kata Kunci",
-    "Bilangan cacah, nilai tempat, komposisi, dekomposisi, operasi",
-    "bilangan, bilangan 100.000.",
-    "Kalimat Matematika",
-    "Penjumlahan Perkalian",
-    "Tabel 1.1 Skema Pembelajaran Bab 1",
-    "Waktu merupakan saran rentang jam pelajaran.",
-  ],
+  kutipan: kutipanLokal("k5b1a-materi-1.ts:2"),
   ketukan: [
     k(
       "Peta konsep bab ini berpusat pada bilangan. Dari bilangan bercabang nilai tempat, lalu komposisi dan dekomposisi.",
@@ -152,19 +131,7 @@ export const ADEGAN_MENYIMAK: AdeganStory = {
   judul: "Menyimak: Pasar Sukawati dan bilangan lima angka",
   sumber: "Materi: Pasar Sukawati dan bilangan besar",
   latar: "#FFF1F2",
-  kutipan: [
-    "Gambar 1.1 Beberapa Barang Dagangan di Pasar Sukawati",
-    "Pasar Sukawati di Bali menjual berbagai jenis oleh-oleh, seperti",
-    "pakaian, lukisan, dan berbagai jenis oleh-oleh lain.",
-    "Apakah kalian pernah berwisata di Bali?",
-    "Jika belum, apakah kalian pernah berwisata ke tempat wisata lain",
-    "Dapatkah kalian menentukan mana yang lebih murah?",
-    "Menjelang akhir tahun 2019, muncul Virus Corona (Covid-19)",
-    "per tanggal 14 Agustus 2020.",
-    "Ayo temukan, di manakah letak bilangan",
-    "dengan lima angka?",
-    "b. Guru mengajak peserta didik untuk bersama-sama mencari",
-  ],
+  kutipan: kutipanLokal("k5b1a-materi-1.ts:3"),
   ketukan: [
     k(
       "Mari menyimak. Perhatikan gambar pertama: barang dagangan di Pasar Sukawati, Bali, yaitu pakaian, lukisan, dan berbagai oleh-oleh lain.",
@@ -217,20 +184,7 @@ export const ADEGAN_INGAT: AdeganStory = {
   judul: "Ayo Mengingat Kembali: empat pertanyaan",
   sumber: "Buku Siswa hlm. 3; Panduan Guru hlm. 20",
   latar: "#FAF5FF",
-  kutipan: [
-    "Apakah kalian ingat tentang cara membaca dan menulis suatu",
-    "bilangan serta menentukan nilai tempatnya?",
-    "1. Bagaimana membaca 3.456?",
-    "2. Bagaimana menuliskan bilangan",
-    "3. Sebutkan nilai tempat 2 pada bilangan 2.345?",
-    "4. Berapakah hasil 56 + 75?",
-    "cara bersusun panjang dan bagaimana menggunakan cara",
-    "bersusun pendek?",
-    "Di kelas sebelumnya, kalian sudah pernah belajar tentang nilai",
-    "tempat, membaca bilangan, dan melakukan operasi bilangan,",
-    "Di kelas IV, peserta didik sudah mempelajari materi tentang membaca dan",
-    "menulis bilangan cacah sampai 10.000 dan menentukan nilai tempat.",
-  ],
+  kutipan: kutipanLokal("k5b1a-materi-1.ts:4"),
   ketukan: [
     k(
       "Ayo mengingat kembali. Menurut panduan guru, di kelas empat kalian sudah belajar membaca dan menulis bilangan sampai sepuluh ribu, serta menentukan nilai tempat. Ada empat pertanyaan.",

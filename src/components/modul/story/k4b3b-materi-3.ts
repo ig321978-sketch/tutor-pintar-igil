@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, barisTabel, busurSemua, daftar, deret, isiKotak, judul, kaleng, kartu, kisiPengayaan1, kisiPengayaan2, suku, tabel, teks } from "./k4b3b-gambar";
 import { bersih, k, tambah } from "./k4b3b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Sel tabel (baris r, kolom c): kotak dan tulisannya. */
 const sel = (objs: Obj[], id: string, r: number, c: number): Obj[] => objs.filter((o) => o.id === `${id}-s${r}${c}` || o.id === `${id}-t${r}${c}`);
@@ -17,17 +18,7 @@ export const ADEGAN_UK_CERITA: AdeganStory = {
   judul: "Uji 9 dan 10: soal cerita",
   sumber: "Materi: uji soal cerita",
   latar: "#F0FDF4",
-  kutipan: [
-    "Seorang petani sedang mencatat penjualan buah kelapa",
-    "Hari Pertama",
-    "36 buah",
-    "Tentukan banyak kelapa yang dipanen pada hari ke 7 !",
-    "Banyak kelapa yang dipanen pada hari ke 7 adalah 6 buah",
-    "Di suatu gedung bioskop terdapat 10 baris kursi.",
-    "Banyak kursi yang tersedia pada baris terakhir adalah 46",
-    "Baris Kesepuluh",
-    "42 + 4",
-  ],
+  kutipan: kutipanLokal("k4b3b-materi-3.ts:1"),
   ketukan: [
     k(
       "Uji sembilan: petani mencatat kelapa selama tujuh hari berturut-turut, dan jumlahnya menurun. Hari pertama tiga puluh enam, kedua tiga puluh satu, ketiga dua puluh enam, keempat dua puluh satu.",
@@ -120,19 +111,7 @@ export const ADEGAN_RUBRIK: AdeganStory = {
   judul: "Rubrik penilaian dan kunci",
   sumber: "Panduan Guru hlm. 134–138",
   latar: "#FDF4FF",
-  kutipan: [
-    "Kunci Jawaban",
-    "Tabel 3.2 Pedoman Penilaian Hasil Belajar",
-    "Lengkapilah benda dibawah sesuai dengan pola gambar yang diberikan!",
-    "Peserta didik tidak menjawab sama sekali",
-    "Peserta didik bisa menemukan pola tetapi jawaban kurang tepat",
-    "Peserta didik dapat menemukan pola dan jawaban tepat",
-    "Tabel 3.3 Penilaian Aktivitas Tugas Proyek",
-    "Ketepatan dalam menentukan pola gambar dan bilangan",
-    "Keterampilan dalam membuat gambar sesuai pola",
-    "Banyak benda selanjutnya sesuai pola gambar adalah 4",
-    "Banyak kursi yang tersedia pada baris terakhir adalah 46",
-  ],
+  kutipan: kutipanLokal("k4b3b-materi-3.ts:2"),
   ketukan: [
     k(
       "Rubrik penilaian kognitif, Tabel tiga titik dua: sepuluh butir pertanyaan, bobot tiap butir sepuluh. Butir satu sampai empat pola gambar, butir lima sampai sepuluh pola bilangan. Jumlah bobotnya seratus.",
@@ -211,16 +190,7 @@ export const ADEGAN_PENGAYAAN_1: AdeganStory = {
   judul: "Tantangan 1 dan 2: persegi satuan",
   sumber: "Materi: tantangan persegi satuan",
   latar: "#EFF6FF",
-  kutipan: [
-    "Soal-soal Pengayaan",
-    "Tentukan banyak persegi satu satuan berwarna putih ketika banyak persegi",
-    "satu satuan berwarna gelap 4!",
-    "satu satuan berwarna gelap 16!",
-    "persegi satu satuan biru",
-    "persegi satu satuan putih",
-    "Pola 1",
-    "Pola 4",
-  ],
+  kutipan: kutipanLokal("k4b3b-materi-3.ts:3"),
   ketukan: [
     k(
       "Tantangan satu dan dua memakai persegi satuan. Pada tantangan satu, pola pertama punya satu persegi biru dan delapan putih. Tiap pola, biru bertambah satu dan putih bertambah dua: delapan, sepuluh, dua belas, empat belas. Jadi saat biru empat, putih empat belas.",
@@ -275,15 +245,7 @@ export const ADEGAN_PENGAYAAN_2: AdeganStory = {
   judul: "Tantangan 3 sampai 5: beda berubah",
   sumber: "Materi: tantangan beda berubah",
   latar: "#FFFBEB",
-  kutipan: [
-    "Tentukan banyak benda selanjutnya sesuai pola gambar yang diberikan!",
-    "Tentukan bilangan yang tepat sesuai pola bilangan yang diberikan!",
-    "+1 +2 +3 +4",
-    "-1 -2 -3 -4",
-    "Kunci Jawaban",
-    "Untuk pengembangan materi ini dapat diberikan pola gambar",
-    "dan pola bilangan dengan selisih angka yang berbeda",
-  ],
+  kutipan: kutipanLokal("k4b3b-materi-3.ts:4"),
   ketukan: [
     k(
       "Tantangan tiga: tumpukan kaleng sepuluh, sembilan, tujuh. Berkurang satu, lalu dua, jadi berikutnya berkurang tiga, yaitu empat kaleng.",
@@ -344,32 +306,7 @@ export const ADEGAN_PENUTUP_B: AdeganStory = {
   judul: "Remedial, refleksi, dan penutup bab",
   sumber: "Buku Siswa hlm. 102; Panduan Guru hlm. 138–144",
   latar: "#FDF4FF",
-  kutipan: [
-    "Remedial dibutuhkan untuk dilaksanakan jika peserta didik belum mencapai",
-    "Pemberian bimbingan secara individu",
-    "Pemberian bimbingan secara berkelompok",
-    "Pemberian pembelajaran berulang dengan metode dan media yang",
-    "Tutor sebaya",
-    "Kegiatan pengayaan dapat dikembangkan pada materi pola gambar dan",
-    "dengan selisih angka yang berbeda",
-    "Belajar kelompok",
-    "Belajar mandiri",
-    "Pada bab ini, kalian sudah mempelajari materi pola gambar dan pola bilangan.",
-    "diskusikanlah dengan temanmu",
-    "Kalian juga dapat meminta guru untuk membantu.",
-    "Kalian juga dapat menentukan bilangan yang mengikuti pola tertentu.",
-    "Ajarkanlah materi ini kepada orang lain",
-    "Guru dapat menambahkan pertanyaan refleksi sesuai kebutuhan.",
-    "Keberhasilan peserta didik dalam proses pembelajaran tidak hanya menjadi",
-    "buku komunikasi",
-    "Guru setiap semester dapat mengadakan rapat dengan orang tua peserta",
-    "Guru dapat membuat grup komunitas untuk setiap kelas dengan para",
-    "Guru menyediakan setiap minggu untuk konseling orang tua peserta didik.",
-    "Guru dapat juga mengunjungi orang tua khusus untuk peserta didik yang",
-    "Guru mengadakan seminar atau layanan konsultasi tiap bulan",
-    "Sumber Bacaan",
-    "Buku Siswa",
-  ],
+  kutipan: kutipanLokal("k4b3b-materi-3.ts:5"),
   ketukan: [
     k(
       "Panduan remedial untuk murid yang belum mencapai tujuan: bimbingan individu, bimbingan kelompok, pembelajaran berulang dengan metode dan media berbeda, dan tutor sebaya.",

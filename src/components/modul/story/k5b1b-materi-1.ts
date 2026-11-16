@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { DAKON, W, barisDakon, emo, judul, kartu, kotak, tabelTempat, tabelUrut, teks } from "./k5b1b-gambar";
 import { bersih, k, tambah } from "./k5b1b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Subbab B: pengalaman belajar (Panduan Guru hlm. 25; Buku Siswa hlm. 10) ------------------------------ */
 export const ADEGAN_PEMBUKA: AdeganStory = {
@@ -8,12 +9,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Subbab B: Membandingkan dan Mengurutkan",
   sumber: "Panduan Guru hlm. 25; Buku Siswa hlm. 10",
   latar: "#EFF6FF",
-  kutipan: [
-    "B. Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000",
-    "Setelah mempelajari bagian B ini, peserta didik diharapkan dapat",
-    "membandingkan bilangan 100.000 dan",
-    "mengurutkan bilangan 100.000.",
-  ],
+  kutipan: kutipanLokal("k5b1b-materi-1.ts:1"),
   ketukan: [
     k(
       "Subbab B, Membandingkan dan Mengurutkan Bilangan Cacah Sampai seratus ribu. Di subbab A kita sudah belajar membaca, menulis, dan menentukan nilai tempat.",
@@ -37,10 +33,10 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("mengurutkan", ...kartu("g2", 24, 106, 252, 42, W.langit, ["mengurutkan bilangan", "sampai 100.000"], 9.6)),
     ),
     k(
-      "Kita mulai dari masalah Lukas di toko Komang. Dari harga papan dakon, kita belajar menentukan mana yang lebih besar, mana yang lebih kecil, dan bagaimana urutannya.",
+      "Kita mulai dari masalah Wei di toko Malosi. Dari harga papan dakon, kita belajar menentukan mana yang lebih besar, mana yang lebih kecil, dan bagaimana urutannya.",
       bersih(0),
       tambah(0, judul("Dari harga papan dakon")),
-      tambah("Lukas", emo("kr", 60, 100, "🛒", 40)),
+      tambah("Wei", emo("kr", 60, 100, "🛒", 40)),
       tambah("besar,", teks("t1", 205, 70, "lebih besar?", 12, W.hijau)),
       tambah("kecil,", teks("t2", 205, 100, "lebih kecil?", 12, W.merah)),
       tambah("urutannya.", teks("t3", 150, 160, "urutannya?", 13, W.ungu)),
@@ -54,25 +50,7 @@ export const ADEGAN_PERSIAPAN: AdeganStory = {
   judul: "Sarana, apersepsi, dan pemanasan",
   sumber: "Panduan Guru hlm. 26",
   latar: "#FFFBEB",
-  kutipan: [
-    "Kertas karton",
-    "Penggaris",
-    "Spidol",
-    "Guru memulai materi ini dengan mengingatkan peserta didik pada materi",
-    "sebelumnya, yaitu tentang cara membaca, menuliskan bilangan sampai",
-    "100.000 dan nilai tempatnya.",
-    "peserta didik diingatkan tentang cara membandingkan dan",
-    "mengurutkan bilangan yang sudah mereka pelajari di kelas sebelumnya.",
-    "guru dapat menggunakan pertanyaan",
-    "Ayo Mengingat Kembali",
-    "Guru mengajak peserta didik untuk menuliskan dua buah bilangan yang terdiri",
-    "atas lima angka berbeda dengan menuliskannya di papan tulis.",
-    "guru meminta peserta didik untuk membaca bilangan tersebut dan memberikan",
-    "pertanyaan tentang bilangan yang lebih besar atau lebih kecil.",
-    "Guru membagi peserta didik ke dalam beberapa kelompok kecil.",
-    "Peserta didik dapat melakukan kegiatan Ayo Bermain di dalam atau di luar",
-    "kelas.",
-  ],
+  kutipan: kutipanLokal("k5b1b-materi-1.ts:2"),
   ketukan: [
     k(
       "Sarana yang dibutuhkan sederhana: kertas karton, penggaris, dan spidol.",
@@ -119,36 +97,22 @@ export const ADEGAN_PERSIAPAN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Eksplorasi 1.2: Masalah Lukas (Buku Siswa hlm. 10) ------------------------------ */
+/* ------------------------------ 3. Eksplorasi 1.2: Masalah Wei (Buku Siswa hlm. 10) ------------------------------ */
 const WARNA_DAKON = [W.hijauPita, W.merahPita, W.jingga, W.langit];
 export const ADEGAN_MASALAH: AdeganStory = {
   id: "masalah-lukas",
-  judul: "Masalah Lukas",
+  judul: "Masalah Wei",
   sumber: "Materi: harga papan dakon",
   latar: "#F0FDF4",
-  kutipan: [
-    "Eksplorasi 1.2",
-    "Masalah Lukas",
-    "Lukas seorang siswa kelas V SD Pancasila.",
-    "gurunya untuk membelikan papan mainan dakon di minimarket",
-    "milik Komang. Terdapat empat jenis papan dakon dengan harga",
-    "sebagai berikut.",
-    "Rp56.560,00",
-    "Rp65.750,00",
-    "Rp57.000,00",
-    "Rp75.360,00",
-    "Jika kalian menjadi Lukas, bagaimanakah cara memutuskan",
-    "membeli papan dakon tersebut? Ayo bantu Lukas menentukan",
-    "papan dakon yang akan dibelinya.",
-  ],
+  kutipan: kutipanLokal("k5b1b-materi-1.ts:3"),
   ketukan: [
     k(
-      "Masalah Lukas. Lukas, siswa kelas lima SD Pancasila, diminta gurunya membelikan papan mainan dakon di minimarket milik Komang.",
-      tambah(0, judul("Masalah Lukas")),
-      tambah("Lukas,", emo("lk", 60, 96, "🧒", 38)),
+      "Masalah Wei. Wei, siswa kelas lima SD Pancasila, diminta gurunya membelikan papan mainan dakon di minimarket milik Malosi.",
+      tambah(0, judul("Masalah Wei")),
+      tambah("Wei,", emo("lk", 60, 96, "🧒", 38)),
       tambah("papan", emo("dk", 150, 96, "🎲", 34)),
       tambah("minimarket", emo("mm", 240, 96, "🏪", 38)),
-      tambah("Komang.", teks("tk", 150, 150, "papan mainan dakon", 12, W.coklat)),
+      tambah("Malosi.", teks("tk", 150, 150, "papan mainan dakon", 12, W.coklat)),
     ),
     k(
       "Ada empat jenis papan dakon. Papan a harganya lima puluh enam ribu lima ratus enam puluh rupiah. Papan b, enam puluh lima ribu tujuh ratus lima puluh rupiah.",
@@ -163,12 +127,12 @@ export const ADEGAN_MASALAH: AdeganStory = {
       tambah("d,", ...barisDakon("pd", 24, 164, DAKON[3].nama, DAKON[3].harga, WARNA_DAKON[3])),
     ),
     k(
-      "Jika kamu menjadi Lukas, bagaimana cara memutuskan membeli papan dakon itu? Ayo bantu Lukas menentukan papan dakon yang akan dibelinya.",
+      "Jika kamu menjadi Wei, bagaimana cara memutuskan membeli papan dakon itu? Ayo bantu Wei menentukan papan dakon yang akan dibelinya.",
       bersih(0),
       tambah(0, judul("Papan mana yang dibeli?")),
       tambah("Jika", emo("pk", 80, 96, "🤔", 44)),
       tambah("memutuskan", ...kartu("pq", 130, 56, 150, 36, W.krem, ["bagaimana cara", "memutuskan?"], 9.6)),
-      tambah("menentukan", ...kartu("pq2", 130, 108, 150, 36, W.hijauMuda, ["bantu Lukas", "menentukan"], 9.6)),
+      tambah("menentukan", ...kartu("pq2", 130, 108, 150, 36, W.hijauMuda, ["bantu Wei", "menentukan"], 9.6)),
     ),
   ],
 };
@@ -179,22 +143,7 @@ export const ADEGAN_BERMAIN: AdeganStory = {
   judul: "Ayo Bermain: kartu papan dakon",
   sumber: "Materi: permainan kartu harga",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ayo Bermain",
-    "Alat dan Bahan:",
-    "Kertas karton",
-    "Penggaris",
-    "Spidol",
-    "Mainkan permainan secara berkelompok dengan setiap",
-    "kelompok beranggota 4 anak.",
-    "Siapkan kertas karton dan potong-potonglah menyerupai papan",
-    "dakon.",
-    "Tuliskan angka yang tertera pada harga paket papan dakon",
-    "tersebut pada tempat di bawah ini.",
-    "No. Nama Harga Dakon yang Didapat",
-    "Selanjutnya, mari kita bandingkan.",
-    "Nilai Tempat",
-  ],
+  kutipan: kutipanLokal("k5b1b-materi-1.ts:4"),
   ketukan: [
     k(
       "Ayo Bermain. Alat dan bahannya ada tiga: kertas karton, penggaris, dan spidol. Mainkan secara berkelompok, tiap kelompok beranggota empat anak.",

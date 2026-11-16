@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bentuk, bulat, emo, garis, judul, kartu, kurvaTerbuka, panah, setengahLingkaran, tabel, teks } from "./k4b5a-gambar";
 import { bersih, idx, k, redamkan, sorotkan, tambah, ubah } from "./k4b5a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab dan tujuan (Buku Siswa hlm. 139–140; Panduan Guru hlm. 175) ------------------------------ */
 const TUJUAN = ["menuliskan ciri-ciri segitiga", "menuliskan ciri-ciri segiempat", "menyusun beberapa bangun datar", "mengurai satu bangun datar"];
@@ -17,19 +18,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 5: tujuan pembelajaran",
   sumber: "Buku Siswa hlm. 139–140; Panduan Guru hlm. 175",
   latar: "#FFF7ED",
-  kutipan: [
-    "Apakah ciri-ciri yang dimiliki setiap bangun datar segitiga dan",
-    "Bagaimanakah keterkaitan antar bangun datar baik antar",
-    "segitiga maupun antar segiempat?",
-    "Bagaimanakah menyusun pengertian",
-    "Setelah mempelajari bab ini kalian mampu:",
-    "menuliskan ciri-ciri segitiga (sama kaki,",
-    "menuliskan ciri-ciri segiempat",
-    "Kata Kunci",
-    "Segibanyak,",
-    "Setelah mempelajari bab ini, peserta didik diharapkan dapat:",
-    "1.1 mendeskripsikan ciri berbagai bentuk bangun datar (segiempat, segitiga, segibanyak)",
-  ],
+  kutipan: kutipanLokal("k4b5a-materi-1.ts:1"),
   ketukan: [
     k(
       SUARA_P1,
@@ -83,23 +72,7 @@ export const ADEGAN_PETA: AdeganStory = {
   judul: "Peta konsep, gambaran umum, dan skema pembelajaran",
   sumber: "Buku Siswa hlm. 141; Panduan Guru hlm. 176–178",
   latar: "#F0FDF4",
-  kutipan: [
-    "Peta Konsep",
-    "Segibanyak",
-    "Berdasarkan",
-    "Segitiga",
-    "Sama Kaki",
-    "Layang-layang",
-    "Trapesium",
-    "Segiempat",
-    "Sembarang",
-    "2. Peta Konsep",
-    "4. Keterampilan yang Dilatih",
-    "2. Membaca dengan cermat",
-    "5. Skema Pembelajaran",
-    "Topik A:",
-    "25JP",
-  ],
+  kutipan: kutipanLokal("k4b5a-materi-1.ts:2"),
   ketukan: [
     k(
       SUARA_K1,
@@ -150,20 +123,7 @@ export const ADEGAN_SEGIBANYAK: AdeganStory = {
   judul: "Segi banyak: kurva tertutup dari ruas garis",
   sumber: "Materi: segi banyak",
   latar: "#FEFCE8",
-  kutipan: [
-    "A. Ciri-Ciri Bangun Datar",
-    "1. Segi Banyak",
-    "A. Pengertian Segi Banyak",
-    "Banyak benda di sekitar kita yang berbentuk bangun datar.",
-    "Gambar 5.1 Segi banyak",
-    "Gambar 5.2 Bukan segi banyak",
-    "Mempunyai 3 sisi berbentuk garis lurus",
-    "Antar sisi membentuk kurva tertutup",
-    "Mempunyai 4 sisi berbentuk garis lurus",
-    "Mempunyai 1 sisi tidak berbentuk garis lurus dan",
-    "Antarsisi membentuk kurva terbuka",
-    "suatu kurva tertutup yang dibatasi paling sedikit tiga buah ruas garis.",
-  ],
+  kutipan: kutipanLokal("k4b5a-materi-1.ts:3"),
   ketukan: [
     k(
       SUARA_S1,
@@ -221,21 +181,7 @@ export const ADEGAN_AKTIVITAS1: AdeganStory = {
   judul: "Aktivitas 1: jenis segi banyak",
   sumber: "Materi: aktivitas jenis segi banyak",
   latar: "#FFF7ED",
-  kutipan: [
-    "Aktivitas 1. Jenis segi banyak",
-    "Alat dan bahan:",
-    "Sedotan/lidi",
-    "Lem dan kertas",
-    "Langkah Kerja:",
-    "1. Potong sedotan/lidi menjadi 3 bagian",
-    "2. Hubungkan ujung masing-masing secara sambung-menyambung dan",
-    "ditempel di kertas",
-    "3. Amatilah bangun apa yang terbentuk? Gambarkan di buku.",
-    "Pemberian nama pada segi banyak ini disesuaikan dengan banyaknya sisi yang",
-    "Aktivitas ini bertujuan untuk mengeksplorasi pikiran atau ide peserta didik.",
-    "Segitiga adalah bangun datar memiliki 3 sisi.",
-    "Segienam adalah bangun datar memiliki 6 sudut.",
-  ],
+  kutipan: kutipanLokal("k4b5a-materi-1.ts:4"),
   ketukan: [
     k(
       SUARA_A1,

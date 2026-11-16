@@ -5,6 +5,7 @@
 // kisi seratus kotak (kotak gelap dihitung dari lintasan), tabel konversi, hitungan mandiri kunci jawaban (perbandingan, urutan, desimal, persen, rubrik, pengayaan),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b2e.mjs   (PEMICU=1 mencetak kata pemicu tiap aksi untuk ditinjau; RINCI=1 mencetak ukuran tiap adegan)
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -499,7 +500,7 @@ const periksaRantai = (t, nama) => {
   stat.tabel += 6;
   const rk = akhirAdegan(adegan(M, "rubrik-e"), 3);
   const kunci = [3, 4, 5, 6, 7, 8, 9, 10].map((r) => rk.find((o) => o.id === `rk-t${r - 2}1`)?.isi);
-  sama(kunci, ["Helen 1/4, Putu 3/4; terbesar Putu", "paling sedikit: Wiwin", "0,3  0,4  0,2  0,6  2,5", "0,81  0,79  0,45  0,66  0,99", "5%  25%  138%  2005%", "0,35  0,56  1,25  4,55", "30%", "60%"], "rekap kunci soal 3 sampai 10");
+  sama(kunci, ["Kira 1/4, Halim 3/4; terbesar Halim", "paling sedikit: Wiwin", "0,3  0,4  0,2  0,6  2,5", "0,81  0,79  0,45  0,66  0,99", "5%  25%  138%  2005%", "0,35  0,56  1,25  4,55", "30%", "60%"], "rekap kunci soal 3 sampai 10");
   const nomor = [3, 4, 5, 6, 7, 8, 9, 10].map((r) => rk.find((o) => o.id === `rk-t${r - 2}0`)?.isi);
   sama(nomor, ["3", "4", "5", "6", "7", "8", "9", "10"], "rekap kunci: nomor soal");
   stat.tabel += 16;
@@ -532,7 +533,7 @@ const periksaRantai = (t, nama) => {
     sama(t, `${"abcde"[i]}. ${kunci}`, `gambar Uji Kompetensi 2${"abcde"[i]}`);
   });
   // semangka dan roti
-  sama([1 - 1 / 4, banding([1, 4], [3, 4]), banding([1, 3], [2, 3])], [3 / 4, -1, -1], "Uji Kompetensi 3 dan 4: Putu 3/4 lebih besar, Wiwin 1/3 lebih kecil");
+  sama([1 - 1 / 4, banding([1, 4], [3, 4]), banding([1, 3], [2, 3])], [3 / 4, -1, -1], "Uji Kompetensi 3 dan 4: Halim 3/4 lebih besar, Wiwin 1/3 lebih kecil");
   // desimal persepuluhan (UK 5) dan perseratusan (UK 6) lewat pembagian
   const sepuluhan = (n) => `${Math.floor(n / 10)},${n % 10}`;
   sama([3, 4, 2, 6, 25].map(sepuluhan), ["0,3", "0,4", "0,2", "0,6", "2,5"], "Uji Kompetensi 5: persepuluhan 3, 4, 2, 6, 25 per 10");
@@ -586,7 +587,7 @@ const periksaRantai = (t, nama) => {
     for (const s of ["0,12 = 12 %", "1,15 = 115 %", "5,62 = 562 %", "10,55 = 1055 %", "18% = 0,18", "65% = 0,65", "123% = 1,23", "675% = 6,75", "0,05 = 5 %", "0,25 = 25 %", "1,38 = 138 %", "20,05 = 2005 %", "35% = 0,35", "56% = 0,56", "125% = 1,25", "455% = 4,55", "= 0,30 = 30%", "x 100% = 60%", "= 0,3", "= 2,5", "= 0,81", "= 0,99", "Jawab: Putu", "Jawab: Wiwin", "Maka kue brownies yang diterima stanley sebanyak", "Diskon 5 % =", "x 50.000 = 25.000", "Rp25.000,00"]) cek(bgSaja.includes(bersih(s)), `Panduan Guru memuat kunci "${s}"`);
     const bsSaja = bersih(bagian[0]);
     for (const s of ["a. 0,12 = ... %", "d. 10,55 = ... %", "a. 18%", "d. 675%", "a. 0,05 = ... %", "d. 20,05 = ... %", "a. 35%", "d. 455%", "30 siswa dari 100 orang siswa", "6 pertanyaan dari 10 soal", "= 246%", "2,36 x 100% = (2,36 x 100)% = 236%", "246"]) cek(bsSaja.includes(bersih(s)), `Buku Siswa memuat "${s}"`);
-    cek(n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
     console.log(`Kutipan buku diperiksa: ${n}`);
   }
 }
@@ -607,7 +608,7 @@ const periksaRantai = (t, nama) => {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b2e-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2e sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b2e-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2e sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

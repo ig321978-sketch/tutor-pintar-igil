@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisKipas, busurDerajat, busurSudut, bulat, emo, judul, kartu, kipas, kaki, panah, sudutDua, teks } from "./k5b6c-gambar";
 import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k5b6c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const WARNA_KIPAS = [W.jingga, W.langit, W.hijauMuda, W.pink];
 
@@ -10,20 +11,7 @@ export const ADEGAN_PEMBUKA_C: AdeganStory = {
   judul: "Pembuka Subbab C: tari pakarena dan kipas lipat",
   sumber: "Buku Siswa hlm. 175; Panduan Guru hlm. 262–263",
   latar: "#FFF7ED",
-  kutipan: [
-    "mengukur besar sudut dengan menggunakan busur derajat",
-    "membandingkan besar sudut",
-    "mengulang materi sebelumnya tentang pengertian sudut dan jenis-jenis sudut",
-    "Tari pakarena adalah tari tradisonal yang berasal dari Sulawesi",
-    "Selatan. Tari ini sudah mulai berkembang sejak zaman kerajaan",
-    "Gantarang",
-    "Salah satu ciri khas dari tarian ini adalah para penari",
-    "yang membawa kipas",
-    "Pembelajaran ini dimulai dengan menyimak cerita tentang tari pakarena",
-    "mengenal dan menghargai kekayaan budaya nasional Indonesia",
-    "kipas lipat dapat dibuka dengan lebar sesuai keinginan",
-    "Kipas manakah yang terbuka paling lebar?",
-  ],
+  kutipan: kutipanLokal("k5b6c-materi-1.ts:1"),
   ketukan: [
     k(
       "Selamat datang di Subbab C, Mengukur dan Membandingkan Sudut. Setelah subbab ini, kalian diharapkan mampu mengukur besar sudut dengan busur derajat dan membandingkan besar sudut.",
@@ -83,25 +71,10 @@ export const ADEGAN_KIPAS_SUDUT: AdeganStory = {
   judul: "Kipas membentuk sudut, satuan derajat, dan busur derajat",
   sumber: "Materi: kipas, sudut, dan satuan derajat",
   latar: "#F0F9FF",
-  kutipan: [
-    "Bagaimana cara membandingkan seberapa lebar kipas-kipas",
-    "tersebut terbuka?",
-    "kipas tersebut membentuk sudut, kan?",
-    "Jadi, kita dapat membandingkan seberapa lebar kipas",
-    "terbuka dengan membandingkan sudut yang dibentuk",
-    "Bagaimana cara membandingkannya?",
-    "Bagaimana cara mengetahui ukurannya?",
-    "bahwa sudut dapat diukur dengan menggunakan alat",
-    "Sama halnya seperti panjang, berat, dan volume, besar sudut",
-    "juga memiliki satuan",
-    "Salah satu satuan yang digunakan untuk",
-    "menyatakan besar sudut adalah derajat",
-    "Alat ukur yang digunakan",
-    "disebut busur derajat",
-  ],
+  kutipan: kutipanLokal("k5b6c-materi-1.ts:2"),
   ketukan: [
     k(
-      "Dalam tari pakarena dari Sulawesi Selatan, para penari membawa kipas lipat. Bagaimana cara membandingkan seberapa lebar kipas-kipas itu terbuka? Nisa berkata, kipas yang terbuka membentuk sudut, jadi kita bandingkan sudut yang dibentuk kipas.",
+      "Dalam tari pakarena dari Sulawesi Selatan, para penari membawa kipas lipat. Bagaimana cara membandingkan seberapa lebar kipas-kipas itu terbuka? Wei berkata, kipas yang terbuka membentuk sudut, jadi kita bandingkan sudut yang dibentuk kipas.",
       tambah(0, teks("pk-intro", 150, 18, "tari pakarena: kipas lipat", 9.4, W.ungu)),
       tambah("Bagaimana", ...kartu("qb", 20, 30, 260, 34, W.krem, ["Bagaimana membandingkan lebar kipas?"], 9.2)),
       tambah("kipas@4", kipas("ks", 150, 160, 70, 37.5, 142.5, W.jingga), ...sudutDua("ks", 150, 160, 82, 37.5, 142.5, W.biru, 2.4)),
@@ -145,15 +118,7 @@ export const ADEGAN_BAGIAN_BUSUR: AdeganStory = {
   judul: "Bagian-bagian busur derajat",
   sumber: "Materi: bagian-bagian busur derajat",
   latar: "#FAF5FF",
-  kutipan: [
-    "Bagian-Bagian Busur Derajat",
-    "Skala bagian luar",
-    "Titik pusat busur",
-    "Garis dasar",
-    "Skala bagian dalam",
-    "skala pada busur dapat menggunakan bagian luar atau dalam",
-    "tergantung posisi saat melakukan pengukuran",
-  ],
+  kutipan: kutipanLokal("k5b6c-materi-1.ts:3"),
   ketukan: [
     k(
       "Busur derajat memiliki empat bagian utama: skala bagian luar, titik pusat busur, garis dasar, dan skala bagian dalam.",
@@ -197,20 +162,7 @@ export const ADEGAN_CARA_UKUR: AdeganStory = {
   judul: "Tiga langkah mengukur sudut dengan busur derajat",
   sumber: "Materi: tiga langkah mengukur sudut",
   latar: "#F0FDF4",
-  kutipan: [
-    "Kita akan mengukur besar sudut yang dibentuk oleh kipas berikut",
-    "Letakkan pusat busur derajat",
-    "pada titik sudut yang akan",
-    "diukur",
-    "Geser busur derajat sehingga garis dasar busur derajat",
-    "berimpit dengan salah satu kaki sudut",
-    "Pastikan kaki sudut",
-    "lainnya masih dalam jangkauan busur derajat",
-    "Kaki sudut yang berimpit dengan dasar busur derajat",
-    "selalu menunjukkan 0 derajat",
-    "Angka yang ditunjukkan kaki sudut tersebut adalah ukuran",
-    "sudutnya",
-  ],
+  kutipan: kutipanLokal("k5b6c-materi-1.ts:4"),
   ketukan: [
     k(
       "Sekarang kita ukur sudut yang dibentuk sebuah kipas lipat. Langkah satu, letakkan pusat busur derajat pada titik sudut yang akan diukur.",

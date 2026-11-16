@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, daftar, emo, judul, kartu, kisi100, panah, teks } from "./k4b2e-gambar";
 import { bersih, k, tambah } from "./k4b2e-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Sub-Bab E (Buku Siswa hlm. 75; Panduan Guru hlm. 107) ------------------------------ */
 export const ADEGAN_PEMBUKA_E: AdeganStory = {
@@ -8,18 +9,7 @@ export const ADEGAN_PEMBUKA_E: AdeganStory = {
   judul: "Sub-Bab E: Desimal dan Persen",
   sumber: "Buku Siswa hlm. 75; Panduan Guru hlm. 107",
   latar: "#F0F9FF",
-  kutipan: [
-    "E. Menghubungkan Pecahan Desimal Perseratusan",
-    "banyak kalian temukan saat berbelanja disebuah swalayan",
-    "Dapatkah kalian mengubah pecahan desimal perseratusan menjadi bentuk persen",
-    "Dapatkah kalian menentukan hubungan antara pecahan desimal dengan konsep persen",
-    "ayo ingat kembali konsep pecahan yang sudah kalian pelajari",
-    "menghubungkan pecahan desimal perseratusan dengan konsep persen",
-    "Alat Tulis",
-    "Persen adalah bentuk pecahan biasa yang nilai penyebutnya 100 dan dinyatakan dengan lambang",
-    "pembilang dan penyebut sama-sama dikalikan dengan bilangan bulat positif supaya bernilai 100",
-    "Apakah persen itu?",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-1.ts:1"),
   ketukan: [
     k(
       "Sub-Bab E, menghubungkan pecahan desimal perseratusan dengan konsep persen. Di swalayan kita sering menemukan potongan harga atau diskon dalam bentuk persen. Dapatkah kalian mengubah desimal perseratusan menjadi persen?",
@@ -55,17 +45,7 @@ export const ADEGAN_MENGAMATI_E: AdeganStory = {
   judul: "Ayo Mengamati: arti persen",
   sumber: "Materi: arti persen",
   latar: "#FFFBEB",
-  kutipan: [
-    "bisakah kamu memberikan contoh pecahan desimal perseratusan",
-    "Baik ibu, misalnya 0,75",
-    "Betul sekali, sekarang bagaimana mengubah desimal perseratusan tersebut menjadi pecahan biasa",
-    "Maaf ibu saya masih bingung bentuk persen itu bagaimana",
-    "bentuk persen adalah bentuk lain dari pecahan berpenyebut seratus",
-    "Contoh 5% artinya",
-    "Pertama kita ubah desimal perseratusan menjadi bentuk pecahan biasa",
-    "Kedua jika sudah berbentuk perseratusan maka kita ubah menjadi bentuk",
-    "Guru meminta peserta didik untuk mengamati gambar persen dan diskon di suatu swalayan",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-1.ts:2"),
   ketukan: [
     k(
       "Ayo kita amati. Coba sebutkan contoh pecahan desimal perseratusan. Misalnya nol koma tujuh lima. Betul sekali, itu contoh yang tepat.",
@@ -118,14 +98,7 @@ export const ADEGAN_CONTOH_1E: AdeganStory = {
   judul: "Ayo Berlatih: 0,35 dan 2,46",
   sumber: "Materi: desimal ke persen",
   latar: "#F0FDF4",
-  kutipan: [
-    "Ubahlah pecahan desimal perseratusan berikut menjadi bentuk persen",
-    "Langkah pertama : merubah bentuk desimal perseratusan menjadi",
-    "Langkah kedua : mengubah ke bentuk persen",
-    "Jadi bentuk persen dari 0,35 adalah 35%",
-    "Jadi bentuk persen dari 2,46 adalah 246%",
-    "Guru menjelaskan langkah-langkah pengerjaan dan menanyakan kepada peserta didik apa yang belum dipahami",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-1.ts:3"),
   ketukan: [
     k(
       "Ayo berlatih satu. Ubah nol koma tiga lima menjadi persen. Langkah pertama: ubah ke pecahan biasa, yaitu tiga puluh lima per seratus.",
@@ -166,12 +139,7 @@ export const ADEGAN_CONTOH_2E: AdeganStory = {
   judul: "Contoh: persen siswa berolahraga",
   sumber: "Materi: persen dari pecahan",
   latar: "#FFF7ED",
-  kutipan: [
-    "Diketahui jumlah siswa kelas 4 SD di suatu sekolah adalah 50 siswa",
-    "berapa persen siswa yang mengikuti olahraga tersebut",
-    "Diubah ke dalam bentuk pecahan senilai yang berpenyebut 100",
-    "banyak siswa yang sedang berolahraga di lapangan adalah sebesar",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-1.ts:4"),
   ketukan: [
     k(
       "Contoh dua. Di suatu sekolah ada lima puluh siswa kelas empat. Dua puluh siswa sedang mengikuti pelajaran olahraga. Berapa persen siswa yang berolahraga?",

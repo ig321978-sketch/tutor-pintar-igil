@@ -114,7 +114,7 @@ export const LATIHAN_SATU: readonly (readonly [number, string])[] = [
   [5780, "lima ribu tujuh ratus delapan puluh"],
   [1206, "seribu dua ratus enam"],
 ];
-/** Nomor 2 (hlm. 11): [bilangan, cara membaca menurut kunci]; harga, uang Slamet, kembalian. */
+/** Nomor 2 (hlm. 11): [bilangan, cara membaca menurut kunci]; harga, uang Halim, kembalian. */
 export const LATIHAN_DUA: readonly (readonly [number, string])[] = [
   [7350, "tujuh ribu tiga ratus lima puluh"],
   [9500, "sembilan ribu lima ratus"],

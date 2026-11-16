@@ -58,7 +58,7 @@ export function skala(p: string, x: number, y: number, w: number): { semua: Obj[
   return { semua: [...[0, 1, 2, 3, 4].flatMap(balonDi), ...g], balonDi, garisSkala: g, xs };
 }
 
-/* ------------------------------ Benda cerita Dhien ------------------------------ */
+/* ------------------------------ Benda cerita Kira ------------------------------ */
 
 /** Rumah dengan atap, pintu, dan jendela; (x, y) pojok kiri atas dinding. */
 export function rumah(p: string, x: number, y: number): Obj[] {

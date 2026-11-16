@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, emo, garis, jalur, judul, kartu, kotak, panah, poligon, sel, teks } from "./k5b5a-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k5b5a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab: tujuan dan kata kunci (hlm. 131 dan 133; Panduan Guru hlm. 177) ------------------------------ */
 const WARNA = [W.krem, W.langit, W.hijauMuda, W.pink, W.jingga, W.merahMuda];
@@ -12,15 +13,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 5: tujuan dan kata kunci",
   sumber: "Buku Siswa hlm. 131–133; Panduan Guru hlm. 177",
   latar: "#FFF7ED",
-  kutipan: [
-    "Setelah mempelajari bab ini, diharapkan kalian mampu menemukan",
-    "cara menghitung luas berbagai daerah bangun datar dan",
-    "mengetahui kapan harus menggunakannya.",
-    "Bangun datar, bangun gabungan, belah ketupat, jajargenjang,",
-    "layang-layang, luas daerah, persegi, persegi panjang, trapesium.",
-    "Di kelas IV, kalian sudah belajar berbagai macam bangun datar",
-    "mengenali situasi soal yang melibatkan luas bangun datar;",
-  ],
+  kutipan: kutipanLokal("k5b5a-materi-1.ts:1"),
   ketukan: [
     k(
       "Selamat datang di bab lima, Luas Daerah Bangun Datar. Setelah mempelajari bab ini, kalian diharapkan mampu menemukan cara menghitung luas berbagai daerah bangun datar dan mengetahui kapan harus menggunakannya.",
@@ -82,15 +75,7 @@ export const ADEGAN_PETA: AdeganStory = {
   judul: "Peta konsep dan empat subbab",
   sumber: "Buku Siswa hlm. 132; Panduan Guru hlm. 178–180",
   latar: "#F5F3FF",
-  kutipan: [
-    "Peta Konsep",
-    "Segitiga Sembarang",
-    "Segi Empat Sembarang",
-    "Segi Lima Beraturan",
-    "Bab ini terdiri atas empat subbab.",
-    "Subbab A mendiskusikan tentang",
-    "pengertian luas daerah bangun datar.",
-  ],
+  kutipan: kutipanLokal("k5b5a-materi-1.ts:2"),
   ketukan: [
     k(
       "Ini peta konsep bab lima. Di tengah ada luas daerah bangun datar. Cabangnya segitiga, segi empat, segi banyak, dan bangun gabungan.",
@@ -140,14 +125,7 @@ export const ADEGAN_ALUN: AdeganStory = {
   judul: "Kegiatan: pasir untuk Alun-Alun Utara",
   sumber: "Materi: pasir untuk alun-alun",
   latar: "#FEF3C7",
-  kutipan: [
-    "Eksplorasi 5.1A",
-    "Alun-alun berasal dari kata \"alun\" yang bermakna ombak.",
-    "terdapat tanah lapang yang sangat luas bernama Alun-Alun Utara.",
-    "Pada tahun 2022, Keraton Yogyakarta memugar Alun-Alun Utara",
-    "Berapa banyak pasir yang dibutuhkan untuk menutupi seluruh",
-    "Apa yang harus dihitung terlebih dahulu untuk melakukan",
-  ],
+  kutipan: kutipanLokal("k5b5a-materi-1.ts:3"),
   ketukan: [
     k(
       "Anak-anak, mari kita mulai dengan sebuah cerita, dan berpikir kreatif ya. Di bagian utara kompleks Keraton Yogyakarta ada tanah lapang yang sangat luas, bernama Alun-Alun Utara.",
@@ -213,14 +191,7 @@ export const ADEGAN_DENAH: AdeganStory = {
   judul: "Kegiatan: denah rumah dan ubin",
   sumber: "Materi: denah rumah dan ubin",
   latar: "#ECFEFF",
-  kutipan: [
-    "Pernahkah kalian melihat pekerja bangunan memasang ubin di",
-    "terpasang ubin dengan rapat, tidak ada yang renggang ataupun",
-    "Perhatikan denah rumah berikut.",
-    "Jika seluruh lantai rumah tersebut akan dipasang ubin berukuran",
-    "Ruangan manakah yang membutuhkan ubin paling",
-    "Adakah ruangan yang membutuhkan ubin sama",
-  ],
+  kutipan: kutipanLokal("k5b5a-materi-1.ts:4"),
   ketukan: [
     k(
       "Sekarang kita pasang ubin. Pernahkah kalian melihat pekerja memasang ubin di lantai? Pekerja memastikan seluruh lantai terpasang ubin dengan rapat, tidak ada yang renggang dan tidak ada yang berlubang.",
@@ -239,14 +210,14 @@ export const ADEGAN_DENAH: AdeganStory = {
       tambah("memperkirakan", teks("q", 228, 138, "berapa ubin?", 11, W.merah)),
     ),
     k(
-      "Lukas dan teman-teman berbagi tugas. Ada yang menghitung ruangan terbesar, ada yang kamar tidur, ada yang dapur, dan ada yang kamar mandi.",
+      "Halim dan teman-teman berbagi tugas. Ada yang menghitung ruangan terbesar, ada yang kamar tidur, ada yang dapur, dan ada yang kamar mandi.",
       bersih(0),
       tambah(0, judul("Berbagi tugas")),
       tambah("ruangan", ...kartu("t1", 14, 36, 130, 26, W.langit, ["ruangan terbesar"], 8.8)),
       tambah("kamar", ...kartu("t2", 156, 36, 130, 26, W.hijauMuda, ["kamar tidur"], 8.8)),
       tambah("dapur,", ...kartu("t3", 14, 74, 130, 26, W.krem, ["dapur"], 8.8)),
       tambah("kamar@2", ...kartu("t4", 156, 74, 130, 26, W.pink, ["kamar mandi"], 8.8)),
-      tambah("Lukas", emo("tm", 150, 150, "👦", 36)),
+      tambah("Halim", emo("tm", 150, 150, "👦", 36)),
     ),
     k(
       "Ruangan yang butuh ubin paling banyak adalah ruang tamu, karena ukurannya paling besar dan lantainya paling luas. Yang paling sedikit adalah kamar mandi, yang paling kecil.",

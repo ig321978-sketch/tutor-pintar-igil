@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, judul, kartu, kotak, panah, penggaris, poligon, tandaSama, teks, titikSegitiga } from "./k5b4b-gambar";
 import { bersih, k, tambah } from "./k5b4b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Subbab B (Panduan Guru hlm. 116 dan 128) ------------------------------ */
 const P6 = titikSegitiga(6, 3, 5, 18);
@@ -10,21 +11,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Subbab B: Keliling Segitiga",
   sumber: "Panduan Guru hlm. 116 dan 128",
   latar: "#EFF6FF",
-  kutipan: [
-    "B. Keliling Segitiga",
-    "Menemukan keliling berbagai jenis segitiga",
-    "(segitiga sembarang, segitiga sama sisi,",
-    "dan segitiga sama kaki).",
-    "Pada Subbab B ini, peserta didik diberi pengalaman belajar berupa penemuan",
-    "terbimbing terhadap cara-cara menemukan keliling segitiga.",
-    "peserta didik langsung mengukur panjang sisi-sisi segitiga yang ada pada",
-    "buku dan menjumlahkannya untuk memperoleh keliling segitiga tersebut.",
-    "mula-mula diminta menemukan rumus",
-    "keliling segitiga sembarang. Selanjutnya, kegiatan penemuan dikembangkan",
-    "untuk segitiga sama sisi dan sama kaki.",
-    "peserta didik ditantang",
-    "untuk menggeneralisasi rumus umum dari keliling segitiga tersebut.",
-  ],
+  kutipan: kutipanLokal("k5b4b-materi-1.ts:1"),
   ketukan: [
     k(
       "Subbab B, Keliling Segitiga. Di Subbab A kita sudah tahu bahwa keliling adalah panjang jalur yang mengelilingi tepi bangun datar. Sekarang gagasan itu kita pakai pada segitiga.",
@@ -82,24 +69,7 @@ export const ADEGAN_PERSIAPAN: AdeganStory = {
   judul: "Sarana, apersepsi, dan pemanasan",
   sumber: "Panduan Guru hlm. 128–129",
   latar: "#FFF7ED",
-  kutipan: [
-    "Alat tulis: pulpen, pensil, penggaris, spidol.",
-    "LCD Projector dan Power Point Presentation Slide (PPT) yang menampilkan",
-    "gambar-gambar segitiga sebagaimana tercantum di buku siswa.",
-    "Jika sekolah tidak memiliki sarana tersebut,",
-    "dapat menggunakan gambar-gambar cetak yang ditempel di papan tulis.",
-    "Guru menyiapkan penggaris cadangan untuk mengantisipasi jika ada",
-    "peserta didik yang lupa membawa penggaris.",
-    "Apersepsi",
-    "peserta didik harus sudah mampu membedakan segitiga berdasarkan panjang",
-    "sisinya.",
-    "tanya jawab mengenai jenis segitiga yang disajikan pada buku siswa.",
-    "Untuk dapat menjawabnya, peserta didik juga diminta langsung mengukur panjang sisi-",
-    "sisinya dengan menggunakan penggaris.",
-    "Kegiatan mengukur panjang sisi-sisi segitiga pada Eksplorasi 4.3 secara",
-    "langsung dengan menggunakan penggaris dapat menjadi sebuah aktivitas",
-    "pemanasan.",
-  ],
+  kutipan: kutipanLokal("k5b4b-materi-1.ts:2"),
   ketukan: [
     k(
       "Sarana yang dibutuhkan: alat tulis berupa pulpen, pensil, penggaris, dan spidol. Ditambah LCD projector dan slide yang menampilkan gambar segitiga seperti di buku siswa.",

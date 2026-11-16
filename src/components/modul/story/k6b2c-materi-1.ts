@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, balon, deret, emo, garis, kartu, kotak, tabel, teks } from "./k6b2c-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k6b2c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Permasalahan Toko Herbal Tani ------------------------------ */
 export const ADEGAN_TOKO: AdeganStory = {
@@ -8,7 +9,7 @@ export const ADEGAN_TOKO: AdeganStory = {
   judul: "Permasalahan Toko Herbal Tani",
   sumber: "Materi: Toko Herbal Tani",
   latar: "#F0FDF4",
-  kutipan: ["Toko Herbal Tani menjual berbagai bibit tanaman obat maupun bibit tanaman hias", "tanaman obat adalah 3 : 2", "jumlah keseluruhan tanaman yang dijual di Toko Herbal Tani"],
+  kutipan: kutipanLokal("k6b2c-materi-1.ts:1"),
   ketukan: [
     k(
       "Sub-Bab C membahas penerapan rasio. Kita mulai dari Toko Herbal Tani, yang menjual berbagai bibit tanaman obat maupun bibit tanaman hias.",
@@ -57,7 +58,7 @@ export const ADEGAN_PENJUALAN: AdeganStory = {
   judul: "Latihan bersama: angka penjualan bibit tanaman",
   sumber: "Materi: penjualan bibit tanaman",
   latar: "#FFF7ED",
-  kutipan: ["total penjualan bibit tanaman hias dan tanaman obat sebanyak 72 bibit", "Rasio angka penjualan tanaman hias dan tanaman obat adalah 4 : 5", "Rasio bagian terhadap bagian (part to part)", "rasio bagian terhadap keseluruhan (part to whole)"],
+  kutipan: kutipanLokal("k6b2c-materi-1.ts:2"),
   ketukan: [
     k(
       "Pada bulan Juni, toko menjual tujuh puluh dua bibit tanaman hias dan tanaman obat. Rasio penjualan hias banding obat adalah empat banding lima.",

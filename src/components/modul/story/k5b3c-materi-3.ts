@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, judul, kartu, kotak, rumus, sel, tabel, teks } from "./k5b3c-gambar";
 import { bersih, k, tambah, warnai } from "./k5b3c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Kunci Uji Kompetensi (Panduan Guru hlm. 110): nomor 1 sampai 4 pecahan, nomor 5 sampai 10 benar atau salah. */
 export const KUNCI_TABEL = ["3/5", "13/60", "7/40", "1", "B", "S", "S", "B", "B", "S"];
@@ -11,17 +12,7 @@ export const ADEGAN_LATIHAN: AdeganStory = {
   judul: "Latihan: enam soal hitung dan dua soal cerita",
   sumber: "Materi: latihan mengurangkan pecahan",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ayo Berlatih",
-    "Tuliskan hasil perhitungan berikut ini.",
-    "Joko akan membuat kue apem maka",
-    "Joko pergi belanja di Pasar Beringharjo.",
-    "Berapa kg berat seluruh",
-    "belanjaan Joko?",
-    "Persediaan gula jawa Ibu tinggal",
-    "Gula jawa tersebut digunakan untuk",
-    "gula jawa yang dimiliki Ibu?",
-  ],
+  kutipan: kutipanLokal("k5b3c-materi-3.ts:1"),
   ketukan: [
     k(
       "Sekarang Latihan satu, ada enam soal. Soal a: satu per empat ditambah tiga per empat sama dengan satu utuh. Soal b: dua per tujuh dikurangi satu per tujuh sama dengan satu per tujuh.",
@@ -67,21 +58,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Hati-hati, renungan, dan tantangan",
   sumber: "Materi: hati-hati dan tantangan",
   latar: "#F0F9FF",
-  kutipan: [
-    "Tujuan dari aktivitas ini adalah untuk melakukan pengurangan pecahan.",
-    "Pada akhir kegiatan pembelajaran, peserta didik diminta",
-    "untuk membuat kesimpulan tentang cara termudah untuk menentukan",
-    "pengurangan bilangan pecahan.",
-    "Guru menjadi fasilitator.",
-    "Berikan kesempatan kepada peserta didik untuk mempresentasikan hasil",
-    "kerjanya.",
-    "Ajak peserta didik untuk menyimpulkan hal-hal penting yang harus",
-    "Kesalahan peserta didik yang mungkin terjadi adalah menyamakan penyebut",
-    "pecahan serta melakukan pengurangan pada bilangan campuran.",
-    "Bagi peserta didik dengan kecepatan belajar tinggi (advanced), minta",
-    "Setelah mempelajari bagian B ini,",
-    "penjumlahan bilangan yang sering mereka temui dalam kehidupan sehari-hari.",
-  ],
+  kutipan: kutipanLokal("k5b3c-materi-3.ts:2"),
   ketukan: [
     k(
       "Sekarang pesan dari guru. Tujuan kita adalah mahir mengurangkan pecahan, baik yang penyebutnya sama maupun berbeda. Di akhir, kamu bisa menyimpulkan cara termudah mengurangkan pecahan.",
@@ -122,23 +99,7 @@ export const ADEGAN_UK_1: AdeganStory = {
   judul: "Uji 1 sampai 4",
   sumber: "Materi: Uji 1 sampai 4",
   latar: "#FDF4FF",
-  kutipan: [
-    "Uji Kompetensi",
-    "Populasi penduduk dari Kabupaten Sleman adalah",
-    "penduduk Kabupaten Kulonprogo",
-    "Berapa jumlah populasi penduduk dari",
-    "Kabupaten Sleman dan Kulonprogo?",
-    "Populasi suku Batak di Indonesia",
-    "Berapa jumlah populasi suku Batak dan suku",
-    "Jawa dari seluruh penduduk Indonesia?",
-    "Di daerah Nusa Tenggara Timur terdapat beberapa macam",
-    "bahasa yang digunakan sehari-hari.",
-    "Berapa bagian selisih penggunaan bahasa indonesia dan bahasa",
-    "daerah dalam percakapan sehari-hari?",
-    "Beni memiliki",
-    "Berapa bagian sisa bika",
-    "Ambon yang masih dimiliki Beni?",
-  ],
+  kutipan: kutipanLokal("k5b3c-materi-3.ts:3"),
   ketukan: [
     k(
       "Sekarang kita kerjakan Uji satu sampai empat. Uji satu: penduduk Sleman dua per lima dan Kulonprogo satu per lima. Penyebutnya sama, jadi jumlahnya tiga per lima.",
@@ -183,17 +144,7 @@ export const ADEGAN_UK_2: AdeganStory = {
   judul: "Uji 5 sampai 10, jawaban, dan renungan",
   sumber: "Materi: Uji 5 sampai 10",
   latar: "#FDF4FF",
-  kutipan: [
-    "Soal No 5–6",
-    "Berikan tanda centang (√) pada kolom yang sesuai dari pernyataan-",
-    "pernyataan berikut ini",
-    "Hasil pengurangan yang hasilnya",
-    "Hasil dari 6 – 3",
-    "Operasi penjumlahan yang hasilnya",
-    "A. Kunci Jawaban Uji Kompetensi",
-    "B. Rubrik Penilaian",
-    "SKOR BENAR x 10",
-  ],
+  kutipan: kutipanLokal("k5b3c-materi-3.ts:4"),
   ketukan: [
     k(
       "Uji lima sampai sepuluh berupa pernyataan benar atau salah. Uji lima: satu satu per delapan dikurangi satu per dua. Sembilan per delapan dikurangi empat per delapan sama dengan lima per delapan, jadi benar.",
@@ -253,23 +204,7 @@ export const ADEGAN_PENUTUP: AdeganStory = {
   judul: "Refleksi, remedial, pengayaan, dan penutup bab",
   sumber: "Buku Siswa hlm. 102–103; Panduan Guru hlm. 110–112",
   latar: "#F0FDF4",
-  kutipan: [
-    "Setelah mempelajari materi terkait bilangan pecahan, isilah tabel",
-    "berikut sesuai dengan pemahaman kalian.",
-    "Aku dapat mengurutkan bilangan pecahan.",
-    "Aku dapat membandingkan bilangan pecahan.",
-    "Aku dapat menentukan penjumlahan pada",
-    "Aku dapat menentukan pengurangan pada",
-    "Bimbingan individu",
-    "Bimbingan kelompok",
-    "Pembelajaran ulang dengan menggunakan metode dan media",
-    "Pengayaan dapat diberikan kepada peserta didik",
-    "Berapakah jumlah penggunaan uang di rumah masing-",
-    "masing?",
-    "peserta didik dapat diajak berkreasi menyusun alat peraga pecahan di rumah",
-    "Sumber Bacaan",
-    "Matematika untuk SD Kelas V Vol. 2",
-  ],
+  kutipan: kutipanLokal("k5b3c-materi-3.ts:5"),
   ketukan: [
     k(
       "Refleksi akhir bab berupa tabel empat pernyataan dengan pilihan Ya atau Tidak. Aku dapat mengurutkan dan membandingkan pecahan, aku dapat menentukan penjumlahan, dan aku dapat menentukan pengurangan pada bilangan pecahan.",

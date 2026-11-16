@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { PERSEGI_ABCD, PERSEGI_PANJANG_ABCD, S, W, bangunBerpetak, emo, kartu, kisi, kotak, panah, persegiPanjang, poli, teks } from "./k5b5b-gambar";
 import { bersih, hapus, k, sorotkan, tambah } from "./k5b5b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Sub-Bab B (hlm. 144; Panduan Guru hlm. 200-201) ------------------------------ */
 export const ADEGAN_PEMBUKA_B: AdeganStory = {
@@ -8,7 +9,7 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
   judul: "Pembuka Sub-Bab B: luas daerah bangun datar",
   sumber: "Buku Siswa hlm. 144; Buku Panduan Guru hlm. 200–201",
   latar: "#EEF2FF",
-  kutipan: ["B. Luas Daerah Bangun Datar", "penemuan terbimbing terhadap cara menghitung luas daerah berbagai bangun datar", "Alat tulis: pulpen, pensil, penggaris, spidol, gunting, lem", "tangram", "tebak-tebakan perkalian bilangan-bilangan di bawah 10", "perkalian bilangan bulat dengan pecahan"],
+  kutipan: kutipanLokal("k5b5b-materi-1.ts:1"),
   ketukan: [
     k(
       "Selamat datang di Sub-Bab B, luas daerah bangun datar. Di sub-bab sebelumnya kita menutup daerah dengan petak satuan. Sekarang kita menemukan cara menghitung luas tujuh bangun datar.",
@@ -65,7 +66,7 @@ export const ADEGAN_PERSEGI_PANJANG: AdeganStory = {
   judul: "Menemukan luas persegi panjang",
   sumber: "Materi: luas persegi panjang",
   latar: "#F0FDF4",
-  kutipan: ["Ayo Menemukan Luas Daerah Persegi Panjang", "Temukan cara menghitung luas daerahnya", "Hitunglah panjang, lebar, dan luas daerah setiap kotak di atas", "Luas = panjang", "Apa yang kalian temukan?", "Guru meminta peserta didik mencermati hubungan antara"],
+  kutipan: kutipanLokal("k5b5b-materi-1.ts:2"),
   ketukan: [
     k(
       "Sekarang kita menemukan luas daerah persegi panjang. Perhatikan empat persegi panjang, A, B, C, dan D, pada kertas berpetak. Coba hitung panjang, lebar, dan luasnya.",
@@ -143,7 +144,7 @@ export const ADEGAN_PERSEGI: AdeganStory = {
   judul: "Menemukan luas persegi",
   sumber: "Materi: luas persegi",
   latar: "#FEFCE8",
-  kutipan: ["Ayo Menemukan Luas Daerah Persegi", "Apa nama bangun datar di atas", "Pada persegi, apakah panjang dan lebarnya", "Luas = sisi", "sisi-sisinya"],
+  kutipan: kutipanLokal("k5b5b-materi-1.ts:3"),
   ketukan: [
     k(
       "Sekarang kita menemukan luas daerah persegi. Kita sudah tahu luas persegi panjang. Perhatikan empat persegi, A sampai D, lalu hitung panjang, lebar, dan luasnya.",

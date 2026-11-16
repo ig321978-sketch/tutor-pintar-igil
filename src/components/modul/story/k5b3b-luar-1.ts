@@ -33,13 +33,13 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("sendiri", teks("g4", 150, 140, "cara menyamakannya yang berbeda", 9.8, W.merah)),
     ),
     k(
-      "Angka yang kita pakai berasal dari cerita tadi: martabak, penghapus, dan pita Yohana; kertas Lukas dan Komang; serta wingko Lukas.",
+      "Angka yang kita pakai berasal dari cerita tadi: martabak, penghapus, dan pita Igil; kertas Kira dan Halim; serta wingko Kira.",
       bersih(0),
       tambah(0, judul("Angka dari cerita tadi")),
       tambah("martabak,", ...kartu("a1", 14, 32, 272, 28, W.hijauMuda, ["sama: 1/8 + 2/8 dan 2/10 + 3/10"], 9)),
       tambah("pita", ...kartu("a2", 14, 68, 272, 28, W.langit, ["campuran: 2 1/5 + 3 1/5"], 9)),
       tambah("kertas", ...kartu("a3", 14, 104, 272, 28, W.pink, ["berbeda: 1/3 + 4/6"], 9)),
-      tambah("wingko", ...kartu("a4", 14, 140, 272, 28, W.krem, ["wingko Lukas: 1/2 + 1/3"], 9)),
+      tambah("wingko", ...kartu("a4", 14, 140, 272, 28, W.krem, ["wingko Kira: 1/2 + 1/3"], 9)),
     ),
   ],
 };
@@ -93,10 +93,10 @@ export const ADEGAN_LUAR_SAMA_TERAPAN: AdeganStory = {
   latar: "#ECFDF5",
   ketukan: [
     k(
-      "Terapkan pada martabak Nisa. Lukas mendapat satu per delapan, Komang dua per delapan. Penyebutnya sama-sama delapan.",
-      tambah(0, judul("Martabak Nisa")),
-      tambah("Lukas", ...batang("m1", 20, 56, 112, 26, 8, [[0, 1, W.jingga]]), teks("m1t", 76, 100, "1/8", 14, W.hitam)),
-      tambah("Komang", teks("mp", 150, 74, "+", 18, W.merah), ...batang("m2", 168, 56, 112, 26, 8, [[0, 2, W.merahPita]]), teks("m2t", 224, 100, "2/8", 14, W.hitam)),
+      "Terapkan pada martabak Upe. Kira mendapat satu per delapan, Halim dua per delapan. Penyebutnya sama-sama delapan.",
+      tambah(0, judul("Martabak Upe")),
+      tambah("Kira", ...batang("m1", 20, 56, 112, 26, 8, [[0, 1, W.jingga]]), teks("m1t", 76, 100, "1/8", 14, W.hitam)),
+      tambah("Halim", teks("mp", 150, 74, "+", 18, W.merah), ...batang("m2", 168, 56, 112, 26, 8, [[0, 2, W.merahPita]]), teks("m2t", 224, 100, "2/8", 14, W.hitam)),
       tambah("Penyebutnya", teks("m3", 150, 150, "penyebut sama: 8", 11, W.hijau)),
     ),
     k(
@@ -107,16 +107,16 @@ export const ADEGAN_LUAR_SAMA_TERAPAN: AdeganStory = {
       tambah("Hasilnya", teks("h2", 150, 110, "= 3/8", 24, W.hijau), ...batang("h3", 40, 128, 220, 28, 8, [[0, 3, W.hijauPita]])),
     ),
     k(
-      "Contoh kedua, penghapus Lukas: dua per sepuluh ditambah tiga per sepuluh sama dengan lima per sepuluh. Disederhanakan, lima per sepuluh menjadi satu per dua.",
+      "Contoh kedua, penghapus Kira: dua per sepuluh ditambah tiga per sepuluh sama dengan lima per sepuluh. Disederhanakan, lima per sepuluh menjadi satu per dua.",
       bersih(0),
-      tambah(0, judul("Penghapus Lukas")),
+      tambah(0, judul("Penghapus Kira")),
       tambah("dua", teks("p1", 150, 72, "2/10 + 3/10 = 5/10", 17, W.hitam)),
       tambah("Disederhanakan,", teks("p2", 150, 112, "5/10 = 1/2", 22, W.hijau)),
     ),
     k(
-      "Contoh ketiga, pita Yohana. Dua satu per lima ditambah tiga satu per lima. Jumlahkan bilangan bulatnya: dua tambah tiga sama dengan lima.",
+      "Contoh ketiga, pita Igil. Dua satu per lima ditambah tiga satu per lima. Jumlahkan bilangan bulatnya: dua tambah tiga sama dengan lima.",
       bersih(0),
-      tambah(0, judul("Pita Yohana")),
+      tambah(0, judul("Pita Igil")),
       tambah("Contoh", teks("y1", 150, 58, "2 1/5 + 3 1/5", 17, W.hitam)),
       tambah("bulatnya:", ...kartu("y2", 40, 72, 220, 28, W.krem, ["bilangan bulat"], 9.4)),
       tambah("sama", teks("y3", 150, 130, "2 + 3 = 5", 20, W.hijau)),
@@ -124,7 +124,7 @@ export const ADEGAN_LUAR_SAMA_TERAPAN: AdeganStory = {
     k(
       "Lalu jumlahkan pecahannya: satu per lima ditambah satu per lima sama dengan dua per lima. Gabungkan, hasilnya lima dua per lima meter.",
       bersih(0),
-      tambah(0, judul("Pita Yohana: pecahannya")),
+      tambah(0, judul("Pita Igil: pecahannya")),
       tambah("Lalu", teks("y7", 150, 52, "2 1/5 + 3 1/5", 15, W.hitam)),
       tambah("pecahannya:", ...kartu("y4", 40, 66, 220, 28, W.langit, ["bilangan pecahan"], 9.4)),
       tambah("satu", teks("y5", 150, 124, "1/5 + 1/5 = 2/5", 17, W.hijau)),

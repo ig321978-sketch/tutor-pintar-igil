@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { CONTOH, W, angkaSel, bil, bulat, emo, judul, kartu, ln, panah, simpanSel, susunAwal, susunLangkah, tabelSusun, teks } from "./k4b1e-gambar";
 import { bersih, hapus, idx, k, sorotkan, tambah } from "./k4b1e-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Panduan Guru awal sub-bab E (Panduan Guru hlm. 49; Buku Siswa hlm. 28) ------------------------------ */
 const SUARA_A1 = "Sub-bab E: Penjumlahan Bilangan Cacah sampai seribu. Panduan guru menuliskan pengalaman belajarnya: peserta didik mampu menjumlahkan bilangan sampai seribu dengan baik dan benar.";
@@ -13,18 +14,7 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
   judul: "Awal sub-bab E: pengalaman belajar dan pemantik",
   sumber: "Panduan Guru hlm. 49; Buku Siswa hlm. 28",
   latar: "#F0FDF4",
-  kutipan: [
-    "E. Penjumlahan Bilangan Cacah sampai 1.000",
-    "Pengalaman Belajar",
-    "menjumlahkan bilangan sampai 1.000 dengan baik dan benar.",
-    "Kebutuhan Sarana Prasarana dan Media",
-    "Manik-manik, kelereng, kerikil.",
-    "Guru merancang cerita kontekstual untuk kemudian dihubungkan dengan",
-    "Penguasaan nilai tempat bilangan tetap memegang peranan penting pada",
-    "Pertanyaan Esensi/Pemantik",
-    "1. Bagaimana operasi penjumlahan dengan tanpa menyimpan?",
-    "2. Bagaimana operasi penjumlahan dengan menyimpan?",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-1.ts:1"),
   ketukan: [
     k(
       SUARA_A1,
@@ -68,8 +58,8 @@ function susunNilai() {
   return [...tabelSusun("nt", 102, 112, 1), ...[...String(CONTOH.toni[0])].map((d, c) => angkaSel("nt", 102, 112, 0, c, d))];
 }
 
-/* ------------------------------ 2. Pak Toni: cara susun panjang (Buku Siswa hlm. 28–29; Panduan Guru hlm. 50) ------------------------------ */
-const SUARA_B1 = "Pak Toni mempunyai seratus tiga puluh satu pohon jeruk di Kota Jember dan tiga ratus dua puluh satu pohon di Kota Banyuwangi. Berapa pohon jeruk Pak Toni seluruhnya?";
+/* ------------------------------ 2. Pak Igil: cara susun panjang (Buku Siswa hlm. 28–29; Panduan Guru hlm. 50) ------------------------------ */
+const SUARA_B1 = "Pak Igil mempunyai seratus tiga puluh satu pohon jeruk di Kota Jember dan tiga ratus dua puluh satu pohon di Kota Banyuwangi. Berapa pohon jeruk Pak Igil seluruhnya?";
 const SUARA_B2 = "Ada dua cara: susun panjang dan susun pendek. Perhatikan dulu cara susun panjang: tulis bilangan bersusun menurut nilai tempat, lalu uraikan menjadi ratusan, puluhan, dan satuan.";
 const SUARA_B3 = "Uraikan seratus tiga puluh satu menjadi seratus ditambah tiga puluh ditambah satu. Tiga ratus dua puluh satu menjadi tiga ratus ditambah dua puluh ditambah satu.";
 const SUARA_B4 = "Langkah ketiga: kelompokkan bilangan dengan nilai tempat yang sama. Seratus ditambah tiga ratus, tiga puluh ditambah dua puluh, dan satu ditambah satu.";
@@ -77,28 +67,14 @@ const SUARA_B5 = "Hasilnya empat ratus ditambah lima puluh ditambah dua, yaitu e
 
 export const ADEGAN_TONI_PANJANG: AdeganStory = {
   id: "toni-panjang",
-  judul: "Pohon jeruk Pak Toni: susun panjang",
+  judul: "Pohon jeruk Pak Igil: susun panjang",
   sumber: "Materi: susun panjang",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ayo Mengamati",
-    "Pak Toni mempunyai pohon jeruk sebanyak 131 pohon di Kota Jember dan",
-    "321 pohon di Kota Banyuwangi. Berapakah banyak pohon jeruk Pak Toni",
-    "Cara Susun Panjang",
-    "1. Tulis bilangan secara bersusun sesuai nilai",
-    "2. Uraikan (dalam bentuk ratusan, puluhan",
-    "dan satuan) masing-masing bilangan yang",
-    "3. Mengelompokkan masing-masing bilangan",
-    "131 = 100 + 30 + 1",
-    "321 = 300 + 20 + 1 +",
-    "= (100 + 300) + (30 + 20) + (1 + 1)",
-    "= 400 + 50 + 2",
-    "= 452",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-1.ts:2"),
   ketukan: [
     k(
       SUARA_B1,
-      tambah(0, judul("Pohon jeruk Pak Toni")),
+      tambah(0, judul("Pohon jeruk Pak Igil")),
       tambah("seratus", ...kartu("tj", 14, 34, 128, 54, W.hijauMuda, ["Kota Jember", "131 pohon"], 10)),
       tambah(idx(SUARA_B1, "ratus") - 1, ...kartu("tb", 158, 34, 128, 54, W.langit, ["Kota Banyuwangi", "321 pohon"], 10)),
       tambah("Berapa", emo("tq1", 76, 128, "🍊", 26), emo("tq2", 150, 128, "🍊", 26), emo("tq3", 224, 128, "🍊", 26), ...kartu("tq", 40, 148, 220, 34, W.emas, ["berapa pohon seluruhnya?"], 10)),
@@ -136,7 +112,7 @@ export const ADEGAN_TONI_PANJANG: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Pak Toni: cara susun pendek tanpa menyimpan (Buku Siswa hlm. 29; Panduan Guru hlm. 50) ------------------------------ */
+/* ------------------------------ 3. Pak Igil: cara susun pendek tanpa menyimpan (Buku Siswa hlm. 29; Panduan Guru hlm. 50) ------------------------------ */
 const SUARA_C1 = "Bagaimana kalau memakai cara susun pendek? Tanpa menyimpan, tulis bilangan bersusun: satuan dengan satuan, puluhan dengan puluhan, ratusan dengan ratusan.";
 const SUARA_C2 = "Operasi dilakukan dari nilai tempat terkecil ke terbesar, yaitu dari kanan ke kiri. Mulai dari satuan: satu ditambah satu sama dengan dua.";
 const SUARA_C3 = "Lanjut ke puluhan: tiga ditambah dua sama dengan lima. Tanpa menyimpan, jadi tidak ada angka yang dipindahkan ke kolom sebelahnya.";
@@ -146,22 +122,10 @@ const langkah = (id: string, x: number, y: number, bilangan: readonly number[], 
 
 export const ADEGAN_TONI_PENDEK: AdeganStory = {
   id: "toni-pendek",
-  judul: "Pohon jeruk Pak Toni: susun pendek",
+  judul: "Pohon jeruk Pak Igil: susun pendek",
   sumber: "Materi: susun pendek tanpa menyimpan",
   latar: "#F0F9FF",
-  kutipan: [
-    "Bagaimana kalau menggunakan cara",
-    "susun pendek?",
-    "Cara Susun Pendek (tanpa menyimpan)",
-    "Tulis bilangan secara bersusun sesuai nilai tempatnya. (satuan",
-    "disusun dengan satuan, puluhan disusun dengan puluhan, dan",
-    "Operasi penjumlahan dilakukan dari nilai tempat yang terkecil ke",
-    "nilai tempat yang besar (dari kanan ke kiri)",
-    "Jumlahkan masing-masing bilangan sesuai dengan nilai",
-    "1 + 3 = 4",
-    "3 + 2 = 5",
-    "1 + 1 = 2",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-1.ts:3"),
   ketukan: [
     k(
       SUARA_C1,
@@ -205,22 +169,7 @@ export const ADEGAN_BUKU_TIGA: AdeganStory = {
   judul: "Tiga perpustakaan: tiga bilangan dijumlahkan",
   sumber: "Materi: tiga bilangan",
   latar: "#FEFCE8",
-  kutipan: [
-    "Perpustakaan SD Gebang 1 memiliki 124 buku, Perpustakaan SD",
-    "Gebang 2 memiliki 411 buku, dan Perpustakaan SD Gebang 5",
-    "memiliki 363 buku. Hitunglah berapa banyak buku seluruhnya dari",
-    "Apakah boleh melakukan penjumlahan",
-    "cara susun panjang.",
-    "124 = 100 + 20 + 4",
-    "411 = 400 + 10 + 1",
-    "363 = 300 + 60 + 3 +",
-    "= (100 + 400 + 300) + (20 + 10 + 60) + (4 + 1 + 3)",
-    "= 800 + 90 + 8",
-    "= 898",
-    "Jadi, banyak buku-buku tersebut adalah 898 buku",
-    "Bagus. Sekarang kalian lakukan penjumlahan",
-    "cara susun pendek.",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-1.ts:4"),
   ketukan: [
     k(
       SUARA_D1,
@@ -283,23 +232,7 @@ export const ADEGAN_SIMPAN_PANJANG: AdeganStory = {
   judul: "Dua keranjang jeruk: susun panjang dengan menyimpan",
   sumber: "Materi: susun panjang dengan menyimpan",
   latar: "#FFF7ED",
-  kutipan: [
-    "Seorang Pedagang buah di depan sekolah memikul 2",
-    "keranjang buah jeruk. 1 keranjang berisi 189 jeruk dan",
-    "keranjang yang lain berisi 245 jeruk. Berapakah jumlah",
-    "Penjumlahan cara susun panjang dengan menyimpan",
-    "189 = 100 + 80 + 9",
-    "245 = 200 + 40 + 5 +",
-    "= (200 + 100) + (80 + 40) + (9 + 5)",
-    "= 300 + 120 + 14",
-    "= 300 + (100 + 20) + (10 + 4)",
-    "= (300 + 100) + (20 + 10) + 4",
-    "= 400 + 30 + 4",
-    "= 434",
-    "2. 9 + 5 = 14, uraikan menjadi 10 + 4",
-    "3. 80 + 40 = 120, uraikan menjadi 100 + 20.",
-    "Jadi, banyaknya buah yang dijual adalah 434 buah",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-1.ts:5"),
   ketukan: [
     k(
       SUARA_E1,
@@ -354,16 +287,7 @@ export const ADEGAN_SIMPAN_PENDEK: AdeganStory = {
   judul: "Dua keranjang jeruk: susun pendek dengan menyimpan",
   sumber: "Materi: susun pendek dengan menyimpan",
   latar: "#F0F9FF",
-  kutipan: [
-    "Penjumlahan cara susun pendek dengan menyimpan",
-    "Cara bersusun pendek :",
-    "1. Jumlahkan masing-masing bilangan sesuai nilai",
-    "2. 9 + 5 = 14, letakkan 4 pada nilai tempat satuan,",
-    "dan 1 diatas nilai tempat puluhan.",
-    "3. 1 + 8 + 4 = 13, letakkan 3 pada puluhan dan 1",
-    "diatas nilai tempat ratusan.",
-    "4. 1 + 1 + 2 = 4, letakkan 4 pada ratusan",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-1.ts:6"),
   ketukan: [
     k(
       SUARA_F1,

@@ -3,6 +3,7 @@
 // teks bertumpuk, pemisahan materi dan metode luar, tidak membocorkan Sub-Bab E (persen) kecuali catatan temuan buku, kutipan buku terhadap teks PDF (pdftotext, atau PyMuPDF bila tidak ada),
 // benda berbingkai, batang sepuluh sel, dan kisi seratus kotak dihitung ulang dari gambar, hitungan mandiri konversi pecahan ke desimal dan kunci Panduan Guru, emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b2d.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -541,8 +542,8 @@ const pecahanTeks = (objs, id) => [nilaiId(objs, `${id}-a`), nilaiId(objs, `${id
       }
     }
     stat.kutipan = n;
-    cek(n >= 80, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(M.adegan.every((a) => (a.kutipan ?? []).length >= 5), "tiap adegan materi memuat paling sedikit 5 kutipan buku");
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 80, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.every((a) => (a.kutipan ?? []).length >= 5), "tiap adegan materi memuat paling sedikit 5 kutipan buku");
     // Angka kunci dan istilah yang dipakai video.
     for (const t of ["4 10 = 0,4 5 10 = 0,5 3 10 = 0,3", "a. 1 10 = 0,1 b. 5 10 = 0,5 c.", "9 10 = 0,9 15 100 = 0,15 62 100 = 0,62 81 100 = 0,81", "bentuk bisa dituliskan dalam bentuk desimal menjadi 0,1.", "menjadi 0,3 ibu?", "desimal 0,01.", "bisa dituliskan dalam bentuk desimal menjadi 0,07.", "maka nilai penyebut 10", "maka nilai penyebut 100", "0,1 = 25 100 0,25 =", "ibu sudah siapkan roti yang jumlahnya ada 10.", "kita memiliki 100 biskuit"]) {
       cek(guru.includes(t) || siswa.includes(t), `Panduan Guru atau Buku Siswa memuat "${t}"`);
@@ -575,7 +576,7 @@ const pecahanTeks = (objs, id) => [nilaiId(objs, `${id}-a`), nilaiId(objs, `${id
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b2d-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2d sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b2d-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2d sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

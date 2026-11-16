@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, baris, emo, kartu, labelSisi, panah, segiBeraturan, tanda, tandaSisi, teks } from "./k5b4d-gambar";
 import { bersih, k, tambah, ubah } from "./k5b4d-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const jud = (isi: string, y = 20, u = 12): Obj => teks("jud", 150, y, isi, u, W.ungu);
 
@@ -10,13 +11,7 @@ export const ADEGAN_LIMA_1: AdeganStory = {
   judul: "Mengamati segi lima",
   sumber: "Materi: segi lima beraturan",
   latar: "#FFF4DD",
-  kutipan: [
-    "Perhatikan bangun-bangun datar berikut",
-    "Ada berapa sisi yang dimiliki?",
-    "Apakah sisi-sisinya sama panjang?",
-    "Bangun apakah itu?",
-    "Segi lima beraturan",
-  ],
+  kutipan: kutipanLokal("k5b4d-materi-2.ts:1"),
   ketukan: [
     k(
       "Sekarang kita mulai dengan segi lima. Perhatikan gambarnya baik-baik. Setiap sisi gambar itu panjangnya tiga sentimeter.",
@@ -76,12 +71,7 @@ export const ADEGAN_LIMA_2: AdeganStory = {
   judul: "Keliling segi lima beraturan",
   sumber: "Materi: keliling segi lima beraturan",
   latar: "#FFF4DD",
-  kutipan: [
-    "Bagaimana cara mencari kelilingnya?",
-    "Keliling segi lima beraturan dapat dicari dengan cara",
-    "Dengan demikian, diperoleh kelilingnya",
-    "sehingga diperoleh kelilingnya 15 cm",
-  ],
+  kutipan: kutipanLokal("k5b4d-materi-2.ts:2"),
   ketukan: [
     k(
       "Pertanyaan keempat: bagaimana cara mencari kelilingnya? Keliling berarti jumlah semua sisi, yaitu tiga ditambah tiga ditambah tiga ditambah tiga ditambah tiga.",
@@ -142,13 +132,7 @@ export const ADEGAN_ENAM_1: AdeganStory = {
   judul: "Mengamati segi enam",
   sumber: "Materi: segi enam beraturan",
   latar: "#EFF6FF",
-  kutipan: [
-    "Perhatikan gambar di atas",
-    "Ada berapa banyak sisinya?",
-    "Apakah sisi-sisinya sama panjang?",
-    "Bangun apakah itu?",
-    "Segi enam beraturan",
-  ],
+  kutipan: kutipanLokal("k5b4d-materi-2.ts:3"),
   ketukan: [
     k(
       "Sekarang segi enam. Panjang sisinya belum diberi tahu, jadi kita ukur dengan penggaris. Hasilnya tiga sentimeter.",
@@ -207,12 +191,7 @@ export const ADEGAN_ENAM_2: AdeganStory = {
   judul: "Keliling segi enam beraturan",
   sumber: "Materi: keliling segi enam beraturan",
   latar: "#EFF6FF",
-  kutipan: [
-    "Bagaimana cara mencari kelilingnya?",
-    "Keliling segi enam beraturan dapat dicari dengan cara",
-    "Dengan demikian, diperoleh kelilingnya",
-    "sehingga diperoleh kelilingnya 18 cm",
-  ],
+  kutipan: kutipanLokal("k5b4d-materi-2.ts:4"),
   ketukan: [
     k(
       "Pertanyaan: bagaimana cara mencari kelilingnya? Jumlahkan semua sisinya, yaitu tiga ditambah tiga ditambah tiga ditambah tiga ditambah tiga ditambah tiga.",

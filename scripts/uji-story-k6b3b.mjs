@@ -3,6 +3,7 @@
 // tumpang tindih teks, pemisahan materi dan metode luar, hitungan mandiri (proyeksi tampak, matriks tinggi, dadu, susunan
 // yang cocok), kata terlarang (video diputar seperti guru mengajar), kutipan buku (bila PDF ada), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k6b3b.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -170,7 +171,7 @@ const U = V.VIDEO_LUAR_K6B3B;
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,arsitek-tampak,eksplorasi-32,rekonstruksi-diskusi,pembahasan-perspektif,latihan-32,latihan-32-dadu,uji-refleksi", "urutan adegan materi");
-  for (const kata of ["Latihan 1", "Latihan 4", "Uji 1", "Renungan", "Tantangan", "Hati-hati", "Latihan bersama", "Anike", "Fort Rotterdam", "perspektif", "tampak depan", "tampak kanan", "tampak atas"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
+  for (const kata of ["Latihan 1", "Latihan 4", "Uji 1", "Renungan", "Tantangan", "Hati-hati", "Latihan bersama", "Kira", "Fort Rotterdam", "perspektif", "tampak depan", "tampak kanan", "tampak atas"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luarb3-proyeksi", "luarb3-matriks", "luarb3-oklusi", "luarb3-rekonstruksi"].every((i) => ids.includes(i)), "video metode luar: tiap metode punya adegan");
   cek(U.adegan[1].id === "luarb3-pembuka" && U.adegan[U.adegan.length - 1].id === "luarb3-ringkas" && U.adegan.length === 7 && M_VIDEO.adegan.length === 8, "7 adegan materi diputar ditambah sapaan dan 6 adegan metode luar ditambah sapaan");
@@ -215,12 +216,12 @@ const U = V.VIDEO_LUAR_K6B3B;
       }).join("");
     });
   };
-  // Susunan Anike (Eksplorasi 3.2): tiga tampak pada buku.
-  sama(depan(G.ANIKE), [".h.", "bmk"], "Anike: tampak depan berbentuk T");
-  sama(kanan(G.ANIKE), ["h", "k"], "Anike: tampak kanan dua kubus bertumpuk");
-  sama(atas(G.ANIKE), ["bhk"], "Anike: tampak atas tiga kotak");
-  sama(G.ANIKE.length, 4, "Anike: 4 kubus");
-  sama([maks(G.ANIKE, (c) => c.u) + 1, maks(G.ANIKE, (c) => c.z) + 1, maks(G.ANIKE, (c) => c.v) + 1], [3, 2, 1], "Anike: lebar 3, tinggi 2, kedalaman 1");
+  // Susunan Kira (Eksplorasi 3.2): tiga tampak pada buku.
+  sama(depan(G.ANIKE), [".h.", "bmk"], "Kira: tampak depan berbentuk T");
+  sama(kanan(G.ANIKE), ["h", "k"], "Kira: tampak kanan dua kubus bertumpuk");
+  sama(atas(G.ANIKE), ["bhk"], "Kira: tampak atas tiga kotak");
+  sama(G.ANIKE.length, 4, "Kira: 4 kubus");
+  sama([maks(G.ANIKE, (c) => c.u) + 1, maks(G.ANIKE, (c) => c.z) + 1, maks(G.ANIKE, (c) => c.v) + 1], [3, 2, 1], "Kira: lebar 3, tinggi 2, kedalaman 1");
   // Latihan 3.2 nomor 5: tiga tampak pada buku harus cocok dengan empat kubus yang disusun.
   sama(depan(G.LATIHAN5), ["b.", "km"], "Latihan 3.2 no. 5: tampak depan");
   sama(kanan(G.LATIHAN5), ["b.", "mh"], "Latihan 3.2 no. 5: tampak kanan");
@@ -239,7 +240,7 @@ const U = V.VIDEO_LUAR_K6B3B;
   const terisi = (m) => m.flat().filter((n) => n > 0).length;
   const dariMatriks = (m, warna) => m.flatMap((b, v) => b.flatMap((n, u) => Array.from({ length: n }, (_, z) => ({ u, v, z, w: warna }))));
   const ANI = [[1, 2, 1]];
-  sama([kolomMaks(ANI), barisMaks(ANI), terisi(ANI), jumlah(ANI)], [[1, 2, 1], [2], 3, 4], "matriks Anike: depan 1,2,1; kanan 2; atas 3 sel; 4 kubus");
+  sama([kolomMaks(ANI), barisMaks(ANI), terisi(ANI), jumlah(ANI)], [[1, 2, 1], [2], 3, 4], "matriks Kira: depan 1,2,1; kanan 2; atas 3 sel; 4 kubus");
   const M5 = [[2, 1], [1, 0]];
   sama([kolomMaks(M5), barisMaks(M5), terisi(M5), jumlah(M5)], [[2, 1], [2, 1], 3, 4], "matriks nomor 5: depan 2,1; kanan 2,1; atas 3 sel; 4 kubus");
   sama(dariMatriks(M5, "x").length, 4, "matriks nomor 5 memberi 4 kubus");
@@ -317,10 +318,10 @@ const U = V.VIDEO_LUAR_K6B3B;
   const W2 = G.WARNA_KUBUS;
   {
     const a = adegan(V.VIDEO_MATERI_K6B3B, "eksplorasi-32");
-    [["d-01", "h"], ["d-10", "b"], ["d-11", "m"], ["d-12", "k"]].forEach(([id, w]) => sama(warnaDi(a, 3, id), W2[w], `Anike depan ${id}`));
-    sama(L.keadaanStory(a, 3, 9999).filter((o) => o.id.startsWith("d-")).length, 4, "Anike depan: 4 kotak");
-    [["r-00", "h"], ["r-10", "k"]].forEach(([id, w]) => sama(warnaDi(a, 4, id), W2[w], `Anike kanan ${id}`));
-    [["t-00", "b"], ["t-01", "h"], ["t-02", "k"]].forEach(([id, w]) => sama(warnaDi(a, 5, id), W2[w], `Anike atas ${id}`));
+    [["d-01", "h"], ["d-10", "b"], ["d-11", "m"], ["d-12", "k"]].forEach(([id, w]) => sama(warnaDi(a, 3, id), W2[w], `Kira depan ${id}`));
+    sama(L.keadaanStory(a, 3, 9999).filter((o) => o.id.startsWith("d-")).length, 4, "Kira depan: 4 kotak");
+    [["r-00", "h"], ["r-10", "k"]].forEach(([id, w]) => sama(warnaDi(a, 4, id), W2[w], `Kira kanan ${id}`));
+    [["t-00", "b"], ["t-01", "h"], ["t-02", "k"]].forEach(([id, w]) => sama(warnaDi(a, 5, id), W2[w], `Kira atas ${id}`));
   }
   {
     const a = adegan(V.VIDEO_MATERI_K6B3B, "latihan-32");
@@ -350,7 +351,7 @@ const U = V.VIDEO_LUAR_K6B3B;
       n += 1;
       cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
-    cek(n >= 20, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 20, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -370,7 +371,7 @@ const U = V.VIDEO_LUAR_K6B3B;
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k6b3b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika, sapaan, dan berkas k6b3b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k6b3b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika, sapaan, dan berkas k6b3b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bulat, emo, judul, kalimat, kartu, kolomSusun, susun, tabel, tabelNilaiTempat, teks } from "./k5b1d-gambar";
 import { bersih, k, tambah, ubah } from "./k5b1d-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Sub-Bab D (Panduan Guru hlm. 32) ------------------------------ */
 export const ADEGAN_PEMBUKA_D: AdeganStory = {
@@ -8,19 +9,7 @@ export const ADEGAN_PEMBUKA_D: AdeganStory = {
   judul: "Pembuka Sub-Bab D: operasi hitung pada bilangan cacah sampai 100.000",
   sumber: "Panduan Guru hlm. 32–33",
   latar: "#F0F9FF",
-  kutipan: [
-    "melakukan penjumlahan bilangan sampai 100.000",
-    "melakukan pengurangan bilangan sampai 100.000",
-    "melakukan perkalian bilangan sampai 100.000",
-    "melakukan pembagian bilangan sampai 100.000",
-    "memecahkan masalah yang berkaitan dengan operasi bilangan sampai 100.000",
-    "Alat tulis",
-    "Kertas",
-    "Guru dapat memulai pembelajaran dengan mengajukan pertanyaan tentang cara melakukan operasi bilangan pada materi di kelas IV",
-    "Guru memulai kegiatan dengan mengajak peserta didik mengulang materi sebelumnya tentang menentukan nilai tempat, serta tentang membaca dan menulis bilangan.",
-    "Tujuan dari aktivitas ini adalah untuk melakukan operasi bilangan sampai 100.000 melalui kegiatan percobaan dan eksplorasi dengan berbagai cara.",
-    "peserta didik diminta untuk berpikir kritis dan kreatif terkait materi yang disajikan",
-  ],
+  kutipan: kutipanLokal("k5b1d-materi-1.ts:1"),
   ketukan: [
     k(
       "Sub-Bab D, operasi hitung pada bilangan cacah sampai seratus ribu, adalah penutup Bab satu. Peserta didik diharapkan dapat menjumlah, mengurang, mengalikan, membagi, dan memecahkan masalah.",
@@ -61,28 +50,19 @@ export const ADEGAN_PEMBUKA_D: AdeganStory = {
 /* ------------------------------ 2. Eksplorasi 1.4: uang bakti sosial (Buku Siswa hlm. 17) ------------------------------ */
 export const ADEGAN_BAKTI: AdeganStory = {
   id: "eks-14-cerita",
-  judul: "Uang Nisa untuk bakti sosial",
+  judul: "Uang Kira untuk bakti sosial",
   sumber: "Materi: menjumlah uang bakti sosial",
   latar: "#FFF7ED",
-  kutipan: [
-    "Eksplorasi 1.4",
-    "SD Pancasila mengadakan acara bakti sosial di panti asuhan.",
-    "Ibu memberi uang Nisa sebesar Rp57.500,00.",
-    "Ayah juga memberi uang sebesar Rp22.000,00.",
-    "Berapakah uang Nisa untuk keperluan bakti sosial?",
-    "Bagaimana cara Nisa mengetahui jumlah uangnya?",
-    "Kalimat matematikanya",
-    "Teman-teman, bisakah kalian menghitung jumlah uang yang diberikan Ibu dan Ayah untuk bakti sosial?",
-  ],
+  kutipan: kutipanLokal("k5b1d-materi-1.ts:2"),
   ketukan: [
     k(
-      "Perhatikan cerita ini. SD Pancasila mengadakan bakti sosial di panti asuhan. Ibu memberi Nisa uang lima puluh tujuh ribu lima ratus rupiah, dan Ayah dua puluh dua ribu rupiah.",
+      "Perhatikan cerita ini. SD Pancasila mengadakan bakti sosial di panti asuhan. Ibu memberi Kira uang lima puluh tujuh ribu lima ratus rupiah, dan Ayah dua puluh dua ribu rupiah.",
       tambah(0, judul("Uang bakti sosial"), ...kartu("bs", 14, 28, 272, 26, W.krem, ["Bakti sosial di panti asuhan SD Pancasila"], 8.8)),
       tambah("Ibu", emo("e1", 150, 168, "💰", 30), ...kartu("ib", 14, 70, 130, 56, W.merahMuda, ["Uang dari Ibu", "Rp57.500"], 9.6)),
       tambah("Ayah", ...kartu("ay", 156, 70, 130, 56, W.hijauMuda, ["Uang dari Ayah", "Rp22.000"], 9.6)),
     ),
     k(
-      "Pertanyaannya: berapakah uang Nisa untuk keperluan bakti sosial, dan bagaimana cara Nisa mengetahui jumlahnya? Kalimat matematikanya menggabungkan dua uang, jadi berupa penjumlahan.",
+      "Pertanyaannya: berapakah uang Kira untuk keperluan bakti sosial, dan bagaimana cara Kira mengetahui jumlahnya? Kalimat matematikanya menggabungkan dua uang, jadi berupa penjumlahan.",
       bersih(0),
       tambah(0, judul("Kalimat matematikanya")),
       tambah("Pertanyaannya:", teks("q1", 62, 96, "57.500", 15, W.merah)),
@@ -91,43 +71,28 @@ export const ADEGAN_BAKTI: AdeganStory = {
       tambah("jadi", ...kartu("gb", 40, 128, 220, 34, W.langit, ["gabung dua uang: penjumlahan"], 9.4)),
     ),
     k(
-      "Coba kamu hitung: berapa jumlah uang dari Ibu dan Ayah? Ada dua cara: cara Yohana yang menguraikan, dan cara Lukas yang bersusun.",
+      "Coba kamu hitung: berapa jumlah uang dari Ibu dan Ayah? Ada dua cara: cara Halim yang menguraikan, dan cara Igil yang bersusun.",
       bersih(0),
       tambah(0, judul("Dua cara menghitung")),
       tambah("Coba", emo("tk", 150, 66, "🤔", 32)),
-      tambah("Yohana", ...kartu("cy", 14, 86, 130, 50, W.merahMuda, ["Cara Yohana", "menguraikan"], 9.6)),
-      tambah("Lukas", ...kartu("cl", 156, 86, 130, 50, W.hijauMuda, ["Cara Lukas", "bersusun"], 9.6)),
+      tambah("Halim", ...kartu("cy", 14, 86, 130, 50, W.merahMuda, ["Cara Halim", "menguraikan"], 9.6)),
+      tambah("Igil", ...kartu("cl", 156, 86, 130, 50, W.hijauMuda, ["Cara Igil", "bersusun"], 9.6)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Eksplorasi 1.4: Cara Yohana dan Cara Lukas (Buku Siswa hlm. 18) ------------------------------ */
+/* ------------------------------ 3. Eksplorasi 1.4: Cara Halim dan Cara Igil (Buku Siswa hlm. 18) ------------------------------ */
 const LJ = tabelNilaiTempat("lj", 6, 91, [["Jumlah", 79500]], false);
 export const ADEGAN_CARA: AdeganStory = {
   id: "eks-14-cara",
-  judul: "Cara Yohana dan cara Lukas",
+  judul: "Cara Halim dan cara Igil",
   sumber: "Materi: menjumlah dengan dua cara",
   latar: "#F0FDF4",
-  kutipan: [
-    "Cara Yohana",
-    "57.500 = 50.000 + 7.000 + 500 + 0 + 0",
-    "22.000 = 20.000 + 2.000 + 0 + 0 + 0",
-    "Dengan demikian, jumlah uang dari Ibu dan Ayah adalah",
-    "= 70.000 + 9.000 + 500 + 0 + 0",
-    "= 79.500",
-    "Cara Lukas",
-    "Puluh Ribuan Ribuan Ratusan Puluhan Satuan",
-    "Uang dari Ibu 5 7 5 0 0",
-    "Uang dari Ayah 2 2 0 0 0",
-    "Jumlah 7 9 5 0 0",
-    "Penjumlahan dapat dihitung dengan menyesuaikan nilai tempatnya.",
-    "Kamu bisa menghitungnya dengan cara bersusun pendek",
-    "Ayo jumlahkan berdasarkan nilai tempatnya.",
-  ],
+  kutipan: kutipanLokal("k5b1d-materi-1.ts:3"),
   ketukan: [
     k(
-      "Cara Yohana menguraikan bilangan menurut nilai tempat. Lima puluh tujuh ribu lima ratus sama dengan lima puluh ribu ditambah tujuh ribu ditambah lima ratus.",
-      tambah(0, judul("Cara Yohana: uraikan"), teks("ly", 150, 40, "Uang dari Ibu", 8.8, W.biru)),
+      "Cara Halim menguraikan bilangan menurut nilai tempat. Lima puluh tujuh ribu lima ratus sama dengan lima puluh ribu ditambah tujuh ribu ditambah lima ratus.",
+      tambah(0, judul("Cara Halim: uraikan"), teks("ly", 150, 40, "Uang dari Ibu", 8.8, W.biru)),
       tambah("Lima", teks("u1", 150, 58, "57.500 = 50.000 + 7.000 + 500 + 0 + 0", 9.4, W.merah)),
     ),
     k(
@@ -139,15 +104,15 @@ export const ADEGAN_CARA: AdeganStory = {
     k(
       "Puluh ribuan lima puluh ribu ditambah dua puluh ribu, ribuan tujuh ribu ditambah dua ribu, ratusan lima ratus. Jadi tujuh puluh sembilan ribu lima ratus.",
       bersih(0),
-      tambah(0, judul("Cara Yohana: jumlahkan")),
+      tambah(0, judul("Cara Halim: jumlahkan")),
       tambah("Puluh", teks("j1", 150, 52, "(50.000 + 20.000) + (7.000 + 2.000) + (500 + 0) = 79.500", 7.6, W.merah)),
       tambah("ratusan", teks("j2", 150, 90, "70.000 + 9.000 + 500 = 79.500", 11, W.hijau)),
-      tambah("Jadi", ...kartu("jh", 60, 118, 180, 40, W.krem, ["Rp79.500", "uang Nisa"], 11)),
+      tambah("Jadi", ...kartu("jh", 60, 118, 180, 40, W.krem, ["Rp79.500", "uang Kira"], 11)),
     ),
     k(
-      "Cara Lukas memakai bersusun pendek. Angka disusun lurus menurut kolom nilai tempat. Ibu lima, tujuh, lima, nol, nol, dan Ayah dua, dua, nol, nol, nol.",
+      "Cara Igil memakai bersusun pendek. Angka disusun lurus menurut kolom nilai tempat. Ibu lima, tujuh, lima, nol, nol, dan Ayah dua, dua, nol, nol, nol.",
       bersih(0),
-      tambah(0, judul("Cara Lukas: bersusun pendek")),
+      tambah(0, judul("Cara Igil: bersusun pendek")),
       tambah("disusun", ...tabelNilaiTempat("lk", 6, 40, [["Ibu", 57500], ["Ayah", 22000]])),
     ),
     k(
@@ -171,35 +136,20 @@ export const ADEGAN_LUKAS: AdeganStory = {
   judul: "Latihan: ayam taliwang dan plencing kangkung",
   sumber: "Materi: menjumlah dan mengurang uang",
   latar: "#FFFBEB",
-  kutipan: [
-    "Ayo Berdiskusi",
-    "Cerita di halaman sebelumnya merupakan salah satu aplikasi matematika dalam hal penjumlahan.",
-    "Bagaimana jika pengurangan?",
-    "Apakah caranya akan sama?",
-    "Lukas sedang berwisata di Lombok.",
-    "Ayam Taliwang 32.500",
-    "Plencing Kangkung 13.250",
-    "Jika Lukas memiliki uang Rp47.900,00 dan membeli seporsi ayam taliwang dan plencing kangkung, apakah uang Lukas bersisa?",
-    "Tuliskan jumlah uang yang harus dibayar Lukas dalam bentuk kalimat matematika.",
-    "Tuliskan jumlah uang yang harus Lukas bayar dengan cara bersusun pendek.",
-    "Tentukan sisa atau kekurangan uang Lukas dengan cara susun panjang.",
-    "47.900 = … + … + …",
-    "45.750 = … + … + … + … + …",
-    "Jadi, sisa uang Lukas adalah",
-  ],
+  kutipan: kutipanLokal("k5b1d-materi-1.ts:4"),
   ketukan: [
     k(
-      "Mari berdiskusi: cerita tadi penjumlahan. Bagaimana jika pengurangan? Lalu coba latihan ini: Lukas di Lombok makan ayam taliwang tiga puluh dua ribu lima ratus dan plencing kangkung tiga belas ribu dua ratus lima puluh.",
+      "Mari berdiskusi: cerita tadi penjumlahan. Bagaimana jika pengurangan? Lalu coba latihan ini: Igil di Lombok makan ayam taliwang tiga puluh dua ribu lima ratus dan plencing kangkung tiga belas ribu dua ratus lima puluh.",
       tambah(0, judul("Berdiskusi dan latihan"), emo("dk", 40, 66, "💬", 30)),
       tambah("pengurangan?", ...kartu("dq", 70, 44, 216, 32, W.langit, ["pengurangan: caranya sama?"], 9)),
       tambah("ayam", emo("ay", 40, 126, "🍗", 28)),
       tambah("ayam", ...tabel("mn", 70, 92, [110, 106], [["Menu", "Harga (Rp)"], ["Ayam Taliwang", "32.500"], ["Plencing Kangkung", "13.250"]], 18, 8.4)),
     ),
     k(
-      "Pertanyaan satu: uang Lukas empat puluh tujuh ribu sembilan ratus rupiah. Apakah bersisa? Pertanyaan dua: kalimat matematikanya tiga puluh dua ribu lima ratus ditambah tiga belas ribu dua ratus lima puluh.",
+      "Pertanyaan satu: uang Igil empat puluh tujuh ribu sembilan ratus rupiah. Apakah bersisa? Pertanyaan dua: kalimat matematikanya tiga puluh dua ribu lima ratus ditambah tiga belas ribu dua ratus lima puluh.",
       bersih(0),
       tambah(0, judul("Dua pertanyaan pertama")),
-      tambah("empat", ...kartu("uu", 60, 32, 180, 36, W.krem, ["Uang Lukas Rp47.900"], 10.4)),
+      tambah("empat", ...kartu("uu", 60, 32, 180, 36, W.krem, ["Uang Igil Rp47.900"], 10.4)),
       tambah("Pertanyaan@2", kalimat("ks", 150, 112, 32500, "+", 13250, undefined, 14, W.hitam), teks("ks2", 150, 134, "= ?", 14, W.merah)),
     ),
     k(
@@ -218,12 +168,12 @@ export const ADEGAN_LUKAS: AdeganStory = {
       ubah("Ribuan@2", { id: "st", isi: "3 + 1 = 4" }),
     ),
     k(
-      "Jumlahnya empat puluh lima ribu tujuh ratus lima puluh rupiah. Uang Lukas empat puluh tujuh ribu sembilan ratus, jadi uangnya bersisa. Berapa sisanya?",
+      "Jumlahnya empat puluh lima ribu tujuh ratus lima puluh rupiah. Uang Igil empat puluh tujuh ribu sembilan ratus, jadi uangnya bersisa. Berapa sisanya?",
       tambah("Jumlahnya", kalimat("kt", 232, 130, 32500, "+", 13250, 45750, 6.6, W.hijau)),
       tambah("bersisa.", teks("ds", 232, 150, "47.900 > 45.750", 7.6, W.hitam), teks("ds2", 232, 168, "bersisa", 11, W.merah)),
     ),
     k(
-      "Uang Lukas empat puluh tujuh ribu sembilan ratus diuraikan menurut nilai tempat, begitu pula yang dibayarkan, empat puluh lima ribu tujuh ratus lima puluh. Lalu kedua uraian dikurangkan.",
+      "Uang Igil empat puluh tujuh ribu sembilan ratus diuraikan menurut nilai tempat, begitu pula yang dibayarkan, empat puluh lima ribu tujuh ratus lima puluh. Lalu kedua uraian dikurangkan.",
       bersih(0),
       tambah(0, judul("Susun panjang")),
       tambah("Uang", teks("w1", 150, 56, "47.900 = 40.000 + 7.000 + 900 + 0 + 0", 9.4, W.hijau)),

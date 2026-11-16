@@ -4,6 +4,7 @@
 // jumlah kubus satuan tiap bangun (dihitung dari daftar kubusnya dan dari muka kubus yang tergambar), luas pada kisi Uji Kompetensi 3, tinggi air gelas ukur,
 // hitungan mandiri (konversi liter dan mililiter, kunci Ayo Berlatih, Uji Kompetensi, pengayaan, rubrik), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b4b.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -545,7 +546,7 @@ const G = await import("../src/components/modul/story/k4b4b-gambar.ts");
     // angka kunci yang dipakai video benar-benar ada di Panduan Guru
     const bgSaja = bersih(bagian[1]);
     for (const s of ["1.249 l 675 ml", "156 l 880 ml", "9 liter 500 ml", "0.623 m2", "12 liter 136 ml", "11.700 ml", "= 436 ml", "volume bangun a adalah 9 cm3", "luas bangun d adalah 95 persegi satuan", "= 72 liter"]) cek(bgSaja.includes(bersih(s)), `Panduan Guru memuat kunci "${s}"`);
-    cek(n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
     console.log(`Kutipan buku diperiksa: ${n}`);
   }
 }
@@ -566,7 +567,7 @@ const G = await import("../src/components/modul/story/k4b4b-gambar.ts");
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b4b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b4b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b4b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b4b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

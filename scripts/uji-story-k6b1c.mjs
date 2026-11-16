@@ -153,7 +153,7 @@ for (const v of VIDEO) {
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,timbangan-buah,seperlima-pembahasan,jarak-sekolah,urut-terdekat,nilai-tempat-banding,latihan13-kain-suhu,latihan13-lompat-gizi,refleksi-uji,pengayaan-akhir", "urutan adegan materi");
   cek(M_VIDEO.adegan[0].id === "sapaan" && U.adegan[0].id === "sapaan", "tiap video dibuka adegan sapaan");
-  for (const kata of ["Agam", "timbangan", "Latihan 1", "Latihan 2", "Latihan 3", "Latihan 4", "Uji 1", "Uji 2", "Uji 3", "Uji 4", "Uji 5", "Tantangan", "Renungan", "Hati-hati", "persepuluhan", "perseratusan", "Arman", "Didi", "Bayu", "Rina", "Dias", "Pak Made", "Rania", "Dini", "Rani", "Pak Arman", "0,75", "5,8", "0,0886", "Sulawesi Tengah", "Musa", "Andi", "2,49"]) cek(new RegExp(kata, "i").test(materi + semuaTeks(M_VIDEO).join("|")), `video materi memuat ${kata}`);
+  for (const kata of ["Igil", "timbangan", "Latihan 1", "Latihan 2", "Latihan 3", "Latihan 4", "Uji 1", "Uji 2", "Uji 3", "Uji 4", "Uji 5", "Tantangan", "Renungan", "Hati-hati", "persepuluhan", "perseratusan", "Arman", "Didi", "Bayu", "Rina", "Dias", "Pak Made", "Rania", "Upe", "Rani", "Pak Arman", "0,75", "5,8", "0,0886", "Sulawesi Tengah", "Musa", "Halim", "2,49"]) cek(new RegExp(kata, "i").test(materi + semuaTeks(M_VIDEO).join("|")), `video materi memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(ids[0] === "sapaan" && ids[1] === "luarc-pembuka" && ids.at(-1) === "luarc-ringkas", "video metode luar: sapaan, pembuka, dan ringkasan");
   cek(["luarc-senilai", "luarc-senilai-terapan", "luarc-kisi", "luarc-kisi-terapan", "luarc-tempat", "luarc-tempat-terapan", "luarc-urut", "luarc-urut-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
@@ -194,10 +194,10 @@ for (const v of VIDEO) {
   cek(2 * 100 + 4 * 10 + 9 === 249 && des("2,49") === 24900 && Math.abs(2 + 0.4 + 0.09 - 2.49) < 1e-12 && Math.abs(10 + 0 + 0.9 - 10.9) < 1e-12 && Math.abs(20 + 8 + 0.6 - 28.6) < 1e-12, "bentuk panjang 2,49, 10,9, dan 28,6");
   cek(des("2,49") < des("2,9") && des("2,49") < des("2,90"), "2,49 lebih kecil dari 2,9 (siswa keliru)");
   // Eksplorasi 1.6: urutkan jarak
-  const jarak = { Alma: "2,3", Budi: "10,9", Anita: "1,9", Fadilah: "4,7", Musa: "11,3", Rini: "2,6", Rido: "3,6", Dias: "3,1", Fatim: "2,8", Andi: "1,5" };
+  const jarak = { Alma: "2,3", Kira: "10,9", Anita: "1,9", Fadilah: "4,7", Musa: "11,3", Rini: "2,6", Rido: "3,6", Dias: "3,1", Fatim: "2,8", Halim: "1,5" };
   const urut = Object.entries(jarak).sort((p, q) => des(p[1]) - des(q[1]));
-  sama(urut.map((p) => p[0]), ["Andi", "Anita", "Alma", "Rini", "Fatim", "Dias", "Rido", "Fadilah", "Budi", "Musa"], "urutan nama dari terdekat (kunci Buku Panduan Guru)");
-  sama([urut[0], urut[9]], [["Andi", "1,5"], ["Musa", "11,3"]], "terdekat Andi 1,5 dan terjauh Musa 11,3");
+  sama(urut.map((p) => p[0]), ["Halim", "Anita", "Alma", "Rini", "Fatim", "Dias", "Rido", "Fadilah", "Kira", "Musa"], "urutan nama dari terdekat (kunci Buku Panduan Guru)");
+  sama([urut[0], urut[9]], [["Halim", "1,5"], ["Musa", "11,3"]], "terdekat Halim 1,5 dan terjauh Musa 11,3");
   sama(["2,3", "0,9", "1,9", "2,6", "3,6"].sort((p, q) => des(p) - des(q)), ["0,9", "1,9", "2,3", "2,6", "3,6"], "urutan contoh pembahasan");
   // Latihan 1.3 nomor 2 dan 3
   sama(Object.entries({ "Sumatra Selatan": "37,2", "Sumatra Utara": "33,3", "Nusa Tenggara Timur": "36,6", "Sulawesi Tengah": "38,5", "Kalimantan Utara": "36,8" }).sort((p, q) => des(q[1]) - des(p[1])).map((p) => p[0]), ["Sulawesi Tengah", "Sumatra Selatan", "Kalimantan Utara", "Nusa Tenggara Timur", "Sumatra Utara"], "urutan suhu dari tertinggi");
@@ -251,7 +251,7 @@ for (const v of VIDEO) {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k6b1c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas k6b1c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k6b1c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas k6b1c sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

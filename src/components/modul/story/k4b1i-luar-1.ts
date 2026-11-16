@@ -168,7 +168,7 @@ export const ADEGAN_LUAR_SK: AdeganStory = {
       tambah("lompat", ...kartu("sk2", 60, 152, 180, 28, W.hijauMuda, ["lompat tetap, berulang"], 9.6)),
     ),
     k(
-      "Kelipatan dua pada kelereng Karel: dari nol lompat dua, empat, enam, delapan, sepuluh, dua belas, empat belas.",
+      "Kelipatan dua pada kelereng Wei: dari nol lompat dua, empat, enam, delapan, sepuluh, dua belas, empat belas.",
       ...SK.titik.flatMap((t, i): Aksi[] => {
         const pos = [6, 8, 9, 10, 11, 12, 14, 16][i];
         return [tambah(pos, ...t), ...(i > 0 ? [tambah(pos, ...SK.loncatan[i - 1])] : [])];

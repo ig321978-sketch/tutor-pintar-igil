@@ -10,8 +10,8 @@ export const ADEGAN_LUAR_KPK_TERAPAN: AdeganStory = {
   latar: "#EEF2FF",
   ketukan: [
     k(
-      "Terapkan pada kertas Lukas dan Komang: satu per tiga ditambah empat per enam. Penyebutnya tiga dan enam, berbeda, jadi potongannya belum sama.",
-      tambah(0, judul("Kertas Lukas dan Komang")),
+      "Terapkan pada kertas Kira dan Halim: satu per tiga ditambah empat per enam. Penyebutnya tiga dan enam, berbeda, jadi potongannya belum sama.",
+      tambah(0, judul("Kertas Kira dan Halim")),
       tambah("satu", teks("a1", 150, 72, "1/3 + 4/6", 24, W.hitam)),
       tambah("berbeda,", ...kartu("a2", 40, 100, 220, 32, W.merahMuda, ["penyebut 3 dan 6 berbeda"], 10)),
     ),
@@ -31,9 +31,9 @@ export const ADEGAN_LUAR_KPK_TERAPAN: AdeganStory = {
       tambah("utuh.", teks("c2", 150, 124, "= 1", 30, W.hijau)),
     ),
     k(
-      "Sekarang wingko Lukas: satu per dua ditambah satu per tiga. KPK dari dua dan tiga adalah enam. Jadi tiga per enam ditambah dua per enam sama dengan lima per enam.",
+      "Sekarang wingko Kira: satu per dua ditambah satu per tiga. KPK dari dua dan tiga adalah enam. Jadi tiga per enam ditambah dua per enam sama dengan lima per enam.",
       bersih(0),
-      tambah(0, judul("Wingko Lukas")),
+      tambah(0, judul("Wingko Kira")),
       tambah("Sekarang", teks("d1", 150, 60, "1/2 + 1/3", 20, W.hitam)),
       tambah("KPK", ...kartu("d2", 70, 76, 160, 28, W.hijauMuda, ["KPK 2 dan 3 = 6"], 10)),
       tambah("Jadi", teks("d3", 150, 132, "= 3/6 + 2/6 = 5/6", 18, W.hijau)),
@@ -102,19 +102,19 @@ export const ADEGAN_LUAR_AREA_TERAPAN: AdeganStory = {
   latar: "#FEFCE8",
   ketukan: [
     k(
-      "Terapkan pada masalah wingko Lukas: satu per dua ditambah satu per tiga. Gambar satu persegi panjang dan bagi menjadi enam bagian sama besar, dua baris dan tiga kolom.",
-      tambah(0, judul("Wingko Lukas")),
+      "Terapkan pada masalah wingko Kira: satu per dua ditambah satu per tiga. Gambar satu persegi panjang dan bagi menjadi enam bagian sama besar, dua baris dan tiga kolom.",
+      tambah(0, judul("Wingko Kira")),
       tambah("Terapkan", teks("wq", 150, 38, "1/2 + 1/3", 12, W.merah)),
       tambah("persegi", ...kisi("kg", KX, KY, KW, KH, 2, 3, [])),
       tambah("enam", teks("kt", 150, 138, "6 bagian sama besar", 11, W.hitam)),
     ),
     k(
-      "Setengah dari enam bagian adalah tiga bagian, jadi bagian Lukas diwarnai tiga petak, satu baris penuh.",
+      "Setengah dari enam bagian adalah tiga bagian, jadi bagian Kira diwarnai tiga petak, satu baris penuh.",
       tambah("Setengah", ...kisi("kg", KX, KY, KW, KH, 2, 3, [[0, 3, W.jingga]])),
       tambah("tiga", teks("kt", 150, 138, "1/2 = 3 bagian", 13, W.coklat)),
     ),
     k(
-      "Sepertiga dari enam bagian adalah dua bagian, jadi bagian Komang diwarnai dua petak lain dengan warna berbeda.",
+      "Sepertiga dari enam bagian adalah dua bagian, jadi bagian Halim diwarnai dua petak lain dengan warna berbeda.",
       tambah("Sepertiga", ...kisi("kg", KX, KY, KW, KH, 2, 3, [[0, 3, W.jingga], [3, 5, W.hijauPita]])),
       tambah("dua", teks("kt2", 150, 160, "1/3 = 2 bagian", 13, W.hijau)),
     ),
@@ -127,9 +127,9 @@ export const ADEGAN_LUAR_AREA_TERAPAN: AdeganStory = {
       tambah("Jadi", teks("hs2", 150, 168, "1/2 + 1/3 = 5/6", 17, W.hijau)),
     ),
     k(
-      "Contoh kedua, kertas Lukas dan Komang. Satu per tiga adalah dua bagian dari enam, empat per enam adalah empat bagian. Keduanya mengisi seluruh enam petak, jadi hasilnya satu kertas utuh.",
+      "Contoh kedua, kertas Kira dan Halim. Satu per tiga adalah dua bagian dari enam, empat per enam adalah empat bagian. Keduanya mengisi seluruh enam petak, jadi hasilnya satu kertas utuh.",
       bersih(0),
-      tambah(0, judul("Kertas Lukas dan Komang")),
+      tambah(0, judul("Kertas Kira dan Halim")),
       tambah("Satu", ...kisi("kg", KX, KY, KW, KH, 2, 3, [[0, 2, W.hijauPita]])),
       tambah("empat", ...kisi("kg", KX, KY, KW, KH, 2, 3, [[0, 2, W.hijauPita], [2, 6, W.jingga]])),
       tambah("utuh.", teks("kt", 150, 138, "2/6 + 4/6 = 6/6", 17, W.hitam), teks("kt2", 150, 164, "= 1 kertas utuh", 14, W.hijau)),
@@ -188,13 +188,13 @@ export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
   latar: "#FAF5FF",
   ketukan: [
     k(
-      "Terapkan pada penghapus Lukas. Garis dari nol sampai satu dibagi sepuluh bagian. Mulai dari nol, lompat dua bagian untuk penghapus Asep.",
-      tambah(0, judul("Penghapus Lukas")),
+      "Terapkan pada penghapus Kira. Garis dari nol sampai satu dibagi sepuluh bagian. Mulai dari nol, lompat dua bagian untuk penghapus Wei.",
+      tambah(0, judul("Penghapus Kira")),
       tambah("Garis", ...garisBilangan("hb", HX, GY, HW, 10), teks("h0", HX, GY + 20, "0", 11, W.hitam), teks("h10", HX + HW, GY + 20, "1", 11, W.hitam)),
       tambah("lompat", lompat("hp1", HX, GY, (HW / 10) * 2, W.merah), teks("ht1", HX + HW / 10, GY - 36, "+ 2/10", 11, W.merah)),
     ),
     k(
-      "Dari dua per sepuluh, lompat lagi tiga bagian untuk penghapus Yohana. Pendaratannya di lima per sepuluh.",
+      "Dari dua per sepuluh, lompat lagi tiga bagian untuk penghapus Igil. Pendaratannya di lima per sepuluh.",
       tambah("lagi", lompat("hp2", posisiBil(HX, HW, 10, 2), GY, (HW / 10) * 3, W.hijau), teks("ht2", posisiBil(HX, HW, 10, 2) + (HW / 10) * 1.5, GY - 36, "+ 3/10", 11, W.hijau)),
       tambah("Pendaratannya", teks("hh", posisiBil(HX, HW, 10, 5), GY + 40, "5/10", 18, W.hitam)),
     ),
@@ -206,7 +206,7 @@ export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
     k(
       "Contoh kedua, satu per tiga ditambah empat per enam. Bagi garis menjadi enam bagian. Satu per tiga berada di dua per enam, jadi kita mulai melompat dari sana.",
       bersih(0),
-      tambah(0, judul("Kertas Lukas dan Komang")),
+      tambah(0, judul("Kertas Kira dan Halim")),
       tambah("Contoh", teks("iq", 150, 44, "1/3 + 4/6", 14, W.merah)),
       tambah("Bagi", ...garisBilangan("ib", GX, GY, GW, 6), teks("i0", GX, GY + 20, "0", 11, W.hitam), teks("i6", GX + GW, GY + 20, "1", 11, W.hitam)),
       tambah("Satu@2", teks("it", posisiBil(GX, GW, 6, 2), GY + 40, "1/3 = 2/6", 12, W.hitam), emo("ik", posisiBil(GX, GW, 6, 2), GY - 18, "🐸", 22)),

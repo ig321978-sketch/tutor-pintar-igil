@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, baris, emo, garis, gulungKawat, kartu, kerangka, kotak, panah, petak, teks } from "./k5b5d-gambar";
 import { bersih, hapus, k, tambah } from "./k5b5d-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const jud = (isi: string, y = 20, u = 12): Obj => teks("jud", 150, y, isi, u, W.ungu);
 
@@ -10,17 +11,7 @@ export const ADEGAN_PEMBUKA_D: AdeganStory = {
   judul: "Pembuka Sub-Bab D: hubungan keliling dan luas",
   sumber: "Buku Siswa hlm. 131 dan 159; Buku Panduan Guru hlm. 232",
   latar: "#EEF2FF",
-  kutipan: [
-    "D. Hubungan Keliling dan Luas Daerah Bangun Datar",
-    "menemukan cara menghitung luas berbagai daerah bangun datar",
-    "mengetahui kapan harus menggunakannya",
-    "eksplorasi bentuk dan ukuran bangun datar jika diketahui kelilingnya",
-    "mencari ukuran bangun datar yang menghasilkan luas daerah paling besar",
-    "Alat tulis: pulpen, pensil, penggaris, spidol",
-    "Kertas berpetak",
-    "LCD Projector",
-    "gambar-gambar cetak yang ditempel di papan tulis",
-  ],
+  kutipan: kutipanLokal("k5b5d-materi-1.ts:1"),
   ketukan: [
     k(
       "Selamat datang di Sub-Bab D, hubungan keliling dan luas daerah bangun datar. Ini bagian terakhir dari Bab 5, Luas Daerah Bangun Datar.",
@@ -71,10 +62,7 @@ export const ADEGAN_APERSEPSI_D: AdeganStory = {
   judul: "Apersepsi: tanya jawab keliling dan luas",
   sumber: "Buku Panduan Guru hlm. 232; angka dari Buku Siswa hlm. 160",
   latar: "#FFF7ED",
-  kutipan: [
-    "menentukan keliling dan luas daerah berbagai macam bangun datar",
-    "tanya jawab tentang cara menghitung keliling dan luas daerah",
-  ],
+  kutipan: kutipanLokal("k5b5d-materi-1.ts:2"),
   ketukan: [
     k(
       "Guru mengawali dengan tanya jawab tentang cara menghitung keliling dan luas daerah berbagai bangun datar. Siswa sudah harus mampu menentukan keduanya.",
@@ -124,17 +112,7 @@ export const ADEGAN_SOAL_KAWAT: AdeganStory = {
   judul: "Soal kawat sepanjang 60 sentimeter",
   sumber: "Materi: soal kawat dan kerangka",
   latar: "#F0FDF4",
-  kutipan: [
-    "Bapak memiliki kawat sepanjang 60 cm",
-    "Bapak ingin membuat kerangka berbentuk persegi panjang",
-    "Bantulah beliau membuat gambar kerangka tersebut",
-    "Ada berapa cara yang bisa dilakukan untuk membuatnya",
-    "Manakah yang menghasilkan kerangka yang terluas",
-    "Gambarkan pada petak-petak berikut",
-    "Guru menyiapkan kertas berpetak",
-    "Peserta didik bereksplorasi dengan menggambarkan pada kertas berpetak",
-    "Guru memeriksa jawaban peserta didik dan mengoreksinya jika keliru",
-  ],
+  kutipan: kutipanLokal("k5b5d-materi-1.ts:3"),
   ketukan: [
     k(
       "Sekarang kita mulai kegiatan baru. Bapak memiliki kawat sepanjang enam puluh sentimeter. Dengan kawat itu, Bapak ingin membuat kerangka berbentuk persegi panjang.",

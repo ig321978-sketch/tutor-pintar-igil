@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, judul, kartu, labelSisi, penggaris, poligon, teks, titikSegitiga } from "./k5b4b-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b4b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Panjang sisi hasil ukur (cm) segitiga sembarang pertama dan kedua (Panduan Guru hlm. 130–131). */
 export const SEGITIGA_UKUR = { satu: { alas: 6, kanan: 3, kiri: 5 }, dua: { alas: 7, kanan: 4, kiri: 5 } };
@@ -16,22 +17,7 @@ export const ADEGAN_UKUR_SATU: AdeganStory = {
   judul: "Mengukur segitiga pertama",
   sumber: "Materi: mengukur segitiga",
   latar: "#F0FDF4",
-  kutipan: [
-    "Eksplorasi 4.2A",
-    "Ayo Menemukan",
-    "Perhatikan bangun-bangun datar berikut. Coba, tentukan",
-    "kelilingnya.",
-    "kucoba mengukur",
-    "menggunakan penggaris.",
-    "Apakah sisi-sisinya sama panjang?",
-    "Bangun apakah itu?",
-    "Hitunglah kelilingnya.",
-    "Keliling = 3 + 5 + 6 = 14",
-    "Kelilingnya 14 cm.",
-    "Segitiga sembarang",
-    "Jika ada perbedaan hasil pengukuran panjang sisi-sisi segitiga oleh peserta didik, guru memeriksa cara mengukurnya,",
-    "dan mengajak peserta didik menyepakati hasil pengukuran yang paling banyak diperoleh.",
-  ],
+  kutipan: kutipanLokal("k5b4b-materi-2.ts:1"),
   ketukan: [
     k(
       "Mari kita menemukan keliling segitiga. Perhatikan bangun datar berikut, lalu tentukan kelilingnya. Sisi segitiga pertama ini belum diberi angka, jadi kita ukur sendiri.",
@@ -77,32 +63,7 @@ export const ADEGAN_UKUR_DUA: AdeganStory = {
   judul: "Segitiga kedua dan alur menemukan",
   sumber: "Materi: segitiga kedua",
   latar: "#F0FDF4",
-  kutipan: [
-    "Perhatikan panjang sisi-sisi bangun di",
-    "samping. Bangun apakah itu?",
-    "Segitiga sembarang",
-    "Keliling = 7 + 4 + 5 = 16",
-    "Kelilingnya 16 cm.",
-    "Sepertinya sama dengan",
-    "bangun sebelumnya.",
-    "Tabel 4.4 Peran Guru dan Prediksi Respons Peserta Didik pada Eksplorasi 4.2A",
-    "Guru menampilkan",
-    "gambar segitiga di depan",
-    "kelas dan meminta peserta",
-    "didik mengamati gambar",
-    "tersebut di buku siswa, lalu",
-    "menanyakan jenis segitiga",
-    "tersebut.",
-    "Guru meminta peserta",
-    "didik menghitung keliling",
-    "segitiga jika panjang sisi-",
-    "sisinya telah diketahui.",
-    "Guru mengarahkan",
-    "peserta didik untuk",
-    "menyimpulkan cara",
-    "menghitung keliling",
-    "segitiga sembarang.",
-  ],
+  kutipan: kutipanLokal("k5b4b-materi-2.ts:2"),
   ketukan: [
     k(
       "Segitiga kedua sudah diberi ukuran: lima, empat, dan tujuh sentimeter. Bangun apakah itu? Tidak ada sisi yang sama panjang, jadi ini juga segitiga sembarang.",
@@ -151,27 +112,7 @@ export const ADEGAN_UMUM_SEMBARANG: AdeganStory = {
   judul: "Rumus keliling segitiga sembarang",
   sumber: "Materi: rumus segitiga sembarang",
   latar: "#F0FDF4",
-  kutipan: [
-    "Perhatikan sisi-sisi bangun di samping.",
-    "Jika panjang sisi-sisinya ditulis",
-    "panjang sisi 1, panjang sisi 2, dan panjang sisi 3,",
-    "bagaimana cara menghitung kelilingnya?",
-    "Apakah dengan menjumlahkan panjang sisi-sisinya?",
-    "Keliling = panjang sisi 1 + panjang sisi 2 + panjang sisi 3",
-    "Jika peserta didik kebingungan karena belum mengenal variabel,",
-    "guru menjajarkan gambar",
-    "3 segitiga sembarang",
-    "yang dihitung kelilingnya",
-    "oleh peserta didik, lalu",
-    "menunjukkan pola",
-    "hitungannya di papan tulis.",
-    "Pada segitiga sembarang, keliling dihitung dengan cara",
-    "menjumlahkan ketiga panjang sisinya.",
-    "Keliling = panjang sisi ke-1 + panjang sisi ke-2 + panjang sisi ke-3",
-    "Jika peserta didik keliru",
-    "menyimpulkan, guru",
-    "mengoreksinya.",
-  ],
+  kutipan: kutipanLokal("k5b4b-materi-2.ts:3"),
   ketukan: [
     k(
       "Sekarang segitiga ketiga tanpa angka. Sisinya ditulis panjang sisi satu, panjang sisi dua, dan panjang sisi tiga. Bagaimana cara menghitung kelilingnya?",

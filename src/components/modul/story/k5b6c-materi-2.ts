@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisKipas, busurDerajat, busurPutar, busurSudut, garis, garisUjung, judul, kartu, kaki, kotak, sudutDua, tandaSiku, teks } from "./k5b6c-gambar";
 import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k5b6c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const WARNA_KIPAS = [W.jingga, W.langit, W.hijauMuda, W.pink];
 
@@ -10,18 +11,7 @@ export const ADEGAN_SALAH_BACA: AdeganStory = {
   judul: "Kesalahan membaca skala dan busur yang miring",
   sumber: "Materi: salah membaca skala",
   latar: "#FEF2F2",
-  kutipan: [
-    "Mungkin ada peserta didik yang salah membaca",
-    "skala busur derajat",
-    "membaca dengan mengacu pada skala bagian",
-    "luar atau bagian dalam",
-    "menggunakan skala luar sehingga hasilnya 55",
-    "bahwa saat melakukan pengukuran, posisi",
-    "busur derajat harus selalu horizontal",
-    "skala pada busur dapat menggunakan bagian luar atau dalam",
-    "garis dasar busur yang berimpit dengan",
-    "salah satu kaki sudut selalu menunjukkan",
-  ],
+  kutipan: kutipanLokal("k5b6c-materi-2.ts:1"),
   ketukan: [
     k(
       "Hati-hati, ada kesalahan yang sering terjadi, yaitu salah membaca skala. Ada murid yang membaca skala luar, padahal seharusnya membaca skala dalam.",
@@ -63,14 +53,7 @@ export const ADEGAN_EKS_KIPAS: AdeganStory = {
   judul: "Mengukur empat kipas pakarena",
   sumber: "Materi: mengukur empat kipas",
   latar: "#FFFBEB",
-  kutipan: [
-    "Eksplorasi 6.3",
-    "Ayo Berdiskusi",
-    "kembali ke gambar 6.8, ukurlah sudut yang dibentuk",
-    "oleh setiap kipas. Kipas manakah yang terbuka paling lebar?",
-    "Jadi, kipas yang terbuka paling lebar adalah kipas 3 karena ukuran sudutnya",
-    "paling besar",
-  ],
+  kutipan: kutipanLokal("k5b6c-materi-2.ts:2"),
   ketukan: [
     k(
       "Berikut empat kipas lipat penari pakarena. Masing-masing dibuka selebar yang berbeda. Ukur sudut tiap kipas, lalu tentukan kipas yang terbuka paling lebar.",
@@ -115,19 +98,7 @@ export const ADEGAN_SIKU_JODOH: AdeganStory = {
   judul: "Sudut siku-siku dan menjodohkan jenis sudut",
   sumber: "Materi: siku-siku dan jenis sudut",
   latar: "#F5F3FF",
-  kutipan: [
-    "Buatlah sudut siku-siku dari",
-    "selembar kertas",
-    "ukurlah besarnya sudut",
-    "Berapa derajat ukuran sudut siku-",
-    "Jodohkan pernyataan yang sesuai",
-    "Sudut lancip",
-    "Sudut siku-siku",
-    "Sudut tumpul",
-    "Ukuran sudutnya adalah 90",
-    "Sudut yang besarnya lebih dari 0",
-    "Sudut yang besarnya lebih dari",
-  ],
+  kutipan: kutipanLokal("k5b6c-materi-2.ts:3"),
   ketukan: [
     k(
       "Sekarang kita buat sudut siku-siku dari selembar kertas, seperti di pelajaran sebelumnya, lalu ukur dengan busur derajat. Berapa derajat ukuran sudut siku-siku itu?",
@@ -175,17 +146,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Hati-hati: panjang kaki bukan ukuran sudut",
   sumber: "Materi: salah paham membandingkan sudut",
   latar: "#FFF1F2",
-  kutipan: [
-    "Kesalahan yang sering terjadi saat peserta didik membandingkan ukuran",
-    "sudut adalah peserta didik meyakini bahwa makin lebar jarak antarujung kaki",
-    "sudut, maka sudutnya akan makin besar",
-    "jika",
-    "panjang kaki sudut pada kedua sudut tersebut sama",
-    "Sudut 1",
-    "Sudut 2",
-    "besar sudut itu dapat diwakili sebagai suatu putaran",
-    "busur derajat dapat digunakan untuk mengukur sudut",
-  ],
+  kutipan: kutipanLokal("k5b6c-materi-2.ts:4"),
   ketukan: [
     k(
       "Hati-hati, ini kesalahan yang sering terjadi: murid mengira makin lebar jarak antara ujung kaki sudut, makin besar sudutnya.",

@@ -181,7 +181,7 @@ const semuaTeks = (v) => v.adegan.flatMap((a) => a.ketukan.flatMap((kt, i) => [.
   sama(sederhana(3 * 4, 12), [1, 1], "jahe merah 3 bulan (12 minggu) banding kumis kucing 12 minggu");
   sama([bulanDariTahunPersepuluh(30), sederhana(6, 36), sederhana(18, 36)], [36, [1, 6], [1, 2]], "masa panen buah merah: 36 bulan, kencur 1:6, lengkuas 1:2");
   sama([36 / 6, 36 / 18], [6, 2], "banyak panen kencur dan lengkuas dalam satu masa panen buah merah");
-  sama([(2 * 60) / 3, sederhana(10, 40), 40 / 10], [40, [1, 4], 4], "Ayah 10 menit banding Tigor dua pertiga jam (40 menit): 1 banding 4, empat kali lebih cepat");
+  sama([(2 * 60) / 3, sederhana(10, 40), 40 / 10], [40, [1, 4], 4], "Ayah 10 menit banding Kira dua pertiga jam (40 menit): 1 banding 4, empat kali lebih cepat");
   sama([7 * 24, 3 * 168, 5 * 168], [168, 504, 840], "satu minggu 168 jam; 3 minggu 504 jam; 5 minggu 840 jam");
   // Banyu: 1 km per 30 menit.
   const jarakDalam = (menit) => menit / 30;
@@ -218,7 +218,7 @@ const semuaTeks = (v) => v.adegan.flatMap((a) => a.ketukan.flatMap((kt, i) => [.
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k6b2c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas k6b2c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k6b2c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas k6b2c sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

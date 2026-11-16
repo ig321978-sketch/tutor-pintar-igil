@@ -4,6 +4,7 @@
 // hitungan mandiri dengan pecahan eksak (martabak, penghapus, pita, kertas, wingko, denah), persamaan di gambar, KPK dan kelipatan,
 // geometri gambar (batang, lingkaran irisan, penghapus, kisi, lompatan di garis bilangan), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b3b.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -184,8 +185,8 @@ const teksP = (a) => `${a.p}/${a.q}`;
 const campuran = (a) => (a.p >= a.q ? `${Math.floor(a.p / a.q)}${a.p % a.q ? ` ${a.p % a.q}/${a.q}` : ""}` : teksP(a));
 
 const BUKU = {
-  wingko: [pec(1, 2), pec(1, 3)], // Masalah Lukas hlm. 76
-  martabak: [pec(1, 8), pec(2, 8)], // Eksplorasi 3.2A: nanas untuk Lukas, karamel dan stroberi untuk Komang
+  wingko: [pec(1, 2), pec(1, 3)], // Masalah Kira hlm. 76
+  martabak: [pec(1, 8), pec(2, 8)], // Eksplorasi 3.2A: nanas untuk Kira, karamel dan stroberi untuk Halim
   penghapus: [pec(2, 10), pec(3, 10)], // Eksplorasi 3.2B: dua dan tiga dari sepuluh penghapus
   pita: [{ bulat: 2, f: pec(1, 5) }, { bulat: 3, f: pec(1, 5) }], // Eksplorasi 3.2C: 2 1/5 m dan 3 1/5 m
   kertas: [pec(1, 3), pec(4, 6)], // Eksplorasi 3.2D
@@ -204,8 +205,8 @@ sama([teksP(H.penghapus), teksP(sedehana(H.penghapus))], ["5/10", "1/2"], "pengh
   sama([teksP(biasaA), teksP(biasaB)], ["11/5", "16/5"], "pita: campuran diubah ke biasa");
   H.pita = tambahPec(biasaA, biasaB);
   sama([teksP(H.pita), campuran(H.pita)], ["27/5", "5 2/5"], "pita: 11/5 + 16/5 = 27/5 = 5 2/5");
-  // Cara Komang: bulat dan pecahan dipisah
-  sama([a.bulat + b.bulat, teksP(tambahPec(a.f, b.f))], [5, "2/5"], "pita Cara Komang: 2 + 3 dan 1/5 + 1/5");
+  // Cara Halim: bulat dan pecahan dipisah
+  sama([a.bulat + b.bulat, teksP(tambahPec(a.f, b.f))], [5, "2/5"], "pita Cara Halim: 2 + 3 dan 1/5 + 1/5");
 }
 {
   const [a, b] = BUKU.kertas;
@@ -226,9 +227,9 @@ sama([teksP(H.penghapus), teksP(sedehana(H.penghapus))], ["5/10", "1/2"], "pengh
   sama([(q / a.q) * a.p, (q / c.q) * c.p, (q / b.q) * b.p], [300, 450, 1], "denah: 300/200 + 450/200 + 1/200");
   H.denah = tambahPec(tambahPec(a, c), b);
   sama([teksP(H.denah), campuran(H.denah)], ["751/200", "3 151/200"], "denah: 751/200 = 3 151/200");
-  // Cara Lukas: bulat 1 + 2 = 3 dan pecahan 1/2 + 1/4 + 1/200 = 151/200
+  // Cara Kira: bulat 1 + 2 = 3 dan pecahan 1/2 + 1/4 + 1/200 = 151/200
   const f = tambahPec(tambahPec(pec(1, 2), pec(1, 4)), pec(1, 200));
-  sama([1 + 2, teksP(f), (q / 2) * 1, (q / 4) * 1], [3, "151/200", 100, 50], "denah Cara Lukas: 3 dan 151/200 (100/200 + 50/200 + 1/200)");
+  sama([1 + 2, teksP(f), (q / 2) * 1, (q / 4) * 1], [3, "151/200", 100, 50], "denah Cara Kira: 3 dan 151/200 (100/200 + 50/200 + 1/200)");
   sama(3 * 200 + 151, 751, "3 151/200 = 751/200");
 }
 {
@@ -450,30 +451,30 @@ const tick = (x, w, n, i) => Math.round((x + (i * w) / n) * 10) / 10;
 
 /* ------------------------------ Isi bergambar tiap adegan, dihitung mandiri ------------------------------ */
 {
-  // Masalah Lukas: satu dari dua dan satu dari tiga.
+  // Masalah Kira: satu dari dua dan satu dari tiga.
   {
     const t = akhirAdegan(adegan(M, "masalah-lukas"), 0);
-    sama([jumlahSel(t, "wl"), terisi(t, "wl"), jumlahSel(t, "wk"), terisi(t, "wk")], [2, 1, 3, 1], "wingko Lukas 1/2 dan wingko Komang 1/3");
+    sama([jumlahSel(t, "wl"), terisi(t, "wl"), jumlahSel(t, "wk"), terisi(t, "wk")], [2, 1, 3, 1], "wingko Kira 1/2 dan wingko Halim 1/3");
     sama([nilaiId(t, "fl"), nilaiId(t, "fk")], [teksP(BUKU.wingko[0]), teksP(BUKU.wingko[1])], "label wingko");
   }
-  // Martabak: delapan irisan; Komang 2 irisan (karamel dan stroberi), Lukas 1 (nanas).
+  // Martabak: delapan irisan; Halim 2 irisan (karamel dan stroberi), Kira 1 (nanas).
   {
     const a = adegan(M, "eks-a-martabak");
     sama([jumlahSel(akhirAdegan(a, 0), "mt"), terisi(akhirAdegan(a, 0), "mt")], [8, 0], "martabak: 8 irisan awalnya putih");
     const t1 = akhirAdegan(a, 1);
-    sama([terisi(t1, "mt"), t1.filter((o) => o.id.startsWith("mt-") && o.warna === "#F87171").length, t1.filter((o) => o.id.startsWith("mt-") && o.warna === "#FDBA74").length], [3, 2, 1], "martabak: Komang 2 irisan dan Lukas 1 irisan");
-    sama([objId2(t1, "mt-5").warna, objId2(t1, "mt-6").warna, objId2(t1, "mt-7").warna], ["#F87171", "#FDBA74", "#F87171"], "martabak: karamel dan stroberi untuk Komang, nanas untuk Lukas");
-    sama(terisi(akhirAdegan(a, 2), "mt"), 1, "martabak: bagian Lukas 1/8");
-    sama([nilaiId(akhirAdegan(a, 2), "l2"), nilaiId(akhirAdegan(a, 3), "k1"), nilaiId(akhirAdegan(a, 3), "k3")], [teksP(BUKU.martabak[0]), `Komang: ${teksP(BUKU.martabak[1])}`, `${teksP(BUKU.martabak[0])} + ${teksP(BUKU.martabak[1])} = ${teksP(H.martabak)}`], "martabak: label pecahan");
+    sama([terisi(t1, "mt"), t1.filter((o) => o.id.startsWith("mt-") && o.warna === "#F87171").length, t1.filter((o) => o.id.startsWith("mt-") && o.warna === "#FDBA74").length], [3, 2, 1], "martabak: Halim 2 irisan dan Kira 1 irisan");
+    sama([objId2(t1, "mt-5").warna, objId2(t1, "mt-6").warna, objId2(t1, "mt-7").warna], ["#F87171", "#FDBA74", "#F87171"], "martabak: karamel dan stroberi untuk Halim, nanas untuk Kira");
+    sama(terisi(akhirAdegan(a, 2), "mt"), 1, "martabak: bagian Kira 1/8");
+    sama([nilaiId(akhirAdegan(a, 2), "l2"), nilaiId(akhirAdegan(a, 3), "k1"), nilaiId(akhirAdegan(a, 3), "k3")], [teksP(BUKU.martabak[0]), `Halim: ${teksP(BUKU.martabak[1])}`, `${teksP(BUKU.martabak[0])} + ${teksP(BUKU.martabak[1])} = ${teksP(H.martabak)}`], "martabak: label pecahan");
     const t4 = akhirAdegan(a, 4);
     sama([jumlahSel(t4, "ma"), terisi(t4, "ma"), jumlahSel(t4, "mb"), terisi(t4, "mb"), jumlahSel(t4, "mc"), terisi(t4, "mc")], [8, 1, 8, 2, 8, 3], "martabak: arsiran 1 + 2 = 3 dari 8");
   }
-  // Penghapus: sepuluh penghapus; 2 untuk Asep, 3 untuk Yohana.
+  // Penghapus: sepuluh penghapus; 2 untuk Wei, 3 untuk Igil.
   {
     const a = adegan(M, "eks-b-penghapus");
     const t0 = akhirAdegan(a, 0);
     sama([jumlahSel(t0, "ph"), terisi(t0, "ph")], [10, 5], "penghapus: sepuluh penghapus, lima terarsir (2 dan 3)");
-    sama([t0.filter((o) => o.id.startsWith("ph-") && o.warna === "#DBEAFE").length, t0.filter((o) => o.id.startsWith("ph-") && o.warna === "#FBCFE8").length], [2, 3], "penghapus: Asep 2 dan Yohana 3");
+    sama([t0.filter((o) => o.id.startsWith("ph-") && o.warna === "#DBEAFE").length, t0.filter((o) => o.id.startsWith("ph-") && o.warna === "#FBCFE8").length], [2, 3], "penghapus: Wei 2 dan Igil 3");
     const t1 = akhirAdegan(a, 1);
     sama([nilaiId(t1, "as2"), nilaiId(t1, "yo2")], [teksP(BUKU.penghapus[0]), teksP(BUKU.penghapus[1])], "penghapus: 2/10 dan 3/10");
     sama([nilaiId(akhirAdegan(a, 2), "j2"), terisi(akhirAdegan(a, 2), "ph")], [`${teksP(BUKU.penghapus[0])} + ${teksP(BUKU.penghapus[1])} = ${teksP(H.penghapus)}`, 5], "penghapus: jumlah 5/10");
@@ -483,12 +484,12 @@ const tick = (x, w, n, i) => Math.round((x + (i * w) / n) * 10) / 10;
   // Pita: campuran.
   {
     const a = adegan(M, "eks-c-lukas");
-    sama(nilaiId(akhirAdegan(a, 2), "c1"), `2 1/5 = (2 × 5 + 1)/5 = ${teksP(biasa(2, pec(1, 5)))}`, "pita Cara Lukas: 2 1/5 = 11/5");
-    sama(nilaiId(akhirAdegan(a, 3), "c2"), `3 1/5 = (3 × 5 + 1)/5 = ${teksP(biasa(3, pec(1, 5)))}`, "pita Cara Lukas: 3 1/5 = 16/5");
-    sama([nilaiId(akhirAdegan(a, 4), "c3"), nilaiId(akhirAdegan(a, 4), "c4")], [`11/5 + 16/5 = ${teksP(H.pita)}`, "11 + 16 = 27"], "pita Cara Lukas: 11/5 + 16/5 = 27/5");
-    sama(nilaiId(akhirAdegan(a, 5), "c5"), `${teksP(H.pita)} = ${campuran(H.pita)}`, "pita Cara Lukas: 27/5 = 5 2/5");
+    sama(nilaiId(akhirAdegan(a, 2), "c1"), `2 1/5 = (2 × 5 + 1)/5 = ${teksP(biasa(2, pec(1, 5)))}`, "pita Cara Kira: 2 1/5 = 11/5");
+    sama(nilaiId(akhirAdegan(a, 3), "c2"), `3 1/5 = (3 × 5 + 1)/5 = ${teksP(biasa(3, pec(1, 5)))}`, "pita Cara Kira: 3 1/5 = 16/5");
+    sama([nilaiId(akhirAdegan(a, 4), "c3"), nilaiId(akhirAdegan(a, 4), "c4")], [`11/5 + 16/5 = ${teksP(H.pita)}`, "11 + 16 = 27"], "pita Cara Kira: 11/5 + 16/5 = 27/5");
+    sama(nilaiId(akhirAdegan(a, 5), "c5"), `${teksP(H.pita)} = ${campuran(H.pita)}`, "pita Cara Kira: 27/5 = 5 2/5");
     const b = adegan(M, "eks-c-komang");
-    sama([nilaiId(akhirAdegan(b, 0), "b2"), nilaiId(akhirAdegan(b, 1), "b4"), nilaiId(akhirAdegan(b, 2), "g1")], ["2 + 3 = 5", "1/5 + 1/5 = 2/5", "5 + 2/5 = 5 2/5"], "pita Cara Komang");
+    sama([nilaiId(akhirAdegan(b, 0), "b2"), nilaiId(akhirAdegan(b, 1), "b4"), nilaiId(akhirAdegan(b, 2), "g1")], ["2 + 3 = 5", "1/5 + 1/5 = 2/5", "5 + 2/5 = 5 2/5"], "pita Cara Halim");
     const t3 = akhirAdegan(b, 3);
     sama([jumlahSel(t3, "m3"), terisi(t3, "m3"), jumlahSel(t3, "h4"), terisi(t3, "h4"), terisi(t3, "m1"), terisi(t3, "m2"), terisi(t3, "h1"), terisi(t3, "h2"), terisi(t3, "h3")], [5, 1, 5, 1, 1, 1, 1, 1, 1], "pita: model 2 pita penuh + 1/5 dan 3 pita penuh + 1/5");
     const t4 = akhirAdegan(b, 4);
@@ -499,27 +500,27 @@ const tick = (x, w, n, i) => Math.round((x + (i * w) / n) * 10) / 10;
   // Kertas (Eksplorasi 3.2D).
   {
     const a = adegan(M, "eks-d-nisa");
-    sama([jumlahSel(akhirAdegan(a, 1), "ka"), terisi(akhirAdegan(a, 1), "ka"), jumlahSel(akhirAdegan(a, 2), "kb"), terisi(akhirAdegan(a, 2), "kb")], [3, 1, 6, 2], "kertas Lukas: 1/3 senilai 2/6");
-    sama([jumlahSel(akhirAdegan(a, 3), "kc"), terisi(akhirAdegan(a, 3), "kc")], [6, 4], "kertas Komang: 4/6");
+    sama([jumlahSel(akhirAdegan(a, 1), "ka"), terisi(akhirAdegan(a, 1), "ka"), jumlahSel(akhirAdegan(a, 2), "kb"), terisi(akhirAdegan(a, 2), "kb")], [3, 1, 6, 2], "kertas Kira: 1/3 senilai 2/6");
+    sama([jumlahSel(akhirAdegan(a, 3), "kc"), terisi(akhirAdegan(a, 3), "kc")], [6, 4], "kertas Halim: 4/6");
     sama([jumlahSel(akhirAdegan(a, 4), "kd"), terisi(akhirAdegan(a, 4), "kd")], [6, 6], "gabungan kertas memenuhi 6 bagian");
     sama(nilaiId(akhirAdegan(a, 5), "h1"), `2/6 + 4/6 = ${teksP(H.kertas)}`, "kertas: 2/6 + 4/6 = 6/6");
     sama(nilaiId(akhirAdegan(a, 5), "h2"), `${teksP(H.kertas)} = 1`, "kertas: 6/6 = 1");
     sama(terisi(akhirAdegan(a, 5), "h3"), 6, "kertas utuh: 6 bagian penuh");
     const b = adegan(M, "eks-d-komang-yohana");
-    sama([jumlahSel(akhirAdegan(b, 0), "ca"), terisi(akhirAdegan(b, 0), "ca"), jumlahSel(akhirAdegan(b, 1), "cb"), terisi(akhirAdegan(b, 1), "cb")], [3, 1, 6, 4], "Cara Komang: lingkaran 1 dari 3 dan 4 dari 6");
-    sama(nilaiId(akhirAdegan(b, 2), "sn1"), "1/3 = 2/6", "Cara Komang: pecahan senilai");
-    sama([nilaiId(akhirAdegan(b, 3), "gb1"), nilaiId(akhirAdegan(b, 3), "gb2"), nilaiId(akhirAdegan(b, 3), "gb3")], ["1/3 + 4/6", "= 2/6 + 4/6", "= 6/6 = 1"], "Cara Komang: penjumlahan");
-    sama(nilaiId(akhirAdegan(b, 5), "y5"), "1/3 = ((6 : 3) × 1)/6 = 2/6", "Cara Yohana: (6 : 3) × 1 per 6");
-    sama(nilaiId(akhirAdegan(b, 7), "w4"), `= ${teksP(H.wingko)}`, "wingko Lukas dijawab 5/6");
+    sama([jumlahSel(akhirAdegan(b, 0), "ca"), terisi(akhirAdegan(b, 0), "ca"), jumlahSel(akhirAdegan(b, 1), "cb"), terisi(akhirAdegan(b, 1), "cb")], [3, 1, 6, 4], "Cara Halim: lingkaran 1 dari 3 dan 4 dari 6");
+    sama(nilaiId(akhirAdegan(b, 2), "sn1"), "1/3 = 2/6", "Cara Halim: pecahan senilai");
+    sama([nilaiId(akhirAdegan(b, 3), "gb1"), nilaiId(akhirAdegan(b, 3), "gb2"), nilaiId(akhirAdegan(b, 3), "gb3")], ["1/3 + 4/6", "= 2/6 + 4/6", "= 6/6 = 1"], "Cara Halim: penjumlahan");
+    sama(nilaiId(akhirAdegan(b, 5), "y5"), "1/3 = ((6 : 3) × 1)/6 = 2/6", "Cara Igil: (6 : 3) × 1 per 6");
+    sama(nilaiId(akhirAdegan(b, 7), "w4"), `= ${teksP(H.wingko)}`, "wingko Kira dijawab 5/6");
   }
   // Denah.
   {
     const a = adegan(M, "eks-e-denah");
-    sama([nilaiId(akhirAdegan(a, 1), "j1"), nilaiId(akhirAdegan(a, 1), "j3"), nilaiId(akhirAdegan(a, 1), "j2")], ["1 1/2 km", "2 1/4 km", "lebar rumah Komang 1/200 km"], "denah: jarak dan lebar rumah");
-    sama([nilaiId(akhirAdegan(a, 2), "y1"), nilaiId(akhirAdegan(a, 2), "y2")], ["1 1/2 = 3/2", "2 1/4 = 9/4"], "denah Cara Yohana: ke pecahan biasa");
-    sama([nilaiId(akhirAdegan(a, 3), "y5"), nilaiId(akhirAdegan(a, 3), "y6")], ["3/2 = (3 × 100)/(2 × 100) = 300/200", "9/4 = (9 × 50)/(4 × 50) = 450/200"], "denah Cara Yohana: samakan penyebut");
-    sama([nilaiId(akhirAdegan(a, 4), "y8"), nilaiId(akhirAdegan(a, 4), "y9")], ["300/200 + 450/200 + 1/200 = 751/200", "751/200 = 3 151/200"], "denah Cara Yohana: jumlah");
-    sama([nilaiId(akhirAdegan(a, 5), "l3"), nilaiId(akhirAdegan(a, 6), "l5"), nilaiId(akhirAdegan(a, 6), "l6"), nilaiId(akhirAdegan(a, 6), "l7")], ["1 + 2 = 3", "1/2 + 1/4 + 1/200", "= 100/200 + 50/200 + 1/200", "= 151/200"], "denah Cara Lukas");
+    sama([nilaiId(akhirAdegan(a, 1), "j1"), nilaiId(akhirAdegan(a, 1), "j3"), nilaiId(akhirAdegan(a, 1), "j2")], ["1 1/2 km", "2 1/4 km", "lebar rumah Halim 1/200 km"], "denah: jarak dan lebar rumah");
+    sama([nilaiId(akhirAdegan(a, 2), "y1"), nilaiId(akhirAdegan(a, 2), "y2")], ["1 1/2 = 3/2", "2 1/4 = 9/4"], "denah Cara Igil: ke pecahan biasa");
+    sama([nilaiId(akhirAdegan(a, 3), "y5"), nilaiId(akhirAdegan(a, 3), "y6")], ["3/2 = (3 × 100)/(2 × 100) = 300/200", "9/4 = (9 × 50)/(4 × 50) = 450/200"], "denah Cara Igil: samakan penyebut");
+    sama([nilaiId(akhirAdegan(a, 4), "y8"), nilaiId(akhirAdegan(a, 4), "y9")], ["300/200 + 450/200 + 1/200 = 751/200", "751/200 = 3 151/200"], "denah Cara Igil: jumlah");
+    sama([nilaiId(akhirAdegan(a, 5), "l3"), nilaiId(akhirAdegan(a, 6), "l5"), nilaiId(akhirAdegan(a, 6), "l6"), nilaiId(akhirAdegan(a, 6), "l7")], ["1 + 2 = 3", "1/2 + 1/4 + 1/200", "= 100/200 + 50/200 + 1/200", "= 151/200"], "denah Cara Kira");
     sama([nilaiId(akhirAdegan(a, 7), "m1"), nilaiId(akhirAdegan(a, 7), "m3-t0")], ["3 + 151/200 = 3 151/200", `jarak = ${campuran(H.denah)} km`], "denah: jawaban akhir");
   }
   // Isian umum di penutup: kesalahan umum jelas ditandai salah.
@@ -552,10 +553,10 @@ const tick = (x, w, n, i) => Math.round((x + (i * w) / n) * 10) / 10;
     sama([nilaiId(akhirAdegan(f, 3), "hs1"), nilaiId(akhirAdegan(f, 3), "hs2")], ["3/6 + 2/6 = 5/6", "1/2 + 1/3 = 5/6"], "Area Model wingko: persamaan");
     sama([terisi(akhirAdegan(f, 4), "kg"), jumlahSel(akhirAdegan(f, 4), "kg")], [6, 6], "Area Model kertas: 2 + 4 = 6 petak");
     sama(nilaiId(akhirAdegan(f, 4), "kt"), "2/6 + 4/6 = 6/6", "Area Model kertas: persamaan");
-    // warna petak Lukas dan Komang berbeda dan tidak bertumpuk
+    // warna petak Kira dan Halim berbeda dan tidak bertumpuk
     const t3 = akhirAdegan(f, 2);
     const kg = kelompokSel(t3).get("kg");
-    cek(kg.filter((o) => o.warna === "#FDBA74").length === 3 && kg.filter((o) => o.warna === "#86EFAC").length === 2, "Area Model wingko: tiga petak Lukas dan dua petak Komang tidak bertumpuk");
+    cek(kg.filter((o) => o.warna === "#FDBA74").length === 3 && kg.filter((o) => o.warna === "#86EFAC").length === 2, "Area Model wingko: tiga petak Kira dan dua petak Halim tidak bertumpuk");
   }
   // Ringkasan memakai hasil yang sama dengan hitungan
   {
@@ -592,7 +593,7 @@ const tick = (x, w, n, i) => Math.round((x + (i * w) / n) * 10) / 10;
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
   cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Masalah Lukas", "Masalah Yohana", "Masalah Komang", "Cara Lukas", "Cara Komang", "Cara Nisa", "Cara Yohana", "martabak", "penghapus", "wingko", "pecahan campuran", "KPK", "arsiran"]) cek(materi.includes(kata), `video materi memuat ${kata}`);
+  for (const kata of ["Masalah Kira", "Masalah Igil", "Masalah Halim", "Cara Kira", "Cara Halim", "Cara Upe", "Cara Igil", "martabak", "penghapus", "wingko", "pecahan campuran", "KPK", "arsiran"]) cek(materi.includes(kata), `video materi memuat ${kata}`);
   for (const kata of ["Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   sama(M_VIDEO.adegan.map((a) => a.id), ["sapaan", "masalah-lukas", "eks-a-martabak", "eks-b-penghapus", "eks-c-lukas", "eks-c-komang", "eks-d-nisa", "eks-d-komang-yohana", "eks-e-denah", "penutup-b"], "urutan adegan video materi");
@@ -661,7 +662,7 @@ const tick = (x, w, n, i) => Math.round((x + (i * w) / n) * 10) / 10;
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(n >= 70, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 70, `jumlah kutipan buku yang diperiksa (${n})`);
     stat.kutipan = n;
   }
 }
@@ -682,7 +683,7 @@ const tick = (x, w, n, i) => Math.round((x + (i * w) / n) * 10) / 10;
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b3b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b3b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b3b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b3b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

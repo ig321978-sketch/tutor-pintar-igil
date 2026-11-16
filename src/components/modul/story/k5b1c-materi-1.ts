@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisUang, emo, judul, kartu, panah, satuUang, teks } from "./k5b1c-gambar";
 import { bersih, hapus, k, tambah } from "./k5b1c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Subbab C (Panduan Guru hlm. 29; Buku Siswa hlm. 15) ------------------------------ */
 export const ADEGAN_PEMBUKA: AdeganStory = {
@@ -8,15 +9,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Subbab C: Komposisi dan Dekomposisi",
   sumber: "Panduan Guru hlm. 29; Buku Siswa hlm. 15",
   latar: "#EFF6FF",
-  kutipan: [
-    "C. Komposisi dan Dekomposisi Bilangan Sampai 100.000",
-    "Pengalaman Belajar",
-    "Setelah mempelajari bagian C ini, peserta didik diharapkan dapat",
-    "menentukan komposisi bilangan dan",
-    "menentukan dekomposisi bilangan",
-    "Eksplorasi 1.3",
-    "Ayo Berdiskusi",
-  ],
+  kutipan: kutipanLokal("k5b1c-materi-1.ts:1"),
   ketukan: [
     k(
       "Subbab C, Komposisi dan Dekomposisi Bilangan Sampai seratus ribu. Di subbab sebelumnya kita membandingkan dan mengurutkan bilangan. Sekarang kita belajar menyusun dan menguraikan bilangan.",
@@ -42,11 +35,11 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("pecahan", emo("c3", 150, 176, "💵", 24)),
     ),
     k(
-      "Subbab ini memuat Eksplorasi satu titik tiga tentang uang Asep dan uang Lukas, lalu Ayo Berdiskusi tentang uang Komang, dan ditutup dengan Refleksi nomor enam dan tujuh.",
+      "Subbab ini memuat Eksplorasi satu titik tiga tentang uang Malosi dan uang Igil, lalu Ayo Berdiskusi tentang uang Kira, dan ditutup dengan Refleksi nomor enam dan tujuh.",
       bersih(0),
       tambah(0, judul("Isi subbab C")),
-      tambah("Eksplorasi", ...kartu("d1", 24, 36, 252, 36, W.hijauMuda, ["Eksplorasi 1.3: uang Asep dan Lukas"], 9)),
-      tambah("Ayo", ...kartu("d2", 24, 82, 252, 36, W.langit, ["Ayo Berdiskusi: uang Komang"], 9)),
+      tambah("Eksplorasi", ...kartu("d1", 24, 36, 252, 36, W.hijauMuda, ["Eksplorasi 1.3: uang Malosi dan Igil"], 9)),
+      tambah("Ayo", ...kartu("d2", 24, 82, 252, 36, W.langit, ["Ayo Berdiskusi: uang Kira"], 9)),
       tambah("Refleksi", ...kartu("d3", 24, 128, 252, 36, W.pink, ["Refleksi nomor 6 dan 7"], 9)),
     ),
   ],
@@ -58,14 +51,7 @@ export const ADEGAN_SARANA: AdeganStory = {
   judul: "Sarana, media, dan apersepsi",
   sumber: "Panduan Guru hlm. 29",
   latar: "#FFFBEB",
-  kutipan: [
-    "Kebutuhan Sarana Prasarana dan Media Pembelajaran",
-    "Alat tulis",
-    "Berbagai pecahan uang mainan",
-    "Apersepsi",
-    "Guru dapat memulai kegiatan dengan mengajak peserta didik mengulang materi sebelumnya",
-    "Guru dapat menunjukkan berbagai pecahan uang yang dapat disusun dari berbagai macam uang yang dibawa.",
-  ],
+  kutipan: kutipanLokal("k5b1c-materi-1.ts:2"),
   ketukan: [
     k(
       "Kebutuhan sarana dan media pembelajaran subbab ini ada dua: alat tulis dan berbagai pecahan uang mainan.",
@@ -106,13 +92,7 @@ export const ADEGAN_PEMANASAN: AdeganStory = {
   judul: "Pemanasan: ragam pecahan uang",
   sumber: "Panduan Guru hlm. 29; Buku Siswa hlm. 16",
   latar: "#F0FDF4",
-  kutipan: [
-    "Pemanasan",
-    "Untuk kegiatan pemanasan, guru dapat memulai dengan mengenalkan ragam pecahan uang",
-    "mulailah untuk menyebutkan harga sabun, harga mainan, atau harga baju.",
-    "berikan pertanyaan tentang kemungkinan komposisi uang yang tersusun.",
-    "Gambar 1.6 Uang Komang",
-  ],
+  kutipan: kutipanLokal("k5b1c-materi-1.ts:3"),
   ketukan: [
     k(
       "Pemanasan dimulai dengan mengenalkan ragam pecahan uang. Di buku ada tiga jenis: sepuluh ribuan, seribuan, dan seratusan.",
@@ -156,13 +136,7 @@ export const ADEGAN_PERSIAPAN: AdeganStory = {
   judul: "Persiapan guru untuk Eksplorasi 1.3",
   sumber: "Panduan Guru hlm. 30",
   latar: "#FFF7ED",
-  kutipan: [
-    "Eksplorasi 1.3",
-    "Persiapan Guru",
-    "Sebelum memulai pembelajaran, mulailah membagikan pecahan mainan uang sesuai kegiatan Eksplorasi.",
-    "pastikan peserta didik mengenal berbagai jenis mata uang yang sering digunakan untuk transaksi setiap hari.",
-    "Jika peserta didik belum mengenal pecahan uang, kenalkan terlebih dahulu berbagai pecahan uang.",
-  ],
+  kutipan: kutipanLokal("k5b1c-materi-1.ts:4"),
   ketukan: [
     k(
       "Persiapan guru untuk Eksplorasi satu titik tiga. Pertama, sebelum pembelajaran, bagikan pecahan mainan uang sesuai kegiatan.",

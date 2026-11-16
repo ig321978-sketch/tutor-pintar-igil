@@ -4,6 +4,7 @@
 // hitungan mandiri (keliling tiap segitiga contoh buku, bentuk dan label sisi di gambar, tanda sisi sama panjang, pita benang, tabel rangkuman),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b4b.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -229,7 +230,7 @@ const objId = (objs, id) => objs.find((o) => o.id === id);
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
   cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Keliling Segitiga", "Cara Asep", "Cara Nisa", "segitiga sembarang", "segitiga sama sisi", "segitiga sama kaki", "penggaris", "Latihan", "alas", "panjang sisi"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["Keliling Segitiga", "Cara Kira", "Cara Halim", "segitiga sembarang", "segitiga sama sisi", "segitiga sama kaki", "penggaris", "Latihan", "alas", "panjang sisi"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   for (const kata of ["Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   sama(M_VIDEO.adegan.map((a) => a.id), ["sapaan", "eks-a-ukur", "eks-a-dua", "eks-a-umum", "eks-b-sama-sisi", "eks-b-asep-nisa", "eks-b-umum", "eks-c-sama-kaki", "eks-c-cara", "refleksi-b"], "urutan adegan video materi");
@@ -358,9 +359,9 @@ const kelilingJenis = (jenis, sisi) => (jenis === "sama sisi" ? 3 * sisi[0] : je
     sama([0, 1, 2].filter((q) => objId(t, `tg-m${q}`)).length, 3, "tiga tanda sisi sama panjang");
     const a = adegan(M, "eks-b-asep-nisa");
     const t1 = akhirAdegan(a, 2);
-    sama([nilaiId(t1, "as"), nilaiId(t1, "nk")], [jumlahTeks(BUKU.samaSisi5), "3 × 5 = 15"], "Cara Asep dan Cara Nisa");
+    sama([nilaiId(t1, "as"), nilaiId(t1, "nk")], [jumlahTeks(BUKU.samaSisi5), "3 × 5 = 15"], "Cara Kira dan Cara Halim");
     sama(nilaiId(akhirAdegan(a, 3), "pe"), "5 + 5 + 5 = 3 × 5 = 15", "penjumlahan berulang sama dengan perkalian");
-    sama(sisiPiksel(jalurDari(akhirAdegan(a, 0), "ta")).map((x) => Math.round(x / 14)), [5, 5, 5], "segitiga Cara Asep 5 cm (skala 14)");
+    sama(sisiPiksel(jalurDari(akhirAdegan(a, 0), "ta")).map((x) => Math.round(x / 14)), [5, 5, 5], "segitiga Cara Kira 5 cm (skala 14)");
   }
   // Sama sisi 6 cm dan rumus umum.
   {
@@ -387,7 +388,7 @@ const kelilingJenis = (jenis, sisi) => (jenis === "sama sisi" ? 3 * sisi[0] : je
     const tb = akhirAdegan(b, 0);
     sama(nilaiId(tb, "e1"), jumlahTeks(BUKU.samaKaki), "Cara 1: 6 + 6 + 4 = 16");
     sama(labelSisi(tb, "tk"), ["4 cm", "6 cm", "6 cm"], "label sama kaki di Cara 1");
-    sama(nilaiId(akhirAdegan(b, 1), "e2"), "2 × 6 + 4 = 12 + 4 = 16", "Cara Nisa");
+    sama(nilaiId(akhirAdegan(b, 1), "e2"), "2 × 6 + 4 = 12 + 4 = 16", "Cara Halim");
     sama(nilaiId(akhirAdegan(b, 3), "ct"), "2 × 6 + 4 = 16", "contoh rumus sama kaki");
   }
   // Rangkuman dan Refleksi 3, 4, 5.
@@ -510,7 +511,7 @@ const kelilingJenis = (jenis, sisi) => (jenis === "sama sisi" ? 3 * sisi[0] : je
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -530,7 +531,7 @@ const kelilingJenis = (jenis, sisi) => (jenis === "sama sisi" ? 3 * sisi[0] : je
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b4b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b4b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b4b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b4b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

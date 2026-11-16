@@ -2,6 +2,7 @@ import type { AdeganStory } from "./logika-story";
 import { W, bangunC, emo, judul, kartu, labelSisi, sisiGaris, tabel, teks } from "./k5b4c-gambar";
 import type { Obj } from "./logika-story";
 import { bersih, k, sorotkan, tambah, ubah } from "./k5b4c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Keliling menurut buku (Buku Siswa hlm. 118 sampai 121; Panduan Guru hlm. 141 sampai 165). Layang-layang dihitung ulang: 2 + 2 + 4 + 4 = 12. */
 export const KUNCI_KELILING: Record<string, number> = { pp: 16, jg: 16, ll: 12, ps: 12, bk: 12, tr: 14, ss: 14 };
@@ -12,23 +13,7 @@ export const ADEGAN_EKS_43E_TRAPESIUM: AdeganStory = {
   judul: "Keliling trapesium",
   sumber: "Materi: keliling trapesium",
   latar: "#EFF6FF",
-  kutipan: [
-    "Eksplorasi 4.3E",
-    "Perhatikan bangun-bangun datar berikut.",
-    "Bangun apakah ini? .…",
-    "Hitunglah kelilingnya.",
-    "Keduanya tidak",
-    "memiliki sisi yang",
-    "sama panjang.",
-    "Keliling = … + … + … + …",
-    "Dengan demikian, diperoleh",
-    "Apakah ada sisi-sisi yang sama panjang?",
-    "Tidak ada",
-    "Keliling = 4 + 2 + 5 + 3",
-    "= 14",
-    "sehingga diperoleh",
-    "kelilingnya 14 cm.",
-  ],
+  kutipan: kutipanLokal("k5b4c-materi-3.ts:1"),
   ketukan: [
     k(
       "Sekarang bangun yang sisinya berbeda-beda. Bangun pertama memiliki sisi dua, lima, tiga, dan empat sentimeter. Bangun apakah ini? Ukur sisinya dan periksa, adakah yang sama panjang?",
@@ -72,22 +57,7 @@ export const ADEGAN_EKS_43E_SEMBARANG: AdeganStory = {
   judul: "Keliling segi empat sembarang",
   sumber: "Materi: keliling segi empat sembarang",
   latar: "#FFF1F2",
-  kutipan: [
-    "Pada trapesium ataupun segi empat sembarang,",
-    "keliling dihitung dengan menjumlahkan panjang",
-    "semua sisinya.",
-    "Keliling = 4 × panjang sisi",
-    "Keliling = 2 + 3 + 4 + 5",
-    "= 14.",
-    "Jadi, kelilingnya 14 cm.",
-    "Apa yang dapat kalian pahami?",
-    "Segi empat dengan panjang sisi-",
-    "sisi yang tidak sama dapat dihitung",
-    "kelilingnya dengan menjumlahkan",
-    "keempat sisinya.",
-    "Keliling = sisi + sisi + sisi + sisi",
-    "Keliling = sisi 1 + sisi 2 + sisi 3 + sisi 4",
-  ],
+  kutipan: kutipanLokal("k5b4c-materi-3.ts:2"),
   ketukan: [
     k(
       "Bangun kedua juga segi empat, tetapi sisinya tiga, lima, empat, dan dua sentimeter. Bangun apakah ini? Hitunglah kelilingnya.",
@@ -149,19 +119,7 @@ export const ADEGAN_REFLEKSI_C: AdeganStory = {
   judul: "Rangkuman rumus dan pesan guru",
   sumber: "Materi: rangkuman dan pesan guru",
   latar: "#F5F3FF",
-  kutipan: [
-    "Releksi",
-    "Setelah mempelajari materi terkait keliling bangun datar, isilah tabel",
-    "berikut sesuai dengan pemahaman kalian. Berilah tanda centang",
-    "6 Aku bisa menemukan cara menghitung keliling persegi panjang.",
-    "7 Aku bisa menemukan cara menghitung keliling jajar genjang.",
-    "8 Aku bisa menemukan cara menghitung keliling layang-layang.",
-    "9 Aku bisa menemukan cara menghitung keliling persegi.",
-    "10 Aku bisa menemukan cara menghitung keliling belah ketupat.",
-    "11 Aku bisa menemukan cara menghitung keliling trapesium.",
-    "12 Aku bisa menemukan cara menghitung keliling segi empat sembarang.",
-    "materi Subbab C dengan menjawab pertanyaan releksi nomor 6 sampai 12",
-  ],
+  kutipan: kutipanLokal("k5b4c-materi-3.ts:3"),
   ketukan: [
     k(
       "Mari rangkum rumus keliling segi empat dalam satu tabel. Persegi panjang, jajargenjang, dan layang-layang punya dua pasang sisi sama. Persegi dan belah ketupat punya empat sisi sama. Trapesium dan segi empat sembarang tidak punya.",

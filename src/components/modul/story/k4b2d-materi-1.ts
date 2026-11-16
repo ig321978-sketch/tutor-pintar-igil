@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, WARNA_SELAI, batang, emo, judul, kartu, kisi, pecahan, roti, teks } from "./k4b2d-gambar";
 import { bersih, k, sorotkan, tambah, ubah, warnai } from "./k4b2d-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka subbab, apersepsi, pemantik (Panduan Guru hlm. 104; Buku Siswa hlm. 71) ------------------------------ */
 const SUARA_P1 = "Selamat datang di subbab D bab dua, Pecahan Desimal Persepuluhan dan Perseratusan. Panduan guru meminta guru menjelaskan lebih dulu pengalaman belajar yang akan didapat murid.";
@@ -13,20 +14,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Subbab D: pengalaman belajar, apersepsi, pertanyaan pemantik",
   sumber: "Panduan Guru hlm. 104; Buku Siswa hlm. 71",
   latar: "#FFF7ED",
-  kutipan: [
-    "D. Pecahan desimal persepuluhan dan perseratusan",
-    "Pengalaman Belajar",
-    "Setelah mempelajari sub bab ini, Peserta didik diharapkan mampu",
-    "menyatakan pecahan desimal persepuluhan dan perseratusan",
-    "Kebutuhan Sarana Prasarana dan Media",
-    "Alat Tulis",
-    "Apersepsi",
-    "Pecahan desimal adalah pecahan yang nilai penyebutnya adalah 10, 100,",
-    "1000, dan seterusnya yang ditulis dengan menggunakan tanda koma.",
-    "Pertanyaan Esensi/Pemantik:",
-    "1. apakah pecahan desimal?",
-    "2. bagaimana mengubah pecahan biasa menjadi desimal?",
-  ],
+  kutipan: kutipanLokal("k4b2d-materi-1.ts:1"),
   ketukan: [
     k(
       SUARA_P1,
@@ -75,17 +63,7 @@ export const ADEGAN_AMATI_ROTI: AdeganStory = {
   judul: "Ayo Mengamati: sepuluh roti, satu berselai",
   sumber: "Materi: sepuluh roti, satu berselai",
   latar: "#FEF3C7",
-  kutipan: [
-    "Ayo Mengamati",
-    "Hari ini kita akan belajar pecahan desimal",
-    "Baik Ibu, pecahan desimal itu apa?",
-    "ibu sudah siapkan roti yang jumlahnya ada 10.",
-    "1 roti dilapisi selai coklat. Bagaimana bentuk pecahannya?",
-    "mengamati gambar 10 buah roti yang salah satu roti tersebut diberi selai coklat.",
-    "Kegiatan ini dapat diganti disesuaikan",
-    "menandakan persepuluhan atau",
-    "atau 0,1 dalam bentuk pecahan desimal.",
-  ],
+  kutipan: kutipanLokal("k4b2d-materi-1.ts:2"),
   ketukan: [
     k(
       SUARA_R1,
@@ -134,19 +112,7 @@ export const ADEGAN_TIGA_BISKUIT: AdeganStory = {
   judul: "Dari satu per sepuluh ke satu per seratus",
   sumber: "Materi: dari persepuluhan ke perseratusan",
   latar: "#F0FDF4",
-  kutipan: [
-    "bisa dituliskan",
-    "dalam bentuk desimal menjadi 0,1.",
-    "Berarti jika ada pecahan",
-    "dapat kita tuliskan",
-    "menjadi 0,3 Ibu?",
-    "Benar sekali. Selanjutnya jika kita memiliki 100 biskuit,",
-    "lalu 1 biskuit dilapisi selai coklat. Bagaimana bentuk",
-    "pecahannya?",
-    "Ya benar,",
-    "itu bisa dituliskan dalam bentuk desimal 0,01. Apakah",
-    "kalian sudah paham?",
-  ],
+  kutipan: kutipanLokal("k4b2d-materi-1.ts:3"),
   ketukan: [
     k(
       SUARA_B1,
@@ -199,17 +165,7 @@ export const ADEGAN_CONTOH_KOMA: AdeganStory = {
   judul: "Contoh pecahan desimal: banyak angka di belakang koma",
   sumber: "Materi: angka di belakang koma",
   latar: "#F5F3FF",
-  kutipan: [
-    "Berarti jika saya punya bentuk pecahan",
-    "bisa dituliskan dalam bentuk desimal menjadi 0,07.",
-    "Apakah benar Ibu?",
-    "Betul sekali",
-    "Contoh pecahan desimal",
-    "1 angka di belakang koma",
-    "Karena terdapat 1 angka di belakang koma, maka nilai penyebut 10",
-    "2 angka di belakang koma",
-    "Karena terdapat 2 angka di belakang koma, maka nilai penyebut 100",
-  ],
+  kutipan: kutipanLokal("k4b2d-materi-1.ts:4"),
   ketukan: [
     k(
       SUARA_C1,

@@ -4,6 +4,7 @@
 // jumlah bagian dan bagian yang diarsir pada gambar (batang, lingkaran, segi enam) dihitung ulang dari gambar dan dibandingkan dengan gambar vektor di PDF Buku Siswa lewat PyMuPDF,
 // hitungan mandiri perbandingan pecahan berpenyebut sama (kunci Panduan Guru), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b2b.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -369,7 +370,7 @@ const cekTanda = (objs, id, p, q, pesan) => {
   sama([G.LATIHAN_DUA.penyebut, G.LATIHAN_DUA.atas, G.LATIHAN_DUA.bawah], [6, 2, 4], "data nomor 2: batang dibagi 6, diarsir 2 dan 4");
   sama([G.LATIHAN_TIGA.penyebut, ...G.LATIHAN_TIGA.arsir], [6, 5, 3, 1], "data nomor 3: segi enam dibagi 6, diarsir 5, 3, 1");
   sama([G.TONGKAT.penyebut, G.TONGKAT.asep, G.TONGKAT.azizah], [6, 3, 2], "data nomor 5: tongkat 3/6 dan 2/6");
-  cek(G.TONGKAT.asep > G.TONGKAT.azizah, "tongkat Asep (3/6) lebih panjang dari tongkat Azizah (2/6): kunci Asep");
+  cek(G.TONGKAT.asep > G.TONGKAT.azizah, "tongkat Wei (3/6) lebih panjang dari tongkat Malosi (2/6): kunci Wei");
   sama(G.TONGKAT.asep - G.TONGKAT.azizah, 1, "selisih tongkat satu bagian (1/6 meter)");
   sama(G.AMATI.map(([a, b]) => bandingSama(a, b)), ["<", ">"], "Ayo Mengamati: 1/3 < 2/3 dan 2/10 > 1/10");
 
@@ -443,8 +444,8 @@ const cekTanda = (objs, id, p, q, pesan) => {
   sama([0, 1, 2, 3, 4].map((i) => nilaiId(e4, `ez${i}-t0`)), ["a.  <", "b.  <", "c.  >", "d.  >", "e.  <"], "rekap kunci nomor 4 di gambar");
   // Ayo Berlatih 5.
   const t0 = T(M, "berlatih-lima", 0);
-  cekBatang(t0, "ta", 6, 3, "nomor 5 Asep");
-  cekBatang(t0, "tz", 6, 2, "nomor 5 Azizah");
+  cekBatang(t0, "ta", 6, 3, "nomor 5 Wei");
+  cekBatang(t0, "tz", 6, 2, "nomor 5 Malosi");
   sama([nilaiId(t0, "tm1"), nilaiId(t0, "tm2")], ["3/6 m", "2/6 m"], "nomor 5: tongkat 3/6 meter dan 2/6 meter");
   const t1 = T(M, "berlatih-lima", 1);
   cekPec(t1, "td1", 3, 6, "nomor 5");
@@ -455,7 +456,7 @@ const cekTanda = (objs, id, p, q, pesan) => {
   cekBatang(t2, "tz", 6, 2, "jawaban nomor 5");
   // Rekap kunci pada adegan terakhir.
   const rk = T(M, "ringkas-b", 0);
-  sama([0, 1, 2, 3, 4].map((i) => nilaiId(rk, `rk${i}-t1`)), ["lebih dari: 2/4 > 1/4", "kurang dari: 2/6 < 4/6", "5/6 > 3/6 > 1/6", "< < > > <", "tongkat Asep (3/6 > 2/6)"], "rekap kunci: angka kunci");
+  sama([0, 1, 2, 3, 4].map((i) => nilaiId(rk, `rk${i}-t1`)), ["lebih dari: 2/4 > 1/4", "kurang dari: 2/6 < 4/6", "5/6 > 3/6 > 1/6", "< < > > <", "tongkat Wei (3/6 > 2/6)"], "rekap kunci: angka kunci");
   const ru = T(M, "ringkas-b", 1);
   sama(["rn2", "rn3", "rn4"].map((id) => pec(ru, id)), [[2, 9], [7, 9], [5, 9]], "coba urutkan sendiri: 2/9, 7/9, 5/9");
   const rv = T(M, "ringkas-b", 2);
@@ -470,8 +471,8 @@ const cekTanda = (objs, id, p, q, pesan) => {
   cekTanda(hn, "hn2", 1, 3, "urutkan kecil ke besar");
   cekTanda(hn, "hn4", 3, 5, "urutkan kecil ke besar");
   const tk = T(M, "berlatih-lima", 3);
-  cekBatang(tk, "ta", 6, 3, "cek tongkat Asep");
-  cekBatang(tk, "tz", 6, 2, "cek tongkat Azizah");
+  cekBatang(tk, "ta", 6, 3, "cek tongkat Wei");
+  cekBatang(tk, "tz", 6, 2, "cek tongkat Malosi");
   const sp = T(M, "amati-dua", 4);
   cekPec(sp, "p8", 2, 10, "coba pikirkan penyebut sama");
   cekPec(sp, "p10", 1, 10, "coba pikirkan penyebut sama");
@@ -545,8 +546,8 @@ const cekTanda = (objs, id, p, q, pesan) => {
   cekPec(bv, "bv3", 4, 6, "luar Fraction Bars nomor 2");
   cekTanda(bv, "bv2", 2, 4, "luar Fraction Bars nomor 2");
   const bx = T(U, "luar-batang-terapan", 3);
-  cekBatang(bx, "bx1", 6, 3, "luar Fraction Bars tongkat Asep");
-  cekBatang(bx, "bx2", 6, 2, "luar Fraction Bars tongkat Azizah");
+  cekBatang(bx, "bx1", 6, 3, "luar Fraction Bars tongkat Wei");
+  cekBatang(bx, "bx2", 6, 2, "luar Fraction Bars tongkat Malosi");
   const kc = T(U, "luar-kartu", 0);
   sama(["cs1", "cs2", "cs3"].map((id) => pec(kc, id)), [[4, 7], [1, 7], [3, 7]], "luar Fraction Card Sort konsep: kartu 4/7, 1/7, 3/7");
   const ku = T(U, "luar-kartu", 1);
@@ -690,8 +691,8 @@ const cekTanda = (objs, id, p, q, pesan) => {
       }
     }
     stat.kutipan = n;
-    cek(n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(M.adegan.every((a) => (a.kutipan ?? []).length >= 2), "tiap adegan materi memuat kutipan buku");
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.every((a) => (a.kutipan ?? []).length >= 2), "tiap adegan materi memuat kutipan buku");
     // Istilah dan angka kunci yang dipakai video.
     for (const t of ["jadi tongkat yang lebih panjang adalah tongkat asep", "membandingkan dan mengurutkan antar-pecahan", "penyebut adalah bilangan pembagi.", "alat tulis", "problem based learning", "guru meminta peserta didik untuk mengamati 2 gambar"]) cek(guru.includes(t), `Panduan Guru memuat "${t}"`);
     for (const t of ["daerah arsir mana yang lebih kecil?", "daerah arsir mana yang lebih besar?", "membandingkan pecahan dengan penyebut yang sama", "asep mempunyai tongkat sepanjang", "azizah mempunyai tongkat"]) cek(siswa.includes(t), `Buku Siswa memuat "${t}"`);
@@ -703,8 +704,8 @@ const cekTanda = (objs, id, p, q, pesan) => {
     const m = mentah.match(/\n1\.\s*\n([\s\S]*?)\n2\.\s*\n/);
     const token = m ? m[1].split(/\s+/).filter((t) => /^\d+$/.test(t)).sort() : [];
     sama(token, ["1", "2", "3", "4"], "Panduan Guru hlm. 98, kunci nomor 1: pecahan yang tertulis 2/4 dan 1/3 (penyebut 3 tidak sama dengan 4)");
-    // Panduan Guru nomor 4 dan 5: kunci tanda dan tongkat Asep.
-    cek(/jawab: jadi tongkat yang lebih panjang adalah tongkat asep/.test(guru), "Panduan Guru hlm. 99: kunci nomor 5 tongkat Asep");
+    // Panduan Guru nomor 4 dan 5: kunci tanda dan tongkat Wei.
+    cek(/jawab: jadi tongkat yang lebih panjang adalah tongkat asep/.test(guru), "Panduan Guru hlm. 99: kunci nomor 5 tongkat Wei");
   }
 }
 
@@ -724,7 +725,7 @@ const cekTanda = (objs, id, p, q, pesan) => {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b2b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b2b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

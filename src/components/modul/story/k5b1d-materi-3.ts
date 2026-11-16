@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, judul, kalimat, kartu, kolomSusun, susun, tabel, tabelNilaiTempat, teks } from "./k5b1d-gambar";
 import { bersih, k, tambah, ubah } from "./k5b1d-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Panduan Guru untuk sub-bab D (Panduan Guru hlm. 33 sampai 34) ------------------------------ */
 export const ADEGAN_GURU: AdeganStory = {
@@ -8,19 +9,7 @@ export const ADEGAN_GURU: AdeganStory = {
   judul: "Panduan Guru: peran guru, respons, miskonsepsi, diferensiasi",
   sumber: "Panduan Guru hlm. 33–34",
   latar: "#F5F3FF",
-  kutipan: [
-    "Tabel 1.5 Peran Guru dan Respons Peserta Didik terhadap Pembelajaran Operasi Bilangan",
-    "Guru menjadi fasilitator.",
-    "Peserta didik dengan tingkat pemahaman yang baik akan dapat melakukan operasi bilangan dengan baik.",
-    "Mungkin ada peserta didik yang hanya mampu untuk melakukan operasi bilangan",
-    "peserta didik kurang dapat mengimplementasikan soal cerita menggunakan operasi bilangan yang digunakan",
-    "kurang dapat menggunakan teknik perkalian dan pembagian dalam bilangan cacah dengan angka yang besar",
-    "kurangnya dalam pemahaman teknik menyimpan serta ketelitian",
-    "Bagi peserta didik dengan kecepatan belajarnya tinggi (advanced)",
-    "minta mereka mengerjakan eksplorasi tanpa bantuan",
-    "pertanyaan releksi nomor 5, 6, dan 7 pada tabel releksi di Buku Siswa",
-    "Aku dapat menghitung operasi bilangan cacah sampai 100.000.",
-  ],
+  kutipan: kutipanLokal("k5b1d-materi-3.ts:1"),
   ketukan: [
     k(
       "Panduan Guru menyajikan peran guru dan respons peserta didik pada Tabel satu titik lima. Guru menjadi fasilitator: menyampaikan tujuan, berkeliling, memeriksa hasil kelompok. Yang belum tepat dibimbing.",
@@ -63,28 +52,7 @@ export const ADEGAN_UK_1: AdeganStory = {
   judul: "Uji 1 sampai 4: menulis, membaca, menyusun, dan menghitung",
   sumber: "Materi: menulis, membaca, dan menghitung",
   latar: "#ECFEFF",
-  kutipan: [
-    "Uji Kompetensi",
-    "Nyatakan bilangan berikut dengan angka.",
-    "Lima puluh ribu tiga ratus tiga rupiah.",
-    "Tiga puluh tiga ribu empat ratus tiga rupiah.",
-    "Bacalah bilangan berikut.",
-    "Jumlah penduduk Kepulauan Sitaro tahun 2021 adalah 72.135 jiwa.",
-    "Jarak kota Sibolga ke kota New York adalah 15.229 km.",
-    "Tuliskan bilangan berikut angka dan bacalah.",
-    "Bilangan yang merupakan jumlah dari 3 lembar sepuluh ribuan, 7 lembar seribuan, dan 10 keping seratusan.",
-    "Tentukan hasil dan nilai tempat dari operasi bilangan berikut.",
-    "76.598 + 12.456 =",
-    "67.987 – 13.453 =",
-    "67.032 : 147 =",
-    "567 × 98 =",
-    "567 x 107 =",
-    "a. 50.303",
-    "b. 33.403",
-    "a. 89.054",
-    "b. 54.534",
-    "d. 55.566",
-  ],
+  kutipan: kutipanLokal("k5b1d-materi-3.ts:2"),
   ketukan: [
     k(
       "Uji satu: tulis dengan angka. Lima puluh ribu tiga ratus tiga rupiah, dan tiga puluh tiga ribu empat ratus tiga rupiah. Nol di puluhan tetap ditulis.",
@@ -159,22 +127,7 @@ export const ADEGAN_UK_2: AdeganStory = {
   judul: "Uji 5 dan 6: komposisi uang dan paket makan siang",
   sumber: "Materi: komposisi uang dan paket makan",
   latar: "#FFFBEB",
-  kutipan: [
-    "Ibu Saga berbelanja di pasar sebesar Rp59.000,00.",
-    "berapa komposisi cara membayar yang mungkin dilakukan?",
-    "Cermatilah tabel berikut",
-    "Zafran dan Ula sedang memilih makanan untuk makan siang.",
-    "Paket A",
-    "Paket B",
-    "Rp27.500,00",
-    "Jika Zafran dan Ula masing-masing membeli 1 porsi paket A, berapakah jumlah uang yang dibayarkan?",
-    "Jika kamu menjadi Zafran dan Ula, paket mana yang akan kamu pilih?",
-    "Jika Zafran dan Ula masing-masing memiliki uang Rp35.000,00 dan mereka membeli Paket B, berapakah sisa uang masing-masing?",
-    "5. 2 Cara",
-    "a. 55.000",
-    "b. Paket B",
-    "c. 8.500",
-  ],
+  kutipan: kutipanLokal("k5b1d-materi-3.ts:3"),
   ketukan: [
     k(
       "Uji lima: Ibu Saga berbelanja lima puluh sembilan ribu rupiah dengan dua lembar dua puluh ribuan, tiga sepuluh ribuan, dua lima ribuan, dan lima dua ribuan. Jumlah ganjil, jadi satu lembar lima ribuan.",
@@ -222,22 +175,7 @@ export const ADEGAN_PENUTUP_D: AdeganStory = {
   judul: "Rubrik, remedial, pengayaan, interaksi orang tua, dan penutup bab",
   sumber: "Panduan Guru hlm. 37–42",
   latar: "#F0F9FF",
-  kutipan: [
-    "Tabel 1.6 Rubrik Penilaian Uji Kompetensi Bab 1",
-    "Peserta didik tidak menjawab sama sekali.",
-    "Peserta didik memberikan jawaban akhir benar tanpa ada alur pengerjaan yang runtut.",
-    "Panduan Remedial",
-    "Bimbingan individu",
-    "Bimbingan kelompok",
-    "Pembelajaran ulang dengan menggunakan metode dan media yang berbeda",
-    "Panduan Pengayaan",
-    "Kegiatan pengayaan dapat diberikan proyek untuk mengaplikasikan uang Rp100.000,00 dalam kehidupan di rumah.",
-    "Jika pada nota pembelian tertulis Rp56.900,00",
-    "Bagaimana komposisi uang yang mungkin digunakan Ibunya Lukas untuk membayarnya?",
-    "Interaksi dengan Orang Tua",
-    "peserta didik dapat diberi tugas untuk berkreasi membelanjakan sejumlah uang untuk keperluan rumah masing-masing",
-    "Aku dapat menghitung operasi bilangan cacah sampai 100.000.",
-  ],
+  kutipan: kutipanLokal("k5b1d-materi-3.ts:4"),
   ketukan: [
     k(
       "Rubrik memberi skor nol sampai empat: nol tidak menjawab, satu jawaban benar tanpa alur, dua alur tidak runtut, tiga alur benar jawaban salah, empat semuanya tepat.",

@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { BENTUK_LATIHAN, W, barisTabel, bulat, emo, garis, judul, kartu, kincir, kipas, kisi, lingkaranBagi, panah, pecahan, segitigaBagi, teks } from "./k4b2a-gambar";
 import { bersih, idx, k, sorotkan, tambah, hapus } from "./k4b2a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Ayo Mengamati: pizza dibagi empat (Buku Siswa hlm. 58–59; Panduan Guru hlm. 94) ------------------------------ */
 const SUARA_Z1 = "Perhatikan. Ibu guru membawa sebuah pizza dan memotongnya menjadi empat bagian yang sama. Potongan itu akan dibagikan kepada empat siswa yang mendapat nilai tertinggi.";
@@ -20,18 +21,7 @@ export const ADEGAN_AMATI_PIZZA: AdeganStory = {
   judul: "Mengamati: pizza dibagi empat",
   sumber: "Materi: pecahan dari pizza",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ayo Mengamati",
-    "Ibu guru membawa sebuah pizza. Beliau akan memotong pizza tersebut menjadi 4 bagian yang sama.",
-    "Ibu guru akan membagi potongan-potongan pizza tersebut kepada 4 siswa yang mendapat nilai tertinggi.",
-    "Berapa bagian pizza yang didapatkan masing-masing siswa?",
-    "Tiap anak mendapatkan 1 Bu",
-    "Ya, tiap anak mendapatkan 1 dari 4 bagian pizza utuh, untuk menyatakannya kita menggunakan bilangan pecahan.",
-    "Pernyataan pecahan tersebut dapat dituliskan menjadi",
-    "Guru meminta peserta didik untuk mengamati gambar pizza yang telah dipotong.",
-    "Kegiatan ini dapat diganti disesuaikan kondisi di dalam kelas masing-masing guru",
-    "sehingga apa yang disajikan adalah sesuatu yang ada di sekitar peserta didik.",
-  ],
+  kutipan: kutipanLokal("k4b2a-materi-2.ts:1"),
   ketukan: [
     k(
       SUARA_Z1,
@@ -82,14 +72,7 @@ export const ADEGAN_PEMBILANG: AdeganStory = {
   judul: "Pembilang dan penyebut",
   sumber: "Materi: pembilang dan penyebut",
   latar: "#F0F9FF",
-  kutipan: [
-    "Pembilang",
-    "Penyebut",
-    "Oh begitu ya Bu. Jadi kita menggunakan pecahan",
-    "Pembilang adalah bilangan terbagi.",
-    "di atas garis pemisah disebut dengan pembilang",
-    "sedangkan bilangan di bagian bawah disebut penyebut.",
-  ],
+  kutipan: kutipanLokal("k4b2a-materi-2.ts:2"),
   ketukan: [
     k(
       SUARA_B1,
@@ -136,11 +119,7 @@ export const ADEGAN_BERLATIH_BENTUK: AdeganStory = {
   judul: "Berlatih: bentuk pecahan dari gambar",
   sumber: "Materi: bentuk pecahan dari gambar",
   latar: "#F5F3FF",
-  kutipan: [
-    "Ayo Berlatih",
-    "Tuliskan bentuk pecahan dari gambar berikut! (diarsir dari keseluruhan)",
-    "Guru meminta peserta didik untuk mengamati gambar pizza yang telah dipotong.",
-  ],
+  kutipan: kutipanLokal("k4b2a-materi-2.ts:3"),
   ketukan: [
     k(
       SUARA_T1,
@@ -188,17 +167,7 @@ export const ADEGAN_BANDING_BESAR: AdeganStory = {
   judul: "Membandingkan: setengah dan seperempat",
   sumber: "Materi: setengah lawan seperempat",
   latar: "#F0FDF4",
-  kutipan: [
-    "Membandingkan pecahan dengan pembilang satu",
-    "Ayo Mengamati",
-    "Amati gambar di atas. Bandingkan daerah arsir antara kedua pecahan tersebut.",
-    "Daerah arsir mana yang lebih besar?",
-    "lebih besar dari daerah arsir",
-    "Atau dapat ditulis sebagai berikut:",
-    "Guru meminta peserta didik untuk mengamati 2 gambar yang ada di buku",
-    "siswa tentang pecahan berbeda dari benda yang berukuran sama",
-    "Peserta didik dapat menentukan mana pecahan yang lebih besar atau lebih kecil.",
-  ],
+  kutipan: kutipanLokal("k4b2a-materi-2.ts:4"),
   ketukan: [
     k(
       SUARA_D1,

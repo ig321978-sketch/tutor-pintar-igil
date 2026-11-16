@@ -157,7 +157,7 @@ export const ADEGAN_LUAR_KURANG_ULANG: AdeganStory = {
 };
 
 /* ------------------------------ 9. Repeated Subtraction: penerapan (soal buku) ------------------------------ */
-const SUARA_W1 = "Permen Pak Wicak: mengurangi empat satu per satu sampai habis terlalu panjang. Jadi kurangi sepuluh kelompok sekaligus, sepuluh kali empat adalah empat puluh.";
+const SUARA_W1 = "Permen Pak Malosi: mengurangi empat satu per satu sampai habis terlalu panjang. Jadi kurangi sepuluh kelompok sekaligus, sepuluh kali empat adalah empat puluh.";
 const SUARA_W2 = "Sisa delapan, kurangi empat dua kali lagi sampai nol. Sepuluh tambah dua, jadi dua belas kali mengurangi, hasil bagi dua belas.";
 const SUARA_W3 = "Soal d: sembilan puluh enam telur, tiap kotak delapan. Kurangi delapan sebanyak sepuluh kali, jadi delapan puluh, sisa enam belas. Kurangi lagi dua kali, habis. Jadi dua belas kotak.";
 const SUARA_W4 = "Soal c: delapan puluh satu kue, tiap kotak tiga. Kurangi tiga sebanyak sepuluh kali, sisa lima puluh satu. Sepuluh kali lagi, sisa dua puluh satu. Tujuh kali lagi, habis. Jadi dua puluh tujuh kotak.";

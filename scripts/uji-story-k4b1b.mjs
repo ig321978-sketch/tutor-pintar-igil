@@ -4,6 +4,7 @@
 // banyak benda gambar (kotak kartu, kardus, balok, cakram) dihitung ulang, angka kunci Panduan Guru dihitung mandiri (angka tiap tempat, nilai angka 6, uraian, 9.500 - 7.350),
 // uraian bentuk penjumlahan dicocokkan dengan nilai tempat, emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b1b.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -388,7 +389,7 @@ for (const v of [M, U]) {
   const d5 = T(M, "berlatih-dua", 4);
   sama([0, 1, 2, 3].map((i) => [nilaiId(d5, `kr${i}-t0`), nilaiId(d5, `kr${i}-t1`), nilaiId(d5, `kr${i}-t2`)]), G.LATIHAN2.map(([n, t]) => [G.titik(n), KARDUS[t].toLowerCase(), G.titik(6 * NILAI[t])]), "kunci nomor 2 dan nilai angka 6 dalam tabel gambar");
   const t31 = T(M, "berlatih-tiga", 0);
-  sama(["hg", "um", "ss"].map((id) => nilaiId(t31, `${id}-t0`)), ["harga kue: Rp7.350,00", "uang Slamet: Rp9.500,00", "sisa uang: Rp2.150,00"], "nomor 3: harga, uang, dan sisa");
+  sama(["hg", "um", "ss"].map((id) => nilaiId(t31, `${id}-t0`)), ["harga kue: Rp7.350,00", "uang Upe: Rp9.500,00", "sisa uang: Rp2.150,00"], "nomor 3: harga, uang, dan sisa");
   for (const [i, n] of [[1, 7350], [2, 9500], [3, 2150]]) {
     const d = T(M, "berlatih-tiga", i);
     sama([0, 1, 2, 3].map((j) => nilaiId(d, `sl-dt${j}`)), digitDari(n).map(String), `nomor 3${"abc"[i - 1]}: tabel angka ${G.titik(n)}`);
@@ -506,8 +507,8 @@ for (const v of [M, U]) {
       }
     }
     stat.kutipan = n;
-    cek(n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
     // Data tabel dan kunci dibaca langsung dari teks PDF, bukan dari data di berkas gambar.
     const guruB = bersih(ambil(bg, 50, 50));
     const rapat = (t) => t.replace(/\s+/g, " ");
@@ -548,7 +549,7 @@ for (const v of [M, U]) {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b1b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b1b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

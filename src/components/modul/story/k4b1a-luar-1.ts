@@ -104,7 +104,7 @@ export const ADEGAN_LUAR_DIENES: AdeganStory = {
 };
 
 /* ------------------------------ 3. Dienes Blocks: penerapan ------------------------------ */
-const SUARA_T1 = "Terapan dengan jarak rumah Helen, tiga ribu dua ratus delapan puluh enam meter. Kita bangun dengan balok. Mulai dari ribuan: tiga peti.";
+const SUARA_T1 = "Terapan dengan jarak rumah Upe, tiga ribu dua ratus delapan puluh enam meter. Kita bangun dengan balok. Mulai dari ribuan: tiga peti.";
 const SUARA_T2 = "Ratusan: dua dus, yaitu dua ratus. Puluhan: delapan bungkus, yaitu delapan puluh. Satuan: enam benda lepas.";
 const SUARA_T3 = "Baca balok dari kiri ke kanan: tiga ribu, dua ratus, delapan puluh, enam. Jadi dibaca tiga ribu dua ratus delapan puluh enam.";
 const SUARA_T4 = "Contoh kedua, harga minuman enam ribu tujuh ratus lima puluh rupiah. Enam peti, tujuh dus, lima bungkus, dan tidak ada benda lepas karena satuannya nol.";

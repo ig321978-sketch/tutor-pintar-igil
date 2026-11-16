@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { NAMA_WARNA, W, WARNA_KARDUS, emo, judul, kardus, kisiKartu, kotak, kartu, panah, struk, teks } from "./k4b1b-gambar";
 import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const idKartu = (id: string, n = 1): string[] => [`${id}-k`, ...Array.from({ length: n }, (_, i) => `${id}-t${i}`)];
 /** Kardus dengan label hitam dulu; warna spidol diberikan kemudian lewat `ubah`. */
@@ -19,15 +20,7 @@ export const ADEGAN_STRUK: AdeganStory = {
   judul: "Subbab B dan Ayo Mengamati: struk belanja",
   sumber: "Materi: nilai tempat dari struk",
   latar: "#F0F9FF",
-  kutipan: [
-    "B. Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai 10.000",
-    "Ayo Mengamati",
-    "Perhatikan gambar di bawah dengan cermat.",
-    "Bilangan juga memiliki nilai tempat.",
-    "Beberapa angka yang bergabung dalam bilangan memiliki nilai tempat masing-masing.",
-    "Sebelum kalian memahami lebih jauh, Ayo kita lakukan aktivitas berikut.",
-    "B. Nilai Tempat Bilangan Cacah",
-  ],
+  kutipan: kutipanLokal("k4b1b-materi-1.ts:1"),
   ketukan: [
     k(
       SUARA_S1,
@@ -77,21 +70,7 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
   judul: "Panduan Guru: pengalaman belajar, apersepsi, pemantik",
   sumber: "Panduan Guru hlm. 35–36",
   latar: "#FFFBEB",
-  kutipan: [
-    "Pengalaman Belajar",
-    "Setelah mempelajari sub bab ini, diharapkan peserta didik mampu membandingkan dan mengurut bilangan sampai angka 10.000.",
-    "Kebutuhan Sarana Prasarana dan Media",
-    "Kardus/wadah berbentuk kotak, kertas karton, gunting, spidol warna",
-    "Apersepsi",
-    "Guru telah menyediakan segala sesuatu yang terkait dengan cerita yang dirancang",
-    "kertas struk belanja",
-    "Guru dianjurkan mempersiapkan alternatif contoh cerita kontekstual yang lain",
-    "Pada topik ini guru dapat mengeksplorasi aspek psikomotor peserta didik.",
-    "Stimulus (Pemanasan)",
-    "Pertanyaan Esensi/Pemantik",
-    "Bisakah kalian menyebutkan harga yang tertera dalam struk belanja?",
-    "bisakah kalian menyebutkan berapa ribu, berapa ratus, berapa puluh, dan berapa satuan uang yang harus dibayarkan?",
-  ],
+  kutipan: kutipanLokal("k4b1b-materi-1.ts:2"),
   ketukan: [
     k(
       SUARA_P1,
@@ -142,19 +121,7 @@ export const ADEGAN_AKTIVITAS_ALAT: AdeganStory = {
   judul: "Aktivitas 2: alat, kelompok, dan empat kardus",
   sumber: "Materi: alat dan kardus nilai tempat",
   latar: "#F0FDF4",
-  kutipan: [
-    "Aktivitas 2. Nilai Tempat",
-    "Alat dan Bahan:",
-    "4 Buah kardus bekas/wadah berbentuk kotak",
-    "Kertas karton",
-    "Gunting",
-    "Spidol Warna",
-    "Buatlah kelompok kerja yang terdiri dari 3-5 orang.",
-    "dengan menggunakan spidol berwarna biru, orange, hijau, dan merah.",
-    "Letakkan kardus ribuan, kardus ratusan, kardus puluhan, dan kardus satuan berurutan dari kiri ke kanan.",
-    "Guru membentuk kelompok heterogen",
-    "Kardus dapat diganti dengan tempat lain yang mudah diperoleh peserta didik.",
-  ],
+  kutipan: kutipanLokal("k4b1b-materi-1.ts:3"),
   ketukan: [
     k(
       SUARA_A1,
@@ -208,19 +175,7 @@ export const ADEGAN_AKTIVITAS_KARTU: AdeganStory = {
   judul: "Aktivitas 2: empat paket kartu bilangan",
   sumber: "Materi: kartu bilangan",
   latar: "#FFF7ED",
-  kutipan: [
-    "Siapkan kertas karton, buatlah kotak-kotak berukuran 10 cm x 10 cm sebanyak 40 kotak.",
-    "Tuliskan angka 0, 1, … sampai 9 pada setiap kotak dengan warna spidol yang berbeda.",
-    "Guntinglah menjadi kartu bilangan.",
-    "Kalian telah mempunyai 4 paket kartu bilangan.",
-    "Paket kartu bilangan 1 dengan tulisan berwarna biru.",
-    "Paket kartu bilangan 2 dengan tulisan berwarna orange.",
-    "Paket kartu bilangan 3 dengan tulisan berwarna hijau.",
-    "Paket kartu bilangan 4 dengan tulisan berwarna merah.",
-    "Masukkan setiap paket kartu bilangan ke dalam 4 kardus yang tersedia sesuai warna tulisannya.",
-    "Pastikan semua kardus terisi oleh kartu bilangan.",
-    "Guru dapat memberikan contoh terlebih dahulu.",
-  ],
+  kutipan: kutipanLokal("k4b1b-materi-1.ts:4"),
   ketukan: [
     k(
       SUARA_K1,

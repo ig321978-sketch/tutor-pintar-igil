@@ -1,35 +1,21 @@
 import type { AdeganStory } from "./logika-story";
 import { ANAK, PERMEN, W, barisTabel, benda, emo, judul, kaleng, kartu, teks, wadah } from "./k4b1h-gambar";
 import { bersih, idx, k, sorotkan, tambah, ubah } from "./k4b1h-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka sub-bab H (Buku Siswa hlm. 44; Panduan Guru hlm. 65) ------------------------------ */
-const SUARA_A1 = "Hari ini kita belajar pembagian bilangan cacah sampai seratus. Pak Wicak membeli sekaleng permen berisi empat puluh delapan biji.";
-const SUARA_A2 = "Permen itu dibagi sama banyak kepada empat anak: Andi, Azizah, Drio, dan Candra. Berapa banyak permen yang diterima masing-masing anak?";
+const SUARA_A1 = "Hari ini kita belajar pembagian bilangan cacah sampai seratus. Pak Malosi membeli sekaleng permen berisi empat puluh delapan biji.";
+const SUARA_A2 = "Permen itu dibagi sama banyak kepada empat anak: Upe, Wei, Drio, dan Candra. Berapa banyak permen yang diterima masing-masing anak?";
 const SUARA_A3 = "Ada tiga hal yang akan kita pelajari. Memahami pembagian sampai seratus dengan benda konkret, dengan gambar, dan dengan simbol matematika.";
 const SUARA_A4 = "Siapkan bendanya: permen, kerikil, kelereng, manik-manik, atau kue, ditambah wadah dari kertas, karton, atau kardus.";
 const SUARA_A5 = "Ingat dulu: pembagian merupakan pengurangan berulang dengan bilangan yang sama sampai habis, dan identik dengan berbagi kepada sesama.";
 
 export const ADEGAN_PEMBUKA_H: AdeganStory = {
   id: "pembuka-h",
-  judul: "Sub-Bab H: permen Pak Wicak dan pengalaman belajar",
+  judul: "Sub-Bab H: permen Pak Malosi dan pengalaman belajar",
   sumber: "Materi: pembagian sampai 100",
   latar: "#FFF7ED",
-  kutipan: [
-    "H. Pembagian Bilangan Cacah sampai 100",
-    "Ayo Mengamati",
-    "Pak Wicak membeli sekaleng permen berisi 48 biji.",
-    "Pak Wicak membagi sama banyak kepada Andi, Azizah, Drio, dan Candra.",
-    "Berapa banyak permen yang diterima oleh masing-masing anak?",
-    "Pengalaman Belajar",
-    "Memahami konsep operasi pembagian bilangan cacah sampai 100 menggunakan benda konkret.",
-    "Memahami konsep operasi pembagian bilangan cacah sampai 100 menggunakan gambar.",
-    "Memahami konsep operasi pembagian bilangan cacah sampai 100 menggunakan simbol matematika.",
-    "Kebutuhan Sarana Prasarana dan Media",
-    "Permen/kerikil/kelereng/manik-manik/kue/buku",
-    "Apersepsi",
-    "Secara umum konsep operasi pembagian merupakan pengurangan berulang dengan bilangan yang sama sampai habis.",
-    "Konsep pembagian identik dengan kegiatan berbagi kepada sesama.",
-  ],
+  kutipan: kutipanLokal("k4b1h-materi-1.ts:1"),
   ketukan: [
     k(
       SUARA_A1,
@@ -84,18 +70,7 @@ export const ADEGAN_PEMANTIK: AdeganStory = {
   judul: "Pemanasan: kelereng sepuluh dan pertanyaan pemantik",
   sumber: "Materi: pertanyaan pemantik",
   latar: "#F0F9FF",
-  kutipan: [
-    "Stimulus (Pemanasan)",
-    "Pertanyaan Esensi/Pemantik",
-    "Bagaimana operasi pembagian cara bersusun?",
-    "Guru memberikan pengantar bagaimana cara membagi bilangan cacah.",
-    "apakah bilangan 10 dapat dibagi sama rata kepada tiga orang tersebut?",
-    "apakah bilangan 10 dapat dibagi sama rata kepada lima orang tersebut?",
-    "Guru tidak perlu memberikan jawaban yang benar cara membagi rata permen saat melakukan pemanasan",
-    "karena peserta didik akan menemukan jawabannya setelah mereka melakukan aktivitas pembelajaran.",
-    "Pada bagian ini Guru perlu mengarahkan peserta didik untuk mengamati ilustrasi yang telah diberikan berupa kaleng permen yang akan dibagikan kepada 4 orang.",
-    "semua permen harus dibagikan semua",
-  ],
+  kutipan: kutipanLokal("k4b1h-materi-1.ts:2"),
   ketukan: [
     k(
       SUARA_B1,
@@ -149,21 +124,7 @@ export const ADEGAN_AKTIVITAS_LIMA: AdeganStory = {
   judul: "Kegiatan: membagi permen ke dalam wadah",
   sumber: "Materi: membagi permen ke wadah",
   latar: "#FEFCE8",
-  kutipan: [
-    "Ayo Beraktivitas",
-    "Aktivitas 5",
-    "Alat dan Bahan:",
-    "Permen/batu/kerikil/manik-manik sebanyak 48 buah",
-    "Wadah kertas/plastik",
-    "Langkah-langkah:",
-    "Ambil wadah sebanyak yang diinginkan, misalnya 3.",
-    "memasukkannya satu per satu secara bergantian ke dalam wadah, hingga permen tersebut habis.",
-    "Lakukan hal serupa dengan jumlah wadah berbeda.",
-    "Guru membagi peserta didik ke beberapa kelompok yang heterogen.",
-    "Guru menyiapkan wadah sebanyak 3 atau lebih",
-    "dengan syarat setiap wadah harus sama banyaknya permen.",
-    "apakah ada sisa permen di kaleng?",
-  ],
+  kutipan: kutipanLokal("k4b1h-materi-1.ts:3"),
   ketukan: [
     k(
       SUARA_C1,
@@ -223,16 +184,7 @@ export const ADEGAN_TABEL_WADAH: AdeganStory = {
   judul: "Tabel hasil kegiatan dan kesimpulan habis dibagi",
   sumber: "Materi: tabel pembagian 48",
   latar: "#F0FDF4",
-  kutipan: [
-    "Buatlah tabel seperti di bawah ini berdasarkan hasil aktivitas yang kalian lakukan.",
-    "Banyak Permen",
-    "Banyak Wadah",
-    "Banyak Permen di Setiap Wadah",
-    "Sisa Permen",
-    "Apa yang dapat kalian simpulkan dari hasil aktivitas yang kalian tuliskan dalam tabel di atas?",
-    "Guru dapat memberikan kesimpulan bahwa:",
-    "bilangan 48 habis dibagi dengan bilangan 2, 3, 4, 6, 8 karena sisa hasil baginya adalah NOL.",
-  ],
+  kutipan: kutipanLokal("k4b1h-materi-1.ts:4"),
   ketukan: [
     k(
       SUARA_D1,

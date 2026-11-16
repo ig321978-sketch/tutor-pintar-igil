@@ -1,9 +1,10 @@
 // Uji Story Kelas 5 Bab 4 Sub-Bab A (apakah keliling bangun datar itu, termasuk pembuka bab): dua video (materi kurikulum dan metode luar) dengan mesin animasi baru.
 // Memeriksa: pemicu kata, sinkron angka suara dan gambar, perubahan gambar tiap ketukan, keunikan antaradegan, batas kanvas,
 // teks bertumpuk, pemisahan materi dan metode luar, tidak membocorkan materi subbab berikutnya, kutipan buku (bila PDF ada),
-// hitungan mandiri (lapangan 100 m kali 50 m, panjang ruas rute lari Nisa, Lukas, Yohana, dan Asep, keliling 300 m,
+// hitungan mandiri (lapangan 100 m kali 50 m, panjang ruas rute lari Igil, Kira, Halim, dan Upe, keliling 300 m,
 // dua bangun hlm. 114 dengan keliling 16 dan 19, luas 5000 dan keliling 300 lapangan), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b4a.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -88,31 +89,31 @@ hampir(G.LAP.pw / G.LAP.skala, PANJANG, 1e-9, "lebar lapangan 100 m");
 hampir(G.LAP.ph / G.LAP.skala, LEBAR, 1e-9, "tinggi lapangan 50 m");
 {
   const s = G.LAP.skala;
-  // Panjang ruas rute (meter) menurut data jalur: Nisa 100 tiga kali, Lukas 50 enam kali, Yohana 50 enam kali, Asep 100, 50, 100, 50.
-  sama(ruasMandiri(G.RUTE.nisa).map((p) => ke_meter(p, s)), [100, 100, 100], "ruas rute Nisa (m)");
-  sama(ruasMandiri(G.RUTE.lukas).map((p) => ke_meter(p, s)), [50, 50, 50, 50, 50, 50], "ruas rute Lukas (m)");
-  sama(ruasMandiri(G.RUTE.yohana).map((p) => ke_meter(p, s)), [50, 50, 50, 50, 50, 50], "ruas rute Yohana (m)");
-  sama(ruasMandiri(G.RUTE.asep).map((p) => ke_meter(p, s)), [100, 50, 100, 50], "ruas rute Asep (m)");
+  // Panjang ruas rute (meter) menurut data jalur: Igil 100 tiga kali, Kira 50 enam kali, Halim 50 enam kali, Upe 100, 50, 100, 50.
+  sama(ruasMandiri(G.RUTE.nisa).map((p) => ke_meter(p, s)), [100, 100, 100], "ruas rute Igil (m)");
+  sama(ruasMandiri(G.RUTE.lukas).map((p) => ke_meter(p, s)), [50, 50, 50, 50, 50, 50], "ruas rute Kira (m)");
+  sama(ruasMandiri(G.RUTE.yohana).map((p) => ke_meter(p, s)), [50, 50, 50, 50, 50, 50], "ruas rute Halim (m)");
+  sama(ruasMandiri(G.RUTE.asep).map((p) => ke_meter(p, s)), [100, 50, 100, 50], "ruas rute Upe (m)");
   for (const nama of ["nisa", "lukas", "yohana", "asep"]) {
     sama(jml(ruasMandiri(G.RUTE[nama]).map((p) => ke_meter(p, s))), 300, `rute ${nama} menempuh 300 m`);
     sama(G.ruasRute(G.RUTE[nama]), ruasMandiri(G.RUTE[nama]), `fungsi ruasRute sama dengan hitungan mandiri (${nama})`);
     cek(titikTerbuka(G.RUTE[nama]).every(([x, y]) => x >= 0 && x <= G.LAP.pw && y >= 0 && y <= G.LAP.ph), `rute ${nama} di dalam lapangan`);
     stat.rute += 1;
   }
-  // Asep kembali ke titik awal, Nisa dan Yohana tidak. Asep menyusuri tepian tepat satu kali tiap sisi.
+  // Upe kembali ke titik awal, Igil dan Halim tidak. Upe menyusuri tepian tepat satu kali tiap sisi.
   const ujung = (d) => [titikTerbuka(d)[0], titikTerbuka(d).at(-1)];
-  sama(ujung(G.RUTE.asep)[0], ujung(G.RUTE.asep)[1], "rute Asep berhenti di titik awal");
-  cek(JSON.stringify(ujung(G.RUTE.nisa)[0]) !== JSON.stringify(ujung(G.RUTE.nisa)[1]), "rute Nisa tidak berhenti di titik awal");
-  cek(JSON.stringify(ujung(G.RUTE.yohana)[0]) !== JSON.stringify(ujung(G.RUTE.yohana)[1]), "rute Yohana tidak berhenti di titik awal");
+  sama(ujung(G.RUTE.asep)[0], ujung(G.RUTE.asep)[1], "rute Upe berhenti di titik awal");
+  cek(JSON.stringify(ujung(G.RUTE.nisa)[0]) !== JSON.stringify(ujung(G.RUTE.nisa)[1]), "rute Igil tidak berhenti di titik awal");
+  cek(JSON.stringify(ujung(G.RUTE.yohana)[0]) !== JSON.stringify(ujung(G.RUTE.yohana)[1]), "rute Halim tidak berhenti di titik awal");
   const t = titikTerbuka(G.RUTE.asep);
-  sama(t.slice(1).map((p, i) => [Math.sign(p[0] - t[i][0]), Math.sign(p[1] - t[i][1])]), [[1, 0], [0, -1], [-1, 0], [0, 1]], "Asep menyusuri empat sisi berurutan, satu kali tiap sisi");
-  // Rute Yohana: satu ruas mendatar ke garis tengah (setengah panjang), lima ruas tegak di garis tengah.
+  sama(t.slice(1).map((p, i) => [Math.sign(p[0] - t[i][0]), Math.sign(p[1] - t[i][1])]), [[1, 0], [0, -1], [-1, 0], [0, 1]], "Upe menyusuri empat sisi berurutan, satu kali tiap sisi");
+  // Rute Halim: satu ruas mendatar ke garis tengah (setengah panjang), lima ruas tegak di garis tengah.
   const y = titikTerbuka(G.RUTE.yohana);
-  hampir(y[1][0], G.LAP.pw / 2, 1e-9, "ruas pertama Yohana berakhir di garis tengah");
-  cek(y.slice(2).every((p) => p[0] >= G.LAP.pw / 2 && p[0] <= G.LAP.pw / 2 + 20), "ruas Yohana berikutnya di sekitar garis tengah");
-  // Nisa hanya di sisi 100 m bawah, Lukas hanya di sisi 50 m kiri.
-  cek(titikTerbuka(G.RUTE.nisa).every(([, yy]) => yy >= 70), "rute Nisa menyusuri satu sisi panjang");
-  cek(titikTerbuka(G.RUTE.lukas).every(([xx]) => xx <= 40), "rute Lukas menyusuri satu sisi pendek");
+  hampir(y[1][0], G.LAP.pw / 2, 1e-9, "ruas pertama Halim berakhir di garis tengah");
+  cek(y.slice(2).every((p) => p[0] >= G.LAP.pw / 2 && p[0] <= G.LAP.pw / 2 + 20), "ruas Halim berikutnya di sekitar garis tengah");
+  // Igil hanya di sisi 100 m bawah, Kira hanya di sisi 50 m kiri.
+  cek(titikTerbuka(G.RUTE.nisa).every(([, yy]) => yy >= 70), "rute Igil menyusuri satu sisi panjang");
+  cek(titikTerbuka(G.RUTE.lukas).every(([xx]) => xx <= 40), "rute Kira menyusuri satu sisi pendek");
 }
 // Dua bangun hlm. 114 digambar: sisi dari titik gambar dihitung ulang.
 for (const u of [12, 14]) {
@@ -273,7 +274,7 @@ const nilaiId = (objs, id) => objs.find((o) => o.id === id)?.isi;
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,benteng-baluwarti,sekeliling,eks-41a-soal,rute-nisa-lukas,rute-yohana-asep,pilih-keliling,eks-41b,ukur-penggaris,kesimpulan-keliling", "urutan adegan materi");
   cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Berpikir kritis", "Benteng Baluwarti", "etnomatematika", "Latihan 1", "Hati-hati", "Tantangan", "Renungan", "Nisa", "Lukas", "Yohana", "Asep", "Pak Guru", "bolak-balik", "mengelilingi", "titik start", "penggaris", "jumlahan panjang sisi-sisi", "pagar", "bingkai"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["Berpikir kritis", "Benteng Baluwarti", "etnomatematika", "Latihan 1", "Hati-hati", "Tantangan", "Renungan", "Igil", "Kira", "Halim", "Upe", "Pak Guru", "bolak-balik", "mengelilingi", "titik start", "penggaris", "jumlahan panjang sisi-sisi", "pagar", "bingkai"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-path", "luar-path-terapan", "luar-fencing", "luar-fencing-terapan", "luar-area", "luar-area-terapan", "luar-loop", "luar-loop-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
   cek(U.adegan[1].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas" && M_VIDEO.adegan.length === 10 && U.adegan.length === 11, "10 adegan materi diputar (dengan sapaan) dan 11 adegan metode luar");
@@ -331,28 +332,28 @@ const angkaKiri = (isi) => (isi.split("=")[0].match(/\d+/g) ?? []).map(Number);
     sama(nilaiId(akhirAdegan(adegan(M, "eks-41a-soal"), 0), "t3-t0"), "berlari sejauh 300 m", "jarak yang diminta Pak Guru");
     sama([0, 1, 2, 3].map((i) => nilaiId(akhirAdegan(adegan(M, "eks-41a-soal"), 3), `gk${i}-t0`)), ["Kelompok 1", "Kelompok 2", "Kelompok 3", "Kelompok 4"], "empat kelompok (Panduan Guru hlm. 121)");
   }
-  // Rute Nisa, Lukas, Yohana, Asep: persamaan di gambar sama dengan panjang ruas rute yang digambar.
+  // Rute Igil, Kira, Halim, Upe: persamaan di gambar sama dengan panjang ruas rute yang digambar.
   {
     const a = adegan(M, "rute-nisa-lukas");
     const t = akhirAdegan(a, 0);
-    sama(angkaKiri(nilaiId(t, "ne")), ruasMandiri(G.RUTE.nisa).map((p) => ke_meter(p, G.LAP.skala)), "persamaan Nisa = ruas rute Nisa");
-    sama(jalurTerbuka(t, "nr"), G.RUTE.nisa, "garis rute Nisa memakai data rute");
+    sama(angkaKiri(nilaiId(t, "ne")), ruasMandiri(G.RUTE.nisa).map((p) => ke_meter(p, G.LAP.skala)), "persamaan Igil = ruas rute Igil");
+    sama(jalurTerbuka(t, "nr"), G.RUTE.nisa, "garis rute Igil memakai data rute");
     const t3 = akhirAdegan(a, 2);
-    sama(angkaKiri(nilaiId(t3, "le")), ruasMandiri(G.RUTE.lukas).map((p) => ke_meter(p, G.LAP.skala)), "persamaan Lukas = ruas rute Lukas");
-    sama(jalurTerbuka(t3, "lr"), G.RUTE.lukas, "garis rute Lukas memakai data rute");
-    sama(nilaiId(akhirAdegan(a, 3), "n6"), "6 kali", "Lukas bolak-balik 6 kali");
-    sama(ruasMandiri(G.RUTE.lukas).length, 6, "rute Lukas 6 ruas");
+    sama(angkaKiri(nilaiId(t3, "le")), ruasMandiri(G.RUTE.lukas).map((p) => ke_meter(p, G.LAP.skala)), "persamaan Kira = ruas rute Kira");
+    sama(jalurTerbuka(t3, "lr"), G.RUTE.lukas, "garis rute Kira memakai data rute");
+    sama(nilaiId(akhirAdegan(a, 3), "n6"), "6 kali", "Kira bolak-balik 6 kali");
+    sama(ruasMandiri(G.RUTE.lukas).length, 6, "rute Kira 6 ruas");
     const b = adegan(M, "rute-yohana-asep");
-    sama(angkaKiri(nilaiId(akhirAdegan(b, 0), "ye")), ruasMandiri(G.RUTE.yohana).map((p) => ke_meter(p, G.LAP.skala)), "persamaan Yohana = ruas rute Yohana");
-    sama(angkaKiri(nilaiId(akhirAdegan(b, 2), "ae")), ruasMandiri(G.RUTE.asep).map((p) => ke_meter(p, G.LAP.skala)), "persamaan Asep = ruas rute Asep");
-    sama(jalurTerbuka(akhirAdegan(b, 0), "yr"), G.RUTE.yohana, "garis rute Yohana memakai data rute");
-    sama(jalurTerbuka(akhirAdegan(b, 2), "ar"), G.RUTE.asep, "garis rute Asep memakai data rute");
+    sama(angkaKiri(nilaiId(akhirAdegan(b, 0), "ye")), ruasMandiri(G.RUTE.yohana).map((p) => ke_meter(p, G.LAP.skala)), "persamaan Halim = ruas rute Halim");
+    sama(angkaKiri(nilaiId(akhirAdegan(b, 2), "ae")), ruasMandiri(G.RUTE.asep).map((p) => ke_meter(p, G.LAP.skala)), "persamaan Upe = ruas rute Upe");
+    sama(jalurTerbuka(akhirAdegan(b, 0), "yr"), G.RUTE.yohana, "garis rute Halim memakai data rute");
+    sama(jalurTerbuka(akhirAdegan(b, 2), "ar"), G.RUTE.asep, "garis rute Upe memakai data rute");
     stat.rute += 4;
   }
-  // Tabel pilihan rute: hanya Asep yang mengelilingi.
+  // Tabel pilihan rute: hanya Upe yang mengelilingi.
   {
     const t = akhirAdegan(adegan(M, "pilih-keliling"), 1);
-    sama([1, 2, 3, 4].map((r) => [nilaiId(t, `rt${r}-t0${0}`), nilaiId(t, `rt${r}-t0${2}`)]), [["Nisa", "tidak"], ["Lukas", "tidak"], ["Yohana", "tidak"], ["Asep", "ya"]], "tabel rute: hanya Asep mengelilingi");
+    sama([1, 2, 3, 4].map((r) => [nilaiId(t, `rt${r}-t0${0}`), nilaiId(t, `rt${r}-t0${2}`)]), [["Igil", "tidak"], ["Kira", "tidak"], ["Halim", "tidak"], ["Upe", "ya"]], "tabel rute: hanya Upe mengelilingi");
     const t4 = akhirAdegan(adegan(M, "pilih-keliling"), 3);
     sama(["m1", "m2", "m3", "m4"].map((id) => nilaiId(t4, id)), ["1 kali", "1 kali", "1 kali", "1 kali"], "tiap sisi lapangan dilalui 1 kali");
   }
@@ -435,7 +436,7 @@ const angkaKiri = (isi) => (isi.split("=")[0].match(/\d+/g) ?? []).map(Number);
     const u = akhirAdegan(adegan(U, "luar-area"), 1);
     sama([nilaiId(u, "u1-t2"), nilaiId(u, "u2-t2")], ["cm, m", "cm², m²"], "satuan keliling dan luas");
   }
-  // Closed Loop Test: empat rute, hanya Asep yang memenuhi dua syarat.
+  // Closed Loop Test: empat rute, hanya Upe yang memenuhi dua syarat.
   {
     const a = adegan(U, "luar-loop-terapan");
     const t = akhirAdegan(a, 3);
@@ -448,8 +449,8 @@ const angkaKiri = (isi) => (isi.split("=")[0].match(/\d+/g) ?? []).map(Number);
       sama(jml(ruasMandiri(o.d).map((p) => ke_meter(p, G.LAP.skala * skala))), 300, `rute mini ${id} menempuh 300 m`);
       hampir(lapOb.w / lapOb.h, 2, 1e-9, `lapangan mini ${id} berperbandingan 2 banding 1`);
     }
-    sama([nilaiId(t, "mn-v2"), nilaiId(t, "ml-v2"), nilaiId(t, "my-v2")], ["Nisa: bukan keliling", "Lukas: bukan keliling", "Yohana: bukan keliling"], "tiga rute gagal uji");
-    sama(nilaiId(t, "ma-v2"), "100 + 50 + 100 + 50 = 300", "rute Asep lulus uji dengan jumlah 300");
+    sama([nilaiId(t, "mn-v2"), nilaiId(t, "ml-v2"), nilaiId(t, "my-v2")], ["Igil: bukan keliling", "Kira: bukan keliling", "Halim: bukan keliling"], "tiga rute gagal uji");
+    sama(nilaiId(t, "ma-v2"), "100 + 50 + 100 + 50 = 300", "rute Upe lulus uji dengan jumlah 300");
     sama(nilaiId(t, "hk"), "semua 300 m", "keempat rute sama-sama 300 m");
   }
   // Ringkasan: kunci.
@@ -484,7 +485,7 @@ function jalurTerbuka(objs, id) {
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
     // Buku Siswa bab ini tidak memuat Refleksi pada hlm. 105-114 (Refleksi tidak dikerjakan di Sub-Bab A).
     cek(!/refleksi/.test(bersih(bagian[0])), "Buku Siswa hlm. 105-114 tidak memuat Refleksi");
   }
@@ -506,7 +507,7 @@ function jalurTerbuka(objs, id) {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b4a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b4a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b4a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b4a sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

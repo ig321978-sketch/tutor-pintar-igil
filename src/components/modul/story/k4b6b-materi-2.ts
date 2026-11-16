@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, diagramMendatar, diagramTegak, emo, judul, kartu, piktogram, tabel, teks } from "./k4b6b-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k4b6b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Ayo Berlatih nomor 1: lomba kelas IV (Buku Siswa hlm. 191; Panduan Guru hlm. 226) ------------------------------ */
 const LOMBA = diagramTegak(
@@ -25,17 +26,7 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   judul: "Latihan 1: siswa kelas IV yang mengikuti lomba",
   sumber: "Materi: membaca diagram batang",
   latar: "#F0F9FF",
-  kutipan: [
-    "Kerjakan soal berikut dengan cermat dan salin jawaban pada buku kalian.",
-    "Banyaknya siswa kelas IV yang mengikuti lomba disajikan diagram batang berikut.",
-    "Lomba apakah yang paling banyak diikuti siswa kelas IV?",
-    "Lomba apakah yang diikuti 3 siswa kelas IV?",
-    "Berapa banyak siswa yang mengikuti lomba IPA dan Pengetahuan Umum?",
-    "Lomba apakah yang paling sedikit diikuti siswa kelas IV?",
-    "Berapa banyak siswa yang mengikuti lomba matematika?",
-    "6 siswa + 6 siswa = 12 siswa",
-    "15 Siswa",
-  ],
+  kutipan: kutipanLokal("k4b6b-materi-2.ts:1"),
   ketukan: [
     k(
       "Latihan satu. Banyaknya siswa kelas empat yang mengikuti lomba disajikan dalam diagram batang. Sumbu tegak banyak siswa, skalanya naik dua-dua dari nol sampai enam belas. Sumbu datar nama lomba.",
@@ -106,19 +97,7 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
   judul: "Latihan 2: bunga di taman bermain sekolah",
   sumber: "Materi: diagram batang mendatar",
   latar: "#FDF2F8",
-  kutipan: [
-    "Di taman bermain sekolah terdapat beberapa jenis bunga antara lain",
-    "bunga mawar",
-    "9 bunga kertas, 4 bunga sepatu, 3 bunga matahari, 8 bunga melati dan 7 bunga anggrek.",
-    "Sajikanlah dalam diagram batang mendatar!",
-    "Bunga apakah yang paling banyak yang terdapat di taman bermain sekolah?",
-    "Bunga apakah yang berjumlah 8 ?",
-    "Berapa banyak bunga kertas dan bunga anggrek?",
-    "Bunga apakah yang paling sedikit terdapat di taman bermain sekolah?",
-    "Berapa banyak bunga mawar di taman bermain sekolah?",
-    "9 + 7 = 16 bunga",
-    "Bunga Matahari",
-  ],
+  kutipan: kutipanLokal("k4b6b-materi-2.ts:2"),
   ketukan: [
     k(
       "Latihan dua. Di taman bermain sekolah ada lima bunga mawar, sembilan bunga kertas, empat bunga sepatu, tiga bunga matahari, delapan bunga melati, dan tujuh bunga anggrek. Pertama, sajikan data ini dalam diagram batang mendatar.",
@@ -175,17 +154,7 @@ export const ADEGAN_GURU_B: AdeganStory = {
   judul: "Panduan Guru: diferensiasi, kunci jawaban, dan rubrik penilaian",
   sumber: "Panduan Guru hlm. 227–231",
   latar: "#F5F3FF",
-  kutipan: [
-    "Model pembelajaran yang disarankan untuk sub bab diagram batang adalah Project Based Learning",
-    "yang mengutamakan pada produk hasil karya peserta didik bersama kelompoknya",
-    "Pembentukan kelompok dapat berdasarkan pada karakteristik atau keberagaman peserta didik",
-    "ditentukan ketua kelompok adalah peserta didik dengan tingkat kemampuan tinggi dengan anggota kelompok tingkat kemampuan sedang atau kurang",
-    "semua anggota kelompok dapat bekerja sama untuk menyelesaikan tugas/ proyek yang diberikan oleh guru",
-    "guru dapat menerapkan metode diskusi dengan melibatkan peserta didik dalam menyajikan data dalam bentuk diagram batang",
-    "A. Kunci Jawaban",
-    "Tabel 6.2 Pedoman Penilaian Hasil Belajar",
-    "Rubrik Penilaian Pengetahun (kognitif )",
-  ],
+  kutipan: kutipanLokal("k4b6b-materi-2.ts:3"),
   ketukan: [
     k(
       "Diferensiasi. Karakter peserta didik berbeda-beda, hanya guru yang memahaminya. Model yang disarankan untuk diagram batang adalah Project Based Learning, yang mengutamakan produk hasil karya peserta didik bersama kelompoknya.",
@@ -242,16 +211,7 @@ export const ADEGAN_UK_1: AdeganStory = {
   judul: "Uji 1: benda di atas meja guru",
   sumber: "Materi: piktogram dan diagram batang",
   latar: "#FFF7ED",
-  kutipan: [
-    "Uji Kompetensi",
-    "Diberikan data benda yang terdapat di atas meja guru dalam kelas IV.",
-    "Sajikan data benda yang terdapat di atas meja guru kelas IV dalam piktogram!",
-    "diagram batang bentuk mendatar!",
-    "diagram batang bentuk tegak!",
-    "Diagram batang bentuk mendatar",
-    "Diagram batang bentuk tegak",
-    "Peserta didik tidak menjawab sama sekali",
-  ],
+  kutipan: kutipanLokal("k4b6b-materi-2.ts:4"),
   ketukan: [
     k(
       "Uji satu. Data benda di atas meja guru kelas empat: komik empat, taplak meja satu, spidol tiga, penghapus satu, dan pulpen dua. Sajikan data ini dalam tiga cara: piktogram, diagram batang mendatar, dan diagram batang tegak.",

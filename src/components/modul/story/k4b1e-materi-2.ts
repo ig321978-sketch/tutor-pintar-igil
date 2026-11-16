@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { CONTOH, JAWAB_EMPAT_KANAN, LATIHAN_DUA, LATIHAN_EMPAT, W, angkaSel, barisTabel, bil, emo, garis, judul, kartu, kotak, ln, simpanSel, susunAwal, susunLangkah, teks } from "./k4b1e-gambar";
 import { bersih, hapus, idx, k, tambah, ubah } from "./k4b1e-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 7. Panduan Guru: Ayo Mengamati (Panduan Guru hlm. 50) ------------------------------ */
 const SUARA_G1 = "Sekarang kita ulang cara-cara tadi. Perhatikan masalah dan penyelesaiannya pada percakapan tadi. Untuk cara susun panjang, kita tulis ulang di papan tulis.";
@@ -13,19 +14,7 @@ export const ADEGAN_PANDUAN_AMATI: AdeganStory = {
   judul: "Mengulang empat cara",
   sumber: "Materi: mengulang empat cara",
   latar: "#F5F3FF",
-  kutipan: [
-    "Aktivitas Pembelajaran",
-    "Guru meminta peserta didik untuk memperhatikan masalah kontekstual",
-    "dan penyelesaiannya pada percakapan. Pada percakapan dalam Buku Siswa",
-    "terdapat penjelasan cara susun panjang, sebaiknya guru dapat mengulang",
-    "dengan menuliskan pada papan tulis.",
-    "Penjumlahan cara susun pendek, guru mengingatkan kembali pada peserta",
-    "didik materi nilai tempat. Melalui metode diskusi, guru dapat memberikan",
-    "contoh yang lain.",
-    "Penjumlahan cara susun panjang dengan menyimpan, guru mengingatkan",
-    "kembali materi dekomposisi bilangan.",
-    "Penjumlahan cara susun pendek dengan menyimpan, guru mengingatkan",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-2.ts:1"),
   ketukan: [
     k(
       SUARA_G1,
@@ -65,21 +54,7 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
   judul: "Latihan: susun panjang",
   sumber: "Materi: latihan susun panjang",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ayo Berlatih",
-    "1. Gunakan cara susun panjang untuk penjumlahan berikut!",
-    "a. 333 = 300 + 30 + 3 b. 812 = 800 + 10 + 2",
-    "205 = 200 + 0 + 5 + 116 = 100 + 10 + 6 +",
-    "= 500 + 30 + 8 = 900 + 20 + 2",
-    "= 538 = 922",
-    "c. 576 = 500 + 70 + 6",
-    "148 = 100 + 40 + 8 +",
-    "= (500 + 100) + (70 + 40) + (6 + 8)",
-    "= 600 + 100 + 10 + 14",
-    "= 700 + 10 + 10 + 4",
-    "= 700 + 20 + 4",
-    "= 724",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-2.ts:2"),
   ketukan: [
     k(
       SUARA_H1,
@@ -163,14 +138,7 @@ export const ADEGAN_BERLATIH_DUA_SATU: AdeganStory = {
   judul: "Latihan susun pendek: bagian a sampai c",
   sumber: "Materi: latihan susun pendek",
   latar: "#F0F9FF",
-  kutipan: [
-    "2. Gunakan cara susun pendek untuk penjumlahan berikut!",
-    "a. 373 + 208 = ….. b. 277 + 146 = …..",
-    "c. 627 + 92 = ….. d. 234 + 279 + 444 = …..",
-    "Ratusan Puluhan Satuan",
-    "Penjumlahan cara susun pendek, guru mengingatkan kembali pada peserta",
-    "didik materi nilai tempat. Melalui metode diskusi, guru dapat memberikan",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-2.ts:3"),
   ketukan: [
     k(SUARA_I1, tambah(0, judul("Berlatih 2: susun pendek")), ...soalDua("ka", LATIHAN_DUA[0], { awal: "Bagian", sat: "Satuan:", satH: kataKe(SUARA_I1, "sebelas,"), pul: "Puluhan:", pulH: kataKe(SUARA_I1, "delapan", 3), rat: "Ratusan:", ratH: kataKe(SUARA_I1, "lima"), hasil: "Hasilnya" }, "bagian a")),
     k(SUARA_I2, bersih(0), tambah(0, judul("Berlatih 2: susun pendek")), ...soalDua("kb", LATIHAN_DUA[1], { awal: "Bagian", sat: "Satuan:", satH: kataKe(SUARA_I2, "tiga"), pul: "Puluhan:", pulH: kataKe(SUARA_I2, "dua", 2), rat: "Ratusan:", ratH: kataKe(SUARA_I2, "empat", 3), hasil: "Hasilnya" }, "bagian b")),
@@ -183,14 +151,7 @@ export const ADEGAN_BERLATIH_DUA_DUA: AdeganStory = {
   judul: "Latihan susun pendek: bagian d sampai f",
   sumber: "Materi: latihan susun pendek lanjutan",
   latar: "#F0F9FF",
-  kutipan: [
-    "d. 234 + 279 + 444 = …..",
-    "e. 49 + 178 = ….. f. 612 + 48 + 156 = …..",
-    "2. Gunakan cara susun pendek untuk penjumlahan berikut!",
-    "Ratusan Puluhan Satuan",
-    "Penjumlahan cara susun pendek dengan menyimpan, guru mengingatkan",
-    "kembali materi nilai tempat. Langkah penyelesaian cara susun pendek dapat",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-2.ts:4"),
   ketukan: [
     k(SUARA_J1, tambah(0, judul("Berlatih 2: susun pendek")), ...soalDua("kd", LATIHAN_DUA[3], { awal: "Bagian", sat: "Satuan:", satH: kataKe(SUARA_J1, "belas"), pul: "Puluhan:", pulH: kataKe(SUARA_J1, "belas", 2), rat: "Hasilnya", ratH: kataKe(SUARA_J1, "lima", 2), hasil: kataKe(SUARA_J1, "tujuh", 4) }, "bagian d")),
     k(SUARA_J2, bersih(0), tambah(0, judul("Berlatih 2: susun pendek")), ...soalDua("ke", LATIHAN_DUA[4], { awal: "Bagian", sat: "Satuan:", satH: kataKe(SUARA_J2, "belas"), pul: "Puluhan:", pulH: kataKe(SUARA_J2, "belas", 2), rat: "Ratusan:", ratH: kataKe(SUARA_J2, "dua", 2), hasil: "Hasilnya" }, "bagian e")),
@@ -229,26 +190,7 @@ export const ADEGAN_BERLATIH_TIGA_EMPAT: AdeganStory = {
   judul: "Latihan: pilih cara dan tarik garis",
   sumber: "Materi: latihan memilih cara",
   latar: "#FEFCE8",
-  kutipan: [
-    "3. Gunakan cara yang menurut kalian mudah untuk menyelesaikan operasi",
-    "penjumlahan berikut!",
-    "a. 333 + 519 = ……",
-    "b. 429 +19 = …….",
-    "c. 821 + 98 = ……",
-    "d. 700 + 139 = ……",
-    "e. 621 + 37 + 128 = …….",
-    "4. Tariklah garis dengan jawaban yang sesuai!",
-    "813",
-    "736",
-    "860",
-    "964",
-    "752",
-    "377 + 330 + 29 =",
-    "423 + 390 =",
-    "39 + 821 =",
-    "690 + 56 + 218 =",
-    "629 + 123 =",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-2.ts:5"),
   ketukan: [
     k(SUARA_K1, tambah(0, judul("Latihan: pilih cara yang mudah")), tambah("Bagian", ...baris3(0, KIRI_Y[0] + 14).slice(0, 2)), tambah("benar.", baris3(0, KIRI_Y[0] + 14)[2])),
     k(SUARA_K2, tambah("Bagian", ...baris3(1, KIRI_Y[1] + 14).slice(0, 2)), tambah(idx(SUARA_K2, "delapan"), baris3(1, KIRI_Y[1] + 14)[2]), tambah(idx(SUARA_K2, "c:"), ...baris3(2, KIRI_Y[2] + 14).slice(0, 2)), tambah(lastIdx(SUARA_K2), baris3(2, KIRI_Y[2] + 14)[2])),
@@ -261,9 +203,9 @@ export const ADEGAN_BERLATIH_TIGA_EMPAT: AdeganStory = {
 
 /* ------------------------------ 12. Ayo Berlatih nomor 5: soal cerita (Buku Siswa hlm. 34; Panduan Guru hlm. 52–53) ------------------------------ */
 const SUARA_L1 = "Soal cerita a: kebun A menghasilkan tiga ratus dua puluh delapan buah kelapa sawit, kebun B lima ratus tujuh puluh sembilan buah. Jawab: tiga ratus dua puluh delapan ditambah lima ratus tujuh puluh sembilan sama dengan sembilan ratus tujuh buah.";
-const SUARA_L2 = "Soal b: tiga kolam ikan lele milik Pak Rahmad, Pak Sudi, dan Pak Jaya. Jawab: seratus tujuh belas ditambah seratus lima ditambah dua ratus empat puluh dua sama dengan empat ratus enam puluh empat ikan.";
+const SUARA_L2 = "Soal b: tiga kolam ikan lele milik Pak Kira, Pak Halim, dan Pak Upe. Jawab: seratus tujuh belas ditambah seratus lima ditambah dua ratus empat puluh dua sama dengan empat ratus enam puluh empat ikan.";
 const SUARA_L3 = "Soal c: SD Pelangi mengirim siswa ke tiga lomba. Jawab: seratus dua puluh satu ditambah dua puluh sembilan ditambah sembilan puluh delapan sama dengan dua ratus empat puluh delapan siswa.";
-const SUARA_L4 = "Soal d: Helen punya stiker kartun, bunga, dan boneka. Jawab: seratus sebelas ditambah tujuh puluh tujuh ditambah delapan puluh sembilan sama dengan dua ratus tujuh puluh tujuh stiker.";
+const SUARA_L4 = "Soal d: Wei punya stiker kartun, bunga, dan boneka. Jawab: seratus sebelas ditambah tujuh puluh tujuh ditambah delapan puluh sembilan sama dengan dua ratus tujuh puluh tujuh stiker.";
 const SUARA_L5 = "Mari kita rangkum jawaban keempat soal cerita tadi: sembilan ratus tujuh, empat ratus enam puluh empat, dua ratus empat puluh delapan, dan dua ratus tujuh puluh tujuh.";
 
 const cerita = (p: string, nama: string, baris: string[], bilangan: readonly number[], satuan: string) => {
@@ -275,35 +217,21 @@ const cerita = (p: string, nama: string, baris: string[], bilangan: readonly num
   };
 };
 const C1 = cerita("ca", "Soal cerita a: kelapa sawit", ["diketahui:", "kebun A 328 buah", "kebun B 579 buah"], [328, 579], "buah kelapa sawit");
-const C2 = cerita("cb", "Soal cerita b: ikan lele", ["diketahui:", "Pak Rahmad 117 ikan, Pak Sudi 105 ikan", "Pak Jaya 242 ikan"], [117, 105, 242], "ikan lele");
+const C2 = cerita("cb", "Soal cerita b: ikan lele", ["diketahui:", "Pak Kira 117 ikan, Pak Halim 105 ikan", "Pak Upe 242 ikan"], [117, 105, 242], "ikan lele");
 const C3 = cerita("cc", "Soal cerita c: lomba SD Pelangi", ["diketahui:", "matematika 121 siswa, bahasa inggris 29 siswa", "sains 98 siswa"], [121, 29, 98], "siswa");
-const C4 = cerita("cd", "Soal cerita d: stiker Helen", ["diketahui:", "kartun 111, bunga 77, boneka 89 stiker"], [111, 77, 89], "stiker");
+const C4 = cerita("cd", "Soal cerita d: stiker Wei", ["diketahui:", "kartun 111, bunga 77, boneka 89 stiker"], [111, 77, 89], "stiker");
 
 export const ADEGAN_BERLATIH_LIMA: AdeganStory = {
   id: "berlatih-lima",
   judul: "Latihan: soal cerita",
   sumber: "Materi: soal cerita",
   latar: "#F0FDF4",
-  kutipan: [
-    "5. Kerjakan soal cerita berikut!",
-    "a. Seorang petani kelapa sawit mempunyai beberapa kebun. Kebun A",
-    "menghasilkan 328 buah, kebun B menghasilkan 579 buah. Berapakah",
-    "b. Pak Rahmad memiliki 117 ikan lele, Pak Sudi memiliki 105 ikan lele dan",
-    "Pak Jaya memiliki 242 ikan lele. Semua ikan lele dipanen dari kolam dan",
-    "c. SD Pelangi mengirimkan 121 siswa mengikuti lomba matematika, 29",
-    "siswa mengikuti lomba bahasa inggris dan 98 siswa mengikuti lomba",
-    "d. Helen mempunyai 111 stiker gambar kartun, 77 stiker gambar bunga",
-    "dan 89 stiker boneka. Berapa jumlah stiker Helen seluruhnya?",
-    "jawab: 328 + 579 = 907",
-    "jawab: 117 + 105 + 242 = 464",
-    "jawab: 121 + 29 + 98 = 248",
-    "jawab: 111 + 77 + 89 = 277",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-2.ts:6"),
   ketukan: [
     k(SUARA_L1, tambah(0, judul(C1.nama)), tambah("kebun", ...C1.kartuDiketahui), tambah("Jawab:", C1.jawab[0]), tambah(idx(SUARA_L1, "sembilan", 2), ...C1.jawab.slice(1))),
     k(SUARA_L2, bersih(0), tambah(0, judul(C2.nama)), tambah("tiga", ...C2.kartuDiketahui), tambah("Jawab:", C2.jawab[0]), tambah(idx(SUARA_L2, "ikan", 2), ...C2.jawab.slice(1))),
     k(SUARA_L3, bersih(0), tambah(0, judul(C3.nama)), tambah("SD", ...C3.kartuDiketahui), tambah("Jawab:", C3.jawab[0]), tambah(idx(SUARA_L3, "siswa", 2), ...C3.jawab.slice(1))),
-    k(SUARA_L4, bersih(0), tambah(0, judul(C4.nama)), tambah("Helen", ...C4.kartuDiketahui), tambah("Jawab:", C4.jawab[0]), tambah(idx(SUARA_L4, "stiker", 2), ...C4.jawab.slice(1))),
+    k(SUARA_L4, bersih(0), tambah(0, judul(C4.nama)), tambah("Wei", ...C4.kartuDiketahui), tambah("Jawab:", C4.jawab[0]), tambah(idx(SUARA_L4, "stiker", 2), ...C4.jawab.slice(1))),
     k(
       SUARA_L5,
       bersih(0),
@@ -326,20 +254,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Hati-hati dan belajar bersama",
   sumber: "Materi: kesalahan umum dan kelompok",
   latar: "#FDF2F8",
-  kutipan: [
-    "Miskonsepsi",
-    "Miskonsepsi yang sering terjadi dalam operasi penjumlahan, yaitu",
-    "penjumlahan dua bilangan dimulai dari angka terdepan seharusnya dimulai dari angka",
-    "dengan nilai tempat satuan.",
-    "Diferensiasi",
-    "Bagi peserta didik yang kecepatan belajarnya tinggi (advanced), minta",
-    "mereka mengerjakan Latihan tanpa bantuan. Guru juga dapat memberikan",
-    "soal-soal tambahan. Pada saat yang sama, guru dapat mendampingi",
-    "peserta didik yang mengalami kesulitan.",
-    "disarankan untuk sub bab ini adalah Diskusi dan Drill, yang mengutamakan",
-    "Metode pembelajaran yang",
-    "kemampuan tinggi dengan anggota kelompok tingkat kemampuan sedang",
-  ],
+  kutipan: kutipanLokal("k4b1e-materi-2.ts:7"),
   ketukan: [
     k(
       SUARA_M1,

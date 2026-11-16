@@ -2,7 +2,7 @@ import type { Obj } from "./logika-story";
 
 /**
  * Gambar khusus Story Kelas 5 Bab 3 Sub-Bab C (pengurangan bilangan pecahan): rumus pecahan bertumpuk, kotak pecahan (model daerah),
- * deretan apel Eksplorasi 3.3B, dan jalan Asep Eksplorasi 3.3C. Berkas ini TIDAK dipakai bab lain. Semua fungsi mengembalikan data benda (Obj) untuk mesin Story.
+ * deretan apel Eksplorasi 3.3B, dan jalan Kira Eksplorasi 3.3C. Berkas ini TIDAK dipakai bab lain. Semua fungsi mengembalikan data benda (Obj) untuk mesin Story.
  */
 
 export const W = {
@@ -123,7 +123,7 @@ export function rumus(id: string, x: number, y: number, ekspresi: string, u = 10
   return out;
 }
 
-/* ------------------------------ Kotak pecahan (model daerah, Cara Nisa) ------------------------------ */
+/* ------------------------------ Kotak pecahan (model daerah, Cara Halim) ------------------------------ */
 
 /**
  * Kertas atau batang dibagi d bagian sama besar (tegak: bertumpuk ke bawah seperti Buku Siswa hlm. 92; mendatar: berjajar ke kanan),

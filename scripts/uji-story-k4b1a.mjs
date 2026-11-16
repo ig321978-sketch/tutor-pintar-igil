@@ -5,6 +5,7 @@
 // kutipan buku terhadap teks PDF (pdftotext, atau PyMuPDF bila tidak ada), nama bilangan dihitung ulang dari angka (terbilang mandiri) untuk semua soal dan kunci, papan empat tempat, balok Dienes, kartu angka,
 // garis penghubung nomor 3, tabel nomor 4 (angka berbeda), harga dan kembalian, emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b1a.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -386,21 +387,21 @@ const isiTeks = (objs, id) => ketemu(objs, id)?.isi;
   const a1b = akhirAdegan(adegM("aktivitas-satu"), 1);
   sama(a1b.filter((o) => /^kt\d$/.test(o.id)).length, 10, "Aktivitas 1 langkah 2: sepuluh kotak karton digambar");
   const a1c = akhirAdegan(adegM("aktivitas-satu"), 3);
-  sama(["m0", "m1", "m2", "m3"].map((c) => isiTeks(a1c, `${c}-t`)).join(""), "3286", "Aktivitas 1 langkah 5: kartu angka jarak rumah Helen terbaca 3286");
-  sama(angkaDari(isiTeks(akhirAdegan(adegM("jarak-rumah"), 1), "r5-t0")?.split(" ")[0]), 3286, "jarak rumah Helen 3.286 meter");
+  sama(["m0", "m1", "m2", "m3"].map((c) => isiTeks(a1c, `${c}-t`)).join(""), "3286", "Aktivitas 1 langkah 5: kartu angka jarak rumah Upe terbaca 3286");
+  sama(angkaDari(isiTeks(akhirAdegan(adegM("jarak-rumah"), 1), "r5-t0")?.split(" ")[0]), 3286, "jarak rumah Upe 3.286 meter");
   sama([0, 1, 2, 3].map((i) => isiTeks(akhirAdegan(adegM("jarak-rumah"), 2), `b3${i}-t`)).join(""), "3286", "kartu angka 3286 pada adegan jarak");
   sama([0, 1, 2, 3].map((i) => isiTeks(akhirAdegan(adegM("panduan-awal")), `la${i}-t`)).join(""), "6750", "kartu angka label harga 6750 di panduan awal");
   sama([0, 1, 2, 3].map((i) => isiTeks(akhirAdegan(adegM("menulis-bilangan")), `hk${i}-t`)).join(""), "3254", "kartu angka 3254 pada hasil percakapan");
   sama([0, 1, 2, 3].map((i) => isiTeks(akhirAdegan(adegU("luar-ucap-terapan"), 2), `vg${i}-t`)).join(""), "9045", "Say-Write-Show: kartu angka 9045");
   // Papan Buku Siswa: jarak 3286, contoh 2634, 7003, 6570, Semeru 3676, percakapan 3254, 4327, 1025, 2000.
   const nilaiPapan = (objs, p) => [0, 1, 2, 3].map((c) => isiTeks(objs, `${p}-dt${c}`)).join("");
-  sama(nilaiPapan(akhirAdegan(adegM("cara-membaca"), 4), "pj"), "3286", "papan jarak rumah Helen");
+  sama(nilaiPapan(akhirAdegan(adegM("cara-membaca"), 4), "pj"), "3286", "papan jarak rumah Upe");
   sama([nilaiPapan(akhirAdegan(adegM("cara-membaca"), 5), "e1"), nilaiPapan(akhirAdegan(adegM("cara-membaca"), 5), "e2"), nilaiPapan(akhirAdegan(adegM("cara-membaca"), 6), "e3")], ["2634", "7003", "6570"], "papan contoh Buku Siswa hlm. 6");
   sama([nilaiPapan(akhirAdegan(adegM("menulis-bilangan"), 2), "ms"), nilaiPapan(akhirAdegan(adegM("menulis-bilangan"), 4), "pq")], ["3676", "3254"], "papan Gunung Semeru dan percakapan");
   sama([nilaiPapan(akhirAdegan(adegM("nama-bilangan"), 0), "na"), nilaiPapan(akhirAdegan(adegM("nama-bilangan"), 3), "nf"), nilaiPapan(akhirAdegan(adegM("nama-bilangan"), 5), "no")], ["4327", "1025", "2000"], "papan Buku Siswa hlm. 9");
   // Cara membaca: kartu hasil jarak dibaca benar, dan tiga bacaan contoh (diucapkan di suara) sama dengan terbilang mandiri.
   const cb = akhirAdegan(adegM("cara-membaca"), 4);
-  sama(`${isiTeks(cb, "pjb-t0")} ${isiTeks(cb, "pjb-t1")}`.toLowerCase(), "tiga ribu dua ratus delapan puluh enam", "kartu Dibaca jarak rumah Helen");
+  sama(`${isiTeks(cb, "pjb-t0")} ${isiTeks(cb, "pjb-t1")}`.toLowerCase(), "tiga ribu dua ratus delapan puluh enam", "kartu Dibaca jarak rumah Upe");
   const cb2 = akhirAdegan(adegM("cara-membaca"), 5);
   sama([isiTeks(cb2, "e1b"), isiTeks(cb2, "e2b")], [terbilang(2634), terbilang(7003)], "contoh membaca 2.634 dan 7.003");
   sama(isiTeks(akhirAdegan(adegM("cara-membaca"), 6), "e3b"), terbilang(6570), "contoh membaca 6.570");
@@ -408,7 +409,7 @@ const isiTeks = (objs, id) => ketemu(objs, id)?.isi;
   const cat = akhirAdegan(adegM("cara-membaca"), 2);
   sama([0, 1, 2, 3].map((i) => isiTeks(cat, `pc-ht${i}`)), ["Ribuan", "Ratusan", "Puluhan", "Satuan"], "pesan guru tertukar tempat: kepala kolom papan");
   cek(!!ketemu(cat, "pcm-k") && !!ketemu(cat, "pcn-k"), "pesan guru tertukar tempat: kartu salah dan benar");
-  // Jarak rumah Helen: urutan angka 3.286 (benar) dan 3.268 (contoh salah) tampil bersama.
+  // Jarak rumah Upe: urutan angka 3.286 (benar) dan 3.268 (contoh salah) tampil bersama.
   const jr = akhirAdegan(adegM("jarak-rumah"), 3);
   cek(L.teksTerlihat(jr).some((t) => t.includes("3.268")) && L.teksTerlihat(jr).some((t) => t.includes("3.286")), "pesan guru urutan angka: 3.268 salah dan 3.286 benar tampil");
   // Semeru dan latihan: nama bilangan pada gambar dihitung ulang.
@@ -579,8 +580,8 @@ function nilaiPapanSemua(objs, p) {
       }
     }
     stat.kutipan = n;
-    cek(n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
     // Tujuan: Buku Siswa dua belas butir, Panduan Guru dua belas butir (1.1 sampai 1.12 lintas dua halaman).
     sama((ambil(bs, 14, 14).match(/•/g) ?? []).length, 12, "Buku Siswa hlm. 2: 12 butir tujuan");
     sama(((ambil(bg, 39, 40)).match(/(^|\n)1\.\d+ /g) ?? []).length, 12, "Panduan Guru hlm. 27-28: 12 butir tujuan");
@@ -622,7 +623,7 @@ function nilaiPapanSemua(objs, p) {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b1a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b1a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1a sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

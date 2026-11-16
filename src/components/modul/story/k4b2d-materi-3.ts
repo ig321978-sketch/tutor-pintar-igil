@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { LATIHAN_DUA, LATIHAN_SATU, LATIHAN_TIGA, W, barisTabel, batang, emo, judul, kartu, teks } from "./k4b2d-gambar";
 import { bersih, k, tambah } from "./k4b2d-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Tabel kunci sembilan jawaban, dikumpulkan dari data buku (pembilang, penyebut, desimal). */
 export const KUNCI_SEMBILAN: readonly (readonly [string, number, number, string])[] = [
@@ -22,15 +23,7 @@ export const ADEGAN_PERIKSA_KUNCI: AdeganStory = {
   judul: "Memeriksa sembilan jawaban dengan hitungan sendiri",
   sumber: "Materi: memeriksa jawaban",
   latar: "#ECFDF5",
-  kutipan: [
-    "Ayo Berlatih",
-    "4 10 = 0,4 5 10 = 0,5 3 10 = 0,3",
-    "a. 1 10 = 0,1 b. 5 10 = 0,5 c.",
-    "9 10 = 0,9 15 100 = 0,15 62 100 = 0,62 81 100 = 0,81",
-    "15 100 = 0,15",
-    "2. Ubahkan pecahan biasa berikut menjadi pecahan desimal persepuluhan",
-    "3. Ubahlah pecahan biasa berikut menjadi pecahan desimal perseratusan!",
-  ],
+  kutipan: kutipanLokal("k4b2d-materi-3.ts:1"),
   ketukan: [
     k(
       SUARA_K1,
@@ -81,20 +74,7 @@ export const ADEGAN_DIFERENSIASI: AdeganStory = {
   judul: "Belajar bersama dan soal tambahan",
   sumber: "Materi: belajar bersama",
   latar: "#F5F3FF",
-  kutipan: [
-    "Diferensiasi",
-    "Karakteristik peserta didik di masing-masing sekolah akan berbeda-beda,",
-    "kondisi seperti ini hanya guru yang memahami.",
-    "Model pembelajaran yang disarankan untuk bab ini adalah Problem",
-    "Based Learning.",
-    "ditentukan ketua kelompok adalah peserta didik dengan",
-    "tingkat kemampuan tinggi dengan anggota kelompok tingkat kemampuan",
-    "(advanced), minta mereka mengerjakan Latihan tanpa bantuan.",
-    "Guru juga dapat memberikan soal-soal tambahan.",
-    "guru dapat mendampingi peserta didik yang mengalami kesulitan.",
-    "semua anggota kelompok dapat bekerja sama untuk",
-    "guru dapat menerapkan metode diskusi dengan melibatkan peserta didik dalam",
-  ],
+  kutipan: kutipanLokal("k4b2d-materi-3.ts:2"),
   ketukan: [
     k(
       SUARA_D1,
@@ -151,16 +131,7 @@ export const ADEGAN_CATATAN_BUKU: AdeganStory = {
   judul: "Ringkasan pecahan desimal",
   sumber: "Materi: ringkasan pecahan desimal",
   latar: "#FEFCE8",
-  kutipan: [
-    "setelah mempelajari sub bab ini, Peserta didik diharapkan mampu",
-    "serta menghubungkan pecahan desimal perseratusan dengan konsep persen.",
-    "2. Ubahkan pecahan biasa berikut menjadi pecahan desimal persepuluhan",
-    "2. Ubahlah pecahan biasa berikut menjadi pecahan desimal persepuluhan!",
-    "3. Ubahlah pecahan biasa berikut menjadi pecahan desimal perseratusan!",
-    "lalu 1 biskuit dilapisi selai coklat.",
-    "Contoh pecahan desimal",
-    "Karena terdapat 2 angka di belakang koma, maka nilai penyebut 100",
-  ],
+  kutipan: kutipanLokal("k4b2d-materi-3.ts:3"),
   ketukan: [
     k(
       SUARA_T1,

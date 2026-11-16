@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, apem, emo, kartu, kotak, panah, tabelData, teks } from "./k5b8b-gambar";
 import { bersih, k, sorotkan, tambah } from "./k5b8b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Mini piktogram dua baris (Senin 40 dan Selasa 35) untuk perbandingan dengan tabel. */
 function miniPiktogram() {
@@ -17,7 +18,7 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
   judul: "Pembuka Sub-Bab B: piktogram",
   sumber: "Buku Siswa hlm. 248; Buku Panduan Guru hlm. 357–358",
   latar: "#EEF2FF",
-  kutipan: ["B. Piktogram"],
+  kutipan: kutipanLokal("k5b8b-materi-1.ts:1"),
   ketukan: [
     k(
       "Selamat datang di Sub-Bab B tentang piktogram. Setelah belajar ini, kamu dapat membuat piktogram, membaca data dari piktogram, dan menganalisis data dari piktogram.",
@@ -55,7 +56,7 @@ export const ADEGAN_TEKA_SATU: AdeganStory = {
   judul: "Teka-teki: menebak bilangan tersembunyi (jeruk)",
   sumber: "Materi: teka-teki jeruk",
   latar: "#FFF7ED",
-  kutipan: ["Eksplorasi 8.2A", "Menebak bilangan tersembunyi", "mewakili 100"],
+  kutipan: kutipanLokal("k5b8b-materi-1.ts:2"),
   ketukan: [
     k(
       "Ayo bermain teka-teki. Teka-teki pertama menebak bilangan tersembunyi. Petunjuknya, dua jeruk mewakili 100.",
@@ -90,7 +91,7 @@ export const ADEGAN_TEKA_DUA: AdeganStory = {
   judul: "Teka-teki: mewakili bilangan apakah aku (tomat dan wortel)",
   sumber: "Materi: teka-teki tomat dan wortel",
   latar: "#FEF2F2",
-  kutipan: ["Mewakili bilangan apakah aku?", "mewakili bilangan 60", "mewakili bilangan 40", "Coba kalian gambarkan simbol yang mewakili bilangan 28", "Bagaimana jika bilangan 100 dinyatakan dengan simbol di"],
+  kutipan: kutipanLokal("k5b8b-materi-1.ts:3"),
   ketukan: [
     k(
       "Teka-teki kedua. Tiga tomat mewakili bilangan 60, dan lima wortel mewakili bilangan 40.",
@@ -156,7 +157,7 @@ export const ADEGAN_KUE: AdeganStory = {
   judul: "Ayo menyimak kue tradisional Indonesia",
   sumber: "Materi: kue tradisional Indonesia",
   latar: "#FFFBEB",
-  kutipan: ["Eksplorasi 8.2B", "Ayo Menyimak", "Kue Tradisional Indonesia", "Meskipun memakai nama Ambon", "Kue Jawada", "Kue Barongko", "Indonesia kaya akan keragaman budaya"],
+  kutipan: kutipanLokal("k5b8b-materi-1.ts:4"),
   ketukan: [
     k(
       "Sekarang kita menyimak kue tradisional Indonesia. Ada empat kue yang kita kenal, supaya kita mencintai budaya daerah.",

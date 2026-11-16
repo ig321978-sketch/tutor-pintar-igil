@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bentuk, bulat, emo, garis, judul, kartu, kotak, sisiGaris, tabel, tandaSiku, teks, titikBangun } from "./k4b5a-gambar";
 import { bersih, idx, k, sorotkan, tambah } from "./k4b5a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Segi banyak beraturan dan tak beraturan (Buku Siswa hlm. 145–146) ------------------------------ */
 const SUARA_B1 = "Berdasarkan besar sudut dan panjang sisinya, segi banyak dibedakan menjadi dua jenis: segi banyak beraturan dan segi banyak tak beraturan.";
@@ -13,20 +14,7 @@ export const ADEGAN_BERATURAN: AdeganStory = {
   judul: "Segi banyak beraturan dan tak beraturan",
   sumber: "Materi: segi banyak beraturan",
   latar: "#F0FDF4",
-  kutipan: [
-    "A. Jenis Bangun Segi Banyak",
-    "Berdasarkan besar sudut dan panjang sisinya, bangun segi banyak dibedakan",
-    "menjadi dua jenis, yaitu :",
-    "1) Bangun segi banyak beraturan",
-    "a. Besarnya sudut-sudut dari segi banyak beraturan adalah sama",
-    "b. Panjangnya sisi-sisi segi banyak beraturan adalah sama",
-    "simetri lipat yang sama dengan jumlah",
-    "d. Segi banyak beraturan mempunyai simetri putar yang sama dengan jumlah",
-    "Segidelapan",
-    "2) Bangun segi banyak tak beraturan",
-    "Bangun segi banyak tak beraturan adalah bangun segi banyak yang mempunyai",
-    "b. Panjangnya sisi-sisi segi banyak beraturan adalah tidak sama",
-  ],
+  kutipan: kutipanLokal("k4b5a-materi-2.ts:1"),
   ketukan: [
     k(
       SUARA_B1,
@@ -80,23 +68,7 @@ export const ADEGAN_BERLATIH_BANYAK: AdeganStory = {
   judul: "Latihan: segi banyak",
   sumber: "Materi: latihan segi banyak",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ayo Berlatih",
-    "Petunjuk: Kerjakan semua soal pada buku tulis dan cermati soalnya sebelum",
-    "1. Perhatikan gambar dibawah. Bangun datar yang bukan merupakan segi",
-    "banyak adalah…",
-    "2. Perhatikan gambar dibawah ini :",
-    "Bangun segibanyak beraturan, ditunjukkan oleh nomor …",
-    "a. 1 dan 3",
-    "b. 1 dan 4",
-    "3. Perhatikan gambar dibawah ini :",
-    "Bangun segibanyak tak beraturan, ditunjukkan oleh nomor …",
-    "c. 2 dan 3",
-    "4. Gambarkan tiga bangun segi banyak beraturan yang berbeda pada kotak",
-    "5. Gambarkan tiga bangun segi banyak tak beraturan yang berbeda pada",
-    "Guru memberi kesempatan kepada peserta didik untuk mengerjakan Latihan",
-    "1 di buku siswa. Adapun salah satu alternatif jawaban pada Latihan 1 adalah:",
-  ],
+  kutipan: kutipanLokal("k4b5a-materi-2.ts:2"),
   ketukan: [
     k(
       SUARA_L1,
@@ -172,20 +144,7 @@ export const ADEGAN_SEGITIGA: AdeganStory = {
   judul: "Segitiga: tiga sisi, tiga sudut, tiga titik sudut",
   sumber: "Materi: segitiga, sisi dan sudut",
   latar: "#EFF6FF",
-  kutipan: [
-    "2. Segitiga",
-    "Banyak benda di sekitar kita yang berbentuk segitiga seperti penggaris",
-    "segitiga, rambu lalu lintas dan lain-lain.",
-    "Misalkan nama segitiga tersebut adalah",
-    "dalam segitiga terdapat 3 ruas garis yaitu ruas garis AB, BC, dan AC.",
-    "masing-masing dinamakan dengan sisi;",
-    "sehingga segitiga memiliki 3 sisi, yakni sisi AB, sisi BC, dan sisi AC.",
-    "Dalam segitiga itu juga terdapat 3 sudut, yakni sudut A, sudut B, dan sudut C.",
-    "Terdapat juga 3 titik sudut, yakni titik A, titik B, dan titik C.",
-    "memiliki 3 sisi, memiliki 3 sudut, dan memiliki 3 titik sudut.",
-    "1. Segitiga adalah bangun datar yang memiliki 3 sudut.",
-    "2. Segitiga adalah segi banyak yang memiliki 3 sisi.",
-  ],
+  kutipan: kutipanLokal("k4b5a-materi-2.ts:3"),
   ketukan: [
     k(
       SUARA_T1,
@@ -236,26 +195,7 @@ export const ADEGAN_SEGITIGA_SISI: AdeganStory = {
   judul: "Aktivitas 2: segitiga menurut sisinya",
   sumber: "Materi: segitiga menurut sisinya",
   latar: "#F0FDF4",
-  kutipan: [
-    "Aktivitas 2. Pengelompokan segitiga berdasarkan sisinya",
-    "- Sedotan/lidi",
-    "- Benang/tali",
-    "1. Potong sedotan/lidi menjadi 3 bagian sama panjang",
-    "5. Potong sedotan dengan menjadi 3 bagian dengan 2 bagian yang sama",
-    "Memiliki 3 sisi",
-    "Memiliki 2 sisi sama",
-    "Memiliki 3 sisi",
-    "sama panjang",
-    "Segitiga sama kaki memiliki 2 sisi yang",
-    "ditulis AC = BC.",
-    "Segitiga sama sisi adalah segitiga yang semua sisinya sama panjang",
-    "Segitiga sembarang adalah segitiga yang sisi-sisinya tidak ada yang sama",
-    "ditulis DE ≠ EF ≠ DF.",
-    "Setelah mempelajari sifat-sifat segitiga berdasarakan sisinya tersebut, dapat",
-    "c. Apakah ada ciri segitiga sama kaki yang tidak dimiliki segitiga sama sisi?",
-    "Jawab : Tidak ada",
-    "Segitiga sama sisi dapat disebut juga sebagai segitiga sama kaki",
-  ],
+  kutipan: kutipanLokal("k4b5a-materi-2.ts:4"),
   ketukan: [
     k(
       SUARA_G1,
@@ -321,27 +261,7 @@ export const ADEGAN_SEGITIGA_SUDUT: AdeganStory = {
   judul: "Aktivitas 3: segitiga menurut sudutnya",
   sumber: "Materi: segitiga menurut sudutnya",
   latar: "#FEFCE8",
-  kutipan: [
-    "Aktivitas 3. Pengelompokan segitiga berdasarkan sudutnya",
-    "- Busur derajat",
-    "1. Mintalah pada guru bentuk-bentuk segitiga yang terbuat dari kertas lipat",
-    "3. Berikanlah nama titik sudut setiap segitiga",
-    "4. Ukurlah masing-masing besar sudut setiap segitiga menggunakan busur",
-    "derajat",
-    "Adakah sudut lancip? sudut",
-    "siku-siku? atau sudut tumpul?",
-    "1) Segitiga Lancip",
-    "Terlihat bahwa sudut K, sudut L, dan sudut M merupakan sudut lancip.",
-    "Segitiga KLM memiliki 1 sudut siku-siku yaitu sudut K.",
-    "Setelah diamati terlihat ada salah satu sudut yang tumpul yaitu sudut P",
-    "Guru memberikan beberapa segitiga yang terbuat dari kertas lipat",
-    "Jawab : Ada, ketiga sudutnya lancip",
-    "Segitiga lancip tidak dapat dikatakan segitiga tumpul dan sebaliknya",
-    "Segitiga tumpul tidak dapat dikatakan segitiga siku-siku dan sebaliknya",
-    "“memiliki 3 sudut",
-    "Segitiga lancip adalah segitiga yang 3 sudutnya merupakan sudut lancip.",
-    "Segitiga tumpul adalah segitiga yang memiliki satu sudut tumpul.",
-  ],
+  kutipan: kutipanLokal("k4b5a-materi-2.ts:5"),
   ketukan: [
     k(
       SUARA_H1,

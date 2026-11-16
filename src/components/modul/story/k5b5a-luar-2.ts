@@ -61,7 +61,7 @@ export const ADEGAN_LUAR_ARRAY_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_KONSERVASI: AdeganStory = {
   id: "luar-konservasi",
   judul: "Area Conservation: kekekalan luas",
-  sumber: "Metode luar: Area Conservation (cara Yohana)",
+  sumber: "Metode luar: Area Conservation (cara Kira)",
   latar: "#FDF4FF",
   ketukan: [
     k(
@@ -79,7 +79,7 @@ export const ADEGAN_LUAR_KONSERVASI: AdeganStory = {
       tambah("Padahal,", ...kartu("pk", 110, 108, 168, 36, W.hijauMuda, ["tidak dibuang, tidak ditambah:", "luas tetap"], 8.8), emo("ce", 70, 150, "✅", 26)),
     ),
     k(
-      "Cara Yohana memakai gagasan ini: potong bagian petak yang tidak utuh, lalu tempelkan ke bagian lain, sehingga petaknya menjadi utuh.",
+      "Cara Kira memakai gagasan ini: potong bagian petak yang tidak utuh, lalu tempelkan ke bagian lain, sehingga petaknya menjadi utuh.",
       bersih(0),
       tambah(0, judul("Potong, pindah, tempel")),
       tambah("potong", ...bangunDiKisi("cy", 20, 56, BANGUN_AG.F.p, 6, 3, 14, W.merahMuda), poligon("cyp", 90, 56, skala([[0, 0], [1, 0], [0, 3]], 14), W.pink, W.merah)),
@@ -240,10 +240,10 @@ export const ADEGAN_LUAR_GRID_TERAPAN: AdeganStory = {
       tambah("Setengah", rincianGrid("G").slice(4)),
     ),
     k(
-      "Hasil perkiraan sama dengan cara Yohana: sembilan, lima belas, dan sembilan. Pada bangun ini perkiraannya tepat, karena kelebihan dan kekurangan saling menutupi.",
+      "Hasil perkiraan sama dengan cara Kira: sembilan, lima belas, dan sembilan. Pada bangun ini perkiraannya tepat, karena kelebihan dan kekurangan saling menutupi.",
       bersih(0),
-      tambah(0, judul("Perkiraan = hasil Yohana")),
-      tambah("Hasil", ...tabel("pk", 32, 38, [60, 90, 90], [["Bangun", "Perkiraan grid", "Cara Yohana"], ["E", "9", "9"], ["F", "15", "15"], ["G", "9", "9"]], 22, 9.4)),
+      tambah(0, judul("Perkiraan = hasil Kira")),
+      tambah("Hasil", ...tabel("pk", 32, 38, [60, 90, 90], [["Bangun", "Perkiraan grid", "Cara Kira"], ["E", "9", "9"], ["F", "15", "15"], ["G", "9", "9"]], 22, 9.4)),
       tambah("tepat,", ...kartu("pz", 32, 140, 240, 30, W.hijauMuda, ["sama: perkiraan grid tepat"], 9.4)),
     ),
   ],
@@ -265,11 +265,11 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("Grid", ...kartu("r4", 12, 152, 276, 34, W.pink, ["Grid Estimation: utuh + 1/2 sebagian"], 8.6)),
     ),
     k(
-      "Memilih metode: daerah persegi panjang penuh paling cepat dengan Array Model. Bentuk tidak rata cocok dengan Unit Square Covering atau cara Yohana. Sisi miring yang sulit dipindah cukup diperkirakan dengan grid.",
+      "Memilih metode: daerah persegi panjang penuh paling cepat dengan Array Model. Bentuk tidak rata cocok dengan Unit Square Covering atau cara Kira. Sisi miring yang sulit dipindah cukup diperkirakan dengan grid.",
       bersih(0),
       tambah(0, judul("Memilih metode")),
       tambah("persegi", ...kartu("p1", 12, 34, 276, 34, W.langit, ["persegi panjang penuh → Array Model"], 8.8)),
-      tambah("rata", ...kartu("p2", 12, 76, 276, 34, W.hijauMuda, ["bentuk tidak rata → petak / Yohana"], 8.8)),
+      tambah("rata", ...kartu("p2", 12, 76, 276, 34, W.hijauMuda, ["bentuk tidak rata → petak / Kira"], 8.8)),
       tambah("miring", ...kartu("p3", 12, 118, 276, 34, W.pink, ["sisi miring → perkiraan grid"], 8.8)),
     ),
     k(

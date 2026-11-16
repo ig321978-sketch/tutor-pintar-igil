@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, deret, emo, faktor, idPita, judul, kartu, kotak, kurungDeret, pita, sebar, teks } from "./k5b2c-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b2c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* Tabel hasil potongan: baris atas panjang tiap bagian, baris bawah banyaknya hasil potongan (enam kolom). */
 const kolomX = (i: number): number => 80 + i * 34;
@@ -20,15 +21,7 @@ export const ADEGAN_EKS23A: AdeganStory = {
   judul: "Memotong pita kertas",
   sumber: "Materi: memotong pita kertas",
   latar: "#FFF7ED",
-  kutipan: [
-    "Eksplorasi 2.3A",
-    "Ayo Berkreasi",
-    "Sediakan 6 lembar potongan kertas berpetak. Setiap potongan berukuran panjang 12 petak dan lebar 1 petak.",
-    "Potong kertas berpetak yang sudah disiapkan di langkah ke-1. Panjang tiap potongan harus sama dan tidak boleh ada kertas yang tersisa.",
-    "Panjang tiap bagian adalah 2 satuan. Hasilnya adalah 6 potong.",
-    "Potongan seperti gambar di atas tidak diperbolehkan karena ada sisa kertas dengan panjang 2 satuan.",
-    "Teman-teman, kita harus berhati-hati saat menggunakan gunting. Ayo, kita gunakan gunting hanya untuk menggunting kertas.",
-  ],
+  kutipan: kutipanLokal("k5b2c-materi-2.ts:1"),
   ketukan: [
     k(
       "Sekarang kita potong pita kertas berpetak. Langkah satu: sediakan enam lembar potongan kertas berpetak. Tiap potongan panjangnya dua belas petak dan lebarnya satu petak.",
@@ -39,7 +32,7 @@ export const ADEGAN_EKS23A: AdeganStory = {
       tambah("lebarnya", teks("lb", 150, 120, "lebar 1 petak", 10, W.hitam)),
     ),
     k(
-      "Langkah dua: potong kertas berpetak itu. Panjang tiap potongan harus sama, dan tidak boleh ada kertas yang tersisa. Ingat pesan Nisa: gunting hanya untuk menggunting kertas.",
+      "Langkah dua: potong kertas berpetak itu. Panjang tiap potongan harus sama, dan tidak boleh ada kertas yang tersisa. Ingat pesan Igil: gunting hanya untuk menggunting kertas.",
       ubah("Langkah", { id: "l1", isi: "Langkah 2" }),
       tambah("sama", teks("sm", 150, 144, "sama panjang", 12, W.hijau)),
       tambah("tersisa.", teks("ts", 150, 162, "tanpa sisa", 12, W.merah)),
@@ -78,15 +71,7 @@ export const ADEGAN_TABEL12: AdeganStory = {
   judul: "Tabel potongan dan faktor dari 12",
   sumber: "Materi: faktor dari 12",
   latar: "#F0F9FF",
-  kutipan: [
-    "Tuliskan hasil pemotongan kertas pada tabel berikut.",
-    "Panjang tiap bagian 1 2 ... ... ... ... Banyaknya hasil potongan 12 6 ... ... ... ...",
-    "Tuliskan semua bilangan yang muncul dalam tabel pada langkah ke-3. Jika ada 2 bilangan yang sama, kalian cukup menuliskan sekali saja.",
-    "Bilangan yang kalian tuliskan pada langkah ke-4 disebut faktor dari 12.",
-    "Bilangan cacah yang dapat membagi 12 tanpa ada sisa disebut faktor dari 12.",
-    "Faktor dari 12 adalah 1, 2, 3, 4, 6, dan 12.",
-    "Panjang tiap bagian 1 2 3 4 6 12 Banyaknya hasil potongan 12 6 4 3 2 1",
-  ],
+  kutipan: kutipanLokal("k5b2c-materi-2.ts:2"),
   ketukan: [
     k(
       "Langkah tiga: tuliskan hasil pemotongan pada tabel. Tabelnya punya baris panjang tiap bagian, dan baris banyaknya hasil potongan.",
@@ -158,17 +143,7 @@ export const ADEGAN_EKS23B: AdeganStory = {
   judul: "Faktor dari 18",
   sumber: "Materi: faktor dari 18",
   latar: "#ECFDF5",
-  kutipan: [
-    "Eksplorasi 2.3B Ayo Menemukan Faktor dari 18",
-    "Di kertas berpetak, gambarlah 6 buah persegi panjang dengan panjang 18 satuan.",
-    "Selanjutnya, bagilah persegi panjang tersebut menjadi beberapa bagian. Setiap bagian sama panjang dan tidak ada sisa.",
-    "Warnai setiap bagian yang berdekatan dengan warna berbeda.",
-    "Eksplorasi bagian ini dapat dilakukan bersama-sama dengan bagian sebelumnya.",
-    "Kegiatannya masih sama, yaitu menemukan faktor suatu bilangan. Pada bagian ini, bilangan yang dicari faktornya adalah 18.",
-    "Tuliskan hasil dari kegiatan nomor 1 pada tabel.",
-    "Lengkapi lingkaran-lingkaran berikut dengan faktor dari 18. Urutkan dari yang paling kecil.",
-    "Panjang tiap bagian 1 2 3 6 9 18 Banyaknya hasil potongan 18 9 6 3 2 1",
-  ],
+  kutipan: kutipanLokal("k5b2c-materi-2.ts:3"),
   ketukan: [
     k(
       "Sekarang kita cari faktor dari delapan belas. Kegiatannya sama dengan sebelumnya, dan boleh dikerjakan bersama-sama. Pita yang dipotong sekarang panjangnya delapan belas petak.",
@@ -244,12 +219,7 @@ export const ADEGAN_PASANGAN: AdeganStory = {
   judul: "Faktor saling berpasangan",
   sumber: "Materi: faktor berpasangan",
   latar: "#FDF4FF",
-  kutipan: [
-    "Faktor-faktor pada suatu bilangan saling berpasangan. Contohnya faktor dari 18 berikut.",
-    "1 berpasangan dengan 18, artinya 1 x 18 = 18",
-    "2 berpasangan dengan 9, artinya 2 x 9 = 18",
-    "3 berpasangan dengan 6, artinya 3 x 6 = 18",
-  ],
+  kutipan: kutipanLokal("k5b2c-materi-2.ts:4"),
   ketukan: [
     k(
       "Perhatikan ini: faktor-faktor pada suatu bilangan saling berpasangan. Contohnya faktor dari delapan belas.",

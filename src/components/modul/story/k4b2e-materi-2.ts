@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, angkaKarakter, barisTabel, daftar, emo, judul, kartu, panah, tabel, teks } from "./k4b2e-gambar";
 import { bersih, k, tambah } from "./k4b2e-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Ayo Berpikir: cara biasa dan cara langsung (Buku Siswa hlm. 79-81; Panduan Guru hlm. 109) ------------------------------ */
 export const ADEGAN_LANGSUNG: AdeganStory = {
@@ -8,16 +9,7 @@ export const ADEGAN_LANGSUNG: AdeganStory = {
   judul: "Ayo Berpikir: cara biasa dan cara langsung",
   sumber: "Materi: cara biasa dan cara langsung",
   latar: "#EFF6FF",
-  kutipan: [
-    "Ibu untuk mengubah pecahan desimal perseratusan menjadi bentuk persen bolehkah langsung dikalikan 100%",
-    "Ada dua cara merubah pecahan desimal perseratusan menjadi persen",
-    "Untuk mengubah pecahan desimal perseratusan menjadi bentuk persen bisa langsung mengalikannya dengan 100%",
-    "0,36 × 100% = (0,36 × 100)% = 36%",
-    "Cara Langsung : Jika terdapat desimal perseratusan yang akan diubah menjadi bentuk persen maka kita tinggal mengalikan desimal perseratusan tersebut",
-    "0,25 x 100% = (0,25 x 100)% = 25%",
-    "2,36 x 100% = (2,36 x 100)% = 236%",
-    "Guru menjelaskan cara langsung dalam mengubah perseratusan menjadi bentuk persen",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-2.ts:1"),
   ketukan: [
     k(
       "Ayo berpikir. Coba tebak, bolehkah desimal perseratusan langsung dikalikan dengan seratus persen? Boleh, karena ada dua cara mengubahnya.",
@@ -72,13 +64,7 @@ export const ADEGAN_GESER: AdeganStory = {
   judul: "Tahukah kamu: geser koma",
   sumber: "Materi: geser tanda koma",
   latar: "#FEFCE8",
-  kutipan: [
-    "Tahukah Kalian",
-    "menggeser tanda koma pada bilangan desimal dua kali kekanan",
-    "Tanda koma kita geser ke kanan dua kali",
-    "0,25 x 100% = 25%",
-    "2,36 x 100% = 236%",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-2.ts:2"),
   ketukan: [
     k(
       "Tahukah kalian? Supaya mengalikan desimal perseratusan dengan seratus persen lebih mudah, geser tanda koma dua kali ke kanan.",
@@ -131,16 +117,7 @@ export const ADEGAN_BERLATIH_1E: AdeganStory = {
   judul: "Latihan 1: desimal ke persen",
   sumber: "Materi: latihan desimal ke persen",
   latar: "#F0FDF4",
-  kutipan: [
-    "Kerjakan soal berikut pada buku tulis kalian",
-    "Ubahlah bilangan desimal perseratusan berikut menjadi bentuk persen",
-    "a. 0,12 = ... %",
-    "d. 10,55 = ... %",
-    "a. 0,12 = 12 %",
-    "b. 1,15 = 115 %",
-    "c. 5,62 = 562 %",
-    "d. 10,55 = 1055 %",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-2.ts:3"),
   ketukan: [
     k(
       "Sekarang coba kamu: ubah desimal perseratusan menjadi persen. Bagian a: nol koma satu dua, jadi dua belas persen. Bagian b: satu koma satu lima, jadi seratus lima belas persen.",
@@ -187,14 +164,7 @@ export const ADEGAN_BERLATIH_2E: AdeganStory = {
   judul: "Latihan 2: persen ke desimal",
   sumber: "Materi: latihan persen ke desimal",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ubahlah bentuk persen berikut menjadi bentuk pecahan desimal",
-    "a. 18% = 0,18",
-    "d. 675% = 6,75",
-    "Model pembelajaran yang disarankan untuk bab ini adalah Problem Based Learning",
-    "minta mereka mengerjakan Latihan tanpa bantuan",
-    "guru dapat mendampingi peserta didik yang mengalami kesulitan",
-  ],
+  kutipan: kutipanLokal("k4b2e-materi-2.ts:4"),
   ketukan: [
     k(
       "Sekarang kebalikannya: ubah persen menjadi desimal perseratusan. Caranya persen dibagi seratus, atau koma digeser dua kali ke kiri. Delapan belas persen menjadi nol koma satu delapan, enam puluh lima persen menjadi nol koma enam lima.",

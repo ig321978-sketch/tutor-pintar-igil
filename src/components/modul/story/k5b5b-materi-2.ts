@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { JJG, SEG1, SEG2, TRAP, W, bangunBerpetak, garis, kartu, kisi, lintasan, poli, teks, type Pt } from "./k5b5b-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b5b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Teks keterangan rata kiri di sisi kanan gambar. */
 const ket = (id: string, y: number, isi: string, warna: string = W.biru, x = 148): Obj => teks(id, x, y, isi, 8.8, warna, { anchor: "start" });
@@ -19,7 +20,7 @@ export const ADEGAN_SEGITIGA_1: AdeganStory = {
   judul: "Menemukan luas segitiga (alas 4, tinggi 4)",
   sumber: "Materi: luas segitiga",
   latar: "#FFF7ED",
-  kutipan: ["Ayo Menemukan Luas Daerah Segitiga", "Kalian telah menemukan cara menghitung luas daerah persegi", "Buatlah dengan menggunakan kertas", "Bangun apa yang terbentuk", "Apakah ada bagian yang hilang", "Luas segitiga tetap, walaupun diubah bentuknya", "Lebar persegi panjang"],
+  kutipan: kutipanLokal("k5b5b-materi-2.ts:1"),
   ketukan: [
     k(
       "Sekarang kita menemukan luas daerah segitiga. Kita buat dengan kertas lipat. Pertanyaannya, dapatkah segitiga diubah menjadi persegi panjang, supaya luasnya bisa dihitung seperti persegi panjang?",
@@ -73,7 +74,7 @@ export const ADEGAN_SEGITIGA_2: AdeganStory = {
   judul: "Ayo mencoba lagi: segitiga PQR (alas 5, tinggi 4)",
   sumber: "Materi: luas segitiga PQR",
   latar: "#FEF2F2",
-  kutipan: ["Ayo mencoba lagi", "Hitunglah luas daerah segitiga", "Dengan menggunakan kertas", "Luas = 1", "Luas daerah segitiga", "dihitung dengan cara", "mengalikan panjang", "alas dengan separuh"],
+  kutipan: kutipanLokal("k5b5b-materi-2.ts:2"),
   ketukan: [
     k(
       "Ayo mencoba lagi. Hitung luas segitiga PQR. Alasnya PQ dan tingginya RO. Dengan kertas lipat, segitiga ini kita ubah menjadi persegi panjang.",
@@ -123,7 +124,7 @@ export const ADEGAN_JAJARGENJANG: AdeganStory = {
   judul: "Menemukan luas jajargenjang",
   sumber: "Materi: luas jajargenjang",
   latar: "#F0F9FF",
-  kutipan: ["Ayo Menemukan Luas Daerah Jajargenjang", "Bangun apakah itu", "Luas jajargenjang tetap, walaupun diubah bentuknya", "Luas = alas", "dihitung dengan cara mengalikan panjang"],
+  kutipan: kutipanLokal("k5b5b-materi-2.ts:3"),
   ketukan: [
     k(
       "Sekarang kita menemukan luas daerah jajargenjang. Perhatikan jajargenjang ABCD. Alas AB panjangnya 4 satuan, tinggi DO panjangnya 2 satuan.",
@@ -171,7 +172,7 @@ export const ADEGAN_TRAPESIUM: AdeganStory = {
   judul: "Menemukan luas trapesium",
   sumber: "Materi: luas trapesium",
   latar: "#FDF4FF",
-  kutipan: ["Ayo Menemukan Luas Daerah Trapesium", "Kalian sudah bisa mencari luas jajargenjang", "Manakah sisi alasnya", "Alasnya tampak lebih panjang", "Luas trapesium tetap, walaupun diubah bentuknya", "Tinggi persegi panjang = setengah"],
+  kutipan: kutipanLokal("k5b5b-materi-2.ts:4"),
   ketukan: [
     k(
       "Sekarang kita menemukan luas daerah trapesium. Kita sudah bisa mencari luas jajargenjang, jadi trapesium akan kita ubah menjadi jajargenjang. Perhatikan trapesium ABCD.",

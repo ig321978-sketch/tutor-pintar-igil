@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, batang, emo, judul, kartu, teks } from "./k5b3b-gambar";
 import { bersih, k, tambah } from "./k5b3b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Subbab B (Panduan Guru hlm. 105 dan 106; Buku Siswa hlm. 76) ------------------------------ */
 export const ADEGAN_PEMBUKA: AdeganStory = {
@@ -8,13 +9,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Subbab B: Penjumlahan Bilangan Pecahan",
   sumber: "Panduan Guru hlm. 105–106; Buku Siswa hlm. 76",
   latar: "#EFF6FF",
-  kutipan: [
-    "B. Penjumlahan Bilangan Pecahan",
-    "Sebelum memasuki materi tentang penjumlahan bilangan pecahan, guru",
-    "diharapkan dapat menjelaskan pengalaman belajar",
-    "melakukan penjumlahan pecahan berpenyebut sama dan",
-    "melakukan penjumlahan pecahan dengan penyebut berbeda.",
-  ],
+  kutipan: kutipanLokal("k5b3b-materi-1.ts:1"),
   ketukan: [
     k(
       "Subbab B, Penjumlahan Bilangan Pecahan. Di subbab sebelumnya kita membandingkan dan mengurutkan pecahan. Sekarang dua pecahan kita gabungkan, kita jumlahkan.",
@@ -55,19 +50,7 @@ export const ADEGAN_PERSIAPAN: AdeganStory = {
   judul: "Sarana, apersepsi, dan pemanasan",
   sumber: "Panduan Guru hlm. 105–106",
   latar: "#FFFBEB",
-  kutipan: [
-    "Kebutuhan Sarana Prasarana dan Media Pembelajaran",
-    "Alat tulis",
-    "Penggaris",
-    "Kertas karton",
-    "Guru memulai materi ini dengan mengingatkan peserta didik pada materi",
-    "mengingat tentang cara menyamakan penyebut",
-    "Gunakan pertanyaan pada Ayo Mengingat Kembali dan materi",
-    "Guru mengajak peserta didik melakukan penjumlahan pada bilangan cacah",
-    "dilanjutkan dengan bilangan pecahan dengan penyebut berbeda.",
-    "Membagi peserta didik menjadi beberapa kelompok.",
-    "Berikan alat-alat yang akan digunakan oleh peserta didik",
-  ],
+  kutipan: kutipanLokal("k5b3b-materi-1.ts:2"),
   ketukan: [
     k(
       "Kebutuhan sarana dan media pembelajaran subbab ini sederhana: alat tulis, penggaris, dan kertas karton. Kertas karton berguna untuk membuat model pecahan.",
@@ -104,27 +87,19 @@ export const ADEGAN_PERSIAPAN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Masalah Lukas dan syarat penjumlahan (Buku Siswa hlm. 76) ------------------------------ */
+/* ------------------------------ 3. Masalah Kira dan syarat penjumlahan (Buku Siswa hlm. 76) ------------------------------ */
 export const ADEGAN_MASALAH: AdeganStory = {
   id: "masalah-lukas",
-  judul: "Masalah Lukas dan syarat penjumlahan",
-  sumber: "Materi: masalah wingko Lukas",
+  judul: "Masalah Kira dan syarat penjumlahan",
+  sumber: "Materi: masalah wingko Kira",
   latar: "#FFF7ED",
-  kutipan: [
-    "Masalah Lukas",
-    "bagian wingko, sedangkan Komang",
-    "bagian wingko. Apabila kedua bagian wingko",
-    "tersebut digabungkan, berapakah hasilnya?",
-    "Syarat melakukan penjumlahan pecahan adalah penyebutnya harus",
-    "Jika penyebut belum sama, perlu disamakan dahulu.",
-    "Jika penyebutnya sudah sama, jumlahkan pembilangnya.",
-  ],
+  kutipan: kutipanLokal("k5b3b-materi-1.ts:3"),
   ketukan: [
     k(
-      "Masalah Lukas. Lukas punya satu per dua bagian wingko, sedangkan Komang punya satu per tiga bagian wingko. Kalau kedua bagian itu digabungkan, berapa hasilnya?",
-      tambah(0, judul("Masalah Lukas")),
-      tambah("Lukas", teks("lk", 75, 52, "Lukas", 10, W.biru), ...batang("wl", 25, 62, 100, 26, 2, [[0, 1, W.jingga]]), teks("fl", 75, 112, "1/2", 13, W.hitam)),
-      tambah("Komang", teks("km", 225, 52, "Komang", 10, W.biru), ...batang("wk", 175, 62, 100, 26, 3, [[0, 1, W.jingga]]), teks("fk", 225, 112, "1/3", 13, W.hitam)),
+      "Masalah Kira. Kira punya satu per dua bagian wingko, sedangkan Halim punya satu per tiga bagian wingko. Kalau kedua bagian itu digabungkan, berapa hasilnya?",
+      tambah(0, judul("Masalah Kira")),
+      tambah("Kira", teks("lk", 75, 52, "Kira", 10, W.biru), ...batang("wl", 25, 62, 100, 26, 2, [[0, 1, W.jingga]]), teks("fl", 75, 112, "1/2", 13, W.hitam)),
+      tambah("Halim", teks("km", 225, 52, "Halim", 10, W.biru), ...batang("wk", 175, 62, 100, 26, 3, [[0, 1, W.jingga]]), teks("fk", 225, 112, "1/3", 13, W.hitam)),
       tambah("digabungkan,", teks("pl", 150, 80, "+", 18, W.merah), teks("gq", 150, 160, "hasilnya = ?", 14, W.merah)),
     ),
     k(
@@ -143,9 +118,9 @@ export const ADEGAN_MASALAH: AdeganStory = {
       tambah("sudah", ...kartu("b2", 20, 108, 260, 46, W.hijauMuda, ["sudah sama", "jumlahkan pembilangnya"], 9.8)),
     ),
     k(
-      "Penyebut satu per dua dan satu per tiga adalah dua dan tiga, belum sama. Jadi masalah wingko Lukas kita simpan dulu, dan kita mulai dari penyebut yang sudah sama.",
+      "Penyebut satu per dua dan satu per tiga adalah dua dan tiga, belum sama. Jadi masalah wingko Kira kita simpan dulu, dan kita mulai dari penyebut yang sudah sama.",
       bersih(0),
-      tambah(0, judul("Wingko Lukas disimpan dulu")),
+      tambah(0, judul("Wingko Kira disimpan dulu")),
       tambah("dua", teks("w1", 90, 80, "1/2", 20, W.hitam), teks("wp", 150, 80, "+", 20, W.merah), teks("w2", 210, 80, "1/3", 20, W.hitam)),
       tambah("belum", teks("wb", 150, 114, "penyebut 2 dan 3", 10, W.merah)),
       tambah("simpan", emo("sv", 70, 160, "📌", 26)),

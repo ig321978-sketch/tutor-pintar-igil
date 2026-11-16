@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, emo, kartu, kepalaTabel, kotak, panah, paketBibit, pecahan, pengali, sel, teks } from "./k6b2b-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k6b2b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Panah pengali di sisi kiri tabel (kepala = baris -1), titik tabel (x, y) dengan tinggi sel h. */
 const kiri = (id: string, dari: number, ke: number, x: number, y: number, h: number, label: string) => {
@@ -20,7 +21,7 @@ export const ADEGAN_TABEL_SENILAI: AdeganStory = {
   judul: "Tabel rasio dan pecahan senilai",
   sumber: "Materi: tabel rasio dan pecahan senilai",
   latar: "#FDF2F8",
-  kutipan: ["Kesamaan rasio memiliki prinsip yang sama dengan pecahan senilai", "Jadi, contoh rasio yang senilai dengan 10 : 12 adalah 30 : 36 dan 5 : 6", "Apabila kalian menanam 2 bibit tanaman diperlukan 5 gram pupuk"],
+  kutipan: kutipanLokal("k6b2b-materi-2.ts:1"),
   ketukan: [
     k(
       "Kesamaan rasio juga bisa dilihat pada tabel rasio. Baris 5 dan 6 dikali 5 menghasilkan baris 25 dan 30. Setiap baris tabel ini bercerita tentang rasio yang sama.",
@@ -94,24 +95,24 @@ export const ADEGAN_TOGA: AdeganStory = {
   judul: "Memilih bibit TOGA dan rasio satuan",
   sumber: "Materi: bibit TOGA dan rasio satuan",
   latar: "#ECFDF5",
-  kutipan: ["TOGA adalah singkatan dari Tanaman Obat Keluarga", "Rasio satuan adalah ketika jumlah salah satu dari dua kuantitas dalam rasio sama dengan 1", "Harga paket berisi 3 bibit = Rp37.500,00"],
+  kutipan: kutipanLokal("k6b2b-materi-2.ts:2"),
   ketukan: [
     k(
-      "Kita lanjut ke cerita berikutnya. Ibu mengajak Anike ke toko bibit. Ibu mencari bibit TOGA, singkatan dari Tanaman Obat Keluarga.",
+      "Kita lanjut ke cerita berikutnya. Ibu mengajak Kira ke toko bibit. Ibu mencari bibit TOGA, singkatan dari Tanaman Obat Keluarga.",
       tambah("berikutnya", teks("jud", 150, 24, "Latihan bersama: Memilih Bibit Tanaman", 10, W.ungu)),
       tambah("Ibu", emo("ibu", 50, 90, "👩", 34), teks("ibut", 50, 108, "Ibu", 8.5)),
-      tambah("Anike", emo("an", 110, 90, "👧", 34), teks("ant", 110, 108, "Anike", 8.5)),
+      tambah("Kira", emo("an", 110, 90, "👧", 34), teks("ant", 110, 108, "Kira", 8.5)),
       tambah("toko", emo("tk", 230, 90, "🏪", 38), teks("tkt", 230, 108, "toko bibit", 8.5)),
       tambah("TOGA,", kartu("tg", 40, 130, 220, 38, "#DCFCE7", ["TOGA", "Tanaman Obat Keluarga"], 9.5)),
     ),
     k(
-      "Anike diminta memilih bibit jahe merah organik. Ada dua paket: paket 3 bibit seharga Rp37.500, dan paket 5 bibit seharga Rp58.000.",
+      "Kira diminta memilih bibit jahe merah organik. Ada dua paket: paket 3 bibit seharga Rp37.500, dan paket 5 bibit seharga Rp58.000.",
       bersih(0),
       tambah(11, paketBibit("pa", 30, 50, 3, "Paket 3 bibit", "Rp37.500", "#DCFCE7")),
       tambah(17, paketBibit("pb", 170, 50, 5, "Paket 5 bibit", "Rp58.000", "#FEF9C3")),
     ),
     k(
-      "Jika uang Anike sedikit, bibit mana yang dipilih? Kita cari harga satuan, yaitu harga untuk 1 bibit. Dengan begitu, dua paket yang isinya berbeda bisa dibandingkan dengan adil.",
+      "Jika uang Kira sedikit, bibit mana yang dipilih? Kita cari harga satuan, yaitu harga untuk 1 bibit. Dengan begitu, dua paket yang isinya berbeda bisa dibandingkan dengan adil.",
       tambah("uang", emo("tm", 150, 168, "🤔", 26)),
       tambah("satuan,", kartu("hs", 70, 176, 160, 26, "#FEE2E2", ["harga satuan = harga 1 bibit"], 9, W.merah)),
     ),
@@ -131,10 +132,10 @@ export const ADEGAN_TOGA: AdeganStory = {
       tambah("11.600", barisTabel("b", 1, X4B, Y4, W4, H4, ["1", "11.600"], "#FEF9C3")),
     ),
     k(
-      "Bandingkan: Rp12.500 lawan Rp11.600. Harga satu bibit paket 5 lebih murah, jadi Anike memilih paket yang berisi 5 bibit.",
+      "Bandingkan: Rp12.500 lawan Rp11.600. Harga satu bibit paket 5 lebih murah, jadi Kira memilih paket yang berisi 5 bibit.",
       tambah("Bandingkan:", teks("bd", 150, 138, "12.500 lawan 11.600", 11, W.biru)),
       sorotkan("murah,", "b-r1a-k", "b-r1b-k"),
-      tambah("memilih", kartu("pil", 60, 152, 180, 32, "#BBF7D0", ["Anike memilih paket 5 bibit"], 9.5, W.hijau)),
+      tambah("memilih", kartu("pil", 60, 152, 180, 32, "#BBF7D0", ["Kira memilih paket 5 bibit"], 9.5, W.hijau)),
     ),
     k(
       "Inilah rasio satuan, yaitu ketika salah satu kuantitas dalam rasio sama dengan 1. Contoh: 3 banding 37.500 menjadi 1 banding 12.500.",
@@ -158,7 +159,7 @@ export const ADEGAN_SATUAN_WAKTU: AdeganStory = {
   judul: "Rasio satuan: mengemas bibit per jam",
   sumber: "Materi: rasio satuan mengemas bibit",
   latar: "#FFF7ED",
-  kutipan: ["Waktu yang dibutuhkan untuk mengemas 6 bibit tanaman adalah 1,5 jam", "Pegawai toko mengemas 4 bibit tanaman/jam", "apakah itu merupakan contoh rasio satuan"],
+  kutipan: kutipanLokal("k6b2b-materi-2.ts:3"),
   ketukan: [
     k(
       "Rasio satuan juga muncul pada besaran berbeda. Toko memberi antar gratis bila membeli paling sedikit 5 bibit.",

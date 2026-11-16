@@ -25,12 +25,12 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("empat", emo("gl", 190, 140, "🌍", 34)),
     ),
     k(
-      "Empat metode itu: Unit Square Covering, Array Model, Area Conservation yang tadi kita sebut cara Yohana, dan Grid Estimation of Partial Squares.",
+      "Empat metode itu: Unit Square Covering, Array Model, Area Conservation yang tadi kita sebut cara Kira, dan Grid Estimation of Partial Squares.",
       bersih(0),
       tambah(0, judul("Empat metode")),
       tambah("Unit", ...kartu("m1", 12, 34, 276, 30, W.hijauMuda, ["1. Unit Square Covering"], 9.4)),
       tambah("Array", ...kartu("m2", 12, 72, 276, 30, W.langit, ["2. Array Model"], 9.4)),
-      tambah("Area", ...kartu("m3", 12, 110, 276, 30, W.krem, ["3. Area Conservation (cara Yohana)"], 9.4)),
+      tambah("Area", ...kartu("m3", 12, 110, 276, 30, W.krem, ["3. Area Conservation (cara Kira)"], 9.4)),
       tambah("Grid", ...kartu("m4", 12, 148, 276, 30, W.pink, ["4. Grid Estimation of Partial Squares"], 9.4)),
     ),
     k(

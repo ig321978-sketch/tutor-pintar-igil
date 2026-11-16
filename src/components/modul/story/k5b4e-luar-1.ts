@@ -147,11 +147,11 @@ export const ADEGAN_LUAR_BR: AdeganStory = {
   latar: "#EFF6FF",
   ketukan: [
     k(
-      "Metode kedua, Bounding Rectangle, membungkus bangun gabungan dengan persegi panjang terkecil yang melingkupinya. Inilah ide Komang tadi.",
+      "Metode kedua, Bounding Rectangle, membungkus bangun gabungan dengan persegi panjang terkecil yang melingkupinya. Inilah ide Malosi tadi.",
       tambah(0, judul("Bounding Rectangle")),
       tambah("Metode", bentuk("br", B1X, B1Y, B1S, MISKON1, W.jingga)),
       tambah("persegi", bingkai("brb", B1X, B1Y, B1S, 0, 0, 20, 12)),
-      tambah("Komang", teks("brk", 232, 110, "ide Komang", 10, W.hijau)),
+      tambah("Malosi", teks("brk", 232, 110, "ide Malosi", 10, W.hijau)),
     ),
     k(
       "Lalu geser sisi-sisi bangun ke tepi bingkai. Sisi mendatar bersama-sama selebar bingkai, dan sisi tegak bersama-sama setinggi bingkai.",
@@ -199,7 +199,7 @@ export const ADEGAN_LUAR_BR_TERAPAN: AdeganStory = {
       tambah("pojoknya", notchSel("n0", 0), notchSel("n1", 1), notchSel("n2", 2), notchSel("n3", 3)),
     ),
     k(
-      "Empat kali dua belas sama dengan empat puluh delapan meter, tanpa mengukur empat belas sisi. Hasilnya cocok dengan Cara Asep.",
+      "Empat kali dua belas sama dengan empat puluh delapan meter, tanpa mengukur empat belas sisi. Hasilnya cocok dengan Cara Wei.",
       tambah("Empat", baris("b1", 90, "4 × 12 = 48 m", 14, W.merah)),
       tambah("Hasilnya", emo("b2", PX, 124, "✅", 26), teks("b3", PX, 150, "sama dengan 14 sisi", 8.6, W.hijau)),
     ),

@@ -146,11 +146,11 @@ export const ADEGAN_LUAR_DBMT: AdeganStory = {
 
 /* ------------------------------ 9. Double Bar Merge Table: terapan pada nilai ulangan ------------------------------ */
 const NILAI: [string, number, number][] = [
-  ["Lukas", 65, 80],
-  ["Nisa", 70, 85],
-  ["Komang", 50, 90],
-  ["Asep", 90, 75],
-  ["Yohana", 85, 80],
+  ["Kira", 65, 80],
+  ["Halim", 70, 85],
+  ["Igil", 50, 90],
+  ["Upe", 90, 75],
+  ["Wei", 85, 80],
   ["Robert", 90, 65],
 ];
 const GN: GV = { x: 40, y: 150, w: 232, h: 100, maks: 100, langkah: 25 };
@@ -177,20 +177,20 @@ export const ADEGAN_LUAR_DBMT_TERAPAN: AdeganStory = {
       tambah("kedua", ...legenda("lg", 70, 20, "Ulangan ke-1", "Ulangan ke-2", 74)),
     ),
     k(
-      "Gambar sepasang batang untuk Lukas sampai Robert, biru untuk ulangan pertama dan merah muda untuk ulangan kedua.",
+      "Gambar sepasang batang untuk Kira sampai Robert, biru untuk ulangan pertama dan merah muda untuk ulangan kedua.",
       tambah("Gambar", ...NILAI.slice(0, 3).flatMap(([nama, a, b], i) => batangGandaV(`n${i}`, GN, i, 6, a, b, nama))),
       tambah("Robert,", ...NILAI.slice(3).flatMap(([nama, a, b], i) => batangGandaV(`n${i + 3}`, GN, i + 3, 6, a, b, nama))),
       sorotkan("biru", "n0a-k", "n1a-k", "n2a-k", "n3a-k", "n4a-k", "n5a-k"),
     ),
     k(
-      "Selisihnya terbaca dari pasangan batang: Komang naik empat puluh, Lukas dan Nisa naik lima belas, Yohana turun lima, Asep turun lima belas, Robert turun dua puluh lima.",
+      "Selisihnya terbaca dari pasangan batang: Igil naik empat puluh, Kira dan Halim naik lima belas, Wei turun lima, Upe turun lima belas, Robert turun dua puluh lima.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Selisih tiap anak", 12, W.ungu)),
-      tambah("Komang", ...kartu("d3", 106, 34, 88, 50, W.mint, ["Komang naik 40", "90 - 50 = 40"], 8.2)),
-      tambah("Lukas", ...kartu("d1", 10, 34, 88, 50, W.mint, ["Lukas naik 15", "80 - 65 = 15"], 8.2)),
-      tambah("Nisa", ...kartu("d2", 202, 34, 88, 50, W.mint, ["Nisa naik 15", "85 - 70 = 15"], 8.2)),
-      tambah("Yohana", ...kartu("d5", 10, 98, 88, 50, W.mawar, ["Yohana turun 5", "85 - 80 = 5"], 8.2)),
-      tambah("Asep", ...kartu("d4", 106, 98, 88, 50, W.mawar, ["Asep turun 15", "90 - 75 = 15"], 8.2)),
+      tambah("Igil", ...kartu("d3", 106, 34, 88, 50, W.mint, ["Igil naik 40", "90 - 50 = 40"], 8.2)),
+      tambah("Kira", ...kartu("d1", 10, 34, 88, 50, W.mint, ["Kira naik 15", "80 - 65 = 15"], 8.2)),
+      tambah("Halim", ...kartu("d2", 202, 34, 88, 50, W.mint, ["Halim naik 15", "85 - 70 = 15"], 8.2)),
+      tambah("Wei", ...kartu("d5", 10, 98, 88, 50, W.mawar, ["Wei turun 5", "85 - 80 = 5"], 8.2)),
+      tambah("Upe", ...kartu("d4", 106, 98, 88, 50, W.mawar, ["Upe turun 15", "90 - 75 = 15"], 8.2)),
       tambah("Robert", ...kartu("d6", 202, 98, 88, 50, W.mawar, ["Robert turun 25", "90 - 65 = 25"], 8.2)),
     ),
   ],

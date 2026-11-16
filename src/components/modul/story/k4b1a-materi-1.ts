@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, garis, judul, kartu, kartuAngka, panah, teks } from "./k4b1a-gambar";
 import { bersih, k, sorotkan, tambah } from "./k4b1a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab dan tujuan (Buku Siswa hlm. 1–2; Panduan Guru hlm. 27–28) ------------------------------ */
 const SUARA_P1 = "Selamat datang di bab satu, Bilangan Cacah sampai sepuluh ribu. Sampul bab menampilkan minimarket yang menjual makanan ringan, minuman, dan buah-buahan dengan harga bervariasi.";
@@ -14,23 +15,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 1: minimarket dan tujuan pembelajaran",
   sumber: "Buku Siswa hlm. 1–2; Panduan Guru hlm. 27–28",
   latar: "#FFF7ED",
-  kutipan: [
-    "Minimarket menjual berbagai makanan ringan, minuman, buah-buahan dengan harga yang bervariasi.",
-    "Dapatkah kalian menyebutkan harga berbagai barang yang dijual di minimarket tersebut?",
-    "Dapatkah kalian membedakan mana barang yang harganya lebih murah atau lebih mahal?",
-    "dapatkah kalian menentukan berapa rupiah yang harus dibayarkan?",
-    "Tujuan Pembelajaran",
-    "Setelah mempelajari bab ini kalian mampu:",
-    "membaca bilangan cacah sampai 10.000",
-    "menuliskan bilangan cacah sampai 10.000",
-    "menentukan nilai tempat bilangan cacah sampai 10.000",
-    "menentukan penyelesaian masalah berkaitan dengan kelipatan dan faktor",
-    "1. Tujuan Pembelajaran",
-    "Setelah mempelajari bab ini, Peserta didik dapat:",
-    "1.1 membaca bilangan cacah sampai 10.000",
-    "1.2 menulis bilangan cacah sampai 10.000",
-    "1.12 menyelesaikan masalah berkaitan dengan kelipatan dan faktor",
-  ],
+  kutipan: kutipanLokal("k4b1a-materi-1.ts:1"),
   ketukan: [
     k(
       SUARA_P1,
@@ -90,25 +75,7 @@ export const ADEGAN_PETA: AdeganStory = {
   judul: "Peta konsep, gambaran umum, dan skema pembelajaran",
   sumber: "Buku Siswa hlm. 3; Panduan Guru hlm. 28–29",
   latar: "#F0FDF4",
-  kutipan: [
-    "Peta Konsep",
-    "Nilai Tempat",
-    "Komposisi",
-    "Dekomposisi",
-    "Faktor dan Kelipatan",
-    "Kata Kunci",
-    "Nilai tempat, operasi bilangan, faktor, kelipatan",
-    "2. Peta Konsep",
-    "3. Gambaran Umum Bab",
-    "pemahaman dan intuisi bilangan (number sense) pada bilangan cacah sampai 10.000.",
-    "melakukan operasi penjumlahan dan pengurangan bilangan cacah sampai 1.000",
-    "4. Keterampilan yang dilatih",
-    "1. Membaca",
-    "2. Menulis",
-    "3. Menghitung",
-    "4. Berkomunikasi",
-    "5. Skema Pembelajaran",
-  ],
+  kutipan: kutipanLokal("k4b1a-materi-1.ts:2"),
   ketukan: [
     k(
       SUARA_K1,
@@ -170,20 +137,7 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
   judul: "Panduan guru: pengalaman belajar, apersepsi, pemantik",
   sumber: "Panduan Guru hlm. 31–32",
   latar: "#EFF6FF",
-  kutipan: [
-    "6. Panduan Pembelajaran",
-    "A. Membaca dan Menulis Bilangan Cacah sampai 10.000",
-    "Pengalaman Belajar",
-    "diharapkan peserta didik mampu membaca dan menulis bilangan cacah sampai 10.000 dengan baik dan benar.",
-    "Kebutuhan Sarana Prasarana dan Media",
-    "Kertas karton, Gunting, Spidol Warna",
-    "Apersepsi",
-    "guru diharapkan merancang sebuah cerita kontekstual yang menceritakan suatu keadaan dalam sebuah kejadian sederhana.",
-    "Pertanyaan Esensi/Pemantik",
-    "Bisakah kalian menyebutkan harga barang yang dibeli oleh 2 orang anak dalam cerita?",
-    "dapatkah kalian menentukan berapa rupiah yang harus dibayarkan?",
-    "Guru menerangkan sebuah label harga merupakan susunan angka-angka yang membentuk sebuah bilangan cacah 4 angka.",
-  ],
+  kutipan: kutipanLokal("k4b1a-materi-1.ts:3"),
   ketukan: [
     k(
       SUARA_G1,
@@ -228,33 +182,23 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 4. Cerita Helen di minimarket (Buku Siswa hlm. 4) ------------------------------ */
-const SUARA_C1 = "Selamat belajar, anak-anak. Perhatikan cerita ini: Helen dan Ibu pergi ke minimarket. Helen mengantar Ibu untuk membeli bahan baku pembuatan kue.";
-const SUARA_C2 = "Saat berbelanja, Helen meminta dibelikan minuman oleh Ibu seharga enam ribu tujuh ratus lima puluh rupiah.";
+/* ------------------------------ 4. Cerita Upe di minimarket (Buku Siswa hlm. 4) ------------------------------ */
+const SUARA_C1 = "Selamat belajar, anak-anak. Perhatikan cerita ini: Upe dan Ibu pergi ke minimarket. Upe mengantar Ibu untuk membeli bahan baku pembuatan kue.";
+const SUARA_C2 = "Saat berbelanja, Upe meminta dibelikan minuman oleh Ibu seharga enam ribu tujuh ratus lima puluh rupiah.";
 const SUARA_C3 = "Di gambar tampak deretan label harga di rak: sembilan belas ribu rupiah, lima ribu rupiah, dan enam ribu tujuh ratus lima puluh rupiah.";
 const SUARA_C4 = "Sekarang coba jawab: pernahkah kalian mengamati harga di label rak makanan? Ayo, kita cari tahu tentang bilangan empat angka. Mudahkah kalian menemukannya?";
 
 export const ADEGAN_CERITA: AdeganStory = {
   id: "cerita-minimarket",
-  judul: "Helen dan Ibu di minimarket",
+  judul: "Upe dan Ibu di minimarket",
   sumber: "Materi: cerita di minimarket",
   latar: "#FEF3C7",
-  kutipan: [
-    "A. Membaca dan Menulis Bilangan Cacah sampai",
-    "Helen dan Ibu pergi ke minimarket.",
-    "Helen mengantar Ibu untuk membeli bahan baku pembuatan kue.",
-    "Saat berbelanja, Helen meminta dibelikan minuman oleh Ibu seharga Rp6.750,00",
-    "Selain melihat harga minuman, Helen juga melihat sekeliling minimarket.",
-    "Ada banyak deretan harga makanan yang tertera di sana.",
-    "Pernahkan kalian pergi ke minimarket?",
-    "Ayo, kita cari tahu tentang bilangan empat angka.",
-    "Mudahkah kalian menemukannya?",
-  ],
+  kutipan: kutipanLokal("k4b1a-materi-1.ts:4"),
   ketukan: [
     k(
       SUARA_C1,
-      tambah(0, judul("Helen dan Ibu di minimarket")),
-      tambah("Helen", emo("h1", 60, 110, "👧", 34)),
+      tambah(0, judul("Upe dan Ibu di minimarket")),
+      tambah("Upe", emo("h1", 60, 110, "👧", 34)),
       tambah("Ibu", emo("h2", 110, 110, "👩", 34)),
       tambah("minimarket.", emo("h3", 215, 110, "🏪", 44)),
       tambah("membeli", ...kartu("h4", 50, 150, 200, 30, W.emas, ["membeli bahan pembuat kue"], 9.4)),
@@ -262,7 +206,7 @@ export const ADEGAN_CERITA: AdeganStory = {
     k(
       SUARA_C2,
       bersih(0),
-      tambah(0, judul("Minuman pilihan Helen")),
+      tambah(0, judul("Minuman pilihan Upe")),
       tambah("minuman", emo("m1", 70, 110, "🧃", 44)),
       tambah("seharga", ...kartu("m2", 120, 70, 150, 44, W.putih, ["Rp6.750,00"], 15)),
       tambah("enam", teks("m3", 195, 140, "enam ribu tujuh ratus lima puluh rupiah", 8, W.coklat)),

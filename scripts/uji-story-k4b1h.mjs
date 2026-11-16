@@ -4,6 +4,7 @@
 // hitungan mandiri kunci buku (10 kunci), semua persamaan di gambar, pembagian bersusun dihitung ulang dari gambar, jumlah benda (permen, kelereng, wadah, petak), rantai pengurangan,
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b1h.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -325,7 +326,7 @@ for (const [n, p, h] of [...LATIHAN, ...CERITA]) {
 stat.data += LATIHAN.length + CERITA.length;
 sama([G.PERMEN, [...G.WADAH]], [48, [2, 3, 4, 6, 8]], "Aktivitas 5: 48 permen, wadah 2, 3, 4, 6, 8");
 sama(G.WADAH.map((w) => [w, 48 / w, 48 % w]), [[2, 24, 0], [3, 16, 0], [4, 12, 0], [6, 8, 0], [8, 6, 0]], "hitungan mandiri isi tabel Aktivitas 5 (sisa 0 semua)");
-sama([...G.ANAK], ["Andi", "Azizah", "Drio", "Candra"], "empat anak Pak Wicak");
+sama([...G.ANAK], ["Upe", "Wei", "Drio", "Candra"], "empat anak Pak Malosi");
 {
   /** Pembagian bersusun pada gambar: semua angka dihitung ulang dari angka yang dibagi dan pembagi. Keadaan akhir semua ketukan adegan digabung. */
   const gabung = (a) => {
@@ -399,7 +400,7 @@ sama([...G.ANAK], ["Andi", "Azizah", "Drio", "Candra"], "empat anak Pak Wicak");
   sama(nilaiId(pt, "pt3-t0"), "semuanya ada 10 pembagi", "pembagi 48 seluruhnya ada sepuluh");
   // Soal cerita: orang dan benda.
   const cb = T(M, "cerita-bagi", 1);
-  sama([0, 1, 2].filter((i) => objAda(cb, `tg${i}`)).length + (objAda(cb, "pb") ? 1 : 0), 4, "soal b: 3 tetangga + Pak Bejo = 4 pihak");
+  sama([0, 1, 2].filter((i) => objAda(cb, `tg${i}`)).length + (objAda(cb, "pb") ? 1 : 0), 4, "soal b: 3 tetangga + Pak Wei = 4 pihak");
   sama(nilaiId(T(M, "cerita-bagi", 3), "gq"), "55 : 5 = 11", "soal e: 55 : 5 = 11");
   sama([0, 1, 2, 3, 4].map((i) => nilaiId(T(M, "cerita-bagi", 3), `ge${i}-t1`)), ["11", "11", "11", "11", "11"], "soal e: lima orang masing-masing 11");
   sama(hitungBenda(T(M, "cerita-kotak", 0), "ku"), 81, "soal c: 81 kue tergambar");
@@ -515,8 +516,8 @@ sama([...G.ANAK], ["Andi", "Azizah", "Drio", "Candra"], "empat anak Pak Wicak");
       }
     }
     stat.kutipan = n;
-    cek(n >= 70, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 70, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
     // Kunci Panduan Guru nomor 1 dan 2 (dicocokkan dengan hitungan mandiri di atas).
     for (const kunci of ["a. 24 : 2 = 12", "b. 96 : 3 = 32", "c. 96 : 6 = 16", "d. 72 : 3 = 24", "e. 75 : 5 = 15", "jawab: 36 : 2 = 18", "jawab: 64 : 4 = 16", "jawab: 81 : 3 = 27", "jawab: 96 : 8 = 12", "jawab: 55 : 5 = 11"]) cek(guru.includes(kunci), `Panduan Guru memuat kunci "${kunci}"`);
     // Soal Buku Siswa nomor 1 dan 2.
@@ -547,7 +548,7 @@ sama([...G.ANAK], ["Andi", "Azizah", "Drio", "Candra"], "empat anak Pak Wicak");
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b1h-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1h sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b1h-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1h sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

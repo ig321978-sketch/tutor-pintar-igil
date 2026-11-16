@@ -1,9 +1,10 @@
 // Uji Story Kelas 4 Bab 1 Sub-Bab D (Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000): dua video (materi kurikulum dan metode luar) dengan mesin animasi baru.
 // Memeriksa: pemicu kata, sinkron angka suara dan gambar (angka dan bilangan yang diucapkan dengan kata), perubahan gambar tiap ketukan, keunikan antaradegan, batas kanvas,
 // teks bertumpuk, pemisahan materi dan metode luar, tidak membocorkan materi sub-bab lain, kutipan buku terhadap teks PDF (pdftotext, atau PyMuPDF bila tidak ada),
-// angka papan nilai tempat, kartu bagian, deret uang Helen (jumlah dan stok), tukar kelompok, dan ikatan bilangan dihitung ulang dari gambar, hitungan mandiri kunci Panduan Guru,
+// angka papan nilai tempat, kartu bagian, deret uang Malosi (jumlah dan stok), tukar kelompok, dan ikatan bilangan dihitung ulang dari gambar, hitungan mandiri kunci Panduan Guru,
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b1d.mjs
+import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -324,9 +325,9 @@ const utuhKiri = (s) => {
   sama(G.angkaDari(G.URAI_CONTOH), 6849, "hitungan mandiri: 6.000 + 800 + 40 + 9 = 6.849");
   sama(G.angkaDari(G.URAI_NOL), 6035, "hitungan mandiri: 6.000 + 0 + 30 + 5 = 6.035");
   sama(G.URAI_LATIHAN.map((d) => G.angkaDari(d)), [6482, 7020, 2001, 7000, 9999], "Ayo Berlatih nomor 1: 6.482, 7.020, 2.001, 7.000, 9.999");
-  sama(G.UANG_HELEN.map((p) => [...p]), [[100, 4], [500, 2], [1000, 5], [2000, 7]], "uang Helen: 4 x 100, 2 x 500, 5 x 1.000, 7 x 2.000");
-  sama(G.UANG_HELEN.reduce((s, [n, b]) => s + n * b, 0), 20400, "jumlah seluruh uang Helen = 20.400 (cukup untuk 10.000)");
-  sama([G.HARGA_SLAMET, G.BAYAR_SLAMET], [7300, 10000], "Slamet: harga 7.300, bayar 10.000");
+  sama(G.UANG_HELEN.map((p) => [...p]), [[100, 4], [500, 2], [1000, 5], [2000, 7]], "uang Malosi: 4 x 100, 2 x 500, 5 x 1.000, 7 x 2.000");
+  sama(G.UANG_HELEN.reduce((s, [n, b]) => s + n * b, 0), 20400, "jumlah seluruh uang Malosi = 20.400 (cukup untuk 10.000)");
+  sama([G.HARGA_SLAMET, G.BAYAR_SLAMET], [7300, 10000], "Igil: harga 7.300, bayar 10.000");
   // Contoh jawaban Panduan Guru hlm. 48, ditulis ulang mandiri.
   const BUKU_7300 = [[2000, 2000, 2000, 1000, 100, 100, 100], [2000, 2000, 1000, 1000, 1000, 100, 100, 100], [2000, 1000, 1000, 1000, 1000, 1000, 100, 100, 100]];
   const BUKU_10000 = [[2000, 2000, 2000, 2000, 2000], [2000, 2000, 2000, 1000, 1000, 1000, 1000], [2000, 2000, 2000, 2000, 1000, 500, 500]];
@@ -335,9 +336,9 @@ const utuhKiri = (s) => {
   const stok = Object.fromEntries(G.UANG_HELEN.map(([n, b]) => [n, b]));
   const jumlahUang = (u) => u.reduce((s, v) => s + v, 0);
   const dalamStok = (u) => Object.entries(stok).every(([n, b]) => u.filter((v) => v === Number(n)).length <= b) && u.every((v) => stok[v] !== undefined);
-  BUKU_7300.forEach((u, i) => cek(jumlahUang(u) === 7300 && dalamStok(u), `contoh 7.300 nomor ${i + 1}: jumlah 7.300 dan tidak melebihi uang Helen`));
-  BUKU_10000.forEach((u, i) => cek(jumlahUang(u) === 10000 && dalamStok(u), `contoh 10.000 nomor ${i + 1}: jumlah 10.000 dan tidak melebihi uang Helen`));
-  sama(10000 - 7300, 2700, "kembalian Slamet = 2.700 (tambahan video)");
+  BUKU_7300.forEach((u, i) => cek(jumlahUang(u) === 7300 && dalamStok(u), `contoh 7.300 nomor ${i + 1}: jumlah 7.300 dan tidak melebihi uang Malosi`));
+  BUKU_10000.forEach((u, i) => cek(jumlahUang(u) === 10000 && dalamStok(u), `contoh 10.000 nomor ${i + 1}: jumlah 10.000 dan tidak melebihi uang Malosi`));
+  sama(10000 - 7300, 2700, "kembalian Igil = 2.700 (tambahan video)");
 
   /** Kartu "N nama" di papan: kartu ke-i berisi digit papan dan nama tempat. */
   const bagianOk = (objs, idKartu, idPapan) => [0, 1, 2, 3].every((c) => nilaiId(objs, `${idKartu}${c}-t0`) === `${nilaiId(objs, `${idPapan}-dt${c}`)} ${NAMA_TEMPAT[c]}`);
@@ -438,18 +439,18 @@ const utuhKiri = (s) => {
   });
   sama(G.URAI_LATIHAN.map((d) => d.join("")), ["6482", "7020", "2001", "7000", "9999"], "nomor 1: angka tiap baris (kunci Panduan Guru hlm. 47)");
   cek(nilaiId(T(M, "berlatih-satu", 5), "bq") === "9.000 + 900 + 90 + 9 = 9.999", "nomor 1: 9.000 + 900 + 90 + 9 = 9.999");
-  // 9. Uang Helen.
+  // 9. Uang Malosi.
   const hu = T(M, "berlatih-uang", 1);
-  sama([1, 2, 3, 4].map((i) => nilaiId(hu, `h${i}-t0`)), ["4 keping uang Rp100", "2 keping uang Rp500", "5 keping uang Rp1.000", "7 lembar uang Rp2.000"], "uang Helen di gambar sama dengan soal");
-  sama([nilaiId(hu, "sl1-t0"), nilaiId(hu, "sl2-t0")], ["Slamet membeli seharga Rp7.300", "Slamet membayar Rp10.000"], "Slamet: Rp7.300 dan Rp10.000");
+  sama([1, 2, 3, 4].map((i) => nilaiId(hu, `h${i}-t0`)), ["4 keping uang Rp100", "2 keping uang Rp500", "5 keping uang Rp1.000", "7 lembar uang Rp2.000"], "uang Malosi di gambar sama dengan soal");
+  sama([nilaiId(hu, "sl1-t0"), nilaiId(hu, "sl2-t0")], ["Igil membeli seharga Rp7.300", "Igil membayar Rp10.000"], "Igil: Rp7.300 dan Rp10.000");
   const A1 = T(M, "berlatih-uang", 2);
   const A2 = T(M, "berlatih-uang", 3);
   const A3 = T(M, "berlatih-uang", 4);
-  cek(uangOk(A1, "a1", BUKU_7300[0]) && uangOk(A2, "a2", BUKU_7300[1]) && uangOk(A3, "a3", BUKU_7300[2]), "uang Helen 7.300: tiga contoh jawaban Panduan Guru tergambar sama");
-  [[A1, "a1e", BUKU_7300[0]], [A2, "a2e", BUKU_7300[1]], [A3, "a3e", BUKU_7300[2]]].forEach(([o, id, u], i) => sama(nilaiId(o, id), `7.300 = ${u.map(rbk).join(" + ")}`, `uang Helen 7.300: persamaan contoh ${i + 1} cocok dengan uang di gambar`));
+  cek(uangOk(A1, "a1", BUKU_7300[0]) && uangOk(A2, "a2", BUKU_7300[1]) && uangOk(A3, "a3", BUKU_7300[2]), "uang Malosi 7.300: tiga contoh jawaban Panduan Guru tergambar sama");
+  [[A1, "a1e", BUKU_7300[0]], [A2, "a2e", BUKU_7300[1]], [A3, "a3e", BUKU_7300[2]]].forEach(([o, id, u], i) => sama(nilaiId(o, id), `7.300 = ${u.map(rbk).join(" + ")}`, `uang Malosi 7.300: persamaan contoh ${i + 1} cocok dengan uang di gambar`));
   const B3 = T(M, "berlatih-uang", 6);
-  cek(uangOk(B3, "b1", BUKU_10000[0]) && uangOk(B3, "b2", BUKU_10000[1]) && uangOk(B3, "b3", BUKU_10000[2]), "uang Helen 10.000: tiga contoh jawaban Panduan Guru tergambar sama");
-  [["b1e", BUKU_10000[0]], ["b2e", BUKU_10000[1]], ["b3e", BUKU_10000[2]]].forEach(([id, u], i) => sama(nilaiId(B3, id), `10.000 = ${u.map(rbk).join(" + ")}`, `uang Helen 10.000: persamaan contoh ${i + 1} cocok dengan uang di gambar`));
+  cek(uangOk(B3, "b1", BUKU_10000[0]) && uangOk(B3, "b2", BUKU_10000[1]) && uangOk(B3, "b3", BUKU_10000[2]), "uang Malosi 10.000: tiga contoh jawaban Panduan Guru tergambar sama");
+  [["b1e", BUKU_10000[0]], ["b2e", BUKU_10000[1]], ["b3e", BUKU_10000[2]]].forEach(([id, u], i) => sama(nilaiId(B3, id), `10.000 = ${u.map(rbk).join(" + ")}`, `uang Malosi 10.000: persamaan contoh ${i + 1} cocok dengan uang di gambar`));
   const cc = T(M, "berlatih-uang", 7);
   sama([nilaiId(cc, "c1-t0"), nilaiId(cc, "c1-t1"), nilaiId(cc, "c2-t0"), nilaiId(cc, "c2-t1")], ["sepuluh ribu ditulis", "10.000", "satu, titik,", "lalu tiga nol"], "pemeriksaan penulisan: sepuluh ribu ditulis 10.000 (satu, titik, tiga nol)");
   cek(Number("1.0000".replace(/\./g, "")) === 10000 && 10000 === 10 * 1000, "1.0000 dengan titik dibuang tetap 10000 (angka salah ketik titik)");
@@ -521,7 +522,7 @@ const utuhKiri = (s) => {
   };
   cek(uangOk(ft[0], "g1", BUKU_7300[0]) && nilaiId(ft[0], "hl") === "Rp7.300", "luar Flexible Grouping uang: 7.300 awal sama dengan contoh 1 buku");
   cek(uangOk(ft[1], "g2", BUKU_7300[1]) && tukarSatu(BUKU_7300[0], BUKU_7300[1], 2000, [1000, 1000]), "luar Flexible Grouping uang: tukar satu 2.000 dengan dua 1.000 menghasilkan contoh 2 buku");
-  cek(uangOk(ft[2], "g3", BUKU_7300[2]) && tukarSatu(BUKU_7300[1], BUKU_7300[2], 2000, [1000, 1000]) && !objAda(ft[2], "g2-k0"), "luar Flexible Grouping uang: tukar lagi menghasilkan contoh 3 buku (lima 1.000, semua milik Helen)");
+  cek(uangOk(ft[2], "g3", BUKU_7300[2]) && tukarSatu(BUKU_7300[1], BUKU_7300[2], 2000, [1000, 1000]) && !objAda(ft[2], "g2-k0"), "luar Flexible Grouping uang: tukar lagi menghasilkan contoh 3 buku (lima 1.000, semua milik Malosi)");
   cek(uangOk(ft[3], "h2", BUKU_10000[2]) && tukarSatu(BUKU_10000[0], BUKU_10000[2], 2000, [1000, 500, 500]) && !objAda(ft[3], "h1-k0") && nilaiId(ft[3], "hm") === "Rp10.000", "luar Flexible Grouping uang: 5 x 2.000 tukar satu 2.000 dengan 1.000 + 500 + 500 menghasilkan contoh 3 buku");
   cek(2000 === 1000 + 1000 && 2000 === 1000 + 500 + 500, "tukar 2.000 = 1.000 + 1.000 = 1.000 + 500 + 500 (hitungan mandiri)");
   // Number Bonds.
@@ -605,12 +606,12 @@ const utuhKiri = (s) => {
       }
     }
     stat.kutipan = n;
-    cek(n >= 70, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 70, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
     // Soal dan kunci yang dipakai gambar, dibaca ulang dari teks PDF.
-    cek(siswa.includes("4 keping uang rp 100, 2 keping uang rp. 500, 5 keping uang rp 1.000, dan 7 lembar uang rp 2.000"), "Buku Siswa: uang Helen 4 x 100, 2 x 500, 5 x 1.000, 7 x 2.000");
-    cek(/4 keping uang rp100,-, 2 keping uang rp500,-, 5 keping uang rp1\.000,-, dan 7 lembar uang rp2\.000,-/.test(guru), "Panduan Guru: uang Helen sama dengan Buku Siswa");
-    cek(guru.includes("seharga rp7.300,-") && guru.includes("pecahan uang rp10.000,-"), "Panduan Guru: Slamet membeli Rp7.300 dan membayar Rp10.000");
+    cek(siswa.includes("4 keping uang rp 100, 2 keping uang rp. 500, 5 keping uang rp 1.000, dan 7 lembar uang rp 2.000"), "Buku Siswa: uang Malosi 4 x 100, 2 x 500, 5 x 1.000, 7 x 2.000");
+    cek(/4 keping uang rp100,-, 2 keping uang rp500,-, 5 keping uang rp1\.000,-, dan 7 lembar uang rp2\.000,-/.test(guru), "Panduan Guru: uang Malosi sama dengan Buku Siswa");
+    cek(guru.includes("seharga rp7.300,-") && guru.includes("pecahan uang rp10.000,-"), "Panduan Guru: Igil membeli Rp7.300 dan membayar Rp10.000");
     for (const s of [
       "7.300 = 2.000 + 2.000 + 2.000 + 1.000 + 100 + 100 + 100",
       "7.300 = 2.000 + 2.000 + 1.000 + 1.000 + 1.000 + 100 + 100 + 100",
@@ -649,7 +650,7 @@ const utuhKiri = (s) => {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b1d-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1d sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b1d-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1d sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

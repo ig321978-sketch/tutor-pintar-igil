@@ -151,7 +151,7 @@ const semuaTeks = (v) => v.adegan.flatMap((a) => a.ketukan.flatMap((kt, i) => [.
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,yosep-uang,yosep-tabel,komang-uang,jam-soal,jam-cara,uji-angka,uji-pernyataan,uji-pasang", "urutan adegan materi");
   cek(M_VIDEO.adegan[0].id === "sapaan" && U.adegan[0].id === "sapaan", "tiap video dibuka adegan sapaan");
-  for (const kata of ["Yosep", "Komang", "Latihan 1", "Latihan 2", "Uji 1", "Uji 2", "Uji 3", "Uji 4", "Uji 5", "Tantangan", "Renungan", "Hati-hati", "jam tangan", "345\\.600", "623\\.000", "493\\.000", "461\\.800", "327\\.100", "505\\.401", "857\\.259", "550\\.303", "933\\.403", "203\\.035", "354\\.500", "234\\.600", "567\\.000"]) cek(new RegExp(kata).test(materi + semuaTeks(M_VIDEO).join("|")), `video materi memuat ${kata}`);
+  for (const kata of ["Yosep", "Kira", "Latihan 1", "Latihan 2", "Uji 1", "Uji 2", "Uji 3", "Uji 4", "Uji 5", "Tantangan", "Renungan", "Hati-hati", "jam tangan", "345\\.600", "623\\.000", "493\\.000", "461\\.800", "327\\.100", "505\\.401", "857\\.259", "550\\.303", "933\\.403", "203\\.035", "354\\.500", "234\\.600", "567\\.000"]) cek(new RegExp(kata).test(materi + semuaTeks(M_VIDEO).join("|")), `video materi memuat ${kata}`);
   for (const kata of ["Yosep", "345\\.600", "599\\.198", "623\\.000", "327\\.100", "505\\.401", "203\\.035", "493\\.000"]) cek(new RegExp(kata).test(luar + semuaTeks(U).join("|")), `video metode luar memuat contoh ${kata}`);
   const ids = V.VIDEO_LUAR_K5B9C.adegan.map((a) => a.id);
   cek(ids[0] === "sapaan" && ids[1] === "luarc-pembuka" && ids.at(-1) === "luarc-ringkas", "video metode luar: sapaan, pembuka, dan ringkasan");
@@ -200,15 +200,15 @@ const semuaTeks = (v) => v.adegan.flatMap((a) => a.ketukan.flatMap((kt, i) => [.
   }
   cek(L.kataDari(seluruh).join(" ").includes("sembilan ratus ribu tiga puluh tiga ribu empat ratus tiga"), "soal 1b dibacakan: sembilan ratus ribu tiga puluh tiga ribu empat ratus tiga");
 
-  /* Uang Yosep dan Komang (Eksplorasi 9.3A) */
+  /* Uang Yosep dan Kira (Eksplorasi 9.3A) */
   const jumlah = (pasang) => pasang.reduce((n, [nilai, lembar]) => n + nilai * lembar, 0);
   const yosep = jumlah([[100000, 5], [20000, 4], [10000, 3], [5000, 1], [2000, 4]]);
   const komang = jumlah([[100000, 4], [20000, 3], [10000, 2], [5000, 1], [2000, 4]]);
-  sama([yosep, komang, yosep - komang, yosep > komang], [623000, 493000, 130000, true], "uang Yosep dan Komang");
+  sama([yosep, komang, yosep - komang, yosep > komang], [623000, 493000, 130000, true], "uang Yosep dan Kira");
   sama([5 * 100000, 4 * 20000, 3 * 10000, 5000, 4 * 2000, 80000 + 30000, 5000 + 8000], [500000, 80000, 30000, 5000, 8000, 110000, 13000], "nilai tiap kelompok uang Yosep");
-  sama([4 * 100000, 3 * 20000, 2 * 10000, 60000 + 20000, 5000 + 8000], [400000, 60000, 20000, 80000, 13000], "nilai tiap kelompok uang Komang");
+  sama([4 * 100000, 3 * 20000, 2 * 10000, 60000 + 20000, 5000 + 8000], [400000, 60000, 20000, 80000, 13000], "nilai tiap kelompok uang Kira");
   const digit = (n) => String(n).padStart(6, "0").split("");
-  sama([digit(623000).join(""), digit(493000).join("")], ["623000", "493000"], "tabel nilai tempat Yosep dan Komang");
+  sama([digit(623000).join(""), digit(493000).join("")], ["623000", "493000"], "tabel nilai tempat Yosep dan Kira");
 
   /* Jam tangan: tepat empat cara, dicari dengan enumerasi mandiri */
   const DEN = [[100000, 2], [50000, 3], [20000, 4], [10000, 2], [5000, 2], [500, 3], [100, 3]];
@@ -296,7 +296,7 @@ const semuaTeks = (v) => v.adegan.flatMap((a) => a.ketukan.flatMap((kt, i) => [.
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b9c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas k5b9c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b9c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas k5b9c sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

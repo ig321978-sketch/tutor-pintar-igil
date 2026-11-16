@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { EKS, EKS_LAYANG, EKS_SEGITIGA_ATAS, W, dasarEks, emo, hurufEks, judul, kartu, lukis, potong, tabel, teks } from "./k5b5c-gambar";
 import { bersih, hapus, k, redamkan, sorotkan, tambah } from "./k5b5c-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Letak bangun ABCDE (Eksplorasi 5.3) pada gambar: pojok kiri-atas petak (14, 34), 20 piksel per petak. */
 export const OX = 14;
@@ -13,21 +14,7 @@ export const ADEGAN_PEMBUKA_C: AdeganStory = {
   judul: "Pembuka Subbab C: pengalaman belajar dan sarana",
   sumber: "Buku Siswa hlm. 158; Panduan Guru hlm. 228",
   latar: "#FFF7ED",
-  kutipan: [
-    "C. Luas Daerah Bangun Gabungan",
-    "peserta didik diberi pengalaman belajar berupa eksplorasi",
-    "cara menghitung luas daerah bangun gabungan",
-    "melakukan dekomposisi daerah bangun gabungan melalui berbagai",
-    "menemukan",
-    "ukuran-ukuran yang mungkin tidak langsung diketahui",
-    "menentukan",
-    "luas daerah seluruhnya",
-    "Alat tulis: pulpen, pensil, penggaris, spidol",
-    "Kertas berpetak",
-    "LCD Projector dan Power Point Presentation Slide",
-    "ditempel",
-    "di papan tulis",
-  ],
+  kutipan: kutipanLokal("k5b5c-materi-1.ts:1"),
   ketukan: [
     k(
       "Selamat datang di Subbab C, Luas Daerah Bangun Gabungan. Di sini kita menghitung luas bangun yang tersusun dari beberapa bangun datar.",
@@ -89,11 +76,7 @@ export const ADEGAN_INGAT_RUMUS: AdeganStory = {
   judul: "Apersepsi: rumus luas bangun datar sebagai bekal",
   sumber: "Panduan Guru hlm. 228; rumus dari Subbab A dan B",
   latar: "#F0F9FF",
-  kutipan: [
-    "Untuk dapat mempelajari materi pada subbab ini dengan optimal",
-    "hendaknya sudah mampu menentukan luas berbagai daerah bangun datar",
-    "tanya jawab berkaitan dengan cara menghitung luas berbagai daerah bangun datar",
-  ],
+  kutipan: kutipanLokal("k5b5c-materi-1.ts:2"),
   ketukan: [
     k(
       "Supaya belajar subbab ini optimal, kalian hendaknya sudah mampu menghitung luas berbagai bangun datar. Guru mengawali dengan tanya jawab tentang rumus-rumusnya.",
@@ -133,22 +116,7 @@ export const ADEGAN_EKSPLORASI: AdeganStory = {
   judul: "Bangun gabungan dan cara memecahnya",
   sumber: "Materi: bangun gabungan dan cara memecahnya",
   latar: "#F0FDF4",
-  kutipan: [
-    "Eksplorasi 5.3",
-    "Ayo Menemukan Luas Daerah Bangun Gabungan",
-    "Kalian sudah belajar menemukan luas daerah berbagai macam",
-    "Bagaimana dengan bangun berikut? Bagaimanakah cara mencari",
-    "luasnya?",
-    "Guru mengajak peserta",
-    "mengamati",
-    "bangun gabungan",
-    "secara berpasangan",
-    "mendekomposisi bangun",
-    "gabungan ke dalam bangun-bangun penyusunnya",
-    "guru memeriksa",
-    "peserta didik mencermati dua cara dekomposisi di",
-    "buku siswa",
-  ],
+  kutipan: kutipanLokal("k5b5c-materi-1.ts:3"),
   ketukan: [
     k(
       "Perhatikan bangun yang tersusun dari beberapa bangun datar ini. Bangun seperti ini kita sebut bangun gabungan. Sekarang kita belajar menemukan luas daerahnya.",
@@ -178,42 +146,25 @@ export const ADEGAN_EKSPLORASI: AdeganStory = {
       tambah("Jawabannya", ...kartu("jb", 166, 112, 126, 26, W.krem, ["jawaban boleh berbeda"], 8.2)),
     ),
     k(
-      "Kalau belum ada ide, kita perhatikan dua cara memecah bangun ini. Pertama cara Yohana, lalu cara Komang.",
+      "Kalau belum ada ide, kita perhatikan dua cara memecah bangun ini. Pertama cara Upe, lalu cara Wei.",
       hapus(0, "ps", "ps-t", "jb-k", "jb-t0"),
-      tambah("Yohana", ...kartu("cy", 14, 140, 134, 30, W.hijauMuda, ["Cara Yohana"], 9.6)),
-      tambah("Komang.", ...kartu("ck", 152, 140, 134, 30, W.langit, ["Cara Komang"], 9.6)),
+      tambah("Upe", ...kartu("cy", 14, 140, 134, 30, W.hijauMuda, ["Cara Upe"], 9.6)),
+      tambah("Wei.", ...kartu("ck", 152, 140, 134, 30, W.langit, ["Cara Wei"], 9.6)),
     ),
   ],
 };
 
-/* ------------------------------ 4. Cara Yohana: layang-layang dan segitiga (hlm. 158-159; Panduan Guru hlm. 230-231) ------------------------------ */
+/* ------------------------------ 4. Cara Upe: layang-layang dan segitiga (hlm. 158-159; Panduan Guru hlm. 230-231) ------------------------------ */
 export const ADEGAN_CARA_YOHANA: AdeganStory = {
   id: "cara-yohana",
-  judul: "Cara Yohana: layang-layang dan segitiga",
-  sumber: "Materi: cara Yohana memecah bangun",
+  judul: "Cara Upe: layang-layang dan segitiga",
+  sumber: "Materi: cara Upe memecah bangun",
   latar: "#EFF6FF",
-  kutipan: [
-    "Cara Yohana",
-    "Aku membagi",
-    "bangun tersebut",
-    "menjadi 2, yaitu",
-    "layang-layang dan",
-    "segitiga",
-    "Luas daerah layang-layang",
-    "Luas daerah segitiga",
-    "Luas daerah bangun gabungan",
-    "luas daerah layang-layang +",
-    "luas daerah segitiga",
-    "satuan luas",
-    "Dengan memperhatikan",
-    "cara Yohana dan cara",
-    "Komang, peserta didik",
-    "diminta menghitung luas",
-  ],
+  kutipan: kutipanLokal("k5b5c-materi-1.ts:4"),
   ketukan: [
     k(
-      "Cara Yohana: bangun dibagi menjadi dua, yaitu layang-layang dan segitiga.",
-      tambah(0, judul("Cara Yohana", W.hijau)),
+      "Cara Upe: bangun dibagi menjadi dua, yaitu layang-layang dan segitiga.",
+      tambah(0, judul("Cara Upe", W.hijau)),
       tambah(0, ...dasarEks("e", OX, OY, S)),
       tambah("layang-layang", lukis("yl", OX, OY, S, EKS_LAYANG, W.langit, W.oranye)),
       tambah("segitiga.", lukis("ys", OX, OY, S, EKS_SEGITIGA_ATAS, W.krem, W.oranye)),

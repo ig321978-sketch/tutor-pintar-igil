@@ -109,7 +109,7 @@ export const ADEGAN_LUAR_KEPUTUSAN: AdeganStory = {
       tambah("pilih", teks("r4", 223, 170, "putuskan sesuai angka", 8.4, W.ungu)),
     ),
     k(
-      "Perhatikan juga perubahan dari hari ke hari, bukan hanya jumlah akhir, seperti turunnya donat kacang dan naiknya donat cokelat pada catatan Anggi.",
+      "Perhatikan juga perubahan dari hari ke hari, bukan hanya jumlah akhir, seperti turunnya donat kacang dan naiknya donat cokelat pada catatan Wei.",
       bersih(0),
       tambah(0, judul("lihat juga perubahannya")),
       tambah("turunnya", emo("tn", 80, 80, "📉", 40), teks("tnt", 80, 112, "donat kacang turun", 9, W.merah)),
@@ -118,7 +118,7 @@ export const ADEGAN_LUAR_KEPUTUSAN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ LB4. Data-to-Decision Reading: penerapan pada donat Anggi ------------------------------ */
+/* ------------------------------ LB4. Data-to-Decision Reading: penerapan pada donat Wei ------------------------------ */
 const DONAT: [string, number[]][] = [
   ["cokelat", [3, 4, 5, 5, 6, 7]],
   ["keju", [6, 4, 3, 4, 3, 5]],
@@ -134,13 +134,13 @@ const hasilDonat = (i: number) => teks(`dr${i}-h`, 250, 42 + i * 20 + 4, String(
 
 export const ADEGAN_LUAR_KEPUTUSAN_TERAPAN: AdeganStory = {
   id: "luar-keputusan-terapan",
-  judul: "Data-to-Decision Reading: penerapan pada donat Anggi",
-  sumber: "Metode luar 4: penerapan pada donat Anggi",
+  judul: "Data-to-Decision Reading: penerapan pada donat Wei",
+  sumber: "Metode luar 4: penerapan pada donat Wei",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Terapkan pada donat Anggi. Jumlahkan tiap rasa selama enam hari. Cokelat: tiga ditambah empat ditambah lima ditambah lima ditambah enam ditambah tujuh adalah tiga puluh.",
-      tambah(0, judul("donat Anggi, enam hari")),
+      "Terapkan pada donat Wei. Jumlahkan tiap rasa selama enam hari. Cokelat: tiga ditambah empat ditambah lima ditambah lima ditambah enam ditambah tujuh adalah tiga puluh.",
+      tambah(0, judul("donat Wei, enam hari")),
       tambah("Terapkan", ...[0, 1, 2, 3].flatMap(barisDonat)),
       tambah("Cokelat:", teks("sc", 150, 136, "3 + 4 + 5 + 5 + 6 + 7 = 30", 8.8, W.ungu), hasilDonat(0)),
     ),
@@ -155,7 +155,7 @@ export const ADEGAN_LUAR_KEPUTUSAN_TERAPAN: AdeganStory = {
       tambah("Jumlah", teks("st", 150, 192, "30 + 25 + 26 + 10 = 91", 9.4, W.hijau)),
     ),
     k(
-      "Terbanyak: cokelat tiga puluh. Tersedikit: kacang sepuluh. Selisih keduanya dua puluh. Keputusan Anggi sesuai data: tambah cokelat, hentikan kacang.",
+      "Terbanyak: cokelat tiga puluh. Tersedikit: kacang sepuluh. Selisih keduanya dua puluh. Keputusan Wei sesuai data: tambah cokelat, hentikan kacang.",
       hapus(0, "sc", "sk", "ss", "sn", "st"),
       sorotkan("Terbanyak:", "dr0-h", "dr0-n"),
       sorotkan("Tersedikit:", "dr3-h", "dr3-n"),

@@ -1,37 +1,25 @@
 import type { AdeganStory } from "./logika-story";
 import { W, balon, emo, frac, garis, judul, kartu, kotak, panah, teks, tangki } from "./k6b1a-gambar";
 import { bersih, k, tambah, warnai } from "./k6b1a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
-/* ------------------------------ 1. Pembuka bab: Agam, Ayah, dan penampungan air (hlm. 1 sampai 3) ------------------------------ */
+/* ------------------------------ 1. Pembuka bab: Wei, Ayah, dan penampungan air (hlm. 1 sampai 3) ------------------------------ */
 export const ADEGAN_PEMBUKA: AdeganStory = {
   id: "pembuka-air",
-  judul: "Pembuka Bab: Agam dan penampungan air",
+  judul: "Pembuka Bab: Wei dan penampungan air",
   sumber: "Buku Siswa hlm. 1–3",
   latar: "#ECFEFF",
-  kutipan: [
-    "Pecahan dan Desimal",
-    "Agam menghampiri ayahnya yang sedang mengambil air di penampungan",
-    "air untuk menyirami tanaman di kebunnya",
-    "Tapi apakah persediaan air di",
-    "Sekarang kan masih",
-    "musim kemarau",
-    "Wah syukurlah",
-    "Seratus",
-    "Ini juga sudah Agam",
-    "Namanya pembagian",
-    "membuang-buang air karena",
-    "Agam akan menggunakan",
-  ],
+  kutipan: kutipanLokal("k6b1a-materi-1.ts:1"),
   ketukan: [
     k(
-      "Bab 1 Pecahan dan Desimal dimulai di kebun. Agam menghampiri Ayah yang sedang mengambil air di penampungan untuk menyirami tanaman.",
+      "Bab 1 Pecahan dan Desimal dimulai di kebun. Wei menghampiri Ayah yang sedang mengambil air di penampungan untuk menyirami tanaman.",
       tambah(0, judul("Bab 1 Pecahan dan Desimal")),
-      tambah("Agam", emo("ag", 50, 168, "👦", 32), teks("agt", 50, 184, "Agam", 8)),
+      tambah("Wei", emo("ag", 50, 168, "👦", 32), teks("agt", 50, 184, "Wei", 8)),
       tambah("Ayah", emo("ay", 252, 168, "👨", 32), teks("ayt", 252, 184, "Ayah", 8)),
       tambah("penampungan", tangki("tk", 112, 44, 76, 100, 3, 0), teks("tkt", 150, 160, "penampungan air", 9, W.hijau)),
     ),
     k(
-      "Agam bertanya apakah air masih banyak, sebab sekarang musim kemarau. Ayah menjawab, air masih cukup untuk hari ini.",
+      "Wei bertanya apakah air masih banyak, sebab sekarang musim kemarau. Ayah menjawab, air masih cukup untuk hari ini.",
       tambah("bertanya", balon("bg", 62, 62, ["air masih banyak,", "Yah?"], 92, W.putih, 7.2)),
       tambah("kemarau", emo("mt", 262, 58, "☀", 30, { warna: W.emas })),
       tambah("menjawab", balon("by", 242, 100, ["masih cukup", "untuk hari ini"], 84, W.krem, 7.2)),
@@ -53,7 +41,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("sisa", frac("f23", 205, 150, 2, 3, 17, W.biru)),
     ),
     k(
-      "Agam menjawab, satu per lima dari dua per tiga bagian. Ayah memuji, seratus untuk Agam.",
+      "Wei menjawab, satu per lima dari dua per tiga bagian. Ayah memuji, seratus untuk Wei.",
       bersih(0),
       tambah(0, emo("ag", 52, 120, "👦", 34), balon("bg", 150, 28, ["satu per lima dari", "dua per tiga bagian"], 150, W.putih, 7.4)),
       tambah("menjawab", emo("bk", 250, 80, "📘", 30), teks("bkt", 250, 98, "perkalian pecahan", 8)),
@@ -68,7 +56,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("berapa", teks("tn", 150, 192, "setiap hari berapa bagian?", 9, W.merah)),
     ),
     k(
-      "Agam menjawab, tinggal dibagi 2 karena dipakai 2 hari. Itu pembagian pecahan, yang kita pelajari di Subbab B.",
+      "Wei menjawab, tinggal dibagi 2 karena dipakai 2 hari. Itu pembagian pecahan, yang kita pelajari di Subbab B.",
       bersih(0),
       tambah(0, emo("ag", 46, 150, "👦", 32)),
       tambah("dibagi", ...frac("f23", 120, 90, 2, 3, 20, W.biru), teks("bg2", 164, 96, "dibagi 2", 13, W.merah)),
@@ -76,15 +64,15 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("Subbab", teks("sb", 165, 192, "dipelajari di Subbab B", 8.6, W.ungu)),
     ),
     k(
-      "Ayah mengingatkan, pakai air seperlunya sebab daerah lain kekurangan air. Agam berjanji memakai air dengan bijak.",
+      "Ayah mengingatkan, pakai air seperlunya sebab daerah lain kekurangan air. Wei berjanji memakai air dengan bijak.",
       bersih(0),
       tambah(0, judul("hemat air")),
       tambah("air", emo("tt", 150, 100, "💧", 44)),
       tambah("daerah", emo("ds", 60, 146, "🌍", 32), teks("dst", 60, 166, "daerah kekurangan air", 7.4)),
-      tambah("berjanji", emo("ag", 246, 146, "👦", 32), balon("bj", 240, 46, ["Agam akan", "memakai air", "dengan bijak"], 90, W.putih, 7)),
+      tambah("berjanji", emo("ag", 246, 146, "👦", 32), balon("bj", 240, 46, ["Wei akan", "memakai air", "dengan bijak"], 90, W.putih, 7)),
     ),
     k(
-      "Kita mulai dari perkalian bilangan asli dengan pecahan, bersama kebun Agam.",
+      "Kita mulai dari perkalian bilangan asli dengan pecahan, bersama kebun Wei.",
       bersih(0),
       tambah(0, judul("Subbab A: Perkalian Pecahan")),
       tambah("perkalian", emo("kb", 150, 96, "🌱", 40)),
@@ -106,19 +94,7 @@ export const ADEGAN_TUJUAN: AdeganStory = {
   judul: "Gambar 1.1, tujuan, pertanyaan pemantik, kata kunci, peta konsep",
   sumber: "Buku Siswa hlm. 4–5",
   latar: "#FFF7ED",
-  kutipan: [
-    "Gambar 1.1 Pecahan dan Desimal dalam Kehidupan Sehari-hari",
-    "memahami perkalian pecahan dengan bilangan asli dan menghitung",
-    "memahami pembagian pecahan dengan bilangan asli, dan menghitung",
-    "mengubah pecahan menjadi desimal, serta membandingkan dan",
-    "mengurutkan bilangan desimal (satu angka di belakang koma)",
-    "Bagaimana mengalikan pecahan dengan bilangan asli dan sebaliknya?",
-    "Bagaimana cara membagi pecahan dengan bilangan asli dan sebaliknya?",
-    "Bagaimana mengubah bentuk pecahan menjadi desimal dan sebaliknya?",
-    "Pecahan, desimal, perkalian pecahan, pembagian pecahan, bilangan",
-    "Peta Konsep",
-    "Bentuk Bilangan",
-  ],
+  kutipan: kutipanLokal("k6b1a-materi-1.ts:2"),
   ketukan: [
     k(
       "Gambar 1.1 menunjukkan pecahan dan desimal dalam kehidupan sehari-hari. Ada timbangan, label diskon setengah, kue yang dipotong, dan kemasan dengan informasi nilai gizi.",
@@ -181,19 +157,7 @@ export const ADEGAN_MENGINGAT: AdeganStory = {
   judul: "Ayo Mengingat Kembali",
   sumber: "Buku Siswa hlm. 5–6",
   latar: "#FDF2F8",
-  kutipan: [
-    "Ayo Mengingat Kembali",
-    "Perkalian dua bilangan asli",
-    "Perhatikan beberapa kantong permen berikut ini",
-    "Berapakah banyak permen seluruhnya",
-    "Pembagian dua bilangan asli",
-    "Terdapat 20 permen yang akan dibagikan kepada 5 orang anak",
-    "Berapa banyak permen yang diperoleh setiap anak",
-    "Pecahan sebagai bagian dari keseluruhan",
-    "Gambar yang manakah yang",
-    "Bagian pizza yang dilingkari",
-    "Bagian jeruk yang diberi tanda",
-  ],
+  kutipan: kutipanLokal("k6b1a-materi-1.ts:3"),
   ketukan: [
     k(
       "Ayo mengingat kembali. Ada 4 kantong permen, tiap kantong berisi 6 permen. Berapa permen seluruhnya?",

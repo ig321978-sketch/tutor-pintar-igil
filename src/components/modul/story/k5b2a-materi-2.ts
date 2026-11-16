@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, angkaPemain, emo, kartu, panah, ringPemain, teks, titikRing, judul } from "./k5b2a-gambar";
 import { bersih, k, redamkan, sebar, tambah, ubah } from "./k5b2a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /** Lingkaran pemain Tepuk Bilangan Kelipatan: delapan pemain, pusat (150, 112), jari-jari 52. */
 export const RING = { cx: 150, cy: 112, r: 52, jumlah: 8, rp: 11 };
@@ -34,17 +35,7 @@ export const ADEGAN_ATURAN: AdeganStory = {
   judul: "Permainan: aturan Tepuk Bilangan Kelipatan",
   sumber: "Materi: aturan Tepuk Bilangan Kelipatan",
   latar: "#FEFCE8",
-  kutipan: [
-    "A. Kelipatan",
-    "Eksplorasi 2.1",
-    "Ayo Bermain",
-    "Aturan mainnya sebagai berikut.",
-    "1. Buatlah kelompok besar dengan anggota paling sedikit 8 orang.",
-    "2. Atur duduk kalian membentuk lingkaran.",
-    "4. Tentukan salah satu peserta sebagai orang pertama yang akan memulai menyebutkan bilangan.",
-    "Sebutkan bilangan secara berurutan, mulai dari orang pertama menyebut satu bilangan, misalnya 3, dan dilanjutkan oleh orang di sebelah kanan atau kirinya, dan seterusnya.",
-    "Kegiatan eksplorasi pada bab ini akan banyak disajikan menggunakan permainan.",
-  ],
+  kutipan: kutipanLokal("k5b2a-materi-2.ts:1"),
   ketukan: [
     k(
       "Sekarang kita bermain Tepuk Bilangan Kelipatan. Permainan ini melatih kita menyebut kelipatan dengan cepat dan tepat.",
@@ -85,26 +76,15 @@ export const ADEGAN_ATURAN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 6. Aturan enam sampai delapan dan cerita Asep (Buku Siswa hlm. 34) ------------------------------ */
+/* ------------------------------ 6. Aturan enam sampai delapan dan cerita Igil (Buku Siswa hlm. 34) ------------------------------ */
 const SUARA_L1 = "Aturan enam: setiap orang menyebutkan bilangan kelipatan tiga secara berurutan, yaitu tiga, enam, sembilan, dan seterusnya.";
 
 export const ADEGAN_LANJUT: AdeganStory = {
   id: "tepuk-lanjut",
-  judul: "Tepuk Bilangan Kelipatan: berurutan, putaran kedua, dan cerita Asep",
-  sumber: "Materi: tepuk berurutan dan cerita Asep",
+  judul: "Tepuk Bilangan Kelipatan: berurutan, putaran kedua, dan cerita Igil",
+  sumber: "Materi: tepuk berurutan dan cerita Igil",
   latar: "#FEFCE8",
-  kutipan: [
-    "kelipatan 3 secara berurutan, misalnya 3, 6, 9, dan seterusnya.",
-    "7. Jika sudah selesai satu putaran, kalian boleh tetap menyebutkan bilangan selanjutnya.",
-    "8. Kalian boleh melanjutkan permainan dengan kelipatan bilangan yang lain.",
-    "Bagaimana pengalaman",
-    "teman-teman bermain",
-    "Saat kami menyebutkan bilangan dengan cepat, Asep melakukan kesalahan.",
-    "Iya. Itu karena aku tidak fokus dan kurang konsentrasi.",
-    "Harusnya aku bertepuk tangan dan diam,",
-    "dengan sangat lantang.",
-    "Apakah anggota kelompok teman-teman ada juga yang melakukan kesalahan seperti kami?",
-  ],
+  kutipan: kutipanLokal("k5b2a-materi-2.ts:2"),
   ketukan: [
     k(
       SUARA_L1,
@@ -133,24 +113,24 @@ export const ADEGAN_LANJUT: AdeganStory = {
       tambah("kelipatan", emo("ul", 150, 150, "🔁", 34)),
     ),
     k(
-      "Sekarang dengarkan cerita Asep. Seorang teman bertanya tentang pengalaman bermain, lalu bercerita bahwa saat bilangan disebut cepat, Asep melakukan kesalahan.",
+      "Sekarang dengarkan cerita Igil. Seorang teman bertanya tentang pengalaman bermain, lalu bercerita bahwa saat bilangan disebut cepat, Igil melakukan kesalahan.",
       bersih(0),
-      tambah(0, judul("Cerita Asep")),
+      tambah(0, judul("Cerita Igil")),
       tambah("bertanya", ...kartu("b1", 14, 32, 272, 44, W.langit, ["Bagaimana pengalaman bermain", "Tepuk Bilangan Kelipatan?"], 9)),
-      tambah("bercerita", ...kartu("b2", 14, 88, 272, 44, W.krem, ["Saat bilangan disebut cepat,", "Asep melakukan kesalahan."], 9)),
-      tambah("Asep", emo("as", 150, 168, "😅", 36)),
+      tambah("bercerita", ...kartu("b2", 14, 88, 272, 44, W.krem, ["Saat bilangan disebut cepat,", "Igil melakukan kesalahan."], 9)),
+      tambah("Igil", emo("as", 150, 168, "😅", 36)),
     ),
     k(
-      "Asep menjawab, ia tidak fokus dan kurang konsentrasi. Seharusnya ia bertepuk tangan dan diam, tetapi ia malah menyebut enam dengan sangat lantang.",
+      "Igil menjawab, ia tidak fokus dan kurang konsentrasi. Seharusnya ia bertepuk tangan dan diam, tetapi ia malah menyebut enam dengan sangat lantang.",
       bersih(0),
-      tambah(0, judul("Jawaban Asep")),
+      tambah(0, judul("Jawaban Igil")),
       tambah("fokus", ...kartu("a1", 14, 32, 272, 30, W.merahMuda, ["tidak fokus, kurang konsentrasi"], 9.4)),
       tambah("bertepuk", ...kartu("a2", 14, 72, 272, 34, W.hijauMuda, ["Seharusnya: tepuk tangan dan diam"], 9.4), emo("tg", 40, 140, "👏", 26)),
       tambah("malah", ...kartu("a3", 14, 116, 272, 34, W.merahMuda, ["Yang terjadi: menyebut enam!"], 9.4)),
       tambah("lantang.", teks("la6", 220, 178, "6!", 34, W.merah)),
     ),
     k(
-      "Coba kalian ingat, adakah anggota kelompokmu yang melakukan kesalahan seperti Asep? Hati-hati, sepakati dulu aturannya sebelum bermain: menyebut bilangan, atau bertepuk tangan dan diam.",
+      "Coba kalian ingat, adakah anggota kelompokmu yang melakukan kesalahan seperti Igil? Hati-hati, sepakati dulu aturannya sebelum bermain: menyebut bilangan, atau bertepuk tangan dan diam.",
       bersih(0),
       tambah(0, judul("Hati-hati")),
       tambah("Coba", emo("tn", 262, 50, "❓", 24)),
@@ -169,17 +149,7 @@ export const ADEGAN_PANDUAN: AdeganStory = {
   judul: "Panduan Guru: persiapan, pertanyaan pemantik, respons, dan catatan permainan",
   sumber: "Panduan Guru hlm. 49–50",
   latar: "#F0FDF4",
-  kutipan: [
-    "Persiapan yang perlu dilakukan oleh guru sebelum memulai kegiatan eksplorasi",
-    "Bentuk kelompok besar dengan anggota 8 orang atau lebih.",
-    "Setiap kelompok membentuk lingkaran.",
-    "Catatan tambahan untuk guru terkait permainan tepuk bilangan kelipatan.",
-    "Agar permainan makin menarik, pemain yang salah menyebutkan bilangan atau tidak melakukan tepuk tangan karena mendapatkan jatah bilangan kelipatan, tidak boleh melanjutkan permainan.",
-    "Pemenang permainan adalah peserta yang paling lama bertahan dalam permainan.",
-    "Tepuk bilangan kelipatan divariasi dengan beberapa bilangan lain.",
-    "Permainan dilakukan selama 1 jam pelajaran.",
-    "Harapannya, peserta didik dapat menyebutkan kesimpulan tentang kelipatan suatu bilangan.",
-  ],
+  kutipan: kutipanLokal("k5b2a-materi-2.ts:3"),
   ketukan: [
     k(
       "Panduan guru menyiapkan permainan: bentuk kelompok besar dengan delapan anggota atau lebih, tiap kelompok membentuk lingkaran, dan permainan terus berlanjut walau semua anggota sudah menyebut bilangan sekali.",

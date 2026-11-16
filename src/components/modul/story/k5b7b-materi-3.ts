@@ -2,6 +2,7 @@ import type { AdeganStory, Obj } from "./logika-story";
 import { BENTUK, W, antara, bangun, centangBaris, huruf, jalur, kartu, kotak, panah, panelCiri, poli, rumusBangun, sama, tanda, teks, titikSudut } from "./k5b7b-gambar";
 import type { JenisBangun } from "./k5b7b-gambar";
 import { bersih, hapus, k, tambah } from "./k5b7b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const KIRI = { cx: 62, cy: 102, s: 22 };
 const PX = 118;
@@ -28,7 +29,7 @@ export const ADEGAN_PERSEGI: AdeganStory = {
   judul: "Persegi dibandingkan dengan belah ketupat dan persegi panjang",
   sumber: "Materi: persegi dan golongannya",
   latar: "#F0FDF4",
-  kutipan: ["Ayo Mengingat Kembali Persegi", "Semua sisinya", "Mempunyai 4", "Sudut-sudutnya", "Apakah sisi-sisi persegi sama panjang", "Apakah A = C", "Apakah diagonal-diagonal persegi", "Persegi adalah belah ketupat yang salah satu", "Persegi adalah persegi panjang yang sisi-sisi", "berurutan sama panjang"],
+  kutipan: kutipanLokal("k5b7b-materi-3.ts:1"),
   ketukan: [
     k(
       "Sekarang kita mengingat kembali persegi. Cirinya: sisi berhadapan sejajar, semua sisi sama panjang, semua sudut siku-siku, empat sumbu simetri, dan diagonal sama panjang serta tegak lurus.",
@@ -108,7 +109,7 @@ export const ADEGAN_LAYANG: AdeganStory = {
   judul: "Layang-layang dibandingkan dengan belah ketupat",
   sumber: "Materi: layang-layang dan belah ketupat",
   latar: "#FEF2F2",
-  kutipan: ["Ayo Mengingat Kembali Layang-Layang", "memiliki 2 pasang", "sisi berurutan sama", "Garis lipatan yang dihasilkan tersebut dinamakan sumbu simetri", "Layang-layang adalah segiempat yang salah satu", "diagonalnya merupakan sumbu simetri", "digolongkan sebagai layang-", "Belah ketupat adalah layang-layang yang semua", "diagonalnya merupakan sumbu simetri"],
+  kutipan: kutipanLokal("k5b7b-materi-3.ts:2"),
   ketukan: [
     k(
       "Sekarang kita mengingat kembali layang-layang. Cirinya: dua pasang sisi berurutan sama panjang, sepasang sudut sama besar, diagonal berpotongan tegak lurus, dan salah satu diagonalnya sumbu simetri.",
@@ -179,7 +180,7 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   judul: "Renungan dan hati-hati: membandingkan segi empat",
   sumber: "Materi: renungan dan hati-hati",
   latar: "#EEF2FF",
-  kutipan: ["Aku bisa membandingkan ciri-ciri trapesium dan", "Aku bisa membandingkan ciri-ciri persegi panjang", "Aku bisa membandingkan ciri-ciri belah ketupat dan", "Aku bisa membandingkan ciri-ciri persegi dengan", "Aku bisa membandingkan ciri-ciri layang-layang dan", "Miskonsepsi", "terbolak-balik", "alat peraga individual"],
+  kutipan: kutipanLokal("k5b7b-materi-3.ts:3"),
   ketukan: [
     k(
       "Mari kita renungkan sebentar. Tanyakan pada dirimu: dapatkah aku membandingkan trapesium dengan jajargenjang, persegi panjang dengan jajargenjang, belah ketupat dengan jajargenjang, persegi dengan belah ketupat, dan layang-layang dengan belah ketupat?",
@@ -238,7 +239,7 @@ export const ADEGAN_UJI: AdeganStory = {
   judul: "Uji benar atau salah dan tantangan",
   sumber: "Materi: uji dan tantangan",
   latar: "#FFFBEB",
-  kutipan: ["Uji Kompetensi", "Benar atau salahkah pernyataan-pernyataan berikut ini", "Aku dapat membuat bentuk segitiga", "5 cm, 7 cm, dan 1 cm", "Besar tiga sudut dalam segitiga jika", "Segitiga sama sisi juga dapat digolongkan", "Jajargenjang merupakan trapesium sama", "Persegi panjang adalah jajargenjang yang", "Belah ketupat dapat digolongkan sebagai", "Persegi tidak dapat disebut persegi panjang", "Persegi bukan belah ketupat", "Salah satu diagonal pada layang-layang", "Soal Pengayaan", "Memiliki 2 sudut yang besarnya", "Jajargenjang", "Trapesium sama kaki"],
+  kutipan: kutipanLokal("k5b7b-materi-3.ts:4"),
   ketukan: [
     k(
       "Sekarang saatnya uji. Ada sepuluh pernyataan benar atau salah. Jawab semuanya, lalu kita periksa bersama.",

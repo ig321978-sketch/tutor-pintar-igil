@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bacaanDua, digit, emo, judul, kartu, kartuAngka, lemari, panah, tabelNilai, teks } from "./k5b9a-gambar";
 import { bersih, hapus, k, tambah, ubah, warnai } from "./k5b9a-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 4. Eksplorasi 9.1A: lemari Jepara 979.875 (hlm. 276 dan 277) ------------------------------ */
 export const ADEGAN_EKSPLORASI91A: AdeganStory = {
@@ -8,30 +9,18 @@ export const ADEGAN_EKSPLORASI91A: AdeganStory = {
   judul: "Lemari Jepara: membaca 979.875",
   sumber: "Materi: harga lemari Jepara",
   latar: "#FEF3C7",
-  kutipan: [
-    "Eksplorasi 9.1A",
-    "Pada hari Minggu, Nisa mengantar Ibu membeli lemari di Jepara",
-    "terkenal dengan produksi mebel",
-    "Lemari yang dipilih Nisa seharga Rp979.875,00",
-    "sembilan ratus tujuh puluh sembilan ribu delapan",
-    "ratus tujuh puluh lima rupiah",
-    "Gambar 9.2 Lemari Jepara",
-    "Berapa harga lemari yang hendak dibeli Ibu dan Nisa?",
-    "Bacalah dan tuliskan pada kolom di bawah ini",
-    "Setelah itu, tuliskan dalam tabel berikut",
-    "Ratus Ribuan Puluh Ribuan Ribuan Ratusan Puluhan Satuan",
-  ],
+  kutipan: kutipanLokal("k5b9a-materi-2.ts:1"),
   ketukan: [
     k(
-      "Sekarang kita belajar dari sebuah cerita. Pada hari Minggu, Nisa mengantar Ibu membeli lemari di Jepara, kota mebel di Jawa Tengah.",
+      "Sekarang kita belajar dari sebuah cerita. Pada hari Minggu, Malosi mengantar Ibu membeli lemari di Jepara, kota mebel di Jawa Tengah.",
       tambah(0, judul("Lemari Jepara")),
-      tambah("Nisa", emo("ni", 40, 140, "👧", 34), teks("nit", 40, 160, "Nisa", 8.6)),
+      tambah("Malosi", emo("ni", 40, 140, "👧", 34), teks("nit", 40, 160, "Malosi", 8.6)),
       tambah("Ibu", emo("ib", 260, 140, "👩", 34), teks("ibt", 260, 160, "Ibu", 8.6)),
       tambah("lemari", ...lemari("lm", 100, 38, 1.2)),
       tambah("Jepara,", teks("jp", 150, 188, "Jepara, Jawa Tengah", 10, W.hijau)),
     ),
     k(
-      "Lemari yang dipilih Nisa seharga sembilan ratus tujuh puluh sembilan ribu delapan ratus tujuh puluh lima rupiah. Pertanyaan pertama menanyakan harga lemari itu.",
+      "Lemari yang dipilih Malosi seharga sembilan ratus tujuh puluh sembilan ribu delapan ratus tujuh puluh lima rupiah. Pertanyaan pertama menanyakan harga lemari itu.",
       bersih(0),
       tambah(0, judul("pertanyaan 1: harga lemari")),
       tambah(0, ...lemari("lm", 24, 50, 1.2)),
@@ -84,25 +73,12 @@ export const ADEGAN_EKSPLORASI91B: AdeganStory = {
   judul: "Penduduk Gianyar: membaca 963.000",
   sumber: "Materi: penduduk Gianyar",
   latar: "#ECFDF5",
-  kutipan: [
-    "Eksplorasi 9.1B",
-    "Komang berasal dari Gianyar",
-    "sebuah kabupaten di Bali",
-    "Gianyar dikenal sebagai penghasil karya",
-    "Gambar 9.3 Peta Kabupaten Gianyar",
-    "Menurut sensus penduduk",
-    "tahun 2020, penduduk Gianyar",
-    "berjumlah 963.000 jiwa",
-    "Silahkan tuliskan dalam tabel berikut",
-    "Ada berapa banyak nilai seratus ribuan?",
-    "Ada berapa banyak nilai sepuluh ribuan?",
-    "Bagaimana membaca 963.000?",
-  ],
+  kutipan: kutipanLokal("k5b9a-materi-2.ts:2"),
   ketukan: [
     k(
-      "Sekarang kita berkenalan dengan Komang. Komang berasal dari Gianyar, kabupaten di Bali yang terkenal sebagai penghasil patung dan ukiran kayu.",
+      "Sekarang kita berkenalan dengan Igil. Igil berasal dari Gianyar, kabupaten di Bali yang terkenal sebagai penghasil patung dan ukiran kayu.",
       tambah(0, judul("Penduduk Gianyar")),
-      tambah("Komang", emo("ko", 50, 130, "🧒", 36), teks("kot", 50, 152, "Komang", 8.6)),
+      tambah("Igil", emo("ko", 50, 130, "🧒", 36), teks("kot", 50, 152, "Igil", 8.6)),
       tambah("Gianyar,", ...kartu("gy", 100, 44, 100, 40, W.langit, ["Gianyar, Bali"], 10)),
       tambah("patung", emo("pt", 150, 134, "🗿", 38), teks("ptt", 150, 156, "patung dan ukiran kayu", 8.6, W.coklat)),
     ),
@@ -140,16 +116,7 @@ export const ADEGAN_CARA_BACA: AdeganStory = {
   judul: "Cara membaca bilangan besar",
   sumber: "Materi: cara membaca bilangan",
   latar: "#F5F3FF",
-  kutipan: [
-    "Cara Membaca Bilangan dalam",
-    "Bahasa Indonesia",
-    "Untuk memudahkan membaca bilangan yang terdiri atas",
-    "banyak angka, pisahkan setiap tiga angka dengan titik",
-    "Tiga angka tersebut berarti memiliki nilai tempat ribuan, jutaan",
-    "Contoh: 875.428",
-    "dibaca: delapan ratus tujuh puluh lima ribu empat ratus dua",
-    "puluh delapan",
-  ],
+  kutipan: kutipanLokal("k5b9a-materi-2.ts:3"),
   ketukan: [
     k(
       "Ada aturan sederhana untuk membaca bilangan yang panjang: pisahkan setiap tiga angka dengan titik.",
@@ -205,18 +172,7 @@ export const ADEGAN_BERMAIN: AdeganStory = {
   judul: "Bermain: membentuk bilangan dari kartu",
   sumber: "Materi: bermain kartu bilangan",
   latar: "#FFFBEB",
-  kutipan: [
-    "Ayo Bermain",
-    "Alat dan Bahan",
-    "Kartu bilangan",
-    "Kertas untuk menulis",
-    "Buatlah kelompok dengan 3-4 anggota",
-    "Susunlah bilangan yang mungkin dibentuk dari kartu bilangan",
-    "dibaca seratus dua puluh tiga ribu empat ratus lima puluh enam",
-    "Ada berapa banyak bilangan yang bisa kalian susun?",
-    "adakah temanmu yang bisa",
-    "membuat lebih dari 5 cara?",
-  ],
+  kutipan: kutipanLokal("k5b9a-materi-2.ts:4"),
   ketukan: [
     k(
       "Sekarang kita bermain. Siapkan kartu bilangan satu sampai enam, kertas, dan alat tulis. Buat kelompok tiga atau empat anggota.",

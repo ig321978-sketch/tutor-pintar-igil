@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, daftar, emo, kartu, judul, teks } from "./k4b4b-gambar";
 import { bersih, k, tambah, ubah } from "./k4b4b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Sub-Bab B (Buku Siswa hlm. 122; Panduan Guru hlm. 155-156) ------------------------------ */
 export const ADEGAN_PEMBUKA_B: AdeganStory = {
@@ -8,18 +9,7 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
   judul: "Sub-Bab B: Pengukuran Volume",
   sumber: "Panduan Guru hlm. 155–156",
   latar: "#F0F9FF",
-  kutipan: [
-    "B. Pengukuran Volume",
-    "Mengukur volume dengan satuan tidak baku.",
-    "Mengukur volume dengan satuan baku.",
-    "Mengonversi antara satuan baku.",
-    "Istilah kapasitas merupakan istilah lain dari volume.",
-    "Satuan volume tidak baku adalah satuan volume yang belum dibakukan.",
-    "satuan volume baku adalah satuan volume yang sudah dibakukan secara internasional.",
-    "Guru memberikan pengantar bagaimana mengukur volume ember.",
-    "bagaimana jika ukuran gayung yang digunakan berbeda?",
-    "Guru tidak perlu memberikan jawaban yang benar",
-  ],
+  kutipan: kutipanLokal("k4b4b-materi-1.ts:1"),
   ketukan: [
     k(
       "Sub-Bab B, Pengukuran Volume. Panduan Guru menyebut tiga pengalaman belajar: mengukur volume dengan satuan tidak baku, mengukur dengan satuan baku, dan mengonversi antarsatuan baku.",
@@ -57,17 +47,7 @@ export const ADEGAN_AKTIVITAS_3: AdeganStory = {
   judul: "Percobaan: konsep volume",
   sumber: "Materi: konsep volume",
   latar: "#FFFBEB",
-  kutipan: [
-    "Aktivitas 3 : Konsep Volume",
-    "Perlengkapan yang dibutuhkan:",
-    "Siapkan ember yang berisi air.",
-    "Tuangkan air ke kotak makan menggunakan gelas sampai penuh.",
-    "Tuangkan air ke kotak makan menggunakan botol minum sampai penuh.",
-    "Apakah sama banyaknya air yang dituangkan",
-    "Berapa banyak air yang harus dituangkan untuk mengisi kotak makan",
-    "Presentasikan hasil diskusi kelompok di depan kelas.",
-    "Guru perlu mempertimbangkan ukuran kotak makan, gelas, dan botol minum yang digunakan (uji coba terlebih dahulu).",
-  ],
+  kutipan: kutipanLokal("k4b4b-materi-1.ts:2"),
   ketukan: [
     k(
       "Percobaan pertama, konsep volume. Kelompok tiga sampai empat orang menyiapkan botol minum, gelas, kotak makan, ember, dan air. Air dituang ke kotak makan memakai gelas sampai penuh.",
@@ -101,20 +81,10 @@ export const ADEGAN_SABUN: AdeganStory = {
   judul: "Botol sabun A, B, dan C: satuan tidak baku",
   sumber: "Materi: satuan tidak baku",
   latar: "#F0FDF4",
-  kutipan: [
-    "Ibu Helen memiliki 3 macam botol sabun cair.",
-    "Botol sabun A diisi dengan sabun dari botol sabun B.",
-    "Volume botol sabun A adalah sama dengan 4 buah botol sabun B.",
-    "Botol sabun A diisi dengan sabun dari botol sabun C.",
-    "Volume botol sabun A adalah sama dengan 10 buah botol sabun C.",
-    "Botol sabun B dan C berbeda ukuran",
-    "Jadi, botol sabun A, B, dan C merupakan satuan volume tidak baku.",
-    "1 Satuan Volume",
-    "beberapa benda dapat digunakan sebagai satuan tidak baku untuk mengukur volume.",
-  ],
+  kutipan: kutipanLokal("k4b4b-materi-1.ts:3"),
   ketukan: [
     k(
-      "Ayo mengamati. Helen mencuci tangan dengan sabun cair. Ibu punya tiga macam botol sabun: A besar, B sedang, dan C kecil.",
+      "Ayo mengamati. Igil mencuci tangan dengan sabun cair. Ibu punya tiga macam botol sabun: A besar, B sedang, dan C kecil.",
       bersih(0),
       tambah(0, judul("Tiga botol sabun")),
       tambah("besar", emo("sa", 60, 120, "🧴", 62), teks("sal", 60, 153, "A", 12, W.biru)),
@@ -168,19 +138,10 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   judul: "Latihan: botol besar dan botol kecil",
   sumber: "Materi: satuan tidak baku",
   latar: "#FFF7ED",
-  kutipan: [
-    "Ibu Helen mempunyai satu botol besar hand sanitizer.",
-    "terdapat 8 botol kecil satuan yang terisi penuh hand sanitizer.",
-    "volume 1 buah botol besar adalah sama dengan 8 botol kecil",
-    "Hubungkan gambar dengan satuan volumenya dengan cermat.",
-    "Pada soal nomor 1, tentukan volume paling sedikit dan volume paling banyak?",
-    "Volume paling sedikit yaitu 1 satuan volume",
-    "Volume paling banyak yaitu 7 satuan volume",
-    "Urutkan botol yang berisi hand sanitizer pada soal nomor 1",
-  ],
+  kutipan: kutipanLokal("k4b4b-materi-1.ts:4"),
   ketukan: [
     k(
-      "Latihan satu. Ibu Helen menuang satu botol besar hand sanitizer ke botol kecil sampai habis. Hasilnya delapan botol kecil terisi penuh, jadi volume botol besar adalah delapan satuan volume.",
+      "Latihan satu. Ibu Igil menuang satu botol besar hand sanitizer ke botol kecil sampai habis. Hasilnya delapan botol kecil terisi penuh, jadi volume botol besar adalah delapan satuan volume.",
       bersih(0),
       tambah(0, judul("Hand sanitizer")),
       tambah("botol@1", emo("hs0", 50, 118, "🧴", 60)),
@@ -214,24 +175,7 @@ export const ADEGAN_SATUAN_BAKU: AdeganStory = {
   judul: "Satuan baku: liter dan mililiter",
   sumber: "Materi: satuan baku liter dan mililiter",
   latar: "#EFF6FF",
-  kutipan: [
-    "Pengukuran volume dengan menggunakan satuan baku",
-    "Slamet dan Ibu membeli air mineral, jus buah, dan susu UHT.",
-    "Pada gambar B.3 (1), volume dari botol air mineral adalah 1 liter",
-    "Pada gambar B.3 (2), volume dari botol jus buah adalah 256 ml",
-    "Pada gambar B.3 (3), volume dari kotak susu UHT adalah 1.000 ml",
-    "Jadi, satuan volume yang baku adalah mililiter (ml) dan liter (l)",
-    "Kita tahu bahwa 1 liter = 1.000 mililiter",
-    "volume ember air menampung 10 liter",
-    "volume tong air menampung 150 liter",
-    "Kalian dapat menggunakan liter saat mengukur volume cairan dalam jumlah",
-    "volume satu sendok air adalah 5 ml.",
-    "volume secangkir kopi adalah 240 ml.",
-    "volume botol minuman adalah 330 ml.",
-    "Kita dapat menggunakan mililiter saat mengukur volume cairan dalam jumlah",
-    "1.000 ml = 1 l",
-    "Jadi, volumenya adalah 1 l.",
-  ],
+  kutipan: kutipanLokal("k4b4b-materi-1.ts:5"),
   ketukan: [
     k(
       "Satuan baku. Di minimarket, botol air mineral berisi satu liter, botol jus buah dua ratus lima puluh enam mililiter, dan kotak susu UHT seribu mililiter.",

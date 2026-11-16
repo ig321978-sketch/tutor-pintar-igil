@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { KOLAM, W, baris, bulat, emo, garis, kartu, kotak, panah, teks } from "./k5b5d-gambar";
 import { bersih, k, tambah, ubah } from "./k5b5d-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 const jud = (isi: string, y = 20, u = 12): Obj => teks("jud", 150, y, isi, u, W.ungu);
 
@@ -10,17 +11,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Hati-hati, tantangan, dan renungan",
   sumber: "Materi: pesan guru tentang bentuk kerangka",
   latar: "#FFF1F2",
-  kutipan: [
-    "Guru perlu mengantisipasi jawaban nomor 5 dan 6",
-    "Jawaban nomor 5 berarti peserta didik mengusulkan bentuk persegi",
-    "persegi juga merupakan persegi panjang",
-    "Adapun perinciannya akan dipelajari pada Bab 7 buku ini",
-    "tidak menggunakan kertas berpetak sebagai satuan",
-    "Kertas berpetak yang tersedia hanya mengakomodasi kelipatan 5",
-    "jawaban ini perlu diapresiasi dan dilanjutkan dengan eksplorasi tanpa kertas berpetak",
-    "Kegiatan pembelajaran pada Subbab D dirancang untuk mengembangkan pola berpikir kreatif peserta didik",
-    "guru perlu memberikan bimbingan secara proporsional",
-  ],
+  kutipan: kutipanLokal("k5b5d-materi-3.ts:1"),
   ketukan: [
     k(
       "Hati-hati, ada dua jawaban yang perlu kamu pahami baik-baik, yaitu bentuk kelima dan bentuk keenam. Keduanya sering memancing salah paham.",
@@ -70,13 +61,7 @@ export const ADEGAN_REFLEKSI_D: AdeganStory = {
   judul: "Renungan tentang kerangka dan luas",
   sumber: "Materi: renungan dan pertanyaan terbuka",
   latar: "#F5F3FF",
-  kutipan: [
-    "Aku bisa menemukan berbagai ukuran persegi panjang jika kelilingnya diketahui",
-    "Berilah tanda centang",
-    "Menurutmu, bangun datar apakah yang paling mudah dihitung luas daerahnya? Mengapa?",
-    "Sebaliknya, bangun datar apakah yang menurut kalian paling sulit dihitung luas daerahnya?",
-    "Apa usahamu agar mampu menghitung luas daerah bangun datar yang sulit tersebut dengan lebih baik?",
-  ],
+  kutipan: kutipanLokal("k5b5d-materi-3.ts:2"),
   ketukan: [
     k(
       "Renungan untukmu. Apakah kamu bisa menemukan berbagai ukuran persegi panjang jika kelilingnya sudah diketahui? Coba jawab dalam hati.",
@@ -127,20 +112,7 @@ export const ADEGAN_PENGAYAAN: AdeganStory = {
   judul: "Tantangan: keramik tepi kolam renang",
   sumber: "Materi: tantangan keramik tepi kolam",
   latar: "#ECFEFF",
-  kutipan: [
-    "Pengayaan dapat diberikan kepada peserta didik yang sudah mendapatkan nilai",
-    "soal-soal AKM",
-    "Memasang Keramik Tepi Kolam Renang",
-    "Di sekeliling kolam terdapat tepian atau jalan selebar 1 m",
-    "40 cm × 40 cm",
-    "Jika 1 dus berisi 5 keramik, berapa dus keramik yang dibutuhkan",
-    "luas jalan = luas daerah persegi luar – luas daerah persegi dalam",
-    "= (16 × 7) – (15 × 6)",
-    "= 112 – 90 = 22",
-    "Luas daerah 1 keramik = sisi × sisi",
-    "= 40 × 40 = 1600",
-    "Agar cukup, perlu dibulatkan ke atas menjadi 28 dus keramik yang harus dibeli",
-  ],
+  kutipan: kutipanLokal("k5b5d-materi-3.ts:3"),
   ketukan: [
     k(
       "Sekarang Tantangan untukmu, soal bergaya asesmen kompetensi minimum. Judulnya: memasang keramik tepi kolam renang.",
@@ -211,15 +183,7 @@ export const ADEGAN_PENUTUP_D: AdeganStory = {
   judul: "Remedial, peran orang tua, dan penutup bab",
   sumber: "Buku Panduan Guru hlm. 242 dan 245",
   latar: "#F0F9FF",
-  kutipan: [
-    "Remedial diberikan jika peserta didik belum mencapai kriteria minimum",
-    "Bimbingan individu",
-    "Bimbingan kelompok",
-    "Pembelajaran ulang dengan menggunakan metode dan media yang berbeda",
-    "tingkat kesulitan soal dapat diturunkan",
-    "orang tua dapat dilibatkan untuk memantau peserta didik mempelajari kembali materi",
-    "alat tulis, kertas berpetak, dan kertas origami",
-  ],
+  kutipan: kutipanLokal("k5b5d-materi-3.ts:4"),
   ketukan: [
     k(
       "Remedial diberikan jika siswa belum mencapai kriteria minimum. Bentuknya tiga: bimbingan individu, bimbingan kelompok, dan pembelajaran ulang dengan metode dan media yang berbeda.",

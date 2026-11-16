@@ -52,13 +52,13 @@ export const ADEGAN_LUAR_RAM: AdeganStory = {
 /* ------------------------------ 7. Residual Area Model: penerapan ------------------------------ */
 export const ADEGAN_LUAR_RAM_TERAPAN: AdeganStory = {
   id: "luar-ram-terapan",
-  judul: "Residual Area Model pada kertas Yohana dan apel Asep",
+  judul: "Residual Area Model pada kertas Upe dan apel Kira",
   sumber: "Metode luar: Residual Area Model",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      "Kertas Yohana: bagi kertas menjadi enam kotak, sebab KPK dari tiga dan dua adalah enam. Arsir empat kotak untuk dua per tiga.",
-      tambah(0, judul("Kertas Yohana 1: arsir")),
+      "Kertas Upe: bagi kertas menjadi enam kotak, sebab KPK dari tiga dan dua adalah enam. Arsir empat kotak untuk dua per tiga.",
+      tambah(0, judul("Kertas Upe 1: arsir")),
       tambah("Kertas", ...sel("yk", BAR.x, BAR.y, BAR.w, BAR.h, 6, [], W.langit)),
       warnai("Arsir", W.langit, "yk-c0", "yk-c1", "yk-c2", "yk-c3"),
       tambah("dua@2", ...rumus("yr", 150, 130, "2/3 = 4/6", 22)),
@@ -66,19 +66,19 @@ export const ADEGAN_LUAR_RAM_TERAPAN: AdeganStory = {
     k(
       "Coret tiga kotak untuk satu per dua yang sudah dilukis. Tersisa satu kotak dari enam, jadi kekurangannya satu per enam.",
       bersih(0),
-      tambah(0, judul("Kertas Yohana 2: coret")),
+      tambah(0, judul("Kertas Upe 2: coret")),
       tambah(0, ...sel("yk", BAR.x, BAR.y, BAR.w, BAR.h, 6, [0, 1, 2, 3], W.langit)),
       tambah("Coret", ...silang("yk", BAR.x, BAR.y, BAR.w, BAR.h, 6, [1, 2, 3])),
       sorotkan("Tersisa", "yk-c0"),
       tambah("jadi", ...rumus("yr", 150, 130, "4/6 − 3/6 = 1/6", 22)),
     ),
     k(
-      "Apel Asep: delapan apel, enam diberikan kepada Lukas, dan dua apel diteruskan Lukas kepada Yohana. Apel Lukas yang tersisa tinggal empat dari delapan.",
+      "Apel Kira: delapan apel, enam diberikan kepada Wei, dan dua apel diteruskan Wei kepada Upe. Apel Wei yang tersisa tinggal empat dari delapan.",
       bersih(0),
-      tambah(0, judul("Apel Asep: model daerah")),
+      tambah(0, judul("Apel Kira: model daerah")),
       tambah("delapan", ...apel("ap", 80, 56, () => W.putih)),
-      tambah("enam", teks("ak1", 150, 112, "hijau: ke Lukas (6)", 9, W.hijau)),
-      tambah("dua", teks("ak2", 150, 128, "abu: diteruskan ke Yohana (2)", 9, W.coklat)),
+      tambah("enam", teks("ak1", 150, 112, "hijau: ke Wei (6)", 9, W.hijau)),
+      tambah("dua", teks("ak2", 150, 128, "abu: diteruskan ke Upe (2)", 9, W.coklat)),
       tambah("tinggal", teks("ak3", 150, 148, "tersisa: 4 dari 8", 10, W.hijau)),
     ),
     k(
@@ -134,20 +134,20 @@ export const ADEGAN_LUAR_AUP: AdeganStory = {
 /* ------------------------------ 9. Add-Up Check: penerapan ------------------------------ */
 export const ADEGAN_LUAR_AUP_TERAPAN: AdeganStory = {
   id: "luar-aup-terapan",
-  judul: "Add-Up Check pada hasil Yohana, Asep, dan Uji",
+  judul: "Add-Up Check pada hasil Upe, Kira, dan Uji",
   sumber: "Metode luar: Add-Up Check",
   latar: "#FDF2F8",
   ketukan: [
     k(
-      "Periksa jawaban Yohana: satu per enam ditambah satu per dua. Satu per dua sama dengan tiga per enam, jadi jumlahnya empat per enam, yaitu dua per tiga. Cocok dengan kertas awal.",
-      tambah(0, judul("Periksa jawaban Yohana")),
+      "Periksa jawaban Upe: satu per enam ditambah satu per dua. Satu per dua sama dengan tiga per enam, jadi jumlahnya empat per enam, yaitu dua per tiga. Cocok dengan kertas awal.",
+      tambah(0, judul("Periksa jawaban Upe")),
       tambah("Periksa", ...rumus("r", 150, 80, "1/6 + 1/2 = 1/6 + 3/6 = 4/6 = 2/3", 17)),
       tambah("Cocok", ...kartu("k", 50, 128, 200, 34, W.hijauMuda, ["sama dengan kertas awal 2/3"], 9.6), emo("e", 150, 184, "✅", 20)),
     ),
     k(
-      "Periksa jarak Asep: tiga satu per tiga ditambah dua satu per tiga sama dengan lima dua per tiga kilometer, sesuai jarak ke sekolah. Cocok.",
+      "Periksa jarak Kira: tiga satu per tiga ditambah dua satu per tiga sama dengan lima dua per tiga kilometer, sesuai jarak ke sekolah. Cocok.",
       bersih(0),
-      tambah(0, judul("Periksa jarak Asep")),
+      tambah(0, judul("Periksa jarak Kira")),
       tambah("Periksa", ...rumus("r", 150, 80, "3 1/3 + 2 1/3 = 5 2/3", 21)),
       tambah("sesuai", ...kartu("k", 50, 128, 200, 34, W.hijauMuda, ["sama dengan jarak 5 2/3 km"], 9.6), emo("e", 150, 184, "✅", 20)),
     ),
@@ -189,10 +189,10 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("Add-Up", ...kartu("r4", 14, 92, 272, 44, W.pink, ["Add-Up Check", "periksa dengan penjumlahan balik"], 9.6)),
     ),
     k(
-      "Hasil akhirnya: kertas Yohana satu per enam, jarak Asep tiga satu per tiga kilometer, tali Komang dua satu per enam meter, dan Uji tiga tujuh per empat puluh.",
+      "Hasil akhirnya: kertas Upe satu per enam, jarak Kira tiga satu per tiga kilometer, tali Malosi dua satu per enam meter, dan Uji tiga tujuh per empat puluh.",
       bersih(0),
       tambah(0, judul("Hasil akhir")),
-      tambah("kertas", ...tabel("hs", 30, 34, [150, 90], [["soal", "hasil"], ["kertas Yohana", "1/6"], ["jarak Asep", "3 1/3 km"], ["tali Komang", "2 1/6 m"], ["Uji 3", "7/40"]], 24, 8.6)),
+      tambah("kertas", ...tabel("hs", 30, 34, [150, 90], [["soal", "hasil"], ["kertas Upe", "1/6"], ["jarak Kira", "3 1/3 km"], ["tali Malosi", "2 1/6 m"], ["Uji 3", "7/40"]], 24, 8.6)),
     ),
     k(
       "Pilih metode sesuai soal, dan ingat: kita hanya boleh mengurangi potongan yang sama besar.",

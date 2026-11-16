@@ -37,7 +37,7 @@ export const ADEGAN_LUAR_KURANG: AdeganStory = {
       tambah("daerah", ...kartu("kb", 166, 104, 120, 30, W.krem, ["bagian kosong: 1, 1, 7"], 8.8)),
     ),
     k(
-      "Luas bangun adalah dua puluh empat dikurangi satu, dikurangi satu, dikurangi tujuh, hasilnya lima belas. Sama dengan hasil cara Yohana dan cara Komang.",
+      "Luas bangun adalah dua puluh empat dikurangi satu, dikurangi satu, dikurangi tujuh, hasilnya lima belas. Sama dengan hasil cara Upe dan cara Wei.",
       hapus(0, ...idKartu("l24", 1), ...idKartu("kb", 1)),
       tambah("Luas", teks("sr1", 150, 160, "24 − 1 − 1 − 7", 11, W.biru)),
       tambah("hasilnya", teks("sr2", 150, 180, "= 15 satuan luas", 11, W.hijau)),
@@ -106,11 +106,11 @@ export const ADEGAN_LUAR_KEKAL: AdeganStory = {
       tambah("keliru.", ...kartu("kr", 60, 164, 180, 28, W.merahMuda, ["beda → periksa lagi"], 9.2)),
     ),
     k(
-      "Contohnya bangun ABCDE. Cara Yohana menghasilkan sepuluh ditambah lima, yaitu lima belas. Cara Komang juga sepuluh ditambah lima, yaitu lima belas. Hasilnya sama.",
+      "Contohnya bangun ABCDE. Cara Upe menghasilkan sepuluh ditambah lima, yaitu lima belas. Cara Wei juga sepuluh ditambah lima, yaitu lima belas. Hasilnya sama.",
       bersih(0),
       tambah(0, judul("contoh: bangun ABCDE", W.ungu)),
-      tambah("Yohana", ...kartu("y", 14, 50, 134, 40, W.hijauMuda, ["Yohana", "10 + 5 = 15"], 9.6)),
-      tambah("Komang", ...kartu("kg", 152, 50, 134, 40, W.pink, ["Komang", "10 + 5 = 15"], 9.6)),
+      tambah("Upe", ...kartu("y", 14, 50, 134, 40, W.hijauMuda, ["Upe", "10 + 5 = 15"], 9.6)),
+      tambah("Wei", ...kartu("kg", 152, 50, 134, 40, W.pink, ["Wei", "10 + 5 = 15"], 9.6)),
       tambah("sama.", teks("cek", 150, 128, "✓", 40, W.hijau), ...kartu("sy", 60, 150, 180, 30, W.emas, ["15 = 15, kita yakin"], 10)),
     ),
     k(

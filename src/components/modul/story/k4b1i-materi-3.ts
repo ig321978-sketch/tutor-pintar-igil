@@ -1,6 +1,7 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, busurSemua, daftar, deret, emo, judul, kartu, suku, tabel } from "./k4b1i-gambar";
 import { bersih, k, tambah } from "./k4b1i-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 15. Rubrik penilaian (Panduan Guru hlm. 78-82) ------------------------------ */
 const TAB_R1 = tabel("ra", 14, 32, [60, 66], [["Butir", "Bobot"], ["1", "8"], ["2", "4"], ["3", "12"], ["4", "12"], ["5", "12"], ["6", "12"], ["7", "3"], ["8", "6"]], 15, 8.6);
@@ -10,15 +11,7 @@ export const ADEGAN_RUBRIK: AdeganStory = {
   judul: "Rubrik penilaian pengetahuan",
   sumber: "Panduan Guru hlm. 78–82",
   latar: "#FFF7ED",
-  kutipan: [
-    "Rubrik Penilaian Pengetahuan",
-    "Tabel 1.12 Pedoman Penilaian Hasil Belajar",
-    "Peserta didik tidak menjawab sama sekali",
-    "Peserta didik bisa menjawab kurang tepat",
-    "Peserta didik bisa menjawab benar",
-    "SD Jaya Terus mengirimkan siswa kelas IV, kelas V dan kelas IV untuk mengikuti lomba matematika",
-    "Melalui hasil asesmen (penilaian) guru dapat memperhatikan peserta didik yang pemahaman materi masih kurang",
-  ],
+  kutipan: kutipanLokal("k4b1i-materi-3.ts:1"),
   ketukan: [
     k(
       "Rubrik penilaian pengetahuan memuat lima belas butir. Tiap butir tiga tingkat: tidak menjawab nol, kurang tepat sebagian, benar skor penuh.",
@@ -65,19 +58,7 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   judul: "Refleksi bab, dibagi per butir",
   sumber: "Buku Siswa hlm. 54; Panduan Guru hlm. 82",
   latar: "#F5F3FF",
-  kutipan: [
-    "Kalian sudah mempelajari bilangan cacah sampai 10.000",
-    "Dapatkah kalian mengingat kembali?",
-    "Masih adakah materi yang belum kalian pahami?",
-    "ajaklah teman kalian berdiskusi tentang materi tersebut",
-    "Kalian juga bisa bertanya langsung kepada guru",
-    "lebih banyak mengerjakan soa-soal",
-    "manfaat apa yang kalian peroleh dari materi ini untuk kegiatan kalian sehari-hari?",
-    "Apa manfaat yang kalian peroleh dari materi ini?",
-    "membaca informasi bilangan yang ada pada struk belanja",
-    "menghitung ulang total harga pembelian barang",
-    "membandingkan harga dari sebuah barang dengan barang yang lainnya",
-  ],
+  kutipan: kutipanLokal("k4b1i-materi-3.ts:2"),
   ketukan: [
     k(
       "Refleksi dari Buku Siswa, butir pertama: kalian sudah mempelajari bilangan cacah sampai sepuluh ribu. Butir kedua: dapatkah kalian mengingat kembali?",
@@ -121,18 +102,7 @@ export const ADEGAN_PENGAYAAN_1: AdeganStory = {
   judul: "Remedial dan pengayaan: tantangan 1 sampai 3",
   sumber: "Materi: tantangan 1 sampai 3",
   latar: "#F0FDF4",
-  kutipan: [
-    "Panduan untuk Remedial",
-    "Remedial yang dapat dilakukan dengan memberikan contoh yang lain",
-    "data yang ada di sekitar rumah masing-masing peserta didik",
-    "Kegiatan pengayaan dapat dikembangkan materi operasi bilangan dengan memperhatikan urutan dalam operasi",
-    "Setiap hari truk pick up tersebut mengangkut 570 buah mangga",
-    "3.990 buah mangga",
-    "340 kg buah mangga, 235 kg buah apel dan 150 kg buah melon",
-    "725 kilogram buah",
-    "Dalam 1 dus terdapat 12 pak pensil tulis dan 1 pak berisi 8 pensil tulis",
-    "96 pensil tulis",
-  ],
+  kutipan: kutipanLokal("k4b1i-materi-3.ts:3"),
   ketukan: [
     k(
       "Bagi yang masih kesulitan, ada remedial: contoh lain lewat tugas rumah berupa data di sekitar rumah. Bagi yang sudah paham, lanjut ke pengayaan, lima soal.",
@@ -179,15 +149,7 @@ export const ADEGAN_PENGAYAAN_2: AdeganStory = {
   judul: "Pengayaan: tantangan 4 dan 5",
   sumber: "Materi: tantangan 4 dan 5",
   latar: "#FEFCE8",
-  kutipan: [
-    "terdapat 59 buah apel yang busuk dan 97 buah apel yang cacat",
-    "Hitunglah berapa banyak buah apel yang masih bagus",
-    "Kelas IV Sekolah Dasar Suka Maju mempunyai 48 siswa",
-    "Jika setiap kelompok belajar beranggotakan 8 siswa",
-    "Jika setiap kelompok belajar beranggotakan 4 siswa",
-    "Jika Pak Guru mempunyai 96 lembar kertas kosong",
-    "Guru menunjukkan kepada peserta didik bahwa hasil pembagian",
-  ],
+  kutipan: kutipanLokal("k4b1i-materi-3.ts:4"),
   ketukan: [
     k(
       "Tantangan empat: dari tujuh ratus delapan puluh lima apel, lima puluh sembilan busuk dan sembilan puluh tujuh cacat. Dikurangi bertahap: tujuh ratus dua puluh enam, lalu enam ratus dua puluh sembilan apel bagus.",
@@ -225,15 +187,7 @@ export const ADEGAN_ORANG_TUA: AdeganStory = {
   judul: "Interaksi dengan orang tua dan penutup bab",
   sumber: "Panduan Guru hlm. 88",
   latar: "#FDF2F8",
-  kutipan: [
-    "Interaksi dengan Orang Tua",
-    "mencari benda-benda kontekstual yang bisa merepresentasikan bilangan cacah 4 angka",
-    "struk pembayaran pembelian barang",
-    "menentukan nilai tempat dari masing-masing bilangan tersebut",
-    "Sumber bacaan peserta didik yang dapat diakses meliputi",
-    "https://sumber.belajar.kemdikbud.go.id",
-    "Buku Pedoman Guru Matematika Kelas IV",
-  ],
+  kutipan: kutipanLokal("k4b1i-materi-3.ts:5"),
   ketukan: [
     k(
       "Interaksi dengan orang tua: murid mencari benda kontekstual yang menunjukkan bilangan cacah empat angka, dan menyampaikan idenya kepada orang tua, misalnya ikut ke swalayan untuk mendapat struk belanja.",

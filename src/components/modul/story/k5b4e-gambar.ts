@@ -75,7 +75,7 @@ export const kelilingTitik = (p: Titik[]): number => p.reduce((t, a, i) => t + M
 /* ------------------------------ Denah rumah Eksplorasi 4.5 (Buku Siswa hlm. 126; Panduan Guru hlm. 163 sampai 165) ------------------------------ */
 
 /**
- * Titik sudut dinding terluar denah, huruf Cara Asep, dalam meter. Sumbu x ke kanan, sumbu y ke ATAS (kiri-bawah ruang tamu = (0, 0)).
+ * Titik sudut dinding terluar denah, huruf Cara Wei, dalam meter. Sumbu x ke kanan, sumbu y ke ATAS (kiri-bawah ruang tamu = (0, 0)).
  * Dirancang dari kunci Panduan Guru: AB = AO - CD = 8 - 6 = 2, MN = AB, JD = 12, IE = HF = 8, JI + ED = 4, keliling 48.
  */
 export const TITIK_DENAH: Record<string, Titik> = {
@@ -94,9 +94,9 @@ export const TITIK_DENAH: Record<string, Titik> = {
   M: [0, 8],
   N: [-2, 8],
 };
-/** Titik bantu pada denah (bukan sudut terluar): O dan P pada garis x = 6 yang dipakai Cara Asep, A O P N membentuk persegi panjang. */
+/** Titik bantu pada denah (bukan sudut terluar): O dan P pada garis x = 6 yang dipakai Cara Wei, A O P N membentuk persegi panjang. */
 export const TITIK_EKSTRA: Record<string, Titik> = { O: [6, 4], P: [6, 8] };
-/** Tiga persegi panjang Cara Komang [x1, y1, x2, y2]: kiri 2 kali 4, tengah 6 kali 12 (buku: 12m × 6m), kanan 4 kali 8 (buku: 8m × 4m). */
+/** Tiga persegi panjang Cara Malosi [x1, y1, x2, y2]: kiri 2 kali 4, tengah 6 kali 12 (buku: 12m × 6m), kanan 4 kali 8 (buku: 8m × 4m). */
 export const KOMANG_RECT: Record<string, [number, number, number, number]> = { kiri: [-2, 4, 0, 8], tengah: [0, 0, 6, 12], kanan: [6, 2, 10, 10] };
 /** Urutan keliling A sampai N kembali ke A. */
 export const URUT_DENAH = "ABCDEFGHIJKLMN".split("");

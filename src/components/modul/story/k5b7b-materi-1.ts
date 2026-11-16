@@ -1,6 +1,7 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { BENTUK_72A, W, bangun, bulat, garis, huruf, idDari, ide, kartu, kotak, poli, sama, sejajar, siku, teks, tegakLurus, titikSudut } from "./k5b7b-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b7b-bantu";
+import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Sub-Bab B dan Eksplorasi 7.2A (hlm. 209–210) ------------------------------ */
 const NAMA_ENAM: Array<[string, "sembarang" | "jajar" | "persegiPanjang" | "belahKetupat" | "persegi" | "layang", string]> = [
@@ -39,7 +40,7 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
   judul: "Pembuka Sub-Bab B dan Eksplorasi 7.2A: segi empat",
   sumber: "Buku Siswa hlm. 209–210; Buku Panduan Guru hlm. 314–316",
   latar: "#EEF2FF",
-  kutipan: ["B. Membandingkan Ciri-Ciri Segi Empat", "Ayo Mengingat Kembali Segi Empat", "Perhatikan gambar-gambar bangun datar berikut", "Manakah yang merupakan segi empat?", "Segi empat adalah bangun datar yang dibatasi oleh empat sisi", "A, B, F, dan H", "segi empat cekung", "convex quadrilateral"],
+  kutipan: kutipanLokal("k5b7b-materi-1.ts:1"),
   ketukan: [
     k(
       "Selamat datang di Sub-Bab B, membandingkan ciri-ciri segi empat. Kita akan membahas trapesium, jajargenjang, persegi panjang, belah ketupat, persegi, dan layang-layang.",
@@ -107,7 +108,7 @@ export const ADEGAN_TRAPESIUM: AdeganStory = {
   judul: "Mengingat kembali ciri-ciri trapesium",
   sumber: "Materi: ciri-ciri trapesium",
   latar: "#FFF7ED",
-  kutipan: ["Ayo Mengingat Kembali Ciri-Ciri Trapesium", "dinamakan trapesium", "tegak lurus ke", "Apakah DE = CF", "Trapesium sembarang", "Trapesium siku-siku", "Trapesium sama kaki"],
+  kutipan: kutipanLokal("k5b7b-materi-1.ts:2"),
   ketukan: [
     k(
       "Mari kita mengingat kembali ciri-ciri trapesium. Di kelas empat kita belajar bahwa bangun ABCD ini dinamakan trapesium, salah satu jenis segi empat.",
@@ -162,7 +163,7 @@ export const ADEGAN_TRAPESIUM_DEF: AdeganStory = {
   judul: "Rangkuman trapesium dan berpikir kritis",
   sumber: "Materi: rangkuman trapesium",
   latar: "#EEF2FF",
-  kutipan: ["Trapesium adalah segi empat yang mempunyai setidaknya sepasang sisi sejajar", "Trapesium siku-siku adalah trapesium yang salah satu", "Trapesium sama kaki adalah trapesium yang memiliki satu simetri lipat", "Ayo Berpikir Kritis", "hanya memiliki sepasang sisi yang sejajar", "keduanya dapat dibenarkan", "kita bersepakat menggunakan pengertian yang"],
+  kutipan: kutipanLokal("k5b7b-materi-1.ts:3"),
   ketukan: [
     k(
       "Inilah rangkuman singkatnya. Trapesium adalah segi empat yang mempunyai setidaknya sepasang sisi sejajar. Trapesium siku-siku salah satu sudutnya siku-siku, dan trapesium sama kaki memiliki satu simetri lipat.",
@@ -172,10 +173,10 @@ export const ADEGAN_TRAPESIUM_DEF: AdeganStory = {
       tambah(20, kartu("r3", 20, 126, 260, 36, W.krem, ["Trapesium sama kaki", "memiliki satu simetri lipat"], 8.2)),
     ),
     k(
-      "Mari berpikir kritis. Lukas bertanya, apakah trapesium boleh memiliki lebih dari sepasang sisi sejajar? Padahal di kelas empat kita belajar, trapesium hanya memiliki sepasang sisi sejajar.",
+      "Mari berpikir kritis. Wei bertanya, apakah trapesium boleh memiliki lebih dari sepasang sisi sejajar? Padahal di kelas empat kita belajar, trapesium hanya memiliki sepasang sisi sejajar.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Mari Berpikir Kritis", 13, W.ungu)),
-      tambah("Lukas", ide("lk", 14, 34, 272, 54, "Lukas", ["Apakah trapesium boleh memiliki", "lebih dari sepasang sisi sejajar?"], W.krem, 8.4)),
+      tambah("Wei", ide("lk", 14, 34, 272, 54, "Wei", ["Apakah trapesium boleh memiliki", "lebih dari sepasang sisi sejajar?"], W.krem, 8.4)),
       tambah("Padahal", ide("lb", 14, 98, 272, 54, "Di kelas IV", ["trapesium hanya memiliki sepasang", "sisi yang sejajar."], W.muda, 8.4)),
     ),
     k(
@@ -205,13 +206,13 @@ const tegakH = tegakLurus("gh", "jajar", J.cx, J.cy, J.s, "D", "B", "C", "H");
 
 export const ADEGAN_JAJAR_PERIKSA: AdeganStory = {
   id: "jajar-periksa",
-  judul: "Nisa dan Komang memeriksa jajargenjang",
+  judul: "Malosi dan Igil memeriksa jajargenjang",
   sumber: "Materi: memeriksa jajargenjang",
   latar: "#FDF2F8",
-  kutipan: ["Ayo Mengingat Kembali Jajargenjang", "Nisa dan Komang bersama-", "sama memeriksa ciri-ciri jajar-", "genjang ABCD di samping", "Dengan menggunakan busur", "Coba ukurlah panjang DE dan FB", "Coba ukurlah panjang GB dan DH", "Pasangan sudut mana saja yang", "sama besar? A = C dan B = D"],
+  kutipan: kutipanLokal("k5b7b-materi-1.ts:4"),
   ketukan: [
     k(
-      "Sekarang kita mengingat kembali jajargenjang. Nisa dan Komang bersama-sama memeriksa ciri-ciri jajargenjang ABCD.",
+      "Sekarang kita mengingat kembali jajargenjang. Malosi dan Igil bersama-sama memeriksa ciri-ciri jajargenjang ABCD.",
       tambah(0, teks("jud", 150, 24, "Jajargenjang ABCD", 13, W.ungu)),
       tambah("jajargenjang", jDasar().filter((o) => o.id === "jb")),
       tambah("ABCD.", jDasar().filter((o) => o.id !== "jb")),
