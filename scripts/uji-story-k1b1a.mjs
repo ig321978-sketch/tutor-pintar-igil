@@ -182,14 +182,14 @@ const kataVideo = (v) => v.adegan.reduce((t, ad) => t + ad.ketukan.reduce((u, kt
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.id === "k1b1a-materi" && U.id === "k1b1a-luar", "id video k1b1a-materi dan k1b1a-luar");
   cek(U.judul.endsWith(": Metode dari Luar") && !/menurut/i.test(M_VIDEO.judul), "judul video: materi tanpa 'menurut', luar berakhir ': Metode dari Luar'");
-  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,kamar-berantakan,dibantu,hitung-mobil,angka-terakhir,sekilas,sampai-sepuluh,nol,baca-angka,tulis-angka,catat-tabel,latihan-satu,latihan-dua,latihan-tiga,penutup", "urutan adegan materi");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,kamar-berantakan,dibantu,hitung-mobil,angka-terakhir,sekilas,sampai-sepuluh,nol,baca-tulis,catat-tabel,penutup", "urutan adegan materi");
   cek(U.adegan.map((a) => a.id).join() === "sapaan,luar-pembuka,luar-satu,luar-satu-terapan,luar-kardinal,luar-kardinal-terapan,luar-sekilas,luar-sekilas-terapan,luar-ringkas", "urutan adegan metode luar");
   cek(M_VIDEO.adegan[0].id === "sapaan" && U.adegan[0].id === "sapaan", "tiap video dibuka adegan sapaan");
-  cek(M_VIDEO.adegan.filter((a) => /^latihan-/.test(a.id)).length === 3 && M_VIDEO.adegan[M_VIDEO.adegan.length - 1].id === "penutup", "video materi: Latihan 1 sampai 3 lalu penutup");
+  cek(M_VIDEO.adegan.every((a) => !/latihan/i.test(a.id) && !/latihan/i.test(teksAdegan(a))) && M_VIDEO.adegan[M_VIDEO.adegan.length - 1].id === "penutup", "video materi: tanpa latihan, diakhiri penutup");
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-satu", "luar-satu-terapan", "luar-kardinal", "luar-kardinal-terapan", "luar-sekilas", "luar-sekilas-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[1].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
-  for (const kata of ["Latihan", "Igil", "Kaka", "Abang", "Mamah", "lemari", "tabel", "nol", "sekilas"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["Igil", "Kaka", "Abang", "Mamah", "lemari", "tabel", "nol", "sekilas"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   // Cerita orisinal: tokoh dan latar lama (taman bermain) tidak muncul lagi di video materi.
   for (const kata of ["Malosi", "Kira", "Upe", "Wei", "taman", "burung hantu", "\u{1F989}"]) for (const [nm, isi] of [["materi", materi], ["metode luar", luar]]) cek(!isi.toLowerCase().includes(kata.toLowerCase()), `video ${nm} tanpa "${kata}"`);
   for (const kata of ["Igil", "Kaka", "Abang", "mainan"]) cek(luar.toLowerCase().includes(kata.toLowerCase()), `video metode luar memuat "${kata}"`);
@@ -200,10 +200,10 @@ const kataVideo = (v) => v.adegan.reduce((t, ad) => t + ad.ketukan.reduce((u, kt
     for (const a of v.adegan) cek(!BOCOR.test(teksAdegan(a)), `${v.id}/${a.id}: hanya bilangan nol sampai sepuluh, tanpa tambah, kurang, banding, atau bilangan lebih dari sepuluh`);
     for (const a of v.adegan) for (const [i, kt] of a.ketukan.entries()) for (const t of L.teksTerlihat(L.keadaanStory(a, i, 9999))) for (const b of bilanganDari(t)) cek(Number(b) <= 10, `${v.id}/${a.id}#${i + 1}: angka di gambar paling besar sepuluh ("${t}")`);
   }
-  cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
+  cek(totalKetukan >= 60, `total ketukan cukup dalam (${totalKetukan})`);
   // Durasi materi diputar 7 sampai 13 menit (dua kata per detik, sapaan termasuk).
   const kataMateri = kataVideo(M_VIDEO);
-  cek(kataMateri / 120 >= 7 && kataMateri / 120 <= 13, `durasi materi diputar 7 sampai 13 menit (${(kataMateri / 120).toFixed(1)} menit)`);
+  cek(kataMateri / 120 >= 2.5 && kataMateri / 120 <= 3.4, `durasi materi diputar sekitar tiga menit (${(kataMateri / 120).toFixed(1)} menit)`);
   cek(kataVideo(U) / 120 >= 3, `durasi video luar paling sedikit 3 menit (${(kataVideo(U) / 120).toFixed(1)} menit)`);
 }
 
@@ -274,8 +274,6 @@ let stat = { hitung: 0, titik: 0, tulis: 0 };
   banyakDi("angka-terakhir", 0, "bk", "boneka", 4);
   banyakDi("sekilas", 0, "bs", "bola", 3);
   banyakDi("sampai-sepuluh", 0, "bb", "balok", 10);
-  banyakDi("latihan-satu", 0, "kl", "kelereng", 7);
-  banyakDi("latihan-dua", 0, "ds", "dinosaurus", 6);
   banyakDi("luar-satu-terapan", 0, "ke", "kelereng", 6);
   banyakDi("luar-kardinal-terapan", 0, "pm", "pensil", 8);
   // Pasangan satu benda satu angka pada metode pertama: empat bola, empat kartu angka 1 sampai 4, empat garis.
@@ -285,41 +283,37 @@ let stat = { hitung: 0, titik: 0, tulis: 0 };
     const s4 = akhirAdegan(adegan(U, "luar-satu"), 3);
     cek([0, 1, 2, 3].every((i) => ketemu(s4, `sag${i}`) && ketemu(s4, `sac${i}-k`)), "One-to-One: pada kesimpulan tiap benda punya satu garis dan satu angka");
   }
-  // Kotak kereta kosong: tidak ada kereta di dalam kotak, angka 0 tampil; Latihan 2: enam dinosaurus di kotak pertama, kotak kedua kosong.
+  // Kotak kereta kosong: tidak ada kereta di dalam kotak, angka 0 tampil.
   {
-    const n = akhirAdegan(adegan(M_VIDEO, "nol"), 2);
+    const n = akhirAdegan(adegan(M_VIDEO, "nol"), 1);
     const kb = ketemu(n, "kb");
     const kereta = n.filter((o) => o.isi === G.E.kereta && o.u >= 20 && o.x > kb.x && o.x < kb.x + kb.w && o.y > kb.y && o.y < kb.y + kb.h);
     sama([kereta.length, isiTeks(n, "nl")], [0, "0"], "nol: tidak ada kereta di dalam kotak dan angka 0 tampil");
-    const m = akhirAdegan(adegan(M_VIDEO, "latihan-dua"), 3);
-    const dalam = (b, k) => b.x > k.x && b.x < k.x + k.w && b.y > k.y && b.y < k.y + k.h + 2;
-    const dn = m.filter((o) => /^ds\d+$/.test(o.id));
-    sama([dn.filter((b) => dalam(b, ketemu(m, "k1"))).length, dn.filter((b) => dalam(b, ketemu(m, "k2"))).length, isiTeks(m, "d6"), isiTeks(m, "p0")], [6, 0, "6", "0"], "Latihan 2: enam dinosaurus di kotak pertama, nol di kotak kedua");
   }
   // Hitungan Igil yang tergesa: tujuh sebutan untuk lima mobil (dua mobil tersentuh dua kali), lalu hitungan benar berakhir lima.
   {
     const a = adegan(M_VIDEO, "hitung-mobil");
-    const o = akhirAdegan(a, 1);
+    const o = akhirAdegan(a, 0);
     const sx = o.filter((x) => /^sx\d+$/.test(x.id));
     sama([hitungBenda(o, "mb"), sx.length, sx.map((x) => x.isi).join()], [5, 7, "1,2,3,4,5,6,7"], "hitungan tergesa: tujuh angka di atas lima mobil");
     const dekat = (m) => sx.filter((x) => Math.abs(x.x - ketemu(o, `mb${m}`).x) <= 8).length;
     sama([0, 1, 2, 3, 4].map(dekat), [2, 1, 2, 1, 1], "hitungan tergesa: mobil pertama dan ketiga tersentuh dua kali");
-    const b = akhirAdegan(a, 4);
+    const b = akhirAdegan(a, 2);
     sama([0, 1, 2, 3, 4].map((i) => isiTeks(b, `mbn${i}`)), ["1", "2", "3", "4", "5"], "hitungan benar: satu sampai lima, satu angka tiap mobil");
-    cek(/5 mobil/.test(L.teksTerlihat(akhirAdegan(a, 5)).join(" | ")), "hitungan benar: kartu Ada 5 mobil");
+    cek(/5 mobil/.test(L.teksTerlihat(akhirAdegan(a, 2)).join(" | ")), "hitungan benar: kartu Ada 5 mobil");
   }
   // Angka terakhir: dihitung dari kiri dan dari kanan, angka terakhir tetap empat.
   {
     const a = adegan(M_VIDEO, "angka-terakhir");
     const kiri = akhirAdegan(a, 0);
-    const kanan = akhirAdegan(a, 3);
+    const kanan = akhirAdegan(a, 2);
     sama([0, 1, 2, 3].map((i) => isiTeks(kiri, `bkn${i}`)), ["1", "2", "3", "4"], "boneka dihitung dari kiri");
     sama([0, 1, 2, 3].map((i) => isiTeks(kanan, `bkn${i}`)), ["4", "3", "2", "1"], "boneka dihitung dari kanan, angka terakhir di boneka paling kiri");
-    cek(/4 boneka/.test(L.teksTerlihat(akhirAdegan(a, 2)).join()) && /Tetap 4 boneka/.test(L.teksTerlihat(akhirAdegan(a, 4)).join()), "banyak boneka empat dari dua arah");
+    cek(/4 boneka/.test(L.teksTerlihat(akhirAdegan(a, 1)).join()) && /Tetap 4 boneka/.test(L.teksTerlihat(akhirAdegan(a, 2)).join()), "banyak boneka empat dari dua arah");
   }
   // Memisahkan mainan: tiap jenis berada di alasnya sendiri.
   {
-    const o = akhirAdegan(adegan(M_VIDEO, "dibantu"), 3);
+    const o = akhirAdegan(adegan(M_VIDEO, "dibantu"), 1);
     const di = (pref, alas) => {
       const k = ketemu(o, alas);
       return o.filter((x) => new RegExp(`^${pref}\\d+$`).test(x.id)).every((x) => x.x > k.x && x.x < k.x + k.w && x.y > k.y && x.y < k.y + k.h + 6);
@@ -328,7 +322,7 @@ let stat = { hitung: 0, titik: 0, tulis: 0 };
   }
   // Tabel mainan: angka di tabel sama dengan banyak mainan yang dihitung di adegan sebelumnya.
   {
-    const o = akhirAdegan(adegan(M_VIDEO, "catat-tabel"), 4);
+    const o = akhirAdegan(adegan(M_VIDEO, "catat-tabel"), 2);
     const dihitung = [hitungBenda(akhirAdegan(adegan(M_VIDEO, "hitung-mobil"), 0), "mb"), hitungBenda(akhirAdegan(adegan(M_VIDEO, "angka-terakhir"), 0), "bk"), hitungBenda(akhirAdegan(adegan(M_VIDEO, "sekilas"), 0), "bs"), hitungBenda(akhirAdegan(adegan(M_VIDEO, "sampai-sepuluh"), 0), "bb"), 0];
     sama([0, 1, 2, 3, 4].map((i) => isiTeks(o, `tv${i}`)), dihitung.map(String), "tabel: banyak tiap mainan sama dengan hasil hitungan cerita");
     sama([0, 1, 2, 3, 4].map((i) => !!ketemu(o, `gm${i}`)), [true, true, true, true, true], "tabel: gambar mainan di kolom kiri");
@@ -358,7 +352,7 @@ let stat = { hitung: 0, titik: 0, tulis: 0 };
   }
   // Kartu titik: banyak titik tiap kartu sama dengan kata bilangannya.
   const titik = (objs, p) => objs.filter((o) => new RegExp(`^${p}-t\\d+$`).test(o.id)).length;
-  const kartuTitik = [["sekilas", 3, "dd", 5], ["sekilas", 4, "sd", 3], ["sekilas", 4, "bn", 8], ["latihan-tiga", 0, "lk", 4], ["luar-sekilas", 0, "ua", 2], ["luar-sekilas", 0, "ub", 3], ["luar-sekilas", 1, "uc1", 1], ["luar-sekilas", 1, "uc2", 2], ["luar-sekilas", 1, "uc3", 3], ["luar-sekilas", 1, "uc4", 4], ["luar-sekilas", 1, "uc5", 5], ["luar-sekilas", 2, "ud", 8], ["luar-sekilas", 3, "ue", 4], ["luar-sekilas-terapan", 0, "ta", 5], ["luar-sekilas-terapan", 2, "tb", 3]];
+  const kartuTitik = [["sekilas", 1, "dd", 5], ["sekilas", 2, "sd", 3], ["sekilas", 2, "bn", 8], ["luar-sekilas", 0, "ua", 2], ["luar-sekilas", 0, "ub", 3], ["luar-sekilas", 1, "uc1", 1], ["luar-sekilas", 1, "uc2", 2], ["luar-sekilas", 1, "uc3", 3], ["luar-sekilas", 1, "uc4", 4], ["luar-sekilas", 1, "uc5", 5], ["luar-sekilas", 2, "ud", 8], ["luar-sekilas", 3, "ue", 4], ["luar-sekilas-terapan", 0, "ta", 5], ["luar-sekilas-terapan", 2, "tb", 3]];
   for (const [id, ke, p, n] of kartuTitik) {
     const a = adegan(M_VIDEO, id) ?? adegan(U, id);
     const o = akhirAdegan(a, ke);
@@ -371,18 +365,15 @@ let stat = { hitung: 0, titik: 0, tulis: 0 };
   {
     const p = akhirAdegan(adegan(U, "luar-sekilas"), 1);
     sama([1, 2, 3, 4, 5].map((n) => isiTeks(p, `ucl${n}`)), ["1", "2", "3", "4", "5"], "kartu titik satu sampai lima berlabel angka");
-    sama([isiTeks(akhirAdegan(adegan(M_VIDEO, "sekilas"), 1), "a3"), isiTeks(akhirAdegan(adegan(M_VIDEO, "sekilas"), 3), "a5")], ["3", "5"], "jawaban sekilas: tiga bola dan lima titik dadu");
+    sama([isiTeks(akhirAdegan(adegan(M_VIDEO, "sekilas"), 0), "a3"), isiTeks(akhirAdegan(adegan(M_VIDEO, "sekilas"), 1), "a5")], ["3", "5"], "jawaban sekilas: tiga bola dan lima titik dadu");
     const t2 = akhirAdegan(adegan(U, "luar-sekilas-terapan"), 1);
     sama([isiTeks(t2, "tq"), (ketemu(t2, "ta-t0")?.op ?? 1)], ["5", 0], "tebak sekilas: kartu ditutup, jawaban lima");
     sama(isiTeks(akhirAdegan(adegan(U, "luar-sekilas-terapan"), 2), "tr"), "3", "tebak sekilas kedua: jawaban tiga");
-    sama(isiTeks(akhirAdegan(adegan(M_VIDEO, "latihan-tiga"), 3), "jw"), "4", "Latihan 3: jawaban empat");
-    const ck = akhirAdegan(adegan(M_VIDEO, "latihan-tiga"), 2);
-    sama([0, 1, 2, 3].map((i) => isiTeks(ck, `ck${i}`)), ["1", "2", "3", "4"], "Latihan 3: hitungan cek satu sampai empat");
   }
   // Laci sepuluh kotak: sepuluh balok masuk ke sepuluh sel yang berbeda, penghitung berakhir 10.
   {
     const a = adegan(M_VIDEO, "sampai-sepuluh");
-    const o = akhirAdegan(a, 2);
+    const o = akhirAdegan(a, 1);
     const sel = o.filter((x) => /^lc-c\d+$/.test(x.id));
     const bb = o.filter((x) => /^bb\d+$/.test(x.id));
     const isi = sel.map((c) => bb.filter((b) => b.x + b.w / 2 > c.x && b.x + b.w / 2 < c.x + c.w && b.y + b.h / 2 > c.y && b.y + b.h / 2 < c.y + c.h).length);
@@ -390,7 +381,7 @@ let stat = { hitung: 0, titik: 0, tulis: 0 };
     sama(isiTeks(o, "hc"), "10", "laci: penghitung berakhir 10");
     // Pada setiap kata, banyak balok di laci sama dengan angka penghitung.
     let ok = true;
-    for (const ke of [1, 2]) {
+    for (const ke of [0, 1]) {
       for (let p = 0; p < L.kataDari(a.ketukan[ke].suara).length; p += 1) {
         const s2 = L.keadaanStory(a, ke, p);
         const dlm = s2.filter((x) => /^bb\d+$/.test(x.id) && x.y < 110).length;
@@ -403,31 +394,31 @@ let stat = { hitung: 0, titik: 0, tulis: 0 };
 }
 /* ------------------------------ Nama angka nol sampai sepuluh ------------------------------ */
 {
-  const baca = adegan(M_VIDEO, "baca-angka");
-  const sel = akhirAdegan(baca, 3);
+  const baca = adegan(M_VIDEO, "baca-tulis");
+  const sel = akhirAdegan(baca, 1);
   const NAMA = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh"];
   sama([...Array(11).keys()].map((i) => isiTeks(sel, `r${i}-t`)), [...Array(11).keys()].map(String), "kartu angka nol sampai sepuluh berurutan");
   sama([...Array(11).keys()].map((i) => isiTeks(sel, `rn${i}`)), NAMA, "nama angka di bawah kartu: nol sampai sepuluh");
   const sebut = (kt, awal) => kataSuara(kt).slice(awal);
-  sama(kataSuara(baca.ketukan[1]).filter((w) => NAMA.includes(w)), NAMA.slice(0, 6), "suara membaca nol sampai lima berurutan");
-  sama(kataSuara(baca.ketukan[3]).filter((w) => NAMA.includes(w)), NAMA.slice(6), "suara membaca enam sampai sepuluh berurutan");
+  sama(kataSuara(baca.ketukan[0]).filter((w) => NAMA.includes(w)), NAMA.slice(0, 6), "suara membaca nol sampai lima berurutan");
+  sama(kataSuara(baca.ketukan[1]).filter((w) => NAMA.includes(w)), NAMA.slice(6), "suara membaca enam sampai sepuluh berurutan");
   cek(sebut(baca.ketukan[0], 0).filter((w) => NAMA.includes(w)).join() === NAMA.slice(0, 6).join(), "suara kartu nol sampai lima berurutan");
   // Kartu sama besar dan berderet kiri ke kanan.
   const kar = [...Array(11).keys()].map((i) => ketemu(sel, `r${i}-k`));
   cek(kar.every((o) => o.w === kar[0].w && o.h === kar[0].h), "kartu angka sama besar");
   cek(kar.slice(0, 6).every((o, i, s) => i === 0 || (o.x > s[i - 1].x && o.y === s[0].y)) && kar.slice(6).every((o, i, s) => i === 0 || (o.x > s[i - 1].x && o.y === s[0].y)), "kartu angka berderet kiri ke kanan");
   // Angka tulisan tangan: jumlah angka sesuai tulisan.
-  const tulis = adegan(M_VIDEO, "tulis-angka");
-  const jumlah = [1, 2, 3, 4].map((i) => akhirAdegan(tulis, i).filter((o) => /^w\d+$/.test(o.id)).length);
+  const tulis = adegan(M_VIDEO, "baca-tulis");
+  const jumlah = [2, 3, 4].map((i) => akhirAdegan(tulis, i).filter((o) => /^w\d+$/.test(o.id)).length);
   stat.tulis = jumlah.reduce((a, b) => a + b, 0);
-  sama(jumlah, [1, 1, 1, 2], "angka tulisan tangan: lima, empat, tiga, sepuluh (dua angka)");
+  sama(jumlah, [1, 1, 2], "angka tulisan tangan: lima, empat, sepuluh (dua angka)");
   cek("0123456789".split("").every((c) => G.tulisAngka("t", 0, 0, c).length === 1), "kerangka tulisan angka nol sampai sembilan tersedia");
   sama(G.tulisAngka("t", 0, 0, "10").map((o) => o.x), [0, 32], "angka sepuluh: dua angka berdampingan");
   cek(akhirAdegan(tulis, 4).filter((o) => /^w\d+$/.test(o.id)).every((o) => o.gambar === true), "angka tulisan tergambar bertahap");
-  const nol = akhirAdegan(adegan(M_VIDEO, "nol"), 3);
+  const nol = akhirAdegan(adegan(M_VIDEO, "nol"), 2);
   sama(nol.filter((o) => /^z\d+$/.test(o.id)).length, 1, "menulis nol: satu angka nol digambar");
   // Angka yang ditulis sama dengan kata di suara (satu, dua, tiga, tujuh, lima).
-  const sama1 = [["latihan-satu", 2, "w", "7", "tujuh"], ["tulis-angka", 1, "w", "5", "lima"], ["tulis-angka", 2, "w", "4", "empat"], ["tulis-angka", 3, "w", "3", "tiga"]];
+  const sama1 = [["baca-tulis", 2, "w", "5", "lima"], ["baca-tulis", 3, "w", "4", "empat"], ["baca-tulis", 4, "w", "10", "sepuluh"]];
   for (const [id, ke, , , kata] of sama1) cek(kataSuara(adegan(M_VIDEO, id).ketukan[ke]).includes(kata), `${id}: suara menyebut ${kata}`);
 }
 
