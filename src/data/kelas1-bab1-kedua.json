@@ -1,0 +1,50 @@
+{
+  "chapterId": "k1-mat-bab1-kedua",
+  "chapter_id": "k1-mat-bab1-kedua",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subjectLabel": "MATEMATIKA - KELAS 1 SD",
+  "title": "BAB 1: LENTERA PERTAMA: MENYALAKAN SEPULUH CAHAYA",
+  "silabusElemen": "🌈 Fase A • Elemen Bilangan",
+  "suaraPerangkatSaja": true,
+  "suaraLaju": 0.7,
+  "suaraNada": 1,
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A",
+      "fullTitle": "Sub-Bab A: Gerbang Lentera: Hitung, Baca, Tulis Cahaya",
+      "targetDescription": "Sedang disiapkan.",
+      "secondaryBg": "#DCFCE7",
+      "secondaryBorder": "#16A34A",
+      "secondaryText": "#14532D",
+      "silabus": {
+        "teksSuara": "Sedang disiapkan.",
+        "cp": "Sedang disiapkan.",
+        "referensi": "TODO-RUJUKAN"
+      },
+      "metodeLuar": [],
+      "stories": [],
+      "videos": [],
+      "mindMaps": [],
+      "infografisData": [],
+      "concreteSlides": [],
+      "pictorialSlides": [],
+      "abstractSlides": [],
+      "interactiveGames": [],
+      "poinPenting": {
+        "poin": [],
+        "suara": "",
+        "caraMenyebutkan": "",
+        "rumah": "",
+        "refleksi": []
+      }
+    }
+  },
+  "practiceQuestions": []
+}
