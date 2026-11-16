@@ -142,11 +142,6 @@ export default function PetaKonsepSusun({
   };
 
   const lanjut = () => {
-    if (!siap) {
-      setTegur(true);
-      speakGuru(`Pasang semua tab dulu, ya. Tinggal ${total - jumlahPasang(k)} lagi.`);
-      return;
-    }
     onLanjut();
   };
 
@@ -302,14 +297,13 @@ export default function PetaKonsepSusun({
           <button
             type="button"
             onClick={lanjut}
-            aria-disabled={!siap}
-            className={`rounded-2xl border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-2.5 text-xs font-black text-[#FFE566] shadow-md md:text-sm ${siap ? "" : "opacity-50"}`}
+            className="rounded-2xl border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-2.5 text-xs font-black text-[#FFE566] shadow-md md:text-sm"
           >
             {teksLanjut}
           </button>
           {siap ? null : (
             <p role="status" className={`text-xs font-black ${tegur ? "text-[#7F1D1D]" : "text-[#1C01A5]/80"}`}>
-              Pasang semua tab dulu, ya.
+              Kamu boleh memasang semua tab sebelum lanjut, ya.
             </p>
           )}
         </div>
