@@ -35,13 +35,13 @@
     "header": {
       "badge": "PORTAL AKADEMIK & PORTOFOLIO SISWA IGIL",
       "title": "📊 Rapor Ketuntasan & Sertifikat Kelulusan Digital",
-      "subtitle": "Pantau ketuntasan belajar metode SMICPA, perolehan Poin Kualifikasi bulanan, hasil evaluasi Praktikum lintas-4-bab, dan unduh Sertifikat Kelulusan resmi tanpa biaya tambahan."
+      "subtitle": "Pantau ketuntasan belajar metode SMISCPA, perolehan Poin Kualifikasi bulanan, hasil evaluasi Praktikum lintas-4-bab, dan unduh Sertifikat Kelulusan resmi tanpa biaya tambahan."
     },
     "subTabs": [
       {
         "id": "rapor-ketuntasan",
         "label": "📋 Rapor Ketuntasan & Poin",
-        "description": "Rekap capaian per bab (Materi SMICPA, Latihan 30 Poin Kualifikasi, Ujian 70 Poin Kualifikasi), Praktikum 50 Poin Kualifikasi per blok 4 bab, dan status kandidat Papan Kualifikasi Beasiswa."
+        "description": "Rekap capaian per bab (Materi SMISCPA, Latihan 30 Poin Kualifikasi, Ujian 70 Poin Kualifikasi), Praktikum 50 Poin Kualifikasi per blok 4 bab, dan status kandidat Papan Kualifikasi Beasiswa."
       },
       {
         "id": "sertifikat-kelulusan",
@@ -56,7 +56,7 @@
         "code": "A+",
         "label": "ISTIMEWA (LULUS SEMPURNA)",
         "colorTheme": "indigo-amber",
-        "description": "Menuntaskan seluruh tahapan SMICPA, lulus Ujian Mandiri 100%, dan menyelesaikan Praktikum Sintesis lintas-4-bab."
+        "description": "Menuntaskan seluruh tahapan SMISCPA, lulus Ujian Mandiri 100%, dan menyelesaikan Praktikum Sintesis lintas-4-bab."
       },
       {
         "minScore": 80,
@@ -80,7 +80,7 @@
         "code": "C",
         "label": "SEDANG BELAJAR",
         "colorTheme": "rose",
-        "description": "Masih dalam proses eksplorasi tahapan Materi SMICPA dan Latihan Terbimbing."
+        "description": "Masih dalam proses eksplorasi tahapan Materi SMISCPA dan Latihan Terbimbing."
       }
     ],
     "hiddenGradingSpec": {

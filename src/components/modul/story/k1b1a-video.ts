@@ -8,12 +8,12 @@ import { ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_SEKILAS, ADEGAN_LUAR_SEKILAS_TERAPAN }
 
 /**
  * Kelas 1 Bab 1 Sub-Bab A (menghitung, membaca, dan menulis bilangan nol sampai sepuluh).
- * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Merapikan Lemari Mainan Igil" (Igil, Kaka, Abang, Mamah). Video metode luar: terpisah.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Merapikan Lemari Mainan Igil" (Igil, Kaka, Abang, Mamah). Video kedua: metode global (tiga metode), terpisah.
  */
 export const VIDEO_MATERI_K1B1A: VideoStory = {
   id: "k1b1a-materi",
   judul: "Merapikan Lemari Mainan Igil",
-  subjudul: "Materi kurikulum",
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
     adeganSapaan({ jenis: "materi", topik: "menghitung, membaca, dan menulis bilangan", daftar: ["Menghitung benda", "Membaca angka", "Menulis angka"] }),
@@ -32,11 +32,11 @@ export const VIDEO_MATERI_K1B1A: VideoStory = {
 
 export const VIDEO_LUAR_K1B1A: VideoStory = {
   id: "k1b1a-luar",
-  judul: "Menghitung, Membaca, dan Menulis Bilangan 0 sampai 10: Metode dari Luar",
-  subjudul: "Tiga metode luar",
+  judul: "Merapikan Lemari Mainan Igil",
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "menghitung dan menulis bilangan" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "menghitung dan menulis bilangan", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_SATU,
     ADEGAN_LUAR_SATU_TERAPAN,

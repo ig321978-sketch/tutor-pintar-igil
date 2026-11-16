@@ -77,7 +77,7 @@ export const ADEGAN_DIBANTU: AdeganStory = {
   ketukan: [
     k(
       SUARA_B1,
-      tambah(0, judul("Pisahkan yang sejenis"), ...wajah("kk2", 22, 50, E.kaka, 24)),
+      tambah(0, judul("Pisahkan yang sejenis"), ...wajah("kk2", 22, 50, E.kaka, 24, true)),
       tambah("Abang", emo("ab2", 278, 50, E.abang, 24)),
       tambah("Kata", ...bicara("kkb", 40, 32, 150, "Pisahkan yang sejenis!")),
       tambah("pisahkan", ...deretMainan(E.mobil, "pm", ACAK_MOBIL), ...deretMainan(E.boneka, "pb", ACAK_BONEKA), ...deretMainan(E.bola, "pl", ACAK_BOLA)),

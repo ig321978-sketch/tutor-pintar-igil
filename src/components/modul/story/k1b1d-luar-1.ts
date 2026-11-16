@@ -4,7 +4,7 @@ import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k1b1d-bantu";
 
 const OWL = "\u{1F989}";
 
-export const NAMA_METODE = ["CPA / SMICPA Concrete", "CPA Pictorial", "CPA Abstract"];
+export const NAMA_METODE = ["CPA / SMISCPA Concrete", "CPA Pictorial", "CPA Abstract"];
 export const NAMA_METODE_ID = ["Benda Nyata Dulu", "Gambar Representasi", "Simbol Matematika"];
 export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
 

@@ -112,7 +112,7 @@ export function BannerCooldownUjian({ nextRetryAllowedAt, onBukaMateri, onCobaLa
           <>
             <p className="text-sm font-semibold leading-relaxed text-slate-700 sm:text-base">
               Belum semua jawabanmu tepat, dan itu tidak apa-apa. Nomor soal yang salah sengaja tidak ditampilkan supaya
-              kamu belajar memahami konsepnya, bukan hanya mengganti jawaban. Baca lagi materi SMICPA sambil menunggu,
+              kamu belajar memahami konsepnya, bukan hanya mengganti jawaban. Baca lagi materi SMISCPA sambil menunggu,
               ya!
             </p>
             <div className="rounded-2xl bg-[#1C01A5] p-3 text-center text-white">
@@ -127,7 +127,7 @@ export function BannerCooldownUjian({ nextRetryAllowedAt, onBukaMateri, onCobaLa
                 onClick={onBukaMateri}
                 className="w-full rounded-2xl border-[#1C01A5] bg-white px-4 py-3 text-base font-black text-[#1C01A5] shadow-md hover:bg-indigo-50 sm:w-auto"
               >
-                📚 Buka Materi SMICPA
+                📚 Buka Materi SMISCPA
               </button>
             ) : null}
           </>

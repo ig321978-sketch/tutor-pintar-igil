@@ -137,7 +137,7 @@ export const ADEGAN_BACA_TULIS: AdeganStory = {
   latar: "#FFFBEB",
   ketukan: [
     k(SUARA_H1, tambah(0, judul("Kartu angka nol sampai sepuluh")), ...pos1.map((p, i) => tambah(p, ...kartuKe(i), namaKe(i)))),
-    k(SUARA_H2, ...pos2.map((p, i) => tambah(p, ...kartuKe(i + 6), namaKe(i + 6))), tambah("sepuluh.", ...wajah("kk", 270, 140, E.kaka, 26))),
+    k(SUARA_H2, ...pos2.map((p, i) => tambah(p, ...kartuKe(i + 6), namaKe(i + 6))), tambah("sepuluh.", ...wajah("kk", 270, 140, E.kaka, 26, true))),
     k(
       SUARA_I1,
       bersih(0),

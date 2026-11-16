@@ -152,7 +152,7 @@ const U = V.VIDEO_LUAR_K1B1D;
 const adegan = (v, id) => v.adegan.find((a) => a.id === id);
 const akhirAdegan = (a, ke = a.ketukan.length - 1) => L.keadaanStory(a, ke, 9999);
 const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, i, 9999))])]);
-const NAMA_LUAR = /CPA|SMICPA|Benda Nyata Dulu|Gambar Representasi|Simbol Matematika|Bruner|metode luar|metode dari luar/i;
+const NAMA_LUAR = /CPA|SMICPA|SMISCPA|Benda Nyata Dulu|Gambar Representasi|Simbol Matematika|Bruner|metode luar|metode dari luar/i;
 const kataVideo = (v) => v.adegan.reduce((t, ad) => t + ad.ketukan.reduce((u, kt) => u + L.kataDari(kt.suara).length, 0), 0);
 {
   const teksVideo = (v) => JSON.stringify(v.adegan.map(teksAdegan));
@@ -160,7 +160,7 @@ const kataVideo = (v) => v.adegan.reduce((t, ad) => t + ad.ketukan.reduce((u, kt
   const luar = teksVideo(U);
   cek(!NAMA_LUAR.test(materi), "video materi tidak memuat nama metode luar");
   for (const m of [...U1.NAMA_METODE, ...U1.NAMA_METODE_ID]) cek(luar.includes(m), `video metode luar memuat ${m}`);
-  sama(U1.NAMA_METODE, ["CPA / SMICPA Concrete", "CPA Pictorial", "CPA Abstract"], "nama metode di berkas luar-1");
+  sama(U1.NAMA_METODE, ["CPA / SMISCPA Concrete", "CPA Pictorial", "CPA Abstract"], "nama metode di berkas luar-1");
   sama(U1.NAMA_METODE_ID, ["Benda Nyata Dulu", "Gambar Representasi", "Simbol Matematika"], "nama Indonesia metode luar");
   // Video diputar sebagai guru yang mengajar: tidak ada penyebutan sumber buku di suara, teks terlihat, label sumber, judul adegan, dan subjudul.
   const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan|pertemuan/i;

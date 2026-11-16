@@ -12,7 +12,7 @@ const SUARA_S4 = "Di luar negeri, anak-anak berlatih dengan kartu titik dan dadu
 export const ADEGAN_LUAR_SEKILAS: AdeganStory = {
   id: "luar-sekilas",
   judul: "Subitizing: mengenali banyak sekilas",
-  sumber: "Metode luar: Subitizing",
+  sumber: "Metode global: Subitizing",
   latar: "#FAF5FF",
   ketukan: [
     k(
@@ -58,7 +58,7 @@ const IDT5 = [0, 1, 2, 3, 4].map((i) => `ta-t${i}`);
 export const ADEGAN_LUAR_SEKILAS_TERAPAN: AdeganStory = {
   id: "luar-sekilas-terapan",
   judul: "Subitizing: tebak sekilas",
-  sumber: "Metode luar: Subitizing, terapan",
+  sumber: "Metode global: Subitizing, terapan",
   latar: "#FAF5FF",
   ketukan: [
     k(SUARA_T1, tambah("bermain", ...kepala(2)), tambah("kartu", ...kartuTitik("ta", 110, 62, 5, 80)), tambah("sebentar.", emo("tm", 150, 176, "\u{1F440}", 30))),
@@ -80,7 +80,7 @@ export const ADEGAN_LUAR_SEKILAS_TERAPAN: AdeganStory = {
 };
 
 /* ------------------------------ 3. Ringkasan tiga metode ------------------------------ */
-const SUARA_R1 = "Mari kita ringkas tiga metode dari luar tadi.";
+const SUARA_R1 = "Mari kita ringkas tiga metode global tadi.";
 const SUARA_R2 = "One-to-One: satu benda dipasangkan dengan satu angka, tanpa terlewat.";
 const SUARA_R3 = "Cardinality: angka terakhir adalah banyaknya. Subitizing: kenali yang sedikit sekilas.";
 const SUARA_R4 = "Ketiganya membantu Igil, Kaka, dan Abang berhitung dari nol sampai sepuluh. Terima kasih sudah belajar.";
@@ -90,17 +90,17 @@ const deskripsi = (i: number) => teks(`rm${i}-d`, 150, 34 + i * 54 + 36, DESKRIP
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Ringkasan metode luar",
+  judul: "Ringkasan tiga metode global",
+  sumber: "Ringkasan metode global",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_R1, tambah(0, judul("Ringkasan")), tambah("ringkas", ...kartuMetode(0)), tambah("tiga", ...kartuMetode(1)), tambah("luar", ...kartuMetode(2))),
+    k(SUARA_R1, tambah(0, judul("Ringkasan")), tambah("ringkas", ...kartuMetode(0)), tambah("tiga", ...kartuMetode(1)), tambah("global", ...kartuMetode(2))),
     k(SUARA_R2, sorotkan("One-to-One:", "rm0-k"), tambah("dipasangkan", deskripsi(0))),
     k(SUARA_R3, sorotkan("Cardinality:", "rm1-k"), tambah("terakhir", deskripsi(1)), tambah("Subitizing:", deskripsi(2)), sorotkan("kenali", "rm2-k")),
     k(
       SUARA_R4,
       bersih(0),
-      tambah(0, judul("Terima kasih"), ...wajah("ow", 90, 100, E.kaka, 40), emo("ow2", 150, 100, E.igil, 44), emo("ow3", 210, 100, E.abang, 40)),
+      tambah(0, judul("Terima kasih"), ...wajah("ow", 90, 100, E.kaka, 40, true), emo("ow2", 150, 100, E.igil, 44), emo("ow3", 210, 100, E.abang, 40)),
       tambah("nol", ...kartu("rz", 60, 124, 180, 34, W.emas, ["berhitung 0 sampai 10"], 11)),
       tambah("Terima", teks("rt", 150, 184, "Sampai jumpa!", 12, W.ungu)),
     ),

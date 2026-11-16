@@ -20,9 +20,9 @@ type Props = {
   onBuka: () => void;
   onTutup: () => void;
   children: ReactNode;
-  /** Banyak tahap dalam metode. Bawaan 6 (SMICPA). Bab pilot memakai 7 (SMISCPA). */
+  /** Banyak tahap dalam metode. Bawaan 6. Bab dengan tahap Simulasi memakai 7 (SMISCPA). */
   jumlahTahap?: number;
-  /** Nama metode di kepala pop-up. Bawaan SMICPA. */
+  /** Nama metode di kepala pop-up. Bawaan SMISCPA. */
   namaMetode?: string;
   /**
    * Isi tahap tetap terpasang (hanya disembunyikan) setelah pop-up ditutup, jadi kemajuan anak di dalamnya
@@ -50,7 +50,7 @@ export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUp
     onTutup,
     children,
     jumlahTahap = 6,
-    namaMetode = "SMICPA",
+    namaMetode = "SMISCPA",
     pertahankan = false,
     tutupDiLatar = true,
   },
@@ -58,16 +58,21 @@ export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUp
 ) {
   const [portalSiap, setPortalSiap] = useState(false);
   const [pernahBuka, setPernahBuka] = useState(false);
+  // Pemeriksaan di komputer ini: kartu tahap tidak menunggu tahap sebelumnya.
+  const [paksaBuka, setPaksaBuka] = useState(process.env.NODE_ENV === "development");
+  const boleh = terbuka || paksaBuka;
 
   useEffect(() => {
     setPortalSiap(true);
+    const host = window.location.hostname;
+    if (host === "localhost" || host === "127.0.0.1") setPaksaBuka(true);
   }, []);
 
   // Isi dipasang pertama kali saat tahap dibuka, lalu bertahan sampai tahap terkunci lagi (ganti sub-bab).
   useEffect(() => {
-    if (!terbuka) setPernahBuka(false);
+    if (!boleh) setPernahBuka(false);
     else if (buka) setPernahBuka(true);
-  }, [terbuka, buka]);
+  }, [boleh, buka]);
 
   useEffect(() => {
     if (!buka) return;
@@ -84,7 +89,7 @@ export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUp
   }, [buka, onTutup]);
 
   const popup =
-    portalSiap && terbuka && (buka || (pertahankan && pernahBuka))
+    portalSiap && boleh && (buka || (pertahankan && pernahBuka))
       ? createPortal(
           <div
             className={`${buka ? "flex" : "hidden"} fixed inset-0 z-[190] items-center justify-center p-3 sm:p-5`}
@@ -140,16 +145,16 @@ export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUp
       data-igil-tahap-ui={IGIL_POPUP_TAHAP_UI}
     >
       <article
-        className={`overflow-hidden rounded-3xl border-4 bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)] ${
-          buka && terbuka ? "border-amber-400 ring-2 ring-amber-200" : terbuka ? "border-[#1C01A5]" : "border-[#1C01A5]/35 opacity-70"
+        className={`overflow-hidden rounded-3xl border-2 bg-white shadow-[0_4px_0_rgba(28,1,165,0.15)] ${
+          buka && boleh ? "border-amber-400" : boleh ? "border-[#1C01A5]" : "border-[#1C01A5]/35 opacity-70"
         }`}
       >
         <button
           type="button"
-          disabled={!terbuka}
+          disabled={!boleh}
           onClick={onBuka}
-          aria-label={terbuka ? `Buka tahap ${nomor}: ${judul}` : `Tahap ${nomor} masih terkunci`}
-          className="flex w-full flex-col gap-2 p-3 text-left disabled:cursor-not-allowed"
+          aria-label={boleh ? `Buka tahap ${nomor}: ${judul}` : `Tahap ${nomor} masih terkunci`}
+          className="flex w-full flex-col gap-3 p-4 text-left disabled:cursor-not-allowed"
         >
           <span className={`inline-flex w-fit rounded-full px-2.5 py-0.5 text-[10px] font-black ${badgeClass}`}>
             Tahap {nomor}
@@ -160,15 +165,15 @@ export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUp
           <span className="text-base font-black leading-tight text-[#1C01A5]">{judul}</span>
           <span className="text-[11px] font-bold leading-snug text-[#1C01A5]/70">{ringkas}</span>
           <span
-            className={`mt-1 w-full rounded-full border-2 px-3 py-1.5 text-center text-sm font-black ${
-              !terbuka
+            className={`mt-2 flex min-h-[52px] w-full items-center justify-center rounded-full border-4 px-3 py-3 text-center text-base font-black ${
+              !boleh
                 ? "border-[#94A3B8] bg-[#E2E8F0] text-[#64748B]"
                 : buka
                   ? "border-[#FFE566] bg-amber-100 text-[#1C01A5]"
                   : "border-[#FFE566] bg-[#1C01A5] text-[#FFE566]"
             }`}
           >
-            {!terbuka ? "🔒 Terkunci" : buka ? "▶ Sedang dibuka" : "▶ Buka"}
+            {!boleh ? "🔒 Terkunci" : buka ? "▶ Sedang dibuka" : "▶ Buka"}
           </span>
         </button>
       </article>

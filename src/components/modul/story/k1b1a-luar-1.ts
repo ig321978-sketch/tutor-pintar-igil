@@ -15,8 +15,8 @@ const sambungan = (id: string, pts: Titik[], yKartu: number, ke: number): Obj[] 
   ...kartuAngka(`${id}c${ke}`, pts[ke].x - 14, yKartu, String(ke + 1), W.krem, 28, 26, 16),
 ];
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Lemari Igil sudah rapi. Sekarang Kaka bercerita, anak-anak di negara lain juga belajar berhitung. Kita lihat tiga metode dari luar.";
+/* ------------------------------ 1. Pembuka metode global ------------------------------ */
+const SUARA_O1 = "Lemari Igil sudah rapi. Sekarang Kaka bercerita, anak-anak di negara lain juga belajar berhitung. Kita lihat tiga metode global.";
 const SUARA_O2 = "Tiga metode itu: One-to-One, Cardinality, dan Subitizing.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Korespondensi Satu-satu, Kardinalitas, dan Melihat Sekilas.";
 const SUARA_O4 = "Semua metode ini menjawab satu pertanyaan Igil: bagaimana menghitung banyak mainan dengan benar?";
@@ -24,16 +24,16 @@ const SUARA_O5 = "Kita coba tiap metode dengan mainan di kamar Igil, yaitu mobil
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk berhitung",
-  sumber: "Metode luar: pembuka",
+  judul: "Tiga metode global untuk berhitung",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
       SUARA_O1,
-      tambah(0, judul("Tiga metode dari luar")),
+      tambah(0, judul("Tiga metode global")),
       tambah(0, ...orang("kk", 40, 120, E.kaka, "Kaka")),
       tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)),
-      tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11)),
+      tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode global"], 11)),
     ),
     k(
       SUARA_O2,
@@ -75,7 +75,7 @@ const P4 = tata(4, 84);
 export const ADEGAN_LUAR_SATU: AdeganStory = {
   id: "luar-satu",
   judul: "One-to-One: satu benda, satu angka",
-  sumber: "Metode luar: One-to-One",
+  sumber: "Metode global: One-to-One",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -118,7 +118,7 @@ const posKelereng = urutKata(SUARA_T2, ["satu", "dua", "tiga", "empat", "lima", 
 export const ADEGAN_LUAR_SATU_TERAPAN: AdeganStory = {
   id: "luar-satu-terapan",
   judul: "One-to-One: memindahkan kelereng",
-  sumber: "Metode luar: One-to-One, terapan",
+  sumber: "Metode global: One-to-One, terapan",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -151,7 +151,7 @@ const P5 = tata(5, 90);
 export const ADEGAN_LUAR_KARDINAL: AdeganStory = {
   id: "luar-kardinal",
   judul: "Cardinality: angka terakhir adalah banyaknya",
-  sumber: "Metode luar: Cardinality",
+  sumber: "Metode global: Cardinality",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -191,7 +191,7 @@ const posR3 = urutKata(SUARA_R3, kataKe8, "kiri:");
 export const ADEGAN_LUAR_KARDINAL_TERAPAN: AdeganStory = {
   id: "luar-kardinal-terapan",
   judul: "Cardinality: menghitung delapan pensil",
-  sumber: "Metode luar: Cardinality, terapan",
+  sumber: "Metode global: Cardinality, terapan",
   latar: "#EFF6FF",
   ketukan: [
     k(SUARA_R1, tambah(0, ...kepala(1)), tambah("pensil", ...deret("pensil", "pm", P8, 11)), ...hitungAksi(SUARA_R1, "pm", P8, "kanan:")),

@@ -145,6 +145,7 @@ export function VideoCerita({
   onSelesai,
   ringkas = false,
   jedaAntarParagrafMs = 0,
+  polos = false,
 }: {
   judul: string;
   subjudul: string;
@@ -158,6 +159,8 @@ export function VideoCerita({
   ringkas?: boolean;
   /** Jeda (ms) setelah suara satu ketukan (paragraf layar) selesai, sebelum ketukan berikutnya. 0 = tanpa jeda tambahan. */
   jedaAntarParagrafMs?: number;
+  /** Tanpa bungkus kartu dan tanpa baris judul (dipakai di dalam pop-up yang sudah punya judul), supaya layar longgar. */
+  polos?: boolean;
 }) {
   const S = useRef<Peta>({ jalan: false, jeda: false, suara: true, selesai: false, a: 0, k: 0, ms: 0, nomor: 0, suaraBeres: false, beresMs: null });
   const jedaParagrafRef = useRef(jedaAntarParagrafMs);
@@ -311,14 +314,16 @@ export function VideoCerita({
     : TOMBOL;
 
   return (
-    <div className={`space-y-2 bg-white ${ringkas ? "rounded-2xl border-2 border-[#1C01A5] p-1.5" : "rounded-3xl border-4 border-[#1C01A5] p-2 shadow-[0_5px_0_rgba(28,1,165,0.22)]"}`}>
+    <div className={polos ? "space-y-4" : `space-y-2 bg-white ${ringkas ? "rounded-2xl border-2 border-[#1C01A5] p-1.5" : "rounded-3xl border-4 border-[#1C01A5] p-2 shadow-[0_5px_0_rgba(28,1,165,0.22)]"}`}>
       <style>{CSS}</style>
+      {polos ? null : (
       <div className="flex items-center justify-between gap-2 px-1">
         <p className={`min-w-0 font-black leading-tight text-[#1C01A5] ${ringkas ? "text-xs" : "text-base md:text-lg"}`}>🎬 {ringkas ? judul : `Video: ${judul}`}</p>
         <p className={`shrink-0 rounded-full border-2 border-[#1C01A5] bg-[#FFE566] font-black text-[#1C01A5] ${ringkas ? "px-1.5 py-0.5 text-[10px]" : "px-2 py-0.5 text-[11px]"}`}>
           {pos.a + 1}/{adegan.length}
         </p>
       </div>
+      )}
 
       <div className={`relative mx-auto w-full overflow-hidden bg-[#DFF1FF] ${ringkas ? "rounded-xl border-2 border-[#1C01A5]" : "max-w-xl rounded-[1.4rem] border-4 border-[#1C01A5]"}`}>
         <svg viewBox="0 0 300 208" className={`block h-auto w-full ${jeda ? "vc-jeda" : ""}`} role="img" aria-label={`Animasi cerita: ${ad.judul}`}>
@@ -327,6 +332,11 @@ export function VideoCerita({
             {ad.render({ k: pos.k, t })}
           </g>
         </svg>
+        {polos ? (
+          <p className="absolute right-2 top-2 rounded-full bg-[#FFE566]/95 px-2.5 py-0.5 text-[11px] font-black text-[#1C01A5]">
+            {pos.a + 1}/{adegan.length}
+          </p>
+        ) : null}
         {!sudahMulai ? (
           <div className={`absolute inset-0 flex flex-col items-center justify-center bg-[#FFE9A8]/90 text-center text-[#1C01A5] ${ringkas ? "gap-1 px-2" : "gap-2 px-4"}`}>
             <p className={`font-black leading-tight ${ringkas ? "text-base" : "text-3xl md:text-4xl"}`}>{judul}</p>
@@ -344,7 +354,7 @@ export function VideoCerita({
       </div>
 
       {teksTampil ? (
-      <p role="status" aria-live="polite" className={`rounded-2xl border-[#1C01A5] bg-[#FFF7CC] text-center font-black leading-snug text-[#1C01A5] ${ringkas ? "min-h-[2.6rem] border-2 px-2 py-1 text-[11px]" : "min-h-[3.4rem] border-4 px-3 py-2 text-base md:text-lg"}`}>
+      <p role="status" aria-live="polite" className={`rounded-2xl border-[#1C01A5] bg-[#FFF7CC] text-center font-black leading-snug text-[#1C01A5] ${polos ? "min-h-[3.4rem] px-4 py-3 text-base md:text-lg" : ringkas ? "min-h-[2.6rem] border-2 px-2 py-1 text-[11px]" : "min-h-[3.4rem] border-4 px-3 py-2 text-base md:text-lg"}`}>
         {kalimat}
       </p>
       ) : null}
@@ -357,7 +367,7 @@ export function VideoCerita({
             onClick={() => lompatKe(i)}
             aria-label={`Adegan ${i + 1}: ${x.judul}`}
             aria-current={sudahMulai && i === pos.a ? "step" : undefined}
-            className={`flex items-center justify-center rounded-full border-[#1C01A5] font-black text-[#1C01A5] ${ringkas ? "h-7 w-7 border-2 text-xs" : "h-9 w-9 border-4 text-sm"} ${sudahMulai && i === pos.a ? "bg-[#FFE566]" : sudahMulai && i < pos.a ? "bg-[#BBF7D0]" : "bg-white"}`}
+            className={`flex items-center justify-center rounded-full border-[#1C01A5] font-black text-[#1C01A5] ${ringkas ? "h-7 w-7 border-2 text-xs" : polos ? "h-10 w-10 border-2 text-sm" : "h-9 w-9 border-4 text-sm"} ${sudahMulai && i === pos.a ? "bg-[#FFE566]" : sudahMulai && i < pos.a ? "bg-[#BBF7D0]" : "bg-white"}`}
           >
             {i + 1}
           </button>

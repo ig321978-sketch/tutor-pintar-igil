@@ -77,7 +77,7 @@ const BARIS_BANDING = [
   },
   {
     topik: "Kalau jawabannya salah",
-    bimbing: "Anak membaca ulang materi SMICPA, lalu mencoba lagi sampai paham.",
+    bimbing: "Anak membaca ulang materi SMISCPA, lalu mencoba lagi sampai paham.",
     joki: "Jawaban ditebak atau dicari sampai kebetulan benar, tanpa paham.",
   },
   {
@@ -259,7 +259,7 @@ function RumusToken() {
 
       <div className="rounded-3xl border-2 border-indigo-100 bg-indigo-50/40 p-4">
         <p className="text-sm font-black text-indigo-950">
-          📖 Belajar dengan metode SMICPA
+          📖 Belajar dengan metode SMISCPA
         </p>
         <ol className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-6">
           {TAHAP_SMICPA.map((t) => (

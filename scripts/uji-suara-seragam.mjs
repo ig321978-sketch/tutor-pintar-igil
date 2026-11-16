@@ -5,6 +5,7 @@
  * parameter tetap (id-ID, laju 0,75, nada lembut), suara neural lebih dulu dengan cadangan lokal, jeda 2 detik antar paragraf, dan pemecahan naskah panjang.
  */
 import { readFileSync } from "node:fs";
+import { ejaanInggrisUntukSuaraId } from "../src/lib/ejaan-inggris-id.ts";
 import { SUARA_SERAGAM, adalahSuaraIndonesia, pecahKalimat, pecahParagraf, pilihSuaraSeragam, potongBerjeda } from "../src/lib/suara-guru-seragam.ts";
 
 let lulus = 0;
@@ -148,6 +149,17 @@ for (const nama of ["Android Chrome (satu suara Google)", "Android lama (kode in
   cek(/jedaAntarParagrafMs\?: number/.test(modul), "suara-guru-modul: opsi jedaAntarParagrafMs tersedia");
   const video = baca("src/components/modul/video-k1b1a.tsx");
   cek(/jedaAntarParagrafMs=\{SUARA_SERAGAM\.jedaAntarParagrafMs\}/.test(video), "video Story Kelas 1 Bab 1 Sub-Bab A: jeda 2 detik antar paragraf layar");
+}
+
+// Kata Inggris dibaca dengan logat Indonesia: dieja ulang dengan huruf Indonesia supaya suara id-ID tidak membacanya mentah.
+{
+  const e = (t) => ejaanInggrisUntukSuaraId(t);
+  cek(e("One-to-One") === "wan tu wan", "One-to-One dieja wan tu wan");
+  cek(e("Cardinality") === "kar di na li ti", "Cardinality dieja kar di na li ti");
+  cek(e("Subitizing") === "su bi tai zing", "Subitizing dieja su bi tai zing");
+  cek(e("Mind-Map") === "main map", "Mind-Map dieja main map");
+  cek(e("Metode One-to-One, atau Korespondensi Satu-satu.") === "Metode wan tu wan, atau Korespondensi Satu-satu.", "kata Indonesia tetap utuh di sekitar istilah Inggris");
+  cek(e("Kita lihat tiga metode global.") === "Kita lihat tiga metode global.", "kalimat Indonesia murni tidak diubah");
 }
 
 console.log(`\nUji suara seragam: ${lulus} cek lulus, ${gagal} gagal.`);

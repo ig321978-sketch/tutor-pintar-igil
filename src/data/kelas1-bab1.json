@@ -583,7 +583,7 @@
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. CPA / SMICPA Concrete",
+          "stepTitle": "2. CPA / SMISCPA Concrete",
           "stepDesc": "Pelajari membilang mulai dari benda yang bisa dipegang.",
           "icon": "⬆️",
           "flowFrom": "Langkah Maju (Ke Kanan / Naik)",
@@ -655,7 +655,7 @@
           "fruitName": "Benda Nyata Dulu",
           "emoji": "🌍",
           "countNum": 1,
-          "countWord": "METODE LUAR · CPA / SMICPA Concrete",
+          "countWord": "METODE LUAR · CPA / SMISCPA Concrete",
           "voiceSentence": "METODE LUAR. Benda Nyata Dulu. Pelajari membilang mulai dari benda yang bisa dipegang."
         },
         {
@@ -758,7 +758,7 @@
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "CPA / SMICPA Concrete",
+          "nama": "CPA / SMISCPA Concrete",
           "namaId": "Benda Nyata Dulu",
           "asal": "Bruner CPA",
           "ringkas": "Pelajari membilang mulai dari benda yang bisa dipegang.",
@@ -843,7 +843,7 @@
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. CPA / SMICPA Concrete",
+          "stepTitle": "2. CPA / SMISCPA Concrete",
           "stepDesc": "Pelajari membilang mulai dari benda yang bisa dipegang.",
           "icon": "↙️",
           "flowFrom": "1 Wadah Gabungan (Misal 5)",
@@ -915,7 +915,7 @@
           "fruitName": "Benda Nyata Dulu",
           "emoji": "🌍",
           "countNum": 1,
-          "countWord": "METODE LUAR · CPA / SMICPA Concrete",
+          "countWord": "METODE LUAR · CPA / SMISCPA Concrete",
           "voiceSentence": "METODE LUAR. Benda Nyata Dulu. Pelajari membilang mulai dari benda yang bisa dipegang."
         },
         {
@@ -1018,7 +1018,7 @@
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "CPA / SMICPA Concrete",
+          "nama": "CPA / SMISCPA Concrete",
           "namaId": "Benda Nyata Dulu",
           "asal": "Bruner CPA",
           "ringkas": "Pelajari membilang mulai dari benda yang bisa dipegang.",

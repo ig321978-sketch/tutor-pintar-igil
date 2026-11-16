@@ -59,5 +59,27 @@ cek("mesin: jeda otomatis saat layar disembunyikan", /visibilitychange/.test(mes
 cek("mesin: pengaman bila suara tidak melapor selesai", /batas = kalimat\.length \* 150/.test(mesin));
 cek("pemutar: slide Cerita K2 lama tidak dipasang lagi", !/Cerita: (CeritaHitungK2A|CeritaNilaiK2B|CeritaBandingK2C)/.test(pemutar));
 
+
+const cekU = (ok, nama) => cek(nama, ok);
+/* ------------------------------ Tampilan longgar, sampul ikon IGIL, dan label ------------------------------ */
+{
+  const daftar = fs.readFileSync(new URL("../src/components/modul/daftar-video-cerita.tsx", import.meta.url), "utf8");
+  cekU(/\/icon-512\.png/.test(daftar), "daftar video: sampul memakai ikon IGIL (favicon)");
+  cekU(!/Susunan menyamping|Ada \{banyak\} video cerita|Ketuk ▶ Putar/.test(daftar), "daftar video: tanpa label penjelasan penggunaan video di atas video");
+  cekU(/min-h-\[56px\]/.test(daftar) && /h-14 w-14/.test(daftar), "daftar video: tombol Putar diperbesar");
+  cekU(/<VideoCerita\s+polos/.test(daftar), "pop-up video: pemutar tanpa bungkus kartu ganda (polos)");
+  cekU(/videoAktif\.naskah\.subjudul/.test(daftar), "pop-up video: sub-judul tampil di kepala pop-up");
+  const mesin = fs.readFileSync(new URL("../src/components/modul/video-cerita.tsx", import.meta.url), "utf8");
+  cekU(/polos\?: boolean/.test(mesin) && /polos \? null : \(/.test(mesin), "pemutar: mode polos menghilangkan baris judul ganda");
+  const popup = fs.readFileSync(new URL("../src/components/modul/popup-tahap-smicpa.tsx", import.meta.url), "utf8");
+  cekU(/min-h-\[52px\]/.test(popup) && /text-base font-black/.test(popup), "kartu tahap: tombol Buka diperbesar");
+  cekU(/namaMetode = "SMISCPA"/.test(popup), "kartu tahap: nama metode bawaan SMISCPA");
+}
+// Label tampilan tidak lagi memakai SMICPA (identifier kode dan komentar dikecualikan).
+{
+  const hitung = (f) => (fs.readFileSync(new URL(`../${f}`, import.meta.url), "utf8").match(/"[^"\n]*SMICPA[^"\n]*"|`[^`\n]*SMICPA[^`\n]*`|>[^<\n{]*SMICPA/g) ?? []).length;
+  for (const f of ["src/components/IgilModulePlayer.tsx", "src/components/info/HowIgilWorksSection.tsx", "src/components/info/StudentLearningBanners.tsx", "src/components/modul/popup-tahap-smicpa.tsx", "src/data/rapor-dan-ranking.json", "src/data/kelas1-bab1.json", "src/components/modul/story/k1b1d-luar-1.ts"]) cekU(hitung(f) === 0, `${f}: label tanpa SMICPA (memakai SMISCPA)`);
+}
+
 console.log(`\nVideo cerita: ${lulus} lulus, ${gagal} gagal`);
 process.exit(gagal ? 1 : 0);

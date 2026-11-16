@@ -12,6 +12,8 @@ export type OpsiSapaan = {
   topik: string;
   /** Hanya video materi: tiga hal yang akan dipelajari (teks pendek). */
   daftar?: string[];
+  /** Hanya video metode luar: nama yang tampil di label sumber. Bawaan "Metode luar"; Kelas 1 Bab 1 Sub-Bab A memakai "Metode global". */
+  labelMetode?: string;
 };
 
 const BIRU = "#1C01A5";
@@ -46,7 +48,7 @@ export function adeganSapaan(o: OpsiSapaan): AdeganStory {
   return {
     id: o.id ?? "sapaan",
     judul: "Sapaan dan materi hari ini",
-    sumber: materi ? "Materi: sapaan dan tujuan" : "Metode luar: sapaan dan tujuan",
+    sumber: materi ? "Materi: sapaan dan tujuan" : `${o.labelMetode ?? "Metode luar"}: sapaan dan tujuan`,
     latar: "#FFF7ED",
     ketukan: [
       {

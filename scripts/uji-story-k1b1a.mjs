@@ -151,13 +151,14 @@ const U = V.VIDEO_LUAR_K1B1A;
 const adegan = (v, id) => v.adegan.find((a) => a.id === id);
 const akhirAdegan = (a, ke = a.ketukan.length - 1) => L.keadaanStory(a, ke, 9999);
 const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, i, 9999))])]);
-const NAMA_LUAR = /One-to-One|Cardinality|Subitizing|Korespondensi|Kardinalitas|Melihat Sekilas|metode luar|metode dari luar/i;
+const NAMA_LUAR = /One-to-One|Cardinality|Subitizing|Korespondensi|Kardinalitas|Melihat Sekilas|metode luar|metode dari luar|metode global/i;
 const kataVideo = (v) => v.adegan.reduce((t, ad) => t + ad.ketukan.reduce((u, kt) => u + L.kataDari(kt.suara).length, 0), 0);
 {
   const teksVideo = (v) => JSON.stringify(v.adegan.map(teksAdegan));
   const materi = teksVideo(M_VIDEO);
   const luar = teksVideo(U);
-  cek(!NAMA_LUAR.test(materi), "video materi tidak memuat nama metode luar");
+  cek(!NAMA_LUAR.test(materi), "video materi tidak memuat nama metode global");
+  cek(!/metode luar|metode dari luar/i.test(luar), "video kedua memakai istilah metode global, bukan metode luar");
   for (const m of [...U1.NAMA_METODE, ...U1.NAMA_METODE_ID]) cek(luar.includes(m), `video metode luar memuat ${m}`);
   sama(U1.NAMA_METODE, ["One-to-One", "Cardinality", "Subitizing"], "nama metode di berkas luar-1");
   sama(U1.NAMA_METODE_ID, ["Korespondensi Satu-satu", "Kardinalitas", "Melihat Sekilas"], "nama Indonesia metode luar");
@@ -177,11 +178,11 @@ const kataVideo = (v) => v.adegan.reduce((t, ad) => t + ad.ketukan.reduce((u, kt
       cek(!/Uji Kompetensi|Pengayaan|Ayo Berlatih|Ayo Berdiskusi|Ayo Berefleksi|Ayo Mengingat|Ayo Berkomunikasi|Ayo Berpikir|soal \d|Soal \d|Eksplorasi|Refleksi/.test(semua.join(" | ")), `${v.id}/${a.id}: latihan disajikan sebagai Latihan, tanpa istilah buku`);
     }
   }
-  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Tiga metode luar", "subjudul video: Materi kurikulum dan Tiga metode luar");
+  cek(M_VIDEO.subjudul === "Metode Kurikulum" && U.subjudul === "Metode Global", "subjudul video: Metode Kurikulum dan Metode Global");
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
-  cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
+  cek(U.adegan.every((a) => /Metode global|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.id === "k1b1a-materi" && U.id === "k1b1a-luar", "id video k1b1a-materi dan k1b1a-luar");
-  cek(U.judul.endsWith(": Metode dari Luar") && !/menurut/i.test(M_VIDEO.judul), "judul video: materi tanpa 'menurut', luar berakhir ': Metode dari Luar'");
+  cek(M_VIDEO.judul === "Merapikan Lemari Mainan Igil" && U.judul === "Merapikan Lemari Mainan Igil", "judul kedua video sama dengan judul Sub-Bab: Merapikan Lemari Mainan Igil");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,kamar-berantakan,dibantu,hitung-mobil,angka-terakhir,sekilas,sampai-sepuluh,nol,baca-tulis,catat-tabel,penutup", "urutan adegan materi");
   cek(U.adegan.map((a) => a.id).join() === "sapaan,luar-pembuka,luar-satu,luar-satu-terapan,luar-kardinal,luar-kardinal-terapan,luar-sekilas,luar-sekilas-terapan,luar-ringkas", "urutan adegan metode luar");
   cek(M_VIDEO.adegan[0].id === "sapaan" && U.adegan[0].id === "sapaan", "tiap video dibuka adegan sapaan");
@@ -444,6 +445,18 @@ let stat = { hitung: 0, titik: 0, tulis: 0 };
     cek(T.baris.every((b) => b.label.split(/\s+/).every((w) => w.length <= 8)), "tabel susun: kata terpanjang kolom label <= 8 huruf");
     cek(!/\d/.test(T.suara) && !/\d/.test(T.petunjuk), "tabel susun: suara dan petunjuk tanpa digit");
   } else cek(false, "peta dan tabel susun: .tmp-k1b1as/A.json ada");
+}
+
+/* ------------------------------ Tokoh: Igil dan Kaka anak perempuan ------------------------------ */
+{
+  cek(G.E.igil === "\u{1F467}" && G.E.kaka === "\u{1F467}", "Igil dan Kaka berikon anak perempuan");
+  const ig = G.orang("ig", 40, 100, G.E.igil, "Igil");
+  const kk = G.orang("kk", 40, 100, G.E.kaka, "Kaka");
+  cek(!ig.some((o) => /-pita$/.test(o.id)), "Igil tanpa pita");
+  cek(kk.some((o) => /-pita$/.test(o.id) && o.isi === "\u{1F380}"), "Kaka berpita merah muda supaya beda dari Igil");
+  cek(G.wajah("w", 0, 0, G.E.kaka, 30, true).length === 2 && G.wajah("w", 0, 0, G.E.igil).length === 1, "wajah: pita hanya bila diminta");
+  const materi = JSON.stringify(V.VIDEO_MATERI_K1B1A.adegan) + JSON.stringify(V.VIDEO_LUAR_K1B1A.adegan);
+  cek(!materi.includes("\u{1F9D2}"), "video tanpa ikon anak netral lagi (Igil sekarang anak perempuan)");
 }
 
 /* ------------------------------ Emoji, akhir baris, dan kemurnian ------------------------------ */

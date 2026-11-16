@@ -1011,7 +1011,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const adaSimMateri = SimulasiMateri !== undefined;
   const jumlahTahap = adaSimMateri ? 7 : 6;
   const geserTahap = adaSimMateri ? 1 : 0;
-  const namaMetode = adaSimMateri ? "SMISCPA" : "SMICPA";
+  const namaMetode = "SMISCPA";
   const daftarTahapSilabus = adaSimMateri ? TAHAP_SILABUS_SMISCPA : TAHAP_SILABUS;
   const materi = paket ? paket.materi : MATERI_BAB[bab as BabLama];
   const SUB_BABS = materi.subBabs as Record<SubBabId, SubBabContent>;
