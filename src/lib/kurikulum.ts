@@ -965,6 +965,8 @@ export const JUDUL_MTK_3_BAB3 = "Bab 3: Pengukuran Panjang dan Berat";
 export const JUDUL_MTK_3_BAB4 = "Bab 4: Unsur-Unsur Bangun Datar";
 export const JUDUL_MTK_3_BAB5 = "Bab 5: Penyajian Data dalam Tabel";
 export const JUDUL_MTK_4_BAB1 = "Bab 1: Bilangan Cacah sampai 10.000";
+/** Modul baru Pasar Terapung (draf, perlu review): Kelas 1 Bab 2 (10 materi). Halaman daftar: src/app/ruang-belajar/mtk-1-bab2-baru. */
+export const JUDUL_MTK_1_BAB2_BARU = "Bab 2: Penjumlahan sampai 10 (Draf)";
 export const JUDUL_MTK_4_BAB1_KEDUA = "Bab 1: Bilangan Cacah sampai 10.000 (Sub-Bab A)";
 export const JUDUL_MTK_4_BAB2 = "Bab 2: Pecahan";
 export const JUDUL_MTK_4_BAB3 = "Bab 3: Pola Gambar dan Pola Bilangan";
@@ -1031,11 +1033,12 @@ export const DATA_KURIKULUM = pasangBabSiap(
  * sejak pilihan sumber di Ruang Belajar, jadi tidak lagi muncul di dropdown materi Opsi 1.
  */
 export const DATA_MODUL_IGIL: Record<string, Record<string, string[]>> = {
-  "1 SD": { Matematika: [JUDUL_MTK_1_BAB1_KEDUA] },
+  "1 SD": { Matematika: [JUDUL_MTK_1_BAB1_KEDUA, JUDUL_MTK_1_BAB2_BARU] },
   "4 SD": { Matematika: [JUDUL_MTK_4_BAB1_KEDUA] },
 };
 export const JALUR_MODUL_IGIL: Record<string, string> = {
   [JUDUL_MTK_1_BAB1_KEDUA]: "/ruang-belajar/mtk-1-bab1-kedua",
+  [JUDUL_MTK_1_BAB2_BARU]: "/ruang-belajar/mtk-1-bab2-baru",
   [JUDUL_MTK_4_BAB1_KEDUA]: "/ruang-belajar/mtk-4-bab1-kedua",
 };
 
