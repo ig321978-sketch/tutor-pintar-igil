@@ -1,75 +1,83 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, bulat, emo, gambarTokoh, hapus, k, kotak, redamkan, sorotkan, tambah, teks, ubah } from "./kit/dasar";
-import { IGIL, NIKO, TALA, benda, lambang, rumput } from "./kit/dunia-k1";
+import { IGIL, LINTANG, NIKO, TALA, benda, lambang, rumput } from "./kit/dunia-k1";
 import {
   APEL,
-  BK,
   LATAR_KEBUN,
   LATAR_TERANG,
   U_APEL,
   WARNA_JALUR,
   anak,
   bingkaiSepuluh,
-  hitungBenda,
   idBenda,
   idBingkai,
   idPenghitung,
-  isiPetak,
   jalurDi,
+  judulLangkah,
+  kainTutup,
+  keNampan,
+  keRumput,
   keranjangKebun,
+  nampan,
   penghitung,
-  petak,
+  posSebar,
   slotKr,
-  tandaTanya,
 } from "./o2k1a-bantu";
 
 /** Video Sub-Bab A (bagian 6): langkah ISI (nampan berlubang sepuluh, sekilas), membaca lambang, dan label dari Niko. */
 
-/* ------------------------------ ISI: nampan Nenek berlubang sepuluh ------------------------------ */
-const nampan = (): Obj => kotak("nmp", 57, 72, 186, 84, "#D9A441", W.coklat, { rx: 10, tebal: 1.8 });
-const apelNampan = (dari: number, sampai: number): Obj[] => Array.from({ length: sampai - dari + 1 }, (_, i) => benda("f" + (dari + i), petak(dari + i - 1)[0], petak(dari + i - 1)[1], APEL, 24));
+const apelRumput = (dari: number, sampai: number): Obj[] => Array.from({ length: sampai - dari + 1 }, (_, i) => benda("a" + (dari + i), posSebar(dari + i - 1)[0], posSebar(dari + i - 1)[1], APEL, U_APEL));
+const ubahCn = (kata: number, n: number) => ubah(kata, { id: "cn-t", isi: String(n) });
 
+/* ------------------------------ ISI: nampan Nenek berlubang sepuluh, dari kosong sampai penuh ------------------------------ */
 export const ADEGAN_ISI: AdeganStory = {
   id: "isi",
   judul: "Isi: nampan berlubang sepuluh",
-  sumber: "Metode: isi bingkai sepuluh",
+  sumber: "Metode: isi Bingkai Sepuluh",
   latar: LATAR_TERANG,
   ketukan: [
-    k("Nampan Nenek ini bingkai sepuluh.", tambah(0, nampan(), ...bingkaiSepuluh(), ...anak(TALA, 30)), tambah(4, ...penghitung("10"))),
-    k("Isi dari baris atas, kiri ke kanan.", tambah(3, emo("pk", petak(0)[0], BK.y - 12, "\u{1F447}", 24)), ubah(6, { id: "pk", x: petak(4)[0] })),
-    k("Satu, dua, tiga, empat, lima, enam.", hapus(0, "pk"), ...[1, 2, 3, 4, 5, 6].flatMap((n) => isiPetak(n - 1, n, APEL))),
-    k("Banyaknya apel sama dengan petak yang terisi.", sorotkan(1, ...idBenda("f", 6)), sorotkan(4, ...idBingkai.slice(0, 6))),
-    k("Nampan penuh. Banyaknya sepuluh.", redamkan(0, ...idBenda("f", 6), ...idBingkai.slice(0, 6)), tambah(1, ...apelNampan(7, 10)), ubah(3, { id: "cn-t", isi: "10" })),
-    k("Nampan kosong. Banyaknya nol.", hapus(1, ...idBenda("f", 10)), ubah(3, { id: "cn-t", isi: "0" })),
+    k(
+      "Ini Bingkai Sepuluh, nampan Nenek.",
+      tambah(0, rumput(150), nampan(), ...bingkaiSepuluh(), ...anak(LINTANG, 30), ...apelRumput(1, 10), judulLangkah("ISI")),
+      tambah(1, teks("bs", 150, 150, "Bingkai Sepuluh", 10, W.ungu)),
+      tambah(2, ...penghitung("10")),
+    ),
+    k("Nampan masih kosong. Nol.", ubahCn(3, 0)),
+    k(
+      "Lintang mengisi dari kiri atas. Satu, dua, tiga, empat, lima.",
+      ...[1, 2, 3, 4, 5].flatMap((n) => [keNampan(4 + n, n), ubahCn(4 + n, n)]),
+    ),
+    k("Baris bawah. Enam, tujuh, delapan, sembilan, sepuluh.", ...[6, 7, 8, 9, 10].flatMap((n) => [keNampan(n - 4, n), ubahCn(n - 4, n)])),
+    k("Satu petak, satu apel.", sorotkan(1, ...idBingkai), sorotkan(3, ...idBenda("a", 10))),
+    k("Nampan penuh. Banyaknya sepuluh.", redamkan(0, ...idBingkai, ...idBenda("a", 10)), tambah(1, emo("ck", 268, 100, "\u{2705}", 28))),
   ],
 };
 
-/* ------------------------------ ISI: mengenali sekilas dua, tiga, empat, lalu memeriksa dengan menghitung ------------------------------ */
-const PERIKSA: Record<number, string> = { 2: "Kita periksa. Satu, dua.", 3: "Kita periksa. Satu, dua, tiga.", 4: "Kita periksa. Satu, dua, tiga, empat." };
-
-/** Satu putaran: apel tampil sebentar lalu hilang (ketukan pertama), lalu diperiksa dengan menghitung satu per satu (ketukan kedua). */
-const putaran = (n: number, prev: number | null, awal: boolean) => {
-  const ids = idBenda("f", n);
-  const lama = prev === null ? [] : [...idBenda("f", prev), ...idPenghitung];
-  return [
-    k(
-      "Lihat sekilas. Berapa apelnya?",
-      ...(awal ? [tambah(0, nampan(), ...bingkaiSepuluh(), ...anak(TALA, 30))] : []),
-      ...(lama.length ? [hapus(0, ...lama)] : []),
-      tambah(0, ...apelNampan(1, n)),
-      hapus(2, ...ids),
-      tambah(3, tandaTanya("qm", 268, 100)),
-    ),
-    k(PERIKSA[n], hapus(0, "qm"), tambah(1, ...apelNampan(1, n)), tambah(2, ...penghitung("1")), ...hitungBenda(ids, 2)),
-  ];
+/* ------------------------------ ISI: mengenali sekilas tiga, satu, empat; apel ditutup sebelum ditebak, lalu diperiksa ------------------------------ */
+/** Satu putaran: apel tampil sekitar satu setengah detik, ditutup kain, lalu kain dibuka dan apel dihitung satu per satu. */
+const putaran = (n: number, prev: number | null, suara: string, awal: boolean) => {
+  const lama = prev === null ? [] : idBenda("a", prev);
+  return k(
+    suara,
+    ...(awal ? [tambah(0, rumput(150), nampan(), ...bingkaiSepuluh(), ...anak(TALA, 30), ...apelRumput(1, 10))] : [hapus(0, ...idPenghitung), ...lama.map((_, i) => keRumput(0, i + 1)), ubah(0, ...lama.map((id) => ({ id, sorot: false })))]),
+    ...idBenda("a", n).map((_, i) => keNampan(awal ? 0 : 1, i + 1)),
+    tambah(3, kainTutup()),
+    hapus(5, "tt"),
+    tambah(6, ...penghitung("1")),
+    ...idBenda("a", n).flatMap((id, i) => [ubah(6 + i, { id, sorot: true }, ...(i > 0 ? [{ id: "a" + i, sorot: false }] : []), { id: "cn-t", isi: String(i + 1) })]),
+  );
 };
 
 export const ADEGAN_SEKILAS: AdeganStory = {
   id: "sekilas",
-  judul: "Isi: lihat sekilas lalu periksa",
+  judul: "Isi: lihat sekilas, ditutup, lalu periksa",
   sumber: "Metode: kenali sekilas, periksa dengan hitung",
   latar: LATAR_TERANG,
-  ketukan: [...putaran(2, null, true), ...putaran(3, 2, false), ...putaran(4, 3, false)],
+  ketukan: [
+    putaran(3, null, "Lihat sekilas. Tala menutup! Kita periksa. Satu, dua, tiga.", true),
+    putaran(1, 3, "Lihat sekilas. Tala menutup! Kita periksa. Satu apel.", false),
+    putaran(4, 1, "Lihat sekilas. Tala menutup! Kita periksa. Satu, dua, tiga, empat.", false),
+  ],
 };
 
 /* ------------------------------ Membaca lambang nol sampai sepuluh ------------------------------ */
@@ -81,6 +89,7 @@ const kartuBaca = (id: string, x: number, y: number, n: number, w = 40, h = 34, 
 ];
 const idKartuBaca = (id: string, n: number): string[] => [id + "-k", id + "-t", ...Array.from({ length: n }, (_, i) => id + "-d" + (i + 1))];
 const BARIS_KARTU = 34;
+const CONTOH = ["lx1-k", "lx1-t", "lx2-k", "lx2-t", "lx3-k", "lx3-t"];
 
 export const ADEGAN_BACA: AdeganStory = {
   id: "baca",
@@ -89,13 +98,15 @@ export const ADEGAN_BACA: AdeganStory = {
   latar: LATAR_TERANG,
   ketukan: [
     k(
-      "Lambang bilangan adalah tulisan angkanya.",
-      tambah(0, kotak("pp", 14, 30, 272, 90, W.putih, W.biru, { rx: 10 }), ...gambarTokoh(IGIL, 30, 150)),
-      tambah(4, ...lambang("lx1", 30, 44, "2", 60, 60, 40), ...lambang("lx2", 120, 44, "5", 60, 60, 40), ...lambang("lx3", 210, 44, "8", 60, 60, 40)),
+      "Lintang bertanya, tulisan ini apa?",
+      tambah(0, kotak("pp", 14, 30, 272, 90, W.putih, W.biru, { rx: 10 }), ...gambarTokoh(IGIL, 30, 150), ...gambarTokoh(LINTANG, 270, 150)),
+      tambah(2, ...lambang("lx1", 30, 44, "2", 60, 60, 40), ...lambang("lx2", 120, 44, "5", 60, 60, 40), ...lambang("lx3", 210, 44, "8", 60, 60, 40)),
     ),
+    k("Igil berkata, lambang bilangan.", sorotkan(0, "tk-igil"), sorotkan(2, "lx1-k", "lx2-k", "lx3-k")),
     k(
       "Nol, satu, dua, tiga, empat, lima.",
-      hapus(0, "pp", "lx1-k", "lx1-t", "lx2-k", "lx2-t", "lx3-k", "lx3-t"),
+      hapus(0, "pp", ...CONTOH),
+      ubah(0, { id: "tk-igil", sorot: false }),
       ...[0, 1, 2, 3, 4, 5].flatMap((n) => [tambah(n, ...kartuBaca("q" + n, 14 + 46 * n, BARIS_KARTU, n)), ubah(n, { id: "q" + n + "-k", sorot: true }, ...(n > 0 ? [{ id: "q" + (n - 1) + "-k", sorot: false }] : []))]),
     ),
     k(
@@ -119,7 +130,7 @@ export const ADEGAN_BACA: AdeganStory = {
   ],
 };
 
-/* ------------------------------ Label dari Niko: satu kesalahan lucu (sembilan padahal enam), dibetulkan Tala ------------------------------ */
+/* ------------------------------ Label dari Niko: satu kesalahan lucu (sembilan untuk enam), Niko sendiri yang menyadari ------------------------------ */
 /** Enam diputar setengah putaran: satu goresan yang terbaca sembilan. */
 const JALUR_SALAH = "M12 88 C40 80 52 48 52 26 C52 0 4 0 4 26 C4 48 42 48 52 26";
 const OX_LABEL = 202;
@@ -139,14 +150,15 @@ export const ADEGAN_LABEL: AdeganStory = {
         ...anak(NIKO, 34),
         ...anak(TALA, 86),
         ...keranjangKebun(),
-        ...Array.from({ length: 6 }, (_, i) => benda("a" + (i + 1), slotKr(i)[0], slotKr(i)[1], APEL, U_APEL)),
+        ...[5, 6, 7, 8, 9, 10].map((n) => benda("a" + n, slotKr(n - 5)[0], slotKr(n - 5)[1], APEL, U_APEL)),
+        ...apelRumput(1, 4),
         kotak("bp", 196, 6, 68, 94, W.putih, W.coklat, { rx: 8, tebal: 1.8 }),
       ),
       tambah(3, ...penghitung("6")),
       tambah(6, emo("jr", 282, 72, "\u{1F446}", 26)),
       tambah(7, { id: "jl-x", t: "jalur", x: OX_LABEL, y: OY_LABEL, d: JALUR_SALAH, warna: "none", garis: WARNA_JALUR[0], tebal: 6, gambar: true, sorot: true }),
     ),
-    k("Tala menunjuk. Itu sembilan, bukan enam.", tambah(3, ...lambang("nm", 100, 28, "9", 36, 36, 24)), tambah(4, emo("sl", 230, 56, "\u{274C}", 28))),
+    k("Niko berkata, lingkarannya di atas. Eh, itu sembilan!", tambah(5, emo("sl", 230, 56, "\u{274C}", 28)), tambah(7, ...lambang("nm", 100, 28, "9", 36, 36, 24))),
     k(
       "Niko menulis lagi. Lengkung turun, lingkaran bawah.",
       hapus(0, "jl-x", "sl", "nm-k", "nm-t"),

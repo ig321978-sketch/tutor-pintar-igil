@@ -18,6 +18,7 @@
 //  - kalimatKunci: "..."      -> kalimat kunci: delapan kata, diucapkan utuh di paling sedikit dua ketukan (video materi), dengan teks layar yang sama
 //  - urutan: [{ video, sebelum, sesudah }] -> adegan `sebelum` harus lebih awal daripada `sesudah`
 //  - wajibSuara: [{ video, adegan, frasa }] -> frasa harus ada pada suara adegan tersebut
+//  - namaDiLayar: true        -> kata bilangan (mis. "sembilan") yang tampil sebagai teks layar dihitung sebagai bilangan yang tampak (pilihan jawaban berupa nama)
 //  - tambahan: async ({ L, P, cek, videos }) => {}  -> pemeriksaan khusus sub-bab (hitung ulang jumlah benda, jalur tulis, dan lain-lain)
 // Pakai:
 //   import { buatPenguji, periksaStoryOpsi2 } from "./lib/periksa-story-opsi2.mjs";
@@ -198,6 +199,7 @@ export async function periksaStoryOpsi2(opsi) {
         // Teks yang terlihat sepanjang ketukan (untuk bilangan lisan tampak di gambar).
         const terlihatKetukan = new Set();
         for (let p = 0; p < kata.length; p += 1) for (const o of L.keadaanStory(a, i, p)) if (o.t === "teks" && o.isi) for (const b of bilanganDiTeks(o.isi)) terlihatKetukan.add(b);
+        if (opsi.namaDiLayar) for (let p = 0; p < kata.length; p += 1) for (const o of L.keadaanStory(a, i, p)) if (o.t === "teks" && o.isi && o.isi.toLowerCase() in NILAI) terlihatKetukan.add(NILAI[o.isi.toLowerCase()]);
         for (const b of terlihatKetukan) terlihatAdegan.add(b);
         for (const b of terlihatKetukan) cek(b <= maks, `${nama}: bilangan di gambar paling besar ${maks} (ada ${b})`);
         if (!bb) for (const n of new Set(lisan.nilai)) cek(terlihatAdegan.has(n), `${nama}: bilangan lisan ${n} tampak sebagai lambang di gambar adegan`);

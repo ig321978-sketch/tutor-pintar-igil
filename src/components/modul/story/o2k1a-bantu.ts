@@ -1,5 +1,5 @@
-import type { Aksi, KetukanStory, Obj } from "./logika-story";
-import { W, bulat, emo, garis, gambarTokoh, hapus, k, kartuAngka, kotak, tambah, teks, ubah, type Tokoh } from "./kit/dasar";
+import type { Aksi, Obj } from "./logika-story";
+import { W, bulat, emo, garis, gambarTokoh, hapus, kartuAngka, kotak, tambah, teks, ubah, type Tokoh } from "./kit/dasar";
 import { BENDA, IGIL, benda, keranjang, lambang, pohon } from "./kit/dunia-k1";
 
 /**
@@ -55,12 +55,7 @@ export const tandaTanya = (id = "qm", x = 205, y = 86): Obj => emo(id, x, y, "â
 export const titikMundur = (x = 212, y = 40): Obj[] => [0, 1, 2].map((i) => bulat(`jd${i + 1}`, x + i * 20, y, 7, W.emas, W.biru));
 export const idTitikMundur = ["jd1", "jd2", "jd3"];
 
-/* ------------------------------ Nenek menuang apel ke dapur ------------------------------ */
-export const dapur = (): Obj => emo("dp", 212, 78, "\u{1F3E0}", 30);
-export const APEL_HIJAU = "\u{1F34F}";
-/** Satu ketukan: Nenek menuang apel (ids) ke dapur, keranjang kosong lagi. `ekstra` = benda lain yang ikut dihapus (penghitung, cincin). */
-export const ketukanTuang = (ids: string[], ekstra: string[] = []): KetukanStory =>
-  k("Nenek menuang apelnya ke dapur.", tambah(1, dapur()), hapus(4, ...ids, ...ekstra));
+export const APEL_HIJAU = "ðŸ";
 
 /** Id benda berurutan: awalan1 .. awalann. */
 export const idBenda = (awalan: string, n: number): string[] => Array.from({ length: n }, (_, i) => awalan + (i + 1));
@@ -70,16 +65,18 @@ export const hitungBenda = (ids: string[], mulai = 0): Aksi[] =>
 /** Menghapus tiga titik hitung mundur visual pada kata nomor 1, 2, 3 (satu titik tiap kata). */
 export const habisTitik = (): Aksi[] => ["jd1", "jd2", "jd3"].map((id, i) => hapus(i + 1, id));
 /** Tiga kartu pilihan jawaban c1..c3 di bawah layar (pojok kiri-atas kartu di y = 166). */
-export const pilihanAngka = (isi: string[], w = 44, u = 22): Obj[] => isi.flatMap((t, i) => kartuAngka(`c${i + 1}`, w === 44 ? 40 + i * 88 : 14 + i * 100, 166, t, W.krem, w, 36, u));
+const WARNA_PILIHAN = [W.krem, "#DBEAFE", "#DCFCE7"];
+export const pilihanAngka = (isi: string[], w = 44, u = 22, y = 166): Obj[] =>
+  isi.flatMap((t, i) => kartuAngka("c" + (i + 1), w === 44 ? 40 + i * 88 : 14 + i * 100, y, t, WARNA_PILIHAN[i], w, 36, u));
 
 /* ------------------------------ Kalimat kunci ------------------------------ */
 export const BARIS_KUNCI = ["Hitung satu", "per satu,", "yang terakhir", "adalah banyaknya."];
 /** Kartu kalimat kunci di kiri atas; baris muncul mengikuti kata (kata ke-0, 2, 4, 6 dihitung mulai dari kata nomor `mulai`). */
-export const aksiKunci = (mulai = 0): Aksi[] => [
-  tambah(mulai, kotak("kn-k", 8, 8, 150, 70, W.krem, W.emas, { rx: 10, tebal: 2.5 }), teks("kn-t0", 83, 28, BARIS_KUNCI[0], 11)),
-  tambah(mulai + 2, teks("kn-t1", 83, 42, BARIS_KUNCI[1], 11)),
-  tambah(mulai + 4, teks("kn-t2", 83, 56, BARIS_KUNCI[2], 11)),
-  tambah(mulai + 6, teks("kn-t3", 83, 70, BARIS_KUNCI[3], 11)),
+export const aksiKunci = (mulai = 0, dy = 0): Aksi[] => [
+  tambah(mulai, kotak("kn-k", 8, 8 + dy, 150, 70, W.krem, W.emas, { rx: 10, tebal: 2.5 }), teks("kn-t0", 83, 28 + dy, BARIS_KUNCI[0], 11)),
+  tambah(mulai + 2, teks("kn-t1", 83, 42 + dy, BARIS_KUNCI[1], 11)),
+  tambah(mulai + 4, teks("kn-t2", 83, 56 + dy, BARIS_KUNCI[2], 11)),
+  tambah(mulai + 6, teks("kn-t3", 83, 70 + dy, BARIS_KUNCI[3], 11)),
 ];
 export const idKunci = ["kn-k", "kn-t0", "kn-t1", "kn-t2", "kn-t3"];
 
@@ -139,7 +136,7 @@ export const titikMulai = (angka: string, ox: number): Obj => {
 };
 
 /* ------------------------------ Bingkai sepuluh (dua baris, lima petak tiap baris) ------------------------------ */
-export const BK = { x: 65, y: 80, sel: 34 } as const;
+export const BK = { x: 65, y: 62, sel: 34 } as const;
 /** Sepuluh petak putih. Id bk1..bk10 (kiri ke kanan, baris atas dulu). */
 export const bingkaiSepuluh = (): Obj[] =>
   Array.from({ length: 10 }, (_, i) => kotak(`bk${i + 1}`, BK.x + (i % 5) * BK.sel, BK.y + Math.floor(i / 5) * BK.sel, BK.sel, BK.sel, W.putih, W.biru, { rx: 3, tebal: 1.5 }));
@@ -148,3 +145,16 @@ export const idBingkai = Array.from({ length: 10 }, (_, i) => `bk${i + 1}`);
 export const petak = (i: number): [number, number] => [BK.x + (i % 5) * BK.sel + BK.sel / 2, BK.y + Math.floor(i / 5) * BK.sel + 27];
 /** Isi petak ke-n (1..10) dengan emoji pada kata nomor `kata`, sambil menyebut bilangan n (penghitung ikut berubah). Id f{n}. */
 export const isiPetak = (kata: number, n: number, emoji: string): Aksi[] => [tambah(kata, benda(`f${n}`, petak(n - 1)[0], petak(n - 1)[1], emoji, 24)), ubah(kata, { id: "cn-t", isi: String(n) })];
+
+/** Nampan Nenek: alas cokelat di bawah bingkai sepuluh. Id nmp. */
+export const nampan = (): Obj => kotak("nmp", BK.x - 8, BK.y - 8, 186, 84, "#D9A441", W.coklat, { rx: 10, tebal: 1.8 });
+/** Kain penutup nampan (apel tampil sebentar lalu ditutup). Id tt. */
+export const kainTutup = (): Obj => kotak("tt", BK.x - 8, BK.y - 8, 186, 84, "#FBBF24", W.coklat, { rx: 10, tebal: 2, z: 5 });
+/** Judul langkah metode (teks layar besar) di tengah atas atau di (x, y). Id hd. */
+export const judulLangkah = (isi: string, x = 150, y = 16): Obj => teks("hd", x, y, isi, 15, W.ungu);
+/** Pindahkan apel a{i} ke (x, y) pada kata nomor kata; u = ukuran gambar apel. */
+export const pindah = (kata: number, i: number, x: number, y: number, u = U_APEL): Aksi => ubah(kata, { id: "a" + i, x, y, u });
+/** Apel a{i} pindah ke petak ke-i (1..10) pada kata nomor kata. */
+export const keNampan = (kata: number, i: number): Aksi => pindah(kata, i, petak(i - 1)[0], petak(i - 1)[1], 24);
+/** Apel a{i} kembali ke rumput (letak tetap posSebar(i - 1)). */
+export const keRumput = (kata: number, i: number): Aksi => pindah(kata, i, posSebar(i - 1)[0], posSebar(i - 1)[1]);
