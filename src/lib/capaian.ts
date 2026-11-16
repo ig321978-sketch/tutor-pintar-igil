@@ -186,3 +186,25 @@ export function urai(mentah: string | null | undefined): GudangCapaian {
     return {};
   }
 }
+
+/** Kode bab server ("k1-mat-bab3") menjadi kode bab aplikasi ("mtk-1-bab3"). Bentuk lain dikembalikan apa adanya. */
+export function kodeAplikasiDariServer(idServer: string): string {
+  const m = /^k(\d)-mat-bab(\d+)$/.exec(idServer);
+  return m ? `mtk-${m[1]}-bab${m[2]}` : idServer;
+}
+
+export type BlokPraktikum = { id: string; bab: readonly string[] };
+
+/** Praktikum blok yang harus sudah dikirim untuk sebuah sertifikat: semua blok yang seluruh babnya termasuk bab wajib sertifikat itu. */
+export function blokDibutuhkan(babWajib: readonly string[], blok: readonly BlokPraktikum[]): BlokPraktikum[] {
+  const wajib = new Set(babWajib);
+  return blok.filter((b) => b.bab.every((x) => wajib.has(x)));
+}
+
+/** Sertifikat terbuka: semua bab wajib Ujian 100% DAN semua praktikum blok yang dibutuhkan sudah dikirim (bila sertifikat mewajibkan). */
+export function sertifikatTerbuka(opsi: { babWajib: readonly string[]; tuntas: ReadonlySet<string>; wajibPraktikum: boolean; blok: readonly BlokPraktikum[]; praktikumTerkirim: ReadonlySet<string> }): boolean {
+  if (!opsi.babWajib.every((b) => opsi.tuntas.has(b))) return false;
+  if (!opsi.wajibPraktikum) return true;
+  return blokDibutuhkan(opsi.babWajib, opsi.blok).every((b) => opsi.praktikumTerkirim.has(b.id));
+}
+

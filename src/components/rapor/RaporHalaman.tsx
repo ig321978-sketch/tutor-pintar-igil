@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import data from "@/data/rapor-dan-ranking.json";
 import {
+  JUDUL_MTK_1_BAB1,
   JUDUL_MTK_1_BAB2,
   JUDUL_MTK_1_BAB3,
   JUDUL_MTK_1_BAB4,
@@ -12,10 +14,28 @@ import {
   JUDUL_MTK_1_BAB8,
 } from "@/lib/kurikulum";
 import {
+  BAB_PER_BLOK,
+  POIN_LATIHAN,
+  POIN_PER_BLOK_PENUH,
+  POIN_PRAKTIKUM,
+  POIN_UJIAN,
+  babBerikutnya,
+  babUjianSempurna,
+  bulanJakarta,
+  kodeAplikasiDariServer,
+  poinBulanIni,
+  ringkasBab,
+  sertifikatTerbuka,
+  type BlokPraktikum,
+  type PoinBulan,
+  type RingkasBab,
+} from "@/lib/capaian";
+import { useCapaian } from "@/lib/capaian-klien";
+import { usePraktikumTerkirim, useUjianLulus } from "@/lib/praktikum-blok";
+import {
   KepalaHalaman,
   Koin,
   LencanaToken,
-  SpanduContoh,
   SubTabBar,
   angkaId,
   useHariIni,
@@ -24,68 +44,23 @@ import {
 import { SertifikatDigital, kodeVerifikasi, type PenerimaSertifikat } from "./SertifikatDigital";
 
 const rapor = data.raporPage;
-const ekonomi = data.pointEconomy;
-const bab1 = rapor.sampleChaptersProgress[0];
 
-type BabRapor = {
-  id: string;
-  judul: string;
-  subBab: string[];
-  totalSubBab: number;
-  skorLatihan: number | null;
-  tokenLatihan: number;
-  skorUjian: number | null;
-  percobaan: number;
-  tokenUjian: number;
-  lulusPertama: boolean;
-};
-
-const BAB_KELAS1: BabRapor[] = [
-  {
-    id: bab1.chapterId,
-    judul: bab1.title,
-    subBab: [...bab1.subBabsCompleted],
-    totalSubBab: bab1.totalSubBabs,
-    skorLatihan: bab1.practiceScore,
-    tokenLatihan: bab1.practicePoints,
-    skorUjian: bab1.examScore,
-    percobaan: bab1.examAttempts,
-    tokenUjian: bab1.examPoints,
-    lulusPertama: bab1.firstTryPerfect,
-  },
-  ...[
-    ["k1-mat-bab2", JUDUL_MTK_1_BAB2],
-    ["k1-mat-bab3", JUDUL_MTK_1_BAB3],
-    ["k1-mat-bab4", JUDUL_MTK_1_BAB4],
-    ["k1-mat-bab5", JUDUL_MTK_1_BAB5],
-    ["k1-mat-bab6", JUDUL_MTK_1_BAB6],
-    ["k1-mat-bab7", JUDUL_MTK_1_BAB7],
-    ["k1-mat-bab8", JUDUL_MTK_1_BAB8],
-  ].map(([id, judul]) => ({
-    id,
-    judul,
-    subBab: [],
-    totalSubBab: id === "k1-mat-bab8" || id === "k1-mat-bab7" ? 2 : id === "k1-mat-bab6" ? 3 : 4,
-    skorLatihan: null,
-    tokenLatihan: 0,
-    skorUjian: null,
-    percobaan: 0,
-    tokenUjian: 0,
-    lulusPertama: false,
-  })),
+/** Bab Matematika Kelas 1. Jumlah Sub-Bab mengikuti daftar isi naskah modul. */
+const BAB_KELAS1: { kode: string; judul: string; totalSubBab: number }[] = [
+  { kode: "mtk-1-bab1", judul: JUDUL_MTK_1_BAB1, totalSubBab: 4 },
+  { kode: "mtk-1-bab2", judul: JUDUL_MTK_1_BAB2, totalSubBab: 3 },
+  { kode: "mtk-1-bab3", judul: JUDUL_MTK_1_BAB3, totalSubBab: 4 },
+  { kode: "mtk-1-bab4", judul: JUDUL_MTK_1_BAB4, totalSubBab: 3 },
+  { kode: "mtk-1-bab5", judul: JUDUL_MTK_1_BAB5, totalSubBab: 4 },
+  { kode: "mtk-1-bab6", judul: JUDUL_MTK_1_BAB6, totalSubBab: 3 },
+  { kode: "mtk-1-bab7", judul: JUDUL_MTK_1_BAB7, totalSubBab: 2 },
+  { kode: "mtk-1-bab8", judul: JUDUL_MTK_1_BAB8, totalSubBab: 2 },
 ];
+const URUT_BAB = BAB_KELAS1.map((b) => b.kode);
 
-/**
- * Model poin: Latihan 30 dan Ujian 70 terbit di tiap bab. Praktikum 50 terbit SEKALI per blok 4 bab
- * (tugas sintesis lintas-4-bab), terbuka setelah keempat bab lulus Ujian 100%.
- */
-const BAB_PER_BLOK = ekonomi.perBlockChapters;
-const POIN_PRAKTIKUM = ekonomi.perChapterPoints.practicum;
-const POIN_PER_BLOK_PENUH = (ekonomi.perChapterPoints.practice + ekonomi.perChapterPoints.exam) * BAB_PER_BLOK + POIN_PRAKTIKUM;
-const BAB_BLOK_1 = BAB_KELAS1.slice(0, BAB_PER_BLOK);
-const UJIAN_SEMPURNA_BLOK_1 = BAB_BLOK_1.filter((b) => b.skorUjian === 100).length;
-const PRAKTIKUM_BLOK_1_TERBUKA = UJIAN_SEMPURNA_BLOK_1 === BAB_PER_BLOK;
-const PRAKTIKUM_BLOK_1_SELESAI = PRAKTIKUM_BLOK_1_TERBUKA && bab1.practicumSubmitted;
+/** Praktikum per blok 4 bab yang sudah punya tugas (src/data/praktikum-blok.json). Tambahkan di sini saat blok berikutnya terbit. */
+const BLOK_PRAKTIKUM: BlokPraktikum[] = [{ id: "mtk-1-blok1", bab: URUT_BAB.slice(0, BAB_PER_BLOK) }];
+const BLOK_1 = BLOK_PRAKTIKUM[0];
 
 function predikatUntuk(skor: number) {
   return rapor.predikatScale.find((p) => skor >= p.minScore && skor <= p.maxScore) ?? rapor.predikatScale[3];
@@ -111,9 +86,7 @@ function Ubin({ ikon, judul, nilai, catatan }: { ikon: string; judul: string; ni
   );
 }
 
-function KartuDompet({ profil, tokenSaatIni }: { profil: PenerimaSertifikat; tokenSaatIni: { latihan: number; ujian: number; praktikum: number } }) {
-  const total = tokenSaatIni.latihan + tokenSaatIni.ujian + tokenSaatIni.praktikum;
-  const penuh = POIN_PER_BLOK_PENUH;
+function KartuDompet({ profil, poin }: { profil: PenerimaSertifikat; poin: PoinBulan }) {
   return (
     <section className="overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-900 via-violet-900 to-indigo-950 p-4 text-white shadow-lg sm:p-6">
       <div className="flex items-center gap-3">
@@ -124,32 +97,32 @@ function KartuDompet({ profil, tokenSaatIni }: { profil: PenerimaSertifikat; tok
           🧒
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-[11px] font-black uppercase tracking-wider text-amber-300">Poin Kualifikasi Bulan Ini</p>
+          <p className="text-[11px] font-black uppercase tracking-wider text-amber-300">Perkiraan Poin Kualifikasi Bulan Ini</p>
           <p className="break-words text-xl font-black leading-tight sm:text-2xl">{profil.nama}</p>
           <p className="text-sm font-semibold text-indigo-100">
             {profil.kelas} · {profil.kota}
           </p>
         </div>
-        <LencanaToken kelas="shrink-0 text-base">{angkaId(total)}</LencanaToken>
+        <LencanaToken kelas="shrink-0 text-base">{angkaId(poin.total)}</LencanaToken>
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-2">
-        <Ubin ikon="✏️" judul="Latihan" nilai={angkaId(tokenSaatIni.latihan)} catatan={`${ekonomi.perChapterPoints.practice} / bab`} />
-        <Ubin ikon="📝" judul="Ujian" nilai={angkaId(tokenSaatIni.ujian)} catatan={`${ekonomi.perChapterPoints.exam} / bab`} />
-        <Ubin ikon="🧪" judul="Praktikum" nilai={angkaId(tokenSaatIni.praktikum)} catatan={`${ekonomi.perChapterPoints.practicum} / ${ekonomi.perBlockChapters} bab`} />
+        <Ubin ikon="✏️" judul="Latihan" nilai={angkaId(poin.latihan)} catatan={`${POIN_LATIHAN} / bab`} />
+        <Ubin ikon="📝" judul="Ujian" nilai={angkaId(poin.ujian)} catatan={`${POIN_UJIAN} / bab`} />
+        <Ubin ikon="🧪" judul="Praktikum" nilai={angkaId(poin.praktikum)} catatan={`${POIN_PRAKTIKUM} / ${BAB_PER_BLOK} bab`} />
       </div>
 
       <div className="mt-4 rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
         <div className="flex items-center justify-between gap-2 text-sm font-black">
-          <span>{angkaId(total)} Poin Kualifikasi</span>
+          <span>{angkaId(poin.total)} Poin Kualifikasi</span>
           <span className="text-amber-300">Bukan uang tunai</span>
         </div>
-        <div className="mt-2 h-3 overflow-hidden rounded-full bg-indigo-950/60" role="img" aria-label={`${total} dari ${penuh} Poin Kualifikasi`}>
-          <div className="h-full rounded-full bg-amber-400" style={{ width: `${Math.min(100, (total / penuh) * 100)}%` }} />
+        <div className="mt-2 h-3 overflow-hidden rounded-full bg-indigo-950/60" role="img" aria-label={`${poin.total} dari ${POIN_PER_BLOK_PENUH} Poin Kualifikasi`}>
+          <div className="h-full rounded-full bg-amber-400" style={{ width: `${Math.min(100, (poin.total / POIN_PER_BLOK_PENUH) * 100)}%` }} />
         </div>
         <p className="mt-1 text-[11px] font-semibold text-indigo-200">
-          {penuh} Poin Kualifikasi penuh per blok {BAB_PER_BLOK} bab ({ekonomi.perChapterPoints.practice + ekonomi.perChapterPoints.exam} per bab
-          + {POIN_PRAKTIKUM} Praktikum). Poin tidak punya nilai tukar tetap dan dipakai untuk peringkat beasiswa.
+          {POIN_PER_BLOK_PENUH} Poin Kualifikasi penuh per blok {BAB_PER_BLOK} bab ({POIN_LATIHAN + POIN_UJIAN} per bab + {POIN_PRAKTIKUM} Praktikum). Poin tidak
+          punya nilai tukar tetap dan dipakai untuk peringkat beasiswa.
         </p>
       </div>
 
@@ -164,11 +137,30 @@ function KartuDompet({ profil, tokenSaatIni }: { profil: PenerimaSertifikat; tok
   );
 }
 
+/** Catatan jujur tentang asal data, menggantikan spanduk "tampilan contoh". */
+function CatatanData({ adaCatatan }: { adaCatatan: boolean }) {
+  return (
+    <div className="flex items-start gap-3 rounded-2xl border-2 border-dashed border-amber-400 bg-amber-50 p-3 text-sm font-bold text-indigo-950">
+      <span aria-hidden="true" className="text-xl leading-none">
+        📱
+      </span>
+      <p className="min-w-0 flex-1 leading-snug">
+        {adaCatatan
+          ? "Rapor ini dibaca dari catatan belajar di perangkat ini. Poin Kualifikasi resmi dicatat server saat jawabanmu dinilai, jadi angka poin di sini adalah perkiraan."
+          : "Belum ada catatan belajar di perangkat ini. Selesaikan Sub-Bab, Latihan, atau Ujian di Ruang Belajar, nanti rapornya terisi sendiri."}{" "}
+        {adaCatatan ? null : (
+          <Link href="/ruang-belajar" className="font-black text-[#1C01A5] underline">
+            Mulai belajar
+          </Link>
+        )}
+      </p>
+    </div>
+  );
+}
+
 function Langkah({ aktif, label, token, catatan }: { aktif: boolean; label: string; token?: number; catatan: string }) {
   return (
-    <div
-      className={`flex items-center gap-2 rounded-xl p-2 ${aktif ? "bg-emerald-50" : "bg-slate-50"}`}
-    >
+    <div className={`flex items-center gap-2 rounded-xl p-2 ${aktif ? "bg-emerald-50" : "bg-slate-50"}`}>
       <span
         aria-hidden="true"
         className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-black ${
@@ -194,44 +186,32 @@ function Langkah({ aktif, label, token, catatan }: { aktif: boolean; label: stri
   );
 }
 
-function KartuBab({ bab, nomor }: { bab: BabRapor; nomor: number }) {
-  const mulai = bab.subBab.length > 0 || bab.skorLatihan !== null;
-  const materiPersen = Math.round((bab.subBab.length / bab.totalSubBab) * 100);
-  const ujianSempurna = bab.skorUjian === 100;
-  const skorGabungan = mulai
-    ? Math.round(((bab.skorLatihan ?? 0) + (bab.skorUjian ?? 0) + materiPersen) / 3)
-    : 0;
+function KartuBab({ kode, judul, r, nomor, urutanSub, subSelesai }: { kode: string; judul: string; r: RingkasBab; nomor: number; urutanSub: string[]; subSelesai: readonly string[] }) {
+  const skorGabungan = r.mulai ? Math.round(((r.skorLatihan ?? 0) + (r.skorUjian ?? 0) + r.materiPersen) / 3) : 0;
   const pred = predikatUntuk(skorGabungan);
   return (
-    <article
-      className={`rounded-3xl border-2 bg-white p-4 shadow-sm ${mulai ? "border-indigo-100" : "border-slate-200"}`}
-    >
+    <article className={`rounded-3xl border-2 bg-white p-4 shadow-sm ${r.mulai ? "border-indigo-100" : "border-slate-200"}`}>
       <header className="flex items-start gap-3">
         <span
           aria-hidden="true"
           className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-lg font-black ${
-            mulai ? "bg-[#1C01A5] text-amber-300" : "bg-slate-200 text-slate-500"
+            r.mulai ? "bg-[#1C01A5] text-amber-300" : "bg-slate-200 text-slate-500"
           }`}
         >
           {nomor}
         </span>
         <div className="min-w-0 flex-1">
-          <h3 className="break-words text-base font-black leading-snug text-indigo-950">{bab.judul}</h3>
-          {mulai ? (
+          <h3 className="break-words text-base font-black leading-snug text-indigo-950">{judul}</h3>
+          {r.mulai ? (
             <span className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-xs font-black ${WARNA_PREDIKAT[pred.colorTheme] ?? ""}`}>
               {pred.code} · {pred.label}
             </span>
           ) : (
-            <span className="mt-1 inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-black text-slate-500">
-              Belum dimulai
-            </span>
+            <span className="mt-1 inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-black text-slate-500">Belum dimulai</span>
           )}
         </div>
-        {bab.lulusPertama ? (
-          <span
-            title="Papan Kualifikasi Beasiswa"
-            className="shrink-0 rounded-full bg-amber-400 px-2.5 py-1 text-xs font-black text-indigo-950 shadow"
-          >
+        {r.kualifikasi ? (
+          <span title="Papan Kualifikasi Beasiswa" className="shrink-0 rounded-full bg-amber-400 px-2.5 py-1 text-xs font-black text-indigo-950 shadow">
             🌟 Kualifikasi
           </span>
         ) : null}
@@ -240,12 +220,12 @@ function KartuBab({ bab, nomor }: { bab: BabRapor; nomor: number }) {
       <div className="mt-3 space-y-2">
         <div className="rounded-xl bg-indigo-50/40 p-2">
           <div className="flex items-center justify-between text-sm font-black text-indigo-950">
-            <span>📚 Silabus & Materi SMICPA</span>
-            <span>{materiPersen}%</span>
+            <span>📚 Silabus & Materi SMISCPA</span>
+            <span>{r.materiPersen}%</span>
           </div>
           <div className="mt-1.5 flex gap-1.5">
-            {["A", "B", "C", "D"].map((huruf) => {
-              const selesai = bab.subBab.includes(huruf);
+            {urutanSub.map((huruf) => {
+              const selesai = subSelesai.includes(huruf);
               return (
                 <span
                   key={huruf}
@@ -262,35 +242,71 @@ function KartuBab({ bab, nomor }: { bab: BabRapor; nomor: number }) {
         </div>
 
         <Langkah
-          aktif={bab.skorLatihan !== null}
+          aktif={r.latihanSelesai}
           label="✏️ Latihan Terbimbing"
-          token={ekonomi.perChapterPoints.practice}
-          catatan={bab.skorLatihan !== null ? `Skor ${bab.skorLatihan}/100 · poin sudah diklaim` : "10 soal dengan pembahasan guru"}
+          token={POIN_LATIHAN}
+          catatan={r.latihanSelesai ? `Skor ${r.skorLatihan}/100 · sepuluh soal sudah dijawab` : r.latihanTerjawab > 0 ? `${r.latihanTerjawab} dari 10 soal sudah dijawab` : "10 soal dengan pembahasan guru"}
         />
         <Langkah
-          aktif={ujianSempurna}
+          aktif={r.ujianSempurna}
           label="📝 Ujian Mandiri"
-          token={ekonomi.perChapterPoints.exam}
-          catatan={
-            bab.skorUjian !== null
-              ? `Skor terbaik ${bab.skorUjian}/100 · ${bab.percobaan}x percobaan`
-              : "Wajib 100/100 untuk membuka Praktikum blok 4 bab"
-          }
+          token={POIN_UJIAN}
+          catatan={r.skorUjian !== null ? `Skor terbaik ${r.skorUjian}/100 · ${r.percobaan}x percobaan` : "Wajib 100/100 untuk membuka Praktikum blok 4 bab"}
         />
       </div>
 
-      {bab.lulusPertama ? (
+      {r.kualifikasi ? (
         <p className="mt-3 rounded-xl bg-amber-50 p-2 text-xs font-bold leading-snug text-indigo-950">
-          🌟 Lulus Ujian 100% di percobaan pertama · Sesi Belajar Sah (Tervalidasi Server).
+          🌟 Lulus Ujian 100% di percobaan pertama dan semua Sub-Bab tuntas · Sesi Belajar Sah (Tervalidasi Server).
         </p>
       ) : null}
+
+      <Link
+        href={`/ruang-belajar/${kode}`}
+        className={`mt-3 flex min-h-[44px] w-full items-center justify-center rounded-full border-4 px-4 text-sm font-black ${
+          r.ujianSempurna ? "border-indigo-100 bg-white text-indigo-950" : "border-amber-400 bg-[#1C01A5] text-amber-300"
+        }`}
+      >
+        {r.ujianSempurna ? "Buka lagi materinya" : r.mulai ? "Lanjutkan belajar" : "Mulai belajar"}
+      </Link>
     </article>
   );
 }
 
-function KartuPraktikumBlok() {
-  const selesai = PRAKTIKUM_BLOK_1_SELESAI;
-  const terbuka = PRAKTIKUM_BLOK_1_TERBUKA;
+/** Kartu "Langkah berikutnya": arahkan siswa ke bab yang belum tuntas, dengan hitungan keseluruhan. */
+function KartuLanjut({ berikutnya, tuntas }: { berikutnya: string | null; tuntas: number }) {
+  const bab = BAB_KELAS1.find((b) => b.kode === berikutnya);
+  const persen = Math.round((tuntas / BAB_KELAS1.length) * 100);
+  return (
+    <section className="rounded-3xl border-2 border-amber-400 bg-amber-50 p-4 shadow-sm">
+      <div className="flex items-center justify-between gap-2 text-sm font-black text-indigo-950">
+        <span>🎯 Capaian Matematika Kelas 1</span>
+        <span>
+          {tuntas} dari {BAB_KELAS1.length} bab Ujian 100%
+        </span>
+      </div>
+      <div className="mt-2 h-3 overflow-hidden rounded-full bg-white ring-1 ring-indigo-100" role="img" aria-label={`${persen} persen bab tuntas`}>
+        <div className="h-full rounded-full bg-amber-400" style={{ width: `${persen}%` }} />
+      </div>
+      {bab ? (
+        <Link href={`/ruang-belajar/${bab.kode}`} className="mt-3 flex min-h-[48px] items-center justify-between gap-2 rounded-2xl bg-[#1C01A5] px-4 py-2 text-white">
+          <span className="min-w-0">
+            <span className="block text-[11px] font-black uppercase tracking-wide text-amber-300">Langkah berikutnya</span>
+            <span className="block break-words text-sm font-black leading-snug">{bab.judul}</span>
+          </span>
+          <span aria-hidden="true" className="shrink-0 text-xl text-amber-300">
+            ➜
+          </span>
+        </Link>
+      ) : (
+        <p className="mt-3 rounded-2xl bg-emerald-50 p-3 text-sm font-black text-emerald-900">🎉 Semua bab Matematika Kelas 1 sudah Ujian 100%. Hebat!</p>
+      )}
+    </section>
+  );
+}
+
+function KartuPraktikumBlok({ tuntasBlok, terkirim }: { tuntasBlok: number; terkirim: boolean }) {
+  const terbuka = tuntasBlok === BAB_PER_BLOK;
   return (
     <article className="rounded-3xl border-2 border-amber-400 bg-amber-50 p-4 shadow-sm">
       <header className="flex items-start gap-3">
@@ -298,64 +314,55 @@ function KartuPraktikumBlok() {
           🧪
         </span>
         <div className="min-w-0 flex-1">
-          <h3 className="break-words text-base font-black leading-snug text-indigo-950">
-            Praktikum Blok 1 · Bab 1–{BAB_PER_BLOK}
-          </h3>
-          <p className="text-xs font-semibold leading-snug text-slate-600">
-            Satu tugas sintesis untuk {BAB_PER_BLOK} bab sekaligus. Poinnya terbit sekali per blok.
-          </p>
+          <h3 className="break-words text-base font-black leading-snug text-indigo-950">Praktikum Blok 1 · Bab 1–{BAB_PER_BLOK}</h3>
+          <p className="text-xs font-semibold leading-snug text-slate-600">Satu tugas sintesis untuk {BAB_PER_BLOK} bab sekaligus. Poinnya terbit sekali per blok.</p>
         </div>
         <span
           className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-black ${
-            selesai ? "bg-emerald-100 text-emerald-900" : terbuka ? "bg-amber-400 text-indigo-950" : "bg-slate-200 text-slate-600"
+            terkirim ? "bg-emerald-100 text-emerald-900" : terbuka ? "bg-amber-400 text-indigo-950" : "bg-slate-200 text-slate-600"
           }`}
         >
-          {selesai ? "✓ Sudah dikirim" : terbuka ? "Terbuka" : "🔒 Terkunci"}
+          {terkirim ? "✓ Sudah dikirim" : terbuka ? "Terbuka" : "🔒 Terkunci"}
         </span>
       </header>
       <div className="mt-3 rounded-xl bg-white p-2">
         <div className="flex items-center justify-between text-sm font-black text-indigo-950">
           <span>Bab lulus Ujian 100%</span>
           <span>
-            {UJIAN_SEMPURNA_BLOK_1} dari {BAB_PER_BLOK}
+            {tuntasBlok} dari {BAB_PER_BLOK}
           </span>
         </div>
         <div className="mt-1.5 h-2.5 overflow-hidden rounded-full bg-indigo-100">
-          <div className="h-full rounded-full bg-amber-400" style={{ width: `${(UJIAN_SEMPURNA_BLOK_1 / BAB_PER_BLOK) * 100}%` }} />
+          <div className="h-full rounded-full bg-amber-400" style={{ width: `${(tuntasBlok / BAB_PER_BLOK) * 100}%` }} />
         </div>
       </div>
       <div className="mt-2">
         <Langkah
-          aktif={selesai}
+          aktif={terkirim}
           label="🧪 Serahkan Praktikum"
           token={POIN_PRAKTIKUM}
-          catatan={
-            selesai
-              ? "Sudah dikirim · skor menunggu pengumuman akhir bulan"
-              : terbuka
-                ? "Terbuka! Ayo serahkan"
-                : `🔒 Terbuka setelah ${BAB_PER_BLOK} bab lulus Ujian 100%`
-          }
+          catatan={terkirim ? "Sudah dikirim · skor menunggu pengumuman akhir bulan" : terbuka ? "Terbuka! Ayo serahkan" : `🔒 Terbuka setelah ${BAB_PER_BLOK} bab lulus Ujian 100%`}
         />
       </div>
+      {terbuka && !terkirim ? (
+        <Link href={`/praktikum/${BLOK_1.id}`} className="mt-3 flex min-h-[44px] w-full items-center justify-center rounded-full border-4 border-amber-400 bg-[#1C01A5] px-4 text-sm font-black text-amber-300">
+          Kerjakan Praktikum
+        </Link>
+      ) : null}
     </article>
   );
 }
 
-function PanelPenilaianRahasia({ terkunci }: { terkunci: boolean }) {
+function PanelPenilaianRahasia({ terkirim }: { terkirim: boolean }) {
   const spek = rapor.hiddenGradingSpec;
   return (
-    <section className="rounded-3xl border-2 border-indigo-100 bg-white p-4 shadow-sm sm:p-5">
-      <div className="flex flex-wrap items-center gap-2">
-        <h3 className="min-w-0 flex-1 text-lg font-black leading-snug text-indigo-950">🧪 {spek.title}</h3>
-        <span
-          className={`rounded-full px-3 py-1 text-xs font-black ${
-            terkunci ? "bg-[#1C01A5] text-amber-300" : "bg-emerald-100 text-emerald-900"
-          }`}
-        >
-          {terkunci ? "🔒 Rahasia hingga Pengumuman Akhir Bulan" : spek.unlockedStatusBadge}
+    <details className="group rounded-3xl border-2 border-indigo-100 bg-white p-4 shadow-sm sm:p-5">
+      <summary className="flex cursor-pointer list-none flex-wrap items-center gap-2">
+        <h3 className="min-w-0 flex-1 text-lg font-black leading-snug text-indigo-950">🧪 Cara Praktikum dinilai</h3>
+        <span className={`rounded-full px-3 py-1 text-xs font-black ${terkirim ? "bg-[#1C01A5] text-amber-300" : "bg-slate-100 text-slate-600"}`}>
+          {terkirim ? "🔒 Rahasia hingga Pengumuman Akhir Bulan" : "Belum diserahkan"}
         </span>
-      </div>
+      </summary>
       <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-600">{spek.explanation}</p>
 
       <ul className="mt-4 space-y-3">
@@ -363,62 +370,57 @@ function PanelPenilaianRahasia({ terkunci }: { terkunci: boolean }) {
           <li key={p.id} className="rounded-2xl bg-indigo-50/40 p-3">
             <div className="flex items-center justify-between gap-2">
               <p className="min-w-0 flex-1 text-sm font-black text-indigo-950">{p.label}</p>
-              <span className="shrink-0 rounded-full bg-amber-400 px-2.5 py-0.5 text-xs font-black text-indigo-950">
-                {p.weightPercent}%
-              </span>
+              <span className="shrink-0 rounded-full bg-amber-400 px-2.5 py-0.5 text-xs font-black text-indigo-950">{p.weightPercent}%</span>
             </div>
             <div className="mt-2 h-3 overflow-hidden rounded-full bg-white ring-1 ring-indigo-100">
               <div
-                className={`h-full rounded-full ${terkunci ? "bg-[repeating-linear-gradient(45deg,#1C01A5,#1C01A5_6px,#4c1d95_6px,#4c1d95_12px)]" : "bg-amber-400"}`}
+                className={`h-full rounded-full ${terkirim ? "bg-[repeating-linear-gradient(45deg,#1C01A5,#1C01A5_6px,#4c1d95_6px,#4c1d95_12px)]" : "bg-amber-400"}`}
                 style={{ width: `${p.weightPercent * 3.3}%` }}
               />
             </div>
             <p className="mt-1.5 text-xs font-semibold leading-snug text-slate-600">
-              {p.id === "independence"
-                ? "Kejujuran pengerjaan mandiri berdasarkan rekam jejak percobaan dan sesi belajar yang Tervalidasi Server."
-                : p.desc}
+              {p.id === "independence" ? "Kejujuran pengerjaan mandiri berdasarkan rekam jejak percobaan dan sesi belajar yang Tervalidasi Server." : p.desc}
             </p>
-            <p className="mt-1 text-xs font-black text-[#1C01A5]">{terkunci ? "🔒 Skor tersembunyi" : "Skor terbuka"}</p>
           </li>
         ))}
       </ul>
       <p className="mt-3 text-xs font-semibold text-slate-500">
-        Penilaian AI dilakukan tepat 1 kali saat tombol &quot;Serahkan Praktikum&quot; ditekan. Selama belajar, tidak ada
-        panggilan AI.
+        Penilaian AI dilakukan tepat 1 kali saat tombol &quot;Serahkan Praktikum&quot; ditekan. Selama belajar, tidak ada panggilan AI.
       </p>
-    </section>
+    </details>
   );
 }
 
-const SYARAT_PAPAN_KUALIFIKASI = [
-  "Lulus Ujian Mandiri mutlak 100/100 pada percobaan pertama (First-Try Perfect).",
-  "Sesi belajar dan jawaban Ujian tercatat sah dan Tervalidasi Server, tanpa bantuan kamera.",
-  "Seluruh 4 sub-bab pada modul Materi SMICPA telah tercentang tuntas.",
-] as const;
-
-function PanelPintar() {
+function PanelPapanKualifikasi({ jumlahBabKualifikasi }: { jumlahBabKualifikasi: number }) {
+  const syarat = [
+    "Lulus Ujian Mandiri mutlak 100/100 pada percobaan pertama (First-Try Perfect).",
+    "Sesi belajar dan jawaban Ujian tercatat sah dan Tervalidasi Server, tanpa bantuan kamera.",
+    "Semua Sub-Bab pada modul Materi SMISCPA bab itu sudah tuntas.",
+  ];
   return (
     <section className="rounded-3xl border-2 border-amber-400 bg-amber-50 p-4 shadow-sm sm:p-5">
-      <h3 className="text-lg font-black text-indigo-950">🌟 Papan Kualifikasi Beasiswa</h3>
-      <p className="mt-1 text-sm font-semibold text-slate-600">Lencana emas menyala kalau kamu memenuhi semua syarat ini:</p>
+      <div className="flex flex-wrap items-center gap-2">
+        <h3 className="min-w-0 flex-1 text-lg font-black text-indigo-950">🌟 Papan Kualifikasi Beasiswa</h3>
+        <span className="rounded-full bg-[#1C01A5] px-3 py-1 text-xs font-black text-amber-300">
+          Menyala di {jumlahBabKualifikasi} dari {BAB_KELAS1.length} bab
+        </span>
+      </div>
+      <p className="mt-1 text-sm font-semibold text-slate-600">Lencana emas menyala di sebuah bab kalau kamu memenuhi semua syarat ini:</p>
       <ol className="mt-3 space-y-2">
-        {SYARAT_PAPAN_KUALIFIKASI.map((syarat, i) => (
-          <li key={syarat} className="flex items-start gap-3 rounded-2xl bg-white p-3">
-            <span
-              aria-hidden="true"
-              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1C01A5] text-sm font-black text-amber-300"
-            >
+        {syarat.map((s, i) => (
+          <li key={s} className="flex items-start gap-3 rounded-2xl bg-white p-3">
+            <span aria-hidden="true" className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1C01A5] text-sm font-black text-amber-300">
               {i + 1}
             </span>
-            <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-indigo-950">{syarat}</span>
+            <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-indigo-950">{s}</span>
           </li>
         ))}
       </ol>
       <p className="mt-3 flex items-start gap-2 rounded-2xl bg-[#1C01A5] p-3 text-xs font-bold leading-snug text-white">
         <span aria-hidden="true">🛡️</span>
         <span>
-          Tervalidasi Server: jawaban dan sesi belajar dicek oleh server IGIL. Tidak ada kamera dan tidak ada data
-          biometrik yang dipakai untuk belajar maupun ujian.
+          Tervalidasi Server: jawaban dan sesi belajar dicek oleh server IGIL. Tidak ada kamera dan tidak ada data biometrik yang dipakai untuk belajar maupun
+          ujian.
         </span>
       </p>
     </section>
@@ -441,13 +443,24 @@ function SyaratSertifikat({ ok, teks }: { ok: boolean; teks: string }) {
   );
 }
 
-function TabSertifikat({ profil, babTuntas }: { profil: PenerimaSertifikat; babTuntas: Set<string> }) {
+function TabSertifikat({ profil, tuntas, praktikumTerkirim }: { profil: PenerimaSertifikat; tuntas: ReadonlySet<string>; praktikumTerkirim: ReadonlySet<string> }) {
   const tingkat = rapor.certificateTemplate.levels;
   const [pilih, setPilih] = useState(tingkat[0].id);
   const tanggal = useHariIni();
   const aktif = tingkat.find((t) => t.id === pilih) ?? tingkat[0];
-  const terbuka = aktif.requiredChapters.every((id) => babTuntas.has(id));
-  const tuntasJumlah = aktif.requiredChapters.filter((id) => babTuntas.has(id)).length;
+
+  const status = (t: (typeof tingkat)[number]) => {
+    const babWajib = t.requiredChapters.map(kodeAplikasiDariServer);
+    const jumlah = babWajib.filter((b) => tuntas.has(b)).length;
+    return {
+      babWajib,
+      jumlah,
+      semuaBab: jumlah === babWajib.length,
+      praktikumOk: sertifikatTerbuka({ babWajib, tuntas, wajibPraktikum: true, blok: BLOK_PRAKTIKUM, praktikumTerkirim }),
+      terbuka: sertifikatTerbuka({ babWajib, tuntas, wajibPraktikum: t.requirePracticum, blok: BLOK_PRAKTIKUM, praktikumTerkirim }),
+    };
+  };
+  const sa = status(aktif);
   const kode = useMemo(
     () => (tanggal ? kodeVerifikasi(rapor.certificateTemplate.verificationPrefix, profil, aktif.id, tanggal) : ""),
     [tanggal, profil, aktif.id],
@@ -457,8 +470,7 @@ function TabSertifikat({ profil, babTuntas }: { profil: PenerimaSertifikat; babT
     <div className="space-y-4">
       <div className="grid gap-2 sm:grid-cols-2">
         {tingkat.map((t) => {
-          const buka = t.requiredChapters.every((id) => babTuntas.has(id));
-          const jumlah = t.requiredChapters.filter((id) => babTuntas.has(id)).length;
+          const s = status(t);
           const menyala = t.id === pilih;
           return (
             <button
@@ -466,24 +478,19 @@ function TabSertifikat({ profil, babTuntas }: { profil: PenerimaSertifikat; babT
               type="button"
               onClick={() => setPilih(t.id)}
               aria-pressed={menyala}
-              className={`rounded-2xl p-3 text-left ${
-                menyala ? "border-amber-400 bg-amber-50 shadow-md" : "border-indigo-100 bg-white hover:border-amber-400"
-              }`}
+              className={`rounded-2xl p-3 text-left ${menyala ? "border-amber-400 bg-amber-50 shadow-md" : "border-indigo-100 bg-white hover:border-amber-400"}`}
             >
               <span className="flex items-start gap-2">
                 <span aria-hidden="true" className="text-2xl leading-none">
-                  {buka ? "🎓" : "🔒"}
+                  {s.terbuka ? "🎓" : "🔒"}
                 </span>
                 <span className="min-w-0 flex-1 text-sm font-black leading-snug text-indigo-950">{t.title}</span>
               </span>
               <span className="mt-2 block h-2.5 overflow-hidden rounded-full bg-indigo-100">
-                <span
-                  className="block h-full rounded-full bg-amber-400"
-                  style={{ width: `${(jumlah / t.requiredChapters.length) * 100}%` }}
-                />
+                <span className="block h-full rounded-full bg-amber-400" style={{ width: `${(s.jumlah / s.babWajib.length) * 100}%` }} />
               </span>
               <span className="mt-1 block text-xs font-bold text-indigo-950/70">
-                {jumlah} dari {t.requiredChapters.length} bab tuntas
+                {s.jumlah} dari {s.babWajib.length} bab tuntas
               </span>
             </button>
           );
@@ -493,21 +500,11 @@ function TabSertifikat({ profil, babTuntas }: { profil: PenerimaSertifikat; babT
       <section className="rounded-3xl border-2 border-indigo-100 bg-white p-4 shadow-sm">
         <h3 className="text-base font-black text-indigo-950">Syarat membuka kunci</h3>
         <ul className="mt-2 space-y-1.5">
-          <SyaratSertifikat
-            ok={tuntasJumlah === aktif.requiredChapters.length}
-            teks={`Lulus Ujian 100% pada ${aktif.requiredChapters.length} bab (${tuntasJumlah} sudah tuntas)`}
-          />
-          <SyaratSertifikat
-            ok={terbuka && aktif.requirePracticum && PRAKTIKUM_BLOK_1_SELESAI}
-            teks="Menyerahkan Praktikum Sintesis lintas-bab"
-          />
+          <SyaratSertifikat ok={sa.semuaBab} teks={`Lulus Ujian 100% pada ${sa.babWajib.length} bab (${sa.jumlah} sudah tuntas)`} />
+          {aktif.requirePracticum ? <SyaratSertifikat ok={sa.praktikumOk} teks="Menyerahkan Praktikum Sintesis lintas-bab" /> : null}
         </ul>
-        <p
-          className={`mt-3 rounded-2xl p-3 text-sm font-black leading-snug ${
-            terbuka ? "bg-emerald-50 text-emerald-900" : "bg-amber-50 text-indigo-950"
-          }`}
-        >
-          {terbuka
+        <p className={`mt-3 rounded-2xl p-3 text-sm font-black leading-snug ${sa.terbuka ? "bg-emerald-50 text-emerald-900" : "bg-amber-50 text-indigo-950"}`}>
+          {sa.terbuka
             ? "🎉 Sertifikat terbuka! Cetak atau unduh sekarang."
             : "👀 Ini Mode Pratinjau. Selesaikan bab-babnya supaya sertifikat asli terbuka dan tanda PRATINJAU hilang."}
         </p>
@@ -521,7 +518,7 @@ function TabSertifikat({ profil, babTuntas }: { profil: PenerimaSertifikat; babT
           kode={kode}
           penerbit={rapor.certificateTemplate.issuerName.split(" — ")[0]}
           pendiri={rapor.certificateTemplate.founderTitle.split(" — ")[0]}
-          pratinjau={!terbuka}
+          pratinjau={!sa.terbuka}
         />
       ) : (
         <div className="h-64 animate-pulse rounded-3xl bg-indigo-50" />
@@ -530,41 +527,55 @@ function TabSertifikat({ profil, babTuntas }: { profil: PenerimaSertifikat; babT
   );
 }
 
+const HURUF_SUB = ["A", "B", "C", "D", "E", "F"];
+
 export default function RaporHalaman() {
   const [tab, setTab] = useState(rapor.subTabs[0].id);
   const profil = useProfilSiswa();
+  const capaian = useCapaian();
+  const ujianLama = useUjianLulus();
+  const praktikumBlok1 = usePraktikumTerkirim(BLOK_1.id);
+  const hariIni = useHariIni();
 
-  const tokenSaatIni = BAB_KELAS1.reduce(
-    (acc, b) => ({
-      latihan: acc.latihan + b.tokenLatihan,
-      ujian: acc.ujian + b.tokenUjian,
-      praktikum: acc.praktikum,
-    }),
-    { latihan: 0, ujian: 0, praktikum: PRAKTIKUM_BLOK_1_SELESAI ? POIN_PRAKTIKUM : 0 },
+  const siap = capaian !== null && ujianLama !== null && praktikumBlok1 !== null && hariIni !== null;
+
+  const tuntas = useMemo(() => babUjianSempurna(capaian ?? {}, ujianLama ?? []), [capaian, ujianLama]);
+  const praktikumTerkirim = useMemo(() => new Set(praktikumBlok1 ? [BLOK_1.id] : []), [praktikumBlok1]);
+  const poin = useMemo(
+    () => (hariIni ? poinBulanIni(capaian ?? {}, bulanJakarta(hariIni), [praktikumBlok1 ? bulanJakarta(new Date(praktikumBlok1.dikirimPada)) : null]) : poinBulanIni({}, "", [])),
+    [capaian, hariIni, praktikumBlok1],
   );
-
-  const babTuntas = new Set(BAB_KELAS1.filter((b) => b.skorUjian === 100).map((b) => b.id));
+  const ringkas = useMemo(
+    () =>
+      BAB_KELAS1.map((b) => {
+        const r = ringkasBab(capaian?.[b.kode], b.totalSubBab);
+        // Ujian lulus dari catatan lama (igil_ujian_lulus_v1) tetap dihitung tuntas walau catatan baru belum ada.
+        return tuntas.has(b.kode) && !r.ujianSempurna ? { ...r, ujianSempurna: true, mulai: true } : r;
+      }),
+    [capaian, tuntas],
+  );
+  const tuntasBlok1 = BLOK_1.bab.filter((b) => tuntas.has(b)).length;
+  const adaCatatan = Object.keys(capaian ?? {}).length > 0 || (ujianLama?.length ?? 0) > 0;
 
   return (
     <main className="flex-1 bg-white text-slate-700">
       <div className="mx-auto w-full max-w-4xl space-y-4 px-2 py-4 sm:py-8">
-        <KepalaHalaman
-          ikon="📊"
-          lencana={rapor.header.badge}
-          judul={rapor.header.title}
-          subjudul={rapor.header.subtitle}
-        />
+        <KepalaHalaman ikon="📊" lencana={rapor.header.badge} judul={rapor.header.title} subjudul={rapor.header.subtitle} />
 
-        <SpanduContoh>
-          Tampilan contoh dengan data bab 1. Angka asli tersambung otomatis setelah penyimpanan progres ke Supabase
-          (lewat RPC) siap.
-        </SpanduContoh>
+        {siap ? <CatatanData adaCatatan={adaCatatan} /> : null}
 
         <SubTabBar tabs={rapor.subTabs} aktif={tab} onPilih={setTab} />
 
-        {tab === "rapor-ketuntasan" ? (
+        {!siap ? (
+          <div className="space-y-3" role="status" aria-label="Membaca catatan belajarmu">
+            <div className="h-56 animate-pulse rounded-3xl bg-indigo-50" />
+            <div className="h-32 animate-pulse rounded-3xl bg-indigo-50" />
+          </div>
+        ) : tab === "rapor-ketuntasan" ? (
           <div className="space-y-4">
-            <KartuDompet profil={profil} tokenSaatIni={tokenSaatIni} />
+            <KartuDompet profil={profil} poin={poin} />
+
+            <KartuLanjut berikutnya={babBerikutnya(URUT_BAB, tuntas)} tuntas={URUT_BAB.filter((b) => tuntas.has(b)).length} />
 
             <section aria-labelledby="judul-bab" className="space-y-3">
               <h2 id="judul-bab" className="text-xl font-black text-indigo-950">
@@ -572,25 +583,21 @@ export default function RaporHalaman() {
               </h2>
               <div className="grid gap-3 md:grid-cols-2">
                 {BAB_KELAS1.map((b, i) => (
-                  <KartuBab key={b.id} bab={b} nomor={i + 1} />
+                  <KartuBab key={b.kode} kode={b.kode} judul={b.judul} r={ringkas[i]} nomor={i + 1} urutanSub={HURUF_SUB.slice(0, b.totalSubBab)} subSelesai={capaian?.[b.kode]?.subBab ?? []} />
                 ))}
               </div>
-              <KartuPraktikumBlok />
+              <KartuPraktikumBlok tuntasBlok={tuntasBlok1} terkirim={Boolean(praktikumBlok1)} />
             </section>
 
-            <PanelPenilaianRahasia terkunci={bab1.hiddenGrading.isHidden} />
-            <PanelPintar />
+            <PanelPapanKualifikasi jumlahBabKualifikasi={ringkas.filter((r) => r.kualifikasi).length} />
+            <PanelPenilaianRahasia terkirim={Boolean(praktikumBlok1)} />
 
-            <section className="rounded-3xl border-2 border-indigo-100 bg-indigo-50/40 p-4">
-              <h3 className="text-base font-black text-indigo-950">🏅 Arti Predikat</h3>
+            <details className="rounded-3xl border-2 border-indigo-100 bg-indigo-50/40 p-4">
+              <summary className="cursor-pointer list-none text-base font-black text-indigo-950">🏅 Arti Predikat</summary>
               <ul className="mt-2 grid gap-2 sm:grid-cols-2">
                 {rapor.predikatScale.map((p) => (
                   <li key={p.code} className="flex items-start gap-2 rounded-2xl bg-white p-3">
-                    <span
-                      className={`shrink-0 rounded-full px-2.5 py-0.5 text-sm font-black ${WARNA_PREDIKAT[p.colorTheme] ?? ""}`}
-                    >
-                      {p.code}
-                    </span>
+                    <span className={`shrink-0 rounded-full px-2.5 py-0.5 text-sm font-black ${WARNA_PREDIKAT[p.colorTheme] ?? ""}`}>{p.code}</span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-black text-indigo-950">
                         {p.label} <span className="font-semibold text-slate-500">({p.minScore}–{p.maxScore})</span>
@@ -600,10 +607,10 @@ export default function RaporHalaman() {
                   </li>
                 ))}
               </ul>
-            </section>
+            </details>
           </div>
         ) : (
-          <TabSertifikat profil={profil} babTuntas={babTuntas} />
+          <TabSertifikat profil={profil} tuntas={tuntas} praktikumTerkirim={praktikumTerkirim} />
         )}
       </div>
     </main>

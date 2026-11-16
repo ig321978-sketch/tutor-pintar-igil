@@ -92,6 +92,22 @@ sama([...sempurna].sort(), ["mtk-1-bab1", "mtk-1-bab2", "mtk-1-bab3"], "ujian se
 sama(C.babBerikutnya(["mtk-1-bab1", "mtk-1-bab2", "mtk-1-bab3", "mtk-1-bab4"], sempurna), "mtk-1-bab4", "bab berikutnya yang belum 100%");
 sama(C.babBerikutnya(["mtk-1-bab1"], new Set(["mtk-1-bab1"])), null, "semua tuntas: tidak ada bab berikutnya");
 
+/* ------------------------------ Sertifikat ------------------------------ */
+sama([C.kodeAplikasiDariServer("k1-mat-bab3"), C.kodeAplikasiDariServer("k6-mat-bab12"), C.kodeAplikasiDariServer("k1-pai-bab1")], ["mtk-1-bab3", "mtk-6-bab12", "k1-pai-bab1"], "kode bab server ke kode aplikasi");
+const BLOK1 = { id: "mtk-1-blok1", bab: ["mtk-1-bab1", "mtk-1-bab2", "mtk-1-bab3", "mtk-1-bab4"] };
+const WAJIB4 = BLOK1.bab;
+const WAJIB8 = Array.from({ length: 8 }, (_, i) => `mtk-1-bab${i + 1}`);
+sama(C.blokDibutuhkan(WAJIB4, [BLOK1]).map((b) => b.id), ["mtk-1-blok1"], "sertifikat 4 bab membutuhkan praktikum blok 1");
+sama(C.blokDibutuhkan(WAJIB8, [BLOK1]).map((b) => b.id), ["mtk-1-blok1"], "sertifikat 8 bab membutuhkan praktikum blok yang sudah ada");
+sama(C.blokDibutuhkan(["mtk-1-bab1", "mtk-1-bab2"], [BLOK1]).length, 0, "dua bab saja tidak membutuhkan blok 1 utuh");
+const buka = (tuntas, kirim, wajibPraktikum = true, babWajib = WAJIB4) => C.sertifikatTerbuka({ babWajib, tuntas: new Set(tuntas), wajibPraktikum, blok: [BLOK1], praktikumTerkirim: new Set(kirim) });
+cek(!buka(WAJIB4.slice(0, 3), ["mtk-1-blok1"]), "tiga dari empat bab: sertifikat tetap terkunci");
+cek(!buka(WAJIB4, []), "empat bab 100% tanpa Praktikum: terkunci (praktikum wajib)");
+cek(buka(WAJIB4, ["mtk-1-blok1"]), "empat bab 100% dan Praktikum terkirim: terbuka");
+cek(buka(WAJIB4, [], false), "sertifikat tanpa kewajiban Praktikum: terbuka setelah bab tuntas");
+cek(!buka(WAJIB8.slice(0, 7), ["mtk-1-blok1"], true, WAJIB8), "tujuh dari delapan bab: terkunci");
+cek(buka(WAJIB8, ["mtk-1-blok1"], true, WAJIB8), "delapan bab dan praktikum blok 1: terbuka");
+
 /* ------------------------------ Urai data rusak ------------------------------ */
 sama(C.urai(null), {}, "tanpa data");
 sama(C.urai(""), {}, "teks kosong");
@@ -124,6 +140,15 @@ cek(/catatSubBabSelesai\(bab, activeSubBab\)/.test(player), "pemutar mencatat Su
 cek(/catatLatihanDinilai\(bab, kunci, balasan\.hasil\.benar\)/.test(player), "pemutar mencatat Latihan hanya dari jawaban yang dinilai server");
 const belajar = readFileSync(new URL("../src/components/modul/BelajarServer.tsx", import.meta.url), "utf8");
 cek(/catatUjianDinilai\(bab, res\.nilai\)/.test(belajar), "UjianServer mencatat nilai dari server");
+
+/* ------------------------------ Halaman Rapor memakai data nyata ------------------------------ */
+const raporSrc = readFileSync(new URL("../src/components/rapor/RaporHalaman.tsx", import.meta.url), "utf8");
+cek(/useCapaian\(\)/.test(raporSrc) && /poinBulanIni\(/.test(raporSrc) && /ringkasBab\(/.test(raporSrc), "Rapor membaca capaian nyata (useCapaian, ringkasBab, poinBulanIni)");
+cek(!/sampleChaptersProgress|SpanduContoh|Tampilan contoh/.test(raporSrc), "Rapor tidak lagi memakai data contoh bab 1");
+cek(/sertifikatTerbuka\(/.test(raporSrc) && /kodeAplikasiDariServer/.test(raporSrc), "Sertifikat memakai syarat nyata (bab 100% dan Praktikum terkirim)");
+cek(!/rupiah|Rp|kurs/i.test(raporSrc.replace(/biaya server Rp 0/gi, "")), "Rapor tanpa rupiah atau kurs poin");
+cek(/Bukan uang tunai/.test(raporSrc) && /di-reset ke 0 setiap akhir bulan/.test(raporSrc), "Rapor menyebut poin bukan uang tunai dan reset bulanan");
+cek(!/getUserMedia|kamera aktif|face/i.test(raporSrc), "Rapor tanpa kamera atau deteksi wajah");
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);
