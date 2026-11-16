@@ -15,7 +15,7 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Lebih dari, Kurang dari, Selisih)",
       "fullTitle": "Sub-Bab A: Mengenal Konsep Lebih dari, Kurang dari, dan Selisih",
-      "targetDescription": "Siswa membandingkan dua kelompok benda dengan memasangkan satu-satu, menyatakan perbandingan dengan kata lebih dari, kurang dari, lebihnya, kurangnya, beda, dan selisih, mencari selisih dengan mengurangkan bilangan yang besar dengan bilangan yang kecil, menunjukkan selisih pada model batang dan garis bilangan, serta mencari bilangan yang belum diketahui dari cerita lebihnya atau kurangnya. Memakai Maju dan Mundur, Pasangan sampai 20, Menjadikan Sepuluh. Memakai Maju dan Mundur, Pasangan sampai 20, Menjadikan Sepuluh.",
+      "targetDescription": "Siswa memasangkan benda dari dua kelompok satu demi satu untuk membandingkannya, menceritakan hasilnya memakai istilah selisih, beda, kurangnya, lebihnya, serta kurang dari dan lebih dari, mencari selisih dengan mengurangkan bilangan yang kecil dari bilangan yang besar, menunjukkan selisih pada model batang dan garis bilangan, serta mencari bilangan yang belum diketahui dari cerita lebihnya atau kurangnya. Memakai Maju dan Mundur, Pasangan sampai 20, Menjadikan Sepuluh. Memakai Maju dan Mundur, Pasangan sampai 20, Menjadikan Sepuluh.",
       "secondaryBg": "#FCE7F3",
       "secondaryBorder": "#DB2777",
       "secondaryText": "#831843",
@@ -24,7 +24,7 @@
           "id": "A6-S1",
           "titleHint": "Membantu Ibu",
           "sceneType": "membantu-ibu-donat",
-          "voiceNarration": "Hari Minggu telah tiba. Tika membantu Ibu memasak di dapur. Mereka membuat donat. Ibu menghias tujuh donat. Tika menghias enam donat. Tika sangat senang. Siapa yang memiliki donat lebih banyak? Bagaimana kita tahu? Kita hitung dulu donat Ibu, lalu donat Tika, kemudian kita bandingkan. Kita memakai cara Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Di dapur, Tika membantu Ibu membuat donat. Donat yang dihias Ibu ada tujuh, sedangkan yang dihias Tika ada enam. Tika tampak gembira. Menurutmu, donat siapa yang lebih banyak? Supaya yakin, hitung donat Ibu lebih dulu, kemudian donat Tika, lalu bandingkan keduanya. Kita memakai cara Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A6-S2",
@@ -36,19 +36,19 @@
           "id": "A6-S3",
           "titleHint": "Bunga dan Kupu-Kupu",
           "sceneType": "bunga-dan-kupu-kupu",
-          "voiceNarration": "Ada lima bunga yang sedang mekar. Ada tujuh kupu-kupu terbang di atas bunga. Berapa lebihnya banyak kupu-kupu dari bunga? Berapa kurangnya banyak bunga dari kupu-kupu? Tujuh lebih banyak dari lima. Tujuh dikurangi lima sama dengan dua. Banyak kupu-kupu dua lebihnya dari banyak bunga. Banyak bunga dua kurangnya dari banyak kupu-kupu. Beda banyak bunga dan kupu-kupu adalah dua. Kita memakai cara Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Lima bunga sedang mekar, dan tujuh kupu-kupu beterbangan di atasnya. Kupu-kupu lebih banyak berapa daripada bunga? Bunga kurang berapa dibandingkan kupu-kupu? Tujuh melebihi lima. Untuk mengetahui selisihnya, tujuh dikurangi lima, hasilnya dua. Jadi kupu-kupu lebihnya dua dari bunga, dan bunga kurangnya dua dari kupu-kupu. Beda jumlah keduanya adalah dua. Kita memakai cara Menjadikan Sepuluh: Isi sampai sepuluh dulu, lalu sisa. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A6-S4",
           "titleHint": "Beda atau Selisih",
           "sceneType": "beda-atau-selisih",
-          "voiceNarration": "Beda dua bilangan bisa ditunjukkan dengan kata lebih dari, kurang dari, beda, atau selisih. Banyaknya donat Ibu berbeda dengan banyaknya donat Tika. Beda banyaknya donat Ibu dan Tika adalah satu. Selisih banyaknya donat Ibu dan Tika adalah satu. Kita menemukan beda dua bilangan dengan mengurangkannya. Bilangan yang lebih besar dikurangi bilangan yang lebih kecil. Tujuh dikurangi enam sama dengan satu. Kita memakai cara Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Perbedaan dua bilangan dapat disebut kurang dari, lebih dari, beda, atau selisih. Donat Ibu dan donat Tika tidak sama banyak. Perbedaannya hanya satu donat, jadi selisihnya satu. Untuk mencarinya, ambil bilangan yang besar, lalu kurangi dengan bilangan yang kecil. Tujuh dikurangi enam hasilnya satu. Kita memakai cara Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A6-S5",
           "titleHint": "Dua Barisan Anak",
           "sceneType": "dua-barisan-anak",
-          "voiceNarration": "Ayo bermain! Buatlah dua barisan, satu barisan anak laki-laki dan satu barisan anak perempuan. Di gambar ini ada lima anak laki-laki dan empat anak perempuan. Kita pasangkan satu demi satu. Satu anak laki-laki tidak punya pasangan. Jadi anak laki-laki satu lebihnya dari anak perempuan, dan selisih banyaknya adalah satu. Cobalah bersama temanmu, lalu ceritakan hasilnya dengan kata lebih dari, kurang dari, dan selisih. Kita memakai cara Pasangan sampai 20: Pasangan yang membentuk dua puluh. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Saatnya bermain barisan. Anak laki-laki berbaris di satu sisi dan anak perempuan di sisi lain. Pada gambar tampak lima anak laki-laki dan empat anak perempuan. Setiap anak laki-laki berpasangan dengan satu anak perempuan. Ternyata satu anak laki-laki tidak mendapat pasangan. Jadi anak laki-laki lebihnya satu daripada anak perempuan, dan selisih keduanya adalah satu. Sekarang ceritakan sendiri hasilnya, boleh memakai kata kurang dari, lebih dari, atau selisih. Kita memakai cara Pasangan sampai 20: Pasangan yang membentuk dua puluh. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A6-S6",
@@ -150,7 +150,7 @@
           "emoji": "🔍",
           "countNum": 1,
           "countWord": "Satu",
-          "voiceSentence": "Beda dua bilangan bisa ditunjukkan dengan kata lebih dari, kurang dari, beda, atau selisih. Tujuh dikurangi enam sama dengan satu."
+          "voiceSentence": "Perbedaan dua bilangan dapat disebut kurang dari, lebih dari, beda, atau selisih. Tujuh dikurangi enam hasilnya satu."
         },
         {
           "fruitName": "Model Batang",
@@ -171,14 +171,14 @@
           "emoji": "➖",
           "countNum": 3,
           "countWord": "Tiga",
-          "voiceSentence": "Cari bilangan yang lebih besar, cari bilangan yang lebih kecil, lalu kurangkan yang besar dengan yang kecil. Sembilan dikurangi enam sama dengan tiga."
+          "voiceSentence": "Tentukan dulu bilangan yang terbesar dan yang terkecil dari keduanya, kemudian kurangi yang besar dengan yang kecil. Sembilan dikurangi enam hasilnya tiga."
         },
         {
           "fruitName": "Kalimat Pembanding",
           "emoji": "🗣️",
           "countNum": 2,
           "countWord": "Dua",
-          "voiceSentence": "Banyak kupu-kupu dua lebihnya dari banyak bunga. Banyak bunga dua kurangnya dari banyak kupu-kupu. Beda banyak bunga dan kupu-kupu adalah dua."
+          "voiceSentence": "Kupu-kupu lebihnya dua dari bunga. Bunga kurangnya dua dari kupu-kupu. Beda jumlah keduanya adalah dua."
         },
         {
           "fruitName": "Mencari Bilangan yang Belum Diketahui",
@@ -214,7 +214,7 @@
           "title": "Donat di Piring",
           "emoji": "🍩",
           "targetCount": 3,
-          "voiceGuide": "Maju dan Mundur. Maju dan Mundur. Seret benda ke piring di bawah benda yang lain. Lihat piring yang kosong atau benda yang tersisa. Itulah lebihnya. Ucapkan selisihnya.. Jumlah dengan maju, kurang dengan mundur."
+          "voiceGuide": "Maju dan Mundur. Maju dan Mundur. Geser tiap benda ke piring yang ada di bawah pasangannya. Perhatikan piring yang tidak terisi atau benda yang belum punya pasangan. Itulah lebihnya. Ucapkan selisihnya.. Jumlah dengan maju, kurang dengan mundur."
         },
         {
           "title": "Samakan Kelompok",
@@ -856,7 +856,7 @@
           "id": "C6-S1",
           "titleHint": "Apel Tika Dimakan Ulat",
           "sceneType": "apel-dimakan-ulat",
-          "voiceNarration": "Masih ingatkah kamu cerita Ibu dan Tika? Ibu punya tujuh donat, Tika punya enam donat, dan selisihnya tujuh dikurangi enam sama dengan satu. Kita sudah belajar pengurangan satuan dengan satuan. Sekarang kita belajar pengurangan puluhan dengan satuan. Tika membeli lima belas apel. Ternyata tiga apel dimakan ulat. Berapakah sisa apel Tika yang masih bagus? Sisanya adalah lima belas dikurangi tiga. Kita bisa menghitungnya dengan beberapa cara. Kita memakai cara Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Ingat cerita donat Ibu dan Tika? Ibu punya tujuh donat dan Tika enam donat, jadi selisihnya tujuh dikurangi enam, yaitu satu. Tadi kita mengurangkan satuan dari satuan. Kali ini bilangan yang dikurangi sudah punya puluhan, sedangkan pengurangnya tetap satuan. Tika membeli lima belas apel, tetapi tiga di antaranya dimakan ulat. Berapa apel yang masih bagus? Hitungannya lima belas dikurangi tiga. Ada beberapa cara untuk menyelesaikannya. Kita memakai cara Maju dan Mundur: Jumlah dengan maju, kurang dengan mundur. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "C6-S2",

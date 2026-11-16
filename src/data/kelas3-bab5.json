@@ -93,7 +93,7 @@
           "id": "K3B5A-V2-2",
           "titleHint": "Urutkan dari terkecil",
           "sceneType": "K3B5A-V2-2",
-          "voiceNarration": "Urutkan nama dari yang jumlah anggota keluarganya terkecil. Berapa banyak anggota keluarga paling sedikit. Berapa banyak anggota keluarga paling banyak. Di sini kita memakai ide Order Data — Urutkan dari terbanyak/tersedikit. Di sini kita memakai Order Data. Urutkan dari terbanyak/tersedikit."
+          "voiceNarration": "Urutkan nama dari yang jumlah anggota keluarganya terkecil. Keluarga mana yang anggotanya paling sedikit, dan berapa orang. Keluarga mana yang anggotanya paling banyak, dan berapa orang. Di sini kita memakai ide Order Data — Urutkan dari terbanyak/tersedikit. Di sini kita memakai Order Data. Urutkan dari terbanyak/tersedikit."
         },
         {
           "id": "K3B5A-V2-3",
@@ -957,7 +957,7 @@
         "poin": [
           {
             "nama": "Mengurutkan",
-            "isi": "Data diurutkan dari terkecil ke terbesar atau dari terbesar ke terkecil",
+            "isi": "Data bisa disusun naik, dari yang kecil ke yang besar, atau turun, dari yang besar ke yang kecil",
             "suara": "Mengurutkan data memudahkan kita mencari data terkecil dan terbesar."
           },
           {

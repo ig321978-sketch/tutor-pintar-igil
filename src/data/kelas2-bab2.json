@@ -75,7 +75,7 @@
           "id": "K2B2A-V1-2",
           "titleHint": "Tika dan Kira memetik",
           "sceneType": "K2B2A-V1-2",
-          "voiceNarration": "Tika memetik 12 buah jambu air. Kira memetik 6 lebih banyak dari jambu air milik Tika. Mereka terlihat senang karena menyukai jambu air. Di sini kita memakai ide Counting On — Mulai dari bilangan lebih besar lalu maju. Di sini kita memakai Counting On. Mulai dari bilangan lebih besar lalu maju."
+          "voiceNarration": "Tika memetik 12 buah jambu air. Jambu air yang dipetik Kira 6 buah lebih banyak daripada milik Tika. Mereka terlihat senang karena menyukai jambu air. Di sini kita memakai ide Counting On — Mulai dari bilangan lebih besar lalu maju. Di sini kita memakai Counting On. Mulai dari bilangan lebih besar lalu maju."
         },
         {
           "id": "K2B2A-V1-3",
@@ -105,7 +105,7 @@
           "id": "K2B2A-V3-1",
           "titleHint": "Kira memetik dua lagi",
           "sceneType": "K2B2A-V3-1",
-          "voiceNarration": "Kira mempunyai 18 jambu air. Kira memetik lagi 2 jambu air. Berapa banyak jambu air milik Kira sekarang. Ingat cara Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan. Ingat cara Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan."
+          "voiceNarration": "Kira mempunyai 18 jambu air. Kira memetik lagi 2 jambu air. Sekarang jambu air Kira ada berapa. Ingat cara Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan. Ingat cara Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan."
         },
         {
           "id": "K2B2A-V3-2",
@@ -147,7 +147,7 @@
               "judul": "Tika dan Kira memetik",
               "ketukan": [
                 "Tika memetik 12 buah jambu air.",
-                "Kira memetik 6 lebih banyak dari jambu air milik Tika.",
+                "Jambu air yang dipetik Kira 6 buah lebih banyak daripada milik Tika.",
                 "Mereka terlihat senang karena menyukai jambu air.",
                 "Di sini kita memakai ide Counting On — Mulai dari bilangan lebih besar lalu maju. Di sini kita memakai Counting On. Mulai dari bilangan lebih besar lalu maju."
               ],
@@ -242,7 +242,7 @@
               "ketukan": [
                 "Kira mempunyai 18 jambu air.",
                 "Kira memetik lagi 2 jambu air.",
-                "Berapa banyak jambu air milik Kira sekarang.",
+                "Sekarang jambu air Kira ada berapa.",
                 "Ingat cara Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan. Ingat cara Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan."
               ],
               "papan": [
@@ -1597,7 +1597,7 @@
           "emoji": "🧸",
           "countNum": 20,
           "countWord": "Dua puluh",
-          "voiceSentence": "Tika membawa lima boneka, Kira tujuh, dan Lili delapan. Jumlahkan dua dulu: lima ditambah tujuh sama dengan dua belas. Lalu dua belas ditambah delapan sama dengan dua puluh. Jadi jumlah semua boneka adalah dua puluh buah."
+          "voiceSentence": "Tika membawa lima boneka, Kira tujuh, dan Lili delapan. Jumlahkan dua dulu: lima ditambah tujuh sama dengan dua belas. Lalu dua belas ditambah delapan sama dengan dua puluh. Dengan begitu, seluruh boneka berjumlah dua puluh buah."
         },
         {
           "fruitName": "Model Batang",

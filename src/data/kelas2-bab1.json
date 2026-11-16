@@ -31,7 +31,7 @@
           "id": "K2A-S1",
           "titleHint": "Loker Baru di Kelas Malosi",
           "sceneType": "loker-baru",
-          "voiceNarration": "Loker baru di kelas Malosi! Hari pertama masuk sekolah telah tiba. Malosi dan teman-temannya sangat senang. Sekarang ada loker baru di kelas Malosi. Loker baru ini dipakai untuk menyimpan tas supaya kelas rapi. Ibu guru meminta setiap anak memasukkan tasnya ke loker. Rak loker ini masih kosong. Menurut kamu, berapa banyak anak di kelas Malosi? Bagaimana cara kamu mendapatkan jawabannya?"
+          "voiceNarration": "Loker baru di kelas Malosi! Hari pertama masuk sekolah telah tiba. Malosi dan teman-temannya gembira sekali. Di kelas Malosi kini terpasang loker baru. Loker baru ini dipakai untuk menyimpan tas supaya kelas rapi. Ibu guru meminta setiap anak memasukkan tasnya ke loker. Rak loker ini masih kosong. Menurut kamu, berapa banyak anak di kelas Malosi? Bagaimana cara kamu mendapatkan jawabannya?"
         },
         {
           "id": "K2A-S2",
@@ -713,13 +713,13 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Membandingkan Bilangan)",
       "fullTitle": "Sub-Bab C: Membandingkan Dua Bilangan atau Lebih",
-      "targetDescription": "Siswa menebak banyak benda lalu membandingkan tebakan dengan hasil hitungan, membandingkan dua bilangan atau lebih sampai 50 memakai nilai tempat (puluhan dulu, lalu satuan), menentukan bilangan yang lebih besar dan lebih kecil serta memakai tandanya, menukar sepuluh satuan sebelum membandingkan, dan mengurutkan bilangan dari yang paling kecil atau paling besar.",
+      "targetDescription": "Siswa menebak banyak benda lalu membandingkan tebakan dengan hasil hitungan, membandingkan dua bilangan atau lebih sampai 50 memakai nilai tempat (puluhan dulu, lalu satuan), menentukan mana bilangan yang lebih besar dan mana yang lebih kecil serta memakai tandanya, menukar sepuluh satuan sebelum membandingkan, dan mengurutkan bilangan mulai dari yang terkecil hingga terbesar.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#16A34A",
       "secondaryText": "#14532D",
       "silabus": {
-        "teksSuara": "Kita belajar membandingkan dua bilangan atau lebih. Bukunya bernama Ayo Membilang sampai dengan Lima Puluh, bagian membandingkan. Kita menebak banyak permen di stoples Kira, lalu menghitung dan membandingkan tebakan dengan hitungan. Kita membandingkan dua bilangan memakai tabel nilai tempat, menentukan bilangan yang lebih besar dan lebih kecil, memakai tandanya, dan mengurutkan bilangan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa membandingkan dua bilangan atau lebih sampai 50 memakai nilai tempat, menentukan bilangan yang lebih besar dan lebih kecil, menjelaskan alasan perbandingan, membandingkan tebakan dengan hasil hitungan, serta mengurutkan bilangan dari yang paling kecil atau paling besar.",
+        "teksSuara": "Kita belajar membandingkan dua bilangan atau lebih. Bukunya bernama Ayo Membilang sampai dengan Lima Puluh, bagian membandingkan. Kita menebak banyak permen di stoples Kira, lalu menghitung dan membandingkan tebakan dengan hitungan. Kita membandingkan dua bilangan memakai tabel nilai tempat, menentukan mana bilangan yang lebih besar dan mana yang lebih kecil, memakai tandanya, dan mengurutkan bilangan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa membandingkan dua bilangan atau lebih sampai 50 memakai nilai tempat, menentukan mana bilangan yang lebih besar dan mana yang lebih kecil, menjelaskan alasan perbandingan, membandingkan tebakan dengan hasil hitungan, serta mengurutkan bilangan mulai dari yang terkecil hingga terbesar.",
         "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 1: Ayo Membilang sampai dengan 50, Sub-Bab C hlm. 23–30)."
       },
       "stories": [
@@ -733,31 +733,31 @@
           "id": "K2C-S2",
           "titleHint": "Menghitung Permen Kira",
           "sceneType": "hitung-permen",
-          "voiceNarration": "Ayo, kita hitung banyak permen di dalam stoples. Kita kelompokkan setiap sepuluh permen, seperti lingkaran putus-putus di buku. Sepuluh, dua puluh. Lalu sisanya kita hitung satu per satu: dua puluh satu, dua puluh dua, dua puluh tiga, dua puluh empat, dua puluh lima, dua puluh enam. Ternyata ada dua puluh enam permen."
+          "voiceNarration": "Sekarang kita hitung isi stoples itu. Kita kelompokkan setiap sepuluh permen, seperti lingkaran putus-putus di buku. Sepuluh, dua puluh. Lalu sisanya kita hitung satu per satu: dua puluh satu, dua puluh dua, dua puluh tiga, dua puluh empat, dua puluh lima, dua puluh enam. Ternyata ada dua puluh enam permen."
         },
         {
           "id": "K2C-S3",
           "titleHint": "Tebakan Siapa Lebih Dekat?",
           "sceneType": "tebakan-dekat",
-          "voiceNarration": "Sekarang kita bandingkan tebakan dengan hitungan. Tebakan Malosi dua puluh, tebakan Halim tiga puluh, dan banyak permen Kira dua puluh enam. Dari dua puluh maju ke dua puluh enam ada enam langkah. Dari tiga puluh mundur ke dua puluh enam ada empat langkah. Empat lebih sedikit daripada enam, jadi tebakan Halim lebih dekat. Kita dapat menebak banyak benda. Itu akan melatih kita dalam berhitung."
+          "voiceNarration": "Sekarang kita bandingkan tebakan dengan hitungan. Tebakan Malosi dua puluh, tebakan Halim tiga puluh, dan banyak permen Kira dua puluh enam. Dari dua puluh maju ke dua puluh enam ada enam langkah. Dari tiga puluh mundur ke dua puluh enam ada empat langkah. Empat lebih sedikit daripada enam, jadi tebakan Halim lebih dekat. Menebak dulu lalu memeriksa dengan hitungan adalah latihan berhitung yang bagus."
         },
         {
           "id": "K2C-S4",
           "titleHint": "Permen Kira dan Tika",
           "sceneType": "permen-kira-tika",
-          "voiceNarration": "Kira membawa dua puluh enam permen. Tika membawa tiga puluh dua permen. Permen siapa yang lebih banyak? Mengapa? Kita bisa menggunakan tabel nilai tempat untuk membandingkan bilangan. Dua puluh enam adalah dua puluhan dan enam satuan. Tiga puluh dua adalah tiga puluhan dan dua satuan."
+          "voiceNarration": "Kira membawa dua puluh enam permen. Tika membawa tiga puluh dua permen. Permen milik siapa yang jumlahnya lebih banyak, dan apa alasannya? Tabel nilai tempat dapat membantu kita membandingkan kedua bilangan itu. Dua puluh enam adalah dua puluhan dan enam satuan. Tiga puluh dua adalah tiga puluhan dan dua satuan."
         },
         {
           "id": "K2C-S5",
           "titleHint": "Puluhan Dulu",
           "sceneType": "puluhan-dulu",
-          "voiceNarration": "Amatilah kolom puluhan pada tabel nilai tempat. Mana yang lebih banyak? Bilangan dua puluh enam mempunyai dua puluhan. Bilangan tiga puluh dua mempunyai tiga puluhan. Bilangan tiga puluh dua mempunyai lebih banyak puluhan daripada bilangan dua puluh enam. Bilangan yang menunjukkan benda lebih banyak disebut bilangan lebih besar. Jadi, tiga puluh dua lebih besar dari dua puluh enam. Sebaliknya, dua puluh enam lebih kecil dari tiga puluh dua."
+          "voiceNarration": "Sekarang lihat kolom puluhan di tabel nilai tempat. Bilangan mana yang puluhannya lebih banyak? Bilangan dua puluh enam mempunyai dua puluhan. Bilangan tiga puluh dua mempunyai tiga puluhan. Bilangan tiga puluh dua mempunyai lebih banyak puluhan daripada bilangan dua puluh enam. Kumpulan yang isinya lebih banyak diwakili bilangan yang lebih besar. Jadi, tiga puluh dua lebih besar dari dua puluh enam. Sebaliknya, dua puluh enam lebih kecil dari tiga puluh dua."
         },
         {
           "id": "K2C-S6",
           "titleHint": "Urutkan Kartu Bilangan",
           "sceneType": "urutkan-kartu",
-          "voiceNarration": "Malosi memegang empat kartu bilangan: dua puluh lima, dua belas, tiga puluh lima, dan dua puluh satu. Mana yang paling kecil? Dua belas, karena hanya satu puluhan. Mana yang paling besar? Tiga puluh lima, karena tiga puluhan. Dua puluh satu dan dua puluh lima sama-sama dua puluhan, jadi kita lihat satuannya. Satu lebih kecil dari lima. Urutan dari yang paling kecil adalah dua belas, dua puluh satu, dua puluh lima, lalu tiga puluh lima."
+          "voiceNarration": "Malosi memegang empat kartu bilangan: dua puluh lima, dua belas, tiga puluh lima, dan dua puluh satu. Mana yang paling kecil? Dua belas, karena hanya satu puluhan. Mana yang paling besar? Tiga puluh lima, karena tiga puluhan. Dua puluh satu dan dua puluh lima sama-sama dua puluhan, jadi kita lihat satuannya. Satu lebih kecil dari lima. Jadi, urutan dari yang terkecil ialah dua belas, dua puluh satu, dua puluh lima, lalu tiga puluh lima."
         }
       ],
       "mindMaps": [
@@ -796,7 +796,7 @@
         {
           "stepNumber": 5,
           "stepTitle": "5. Lebih Besar, Lebih Kecil, Sama",
-          "stepDesc": "Bilangan yang menunjukkan benda lebih banyak disebut lebih besar, dan yang lebih sedikit disebut lebih kecil. Tiga puluh dua lebih besar dari dua puluh enam, dan dua puluh enam lebih kecil dari tiga puluh dua. Kalau nilainya persis sama, kita sebut sama dengan. Tanda lebih besar dan lebih kecil mirip mulut buaya yang selalu terbuka ke bilangan yang lebih besar.",
+          "stepDesc": "Kumpulan benda yang lebih banyak diwakili bilangan yang lebih besar, sedangkan kumpulan yang lebih sedikit diwakili bilangan yang lebih kecil. Tiga puluh dua lebih besar dari dua puluh enam, dan dua puluh enam lebih kecil dari tiga puluh dua. Kalau nilainya persis sama, kita sebut sama dengan. Tanda banding ibarat mulut buaya yang selalu membuka ke arah bilangan yang lebih besar.",
           "icon": "🐊",
           "flowFrom": "Lebih besar kecil sama",
           "flowTo": "Urutkan bilangan"
@@ -985,7 +985,7 @@
           "gameType": "drag-order-on-shelf",
           "title": "Susun di Rak Kelereng",
           "bookReference": "Buku Siswa hlm. 28–29 (Ayo Berlatih nomor 4 dan 5: urutkan bilangan dari yang paling kecil dan dari yang paling besar)",
-          "objective": "Mengurutkan empat bilangan dari yang paling kecil atau paling besar dengan membandingkan puluhan lebih dulu.",
+          "objective": "Mengurutkan empat bilangan mulai dari yang terkecil hingga terbesar dengan membandingkan puluhan lebih dulu.",
           "mechanicDescription": "Tiga ronde (23, 20, 34, 45 dari yang paling sedikit; 34, 45, 32, 37 dari yang paling banyak; 24, 45, 44, 32 dari yang paling sedikit). Siswa menyeret empat kotak kelereng ke rak, satu kantong bernilai sepuluh. Terakhir ucapkan bilangan yang paling besar.",
           "voiceGuide": "Seret kotak ke rak, kantong dulu, lalu kelereng lepas."
         },

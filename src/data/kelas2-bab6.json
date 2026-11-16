@@ -19,13 +19,13 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Berat)",
       "fullTitle": "Sub-Bab A: Berat",
-      "targetDescription": "Siswa membandingkan berat benda dengan timbangan jungkat-jungkit, gantungan baju, dan kedua tangan memakai kata lebih berat, lebih ringan, sama berat, paling berat, dan paling ringan, mengurutkan benda menurut beratnya, serta mengukur berat benda dengan satuan tidak baku (balok mainan, kelereng, koin, dan bola tenis) sambil memahami bahwa hasil ukur bergantung pada alat ukur yang dipakai. Siswa memakai cara Banding Berat, Satuan Tak Baku Berat, Lebih Berat Lebih Ringan. Siswa memakai cara Banding Berat, Satuan Tak Baku Berat, Lebih Berat Lebih Ringan.",
+      "targetDescription": "Siswa membandingkan berat benda dengan timbangan jungkat-jungkit, gantungan baju, dan kedua tangan memakai kata lebih berat, lebih ringan, sama berat, terberat, dan teringan, mengurutkan benda menurut beratnya, serta mengukur berat benda dengan satuan tidak baku (balok mainan, kelereng, koin, dan bola tenis) sambil memahami bahwa hasil ukur bergantung pada alat ukur yang dipakai. Siswa memakai cara Banding Berat, Satuan Tak Baku Berat, Lebih Berat Lebih Ringan. Siswa memakai cara Banding Berat, Satuan Tak Baku Berat, Lebih Berat Lebih Ringan.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
       "silabus": {
-        "teksSuara": "Kita belajar berat. Enam sekawan piket membersihkan kelas, dan mereka mengangkat benda yang berat dan benda yang ringan. Kita membandingkan berat dua benda dengan timbangan jungkat-jungkit, gantungan baju, dan kedua tangan. Kita memakai kata lebih berat, lebih ringan, sama berat, paling berat, dan paling ringan. Kita juga mengukur berat boneka dengan bola tenis dan kelereng, lalu belajar bahwa hasil ukur bergantung pada alat ukur. Kita memakai cara: Banding Berat, Satuan Tak Baku Berat, Lebih Berat Lebih Ringan. Mana yang lebih berat dengan neraca/pegang. Pakai benda acuan sebelum satuan baku. Bahasa banding untuk berat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa membandingkan berat benda secara langsung dengan kata lebih berat, lebih ringan, sama berat, paling berat, dan paling ringan, mengurutkan benda menurut beratnya, mengukur berat benda dengan satuan tidak baku, serta menyampaikan hasilnya dengan percaya diri.",
+        "teksSuara": "Kita belajar berat. Enam sekawan piket membersihkan kelas, dan mereka mengangkat benda yang berat dan benda yang ringan. Kita membandingkan berat dua benda dengan timbangan jungkat-jungkit, gantungan baju, dan kedua tangan. Kita memakai kata lebih berat, lebih ringan, sama berat, terberat, dan teringan. Kita juga mengukur berat boneka dengan bola tenis dan kelereng, lalu belajar bahwa hasil ukur bergantung pada alat ukur. Kita memakai cara: Banding Berat, Satuan Tak Baku Berat, Lebih Berat Lebih Ringan. Mana yang lebih berat dengan neraca/pegang. Pakai benda acuan sebelum satuan baku. Bahasa banding untuk berat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa membandingkan berat benda secara langsung dengan kata lebih berat, lebih ringan, sama berat, terberat, dan teringan, mengurutkan benda menurut beratnya, mengukur berat benda dengan satuan tidak baku, serta menyampaikan hasilnya dengan percaya diri.",
         "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 6 Sub-Bab A)."
       },
       "metodeLuar": [
@@ -81,7 +81,7 @@
           "id": "K2B6A-V1-3",
           "titleHint": "Bercerita dengan kata berat",
           "sceneType": "K2B6A-V1-3",
-          "voiceNarration": "Kita ceritakan benda-benda itu dengan kata lebih berat, paling berat, dan paling ringan. Meja lebih berat dari kursi. Kursi lebih berat dari kemoceng. Jadi meja paling berat, dan kemoceng paling ringan. METODE LUAR · Banding Berat: Mana yang lebih berat dengan neraca/pegang."
+          "voiceNarration": "Benda-benda itu kita bandingkan memakai istilah lebih berat, terberat, dan teringan. Meja lebih berat dari kursi. Kursi lebih berat dari kemoceng. Jadi meja paling berat, dan kemoceng paling ringan. METODE LUAR · Banding Berat: Mana yang lebih berat dengan neraca/pegang."
         },
         {
           "id": "K2B6A-V2-1",
@@ -105,7 +105,7 @@
           "id": "K2B6A-V3-1",
           "titleHint": "Satuan tidak baku",
           "sceneType": "K2B6A-V3-1",
-          "voiceNarration": "Kita dapat mengukur berat benda memakai benda kecil lain yang ukurannya sama. Itu disebut satuan tidak baku. Contohnya mainan balok, kelereng, koin, dan bola tenis. Tika ingin mengukur berat bonekanya memakai bola tenis. Ingat cara Lebih Berat Lebih Ringan: Bahasa banding untuk berat. Ingat cara Lebih Berat Lebih Ringan: Bahasa banding untuk berat."
+          "voiceNarration": "Berat benda bisa diukur dengan benda kecil lain yang ukurannya seragam. Itu disebut satuan tidak baku. Contohnya mainan balok, kelereng, koin, dan bola tenis. Tika ingin mengukur berat bonekanya memakai bola tenis. Ingat cara Lebih Berat Lebih Ringan: Bahasa banding untuk berat. Ingat cara Lebih Berat Lebih Ringan: Bahasa banding untuk berat."
         },
         {
           "id": "K2B6A-V3-2",
@@ -366,7 +366,7 @@
           "emoji": "↕️",
           "countNum": 2,
           "countWord": "Dua",
-          "voiceSentence": "Posisi benda yang lebih berat berada lebih bawah. Posisi benda yang lebih ringan berada lebih atas."
+          "voiceSentence": "Pada timbangan, benda yang berat membuat sisinya turun, dan benda yang ringan membuat sisinya naik."
         },
         {
           "fruitName": "Tiga Kata Perbandingan",
@@ -727,7 +727,7 @@
           "stage": "Concrete",
           "gameType": "pack-basket-heavy-first",
           "title": "Tata Keranjang Belanja",
-          "bookReference": "Buku Siswa hlm. 159 (benda yang lebih berat berada lebih bawah), diperkaya konteks belanja",
+          "bookReference": "Buku Siswa hlm. 159 (sisi timbangan yang turun memuat benda lebih berat), diperkaya konteks belanja",
           "objective": "Menaruh belanjaan yang berat di dasar keranjang dan yang ringan di atasnya.. Ingat Banding Berat. (Banding Berat)",
           "mechanicDescription": "Tiga ronde, tiap ronde tiga belanjaan. Siswa mengetuk belanjaan satu per satu mulai yang paling berat, sehingga tumpukan di keranjang tidak menekan barang ringan. Urutan salah memberi petunjuk. Gunakan Banding Berat.",
           "voiceGuide": "Banding Berat. Mainkan dengan teliti."
@@ -751,7 +751,7 @@
           "title": "Urutan dari Beberapa Neraca",
           "bookReference": "Buku Siswa hlm. 159–160 (semangka lebih berat dari apel dan anggur) dalam bentuk diagram huruf",
           "objective": "Pakai Satuan Tak Baku Berat: Pakai benda acuan sebelum satuan baku. Latihan: Mengurutkan balok berhuruf dari beberapa neraca yang membandingkan dua balok..",
-          "mechanicDescription": "Tiga ronde dengan tiga atau empat balok. Tiap ronde menampilkan dua sampai tiga neraca yang masing-masing membandingkan dua balok. Siswa mengetuk huruf dari yang paling ringan atau paling berat. Hanya satu urutan yang cocok dengan semua neraca. Saat bermain, ingat Satuan Tak Baku Berat: Pakai benda acuan sebelum satuan baku.",
+          "mechanicDescription": "Tiga ronde dengan tiga atau empat balok. Tiap ronde menampilkan dua sampai tiga neraca yang masing-masing membandingkan dua balok. Siswa mengetuk huruf mulai dari yang teringan hingga terberat. Hanya satu urutan yang cocok dengan semua neraca. Saat bermain, ingat Satuan Tak Baku Berat: Pakai benda acuan sebelum satuan baku.",
           "voiceGuide": "Satuan Tak Baku Berat. Pakai benda acuan sebelum satuan baku."
         },
         {
@@ -762,7 +762,7 @@
           "title": "Batang Berat",
           "bookReference": "Buku Siswa hlm. 158–165 (membandingkan berat) dalam model batang",
           "objective": "Pakai Satuan Tak Baku Berat: Pakai benda acuan sebelum satuan baku. Latihan: Membaca batang yang menunjukkan berat dan menemukan yang paling tinggi dan paling rendah..",
-          "mechanicDescription": "Tiga ronde, tiap ronde tiga sampai empat batang berhuruf dengan tinggi berbeda. Siswa mengetuk batang yang paling berat dan batang yang paling ringan. Kunci dihitung dari tinggi batang. Saat bermain, ingat Satuan Tak Baku Berat: Pakai benda acuan sebelum satuan baku.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga sampai empat batang berhuruf dengan tinggi berbeda. Siswa mengetuk batang terberat dan batang teringan. Kunci dihitung dari tinggi batang. Saat bermain, ingat Satuan Tak Baku Berat: Pakai benda acuan sebelum satuan baku.",
           "voiceGuide": "Satuan Tak Baku Berat. Pakai benda acuan sebelum satuan baku."
         },
         {
@@ -938,7 +938,7 @@
           "title": "Urutkan dari Angka",
           "bookReference": "Buku Siswa hlm. 175 nomor 3h dan hlm. 177 (urutan berat dari yang paling ringan)",
           "objective": "Mengurutkan benda dari hasil ukur dengan satuan yang sama.. Ingat Lebih Berat Lebih Ringan. (Lebih Berat Lebih Ringan)",
-          "mechanicDescription": "Tiga ronde, tiap ronde tiga atau empat benda dengan hasil ukur satuan yang sama, misalnya buku 15 koin. Siswa mengetuk benda dari yang paling ringan atau paling berat menurut angkanya. Gunakan Lebih Berat Lebih Ringan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga atau empat benda dengan hasil ukur satuan yang sama, misalnya buku 15 koin. Siswa mengetuk benda mulai dari yang teringan hingga terberat menurut angkanya. Gunakan Lebih Berat Lebih Ringan.",
           "voiceGuide": "Lebih Berat Lebih Ringan. Mainkan dengan teliti."
         },
         {
@@ -1088,7 +1088,7 @@
           "id": "K2B6B-V3-3",
           "titleHint": "Membandingkan waktu",
           "sceneType": "K2B6B-V3-3",
-          "voiceNarration": "Kita dapat membandingkan waktu dua kegiatan. Kita memakai kata lebih lama dan lebih sebentar. Tidur malam lebih lama dari menyikat gigi. METODE LUAR · Urutan Waktu Sehari: Pagi–siang–sore–malam."
+          "voiceNarration": "Kita dapat membandingkan waktu dua kegiatan. Istilah yang dipakai ialah lebih lama dan lebih sebentar. Tidur malam lebih lama dari menyikat gigi. METODE LUAR · Urutan Waktu Sehari: Pagi–siang–sore–malam."
         }
       ],
       "videos": [
@@ -1733,7 +1733,7 @@
           "title": "Batang Lama Kegiatan",
           "bookReference": "Buku Siswa hlm. 182 dan 185–186 (lebih lama dan lebih sebentar) dalam model batang",
           "objective": "Pakai Lama Kegiatan: Perkirakan lama suatu kegiatan. Latihan: Membaca batang lama kegiatan dan menemukan yang paling lama dan paling sebentar..",
-          "mechanicDescription": "Tiga ronde, tiap ronde tiga sampai empat batang berhuruf, satu kotak sama dengan satu jam. Siswa mengetuk batang yang paling lama dan batang yang paling sebentar. Saat bermain, ingat Lama Kegiatan: Perkirakan lama suatu kegiatan.",
+          "mechanicDescription": "Tiga ronde, tiap ronde tiga sampai empat batang berhuruf, satu kotak sama dengan satu jam. Siswa mengetuk batang terlama dan batang tersingkat. Saat bermain, ingat Lama Kegiatan: Perkirakan lama suatu kegiatan.",
           "voiceGuide": "Lama Kegiatan. Perkirakan lama suatu kegiatan."
         },
         {

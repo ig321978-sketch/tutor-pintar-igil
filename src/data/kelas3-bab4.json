@@ -1076,19 +1076,19 @@
           "id": "K3B4B-V3-1",
           "titleHint": "Siku-siku dan lancip",
           "sceneType": "K3B4B-V3-1",
-          "voiceNarration": "Sudut yang ukurannya tepat 90° disebut sudut siku-siku. Sudut yang lebih dari 0° dan kurang dari 90° disebut sudut lancip. Sudut lancip lebih kecil daripada pojok kertas lipat. Ingat cara Pilah Sudut: Lebih besar/kecil dari siku-siku. Ingat cara Pilah Sudut: Lebih besar/kecil dari siku-siku."
+          "voiceNarration": "Sudut yang ukurannya tepat 90° disebut sudut siku-siku. Sudut dengan besar di antara 0° dan 90° dinamai sudut lancip. Sudut lancip lebih kecil daripada pojok kertas lipat. Ingat cara Pilah Sudut: Lebih besar/kecil dari siku-siku. Ingat cara Pilah Sudut: Lebih besar/kecil dari siku-siku."
         },
         {
           "id": "K3B4B-V3-2",
           "titleHint": "Tumpul dan lurus",
           "sceneType": "K3B4B-V3-2",
-          "voiceNarration": "Sudut yang lebih dari 90° dan kurang dari 180° disebut sudut tumpul. Sudut yang tepat 180° disebut sudut lurus. Sudut lurus sama dengan dua sudut siku-siku. Di sini kita memakai ide Corner Sort — Lebih besar/kecil dari siku-siku. Di sini kita memakai Corner Sort. Lebih besar/kecil dari siku-siku."
+          "voiceNarration": "Sudut dengan besar di antara 90° dan 180° dinamai sudut tumpul. Sudut yang tepat 180° disebut sudut lurus. Sudut lurus sama dengan dua sudut siku-siku. Di sini kita memakai ide Corner Sort — Lebih besar/kecil dari siku-siku. Di sini kita memakai Corner Sort. Lebih besar/kecil dari siku-siku."
         },
         {
           "id": "K3B4B-V3-3",
           "titleHint": "Sudut refleks",
           "sceneType": "K3B4B-V3-3",
-          "voiceNarration": "Sudut yang lebih dari 180° dan kurang dari 360° disebut sudut refleks. Sudut refleks 300° berpasangan dengan sudut lancip 60°. Ukuran keduanya bila dijumlahkan sama dengan 360°. METODE LUAR · Pilah Sudut: Lebih besar/kecil dari siku-siku."
+          "voiceNarration": "Sudut dengan besar di antara 180° dan 360° dinamai sudut refleks. Sudut refleks 300° berpasangan dengan sudut lancip 60°. Ukuran keduanya bila dijumlahkan sama dengan 360°. METODE LUAR · Pilah Sudut: Lebih besar/kecil dari siku-siku."
         }
       ],
       "videos": [
@@ -1212,7 +1212,7 @@
               "judul": "Siku-siku dan lancip",
               "ketukan": [
                 "Sudut yang ukurannya tepat 90° disebut sudut siku-siku.",
-                "Sudut yang lebih dari 0° dan kurang dari 90° disebut sudut lancip.",
+                "Sudut dengan besar di antara 0° dan 90° dinamai sudut lancip.",
                 "Sudut lancip lebih kecil daripada pojok kertas lipat.",
                 "Ingat cara Pilah Sudut: Lebih besar/kecil dari siku-siku. Ingat cara Pilah Sudut: Lebih besar/kecil dari siku-siku."
               ],
@@ -1227,7 +1227,7 @@
               "id": "K3B4B-V3-2",
               "judul": "Tumpul dan lurus",
               "ketukan": [
-                "Sudut yang lebih dari 90° dan kurang dari 180° disebut sudut tumpul.",
+                "Sudut dengan besar di antara 90° dan 180° dinamai sudut tumpul.",
                 "Sudut yang tepat 180° disebut sudut lurus.",
                 "Sudut lurus sama dengan dua sudut siku-siku.",
                 "Di sini kita memakai ide Corner Sort — Lebih besar/kecil dari siku-siku. Di sini kita memakai Corner Sort. Lebih besar/kecil dari siku-siku."
@@ -1243,7 +1243,7 @@
               "id": "K3B4B-V3-3",
               "judul": "Sudut refleks",
               "ketukan": [
-                "Sudut yang lebih dari 180° dan kurang dari 360° disebut sudut refleks.",
+                "Sudut dengan besar di antara 180° dan 360° dinamai sudut refleks.",
                 "Sudut refleks 300° berpasangan dengan sudut lancip 60°.",
                 "Ukuran keduanya bila dijumlahkan sama dengan 360°.",
                 "METODE LUAR · Pilah Sudut: Lebih besar/kecil dari siku-siku."

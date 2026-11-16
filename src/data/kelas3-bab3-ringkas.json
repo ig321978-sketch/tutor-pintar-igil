@@ -124,7 +124,7 @@
           { "id": "timbangan", "judul": "Timbangan", "ikon": "⚖️", "ringkas": "Alat untuk mengukur berat.", "suara": "Timbangan. Timbangan adalah alat untuk mengukur berat benda. Timbangan digital menampilkan angka pada layar. Timbangan duduk memakai jarum yang menunjuk angka." },
           { "id": "satuan-berat", "judul": "Gram dan kilogram", "ikon": "📐", "ringkas": "Satuan baku berat: g dan kg.", "suara": "Gram dan kilogram. Satuan baku berat adalah gram dan kilogram. Gram ditulis g dan kilogram ditulis kg. Sentimeter dan meter bukan satuan berat, karena itu satuan panjang." },
           { "id": "nol-timbang", "judul": "Mulai dari nol", "ikon": "0️⃣", "ringkas": "Layar atau jarum di angka nol.", "suara": "Mulai dari nol. Sebelum menimbang, layar atau jarum harus tepat di angka nol. Bila tidak, bacaan sudah tertambah dan hasilnya bukan berat benda." },
-          { "id": "pilih-timbangan", "judul": "Pilih satuan", "ikon": "✅", "ringkas": "Ringan: gram. Berat: kilogram.", "suara": "Pilih satuan. Gram dipakai untuk benda yang ringan, seperti telur dan tepung. Kilogram dipakai untuk benda yang lebih berat, seperti semangka dan karung beras." }
+          { "id": "pilih-timbangan", "judul": "Pilih satuan", "ikon": "✅", "ringkas": "Ringan: gram. Berat: kilogram.", "suara": "Pilih satuan. Benda ringan seperti telur dan tepung diukur dengan gram. Benda yang lebih berat, seperti semangka dan karung beras, diukur dengan kilogram." }
         ],
         "kartu": [
           { "id": "c-digital", "teks": "Timbangan digital: layar", "ikon": "🔢", "cabang": "timbangan", "petunjuk": "Membaca angka pada layar itu soal timbangan. Coba cabang lain." },

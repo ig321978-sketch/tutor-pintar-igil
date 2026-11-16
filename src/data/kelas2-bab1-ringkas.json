@@ -912,7 +912,7 @@
             "tipe": "buka",
             "judul": "Urutkan bilangan",
             "ide": "Bandingkan berpasangan sampai rapi.",
-            "suara": "Mengurutkan bilangan dari yang paling kecil atau paling besar. Ketuk kotaknya satu per satu.",
+            "suara": "Mengurutkan bilangan mulai dari yang terkecil hingga terbesar. Ketuk kotaknya satu per satu.",
             "butir": [
               {
                 "id": "naik",
@@ -1045,7 +1045,7 @@
             "induk": "hasil",
             "teks": "Bisa mengurutkan bilangan",
             "ikon": "📶",
-            "petunjuk": "Kemampuan menyusun bilangan dari yang paling kecil atau paling besar."
+            "petunjuk": "Kemampuan menyusun bilangan mulai dari yang terkecil hingga terbesar."
           }
         ]
       },

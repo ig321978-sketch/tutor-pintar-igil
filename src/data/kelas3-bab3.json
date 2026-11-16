@@ -69,7 +69,7 @@
           "id": "K3B3A-V1-1",
           "titleHint": "Ke posyandu",
           "sceneType": "K3B3A-V1-1",
-          "voiceNarration": "Bayangkan kamu sedang mempelajari Pengukuran Panjang dengan Satuan Baku. Posyandu memberikan layanan kesehatan bagi masyarakat. Di posyandu, tinggi badan dan berat badan bayi diukur. Alat apa yang dipakai untuk mengukur tinggi badan. Ingat cara Ulangi Satuan: Panjang diukur dengan mengulang satuan baku. Ingat cara Ulangi Satuan: Panjang diukur dengan mengulang satuan baku."
+          "voiceNarration": "Bayangkan kamu sedang mempelajari Pengukuran Panjang dengan Satuan Baku. Posyandu adalah tempat warga memeriksa kesehatan bayi. Tinggi dan berat bayi diukur di sana. Alat apa yang dipakai untuk mengukur tinggi bayi. Ingat cara Ulangi Satuan: Panjang diukur dengan mengulang satuan baku. Ingat cara Ulangi Satuan: Panjang diukur dengan mengulang satuan baku."
         },
         {
           "id": "K3B3A-V1-2",
@@ -93,7 +93,7 @@
           "id": "K3B3A-V2-2",
           "titleHint": "Mulai dari nol",
           "sceneType": "K3B3A-V2-2",
-          "voiceNarration": "Letakkan ujung penggaris pada salah satu ujung benda. Pastikan ujung benda tepat di angka 0 sentimeter. Perhatikan ujung benda yang lain berada di angka berapa. Di sini kita memakai ide Zero Point — Mulai dari 0, bukan ujung penggaris yang rusak. Di sini kita memakai Zero Point. Mulai dari 0, bukan ujung penggaris yang rusak."
+          "voiceNarration": "Letakkan ujung penggaris pada salah satu ujung benda. Pastikan ujung benda tepat di angka 0 sentimeter. Baca angka yang ditunjuk ujung benda satunya. Di sini kita memakai ide Zero Point — Mulai dari 0, bukan ujung penggaris yang rusak. Di sini kita memakai Zero Point. Mulai dari 0, bukan ujung penggaris yang rusak."
         },
         {
           "id": "K3B3A-V2-3",
@@ -130,9 +130,9 @@
               "id": "K3B3A-V1-1",
               "judul": "Ke posyandu",
               "ketukan": [
-                "Bayangkan kamu sedang mempelajari Pengukuran Panjang dengan Satuan Baku. Posyandu memberikan layanan kesehatan bagi masyarakat.",
-                "Di posyandu, tinggi badan dan berat badan bayi diukur.",
-                "Alat apa yang dipakai untuk mengukur tinggi badan.",
+                "Bayangkan kamu sedang mempelajari Pengukuran Panjang dengan Satuan Baku. Posyandu adalah tempat warga memeriksa kesehatan bayi.",
+                "Tinggi dan berat bayi diukur di sana.",
+                "Alat apa yang dipakai untuk mengukur tinggi bayi.",
                 "Ingat cara Ulangi Satuan: Panjang diukur dengan mengulang satuan baku. Ingat cara Ulangi Satuan: Panjang diukur dengan mengulang satuan baku."
               ],
               "papan": [
@@ -203,7 +203,7 @@
               "ketukan": [
                 "Letakkan ujung penggaris pada salah satu ujung benda.",
                 "Pastikan ujung benda tepat di angka 0 sentimeter.",
-                "Perhatikan ujung benda yang lain berada di angka berapa.",
+                "Baca angka yang ditunjuk ujung benda satunya.",
                 "Di sini kita memakai ide Zero Point — Mulai dari 0, bukan ujung penggaris yang rusak. Di sini kita memakai Zero Point. Mulai dari 0, bukan ujung penggaris yang rusak."
               ],
               "papan": [
@@ -380,7 +380,7 @@
           "emoji": "0️⃣",
           "countNum": 3,
           "countWord": "Tiga",
-          "voiceSentence": "Letakkan ujung benda tepat di angka nol. Lalu lihat ujung benda yang lain berada di angka berapa."
+          "voiceSentence": "Letakkan ujung benda tepat di angka nol. Lalu baca angka yang ditunjuk ujung benda satunya."
         },
         {
           "fruitName": "Membaca Panjang",
@@ -2028,7 +2028,7 @@
           "id": "K3B3C-V2-1",
           "titleHint": "Ke pasar",
           "sceneType": "K3B3C-V2-1",
-          "voiceNarration": "Meutia pergi ke pasar untuk berbelanja. Penjual menimbang barang dagangannya dengan timbangan. Timbangan apa yang dipakai penjual di pasar. Ingat cara Satuan Berat Baku: Gram dan kilogram. Ingat cara Satuan Berat Baku: Gram dan kilogram."
+          "voiceNarration": "Meutia berbelanja di pasar bersama ibunya. Di sana pedagang menakar berat dagangannya memakai sebuah alat. Alat apa yang dipakai pedagang itu. Ingat cara Satuan Berat Baku: Gram dan kilogram. Ingat cara Satuan Berat Baku: Gram dan kilogram."
         },
         {
           "id": "K3B3C-V2-2",
@@ -2040,7 +2040,7 @@
           "id": "K3B3C-V2-3",
           "titleHint": "Gram atau kilogram",
           "sceneType": "K3B3C-V2-3",
-          "voiceNarration": "Gram dipakai untuk benda yang ringan. Contohnya tepung, gula pasir, pensil, dan buku. Kilogram dipakai untuk benda yang lebih berat. METODE LUAR · Satuan Berat Baku: Gram dan kilogram."
+          "voiceNarration": "Benda ringan diukur dengan gram, misalnya tepung, gula pasir, pensil, dan buku. Benda yang lebih berat diukur dengan kilogram. METODE LUAR · Satuan Berat Baku: Gram dan kilogram."
         },
         {
           "id": "K3B3C-V3-1",
@@ -2126,9 +2126,9 @@
               "id": "K3B3C-V2-1",
               "judul": "Ke pasar",
               "ketukan": [
-                "Meutia pergi ke pasar untuk berbelanja.",
-                "Penjual menimbang barang dagangannya dengan timbangan.",
-                "Timbangan apa yang dipakai penjual di pasar.",
+                "Meutia berbelanja di pasar bersama ibunya.",
+                "Di sana pedagang menakar berat dagangannya memakai sebuah alat.",
+                "Alat apa yang dipakai pedagang itu.",
                 "Ingat cara Satuan Berat Baku: Gram dan kilogram. Ingat cara Satuan Berat Baku: Gram dan kilogram."
               ],
               "papan": [

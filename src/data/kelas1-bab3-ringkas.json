@@ -187,7 +187,7 @@
                 "nama": "Sisa nol",
                 "ikon": "🚗",
                 "catatan": "Tiga orang di mobil, semua turun.",
-                "suara": "Tiga orang di dalam mobil. Tiga orang turun. Sekarang tidak ada orang di mobil. Tiga dikurangi tiga hasilnya nol.",
+                "suara": "Tiga orang duduk di mobil. Lalu ketiganya turun, dan mobil kosong. Tiga dikurangi tiga hasilnya nol.",
                 "visual": {
                   "jenis": "teks",
                   "isi": "3 − 3 = 0"

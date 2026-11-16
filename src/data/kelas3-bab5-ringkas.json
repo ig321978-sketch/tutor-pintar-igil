@@ -96,8 +96,8 @@
             ]
           },
           {
-            "id": "b-lebih-kurang", "tipe": "banding", "judul": "Lebih dari 7 dan kurang dari 7", "ide": "Nilai acuan tidak ikut dihitung.",
-            "suara": "Bandingkan banyak siswa bernilai lebih dari tujuh dan kurang dari tujuh pada data ulangan.",
+            "id": "b-lebih-kurang", "tipe": "banding", "judul": "Di atas 7 dan di bawah 7", "ide": "Nilai acuan tidak ikut dihitung.",
+            "suara": "Hitung siswa yang nilainya di atas tujuh, lalu bandingkan dengan yang di bawah tujuh pada data ulangan.",
             "sisi": [
               { "id": "lebih", "nama": "Lebih dari 7", "ikon": "⬆️", "catatan": "3 + 5 + 2 = 10 siswa.", "suara": "Lebih dari tujuh adalah nilai delapan, sembilan, dan sepuluh. Tiga ditambah lima ditambah dua sama dengan sepuluh siswa.", "visual": { "jenis": "tabel-menurun", "kepala": ["Nilai", "Banyak"], "baris": [["8", 3], ["9", 5], ["10", 2]] } },
               { "id": "kurang", "nama": "Kurang dari 7", "ikon": "⬇️", "catatan": "1 + 4 = 5 siswa.", "suara": "Kurang dari tujuh adalah nilai lima dan enam. Satu ditambah empat sama dengan lima siswa.", "visual": { "jenis": "tabel-menurun", "kepala": ["Nilai", "Banyak"], "baris": [["5", 1], ["6", 4]] } }

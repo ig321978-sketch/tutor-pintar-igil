@@ -1499,7 +1499,7 @@
           "diagramType": "symbol-order",
           "numberA": 3,
           "numberB": 4,
-          "caption": "Mengurutkan baris lambang dari yang paling pendek atau paling panjang.. Ingat Kunci Gambar. (Kunci Gambar)"
+          "caption": "Mengurutkan baris lambang mulai dari yang terpendek hingga terpanjang.. Ingat Kunci Gambar. (Kunci Gambar)"
         },
         {
           "title": "Baca Diagram Lengkap",
@@ -1765,7 +1765,7 @@
           "gameType": "order-symbol-rows",
           "title": "Urutkan Baris Lambang",
           "bookReference": "Buku Siswa hlm. 242 (membandingkan baris)",
-          "objective": "Mengurutkan baris lambang dari yang paling pendek atau paling panjang.. Ingat Kunci Gambar. (Kunci Gambar)",
+          "objective": "Mengurutkan baris lambang mulai dari yang terpendek hingga terpanjang.. Ingat Kunci Gambar. (Kunci Gambar)",
           "mechanicDescription": "Tiga ronde, tiap ronde empat baris lambang. Siswa mengetuk baris satu per satu menurut panjangnya. Letak jawaban berpindah. Gunakan Kunci Gambar.",
           "voiceGuide": "Kunci Gambar. Mainkan dengan teliti."
         },

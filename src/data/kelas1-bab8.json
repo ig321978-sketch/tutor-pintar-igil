@@ -36,13 +36,13 @@
           "id": "A8-S3",
           "titleHint": "Daftar Mainan di Toko",
           "sceneType": "daftar-mainan",
-          "voiceNarration": "Ayo kita hitung mainan yang sudah disusun. Ada dua belas pesawat. Ada delapan mobil-mobilan. Ada sepuluh boneka. Ada enam bola. Mainan apa yang paling banyak? Pesawat paling banyak, yaitu dua belas. Pesawat, boneka, bola, dan mobil-mobilan adalah contoh data. Data bisa dikelompokkan. Data bisa ditulis dalam daftar. Data menjadi mudah dibaca. Kita memakai cara Banding Kategori: Mana lebih banyak dari diagram. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Mainan-mainan sudah ditata berjajar. Jumlah pesawat dua belas, mobil-mobilan delapan, boneka sepuluh, dan bola enam. Jenis mainan yang jumlahnya terbanyak adalah pesawat, yaitu dua belas. Keterangan seperti nama mainan dan jumlahnya ini disebut data. Data dapat dikelompokkan lalu dicatat dalam daftar, sehingga mudah dibaca. Kita memakai cara Banding Kategori: Mana lebih banyak dari diagram. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A8-S4",
           "titleHint": "Kelompokkan Bola",
           "sceneType": "kelompok-bola",
-          "voiceNarration": "Ayo kita kelompokkan bola dan hitung banyaknya. Ada tujuh bola merah. Ada empat bola kuning. Ada enam bola hijau. Bola yang paling banyak berwarna merah, banyaknya ada tujuh. Bola yang paling sedikit berwarna kuning, banyaknya ada empat. Kita juga bisa menghitung dengan turus. Satu goresan untuk satu bola, dan setiap lima goresan dicoret miring. Kita memakai cara Turus: Coretan untuk menghitung frekuensi. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Bola-bola dipisah menurut warnanya, lalu tiap kelompok dihitung. Bola merah berjumlah tujuh, bola kuning berjumlah empat, dan bola hijau berjumlah enam. Jumlah terbesar dimiliki bola merah, yaitu tujuh. Jumlah terkecil dimiliki bola kuning, yaitu empat. Kita juga bisa menghitung dengan turus. Satu goresan untuk satu bola, dan setiap lima goresan dicoret miring. Kita memakai cara Turus: Coretan untuk menghitung frekuensi. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A8-S5",
@@ -458,13 +458,13 @@
           "id": "B8-S4",
           "titleHint": "Mainan Kesukaan Tika",
           "sceneType": "mainan-kesukaan-tika",
-          "voiceNarration": "Tika menanyakan mainan kesukaan teman-temannya. Tika menunjukkan hasilnya pada diagram gambar. Gambar wajah tersenyum mewakili satu anak. Ada lima anak yang suka kelereng. Ada empat anak yang suka mobil-mobilan. Ada dua anak yang suka boneka. Ada tiga anak yang suka gasing. Semua ada empat belas anak. Kita memakai cara Turus: Coretan untuk menghitung frekuensi. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Malosi bertanya kepada anak-anak, mainan apa yang paling mereka sukai. Jawaban mereka dicatat dalam diagram gambar. Satu wajah tersenyum berarti satu anak. Kelereng mendapat lima wajah, mobil-mobilan empat wajah, boneka dua wajah, dan gasing tiga wajah. Kalau semua wajah dihitung, jumlahnya empat belas anak. Kita memakai cara Turus: Coretan untuk menghitung frekuensi. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "B8-S5",
           "titleHint": "Bermain Karet Gelang",
           "sceneType": "karet-gelang",
-          "voiceNarration": "Malosi, Halim, dan Upe bermain karet gelang. Setiap gambar karet gelang mewakili satu karet gelang. Malosi mempunyai lima karet gelang. Halim mempunyai tiga karet gelang. Upe mempunyai empat karet gelang. Malosi mempunyai dua karet gelang lebih banyak dari Halim. Upe mempunyai satu karet gelang lebih sedikit dari Malosi. Malosi paling banyak, Halim paling sedikit. Semuanya ada dua belas karet gelang. Kita memakai cara Diagram Gambar: Gambar mewakili banyak data. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Malosi, Halim, dan Upe bermain karet gelang. Setiap gambar karet gelang mewakili satu karet gelang. Malosi mempunyai lima karet gelang. Halim mempunyai tiga karet gelang. Upe mempunyai empat karet gelang. Karet gelang Malosi lebih banyak dua daripada karet gelang Halim. Karet gelang Upe kurang satu dari milik Malosi. Jadi yang terbanyak adalah Malosi, dan yang tersedikit adalah Halim. Semuanya ada dua belas karet gelang. Kita memakai cara Diagram Gambar: Gambar mewakili banyak data. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "B8-S6",
@@ -770,7 +770,7 @@
           "stage": "Abstract",
           "gameType": "choose-true-sentence",
           "title": "Kalimat Data",
-          "bookReference": "Buku Siswa hlm. 233 (kalimat tentang karet gelang); hlm. 232 (Ada 5 anak yang suka kelereng ... semua ada 14 anak)",
+          "bookReference": "Buku Siswa hlm. 232 dan 233 (diagram gambar mainan kesukaan dan diagram karet gelang)",
           "objective": "Pakai Diagram Gambar: Gambar mewakili banyak data. Pakai Diagram Gambar. Memilih kalimat yang benar tentang data: lebih banyak, lebih sedikit, paling sedikit, dan sama banyak.",
           "mechanicDescription": "Lima ronde (karet gelang dua kali, hewan, buah, dan kue). Siswa membaca data lalu memilih kalimat yang benar. Terakhir ucapkan jumlah semua anak pada data kue. Terapkan Pictograph. Saat bermain, terapkan Pictograph: Gambar mewakili banyak data.",
           "voiceGuide": "Diagram Gambar. Diagram Gambar. Baca data, lalu pilih kalimat yang benar."

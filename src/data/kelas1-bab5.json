@@ -24,7 +24,7 @@
           "id": "A5-S1",
           "titleHint": "Merapikan Mainan",
           "sceneType": "merapikan-mainan",
-          "voiceNarration": "Merapikan mainan! Halim dan Malosi selesai bermain kelereng. Mereka merapikan kelerengnya. Halim menghitung banyak kelereng: sembilan, sepuluh, sebelas, dan seterusnya. Lalu kelereng disimpan ke dalam stoples. Halim selalu ingat pesan Ibu: selesai bermain, rapikan mainanmu. Sekarang, berapa banyak kelereng Halim? Ayo kita bantu Halim menghitungnya. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Merapikan mainan! Halim dan Malosi selesai bermain kelereng. Mereka merapikan kelerengnya. Halim menghitung banyak kelereng: sembilan, sepuluh, sebelas, dan seterusnya. Setelah itu, semua kelereng dimasukkan ke stoples. Halim selalu teringat pesan Ibu: selesai bermain, rapikan mainanmu. Sekarang, berapa banyak kelereng Halim? Ayo kita bantu Halim menghitungnya. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A5-S2",
@@ -1251,7 +1251,7 @@
           "id": "D5-S1",
           "titleHint": "Kelereng Halim dan Upe",
           "sceneType": "dua-kelompok-kelereng",
-          "voiceNarration": "Halim memiliki lima belas kelereng. Upe memiliki sebelas kelereng. Kelereng siapa yang lebih banyak? Kelereng siapa yang lebih sedikit? Bagaimana kita tahu? Kita hitung dulu. Lima belas lebih banyak dari sebelas, dan sebelas lebih sedikit dari lima belas. Jadi kelereng Halim lebih banyak dari kelereng Upe, dan kelereng Upe lebih sedikit dari kelereng Halim. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Halim dan Upe sama-sama main kelereng. Halim punya lima belas butir, sedangkan Upe punya sebelas butir. Siapa yang kelerengnya lebih banyak, dan siapa yang lebih sedikit? Hitung dulu kedua kelompoknya. Lima belas melebihi sebelas, jadi sebelas kurang dari lima belas. Artinya Halim punya kelereng lebih banyak daripada Upe, dan Upe punya kelereng lebih sedikit daripada Halim. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "D5-S2",
@@ -1263,13 +1263,13 @@
           "id": "D5-S3",
           "titleHint": "Jeruk Kira, Tika, dan Wei",
           "sceneType": "tiga-kelompok-jeruk",
-          "voiceNarration": "Kira mempunyai sepuluh jeruk. Tika mempunyai empat belas jeruk. Wei mempunyai dua belas jeruk. Jeruk siapa yang paling banyak? Jeruk siapa yang paling sedikit? Tika mempunyai jeruk paling banyak. Kira mempunyai jeruk paling sedikit. Kalau ada tiga kelompok atau lebih, kita memakai kata paling banyak dan paling sedikit. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Ada tiga anak yang membawa jeruk. Jeruk Kira sepuluh buah, jeruk Tika empat belas buah, dan jeruk Wei dua belas buah. Dari ketiganya, siapa yang membawa paling banyak, dan siapa yang paling sedikit? Empat belas adalah bilangan terbesar, jadi Tika membawa jeruk terbanyak. Sepuluh adalah bilangan terkecil, jadi Kira membawa jeruk tersedikit. Untuk membandingkan tiga kelompok atau lebih, dipakai kata paling banyak dan paling sedikit. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "D5-S4",
           "titleHint": "Baris Bilangan Berurutan",
           "sceneType": "baris-bilangan",
-          "voiceNarration": "Bilangan sepuluh, empat belas, dan dua belas dapat kita urutkan. Urutan dari bilangan terkecil adalah sepuluh, dua belas, empat belas. Urutan dari bilangan terbesar adalah empat belas, dua belas, sepuluh. Ayo berbaris seperti angka-angka ini! Dari kiri ke kanan, bilangannya makin besar. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Tiga bilangan, yaitu sepuluh, empat belas, dan dua belas, bisa diurutkan. Mulai dari yang terkecil: sepuluh, dua belas, empat belas. Mulai dari yang terbesar: empat belas, dua belas, sepuluh. Ayo berbaris seperti angka-angka ini! Dari kiri ke kanan, bilangannya makin besar. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "D5-S5",
@@ -1589,7 +1589,7 @@
           "stage": "Abstract",
           "gameType": "compare-symbol",
           "title": "Tanda Pembanding",
-          "bookReference": "Buku Siswa hlm. 165 (15 lebih banyak dari 11); pengayaan tanda lebih dari, kurang dari, sama dengan",
+          "bookReference": "Buku Siswa hlm. 165 (membandingkan 15 dengan 11); pengayaan tanda sama dengan, kurang dari, dan lebih dari",
           "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Membandingkan dua bilangan dengan puluhan dan satuan lalu memilih tanda yang tepat.",
           "mechanicDescription": "Lima ronde (15 dan 11, 12 dan 17, 14 dan 14, 10 dan 13, 19 dan 16). Siswa memilih lebih dari, kurang dari, atau sama dengan. Terakhir ucapkan bilangan yang lebih besar. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
           "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Pilih tanda yang tepat untuk dua bilangan."

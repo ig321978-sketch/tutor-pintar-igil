@@ -75,7 +75,7 @@
           "id": "K2B4A-V1-2",
           "titleHint": "Padi dan nasi",
           "sceneType": "K2B4A-V1-2",
-          "voiceNarration": "Padi adalah makanan pokok yang diolah menjadi nasi. Para petani menanam padi sehingga kita dapat memakan nasi yang enak. Paman berpesan agar kita tidak menyia-nyiakan nasi. Di sini kita memakai ide Spatial Language — Kiri, kanan, depan, belakang, atas, bawah. Di sini kita memakai Spatial Language. Kiri, kanan, depan, belakang, atas, bawah."
+          "voiceNarration": "Butir padi yang dipanen digiling menjadi beras, lalu beras ditanak menjadi nasi. Berkat kerja keras petani di sawah, setiap hari kita bisa makan nasi hangat. Karena itu Paman mengingatkan agar nasi di piring kita habiskan. Di sini kita memakai ide Spatial Language — Kiri, kanan, depan, belakang, atas, bawah. Di sini kita memakai Spatial Language. Kiri, kanan, depan, belakang, atas, bawah."
         },
         {
           "id": "K2B4A-V1-3",
@@ -87,7 +87,7 @@
           "id": "K2B4A-V2-1",
           "titleHint": "Kupu-kupu dan bunga",
           "sceneType": "K2B4A-V2-1",
-          "voiceNarration": "Kita dapat menunjukkan posisi benda di sekitar kita. Kupu-kupu hinggap di atas bunga. Bunga ada di bawah kupu-kupu. Ingat cara Tampak Peta: Lihat posisi dari atas. Ingat cara Tampak Peta: Lihat posisi dari atas."
+          "voiceNarration": "Letak benda di sekeliling kita bisa diceritakan dengan kata penunjuk posisi. Kupu-kupu itu bertengger di atas bunga. Jadi bunganya terletak di bawah kupu-kupu. Ingat cara Tampak Peta: Lihat posisi dari atas. Ingat cara Tampak Peta: Lihat posisi dari atas."
         },
         {
           "id": "K2B4A-V2-2",
@@ -146,9 +146,9 @@
               "id": "K2B4A-V1-2",
               "judul": "Padi dan nasi",
               "ketukan": [
-                "Padi adalah makanan pokok yang diolah menjadi nasi.",
-                "Para petani menanam padi sehingga kita dapat memakan nasi yang enak.",
-                "Paman berpesan agar kita tidak menyia-nyiakan nasi.",
+                "Butir padi yang dipanen digiling menjadi beras, lalu beras ditanak menjadi nasi.",
+                "Berkat kerja keras petani di sawah, setiap hari kita bisa makan nasi hangat.",
+                "Karena itu Paman mengingatkan agar nasi di piring kita habiskan.",
                 "Di sini kita memakai ide Spatial Language — Kiri, kanan, depan, belakang, atas, bawah. Di sini kita memakai Spatial Language. Kiri, kanan, depan, belakang, atas, bawah."
               ],
               "papan": [
@@ -185,9 +185,9 @@
               "id": "K2B4A-V2-1",
               "judul": "Kupu-kupu dan bunga",
               "ketukan": [
-                "Kita dapat menunjukkan posisi benda di sekitar kita.",
-                "Kupu-kupu hinggap di atas bunga.",
-                "Bunga ada di bawah kupu-kupu.",
+                "Letak benda di sekeliling kita bisa diceritakan dengan kata penunjuk posisi.",
+                "Kupu-kupu itu bertengger di atas bunga.",
+                "Jadi bunganya terletak di bawah kupu-kupu.",
                 "Ingat cara Tampak Peta: Lihat posisi dari atas. Ingat cara Tampak Peta: Lihat posisi dari atas."
               ],
               "papan": [
@@ -366,7 +366,7 @@
           "emoji": "🦋",
           "countNum": 2,
           "countWord": "Dua",
-          "voiceSentence": "Kupu-kupu hinggap di atas bunga. Bunga ada di bawah kupu-kupu. Atas dan bawah menunjukkan tinggi rendahnya letak benda."
+          "voiceSentence": "Kupu-kupu itu bertengger di atas bunga. Jadi bunganya terletak di bawah kupu-kupu. Atas dan bawah menunjukkan tinggi rendahnya letak benda."
         },
         {
           "fruitName": "Depan dan Belakang",
@@ -408,7 +408,7 @@
           "emoji": "🛏️",
           "countNum": 4,
           "countWord": "Empat",
-          "voiceSentence": "Di kamar, boneka ada di atas tempat tidur, sepatu di bawah tempat tidur, kotak di sebelah kiri tempat tidur, dan mobil-mobilan di depan meja."
+          "voiceSentence": "Lihat kamar ini: boneka terletak di atas tempat tidur, sepatu tersimpan di bawahnya, kotak berada di sisi kirinya, dan mobil-mobilan berhenti di depan meja."
         },
         {
           "fruitName": "Tebak dari Petunjuk",
@@ -693,7 +693,7 @@
           "id": "K2B4B-V1-1",
           "titleHint": "Berbaris di sawah",
           "sceneType": "K2B4B-V1-1",
-          "voiceNarration": "Bayangkan kamu sedang mempelajari Pola. Perhatikan keenam sekawan yang sedang memanen padi. Mereka berbaris dengan urutan Upe, Lili, Halim, Kira, Malosi, dan Tika. Mereka berbaris secara beraturan. Ingat cara Pola Berulang: Unit pola menentukan lanjutannya. Ingat cara Pola Berulang: Unit pola menentukan lanjutannya."
+          "voiceNarration": "Bayangkan kamu sedang mempelajari Pola. Perhatikan keenam sekawan yang sedang memanen padi. Dari depan ke belakang, urutan mereka adalah Upe, Lili, Halim, Kira, Malosi, dan Tika. Mereka berbaris secara beraturan. Ingat cara Pola Berulang: Unit pola menentukan lanjutannya. Ingat cara Pola Berulang: Unit pola menentukan lanjutannya."
         },
         {
           "id": "K2B4B-V1-2",
@@ -705,7 +705,7 @@
           "id": "K2B4B-V1-3",
           "titleHint": "Mencari pola",
           "sceneType": "K2B4B-V1-3",
-          "voiceNarration": "Dapatkah kalian menemukan hal yang berulang pada gambar. Pada barisan ini ada pola jenis kelamin, dan ada juga pola gerakan. Pola apa lagi yang dapat kalian temukan pada gambar. METODE LUAR · Pola Berulang: Unit pola menentukan lanjutannya."
+          "voiceNarration": "Dapatkah kalian menemukan hal yang berulang pada gambar. Pada barisan ini ada pola jenis kelamin, dan ada juga pola gerakan. Coba cari pola lain di gambar itu. METODE LUAR · Pola Berulang: Unit pola menentukan lanjutannya."
         },
         {
           "id": "K2B4B-V2-1",
@@ -755,7 +755,7 @@
               "judul": "Berbaris di sawah",
               "ketukan": [
                 "Bayangkan kamu sedang mempelajari Pola. Perhatikan keenam sekawan yang sedang memanen padi.",
-                "Mereka berbaris dengan urutan Upe, Lili, Halim, Kira, Malosi, dan Tika.",
+                "Dari depan ke belakang, urutan mereka adalah Upe, Lili, Halim, Kira, Malosi, dan Tika.",
                 "Mereka berbaris secara beraturan.",
                 "Ingat cara Pola Berulang: Unit pola menentukan lanjutannya. Ingat cara Pola Berulang: Unit pola menentukan lanjutannya."
               ],
@@ -788,7 +788,7 @@
               "ketukan": [
                 "Dapatkah kalian menemukan hal yang berulang pada gambar.",
                 "Pada barisan ini ada pola jenis kelamin, dan ada juga pola gerakan.",
-                "Pola apa lagi yang dapat kalian temukan pada gambar.",
+                "Coba cari pola lain di gambar itu.",
                 "METODE LUAR · Pola Berulang: Unit pola menentukan lanjutannya."
               ],
               "papan": [

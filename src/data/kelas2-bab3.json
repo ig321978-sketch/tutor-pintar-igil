@@ -92,7 +92,7 @@
           "id": "K2B3A-V2-2",
           "titleHint": "Garis lurus dan sisi",
           "sceneType": "K2B3A-V2-2",
-          "voiceNarration": "Beberapa bangun datar dibatasi oleh garis lurus. Garis lurus pada bangun datar dinamakan sisi. Bangun datar yang dibatasi oleh beberapa sisi dinamakan segi banyak. Di sini kita memakai ide Attribute Sort — Pilah menurut sisi atau sudut. Di sini kita memakai Attribute Sort. Pilah menurut sisi atau sudut."
+          "voiceNarration": "Beberapa bangun datar dibatasi oleh garis lurus. Setiap garis lurus di tepi bangun datar disebut sisi. Bangun datar yang tepinya berupa beberapa sisi dinamakan segi banyak. Di sini kita memakai ide Attribute Sort — Pilah menurut sisi atau sudut. Di sini kita memakai Attribute Sort. Pilah menurut sisi atau sudut."
         },
         {
           "id": "K2B3A-V2-3",
@@ -104,7 +104,7 @@
           "id": "K2B3A-V3-1",
           "titleHint": "Hitung sisinya",
           "sceneType": "K2B3A-V3-1",
-          "voiceNarration": "Banyak sisi pada segi banyak memengaruhi namanya. Segitiga adalah segi banyak yang memiliki tiga sisi. Segi empat adalah segi banyak yang memiliki empat sisi. Ingat cara Papan Paku: Bentuk bangun dengan karet. Ingat cara Papan Paku: Bentuk bangun dengan karet."
+          "voiceNarration": "Jumlah sisi menentukan nama sebuah segi banyak. Bangun bersisi tiga kita namai segitiga. Bangun bersisi empat kita namai segi empat. Ingat cara Papan Paku: Bentuk bangun dengan karet. Ingat cara Papan Paku: Bentuk bangun dengan karet."
         },
         {
           "id": "K2B3A-V3-2",
@@ -201,8 +201,8 @@
               "judul": "Garis lurus dan sisi",
               "ketukan": [
                 "Beberapa bangun datar dibatasi oleh garis lurus.",
-                "Garis lurus pada bangun datar dinamakan sisi.",
-                "Bangun datar yang dibatasi oleh beberapa sisi dinamakan segi banyak.",
+                "Setiap garis lurus di tepi bangun datar disebut sisi.",
+                "Bangun datar yang tepinya berupa beberapa sisi dinamakan segi banyak.",
                 "Di sini kita memakai ide Attribute Sort — Pilah menurut sisi atau sudut. Di sini kita memakai Attribute Sort. Pilah menurut sisi atau sudut."
               ],
               "papan": [
@@ -239,9 +239,9 @@
               "id": "K2B3A-V3-1",
               "judul": "Hitung sisinya",
               "ketukan": [
-                "Banyak sisi pada segi banyak memengaruhi namanya.",
-                "Segitiga adalah segi banyak yang memiliki tiga sisi.",
-                "Segi empat adalah segi banyak yang memiliki empat sisi.",
+                "Jumlah sisi menentukan nama sebuah segi banyak.",
+                "Bangun bersisi tiga kita namai segitiga.",
+                "Bangun bersisi empat kita namai segi empat.",
                 "Ingat cara Papan Paku: Bentuk bangun dengan karet. Ingat cara Papan Paku: Bentuk bangun dengan karet."
               ],
               "papan": [
@@ -379,7 +379,7 @@
           "emoji": "⬟",
           "countNum": 4,
           "countWord": "Empat",
-          "voiceSentence": "Bangun datar yang dibatasi oleh beberapa sisi atau garis lurus dinamakan segi banyak. Contohnya segitiga, segi empat, segi lima, dan segi enam. Semua sisinya garis lurus."
+          "voiceSentence": "Bangun datar yang tepinya berupa sisi-sisi lurus dinamakan segi banyak. Contohnya segitiga, segi empat, segi lima, dan segi enam. Semua sisinya garis lurus."
         },
         {
           "fruitName": "Kurva dan Bentuk Lengkung",
@@ -610,7 +610,7 @@
           {
             "nama": "Segi banyak",
             "isi": "dibatasi sisi atau garis lurus",
-            "suara": "Segi banyak adalah bangun datar yang dibatasi oleh beberapa sisi atau garis lurus. Contohnya segitiga, segi empat, segi lima, dan segi enam."
+            "suara": "Segi banyak ialah bangun datar yang tepinya berupa beberapa sisi lurus. Contohnya segitiga, segi empat, segi lima, dan segi enam."
           },
           {
             "nama": "van Hiele Visual",
@@ -704,7 +704,7 @@
           "id": "K2B3B-V1-3",
           "titleHint": "Cara memengaruhi hasil",
           "sceneType": "K2B3B-V1-3",
-          "voiceNarration": "Ketika mengurai sebuah bangun datar, kita dapat memakai beberapa cara. Cara yang kita pakai akan memengaruhi hasilnya. Sebuah persegi bisa diurai dengan garis miring menjadi dua segitiga. METODE LUAR · Susun Bangun: Gabung bangun kecil jadi besar."
+          "voiceNarration": "Satu bangun datar bisa diurai dengan bermacam-macam cara. Tiap cara memberi potongan yang berbeda. Sebuah persegi bisa diurai dengan garis miring menjadi dua segitiga. METODE LUAR · Susun Bangun: Gabung bangun kecil jadi besar."
         },
         {
           "id": "K2B3B-V2-1",
@@ -722,7 +722,7 @@
           "id": "K2B3B-V2-3",
           "titleHint": "Cara memengaruhi hasil",
           "sceneType": "K2B3B-V2-3",
-          "voiceNarration": "Ketika menyusun bangun datar, kita dapat menemukan beberapa bentuk yang berbeda. Cara kita menyusunnya akan memengaruhi hasilnya. Dua segitiga siku-siku yang sama bisa disusun menjadi sebuah persegi. METODE LUAR · Urai Bangun: Pecah bangun menjadi bagian."
+          "voiceNarration": "Dari potongan-potongan bangun datar, kita bisa membentuk bangun yang bermacam-macam. Susunan yang berlainan memberi hasil yang berlainan. Dua segitiga siku-siku yang sama bisa disusun menjadi sebuah persegi. METODE LUAR · Urai Bangun: Pecah bangun menjadi bagian."
         },
         {
           "id": "K2B3B-V3-1",
@@ -785,8 +785,8 @@
               "id": "K2B3B-V1-3",
               "judul": "Cara memengaruhi hasil",
               "ketukan": [
-                "Ketika mengurai sebuah bangun datar, kita dapat memakai beberapa cara.",
-                "Cara yang kita pakai akan memengaruhi hasilnya.",
+                "Satu bangun datar bisa diurai dengan bermacam-macam cara.",
+                "Tiap cara memberi potongan yang berbeda.",
                 "Sebuah persegi bisa diurai dengan garis miring menjadi dua segitiga.",
                 "METODE LUAR · Susun Bangun: Gabung bangun kecil jadi besar."
               ],
@@ -840,8 +840,8 @@
               "id": "K2B3B-V2-3",
               "judul": "Cara memengaruhi hasil",
               "ketukan": [
-                "Ketika menyusun bangun datar, kita dapat menemukan beberapa bentuk yang berbeda.",
-                "Cara kita menyusunnya akan memengaruhi hasilnya.",
+                "Dari potongan-potongan bangun datar, kita bisa membentuk bangun yang bermacam-macam.",
+                "Susunan yang berlainan memberi hasil yang berlainan.",
                 "Dua segitiga siku-siku yang sama bisa disusun menjadi sebuah persegi.",
                 "METODE LUAR · Urai Bangun: Pecah bangun menjadi bagian."
               ],

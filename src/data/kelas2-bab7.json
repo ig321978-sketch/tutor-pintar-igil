@@ -93,7 +93,7 @@
           "id": "K2B7A-V2-2",
           "titleHint": "Kelereng ayah Malosi",
           "sceneType": "K2B7A-V2-2",
-          "voiceNarration": "Malosi membantu ayahnya berjualan mainan. Ia memasukkan kelereng ke dalam kantong plastik. Setiap kantong berisi sepuluh kelereng. Satu kantong adalah satu puluhan. Ayah Malosi mempunyai enam kantong penuh dan tujuh kelereng lepas, jadi enam puluhan dan tujuh satuan. Di sini kita memakai ide Tens and Ones — Baca 45 sebagai 4 puluhan 5 satuan. Di sini kita memakai Tens and Ones. Baca 45 sebagai 4 puluhan 5 satuan."
+          "voiceNarration": "Malosi membantu ayahnya berjualan mainan. Kelereng-kelereng dimasukkannya ke kantong plastik. Setiap kantong berisi sepuluh kelereng. Satu kantong adalah satu puluhan. Ayah Malosi mempunyai enam kantong penuh dan tujuh kelereng lepas, jadi enam puluhan dan tujuh satuan. Di sini kita memakai ide Tens and Ones — Baca 45 sebagai 4 puluhan 5 satuan. Di sini kita memakai Tens and Ones. Baca 45 sebagai 4 puluhan 5 satuan."
         },
         {
           "id": "K2B7A-V2-3",
@@ -937,7 +937,7 @@
           "gameType": "order-numerals",
           "title": "Urutkan Bilangan",
           "bookReference": "Buku Siswa hlm. 214 dan 222 (urutkan bilangan dari yang paling kecil)",
-          "objective": "Mengurutkan lambang bilangan dari yang paling kecil atau paling besar.. Ingat Tabel Seratus. (Tabel Seratus)",
+          "objective": "Mengurutkan lambang bilangan mulai dari yang terkecil hingga terbesar.. Ingat Tabel Seratus. (Tabel Seratus)",
           "mechanicDescription": "Tiga ronde, tiap ronde empat atau lima bilangan, misalnya 62, 26, 71, 17. Siswa mengetuk bilangan satu per satu menurut urutan. Letak jawaban berpindah. Gunakan Tabel Seratus.",
           "voiceGuide": "Tabel Seratus. Mainkan dengan teliti."
         },
@@ -990,7 +990,7 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Membandingkan Bilangan)",
       "fullTitle": "Sub-Bab B: Membandingkan Bilangan",
-      "targetDescription": "Siswa menentukan bilangan yang lebih dari atau kurang dari bilangan lain dengan menghitung maju dan mundur pada garis bilangan, membandingkan dua bilangan dengan melihat banyak puluhan lebih dulu lalu satuannya, memakai kata lebih besar dari, lebih kecil dari, dan sama dengan, serta mengurutkan tiga bilangan atau lebih dari yang paling kecil atau paling besar. Siswa memakai cara Banding Puluhan Dulu, Garis Bilangan 100, Tanda Banding. Siswa memakai cara Banding Puluhan Dulu, Garis Bilangan 100, Tanda Banding.",
+      "targetDescription": "Siswa menentukan bilangan yang lebih dari maupun kurang dari bilangan lain dengan menghitung maju dan mundur pada garis bilangan, membandingkan dua bilangan dengan melihat banyak puluhan lebih dulu lalu satuannya, memakai kata lebih besar dari, lebih kecil dari, dan sama dengan, serta mengurutkan tiga bilangan atau lebih mulai dari yang terkecil hingga terbesar. Siswa memakai cara Banding Puluhan Dulu, Garis Bilangan 100, Tanda Banding. Siswa memakai cara Banding Puluhan Dulu, Garis Bilangan 100, Tanda Banding.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
@@ -1896,7 +1896,7 @@
           "stage": "Abstract",
           "gameType": "concept-map-fill",
           "title": "Peta Konsep Banding",
-          "bookReference": "Buku Siswa hlm. 192 (peta konsep: membandingkan bilangan; lebih dari dan kurang dari)",
+          "bookReference": "Buku Siswa hlm. 192 (peta konsep: membandingkan bilangan, memakai istilah lebih dari serta kurang dari)",
           "objective": "Melengkapi peta konsep membandingkan dua bilangan serta lebih dari dan kurang dari.. Ingat Tanda Banding. (Tanda Banding)",
           "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan Tanda Banding.",
           "voiceGuide": "Tanda Banding. Mainkan dengan teliti."
@@ -1907,8 +1907,8 @@
           "stage": "Abstract",
           "gameType": "order-numerals",
           "title": "Urutkan Lima Bilangan",
-          "bookReference": "Buku Siswa hlm. 214 dan 222 nomor 5 (urutkan bilangan mulai dari yang paling kecil)",
-          "objective": "Mengurutkan empat atau lima bilangan dari yang paling kecil atau paling besar.. Ingat Tanda Banding. (Tanda Banding)",
+          "bookReference": "Buku Siswa hlm. 214 dan 222 nomor 5 (urutkan bilangan, mulai dari yang terkecil)",
+          "objective": "Mengurutkan empat atau lima bilangan mulai dari yang terkecil hingga terbesar.. Ingat Tanda Banding. (Tanda Banding)",
           "mechanicDescription": "Tiga ronde, tiap ronde empat atau lima bilangan, misalnya 65, 71, 56, 79, 60. Siswa mengetuk bilangan satu per satu menurut urutan. Gunakan Tanda Banding.",
           "voiceGuide": "Tanda Banding. Mainkan dengan teliti."
         },

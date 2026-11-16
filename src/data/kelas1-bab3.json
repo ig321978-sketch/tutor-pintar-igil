@@ -24,7 +24,7 @@
           "id": "A3-S1",
           "titleHint": "Bermain Tutup Mata",
           "sceneType": "tutup-mata-pulang",
-          "voiceNarration": "Enam sekawan sedang bermain tutup mata. Tetapi, Malosi dan Tika harus pulang. Sekarang tersisa Kira, Upe, Wei, dan Halim. Apakah jumlah anak menjadi lebih sedikit? Ya. Mula-mula enam anak, berkurang dua anak, sisanya empat anak. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Enam sekawan sedang bermain tutup mata. Tetapi, Malosi dan Tika harus pulang. Sekarang tersisa Kira, Upe, Wei, dan Halim. Jumlah anak yang bermain bertambah atau berkurang? Berkurang, sekarang lebih sedikit dari tadi. Mula-mula enam anak, berkurang dua anak, sisanya empat anak. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A3-S2",
@@ -42,7 +42,7 @@
           "id": "A3-S4",
           "titleHint": "Mobil Kosong",
           "sceneType": "mobil-turun",
-          "voiceNarration": "Mula-mula ada tiga orang di dalam mobil. Sebanyak tiga orang turun dari mobil. Sekarang tidak ada orang dalam mobil. Tiga dikurangi tiga hasilnya nol. Nol artinya tidak ada yang tersisa. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Tiga orang duduk di dalam mobil. Tak lama, ketiganya turun. Mobil itu kini tidak berpenumpang. Kalau tiga dikurangi tiga, hasilnya nol, dan nol berarti tidak ada yang tersisa. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A3-S5",
@@ -444,7 +444,7 @@
           "id": "B3-S3",
           "titleHint": "Mobil Kosong",
           "sceneType": "mobil-nol",
-          "voiceNarration": "Mula-mula ada tiga orang di dalam mobil. Sebanyak tiga orang turun dari mobil. Sekarang tidak ada orang di dalam mobil. Tiga dan nol jika digabung menjadi tiga. Tiga dikurangi tiga sama dengan nol. Tiga dikurangi nol sama dengan tiga. Kita memakai cara Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Di dalam mobil duduk tiga orang. Lalu ketiganya turun dan mobil menjadi kosong. Sisa orang di mobil itu nol. Kalau tiga digabung dengan nol, hasilnya tetap tiga. Tiga dikurangi tiga hasilnya nol. Tiga dikurangi nol hasilnya tetap tiga. Kita memakai cara Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "B3-S4",
@@ -1252,13 +1252,13 @@
           "id": "D3-S3",
           "titleHint": "Siswa di Dalam Kelas",
           "sceneType": "siswa-kelas",
-          "voiceNarration": "Di dalam kelas ada tujuh siswa. Lima siswa masih di dalam kelas. Siswa lainnya pergi. Berapa banyak siswa yang pergi? Yang kita cari sekarang adalah bagian yang pergi. Tujuh dikurangi lima sama dengan dua. Ada dua siswa yang pergi. Kita memakai cara Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Mula-mula tujuh siswa berkumpul di ruang kelas. Setelah beberapa saat, yang tinggal hanya lima siswa; selebihnya sudah keluar. Berapa siswa yang keluar? Yang dicari adalah bagian yang keluar itu. Tujuh dikurangi lima hasilnya dua. Jadi, dua siswa keluar dari ruang kelas. Kita memakai cara Kurang di Bingkai: Hapus/kosongkan kotak pada bingkai. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "D3-S4",
           "titleHint": "Bola di Dalam Kardus",
           "sceneType": "bola-kardus",
-          "voiceNarration": "Kira mempunyai sepuluh bola. Tiga bola ada di luar kardus. Berapa banyak bola di dalam kardus? Sepuluh dikurangi tiga sama dengan tujuh. Ada tujuh bola di dalam kardus. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan. Siap? Ketuk suara guru jika ingin mendengar lagi."
+          "voiceNarration": "Kira punya sepuluh bola, dan semuanya tadi tersimpan dalam satu kardus. Sekarang tiga bola di antaranya tergeletak di luar. Tinggal berapa bola yang masih di dalam kardus? Caranya sepuluh dikurangi tiga, hasilnya tujuh. Jadi, kardus itu masih berisi tujuh bola. Kita memakai cara Mengambil: Ambil sebagian dari kumpulan. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "D3-S5",

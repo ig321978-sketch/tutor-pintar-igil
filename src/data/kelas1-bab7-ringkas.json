@@ -34,7 +34,7 @@
             "judul": "Paling dan urutan",
             "ikon": "🏆",
             "ringkas": "Tiga benda atau lebih: pakai kata paling.",
-            "suara": "Untuk tiga benda atau lebih kita memakai kata paling. Pohon A paling tinggi dan pohon D paling pendek. Lalu benda bisa diurutkan."
+            "suara": "Kata paling dipakai bila bendanya tiga atau lebih. Pohon A yang paling tinggi, pohon D yang paling pendek. Setelah itu bendanya bisa diurutkan."
           },
           {
             "id": "posisi",
@@ -172,7 +172,7 @@
                 "nama": "Tiga benda atau lebih",
                 "ikon": "🏆",
                 "catatan": "Kita memakai kata paling.",
-                "suara": "Untuk tiga benda atau lebih kita memakai kata paling. Di antara empat pohon, pohon A paling tinggi dan pohon D paling pendek.",
+                "suara": "Kata paling dipakai bila bendanya tiga atau lebih. Di antara empat pohon, pohon A paling tinggi dan pohon D paling pendek.",
                 "visual": {
                   "jenis": "teks",
                   "isi": "A paling tinggi, D paling pendek"
@@ -193,7 +193,7 @@
                 "label": "Urutan pohon",
                 "ikon": "🔢",
                 "isi": "Dari paling tinggi: A, B, C, D.",
-                "suara": "Urutan pohon dari yang paling tinggi adalah A, B, C, dan D.",
+                "suara": "Pohon-pohon itu berurutan A, B, C, lalu D; pohon A tertinggi dan pohon D terpendek.",
                 "visual": {
                   "jenis": "teks",
                   "isi": "A, B, C, D"

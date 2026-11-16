@@ -118,11 +118,11 @@
                 "id": "atas-bawah",
                 "label": "Atas dan bawah",
                 "ikon": "↕️",
-                "isi": "Bola di atas kotak, kotak di bawah bola.",
+                "isi": "Bola ada di atas, kotaknya di bawah.",
                 "suara": "Bola di atas kotak. Kalau dibalik, kotak di bawah bola. Atas lawannya bawah.",
                 "visual": {
                   "jenis": "teks",
-                  "isi": "Bola di atas kotak ↔ kotak di bawah bola"
+                  "isi": "Bola (atas) ↕ kotak (bawah)"
                 }
               },
               {

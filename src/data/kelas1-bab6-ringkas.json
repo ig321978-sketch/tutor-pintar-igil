@@ -11,7 +11,7 @@
         "pusat": {
           "judul": "Lebih, Kurang, Selisih",
           "ikon": "⚖️",
-          "suara": "Ini peta lebih dari, kurang dari, dan selisih. Ketuk empat cabangnya satu per satu."
+          "suara": "Peta ini membahas selisih, kurang dari, dan lebih dari. Ketuk keempat cabangnya bergantian."
         },
         "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
         "cabang": [
@@ -34,7 +34,7 @@
             "judul": "Beda atau selisih",
             "ikon": "➖",
             "ringkas": "Besar dikurangi kecil.",
-            "suara": "Beda dua bilangan disebut juga selisih. Kita mencarinya dengan mengurangkan. Bilangan yang lebih besar dikurangi bilangan yang lebih kecil."
+            "suara": "Selisih adalah nama lain dari beda dua bilangan. Untuk mendapatkannya, ambil bilangan yang besar, lalu kurangi dengan bilangan yang kecil."
           },
           {
             "id": "model",
@@ -105,7 +105,7 @@
       },
       "infografis": {
         "judul": "Lebih, Kurang, dan Selisih",
-        "suara": "Ini tiga panel tentang lebih dari, kurang dari, dan selisih. Ketuk kotaknya untuk membuka.",
+        "suara": "Tiga panel ini membahas selisih, kurang dari, dan lebih dari. Ketuk tiap kotak untuk membukanya.",
         "panel": [
           {
             "id": "a-pasang",
@@ -204,7 +204,7 @@
                 "label": "Dikurangkan",
                 "ikon": "➖",
                 "isi": "Bilangan besar dikurangi bilangan kecil.",
-                "suara": "Kita menemukan beda dengan mengurangkan. Bilangan yang lebih besar dikurangi bilangan yang lebih kecil.",
+                "suara": "Beda dua bilangan didapat lewat pengurangan: bilangan yang besar dikurangi bilangan yang kecil.",
                 "visual": {
                   "jenis": "teks",
                   "isi": "7 − 6 = 1"
@@ -255,7 +255,7 @@
             "induk": "hal",
             "teks": "Lebihnya dan kurangnya",
             "ikon": "⚖️",
-            "petunjuk": "Memakai kata lebih dari, kurang dari, lebihnya, dan kurangnya."
+            "petunjuk": "Menceritakan hasil banding lewat kata lebihnya, kurangnya, kurang dari, dan lebih dari."
           },
           {
             "id": "hal-selisih",

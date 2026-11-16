@@ -25,7 +25,7 @@
       "secondaryText": "#312E81",
       "silabus": {
         "teksSuara": "Kita belajar kalimat Matematika yang berkaitan dengan penjumlahan. Galih punya sejumlah kelereng di rumah. Ia membeli lima kelereng lagi, dan jumlahnya menjadi tujuh belas. Berapa kelereng yang disimpan di rumah? Kita menulis kalimat Matematikanya dan mencari bilangan yang belum diketahui dengan mengurangkan. Kita memakai cara: Bagian–Bagian–Utuh, Model Batang, Cerita ke Kalimat. Dua bagian membentuk keseluruhan pada penjumlahan. Gambar batang untuk kalimat matematika. Ubah cerita jadi + dan =. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menyelesaikan masalah yang berkaitan dengan kalimat Matematika berbentuk penjumlahan dan pengurangan bilangan cacah sampai 100. Pada sub-bab ini siswa mengisi nilai yang belum diketahui pada kalimat penjumlahan.",
+        "cp": "Siswa menyelesaikan masalah yang berkaitan dengan kalimat Matematika berbentuk penjumlahan dan pengurangan bilangan cacah sampai 100. Di sub-bab ini siswa mencari bilangan yang masih kosong pada kalimat penjumlahan.",
         "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 2 Sub-Bab A)."
       },
       "metodeLuar": [
@@ -69,7 +69,7 @@
           "id": "K3B2A-V1-1",
           "titleHint": "Kelereng Galih",
           "sceneType": "K3B2A-V1-1",
-          "voiceNarration": "Bayangkan kamu sedang mempelajari Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah. Galih senang sekali mengumpulkan kelereng dengan berbagai warna. Ia memiliki sejumlah kelereng yang disimpan di rumah. Pada hari Minggu, Galih membeli 5 kelereng lagi. Ingat cara Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan. Ingat cara Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan."
+          "voiceNarration": "Bayangkan kamu sedang mempelajari Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah. Galih suka mengoleksi kelereng. Di rumah, ia sudah menyimpan beberapa kelereng, entah berapa banyaknya. Pada hari Minggu, Galih membeli 5 kelereng lagi. Ingat cara Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan. Ingat cara Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan."
         },
         {
           "id": "K3B2A-V1-2",
@@ -130,8 +130,8 @@
               "id": "K3B2A-V1-1",
               "judul": "Kelereng Galih",
               "ketukan": [
-                "Bayangkan kamu sedang mempelajari Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah. Galih senang sekali mengumpulkan kelereng dengan berbagai warna.",
-                "Ia memiliki sejumlah kelereng yang disimpan di rumah.",
+                "Bayangkan kamu sedang mempelajari Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah. Galih suka mengoleksi kelereng.",
+                "Di rumah, ia sudah menyimpan beberapa kelereng, entah berapa banyaknya.",
                 "Pada hari Minggu, Galih membeli 5 kelereng lagi.",
                 "Ingat cara Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan. Ingat cara Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan."
               ],
@@ -996,7 +996,7 @@
       "secondaryText": "#831843",
       "silabus": {
         "teksSuara": "Kita belajar kalimat Matematika yang berkaitan dengan pengurangan. Pak Slamet punya delapan puluh ekor ayam. Sebagian ayam dijual dan tersisa empat puluh lima ekor. Berapa ayam yang dijual? Kita juga mencari banyak ayam mula-mula bila ayam yang dijual dan sisanya diketahui. Kita memakai mengurangkan dan menjumlahkan. Kita memakai cara: Mengambil, Selisih Banding, Model Batang Kurang. Kurangi berarti mengambil sebagian. Berapa lebih banyak/sedikit. Batang utuh dikurangi bagian. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menyelesaikan masalah yang berkaitan dengan kalimat Matematika berbentuk penjumlahan dan pengurangan bilangan cacah sampai 100. Pada sub-bab ini siswa mengisi nilai yang belum diketahui pada kalimat pengurangan.",
+        "cp": "Siswa menyelesaikan masalah yang berkaitan dengan kalimat Matematika berbentuk penjumlahan dan pengurangan bilangan cacah sampai 100. Di sub-bab ini siswa mencari bilangan yang masih kosong pada kalimat pengurangan.",
         "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 2 Sub-Bab B)."
       },
       "metodeLuar": [

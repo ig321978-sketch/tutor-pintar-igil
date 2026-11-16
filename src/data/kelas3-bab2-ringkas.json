@@ -34,7 +34,7 @@
             "judul": "Cari dan periksa",
             "ikon": "🔎",
             "ringkas": "Jumlah dikurangi bagian, lalu periksa.",
-            "suara": "Cari dan periksa. Untuk mencari bilangan yang belum diketahui, kurangi jumlahnya dengan bilangan yang diketahui. Lima puluh dikurangi tiga puluh sama dengan dua puluh. Lalu periksa dengan menjumlahkan lagi: tiga puluh tambah dua puluh sama dengan lima puluh."
+            "suara": "Cari dan periksa. Bilangan yang masih kosong ketemu bila jumlah semuanya dikurangi bilangan yang sudah ada. Lima puluh dikurangi tiga puluh sama dengan dua puluh. Lalu periksa dengan menjumlahkan lagi: tiga puluh tambah dua puluh sama dengan lima puluh."
           },
           {
             "id": "banyak",
@@ -297,7 +297,7 @@
             "induk": "hal",
             "teks": "Menulis kalimat dari cerita",
             "ikon": "📖",
-            "petunjuk": "Cerita penjumlahan ditulis menjadi kalimat Matematika, dan bilangan yang belum diketahui ditulis dengan titik-titik."
+            "petunjuk": "Cerita penjumlahan ditulis menjadi kalimat Matematika, dan bilangan yang masih kosong ditulis dengan titik-titik."
           },
           {
             "id": "hal-isi",

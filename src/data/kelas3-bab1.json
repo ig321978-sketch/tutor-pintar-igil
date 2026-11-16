@@ -1961,7 +1961,7 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Membandingkan dan Mengurutkan)",
       "fullTitle": "Sub-Bab C: Membandingkan dan Mengurutkan Bilangan Cacah sampai 1.000",
-      "targetDescription": "Siswa membandingkan dua bilangan cacah tiga angka dengan nilai tempat (mulai dari ratusan, lalu puluhan, lalu satuan), menulis hasilnya dengan tanda <, >, atau =, membandingkan tiga bilangan, serta mengurutkan beberapa bilangan dari terkecil ke terbesar dan dari terbesar ke terkecil. Siswa memakai cara Banding per Tempat, Garis Bilangan Ratusan, Mengurutkan. Siswa memakai cara Banding per Tempat, Garis Bilangan Ratusan, Mengurutkan.",
+      "targetDescription": "Siswa membandingkan dua bilangan cacah tiga angka dengan nilai tempat (mulai dari ratusan, lalu puluhan, lalu satuan), menulis hasilnya dengan tanda <, >, atau =, membandingkan tiga bilangan, serta mengurutkan beberapa bilangan secara naik maupun turun. Siswa memakai cara Banding per Tempat, Garis Bilangan Ratusan, Mengurutkan. Siswa memakai cara Banding per Tempat, Garis Bilangan Ratusan, Mengurutkan.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
@@ -2858,7 +2858,7 @@
           "title": "Detektif Perbandingan",
           "bookReference": "Buku Siswa hlm. 30–31 (bilangan di antara dua bilangan)",
           "objective": "Menemukan bilangan dari petunjuk lebih dari, kurang dari, dan angka tertentu.. Ingat Mengurutkan. (Mengurutkan)",
-          "mechanicDescription": "Empat soal. Siswa membaca petunjuk seperti lebih dari 500 dan kurang dari 510, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok. Gunakan Mengurutkan.",
+          "mechanicDescription": "Empat soal. Siswa membaca petunjuk batas, misalnya di atas 500 tetapi di bawah 510, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok. Gunakan Mengurutkan.",
           "voiceGuide": "Mengurutkan. Mainkan dengan teliti."
         },
         {
@@ -3971,7 +3971,7 @@
           "id": "K3B1E-V2-1",
           "titleHint": "Berapa sisa buku",
           "sceneType": "K3B1E-V2-1",
-          "voiceNarration": "Pak Bandi memiliki toko yang menjual alat tulis. Di tokonya ada 45 buku tulis. Siswa SD Pelita membeli 19 buku tulis. Berapa sisa buku tulis di toko Pak Bandi sekarang. Ingat cara Menghitung Naik: Naik dari yang dikurangi. Ingat cara Menghitung Naik: Naik dari yang dikurangi."
+          "voiceNarration": "Pak Bandi menata buku tulis di rak tokonya. Pagi hari ada 45 buku tulis di rak, lalu 19 buku tulis dibeli pembeli. Tinggal berapa buku tulis di rak sekarang. Ingat cara Menghitung Naik: Naik dari yang dikurangi. Ingat cara Menghitung Naik: Naik dari yang dikurangi."
         },
         {
           "id": "K3B1E-V2-2",
@@ -4069,9 +4069,9 @@
               "id": "K3B1E-V2-1",
               "judul": "Berapa sisa buku",
               "ketukan": [
-                "Pak Bandi memiliki toko yang menjual alat tulis.",
-                "Di tokonya ada 45 buku tulis. Siswa SD Pelita membeli 19 buku tulis.",
-                "Berapa sisa buku tulis di toko Pak Bandi sekarang.",
+                "Pak Bandi menata buku tulis di rak tokonya.",
+                "Pagi hari ada 45 buku tulis di rak, lalu 19 buku tulis dibeli pembeli.",
+                "Tinggal berapa buku tulis di rak sekarang.",
                 "Ingat cara Menghitung Naik: Naik dari yang dikurangi. Ingat cara Menghitung Naik: Naik dari yang dikurangi."
               ],
               "papan": [
@@ -5893,7 +5893,7 @@
           "id": "K3B1G-V1-1",
           "titleHint": "Bagi biskuit",
           "sceneType": "K3B1G-V1-1",
-          "voiceNarration": "Bayangkan kamu sedang mempelajari Pembagian Bilangan Cacah sampai 100. Ibu mempunyai 12 biskuit di dalam toples. Ibu akan membagikannya sama banyak kepada anak-anaknya. Berapa biskuit yang didapat oleh setiap anak. Ingat cara Bagi Rata: Bagi ke kelompok sama. Ingat cara Bagi Rata: Bagi ke kelompok sama."
+          "voiceNarration": "Bayangkan kamu sedang mempelajari Pembagian Bilangan Cacah sampai 100. Ibu menaruh 12 biskuit di toples, lalu membaginya rata untuk dua anaknya. Satu anak kebagian berapa biskuit. Ingat cara Bagi Rata: Bagi ke kelompok sama. Ingat cara Bagi Rata: Bagi ke kelompok sama."
         },
         {
           "id": "K3B1G-V1-2",
@@ -5905,7 +5905,7 @@
           "id": "K3B1G-V1-3",
           "titleHint": "Tulis pembagian",
           "sceneType": "K3B1G-V1-3",
-          "voiceNarration": "Dapat ditulis 12 − 2 − 2 − 2 − 2 − 2 − 2 = 0. Pengurangan berulang sampai tidak ada sisa disebut pembagian. Bentuk pembagiannya ditulis 12 : 2 = 6. METODE LUAR · Bagi Rata: Bagi ke kelompok sama."
+          "voiceNarration": "Dapat ditulis 12 − 2 − 2 − 2 − 2 − 2 − 2 = 0. Mengurangi bilangan yang sama berulang kali sampai habis itulah pembagian. Bentuk pembagiannya ditulis 12 : 2 = 6. METODE LUAR · Bagi Rata: Bagi ke kelompok sama."
         },
         {
           "id": "K3B1G-V2-1",
@@ -5954,9 +5954,9 @@
               "id": "K3B1G-V1-1",
               "judul": "Bagi biskuit",
               "ketukan": [
-                "Bayangkan kamu sedang mempelajari Pembagian Bilangan Cacah sampai 100. Ibu mempunyai 12 biskuit di dalam toples.",
-                "Ibu akan membagikannya sama banyak kepada anak-anaknya.",
-                "Berapa biskuit yang didapat oleh setiap anak.",
+                "Bayangkan kamu sedang mempelajari Pembagian Bilangan Cacah sampai 100. Ibu menaruh 12 biskuit di toples.",
+                "Biskuit itu dibagi rata untuk dua anaknya.",
+                "Satu anak kebagian berapa biskuit.",
                 "Ingat cara Bagi Rata: Bagi ke kelompok sama. Ingat cara Bagi Rata: Bagi ke kelompok sama."
               ],
               "papan": [
@@ -5987,7 +5987,7 @@
               "judul": "Tulis pembagian",
               "ketukan": [
                 "Dapat ditulis 12 − 2 − 2 − 2 − 2 − 2 − 2 = 0.",
-                "Pengurangan berulang sampai tidak ada sisa disebut pembagian.",
+                "Mengurangi bilangan yang sama berulang kali sampai habis itulah pembagian.",
                 "Bentuk pembagiannya ditulis 12 : 2 = 6.",
                 "METODE LUAR · Bagi Rata: Bagi ke kelompok sama."
               ],
@@ -6197,7 +6197,7 @@
           "emoji": "➖",
           "countNum": 2,
           "countWord": "Dua",
-          "voiceSentence": "Pengurangan berulang sampai tidak ada sisa disebut pembagian. Lima belas dikurangi tiga lima kali sama dengan nol."
+          "voiceSentence": "Mengurangi bilangan yang sama berulang kali sampai habis itulah pembagian. Lima belas dikurangi tiga lima kali sama dengan nol."
         },
         {
           "fruitName": "15 : 3 = 5",

@@ -69,13 +69,13 @@
           "id": "K2B5A-V1-1",
           "titleHint": "Oleh-oleh martabak",
           "sceneType": "K2B5A-V1-1",
-          "voiceNarration": "Bayangkan kamu sedang mempelajari Setengah dari Benda Utuh. Ibu memberi Kira oleh-oleh martabak manis. Kira sangat senang. Ia teringat kepada Tika yang juga suka martabak manis. Kira membawa martabak manisnya ke rumah Tika. Ingat cara Setengah Benda Utuh: Bagi benda menjadi dua bagian sama. Ingat cara Setengah Benda Utuh: Bagi benda menjadi dua bagian sama."
+          "voiceNarration": "Bayangkan kamu sedang mempelajari Setengah dari Benda Utuh. Ibu memberi Kira oleh-oleh martabak manis. Kira sangat senang. Ia teringat kepada Tika yang juga suka martabak manis. Martabak itu ia bawa ke rumah Tika. Ingat cara Setengah Benda Utuh: Bagi benda menjadi dua bagian sama. Ingat cara Setengah Benda Utuh: Bagi benda menjadi dua bagian sama."
         },
         {
           "id": "K2B5A-V1-2",
           "titleHint": "Pesan Ibu",
           "sceneType": "K2B5A-V1-2",
-          "voiceNarration": "Ibu berpesan agar Kira membagi martabaknya dengan Tika secara adil. Ibu juga berpesan agar Kira berhati-hati saat menggunakan pisau. Kira menggunakan pisau yang aman untuk anak-anak. Di sini kita memakai ide Halving Whole — Bagi benda menjadi dua bagian sama. Di sini kita memakai Halving Whole. Bagi benda menjadi dua bagian sama."
+          "voiceNarration": "Ibu berpesan agar Kira membagi martabaknya dengan Tika secara adil. Ibu juga berpesan agar Kira berhati-hati saat menggunakan pisau. Pisau yang dipakai Kira adalah pisau khusus yang aman bagi anak. Di sini kita memakai ide Halving Whole — Bagi benda menjadi dua bagian sama. Di sini kita memakai Halving Whole. Bagi benda menjadi dua bagian sama."
         },
         {
           "id": "K2B5A-V1-3",
@@ -87,7 +87,7 @@
           "id": "K2B5A-V2-1",
           "titleHint": "Memotong menjadi dua",
           "sceneType": "K2B5A-V2-1",
-          "voiceNarration": "Perhatikan martabak manis ini. Kita dapat memotongnya menjadi dua bagian sama besar. Kita memotong satu martabak utuh menjadi dua bagian sama besar. Ingat cara Bagian Sama: Setengah hanya jika bagian sama besar. Ingat cara Bagian Sama: Setengah hanya jika bagian sama besar."
+          "voiceNarration": "Perhatikan martabak manis ini. Martabak ini bisa dibelah menjadi dua potong yang sama besar. Satu martabak utuh dibelah menjadi dua potong yang sama besar. Ingat cara Bagian Sama: Setengah hanya jika bagian sama besar. Ingat cara Bagian Sama: Setengah hanya jika bagian sama besar."
         },
         {
           "id": "K2B5A-V2-2",
@@ -132,7 +132,7 @@
               "ketukan": [
                 "Bayangkan kamu sedang mempelajari Setengah dari Benda Utuh. Ibu memberi Kira oleh-oleh martabak manis.",
                 "Kira sangat senang. Ia teringat kepada Tika yang juga suka martabak manis.",
-                "Kira membawa martabak manisnya ke rumah Tika.",
+                "Martabak itu ia bawa ke rumah Tika.",
                 "Ingat cara Setengah Benda Utuh: Bagi benda menjadi dua bagian sama. Ingat cara Setengah Benda Utuh: Bagi benda menjadi dua bagian sama."
               ],
               "papan": [
@@ -148,7 +148,7 @@
               "ketukan": [
                 "Ibu berpesan agar Kira membagi martabaknya dengan Tika secara adil.",
                 "Ibu juga berpesan agar Kira berhati-hati saat menggunakan pisau.",
-                "Kira menggunakan pisau yang aman untuk anak-anak.",
+                "Pisau yang dipakai Kira adalah pisau khusus yang aman bagi anak.",
                 "Di sini kita memakai ide Halving Whole — Bagi benda menjadi dua bagian sama. Di sini kita memakai Halving Whole. Bagi benda menjadi dua bagian sama."
               ],
               "papan": [
@@ -186,8 +186,8 @@
               "judul": "Memotong menjadi dua",
               "ketukan": [
                 "Perhatikan martabak manis ini.",
-                "Kita dapat memotongnya menjadi dua bagian sama besar.",
-                "Kita memotong satu martabak utuh menjadi dua bagian sama besar.",
+                "Martabak ini bisa dibelah menjadi dua potong yang sama besar.",
+                "Satu martabak utuh dibelah menjadi dua potong yang sama besar.",
                 "Ingat cara Bagian Sama: Setengah hanya jika bagian sama besar. Ingat cara Bagian Sama: Setengah hanya jika bagian sama besar."
               ],
               "papan": [
@@ -366,7 +366,7 @@
           "emoji": "🍰",
           "countNum": 2,
           "countWord": "Dua",
-          "voiceSentence": "Satu benda utuh dipotong menjadi dua bagian sama besar. Setiap hasil potongannya bernilai setengah. Kata kuncinya adalah dua bagian dan sama besar."
+          "voiceSentence": "Sebuah benda utuh dibelah menjadi dua potong yang ukurannya persis sama. Satu potong itu bernilai setengah. Kuncinya ada dua: dua potong, dan ukurannya sama."
         },
         {
           "fruitName": "Setengah di Sekitar Kita",
@@ -578,7 +578,7 @@
           "stage": "Abstract",
           "gameType": "fill-sentence-blanks",
           "title": "Isi Kalimat Setengah",
-          "bookReference": "Buku Siswa hlm. 128 dan 132 (satu benda utuh dipotong menjadi dua bagian sama besar, setiap hasil potongan bernilai setengah)",
+          "bookReference": "Buku Siswa hlm. 128 dan 132 (benda utuh dibelah menjadi dua potong yang ukurannya sama; satu potong bernilai setengah)",
           "objective": "Melengkapi kalimat tentang setengah dengan banyak bagian, nama pecahan, lambang, dan syarat sama besar.. Ingat Setengah Benda Utuh. (Setengah Benda Utuh)",
           "mechanicDescription": "Dua ronde, tiap ronde tiga kalimat dengan bagian kosong. Contoh: satu martabak utuh dipotong menjadi ... bagian sama besar. Siswa memilih satu dari tiga kartu untuk tiap bagian kosong. Kalimat yang lengkap dibacakan Suara Guru. Gunakan Setengah Benda Utuh.",
           "voiceGuide": "Setengah Benda Utuh. Mainkan dengan teliti."
@@ -693,25 +693,25 @@
           "id": "K2B5B-V1-1",
           "titleHint": "Malosi dan Upe bermain",
           "sceneType": "K2B5B-V1-1",
-          "voiceNarration": "Bayangkan kamu sedang mempelajari Setengah dari Kumpulan Benda. Malosi dan Upe akan bermain kelereng bersama. Malosi mempunyai 4 kelereng. Upe tidak membawa kelereng. Malosi ingin memberikan setengah dari kelerengnya kepada Upe. Ingat cara Setengah Kumpulan: Ambil setengah dari banyak benda. Ingat cara Setengah Kumpulan: Ambil setengah dari banyak benda."
+          "voiceNarration": "Bayangkan kamu sedang mempelajari Setengah dari Kumpulan Benda. Hari ini Malosi dan Upe berencana bermain kelereng. Malosi mempunyai 4 kelereng. Upe tidak membawa kelereng. Malosi ingin memberikan setengah dari kelerengnya kepada Upe. Ingat cara Setengah Kumpulan: Ambil setengah dari banyak benda. Ingat cara Setengah Kumpulan: Ambil setengah dari banyak benda."
         },
         {
           "id": "K2B5B-V1-2",
           "titleHint": "Membagi bergantian",
           "sceneType": "K2B5B-V1-2",
-          "voiceNarration": "Mula-mula ada 4 kelereng. Kelereng akan dibagi sama banyak untuk Upe dan Malosi. Kita ambil 2 kelereng. Satu untuk Upe dan satu untuk Malosi. Tersisa 2 kelereng. Kita ambil lagi 2 kelereng. Satu untuk Upe dan satu untuk Malosi. Di sini kita memakai ide Half of Set — Ambil setengah dari banyak benda. Di sini kita memakai Half of Set. Ambil setengah dari banyak benda."
+          "voiceNarration": "Ada 4 kelereng. Upe dan Malosi akan membagi kelereng itu sama rata. Kita ambil 2 kelereng. Satu untuk Upe dan satu untuk Malosi. Tersisa 2 kelereng. Kita ambil lagi 2 kelereng. Satu untuk Upe dan satu untuk Malosi. Di sini kita memakai ide Half of Set — Ambil setengah dari banyak benda. Di sini kita memakai Half of Set. Ambil setengah dari banyak benda."
         },
         {
           "id": "K2B5B-V1-3",
           "titleHint": "Jadi, setengahnya",
           "sceneType": "K2B5B-V1-3",
-          "voiceNarration": "Kita dapat menemukan setengah dari sekumpulan benda. Kita mengelompokkan benda-benda itu menjadi dua bagian sama banyak. Jadi, setengah dari 4 kelereng adalah 2 kelereng. METODE LUAR · Setengah Kumpulan: Ambil setengah dari banyak benda."
+          "voiceNarration": "Setengah dari sekumpulan benda bisa dicari lewat pembagian rata. Benda-benda itu dipisah ke dalam dua kelompok yang isinya sama. Jadi, setengah dari 4 kelereng adalah 2 kelereng. METODE LUAR · Setengah Kumpulan: Ambil setengah dari banyak benda."
         },
         {
           "id": "K2B5B-V2-1",
           "titleHint": "Halim dan enam ikan",
           "sceneType": "K2B5B-V2-1",
-          "voiceNarration": "Ada 6 ikan dalam akuarium. Halim akan memasukkan ikan itu ke dalam dua tempat sehingga sama banyak. Halim akan menemukan setengah dari enam ikan. Ingat cara Bagi Rata Kumpulan: Bagi dua kelompok sama banyak. Ingat cara Bagi Rata Kumpulan: Bagi dua kelompok sama banyak."
+          "voiceNarration": "Ada 6 ikan dalam akuarium. Halim hendak membagi ikan itu ke dua wadah agar isinya sama. Halim akan menemukan setengah dari enam ikan. Ingat cara Bagi Rata Kumpulan: Bagi dua kelompok sama banyak. Ingat cara Bagi Rata Kumpulan: Bagi dua kelompok sama banyak."
         },
         {
           "id": "K2B5B-V2-2",
@@ -723,13 +723,13 @@
           "id": "K2B5B-V2-3",
           "titleHint": "Bukan setengah",
           "sceneType": "K2B5B-V2-3",
-          "voiceNarration": "Sekarang, kita membagi 6 ikan menjadi dua kelompok, tetapi tidak sama banyak. Satu kelompok berisi 4 ikan dan satu kelompok berisi 2 ikan. Itu tidak dapat dikatakan setengah dari 6 ikan. METODE LUAR · Bagi Rata Kumpulan: Bagi dua kelompok sama banyak."
+          "voiceNarration": "Sekarang, kita membagi 6 ikan menjadi dua kelompok, tetapi tidak sama banyak. Satu kelompok berisi 4 ikan dan satu kelompok berisi 2 ikan. Pembagian seperti itu bukan setengah dari 6 ikan. METODE LUAR · Bagi Rata Kumpulan: Bagi dua kelompok sama banyak."
         },
         {
           "id": "K2B5B-V3-1",
           "titleHint": "Delapan pensil Tika",
           "sceneType": "K2B5B-V3-1",
-          "voiceNarration": "Tika mempunyai 8 pensil. Tika mengelompokkan semua pensilnya menjadi dua bagian sama banyak. Setiap bagian berisi 4 pensil, jadi setengah dari 8 pensil adalah 4 pensil. Ingat cara Cek Genap: Kumpulan genap mudah dibagi dua. Ingat cara Cek Genap: Kumpulan genap mudah dibagi dua."
+          "voiceNarration": "Tika mempunyai 8 pensil. Semua pensil Tika ia bagi ke dalam dua kelompok yang sama banyak. Setiap bagian berisi 4 pensil, jadi setengah dari 8 pensil adalah 4 pensil. Ingat cara Cek Genap: Kumpulan genap mudah dibagi dua. Ingat cara Cek Genap: Kumpulan genap mudah dibagi dua."
         },
         {
           "id": "K2B5B-V3-2",
@@ -754,7 +754,7 @@
               "id": "K2B5B-V1-1",
               "judul": "Malosi dan Upe bermain",
               "ketukan": [
-                "Bayangkan kamu sedang mempelajari Setengah dari Kumpulan Benda. Malosi dan Upe akan bermain kelereng bersama.",
+                "Bayangkan kamu sedang mempelajari Setengah dari Kumpulan Benda. Hari ini Malosi dan Upe berencana bermain kelereng.",
                 "Malosi mempunyai 4 kelereng. Upe tidak membawa kelereng.",
                 "Malosi ingin memberikan setengah dari kelerengnya kepada Upe.",
                 "Ingat cara Setengah Kumpulan: Ambil setengah dari banyak benda. Ingat cara Setengah Kumpulan: Ambil setengah dari banyak benda."
@@ -770,7 +770,7 @@
               "id": "K2B5B-V1-2",
               "judul": "Membagi bergantian",
               "ketukan": [
-                "Mula-mula ada 4 kelereng. Kelereng akan dibagi sama banyak untuk Upe dan Malosi.",
+                "Ada 4 kelereng. Upe dan Malosi akan membagi kelereng itu sama rata.",
                 "Kita ambil 2 kelereng. Satu untuk Upe dan satu untuk Malosi. Tersisa 2 kelereng.",
                 "Kita ambil lagi 2 kelereng. Satu untuk Upe dan satu untuk Malosi.",
                 "Di sini kita memakai ide Half of Set — Ambil setengah dari banyak benda. Di sini kita memakai Half of Set. Ambil setengah dari banyak benda."
@@ -786,8 +786,8 @@
               "id": "K2B5B-V1-3",
               "judul": "Jadi, setengahnya",
               "ketukan": [
-                "Kita dapat menemukan setengah dari sekumpulan benda.",
-                "Kita mengelompokkan benda-benda itu menjadi dua bagian sama banyak.",
+                "Setengah dari sekumpulan benda bisa dicari lewat pembagian rata.",
+                "Benda-benda itu dipisah ke dalam dua kelompok yang isinya sama.",
                 "Jadi, setengah dari 4 kelereng adalah 2 kelereng.",
                 "METODE LUAR · Setengah Kumpulan: Ambil setengah dari banyak benda."
               ],
@@ -810,7 +810,7 @@
               "judul": "Halim dan enam ikan",
               "ketukan": [
                 "Ada 6 ikan dalam akuarium.",
-                "Halim akan memasukkan ikan itu ke dalam dua tempat sehingga sama banyak.",
+                "Halim hendak membagi ikan itu ke dua wadah agar isinya sama.",
                 "Halim akan menemukan setengah dari enam ikan.",
                 "Ingat cara Bagi Rata Kumpulan: Bagi dua kelompok sama banyak. Ingat cara Bagi Rata Kumpulan: Bagi dua kelompok sama banyak."
               ],
@@ -843,7 +843,7 @@
               "ketukan": [
                 "Sekarang, kita membagi 6 ikan menjadi dua kelompok, tetapi tidak sama banyak.",
                 "Satu kelompok berisi 4 ikan dan satu kelompok berisi 2 ikan.",
-                "Itu tidak dapat dikatakan setengah dari 6 ikan.",
+                "Pembagian seperti itu bukan setengah dari 6 ikan.",
                 "METODE LUAR · Bagi Rata Kumpulan: Bagi dua kelompok sama banyak."
               ],
               "papan": [
@@ -865,7 +865,7 @@
               "judul": "Delapan pensil Tika",
               "ketukan": [
                 "Tika mempunyai 8 pensil.",
-                "Tika mengelompokkan semua pensilnya menjadi dua bagian sama banyak.",
+                "Semua pensil Tika ia bagi ke dalam dua kelompok yang sama banyak.",
                 "Setiap bagian berisi 4 pensil, jadi setengah dari 8 pensil adalah 4 pensil.",
                 "Ingat cara Cek Genap: Kumpulan genap mudah dibagi dua. Ingat cara Cek Genap: Kumpulan genap mudah dibagi dua."
               ],
@@ -1323,13 +1323,13 @@
           "id": "K2B5C-V1-2",
           "titleHint": "Memotong menjadi empat",
           "sceneType": "K2B5C-V1-2",
-          "voiceNarration": "Perhatikan kue martabak manis ini. Kita dapat memotongnya menjadi empat bagian sama besar. Bagaimana cara memotongnya agar menjadi empat bagian sama besar. Di sini kita memakai ide Quartering — Bagi menjadi empat bagian sama. Di sini kita memakai Quartering. Bagi menjadi empat bagian sama."
+          "voiceNarration": "Perhatikan kue martabak manis ini. Martabak ini bisa dibelah menjadi empat potong yang sama besar. Bagaimana cara membelahnya agar menjadi empat potong sama besar. Di sini kita memakai ide Quartering — Bagi menjadi empat bagian sama. Di sini kita memakai Quartering. Bagi menjadi empat bagian sama."
         },
         {
           "id": "K2B5C-V1-3",
           "titleHint": "Seperempat",
           "sceneType": "K2B5C-V1-3",
-          "voiceNarration": "Kita memotong satu martabak utuh menjadi empat bagian sama besar. Setiap hasil potongannya bernilai seperempat. Setiap sahabat mendapat seperempat martabak. METODE LUAR · Seperempat: Bagi menjadi empat bagian sama."
+          "voiceNarration": "Satu martabak utuh dibelah menjadi empat potong yang sama besarnya. Satu potong itu bernilai seperempat. Setiap sahabat mendapat seperempat martabak. METODE LUAR · Seperempat: Bagi menjadi empat bagian sama."
         },
         {
           "id": "K2B5C-V2-1",
@@ -1395,8 +1395,8 @@
               "judul": "Memotong menjadi empat",
               "ketukan": [
                 "Perhatikan kue martabak manis ini.",
-                "Kita dapat memotongnya menjadi empat bagian sama besar.",
-                "Bagaimana cara memotongnya agar menjadi empat bagian sama besar.",
+                "Martabak ini bisa dibelah menjadi empat potong yang sama besar.",
+                "Bagaimana cara membelahnya agar menjadi empat potong sama besar.",
                 "Di sini kita memakai ide Quartering — Bagi menjadi empat bagian sama. Di sini kita memakai Quartering. Bagi menjadi empat bagian sama."
               ],
               "papan": [
@@ -1410,8 +1410,8 @@
               "id": "K2B5C-V1-3",
               "judul": "Seperempat",
               "ketukan": [
-                "Kita memotong satu martabak utuh menjadi empat bagian sama besar.",
-                "Setiap hasil potongannya bernilai seperempat.",
+                "Satu martabak utuh dibelah menjadi empat potong yang sama besarnya.",
+                "Satu potong itu bernilai seperempat.",
                 "Setiap sahabat mendapat seperempat martabak.",
                 "METODE LUAR · Seperempat: Bagi menjadi empat bagian sama."
               ],
@@ -1614,7 +1614,7 @@
           "emoji": "🍕",
           "countNum": 4,
           "countWord": "Empat",
-          "voiceSentence": "Satu benda utuh dipotong menjadi empat bagian sama besar. Setiap hasil potongannya bernilai seperempat. Kata kuncinya adalah empat bagian dan sama besar."
+          "voiceSentence": "Sebuah benda utuh dibelah menjadi empat potong yang ukurannya persis sama. Satu potong itu bernilai seperempat. Kuncinya ada dua: empat potong, dan ukurannya sama."
         },
         {
           "fruitName": "Utuh, Setengah, Seperempat",
@@ -1749,7 +1749,7 @@
           "stage": "Concrete",
           "gameType": "choose-fair-four-cuts",
           "title": "Empat Potongan yang Adil",
-          "bookReference": "Buku Siswa hlm. 142–143 (Kira membagi martabak menjadi 4 bagian sama besar; setiap hasil potongan bernilai seperempat)",
+          "bookReference": "Buku Siswa hlm. 142–143 (Kira membelah martabak menjadi 4 potong yang sama besarnya; satu potong bernilai seperempat)",
           "objective": "Pakai Seperempat: Bagi menjadi empat bagian sama. Latihan: Memilih cara memotong benda nyata yang menghasilkan empat bagian sama besar dan menolak yang tidak sama besar..",
           "mechanicDescription": "Tiga ronde (martabak, kue bolu, roti, dan puding). Tiap ronde menampilkan enam gambar benda dengan pola garis potong berbeda. Siswa mengetuk semua pola yang membagi benda menjadi empat bagian sama besar, lalu menekan Periksa. Luas tiap bagian dihitung oleh program. Saat bermain, ingat Seperempat: Bagi menjadi empat bagian sama.",
           "voiceGuide": "Seperempat. Bagi menjadi empat bagian sama."
