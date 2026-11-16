@@ -29,8 +29,8 @@ const TERLARANG = /\b(kelas|buku|teman|kelompok|tambah|kurang|jumlah|skor|nilai)
 /* ------------------------------ Mind-map pohon ------------------------------ */
 {
   const t = D.TEMPAT_POHON;
-  sama(t.length, 10, "pohon: sepuluh tempat sesuai panduan pemilik");
-  sama(["masalah", "metode", "hasil"].map((k) => t.filter((x) => x.kelompok === k).length), [3, 4, 3], "pohon: tiga akar, empat daun, tiga buah");
+  sama(t.length, 12, "pohon: dua belas tempat (panduan pemilik + dua metode luar di daun)");
+  sama(["masalah", "metode", "hasil"].map((k) => t.filter((x) => x.kelompok === k).length), [3, 6, 3], "pohon: tiga akar, enam daun, tiga buah");
   cek(new Set(t.map((x) => x.kunci)).size === t.length && new Set(t.map((x) => x.id)).size === t.length, "pohon: kunci dan id unik");
   cek(t.every((x) => x.kunci.length <= 28), "pohon: label pendek");
   const lb = L.labelDari(t, 11);
@@ -42,7 +42,9 @@ const TERLARANG = /\b(kelas|buku|teman|kelompok|tambah|kurang|jumlah|skor|nilai)
   cek(t.every((x) => !CERITA.test(x.kunci)) && !CERITA.test(D.PUSAT_POHON) && !CERITA.test(D.SUARA_POHON), "pohon: tanpa poin cerita, hanya pelajaran matematika");
   // Panduan pemilik, persis: A Masalah, B Penyelesaian, C Hasil.
   sama(t.filter((x) => x.kelompok === "masalah").map((x) => x.kunci), ["Berapa jumlahnya?", "Bagaimana menulisnya?", "Bagaimana membacanya?"], "pohon A. Masalah");
-  sama(t.filter((x) => x.kelompok === "metode").map((x) => x.kunci), ["Kelompokkan", "Hitung satu-satu", "Tuliskan", "Kosong = nol"], "pohon B. Penyelesaian");
+  sama(t.filter((x) => x.kelompok === "metode").slice(0, 4).map((x) => x.kunci), ["Kelompokkan", "Hitung satu-satu", "Tuliskan", "Kosong = nol"], "pohon B. Penyelesaian: empat langkah panduan pemilik");
+  // Semua metode Story masuk ke cabang: metode kurikulum (Kelompokkan, Hitung, Tuliskan), One-to-One (Hitung satu-satu), Cardinality, Subitizing.
+  sama(t.filter((x) => x.kelompok === "metode").slice(4).map((x) => x.kunci), ["Angka terakhir = banyaknya", "Lihat sekilas"], "pohon B. Penyelesaian: Cardinality dan Subitizing");
   sama(t.filter((x) => x.kelompok === "hasil").map((x) => x.kunci), ["Bisa menghitung", "Bisa menulis", "Bisa membaca"], "pohon C. Hasil");
   sama(Object.values(D.KELOMPOK_POHON).map((k) => k.nama), ["Masalah", "Penyelesaian", "Hasil"], "pohon: nama kelompok A, B, C");
   // Cocok per warna: label boleh di tempat sewarna mana pun, dan tidak di tempat warna lain.

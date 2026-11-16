@@ -16,10 +16,12 @@ const LETAK: Record<string, { x: number; y: number; w: number }> = {
   "buah-1": { x: 18, y: 8, w: 31 },
   "buah-2": { x: 50, y: 8, w: 31 },
   "buah-3": { x: 82, y: 8, w: 31 },
-  "daun-1": { x: 21, y: 27, w: 39 },
-  "daun-2": { x: 79, y: 27, w: 39 },
-  "daun-3": { x: 21, y: 41, w: 39 },
-  "daun-4": { x: 79, y: 41, w: 39 },
+  "daun-1": { x: 21, y: 24, w: 39 },
+  "daun-2": { x: 79, y: 24, w: 39 },
+  "daun-3": { x: 21, y: 36, w: 39 },
+  "daun-4": { x: 79, y: 36, w: 39 },
+  "daun-5": { x: 21, y: 48, w: 39 },
+  "daun-6": { x: 79, y: 48, w: 39 },
   "akar-1": { x: 18, y: 88, w: 31 },
   "akar-2": { x: 50, y: 88, w: 31 },
   "akar-3": { x: 82, y: 88, w: 31 },
@@ -96,7 +98,7 @@ export default function PetaPohon({ speakGuru, onLanjut, teksLanjut }: { speakGu
           <ellipse cx="50" cy="34" rx="49" ry="31" fill="#86EFAC" opacity="0.45" />
           <rect x="0" y="72" width="100" height="48" fill="#E7C9A0" opacity="0.6" />
           <line x1="0" y1="72" x2="100" y2="72" stroke="#92400E" strokeWidth="0.8" />
-          {[32, 49].map((y) => (
+          {[29, 43, 58].map((y) => (
             <g key={y} stroke="#92400E" strokeWidth="2" strokeLinecap="round" fill="none">
               <path d={`M50 ${y + 6} Q42 ${y + 2} 38 ${y}`} />
               <path d={`M50 ${y + 6} Q58 ${y + 2} 62 ${y}`} />

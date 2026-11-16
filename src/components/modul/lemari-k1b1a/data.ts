@@ -40,7 +40,8 @@ export const NAMA: Record<string, string> = {
 
 /* ------------------------------ Mind-map: pohon menghitung (hanya poin pelajaran matematika) ------------------------------ */
 /**
- * Pohon belajar menurut panduan pemilik: akar = Masalah (tiga pertanyaan), daun = Penyelesaian (empat langkah), buah = Hasil (tiga kemampuan).
+ * Pohon belajar menurut panduan pemilik: akar = Masalah (tiga pertanyaan), daun = Penyelesaian (empat langkah panduan pemilik + dua metode luar
+ * di Story: Angka terakhir = banyaknya (Cardinality) dan Lihat sekilas (Subitizing), jadi keempat metode Story masuk ke cabang), buah = Hasil (tiga kemampuan).
  * Tanpa poin cerita (mainan, lemari, tokoh). Tiap kelompok punya warna sendiri; label dan tempat kosong memakai warna yang sama,
  * dan label sekelompok boleh ditempel di tempat kosong mana pun yang sewarna.
  */
@@ -59,6 +60,8 @@ export const TEMPAT_POHON: Tempat[] = [
   tp("daun-2", "metode", "Hitung satu-satu"),
   tp("daun-3", "metode", "Tuliskan"),
   tp("daun-4", "metode", "Kosong = nol"),
+  tp("daun-5", "metode", "Angka terakhir = banyaknya"),
+  tp("daun-6", "metode", "Lihat sekilas"),
   tp("buah-1", "hasil", "Bisa menghitung"),
   tp("buah-2", "hasil", "Bisa menulis"),
   tp("buah-3", "hasil", "Bisa membaca"),
