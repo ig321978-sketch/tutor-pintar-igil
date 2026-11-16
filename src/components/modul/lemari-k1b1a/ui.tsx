@@ -16,7 +16,14 @@ export const TOMBOL_UTAMA =
   "min-h-[52px] rounded-full border-4 border-[#FFE566] bg-[#1C01A5] px-6 text-sm font-black text-[#FFE566] shadow-[0_4px_0_rgba(28,1,165,0.35)] disabled:opacity-40";
 
 /** Keadaan tempel label: label dipilih, label yang sudah menempel di tempat, goyang dan pesan saat salah. */
-export function useTempel(tempat: readonly Tempat[], benih: number, petunjuk: (label: Label) => string, bicara: (t: string) => void) {
+export function useTempel(
+  tempat: readonly Tempat[],
+  benih: number,
+  petunjuk: (label: Label) => string,
+  bicara: (t: string) => void,
+  /** Aturan cocok. Bawaan: teks label sama persis dengan kunci tempat. Pohon memakai cocok per warna (kelompok). */
+  cocokan: (t: Tempat, l: Label) => boolean = cocok,
+) {
   const label = useMemo(() => labelDari(tempat, benih), [tempat, benih]);
   const [pilih, setPilih] = useState<string | null>(null);
   const [isi, setIsi] = useState<Record<string, string>>({});
@@ -38,7 +45,7 @@ export function useTempel(tempat: readonly Tempat[], benih: number, petunjuk: (l
       setPesan("Ketuk satu label dulu, lalu ketuk tempatnya.");
       return;
     }
-    if (cocok(t, l)) {
+    if (cocokan(t, l)) {
       setIsi((s) => ({ ...s, [t.id]: l.id }));
       setPilih(null);
       setPesan("Cocok!");
@@ -55,7 +62,22 @@ export function useTempel(tempat: readonly Tempat[], benih: number, petunjuk: (l
 }
 
 /** Baki label yang belum menempel. */
-export function BakiLabel({ sisa, pilih, onPilih, warna = "#FFF7CC" }: { sisa: Label[]; pilih: string | null; onPilih: (l: Label) => void; warna?: string }) {
+export type GayaLabel = { isi: string; garis: string; ikon?: string };
+
+export function BakiLabel({
+  sisa,
+  pilih,
+  onPilih,
+  warna = "#FFF7CC",
+  gaya,
+}: {
+  sisa: Label[];
+  pilih: string | null;
+  onPilih: (l: Label) => void;
+  warna?: string;
+  /** Warna dan ikon tiap label (mis. menurut kelompok), supaya cocok dengan warna tempat kosong. */
+  gaya?: (l: Label) => GayaLabel | undefined;
+}) {
   if (sisa.length === 0) return null;
   return (
     <div className="flex flex-wrap justify-center gap-2 rounded-2xl border-4 border-dashed border-[#1C01A5]/40 p-2" style={{ background: warna }} role="group" aria-label="Label yang belum ditempel">
@@ -65,8 +87,10 @@ export function BakiLabel({ sisa, pilih, onPilih, warna = "#FFF7CC" }: { sisa: L
           type="button"
           onClick={() => onPilih(l)}
           aria-pressed={pilih === l.id}
-          className={`min-h-[44px] rounded-xl border-4 px-3 text-sm font-black text-[#1C01A5] shadow-[0_3px_0_rgba(28,1,165,0.25)] ${pilih === l.id ? "border-[#1C01A5] bg-[#FFE566] -translate-y-1" : "border-[#1C01A5]/50 bg-white"}`}
+          style={gaya?.(l) ? { background: gaya(l)!.isi, borderColor: gaya(l)!.garis } : undefined}
+          className={`min-h-[44px] rounded-xl border-4 px-3 text-sm font-black text-[#1C01A5] shadow-[0_3px_0_rgba(28,1,165,0.25)] ${gaya?.(l) ? "" : pilih === l.id ? "border-[#1C01A5] bg-[#FFE566]" : "border-[#1C01A5]/50 bg-white"} ${pilih === l.id ? "-translate-y-1 ring-4 ring-[#1C01A5]" : ""}`}
         >
+          {gaya?.(l)?.ikon ? <span aria-hidden="true">{gaya(l)!.ikon} </span> : null}
           {l.teks}
         </button>
       ))}

@@ -38,29 +38,32 @@ export const NAMA: Record<string, string> = {
   bingkai: "bingkai",
 };
 
-/* ------------------------------ Mind-map: pohon masalah, metode, hasil ------------------------------ */
-export const PUSAT_POHON = "Merapikan lemari mainan";
-export const KELOMPOK_POHON: Record<string, { nama: string; letak: string; petunjuk: string }> = {
-  masalah: { nama: "Masalah", letak: "akar", petunjuk: "Label ini masalahnya. Tempelkan di akar pohon." },
-  metode: { nama: "Cara", letak: "cabang", petunjuk: "Label ini cara menyelesaikannya. Tempelkan di daun cabang." },
-  hasil: { nama: "Hasil", letak: "buah", petunjuk: "Label ini hasilnya. Tempelkan di buah." },
+/* ------------------------------ Mind-map: pohon menghitung (hanya poin pelajaran matematika) ------------------------------ */
+/**
+ * Pohon belajar: akar = masalah matematikanya, daun cabang = cara menghitung (empat metode di Story: metode kurikulum dan tiga
+ * metode luar), buah = hasil yang diharapkan. Tanpa poin cerita (mainan, lemari, tokoh). Tiap kelompok punya warna sendiri;
+ * label dan tempat kosong memakai warna yang sama, dan label sekelompok boleh ditempel di cabang kosong berwarna itu.
+ */
+export const PUSAT_POHON = "Menghitung benda";
+export const KELOMPOK_POHON: Record<string, { nama: string; letak: string; ikon: string; petunjuk: string }> = {
+  masalah: { nama: "Masalah", letak: "akar", ikon: "\u{1F331}", petunjuk: "Warna label ini cokelat. Tempelkan di akar yang cokelat." },
+  metode: { nama: "Cara", letak: "daun", ikon: "\u{1F343}", petunjuk: "Warna label ini hijau. Tempelkan di daun yang hijau." },
+  hasil: { nama: "Hasil", letak: "buah", ikon: "\u{1F34E}", petunjuk: "Warna label ini merah. Tempelkan di buah yang merah." },
 };
 const tp = (id: string, kelompok: string, kunci: string): Tempat => ({ id, kelompok, kunci });
 export const TEMPAT_POHON: Tempat[] = [
-  tp("akar-1", "masalah", "Mainan berserakan"),
-  tp("akar-2", "masalah", "Igil bingung menghitung"),
-  tp("daun-1", "metode", "Pisahkan yang sejenis"),
+  tp("akar-1", "masalah", "Berapa banyaknya?"),
+  tp("akar-2", "masalah", "Angkanya ditulis apa?"),
+  tp("daun-1", "metode", "Hitung, baca, tulis"),
   tp("daun-2", "metode", "Tunjuk satu, sebut satu"),
   tp("daun-3", "metode", "Angka terakhir = banyaknya"),
-  tp("daun-4", "metode", "Lihat sekilas yang sedikit"),
-  tp("daun-5", "metode", "Laci sepuluh kotak"),
-  tp("daun-6", "metode", "Catat dalam tabel"),
-  tp("buah-1", "hasil", "Lemari jadi rapi"),
-  tp("buah-2", "hasil", "Tahu banyak tiap mainan"),
-  tp("buah-3", "hasil", "Bisa baca dan tulis angka"),
+  tp("daun-4", "metode", "Lihat sekilas"),
+  tp("buah-1", "hasil", "Tahu banyaknya benda"),
+  tp("buah-2", "hasil", "Bisa baca dan tulis angka"),
+  tp("buah-3", "hasil", "Tahu arti nol"),
 ];
 export const SUARA_POHON =
-  "Ini pohon cerita Igil. Akarnya masalah, daun cabangnya cara, buahnya hasil. Ketuk label, lalu ketuk tempat yang cocok.";
+  "Ini pohon belajar menghitung. Setiap label punya warna. Ketuk label, lalu ketuk tempat kosong yang warnanya sama.";
 
 /* ------------------------------ Infografis: rak tabel data ------------------------------ */
 export const KOLOM_RAK = ["Cara menghitung", "Angka", "Dibaca"] as const;

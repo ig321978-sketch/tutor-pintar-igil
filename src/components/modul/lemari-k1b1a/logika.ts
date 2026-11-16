@@ -17,6 +17,12 @@ export type Label = { id: string; teks: string };
 /** Benarkah label ini cocok untuk tempat ini? Cocok bila teksnya sama dengan kunci tempat. */
 export const cocok = (tempat: Tempat, label: Label): boolean => tempat.kunci === label.teks;
 
+/** Kelompok (warna) sebuah label: kelompok tempat yang kuncinya sama dengan teks label. undefined bila tidak ada. */
+export const kelompokLabel = (semua: readonly Tempat[], label: Label): string | undefined => semua.find((t) => t.kunci === label.teks)?.kelompok;
+
+/** Cocok per warna: label boleh ditempel di tempat kosong mana pun yang sekelompok (sewarna) dengannya. */
+export const cocokKelompok = (semua: readonly Tempat[], tempat: Tempat, label: Label): boolean => kelompokLabel(semua, label) === tempat.kelompok;
+
 /** Petunjuk saat label salah: sebut kelompok tempat yang benar untuk label itu (bila ada), tanpa membocorkan tempatnya. */
 export function petunjukSalah(semua: readonly Tempat[], label: Label, kelompokBenar: Record<string, string>): string {
   const t = semua.find((x) => x.kunci === label.teks);
