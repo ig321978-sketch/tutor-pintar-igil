@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, angka, bagianKe, emo, judul, kartu, panah, papan, susunBagian, teks, KOMPOSISI_CONTOH, KOMPOSISI_LATIHAN } from "./k4b1d-gambar";
 import { bersih, idx, k, sorotkan, tambah, ubah } from "./k4b1d-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka sub-bab D, pengalaman belajar, apersepsi (Panduan Guru hlm. 45) ------------------------------ */
 const SUARA_P1 = "Subbab D membahas komposisi dan dekomposisi bilangan cacah sampai sepuluh ribu. Di Buku Siswa, bagian ini dimulai dengan satu bilangan yang terdiri atas empat angka.";
@@ -14,7 +13,18 @@ export const ADEGAN_PEMBUKA_D: AdeganStory = {
   judul: "Subbab D: pengalaman belajar, apersepsi, pertanyaan pemantik",
   sumber: "Panduan Guru hlm. 45",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b1d-materi-1.ts:1"),
+  kutipan: [
+    "D. Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000",
+    "Pengalaman Belajar",
+    "Setelah mempelajari sub bab ini, diharapkan peserta didik mampu memahami komposisi dan dekomposisi bilangan cacah sampai 10.000 dengan baik dan benar.",
+    "Apersepsi",
+    "Nilai tempat merupakan satu-satunya cara yang tepat untuk diterapkan pada komposisi dan dekomposisi bilangan cacah sampai 10.000",
+    "karena peserta didik sudah mengenal nilai tempat setiap angka pada sebarang bilangan cacah 4 angka.",
+    "papan flanel masih layak digunakan sebagai medianya.",
+    "Pertanyaan Esensi/Pemantik",
+    "1. Apa yang dimaksud dengan komposisi bilangan?",
+    "2. Bagaimana untuk dekomposisi suatu bilangan?",
+  ],
   ketukan: [
     k(
       SUARA_P1,
@@ -59,7 +69,16 @@ export const ADEGAN_KOMPOSISI_AMATI: AdeganStory = {
   judul: "Komposisi: mari mengamati",
   sumber: "Materi: komposisi, mengamati nilai tempat",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1d-materi-1.ts:2"),
+  kutipan: [
+    "Komposisi bilangan cacah sampai 10.000",
+    "Ayo Mengamati",
+    "Kalian sudah mengenal nilai tempat dari suatu bilangan.",
+    "Diberikan suatu bilangan yang terdiri atas 4 angka yang tersusun:",
+    "angka 6 menempati nilai tempat ribuan, angka 3 menempati nilai tempat ratusan, angka 4 menempati nilai tempat puluhan, angka 8 menempati nilai tempat satuan.",
+    "Bilangan berapakah yang terbentuk?",
+    "Guru memperjelas konsep komposisi dengan diawali nilai tempat.",
+    "Komposisi bilangan berarti menyusun bilangan, dapat menggunakan nilai tempat.",
+  ],
   ketukan: [
     k(
       SUARA_A1,
@@ -97,7 +116,14 @@ export const ADEGAN_KOMPOSISI_NILAI: AdeganStory = {
   judul: "Komposisi: nilai tiap angka dan bilangan 6.348",
   sumber: "Materi: nilai tiap angka dan bilangan",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b1d-materi-1.ts:3"),
+  kutipan: [
+    "Angka 6 menempati tempat ribuan, nilainya 6.000",
+    "Angka 3 menempati tempat ratusan, nilainya 300",
+    "Angka 4 menempati tempat puluhan, nilainya 40",
+    "Angka 8 menempati tempat satuan, nilainya 8",
+    "Jadi, bilangan yang terbentuk adalah",
+    "6.000 + 300 + 40 + 8 = 6.348",
+  ],
   ketukan: [
     k(
       SUARA_N1,
@@ -153,7 +179,14 @@ export const ADEGAN_KOMPOSISI_BERLATIH: AdeganStory = {
   judul: "Komposisi: latihan",
   sumber: "Materi: latihan komposisi",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k4b1d-materi-1.ts:4"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Isilah titik-titik dibawah ini.",
+    "Ribuan Ratusan Puluhan Satuan",
+    "6.482",
+    "6.040",
+    "4.530",
+  ],
   ketukan: [
     k(
       SUARA_L1,

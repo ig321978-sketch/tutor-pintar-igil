@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, diagramMendatar, diagramTegak, emo, judul, kartu, piktogram, tabel, teks } from "./k4b6b-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k4b6b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Uji Kompetensi nomor 2: transportasi ke sekolah (Buku Siswa hlm. 192–193; Panduan Guru hlm. 229, 230) ------------------------------ */
 const TRANSPOR: [string, number][] = [
@@ -16,7 +15,19 @@ export const ADEGAN_UK_2: AdeganStory = {
   judul: "Uji 2: alat transportasi siswa kelas IV",
   sumber: "Materi: membaca piktogram",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b6b-materi-3.ts:1"),
+  kutipan: [
+    "Diberikan piktogram untuk data transportasi yang digunakan siswa kelas IV ke sekolah.",
+    "menyatakan 1 siswa",
+    "Alat transportasi apakah yang paling banyak digunakan siswa untuk berangkat ke sekolah?",
+    "Berapa siswa yang berangkat ke sekolah menggunakan becak/ kendaraan lain?",
+    "Alat transportasi apakah yang paling sedikit digunakan siswa untuk berangkat ke sekolah?",
+    "Berapa siswa yang menggunakan alat transportasi mobil dan jalan kaki untuk berangkat ke sekolah?",
+    "Berapa jumlah siswa kelas IV?",
+    "sepeda motor",
+    "Siswa yang berangkat ke sekolah menggunakan becak adalah 5 siswa",
+    "3 + 8 = 11 siswa",
+    "3 + 14 + 5 + 8 = 30 siswa",
+  ],
   ketukan: [
     k(
       "Uji dua: piktogram alat transportasi siswa kelas empat. Satu gambar menyatakan satu siswa. Mobil tiga, sepeda motor empat belas, becak atau kendaraan lain lima, jalan kaki delapan.",
@@ -66,7 +77,19 @@ export const ADEGAN_UK_3: AdeganStory = {
   judul: "Uji 3: lomba PORSENI tingkat kabupaten",
   sumber: "Materi: membaca diagram batang",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b6b-materi-3.ts:2"),
+  kutipan: [
+    "Diberikan diagram batang untuk data siswa yang mengikuti lomba PORSENI tingkat kabupaten.",
+    "Lomba apakah yang paling banyak diikuti siswa?",
+    "Lomba apakah yang diikuti 3 siswa kelas IV?",
+    "Berapa banyak siswa yang mengikuti lomba catur dan renang?",
+    "Lomba apakah yang paling sedikit diikuti siswa?",
+    "Berapa banyak siswa yang mengikuti lomba puisi?",
+    "Lomba yang paling banyak diikuti siswa adalah menyanyi",
+    "Lomba yang diikuti 3 siswa kelas IV adalah lari",
+    "5 + 2 = 7 siswa",
+    "Lomba yang paling sedikit diikuti siswa adalah renang",
+    "banyak siswa yang mengikuti lomba puisi adalah 7 siswa",
+  ],
   ketukan: [
     k(
       "Uji tiga: diagram batang mendatar lomba PORSENI tingkat kabupaten. Menyanyi delapan, renang dua, bulu tangkis lima, puisi tujuh, lari tiga, dan catur lima.",
@@ -140,7 +163,20 @@ export const ADEGAN_PENGAYAAN_12: AdeganStory = {
   judul: "Tantangan 1 dan 2: siswa SD Permata dan suku bangsa",
   sumber: "Materi: membaca dan menghitung data",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b6b-materi-3.ts:3"),
+  kutipan: [
+    "Soal-soal Pengayaan",
+    "Diagram batang berikut menunjukan banyak siswa di SD Permata.",
+    "Apabila jumlah seluruh siswa di SD Permata adalah 346 siswa.",
+    "Banyak siswa kelas 2 SD Permata",
+    "Kelas dengan jumlah siswa paling sedikit",
+    "Kelas dengan jumlah siswa paling banyak",
+    "365 – (57 + 58 + 56 + 62 + 59) = 54 siswa",
+    "Kelas 2, yaitu 54 siswa",
+    "Kelas 5, yaitu 62 siswa",
+    "Data suku bangsa siswa kelas 4 SD Bina Pendidikan sebagai berikut:",
+    "gambarkan diagram batang dan tentukan berapa banyak siswa kelas 4 SD Bina Pendidikan!",
+    "10 + 7 + 7 = 24 siswa",
+  ],
   ketukan: [
     k(
       "Tantangan satu: siswa SD Permata. Kelas satu lima puluh tujuh, kelas tiga lima puluh delapan, kelas empat lima puluh enam, kelas lima enam puluh dua, kelas enam lima puluh sembilan. Kelas dua tidak ada batangnya.",
@@ -244,7 +280,25 @@ export const ADEGAN_PENGAYAAN_345: AdeganStory = {
   judul: "Tantangan 3, 4, dan 5: komik, tangkai bunga, dan panen apel",
   sumber: "Materi: membaca dan menghitung data",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k4b6b-materi-3.ts:4"),
+  kutipan: [
+    "Diagram berikut menunjukkan data peminjaman buku di Perpustakaan Daerah.",
+    "Jumlah hari yang didata banyak peminjamnya",
+    "Jumlah buku yang dipinjam dalam 5 hari pertama",
+    "Hari dengan peminjaman buku terbanyak",
+    "12 + 9 + 17 + 15 + 11 = 64 buku",
+    "Hari ke-3",
+    ": Mewakili 5 tangkai bunga",
+    ": Mewakili 10 tangkai bunga",
+    "lengkapi tabel berikut",
+    "Bunga Melati 20",
+    "Perhatikan diagram gambar berikut",
+    "Data Hasil Panen Apel",
+    ": Mewakili 15 kg",
+    ": Mewakili 10 kg",
+    "tentukan hasil panen dalam setiap bulan dan buatlah diagram batang berdasarkan data tersebut",
+    "Januari 65 kg",
+    "Februari 105 kg",
+  ],
   ketukan: [
     k(
       "Tantangan tiga: peminjaman komik tujuh hari. Dua belas, sembilan, tujuh belas, lima belas, sebelas, sembilan, dan tiga belas komik. Jumlah hari yang didata ada tujuh.",
@@ -302,7 +356,24 @@ export const ADEGAN_PENUTUP_B: AdeganStory = {
   judul: "Refleksi, remedial, pengayaan, dan interaksi dengan orang tua",
   sumber: "Buku Siswa hlm. 194; Panduan Guru hlm. 231, 238",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b6b-materi-3.ts:5"),
+  kutipan: [
+    "Dalam bab ini, kalian sudah mempelajari piktogram dan diagram batang.",
+    "Kalian juga telah dapat menentukan data paling banyak dan paling sedikit",
+    "Jika masih ada bagian sulit, diskusikanlah dengan teman kalian.",
+    "Perbanyaklah mengerjakan latihan soal.",
+    "Manfaat lain apa yang kalian dapatkan setelah mempelajari bab ini?",
+    "guru dapat memperhatikan peserta didik yang pemahaman materi masih kurang sehingga dilakukan remedial",
+    "dilanjutkan dengan pengayaan",
+    "mempermudah dalam membaca data yang disajikan dalam piktogram atau diagram batang",
+    "Remedial yang dapat dilakukan dengan memberikan contoh yang lain.",
+    "Contoh lain dapat diperoleh melalui tugas rumah berupa data yang ada di sekitar rumah masing-masing peserta didik.",
+    "piktogram dengan satu gambar menyatakan lebih dari satu",
+    "menggunakan data dengan skala puluhan",
+    "Interaksi dengan Orang Tua",
+    "meminta orang tua peserta didik untuk mengumpulkan data tentang sesuatu yang terdapat di sekitar rumah",
+    "data tanaman di halaman rumah, data furnitune dalam rumah, data alat elektronik dalam rumah atau data ruangan dalam rumah",
+    "menganalisis dan menginterpretasikan hasil penyajian data baik piktogram ataupun diagram batang",
+  ],
   ketukan: [
     k(
       "Refleksi: kalian sudah belajar piktogram dan diagram batang, dan dapat menentukan data paling banyak dan paling sedikit. Bagian yang sulit didiskusikan dengan teman, guru, atau orang tua. Perbanyak latihan soal.",

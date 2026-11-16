@@ -13,7 +13,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana kita memahami keliling bangun datar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari cerita Upe.",
+      "Bagaimana kita memahami keliling bangun datar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari cerita Asep.",
       tambah(0, judul("Empat metode dari luar")),
       tambah("keliling", ...lapangan("pb", 30, 56, 140, 70), jalur("pbr", 30, 56, "M0 70 L140 70 L140 0 L0 0 L0 70", "none", W.biru, { tebal: 2.4, gambar: true })),
       tambah("berbagai", emo("gl", 232, 96, "🌍", 44)),
@@ -71,7 +71,7 @@ export const ADEGAN_LUAR_PATH: AdeganStory = {
       tambah("Berhenti", ...kartu("l3", 14, 120, 272, 32, W.krem, ["3. berhenti di titik awal, ukur jalurnya"], 9.4)),
     ),
     k(
-      "Jalur harus menyusuri tepi luar, bukan memotong lewat tengah. Rute lewat tengah, seperti rute Halim, tidak menghasilkan keliling.",
+      "Jalur harus menyusuri tepi luar, bukan memotong lewat tengah. Rute lewat tengah, seperti rute Yohana, tidak menghasilkan keliling.",
       bersih(0),
       tambah(0, judul("Tepi luar, bukan tengah")),
       tambah("tepi", persegiPanjang("pt", 80, 44, 140, 70, W.krem), jalur("ptr", 80, 44, "M0 70 L140 70 L140 0 L0 0 L0 70", "none", W.hijau, { tebal: 3, gambar: true }), emo("ok", 150, 150, "✅", 22), teks("okt", 150, 170, "menyusuri tepi", 8.8, W.hijau)),
@@ -104,11 +104,11 @@ export const ADEGAN_LUAR_PATH_TERAPAN: AdeganStory = {
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapkan pada lapangan sepak bola. Upe mulai dari titik start di pojok kiri bawah. Ukurannya seratus meter kali lima puluh meter.",
+      "Terapkan pada lapangan sepak bola. Asep mulai dari titik start di pojok kiri bawah. Ukurannya seratus meter kali lima puluh meter.",
       tambah(0, judul("Menyusuri lapangan")),
       tambah("lapangan", ...lapangan("lp", FX, FY), ...titikStart("lp", FX, FY)),
       tambah("Ukurannya", ...ukuranLapangan("lp", FX, FY)),
-      tambah("Upe", emo("rn", FX + 10, FY + LAP.ph - 8, "🏃", 16), hitung("jalur: 0 m")),
+      tambah("Asep", emo("rn", FX + 10, FY + LAP.ph - 8, "🏃", 16), hitung("jalur: 0 m")),
     ),
     k(
       "Sisi bawah seratus meter. Hitungan jalur sekarang seratus.",
@@ -123,7 +123,7 @@ export const ADEGAN_LUAR_PATH_TERAPAN: AdeganStory = {
       ubah("dua", { id: "ct", isi: "150 + 100 = 250" }),
     ),
     k(
-      "Sisi kiri lima puluh meter, hitungan tiga ratus. Upe kembali ke titik start. Panjang jalur satu putaran, tiga ratus meter, adalah keliling lapangan.",
+      "Sisi kiri lima puluh meter, hitungan tiga ratus. Asep kembali ke titik start. Panjang jalur satu putaran, tiga ratus meter, adalah keliling lapangan.",
       tambah("kiri", sisi(3)),
       ubah("hitungan", { id: "ct", isi: "250 + 50 = 300" }),
       ubah("kembali", { id: "rn", x: FX + 10, y: FY + LAP.ph - 8 }),

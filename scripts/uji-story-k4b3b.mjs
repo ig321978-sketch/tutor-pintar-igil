@@ -5,7 +5,6 @@
 // kisi persegi satuan Pengayaan 1-2, tabel hasil panen/televisi/Latihan 5, hitungan mandiri kunci jawaban (beda, suku ke-n, tabel, rubrik),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b3b.mjs   (PEMICU=1 mencetak kata pemicu tiap aksi untuk ditinjau)
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -658,7 +657,7 @@ const semuaDeretAkhir = []; // untuk pencocokan terhadap kunci: { adegan, nilai[
     // kunci yang dipakai video benar-benar ada di Panduan Guru
     const bgSaja = bersih(bagian[1]);
     for (const s of ["55 (43+12)", "72 (57+15)", "52 (63-11)", "35 (49-14)", "58 (49+9)", "adalah 21 buah", "adalah 32 kursi", "adalah 38 kursi", "adalah 40 buah", "adalah 28 buah", "adalah 6 buah", "adalah 46", "30(24+6)", "10(16-6)", "pola gambar adalah 9", "pola gambar adalah 8", "pola gambar adalah 4"]) cek(bgSaja.includes(bersih(s)), `Panduan Guru memuat kunci "${s}"`);
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
     console.log(`Kutipan buku diperiksa: ${n}`);
   }
 }
@@ -679,7 +678,7 @@ const semuaDeretAkhir = []; // untuk pencocokan terhadap kunci: { adegan, nilai[
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b3b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b3b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b3b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b3b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

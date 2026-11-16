@@ -33,9 +33,9 @@ import {
 
 const CATATAN = [
   "Tambah dus sampai sepuluh. Apa yang terjadi pada dus dan peti?",
-  "Rakit 5.007 dan nyalakan Bacaan. Tempat mana yang tidak dibaca?",
-  "Rakit 1.308. Mengapa dibaca seribu, bukan satu ribu?",
-  "Di Tulis, susun kartu untuk skor tertinggi gim, lalu tekan Periksa.",
+  "Rakit 7.003 dan nyalakan Bacaan. Tempat mana yang tidak dibaca?",
+  "Rakit 1.025. Mengapa dibaca seribu, bukan satu ribu?",
+  "Di Tulis, susun kartu untuk tinggi Gunung Semeru, lalu tekan Periksa.",
 ];
 const NAMA_KEMASAN: Record<JenisKemasan, string> = { peti: "Peti", dus: "Dus", bungkus: "Bungkus", benda: "Benda" };
 const ISI_TEKS: Record<JenisKemasan, string> = { peti: "1.000", dus: "100", bungkus: "10", benda: "1" };

@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { BANGUN_AG, E_BARU, F_BARU, G_BARU, W, bangunDiKisi, emo, judul, kartu, kotak, panah, petakUtuhSebagian, poligon, sel, skala, teks } from "./k5b5a-gambar";
 import { bersih, k, tambah, ubah } from "./k5b5a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /** Luas bangun A sampai G menurut kunci Panduan Guru hlm. 195, 197, dan 198. */
 export const KUNCI_LUAS: Record<string, number> = { A: 9, B: 12, C: 15, D: 16, E: 9, F: 15, G: 9 };
@@ -19,7 +18,25 @@ export const ADEGAN_LATIHAN: AdeganStory = {
   judul: "Latihan: luas bangun pada kertas berpetak",
   sumber: "Materi: latihan kertas berpetak",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k5b5a-materi-3.ts:1"),
+  kutipan: [
+    "Eksplorasi 5.1E",
+    "Perhatikan bangun-bangun datar berikut. Hitunglah luas daerah",
+    "bangun-bangun datar tersebut dengan menggunakan kertas",
+    "berpetak.",
+    "Tampaknya mudah",
+    "untuk menghitung",
+    "bangun A, B, C, dan D. Semua",
+    "kotak satuannya utuh.",
+    "Luas daerah bangun A",
+    "adalah 9 satuan luas.",
+    "Luas daerah bangun B",
+    "adalah 12 satuan luas.",
+    "Luas daerah bangun C",
+    "adalah 15 satuan luas.",
+    "Luas daerah bangun D",
+    "adalah 16 satuan luas.",
+    "Guru menyiapkan duplikat bangun E, G, dan F beserta petak-petaknya",
+  ],
   ketukan: [
     k(
       "Sekarang Latihan satu. Hitunglah luas daerah bangun-bangun datar berikut dengan kertas berpetak. Ada tujuh bangun, dari A sampai G.",
@@ -54,21 +71,38 @@ export const ADEGAN_LATIHAN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 10. Cara Kira (hlm. 143; Panduan Guru hlm. 196 sampai 198) ------------------------------ */
+/* ------------------------------ 10. Cara Yohana (hlm. 143; Panduan Guru hlm. 196 sampai 198) ------------------------------ */
 const EX = 14;
 const EY = 56;
 const S = 16;
 
 export const ADEGAN_YOHANA: AdeganStory = {
   id: "cara-yohana",
-  judul: "Cara Kira: potong dan tempel",
-  sumber: "Materi: cara Kira",
+  judul: "Cara Yohana: potong dan tempel",
+  sumber: "Materi: cara Yohana",
   latar: "#FDF4FF",
-  kutipan: kutipanLokal("k5b5a-materi-3.ts:2"),
+  kutipan: [
+    "Aku punya ide. Coba perhatikan kotak-kotak",
+    "yang tidak utuh pada bangun E.",
+    "Kita bisa memotong satu bagian yang tidak",
+    "utuh dan menempelkannya ke bagian yang lain",
+    "sehingga menjadi kotak yang utuh.",
+    "Sekarang, kita bisa menghitung luas daerah",
+    "bangun E, yaitu 9 satuan luas.",
+    "Dengan menggunakan cara Yohana, tampaknya bentuk bangun E",
+    "Namun, apakah luas daerah bangun E berubah?",
+    "Apakah cara Yohana dapat diterapkan untuk menghitung luas",
+    "Cara Yohana dapat kita gunakan untuk memperkirakan luas",
+    "bagian kotak yang dihilangkan menggantikan",
+    "bangun datar yang dihitung tidak berubah.",
+    "Luas daerah bangun F adalah 15 satuan luas.",
+    "yaitu 8 persegi utuh dan 2 persegi setengahan.",
+    "Luas daerah bangun G adalah 9 satuan luas.",
+  ],
   ketukan: [
     k(
-      "Kira punya ide. Perhatikan kotak yang tidak utuh pada bangun E. Potong satu bagian yang tidak utuh, tempelkan ke bagian lain, sehingga menjadi kotak yang utuh.",
-      tambah(0, judul("Ide Kira: bangun E")),
+      "Yohana punya ide. Perhatikan kotak yang tidak utuh pada bangun E. Potong satu bagian yang tidak utuh, tempelkan ke bagian lain, sehingga menjadi kotak yang utuh.",
+      tambah(0, judul("Ide Yohana: bangun E")),
       tambah("perhatikan", ...bangunDiKisi("e1", EX, EY, BANGUN_AG.E.p, 6, 3, S, W.krem), teks("e1t", EX + 48, EY + 62, "bangun E", 9, W.biru)),
       tambah("tidak", ...petakUtuhSebagian(BANGUN_AG.E.p, 6, 3).sebagian.map(([c, r]) => sel(`ep-${r}-${c}`, EX + c * S, EY + r * S, S, W.jingga, { op: 0.55 }))),
       tambah("Potong", emo("gt", 120, 52, "✂", 20)),
@@ -98,9 +132,9 @@ export const ADEGAN_YOHANA: AdeganStory = {
       tambah("tetap", teks("tp", 150, 184, "luas tetap 9 satuan luas", 10, W.hijau)),
     ),
     k(
-      "Cara Kira juga bisa untuk bangun F. Potong bagian yang menonjol di sisi kanan, lalu tempelkan di sisi kiri. Jadinya lima kotak dan tiga baris, luasnya lima belas satuan luas.",
+      "Cara Yohana juga bisa untuk bangun F. Potong bagian yang menonjol di sisi kanan, lalu tempelkan di sisi kiri. Jadinya lima kotak dan tiga baris, luasnya lima belas satuan luas.",
       bersih(0),
-      tambah(0, judul("Cara Kira pada bangun F")),
+      tambah(0, judul("Cara Yohana pada bangun F")),
       tambah("bangun", ...bangunDiKisi("f1", 14, 50, BANGUN_AG.F.p, 6, 3, 16, W.merahMuda), teks("f1t", 62, 112, "bangun F", 9, W.biru)),
       tambah("Potong", poligon("fp", 14 + 5 * 16, 50, skala([[0, 0], [1, 0], [0, 3]], 16), W.pink, W.merah)),
       tambah("tempelkan", panah("far", 110, 74, -86, 0, W.biru, 2.4, { gambar: true }), poligon("fq", 14, 50, skala([[0, 0], [1, 0], [0, 3]], 16), W.pink, W.merah, { putus: true })),
@@ -110,7 +144,7 @@ export const ADEGAN_YOHANA: AdeganStory = {
     k(
       "Untuk bangun G, setelah diubah lebih mudah dihitung: delapan persegi utuh dan dua persegi setengahan. Kedua setengahan itu sama besar. Jadi delapan ditambah satu per dua ditambah satu per dua, hasilnya sembilan.",
       bersih(0),
-      tambah(0, judul("Cara Kira pada bangun G")),
+      tambah(0, judul("Cara Yohana pada bangun G")),
       tambah("Untuk", ...bangunDiKisi("g1", 14, 46, BANGUN_AG.G.p, 6, 3, 14, W.hijauMuda), teks("g1t", 56, 104, "bangun G", 9, W.biru)),
       tambah("diubah", panah("gar", 108, 66, 22, 0, W.biru, 2.4, { gambar: true }), ...bangunDiKisi("g2", 138, 46, G_BARU, 4, 3, 14, W.langit)),
       tambah("delapan", teks("g8", 166, 104, "8 utuh", 9, W.hijau)),
@@ -119,10 +153,10 @@ export const ADEGAN_YOHANA: AdeganStory = {
       tambah("hasilnya", teks("g9", 150, 180, "luas G = 9 satuan luas", 10, W.hijau)),
     ),
     k(
-      "Jadi, cara Kira memperkirakan luas bangun yang sisinya tidak tepat melalui kotak satuan utuh. Bagian yang dihilangkan menggantikan bagian yang kurang utuh, sehingga luasnya tidak berubah.",
+      "Jadi, cara Yohana memperkirakan luas bangun yang sisinya tidak tepat melalui kotak satuan utuh. Bagian yang dihilangkan menggantikan bagian yang kurang utuh, sehingga luasnya tidak berubah.",
       bersih(0),
-      tambah(0, judul("Kesimpulan cara Kira")),
-      tambah("Jadi,", ...kartu("ks", 20, 40, 260, 56, W.krem, ["cara Kira: pindahkan bagian,", "luas daerah tidak berubah"], 9.6)),
+      tambah(0, judul("Kesimpulan cara Yohana")),
+      tambah("Jadi,", ...kartu("ks", 20, 40, 260, 56, W.krem, ["cara Yohana: pindahkan bagian,", "luas daerah tidak berubah"], 9.6)),
       tambah("dihilangkan", ...bangunDiKisi("kz", 60, 112, BANGUN_AG.E.p, 6, 3, 10, W.jingga), panah("kza", 126, 128, 20, 0, W.biru, 2.2, { gambar: true })),
       tambah("menggantikan", ...bangunDiKisi("kw", 154, 112, E_BARU, 6, 3, 10, W.hijauMuda)),
       tambah("luasnya", teks("kt", 150, 176, "9 = 9", 14, W.hijau)),
@@ -138,7 +172,19 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   judul: "Hati-hati, Tantangan, dan Renungan",
   sumber: "Materi: pesan guru subbab ini",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b5a-materi-3.ts:3"),
+  kutipan: [
+    "Miskonsepsi yang dapat terjadi pada Subbab A adalah sebagai berikut.",
+    "penting bagi guru untuk menunjukkan bahwa bagian-bagian yang",
+    "dipindah/diubah tidak hilang.",
+    "mengingatkan peserta didik pada materi pecahan yang telah dipelajari",
+    "Diferensiasi",
+    "dirancang untuk mengembangkan",
+    "Setelah mempelajari materi terkait luas daerah bangun datar, isilah",
+    "Aku tahu saat harus menggunakan hitungan luas daerah bangun",
+    "Aku bisa menjelaskan pengertian luas daerah bangun datar.",
+    "Aku bisa membuat persegi-persegi satuan.",
+    "Aku bisa menghitung luas daerah bangun datar menggunakan",
+  ],
   ketukan: [
     k(
       "Hati-hati, ada kesalahan yang sering terjadi. Sebagian anak mengira bentuk awal dan bentuk hasil perubahan luasnya berbeda. Padahal bagian yang dipindah tidak hilang.",

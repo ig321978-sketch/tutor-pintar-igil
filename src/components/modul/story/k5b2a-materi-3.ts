@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, emo, kartu, kelipatan, kisiAngka, panah, pusatSel, teks, judul } from "./k5b2a-gambar";
 import { bersih, hapus, k, sebar, sorotkan, tambah, warnaiSel } from "./k5b2a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /** Tabel 1 sampai 50 (Buku Siswa hlm. 35): 10 kolom, 5 baris. */
 export const T50 = { x: 20, y: 38, cw: 26, ch: 22, kolom: 10, baris: 5 };
@@ -28,7 +27,15 @@ export const ADEGAN_TABEL: AdeganStory = {
   judul: "Tabel 1 sampai 50 dan arti bilangan kelipatan 3",
   sumber: "Materi: tabel 1 sampai 50 dan kelipatan 3",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b2a-materi-3.ts:1"),
+  kutipan: [
+    "Salin tabel berikut di buku tugasmu, lalu warnai semua bilangan kelipatan 3 di tabel tersebut.",
+    "Bilangan kelipatan 3 adalah bilangan bulat yang dikalikan dengan 3.",
+    "Contohnya: 1 x 3, 2 x 3, 3 x 3, 4 x 3, dan seterusnya.",
+    "0 yang diperoleh dari 0 x 3 bukan merupakan bilangan kelipatan 3.",
+    "Selanjutnya, ajak peserta didik untuk menemukan bilangan kelipatan 3 pada tabel yang disediakan di buku siswa.",
+    "Minta peserta didik untuk menyalin tabel tersebut, kemudian menandai bilangan-bilangan yang merupakan bilangan kelipatan 3.",
+    "Jika masih tersedia waktu, kegiatan dapat dilanjutkan untuk mengerjakan soal pada bagian Ayo Berlatih.",
+  ],
   ketukan: [
     k(
       "Setelah bermain, kita salin tabel satu sampai lima puluh di kertas tugas, lalu warnai semua bilangan kelipatan tiga.",
@@ -79,7 +86,14 @@ export const ADEGAN_TUJUH: AdeganStory = {
   judul: "Latihan 1: kelipatan 7 pada tabel 1 sampai 100",
   sumber: "Materi: Latihan 1, kelipatan 7",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b2a-materi-3.ts:2"),
+  kutipan: [
+    "Ayo Berlatih",
+    "1. Salin tabel berikut di buku tugas kalian, kemudian coba lingkarilah bilangan kelipatan yang sesuai dengan bilangan yang diminta.",
+    "Bilangan Kelipatan 7",
+    "Saat membahas bilangan kelipatan 7 dan 9 di kelas, arahkan peserta didik untuk memperhatikan tabel mereka.",
+    "Tanyakan kepada peserta didik tentang hal-hal apa saja yang dapat diamati dari tabel tersebut.",
+    "bilangan-bilangan kelipatan 7 seperti perpindahan kuda pada permainan catur, dll.",
+  ],
   ketukan: [
     k(
       "Latihan satu: salin tabel satu sampai seratus, lalu lingkari bilangan kelipatan yang diminta, yaitu kelipatan tujuh dan kelipatan sembilan.",
@@ -119,7 +133,13 @@ export const ADEGAN_SEMBILAN: AdeganStory = {
   judul: "Latihan 1: kelipatan 9 pada tabel 1 sampai 100",
   sumber: "Materi: Latihan 1, kelipatan 9",
   latar: "#FEF2F2",
-  kutipan: kutipanLokal("k5b2a-materi-3.ts:3"),
+  kutipan: [
+    "Bilangan Kelipatan 9",
+    "Saat membahas bilangan kelipatan 7 dan 9 di kelas, arahkan peserta didik untuk memperhatikan tabel mereka.",
+    "bilangan-bilangan kelipatan 9 membentuk formasi diagonal,",
+    "Coba gali kemungkinan-kemungkinan dan kreativitas lain yang mungkin muncul dari peserta didik.",
+    "Beberapa hal atau kemungkinan yang ditemukan oleh peserta didik adalah",
+  ],
   ketukan: [
     k(
       SUARA_S1,
@@ -164,7 +184,14 @@ export const ADEGAN_ENAM_DELAPAN: AdeganStory = {
   judul: "Latihan 2 dan 3: kelipatan 6 dan kelipatan 8",
   sumber: "Materi: Latihan 2 dan 3, kelipatan 6 dan 8",
   latar: "#ECFEFF",
-  kutipan: kutipanLokal("k5b2a-materi-3.ts:4"),
+  kutipan: [
+    "2. Coba kalian tuliskan minimal 5 bilangan kelipatan 6.",
+    "3. Coba kalian tuliskan minimal 5 bilangan kelipatan 8.",
+    "Bilangan kelipatan 6",
+    "Bilangan kelipatan 8",
+    "Catatan: untuk nomor 2",
+    "bilangan yang paling",
+  ],
   ketukan: [
     k(
       SUARA_E1,
@@ -202,7 +229,13 @@ export const ADEGAN_PENUTUP: AdeganStory = {
   judul: "Penutup: renungan, kesimpulan, dan pesan guru",
   sumber: "Materi: renungan dan kesimpulan",
   latar: "#FDF4FF",
-  kutipan: kutipanLokal("k5b2a-materi-3.ts:5"),
+  kutipan: [
+    "Aku dapat menentukan kelipatan suatu bilangan.",
+    "Berilah tanda centang",
+    "Tutup pembelajaran dengan meminta siswa melakukan releksi atas materi yang sudah mereka pelajari dengan menjawab pertanyaan releksi nomor 1 pada tabel releksi di buku siswa.",
+    "Permainan dilakukan selama 1 jam pelajaran.",
+    "Harapannya, peserta didik dapat menyebutkan kesimpulan tentang kelipatan suatu bilangan.",
+  ],
   ketukan: [
     k(
       "Sekarang waktunya merenung. Apakah kalian sudah dapat menentukan kelipatan suatu bilangan? Coba jelaskan dengan kata-katamu sendiri.",

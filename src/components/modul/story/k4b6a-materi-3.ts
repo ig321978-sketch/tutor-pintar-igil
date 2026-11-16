@@ -1,11 +1,10 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisId, barisPikto, emo, judul, jumlahBaris, kartu, kunciPikto, rangkaPikto, teks, type Pikto } from "./k4b6a-gambar";
 import { bersih, idx, k, redamkan, sorotkan, tambah } from "./k4b6a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Ayo Berlatih nomor 1: piktogram kelereng (Buku Siswa hlm. 185; Panduan Guru hlm. 222) ------------------------------ */
-/** Kelereng menurut Buku Siswa hlm. 185: Halim 5, Kira 6, Upe 2, Wei 8, Malosi 5, Igil 4. Jumlah 30. */
-export const NAMA_KELERENG = ["Halim", "Kira", "Upe", "Wei", "Malosi", "Igil"];
+/** Kelereng menurut Buku Siswa hlm. 185: Azizah 5, Karel 6, Putu 2, Slamet 8, Asep 5, Helen 4. Jumlah 30. */
+export const NAMA_KELERENG = ["Azizah", "Karel", "Putu", "Slamet", "Asep", "Helen"];
 export const KELERENG = [5, 6, 2, 8, 5, 4];
 export const PKL: Pikto = {
   id: "kl",
@@ -21,22 +20,41 @@ export const PKL: Pikto = {
   label: NAMA_KELERENG,
   kepala: ["Nama", "Banyak Kelereng"],
 };
-const SUARA_L1 = "Sekarang kita berlatih. Latihan satu: data banyak kelereng yang dimiliki Wei dan teman-temannya disajikan dalam tabel. Buatlah piktogram dengan gambar bulat yang menyatakan satu kelereng.";
-const SUARA_L2 = "Datanya: Halim lima, Kira enam, Upe dua, Wei delapan, Malosi lima, dan Igil empat.";
-const SUARA_L3 = "Jawabannya memakai titik bulat untuk satu kelereng. Halim lima titik, Kira enam, Upe dua, Wei delapan, Malosi lima, dan Igil empat titik.";
-const SUARA_L4 = "Cocokkan dengan tabel: jumlah titik tiap baris sama dengan angkanya. Paling banyak Wei, paling sedikit Upe. Jumlah semua kelereng: lima, enam, dua, delapan, lima, empat, sama dengan tiga puluh.";
+const SUARA_L1 = "Sekarang kita berlatih. Latihan satu: data banyak kelereng yang dimiliki Slamet dan teman-temannya disajikan dalam tabel. Buatlah piktogram dengan gambar bulat yang menyatakan satu kelereng.";
+const SUARA_L2 = "Datanya: Azizah lima, Karel enam, Putu dua, Slamet delapan, Asep lima, dan Helen empat.";
+const SUARA_L3 = "Jawabannya memakai titik bulat untuk satu kelereng. Azizah lima titik, Karel enam, Putu dua, Slamet delapan, Asep lima, dan Helen empat titik.";
+const SUARA_L4 = "Cocokkan dengan tabel: jumlah titik tiap baris sama dengan angkanya. Paling banyak Slamet, paling sedikit Putu. Jumlah semua kelereng: lima, enam, dua, delapan, lima, empat, sama dengan tiga puluh.";
 
 export const ADEGAN_BERLATIH_1: AdeganStory = {
   id: "berlatih-satu",
   judul: "Latihan 1: piktogram kelereng",
   sumber: "Materi: piktogram kelereng",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k4b6a-materi-3.ts:1"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Jawablah pertanyaan berikut dengan benar dan salinlah jawaban kalian pada",
+    "buku tulis.",
+    "1. Perhatikan data banyak kelereng yang dimiliki Slamet dan teman-temannya!",
+    "Azizah",
+    "Karel",
+    "Putu",
+    "Slamet",
+    "Asep",
+    "Helen",
+    "Buatlah piktogram dengan menggunakan gambar",
+    "yang menyatakan",
+    "1 kelereng!",
+    "Buatlah piktogram dengan menggunakan gambar • yang menyatakan 1",
+    "kelereng!",
+    "Jawab:",
+    "Azizah • • • • •",
+    "Slamet • • • • • • • •",
+  ],
   ketukan: [
     k(
       SUARA_L1,
       tambah(0, judul("Latihan 1")),
-      tambah("Sekarang", ...kartu("q1", 20, 34, 260, 40, W.krem, ["Data banyak kelereng Wei", "dan teman-temannya"], 9.2)),
+      tambah("Sekarang", ...kartu("q1", 20, 34, 260, 40, W.krem, ["Data banyak kelereng Slamet", "dan teman-temannya"], 9.2)),
       tambah("Buatlah", ...kartu("q2", 20, 86, 260, 40, W.hijauMuda, ["Buat piktogram dari data itu"], 9.4)),
       tambah("bulat", emo("q3", 90, 160, "🔵", 36)),
       tambah("satu@2", teks("q4", 190, 166, "= 1 kelereng", 11, W.merah)),
@@ -58,9 +76,9 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
     k(
       SUARA_L4,
       ...KELERENG.map((n, i) => tambah(idx(SUARA_L4, ["lima", "enam", "dua", "delapan", "lima", "empat"][i], i === 4 ? 2 : 1), jumlahBaris(PKL, i, n))),
-      sorotkan("Wei,", ...barisId(PKL, 3, 8)),
-      redamkan("Upe.", ...barisId(PKL, 3, 8)),
-      sorotkan("Upe.", ...barisId(PKL, 2, 2)),
+      sorotkan("Slamet,", ...barisId(PKL, 3, 8)),
+      redamkan("Putu.", ...barisId(PKL, 3, 8)),
+      sorotkan("Putu.", ...barisId(PKL, 2, 2)),
       tambah("sama@2", teks("lj", 150, 195, "5 + 6 + 2 + 8 + 5 + 4 = 30", 10.4, W.merah)),
     ),
   ],
@@ -95,7 +113,24 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
   judul: "Latihan 2: bacaan yang dipinjam",
   sumber: "Materi: bacaan yang dipinjam",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b6a-materi-3.ts:2"),
+  kutipan: [
+    "2. Banyaknya buku yang dipinjam dari perpustakaan sekolah setiap harinya",
+    "disajikan pada piktogram berikut.",
+    "menyatakan 1 buku",
+    "a. Hari apakah buku yang paling banyak dipinjam siswa?",
+    "b. Pada hari Selasa, berapa buku yang dipinjam siswa?",
+    "c. Hari apakah buku yang paling sedikit dipinjam siswa?",
+    "d. Pada hari apakah buku yang dipinjam siswa sebanyak 14?",
+    "e. Berapa banyak buku yang dipinjam siswa pada hari Kamis dan Jumat?",
+    "f. Berapa jumlah total buku yang dipinjam siswa selama satu minggu?",
+    "Berdasarkan penyajian piktogram maka diperoleh:",
+    "a. Hari apakah buku yang paling banyak dipinjam siswa? Sabtu",
+    "b. Pada hari Selasa, berapa buku yang dipinjam siswa? 6 Buku",
+    "c. Hari apakah buku yang paling sedikit dipinjam siswa? Kamis",
+    "d. Pada hari apakah buku yang dipinjam siswa sebanyak 14? Sabtu",
+    "buku + 12 buku = 15 buku",
+    "56",
+  ],
   ketukan: [
     k(SUARA_M1, tambah(0, judul("Bacaan dipinjam per hari")), tambah("Latihan", rangkaPikto(PBUKU)), tambah("kotak", ...kunciPikto(PBUKU, 6, { jenis: "kotak", warna: "#E8735F" }, "menyatakan 1 bacaan"))),
     k(
@@ -161,7 +196,25 @@ export const ADEGAN_BERPIKIR: AdeganStory = {
   judul: "Berpikir: siswa tiap kelas",
   sumber: "Materi: skala pada piktogram",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b6a-materi-3.ts:3"),
+  kutipan: [
+    "Ayo Berpikir",
+    "Salinlah jawaban kalian pada buku tulis.",
+    "Diberikan data siswa untuk masing-masing kelas disajikan dalam piktogram",
+    "berikut.",
+    "menyatakan 4 siswa",
+    "a. Kelas berapakah yang siswanya paling sedikit?",
+    "b. Kelas berapakah yang siswanya paling banyak?",
+    "c. Berapa banyak siswa kelas IV?",
+    "d. Kelas berapakah yang siswanya 24 siswa?",
+    "e. Berapa banyak semua siswa seluruh kelas?",
+    "a. Kelas berapakah yang siswanya paling sedikit? kelas V",
+    "b. Kelas berapakah yang siswanya paling banyak? kelas IV",
+    "terdapat 8 gambar siswa, satu gambar siswa",
+    "menyatakan 4 siswa sehingga banyak siswa kelas IV adalah 8 x 4 = 32 siswa",
+    "kelas I dan kelas II, karena",
+    "terdapat 6 gambar siswa sehingga 6 x 4 = 24 siswa",
+    "39 x 4 = 156 siswa",
+  ],
   ketukan: [
     k(
       SUARA_N1,
@@ -215,7 +268,23 @@ export const ADEGAN_PENUTUP: AdeganStory = {
   judul: "Hati-hati, tantangan, dan renungan",
   sumber: "Materi: hati-hati, tantangan, renungan",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b6a-materi-3.ts:4"),
+  kutipan: [
+    "Miskonsepsi",
+    "Piktogram disebut juga diagram gambar. Miskonsepsi yang biasa terjadi",
+    "adalah piktogram bukan diagram gambar",
+    "Diferensiasi",
+    "Model pembelajaran",
+    "yang disarankan untuk sub bab piktogram adalah Project Based Learning,",
+    "yang mengutamakan pada produk hasil karya peserta didik bersama",
+    "guru dapat menerapkan metode diskusi dengan melibatkan peserta didik dalam menyajikan data dalam bentuk",
+    "Refleksi",
+    "Adakah bagian yang masih",
+    "dirasa sulit?",
+    "diskusikanlah dengan teman kalian",
+    "Perbanyaklah",
+    "mengerjakan latihan soal.",
+    "Kalian juga telah dapat menentukan data paling banyak dan paling sedikit",
+  ],
   ketukan: [
     k(
       SUARA_T1,

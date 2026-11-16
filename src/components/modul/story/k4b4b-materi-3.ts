@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, daftar, kartu, judul, kisi, kisiD, kubusDi, tabel, teks } from "./k4b4b-gambar";
 import { bersih, k, tambah } from "./k4b4b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 11. Ayo Berlatih 2-3: hitung kubus, miskonsepsi (Buku Siswa hlm. 137; Panduan Guru hlm. 161-163) ------------------------------ */
 const LABEL_E = [
@@ -17,7 +16,23 @@ export const ADEGAN_KUBUS_BERLATIH: AdeganStory = {
   judul: "Latihan: hitung jumlah kubus satuan",
   sumber: "Materi: menghitung kubus satuan",
   latar: "#F0FDFA",
-  kutipan: kutipanLokal("k4b4b-materi-3.ts:1"),
+  kutipan: [
+    "tentukan volume gambar berikut dengan menghitung jumlah kubus satuan:",
+    "Volume bangun (a) adalah 4 cm3",
+    "Volume bangun (b) adalah 5 cm3",
+    "Volume bangun (c) adalah 4 cm3",
+    "Volume bangun (d) adalah 12 cm3",
+    "Volume bangun (e) adalah 14 cm3",
+    "Diberikan volume bangun adalah 12",
+    "Gambarkan bangun dengan kubus satuan!",
+    "Soal nomor 3 merupakan soal open ended.",
+    "Peserta didik mengukur volume benda menggunakan satuan tidak",
+    "Mengukur volume benda harus menggunakan jenis satuan tidak baku yang sama dengan ukuran yang seragam.",
+    "Satuan tidak baku yang digunakan harus mengisi suatu benda sampai penuh.",
+    "Peserta didik belum memahami bahwa volume suatu benda harus diisi dengan satuan tidak baku sampai penuh.",
+    "Metode pembelajaran yang disarankan untuk subbab volume adalah Diskusi",
+    "minta mereka mengerjakan latihan tanpa bantuan",
+  ],
   ketukan: [
     k(
       "Hitung kubus satuan. Bangun a empat kubus, b lima kubus, c empat kubus, d dua belas kubus, dan e empat belas kubus sentimeter kubik.",
@@ -69,7 +84,21 @@ export const ADEGAN_UK_1: AdeganStory = {
   judul: "Uji 1 sampai 3",
   sumber: "Materi: ukuran dan luas pada kisi",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b4b-materi-3.ts:2"),
+  kutipan: [
+    "Uji Kompetensi",
+    "Buatlah daftar benda yang kira-kira seukuran.",
+    "Kartu, penghapus, kotak isi staples",
+    "Keramik, Jendela, dll",
+    "Berikan contoh sesuatu yang ukurannya kira-kira:",
+    "permukaan buku tulis, permukaan HP, dll",
+    "Permukaan meja, permukaan lantai",
+    "Hitunglah luas daerah yang dibatasi oleh masing-masing persegi",
+    "Luas bangun A adalah 15 persegi satuan",
+    "Luas bangun B adalah 84 persegi satuan",
+    "Luas bangun C adalah 12 persegi satuan",
+    "Luas bangun D adalah 95 persegi satuan",
+    "Soal tipe ini merupakan open ended",
+  ],
   ketukan: [
     k(
       "Uji satu dan dua terbuka, jawabannya boleh bermacam-macam. Seukuran lima sentimeter: kartu atau penghapus. Satu meter: keramik atau jendela. Sentimeter persegi: layar HP. Meter persegi: permukaan meja.",
@@ -114,7 +143,21 @@ export const ADEGAN_UK_2: AdeganStory = {
   judul: "Uji 4 sampai 7",
   sumber: "Materi: konversi dan hitungan volume",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b4b-materi-3.ts:3"),
+  kutipan: [
+    "Konversi satuan volume berikut menjadi liter.",
+    "1.500 ml = 1.000 ml + 500 ml",
+    "Jadi, 1 liter 500 ml",
+    "1 liter 1.450 ml",
+    "= 2 liter 450 ml",
+    "Olivia membeli 7 liter 500",
+    "Dia mengkonsumsi 3 liter 700",
+    "Jadi, banyak susu yang tersisa adalah 3 liter 800 ml",
+    "7.500 ml – 3.700 ml = 3.800 ml",
+    "Isi air yang dituangkan ke ember oleh Helen adalah 6.340",
+    "Jadi, 6.340 ml = 6 liter 340 ml",
+    "Fina membeli 3 liter 250",
+    "= 9 liter 500 ml",
+  ],
   ketukan: [
     k(
       "Uji empat: ubah ke liter. Seribu lima ratus mililiter menjadi satu liter lima ratus mililiter. Satu liter seribu empat ratus lima puluh mililiter menjadi dua liter empat ratus lima puluh mililiter.",
@@ -149,7 +192,23 @@ export const ADEGAN_PENGAYAAN_LUAS: AdeganStory = {
   judul: "Tantangan 1 dan 2: luas",
   sumber: "Materi: luas dan satuan luas",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b4b-materi-3.ts:4"),
+  kutipan: [
+    "Soal-soal Pengayaan",
+    "Luas kebun ayah 36 m2. Kebun ditanami jagung 15 m2, ditanami ketela",
+    "= 140.000 : 10.000",
+    "Luas kebun yang ditanami cabe adalah 7 m2.",
+    "Anti mempunyai dua lembar kertas warna",
+    "0,42 m2",
+    "2.300 cm2",
+    "tersisa 150 cm2",
+    "= 0,42 x 10.000",
+    "= 4.200 cm2",
+    "=6.500 cm2",
+    "Luas Meja = 6.500 – 150",
+    "= 6.350 cm2",
+    "= 6.350 : 10.000",
+    "= 0.623 m2",
+  ],
   ketukan: [
     k(
       "Tantangan satu: kebun tiga puluh enam meter persegi, jagung lima belas, ketela seratus empat puluh ribu sentimeter persegi. Seratus empat puluh ribu dibagi sepuluh ribu sama dengan empat belas meter persegi.",
@@ -192,7 +251,23 @@ export const ADEGAN_PENGAYAAN_VOLUME: AdeganStory = {
   judul: "Tantangan 3 sampai 5: volume",
   sumber: "Materi: volume dan satuan volume",
   latar: "#F0FDFA",
-  kutipan: kutipanLokal("k4b4b-materi-3.ts:5"),
+  kutipan: [
+    "Sebuah tangki air berisi 2.225 liter air.",
+    "Jadi, volume sisa air di tangka adalah 1.249 liter 675 ml.",
+    "Sebotol cairan antiseptik memiliki volume 500 ml.",
+    "12 lusin botol = 12 x 12",
+    "= 144 botol",
+    "144 botol = 144 x 500",
+    "= 72.000 ml",
+    "= 72 liter",
+    "Sebuah drum berisi 12 liter 156 ml pernis.",
+    "setiap toko membutuhkan 900 ml sekali pasok.",
+    "Volume drum = 12 liter 136 ml",
+    "= 12.136 ml",
+    "Pernis yang dibutuhkan adalah 12 x 900 ml = 11.700 ml.",
+    "= 436 ml",
+    "Ya , terdapat sisa pernis yaitu 436 ml.",
+  ],
   ketukan: [
     k(
       "Tantangan tiga sama dengan latihan tangki tadi, hasilnya sama. Tantangan empat: dua belas lusin botol, tiap botol lima ratus mililiter.",
@@ -236,7 +311,22 @@ export const ADEGAN_PENUTUP_B: AdeganStory = {
   judul: "Penilaian, refleksi, dan penutup bab",
   sumber: "Buku Siswa hlm. 138; Panduan Guru hlm. 166–174",
   latar: "#FDF4FF",
-  kutipan: kutipanLokal("k4b4b-materi-3.ts:6"),
+  kutipan: [
+    "Tabel 4.2 Pedoman Penilaian Hasil Belajar",
+    "Tabel 4.4 Penilaian pada Tahap Ayo Berlatih",
+    "x 100 = ...",
+    "Kalian sudah mempelajari bagaimana menentukan luas dan volume dengan",
+    "Jika masih ada materi",
+    "yang sulit dan belum kalian pahami, ajaklah teman kalian berdiskusi tentang",
+    "Selanjutnya, manfaat apa yang kalian peroleh dari materi ini untuk",
+    "Agar proses belajar selanjutnya lebih baik lagi, guru dapat melakukan refleksi",
+    "Guru dapat menambahkan pertanyaan refleksi sesuai kebutuhan.",
+    "Keberhasilan peserta didik dalam pendidikan tidak hanya tanggungjawab",
+    "Guru setiap semester mengadakan rapat dengan orang tua peserta didik",
+    "Guru dapat membuat grup komunitas untuk setiap kelas dengan para",
+    "Guru menyediakan setiap minggu untuk konseling orang tua peserta didik.",
+    "Guru mengadakan seminar atau layanan konsultasi tiap bulan",
+  ],
   ketukan: [
     k(
       "Rubrik pengetahuan: tujuh butir berbobot sepuluh, sepuluh, dua puluh, sepuluh, sepuluh, dua puluh, dan dua puluh, jumlahnya seratus. Bobot butir lima kosong di buku, dihitung sepuluh.",

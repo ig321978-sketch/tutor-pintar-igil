@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { CONTOH_BERPIKIR, W, batang, emo, garis, jembatan, judul, kartu, kotak, panah, pecahan, teks } from "./k4b2c-gambar";
 import { bersih, hapus, idx, k, sorotkan, tambah, ubah, warnai } from "./k4b2c-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Penjelasan Bu Guru pada coklat (Buku Siswa hlm. 68; Panduan Guru hlm. 102) ------------------------------ */
 const SUARA_J1 = "Murid menjawab: kami tidak tahu, Bu Guru. Lalu Bu Guru menjelaskan dengan menyejajarkan kedua coklat dan menarik garis putus-putus.";
@@ -17,7 +16,13 @@ export const ADEGAN_COKLAT_JAWAB: AdeganStory = {
   judul: "Penjelasan Bu Guru: dua per enam sama dengan satu per tiga",
   sumber: "Materi: Pecahan senilai pada coklat",
   latar: "#FEF3C7",
-  kutipan: kutipanLokal("k4b2c-materi-2.ts:1"),
+  kutipan: [
+    "Kami tidak tahu Bu guru.",
+    "Sekarang perhatikan penjelasan Bu guru berikut.",
+    "Dengan melihat gambar coklat di atas, kita tahu bahwa.",
+    "Kami paham, terimakasih ibu.",
+    "Kegiatan ini dapat diganti disesuaikan kondisi di dalam kelas masing-masing guru sehingga apa yang disajikan adalah sesuatu yang ada di sekitar peserta didik.",
+  ],
   ketukan: [
     k(
       SUARA_J1,
@@ -63,7 +68,12 @@ export const ADEGAN_TAHUKAH: AdeganStory = {
   judul: "Dua cara mencari pecahan senilai",
   sumber: "Materi: Dikali atau dibagi bilangan sama",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b2c-materi-2.ts:2"),
+  kutipan: [
+    "Tahukah Kalian",
+    "Cara mencari pecahan yang senilai:",
+    "a. Mengalikan bilangan pembilang dan penyebut dengan bilangan yang sama",
+    "b. Membagi bilangan pembilang dan penyebut dengan bilangan yang sama",
+  ],
   ketukan: [
     k(
       SUARA_T1,
@@ -126,7 +136,11 @@ export const ADEGAN_BERPIKIR: AdeganStory = {
   judul: "Membuat tiga gambar pecahan senilai",
   sumber: "Materi: Tiga gambar pecahan senilai",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b2c-materi-2.ts:3"),
+  kutipan: [
+    "Ayo Berpikir",
+    "Buatlah tiga buah gambar yang menunjukkan pecahan senilai!",
+    "Guru memandu peserta didik untuk membuat tiga buah gambar yang menunjukkan pecahan senilai!",
+  ],
   ketukan: [
     k(
       SUARA_B1,
@@ -171,7 +185,15 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
   judul: "Latihan pertama: dua per empat dan satu per dua",
   sumber: "Materi: Latihan pecahan senilai",
   latar: "#FEF2F2",
-  kutipan: kutipanLokal("k4b2c-materi-2.ts:4"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Isilah titik-titik dibawah ini dengan bilangan pecahan sesuai daerah yang",
+    "diarsir!",
+    "Isilah titik-titik dibawah ini sesuai daerah yang diarsir!",
+    "Dikatakan pecahan senilai, karena pecahan",
+    "apabila disederhanakan",
+    "memperoleh hasil yang sama yaitu",
+  ],
   ketukan: [
     k(
       SUARA_L1,

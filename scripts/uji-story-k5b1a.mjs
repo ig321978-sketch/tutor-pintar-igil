@@ -4,7 +4,6 @@
 // kutipan buku terhadap teks PDF (pdftotext -enc UTF-8), hitungan mandiri (nilai tempat, terbilang, kunci buku yang tertukar), geometri gambar (tabel nilai tempat, balok, deret angka),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b1a.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -191,7 +190,7 @@ const T = (v, id, ke) => akhirAdegan(adegan(v, id), ke);
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,ayo-menyimak,jus-nisa,menulis-yohana,membaca-obat,kayu-tanam,berlatih-satu,berlatih-dua-tiga,penutup-guru", "urutan adegan materi");
   cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Pasar Sukawati", "Wei", "Upe", "Malosi", "Igil", "Kayu Tanam", "Latihan 1", "Latihan 2", "Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat ${kata}`);
+  for (const kata of ["Pasar Sukawati", "Nisa", "Yohana", "Komang", "Asep", "Kayu Tanam", "Latihan 1", "Latihan 2", "Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-pv", "luar-pv-terapan", "luar-dienes", "luar-dienes-terapan", "luar-baca", "luar-baca-terapan", "luar-periode", "luar-periode-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[1].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
@@ -472,7 +471,7 @@ const cekTitik = (objs, id, x, y, cw, ch, n, pesan) => {
   });
   sama(nilaiId(peta, "tt-t0"), "total 16 JP", "total jam pelajaran di gambar");
 
-  // Harga tiga jus Wei (Buku Siswa hlm. 4; kunci Panduan Guru hlm. 21).
+  // Harga tiga jus Nisa (Buku Siswa hlm. 4; kunci Panduan Guru hlm. 21).
   sama(M2.HARGA_JUS, [6375, 5950, 9050], "tiga harga jus");
   {
     const jus = adegan(M, "jus-nisa");
@@ -490,18 +489,18 @@ const cekTitik = (objs, id, x, y, cw, ch, n, pesan) => {
     sama(nilaiId(t4, "pk-t0"), "tanpa nol terbaca 950", "kartu tanpa nol");
   }
 
-  // Empat belas ribu lima ratus: buku tulis Upe (hlm. 5-6).
+  // Empat belas ribu lima ratus: buku tulis Yohana (hlm. 5-6).
   {
     const a = adegan(M, "menulis-yohana");
     sama(nilaiId(akhirAdegan(a, 0), "hb-t0"), terbilang(14500), "harga buku tulis dibaca");
     sama(nilaiId(akhirAdegan(a, 0), "hr"), `Rp${titikRibu(14500)}`, "harga buku tulis ditulis");
     sama(nilaiId(akhirAdegan(a, 1), "c1"), terbilang(14500), "cara menulis: bacaan");
     sama(nilaiId(akhirAdegan(a, 1), "c3"), titikRibu(14500), "cara menulis: angka");
-    cekTabel(akhirAdegan(a, 2), "km", M2.TB_KOMANG, 5, [digitOf(14500)], "Cara Malosi");
+    cekTabel(akhirAdegan(a, 2), "km", M2.TB_KOMANG, 5, [digitOf(14500)], "Cara Komang");
     const t4 = akhirAdegan(a, 3);
-    sama([nilaiId(t4, "y1"), nilaiId(t4, "y2"), nilaiId(t4, "y3"), nilaiId(t4, "y4")].join(" "), terbilang(14500), "Cara Upe: kalimat");
-    sama(Number(nilaiId(t4, "y6")) * 1000 + Number(nilaiId(t4, "y8")) * 100, 14500, "Cara Upe: 14 ribu dan 5 ratus");
-    sama(nilaiId(t4, "y9"), titikRibu(14500), "Cara Upe: hasil");
+    sama([nilaiId(t4, "y1"), nilaiId(t4, "y2"), nilaiId(t4, "y3"), nilaiId(t4, "y4")].join(" "), terbilang(14500), "Cara Yohana: kalimat");
+    sama(Number(nilaiId(t4, "y6")) * 1000 + Number(nilaiId(t4, "y8")) * 100, 14500, "Cara Yohana: 14 ribu dan 5 ratus");
+    sama(nilaiId(t4, "y9"), titikRibu(14500), "Cara Yohana: hasil");
     cekTabel(akhirAdegan(a, 4), "km", M2.TB_KOMANG, 5, [digitOf(14500)], "lima langkah");
     sama(nilaiId(akhirAdegan(a, 4), "jb"), titikRibu(14500), "lima langkah: bilangan jadi");
     sama(digitOf(14500), ["1", "4", "5", "0", "0"], "angka 14.500 per nilai tempat");
@@ -821,8 +820,8 @@ function tigaDigitKunci() {
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.every((a) => (a.kutipan ?? []).length >= 5), "tiap adegan materi memuat paling sedikit 5 kutipan buku");
+    cek(n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(M.adegan.every((a) => (a.kutipan ?? []).length >= 5), "tiap adegan materi memuat paling sedikit 5 kutipan buku");
     // Subbab A tidak memuat butir subbab B pada rentang halaman yang dipakai (Buku Siswa berhenti sebelum "B. Membandingkan").
     cek(!/b\. membandingkan dan mengurutkan/.test(bersih(bagian[0])), "Buku Siswa PDF 17-25 tidak memuat subbab B");
     // Keganjilan buku yang dicatat di video: kunci a tertukar (Panduan Guru Rp15.590,00; gambar Buku Siswa Rp15.950,00), tabel soal 3 dan kata "depalan".
@@ -850,7 +849,7 @@ function tigaDigitKunci() {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b1a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b1a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b1a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b1a sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

@@ -5,7 +5,6 @@
 // besar sudut Uji Kompetensi 4 dan 5, sisi sejajar, dua segitiga besar yang disusun tiga cara), hitungan mandiri (rubrik, daftar nama bangun, kunci Panduan Guru),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b5b.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -743,7 +742,7 @@ const objDi = (objs, id) => objs.find((o) => o.id === id);
     // nama bangun pada apersepsi benar-benar ada di Panduan Guru
     const bgSaja = bersih(bagian[1]);
     for (const nama of ["lancip sama kaki", "lancip sama sisi", "tumpul sembarang", "trapesium sama kaki", "trapesium siku-siku", "segiempat sembarang", "belah ketupat", "lingkaran, segilima, dan segienam"]) cek(bgSaja.includes(nama), `Panduan Guru memuat nama bangun ${nama}`);
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 135, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(n >= 135, `jumlah kutipan buku yang diperiksa (${n})`);
     console.log(`Kutipan buku diperiksa: ${n}`);
   }
 }
@@ -764,7 +763,7 @@ const objDi = (objs, id) => objs.find((o) => o.id === id);
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b5b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b5b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b5b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b5b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

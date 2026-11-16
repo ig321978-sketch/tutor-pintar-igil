@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bulat, emo, judul, kartu, kotak, papan, teks, warnaiLubang } from "./k5b2d-gambar";
 import { bersih, k, tambah, ubah } from "./k5b2d-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Subbab D (Panduan Guru hlm. 66; Buku Siswa hlm. 46) ------------------------------ */
 export const ADEGAN_PEMBUKA: AdeganStory = {
@@ -9,7 +8,15 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Subbab D: Faktor Persekutuan",
   sumber: "Panduan Guru hlm. 66; Buku Siswa hlm. 46",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k5b2d-materi-1.ts:1"),
+  kutipan: [
+    "D. Faktor Persekutuan",
+    "Sebelum memasuki materi tentang faktor persekutuan, guru diharapkan",
+    "dapat menjelaskan pengalaman belajar yang akan diperoleh peserta didik",
+    "menentukan faktor persekutuan dua bilangan atau lebih,",
+    "menentukan faktor persekutuan terkecil suatu bilangan atau lebih,",
+    "menyelesaikan masalah yang berkaitan dengan FPB, dan",
+    "membuat kesimpulan dari permasalahan yang terkait FPB.",
+  ],
   ketukan: [
     k(
       "Subbab D, Faktor Persekutuan. Di subbab sebelumnya kita menemukan faktor suatu bilangan. Sekarang kita mencari faktor yang dimiliki dua bilangan sekaligus.",
@@ -49,7 +56,21 @@ export const ADEGAN_PERSIAPAN: AdeganStory = {
   judul: "Sarana, papan buatan sendiri, apersepsi, dan pemanasan",
   sumber: "Panduan Guru hlm. 67–69",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b2d-materi-1.ts:2"),
+  kutipan: [
+    "Kebutuhan Sarana Prasarana dan Media Pembelajaran",
+    "Papan dan biji congklak setiap kelompok 2 set",
+    "Pastikan kebutuhan sarana dan prasarana sudah siap sebelum pembelajaran",
+    "guru dan peserta didik dapat membuat sendiri papan congklak",
+    "dari gelas air mineral bekas dan kardus bekas.",
+    "1 papan congklak memerlukan 16 gelas air mineral bekas",
+    "Buat pola papan congklak pada kardus bekas.",
+    "Gelas jangan terlalu tinggi karena akan menyulitkan saat mengambil biji",
+    "Jika gelas terlalu tinggi dapat disesuaikan tingginya dengan cara dipotong.",
+    "Papan congklak buatan sendiri siap digunakan.",
+    "pembuatan papan congklak dapat dijadikan proyek di rumah dengan pengawasan orang tua.",
+    "Khusus untuk bilangan 12 dan 18, ulangi kembali faktornya apa saja,",
+    "guru dapat membagi peserta didik menjadi kelompok kecil dengan anggota setiap kelompok dua orang.",
+  ],
   ketukan: [
     k(
       "Sarana yang perlu disiapkan: alat tulis, serta papan dan biji congklak, dua set untuk setiap kelompok. Pastikan semuanya siap sebelum pembelajaran dimulai.",
@@ -96,7 +117,20 @@ export const ADEGAN_MENYIMAK: AdeganStory = {
   judul: "Menyimak: permainan congklak",
   sumber: "Materi: permainan congklak",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b2d-materi-1.ts:3"),
+  kutipan: [
+    "Ayo Menyimak",
+    "Permainan Congklak",
+    "Congklak adalah permainan tradisional Indonesia yang banyak",
+    "dimainkan di berbagai daerah di Indonesia.",
+    "Di Jawa permainan ini dikenal dengan nama dakon",
+    "di Lampung dikenal dengan nama dentuman lamban",
+    "yaitu mokaotan, maggaleceng, aggalacang, dan nogarata.",
+    "Untuk memainkan congklak, kita membutuhkan peralatan",
+    "Dua buah papan congklak.",
+    "kalian dapat membuat sendiri dari kardus bekas dan gelas air mineral bekas",
+    "Biji congklak dengan dua warna berbeda. Setiap warna minimal",
+    "20 biji.",
+  ],
   ketukan: [
     k(
       "Kita mulai dengan menyimak permainan congklak. Congklak adalah permainan tradisional Indonesia yang banyak dimainkan di berbagai daerah di Indonesia.",
@@ -146,7 +180,21 @@ export const ADEGAN_ATURAN: AdeganStory = {
   judul: "Aturan permainan: bermain dengan faktor",
   sumber: "Materi: aturan bermain dengan faktor",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b2d-materi-1.ts:4"),
+  kutipan: [
+    "Aturan Permainan",
+    "Dekatkan kedua papan congklak.",
+    "Beri nomor setiap lubang congklak secara berurutan",
+    "Untuk aturan permainannya akan kita ubah.",
+    "Kali ini kita akan bermain dengan faktor bilangan.",
+    "kita akan bermain dengan faktor 12 dan 18.",
+    "Pemain 1 : faktor 12",
+    "Pemain 2 : faktor 18",
+    "Pemain 1 dan pemain 2 menggunakan biji congklak dengan warna yang berbeda.",
+    "Pemain 1 meletakkan setiap satu biji congklak pada lubang-lubang dengan nomor yang merupakan faktor 12.",
+    "Pemain 2 meletakkan setiap satu biji congklak pada lubang-lubang dengan nomor yang merupakan faktor 18.",
+    "Adakah lubang pada papan congklak yang berisi dua biji congklak?",
+    "lubang yang berisi dua buah biji congklak adalah 1, 2, 3, dan 6.",
+  ],
   ketukan: [
     k(
       "Aturan permainan. Satu, dekatkan kedua papan congklak. Dua, beri nomor setiap lubang secara berurutan, dari satu sampai dua puluh delapan.",

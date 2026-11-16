@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { FX, FY, LAP, RUTE, W, emo, garisRute, judul, kartu, lapangan, panah, poligon, tabel, teks, titikBangunDua, titikBangunSama } from "./k5b4a-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b4a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Eksplorasi 4.1B: lapangan sebagai bangun datar (Buku Siswa hlm. 113; Panduan Guru hlm. 125 dan 126) ------------------------------ */
 export const ADEGAN_EKS41B: AdeganStory = {
@@ -9,17 +8,25 @@ export const ADEGAN_EKS41B: AdeganStory = {
   judul: "Kegiatan: menjumlahkan panjang sisi lapangan",
   sumber: "Materi: menjumlahkan panjang sisi",
   latar: "#ECFDF5",
-  kutipan: kutipanLokal("k5b4a-materi-3.ts:1"),
+  kutipan: [
+    "Eksplorasi 4.1B",
+    "Perhatikan kembali lintasan berlari Asep di lapangan sepak bola.",
+    "Kalian sudah melihat bahwa Asep berangkat dari satu titik, kemudian",
+    "berlari menyusuri tepian lapangan, dan berhenti di titik semula.",
+    "Jarak yang ia tempuh adalah sepanjang \"keliling\" lapangan sepak",
+    "Jadi, keliling lapangan sepak bola dapat dihitung dengan cara",
+    "100 + 50 + 100 + 50 = 300, diperoleh kelilingnya 300 m.",
+  ],
   ketukan: [
     k(
-      "Sekarang kegiatan kedua. Perhatikan lagi lintasan Upe. Lapangan sepak bola dapat kita lihat sebagai bangun datar. Bagaimana menentukan panjang lintasan berlarinya?",
+      "Sekarang kegiatan kedua. Perhatikan lagi lintasan Asep. Lapangan sepak bola dapat kita lihat sebagai bangun datar. Bagaimana menentukan panjang lintasan berlarinya?",
       tambah(0, judul("Kegiatan kedua")),
       tambah("lintasan", ...lapangan("lp", FX, FY), garisRute("ar", RUTE.asep, W.biru)),
       tambah("bangun", poligon("bd", FX, FY, [[0, 0], [LAP.pw, 0], [LAP.pw, LAP.ph], [0, LAP.ph]], "none", W.hitam, { tebal: 3 })),
       tambah("Bagaimana", teks("lt", FX + LAP.pw / 2, FY - 6, "100 m", 8.4, W.hitam), teks("lb", FX + LAP.pw / 2, FY + LAP.ph + 12, "100 m", 8.4, W.hitam), teks("ll", FX - 6, FY + LAP.ph / 2 + 3, "50 m", 8.4, W.hitam, { anchor: "end" }), teks("lr", FX + LAP.pw + 6, FY + LAP.ph / 2 + 3, "50 m", 8.4, W.hitam, { anchor: "start" })),
     ),
     k(
-      "Upe berangkat dari satu titik, menyusuri tepian, dan berhenti di titik semula. Artinya, ia harus menjumlahkan panjang sisi-sisi lapangan sepak bola.",
+      "Asep berangkat dari satu titik, menyusuri tepian, dan berhenti di titik semula. Artinya, ia harus menjumlahkan panjang sisi-sisi lapangan sepak bola.",
       tambah("berangkat", emo("rn", FX + 10, FY + LAP.ph - 8, "🏃", 16)),
       tambah("berhenti", emo("ok", FX + 30, FY + LAP.ph - 14, "✅", 16)),
       tambah("menjumlahkan", ...kartu("jk", 50, 164, 200, 28, W.krem, ["jumlahkan panjang semua sisi"], 9.4)),
@@ -35,10 +42,10 @@ export const ADEGAN_EKS41B: AdeganStory = {
       tambah("kelilingnya", teks("kh", 150, 192, "keliling lapangan = 300 m", 9.4, W.hijau)),
     ),
     k(
-      "Coba ingat kembali rute Upe dan bagaimana ia memperoleh panjangnya. Pegang konsep keliling dengan baik. Pastikan panjang seluruh sisi lapangan dijumlahkan dengan benar.",
+      "Coba ingat kembali rute Asep dan bagaimana ia memperoleh panjangnya. Pegang konsep keliling dengan baik. Pastikan panjang seluruh sisi lapangan dijumlahkan dengan benar.",
       bersih(0),
       tambah(0, judul("Ingat dan pastikan")),
-      tambah("ingat", ...kartu("g1", 14, 36, 272, 30, W.langit, ["ingat kembali rute Upe dan cara memperoleh panjangnya"], 8.4)),
+      tambah("ingat", ...kartu("g1", 14, 36, 272, 30, W.langit, ["ingat kembali rute Asep dan cara memperoleh panjangnya"], 8.4)),
       tambah("Pegang", ...kartu("g2", 14, 76, 272, 30, W.krem, ["pegang konsep keliling"], 8.8)),
       tambah("Pastikan", ...kartu("g3", 14, 116, 272, 30, W.hijauMuda, ["pastikan semua sisi lapangan dijumlahkan benar"], 8.4)),
     ),
@@ -55,7 +62,17 @@ export const ADEGAN_UKUR: AdeganStory = {
   judul: "Mengukur sisi dengan penggaris: dua bangun datar",
   sumber: "Materi: mengukur sisi dengan penggaris",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k5b4a-materi-3.ts:2"),
+  kutipan: [
+    "Sekarang, perhatikan gambar-gambar berikut. Bagaimanakah cara",
+    "menentukan kelilingnya?",
+    "Untuk menentukan kelilingnya, kalian dapat mengukur sisi-sisi",
+    "bangun datar tersebut dengan menggunakan penggaris.",
+    "Keliling = 4 + 4 + 4 + 4 = 16.",
+    "Jadi, kelilingnya 16 cm.",
+    "Keliling = ... + ... + ... + ... = ....",
+    "Keliling = 5 + 4 + 5 + 5 = 19",
+    "Jadi, kelilingnya 19 cm.",
+  ],
   ketukan: [
     k(
       "Sekarang perhatikan dua gambar bangun datar. Bagaimana cara menentukan kelilingnya? Kalian dapat mengukur sisi-sisinya menggunakan penggaris.",
@@ -109,7 +126,14 @@ export const ADEGAN_KESIMPULAN: AdeganStory = {
   judul: "Kesimpulan: apakah keliling bangun datar itu?",
   sumber: "Materi: kesimpulan tentang keliling",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b4a-materi-3.ts:3"),
+  kutipan: [
+    "Jadi, dengan menggunakan kata-katamu sendiri, apakah keliling",
+    "bangun datar itu?",
+    "Keliling bangun datar adalah jumlahan panjang sisi-",
+    "sisi bangun datar tersebut.",
+    "Setiap sisi lapangan ia lalui satu kali.",
+    "bukan bolak balik pada sisi yang sama.",
+  ],
   ketukan: [
     k(
       "Jadi, dengan kata-katamu sendiri, apakah keliling bangun datar itu? Coba sebutkan secara lisan.",

@@ -69,10 +69,10 @@ export const ADEGAN_LUAR_C_SATUAN_TERAPAN: AdeganStory = {
       tambah("Sekarang", kartu("b2", 40, 92, 220, "3 : 18 = 1 : 6", W.obatMuda, 16), emo("ck", 150, 150, "✅", 26)),
     ),
     k(
-      "Ayah menanam sepuluh menit, Kira dua pertiga jam. Samakan ke menit: dua pertiga kali enam puluh sama dengan empat puluh menit.",
+      "Ayah menanam sepuluh menit, Tigor dua pertiga jam. Samakan ke menit: dua pertiga kali enam puluh sama dengan empat puluh menit.",
       bersih(0),
       tambah("Ayah", emo("ea", 40, 56, "👨", 24), batang("ba", 66, 46, 40, 16, W.obatMuda), teks("va", 114, 58, "10 menit", 9, W.biru, { anchor: "start" })),
-      tambah("Kira", emo("et", 40, 100, "🧒", 24), teks("vt", 66, 112, "2/3 jam", 9, W.biru, { anchor: "start" })),
+      tambah("Tigor", emo("et", 40, 100, "🧒", 24), teks("vt", 66, 112, "2/3 jam", 9, W.biru, { anchor: "start" })),
       tambah("enam", teks("v60", 150, 154, "2/3 × 60 menit", 14, W.salem)),
       tambah("empat", batang("bt", 66, 90, 160, 16, W.hiasMuda), teks("v40", 150, 178, "= 40 menit", 15, W.merah)),
     ),

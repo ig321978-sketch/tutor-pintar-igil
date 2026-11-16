@@ -2,7 +2,6 @@ import type { AdeganStory } from "./logika-story";
 import { SOAL1, W, bulat, emo, jam, kartu, kertasSiku, kotak, pukul, sudut, tanda, tandaSiku, teks } from "./k5b6b-gambar";
 import { bersih, k, tambah } from "./k5b6b-bantu";
 import { barisJawab } from "./k5b6b-materi-2";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const B = (h: string) => SOAL1.find((s) => s.h === h) ?? SOAL1[0];
 
@@ -12,7 +11,7 @@ export const ADEGAN_SOAL1B: AdeganStory = {
   judul: "Latihan 1: gunting, kipas, jendela, dan jawaban",
   sumber: "Materi: latihan jenis sudut",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k5b6b-materi-3.ts:1"),
+  kutipan: ["Sudut yang", "terbentuk saat", "gunting dibuka", "sebuah kipas", "dibuka", "Sudut pada", "pojokan jendela", "Kunci Jawaban", "Ayo Berlatih", "Soal 1"],
   ketukan: [
     k(
       "Bagian d: sudut yang terbentuk saat gunting dibuka. Kedua bilah gunting menjadi dua kaki sudut dan engselnya menjadi titik sudut. Sudut yang ditandai lancip.",
@@ -80,7 +79,7 @@ export const ADEGAN_SOAL2: AdeganStory = {
   judul: "Latihan 2: sudut pada jam analog",
   sumber: "Materi: latihan sudut pada jam",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b6b-materi-3.ts:2"),
+  kutipan: ["Soal 2", "Gambarlah 2 buah sudut tumpul dan 2 buah sudut lancip", "jarum pendek dan panjang pada", "jam analog", "pukul berapa yang", "Pada pukul 02.00 jarum", "membentuk", "sudut lancip", "Buat sudut yang", "berbeda dengan contoh", "Terima semua jawaban asal", "memenuhi kriteria sudut tumpul atau sudut lancip", "pukul 10.30", "jarum pendek tidak tepat berada di angka 10", "tengah-tengah"],
   ketukan: [
     k(
       "Latihan dua: gambarlah dua sudut tumpul dan dua sudut lancip dengan jarum pendek dan jarum panjang pada jam analog, lalu tulis pukul berapa yang ditunjukkan.",
@@ -136,7 +135,7 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   judul: "Renungan dan ringkasan pengertian sudut",
   sumber: "Materi: renungan dan ringkasan",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b6b-materi-3.ts:3"),
+  kutipan: ["isilah tabel berikut sesuai", "Berilah tanda centang", "Aku dapat memahami bagian-bagian sudut", "Aku dapat menyebutkan jenis-jenis sudut", "melakukan releksi", "pertanyaan releksi nomor 2 dan 3"],
   ketukan: [
     k(
       "Mari kita renungkan sebentar. Tanyakan pada dirimu: apakah aku sudah paham bagian-bagian sudut, dan apakah aku dapat menyebutkan jenis-jenis sudut?",

@@ -7,7 +7,7 @@ import { ADEGAN_LUAR_KEPUTUSAN, ADEGAN_LUAR_KEPUTUSAN_TERAPAN, ADEGAN_LUAR_RINGK
 
 /**
  * Kelas 5 Bab 8 Sub-Bab A (mengumpulkan data dan tabel frekuensi): video materi kurikulum dan video metode luar, dua video terpisah.
- * Adegan administratif (pembuka bab dengan donat Wei, membaca tabel donat, tujuan dan peta konsep, serta apersepsi) tetap ada di berkas materi, tetapi tidak diputar.
+ * Adegan administratif (pembuka bab dengan donat Anggi, membaca tabel donat, tujuan dan peta konsep, serta apersepsi) tetap ada di berkas materi, tetapi tidak diputar.
  */
 export const VIDEO_MATERI_K5B8A: VideoStory = {
   id: "k5b8a-materi",

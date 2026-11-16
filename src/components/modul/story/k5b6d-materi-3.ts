@@ -2,7 +2,6 @@ import type { AdeganStory, Obj } from "./logika-story";
 import type { Pt } from "./k5b6d-gambar";
 import { ARAH_JALAN, W, baris, busurSudut, emo, garis, jam, juring, kartu, kotak, panah, persimpangan, pola1, pola2, poligon, rasiBiduk, teks, titikSegiLima, ujung } from "./k5b6d-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b6d-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const jud = (isi: string, y = 20, u = 12): Obj => teks("jud", 150, y, isi, u, W.ungu);
 
@@ -28,7 +27,7 @@ export const ADEGAN_REFLEKSI_D: AdeganStory = {
   judul: "Refleksi: pernyataan nomor 6 melukis sudut",
   sumber: "Buku Siswa hlm. 187; Buku Panduan Guru hlm. 275",
   latar: "#FDF2F8",
-  kutipan: kutipanLokal("k5b6d-materi-3.ts:1"),
+  kutipan: ["Setelah mempelajari materi terkait sudut, isilah tabel berikut", "sesuai dengan pemahaman kalian", "Berilah tanda centang", "Aku dapat menemukan sudut siku-siku di lingkungan sekitarku", "Aku dapat memahami bagian-bagian sudut", "Aku dapat menyebutkan jenis-jenis sudut", "Aku dapat mengukur besar sudut dengan menggunakan busur derajat", "Aku dapat membandingkan besar sudut", "Aku dapat melukis sudut dengan ukuran", "tertentu menggunakan busur derajat", "Tutup pembelajaran pada topik terkait materi melukis sudut"],
   ketukan: [
     k(
       "Saatnya refleksi. Setelah mempelajari materi sudut, isilah tabel dengan tanda centang pada kolom Ya atau Tidak sesuai pemahamanmu.",
@@ -81,7 +80,7 @@ export const ADEGAN_UJI_JAM: AdeganStory = {
   judul: "Uji 1: sudut terkecil jarum jam",
   sumber: "Materi: Uji satu, sudut jarum jam",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b6d-materi-3.ts:2"),
+  kutipan: ["Uji Kompetensi", "Sudut terkecil yang dibentuk oleh jarum pendek dan jarum panjang pada pukul 11.00", "pada pukul 08.00", "pada pukul 06.00", "Sudut manakah yang paling besar dan berapa ukurannya", "Pengunjung Perpustakaan", "Sudut pada jam", "adalah 30", "adalah 120", "adalah 180", "Sudut yang paling besar adalah sudut yang dibentuk oleh jarum pendek"],
   ketukan: [
     k(
       "Uji satu. Hitung sudut terkecil antara jarum pendek dan jarum panjang pada pukul sebelas, delapan, dan enam. Mana yang terbesar, dan berapa ukurannya?",
@@ -164,7 +163,7 @@ export const ADEGAN_UJI_JALAN_AB: AdeganStory = {
   judul: "Uji 2a dan 2b: persimpangan jalan",
   sumber: "Materi: Uji dua, persimpangan jalan",
   latar: "#F1F5F9",
-  kutipan: kutipanLokal("k5b6d-materi-3.ts:3"),
+  kutipan: ["Persimpangan Jalan", "Gambar di atas menunjukkan gambar suatu ruas jalan yang dilihat dari atas", "nyatakan pernyataan berikut benar atau salah", "Sudut antara Jalan Jalak dan Jalan Nuri adalah yang paling besar", "Tidak ada sudut siku-siku yang terbentuk di antara ruas-ruas jalan pada gambar tersebut", "Besar sudut antara Jalan Jalak dan Jalan Ketilang adalah", "Tentukan jenis dari setiap sudut berikut dengan memberi tanda centang", "Ukuran sudut antara Jalan Jalak dan Jalan Nuri adalah 110", "Sudut yang paling besar adalah sudut antara Jalan Jalak dan Jalan Ketilang", "Sudut antara Jalan Nuri dan Jalan Bangau adalah 90"],
   ketukan: [
     k(
       "Uji dua, persimpangan jalan: empat ruas jalan bertemu, dilihat dari atas. Namanya Jalak, Nuri, Bangau, dan Ketilang.",
@@ -224,7 +223,7 @@ export const ADEGAN_UJI_JALAN_CD: AdeganStory = {
   judul: "Uji 2c dan 2d: sudut ideal dan sulit berbelok",
   sumber: "Materi: Uji dua, sudut ideal dan berbelok",
   latar: "#ECFDF5",
-  kutipan: kutipanLokal("k5b6d-materi-3.ts:4"),
+  kutipan: ["Menurut ahli tata kota, sudut yang ideal untuk persimpangan", "Adakah persimpangan jalan yang", "ideal pada peta di atas", "makin kecil sudut persimpangan jalan, makin", "sulit kendaraan untuk berbelok", "Besar sudut antara kedua ruas jalan tersebut adalah 25", "paling kecil di antara yang lainnya", "Jalan Nuri menuju Jalan Bangau atau sebaliknya"],
   ketukan: [
     k(
       "Bagian c: menurut ahli tata kota, sudut ideal untuk persimpangan adalah siku-siku. Persimpangan ideal ada di Jalan Nuri dan Jalan Bangau, karena sudutnya sembilan puluh derajat.",
@@ -270,7 +269,7 @@ export const ADEGAN_KERAMIK_1: AdeganStory = {
   judul: "Uji 3: sudut dalam segi lima dan pola 1",
   sumber: "Materi: Uji tiga, memasang keramik",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b6d-materi-3.ts:5"),
+  kutipan: ["Memasang Keramik", "Seorang tukang keramik memasang keramik dengan", "menggunakan pola berikut", "Pak Tukang akan memotong keramik untuk mengisi bagian", "kosong yang diberi tanda panah", "Ukuran sudut satu putaran penuh adalah 360", "Pada segi lima beraturan, ukuran sudut pusatnya", "Sebuah segi lima beraturan dapat dibagi menjadi", "5 segitiga yang sama", "Besar sudut pada ruang kosong yang ditunjukkan panah adalah", "Kemungkinan desain yang cocok adalah sebagai berikut"],
   ketukan: [
     k(
       "Uji tiga, memasang keramik. Pola satu: satu keramik persegi dikelilingi empat keramik segi lima beraturan. Pak Tukang akan memotong keramik untuk mengisi bagian kosong yang ditunjuk panah.",
@@ -327,7 +326,7 @@ export const ADEGAN_KERAMIK_2: AdeganStory = {
   judul: "Uji 3: pola 2 dan potongan keramik",
   sumber: "Materi: Uji tiga, pola dua dan potongan",
   latar: "#FEF2F2",
-  kutipan: kutipanLokal("k5b6d-materi-3.ts:6"),
+  kutipan: ["Pola 2", "Besar sudut pada ruang kosong yang ditunjukkan panah adalah", "Kemungkinan desain yang cocok adalah sebagai berikut", "Pak Tukang akan memotong keramik untuk mengisi bagian"],
   ketukan: [
     k(
       "Pola dua: tiga keramik segi lima beraturan bertemu di satu titik. Dua keramik bersisian, dan satu lagi masih menyisakan ruang kosong yang ditunjuk panah.",
@@ -372,7 +371,7 @@ export const ADEGAN_PENUTUP_D: AdeganStory = {
   judul: "Penilaian, remedial, pengayaan rasi bintang, dan penutup bab",
   sumber: "Buku Panduan Guru hlm. 279–285",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k5b6d-materi-3.ts:7"),
+  kutipan: ["Rubrik Penilaian Uji Kompetensi", "Peserta didik tidak menjawab", "sama sekali", "jawaban akhir benar tanpa ada", "Panduan Remedial", "Bimbingan individu", "Bimbingan kelompok", "Pembelajaran ulang dengan menggunakan metode dan media", "Panduan Pengayaan", "proyek untuk menggambar rasi", "rasi bintang Ursa Mayor atau rasi bintang Biduk", "Rasi bintang Biduk terdiri atas 7 buah bintang", "sebagai petunjuk arah utara", "sama persis dengan gambar aslinya", "Buat rasi bintangmu sendiri dan beri nama sekreatif mungkin", "Tepat dalam mengukur dan melukis sudut", "Terdapat nama rasi bintang dan artinya", "Interaksi dengan Orang Tua", "menemukan sudut pada benda di sekitar rumah masing-masing", "mengelompokkan sudut tersebut"],
   ketukan: [
     k(
       "Penilaian memakai rubrik skor 0 sampai 4. Skor 0 bila tidak menjawab, skor 1 bila jawaban akhir benar tanpa alur runtut.",

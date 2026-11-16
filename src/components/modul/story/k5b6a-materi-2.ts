@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bingkai, emo, garis, judul, kartu, kotak, panah, penandaSiku, poligon, tabel, teks, titikPenggaris, type Titik } from "./k5b6a-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k5b6a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Bingkai foto dan penggaris siku-siku (hlm. 166; Panduan Guru hlm. 252 sampai 253) ------------------------------ */
 /** Empat pojok bingkai luar (titik mutlak, searah jarum jam dari kiri-atas). */
@@ -13,7 +12,17 @@ export const ADEGAN_BINGKAI: AdeganStory = {
   judul: "Bingkai foto dan penggaris siku-siku",
   sumber: "Materi: bingkai dan penggaris siku-siku",
   latar: "#FFF1F2",
-  kutipan: kutipanLokal("k5b6a-materi-2.ts:1"),
+  kutipan: [
+    "A. Sudut Siku-Siku",
+    "Pernahkah kalian memperhatikan bingkai foto yang kalian temui di",
+    "Pojok bingkai pada Gambar 6.2 membentuk sudut siku-siku.",
+    "Bagaimana cara tukang",
+    "menggunakan penggaris siku-siku untuk memastikan bahwa pojok",
+    "Gambar 6.3 Penggaris Siku-Siku",
+    "busur belum dikenalkan di awal bab",
+    "Jika sesi tanya jawab dirasa cukup, kenalkan peserta didik",
+    "Alat tersebut berupa lipatan kertas yang cara membuatnya ada pada Eksplorasi 6.1.",
+  ],
   ketukan: [
     k(
       "Sekarang kita belajar sudut siku-siku. Pernahkah kalian memperhatikan bingkai foto yang kalian temui di rumah atau di sekolah?",
@@ -77,7 +86,22 @@ export const ADEGAN_EKSPLORASI_ALAT: AdeganStory = {
   judul: "Kegiatan: membuat alat dari kertas lipat",
   sumber: "Materi: alat dari kertas lipat",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b6a-materi-2.ts:2"),
+  kutipan: [
+    "Eksplorasi 6.1",
+    "Menjadi Detektif Sudut",
+    "menemukan sebanyak mungkin",
+    "Setiap kelompok",
+    "beranggotakan 3 orang.",
+    "Ambil sehelai kertas, lalu lipatlah seperti pada gambar berikut.",
+    "kemudian lipat mendatar.",
+    "Lipat secara",
+    "Sudut yang terbentuk",
+    "Gambar 6.4 Cara Membuat Sudut Siku-Siku dari Selembar Kertas",
+    "Guru membentuk kelompok terlebih dahulu sebelum",
+    "Berikan penguatan kembali bahwa fungsi alat ini mirip dengan penggaris",
+    "Pastikan setiap kelompok sudah membuat alat dengan benar.",
+    "Tujuan eksplorasi ini adalah untuk menemukan sudut siku-siku",
+  ],
   ketukan: [
     k(
       "Sekarang kita punya kegiatan seru, Menjadi Detektif Sudut. Kita bermain peran menjadi detektif, dengan tugas menemukan sebanyak mungkin sudut di sekitar kita.",
@@ -149,7 +173,20 @@ export const ADEGAN_EKSPLORASI_PERIKSA: AdeganStory = {
   judul: "Kegiatan: memeriksa sudut dan mencatat hasil",
   sumber: "Materi: memeriksa sudut dan mencatat",
   latar: "#FEFCE8",
-  kutipan: kutipanLokal("k5b6a-materi-2.ts:3"),
+  kutipan: [
+    "Temukan sudut-sudut yang ada di sekitar kalian.",
+    "Periksa sudut",
+    "tersebut menggunakan lipatan kertas yang sudah kalian buat.",
+    "Apakah sudut yang kalian temukan termasuk sudut",
+    "Gambar 6.5 Memeriksa Sudut yang Ditemukan, Termasuk Sudut Siku-Siku atau Bukan",
+    "Setelah itu, catat hasil temuan kalian pada tabel.",
+    "Tabel 6.2 Hasil Temuan Detektif Sudut",
+    "Apakah Termasuk Sudut Siku-Siku?",
+    "Catatan : kalian dapat menambah baris pada tabel sesuai kebutuhan.",
+    "harus berimpit dengan kaki",
+    "sebagai fasilitator",
+    "memeriksa hasil dan perkembangan kerja",
+  ],
   ketukan: [
     k(
       "Sekarang temukan sudut-sudut di sekitar kalian, lalu periksa dengan lipatan kertas tadi. Apakah sudut yang kalian temukan termasuk sudut siku-siku?",

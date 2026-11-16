@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, batang, emo, garis, kartu, pai, panah, teks, judul } from "./k5b3a-gambar";
 import { bersih, k, redamkan, sorotkan, tambah, ubah, warnai } from "./k5b3a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab: tujuan (Buku Siswa hlm. 63; Panduan Guru hlm. 97) ------------------------------ */
 const TUJUAN = ["1.1 mengurutkan bilangan pecahan", "1.2 membandingkan bilangan pecahan", "1.3 menentukan penjumlahan bilangan pecahan", "1.4 menentukan pengurangan bilangan pecahan"];
@@ -12,7 +11,17 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 3: tujuan pembelajaran",
   sumber: "Buku Siswa hlm. 63; Panduan Guru hlm. 97",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b3a-materi-1.ts:1"),
+  kutipan: [
+    "Setelah mempelajari bab ini, diharapkan kalian dapat mengurutkan,",
+    "membandingkan, serta melakukan operasi hitung penjumlahan",
+    "dan pengurangan bilangan pecahan.",
+    "Setelah mempelajari bab ini, peserta didik diharapkan dapat",
+    "1.1 mengurutkan bilangan pecahan,",
+    "1.2 membandingkan bilangan pecahan,",
+    "1.3 menentukan penjumlahan bilangan pecahan, dan",
+    "1.4 menentukan pengurangan bilangan pecahan.",
+    "Bab ini diawali dengan mengajak peserta didik mengingat kembali materi",
+  ],
   ketukan: [
     k(
       "Selamat datang di bab tiga, Bilangan Pecahan. Setelah mempelajari bab ini, kalian diharapkan dapat mengurutkan, membandingkan, serta melakukan operasi hitung penjumlahan dan pengurangan bilangan pecahan.",
@@ -64,7 +73,18 @@ export const ADEGAN_PETA: AdeganStory = {
   judul: "Peta konsep, kata kunci, dan skema tiga subbab",
   sumber: "Buku Siswa hlm. 64; Panduan Guru hlm. 98–101",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b3a-materi-1.ts:2"),
+  kutipan: [
+    "Peta Konsep",
+    "Kata Kunci",
+    "Urutan, perbandingan, penjumlahan, pengurangan, pecahan.",
+    "Bab ini bertujuan untuk mengenalkan peserta didik pada bilangan pecahan.",
+    "Bab ini diawali dengan mengajak peserta didik mengingat kembali materi",
+    "Pada Subbab A, peserta didik diajak untuk membandingkan dan",
+    "mengurutkan bilangan pecahan.",
+    "Waktu merupakan saran rentang jam pelajaran.",
+    "Problem Based Learning",
+    "Tanya jawab",
+  ],
   ketukan: [
     k(
       "Ini peta konsep bab tiga. Di tengah ada pecahan. Cabangnya mengurutkan, membandingkan, dan operasi bilangan. Operasi bilangan bercabang lagi menjadi menjumlahkan dan mengurangkan.",
@@ -125,7 +145,21 @@ export const ADEGAN_MENYIMAK: AdeganStory = {
   judul: "Menyimak cerita: Jajanan Pasar",
   sumber: "Materi: cerita jajanan pasar",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b3a-materi-1.ts:3"),
+  kutipan: [
+    "Indonesia merupakan negara yang kaya dengan makanan khas,",
+    "salah satunya jajanan pasar.",
+    "yang berbahan tepung, jagung, ketan, beras, dan lain-lain.",
+    "untuk menjamu tamu",
+    "Pernahkah kalian diminta Ibu untuk mengantar atau",
+    "membagikan jajanan pasar ke saudara atau tetangga?",
+    "bagiankah yang akan kalian bagikan?",
+    "empat potong makanan dan kalian makan dua potong di antaranya,",
+    "bagaimana kalian akan menuliskannya dalam kalimat matematika?",
+    "memotong roti dalam sebuah piring menjadi tiga",
+    "bagian sama besar, berapa bagian yang kalian dapatkan?",
+    "Pada bab ini, kalian akan belajar terkait materi pecahan.",
+    "materi ini dengan baik.",
+  ],
   ketukan: [
     k(
       "Mari kita menyimak cerita tentang Jajanan Pasar. Indonesia kaya makanan khas, salah satunya jajanan pasar, yang berbahan tepung, jagung, ketan, beras, dan lain-lain. Biasanya dipakai Ibu untuk menjamu tamu.",

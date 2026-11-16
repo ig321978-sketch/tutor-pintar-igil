@@ -1,33 +1,41 @@
 import type { AdeganStory, Aksi } from "./logika-story";
 import { W, barisTabel, busurSemua, deret, emo, hariBenda, isiKotak, judul, kartu, muncul, suku, tabel, teks } from "./k4b1i-gambar";
 import { bersih, k, tambah, ubah } from "./k4b1i-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
-/* ------------------------------ 7. Kelipatan: kelereng Wei (Buku Siswa hlm. 50-51; Panduan Guru hlm. 73) ------------------------------ */
+/* ------------------------------ 7. Kelipatan: kelereng Karel (Buku Siswa hlm. 50-51; Panduan Guru hlm. 73) ------------------------------ */
 const KH = hariBenda("kh", 19, 30, 7, 2);
 const KT = { bw: 30, gap: 8 };
 const D_KAREL = deret("kt", 21, 112, ["2", "4", "6", "8", "10", "12", "14"], KT);
 const B_KAREL = busurSemua("kt", 21, 112, ["+2", "+2", "+2", "+2", "+2", "+2"], { ...KT, tinggi: 10 });
 export const ADEGAN_KELIPATAN_KAREL: AdeganStory = {
   id: "kelipatan-karel",
-  judul: "Kelipatan dari bilangan cacah: kelereng Wei",
-  sumber: "Materi: kelipatan dari kelereng Wei",
+  judul: "Kelipatan dari bilangan cacah: kelereng Karel",
+  sumber: "Materi: kelipatan dari kelereng Karel",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k4b1i-materi-2.ts:1"),
+  kutipan: [
+    "Karel setiap hari membeli 2 kelereng",
+    "Karel menghitung bertambahnya jumlah kelereng dalam setiap harinya",
+    "kelereng Karel bertambah 2 butir setiap harinya",
+    "Kelereng Karel saat hari ke-4",
+    "8 bisa dikatakan sebagai penjumlahan berulang dari 2 atau",
+    "8 adalah hasil kali 4 dengan 2.",
+    "8 disebut sebagai bilangan kelipatan dari 2",
+    "2, 4, 6, 8, 10, 12 dan 14 merupakan bilangan kelipatan 2",
+  ],
   ketukan: [
     k(
-      "Sekarang kelipatan dari bilangan cacah. Perhatikan: Wei setiap hari membeli dua kelereng, dan menghitung jumlah kelerengnya tiap hari.",
+      "Sekarang kelipatan dari bilangan cacah. Perhatikan: Karel setiap hari membeli dua kelereng, dan menghitung jumlah kelerengnya tiap hari.",
       bersih(0),
-      tambah(0, judul("Kelipatan: kelereng Wei")),
-      tambah("Wei", ...KH),
-      tambah("setiap", teks("khc", 150, 85, "Wei membeli 2 kelereng setiap hari", 9, W.coklat)),
+      tambah(0, judul("Kelipatan: kelereng Karel")),
+      tambah("Karel", ...KH),
+      tambah("setiap", teks("khc", 150, 85, "Karel membeli 2 kelereng setiap hari", 9, W.coklat)),
     ),
     k(
       "Hari pertama dua kelereng, hari kedua dua tambah dua sama dengan empat, hari ketiga enam, hari keempat delapan, hari kelima sepuluh, keenam dua belas, ketujuh empat belas.",
       ...muncul(D_KAREL, B_KAREL, ["pertama", "kedua", "ketiga", "keempat", "kelima", "keenam", "ketujuh"], ["kedua", "ketiga", "keempat", "kelima", "keenam", "ketujuh"]),
     ),
     k(
-      "Pada hari keempat Wei punya dua tambah dua tambah dua tambah dua, yaitu delapan. Jadi hari ketiga enam, hari keempat delapan.",
+      "Pada hari keempat Karel punya dua tambah dua tambah dua tambah dua, yaitu delapan. Jadi hari ketiga enam, hari keempat delapan.",
       ubah("keempat", { id: "kh-h3", warna: "#FEF08A" }, { id: "kt-b3", warna: "#FEF08A" }),
       tambah("yaitu", ...kartu("kk1", 20, 150, 260, 24, W.hijauMuda, ["2 + 2 + 2 + 2 = 8"], 10)),
       tambah("Jadi", ...kartu("kk2", 20, 178, 260, 20, W.krem, ["hari ke-3: 6 kelereng, hari ke-4: 8 kelereng"], 8.4)),
@@ -44,23 +52,28 @@ export const ADEGAN_KELIPATAN_KAREL: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 8. Mencoba: kelereng Malosi, kelipatan 3 (Buku Siswa hlm. 51; Panduan Guru hlm. 73) ------------------------------ */
+/* ------------------------------ 8. Mencoba: kelereng Slamet, kelipatan 3 (Buku Siswa hlm. 51; Panduan Guru hlm. 73) ------------------------------ */
 const SH = hariBenda("sh", 19, 30, 7, 3);
 const D_SLAMET = deret("ks", 21, 112, ["3", "?", "?", "?", "?", "?", "?"], KT);
 const B_SLAMET = busurSemua("ks", 21, 112, ["+3", "+3", "+3", "+3", "+3", "+3"], { ...KT, tinggi: 10 });
 export const ADEGAN_MENCOBA_SLAMET: AdeganStory = {
   id: "mencoba-slamet",
-  judul: "Mencoba: kelereng Malosi dan kelipatan 3",
-  sumber: "Materi: kelipatan 3 dari kelereng Malosi",
+  judul: "Mencoba: kelereng Slamet dan kelipatan 3",
+  sumber: "Materi: kelipatan 3 dari kelereng Slamet",
   latar: "#FEFCE8",
-  kutipan: kutipanLokal("k4b1i-materi-2.ts:2"),
+  kutipan: [
+    "Lengkapilah kotak-kotak kosong pada gambar di bawah ini.",
+    "3,6,9,12,15,18,21",
+    "menstimulus peserta didik untuk mengingat perkalian suatu bilangan dengan bilangan asli",
+    "mengamati pola bilang setelah dikalikan dengan bilangan asli",
+  ],
   ketukan: [
     k(
-      "Sekarang coba kamu. Malosi tiap hari mendapat tiga kelereng. Lengkapilah kotak kosong: hari pertama tiga, lalu tiga tambah tiga, dan seterusnya.",
+      "Sekarang coba kamu. Slamet tiap hari mendapat tiga kelereng. Lengkapilah kotak kosong: hari pertama tiga, lalu tiga tambah tiga, dan seterusnya.",
       bersih(0),
-      tambah(0, judul("Mencoba: kelereng Malosi")),
-      tambah("Malosi", ...SH),
-      tambah("Malosi", teks("shc", 150, 85, "Malosi mendapat 3 kelereng tiap hari", 9, W.coklat)),
+      tambah(0, judul("Mencoba: kelereng Slamet")),
+      tambah("Slamet", ...SH),
+      tambah("Slamet", teks("shc", 150, 85, "Slamet mendapat 3 kelereng tiap hari", 9, W.coklat)),
       tambah("Lengkapilah", ...D_SLAMET),
     ),
     k(
@@ -101,10 +114,19 @@ const D_K4 = deret("k4", 45, 100, ["4", "8", "12"], AND);
 const B_K4 = busurSemua("k4", 45, 100, ["+4", "+4"], { ...AND, tinggi: 12 });
 export const ADEGAN_BERLATIH_KELIPATAN: AdeganStory = {
   id: "berlatih-kelipatan",
-  judul: "Latihan: kelipatan 3, 6, 5, dan kartu Upe",
-  sumber: "Materi: kelipatan 3, 6, 5, dan kartu Upe",
+  judul: "Latihan: kelipatan 3, 6, 5, dan kartu Andi",
+  sumber: "Materi: kelipatan 3, 6, 5, dan kartu Andi",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1i-materi-2.ts:3"),
+  kutipan: [
+    "Tentukan kelipatan dari 3.",
+    "Tuliskan bilangan-bilangan kelipatan 6 kurang dari 40.",
+    "Tuliskan bilangan-bilangan kelipatan 5 yang lebih dari 17 dan kurang dari 35.",
+    "Setiap 2 hari sekali Andi membeli kartu anime sebanyak 4 lembar",
+    "Kelipatan dari 3 adalah 3,6,9,12,15,18,…",
+    "Kelipatan 6 kurang dari 40 adalah 6,12,18,24,30,36",
+    "Keliapan 5 lebih dari 17 kurang dari 35 adalah 20,25,30",
+    "Banyak kartu anime Andi pada hari ke 6 adalah 12 kartu anime.",
+  ],
   ketukan: [
     k(
       "Latihan satu: kelipatan tiga. Daftarnya: tiga, enam, sembilan, dua belas, lima belas, delapan belas, dan seterusnya. Titik tiga berarti dan seterusnya.",
@@ -150,9 +172,9 @@ export const ADEGAN_BERLATIH_KELIPATAN: AdeganStory = {
       tambah("Jawabnya", ...kartu("k5j", 60, 130, 180, 30, W.hijauMuda, ["20, 25, 30"], 11)),
     ),
     k(
-      "Latihan empat: setiap dua hari sekali Upe membeli empat lembar kartu anime. Hari pertama empat, ketiga delapan, kelima dua belas. Jadi hari keenam dua belas kartu, hasil tiga kali membeli.",
+      "Latihan empat: setiap dua hari sekali Andi membeli empat lembar kartu anime. Hari pertama empat, ketiga delapan, kelima dua belas. Jadi hari keenam dua belas kartu, hasil tiga kali membeli.",
       bersih(0),
-      tambah(0, judul("Latihan 4: kartu Upe")),
+      tambah(0, judul("Latihan 4: kartu Andi")),
       tambah(3, ...kartu("k4a", 20, 32, 260, 24, W.krem, ["tiap 2 hari: 4 lembar kartu"], 9.4)),
       tambah(14, ...suku(D_K4, 0), teks("k4c0", 70, 137, "hari 1", 8.6, W.coklat)),
       tambah(16, ...suku(D_K4, 1), ...B_K4[0], teks("k4c1", 150, 137, "hari 3", 8.6, W.coklat)),
@@ -176,7 +198,17 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Pesan guru: kesalahan yang sering terjadi",
   sumber: "Materi: kesalahan yang sering terjadi",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b1i-materi-2.ts:4"),
+  kutipan: [
+    "Miskonsepsi yang sering terjadi dalam faktor dan kelipatan",
+    "Hindari membagi menjadi bilangan desimal",
+    "Guru harus bisa membedakan hasil bagi dan sisa bagi",
+    "Bilangan 1 dan dirinya sendiri juga merupakan faktor dari bilangan tersebut",
+    "Kelipatan suatu bilangan itu hasilnya tidak berhingga",
+    "titik tiga menyatakan dan seterusnya",
+    "mengerjakan latihan tanpa bantuan",
+    "Diskusi dan Drill",
+    "ketua kelompok adalah peserta didik dengan tingkat kemampuan tinggi",
+  ],
   ketukan: [
     k(
       "Hati-hati, ada lima kesalahan yang sering terjadi. Pertama, hasil bagi faktor harus bilangan cacah, bukan desimal. Kedua, bedakan hasil bagi dan sisa bagi.",
@@ -226,7 +258,16 @@ export const ADEGAN_UK_NILAI_TEMPAT: AdeganStory = {
   judul: "Latihan penutup: nilai tempat",
   sumber: "Materi: nilai tempat bilangan",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b1i-materi-2.ts:5"),
+  kutipan: [
+    "Uji Kompetensi",
+    "Lengkapi tabel berikut dengan cermat.",
+    "Dua ribu dua ratus tiga puluh empat",
+    "Delapan ribu seratus sepuluh",
+    "Tulis nilai tempat dari angka 5 dari bilangan berikut.",
+    "Tujuh ribu tiga puluh empat",
+    "Delapan ribu dua",
+    "Tujuh Ribu Sembilan Ratus Lima",
+  ],
   ketukan: [
     k(
       "Sekarang latihan penutup bab. Lengkapi tabel nilai tempat. Contoh: dua ribu dua ratus tiga puluh empat, yaitu dua, dua, tiga, empat.",
@@ -281,7 +322,21 @@ export const ADEGAN_UK_HITUNG: AdeganStory = {
   judul: "Latihan penutup: tambah, kurang, kali, bagi",
   sumber: "Materi: tambah, kurang, kali, bagi",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k4b1i-materi-2.ts:6"),
+  kutipan: [
+    "Hitung penjumlahan berikut!",
+    "134 + 764",
+    "Hitung pengurangan berikut!",
+    "Tentukan hasil dari",
+    "d. 674 + 142 + 213 = 1.029",
+    "a. 712 – 324 = 388",
+    "b. 523 – 145 = 378",
+    "c. 612 – 389 = 223",
+    "d. 881 – 458 = 423",
+    "a. 21 × 4 = 84",
+    "d. 45 × 5 = 225",
+    "a. 96 : 3 = 32",
+    "d. 70 : 5 = 14",
+  ],
   ketukan: [
     k(
       "Mulai dari penjumlahan: delapan ratus sembilan puluh delapan, delapan ratus tiga puluh enam, tujuh ratus empat puluh satu, dan seribu dua puluh sembilan. Semua hasilnya cocok.",
@@ -313,7 +368,18 @@ export const ADEGAN_UK_FAKTOR_KELIPATAN: AdeganStory = {
   judul: "Latihan penutup: faktor dan kelipatan",
   sumber: "Materi: faktor dan kelipatan, latihan akhir",
   latar: "#FDF2F8",
-  kutipan: kutipanLokal("k4b1i-materi-2.ts:7"),
+  kutipan: [
+    "Tentukan nilai kelipatan 3 yang kurang dari 30!",
+    "Tentukan faktor dari:",
+    "Tentukan nilai kelipatan 4 yang lebih dari 7 dan kurang dari 25!",
+    "Lampu warna merah berkedip setiap 2 menit",
+    "pada pukul 18.10 WIB",
+    "3, 6, 9, 12, 15, 18, 21, 24, 27",
+    "Faktor dari 27 adalah 1, 3, 9, 27",
+    "Faktor dari 52 adalah 1, 2, 4, 13, 26, 52",
+    "8, 12, 16, 20, 24",
+    "18.10, 18.12, 18.14, 18.16 dan seterusnya",
+  ],
   ketukan: [
     k(
       "Coba tentukan kelipatan tiga kurang dari tiga puluh. Tiga, enam, sembilan, dan seterusnya sampai dua puluh tujuh.",
@@ -345,12 +411,12 @@ export const ADEGAN_UK_FAKTOR_KELIPATAN: AdeganStory = {
       tambah(25, ...suku(D_U14, 4)),
     ),
     k(
-      "Perhatikan cerita ini: lampu merah berkedip setiap dua menit. Halim melihatnya pukul delapan belas sepuluh WIB. Kapan lampu berkedip lagi?",
+      "Perhatikan cerita ini: lampu merah berkedip setiap dua menit. Helen melihatnya pukul delapan belas sepuluh WIB. Kapan lampu berkedip lagi?",
       bersih(0),
       tambah(0, judul("Lampu merah berkedip")),
       tambah("lampu", emo("lp", 40, 62, "🚨", 30)),
       tambah("setiap", ...kartu("lq", 80, 34, 200, 28, W.krem, ["berkedip tiap 2 menit"], 9.6)),
-      tambah("Halim", ...kartu("lr", 20, 70, 260, 22, W.langit, ["Halim melihat: pukul 18.10 WIB"], 9.2)),
+      tambah("Helen", ...kartu("lr", 20, 70, 260, 22, W.langit, ["Helen melihat: pukul 18.10 WIB"], 9.2)),
       tambah("pukul", ...suku(D_LAMPU, 0)),
     ),
     k(
@@ -370,7 +436,19 @@ export const ADEGAN_UK_CERITA: AdeganStory = {
   judul: "Latihan penutup: soal cerita",
   sumber: "Materi: soal cerita campuran",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1i-materi-2.ts:8"),
+  kutipan: [
+    "Keseluruhan siswa yang mengikuti lomba adalah 256 siswa",
+    "179 siswa diantaranya adalah siswa laki-laki",
+    "Slamet mendapat hadiah 36 kelereng dari kakaknya",
+    "Azizah ingin membagi sama rata gantungan kunci buat 5 temannya dan Azizah sendiri",
+    "Terdapat 24 botol air mineral dalam satu karton",
+    "Pak guru membeli 3 pak permen",
+    "256 – 179 = 77 siswa perempuan",
+    "36 + 111 – 54 = 93 kelereng",
+    "(128 + 76) : 6 = 34 gantungan",
+    "24 x 8 = 192 botol air",
+    "(3 x 30) : 5 = 90 : 5 = 18",
+  ],
   ketukan: [
     k(
       "Cerita pertama: lomba diikuti dua ratus lima puluh enam siswa, seratus tujuh puluh sembilan di antaranya laki-laki. Perempuan: dua ratus lima puluh enam kurang seratus tujuh puluh sembilan, yaitu tujuh puluh tujuh.",
@@ -382,20 +460,20 @@ export const ADEGAN_UK_CERITA: AdeganStory = {
       tambah(31, ...kartu("c94", 20, 152, 260, 28, W.pink, ["77 siswa perempuan"], 10)),
     ),
     k(
-      "Cerita kedua: Malosi punya seratus sebelas kelereng, dapat tiga puluh enam dari kakak, lalu memberi lima puluh empat kepada Wei. Seratus empat puluh tujuh kurang lima puluh empat, jadi sembilan puluh tiga.",
+      "Cerita kedua: Slamet punya seratus sebelas kelereng, dapat tiga puluh enam dari kakak, lalu memberi lima puluh empat kepada Asep. Seratus empat puluh tujuh kurang lima puluh empat, jadi sembilan puluh tiga.",
       bersih(0),
-      tambah(0, judul("Cerita kelereng Malosi")),
+      tambah(0, judul("Cerita kelereng Slamet")),
       tambah("kakak,", ...kartu("c101", 20, 36, 260, 30, W.hijauMuda, ["111 + 36 = 147"], 11)),
-      tambah("Wei.", ...kartu("c102", 20, 76, 260, 30, W.merahMuda, ["memberi 54 kepada Wei"], 10)),
+      tambah("Asep.", ...kartu("c102", 20, 76, 260, 30, W.merahMuda, ["memberi 54 kepada Asep"], 10)),
       tambah("kurang", ...kartu("c103", 20, 116, 260, 30, W.krem, ["147 − 54 = 93"], 11)),
       tambah("tiga@2", ...kartu("c104", 20, 156, 260, 28, W.pink, ["sekarang 93 kelereng"], 10)),
     ),
     k(
-      "Cerita ketiga: seratus dua puluh delapan ditambah tujuh puluh enam sama dengan dua ratus empat. Dibagi enam orang, Igil dan lima teman, hasilnya tiga puluh empat.",
+      "Cerita ketiga: seratus dua puluh delapan ditambah tujuh puluh enam sama dengan dua ratus empat. Dibagi enam orang, Azizah dan lima teman, hasilnya tiga puluh empat.",
       bersih(0),
       tambah(0, judul("Cerita gantungan")),
       tambah("ditambah", ...kartu("c111", 20, 36, 260, 30, W.hijauMuda, ["128 + 76 = 204"], 11)),
-      tambah("Igil", ...kartu("c112", 20, 76, 260, 30, W.krem, ["6 orang: Igil + 5 teman"], 10)),
+      tambah("Azizah", ...kartu("c112", 20, 76, 260, 30, W.krem, ["6 orang: Azizah + 5 teman"], 10)),
       tambah("hasilnya", ...kartu("c113", 20, 116, 260, 30, W.langit, ["204 : 6 = 34"], 11)),
       tambah("empat@2", ...kartu("c114", 20, 156, 260, 28, W.pink, ["tiap orang 34 gantungan"], 10)),
     ),

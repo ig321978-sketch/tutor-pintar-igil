@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, judul, kartu, kotak, pohon, tabel, tangga, teks, type Pohon } from "./k5b2e-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b2e-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Pohon faktor 196, 300, 270, dan kunci 260 (Buku Siswa hlm. 56, Panduan Guru hlm. 79 sampai 81) ------------------------------ */
 export const POHON_196 = tangga(196, [2, 2, 7, 7]);
@@ -24,7 +23,17 @@ export const ADEGAN_POHON: AdeganStory = {
   judul: "Pohon faktor 196, 300, 270, dan 260",
   sumber: "Materi: pohon faktor",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b2e-materi-2.ts:1"),
+  kutipan: [
+    "Faktorisasi prima dari 196 adalah 2 x 2 x 7 x 7",
+    "Faktorisasi prima dari 300 adalah 2 x 2 x 3 x 5 x 5",
+    "Coba pikirkan cara membuat pohon faktor tersebut.",
+    "Selanjutnya, bagaimana bentuk pohon faktor dari 270?",
+    "Kalian boleh membuat bentuk pohon faktor yang berbeda",
+    "asalkan tetap memenuhi kaidah cara pembuatan pohon faktor yang benar.",
+    "Faktorisasi prima dari 260 adalah 2 × 2 × 5 × 13",
+    "Soal Tambahan",
+    "Kunci Jawaban Soal Tambahan",
+  ],
   ketukan: [
     k(
       "Pohon faktor seratus sembilan puluh enam: dibagi dua menjadi dua dan sembilan puluh delapan, lalu dibagi dua lagi menjadi dua dan empat puluh sembilan.",
@@ -80,7 +89,21 @@ export const ADEGAN_KPK_FPB_PRIMA: AdeganStory = {
   judul: "KPK dan FPB dari faktorisasi prima: 72 dan 150",
   sumber: "Materi: KPK dan FPB dari faktor prima",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b2e-materi-2.ts:2"),
+  kutipan: [
+    "Ayo, kita tentukan KPK dan PFB dari bilangan 72 dan 96 dengan menggunakan faktorisasi prima.",
+    "Menuliskan faktorisasi prima dari 72 dan 150.",
+    "72 = 2 x 2 x 2 x 3 x 3",
+    "150 = 2 x 3 x 5 x 5",
+    "Kita tuliskan bilangan prima yang memiliki pasangan cukup sekali saja, kemudian tuliskan semua bilangan prima yang tidak memiliki pasangan.",
+    "Hasil perkalian semua bilangan tersebut merupakan KPK dari 72 dan 150.",
+    "KPK dari 72 dan 150 adalah 2 x 3 x 2 x 2 x 3 x 5 x 5 = 1.800",
+    "FPB merupakan hasil kali bilangan tersebut.",
+    "FPB dari 72 dan 150 adalah 2 x 3 = 6",
+    "Untuk bilangan-bilangan dengan hasil faktorisasi prima tidak memiliki bilangan prima yang berpasangan, maka FPB-nya adalah 1.",
+    "FPB dari bilangan 15 dan 28 adalah 1",
+    "15 = 3 x 5",
+    "28 = 2 x 2 x 7",
+  ],
   ketukan: [
     k(
       "Sekarang KPK dan FPB dengan faktorisasi prima, contohnya tujuh puluh dua dan seratus lima puluh. Tujuh puluh dua adalah dua, dua, dua, tiga, tiga. Seratus lima puluh adalah dua, tiga, lima, lima.",
@@ -138,7 +161,17 @@ export const ADEGAN_BERULANG: AdeganStory = {
   judul: "Pembagian berulang untuk KPK dan FPB 72 dan 150",
   sumber: "Materi: pembagian berulang",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b2e-materi-2.ts:3"),
+  kutipan: [
+    "4. Menentukan KPK dan FPB Menggunakan Pembagian Berulang",
+    "Bagian ini hanya sebagai referensi tambahan bagi peserta didik.",
+    "Materi ini hanya bagian dari teknik, bukan konseptual",
+    "Jika tidak habis dibagi dengan suatu bilangan, maka tuliskan bilangan yang sama di baris selanjutnya.",
+    "Jika baris terakhir hasilnya semua sudah 1, artinya langkah sudah selesai.",
+    "KPK dari 72 dan 150 adalah hasil perkalian semua pembagi prima pada pembagian berulang tersebut.",
+    "KPK dari 72 dan 150 adalah 2 x 2 x 2 x 3 x 3 x 5 x 5 = 1.800",
+    "FPB dari 75 dan 150 adalah hasil kali bilangan prima yang dapat membagi habis 75 dan 150.",
+    "FPB dari 75 dan 150 adalah 2 x 3 = 6",
+  ],
   ketukan: [
     k(
       "Cara keempat adalah pembagian berulang. Ini hanya referensi tambahan, karena tekniknya, bukan konsepnya. Kuasai dulu cara biasa dan faktorisasi prima.",
@@ -182,7 +215,30 @@ export const ADEGAN_LATIHAN: AdeganStory = {
   judul: "Latihan faktorisasi prima, KPK, dan FPB",
   sumber: "Materi: latihan faktorisasi prima",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b2e-materi-2.ts:4"),
+  kutipan: [
+    "Tentukan faktorisasi prima dari bilangan-bilangan berikut dengan menggunakan pohon faktor.",
+    "Tentukan KPK dan FPB dari bilangan-bilangan berikut dengan menggunakan cara faktorisasi prima dan cara pembagian berulang.",
+    "a. 42, 60",
+    "b. 27, 81",
+    "c. 6, 10, 15",
+    "d. 7, 18, 33",
+    "e. 30, 64, 86",
+    "Faktorisasi prima dari 60 adalah 2 × 2 × 3 × 5",
+    "Faktorisasi prima dari 96 adalah 2 × 2 × 2 × 2 × 2 × 3",
+    "FPB = 2 × 3 = 6",
+    "KPK = 2 × 2 × 3 × 5 × 7 = 420",
+    "FPB = 3 × 3 × 3 = 27",
+    "KPK = 3 × 3 × 3 × 3 = 81",
+    "FPB = 1 (karena tidak ada pembagi prima yang sama di ketiga bilangan)",
+    "KPK = 2 × 3 × 5 = 30.",
+    "KPK = 2 × 3 × 3 × 7 × 11 = 1.386",
+    "KPK = 2 × 3 × 5 × 2 × 2 × 2 × 2 × 2 × 43 = 41.280",
+    "Tentukan KPK dan FPB pasangan bilangan berikut dengan menggunakan faktorisasi prima.",
+    "FPB = 2 × 2 × 3 × 3 = 36",
+    "KPK = 2 × 2 × 3 × 3 × 3 = 108",
+    "KPK = 5 × 2 × 3 × 5 × 7 = 1.050",
+    "KPK = 2 × 3 × 2 × 2 × 5 × 2 × 2 = 1.080",
+  ],
   ketukan: [
     k(
       "Latihan satu, pohon faktor. Enam puluh menjadi dua, dua, tiga, lima. Sembilan puluh enam menjadi lima faktor dua dan satu faktor tiga.",

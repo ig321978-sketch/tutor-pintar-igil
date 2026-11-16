@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, bulat, candi, emo, garis, judul, kartu, kotak, sedotan, segitiga, tabel, teks, idBaris, titikSisi } from "./k5b7a-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k5b7a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab: Candi Sewu (hlm. 191 sampai 194) ------------------------------ */
 export const ADEGAN_PEMBUKA: AdeganStory = {
@@ -9,7 +8,20 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 7: Candi Sewu dan bentuk segitiga",
   sumber: "Buku Siswa hlm. 191–194",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b7a-materi-1.ts:1"),
+  kutipan: [
+    "Setelah mempelajari bab ini, diharapkan kalian mampu",
+    "membandingkan berbagai macam bangun datar dengan",
+    "Candi Sewu adalah sebuah candi Buddha yang terletak di Yogyakarta",
+    "hanya sekitar 249 buah",
+    "Candi Sewu merupakan peninggalan Dinasti Syailendra",
+    "dibangun pada abad ke-8 Masehi",
+    "mengamati bentuk-bentuk bangunan yang ada di kompleks Candi Sewu",
+    "selain agar lebih kokoh, bentuk segitiga",
+    "juga melambangkan hubungan manusia yang terpusat kepada Tuhan",
+    "Komang dan Nisa berbeda pendapat tentang bentuk bangunan",
+    "Apakah berbentuk segitiga sama sisi?",
+    "Bolehkah segitiga sama sisi juga disebut segitiga sama kaki?",
+  ],
   ketukan: [
     k(
       "Bab 7 membandingkan ciri-ciri bangun datar. Subbab A membahas ciri-ciri segitiga. Tujuannya, kalian mampu membandingkan berbagai macam bangun datar dengan memperhatikan ciri-cirinya.",
@@ -29,10 +41,10 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("sekitar", teks("c4", 222, 144, "sekitar 249 candi", 9, W.merah)),
     ),
     k(
-      "Upe dan teman-teman mengamati bentuk bangunan candi. Ternyata banyak yang mirip bangun datar di sekolah.",
+      "Yohana dan teman-teman mengamati bentuk bangunan candi. Ternyata banyak yang mirip bangun datar di sekolah.",
       bersih(0),
       tambah(0, judul("mengamati bentuk bangunan")),
-      tambah("Upe", emo("yh", 40, 110, "👧", 34), teks("yt", 40, 134, "Upe", 8.6)),
+      tambah("Yohana", emo("yh", 40, 110, "👧", 34), teks("yt", 40, 134, "Yohana", 8.6)),
       tambah("teman-teman", emo("tm", 90, 110, "🧒", 34), teks("tt", 90, 134, "teman", 8.6)),
       tambah("candi", ...candi("cd2", 215, 150, 1.7)),
       tambah("mirip", garis("pm", 105, 112, 40, 0, W.hijau, 3, { gambar: true }), teks("mr", 150, 176, "mirip bangun datar", 9.4, W.ungu)),
@@ -47,9 +59,9 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("hubungan", ...kartu("tu", 140, 100, 150, 50, W.langit, ["manusia terpusat", "kepada Tuhan"], 9.2)),
     ),
     k(
-      "Wei dan Malosi berbeda pendapat tentang bentuk candi. Satu menyebutnya mirip segitiga sama sisi, yang lain mengatakan lebih tepat disebut segitiga sama kaki.",
+      "Komang dan Nisa berbeda pendapat tentang bentuk candi. Satu menyebutnya mirip segitiga sama sisi, yang lain mengatakan lebih tepat disebut segitiga sama kaki.",
       bersih(0),
-      tambah(0, judul("Wei dan Malosi berbeda pendapat")),
+      tambah(0, judul("Komang dan Nisa berbeda pendapat")),
       tambah("Satu", segitiga("ss", 40, 150, [[0, 0], [70, 0], [35, -60.6]], W.jingga), teks("ssl", 75, 172, "segitiga sama sisi?", 8.6)),
       tambah("lain", segitiga("sk", 200, 150, [[0, 0], [50, 0], [25, -70]], W.langit), teks("skl", 225, 172, "segitiga sama kaki?", 8.6)),
     ),
@@ -82,25 +94,39 @@ export const ADEGAN_DENAH_PETA: AdeganStory = {
   judul: "Denah Candi Sewu, peta konsep, dan bekal awal",
   sumber: "Buku Siswa hlm. 192 dan 195; Panduan Guru hlm. 291–293",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b7a-materi-1.ts:2"),
+  kutipan: [
+    "Asep dan Lukas juga berdiskusi seru ketika menemukan",
+    "denah kompleks Candi Sewu",
+    "Kompleks Candi Sewu",
+    "panjangnya 185 m dan",
+    "lebarnya 165 m. Karena tidak sama,",
+    "seharusnya disebut persegi panjang",
+    "Kapankah suatu segi empat digolongkan sebagai persegi?",
+    "Bolehkah persegi juga disebut sebagai persegi panjang?",
+    "Peta Konsep",
+    "Macam-macam Segitiga Berdasarkan Panjang Sisinya",
+    "Jumlah Sudut-Sudut dalam Segitiga",
+    "Kata Kunci",
+    "Di kelas IV, kalian sudah belajar berbagai macam bangun datar",
+  ],
   ketukan: [
     k(
-      "Igil dan Kira membahas denah kompleks Candi Sewu. Kata Igil, candi kecil di sekeliling candi utama sama banyak di tiap sisi, jadi berbentuk persegi.",
+      "Asep dan Lukas membahas denah kompleks Candi Sewu. Kata Asep, candi kecil di sekeliling candi utama sama banyak di tiap sisi, jadi berbentuk persegi.",
       tambah(0, judul("denah kompleks Candi Sewu")),
       tambah("denah", kotak("dn", 40, 40, 110, 110, W.krem, W.coklat, { rx: 2 })),
       tambah("kecil", ...titikPinggir("dt")),
       tambah("utama", kotak("ut", 80, 80, 30, 30, W.batu, W.coklat, { rx: 2 }), teks("utt", 95, 99, "utama", 7, W.coklat)),
       tambah("tiap", teks("sm1", 225, 82, "tiap sisi", 9.4, W.ungu), teks("sm2", 225, 96, "sama banyak", 9.4, W.ungu)),
-      tambah("persegi.", teks("pg", 225, 126, "Igil: persegi", 9.4, W.hijau)),
+      tambah("persegi.", teks("pg", 225, 126, "Asep: persegi", 9.4, W.hijau)),
     ),
     k(
-      "Kira membaca keterangan: panjangnya seratus delapan puluh lima meter dan lebarnya seratus enam puluh lima meter. Karena tidak sama, menurut Kira seharusnya persegi panjang.",
+      "Lukas membaca keterangan: panjangnya seratus delapan puluh lima meter dan lebarnya seratus enam puluh lima meter. Karena tidak sama, menurut Lukas seharusnya persegi panjang.",
       bersih(0),
       tambah(0, judul("keterangan panjang dan lebar")),
       tambah("panjangnya", kotak("pj", 50, 44, 111, 99, W.krem, W.coklat, { rx: 2 }), teks("pjt", 105, 160, "185 m", 10, W.merah)),
       tambah("lebarnya", teks("lbt", 170, 98, "165 m", 10, W.merah, { anchor: "start" })),
       tambah("tidak", teks("tdk", 235, 70, "185 ≠ 165", 10, W.ungu)),
-      tambah("persegi", teks("lk", 235, 100, "Kira:", 9.4, W.hijau), teks("lk2", 235, 113, "persegi panjang", 9.4, W.hijau)),
+      tambah("persegi", teks("lk", 235, 100, "Lukas:", 9.4, W.hijau), teks("lk2", 235, 113, "persegi panjang", 9.4, W.hijau)),
     ),
     k(
       "Tiga pertanyaan menanti: pendapat siapa yang tepat, kapan segi empat menjadi persegi, dan bolehkah persegi disebut persegi panjang?",
@@ -151,7 +177,18 @@ export const ADEGAN_SEDOTAN: AdeganStory = {
   judul: "Percobaan: membuat segitiga dari sedotan",
   sumber: "Materi: percobaan tiga sedotan",
   latar: "#FEFCE8",
-  kutipan: kutipanLokal("k5b7a-materi-1.ts:3"),
+  kutipan: [
+    "Eksplorasi 7.1A",
+    "Ayo Membuat Segitiga",
+    "segitiga adalah bangun",
+    "datar yang dibatasi tiga sisi",
+    "Apakah jika kita memiliki sembarang tiga ruas garis dengan panjang",
+    "tertentu, maka pasti bisa membentuk segitiga?",
+    "Ambillah tiga sedotan dengan",
+    "Ikat kedua ujung tali",
+    "Catatlah hasil percobaan kalian pada tabel berikut.",
+    "Apakah Bisa",
+  ],
   ketukan: [
     k(
       "Mari mulai dengan percobaan, kita membuat segitiga. Pertanyaannya: jika punya sembarang tiga ruas garis, apakah pasti bisa membentuk segitiga?",

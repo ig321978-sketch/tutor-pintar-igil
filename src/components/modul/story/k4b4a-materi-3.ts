@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { PETA, W, emo, garis, idNomor, idSel, judul, kartu, kisiLatar, kotak, luasPeta, nomori, panah, penuh, sel, segitigaKisi, SEGITIGA_N3, teks } from "./k4b4a-gambar";
 import { bersih, idx, k, sorotkan, tambah, ubah } from "./k4b4a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /** Baris hitungan Ayo Berlatih (hlm. 114): banyak petak per baris bangun A sampai D. */
 export const BERLATIH_PETAK = { A: [1, 1, 2, 3, 3, 3], B: [1, 2, 4, 5, 1], C: [1, 2, 4, 2, 2], D: [3, 2, 2, 2, 1, 5] } as const;
@@ -13,7 +12,7 @@ const X4 = { A: 16, B: 70, C: 138, D: 206 } as const;
 const jumlahBaris = (n: readonly number[]) => n.join(" + ");
 
 /* ------------------------------ 9. Ayo Berlatih: luas bangun A sampai D (Buku Siswa hlm. 114–115; Panduan Guru hlm. 151) ------------------------------ */
-const SUARA_R1 = "Sekarang berlatih. Igil dan Malosi punya mainan bongkar pasang berbentuk persegi. Tentukan luas bangun A, B, C, dan D.";
+const SUARA_R1 = "Sekarang berlatih. Slamet dan Helen punya mainan bongkar pasang berbentuk persegi. Tentukan luas bangun A, B, C, dan D.";
 const SUARA_R2 = "Bangun A: baris dari atas berisi satu, satu, dua, tiga, tiga, dan tiga petak. Jadi luasnya tiga belas persegi satuan.";
 const SUARA_R3 = "Bangun B: satu, dua, empat, lima, dan satu petak. Luasnya juga tiga belas persegi satuan.";
 const SUARA_R4 = "Bangun C: satu, dua, empat, dua, dan dua petak. Jadi luasnya sebelas persegi satuan.";
@@ -35,7 +34,22 @@ export const ADEGAN_BERLATIH_PERSEGI: AdeganStory = {
   judul: "Latihan: luas bangun A, B, C, D",
   sumber: "Materi: luas bangun berpetak",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b4a-materi-3.ts:1"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Slamet dan Helen memiliki mainan bongkar pasang berbentuk persegi.",
+    "tersebut dapat dibuat berbagai bentuk.",
+    "Tentukan luas dari gambar A, B, C, D dengan menggunakan persegi satuan.",
+    "Luas bangun A adalah",
+    "persegi satuan",
+    "Apakah ada bangun yang memiliki luas yang sama?",
+    "Salinlah jawabanmu pada buku tulis.",
+    "Pandu peserta didik untuk menentukan luas bangun A, B, C, dan D.",
+    "Luas bangun A adalah 13 persegi satuan",
+    "Luas bangun B adalah 13 persegi satuan",
+    "Luas bangun C adalah 11 persegi satuan",
+    "Luas bangun A adalah 15 persegi satuan",
+    "Ada, luas bangun A dan bangun B adalah 13 persegi satuan.",
+  ],
   ketukan: [
     k(
       SUARA_R1,
@@ -102,7 +116,29 @@ export const ADEGAN_SATUAN_BAKU: AdeganStory = {
   judul: "Satuan baku luas: cm² dan m²",
   sumber: "Materi: satuan baku luas",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b4a-materi-3.ts:2"),
+  kutipan: [
+    "Pengukuran luas dengan menggunakan satuan baku",
+    "Gambar (a) memiliki",
+    "luas adalah 13 persegi",
+    "Gambar (b) memiliki",
+    "luas adalah 4 persegi",
+    "terdapat dua bangun yang memiliki luas yang berbeda.",
+    "Amatilah apakah ukuran persegi satuan pada gambar",
+    "ukuran perseginya tidak sama.",
+    "Karena satuan luas memiliki ukuran yang tidak sama, sehingga kalian perlu",
+    "mengetahui satuan luas yang baku.",
+    "Sebuah persegi memiliki ukuran sisi 1 cm",
+    "digunakan sebagai satuan baku.",
+    "Satuan baku yang umumnya digunakan untuk mengukur luas adalah",
+    "sentimeter persegi.",
+    "Singkatnya, cm² dapat juga dinyatakan dengan cm persegi.",
+    "Untuk mengukur luas yang lebih besar (misalnya lapangan",
+    "bola) dapat menggunakan persegi satuan dengan sisi 1 m",
+    "m² adalah satuan baku untuk mengukur luas.",
+    "Peserta didik perlu diingatkan terkiat satuan baku panjang misalkan km,",
+    "hm, dam, m, dm, cm, mm.",
+    "Satuan baku untuk luas cukup menuliskan km2, hm2, dam2, m2, dm2, cm2,",
+  ],
   ketukan: [
     k(
       SUARA_S1,
@@ -155,7 +191,19 @@ export const ADEGAN_KONVERSI: AdeganStory = {
   judul: "Konversi m² dan cm²",
   sumber: "Materi: konversi m² dan cm²",
   latar: "#FEF2F2",
-  kutipan: kutipanLokal("k4b4a-materi-3.ts:3"),
+  kutipan: [
+    "Bagaimana hubungan satuan luas yaitu cm dan m?",
+    "Ingat!",
+    "1 m = 100 cm",
+    "atau",
+    "100 cm =1 m",
+    "10.000 cm² = 1 m²",
+    "Perlu ditekankan kepada peserta didik konversi dari setiap satuan baku.",
+    "Peserta didik mengalami miskonsepsi pada saat konversi antara satuan",
+    "baku misalkan m2 ke cm2. Jika mengingat konversi pada satuan panjang,",
+    "maka m ke cm dikalikan 100. Ini sering terjadi kepada peserta didik m2",
+    "ke cm2 dikalikan 100, seharusnya dikalikan 1002.",
+  ],
   ketukan: [
     k(
       SUARA_V1,
@@ -211,7 +259,20 @@ export const ADEGAN_MENCOBA_SATU: AdeganStory = {
   judul: "Latihan 1: dua bangun, luas 13 cm²",
   sumber: "Materi: luas dua bangun berpetak",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b4a-materi-3.ts:4"),
+  kutipan: [
+    "Ayo Mencoba",
+    "Tentukan luas daerah berikut dengan cermat.",
+    "Apakah kalian dapat menjawab permasalahan nomor 1?",
+    "Luas bangun (ii) pun",
+    "Minta peserta didik untuk mengamati Latihan soal berikut.",
+    "ukuran 1 persegian satuan yang",
+    "digunakan 1 cm x 1 cm.",
+    "Pandu peserta didik untuk",
+    "menentukan luas bangun (i) dan (ii).",
+    "Luas bangun (i) adalah 13 cm2 dan",
+    "luas bangun (ii) adalah 13 cm2.",
+    "Tunjuk 1-2 peserta didik untuk",
+  ],
   ketukan: [
     k(
       SUARA_T1,
@@ -258,7 +319,23 @@ export const ADEGAN_MENCOBA_DUA: AdeganStory = {
   judul: "Latihan 2: bangun dengan luas 9 cm²",
   sumber: "Materi: bangun dengan luas 9 cm²",
   latar: "#ECFDF5",
-  kutipan: kutipanLokal("k4b4a-materi-3.ts:5"),
+  kutipan: [
+    "Gambarlah sembarang bentuk pada bidang berikut dengan luas 9",
+    "setiap sisi persegi adalah 1",
+    "Selesaikan permasalahan pada nomor 2.",
+    "Bangun yang dapat",
+    "saya buat seperti ini.",
+    "Apakah jawabannya hanya satu bangun saja?",
+    "Tidak. Masih",
+    "terdapat bentuk",
+    "lainnya, Pak.",
+    "silahkan kalian buat bangun baru",
+    "Jika diketahui ukuran luas dari sebuah bidang, maka bentuk bidangnya lebih",
+    "dari satu. Dengan syarat, ukuran persegi satuan sama.",
+    "Soal tersebut merupakan tipe soal open ended.",
+    "Soal open ended merupakan soal yang memiliki banyak jawaban dan",
+    "Guru harus menyediakan jawaban alternatif dari peserta didik.",
+  ],
   ketukan: [
     k(
       SUARA_U1,
@@ -311,7 +388,20 @@ export const ADEGAN_BERLATIH_BAKU: AdeganStory = {
   judul: "Latihan: satuan baku, tiga tantangan",
   sumber: "Materi: latihan satuan baku",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k4b4a-materi-3.ts:6"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Hubungkan gambar dengan satuan luasnya berikut ini dengan cermat!",
+    "Sentimeter persegi",
+    "Meter persegi",
+    "Tentukan luas bangun yang diarsir pada bidang persegi berukuran 1 cm ×",
+    "1 cm.",
+    "Soal nomor 1.",
+    "Guru mengarahkan peserta didik untuk mencocok gambar bagian kanan dan",
+    "Soal nomor 2.",
+    "Luas bangun yang di arsir pada nomor 2 adalah 12 cm2.",
+    "Soal nomor 3.",
+    "Luas bangun yang di arsir pada nomor 3 adalah 9 cm2.",
+  ],
   ketukan: [
     k(
       SUARA_Y1,
@@ -362,7 +452,24 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Kesalahan umum, tantangan, dan ringkasan",
   sumber: "Materi: kesalahan umum dan ringkasan",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b4a-materi-3.ts:7"),
+  kutipan: [
+    "Miskonsepsi",
+    "Miskonsepsi yang sering terjadi dalam pengukuran luas, yaitu",
+    "Peserta didik mengukur luas daerah menggunakan satuan tidak baku",
+    "yang berbeda-beda atau dicampur.",
+    "Mengukur luas daerah harus menggunakan jenis satuan tidak baku",
+    "digunakan harus menutupi seluruh daerah tanpa celah.",
+    "Mengukur luas dengan persegi satuan, harus ditekankan ukuran",
+    "persegi satuan berbeda-beda.",
+    "Diferensiasi",
+    "mengerjakan latihan tanpa bantuan.",
+    "Kesulitan yang dialami peserta didik dalam memahami konsep luas",
+    "Peserta didik mengalami kesulitan dalam menentukan satuan tidak",
+    "Peserta didik belum memahami bahwa luas suatu daerah harus ditutupi",
+    "pembelajaran yang disarankan untuk subbab luas adalah Diskusi dan",
+    "Tanya Jawab",
+    "kelompok adalah peserta didik dengan tingkat kemampuan tinggi",
+  ],
   ketukan: [
     k(
       SUARA_Z1,

@@ -3,7 +3,6 @@
 // teks bertumpuk, pemisahan materi dan metode luar, tidak membocorkan Sub-Bab D dan E (desimal, persen), kutipan buku terhadap teks PDF (pdftotext, atau PyMuPDF bila tidak ada),
 // pecahan, batang, kisi, dan dinding pada gambar dihitung ulang dari gambar (jumlah bagian, bagian berarsir, geometri), hitungan mandiri pecahan senilai, FPB, dan kunci Panduan Guru, emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b2c.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -336,7 +335,7 @@ const teksLepas = (objs) => objs.filter((o) => o.t === "teks" && o.isi).map((o) 
   const CONTOH = [[1, 2], [2, 4], [3, 6]];
   sama(G.KERTAS, KERTAS, "data kertas Aktivitas 2 (1 dari 4, 4 dari 16)");
   sama(G.COKLAT.bagian, [6, 3], "data coklat: 6 bagian dan 3 bagian");
-  sama(G.COKLAT.putu, [[2, 6], [1, 3]], "data coklat: bagian Malosi 2/6 dan 1/3");
+  sama(G.COKLAT.putu, [[2, 6], [1, 3]], "data coklat: bagian Putu 2/6 dan 1/3");
   sama(G.LATIHAN, LATIHAN, "data Ayo Berlatih 1 sampai 3");
   sama(G.CONTOH_BERPIKIR, CONTOH, "data contoh jawaban Ayo Berpikir");
   sama(G.LEBAR_DINDING, 216, "lebar dinding 216");
@@ -399,9 +398,9 @@ const teksLepas = (objs) => objs.filter((o) => o.t === "teks" && o.isi).map((o) 
     const warna2 = sel(c2, "c2").map((o) => o.warna);
     sama(warna2, [warna1[0], warna1[2], warna1[4]], "coklat 2: tiga anak masing-masing satu bagian, warna sama dengan coklat 1");
     const lebarPutu1 = sel(c2, "c1")[0].w * 2;
-    sama(Math.round(lebarPutu1 * 1e6), Math.round(sel(c2, "c2")[0].w * 1e6), "coklat: bagian Malosi sama panjang pada kedua batang");
+    sama(Math.round(lebarPutu1 * 1e6), Math.round(sel(c2, "c2")[0].w * 1e6), "coklat: bagian Putu sama panjang pada kedua batang");
     const c3 = T(M, "amati-coklat", 3);
-    sama([frac(c3, "p1"), frac(c3, "p2")], [[2, 6], [1, 3]], "coklat: bagian Malosi 2/6 dan 1/3");
+    sama([frac(c3, "p1"), frac(c3, "p2")], [[2, 6], [1, 3]], "coklat: bagian Putu 2/6 dan 1/3");
     const j = T(M, "coklat-jawab", 1);
     for (const a of [0, 1, 2]) {
       cek(frac(j, `u${a}`).join() === "2,6" && frac(j, `v${a}`).join() === "1,3", `coklat jawab: bagian ${a + 1} bertanda 2/6 dan 1/3`);
@@ -726,8 +725,8 @@ const teksLepas = (objs) => objs.filter((o) => o.t === "teks" && o.isi).map((o) 
       }
     }
     stat.kutipan = n;
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 70, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
+    cek(n >= 70, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
     cek(/d\. pecahan desimal persepuluhan dan perseratusan/.test(bersih(bagian[2])) && !/d\. pecahan desimal persepuluhan dan perseratusan/.test(siswa), "subbab D mulai di Buku Siswa PDF 83, bukan di PDF 78-82");
     cek(siswa.includes("c. pecahan senilai") && guru.includes("c. pecahan senilai"), "judul subbab C ada di Buku Siswa dan Panduan Guru");
     // Angka dan istilah yang dipakai video.
@@ -765,7 +764,7 @@ const teksLepas = (objs) => objs.filter((o) => o.t === "teks" && o.isi).map((o) 
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b2c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b2c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2c sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

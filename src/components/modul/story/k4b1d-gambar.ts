@@ -2,7 +2,7 @@ import type { Obj } from "./logika-story";
 
 /**
  * Gambar khusus Story Kelas 4 Bab 1 Sub-Bab D (Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000): papan nilai tempat, kartu bagian,
- * deret uang Malosi, dan diagram ikatan bilangan. Berkas ini TIDAK dipakai bab lain. Semua fungsi mengembalikan data benda (Obj).
+ * deret uang Helen, dan diagram ikatan bilangan. Berkas ini TIDAK dipakai bab lain. Semua fungsi mengembalikan data benda (Obj).
  * Papan nilai tempat: kotak kepala `id-h{kolom}`, teks kepala `id-ht{kolom}`, kotak angka `id-d{kolom}`, teks angka `id-dt{kolom}` (kolom 0 = ribuan sampai 3 = satuan)
  * supaya uji bisa membaca ulang angka yang tergambar. Uang: `id-k{i}` (kotak) dan `id-t{i}` (nilai) supaya uji bisa menjumlah ulang.
  */
@@ -84,7 +84,7 @@ export const URAI_LATIHAN: readonly (readonly number[])[] = [
   [7, 0, 0, 0],
   [9, 9, 9, 9],
 ];
-/** Uang Malosi (Buku Siswa hlm. 28): nilai pecahan lalu banyak keping atau lembar. */
+/** Uang Helen (Buku Siswa hlm. 28): nilai pecahan lalu banyak keping atau lembar. */
 export const UANG_HELEN: readonly (readonly [number, number])[] = [
   [100, 4],
   [500, 2],

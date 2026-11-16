@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, baris, busurDerajat, busurSudut, emo, garis, ide, juring, kartu, panah, sinar, sudut, teks, titikSudut, ujung } from "./k5b6d-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b6d-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const jud = (isi: string, y = 20, u = 12): Obj => teks("jud", 150, y, isi, u, W.ungu);
 const ids = (a: Obj[]): string[] => a.map((o) => o.id);
@@ -12,7 +11,7 @@ export const ADEGAN_PEMBUKA_D: AdeganStory = {
   judul: "Pembuka Sub-Bab D: melukis sudut",
   sumber: "Buku Siswa hlm. 183; Buku Panduan Guru hlm. 269",
   latar: "#EEF2FF",
-  kutipan: kutipanLokal("k5b6d-materi-1.ts:1"),
+  kutipan: ["D. Melukis Sudut", "melukis sudut dengan ukuran tertentu", "memecahkan masalah yang berkaitan dengan sudut", "membuat rancangan peta kota dengan menggunakan konsep sudut", "Alat tulis", "Penggaris", "Busur derajat", "menjelaskan pengalaman belajar"],
   ketukan: [
     k(
       "Selamat datang di Sub-Bab D, melukis sudut. Ini bagian terakhir dari Bab 6, Sudut. Di sini kita belajar membuat sudut dengan ukuran tertentu.",
@@ -54,7 +53,7 @@ export const ADEGAN_APERSEPSI_D: AdeganStory = {
   judul: "Apersepsi: panjang kaki tidak memengaruhi besar sudut",
   sumber: "Buku Panduan Guru hlm. 269–270",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b6d-materi-1.ts:2"),
+  kutipan: ["Sudut manakah yang lebih besar?", "Pasangan sudut 1", "Pasangan sudut 2", "jarak antara ujung kaki sudut tidak memengaruhi besar sudut", "mengukur setiap sudut dengan menggunakan busur derajat", "sudut B lebih besar daripada sudut A", "mengulang materi sebelumnya tentang mengukur dan membandingkan ukuran sudut"],
   ketukan: [
     k(
       "Guru memulai dengan mengulang materi mengukur dan membandingkan sudut, lalu menunjukkan dua pasang gambar sudut dan bertanya: sudut manakah yang lebih besar?",
@@ -96,7 +95,7 @@ export const ADEGAN_APERSEPSI_D: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Ayo Menyimak: kipas Malosi, langkah 1 sampai 2 (hlm. 183) ------------------------------ */
+/* ------------------------------ 3. Ayo Menyimak: kipas Lukas, langkah 1 sampai 2 (hlm. 183) ------------------------------ */
 const VX = 105;
 const VY = 140;
 const R = 78;
@@ -104,20 +103,20 @@ const bd = (dua = false) => busurDerajat("bd", VX, VY, R, "kanan", dua, { z: 1 }
 
 export const ADEGAN_KIPAS_LANGKAH: AdeganStory = {
   id: "kipas-langkah",
-  judul: "Ayo Menyimak: kipas Malosi dan langkah satu sampai dua",
-  sumber: "Materi: kipas Malosi, langkah satu dan dua",
+  judul: "Ayo Menyimak: kipas Lukas dan langkah satu sampai dua",
+  sumber: "Materi: kipas Lukas, langkah satu dan dua",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b6d-materi-1.ts:3"),
+  kutipan: ["Halo Lukas, kamu sedang apa?", "Aku sedang membuat gambar kipas untuk tugas prakarya", "membentuk sudut dengan ukuran", "Buat titik sudut dan satu kaki sudut", "Letakkan pusat busur derajat pada titik sudut", "Pastikan dasar busur derajat berimpit dengan kaki sudut", "Ayo Menyimak", "Ayo, kita bantu Lukas dan teman-temannya"],
   ketukan: [
     k(
-      "Igil menyapa Malosi: halo Malosi, kamu sedang apa? Malosi menjawab, ia sedang membuat gambar kipas untuk tugas prakarya.",
+      "Nisa menyapa Lukas: halo Lukas, kamu sedang apa? Lukas menjawab, ia sedang membuat gambar kipas untuk tugas prakarya.",
       tambah(0, jud("Ayo Menyimak")),
-      tambah("Igil", ide("n", 14, 38, 150, 48, "Igil", ["Halo Malosi,", "kamu sedang apa?"], W.langitMuda)),
-      tambah("menjawab,", ide("l", 136, 96, 150, 64, "Malosi", ["Aku sedang membuat", "gambar kipas untuk", "tugas prakarya."], W.krem)),
+      tambah("Nisa", ide("n", 14, 38, 150, 48, "Nisa", ["Halo Lukas,", "kamu sedang apa?"], W.langitMuda)),
+      tambah("menjawab,", ide("l", 136, 96, 150, 64, "Lukas", ["Aku sedang membuat", "gambar kipas untuk", "tugas prakarya."], W.krem)),
       tambah("prakarya.", emo("ke", 40, 150, "🎨", 30)),
     ),
     k(
-      "Kipas Malosi harus membentuk sudut seratus lima puluh derajat. Bagaimana caranya? Mari kita pelajari bersama langkah-langkah melukis sudut dengan busur derajat.",
+      "Kipas Lukas harus membentuk sudut seratus lima puluh derajat. Bagaimana caranya? Mari kita pelajari bersama langkah-langkah melukis sudut dengan busur derajat.",
       bersih(0),
       tambah(0, jud("Kipas harus membentuk sudut 150°", 20, 11)),
       tambah("seratus", juring("kj", 100, 168, 15, 165, 80, W.krem, W.biru), sudut("kp", 100, 168, 15, 165, 80, 22)),
@@ -161,9 +160,9 @@ const kipasRusuk = [15, 52.5, 90, 127.5, 165];
 export const ADEGAN_KIPAS_LANGKAH2: AdeganStory = {
   id: "kipas-langkah2",
   judul: "Ayo Menyimak: langkah tiga sampai lima, sudut 150 derajat",
-  sumber: "Materi: kipas Malosi, langkah tiga sampai lima",
+  sumber: "Materi: kipas Lukas, langkah tiga sampai lima",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b6d-materi-1.ts:4"),
+  kutipan: ["Misalkan kita akan membuat sudut", "Buat titik pada", "di busur derajat", "kaki sudut yang berimpit dengan dasar busur derajat selalu menunjukkan 0", "Jangan sampai salah membaca skala pada busur derajat", "Angkat busur derajat, lalu hubungkan titik sudut", "dengan sebuah garis lurus", "Kalian dapat memastikan ukuran sudut yang sudah kalian buat", "Terima kasih, teman-teman", "Sekarang aku bisa membuat gambar kipas yang aku mau"],
   ketukan: [
     k(
       "Langkah tiga: karena kita ingin sudut seratus lima puluh derajat, buat sebuah titik pada angka seratus lima puluh di busur derajat.",
@@ -206,9 +205,9 @@ export const ADEGAN_KIPAS_LANGKAH2: AdeganStory = {
       tambah("tepat", baris("ck", 196, 84, 98, "✓ tepat di 150", W.hijauMuda, 7.6)),
     ),
     k(
-      "Malosi berterima kasih dan sekarang bisa membuat gambar kipas yang ia mau.",
+      "Lukas berterima kasih dan sekarang bisa membuat gambar kipas yang ia mau.",
       bersih(0),
-      tambah(0, jud("Kipas Malosi jadi!")),
+      tambah(0, jud("Kipas Lukas jadi!")),
       tambah("sekarang", juring("fj", 150, 180, 15, 165, 100, W.krem, W.biru)),
       tambah("sekarang", kipasRusuk.map((a, i) => sinar(`fr${i}`, 150, 180, a, 100, W.biru, 1.6))),
       tambah("membuat", emo("fe", 150, 70, "🎉", 26), teks("ft", 150, 190, "Terima kasih, teman-teman", 8.6, W.ungu)),

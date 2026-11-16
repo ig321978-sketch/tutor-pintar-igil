@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, garis, kartu, tabel, teks } from "./k6b2c-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k6b2c-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 6. Latihan 2: Banyu berjalan ------------------------------ */
 export const ADEGAN_BANYU: AdeganStory = {
@@ -9,7 +8,7 @@ export const ADEGAN_BANYU: AdeganStory = {
   judul: "Latihan 2: Banyu menempuh jarak",
   sumber: "Materi: Latihan 2, Banyu berjalan",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k6b2c-materi-3.ts:1"),
+  kutipan: ["Banyu dapat menempuh jarak sepanjang 1 km dalam waktu 30 menit", "Berapakah jarak yang ditempuh Banyu dalam waktu 1 jam", "Jika Banyu berjalan selama 3,5 jam, berapa jarak yang ia tempuh"],
   ketukan: [
     k(
       "Latihan dua. Banyu menempuh jarak satu kilometer dalam waktu tiga puluh menit.",
@@ -72,7 +71,15 @@ export const ADEGAN_UJI_1_3: AdeganStory = {
   judul: "Renungan dan Uji 1 sampai Uji 3",
   sumber: "Materi: Renungan dan Uji 1 sampai 3",
   latar: "#FDF4FF",
-  kutipan: kutipanLokal("k6b2c-materi-3.ts:2"),
+  kutipan: [
+    "Setelah mempelajari keseluruhan materi pada bab Rasio, ayo berefleksi",
+    "Apakah kalian dapat menentukan rasio satuan",
+    "jumlah siswa yang bergabung dalam berbagai klub di sekolah",
+    "Dony membuat susu cokelat dengan 30 ml sirup cokelat untuk setiap 2 sendok teh susu",
+    "Hana menambahkan 65 ml sirup cokelat untuk setiap 5 sendok teh susu",
+    "Kotak susu kemasan mana yang kalian ambil",
+    "Rp34.500",
+  ],
   ketukan: [
     k(
       "Renungan. Setelah mempelajari bab Rasio, coba tanyakan pada dirimu: apakah kamu paham pengertian rasio, bisa menyatakan rasio dua besaran, menulis rasio yang sama, dan menentukan rasio satuan?",
@@ -150,7 +157,13 @@ export const ADEGAN_UJI_4_5: AdeganStory = {
   judul: "Uji 4, Uji 5, Tantangan, dan penutup bab",
   sumber: "Materi: Uji 4, Uji 5, dan Tantangan",
   latar: "#FFF1F2",
-  kutipan: kutipanLokal("k6b2c-materi-3.ts:3"),
+  kutipan: [
+    "Rasio banyak novel dan komik adalah 11 : 4",
+    "Seorang penulis berita dapat mengetik sebanyak 1.200 kata dalam waktu 1 jam",
+    "untuk menuliskan 3.000 kata",
+    "Indonesia adalah negara yang memiliki kekayaan hasil alam yang melimpah",
+    "dalam porsi yang 3 kali lebih banyak",
+  ],
   ketukan: [
     k(
       "Uji empat. Toko Pustaka hanya menjual novel dan komik dengan rasio sebelas banding empat. Semua bacaannya ada seratus dua puluh.",

@@ -50,7 +50,7 @@ export type Ikon = { jenis: "emoji"; e: string } | { jenis: "kotak" | "bulat"; w
 /**
  * Letak tabel piktogram. Kolom kiri (lebar `lw`) memuat nama kategori, kolom kanan (lebar `aw`) memuat gambar.
  * `ik` ukuran satu gambar, `st` jarak antargambar, `rh` tinggi baris, `hh` tinggi kepala tabel.
- * `ikon` boleh satu untuk semua baris, atau satu per baris (mis. mainan Kira).
+ * `ikon` boleh satu untuk semua baris, atau satu per baris (mis. mainan Karel).
  */
 export type Pikto = { id: string; x: number; y: number; lw: number; aw: number; rh: number; hh: number; ik: number; st: number; ikon: Ikon | Ikon[]; label: string[]; kepala: [string, string] };
 

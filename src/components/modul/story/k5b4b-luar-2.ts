@@ -14,7 +14,7 @@ export const ADEGAN_LUAR_PINTAS_TERAPAN: AdeganStory = {
   latar: "#EFF6FF",
   ketukan: [
     k(
-      "Terapkan pada segitiga sama sisi di atas dengan sisi lima sentimeter. Tiga kali lima sama dengan lima belas. Cocok dengan Cara Kira dan Cara Halim.",
+      "Terapkan pada segitiga sama sisi di atas dengan sisi lima sentimeter. Tiga kali lima sama dengan lima belas. Cocok dengan Cara Asep dan Cara Nisa.",
       tambah(0, judul("Pintasan: sisi 5 cm")),
       tambah("Terapkan", poligon("tg", 24, 50, T5, W.hijauMuda, W.biru, { tebal: 2.2 }), ...tandaSama("tg", 24, 50, T5, [0, 1, 2])),
       tambah(9, ...labelSisi("tg", 24, 50, T5, ["5 cm", "5 cm", "5 cm"], 8.6, W.merah, 15)),

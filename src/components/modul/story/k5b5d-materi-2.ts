@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { BENTUK, LUAS_BUKU, W, barisTabel, batang, kartu, kerangka, keliling, luas, petak, teks } from "./k5b5d-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b5d-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const jud = (isi: string, y = 20, u = 12): Obj => teks("jud", 150, y, isi, u, W.ungu);
 
@@ -53,7 +52,12 @@ export const ADEGAN_BENTUK_1: AdeganStory = {
   judul: "Bentuk pertama: 20 kali 10 dan tabel ukuran",
   sumber: "Materi: bentuk pertama dan tabel",
   latar: "#FEF2F2",
-  kutipan: kutipanLokal("k5b5d-materi-2.ts:1"),
+  kutipan: [
+    "Isikan ukuran-ukuran yang mungkin dibuat pada tabel berikut",
+    "Bentuk Panjang (cm) Lebar (cm) Keliling (cm) Luas (cm2)",
+    "2 × (20+10) = 60 20 × 10 = 200",
+    "Peserta didik menunjukkan hasil eksplorasinya dan mencatat hasilnya pada tabel",
+  ],
   ketukan: [
     k(
       "Mari kita coba bentuk pertama: panjang dua puluh dan lebar sepuluh. Kita gambar pada petak, empat petak mendatar dan dua petak menurun.",
@@ -93,7 +97,7 @@ export const ADEGAN_TABEL_1: AdeganStory = {
   judul: "Bentuk 2 dan 3: tukar ukuran dan kerangka pipih",
   sumber: "Materi: bentuk kedua dan ketiga",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b5d-materi-2.ts:2"),
+  kutipan: ["2 × (10+20) = 60 10 × 20 = 200", "3 5 25 2 × (5+25) = 60 5 × 25 = 125", "Guru memeriksa jawaban peserta didik dan mengoreksi jika ada yang keliru"],
   ketukan: [
     k(
       "Bentuk kedua: kita tukar saja, panjang sepuluh dan lebar dua puluh. Kerangkanya jadi tegak, tetapi kelilingnya tetap enam puluh dan luasnya tetap dua ratus.",
@@ -135,7 +139,7 @@ export const ADEGAN_TABEL_2: AdeganStory = {
   judul: "Bentuk 4, 5, dan 6: persegi dan 18 kali 12",
   sumber: "Materi: bentuk keempat sampai keenam",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b5d-materi-2.ts:3"),
+  kutipan: ["4 25 5 2 × (25+5) = 60 25 × 5 = 125", "5 15 15 2 × (15+15) = 60 15 × 15 = 225", "6 18 12 2 × (18+12) = 60 18 × 12 = 216"],
   ketukan: [
     k(
       "Bentuk keempat: panjang dua puluh lima dan lebar lima. Ini kebalikan bentuk sebelumnya. Keliling enam puluh, luas dua puluh lima kali lima hasilnya seratus dua puluh lima.",
@@ -189,7 +193,7 @@ export const ADEGAN_BANDING: AdeganStory = {
   judul: "Membandingkan luas enam kerangka berkeliling 60",
   sumber: "Materi: membandingkan luas enam bentuk",
   latar: "#EEF2FF",
-  kutipan: kutipanLokal("k5b5d-materi-2.ts:4"),
+  kutipan: ["Di akhir eksplorasi, guru perlu memberikan penguatan kembali tentang hubungan keliling dengan luas daerah suatu bangun datar"],
   ketukan: [
     k(
       "Sekarang bandingkan keenam bentuk. Semuanya berkeliling enam puluh sentimeter, tetapi tinggi batang luasnya berbeda-beda.",

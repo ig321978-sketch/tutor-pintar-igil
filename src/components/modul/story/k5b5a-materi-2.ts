@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { PETAK_TAMU, W, emo, judul, kartu, kisi, kotak, petakPenuh, poligon, sel, teks } from "./k5b5a-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b5a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Benar atau salah dan pengertian luas (hlm. 136 dan 137; Panduan Guru hlm. 186 sampai 188) ------------------------------ */
 const pernyataan = (id: string, y: number, warna: string, a: string, b: string): Obj[] => kartu(id, 12, y, 232, 34, warna, [a, b], 8.4);
@@ -15,7 +14,17 @@ export const ADEGAN_BENAR_SALAH: AdeganStory = {
   judul: "Benar atau salah, lalu pengertian luas",
   sumber: "Materi: benar atau salah dan pengertian",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b5a-materi-2.ts:1"),
+  kutipan: [
+    "Selanjutnya, tentukan benar atau salah terhadap pernyataan",
+    "Makin besar ruangan, makin luas lantainya.",
+    "Makin luas lantainya, makin banyak ubin yang",
+    "Jika lantai di dua ruangan sama luasnya,",
+    "Luas daerah bangun datar adalah ukuran yang",
+    "menunjukkan besar kecilnya daerah yang dibatasi",
+    "satuan luas.",
+    "Untuk membandingkan luas daerah satu",
+    "menggunakan kertas origami yang berukuran",
+  ],
   ketukan: [
     k(
       "Sekarang tentukan benar atau salah. Pernyataan pertama: makin besar ruangan, makin luas lantainya. Itu benar. Pernyataan kedua: makin luas lantai, makin banyak ubin. Itu juga benar.",
@@ -68,7 +77,17 @@ export const ADEGAN_SATUAN: AdeganStory = {
   judul: "Kegiatan: mengenal satuan luas",
   sumber: "Materi: satuan luas",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b5a-materi-2.ts:2"),
+  kutipan: [
+    "Eksplorasi 5.1C",
+    "Sediakan kertas berpetak besar",
+    "Guntinglah sebanyak mungkin",
+    "Satu kotak satuan tersebut kita",
+    "namakan dengan 1 satuan luas.",
+    "1 persegi satuan mewakili 1 cm2,",
+    "1 persegi satuan mewakili 1 m2,",
+    "dibaca satu sentimeter persegi.",
+    "dibaca satu meter persegi.",
+  ],
   ketukan: [
     k(
       "Sekarang kita mengenal satuan luas. Siapkan kertas berpetak. Tiap kotaknya berukuran panjang satu sentimeter dan lebar satu sentimeter. Kalau tidak ada, gambar sendiri di kertas kosong.",
@@ -137,7 +156,15 @@ export const ADEGAN_TAMU: AdeganStory = {
   judul: "Kegiatan: menghitung luas ruang tamu",
   sumber: "Materi: luas ruang tamu",
   latar: "#FDF2F8",
-  kutipan: kutipanLokal("k5b5a-materi-2.ts:3"),
+  kutipan: [
+    "Eksplorasi 5.1D",
+    "Ubin yang akan dipasang berukuran panjang 1 m dan lebar 1 m.",
+    "Satu kotak satuan dapat kita anggap mewakili 1 ubin, yaitu 1 m2.",
+    "Jadi, luas lantai akan sama dengan banyaknya ubin yang",
+    "Tempelkan kotak-kotak satuan",
+    "Jadi, luas ruang tamu adalah",
+    "Gambarlah kotak-kotak berbentuk",
+  ],
   ketukan: [
     k(
       "Sekarang kita hitung luas lantai. Ubin yang dipasang berukuran panjang satu meter dan lebar satu meter. Satu kotak satuan mewakili satu ubin, yaitu satu meter persegi. Jadi luas lantai sama dengan banyaknya ubin.",
@@ -183,7 +210,16 @@ export const ADEGAN_KAMAR: AdeganStory = {
   judul: "Luas kamar tidur, dapur, kamar mandi, dan total",
   sumber: "Materi: kamar, dapur, dan total luas",
   latar: "#F0FDFA",
-  kutipan: kutipanLokal("k5b5a-materi-2.ts:4"),
+  kutipan: [
+    "Ada berapa kamar tidur?",
+    "Berbentuk apakah kamar tidur",
+    "Apakah ukuran keduanya sama?",
+    "Luas kedua kamar tidur tersebut",
+    "Berapa luas dapur?",
+    "Berapa luas kamar mandi?",
+    "Total luas lantai rumah",
+    "Berapa total luas lantai rumah",
+  ],
   ketukan: [
     k(
       "Sekarang kamar tidur. Ada dua kamar tidur, berbentuk persegi, dan ukurannya sama. Tempelkan kotak satuan sampai menutup rapat satu kamar tidur.",

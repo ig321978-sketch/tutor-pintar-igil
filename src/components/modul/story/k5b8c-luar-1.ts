@@ -45,13 +45,13 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       ubah("keempat,", { id: "m3-k", sorot: false }),
     ),
     k(
-      "Contoh datanya adalah kalori makanan, medali emas Sea Games, pengunjung perpustakaan, dan nilai ulangan Igil dan teman-temannya.",
+      "Contoh datanya adalah kalori makanan, medali emas Sea Games, pengunjung perpustakaan, dan nilai ulangan Komang dan teman-temannya.",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Data contoh yang dipakai", 13, W.ungu)),
       tambah("kalori", ...kartu("a1", 40, 38, 220, 30, W.krem, ["kalori makanan"], 10)),
       tambah("medali", ...kartu("a2", 40, 76, 220, 30, W.mint, ["medali emas Sea Games"], 10)),
       tambah("pengunjung", ...kartu("a3", 40, 114, 220, 30, W.langit, ["pengunjung perpustakaan"], 10)),
-      tambah("nilai", ...kartu("a4", 40, 152, 220, 30, W.mawar, ["nilai ulangan Igil dkk"], 10)),
+      tambah("nilai", ...kartu("a4", 40, 152, 220, 30, W.mawar, ["nilai ulangan Komang dkk"], 10)),
     ),
   ],
 };

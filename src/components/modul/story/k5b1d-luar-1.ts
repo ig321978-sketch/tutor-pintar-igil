@@ -34,11 +34,11 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("kebalikan.", emo("i4", 255, 80, "✅", 34), teks("i4t", 255, 112, "periksa", 8.6, W.biru)),
     ),
     k(
-      "Angka-angkanya dari pelajaran tadi: uang bakti sosial Kira, sisa uang Igil, angpau Halim, dan hitungan Uji. Semua sudah kita kerjakan bersama.",
+      "Angka-angkanya dari pelajaran tadi: uang bakti sosial Nisa, sisa uang Lukas, angpau Yohana, dan hitungan Uji. Semua sudah kita kerjakan bersama.",
       bersih(0),
       tambah(0, judul("Angka dari pelajaran tadi")),
       tambah("bakti", ...kartu("a1", 20, 34, 260, 30, W.hijauMuda, ["57.500 + 22.000"], 10.4)),
-      tambah("Igil,", ...kartu("a2", 20, 72, 260, 30, W.merahMuda, ["47.900 − 45.750"], 10.4)),
+      tambah("Lukas,", ...kartu("a2", 20, 72, 260, 30, W.merahMuda, ["47.900 − 45.750"], 10.4)),
       tambah("angpau", ...kartu("a3", 20, 110, 260, 30, W.krem, ["12 × 5.000 dan 64.000 ÷ 4"], 10.4)),
       tambah("Uji", ...kartu("a4", 20, 148, 260, 30, W.langit, ["76.598 + 12.456 dan 67.032 ÷ 147"], 10.4)),
     ),
@@ -96,8 +96,8 @@ export const ADEGAN_LUAR_SA_TERAPAN: AdeganStory = {
   latar: "#ECFDF5",
   ketukan: [
     k(
-      "Terapkan pada uang Kira: lima puluh tujuh ribu lima ratus ditambah dua puluh dua ribu. Tulis lurus menurut nilai tempat: lima, tujuh, lima, nol, nol, dan dua, dua, nol, nol, nol.",
-      tambah(0, judul("Uang bakti sosial Kira")),
+      "Terapkan pada uang Nisa: lima puluh tujuh ribu lima ratus ditambah dua puluh dua ribu. Tulis lurus menurut nilai tempat: lima, tujuh, lima, nol, nol, dan dua, dua, nol, nol, nol.",
+      tambah(0, judul("Uang bakti sosial Nisa")),
       tambah("Terapkan", kalimat("kal", 232, 100, 57500, "+", 22000, undefined, 6.4, W.hitam)),
       tambah("Tulis", ...SA1.atas, ...SA1.bawah, ...SA1.alat),
     ),
@@ -114,9 +114,9 @@ export const ADEGAN_LUAR_SA_TERAPAN: AdeganStory = {
       ubah("ribuan@2", { id: "st", isi: LANGKAH_SA[4] }),
     ),
     k(
-      "Hasilnya tujuh puluh sembilan ribu lima ratus rupiah, sama dengan hasil cara Halim dan cara Igil tadi.",
+      "Hasilnya tujuh puluh sembilan ribu lima ratus rupiah, sama dengan hasil cara Yohana dan cara Lukas tadi.",
       ubah("Hasilnya", { id: "kal", isi: "57.500 + 22.000 = 79.500", warna: W.hijau, u: 6.6 }),
-      tambah("sama", ...kartu("cy", 160, 140, 130, 26, W.merahMuda, ["cara Halim: 79.500"], 8.4), ...kartu("cl", 160, 172, 130, 26, W.hijauMuda, ["cara Igil: 79.500"], 8.4)),
+      tambah("sama", ...kartu("cy", 160, 140, 130, 26, W.merahMuda, ["cara Yohana: 79.500"], 8.4), ...kartu("cl", 160, 172, 130, 26, W.hijauMuda, ["cara Lukas: 79.500"], 8.4)),
     ),
     k(
       "Contoh kedua, Uji empat a: tujuh puluh enam ribu lima ratus sembilan puluh delapan ditambah dua belas ribu empat ratus lima puluh enam sama dengan delapan puluh sembilan ribu lima puluh empat. Angka merah kecil adalah simpanan.",

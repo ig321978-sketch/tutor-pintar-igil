@@ -1,9 +1,8 @@
 import type { AdeganStory } from "./logika-story";
 import { W, angkaTabel, emo, judul, kartu, panah, tabelTempat, teks } from "./k5b1a-gambar";
 import { bersih, hapus, idx, k, tambah, ubah } from "./k5b1a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
-/* ------------------------------ 5. Harga tiga jus Wei (Buku Siswa hlm. 4; Panduan Guru hlm. 20 sampai 21) ------------------------------ */
+/* ------------------------------ 5. Harga tiga jus Nisa (Buku Siswa hlm. 4; Panduan Guru hlm. 20 sampai 21) ------------------------------ */
 /** Tabel nilai tempat harga jus: tiga baris, empat kolom (ribuan sampai satuan). */
 export const TB_JUS = { x: 14, y: 40, cw: 56, o: { labels: ["Mangga", "Jeruk", "Alpukat"], labelW: 48, ch: 26 } };
 export const HARGA_JUS = [6375, 5950, 9050];
@@ -17,13 +16,27 @@ const hargaJus = (i: number, isi: string) => kartu(`hj${i}`, 14 + i * 92, 158, 8
 
 export const ADEGAN_JUS: AdeganStory = {
   id: "jus-nisa",
-  judul: "Harga tiga jus Wei dan nilai tempatnya",
+  judul: "Harga tiga jus Nisa dan nilai tempatnya",
   sumber: "Materi: harga tiga jus dan nilai tempat",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b1a-materi-2.ts:1"),
+  kutipan: [
+    "Nisa ingin membeli jus rasa mangga, jeruk, dan alpukat dari",
+    "sebuah toko online.",
+    "Harga sebotol jus mangga enam ribu tiga ratus tujuh puluh",
+    "lima rupiah.",
+    "Harga sebotol jus jeruk lima ribu sembilan ratus lima puluh rupiah.",
+    "Harga sebotol jus alpukat sembilan ribu lima puluh rupiah.",
+    "tersebut sesuai nilai tempatnya, ya?",
+    "Jus Ribuan Ratusan Puluhan Satuan",
+    "Bagaimana cara menuliskan angka harga-harga jus",
+    "Ribuan Ratusan Puluhan Satuan",
+    "Jus Mangga 6 3 7 5",
+    "Jus Jeruk 5 9 5 0",
+    "Jus Alpukat 9 0 5 0",
+  ],
   ketukan: [
     k(
-      "Wei ingin membeli jus mangga, jeruk, dan alpukat dari sebuah toko online. Bagaimana menuliskan angka harga tiga jus itu sesuai nilai tempatnya?",
+      "Nisa ingin membeli jus mangga, jeruk, dan alpukat dari sebuah toko online. Bagaimana menuliskan angka harga tiga jus itu sesuai nilai tempatnya?",
       tambah(0, judul("Tiga jus dari toko online")),
       tambah("mangga,", emo("j1", 60, 90, "🥭", 40), teks("j1t", 60, 110, "mangga", 9, W.biru)),
       tambah("jeruk,", emo("j2", 150, 90, "🍊", 40), teks("j2t", 150, 110, "jeruk", 9, W.biru)),
@@ -64,25 +77,43 @@ export const ADEGAN_JUS: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 6. Menulis bilangan: empat buku tulis Upe (Buku Siswa hlm. 5 sampai 6) ------------------------------ */
+/* ------------------------------ 6. Menulis bilangan: empat buku tulis Yohana (Buku Siswa hlm. 5 sampai 6) ------------------------------ */
 /** Tabel nilai tempat satu baris, lima kolom (puluh ribuan sampai satuan). */
 export const TB_KOMANG = { x: 20, y: 40, cw: 52, o: { ch: 30, u: 16 } };
 const KOSONG5 = [["", "", "", "", ""]];
 const angkaKomang = (j: number, d: string) => angkaTabel("km", TB_KOMANG.x, TB_KOMANG.y, TB_KOMANG.cw, 0, j, d, TB_KOMANG.o);
 const SUARA_Y2 = "Cara menulisnya: empat belas ribu lima ratus ditulis dengan angka, seperti tampak di layar, dengan titik setelah angka empat.";
-const SUARA_Y3 = "Mari kita coba bersama. Cara Malosi memakai tabel nilai tempat: puluh ribuan, ribuan, ratusan, puluhan, dan satuan. Dari kiri, angkanya satu, empat, lima, nol, nol.";
-const SUARA_Y4 = "Cara Upe: pada kalimat empat belas ribu lima ratus, kata empat belas menjadi angka empat belas, dan kata lima menjadi angka lima.";
+const SUARA_Y3 = "Mari kita coba bersama. Cara Komang memakai tabel nilai tempat: puluh ribuan, ribuan, ratusan, puluhan, dan satuan. Dari kiri, angkanya satu, empat, lima, nol, nol.";
+const SUARA_Y4 = "Cara Yohana: pada kalimat empat belas ribu lima ratus, kata empat belas menjadi angka empat belas, dan kata lima menjadi angka lima.";
 const SUARA_Y5 = "Langkahnya: tentukan angka puluh ribuan, yaitu satu. Ribuan, yaitu empat. Ratusan, yaitu lima. Puluhan, yaitu nol. Satuan, yaitu nol. Jadi bilangannya empat belas ribu lima ratus.";
 
 export const ADEGAN_YOHANA: AdeganStory = {
   id: "menulis-yohana",
-  judul: "Menulis bilangan: empat pensil Upe, cara Malosi dan cara Upe",
+  judul: "Menulis bilangan: empat pensil Yohana, cara Komang dan cara Yohana",
   sumber: "Materi: menulis bilangan cacah",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b1a-materi-2.ts:2"),
+  kutipan: [
+    "1. Menulis Bilangan Cacah Sampai 100.000",
+    "Yohana merupakan siswa",
+    "baru di kelas V SD Pancasila.",
+    "buku dan alat tulis. Ibu",
+    "buku tulis dengan harga",
+    "empat belas ribu lima",
+    "belas ribu lima ratus” adalah",
+    "empat belas ribu lima ratus ditulis 14.500",
+    "Perhatikan cara Komang dan Yohana menuliskan bilangan berikut ini.",
+    "Komang menuliskan harga buku tulis pada tabel berikut.",
+    "Yohana menuliskan harga buku tulis sebagai",
+    "Tentukan angka yang menunjukkan nilai tempat puluh ribuan,",
+    "yaitu satu, ditulis 1.",
+    "yaitu empat, ditulis 4.",
+    "yaitu lima, ditulis 5.",
+    "yaitu nol, ditulis 0.",
+    "Jadi, bilangan tersebut adalah 14.500.",
+  ],
   ketukan: [
     k(
-      "Bagian pertama: menulis bilangan cacah sampai seratus ribu. Upe siswa baru di kelas lima SD Pancasila. Ibu membelikan empat pensil dengan harga empat belas ribu lima ratus rupiah.",
+      "Bagian pertama: menulis bilangan cacah sampai seratus ribu. Yohana siswa baru di kelas lima SD Pancasila. Ibu membelikan empat pensil dengan harga empat belas ribu lima ratus rupiah.",
       tambah(0, judul("1. Menulis bilangan")),
       tambah("seratus", teks("ms", 150, 40, "sampai 100.000", 10, W.biru)),
       tambah("pensil", emo("bk", 150, 90, "✏", 44)),
@@ -101,7 +132,7 @@ export const ADEGAN_YOHANA: AdeganStory = {
     k(
       SUARA_Y3,
       bersih(0),
-      tambah(0, judul("Cara Malosi")),
+      tambah(0, judul("Cara Komang")),
       tambah("tabel", ...tabelTempat("km", TB_KOMANG.x, TB_KOMANG.y, TB_KOMANG.cw, KOSONG5, TB_KOMANG.o)),
       tambah(20, angkaKomang(0, "1")),
       tambah(21, angkaKomang(1, "4")),
@@ -113,7 +144,7 @@ export const ADEGAN_YOHANA: AdeganStory = {
     k(
       SUARA_Y4,
       bersih(0),
-      tambah(0, judul("Cara Upe")),
+      tambah(0, judul("Cara Yohana")),
       tambah("pada", teks("y1", 70, 60, "empat belas", 10, W.biru)),
       tambah("ribu", teks("y2", 135, 60, "ribu", 10, W.biru)),
       tambah("lima", teks("y3", 175, 60, "lima", 10, W.biru)),
@@ -147,10 +178,21 @@ export const ADEGAN_OBAT: AdeganStory = {
   judul: "Membaca bilangan: harga obat batuk",
   sumber: "Materi: membaca bilangan cacah",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b1a-materi-2.ts:3"),
+  kutipan: [
+    "2. Membaca Bilangan Cacah Sampai 100.000",
+    "Ayo Berpikir Kreatif",
+    "Adiknya Asep sedang mengalami gejala",
+    "Covid-19, yaitu batuk, pilek, dan demam.",
+    "Apotek. Dapatkah kalian membantu Asep",
+    "membaca harga obat yang dibelinya?",
+    "Gambar 1.4 Harga Obat Batuk",
+    "Rp66.500,00/botol",
+    "Cara membaca bilangan",
+    "66.500 adalah enam puluh enam ribu lima ratus.",
+  ],
   ketukan: [
     k(
-      "Bagian kedua: membaca bilangan cacah sampai seratus ribu. Adik Igil mengalami batuk, pilek, dan demam, jadi Ibu meminta Igil membeli obat di apotek.",
+      "Bagian kedua: membaca bilangan cacah sampai seratus ribu. Adik Asep mengalami batuk, pilek, dan demam, jadi Ibu meminta Asep membeli obat di apotek.",
       tambah(0, judul("2. Membaca bilangan")),
       tambah("seratus", teks("rs", 150, 40, "sampai 100.000", 10, W.biru)),
       tambah("batuk,", emo("ob1", 70, 100, "🤧", 40), teks("ob1t", 70, 120, "batuk, pilek", 9, W.biru)),
@@ -158,7 +200,7 @@ export const ADEGAN_OBAT: AdeganStory = {
       tambah("obat", emo("ob3", 230, 100, "💊", 40), teks("ob3t", 230, 120, "obat", 9, W.biru)),
     ),
     k(
-      "Di apotek, harga obat batuk tertulis pada label dengan angka seperti tampak di layar. Dapatkah kalian membantu Igil membaca harga obatnya?",
+      "Di apotek, harga obat batuk tertulis pada label dengan angka seperti tampak di layar. Dapatkah kalian membantu Asep membaca harga obatnya?",
       bersih(0),
       tambah(0, judul("Harga obat batuk")),
       tambah("Di", teks("hs", 150, 56, "HARGA SPESIAL", 10, W.merah)),
@@ -203,7 +245,22 @@ export const ADEGAN_KAYU: AdeganStory = {
   judul: "Berpikir kritis: penduduk Kecamatan Kayu Tanam",
   sumber: "Materi: penduduk Kayu Tanam",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b1a-materi-2.ts:4"),
+  kutipan: [
+    "Ayo Berpikir Kritis",
+    "Kecamatan Kayu Tanam terletak di Kabupaten Padang Pariaman,",
+    "Provinsi Sumatra Barat. Pada tahun 2018, penduduk kecamatan ini",
+    "berjumlah 26.932 jiwa yang terdiri atas 13.354 jiwa laki-laki dan tiga",
+    "belas ribu lima ratus tujuh puluh delapan jiwa perempuan.",
+    "Tuliskan jumlah seluruh penduduk Kecamatan Kayu Tanam dan",
+    "Tuliskan cara membaca bilangan yang kalian peroleh dari nomor",
+    "Jumlah seluruh penduduk Kecamatan Kayu Tanam adalah 26.932 Jiwa.",
+    "Jumlah penduduk perempuan Kecamatan Kayu Tanam adalah 13.578.",
+    "Jumlah penduduk laki-laki Kecamatan Kayu Tanam adalah 13.354.",
+    "Puluh Ribuan Ribuan Ratusan Puluhan Satuan",
+    "Dua puluh enam ribu sembilan ratus tiga puluh dua",
+    "Tiga belas ribu lima ratus tujuh puluh delapan",
+    "Tiga belas ribu tiga ratus lima puluh empat",
+  ],
   ketukan: [
     k(
       "Mari berpikir kritis. Kecamatan Kayu Tanam ada di Sumatra Barat. Pada tahun dua ribu delapan belas penduduknya berjumlah seperti tampak di layar, terdiri atas laki-laki dan perempuan.",

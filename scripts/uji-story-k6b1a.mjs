@@ -161,7 +161,7 @@ for (const v of VIDEO) {
   const NAMA_METODE = /Area Model|Whole-as-Fraction|Straight-Arrow|Commutative|Multiplication|metode luar|metode dari luar/i;
   const M_VIDEO = V.VIDEO_MATERI_K6B1A;
   const U = V.VIDEO_LUAR_K6B1A;
-  // Adegan administratif (pembuka bab Wei dan penampungan air, tujuan dan peta konsep, mengingat kembali, refleksi) tidak lagi diputar di video materi.
+  // Adegan administratif (pembuka bab Agam dan penampungan air, tujuan dan peta konsep, mengingat kembali, refleksi) tidak lagi diputar di video materi.
   // Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
   const MODUL_MATERI = Object.assign({}, M1, M2, M3);
   const MFULL = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_PEMBUKA, MODUL_MATERI.ADEGAN_TUJUAN, MODUL_MATERI.ADEGAN_MENGINGAT, MODUL_MATERI.ADEGAN_EKSPLORASI11A, MODUL_MATERI.ADEGAN_EKSPLORASI11B, MODUL_MATERI.ADEGAN_EKSPLORASI12, MODUL_MATERI.ADEGAN_LATIHAN_A, MODUL_MATERI.ADEGAN_LATIHAN_B, MODUL_MATERI.ADEGAN_REFLEKSI] };
@@ -197,7 +197,7 @@ for (const v of VIDEO) {
   for (const kata of ["ember besar", "ember kecil", "lajur", "mangga", "manalagi", "tabel", "Hati-hati", "Tantangan", "Renungan", "Hani", "Fina", "pastel", "SD Melati", "Rani", "Latihan", "kelompok", "ditukar", "pembilang", "penyebut"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   // Isi lengkap (termasuk adegan yang tidak diputar) tetap memuat butir pembuka dan tujuan.
   const penuh = teksVideo(MFULL);
-  for (const kata of ["Bab 1 Pecahan dan Desimal", "Wei", "Ayah", "penampungan", "Gambar 1.1", "Tujuan Pembelajaran", "Pertanyaan Pemantik", "Kata Kunci", "Peta Konsep", "Mengingat Kembali", "kantong", "pizza", "jeruk", "Ayo Berefleksi"]) cek(new RegExp(kata, "i").test(penuh), `materi lengkap memuat ${kata}`);
+  for (const kata of ["Bab 1 Pecahan dan Desimal", "Agam", "Ayah", "penampungan", "Gambar 1.1", "Tujuan Pembelajaran", "Pertanyaan Pemantik", "Kata Kunci", "Peta Konsep", "Mengingat Kembali", "kantong", "pizza", "jeruk", "Ayo Berefleksi"]) cek(new RegExp(kata, "i").test(penuh), `materi lengkap memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-area", "luar-area-terapan", "luar-bulat", "luar-bulat-terapan", "luar-panah", "luar-panah-terapan", "luar-tukar", "luar-tukar-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[1].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas" && M_VIDEO.adegan.length === 6 && U.adegan.length === 11, "6 adegan materi diputar (dengan sapaan) dan 11 adegan metode luar (dengan sapaan)");
@@ -293,7 +293,7 @@ for (const v of VIDEO) {
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     // larangan berbagi visual: berkas k6b1a hanya mengimpor logika dan berkas k6b1a sendiri
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k6b1a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k6b1a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k6b1a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k6b1a sendiri (${impor.join(", ")})`);
   }
   // mesin tidak memakai kit visual lama
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");

@@ -1,10 +1,9 @@
 // Uji Story Kelas 5 Bab 3 Sub-Bab A (membandingkan dan mengurutkan pecahan, termasuk pembuka bab): dua video (materi kurikulum dan metode luar) dengan mesin animasi baru.
 // Memeriksa: pemicu kata, sinkron angka suara dan gambar, perubahan gambar tiap ketukan, keunikan antaradegan, batas kanvas,
 // teks bertumpuk, pemisahan materi dan metode luar, tidak membocorkan materi subbab berikutnya, kutipan buku terhadap teks PDF (pdftotext -enc UTF-8),
-// hitungan mandiri (pecahan campuran ke biasa, KPK dan FPB, pecahan senilai, urutan lompatan Malosi dan pita Igil, banding pembilang, patokan setengah),
+// hitungan mandiri (pecahan campuran ke biasa, KPK dan FPB, pecahan senilai, urutan lompatan Yohana dan pita Nisa, banding pembilang, patokan setengah),
 // geometri gambar (juring lingkaran, petak batang dan kisi, segitiga berpetak, letak penanda pada garis bilangan), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b3a.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -38,9 +37,9 @@ const hampir = (a, b, tol, pesan) => cek(Math.abs(a - b) <= tol, `${pesan}: ${a}
 cek(typeof L.keadaanStory === "function" && typeof L.posisiKata === "function", "mesin Story tersedia");
 
 /* ------------------------------ Data buku, ditulis ulang mandiri dari halaman PDF ------------------------------ */
-// Buku Siswa hlm. 71: lompatan Malosi 2 3/4 m, 3 1/2 m, 7/8 m. Hlm. 72: 2 3/4 = 11/4 dan 3 1/2 = 7/2. Hlm. 73: KPK dari 4, 2, dan 8.
+// Buku Siswa hlm. 71: lompatan Yohana 2 3/4 m, 3 1/2 m, 7/8 m. Hlm. 72: 2 3/4 = 11/4 dan 3 1/2 = 7/2. Hlm. 73: KPK dari 4, 2, dan 8.
 const LOMPATAN = [[2, 3, 4], [3, 1, 2], [0, 7, 8]];
-// Buku Siswa hlm. 75 nomor 2: pita Igil 2 2/5 m, 2 1/4 m, 2 1/2 m; kunci Panduan Guru hlm. 104: urutan terpendek 2 1/4, 2 2/5, 2 1/2.
+// Buku Siswa hlm. 75 nomor 2: pita Nisa 2 2/5 m, 2 1/4 m, 2 1/2 m; kunci Panduan Guru hlm. 104: urutan terpendek 2 1/4, 2 2/5, 2 1/2.
 const PITA = [[2, 2, 5], [2, 1, 4], [2, 1, 2]];
 const nilai = ([b, p, q]) => b + p / q;
 const biasa = ([b, p, q]) => [b * q + p, q];
@@ -52,7 +51,7 @@ const banding = (a, b) => Math.sign(a[0] * b[1] - b[0] * a[1]); // 1 bila a lebi
 const tulisC = ([b, p, q]) => (b > 0 ? `${b} ${p}/${q}` : `${p}/${q}`);
 
 sama(LOMPATAN.map(biasa), [[11, 4], [7, 2], [7, 8]], "campuran ke biasa: 2 3/4 = 11/4, 3 1/2 = 7/2, 7/8 tetap");
-sama(PITA.map(biasa), [[12, 5], [9, 4], [5, 2]], "campuran ke biasa pita Igil: 12/5, 9/4, 5/2");
+sama(PITA.map(biasa), [[12, 5], [9, 4], [5, 2]], "campuran ke biasa pita Nisa: 12/5, 9/4, 5/2");
 sama(kpk(4, 2, 8), 8, "KPK 4, 2, 8 = 8");
 sama(kpk(5, 4, 2), 20, "KPK 5, 4, 2 = 20");
 sama([kpk(4, 5), fpb(4, 5)], [20, 1], "KPK dan FPB 4 dan 5 (Mengingat Kembali nomor 3)");
@@ -271,7 +270,7 @@ const objId = (objs, id) => objs.find((o) => o.id === id);
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,ayo-menyimak,pengertian-pecahan,eks-31a-wingko,eks-31b-lompat,garis-bilangan,bandingkan-pembilang,bandingkan-bulat,ayo-berlatih,penutup-guru", "urutan adegan materi");
   cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Jajanan Pasar", "wingko", "Malosi", "Igil", "garis bilangan", "pembilang", "penyebut", "pecahan biasa", "pecahan campuran", "KPK", "Latihan 1", "Latihan 2", "Hati-hati", "Tantangan", "Renungan", "lompat jauh"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["Jajanan Pasar", "wingko", "Yohana", "Nisa", "garis bilangan", "pembilang", "penyebut", "pecahan biasa", "pecahan campuran", "KPK", "Latihan 1", "Latihan 2", "Hati-hati", "Tantangan", "Renungan", "lompat jauh"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-garis", "luar-garis-terapan", "luar-senilai", "luar-senilai-terapan", "luar-campuran", "luar-campuran-terapan", "luar-patokan", "luar-patokan-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
   cek(U.adegan[1].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas" && M_VIDEO.adegan.length === 10 && U.adegan.length === 11, "10 adegan materi diputar (dengan sapaan) dan 11 adegan metode luar");
@@ -384,11 +383,11 @@ const T = (v, id, ke) => akhirAdegan(adegan(v, id), ke);
     const t6 = akhirAdegan(a, 5);
     cek(nilaiId(t6, "qt") === ">" && banding([1, 2], [1, 3]) === 1 && nilaiId(t6, "qk-t0") === "1/2 > 1/3", "tanda yang tepat: 1/2 lebih besar dari 1/3");
   }
-  // Eksplorasi 3.1B: lompatan Malosi dan mengubah campuran menjadi biasa.
+  // Eksplorasi 3.1B: lompatan Yohana dan mengubah campuran menjadi biasa.
   {
     const a = adegan(M, "eks-31b-lompat");
     const t = akhirAdegan(a, 0);
-    sama([1, 2, 3].map((r) => nilaiId(t, `lm${r}-t01`)), LOMPATAN.map((c) => `${tulisC(c)} m`), "tiga lompatan Malosi");
+    sama([1, 2, 3].map((r) => nilaiId(t, `lm${r}-t01`)), LOMPATAN.map((c) => `${tulisC(c)} m`), "tiga lompatan Yohana");
     const t4 = akhirAdegan(a, 3);
     sama([nilaiId(t4, "m1"), nilaiId(t4, "m2"), nilaiId(t4, "m4")], ["2 3/4", "(2 × 4) + 3 = 11", "2 3/4 = 11/4"], "campuran 2 3/4 menjadi 11/4");
     const [p1, q1] = biasa(LOMPATAN[0]);
@@ -443,7 +442,7 @@ const T = (v, id, ke) => akhirAdegan(adegan(v, id), ke);
   {
     const a = adegan(M, "bandingkan-pembilang");
     const t1 = akhirAdegan(a, 0);
-    sama([1, 2, 3].map((i) => pecahanDari(nilaiId(t1, `p${i}-t0`))), [[11, 4], [7, 2], [7, 8]], "tiga pecahan biasa lompatan Malosi");
+    sama([1, 2, 3].map((i) => pecahanDari(nilaiId(t1, `p${i}-t0`))), [[11, 4], [7, 2], [7, 8]], "tiga pecahan biasa lompatan Yohana");
     const t3 = akhirAdegan(a, 2);
     sama([nilaiId(t3, "l4"), nilaiId(t3, "l2"), nilaiId(t3, "l8"), nilaiId(t3, "kp")], ["Kelipatan 4: 4, 8", "Kelipatan 2: 2, 4, 6, 8", "Kelipatan 8: 8", `KPK = ${kpk(4, 2, 8)}`], "KPK 4, 2, 8 dari daftar kelipatan");
     const t4 = akhirAdegan(a, 3);
@@ -518,7 +517,7 @@ const T = (v, id, ke) => akhirAdegan(adegan(v, id), ke);
       cek(banding([3, 6], [2, 6]) === 1 && nilaiId(t4, "nk-t0") === "3/6 > 2/6", "3/6 lebih besar dari 2/6");
       sama([nilaiId(t4, "na"), nilaiId(t4, "nb")], ["3/6", "2/6"], "1d: tulisan");
     }
-    // Pita Igil nomor 2: batang digambar 60 piksel per meter, KPK 5, 4, 2 = 20, urutan 1, 2, 3.
+    // Pita Nisa nomor 2: batang digambar 60 piksel per meter, KPK 5, 4, 2 = 20, urutan 1, 2, 3.
     const t5 = akhirAdegan(a, 4);
     const t7 = akhirAdegan(a, 6);
     {
@@ -564,7 +563,7 @@ const T2 = (id, ke) => akhirAdegan(adegan(U, id), ke);
     cek(objId(t3, "c1_2").x > objId(t3, "c1_5").x && nilaiId(t3, "ck-t0") === "1/2 > 1/5" && banding([1, 2], [1, 5]) === 1, "1/2 lebih ke kanan dan lebih besar dari 1/5");
     stat.penanda += 2;
   }
-  // Number Line Fractions pada pita Igil: garis dari 2 sampai 3.
+  // Number Line Fractions pada pita Nisa: garis dari 2 sampai 3.
   {
     const t = T2("luar-garis-terapan", 3);
     const g = objId(t, "pt-g");
@@ -597,10 +596,10 @@ const T2 = (id, ke) => akhirAdegan(adegan(U, id), ke);
     sama([nilaiId(t3, "b1"), nilaiId(t3, "b2")], ["3/4 dan 5/8", "6/8 dan 5/8"], "3/4 diubah ke 6/8 agar penyebut sama dengan 5/8");
     cek(banding([3, 4], [5, 8]) === 1 && 6 > 5, "3/4 lebih besar dari 5/8 (6 lebih besar dari 5)");
   }
-  // Equivalent Fractions pada lompatan Malosi: panjang batang sebanding dengan pembilang per delapan.
+  // Equivalent Fractions pada lompatan Yohana: panjang batang sebanding dengan pembilang per delapan.
   {
     const t = T2("luar-senilai-terapan", 0);
-    sama([1, 2, 3].map((i) => pecahanDari(nilaiId(t, `y${i}-t0`))), [[11, 4], [7, 2], [7, 8]], "pecahan biasa lompatan Malosi");
+    sama([1, 2, 3].map((i) => pecahanDari(nilaiId(t, `y${i}-t0`))), [[11, 4], [7, 2], [7, 8]], "pecahan biasa lompatan Yohana");
     sama(nilaiId(t, "yk-t0"), `KPK 4, 2, 8 = ${kpk(4, 2, 8)}`, "KPK 4, 2, 8 = 8");
     const t2 = T2("luar-senilai-terapan", 1);
     sama([nilaiId(t2, "z1"), nilaiId(t2, "z2"), nilaiId(t2, "zx1"), nilaiId(t2, "zx2")], ["11/4 = 22/8", "7/2 = 28/8", "× 2", "× 4"], "pecahan senilai per delapan");
@@ -625,7 +624,7 @@ const T2 = (id, ke) => akhirAdegan(adegan(U, id), ke);
     cek(bs.every((b) => b.q === 4 && Math.abs(b.lebarTotal - bs[0].lebarTotal) < 1e-6), "tiga batang sama panjang dan empat petak");
     hampir(bs[0].p / 4 + bs[1].p / 4 + bs[2].p / 4, nilai(LOMPATAN[0]), 1e-9, "gambar batang bernilai 2 3/4");
   }
-  // Mixed to Improper pada pita Igil.
+  // Mixed to Improper pada pita Nisa.
   {
     const t = T2("luar-campuran-terapan", 1);
     const baris = [["r1", 0], ["r2", 1], ["r3", 2]];
@@ -685,7 +684,7 @@ const T2 = (id, ke) => akhirAdegan(adegan(U, id), ke);
   // Ringkasan dan kunci.
   {
     const t = T2("luar-ringkas", 3);
-    sama([nilaiId(t, "kn1-t01"), nilaiId(t, "kn2-t01")], ["3 1/2 > 2 3/4 > 7/8", "2 1/4 < 2 2/5 < 2 1/2"], "kunci urutan lompatan Malosi dan pita Igil");
+    sama([nilaiId(t, "kn1-t01"), nilaiId(t, "kn2-t01")], ["3 1/2 > 2 3/4 > 7/8", "2 1/4 < 2 2/5 < 2 1/2"], "kunci urutan lompatan Yohana dan pita Nisa");
     sama(urutLompatan.map((i) => tulisC(LOMPATAN[i])).join(" > "), "3 1/2 > 2 3/4 > 7/8", "kunci lompatan sesuai hitungan mandiri");
     sama(urutPita.map((i) => tulisC(PITA[i])).join(" < "), "2 1/4 < 2 2/5 < 2 1/2", "kunci pita sesuai hitungan mandiri");
   }
@@ -713,8 +712,8 @@ const T2 = (id, ke) => akhirAdegan(adegan(U, id), ke);
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.every((a) => (a.kutipan ?? []).length >= 5), "tiap adegan materi memuat paling sedikit 5 kutipan buku");
+    cek(n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(M.adegan.every((a) => (a.kutipan ?? []).length >= 5), "tiap adegan materi memuat paling sedikit 5 kutipan buku");
     // Subbab A tidak memuat butir subbab B pada rentang halaman yang dipakai (Buku Siswa berhenti sebelum "B. Penjumlahan").
     cek(!/B\. penjumlahan bilangan pecahan/.test(bersih(bagian[0])), "Buku Siswa PDF 79-91 tidak memuat subbab B");
   }
@@ -736,7 +735,7 @@ const T2 = (id, ke) => akhirAdegan(adegan(U, id), ke);
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b3a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b3a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b3a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b3a sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

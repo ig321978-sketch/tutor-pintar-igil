@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, baris, bentukBebas, emo, kartu, kotak, panah, segiBeraturan, tanda, tandaSisi, teks } from "./k5b4d-gambar";
 import { bersih, k, tambah } from "./k5b4d-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const jud = (isi: string, y = 20, u = 12): Obj => teks("jud", 150, y, isi, u, W.ungu);
 
@@ -11,7 +10,15 @@ export const ADEGAN_PEMBUKA_D: AdeganStory = {
   judul: "Pembuka Sub-Bab D: keliling segi banyak",
   sumber: "Buku Siswa hlm. 122; Buku Panduan Guru hlm. 154",
   latar: "#EEF2FF",
-  kutipan: kutipanLokal("k5b4d-materi-1.ts:1"),
+  kutipan: [
+    "D. Keliling Segi Banyak",
+    "penemuan terbimbing terhadap cara-cara menemukan keliling segi banyak",
+    "mengingat kembali cara menghitung keliling segi empat beraturan",
+    "persegi dan belah ketupat",
+    "Eksplorasi 4.4",
+    "Ayo Menemukan",
+    "Ayo Merangkum",
+  ],
   ketukan: [
     k(
       "Selamat datang di Sub-Bab D, Keliling Segi Banyak. Sub-bab ini melanjutkan Bab 4 setelah segitiga dan segi empat. Sumbernya buku siswa halaman 122 sampai 124.",
@@ -65,7 +72,13 @@ export const ADEGAN_APERSEPSI_D: AdeganStory = {
   judul: "Apersepsi: mengenal segi banyak beraturan",
   sumber: "Buku Panduan Guru hlm. 154",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b4d-materi-1.ts:2"),
+  kutipan: [
+    "harus sudah mampu membedakan jenis-jenis segi banyak beraturan",
+    "Apa nama segi banyak yang tersaji di buku siswa?",
+    "Adakah sisi-sisi yang sama panjang?",
+    "Mana saja sisi-sisi yang sama panjang?",
+    "langsung mengukur panjang sisi-sisinya dengan menggunakan penggaris",
+  ],
   ketukan: [
     k(
       "Sebelum mulai, siswa harus sudah mampu membedakan jenis-jenis segi banyak beraturan. Mereka juga harus sudah bisa menghitung keliling persegi dan belah ketupat.",
@@ -115,7 +128,13 @@ export const ADEGAN_SARANA_D: AdeganStory = {
   judul: "Sarana, media, dan persiapan guru",
   sumber: "Buku Panduan Guru hlm. 154 dan 155",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b4d-materi-1.ts:3"),
+  kutipan: [
+    "Alat tulis: pulpen, pensil, penggaris, spidol",
+    "LCD Projector dan Power Point Presentation slide (PPT)",
+    "dapat menggunakan gambar-gambar cetak yang ditempel di papan tulis",
+    "Guru menyiapkan gambar yang diperbesar dari gambar segi lima beraturan",
+    "Guru menyiapkan penggaris cadangan",
+  ],
   ketukan: [
     k(
       "Alat yang dibutuhkan sederhana: alat tulis berupa pulpen, pensil, penggaris, dan spidol.",

@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { KUNCI_LATIHAN, LATIHAN, W, barisTabel, bersusun, emo, judul, kartu, panah, teks } from "./k4b1h-gambar";
 import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1h-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /** Id semua benda sebuah kartu: kotak dan baris teksnya (`jumlah` baris). */
 const idKartu = (id: string, jumlah = 2): string[] => [`${id}-k`, ...Array.from({ length: jumlah }, (_, i) => `${id}-t${i}`)];
@@ -18,7 +17,15 @@ export const ADEGAN_SUSUN_ISTILAH: AdeganStory = {
   judul: "Pembagian bersusun: bentuk dan nama tiap bagian",
   sumber: "Materi: pembagian bersusun",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b1h-materi-2.ts:1"),
+  kutipan: [
+    "Pembagian dengan cara pembagian bersusun",
+    "Ayo kita dapat menyelesaikan permasalahan tersebut dengan menggunakan pembagian bersusun.!",
+    "48 buah permen akan dibagikan kepada 4 anak dituliskan dalam bentuk",
+    "Hasil bagi",
+    "Yang dibagi",
+    "Pembagi",
+    "Operasi pembagian bersusun terhadap suatu bilangan, dilakukan dari nilai tempat yang terbesar (puluhan ke satuan).",
+  ],
   ketukan: [
     k(
       SUARA_E1,
@@ -62,7 +69,16 @@ export const ADEGAN_SUSUN_LANGKAH: AdeganStory = {
   judul: "Tiga langkah pembagian bersusun 48 dibagi 4",
   sumber: "Materi: langkah pembagian bersusun",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b1h-materi-2.ts:2"),
+  kutipan: [
+    "4 : 4 = 1.",
+    "1 × 4 = 4.",
+    "Kurangkan 4 dengan 4 hasilnya 0.",
+    "Turunkan 8 pada nilai tempat satuan",
+    "8 : 4 = 2. Letakkan 2 pada",
+    "Kemudian 2 × 4 = 8. Letakkan 8 di bawah",
+    "(sisa pembagian)",
+    "Karena sisa pembagiannya adalah 0, jadi masing-masing anak mendapatkan 12 buah permen",
+  ],
   ketukan: [
     k(
       SUARA_F1,
@@ -123,7 +139,16 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
   judul: "Latihan pembagian bersusun: soal a sampai e",
   sumber: "Materi: latihan pembagian bersusun",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1h-materi-2.ts:3"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Kerjakan soal berikut pada buku tulis kalian.",
+    "Dengan menggunakan pembagian bersusun hitunglah",
+    "a. 24 : 2 = 12",
+    "b. 96 : 3 = 32",
+    "c. 96 : 6 = 16",
+    "d. 72 : 3 = 24",
+    "e. 75 : 5 = 15",
+  ],
   ketukan: [
     k(
       SUARA_G1,

@@ -2,7 +2,6 @@ import type { AdeganStory, Obj } from "./logika-story";
 import { BAHAN_ENAM, BENTUK_UK4, KUNCI_ENAM, KUNCI_LIMA, RUMAH_KUNCI, RUMAH_URAI, SEGIBANYAK_UK1, type Titik } from "./k4b5b-data";
 import { W, beraturan, bentuk, bulat, emo, garis, golonganSudut, judul, kartu, keping, kotak, panah, poli, skala, sudutDalam, teks } from "./k4b5b-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k4b5b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 10. Uji Kompetensi 1 sampai 4 (Buku Siswa hlm. 174; Panduan Guru hlm. 202–203) ------------------------------ */
 const KOLOM = [52, 150, 248];
@@ -28,7 +27,19 @@ export const ADEGAN_UK_1: AdeganStory = {
   judul: "Uji 1 sampai 4",
   sumber: "Materi: segi banyak dan sudut",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b5b-materi-3.ts:1"),
+  kutipan: [
+    "Kerjakan soal berikut dengan cermat dan salin jawaban pada buku kalian.",
+    "Tentukan mana yang termasuk bangun segi banyak dan bukan segi",
+    "tentukan mana yang termasuk bangun segi banyak beraturan dan bangun segi banyak tidak beraturan.",
+    "Sebutkan ciri-ciri dari bangun segi banyak beraturan.",
+    "Hitunglah jumlah sudut lancip dan sudut tumpul pada bangun segi",
+    "masing-masing segi banyak; sedangkan",
+    "gambar c, e, dan g bukan segi banyak",
+    "Gambar b, f, dan I merupakan segi banyak beraturan",
+    "gambar a, d, dan h bukan segi banyak beraturan",
+    "Sisi-sisinya sama Panjang dan sudut-sudutnya memiliki ukuran",
+    "yang sama",
+  ],
   ketukan: [
     k(
       "Uji satu: kerjakan dengan cermat. Dari sembilan gambar, tentukan mana segi banyak dan mana yang bukan.",
@@ -92,7 +103,25 @@ export const ADEGAN_UK_2: AdeganStory = {
   judul: "Uji 5 sampai 13",
   sumber: "Materi: segi banyak dan segiempat",
   latar: "#FDF4FF",
-  kutipan: kutipanLokal("k4b5b-materi-3.ts:2"),
+  kutipan: [
+    "Buatlah bangun segi banyak dengan ketentuan sebagai berikut :",
+    "Bangun segi banyak beraturan dengan 10 sisi",
+    "Bangun segi banyak tak beraturan dengan 5 sisi",
+    "Bangun segi banyak beraturan dengan 5 sudut lancip",
+    "Bangun segi banyak tak beraturan dengan 3 sudut lancip dan 3 sudut tumpul",
+    "Bangun segi banyak beraturan dengan 8 sisi",
+    "Budi setiap pagi hari berolahraga lari mengelilingi taman kota yang berbentuk segienam beraturan.",
+    "Jawab: 50 x 6 = 300; jadi jarak yang ditempuh 300 meter",
+    "Sebutkan persamaan dan perbedaan ciri-ciri bangun A dan B tersebut",
+    "Dapatkah dibuat segitiga siku-siku sekaligus sama kaki?",
+    "Tidak dapat; karena bila hal itu terjadi berarti dalam segitiga jumlah",
+    "Dapatkah segitiga tumpul sekaligus merupakan segitiga siku-siku?",
+    "Mengapa jajargenjang tidak bisa dinamakan trapesium",
+    "tepat sepasang sisi berhadapan sejajar",
+    "Belah ketupat tidak memiliki ciri “memiliki tepat sepasang sisi sejajar”",
+    "Buatlah minimal 4 bangun datar berbeda bentuknya",
+    "Buatlah suatu bangun datar tertentu yang dapat diuraikan",
+  ],
   ketukan: [
     k(
       "Uji lima: buat segi banyak. A, beraturan dengan sepuluh sisi. B, tak beraturan dengan lima sisi. C, beraturan dengan lima sudut lancip. D, tak beraturan dengan tiga sudut lancip dan tiga sudut tumpul.",
@@ -115,7 +144,7 @@ export const ADEGAN_UK_2: AdeganStory = {
       tambah("beraturan.", teks("kkc", 150, 190, "b dan d sudah benar", 8.2, W.coklat)),
     ),
     k(
-      "Uji enam: Kira berlari mengelilingi taman segienam beraturan, tiap sisinya lima puluh meter. Jaraknya lima puluh kali enam sama dengan tiga ratus meter.",
+      "Uji enam: Budi berlari mengelilingi taman segienam beraturan, tiap sisinya lima puluh meter. Jaraknya lima puluh kali enam sama dengan tiga ratus meter.",
       bersih(0),
       tambah(0, judul("Uji 6")),
       tambah("taman", poli("hx6", 80, 98, beraturan(6, 34), "#BBF7D0", W.hijau, { tebal: 1.6 })),
@@ -176,7 +205,17 @@ export const ADEGAN_UK_3: AdeganStory = {
   judul: "Uji 14, 15, dan cara menilai",
   sumber: "Materi: menyusun, mengurai, menilai",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k4b5b-materi-3.ts:3"),
+  kutipan: [
+    "Perhatikan penyusunan beberapa bangun datar sehingga menjadi satu",
+    "Susun beberapa bangun datar tersebut sehingga menjadi satu bangun",
+    "datar yang berbeda dengan gambar tersebut.",
+    "Perhatikan bangun datar yang telah diuraikan menjadi beberapa bangun",
+    "Uraikan bangun datar tersebut sehingga menjadi beberapa bangun datar",
+    "Tabel 5.2 Pedoman Penilaian Hasil Belajar",
+    "Tabel 5.3 Penilaian Keterampilan",
+    "Aspek yang Dinilai",
+    "Menyusun atau mengurai",
+  ],
   ketukan: [
     k(
       "Uji empat belas: bangun-bangun terpisah ditunjuk panah menuju satu bangun. Susun menjadi bangun lain. Uji lima belas sebaliknya: uraikan bangun yang sudah tersusun. Jawabannya terbuka.",
@@ -230,7 +269,19 @@ export const ADEGAN_PENGAYAAN: AdeganStory = {
   judul: "Tantangan 1 sampai 5",
   sumber: "Materi: segitiga dan segiempat",
   latar: "#FEFCE8",
-  kutipan: kutipanLokal("k4b5b-materi-3.ts:4"),
+  kutipan: [
+    "Salah satu bentuk segitiga sama kaki adalah segitiga siku-siku sama kaki.",
+    "Dapatkah dibentuk segitiga siku-siku sama sisi",
+    "Dapat. Penjelasannya melalui gambar berikut.",
+    "Dapatkah jajar genjang juga dinamakan trapesium? Jelaskan!",
+    "Tidak dapat, karena jajar genjang cirinya memiliki dua pasang sisi",
+    "Dapatkah belah ketupat dinamakan juga sebagai layang-layang? Jelaskan!",
+    "karena belah ketupat jangankan memiliki dua pasang sisi berdekatan",
+    "tetapi memiliki 4 pasang sisi berdekatan sama panjang.",
+    "Buatlah sebuah bangun datar menarik yang tersusun (komposisi) atas",
+    "Buatlah 5 bangun datar berbeda yang diperoleh dengan menguraikan",
+    "(dekomposisi) dari bangun datar berikut.",
+  ],
   ketukan: [
     k(
       "Tantangan satu: salah satu bentuk segitiga sama kaki adalah segitiga siku-siku sama kaki. Dapatkah dibentuk segitiga siku-siku sama sisi? Mari kita periksa dengan gambar segitiga siku-siku sama kaki.",
@@ -283,7 +334,22 @@ export const ADEGAN_PENUTUP_B: AdeganStory = {
   judul: "Refleksi, interaksi orang tua, dan penutup bab",
   sumber: "Buku Siswa hlm. 176; Panduan Guru hlm. 211, 213–214",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b5b-materi-3.ts:5"),
+  kutipan: [
+    "Pada bab ini, kalian sudah mempelajari materi bangun datar meliputi segitiga,",
+    "segiempat dan beberapa segibanyak lainnya.",
+    "Masih adakah bagian yang terasa sulit?",
+    "diskusikanlah dengan temanmu.",
+    "Apakah manfaat yang kalian peroleh",
+    "Apa yang saya sukai dari kegiatan pembelajaran ini?",
+    "Kapan atau pada bagian mana saya merasa kreatif ketika mengajar",
+    "Pada langkah ke berapa peserta didik paling belajar banyak?",
+    "Guru setiap semester mengadakan rapat dengan orang tua peserta didik",
+    "Guru dapat membuat grup komunitas untuk setiap kelas dengan para",
+    "Setiap diakhir bab terdapat pengayaan dengan memanfaatkan teknologi",
+    "Guru menyediakan waktu setiap minggu untuk diskusi dengan orang tua",
+    "Guru mengadakan seminar atau layanan konsultasi tiap bulan",
+    "https://sumber.belajar.kemdikbud.go.id",
+  ],
   ketukan: [
     k(
       "Refleksi di Buku Siswa: kalian sudah mempelajari segitiga, segiempat, dan segi banyak lainnya. Masih adakah yang sulit? Diskusikan dengan teman atau minta bantuan guru. Apa manfaat yang kalian peroleh?",

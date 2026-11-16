@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, batang, emo, garis, judul, kartu, kotak, pai, panah, tabel, teks } from "./k5b3a-gambar";
 import { bersih, k, sorotkan, tambah, ubah, warnai } from "./k5b3a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 4. Mengingat Kembali: empat latihan (Buku Siswa hlm. 66) ------------------------------ */
 export const ADEGAN_INGAT: AdeganStory = {
@@ -9,7 +8,16 @@ export const ADEGAN_INGAT: AdeganStory = {
   judul: "Mengingat Kembali: empat latihan",
   sumber: "Buku Siswa hlm. 66",
   latar: "#FDF2F8",
-  kutipan: kutipanLokal("k5b3a-materi-2.ts:1"),
+  kutipan: [
+    "Pada kelas IV dan bab sebelumnya, kalian sudah mempelajari materi",
+    "tentang pecahan serta KPK dan FPB.",
+    "Tuliskan bentuk pecahan berikut.",
+    "Manakah yang merupakan pembilang dan manakah yang",
+    "merupakan penyebut?",
+    "Manakah yang lebih besar antara",
+    "Berapakah KPK dan FPB dari 4 dan 5?",
+    "Berapakah pecahan senilai dari",
+  ],
   ketukan: [
     k(
       "Mengingat Kembali. Di kelas empat dan bab sebelumnya kalian sudah belajar pecahan serta KPK dan FPB. Ada empat latihan untuk menghangatkan ingatan.",
@@ -65,7 +73,18 @@ export const ADEGAN_PENGERTIAN: AdeganStory = {
   judul: "Pengertian pecahan, pembilang dan penyebut, pecahan biasa dan campuran",
   sumber: "Materi: pengertian pecahan",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b3a-materi-2.ts:2"),
+  kutipan: [
+    "Pecahan merupakan bagian dari keseluruhan (part of a whole), pecahan",
+    "juga bisa diartikan sebagai bagian dari satuan (part of a unit).",
+    "Contoh bagian dari satuan",
+    "Gelas tersebut berisi 1 bagian dari 2 bagian gelas.",
+    "Contoh bagian dari keseluruhan",
+    "Dalam istilah matematika, pecahan terdiri atas pembilang dan penyebut.",
+    "Bentuk-Bentuk Pecahan",
+    "Pecahan Biasa",
+    "Pecahan Campuran",
+    "bilangan bulat dan pecahan",
+  ],
   ketukan: [
     k(
       "Kita mulai dari pengertian pecahan. Pecahan adalah bagian dari keseluruhan, dan bisa juga diartikan sebagai bagian dari satuan.",
@@ -83,7 +102,7 @@ export const ADEGAN_PENGERTIAN: AdeganStory = {
       tambah("ditulis", teks("gf", 205, 140, "1/2", 28, W.merah)),
     ),
     k(
-      "Sekarang contoh bagian dari keseluruhan. Malosi mengambil dua gelas air putih, lalu meminum satu gelas. Satu dari dua gelas, ditulis satu per dua.",
+      "Sekarang contoh bagian dari keseluruhan. Yohana mengambil dua gelas air putih, lalu meminum satu gelas. Satu dari dua gelas, ditulis satu per dua.",
       bersih(0),
       tambah(0, judul("Bagian dari keseluruhan")),
       tambah("mengambil", ...gelas("ga", 70, 52, true), ...gelas("gb", 150, 52, true), teks("g2", 150, 160, "2 gelas", 10, W.biru)),
@@ -122,7 +141,18 @@ export const ADEGAN_EKS31A: AdeganStory = {
   judul: "Pecahan potongan wingko",
   sumber: "Materi: pecahan potongan wingko",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b3a-materi-2.ts:3"),
+  kutipan: [
+    "Wingko babat merupakan makanan khas dari Semarang.",
+    "Saat ini",
+    "wingko babat memiliki rasa yang beraneka, yaitu orisinal, cokelat,",
+    "stroberi, dan sebagainya.",
+    "Mari kalian tuliskan pecahan potongan",
+    "wingko stroberi pada tabel berikut.",
+    "Dapatkah kalian membantuku menentukan bagian yang",
+    "lebih besar atau lebih kecil dengan menggunakan konsep",
+    "Mari amati dan bandingkan gambar berikut, lalu berilah tanda <, >,",
+    "Selanjutnya, tuliskan bagian tersebut dalam bentuk pecahan.",
+  ],
   ketukan: [
     k(
       "Sekarang kita belajar dari wingko babat. Wingko babat adalah makanan khas Semarang. Kini rasanya beraneka: orisinal, cokelat, stroberi, dan lainnya.",
@@ -173,25 +203,33 @@ export const ADEGAN_EKS31A: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 7. Eksplorasi 3.1B: lompatan Malosi, mengubah campuran menjadi biasa (Buku Siswa hlm. 70 sampai 72) ------------------------------ */
+/* ------------------------------ 7. Eksplorasi 3.1B: lompatan Yohana, mengubah campuran menjadi biasa (Buku Siswa hlm. 70 sampai 72) ------------------------------ */
 export const ADEGAN_EKS31B: AdeganStory = {
   id: "eks-31b-lompat",
-  judul: "Lompat jauh Malosi",
-  sumber: "Materi: lompat jauh Malosi",
+  judul: "Lompat jauh Yohana",
+  sumber: "Materi: lompat jauh Yohana",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b3a-materi-2.ts:4"),
+  kutipan: [
+    "Yohana seorang atlet lompat jauh.",
+    "untuk mempersiapkan kejuaraan.",
+    "Yohana mengurutkan hasil lompatannya dari jarak yang terjauh",
+    "sampai terdekat? Lompatan mana yang paling panjang?",
+    "Terlebih dahulu, mari kita berlatih mengubah bentuk pecahan",
+    "campuran menjadi bentuk pecahan biasa.",
+    "Mengubah ke bentuk pecahan biasa",
+  ],
   ketukan: [
     k(
-      "Sekarang kita ikut latihan Malosi. Malosi atlet lompat jauh dan rajin berlatih untuk kejuaraan. Tiga lompatannya: dua dan tiga per empat meter, tiga dan satu per dua meter, serta tujuh per delapan meter.",
-      tambah(0, judul("Lompat jauh Malosi")),
-      tambah("Malosi", emo("yh", 40, 66, "🤸", 34)),
+      "Sekarang kita ikut latihan Yohana. Yohana atlet lompat jauh dan rajin berlatih untuk kejuaraan. Tiga lompatannya: dua dan tiga per empat meter, tiga dan satu per dua meter, serta tujuh per delapan meter.",
+      tambah(0, judul("Lompat jauh Yohana")),
+      tambah("Yohana", emo("yh", 40, 66, "🤸", 34)),
       tambah("lompatannya:", ...tabel("lm", 70, 40, [64, 118], [["Lompatan", "Jarak"]], 22, 9, W.krem)),
       tambah("empat", ...tabel("lm1", 70, 62, [64, 118], [["1", "2 3/4 m"]], 22, 10, W.putih)),
       tambah("dua@2", ...tabel("lm2", 70, 84, [64, 118], [["2", "3 1/2 m"]], 22, 10, W.putih)),
       tambah("delapan", ...tabel("lm3", 70, 106, [64, 118], [["3", "7/8 m"]], 22, 10, W.putih)),
     ),
     k(
-      "Pertanyaannya, dapatkah kalian membantu Malosi mengurutkan lompatan dari yang terjauh sampai terdekat? Lompatan mana yang paling panjang?",
+      "Pertanyaannya, dapatkah kalian membantu Yohana mengurutkan lompatan dari yang terjauh sampai terdekat? Lompatan mana yang paling panjang?",
       tambah("terjauh", ...kartu("tj", 30, 146, 90, 28, W.hijauMuda, ["terjauh"], 9.4)),
       tambah("sampai", panah("pj", 124, 160, 52, 0, W.biru, 2, { gambar: true })),
       tambah("terdekat?", ...kartu("td", 180, 146, 90, 28, W.pink, ["terdekat"], 9.4)),

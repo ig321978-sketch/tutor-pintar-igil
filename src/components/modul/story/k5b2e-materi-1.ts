@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, judul, kartu, saringan, tabel, teks, bulat, warnaiSaringan } from "./k5b2e-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b2e-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /** Faktor suatu bilangan, dihitung dari definisinya (dipakai tabel faktor bilangan 1 sampai 10, Panduan Guru hlm. 78). */
 export const faktorDari = (n: number): number[] => Array.from({ length: n }, (_, i) => i + 1).filter((d) => n % d === 0);
@@ -18,7 +17,19 @@ export const ADEGAN_PEMBUKA_E: AdeganStory = {
   judul: "Pembuka Sub-Bab E: menentukan KPK dan FPB dengan faktor prima",
   sumber: "Panduan Guru hlm. 76–77",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b2e-materi-1.ts:1"),
+  kutipan: [
+    "memahami bilangan prima",
+    "menentukan bilangan prima di bawah 100",
+    "menentukan faktor prima suatu bilangan",
+    "menentukan KPK dan FPB dengan menggunakan bilangan prima",
+    "membuat kesimpulan dari permasalahan yang terkait KPK dan FPB",
+    "mengevaluasi kebenaran pernyataan yang terkait dengan KPK dan FPB",
+    "Pensil warna atau krayon atau spidol warna",
+    "Print out bilangan 1 sampai 100",
+    "FPB dari 18 dan 24 adalah 72",
+    "Menurutku 72 adalah KPK dari 18 dan 24",
+    "Pendapat siapakah yang lebih tepat?",
+  ],
   ketukan: [
     k(
       "Sub-Bab E, menentukan KPK dan FPB dengan faktor prima, adalah penutup Bab dua. Peserta didik diharapkan memahami bilangan prima, menentukan bilangan prima di bawah seratus, dan menentukan faktor prima suatu bilangan.",
@@ -44,20 +55,20 @@ export const ADEGAN_PEMBUKA_E: AdeganStory = {
       tambah("cetakan", ...kartu("p3", 150, 56, 136, 70, W.krem, ["cetakan bilangan", "1 sampai 100", "10 kotak × 10 kotak"], 8.6)),
     ),
     k(
-      "Apersepsinya berupa cerita. Halim bilang FPB dari delapan belas dan dua puluh empat adalah tujuh puluh dua. Upe bilang tujuh puluh dua adalah KPK-nya. Pendapat siapa yang lebih tepat?",
+      "Apersepsinya berupa cerita. Asep bilang FPB dari delapan belas dan dua puluh empat adalah tujuh puluh dua. Lukas bilang tujuh puluh dua adalah KPK-nya. Pendapat siapa yang lebih tepat?",
       bersih(0),
-      tambah(0, judul("Apersepsi: Halim dan Upe")),
-      tambah("Halim", emo("as", 40, 70, "👦", 30), ...kartu("ac", 70, 38, 216, 44, W.merahMuda, ["Halim: FPB dari 18 dan 24", "adalah 72"], 9)),
-      tambah("Upe", emo("lu", 40, 134, "🧑", 30), ...kartu("lc", 70, 102, 216, 44, W.hijauMuda, ["Upe: 72 adalah KPK", "dari 18 dan 24"], 9)),
+      tambah(0, judul("Apersepsi: Asep dan Lukas")),
+      tambah("Asep", emo("as", 40, 70, "👦", 30), ...kartu("ac", 70, 38, 216, 44, W.merahMuda, ["Asep: FPB dari 18 dan 24", "adalah 72"], 9)),
+      tambah("Lukas", emo("lu", 40, 134, "🧑", 30), ...kartu("lc", 70, 102, 216, 44, W.hijauMuda, ["Lukas: 72 adalah KPK", "dari 18 dan 24"], 9)),
       tambah("Pendapat", emo("tn", 150, 182, "❓", 24)),
     ),
     k(
-      "Yang tepat Upe. Faktor persekutuan terbesar dari delapan belas dan dua puluh empat adalah enam, sedangkan kelipatan persekutuan terkecilnya tujuh puluh dua. Jadi Halim keliru.",
+      "Yang tepat Lukas. Faktor persekutuan terbesar dari delapan belas dan dua puluh empat adalah enam, sedangkan kelipatan persekutuan terkecilnya tujuh puluh dua. Jadi Asep keliru.",
       bersih(0),
       tambah(0, judul("Siapa yang tepat?"), ...kartu("fk", 14, 30, 272, 40, W.langit, ["faktor 18: 1, 2, 3, 6, 9, 18", "faktor 24: 1, 2, 3, 4, 6, 8, 12, 24"], 8.6)),
       tambah("enam,", ...kartu("g1", 14, 82, 130, 40, W.hijauMuda, ["FPB 18 dan 24", "adalah 6"], 9)),
       tambah("tujuh", ...kartu("g2", 156, 82, 130, 40, W.krem, ["KPK 18 dan 24", "adalah 72"], 9)),
-      tambah("Halim", teks("ke", 150, 150, "Upe tepat, Halim keliru", 11, W.merah), emo("ss", 150, 184, "✅", 22)),
+      tambah("Asep", teks("ke", 150, 150, "Lukas tepat, Asep keliru", 11, W.merah), emo("ss", 150, 184, "✅", 22)),
     ),
   ],
 };
@@ -68,7 +79,14 @@ export const ADEGAN_PRIMA: AdeganStory = {
   judul: "Bilangan prima dan tabel faktor 1 sampai 10",
   sumber: "Materi: bilangan prima",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b2e-materi-1.ts:2"),
+  kutipan: [
+    "Tabel 2.4 Faktor Bilangan 1 Sampai 10",
+    "Bilangan prima adalah bilangan yang hanya dapat dibagi oleh satu dan bilangan itu sendiri.",
+    "Bilangan 1 bukan termasuk bilangan prima.",
+    "Contoh bilangan prima terkecil yang kita ketahui adalah 2, 3, 5, 7, 11, 13, 17",
+    "Bagaimana cara menentukan bilangan prima?",
+    "Seorang ahli matematika dari Yunani, Eratosthenes mengenalkan cara sederhana untuk menentukan bilangan prima.",
+  ],
   ketukan: [
     k(
       "Pemanasan: perhatikan tabel faktor bilangan satu sampai sepuluh. Bilangan dua, tiga, lima, dan tujuh hanya punya dua faktor, yaitu satu dan bilangan itu sendiri.",
@@ -115,7 +133,18 @@ export const ADEGAN_SARINGAN: AdeganStory = {
   judul: "Saringan Eratosthenes: bilangan prima di bawah 100",
   sumber: "Materi: saringan Eratosthenes",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b2e-materi-1.ts:3"),
+  kutipan: [
+    "Hapus 1.",
+    "Ambil 2 dan hapus semua bilangan kelipatan 2 berikutnya.",
+    "Ambil 3 dan hapus semua bilangan kelpatan 3 berikutnya.",
+    "Ambil 5 dan hapus semua bilangan kelipatan 5 berikutnya.",
+    "Ambil 7 dan hapus semua bilangan kelipatan 7 berikutnya.",
+    "Ambil 11 dan hapus semua bilangan kelipatan 11 berikutnya.",
+    "Proses ini belum selesai, lakukan terus dengan mengambil bilangan prima selanjutnya, sampai sudah tidak ada bilangan lagi yang dapat dihapus.",
+    "Dari bilangan 1 sampai 100, ada berapa bilangan prima yang teman-teman temukan?",
+    "Bilangan yang dieliminasi dapat diwarnai atau cukup disilang saja, agar lebih cepat.",
+    "Bilangan prima tersebut adalah 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, dan 97.",
+  ],
   ketukan: [
     k(
       "Ayo menyaring bilangan prima. Tulis bilangan satu sampai seratus dalam sepuluh baris. Bilangan yang dieliminasi boleh diwarnai atau cukup disilang.",
@@ -177,7 +206,18 @@ export const ADEGAN_FAKTORISASI: AdeganStory = {
   judul: "Faktorisasi prima dan cara membuat pohon faktor",
   sumber: "Materi: faktorisasi prima dan pohon faktor",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b2e-materi-1.ts:4"),
+  kutipan: [
+    "Suatu bilangan ternyata dapat dinyatakan sebagai hasil kali dari bilangan prima.",
+    "Cara menyatakan bilangan dalam bentuk perkalian bilangan-bilangan prima disebut faktorisasi prima.",
+    "Faktorisasi prima dari 12 dan 30 adalah sebagai berikut.",
+    "12 = 2 x 2 x 3",
+    "30 = 2 x 3 x 5",
+    "Bagaimana cara menentukan faktorisasi bilangan prima yang lebih besar? Misalnya bilangan 196 dan 300.",
+    "kita dapat menggunakan pohon faktor",
+    "Bilangan dibagi dengan bilangan prima. Mulailah dari bilangan prima terkecil yang dapat membagi bilangan yang diberikan.",
+    "Lanjutkan membagi bilangan dengan bilangan prima lainnya.",
+    "Proses akan berhenti jika hasil akhirnya sudah berupa bilangan prima.",
+  ],
   ketukan: [
     k(
       "Suatu bilangan dapat dinyatakan sebagai hasil kali bilangan prima. Cara ini disebut faktorisasi prima.",

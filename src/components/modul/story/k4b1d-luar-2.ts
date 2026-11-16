@@ -46,10 +46,10 @@ export const ADEGAN_LUAR_KELOMPOK: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 2. Flexible Grouping: penerapan pada uang Malosi ------------------------------ */
-const SUARA_FT1 = "Sekarang kita pakai pada uang Malosi. Mulai dari tujuh ribu tiga ratus rupiah: tiga lembar dua ribu, satu keping seribu, dan tiga keping seratus.";
+/* ------------------------------ 2. Flexible Grouping: penerapan pada uang Helen ------------------------------ */
+const SUARA_FT1 = "Sekarang kita pakai pada uang Helen. Mulai dari tujuh ribu tiga ratus rupiah: tiga lembar dua ribu, satu keping seribu, dan tiga keping seratus.";
 const SUARA_FT2 = "Tukar satu lembar dua ribu dengan dua keping seribu. Nilainya tetap, tetapi pengelompokannya berubah.";
-const SUARA_FT3 = "Tukar lagi satu lembar dua ribu dengan dua keping seribu. Kini ada lima keping seribu, persis jumlah seribu milik Malosi.";
+const SUARA_FT3 = "Tukar lagi satu lembar dua ribu dengan dua keping seribu. Kini ada lima keping seribu, persis jumlah seribu milik Helen.";
 const SUARA_FT4 = "Sepuluh ribu rupiah dimulai dari lima lembar dua ribu. Tukar satu lembar dua ribu dengan satu keping seribu dan dua keping lima ratus.";
 
 const G1 = deretUang("g1", 78, URAIAN_7300[0]);
@@ -60,7 +60,7 @@ const H2 = deretUang("h2", 78, URAIAN_10000[2]);
 
 export const ADEGAN_LUAR_KELOMPOK_TERAPAN: AdeganStory = {
   id: "luar-kelompok-terapan",
-  judul: "Flexible Grouping pada uang Malosi",
+  judul: "Flexible Grouping pada uang Helen",
   sumber: "Metode luar: Flexible Grouping (uang)",
   latar: "#FEFCE8",
   ketukan: [
@@ -80,7 +80,7 @@ export const ADEGAN_LUAR_KELOMPOK_TERAPAN: AdeganStory = {
       hapus(idx(SUARA_FT3, "Tukar"), ...idUang("g2", 8)),
       tambah(idx(SUARA_FT3, "Tukar"), G3),
       ubah(idx(SUARA_FT3, "lagi"), { id: "gt", isi: "tukar lagi: 1 lembar 2.000 = 2 keping 1.000" }),
-      tambah(idx(SUARA_FT3, "persis"), ...kartu("gk", 40, 146, 220, 28, W.krem, ["5 keping 1.000: semua milik Malosi"], 8.8)),
+      tambah(idx(SUARA_FT3, "persis"), ...kartu("gk", 40, 146, 220, 28, W.krem, ["5 keping 1.000: semua milik Helen"], 8.8)),
     ),
     k(
       SUARA_FT4,
@@ -133,20 +133,20 @@ export const ADEGAN_LUAR_IKATAN: AdeganStory = {
 };
 
 /* ------------------------------ 4. Number Bonds: penerapan ------------------------------ */
-const SUARA_IT1 = "Terapan pada uang Malosi. Igil membeli seharga tujuh ribu tiga ratus rupiah dan membayar sepuluh ribu rupiah. Berapa kembaliannya?";
+const SUARA_IT1 = "Terapan pada uang Helen. Slamet membeli seharga tujuh ribu tiga ratus rupiah dan membayar sepuluh ribu rupiah. Berapa kembaliannya?";
 const SUARA_IT2 = "Bagian yang hilang: tujuh ribu tiga ratus ditambah berapa agar menjadi sepuluh ribu? Jawabnya dua ribu tujuh ratus rupiah.";
 const SUARA_IT3 = "Ikatan juga bertingkat. Bilangan enam ribu tiga puluh lima terikat pada enam ribu dan tiga puluh lima, lalu tiga puluh lima terikat pada tiga puluh dan lima.";
 const SUARA_IT4 = "Periksa dengan menjumlahkan: tiga puluh ditambah lima sama dengan tiga puluh lima, dan enam ribu ditambah tiga puluh lima sama dengan enam ribu tiga puluh lima.";
 
 export const ADEGAN_LUAR_IKATAN_TERAPAN: AdeganStory = {
   id: "luar-ikatan-terapan",
-  judul: "Number Bonds pada uang Malosi dan 6.035",
+  judul: "Number Bonds pada uang Helen dan 6.035",
   sumber: "Metode luar: Number Bonds (terapan)",
   latar: "#FDF2F8",
   ketukan: [
     k(
       SUARA_IT1,
-      tambah(0, judul("Ikatan: uang Igil"), kepala(3), ...ikatan("ip", 150, 76, 66, 58, 24, "", "", "", 8.6)),
+      tambah(0, judul("Ikatan: uang Slamet"), kepala(3), ...ikatan("ip", 150, 76, 66, 58, 24, "", "", "", 8.6)),
       tambah(idx(SUARA_IT1, "tujuh"), teks("ip-lt", 84, 137, "7.300", 8.6, W.biru), teks("ipb", 84, 172, "harga", 8.6, W.coklat)),
       tambah(idx(SUARA_IT1, "sepuluh"), teks("ip-ut", 150, 79, "10.000", 8.6, W.biru), teks("ipa", 208, 80, "bayar", 8.6, W.coklat)),
       tambah(idx(SUARA_IT1, "kembaliannya?"), teks("ip-rt", 216, 138, "?", 14, W.merah), teks("ipc", 216, 172, "kembalian", 8.6, W.coklat)),

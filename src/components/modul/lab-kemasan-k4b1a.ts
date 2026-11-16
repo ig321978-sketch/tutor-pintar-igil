@@ -1,6 +1,5 @@
 /**
  * Lab Kemasan (Kelas 4 Bab 1, Sub-Bab A: Membaca dan Menulis Bilangan sampai 10.000): logika murni.
- * Naskah orisinal IGIL (gudang koin gim Kira); rujukan topik: Matematika SD/MI Kelas IV, Bab 1 Sub-Bab A (acuan, bukan kutipan). Status: draf.
  * Satu alat, tiga tampilan.
  *  Rakit : peti (1.000), dus (100), bungkus (10), dan benda (1). Kemasan kesepuluh otomatis ditukar ke kemasan
  *          yang lebih besar (10 benda → 1 bungkus, 10 bungkus → 1 dus, 10 dus → 1 peti). Bilangan, papan empat
@@ -66,18 +65,18 @@ export function bacaK4B1A(n: number): string {
 
 export type TargetTulis = { n: number; konteks: string };
 export const TARGET_TULIS: TargetTulis[] = [
-  { n: 4718, konteks: "Skor tertinggi gim (poin)" },
-  { n: 6439, konteks: "Bilangan empat angka biasa" },
-  { n: 1308, konteks: "Bilangan dengan seribu" },
-  { n: 5007, konteks: "Bilangan dengan dua nol" },
-  { n: 4690, konteks: "Bilangan dengan satuan nol" },
-  { n: 3075, konteks: "Bilangan dengan ratusan nol" },
-  { n: 9402, konteks: "Bilangan dengan puluhan nol" },
-  { n: 2004, konteks: "Bilangan dua ribu empat" },
+  { n: 3676, konteks: "Tinggi Gunung Semeru (meter)" },
+  { n: 3254, konteks: "Bilangan dari buku" },
+  { n: 1025, konteks: "Bilangan dengan seribu" },
+  { n: 7003, konteks: "Bilangan dengan dua nol" },
+  { n: 6570, konteks: "Bilangan dengan satuan nol" },
+  { n: 9045, konteks: "Bilangan dengan ratusan nol" },
+  { n: 2903, konteks: "Bilangan dengan puluhan nol" },
+  { n: 6002, konteks: "Bilangan enam ribu dua" },
 ];
 
 /** Bilangan yang dicatat saat dirakit (dan dibaca bila Bacaan menyala). */
-export const PATOKAN_RAKIT = [4152, 5007, 1308, 8209, 5820, 10000];
+export const PATOKAN_RAKIT = [3286, 7003, 1025, 2903, 6750, 10000];
 
 /* ------------------------------ Keadaan ------------------------------ */
 

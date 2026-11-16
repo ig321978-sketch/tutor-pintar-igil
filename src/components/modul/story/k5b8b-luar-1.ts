@@ -77,12 +77,12 @@ export const ADEGAN_LUAR_LEGENDA: AdeganStory = {
 /* ------------------------------ LB2. Pictograph Scale Legend: penerapan pada panen tomat ------------------------------ */
 export const ADEGAN_LUAR_LEGENDA_TERAPAN: AdeganStory = {
   id: "luarb-legenda-terapan",
-  judul: "Memilih arti gambar untuk panen tomat Pak Malosi",
-  sumber: "Metode luar: panen tomat Pak Malosi",
+  judul: "Memilih arti gambar untuk panen tomat Pak Chandra",
+  sumber: "Metode luar: panen tomat Pak Chandra",
   latar: "#FEF2F2",
   ketukan: [
     k(
-      "Kita uji pada hasil panen tomat Pak Malosi: 10, 14, 20, 12, dan 4 kilogram, jumlahnya 60 kilogram.",
+      "Kita uji pada hasil panen tomat Pak Chandra: 10, 14, 20, 12, dan 4 kilogram, jumlahnya 60 kilogram.",
       tambah(0, teks("jud", 150, 22, "Pilih arti gambar: panen tomat", 12, W.ungu)),
       tambah("10,", teks("d1", 150, 50, "data: 10, 14, 20, 12, 4 kg", 11, W.biru)),
       tambah("jumlahnya", teks("d2", 150, 72, "jumlah 60 kg", 11, W.merah)),

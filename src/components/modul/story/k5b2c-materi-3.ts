@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, deret, emo, faktor, judul, kartu, kurungDeret, pita, sebar, teks } from "./k5b2c-gambar";
 import { bersih, hapus, k, redamkan, sorotkan, tambah } from "./k5b2c-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const xs8 = sebar(8, 30, 270);
 const xs9 = sebar(9, 24, 276);
@@ -23,7 +22,16 @@ export const ADEGAN_LATIH_A: AdeganStory = {
   judul: "Latihan: faktor dari 24 dan 36",
   sumber: "Materi: latihan faktor 24 dan 36",
   latar: "#FEFCE8",
-  kutipan: kutipanLokal("k5b2c-materi-3.ts:1"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Perhatikan kembali Eksplorasi 2.3B nomor 3 di halaman sebelumnya.",
+    "Dengan cara yang sama, tentukan faktor-faktor dari bilangan-bilangan berikut.",
+    "1. 24 3. 54 5. 96 2. 36 4. 72",
+    "Faktor dari 24",
+    "2 1 3 4 6 8 12 24",
+    "Faktor dari 36",
+    "2 1 3 4 9 12 18 36",
+  ],
   ketukan: [
     k(
       "Sekarang saatnya Latihan. Kita ulangi cara yang tadi dengan menulis semua faktor. Coba tentukan faktor dari dua puluh empat, tiga puluh enam, lima puluh empat, tujuh puluh dua, dan sembilan puluh enam.",
@@ -94,7 +102,14 @@ export const ADEGAN_LATIH_B: AdeganStory = {
   judul: "Latihan: faktor dari 54, 72, dan 96",
   sumber: "Materi: latihan faktor 54, 72, 96",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b2c-materi-3.ts:2"),
+  kutipan: [
+    "Faktor dari 54",
+    "2 1 3 4 9 18 27 54",
+    "Faktor dari 72",
+    "2 1 3 4 6 18 8 24 9 36 12 72",
+    "Faktor dari 96",
+    "2 1 3 4 6 24 8 32 12 48 16 96",
+  ],
   ketukan: [
     k(
       "Berikutnya lima puluh empat. Pasangannya: satu dengan lima puluh empat, dua dengan dua puluh tujuh, tiga dengan delapan belas, dan enam dengan sembilan. Faktornya ada delapan.",
@@ -180,7 +195,14 @@ export const ADEGAN_PENUTUP: AdeganStory = {
   judul: "Rangkuman faktor",
   sumber: "Materi: rangkuman faktor",
   latar: "#FFF1F2",
-  kutipan: kutipanLokal("k5b2c-materi-3.ts:3"),
+  kutipan: [
+    "Akhir Pembelajaran",
+    "Berikan kesempatan kepada peserta didik untuk mempresentasikan hasil kerjanya.",
+    "Ajak peserta didik untuk menyimpulkan makna dari memotong kertas.",
+    "Berikan penguatan tentang manfaat dari faktor bilangan, misalnya untuk membagi sejumlah barang menjadi bagian yang sama banyak dan tidak bersisa.",
+    "Berilah tanda centang (√) pada kolom yang sesuai.",
+    "Aku dapat menentukan faktor suatu bilangan.",
+  ],
   ketukan: [
     k(
       "Sekarang kita rangkum. Coba kamu ceritakan hasil kerjamu, misalnya tabel potongan kertas dan lingkaran faktor.",

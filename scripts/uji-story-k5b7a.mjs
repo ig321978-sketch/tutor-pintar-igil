@@ -3,7 +3,6 @@
 // teks bertumpuk, pemisahan materi dan metode luar, kutipan buku (bila PDF ada), hitungan mandiri (sedotan, jumlah sudut, tabel penggolongan),
 // geometri gambar (sisi sama, sudut siku-siku dan tumpul, busur sudut), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b7a.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -294,7 +293,7 @@ const objId = (objs, id) => objs.find((o) => o.id === id);
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,ekspl-71a,syarat-segitiga,ekspl-71b-lancip,ekspl-71b-siku-tumpul,ekspl-71c,ekspl-71d-sama-kaki,ekspl-71d-sama-sisi,banding-kaki-sisi,uji-refleksi", "urutan adegan materi");
-  for (const kata of ["sedotan", "sama kaki", "sama sisi", "sembarang", "lipatan kertas", "simetri lipat", "simetri putar", "Igil", "Kira", "Malosi", "Uji 1", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["sedotan", "sama kaki", "sama sisi", "sembarang", "lipatan kertas", "simetri lipat", "simetri putar", "Asep", "Lukas", "Nisa", "Uji 1", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-ketaksamaan", "luar-ketaksamaan-terapan", "luar-jumlah", "luar-jumlah-terapan", "luar-klasifikasi", "luar-klasifikasi-terapan", "luar-hierarki", "luar-hierarki-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[1].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas" && M_VIDEO.adegan.length === 10 && U.adegan.length === 11, "10 adegan materi diputar (dengan sapaan) dan 11 adegan metode luar (dengan sapaan)");
@@ -385,27 +384,27 @@ const objId = (objs, id) => objs.find((o) => o.id === id);
     // candi (pembuka): dua segitiga pendapat
     const ssp = A("pembuka-candi", 4, "ss");
     const skp = A("pembuka-candi", 4, "sk");
-    sama([jenisSisi(sisiSegitiga(ssp)), jenisSisi(sisiSegitiga(skp))], ["sama sisi", "sama kaki"], "pembuka: gambar dua pendapat Wei dan Malosi");
+    sama([jenisSisi(sisiSegitiga(ssp)), jenisSisi(sisiSegitiga(skp))], ["sama sisi", "sama kaki"], "pembuka: gambar dua pendapat Komang dan Nisa");
   }
-  // Tumpul percobaan Kira dan baji lurus.
+  // Tumpul percobaan Lukas dan baji lurus.
   {
     const j = akhirAdegan(adegan(M, "ekspl-71c"), 2);
     const t1 = titikJalur(objId(j, "t1"));
-    sama(jenisSudut(sudutSegitiga(t1)), "tumpul", "segitiga percobaan Kira tumpul");
+    sama(jenisSudut(sudutSegitiga(t1)), "tumpul", "segitiga percobaan Lukas tumpul");
     const sp = sudutSegitiga(t1);
     const wedge = [0, 1, 2].map((i) => spanBusur(objId(j, `bj-w${i}`)));
     hampir(wedge[0], Math.max(...sp), 0.2, "baji pertama sama dengan sudut tumpul");
-    hampir(jml(wedge), 180, 0.3, "tiga baji Kira berjumlah 180");
+    hampir(jml(wedge), 180, 0.3, "tiga baji Lukas berjumlah 180");
     const asep = akhirAdegan(adegan(M, "ekspl-71c"), 1);
     const w2 = [0, 1, 2].map((i) => spanBusur(objId(asep, `bj-w${i}`)));
     const asep0 = titikJalur(objId(akhirAdegan(adegan(M, "ekspl-71c"), 0), "sg"));
     const sa = sudutSegitiga(asep0);
-    sama(w2.map((x) => Math.round(x)), [sa[0], sa[1], sa[2]].map((x) => Math.round(x)), "baji Igil sama dengan sudut A, B, C segitiga lancipnya");
-    hampir(jml(w2), 180, 0.3, "tiga baji Igil berjumlah 180");
+    sama(w2.map((x) => Math.round(x)), [sa[0], sa[1], sa[2]].map((x) => Math.round(x)), "baji Asep sama dengan sudut A, B, C segitiga lancipnya");
+    hampir(jml(w2), 180, 0.3, "tiga baji Asep berjumlah 180");
     // dua sudut siku-siku dan sisa
     const d = akhirAdegan(adegan(M, "ekspl-71c"), 4);
-    sama([nilaiId(d, "l1"), nilaiId(d, "l2"), nilaiId(d, "l3")], ["A + B + C = 180°", "90° + 90° + C = 180°", "180° + C = 180°"], "pertanyaan Malosi: tiga baris penalaran");
-    cek(180 - 90 - 90 === 0 && nilaiId(akhirAdegan(adegan(M, "ekspl-71c"), 5), "l4") === "C = 0°", "pertanyaan Malosi: sudut ketiga nol");
+    sama([nilaiId(d, "l1"), nilaiId(d, "l2"), nilaiId(d, "l3")], ["A + B + C = 180°", "90° + 90° + C = 180°", "180° + C = 180°"], "pertanyaan Nisa: tiga baris penalaran");
+    cek(180 - 90 - 90 === 0 && nilaiId(akhirAdegan(adegan(M, "ekspl-71c"), 5), "l4") === "C = 0°", "pertanyaan Nisa: sudut ketiga nol");
     cek(2 * 91 > 180 && 2 * 90 === 180, "dua sudut tumpul lebih dari 180 dan dua siku-siku tepat 180");
   }
   // Tantangan dan sama sisi: hitungan sudut.
@@ -512,7 +511,7 @@ const objId = (objs, id) => objs.find((o) => o.id === id);
       n += 1;
       cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -533,7 +532,7 @@ const objId = (objs, id) => objs.find((o) => o.id === id);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     // larangan berbagi visual: berkas k5b7a hanya mengimpor logika dan berkas k5b7a sendiri
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b7a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b7a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b7a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b7a sendiri (${impor.join(", ")})`);
   }
   // mesin tidak memakai kit visual lama
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");

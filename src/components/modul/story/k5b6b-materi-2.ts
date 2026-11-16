@@ -2,7 +2,6 @@ import type { AdeganStory, Obj } from "./logika-story";
 import { SOAL1, W, jam, kartu, kertasSiku, kotak, panah, pukul, sudut, tanda, tandaSiku, teks } from "./k5b6b-gambar";
 import type { Jenis } from "./k5b6b-gambar";
 import { bersih, k, tambah } from "./k5b6b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Eksplorasi 6.2 mengelompokkan sudut (hlm. 171-172; Panduan Guru hlm. 259-260) ------------------------------ */
 const TIGA_X = [12, 106, 200];
@@ -13,7 +12,7 @@ export const ADEGAN_EKSPLORASI: AdeganStory = {
   judul: "Mengelompokkan sudut",
   sumber: "Materi: mengelompokkan sudut",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b6b-materi-2.ts:1"),
+  kutipan: ["Eksplorasi 6.2", "Mengelompokkan Sudut", "Pada Aktivitas 1 kalian sudah menemukan sudut dari sekitar kalian", "Tabel 6.3 Kelompok Sudut", "Sudut yang Lebih Kecil", "dari Sudut Siku-Siku", "Sudut yang Lebih", "Besar dari Sudut", "guru bertindak sebagai fasilitator", "berkeliling memeriksa", "secara kelompok", "ataupun individu"],
   ketukan: [
     k(
       "Sekarang kita mengelompokkan sudut. Kita memakai sudut-sudut yang sudah ditemukan tadi, ketika kita menjadi detektif sudut.",
@@ -65,7 +64,7 @@ export const ADEGAN_LANCIP_TUMPUL: AdeganStory = {
   judul: "Sudut lancip, siku-siku, dan tumpul",
   sumber: "Materi: lancip, siku-siku, dan tumpul",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b6b-materi-2.ts:2"),
+  kutipan: ["sudut lancip", "sudut yang lebih besar dari sudut siku-siku disebut", "sudut tumpul", "mempresentasikan hasil", "menyimpulkan hal-hal penting", "mengelompokkan sudut", "mengerjakan soal Ayo Berlatih"],
   ketukan: [
     k(
       "Pada tabel tadi ada tiga kelompok sudut. Sudut yang lebih kecil dari sudut siku-siku disebut sudut lancip.",
@@ -113,7 +112,7 @@ export const ADEGAN_SALAH_KAPRAH: AdeganStory = {
   judul: "Hati-hati: kesalahan yang sering terjadi",
   sumber: "Materi: hati-hati dan tantangan",
   latar: "#FEF2F2",
-  kutipan: kutipanLokal("k5b6b-materi-2.ts:3"),
+  kutipan: ["Kemungkinan Respons", "mengelompokkan semua jenis sudut sesuai dengan", "tidak dapat membedakan sudut", "lebih besar dan lebih kecil dari sudut", "salah satu kaki sudut", "harus selalu mendatar", "memberikan contoh lain dengan", "berbagai macam posisi dan arah", "Miskonsepsi", "menganggap semua pojokan benda sebagai sudut", "Tidak semua pojokan benda dapat dikategorikan", "sudut terbuka", "Diferensiasi", "mengerjakan latihan tanpa bantuan"],
   ketukan: [
     k(
       "Hati-hati dengan kesalahan yang sering terjadi. Pertama, kelompokkan dulu semua jenis sudut dengan tepat, supaya kita yakin sudah paham.",
@@ -177,7 +176,7 @@ export const ADEGAN_SOAL1A: AdeganStory = {
   judul: "Latihan 1: jam, persimpangan jalan, tangga",
   sumber: "Materi: latihan jenis sudut",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k5b6b-materi-2.ts:4"),
+  kutipan: ["Berilah tanda centang", "pada jenis sudut yang sesuai dengan", "setiap jenis benda berikut ini", "Soal 1", "Sudut yang", "terbentuk oleh", "jarum pendek", "dan panjang saat jam", "menunjukkan", "pukul 08.00", "Sudut pada", "persimpangan", "tangga rumah", "Kunci Jawaban"],
   ketukan: [
     k(
       "Latihan satu. Tentukan jenis sudut yang sesuai dengan setiap benda. Bagian a: sudut yang dibentuk jarum pendek dan jarum panjang saat jam menunjukkan pukul delapan.",

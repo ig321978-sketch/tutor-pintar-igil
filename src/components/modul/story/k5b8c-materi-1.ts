@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, batangV, emo, garis, kartu, kotak, sumbuV, tabel, teks, type GV } from "./k5b8c-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k5b8c-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Sub-Bab C dan pemanasan (hlm. 252; Buku Panduan Guru hlm. 364 sampai 365) ------------------------------ */
 const GC: GV = { x: 40, y: 150, w: 230, h: 99, maks: 9, langkah: 1 };
@@ -17,7 +16,12 @@ export const ADEGAN_PEMBUKA_C: AdeganStory = {
   judul: "Pembuka Sub-Bab C: diagram batang",
   sumber: "Buku Siswa hlm. 235, 252; Buku Panduan Guru hlm. 364–365",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b8c-materi-1.ts:1"),
+  kutipan: [
+    "C. Diagram Batang",
+    "Eksplorasi 8.3A",
+    "Ayo Menemukan Panjangnya",
+    "menganalisis data dari piktogram dan diagram batang",
+  ],
   ketukan: [
     k(
       "Sub-Bab C membahas diagram batang. Tinggi atau panjang batangnya menunjukkan banyaknya data.",
@@ -74,7 +78,13 @@ export const ADEGAN_SKALA_83A: AdeganStory = {
   judul: "Menemukan panjang dan skala",
   sumber: "Materi: menemukan panjang dan skala",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b8c-materi-1.ts:2"),
+  kutipan: [
+    "Eksplorasi 8.3A",
+    "Ayo Menemukan Panjangnya",
+    "tentukan panjang persegi panjang yang diminta",
+    "ketinggian persegi panjang pada diagram batang harus dibuat dengan tepat",
+    "gambarlah persegi panjang dengan panjang 120 satuan",
+  ],
   ketukan: [
     k(
       "Latihan satu, ayo menemukan panjangnya. Panjang persegi panjang pertama sepuluh satuan, yang kedua harus dicari.",
@@ -146,12 +156,17 @@ export const ADEGAN_VERTIKAL_83B: AdeganStory = {
   judul: "Diagram batang vertikal medali emas",
   sumber: "Materi: diagram batang vertikal",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b8c-materi-1.ts:3"),
+  kutipan: [
+    "Eksplorasi 8.3B",
+    "Bagaimana cara mengetahui dengan cepat data yang paling banyak dan paling sedikit",
+    "Perolehan Medali Emas Indonesia di Ajang Sea Games",
+    "dilaksanakan setiap 2 tahun sekali",
+  ],
   ketukan: [
     k(
-      "Sekarang kita belajar diagram batang vertikal. Igil bertanya, bagaimana cara cepat mengetahui data paling banyak dan paling sedikit?",
+      "Sekarang kita belajar diagram batang vertikal. Komang bertanya, bagaimana cara cepat mengetahui data paling banyak dan paling sedikit?",
       tambah(0, teks("jud", 150, 26, "Diagram Batang Vertikal", 12, W.ungu), teks("jud2", 150, 41, "Cara cepat membaca data", 9.4, W.biru)),
-      tambah("Igil", emo("tny", 150, 100, "🤔", 38)),
+      tambah("Komang", emo("tny", 150, 100, "🤔", 38)),
       tambah("cepat", teks("q", 150, 150, "Mana yang paling banyak dan paling sedikit?", 8.6, W.merah)),
     ),
     k(

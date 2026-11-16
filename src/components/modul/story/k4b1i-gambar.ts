@@ -214,7 +214,7 @@ export function bagiBenda(id: string, x: number, y: number, total: number, orang
   return out;
 }
 
-/* ------------------------------ Kelereng per hari (Wei dan Malosi) ------------------------------ */
+/* ------------------------------ Kelereng per hari (Karel dan Slamet) ------------------------------ */
 
 /**
  * Deret `hari` kotak hari, tiap kotak berisi `per` kelereng: kotak `${id}-h{i}`, nomor hari `${id}-d{i}`, kelereng `${id}-c{q}`. (x, y) pojok kiri-atas.

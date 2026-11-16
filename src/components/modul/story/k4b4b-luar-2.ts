@@ -38,7 +38,7 @@ export const ADEGAN_LUAR_DI: AdeganStory = {
       ]),
     ),
     k(
-      "Cara ini cocok untuk benda pejal seperti dadu mainan Igil. Ukur air sebelum dan sesudah, lalu kurangkan.",
+      "Cara ini cocok untuk benda pejal seperti dadu mainan Helen. Ukur air sebelum dan sesudah, lalu kurangkan.",
       bersih(0),
       tambah(0, judul("Benda pejal: ukur airnya")),
       tambah("dadu", emo("df", 150, 76, "🎲", 40)),

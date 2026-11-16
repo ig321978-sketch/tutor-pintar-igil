@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { BANDING_KUNCI, BANDING_SOAL, TIARA, W, barisTabel, emo, garis, judul, kartu, kisi, pecahan, segitigaBagi, teks } from "./k4b2a-gambar";
 import { bersih, idx, k, sorotkan, tambah, hapus, ubah } from "./k4b2a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /** Dua pecahan pembilang satu (penyebut a dan b) dengan tanda di antaranya; (cx, y) pusat garis pecahan. Id `${id}a`, `${id}b`, `${id}s`. */
 const pasang = (id: string, a: number, b: number, tanda: string, y: number, u = 24) => [...pecahan(`${id}a`, 70, y, "1", a, u), teks(`${id}s`, 150, y + 9, tanda, u + 4, W.merah), ...pecahan(`${id}b`, 230, y, "1", b, u)];
@@ -17,7 +16,13 @@ export const ADEGAN_BANDING_KECIL: AdeganStory = {
   judul: "Membandingkan: sepersepuluh dan seperlima",
   sumber: "Materi: sepersepuluh lawan seperlima",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b2a-materi-3.ts:1"),
+  kutipan: [
+    "Amati gambar di atas. Bandingkan daerah arsir antara kedua pecahan tersebut.",
+    "Daerah arsir mana yang lebih kecil?",
+    "lebih kecil dari daerah arsir",
+    "Atau dapat ditulis sebagai berikut:",
+    "Peserta didik dapat menentukan mana pecahan yang lebih besar atau lebih kecil.",
+  ],
   ketukan: [
     k(
       SUARA_E1,
@@ -64,7 +69,11 @@ export const ADEGAN_BERLATIH_BANDING_SATU: AdeganStory = {
   judul: "Berlatih: bandingkan gambar",
   sumber: "Materi: berlatih membandingkan gambar",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b2a-materi-3.ts:2"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Isilah titik-titik di bawah ini dengan bilangan pecahan yang sesuai dengan gambar serta notasi lebih dari ( > ) atau kurang dari ( < ).",
+    "Lengkapi titik-titik di bawah ini!",
+  ],
   ketukan: [
     k(
       SUARA_L1,
@@ -118,7 +127,12 @@ export const ADEGAN_BERLATIH_BANDING_DUA: AdeganStory = {
   judul: "Berlatih: tanda dan cerita Tiara",
   sumber: "Materi: tanda lebih dari, kurang dari",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k4b2a-materi-3.ts:3"),
+  kutipan: [
+    "Isilah titik-titik berikut dengan notasi \">\" atau \"<\"!",
+    "Tiara mempunyai bawang putih",
+    "Manakah yang lebih berat, bawang putih atau gula?",
+    "Jawab: jadi yang lebih berat adalah bawang putih",
+  ],
   ketukan: [
     k(
       SUARA_N1,
@@ -180,7 +194,22 @@ export const ADEGAN_DIFERENSIASI: AdeganStory = {
   judul: "Diferensiasi dan kesalahan yang sering terjadi",
   sumber: "Materi: diferensiasi dan kesalahan umum",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b2a-materi-3.ts:4"),
+  kutipan: [
+    "Diferensiasi",
+    "Karakteristik peserta didik di masing-masing sekolah akan berbeda-beda,",
+    "kondisi seperti ini hanya guru yang memahami.",
+    "Model pembelajaran yang disarankan untuk bab ini adalah Problem Based Learning.",
+    "ditentukan ketua kelompok adalah peserta didik dengan tingkat kemampuan tinggi",
+    "Bagi peserta didik yang kecepatan belajarnya tinggi (advanced), minta mereka mengerjakan latihan tanpa bantuan.",
+    "Guru juga dapat memberikan soal-soal tambahan.",
+    "guru dapat mendampingi peserta didik yang mengalami kesulitan.",
+    "tidak terdapat peserta didik dengan kemampuan tinggi",
+    "semua anggota kelompok dapat bekerja sama untuk menyelesaikan masalah/soal yang diberikan oleh guru.",
+    "guru dapat menerapkan metode diskusi dengan melibatkan peserta didik dalam pecahan dengan pembilang satu.",
+    "mengurutkan beberapa pecahan dengan pembilang satu",
+    "Hasil Aktivitas",
+    "1.1 membandingkan dua pecahan dengan pembilang satu",
+  ],
   ketukan: [
     k(
       SUARA_F1,

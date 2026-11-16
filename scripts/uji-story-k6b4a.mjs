@@ -254,7 +254,7 @@ for (const v of VIDEO) {
   sama([3, 6, 1].reduce((x, y) => x + y, 0), 10, "rak buku: 10 buku");
   sama([567, 556, 133, 0, 0].length, 5, "lima jenis bencana");
   sama(6 + 6 + 3 + 1, 16, "jawaban lemari dari buku guru: 16");
-  sama(2 + 5 + 9, 16, "jawaban lemari Kira: 16");
+  sama(2 + 5 + 9, 16, "jawaban lemari Dhien: 16");
   sama(1 + 4 + 11, 16, "jawaban lemari: 1 + 4 + 11");
   sama(3 + 6 + 7, 16, "jawaban lemari: 3 + 6 + 7");
   sama(7 + 4 + 4, 15, "bola 7, 4, 4");
@@ -283,7 +283,7 @@ for (const v of VIDEO) {
 /* ------------------------------ Emoji, akhir baris, dan kemurnian ------------------------------ */
 {
   const folder = new URL("../src/components/modul/story/", import.meta.url);
-  const berkas = readdirSync(folder).filter((f) => /^(logika-story|kutipan-lokal|mesin-story|k6b4a-.*)\.(ts|tsx)$/.test(f));
+  const berkas = readdirSync(folder).filter((f) => /^(logika-story|mesin-story|k6b4a-.*)\.(ts|tsx)$/.test(f));
   cek(berkas.length >= 9, `berkas story ditemukan (${berkas.length})`);
   for (const f of berkas) {
     const s = readFileSync(new URL(f, folder), "utf8");
@@ -302,7 +302,7 @@ for (const v of VIDEO) {
   for (const f of berkas.filter((x) => x.startsWith("k6b4a-"))) {
     const s = readFileSync(new URL(f, folder), "utf8");
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k6b4a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas k6b4a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k6b4a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas k6b4a sendiri (${impor.join(", ")})`);
   }
   // mesin tidak memakai kit visual lama
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");

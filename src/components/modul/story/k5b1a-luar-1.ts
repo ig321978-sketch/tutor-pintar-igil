@@ -43,7 +43,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       SUARA_O4,
       bersih(0),
       tambah(0, judul("Angka dari cerita tadi")),
-      tambah("belas", ...kartu("a1", 14, 34, 272, 32, W.hijauMuda, ["14.500: harga pensil Upe"], 9.6)),
+      tambah("belas", ...kartu("a1", 14, 34, 272, 32, W.hijauMuda, ["14.500: harga pensil Yohana"], 9.6)),
       tambah("enam@2", ...kartu("a2", 14, 76, 272, 32, W.langit, ["66.500: harga obat batuk"], 9.6)),
       tambah("dua@2", ...kartu("a3", 14, 118, 272, 32, W.krem, ["26.932: penduduk Kayu Tanam"], 9.6)),
     ),

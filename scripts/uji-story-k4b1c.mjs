@@ -4,7 +4,6 @@
 // tabel nilai tempat, deret angka, kartu dan papan spon, batang bertingkat, garis bilangan, dan simulasi pengurutan himpunan dihitung ulang dari gambar, semua pernyataan lebih dari, kurang dari, dan sama dengan pada gambar benar,
 // hitungan mandiri kunci Panduan Guru (termasuk terbesar dan terkecil Ayo Berpikir), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b1c.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -794,8 +793,8 @@ for (const v of [M, U]) {
       }
     }
     stat.kutipan = n;
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
+    cek(n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
     cek(/d\. komposisi dan dekomposisi bilangan cacah/.test(bersih(bagian[2])) && /d\. komposisi dan dekomposisi bilangan cacah/.test(bersih(bagian[3])), "subbab D mulai di tengah Buku Siswa PDF 36 dan Panduan Guru PDF 57");
     cek(/apabila karakteristik peserta didik/.test(bersih(bagian[3])) && bersih(bagian[3]).indexOf("apabila karakteristik") < bersih(bagian[3]).indexOf("d. komposisi"), "Panduan Guru PDF 57 memuat akhir Diferensiasi subbab C sebelum judul D");
     cek(siswa.includes("ayo berpikir"), "Buku Siswa hlm. 24 (PDF 36) memuat Ayo Berpikir milik subbab C sebelum judul D");
@@ -835,7 +834,7 @@ for (const v of [M, U]) {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b1c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b1c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1c sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

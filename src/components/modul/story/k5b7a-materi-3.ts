@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bajiLurus, bulat, busur, emo, garis, judul, kartu, kotak, sedotan, segitiga, tabel, tandaSiku, tandaSisi, teks } from "./k5b7a-gambar";
 import { bersih, k, tambah } from "./k5b7a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const UNGU_MUDA = "#EDE9FE";
 
@@ -17,10 +16,23 @@ export const ADEGAN_JUMLAH: AdeganStory = {
   judul: "Jumlah sudut dalam segitiga",
   sumber: "Materi: jumlah sudut dalam segitiga",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b7a-materi-3.ts:1"),
+  kutipan: [
+    "Eksplorasi 7.1C",
+    "Ayo Menjumlahkan Sudut-Sudut Dalam Segitiga",
+    "Asep menggambar segitiga",
+    "Selanjutnya, Asep memotong",
+    "ketiga bagian sudut tersebut.",
+    "Potongan sudut tersebut",
+    "diimpitkan hingga rapat.",
+    "Lukas menggambar segitiga",
+    "Lukas mengimpitkan tiga sudut",
+    "Jumlah sudut-sudut dalam segitiga adalah 180o.",
+    "Andaikan ada segitiga siku-siku ABC yang memiliki 2 sudut siku-siku",
+    "Jelas hal ini tidak mungkin terjadi pada segitiga ABC.",
+  ],
   ketukan: [
     k(
-      "Sekarang kita menjumlahkan sudut segitiga. Igil menggambar segitiga lancip, menandai sudutnya A, B, C, lalu memotong ketiga sudut itu.",
+      "Sekarang kita menjumlahkan sudut segitiga. Asep menggambar segitiga lancip, menandai sudutnya A, B, C, lalu memotong ketiga sudut itu.",
       tambah(0, judul("Jumlah sudut dalam segitiga")),
       tambah(6, segitiga("sg", 30, 130, [[0, 0], [100, 0], [55, -75]], W.hijauMuda), teks("tA", 22, 144, "A", 9.6), teks("tB", 138, 144, "B", 9.6), teks("tC", 85, 48, "C", 9.6)),
       tambah(11, busur("aA", 30, 130, 16, -53.7, 0, W.merah)),
@@ -38,9 +50,9 @@ export const ADEGAN_JUMLAH: AdeganStory = {
       tambah(13, teks("eq", 150, 186, "A + B + C = 180°", 10.5, W.hijau)),
     ),
     k(
-      "Kira memakai segitiga tumpul dan membuat dua salinannya, lalu mengimpitkan tiga sudut berbeda a, b, dan c. Hasilnya juga sudut lurus.",
+      "Lukas memakai segitiga tumpul dan membuat dua salinannya, lalu mengimpitkan tiga sudut berbeda a, b, dan c. Hasilnya juga sudut lurus.",
       bersih(0),
-      tambah(0, judul("percobaan Kira"), segitiga("t1", 15, 110, TUMPUL, W.merahMuda)),
+      tambah(0, judul("percobaan Lukas"), segitiga("t1", 15, 110, TUMPUL, W.merahMuda)),
       tambah(5, segitiga("t2", 110, 110, TUMPUL, W.merahMuda), segitiga("t3", 205, 110, TUMPUL, W.merahMuda)),
       tambah(13, busur("ca", 37, 84, 11, 24.1, 130.2, W.merah), teks("cat", 37, 101, "a", 8, W.merah)),
       tambah(14, busur("cb", 110, 110, 14, -49.8, 0, W.hijau), teks("cbt", 125, 106, "b", 8, W.hijau)),
@@ -50,12 +62,12 @@ export const ADEGAN_JUMLAH: AdeganStory = {
     k(
       "Jadi a tambah b tambah c juga seratus delapan puluh derajat. Jumlah sudut dalam segitiga adalah seratus delapan puluh derajat.",
       bersih(0),
-      tambah(0, judul("jumlah sudut segitiga"), ...kartu("as", 20, 36, 260, 30, W.merahMuda, ["Igil: A + B + C = 180°"], 10)),
-      tambah(0, ...kartu("lk", 20, 76, 260, 30, W.langit, ["Kira: a + b + c = 180°"], 10)),
+      tambah(0, judul("jumlah sudut segitiga"), ...kartu("as", 20, 36, 260, 30, W.merahMuda, ["Asep: A + B + C = 180°"], 10)),
+      tambah(0, ...kartu("lk", 20, 76, 260, 30, W.langit, ["Lukas: a + b + c = 180°"], 10)),
       tambah("Jumlah", ...kartu("kk", 20, 122, 260, 56, W.hijauMuda, ["jumlah sudut-sudut", "dalam segitiga adalah 180°"], 11)),
     ),
     k(
-      "Jawab pertanyaan Malosi. Andaikan segitiga siku-siku punya dua sudut siku-siku, A dan B. Maka sembilan puluh tambah sembilan puluh tambah C sama dengan seratus delapan puluh.",
+      "Jawab pertanyaan Nisa. Andaikan segitiga siku-siku punya dua sudut siku-siku, A dan B. Maka sembilan puluh tambah sembilan puluh tambah C sama dengan seratus delapan puluh.",
       bersih(0),
       tambah(0, judul("dua sudut siku-siku?")),
       tambah(3, teks("l1", 150, 56, "A + B + C = 180°", 11, W.biru)),
@@ -77,7 +89,20 @@ export const ADEGAN_SAMA_KAKI: AdeganStory = {
   judul: "Segitiga sama kaki",
   sumber: "Materi: segitiga sama kaki",
   latar: "#F0FDFA",
-  kutipan: kutipanLokal("k5b7a-materi-3.ts:2"),
+  kutipan: [
+    "Eksplorasi 7.1D",
+    "Segitiga juga dapat dikelompokkan berdasarkan panjang sisi-",
+    "Pada alat peraga segitiga yang",
+    "Sisi-sisi yang tepat berimpit memiliki",
+    "dinamakan kaki-kaki segitiga sehingga,",
+    "segitiga tersebut dinamakan segitiga",
+    "sama kaki.",
+    "Sudut-sudut yang tepat berimpit pada alat peraga segitiga sama kaki menunjukkan bahwa sudut-sudut tersebut sama besar.",
+    "Pada segitiga sama kaki, setidaknya terdapat 2",
+    "sisi yang sama panjang, 2 sudut yang sama besar,",
+    "1 simetri lipat, dan 1 simetri putar.",
+    "Berapakah besar sudut pada kaki-kaki segitiga siku-siku sama kaki?",
+  ],
   ketukan: [
     k(
       "Sekarang kita mengelompokkan segitiga menurut panjang sisinya. Pada alat peraga segitiga JKL, sisi LJ dan sisi LK tepat berimpit.",
@@ -140,7 +165,22 @@ export const ADEGAN_SAMA_SISI: AdeganStory = {
   judul: "Segitiga sama sisi dan segitiga sembarang",
   sumber: "Materi: sama sisi dan sembarang",
   latar: "#FDF4FF",
-  kutipan: kutipanLokal("k5b7a-materi-3.ts:3"),
+  kutipan: [
+    "Pada alat peraga segitiga yang",
+    "Itu berarti ketiga sisi",
+    "sama panjang sehingga",
+    "segitiga sama sisi.",
+    "Karena jumlah besar semua",
+    "sudut segitiga adalah 180o, maka",
+    "Pada segitiga sama sisi, terdapat 3 sisi yang sama",
+    "panjang, 3 sudut yang sama besar, 3 simetri lipat,",
+    "Ayo Berpikir Kreatif",
+    "Bagaimana dengan segitiga yang tidak memenuhi ciri-ciri",
+    "Adakah sisi yang sama panjang?",
+    "Segitiga yang panjang",
+    "sisi-sisinya berbeda",
+    "segitiga sembarang.",
+  ],
   ketukan: [
     k(
       "Segitiga PQR yang lain: semua sisinya tepat berimpit, jadi ketiga sisinya sama panjang. Itulah segitiga sama sisi.",
@@ -201,10 +241,20 @@ export const ADEGAN_BANDING: AdeganStory = {
   judul: "Apakah sama sisi boleh disebut sama kaki?",
   sumber: "Materi: sama sisi dan sama kaki",
   latar: "#ECFEFF",
-  kutipan: kutipanLokal("k5b7a-materi-3.ts:4"),
+  kutipan: [
+    "Teman-teman, apakah",
+    "segitiga sama sisi itu",
+    "boleh juga disebut",
+    "Coba kita bandingkan segitiga sama kaki dan segitiga sama sisi.",
+    "Apakah segitiga sama sisi memiliki",
+    "setidaknya 2 sisi yang sama panjang?",
+    "setidaknya 1 simetri lipat?",
+    "Segitiga sama sisi dapat digolongkan sebagai segitiga",
+    "sama kaki.",
+  ],
   ketukan: [
     k(
-      "Malosi bertanya: bolehkah segitiga sama sisi disebut segitiga sama kaki? Mari periksa dengan membandingkan ciri-cirinya.",
+      "Nisa bertanya: bolehkah segitiga sama sisi disebut segitiga sama kaki? Mari periksa dengan membandingkan ciri-cirinya.",
       tambah(0, judul("sama sisi boleh disebut sama kaki?")),
       tambah(5, segitiga("ss", 190, 140, [[0, 0], [70, 0], [35, -60.6]], W.hijauMuda), teks("ssl", 225, 160, "sama sisi", 9)),
       tambah(9, segitiga("sk", 40, 140, [[0, 0], [50, 0], [25, -70]], W.jingga), teks("skl", 65, 160, "sama kaki", 9)),
@@ -258,7 +308,21 @@ export const ADEGAN_UJI: AdeganStory = {
   judul: "Uji, tantangan, dan renungan",
   sumber: "Materi: uji, tantangan, dan renungan",
   latar: "#FEF2F2",
-  kutipan: kutipanLokal("k5b7a-materi-3.ts:5"),
+  kutipan: [
+    "Uji Kompetensi",
+    "Benar atau salahkah pernyataan-pernyataan berikut ini?",
+    "menggunakan ruas garis sepanjang 5 cm,",
+    "7 cm, dan 1 cm.",
+    "Semua sudut pada segitiga siku-siku adalah",
+    "Besar tiga sudut dalam segitiga jika",
+    "dijumlahkan akan menghasilkan 180o.",
+    "Segitiga sama sisi juga dapat digolongkan",
+    "sebagai segitiga sama kaki.",
+    "Aku tahu syarat ruas-ruas garis dapat membentuk",
+    "Aku bisa mendaftar ciri-ciri segitiga berdasarkan",
+    "Aku bisa menghitung jumlah sudut-sudut dalam",
+    "Aku bisa membandingkan ciri-ciri segitiga sama kaki",
+  ],
   ketukan: [
     k(
       "Sekarang Uji satu. Ada tiga sedotan: lima, tujuh, dan satu sentimeter. Lima tambah satu hanya enam, tidak melebihi tujuh. Jadi pernyataannya salah.",

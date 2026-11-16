@@ -1,11 +1,10 @@
 // Uji Story Kelas 5 Bab 1 Sub-Bab C (komposisi dan dekomposisi bilangan): dua video (materi kurikulum dan metode luar) dengan mesin animasi baru.
 // Memeriksa: pemicu kata, sinkron bilangan suara (kata bilangan) dengan gambar, perubahan gambar tiap ketukan, keunikan antaradegan,
 // batas kanvas, teks bertumpuk, pemisahan materi dan metode luar, tidak membocorkan Subbab D (operasi hitung), kutipan buku (bila PDF ada),
-// hitungan mandiri nilai uang (Malosi 38.600, Igil 63.500, Kira Rp45.600 dengan empat cara), kesalahan tabel Igil di buku (angka 3 di kolom
+// hitungan mandiri nilai uang (Asep 38.600, Lukas 63.500, Komang Rp45.600 dengan empat cara), kesalahan tabel Lukas di buku (angka 3 di kolom
 // puluh ribuan, seharusnya 6) dicocokkan dengan teks PDF, persamaan di gambar, tabel nilai tempat (banyak lembar kali nilai kolom),
 // geometri gambar (lembar dan keping uang, bingkai tabel, tabel cara), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b1c.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -255,25 +254,25 @@ const NILAI_KOL = [10000, 1000, 100, 10, 1];
 const nilaiUang = (p, r, s) => p * 10000 + r * 1000 + s * 100;
 const titik = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const angkaTitik = (s) => Number(String(s).replace(/\./g, ""));
-sama([nilaiUang(3, 8, 6), nilaiUang(6, 3, 5)], [38600, 63500], "uang Malosi dan uang Igil dihitung mandiri");
+sama([nilaiUang(3, 8, 6), nilaiUang(6, 3, 5)], [38600, 63500], "uang Asep dan uang Lukas dihitung mandiri");
 sama(titik(38600), "38.600", "penulisan titik ribuan");
-// Semua cara Kira membayar Rp45.600 dengan paling banyak 5 lembar sepuluh ribuan, 15 lembar seribuan, dan 16 keping seratusan
+// Semua cara Komang membayar Rp45.600 dengan paling banyak 5 lembar sepuluh ribuan, 15 lembar seribuan, dan 16 keping seratusan
 const CARA = [];
 for (let p = 0; p <= 5; p += 1) for (let r = 0; r <= 15; r += 1) for (let s = 0; s <= 16; s += 1) if (nilaiUang(p, r, s) === 45600) CARA.push([p, r, s]);
-sama(CARA.length, 4, "uang Kira: tepat empat cara membayar Rp45.600");
-sama(CARA, [[3, 14, 16], [3, 15, 6], [4, 4, 16], [4, 5, 6]], "uang Kira: keempat cara (urut p, r, s)");
+sama(CARA.length, 4, "uang Komang: tepat empat cara membayar Rp45.600");
+sama(CARA, [[3, 14, 16], [3, 15, 6], [4, 4, 16], [4, 5, 6]], "uang Komang: keempat cara (urut p, r, s)");
 cek(nilaiUang(5, 0, 0) === 50000 && 50000 > 45600, "lima lembar sepuluh ribuan (50.000) melebihi 45.600");
 cek(nilaiUang(4, 3, 0) === 43000 && 45600 - 43000 === 2600 && 2600 / 100 === 26 && 26 > 16, "empat lembar sepuluh ribuan dan tiga seribuan: sisa 2.600 butuh 26 keping, melebihi 16");
-cek(nilaiUang(3, 3, 5) === 33500 && nilaiUang(6, 3, 5) === 63500, "tabel Igil di buku (3 puluh ribuan) menghasilkan 33.500, cerita (6 lembar) menghasilkan 63.500");
+cek(nilaiUang(3, 3, 5) === 33500 && nilaiUang(6, 3, 5) === 63500, "tabel Lukas di buku (3 puluh ribuan) menghasilkan 33.500, cerita (6 lembar) menghasilkan 63.500");
 stat.kunci += 8;
 
 if (pdfSiap) {
-  cek(bsRaw.includes("asep mempunyai uang pecahan sepuluh ribuan sebanyak 3 lembar, seribuan sebanyak 8 lembar, dan seratusan sebanyak 6 lembar."), "buku: uang Malosi 3, 8, 6");
-  cek(bsRaw.includes("lukas mempunyai uang pecahan sepuluh ribuan sebanyak 6 lembar, seribuan sebanyak 3 lembar, dan seratusan sebanyak 5 lembar."), "buku: uang Igil 6, 3, 5");
-  cek(bsRaw.includes("senilai rp45.600,00") && bsRaw.includes("sepuluh ribuan sebanyak 5 lembar, seribuan sebanyak 15 lembar, dan seratusan sebanyak 16 keping"), "buku: uang Kira 5, 15, 16 untuk Rp45.600");
-  cek(bsRaw.includes("komposisi uang asep puluh ribuan ribuan ratusan puluhan satuan 3 30.000 ... ... ..."), "buku: tabel Malosi terisi 3 dan 30.000");
-  // kesalahan buku: tabel Igil terisi 3 di kolom puluh ribuan padahal Igil punya 6 lembar
-  cek(bsRaw.includes("komposisi uang lukas puluh ribuan ribuan ratusan puluhan satuan 3 ... 3.000 ... ... ..."), "buku: tabel Igil terisi 3 (puluh ribuan) dan 3.000 (ribuan), 3 itu salah");
+  cek(bsRaw.includes("asep mempunyai uang pecahan sepuluh ribuan sebanyak 3 lembar, seribuan sebanyak 8 lembar, dan seratusan sebanyak 6 lembar."), "buku: uang Asep 3, 8, 6");
+  cek(bsRaw.includes("lukas mempunyai uang pecahan sepuluh ribuan sebanyak 6 lembar, seribuan sebanyak 3 lembar, dan seratusan sebanyak 5 lembar."), "buku: uang Lukas 6, 3, 5");
+  cek(bsRaw.includes("senilai rp45.600,00") && bsRaw.includes("sepuluh ribuan sebanyak 5 lembar, seribuan sebanyak 15 lembar, dan seratusan sebanyak 16 keping"), "buku: uang Komang 5, 15, 16 untuk Rp45.600");
+  cek(bsRaw.includes("komposisi uang asep puluh ribuan ribuan ratusan puluhan satuan 3 30.000 ... ... ..."), "buku: tabel Asep terisi 3 dan 30.000");
+  // kesalahan buku: tabel Lukas terisi 3 di kolom puluh ribuan padahal Lukas punya 6 lembar
+  cek(bsRaw.includes("komposisi uang lukas puluh ribuan ribuan ratusan puluhan satuan 3 ... 3.000 ... ... ..."), "buku: tabel Lukas terisi 3 (puluh ribuan) dan 3.000 (ribuan), 3 itu salah");
   cek(bsRaw.includes("cara 1 cara 2 cara 3 cara 4"), "buku: tabel Cara 1 sampai Cara 4");
   cek(!/cara 1 [0-9]/.test(bsRaw) && !/cara 4 [0-9]/.test(bsRaw), "buku: tabel Cara 1 sampai 4 kosong, tanpa kunci");
   cek(!/kunci jawaban/.test(rapikan(teksBG.join("\n"))), "Panduan Guru hlm. 29-31 tidak memuat kunci jawaban Eksplorasi 1.3");
@@ -386,7 +385,7 @@ const bacaTabel = (objs, id) => {
           const baris = [0, 1, 2, 3, 4].map((c) => Number(sel.get(`${r}-${c}`).isi));
           stat.cara += 1;
           cek(nilaiUang(baris[0], baris[1], baris[2]) + baris[3] * 10 + baris[4] === 45600, `${nama}: ${id} baris ${r + 1} (${baris.join(", ")}) bernilai 45.600`);
-          cek(baris[3] === 0 && baris[4] === 0 && baris[0] <= 5 && baris[1] <= 15 && baris[2] <= 16, `${nama}: ${id} baris ${r + 1} tidak melebihi uang Kira`);
+          cek(baris[3] === 0 && baris[4] === 0 && baris[0] <= 5 && baris[1] <= 15 && baris[2] <= 16, `${nama}: ${id} baris ${r + 1} tidak melebihi uang Komang`);
         }
       }
     }
@@ -446,18 +445,18 @@ const bacaTabel = (objs, id) => {
     }
   }
   const hitungItem = (objs, pre) => objs.filter((o) => new RegExp(`^${pre}-\\d+$`).test(o.id)).length;
-  // Eksplorasi 1.3: uang Malosi (ketukan 2) dan Igil (ketukan 3)
+  // Eksplorasi 1.3: uang Asep (ketukan 2) dan Lukas (ketukan 3)
   {
     const e = adegan(M, "eks-13-uang");
     const asep = akhirAdegan(e, 1);
-    sama([hitungItem(asep, "ap"), hitungItem(asep, "ar"), hitungItem(asep, "as")], [3, 8, 6], "uang Malosi: 3 lembar, 8 lembar, 6 lembar digambar");
-    sama([isiId(asep, "tp"), isiId(asep, "tr"), isiId(asep, "ts")], ["10.000: 3 lembar", "1.000: 8 lembar", "100: 6 lembar"], "uang Malosi: label jumlah");
+    sama([hitungItem(asep, "ap"), hitungItem(asep, "ar"), hitungItem(asep, "as")], [3, 8, 6], "uang Asep: 3 lembar, 8 lembar, 6 lembar digambar");
+    sama([isiId(asep, "tp"), isiId(asep, "tr"), isiId(asep, "ts")], ["10.000: 3 lembar", "1.000: 8 lembar", "100: 6 lembar"], "uang Asep: label jumlah");
     const lukas = akhirAdegan(e, 2);
-    sama([hitungItem(lukas, "lp"), hitungItem(lukas, "lr"), hitungItem(lukas, "ls")], [6, 3, 5], "uang Igil: 6, 3, 5 digambar");
-    sama([isiId(lukas, "tp"), isiId(lukas, "tr"), isiId(lukas, "ts")], ["10.000: 6 lembar", "1.000: 3 lembar", "100: 5 lembar"], "uang Igil: label jumlah");
-    sama([isiId(akhirAdegan(e, 3), "sa-t1"), isiId(akhirAdegan(e, 3), "sl-t1")], ["3, 8, 6", "6, 3, 5"], "ringkasan Malosi dan Igil");
+    sama([hitungItem(lukas, "lp"), hitungItem(lukas, "lr"), hitungItem(lukas, "ls")], [6, 3, 5], "uang Lukas: 6, 3, 5 digambar");
+    sama([isiId(lukas, "tp"), isiId(lukas, "tr"), isiId(lukas, "ts")], ["10.000: 6 lembar", "1.000: 3 lembar", "100: 5 lembar"], "uang Lukas: label jumlah");
+    sama([isiId(akhirAdegan(e, 3), "sa-t1"), isiId(akhirAdegan(e, 3), "sl-t1")], ["3, 8, 6", "6, 3, 5"], "ringkasan Asep dan Lukas");
   }
-  // Money Composition: uang Malosi disusun dari yang terbesar
+  // Money Composition: uang Asep disusun dari yang terbesar
   {
     const u = adegan(U, "luar-uang");
     const asep = akhirAdegan(u, 1);
@@ -465,8 +464,8 @@ const bacaTabel = (objs, id) => {
     sama([isiId(asep, "xtp"), isiId(asep, "xtr"), isiId(asep, "xts")], ["10.000: 3 lembar", "1.000: 8 lembar", "100: 6 keping"], "Money Composition: label");
     cek(benda(asep, "xp-0").y < benda(asep, "xr-0").y && benda(asep, "xr-0").y < benda(asep, "xs-0").y, "Money Composition: baris dari pecahan terbesar di atas");
     const nilai = akhirAdegan(u, 2);
-    sama([isiId(nilai, "v1-t0"), isiId(nilai, "v2-t0"), isiId(nilai, "v3-t0"), isiId(nilai, "v4")], ["3 lembar 10.000 = 30.000", "8 lembar 1.000 = 8.000", "6 keping 100 = 600", "jumlah 38.600"], "Money Composition: nilai uang Malosi");
-    sama([isiId(akhirAdegan(u, 3), "w1-t0"), isiId(akhirAdegan(u, 3), "w2-t0"), isiId(akhirAdegan(u, 3), "w3-t0"), isiId(akhirAdegan(u, 3), "w4")], ["6 lembar 10.000 = 60.000", "3 lembar 1.000 = 3.000", "5 keping 100 = 500", "jumlah 63.500"], "Money Composition: nilai uang Igil");
+    sama([isiId(nilai, "v1-t0"), isiId(nilai, "v2-t0"), isiId(nilai, "v3-t0"), isiId(nilai, "v4")], ["3 lembar 10.000 = 30.000", "8 lembar 1.000 = 8.000", "6 keping 100 = 600", "jumlah 38.600"], "Money Composition: nilai uang Asep");
+    sama([isiId(akhirAdegan(u, 3), "w1-t0"), isiId(akhirAdegan(u, 3), "w2-t0"), isiId(akhirAdegan(u, 3), "w3-t0"), isiId(akhirAdegan(u, 3), "w4")], ["6 lembar 10.000 = 60.000", "3 lembar 1.000 = 3.000", "5 keping 100 = 500", "jumlah 63.500"], "Money Composition: nilai uang Lukas");
   }
   // Flexible Grouping: sepuluh keping seratusan = satu lembar seribuan; satu sepuluh ribuan = sepuluh seribuan
   {
@@ -483,37 +482,37 @@ const bacaTabel = (objs, id) => {
 
 /* ------------------------------ Isi bergambar tiap adegan, dihitung mandiri ------------------------------ */
 {
-  // Komposisi uang Malosi dan Igil
+  // Komposisi uang Asep dan Lukas
   const ka = akhirAdegan(adegan(M, "komposisi-asep"));
   const sa = bacaTabel(ka, "ta");
-  sama([0, 1, 2, 3, 4].map((c) => sa.get(`0-${c}`).isi), ["3", "8", "6", "0", "0"], "komposisi Malosi: banyak lembar");
-  sama([0, 1, 2, 3, 4].map((c) => sa.get(`1-${c}`).isi), ["30.000", "8.000", "600", "0", "0"], "komposisi Malosi: nilai tiap kolom");
-  sama([isiId(ka, "sm"), isiId(ka, "ha-t0")], ["30.000 + 8.000 + 600 = 38.600", "uang Malosi: 38.600"], "komposisi Malosi: jumlah 38.600");
+  sama([0, 1, 2, 3, 4].map((c) => sa.get(`0-${c}`).isi), ["3", "8", "6", "0", "0"], "komposisi Asep: banyak lembar");
+  sama([0, 1, 2, 3, 4].map((c) => sa.get(`1-${c}`).isi), ["30.000", "8.000", "600", "0", "0"], "komposisi Asep: nilai tiap kolom");
+  sama([isiId(ka, "sm"), isiId(ka, "ha-t0")], ["30.000 + 8.000 + 600 = 38.600", "uang Asep: 38.600"], "komposisi Asep: jumlah 38.600");
   const kl = adegan(M, "komposisi-lukas");
   const l0 = bacaTabel(akhirAdegan(kl, 0), "tl");
-  sama([l0.size, isiId(akhirAdegan(kl, 0), "kl")], [0, "5 kolom nilai tempat"], "komposisi Igil: tabel dimulai kosong dengan lima kolom");
-  sama([isiId(akhirAdegan(kl, 1), "tl-v0-0"), isiId(akhirAdegan(kl, 1), "tl-v1-0"), isiId(akhirAdegan(kl, 2), "tl-v0-1"), isiId(akhirAdegan(kl, 2), "tl-v1-1")], ["6", "60.000", "3", "3.000"], "komposisi Igil: puluh ribuan 6 (60.000) dan ribuan 3 (3.000)");
+  sama([l0.size, isiId(akhirAdegan(kl, 0), "kl")], [0, "5 kolom nilai tempat"], "komposisi Lukas: tabel dimulai kosong dengan lima kolom");
+  sama([isiId(akhirAdegan(kl, 1), "tl-v0-0"), isiId(akhirAdegan(kl, 1), "tl-v1-0"), isiId(akhirAdegan(kl, 2), "tl-v0-1"), isiId(akhirAdegan(kl, 2), "tl-v1-1")], ["6", "60.000", "3", "3.000"], "komposisi Lukas: puluh ribuan 6 (60.000) dan ribuan 3 (3.000)");
   const lf = bacaTabel(akhirAdegan(kl, 4), "tl");
-  sama([0, 1, 2, 3, 4].map((c) => lf.get(`0-${c}`).isi), ["6", "3", "5", "0", "0"], "komposisi Igil: banyak lembar");
-  sama([0, 1, 2, 3, 4].map((c) => lf.get(`1-${c}`).isi), ["60.000", "3.000", "500", "0", "0"], "komposisi Igil: nilai tiap kolom");
-  sama([isiId(akhirAdegan(kl, 4), "sm"), isiId(akhirAdegan(kl, 4), "hl-t0")], ["60.000 + 3.000 + 500 = 63.500", "uang Igil: 63.500"], "komposisi Igil: jumlah 63.500");
-  sama([isiId(akhirAdegan(kl, 5), "k1-t1"), isiId(akhirAdegan(kl, 5), "k2-t1")], ["38.600", "63.500"], "komposisi: dua bilangan Malosi dan Igil");
+  sama([0, 1, 2, 3, 4].map((c) => lf.get(`0-${c}`).isi), ["6", "3", "5", "0", "0"], "komposisi Lukas: banyak lembar");
+  sama([0, 1, 2, 3, 4].map((c) => lf.get(`1-${c}`).isi), ["60.000", "3.000", "500", "0", "0"], "komposisi Lukas: nilai tiap kolom");
+  sama([isiId(akhirAdegan(kl, 4), "sm"), isiId(akhirAdegan(kl, 4), "hl-t0")], ["60.000 + 3.000 + 500 = 63.500", "uang Lukas: 63.500"], "komposisi Lukas: jumlah 63.500");
+  sama([isiId(akhirAdegan(kl, 5), "k1-t1"), isiId(akhirAdegan(kl, 5), "k2-t1")], ["38.600", "63.500"], "komposisi: dua bilangan Asep dan Lukas");
   // Ayo Berdiskusi
   const d = adegan(M, "diskusi-komang");
   const dk = akhirAdegan(d, 1);
-  sama([isiId(dk, "dp2-t0"), isiId(dk, "dp2-t1"), isiId(dk, "dr2-t0"), isiId(dk, "dr2-t1"), isiId(dk, "ds2-t0"), isiId(dk, "ds2-t1")], ["10.000", "5 lembar", "1.000", "15 lembar", "100", "16 keping"], "uang Kira: 5, 15, 16");
-  sama(isiId(akhirAdegan(d, 0), "dh-t0"), "harga Rp45.600", "harga peralatan Kira");
-  // Cara Kira: reasoning limit lima lembar
+  sama([isiId(dk, "dp2-t0"), isiId(dk, "dp2-t1"), isiId(dk, "dr2-t0"), isiId(dk, "dr2-t1"), isiId(dk, "ds2-t0"), isiId(dk, "ds2-t1")], ["10.000", "5 lembar", "1.000", "15 lembar", "100", "16 keping"], "uang Komang: 5, 15, 16");
+  sama(isiId(akhirAdegan(d, 0), "dh-t0"), "harga Rp45.600", "harga peralatan Komang");
+  // Cara Komang: reasoning limit lima lembar
   const c = adegan(M, "cara-komang");
-  sama([isiId(akhirAdegan(c, 0), "c1-t0"), isiId(akhirAdegan(c, 0), "c1-t1"), isiId(akhirAdegan(c, 0), "c3")], ["5 lembar 10.000", "jadi 50.000", "50.000 lebih besar dari 45.600"], "cara Kira: lima lembar melebihi harga");
-  sama([isiId(akhirAdegan(c, 1), "e1"), isiId(akhirAdegan(c, 1), "e2"), 45600 - 40000], ["4 lembar: 40.000", "sisa 5.600", 5600], "cara Kira: empat lembar, sisa 5.600");
-  sama([2, 3, 4, 5].map((q) => isiId(akhirAdegan(c, q), "e1")), ["40.000 + 5.000 + 600 = 45.600", "40.000 + 4.000 + 1.600 = 45.600", "30.000 + 15.000 + 600 = 45.600", "30.000 + 14.000 + 1.600 = 45.600"], "cara Kira: empat jumlah");
+  sama([isiId(akhirAdegan(c, 0), "c1-t0"), isiId(akhirAdegan(c, 0), "c1-t1"), isiId(akhirAdegan(c, 0), "c3")], ["5 lembar 10.000", "jadi 50.000", "50.000 lebih besar dari 45.600"], "cara Komang: lima lembar melebihi harga");
+  sama([isiId(akhirAdegan(c, 1), "e1"), isiId(akhirAdegan(c, 1), "e2"), 45600 - 40000], ["4 lembar: 40.000", "sisa 5.600", 5600], "cara Komang: empat lembar, sisa 5.600");
+  sama([2, 3, 4, 5].map((q) => isiId(akhirAdegan(c, q), "e1")), ["40.000 + 5.000 + 600 = 45.600", "40.000 + 4.000 + 1.600 = 45.600", "30.000 + 15.000 + 600 = 45.600", "30.000 + 14.000 + 1.600 = 45.600"], "cara Komang: empat jumlah");
   // Metode luar: Expanded Form
   for (const [aid, bil, ur] of [["luar-uraian", "38.600", "38.600 = 30.000 + 8.000 + 600"], ["luar-uraian-terapan", "45.600", "45.600 = 40.000 + 5.000 + 600"]]) {
     const o = akhirAdegan(adegan(U, aid));
     sama(isiId(o, "ur"), ur, `${aid}: bentuk uraian ${bil}`);
   }
-  sama(isiId(akhirAdegan(adegan(U, "luar-uraian-terapan"), 2), "ur"), "63.500 = 60.000 + 3.000 + 500", "Expanded Form: uang Igil");
+  sama(isiId(akhirAdegan(adegan(U, "luar-uraian-terapan"), 2), "ur"), "63.500 = 60.000 + 3.000 + 500", "Expanded Form: uang Lukas");
   // Standard Form Return
   {
     const l = adegan(U, "luar-lazim");
@@ -522,17 +521,17 @@ const bacaTabel = (objs, id) => {
     const t = adegan(U, "luar-lazim-terapan");
     sama([isiId(akhirAdegan(t, 0), "pr"), isiId(akhirAdegan(t, 1), "pu"), isiId(akhirAdegan(t, 1), "pv")], ["40.000 + 4.000 + 1.600", "44.000 + 1.600", "45.600"], "Standard Form Return: Cara 2");
     cek(40000 + 4000 === 44000 && 44000 + 1600 === 45600, "Standard Form Return: 40.000 + 4.000 = 44.000, ditambah 1.600 = 45.600");
-    sama([isiId(akhirAdegan(t, 2), "pw"), isiId(akhirAdegan(t, 2), "px")], ["30.000 + 8.000 + 600", "38.600"], "Standard Form Return: uang Malosi kembali 38.600");
+    sama([isiId(akhirAdegan(t, 2), "pw"), isiId(akhirAdegan(t, 2), "px")], ["30.000 + 8.000 + 600", "38.600"], "Standard Form Return: uang Asep kembali 38.600");
     const q = akhirAdegan(t, 3);
-    sama([isiId(q, "q2"), isiId(q, "q3"), isiId(q, "q4-t0"), nilaiUang(6, 3, 5)], ["60.000 + 3.000 + 500", "63.500", "sama dengan bilangan Igil", 63500], "Standard Form Return: uang Igil kembali 63.500");
+    sama([isiId(q, "q2"), isiId(q, "q3"), isiId(q, "q4-t0"), nilaiUang(6, 3, 5)], ["60.000 + 3.000 + 500", "63.500", "sama dengan bilangan Lukas", 63500], "Standard Form Return: uang Lukas kembali 63.500");
   }
-  // Batas uang Kira
+  // Batas uang Komang
   {
     const t = adegan(U, "luar-uang-terapan");
     const o = akhirAdegan(t, 3);
-    sama([isiId(o, "b1-t0"), isiId(o, "b2-t0"), isiId(o, "b3-t0"), isiId(o, "b4-t0")], ["4 lembar 10.000", "3 lembar 1.000, sisa 2.600", "perlu 26 keping 100", "Kira hanya punya 16 keping"], "batas uang Kira: butuh 26 keping, hanya 16");
-    sama([isiId(akhirAdegan(t, 0), "o2-t0"), isiId(akhirAdegan(t, 0), "o3-t0"), isiId(akhirAdegan(t, 1), "o4-t0"), isiId(akhirAdegan(t, 1), "o5-t0")], ["5 lembar: 50.000, terlalu banyak", "4 lembar: 40.000, boleh", "sisa 5.600", "1.000: ada 15 lembar"], "uang Kira: sepuluh ribuan dan seribuan");
-    sama([isiId(akhirAdegan(t, 2), "o7-t0"), 5600 - 5000, (5600 - 5000) / 100], ["sisa 600 = 6 keping 100", 600, 6], "uang Kira: sisa 600 = 6 keping");
+    sama([isiId(o, "b1-t0"), isiId(o, "b2-t0"), isiId(o, "b3-t0"), isiId(o, "b4-t0")], ["4 lembar 10.000", "3 lembar 1.000, sisa 2.600", "perlu 26 keping 100", "Komang hanya punya 16 keping"], "batas uang Komang: butuh 26 keping, hanya 16");
+    sama([isiId(akhirAdegan(t, 0), "o2-t0"), isiId(akhirAdegan(t, 0), "o3-t0"), isiId(akhirAdegan(t, 1), "o4-t0"), isiId(akhirAdegan(t, 1), "o5-t0")], ["5 lembar: 50.000, terlalu banyak", "4 lembar: 40.000, boleh", "sisa 5.600", "1.000: ada 15 lembar"], "uang Komang: sepuluh ribuan dan seribuan");
+    sama([isiId(akhirAdegan(t, 2), "o7-t0"), 5600 - 5000, (5600 - 5000) / 100], ["sisa 600 = 6 keping 100", 600, 6], "uang Komang: sisa 600 = 6 keping");
   }
   // Ringkasan
   {
@@ -574,7 +573,7 @@ const bacaTabel = (objs, id) => {
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-uraian", "luar-uraian-terapan", "luar-tukar", "luar-tukar-terapan", "luar-lazim", "luar-lazim-terapan", "luar-uang", "luar-uang-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
   cek(M_VIDEO.adegan.length === 7 && U.adegan.length === 11, "7 adegan materi diputar dan 11 adegan metode luar");
-  // Subbab C tidak membocorkan Subbab D (operasi hitung: Eksplorasi 1.4, uang Halim untuk bakti sosial, algoritma bersusun)
+  // Subbab C tidak membocorkan Subbab D (operasi hitung: Eksplorasi 1.4, uang Nisa untuk bakti sosial, algoritma bersusun)
   const BOCOR = /operasi hitung|penjumlahan|pengurangan|perkalian|pembagian|bakti sosial|Eksplorasi 1\.4|bersusun|algoritma|meminjam|menyimpan|57\.500|22\.000|panti asuhan|Uji Kompetensi|pengayaan|remedial|Perkiraan Dulu|Estimate First|Regrouping/i;
   const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, i, 9999))])]);
   for (const a of M.adegan) cek(!BOCOR.test(teksAdegan(a)), `materi ${a.id} tidak membocorkan Subbab D`);
@@ -582,7 +581,7 @@ const bacaTabel = (objs, id) => {
   // Hanya Refleksi nomor enam dan tujuh yang milik subbab ini
   cek(!/Refleksi nomor (satu|dua|tiga|empat|lima|delapan|[1-58])\b/i.test(materi + luar), "tidak memakai Refleksi nomor lain");
   cek(/Hati-hati/.test(materi) && /Latihan/.test(materi) && /Tantangan/.test(materi) && /renungkan/i.test(materi), "materi memuat pesan guru: Hati-hati, Latihan, Tantangan, dan renungan");
-  cek(["Malosi", "Igil", "Kira", "Dina"].every((n) => materi.includes(n)), "materi memuat nama tokoh Malosi, Igil, Kira, Dina");
+  cek(["Asep", "Lukas", "Komang", "Dina"].every((n) => materi.includes(n)), "materi memuat nama tokoh Asep, Lukas, Komang, Dina");
   cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
 }
 
@@ -596,7 +595,7 @@ const bacaTabel = (objs, id) => {
         cek(bukuRaw.includes(rapikan(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 40, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(n >= 40, `jumlah kutipan buku yang diperiksa (${n})`);
     stat.kutipan = n;
   }
 }
@@ -617,7 +616,7 @@ const bacaTabel = (objs, id) => {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b1c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b1c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b1c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b1c sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

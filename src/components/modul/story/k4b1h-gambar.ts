@@ -60,9 +60,9 @@ export function barisTabel(id: string, x: number, y: number, kolW: number[], isi
 
 /* ------------------------------ Data buku (Buku Siswa hlm. 44-47; Panduan Guru hlm. 65-69) ------------------------------ */
 
-/** Ayo Mengamati dan Aktivitas 5 (hlm. 44-45): 48 permen dibagi sama banyak kepada 4 anak: Upe, Wei, Drio, Candra. */
+/** Ayo Mengamati dan Aktivitas 5 (hlm. 44-45): 48 permen dibagi sama banyak kepada 4 anak: Andi, Azizah, Drio, Candra. */
 export const PERMEN = 48;
-export const ANAK = ["Upe", "Wei", "Drio", "Candra"] as const;
+export const ANAK = ["Andi", "Azizah", "Drio", "Candra"] as const;
 /** Tabel Aktivitas 5 (hlm. 45): banyak wadah 2, 3, 4, 6, 8. Isi tabel tidak dicetak; dihitung mandiri: 24, 16, 12, 8, 6, sisa 0. */
 export const WADAH = [2, 3, 4, 6, 8] as const;
 /** Ayo Berlatih nomor 1 a sampai e (hlm. 47): [yang dibagi, pembagi]; kunci Panduan Guru hlm. 67: 12, 32, 16, 24, 15. */

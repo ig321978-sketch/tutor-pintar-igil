@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { CERITA, LATIHAN_3, LATIHAN_4, W, barisTabel, batangSisa, emo, judul, kartu, panah, teks } from "./k4b1f-gambar";
 import { bersih, idx, k, sebar, tambah } from "./k4b1f-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /** Nomor kata terakhir dalam kalimat suara (pemicu untuk gambar penutup ketukan). */
 const akhir = (suara: string): number => suara.split(/\s+/).filter(Boolean).length - 1;
@@ -24,7 +23,14 @@ export const ADEGAN_LATIHAN_TIGA: AdeganStory = {
   judul: "Latihan 3: cara yang lebih mudah",
   sumber: "Materi: pilih cara yang mudah",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1f-materi-3.ts:1"),
+  kutipan: [
+    "3. Gunakan cara yang lebih mudah menurut kalian untuk menyelesaikan operasi pengurangan berikut!",
+    "a. 455 - 328 = 127",
+    "b. 832 - 622 = 210",
+    "c. 712 - 89 = 623",
+    "d. 600 - 235 = 365",
+    "e. 505 - 77 = 428",
+  ],
   ketukan: [
     k(
       SUARA_G1,
@@ -77,7 +83,7 @@ export const ADEGAN_LATIHAN_EMPAT: AdeganStory = {
   judul: "Latihan 4: tarik garis",
   sumber: "Materi: soal dan jawaban",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k4b1f-materi-3.ts:2"),
+  kutipan: ["4. Tariklah garis untuk jawaban yang sesuai!", "689 - 233 =", "912 - 67 =", "720 - 89 =", "300 - 34 =", "5. Kerjakan soal cerita berikut!"],
   ketukan: [
     k(
       SUARA_H1,
@@ -136,7 +142,23 @@ export const ADEGAN_LATIHAN_LIMA: AdeganStory = {
   judul: "Latihan 5: soal cerita",
   sumber: "Materi: soal cerita pengurangan",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b1f-materi-3.ts:3"),
+  kutipan: [
+    "5. Kerjakan soal cerita berikut!",
+    "Penjual buah mempunyai 333 buah apel, seorang pembeli datang membeli 129 buah apel.",
+    "Berapakah sisa buah apel milik penjual?",
+    "Kebun mangga Pak Joyo mengalami gagal panen.",
+    "diperoleh 765 buah sedangkan buah yang busuk 179 buah.",
+    "SD Bangkit mengadakan darmawisata.",
+    "Sebanyak 218 diantaranya adalah siswa perempuan.",
+    "Berapa jumlah siswa laki-laki yang mengikuti darmawisata?",
+    "Pada kegiatan Upacara Bendera Hari Kemerdekaan RI, SD Harapan mengirimkan 128 siswa untuk mengikuti upacara di alun-alun kota.",
+    "jadi sisa apel milik penjual adalah 204 buah",
+    "jadi buah mangga yang tersisa adalah 586 buah.",
+    "jadi siswa laki-laki yang mengikuti darmawisata adalah 209 siswa",
+    "adalah 49 siswa.",
+    "ditanya: sisa apel milik penjual?",
+    "diketahui: hasil panen mangga = 765 buah",
+  ],
   ketukan: [
     k(SUARA_I1, tambah(0, judul("Soal a: apel")), ...gambarCerita(0, ["Latihan", "terjual", idx(SUARA_I1, "sama", 1), akhir(SUARA_I1)])),
     k(SUARA_I2, bersih(0), tambah(0, judul("Soal b: mangga")), ...gambarCerita(1, ["Soal", "busuk", idx(SUARA_I2, "sama", 1), akhir(SUARA_I2)])),
@@ -167,7 +189,17 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Miskonsepsi dan diferensiasi",
   sumber: "Pesan guru: kesalahan dan bantuan",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1f-materi-3.ts:4"),
+  kutipan: [
+    "Miskonsepsi yang sering terjadi dalam operasi pengurangan, yaitu",
+    "Pengurangan dua bilangan dimulai dari nilai tempat satuan.",
+    "Ketika bilangan di nilai tempat satuan/puluhan pada bilangan pertama kurang dari bilangan kedua, maka harus mengambil bilangan di nilai tempat sebelumnya.",
+    "Bagi peserta didik yang kecepatan belajarnya tinggi (advanced), minta mereka mengerjakan latihan tanpa bantuan.",
+    "Guru juga dapat memberikan soal-soal tambahan.",
+    "guru dapat mendampingi peserta didik yang mengalami kesulitan.",
+    "Peserta didik yang memiliki kemampuan matematika sedang dan tinggi, guru dapat memberikan pengayaan.",
+    "guru memberikan latihan secara berulang atau mengulangi penjelasan secara personal.",
+    "Berikan pengurangan bilangan dua angka dan 1 angka terlebih dahulu, selanjutnya berikan contoh pengurangan bilangan dua angka tanpa mengambil.",
+  ],
   ketukan: [
     k(
       SUARA_J1,

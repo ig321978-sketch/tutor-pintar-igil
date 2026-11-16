@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, emo, garisBilangan, judul, kartu, kisi, kotak, pai, panah, penanda, segitiga16, segitiga4, teks } from "./k5b3a-gambar";
 import { bersih, k, sorotkan, tambah, ubah, warnai } from "./k5b3a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 8. Cara pertama: garis bilangan (Buku Siswa hlm. 71 sampai 72) ------------------------------ */
 /** Garis bilangan 0 sampai 4: titik 0 di x = 26, satu satuan 62 piksel (dipakai uji untuk memeriksa letak penanda). */
@@ -14,7 +13,16 @@ export const ADEGAN_GARIS: AdeganStory = {
   judul: "Cara pertama: garis bilangan",
   sumber: "Materi: garis bilangan",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b3a-materi-3.ts:1"),
+  kutipan: [
+    "Menggunakan Garis Bilangan",
+    "Makin ke kanan posisi pecahan, nilainya makin besar. Begitu juga",
+    "sebaliknya, makin ke kiri posisinya, nilainya makin kecil.",
+    "Pada garis bilangan di atas, di manakah letak",
+    "Perhatikan letak pecahan",
+    "pada garis bilangan di atas.",
+    "Urutan dari yang terbesar adalah",
+    "Dengan demikian, urutan lompatan Yohana dari yang paling jauh",
+  ],
   ketukan: [
     k(
       "Cara pertama memakai garis bilangan. Aturannya: makin ke kanan posisi pecahan, makin besar nilainya. Makin ke kiri, makin kecil.",
@@ -53,7 +61,7 @@ export const ADEGAN_GARIS: AdeganStory = {
       sorotkan("hampir", "n7_8"),
     ),
     k(
-      "Dari yang paling kanan: tujuh per dua, sebelas per empat, lalu tujuh per delapan. Jadi urutan lompatan Malosi dari yang terjauh: tiga dan satu per dua meter, dua dan tiga per empat meter, lalu tujuh per delapan meter.",
+      "Dari yang paling kanan: tujuh per dua, sebelas per empat, lalu tujuh per delapan. Jadi urutan lompatan Yohana dari yang terjauh: tiga dan satu per dua meter, dua dan tiga per empat meter, lalu tujuh per delapan meter.",
       bersih(0),
       tambah(0, judul("Urutan dari yang terjauh")),
       tambah("tujuh", ...kartu("o1", 40, 40, 240, 34, W.hijauMuda, ["7/2 = 3 1/2 m"], 11)),
@@ -70,7 +78,18 @@ export const ADEGAN_PEMBILANG: AdeganStory = {
   judul: "Cara kedua: membandingkan pembilang",
   sumber: "Materi: membandingkan pembilang",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b3a-materi-3.ts:2"),
+  kutipan: [
+    "Membandingkan Pembilang",
+    "Kita ubah bentuk pecahan campuran menjadi bentuk pecahan biasa.",
+    "Hasil lompatan Yohana merupakan pecahan dengan penyebut",
+    "yang berbeda-beda, yaitu",
+    "Bagaimana cara menyamakan penyebut tersebut?",
+    "Mencari KPK dari 4, 2, dan 8.",
+    "KPK dari 4, 2, dan 8 adalah",
+    "Membandingkan pembilang",
+    "Pembilangnya =",
+    "maka urutan hasil lompatan Yohana dari yang paling jauh adalah",
+  ],
   ketukan: [
     k(
       "Cara kedua, membandingkan pembilang. Dua pecahan campuran sudah diubah menjadi sebelas per empat dan tujuh per dua. Tujuh per delapan memang sudah pecahan biasa.",
@@ -110,7 +129,7 @@ export const ADEGAN_PEMBILANG: AdeganStory = {
       ubah("lebih", { id: "pm", y: 172 }),
     ),
     k(
-      "Maka urutan hasil lompatan Malosi dari yang paling jauh: dua puluh delapan per delapan, yaitu tiga dan satu per dua meter; dua puluh dua per delapan, yaitu dua dan tiga per empat meter; lalu tujuh per delapan meter.",
+      "Maka urutan hasil lompatan Yohana dari yang paling jauh: dua puluh delapan per delapan, yaitu tiga dan satu per dua meter; dua puluh dua per delapan, yaitu dua dan tiga per empat meter; lalu tujuh per delapan meter.",
       bersih(0),
       tambah(0, judul("Urutan dari yang paling jauh")),
       tambah("puluh", ...kartu("u1", 40, 40, 240, 34, W.hijauMuda, ["28/8 = 3 1/2 m"], 11)),
@@ -127,10 +146,19 @@ export const ADEGAN_BULAT: AdeganStory = {
   judul: "Cara ketiga: membandingkan bilangan bulat",
   sumber: "Materi: membandingkan bilangan bulat",
   latar: "#F0FDFA",
-  kutipan: kutipanLokal("k5b3a-materi-3.ts:3"),
+  kutipan: [
+    "Membandingkan Bilangan bulat",
+    "Daftar hasil lompatan Yohana yaitu",
+    "Perhatikan komponen bilangan bulat pada pecahan hasil",
+    "lompatan Yohana. Coba urutkan dari yang terkecil.",
+    "maka urutan hasil lompatan Yohana adalah",
+    "membandingkan bilangan bulat",
+    "(jika memang dalam soal adalah pecahan campuran).",
+    "dengan menggunakan cara berbeda pastikan mempunyai hasil yang sama",
+  ],
   ketukan: [
     k(
-      "Cara ketiga, membandingkan bilangan bulat. Daftar lompatan Malosi: dua dan tiga per empat, tiga dan satu per dua, serta tujuh per delapan. Perhatikan bagian bilangan bulatnya.",
+      "Cara ketiga, membandingkan bilangan bulat. Daftar lompatan Yohana: dua dan tiga per empat, tiga dan satu per dua, serta tujuh per delapan. Perhatikan bagian bilangan bulatnya.",
       tambah(0, judul("3. Membandingkan bilangan bulat")),
       tambah("empat,", ...kartu("b1", 10, 40, 86, 40, W.hijauMuda, ["2 3/4"], 14)),
       tambah("dua@2", ...kartu("b2", 107, 40, 86, 40, W.langit, ["3 1/2"], 14)),
@@ -162,7 +190,7 @@ export const ADEGAN_BULAT: AdeganStory = {
 };
 
 /* ------------------------------ 11. Ayo Berlatih (Buku Siswa hlm. 74 sampai 75; Panduan Guru hlm. 104) ------------------------------ */
-/** Tiga potongan pita Igil digambar 60 piksel per meter. */
+/** Tiga potongan pita Nisa digambar 60 piksel per meter. */
 export const PITA_GAMBAR = { x: 20, satuan: 60, baris: [44, 74, 104] };
 const pitaBar = (id: string, y: number, meter: number, warna: string): Obj => kotak(id, PITA_GAMBAR.x, y, meter * PITA_GAMBAR.satuan, 20, warna, W.biru, { rx: 4 });
 
@@ -171,7 +199,13 @@ export const ADEGAN_BERLATIH: AdeganStory = {
   judul: "Latihan: membandingkan gambar dan mengurutkan pita",
   sumber: "Materi: latihan gambar dan pita",
   latar: "#FEFCE8",
-  kutipan: kutipanLokal("k5b3a-materi-3.ts:4"),
+  kutipan: [
+    "Bandingkan kedua gambar berikut ini, kemudian isilah titik-titik",
+    "dengan tanda <, =, atau >.",
+    "Nisa memiliki tiga potongan pita dengan panjang",
+    "Bantulah Nisa mengurutkan potongan pita dari yang terpendek.",
+    "Urutan potongan pita dari yang terpendek yaitu",
+  ],
   ketukan: [
     k(
       "Latihan satu: bandingkan dua gambar dengan tanda lebih kecil, sama dengan, atau lebih besar. Gambar a: dua lingkaran dibagi dua belas bagian. Kiri berwarna delapan bagian, kanan sebelas bagian. Jawabannya, kiri lebih kecil.",
@@ -209,9 +243,9 @@ export const ADEGAN_BERLATIH: AdeganStory = {
       tambah("Tiga@2", ...kartu("nk", 80, 176, 140, 22, W.emas, ["3/6 > 2/6"], 10.4)),
     ),
     k(
-      "Latihan dua: Igil punya tiga pita, dua dan dua per lima meter, dua dan satu per empat meter, dan dua dan satu per dua meter. Bulatnya sama, jadi bandingkan pecahannya. KPK lima, empat, dan dua adalah dua puluh.",
+      "Latihan dua: Nisa punya tiga pita, dua dan dua per lima meter, dua dan satu per empat meter, dan dua dan satu per dua meter. Bulatnya sama, jadi bandingkan pecahannya. KPK lima, empat, dan dua adalah dua puluh.",
       bersih(0),
-      tambah(0, judul("Latihan 2: pita Igil")),
+      tambah(0, judul("Latihan 2: pita Nisa")),
       tambah(10, pitaBar("pa", PITA_GAMBAR.baris[0], 2.4, W.pink), teks("ta", 174, PITA_GAMBAR.baris[0] + 14, "2 2/5 m", 8.4, W.biru, { anchor: "start" })),
       tambah(16, pitaBar("pb", PITA_GAMBAR.baris[1], 2.25, W.hijauMuda), teks("tb", 174, PITA_GAMBAR.baris[1] + 14, "2 1/4 m", 8.4, W.biru, { anchor: "start" })),
       tambah(23, pitaBar("pc", PITA_GAMBAR.baris[2], 2.5, W.langit), teks("tc", 174, PITA_GAMBAR.baris[2] + 14, "2 1/2 m", 8.4, W.biru, { anchor: "start" })),
@@ -240,7 +274,21 @@ export const ADEGAN_GURU: AdeganStory = {
   judul: "Pesan guru: hati-hati, tantangan, dan renungan",
   sumber: "Materi: pesan guru dan rangkuman",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b3a-materi-3.ts:5"),
+  kutipan: [
+    "Miskonsepsi",
+    "Saat membandingkan dan mengurutkan bilangan pecahan, peserta didik",
+    "seringkali menyamakan penyebut tanpa mengalikan dengan pembilangnya.",
+    "Selain itu, peserta didik seringkali juga melakukan kesalahan dalam melakukan",
+    "perhitungan pada bilangan campuran.",
+    "Diferensiasi",
+    "Bagi peserta didik dengan kecepatan belajar tinggi",
+    "minta mereka",
+    "mengerjakan latihan tanpa bantuan.",
+    "guru dapat",
+    "mendampingi peserta didik yang mengalami kesulitan.",
+    "Guru dapat menutup pembelajaran dengan meminta peserta didik melakukan",
+    "dalam membandingkan dan mengurutkan bilangan pecahan.",
+  ],
   ketukan: [
     k(
       "Hati-hati, ada dua kesalahan yang sering terjadi. Pertama, menyamakan penyebut tanpa mengalikan pembilangnya. Kedua, salah menghitung pada bilangan campuran.",

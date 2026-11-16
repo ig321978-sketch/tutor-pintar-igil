@@ -4,7 +4,6 @@
 // hitungan mandiri dan geometri gambar (segi-n beraturan bersisi sama, tanda sisi, nomor sisi, tabel banyak sisi dan keliling,
 // diagram batang, jumlah sisi berbeda), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b4d.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -438,7 +437,7 @@ function sama2(a, b) {
       n += 1;
       cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 35, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(n >= 35, `jumlah kutipan buku yang diperiksa (${n})`);
     // halaman buku yang disebut video: hlm. 122 sampai 124 (PDF 138 sampai 140), cek isi halaman benar
     const halaman = (f, p) => spawnSync("pdftotext", ["-enc", "UTF-8", "-f", String(p), "-l", String(p), "-raw", path(f), "-"], { encoding: "utf8" }).stdout.toLowerCase();
     cek(halaman(pdfBS, 138).includes("keliling segi lima beraturan") && /\b122\b/.test(halaman(pdfBS, 138)), "buku siswa hlm. 122 memuat segi lima beraturan");
@@ -469,7 +468,7 @@ function sama2(a, b) {
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     cek(!/Math\.random/.test(s), `${f}: tanpa Math.random`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b4d-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b4d sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b4d-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b4d sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

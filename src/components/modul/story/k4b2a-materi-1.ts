@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, bulat, emo, garis, judul, kartu, lingkaranBagi, panah, pecahan, teks } from "./k4b2a-gambar";
 import { bersih, idx, k, sorotkan, tambah, ubah } from "./k4b2a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab dan tujuan (Buku Siswa hlm. 55–56; Panduan Guru hlm. 89) ------------------------------ */
 const SUARA_P1 = "Selamat datang di bab dua, Pecahan. Sampul bab menampilkan seorang ibu memotong pizza. Satu pizza dipotong menjadi beberapa bagian yang sama, dan potongan itu bagian dari keseluruhan. Berapa bagian yang kalian dapatkan?";
@@ -15,7 +14,23 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 2: pizza dan tujuan pembelajaran",
   sumber: "Buku Siswa hlm. 55–56; Panduan Guru hlm. 89",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b2a-materi-1.ts:1"),
+  kutipan: [
+    "Pernahkah kalian melihat Ibu memotong pizza?",
+    "Jika satu pizza dipotong menjadi beberapa bagian yang sama, maka akan diperoleh potongan-potongan.",
+    "Potongan itu merupakan bagian dari keseluruhan pizza.",
+    "Berapa bagian yang kalian dapatkan?",
+    "Tujuan Pembelajaran",
+    "Setelah mempelajari bab ini kalian mampu:",
+    "membandingkan dua pecahan dengan pembilang satu",
+    "mengurutkan beberapa pecahan dengan pembilang satu",
+    "mengenali pecahan senilai setelah mengamati gambar dan simbol matematika",
+    "Kata Kunci",
+    "Pecahan, pecahan desimal, persen",
+    "1. Tujuan Pembelajaran",
+    "Setelah mempelajari bab ini, peserta didik diharapkan dapat:",
+    "1.1 membandingkan dua pecahan dengan pembilang satu",
+    "1.2 mengurutkan antar pecahan dengan pembilang satu",
+  ],
   ketukan: [
     k(
       SUARA_P1,
@@ -81,7 +96,28 @@ export const ADEGAN_PETA: AdeganStory = {
   judul: "Peta konsep, gambaran umum, dan skema pembelajaran",
   sumber: "Buku Siswa hlm. 57; Panduan Guru hlm. 90–92",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b2a-materi-1.ts:2"),
+  kutipan: [
+    "Peta Konsep",
+    "Pembilang Satu",
+    "Mengurutkan dan Membandingkan",
+    "A. Pecahan dengan Pembilang Satu",
+    "2. Peta Konsep",
+    "3. Gambaran Umum Bab",
+    "bilangan pecahan adalah bagian dari satu keseluruhan dari suatu kuantitas tertentu.",
+    "menyajikan masalah kontekstual",
+    "peserta didik diarahkan untuk memperhatikan gambar dan membaca wacana yang disajikan.",
+    "4. Keterampilan yang Dilatih",
+    "1. Menghitung",
+    "2. Berkomunikasi",
+    "5. Skema Pembelajaran",
+    "Tabel 2.1 Skema Pembelajaran",
+    "Topik A: Pecahan dengan pembilang satu",
+    "10 JP",
+    "Membandingkan pecahan pembilang satu",
+    "Mengurutkan pecahan pembilang satu",
+    "Metode: Diskusi",
+    "Aktivitas 1: pecahan",
+  ],
   ketukan: [
     k(
       SUARA_K1,
@@ -143,7 +179,25 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
   judul: "Panduan Guru: pengalaman belajar, apersepsi, pemanasan",
   sumber: "Panduan Guru hlm. 92–93",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b2a-materi-1.ts:3"),
+  kutipan: [
+    "6. Panduan Pembelajaran",
+    "A. Pecahan dengan pembilang satu",
+    "Pengalaman Belajar",
+    "Peserta didik diharapkan mampu membandingkan dan mengurutkan antarpecahan dengan pembilang satu.",
+    "Kebutuhan Sarana Prasarana dan Media",
+    "Alat tulis peserta didik (kertas origami, pensil warna, gunting, lem, penggaris, dan buku tulis)",
+    "Apersepsi",
+    "Pecahan dapat diartikan sebagai satu bagian dari beberapa bagian yang sama, atau satu bagian dari satu unit tertentu.",
+    "Macam-macam pecahan diantaranya pecahan biasa, pecahan campuran, desimal, dan persen.",
+    "dengan a dan b adalah bilangan bulat, dan b ≠ 0",
+    "Bilangan yang berada",
+    "di atas garis pemisah disebut dengan pembilang, sedangkan bilangan di bagian bawah disebut penyebut.",
+    "Stimulus (Pemanasan)",
+    "Pertanyaan Esensi/Pemantik:",
+    "1. apakah pecahan?",
+    "bagaimana ilustrasi pecahan dengan pembilang satu?",
+    "bagaimana membandingkan dan mengurutkan antarpecahan dengan pembilang satu?",
+  ],
   ketukan: [
     k(
       SUARA_G1,
@@ -199,7 +253,21 @@ export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
   judul: "Aktivitas 1: Konsep Pecahan",
   sumber: "Materi: percobaan lingkaran kertas",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k4b2a-materi-1.ts:4"),
+  kutipan: [
+    "A. Pecahan dengan Pembilang Satu",
+    "Aktivitas 1: Konsep Pecahan",
+    "Alat dan Bahan: kertas origami, pensil warna, gunting, lem, penggaris, dan buku tulis",
+    "Buatlah kelompok beranggotakan 3-4 orang.",
+    "Potonglah kertas origami menggunakan gunting menjadi bentuk lingkaran sejumlah banyaknya anggota kelompok.",
+    "Ambil salah satu lingkaran kemudian dibagi menjadi beberapa bagian yang sama dengan cara memberi garis melalui titik pusat pada lingkaran tersebut.",
+    "Warnailah salah satu bagian lingkaran menggunakan pensil warna",
+    "Selanjutnya, ulangi Langkah ke-3 dan Langkah ke-4 untuk anggota yang lain pada bagian potongan lingkaran yang lain kemudian tempel dengan lem pada buku tulis.",
+    "Presentasikan hasil diskusi kelompok di depan kelas",
+    "Tulislah kesimpulan yang diperoleh dari hasil percobaan tersebut",
+    "Hasil Aktivitas",
+    "Guru membentuk kelompok heterogen",
+    "Guru menjelaskan cara mengisi tabel yang ada pada Buku Siswa.",
+  ],
   ketukan: [
     k(
       SUARA_AK1,

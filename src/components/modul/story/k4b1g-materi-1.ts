@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, judul, kartu, kelompok, teks } from "./k4b1g-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b1g-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pengalaman belajar, sarana, apersepsi (Panduan Guru hlm. 60–61) ------------------------------ */
 const SUARA_P1 = "Subbab G membahas perkalian bilangan cacah sampai seratus. Panduan guru menyebut pengalaman belajarnya: memahami konsep perkalian dengan benda konkret, gambar, dan simbol matematika.";
@@ -13,7 +12,18 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
   judul: "Pengalaman belajar, sarana, dan apersepsi",
   sumber: "Panduan Guru hlm. 60–61",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b1g-materi-1.ts:1"),
+  kutipan: [
+    "G. Perkalian Bilangan Cacah sampai 100",
+    "Pengalaman Belajar",
+    "Setelah mempelajari sub bab ini, peserta didik dapat memahami",
+    "konsep perkalian bilangan cacah sampai 100 menggunakan benda konkret, gambar, dan simbol matematika.",
+    "Kebutuhan Sarana Prasarana dan Media",
+    "Permen/kerikil/kelereng/manik-manik/kue/buku",
+    "Apersepsi",
+    "Secara umum konsep operasi perkalian merupakan penjumlahan berulang.",
+    "tidak perlu menjumlahkan hal yang sama",
+    "lebih efektif dan efisien",
+  ],
   ketukan: [
     k(
       SUARA_P1,
@@ -51,7 +61,15 @@ export const ADEGAN_PEMANTIK: AdeganStory = {
   judul: "Pertanyaan pemantik dan pemanasan",
   sumber: "Materi: pertanyaan pemantik",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1g-materi-1.ts:2"),
+  kutipan: [
+    "Pertanyaan Esensi/Pemantik",
+    "Bagaimana operasi perkalian cara panjang?",
+    "Bagaimana operasi perkalian cara susun tanpa menyimpan?",
+    "Bagaimana operasi perkalian cara susun dengan menyimpan",
+    "Misalkan ada 12 kadus yang berisi masing-masing 10 butir",
+    "Apakah telur harus dihitung satu per satu di setiap kardus?",
+    "Guru tidak perlu memberikan jawaban yang benar",
+  ],
   ketukan: [
     k(
       SUARA_Q1,
@@ -86,7 +104,15 @@ export const ADEGAN_AMATI_DONAT: AdeganStory = {
   judul: "Mengamati dua belas kotak donat",
   sumber: "Materi: penjumlahan berulang",
   latar: "#FFF1F2",
-  kutipan: kutipanLokal("k4b1g-materi-1.ts:3"),
+  kutipan: [
+    "G. Perkalian Bilangan Cacah Sampai 100",
+    "Ayo Mengamati",
+    "Amatilah gambar di atas.",
+    "Untuk mengetahui jumlah donat seluruhnya",
+    "dengan menambahkan keseluruhan",
+    "4 donat + 4 donat + 4 donal + 4 donat + 4 donat",
+    "Jadi, jumlah donat pada gambar tersebut ada 12 kotak atau 48 buah donat.",
+  ],
   ketukan: [
     k(
       SUARA_D1,
@@ -120,7 +146,17 @@ export const ADEGAN_CARA_PANJANG: AdeganStory = {
   judul: "Perkalian cara panjang: donat",
   sumber: "Metode: perkalian cara panjang",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b1g-materi-1.ts:4"),
+  kutipan: [
+    "Anak-anak, dengan menggunakan perkalian kita akan mudah menghitung banyak donat tersebut.",
+    "Perkalian cara panjang",
+    "Perhatikan dengan baik langkah-langkah untuk melakukan perkalian menggunakan cara panjang",
+    "Ada 12 kotak donat, setiap kotak berisi 4 donat,",
+    "12 × 4 = (10 + 2) × 4",
+    "Ubah menjadi 10 + 2",
+    "12 × 4 = (10 × 4) + ( 2 × 4)",
+    "= 40 + 8 = 48",
+    "Jadi banyaknya donat adalah 48 donat",
+  ],
   ketukan: [
     k(
       SUARA_C1,

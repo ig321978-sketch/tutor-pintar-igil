@@ -118,7 +118,7 @@ export const ADEGAN_LUAR_GANDA: AdeganStory = {
 const SUARA_F1 = "Terapan: delapan pak pensil, tiap pak dua belas batang. Delapan sama dengan dua kali dua kali dua, jadi gandakan tiga kali, mulai dari dua belas.";
 const SUARA_F2 = "Gandakan pertama: dua belas menjadi dua puluh empat. Gandakan kedua: dua puluh empat menjadi empat puluh delapan.";
 const SUARA_F3 = "Gandakan ketiga: empat puluh delapan menjadi sembilan puluh enam. Jadi dua belas kali delapan sama dengan sembilan puluh enam pensil.";
-const SUARA_F4 = "Cara serupa pada kucing Upe: dua puluh satu kali empat. Dua puluh satu menjadi empat puluh dua, lalu delapan puluh empat kaki.";
+const SUARA_F4 = "Cara serupa pada kucing Azizah: dua puluh satu kali empat. Dua puluh satu menjadi empat puluh dua, lalu delapan puluh empat kaki.";
 
 export const ADEGAN_LUAR_GANDA_TERAPAN: AdeganStory = {
   id: "luar-ganda-terapan",

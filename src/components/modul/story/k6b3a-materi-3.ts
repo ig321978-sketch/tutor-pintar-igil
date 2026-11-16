@@ -67,23 +67,23 @@ export const ADEGAN_LATIHAN31: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 7. Tantangan Pak Halim dan renungan ------------------------------ */
+/* ------------------------------ 7. Tantangan Pak Hasan dan renungan ------------------------------ */
 export const ADEGAN_PAK_HASAN: AdeganStory = {
   id: "pak-hasan",
-  judul: "Soal tantangan: kardus Pak Halim",
-  sumber: "Materi: tantangan kardus Pak Halim",
+  judul: "Soal tantangan: kardus Pak Hasan",
+  sumber: "Materi: tantangan kardus Pak Hasan",
   latar: "#F0F9FF",
   ketukan: [
     k(
-      "Tantangan: Pak Halim punya tiga puluh kardus berukuran dua puluh sentimeter, tiga puluh sentimeter, dan lima puluh sentimeter. Gudangnya tiga meter kali tiga meter, dengan tinggi tiga koma satu meter.",
+      "Tantangan: Pak Hasan punya tiga puluh kardus berukuran dua puluh sentimeter, tiga puluh sentimeter, dan lima puluh sentimeter. Gudangnya tiga meter kali tiga meter, dengan tinggi tiga koma satu meter.",
       tambah(0, teks("jud", 150, 22, "Tantangan", 12, W.ungu)),
-      tambah("Pak", emo("pak", 40, 70, "👨", 34), teks("pk", 40, 90, "Pak Halim", 8)),
+      tambah("Pak", emo("pak", 40, 70, "👨", 34), teks("pk", 40, 90, "Pak Hasan", 8)),
       tambah("puluh", teks("n30", 40, 120, "30 kardus", 10, W.merah)),
       tambah("berukuran", ...balokIso("kd", P(142, 114, 8), 0, 0, 0, 2, 3, 5, BAHAN.oranye), teks("d1", 110, 150, "20 cm", 8.4), teks("d2", 176, 150, "30 cm", 8.4), teks("d3", 202, 90, "50 cm", 8.4, W.merah)),
       tambah("Gudangnya", kotak("gd", 214, 70, 74, 60, "#E0F2FE", W.biru, { rx: 3, putus: true }), teks("g1", 251, 94, "gudang", 8.4), teks("g2", 251, 108, "3 m kali 3 m", 7.4), teks("g3", 251, 122, "tinggi 3,1 m", 7.4, W.merah)),
     ),
     k(
-      "Pak Halim ingin lantai tetap lega, jadi luas lantai yang terpakai harus sekecil mungkin. Karena itu kardus ditumpuk tinggi, dengan rusuk terpanjang, yaitu lima puluh sentimeter, sebagai sisi tegak.",
+      "Pak Hasan ingin lantai tetap lega, jadi luas lantai yang terpakai harus sekecil mungkin. Karena itu kardus ditumpuk tinggi, dengan rusuk terpanjang, yaitu lima puluh sentimeter, sebagai sisi tegak.",
       bersih(0),
       tambah("lega,", kotak("lt", 30, 150, 240, 30, "#E5E7EB", W.hitam, { rx: 3 }), teks("ltt", 150, 170, "lantai gudang", 9)),
       tambah("sekecil", kotak("kl", 126, 150, 48, 30, "#FDE68A", W.merah, { rx: 2, tebal: 2 }), teks("klt", 150, 193, "alas sekecil mungkin", 9, W.merah)),

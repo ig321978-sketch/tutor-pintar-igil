@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { PX, W, apem, barisApem, barisTomat, emo, garis, kartu, kotak, tabelPerBaris, teks, tomat } from "./k5b8b-gambar";
 import { bersih, k, sorotkan, tambah } from "./k5b8b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const catatan = (id: string, x: number, y: number, isi: string) => teks(id, x, y, isi, 7.4, W.merah, { anchor: "start" });
 
@@ -13,14 +12,14 @@ const TABEL_TOMAT = tabelPerBaris("tt", 20, 40, ["Minggu ke-", "Hasil Panen (kg)
 
 export const ADEGAN_TOMAT_DATA: AdeganStory = {
   id: "tomat-data",
-  judul: "Tantangan: hasil panen tomat Pak Malosi",
+  judul: "Tantangan: hasil panen tomat Pak Chandra",
   sumber: "Materi: tantangan panen tomat",
   latar: "#FEF2F2",
-  kutipan: kutipanLokal("k5b8b-materi-3.ts:1"),
+  kutipan: ["Pak Chandra memiliki kebun sayuran", "Tabel 8.7 Hasil Panen Tomat", "Buatlah piktogram dari data hasil panen", "Berapa total hasil panen tomat Pak", "Kapan hasil panen mengalami kenaikan", "Tentukan selisih antara hasil panen"],
   ketukan: [
     k(
-      "Sekarang ada Tantangan. Pak Malosi punya kebun sayuran, dan salah satunya tomat. Hasil panen lima minggu dicatat dalam sebuah tabel.",
-      tambah(0, teks("jud", 150, 24, "Tantangan: tomat Pak Malosi", 12, W.ungu)),
+      "Sekarang ada Tantangan. Pak Chandra punya kebun sayuran, dan salah satunya tomat. Hasil panen lima minggu dicatat dalam sebuah tabel.",
+      tambah(0, teks("jud", 150, 24, "Tantangan: tomat Pak Chandra", 12, W.ungu)),
       tambah("tomat.", emo("tm", 150, 96, "🍅", 44)),
       tambah("tabel.", teks("tb", 150, 142, "Hasil Panen Tomat Lima Minggu", 11, W.merah)),
     ),
@@ -54,11 +53,11 @@ export const ADEGAN_TOMAT_PIKTOGRAM: AdeganStory = {
   judul: "Pertanyaan a: membuat piktogram hasil panen tomat",
   sumber: "Materi: piktogram panen tomat",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b8b-materi-3.ts:2"),
+  kutipan: ["Buatlah piktogram dari data hasil panen", "tomat Pak Chandra tersebut"],
   ketukan: [
     k(
       "Inilah piktogram hasil panen tomat. Satu gambar tomat mewakili 2 kilogram. Minggu ke-1: 10 dibagi 2 sama dengan 5 gambar.",
-      tambah(0, teks("jud", 150, 20, "Hasil Panen Tomat Pak Malosi", 11, W.ungu)),
+      tambah(0, teks("jud", 150, 20, "Hasil Panen Tomat Pak Chandra", 11, W.ungu)),
       tambah(0, garis("ax", PX - 8, 34, 0, 110, W.hitam, 2, { gambar: true })),
       tambah("mewakili", kunciTomat("kn", 86, 160)),
       tambah("Minggu", barisTomat("t0", Y_TOMAT(0), "Minggu 1", 10, 2)),
@@ -92,7 +91,7 @@ export const ADEGAN_TOMAT_JAWAB: AdeganStory = {
   judul: "Pertanyaan b sampai e: total, kenaikan, penurunan, dan selisih panen",
   sumber: "Materi: total, naik, turun, dan selisih",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b8b-materi-3.ts:3"),
+  kutipan: ["Berapa total hasil panen tomat Pak", "Kapan hasil panen mengalami kenaikan", "Kapan hasil panen mengalami", "Tentukan selisih antara hasil panen"],
   ketukan: [
     k(
       "Pertanyaan b: total panen lima minggu adalah 10 ditambah 14 ditambah 20 ditambah 12 ditambah 4, yaitu 60 kilogram.",
@@ -141,7 +140,7 @@ export const ADEGAN_KESALAHAN_REFLEKSI: AdeganStory = {
   judul: "Hati-hati, tantangan, dan renungan",
   sumber: "Materi: hati-hati dan renungan",
   latar: "#EEF2FF",
-  kutipan: kutipanLokal("k5b8b-materi-3.ts:4"),
+  kutipan: ["Aku dapat membuat piktogram", "Aku dapat membaca data dari piktogram", "Aku dapat menganalisis data dari piktogram"],
   ketukan: [
     k(
       "Hati-hati saat membaca piktogram: jangan lupa memperhatikan keterangan gambar. Sepuluh gambar apem pada hari Senin bukan 10 kue, tetapi 40 kue.",

@@ -4,7 +4,6 @@
 // hitungan mandiri semua perkalian dan kunci Panduan Guru (bersusun, angka yang disimpan, cara panjang), jumlah benda pada gambar (kotak donat, tumpuk kelereng, pak pensil, ayam, kucing, deret bulatan, batang penggandaan, tabel kali) dihitung ulang dari gambar,
 // gambar donat buku diukur dari PDF, temuan buku (donal, kadus, 6 kelas tidak ditulis di Buku Siswa, hasil lebih dari 100), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b1g.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -559,8 +558,8 @@ const deretInfo = (objs, id) => {
       }
     }
     stat.kutipan = n;
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
+    cek(n >= 100, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
     // Isi buku yang dicatat sebagai temuan di video dihitung ulang dari teks PDF.
     const hlm39 = bersih(ambil(bs, 51, 51));
     cek((hlm39.match(/4 dona[lt]/g) ?? []).length === 12 && (hlm39.match(/4 donal/g) ?? []).length === 2, "Buku Siswa hlm. 39: 12 suku 4 donat dengan 2 suku salah ketik donal");
@@ -600,7 +599,7 @@ const deretInfo = (objs, id) => {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b1g-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1g sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b1g-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1g sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

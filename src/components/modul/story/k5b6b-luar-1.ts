@@ -99,7 +99,7 @@ export const ADEGAN_LUAR_VRM_TERAPAN: AdeganStory = {
   latar: "#FFF4DD",
   ketukan: [
     k(
-      "Terapkan pada pojok kotak pensil tadi. Garis pojoknya melengkung, jadi tidak ada satu titik temu yang runcing. Hasilnya bukan sudut, sesuai pendapat Upe.",
+      "Terapkan pada pojok kotak pensil tadi. Garis pojoknya melengkung, jadi tidak ada satu titik temu yang runcing. Hasilnya bukan sudut, sesuai pendapat Yohana.",
       tambah(0, teks("jud", 150, 22, "Terapan: pemeriksaan benda", 12, W.ungu)),
       tambah("Terapkan", teks("h0", KOL_V[0], 44, "titik temu?", 7, W.ungu), teks("h1", KOL_V[1], 44, "dua kaki?", 7, W.ungu), teks("h2", KOL_V[2], 44, "runcing?", 7, W.ungu)),
       tambah("kotak", ...barisV(0)),

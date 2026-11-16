@@ -4,7 +4,6 @@
 // geometri diagram batang (tinggi atau lebar batang = nilai x satuan skala, angka batang, jumlah ikon piktogram), hitungan mandiri data buku
 // (Aktivitas 3-4, Ayo Berlatih 1-2, Uji Kompetensi 1-3, soal pengayaan 1-5, rubrik, kunci Panduan Guru), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b6b.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -519,7 +518,7 @@ const IKON = { up: [4, 1, 3, 1, 2], tp: [3, 14, 5, 8], bt: [4, 5, 6, 3, 2] };
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 120, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(n >= 120, `jumlah kutipan buku yang diperiksa (${n})`);
     console.log(`Kutipan buku diperiksa: ${n}`);
   }
 }
@@ -540,7 +539,7 @@ const IKON = { up: [4, 1, 3, 1, 2], tp: [3, 14, 5, 8], bt: [4, 5, 6, 3, 2] };
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b6b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b6b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b6b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b6b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

@@ -4,7 +4,6 @@
 // hitungan mandiri (faktorisasi prima, FPB, KPK, saringan Eratosthenes, pohon faktor, pembagian berulang, diagram Venn, pangkat prima,
 // kunci Uji Kompetensi 1 sampai 4, soal tambahan, pengayaan), geometri gambar, emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b2e.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -624,9 +623,9 @@ const teksVisible = (objs) => objs.filter((o) => o.t === "teks" && (o.op ?? 1) >
   sama([waktu(10, 20, 20), waktu(10, 20, 15), waktu(10, 20, 30), lcm(15, 30)], ["10.40", "10.35", "10.50", 30], "jadwal bus pengayaan");
 }
 
-/* ------------------------------ Apersepsi Halim dan Upe ------------------------------ */
+/* ------------------------------ Apersepsi Asep dan Lukas ------------------------------ */
 {
-  sama([gcd(18, 24), lcm(18, 24)], [6, 72], "apersepsi: FPB 18 dan 24 = 6, KPK = 72 (Upe benar, Halim keliru)");
+  sama([gcd(18, 24), lcm(18, 24)], [6, 72], "apersepsi: FPB 18 dan 24 = 6, KPK = 72 (Lukas benar, Asep keliru)");
   const o = di(M, "pembuka-e", 4);
   sama([nilaiId(o, "g1-t0"), nilaiId(o, "g2-t0")], ["FPB 18 dan 24", "KPK 18 dan 24"], "apersepsi: kartu FPB dan KPK tampil");
   sama([nilaiId(o, "g1-t1"), nilaiId(o, "g2-t1")], ["adalah 6", "adalah 72"], "apersepsi: FPB 6 dan KPK 72 di kartu");
@@ -823,7 +822,7 @@ const teksVisible = (objs) => objs.filter((o) => o.t === "teks" && (o.op ?? 1) >
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 90, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(n >= 90, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -843,7 +842,7 @@ const teksVisible = (objs) => objs.filter((o) => o.t === "teks" && (o.op ?? 1) >
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b2e-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b2e sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b2e-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b2e sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

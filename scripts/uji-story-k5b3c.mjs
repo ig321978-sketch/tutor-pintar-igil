@@ -1,10 +1,9 @@
 // Uji Story Kelas 5 Bab 3 Sub-Bab C (pengurangan bilangan pecahan, penutup bab): dua video (materi kurikulum dan metode luar) dengan mesin animasi baru.
 // Memeriksa: pemicu kata, sinkron angka suara dan gambar, perubahan gambar tiap ketukan, keunikan antaradegan, batas kanvas,
 // teks bertumpuk, pemisahan materi dan metode luar, kutipan buku (bila PDF ada),
-// hitungan mandiri dengan pecahan eksak (semua rumus di gambar, kunci Uji Kompetensi 1 sampai 10, Ayo Berlatih, eksplorasi 3.3A sampai 3.3C, masalah Upe dan Malosi),
+// hitungan mandiri dengan pecahan eksak (semua rumus di gambar, kunci Uji Kompetensi 1 sampai 10, Ayo Berlatih, eksplorasi 3.3A sampai 3.3C, masalah Yohana dan Komang),
 // geometri gambar (kotak pecahan, apel, tabel kunci), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b3c.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -85,10 +84,10 @@ function hitungRantai(ekspresi) {
 
 /* ------------------------------ Data buku, ditulis ulang mandiri dari halaman PDF ------------------------------ */
 // Buku Siswa hlm. 91 sampai 104 dan Panduan Guru hlm. 107 sampai 112 (PDF 119 sampai 124).
-const YOHANA_PEC = kurang(f(2, 3), f(1, 2)); // Masalah Upe
+const YOHANA_PEC = kurang(f(2, 3), f(1, 2)); // Masalah Yohana
 const LUKAS_PEC = kurang(f(2, 3), f(1, 3)); // Eksplorasi 3.3A
 const JARAK = kurang(campur(5, 2, 3), campur(2, 1, 3)); // Eksplorasi 3.3C: 5 2/3 - 2 1/3 km
-const TALI = kurang(campur(4, 1, 2), campur(2, 1, 3)); // Masalah Malosi: 4 1/2 - 2 1/3 m
+const TALI = kurang(campur(4, 1, 2), campur(2, 1, 3)); // Masalah Komang: 4 1/2 - 2 1/3 m
 const LATIHAN = { a: tambah(f(1, 4), f(3, 4)), b: kurang(f(2, 7), f(1, 7)), c: tambah(f(4, 5), f(1, 4)), d: kurang(f(1, 3), f(1, 5)), e: tambah(f(3, 5), f(1, 3)), f: kurang(f(4, 6), f(2, 4)), dua: tambah(campur(1, 1, 2), campur(2, 1, 2)), tiga: kurang(campur(2, 1, 4), campur(2, 1, 5)) };
 // Uji Kompetensi: soal 1 sampai 4 menghitung, soal 5 sampai 10 benar atau salah.
 const UK = { 1: tambah(f(2, 5), f(1, 5)), 2: tambah(f(1, 20), f(1, 6)), 3: kurang(f(3, 10), f(1, 8)), 4: kurang(campur(1, 1, 8), f(1, 8)) };
@@ -255,13 +254,13 @@ const ada = (objs, id) => objs.some((o) => o.id === id);
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,masalah-yohana,eks-3a,eks-3b,eks-3c,beda-penyebut,komang-tali,ayo-berlatih,miskonsepsi,uk-1,uk-2", "urutan adegan materi");
   cek(U.adegan[0].id === "sapaan" && U.adegan[1].id === "luar-pembuka", "video metode luar: sapaan lalu pembuka");
   cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Masalah Upe", "Wei", "Kira", "Malosi", "Halim", "apel", "kilometer", "KPK", "Hati-hati", "Tantangan", "Renungan", "Latihan", "Uji 1", "Uji 2", "penyebut"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["Masalah Yohana", "Lukas", "Asep", "Komang", "Nisa", "apel", "kilometer", "KPK", "Hati-hati", "Tantangan", "Renungan", "Latihan", "Uji 1", "Uji 2", "penyebut"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-lds", "luar-lds-terapan", "luar-cds", "luar-cds-terapan", "luar-ram", "luar-ram-terapan", "luar-aup", "luar-aup-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
   cek(M_VIDEO.adegan.length === 11 && U.adegan.length === 11, "11 adegan materi diputar dan 11 adegan metode luar");
   cek(!/Sub-Bab D|Bab empat|Bab 4/i.test(materi + luar), "tidak membahas bab lain");
   cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
-  for (const kata of ["Upe", "apel", "Malosi", "Uji 4", "Latihan 1"]) cek(luar.toLowerCase().includes(kata.toLowerCase()), `metode luar memakai angka buku: ${kata}`);
+  for (const kata of ["Yohana", "apel", "Komang", "Uji 4", "Latihan 1"]) cek(luar.toLowerCase().includes(kata.toLowerCase()), `metode luar memakai angka buku: ${kata}`);
 }
 
 /* ------------------------------ Rumus pecahan di gambar: tiap rumus dihitung ulang, dan tulisan bertumpuk dicocokkan dengan rumusnya ------------------------------ */
@@ -333,11 +332,11 @@ const ada = (objs, id) => objs.some((o) => o.id === id);
   harap(M, "pembuka-c", 3, "r1", f(3, 5), "penjumlahan pemanasan");
   harap(M, "pembuka-c", 3, "r2", kurang(f(3, 5), f(2, 5)), "pengurangan pemanasan");
   // Eksplorasi 3.3A
-  harap(M, "eks-3a", 3, "r", LUKAS_PEC, "3.3A Cara Kira");
-  sama(teksPec(LUKAS_PEC), "1/3", "kekurangan kertas Wei");
+  harap(M, "eks-3a", 3, "r", LUKAS_PEC, "3.3A Cara Asep");
+  sama(teksPec(LUKAS_PEC), "1/3", "kekurangan kertas Lukas");
   // Eksplorasi 3.3B
-  harap(M, "eks-3b", 3, "r", kurang(f(6, 8), f(2, 8)), "3.3B sisa apel Wei");
-  harap(M, "eks-3b", 4, "c1r", kurang(f(8, 8), f(6, 8)), "3.3B sisa apel Kira");
+  harap(M, "eks-3b", 3, "r", kurang(f(6, 8), f(2, 8)), "3.3B sisa apel Lukas");
+  harap(M, "eks-3b", 4, "c1r", kurang(f(8, 8), f(6, 8)), "3.3B sisa apel Asep");
   harap(M, "eks-3b", 4, "c2r", kurang(f(6, 8), f(2, 8)), "3.3B langkah buku");
   // Eksplorasi 3.3C
   harap(M, "eks-3c", 2, "ra", f(17), "3.3C 5 x 3 + 2");
@@ -346,29 +345,29 @@ const ada = (objs, id) => objs.some((o) => o.id === id);
   harap(M, "eks-3c", 2, "rd", campur(2, 1, 3), "3.3C 2 1/3 = 7/3");
   harap(M, "eks-3c", 3, "re", JARAK, "3.3C 17/3 - 7/3");
   harap(M, "eks-3c", 3, "rf", JARAK, "3.3C 10/3 = 3 1/3");
-  harap(M, "eks-3c", 4, "ka", f(3), "3.3C Cara Malosi 5 - 2");
-  harap(M, "eks-3c", 4, "kb", f(1, 3), "3.3C Cara Malosi 2/3 - 1/3");
-  harap(M, "eks-3c", 4, "kc", JARAK, "3.3C Cara Malosi gabungan");
-  sama(teksPec(JARAK), "3 1/3", "jarak yang masih ditempuh Kira");
-  // Masalah Upe
-  harap(M, "beda-penyebut", 1, "r", f(2, 3), "Upe 2/3 = 4/6");
-  harap(M, "beda-penyebut", 2, "r2", f(1, 2), "Upe 1/2 = 3/6");
-  harap(M, "beda-penyebut", 4, "rb", YOHANA_PEC, "Upe selisih");
-  harap(M, "beda-penyebut", 5, "g3", YOHANA_PEC, "Upe selisih tetap benar");
-  sama(teksPec(YOHANA_PEC), "1/6", "kekurangan kertas Upe");
+  harap(M, "eks-3c", 4, "ka", f(3), "3.3C Cara Komang 5 - 2");
+  harap(M, "eks-3c", 4, "kb", f(1, 3), "3.3C Cara Komang 2/3 - 1/3");
+  harap(M, "eks-3c", 4, "kc", JARAK, "3.3C Cara Komang gabungan");
+  sama(teksPec(JARAK), "3 1/3", "jarak yang masih ditempuh Asep");
+  // Masalah Yohana
+  harap(M, "beda-penyebut", 1, "r", f(2, 3), "Yohana 2/3 = 4/6");
+  harap(M, "beda-penyebut", 2, "r2", f(1, 2), "Yohana 1/2 = 3/6");
+  harap(M, "beda-penyebut", 4, "rb", YOHANA_PEC, "Yohana selisih");
+  harap(M, "beda-penyebut", 5, "g3", YOHANA_PEC, "Yohana selisih tetap benar");
+  sama(teksPec(YOHANA_PEC), "1/6", "kekurangan kertas Yohana");
   sama([kpk(2, 3), kpk(3, 6)], [6, 6], "KPK 2 dan 3 sama 6, KPK 3 dan 6 juga 6");
-  // Masalah Malosi
-  harap(M, "komang-tali", 1, "ya", campur(4, 1, 2), "Malosi 4 1/2 = 9/2");
-  harap(M, "komang-tali", 1, "yb", campur(2, 1, 3), "Malosi 2 1/3 = 7/3");
-  harap(M, "komang-tali", 2, "yc", f(9, 2), "Malosi 9/2 = 27/6");
-  harap(M, "komang-tali", 2, "yd", f(7, 3), "Malosi 7/3 = 14/6");
-  harap(M, "komang-tali", 3, "ye", TALI, "Malosi 27/6 - 14/6");
-  harap(M, "komang-tali", 3, "yf", TALI, "Malosi 13/6 = 2 1/6");
-  harap(M, "komang-tali", 4, "la", f(2), "Malosi bulat 4 - 2");
-  harap(M, "komang-tali", 4, "lb", kurang(f(1, 2), f(1, 3)), "Malosi pecahan");
-  harap(M, "komang-tali", 4, "lc", TALI, "Malosi gabungan");
-  sama(teksPec(TALI), "2 1/6", "tali yang dibeli Malosi");
-  sama(teksPec(kurang(campur(4, 1, 2), campur(2, 1, 3))), teksPec(tambah(f(2), kurang(f(1, 2), f(1, 3)))), "Cara Upe sama dengan Cara Wei");
+  // Masalah Komang
+  harap(M, "komang-tali", 1, "ya", campur(4, 1, 2), "Komang 4 1/2 = 9/2");
+  harap(M, "komang-tali", 1, "yb", campur(2, 1, 3), "Komang 2 1/3 = 7/3");
+  harap(M, "komang-tali", 2, "yc", f(9, 2), "Komang 9/2 = 27/6");
+  harap(M, "komang-tali", 2, "yd", f(7, 3), "Komang 7/3 = 14/6");
+  harap(M, "komang-tali", 3, "ye", TALI, "Komang 27/6 - 14/6");
+  harap(M, "komang-tali", 3, "yf", TALI, "Komang 13/6 = 2 1/6");
+  harap(M, "komang-tali", 4, "la", f(2), "Komang bulat 4 - 2");
+  harap(M, "komang-tali", 4, "lb", kurang(f(1, 2), f(1, 3)), "Komang pecahan");
+  harap(M, "komang-tali", 4, "lc", TALI, "Komang gabungan");
+  sama(teksPec(TALI), "2 1/6", "tali yang dibeli Komang");
+  sama(teksPec(kurang(campur(4, 1, 2), campur(2, 1, 3))), teksPec(tambah(f(2), kurang(f(1, 2), f(1, 3)))), "Cara Yohana sama dengan Cara Lukas");
   // Ayo Berlatih
   harap(M, "ayo-berlatih", 0, "ra", LATIHAN.a, "Ayo Berlatih 1a");
   harap(M, "ayo-berlatih", 0, "rb", LATIHAN.b, "Ayo Berlatih 1b");
@@ -418,27 +417,27 @@ const ada = (objs, id) => objs.some((o) => o.id === id);
   // Metode luar
   harap(U, "luar-lds", 0, "lr", kurang(f(4, 5), f(1, 5)), "LDS contoh 4/5 - 1/5");
   harap(U, "luar-lds", 2, "p3r", f(1, 2), "LDS penyederhanaan 4/8");
-  harap(U, "luar-lds-terapan", 0, "tr", LUKAS_PEC, "LDS kertas Wei");
+  harap(U, "luar-lds-terapan", 0, "tr", LUKAS_PEC, "LDS kertas Lukas");
   harap(U, "luar-lds-terapan", 1, "ar", LATIHAN.b, "LDS Ayo Berlatih b");
   harap(U, "luar-lds-terapan", 2, "ur", UK[4], "LDS UK 4");
   harap(U, "luar-lds-terapan", 2, "us", UK[4], "LDS UK 4 dengan pecahan biasa");
-  harap(U, "luar-lds-terapan", 3, "pr", kurang(f(6, 8), f(2, 8)), "LDS apel Wei");
-  harap(U, "luar-cds-terapan", 0, "r", YOHANA_PEC, "CDS Upe");
+  harap(U, "luar-lds-terapan", 3, "pr", kurang(f(6, 8), f(2, 8)), "LDS apel Lukas");
+  harap(U, "luar-cds-terapan", 0, "r", YOHANA_PEC, "CDS Yohana");
   harap(U, "luar-cds-terapan", 1, "r", UK[3], "CDS UK 3");
   harap(U, "luar-cds-terapan", 2, "r", LATIHAN.d, "CDS Ayo Berlatih d");
-  harap(U, "luar-cds-terapan", 3, "r", TALI, "CDS tali Malosi awal");
-  harap(U, "luar-cds-terapan", 3, "s", TALI, "CDS tali Malosi samakan penyebut");
-  harap(U, "luar-cds-terapan", 4, "r", TALI, "CDS tali Malosi hasil");
+  harap(U, "luar-cds-terapan", 3, "r", TALI, "CDS tali Komang awal");
+  harap(U, "luar-cds-terapan", 3, "s", TALI, "CDS tali Komang samakan penyebut");
+  harap(U, "luar-cds-terapan", 4, "r", TALI, "CDS tali Komang hasil");
   harap(U, "luar-ram", 1, "rr", YOHANA_PEC, "RAM contoh 4/6 - 3/6");
   harap(U, "luar-ram-terapan", 0, "yr", f(2, 3), "RAM arsir dua per tiga");
-  harap(U, "luar-ram-terapan", 1, "yr", YOHANA_PEC, "RAM Upe");
+  harap(U, "luar-ram-terapan", 1, "yr", YOHANA_PEC, "RAM Yohana");
   harap(U, "luar-ram-terapan", 3, "sr", kurang(f(6, 8), f(2, 8)), "RAM apel");
   harap(U, "luar-aup", 1, "c1", kurang(f(5, 6), f(1, 6)), "AUP contoh pengurangan");
   harap(U, "luar-aup", 1, "c2", f(5, 6), "AUP contoh penjumlahan balik");
   // Add-Up Check: selisih + pengurang = bilangan awal, dihitung mandiri dari data buku.
-  harap(U, "luar-aup-terapan", 0, "r", tambah(YOHANA_PEC, f(1, 2)), "AUP Upe");
-  cek(samaPec(tambah(YOHANA_PEC, f(1, 2)), f(2, 3)), "AUP Upe: 1/6 + 1/2 = 2/3 (bilangan awal)");
-  harap(U, "luar-aup-terapan", 1, "r", tambah(JARAK, campur(2, 1, 3)), "AUP jarak Kira");
+  harap(U, "luar-aup-terapan", 0, "r", tambah(YOHANA_PEC, f(1, 2)), "AUP Yohana");
+  cek(samaPec(tambah(YOHANA_PEC, f(1, 2)), f(2, 3)), "AUP Yohana: 1/6 + 1/2 = 2/3 (bilangan awal)");
+  harap(U, "luar-aup-terapan", 1, "r", tambah(JARAK, campur(2, 1, 3)), "AUP jarak Asep");
   cek(samaPec(tambah(JARAK, campur(2, 1, 3)), campur(5, 2, 3)), "AUP jarak: 3 1/3 + 2 1/3 = 5 2/3 (jarak awal)");
   const enam = kurang(f(6), campur(3, 1, 8));
   cek(!samaPec(tambah(campur(3, 7, 8), campur(3, 1, 8)), f(6)) && samaPec(tambah(campur(3, 7, 8), campur(3, 1, 8)), f(7)), "AUP UK 6: 3 7/8 + 3 1/8 = 7, bukan 6");
@@ -468,14 +467,14 @@ const ada = (objs, id) => objs.some((o) => o.id === id);
   const samaBesar = (s, nama) => cek(new Set(s.lebar).size === 1 && new Set(s.tinggi).size === 1, `${nama}: kotak sama besar`);
   const idxApel = (objs, p, w) => Array.from({ length: 8 }, (_, i) => (objs.find((o) => o.id === `${p}-a${i}`)?.warna === w ? i : -1)).filter((i) => i >= 0);
   // Himpunan apel
-  sama([M1.LUKAS.length, M1.YOHANA.length, M1.ASEP.length], [6, 2, 2], "enam apel Wei, dua apel Upe, dua apel sisa Kira");
-  cek(M1.YOHANA.every((i) => M1.LUKAS.includes(i)) && M1.ASEP.every((i) => !M1.LUKAS.includes(i)) && [...M1.LUKAS, ...M1.ASEP].length === 8, "Upe bagian dari Wei, Kira sisanya, jumlah delapan apel");
-  sama(8 - 6, 2, "8 apel dikurangi 6 apel sisa Kira");
-  // Masalah Upe: kertas tiga bagian, dua diarsir
+  sama([M1.LUKAS.length, M1.YOHANA.length, M1.ASEP.length], [6, 2, 2], "enam apel Lukas, dua apel Yohana, dua apel sisa Asep");
+  cek(M1.YOHANA.every((i) => M1.LUKAS.includes(i)) && M1.ASEP.every((i) => !M1.LUKAS.includes(i)) && [...M1.LUKAS, ...M1.ASEP].length === 8, "Yohana bagian dari Lukas, Asep sisanya, jumlah delapan apel");
+  sama(8 - 6, 2, "8 apel dikurangi 6 apel sisa Asep");
+  // Masalah Yohana: kertas tiga bagian, dua diarsir
   {
     const s = kotakPec(di(M, "masalah-yohana", 0), "kt");
-    sama([s.d, s.diarsir], [3, 2], "kertas Upe: tiga kotak, dua diarsir");
-    samaBesar(s, "kertas Upe");
+    sama([s.d, s.diarsir], [3, 2], "kertas Yohana: tiga kotak, dua diarsir");
+    samaBesar(s, "kertas Yohana");
   }
   // Eksplorasi 3.3A
   {
@@ -485,7 +484,7 @@ const ada = (objs, id) => objs.some((o) => o.id === id);
     const t2 = kotakPec(di(M, "eks-3a", 2), "k1");
     const t2b = kotakPec(di(M, "eks-3a", 2), "k2");
     sama([t2.d, t2.diarsir, t2b.d, t2b.diarsir], [3, 2, 3, 1], "3.3A langkah 2: kotak harus dan sudah dilukis");
-    cek(samaPec(f(t2.diarsir - t2b.diarsir, t2.d), LUKAS_PEC), "3.3A: 2 kotak dikurangi 1 kotak dari 3 kotak = kekurangan Wei");
+    cek(samaPec(f(t2.diarsir - t2b.diarsir, t2.d), LUKAS_PEC), "3.3A: 2 kotak dikurangi 1 kotak dari 3 kotak = kekurangan Lukas");
     cek(di(M, "eks-3a", 2).find((o) => o.id === "k1-c1").sorot === true, "kotak yang tersisa disorot");
     samaBesar(t2, "3.3A kertas");
   }
@@ -493,14 +492,14 @@ const ada = (objs, id) => objs.some((o) => o.id === id);
   {
     const t0 = di(M, "eks-3b", 0);
     stat.apel += 1;
-    sama(idxApel(t0, "ap", G.W.hijau), M1.LUKAS.filter((i) => !M1.YOHANA.includes(i)), "3.3B: apel hijau ke Wei dan belum diteruskan");
-    sama(idxApel(t0, "ap", M1.BIRU_MUDA), M1.YOHANA, "3.3B: apel biru ke Upe");
-    sama(idxApel(t0, "ap", G.W.merah), M1.ASEP, "3.3B: apel merah sisa Kira");
+    sama(idxApel(t0, "ap", G.W.hijau), M1.LUKAS.filter((i) => !M1.YOHANA.includes(i)), "3.3B: apel hijau ke Lukas dan belum diteruskan");
+    sama(idxApel(t0, "ap", M1.BIRU_MUDA), M1.YOHANA, "3.3B: apel biru ke Yohana");
+    sama(idxApel(t0, "ap", G.W.merah), M1.ASEP, "3.3B: apel merah sisa Asep");
     sama(idxApel(di(M, "eks-3b", 1), "ap", G.W.hijau), M1.LUKAS, "3.3B langkah 1: enam apel diarsir");
     sama(idxApel(di(M, "eks-3b", 2), "ap", M1.BIRU_MUDA), M1.YOHANA, "3.3B langkah 2: dua apel diarsir");
-    sama(idxApel(di(M, "eks-3b", 3), "ap", G.W.hijau), [1, 2, 5, 6], "3.3B langkah 3: empat apel sisa Wei");
+    sama(idxApel(di(M, "eks-3b", 3), "ap", G.W.hijau), [1, 2, 5, 6], "3.3B langkah 3: empat apel sisa Lukas");
     sama(idxApel(di(M, "eks-3b", 3), "ap", G.W.hijau).length, M1.LUKAS.length - M1.YOHANA.length, "3.3B: 6 - 2 = 4 apel");
-    sama(idxApel(di(M, "eks-3b", 4), "ap", G.W.emas), M1.ASEP, "catatan guru: dua apel sisa Kira disorot emas");
+    sama(idxApel(di(M, "eks-3b", 4), "ap", G.W.emas), M1.ASEP, "catatan guru: dua apel sisa Asep disorot emas");
     const ap = t0.filter((o) => /^ap-a\d$/.test(o.id));
     sama(new Set(ap.map((o) => o.x)).size, 4, "apel: empat kolom");
     sama(new Set(ap.map((o) => o.y)).size, 2, "apel: dua baris");
@@ -508,12 +507,12 @@ const ada = (objs, id) => objs.some((o) => o.id === id);
   // Pengurangan berpenyebut berbeda: enam kotak
   {
     const s = kotakPec(di(M, "beda-penyebut", 1), "n");
-    sama([s.d, s.diarsir], [6, 4], "Halim: enam kotak, empat diarsir (2/3 = 4/6)");
+    sama([s.d, s.diarsir], [6, 4], "Nisa: enam kotak, empat diarsir (2/3 = 4/6)");
     cek(samaPec(f(s.diarsir, s.d), f(2, 3)), "4 dari 6 kotak sama dengan 2/3");
-    samaBesar(s, "Halim enam kotak");
+    samaBesar(s, "Nisa enam kotak");
     const u = di(M, "beda-penyebut", 2);
     const w = Array.from({ length: 6 }, (_, i) => u.find((o) => o.id === `n-c${i}`).warna);
-    sama(w, [G.W.hijau, G.W.hijau, G.W.hijau, G.W.emas, G.W.putih, G.W.putih], "Halim: tiga kotak sudah dilukis, satu belum, dua kosong");
+    sama(w, [G.W.hijau, G.W.hijau, G.W.hijau, G.W.emas, G.W.putih, G.W.putih], "Nisa: tiga kotak sudah dilukis, satu belum, dua kosong");
     cek(samaPec(f(3, 6), f(1, 2)) && samaPec(f(4 - 3, 6), YOHANA_PEC), "3 dari 6 sama dengan 1/2 dan 4 kotak - 3 kotak = 1/6");
   }
   // Uji Kompetensi 1: bar lima kotak, dua + satu
@@ -531,7 +530,7 @@ const ada = (objs, id) => objs.some((o) => o.id === id);
     sama([lds.d, lds.diarsir, lds.silang, lds.sisa], [5, 4, 1, 3], "LDS: 5 kotak, 4 diarsir, 1 dicoret, 3 tersisa");
     cek(samaPec(f(lds.sisa, lds.d), kurang(f(4, 5), f(1, 5))), "LDS: sisa 3 dari 5 = 4/5 - 1/5");
     const tk = kotakPec(di(U, "luar-lds-terapan", 0), "tk");
-    cek(tk.d === 3 && samaPec(f(tk.sisa, tk.d), LUKAS_PEC), "LDS kertas Wei: sisa 1 dari 3 kotak");
+    cek(tk.d === 3 && samaPec(f(tk.sisa, tk.d), LUKAS_PEC), "LDS kertas Lukas: sisa 1 dari 3 kotak");
     const ay = kotakPec(di(U, "luar-lds-terapan", 1), "ay");
     cek(ay.d === 7 && samaPec(f(ay.sisa, ay.d), LATIHAN.b), "LDS Ayo Berlatih b: sisa 1 dari 7 kotak");
     const ram = kotakPec(di(U, "luar-ram", 0), "rm");
@@ -539,21 +538,21 @@ const ada = (objs, id) => objs.some((o) => o.id === id);
     const rn = kotakPec(di(U, "luar-ram", 1), "rn");
     cek(rn.d === 6 && rn.diarsir === 4 && rn.silang === 3 && samaPec(f(rn.sisa, rn.d), YOHANA_PEC), "RAM: 4 kotak diarsir, 3 dicoret, sisa 1/6");
     const y1 = kotakPec(di(U, "luar-ram-terapan", 0), "yk");
-    cek(y1.d === 6 && samaPec(f(y1.diarsir, y1.d), f(2, 3)), "RAM Upe: 4 dari 6 kotak = 2/3");
+    cek(y1.d === 6 && samaPec(f(y1.diarsir, y1.d), f(2, 3)), "RAM Yohana: 4 dari 6 kotak = 2/3");
     const y2 = kotakPec(di(U, "luar-ram-terapan", 1), "yk");
-    cek(y2.d === 6 && y2.silang === 3 && samaPec(f(y2.sisa, y2.d), YOHANA_PEC), "RAM Upe: dicoret 3, sisa 1 dari 6 kotak");
-    sama(idxApel(di(U, "luar-ram-terapan", 3), "ap2", G.W.hijau), [1, 2, 5, 6], "RAM apel: empat apel sisa Wei");
+    cek(y2.d === 6 && y2.silang === 3 && samaPec(f(y2.sisa, y2.d), YOHANA_PEC), "RAM Yohana: dicoret 3, sisa 1 dari 6 kotak");
+    sama(idxApel(di(U, "luar-ram-terapan", 3), "ap2", G.W.hijau), [1, 2, 5, 6], "RAM apel: empat apel sisa Lukas");
     sama(idxApel(di(U, "luar-ram-terapan", 3), "ap2", G.W.abu), M1.YOHANA, "RAM apel: dua apel diteruskan");
-    sama(idxApel(di(U, "luar-lds-terapan", 3), "ap", G.W.hijau), [1, 2, 5, 6], "LDS apel: empat apel sisa Wei");
+    sama(idxApel(di(U, "luar-lds-terapan", 3), "ap", G.W.hijau), [1, 2, 5, 6], "LDS apel: empat apel sisa Lukas");
     stat.apel += 3;
     const cb = kotakPec(di(U, "luar-cds", 1), "cb");
     sama([cb.d, cb.diarsir], [6, 3], "CDS: enam potongan sama besar");
   }
   // Kartu hasil sama dengan hitungan
-  cek(nilaiId(di(M, "komang-tali", 3), "yg-t0") === `Malosi membeli ${teksPec(TALI)} m tali`, "kartu hasil Malosi");
-  cek(nilaiId(di(M, "eks-3c", 3), "rg-t0") === `Kira masih harus menempuh ${teksPec(JARAK)} km`, "kartu hasil Kira");
-  cek(nilaiId(di(M, "beda-penyebut", 4), "yk-t0") === `Upe kurang ${teksPec(YOHANA_PEC)} bagian kertas`, "kartu hasil Upe");
-  cek(nilaiId(di(U, "luar-cds-terapan", 4), "k-t0") === `tali yang dibeli: ${teksPec(TALI)} m`, "kartu hasil Malosi di metode luar");
+  cek(nilaiId(di(M, "komang-tali", 3), "yg-t0") === `Komang membeli ${teksPec(TALI)} m tali`, "kartu hasil Komang");
+  cek(nilaiId(di(M, "eks-3c", 3), "rg-t0") === `Asep masih harus menempuh ${teksPec(JARAK)} km`, "kartu hasil Asep");
+  cek(nilaiId(di(M, "beda-penyebut", 4), "yk-t0") === `Yohana kurang ${teksPec(YOHANA_PEC)} bagian kertas`, "kartu hasil Yohana");
+  cek(nilaiId(di(U, "luar-cds-terapan", 4), "k-t0") === `tali yang dibeli: ${teksPec(TALI)} m`, "kartu hasil Komang di metode luar");
 }
 
 /* ------------------------------ Kutipan buku (bila PDF tersedia) ------------------------------ */
@@ -578,7 +577,7 @@ const ada = (objs, id) => objs.some((o) => o.id === id);
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 90, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(n >= 90, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -598,7 +597,7 @@ const ada = (objs, id) => objs.some((o) => o.id === id);
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b3c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b3c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b3c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b3c sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

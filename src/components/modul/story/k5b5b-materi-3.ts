@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { BK, JJG, KITE, W, bangunBerpetak, garis, kartu, kisi, lintasan, panah, poli, teks, type Pt } from "./k5b5b-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b5b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const ket = (id: string, y: number, isi: string, warna: string = W.biru, x = 108): Obj => teks(id, x, y, isi, 8.8, warna, { anchor: "start" });
 const potong = (id: string, x: number, y: number, x2: number, y2: number): Obj => garis(id, x, y, x2, y2, W.merah, 1.8, { putus: true });
@@ -17,7 +16,7 @@ export const ADEGAN_BELAH_KETUPAT: AdeganStory = {
   judul: "Menemukan luas belah ketupat",
   sumber: "Materi: luas belah ketupat",
   latar: "#F0FDFA",
-  kutipan: kutipanLokal("k5b5b-materi-3.ts:1"),
+  kutipan: ["Ayo Menemukan Luas Daerah Belah Ketupat", "Manakah diagonal-diagonalnya", "Luas belah ketupat tetap, walaupun", "Sisi 1 = diagonal 1 belah ketupat", "Sisi 2 = setengah dari diagonal 2", "Luas = sisi"],
   ketukan: [
     k(
       "Sekarang kita menemukan luas daerah belah ketupat. Perhatikan belah ketupat ABCD. Diagonal-diagonalnya AC dan DB. Diagonal 1 panjangnya 2 satuan, diagonal 2 panjangnya 4 satuan.",
@@ -68,7 +67,7 @@ export const ADEGAN_LAYANG_LAYANG: AdeganStory = {
   judul: "Menemukan luas layang-layang",
   sumber: "Materi: luas layang-layang",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b5b-materi-3.ts:2"),
+  kutipan: ["Ayo Menemukan Luas Daerah Layang-Layang", "Manakah diagonal-diagonalnya", "Luas layang-layang tetap, walaupun diubah bentuknya", "Sisi 1 = diagonal 1 layang-layang", "Luas daerah layang-"],
   ketukan: [
     k(
       "Sekarang kita menemukan luas daerah layang-layang. Perhatikan layang-layang ABCD. Diagonal 1 panjangnya 5 satuan, diagonal 2 panjangnya 4 satuan.",
@@ -117,7 +116,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Hati-hati, tantangan, dan renungan",
   sumber: "Materi: pesan guru tentang luas tetap",
   latar: "#FFF1F2",
-  kutipan: kutipanLokal("k5b5b-materi-3.ts:3"),
+  kutipan: ["Miskonsepsi yang dapat terjadi pada Subbab B", "kesulitan melihat bahwa suatu bentuk daerah", "alat peraga manipulatif berupa tangram", "panjang unsur-unsur yang akan dikalikan/dihitung telah berubah menjadi", "setengahnya", "pola berpikir tingkat tinggi", "belum mampu melihat pola perkalian pada luas persegi atau persegi panjang"],
   ketukan: [
     k(
       "Hati-hati, ada kesalahan yang sering terjadi. Kamu mungkin sulit percaya bahwa luas tetap ketika bentuk daerahnya diubah menjadi bangun lain.",
@@ -176,7 +175,7 @@ export const ADEGAN_REFLEKSI_B: AdeganStory = {
   judul: "Renungan dan ringkasan rumus",
   sumber: "Materi: renungan dan ringkasan rumus",
   latar: "#EEF2FF",
-  kutipan: kutipanLokal("k5b5b-materi-3.ts:4"),
+  kutipan: ["Setelah mempelajari materi terkait luas daerah bangun datar", "Aku bisa menemukan cara menghitung luas daerah persegi panjang", "Aku bisa menemukan cara menghitung luas daerah segitiga", "Aku bisa menemukan cara menghitung luas daerah jajargenjang", "luas derah trapesium", "Aku bisa menemukan cara menghitung luas daerah belah ketupat", "Aku bisa menemukan cara menghitung luas daerah layang-layang"],
   ketukan: [
     k(
       "Renungan sebelum kita rangkum. Tanyakan pada dirimu sendiri, bisakah aku menemukan luas persegi panjang, persegi, dan segitiga?",

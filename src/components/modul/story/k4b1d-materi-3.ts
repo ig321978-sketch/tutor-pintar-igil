@@ -1,21 +1,20 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { BAYAR_SLAMET, HARGA_SLAMET, URAIAN_10000, URAIAN_7300, W, bulat, deretUang, emo, garis, judul, kartu, rb, teks } from "./k4b1d-gambar";
 import { bersih, idx, k, sorotkan, tambah } from "./k4b1d-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /** Uang ke-`i` (kotak dan nilainya) dari hasil deretUang, supaya uang muncul satu per satu mengikuti kata. */
 const uangKe = (objs: Obj[], id: string, dari: number, sampai: number): Obj[] => objs.filter((o) => Array.from({ length: sampai - dari }, (_, j) => dari + j).some((i) => o.id === `${id}-k${i}` || o.id === `${id}-t${i}`));
 /** Penjumlahan uraian uang tertulis sebagai "7.300 = 2.000 + 100 + ...". */
 const tulisUraian = (total: number, nilai: readonly number[]): string => `${rb(total)} = ${nilai.map(rb).join(" + ")}`;
 
-/* ------------------------------ 9. Ayo Berlatih nomor 2: uang Malosi (Buku Siswa hlm. 28; Panduan Guru hlm. 48) ------------------------------ */
-const SUARA_H1 = "Sekarang soal cerita: Malosi membantu Ibu menjual makanan ringan di warung. Uang Malosi: empat keping seratus rupiah, dua keping lima ratus rupiah, lima keping seribu rupiah, dan tujuh lembar dua ribu rupiah.";
-const SUARA_H2 = "Igil membeli makanan ringan seharga tujuh ribu tiga ratus rupiah, dan membayar dengan uang sepuluh ribu rupiah.";
-const SUARA_H3 = "Soal a: uraikan uang tujuh ribu tiga ratus rupiah dengan pecahan uang Malosi. Contoh pertama: tiga lembar dua ribu, satu keping seribu, dan tiga keping seratus.";
+/* ------------------------------ 9. Ayo Berlatih nomor 2: uang Helen (Buku Siswa hlm. 28; Panduan Guru hlm. 48) ------------------------------ */
+const SUARA_H1 = "Sekarang soal cerita: Helen membantu Ibu menjual makanan ringan di warung. Uang Helen: empat keping seratus rupiah, dua keping lima ratus rupiah, lima keping seribu rupiah, dan tujuh lembar dua ribu rupiah.";
+const SUARA_H2 = "Slamet membeli makanan ringan seharga tujuh ribu tiga ratus rupiah, dan membayar dengan uang sepuluh ribu rupiah.";
+const SUARA_H3 = "Soal a: uraikan uang tujuh ribu tiga ratus rupiah dengan pecahan uang Helen. Contoh pertama: tiga lembar dua ribu, satu keping seribu, dan tiga keping seratus.";
 const SUARA_H4 = "Contoh kedua: dua lembar dua ribu, tiga keping seribu, dan tiga keping seratus. Jumlahnya tetap tujuh ribu tiga ratus.";
-const SUARA_H5 = "Contoh ketiga memakai satu lembar dua ribu, lima keping seribu, dan tiga keping seratus. Lima keping seribu itu persis semua seribu milik Malosi.";
+const SUARA_H5 = "Contoh ketiga memakai satu lembar dua ribu, lima keping seribu, dan tiga keping seratus. Lima keping seribu itu persis semua seribu milik Helen.";
 const SUARA_H6 = "Soal b: uraikan uang sepuluh ribu rupiah. Contoh pertama: lima lembar dua ribu. Contoh kedua: tiga lembar dua ribu dan empat keping seribu.";
-const SUARA_H7 = "Contoh ketiga: empat lembar dua ribu, satu keping seribu, dan dua keping lima ratus. Jumlahnya sepuluh ribu rupiah, dan semuanya ada dalam uang Malosi.";
+const SUARA_H7 = "Contoh ketiga: empat lembar dua ribu, satu keping seribu, dan dua keping lima ratus. Jumlahnya sepuluh ribu rupiah, dan semuanya ada dalam uang Helen.";
 const SUARA_H8 = "Sekarang kita periksa. Sepuluh ribu rupiah ditulis dengan angka satu, titik, lalu tiga nol. Semua contoh sudah kita hitung ulang, dan hasilnya cocok.";
 
 const A1 = deretUang("a1", 50, URAIAN_7300[0]);
@@ -27,14 +26,27 @@ const B3 = deretUang("b3", 158, URAIAN_10000[2]);
 
 export const ADEGAN_BERLATIH_UANG: AdeganStory = {
   id: "berlatih-uang",
-  judul: "Latihan soal cerita: uang Malosi",
-  sumber: "Materi: latihan uang Malosi",
+  judul: "Latihan soal cerita: uang Helen",
+  sumber: "Materi: latihan uang Helen",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b1d-materi-3.ts:1"),
+  kutipan: [
+    "Helen membantu Ibu menjual makanan ringan di warung.",
+    "Slamet membeli makanan ringan seharga Rp",
+    "Slamet membayar dengan pecahan uang Rp",
+    "Uraikan uang Rp. 7.300 dengan pecahan uang yang di miliki Helen.",
+    "Uraikan uang Rp. 10.000 dengan pecahan uang yang di miliki Helen.",
+    "contoh jawaban:",
+    "7.300 = 2.000 + 2.000 + 2.000 + 1.000 + 100 + 100 + 100",
+    "7.300 = 2.000 + 2.000 + 1.000 + 1.000 + 1.000 + 100 + 100 + 100",
+    "= 2.000 + 1.000 + 1.000 + 1.000 + 1.000 + 1.000 + 100 + 100 + 100",
+    "1.0000 = 2.000 + 2.000 + 2.000 + 2.000 + 2.000",
+    "1.0000 = 2.000 + 2.000 + 2.000 + 1.000 + 1.000 + 1.000 + 1.000",
+    "1.0000 = 2.000 + 2.000 + 2.000 + 2.000 + 1.000 + 500 + 500",
+  ],
   ketukan: [
     k(
       SUARA_H1,
-      tambah(0, judul("Soal cerita: uang Malosi")),
+      tambah(0, judul("Soal cerita: uang Helen")),
       tambah(idx(SUARA_H1, "seratus"), ...kartu("h1", 14, 32, 272, 22, W.jingga, ["4 keping uang Rp100"], 9)),
       tambah(idx(SUARA_H1, "ratus"), ...kartu("h2", 14, 58, 272, 22, W.krem, ["2 keping uang Rp500"], 9)),
       tambah(idx(SUARA_H1, "seribu"), ...kartu("h3", 14, 84, 272, 22, W.hijauMuda, ["5 keping uang Rp1.000"], 9)),
@@ -42,8 +54,8 @@ export const ADEGAN_BERLATIH_UANG: AdeganStory = {
     ),
     k(
       SUARA_H2,
-      tambah(idx(SUARA_H2, "tujuh"), ...kartu("sl1", 14, 142, 272, 22, W.pink, ["Igil membeli seharga Rp7.300"], 9)),
-      tambah(idx(SUARA_H2, "sepuluh"), ...kartu("sl2", 14, 168, 272, 22, W.lavender, ["Igil membayar Rp10.000"], 9)),
+      tambah(idx(SUARA_H2, "tujuh"), ...kartu("sl1", 14, 142, 272, 22, W.pink, ["Slamet membeli seharga Rp7.300"], 9)),
+      tambah(idx(SUARA_H2, "sepuluh"), ...kartu("sl2", 14, 168, 272, 22, W.lavender, ["Slamet membayar Rp10.000"], 9)),
     ),
     k(
       SUARA_H3,
@@ -70,7 +82,7 @@ export const ADEGAN_BERLATIH_UANG: AdeganStory = {
       tambah(idx(SUARA_H5, "dua"), uangKe(A3, "a3", 0, 1)),
       tambah(idx(SUARA_H5, "seribu,"), uangKe(A3, "a3", 1, 6)),
       tambah(idx(SUARA_H5, "seratus."), uangKe(A3, "a3", 6, 9)),
-      tambah(idx(SUARA_H5, "persis"), teks("a3e", 150, 100, tulisUraian(HARGA_SLAMET, URAIAN_7300[2]), 6.4, W.biru), ...kartu("a3k", 40, 128, 220, 28, W.krem, ["5 keping seribu: semua milik Malosi"], 8.6)),
+      tambah(idx(SUARA_H5, "persis"), teks("a3e", 150, 100, tulisUraian(HARGA_SLAMET, URAIAN_7300[2]), 6.4, W.biru), ...kartu("a3k", 40, 128, 220, 28, W.krem, ["5 keping seribu: semua milik Helen"], 8.6)),
     ),
     k(
       SUARA_H6,
@@ -110,7 +122,19 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Hati-hati, belajar bersama, dan rangkuman",
   sumber: "Materi: pesan guru dan rangkuman",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1d-materi-3.ts:2"),
+  kutipan: [
+    "Miskonsepsi",
+    "peserta didik masih bingung antara Menyusun (komposisi) dan mengurai (dekomposisi)",
+    "Diferensiasi",
+    "Bagi peserta didik yang kecepatan belajarnya tinggi (advanced), minta mereka mengerjakan latihan tanpa bantuan.",
+    "Guru juga dapat memberikan soal-soal tambahan.",
+    "guru dapat mendampingi peserta didik yang mengalami kesulitan.",
+    "Metode pembelajaran yang disarankan untuk sub bab ini adalah Diskusi dan Tanya Jawab",
+    "yang mengutamakan pada produk hasil karya peserta didik bersama kelompoknya.",
+    "Pembentukan kelompok dapat berdasarkan pada karakteristik atau keberagaman peserta didik",
+    "ditentukan ketua kelompok adalah peserta didik dengan tingkat kemampuan tinggi dengan anggota kelompok tingkat kemampuan sedang atau kurang.",
+    "Apabila karakteristik peserta didik di sekolah/kelas tidak terdapat peserta didik dengan kemampuan tinggi, maka melalui metode diskusi dan tanya jawab semua anggota kelompok dapat bekerja sama untuk menyelesaikan tugas/proyek yang diberikan oleh guru.",
+  ],
   ketukan: [
     k(
       SUARA_M1,

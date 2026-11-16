@@ -3,7 +3,6 @@
 // pemisahan materi dan metode luar, kutipan buku dan Buku Panduan Guru (bila PDF ada), luas semua bangun dan potongan dihitung mandiri
 // (rumus tali sepatu dari titik gambar), kunci Eksplorasi 5.2A-5.2G, hitungan tiap metode luar, emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b5b.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -518,7 +517,7 @@ const BUKU = {
       n += 1;
       cek(buku.includes(bersihTeks(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 50, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(n >= 50, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -539,7 +538,7 @@ const BUKU = {
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     cek(!/Math\.random/.test(s), `${f}: tanpa Math.random`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b5b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b5b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b5b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b5b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

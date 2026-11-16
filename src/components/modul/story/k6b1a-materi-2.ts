@@ -8,15 +8,15 @@ const KECIL = "#EA580C";
 /** Lima ember kecil atau besar berderet. */
 const deretEmber = (id: string, x: number, y: number, jarak: number, warna: string, s: number) => Array.from({ length: 5 }, (_, i) => ember(`${id}${i}`, x + i * jarak, y, warna, s)).flat();
 
-/* ------------------------------ 4. Permasalahan kebun Wei: ember besar dan ember kecil ------------------------------ */
+/* ------------------------------ 4. Permasalahan kebun Agam: ember besar dan ember kecil ------------------------------ */
 export const ADEGAN_EKSPLORASI11A: AdeganStory = {
   id: "eksplorasi-11a",
-  judul: "Ember besar dan ember kecil di kebun Wei",
+  judul: "Ember besar dan ember kecil di kebun Agam",
   sumber: "Materi: ember besar dan ember kecil",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Wei membantu Ayah menyiram kebun dengan dua ember yang ukurannya berbeda. Satu ember besar dapat menyiram kebun seluas dua meter persegi.",
+      "Agam membantu Ayah menyiram kebun dengan dua ember yang ukurannya berbeda. Satu ember besar dapat menyiram kebun seluas dua meter persegi.",
       tambah(0, judul("Permasalahan: dua ember")),
       tambah("dua", ember("eb", 48, 74, BESAR, 2.2), teks("ebt", 48, 118, "ember besar", 8.4, BESAR), ember("ek", 48, 150, KECIL, 1.4), teks("ekt", 48, 182, "ember kecil", 8.4, KECIL)),
       tambah("kebun", kotak("p1", 112, 44, 50, 50, "#BBF7D0", W.hijau, { rx: 3 }), kotak("p2", 166, 44, 50, 50, "#BBF7D0", W.hijau, { rx: 3 }), teks("p1t", 137, 74, "1 m²", 10, W.hijau), teks("p2t", 191, 74, "1 m²", 10, W.hijau)),
@@ -32,7 +32,7 @@ export const ADEGAN_EKSPLORASI11A: AdeganStory = {
       warnai("disiram", W.daun, ...idLajur("kb", 2, 4)),
     ),
     k(
-      "Pertanyaannya, berapa luas kebun yang dapat disirami kalau Wei memakai lima ember besar dan lima ember kecil?",
+      "Pertanyaannya, berapa luas kebun yang dapat disirami kalau Agam memakai lima ember besar dan lima ember kecil?",
       bersih(0),
       tambah(0, judul("Pertanyaan permasalahan")),
       tambah("lima", kartu("pb", 14, 36, 132, 80, "#CFFAFE", ["5 ember besar"], 9.6, { rx: 10 }), deretEmber("mb", 34, 56, 20, BESAR, 0.9)),
@@ -40,7 +40,7 @@ export const ADEGAN_EKSPLORASI11A: AdeganStory = {
       tambah("luas", teks("lq", 150, 152, "luas kebun masing-masing?", 11, W.merah), emo("lqe", 150, 186, "❓", 24)),
     ),
     k(
-      "Sekarang kita mulai dari ember besar. Kalau Wei memakai air sebanyak lima ember besar, berapa luas kebun yang dapat disiram?",
+      "Sekarang kita mulai dari ember besar. Kalau Agam memakai air sebanyak lima ember besar, berapa luas kebun yang dapat disiram?",
       bersih(0),
       tambah(0, judul("lima ember besar")),
       tambah("lima", deretEmber("eb", 50, 70, 50, BESAR, 1.6)),
@@ -94,7 +94,7 @@ export const ADEGAN_EKSPLORASI11B: AdeganStory = {
   latar: "#FFFBEB",
   ketukan: [
     k(
-      "Sekarang Wei memakai dua ember kecil. Berapa luas kebun yang disiram? Dari tabel, satu ember kecil menyiram tiga per lima.",
+      "Sekarang Agam memakai dua ember kecil. Berapa luas kebun yang disiram? Dari tabel, satu ember kecil menyiram tiga per lima.",
       tambah(0, judul("dua ember kecil")),
       tambah("Dari", tabel("tb", 40, 44, 110, [["Banyak ember kecil", "Luas kebun (m²)"], ["1", "3/5"], ["2", "?"]], 9, 26)),
       tambah("luas", teks("x1", 20, 102, "×2", 13, W.merah), teks("x2", 280, 102, "×2", 13, W.merah)),
@@ -185,13 +185,13 @@ const bagianMangga = (id: string, dari: number, sampai: number) => Array.from({ 
 
 export const ADEGAN_EKSPLORASI12: AdeganStory = {
   id: "eksplorasi-12",
-  judul: "Pohon mangga manalagi di kebun Wei",
+  judul: "Pohon mangga manalagi di kebun Agam",
   sumber: "Materi: pohon mangga manalagi",
   latar: "#FEF3C7",
   ketukan: [
     k(
-      "Sekarang pohon mangga. Wei punya lima belas pohon mangga. Dua pertiga di antaranya adalah mangga manalagi. Berapa banyak pohon manalagi?",
-      tambah(0, judul("pohon mangga Wei")),
+      "Sekarang pohon mangga. Agam punya lima belas pohon mangga. Dua pertiga di antaranya adalah mangga manalagi. Berapa banyak pohon manalagi?",
+      tambah(0, judul("pohon mangga Agam")),
       tambah("belas", kebunMangga("m", 80, 36, 5, 3, 28), teks("mt", 150, 140, "15 pohon mangga", 11, W.coklat)),
       tambah("Dua", ...frac("f", 150, 176, 2, 3, 14, W.merah), teks("ft", 218, 178, "yang manalagi", 9.4, W.merah)),
     ),

@@ -1,7 +1,6 @@
 import type { AdeganStory, Aksi, Obj } from "./logika-story";
 import { CARA_DUA, DELAPAN, TANGRAM, W, bulat, delapan, emo, judul, kartu, kotak, nomorTangram, poli, skala, tangram, teks, tengah } from "./k4b5b-gambar";
 import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k4b5b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* Tangram: tujuh keping Aktivitas 6. 1 satuan = 10 piksel; persegi akhir 80 x 80 di pojok (200, 66). */
 const S = 10;
@@ -35,7 +34,17 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
   judul: "Pembuka Sub-Bab B: tangram",
   sumber: "Buku Siswa hlm. 166; Panduan Guru hlm. 195",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k4b5b-materi-1.ts:1"),
+  kutipan: [
+    "Banyak benda-benda di sekitar kita yang berbentuk gabungan dari bangun datar.",
+    "Salah satu benda yang sering digunakan oleh kita yaitu permainan tangram.",
+    "Tangram merupakan permainan yang paling tua yang dikenal dalam matematika",
+    "sering disebut puzzle china",
+    "Tangram merupakan puzzle yang terdiri dari 5 segitiga, 1 persegi dan 1 jajargenjang.",
+    "Dari tangram ini dapat dibentuk menjadi berbagai macam bentuk yang lain seperti hewan, pohon, orang dan benda lainnya.",
+    "Agar kamu paham bagaimana cara mengkomposisi (menggabungkan) berbagai macam bentuk bangun datar menjadi bentuk yang baru",
+    "menyajikan, menganalisis dan menyusun beberapa bangun datar sehingga menjadi bangun utuh",
+    "dan menentukan komposisi yang mungkin dari beberapa bangun datar yang diberikan/diketahui",
+  ],
   ketukan: [
     k(
       "Sub-Bab B, komposisi dan dekomposisi bangun datar. Banyak benda di sekitar kita berbentuk gabungan bangun datar. Salah satunya tangram, permainan paling tua dalam matematika, sering disebut puzzle china.",
@@ -89,7 +98,20 @@ export const ADEGAN_APERSEPSI: AdeganStory = {
   judul: "Sarana dan apersepsi komposisi",
   sumber: "Panduan Guru hlm. 195–196",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b5b-materi-1.ts:2"),
+  kutipan: [
+    "1. Penggaris",
+    "2. Busur derajat",
+    "3. Jangka",
+    "4. Kertas lipat",
+    "5. Origami",
+    "Menyusun bangun datar berarti menyusun dua bangun datar atau lebih sehingga menjadi satu bangun yang menarik (bagi anak).",
+    "lingkaran, segilima, dan segienam",
+    "Menyusun bangun datar dapat diawali dari dua bangun, kemudian tiga bangun, empat bangun datar, dan seterusnya.",
+    "bangun datar apa saja yang telah dipelajari?",
+    "apa arti menyusun (komposisi) bangun datar?",
+    "berapa bangun datar yang dapat disusun?",
+    "bagaimana cara menyusun bangun datar?",
+  ],
   ketukan: [
     k(
       "Sarana yang dibutuhkan: penggaris, busur derajat, jangka, kertas lipat, dan origami.",
@@ -146,7 +168,20 @@ export const ADEGAN_AKTIVITAS_6: AdeganStory = {
   judul: "Kegiatan menyusun tangram",
   sumber: "Materi: menyusun tangram",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b5b-materi-1.ts:3"),
+  kutipan: [
+    "Aktivitas 6. Komposisi Bangun Datar",
+    "Kertas lipat warna-warni",
+    "Gunting dan lem",
+    "Bentuk kelompok yang terdiri dari 3-4 orang.",
+    "Potonglah kertas lipat warna-warni menggunakan gunting menjadi beberapa bagian dan dinomori seperti dibawah ini.",
+    "Rangkai bangun datar 1 dan 2.",
+    "Rangkai bangun datar 4 dan 5 dengan bangun datar yang terbentuk pada langkah pertama",
+    "Rangkai bangun datar 3 dan 6 dengan bangun datar yang terbentuk pada langkah ketiga",
+    "Lengkapi bangun datar yang terbentuk pada langkah ketiga dengan merangkai bangun datar 7",
+    "Nama bangun datar apa yang terbentuk?",
+    "Dapatkah kalian membangun bentuk yang lain dari bangun datar yang sudah ada?",
+    "Aktivitas ini bertujuan menumbuhkan berpikir kritis dan kreatif peserta didik.",
+  ],
   ketukan: [
     k(
       "Kegiatan pertama, menyusun bangun datar. Alat dan bahan yang kamu siapkan: kertas lipat warna-warni, gunting dan lem, serta alat tulis. Bentuk kelompok tiga sampai empat orang.",
@@ -218,7 +253,16 @@ export const ADEGAN_BERPIKIR: AdeganStory = {
   judul: "Ayo Berpikir Kreatif: delapan keping",
   sumber: "Materi: menyusun delapan keping",
   latar: "#FFF1F2",
-  kutipan: kutipanLokal("k4b5b-materi-1.ts:4"),
+  kutipan: [
+    "Ayo siapkan secarik kertas, pensil dan gunting.",
+    "Jiplak gambar masing-masing bangun datar tersebut dan potong-potong hasil jiplakan sesuai bangun",
+    "Langkah pertama: rangkai bangun datar 2 dan bangun datar 4",
+    "Langkah kedua: rangkai bangun datar 3 dan bangun datar 8 dengan bangun",
+    "Langkah ketiga: rangkai bangun datar 1 dengan bangun datar hasil dari",
+    "Langkah berikutnya silahkan kalian berpikir kreatif.",
+    "Rangkai bangun datar yang tersisa dengan bangun datar hasil dari langkah ketiga.",
+    "Contohnya menyerupai: rumah, pot bunga lengkap",
+  ],
   ketukan: [
     k(
       "Ayo berpikir kreatif. Siapkan kertas, pensil, dan gunting. Jiplak tiap bangun datar, lalu potong sesuai bangunnya. Ada delapan keping bernomor.",
@@ -266,7 +310,14 @@ export const ADEGAN_KOMPOSISI_GURU: AdeganStory = {
   judul: "Kesimpulan dan kesalahan yang sering terjadi",
   sumber: "Materi: kesimpulan komposisi",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b5b-materi-1.ts:5"),
+  kutipan: [
+    "Komposisi bangun datar adalah menyusun berbagai bangun datar menjadi suatu bangun datar tertentu dengan lebih dari satu cara yang mungkin.",
+    "mereka menyusunnya secara asal-asalan saja yang penting menjadi satu bangun.",
+    "Padahal satu bangun yang dimaksud menggambarkan bangun tertentu yang telah dipelajari sebelumnya",
+    "Padahal bangun penyusunnya boleh mengambil bangun yang belum dipelajari tapi telah dikenali peserta didik, misalnya segienam dan lingkaran.",
+    "Peserta didik diminta menyusun bangun dari beberapa bangun yang disediakan menjadi satu bangun tertentu yang benar-benar berbeda dengan bangun-bangun sebelumnya.",
+    "peserta didik diminta menentukan bangun-bangun apa saja yang diperlukan sehingga membentuk suatu bangun tersebut.",
+  ],
   ketukan: [
     k(
       "Kesimpulan kita: komposisi bangun datar adalah menyusun berbagai bangun datar menjadi suatu bangun datar tertentu dengan lebih dari satu cara yang mungkin.",

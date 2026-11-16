@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { APEL_BARIS, APEL_KUNCI, APEL_PILIHAN, KUNCI_LATIHAN, UBIN_PETA, W, barisTabel, cincin, deretAngka, deretSegitiga, emo, judul, kartu, kotak, panah, silang, teks, ubinBelah } from "./k4b3a-gambar";
 import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b3a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const HIJAU_GELAP = "#166534";
 
@@ -19,7 +18,19 @@ export const ADEGAN_BERLATIH_SATU_DUA: AdeganStory = {
   judul: "Latihan: semangka dan bola sepak",
   sumber: "Materi: Latihan semangka dan bola",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b3a-materi-3.ts:1"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Latihan 1",
+    "Tentukan banyak benda selanjutnya sesuai pola gambar yang diberikan !",
+    "Pada tahap ini guru mengarahkan peserta didik untuk menyelesaikan masalah",
+    "Pada soal nomor 1 sampai 4 peserta didik diminta untuk menentukan",
+    "Sebelum menentukan banyak benda pastikan peserta didik menemukan pola gambar",
+    "apakah membesar atau mengecil?",
+    "1. Banyak buah selanjutnya sesuai",
+    "pola gambar adalah 16",
+    "2. Banyak bola selanjutnya sesuai",
+    "pola gambar adalah 13",
+  ],
   ketukan: [
     k(
       SUARA_L1,
@@ -79,7 +90,14 @@ export const ADEGAN_BERLATIH_TIGA_EMPAT: AdeganStory = {
   judul: "Latihan: segitiga dan ubin",
   sumber: "Materi: Latihan segitiga dan ubin",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b3a-materi-3.ts:2"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Latihan 1",
+    "Tentukan banyak benda selanjutnya sesuai pola gambar yang diberikan !",
+    "Pada soal nomor 1 sampai 4 peserta didik diminta untuk menentukan",
+    "3. Banyak segitiga selanjutnya sesuai pola gambar adalah 1",
+    "4. Banyak ubin selanjutnya sesuai pola gambar adalah 4",
+  ],
   ketukan: [
     k(
       SUARA_T1,
@@ -131,7 +149,14 @@ export const ADEGAN_BERLATIH_LIMA: AdeganStory = {
   judul: "Latihan: pasangkan kotak kosong",
   sumber: "Materi: Latihan kotak kosong",
   latar: "#FEF2F2",
-  kutipan: kutipanLokal("k4b3a-materi-3.ts:3"),
+  kutipan: [
+    "Ayo Berlatih",
+    "5. Pilihlah salah satu gambar di kotak sebelah kanan untuk melengkapi kotak",
+    "yang kosong di sebelah kiri, sesuai pola gambar yang diberikan.",
+    "Pada soal nomor 5 peserta didik diarahkan untuk mencocokkan kolom",
+    "kanan dan kiri sesuai pola gambar yang ada, baik itu pola gambar membesar",
+    "5. Pilhan kotak yang sesuai untuk melengkapi kotak yang kosong adalah",
+  ],
   ketukan: [
     k(
       SUARA_M1,
@@ -171,7 +196,19 @@ export const ADEGAN_DIFERENSIASI: AdeganStory = {
   judul: "Diferensiasi, kesalahan umum, dan ringkasan",
   sumber: "Materi: Diferensiasi dan ringkasan",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b3a-materi-3.ts:4"),
+  kutipan: [
+    "Diferensiasi",
+    "Selama proses pembelajaran sering terjadi adanya keberagaman",
+    "Meningkatkan motivasi peserta didik.",
+    "Menciptakan suasana belajar yang nyaman dan kreatif.",
+    "Memilih model pembelajaran yang tepat.",
+    "(tutor sebaya)",
+    "Bagi peserta didik yang kecepatan belajarnya tinggi (advanced),",
+    "minta mereka untuk membuat pola gambar sendiri dan cara untuk",
+    "Pada soal nomor 1 sampai 4 peserta didik diminta untuk menentukan",
+    "5. Pilhan kotak yang sesuai untuk melengkapi kotak yang kosong adalah",
+    "Banyak ilmuwan yang memanfaatkan pola bilangan untuk memprediksi fenomena alam",
+  ],
   ketukan: [
     k(
       SUARA_D1,

@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, fmt, judul, kartu, kartuAngka, papan, tabelNilai, teks, xPaku } from "./k4b1c-gambar";
 import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1c-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka subbab C (Buku Siswa hlm. 16; Panduan Guru hlm. 40-41) ------------------------------ */
 const SUARA_P1 = "Kita masuk ke subbab C, Membandingkan dan Mengurutkan Bilangan Cacah sampai sepuluh ribu. Buku Siswa membukanya di halaman enam belas, Panduan Guru di halaman empat puluh.";
@@ -15,7 +14,18 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Subbab C: pengalaman belajar dan pemantik",
   sumber: "Buku Siswa hlm. 16; Panduan Guru hlm. 40–41",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b1c-materi-1.ts:1"),
+  kutipan: [
+    "C. Membandingkan dan Mengurutkan Bilangan",
+    "Pengalaman Belajar",
+    "diharapkan peserta didik mampu membandingkan dan mengurut bilangan sampai angka 10.000",
+    "Kebutuhan Sarana Prasarana dan Media",
+    "Kardus/wadah berbentuk kotak, kertas karton, gunting, spidol warna, papan spon (panjang 80 cm dan lebar 20 cm), paku.",
+    "Penguasaan nilai tempat bilangan memegang peranan penting pada pengajaran topik ini",
+    "diharapkan menggambarkan 2 tabel serupa",
+    "Pertanyaan Esensi/Pemantik",
+    "Bisakah kalian menyebutkan harga barang yang dibeli oleh 2 orang anak dalam cerita?",
+    "dapatkah kalian menentukan berapa rupiah yang harus dibayarkan?",
+  ],
   ketukan: [
     k(
       SUARA_P1,
@@ -63,8 +73,8 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
 };
 
 /* ------------------------------ 2. Ayo Mengamati: di pasar tradisional (Buku Siswa hlm. 16-17; Panduan Guru hlm. 41) ------------------------------ */
-const SUARA_M1 = "Ayo Mengamati. Wei dan Ibu akan membuat jus buah. Mereka pergi ke pasar tradisional untuk membeli buah manggis dan apel.";
-const SUARA_M2 = "Ibu Wei membeli setengah kilogram manggis dengan harga tujuh ribu lima ratus rupiah, dan seperempat kilogram apel dengan harga enam ribu tujuh ratus lima puluh rupiah.";
+const SUARA_M1 = "Ayo Mengamati. Slamet dan Ibu akan membuat jus buah. Mereka pergi ke pasar tradisional untuk membeli buah manggis dan apel.";
+const SUARA_M2 = "Ibu Slamet membeli setengah kilogram manggis dengan harga tujuh ribu lima ratus rupiah, dan seperempat kilogram apel dengan harga enam ribu tujuh ratus lima puluh rupiah.";
 const SUARA_M3 = "Pertanyaannya: harga bengkoang di kios A tujuh ribu lima ratus rupiah, dan di kios B delapan ribu tujuh ratus lima puluh rupiah. Kios manakah yang kalian putuskan untuk membeli, dan mengapa?";
 const SUARA_M4 = "Untuk memutuskan, kita tanyakan: apakah delapan ribu tujuh ratus lima puluh lebih dari tujuh ribu lima ratus? Jawabannya kita cari lewat aktivitas dan nilai tempat.";
 
@@ -73,12 +83,25 @@ export const ADEGAN_PASAR: AdeganStory = {
   judul: "Ayo Mengamati: harga buah di pasar",
   sumber: "Materi: harga buah di pasar",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b1c-materi-1.ts:2"),
+  kutipan: [
+    "Ayo Mengamati",
+    "Slamet dan Ibu akan membuat jus buah.",
+    "Mereka pergi ke pasar tradisional untuk membeli buah.",
+    "Ibu Slamet membeli buah manggis dan apel.",
+    "setengah kilogram manggis dengan harga Rp7.500,00",
+    "seperempat kilogram apel dengan harga Rp6.750,00",
+    "Jika di kios A harga bengkoang sebesar",
+    "Rp7.500,00 dan di kios B sebesar Rp8.750,00",
+    "kios manakah yang akan kalian putuskan sebagai tempat membeli?",
+    "Apakah 8.750 lebih dari 7.500?",
+    "Guru mengingatkan kembali materi topik B",
+    "menjelaskan hubungannya dengan cerita kontekstual",
+  ],
   ketukan: [
     k(
       SUARA_M1,
       tambah(0, judul("Ayo Mengamati: di pasar")),
-      tambah("Wei", emo("sl", 70, 78, "🧒", 34), teks("slt", 70, 100, "Wei", 8.6)),
+      tambah("Slamet", emo("sl", 70, 78, "🧒", 34), teks("slt", 70, 100, "Slamet", 8.6)),
       tambah("Ibu", emo("ib", 150, 78, "👩", 34), teks("ibt", 150, 100, "Ibu", 8.6)),
       tambah("pasar", ...kartu("ps", 30, 120, 240, 28, W.emas, ["pasar tradisional"], 9.6)),
       tambah("manggis", emo("mg", 100, 176, "🟣", 24), teks("mgt", 100, 192, "manggis", 8)),
@@ -87,7 +110,7 @@ export const ADEGAN_PASAR: AdeganStory = {
     k(
       SUARA_M2,
       bersih(0),
-      tambah(0, judul("Harga belanja Ibu Wei")),
+      tambah(0, judul("Harga belanja Ibu Slamet")),
       tambah("manggis", emo("mg", 40, 66, "🟣", 28), ...kartu("hm", 70, 46, 216, 40, W.pink, ["manggis ½ kg", "Rp" + fmt(7500)], 9.4)),
       tambah("apel", emo("ap", 40, 128, "🍎", 28), ...kartu("ha", 70, 108, 216, 40, W.hijauMuda, ["apel ¼ kg", "Rp" + fmt(6750)], 9.4)),
     ),
@@ -121,7 +144,22 @@ export const ADEGAN_KARTU: AdeganStory = {
   judul: "Aktivitas 3: alat, kelompok, dan kartu bilangan",
   sumber: "Materi: alat, kelompok, kartu bilangan",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1c-materi-1.ts:3"),
+  kutipan: [
+    "Ayo Beraktivitas",
+    "Aktivitas 3. Membandingkan Bilangan",
+    "Kertas Karton",
+    "Cutter / Gunting",
+    "Papan spon (panjang 80 cm, lebar 20 cm)",
+    "8 buah Paku",
+    "1. Buatlah kelompok kerja yang terdiri dari 3-5 orang.",
+    "Siapkan kertas karton berukuran 10 cm x 10 cm sebanyak 10 buah dan",
+    "diberi lubang di bagian atasnya.",
+    "Guntinglah menjadi kartu bilangan",
+    "Kalian telah mempunyai 2 paket kartu bilangan",
+    "Guru membentuk kelompok heterogen (berdasarkan karakteristik atau",
+    "keberagaman peserta didik)",
+    "berukuran 10cm x 10cm sebanyak 20 buah",
+  ],
   ketukan: [
     k(
       SUARA_K1,
@@ -184,7 +222,18 @@ export const ADEGAN_PAPAN: AdeganStory = {
   judul: "Aktivitas 3: papan spon dan membandingkan kartu",
   sumber: "Materi: papan spon, bandingkan kartu",
   latar: "#ECFDF5",
-  kutipan: kutipanLokal("k4b1c-materi-1.ts:4"),
+  kutipan: [
+    "Potong papan spon dengan panjang 80 cm x 20 cm, kemudian diberi tanda",
+    "pemisah menjadi dua bagian (kiri dan kanan).",
+    "Tancapkan empat paku di setiap kedua bagian tersebut.",
+    "Letakkan kartu bilangan pada paku yang sudah terpasang di papan spon",
+    "Sebutkan nilai tempat dari masing-masing kartu bilangan yang terpasang",
+    "Ambil kartu bilangan di tempat ribuan, bandingkan bilangan tersebut.",
+    "kedua kartu tersebut bernilai sama, maka silahkan ambil dua kartu di papan",
+    "Nyatakan perbandingan bilangan tersebut.",
+    "meletakkan masing-masing empat kartu",
+    "Pengambilan kartu bilangan dimulai dari tempat ribuan",
+  ],
   ketukan: [
     k(
       SUARA_L1,

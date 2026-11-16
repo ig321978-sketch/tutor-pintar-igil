@@ -2,21 +2,21 @@ import type { AdeganStory } from "./logika-story";
 import { BAHAN, W, bulat, emo, fortDepan, garis, jalur, kotak, panah, susunKubus, teks } from "./k6b3a-gambar";
 import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k6b3a-bantu";
 
-/* ------------------------------ 1. Igil, Kira, dan Fort Rotterdam ------------------------------ */
+/* ------------------------------ 1. Tigor, Tenri, dan Fort Rotterdam ------------------------------ */
 const batuBata = (id: string, x: number, y: number, baris: number, kolom: number) =>
   Array.from({ length: baris }, (_, r) => Array.from({ length: kolom }, (_, c) => kotak(`${id}${r}${c}`, x + c * 36 + (r % 2) * 18, y - r * 18, 34, 16, "#FCA5A5", W.merah, { rx: 1, tebal: 1 }))).flat();
 
 export const ADEGAN_PEMBUKA: AdeganStory = {
   id: "pembuka-fort",
-  judul: "Igil, Kira, dan Fort Rotterdam",
+  judul: "Tigor, Tenri, dan Fort Rotterdam",
   sumber: "Materi: pembuka bab Kubus dan Balok",
   latar: "#F0F9FF",
   ketukan: [
     k(
-      "Anak-anak, kita mulai bab tiga tentang kubus dan balok. Igil dan Kira sedang libur kenaikan kelas di Makassar, dan mereka mengunjungi sebuah bangunan tua bernama Fort Rotterdam.",
+      "Anak-anak, kita mulai bab tiga tentang kubus dan balok. Tigor dan Tenri sedang libur kenaikan kelas di Makassar, dan mereka mengunjungi sebuah bangunan tua bernama Fort Rotterdam.",
       tambah(0, teks("jud", 150, 22, "Bab 3 Kubus dan Balok", 12, W.ungu)),
-      tambah("Igil", emo("tigor", 40, 120, "🧒", 34), teks("tg", 40, 140, "Igil", 8)),
-      tambah("Kira", emo("tenri", 40, 175, "👧", 34), teks("tn", 40, 195, "Kira", 8)),
+      tambah("Tigor", emo("tigor", 40, 120, "🧒", 34), teks("tg", 40, 140, "Tigor", 8)),
+      tambah("Tenri", emo("tenri", 40, 175, "👧", 34), teks("tn", 40, 195, "Tenri", 8)),
       tambah("Fort", fortDepan("fort", 100, 76, 170, 70, 34), teks("fj", 185, 58, "Fort Rotterdam", 11, W.coklat)),
     ),
     k(

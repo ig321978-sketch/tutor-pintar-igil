@@ -4,7 +4,6 @@
 // hitungan mandiri semua angka buku (kunci Panduan Guru, tabel nilai tempat dan penanda mengambil, balok ratusan-puluhan-satuan, garis lompat, garis nomor 4, batang soal cerita, Compensation),
 // semua ekspresi bertanda sama dengan (termasuk tanda kurung) dihitung ulang, emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b1f.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -560,8 +559,8 @@ const lompatOk = (nama, objs, id, stops, selisih) => {
       }
     }
     stat.kutipan = n;
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 80, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
+    cek(n >= 80, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
     // Keganjilan buku yang dicatat di video.
     cek(/untuk penjumlahan berikut!/.test(bersih(ambil(bs, 49, 49))) && /untuk penjumlahan berikut!/.test(bersih(ambil(bg, 69, 69))), "petunjuk nomor 2 menyebut penjumlahan di Buku Siswa hlm. 37 dan Panduan Guru hlm. 57 (salah ketik, soalnya pengurangan)");
     cek(/4\s+2\s+2\s+1\s+4\s+5\s+2\s+7\s+6/.test(ambil(bg, 69, 69)), "kunci 2b Panduan Guru hlm. 57: baris pengurang tertulis 1 4 5 (seharusnya 1 4 6) dan hasil 2 7 6");
@@ -589,7 +588,7 @@ const lompatOk = (nama, objs, id, stops, selisih) => {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b1f-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1f sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b1f-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1f sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

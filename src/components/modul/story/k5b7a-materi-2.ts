@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, bulat, busur, garis, judul, kartu, sedotan, segitiga, tandaSiku, teks, titikSisi } from "./k5b7a-gambar";
 import { bersih, k, tambah, warnai } from "./k5b7a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 4. Syarat tiga ruas garis membentuk segitiga (hlm. 197) ------------------------------ */
 const NOMOR_X = [50, 100, 150, 200, 250];
@@ -15,7 +14,14 @@ export const ADEGAN_SYARAT: AdeganStory = {
   judul: "Syarat tiga ruas garis membentuk segitiga",
   sumber: "Materi: syarat membentuk segitiga",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b7a-materi-2.ts:1"),
+  kutipan: [
+    "Apakah semua kelompok sedotan dapat dibuat segitiga?",
+    "Kelompok nomor berapa saja yang dapat dibuat segitiga?",
+    "Kelompok nomor berapa saja yang tidak dapat dibuat segitiga?",
+    "Perhatikan jumlah panjang sisi-sisinya di kolom sebelah kanan.",
+    "Tiga sisi dapat dibuat segitiga jika jumlah panjang",
+    "dua sisi lebih dari panjang sisi ketiganya.",
+  ],
   ketukan: [
     k(
       "Setelah mencoba, jawab pertanyaan. Apakah semua sedotan dapat dibuat segitiga? Tidak. Yang dapat: kelompok satu, dua, dan lima. Kelompok tiga dan empat tidak dapat.",
@@ -78,7 +84,15 @@ export const ADEGAN_LANCIP: AdeganStory = {
   judul: "Jenis sudut dan segitiga lancip",
   sumber: "Materi: jenis sudut dan segitiga lancip",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b7a-materi-2.ts:2"),
+  kutipan: [
+    "Eksplorasi 7.1 B",
+    "Ayo Membandingkan Segitiga Berdasarkan Besar",
+    "Berdasarkan besarnya, kalian juga telah mengenal berbagai macam",
+    "Kita dapat memeriksa besar sudutnya dengan",
+    "menggunakan sudut siku-siku dari lipatan kertas",
+    "Segitiga yang ketiga sudutnya lancip, disebut segitiga lancip.",
+    "Apakah segitiga PQR sama jenisnya",
+  ],
   ketukan: [
     k(
       "Sekarang kita membandingkan segitiga menurut besar sudutnya. Ingat jenis sudut: lancip kurang dari sembilan puluh derajat, siku-siku tepat sembilan puluh, tumpul lebih dari sembilan puluh derajat.",
@@ -127,7 +141,18 @@ export const ADEGAN_SIKU_TUMPUL: AdeganStory = {
   judul: "Segitiga siku-siku dan segitiga tumpul",
   sumber: "Materi: segitiga siku-siku dan tumpul",
   latar: "#FFF1F2",
-  kutipan: kutipanLokal("k5b7a-materi-2.ts:3"),
+  kutipan: [
+    "Ada berapa sudut siku-sikunya?",
+    "Apakah segitiga KLM sama jenisnya",
+    "Segitiga yang salah satu sudutnya siku-siku,",
+    "disebut segitiga siku-siku.",
+    "Ada berapa sudut tumpulnya?",
+    "Segitiga yang salah satu sudutnya tumpul, disebut",
+    "segitiga tumpul.",
+    "Hanya salah satu saja, ya.",
+    "Apakah mungkin dalam satu",
+    "terdapat lebih dari satu sudut tumpul?",
+  ],
   ketukan: [
     k(
       "Segitiga DEF. Sudut D lancip, sudut E siku-siku, dan sudut F lancip. Ada satu sudut siku-siku, jadi namanya segitiga siku-siku.",
@@ -159,9 +184,9 @@ export const ADEGAN_SIKU_TUMPUL: AdeganStory = {
       tambah("Segitiga@2", teks("ru", 150, 190, "salah satu sudutnya tumpul: segitiga tumpul", 8.6, W.merah)),
     ),
     k(
-      "Malosi bertanya: mungkinkah satu segitiga siku-siku punya dua sudut siku-siku? Atau segitiga tumpul punya dua sudut tumpul? Kita jawab pada percobaan berikutnya.",
+      "Nisa bertanya: mungkinkah satu segitiga siku-siku punya dua sudut siku-siku? Atau segitiga tumpul punya dua sudut tumpul? Kita jawab pada percobaan berikutnya.",
       bersih(0),
-      tambah(0, judul("pertanyaan Malosi")),
+      tambah(0, judul("pertanyaan Nisa")),
       tambah("mungkinkah", ...kartu("pn1", 20, 40, 260, 44, W.krem, ["Mungkin 2 sudut siku-siku", "dalam 1 segitiga siku-siku?"], 9.4)),
       tambah("Atau", ...kartu("pn2", 20, 96, 260, 44, W.hijauMuda, ["Mungkin 2 sudut tumpul", "dalam 1 segitiga tumpul?"], 9.4)),
       tambah("Kita", teks("pn3", 150, 170, "dijawab pada percobaan berikutnya", 10, W.ungu)),

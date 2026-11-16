@@ -2,7 +2,6 @@ import type { AdeganStory, Obj } from "./logika-story";
 import { BANGUN_LATIHAN, W, bulat, emo, garis, geser, judul, kartu, kotak, panah, penandaSiku, poligon, putar, tabel, teks, titikPenggaris, type Titik } from "./k5b6a-gambar";
 import { bersih, k, redamkan, sorotkan, tambah, ubah } from "./k5b6a-bantu";
 import { KERTAS_LIPAT } from "./k5b6a-materi-2";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ Tata letak enam bangun Ayo Berlatih (Buku Siswa hlm. 169) ------------------------------ */
 export const PUSAT: Titik[] = [[55, 70], [150, 70], [245, 70], [55, 150], [150, 150], [245, 150]];
@@ -39,7 +38,15 @@ export const ADEGAN_LATIHAN_1: AdeganStory = {
   judul: "Latihan 1: bangun satu sampai tiga",
   sumber: "Materi: latihan sudut siku-siku",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b6a-materi-3.ts:1"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Perhatikan bangun datar berikut. Ayo, coba kalian temukan",
+    "banyaknya sudut siku-siku pada setiap bangun berikut.",
+    "Kunci Jawaban",
+    "Memiliki 4 sudut siku-siku.",
+    "Memiliki 2 sudut siku-siku.",
+    "Tidak memiliki sudut siku-siku.",
+  ],
   ketukan: [
     k(
       "Sekarang Latihan satu. Perhatikan bangun datar berikut, lalu temukan banyaknya sudut siku-siku pada setiap bangun. Ada enam bangun, kita kerjakan satu per satu.",
@@ -78,7 +85,7 @@ export const ADEGAN_LATIHAN_2: AdeganStory = {
   judul: "Latihan 1: bangun empat sampai enam",
   sumber: "Materi: latihan sudut siku-siku, lanjutan",
   latar: "#ECFDF5",
-  kutipan: kutipanLokal("k5b6a-materi-3.ts:2"),
+  kutipan: ["Kunci Jawaban", "Memiliki 4 sudut siku-siku.", "Memiliki 2 sudut siku-siku.", "Tidak memiliki sudut siku-siku.", "No. Gambar Banyak Sudut Siku-Siku"],
   ketukan: [
     k(
       "Lanjut ke bangun empat sampai enam. Hasil tiga bangun pertama kita simpan dulu: empat, dua, dan nol. Tetap teliti, ya.",
@@ -127,7 +134,16 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   judul: "Hati-hati dan Tantangan",
   sumber: "Materi: pesan guru subbab ini",
   latar: "#FFF1F2",
-  kutipan: kutipanLokal("k5b6a-materi-3.ts:3"),
+  kutipan: [
+    "Miskonsepsi",
+    "ada peserta didik yang tidak tepat menempatkan kertas",
+    "tidak berimpit dengan kaki sudut benda",
+    "siku-siku selalu digambar dengan posisi seperti gambar di samping",
+    "Semua gambar di atas adalah sudut siku-siku.",
+    "Diferensiasi",
+    "mengerjakan latihan tanpa bantuan. Pada saat yang sama, guru dapat mendampingi siswa yang mengalami kesulitan.",
+    "Berikan kesempatan kepada setiap kelompok untuk menyampaikan hasil",
+  ],
   ketukan: [
     k(
       "Hati-hati dengan kesalahan yang mungkin muncul. Saat memakai kertas lipat, ada yang menempatkan kertasnya dengan tidak tepat.",
@@ -188,7 +204,16 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   judul: "Renungan dan rangkuman Subbab A",
   sumber: "Materi: renungan dan rangkuman",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b6a-materi-3.ts:4"),
+  kutipan: [
+    "Setelah mempelajari materi terkait sudut, isilah tabel berikut sesuai",
+    "Berilah tanda centang",
+    "Aku dapat menemukan sudut siku-siku di",
+    "lingkungan sekitarku.",
+    "Akhiri pembelajaran dengan meminta siswa melakukan",
+    "nomor 1 terkait kemampuan peserta didik dalam menemukan sudut",
+    "ini membantu mengetahui jika masih",
+    "kesulitan membedakan sudut siku-siku dan bukan sudut siku-siku.",
+  ],
   ketukan: [
     k(
       "Di akhir subbab, mari kita merenung. Kita menjawab pernyataan tentang diri sendiri dengan kolom ya dan tidak, yang diisi dengan tanda centang.",

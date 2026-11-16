@@ -1,13 +1,12 @@
 import type { AdeganStory } from "./logika-story";
 import { BENTUK, W, antara, bangun, centangBaris, huruf, idDari, ide, kartu, panah, panelCiri, poli, rumusBangun, sama, sejajar, siku, tanda, teks, titikSudut } from "./k5b7b-gambar";
 import { bersih, hapus, k, tambah } from "./k5b7b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const KIRI = { cx: 62, cy: 102, s: 22 };
 const PX = 118;
 const PW = 172;
 
-/* ------------------------------ 5. Jajargenjang: ide Malosi, Igil, Kira, dan Halim (hlm. 214–215) ------------------------------ */
+/* ------------------------------ 5. Jajargenjang: ide Nisa, Komang, Asep, dan Yohana (hlm. 214–215) ------------------------------ */
 const jMini = () => [bangun("jm", "jajar", 56, 104, 22, W.hijauMuda)];
 
 export const ADEGAN_JAJAR_SIMPUL: AdeganStory = {
@@ -15,7 +14,7 @@ export const ADEGAN_JAJAR_SIMPUL: AdeganStory = {
   judul: "Jajargenjang: segi empat, trapesium, atau trapesium sama kaki?",
   sumber: "Materi: jajargenjang dan trapesium sama kaki",
   latar: "#FDF2F8",
-  kutipan: kutipanLokal("k5b7b-materi-2.ts:1"),
+  kutipan: ["Apakah jajargenjang merupakan segi empat", "Bolehkah jajargenjang disebut trapesium", "Ide Nisa", "Jajargenjang termasuk segi empat karena memiliki", "Ide Komang", "Jajargenjang termasuk trapesium karena", "Ide Asep", "Jajargenjang tidak memiliki sumbu simetri", "Ide Yohana", "Sudut-sudut pada alas jajargenjang tidak sama"],
   ketukan: [
     k(
       "Apakah jajargenjang merupakan segi empat? Bolehkah disebut trapesium? Bolehkah disebut trapesium sama kaki?",
@@ -26,20 +25,20 @@ export const ADEGAN_JAJAR_SIMPUL: AdeganStory = {
       tambah(8, kartu("q3", 108, 128, 184, 34, W.putih, ["trapesium sama kaki?"], 9)),
     ),
     k(
-      "Ide Malosi: jajargenjang termasuk segi empat karena memiliki empat sisi, dan sisi yang berhadapan sejajar. Ide Igil: jajargenjang termasuk trapesium, karena setidaknya sepasang sisinya sejajar dan kaki-kakinya juga sejajar.",
+      "Ide Nisa: jajargenjang termasuk segi empat karena memiliki empat sisi, dan sisi yang berhadapan sejajar. Ide Komang: jajargenjang termasuk trapesium, karena setidaknya sepasang sisinya sejajar dan kaki-kakinya juga sejajar.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Ide Malosi dan Igil", 13, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Ide Nisa dan Komang", 13, W.ungu)),
       tambah(0, jMini()),
-      tambah(0, ide("nn", 104, 32, 188, 58, "Malosi", ["jajargenjang termasuk segi empat:", "4 sisi, sisi berhadapan sejajar"], W.krem, 8)),
-      tambah(15, ide("nk", 104, 100, 188, 58, "Igil", ["jajargenjang termasuk trapesium:", "kaki-kakinya juga sejajar"], W.muda, 8)),
+      tambah(0, ide("nn", 104, 32, 188, 58, "Nisa", ["jajargenjang termasuk segi empat:", "4 sisi, sisi berhadapan sejajar"], W.krem, 8)),
+      tambah(15, ide("nk", 104, 100, 188, 58, "Komang", ["jajargenjang termasuk trapesium:", "kaki-kakinya juga sejajar"], W.muda, 8)),
     ),
     k(
-      "Ide Kira: trapesium sama kaki punya satu sumbu simetri, jajargenjang tidak. Ide Halim: sudut pada alasnya tidak sama besar.",
+      "Ide Asep: trapesium sama kaki punya satu sumbu simetri, jajargenjang tidak. Ide Yohana: sudut pada alasnya tidak sama besar.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Ide Kira dan Halim", 13, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Ide Asep dan Yohana", 13, W.ungu)),
       tambah(0, jMini()),
-      tambah(0, ide("na", 104, 32, 188, 58, "Kira", ["trapesium sama kaki punya 1 sumbu", "simetri, jajargenjang tidak punya"], W.krem, 8)),
-      tambah(11, ide("ny", 104, 100, 188, 58, "Halim", ["sudut pada alas trapesium sama kaki", "sama besar, pada jajargenjang tidak"], W.muda, 8)),
+      tambah(0, ide("na", 104, 32, 188, 58, "Asep", ["trapesium sama kaki punya 1 sumbu", "simetri, jajargenjang tidak punya"], W.krem, 8)),
+      tambah(11, ide("ny", 104, 100, 188, 58, "Yohana", ["sudut pada alas trapesium sama kaki", "sama besar, pada jajargenjang tidak"], W.muda, 8)),
     ),
     k(
       "Jadi kesimpulannya, jajargenjang adalah segi empat, juga trapesium, tetapi bukan trapesium sama kaki.",
@@ -65,7 +64,7 @@ export const ADEGAN_PERSEGI_PANJANG: AdeganStory = {
   judul: "Persegi panjang dibandingkan dengan jajargenjang",
   sumber: "Materi: persegi panjang dan jajargenjang",
   latar: "#ECFDF5",
-  kutipan: kutipanLokal("k5b7b-materi-2.ts:2"),
+  kutipan: ["Ayo Mengingat Kembali Persegi Panjang", "Sisi-sisi yang berhadapan sejajar", "Semua sudutnya siku-siku", "Mempunyai 2 sumbu simetri", "Ayo Membandingkan", "Apakah persegi panjang merupakan segi empat", "Apakah semua ciri-ciri jajargenjang dimiliki oleh", "persegi panjang dapat digolongkan sebagai", "persegi panjang memiliki sudut siku-siku, sedangkan"],
   ketukan: [
     k(
       "Sekarang kita mengingat kembali persegi panjang. Cirinya: sisi berhadapan sejajar dan sama panjang, semua sudutnya siku-siku, punya dua sumbu simetri, dan diagonalnya saling membagi dua sama panjang.",
@@ -126,12 +125,12 @@ export const ADEGAN_SEDOTAN: AdeganStory = {
   judul: "Percobaan sedotan: jajargenjang menjadi persegi panjang",
   sumber: "Materi: percobaan sedotan",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b7b-materi-2.ts:3"),
+  kutipan: ["Ayo Berlatih", "Bolehkah jajargenjang memiliki sudut siku-siku", "Guru kalian akan menyediakan", "2 pasang sedotan yang sama", "Ubah-ubahlah besar sudut pada", "Setelah menjadi sudut siku-siku", "Persegi panjang adalah", "jajargenjang yang salah satu sudutnya siku-siku"],
   ketukan: [
     k(
-      "Mari mencoba. Coba pikirkan pendapat Kira: bolehkah jajargenjang memiliki sudut siku-siku? Boleh.",
+      "Mari mencoba. Coba pikirkan pendapat Asep: bolehkah jajargenjang memiliki sudut siku-siku? Boleh.",
       tambah(0, teks("jud", 150, 22, "Percobaan sedotan", 13, W.ungu)),
-      tambah(4, ide("as", 14, 34, 272, 48, "Kira", ["Bolehkah jajargenjang memiliki sudut siku-siku?"], W.krem, 8.6)),
+      tambah(4, ide("as", 14, 34, 272, 48, "Asep", ["Bolehkah jajargenjang memiliki sudut siku-siku?"], W.krem, 8.6)),
       tambah(11, kartu("bl", 70, 96, 160, 32, W.hijauMuda, ["Boleh, mari dibuktikan"], 9.4)),
     ),
     k(
@@ -183,7 +182,7 @@ export const ADEGAN_BELAH_KETUPAT: AdeganStory = {
   judul: "Belah ketupat dibandingkan dengan jajargenjang",
   sumber: "Materi: belah ketupat dan jajargenjang",
   latar: "#FFF1F2",
-  kutipan: kutipanLokal("k5b7b-materi-2.ts:4"),
+  kutipan: ["Ayo Mengingat Kembali Belah Ketupat", "Sisi-sisi yang berhadapan sama panjang", "Sudut yang berhadapan sama", "saling membagi dua", "Apakah belah ketupat merupakan", "Apakah AC sejajar DB", "Apakah AD = BC", "Ayo Berpikir Kritis", "apakah sembarang jajargenjang boleh", "Belah ketupat adalah jajargenjang dengan sisi-sisi"],
   ketukan: [
     k(
       "Sekarang kita mengingat kembali belah ketupat. Cirinya: sisi berhadapan sejajar dan sama panjang, sudut berhadapan sama besar, dua sumbu simetri yaitu diagonalnya, dan diagonal saling membagi dua sama panjang serta tegak lurus.",
@@ -215,10 +214,10 @@ export const ADEGAN_BELAH_KETUPAT: AdeganStory = {
       tambah(25, kartu("bn", 20, 164, 260, 26, W.hijauMuda, ["belah ketupat termasuk jajargenjang"], 9)),
     ),
     k(
-      "Mari berpikir kritis. Kira bertanya, kalau belah ketupat boleh disebut jajargenjang, apakah sembarang jajargenjang boleh disebut belah ketupat?",
+      "Mari berpikir kritis. Asep bertanya, kalau belah ketupat boleh disebut jajargenjang, apakah sembarang jajargenjang boleh disebut belah ketupat?",
       bersih(0),
       tambah(0, teks("jud", 150, 20, "Mari Berpikir Kritis", 13, W.ungu)),
-      tambah(3, ide("as", 14, 30, 272, 50, "Kira", ["Kalau belah ketupat boleh disebut jajargenjang,", "apakah sembarang jajargenjang boleh disebut belah ketupat?"], W.krem, 7.4)),
+      tambah(3, ide("as", 14, 30, 272, 50, "Asep", ["Kalau belah ketupat boleh disebut jajargenjang,", "apakah sembarang jajargenjang boleh disebut belah ketupat?"], W.krem, 7.4)),
       tambah(6, bangun("ab1", "belahKetupat", 56, 128, 14, W.hijauMuda), teks("ab1t", 56, 158, "belah ketupat", 8.2)),
       tambah(13, bangun("ab2", "jajar", 244, 128, 14, W.hijauMuda), teks("ab2t", 244, 158, "jajargenjang", 8.2)),
       tambah(8, panah("ar1", 96, 118, 110, 0, W.hijau, 2.2), teks("ar1t", 150, 111, "boleh ✓", 8.4, W.hijau)),

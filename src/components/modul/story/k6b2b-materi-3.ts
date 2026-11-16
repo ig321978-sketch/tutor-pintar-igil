@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, kartu, kepalaTabel, pengali, sel, teks } from "./k6b2b-gambar";
 import { bersih, k, sorotkan, tambah } from "./k6b2b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 6. Latihan 1 sampai 4 ------------------------------ */
 const X = 50;
@@ -21,7 +20,12 @@ export const ADEGAN_LATIHAN22: AdeganStory = {
   judul: "Latihan: wedang jahe, kopi, dan pena",
   sumber: "Materi: latihan wedang jahe, kopi, pena",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k6b2b-materi-3.ts:1"),
+  kutipan: [
+    "Berapa buah jahe merah yang diperlukan jika kalian akan membuat wedang jahe sebanyak 8 liter air",
+    "Berapa buah lemon yang dibutuhkan untuk membuat wedang jahe, jika hanya memiliki 6 batang serai",
+    "Dona ingin membuat kopi di teko yang memuat 1 liter air dengan menggunakan 4 sdt kopi dan 10 sdt gula",
+    "Mutia membeli 1 kotak pena seharga Rp36.000,00 yang berisi 15 pena",
+  ],
   ketukan: [
     k(
       "Latihan 1. Resep wedang jahe untuk 4 liter air memakai 12 jahe merah. Untuk 8 liter air, kita perlu berapa jahe?",
@@ -130,7 +134,7 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   judul: "Renungan: senilai dan rasio satuan",
   sumber: "Materi: renungan penutup",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k6b2b-materi-3.ts:2"),
+  kutipan: ["Tuliskan rasio yang memiliki kesamaan dengan 12 : 28", "Jelaskan pengertian dari rasio satuan dengan bahasa kalian sendiri"],
   ketukan: [
     k(
       "Saatnya merenung. Pertama, tuliskan rasio yang senilai dengan 12 banding 28, minimal 4.",

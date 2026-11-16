@@ -93,14 +93,14 @@ export const ADEGAN_LUAR_KELOMPOK: AdeganStory = {
 };
 
 /* ------------------------------ 3. Equal Groups: penerapan ------------------------------ */
-const SUARA_H1 = "Terapan: soal ayam Halim. Ada dua belas kelompok ayam, tiap kelompok menghabiskan tiga mangkok makanan.";
+const SUARA_H1 = "Terapan: soal ayam Asep. Ada dua belas kelompok ayam, tiap kelompok menghabiskan tiga mangkok makanan.";
 const SUARA_H2 = "Tambahkan tiga sebanyak dua belas kali, hasilnya tiga puluh enam mangkok.";
-const SUARA_H3 = "Sekarang soal kucing Upe: dua puluh satu kelompok, tiap kelompok empat kaki. Empat ditambah berulang dua puluh satu kali sama dengan delapan puluh empat.";
+const SUARA_H3 = "Sekarang soal kucing Azizah: dua puluh satu kelompok, tiap kelompok empat kaki. Empat ditambah berulang dua puluh satu kali sama dengan delapan puluh empat.";
 const SUARA_H4 = "Dalam perkalian, tulis dua puluh satu kali empat. Hasilnya delapan puluh empat kaki.";
 
 export const ADEGAN_LUAR_KELOMPOK_TERAPAN: AdeganStory = {
   id: "luar-kelompok-terapan",
-  judul: "Equal Groups: ayam Halim dan kucing Upe",
+  judul: "Equal Groups: ayam Asep dan kucing Azizah",
   sumber: "Metode luar: Equal Groups, penerapan",
   latar: "#F0FDF4",
   ketukan: [
@@ -118,7 +118,7 @@ export const ADEGAN_LUAR_KELOMPOK_TERAPAN: AdeganStory = {
       SUARA_H3,
       bersih(0),
       tambah(0, kepala(0)),
-      tambah("Upe:", ...kelompok("ec", 8, 58, 21, 4, 7, 38, 22, 2, W.hitam, W.krem)),
+      tambah("Azizah:", ...kelompok("ec", 8, 58, 21, 4, 7, 38, 22, 2, W.hitam, W.krem)),
       tambah("tiap", teks("ect", 150, 152, "21 kelompok, tiap kelompok 4 kaki", 9.6, W.biru)),
       tambah("delapan", teks("ecs", 150, 174, "4 + 4 + ... + 4  (21 suku) = 84", 10, W.merah)),
     ),

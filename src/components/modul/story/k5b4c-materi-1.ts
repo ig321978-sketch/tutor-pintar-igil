@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, bangunC, emo, judul, kartu, kotak, labelSisi, panah, penggaris, poligon, sisiGaris, teks, ukuran } from "./k5b4c-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k5b4c-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /** Kartu mini bangun: kotak putih, bangun di tengah, nama di bawah (satu atau dua baris). */
 const kartuBangun = (id: string, x: number, y: number, w: number, h: number, kode: string, s: number, warna: string, nama: string[]): Obj[] => {
@@ -19,7 +18,17 @@ export const ADEGAN_PEMBUKA_C: AdeganStory = {
   judul: "Sub-Bab C: pengalaman belajar keliling segi empat",
   sumber: "Panduan Guru hlm. 116 dan 138; Buku Siswa hlm. 118",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b4c-materi-1.ts:1"),
+  kutipan: [
+    "Pada Subbab C, peserta didik diberi pengalaman belajar berupa penemuan",
+    "terbimbing terhadap cara-cara menemukan keliling segi empat.",
+    "memeriksanya dengan cara mengukur menggunakan penggaris",
+    "akan memengaruhi cara peserta didik menghitung keliling bangun tersebut.",
+    "Peserta didik mula-mula diminta menemukan rumus keliling persegi",
+    "panjang. Selanjutnya, pola yang sama diterapkan untuk menemukan keliling",
+    "jajargenjang dan layang-layang.",
+    "untuk persegi, belah ketupat, dan segi empat sembarang.",
+    "Alat tulis: pulpen, pensil, penggaris, spidol.",
+  ],
   ketukan: [
     k(
       "Selamat datang di subbab C, Keliling Segi Empat. Di subbab sebelumnya kita sudah menemukan keliling segitiga. Sekarang kita memakai cara berpikir yang sama untuk berbagai segi empat.",
@@ -77,7 +86,18 @@ export const ADEGAN_APERSEPSI: AdeganStory = {
   judul: "Apersepsi dan pemanasan: mengukur sisi dengan penggaris",
   sumber: "Panduan Guru hlm. 139",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b4c-materi-1.ts:2"),
+  kutipan: [
+    "Apersepsi dilakukan",
+    "dengan mengajak peserta didik melakukan tanya jawab mengenai jenis segi",
+    "“Apa nama segi empat yang",
+    "tersaji di buku siswa?”, “Adakah sisi-sisi yang sama panjang?”, dan “Mana",
+    "saja sisi-sisi yang sama panjang?”.",
+    "juga diminta langsung mengukur panjang sisi-sisinya dengan menggunakan",
+    "penggaris.",
+    "Kegiatan memeriksa dan mengukur panjang sisi-sisi segi empat pada",
+    "dapat menjadi suatu aktivitas pemanasan.",
+    "Guru menyiapkan penggaris cadangan untuk mengantisipasi jika ada",
+  ],
   ketukan: [
     k(
       "Sebelum mulai, guru mengajak kalian tanya jawab tentang jenis segi empat di buku. Apa nama segi empat ini? Adakah sisi yang sama panjang? Mana saja sisi yang sama panjang?",
@@ -120,7 +140,24 @@ export const ADEGAN_EKS_43A_UKUR: AdeganStory = {
   judul: "Keliling persegi panjang: mengukur dan menjumlahkan",
   sumber: "Materi: keliling persegi panjang",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k5b4c-materi-1.ts:3"),
+  kutipan: [
+    "Eksplorasi 4.3A",
+    "Ayo Menemukan",
+    "Apa nama bangun datar di atas? Dengan menggunakan penggaris,",
+    "cobalah mengukur sisi-sisi yang belum diketahui panjangnya.",
+    "Apakah ada sisi-sisi yang sama panjang?",
+    "Sisi-sisi yang berhadapan",
+    "ternyata sama panjang.",
+    "Lalu, bagaimana cara",
+    "mencari kelilingnya?",
+    "Keliling = 5 + 3 + … + …",
+    "Dengan demikian, diperoleh kelilingnya … cm.",
+    "Keliling = 5 + 3 + 5 + 3",
+    "= 5 + 5 + 3 + 3",
+    "= ( 2 × 5 ) + ( 2 × 3 )",
+    "= 10 + 6",
+    "sehingga diperoleh kelilingnya 16 cm.",
+  ],
   ketukan: [
     k(
       "Kita mulai dengan persegi panjang. Perhatikan bangun datar ini. Apa namanya? Ukur sisi yang belum diketahui dengan penggaris. Apakah ada sisi yang sama panjang?",
@@ -170,7 +207,19 @@ export const ADEGAN_EKS_43A_RUMUS: AdeganStory = {
   judul: "Rumus keliling persegi panjang",
   sumber: "Materi: rumus keliling persegi panjang",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b4c-materi-1.ts:4"),
+  kutipan: [
+    "Keliling = panjang + lebar + … + …",
+    "Keliling = panjang + lebar + panjang + lebar",
+    "= ( 2 × panjang) + ( 2 × lebar)",
+    "Pada persegi panjang, keliling dihitung dengan cara",
+    "menghitung dua kali jumlahan panjang dan lebarnya.",
+    "Keliling = (2 × panjang) + (2 × lebar)",
+    "bahwa banyaknya sisi-sisi yang sama panjang akan menjadi pengali dalam",
+    "rumus keliling.",
+    "panjang, karena ada 2 pasang sisi yang sama",
+    "panjang, maka panjang sisi-sisi tersebut dikali 2 saat menghitung kelilingnya.",
+    "melalui kegiatan tanya jawab.",
+  ],
   ketukan: [
     k(
       "Sekarang perhatikan persegi panjang tanpa angka. Sisinya kita sebut panjang dan lebar. Keliling sama dengan panjang ditambah lebar ditambah panjang ditambah lebar.",

@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, arsir, arsirPita, bulat, emo, kartu, kisi, kotak, panah, pecahan, pita, teks } from "./k6b1c-gambar";
 import { bersih, k, tambah, ubah } from "./k6b1c-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Mengingat kembali (adegan pembuka, tidak diputar) ------------------------------ */
 /** Satu kartu gambar sehari-hari: kotak kecil dengan emoji dan keterangan. */
@@ -12,7 +11,16 @@ export const ADEGAN_MENGINGAT: AdeganStory = {
   judul: "Mengingat Kembali bilangan desimal",
   sumber: "Materi: mengingat kembali",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k6b1c-materi-1.ts:1"),
+  kutipan: [
+    "Bagaimana cara kalian membagi pecahan dengan bilangan asli",
+    "Bagaimana cara kalian membagi bilangan asli dengan pecahan",
+    "C. Bilangan Desimal",
+    "Mengubah Pecahan Menjadi Desimal",
+    "Di jenjang sebelumnya, kalian sudah mempelajari tentang bilangan desimal",
+    "gambar manakah yang menunjukkan bilangan desimal",
+    "Gambar manakah yang menunjukkan nilai 0,5",
+    "Gambarlah/arsirlah beberapa cara menunjukkan bilangan desimal 0,25",
+  ],
   ketukan: [
     k(
       "Sub-Bab C membahas bilangan desimal. Dari Ayo Berefleksi sebelumnya: bagaimana cara membagi pecahan dengan bilangan asli, dan bilangan asli dengan pecahan?",
@@ -72,11 +80,18 @@ export const ADEGAN_TIMBANGAN: AdeganStory = {
   judul: "Permasalahan timbangan buah",
   sumber: "Materi: timbangan buah",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k6b1c-materi-1.ts:2"),
+  kutipan: [
+    "Agam diminta oleh ibunya untuk membeli beberapa jenis buah di toko buah langganannya",
+    "Agam melihat tulisan di timbangan buah adalah 0,50 kg dan 0,20 kg",
+    "Bantulah Agam membuktikan",
+    "kg jeruk sama dengan 0,50 kg jeruk",
+    "Masih adakah bentuk lainnya",
+    "Apakah kedua bentuk desimal yang kalian temukan sama",
+  ],
   ketukan: [
     k(
-      "Perhatikan masalah ini. Igil diminta ibunya membeli buah di toko langganan: jeruk setengah kilogram dan salak seperlima kilogram.",
-      tambah(0, emo("ag", 40, 120, "👦", 34), teks("agt", 40, 140, "Igil", 8)),
+      "Perhatikan masalah ini. Agam diminta ibunya membeli buah di toko langganan: jeruk setengah kilogram dan salak seperlima kilogram.",
+      tambah(0, emo("ag", 40, 120, "👦", 34), teks("agt", 40, 140, "Agam", 8)),
       tambah("jeruk", emo("je", 130, 80, "🍊", 30), pecahan("jp", 130, 124, "1", "2", 15), teks("jk", 154, 126, "kg", 9)),
       tambah("salak", bulat("sl", 230, 78, 14, "#92400E", "#78350F"), teks("slt", 230, 81, "salak", 6.4, W.putih), pecahan("sp", 230, 124, "1", "5", 15), teks("sk", 254, 126, "kg", 9)),
     ),
@@ -130,7 +145,18 @@ export const ADEGAN_SEPERLIMA: AdeganStory = {
   judul: "Seperlima kilogram salak dan pembahasan",
   sumber: "Materi: seperlima dan pembahasan",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k6b1c-materi-1.ts:3"),
+  kutipan: [
+    "Bantulah Agam membuktikan",
+    "kg salak sama dengan 0,20 kg salak",
+    "Bilangan pecahan dan bilangan desimal saling berkaitan",
+    "Persegi di atas bernilai 1",
+    "setiap bagian bernilai",
+    "Dalam bentuk desimal bentuk ini dituliskan dengan 0,1",
+    "Bagaimana kalian menjelaskan jika 0,10 sama dengan 0,1",
+    "Pecahan dengan penyebut 2 dan 5 atau kelipatannya dapat diubah menjadi pecahan berpenyebut 10 dan 100",
+    "Bagaimana mengubah pecahan yang penyebutnya tidak dapat diubah menjadi penyebut 10 dan 100 menjadi bentuk desimal",
+    "Bagaimana kalian mengubah bentuk desimal menjadi bentuk pecahan",
+  ],
   ketukan: [
     k(
       "Sekarang giliran salak: buktikan seperlima kilogram salak sama dengan nol koma dua nol kilogram. Arsir seperlima pada persegi yang dibagi menjadi sepuluh lajur.",

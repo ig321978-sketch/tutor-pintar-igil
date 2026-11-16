@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, bulat, emo, garis, ide, jalur, kartu, kertasSiku, kotak, sudut, tanda, tandaSiku, teks } from "./k5b6b-gambar";
 import { bersih, k, tambah, ubah } from "./k5b6b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka Sub-Bab B (hlm. 170; Panduan Guru hlm. 257-258) ------------------------------ */
 export const ADEGAN_PEMBUKA_B: AdeganStory = {
@@ -9,7 +8,7 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
   judul: "Pembuka Sub-Bab B: pengertian sudut",
   sumber: "Buku Siswa hlm. 170; Buku Panduan Guru hlm. 257–258",
   latar: "#EEF2FF",
-  kutipan: kutipanLokal("k5b6b-materi-1.ts:1"),
+  kutipan: ["B. Pengertian Sudut", "Apa sebenarnya sudut itu", "Apakah setiap pojok benda dapat", "memahami bagian-bagian sudut", "menyebutkan jenis-jenis sudut", "mengelompokkan sudut berdasarkan ciri-cirinya", "kertas yang dilipat membentuk sudut siku-siku", "Sudut seperti apa yang disebut sudut"],
   ketukan: [
     k(
       "Selamat datang di Sub-Bab B, pengertian sudut. Di sub-bab sebelumnya kita sudah belajar sudut siku-siku dari pojok bingkai foto dan lipatan kertas.",
@@ -65,7 +64,7 @@ export const ADEGAN_KOTAK_PENSIL: AdeganStory = {
   judul: "Apakah pojok kotak pensil termasuk sudut?",
   sumber: "Materi: pojok kotak pensil",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b6b-materi-1.ts:2"),
+  kutipan: ["Gambar 6.6 Kotak Pensil", "Pojok kotak pensil ini termasuk", "sudut bukan, ya?", "Apakah pojok kotak pensil seperti pada Gambar 6.6", "ayo kalian simak penjelasan tentang sudut", "Apakah pojokan tempat pensil seperti gambar"],
   ketukan: [
     k(
       "Perhatikan kotak pensil ini. Seorang anak berkata, eeem, pojok kotak pensil ini termasuk sudut bukan, ya?",
@@ -98,7 +97,7 @@ export const ADEGAN_PENGERTIAN: AdeganStory = {
   judul: "Pengertian sudut, titik sudut, dan kaki sudut",
   sumber: "Materi: pengertian sudut",
   latar: "#EEF2FF",
-  kutipan: kutipanLokal("k5b6b-materi-1.ts:3"),
+  kutipan: ["Sudut adalah daerah yang dibentuk oleh dua buah garis", "yang bertemu di satu titik", "Titik tempat pertemuan dua garis", "tersebut dinamakan titik sudut", "Kaki Sudut", "Apakah kalian dapat menemukan kaki", "Bagian mana titik sudutnya", "Apa kriteria sudut"],
   ketukan: [
     k(
       "Inilah pengertian sudut. Sudut adalah daerah yang dibentuk oleh dua buah garis yang bertemu di satu titik.",
@@ -135,33 +134,33 @@ export const ADEGAN_PENGERTIAN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 4. Pendapat Upe (hlm. 171; Panduan Guru hlm. 258, 260) ------------------------------ */
+/* ------------------------------ 4. Pendapat Yohana (hlm. 171; Panduan Guru hlm. 258, 260) ------------------------------ */
 export const ADEGAN_YOHANA: AdeganStory = {
   id: "yohana",
-  judul: "Pendapat Upe: pojok kotak pensil bukan sudut",
-  sumber: "Materi: pendapat Upe",
+  judul: "Pendapat Yohana: pojok kotak pensil bukan sudut",
+  sumber: "Materi: pendapat Yohana",
   latar: "#FDF2F8",
-  kutipan: kutipanLokal("k5b6b-materi-1.ts:4"),
+  kutipan: ["Jadi, apakah", "pojok kotak pensil pada Gambar", "termasuk sudut?", "Menurutku bukan", "tersebut tidak memiliki titik sudut", "Apakah kalian setuju dengan pendapat Yohana", "kriteria sudut"],
   ketukan: [
     k(
       "Kembali ke kotak pensil. Seorang anak bertanya, jadi apakah pojok kotak pensil pada gambar tadi termasuk sudut?",
-      tambah(0, teks("jud", 150, 24, "Pendapat Upe", 13, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Pendapat Yohana", 13, W.ungu)),
       tambah("anak", ide("an", 20, 40, 190, 46, "Seorang anak", ["Jadi, apakah pojok kotak pensil", "pada gambar tadi termasuk sudut?"], W.krem, 8)),
     ),
     k(
-      "Upe menjawab, menurutku bukan, karena pojok kotak pensil tersebut tidak memiliki titik sudut.",
-      tambah("Upe", ide("yo", 90, 98, 190, 46, "Upe", ["Menurutku bukan. Karena pojok", "kotak pensil tidak memiliki titik sudut."], W.hijauMuda, 8)),
+      "Yohana menjawab, menurutku bukan, karena pojok kotak pensil tersebut tidak memiliki titik sudut.",
+      tambah("Yohana", ide("yo", 90, 98, 190, 46, "Yohana", ["Menurutku bukan. Karena pojok", "kotak pensil tidak memiliki titik sudut."], W.hijauMuda, 8)),
     ),
     k(
-      "Apakah kalian setuju dengan pendapat Upe? Mari kita periksa, sudut harus punya dua kaki yang bertemu di satu titik sudut.",
+      "Apakah kalian setuju dengan pendapat Yohana? Mari kita periksa, sudut harus punya dua kaki yang bertemu di satu titik sudut.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Setujukah dengan Upe?", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Setujukah dengan Yohana?", 12, W.ungu)),
       tambah("periksa,", kartu("pk", 30, 44, 240, 30, W.krem, ["syarat sudut: dua kaki bertemu di satu titik"], 8.2)),
       tambah("kaki", teks("pk1", 90, 112, "dua kaki?", 10, W.biru), tanda("pk1c", 160, 114, true, 14)),
       tambah("titik", teks("pk2", 90, 142, "satu titik sudut?", 10, W.biru), tanda("pk2c", 190, 144, false, 14)),
     ),
     k(
-      "Pojok kotak pensil membulat, jadi tidak ada satu titik tempat dua kaki bertemu. Kita setuju dengan Upe, pojok itu bukan sudut.",
+      "Pojok kotak pensil membulat, jadi tidak ada satu titik tempat dua kaki bertemu. Kita setuju dengan Yohana, pojok itu bukan sudut.",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Kesimpulan", 13, W.ungu)),
       tambah("membulat,", jalur("kb", 60, 150, "M0 0 L0 -70 Q0 -90 20 -90 L80 -90", "none", W.biru, { tebal: 3.5 })),

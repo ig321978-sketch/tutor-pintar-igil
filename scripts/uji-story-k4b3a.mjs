@@ -3,7 +3,6 @@
 // teks bertumpuk, pemisahan materi dan metode luar, tidak membocorkan Pola Bilangan (Sub-Bab B) di luar pembuka dan peta konsep, kutipan buku terhadap teks PDF (pdftotext, atau PyMuPDF bila tidak ada),
 // banyak benda dan bentuk pada gambar (kumpulan, cincin, silang, deret segitiga, ubin belah ketupat) dihitung ulang dari gambar, hitungan mandiri selisih dan kunci Panduan Guru, emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k4b3a.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -569,8 +568,8 @@ const tetap = (a) => new Set(beda(a)).size === 1;
       }
     }
     stat.kutipan = n;
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 120, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || M.adegan.every((a) => (a.kutipan ?? []).length >= 5), "tiap adegan materi memuat paling sedikit 5 kutipan buku");
+    cek(n >= 120, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(M.adegan.every((a) => (a.kutipan ?? []).length >= 5), "tiap adegan materi memuat paling sedikit 5 kutipan buku");
     cek(/b\. pola bilangan/.test(bersih(bagian[2])) && /b\. pola bilangan/.test(guruPenuh), "subbab B mulai di Buku Siswa PDF 107 dan Panduan Guru PDF 141");
     cek(!/b\. pola bilangan/.test(siswa), "Buku Siswa PDF 97-106 tidak memuat judul subbab B");
     // Angka kunci dan istilah yang dipakai video.
@@ -604,7 +603,7 @@ const tetap = (a) => new Set(beda(a)).size === 1;
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k4b3a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b3a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b3a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b3a sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

@@ -87,9 +87,9 @@ export const titikBilangan = (id: string, x: number, y: number, label: string, w
 
 /** Harga tiga sepatu pada Eksplorasi 9.2A (angka enam karakter untuk tabel nilai tempat). */
 export const SEPATU = [
-  { id: "km", nama: "Igil", angka: "342231", harga: "342.231" },
-  { id: "lk", nama: "Kira", angka: "432543", harga: "432.543" },
-  { id: "ns", nama: "Halim", angka: "232231", harga: "232.231" },
+  { id: "km", nama: "Komang", angka: "342231", harga: "342.231" },
+  { id: "lk", nama: "Lukas", angka: "432543", harga: "432.543" },
+  { id: "ns", nama: "Nisa", angka: "232231", harga: "232.231" },
 ] as const;
 
 /** Kartu sepatu: emoji, nama, dan harga, pojok kiri-atas (x, y), lebar 86 tinggi 80. */

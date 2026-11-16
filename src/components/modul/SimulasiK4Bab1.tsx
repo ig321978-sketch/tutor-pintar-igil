@@ -29,7 +29,7 @@ import { MISI_K4B1, NAMA_SIM_K4B1, hurufK4B1, misiAwalK4Bab1, type HurufK4B1 } f
 /* ======================================================================== */
 /* Simulasi Kelas 4 Bab 1 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
 /* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k4bab1.ts. */
-/*   A Membaca dan menulis    : Lab Kemasan + Mesin Baca + Gim Kebun Kira  */
+/*   A Membaca dan menulis    : Lab Kemasan + Mesin Baca + Helen di Minimarket  */
 /*   B Nilai tempat           : Lab Nilai Tempat + Mesin Nilai + Struk Azizah  */
 /*   C Membandingkan, urut    : Lab Banding + Mesin Banding + Harga di Pasar   */
 /*   D Komposisi, dekomposisi : Lab Susun-Urai + Mesin Susun + Uang Helen      */
@@ -46,7 +46,7 @@ const SKENARIO: Record<HurufK4B1, DefSkenario> = { A: SKENARIO_K4B1A, B: SKENARI
 const MESIN: Record<HurufK4B1, DefMesin> = { A: MESIN_BACA, B: MESIN_NILAI, C: MESIN_BANDING, D: MESIN_SUSUN, E: MESIN_JUMLAH, F: MESIN_KURANG, G: MESIN_KALI, H: MESIN_BAGI, I: MESIN_FAKTOR };
 
 const COBA_MESIN: Record<HurufK4B1, string[]> = {
-  A: ["Ketuk stasiun Baca sebelum Rakit. Apa kata mesin?", "Bandingkan 4.152, 5.007, dan 1.308. Mana yang punya nol?", "Mengapa 1.308 dibaca seribu?"],
+  A: ["Ketuk stasiun Baca sebelum Rakit. Apa kata mesin?", "Bandingkan 3.286, 7.003, dan 1.025. Mana yang punya nol?", "Mengapa 1.025 dibaca seribu?"],
   B: ["Ketuk stasiun Tabel sebelum Tempat. Apa kata mesin?", "Bandingkan angka 6 pada 8.463 dan 4.675.", "Mengapa tabel diisi digit, bukan nilai penuh?"],
   C: ["Ketuk stasiun Tanda sebelum Ribuan. Apa kata mesin?", "Pada tiap pasangan, tempat mana yang menentukan?", "Mengapa membandingkan dimulai dari ribuan?"],
   D: ["Ketuk stasiun Periksa sebelum Susun. Apa kata mesin?", "Bandingkan 6.348, 6.035, dan 7.020. Mana yang punya nol?", "Bagaimana memeriksa sebuah uraian benar?"],

@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { PJ, PX, W, apem, barisApem, emo, garis, kartu, kunciApem, tabelPerBaris, teks } from "./k5b8b-gambar";
 import { bersih, hapus, k, sorotkan, tambah } from "./k5b8b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /** Catatan hitungan di kanan baris piktogram. */
 const catatan = (id: string, x: number, y: number, isi: string) => teks(id, x, y, isi, 7.4, W.merah, { anchor: "start" });
@@ -11,20 +10,20 @@ const TABEL_APEM = tabelPerBaris("ta", 20, 38, ["Hari", "Banyaknya Penjualan"], 
 
 export const ADEGAN_APEM_TABEL: AdeganStory = {
   id: "apem-tabel",
-  judul: "Cerita Igil dan tabel penjualan kue apem",
-  sumber: "Materi: cerita Igil dan tabel apem",
+  judul: "Cerita Anggi dan tabel penjualan kue apem",
+  sumber: "Materi: cerita Anggi dan tabel apem",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b8b-materi-2.ts:1"),
+  kutipan: ["Anggi sangat tekun mengejar cita-citanya menjadi pengusaha", "Tabel 8.6 Hasil Penjualan Kue Apem", "kue apem. Tabel berikut adalah hasil penjualan kue apem"],
   ketukan: [
     k(
-      "Igil sangat tekun mengejar cita-citanya menjadi pengusaha makanan. Setiap pulang sekolah ia membantu ibunya berjualan kue tradisional di pasar sore.",
-      tambah(0, teks("jud", 150, 24, "Igil dan kue apem", 13, W.ungu)),
-      tambah("Igil", emo("ag", 150, 92, "👧", 42)),
+      "Anggi sangat tekun mengejar cita-citanya menjadi pengusaha makanan. Setiap pulang sekolah ia membantu ibunya berjualan kue tradisional di pasar sore.",
+      tambah(0, teks("jud", 150, 24, "Anggi dan kue apem", 13, W.ungu)),
+      tambah("Anggi", emo("ag", 150, 92, "👧", 42)),
       tambah("pengusaha", kartu("cc", 50, 112, 200, 34, W.krem, ["cita-cita: pengusaha makanan"], 9.4)),
       tambah("pasar", teks("ps", 150, 172, "berjualan di pasar sore", 10.4, W.hijau)),
     ),
     k(
-      "Ibunya menjual kue apem, dan Igil mencatat penjualannya selama seminggu dalam sebuah tabel. Hari Senin terjual 40 kue apem, hari Selasa terjual 35 kue apem.",
+      "Ibunya menjual kue apem, dan Anggi mencatat penjualannya selama seminggu dalam sebuah tabel. Hari Senin terjual 40 kue apem, hari Selasa terjual 35 kue apem.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Hasil Penjualan Kue Apem", 11, W.ungu)),
       tambah("tabel.", TABEL_APEM[0]),
@@ -39,7 +38,7 @@ export const ADEGAN_APEM_TABEL: AdeganStory = {
       tambah("Sabtu", TABEL_APEM[6]),
     ),
     k(
-      "Igil bertanya, bagaimana cara menampilkan data penjualan apem ini agar lebih menarik? Ternyata kita bisa memakai gambar-gambar.",
+      "Anggi bertanya, bagaimana cara menampilkan data penjualan apem ini agar lebih menarik? Ternyata kita bisa memakai gambar-gambar.",
       tambah("bertanya,", emo("bk", 238, 60, "🤔", 32)),
       tambah("menarik?", kartu("bq", 166, 82, 122, 46, W.putih, ["bagaimana menampilkan", "data agar lebih menarik?"], 7.8)),
     ),
@@ -59,7 +58,7 @@ export const ADEGAN_APEM_PIKTOGRAM: AdeganStory = {
   judul: "Membaca piktogram penjualan kue apem",
   sumber: "Materi: piktogram penjualan kue apem",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b8b-materi-2.ts:2"),
+  kutipan: ["Banyaknya Penjualan Kue Apem", "mewakili 4 kue apem", "Gambar 8.3 Piktogram Hasil"],
   ketukan: [
     k(
       "Inilah piktogram penjualan kue apem. Di sebelah kiri tertulis nama hari, dan di sebelah kanan tertulis gambar kue apem.",
@@ -101,7 +100,7 @@ export const ADEGAN_APEM_SALAH: AdeganStory = {
   judul: "Latihan 1 dan 2: temukan kesalahan, lalu lengkapi piktogram",
   sumber: "Materi: temukan kesalahan dan lengkapi",
   latar: "#FEFCE8",
-  kutipan: kutipanLokal("k5b8b-materi-2.ts:3"),
+  kutipan: ["Ayo Berdiskusi", "Temukan kesalahan pembuatan gambarnya", "perbaikilah sehingga gambar menjadi benar", "Piktogram tersebut belum selesai, salin dan lengkapi piktogram"],
   ketukan: [
     k(
       "Latihan 1: temukan kesalahan pada gambar piktogram, lalu perbaiki. Caranya, banyak gambar dikali 4 harus sama dengan data tabel.",
@@ -155,7 +154,7 @@ export const ADEGAN_APEM_HITUNG: AdeganStory = {
   judul: "Latihan 3 sampai 5: total, keuntungan, dan arti piktogram",
   sumber: "Materi: total, untung, dan arti piktogram",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b8b-materi-2.ts:4"),
+  kutipan: ["Berapa banyaknya kue apem yang berhasil dijual selama", "Rp1.200,00", "Rp1.500,00", "Piktogram adalah penyajian data dengan"],
   ketukan: [
     k(
       "Latihan 3: berapa kue apem yang terjual selama seminggu? Jumlahkan data tabel: 40 ditambah 35 sama dengan 75, lalu ditambah 30 sama dengan 105.",
@@ -179,7 +178,7 @@ export const ADEGAN_APEM_HITUNG: AdeganStory = {
       tambah("untung", teks("u3", 150, 116, "1.500 - 1.200 = 300", 14, W.hijau)),
     ),
     k(
-      "Keuntungan seluruhnya adalah 300 rupiah dikali 198 kue, yaitu 59.400 rupiah. Jadi ibunya Igil untung 59.400 rupiah.",
+      "Keuntungan seluruhnya adalah 300 rupiah dikali 198 kue, yaitu 59.400 rupiah. Jadi ibunya Anggi untung 59.400 rupiah.",
       tambah("yaitu", teks("u4", 150, 156, "300 x 198 = 59.400", 14, W.merah)),
       sorotkan("Jadi", "u4"),
     ),

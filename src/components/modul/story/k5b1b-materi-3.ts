@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, emo, judul, kartu, kotak, teks } from "./k5b1b-gambar";
 import { bersih, hapus, k, tambah, ubah, warnai } from "./k5b1b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Pelaksanaan menurut panduan guru (Panduan Guru hlm. 27) ------------------------------ */
 export const ADEGAN_PELAKSANAAN: AdeganStory = {
@@ -9,7 +8,15 @@ export const ADEGAN_PELAKSANAAN: AdeganStory = {
   judul: "Pelaksanaan menurut Panduan Guru",
   sumber: "Panduan Guru hlm. 27",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b1b-materi-3.ts:1"),
+  kutipan: [
+    "Tujuan dari aktivitas ini adalah untuk membandingkan dan mengurutkan",
+    "bilangan sampai 100.000 melalui kegiatan permainan.",
+    "terkait penerapan termurah dan termahal",
+    "Berikan kesempatan kepada peserta didik untuk mempresentasikan hasil",
+    "kerjanya.",
+    "Ajak peserta didik untuk menyimpulkan hal-hal penting yang harus",
+    "diperhatikan saat menyusun bilangan yang terdiri atas lima angka.",
+  ],
   ketukan: [
     k(
       "Pelaksanaan menurut panduan guru. Tujuannya membandingkan dan mengurutkan bilangan sampai seratus ribu melalui permainan. Di akhir, peserta didik membuat kesimpulan tentang termurah dan termahal.",
@@ -63,7 +70,23 @@ export const ADEGAN_BERLATIH: AdeganStory = {
   judul: "Latihan 1 dan 2",
   sumber: "Materi: membandingkan bilangan",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b1b-materi-3.ts:2"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Kerjakan soal berikut di buku latihan kalian.",
+    "Bandingkan bilangan berikut dan temukan bilangan yang",
+    "nilainya lebih kecil.",
+    "56.475 dan 43.217",
+    "78.897 dan 87.897",
+    "97.768 dan 89.876",
+    "pada kotak berikut ini!",
+    "76.675",
+    "67.765",
+    "86.567",
+    "86.576",
+    "45.867",
+    "55.876",
+    "13.234",
+  ],
   ketukan: [
     k(
       "Latihan satu: temukan bilangan yang nilainya lebih kecil. Bagian a, lima puluh enam ribu empat ratus tujuh puluh lima dan empat puluh tiga ribu dua ratus tujuh belas.",
@@ -133,7 +156,7 @@ export const ADEGAN_BARISAN: AdeganStory = {
   judul: "Latihan 3: barisan bilangan",
   sumber: "Materi: barisan bilangan",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k5b1b-materi-3.ts:3"),
+  kutipan: ["Isilah dengan bilangan-bilangan yang sesuai.", "15.500 16.500", "19.500", "50.000 70.000", "85.350", "85.450", "85.550"],
   ketukan: [
     k(
       "Latihan tiga: isilah kotak dengan bilangan-bilangan yang sesuai. Ada tiga barisan, bagian a, b, dan c.",
@@ -171,7 +194,17 @@ export const ADEGAN_PENUTUP: AdeganStory = {
   judul: "Hati-hati, tantangan, dan renungan",
   sumber: "Materi: kesalahan umum dan renungan",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b1b-materi-3.ts:4"),
+  kutipan: [
+    "Kesalahan peserta didik yang mungkin terjadi adalah menganggap nilai",
+    "terbesar dari angka belakang merupakan bilangan yang lebih besar.",
+    "Bagi peserta didik dengan kecepatan belajar tinggi (advanced), minta mereka",
+    "mengerjakan latihan tanpa bantuan atau mengeksplorasi berbagai angka yang",
+    "sering mereka temui.",
+    "guru dapat mendampingi peserta didik yang mengalami kesulitan.",
+    "Guru dapat menutup pembelajaran dengan meminta peserta didik melakukan",
+    "Aku dapat membandingkan dua bilangan cacah sampai 100.000.",
+    "Aku dapat mengurutkan beberapa bilangan cacah sampai 100.000.",
+  ],
   ketukan: [
     k(
       "Hati-hati, kesalahan yang sering terjadi: menganggap nilai terbesar dari angka belakang adalah bilangan yang lebih besar. Contohnya lima puluh enam ribu empat ratus tujuh puluh lima dan empat puluh tiga ribu dua ratus tujuh belas.",

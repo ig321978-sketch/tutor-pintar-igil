@@ -15,8 +15,8 @@ export const ADEGAN_POSTER: AdeganStory = {
   sumber: "Materi: poster lomba dan pernyataan",
   latar: "#FFE9EC",
   ketukan: [
-    k("Kira terhentak melihat poster lomba menyanyi di sekolahnya. Menyanyi adalah hobinya sejak kecil.", tambah(0, emo("dhien", 52, 172, "👧", 28)), tambah("poster", kotak("poster", 96, 20, 108, 110, W.krem, W.biru, { rx: 6 }), teks("po1", 150, 44, "LOMBA", 14, W.merah), teks("po2", 150, 60, "MENYANYI", 11)), tambah("menyanyi@2", emo("mik", 150, 100, "🎤", 32)), tambah("hobinya", emo("hati", 100, 150, "❤️", 18))),
-    k("Ayah Kira dulu seorang pemusik. Tetapi Kira masih ragu dengan kemampuan dan peluang menangnya.", tambah("pemusik", emo("ayah", 252, 172, "👨", 28), emo("gitar", 228, 172, "🎸", 20)), tambah("ragu", emo("ragu", 52, 138, "😟", 20)), tambah("peluang", balon("rg", 150, 142, ["peluang menang", "kecil?"], 82))),
+    k("Dhien terhentak melihat poster lomba menyanyi di sekolahnya. Menyanyi adalah hobinya sejak kecil.", tambah(0, emo("dhien", 52, 172, "👧", 28)), tambah("poster", kotak("poster", 96, 20, 108, 110, W.krem, W.biru, { rx: 6 }), teks("po1", 150, 44, "LOMBA", 14, W.merah), teks("po2", 150, 60, "MENYANYI", 11)), tambah("menyanyi@2", emo("mik", 150, 100, "🎤", 32)), tambah("hobinya", emo("hati", 100, 150, "❤️", 18))),
+    k("Ayah Dhien dulu seorang pemusik. Tetapi Dhien masih ragu dengan kemampuan dan peluang menangnya.", tambah("pemusik", emo("ayah", 252, 172, "👨", 28), emo("gitar", 228, 172, "🎸", 20)), tambah("ragu", emo("ragu", 52, 138, "😟", 20)), tambah("peluang", balon("rg", 150, 142, ["peluang menang", "kecil?"], 82))),
     k(
       "Ia berpikir, jumlah siswa di sekolahnya tidak sedikit, dan ia terbilang cukup pemalu.",
       bersih(0),
@@ -26,7 +26,7 @@ export const ADEGAN_POSTER: AdeganStory = {
       tambah("pemalu", emo("malu", 150, 176, "🙈", 32)),
     ),
     k(
-      "Sekarang pertanyaannya: apakah benar Kira tidak punya peluang menang sama sekali? Atau ia sebenarnya mungkin menang?",
+      "Sekarang pertanyaannya: apakah benar Dhien tidak punya peluang menang sama sekali? Atau ia sebenarnya mungkin menang?",
       bersih(0),
       tambah(0, teks("jud", 150, 26, "Menurut kalian bagaimana?", 11, W.ungu)),
       tambah("tidak", kotak("ka", 14, 50, 132, 80, "#FECACA", W.merah, { rx: 10 }), teks("ka-t", 80, 82, "tidak punya peluang", 8.5), teks("ka-u", 80, 96, "sama sekali", 8.5)),
@@ -34,7 +34,7 @@ export const ADEGAN_POSTER: AdeganStory = {
       tambah("menang@2", emo("tanya", 150, 168, "❓", 28)),
     ),
     k(
-      "Jawabannya: tidak benar. Kira sebenarnya punya peluang untuk menang, hanya saja ia merasa tidak punya peluang sama sekali.",
+      "Jawabannya: tidak benar. Dhien sebenarnya punya peluang untuk menang, hanya saja ia merasa tidak punya peluang sama sekali.",
       tambah("benar", emo("x", 80, 156, "❌", 26)),
       tambah("sebenarnya", emo("ok", 220, 156, "✅", 26)),
       sorotkan("sebenarnya", "kb"),
@@ -90,12 +90,12 @@ export const ADEGAN_PELUANG: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 6. Contoh skala peluang Kira (hlm. 108) ------------------------------ */
+/* ------------------------------ 6. Contoh skala peluang Dhien (hlm. 108) ------------------------------ */
 const SK6 = skala("s6", 30, 28, 240);
 const CONTOH = [
   { id: "c0", e: "🤔", warna: "#FECACA", baris: ["Saya tidak", "mungkin", "berkurang", "usianya", "tahun depan"] },
   { id: "c1", e: "📦", warna: "#FED7AA", baris: ["Kami", "sekeluarga", "pindah", "rumah"] },
-  { id: "c2", e: "🌧️", warna: "#D9F99D", baris: ["Hujan di", "sekitar", "rumah", "Kira"] },
+  { id: "c2", e: "🌧️", warna: "#D9F99D", baris: ["Hujan di", "sekitar", "rumah", "Dhien"] },
   { id: "c3", e: "🍽️", warna: "#A5F3FC", baris: ["Kami makan", "malam", "bersama-", "sama"] },
   { id: "c4", e: "☀️", warna: "#BFDBFE", baris: ["Matahari", "terbit", "besok", "pagi"] },
 ];
@@ -107,14 +107,14 @@ const kartuContoh = (i: number) => {
 
 export const ADEGAN_CONTOH: AdeganStory = {
   id: "contoh-skala",
-  judul: "Lima kejadian pada skala peluang Kira",
+  judul: "Lima kejadian pada skala peluang Dhien",
   sumber: "Materi: lima kejadian pada skala",
   latar: "#FFF7CC",
   ketukan: [
-    k("Sekarang kita letakkan lima kejadian dari kehidupan Kira pada skala peluang.", tambah(0, SK6.semua)),
+    k("Sekarang kita letakkan lima kejadian dari kehidupan Dhien pada skala peluang.", tambah(0, SK6.semua)),
     k("Pertama: saya tidak mungkin berkurang usianya tahun depan. Kejadian ini di ujung kiri, tidak mungkin.", tambah("saya", kartuContoh(0)), sorotkan("kiri", "s6-b0-k")),
     k("Kedua: kami sekeluarga pindah rumah. Peluangnya kecil, jadi kejadian ini kurang mungkin.", redamkan(0, "s6-b0-k"), tambah("sekeluarga", kartuContoh(1)), sorotkan("kurang", "s6-b1-k")),
-    k("Ketiga: hujan di sekitar rumah Kira. Bisa terjadi, bisa juga tidak, jadi kejadian ini mungkin.", redamkan(0, "s6-b1-k"), tambah("hujan", kartuContoh(2)), sorotkan("jadi", "s6-b2-k")),
+    k("Ketiga: hujan di sekitar rumah Dhien. Bisa terjadi, bisa juga tidak, jadi kejadian ini mungkin.", redamkan(0, "s6-b1-k"), tambah("hujan", kartuContoh(2)), sorotkan("jadi", "s6-b2-k")),
     k("Keempat: kami makan malam bersama-sama. Biasanya terjadi, jadi kejadian ini sangat mungkin.", redamkan(0, "s6-b2-k"), tambah("makan", kartuContoh(3)), sorotkan("sangat", "s6-b3-k")),
     k("Kelima: matahari terbit besok pagi. Pasti terjadi, jadi kejadian ini ada di ujung kanan, yaitu pasti.", redamkan(0, "s6-b3-k"), tambah("matahari", kartuContoh(4)), sorotkan("kanan", "s6-b4-k")),
     k("Ujung kiri dan ujung kanan punya arti khusus. Ujung kiri berarti tidak mungkin sama sekali. Ujung kanan berarti pasti terjadi.", redamkan(0, "s6-b4-k"), sorotkan("kiri@2", "s6-b0-k", "c0-k"), redamkan("kanan@2", "s6-b0-k", "c0-k"), sorotkan("kanan@2", "s6-b4-k", "c4-k")),

@@ -59,8 +59,8 @@ export const ADEGAN_LUAR_BATANG: AdeganStory = {
 /* ------------------------------ 2. Fraction Bars: penerapan pada dua batang dan tongkat ------------------------------ */
 const SUARA_BT1 = "Terapkan pada dua batang tadi. Dua batang sama panjang, masing-masing dibagi enam. Batang atas diarsir dua bagian, batang bawah empat bagian.";
 const SUARA_BT2 = "Daerah arsir batang bawah lebih panjang, jadi dua per enam kurang dari empat per enam.";
-const SUARA_BT3 = "Sekarang tongkat Wei sepanjang tiga per enam meter dan tongkat Malosi dua per enam meter. Gambar keduanya sebagai batang yang dibagi enam.";
-const SUARA_BT4 = "Batang Wei diarsir tiga bagian, batang Malosi dua bagian. Batang Wei lebih panjang, jadi tongkat Wei lebih panjang, selisihnya satu bagian.";
+const SUARA_BT3 = "Sekarang tongkat Asep sepanjang tiga per enam meter dan tongkat Azizah dua per enam meter. Gambar keduanya sebagai batang yang dibagi enam.";
+const SUARA_BT4 = "Batang Asep diarsir tiga bagian, batang Azizah dua bagian. Batang Asep lebih panjang, jadi tongkat Asep lebih panjang, selisihnya satu bagian.";
 
 export const ADEGAN_LUAR_BATANG_TERAPAN: AdeganStory = {
   id: "luar-batang-terapan",
@@ -90,17 +90,17 @@ export const ADEGAN_LUAR_BATANG_TERAPAN: AdeganStory = {
     k(
       SUARA_BT3,
       bersih(0),
-      tambah(0, judul("Tongkat Wei dan Malosi")),
-      tambah("Wei", teks("bw1", 34, 66, "Wei", 9, W.biru), teks("bw3", 150, 40, "3/6 meter", 9, W.coklat)),
-      tambah("Malosi", teks("bw2", 34, 118, "Malosi", 9, W.biru), teks("bw4", 150, 92, "2/6 meter", 9, W.coklat)),
+      tambah(0, judul("Tongkat Asep dan Azizah")),
+      tambah("Asep", teks("bw1", 34, 66, "Asep", 9, W.biru), teks("bw3", 150, 40, "3/6 meter", 9, W.coklat)),
+      tambah("Azizah", teks("bw2", 34, 118, "Azizah", 9, W.biru), teks("bw4", 150, 92, "2/6 meter", 9, W.coklat)),
       tambah("batang", ...batang("bx1", 70, 50, 180, 26, 6, 0), ...batang("bx2", 70, 102, 180, 26, 6, 0)),
     ),
     k(
       SUARA_BT4,
       bersih(0),
-      tambah(0, judul("Batang Wei lebih panjang")),
-      tambah(0, teks("bw1", 34, 66, "Wei", 9, W.biru), ...batang("bx1", 70, 50, 180, 26, 6, 3)),
-      tambah(0, teks("bw2", 34, 118, "Malosi", 9, W.biru), ...batang("bx2", 70, 102, 180, 26, 6, 2)),
+      tambah(0, judul("Batang Asep lebih panjang")),
+      tambah(0, teks("bw1", 34, 66, "Asep", 9, W.biru), ...batang("bx1", 70, 50, 180, 26, 6, 3)),
+      tambah(0, teks("bw2", 34, 118, "Azizah", 9, W.biru), ...batang("bx2", 70, 102, 180, 26, 6, 2)),
       sorotkan("lebih", "bx1-b0", "bx1-b1", "bx1-b2"),
       tambah("selisihnya", teks("bx3", 150, 160, "selisih: 1 bagian = 1/6 meter", 9.4, W.coklat)),
       tambah(idx(SUARA_BT4, "bagian", 3), emo("bx4", 150, 188, "✅", 22)),
@@ -210,7 +210,7 @@ export const ADEGAN_LUAR_KARTU_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 5. Ringkasan metode luar ------------------------------ */
 const SUARA_R1 = "Ringkasan empat metode dari luar. Penyebut Sama: potongan sama besar. Banding Pembilang: pembilang yang menentukan. Batang Pecahan: lihat panjang arsir. Susun Kartu Pecahan: urutkan kartu.";
-const SUARA_R2 = "Angka yang dipakai: satu per tiga dan dua per tiga, dua per sepuluh dan satu per sepuluh; lima pasang pecahan; dua batang dan tongkat Wei; serta tiga segi enam, lima per enam, tiga per enam, satu per enam.";
+const SUARA_R2 = "Angka yang dipakai: satu per tiga dan dua per tiga, dua per sepuluh dan satu per sepuluh; lima pasang pecahan; dua batang dan tongkat Asep; serta tiga segi enam, lima per enam, tiga per enam, satu per enam.";
 const SUARA_R3 = "Pesan akhirnya: apa pun metodenya, penyebut sama berarti potongan sama besar, dan pembilang yang lebih besar berarti pecahan yang lebih besar.";
 const RINGKAS = ["potongan sama besar", "pembilang menentukan", "lihat panjang arsir", "urutkan kartu"] as const;
 const WARNA = [W.hijauMuda, W.langit, W.krem, W.pink] as const;

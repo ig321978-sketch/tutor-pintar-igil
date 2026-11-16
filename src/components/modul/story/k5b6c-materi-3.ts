@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, bulat, busurJam, busurSudut, emo, jam, judul, kartu, kaki, kotak, sudutDua, tabel, teks } from "./k5b6c-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k5b6c-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 9. Jenis sudut lain: refleks, nol, lurus, penuh (hlm. 180-181) ------------------------------ */
 export const ADEGAN_JENIS_LAIN: AdeganStory = {
@@ -9,7 +8,25 @@ export const ADEGAN_JENIS_LAIN: AdeganStory = {
   judul: "Sudut refleks, sudut nol, sudut lurus, dan sudut penuh",
   sumber: "Materi: refleks, nol, lurus, dan penuh",
   latar: "#FDF4FF",
-  kutipan: kutipanLokal("k5b6c-materi-3.ts:1"),
+  kutipan: [
+    "Tahukah kalian?",
+    "Biasanya kita",
+    "mengukur sudut bagian",
+    "dalam",
+    "Bagian sudut yang di luar juga disebut sudut dan ukurannya",
+    "dapat kita ukur",
+    "Sudut seperti pada Gambar 6.11 disebut sudut",
+    "adalah sudut yang besarnya lebih dari 180",
+    "dan kurang dari",
+    "360",
+    "Jenis sudut lainnya dapat dilihat pada penjelasan berikut",
+    "Sudut nol",
+    "Sudut yang besarnya 0",
+    "Sudut lurus",
+    "Sudut yang besarnya 180",
+    "Sudut penuh",
+    "Sudut yang besarnya 360",
+  ],
   ketukan: [
     k(
       "Tahukah kalian? Biasanya kita mengukur sudut bagian dalam. Tetapi bagian sudut yang di luar juga disebut sudut, dan ukurannya dapat kita ukur.",
@@ -53,7 +70,21 @@ export const ADEGAN_TANTANGAN: AdeganStory = {
   judul: "Tantangan: mengukur sudut refleks dengan dua cara",
   sumber: "Materi: Tantangan, sudut refleks",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b6c-materi-3.ts:2"),
+  kutipan: [
+    "Tantangan",
+    "Berapa ukuran sudut berikut?",
+    "Mengukur sudut",
+    "dapat dilakukan",
+    "dengan dua",
+    "Cara Pertama",
+    "pengukuran",
+    "dilakukan secara bertahap",
+    "buat garis bantu sehingga",
+    "membentuk sudut lurus yang besarnya",
+    "Hasil pengukuran bagian sudut yang kedua adalah 60",
+    "Cara Kedua",
+    "Pengukuran di atas menunjukkan besar",
+  ],
   ketukan: [
     k(
       "Tantangan: berapa ukuran sudut refleks pada gambar? Mengukur sudut refleks bisa dilakukan dengan dua cara.",
@@ -114,7 +145,19 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   judul: "Latihan 1: mengukur sudut jarum jam",
   sumber: "Materi: Latihan 1, sudut jarum jam",
   latar: "#F0FDFA",
-  kutipan: kutipanLokal("k5b6c-materi-3.ts:3"),
+  kutipan: [
+    "Ukurlah sudut terkecil yang dibentuk oleh jarum jam pendek",
+    "dan panjang pada gambar berikut",
+    "Pukul 01.00",
+    "Besar sudut adalah",
+    "Pukul 09.00",
+    "Pukul 04.00",
+    "Pukul 01.30",
+    "Besar sudut adalah 30",
+    "Besar sudut adalah 90",
+    "Besar sudut adalah 120",
+    "Besar sudut adalah 135",
+  ],
   ketukan: [
     k(
       "Latihan satu. Ukur sudut terkecil yang dibentuk jarum jam pendek dan jarum jam panjang pada empat jam.",
@@ -156,7 +199,19 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
   judul: "Latihan 2: sudut terkecil pada empat waktu",
   sumber: "Materi: Latihan 2, sudut jarum jam",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b6c-materi-3.ts:4"),
+  kutipan: [
+    "Tentukan besar sudut terkecil yang dibentuk oleh jarum pendek",
+    "dan jarum panjang pada jam saat menunjukkan pukul",
+    "10.00",
+    "15.00",
+    "07.00",
+    "04.30",
+    "Besar sudut terkecil yang dibentuk",
+    "oleh dua jarum jam adalah 60",
+    "oleh dua jarum jam adalah 90",
+    "oleh dua jarum jam adalah 150",
+    "oleh dua jarum jam adalah 45",
+  ],
   ketukan: [
     k(
       "Latihan dua. Tentukan besar sudut terkecil yang dibentuk jarum jam pada pukul sepuluh, lima belas, tujuh, dan empat tiga puluh.",
@@ -201,7 +256,18 @@ export const ADEGAN_REFLEKSI_C: AdeganStory = {
   judul: "Renungan, pesan guru, dan ringkasan",
   sumber: "Materi: renungan dan ringkasan",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b6c-materi-3.ts:5"),
+  kutipan: [
+    "Setelah mempelajari materi terkait sudut, isilah tabel berikut sesuai",
+    "dengan pemahaman kalian",
+    "Berilah tanda centang",
+    "Aku dapat mengukur besar sudut dengan",
+    "menggunakan busur derajat",
+    "Aku dapat membandingkan besar sudut",
+    "pertanyaan releksi nomor 4 dan 5",
+    "peserta didik dengan kecepatan belajar tinggi",
+    "mengerjakan latihan tanpa bantuan",
+    "mendampingi peserta didik yang mengalami kesulitan",
+  ],
   ketukan: [
     k(
       "Sekarang saatnya merenung. Tanyakan pada dirimu sendiri, bisakah aku mengukur besar sudut dengan menggunakan busur derajat?",

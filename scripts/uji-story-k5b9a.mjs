@@ -2,7 +2,6 @@
 // Memeriksa: pemicu kata, sinkron angka suara dan gambar, perubahan gambar tiap ketukan, keunikan antaradegan, batas kanvas,
 // pemisahan materi dan metode luar, kutipan buku (bila PDF ada), hitungan mandiri, emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b9a.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -202,7 +201,7 @@ const U_VIDEO = V.VIDEO_LUAR_K5B9A;
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U_VIDEO.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,eksplorasi-91a,eksplorasi-91b,cara-baca,ayo-bermain,eksplorasi-91c,eksplorasi-91d,latihan-a,refleksi-a", "urutan adegan materi");
-  for (const kata of ["lemari", "Jepara", "Gianyar", "sensus", "Igil", "Toko Anggun", "nota", "Kira", "sembako", "Toko Keenan", "speaker", "hardisk", "kartu", "titik", "Latihan", "Hati-hati", "Tantangan", "Renungan", "979.875", "963.000", "324.569"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["lemari", "Jepara", "Gianyar", "sensus", "Komang", "Toko Anggun", "nota", "Lukas", "sembako", "Toko Keenan", "speaker", "hardisk", "kartu", "titik", "Latihan", "Hati-hati", "Tantangan", "Renungan", "979.875", "963.000", "324.569"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   const ids = U_VIDEO.adegan.map((a) => a.id);
   cek(["luar-tabel", "luar-tabel-terapan", "luar-nama", "luar-nama-terapan", "luar-nilai", "luar-nilai-terapan", "luar-kelompok", "luar-kelompok-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U_VIDEO.adegan[1].id === "luar-pembuka" && U_VIDEO.adegan[U_VIDEO.adegan.length - 1].id === "luar-ringkas" && M_VIDEO.adegan.length === 9 && U_VIDEO.adegan.length === 11, "9 adegan materi diputar (dengan sapaan) dan 11 adegan metode luar (dengan sapaan)");
@@ -282,11 +281,11 @@ const U_VIDEO = V.VIDEO_LUAR_K5B9A;
     });
   }
 
-  // Uang Ibu Kira dan nota Toko Anggun.
+  // Uang Ibu Lukas dan nota Toko Anggun.
   {
-    cek(100000 + 50000 + 5000 === 155000, "uang Ibu Kira: 100.000 + 50.000 + 5.000 = 155.000");
+    cek(100000 + 50000 + 5000 === 155000, "uang Ibu Lukas: 100.000 + 50.000 + 5.000 = 155.000");
     const d = akhirAdegan(adegan(M, "eksplorasi-91d"), 1);
-    sama(["u1-t", "u2-t", "u3-t"].map((id) => d.find((o) => o.id === id)?.isi), ["100.000", "50.000", "5.000"], "gambar uang Ibu Kira");
+    sama(["u1-t", "u2-t", "u3-t"].map((id) => d.find((o) => o.id === id)?.isi), ["100.000", "50.000", "5.000"], "gambar uang Ibu Lukas");
     const n = akhirAdegan(adegan(M, "eksplorasi-91c"));
     const harga = [0, 1, 2, 3].map((i) => Number(n.find((o) => o.id === `ih${i}`)?.isi.replace(/\./g, "")));
     sama(harga, [83200, 96825, 112312, 32232], "harga baris nota");
@@ -341,7 +340,7 @@ const U_VIDEO = V.VIDEO_LUAR_K5B9A;
       n += 1;
       cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 80, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(n >= 80, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -362,7 +361,7 @@ const U_VIDEO = V.VIDEO_LUAR_K5B9A;
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     // larangan berbagi visual: berkas k5b9a hanya mengimpor logika dan berkas k5b9a sendiri
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b9a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b9a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b9a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b9a sendiri (${impor.join(", ")})`);
   }
   // mesin tidak memakai kit visual lama
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");

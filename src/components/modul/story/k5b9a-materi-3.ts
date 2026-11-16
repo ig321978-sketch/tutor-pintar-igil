@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, bacaanDua, digit, emo, garis, judul, kartu, kotak, panah, tabelNilai, teks, uang } from "./k5b9a-gambar";
 import { bersih, k, tambah, warnai } from "./k5b9a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 8. Eksplorasi 9.1C: nota Toko Anggun 324.569 (hlm. 280 dan 281) ------------------------------ */
 const ITEM_NOTA: [string, string][] = [["Shampoo", "83.200"], ["Conditioner", "96.825"], ["Lipstik", "112.312"], ["Minyak rambut", "32.232"]];
@@ -11,7 +10,18 @@ export const ADEGAN_EKSPLORASI91C: AdeganStory = {
   judul: "Nota Toko Anggun: membaca 324.569",
   sumber: "Materi: nota Toko Anggun",
   latar: "#FDF2F8",
-  kutipan: kutipanLokal("k5b9a-materi-3.ts:1"),
+  kutipan: [
+    "Eksplorasi 9.1C",
+    "Gambar 9.4 Contoh Nota Pembelian",
+    "Ibu memiliki usaha salon di rumah",
+    "perlengkapan salon di Toko Anggun",
+    "Setelah dipotong",
+    "diskon, Ibu membayar di kasir sebesar Rp324.569,00",
+    "Angka tiga mempunyai nilai tempat",
+    "Angka dua mempunyai nilai tempat",
+    "Angka sembilan mempunyai nilai tempat",
+    "Tuliskan pada tabel nilai tempat berikut",
+  ],
   ketukan: [
     k(
       "Sekarang kita lihat belanjaan Ibu. Ibu punya usaha salon dan berbelanja perlengkapan salon di Toko Anggun. Lihat nota pembelian ini.",
@@ -58,23 +68,34 @@ export const ADEGAN_EKSPLORASI91C: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 9. Eksplorasi 9.1D: uang Ibu Kira (hlm. 281 sampai 283) ------------------------------ */
+/* ------------------------------ 9. Eksplorasi 9.1D: uang Ibu Lukas (hlm. 281 sampai 283) ------------------------------ */
 export const ADEGAN_EKSPLORASI91D: AdeganStory = {
   id: "eksplorasi-91d",
-  judul: "Uang di dompet Ibu Kira",
-  sumber: "Materi: uang di dompet Ibu Kira",
+  judul: "Uang di dompet Ibu Lukas",
+  sumber: "Materi: uang di dompet Ibu Lukas",
   latar: "#ECFEFF",
-  kutipan: kutipanLokal("k5b9a-materi-3.ts:2"),
+  kutipan: [
+    "Eksplorasi 9.1D",
+    "Nanti malam, rumah Lukas mendapat giliran ketempatan arisan",
+    "Lukas hendak",
+    "membantu membelikan beberapa sembako",
+    "Ibu meminta Lukas langsung mengambil uang di dompet Ibu",
+    "Gambar 9.5 Uang Ibu Lukas",
+    "Tuliskan uang tersebut pada tabel nilai tempat berikut",
+    "Berapakah uang Ibu yang menempati ratus ribuan?",
+    "Berapakah uang yang menempati puluh ribuan?",
+    "Berapakah uang yang menempati ribuan?",
+  ],
   ketukan: [
     k(
-      "Sekarang cerita Kira. Kira membantu membeli sembako untuk arisan kampung, memakai uang di dompet Ibu.",
-      tambah(0, judul("Uang Ibu Kira")),
-      tambah("Kira", emo("lu", 50, 110, "👦", 38), teks("lut", 50, 132, "Kira", 8.6)),
+      "Sekarang cerita Lukas. Lukas membantu membeli sembako untuk arisan kampung, memakai uang di dompet Ibu.",
+      tambah(0, judul("Uang Ibu Lukas")),
+      tambah("Lukas", emo("lu", 50, 110, "👦", 38), teks("lut", 50, 132, "Lukas", 8.6)),
       tambah("sembako", emo("sb", 150, 110, "🛒", 38), teks("sbt", 150, 132, "sembako", 8.6)),
       tambah("dompet", emo("dp", 250, 110, "👛", 38), teks("dpt", 250, 132, "dompet Ibu", 8.6)),
     ),
     k(
-      "Uang Ibu Kira ada tiga lembar: selembar seratus ribuan, selembar lima puluh ribuan, dan selembar lima ribuan.",
+      "Uang Ibu Lukas ada tiga lembar: selembar seratus ribuan, selembar lima puluh ribuan, dan selembar lima ribuan.",
       bersih(0),
       tambah(0, judul("tiga lembar uang Ibu")),
       tambah("seratus", ...uang("u1", 8, 70, 90, 54, "100.000", "#FBCFE8")),
@@ -154,7 +175,19 @@ export const ADEGAN_LATIHAN: AdeganStory = {
   judul: "Latihan: harga peralatan komputer",
   sumber: "Materi: harga peralatan komputer",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k5b9a-materi-3.ts:3"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Toko Keenan menjual berbagai peralatan komputer",
+    "speaker aktif, mouse, hardisk eksternal, headset, dan kabel USB",
+    "Harga speaker aktif Rp296.575,00",
+    "Harga mouse Rp179.500,00",
+    "Rp834.759,00",
+    "Rp159.899,00",
+    "Rp132.795,00",
+    "Tuliskan bilangan pada harga yang tertera pada produk pada",
+    "Bacalah harga produk peralatan komputer berikut ini",
+    "Tuliskan nilai tempat angka",
+  ],
   ketukan: [
     k(
       "Sekarang waktunya Latihan. Toko Keenan menjual peralatan komputer: speaker aktif, mouse, hardisk eksternal, headset, dan kabel USB.",

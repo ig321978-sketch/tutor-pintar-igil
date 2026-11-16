@@ -3,7 +3,6 @@
 // pemisahan materi dan metode luar, kutipan buku (bila PDF ada), hitungan mandiri (donat, sayuran, turus, nilai ulangan, sepatu),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b8a.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -46,17 +45,17 @@ const DONAT_BUKU = [
 const RASA = ["cokelat", "keju", "stroberi", "kacang"];
 // Catatan sayuran favorit enam belas siswa.
 const SISWA = [
-  ["Kira", ["kangkung", "wortel", "bayam"]],
-  ["Igil", ["bayam", "sawi"]],
-  ["Malosi", ["wortel", "kol", "sawi"]],
-  ["Halim", ["buncis", "wortel", "tomat"]],
-  ["Upe", ["kangkung", "tomat"]],
-  ["Wei", ["kol", "wortel"]],
+  ["Asep", ["kangkung", "wortel", "bayam"]],
+  ["Nisa", ["bayam", "sawi"]],
+  ["Yohana", ["wortel", "kol", "sawi"]],
+  ["Lukas", ["buncis", "wortel", "tomat"]],
+  ["Komang", ["kangkung", "tomat"]],
+  ["Ahmad", ["kol", "wortel"]],
   ["Meli", ["kangkung", "buncis"]],
   ["Tiara", ["bayam"]],
   ["Randi", ["sawi", "tomat"]],
   ["Kinanti", ["bayam", "kol", "wortel"]],
-  ["Wei", ["buncis", "wortel", "bayam"]],
+  ["Anggi", ["buncis", "wortel", "bayam"]],
   ["Tomi", ["wortel", "tomat"]],
   ["Robert", ["sawi", "kangkung", "bayam"]],
   ["Ucok", ["sawi", "buncis", "tomat"]],
@@ -219,7 +218,7 @@ for (const v of VIDEO) {
 /* ------------------------------ Pemisahan materi dan metode luar ------------------------------ */
 const seluruhTeks = (v) => v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map((kt, i) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, i, 9999))])]);
 const M_VIDEO = V.VIDEO_MATERI_K5B8A;
-// Adegan administratif (pembuka bab donat Wei, baca tabel donat, tujuan dan peta konsep, apersepsi) tidak lagi diputar di video materi.
+// Adegan administratif (pembuka bab donat Anggi, baca tabel donat, tujuan dan peta konsep, apersepsi) tidak lagi diputar di video materi.
 // Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
 const MODUL_MATERI = Object.assign({}, M1, M2, M3);
 const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_PEMBUKA, MODUL_MATERI.ADEGAN_TABEL_DONAT, MODUL_MATERI.ADEGAN_TUJUAN, MODUL_MATERI.ADEGAN_MENGINGAT, MODUL_MATERI.ADEGAN_SAYURAN, MODUL_MATERI.ADEGAN_CENTANG_GARIS, MODUL_MATERI.ADEGAN_TURUS, MODUL_MATERI.ADEGAN_DISKUSI, MODUL_MATERI.ADEGAN_SEPATU, MODUL_MATERI.ADEGAN_LATIHAN, MODUL_MATERI.ADEGAN_REFLEKSI] };
@@ -258,7 +257,7 @@ const nilaiId = (objs, id) => objs.find((o) => o.id === id)?.isi;
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,sayuran-data,centang-garis,turus-frekuensi,ayo-berdiskusi,ekspl-81b,latihan,refleksi", "urutan adegan materi");
-  for (const kata of ["sayuran", "Kira", "Malosi", "centang", "turus", "frekuensi", "tabel frekuensi", "kelompok", "Tahukah kalian", "sepatu", "Mekarsari", "remedi", "Latihan", "Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["sayuran", "Asep", "Yohana", "centang", "turus", "frekuensi", "tabel frekuensi", "kelompok", "Tahukah kalian", "sepatu", "Mekarsari", "remedi", "Latihan", "Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-siklus", "luar-siklus-terapan", "luar-turus", "luar-turus-terapan", "luar-tabel", "luar-tabel-terapan", "luar-keputusan", "luar-keputusan-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[1].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas" && M_VIDEO.adegan.length === 8 && U.adegan.length === 11, "8 adegan materi diputar (dengan sapaan) dan 11 adegan metode luar (dengan sapaan)");
@@ -275,7 +274,7 @@ const nilaiId = (objs, id) => objs.find((o) => o.id === id)?.isi;
 
 /* ------------------------------ Hitungan isi, dihitung mandiri ------------------------------ */
 {
-  // Tabel 8.1 donat Wei (pembuka) dan baris kacang serta cokelat.
+  // Tabel 8.1 donat Anggi (pembuka) dan baris kacang serta cokelat.
   {
     const t = akhirAdegan(adegan(M, "pembuka-donat"), 3);
     const HARI = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
@@ -328,7 +327,7 @@ const nilaiId = (objs, id) => objs.find((o) => o.id === id)?.isi;
   {
     const t = akhirAdegan(adegan(M, "turus-frekuensi"), 5);
     const nama = SISWA.filter(([, p]) => p.includes("bayam")).map(([n]) => n);
-    sama(`${nilaiId(t, "by1")} ${nilaiId(t, "by2")}`, nama.join(", ").replace("Kinanti, Wei", "Kinanti, Wei"), "daftar siswa yang menyukai bayam (urutan catatan buku)");
+    sama(`${nilaiId(t, "by1")} ${nilaiId(t, "by2")}`, nama.join(", ").replace("Kinanti, Anggi", "Kinanti, Anggi"), "daftar siswa yang menyukai bayam (urutan catatan buku)");
     cek(nama.length === 7 && /7 orang/.test(nilaiId(t, "by7")), "bayam: 7 siswa");
     cek(L.teksTerlihat(akhirAdegan(adegan(M, "turus-frekuensi"), 2)).includes("5 garis") && L.teksTerlihat(akhirAdegan(adegan(M, "turus-frekuensi"), 2)).includes("4 garis tegak") && L.teksTerlihat(akhirAdegan(adegan(M, "turus-frekuensi"), 2)).includes("1 garis miring"), "kelompok lima: 5 garis, 4 tegak, 1 miring");
   }
@@ -431,7 +430,7 @@ const nilaiId = (objs, id) => objs.find((o) => o.id === id)?.isi;
       n += 1;
       cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -452,7 +451,7 @@ const nilaiId = (objs, id) => objs.find((o) => o.id === id)?.isi;
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     // larangan berbagi visual: berkas k5b8a hanya mengimpor logika dan berkas k5b8a sendiri
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b8a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b8a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b8a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b8a sendiri (${impor.join(", ")})`);
   }
   // mesin tidak memakai kit visual lama
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");

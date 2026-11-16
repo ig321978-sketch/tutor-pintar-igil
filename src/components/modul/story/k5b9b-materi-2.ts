@@ -1,11 +1,10 @@
 import type { AdeganStory } from "./logika-story";
 import { SEPATU, W, barisTempat, bulat, emo, garis, kartu, kepalaTempat, kotak, teks } from "./k5b9b-gambar";
 import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k5b9b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 4. Eksplorasi 9.2A pertanyaan 2 sampai 7: kolom demi kolom (hlm. 285) ------------------------------ */
 const yB = (i: number) => 50 + i * 22;
-const tabelSepatu = () => [kepalaTempat("kp", 32), barisTempat("r0", yB(0), SEPATU[0].angka, "Igil", W.krem), barisTempat("r1", yB(1), SEPATU[1].angka, "Kira", W.hijauMuda), barisTempat("r2", yB(2), SEPATU[2].angka, "Halim", W.muda)].flat();
+const tabelSepatu = () => [kepalaTempat("kp", 32), barisTempat("r0", yB(0), SEPATU[0].angka, "Komang", W.krem), barisTempat("r1", yB(1), SEPATU[1].angka, "Lukas", W.hijauMuda), barisTempat("r2", yB(2), SEPATU[2].angka, "Nisa", W.muda)].flat();
 const hasil = (id: string, y: number, isi: string, warna: string = W.biru) => teks(id, 40, y, isi, 8.4, warna, { anchor: "start" });
 
 export const ADEGAN_SEPATU_KOLOM: AdeganStory = {
@@ -13,7 +12,7 @@ export const ADEGAN_SEPATU_KOLOM: AdeganStory = {
   judul: "Sepatu siapa terbesar di tiap kolom",
   sumber: "Materi: kolom demi kolom",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b9b-materi-2.ts:1"),
+  kutipan: ["Sepatu siapa yang menempati ratus ribuan termahal", "Sepatu siapa yang menempati puluh ribuan termahal", "Sepatu siapa yang menempati ribuan termahal", "Sepatu siapa yang menempati satuan termahal"],
   ketukan: [
     k(
       "Sekarang, sepatu siapa yang menempati ratus ribuan termahal, dan berapa nilainya? Lihat kolom pertama: 3, 4, dan 2.",
@@ -21,16 +20,16 @@ export const ADEGAN_SEPATU_KOLOM: AdeganStory = {
       sorotkan("pertama:", "r0c0", "r1c0", "r2c0"),
     ),
     k(
-      "Angka 4 paling besar, milik sepatu Kira. Nilainya 4 kali 100.000, yaitu 400.000.",
+      "Angka 4 paling besar, milik sepatu Lukas. Nilainya 4 kali 100.000, yaitu 400.000.",
       redamkan("Angka", "r0c0", "r2c0"),
-      tambah("Nilainya", hasil("l0", 130, "ratus ribuan: Kira, 4 x 100.000 = 400.000", W.hijau)),
+      tambah("Nilainya", hasil("l0", 130, "ratus ribuan: Lukas, 4 x 100.000 = 400.000", W.hijau)),
     ),
     k(
-      "Lanjut ke kolom puluh ribuan: 4, 3, dan 3. Angka 4 terbesar milik sepatu Igil, jadi nilainya 40.000.",
+      "Lanjut ke kolom puluh ribuan: 4, 3, dan 3. Angka 4 terbesar milik sepatu Komang, jadi nilainya 40.000.",
       redamkan(0, "r1c0"),
       sorotkan("kolom", "r0c1", "r1c1", "r2c1"),
       redamkan("terbesar", "r1c1", "r2c1"),
-      tambah("nilainya", hasil("l1", 142, "puluh ribuan: Igil, 4 x 10.000 = 40.000", W.merah)),
+      tambah("nilainya", hasil("l1", 142, "puluh ribuan: Komang, 4 x 10.000 = 40.000", W.merah)),
     ),
     k(
       "Berikutnya kolom ribuan: ketiganya 2. Jadi ribuannya sama besar, masing-masing 2.000, dan belum ada yang unggul.",
@@ -39,19 +38,19 @@ export const ADEGAN_SEPATU_KOLOM: AdeganStory = {
       tambah("masing-masing", hasil("l2", 154, "ribuan: sama semua, 2 x 1.000 = 2.000", W.ungu)),
     ),
     k(
-      "Lalu kolom ratusan: 2, 5, dan 2, jadi Kira unggul dengan nilai 500. Kemudian kolom puluhan: 3, 4, dan 3, Kira lagi, nilainya 40.",
+      "Lalu kolom ratusan: 2, 5, dan 2, jadi Lukas unggul dengan nilai 500. Kemudian kolom puluhan: 3, 4, dan 3, Lukas lagi, nilainya 40.",
       redamkan(0, "r0c2", "r1c2", "r2c2"),
       sorotkan("ratusan:", "r1c3"),
-      tambah("500.", hasil("l3", 166, "ratusan: Kira, 5 x 100 = 500", W.hijau)),
+      tambah("500.", hasil("l3", 166, "ratusan: Lukas, 5 x 100 = 500", W.hijau)),
       redamkan("puluhan:", "r1c3"),
       sorotkan("puluhan:", "r1c4"),
-      tambah("40.", hasil("l4", 178, "puluhan: Kira, 4 x 10 = 40", W.hijau)),
+      tambah("40.", hasil("l4", 178, "puluhan: Lukas, 4 x 10 = 40", W.hijau)),
     ),
     k(
-      "Terakhir kolom satuan: 1, 3, dan 1. Kira terbesar lagi, nilainya 3. Jadi Kira menang di hampir semua kolom, kecuali puluh ribuan dan ribuan.",
+      "Terakhir kolom satuan: 1, 3, dan 1. Lukas terbesar lagi, nilainya 3. Jadi Lukas menang di hampir semua kolom, kecuali puluh ribuan dan ribuan.",
       redamkan(0, "r1c4"),
       sorotkan("kolom", "r1c5"),
-      tambah("nilainya", hasil("l5", 190, "satuan: Kira, 3 x 1 = 3", W.hijau)),
+      tambah("nilainya", hasil("l5", 190, "satuan: Lukas, 3 x 1 = 3", W.hijau)),
     ),
   ],
 };
@@ -68,27 +67,27 @@ export const ADEGAN_SEPATU_URUT: AdeganStory = {
   judul: "Urutan harga sepatu dan membandingkan dua sepatu",
   sumber: "Materi: urutan dan banding sepatu",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b9b-materi-2.ts:2"),
+  kutipan: ["Urutkanlah sepatu dari yang harganya termahal sampai", "Sepatu siapa yang harganya termahal", "Sepatu siapa yang harganya termurah", "Di antara sepatu Komang dan sepatu Nisa, mana yang lebih", "Di antara sepatu Lukas dan sepatu Komang, mana yang lebih"],
   ketukan: [
     k(
-      "Kolom ratus ribuan menentukan hasilnya. Sepatu Kira memiliki 4, Igil 3, dan Halim 2. Jadi Kira terbesar, lalu Igil, lalu Halim.",
+      "Kolom ratus ribuan menentukan hasilnya. Sepatu Lukas memiliki 4, Komang 3, dan Nisa 2. Jadi Lukas terbesar, lalu Komang, lalu Nisa.",
       tambah(0, teks("jud", 150, 22, "Kolom ratus ribuan", 12, W.ungu)),
-      tambah("Kira", bulat("c1", 70, 86, 18, W.hijauMuda), teks("c1t", 70, 93, "4", 20), teks("c1n", 70, 124, "Kira", 9)),
-      tambah("Igil", bulat("c2", 150, 86, 18, W.krem), teks("c2t", 150, 93, "3", 20), teks("c2n", 150, 124, "Igil", 9)),
-      tambah("Halim", bulat("c3", 230, 86, 18, W.muda), teks("c3t", 230, 93, "2", 20), teks("c3n", 230, 124, "Halim", 9)),
+      tambah("Lukas", bulat("c1", 70, 86, 18, W.hijauMuda), teks("c1t", 70, 93, "4", 20), teks("c1n", 70, 124, "Lukas", 9)),
+      tambah("Komang", bulat("c2", 150, 86, 18, W.krem), teks("c2t", 150, 93, "3", 20), teks("c2n", 150, 124, "Komang", 9)),
+      tambah("Nisa", bulat("c3", 230, 86, 18, W.muda), teks("c3t", 230, 93, "2", 20), teks("c3n", 230, 124, "Nisa", 9)),
       tambah("terbesar", teks("urt", 150, 164, "terbesar ke terkecil", 11, W.merah)),
     ),
     k(
-      "Urutan dari termahal sampai termurah adalah sepatu Kira, sepatu Igil, lalu sepatu Halim. Tuliskan harganya: 432.543, 342.231, dan 232.231.",
+      "Urutan dari termahal sampai termurah adalah sepatu Lukas, sepatu Komang, lalu sepatu Nisa. Tuliskan harganya: 432.543, 342.231, dan 232.231.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Urutan harga sepatu", 12, W.ungu)),
-      tambah("Kira,", bar("b1", 44, 173, "Kira", "432.543", W.hijauMuda)),
-      tambah("Igil,", bar("b2", 76, 137, "Igil", "342.231", W.krem)),
-      tambah("Halim.", bar("b3", 108, 93, "Halim", "232.231", W.muda)),
+      tambah("Lukas,", bar("b1", 44, 173, "Lukas", "432.543", W.hijauMuda)),
+      tambah("Komang,", bar("b2", 76, 137, "Komang", "342.231", W.krem)),
+      tambah("Nisa.", bar("b3", 108, 93, "Nisa", "232.231", W.muda)),
       tambah("Tuliskan", teks("rt", 150, 160, "432.543 > 342.231 > 232.231", 12, W.ungu)),
     ),
     k(
-      "Jadi, sepatu termahal milik Kira, dan sepatu termurah milik Halim.",
+      "Jadi, sepatu termahal milik Lukas, dan sepatu termurah milik Nisa.",
       hapus(0, "rt"),
       tambah("termahal", teks("tm", 248, 60, "termahal", 8, W.hijau, { anchor: "start" })),
       sorotkan("termahal", "b1-k"),
@@ -97,17 +96,17 @@ export const ADEGAN_SEPATU_URUT: AdeganStory = {
       sorotkan("termurah", "b3-k"),
     ),
     k(
-      "Sekarang bandingkan sepatu Igil dan sepatu Halim. Mana yang lebih mahal? Ratus ribuannya 3 dan 2, jadi sepatu Igil lebih mahal.",
+      "Sekarang bandingkan sepatu Komang dan sepatu Nisa. Mana yang lebih mahal? Ratus ribuannya 3 dan 2, jadi sepatu Komang lebih mahal.",
       redamkan(0, "b3-k"),
       hapus(0, "tm", "tr"),
-      sorotkan("Igil", "b2-k", "b3-k"),
-      tambah("Ratus", teks("cp", 150, 160, "ratus ribuan: 3 > 2, Igil lebih mahal", 10, W.ungu)),
+      sorotkan("Komang", "b2-k", "b3-k"),
+      tambah("Ratus", teks("cp", 150, 160, "ratus ribuan: 3 > 2, Komang lebih mahal", 10, W.ungu)),
     ),
     k(
-      "Berikutnya, bandingkan sepatu Kira dan sepatu Igil. Mana yang lebih murah? Ratus ribuannya 4 dan 3, jadi sepatu Igil lebih murah.",
+      "Berikutnya, bandingkan sepatu Lukas dan sepatu Komang. Mana yang lebih murah? Ratus ribuannya 4 dan 3, jadi sepatu Komang lebih murah.",
       redamkan(0, "b2-k", "b3-k"),
-      sorotkan("Kira", "b1-k", "b2-k"),
-      ubah("Ratus", { id: "cp", isi: "ratus ribuan: 4 > 3, Igil lebih murah" }),
+      sorotkan("Lukas", "b1-k", "b2-k"),
+      ubah("Ratus", { id: "cp", isi: "ratus ribuan: 4 > 3, Komang lebih murah" }),
     ),
     k(
       "Aturannya: bandingkan kolom dari kiri. Kolom pertama yang angkanya berbeda menentukan bilangan mana yang lebih besar.",
@@ -132,7 +131,7 @@ export const ADEGAN_WISATAWAN_DATA: AdeganStory = {
   judul: "Wisatawan mancanegara di Yogyakarta",
   sumber: "Materi: wisatawan Yogyakarta",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b9b-materi-2.ts:3"),
+  kutipan: ["Eksplorasi 9.2B", "Yogyakarta dikenal sebagai Kota Pelajar", "Berikut data wisatawan mancanegara", "Banyaknya Wisatawan Mancanegara yang Berkunjung ke Yogyakarta"],
   ketukan: [
     k(
       "Sekarang kita pindah ke masalah kedua. Yogyakarta dikenal sebagai Kota Pelajar, Kota Gudeg, Kota Seniman, dan Kota Wisata, karena banyak wisatawan datang berkunjung.",
@@ -179,7 +178,7 @@ export const ADEGAN_WISATAWAN_URUT: AdeganStory = {
   judul: "Wisatawan: tahun paling sedikit dan urutan bilangan",
   sumber: "Materi: urutan bilangan wisatawan",
   latar: "#ECFEFF",
-  kutipan: kutipanLokal("k5b9b-materi-2.ts:4"),
+  kutipan: ["Pada tahun berapa jumlah kunjungan tamu mancanegara paling", "urutan dari yang terbesar", "yang dimulai dari yang terkecil"],
   ketukan: [
     k(
       "Tabel nilai tempat membantu kita. Tuliskan lima bilangan tadi, satu angka untuk satu kolom. Untuk 69.968, kolom ratus ribuan dibiarkan kosong.",

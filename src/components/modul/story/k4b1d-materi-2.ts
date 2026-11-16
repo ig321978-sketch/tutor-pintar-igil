@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, angka, bagianKe, barisTabel, emo, garis, judul, kartu, kotak, panah, papan, susunBagian, teks, URAI_CONTOH, URAI_LATIHAN, URAI_LETAK, URAI_NOL, rb, angkaDari } from "./k4b1d-gambar";
 import { bersih, idx, k, sorotkan, tambah, ubah } from "./k4b1d-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Dekomposisi: Ayo Mengamati (Buku Siswa hlm. 26; Panduan Guru hlm. 47) ------------------------------ */
 const SUARA_D1 = "Sekarang dekomposisi bilangan cacah sampai sepuluh ribu. Coba amati: kalian sudah mengenal nilai tempat. Misalkan bilangan enam ribu tujuh ratus delapan puluh sembilan.";
@@ -19,7 +18,21 @@ export const ADEGAN_DEKOMPOSISI_AMATI: AdeganStory = {
   judul: "Dekomposisi: mari mengamati",
   sumber: "Materi: dekomposisi, mengamati nilai tempat",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1d-materi-2.ts:1"),
+  kutipan: [
+    "Dekomposisi bilangan cacah sampai 10.000",
+    "Ayo Mengamati",
+    "Kalian sudah mengenal nilai tempat dari suatu bilangan.",
+    "Misalkan bilangan 6.789.",
+    "9 menempati nilai tempat satuan",
+    "8 menempati nilai tempat puluhan",
+    "7 menempati nilai tempat ratusan",
+    "6 menempati nilai tempat ribuan",
+    "Guru dapat memberikan contoh bilangan 4 angka dan mengingatkan kembali nilai tempat serta nilai dari angka pada setiap nilai tempat.",
+    "Misalnya 6 menempati tempat ribuan maka nilainya 6.000.",
+    "Guru dapat memberikan contoh yang lebih banyak terkait bilangan cacah 4 angka.",
+    "Diberikan bilangan 6.849.",
+    "Untuk melihat nilai tempat dari setiap angka pada bilangan 6.849 sebagai berikut.",
+  ],
   ketukan: [
     k(
       SUARA_D1,
@@ -74,7 +87,15 @@ export const ADEGAN_DEKOMPOSISI_URAIAN: AdeganStory = {
   judul: "Dekomposisi: uraian 6.849",
   sumber: "Materi: uraian bilangan 6.849",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b1d-materi-2.ts:2"),
+  kutipan: [
+    "Berdasarkan penjelasan di atas, diperoleh bahwa",
+    "Angka 6 menempati tempat ribuan, nilainya 6.000",
+    "Angka 8 menempati tempat ratusan, nilainya 800",
+    "Angka 4 menempati tempat puluhan, nilainya 40",
+    "Angka 9 menempati tempat satuan, nilainya 9",
+    "6.849 = 6 ribuan + 8 ratusan +4 puluhan + 9 satuan",
+    "6.849 = 6.000 + 800+ 40 + 9",
+  ],
   ketukan: [
     k(
       SUARA_U1,
@@ -132,7 +153,19 @@ export const ADEGAN_DEKOMPOSISI_NOL: AdeganStory = {
   judul: "Dekomposisi dengan nol: 6.035",
   sumber: "Materi: dekomposisi dengan nol",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k4b1d-materi-2.ts:3"),
+  kutipan: [
+    "Bagaimana halnya dengan dekomposisi dari bilangan 6.035?",
+    "6 Ribuan",
+    "0 Ratusan",
+    "3 Puluhan",
+    "5 Satuan",
+    "Bilangan 6.035, dapat dinyatkan dalam bentuk berikut.",
+    "6.035 = 6 ribuan + 0 ratusan + 3 puluhan + 5 satuan",
+    "= 6.000 + 000 + 30 + 5",
+    "Angka pada nilai tempat ratusan sama dengan 0 dekomposisinya ditulis 000",
+    "Angka pada nilai tempat puluhan sama dengan 0 dekomposisinya ditulis 00,",
+    "Angka pada nilai tempat satuan sama dengan 0 dekomposisinya ditulis 0",
+  ],
   ketukan: [
     k(
       SUARA_Z1,
@@ -207,7 +240,17 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
   judul: "Dekomposisi: latihan mengisi titik-titik",
   sumber: "Materi: latihan dekomposisi",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1d-materi-2.ts:4"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Salin dan jawablah soal berikut pada buku tulis kalian.",
+    "1. Isilah titik-titik berikut dengan benar.",
+    "6.482",
+    "7.020",
+    "2.001",
+    "7.000",
+    "9.999",
+    "1. Isilah titik-titik dibawah ini.",
+  ],
   ketukan: [
     k(
       SUARA_B1,

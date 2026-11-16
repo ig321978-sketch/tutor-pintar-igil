@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, bata, bulatanL, busurSemua, daftar, deret, emo, isiKotak, judul, kaleng, kartu, kotak, muncul, segienam, suku, tabel, teks } from "./k4b3b-gambar";
 import { bersih, k, tambah } from "./k4b3b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 6. Ayo Berlatih, Latihan 2: soal 1-3 (Buku Siswa hlm. 99; Panduan Guru hlm. 132) ------------------------------ */
 const L1 = { bw: 36, gap: 12 };
@@ -16,7 +15,13 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   judul: "Latihan 1 sampai 3",
   sumber: "Materi: latihan pola bilangan",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b3b-materi-2.ts:1"),
+  kutipan: [
+    "Latihan 2",
+    "Tentukan bilangan yang tepat sesuai pola bilangan yang diberikan",
+    "7, 19 (7+12), 31 (19+12), 43 (31+12), 55 (43+12)",
+    "12, 27 (12+15), 42 (27+15), 57 (42+15), 72 (57+15)",
+    "96, 85 (96-11), 74 (85-11), 63 (74-11), 52 (63-11)",
+  ],
   ketukan: [
     k(
       "Ayo berlatih. Latihan satu: tujuh, sembilan belas, tiga puluh satu, empat puluh tiga. Selisihnya dua belas, jadi bilangan berikutnya lima puluh lima.",
@@ -61,7 +66,7 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
   judul: "Latihan 4 dan 5",
   sumber: "Materi: latihan pola bilangan",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b3b-materi-2.ts:2"),
+  kutipan: ["91, 77 (91-14), 63 (77-14) , 49 (63-14), 35 (49-14)", "13, 22 (13+9), 31 (22+9), 40 (31+9), 49 (40+9), 58 (49+9)"],
   ketukan: [
     k(
       "Latihan empat: sembilan puluh satu, tujuh puluh tujuh, enam puluh tiga. Selisihnya kurang empat belas, jadi dua kotak berikutnya empat puluh sembilan dan tiga puluh lima.",
@@ -122,7 +127,16 @@ export const ADEGAN_BERLATIH_CERITA: AdeganStory = {
   judul: "Latihan 6 sampai 8: soal cerita",
   sumber: "Materi: latihan soal cerita",
   latar: "#F0FDFA",
-  kutipan: kutipanLokal("k4b3b-materi-2.ts:3"),
+  kutipan: [
+    "Ali diberi tugas oleh guru untuk menata buku pada rak di perpustakaan.",
+    "Banyak buku yang ditata oleh Ali pada rak kelima adalah 21 buah",
+    "Di suatu gedung pertemuan terdapat 10 baris kursi",
+    "Banyak kursi pada baris kelima adalah 32 kursi",
+    "Banyak kursi pada baris ketujuh adalah 38 kursi",
+    "Suatu pabrik elektronik memproduksi televisi selama setahun penuh",
+    "Banyak televisi yang diproduksi pada bulan Juni adalah 40 buah",
+    "Banyak televisi yang diproduksi pada bulan Agustus adalah 28 buah",
+  ],
   ketukan: [
     k(
       "Latihan enam: Ali menata lima pensil di rak pertama, sembilan di rak kedua, tiga belas di rak ketiga. Selisihnya empat, jadi rak keempat tujuh belas dan rak kelima dua puluh satu pensil.",
@@ -181,7 +195,17 @@ export const ADEGAN_REKAP_BEDA: AdeganStory = {
   judul: "Rekap beda tiap latihan",
   sumber: "Materi: rekap beda dan cara belajar",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b3b-materi-2.ts:4"),
+  kutipan: [
+    "Selama proses pembelajaran sering terjadi adanya keberagaman",
+    "Meningkatkan motivasi peserta didik.",
+    "Menciptakan suasana belajar yang nyaman dan kreatif.",
+    "Memilih model pembelajaran yang tepat.",
+    "tutor sebaya",
+    "minta mereka untuk membuat pola bilangan sendiri",
+    "baik itu dalam bentuk soal bilangan biasa ataupun soal penerapan",
+    "dalam kehidupan sehari-hari (kontekstual) beserta cara untuk menyelesaikannya",
+    "guru dapat mendampingi dan memberikan latihan tambahan bagi peserta didik yang masih mengalami kesulitan",
+  ],
   ketukan: [
     k(
       "Rekap delapan latihan tadi: bedanya tambah dua belas, tambah lima belas, kurang sebelas, kurang empat belas, tambah sembilan, tambah empat, tambah tiga, dan kurang enam. Lima soal membesar, tiga soal mengecil.",
@@ -234,7 +258,13 @@ export const ADEGAN_UK_GAMBAR: AdeganStory = {
   judul: "Uji 1 sampai 4: pola gambar",
   sumber: "Materi: uji pola gambar",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b3b-materi-2.ts:5"),
+  kutipan: [
+    "Uji Kompetensi",
+    "Tentukan banyak benda yang sesuai dengan pola gambar yang diberikan!",
+    "Banyak benda selanjutnya sesuai pola gambar adalah 9",
+    "Banyak benda selanjutnya sesuai pola gambar adalah 8",
+    "Banyak benda selanjutnya sesuai pola gambar adalah 4",
+  ],
   ketukan: [
     k(
       "Sekarang kita uji kemampuan dengan sepuluh soal. Uji satu sampai empat memakai pola gambar. Uji satu: bulatan hijau satu, tiga, lima, tujuh. Bedanya dua, jadi gambar berikutnya sembilan bulatan.",
@@ -297,7 +327,13 @@ export const ADEGAN_UK_BILANGAN: AdeganStory = {
   judul: "Uji 5 sampai 8: pola bilangan",
   sumber: "Materi: uji pola bilangan",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b3b-materi-2.ts:6"),
+  kutipan: [
+    "Tentukan bilangan yang tepat sesuai pola bilangan yang diberikan!",
+    "5, 9(5+4), 13(9+4), 17(13+4), 21(17+4)",
+    "6, 12(6+6), 18(12+6), 24(18+6), 30(24+6)",
+    "34, 27(34-7), 20(27-7), 13(20-7), 6(13-7)",
+    "40, 34(40-6), 28(34-6), 22(28-6), 16(22-6), 10(16-6)",
+  ],
   ketukan: [
     k(
       "Uji lima: lima, sembilan, tiga belas, tujuh belas. Selisihnya empat, jadi bilangan berikutnya dua puluh satu.",

@@ -1,7 +1,7 @@
 import type { Obj } from "./logika-story";
 
 /**
- * Gambar khusus Story Kelas 5 Bab 4 Sub-Bab A (apakah keliling bangun datar itu): lapangan sepak bola 100 m kali 50 m dengan rute lari Igil, Kira, Halim, dan Upe,
+ * Gambar khusus Story Kelas 5 Bab 4 Sub-Bab A (apakah keliling bangun datar itu): lapangan sepak bola 100 m kali 50 m dengan rute lari Nisa, Lukas, Yohana, dan Asep,
  * denah benteng, bingkai, serta dua bangun bersisi empat pada Buku Siswa hlm. 114. Berkas ini TIDAK dipakai bab lain.
  * Semua fungsi mengembalikan data benda (Obj) untuk mesin Story.
  */
@@ -97,8 +97,8 @@ export const ukuranLapangan = (id: string, x: number, y: number, w: number = LAP
 /**
  * Rute lari, relatif terhadap pojok kiri-atas lapangan 180 kali 90 piksel (100 m kali 50 m). Panjang tiap ruas yang lurus penuh 180 piksel = 100 m atau 90 piksel = 50 m;
  * sambungan pendek 4 sampai 6 piksel hanya menggeser garis supaya ruas yang sama tidak saling menimpa.
- * Igil: tiga ruas sepanjang sisi 100 m. Kira: enam ruas sepanjang sisi 50 m. Halim: satu ruas 50 m dari start ke garis tengah, lalu lima ruas 50 m di garis tengah.
- * Upe: empat ruas mengelilingi tepian, 100 m, 50 m, 100 m, 50 m.
+ * Nisa: tiga ruas sepanjang sisi 100 m. Lukas: enam ruas sepanjang sisi 50 m. Yohana: satu ruas 50 m dari start ke garis tengah, lalu lima ruas 50 m di garis tengah.
+ * Asep: empat ruas mengelilingi tepian, 100 m, 50 m, 100 m, 50 m.
  */
 export const RUTE = {
   nisa: "M0 86 L180 86 L180 80 L0 80 L0 74 L180 74",

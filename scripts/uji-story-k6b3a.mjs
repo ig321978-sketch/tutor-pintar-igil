@@ -151,10 +151,10 @@ for (const v of VIDEO) {
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,pembuka-fort,kontainer,eksplorasi-31,dua-balok,latihan-31,pak-hasan", "urutan adegan materi");
-  for (const kata of ["Fort Rotterdam", "Makassar", "Igil", "Kira", "kontainer", "Royal Caravan", "arsitek", "prisma segitiga", "batu bata", "penyangga", "dua balok", "Pak Halim", "Latihan", "Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  for (const kata of ["Fort Rotterdam", "Makassar", "Tigor", "Tenri", "kontainer", "Royal Caravan", "arsitek", "prisma segitiga", "batu bata", "penyangga", "dua balok", "Pak Hasan", "Latihan", "Hati-hati", "Tantangan", "Renungan"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
   // Isi lengkap (termasuk adegan yang tidak diputar) tetap memuat butir tujuan, pertanyaan pemantik, peta konsep, dan mengingat kembali.
   const penuh = teksVideo(MFULL);
-  for (const kata of ["Fort Rotterdam", "Pertanyaan pemantik", "peta konsep", "mengingat kembali", "12 rusuk", "Pak Halim", "Renungan"]) cek(new RegExp(kata, "i").test(penuh), `materi lengkap memuat ${kata}`);
+  for (const kata of ["Fort Rotterdam", "Pertanyaan pemantik", "peta konsep", "mengingat kembali", "12 rusuk", "Pak Hasan", "Renungan"]) cek(new RegExp(kata, "i").test(penuh), `materi lengkap memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luara-lapis", "luara-lapis-terapan", "luara-sangga", "luara-putar", "luara-jejak", "luara-jejak-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[1].id === "luara-pembuka" && U.adegan[U.adegan.length - 1].id === "luara-ringkas" && M_VIDEO.adegan.length === 7 && U.adegan.length === 9, "7 adegan materi diputar (dengan sapaan) dan 9 adegan metode luar (dengan sapaan)");
@@ -253,7 +253,7 @@ for (const v of VIDEO) {
   const kotak2 = [[0, 0, 0], [1, 0, 0], [0, 1, 0], [1, 1, 0]];
   const balok4 = [[0, 0, 0], [1, 0, 0], [2, 0, 0], [3, 0, 0]];
   cek(kanon(kotak2) !== kanon(balok4) && kotak2.length === balok4.length, "dua balok: dua susunan berbeda dengan jumlah kubus sama");
-  // Tantangan Pak Halim: 30 kardus 20 x 30 x 50, tinggi gudang 310 cm.
+  // Tantangan Pak Hasan: 30 kardus 20 x 30 x 50, tinggi gudang 310 cm.
   const dim = [20, 30, 50];
   const volume = 30 * dim[0] * dim[1] * dim[2];
   sama([dim[0] * dim[1] * dim[2], volume], [30000, 900000], "volume satu kardus dan 30 kardus");
@@ -289,7 +289,7 @@ for (const v of VIDEO) {
   for (const f of berkas.filter((x) => x.startsWith("k6b3a-"))) {
     const s = readFileSync(new URL(f, folder), "utf8");
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k6b3a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k6b3a sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k6b3a-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k6b3a sendiri (${impor.join(", ")})`);
   }
   // mesin tidak memakai kit visual lama
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");

@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bagi, botol, emo, gelas, kartu, kotak, panah, pecahan, teks } from "./k6b1b-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k6b1b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Tantangan: cara Rini ------------------------------ */
 export const ADEGAN_RINI: AdeganStory = {
@@ -9,7 +8,13 @@ export const ADEGAN_RINI: AdeganStory = {
   judul: "Tantangan: cara Rini dan cerita sendiri",
   sumber: "Materi: tantangan cara Rini",
   latar: "#FDF2F8",
-  kutipan: kutipanLokal("k6b1b-materi-2.ts:1"),
+  kutipan: [
+    "Rini menyelesaikan pembagian pecahan dengan cara berikut",
+    "Apakah cara yang dilakukan Rini tepat? Diskusikan dengan teman kalian",
+    "Ayo Berpikir Kritis",
+    "Ayo Berpikir Kreatif",
+    "Buatlah sebuah cerita atau masalah lain yang menyatakan",
+  ],
   ketukan: [
     k(
       "Sekarang ada Tantangan. Rini menghitung empat per tiga dibagi 2 dengan cara ini: 4 dibagi 2 sama dengan 2, penyebut 3 tetap.",
@@ -67,17 +72,26 @@ export const ADEGAN_EKSPLOR14A: AdeganStory = {
   judul: "Bagian a sampai c: 3 liter dibagi gelas kecil",
   sumber: "Materi: 3 liter dibagi gelas kecil",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k6b1b-materi-2.ts:2"),
+  kutipan: [
+    "2. Pembagian Bilangan Asli dengan Pecahan",
+    "Agam menyiapkan 3 liter jus jeruk untuk acara keluarga di rumahnya",
+    "gelas yang berkapasitas",
+    "Berapa gelas jus jeruk yang disiapkan Agam",
+    "Eksplorasi 1.4",
+    "Banyak gelas",
+    "Agam juga menyiapkan 3 liter jus jambu untuk acara tersebut",
+    "Agam juga menyiapkan 3 liter air mineral untuk acara tersebut",
+  ],
   ketukan: [
     k(
-      "Bagian dua membagi bilangan asli dengan pecahan. Malosi menyiapkan 3 liter jus jeruk untuk acara keluarga di rumahnya.",
+      "Bagian dua membagi bilangan asli dengan pecahan. Agam menyiapkan 3 liter jus jeruk untuk acara keluarga di rumahnya.",
       tambah(0, teks("jud", 150, 24, "2. Bilangan asli dibagi pecahan", 11, W.ungu)),
-      tambah("Malosi", botol("bj0", 100, 56, W.jeruk), botol("bj1", 143, 56, W.jeruk), botol("bj2", 186, 56, W.jeruk)),
+      tambah("Agam", botol("bj0", 100, 56, W.jeruk), botol("bj1", 143, 56, W.jeruk), botol("bj2", 186, 56, W.jeruk)),
       tambah("3", teks("l0", 107, 108, "1 L", 9), teks("l1", 150, 108, "1 L", 9), teks("l2", 193, 108, "1 L", 9)),
       tambah("jus", teks("lj", 150, 134, "3 liter jus jeruk", 11, W.jeruk)),
     ),
     k(
-      "Jus itu dituang ke gelas berkapasitas satu per empat liter. Berapa gelas yang disiapkan Malosi?",
+      "Jus itu dituang ke gelas berkapasitas satu per empat liter. Berapa gelas yang disiapkan Agam?",
       tambah("gelas", gelas("gk", 112, 150, W.jeruk)),
       tambah("satu", pecahan("pk", 160, 164, "1", "4", 10, W.merah), teks("pkl", 182, 168, "liter", 9)),
       tambah("Berapa", teks("br", 150, 202, "berapa gelas?", 10, W.merah)),
@@ -123,7 +137,18 @@ export const ADEGAN_EKSPLOR14B: AdeganStory = {
   judul: "Bagian d dan e, lalu aturan kebalikan",
   sumber: "Materi: bagian d, e, dan kebalikan",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k6b1b-materi-2.ts:3"),
+  kutipan: [
+    "Yang dapat saya simpulkan adalah",
+    "Agam memiliki 3 liter air mineral",
+    "botol yang berkapasitas",
+    "Mengapa ketika membagi bilangan asli dengan pecahan menghasilkan bilangan",
+    "Dalam 1 liter air terdapat 4 bagian dari",
+    "Dalam 3 liter air terdapat 12 bagian dari",
+    "Ingat kembali pembelajaran perkalian pecahan sebelumnya",
+    "Membagi bilangan asli dengan pecahan berarti menentukan banyaknya",
+    "Untuk membagi bilangan dengan pecahan, kalian dapat mengalikan",
+    "bilangan asli dengan kebalikan dari pecahan",
+  ],
   ketukan: [
     k(
       "Bagian d. Dari tiga kegiatan tadi, hasilnya selalu lebih besar daripada 3, sebab kita menghitung bagian pecahan di dalam 3 liter.",
@@ -134,7 +159,7 @@ export const ADEGAN_EKSPLOR14B: AdeganStory = {
       tambah("menghitung", teks("r4", 150, 176, "hasil lebih besar dari 3", 11, W.merah)),
     ),
     k(
-      "Bagian e. Malosi punya 3 liter air mineral dan botol berkapasitas dua per lima liter. Berapa botol yang diperoleh Malosi?",
+      "Bagian e. Agam punya 3 liter air mineral dan botol berkapasitas dua per lima liter. Berapa botol yang diperoleh Agam?",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Bagian e: 3 ÷ 2/5", 12, W.ungu)),
       tambah("liter", bagi("ba", kolX[0], 70, 84, 26, 5, 2, W.air), bagi("bb", kolX[1], 70, 84, 26, 5, 2, W.air), bagi("bc", kolX[2], 70, 84, 26, 5, 2, W.air)),

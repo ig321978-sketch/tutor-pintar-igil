@@ -105,10 +105,10 @@ export const huruf = (id: string, ox: number, oy: number, s: number, p: Titik, i
 /** Eksplorasi 5.3, Buku Siswa hlm. 158: bangun ABCDE pada petak. */
 export const EKS: Record<"A" | "B" | "C" | "D" | "E", Titik> = { A: [0, 2], B: [1, 4], C: [5, 2], D: [6, 0], E: [1, 0] };
 export const EKS_BANGUN: Titik[] = [EKS.A, EKS.B, EKS.C, EKS.D, EKS.E];
-/** Cara Upe: layang-layang AECB (diagonal 5 dan 4) dan segitiga EDC (alas 5, tinggi 2). */
+/** Cara Yohana: layang-layang AECB (diagonal 5 dan 4) dan segitiga EDC (alas 5, tinggi 2). */
 export const EKS_LAYANG: Titik[] = [[0, 2], [1, 0], [5, 2], [1, 4]];
 export const EKS_SEGITIGA_ATAS: Titik[] = [[1, 0], [6, 0], [5, 2]];
-/** Cara Wei: jajargenjang AEDC (alas 5, tinggi 2) dan segitiga ABC (alas 5, tinggi 2). */
+/** Cara Komang: jajargenjang AEDC (alas 5, tinggi 2) dan segitiga ABC (alas 5, tinggi 2). */
 export const EKS_JAJAR: Titik[] = [[0, 2], [1, 0], [6, 0], [5, 2]];
 export const EKS_SEGITIGA_BAWAH: Titik[] = [[0, 2], [1, 4], [5, 2]];
 /** Persegi panjang pembatas 6 x 4 dan tiga potongan pojok yang dibuang (metode luar). */

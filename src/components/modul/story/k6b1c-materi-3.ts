@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, arsir, arsirPita, barisTabel, emo, garis, kartu, kisi, kotak, pecahan, pita, teks } from "./k6b1c-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k6b1c-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Latihan 1 dan 2: kain dan suhu ------------------------------ */
 const LS = [150, 70];
@@ -25,7 +24,14 @@ export const ADEGAN_LATIHAN13A: AdeganStory = {
   judul: "Latihan 1 dan 2: kain dan suhu",
   sumber: "Materi: Latihan 1 dan 2",
   latar: "#FDF2F8",
-  kutipan: kutipanLokal("k6b1c-materi-3.ts:1"),
+  kutipan: [
+    "Latihan 1.3",
+    "Rina mendapat beberapa pesanan kain dari para pelanggannya",
+    "Gambarlah bentuk pecahan",
+    "Jika dinyatakan dalam bentuk desimal",
+    "Biro Pusat Statistik (BPS) mencatat suhu tertinggi di beberapa provinsi di Indonesia pada tahun 2015",
+    "Urutkan kelima provinsi tersebut berdasarkan suhunya dari yang tertinggi",
+  ],
   ketukan: [
     k(
       "Latihan satu: Rina mendapat pesanan kain sepanjang tiga perempat meter. Gambarlah tiga perempat pada persegi, lalu tulis nilainya dalam desimal.",
@@ -83,7 +89,13 @@ export const ADEGAN_LATIHAN13B: AdeganStory = {
   judul: "Latihan 3 dan 4: lompat jauh dan nilai gizi",
   sumber: "Materi: Latihan 3 dan 4",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k6b1c-materi-3.ts:2"),
+  kutipan: [
+    "Arman, Bayu, dan Didi mengikuti lomba lompat jauh",
+    "Siapakah yang melompat paling jauh dan paling dekat",
+    "Perhatikan gambar Informasi Nilai Gizi di salah satu kemasan makanan berikut",
+    "Kandungan zat apakah yang paling besar komposisinya dan berapakah komposisinya",
+    "Urutkan kandungan zat berdasarkan komposisinya dari yang terkecil hingga terbesar",
+  ],
   ketukan: [
     k(
       "Latihan tiga: lomba lompat jauh. Arman melompat tiga koma tujuh meter, Didi dua koma sembilan meter, dan Bayu tiga koma enam meter. Siapa yang paling jauh dan paling dekat?",
@@ -132,7 +144,19 @@ export const ADEGAN_UJI: AdeganStory = {
   judul: "Uji 1 sampai 5",
   sumber: "Materi: Uji 1 sampai 5",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k6b1c-materi-3.ts:3"),
+  kutipan: [
+    "Bagaimana cara kalian membandingkan dua bilangan desimal",
+    "Bagaimana cara kalian mengurutkan bilangan desimal",
+    "Setelah mempelajari keseluruhan materi pada Pecahan dan Desimal, ayo berefleksi",
+    "Apakah kalian telah mengetahui cara perkalian pecahan",
+    "Apakah kalian dapat mengurutkan bilangan desimal",
+    "Uji Kompetensi",
+    "Pak Arman dan keluarganya berangkat dari Jakarta menuju Surabaya dan menempuh jarak 630 km",
+    "Dini mendapat pesanan 100 porsi nasi kotak",
+    "Dalam sehari keluarga Dias mengonsumsi",
+    "Rania memiliki",
+    "Pak Made mengecat dinding kelasnya untuk memperingati Hari Kemerdekaan Republik Indonesia",
+  ],
   ketukan: [
     k(
       "Uji satu: Pak Arman menempuh enam ratus tiga puluh kilometer dan istirahat setelah dua per lima perjalanan. Enam ratus tiga puluh dibagi lima sama dengan seratus dua puluh enam, lalu dikali dua jadi dua ratus lima puluh dua.",
@@ -143,10 +167,10 @@ export const ADEGAN_UJI: AdeganStory = {
       tambah("dikali", teks("j2", 150, 152, "126 x 2 = 252 km", 14, W.hijau)),
     ),
     k(
-      "Uji dua: Upe menyelesaikan tiga perempat dari seratus porsi nasi kotak. Satu per empat dari seratus adalah dua puluh lima, jadi tiga perempat adalah tujuh puluh lima porsi.",
+      "Uji dua: Dini menyelesaikan tiga perempat dari seratus porsi nasi kotak. Satu per empat dari seratus adalah dua puluh lima, jadi tiga perempat adalah tujuh puluh lima porsi.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Uji 2: 3/4 dari 100 porsi", 12, W.ungu)),
-      tambah("Upe", emo("nk", 40, 74, "🍱", 28), pita("nb", 70, 50, 200, 36, 4)),
+      tambah("Dini", emo("nk", 40, 74, "🍱", 28), pita("nb", 70, 50, 200, 36, 4)),
       tambah("tiga", arsirPita("na", 70, 50, 200, 36, 4, 0, 3)),
       tambah("lima", teks("n1", 150, 120, "100 : 4 = 25", 13)),
       tambah("tujuh", teks("n2", 150, 144, "25 x 3 = 75 porsi", 14, W.hijau)),
@@ -186,10 +210,18 @@ export const ADEGAN_PENGAYAAN: AdeganStory = {
   judul: "Tantangan: pecahan kali pecahan, pecahan bagi pecahan, desimal tak berhenti",
   sumber: "Materi: Tantangan",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k6b1c-materi-3.ts:4"),
+  kutipan: [
+    "Pengayaan",
+    "Tangki penyimpanan air di rumah Agam hanya terisi",
+    "Agam memiliki 3 gelas air",
+    "Agam memiliki",
+    "gelas air. Agam memindahkan air tersebut ke dalam botol yang lain",
+    "Rani memiliki",
+    "Kalian boleh menggunakan kalkulator untuk menemukan jawabannya",
+  ],
   ketukan: [
     k(
-      "Tantangan satu: tangki air Igil terisi setengah, lalu sepertiga dari isinya dipakai. Bagi setengah menjadi tiga bagian sama besar, ambil satu, yaitu seperenam.",
+      "Tantangan satu: tangki air Agam terisi setengah, lalu sepertiga dari isinya dipakai. Bagi setengah menjadi tiga bagian sama besar, ambil satu, yaitu seperenam.",
       tambah(0, teks("jud", 150, 22, "Tantangan 1: 1/3 dari 1/2", 12, W.ungu)),
       tambah("tangki", pita("tk", 40, 44, 220, 56, 2)),
       tambah("setengah", arsirPita("tk1", 40, 44, 220, 56, 2, 0, 1, W.arsir2)),

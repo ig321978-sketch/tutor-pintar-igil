@@ -158,8 +158,8 @@ const benda = (keadaan, id) => keadaan.find((o) => o.id === id);
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,skala-83a,vertikal-83b,seagames-tanya,horizontal-83c,lele,ganda-83d,gabung-83e,latihan-data,uji-12,uji-3", "urutan adegan materi");
   cek(M_VIDEO.adegan[0].id === "sapaan" && U.adegan[0].id === "sapaan", "tiap video dibuka adegan sapaan");
-  for (const kata of ["Sea Games", "Pak Malosi", "Latihan", "Uji 1", "Uji 2", "Uji 3", "Tantangan", "Renungan", "Hati-hati", "2\\.684\\.000", "122", "103\\.000", "47\\.000", "1\\.620", "255", "260", "34,10", "30,70", "13,10", "3,40", "1\\.493", "557", "267"]) cek(new RegExp(kata).test(materi + semuaTeks(M_VIDEO).join("|")), `video materi memuat ${kata}`);
-  for (const kata of ["kalori", "240", "perpustakaan", "260", "nilai ulangan", "Igil", "Robert", "naik 40", "turun 25", "legenda", "skala"]) cek(new RegExp(kata, "i").test(luar), `video metode luar memuat contoh ${kata}`);
+  for (const kata of ["Sea Games", "Pak Bajuri", "Latihan", "Uji 1", "Uji 2", "Uji 3", "Tantangan", "Renungan", "Hati-hati", "2\\.684\\.000", "122", "103\\.000", "47\\.000", "1\\.620", "255", "260", "34,10", "30,70", "13,10", "3,40", "1\\.493", "557", "267"]) cek(new RegExp(kata).test(materi + semuaTeks(M_VIDEO).join("|")), `video materi memuat ${kata}`);
+  for (const kata of ["kalori", "240", "perpustakaan", "260", "nilai ulangan", "Komang", "Robert", "naik 40", "turun 25", "legenda", "skala"]) cek(new RegExp(kata, "i").test(luar), `video metode luar memuat contoh ${kata}`);
   const ids = V.VIDEO_LUAR_K5B8C.adegan.map((a) => a.id);
   cek(["luar-bcrp", "luar-bcrp-terapan", "luar-asc", "luar-asc-terapan", "luar-cba", "luar-cba-terapan", "luar-dbmt", "luar-dbmt-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(ids[1] === "luar-pembuka" && ids.at(-1) === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
@@ -185,8 +185,8 @@ const benda = (keadaan, id) => keadaan.find((o) => o.id === id);
   const tahun = Object.keys(medali).map(Number);
   const nilaiM = tahun.map((t) => medali[t]);
   sama([medali[2013] - medali[2015], medali[2015] - medali[2017], medali[2019] - medali[2017], medali[2019] - medali[2021]], [18, 9, 34, 3], "Sea Games: turun 2015, turun 2017, naik 2019, turun 2021");
-  cek(medali[2015] - medali[2013] < 0 && medali[2019] - medali[2017] > 0, "Sea Games: tidak selalu menurun (pernyataan Halim salah)");
-  cek(medali[2013] - medali[2015] > medali[2019] - medali[2021], "Sea Games: penurunan 2015 lebih banyak daripada 2021 (Upe benar)");
+  cek(medali[2015] - medali[2013] < 0 && medali[2019] - medali[2017] > 0, "Sea Games: tidak selalu menurun (pernyataan Nisa salah)");
+  cek(medali[2013] - medali[2015] > medali[2019] - medali[2021], "Sea Games: penurunan 2015 lebih banyak daripada 2021 (Asep benar)");
   sama([tahun[nilaiM.indexOf(Math.max(...nilaiM))], tahun[nilaiM.indexOf(Math.min(...nilaiM))]], [2019, 2017], "Sea Games: emas terbanyak 2019 dan tersedikit 2017");
   sama([72 + 84 + 111], [267], "Sea Games 2019: total medali");
   cek(38 > 36 && 38 < 40 && 40 - 36 === 4, "Sea Games: 38 di antara garis kecil 36 dan 40 (langkah 4)");
@@ -211,14 +211,14 @@ const benda = (keadaan, id) => keadaan.find((o) => o.id === id);
   cek(Math.max(...laki) <= 18 && Math.max(...perempuan) <= 18, "siswa: skala 18 cukup untuk kedua diagram");
 
   /* Kalori */
-  sama([50 / 100 * 130, 50 / 100 * 260, 65 + 130 + 60, 3 * 130, 2 * 260, 390 + 520 + 60 + 300 + 350], [65, 130, 255, 390, 520, 1620], "kalori: Upe dan Kira");
-  cek(1620 < 2100, "kalori: Kira di bawah kebutuhan harian anak laki-laki");
+  sama([50 / 100 * 130, 50 / 100 * 260, 65 + 130 + 60, 3 * 130, 2 * 260, 390 + 520 + 60 + 300 + 350], [65, 130, 255, 390, 520, 1620], "kalori: Asep dan Lukas");
+  cek(1620 < 2100, "kalori: Lukas di bawah kebutuhan harian anak laki-laki");
 
   /* Nilai ulangan */
-  const nilai = { Kira: [65, 80], Halim: [70, 85], Igil: [50, 90], Upe: [90, 75], Wei: [85, 80], Robert: [90, 65] };
+  const nilai = { Lukas: [65, 80], Nisa: [70, 85], Komang: [50, 90], Asep: [90, 75], Yohana: [85, 80], Robert: [90, 65] };
   const selisih = Object.entries(nilai).map(([n, [a, b]]) => [n, b - a]);
-  sama(selisih, [["Kira", 15], ["Halim", 15], ["Igil", 40], ["Upe", -15], ["Wei", -5], ["Robert", -25]], "nilai ulangan: selisih tiap anak");
-  sama([selisih.reduce((m, s) => (s[1] > m[1] ? s : m))[0], selisih.reduce((m, s) => (s[1] < m[1] ? s : m))[0], selisih.filter((s) => s[1] < 0).length], ["Igil", "Robert", 3], "nilai ulangan: naik tertinggi, turun terbanyak, tiga yang turun");
+  sama(selisih, [["Lukas", 15], ["Nisa", 15], ["Komang", 40], ["Asep", -15], ["Yohana", -5], ["Robert", -25]], "nilai ulangan: selisih tiap anak");
+  sama([selisih.reduce((m, s) => (s[1] > m[1] ? s : m))[0], selisih.reduce((m, s) => (s[1] < m[1] ? s : m))[0], selisih.filter((s) => s[1] < 0).length], ["Komang", "Robert", 3], "nilai ulangan: naik tertinggi, turun terbanyak, tiga yang turun");
   cek(Math.max(...Object.values(nilai).flat()) === 90 && 90 <= 100, "nilai ulangan: skala sampai 100 cukup");
 
   /* Pengunjung perpustakaan */
@@ -227,11 +227,11 @@ const benda = (keadaan, id) => keadaan.find((o) => o.id === id);
   sama([Math.max(...Object.values(hari)), Math.min(...Object.values(hari)), 60 - 24, jumlah(Object.values(hari)), hari.Kamis - hari.Jumat, hari.Selasa / 4, hari.Jumat / 4], [60, 24, 36, 260, 12, 15, 6], "perpustakaan: tertinggi, terendah, selisih, jumlah, penurunan, kartu piktogram");
   sama(urut, ["Jumat", "Kamis", "Senin", "Sabtu", "Rabu", "Selasa"], "perpustakaan: urutan dari paling sedikit");
 
-  /* Tabungan Halim */
+  /* Tabungan Nisa */
   const lingkaran = [4.25, 6, 5.25, 4.5, 5.75];
   const tabung = lingkaran.map((n) => n * 4000);
-  sama([tabung, jumlah(tabung), tabung[1] - tabung[4], 150000 - jumlah(tabung), jumlah(tabung) < 150000, tabung[3]], [[17000, 24000, 21000, 18000, 23000], 103000, 1000, 47000, true, 18000], "tabungan Halim");
-  sama([tabung.indexOf(Math.max(...tabung)) + 1], [2], "tabungan Halim: paling banyak minggu 2");
+  sama([tabung, jumlah(tabung), tabung[1] - tabung[4], 150000 - jumlah(tabung), jumlah(tabung) < 150000, tabung[3]], [[17000, 24000, 21000, 18000, 23000], 103000, 1000, 47000, true, 18000], "tabungan Nisa");
+  sama([tabung.indexOf(Math.max(...tabung)) + 1], [2], "tabungan Nisa: paling banyak minggu 2");
 
   /* Pengguna internet (dalam persen seperseratus agar bilangan bulat) */
   const usia = { "13-17": [570, 680], "18-24": [1590, 1480], "25-34": [1930, 1480], "35-44": [740, 570], "45-54": [320, 240], "55-64": [100, 70], "65+": [150, 90] };
@@ -331,7 +331,7 @@ const benda = (keadaan, id) => keadaan.find((o) => o.id === id);
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b8c-[a-z0-9-]+)$/.test(i)),`${f}: hanya mengimpor logika dan berkas k5b8c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b8c-[a-z0-9-]+)$/.test(i)),`${f}: hanya mengimpor logika dan berkas k5b8c sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

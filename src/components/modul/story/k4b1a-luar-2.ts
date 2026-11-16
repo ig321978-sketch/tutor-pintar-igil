@@ -1,140 +1,234 @@
-import type { AdeganStory } from "./logika-story";
-import { OWL, W, anak, emo, judul, kartu, papanKepala, papanKolom, teks } from "./k4b1a-gambar";
-import { bersih, hapus, idPilihan, idx, k, pilihBaris, pilihKata, sorotkan, tambah, ubah } from "./k4b1a-bantu";
-import { NAMA_METODE_ID, WARNA_METODE, kepala } from "./k4b1a-luar-1";
+import type { Aksi, AdeganStory } from "./logika-story";
+import { W, TEMPAT, emo, judul, kartu, kartuAngka, panah, papanKepala, papanKolom, teks } from "./k4b1a-gambar";
+import { bersih, idx, k, sorotkan, tambah } from "./k4b1a-bantu";
+import { NAMA_METODE, WARNA_METODE, kepala } from "./k4b1a-luar-1";
 
-/* Rujukan topik: Matematika untuk SD/MI Kelas IV, Bab 1 Sub-Bab A (membaca dan menulis bilangan cacah sampai 10.000). Metode luar; gambar, cerita, dan angka orisinal IGIL. */
+/** Isi papan empat tempat (pojok kiri-atas baris angka (30, 80), lebar 240) bertahap: tiap kolom muncul pada kata ke-`n` yang sama dengan `kata`. */
+const isiBertahap = (id: string, angka: string, suara: string, pemicu: [string, number][]): Aksi[] => pemicu.map(([kata, n], i) => tambah(idx(suara, kata, n), ...papanKolom(id, 30, 80, 240, i, angka[i], 30, 20)));
 
-/* ------------------------------ 4. Papan Empat Tempat: konsep ------------------------------ */
-const SUARA_P1 = "Metode kedua bernama Papan Empat Tempat. Papan ini punya empat kolom untuk empat angka.";
-const SUARA_P2 = "Dengarkan nama bilangannya, enam ribu tiga ratus empat puluh. Lalu isi kolom dari kiri.";
-const SUARA_P3 = "Enam di ribuan, tiga di ratusan, empat di puluhan. Satuan tidak disebut, jadi nol.";
-const SUARA_P4 = "Papan terisi penuh. Bilangannya ditulis dengan titik setelah ribuan.";
-
-export const ADEGAN_LUAR_PAPAN: AdeganStory = {
-  id: "luar-papan",
-  judul: "Papan Empat Tempat: satu kolom satu angka",
-  sumber: "Metode luar: Papan Empat Tempat",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_P1, tambah(0, ...kepala(1)), tambah(idx(SUARA_P1, "papan", 1), ...papanKepala("pp", 10, 58, 280))),
-    k(SUARA_P2, tambah(idx(SUARA_P2, "enam"), ...kartu("nm", 20, 114, 260, 40, W.krem, ["enam ribu", "tiga ratus empat puluh"], 11))),
-    k(
-      SUARA_P3,
-      tambah(idx(SUARA_P3, "Enam"), ...papanKolom("pp", 10, 73, 280, 0, "6")),
-      tambah(idx(SUARA_P3, "tiga"), ...papanKolom("pp", 10, 73, 280, 1, "3")),
-      tambah(idx(SUARA_P3, "empat"), ...papanKolom("pp", 10, 73, 280, 2, "4")),
-      tambah(idx(SUARA_P3, "nol."), ...papanKolom("pp", 10, 73, 280, 3, "0")),
-    ),
-    k(SUARA_P4, tambah(idx(SUARA_P4, "Bilangannya"), ...kartu("bl", 80, 160, 140, 34, W.emas, ["6.340"], 22))),
-  ],
-};
-
-/* ------------------------------ 5. Papan Empat Tempat: terapan ------------------------------ */
-const SUARA_Q1 = "Terapkan pada papan Kira. Papan berisi dua, nol, sembilan, dan satu.";
-const SUARA_Q2 = "Bagaimana membaca bilangan ini? Ketuk jawaban yang tepat.";
-const SUARA_Q3 = "Betul! Ratusan nol tidak dibaca, jadi dua ribu sembilan puluh satu.";
-const SUARA_Q4 = "Kolom ratusan yang kosong tetap harus ada. Ia menjaga angka lain pada tempatnya.";
-
-export const ADEGAN_LUAR_PAPAN_TERAPAN: AdeganStory = {
-  id: "luar-papan-terapan",
-  judul: "Papan Empat Tempat: papan Kira",
-  sumber: "Metode luar: Papan Empat Tempat",
-  latar: "#DBEAFE",
-  ketukan: [
-    k(
-      SUARA_Q1,
-      tambah(0, ...kepala(1), ...papanKepala("pp", 10, 52, 280)),
-      tambah(idx(SUARA_Q1, "dua,"), ...papanKolom("pp", 10, 67, 280, 0, "2")),
-      tambah(idx(SUARA_Q1, "nol,"), ...papanKolom("pp", 10, 67, 280, 1, "0")),
-      tambah(idx(SUARA_Q1, "sembilan,"), ...papanKolom("pp", 10, 67, 280, 2, "9")),
-      tambah(idx(SUARA_Q1, "satu."), ...papanKolom("pp", 10, 67, 280, 3, "1")),
-    ),
-    k(SUARA_Q2, tambah(idx(SUARA_Q2, "Ketuk"), ...pilihBaris(110, ["dua ribu sembilan ratus satu", "dua ribu sembilan puluh satu", "dua ribu sembilan belas"], 10))),
-    k(SUARA_Q3, sorotkan(idx(SUARA_Q3, "Betul!"), "c2-k")),
-    k(SUARA_Q4, hapus(0, ...idPilihan(3)), sorotkan(idx(SUARA_Q4, "kosong"), "pp-d1"), tambah(idx(SUARA_Q4, "Ia"), ...kartu("bl", 80, 116, 140, 36, W.emas, ["2.091"], 22))),
-  ],
-};
-
-/* ------------------------------ 6. Nol Penjaga Tempat: konsep ------------------------------ */
-const SUARA_Z1 = "Metode ketiga bernama Nol Penjaga Tempat. Angka nol bertugas menjaga tempat yang kosong.";
-const SUARA_Z2 = "Perhatikan bilangan tiga ribu enam. Tiga di ribuan, enam di satuan, ratusan dan puluhan kosong.";
-const SUARA_Z3 = "Kalau nol tidak ditulis, tiga dan enam berdempetan. Bilangannya menjadi tiga puluh enam.";
-const SUARA_Z4 = "Nol menjaga tempat ratusan dan puluhan. Jadi tiga tetap di ribuan, dan enam tetap di satuan.";
+/* ------------------------------ 6. Zero as Placeholder: konsep ------------------------------ */
+const SUARA_Z1 = "Metode ketiga, Zero as Placeholder, atau Nol Penjaga Tempat. Nol tidak disebut saat membaca, tetapi nol tetap harus ditulis supaya angka lain berada di kolom yang benar.";
+const SUARA_Z2 = "Coba hapus dua nol dari tujuh ribu tiga. Yang tersisa hanya tujuh dan tiga, dan dibaca tujuh puluh tiga. Nilainya berubah jauh.";
+const SUARA_Z3 = "Nol menjaga kolom ratusan dan puluhan tetap ada. Dengan begitu tujuh tetap di ribuan dan tiga tetap di satuan.";
+const SUARA_Z4 = "Aturan membaca: nol dilewati, bukan dihapus. Aturan menulis: kolom yang tidak disebut diisi nol.";
 
 export const ADEGAN_LUAR_NOL: AdeganStory = {
   id: "luar-nol",
-  judul: "Nol Penjaga Tempat: nol menjaga kolom kosong",
-  sumber: "Metode luar: Nol Penjaga Tempat",
-  latar: "#FDF2F8",
+  judul: "Zero as Placeholder: nol menjaga tempat",
+  sumber: "Metode luar: Zero as Placeholder",
+  latar: "#FFFBEB",
   ketukan: [
-    k(SUARA_Z1, tambah(0, ...kepala(2)), tambah(idx(SUARA_Z1, "nol"), emo("nl", 150, 118, "0", 80, { warna: W.merah }))),
+    k(
+      SUARA_Z1,
+      tambah(0, judul("Zero as Placeholder")),
+      tambah("ketiga,", kepala(2)),
+      tambah("membaca", ...papanKepala("za", 30, 62, 240, TEMPAT, 8.4, 18)),
+      tambah("membaca", ...papanKolom("za", 30, 80, 240, 0, "7", 30, 20), ...papanKolom("za", 30, 80, 240, 1, "0", 30, 20), ...papanKolom("za", 30, 80, 240, 2, "0", 30, 20), ...papanKolom("za", 30, 80, 240, 3, "3", 30, 20)),
+      sorotkan("ditulis", "za-d1", "za-d2"),
+      tambah("kolom", teks("zb", 150, 140, "7.003: nol dibaca? tidak. ditulis? ya", 9.4, W.merah)),
+    ),
     k(
       SUARA_Z2,
-      hapus(0, "nl"),
-      tambah(0, ...papanKepala("pp", 10, 58, 280)),
-      tambah(idx(SUARA_Z2, "tiga", 2), ...papanKolom("pp", 10, 73, 280, 0, "3")),
-      tambah(idx(SUARA_Z2, "enam", 2), ...papanKolom("pp", 10, 73, 280, 3, "6")),
-      tambah(idx(SUARA_Z2, "kosong."), ...papanKolom("pp", 10, 73, 280, 1, "?"), ...papanKolom("pp", 10, 73, 280, 2, "?")),
+      bersih(0),
+      tambah(0, judul("Tanpa nol, nilainya berubah"), kepala(2)),
+      tambah("hapus", teks("zc", 80, 92, "7.003", 28, W.biru)),
+      tambah("tersisa", panah("zd", 130, 84, 40, 0, W.merah, 3), teks("ze", 230, 92, "73", 28, W.merah)),
+      tambah("dibaca", teks("zf", 230, 116, "tujuh puluh tiga", 8.6, W.coklat)),
+      tambah("berubah", emo("zg", 150, 160, "⚠", 26)),
     ),
     k(
       SUARA_Z3,
-      tambah(idx(SUARA_Z3, "Bilangannya"), ...kartu("sl", 170, 122, 120, 34, W.merahMuda, ["36"], 22), teks("sl-n", 230, 170, "tanpa nol", 9, W.merah)),
+      bersih(0),
+      tambah(0, judul("Nol menjaga tempat di 7.003"), kepala(2)),
+      tambah(0, ...papanKepala("zh", 30, 62, 240, TEMPAT, 8.4, 18), ...[0, 1, 2, 3].flatMap((i) => papanKolom("zh", 30, 80, 240, i, "7003"[i], 30, 20))),
+      sorotkan("menjaga", "zh-d1", "zh-d2"),
+      tambah("tujuh", teks("zi", 60, 128, "7 di ribuan", 8.4, W.coklat)),
+      tambah("tiga", teks("zj", 240, 128, "3 di satuan", 8.4, W.coklat)),
     ),
     k(
       SUARA_Z4,
-      ubah(idx(SUARA_Z4, "ratusan"), { id: "pp-dt1", isi: "0" }),
-      ubah(idx(SUARA_Z4, "puluhan."), { id: "pp-dt2", isi: "0" }),
-      tambah(idx(SUARA_Z4, "tiga"), ...kartu("bl", 10, 122, 120, 34, W.emas, ["3.006"], 22)),
+      bersih(0),
+      tambah(0, judul("Dua aturan untuk nol")),
+      tambah("membaca:", ...kartu("zk", 14, 40, 272, 44, W.hijauMuda, ["membaca: nol dilewati,", "bukan dihapus"], 9.6)),
+      tambah("menulis:", ...kartu("zl", 14, 100, 272, 44, W.langit, ["menulis: kolom yang tidak", "disebut diisi nol"], 9.6)),
     ),
   ],
 };
 
-/* ------------------------------ 7. Nol Penjaga Tempat: terapan ------------------------------ */
-const SUARA_Y1 = "Terapkan pada bilangan ini. Halim mendengar lima ribu tiga. Bagaimana menuliskannya?";
-const SUARA_Y2 = "Ketuk tulisan yang tepat untuk nama itu.";
-const SUARA_Y3 = "Betul! Tiga ada di satuan. Ratusan dan puluhan dijaga oleh nol.";
-const SUARA_Y4 = "Lima di ribuan, nol di ratusan, nol di puluhan, dan tiga di satuan.";
+/* ------------------------------ 7. Zero as Placeholder: penerapan ------------------------------ */
+const SUARA_Y1 = "Terapan pertama, tujuh ribu tiga. Ratusan dan puluhan tidak disebut, jadi keduanya diisi nol: tujuh, nol, nol, tiga.";
+const SUARA_Y2 = "Terapan kedua, enam ribu lima ratus tujuh puluh. Satuan tidak disebut, jadi satuan diisi nol: enam, lima, tujuh, nol.";
+const SUARA_Y3 = "Terapan ketiga, seribu dua puluh lima. Ratusan tidak disebut, jadi diisi nol: satu, nol, dua, lima.";
+const SUARA_Y4 = "Terapan keempat: enam ribu dua. Ratusan dan puluhan nol: enam, nol, nol, dua. Tanpa nol penjaga, tulisannya menjadi enam puluh dua.";
 
 export const ADEGAN_LUAR_NOL_TERAPAN: AdeganStory = {
   id: "luar-nol-terapan",
-  judul: "Nol Penjaga Tempat: bilangan Halim",
-  sumber: "Metode luar: Nol Penjaga Tempat",
-  latar: "#FCE7F3",
+  judul: "Zero as Placeholder: 7.003, 6.570, 1.025, 6.002",
+  sumber: "Metode luar: Zero as Placeholder, terapan",
+  latar: "#FFFBEB",
   ketukan: [
-    k(SUARA_Y1, tambah(0, ...kepala(2)), tambah(idx(SUARA_Y1, "Halim"), ...anak("halim", 40, 80)), tambah(idx(SUARA_Y1, "lima"), ...kartu("nm", 90, 62, 190, 40, W.krem, ["lima ribu tiga"], 14))),
-    k(SUARA_Y2, tambah(idx(SUARA_Y2, "Ketuk"), ...pilihKata(130, ["5.300", "5.030", "5.003"], 16))),
-    k(SUARA_Y3, sorotkan(idx(SUARA_Y3, "Betul!"), "c3-k"), tambah(idx(SUARA_Y3, "oleh"), emo("ok", 150, 182, "✅", 24))),
+    k(
+      SUARA_Y1,
+      tambah(0, judul("Terapan: 7.003"), kepala(2)),
+      tambah(0, ...papanKepala("ya", 30, 62, 240, TEMPAT, 8.4, 18)),
+      ...isiBertahap("ya", "7003", SUARA_Y1, [["tujuh", 2], ["nol", 2], ["nol", 3], ["tiga", 2]]),
+      sorotkan(idx(SUARA_Y1, "nol", 3), "ya-d1", "ya-d2"),
+    ),
+    k(
+      SUARA_Y2,
+      bersih(0),
+      tambah(0, judul("Terapan: 6.570"), kepala(2)),
+      tambah(0, ...papanKepala("yb", 30, 62, 240, TEMPAT, 8.4, 18)),
+      ...isiBertahap("yb", "6570", SUARA_Y2, [["enam", 2], ["lima", 2], ["tujuh", 2], ["nol", 2]]),
+      sorotkan(idx(SUARA_Y2, "nol", 2), "yb-d3"),
+    ),
+    k(
+      SUARA_Y3,
+      bersih(0),
+      tambah(0, judul("Terapan: 1.025"), kepala(2)),
+      tambah(0, ...papanKepala("yc", 30, 62, 240, TEMPAT, 8.4, 18)),
+      ...isiBertahap("yc", "1025", SUARA_Y3, [["satu", 1], ["nol", 2], ["dua", 2], ["lima", 2]]),
+      sorotkan(idx(SUARA_Y3, "nol", 2), "yc-d1"),
+    ),
     k(
       SUARA_Y4,
-      hapus(0, "ok", ...idPilihan(3), "an-halim", "an-halim-bd", "an-halim-lb"),
-      tambah(0, ...papanKepala("pp", 10, 104, 280)),
-      tambah(idx(SUARA_Y4, "Lima"), ...papanKolom("pp", 10, 119, 280, 0, "5")),
-      tambah(idx(SUARA_Y4, "nol", 1), ...papanKolom("pp", 10, 119, 280, 1, "0")),
-      tambah(idx(SUARA_Y4, "nol", 2), ...papanKolom("pp", 10, 119, 280, 2, "0")),
-      tambah(idx(SUARA_Y4, "tiga"), ...papanKolom("pp", 10, 119, 280, 3, "3")),
+      bersih(0),
+      tambah(0, judul("Terapan: 6.002"), kepala(2)),
+      tambah(0, ...papanKepala("yd", 30, 62, 240, TEMPAT, 8.4, 18)),
+      ...isiBertahap("yd", "6002", SUARA_Y4, [["enam", 2], ["nol", 2], ["nol", 3], ["dua", 2]]),
+      tambah("Tanpa", ...kartu("ye", 14, 128, 272, 44, W.merahMuda, ["tanpa nol penjaga: 62", "salah, dibaca enam puluh dua"], 9.4), emo("yf", 262, 170, "❌", 18)),
     ),
   ],
 };
 
-/* ------------------------------ 9. Ringkasan metode luar ------------------------------ */
-const SUARA_R1 = "Mari kita ringkas tiga metode dari luar. Semuanya membantu kita membaca dan menulis bilangan.";
-const SUARA_R2 = "Metode Balok Empat Tingkat, bilangan disusun dari peti, dus, bungkus, dan benda.";
-const SUARA_R3 = "Metode Papan Empat Tempat, tiap angka menempati satu kolom.";
-const SUARA_R4 = "Metode Nol Penjaga Tempat, angka nol menjaga tempat yang kosong.";
-const SUARA_R5 = "Pilih metode yang kamu suka, lalu periksa dengan metode lain. Hasilnya harus sama.";
+/* ------------------------------ 8. Say-Write-Show: konsep ------------------------------ */
+const SUARA_U1 = "Metode keempat, Say-Write-Show, atau Ucap, Tulis, Tunjuk. Dua teman berpasangan dan melakukan tiga gerakan berurutan.";
+const SUARA_U2 = "Gerakan pertama, ucap: satu teman menyebut nama bilangan dengan jelas. Gerakan kedua, tulis: teman lain menuliskannya dengan angka.";
+const SUARA_U3 = "Gerakan ketiga, tunjuk: keduanya menata kartu angka sesuai tulisan. Bila ucapan, tulisan, dan kartu cocok, jawabannya benar. Bila tidak, mereka berdiskusi.";
+const SUARA_U4 = "Lalu peran ditukar. Dengan begitu kedua teman sama-sama melatih membaca dan menulis bilangan, seperti kerja kelompok dengan kartu bilangan kita.";
 
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Metode luar: ringkasan",
-  latar: "#FFF7ED",
+export const ADEGAN_LUAR_UCAP: AdeganStory = {
+  id: "luar-ucap",
+  judul: "Say-Write-Show: ucap, tulis, tunjuk",
+  sumber: "Metode luar: Say-Write-Show",
+  latar: "#FDF2F8",
   ketukan: [
-    k(SUARA_R1, tambah(0, judul("Ringkasan")), tambah(idx(SUARA_R1, "ringkas"), ...kartu("r0", 14, 34, 272, 30, W.emas, ["3 metode dari luar"], 11))),
-    k(SUARA_R2, tambah(idx(SUARA_R2, "Balok"), ...kartu("r1", 14, 72, 272, 34, WARNA_METODE[0], [NAMA_METODE_ID[0], "disusun dari peti sampai benda"], 9.2))),
-    k(SUARA_R3, tambah(idx(SUARA_R3, "Papan"), ...kartu("r2", 14, 114, 272, 34, WARNA_METODE[1], [NAMA_METODE_ID[1], "satu kolom untuk satu angka"], 9.2))),
-    k(SUARA_R4, tambah(idx(SUARA_R4, "Nol"), ...kartu("r3", 14, 156, 272, 34, WARNA_METODE[2], [NAMA_METODE_ID[2], "nol menjaga tempat kosong"], 9.2))),
-    k(SUARA_R5, bersih(0), tambah(0, judul("Hasilnya harus sama"), emo("rw", 150, 100, OWL, 54)), tambah(idx(SUARA_R5, "sama."), emo("rk", 150, 160, "✅", 30))),
+    k(
+      SUARA_U1,
+      tambah(0, judul("Say-Write-Show")),
+      tambah("keempat,", kepala(3)),
+      tambah("berpasangan", emo("ua", 50, 100, "🗣", 36), teks("ua1", 50, 120, "ucap", 9.4, W.biru)),
+      tambah("tiga", emo("ub", 150, 100, "✏", 36), teks("ub1", 150, 120, "tulis", 9.4, W.biru)),
+      tambah("berurutan.", emo("uc", 250, 100, "👆", 36), teks("uc1", 250, 120, "tunjuk", 9.4, W.biru), panah("ud", 80, 96, 40, 0, W.biru, 2), panah("ue", 180, 96, 40, 0, W.biru, 2)),
+    ),
+    k(
+      SUARA_U2,
+      bersih(0),
+      tambah(0, judul("Ucap dan tulis"), kepala(3)),
+      tambah("pertama,", emo("uf", 40, 100, "🗣", 32), ...kartu("ug", 70, 66, 216, 40, W.krem, ["ucap: satu teman menyebut", "nama bilangan dengan jelas"], 8.8)),
+      tambah("kedua,", emo("uh", 40, 156, "✏", 32), ...kartu("ui", 70, 122, 216, 40, W.langit, ["tulis: teman lain menulis", "bilangannya dengan angka"], 8.8)),
+    ),
+    k(
+      SUARA_U3,
+      bersih(0),
+      tambah(0, judul("Tunjuk dan periksa"), kepala(3)),
+      tambah("ketiga,", emo("uj", 40, 100, "👆", 32), ...kartu("uk", 70, 62, 216, 36, W.hijauMuda, ["tunjuk: tata kartu angka", "sesuai tulisan"], 8.8)),
+      tambah("cocok,", ...kartu("ul", 20, 112, 126, 36, W.emas, ["ucapan = tulisan = kartu", "benar"], 8.4), emo("um", 156, 138, "✅", 20)),
+      tambah("tidak,", ...kartu("un", 176, 112, 108, 36, W.merahMuda, ["tidak cocok:", "berdiskusi"], 8.4)),
+    ),
+    k(
+      SUARA_U4,
+      bersih(0),
+      tambah(0, judul("Tukar peran"), kepala(3)),
+      tambah("peran", emo("uo", 60, 110, "🧒", 38), emo("up", 240, 110, "👧", 38), panah("uq", 100, 96, 100, 0, W.biru, 2.4), panah("ur", 200, 118, -100, 0, W.biru, 2.4)),
+      tambah("kerja", ...kartu("us", 40, 144, 220, 34, W.emas, ["bergantian ucap, tulis, tunjuk"], 9.4)),
+    ),
   ],
 };
 
+/* ------------------------------ 9. Say-Write-Show: penerapan ------------------------------ */
+const SUARA_V1 = "Terapan dengan bilangan lain. Teman pertama mengucap: sembilan ribu empat puluh lima.";
+const SUARA_V2 = "Teman kedua menulis: sembilan, nol, empat, lima. Tulisannya sama dengan bilangan yang diucapkan.";
+const SUARA_V3 = "Keduanya menunjuk kartu angka sembilan, nol, empat, dan lima, lalu membaca kartu itu. Ucapan, tulisan, dan kartu cocok.";
+const SUARA_V4 = "Giliran tukar: teman kedua mengucap enam ribu dua. Bila hanya menulis enam dua, kartu menunjukkan nol di ratusan dan puluhan hilang. Yang benar enam, nol, nol, dua.";
+
+export const ADEGAN_LUAR_UCAP_TERAPAN: AdeganStory = {
+  id: "luar-ucap-terapan",
+  judul: "Say-Write-Show: 9.045 dan 6.002",
+  sumber: "Metode luar: Say-Write-Show, terapan",
+  latar: "#FDF2F8",
+  ketukan: [
+    k(
+      SUARA_V1,
+      tambah(0, judul("Terapan: 9.045"), kepala(3)),
+      tambah("pertama", emo("va", 40, 100, "🧒", 38)),
+      tambah("mengucap:", emo("vb", 80, 80, "🗣", 24), ...kartu("vc", 100, 70, 186, 44, W.krem, ["Sembilan ribu", "empat puluh lima"], 10.4)),
+    ),
+    k(
+      SUARA_V2,
+      bersih(0),
+      tambah(0, judul("Teman kedua menulis"), kepala(3)),
+      tambah("kedua", emo("vd", 40, 100, "👧", 38)),
+      tambah("menulis:", ...kartu("ve", 90, 66, 190, 50, W.putih, ["9.045"], 22)),
+      tambah("sama", ...kartu("vf", 40, 130, 220, 30, W.emas, ["tulisan sama dengan ucapan"], 9.6)),
+    ),
+    k(
+      SUARA_V3,
+      bersih(0),
+      tambah(0, judul("Menunjuk kartu angka"), kepala(3)),
+      tambah("sembilan", ...kartuAngka("vg0", 44, 70, "9", W.krem, 40, 50, 26)),
+      tambah("nol,", ...kartuAngka("vg1", 100, 70, "0", W.hijauMuda, 40, 50, 26)),
+      tambah("empat,", ...kartuAngka("vg2", 156, 70, "4", W.langit, 40, 50, 26)),
+      tambah("lima,", ...kartuAngka("vg3", 212, 70, "5", W.pink, 40, 50, 26)),
+      tambah("cocok.", emo("vh", 150, 160, "✅", 30)),
+    ),
+    k(
+      SUARA_V4,
+      bersih(0),
+      tambah(0, judul("Tukar: 6.002"), kepala(3)),
+      tambah("mengucap", ...kartu("vi", 40, 60, 220, 26, W.krem, ["ucap: enam ribu dua"], 9.6)),
+      tambah("hanya", ...kartu("vj", 14, 96, 128, 44, W.merahMuda, ["ditulis 6 2", "kartu: 62"], 9.2), emo("vk", 130, 156, "❌", 20)),
+      tambah("Yang", ...kartu("vl", 158, 96, 128, 44, W.hijauMuda, ["ditulis 6 0 0 2", "kartu: 6.002"], 9.2), emo("vm", 274, 156, "✅", 20)),
+    ),
+  ],
+};
+
+/* ------------------------------ 10. Ringkasan ------------------------------ */
+const SUARA_R1 = "Ringkasan empat metode. Dienes Blocks membangun bilangan dari balok peti, dus, bungkus, dan benda lepas.";
+const SUARA_R2 = "Place-Value Chart menaruh angka di kolom ribuan, ratusan, puluhan, dan satuan. Zero as Placeholder menjaga nol supaya kolom tidak bergeser.";
+const SUARA_R3 = "Say-Write-Show melatih ucap, tulis, dan tunjuk bergantian bersama teman.";
+const SUARA_R4 = "Keempatnya menuju hasil yang sama: membaca dan menulis bilangan empat angka dengan benar. Pilih yang cocok untukmu, lalu periksa lagi dengan kartu angka.";
+
+const CONTOH_RINGKAS = ["3.286", "2.634", "7.003", "9.045"];
+const BARIS_RINGKAS = ["balok peti, dus, bungkus, benda", "angka di kolom papan", "nol menjaga tempat", "ucap, tulis, tunjuk"];
+
+export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
+  id: "luar-ringkas",
+  judul: "Ringkasan empat metode dari luar",
+  sumber: "Ringkasan metode luar",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_R1,
+      tambah(0, judul("Ringkasan empat metode")),
+      tambah("Dienes", ...kartu("r0", 10, 34, 280, 30, WARNA_METODE[0], [`${NAMA_METODE[0]}: ${BARIS_RINGKAS[0]}`], 8.6)),
+    ),
+    k(
+      SUARA_R2,
+      tambah("Place-Value", ...kartu("r1", 10, 72, 280, 30, WARNA_METODE[1], [`${NAMA_METODE[1]}: ${BARIS_RINGKAS[1]}`], 8.6)),
+      tambah("Zero", ...kartu("r2", 10, 110, 280, 30, WARNA_METODE[2], [`${NAMA_METODE[2]}: ${BARIS_RINGKAS[2]}`], 8.6)),
+    ),
+    k(
+      SUARA_R3,
+      tambah("Say-Write-Show", ...kartu("r3", 10, 148, 280, 30, WARNA_METODE[3], [`${NAMA_METODE[3]}: ${BARIS_RINGKAS[3]}`], 8.6)),
+    ),
+    k(
+      SUARA_R4,
+      bersih(0),
+      tambah(0, judul("Satu tujuan")),
+      tambah("Keempatnya", ...CONTOH_RINGKAS.map((c, i) => kartu(`rc${i}`, 14 + (i % 2) * 140, 34 + Math.floor(i / 2) * 44, 130, 36, WARNA_METODE[i], [c], 16)).flat()),
+      tambah("membaca", ...kartu("rd", 30, 130, 240, 30, W.emas, ["membaca dan menulis bilangan empat angka"], 9)),
+      tambah("kartu", emo("re", 150, 186, "✅", 22)),
+    ),
+  ],
+};

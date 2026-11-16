@@ -145,7 +145,7 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
       sorotkan("kalikan", "re-a"),
     ),
     k(
-      "Subbab A selesai. Berikutnya Subbab B tentang pembagian pecahan, dimulai dari botol Wei yang berisi 1 liter air.",
+      "Subbab A selesai. Berikutnya Subbab B tentang pembagian pecahan, dimulai dari botol Agam yang berisi 1 liter air.",
       bersih(0),
       tambah(0, judul("Subbab A selesai")),
       tambah("Berikutnya", ...kartu("sb", 60, 36, 180, 36, "#FEF9C3", ["Subbab B: pembagian pecahan"], 10)),

@@ -82,7 +82,7 @@ export const LATIHAN_EMPAT: readonly (readonly [number, number, number])[] = [
   [11, 12, 13],
 ];
 export const KUNCI_EMPAT = ["<", "<", ">", ">", "<"] as const;
-/** Ayo Berlatih 5: tongkat Wei 3/6 meter, tongkat Malosi 2/6 meter. */
+/** Ayo Berlatih 5: tongkat Asep 3/6 meter, tongkat Azizah 2/6 meter. */
 export const TONGKAT = { penyebut: 6, asep: 3, azizah: 2 } as const;
 
 /* ------------------------------ Pecahan, batang, lingkaran, segi enam ------------------------------ */

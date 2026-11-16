@@ -4,17 +4,17 @@ import { bersih, k, redamkan, sorotkan, tambah, ubah } from "./k6b4a-bantu";
 
 const tanah = kotak("tanah", 0, 160, 300, 48, "#BBF7D0", "none", { z: -1, rx: 0 });
 
-/* ------------------------------ 1. Pagi Kira dan berita (hlm. 100 sampai 102) ------------------------------ */
+/* ------------------------------ 1. Pagi Dhien dan berita (hlm. 100 sampai 102) ------------------------------ */
 export const ADEGAN_PAGI: AdeganStory = {
   id: "pagi-dhien",
-  judul: "Pagi Kira dan berita bencana",
-  sumber: "Materi: pagi hari Kira",
+  judul: "Pagi Dhien dan berita bencana",
+  sumber: "Materi: pagi hari Dhien",
   latar: "#FFF1D6",
   ketukan: [
-    k("Cerita Bab empat dimulai di pagi hari. Kira terbangun mendengar ayam tetangga berkokok.", tambah(0, tanah, emo("matahari", 252, 36, "☀️", 26), rumah("rm", 40, 112)), tambah("Bab", teks("bab", 150, 22, "Bab 4: Peluang", 12, W.ungu)), tambah("ayam", emo("ayam", 205, 156, "🐓", 24)), tambah("berkokok", teks("kok", 232, 126, "kukuruyuk!", 8, W.merah))),
-    k("Di serambi rumah, Ayah Kira menikmati secangkir kopi. Dinding rumah mereka retak akibat gempa bumi tahun lalu.", tambah("Ayah", emo("ayah", 128, 156, "👨", 22)), tambah("kopi", emo("kopi", 150, 156, "☕", 12)), tambah("retak", retakan("r", 72, 114)), tambah("gempa", teks("gempa", 75, 182, "gempa bumi tahun lalu", 7.5, W.merah))),
+    k("Cerita Bab empat dimulai di pagi hari. Dhien terbangun mendengar ayam tetangga berkokok.", tambah(0, tanah, emo("matahari", 252, 36, "☀️", 26), rumah("rm", 40, 112)), tambah("Bab", teks("bab", 150, 22, "Bab 4: Peluang", 12, W.ungu)), tambah("ayam", emo("ayam", 205, 156, "🐓", 24)), tambah("berkokok", teks("kok", 232, 126, "kukuruyuk!", 8, W.merah))),
+    k("Di serambi rumah, Ayah Dhien menikmati secangkir kopi. Dinding rumah mereka retak akibat gempa bumi tahun lalu.", tambah("Ayah", emo("ayah", 128, 156, "👨", 22)), tambah("kopi", emo("kopi", 150, 156, "☕", 12)), tambah("retak", retakan("r", 72, 114)), tambah("gempa", teks("gempa", 75, 182, "gempa bumi tahun lalu", 7.5, W.merah))),
     k(
-      "Kira menghampiri Ayah yang sedang menonton televisi. Berita di televisi membuat Kira penasaran.",
+      "Dhien menghampiri Ayah yang sedang menonton televisi. Berita di televisi membuat Dhien penasaran.",
       bersih(0),
       tambah(0, tanah, emo("dhien", 50, 160, "👧", 24), emo("ayah", 262, 160, "👨", 24)),
       tambah("televisi", kotak("tv", 100, 34, 130, 104, W.hitam, W.biru, { rx: 8 }), kotak("layar", 106, 40, 118, 92, "#DBEAFE", "none", { rx: 4 })),
@@ -27,7 +27,7 @@ export const ADEGAN_PAGI: AdeganStory = {
       tambah("iklim", teks("b3", 165, 102, "karena perubahan iklim", 7, W.merah)),
     ),
     k(
-      "Kira bertanya, apa maksudnya bencana alam akan lebih sering terjadi? Ia tidak mau mengalami gempa bumi lagi.",
+      "Dhien bertanya, apa maksudnya bencana alam akan lebih sering terjadi? Ia tidak mau mengalami gempa bumi lagi.",
       tambah("bertanya", balon("tanya-b", 46, 58, ["Apa maksudnya", "bencana alam", "lebih sering?"], 76)),
       ubah("gempa", { id: "dhien", skala: 1.15 }),
       tambah("lagi", emo("takut", 82, 160, "😨", 18)),
@@ -51,7 +51,7 @@ export const ADEGAN_PAGI: AdeganStory = {
       tambah("dunia", emo("dunia", 250, 176, "🌍", 22)),
     ),
     k(
-      "Kira ingin peluang terjadinya gempa bumi menurun, bukan meningkat. Apa yang bisa ia lakukan?",
+      "Dhien ingin peluang terjadinya gempa bumi menurun, bukan meningkat. Apa yang bisa ia lakukan?",
       bersih(0),
       tambah(0, teks("gempa-t", 150, 28, "peluang gempa bumi", 11)),
       tambah("menurun", panah("turun", 90, 56, 0, 72, W.hijau, 5, { gambar: true }), teks("l-turun", 90, 150, "menurun", 9, W.hijau)),
@@ -71,7 +71,7 @@ export const ADEGAN_PAGI: AdeganStory = {
       ),
     ),
     k(
-      "Kira berjanji ikut menjaga lingkungan mulai hari ini. Dari cerita ini kita menemukan kata baru, yaitu peluang.",
+      "Dhien berjanji ikut menjaga lingkungan mulai hari ini. Dari cerita ini kita menemukan kata baru, yaitu peluang.",
       bersih(0),
       tambah(0, emo("dhien", 150, 104, "👧", 40)),
       tambah("berjanji", emo("pohon1", 80, 108, "🌳", 30), emo("pohon2", 220, 108, "🌳", 30)),

@@ -2,7 +2,6 @@
 // Memeriksa: pemicu kata, sinkron angka suara dan gambar, perubahan gambar tiap ketukan, keunikan antaradegan, batas kanvas,
 // pemisahan materi dan metode luar, kata terlarang (video diputar seperti guru mengajar), kutipan buku (bila PDF ada), hitungan bilangan mandiri, emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k5b9b.mjs
-import "./muat-kutipan-lokal.mjs";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
 import { spawnSync } from "node:child_process";
@@ -194,7 +193,7 @@ const U = V.VIDEO_LUAR_K5B9B;
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
   cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,sepatu-harga,sepatu-tabel,sepatu-kolom,sepatu-urut,wisatawan-data,wisatawan-urut,latihan-tanda,latihan-barisan,refleksi-b", "urutan adegan materi");
-  for (const kata of ["Igil", "Kira", "Halim", "sepatu", "Yogyakarta", "wisatawan", "Latihan 1", "Latihan 2", "Tantangan", "Hati-hati", "Renungan", "nilai tempat", "lebih besar", "lebih kecil", "sama dengan", "69\\.968", "1\\.100\\.000"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
+  for (const kata of ["Komang", "Lukas", "Nisa", "sepatu", "Yogyakarta", "wisatawan", "Latihan 1", "Latihan 2", "Tantangan", "Hati-hati", "Renungan", "nilai tempat", "lebih besar", "lebih kecil", "sama dengan", "69\\.968", "1\\.100\\.000"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luarb-kiri", "luarb-kiri-terapan", "luarb-kolom", "luarb-kolom-terapan", "luarb-urut", "luarb-urut-terapan", "luarb-garis", "luarb-garis-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[1].id === "luarb-pembuka" && U.adegan[U.adegan.length - 1].id === "luarb-ringkas" && M_VIDEO.adegan.length === 10 && U.adegan.length === 11, "9 adegan materi diputar ditambah sapaan dan 10 adegan metode luar ditambah sapaan");
@@ -205,13 +204,13 @@ const U = V.VIDEO_LUAR_K5B9B;
 
 /* ------------------------------ Bilangan yang dipakai dalam video, dihitung mandiri ------------------------------ */
 {
-  const sepatu = { Igil: 342231, Kira: 432543, Halim: 232231 };
+  const sepatu = { Komang: 342231, Lukas: 432543, Nisa: 232231 };
   // Eksplorasi 9.2A: urutan, kolom terbesar, dan pembanding pasangan
-  sama(Object.entries(sepatu).sort((p, q) => q[1] - p[1]).map((e) => e[0]), ["Kira", "Igil", "Halim"], "urutan termahal ke termurah: Kira, Igil, Halim");
-  sama(bandingKolom(342231, 232231), ">", "Igil lebih mahal dari Halim");
-  sama(bandingKolom(432543, 342231), ">", "Kira lebih mahal dari Igil");
+  sama(Object.entries(sepatu).sort((p, q) => q[1] - p[1]).map((e) => e[0]), ["Lukas", "Komang", "Nisa"], "urutan termahal ke termurah: Lukas, Komang, Nisa");
+  sama(bandingKolom(342231, 232231), ">", "Komang lebih mahal dari Nisa");
+  sama(bandingKolom(432543, 342231), ">", "Lukas lebih mahal dari Komang");
   const kolomDigit = (n, c) => Number(String(n).padStart(6, "0")[c]);
-  sama([0, 1, 2, 3, 4, 5].map((c) => Object.entries(sepatu).sort((p, q) => kolomDigit(q[1], c) - kolomDigit(p[1], c) || 0)[0][0]).join(), "Kira,Igil,Igil,Kira,Kira,Kira", "pemenang tiap kolom (ribuan seri tiga arah; urutan stabil memilih Igil)");
+  sama([0, 1, 2, 3, 4, 5].map((c) => Object.entries(sepatu).sort((p, q) => kolomDigit(q[1], c) - kolomDigit(p[1], c) || 0)[0][0]).join(), "Lukas,Komang,Komang,Lukas,Lukas,Lukas", "pemenang tiap kolom (ribuan seri tiga arah; urutan stabil memilih Komang)");
   sama([0, 1, 2, 3, 4, 5].map((c) => new Set(Object.values(sepatu).map((n) => kolomDigit(n, c))).size), [3, 2, 1, 2, 2, 2], "banyak nilai berbeda tiap kolom (ribuan sama semua)");
   sama([4 * 100000, 4 * 10000, 2 * 1000, 5 * 100, 4 * 10, 3 * 1], [400000, 40000, 2000, 500, 40, 3], "nilai tempat yang disebut di video");
   // Eksplorasi 9.2B
@@ -239,7 +238,7 @@ const U = V.VIDEO_LUAR_K5B9B;
   cek(232231 > 200000 && 232231 - 200000 < 200000, "luar: 232.231 sedikit setelah 200.000");
   sama([355313, 397951, 416373, 433027, 69968].map((n) => (n < 100000 ? "kosong" : String(n)[0])), ["3", "3", "4", "4", "kosong"], "luar: kelompok ratus ribuan");
   // Penyelarasan gambar dengan bilangan: baris tabel nilai tempat, titik grafik, dan panjang batang
-  const NAMA = { Igil: 342231, Kira: 432543, Halim: 232231, 2016: 355313, 2017: 397951, 2018: 416373, 2019: 433027, 2020: 69968, "432.543": 432543, "342.231": 342231, "445.000": 445000, "545.000": 545000, "69.968": 69968, "355.313": 355313, "657.000": 657000, "675.000": 675000, "876.987": 876987, "876.789": 876789, contoh: 599198 };
+  const NAMA = { Komang: 342231, Lukas: 432543, Nisa: 232231, 2016: 355313, 2017: 397951, 2018: 416373, 2019: 433027, 2020: 69968, "432.543": 432543, "342.231": 342231, "445.000": 445000, "545.000": 545000, "69.968": 69968, "355.313": 355313, "657.000": 657000, "675.000": 675000, "876.987": 876987, "876.789": 876789, contoh: 599198 };
   let baris = 0;
   for (const v of VIDEO) for (const a of v.adegan) {
     a.ketukan.forEach((kt, i) => {
@@ -312,7 +311,7 @@ const U = V.VIDEO_LUAR_K5B9B;
       n += 1;
       cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
-    cek(!globalThis.__KUTIPAN_LOKAL_ADA || n >= 30, `jumlah kutipan buku yang diperiksa (${n})`);
+    cek(n >= 30, `jumlah kutipan buku yang diperiksa (${n})`);
   }
 }
 
@@ -333,7 +332,7 @@ const U = V.VIDEO_LUAR_K5B9B;
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     // larangan berbagi visual: berkas k5b9b hanya mengimpor logika dan berkas k5b9b sendiri
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|kutipan-lokal|sapaan|k5b9b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b9b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b9b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b9b sendiri (${impor.join(", ")})`);
   }
   // mesin tidak memakai kit visual lama
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");

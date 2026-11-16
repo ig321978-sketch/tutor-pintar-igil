@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, emo, kartu, kebun, kepalaTabel, kotak, lahan, panah, pengali, rak, sel, garis, teks } from "./k6b2b-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k6b2b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Rak polybag dan lahan ------------------------------ */
 export const ADEGAN_POLYBAG: AdeganStory = {
@@ -9,7 +8,7 @@ export const ADEGAN_POLYBAG: AdeganStory = {
   judul: "Rak polybag dan lahan menanam",
   sumber: "Materi: rak polybag dan lahan",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k6b2b-materi-1.ts:1"),
+  kutipan: ["Satu rak dapat memuat 6 polybag", "Berapa polybag yang dapat ditampung jika memiliki 3 rak", "diperkirakan dapat menampung 12 bibit tanaman"],
   ketukan: [
     k(
       "Sub-Bab B membahas kesamaan rasio. Kita mulai dari tanaman. Selain pot, kita bisa memakai polybag sebagai media tanam.",
@@ -42,7 +41,7 @@ export const ADEGAN_POLYBAG: AdeganStory = {
       tambah("jarak.", garis("jr", 104, 80, 24, 0, W.merah, 2, { putus: true }), teks("jrt", 116, 70, "jarak", 6.5, W.merah)),
     ),
     k(
-      "Pak Igil menjelaskan bahwa lahan seluas 10 meter persegi diperkirakan dapat menampung 12 bibit tanaman. Catat dua bilangan ini baik-baik, sebab kita akan memakainya terus.",
+      "Pak Wayan menjelaskan bahwa lahan seluas 10 meter persegi diperkirakan dapat menampung 12 bibit tanaman. Catat dua bilangan ini baik-baik, sebab kita akan memakainya terus.",
       sorotkan("lahan", "lh-f"),
       tambah("10", teks("lm", 150, 182, "lahan 10 m²", 11, W.coklat)),
       tambah("12", teks("lb", 150, 200, "12 bibit", 11, W.hijau)),
@@ -66,7 +65,7 @@ export const ADEGAN_EKSPLORASI23: AdeganStory = {
   judul: "Pertanyaan a, b, c: rasio lahan dan bibit",
   sumber: "Materi: rasio lahan dan bibit",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k6b2b-materi-1.ts:2"),
+  kutipan: ["Tuliskan rasio lahan dan bibit tanaman dalam bentuk yang paling sederhana", "Jika lahan yang tersedia seluas 25m2, berapa bibit yang dapat ditanam", "FPB dari 10 dan 12 adalah 2", "campuran semen dan pasir harus dalam perbandingan tertentu agar bangunan kokoh"],
   ketukan: [
     k(
       "Pertanyaan a: tuliskan rasio lahan dan bibit tanaman dalam bentuk paling sederhana. Rasio lahan terhadap bibit adalah 10 banding 12.",

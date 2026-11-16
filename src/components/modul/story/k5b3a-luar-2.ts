@@ -44,7 +44,7 @@ export const ADEGAN_LUAR_CAMPURAN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 7. Mixed to Improper: penerapan pada pita Igil ------------------------------ */
+/* ------------------------------ 7. Mixed to Improper: penerapan pada pita Nisa ------------------------------ */
 const BARIS_CAMPURAN = [
   { id: "r1", y: 62, campuran: "2 2/5", hitung: "(2 × 5) + 2 = 12", hasil: "12/5" },
   { id: "r2", y: 108, campuran: "2 1/4", hitung: "(2 × 4) + 1 = 9", hasil: "9/4" },
@@ -58,13 +58,13 @@ const barisCampuran = (b: (typeof BARIS_CAMPURAN)[number]) => [
 
 export const ADEGAN_LUAR_CAMPURAN_TERAPAN: AdeganStory = {
   id: "luar-campuran-terapan",
-  judul: "Mixed to Improper pada pita Igil",
+  judul: "Mixed to Improper pada pita Nisa",
   sumber: "Metode luar: Mixed to Improper",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      "Terapkan pada pita Igil. Dua dan dua per lima menjadi dua kali lima ditambah dua, yaitu dua belas per lima.",
-      tambah(0, judul("Pita Igil menjadi pecahan biasa")),
+      "Terapkan pada pita Nisa. Dua dan dua per lima menjadi dua kali lima ditambah dua, yaitu dua belas per lima.",
+      tambah(0, judul("Pita Nisa menjadi pecahan biasa")),
       tambah(4, teks("r1-m", 46, 62, "2 2/5", 16, W.biru)),
       tambah("kali", teks("r1-h", 150, 62, "(2 × 5) + 2 = 12", 11, W.biru)),
       tambah("yaitu", teks("r1-r", 254, 62, "12/5", 16, W.merah)),
@@ -168,9 +168,9 @@ export const ADEGAN_LUAR_PATOKAN_TERAPAN: AdeganStory = {
       tambah("Jadi", ...kartu("tj", 80, 164, 140, 28, W.emas, ["3/6 > 2/6"], 12)),
     ),
     k(
-      "Contoh ketiga, lompatan Malosi: tujuh per delapan lebih dari setengah karena tujuh lebih dari empat, tetapi masih kurang dari satu. Sebelas per empat dan tujuh per dua sudah lebih dari satu. Jadi tujuh per delapan paling kecil.",
+      "Contoh ketiga, lompatan Yohana: tujuh per delapan lebih dari setengah karena tujuh lebih dari empat, tetapi masih kurang dari satu. Sebelas per empat dan tujuh per dua sudah lebih dari satu. Jadi tujuh per delapan paling kecil.",
       bersih(0),
-      tambah(0, judul("Lompatan Malosi")),
+      tambah(0, judul("Lompatan Yohana")),
       tambah(0, ...garisPatokan("t3")),
       tambah("setengah", ...patokanTanda("t3")),
       tambah("tujuh", ...titik("p7_8", 7 / 8, "7/8", W.hijau)),
@@ -217,15 +217,15 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("perkiraan", ...kartu("w4", 14, 146, 272, 30, W.pink, ["perkiraan cepat: patokan setengah"], 9.2)),
     ),
     k(
-      "Apa pun metodenya, hasilnya harus sama. Lompatan Malosi dari terjauh: tiga dan satu per dua meter, dua dan tiga per empat meter, tujuh per delapan meter.",
+      "Apa pun metodenya, hasilnya harus sama. Lompatan Yohana dari terjauh: tiga dan satu per dua meter, dua dan tiga per empat meter, tujuh per delapan meter.",
       bersih(0),
       tambah(0, judul("Hasil akhir semua metode")),
       tambah("Apa", ...tabel("kn0", 10, 44, KOLOM_KUNCI, [["Soal", "Urutan", "Arah"]], 22, 8, W.krem)),
-      tambah("Lompatan", ...tabel("kn1", 10, 66, KOLOM_KUNCI, [["Lompatan Malosi", "3 1/2 > 2 3/4 > 7/8", "jauh → dekat"]], 22, 7.6, W.putih)),
+      tambah("Lompatan", ...tabel("kn1", 10, 66, KOLOM_KUNCI, [["Lompatan Yohana", "3 1/2 > 2 3/4 > 7/8", "jauh → dekat"]], 22, 7.6, W.putih)),
     ),
     k(
-      "Pita Igil dari yang terpendek: dua dan satu per empat meter, dua dan dua per lima meter, dua dan satu per dua meter. Hasilnya sama untuk semua metode.",
-      tambah("Pita", ...tabel("kn2", 10, 88, KOLOM_KUNCI, [["Pita Igil", "2 1/4 < 2 2/5 < 2 1/2", "pendek → panjang"]], 22, 7.6, W.putih)),
+      "Pita Nisa dari yang terpendek: dua dan satu per empat meter, dua dan dua per lima meter, dua dan satu per dua meter. Hasilnya sama untuk semua metode.",
+      tambah("Pita", ...tabel("kn2", 10, 88, KOLOM_KUNCI, [["Pita Nisa", "2 1/4 < 2 2/5 < 2 1/2", "pendek → panjang"]], 22, 7.6, W.putih)),
       tambah("Hasilnya", emo("kc", 150, 150, "✅", 28), teks("kt", 150, 172, "hasil semua metode sama", 9.4, W.hijau)),
     ),
   ],

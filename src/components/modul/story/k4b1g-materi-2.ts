@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, emo, judul, kartu, kelompok, kelompokAngka, sisi, susunHasil, susunSimpan, susunSoal, teks } from "./k4b1g-gambar";
 import { bersih, hapus, idx, k, sorotkan, tambah, warnai } from "./k4b1g-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Cara bersusun tanpa menyimpan (Buku Siswa hlm. 41) ------------------------------ */
 const SUARA_S1 = "Cara kedua, bersusun tanpa menyimpan. Dua belas ditulis di atas, empat di bawahnya sejajar angka satuan, lalu tanda kali dan garis.";
@@ -17,7 +16,14 @@ export const ADEGAN_SUSUN_TANPA: AdeganStory = {
   judul: "Perkalian cara bersusun tanpa menyimpan",
   sumber: "Metode: bersusun tanpa menyimpan",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k4b1g-materi-2.ts:1"),
+  kutipan: [
+    "Perkalian cara bersusun tanpa menyimpan",
+    "Perhatikan dengan baik langkah-langkah untuk melakukan perkalian menggunakan cara bersusun",
+    "12 kotak donat, setiap kotak berisi 4 buah donat,",
+    "1 × 4 = 4",
+    "2 × 4 = 8",
+    "Jadi jumlah donat sebanyak 48 buah",
+  ],
   ketukan: [
     k(
       SUARA_S1,
@@ -61,7 +67,12 @@ export const ADEGAN_KELERENG: AdeganStory = {
   judul: "Cara panjang: empat belas tumpuk kelereng",
   sumber: "Metode: cara panjang, kelereng",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b1g-materi-2.ts:2"),
+  kutipan: [
+    "Perkalian cara panjang",
+    "Perhatikan dengan baik langkah-langkah untuk melakukan perkalian menggunakan cara panjang",
+    "14 tumpuk kelereng, setiap tumpuk berisi 5 butir kelereng,",
+    "14 X 5 = (10 + 4) X 5 = (10 X 5) + (4 X 5) = 50 + 20 = 70 butir kelereng",
+  ],
   ketukan: [
     k(
       SUARA_K1,
@@ -104,7 +115,16 @@ export const ADEGAN_SUSUN_SIMPAN: AdeganStory = {
   judul: "Perkalian cara bersusun dengan menyimpan",
   sumber: "Metode: bersusun dengan menyimpan",
   latar: "#ECFEFF",
-  kutipan: kutipanLokal("k4b1g-materi-2.ts:3"),
+  kutipan: [
+    "Perkalian cara bersusun dengan menyimpan",
+    "14 tumpuk kelereng, setiap tumpukan berisi",
+    "5 butir kelereng,",
+    "Perhatikan dengan baik langkah-langkah untuk melakukan perkalian cara bersusun dengan menyimpan",
+    "2 + 5 = 7",
+    "1 × 5 = 5",
+    "4 × 5 = 2 0",
+    "Jadi jumlah kelereng sebanyak 70 butir",
+  ],
   ketukan: [
     k(
       SUARA_M1,
@@ -148,7 +168,15 @@ export const ADEGAN_AYO_MENCOBA: AdeganStory = {
   judul: "Mencoba: delapan pak pensil",
   sumber: "Materi: bersusun pendek",
   latar: "#FEFCE8",
-  kutipan: kutipanLokal("k4b1g-materi-2.ts:4"),
+  kutipan: [
+    "Ayo Mencoba",
+    "Sebuah koperasi sekolah membeli 8 pak pensil tulis untuk dijual",
+    "Setiap pak berisi 12 batang pensil.",
+    "Hitunglah banyaknya pensil yang akan dijual kepada siswa!",
+    "Ayo kerjakan pada buku tulis kalian dengan menggunakan cara bersusun pendek!",
+    "Ayo kita kerjakan dengan menggunakan cara bersusun pendek!",
+    "Jadi banyak pensil tulis yang akan dijual pada siswa adalah sebanyak 96 buah pensil tulis",
+  ],
   ketukan: [
     k(
       SUARA_Y1,

@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, balon, batang, deret, emo, kartu, tabel, teks } from "./k6b2c-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k6b2c-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 3. Latihan bersama: tanaman obat dan masa panen ------------------------------ */
 const T27 = tabel("t", 40, 36, [130, 90], 20, [
@@ -19,19 +18,19 @@ export const ADEGAN_MASA_PANEN: AdeganStory = {
   judul: "Latihan bersama: tanaman obat dan masa panen",
   sumber: "Materi: masa panen tanaman obat",
   latar: "#F7FEE7",
-  kutipan: kutipanLokal("k6b2c-materi-2.ts:1"),
+  kutipan: ["Hari ini Tigor membantu ayahnya menanam beberapa bibit tanaman obat", "Ada enam jenis bibit tanaman obat", "Kumis kucing 12 minggu", "Buah merah 3 tahun", "Kemangi 30 hari"],
   ketukan: [
     k(
-      "Hari ini Kira membantu ayahnya menanam beberapa bibit tanaman obat. Ada enam jenis bibit yang akan ditanam di kebun belakang rumah.",
+      "Hari ini Tigor membantu ayahnya menanam beberapa bibit tanaman obat. Ada enam jenis bibit yang akan ditanam di kebun belakang rumah.",
       tambah(0, teks("jud", 150, 24, "Latihan bersama · Tanaman Obat", 12, W.ungu)),
-      tambah("Kira", emo("tigor", 46, 100, "🧒", 34), teks("tg", 46, 118, "Kira", 8)),
+      tambah("Tigor", emo("tigor", 46, 100, "🧒", 34), teks("tg", 46, 118, "Tigor", 8)),
       tambah("ayahnya", emo("ayah", 106, 100, "👨", 34), teks("ay", 106, 118, "Ayah", 8)),
       tambah("enam", teks("bib", 225, 104, "🌱🌱🌱🌱🌱🌱", 16), teks("jn", 225, 124, "enam jenis bibit", 8, W.hijau)),
     ),
     k(
-      "Kira ingin menanam buah merah di sebelah kemangi. Namun Ayah menjawab, bibit ditanam sesuai masa panennya, supaya yang lebih cepat panen bisa dipanen bersamaan.",
+      "Tigor ingin menanam buah merah di sebelah kemangi. Namun Ayah menjawab, bibit ditanam sesuai masa panennya, supaya yang lebih cepat panen bisa dipanen bersamaan.",
       bersih(0),
-      tambah("Kira", emo("e1", 40, 70, "🧒", 28), balon("b1", 110, 34, ["buah merah di", "sebelah kemangi?"], 96, W.putih)),
+      tambah("Tigor", emo("e1", 40, 70, "🧒", 28), balon("b1", 110, 34, ["buah merah di", "sebelah kemangi?"], 96, W.putih)),
       tambah("Ayah", emo("e2", 260, 120, "👨", 28), balon("b2", 190, 96, ["tanam sesuai", "masa panennya"], 96, "#FEF9C3")),
       tambah("bersamaan.", emo("e3", 150, 176, "🌿", 26), teks("bs", 150, 198, "cepat panen, dipanen bersama", 8, W.hijau)),
     ),
@@ -72,7 +71,7 @@ export const ADEGAN_SATUAN_WAKTU: AdeganStory = {
   judul: "Rasio pada durasi waktu: satuan harus sama",
   sumber: "Materi: rasio pada durasi waktu",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k6b2c-materi-2.ts:2"),
+  kutipan: ["satuan waktu yang digunakan pada besaran rasio tersebut harus sama", "1 jam = 60 menit", "1 tahun = 12 bulan", "Untuk menanam bibit tanaman obat, ayah membutuhkan waktu hanya 10 menit"],
   ketukan: [
     k(
       "Rasio waktu hanya bisa dibuat jika satuan waktunya sama. Hari dibandingkan dengan hari, bukan dengan tahun.",
@@ -120,15 +119,15 @@ export const ADEGAN_SATUAN_WAKTU: AdeganStory = {
       tambah("delapan", teks("r2", 150, 182, "18 : 36 = 1 : 2", 11, W.ungu)),
     ),
     k(
-      "Ayah menanam bibit selama sepuluh menit, sedangkan Kira dua pertiga jam. Dua pertiga dari enam puluh menit adalah empat puluh menit.",
+      "Ayah menanam bibit selama sepuluh menit, sedangkan Tigor dua pertiga jam. Dua pertiga dari enam puluh menit adalah empat puluh menit.",
       bersih(0),
       tambah("Ayah", emo("ea", 40, 54, "👨", 22), batang("ba", 70, 42, 40, 16, W.obatMuda), teks("va", 140, 54, "10 menit", 8, W.biru, { anchor: "start" })),
-      tambah("Kira", emo("et", 40, 94, "🧒", 22), batang("bt", 70, 82, 160, 16, W.hiasMuda), teks("vt", 240, 94, "2/3 jam", 8, W.biru, { anchor: "start" })),
+      tambah("Tigor", emo("et", 40, 94, "🧒", 22), batang("bt", 70, 82, 160, 16, W.hiasMuda), teks("vt", 240, 94, "2/3 jam", 8, W.biru, { anchor: "start" })),
       tambah("enam", teks("h60", 150, 140, "2/3 × 60 menit", 14)),
       tambah("empat", teks("h40", 150, 168, "= 40 menit", 16, W.merah)),
     ),
     k(
-      "Rasio waktu Ayah banding Kira adalah sepuluh banding empat puluh, yaitu satu banding empat. Jadi Ayah empat kali lebih cepat dibandingkan Kira.",
+      "Rasio waktu Ayah banding Tigor adalah sepuluh banding empat puluh, yaitu satu banding empat. Jadi Ayah empat kali lebih cepat dibandingkan Tigor.",
       hapus("Rasio", "h60", "h40"),
       tambah("banding", teks("rs", 150, 140, "10 : 40 = 1 : 4", 20, W.ungu)),
       tambah("Jadi", kartu("cp", 70, 160, 160, "Ayah 4 kali lebih cepat", W.emas, 11)),
@@ -154,7 +153,7 @@ export const ADEGAN_LATIHAN23A: AdeganStory = {
   judul: "Latihan 1: pasar malam, dan Latihan 3: jam dan minggu",
   sumber: "Materi: Latihan 1 dan Latihan 3",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k6b2c-materi-2.ts:3"),
+  kutipan: ["Total pengunjung pasar malam berjumlah 390 orang", "Jika untuk 9 anak-anak terdapat 4 orang dewasa", "Lengkapi tabel rasio untuk mengonversi satuan waktu dari jam ke minggu atau minggu ke jam"],
   ketukan: [
     k(
       "Latihan satu. Total pengunjung pasar malam ada tiga ratus sembilan puluh orang, terdiri atas anak-anak dan orang dewasa.",

@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, bacaanDua, emo, judul, kartu, panah, tabelNilai, digit, teks } from "./k5b9a-gambar";
 import { bersih, k, tambah, warnai } from "./k5b9a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab: sensus penduduk (hlm. 273 sampai 275) ------------------------------ */
 export const ADEGAN_PEMBUKA: AdeganStory = {
@@ -9,7 +8,17 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 9: data sensus penduduk",
   sumber: "Buku Siswa hlm. 273–275",
   latar: "#ECFEFF",
-  kutipan: kutipanLokal("k5b9a-materi-1.ts:1"),
+  kutipan: [
+    "Bilangan Cacah",
+    "Sampai 1.000.000",
+    "Ayo Menyimak",
+    "Gambar 9.1 Jumlah Penduduk Laki-Laki di Beberapa Wilayah di Indonesia",
+    "Data pada gambar merupakan data sensus penduduk",
+    "Bangka Belitung, Gorontalo, dan Papua Barat",
+    "Bagaimana cara membaca dan menuliskan bilangan yang terdiri",
+    "Bagaimana menentukan nilai tempat 6 pada angka",
+    "Kalian akan dapat menjawab pertanyaan tersebut setelah",
+  ],
   ketukan: [
     k(
       "Bab 9 Bilangan Cacah Sampai satu juta dimulai dari data sensus penduduk tahun 2020 di beberapa wilayah Indonesia.",
@@ -60,7 +69,16 @@ export const ADEGAN_TUJUAN: AdeganStory = {
   judul: "Tujuan, peta konsep, dan kata kunci Bab 9",
   sumber: "Buku Siswa hlm. 273–274 dan Buku Panduan Guru hlm. 395–396",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b9a-materi-1.ts:2"),
+  kutipan: [
+    "Tujuan Pembelajaran",
+    "membaca dan menulis bilangan sampai 1.000.000 serta menentukan",
+    "nilai tempatnya",
+    "Peta Konsep",
+    "Nilai Tempat",
+    "Kata Kunci",
+    "Bilangan bulat, bilangan cacah, nilai tempat, komposisi, dekomposisi,",
+    "bilangan cacah sampai 1.000.000",
+  ],
   ketukan: [
     k(
       "Tujuan Pembelajaran bab ini, antara lain, membaca dan menulis bilangan sampai satu juta, serta menentukan nilai tempatnya.",
@@ -115,7 +133,16 @@ export const ADEGAN_MENGINGAT: AdeganStory = {
   judul: "Ayo Mengingat Kembali: bilangan 98.765",
   sumber: "Buku Siswa hlm. 275",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b9a-materi-1.ts:3"),
+  kutipan: [
+    "Ayo Mengingat Kembali",
+    "Pada Bab 1, kalian telah mempelajari cara membaca dan menulis",
+    "bilangan cacah sampai 100.000 serta menentukan nilai tempatnya",
+    "Bagaimana membaca bilangan 98.765?",
+    "Bagaimana menulis",
+    "enam puluh lima",
+    "Tentukan nilai tempat 98.765 pada tabel berikut",
+    "Sepuluh Ribuan Ribuan Ratusan Puluhan Satuan",
+  ],
   ketukan: [
     k(
       "Ayo mengingat kembali. Di Bab 1 kita sudah membaca, menulis, dan menentukan nilai tempat bilangan sampai seratus ribu.",

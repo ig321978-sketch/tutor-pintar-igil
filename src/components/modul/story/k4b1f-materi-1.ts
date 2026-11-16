@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisNT, blok, bulat, emo, garis, judul, kartu, kepalaNT, panah, teks } from "./k4b1f-gambar";
 import { bersih, idx, k, sorotkan, tambah, ubah } from "./k4b1f-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pengalaman belajar, sarana, apersepsi, pemantik, stimulus (Panduan Guru hlm. 54-55) ------------------------------ */
 const SUARA_P1 = "Hari ini kita belajar pengurangan bilangan cacah sampai seribu. Setelah belajar, kamu mampu memahami konsep pengurangan sampai seribu.";
@@ -15,7 +14,19 @@ export const ADEGAN_APERSEPSI: AdeganStory = {
   judul: "Pengalaman belajar, apersepsi, dan stimulus",
   sumber: "Materi: pengantar pengurangan",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b1f-materi-1.ts:1"),
+  kutipan: [
+    "F. Pengurangan Bilangan Cacah sampai 1.000",
+    "Setelah mempelajari sub bab ini, peserta didik diharapkan peserta didik mampu memahami konsep operasi pengurangan bilangan cacah sampai 1.000.",
+    "Permen/kerikil/kelereng/manik-manik",
+    "Secara umum konsep operasi pengurangan dapat diajarkan menggunakan benda konkret.",
+    "Masalah konstekstual yang berkaitan dengan operasi pengurangan sering dijumpai di kehidupan sehari-hari.",
+    "Bagaimana operasi pengurangan dengan tanpa mengambil?",
+    "Bagaimana operasi pengurangan dengan mengambil?",
+    "bagaimana kalian mengurangi 27 dikurangi 19.",
+    "Kemungkinan siswa mengurangi bilangan di tempat satuan 7 dikurangi 9 adalah 2?",
+    "Guru tidak perlu memberikan jawaban yang benar",
+    "karena peserta didik akan menemukan jawabannya setelah mereka melakukan aktivitas pembelajaran.",
+  ],
   ketukan: [
     k(
       SUARA_P1,
@@ -77,7 +88,19 @@ export const ADEGAN_AMATI_BUKU: AdeganStory = {
   judul: "Ayo Mengamati: bacaan di perpustakaan",
   sumber: "Materi: susun panjang tanpa mengambil",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1f-materi-1.ts:2"),
+  kutipan: [
+    "Banyaknya buku pelajaran di perpustakaan adalah 265 buku.",
+    "Pada tahun ajaran baru, buku pelajaran yang dipinjam siswa adalah 132 buku.",
+    "Berapakah banyak buku pelajaran yang masih ada di perpustakaan?",
+    "Cara Susun Panjang",
+    "Menguraikan masing-masing bilangan yang akan dikurangkan",
+    "Kurangkan bilangan sesuai dengan nilai tempatnya",
+    "Lakukan operasi pengurangan dari nilai tempat yang terkecil ke nilai tempat yang terbesar (dari kanan ke kiri)",
+    "Anak hebat, Cara diatas adalah pengurangan cara susun panjang. Sekarang kita lakukan pengurangan cara susun pendek",
+    "Guru harus mengingatkan nilai tempat kepada peserta didik.",
+    "Mengurangi dua bilangan, langkah-langkahnya dengan menyesuaikan posisi nilai tempat.",
+    "Ajak peserta didik mengamati percakapan guru yang diberikan di ilustrasi.",
+  ],
   ketukan: [
     k(
       SUARA_A1,
@@ -146,7 +169,16 @@ export const ADEGAN_SEKALI: AdeganStory = {
   judul: "Susun panjang dengan satu kali mengambil",
   sumber: "Materi: mengambil satu kali",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k4b1f-materi-1.ts:3"),
+  kutipan: [
+    "Pengurangan cara susun panjang dengan satu kali mengambil",
+    "Karena 1 < 9 maka 1 harus mengambil 1 puluhan pada nilai tempat bilangan puluhan",
+    "Uraikan 40 menjadi 30 + 10",
+    "(10 + 1) – 9 = 2, letakkan 2 pada nilai tempat satuan.",
+    "Selanjutnya lakukan pengurangan nilai tempat puluhan dan nilai tempat ratusan",
+    "Jadi 241 – 129 = 100 + 10 + 2 = 112",
+    "Pengurangan cara susun pendek dan panjang, guru perlu menyampaikan istilah",
+    "ketika bilangan di nilai tempat satuan/puluhan pada bilangan pertama kurang dari bilangan kedua.",
+  ],
   ketukan: [
     k(
       SUARA_B1,

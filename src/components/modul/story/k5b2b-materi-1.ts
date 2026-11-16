@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, deretAngka, emo, idSel, judul, kartu, kelipatan, panah, teks, tulisKelipatan } from "./k5b2b-gambar";
 import { bersih, hapus, k, tambah, warnai } from "./k5b2b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const SATU_SAMPAI_12 = Array.from({ length: 12 }, (_, i) => i + 1);
 
@@ -11,7 +10,14 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Subbab B: Kelipatan Persekutuan",
   sumber: "Panduan Guru hlm. 52; Buku Siswa hlm. 38",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k5b2b-materi-1.ts:1"),
+  kutipan: [
+    "B. Kelipatan Persekutuan",
+    "Setelah mempelajari bagian B ini, peserta didik diharapkan dapat",
+    "menentukan kelipatan persekutuan dua bilangan atau lebih,",
+    "menentukan kelipatan persekutuan terkecil dua bilangan atau lebih,",
+    "menyelesaikan masalah yang berkaitan dengan KPK, dan",
+    "membuat kesimpulan dari permasalahan yang berkaitan dengan KPK dan",
+  ],
   ketukan: [
     k(
       "Subbab B, Kelipatan Persekutuan. Di subbab A kita sudah mengenal kelipatan sebuah bilangan. Sekarang dua bilangan kita pertemukan, untuk mencari kelipatan yang sama.",
@@ -52,7 +58,21 @@ export const ADEGAN_PERSIAPAN: AdeganStory = {
   judul: "Sarana, apersepsi, dan pemanasan",
   sumber: "Panduan Guru hlm. 52–53",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b2b-materi-1.ts:2"),
+  kutipan: [
+    "Kebutuhan Sarana Prasarana dan Media Pembelajaran",
+    "Alat tulis",
+    "Lembar fotokopi atau print out kalender Agustus dan September 2022",
+    "sesuai jumlah siswa atau kelompok.",
+    "Awali materi ini dengan mengingatkan peserta didik pada materi sebelumnya,",
+    "yaitu tentang kelipatan bilangan.",
+    "Tunjuk beberapa peserta didik secara",
+    "acak, kemudian minta peserta didik tersebut untuk menyebutkan beberapa",
+    "Penguasaan perkalian",
+    "merupakan materi prasyarat yang penting",
+    "lakukan permainan tepuk bilangan kelipatan secara klasikal.",
+    "seluruh peserta didik bertepuk tangan sekali.",
+    "menyelesaikan masalah yang berkaitan dengan jadwal latihan",
+  ],
   ketukan: [
     k(
       "Sarana yang dibutuhkan sederhana: alat tulis, serta lembar fotokopi atau print out kalender Agustus dan September, sesuai jumlah siswa atau kelompok.",
@@ -111,7 +131,27 @@ export const ADEGAN_TEPUK: AdeganStory = {
   judul: "Ayo Bermain: Tepuk Bilangan 2 dan 3",
   sumber: "Materi: tepuk bilangan kelipatan",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b2b-materi-1.ts:3"),
+  kutipan: [
+    "Eksplorasi 2.2A",
+    "Ayo Bermain",
+    "Namun, kali ini",
+    "aturannya kita tambah, ya.",
+    "Buat kelompok besar.",
+    "Semua siswa boleh duduk di kursi masing-masing.",
+    "Sebutkan bilangan secara berurutan mulai dari 1.",
+    "kalian harus bertepuk tangan tanpa",
+    "kalian harus bilang",
+    "dengan lantang.",
+    "Bagaimana jika kita mendapatkan",
+    "giliran menyebutkan bilangan",
+    "kelipatan 2 dan juga kelipatan 3?",
+    "bertepuk tangan dan mengatakan",
+    "secara bersamaan.",
+    "Apakah ada teman kalian yang terlewat",
+    "Kapan kalian harus bertepuk tangan dan",
+    "Hal penting yang harus dipahami peserta didik",
+    "kelipatan bersama dari dua bilangan atau lebih.",
+  ],
   ketukan: [
     k(
       "Ayo bermain! Kita bermain Tepuk Bilangan Kelipatan lagi, dengan aturan tambahan. Buat kelompok besar, dan semuanya boleh duduk di kursi masing-masing.",

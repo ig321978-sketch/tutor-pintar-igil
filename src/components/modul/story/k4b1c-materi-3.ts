@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { ANGKA_BERPIKIR, CONTOH_A, CONTOH_D, GUNUNG, URUT_KUNCI, URUT_SOAL, W, deret, emo, fmt, judul, kartu, kotak, selTabel, tabelKosong, tabelNilai, teks } from "./k4b1c-gambar";
 import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1c-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 10. Ayo Mengamati: tinggi tiga gunung (Buku Siswa hlm. 21-22; Panduan Guru hlm. 42-43) ------------------------------ */
 const SUARA_G1 = "Ayo Mengamati: mengurutkan bilangan dari terkecil ke terbesar. Indonesia adalah negara kepulauan, dan beberapa pulaunya memiliki gunung.";
@@ -20,7 +19,20 @@ export const ADEGAN_GUNUNG: AdeganStory = {
   judul: "Ayo Mengamati: tinggi tiga gunung",
   sumber: "Materi: tinggi tiga gunung",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1c-materi-3.ts:1"),
+  kutipan: [
+    "Mengurutkan bilangan dari terkecil ke terbesar",
+    "Indonesia merupakan negara kepulauan.",
+    "Beberapa pulau di Indonesia memiliki gunung.",
+    "Pulau Sumatra memiliki gunung aktif yaitu Gunung Sinabung.",
+    "Pulau Jawa memiliki gunung tertinggi yaitu Gunung Semeru.",
+    "Pulau Lombok memiliki Gunung Rinjani.",
+    "Terdapat tiga gunung yang memiliki ketinggian berbeda-beda sebagai berikut.",
+    "Gunung manakah yang tertinggi?",
+    "Kita harus memperhatikan nilai tempat ribuan, ratusan, puluhan, dan satuan.",
+    "Berdasarkan penjelasan di atas, diperoleh 2 kurang dari 3. Jadi, bilangan 2.460",
+    "Guru memberikan contoh kontekstual, misalnya tinggi gunung di Indonesia.",
+    "bilangan menggunakan nilai tempat.",
+  ],
   ketukan: [
     k(
       SUARA_G1,
@@ -76,7 +88,17 @@ export const ADEGAN_URUT: AdeganStory = {
   judul: "Mengurutkan bilangan dan Ayo Berlatih",
   sumber: "Materi: mengurutkan bilangan",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b1c-materi-3.ts:2"),
+  kutipan: [
+    "Selanjutnya, kita membandingkan untuk nilai tempat ratusan dari bilangan",
+    "diperoleh 6 kurang dari 7, sehingga 3.676 <",
+    "Urutan bilangan 3.676, 2.460, dan 3.726 dari terkecil ke terbesar sebagai berikut.",
+    "Salinlah tabel berikut pada buku kalian.",
+    "Isilah titik-titik pada tabel dengan",
+    "angka sesuai nilai tempatnya, kemudian urutkan bilangan 7.570, 5.240, 3.041",
+    "dan 9.941 dari yang terkecil ke terbesar.",
+    "Peserta didik menyalin tabel berikut pada buku mereka masing-masing.",
+    "Jadi, urutan bilangan 7.570, 5.240, 3.041 dan 9.941 dari terkecil ke terbesar",
+  ],
   ketukan: [
     k(
       SUARA_V1,
@@ -144,7 +166,20 @@ export const ADEGAN_BERPIKIR: AdeganStory = {
   judul: "Ayo Berpikir: menyusun bilangan dari empat angka",
   sumber: "Materi: menyusun bilangan dari angka",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k4b1c-materi-3.ts:3"),
+  kutipan: [
+    "Ayo Berpikir",
+    "Diberikan empat angka: 1,5,9,2. Dari empat angka tersebut dapat disusun",
+    "e. Tentukan bilangan terbesar dan terkecil yang disusun dari 4 angka dengan",
+    "a. Susunlah 4 bilangan dari empat angka di atas.",
+    "contoh jawaban: 1.592; 2.951; 5.921; 9.215; 5.129",
+    "b. Tentukan bilangan terbesar dan bilangan terkecil yang disusun dari 4 angka",
+    "dari jawaban a) bilangan terbesar: 9.215 bilangan terkecil: 1.592",
+    "1.592; 2.951; 5.129; 5.921; 9.215",
+    "d. Susunlah bilangan yang terdiri 4 angka di atas dengan syarat angkanya",
+    "contoh jawaban: 1.155; 9.925; 5.119; 2.222; 9.225",
+    "dari jawaban d) bilangan terbesar: 9.925 dan bilangan terkecil 1.155",
+    "bilangan yang lebih besar adalah bilangan 9.999 karena syarat angka boleh",
+  ],
   ketukan: [
     k(
       SUARA_Y1,
@@ -212,7 +247,18 @@ export const ADEGAN_CATATAN: AdeganStory = {
   judul: "Pesan guru dan ringkasan",
   sumber: "Materi: pesan guru dan ringkasan",
   latar: "#FEF2F2",
-  kutipan: kutipanLokal("k4b1c-materi-3.ts:4"),
+  kutipan: [
+    "Miskonsepsi",
+    "Miskonsepsi materi membandingkan mengurutkan bilangan cacah terjadi",
+    "pada membandingkan dua bilangan cacah 4 angka yang dimulai dari",
+    "satuan, puluhan, ratusan baru ribuan.",
+    "Diferensiasi",
+    "minta mereka mengerjakan Latihan tanpa bantuan",
+    "Guru juga dapat memberikan soal-soal tambahan",
+    "adalah Diskusi dan Tanya Jawab",
+    "Apabila karakteristik peserta didik di sekolah/kelas tidak terdapat",
+    "melalui metode diskusi",
+  ],
   ketukan: [
     k(
       SUARA_C1,

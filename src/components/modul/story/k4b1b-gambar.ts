@@ -91,7 +91,7 @@ export const LATIHAN2: readonly (readonly [number, number])[] = [
   [1236, 3],
 ];
 export const KUNCI2 = ["puluhan", "ratusan", "ribuan", "satuan"] as const;
-/** Ayo Berlatih nomor 3 (hlm. 15): harga kue, uang Upe, sisa; kunci Panduan Guru hlm. 37-38. */
+/** Ayo Berlatih nomor 3 (hlm. 15): harga kue, uang Slamet, sisa; kunci Panduan Guru hlm. 37-38. */
 export const SLAMET = { harga: 7350, uang: 9500, sisa: 2150 } as const;
 /** Kunci Panduan Guru hlm. 38 nomor 4: bilangan dan angka tiap tempat. */
 export const KUNCI4: readonly (readonly [number, readonly number[]])[] = [

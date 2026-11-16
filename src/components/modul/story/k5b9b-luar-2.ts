@@ -140,17 +140,17 @@ export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
       tambah("Harganya", teks("dh", 150, 176, "232.231   342.231   432.543", 11, W.ungu)),
     ),
     k(
-      "Halim, 232.231, ada sedikit setelah 200.000. Igil, 342.231, ada di antara 200.000 dan 400.000, lebih dekat ke 400.000.",
-      tambah("Halim,", bulat("pn", xv(232231), Y_G, 3.8, W.biru, W.biru), teks("pnl", xv(232231), 96, "Halim", 8.4)),
-      tambah("Igil,", bulat("pk", xv(342231), Y_G, 3.8, W.emas, W.biru), teks("pkl", xv(342231), 82, "Igil", 8.4)),
+      "Nisa, 232.231, ada sedikit setelah 200.000. Komang, 342.231, ada di antara 200.000 dan 400.000, lebih dekat ke 400.000.",
+      tambah("Nisa,", bulat("pn", xv(232231), Y_G, 3.8, W.biru, W.biru), teks("pnl", xv(232231), 96, "Nisa", 8.4)),
+      tambah("Komang,", bulat("pk", xv(342231), Y_G, 3.8, W.emas, W.biru), teks("pkl", xv(342231), 82, "Komang", 8.4)),
     ),
     k(
-      "Kira, 432.543, berada di antara 400.000 dan 600.000. Karena paling kanan, harganya paling besar.",
-      tambah("Kira,", bulat("pl", xv(432543), Y_G, 3.8, W.hijau, W.biru), teks("pll", xv(432543), 96, "Kira", 8.4)),
+      "Lukas, 432.543, berada di antara 400.000 dan 600.000. Karena paling kanan, harganya paling besar.",
+      tambah("Lukas,", bulat("pl", xv(432543), Y_G, 3.8, W.hijau, W.biru), teks("pll", xv(432543), 96, "Lukas", 8.4)),
       sorotkan("kanan,", "pl"),
     ),
     k(
-      "Dari kiri ke kanan, urutannya Halim, Igil, lalu Kira. Inilah urutan dari termurah sampai termahal.",
+      "Dari kiri ke kanan, urutannya Nisa, Komang, lalu Lukas. Inilah urutan dari termurah sampai termahal.",
       ubah(0, { id: "dh", isi: "232.231 < 342.231 < 432.543" }),
       tambah("Inilah", teks("du", 150, 196, "dari termurah ke termahal", 10, W.merah)),
     ),

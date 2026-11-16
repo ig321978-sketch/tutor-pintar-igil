@@ -1,7 +1,6 @@
 import type { AdeganStory, Aksi } from "./logika-story";
 import { W, emo, garis, kartu, kotak, panah, teks, judul } from "./k5b2a-gambar";
 import { bersih, k, redamkan, sebar, sorotkan, tambah, ubah } from "./k5b2a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka bab: tujuan (Buku Siswa hlm. 29; Panduan Guru hlm. 43) ------------------------------ */
 const TOPIK = ["kelipatan", "kelipatan persekutuan", "KPK", "faktor", "faktor persekutuan", "FPB", "aplikasi KPK dan FPB", "bilangan prima"];
@@ -23,7 +22,16 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
   judul: "Pembuka Bab 2: tujuan pembelajaran",
   sumber: "Buku Siswa hlm. 29; Panduan Guru hlm. 43–44",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b2a-materi-1.ts:1"),
+  kutipan: [
+    "Pada bab ini kalian akan diajak untuk belajar tentang kelipatan,",
+    "faktor persekutuan terbesar (FPB), aplikasi dari KPK dan FPB, dan juga bilangan prima.",
+    "Setelah mempelajari bab ini, peserta didik diharapkan dapat",
+    "2.1 menentukan kelipatan bilangan,",
+    "2.2 menentukan kelipatan persekutuan dua bilangan atau lebih,",
+    "2.4 menentukan faktor suatu bilangan,",
+    "2.11 menyelesaikan masalah yang berkaitan dengan KPK dan FPB,",
+    "Pada bab ini, materi dikemas berbasis aktivitas, termasuk melibatkan beberapa permainan.",
+  ],
   ketukan: [
     k(
       SUARA_P1,
@@ -95,7 +103,15 @@ export const ADEGAN_PETA: AdeganStory = {
   judul: "Peta konsep, kata kunci, dan skema lima subbab",
   sumber: "Buku Siswa hlm. 30; Panduan Guru hlm. 44, 46",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b2a-materi-1.ts:2"),
+  kutipan: [
+    "Peta Konsep",
+    "Kata Kunci",
+    "Kelipatan, kelipatan persekutuan, kelipatan persekutuan terkecil (KPK), faktor, faktor persekutuan, faktor persekutuan terbesar (FPB),",
+    "Peserta didik SD kelas V pada dasarnya masih menyukai kegiatan yang melibatkan permainan.",
+    "Tabel 2.1 Skema Pembelajaran Bab 2",
+    "A. Kelipatan",
+    "Menentukan kelipatan bilangan.",
+  ],
   ketukan: [
     k(
       "Peta konsep bab ini bercabang tiga dari KPK dan FPB, yaitu kelipatan, faktor, dan bilangan prima.",
@@ -153,29 +169,36 @@ export const ADEGAN_RENANG: AdeganStory = {
   judul: "Latihan Renang: cerita pembuka bab",
   sumber: "Materi: cerita latihan renang",
   latar: "#E0F2FE",
-  kutipan: kutipanLokal("k5b2a-materi-1.ts:3"),
+  kutipan: [
+    "Nisa dan Yohana latihan berenang di tempat yang sama.",
+    "Nisa berlatih",
+    "Hari ini, tanggal 3 Agustus, Nisa dan Yohana latihan renang bersama-sama.",
+    "Kapan mereka akan latihan renang bersama kembali?",
+    "Masalah terkait jadwal latihan renang Nisa dan Yohana dapat kita selesaikan dengan menggunakan KPK.",
+    "Perkenalkan bab ini dengan menyimak cerita tentang jadwal latihan renang",
+  ],
   ketukan: [
     k(
-      "Kita mulai dengan cerita Latihan Renang. Wei dan Malosi berlatih berenang di tempat yang sama.",
+      "Kita mulai dengan cerita Latihan Renang. Nisa dan Yohana berlatih berenang di tempat yang sama.",
       tambah(0, judul("Latihan Renang")),
-      tambah("Wei", emo("sn", 90, 92, "🏊", 42), teks("snt", 90, 122, "Wei", 10, W.biru)),
-      tambah("Malosi", emo("sy", 210, 92, "🏊", 42), teks("syt", 210, 122, "Malosi", 10, W.merah)),
+      tambah("Nisa", emo("sn", 90, 92, "🏊", 42), teks("snt", 90, 122, "Nisa", 10, W.biru)),
+      tambah("Yohana", emo("sy", 210, 92, "🏊", 42), teks("syt", 210, 122, "Yohana", 10, W.merah)),
       tambah("tempat", teks("tmp", 150, 168, "di tempat yang sama", 10, W.hijau)),
     ),
     k(
-      "Wei berlatih setiap tiga hari sekali, dan Malosi berlatih setiap empat hari sekali.",
+      "Nisa berlatih setiap tiga hari sekali, dan Yohana berlatih setiap empat hari sekali.",
       bersih(0),
       tambah(0, judul("Jadwal latihan")),
-      tambah("tiga", ...kartu("jn", 14, 60, 128, 64, W.langit, ["Wei", "3 hari sekali"], 10)),
-      tambah("empat", ...kartu("jy", 158, 60, 128, 64, W.merahMuda, ["Malosi", "4 hari sekali"], 10)),
+      tambah("tiga", ...kartu("jn", 14, 60, 128, 64, W.langit, ["Nisa", "3 hari sekali"], 10)),
+      tambah("empat", ...kartu("jy", 158, 60, 128, 64, W.merahMuda, ["Yohana", "4 hari sekali"], 10)),
     ),
     k(
-      "Hari ini, tanggal tiga Agustus, Wei dan Malosi berlatih bersama-sama.",
+      "Hari ini, tanggal tiga Agustus, Nisa dan Yohana berlatih bersama-sama.",
       bersih(0),
       tambah(0, judul("Hari ini")),
       tambah("Hari", emo("kal", 150, 84, "📅", 44)),
       tambah("tiga", ...kartu("tg", 80, 104, 140, 30, W.emas, ["3 Agustus"], 11)),
-      tambah("bersama-sama.", ...kartu("bs", 30, 146, 240, 30, W.hijauMuda, ["Wei dan Malosi latihan bersama"], 9.4)),
+      tambah("bersama-sama.", ...kartu("bs", 30, 146, 240, 30, W.hijauMuda, ["Nisa dan Yohana latihan bersama"], 9.4)),
     ),
     k(
       "Pertanyaannya, kapan mereka akan latihan renang bersama kembali? Coba kalian tebak dulu, jangan buru-buru menjawab.",
@@ -217,7 +240,16 @@ export const ADEGAN_INGAT: AdeganStory = {
   judul: "Ayo Mengingat Kembali: kelipatan dan faktor kelas sebelumnya",
   sumber: "Buku Siswa hlm. 32; Panduan Guru hlm. 48",
   latar: "#FFF1F2",
-  kutipan: kutipanLokal("k5b2a-materi-1.ts:4"),
+  kutipan: [
+    "Ayo Mengingat Kembali",
+    "Di kelas sebelumnya, kalian sudah belajar tentang kelipatan dan faktor.",
+    "1. Sebutkan bilangan kelipatan 2.",
+    "2. Sebutkan bilangan kelipatan 4.",
+    "3. Sebutkan bilangan kelipatan 6.",
+    "4. Tuliskan semua faktor dari 6.",
+    "5. Tuliskan semua faktor dari 10.",
+    "Mintalah peserta didik untuk mencoba mengerjakan bagian Ayo Mengingat Kembali.",
+  ],
   ketukan: [
     k(
       SUARA_I1,

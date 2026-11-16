@@ -2,7 +2,6 @@ import type { AdeganStory } from "./logika-story";
 import type { Obj } from "./logika-story";
 import { LATIHAN_2, W, barisNT, digit3, emo, isiSel, judul, kartu, kepalaNT, tandaAmbil, tandaPendek, teks } from "./k4b1f-gambar";
 import { bersih, idx, k, sorotkan, tambah } from "./k4b1f-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /** Nomor kata terakhir dalam kalimat suara (pemicu untuk gambar penutup ketukan). */
 const akhir = (suara: string): number => suara.split(/\s+/).filter(Boolean).length - 1;
@@ -19,7 +18,17 @@ export const ADEGAN_DUA_KALI: AdeganStory = {
   judul: "Susun panjang dengan dua kali mengambil",
   sumber: "Materi: mengambil dua kali",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b1f-materi-2.ts:1"),
+  kutipan: [
+    "Pengurangan cara susun panjang dengan dua kali mengambil",
+    "Karena 3 < 6 maka 1 harus mengambil 1 puluhan pada nilai tempat bilangan puluhan",
+    "Uraikan 50 menjadi 40 + 10",
+    "(10 + 3) – 6 = 7, letakkan 7 pada nilai tempat satuan.",
+    "Karena 40 < 70 maka 40 harus mengambil 1 ratusan pada nilai tempat bilangan ratusan",
+    "Uraikan 200 menjadi 100 + 100",
+    "(100 + 40) – 70 = 70, letakkan 70 pada nilai tempat puluhan.",
+    "Selanjutnya lakukan pengurangan nilai tempat ratusan",
+    "Jadi 253 – 176 = 70 + 7 = 77",
+  ],
   ketukan: [
     k(
       SUARA_C1,
@@ -94,7 +103,15 @@ export const ADEGAN_PENDEK: AdeganStory = {
   judul: "Susun pendek dengan mengambil",
   sumber: "Materi: susun pendek mengambil",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b1f-materi-2.ts:2"),
+  kutipan: [
+    "Pengurangan cara susun pendek dengan mengambil",
+    "Kurangkan ratusan.",
+    "2 ratusan sudah diambil 1 ratusan sisa 1 ratusan. 1 – 1 = 0 (boleh tidak ditulis)",
+    "1 < 5, ambil 1 puluhan menjadi 11. 11 – 5 = 6",
+    "Kurangkan puluhan.",
+    "3 puluhan < 7 puluhan, ambil 1 ratusan menjadi 13. 13 – 7 = 6",
+    "Jadi 241 – 175 = 66",
+  ],
   ketukan: [
     k(
       SUARA_D1,
@@ -153,7 +170,16 @@ export const ADEGAN_LATIHAN_SATU: AdeganStory = {
   judul: "Latihan 1: cara susun panjang",
   sumber: "Materi: latihan susun panjang",
   latar: "#EFF6FF",
-  kutipan: kutipanLokal("k4b1f-materi-2.ts:3"),
+  kutipan: [
+    "Kerjakan soal berikut pada buku tulis kalian.",
+    "1. Gunakan cara susun panjang untuk pengurangan berikut!",
+    "= 400 + 20 + 2",
+    "= 300 + 70 + 4",
+    "= (400 – 100) + (110 – 40) + (12 – 8)",
+    "= (200 – 200) + (150 – 80) + (17 – 9)",
+    "= 00 + 70 + 8",
+    "= 78",
+  ],
   ketukan: [
     k(
       SUARA_E1,
@@ -233,7 +259,14 @@ export const ADEGAN_LATIHAN_DUA: AdeganStory = {
   judul: "Latihan 2: cara susun pendek",
   sumber: "Materi: latihan susun pendek",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b1f-materi-2.ts:4"),
+  kutipan: [
+    "2. Gunakan cara susun pendek untuk penjumlahan berikut!",
+    "a. 573 – 268 = 305",
+    "b. 422 – 146 = …..",
+    "c. 623 – 292 = …..",
+    "d. 344 – 279 = …..",
+    "Ratusan Puluhan Satuan",
+  ],
   ketukan: [
     k(
       SUARA_F1,

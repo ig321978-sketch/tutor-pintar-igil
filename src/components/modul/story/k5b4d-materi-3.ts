@@ -1,7 +1,6 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { W, bentukBebas, barisTabel, baris, emo, kartu, kotak, labelSisi, panah, segiBeraturan, tanda, teks } from "./k5b4d-gambar";
 import { bersih, k, tambah, ubah } from "./k5b4d-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 const jud = (isi: string, y = 20, u = 12): Obj => teks("jud", 150, y, isi, u, W.ungu);
 
@@ -14,7 +13,13 @@ export const ADEGAN_RANGKUM_D: AdeganStory = {
   judul: "Merangkum: tabel banyak sisi dan keliling",
   sumber: "Materi: rangkuman keliling segi banyak",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b4d-materi-3.ts:1"),
+  kutipan: [
+    "Ayo Merangkum",
+    "Lengkapi tabel berikut",
+    "Bangun Datar",
+    "Banyak Sisi",
+    "keliling dapat dicari dengan cara mengalikan banyaknya sisi dengan panjang salah satu sisinya",
+  ],
   ketukan: [
     k(
       "Sekarang kita merangkum. Lengkapi tabel dengan tiga kolom: bangun datar, banyak sisi, dan keliling. Barisnya persegi, segi lima, segi enam, dan segi delapan.",
@@ -65,7 +70,11 @@ export const ADEGAN_TIDAK_SAMA: AdeganStory = {
   judul: "Jika sisi-sisinya tidak sama panjang",
   sumber: "Materi: sisi tidak sama panjang",
   latar: "#FDF2F8",
-  kutipan: kutipanLokal("k5b4d-materi-3.ts:2"),
+  kutipan: [
+    "Jika sisi-sisinya tidak sama panjang, bagaimana cara menghitung kelilingnya?",
+    "untuk keliling diperoleh dengan cara",
+    "menjumlahkan semua panjang sisinya",
+  ],
   ketukan: [
     k(
       "Sekarang pertanyaan menarik. Kalau sisi-sisinya tidak sama panjang, bagaimana cara menghitung kelilingnya?",
@@ -116,7 +125,14 @@ export const ADEGAN_AKHIR_D: AdeganStory = {
   judul: "Pesan guru: penguatan, renungan, tantangan",
   sumber: "Materi: pesan guru dan tantangan",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b4d-materi-3.ts:3"),
+  kutipan: [
+    "memastikan pemahaman peserta didik melalui kegiatan tanya jawab",
+    "banyaknya sisi pada segi banyak beraturan akan menjadi pengali dalam rumus kelilingnya",
+    "Berilah tanda centang",
+    "Aku bisa menemukan cara menghitung keliling segi lima beraturan",
+    "Aku bisa menemukan cara menghitung keliling segi enam beraturan",
+    "Aku bisa menemukan cara menghitung keliling segi delapan beraturan",
+  ],
   ketukan: [
     k(
       "Sekarang pesan dari guru. Untuk segi lima, segi enam, dan segi delapan beraturan, cara menghitung kelilingnya sama. Coba jelaskan lagi dengan kata-katamu sendiri.",

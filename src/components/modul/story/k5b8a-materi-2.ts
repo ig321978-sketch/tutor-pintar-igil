@@ -1,16 +1,15 @@
 import type { AdeganStory, Aksi } from "./logika-story";
 import { KOL_FREK, W, barisFrek, emo, garis, idBarisFrek, judul, kartu, kartuSiswa, kepalaFrek, panah, tabel, teks, turus } from "./k5b8a-gambar";
 import { bersih, hapus, k, sorotkan, tambah } from "./k5b8a-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 5. Mengumpulkan data sayuran favorit ------------------------------ */
 const SISWA: [string, string[]][] = [
-  ["Kira", ["Kangkung", "wortel", "bayam"]],
-  ["Igil", ["Bayam", "sawi"]],
-  ["Malosi", ["Wortel", "kol", "sawi"]],
-  ["Halim", ["Buncis", "wortel", "tomat"]],
-  ["Upe", ["Kangkung", "tomat"]],
-  ["Wei", ["Kol", "wortel"]],
+  ["Asep", ["Kangkung", "wortel", "bayam"]],
+  ["Nisa", ["Bayam", "sawi"]],
+  ["Yohana", ["Wortel", "kol", "sawi"]],
+  ["Lukas", ["Buncis", "wortel", "tomat"]],
+  ["Komang", ["Kangkung", "tomat"]],
+  ["Ahmad", ["Kol", "wortel"]],
   ["Meli", ["Kangkung", "buncis"]],
   ["Tiara", ["Bayam"]],
 ];
@@ -21,12 +20,22 @@ export const ADEGAN_SAYURAN: AdeganStory = {
   judul: "Mengumpulkan data sayuran favorit",
   sumber: "Materi: data sayuran favorit",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b8a-materi-2.ts:1"),
+  kutipan: [
+    "Eksplorasi 8.1A",
+    "Apakah teman-teman suka makan sayur",
+    "sayuran bermanfaat untuk memperlancar pencernaan",
+    "Setiap anak menuliskan maksimal tiga jenis sayuran favorit",
+    "dapatkah kalian mengetahui jenis sayuran apa yang paling banyak disukai",
+    "Datanya masih tersebar",
+    "mungkin saja ada data yang terlewat atau terhitung dua kali",
+    "Bagaimana jika kita tulis dahulu semua nama sayurannya",
+    "bisa kan kita memakai tabel seperti yang sudah pelajari di kelas IV",
+  ],
   ketukan: [
     k(
-      "Sekarang kita mulai mengumpulkan data. Malosi dan teman-temannya sedang membahas sayur. Sayuran baik untuk kesehatan dan memperlancar pencernaan, lho.",
+      "Sekarang kita mulai mengumpulkan data. Yohana dan teman-temannya sedang membahas sayur. Sayuran baik untuk kesehatan dan memperlancar pencernaan, lho.",
       tambah(0, judul("Mengumpulkan data")),
-      tambah("Malosi", emo("v1", 80, 92, "🥦", 36), emo("v2", 150, 92, "🥕", 36), emo("v3", 220, 92, "🍅", 36)),
+      tambah("Yohana", emo("v1", 80, 92, "🥦", 36), emo("v2", 150, 92, "🥕", 36), emo("v3", 220, 92, "🍅", 36)),
       tambah("kesehatan", teks("vt", 150, 150, "sayur baik untuk kesehatan", 10.4, W.hijau)),
     ),
     k(
@@ -44,12 +53,12 @@ export const ADEGAN_SAYURAN: AdeganStory = {
       tambah("terlewat", teks("q2", 150, 170, "mudah terlewat atau terhitung dua kali", 9.4, W.merah)),
     ),
     k(
-      "Malosi mengusulkan menulis dulu semua nama sayuran, lalu menghitung banyaknya siswa yang menyukai tiap jenis. Kira mengusulkan memakai tabel hitungan, seperti yang sudah kita pelajari di kelas empat.",
+      "Yohana mengusulkan menulis dulu semua nama sayuran, lalu menghitung banyaknya siswa yang menyukai tiap jenis. Asep mengusulkan memakai tabel hitungan, seperti yang sudah kita pelajari di kelas empat.",
       bersih(0),
       tambah(0, judul("tulis nama sayuran dulu")),
-      tambah("Malosi", ...["Bayam", "Kangkung", "Wortel", "Tomat"].flatMap((n, i) => kartu(`ch${i}`, 12 + i * 72, 36, 66, 24, W.hijauMuda, [n], 8.6))),
+      tambah("Yohana", ...["Bayam", "Kangkung", "Wortel", "Tomat"].flatMap((n, i) => kartu(`ch${i}`, 12 + i * 72, 36, 66, 24, W.hijauMuda, [n], 8.6))),
       tambah("menulis", ...["Buncis", "Sawi", "Kol"].flatMap((n, i) => kartu(`ci${i}`, 12 + i * 72, 70, 66, 24, W.hijauMuda, [n], 8.6))),
-      tambah("Kira", panah("pt", 150, 104, 0, 22, W.ungu, 3, { gambar: true })),
+      tambah("Asep", panah("pt", 150, 104, 0, 22, W.ungu, 3, { gambar: true })),
       tambah("tabel", ...kartu("tb", 70, 130, 160, 34, W.krem, ["tabel hitungan", "tujuh jenis sayuran"], 9)),
     ),
     k(
@@ -71,10 +80,19 @@ export const ADEGAN_CENTANG_GARIS: AdeganStory = {
   judul: "Mencatat dengan centang dan garis",
   sumber: "Materi: centang dan garis",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k5b8a-materi-2.ts:2"),
+  kutipan: [
+    "Tabel 8.2 Tabel Sayuran Favorit Siswa Kelas V SD",
+    "Kami membuat satu",
+    "centang",
+    "Tabel 8.3 Tabel Sayuran Favorit Siswa Kelas V SD",
+    "Kalau kami memakai",
+    "Satu garis untuk",
+    "tidak ada data yang",
+    "terlewat atau terhitung",
+  ],
   ketukan: [
     k(
-      "Ada dua tabel contoh. Tabel pertama dibuat Halim dan Igil, dengan satu centang untuk setiap siswa yang menyukai satu jenis sayur.",
+      "Ada dua tabel contoh. Tabel pertama dibuat Lukas dan Nisa, dengan satu centang untuk setiap siswa yang menyukai satu jenis sayur.",
       tambah(0, judul("Tabel pertama: tanda centang")),
       tambah("Tabel", ...tabel("c", 40, 34, KOL_FREK, [["Sayuran", "Centang", "Jumlah"]], 18, 8.6)),
       tambah("centang", ...tabel("c", 40, 34, KOL_FREK, [["Sayuran", "Centang", "Jumlah"], ["Bayam", CENTANG(7), "7"], ["Kangkung", CENTANG(6), "6"], ["Wortel", CENTANG(8), "8"]], 18, 8.2).slice(6)),
@@ -86,7 +104,7 @@ export const ADEGAN_CENTANG_GARIS: AdeganStory = {
       sorotkan("wortel", "c-s30", "c-s31", "c-s32"),
     ),
     k(
-      "Tabel kedua dibuat Kira, Malosi, dan Upe dengan garis. Satu garis untuk satu siswa, sehingga tidak ada data yang terlewat atau terhitung dua kali.",
+      "Tabel kedua dibuat Asep, Yohana, dan Komang dengan garis. Satu garis untuk satu siswa, sehingga tidak ada data yang terlewat atau terhitung dua kali.",
       bersih(0),
       tambah(0, judul("Tabel kedua: garis")),
       tambah("Tabel", ...kepalaFrek("g", 40, 34, ["Sayuran", "Garis", "Jumlah"], KOL_FREK, 18, 8.6)),
@@ -102,7 +120,7 @@ export const ADEGAN_CENTANG_GARIS: AdeganStory = {
       sorotkan("wortel", "g-r3b", "g-r3c"),
     ),
     k(
-      "Garis-garis seperti buatan kelompok Kira itu disebut turus. Kita pelajari lebih dekat pada adegan berikutnya.",
+      "Garis-garis seperti buatan kelompok Asep itu disebut turus. Kita pelajari lebih dekat pada adegan berikutnya.",
       tambah("Garis-garis", panah("pg", 150, 168, 0, -22, W.ungu, 3, { gambar: true })),
       tambah("turus.", teks("tu", 150, 184, "garis seperti ini disebut turus", 10.4, W.ungu)),
     ),
@@ -115,10 +133,23 @@ export const ADEGAN_TURUS: AdeganStory = {
   judul: "Turus dan frekuensi",
   sumber: "Materi: turus dan frekuensi",
   latar: "#EEF2FF",
-  kutipan: kutipanLokal("k5b8a-materi-2.ts:3"),
+  kutipan: [
+    "Tahukah kalian",
+    "Garis-garis seperti yang dibuat kelompok Asep disebut turus",
+    "Turus adalah salah satu cara mencatat hasil pengamatan dengan simbol",
+    "Setiap 1 hasil",
+    "Agar lebih mudah dibaca, turus dibuat dalam kelompok",
+    "Setiap kelompok berisi 5 garis: 4 garis tegak dan 1",
+    "garis miring",
+    "mengapa 5 garis tersebut tidak dibuat tegak",
+    "Frekuensi adalah suatu bilangan yang",
+    "jumlah atau banyaknya suatu peristiwa",
+    "ada 8 anak yang menyukai sayuran bayam",
+    "frekuensi siswa yang menyukai bayam adalah 8 orang",
+  ],
   ketukan: [
     k(
-      "Tahukah kalian? Garis-garis buatan kelompok Kira disebut turus. Turus adalah cara mencatat hasil pengamatan dengan tanda garis.",
+      "Tahukah kalian? Garis-garis buatan kelompok Asep disebut turus. Turus adalah cara mencatat hasil pengamatan dengan tanda garis.",
       tambah(0, judul("Tahukah kalian? Turus")),
       tambah("Garis-garis", ...turus("tr", 118, 52, 3, 34, W.hitam)),
       tambah("tanda", teks("tl", 150, 130, "satu pengamatan, satu garis", 10.4, W.hijau)),
@@ -152,11 +183,11 @@ export const ADEGAN_TURUS: AdeganStory = {
       tambah("frekuensi.", ...kartu("fr", 30, 50, 240, 62, W.krem, ["frekuensi:", "seberapa sering atau", "seberapa banyak terjadi"], 10.4)),
     ),
     k(
-      "Pada data sayuran favorit, tujuh anak menyukai bayam, yaitu Kira, Igil, Tiara, Kinanti, Wei, Robert, dan Farah. Jadi frekuensi bayam adalah tujuh orang. Hati-hati, hitung nama satu per satu supaya tidak keliru.",
+      "Pada data sayuran favorit, tujuh anak menyukai bayam, yaitu Asep, Nisa, Tiara, Kinanti, Anggi, Robert, dan Farah. Jadi frekuensi bayam adalah tujuh orang. Hati-hati, hitung nama satu per satu supaya tidak keliru.",
       bersih(0),
       tambah(0, judul("frekuensi bayam")),
       tambah("tujuh", ...turus("by", 100, 44, 7, 30, W.hitam)),
-      tambah("yaitu", teks("by1", 150, 124, "Kira, Igil, Tiara, Kinanti,", 8.6, W.hijau), teks("by2", 150, 136, "Wei, Robert, Farah", 8.6, W.hijau)),
+      tambah("yaitu", teks("by1", 150, 124, "Asep, Nisa, Tiara, Kinanti,", 8.6, W.hijau), teks("by2", 150, 136, "Anggi, Robert, Farah", 8.6, W.hijau)),
       tambah("adalah", teks("by7", 150, 100, "frekuensi bayam: 7 orang", 11, W.ungu)),
       tambah("Hati-hati,", teks("by3", 150, 166, "hitung nama satu per satu", 9.4, W.merah)),
     ),
@@ -173,7 +204,21 @@ export const ADEGAN_DISKUSI: AdeganStory = {
   judul: "Menyusun tabel frekuensi sayuran",
   sumber: "Materi: tabel frekuensi sayuran",
   latar: "#FFF1F2",
-  kutipan: kutipanLokal("k5b8a-materi-2.ts:4"),
+  kutipan: [
+    "Ayo Berdiskusi",
+    "Lengkapi tabel berikut berdasarkan data sayuran favorit siswa",
+    "Tabel 8.4 Sayuran Favorit Siswa Kelas V SD Pancasila",
+    "Tabel di samping",
+    "ini disebut tabel",
+    "Dengan menggunakan bahasa kalian sendiri",
+    "tuliskan apa yang kalian ketahui tentang tabel frekuensi",
+    "Sayuran yang paling",
+    "adalah wortel",
+    "menyukai tomat lebih",
+    "yang menyukai bayam",
+    "adalah buncis",
+    "Menurut kalian, pernyataan siapa yang tepat? Mengapa demikian",
+  ],
   ketukan: [
     k(
       "Sekarang kita lengkapi tabel frekuensi sayuran favorit. Bayam tujuh, kangkung enam, dan wortel delapan sudah terisi. Sisanya kita hitung dari data.",
@@ -185,18 +230,18 @@ export const ADEGAN_DISKUSI: AdeganStory = {
       tambah("terisi.", ...baris(4, "Tomat", null), ...baris(5, "Buncis", null), ...baris(6, "Sawi", null), ...baris(7, "Kol", null)),
     ),
     k(
-      "Kita hitung dari data enam belas anak. Tomat dipilih Halim, Upe, Randi, Tomi, Ucok, dan Farah, jadi frekuensi tomat adalah enam.",
-      tambah("Tomat", teks("nm", 150, 160, "Halim, Upe, Randi, Tomi, Ucok, Farah", 7.8, W.hijau)),
+      "Kita hitung dari data enam belas anak. Tomat dipilih Lukas, Komang, Randi, Tomi, Ucok, dan Farah, jadi frekuensi tomat adalah enam.",
+      tambah("Tomat", teks("nm", 150, 160, "Lukas, Komang, Randi, Tomi, Ucok, Farah", 7.8, W.hijau)),
       ...isi("jadi", 4, "Tomat", 6),
     ),
     k(
-      "Buncis dipilih Halim, Meli, Wei, dan Ucok, jadi empat. Sawi dipilih Igil, Malosi, Randi, Robert, dan Ucok, jadi lima. Kol dipilih Malosi, Wei, dan Kinanti, jadi tiga.",
+      "Buncis dipilih Lukas, Meli, Anggi, dan Ucok, jadi empat. Sawi dipilih Nisa, Yohana, Randi, Robert, dan Ucok, jadi lima. Kol dipilih Yohana, Ahmad, dan Kinanti, jadi tiga.",
       hapus(0, "nm"),
-      tambah("Buncis", teks("nb", 150, 160, "Halim, Meli, Wei, Ucok", 7.8, W.hijau)),
+      tambah("Buncis", teks("nb", 150, 160, "Lukas, Meli, Anggi, Ucok", 7.8, W.hijau)),
       ...isi("jadi", 5, "Buncis", 4),
-      tambah("Sawi", teks("ns", 150, 172, "Igil, Malosi, Randi, Robert, Ucok", 7.8, W.hijau)),
+      tambah("Sawi", teks("ns", 150, 172, "Nisa, Yohana, Randi, Robert, Ucok", 7.8, W.hijau)),
       ...isi("jadi@2", 6, "Sawi", 5),
-      tambah("Kol", teks("nk", 150, 184, "Malosi, Wei, Kinanti", 7.8, W.hijau)),
+      tambah("Kol", teks("nk", 150, 184, "Yohana, Ahmad, Kinanti", 7.8, W.hijau)),
       ...isi("jadi@3", 7, "Kol", 3),
     ),
     k(

@@ -63,7 +63,7 @@ export function barisTabel(id: string, x: number, y: number, kolW: number[], isi
 export type Pasang = readonly [number, number];
 /** Aktivitas 2 (hlm. 66-67): kertas pertama 4 bagian diwarnai 1, kertas kedua 16 bagian diwarnai 4. Kesimpulan Panduan Guru hlm. 101: 1/4 = 4/16. */
 export const KERTAS: readonly Pasang[] = [[1, 4], [4, 16]];
-/** Coklat hlm. 67-68: batang pertama 6 bagian, batang kedua 3 bagian; bagian Malosi 2/6 dan 1/3. */
+/** Coklat hlm. 67-68: batang pertama 6 bagian, batang kedua 3 bagian; bagian Putu 2/6 dan 1/3. */
 export const COKLAT = { bagian: [6, 3], putu: [[2, 6], [1, 3]] as readonly Pasang[] } as const;
 /** Ayo Berlatih hlm. 70 (soal 1-3): tiap soal gambar kiri dan gambar kanan, lalu kunci Panduan Guru hlm. 102-103. */
 export const LATIHAN: readonly { kiri: Pasang; kanan: Pasang }[] = [

@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, batang, emo, judul, kartu, lingkaran, pecahan, teks, panah } from "./k4b2b-gambar";
 import { bersih, idx, k, sorotkan, tambah, warnai } from "./k4b2b-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /* ------------------------------ 1. Pembuka subbab, pengalaman belajar, apersepsi (Buku Siswa hlm. 63; Panduan Guru hlm. 97) ------------------------------ */
 const SUARA_P1 = "Kita masuk ke subbab B, Pecahan dengan Penyebut Sama. Buku membuka dengan judul kecil: membandingkan pecahan dengan penyebut yang sama.";
@@ -15,7 +14,26 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
   judul: "Pembuka subbab B: pengalaman belajar dan apersepsi",
   sumber: "Buku Siswa hlm. 63; Panduan Guru hlm. 97",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k4b2b-materi-1.ts:1"),
+  kutipan: [
+    "B. Pecahan dengan Penyebut Sama",
+    "Membandingkan pecahan dengan penyebut yang sama",
+    "B. Pecahan dengan penyebut sama",
+    "Pengalaman Belajar",
+    "Setelah mempelajari sub bab ini, Peserta didik diharapkan mampu",
+    "membandingkan dan mengurutkan antar-pecahan dengan penyebut yang",
+    "Kebutuhan Sarana Prasarana dan Media",
+    "Alat Tulis",
+    "Apersepsi",
+    "Penyebut adalah bilangan pembagi.",
+    "Bilangan yang berada di atas garis pemisah disebut dengan pembilang",
+    "disebut penyebut.",
+    "Membandingkan dua pecahan yang lebih kecil, lebih besar, atau sama besar dengan gambar, ilustrasi atau benda konkret.",
+    "Stimulus (Pemanasan)",
+    "Pertanyaan Esensi/Pemantik:",
+    "1. apakah penyebut?",
+    "2. bagaimana ilustrasi pecahan dengan penyebut sama?",
+    "3. bagaimana membandingkan dan mengurutkan antar-pecahan dengan",
+  ],
   ketukan: [
     k(
       SUARA_P1,
@@ -77,7 +95,21 @@ export const ADEGAN_AMATI_SATU: AdeganStory = {
   judul: "Amati: satu per tiga dan dua per tiga",
   sumber: "Materi: membandingkan, penyebut tiga",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k4b2b-materi-1.ts:2"),
+  kutipan: [
+    "Membandingkan pecahan dengan penyebut yang sama",
+    "Ayo Mengamati",
+    "Amati gambar di atas. Bandingkan daerah arsir antara kedua pecahan tersebut.",
+    "Daerah arsir mana yang lebih kecil?",
+    "lebih kecil dari daerah arsir",
+    "kurang dari",
+    "Atau dapat ditulis sebagai berikut:",
+    "Aktivitas Pembelajaran",
+    "Guru meminta peserta didik untuk mengamati 2 gambar yang ada di buku",
+    "siswa tentang pecahan berpenyebut sama.",
+    "Kegiatan ini dapat diganti",
+    "disesuaikan kondisi di dalam kelas masing-masing guru sehingga apa yang",
+    "disajikan adalah sesuatu yang ada di sekitar peserta didik.",
+  ],
   ketukan: [
     k(
       SUARA_A1,
@@ -144,7 +176,13 @@ export const ADEGAN_AMATI_DUA: AdeganStory = {
   judul: "Amati: dua per sepuluh dan satu per sepuluh",
   sumber: "Materi: membandingkan, penyebut sepuluh",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k4b2b-materi-1.ts:3"),
+  kutipan: [
+    "Amati gambar di atas. Bandingkan daerah arsir antara kedua pecahan tersebut.",
+    "Daerah arsir mana yang lebih besar?",
+    "lebih besar dari daerah arsir",
+    "lebih dari",
+    "Atau dapat ditulis sebagai berikut:",
+  ],
   ketukan: [
     k(
       SUARA_B1,
@@ -204,7 +242,12 @@ export const ADEGAN_BERLATIH_SATU_DUA: AdeganStory = {
   judul: "Latihan: lingkaran dan batang",
   sumber: "Materi: latihan lingkaran dan batang",
   latar: "#FFFBEB",
-  kutipan: kutipanLokal("k4b2b-materi-1.ts:4"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Isilah titik-titik di bawah ini dengan bilangan pecahan yang sesuai dengan",
+    "gambar serta notasi lebih dari ( > ) atau kurang dari ( < ).",
+    "Lengkapi titik-titik dibawah ini!",
+  ],
   ketukan: [
     k(
       SUARA_C1,

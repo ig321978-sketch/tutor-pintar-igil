@@ -1,7 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisSel, emo, judul, kartu, kotak, teks } from "./k5b2d-gambar";
 import { bersih, k, tambah, ubah } from "./k5b2d-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
 /** Warna sel: emas bila bilangannya ada di daftar `sama`, selain itu `dasar`. */
 const warnaSama = (isi: number[], sama: number[], dasar: string): string[] => isi.map((n) => (sama.includes(n) ? W.emas : dasar));
@@ -16,7 +15,19 @@ export const ADEGAN_EKS_B_HASIL: AdeganStory = {
   judul: "Eksplorasi 2.4B: faktor persekutuan, FPB, dan jumlah vas",
   sumber: "Materi: FPB dan banyak vas",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b2d-materi-3.ts:1"),
+  kutipan: [
+    "Coba kita perhatikan Tabel 2.2.",
+    "Bilangan 2, 3, dan 6 adalah faktor persekutuan dari 18 dan 24.",
+    "Bilangan 6 adalah FPB dari 24 dan 18.",
+    "Jadi, Nisa dapat membagi bunga-bunga tersebut tersebut paling banyak ke dalam 6 buah vas.",
+    "Setiap vas berisi 4 tangkai bunga mawar merah dan 3 tangkai bunga mawar putih.",
+    "Ayo Berdiskusi",
+    "Coba pikirkan, bagaimana hubungan faktor bilangan dengan cara pembagian benda seperti pada Eksplorasi 2.4B?",
+    "Dengan demikian, 6 adalah faktor persekutuan terbesar dari 18 dan 24.",
+    "Saat menyelesaikan permasalahan terkait pembagian barang, maka wadah",
+    "yang dibutuhkan paling banyak sama saja dengan FPB dari banyaknya bilangan",
+    "yang akan dibagi. Kata kuncinya adalah",
+  ],
   ketukan: [
     k(
       "Perhatikan tabelnya. Bilangan satu, dua, tiga, dan enam adalah faktor persekutuan dari delapan belas dan dua puluh empat. Bilangan enam adalah FPB dari dua puluh empat dan delapan belas.",
@@ -29,7 +40,7 @@ export const ADEGAN_EKS_B_HASIL: AdeganStory = {
       tambah("Daftar", teks("fc", 150, 176, "lengkap: 1, 2, 3, 6", 10.4, W.hitam)),
     ),
     k(
-      "Jadi Kira dapat membagi bunga paling banyak ke dalam enam vas. Setiap vas berisi empat tangkai mawar merah dan tiga tangkai mawar putih.",
+      "Jadi Nisa dapat membagi bunga paling banyak ke dalam enam vas. Setiap vas berisi empat tangkai mawar merah dan tiga tangkai mawar putih.",
       bersih(0),
       tambah(0, judul("Hasil: enam vas")),
       tambah("enam", ...Array.from({ length: 6 }, (_, i) => kotak(`vs${i}`, 14 + i * 46, 50, 42, 56, W.krem, W.coklat, { rx: 8 })), teks("vn", 150, 138, "6 vas", 16, W.coklat)),
@@ -73,7 +84,14 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   judul: "Latihan 1: FPB dua bilangan",
   sumber: "Materi: latihan FPB dua bilangan",
   latar: "#FEFCE8",
-  kutipan: kutipanLokal("k5b2d-materi-3.ts:2"),
+  kutipan: [
+    "Ayo Berlatih",
+    "Temukan faktor persekutuan terbesar (FPB) dari bilangan-bilangan berikut.",
+    "a. 15 dan 35",
+    "b. 12 dan 42",
+    "1, 3, 5, 15 1, 5, 7, 35 1, 5 5",
+    "1, 2, 3, 4, 6, 12 1, 2, 3, 6, 7, 14, 21, 42 1, 2, 3, 6 6",
+  ],
   ketukan: [
     k(
       "Latihan satu: temukan FPB dari lima belas dan tiga puluh lima. Faktor lima belas adalah satu, tiga, lima, dan lima belas. Faktor tiga puluh lima adalah satu, lima, tujuh, dan tiga puluh lima.",
@@ -111,7 +129,21 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
   judul: "Latihan 2: paket ulang tahun Dania",
   sumber: "Materi: latihan paket ulang tahun",
   latar: "#FDF2F8",
-  kutipan: kutipanLokal("k5b2d-materi-3.ts:3"),
+  kutipan: [
+    "Dania akan merayakan ulang tahun.",
+    "Setiap paket berisi susu kotak, permen lolipop, dan biskuit.",
+    "Banyaknya jenis barang pada setiap paket sama.",
+    "Ia memiliki 36 susu kotak, 48 permen lolipop, dan 24 bungkus biskuit.",
+    "Berapa paket paling banyak yang dapat dibuat?",
+    "(Jumlah: 36 kotak)",
+    "Banyaknya paket yang dapat dibuat 36 18 12 9 6 4 3 2 1",
+    "(Jumlah: 48 kotak)",
+    "Banyaknya paket yang dapat dibuat 48 24 16 12 8 6 4 3 2 1",
+    "(Jumlah: 24 kotak)",
+    "Banyaknya paket yang dapat dibuat 24 12 8 6 4 3 2 1",
+    "Jadi, paling banyak dapat dibuat 12 paket bingkisan ulang tahun dengan setiap",
+    "paket berisi 3 buah susu kotak, 4 buah permen, dan 2 bungkus biskuit.",
+  ],
   ketukan: [
     k(
       "Latihan dua. Dania membuat bingkisan ulang tahun. Tiap paket berisi susu kotak, permen lolipop, dan biskuit dengan isi sama. Ia punya tiga puluh enam susu, empat puluh delapan permen, dan dua puluh empat biskuit. Berapa paket paling banyak?",
@@ -164,7 +196,31 @@ export const ADEGAN_PENUTUP: AdeganStory = {
   judul: "Hati-hati, tantangan, dan renungan",
   sumber: "Materi: pesan guru dan renungan",
   latar: "#F5F3FF",
-  kutipan: kutipanLokal("k5b2d-materi-3.ts:4"),
+  kutipan: [
+    "Miskonsepsi",
+    "Pemahaman peserta didik sering terbalik antara konsep faktor dan kelipatan",
+    "yang dicari justru kelipatan yang dicari",
+    "sering kali peserta didik keliru antara konsep KPK dan FPB.",
+    "dapat disajikan dua buah bilangan dan dituliskan FPB-nya, tetapi sebenarnya yang dituliskan adalah KPK-",
+    "peserta didik diminta untuk menganalisis tepat atau tidaknya",
+    "Diferensiasi",
+    "Peserta didik dengan kecepatan belajar tinggi (advanced) dapat diminta",
+    "untuk mengerjakan latihan tanpa bantuan.",
+    "Tentukan FPB dari kelompok bilangan berikut.",
+    "a. 48 dan 60",
+    "b. 60 dan 120",
+    "c. 54, 72, dan 120",
+    "Nyatakan pernyataan berikut benar atau salah.",
+    "FPB dari 30 dan 90 adalah 90.",
+    "FPB dari 42 dan 60 adalah 6.",
+    "Bilangan 23 dan 27 tidak mempunyai FPB.",
+    "melakukan releksi atas apa yang sudah mereka pelajari.",
+    "Releksi dilakukan dengan menjawab pertanyaan releksi nomor 5, 6, dan 7 pada tabel releksi di buku siswa.",
+    "Aku dapat menemukan faktor persekutuan dua",
+    "bilangan atau lebih.",
+    "Aku dapat menyelesaikan masalah menggunakan",
+    "KPK dan FPB.",
+  ],
   ketukan: [
     k(
       "Hati-hati, ada kesalahan yang sering terjadi. Kadang kita terbalik antara faktor dan kelipatan, sehingga yang dicari justru kelipatan, padahal seharusnya faktor.",

@@ -1,9 +1,8 @@
 import type { AdeganStory } from "./logika-story";
 import { W, apel, emo, judul, kartu, kotak, rumus, sel, teks } from "./k5b3c-gambar";
 import { bersih, k, tambah, ubah, warnai } from "./k5b3c-bantu";
-import { kutipanLokal } from "./kutipan-lokal";
 
-/** Himpunan apel Eksplorasi 3.3B menurut gambar Buku Siswa hlm. 94: Wei menerima tiga kolom kiri, Upe dua apel kolom paling kiri, sisa Kira kolom paling kanan. */
+/** Himpunan apel Eksplorasi 3.3B menurut gambar Buku Siswa hlm. 94: Lukas menerima tiga kolom kiri, Yohana dua apel kolom paling kiri, sisa Asep kolom paling kanan. */
 export const LUKAS = [0, 1, 2, 4, 5, 6];
 export const YOHANA = [0, 4];
 export const ASEP = [3, 7];
@@ -16,7 +15,13 @@ export const ADEGAN_PEMBUKA_C: AdeganStory = {
   judul: "Pembuka Sub-Bab C: Pengurangan Bilangan Pecahan",
   sumber: "Panduan Guru hlm. 107–108",
   latar: "#F0F9FF",
-  kutipan: kutipanLokal("k5b3c-materi-1.ts:1"),
+  kutipan: [
+    "melakukan pengurangan pecahan berpenyebut sama dan",
+    "melakukan pengurangan pecahan dengan penyebut berbeda.",
+    "Kertas karton",
+    "Membagi peserta didik ke dalam beberapa kelompok.",
+    "penjumlahan dan pengurangan bilangan pecahan memiliki konsep yang sama",
+  ],
   ketukan: [
     k(
       "Sub-Bab C, Pengurangan Bilangan Pecahan, penutup Bab tiga. Menurut Buku Panduan Guru, peserta didik diharapkan dapat mengurangi pecahan berpenyebut sama, lalu pecahan berpenyebut berbeda.",
@@ -53,24 +58,34 @@ export const ADEGAN_PEMBUKA_C: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 2. Masalah Upe (Buku Siswa hlm. 91) ------------------------------ */
+/* ------------------------------ 2. Masalah Yohana (Buku Siswa hlm. 91) ------------------------------ */
 export const ADEGAN_MASALAH_YOHANA: AdeganStory = {
   id: "masalah-yohana",
-  judul: "Masalah Upe dan syarat pengurangan pecahan",
-  sumber: "Materi: masalah Upe dan syarat",
+  judul: "Masalah Yohana dan syarat pengurangan pecahan",
+  sumber: "Materi: masalah Yohana dan syarat",
   latar: "#FFF7ED",
-  kutipan: kutipanLokal("k5b3c-materi-1.ts:2"),
+  kutipan: [
+    "C. Pengurangan Bilangan Pecahan",
+    "Masalah Yohana",
+    "Yohana mempunyai tugas melukis",
+    "kertas gambar yang diberikan gurunya.",
+    "Berapakah kekurangan kertas yang belum dilukis oleh Yohana?",
+    "Syarat melakukan pengurangan pecahan adalah penyebutnya harus sama.",
+    "Untuk itu, jika penyebut belum sama, harus disamakan dahulu.",
+    "Jika penyebut sudah sama, lakukan pengurangan pada pembilangnya.",
+    "1. Pengurangan Pecahan Berpenyebut Sama",
+  ],
   ketukan: [
     k(
-      "Sekarang kita belajar mengurangkan pecahan. Perhatikan Masalah Upe. Upe punya tugas melukis dua per tiga bagian dari kertas gambar yang diberikan gurunya.",
-      tambah(0, judul("Masalah Upe")),
+      "Sekarang kita belajar mengurangkan pecahan. Perhatikan Masalah Yohana. Yohana punya tugas melukis dua per tiga bagian dari kertas gambar yang diberikan gurunya.",
+      tambah(0, judul("Masalah Yohana")),
       tambah("melukis", ...sel("kt", 40, 34, 80, 108, 3, [0, 1], W.langit, true), teks("ktt", 80, 160, "kertas gambar", 9, W.biru)),
       tambah("dua", ...rumus("r", 205, 90, "2/3", 22, W.biru, {}, false), teks("rt", 205, 128, "harus dilukis", 9.4, W.biru)),
     ),
     k(
-      "Ia baru mengerjakan satu per dua bagian kertas. Coba kamu pikirkan, berapakah kekurangan kertas yang belum dilukis oleh Upe?",
+      "Ia baru mengerjakan satu per dua bagian kertas. Coba kamu pikirkan, berapakah kekurangan kertas yang belum dilukis oleh Yohana?",
       bersih(0),
-      tambah(0, judul("Masalah Upe")),
+      tambah(0, judul("Masalah Yohana")),
       tambah(0, ...sel("kt", 40, 34, 80, 108, 3, [0, 1], W.langit, true), teks("ktt", 80, 160, "kertas gambar", 9, W.biru)),
       tambah("satu", ...rumus("r", 205, 86, "2/3 − 1/2", 16, W.biru, {}, false)),
       tambah("kekurangan", teks("tn", 205, 148, "?", 36, W.merah)),
@@ -85,35 +100,48 @@ export const ADEGAN_MASALAH_YOHANA: AdeganStory = {
       tambah("samakan", kotak("b2", 156, 72, 126, 70, W.hijauMuda, W.hijau, { rx: 8 }), teks("b2t", 219, 88, "penyebut sama", 9.4, W.hijau), ...rumus("b2r", 219, 120, "4/6 − 3/6", 12, W.biru, {}, false), emo("b2e", 219, 168, "✅", 24)),
     ),
     k(
-      "Jika penyebut sudah sama, kurangkan pembilangnya. Karena itu kita belajar dalam dua bagian: pengurangan berpenyebut sama, lalu berpenyebut berbeda. Masalah Upe kita buka lagi nanti.",
+      "Jika penyebut sudah sama, kurangkan pembilangnya. Karena itu kita belajar dalam dua bagian: pengurangan berpenyebut sama, lalu berpenyebut berbeda. Masalah Yohana kita buka lagi nanti.",
       bersih(0),
       tambah(0, judul("Dua bagian pelajaran")),
       tambah("bagian", ...kartu("d1", 20, 36, 260, 38, W.langit, ["1. Pengurangan berpenyebut sama"], 10)),
       tambah("lalu", ...kartu("d2", 20, 86, 260, 38, W.krem, ["2. Pengurangan berpenyebut berbeda"], 10)),
-      tambah("Masalah", ...kartu("d3", 50, 138, 200, 34, W.pink, ["Masalah Upe: nanti"], 10)),
+      tambah("Masalah", ...kartu("d3", 50, 138, 200, 34, W.pink, ["Masalah Yohana: nanti"], 10)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Eksplorasi 3.3A: Masalah Wei (Buku Siswa hlm. 91 sampai 93) ------------------------------ */
+/* ------------------------------ 3. Eksplorasi 3.3A: Masalah Lukas (Buku Siswa hlm. 91 sampai 93) ------------------------------ */
 export const ADEGAN_EKS_3A: AdeganStory = {
   id: "eks-3a",
   judul: "Pengurangan pecahan berpenyebut sama",
-  sumber: "Materi: penyebut sama, kertas Wei",
+  sumber: "Materi: penyebut sama, kertas Lukas",
   latar: "#F0FDF4",
-  kutipan: kutipanLokal("k5b3c-materi-1.ts:3"),
+  kutipan: [
+    "Eksplorasi 3.3A",
+    "Masalah Lukas",
+    "Lukas mempunyai tugas yang sama dengan Yohana, yaitu",
+    "kurangnya, yaitu bagian kertas yang belum dilukis oleh Lukas?",
+    "Cara Nisa",
+    "Amatilah Cara Nisa berikut.",
+    "bagian kertas yang harus dilukis oleh Lukas.",
+    "bagian kertas yang sudah dilukis oleh Lukas.",
+    "Dapatkah kalian menemukan bagian kertas yang belum dilukis",
+    "Cara Asep",
+    "Kertas yang belum dilukis =",
+    "kertas yang harus dilukis – kertas yang sudah dilukis",
+  ],
   ketukan: [
     k(
-      "Sekarang pecahan yang penyebutnya sama. Masalah Wei: tugasnya sama dengan Upe, melukis dua per tiga kertas, dan ia sudah mengerjakan satu per tiga bagian kertas. Berapa yang belum dilukis?",
-      tambah(0, judul("Penyebut sama: Masalah Wei")),
-      tambah("Masalah", ...kartu("lk", 100, 130, 100, 30, W.langit, ["Wei"], 11)),
+      "Sekarang pecahan yang penyebutnya sama. Masalah Lukas: tugasnya sama dengan Yohana, melukis dua per tiga kertas, dan ia sudah mengerjakan satu per tiga bagian kertas. Berapa yang belum dilukis?",
+      tambah(0, judul("Penyebut sama: Masalah Lukas")),
+      tambah("Masalah", ...kartu("lk", 100, 130, 100, 30, W.langit, ["Lukas"], 11)),
       tambah("melukis", ...rumus("r", 150, 80, "2/3 − 1/3", 24, W.biru, {}, false)),
       tambah("sudah", teks("tn", 150, 178, "kurangnya berapa?", 10, W.merah)),
     ),
     k(
-      "Kita ikuti cara Halim. Langkah pertama, arsir dua per tiga bagian kertas yang harus dilukis. Kertas dibagi menjadi tiga kotak sama besar, dan dua kotak diarsir.",
+      "Kita ikuti cara Nisa. Langkah pertama, arsir dua per tiga bagian kertas yang harus dilukis. Kertas dibagi menjadi tiga kotak sama besar, dan dua kotak diarsir.",
       bersih(0),
-      tambah(0, judul("Cara Halim 1: yang harus dilukis")),
+      tambah(0, judul("Cara Nisa 1: yang harus dilukis")),
       tambah("Kertas", ...sel("k1", 40, 34, 62, 120, 3, [], W.langit, true), teks("k1t", 71, 168, "harus dilukis", 8.6, W.biru)),
       warnai("dua@2", W.langit, "k1-c0", "k1-c1"),
       tambah("arsir", ...rumus("r", 180, 90, "2/3", 24, W.biru, {}, false)),
@@ -122,16 +150,16 @@ export const ADEGAN_EKS_3A: AdeganStory = {
     k(
       "Langkah kedua, arsir satu per tiga bagian kertas yang sudah dilukis. Satu kotak saja diarsir. Coba lihat, dari dua kotak yang harus dilukis, satu sudah selesai, sehingga tersisa satu kotak.",
       bersih(0),
-      tambah(0, judul("Cara Halim 2: yang sudah dilukis")),
+      tambah(0, judul("Cara Nisa 2: yang sudah dilukis")),
       tambah(0, ...sel("k1", 40, 34, 62, 120, 3, [0, 1], W.langit, true), teks("k1t", 71, 168, "harus dilukis", 8.6, W.biru)),
       tambah("Satu", ...sel("k2", 150, 34, 62, 120, 3, [0], W.hijau, true), teks("k2t", 181, 168, "sudah dilukis", 8.6, W.biru)),
       tambah("tersisa", teks("ts", 254, 92, "tersisa", 9.4, W.merah), teks("ts2", 254, 106, "1 kotak", 9.4, W.merah)),
       ubah("tersisa", { id: "k1-c1", sorot: true }),
     ),
     k(
-      "Cara Kira memakai kalimat matematika: yang belum dilukis sama dengan yang harus dilukis dikurangi yang sudah dilukis. Dua per tiga dikurangi satu per tiga sama dengan satu per tiga. Penyebut tetap, hanya pembilang dikurangi.",
+      "Cara Asep memakai kalimat matematika: yang belum dilukis sama dengan yang harus dilukis dikurangi yang sudah dilukis. Dua per tiga dikurangi satu per tiga sama dengan satu per tiga. Penyebut tetap, hanya pembilang dikurangi.",
       bersih(0),
-      tambah(0, judul("Cara Kira")),
+      tambah(0, judul("Cara Asep")),
       tambah("kalimat", ...kartu("ka", 20, 30, 260, 34, W.krem, ["belum = harus dilukis − sudah dilukis"], 9.4)),
       tambah("Dua", ...rumus("r", 150, 112, "2/3 − 1/3 = 1/3", 20)),
       tambah("Penyebut", teks("pt", 150, 164, "penyebut tetap, pembilang dikurangi", 9.4, W.merah)),
@@ -139,51 +167,65 @@ export const ADEGAN_EKS_3A: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 4. Eksplorasi 3.3B: apel Kira (Buku Siswa hlm. 93 sampai 95) ------------------------------ */
+/* ------------------------------ 4. Eksplorasi 3.3B: apel Asep (Buku Siswa hlm. 93 sampai 95) ------------------------------ */
 export const ADEGAN_EKS_3B: AdeganStory = {
   id: "eks-3b",
-  judul: "Pengurangan sepenyebut: delapan apel Kira",
-  sumber: "Materi: penyebut sama, apel Kira",
+  judul: "Pengurangan sepenyebut: delapan apel Asep",
+  sumber: "Materi: penyebut sama, apel Asep",
   latar: "#FEF2F2",
-  kutipan: kutipanLokal("k5b3c-materi-1.ts:4"),
+  kutipan: [
+    "Eksplorasi 3.3B",
+    "Masalah Asep",
+    "Asep mempunyai 8 buah apel.",
+    "kepada Lukas. Selanjutnya, Lukas juga membagikan apelnya",
+    "kepada Yohana sebanyak 2 buah.",
+    "Tuliskan pecahan yang menyatakan sisa apel Asep dari",
+    "keseluruhan apel yang ia miliki.",
+    "Seluruh buah apel milik Asep",
+    "Apel yang diberikan Lukas",
+    "Arsirlah apel yang diberikan Asep kepada Lukas.",
+    "Arsirlah apel Lukas yang diberikan ke Yohana.",
+    "Sisa apel Lukas dari jumlah seluruh apel.",
+    "Dengan kalimat matematika dapat ditulis",
+  ],
   ketukan: [
     k(
-      "Masalah berikutnya tentang apel Kira. Kira punya delapan buah apel dan membagikan enam buah apelnya kepada Wei. Selanjutnya Wei membagikan dua buah apelnya kepada Upe.",
-      tambah(0, judul("Masalah Kira: delapan apel")),
-      tambah("delapan", ...apel("ap", 80, 66, () => W.merah), teks("at", 110, 44, "8 apel milik Kira", 9.4, W.coklat)),
+      "Masalah berikutnya tentang apel Asep. Asep punya delapan buah apel dan membagikan enam buah apelnya kepada Lukas. Selanjutnya Lukas membagikan dua buah apelnya kepada Yohana.",
+      tambah(0, judul("Masalah Asep: delapan apel")),
+      tambah("delapan", ...apel("ap", 80, 66, () => W.merah), teks("at", 110, 44, "8 apel milik Asep", 9.4, W.coklat)),
       warnai("enam", W.hijau, ...ap("ap", LUKAS)),
-      tambah("enam", teks("l1", 110, 124, "hijau: ke Wei", 9, W.hijau)),
+      tambah("enam", teks("l1", 110, 124, "hijau: ke Lukas", 9, W.hijau)),
       warnai("dua", BIRU_MUDA, ...ap("ap", YOHANA)),
-      tambah("dua", teks("l2", 110, 140, "biru: ke Upe", 9, W.biru)),
+      tambah("dua", teks("l2", 110, 140, "biru: ke Yohana", 9, W.biru)),
     ),
     k(
-      "Pertanyaannya, pecahan berapa yang menyatakan sisa apel? Ikuti cara Halim, langkah satu: arsir apel yang diberikan Kira kepada Wei. Enam dari delapan apel, jadi enam per delapan.",
+      "Pertanyaannya, pecahan berapa yang menyatakan sisa apel? Ikuti cara Nisa, langkah satu: arsir apel yang diberikan Asep kepada Lukas. Enam dari delapan apel, jadi enam per delapan.",
       bersih(0),
-      tambah(0, judul("Cara Halim 1: apel Wei")),
+      tambah(0, judul("Cara Nisa 1: apel Lukas")),
       tambah("Cara", ...apel("ap", 40, 66, (i) => (LUKAS.includes(i) ? W.hijau : W.putih))),
-      tambah("Enam", ...rumus("r", 220, 84, "6/8", 24, W.biru, {}, false), teks("rt", 220, 126, "diberikan Kira", 9, W.biru)),
+      tambah("Enam", ...rumus("r", 220, 84, "6/8", 24, W.biru, {}, false), teks("rt", 220, 126, "diberikan Asep", 9, W.biru)),
     ),
     k(
-      "Langkah dua: arsir apel Wei yang diberikan kepada Upe. Dua dari delapan apel, jadi dua per delapan.",
+      "Langkah dua: arsir apel Lukas yang diberikan kepada Yohana. Dua dari delapan apel, jadi dua per delapan.",
       bersih(0),
-      tambah(0, judul("Cara Halim 2: apel Upe")),
+      tambah(0, judul("Cara Nisa 2: apel Yohana")),
       tambah(0, ...apel("ap", 40, 66, (i) => (YOHANA.includes(i) ? BIRU_MUDA : LUKAS.includes(i) ? W.hijau : W.putih))),
-      tambah("Dua", ...rumus("r", 220, 84, "2/8", 24, W.biru, {}, false), teks("rt", 220, 126, "diberikan Wei", 9, W.biru)),
+      tambah("Dua", ...rumus("r", 220, 84, "2/8", 24, W.biru, {}, false), teks("rt", 220, 126, "diberikan Lukas", 9, W.biru)),
     ),
     k(
-      "Langkah tiga: sisa apel Wei dari seluruh apel. Penyebutnya sama, jadi enam dikurangi dua sama dengan empat. Sisa apel Wei empat per delapan, atau setengah.",
+      "Langkah tiga: sisa apel Lukas dari seluruh apel. Penyebutnya sama, jadi enam dikurangi dua sama dengan empat. Sisa apel Lukas empat per delapan, atau setengah.",
       bersih(0),
-      tambah(0, judul("Cara Halim 3: sisa apel Wei")),
+      tambah(0, judul("Cara Nisa 3: sisa apel Lukas")),
       tambah(0, ...apel("ap", 80, 56, (i) => (YOHANA.includes(i) ? W.abu : LUKAS.includes(i) ? W.hijau : W.putih))),
-      tambah("sisa", teks("sl", 150, 108, "sisa apel Wei: 4 dari 8", 9.4, W.hijau)),
+      tambah("sisa", teks("sl", 150, 108, "sisa apel Lukas: 4 dari 8", 9.4, W.hijau)),
       tambah("Penyebutnya", ...rumus("r", 150, 150, "6/8 − 2/8 = 4/8 = 1/2", 17)),
     ),
     k(
-      "Hati-hati, tanyakan dulu sisa apel siapa. Yang kita hitung tadi sisa apel Wei. Sisa apel Kira sendiri delapan dikurangi enam, yaitu dua per delapan.",
+      "Hati-hati, tanyakan dulu sisa apel siapa. Yang kita hitung tadi sisa apel Lukas. Sisa apel Asep sendiri delapan dikurangi enam, yaitu dua per delapan.",
       bersih(0),
       tambah(0, judul("Hati-hati: sisa siapa?")),
-      tambah("siapa", kotak("c1", 14, 32, 130, 68, W.merahMuda, W.merah, { rx: 8 }), teks("c1t", 79, 48, "yang ditanya: sisa Kira", 8, W.merah)),
-      tambah("Wei", kotak("c2", 156, 32, 130, 68, W.hijauMuda, W.hijau, { rx: 8 }), teks("c2t", 221, 48, "yang dihitung: sisa Wei", 8, W.hijau), ...rumus("c2r", 221, 80, "6/8 − 2/8 = 4/8", 11)),
+      tambah("siapa", kotak("c1", 14, 32, 130, 68, W.merahMuda, W.merah, { rx: 8 }), teks("c1t", 79, 48, "yang ditanya: sisa Asep", 8, W.merah)),
+      tambah("Lukas", kotak("c2", 156, 32, 130, 68, W.hijauMuda, W.hijau, { rx: 8 }), teks("c2t", 221, 48, "yang dihitung: sisa Lukas", 8, W.hijau), ...rumus("c2r", 221, 80, "6/8 − 2/8 = 4/8", 11)),
       tambah("Sisa@3", ...apel("ap", 80, 128, (i) => (ASEP.includes(i) ? W.emas : W.abu))),
       tambah("delapan", ...rumus("c1r", 79, 80, "8/8 − 6/8 = 2/8", 11)),
     ),
