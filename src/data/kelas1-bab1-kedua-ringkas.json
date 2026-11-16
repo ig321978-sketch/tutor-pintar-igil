@@ -1,0 +1,193 @@
+{
+  "chapter_id": "mtk-1-bab1-kedua",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subject": "Matematika",
+  "title": "Penolong Pesta: Menghitung sampai Sepuluh (Opsi 2, dunia Kampung Cemara)",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA Opsi 2 Kelas 1 Bab 1 Sub-Bab A. Dipakai petaSusun dan tabelSusun; peta dan infografis lama hanya cadangan tipe. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Menghitung nol sampai sepuluh",
+          "ikon": "🍎",
+          "suara": "Ini peta menghitung nol sampai sepuluh. Ada tiga cabang. Ketuk cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "hitung",
+            "judul": "Tunjuk dan geser",
+            "ikon": "👆",
+            "ringkas": "Hitung satu per satu.",
+            "suara": "Tunjuk dan geser. Hitung satu per satu. Yang terakhir adalah banyaknya. Apel yang sudah dihitung digeser."
+          },
+          {
+            "id": "isi",
+            "judul": "Isi bingkai",
+            "ikon": "📥",
+            "ringkas": "Kosong nol, penuh sepuluh.",
+            "suara": "Isi Bingkai Sepuluh. Bingkai kosong artinya nol. Bingkai penuh artinya sepuluh."
+          },
+          {
+            "id": "tulis",
+            "judul": "Baca dan tulis",
+            "ikon": "✏️",
+            "ringkas": "Lambang ditulis dengan gerak benar.",
+            "suara": "Baca dan tulis. Setiap banyaknya punya lambang. Tulis lambangnya dengan gerak yang benar."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "k-satu",
+            "teks": "Satu apel, satu sebutan",
+            "ikon": "👆",
+            "cabang": "hitung",
+            "petunjuk": "Ini soal menghitung. Coba cabang lain."
+          },
+          {
+            "id": "k-geser",
+            "teks": "Yang dihitung digeser",
+            "ikon": "↔️",
+            "cabang": "hitung",
+            "petunjuk": "Ini soal menghitung. Coba cabang lain."
+          },
+          {
+            "id": "k-nol",
+            "teks": "Kosong artinya nol",
+            "ikon": "⭕",
+            "cabang": "isi",
+            "petunjuk": "Ini soal bingkai. Coba cabang lain."
+          },
+          {
+            "id": "k-penuh",
+            "teks": "Penuh artinya sepuluh",
+            "ikon": "🍎",
+            "cabang": "isi",
+            "petunjuk": "Ini soal bingkai. Coba cabang lain."
+          },
+          {
+            "id": "k-lambang",
+            "teks": "Banyaknya punya lambang",
+            "ikon": "🔢",
+            "cabang": "tulis",
+            "petunjuk": "Ini soal lambang. Coba cabang lain."
+          },
+          {
+            "id": "k-gerak",
+            "teks": "Tulis dengan gerak benar",
+            "ikon": "✏️",
+            "cabang": "tulis",
+            "petunjuk": "Ini soal menulis. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Apel di Keranjang: Hitung, Baca, Tulis Bilangan",
+        "suara": "Ini dua panel tentang menghitung apel. Ketuk kotaknya untuk membuka.",
+        "panel": [
+          {
+            "id": "a-langkah",
+            "tipe": "buka",
+            "judul": "Empat langkah",
+            "ide": "Tunjuk, geser, isi, tulis.",
+            "suara": "Metode IGIL punya empat langkah. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tunjuk",
+                "label": "Tunjuk",
+                "ikon": "👆",
+                "isi": "Sebut satu per satu.",
+                "suara": "Tunjuk dan sebut satu per satu. Yang terakhir adalah banyaknya.",
+                "visual": { "jenis": "teks", "isi": "satu apel, satu sebutan" }
+              },
+              {
+                "id": "geser",
+                "label": "Geser",
+                "ikon": "↔️",
+                "isi": "Yang dihitung digeser.",
+                "suara": "Apel yang sudah dihitung digeser supaya tidak lupa.",
+                "visual": { "jenis": "teks", "isi": "apel ke keranjang" }
+              },
+              {
+                "id": "isi",
+                "label": "Isi",
+                "ikon": "📥",
+                "isi": "Penuhi Bingkai Sepuluh.",
+                "suara": "Isi bingkai satu petak satu apel. Kosong nol, penuh sepuluh.",
+                "visual": { "jenis": "teks", "isi": "kosong nol, penuh sepuluh" }
+              },
+              {
+                "id": "tulis",
+                "label": "Tulis",
+                "ikon": "✏️",
+                "isi": "Tulis lambangnya.",
+                "suara": "Cocokkan banyaknya dengan lambang. Tulis dengan gerak yang benar.",
+                "visual": { "jenis": "teks", "isi": "label dari Niko" }
+              }
+            ]
+          },
+          {
+            "id": "a-nol",
+            "tipe": "buka",
+            "judul": "Nol dan sepuluh",
+            "ide": "Bingkai kosong dan bingkai penuh.",
+            "suara": "Ada dua keadaan bingkai. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "kosong",
+                "label": "Kosong",
+                "ikon": "⭕",
+                "isi": "Tidak ada apel: nol.",
+                "suara": "Tidak ada apel di nampan. Banyaknya nol.",
+                "visual": { "jenis": "teks", "isi": "bingkai kosong = nol" }
+              },
+              {
+                "id": "penuh",
+                "label": "Penuh",
+                "ikon": "🍎",
+                "isi": "Semua petak terisi: sepuluh.",
+                "suara": "Semua petak terisi apel. Banyaknya sepuluh.",
+                "visual": { "jenis": "teks", "isi": "bingkai penuh = sepuluh" }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Menghitung nol sampai sepuluh",
+          "ikon": "🍎",
+          "suara": "Ini peta menghitung nol sampai sepuluh. Ada empat langkah Metode IGIL. Susun tabnya satu per satu."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok.",
+        "simpul": [
+          { "id": "tunjuk", "nomor": 1, "induk": null, "teks": "Tunjuk", "ikon": "👆", "petunjuk": "Ini nama langkah, bukan isinya." },
+          { "id": "tunjuk-satu", "nomor": 2, "induk": "tunjuk", "teks": "Satu per satu", "petunjuk": "Langkah ini menyebut apel satu demi satu." },
+          { "id": "tunjuk-akhir", "nomor": 3, "induk": "tunjuk", "teks": "Terakhir: banyaknya", "petunjuk": "Ini soal sebutan yang terakhir." },
+          { "id": "geser", "nomor": 4, "induk": null, "teks": "Geser", "ikon": "↔️", "petunjuk": "Ini nama langkah, bukan isinya." },
+          { "id": "geser-hitung", "nomor": 5, "induk": "geser", "teks": "Yang dihitung digeser", "petunjuk": "Apel yang sudah disebut pindah tempat." },
+          { "id": "isi", "nomor": 6, "induk": null, "teks": "Isi", "ikon": "📥", "petunjuk": "Ini nama langkah, bukan isinya." },
+          { "id": "isi-kosong", "nomor": 7, "induk": "isi", "teks": "Kosong: nol", "petunjuk": "Bingkai tanpa apel." },
+          { "id": "isi-penuh", "nomor": 8, "induk": "isi", "teks": "Penuh: sepuluh", "petunjuk": "Bingkai yang semua petaknya terisi." },
+          { "id": "tulis", "nomor": 9, "induk": null, "teks": "Tulis", "ikon": "✏️", "petunjuk": "Ini nama langkah, bukan isinya." },
+          { "id": "tulis-lambang", "nomor": 10, "induk": "tulis", "teks": "Lambang bilangan", "petunjuk": "Tanda yang cocok dengan banyaknya." },
+          { "id": "tulis-gerak", "nomor": 11, "induk": "tulis", "teks": "Gerak benar", "petunjuk": "Ini soal cara menggoreskan jari." }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Metode IGIL di kebun",
+        "petunjuk": "Seret tab ke kotak yang benar.",
+        "suara": "Ini tabel empat langkah Metode IGIL. Pasang tab di kotak yang cocok.",
+        "pojok": "Langkah",
+        "kolom": ["Yang dilakukan", "Contoh di kebun", "Hasilnya"],
+        "baris": [
+          { "label": "Tunjuk", "sel": ["Sebut satu per satu", "Apel di rumput", "Terakhir: banyaknya"] },
+          { "label": "Geser", "sel": ["Pindahkan yang dihitung", "Apel ke keranjang", "Tidak dihitung dua kali"] },
+          { "label": "Isi", "sel": ["Penuhi bingkai", "Nampan Nenek", "Kosong nol, penuh sepuluh"] },
+          { "label": "Tulis", "sel": ["Cocokkan dengan lambang", "Label dari Niko", "Lambang ditulis benar"] }
+        ]
+      }
+    }
+  }
+}

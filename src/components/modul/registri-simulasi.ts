@@ -31,6 +31,7 @@ import { misiAwalK3Bab3 } from "@/components/modul/misi-teks-k3b3";
 import { misiAwalK3Bab4 } from "@/components/modul/misi-teks-k3b4";
 import { misiAwalK3Bab5 } from "@/components/modul/misi-teks-k3b5";
 import { misiAwalK4Bab1 } from "@/components/modul/misi-teks-k4b1";
+import { misiAwalO2K1A } from "@/components/modul/o2k1a-misi-teks";
 import { misiAwalK4B1KA } from "@/components/modul/misi-teks-k4b1ka";
 import { misiAwalK4Bab2 } from "@/components/modul/misi-teks-k4b2";
 import { misiAwalK4Bab3 } from "@/components/modul/misi-teks-k4b3";
@@ -75,6 +76,7 @@ import ringkasK3B4 from "@/data/kelas3-bab4-ringkas.json";
 import ringkasK3B5 from "@/data/kelas3-bab5-ringkas.json";
 import ringkasK4B1 from "@/data/kelas4-bab1-ringkas.json";
 import ringkasK4B1KA from "@/data/kelas4-bab1-kedua-ringkas.json";
+import ringkasK1B1KA from "@/data/kelas1-bab1-kedua-ringkas.json";
 import ringkasK4B2 from "@/data/kelas4-bab2-ringkas.json";
 import ringkasK4B3 from "@/data/kelas4-bab3-ringkas.json";
 import ringkasK4B4 from "@/data/kelas4-bab4-ringkas.json";
@@ -115,6 +117,7 @@ const SimulasiK3Bab4Materi = dynamic<SimulasiMateriProps>(() => import("@/compon
 const SimulasiK3Bab5Materi = dynamic<SimulasiMateriProps>(() => import("@/components/modul/SimulasiK3Bab5"), { ssr: false });
 const SimulasiK4Bab1Materi = dynamic<SimulasiMateriProps>(() => import("@/components/modul/SimulasiK4Bab1"), { ssr: false });
 const SimulasiK4B1KeduaMateri = dynamic<SimulasiMateriProps>(() => import("@/components/modul/SimulasiK4B1Kedua"), { ssr: false });
+const SimulasiK1B1KeduaMateri = dynamic<SimulasiMateriProps>(() => import("@/components/modul/SimulasiK1B1Kedua"), { ssr: false });
 const SimulasiK4Bab2Materi = dynamic<SimulasiMateriProps>(() => import("@/components/modul/SimulasiK4Bab2"), { ssr: false });
 const SimulasiK4Bab3Materi = dynamic<SimulasiMateriProps>(() => import("@/components/modul/SimulasiK4Bab3"), { ssr: false });
 const SimulasiK4Bab4Materi = dynamic<SimulasiMateriProps>(() => import("@/components/modul/SimulasiK4Bab4"), { ssr: false });
@@ -167,6 +170,7 @@ export const SIMULASI_MATERI: Partial<Record<string, ComponentType<SimulasiMater
   "mtk-3-bab5": SimulasiK3Bab5Materi,
   "mtk-4-bab1": SimulasiK4Bab1Materi,
   "mtk-4-bab1-kedua": SimulasiK4B1KeduaMateri,
+  "mtk-1-bab1-kedua": SimulasiK1B1KeduaMateri,
   "mtk-4-bab2": SimulasiK4Bab2Materi,
   "mtk-4-bab3": SimulasiK4Bab3Materi,
   "mtk-4-bab4": SimulasiK4Bab4Materi,
@@ -212,6 +216,7 @@ export const SIMULASI_MISI_AWAL: Partial<Record<string, (sub: string) => string>
   "mtk-3-bab5": misiAwalK3Bab5,
   "mtk-4-bab1": misiAwalK4Bab1,
   "mtk-4-bab1-kedua": misiAwalK4B1KA,
+  "mtk-1-bab1-kedua": misiAwalO2K1A,
   "mtk-4-bab2": misiAwalK4Bab2,
   "mtk-4-bab3": misiAwalK4Bab3,
   "mtk-4-bab4": misiAwalK4Bab4,
@@ -257,6 +262,7 @@ export const RINGKAS_BAB: Partial<Record<string, Record<string, RingkasSub>>> = 
   "mtk-3-bab5": ringkasK3B5.subBab as unknown as Record<string, RingkasSub>,
   "mtk-4-bab1": ringkasK4B1.subBab as unknown as Record<string, RingkasSub>,
   "mtk-4-bab1-kedua": ringkasK4B1KA.subBab as unknown as Record<string, RingkasSub>,
+  "mtk-1-bab1-kedua": ringkasK1B1KA.subBab as unknown as Record<string, RingkasSub>,
   "mtk-4-bab2": ringkasK4B2.subBab as unknown as Record<string, RingkasSub>,
   "mtk-4-bab3": ringkasK4B3.subBab as unknown as Record<string, RingkasSub>,
   "mtk-4-bab4": ringkasK4B4.subBab as unknown as Record<string, RingkasSub>,

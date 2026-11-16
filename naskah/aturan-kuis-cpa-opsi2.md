@@ -42,3 +42,44 @@ Katalog ini diubah per topik (tindakan nyata Kelas 4 tentu berbeda dari Kelas 1)
 - **Dianjurkan:** tindakan yang nyata dilakukan anak dengan benda keseharian: seret, pisahkan, gabungkan, pilah, pasangkan, tata, hitung dengan mengetuk, tebak sekilas. Untuk bab pecahan Kelas 4 dan seterusnya: potong benda menjadi bagian sama (klik lalu pisahkan bagian), tempelkan bagian, bandingkan bagian.
 - **Dilarang:** tindakan yang bisa diselesaikan tanpa memahami konsep (mis. mengetuk acak sampai benar, atau menjawab dengan menghitung waktu tanpa melihat soal); tindakan yang butuh membaca teks panjang (anak Kelas 1 sulit membaca); tindakan dengan batas waktu atau skor lomba; dan tindakan yang memakai konsep di luar sub-bab (membocorkan sub-bab berikutnya).
 - **Syarat tiap tindakan:** ada satu hasil yang bisa diperiksa mesin dan dihitung ulang, ada umpan balik yang menunjuk letak kekeliruan (tanpa memarahi), dan bisa dijalankan dengan jari di layar HP.
+
+## 6. Katalog Kelas 1 Bab 1 Sub-Bab A (usulan, menunggu persetujuan pemilik)
+Topik: menghitung banyak benda sampai sepuluh, membaca dan menulis lambang nol sampai sepuluh, mengenal nol, Bingkai Sepuluh. Dunia: Kampung Cemara. Tanpa penilaian. Tiap tahap tepat 10 soal bernomor 1 sampai 10 (urutan bebas), tiap nomor satu tindakan berbeda. Percobaan = jumlah pilihan (soal tanpa pilihan: tiga).
+
+**Concrete (benda keseharian digambar; tanpa diagram dan tanpa lambang sebagai jawaban utama)**
+1. Seret apel ke keranjang sampai tepat n.
+2. Ketuk apel satu per satu sambil menghitung, lalu pilih banyaknya (TUNJUK).
+3. Geser apel yang sudah dihitung ke piring, lalu sebut banyaknya (GESER).
+4. Hitung benda melingkar: tandai benda pertama dengan bendera, hitung sampai kembali ke bendera.
+5. Isi nampan bingkai sepuluh dengan apel sampai tepat n (ISI).
+6. Lihat sekilas lalu ketuk banyaknya (satu sampai empat).
+7. Pilah: ketuk hanya apel di antara apel dan jeruk, lalu hitung apel.
+8. Pilih keranjang yang kosong di antara tiga keranjang (nol).
+9. Jejerkan benda berserakan menjadi satu deret, lalu hitung.
+10. Cari apel yang terlewat dihitung (memperbaiki hitungan Niko).
+
+**Picture (diagram polos: titik, lingkaran, petak, turus; tanpa gambar atau emoji benda)**
+1. Warnai n petak pada bingkai sepuluh.
+2. Tandai n titik pada deret titik.
+3. Hubungkan kumpulan titik dengan kartu lambangnya (tarik garis).
+4. Pilih diagram titik yang banyaknya n (di antara tiga).
+5. Lengkapi turus (goresan) sampai n.
+6. Titik tersebar: tandai tiap titik sekali, lalu pilih banyaknya.
+7. Salin pola contoh ke bingkai kosong.
+8. Ketuk semua diagram yang banyaknya n (bisa lebih dari satu).
+9. Pilih lambang yang cocok untuk diagram (papan lambang nol sampai sepuluh).
+10. Titik melingkar: tandai titik pertama, hitung, pilih banyaknya.
+
+**Abstract (lambang dan kata saja; tanpa gambar benda atau diagram)**
+1. Dengarkan nama bilangan, pilih lambangnya.
+2. Tulis lambang bilangan yang disebut di kanvas (jalur gerak).
+3. Jodohkan kata bilangan dengan lambangnya.
+4. Urutkan goresan penulisan sebuah lambang (ketuk goresan sesuai urutan).
+5. Benar atau salah: pernyataan "lambang ini dibaca ...".
+6. Detektif: temukan lambang yang tertulis salah arah (mis. 6 dan 9, 2 dan 5).
+7. Memori: pasangkan kartu lambang dengan kartu kata bilangan.
+8. Ketuk semua lambang yang dibaca "n" (beberapa gaya tulisan).
+9. Lengkapi kalimat: lambang yang hilang pada "Lambang ... dibaca enam".
+10. Tulis sepuluh: lambang satu lalu nol (dua lambang berurutan).
+
+Catatan batas: tidak ada tindakan membandingkan, menghitung maju atau mundur, memasangkan untuk membandingkan, menjumlah, atau nilai tempat. Soal selalu memuat bilangan 0 sampai 10.
