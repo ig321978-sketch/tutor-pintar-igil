@@ -943,6 +943,7 @@ function tanpaBabModul(data: Record<string, Record<string, string[]>>) {
 }
 
 export const JUDUL_MTK_1_BAB1 = "Bab 1: Ayo Membilang sampai dengan 10";
+export const JUDUL_MTK_1_BAB1_KEDUA = "Modul Kedua Kelas 1 Bab 1: Ayo Membilang sampai dengan 10";
 export const JUDUL_MTK_1_BAB2 = "Bab 2: Penjumlahan sampai dengan 10";
 export const JUDUL_MTK_1_BAB3 = "Bab 3: Pengurangan sampai dengan 10";
 export const JUDUL_MTK_1_BAB4 = "Bab 4: Mengenal Bentuk";
@@ -986,7 +987,7 @@ export const JUDUL_MTK_6_BAB4 = "Bab 4: Peluang";
 
 const BAB_TERPASANG: Record<string, Record<string, string[]>> = {
   "1 SD": {
-    Matematika: [JUDUL_MTK_1_BAB1, JUDUL_MTK_1_BAB2, JUDUL_MTK_1_BAB3, JUDUL_MTK_1_BAB4, JUDUL_MTK_1_BAB5, JUDUL_MTK_1_BAB6, JUDUL_MTK_1_BAB7, JUDUL_MTK_1_BAB8],
+    Matematika: [JUDUL_MTK_1_BAB1, JUDUL_MTK_1_BAB1_KEDUA, JUDUL_MTK_1_BAB2, JUDUL_MTK_1_BAB3, JUDUL_MTK_1_BAB4, JUDUL_MTK_1_BAB5, JUDUL_MTK_1_BAB6, JUDUL_MTK_1_BAB7, JUDUL_MTK_1_BAB8],
   },
   "2 SD": {
     Matematika: [JUDUL_MTK_2_BAB1, JUDUL_MTK_2_BAB2, JUDUL_MTK_2_BAB3, JUDUL_MTK_2_BAB4, JUDUL_MTK_2_BAB5, JUDUL_MTK_2_BAB6, JUDUL_MTK_2_BAB7, JUDUL_MTK_2_BAB8],

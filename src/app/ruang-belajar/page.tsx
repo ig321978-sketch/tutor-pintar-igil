@@ -11,6 +11,7 @@ import {
   DATA_KURIKULUM,
   DAFTAR_KELAS,
   JUDUL_MTK_1_BAB1,
+  JUDUL_MTK_1_BAB1_KEDUA,
   JUDUL_MTK_1_BAB2,
   JUDUL_MTK_1_BAB3,
   JUDUL_MTK_1_BAB4,
@@ -278,6 +279,7 @@ export default function RuangBelajarPage() {
       kelas === "1 SD"
         ? {
             [JUDUL_MTK_1_BAB1]: "/ruang-belajar/mtk-1-bab1",
+            [JUDUL_MTK_1_BAB1_KEDUA]: "/ruang-belajar/mtk-1-bab1-kedua",
             [JUDUL_MTK_1_BAB2]: "/ruang-belajar/mtk-1-bab2",
             [JUDUL_MTK_1_BAB3]: "/ruang-belajar/mtk-1-bab3",
             [JUDUL_MTK_1_BAB4]: "/ruang-belajar/mtk-1-bab4",
