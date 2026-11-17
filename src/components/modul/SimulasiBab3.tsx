@@ -6,6 +6,7 @@ import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiKurang, { SEMUA_TAMPIL_KURANG, type TampilKurang } from "./SimulasiKurang";
 import SimulasiMesinBus from "./SimulasiMesinBus";
 import SimulasiSkenario from "./SimulasiSkenario";
+import SimulasiKotakBekal from "./bekal-k1b3a/SimulasiKotakBekal";
 import { SKENARIO_BAB3 } from "./skenario-kelas1";
 import { daftarMisiBab3, type KeadaanBab3 } from "./misi-bab3";
 import { laporMisi, tampilMisi } from "./misi-simulasi";
@@ -14,7 +15,8 @@ import { laporMisi, tampilMisi } from "./misi-simulasi";
 /* Simulasi Bab 3 di dalam Materi (tahap 4 SMISCPA, di antara Infografis    */
 /* dan Concrete). Pola hibrida: satu laboratorium yang alatnya bertambah    */
 /* per sub-bab, dengan misi wajib dan tantangan bebas (misi-bab3.ts).       */
-/*   Sub-Bab A (Cerita Pengurangan): benda, kalimat, bingkai sepuluh.       */
+/*   Sub-Bab A (Cerita Pengurangan): Kotak Bekal, Misi Perjalanan bagian    */
+/*     satu, cerita Kereta ke Rumah Nenek (bekal-k1b3a).                    */
 /*   Sub-Bab B (Berbagai Cara): + dua pengurangan, bagan, garis mundur.     */
 /*   Sub-Bab C (Keluarga Bilangan): + keluarga fakta dan tab Bus Sekolah.   */
 /*   Sub-Bab D (Soal Cerita, sub-bab akhir): semua alat + tab Pesta Jeruk,  */
@@ -26,7 +28,7 @@ import { laporMisi, tampilMisi } from "./misi-simulasi";
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
 const MISI = {
-  A: "Coret benda yang diambil dan baca sisanya. Selesaikan misi di bawah, urutannya bebas.",
+  A: "Misi Perjalanan bagian satu: ambil bekal dari kotak bersekat, lihat sisanya, lalu catat kalimat pengurangannya. Urutannya bebas.",
   B: "Coba berbagai cara mengurang: dua pengurangan, mundur, nol, dan dari sepuluh. Selesaikan misi wajib, lalu coba tantangan bebas.",
   C: "Temukan keluarga bilangan, periksa dengan tambah, dan bantu Bus Sekolah. Selesaikan misi wajib, lalu coba tantangan bebas.",
   D: "Ubah soal cerita menjadi pengurangan, periksa jawabanmu, dan bantu Bu Lina di pesta. Selesaikan semua misi wajib, lalu coba tantangan bebas.",
@@ -45,7 +47,7 @@ const langkahBab3 = (sub: string): LangkahSim[] => {
   return [
     {
       metode: "PhET",
-      sub: huruf === "D" ? "Lab Pengurangan: Pencapaian Misi" : "Lab Pengurangan",
+      sub: huruf === "D" ? "Lab Pengurangan: Pencapaian Misi" : huruf === "A" ? "Kotak Bekal" : "Lab Pengurangan",
       petunjuk: MAINKAN_DULU,
       misi: MISI[huruf],
       misiDaftar: tampilMisi(daftar),
@@ -56,7 +58,8 @@ const langkahBab3 = (sub: string): LangkahSim[] => {
         const kurang: TabLab = { id: "kurang", nama: "Pengurangan", render: () => <SimulasiKurang speakGuru={a.speakGuru} tampil={TAMPIL[huruf]} onKeadaan={lapor} /> };
         const bus: TabLab = { id: "bus", nama: "Bus Sekolah", render: () => <SimulasiMesinBus speakGuru={a.speakGuru} onTuntas={() => selesai("bus")} /> };
         const pesta: TabLab = { id: "pesta", nama: "Pesta Jeruk", render: () => <SimulasiSkenario def={SKENARIO_BAB3} speakGuru={a.speakGuru} onTuntas={() => selesai("pesta")} /> };
-        const tab = huruf === "A" || huruf === "B" ? [kurang] : huruf === "C" ? [kurang, bus] : [kurang, bus, pesta];
+        const kotakBekal: TabLab = { id: "bekal", nama: "Kotak Bekal", render: () => <SimulasiKotakBekal speakGuru={a.speakGuru} onKeadaan={lapor} /> };
+        const tab = huruf === "A" ? [kotakBekal] : huruf === "B" ? [kurang] : huruf === "C" ? [kurang, bus] : [kurang, bus, pesta];
         return <LabBertahap tab={tab} label="Alat laboratorium pengurangan" />;
       },
     },

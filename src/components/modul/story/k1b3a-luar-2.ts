@@ -1,101 +1,125 @@
 import type { AdeganStory } from "./logika-story";
-import { OWL, W, emo, kartu, kepingBingkai, kotak, pusatSel, selBingkai, silang, teks } from "./k1b3a-gambar";
-import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k1b3a-bantu";
-import { NAMA_METODE_ID, WARNA_METODE, kepala } from "./k1b3a-luar-1";
+import { E, KURANG, W, deret, deretEmo, emo, isiDi, judul, kalimatK, kartu, kotakSekat, orang, panahObj, sekat, teks } from "./k1b3a-gambar";
+import { jalur, tengahPetak } from "./k1b1c-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah, urutKata } from "./k1b3a-bantu";
+import { WARNA_METODE, kepala } from "./k1b3a-luar-1";
 
-const BX = 25;
-const BY = 54;
-const SEL = 50;
-const pusat = (i: number) => pusatSel(BX, BY, i, SEL);
+/* Video metode global Sub-Bab A: Counting Back (Menghitung Mundur), Ten Frame (Bingkai Sepuluh), dan ringkasan. */
 
-/* ------------------------------ 1. Kurang di Bingkai: konsep (tujuh keping, tiga dikosongkan) ------------------------------ */
-const SUARA_A1 = "Metode ketiga bernama Kurang di Bingkai. Kita kosongkan petak pada bingkai sepuluh.";
-const SUARA_A2 = "Contohnya ada tujuh keping merah di bingkai. Keping mengisi petak dari kiri ke kanan.";
-const SUARA_A3 = "Kita kosongkan tiga petak. Ketuk tiga keping terakhir, lalu coret keping itu.";
-const SUARA_A4 = "Petak yang kosong sekarang ada tiga. Tiga keping sudah pergi. Sisanya tinggal empat keping.";
-const SUARA_A5 = "Tujuh dikurangi tiga sama dengan empat. Bingkai sepuluh membantu kita melihat sisa dengan sekali pandang.";
+/* ------------------------------ 4. Counting Back: konsep ------------------------------ */
+const SUARA_C1 = "Metode kedua, Counting Back, atau Menghitung Mundur. Kita mulai dari bilangan pertama.";
+const SUARA_C2 = "Lalu kita mundur satu langkah untuk setiap benda yang pergi.";
+const SUARA_C3 = "Bilangan tempat kita berhenti adalah sisanya.";
+const SUARA_C4 = "Cara ini cepat kalau yang pergi sedikit, misalnya satu, dua, atau tiga.";
+const J = { x0: 20, y: 104, s: 26 };
+const tp = (i: number) => tengahPetak(J.x0, J.y, i, J.s);
+
+export const ADEGAN_LUAR_MUNDUR: AdeganStory = {
+  id: "luar-mundur",
+  judul: "Counting Back: menghitung mundur",
+  sumber: "Metode global: Counting Back",
+  latar: "#EFF6FF",
+  ketukan: [
+    k(SUARA_C1, tambah("kedua,", ...kepala(1)), tambah("mulai", ...jalur("jl", J.x0, J.y, J.s), ...kartu("sl", 110, 60, 80, 26, W.emas, [`7 ${KURANG} 3`], 13)), sorotkan("pertama.", "jl6")),
+    k(
+      SUARA_C2,
+      ...[6, 5, 4].map((i, n) => tambah(["mundur", "langkah", "pergi."][n], panahObj(`pa${n}`, tp(i).x - 4, J.y + 40, -18, 0, W.merah), teks(`pt${n}`, tp(i - 1).x, J.y + 58, String(i), 11, W.merah))),
+    ),
+    k(SUARA_C3, sorotkan("berhenti", "jl3"), tambah("sisanya.", teks("ss", tp(3).x, J.y - 8, "sisa", 10, W.hijau))),
+    k(SUARA_C4, ubah("cepat", { id: "sl-t0", isi: `7 ${KURANG} 3 = 4` }), tambah("sedikit,", ...kartu("sd", 30, 172, 240, 24, W.langit, ["pergi sedikit: mundur saja"], 10))),
+  ],
+};
+
+/* ------------------------------ 5. Counting Back: terapan ------------------------------ */
+const SUARA_D1 = "Kaka punya enam jeruk. Dua jeruk diberikan kepada kondektur kereta.";
+const SUARA_D2 = "Kaka tidak menghitung ulang dari satu. Ia mulai dari enam.";
+const SUARA_D3 = "Lalu mundur dua kali: lima, empat. Kaka berhenti di empat.";
+const SUARA_D4 = "Jadi sisa jeruk Kaka empat. Enam dikurangi dua sama dengan empat.";
+const JERUK = deret(6, 75, 30, 112);
+const posD3 = urutKata(SUARA_D3, ["lima,", "empat."], "kali:");
+
+export const ADEGAN_LUAR_MUNDUR_TERAPAN: AdeganStory = {
+  id: "luar-mundur-terapan",
+  judul: "Counting Back: jeruk Kaka",
+  sumber: "Metode global: Counting Back, terapan",
+  latar: "#EFF6FF",
+  ketukan: [
+    k(SUARA_D1, tambah(0, ...kepala(1)), tambah("Kaka", ...orang("kk", 40, 170, E.kaka, "Kaka")), tambah("enam", ...deretEmo(E.jeruk, "jr", JERUK, 22)), tambah("kondektur", ...orang("kd", 260, 170, E.penumpang, "kondektur"))),
+    k(SUARA_D2, sorotkan("mulai", "jr5"), tambah("enam.", teks("h6", JERUK[5].x, 86, "6", 13, W.merah))),
+    k(
+      SUARA_D3,
+      ubah(posD3[0], { id: "jr5", op: 0.3, sorot: false }),
+      tambah(posD3[0], teks("h5", JERUK[4].x, 86, "5", 13, W.merah)),
+      ubah(posD3[1], { id: "jr4", op: 0.3 }),
+      tambah(posD3[1], teks("h4", JERUK[3].x, 86, "4", 13, W.merah)),
+      sorotkan("berhenti", "h4"),
+    ),
+    k(SUARA_D4, tambah("sisa", ...kartu("ss", 100, 46, 100, 22, W.emas, ["sisa 4 jeruk"], 10)), tambah("dikurangi", ...kalimatK("kl", 150, 146, ["6", KURANG, "2", "=", "4"], 16, 26))),
+  ],
+};
+
+/* ------------------------------ 6. Ten Frame: konsep ------------------------------ */
+const SUARA_F1 = "Metode ketiga, Ten Frame, atau Bingkai Sepuluh. Bingkai punya dua baris, tiap baris lima kotak.";
+const SUARA_F2 = "Isi bingkai dengan semua benda. Lalu kosongkan kotak dari belakang untuk benda yang pergi.";
+const SUARA_F3 = "Kotak yang masih terisi adalah sisanya. Baris penuh berarti lima.";
+const SUARA_F4 = "Kalau mula-mula sepuluh, kotak kosong menunjukkan berapa yang pergi.";
+const F = { x: 85, y: 84, s: 26 };
+const SF = Array.from({ length: 10 }, (_, i) => sekat(F.x, F.y, i, F.s));
 
 export const ADEGAN_LUAR_BINGKAI: AdeganStory = {
   id: "luar-bingkai",
-  judul: "Kurang di Bingkai: kosongkan petak",
-  sumber: "Metode luar: Kurang di Bingkai",
-  latar: "#FDF4FF",
+  judul: "Ten Frame: bingkai sepuluh",
+  sumber: "Metode global: Ten Frame",
+  latar: "#F5F3FF",
   ketukan: [
-    k(SUARA_A1, tambah("ketiga", ...kepala(2)), tambah("bingkai@2", ...selBingkai("bk", BX, BY, SEL)), tambah("sepuluh.", teks("b10", 150, 176, "10 petak", 11, W.ungu))),
-    k(SUARA_A2, hapus(0, "b10"), tambah("tujuh", ...kepingBingkai("kb", BX, BY, 0, 7, W.merah, SEL))),
+    k(SUARA_F1, tambah("ketiga,", ...kepala(2)), tambah("Bingkai@2", ...kotakSekat("bf", F.x, F.y, F.s)), tambah("lima", teks("l5", 150, 70, "2 baris, tiap baris 5", 9, W.ungu))),
     k(
-      SUARA_A3,
-      tambah(idx(SUARA_A3, "Ketuk"), emo("tg", pusat(6).x, pusat(6).y + 30, "\u{1F446}", 22)),
-      tambah(idx(SUARA_A3, "coret"), ...silang("cr6", pusat(6).x, pusat(6).y, 14)),
-      ubah(idx(SUARA_A3, "keping", 2), { id: "tg", x: pusat(5).x }),
-      tambah(idx(SUARA_A3, "keping", 2), ...silang("cr5", pusat(5).x, pusat(5).y, 14)),
-      ubah(idx(SUARA_A3, "itu"), { id: "tg", x: pusat(4).x, y: pusat(4).y + 30 }),
-      tambah(idx(SUARA_A3, "itu"), ...silang("cr4", pusat(4).x, pusat(4).y, 14)),
+      SUARA_F2,
+      ubah(0, { id: "l5", isi: "isi dulu, lalu kosongkan" }),
+      tambah("semua", ...SF.slice(0, 7).map((p, i) => emo(`fb${i}`, p.x, p.y + 6, "\u{1F535}", 16))),
+      ubah("kosongkan", { id: "fb6", op: 0.3 }, { id: "fb5", op: 0.3 }),
+      hapus("pergi.", "fb5", "fb6"),
+      sorotkan("pergi.", "bfc5", "bfc6"),
     ),
-    k(
-      SUARA_A4,
-      hapus(2, "tg", "kb4", "kb5", "kb6", "cr4a", "cr4b", "cr5a", "cr5b", "cr6a", "cr6b"),
-      sorotkan(12, "kb0", "kb1", "kb2", "kb3"),
-    ),
-    k(SUARA_A5, tambah("Tujuh", ...kartu("bj", 80, 164, 140, 28, W.emas, ["7 − 3 = 4"], 13))),
+    k(SUARA_F3, sorotkan("terisi", "fb0", "fb1", "fb2", "fb3", "fb4"), tambah("lima.", teks("t5", 236, 101, "5", 14, W.merah)), tambah("sisanya.", teks("ss", 150, 160, "sisa 5", 11, W.hijau))),
+    k(SUARA_F4, tambah("sepuluh,", ...kartu("cp", 40, 172, 220, 24, W.lavender, ["10: kotak kosong = yang pergi"], 9.6))),
   ],
 };
 
-/* ------------------------------ 2. Kurang di Bingkai: terapan (sepuluh kelereng, empat dikosongkan) ------------------------------ */
-const SUARA_B1 = "Terapkan pada kelereng Upe. Bingkai sepuluh ini penuh dengan sepuluh kelereng.";
-const SUARA_B2 = "Upe memberi empat kelereng kepada Wei. Ketuk empat kelereng terakhir, lalu coret kelereng itu.";
-const SUARA_B3 = "Empat petak sekarang kosong. Kelereng yang pergi sudah tidak ada. Sisanya enam kelereng.";
-const SUARA_B4 = "Sepuluh dikurangi empat sama dengan enam. Bingkai yang penuh selalu berarti sepuluh. Dari situ kita mudah menemukan sisanya.";
-const PINK = "#F472B6";
+/* ------------------------------ 7. Ten Frame: terapan ------------------------------ */
+const SUARA_G1 = "Abang membawa sepuluh pisang. Bingkai penuh, dua baris lima.";
+const SUARA_G2 = "Igil dan Kaka makan dua pisang. Dua kotak terakhir dikosongkan.";
+const SUARA_G3 = "Baris atas lima, baris bawah tinggal tiga. Lima dan tiga, sisanya delapan.";
+const SUARA_G4 = "Ada dua kotak kosong. Sepuluh dikurangi dua sama dengan delapan.";
 
 export const ADEGAN_LUAR_BINGKAI_TERAPAN: AdeganStory = {
   id: "luar-bingkai-terapan",
-  judul: "Kurang di Bingkai: kelereng Upe",
-  sumber: "Metode luar: Kurang di Bingkai, terapan",
-  latar: "#FDF4FF",
+  judul: "Ten Frame: pisang Abang",
+  sumber: "Metode global: Ten Frame, terapan",
+  latar: "#F5F3FF",
   ketukan: [
-    k(SUARA_B1, tambah("pada", ...kepala(2)), tambah("penuh", ...selBingkai("rk", BX, BY, SEL), ...kepingBingkai("rg", BX, BY, 0, 10, PINK, SEL)), tambah(idx(SUARA_B1, "sepuluh", 2), teks("r10", 150, 176, "10 kelereng", 11, W.ungu))),
-    k(
-      SUARA_B2,
-      tambah(idx(SUARA_B2, "Ketuk"), emo("tg", pusat(9).x, pusat(9).y + 30, "\u{1F446}", 22)),
-      tambah(10, ...silang("cs9", pusat(9).x, pusat(9).y, 14)),
-      ubah(11, { id: "tg", x: pusat(8).x }),
-      tambah(11, ...silang("cs8", pusat(8).x, pusat(8).y, 14)),
-      ubah(12, { id: "tg", x: pusat(7).x }),
-      tambah(12, ...silang("cs7", pusat(7).x, pusat(7).y, 14)),
-      ubah(13, { id: "tg", x: pusat(6).x }),
-      tambah(13, ...silang("cs6", pusat(6).x, pusat(6).y, 14)),
-    ),
-    k(
-      SUARA_B3,
-      hapus(3, "tg", "r10", "rg6", "rg7", "rg8", "rg9", "cs6a", "cs6b", "cs7a", "cs7b", "cs8a", "cs8b", "cs9a", "cs9b"),
-      sorotkan(11, "rg0", "rg1", "rg2", "rg3", "rg4", "rg5"),
-    ),
-    k(SUARA_B4, tambah("Sepuluh", ...kartu("rj", 80, 164, 140, 28, W.emas, ["10 − 4 = 6"], 13)), tambah("penuh", emo("ro", 262, 196, OWL, 26))),
+    k(SUARA_G1, tambah(0, ...kepala(2), ...kotakSekat("bf", F.x, F.y, F.s)), tambah("Abang", ...orang("ab", 40, 110, E.abang, "Abang")), tambah("sepuluh", ...isiDi(E.pisang, "ps", SF, 18)), tambah("penuh,", teks("t10", 252, 114, "10", 14, W.merah))),
+    k(SUARA_G2, hapus(0, "t10"), ubah("makan", { id: "ps9", op: 0.3 }, { id: "ps8", op: 0.3 }), hapus("dikosongkan.", "ps8", "ps9"), sorotkan("dikosongkan.", "bfc8", "bfc9")),
+    k(SUARA_G3, tambah("atas", teks("t5", 236, 101, "5", 14, W.merah)), tambah("bawah", teks("t3", 236, 127, "3", 14, W.merah)), tambah("delapan.", ...kartu("d8", 100, 150, 100, 24, W.emas, ["sisa 8"], 11))),
+    k(SUARA_G4, tambah("dikurangi", ...kalimatK("kl", 150, 194, ["10", KURANG, "2", "=", "8"], 16, 28))),
   ],
 };
 
-/* ------------------------------ 3. Ringkasan tiga metode ------------------------------ */
-const SUARA_Z1 = "Mari kita ringkas tiga metode dari luar tadi.";
-const SUARA_Z2 = "Mengambil: keluarkan sebagian benda dari kumpulan. Hitung Mundur: mulai dari bilangan awal, lalu mundur.";
-const SUARA_Z3 = "Kurang di Bingkai: kosongkan petak pada bingkai sepuluh sampai tinggal sisanya.";
-const SUARA_Z4 = "Tiga cara ini membantu kita mencari sisa sampai sepuluh dengan cepat dan benar. Terima kasih sudah belajar.";
-const DESKRIPSI = ["keluarkan sebagian dari kumpulan", "mulai dari awal, lalu mundur", "kosongkan petak di bingkai 10"];
-const kartuMetode = (i: number) => [
-  kotak(`rm${i}-k`, 14, 34 + i * 54, 272, 46, WARNA_METODE[i], W.biru, { rx: 8, tebal: 1.5 }),
-  teks(`rm${i}-n`, 150, 34 + i * 54 + 19, `${i + 1}. ${NAMA_METODE_ID[i]}`, 9.6, W.biru),
-];
-const deskripsi = (i: number) => teks(`rm${i}-d`, 150, 34 + i * 54 + 36, DESKRIPSI[i], 8.8, W.merah);
+/* ------------------------------ 8. Ringkasan ------------------------------ */
+const SUARA_Z1 = "Kita sudah melihat tiga metode global untuk pengurangan. Semuanya membantu menjaga bekal untuk Nenek.";
+const SUARA_Z2 = "Take Away: ambil benda yang pergi, lalu hitung benda yang masih tinggal.";
+const SUARA_Z3 = "Counting Back: mulai dari bilangan pertama, lalu mundur satu langkah untuk tiap benda yang pergi.";
+const SUARA_Z4 = "Ten Frame: kosongkan kotak dari belakang, lalu lihat kotak yang masih terisi.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Ringkasan metode luar",
-  latar: "#FFF7ED",
+  judul: "Ringkasan tiga metode global",
+  sumber: "Ringkasan metode global",
+  latar: "#EFF6FF",
   ketukan: [
-    k(SUARA_Z1, tambah(0, teks("rj", 150, 20, "Tiga metode dari luar", 11, W.ungu)), tambah("ringkas", ...[0, 1, 2].flatMap(kartuMetode))),
-    k(SUARA_Z2, tambah(0, deskripsi(0)), tambah("Hitung", deskripsi(1))),
-    k(SUARA_Z3, tambah(0, deskripsi(2)), sorotkan("bingkai", "rm2-k")),
-    k(SUARA_Z4, bersih(0), tambah(0, teks("rj", 150, 20, "Terima kasih!", 12, W.ungu), emo("rs", 150, 110, OWL, 56)), tambah("sampai", teks("r10", 150, 170, "sisa sampai 10", 12, W.merah))),
+    k(SUARA_Z1, tambah(0, judul("Ringkasan")), tambah("tiga", emo("rk", 150, 96, E.bintang, 44)), tambah("Nenek.", ...kartu("rt", 60, 124, 180, 26, W.emas, ["3 metode global"], 10))),
+    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Take", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Take Away", "ambil, lalu hitung yang tinggal"], 9.4))),
+    k(SUARA_Z3, tambah("Counting", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["Counting Back", "mulai dari bilangan pertama, mundur"], 9.4))),
+    k(SUARA_Z4, tambah("Ten", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Ten Frame", "kosongkan dari belakang, lihat sisanya"], 9.4))),
   ],
 };

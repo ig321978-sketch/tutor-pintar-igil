@@ -1255,13 +1255,16 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   const kosong = new Set();
   const K3 = (o) => ({ alat: "kurang", t: 8, k: 3, benda: true, kalimat: true, garis: false, bingkai: true, dua: false, bagan: false, keluarga: false, ...o });
   const penuh = { garis: true, dua: true, bagan: true, keluarga: true };
-  ujiStruktur("bab3", X3.daftarMisiBab3, ["A", "B", "C", "D"], { A: K3({}), B: K3({ garis: true, dua: true, bagan: true }), C: K3(penuh), D: K3(penuh) });
+  // Sub-Bab A memakai Kotak Bekal (bekal-k1b3a): roti 6, jeruk 9, pisang 4. Rincian di scripts/uji-bekal-k1b3a.mjs.
+  const BK = (o) => ({ alat: "bekal", bekal: "roti", mula: { roti: 6, jeruk: 9, pisang: 4 }, ambil: { roti: 0, jeruk: 0, pisang: 0 }, catat: { roti: [], jeruk: [], pisang: [] }, ...o });
+  const CB = (roti, jeruk = [], pisang = []) => ({ roti, jeruk, pisang });
+  ujiStruktur("bab3", X3.daftarMisiBab3, ["A", "B", "C", "D"], { A: BK({}), B: K3({ garis: true, dua: true, bagan: true }), C: K3(penuh), D: K3(penuh) });
   const ada = (sub, k, id) => M0.misiBaru(X3.daftarMisiBab3(sub), k, kosong).includes(id);
   const SEL = (id) => ({ alat: "selesai", id });
-  cek(ada("A", K3({ t: 9, k: 4 }), "a-sembilan") && ada("A", K3({ t: 5, k: 5 }), "a-habis") && !ada("A", K3({ t: 0, k: 0 }), "a-habis"), "bab3 A: sembilan dan habis");
-  cek(ada("A", K3({ t: 6, k: 0 }), "a-nol") && !ada("A", K3({ t: 0, k: 0 }), "a-nol"), "bab3 A: ambil nol");
-  cek(ada("A", K3({ t: 10, k: 3 }), "a-bingkai") && !ada("A", K3({ t: 10, k: 3, bingkai: false }), "a-bingkai"), "bab3 A: bingkai");
-  cek(ada("A", K3({ t: 7, k: 2 }), "a-tujuh") && ada("A", K3({ t: 4, k: 3 }), "a-satu") && ada("A", K3({ t: 6, k: 2 }), "a-enam"), "bab3 A: tujuh, satu, enam");
+  cek(ada("A", BK({ catat: CB(["6-2=4"]) }), "a-roti") && !ada("A", BK({ catat: CB(["6-1=5"]) }), "a-roti") && !ada("A", K3({ t: 6, k: 2 }), "a-roti"), "bab3 A: dua roti dicatat");
+  cek(ada("A", BK({ catat: CB([], [], ["4-4=0"]) }), "a-habis") && !ada("A", BK({ catat: CB([], [], ["4-3=1"]) }), "a-habis"), "bab3 A: pisang habis, sisa nol");
+  cek(ada("A", BK({ catat: CB([], ["9-0=9"]) }), "a-nol") && ada("A", BK({ catat: CB(["6-0=6", "6-1=5"]) }), "a-dua") && !ada("A", BK({ catat: CB(["6-0=6"], ["9-0=9"]) }), "a-dua"), "bab3 A: nol dan dua kalimat");
+  cek(ada("A", BK({ catat: CB(["6-1=5"]) }), "a-lima") && ada("A", BK({ ambil: { roti: 0, jeruk: 3, pisang: 0 } }), "a-mundur") && !ada("A", K3({ t: 9, k: 3 }), "a-mundur"), "bab3 A: bebas");
   const B = (o) => K3({ garis: true, dua: true, bagan: true, ...o });
   cek(ada("B", B({ t: 6, k: 2 }), "b-dua") && !ada("B", B({ t: 6, k: 2, dua: false }), "b-dua"), "bab3 B: dua pengurangan");
   cek(ada("B", B({ t: 5, k: 3 }), "b-mundur") && !ada("B", B({ t: 5, k: 3, garis: false }), "b-mundur"), "bab3 B: mundur");

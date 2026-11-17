@@ -3,13 +3,14 @@
  * Diuji di scripts/uji-lab-kelas1.mjs.
  *
  * Simulasi bertahap: satu Laboratorium Pengurangan yang membuka alat sedikit demi sedikit
- * (A: benda, kalimat, bingkai; B: + dua pengurangan, bagan pasangan, garis bilangan mundur;
+ * (A: kini Kotak Bekal, Misi Perjalanan bagian satu (bekal-k1b3a); B: + dua pengurangan, bagan pasangan, garis bilangan mundur;
  * C: + keluarga fakta dan tab Bus Sekolah; D: semua alat + tab Pesta Jeruk, sekaligus
  * simulasi pencapaian misi bab ini).
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
+import type { KeadaanBekal } from "./bekal-k1b3a/logika";
 
 export type KeadaanKurang = {
   alat: "kurang";
@@ -27,21 +28,22 @@ export type KeadaanKurang = {
   keluarga: boolean;
 };
 
-export type KeadaanBab3 = KeadaanKurang | KeadaanSelesai;
+export type KeadaanBab3 = KeadaanKurang | KeadaanSelesai | KeadaanBekal;
 
 const kur = (k: KeadaanBab3): k is KeadaanKurang => k.alat === "kurang";
 const selesai = (k: KeadaanBab3, id: string) => k.alat === "selesai" && k.id === id;
 const soal = (k: KeadaanBab3, t: number, ambil: number) => kur(k) && k.t === t && k.k === ambil;
 
-/** Sub-Bab A: cerita pengurangan, mencoret benda yang diambil. */
+/** Sub-Bab A: Misi Perjalanan bagian satu, kotak bekal (Simulasi "Bekal untuk Nenek"). Roti 6, jeruk 9, pisang 4. */
+const bekal = (k: KeadaanBab3): k is KeadaanBekal => k.alat === "bekal";
+const adaCatat = (k: KeadaanBekal, s: "roti" | "jeruk" | "pisang", t: string) => k.catat[s].includes(t);
 export const MISI_A: DefMisi<KeadaanBab3>[] = [
-  { id: "a-sembilan", teks: "Buat 9 benda, lalu ambil 4. Berapa sisanya?", wajib: true, cek: (k) => soal(k, 9, 4) },
-  { id: "a-habis", teks: "Ambil semua benda sampai sisanya nol.", wajib: true, cek: (k) => kur(k) && k.t > 0 && k.k === k.t },
-  { id: "a-nol", teks: "Ambil 0 benda. Lihat sisanya.", wajib: true, cek: (k) => kur(k) && k.t > 0 && k.k === 0 },
-  { id: "a-bingkai", teks: "Buat 10 benda, ambil 3. Lihat bingkai sepuluh.", wajib: true, cek: (k) => kur(k) && k.bingkai && k.t === 10 && k.k === 3 },
-  { id: "a-tujuh", teks: "Buat soal 7 - 2 dan baca kalimatnya.", wajib: true, cek: (k) => kur(k) && k.kalimat && k.t === 7 && k.k === 2 },
-  { id: "a-satu", teks: "Sisakan hanya 1 benda.", wajib: false, cek: (k) => kur(k) && k.t - k.k === 1 },
-  { id: "a-enam", teks: "Buat soal 6 - 2 tanpa melihat contoh.", wajib: false, cek: (k) => soal(k, 6, 2) },
+  { id: "a-roti", teks: "Ambil dua roti, lalu catat kalimat pengurangannya.", wajib: true, cek: (k) => bekal(k) && adaCatat(k, "roti", `${k.mula.roti}-2=${k.mula.roti - 2}`) },
+  { id: "a-habis", teks: "Ambil pisang sampai habis, lalu catat. Sisanya nol!", wajib: true, cek: (k) => bekal(k) && adaCatat(k, "pisang", `${k.mula.pisang}-${k.mula.pisang}=0`) },
+  { id: "a-nol", teks: "Catat kalimat jeruk tanpa mengambil apa pun.", wajib: true, cek: (k) => bekal(k) && adaCatat(k, "jeruk", `${k.mula.jeruk}-0=${k.mula.jeruk}`) },
+  { id: "a-dua", teks: "Catat dua kalimat berbeda untuk satu bekal.", wajib: true, cek: (k) => bekal(k) && Object.values(k.catat).some((d) => d.length >= 2) },
+  { id: "a-lima", teks: "Catat kalimat yang sisanya lima.", wajib: false, cek: (k) => bekal(k) && Object.values(k.catat).some((d) => d.some((t) => t.endsWith("=5"))) },
+  { id: "a-mundur", teks: "Ambil jeruk satu per satu sampai sisanya enam.", wajib: false, cek: (k) => bekal(k) && k.mula.jeruk - k.ambil.jeruk === 6 },
 ];
 
 /** Sub-Bab B: berbagai cara mengurang (dua pengurangan, mundur, nol dan sama, dari sepuluh). */

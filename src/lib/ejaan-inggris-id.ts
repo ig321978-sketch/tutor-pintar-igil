@@ -39,6 +39,8 @@ const FRASA_DASAR: ReadonlyArray<readonly [string, string]> = [
   ["number track", "nam ber trek"],
   ["counting stick", "kaun ting stik"],
   ["counting on", "kaun ting on"],
+  ["counting back", "kaun ting bek"],
+  ["take away", "teik e wei"],
   ["bar model", "bar mo del"],
   ["rekenrek", "re ken rek"],
   ["ten-frame", "ten freim"],
