@@ -1,55 +1,50 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_CERITA, ADEGAN_GABUNG, ADEGAN_MAJU } from "./k1b6B-materi-1";
-import { ADEGAN_GARIS_MAJU, ADEGAN_MAJU_LAGI, ADEGAN_SEPULUH, ADEGAN_SEPULUH_LAGI } from "./k1b6B-materi-2";
-import { ADEGAN_KEMBAR, ADEGAN_NILAI_TEMPAT, ADEGAN_PASANGAN, ADEGAN_SEDOTAN } from "./k1b6B-materi-3";
-import { ADEGAN_DETEKTIF, ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_SATU, ADEGAN_LATIHAN_TIGA, ADEGAN_PENUTUP, ADEGAN_PILIH, ADEGAN_SOAL_CERITA } from "./k1b6B-materi-4";
-import { ADEGAN_LUAR_MAJU, ADEGAN_LUAR_MAJU_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k1b6B-luar-1";
-import { ADEGAN_LUAR_PASANGAN, ADEGAN_LUAR_PASANGAN_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_SEPULUH, ADEGAN_LUAR_SEPULUH_TERAPAN } from "./k1b6B-luar-2";
+import { ADEGAN_ANTRE, ADEGAN_GENAP, ADEGAN_MAJU } from "./k1b6B-materi-1";
+import { ADEGAN_BELASAN, ADEGAN_CATATAN, ADEGAN_PILIH } from "./k1b6B-materi-2";
+import { ADEGAN_LONCENG, ADEGAN_PENUTUP } from "./k1b6B-materi-3";
+import { ADEGAN_LUAR_KEMBAR, ADEGAN_LUAR_KEMBAR_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k1b6B-luar-1";
+import { ADEGAN_LUAR_BAGAN, ADEGAN_LUAR_BAGAN_TERAPAN, ADEGAN_LUAR_LOMPAT, ADEGAN_LUAR_LOMPAT_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k1b6B-luar-2";
 
-/** Kelas 1 Bab 6 Sub-Bab B (Penjumlahan yang Hasilnya Kurang dari 20): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 1 Bab 6 Sub-Bab B (penjumlahan dengan hasil sampai dua puluh), cerita Pasar Malam Kampung.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Loket Karcis" (Igil, Kaka, Abang, Mamah, Pak RT).
+ * Video kedua: tiga metode global, terpisah.
+ */
+export const JUDUL_K1B6B = "Loket Karcis";
+
 export const VIDEO_MATERI_K1B6B: VideoStory = {
   id: "k1b6B-materi",
-  judul: "Penjumlahan yang Hasilnya Kurang dari 20",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K1B6B,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "menjumlahkan dua bilangan", daftar: ["Menghitung maju", "Memisah dan menggabung", "Menambah puluhan dan satuan"] }),
-    ADEGAN_CERITA,
-    ADEGAN_GABUNG,
+    adeganSapaan({ jenis: "materi", topik: "menjumlahkan sampai dua puluh", daftar: ["Hitung maju dan genapkan sepuluh", "Belasan ditambah satuan", "Memilih cara yang pas"] }),
+    ADEGAN_ANTRE,
     ADEGAN_MAJU,
-    ADEGAN_GARIS_MAJU,
-    ADEGAN_MAJU_LAGI,
-    ADEGAN_SEPULUH,
-    ADEGAN_SEPULUH_LAGI,
-    ADEGAN_KEMBAR,
-    ADEGAN_PASANGAN,
-    ADEGAN_SEDOTAN,
-    ADEGAN_NILAI_TEMPAT,
+    ADEGAN_GENAP,
+    ADEGAN_BELASAN,
     ADEGAN_PILIH,
-    ADEGAN_SOAL_CERITA,
-    ADEGAN_DETEKTIF,
-    ADEGAN_LATIHAN_SATU,
-    ADEGAN_LATIHAN_DUA,
-    ADEGAN_LATIHAN_TIGA,
+    ADEGAN_CATATAN,
+    ADEGAN_LONCENG,
     ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K1B6B: VideoStory = {
   id: "k1b6B-luar",
-  judul: "Penjumlahan yang Hasilnya Kurang dari 20: Metode dari Luar",
-  subjudul: "Tiga metode luar",
+  judul: JUDUL_K1B6B,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "menjumlahkan dua bilangan" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "menjumlahkan sampai dua puluh", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_MAJU,
-    ADEGAN_LUAR_MAJU_TERAPAN,
-    ADEGAN_LUAR_PASANGAN,
-    ADEGAN_LUAR_PASANGAN_TERAPAN,
-    ADEGAN_LUAR_SEPULUH,
-    ADEGAN_LUAR_SEPULUH_TERAPAN,
+    ADEGAN_LUAR_KEMBAR,
+    ADEGAN_LUAR_KEMBAR_TERAPAN,
+    ADEGAN_LUAR_BAGAN,
+    ADEGAN_LUAR_BAGAN_TERAPAN,
+    ADEGAN_LUAR_LOMPAT,
+    ADEGAN_LUAR_LOMPAT_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

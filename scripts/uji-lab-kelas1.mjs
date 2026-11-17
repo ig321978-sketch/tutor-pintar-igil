@@ -1396,22 +1396,34 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   const Bj = (o) => ({ alat: "banding", jumlah: [12, 15, 9], pas: 0, pasang: true, tanda: false, selisih: true, batang: true, benda: false, paling: false, urut: false, garis: false, ...o });
   const Lo = (o) => ({ alat: "loncat", op: "selisih", strategi: "sepuluh", a: 7, b: 9, satu: 2, sepuluh: 2, ...o });
   const Be = (o) => ({ alat: "belasan", op: "tambah", a: 12, b: 3, benda: true, tabel: true, pecah: true, periksa: false, ...o });
+  const Ka = (o) => ({ alat: "karcis", pilih: 0, cara: "maju", langkah: 0, catat: [[], [], [], []], sendiri: { a: 6, b: 6 }, ...o });
   const SEL = (id) => ({ alat: "selesai", id });
+  // Sub-Bab C memakai Meja Tutup Lapak (tutup-k1b6c). Rincian di scripts/uji-tutup-k1b6c.mjs.
+  const Tu = (o) => ({ alat: "tutup", cara: "mundur", lapak: null, langkah: 0, lapor: {}, periksa: [], tutup: false, ...o });
   sama(X6.PASANGAN_JERUK, B5.PASANGAN, "bab6: pasangan jeruk sama dengan lab banding");
-  const awalSemua = [Bj({}), Lo({}), Be({}), Be({ op: "kurang", a: 15, b: 3, periksa: true })];
+  // Sub-Bab A memakai Meja Dua Nampan (nampan-k1b6a). Rincian di scripts/uji-nampan-k1b6a.mjs.
+  const Na = (o) => ({ alat: "nampan", mode: "pasang", kiri: null, kanan: null, dipasang: 0, pasangTuntas: 0, tambah: 0, ambil: 0, tambahTuntas: 0, ambilTuntas: 0, batangSorot: false, batangTuntas: 0, loncat: 0, garisTuntas: 0, selisihBenar: 0, ...o });
+  const awalSemua = [Bj({}), Lo({}), Be({}), Be({ op: "kurang", a: 15, b: 3, periksa: true }), Na({}), Tu({})];
   for (const sub of ["A", "B", "C"]) {
     const daftar = X6.daftarMisiBab6(sub);
     for (const k of awalSemua) cek(M0.misiBaru(daftar, k, kosong).length === 0, `bab6 ${sub}: keadaan awal ${k.alat} tidak memenuhi misi`);
   }
-  ujiStruktur("bab6", X6.daftarMisiBab6, ["A", "B", "C"], { A: Bj({}), B: Lo({}), C: Be({}) });
+  ujiStruktur("bab6", X6.daftarMisiBab6, ["A", "B", "C"], { A: Na({}), B: Ka({}), C: Tu({}) });
   const ada = (sub, k, id) => M0.misiBaru(X6.daftarMisiBab6(sub), k, kosong).includes(id);
-  cek(ada("A", Bj({ jumlah: [12, 12, 9] }), "a-sama") && !ada("A", Bj({ jumlah: [12, 12, 9], selisih: false }), "a-sama") && ada("A", Bj({ jumlah: [14, 9, 9] }), "a-batang") && !ada("A", Bj({ jumlah: [14, 9, 9], batang: false }), "a-batang"), "bab6 A: sama dan batang");
-  cek(ada("A", Bj({ jumlah: [13, 12, 9] }), "a-satu") && !ada("A", Bj({ jumlah: [13, 9, 9], pas: 1 }), "a-satu"), "bab6 A: selisih satu pada pasangan terpilih");
-  cek(ada("A", Lo({ a: 4, b: 12 }), "a-garis") && ada("A", Lo({ a: 12, b: 4 }), "a-garis") && ada("A", Lo({ a: 9, b: 7 }), "a-tukar") && ada("A", Lo({ a: 6, b: 6 }), "a-nol") && !ada("A", Lo({ op: "tambah", a: 6, b: 6 }), "a-nol"), "bab6 A: garis, tukar, nol");
-  cek(ada("B", Lo({ op: "tambah", a: 8, b: 5 }), "b-loncat") && !ada("B", Lo({ op: "kurang", a: 8, b: 5 }), "b-loncat") && ada("B", SEL("jembatan"), "b-jembatan") && ada("B", Lo({ op: "tambah", a: 12, b: 3 }), "b-tidak-lewat"), "bab6 B: loncat, jembatan");
-  cek(ada("B", Be({ a: 14, b: 4 }), "b-belasan") && ada("B", Be({ a: 15, b: 4 }), "b-sembilan-belas") && !ada("B", Be({ op: "kurang", a: 15, b: 4 }), "b-sembilan-belas") && ada("B", Bj({ jumlah: [14, 9, 9] }), "b-ingat"), "bab6 B: belasan dan ingat");
-  cek(ada("C", Lo({ op: "kurang", a: 15, b: 6 }), "c-loncat") && ada("C", Be({ op: "kurang", a: 17, b: 5 }), "c-belasan") && !ada("C", Be({ op: "tambah", a: 17, b: 5 }), "c-belasan"), "bab6 C: loncat dan belasan kurang");
-  cek(ada("C", Be({ op: "kurang", a: 16, b: 6 }), "c-sepuluh") && !ada("C", Be({ op: "kurang", a: 15, b: 3 }), "c-sepuluh") && ada("C", SEL("loket"), "c-loket") && ada("C", Lo({ op: "kurang", a: 12, b: 5 }), "c-lewat") && ada("C", SEL("jembatan"), "c-ingat"), "bab6 C: sepuluh, loket, ingat");
+  cek(ada("A", Na({ pasangTuntas: 1 }), "a-pasang") && !ada("A", Na({ tambahTuntas: 1 }), "a-pasang") && !ada("A", Bj({ jumlah: [12, 12, 9] }), "a-pasang"), "bab6 A: pasangkan sampai tuntas");
+  cek(ada("A", Na({ batangTuntas: 1 }), "a-batang") && ada("A", Na({ garisTuntas: 1 }), "a-garis") && ada("A", Na({ tambahTuntas: 1 }), "a-samakan") && !ada("A", Na({ ambilTuntas: 1 }), "a-samakan") && !ada("A", Lo({ a: 4, b: 12 }), "a-garis"), "bab6 A: batang, garis, menyamakan dengan menambah");
+  cek(ada("A", Na({ selisihBenar: 1 }), "a-selisih") && ada("A", Na({ ambilTuntas: 1 }), "a-ambil") && !ada("A", Na({ tambahTuntas: 1 }), "a-ambil"), "bab6 A: bebas, selisih tepat dan mengambil");
+  // Sub-Bab B memakai Loket Karcis (karcis-k1b6b): tiga rombongan tetap dan satu buatan sendiri. Rincian di scripts/uji-karcis-k1b6b.mjs.
+  sama(X6.JUMLAH_ROMBONGAN_B, 3, "bab6 B: tiga rombongan tetap");
+  cek(ada("B", Ka({ catat: [["maju"], [], [], []] }), "b-maju") && !ada("B", Ka({ catat: [["genap"], [], [], []] }), "b-maju") && !ada("B", Lo({ op: "tambah", a: 8, b: 5 }), "b-maju"), "bab6 B: hitung maju tercatat");
+  cek(ada("B", Ka({ catat: [[], [], ["genap"], []] }), "b-genap") && ada("B", Ka({ catat: [["belasan"], [], [], []] }), "b-belasan") && !ada("B", Ka({}), "b-belasan") && !ada("B", Be({ a: 14, b: 4 }), "b-belasan"), "bab6 B: genapkan sepuluh dan belasan");
+  cek(ada("B", Ka({ catat: [["maju"], ["belasan"], ["genap"], []] }), "b-semua") && !ada("B", Ka({ catat: [["maju"], ["belasan"], [], ["maju"]] }), "b-semua"), "bab6 B: semua rombongan tetap tercatat");
+  cek(ada("B", Ka({ catat: [["maju", "genap"], [], [], []] }), "b-dua") && !ada("B", Ka({ catat: [["maju"], ["genap"], [], []] }), "b-dua") && ada("B", Ka({ catat: [[], [], [], ["maju"]] }), "b-sendiri") && !ada("B", Ka({ catat: [["maju"], [], [], []] }), "b-sendiri"), "bab6 B: dua cara dan rombongan sendiri");
+  sama(X6.LAPAK_TUTUP_C, { sosis: { awal: 17, jual: 6 }, jagung: { awal: 15, jual: 9 }, permen: { awal: 19, jual: 4 }, donat: { awal: 12, jual: 8 } }, "bab6 C: empat lapak tetap");
+  cek(ada("C", Tu({ lapor: { sosis: ["mundur"] } }), "c-mundur") && !ada("C", Tu({ lapor: { sosis: ["satuan"] } }), "c-mundur") && ada("C", Tu({ lapor: { permen: ["satuan"] } }), "c-satuan") && !ada("C", Lo({ op: "kurang", a: 15, b: 6 }), "c-mundur"), "bab6 C: mundur dan kurangi satuan");
+  cek(ada("C", Tu({ lapor: { jagung: ["lewat"] } }), "c-lewat") && ada("C", Tu({ lapor: { donat: ["pikir"] } }), "c-pikir") && !ada("C", Tu({ lapor: { donat: ["pikir"] } }), "c-lewat") && ada("C", Tu({ lapor: { sosis: ["mundur", "satuan"] } }), "c-dua") && !ada("C", Tu({ lapor: { sosis: ["mundur"], jagung: ["lewat"] } }), "c-dua") && !ada("C", SEL("loket"), "c-lewat"), "bab6 C: lewat sepuluh, pikir penjumlahan, dua cara");
+  const semuaC = { sosis: ["mundur"], jagung: ["lewat"], permen: ["satuan"], donat: ["lewat"] };
+  cek(ada("C", Tu({ tutup: true, lapor: semuaC, periksa: ["sosis", "jagung", "permen", "donat"] }), "c-tutup") && !ada("C", Tu({ tutup: false, lapor: semuaC, periksa: ["sosis", "jagung", "permen", "donat"] }), "c-tutup") && !ada("C", Tu({ tutup: true, lapor: semuaC, periksa: ["sosis"] }), "c-tutup") && !ada("C", Tu({ tutup: true, lapor: { sosis: ["mundur"] }, periksa: ["sosis"] }), "c-tutup"), "bab6 C: tutup pasar malam setelah semua dilaporkan dan diperiksa");
   cek(X6.selisihPasang(Bj({ jumlah: [3, 8, 5], pas: 2 })) === 3, "bab6: selisihPasang");
 }
 /* ---------------- Misi Bab 8 (hibrida) ---------------- */

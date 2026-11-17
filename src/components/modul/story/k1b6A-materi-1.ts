@@ -1,126 +1,134 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { ANAK_EMO, OWL, W, baris, deret, emo, judul, kartu, kotak, pasangGaris, teks, type Titik } from "./k1b6A-gambar";
-import { hapus, hitungAksi, idx, k, redamkan, sorotkan, tambah } from "./k1b6A-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, deretKue, emo, judul, kartu, kisi, lapak, nampan, orang, teks, untaian, garis, type Titik } from "./k1b6A-gambar";
+import { hapus, k, sorotkan, tambah, ubah } from "./k1b6A-bantu";
 
-/** Tulisan nama kelompok di kiri baris benda (rata kiri). */
-export const nama = (id: string, y: number, isi: string, warna: string = W.biru): Obj => teks(id, 4, y + 3, isi, 8.4, warna, { anchor: "start" });
-export const BARIS_ATAS = 66;
-export const BARIS_BAWAH = 126;
-export const PA: Titik[] = baris(7, BARIS_ATAS);
-export const PB: Titik[] = baris(6, BARIS_BAWAH);
-export const IDS_A = Array.from({ length: 7 }, (_, i) => `d${i}`);
-export const IDS_B = Array.from({ length: 6 }, (_, i) => `e${i}`);
-export const GARIS_PASANG = pasangGaris("pr", PB.map((p) => p.x), BARIS_ATAS, BARIS_BAWAH, 8);
+/*
+ * Cerita orisinal IGIL "Dua Nampan Kue" (Kelas 1 Bab 6 Sub-Bab A, lebih dari, kurang dari, dan selisih), awal cerita Pasar Malam Kampung.
+ * Masalah: Mamah menata dua belas kue cubit dan delapan kue pukis di dua nampan; Pak RT bertanya nampan mana yang lebih banyak dan Igil keliru menjumlahkan.
+ * Penyelesaian: pasangkan satu-satu, lihat lebihnya dan kurangnya, lalu mencari selisih dengan mengurangi.
+ */
 
-/* ------------------------------ 1. Halim dan Kira membuat donat ------------------------------ */
-const SUARA_D1 = "Hari Minggu yang cerah. Halim dan Kira membuat donat di dapur. Igil, si burung hantu, melihat dari jendela.";
-const SUARA_D2 = "Halim menghias tujuh donat. Kira menghias enam donat. Donat mereka ditaruh dalam dua baris, supaya mudah dilihat.";
-const SUARA_D3 = "Siapa yang punya donat lebih banyak? Kita hitung dulu donat Halim. Satu, dua, tiga, empat, lima, enam, tujuh.";
-const SUARA_D4 = "Sekarang donat Kira. Satu, dua, tiga, empat, lima, enam. Jadi donat Kira ada enam.";
-const SUARA_D5 = "Donat Halim ada tujuh, donat Kira ada enam. Sekarang kita bandingkan banyak keduanya.";
+/** Dua nampan di lapak (adegan awal dan adegan menyamakan): pojok kiri-atas dan titik kue. */
+export const NAMPAN_A = { x: 12, y: 96, w: 120, h: 46 };
+export const NAMPAN_B = { x: 168, y: 96, w: 120, h: 46 };
+export const TITIK_CUBIT: Titik[] = kisi(12, 24, 110, 6, 18, 18);
+export const TITIK_PUKIS: Titik[] = kisi(8, 180, 110, 6, 18, 18);
 
-export const ADEGAN_DONAT: AdeganStory = {
-  id: "membuat-donat",
-  judul: "Halim dan Kira membuat donat",
-  sumber: "Materi: cerita membuat donat",
-  latar: "#FFF7ED",
+/* ------------------------------ 1. Pasar malam buka ------------------------------ */
+const SUARA_P1 = "Pasar malam kampung buka petang ini! Mamah menata kue cubit dan kue pukis di dua nampan, di bawah untaian lampu.";
+const SUARA_P2 = "Pak RT mampir dan bertanya, nampan mana yang lebih banyak? Kalau salah, pembeli kehabisan kue yang mereka cari.";
+const SUARA_P3 = "Mamah menoleh pada Igil. Jawab dengan cara yang pasti, ya!";
+
+export const ADEGAN_PETANG: AdeganStory = {
+  id: "petang",
+  judul: "Pasar malam buka petang ini",
+  sumber: "Materi: dua nampan kue",
+  latar: "#FFF1E6",
   ketukan: [
     k(
-      SUARA_D1,
-      tambah(0, judul("Membuat donat")),
-      tambah("Halim", emo("a-Halim", 60, 70, ANAK_EMO, 30), teks("n-Halim", 60, 90, "Halim", 8.6)),
-      tambah("Kira", emo("a-Kira", 150, 70, ANAK_EMO, 30), teks("n-Kira", 150, 90, "Kira", 8.6)),
-      tambah("Igil,", emo("a-Igil", 240, 70, OWL, 30), teks("n-Igil", 240, 90, "Igil", 8.6, W.ungu)),
-      tambah("donat", emo("dn", 150, 152, "\u{1F369}", 40)),
+      SUARA_P1,
+      tambah(0, judul("Pasar malam kampung"), ...lapak("lp", 6, 22, 288, 124)),
+      tambah("petang", ...untaian("lt", 18, 44, 8, 38)),
+      tambah("Mamah", ...orang("mm", 150, 112, E.mamah, "Mamah")),
+      tambah("cubit", ...nampan("na", NAMPAN_A.x, NAMPAN_A.y, NAMPAN_A.w, NAMPAN_A.h), ...deretKue("cubit", "c", TITIK_CUBIT)),
+      tambah("pukis", ...nampan("nb", NAMPAN_B.x, NAMPAN_B.y, NAMPAN_B.w, NAMPAN_B.h), ...deretKue("pukis", "k", TITIK_PUKIS)),
+      tambah("dua", teks("n2", 150, 82, "2 nampan", 9, W.biru)),
     ),
     k(
-      SUARA_D2,
-      hapus(0, "a-Halim", "n-Halim", "a-Kira", "n-Kira", "a-Igil", "n-Igil", "dn"),
-      tambah("Halim", nama("rn-a", BARIS_ATAS, "Halim")),
-      tambah("tujuh", ...deret("donat", "d", PA, 8)),
-      tambah("Kira", nama("rn-b", BARIS_BAWAH, "Kira")),
-      tambah("enam", ...deret("donat", "e", PB, 8)),
+      SUARA_P2,
+      tambah("Pak", ...orang("pk", 36, 172, E.pakRT, "Pak RT")),
+      tambah("nampan", teks("q1", 72, 92, "?", 14, W.merah), teks("q2", 228, 92, "?", 14, W.merah)),
+      tambah("kehabisan", ...kartu("kh", 100, 160, 170, 24, W.merahMuda, ["pembeli kehabisan kue"], 9)),
     ),
-    k(SUARA_D3, ...hitungAksi(SUARA_D3, "d", PA, { setelah: "Halim.", turun: 22 })),
-    k(SUARA_D4, ...hitungAksi(SUARA_D4, "e", PB, { setelah: "Kira.", turun: 22, tanganAda: true, naik: 14 })),
-    k(
-      SUARA_D5,
-      hapus(0, "tg"),
-      tambah("Donat", ...kartu("ca", 14, 164, 132, 28, W.pink, ["donat Halim: 7"], 9.4)),
-      tambah("Kira", ...kartu("cb", 154, 164, 132, 28, W.langit, ["donat Kira: 6"], 9.4)),
-    ),
-  ],
-};
-
-/* ------------------------------ 2. Pasangkan satu-satu ------------------------------ */
-const SUARA_P1 = "Untuk membandingkan, kita pasangkan donat satu per satu. Satu donat Halim dengan satu donat Kira.";
-const SUARA_P2 = "Donat pertama Halim berpasangan dengan donat pertama Kira. Kita hubungkan keduanya dengan garis.";
-const SUARA_P3 = "Lanjut. Donat kedua dengan donat kedua, sampai donat Kira habis dipasangkan. Enam pasang, semuanya tersambung.";
-const SUARA_P4 = "Lihat donat Halim yang terakhir. Dia tidak punya pasangan. Tidak ada garis yang menyambungnya.";
-const SUARA_P5 = "Donat yang tidak punya pasangan itulah lebihnya. Donat Halim lebihnya satu.";
-const SUARA_P6 = "Jadi donat Halim lebih banyak dari donat Kira. Tujuh lebih dari enam.";
-const SUARA_P7 = "Dan donat Kira lebih sedikit dari donat Halim. Enam kurang dari tujuh. Donat Kira satu kurangnya.";
-
-export const ADEGAN_PASANGKAN: AdeganStory = {
-  id: "pasangkan-satu",
-  judul: "Memasangkan donat satu per satu",
-  sumber: "Materi: pasangkan satu-satu",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(SUARA_P1, tambah(0, judul("Pasangkan satu-satu"), nama("rn-a", BARIS_ATAS, "Halim"), nama("rn-b", BARIS_BAWAH, "Kira"), ...deret("donat", "d", PA, 8), ...deret("donat", "e", PB, 8))),
-    k(SUARA_P2, tambah("hubungkan", GARIS_PASANG[0]), sorotkan("pertama", "d0", "e0")),
     k(
       SUARA_P3,
-      redamkan(0, "d0", "e0"),
-      tambah("kedua", GARIS_PASANG[1]),
-      tambah("habis", ...GARIS_PASANG.slice(2)),
-      tambah("Enam", teks("ep", 262, 100, "6 pasang", 9.2, W.hijau)),
+      hapus(0, "q1", "q2", "pk", "pk-n", "kh-k", "kh-t0"),
+      tambah("Igil", ...orang("ig", 262, 172, E.igil, "Igil")),
+      tambah("pasti,", ...kartu("ps", 70, 160, 150, 24, W.emas, ["cara yang pasti"], 9.4)),
+      tambah("ya!", emo("bt", 36, 172, E.bintang, 20)),
     ),
-    k(SUARA_P4, hapus(0, "ep"), sorotkan("terakhir", "d6"), tambah("pasangan.", emo("tn", 262, 96, "❓", 22)), tambah("Tidak", teks("tp", 150, 40, "tidak punya pasangan", 9.2, W.merah))),
-    k(SUARA_P5, hapus(0, "tn", "tp"), tambah("lebihnya", ...kartu("lb", 50, 158, 200, 28, W.emas, ["lebihnya: 1 donat"], 10))),
-    k(SUARA_P6, hapus(0, "lb-k", "lb-t0"), tambah("lebih", ...kartu("jb", 14, 158, 132, 28, W.hijauMuda, ["7 lebih dari 6"], 9.6))),
-    k(SUARA_P7, tambah("kurang", ...kartu("jk", 154, 158, 132, 28, W.merahMuda, ["6 kurang dari 7"], 9.6)), tambah("Donat@2", emo("ow", 150, 40, OWL, 26))),
   ],
 };
 
-/* ------------------------------ 3. Kata pembanding ------------------------------ */
-const SUARA_K1 = "Sekarang kita belajar kata yang dipakai untuk membandingkan. Ada kata lebih dari, kurang dari, lebihnya, dan kurangnya.";
-const SUARA_K2 = "Kata lebih dari dipakai untuk benda yang banyaknya lebih besar. Tujuh donat lebih dari enam donat.";
-const SUARA_K3 = "Kata kurang dari dipakai untuk benda yang banyaknya lebih kecil. Enam donat kurang dari tujuh donat.";
-const SUARA_K4 = "Lebihnya adalah benda yang tidak punya pasangan, pada barisan yang lebih banyak. Lebihnya donat Halim satu.";
-const SUARA_K5 = "Kurangnya adalah benda yang masih dibutuhkan, supaya dua barisan sama banyak. Donat Kira satu kurangnya.";
-const SUARA_K6 = "Perhatikan, lebihnya dan kurangnya selalu sama besar. Di sini keduanya satu.";
-const KOTAK_KATA = [
-  { id: "wa", x: 10, y: 32, warna: W.hijauMuda, kata: "lebih dari" },
-  { id: "wb", x: 154, y: 32, warna: W.merahMuda, kata: "kurang dari" },
-  { id: "wc", x: 10, y: 96, warna: W.krem, kata: "lebihnya" },
-  { id: "wd", x: 154, y: 96, warna: W.langit, kata: "kurangnya" },
-];
-const kataKartu = (i: number): Obj[] => {
-  const c = KOTAK_KATA[i];
-  return [kotak(`${c.id}-k`, c.x, c.y, 136, 56, c.warna, W.biru, { rx: 8 }), teks(`${c.id}-t`, c.x + 68, c.y + 22, c.kata, 11, W.ungu)];
-};
-const contoh = (i: number, isi: string): Obj => teks(`${KOTAK_KATA[i].id}-e`, KOTAK_KATA[i].x + 68, KOTAK_KATA[i].y + 44, isi, 9.4, W.biru);
+/* ------------------------------ 2. Igil menjumlahkan (salah langkah) ------------------------------ */
+const SUARA_J1 = "Kue cubit ada dua belas. Kue pukis ada delapan.";
+const SUARA_J2 = "Igil berseru, selisihnya dua puluh! Dua belas ditambah delapan, kan?";
+const SUARA_J3 = "Kaka menggeleng. Itu jumlah semuanya. Selisih artinya beda banyaknya.";
+const TC2: Titik[] = kisi(12, 24, 44, 6, 18, 18);
+const TP2: Titik[] = kisi(8, 180, 44, 6, 18, 18);
 
-export const ADEGAN_KATA: AdeganStory = {
-  id: "kata-pembanding",
-  judul: "Kata untuk membandingkan",
-  sumber: "Materi: kata pembanding",
+export const ADEGAN_JUMLAH_SALAH: AdeganStory = {
+  id: "jumlah-salah",
+  judul: "Igil menjumlahkan, bukan mencari selisih",
+  sumber: "Materi: salah langkah menjumlahkan",
+  latar: "#FEF2F2",
+  ketukan: [
+    k(
+      SUARA_J1,
+      tambah(0, judul("Berapa selisihnya?"), ...nampan("na", 12, 30, 120, 46), ...nampan("nb", 168, 30, 120, 46)),
+      tambah("cubit", ...deretKue("cubit", "c", TC2)),
+      tambah("pukis", ...deretKue("pukis", "k", TP2)),
+      tambah("belas", teks("n12", 72, 94, "12", 18, W.merah)),
+      tambah("delapan", teks("n8", 228, 94, "8", 18, W.merah)),
+    ),
+    k(
+      SUARA_J2,
+      tambah("Igil", ...orang("ig", 36, 172, E.igil, "Igil")),
+      tambah("selisihnya", teks("sl", 150, 122, "selisih ...", 11, W.merah)),
+      ubah("puluh", { id: "sl", isi: "selisih 20" }),
+      tambah("belas", teks("e1", 96, 158, "12", 20, W.biru)),
+      tambah("ditambah", teks("e2", 126, 158, "+", 20, W.biru)),
+      tambah("delapan,", teks("e3", 152, 158, "8", 20, W.biru)),
+      tambah("kan?", teks("e4", 190, 158, "= 20", 20, W.merah)),
+    ),
+    k(
+      SUARA_J3,
+      tambah("Kaka", ...orang("kk", 262, 172, E.kaka, "Kaka")),
+      ubah("menggeleng", { id: "e1", op: 0.4 }, { id: "e2", op: 0.4 }, { id: "e3", op: 0.4 }, { id: "e4", op: 0.4 }),
+      tambah("menggeleng", emo("sx", 232, 160, E.salah, 22)),
+      hapus("Itu", "sl"),
+      tambah("jumlah", ...kartu("jm", 78, 164, 130, 20, W.merahMuda, ["jumlah semuanya"], 9)),
+      tambah("Selisih", ...kartu("sb", 36, 100, 228, 26, W.hijauMuda, ["selisih = beda banyaknya"], 9.8)),
+    ),
+  ],
+};
+
+/* ------------------------------ 3. Pasangkan satu-satu ------------------------------ */
+const SUARA_Q1 = "Abang menggambar garis. Satu kue cubit dipasangkan dengan satu kue pukis.";
+const SUARA_Q2 = "Delapan pasang sudah terisi. Empat kue cubit tidak punya pasangan.";
+const SUARA_Q3 = "Kue cubit lebih banyak. Empat kue cubit lebihnya, dan kue pukis empat kurangnya.";
+const XQ = (i: number): number => 40 + i * 19;
+const TC3: Titik[] = Array.from({ length: 12 }, (_, i) => ({ x: XQ(i), y: 60 }));
+const TP3: Titik[] = Array.from({ length: 8 }, (_, i) => ({ x: XQ(i), y: 124 }));
+const pasang = (i: number) => garis(`pr${i}`, XQ(i), 67, 0, 50, W.merah, 1.6, { gambar: true });
+
+export const ADEGAN_PASANGKAN: AdeganStory = {
+  id: "pasangkan",
+  judul: "Pasangkan satu-satu",
+  sumber: "Materi: pasangkan satu-satu",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_K1,
-      tambah(0, judul("Kata pembanding")),
-      tambah(idx(SUARA_K1, "lebih"), ...kataKartu(0)),
-      tambah(idx(SUARA_K1, "kurang"), ...kataKartu(1)),
-      tambah("lebihnya,", ...kataKartu(2)),
-      tambah("kurangnya.", ...kataKartu(3)),
+      SUARA_Q1,
+      tambah(0, judul("Pasangkan satu-satu"), ...deretKue("cubit", "c", TC3), ...deretKue("pukis", "k", TP3)),
+      tambah("Abang", ...orang("ab", 270, 92, E.abang, "Abang")),
+      tambah("Satu", pasang(0), teks("p1", 52, 96, "1", 11, W.merah)),
+      sorotkan("cubit", "c0"),
+      sorotkan("pukis", "k0"),
     ),
-    k(SUARA_K2, sorotkan(0, "wa-k"), tambah("Tujuh", contoh(0, "7 lebih dari 6"))),
-    k(SUARA_K3, redamkan(0, "wa-k"), sorotkan(0, "wb-k"), tambah("Enam", contoh(1, "6 kurang dari 7"))),
-    k(SUARA_K4, redamkan(0, "wb-k"), sorotkan(0, "wc-k"), tambah("Lebihnya@2", contoh(2, "lebihnya: 1"))),
-    k(SUARA_K5, redamkan(0, "wc-k"), sorotkan(0, "wd-k"), tambah("Donat", contoh(3, "kurangnya: 1"))),
-    k(SUARA_K6, redamkan(0, "wd-k"), tambah("sama", ...kartu("ks", 40, 162, 220, 28, W.emas, ["lebihnya sama dengan kurangnya"], 9.4)), tambah("Perhatikan", emo("ow", 150, 150, OWL, 20))),
+    k(
+      SUARA_Q2,
+      hapus(0, "p1"),
+      tambah("Delapan", ...Array.from({ length: 7 }, (_, i) => pasang(i + 1)), teks("p8", 112, 96, "8 pasang", 10, W.hijau)),
+      tambah("Empat", teks("p4", 222, 96, "4 tanpa pasangan", 9, W.merah)),
+      sorotkan("cubit", "c8", "c9", "c10", "c11"),
+    ),
+    k(
+      SUARA_Q3,
+      hapus(0, "p8"),
+      tambah("banyak", emo("ok", 282, 60, E.benar, 14)),
+      tambah("lebihnya", ...kartu("lb", 14, 150, 134, 24, W.hijauMuda, ["cubit lebihnya 4"], 9)),
+      tambah("kurangnya", ...kartu("kr", 152, 150, 134, 24, W.pink, ["pukis kurangnya 4"], 9)),
+    ),
   ],
 };
-

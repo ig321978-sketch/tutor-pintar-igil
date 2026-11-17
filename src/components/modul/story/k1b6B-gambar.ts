@@ -1,161 +1,141 @@
 import type { Obj } from "./logika-story";
+import { E as E_4, W, bulat, emo, garis, judul, kartu, kotak, orang, teks, type Titik } from "./k1b4a-gambar";
 
 /**
- * Gambar khusus Story Kelas 1 Bab 6 Sub-Bab B (penjumlahan yang hasilnya kurang dari dua puluh):
- * donat, kelereng, bola, balon, sedotan, bingkai sepuluh (satu dan dua), garis bilangan umum, kartu angka, dan bagan pasangan.
+ * Gambar khusus Story Kelas 1 Bab 6 Sub-Bab B "Loket Karcis" (penjumlahan dengan hasil sampai dua puluh), cerita Pasar Malam Kampung.
+ * Loket karcis berjendela (`${id}-r` atap, `${id}-b` badan, `${id}-j` jendela, `${id}-t` papan nama), karcis bergigi (kotak bertepi putus-putus),
+ * bingkai karcis dua baris lima (sel `${id}-c{i}`, karcis `${id}k{i}`), garis bilangan nol sampai dua puluh (`${id}-g{n}`, `${id}-a{n}`),
+ * lompatan (busur), bagan bagian dan keseluruhan, tabel puluhan dan satuan, serta papan catatan.
  * Berkas ini TIDAK dipakai bab atau sub-bab lain.
- * Benda berhitung: `id{i}` benda utama ke-i (dihitung uji), pelengkap `id{i}-x`. Bingkai: sel `id-c{i}`, titik `id-t{i}`.
  */
 
-export const W = {
-  biru: "#1C01A5",
-  emas: "#FFC800",
-  merah: "#DC2626",
-  hijau: "#16A34A",
-  putih: "#FFFFFF",
-  abu: "#CBD5E1",
-  ungu: "#7C3AED",
-  coklat: "#92400E",
-  krem: "#FEF9C3",
-  langit: "#DBEAFE",
-  merahMuda: "#FECACA",
-  hijauMuda: "#DCFCE7",
-  pink: "#FBCFE8",
-  lavender: "#EDE9FE",
-  oranye: "#FBA919",
-};
+export { W, bulat, emo, garis, judul, kartu, kotak, orang, teks, type Titik };
 
-export const OWL = "\u{1F989}";
-export const ANAK_EMO = "\u{1F9D2}";
+export const E = {
+  ...E_4,
+  karcis: "\u{1F39F}\u{FE0F}",
+  komidi: "\u{1F3A0}",
+  kucing: "\u{1F408}",
+  anak: "\u{1F9D2}",
+  lampion: "\u{1F3EE}",
+  kue: "\u{1F9C1}",
+  lonceng: "\u{1F514}",
+  lega: "\u{1F60C}",
+  malam: "\u{1F319}",
+  kilat: "\u{26A1}",
+} as const;
 
-type Opsi = Partial<Obj>;
-export type Titik = { x: number; y: number };
+const f = (n: number): number => Number(n.toFixed(1));
 
-export const teks = (id: string, x: number, y: number, isi: string, u = 10, warna: string = W.biru, o: Opsi = {}): Obj => ({ id, t: "teks", x, y, isi, u, warna, ...o });
-export const kotak = (id: string, x: number, y: number, w: number, h: number, warna: string, garis: string | undefined = W.biru, o: Opsi = {}): Obj => ({ id, t: "kotak", x, y, w, h, warna, garis, rx: 3, tebal: 1.5, ...o });
-export const bulat = (id: string, x: number, y: number, r: number, warna: string, garis: string | undefined = W.biru, o: Opsi = {}): Obj => ({ id, t: "bulat", x, y, r, warna, garis, tebal: 1.5, ...o });
-export const garis = (id: string, x: number, y: number, x2: number, y2: number, warna: string = W.biru, tebal = 2, o: Opsi = {}): Obj => ({ id, t: "garis", x, y, x2, y2, warna, tebal, ...o });
-export const emo = (id: string, x: number, y: number, e: string, u = 22, o: Opsi = {}): Obj => ({ id, t: "teks", x, y, isi: e, u, warna: W.biru, ...o });
-export const tangan = (x: number, y: number, id = "tg"): Obj => emo(id, x, y, "\u{1F446}", 22);
+/* ------------------------------ Loket karcis ------------------------------ */
 
-/** Judul adegan di tengah atas. */
-export const judul = (isi: string, warna: string = W.ungu): Obj => teks("jud", 150, 18, isi, 11, warna);
-
-/** Kartu berwarna dengan satu sampai tiga baris teks, pojok kiri-atas (x, y). */
-export function kartu(id: string, x: number, y: number, w: number, h: number, warna: string, baris: string[], u = 9, o: Opsi = {}): Obj[] {
-  const mulai = y + h / 2 - ((baris.length - 1) * (u + 3)) / 2 + u * 0.35;
-  return [kotak(`${id}-k`, x, y, w, h, warna, W.biru, { rx: 8, ...o }), ...baris.map((b, i) => teks(`${id}-t${i}`, x + w / 2, mulai + i * (u + 3), b, u, W.biru, o))];
-}
-
-/** Kartu angka besar: pojok kiri-atas (x, y); id `${id}-k` dan `${id}-t`. */
-export const kartuAngka = (id: string, x: number, y: number, angka: string, warna: string = W.krem, w = 40, h = 36, u = 22, o: Opsi = {}): Obj[] => [
-  kotak(`${id}-k`, x, y, w, h, warna, W.biru, { rx: 6, tebal: 1.6, ...o }),
-  teks(`${id}-t`, x + w / 2, y + h / 2 + u * 0.35, angka, u, W.merah, o),
+/** Loket karcis berjendela, pojok kiri-atas (x, y), lebar w, tinggi 54: atap merah, badan krem, jendela biru muda, meja kayu, papan nama KARCIS. */
+export const loket = (id: string, x: number, y: number, w = 88): Obj[] => [
+  kotak(`${id}-b`, x + 4, y + 14, w - 8, 40, "#FEF3C7", W.biru, { rx: 3, tebal: 1.8, z: -2 }),
+  kotak(`${id}-j`, x + 14, y + 22, w - 28, 18, W.langit, W.biru, { rx: 2, tebal: 1.4, z: -1 }),
+  kotak(`${id}-m`, x + 8, y + 40, w - 16, 5, W.coklat, W.biru, { rx: 1, tebal: 1.2 }),
+  kotak(`${id}-r`, x, y, w, 14, W.merah, W.biru, { rx: 4, tebal: 1.8, z: -1 }),
+  teks(`${id}-t`, x + w / 2, y + 10.5, "KARCIS", 8.4, W.putih),
 ];
 
-/** Papan tulis hijau tua. */
-export const papan = (id: string, x: number, y: number, w: number, h: number): Obj => kotak(id, x, y, w, h, "#166534", W.coklat, { rx: 6, tebal: 4, z: -2 });
+/* ------------------------------ Karcis dan bingkai ------------------------------ */
 
-/* ------------------------------ Benda berhitung ------------------------------ */
+/** Satu karcis bergigi: kotak bertepi putus-putus, pojok kiri-atas (x, y), lebar w, tinggi 0,6 w. */
+export const karcis = (id: string, x: number, y: number, w = 14, warna: string = W.emas, o: Partial<Obj> = {}): Obj =>
+  kotak(id, x, y, w, f(w * 0.6), warna, W.biru, { rx: 1.5, tebal: 1.2, putus: true, ...o });
 
-export type Jenis = "donat" | "kelereng" | "bola" | "balon" | "sedotan";
-const WARNA_DONAT = ["#F9A8D4", "#FCD34D", "#D6A77A", "#C4B5FD"];
-const WARNA_KELERENG = ["#38BDF8", "#F472B6", "#A3E635", "#FB923C", "#818CF8", "#FACC15"];
-const WARNA_BALON = ["#F87171", "#60A5FA", "#FACC15", "#4ADE80", "#C084FC"];
-const WARNA_SEDOTAN = ["#60A5FA", "#F87171", "#4ADE80", "#FACC15", "#C084FC"];
+/** Deret `n` karcis `${id}{i}` mulai (x0, y) berjarak dx. */
+export const deretKarcis = (id: string, n: number, x0: number, y: number, dx: number, w = 12, warna: string = W.emas): Obj[] =>
+  Array.from({ length: n }, (_, i) => karcis(`${id}${i}`, f(x0 + i * dx), y, w, warna));
+/** Id karcis `${id}{dari}` sampai `${id}{sampai}`. */
+export const idDeret = (id: string, dari: number, sampai: number): string[] => Array.from({ length: sampai - dari + 1 }, (_, i) => `${id}${dari + i}`);
 
-/** Satu benda berhitung berpusat di (cx, cy). Benda utama berid `id`; balon dan sedotan punya pelengkap `id-x`. */
-export function benda(jenis: Jenis, id: string, cx: number, cy: number, r = 7, i = 0, o: Opsi = {}): Obj[] {
-  if (jenis === "donat") return [bulat(id, cx, cy, r * 1.12, WARNA_DONAT[i % 4], W.coklat, { tebal: 1.5, ...o }), bulat(`${id}-x`, cx, cy, r * 0.42, W.putih, W.coklat, { tebal: 1, ...o })];
-  if (jenis === "kelereng") return [bulat(id, cx, cy, r, WARNA_KELERENG[i % 6], W.biru, { tebal: 1.6, ...o })];
-  if (jenis === "bola") return [bulat(id, cx, cy, r, W.oranye, W.coklat, { tebal: 1.8, ...o })];
-  if (jenis === "balon") return [bulat(id, cx, cy, r * 0.9, WARNA_BALON[i % 5], W.biru, { tebal: 1.1, ...o }), garis(`${id}-x`, cx, cy + r * 0.9, 2, r * 1.0, W.abu, 1.2, o)];
-  return [kotak(id, cx - r * 0.45, cy - r * 1.3, r * 0.9, r * 2.6, WARNA_SEDOTAN[i % 5], W.biru, { rx: 2, tebal: 1.1, ...o }), kotak(`${id}-x`, cx - r * 0.45, cy - r * 1.3, r * 0.9, 3, W.putih, W.biru, { rx: 1, tebal: 0.8, ...o })];
+/** Titik pojok kiri-atas karcis di sel ke-i bingkai (pojok kiri-atas bingkai x, y; sisi sel s; lebar karcis w). */
+export const titikSel = (x: number, y: number, i: number, s = 18, w = 13): Titik => ({ x: f(x + (i % 5) * s + (s - w) / 2), y: f(y + Math.floor(i / 5) * s + (s - w * 0.6) / 2) });
+/** Bingkai karcis dua baris lima: sel `${id}-c{i}` dan `n` karcis `${id}k{i}` di sel pertama sampai ke-n. */
+export function bingkai(id: string, x: number, y: number, n: number, s = 18, w = 13): Obj[] {
+  const out: Obj[] = [];
+  for (let i = 0; i < 10; i += 1) out.push(kotak(`${id}-c${i}`, x + (i % 5) * s, y + Math.floor(i / 5) * s, s, s, W.putih, W.biru, { rx: 1, tebal: 1.2, z: -1 }));
+  for (let i = 0; i < n; i += 1) {
+    const p = titikSel(x, y, i, s, w);
+    out.push(karcis(`${id}k${i}`, p.x, p.y, w));
+  }
+  return out;
 }
 
-/** Benda sejenis di titik-titik `pts`, id `${id}${i}`. */
-export const deret = (jenis: Jenis, id: string, pts: Titik[], r = 7, o: Opsi = {}): Obj[] => pts.flatMap((p, i) => benda(jenis, `${id}${i}`, p.x, p.y, r, i, o));
+/** Geser karcis `${id}` ke pojok kiri-atas (x, y). */
+export const geser = (at: string | number | undefined, id: string, x: number, y: number) => ({ at, ubah: [{ id, x, y }] });
 
-/** Id benda utama `${id}0` sampai `${id}${n-1}`. */
-export const idDeret = (id: string, n: number): string[] => Array.from({ length: n }, (_, i) => `${id}${i}`);
+/* ------------------------------ Garis bilangan 0 sampai 20 dan lompatan ------------------------------ */
 
-/** Id semua bagian benda utama dan pelengkapnya (`${id}{i}` dan `${id}{i}-x`) untuk dihapus bersama. */
-export const idBenda = (id: string, n: number, jenis: Jenis): string[] => Array.from({ length: n }, (_, i) => (jenis === "balon" || jenis === "sedotan" || jenis === "donat" ? [`${id}${i}`, `${id}${i}-x`] : [`${id}${i}`])).flat();
-
-/** Baris benda di tengah: `n` titik sebaris dengan jarak `jarak`, tinggi `y`. */
-export const baris = (n: number, y: number, jarak = 24, x0?: number): Titik[] => Array.from({ length: n }, (_, i) => ({ x: (x0 ?? 150 - ((n - 1) * jarak) / 2) + i * jarak, y }));
-
-/** Letak `n` (sampai 20) titik tersebar rapi di wilayah x 24..276, y `y0`..`y1`, dengan sedikit geseran tetap supaya tampak berserakan. */
-export function sebar(n: number, y0 = 106, y1 = 186): Titik[] {
-  const kol = 7;
-  const bar = Math.ceil(n / kol);
-  const geser = [[0, 3], [5, -4], [-4, 2], [3, 5], [-5, -3], [4, 0], [-2, 4], [2, -5], [-3, 3], [5, 2], [-5, 4], [0, -4], [3, 3], [-4, -2], [4, 4], [-2, -3], [5, -2], [-3, 5], [2, 0], [-5, -4]];
-  return Array.from({ length: n }, (_, i) => {
-    const b = Math.floor(i / kol);
-    const c = i % kol;
-    const [gx, gy] = geser[i % geser.length];
-    return { x: 30 + c * 40 + gx, y: bar === 1 ? (y0 + y1) / 2 + gy : y0 + (b * (y1 - y0)) / (bar - 1) + gy };
-  });
+export const GB = { x0: 20, dx: 13 } as const;
+export const xG = (n: number): number => GB.x0 + n * GB.dx;
+/** Garis bilangan dari `dari` sampai `sampai` pada tinggi y: garis `${id}`, takik `${id}-g{n}`, angka `${id}-a{n}`. */
+export function garisAngka(id: string, y: number, dari = 0, sampai = 20): Obj[] {
+  const out: Obj[] = [garis(id, xG(dari) - 8, y, xG(sampai) - xG(dari) + 16, 0, W.biru, 2)];
+  for (let n = dari; n <= sampai; n += 1) out.push(garis(`${id}-g${n}`, xG(n), y - 4, 0, 8, W.biru, 1.4), teks(`${id}-a${n}`, xG(n), y + 15, String(n), 7, n % 5 === 0 ? W.merah : W.biru));
+  return out;
 }
+/** Titik bulat `${id}` di bilangan n pada tinggi y. */
+export const titikBil = (id: string, n: number, y: number, warna: string = W.hijau, r = 4): Obj => bulat(id, xG(n), y, r, warna, W.biru, { tebal: 1.2, z: 2 });
+/** Busur lompatan `${id}` dari bilangan a ke b di atas garis pada tinggi y, tinggi busur tinggi; tergambar bertahap. */
+export const busur = (id: string, a: number, b: number, y: number, warna: string = W.merah, tinggi = 20, tebal = 2): Obj => ({
+  id,
+  t: "jalur",
+  x: xG(a),
+  y: y - 3,
+  d: `M0 0 Q ${f((xG(b) - xG(a)) / 2)} ${-tinggi} ${xG(b) - xG(a)} 0`,
+  garis: warna,
+  tebal,
+  gambar: true,
+});
 
-/* ------------------------------ Bingkai sepuluh ------------------------------ */
+/* ------------------------------ Bagan bagian dan keseluruhan ------------------------------ */
 
-export const SEL = 26;
-/** Pusat sel ke-i (0..9) bingkai dengan pojok kiri-atas (x, y): lima sel sebaris, dua baris. */
-export const pusatSel = (i: number, x: number, y: number, sel = SEL): Titik => ({ x: x + (i % 5) * sel + sel / 2, y: y + Math.floor(i / 5) * sel + sel / 2 });
-
-/** Satu bingkai sepuluh kosong, id sel `${id}-c{i}`. */
-export const bingkai = (id: string, x: number, y: number, sel = SEL, o: Opsi = {}): Obj[] =>
-  Array.from({ length: 10 }, (_, i) => kotak(`${id}-c${i}`, x + (i % 5) * sel, y + Math.floor(i / 5) * sel, sel, sel, W.putih, W.biru, { rx: 0, tebal: 1.3, z: -1, ...o }));
-
-export const BINGKAI_A = { x: 14, w: 130 };
-export const BINGKAI_B = { x: 156, w: 130 };
-
-/** Dua bingkai sepuluh berdampingan di tinggi `y`: id sel `${id}a-c{i}` dan `${id}b-c{i}`. */
-export const duaBingkai = (id: string, y: number, o: Opsi = {}): Obj[] => [...bingkai(`${id}a`, BINGKAI_A.x, y, SEL, o), ...bingkai(`${id}b`, BINGKAI_B.x, y, SEL, o)];
-
-/** Pusat sel ke-i (0..19) pada dua bingkai: 0..9 di bingkai pertama, 10..19 di bingkai kedua. */
-export const pusatDua = (i: number, y: number): Titik => (i < 10 ? pusatSel(i, BINGKAI_A.x, y) : pusatSel(i - 10, BINGKAI_B.x, y));
-
-/** Titik merah pengisi sel ke-i (0..19) pada dua bingkai di tinggi `y`: id `${id}-t{i}`. Dari nomor `dari` sampai `sampai` (tidak termasuk). */
-export const titikDua = (id: string, y: number, sampai: number, dari = 0): Obj[] =>
-  Array.from({ length: Math.max(0, sampai - dari) }, (_, q) => {
-    const i = dari + q;
-    const p = pusatDua(i, y);
-    return bulat(`${id}-t${i}`, p.x, p.y, 8.4, i < 10 ? W.merah : W.biru, i < 10 ? W.merah : W.biru, { tebal: 1 });
-  });
-
-/** Titik pengisi bingkai tunggal (pojok kiri-atas (x, y), sel `sel`), `n` titik, id `${id}-t{i}`. */
-export const titikBingkai = (id: string, x: number, y: number, n: number, warna: string = W.merah, sel = SEL): Obj[] =>
-  Array.from({ length: n }, (_, i) => {
-    const p = pusatSel(i, x, y, sel);
-    return bulat(`${id}-t${i}`, p.x, p.y, sel * 0.32, warna, warna, { tebal: 1 });
-  });
-
-/* ------------------------------ Stoples dan ikat ------------------------------ */
-
-/** Stoples kaca: kotak bening bertutup (satu benda), tutup `${id}-x`. */
-export const stoples = (id: string, x: number, y: number, w: number, h: number, o: Opsi = {}): Obj[] => [
-  kotak(id, x, y, w, h, "#E0F2FE", W.coklat, { rx: 8, tebal: 2.2, ...o }),
-  kotak(`${id}-x`, x + w * 0.2, y - 7, w * 0.6, 8, W.emas, W.coklat, { rx: 2, tebal: 1.6, ...o }),
+/** Bagan: keseluruhan `${id}-w` (bulat) di (x, y), dua bagian `${id}-p0` dan `${id}-p1` di bawahnya, garis `${id}-l0`, `${id}-l1`; isi tiap bulat `${id}-w-t`, `${id}-p0-t`, `${id}-p1-t`. */
+export const bagan = (id: string, x: number, y: number, atas: string, kiri: string, kanan: string, jarak = 42): Obj[] => [
+  garis(`${id}-l0`, x - 8, y + 14, -(jarak - 12), 22, W.biru, 1.8),
+  garis(`${id}-l1`, x + 8, y + 14, jarak - 12, 22, W.biru, 1.8),
+  bulat(`${id}-w`, x, y, 17, W.krem, W.biru, { tebal: 2 }),
+  teks(`${id}-w-t`, x, y + 5, atas, 14, W.merah),
+  bulat(`${id}-p0`, x - jarak, y + 52, 15, W.hijauMuda, W.biru, { tebal: 2 }),
+  teks(`${id}-p0-t`, x - jarak, y + 57, kiri, 13, W.biru),
+  bulat(`${id}-p1`, x + jarak, y + 52, 15, W.langit, W.biru, { tebal: 2 }),
+  teks(`${id}-p1-t`, x + jarak, y + 57, kanan, 13, W.biru),
 ];
 
-/** Lingkaran pita merah muda yang mengikat sepuluh benda: kotak bundar bening di belakang benda, id `${id}`. */
-export const ikat = (id: string, x: number, y: number, w: number, h: number, o: Opsi = {}): Obj => kotak(id, x, y, w, h, W.merahMuda, W.merah, { rx: 10, tebal: 2, op: 0.6, z: -1, ...o });
+/* ------------------------------ Tabel puluhan dan satuan ------------------------------ */
 
-/* ------------------------------ Garis bilangan ------------------------------ */
-
-/** Letak bilangan n pada garis bilangan dari `dari` sampai `sampai`: dari x = 30 sampai x = 270 (lebar 240 dibagi rata; pilih selang yang membagi 240). */
-export const xBil = (n: number, dari: number, sampai: number): number => 30 + ((n - dari) * 240) / (sampai - dari);
-export const garisBilangan = (y: number, dari: number, sampai: number): Obj[] => [
-  garis("gb", 22, y, 256, 0, W.biru, 2.4),
-  ...Array.from({ length: sampai - dari + 1 }, (_, q) => {
-    const n = dari + q;
-    return [garis(`gb-t${n}`, xBil(n, dari, sampai), y - 5, 0, 10, W.biru, 1.8), teks(`gb-n${n}`, xBil(n, dari, sampai), y + 18, String(n), 9.4, W.merah)];
-  }).flat(),
+/** Tabel dua kolom: kepala `${id}-hp` (puluhan) dan `${id}-hs` (satuan), sel `${id}-kp`, `${id}-ks`, isi `${id}-tp`, `${id}-ts`. Pojok kiri-atas (x, y), tiap kolom lebar 54. */
+export const tabelPS = (id: string, x: number, y: number, p: string, s: string): Obj[] => [
+  kotak(`${id}-kp`, x, y + 14, 54, 34, W.krem, W.biru, { rx: 2, tebal: 1.8 }),
+  kotak(`${id}-ks`, x + 54, y + 14, 54, 34, W.krem, W.biru, { rx: 2, tebal: 1.8 }),
+  teks(`${id}-hp`, x + 27, y + 10, "puluhan", 9, W.ungu),
+  teks(`${id}-hs`, x + 81, y + 10, "satuan", 9, W.ungu),
+  teks(`${id}-tp`, x + 27, y + 41, p, 22, W.merah),
+  teks(`${id}-ts`, x + 81, y + 41, s, 22, W.merah),
 ];
-/** Lompatan melengkung dari bilangan a ke b (satu langkah) di garis `dari`..`sampai`, tergambar bertahap; id `${id}`. */
-export const lompat = (id: string, a: number, b: number, y: number, dari: number, sampai: number, warna: string = W.hijau): Obj => {
-  const lebar = xBil(b, dari, sampai) - xBil(a, dari, sampai);
-  return { id, t: "jalur", x: xBil(a, dari, sampai), y: y - 6, d: `M0 0 Q${lebar / 2} -22 ${lebar} 0`, garis: warna, tebal: 2.2, gambar: true };
-};
+
+/* ------------------------------ Papan catatan ------------------------------ */
+
+/** Papan catatan: kotak `${id}` berbingkai kayu dan judul `${id}-j`. */
+export const papan = (id: string, x: number, y: number, w: number, h: number, isi: string): Obj[] => [
+  kotak(id, x, y, w, h, "#166534", W.coklat, { rx: 4, tebal: 3, z: -2 }),
+  teks(`${id}-j`, x + w / 2, y + 13, isi, 8.6, W.putih),
+];
+
+/* ------------------------------ Tokoh dan latar ------------------------------ */
+
+/** Barisan anak (emoji) `${id}{i}` mulai x0 pada tinggi y berjarak dx. */
+export const barisAnak = (id: string, n: number, x0: number, y: number, dx: number, u = 20): Obj[] =>
+  Array.from({ length: n }, (_, i) => emo(`${id}${i}`, f(x0 + i * dx), y, E.anak, u));
+/** Pagar pendek: tiang `${id}{i}` dan palang `${id}-p`. */
+export const pagar = (id: string, x: number, y: number, n = 3, dx = 12): Obj[] => [
+  ...Array.from({ length: n }, (_, i) => garis(`${id}${i}`, x + i * dx, y, 0, 18, W.coklat, 3)),
+  garis(`${id}-p`, x - 2, y + 7, (n - 1) * dx + 4, 0, W.coklat, 2.4),
+];
+/** Lampion berderet `${id}{i}` di tinggi y dan tali `${id}-t`. */
+export const lampionDeret = (id: string, n: number, x0: number, y: number, dx: number): Obj[] => [
+  garis(`${id}-t`, x0 - 10, y - 12, (n - 1) * dx + 20, 0, W.coklat, 1.4),
+  ...Array.from({ length: n }, (_, i) => emo(`${id}${i}`, f(x0 + i * dx), y, E.lampion, 18)),
+];

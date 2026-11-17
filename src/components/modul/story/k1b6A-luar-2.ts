@@ -1,113 +1,246 @@
-import type { AdeganStory } from "./logika-story";
-import { OWL, W, duaBingkai, emo, garisBilangan, judul, kartu, lompat, teks, titikDua } from "./k1b6A-gambar";
-import { hapus, idx, k, redamkan, sorotkan, tambah, ubah } from "./k1b6A-bantu";
-import { GY, WARNA_METODE, kepala } from "./k1b6A-luar-1";
-import { pilihanBil } from "./k1b6A-materi-4";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, bulat, cubit, emo, garisBilangan, judul, kartu, kelereng, kisi, nampan, orang, panah, teks, xGaris, type Titik } from "./k1b6A-gambar";
+import { NAMA_METODE, NAMA_METODE_ID, WARNA_METODE, kepala } from "./k1b6A-luar-1";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k1b6A-bantu";
 
-const sel = (id: string, dari: number, sampai: number): string[] => Array.from({ length: sampai - dari + 1 }, (_, q) => `${id}-c${dari + q}`);
-const BY = 50;
+/* Video metode global Sub-Bab A "Dua Nampan Kue": Number Line Difference, Equalizing, dan ringkasan. */
 
-/* ------------------------------ 4. Pasangan sampai 20: konsep ------------------------------ */
-const SUARA_C1 = "Metode kedua bernama Pasangan sampai dua puluh. Dua bingkai penuh berisi dua puluh titik.";
-const SUARA_C2 = "Isi dua belas titik. Bingkai pertama penuh, dan bingkai kedua berisi dua titik.";
-const SUARA_C3 = "Titik yang masih kosong ada delapan. Dua belas dan delapan adalah pasangan yang membentuk dua puluh.";
-const SUARA_C4 = "Dua belas ditambah delapan sama dengan dua puluh. Jadi selisih dua belas dan dua puluh adalah delapan.";
-const SUARA_C5 = "Kalau kita ingat pasangan yang membentuk dua puluh, selisih ke dua puluh bisa langsung dilihat. Ucapkan lagi mengikuti suara guru.";
+/* ------------------------------ 4. Number Line Difference: konsep ------------------------------ */
+const GB = { x0: 46, y: 132, dari: 6, sampai: 12, jarak: 34 };
+const gx = (n: number): number => xGaris(GB.x0, GB.dari, GB.jarak, n);
+const garis1 = (): Obj[] => garisBilangan("gb", GB.x0, GB.y, GB.dari, GB.sampai, GB.jarak);
+const lompat = (id: string, dari: number, ke: number, y = 116): Obj => panah(id, gx(dari) + 4, y, gx(ke) - 3, y);
+const titikGaris = (id: string, n: number, warna: string): Obj => bulat(id, gx(n), GB.y, 5, warna, W.putih, { tebal: 1.4 });
 
-export const ADEGAN_LUAR_PASANGAN: AdeganStory = {
-  id: "luar-pasangan",
-  judul: "Pasangan sampai 20: dua bingkai berisi titik",
-  sumber: "Metode luar: Pasangan sampai 20",
-  latar: "#EFF6FF",
+const SUARA_G1 = "Metode kedua, Number Line Difference, atau Selisih di Garis Bilangan.";
+const SUARA_G2 = "Tandai dua bilangan di garis. Selisihnya adalah banyak langkah dari bilangan kecil ke bilangan besar.";
+const SUARA_G3 = "Dari delapan ke sebelas ada tiga langkah ke kanan.";
+const SUARA_G4 = "Jadi selisih delapan dan sebelas adalah tiga.";
+
+export const ADEGAN_LUAR_GARIS: AdeganStory = {
+  id: "luar-garis",
+  judul: "Number Line Difference: selisih di garis bilangan",
+  sumber: "Metode global: Number Line Difference",
+  latar: "#FFF1F2",
   ketukan: [
-    k(SUARA_C1, tambah("kedua", ...kepala(1)), tambah("bingkai", ...duaBingkai("pb", BY)), tambah("titik.", teks("bl", 150, 134, "20", 22, W.merah))),
-    k(SUARA_C2, tambah("titik.", ...titikDua("pb", BY, 12)), ubah("belas", { id: "bl", isi: "12" })),
-    k(SUARA_C3, sorotkan("kosong", ...sel("pbb", 2, 9)), tambah("delapan.", teks("ks", 150, 116, "kosong: 8", 9.4, W.coklat))),
-    k(SUARA_C4, hapus(0, "ks"), redamkan(0, ...sel("pbb", 2, 9)), tambah("Dua", ...kartu("pj", 70, 150, 160, 30, W.emas, ["12 + 8 = 20"], 13))),
-    k(SUARA_C5, tambah("Ucapkan", emo("ucap", 262, 190, "\u{1F5E3}", 24))),
-  ],
-};
-
-/* ------------------------------ 5. Pasangan sampai 20: terapan ------------------------------ */
-const SUARA_D1 = "Terapkan pada lima belas. Isi lima belas titik di dua bingkai.";
-const SUARA_D2 = "Bingkai pertama penuh, bingkai kedua berisi lima titik. Titik yang kosong tinggal lima.";
-const SUARA_D3 = "Lima belas dan lima adalah pasangan yang membentuk dua puluh. Lima belas ditambah lima sama dengan dua puluh.";
-const SUARA_D4 = "Berapa selisih lima belas dan dua puluh? Pilih: empat, lima, atau enam. Ketuk bilangan yang tepat.";
-
-export const ADEGAN_LUAR_PASANGAN_TERAPAN: AdeganStory = {
-  id: "luar-pasangan-terapan",
-  judul: "Pasangan sampai 20: lima belas titik",
-  sumber: "Metode luar: Pasangan sampai 20, terapan",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_D1, tambah("Terapkan", ...kepala(1), ...duaBingkai("qb", BY)), tambah("Isi", ...titikDua("qb", BY, 15)), tambah("belas.", teks("bl", 150, 134, "15", 22, W.merah))),
-    k(SUARA_D2, sorotkan("kosong", ...sel("qbb", 5, 9)), tambah("tinggal", teks("ks", 150, 116, "kosong: 5", 9.4, W.coklat))),
-    k(SUARA_D3, hapus(0, "ks"), redamkan(0, ...sel("qbb", 5, 9)), tambah("Lima@2", ...kartu("qj", 70, 150, 160, 30, W.emas, ["15 + 5 = 20"], 13))),
-    k(SUARA_D4, hapus(0, "qj-k", "qj-t0"), tambah("Pilih:", ...pilihanBil(146, ["4", "5", "6"])), sorotkan("lima,", "c2-k")),
-  ],
-};
-
-/* ------------------------------ 6. Menjadikan Sepuluh: konsep ------------------------------ */
-const SUARA_E1 = "Metode ketiga bernama Menjadikan Sepuluh. Kita melangkah ke sepuluh dulu, lalu melanjutkan sisanya.";
-const SUARA_E2 = "Kita mau mencari selisih delapan dan empat belas. Mulai dari delapan. Lompat dulu ke sepuluh, ada dua langkah.";
-const SUARA_E3 = "Dari sepuluh lanjut sampai empat belas. Satu, dua, tiga, empat. Ada empat langkah lagi.";
-const SUARA_E4 = "Dua langkah dan empat langkah. Dua ditambah empat sama dengan enam. Jadi selisihnya enam.";
-const SUARA_E5 = "Metode ini membuat kita menghitung lebih cepat, karena sepuluh mudah diingat. Ucapkan lagi mengikuti suara guru.";
-
-export const ADEGAN_LUAR_SEPULUH: AdeganStory = {
-  id: "luar-sepuluh",
-  judul: "Menjadikan Sepuluh: ke sepuluh dulu",
-  sumber: "Metode luar: Menjadikan Sepuluh",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(SUARA_E1, tambah("ketiga", ...kepala(2)), tambah(0, ...garisBilangan(GY)), sorotkan(idx(SUARA_E1, "sepuluh", 2), "gb-n10")),
     k(
-      SUARA_E2,
-      sorotkan(4, "gb-n8"),
-      sorotkan(7, "gb-n14"),
-      tambah(14, lompat("sa1", 8, 9, GY)),
-      tambah(16, lompat("sa2", 9, 10, GY)),
+      SUARA_G1,
+      tambah("kedua,", ...kepala(1)),
+      tambah("Number", ...garis1()),
+      tambah("Selisih", teks("lk", 150, 96, "langkah di garis", 11, W.ungu)),
     ),
-    k(SUARA_E3, tambah(6, lompat("sb1", 10, 11, GY, W.ungu)), tambah(7, lompat("sb2", 11, 12, GY, W.ungu)), tambah(8, lompat("sb3", 12, 13, GY, W.ungu)), tambah(9, lompat("sb4", 13, 14, GY, W.ungu))),
-    k(SUARA_E4, tambah("Dua@2", ...kartu("sj", 70, 150, 160, 30, W.emas, ["2 + 4 = 6"], 13))),
-    k(SUARA_E5, tambah("Ucapkan", emo("ucap", 262, 190, "\u{1F5E3}", 24)), redamkan(0, "gb-n8", "gb-n14")),
+    k(
+      SUARA_G2,
+      hapus(0, "lk"),
+      tambah("dua", teks("b2", 150, 76, "2 bilangan", 11, W.ungu)),
+      tambah("garis.", titikGaris("sa", 7, W.biru), titikGaris("sb", 11, W.merah)),
+      tambah("langkah", panah("sk", gx(7) + 4, 112, gx(11) - 4, 112, W.hijau, 2.4)),
+      sorotkan("kecil", "sa"),
+      sorotkan("besar.", "sb"),
+    ),
+    k(
+      SUARA_G3,
+      hapus(0, "sa", "sb", "sk", "b2"),
+      tambah("delapan", titikGaris("ma", 8, W.biru)),
+      tambah("sebelas", titikGaris("mb", 11, W.merah)),
+      tambah("tiga", lompat("h1", 8, 9), lompat("h2", 9, 10), lompat("h3", 10, 11)),
+      tambah("langkah", teks("lg", 150, 96, "3 langkah", 11, W.merah)),
+    ),
+    k(
+      SUARA_G4,
+      tambah("selisih", ...kartu("sd", 50, 52, 200, 26, W.emas, ["selisih 8 dan 11"], 11)),
+      tambah("tiga.", teks("k3", 150, 176, "= 3", 24, W.merah)),
+    ),
   ],
 };
 
-/* ------------------------------ 7. Menjadikan Sepuluh: terapan ------------------------------ */
-const SUARA_F1 = "Terapkan pada enam dan tiga belas. Berapa selisihnya? Kita ke sepuluh dulu.";
-const SUARA_F2 = "Dari enam ke sepuluh ada empat langkah. Satu, dua, tiga, empat.";
-const SUARA_F3 = "Dari sepuluh ke tiga belas ada tiga langkah. Satu, dua, tiga.";
-const SUARA_F4 = "Empat ditambah tiga sama dengan tujuh. Jadi selisih enam dan tiga belas adalah tujuh.";
+/* ------------------------------ 5. Number Line Difference: terapan ------------------------------ */
+const GT = { x0: 46, y: 132, dari: 8, sampai: 14, jarak: 34 };
+const tx = (n: number): number => xGaris(GT.x0, GT.dari, GT.jarak, n);
+const SUARA_H1 = "Kaka mencari selisih balon biru sembilan dan balon merah tiga belas.";
+const SUARA_H2 = "Dari sembilan melompat ke sepuluh, sebelas, dua belas, tiga belas. Empat langkah.";
+const SUARA_H3 = "Cara ini cepat kalau kedua bilangan berdekatan.";
+const SUARA_H4 = "Kalau jauh, langkahnya banyak dan mudah terlewat, jadi kurang cocok.";
+const balon = (id: string, n: number, warna: string): Obj[] => [panah(`${id}-t`, tx(n), 98, tx(n), 124, W.abu, 1), bulat(id, tx(n), 88, 9, warna, W.biru, { tebal: 1.4 })];
+const hop = (id: string, dari: number, ke: number): Obj => panah(id, tx(dari) + 4, 116, tx(ke) - 3, 116, W.hijau, 2.2);
 
-export const ADEGAN_LUAR_SEPULUH_TERAPAN: AdeganStory = {
-  id: "luar-sepuluh-terapan",
-  judul: "Menjadikan Sepuluh: enam dan tiga belas",
-  sumber: "Metode luar: Menjadikan Sepuluh, terapan",
-  latar: "#FDF2F8",
+export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
+  id: "luar-garis-terapan",
+  judul: "Number Line Difference: dua balon",
+  sumber: "Metode global: Number Line Difference, terapan",
+  latar: "#FFF1F2",
   ketukan: [
-    k(SUARA_F1, tambah("Terapkan", ...kepala(2), ...garisBilangan(GY)), sorotkan("enam", "gb-n6"), sorotkan("belas?", "gb-n13")),
-    k(SUARA_F2, tambah(7, lompat("ta1", 6, 7, GY)), tambah(8, lompat("ta2", 7, 8, GY)), tambah(9, lompat("ta3", 8, 9, GY)), tambah(10, lompat("ta4", 9, 10, GY))),
-    k(SUARA_F3, tambah(8, lompat("tb1", 10, 11, GY, W.ungu)), tambah(9, lompat("tb2", 11, 12, GY, W.ungu)), tambah(10, lompat("tb3", 12, 13, GY, W.ungu))),
-    k(SUARA_F4, tambah("Empat", ...kartu("tj", 70, 150, 160, 30, W.emas, ["4 + 3 = 7"], 13))),
+    k(
+      SUARA_H1,
+      tambah(0, ...kepala(1), ...garisBilangan("gb", GT.x0, GT.y, GT.dari, GT.sampai, GT.jarak)),
+      tambah("Kaka", ...orang("kk", 26, 176, E.kaka, "Kaka")),
+      tambah("biru", ...balon("bb", 9, "#60A5FA")),
+      tambah("merah", ...balon("bm", 13, "#F87171")),
+    ),
+    k(
+      SUARA_H2,
+      tambah("melompat", bulat("mk", tx(9), GT.y, 5, W.hijau, W.putih, { tebal: 1.4 })),
+      tambah("sepuluh,", hop("h1", 9, 10)),
+      ubah("sepuluh,", { id: "mk", x: tx(10) }),
+      tambah("sebelas,", hop("h2", 10, 11)),
+      ubah("sebelas,", { id: "mk", x: tx(11) }),
+      tambah(7, hop("h3", 11, 12)),
+      ubah(7, { id: "mk", x: tx(12) }),
+      tambah(9, hop("h4", 12, 13)),
+      ubah(9, { id: "mk", x: tx(13) }),
+      tambah("Empat", teks("l4", 150, 66, "4 langkah", 12, W.merah)),
+    ),
+    k(
+      SUARA_H3,
+      hapus(0, "l4"),
+      tambah("cepat", emo("ok", 262, 170, E.benar, 24)),
+      tambah("berdekatan.", ...kartu("dk", 40, 160, 190, 24, W.hijauMuda, ["cepat: bilangan dekat"], 9.6)),
+    ),
+    k(
+      SUARA_H4,
+      bersih(0),
+      tambah(0, ...kepala(1), ...garisBilangan("gj", 20, 132, 0, 20, 13.5)),
+      tambah("jauh,", bulat("ja", 20 + 2 * 13.5, 132, 4, W.biru, W.putih, { tebal: 1.2 }), bulat("jb", 20 + 19 * 13.5, 132, 4, W.merah, W.putih, { tebal: 1.2 })),
+      tambah("langkahnya", panah("jl", 20 + 2 * 13.5 + 4, 116, 20 + 19 * 13.5 - 4, 116, W.hijau, 2.2)),
+      tambah("banyak", teks("jt", 150, 100, "17 langkah", 11, W.merah)),
+      tambah("terlewat,", emo("jq", 150, 176, E.pikir, 24)),
+      tambah("kurang", ...kartu("jk", 190, 160, 100, 24, W.merahMuda, ["kurang cocok"], 9.6)),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. Equalizing: konsep ------------------------------ */
+const TA: Titik[] = kisi(5, 26, 74, 6, 18, 18);
+const TB: Titik[] = kisi(9, 178, 74, 6, 18, 18);
+const TAMBAH: Titik[] = kisi(9, 26, 74, 6, 18, 18).slice(5, 9);
+const dua = (): Obj[] => [...nampan("na", 14, 60, 120, 46), ...nampan("nb", 166, 60, 120, 46), ...TA.map((p, i) => cubit(`a${i}`, p.x, p.y)), ...TB.map((p, i) => cubit(`b${i}`, p.x, p.y))];
+const SUARA_Z1 = "Metode ketiga, Equalizing, atau Menyamakan. Tambahkan ke kumpulan yang sedikit sampai sama banyak.";
+const SUARA_Z2 = "Banyak benda yang ditambahkan itulah selisihnya.";
+const SUARA_Z3 = "Bisa juga mengambil dari yang banyak sampai sama dengan yang sedikit.";
+const SUARA_Z4 = "Hasilnya sama saja, dan selisihnya tetap.";
+
+export const ADEGAN_LUAR_SAMAKAN: AdeganStory = {
+  id: "luar-samakan",
+  judul: "Equalizing: menyamakan",
+  sumber: "Metode global: Equalizing",
+  latar: "#F5F3FF",
+  ketukan: [
+    k(
+      SUARA_Z1,
+      tambah("ketiga,", ...kepala(2)),
+      tambah("kumpulan", ...dua()),
+      sorotkan("sedikit", "na"),
+      tambah("sama", ...kartu("sm", 96, 122, 108, 22, W.emas, ["sama banyak"], 10)),
+    ),
+    k(
+      SUARA_Z2,
+      tambah("ditambahkan", ...TAMBAH.map((p, i) => cubit(`t${i}`, p.x, p.y, 1, { warna: "#86EFAC" }))),
+      sorotkan("itulah", "t0", "t1", "t2", "t3"),
+      tambah("selisihnya.", teks("se", 150, 170, "yang ditambah = selisih", 11, W.merah)),
+    ),
+    k(
+      SUARA_Z3,
+      bersih(0),
+      tambah(0, ...kepala(2), ...dua()),
+      tambah("mengambil", ...kartu("am", 85, 122, 130, 22, W.pink, ["ambil dari yang banyak"], 8.6)),
+      ubah("banyak", ...[5, 6, 7, 8].map((i) => ({ id: `b${i}`, y: 54 }))),
+      tambah("sedikit.", emo("ok", 150, 176, E.benar, 22)),
+    ),
+    k(
+      SUARA_Z4,
+      bersih(0),
+      tambah(0, ...kepala(2)),
+      tambah("Hasilnya", ...kartu("z1", 20, 56, 260, 30, W.hijauMuda, ["tambah: sama banyak"], 10.4)),
+      tambah("sama", ...kartu("z2", 20, 100, 260, 30, W.pink, ["ambil: sama banyak"], 10.4)),
+      tambah("tetap.", ...kartu("z3", 60, 144, 180, 30, W.emas, ["selisih tetap sama"], 10.4)),
+    ),
+  ],
+};
+
+/* ------------------------------ 7. Equalizing: terapan pada kelereng ------------------------------ */
+const SUARA_R1 = "Igil punya empat belas kelereng dan Abang sepuluh kelereng.";
+const SUARA_R2 = "Abang menambah satu, dua, tiga, empat kelereng sampai sama, empat belas.";
+const SUARA_R3 = "Empat kelereng yang ditambahkan adalah selisihnya.";
+const SUARA_R4 = "Cocok untuk benda yang bisa dipindah. Kurang cocok kalau yang ada hanya angka.";
+const KI: Titik[] = kisi(14, 26, 80, 7, 16, 16);
+const KA: Titik[] = kisi(14, 172, 80, 7, 16, 16);
+const BARU: Titik[] = KA.slice(10, 14);
+
+export const ADEGAN_LUAR_SAMAKAN_TERAPAN: AdeganStory = {
+  id: "luar-samakan-terapan",
+  judul: "Equalizing: kelereng Igil dan Abang",
+  sumber: "Metode global: Equalizing, terapan",
+  latar: "#F5F3FF",
+  ketukan: [
+    k(
+      SUARA_R1,
+      tambah(0, ...kepala(2), ...nampan("ni", 14, 66, 128, 50), ...nampan("nb", 160, 66, 128, 50)),
+      tambah("Igil", ...orang("ig", 30, 164, E.igil, "Igil")),
+      tambah("belas", ...kelereng("ki", KI, "#38BDF8"), teks("m14", 78, 58, "14", 12, W.biru)),
+      tambah("Abang", ...orang("ab", 270, 164, E.abang, "Abang")),
+      tambah("sepuluh", ...kelereng("ka", KA.slice(0, 10), "#F472B6"), teks("m10", 224, 58, "10", 12, W.merah)),
+    ),
+    k(
+      SUARA_R2,
+      tambah(2, bulat("n0", BARU[0].x, BARU[0].y, 5, "#4ADE80", W.biru, { tebal: 1.2 }), teks("c1", BARU[0].x, 112, "1", 9, W.hijau)),
+      tambah(3, bulat("n1", BARU[1].x, BARU[1].y, 5, "#4ADE80", W.biru, { tebal: 1.2 }), teks("c2", BARU[1].x, 112, "2", 9, W.hijau)),
+      tambah(4, bulat("n2", BARU[2].x, BARU[2].y, 5, "#4ADE80", W.biru, { tebal: 1.2 }), teks("c3", BARU[2].x, 112, "3", 9, W.hijau)),
+      tambah(5, bulat("n3", BARU[3].x, BARU[3].y, 5, "#4ADE80", W.biru, { tebal: 1.2 }), teks("c4", BARU[3].x, 112, "4", 9, W.hijau)),
+      tambah(10, teks("m14b", 224, 140, "sama: 14", 12, W.hijau)),
+    ),
+    k(
+      SUARA_R3,
+      hapus(0, "c1", "c2", "c3", "c4"),
+      sorotkan("kelereng", "n0", "n1", "n2", "n3"),
+      tambah("ditambahkan", ...kartu("sk", 80, 140, 90, 24, W.emas, ["selisih = 4"], 11)),
+    ),
+    k(
+      SUARA_R4,
+      hapus(0, "sk-k", "sk-t0", "m14b", "ig", "ig-n", "ab", "ab-n"),
+      tambah("Cocok", emo("ok", 20, 142, E.benar, 20), ...kartu("cc", 40, 132, 220, 24, W.hijauMuda, ["benda nyata: cocok"], 9.6)),
+      tambah("Kurang", emo("sl", 20, 172, E.salah, 20), ...kartu("kc", 40, 162, 220, 24, W.merahMuda, ["hanya angka: kurang cocok"], 9.6)),
+    ),
   ],
 };
 
 /* ------------------------------ 8. Ringkasan ------------------------------ */
-const SUARA_G1 = "Mari kita ringkas tiga metode dari luar. Semuanya membantu kita mencari selisih dua bilangan.";
-const SUARA_G2 = "Maju dan Mundur: kita melangkah di garis bilangan. Maju untuk menambah, mundur untuk mengurangi.";
-const SUARA_G3 = "Pasangan sampai dua puluh: kita lihat pasangan bilangan yang membentuk dua puluh.";
-const SUARA_G4 = "Menjadikan Sepuluh: kita ke sepuluh dulu, lalu menghitung sisanya. Semua cara ini benar. Pilih yang paling cocok untukmu.";
+const SUARA_Y1 = "Kita sudah melihat tiga metode. Mana yang paling pas? Itu tergantung masalahnya.";
+const SUARA_Y2 = "Kalau dua bilangan berdekatan, pakai garis bilangan. Kalau ingin terlihat jelas, pakai batang.";
+const SUARA_Y3 = "Kalau bendanya nyata dan bisa dipindah, pakai Menyamakan.";
+const SUARA_Y4 = "Menurutmu, untuk membandingkan bilangan tiga dan lima belas, kamu pilih yang mana?";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Metode luar: ringkasan",
-  latar: "#FFF7ED",
+  judul: "Ringkasan tiga metode global",
+  sumber: "Ringkasan metode global",
+  latar: "#EFF6FF",
   ketukan: [
-    k(SUARA_G1, tambah(0, judul("Ringkasan")), tambah("Semuanya", emo("ig", 70, 100, OWL, 44)), tambah("selisih", ...kartu("rg", 120, 74, 160, 40, W.emas, ["mencari selisih"], 11))),
-    k(SUARA_G2, tambah("Maju", ...kartu("r1", 14, 122, 272, 24, WARNA_METODE[0], ["1. maju dan mundur di garis"], 9.4))),
-    k(SUARA_G3, tambah("Pasangan", ...kartu("r2", 14, 150, 272, 24, WARNA_METODE[1], ["2. pasangan sampai 20"], 9.4))),
-    k(SUARA_G4, tambah("Menjadikan", ...kartu("r3", 14, 178, 272, 20, WARNA_METODE[2], ["3. ke 10 dulu, lalu sisa"], 9.4))),
+    k(
+      SUARA_Y1,
+      tambah(0, judul("Ringkasan")),
+      tambah("tiga", emo("rk", 150, 80, E.bintang, 40), ...kartu("rt", 60, 100, 180, 26, W.emas, ["3 metode global"], 10)),
+      tambah("pas?", teks("rq", 150, 154, "mana yang pas?", 11, W.ungu)),
+      tambah("tergantung", teks("rm", 150, 178, "tergantung masalahnya", 10, W.biru)),
+    ),
+    k(
+      SUARA_Y2,
+      bersih(0),
+      tambah(0, judul("Ringkasan")),
+      tambah("dua", ...kartu("r1", 14, 38, 272, 44, WARNA_METODE[1], [NAMA_METODE[1], "2 bilangan berdekatan"], 9.4)),
+      tambah("batang.", ...kartu("r0", 14, 90, 272, 44, WARNA_METODE[0], [NAMA_METODE[0], "ingin terlihat jelas"], 9.4)),
+    ),
+    k(
+      SUARA_Y3,
+      tambah("bendanya", ...kartu("r2", 14, 142, 272, 44, WARNA_METODE[2], [NAMA_METODE[2], "benda nyata, bisa dipindah"], 9.4)),
+    ),
+    k(
+      SUARA_Y4,
+      bersih(0),
+      tambah(0, judul("Pilih yang mana?")),
+      tambah("tiga", teks("p3", 90, 66, "3", 30, W.merah)),
+      tambah(5, teks("pd", 150, 64, "dan", 12, W.biru)),
+      tambah("lima", teks("p15", 210, 66, "15", 30, W.merah)),
+      tambah("pilih", ...NAMA_METODE.map((_, i) => kartu(`q${i}`, 40, 84 + i * 38, 220, 34, WARNA_METODE[i], [NAMA_METODE[i], NAMA_METODE_ID[i]], 8.6)).flat()),
+    ),
   ],
 };

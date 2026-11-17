@@ -11,6 +11,9 @@
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanBandingJeruk } from "./misi-bab5";
+import type { KeadaanNampan } from "./nampan-k1b6a/logika";
+import type { KeadaanKarcis } from "./karcis-k1b6b/logika";
+import type { KeadaanTutup } from "./tutup-k1b6c/logika";
 
 export type KeadaanLoncat = {
   alat: "loncat";
@@ -34,7 +37,7 @@ export type KeadaanBelasan = {
   periksa: boolean;
 };
 
-export type KeadaanBab6 = KeadaanBandingJeruk | KeadaanLoncat | KeadaanBelasan | KeadaanSelesai;
+export type KeadaanBab6 = KeadaanBandingJeruk | KeadaanLoncat | KeadaanBelasan | KeadaanSelesai | KeadaanNampan | KeadaanKarcis | KeadaanTutup;
 
 /** Pasangan orang yang dibandingkan (sama dengan PASANGAN di lab-banding-bab5.ts; dicek di uji). */
 export const PASANGAN_JERUK: [number, number][] = [
@@ -49,40 +52,54 @@ export const selisihPasang = (k: KeadaanBandingJeruk): number => {
   return Math.abs(k.jumlah[i] - k.jumlah[j]);
 };
 
-const ban = (k: KeadaanBab6): k is KeadaanBandingJeruk => k.alat === "banding";
-const lon = (k: KeadaanBab6): k is KeadaanLoncat => k.alat === "loncat";
-const bel = (k: KeadaanBab6): k is KeadaanBelasan => k.alat === "belasan";
-const selesai = (k: KeadaanBab6, id: string) => k.alat === "selesai" && k.id === id;
-const loncat = (k: KeadaanBab6, op: KeadaanLoncat["op"], a: number, b: number) => lon(k) && k.op === op && k.a === a && k.b === b;
+const nam = (k: KeadaanBab6): k is KeadaanNampan => k.alat === "nampan";
 
-/** Sub-Bab A: selisih (beda) dua kelompok, pasangan satu-satu, batang, dan garis bilangan. */
+/** Sub-Bab A: Misi Pasar Malam bagian satu, Meja Dua Nampan (nampan-k1b6a): pasangkan, batang, garis bilangan, dan menyamakan dua nampan. */
 export const MISI_A: DefMisi<KeadaanBab6>[] = [
-  { id: "a-sama", teks: "Buat dua orang punya jeruk sama banyak. Selisihnya nol.", wajib: true, cek: (k) => ban(k) && k.selisih && selisihPasang(k) === 0 },
-  { id: "a-batang", teks: "Buat selisih 5 dan lihat bagian emas pada batang yang lebih panjang.", wajib: true, cek: (k) => ban(k) && k.batang && selisihPasang(k) === 5 },
-  { id: "a-garis", teks: "Di garis bilangan, atur 4 dan 12. Hitung langkah dari 4 ke 12.", wajib: true, cek: (k) => loncat(k, "selisih", 4, 12) || loncat(k, "selisih", 12, 4) },
-  { id: "a-tukar", teks: "Tukar angkanya: bilangan pertama 9 dan kedua 7. Apakah jaraknya berubah?", wajib: true, cek: (k) => loncat(k, "selisih", 9, 7) },
-  { id: "a-satu", teks: "Buat selisih dua kelompok tepat 1.", wajib: false, cek: (k) => ban(k) && k.selisih && selisihPasang(k) === 1 },
-  { id: "a-nol", teks: "Di garis bilangan, buat dua bilangan sama besar.", wajib: false, cek: (k) => lon(k) && k.op === "selisih" && k.a === k.b },
+  { id: "a-pasang", teks: "Pilih dua nampan yang isinya beda, lalu pasangkan kuenya satu-satu sampai terlihat lebihnya dan kurangnya.", wajib: true, cek: (k) => nam(k) && k.pasangTuntas >= 1 },
+  { id: "a-batang", teks: "Nyalakan Batang, lalu sorot kotak yang melebihi batang pendek untuk melihat selisihnya.", wajib: true, cek: (k) => nam(k) && k.batangTuntas >= 1 },
+  { id: "a-garis", teks: "Di Garis, loncat dari bilangan kecil sampai bilangan besar, satu langkah tiap ketukan.", wajib: true, cek: (k) => nam(k) && k.garisTuntas >= 1 },
+  { id: "a-samakan", teks: "Samakan dua nampan dengan menambah kue pada nampan yang lebih sedikit.", wajib: true, cek: (k) => nam(k) && k.tambahTuntas >= 1 },
+  { id: "a-selisih", teks: "Pilih selisih yang tepat untuk dua nampan yang sudah dipasangkan.", wajib: false, cek: (k) => nam(k) && k.selisihBenar >= 1 },
+  { id: "a-ambil", teks: "Samakan dua nampan dengan mengambil kue dari nampan yang lebih banyak.", wajib: false, cek: (k) => nam(k) && k.ambilTuntas >= 1 },
 ];
 
-/** Sub-Bab B: menjumlah belasan (loncat, lewat sepuluh, jembatan sepuluh, pecah puluhan dan satuan). */
+/**
+ * Sub-Bab B: Misi Loket Karcis bagian satu (Simulasi Loket Karcis, karcis-k1b6b). Tiga rombongan tetap sama dengan ROMBONGAN_SIM di karcis-k1b6b/data.ts
+ * (diuji di scripts/uji-karcis-k1b6b.mjs): merah sembilan dan enam, hijau dua belas dan lima, kuning delapan dan lima; rombongan keempat diatur sendiri.
+ */
+const kar = (k: KeadaanBab6): k is KeadaanKarcis => k.alat === "karcis";
+export const JUMLAH_ROMBONGAN_B = 3;
 export const MISI_B: DefMisi<KeadaanBab6>[] = [
-  { id: "b-loncat", teks: "Pilih Tambah, lalu atur Mulai dari 8 dan Loncat maju 5. Bandingkan dua cara meloncat.", wajib: true, cek: (k) => loncat(k, "tambah", 8, 5) },
-  { id: "b-jembatan", teks: "Selesaikan Jembatan Sepuluh sampai selesai.", wajib: true, cek: (k) => selesai(k, "jembatan") },
-  { id: "b-belasan", teks: "Menjumlah Belasan: buat 14 + 4. Satuannya berubah, puluhannya tetap.", wajib: true, cek: (k) => bel(k) && k.op === "tambah" && k.a === 14 && k.b === 4 },
-  { id: "b-sembilan-belas", teks: "Menjumlah Belasan: cari pasangan yang hasilnya 19.", wajib: true, cek: (k) => bel(k) && k.op === "tambah" && k.a + k.b === 19 },
-  { id: "b-tidak-lewat", teks: "Pilih Tambah, lalu atur 12 dan 3. Apakah lompatannya melewati 10?", wajib: false, cek: (k) => loncat(k, "tambah", 12, 3) },
-  { id: "b-ingat", teks: "Ingat Sub-Bab A: buat selisih dua kelompok tepat 5.", wajib: false, cek: (k) => ban(k) && k.selisih && selisihPasang(k) === 5 },
+  { id: "b-maju", teks: "Pilih satu rombongan dan hitung karcisnya dengan hitung maju sampai hasilnya tercatat.", wajib: true, cek: (k) => kar(k) && k.catat.some((c) => c.includes("maju")) },
+  { id: "b-genap", teks: "Genapkan sepuluh dulu untuk rombongan yang satu bilangannya hampir sepuluh, sampai tercatat.", wajib: true, cek: (k) => kar(k) && k.catat.some((c) => c.includes("genap")) },
+  { id: "b-belasan", teks: "Jumlahkan belasan dengan satuan untuk satu rombongan: satuan dulu, puluhannya tetap.", wajib: true, cek: (k) => kar(k) && k.catat.some((c) => c.includes("belasan")) },
+  { id: "b-semua", teks: "Catat hasil semua rombongan di papan catatan supaya karcis dan kursi komidi putar cukup.", wajib: true, cek: (k) => kar(k) && k.catat.slice(0, JUMLAH_ROMBONGAN_B).length === JUMLAH_ROMBONGAN_B && k.catat.slice(0, JUMLAH_ROMBONGAN_B).every((c) => c.length > 0) },
+  { id: "b-dua", teks: "Hitung satu rombongan dengan dua cara yang berbeda dan lihat hasilnya sama.", wajib: false, cek: (k) => kar(k) && k.catat.some((c) => c.length >= 2) },
+  { id: "b-sendiri", teks: "Buat rombongan sendiri: atur dua bilangan, lalu hitung dengan cara apa saja sampai tercatat.", wajib: false, cek: (k) => kar(k) && (k.catat[JUMLAH_ROMBONGAN_B]?.length ?? 0) > 0 },
 ];
 
-/** Sub-Bab C (sub-bab akhir): mengurang belasan, sekaligus pencapaian misi bab ini. */
+/**
+ * Sub-Bab C (sub-bab akhir, penutup bab): Misi Pasar Malam, Meja Tutup Lapak (Simulasi Meja Tutup Lapak, tutup-k1b6c). Empat lapak tetap sama dengan DAGANG_SIM
+ * di tutup-k1b6c/data.ts (diuji di scripts/uji-tutup-k1b6c.mjs): sosis bakar tujuh belas terjual enam, jagung rebus lima belas terjual sembilan,
+ * permen kapas sembilan belas terjual empat, donat gula dua belas terjual delapan. Lapak yang satuannya cukup bisa dikerjakan dengan Kurangi satuan,
+ * lapak yang satuannya kurang dengan Lewat sepuluh.
+ */
+const tut = (k: KeadaanBab6): k is KeadaanTutup => k.alat === "tutup";
+export const LAPAK_TUTUP_C: Record<string, { awal: number; jual: number }> = { sosis: { awal: 17, jual: 6 }, jagung: { awal: 15, jual: 9 }, permen: { awal: 19, jual: 4 }, donat: { awal: 12, jual: 8 } };
+const pakai = (k: KeadaanTutup, cara: string) => Object.values(k.lapor).some((c) => c.includes(cara as KeadaanTutup["cara"]));
 export const MISI_C: DefMisi<KeadaanBab6>[] = [
-  { id: "c-loncat", teks: "Pilih Kurang, lalu atur Mulai dari 15 dan Loncat mundur 6. Bandingkan dua cara meloncat.", wajib: true, cek: (k) => loncat(k, "kurang", 15, 6) },
-  { id: "c-belasan", teks: "Mengurang Belasan: buat 17 - 5. Satuannya berkurang, puluhannya tetap.", wajib: true, cek: (k) => bel(k) && k.op === "kurang" && k.a === 17 && k.b === 5 },
-  { id: "c-sepuluh", teks: "Mengurang Belasan: cari pasangan yang hasilnya tepat 10.", wajib: true, cek: (k) => bel(k) && k.op === "kurang" && k.a - k.b === 10 },
-  { id: "c-loket", teks: "Selesaikan skenario Loket Pasar Malam sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, "loket") },
-  { id: "c-lewat", teks: "Pilih Kurang, lalu atur 12 dan 5. Lompatan mundur melewati 10.", wajib: false, cek: (k) => loncat(k, "kurang", 12, 5) },
-  { id: "c-ingat", teks: "Ingat Sub-Bab B: selesaikan Jembatan Sepuluh.", wajib: false, cek: (k) => selesai(k, "jembatan") },
+  { id: "c-mundur", teks: "Laporkan sisa satu lapak dengan cara Mundur: mundur satu langkah tiap ketukan sebanyak yang terjual.", wajib: true, cek: (k) => tut(k) && pakai(k, "mundur") },
+  { id: "c-satuan", teks: "Laporkan sisa satu lapak dengan Kurangi satuan, di lapak yang satuannya cukup. Puluhannya tetap.", wajib: true, cek: (k) => tut(k) && pakai(k, "satuan") },
+  { id: "c-lewat", teks: "Laporkan sisa satu lapak yang satuannya kurang, dengan cara Lewat sepuluh.", wajib: true, cek: (k) => tut(k) && pakai(k, "lewat") },
+  {
+    id: "c-tutup",
+    teks: "Penutup bab: laporkan sisa keempat lapak, periksa tiap hasil dengan menambah, lalu tutup pasar malam.",
+    wajib: true,
+    cek: (k) => tut(k) && k.tutup && Object.keys(LAPAK_TUTUP_C).every((id) => (k.lapor[id] ?? []).length > 0 && k.periksa.includes(id)),
+  },
+  { id: "c-pikir", teks: "Cari sisa satu lapak dengan Pikir penjumlahan: tambah dari yang terjual sampai jumlah semula.", wajib: false, cek: (k) => tut(k) && pakai(k, "pikir") },
+  { id: "c-dua", teks: "Laporkan satu lapak dengan dua cara yang berbeda dan lihat hasilnya sama.", wajib: false, cek: (k) => tut(k) && Object.values(k.lapor).some((c) => c.length >= 2) },
 ];
 
 export const daftarMisiBab6 = (sub: string): DefMisi<KeadaanBab6>[] => (sub === "B" ? MISI_B : sub === "C" ? MISI_C : MISI_A);

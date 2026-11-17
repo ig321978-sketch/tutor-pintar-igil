@@ -1,167 +1,139 @@
 import type { AdeganStory } from "./logika-story";
-import { ANAK_EMO, OWL, W, deret, emo, idDeret, idKartu, judul, kartu, kartuAngka, petak, tangan, teks } from "./k1b6C-gambar";
-import { bersih, hapus, hitungAksi, k, mundurAksi, pudarkan, redamkan, sorotkan, tambah } from "./k1b6C-bantu";
+import { E, W, deretEmo, emo, garisBil, judul, kartu, kotak, lompat, orang, penanda, teks, xGB } from "./k1b6C-gambar";
+import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k1b6C-bantu";
 
-/* ------------------------------ 1. Cerita: apel Upe dimakan ulat ------------------------------ */
-const SUARA_C1 = "Siang ini Upe pulang dari pasar. Dia membeli lima belas apel yang segar dan merah. Igil, si burung hantu, ikut melihat.";
-const SUARA_C2 = "Tiba di dapur, Upe melihat sesuatu. Ada ulat nakal di keranjang! Tiga apel dimakan ulat.";
-const SUARA_C3 = "Upe bertanya-tanya. Berapa sisa apel yang masih bagus? Ayo kita bantu Upe mencarinya.";
-const SUARA_C4 = "Hari ini kita belajar mengurangi. Lima belas apel, tiga apel pergi. Berapa sisanya? Kita cari dengan tiga cara.";
-const SUARA_C5 = "Apel yang dimakan ulat sudah pergi, jadi jumlah apel berkurang. Itu yang kita sebut mengurangi.";
-const SUARA_C6 = "Igil suka mencari sisa. Sisa adalah benda yang masih ada, setelah ada yang pergi. Ayo kita mulai!";
-const PC = petak(15, 5, 54, 104, 48, 30);
+/*
+ * Cerita orisinal IGIL "Tutup Pasar Malam" (Kelas 1 Bab 6 Sub-Bab C, pengurangan sampai dua puluh), akhir cerita Pasar Malam Kampung.
+ * Naskah suara dari naskah/story-naskah-k1b6c.md. Bagian ini: lonceng penutup, Igil lupa puluhan, dan hitung mundur di garis bilangan.
+ */
 
-export const ADEGAN_CERITA: AdeganStory = {
-  id: "cerita-apel",
-  judul: "Apel Upe dimakan ulat",
-  sumber: "Materi: cerita apel dimakan ulat",
+/* ------------------------------ 1. Lonceng penutup ------------------------------ */
+const SUARA_L1 = "Lonceng penutup masih bergema. Lampu-lampu pasar malam mulai padam satu per satu.";
+const SUARA_L2 = "Pak RT berkeliling meminta laporan. Kalau salah lapor, dagangan bisa dikira hilang!";
+const SUARA_L3 = "Mamah bertanya, kue cubit tadi enam belas, anak-anak sudah makan tiga. Tinggal berapa?";
+
+export const ADEGAN_LONCENG: AdeganStory = {
+  id: "lonceng",
+  judul: "Lonceng penutup berbunyi",
+  sumber: "Materi: lonceng penutup dan masalah",
+  latar: "#EDE9FE",
+  ketukan: [
+    k(
+      SUARA_L1,
+      tambah(0, judul("Lonceng penutup berbunyi")),
+      tambah(idx(SUARA_L1, "Lonceng"), emo("lc", 150, 62, E.lonceng, 30)),
+      tambah(idx(SUARA_L1, "Lampu-lampu"), ...[54, 118, 182, 246].map((x, i) => emo(`lp${i}`, x, 112, E.lampu, 26))),
+      ubah(idx(SUARA_L1, "padam"), { id: "lp0", op: 0.25 }),
+      ubah(idx(SUARA_L1, "satu", 1), { id: "lp1", op: 0.25 }),
+      tambah(idx(SUARA_L1, "satu", 1), teks("n1", 118, 148, "1", 11, W.merah)),
+      ubah(idx(SUARA_L1, "satu", 2), { id: "lp2", op: 0.25 }),
+      tambah(idx(SUARA_L1, "satu", 2), teks("n2", 182, 148, "1", 11, W.merah)),
+    ),
+    k(
+      SUARA_L2,
+      bersih(0),
+      tambah(0, judul("Pak RT meminta laporan")),
+      tambah(idx(SUARA_L2, "Pak"), ...orang("pr", 250, 96, E.pakRT, "Pak RT")),
+      tambah(idx(SUARA_L2, "laporan"), emo("pp", 210, 96, E.papan, 26), ...kartu("lap", 90, 130, 120, 24, W.krem, ["LAPORAN"], 10)),
+      tambah(idx(SUARA_L2, "salah"), emo("sl", 60, 96, E.salah, 24)),
+      tambah(idx(SUARA_L2, "hilang"), emo("hl", 30, 160, E.tanya, 24), teks("hlt", 120, 178, "dagangan hilang?", 9.4, W.merah)),
+    ),
+    k(
+      SUARA_L3,
+      bersih(0),
+      tambah(0, judul("Berapa kue yang tinggal?")),
+      tambah(idx(SUARA_L3, "Mamah"), ...orang("mm", 36, 56, E.mamah, "Mamah")),
+      tambah(idx(SUARA_L3, "kue"), kotak("nm", 24, 78, 216, 62, W.krem, W.coklat, { rx: 10, tebal: 2, z: -1 })),
+      tambah(idx(SUARA_L3, "belas"), ...deretEmo(E.kue, "ku", 16, 40, 96, 24, 24, 8, 16), ...kartu("n16", 24, 146, 100, 20, W.langit, ["16 kue"], 10)),
+      tambah(idx(SUARA_L3, "makan"), emo("an", 262, 70, E.senang, 26)),
+      ubah(idx(SUARA_L3, "tiga"), { id: "ku13", x: 262, y: 100 }, { id: "ku14", x: 262, y: 124 }, { id: "ku15", x: 262, y: 148 }),
+      tambah(idx(SUARA_L3, "tiga"), teks("dm", 262, 176, "dimakan 3", 9, W.merah)),
+      tambah(idx(SUARA_L3, "Tinggal"), teks("tg", 170, 160, "tinggal ?", 12, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ 2. Lupa puluhan (salah langkah) ------------------------------ */
+const SUARA_P1 = "Igil cepat menjawab. Enam dikurangi tiga sama dengan tiga, jadi sisa tiga!";
+const SUARA_P2 = "Kaka menunjuk nampan yang masih penuh. Sisa tiga? Nampannya masih banyak. Sepuluhnya ke mana?";
+const SUARA_P3 = "Igil menepuk dahi. Satu puluhan belum dihitung. Sepuluh ditambah tiga sama dengan tiga belas.";
+
+export const ADEGAN_LUPA: AdeganStory = {
+  id: "lupa-puluhan",
+  judul: "Igil lupa puluhan",
+  sumber: "Materi: salah langkah, puluhan tetap",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      SUARA_C1,
-      tambah(0, judul("Apel Upe")),
-      tambah("Upe", emo("a-Upe", 60, 58, ANAK_EMO, 30), teks("n-Upe", 60, 80, "Upe", 8.6)),
-      tambah("lima", ...kartu("ap", 100, 40, 100, 22, W.krem, ["15 apel"], 9.4)),
-      tambah("apel", ...deret("apel", "ap", PC, 9)),
-      tambah("Igil,", emo("a-Igil", 250, 58, OWL, 30), teks("n-Igil", 250, 80, "Igil", 8.6, W.ungu)),
+      SUARA_P1,
+      tambah(0, judul("Igil menjawab cepat")),
+      tambah(
+        0,
+        kotak("bk", 22, 82, 256, 30, "#FEF3C7", W.coklat, { rx: 8, tebal: 2, z: -1 }),
+        ...deretEmo(E.kue, "ru", 10, 40, 100, 24, 0, 10, 15),
+        ...deretEmo(E.kue, "ls", 6, 40, 142, 24, 0, 6, 15),
+        teks("pl", 150, 128, "1 puluhan", 8.4, W.coklat),
+      ),
+      tambah(idx(SUARA_P1, "Igil"), ...orang("ig", 40, 52, E.igil, "Igil")),
+      tambah(idx(SUARA_P1, "Enam"), ...kartu("jw", 150, 38, 130, 22, W.merahMuda, ["6 – 3 = 3"], 11)),
+      tambah(idx(SUARA_P1, "sisa"), teks("sc", 150, 180, "sisa 3", 12, W.merah)),
     ),
     k(
-      SUARA_C2,
-      hapus(0, ...idKartu("ap")),
-      tambah("ulat", emo("ul", 215, 72, "\u{1F41B}", 24)),
-      tambah("Tiga", ...kartu("ud", 90, 40, 120, 22, W.merahMuda, ["3 apel dimakan ulat"], 8.8)),
-      sorotkan("Tiga", "ap12", "ap13", "ap14"),
+      SUARA_P2,
+      hapus(0, "jw-k", "jw-t0"),
+      tambah(idx(SUARA_P2, "Kaka"), ...orang("kk", 262, 52, E.kaka, "Kaka")),
+      tambah(idx(SUARA_P2, "menunjuk"), emo("tj", 150, 156, E.tunjuk, 22)),
+      sorotkan(idx(SUARA_P2, "penuh"), "bk"),
+      ubah(idx(SUARA_P2, "tiga"), { id: "sc", isi: "sisa 3?" }),
+      tambah(idx(SUARA_P2, "tiga"), emo("x1", 236, 44, E.salah, 22)),
+      tambah(idx(SUARA_P2, "Sepuluhnya"), teks("hp", 150, 74, "sepuluhnya ke mana?", 9, W.merah)),
     ),
     k(
-      SUARA_C3,
-      pudarkan("sisa", "ap12", "ap13", "ap14"),
-      tambah("Berapa", emo("tn", 150, 72, "\u{1F914}", 24)),
-    ),
-    k(
-      SUARA_C4,
-      hapus(0, "tn", ...idKartu("ud")),
-      tambah("Lima", ...kartu("hk", 90, 40, 120, 22, W.emas, ["15 - 3 = ?"], 11)),
-    ),
-    k(
-      SUARA_C5,
-      hapus(0, ...idKartu("hk")),
-      tambah("berkurang.", ...kartu("bk", 70, 40, 160, 22, W.langit, ["pergi artinya berkurang"], 9.4)),
-      sorotkan("dimakan", "ap12", "ap13", "ap14"),
-    ),
-    k(
-      SUARA_C6,
-      hapus(0, ...idKartu("bk")),
-      redamkan(0, "ap12", "ap13", "ap14"),
-      tambah("Sisa", ...kartu("sk", 70, 40, 160, 22, W.hijauMuda, ["sisa: yang masih ada"], 9.4)),
-      sorotkan("masih", ...idDeret("ap", 12)),
-    ),
-  ],
-};
-/* ------------------------------ 2. Kata-kata pengurangan ------------------------------ */
-const SUARA_K1 = "Banyak cerita memakai kata khusus untuk pengurangan. Kita kenali tiga kata, yaitu sisa, dimakan, dan pergi.";
-const SUARA_K2 = "Ada juga kata terbang, jatuh, dan habis. Semua kata ini menandakan benda berkurang.";
-const SUARA_K3 = "Contohnya, ada delapan belas balon. Lima balon terbang. Balon yang pergi berarti kita mengurangi.";
-const SUARA_K4 = "Dalam pengurangan ada tiga bilangan. Bilangan mula-mula, bilangan yang pergi, dan bilangan sisa.";
-const SUARA_K5 = "Untuk apel Upe, mula-mula lima belas, yang pergi tiga, dan sisanya belum kita tahu. Ayo kita cari!";
-const WARNA3 = [W.hijauMuda, W.pink, W.langit];
-
-export const ADEGAN_KATA: AdeganStory = {
-  id: "kata-kurang",
-  judul: "Kata-kata pengurangan",
-  sumber: "Materi: kata-kata pengurangan",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(
-      SUARA_K1,
-      tambah(0, judul("Kata pengurangan")),
-      tambah("sisa,", ...kartu("k0", 14, 60, 88, 40, WARNA3[0], ["sisa"], 12)),
-      tambah("dimakan,", ...kartu("k1", 106, 60, 88, 40, WARNA3[1], ["dimakan"], 12)),
-      tambah("pergi.", ...kartu("k2", 198, 60, 88, 40, WARNA3[2], ["pergi"], 12)),
-    ),
-    k(
-      SUARA_K2,
-      tambah("terbang,", ...kartu("k3", 14, 112, 88, 40, W.krem, ["terbang"], 12)),
-      tambah("jatuh,", ...kartu("k4", 106, 112, 88, 40, W.lavender, ["jatuh"], 12)),
-      tambah("habis.", ...kartu("k5", 198, 112, 88, 40, W.merahMuda, ["habis"], 12)),
-      tambah("berkurang.", teks("kb", 150, 180, "benda berkurang", 10, W.ungu)),
-    ),
-    k(
-      SUARA_K3,
-      bersih(0),
-      tambah(0, judul("Contoh balon")),
-      tambah("balon.", emo("bl", 150, 100, "\u{1F388}", 48)),
-      tambah("Lima", ...kartu("bs", 40, 128, 220, 28, W.krem, ["18 balon, 5 terbang"], 11)),
-      tambah("mengurangi.", teks("bm", 150, 180, "yang pergi: mengurangi", 10, W.ungu)),
-    ),
-    k(
-      SUARA_K4,
-      bersih(0),
-      tambah(0, judul("Tiga bilangan")),
-      tambah("mula-mula,", ...kartu("t0", 20, 36, 150, 34, WARNA3[0], ["mula-mula"], 11)),
-      tambah("pergi,", ...kartu("t1", 20, 80, 150, 34, WARNA3[1], ["yang pergi"], 11)),
-      tambah("sisa.", ...kartu("t2", 20, 124, 150, 34, WARNA3[2], ["sisa"], 11)),
-    ),
-    k(
-      SUARA_K5,
-      tambah("lima", ...kartuAngka("v0", 190, 36, "15", W.krem, 70, 34, 18)),
-      tambah("pergi", ...kartuAngka("v1", 190, 80, "3", W.krem, 70, 34, 18)),
-      tambah("belum", ...kartuAngka("v2", 190, 124, "?", W.emas, 70, 34, 18)),
-      tambah("Ayo", emo("ig", 150, 188, OWL, 28)),
+      SUARA_P3,
+      hapus(0, "x1", "hp", "tj"),
+      tambah(idx(SUARA_P3, "menepuk"), emo("dh", 76, 52, E.pusing, 20)),
+      ubah(idx(SUARA_P3, "Satu"), { id: "pl", warna: W.merah, u: 10 }),
+      ubah(idx(SUARA_P3, "belum"), { id: "ls3", op: 0.25 }, { id: "ls4", op: 0.25 }, { id: "ls5", op: 0.25 }),
+      tambah(idx(SUARA_P3, "Sepuluh"), ...kartu("pn", 150, 38, 130, 22, W.hijauMuda, ["10 + 3 = 13"], 11)),
+      ubah(idx(SUARA_P3, "belas"), { id: "sc", isi: "sisa 13", warna: W.hijau }),
     ),
   ],
 };
 
-/* ------------------------------ 3. Hitung mundur dengan apel ------------------------------ */
-const SUARA_M1 = "Cara pertama, menghitung mundur. Ini lima belas apel Upe. Kita mulai dari lima belas.";
-const SUARA_M2 = "Ulat memakan tiga apel. Ketuk apel yang dimakan ulat, satu demi satu.";
-const SUARA_M3 = "Ketuk apel pertama. Sekarang tinggal empat belas. Ketuk apel kedua, tinggal tiga belas. Ketuk apel ketiga, tinggal dua belas.";
-const SUARA_M4 = "Tiga kali mundur, kita berhenti di dua belas. Jadi lima belas dikurangi tiga sama dengan dua belas.";
-const SUARA_M5 = "Ayo hitung sisa apelnya untuk memastikan. Satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh, sebelas, dua belas.";
-const SUARA_M6 = "Benar. Ada dua belas apel yang masih bagus. Sisa apel Upe adalah dua belas.";
-const SUARA_M7 = "Menghitung mundur mudah kalau yang pergi sedikit. Ucapkan lagi mengikuti suara guru. Lima belas dikurangi tiga sama dengan dua belas.";
-const PM = petak(15, 5, 54, 66, 48, 36);
+/* ------------------------------ 3. Hitung mundur di garis bilangan ------------------------------ */
+const SUARA_M1 = "Abang mencoba cara baru di garis bilangan. Lima belas mundur tiga.";
+const SUARA_M2 = "Jangan sebut lima belas lagi. Empat belas, tiga belas, dua belas.";
+const SUARA_M3 = "Sisanya dua belas. Cocok kalau yang diambil sedikit.";
 
 export const ADEGAN_MUNDUR: AdeganStory = {
-  id: "mundur-apel",
-  judul: "Menghitung mundur dengan apel",
-  sumber: "Materi: menghitung mundur dengan apel",
-  latar: "#FFF7ED",
+  id: "mundur",
+  judul: "Hitung mundur di garis bilangan",
+  sumber: "Materi: hitung mundur",
+  latar: "#F0F9FF",
   ketukan: [
     k(
       SUARA_M1,
-      tambah(0, judul("Hitung mundur")),
-      tambah("apel", ...deret("apel", "ma", PM, 9)),
-      tambah("mulai", ...kartu("ml", 90, 26, 120, 22, W.krem, ["mulai dari 15"], 9.4)),
+      tambah(0, judul("Abang mencoba cara baru")),
+      tambah(idx(SUARA_M1, "Abang"), ...orang("ab", 40, 56, E.abang, "Abang")),
+      tambah(idx(SUARA_M1, "garis"), ...garisBil("gb", 118)),
+      tambah(idx(SUARA_M1, "belas"), ...penanda("mk", 15, 118)),
+      tambah(idx(SUARA_M1, "mundur"), ...kartu("ks", 110, 36, 120, 22, W.krem, ["15 – 3 = ?"], 11)),
+      tambah(idx(SUARA_M1, "tiga"), teks("tg", 150, 76, "mundur 3", 10, W.merah)),
     ),
     k(
       SUARA_M2,
-      sorotkan("tiga", "ma12", "ma13", "ma14"),
-      tambah("Ketuk", tangan(198, 162)),
+      hapus(0, "tg"),
+      tambah(idx(SUARA_M2, "Jangan"), emo("jg", xGB(15), 70, E.salah, 16)),
+      tambah(idx(SUARA_M2, "Empat"), lompat("h1", 15, 14, 96), teks("h1n", xGB(14), 88, "14", 9, W.merah)),
+      tambah(idx(SUARA_M2, "tiga"), lompat("h2", 14, 13, 96), teks("h2n", xGB(13), 88, "13", 9, W.merah)),
+      tambah(idx(SUARA_M2, "dua"), lompat("h3", 13, 12, 96), teks("h3n", xGB(12), 88, "12", 9, W.merah)),
     ),
     k(
       SUARA_M3,
-      hapus(0, "tg", ...idKartu("ml")),
-      ...mundurAksi(SUARA_M3, "ma", PM, 3, { setelah: "pertama" }),
-    ),
-    k(
-      SUARA_M4,
-      tambah("Jadi", ...kartu("mj", 70, 168, 160, 26, W.emas, ["15 - 3 = 12"], 12)),
-      sorotkan("berhenti", "mam12"),
-    ),
-    k(
-      SUARA_M5,
-      hapus(0, "mam12", "mam13", "mam14"),
-      ...hitungAksi(SUARA_M5, "ma", PM, { setelah: "memastikan", turun: 0, naik: 13, akhir: 12 }),
-    ),
-    k(
-      SUARA_M6,
-      sorotkan("Ada", ...Array.from({ length: 12 }, (_, i) => `ma${i}`)),
-      tambah("Sisa", emo("ok", 270, 172, "✅", 24)),
-    ),
-    k(
-      SUARA_M7,
-      tambah("Ucapkan", emo("ucap", 34, 180, "\u{1F5E3}", 26)),
-      sorotkan("Lima", "mj-k"),
+      ubah(idx(SUARA_M3, "dua"), { id: "ks-t0", isi: "15 – 3 = 12" }),
+      tambah(idx(SUARA_M3, "dua"), ...penanda("md", 12, 118, W.emas)),
+      sorotkan(idx(SUARA_M3, "belas"), "h3n"),
+      tambah(idx(SUARA_M3, "Cocok"), ...kartu("cc", 60, 152, 180, 22, W.hijauMuda, ["cocok kalau yang diambil sedikit"], 9)),
     ),
   ],
 };

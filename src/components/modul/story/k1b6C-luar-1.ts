@@ -1,144 +1,131 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { W, benda, emo, garisBilangan, idKartu, judul, kartu, kartuAngka, lompat, lompatBawah, petak, tangan, xBil, type Titik } from "./k1b6C-gambar";
-import { bersih, hapus, idx, k, mundurAksi, redamkan, sorotkan, tambah, ubah, urutBilangan, urutMundur } from "./k1b6C-bantu";
+import { E, W, batangSel, emo, garisBil, judul, kartu, lompat, orang, teks, warnaiSel, xGB } from "./k1b6C-gambar";
+import { bersih, hapus, idx, k, tambah, ubah } from "./k1b6C-bantu";
 
-export const NAMA_METODE_ID = ["Maju dan Mundur", "Pasangan sampai 20", "Menjadikan Sepuluh"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/* Video metode global Sub-Bab C "Tutup Pasar Malam": pembuka dan Think Addition (Pikir Penjumlahan). */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Think Addition", "Fact Family", "Subtract Through Ten"];
+export const NAMA_METODE_ID = ["Pikir Penjumlahan", "Keluarga Kalimat", "Kurangi Lewat Sepuluh"];
+export const WARNA_METODE = [W.hijauMuda, W.krem, W.pink];
+export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
-/** Tiga kartu pilihan bilangan (id c1, c2, c3), pojok kiri-atas di tinggi `y`. */
-export const pilihanBil = (y: number, isi: string[]): Obj[] => isi.flatMap((t, i) => kartuAngka(`c${i + 1}`, [20, 110, 200][i], y, t, [W.hijauMuda, W.pink, W.langit][i], 80, 34, 18));
-
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara mengajarkan pengurangan dengan cara yang berbeda-beda. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu bernama Maju dan Mundur, Pasangan sampai dua puluh, dan Menjadikan Sepuluh.";
-const SUARA_O3 = "Ketiganya menjawab satu pertanyaan. Bagaimana mencari sisa benda yang pergi dengan cepat dan benar?";
-const SUARA_O4 = "Kita akan melihat tiap metode dengan benda sehari-hari, seperti apel, kelereng, balon, dan bolu kukus.";
-const SUARA_O5 = "Semua contoh memakai bilangan belasan, dan hasilnya kurang dari dua puluh. Kamu cukup mengetuk, menyeret, dan melihat layar dengan teliti.";
+/* ------------------------------ 1. Pembuka ------------------------------ */
+const SUARA_O1 = "Di bawah lampion terakhir, Mamah menemukan selembar kertas lipat tentang tiga cara mengurang. Igil bertanya, mana yang paling cepat untuk sisa dagangan?";
+const SUARA_O2 = "Tiga metode itu: Think Addition, Fact Family, dan Subtract Through Ten.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Pikir Penjumlahan, Keluarga Kalimat, dan Kurangi Lewat Sepuluh. Ketiganya membantu mencari sisa.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk mengurangi",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Tiga metode global untuk mengurang",
+  sumber: "Metode global: pembuka",
+  latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)), tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11))),
+    k(
+      SUARA_O1,
+      tambah(0, judul("Tiga cara mengurang")),
+      tambah(idx(SUARA_O1, "lampion"), ...[60, 150, 240].map((x, i) => emo(`lm${i}`, x, 50, E.lampion, 22))),
+      tambah(idx(SUARA_O1, "Mamah"), ...orang("mm", 40, 120, E.mamah, "Mamah")),
+      tambah(idx(SUARA_O1, "kertas"), emo("kr", 100, 116, E.kertas, 28)),
+      tambah(idx(SUARA_O1, "tiga"), ...kartu("pk", 130, 100, 150, 28, W.emas, ["3 cara mengurang"], 10)),
+      tambah(idx(SUARA_O1, "Igil"), ...orang("ig", 258, 170, E.igil, "Igil")),
+      tambah(idx(SUARA_O1, "sisa"), teks("sd", 150, 168, "sisa dagangan?", 10, W.merah)),
+    ),
     k(
       SUARA_O2,
       bersih(0),
-      tambah(0, judul("Tiga metode")),
-      ...NAMA_METODE_ID.map((m, i) => tambah(["Maju", "Pasangan", "Menjadikan"][i], ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11))),
+      tambah(0, judul("3 metode global")),
+      ...NAMA_METODE.map((m, i) => tambah(idx(SUARA_O2, ["Think", "Fact", "Subtract"][i]), ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11))),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah("satu", emo("i1", 60, 84, "\u{1F446}", 34), emo("i2", 150, 84, "❓", 34), emo("i3", 240, 84, "\u{1F440}", 34)),
-      tambah("Bagaimana", ...kartu("iq", 20, 112, 260, 52, W.emas, ["bagaimana mencari sisa benda", "yang pergi", "dengan cepat dan benar?"], 10)),
-    ),
-    k(
-      SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Benda sehari-hari")),
-      tambah("apel,", ...benda("apel", "ob0", 50, 90, 14, 0)),
-      tambah("kelereng,", ...benda("kelereng", "ob1", 110, 90, 14, 1)),
-      tambah("balon,", ...benda("balon", "ob2", 175, 90, 14, 0)),
-      tambah("bolu", ...benda("bolu", "ob3", 245, 90, 14)),
-    ),
-    k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Bilangan belasan")),
-      ...[11, 12, 13, 14, 15].map((n, i) => tambah(0, ...kartuAngka(`ob${i}`, 14 + i * 56, 50, String(n), [W.krem, W.langit, W.hijauMuda, W.pink, W.lavender][i], 46, 36, 18))),
-      tambah("dua", ...kartu("ob5", 70, 100, 160, 30, W.emas, ["hasil kurang dari 20"], 11)),
-      tambah("mengetuk,", tangan(150, 170)),
+      tambah(0, judul("Nama dalam bahasa Indonesia")),
+      ...NAMA_METODE_ID.map((m, i) => tambah(idx(SUARA_O3, ["Pikir", "Keluarga", "Kurangi"][i]), ...kartu(`n${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11))),
+      tambah(idx(SUARA_O3, "Sepuluh"), teks("sp", 262, 160, "10", 12, W.merah)),
+      tambah(idx(SUARA_O3, "Ketiganya"), teks("cs", 150, 190, "mencari sisa", 10, W.hijau)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Maju dan Mundur: konsep ------------------------------ */
-const YL = 118;
-const SUARA_A1 = "Metode pertama bernama Maju dan Mundur. Mundur untuk mengurangi, maju untuk menambah.";
-const SUARA_A2 = "Mulai dari tujuh belas, mundur tiga kali. Enam belas, lima belas, empat belas.";
-const SUARA_A3 = "Katak mendarat di empat belas. Jadi tujuh belas dikurangi tiga sama dengan empat belas.";
-const SUARA_A4 = "Sekarang maju untuk memeriksa. Dari empat belas maju tiga kali. Lima belas, enam belas, tujuh belas.";
-const SUARA_A5 = "Kita kembali ke tujuh belas, jadi benar. Empat belas ditambah tiga sama dengan tujuh belas. Ucapkan lagi mengikuti suara guru.";
+/* ------------------------------ 2. Think Addition: konsep ------------------------------ */
+const SUARA_A1 = "Metode pertama, Think Addition, atau Pikir Penjumlahan. Pengurangan dipikirkan sebagai penjumlahan.";
+const SUARA_A2 = "Lima belas dikurangi tujuh, berarti tujuh ditambah berapa sama dengan lima belas?";
+const SUARA_A3 = "Tujuh ditambah delapan sama dengan lima belas. Jadi sisanya delapan. Pengurangan dan penjumlahan saling berpasangan.";
 
-export const ADEGAN_LUAR_MUNDUR: AdeganStory = {
-  id: "luar-mundur",
-  judul: "Maju dan Mundur: mundur lalu maju untuk memeriksa",
-  sumber: "Metode luar: Maju dan Mundur",
+export const ADEGAN_LUAR_PIKIR: AdeganStory = {
+  id: "luar-pikir",
+  judul: "Think Addition: pikir penjumlahan",
+  sumber: "Metode global: Think Addition",
   latar: "#F0FDF4",
   ketukan: [
     k(
       SUARA_A1,
-      tambah("pertama", ...kepala(0)),
-      tambah(idx(SUARA_A1, "Mundur", 2), ...garisBilangan(YL)),
-      tambah(idx(SUARA_A1, "maju"), emo("kt", xBil(17), 96, "\u{1F438}", 26)),
+      tambah(idx(SUARA_A1, "pertama"), ...kepala(0)),
+      tambah(idx(SUARA_A1, "Pengurangan"), ...kartu("pk", 30, 70, 110, 30, W.merahMuda, ["pengurangan"], 10)),
+      tambah(idx(SUARA_A1, "dipikirkan"), emo("pi", 150, 90, E.pikir, 26)),
+      tambah(idx(SUARA_A1, "penjumlahan", 2), ...kartu("pj", 160, 70, 110, 30, W.hijauMuda, ["penjumlahan"], 10)),
     ),
     k(
       SUARA_A2,
-      tambah("Mulai", ...kartu("lq", 90, 54, 120, 22, W.emas, ["17 - 3 = ?"], 11)),
-      sorotkan("tujuh", "gb-n17"),
-      ...urutMundur(SUARA_A2, 16, 14).flatMap((p, q) => [tambah(p, lompat(`lp${16 - q}`, 17 - q, 16 - q, YL)), ubah(p, { id: "kt", x: xBil(16 - q) })]),
+      tambah(idx(SUARA_A2, "dikurangi"), ...kartu("ka", 20, 56, 120, 22, W.krem, ["15 – 7 = ?"], 11)),
+      tambah(idx(SUARA_A2, "belas", 1), ...batangSel("bs", 15, 24, 100, 17, 16, 18, 0, W.langit)),
+      ubah(idx(SUARA_A2, "tujuh", 1), ...warnaiSel("bs", 0, 6, W.langit)),
+      tambah(idx(SUARA_A2, "tujuh", 1), teks("l7", 80, 132, "7", 12)),
+      tambah(idx(SUARA_A2, "ditambah"), ...kartu("kb", 160, 56, 120, 22, W.hijauMuda, ["7 + ? = 15"], 11)),
+      tambah(idx(SUARA_A2, "berapa"), teks("q", 210, 132, "?", 16, W.merah)),
     ),
     k(
       SUARA_A3,
-      redamkan(0, "gb-n17"),
-      hapus(0, ...idKartu("lq")),
-      tambah("Jadi", ...kartu("lr", 90, 54, 120, 22, W.hijauMuda, ["17 - 3 = 14"], 11)),
-      sorotkan("mendarat", "gb-n14"),
-    ),
-    k(
-      SUARA_A4,
-      redamkan(0, "gb-n14"),
-      ...urutBilangan(SUARA_A4, 15, 17, "kali").map((p, q) => tambah(p, lompatBawah(`lm${15 + q}`, 14 + q, 15 + q, YL))),
-      ...urutBilangan(SUARA_A4, 15, 17, "kali").map((p, q) => ubah(p, { id: "kt", x: xBil(15 + q) })),
-    ),
-    k(
-      SUARA_A5,
-      sorotkan("kembali", "gb-n17"),
-      tambah("Empat", ...kartu("ls", 90, 150, 120, 24, W.langit, ["14 + 3 = 17"], 11)),
-      tambah("Ucapkan", emo("ucap", 34, 186, "\u{1F5E3}", 26)),
+      hapus(idx(SUARA_A3, "delapan", 1), "q"),
+      ubah(idx(SUARA_A3, "delapan", 1), ...warnaiSel("bs", 7, 14, W.pink)),
+      tambah(idx(SUARA_A3, "delapan", 1), teks("l8", 210, 132, "8", 12, W.merah)),
+      ubah(idx(SUARA_A3, "belas"), { id: "kb-t0", isi: "7 + 8 = 15" }),
+      ubah(idx(SUARA_A3, "sisanya"), { id: "ka-t0", isi: "15 – 7 = 8" }),
+      tambah(idx(SUARA_A3, "saling"), emo("sw", 150, 68, E.ulang, 22)),
+      tambah(idx(SUARA_A3, "berpasangan"), teks("bp", 150, 176, "saling berpasangan", 10, W.ungu)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Maju dan Mundur: terapan ------------------------------ */
-const SUARA_B1 = "Terapkan pada delapan belas balon. Lima balon terbang tinggi ke langit.";
-const SUARA_B2 = "Mundur lima kali sambil mengetuk balon yang terbang. Tujuh belas, enam belas, lima belas, empat belas, tiga belas.";
-const SUARA_B3 = "Balon yang tinggal ada tiga belas. Delapan belas dikurangi lima sama dengan tiga belas.";
-const SUARA_B4 = "Coba pilih jawabannya. Ada dua belas, tiga belas, atau empat belas? Ketuk bilangan yang tepat.";
-const PB: Titik[] = petak(18, 6, 40, 66, 44, 34);
+/* ------------------------------ 3. Think Addition: terapan ------------------------------ */
+const SUARA_B1 = "Abang mengurang empat belas dikurangi enam. Enam ditambah berapa sama dengan empat belas?";
+const SUARA_B2 = "Enam ditambah delapan sama dengan empat belas. Sisanya delapan. Cocok kalau yang diambil besar.";
+const SUARA_B3 = "Kurang cocok kalau yang diambil cuma sedikit, karena mundur saja lebih cepat.";
 
-export const ADEGAN_LUAR_MUNDUR_TERAPAN: AdeganStory = {
-  id: "luar-mundur-terapan",
-  judul: "Maju dan Mundur: delapan belas balon",
-  sumber: "Metode luar: Maju dan Mundur, terapan",
+export const ADEGAN_LUAR_PIKIR_TERAPAN: AdeganStory = {
+  id: "luar-pikir-terapan",
+  judul: "Think Addition: kapan cocok",
+  sumber: "Metode global: Think Addition",
   latar: "#F0FDF4",
   ketukan: [
     k(
       SUARA_B1,
-      tambah("Terapkan", ...kepala(0)),
-      tambah("balon.", ...PB.flatMap((p, i) => benda("balon", `lb${i}`, p.x, p.y, 9, i))),
-      tambah("delapan", ...kartu("bn", 60, 168, 180, 24, W.krem, ["18 balon, 5 terbang"], 10)),
-      sorotkan("terbang", "lb13", "lb14", "lb15", "lb16", "lb17"),
+      tambah(0, ...kepala(0)),
+      tambah(idx(SUARA_B1, "Abang"), ...orang("ab", 262, 172, E.abang, "Abang")),
+      tambah(idx(SUARA_B1, "dikurangi"), ...kartu("ka", 20, 56, 120, 22, W.krem, ["14 – 6 = ?"], 11)),
+      tambah(idx(SUARA_B1, "belas", 1), ...batangSel("bs", 14, 24, 100, 18, 16, 18, 0, W.langit)),
+      ubah(idx(SUARA_B1, "enam", 1), ...warnaiSel("bs", 0, 5, W.langit)),
+      tambah(idx(SUARA_B1, "enam", 1), teks("l6", 72, 132, "6", 12)),
+      tambah(idx(SUARA_B1, "ditambah"), ...kartu("kb", 160, 56, 120, 22, W.hijauMuda, ["6 + ? = 14"], 11)),
+      tambah(idx(SUARA_B1, "berapa"), teks("q", 203, 132, "?", 16, W.merah)),
     ),
-    k(SUARA_B2, ...mundurAksi(SUARA_B2, "lb", PB, 5)),
+    k(
+      SUARA_B2,
+      hapus(idx(SUARA_B2, "delapan", 1), "q"),
+      ubah(idx(SUARA_B2, "delapan", 1), ...warnaiSel("bs", 6, 13, W.pink)),
+      tambah(idx(SUARA_B2, "delapan", 1), teks("l8", 203, 132, "8", 12, W.merah)),
+      ubah(idx(SUARA_B2, "belas"), { id: "kb-t0", isi: "6 + 8 = 14" }),
+      ubah(idx(SUARA_B2, "Sisanya"), { id: "ka-t0", isi: "14 – 6 = 8" }),
+      tambah(idx(SUARA_B2, "Cocok"), emo("ok", 150, 82, E.benar, 20), ...kartu("cc", 30, 150, 220, 22, W.hijauMuda, ["cocok kalau yang diambil besar"], 10)),
+    ),
     k(
       SUARA_B3,
-      hapus(0, ...idKartu("bn")),
-      tambah("Delapan", ...kartu("bj", 60, 168, 180, 24, W.emas, ["18 - 5 = 13"], 11)),
-      sorotkan("tinggal", ...Array.from({ length: 13 }, (_, i) => `lb${i}`)),
-    ),
-    k(
-      SUARA_B4,
-      hapus(0, ...idKartu("bj")),
-      redamkan(0, ...Array.from({ length: 13 }, (_, i) => `lb${i}`)),
-      tambah("Coba", ...pilihanBil(150, ["12", "13", "14"])),
-      sorotkan("Ketuk", "c2-k"),
+      bersih(0),
+      tambah(0, ...kepala(0)),
+      tambah(idx(SUARA_B3, "Kurang"), emo("x", 60, 100, E.salah, 24), ...kartu("sd", 20, 56, 120, 22, W.krem, ["19 – 2 = ?"], 11)),
+      tambah(idx(SUARA_B3, "sedikit"), teks("sk", 70, 138, "diambil sedikit", 10, W.merah)),
+      tambah(idx(SUARA_B3, "mundur"), ...garisBil("gb", 120, 10, 20), lompat("m1", 19, 18, 100), lompat("m2", 18, 17, 100), teks("ml", xGB(18), 90, "mundur 2", 9, W.merah)),
+      tambah(idx(SUARA_B3, "cepat"), emo("cp", 60, 170, E.roket, 24)),
     ),
   ],
 };
