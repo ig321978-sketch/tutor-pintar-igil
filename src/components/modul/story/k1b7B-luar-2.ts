@@ -1,157 +1,213 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { GX, OWL, SATUAN, W, emo, garis, hasil, judul, kartu, kotak, pilihan, teks, ukur, type Jenis, type Ukur } from "./k1b7B-gambar";
-import { bersih, hapus, idx, k, redamkan, sorotkan, tambah, ukurAksi } from "./k1b7B-bantu";
-import { WARNA_METODE, kepala } from "./k1b7B-luar-1";
+import type { AdeganStory } from "./logika-story";
+import { E, W, batangKotak, emo, judul, kartu, orang, panah, petak, sisi, teks } from "./k1b7B-gambar";
+import { NAMA_METODE, WARNA_METODE, kepala } from "./k1b7B-luar-1";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k1b7B-bantu";
 
-/* ------------------------------ 4. Banding Panjang: konsep ------------------------------ */
-/** Dua benda sejajar dari garis awal yang sama: tongkat Upe (delapan klip) dan tali Wei (lima klip). Satuan hanya muncul pada bagian yang lebih. */
-export const BA_Y = 56;
-export const BB_Y = 88;
-export const BA_W = 192;
-export const BB_W = 120;
-export const EKS_Y = 124;
-/** Satuan klip untuk bagian yang lebih, bernomor sesuai tempatnya pada deret klip dari garis awal (nomor 5 sampai 7), id `exu{i}`. */
-const EKSTRA: Ukur = {
-  p: "ex",
-  jenis: "klip",
-  n: 8,
-  x0: GX,
-  y: EKS_Y - 28,
-  lebar: BA_W,
-  bar: [],
-  garisAwal: garis("exg", GX, 0, 0, 0),
-  unit: (i) => kotak(`exu${i}`, GX + i * SATUAN.klip.w, EKS_Y, SATUAN.klip.w, SATUAN.klip.h, SATUAN.klip.warna, W.biru, { rx: 2, tebal: 1.2 }),
-  units: [],
-  pusat: Array.from({ length: 8 }, (_, i) => ({ x: GX + i * SATUAN.klip.w + SATUAN.klip.w / 2, y: EKS_Y + SATUAN.klip.h / 2 })),
-};
-const BENDA_A: Obj[] = [kotak("cab", GX, BA_Y, BA_W, 14, W.hijauMuda, W.biru, { rx: 3, tebal: 1.5 }), teks("cat", GX + BA_W / 2, BA_Y + 10, "tongkat Upe", 8.4)];
-const BENDA_B: Obj[] = [kotak("cbb", GX, BB_Y, BB_W, 14, W.lavender, W.biru, { rx: 3, tebal: 1.5 }), teks("cbt", GX + BB_W / 2, BB_Y + 10, "tali Wei", 8.4)];
-const GARIS_AWAL = garis("cg", GX, 50, 0, 56, W.merah, 1.8);
+/* Video metode global Sub-Bab B "Papan Lantai Rumah Pohon": Estimate and Check, Grid Measuring, dan ringkasan. */
 
-const SUARA_C1 = "Metode kedua bernama Banding Panjang. Dua benda ditaruh sejajar, mulai dari garis awal yang sama.";
-const SUARA_C2 = "Lihat ujung kedua benda. Tali Wei berhenti di sini, sedangkan tongkat Upe masih terus.";
-const SUARA_C3 = "Benda yang ujungnya lebih jauh dari garis awal adalah yang lebih panjang. Jadi tongkat Upe lebih panjang.";
-const SUARA_C4 = "Mau tahu lebihnya berapa klip? Kita hitung bagian yang lebih. Satu, dua, tiga. Lebihnya tiga klip.";
-const SUARA_C5 = "Metode ini cepat, karena kita membandingkan dulu sebelum menghitung.";
+/* ------------------------------ 1. Estimate and Check: konsep ------------------------------ */
+const SUARA_A1 = "Cara kedua, Estimate and Check, atau Kira-Kira lalu Periksa.";
+const SUARA_A2 = "Kira-kira dulu berapa satuan, lalu ukur dengan benar.";
+const SUARA_A3 = "Bandingkan perkiraan dengan hasil, lalu cari selisihnya.";
+const SUARA_A4 = "Makin sering berlatih, perkiraan makin dekat. Mulailah dengan bilangan kecil, misalnya dua atau tiga satuan.";
 
-export const ADEGAN_LUAR_BANDING: AdeganStory = {
-  id: "luar-banding",
-  judul: "Banding Panjang: sejajarkan dari garis awal",
-  sumber: "Metode luar: Banding Panjang",
-  latar: "#EFF6FF",
+export const ADEGAN_LUAR_KIRA: AdeganStory = {
+  id: "luar-kira",
+  judul: "Estimate and Check: kira-kira lalu periksa",
+  sumber: "Metode global: Estimate and Check",
+  latar: "#FFFBEB",
   ketukan: [
-    k(SUARA_C1, tambah("kedua", ...kepala(1)), tambah("sejajar,", ...BENDA_A, ...BENDA_B), tambah("garis", GARIS_AWAL)),
-    k(SUARA_C2, tambah("Tali", garis("cm", GX + BB_W, 50, 0, 56, W.hijau, 1.6, { putus: true })), tambah("sini,", teks("cmt", GX + BB_W, 120, "ujung tali", 8.4, W.hijau))),
-    k(SUARA_C3, sorotkan("Jadi", "cab"), tambah("Benda", ...kartu("ck", 40, 172, 220, 22, W.hijauMuda, ["tongkat Upe lebih panjang"], 9.4))),
+    k(
+      SUARA_A1,
+      tambah("kedua,", ...kepala(1)),
+      tambah("Estimate", emo("mt", 90, 100, E.mata, 30), ...kartu("e1", 56, 124, 90, 28, W.krem, ["kira-kira"], 10)),
+      tambah("Periksa.", emo("kc", 210, 100, E.kaca, 30), ...kartu("e2", 164, 124, 90, 28, W.hijauMuda, ["periksa"], 10)),
+    ),
+    k(
+      SUARA_A2,
+      hapus(0, "mt", "kc", "e1-k", "e1-t0", "e2-k", "e2-t0"),
+      tambah("Kira-kira", ...kartu("k1", 20, 70, 110, 40, W.krem, ["kira-kira", "dulu"], 10)),
+      tambah("ukur", panah("pk", 134, 90, 28, 0, W.merah)),
+      tambah("benar.", ...kartu("k2", 166, 70, 114, 40, W.hijauMuda, ["lalu ukur", "dengan benar"], 10)),
+    ),
+    k(
+      SUARA_A3,
+      hapus(0, "k1-k", "k1-t0", "k1-t1", "k2-k", "k2-t0", "k2-t1", "pk"),
+      tambah("perkiraan", ...batangKotak("p", 4, 40, 70, 24, W.langit), teks("lp", 150, 124, "perkiraan", 9.4, W.biru)),
+      tambah("hasil,", ...batangKotak("h", 6, 40, 138, 24, W.hijauMuda), teks("lh", 190, 154, "hasil", 9.4, W.biru, { anchor: "start" })),
+      sorotkan("selisihnya.", "h4", "h5"),
+    ),
+    k(
+      SUARA_A4,
+      bersih(0),
+      tambah(0, ...kepala(1)),
+      tambah("sering", ...kartu("l0", 30, 64, 240, 26, W.krem, ["makin sering berlatih"], 10)),
+      tambah("dekat.", ...kartu("l1", 30, 98, 240, 26, W.hijauMuda, ["perkiraan makin dekat"], 10)),
+      tambah("dua", ...kartu("l2", 30, 140, 110, 30, W.langit, ["2 satuan"], 12)),
+      tambah("tiga", ...kartu("l3", 160, 140, 110, 30, W.langit, ["3 satuan"], 12)),
+    ),
+  ],
+};
+
+/* ------------------------------ 2. Estimate and Check: terapan pada meja bengkel ------------------------------ */
+const SUARA_B1 = "Kaka memperkirakan meja bengkel enam jengkal. Setelah diukur, hasilnya delapan jengkal.";
+const SUARA_B2 = "Selisihnya dua. Delapan dikurangi enam sama dengan dua.";
+const SUARA_B3 = "Cocok untuk melatih mata dan memeriksa apakah hasil masuk akal.";
+const SUARA_B4 = "Kurang cocok kalau kita butuh ukuran pasti, karena perkiraan bukan hasil ukur.";
+
+export const ADEGAN_LUAR_KIRA_TERAPAN: AdeganStory = {
+  id: "luar-kira-terapan",
+  judul: "Estimate and Check: meja bengkel",
+  sumber: "Metode global: Estimate and Check, terapan",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_B1,
+      tambah(0, ...kepala(1)),
+      tambah("Kaka", ...orang("kk", 262, 80, E.kaka, "Kaka")),
+      tambah("enam", ...batangKotak("p", 6, 30, 66, 24, W.langit), teks("lp", 30, 62, "perkiraan 6", 9.4, W.biru, { anchor: "start" })),
+      tambah("delapan", ...batangKotak("h", 8, 30, 112, 24, W.hijauMuda), teks("lh", 30, 108, "hasil 8", 9.4, W.biru, { anchor: "start" })),
+    ),
+    k(
+      SUARA_B2,
+      sorotkan("Selisihnya", "h6", "h7"),
+      tambah("dua.", teks("kal", 150, 170, "8 – 6 = 2", 16, W.biru)),
+    ),
+    k(
+      SUARA_B3,
+      bersih(0),
+      tambah(0, ...kepala(1)),
+      tambah("Cocok", ...kartu("cc", 40, 70, 220, 30, W.hijauMuda, ["cocok: melatih mata"], 10.5), emo("ok", 276, 86, E.benar, 18)),
+      tambah("memeriksa", ...kartu("cd", 40, 114, 220, 30, W.hijauMuda, ["cocok: memeriksa hasil"], 10.5), emo("kc", 276, 130, E.kaca, 18)),
+    ),
+    k(
+      SUARA_B4,
+      tambah("Kurang", ...kartu("kc2", 40, 158, 220, 30, W.merahMuda, ["kurang cocok: ukuran pasti"], 10.5), emo("sl", 276, 174, E.salah, 16)),
+    ),
+  ],
+};
+
+/* ------------------------------ 3. Grid Measuring: konsep ------------------------------ */
+const SUARA_C1 = "Cara ketiga, Grid Measuring, atau Ukur di Kotak-Kotak.";
+const SUARA_C2 = "Letakkan benda di kertas berpetak, lalu hitung kotak yang tertutup.";
+const SUARA_C3 = "Semua kotak sama besar dan rapat, jadi tidak perlu khawatir celah.";
+const SUARA_C4 = "Mulai menghitung dari ujung kiri, satu kotak untuk satu langkah. Jangan ada kotak yang terlewat.";
+
+export const ADEGAN_LUAR_PETAK: AdeganStory = {
+  id: "luar-petak",
+  judul: "Grid Measuring: ukur di kotak-kotak",
+  sumber: "Metode global: Grid Measuring",
+  latar: "#F7FEE7",
+  ketukan: [
+    k(
+      SUARA_C1,
+      tambah("ketiga,", ...kepala(2)),
+      tambah("Grid", ...petak("pt", 90, 70, 5, 3, 24)),
+      tambah("Kotak-Kotak.", emo("kt", 150, 166, E.kertas, 26)),
+    ),
+    k(
+      SUARA_C2,
+      hapus(0, "kt"),
+      tambah("benda", ...batangKotak("b", 4, 90, 70, 24, W.emas)),
+      tambah("kertas", teks("lk", 150, 160, "kertas berpetak", 9.4, W.biru)),
+      sorotkan("tertutup.", "b0", "b1", "b2", "b3"),
+    ),
+    k(
+      SUARA_C3,
+      hapus(0, "lk"),
+      tambah("sama", ...kartu("c0", 30, 150, 110, 26, W.hijauMuda, ["sama besar"], 10)),
+      tambah("rapat,", ...kartu("c1", 160, 150, 110, 26, W.hijauMuda, ["rapat"], 10)),
+      tambah("celah.", emo("ok", 150, 192, E.benar, 14)),
+    ),
     k(
       SUARA_C4,
-      hapus(0, "cmt", "ck-k", "ck-t0"),
-      redamkan(0, "cab"),
-      ...ukurAksi(SUARA_C4, EKSTRA, { awal: 5, sampai: 8, setelah: "lebih." }),
-      tambah(idx(SUARA_C4, "klip", 2), teks("cs", 150, 168, "selisih: 3 klip", 11, W.coklat)),
+      hapus(0, "c0-k", "c0-t0", "c1-k", "c1-t0", "ok"),
+      tambah("ujung", panah("pu", 90, 62, 0, 6)),
+      tambah("satu", ...kartu("sk", 40, 150, 220, 26, W.krem, ["1 kotak, 1 langkah"], 10.5)),
+      tambah("terlewat.", emo("tl", 150, 188, E.mata, 16)),
     ),
-    k(SUARA_C5, hapus(0, "tg"), tambah("Metode", ...kartu("cl", 14, 176, 272, 22, W.emas, ["bandingkan dulu, baru hitung"], 9.6))),
   ],
 };
 
-/* ------------------------------ 5. Banding Panjang: terapan ------------------------------ */
-export const TIGA = [
-  { id: "da", nama: "pita A", y: 56, lebar: 144, warna: W.merahMuda },
-  { id: "db", nama: "pita B", y: 90, lebar: 216, warna: W.hijauMuda },
-  { id: "dc", nama: "pita C", y: 124, lebar: 168, warna: W.lavender },
-];
-const benda3 = (): Obj[] => TIGA.flatMap((b) => [kotak(`${b.id}b`, GX, b.y, b.lebar, 14, b.warna, W.biru, { rx: 3, tebal: 1.5 }), teks(`${b.id}t`, GX + b.lebar / 2, b.y + 10, b.nama, 8.4)]);
-const SUARA_D1 = "Terapkan pada tiga pita. Semuanya mulai dari garis awal yang sama.";
-const SUARA_D2 = "Mana yang paling panjang? Lihat ujung yang paling jauh. Ketuk hurufnya.";
-const SUARA_D3 = "Betul! Ujung pita B paling jauh dari garis awal. Pita B paling panjang.";
-const SUARA_D4 = "Sekarang cari yang paling pendek. Ujungnya paling dekat dengan garis awal. Itu pita A.";
+/* ------------------------------ 4. Grid Measuring: terapan pada pita ------------------------------ */
+const SUARA_D1 = "Igil menggambar pita merah sepanjang delapan kotak dan pita biru lima kotak.";
+const SUARA_D2 = "Pita merah lebih panjang tiga kotak. Delapan dikurangi lima sama dengan tiga.";
+const SUARA_D3 = "Cocok untuk membandingkan gambar benda di kertas.";
+const SUARA_D4 = "Kurang cocok untuk benda besar, karena tidak muat di kertas.";
 
-export const ADEGAN_LUAR_BANDING_TERAPAN: AdeganStory = {
-  id: "luar-banding-terapan",
-  judul: "Banding Panjang: tiga pita",
-  sumber: "Metode luar: Banding Panjang, terapan",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_D1, tambah("Terapkan", ...kepala(1)), tambah("tiga", ...benda3()), tambah("garis", garis("dg", GX, 50, 0, 94, W.merah, 1.8))),
-    k(SUARA_D2, tambah("Mana", ...pilihan(154, ["A", "B", "C"], 18))),
-    k(SUARA_D3, sorotkan("Betul!", "c2-k"), sorotkan("paling@2", "dbb")),
-    k(SUARA_D4, redamkan(0, "c2-k", "dbb"), sorotkan("pendek.", "c1-k", "dab")),
-  ],
-};
-
-/* ------------------------------ 6. Satuan Tak Baku: konsep ------------------------------ */
-const MEJA_S = ukur("fa", "sedotan", 6, GX, 54, "meja Upe", W.krem);
-const MEJA_J = ukur("fb", "jepit", 15, GX, 112, "meja Upe", W.krem);
-const SAMPEL5: Jenis[] = ["klip", "stik", "kotak", "sedotan", "jepit"];
-const SUARA_E1 = "Metode ketiga bernama Satuan Tak Baku. Kita boleh memakai benda kecil apa saja di layar sebagai satuan.";
-const SUARA_E2 = "Meja Upe diukur dengan sedotan. Hasilnya enam sedotan.";
-const SUARA_E3 = "Meja yang sama diukur dengan jepit. Hasilnya lima belas jepit.";
-const SUARA_E4 = "Satuannya tidak baku, jadi hasilnya berbeda. Karena itu, nama satuannya harus selalu ditulis.";
-const SUARA_E5 = "Kalau ingin membandingkan, pakailah satuan tak baku yang sama.";
-const PUSAT5 = [40, 100, 150, 205, 262];
-
-export const ADEGAN_LUAR_SATUAN: AdeganStory = {
-  id: "luar-satuan",
-  judul: "Satuan Tak Baku: pakai satuan apa saja",
-  sumber: "Metode luar: Satuan Tak Baku",
-  latar: "#FDF2F8",
+export const ADEGAN_LUAR_PETAK_TERAPAN: AdeganStory = {
+  id: "luar-petak-terapan",
+  judul: "Grid Measuring: pita merah dan biru",
+  sumber: "Metode global: Grid Measuring, terapan",
+  latar: "#F7FEE7",
   ketukan: [
     k(
-      SUARA_E1,
-      tambah("ketiga", ...kepala(2)),
-      ...SAMPEL5.map((j, i) =>
-        tambah(["klip", "stik", "kotak", "sedotan", "jepit"][i] === "klip" ? "kecil" : "layar", kotak(`fs${i}`, PUSAT5[i] - SATUAN[j].w / 2, 96, SATUAN[j].w, SATUAN[j].h, SATUAN[j].warna, W.biru, { rx: 2, tebal: 1.2 }), teks(`fn${i}`, PUSAT5[i], 130, j, 9, W.ungu)),
-      ),
+      SUARA_D1,
+      tambah(0, ...kepala(2)),
+      tambah("Igil", ...orang("ig", 262, 176, E.igil, "Igil")),
+      tambah("menggambar", ...petak("pt", 30, 62, 8, 3, 26)),
+      tambah("merah", ...batangKotak("m", 8, 30, 62, 26, "#FCA5A5"), teks("lm", 262, 80, "8 kotak", 9.4, W.merah)),
+      tambah("biru", ...batangKotak("u", 5, 30, 114, 26, "#93C5FD"), teks("lu", 262, 132, "5 kotak", 9.4, W.biru)),
     ),
-    k(SUARA_E2, ...[0, 1, 2, 3, 4].map((i) => hapus(0, `fs${i}`, `fn${i}`)), tambah(0, ...MEJA_S.bar, MEJA_S.garisAwal, ...MEJA_S.units), tambah("enam", hasil("fa", "sedotan", 6, 150, 102, 12))),
-    k(SUARA_E3, tambah(0, ...MEJA_J.bar, MEJA_J.garisAwal), tambah("jepit.", ...MEJA_J.units), tambah("belas", hasil("fb", "jepit", 15, 150, 172, 12))),
-    k(SUARA_E4, tambah("Karena", ...kartu("ek", 14, 180, 272, 20, W.emas, ["satuan beda, hasil beda; tulis namanya"], 9))),
-    k(SUARA_E5, hapus(0, "ek-k", "ek-t0"), tambah("Kalau", ...kartu("el", 14, 180, 272, 20, W.hijauMuda, ["bandingkan: satuan sama"], 9.4))),
-  ],
-};
-
-/* ------------------------------ 7. Satuan Tak Baku: terapan ------------------------------ */
-const TONGKAT_W = ukur("ga", "klip", 10, GX, 56, "tongkat Wei", W.hijauMuda);
-const TONGKAT_H = ukur("gb", "stik", 5, GX, 118, "tongkat Halim", W.pink);
-const SUARA_F1 = "Tongkat Wei diukur dengan klip, hasilnya sepuluh klip. Tongkat Halim diukur dengan stik, hasilnya lima stik.";
-const SUARA_F2 = "Mana yang lebih panjang? Sepuluh lebih dari lima, tetapi satuannya berbeda. Hati-hati!";
-const SUARA_F3 = "Kita periksa dengan garis awal yang sama. Ujung kedua tongkat sejajar. Keduanya sama panjang!";
-const SUARA_F4 = "Jadi, kita tidak boleh membandingkan angka kalau satuannya berbeda.";
-
-export const ADEGAN_LUAR_SATUAN_TERAPAN: AdeganStory = {
-  id: "luar-satuan-terapan",
-  judul: "Satuan Tak Baku: klip dan stik",
-  sumber: "Metode luar: Satuan Tak Baku, terapan",
-  latar: "#FDF2F8",
-  ketukan: [
     k(
-      SUARA_F1,
-      tambah("Tongkat", ...kepala(2), ...TONGKAT_W.bar, TONGKAT_W.garisAwal, ...TONGKAT_W.units),
-      tambah("sepuluh", hasil("ga", "klip", 10, 150, 112, 12)),
-      tambah("Tongkat@2", ...TONGKAT_H.bar, TONGKAT_H.garisAwal, ...TONGKAT_H.units),
-      tambah("lima", hasil("gb", "stik", 5, 150, 172, 12)),
+      SUARA_D2,
+      sorotkan("tiga", "m5", "m6", "m7"),
+      tambah("Delapan", teks("kal", 150, 172, "8 – 5 = 3", 16, W.biru)),
     ),
-    k(SUARA_F2, sorotkan("Mana", "gah", "gbh"), tambah("Hati-hati!", emo("tq", 268, 100, "❓", 24))),
-    k(SUARA_F3, redamkan(0, "gah", "gbh"), hapus(0, "tq"), tambah("garis", garis("gs", GX + 240, 50, 0, 116, W.hijau, 1.6, { putus: true })), tambah("sama", teks("gst", GX + 240, 142, "sama", 9.4, W.hijau))),
-    k(SUARA_F4, tambah("Jadi,", ...kartu("fk", 14, 180, 272, 20, W.emas, ["satuan beda: jangan bandingkan angka"], 9))),
+    k(
+      SUARA_D3,
+      bersih(0),
+      tambah(0, ...kepala(2)),
+      tambah("Cocok", ...kartu("cc", 40, 90, 220, 36, W.hijauMuda, ["cocok: gambar di kertas"], 10.5), emo("ok", 276, 108, E.benar, 18)),
+    ),
+    k(
+      SUARA_D4,
+      tambah("Kurang", ...kartu("kc", 40, 138, 220, 36, W.merahMuda, ["kurang cocok: benda besar"], 10.5), emo("sl", 276, 156, E.salah, 16)),
+    ),
   ],
 };
 
-/* ------------------------------ 8. Ringkasan ------------------------------ */
-const SUARA_G1 = "Mari kita ingat tiga metode dari luar. Metode pertama, Ulangi Satuan Panjang. Ulangi satu satuan sampai ujung benda.";
-const SUARA_G2 = "Metode kedua, Banding Panjang. Sejajarkan benda dari garis awal, lalu lihat ujungnya.";
-const SUARA_G3 = "Metode ketiga, Satuan Tak Baku. Pakai satuan apa saja, tetapi harus sama, dan tulis namanya.";
-const SUARA_G4 = "Hebat sekali, anak-anak! Sampai jumpa di pelajaran berikutnya.";
+const PILIH = [["Mengulang", "Satuan"], ["Kira-Kira lalu", "Periksa"], ["Ukur di", "Kotak-Kotak"]];
+
+/* ------------------------------ 5. Ringkasan ------------------------------ */
+const SUARA_E1 = "Kita sudah melihat tiga cara. Mana yang pas? Itu tergantung bendanya.";
+const SUARA_E2 = "Benda lurus yang bisa dijangkau, pakai Mengulang Satuan. Ingin melatih mata, pakai Kira-Kira lalu Periksa.";
+const SUARA_E3 = "Benda yang digambar di kertas, pakai Ukur di Kotak-Kotak. Apa pun caranya, mulailah dari ujung dan tulis nama satuannya.";
+const SUARA_E4 = "Menurutmu, untuk mengukur lantai rumah pohon yang panjang, kamu pilih yang mana?";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Ringkasan metode luar",
-  latar: "#FFF7ED",
+  judul: "Ringkasan tiga metode global",
+  sumber: "Ringkasan: tiga metode global",
+  latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_G1, tambah(0, judul("Ringkasan")), tambah("pertama,", ...kartu("r0", 14, 36, 272, 34, WARNA_METODE[0], ["Ulangi Satuan Panjang:", "ulangi satuan sampai ujung"], 9))),
-    k(SUARA_G2, tambah("kedua,", ...kartu("r1", 14, 80, 272, 34, WARNA_METODE[1], ["Banding Panjang:", "sejajarkan dari garis awal"], 9))),
-    k(SUARA_G3, tambah("ketiga,", ...kartu("r2", 14, 124, 272, 34, WARNA_METODE[2], ["Satuan Tak Baku:", "satuan sama, tulis namanya"], 9))),
-    k(SUARA_G4, bersih(0), tambah(0, judul("Sampai jumpa!"), emo("sj", 150, 100, OWL, 50), teks("sk", 150, 186, "tiga metode dari luar", 10, W.ungu)), tambah("anak-anak!", emo("pa", 80, 150, "\u{1F389}", 30), emo("pb", 220, 150, "\u{1F389}", 30))),
+    k(
+      SUARA_E1,
+      tambah(0, judul("3 cara mengukur")),
+      ...NAMA_METODE.map((m, i) => tambah(i === 0 ? "sudah" : i === 1 ? "pas?" : "tergantung", ...kartu(`r${i}`, 20, 34 + i * 46, 260, 38, WARNA_METODE[i], [m], 11))),
+      tambah("bendanya.", emo("tn", 150, 190, E.tanya, 18)),
+    ),
+    k(
+      SUARA_E2,
+      hapus(0, "tn"),
+      ubah("Benda", { id: "r0-t0", isi: "Mengulang Satuan: benda lurus" }),
+      sorotkan("Mengulang", "r0-k"),
+      ubah("melatih", { id: "r1-t0", isi: "Kira-Kira lalu Periksa: melatih mata" }),
+      sorotkan("Kira-Kira", "r1-k"),
+    ),
+    k(
+      SUARA_E3,
+      ubah("digambar", { id: "r2-t0", isi: "Ukur di Kotak-Kotak: gambar di kertas" }),
+      sorotkan("Ukur", "r2-k"),
+      tambah("mulailah", ...kartu("lm", 40, 176, 220, 20, W.krem, ["mulai dari ujung, tulis nama satuan"], 8.6)),
+    ),
+    k(
+      SUARA_E4,
+      bersih(0),
+      tambah(0, judul("Menurutmu?")),
+      tambah("lantai", ...sisi("sd", 40, 60, 220, 14)),
+      tambah("panjang,", emo("tn", 150, 110, E.tanya, 34)),
+      ...PILIH.map((p, i) => tambah("mana?", ...kartu(`q${i}`, 20 + i * 90, 150, 86, 34, WARNA_METODE[i], p, 8))),
+    ),
   ],
 };

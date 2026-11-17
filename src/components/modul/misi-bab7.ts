@@ -8,61 +8,40 @@
  */
 
 import type { DefMisi } from "./misi-simulasi";
-import type { IdSatuan, StatusUkur } from "./lab-ukur-bab7";
+import type { KeadaanLantai } from "./lantai-k1b7b/logika";
+import type { KeadaanTukang } from "./tiang-k1b7a/logika";
 
-export type KeadaanBanding = {
-  alat: "banding";
-  panjang: number[];
-  sejajar: boolean;
-  urut: boolean;
-  dipilih: number[];
-  satuan: string;
-  angka: boolean;
-};
+export type KeadaanBab7 = KeadaanLantai | KeadaanTukang;
 
-export type KeadaanPosisi = { alat: "posisi"; tinggi: number[]; dipilih: number[] };
-
-export type KeadaanUkur = { alat: "ukur"; id: IdSatuan; n: number; status: StatusUkur; tebak: number };
-
-export type KeadaanBab7 = KeadaanBanding | KeadaanPosisi | KeadaanUkur;
-
-const adaKembar = (a: number[]) => new Set(a).size < a.length;
-
-/** Indeks yang paling besar sendirian, atau -1 bila ada yang sama besar di puncak. */
-export function puncakTunggal(a: number[]): number {
-  const m = Math.max(...a);
-  const di = a.flatMap((x, i) => (x === m ? [i] : []));
-  return di.length === 1 ? di[0] : -1;
-}
-
-const banding = (k: KeadaanBab7): k is KeadaanBanding => k.alat === "banding";
-const posisi = (k: KeadaanBab7): k is KeadaanPosisi => k.alat === "posisi";
-const ukur = (k: KeadaanBab7): k is KeadaanUkur => k.alat === "ukur";
-const tepat = (k: KeadaanBab7, id: IdSatuan) => ukur(k) && k.id === id && k.status === "tepat";
-
-/** Sub-Bab A: membandingkan dengan mata (tanpa angka). Pensil: Merah, Biru, Hijau, Kuning. Kupu-kupu: kuning, merah, hijau. */
+/**
+ * Sub-Bab A (awal cerita Rumah Pohon Abang): Misi Rumah Pohon bagian satu, Simulasi Meja Tukang (tiang-k1b7a), tanpa satuan baku. Tiang sama dengan
+ * TIANG_SIM di tiang-k1b7a/data.ts (oranye, ungu, pink, abu, cokelat; ungu dan abu sama tinggi), diuji di scripts/uji-tiang-k1b7a.mjs.
+ */
+const tukang = (k: KeadaanBab7): k is KeadaanTukang => k.alat === "tukang";
 export const MISI_A: DefMisi<KeadaanBab7>[] = [
-  { id: "a-dua", teks: "Ketuk dua pensil. Baca siapa yang lebih panjang.", wajib: true, cek: (k) => banding(k) && k.dipilih.length === 2 },
-  { id: "a-sejajar", teks: "Nyalakan Sejajarkan ujung kiri.", wajib: true, cek: (k) => banding(k) && k.sejajar },
-  { id: "a-sama", teks: "Buat dua pensil sama panjang.", wajib: true, cek: (k) => banding(k) && adaKembar(k.panjang) },
-  { id: "a-urut", teks: "Urutkan pensil dari terpendek.", wajib: true, cek: (k) => banding(k) && k.urut },
-  { id: "a-kupu", teks: "Buat kupu-kupu kuning terbang lebih tinggi dari merah.", wajib: true, cek: (k) => posisi(k) && k.tinggi[0] > k.tinggi[1] },
-  { id: "a-hijau", teks: "Buat pensil Hijau paling panjang sendirian.", wajib: false, cek: (k) => banding(k) && puncakTunggal(k.panjang) === 2 },
-  { id: "a-puncak", teks: "Buat kupu-kupu kuning terbang paling tinggi.", wajib: false, cek: (k) => posisi(k) && puncakTunggal(k.tinggi) === 0 },
+  { id: "a-lurus", teks: "Luruskan semua tiang di garis awal yang sama dengan membuang bata.", wajib: true, cek: (k) => tukang(k) && k.sejajar },
+  { id: "a-banding", teks: "Bandingkan dua tiang yang sudah berdiri di garis awal yang sama, lalu dengar kata lebihnya.", wajib: true, cek: (k) => tukang(k) && k.bandingTuntas >= 1 },
+  { id: "a-tali", teks: "Ambil tali sepanjang satu tiang, lalu bawa tali itu ke tiga tiang lain.", wajib: true, cek: (k) => tukang(k) && k.tali !== null && k.diperiksa.length >= 3 },
+  { id: "a-tangga", teks: "Susun semua tiang menjadi tangga dari yang paling pendek.", wajib: true, cek: (k) => tukang(k) && k.urutNaik },
+  { id: "a-sama", teks: "Cari dua tiang yang sama tinggi, lalu bandingkan keduanya.", wajib: false, cek: (k) => tukang(k) && k.samaTuntas >= 1 },
+  { id: "a-turun", teks: "Susun lagi tangganya dari yang paling tinggi.", wajib: false, cek: (k) => tukang(k) && k.urutTurun },
 ];
 
 /**
- * Sub-Bab B (gabungan A dan B, simulasi pencapaian misi): mengukur dengan satuan.
- * Dua tantangan bebas memakai kembali hal dari A dan satu satuan lagi.
+ * Sub-Bab B (penutup bab): Misi Papan Lantai, Simulasi Papan Lantai (lantai-k1b7b), tanpa satuan baku. Benda dan panjang sama dengan
+ * BENDA_SIM di lantai-k1b7b/data.ts (tali ayunan, papan bangku, pagar mungil, sisi lantai baru), diuji di scripts/uji-lantai-k1b7b.mjs.
  */
+const lantai = (k: KeadaanBab7): k is KeadaanLantai => k.alat === "lantai";
+/** Benda di bengkel pada Simulasi Papan Lantai B: panjang dalam satuan sedotan. */
+export const PANJANG_LANTAI_B: Record<string, number> = { tali: 12, bangku: 10, pagar: 4, lantai: 12 };
+export const SISI_LANTAI_B = "lantai";
 export const MISI_B: DefMisi<KeadaanBab7>[] = [
-  { id: "b-stik", teks: "Ukur pita dengan stik sampai pas di ujung.", wajib: true, cek: (k) => tepat(k, "stik") },
-  { id: "b-tebak", teks: "Tebak tepat: tebakanmu sama dengan hasil ukur.", wajib: true, cek: (k) => ukur(k) && k.status === "tepat" && k.tebak === k.n },
-  { id: "b-salah", teks: "Coba satu cara mengukur yang salah. Baca pesannya.", wajib: true, cek: (k) => ukur(k) && k.status === "salah-cara" },
-  { id: "b-klip", teks: "Ukur pita yang sama dengan klip kecil sampai pas.", wajib: true, cek: (k) => tepat(k, "klip") },
-  { id: "b-kotak", teks: "Buat pensil Hijau lebih panjang 2 kotak dari pensil Merah.", wajib: true, cek: (k) => banding(k) && k.angka && k.satuan === "kotak" && k.panjang[2] - k.panjang[0] === 2 },
-  { id: "b-ingat", teks: "Ingat Sub-Bab A: sejajarkan, lalu urutkan dari terpendek.", wajib: false, cek: (k) => banding(k) && k.sejajar && k.urut },
-  { id: "b-balok", teks: "Ukur pita dengan balok besar sampai pas.", wajib: false, cek: (k) => tepat(k, "balok") },
+  { id: "b-rapat", teks: "Ukur satu benda dengan satu jenis alat sampai ujung, rapat tanpa celah.", wajib: true, cek: (k) => lantai(k) && k.tuntas.length >= 1 },
+  { id: "b-alat", teks: "Ukur benda yang sama dengan sedotan dan tongkat kayu. Lihat alat mana yang angkanya lebih sedikit.", wajib: true, cek: (k) => lantai(k) && k.tuntas.some((t) => k.tuntas.includes(`${t.split(":")[0]}:${t.endsWith(":sedotan") ? "tongkat" : "sedotan"}`)) },
+  { id: "b-kira", teks: "Catat perkiraan dulu, lalu ukur sampai ujung dan lihat selisihnya.", wajib: true, cek: (k) => lantai(k) && k.diperiksa >= 1 },
+  { id: "b-pesan", teks: "Penutup bab: ukur sisi lantai rumah pohon, lalu pesan papan dengan angka dan nama alatnya.", wajib: true, cek: (k) => lantai(k) && k.pesan !== null && k.tuntas.includes(`${SISI_LANTAI_B}:${k.pesan}`) },
+  { id: "b-petak", teks: "Di kertas berpetak, buat pita merah lebih panjang tiga kotak dari pita biru.", wajib: false, cek: (k) => lantai(k) && k.selisihTiga },
+  { id: "b-celah", teks: "Coba menaruh satuan dengan celah, lalu baca pesannya.", wajib: false, cek: (k) => lantai(k) && k.celahDicoba >= 1 },
 ];
 
 export const daftarMisiBab7 = (sub: string): DefMisi<KeadaanBab7>[] => (sub === "B" ? MISI_B : MISI_A);

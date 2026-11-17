@@ -17,9 +17,6 @@ import * as O5 from "../src/components/modul/mesin-odometer-bab5.ts";
 import * as L6 from "../src/components/modul/lab-loncat-bab6.ts";
 import * as E6 from "../src/components/modul/lab-belasan-bab6.ts";
 import * as J6 from "../src/components/modul/mesin-jembatan-bab6.ts";
-import * as U7 from "../src/components/modul/lab-ukur-bab7.ts";
-import * as D7 from "../src/components/modul/lab-banding-panjang-bab7.ts";
-import * as Q7 from "../src/components/modul/lab-posisi-bab7.ts";
 import * as M0 from "../src/components/modul/misi-simulasi.ts";
 import * as M7 from "../src/components/modul/misi-bab7.ts";
 import * as M1 from "../src/components/modul/misi-bab1.ts";
@@ -655,87 +652,6 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   cek(J6.soalRonde(1).a !== s.a, "soal baru berbeda");
 }
 
-/* ------------------------------ Bab 7: meja ukur ------------------------- */
-{
-  for (const sat of U7.SATUAN) {
-    cek(U7.PANJANG_BENDA % sat.panjang === 0, `${sat.id}: panjang benda habis dibagi satuan`);
-    const benar = U7.hasilBenar(sat.id);
-    cek(benar <= U7.MAKS_SATUAN, `${sat.id}: hasil benar ${benar} muat di batas`);
-    const dasar = { id: sat.id, dariTengah: false, celah: false, tumpuk: false };
-    const pas = U7.susun({ ...dasar, n: benar });
-    cek(pas.status === "tepat" && pas.akhir === U7.PANJANG_BENDA && pas.masalah.length === 0 && pas.kotak.length === benar, `${sat.id}: pas`);
-    cek(pas.kotak.every((k, i) => k.x === i * sat.panjang && k.lebar === sat.panjang && k.baris === 0), `${sat.id}: kotak rapat dari ujung`);
-    cek(new RegExp(`${benar} ${sat.nama.toLowerCase()}`).test(pas.pesan), `${sat.id}: pesan tepat menyebut hasil`);
-    for (let n = 0; n <= U7.MAKS_SATUAN; n += 1) {
-      const h = U7.susun({ ...dasar, n });
-      const harus = n < benar ? "kurang" : n > benar ? "lebih" : "tepat";
-      cek(h.status === harus, `${sat.id} n=${n}: ${h.status} != ${harus}`);
-      cek(h.akhir === n * sat.panjang, `${sat.id} n=${n}: akhir ${h.akhir}`);
-    }
-    // setiap kebiasaan salah membuat hasil tidak pernah "tepat", seberapa pun satuannya
-    for (const salah of [{ dariTengah: true }, { celah: true }, { tumpuk: true }, { dariTengah: true, celah: true, tumpuk: true }]) {
-      for (let n = 0; n <= U7.MAKS_SATUAN; n += 1) {
-        const h = U7.susun({ ...dasar, ...salah, n });
-        cek(h.status === "salah-cara" && h.masalah.length === Object.keys(salah).length, `${sat.id} ${JSON.stringify(salah)} n=${n}: salah cara`);
-      }
-    }
-    const tumpuk = U7.susun({ ...dasar, tumpuk: true, n: 3 });
-    cek(tumpuk.kotak.map((k) => k.baris).join("") === "010" && tumpuk.kotak[1].x === sat.panjang - 1, `${sat.id}: tumpukan menggeser mundur dan berselang-seling`);
-    const celah = U7.susun({ ...dasar, celah: true, n: 3 });
-    cek(celah.kotak[1].x === sat.panjang + 1, `${sat.id}: celah menggeser maju`);
-    const tengah = U7.susun({ ...dasar, dariTengah: true, n: 2 });
-    cek(tengah.kotak[0].x === U7.GESER_TENGAH, `${sat.id}: mulai dari tengah bergeser`);
-  }
-  const tabel = U7.tabelHasil();
-  sama(tabel.map((t) => t.n), [3, 4, 6], "tabel hasil balok, stik, klip");
-  cek(tabel.every((t, i) => i === 0 || tabel[i - 1].n < t.n), "satuan lebih pendek, bilangan lebih banyak");
-  cek(U7.susun({ id: "stik", n: 99, dariTengah: false, celah: false, tumpuk: false }).kotak.length === U7.MAKS_SATUAN, "n dibatasi maksimum");
-  cek(U7.susun({ id: "stik", n: -3, dariTengah: false, celah: false, tumpuk: false }).kotak.length === 0, "n tidak negatif");
-  cek(/Letakkan satuan pertama/.test(U7.susun({ id: "stik", n: 0, dariTengah: false, celah: false, tumpuk: false }).pesan), "pesan awal");
-  cek(/Pita diukur dengan 4 stik/.test(U7.ucapanUkur({ id: "stik", n: 4, dariTengah: false, celah: false, tumpuk: false })) && /belum benar/.test(U7.ucapanUkur({ id: "stik", n: 4, dariTengah: false, celah: true, tumpuk: false })), "ucapan ukur");
-}
-
-/* ------------------------- Bab 7: bandingkan panjang --------------------- */
-{
-  sama(D7.PITA.length, 4, "empat pita");
-  cek(D7.PANJANG_AWAL.length === 4 && D7.PANJANG_AWAL.every((p) => p >= 1 && p <= 10) && new Set(D7.PANJANG_AWAL).size === 4, "panjang awal sah dan berbeda");
-  cek(D7.GESER_TAK_SEJAJAR.length === 4 && D7.GESER_TAK_SEJAJAR.some((g) => g > 0), "geseran tidak sejajar bervariasi");
-  // lebar total muat di gambar: X0 54 + geser maks*10 + 10*26 + angka
-  cek(54 + Math.max(...D7.GESER_TAK_SEJAJAR) * 10 + 10 * 26 + 24 <= 380, "pita terpanjang muat di gambar");
-  sama(D7.ubahPanjang([5, 8, 3, 6], 2, 1), [5, 8, 4, 6], "ubah panjang pita hijau");
-  sama(D7.ubahPanjang([5, 8, 3, 6], 0, -1), [4, 8, 3, 6], "kurangi pita merah");
-  sama(D7.ubahPanjang([1, 8, 3, 6], 0, -1), [1, 8, 3, 6], "panjang minimal 1");
-  sama(D7.ubahPanjang([5, 10, 3, 6], 1, 1), [5, 10, 3, 6], "panjang maksimal 10");
-  sama(D7.ubahPanjang([5, 8, 3, 6], 9, 1), [5, 8, 3, 6], "indeks di luar daftar diabaikan");
-  sama(D7.urutanTampil([5, 8, 3, 6], false), [0, 1, 2, 3], "urutan asli");
-  sama(D7.urutanTampil([5, 8, 3, 6], true), [2, 0, 3, 1], "urut dari terpendek");
-  sama(D7.urutanTampil([4, 4, 2, 4], true), [2, 0, 1, 3], "panjang sama tetap urutan semula");
-  sama(D7.terpendek([5, 8, 3, 6]), [2], "terpendek");
-  sama(D7.terpanjang([5, 8, 3, 6]), [1], "terpanjang");
-  sama(D7.terpendek([3, 8, 3, 6]), [0, 2], "terpendek kembar");
-  sama(D7.terpanjang([8, 8, 3, 6]), [0, 1], "terpanjang kembar");
-  // semua pasangan: kalimat sesuai
-  for (let i = 0; i < 4; i += 1) {
-    for (let j = 0; j < 4; j += 1) {
-      const k = D7.bandingDua([5, 8, 3, 6], i, j);
-      if (i === j) cek(/dirinya sendiri/.test(k), `banding diri sendiri ${i}`);
-      else {
-        const sel = Math.abs([5, 8, 3, 6][i] - [5, 8, 3, 6][j]);
-        const lebihI = [5, 8, 3, 6][i] > [5, 8, 3, 6][j];
-        const lebih = D7.PITA[lebihI ? i : j].nama;
-        const kurang = D7.PITA[lebihI ? j : i].nama;
-        cek(k.includes(`Pita ${lebih} lebih panjang ${sel} stik dari pita ${kurang}`) && k.includes(`lebih pendek ${sel} stik`), `banding ${i},${j}: ${k}`);
-      }
-    }
-  }
-  cek(/sama panjang, masing-masing 5 stik/.test(D7.bandingDua([5, 5, 3, 6], 0, 1)), "banding sama panjang");
-  sama(D7.pilihPita([], 2), [2], "pilih pita pertama");
-  sama(D7.pilihPita([2], 0), [2, 0], "pilih pita kedua");
-  sama(D7.pilihPita([2, 0], 3), [0, 3], "pilih pita ketiga menggeser yang tertua");
-  sama(D7.pilihPita([2, 0], 2), [0], "ketuk lagi melepas");
-  cek(/Biru dan Hijau|Biru/.test(D7.ucapanBanding([5, 8, 3, 6], false, true)) && /belum sejajar/.test(D7.ucapanBanding([5, 8, 3, 6], false, false)) && !/belum sejajar/.test(D7.ucapanBanding([5, 8, 3, 6], true, true)) && /diurutkan/.test(D7.ucapanBanding([5, 8, 3, 6], true, true)), "ucapan banding");
-}
-
 /* ----------------- Bab 4 (Materi): kelompok, gabungan, kelompok bentuk ----------------- */
 {
   // Laboratorium Kelompok: tiap aturan memecah sembilan balok tanpa sisa dan tanpa ganda.
@@ -982,121 +898,19 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   sama(E6.rapikanBelasan({ a: 10, b: 2 }, "kurang"), { a: 11, b: 1 }, "10 kurang dijepit jadi 11 − 1");
   sama(E6.hasilBelasan({ a: 16, b: 6 }, "kurang"), 10, "satuan habis: 16 − 6 = 10");
   sama(E6.tabelBelasan({ a: 16, b: 6 }, "kurang")[1], { nama: "10", puluhan: 1, satuan: 0 }, "satuan habis di tabel");
-}{
-  // Bab 7 Sub-Bab A: banding tanpa angka (hanya mata), pensil, dan dua benda.
-  const A = { benda: "pita", satuan: "stik", angka: false };
-  const P = { benda: "pensil", satuan: "kotak", angka: true };
-  for (let i = 0; i < 4; i += 1) {
-    for (let j = 0; j < 4; j += 1) {
-      const pj = [5, 8, 3, 6];
-      const k = D7.bandingDua(pj, i, j, A);
-      if (i === j) {
-        if (!/dirinya sendiri/.test(k) || !/Pilih pita lain/.test(k)) cek(false, `tanpa angka diri sendiri ${i}`);
-      } else {
-        if (/\d/.test(k)) cek(false, `tanpa angka tidak boleh memuat angka: ${k}`);
-        if (/stik/.test(k)) cek(false, `tanpa angka tidak boleh memuat satuan: ${k}`);
-        const lebihI = pj[i] > pj[j];
-        const lebih = D7.PITA[lebihI ? i : j].nama;
-        const kurang = D7.PITA[lebihI ? j : i].nama;
-        if (!k.includes(`Pita ${lebih} lebih panjang dari pita ${kurang}`) || !k.includes(`Pita ${kurang} lebih pendek dari pita ${lebih}`)) cek(false, `tanpa angka kalimat ${i},${j}: ${k}`);
-        const kp = D7.bandingDua(pj, i, j, P);
-        if (!kp.includes(`Pensil ${lebih} lebih panjang ${Math.abs(pj[i] - pj[j])} kotak dari pensil ${kurang}`)) cek(false, `pensil kotak ${i},${j}: ${kp}`);
-      }
-    }
-  }
-  cek(true, "kalimat banding tanpa angka dan pensil kotak untuk semua pasangan");
-  sama(D7.bandingDua([5, 5, 3, 6], 0, 1, A), "Pita Merah dan pita Biru sama panjang.", "sama panjang tanpa angka");
-  sama(D7.bandingDua([5, 5, 3, 6], 0, 1, P), "Pensil Merah dan pensil Biru sama panjang, masing-masing 5 kotak.", "sama panjang pensil kotak");
-  sama(D7.kalimatPaling([5, 8, 3, 6], A), "Terpanjang: pita Biru. Terpendek: pita Hijau.", "paling tanpa angka");
-  sama(D7.kalimatPaling([5, 8, 3, 6]), "Terpanjang: pita Biru (8 stik). Terpendek: pita Hijau (3 stik).", "paling bawaan berangka");
-  sama(D7.kalimatPaling([8, 8, 3, 3], A), "Terpanjang: pita Merah dan Biru. Terpendek: pita Hijau dan Kuning.", "paling kembar");
-  sama(D7.kalimatPaling([9, 9, 3, 6], P), "Terpanjang: pensil Merah dan Biru (9 kotak). Terpendek: pensil Hijau (3 kotak).", "paling pensil kotak");
-  cek(!/\d/.test(D7.ucapanBanding([5, 8, 3, 6], true, false, A)) && /belum sejajar/.test(D7.ucapanBanding([5, 8, 3, 6], true, false, A)) && /Pensil/.test(D7.ucapanBanding([5, 8, 3, 6], false, true, { ...A, benda: "pensil" })), "ucapan banding tanpa angka");
-  cek(/Ketuk kedua pita/.test(D7.ucapanDua([5, 8], true, [], A)) && !/belum sejajar/.test(D7.ucapanDua([5, 8], true, [], A)) && /belum sejajar/.test(D7.ucapanDua([5, 8], false, [0, 1], A)) && /Pita Biru lebih panjang dari pita Merah/.test(D7.ucapanDua([5, 8], true, [0, 1], A)), "ucapan dua pita");
-  sama(D7.GAYA_BAWAAN, { benda: "pita", satuan: "stik", angka: true }, "gaya bawaan berangka");
-  // dua pita: geseran tidak sejajar ada untuk dua yang pertama dan muat
-  cek(D7.GESER_TAK_SEJAJAR.slice(0, 2).some((g) => g > 0), "dua pita pertama tidak sejajar di awal");
-}
-
-{
-  // Bab 7 Sub-Bab A: tinggi dan rendah (posisi kupu-kupu).
-  sama(Q7.KUPU.length, 3, "tiga kupu-kupu");
-  sama(Q7.TINGGI_AWAL, [3, 6, 9], "awal mengikuti cerita buku");
-  sama(Q7.ubahTinggi([3, 6, 9], 0, 1), [4, 6, 9], "naikkan kuning");
-  sama(Q7.ubahTinggi([1, 6, 9], 0, -1), [1, 6, 9], "tinggi minimal 1");
-  sama(Q7.ubahTinggi([3, 6, 10], 2, 1), [3, 6, 10], "tinggi maksimal 10");
-  sama(Q7.ubahTinggi([3, 6, 9], 7, 1), [3, 6, 9], "indeks di luar daftar diabaikan");
-  sama(Q7.tertinggi([3, 6, 9]), [2], "tertinggi");
-  sama(Q7.terendah([3, 6, 9]), [0], "terendah");
-  sama(Q7.tertinggi([9, 6, 9]), [0, 2], "tertinggi kembar");
-  sama(Q7.terendah([3, 3, 9]), [0, 1], "terendah kembar");
-  sama(Q7.kalimatPalingPosisi([3, 6, 9]), "Paling tinggi: kupu-kupu hijau. Paling rendah: kupu-kupu kuning.", "kalimat paling awal");
-  sama(Q7.kalimatPalingPosisi([9, 6, 9]), "Paling tinggi: kupu-kupu kuning dan kupu-kupu hijau. Paling rendah: kupu-kupu merah.", "kalimat paling kembar");
-  sama(Q7.kalimatPalingPosisi([5, 5, 5]), "Ketiga kupu-kupu sama tinggi.", "ketiganya sama tinggi");
-  for (let i = 0; i < 3; i += 1) {
-    for (let j = 0; j < 3; j += 1) {
-      const t = [3, 6, 9];
-      const k = Q7.bandingPosisi(t, i, j);
-      if (i === j) {
-        if (!/dirinya sendiri/.test(k)) cek(false, `posisi diri sendiri ${i}`);
-      } else {
-        const atas = Q7.KUPU[t[i] > t[j] ? i : j].nama;
-        const bawah = Q7.KUPU[t[i] > t[j] ? j : i].nama;
-        if (!k.includes(`Kupu-kupu ${atas} terbang lebih tinggi dari kupu-kupu ${bawah}`) || !k.includes(`Kupu-kupu ${bawah} terbang lebih rendah dari kupu-kupu ${atas}`)) cek(false, `posisi ${i},${j}: ${k}`);
-        if (/\d/.test(k)) cek(false, `posisi tanpa angka ${i},${j}`);
-      }
-    }
-  }
-  cek(true, "banding posisi semua pasangan konsisten");
-  cek(/sama tinggi/.test(Q7.bandingPosisi([5, 5, 9], 0, 1)), "dua kupu-kupu sama tinggi");
-  sama(Q7.pilihKupu([], 1), [1], "pilih kupu pertama");
-  sama(Q7.pilihKupu([1], 2), [1, 2], "pilih kupu kedua");
-  sama(Q7.pilihKupu([1, 2], 0), [2, 0], "pilih kupu ketiga menggeser yang tertua");
-  sama(Q7.pilihKupu([1, 2], 1), [2], "ketuk lagi melepas");
-  cek(/Paling tinggi/.test(Q7.ucapanPosisi([3, 6, 9], [])) && /lebih tinggi/.test(Q7.ucapanPosisi([3, 6, 9], [0, 2])), "ucapan posisi");
-}
-
-{
-  // Bab 7 Sub-Bab B: tebak dan campur alat ukur di Meja Ukur.
-  sama(U7.kalimatTebak(4, 5, "Stik"), "Tebakanmu 4 stik, hasil ukurnya 5 stik. Selisihnya 5 − 4 = 1.", "tebak kurang");
-  sama(U7.kalimatTebak(7, 4, "Stik"), "Tebakanmu 7 stik, hasil ukurnya 4 stik. Selisihnya 7 − 4 = 3.", "tebak lebih");
-  sama(U7.kalimatTebak(4, 4, "Klip kecil"), "Tebakanmu 4 klip kecil, hasil ukurnya 4 klip kecil. Tebakanmu tepat!", "tebak tepat");
-  for (const id of ["balok", "stik", "klip"]) {
-    const lain = U7.satuanLain(id);
-    cek(lain.id !== id, `satuan lain berbeda dari ${id}`);
-    for (let n = 0; n <= 9; n += 1) {
-      const dasar = { id, n, dariTengah: false, celah: false, tumpuk: false };
-      const h0 = U7.susun(dasar);
-      const h1 = U7.susun({ ...dasar, campur: false });
-      if (JSON.stringify(h0) !== JSON.stringify(h1)) cek(false, `campur mati sama dengan bawaan ${id} ${n}`);
-      if (!h0.kotak.every((k) => k.id === id)) cek(false, `semua kotak satu jenis ${id} ${n}`);
-      const hc = U7.susun({ ...dasar, campur: true });
-      const jenis = new Set(hc.kotak.map((k) => k.id));
-      if (n >= 2) {
-        if (jenis.size !== 2 || hc.status !== "salah-cara" || !hc.masalah.some((m) => /dicampur/.test(m))) cek(false, `campur dianggap salah ${id} ${n}`);
-      } else if (hc.masalah.some((m) => /dicampur/.test(m))) cek(false, `satu alat belum bisa dicampur ${id} ${n}`);
-      // kotak tetap berderet rapat tanpa celah dan tanpa tumpukan
-      for (let i = 1; i < hc.kotak.length; i += 1) if (hc.kotak[i].x !== hc.kotak[i - 1].x + hc.kotak[i - 1].lebar) cek(false, `deret rapat ${id} ${n}`);
-    }
-  }
-  cek(true, "campur alat ukur diperiksa untuk semua satuan dan jumlah");
-  cek(/Tebakanmu 3 stik/.test(U7.ucapanUkur({ id: "stik", n: 4, dariTengah: false, celah: false, tumpuk: false }, 3)) && !/Tebakanmu/.test(U7.ucapanUkur({ id: "stik", n: 4, dariTengah: false, celah: false, tumpuk: false })), "ucapan ukur memuat tebakan bila diminta");
-  cek(!/Tebakanmu/.test(U7.ucapanUkur({ id: "stik", n: 2, dariTengah: false, celah: false, tumpuk: false }, 3)), "ucapan belum pas tidak memuat tebakan");
 }
 
 /* ---------------- Misi dan tantangan bebas (pola hibrida) ---------------- */
 {
   const kosong = new Set();
-  const U = (id, n, status, tebak) => ({ alat: "ukur", id, n, status, tebak });
-  const Bd = (o) => ({ alat: "banding", panjang: [5, 8, 3, 6], sejajar: false, urut: false, dipilih: [], satuan: "stik", angka: false, ...o });
-  const BdB = (o) => Bd({ panjang: [5, 9, 3, 6], satuan: "kotak", angka: true, ...o });
-  const Ps = (o) => ({ alat: "posisi", tinggi: [3, 6, 9], dipilih: [], ...o });
+  const Lt = (o) => ({ alat: "lantai", mode: "ukur", benda: "tali", pakai: "sedotan", dipasang: 0, celah: 0, kira: null, tuntas: [], diperiksa: 0, celahDicoba: 0, merah: 0, biru: 0, selisihTiga: false, pesan: null, ...o });
+  const Tk = (o) => ({ alat: "tukang", mode: "sejajar", sejajar: false, dipilih: [], bandingTuntas: 0, samaTuntas: 0, tali: null, diperiksa: [], susunan: [], urutNaik: false, urutTurun: false, ...o });
 
   // Keadaan awal tiap alat tidak boleh langsung memenuhi misi apa pun.
   for (const sub of ["A", "B"]) {
     const daftar = M7.daftarMisiBab7(sub);
-    const awal = [Bd({}), BdB({}), Ps({}), U("stik", 0, "kurang", 5), U("klip", 0, "kurang", 5)];
-    for (const k of awal) cek(M0.misiBaru(daftar, k, kosong).length === 0, `bab7 ${sub}: keadaan awal ${k.alat}/${k.satuan ?? k.id ?? ""} tidak memenuhi misi`);
+    const awal = sub === "A" ? Tk({}) : Lt({});
+    cek(M0.misiBaru(daftar, awal, kosong).length === 0, `bab7 ${sub}: keadaan awal ${awal.alat} tidak memenuhi misi`);
     cek(daftar.filter((m) => m.wajib).length >= 4, `bab7 ${sub}: minimal 4 misi wajib`);
     cek(daftar.some((m) => !m.wajib), `bab7 ${sub}: ada tantangan bebas`);
     cek(new Set(daftar.map((m) => m.id)).size === daftar.length, `bab7 ${sub}: id misi unik`);
@@ -1104,46 +918,29 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   cek(M7.daftarMisiBab7("A") === M7.MISI_A && M7.daftarMisiBab7("B") === M7.MISI_B, "bab7: daftarMisi per sub-bab");
 
   const ada = (sub, k, id) => M0.misiBaru(M7.daftarMisiBab7(sub), k, kosong).includes(id);
-  // Sub-Bab A
-  cek(ada("A", Bd({ dipilih: [0, 1] }), "a-dua"), "A: dua pensil dipilih");
-  cek(!ada("A", Bd({ dipilih: [0] }), "a-dua"), "A: satu pensil belum cukup");
-  cek(ada("A", Bd({ sejajar: true }), "a-sejajar"), "A: sejajar");
-  cek(ada("A", Bd({ panjang: [5, 5, 3, 6] }), "a-sama"), "A: dua sama panjang");
-  cek(ada("A", Bd({ urut: true }), "a-urut"), "A: urut");
-  cek(ada("A", Ps({ tinggi: [7, 6, 9] }), "a-kupu"), "A: kuning lebih tinggi dari merah");
-  cek(!ada("A", Ps({ tinggi: [6, 6, 9] }), "a-kupu"), "A: sama tinggi belum cukup");
-  cek(ada("A", Bd({ panjang: [5, 8, 9, 6] }), "a-hijau"), "A: hijau paling panjang sendirian");
-  cek(!ada("A", Bd({ panjang: [5, 9, 9, 6] }), "a-hijau"), "A: hijau kembar dengan biru bukan tantangan");
-  cek(ada("A", Ps({ tinggi: [10, 6, 9] }), "a-puncak"), "A: kuning paling tinggi sendirian");
-  cek(!ada("A", Ps({ tinggi: [9, 6, 9] }), "a-puncak"), "A: kuning kembar di puncak bukan tantangan");
-  // Sub-Bab B
-  cek(ada("B", U("stik", 4, "tepat", 5), "b-stik"), "B: stik tepat");
-  cek(!ada("B", U("balok", 3, "tepat", 5), "b-stik"), "B: balok bukan misi stik");
-  cek(!ada("B", U("stik", 3, "kurang", 5), "b-stik"), "B: stik kurang belum");
-  cek(ada("B", U("stik", 4, "tepat", 4), "b-tebak"), "B: tebakan sama dengan hasil");
-  cek(!ada("B", U("stik", 4, "tepat", 5), "b-tebak"), "B: tebakan beda tidak lulus");
-  cek(ada("B", U("stik", 4, "salah-cara", 4), "b-salah"), "B: cara salah dicoba");
-  cek(ada("B", U("klip", 6, "tepat", 5), "b-klip"), "B: klip tepat");
-  cek(ada("B", U("balok", 3, "tepat", 5), "b-balok"), "B: balok tepat");
-  cek(ada("B", BdB({ panjang: [5, 9, 7, 6] }), "b-kotak"), "B: hijau 2 kotak lebih panjang dari merah");
-  cek(!ada("B", BdB({ panjang: [5, 9, 6, 6] }), "b-kotak"), "B: selisih 1 belum");
-  cek(!ada("B", Bd({ panjang: [5, 9, 7, 6] }), "b-kotak"), "B: pensil tanpa angka belum cukup");
-  cek(ada("B", BdB({ sejajar: true, urut: true }), "b-ingat"), "B: sejajar dan urut");
-  cek(!ada("B", BdB({ sejajar: true }), "b-ingat"), "B: hanya sejajar belum");
-  // Hasil benar ketiga satuan dan tebakan awal tidak kebetulan.
-  cek(["balok", "stik", "klip"].every((id) => U7.hasilBenar(id) !== 5), "tebakan awal 5 tidak sama dengan hasil benar satuan mana pun");
-  for (const id of ["balok", "stik", "klip"]) {
-    const n = U7.hasilBenar(id);
-    const st = U7.susun({ id, n, dariTengah: false, celah: false, tumpuk: false, campur: false }).status;
-    cek(st === "tepat", `ukur ${id} ${n} berstatus tepat`);
+  // Sub-Bab A memakai Simulasi Meja Tukang (tiang-k1b7a). Rincian misi dan keadaan di scripts/uji-tiang-k1b7a.mjs.
+  {
+    cek(M0.misiBaru(M7.daftarMisiBab7("A"), Tk({}), kosong).length === 0, "A: keadaan awal meja tukang tidak memenuhi misi");
+    cek(ada("A", Tk({ sejajar: true }), "a-lurus") && !ada("A", Tk({}), "a-lurus"), "A: luruskan di garis awal");
+    cek(ada("A", Tk({ bandingTuntas: 1 }), "a-banding") && !ada("A", Tk({ dipilih: [0, 1] }), "a-banding"), "A: banding hanya dihitung setelah sejajar");
+    cek(ada("A", Tk({ tali: 0, diperiksa: [1, 2, 3] }), "a-tali") && !ada("A", Tk({ tali: 0, diperiksa: [1, 2] }), "a-tali") && !ada("A", Tk({ tali: null, diperiksa: [1, 2, 3] }), "a-tali"), "A: tali dibawa ke tiga tiang");
+    cek(ada("A", Tk({ urutNaik: true }), "a-tangga") && !ada("A", Tk({ urutTurun: true }), "a-tangga"), "A: tangga dari yang paling pendek");
+    cek(ada("A", Tk({ samaTuntas: 1 }), "a-sama") && ada("A", Tk({ urutTurun: true }), "a-turun") && !ada("A", Tk({ urutNaik: true }), "a-turun"), "A: tantangan bebas");
   }
-  cek(M7.puncakTunggal([1, 3, 2]) === 1 && M7.puncakTunggal([3, 3, 2]) === -1, "puncakTunggal");
-
+  // Sub-Bab B memakai Simulasi Papan Lantai (lantai-k1b7b). Rincian misi dan keadaan di scripts/uji-lantai-k1b7b.mjs.
+  {
+    cek(ada("B", Lt({ tuntas: ["tali:sedotan"] }), "b-rapat") && !ada("B", Lt({}), "b-rapat"), "B: ukur rapat tuntas");
+    cek(ada("B", Lt({ tuntas: ["tali:sedotan", "tali:tongkat"] }), "b-alat") && !ada("B", Lt({ tuntas: ["tali:sedotan", "bangku:tongkat"] }), "b-alat"), "B: benda sama dengan dua alat");
+    cek(ada("B", Lt({ diperiksa: 1 }), "b-kira") && !ada("B", Lt({}), "b-kira"), "B: perkiraan lalu periksa");
+    cek(ada("B", Lt({ pesan: "sedotan", tuntas: ["lantai:sedotan"] }), "b-pesan") && !ada("B", Lt({ pesan: "tongkat", tuntas: ["lantai:sedotan"] }), "b-pesan"), "B: pesan papan lantai");
+    cek(ada("B", Lt({ selisihTiga: true }), "b-petak") && ada("B", Lt({ celahDicoba: 1 }), "b-celah"), "B: tantangan bebas");
+    cek(!ada("B", Lt({}), "b-pesan") && M0.misiBaru(M7.daftarMisiBab7("B"), Lt({}), kosong).length === 0, "B: keadaan awal lantai tidak memenuhi misi");
+  }
   // misiBaru: tidak mengulang yang sudah tercatat, dan tidak mencabut.
   const dA = M7.daftarMisiBab7("A");
-  const k1 = Bd({ sejajar: true, urut: true });
+  const k1 = Tk({ sejajar: true, urutNaik: true });
   const b1 = M0.misiBaru(dA, k1, kosong);
-  sama(b1.sort(), ["a-sejajar", "a-urut"].sort(), "misiBaru memuat yang baru");
+  sama(b1.sort(), ["a-lurus", "a-tangga"].sort(), "misiBaru memuat yang baru");
   cek(M0.misiBaru(dA, k1, new Set(b1)).length === 0, "misiBaru idempoten");
 
   // Gerbang
@@ -1153,7 +950,7 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   cek(!M0.wajibSelesai(tamp, new Set(wajibIds.slice(1))), "wajibSelesai: kurang satu belum");
   cek(M0.wajibSelesai(tamp, new Set(wajibIds)), "wajibSelesai: semua wajib");
   cek(M0.wajibSelesai([], kosong), "wajibSelesai: tanpa misi dianggap selesai");
-  const h = M0.hitungMisi(tamp, new Set([wajibIds[0], "a-hijau"]));
+  const h = M0.hitungMisi(tamp, new Set([wajibIds[0], "a-turun"]));
   sama([h.wajibTercapai, h.wajibTotal, h.bebasTercapai, h.bebasTotal], [1, wajibIds.length, 1, tamp.length - wajibIds.length], "hitungMisi");
   const G = (adaMisi, wajibSelesai, dilewati, disentuh) => ({ adaMisi, wajibSelesai, dilewati, disentuh });
   cek(M0.bolehLanjut(G(false, false, false, true)) && !M0.bolehLanjut(G(false, false, false, false)), "bolehLanjut tanpa misi = disentuh");

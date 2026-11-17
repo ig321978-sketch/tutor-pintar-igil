@@ -1,98 +1,134 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { GX, OWL, SATUAN, W, emo, hasil, judul, kartu, kartuAngka, kotak, pilihan, teks, ukur, type Jenis } from "./k1b7B-gambar";
-import { bersih, hapus, idx, k, sorotkan, tambah, ukurAksi } from "./k1b7B-bantu";
+import { E, W, bengkel, deretSatuan, emo, garis, judul, kartu, orang, sedotan, sisi, teks } from "./k1b7B-gambar";
+import { bersih, hapus, hitungUnit, idx, k, tambah, ubah } from "./k1b7B-bantu";
 
-export const NAMA_METODE_ID = ["Ulangi Satuan Panjang", "Banding Panjang", "Satuan Tak Baku"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/* Video metode global Sub-Bab B "Papan Lantai Rumah Pohon": pembuka dan Unit Iteration (Mengulang Satuan). */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Unit Iteration", "Estimate and Check", "Grid Measuring"];
+export const NAMA_METODE_ID = ["Mengulang Satuan", "Kira-Kira lalu Periksa", "Ukur di Kotak-Kotak"];
+export const WARNA_METODE = [W.hijauMuda, W.krem, W.pink];
+export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara mengajarkan cara mengukur yang berbeda-beda. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu bernama Ulangi Satuan Panjang, Banding Panjang, dan Satuan Tak Baku.";
-const SUARA_O3 = "Semua metode ini menjawab satu pertanyaan. Bagaimana mengukur panjang benda dengan benar dan adil?";
-const SUARA_O4 = "Kita memakai klip, stik, dan kotak di layar. Kamu cukup melihat dan mengetuk dengan teliti.";
-const SUARA_O5 = "Semua ukuran memakai bilangan sampai dua puluh. Siap? Ayo kita mulai dengan metode pertama.";
-const SAMPEL: Jenis[] = ["klip", "stik", "kotak"];
+/* ------------------------------ 1. Pembuka ------------------------------ */
+const SUARA_O1 = "Kakek Jaya menggantung selembar poster di bengkelnya. Isinya tiga cara mengukur untuk para tukang.";
+const SUARA_O2 = "Igil bertanya, cara mana yang paling cepat untuk lantai kita?";
+const SUARA_O3 = "Tiga cara itu: Unit Iteration, Estimate and Check, dan Grid Measuring.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Mengulang Satuan, Kira-Kira lalu Periksa, dan Ukur di Kotak-Kotak.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk mengukur panjang",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Tiga metode global untuk mengukur panjang",
+  sumber: "Metode global: pembuka",
+  latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)), tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11))),
+    k(
+      SUARA_O1,
+      tambah(0, judul("Tiga cara mengukur")),
+      tambah("Kakek", ...orang("kj", 252, 110, E.kakek, "Kakek Jaya")),
+      tambah("poster", ...kartu("pos", 56, 76, 96, 50, W.krem, ["poster", "cara mengukur"], 9.4)),
+      tambah("bengkelnya.", ...bengkel("bk", 30, 64, 150, 100)),
+      ubah("tiga", { id: "pos-t1", isi: "3 cara mengukur" }),
+      tambah("tukang.", emo("tg", 214, 74, E.tukang, 24), emo("pl", 208, 150, E.palu, 20)),
+    ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      tambah("Ulangi", ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah("Banding", ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "Satuan", 2), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      tambah("Igil", ...orang("ig", 40, 176, E.igil, "Igil")),
+      tambah("cepat", emo("tn", 150, 176, E.tanya, 28)),
+      tambah("lantai", ...sisi("sd", 70, 140, 180, 12)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah("satu", emo("i1", 60, 84, "\u{1F4CF}", 34), emo("i2", 150, 84, "❓", 34), emo("i3", 240, 84, "\u{1F440}", 34)),
-      tambah("Bagaimana", ...kartu("iq", 20, 112, 260, 52, W.emas, ["bagaimana mengukur panjang benda", "dengan benar dan adil?"], 10)),
+      tambah(0, judul("3 metode global")),
+      ...NAMA_METODE.map((m, i) => tambah(idx(SUARA_O3, ["Unit", "Estimate", "Grid"][i]), ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11))),
     ),
     k(
       SUARA_O4,
       bersih(0),
-      tambah(0, judul("Satuan di layar")),
-      ...SAMPEL.map((j, i) => tambah(j === "kotak" ? "kotak" : j, kotak(`sp${i}`, 150 - SATUAN[j].w / 2 + (i - 1) * 90, 84, SATUAN[j].w, SATUAN[j].h, SATUAN[j].warna, W.biru, { rx: 2, tebal: 1.2 }), teks(`spn${i}`, 150 + (i - 1) * 90, 124, j, 10, W.ungu))),
+      tambah(0, judul("Nama dalam bahasa Indonesia")),
+      ...NAMA_METODE_ID.map((m, i) => tambah(idx(SUARA_O4, ["Mengulang", "Kira-Kira", "Ukur"][i]), ...kartu(`n${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11))),
+    ),
+  ],
+};
+
+/* ------------------------------ 2. Unit Iteration: konsep ------------------------------ */
+const SUARA_A1 = "Cara pertama, Unit Iteration, atau Mengulang Satuan.";
+const SUARA_A2 = "Pilih satu satuan, misalnya sepotong sedotan. Letakkan berulang dari ujung sampai ujung.";
+const SUARA_A3 = "Rapat, tanpa celah, tanpa tumpukan, dan tidak miring.";
+const SUARA_A4 = "Banyaknya satuan adalah panjang benda itu.";
+
+export const ADEGAN_LUAR_ULANG: AdeganStory = {
+  id: "luar-ulang",
+  judul: "Unit Iteration: mengulang satuan",
+  sumber: "Metode global: Unit Iteration",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_A1,
+      tambah("pertama,", ...kepala(0)),
+      tambah("Iteration,", ...sedotan("s0", 130, 90, 40)),
+      tambah("Mengulang", teks("ls", 150, 126, "1 satuan", 11, W.merah)),
     ),
     k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Bilangan sampai dua puluh")),
-      ...[7, 9, 12, 15].map((n, i) => tambah(0, ...kartuAngka(`ob${i}`, 20 + i * 66, 50, String(n), [W.krem, W.langit, W.hijauMuda, W.pink][i], 54, 36, 18))),
-      tambah("dua", ...kartuAngka("ob4", 124, 100, "20", W.emas, 52, 36, 20)),
-      tambah("pertama.", emo("ow", 150, 168, OWL, 30)),
+      SUARA_A2,
+      hapus(0, "s0", "s0-r", "ls"),
+      tambah("sepotong", ...sedotan("sx", 30, 150, 40)),
+      tambah("Letakkan", ...sisi("sd", 30, 90, 240)),
+      tambah("berulang", ...deretSatuan(sedotan, "s", 3, 30, 90, 40)),
+      tambah("ujung@2", ...deretSatuan(sedotan, "s", 6, 30, 90, 40), teks("ud", 150, 126, "dari ujung sampai ujung", 8.6, W.biru)),
+    ),
+    k(
+      SUARA_A3,
+      hapus(0, "ud", "sx", "sx-r"),
+      tambah("Rapat,", ...kartu("c0", 20, 126, 128, 22, W.hijauMuda, ["rapat"], 9)),
+      tambah("celah,", ...kartu("c1", 152, 126, 128, 22, W.hijauMuda, ["tanpa celah"], 9)),
+      tambah("tumpukan,", ...kartu("c2", 20, 156, 128, 22, W.langit, ["tanpa tumpukan"], 9)),
+      tambah("miring.", ...kartu("c3", 152, 156, 128, 22, W.langit, ["tidak miring"], 9)),
+    ),
+    k(
+      SUARA_A4,
+      hapus(0, "c0-k", "c0-t0", "c1-k", "c1-t0", "c2-k", "c2-t0", "c3-k", "c3-t0"),
+      tambah("Banyaknya", teks("n6", 150, 78, "6 satuan", 12, W.merah)),
+      tambah("panjang", ...kartu("bn", 50, 140, 200, 28, W.krem, ["banyak satuan: panjang benda"], 9.4)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Ulangi Satuan Panjang: konsep ------------------------------ */
-const PITA = ukur("ua", "klip", 6, GX, 60, "pita Upe", W.merahMuda);
-const SUARA_A1 = "Metode pertama bernama Ulangi Satuan Panjang. Kita memakai satu satuan, lalu mengulangnya berkali-kali.";
-const SUARA_A2 = "Pilih satu klip. Taruh tepat di garis awal.";
-const SUARA_A3 = "Ulangi klip yang sama di sebelahnya, rapat. Satu, dua, tiga, empat, lima, enam.";
-const SUARA_A4 = "Berhenti di ujung benda. Hitung berapa kali klip itu diulang. Pita ini enam klip.";
-const SUARA_A5 = "Karena satuannya sama, hasilnya adil. Ulangi satuan sampai ujung, lalu hitung.";
+/* ------------------------------ 3. Unit Iteration: terapan pada tali pegangan ------------------------------ */
+const SUARA_B1 = "Abang mengukur tali pegangan dengan potongan sedotan yang sama. Satu, dua, tiga, empat, lima, enam, tujuh sedotan.";
+const SUARA_B2 = "Panjang tali pegangan adalah tujuh sedotan.";
+const SUARA_B3 = "Cocok untuk benda lurus yang tidak terlalu panjang.";
+const SUARA_B4 = "Kurang cocok untuk benda sangat panjang, karena lama dan mudah salah hitung.";
 
-export const ADEGAN_LUAR_ULANGI: AdeganStory = {
-  id: "luar-ulangi",
-  judul: "Ulangi Satuan Panjang: ulangi satu satuan",
-  sumber: "Metode luar: Ulangi Satuan Panjang",
+export const ADEGAN_LUAR_ULANG_TERAPAN: AdeganStory = {
+  id: "luar-ulang-terapan",
+  judul: "Unit Iteration: tali pegangan diukur sedotan",
+  sumber: "Metode global: Unit Iteration, terapan",
   latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_A1, tambah("pertama", ...kepala(0)), tambah("Kita", ...PITA.bar, PITA.garisAwal)),
-    k(SUARA_A2, tambah("tepat", PITA.unit(0)), tambah("garis", teks("ga", GX, 124, "garis awal", 8.4, W.merah))),
-    k(SUARA_A3, hapus(0, "ga"), ...ukurAksi(SUARA_A3, PITA, { setelah: "rapat," })),
-    k(SUARA_A4, tambah("Hitung", teks("ul", 150, 150, "diulang sampai ujung", 9.4, W.coklat)), tambah(idx(SUARA_A4, "klip", 2), hasil("ua", "klip", 6, 230, 128, 12))),
-    k(SUARA_A5, hapus(0, "tg", "ul"), tambah("Karena", ...kartu("ak", 14, 170, 272, 24, W.emas, ["ulangi satu satuan, lalu hitung"], 9.6))),
-  ],
-};
-
-/* ------------------------------ 3. Ulangi Satuan Panjang: terapan ------------------------------ */
-const IKAN = ukur("ub", "kotak", 9, GX, 60, "ikan Halim", W.pink);
-const SUARA_B1 = "Terapkan pada ikan Halim. Kita ulangi kotak satuan dari garis awal.";
-const SUARA_B2 = "Hitung kotaknya. Satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan.";
-const SUARA_B3 = "Berapa panjang ikan itu? Ketuk jawabannya. Delapan, sembilan, atau sepuluh?";
-const SUARA_B4 = "Betul! Ikan Halim sembilan kotak. Satuan diulang sampai ujung.";
-
-export const ADEGAN_LUAR_ULANGI_TERAPAN: AdeganStory = {
-  id: "luar-ulangi-terapan",
-  judul: "Ulangi Satuan Panjang: ikan Halim",
-  sumber: "Metode luar: Ulangi Satuan Panjang, terapan",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(SUARA_B1, tambah("Terapkan", ...kepala(0)), tambah("ikan", ...IKAN.bar, IKAN.garisAwal)),
-    k(SUARA_B2, ...ukurAksi(SUARA_B2, IKAN, { setelah: "kotaknya." })),
-    k(SUARA_B3, hapus(0, "tg"), tambah("Ketuk", ...pilihan(150, ["8", "9", "10"]))),
-    k(SUARA_B4, sorotkan("Betul!", "c2-k"), tambah("sembilan", hasil("ub", "kotak", 9, 150, 136, 14))),
+    k(
+      SUARA_B1,
+      tambah(0, ...kepala(0)),
+      tambah("Abang", ...orang("ab", 262, 150, E.abang, "Abang")),
+      tambah("tali", garis("tl", 30, 100, 238, 0, W.coklat, 4, { gambar: true }), teks("lt", 80, 74, "tali pegangan", 9.4, W.coklat)),
+      ...hitungUnit(SUARA_B1, sedotan, "s", 7, 30, 100, 34, { setelah: "sama.", u: 9 }),
+      tambah("sedotan.@2", teks("hs", 150, 150, "7 sedotan", 14, W.merah)),
+    ),
+    k(
+      SUARA_B2,
+      tambah("Panjang", ...kartu("pj", 50, 164, 200, 26, W.krem, ["tali pegangan: 7 sedotan"], 10)),
+    ),
+    k(
+      SUARA_B3,
+      hapus(0, "pj-k", "pj-t0", "hs"),
+      tambah("Cocok", ...kartu("cc", 40, 132, 220, 30, W.hijauMuda, ["cocok: benda lurus"], 10.5), emo("ok", 276, 148, E.benar, 18)),
+      tambah("panjang.", teks("tt", 150, 182, "yang tidak terlalu panjang", 8.6, W.biru)),
+    ),
+    k(
+      SUARA_B4,
+      hapus(0, "tt"),
+      tambah("Kurang", ...kartu("kc", 40, 168, 220, 26, W.merahMuda, ["kurang cocok: sangat panjang"], 10)),
+      tambah("lama", emo("jm", 276, 178, E.jam, 18)),
+    ),
   ],
 };
