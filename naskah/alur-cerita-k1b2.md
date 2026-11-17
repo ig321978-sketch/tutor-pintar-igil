@@ -9,7 +9,7 @@ Cerita berakhir di Sub-Bab C.
 |---|---|---|---|---|
 | A (Cerita Penjumlahan) | Bibit Kiriman Nenek | Halaman belakang kosong. Satu bibit perlu satu lubang tanam; bibit datang sedikit demi sedikit, jadi lubang yang digali harus pas dengan banyak semua bibit (kurang = bibit layu) | Bertambah (datang lagi) dan hitung maju dari bilangan pertama; tulis dan baca kalimat penjumlahan dengan tanda tambah dan sama dengan; menggabungkan dua kumpulan; bedeng dua baris lima lubang seperti bingkai sepuluh; tambah nol; sampai sepuluh. Metode global: Counting On, Part-Part-Whole, Ten Frame | Semua bibit tertanam pas di lubangnya dan Abang memasang papan catatan kebun (4 + 2 = 6, 3 + 5 = 8, 7 + 0 = 7, 6 + 4 = 10). Mamah: "Kita siram tiap hari, nanti kita panen." |
 | B (Berbagai Cara) | Panen Pertama dan Keranjang Sepuluh | Sayur sudah tumbuh dan dipanen. Hasil panen harus ditata ke keranjang yang muat tepat sepuluh dan ke kantong kecil berisi sama banyak; menghitung satu per satu terlalu lama | Tukar tempat (hasilnya sama), hitung maju dari bilangan yang lebih besar, penjumlahan kembar (dua kantong sama banyak), penjumlahan berulang, pasangan yang hasilnya sepuluh untuk mengisi keranjang. Metode global: Make Ten, Doubles, Number Line | Semua keranjang terisi tepat sepuluh dan kantong rapi. Tetangga melihat dan mulai memesan sayur (jembatan ke Sub-Bab C). |
-| C (Soal Cerita, akhir) | Pesanan Tetangga | Pesanan tetangga datang lewat pesan suara berupa cerita; tiap pesanan harus dibaca, dihitung, dan diperiksa supaya tidak salah kirim | Baca cerita, cari dua bilangan, pilih tanda tambah, tulis kalimat penyelesaian, jawab dengan kalimat lengkap, periksa lagi. Metode global dipilih saat Sub-Bab C dikerjakan | Semua pesanan terkirim tepat. Pesta panen kecil di kebun; Kebun Sayur Mamah selesai. Cerita bab berakhir. |
+| C (Soal Cerita, akhir) | Pesanan Tetangga | Pesanan tetangga datang lewat pesan suara berupa cerita; tiap pesanan harus dibaca, dihitung, dan diperiksa supaya tidak salah kirim | Baca cerita, cari dua bilangan, pilih tanda tambah, tulis kalimat penyelesaian, jawab dengan kalimat lengkap, periksa lagi. Metode global: Act It Out, Read-Draw-Write, Bar Model | Semua pesanan terkirim tepat. Pesta panen kecil di kebun; Kebun Sayur Mamah selesai. Cerita bab berakhir. |
 
 ## Sub-Bab A secara rinci (dikerjakan sekarang)
 
@@ -43,3 +43,15 @@ Story metode global: Number Line (Garis Bilangan) terong 5 dan 4; Doubles (Penju
 Mind-map "Gerobak Panen" (bendera Masalah, delapan karung berurutan, peti Hasil); Infografis "Nota Panen"; Simulasi "Meja Kemas" (Misi Panen bagian 1).
 CPA: Misi Panen bagian 2 sampai 10 (Metode IGIL: pasangan bilangan dan tukar tempat; Number Line; Doubles; Make Ten), pola visual anyaman keranjang,
 cetak biru, dan nota. Abstract diakhiri Poin Penting.
+
+## Sub-Bab C secara rinci (selesai, akhir cerita Bab 2)
+
+Story materi "Pesanan Tetangga": pesan suara tetangga berbentuk cerita dan langkah soal cerita (baca, cari bilangan, tulis, jawab, periksa);
+pesan pertama empat tomat dan tiga tomat (bilangan disorot, kata semuanya berarti tanda tambah), kalimat 4 + 3 = 7 dan jawaban lengkap "Jadi, 7 tomat";
+pesan kedua dua timun lalu lima lagi, diperiksa dengan tukar tempat; pesan Nenek enam wortel dan empat jagung, hitung maju sampai sepuluh;
+semua pesanan terkirim, pesta panen, Kebun Sayur Mamah selesai.
+Story metode global: Act It Out (Peragakan) bawang 3 dan 2; Read-Draw-Write (Baca-Gambar-Tulis) terong 3 dan 6; Bar Model (Model Batang) kentang 2 dan 6.
+Mind-map "Loker Pos" (amplop Masalah, sembilan loker berurutan, kantong kirim Hasil); Infografis "Label Kiriman"; Simulasi "Pembuat Pesanan"
+(Misi Pesanan bagian 1: anak membuat cerita sendiri, memeriksa dengan tukar tempat, dan mengirim). CPA: Misi Pesanan bagian 2 sampai 10
+(Metode IGIL: baca, cari bilangan, tulis, jawab; Act It Out; Read-Draw-Write; Bar Model), pola visual karung goni, peta jalan, dan amplop pos.
+Abstract diakhiri Poin Penting dan perayaan akhir bab.

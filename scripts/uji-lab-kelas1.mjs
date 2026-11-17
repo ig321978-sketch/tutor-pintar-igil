@@ -1231,7 +1231,8 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   // Sub-Bab A memakai Bedeng Mamah (kebun-k1b2a): timun 3 datang 4, kentang 5 datang 5, bawang 6 keranjang kosong. Rincian di scripts/uji-kebun-k1b2a.mjs.
   const KB = (o) => ({ alat: "kebun", sayur: "timun", mula: { timun: 3, kentang: 5, bawang: 6 }, datang: { timun: 4, kentang: 5, bawang: 0 }, tanam: { timun: 0, kentang: 0, bawang: 0 }, catat: { timun: [], kentang: [], bawang: [] }, ...o });
   const PN = (o) => ({ alat: "panen", a: 3, b: 1, ditukar: 0, catat: [], ...o });
-  ujiStruktur("bab2", X2.daftarMisiBab2, ["A", "B", "C"], { A: KB({}), B: PN({}), C: T2({ garis: true, bagan: true }) });
+  const PS2 = (o) => ({ alat: "pesanan", sayur: "tomat", jenis: "datang", a: 1, b: 1, diperiksa: 0, kirim: [], ...o });
+  ujiStruktur("bab2", X2.daftarMisiBab2, ["A", "B", "C"], { A: KB({}), B: PN({}), C: PS2({}) });
   const ada = (sub, k, id) => M0.misiBaru(X2.daftarMisiBab2(sub), k, kosong).includes(id);
   const SEL = (id) => ({ alat: "selesai", id });
   const CT = (timun, kentang = [], bawang = []) => ({ timun, kentang, bawang });
@@ -1243,9 +1244,10 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   cek(ada("B", PN({ ditukar: 1, a: 1, b: 3 }), "b-tukar") && !ada("B", PN({}), "b-tukar") && ada("B", PN({ a: 2, b: 6 }), "b-maju") && !ada("B", PN({ a: 6, b: 2 }), "b-maju"), "bab2 B: tukar dan hitung maju");
   cek(ada("B", PN({ catat: ["4+4=8"] }), "b-kembar") && !ada("B", PN({ catat: ["0+0=0"] }), "b-kembar") && ada("B", PN({ catat: ["6+4=10", "4+6=10"] }), "b-sepuluh") && !ada("B", PN({ catat: ["6+4=10"] }), "b-sepuluh"), "bab2 B: kembar dan sepuluh");
   cek(ada("B", PN({ catat: ["5+0=5"] }), "b-nol") && ada("B", PN({ catat: ["4+5=9"] }), "b-sembilan") && !ada("B", T2({ a: 4, b: 4 }), "b-kembar"), "bab2 B: bebas");
-  cek(ada("C", T2({ a: 5, b: 3 }), "c-cerita") && ada("C", T2({ garis: true, a: 4, b: 2 }), "c-garis") && ada("C", T2({ ditukar: 2, a: 6, b: 2 }), "c-tukar"), "bab2 C: periksa");
-  cek(!ada("C", T2({ a: 6, b: 2 }), "c-tukar"), "bab2 C: tukar harus ditekan");
-  cek(ada("C", SEL("kantin"), "c-kantin") && ada("C", SEL("mesin"), "c-mesin") && ada("C", T2({ a: 7, b: 3 }), "c-sepuluh"), "bab2 C: kantin, mesin, sepuluh");
+  // Sub-Bab C memakai Pembuat Pesanan (pesanan-k1b2c). Rincian di scripts/uji-pesanan-k1b2c.mjs.
+  cek(ada("C", PS2({ kirim: ["datang:3+4=7:tomat"] }), "c-datang") && ada("C", PS2({ kirim: ["gabung:3+4=7:tomat"] }), "c-gabung") && !ada("C", PS2({ kirim: ["datang:3+4=7:tomat"] }), "c-gabung"), "bab2 C: cerita datang dan gabung");
+  cek(ada("C", PS2({ kirim: ["datang:6+4=10:timun"] }), "c-sepuluh") && ada("C", PS2({ diperiksa: 1 }), "c-periksa") && !ada("C", PS2({}), "c-periksa"), "bab2 C: sepuluh dan periksa");
+  cek(ada("C", PS2({ kirim: ["datang:5+0=5:tomat"] }), "c-nol") && ada("C", PS2({ kirim: ["datang:1+1=2:tomat", "datang:1+1=2:timun", "datang:1+1=2:wortel"] }), "c-tiga") && !ada("C", T2({ a: 6, b: 4 }), "c-sepuluh"), "bab2 C: bebas");
 }
 
 /* ---------------- Misi Bab 3 (hibrida) ---------------- */

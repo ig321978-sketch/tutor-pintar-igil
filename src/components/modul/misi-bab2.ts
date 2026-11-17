@@ -2,15 +2,16 @@
  * Misi dan tantangan bebas Bab 2 (Penjumlahan sampai 10). Murni: tanpa React, tanpa jaringan.
  * Diuji di scripts/uji-lab-kelas1.mjs.
  *
- * Simulasi bertahap: satu Laboratorium Penjumlahan yang membuka alat sedikit demi sedikit
- * (A: Bedeng Mamah, Misi Kebun bagian satu (kebun-k1b2a); B: Lab Penjumlahan + bagan pasangan, garis bilangan, Tukar tempat;
- * C: semua alat + tab Kantin Sekolah, sekaligus simulasi pencapaian misi bab ini).
+ * Satu simulasi bercerita per sub-bab, melanjutkan cerita Kebun Sayur Mamah:
+ * A: Bedeng Mamah, Misi Kebun bagian satu (kebun-k1b2a); B: Meja Kemas, Misi Panen bagian satu (panen-k1b2b);
+ * C: Pembuat Pesanan, Misi Pesanan bagian satu (pesanan-k1b2c), sub-bab akhir.
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanKebun } from "./kebun-k1b2a/logika";
 import type { KeadaanPanen } from "./panen-k1b2b/logika";
+import type { KeadaanPesanan } from "./pesanan-k1b2c/logika";
 
 export type KeadaanTambah = {
   alat: "tambah";
@@ -27,11 +28,7 @@ export type KeadaanTambah = {
   bagan: boolean;
 };
 
-export type KeadaanBab2 = KeadaanTambah | KeadaanSelesai | KeadaanKebun | KeadaanPanen;
-
-const tam = (k: KeadaanBab2): k is KeadaanTambah => k.alat === "tambah";
-const selesai = (k: KeadaanBab2, id: string) => k.alat === "selesai" && k.id === id;
-const jml = (k: KeadaanTambah) => k.a + k.b;
+export type KeadaanBab2 = KeadaanTambah | KeadaanSelesai | KeadaanKebun | KeadaanPanen | KeadaanPesanan;
 
 /** Sub-Bab A: Misi Kebun bagian satu, bedeng Mamah (Simulasi "Bibit Kiriman Nenek"). Timun 3 datang 4, kentang 5 datang 5, bawang 6 keranjang kosong. */
 const kebun = (k: KeadaanBab2): k is KeadaanKebun => k.alat === "kebun";
@@ -57,14 +54,20 @@ export const MISI_B: DefMisi<KeadaanBab2>[] = [
   { id: "b-sembilan", teks: "Catat kalimat yang hasilnya sembilan.", wajib: false, cek: (k) => panen(k) && k.catat.some((t) => t.endsWith("=9")) },
 ];
 
-/** Sub-Bab C (sub-bab akhir): soal cerita, periksa jawaban, sekaligus pencapaian misi bab ini. */
+/** Sub-Bab C (sub-bab akhir): Misi Pesanan bagian satu, pembuat pesanan (Simulasi "Pesanan Tetangga"). */
+const pesanan = (k: KeadaanBab2): k is KeadaanPesanan => k.alat === "pesanan";
+const isiKirim = (t: string) => {
+  const [jenis, kal] = t.split(":");
+  const [a, b, c] = kal.split(/[+=]/).map(Number);
+  return { jenis, a, b, c };
+};
 export const MISI_C: DefMisi<KeadaanBab2>[] = [
-  { id: "c-cerita", teks: "Ada 5 burung, datang lagi 3. Buat kalimat penjumlahannya.", wajib: true, cek: (k) => tam(k) && k.kalimat && k.a === 5 && k.b === 3 },
-  { id: "c-garis", teks: "Periksa dengan garis bilangan: buat merah 4 dan biru 2.", wajib: true, cek: (k) => tam(k) && k.garis && k.a === 4 && k.b === 2 },
-  { id: "c-tukar", teks: "Periksa dengan tukar tempat: buat 2 + 6, lalu tekan Tukar tempat.", wajib: true, cek: (k) => tam(k) && k.ditukar > 0 && k.a === 6 && k.b === 2 },
-  { id: "c-kantin", teks: "Selesaikan skenario Kantin Sekolah sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, "kantin") },
-  { id: "c-mesin", teks: "Ingat Sub-Bab A: selesaikan Mesin Tambah.", wajib: false, cek: (k) => selesai(k, "mesin") },
-  { id: "c-sepuluh", teks: "Buat soal cerita yang jumlahnya tepat 10.", wajib: false, cek: (k) => tam(k) && k.kalimat && jml(k) === 10 },
+  { id: "c-datang", teks: "Buat cerita datang lagi, lalu kirim pesanannya.", wajib: true, cek: (k) => pesanan(k) && k.kirim.some((t) => isiKirim(t).jenis === "datang") },
+  { id: "c-gabung", teks: "Buat cerita dua kantong digabung, lalu kirim pesanannya.", wajib: true, cek: (k) => pesanan(k) && k.kirim.some((t) => isiKirim(t).jenis === "gabung") },
+  { id: "c-sepuluh", teks: "Kirim pesanan yang semuanya sepuluh.", wajib: true, cek: (k) => pesanan(k) && k.kirim.some((t) => isiKirim(t).c === 10) },
+  { id: "c-periksa", teks: "Periksa satu pesanan dengan tukar tempat.", wajib: true, cek: (k) => pesanan(k) && k.diperiksa > 0 },
+  { id: "c-nol", teks: "Kirim pesanan dengan nol.", wajib: false, cek: (k) => pesanan(k) && k.kirim.some((t) => isiKirim(t).a === 0 || isiKirim(t).b === 0) },
+  { id: "c-tiga", teks: "Kirim tiga pesanan dengan sayur yang berbeda.", wajib: false, cek: (k) => pesanan(k) && new Set(k.kirim.map((t) => t.split(":")[2])).size >= 3 },
 ];
 
 export const daftarMisiBab2 = (sub: string): DefMisi<KeadaanBab2>[] => (sub === "B" ? MISI_B : sub === "C" ? MISI_C : MISI_A);

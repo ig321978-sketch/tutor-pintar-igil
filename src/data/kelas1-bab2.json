@@ -352,33 +352,38 @@
           "nama": "Counting On",
           "namaId": "Menghitung Maju",
           "asal": "Counting on",
-          "ringkas": "Mulai dari bilangan pertama lalu maju.",
+          "ringkas": "Simpan bilangan pertama, lalu hitung maju.",
           "tahap": [
             "Story",
             "Concrete",
+            "Pictorial",
             "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Part–Part–Whole",
-          "namaId": "Bagian–Utuh",
+          "nama": "Part-Part-Whole",
+          "namaId": "Bagian-Bagian-Utuh",
           "asal": "Singapore Math",
-          "ringkas": "Dua bagian membentuk jumlah.",
+          "ringkas": "Dua bagian digabung menjadi utuh.",
           "tahap": [
-            "Picture",
-            "Mind"
+            "Story",
+            "Concrete",
+            "Pictorial",
+            "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Ten Frame Add",
-          "namaId": "Jumlah di Bingkai Sepuluh",
+          "nama": "Ten Frame",
+          "namaId": "Bingkai Sepuluh",
           "asal": "Ten-frame",
-          "ringkas": "Gabungkan benda di bingkai.",
+          "ringkas": "Isi bingkai, lihat baris penuh dan kotak kosong.",
           "tahap": [
-            "Infografis",
-            "Concrete"
+            "Story",
+            "Concrete",
+            "Pictorial",
+            "Abstract"
           ]
         }
       ]
@@ -721,36 +726,41 @@
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Counting On",
-          "namaId": "Menghitung Maju",
-          "asal": "Counting on",
-          "ringkas": "Mulai dari bilangan pertama lalu maju.",
+          "nama": "Number Line",
+          "namaId": "Garis Bilangan",
+          "asal": "Number line",
+          "ringkas": "Mulai dari bilangan pertama, lalu melompat ke kanan.",
           "tahap": [
             "Story",
             "Concrete",
+            "Pictorial",
             "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Part–Part–Whole",
-          "namaId": "Bagian–Utuh",
-          "asal": "Singapore Math",
-          "ringkas": "Dua bagian membentuk jumlah.",
+          "nama": "Doubles",
+          "namaId": "Penjumlahan Kembar",
+          "asal": "Doubles facts",
+          "ringkas": "Dua bilangan yang sama ditambahkan.",
           "tahap": [
-            "Picture",
-            "Mind"
+            "Story",
+            "Concrete",
+            "Pictorial",
+            "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Ten Frame Add",
-          "namaId": "Jumlah di Bingkai Sepuluh",
-          "asal": "Ten-frame",
-          "ringkas": "Gabungkan benda di bingkai.",
+          "nama": "Make Ten",
+          "namaId": "Membuat Sepuluh",
+          "asal": "Make ten",
+          "ringkas": "Cari berapa lagi supaya menjadi sepuluh.",
           "tahap": [
-            "Infografis",
-            "Concrete"
+            "Story",
+            "Concrete",
+            "Pictorial",
+            "Abstract"
           ]
         }
       ]
@@ -759,7 +769,7 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Soal Cerita)",
       "fullTitle": "Sub-Bab C: Soal Cerita Penjumlahan",
-      "targetDescription": "Siswa menyelesaikan soal cerita penjumlahan sampai 10: membaca cerita, mencari dua bilangan, memilih tanda tambah, menulis penyelesaian, menjawab dengan kalimat lengkap, lalu memeriksa dan menceritakan hasilnya. Memakai Menghitung Maju, Bagian–Utuh, Jumlah di Bingkai Sepuluh. Memakai Menghitung Maju, Bagian–Utuh, Jumlah di Bingkai Sepuluh.",
+      "targetDescription": "Siswa menyelesaikan soal cerita penjumlahan sampai 10: membaca cerita, mencari dua bilangan, memilih tanda tambah, menulis kalimat penjumlahan, menjawab dengan kalimat lengkap, lalu memeriksa hasilnya. Memakai Peragakan, Baca-Gambar-Tulis, dan Model Batang.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#22C55E",
       "secondaryText": "#166534",
@@ -1123,36 +1133,41 @@
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Counting On",
-          "namaId": "Menghitung Maju",
-          "asal": "Counting on",
-          "ringkas": "Mulai dari bilangan pertama lalu maju.",
+          "nama": "Act It Out",
+          "namaId": "Peragakan",
+          "asal": "Problem solving strategy",
+          "ringkas": "Peragakan cerita dengan benda sungguhan.",
           "tahap": [
             "Story",
             "Concrete",
+            "Pictorial",
             "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Part–Part–Whole",
-          "namaId": "Bagian–Utuh",
-          "asal": "Singapore Math",
-          "ringkas": "Dua bagian membentuk jumlah.",
+          "nama": "Read-Draw-Write",
+          "namaId": "Baca-Gambar-Tulis",
+          "asal": "Read-Draw-Write",
+          "ringkas": "Baca cerita, gambar bulatan, lalu tulis kalimatnya.",
           "tahap": [
-            "Picture",
-            "Mind"
+            "Story",
+            "Concrete",
+            "Pictorial",
+            "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Ten Frame Add",
-          "namaId": "Jumlah di Bingkai Sepuluh",
-          "asal": "Ten-frame",
-          "ringkas": "Gabungkan benda di bingkai.",
+          "nama": "Bar Model",
+          "namaId": "Model Batang",
+          "asal": "Singapore Math",
+          "ringkas": "Gambar bilangan sebagai batang, lalu sambung.",
           "tahap": [
-            "Infografis",
-            "Concrete"
+            "Story",
+            "Concrete",
+            "Pictorial",
+            "Abstract"
           ]
         }
       ]
