@@ -59,3 +59,15 @@ Mind-map "Lampu Sinyal" (tiang sinyal merah Masalah, tujuh lampu sinyal beruruta
 Simulasi "Papan Kondektur" (Misi Kondektur bagian 1: atur penumpang biru dan merah, catat empat kalimat, tutup pojok segitiga dan tebak).
 CPA: Misi Kondektur bagian 2 sampai 10 (Metode IGIL: tukar tempat dan periksa; Fact Family; Fact Triangle; Think Addition), pola visual lantai gerbong papan kayu,
 lembar karbon biru, dan plat besi berpaku keling. Abstract diakhiri Poin Penting.
+
+## Sub-Bab D secara rinci (selesai, akhir cerita Bab 3)
+
+Story materi "Tiba di Rumah Nenek": kereta tiba di stasiun desa, tetangga bercerita sambil menanyakan hitungan dan setiap cerita harus dibaca teliti;
+cerita kue Nenek (enam kue dari Sub-Bab A, dua kuberikan): lingkari bilangan, kotaki kata kunci, 6 − 2 = 4, jawab "kue Nenek tinggal 4", periksa 4 + 2 = 6;
+cerita jeruk tetangga (sepuluh, tinggal tujuh) dengan model batang 10 − 7 = 3; permen Kaka berkurang dua kali 9 − 2 = 7, 7 − 4 = 3 atau gabung dulu 9 − 6 = 3;
+Igil membuat cerita sendiri (delapan gelas teh, lima diminum) dan Nenek menjawab dengan kalimat lengkap; semua berkumpul, perjalanan kereta selesai.
+Story metode global: Bar Model (Model Batang) pisang goreng 9 dan 3; CUBES (Langkah CUBES) rambutan 7 dan 5; Draw a Picture (Gambar Sketsa) ayam 10, 3, dan 2.
+Mind-map "Halaman Rumah Nenek" (papan nama desa Masalah, tujuh baju bernomor di tali jemuran, tikar makan bersama Hasil); Infografis "Kartu Resep Nenek";
+Simulasi "Pembuat Cerita Nenek" (Misi Rumah Nenek bagian 1: buat cerita sendiri, periksa dengan penjumlahan, kirim ke Nenek).
+CPA: Misi Rumah Nenek bagian 2 sampai 10 (Metode IGIL: baca, tulis, jawab, periksa; Bar Model; CUBES; Draw a Picture), pola visual taplak kotak-kotak,
+kertas surat berperangko, dan papan tulis kapur. Abstract diakhiri Poin Penting dan perayaan akhir cerita bab.

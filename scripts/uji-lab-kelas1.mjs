@@ -1262,9 +1262,10 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   const KK = (o) => ({ alat: "kursi", utuh: 5, terisi: 2, catat: [], ...o });
   // Sub-Bab C memakai Papan Kondektur (kondektur-k1b3c): mulai dua biru dan lima merah. Rincian di scripts/uji-kondektur-k1b3c.mjs.
   const KL = (o) => ({ alat: "keluarga", x: 2, y: 5, tutup: null, dibuka: [], catat: [], ...o });
-  ujiStruktur("bab3", X3.daftarMisiBab3, ["A", "B", "C", "D"], { A: BK({}), B: KK({}), C: KL({}), D: K3(penuh) });
+  // Sub-Bab D memakai Pembuat Cerita Nenek (rumah-k1b3d): mulai tujuh, tiga dimakan. Rincian di scripts/uji-rumah-k1b3d.mjs.
+  const CR = (o) => ({ alat: "cerita", benda: "kue", a: 7, b: 3, kata: "dimakan", dicek: false, diperiksa: 0, kirim: [], ...o });
+  ujiStruktur("bab3", X3.daftarMisiBab3, ["A", "B", "C", "D"], { A: BK({}), B: KK({}), C: KL({}), D: CR({}) });
   const ada = (sub, k, id) => M0.misiBaru(X3.daftarMisiBab3(sub), k, kosong).includes(id);
-  const SEL = (id) => ({ alat: "selesai", id });
   cek(ada("A", BK({ catat: CB(["6-2=4"]) }), "a-roti") && !ada("A", BK({ catat: CB(["6-1=5"]) }), "a-roti") && !ada("A", K3({ t: 6, k: 2 }), "a-roti"), "bab3 A: dua roti dicatat");
   cek(ada("A", BK({ catat: CB([], [], ["4-4=0"]) }), "a-habis") && !ada("A", BK({ catat: CB([], [], ["4-3=1"]) }), "a-habis"), "bab3 A: pisang habis, sisa nol");
   cek(ada("A", BK({ catat: CB([], ["9-0=9"]) }), "a-nol") && ada("A", BK({ catat: CB(["6-0=6", "6-1=5"]) }), "a-dua") && !ada("A", BK({ catat: CB(["6-0=6"], ["9-0=9"]) }), "a-dua"), "bab3 A: nol dan dua kalimat");
@@ -1277,8 +1278,10 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   cek(ada("C", KL({ catat: ["7-2=5", "5+2=7"] }), "c-periksa") && !ada("C", KL({ catat: ["7-2=5", "7-5=2"] }), "c-periksa"), "bab3 C: periksa dengan penjumlahan");
   cek(ada("C", KL({ dibuka: ["z"] }), "c-pucuk") && ada("C", KL({ dibuka: ["y"] }), "c-pojok") && !ada("C", KL({ dibuka: ["z"] }), "c-pojok"), "bab3 C: tutup pucuk dan pojok");
   cek(ada("C", KL({ x: 3, y: 7 }), "c-sepuluh") && !ada("C", KL({ x: 0, y: 10 }), "c-sepuluh") && ada("C", KL({ catat: ["0+4=4"] }), "c-nol"), "bab3 C: bebas");
-  cek(ada("D", K3({ ...penuh, t: 8, k: 2 }), "d-cerita") && ada("D", K3({ ...penuh, t: 7, k: 5 }), "d-dicari") && ada("D", K3({ ...penuh, t: 6, k: 2 }), "d-periksa"), "bab3 D: cerita, dicari, periksa");
-  cek(ada("D", SEL("pesta"), "d-pesta") && ada("D", SEL("bus"), "d-bus") && ada("D", K3({ ...penuh, t: 4, k: 4 }), "d-ingat"), "bab3 D: pesta, bus, ingat");
+  cek(ada("D", CR({ kirim: ["kue:dimakan:7-3=4"] }), "d-kirim") && ada("D", CR({ diperiksa: 1 }), "d-periksa") && !ada("D", CR({}), "d-periksa"), "bab3 D: kirim dan periksa");
+  cek(ada("D", CR({ kirim: ["kue:dimakan:7-7=0"] }), "d-nol") && !ada("D", CR({ kirim: ["kue:dimakan:7-3=4"] }), "d-nol"), "bab3 D: sisa nol");
+  cek(ada("D", CR({ kirim: ["kue:dimakan:7-3=4", "jeruk:dimakan:7-3=4", "teh:diminum:7-3=4"] }), "d-tiga") && !ada("D", CR({ kirim: ["kue:dimakan:7-3=4", "kue:dimakan:7-2=5"] }), "d-tiga"), "bab3 D: tiga benda");
+  cek(ada("D", CR({ kirim: ["kue:dimakan:10-3=7"] }), "d-sepuluh") && ada("D", CR({ kirim: ["kue:dimakan:7-3=4", "kue:diberikan:7-3=4"] }), "d-kata") && !ada("D", K3({ ...penuh, t: 10, k: 3 }), "d-sepuluh"), "bab3 D: bebas");
 }
 
 /* ---------------- Misi Bab 4 (hibrida) ---------------- */

@@ -1,106 +1,74 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { W, bulat, emo, judul, kartu, kotak, teks, type Titik } from "./k1b3d-gambar";
-import { bersih, hapus, hitungMuncul, k, pindahAksi, sorotkan, tambah } from "./k1b3d-bantu";
+import { E, KURANG, W, deret, deretEmo, emo, judul, kalimatC, kartu, modelBatang, orang, teks } from "./k1b3d-gambar";
+import { bersih, k, sorotkan, tambah, ubah } from "./k1b3d-bantu";
 
-/** Nama metode luar dalam bahasa Indonesia saja (data sumber memuat nama Inggris, yang tidak dipakai di video). */
-export const NAMA_METODE_ID = ["Mengambil", "Hitung Mundur", "Kurang di Bingkai"];
-export const RINGKAS_METODE = ["ambil sebagian dari kumpulan", "mundur dari bilangan awal", "kosongkan kotak pada bingkai"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/* Video metode global Sub-Bab D "Tiba di Rumah Nenek": pembuka dan Bar Model (Model Batang). */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE_ID[i]} · ${RINGKAS_METODE[i]}`], 8.8);
+export const NAMA_METODE = ["Bar Model", "CUBES", "Draw a Picture"];
+export const NAMA_METODE_ID = ["Model Batang", "Langkah CUBES", "Gambar Sketsa"];
+export const WARNA_METODE = [W.emas, W.hijauMuda, W.langit];
+export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
-const ANAK = "\u{1F9D2}";
-const JERUK = "\u{1F34A}";
-
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara punya cara lain untuk mengajar soal cerita pengurangan. Di video ini kita lihat tiga cara itu.";
-const SUARA_O2 = "Tiga metode itu: Mengambil, Hitung Mundur, dan Kurang di Bingkai.";
-const SUARA_O3 = "Mengambil artinya kita ambil sebagian dari kumpulan benda. Hitung Mundur artinya kita mundur dari bilangan awal. Kurang di Bingkai artinya kita kosongkan kotak pada bingkai.";
-const SUARA_O4 = "Ketiga cara ini sama-sama membantu kita mengurangi dengan mudah, dari cerita sampai ke jawabannya.";
-const SUARA_O5 = "Kita akan mencoba tiap cara bersama Upe, Kira, Malosi, dan Wei, di layar.";
+/* ------------------------------ 1. Pembuka ------------------------------ */
+const SUARA_O1 = "Semua sudah berkumpul di rumah Nenek. Abang bercerita, anak-anak di negara lain juga belajar cerita hitungan pengurangan. Kita lihat tiga metode global.";
+const SUARA_O2 = "Tiga metode itu: Bar Model, CUBES, dan Draw a Picture.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Model Batang, Langkah CUBES, dan Gambar Sketsa.";
+const SUARA_O4 = "Semua metode membantu kita memahami cerita sebelum menghitung.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk soal cerita",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Tiga metode global untuk cerita hitungan",
+  sumber: "Metode global: pembuka",
+  latar: "#FEF9C3",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)), tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11))),
     k(
-      SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      ...NAMA_METODE_ID.map((m, i) => tambah(["Mengambil,", "Hitung", "Kurang"][i], ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11))),
+      SUARA_O1,
+      tambah(0, judul("Tiga metode global"), emo("rm", 150, 96, E.rumah, 40)),
+      tambah("Abang", ...orang("ab", 40, 120, E.abang, "Abang")),
+      tambah("negara", emo("gl", 250, 110, "\u{1F30D}", 44)),
+      tambah("tiga", ...kartu("pk", 50, 146, 200, 32, W.emas, ["3 metode global"], 11)),
     ),
-    k(
-      SUARA_O3,
-      bersih(0),
-      tambah(0, judul("Apa artinya?")),
-      ...NAMA_METODE_ID.map((m, i) => tambah(["Mengambil", "Hitung", "Kurang"][i], ...kartu(`n${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [m, RINGKAS_METODE[i]], 10))),
-    ),
-    k(
-      SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Dari cerita ke jawaban")),
-      tambah("membantu", emo("i1", 60, 90, "\u{1F463}", 40), emo("i2", 150, 90, "\u{1F9E9}", 40), emo("i3", 240, 90, "\u{1F51F}", 40)),
-      tambah("mudah,", ...kartu("iq", 30, 124, 240, 44, W.emas, ["mengurangi dengan mudah", "dari cerita sampai jawaban"], 10)),
-    ),
-    k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Dicoba di layar")),
-      ...[["Upe", 45], ["Kira", 115], ["Malosi", 185], ["Wei", 255]].map(([nama, px]) => tambah(nama as string, emo(`o-${nama}`, px as number, 110, ANAK, 34), teks(`on-${nama}`, px as number, 130, nama as string, 8.6))),
-      tambah("layar.", ...kartu("ot", 40, 150, 220, 30, W.krem, ["cerita, titik, dan angka"], 10)),
-    ),
+    k(SUARA_O2, bersih(0), tambah(0, judul("Tiga metode")), ...NAMA_METODE.map((m, i) => tambah(["Bar", "CUBES,", "Draw"][i], ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11)))),
+    k(SUARA_O3, bersih(0), tambah(0, judul("Nama dalam bahasa Indonesia")), ...NAMA_METODE_ID.map((m, i) => tambah(["Model", "Langkah", "Gambar"][i], ...kartu(`n${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11)))),
+    k(SUARA_O4, bersih(0), tambah(0, judul("Pahami dulu")), tambah("memahami", emo("bc", 110, 96, E.baca, 40)), tambah("menghitung.", emo("ot", 190, 96, "\u{1F9E0}", 40), teks("tt", 150, 150, "pahami, lalu hitung", 12, W.ungu))),
   ],
 };
 
-/* ------------------------------ 2. Mengambil: konsep ------------------------------ */
-const SUARA_A1 = "Metode pertama, Mengambil. Ada sekumpulan benda di piring. Kita ambil sebagian dari kumpulan itu.";
-const SUARA_A2 = "Misalnya ada enam jeruk. Ketuk dua jeruk untuk diambil: satu, dua.";
-const SUARA_A3 = "Jeruk yang diambil tidak ada lagi di piring. Sekarang hitung yang tersisa: satu, dua, tiga, empat.";
-const SUARA_A4 = "Jadi enam dikurangi dua sama dengan empat. Sisanya empat jeruk.";
-const PIRING = (): Obj => kotak("pr", 30, 74, 240, 44, "#F1F5F9", W.biru, { rx: 10, tebal: 1.6 });
-const JERUK_P: Titik[] = Array.from({ length: 6 }, (_, i) => ({ x: 60 + 36 * i, y: 96 }));
-const DIAMBIL: Titik[] = [{ x: 110, y: 160 }, { x: 190, y: 160 }];
+/* ------------------------------ 2. Bar Model: konsep ------------------------------ */
+const SUARA_A1 = "Metode pertama, Bar Model, atau Model Batang. Batang panjang menunjukkan semuanya.";
+const SUARA_A2 = "Batang itu dibagi dua: bagian yang pergi dan bagian yang tersisa.";
+const SUARA_A3 = "Bagian yang belum diketahui diberi tanda tanya.";
+const SUARA_A4 = "Semuanya dikurangi bagian yang diketahui sama dengan bagian yang ditanya.";
 
-export const ADEGAN_LUAR_AMBIL: AdeganStory = {
-  id: "luar-ambil",
-  judul: "Mengambil: ambil sebagian dari kumpulan",
-  sumber: "Metode luar: Mengambil",
-  latar: "#F0FDF4",
+export const ADEGAN_LUAR_BATANG: AdeganStory = {
+  id: "luar-batang",
+  judul: "Bar Model: model batang",
+  sumber: "Metode global: Bar Model",
+  latar: "#FFFBEB",
   ketukan: [
-    k(SUARA_A1, tambah("pertama,", ...kepala(0)), tambah("piring.", PIRING(), ...JERUK_P.map((p, i) => emo(`j${i}`, p.x, p.y, JERUK, 22))), tambah("ambil@2", emo("tg", 150, 150, "👆", 30))),
-    k(SUARA_A2, tambah("Misalnya", ...kartu("aq", 90, 126, 120, 22, W.krem, ["6 − 2 = ?"], 11)), ...pindahAksi(SUARA_A2, ["j4", "j5"], DIAMBIL, "diambil:", 0.6), tambah("ketuk", emo("ig", 150, 190, "\u{1F446}", 14))),
-    k(SUARA_A3, hapus(0, "aq-k", "aq-t0"), tambah("tidak", ...kartu("ad", 60, 130, 180, 22, W.merahMuda, ["yang diambil: 2 jeruk"], 10)), ...hitungMuncul(SUARA_A3, "a", JERUK_P.slice(0, 4), () => [], "tersisa:")),
-    k(SUARA_A4, sorotkan("Sisanya", "pr"), tambah("Jadi", ...kartu("ah", 60, 176, 180, 24, W.emas, ["6 − 2 = 4"], 12))),
+    k(SUARA_A1, tambah("pertama,", ...kepala(0)), tambah("Batang@2", ...modelBatang("mb", 40, 70, 220, 110, "semua", "pergi", "sisa")), sorotkan("semuanya.", "mb-u")),
+    k(SUARA_A2, sorotkan("pergi", "mb-a"), sorotkan("tersisa.", "mb-b")),
+    k(SUARA_A3, ubah("tanda", { id: "mb-tb", isi: "?", warna: W.merah })),
+    k(SUARA_A4, tambah("dikurangi", ...kartu("rm", 30, 150, 240, 28, W.emas, [`semua ${KURANG} diketahui = ?`], 11))),
   ],
 };
 
-/* ------------------------------ 3. Mengambil: terapan ------------------------------ */
-const SUARA_T1 = "Soal cerita: Malosi punya sembilan kelereng. Malosi memberikan empat kelereng kepada Upe. Berapa sisa kelereng Malosi?";
-const SUARA_T2 = "Ambil empat kelereng untuk Upe. Ketuk satu, dua, tiga, empat.";
-const SUARA_T3 = "Hitung yang tersisa di tempatnya: satu, dua, tiga, empat, lima. Sisanya lima kelereng.";
-const SUARA_T4 = "Sembilan dikurangi empat sama dengan lima. Jawabannya, sisa kelereng Malosi ada lima.";
-const KEL_P: Titik[] = Array.from({ length: 9 }, (_, i) => ({ x: i < 5 ? 50 + 50 * i : 75 + 50 * (i - 5), y: i < 5 ? 70 : 102 }));
-const WARNA_KEL = ["#F472B6", "#38BDF8", "#A3E635", "#FB923C", "#818CF8"];
-const KE_UPE: Titik[] = [0, 1, 2, 3].map((i) => ({ x: 90 + 40 * i, y: 160 }));
+/* ------------------------------ 3. Bar Model: terapan ------------------------------ */
+const SUARA_B1 = "Nenek menggoreng sembilan pisang. Tiga pisang dimakan Abang. Berapa pisang yang tersisa?";
+const SUARA_B2 = "Gambar batang sembilan. Satu bagian tiga, bagian lain bertanda tanya.";
+const SUARA_B3 = "Sembilan dikurangi tiga sama dengan enam.";
+const SUARA_B4 = "Jadi, tersisa enam pisang goreng. Batangnya terisi lengkap.";
+const PISANG = deret(9, 30, 30, 70);
 
-export const ADEGAN_LUAR_AMBIL_TERAPAN: AdeganStory = {
-  id: "luar-ambil-terapan",
-  judul: "Mengambil: kelereng Malosi",
-  sumber: "Metode luar: Mengambil, terapan",
-  latar: "#F0FDF4",
+export const ADEGAN_LUAR_BATANG_TERAPAN: AdeganStory = {
+  id: "luar-batang-terapan",
+  judul: "Bar Model: pisang goreng Nenek",
+  sumber: "Metode global: Bar Model, terapan",
+  latar: "#FFFBEB",
   ketukan: [
-    k(
-      SUARA_T1,
-      tambah(0, ...kepala(0)),
-      tambah("sembilan", ...KEL_P.map((p, i) => bulat(`kl${i}`, p.x, p.y, 10, WARNA_KEL[i % 5]))),
-      tambah("Upe.", ...kartu("tq", 80, 124, 140, 22, W.krem, ["Malosi memberi Upe: 4"], 9.4)),
-    ),
-    k(SUARA_T2, ...pindahAksi(SUARA_T2, ["kl5", "kl6", "kl7", "kl8"], KE_UPE, "Ketuk", 0.6), tambah("Ambil", emo("tg", 262, 150, "👆", 28))),
-    k(SUARA_T3, ...hitungMuncul(SUARA_T3, "t", KEL_P.slice(0, 5), () => [], "tempatnya:"), tambah("Sisanya", ...kartu("ts", 60, 176, 180, 24, W.hijauMuda, ["sisa: 5 kelereng"], 10))),
-    k(SUARA_T4, tambah("Sembilan", ...kartu("tj", 50, 148, 200, 22, W.emas, ["9 − 4 = 5"], 12)), tambah("Jawabannya,", emo("ok", 262, 84, "✅", 26))),
+    k(SUARA_B1, tambah(0, ...kepala(0)), tambah("sembilan", ...deretEmo(E.pisangGoreng, "ps", PISANG, 20)), ubah("dimakan", ...[6, 7, 8].map((i) => ({ id: `ps${i}`, op: 0.3 }))), tambah("tersisa?", teks("tq", 150, 98, "berapa yang tersisa?", 10, W.merah))),
+    k(SUARA_B2, bersih(0), tambah(0, ...kepala(0)), tambah("batang", ...modelBatang("mb", 40, 66, 220, 73, "9", "3", "?"))),
+    k(SUARA_B3, tambah("Sembilan", ...kalimatC("kl", 150, 150, ["9", KURANG, "3", "=", "6"], 18, 26))),
+    k(SUARA_B4, ubah("enam", { id: "mb-tb", isi: "6", warna: W.biru }), tambah("lengkap.", ...kartu("ok", 80, 172, 140, 22, W.hijauMuda, ["tersisa 6 pisang"], 10))),
   ],
 };
