@@ -3,28 +3,18 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import data from "@/data/rapor-dan-ranking.json";
-import {
-  JUDUL_MTK_1_BAB1,
-  JUDUL_MTK_1_BAB2,
-  JUDUL_MTK_1_BAB3,
-  JUDUL_MTK_1_BAB4,
-  JUDUL_MTK_1_BAB5,
-  JUDUL_MTK_1_BAB6,
-  JUDUL_MTK_1_BAB7,
-  JUDUL_MTK_1_BAB8,
-} from "@/lib/kurikulum";
+import * as KURIKULUM from "@/lib/kurikulum";
+import { TOTAL_SUBBAB, babDariCapaian, hurufSubBab, labelBab, uraiKodeBab, type BabRapor } from "@/lib/bab-rapor";
 import {
   BAB_PER_BLOK,
   POIN_LATIHAN,
   POIN_PER_BLOK_PENUH,
   POIN_PRAKTIKUM,
   POIN_UJIAN,
-  babBerikutnya,
   babUjianSempurna,
   bulanJakarta,
   kodeAplikasiDariServer,
   poinBulanIni,
-  ringkasBab,
   sertifikatTerbuka,
   type BlokPraktikum,
   type PoinBulan,
@@ -45,21 +35,17 @@ import { SertifikatDigital, kodeVerifikasi, type PenerimaSertifikat } from "./Se
 
 const rapor = data.raporPage;
 
-/** Bab Matematika Kelas 1. Jumlah Sub-Bab mengikuti daftar isi naskah modul. */
-const BAB_KELAS1: { kode: string; judul: string; totalSubBab: number }[] = [
-  { kode: "mtk-1-bab1", judul: JUDUL_MTK_1_BAB1, totalSubBab: 4 },
-  { kode: "mtk-1-bab2", judul: JUDUL_MTK_1_BAB2, totalSubBab: 3 },
-  { kode: "mtk-1-bab3", judul: JUDUL_MTK_1_BAB3, totalSubBab: 4 },
-  { kode: "mtk-1-bab4", judul: JUDUL_MTK_1_BAB4, totalSubBab: 3 },
-  { kode: "mtk-1-bab5", judul: JUDUL_MTK_1_BAB5, totalSubBab: 4 },
-  { kode: "mtk-1-bab6", judul: JUDUL_MTK_1_BAB6, totalSubBab: 3 },
-  { kode: "mtk-1-bab7", judul: JUDUL_MTK_1_BAB7, totalSubBab: 2 },
-  { kode: "mtk-1-bab8", judul: JUDUL_MTK_1_BAB8, totalSubBab: 2 },
-];
-const URUT_BAB = BAB_KELAS1.map((b) => b.kode);
+/** Judul bab dari kurikulum: JUDUL_MTK_<kelas>_BAB<nomor> menjadi kode "mtk-<kelas>-bab<nomor>". Bab baru ikut otomatis. */
+const JUDUL_BAB: Record<string, string> = Object.fromEntries(
+  Object.entries(KURIKULUM).flatMap(([nama, nilai]) => {
+    const m = /^JUDUL_MTK_(\d+)_BAB(\d+)$/.exec(nama);
+    return m && typeof nilai === "string" ? [[`mtk-${m[1]}-bab${m[2]}`, nilai]] : [];
+  }),
+);
+const judulBab = (kode: string): string => JUDUL_BAB[kode] ?? labelBab(kode);
 
 /** Praktikum per blok 4 bab yang sudah punya tugas (src/data/praktikum-blok.json). Tambahkan di sini saat blok berikutnya terbit. */
-const BLOK_PRAKTIKUM: BlokPraktikum[] = [{ id: "mtk-1-blok1", bab: URUT_BAB.slice(0, BAB_PER_BLOK) }];
+const BLOK_PRAKTIKUM: BlokPraktikum[] = [{ id: "mtk-1-blok1", bab: ["mtk-1-bab1", "mtk-1-bab2", "mtk-1-bab3", "mtk-1-bab4"].slice(0, BAB_PER_BLOK) }];
 const BLOK_1 = BLOK_PRAKTIKUM[0];
 
 function predikatUntuk(skor: number) {
@@ -186,7 +172,8 @@ function Langkah({ aktif, label, token, catatan }: { aktif: boolean; label: stri
   );
 }
 
-function KartuBab({ kode, judul, r, nomor, urutanSub, subSelesai }: { kode: string; judul: string; r: RingkasBab; nomor: number; urutanSub: string[]; subSelesai: readonly string[] }) {
+function KartuBab({ kode, judul, r, urutanSub, subSelesai }: { kode: string; judul: string; r: RingkasBab; urutanSub: string[]; subSelesai: readonly string[] }) {
+  const nomor = uraiKodeBab(kode)?.nomor ?? 0;
   const skorGabungan = r.mulai ? Math.round(((r.skorLatihan ?? 0) + (r.skorUjian ?? 0) + r.materiPersen) / 3) : 0;
   const pred = predikatUntuk(skorGabungan);
   return (
@@ -201,6 +188,7 @@ function KartuBab({ kode, judul, r, nomor, urutanSub, subSelesai }: { kode: stri
           {nomor}
         </span>
         <div className="min-w-0 flex-1">
+          <p className="text-[11px] font-black uppercase tracking-wide text-indigo-500">{labelBab(kode)}</p>
           <h3 className="break-words text-base font-black leading-snug text-indigo-950">{judul}</h3>
           {r.mulai ? (
             <span className={`mt-1 inline-block rounded-full px-2.5 py-0.5 text-xs font-black ${WARNA_PREDIKAT[pred.colorTheme] ?? ""}`}>
@@ -221,7 +209,7 @@ function KartuBab({ kode, judul, r, nomor, urutanSub, subSelesai }: { kode: stri
         <div className="rounded-xl bg-indigo-50/40 p-2">
           <div className="flex items-center justify-between text-sm font-black text-indigo-950">
             <span>📚 Silabus & Materi SMISCPA</span>
-            <span>{r.materiPersen}%</span>
+            <span>{TOTAL_SUBBAB[kode] ? `${r.materiPersen}%` : `${subSelesai.length} Sub-Bab selesai`}</span>
           </div>
           <div className="mt-1.5 flex gap-1.5">
             {urutanSub.map((huruf) => {
@@ -273,33 +261,36 @@ function KartuBab({ kode, judul, r, nomor, urutanSub, subSelesai }: { kode: stri
   );
 }
 
-/** Kartu "Langkah berikutnya": arahkan siswa ke bab yang belum tuntas, dengan hitungan keseluruhan. */
-function KartuLanjut({ berikutnya, tuntas }: { berikutnya: string | null; tuntas: number }) {
-  const bab = BAB_KELAS1.find((b) => b.kode === berikutnya);
-  const persen = Math.round((tuntas / BAB_KELAS1.length) * 100);
+/** Kartu "Langkah berikutnya": lanjutkan bab yang terakhir dikerjakan, dengan hitungan bab tuntas. Siswa bebas memilih bab apa pun. */
+function KartuLanjut({ terakhir, aktif, tuntas }: { terakhir: BabRapor | null; aktif: number; tuntas: number }) {
   return (
     <section className="rounded-3xl border-2 border-amber-400 bg-amber-50 p-4 shadow-sm">
-      <div className="flex items-center justify-between gap-2 text-sm font-black text-indigo-950">
-        <span>🎯 Capaian Matematika Kelas 1</span>
+      <div className="flex flex-wrap items-center justify-between gap-2 text-sm font-black text-indigo-950">
+        <span>🎯 Capaian Belajarmu</span>
         <span>
-          {tuntas} dari {BAB_KELAS1.length} bab Ujian 100%
+          {tuntas} bab Ujian 100% · {aktif} bab sedang dipelajari
         </span>
       </div>
-      <div className="mt-2 h-3 overflow-hidden rounded-full bg-white ring-1 ring-indigo-100" role="img" aria-label={`${persen} persen bab tuntas`}>
-        <div className="h-full rounded-full bg-amber-400" style={{ width: `${persen}%` }} />
-      </div>
-      {bab ? (
-        <Link href={`/ruang-belajar/${bab.kode}`} className="mt-3 flex min-h-[48px] items-center justify-between gap-2 rounded-2xl bg-[#1C01A5] px-4 py-2 text-white">
+      {terakhir ? (
+        <Link href={`/ruang-belajar/${terakhir.kode}`} className="mt-3 flex min-h-[48px] items-center justify-between gap-2 rounded-2xl bg-[#1C01A5] px-4 py-2 text-white">
           <span className="min-w-0">
-            <span className="block text-[11px] font-black uppercase tracking-wide text-amber-300">Langkah berikutnya</span>
-            <span className="block break-words text-sm font-black leading-snug">{bab.judul}</span>
+            <span className="block text-[11px] font-black uppercase tracking-wide text-amber-300">Lanjutkan bab terakhir · {labelBab(terakhir.kode)}</span>
+            <span className="block break-words text-sm font-black leading-snug">{judulBab(terakhir.kode)}</span>
           </span>
           <span aria-hidden="true" className="shrink-0 text-xl text-amber-300">
             ➜
           </span>
         </Link>
       ) : (
-        <p className="mt-3 rounded-2xl bg-emerald-50 p-3 text-sm font-black text-emerald-900">🎉 Semua bab Matematika Kelas 1 sudah Ujian 100%. Hebat!</p>
+        <Link href="/ruang-belajar" className="mt-3 flex min-h-[48px] items-center justify-between gap-2 rounded-2xl bg-[#1C01A5] px-4 py-2 text-white">
+          <span className="min-w-0">
+            <span className="block text-[11px] font-black uppercase tracking-wide text-amber-300">Mulai dari mana saja</span>
+            <span className="block break-words text-sm font-black leading-snug">Pilih bab yang ingin kamu pelajari di Ruang Belajar</span>
+          </span>
+          <span aria-hidden="true" className="shrink-0 text-xl text-amber-300">
+            ➜
+          </span>
+        </Link>
       )}
     </section>
   );
@@ -402,7 +393,7 @@ function PanelPapanKualifikasi({ jumlahBabKualifikasi }: { jumlahBabKualifikasi:
       <div className="flex flex-wrap items-center gap-2">
         <h3 className="min-w-0 flex-1 text-lg font-black text-indigo-950">🌟 Papan Kualifikasi Beasiswa</h3>
         <span className="rounded-full bg-[#1C01A5] px-3 py-1 text-xs font-black text-amber-300">
-          Menyala di {jumlahBabKualifikasi} dari {BAB_KELAS1.length} bab
+          Menyala di {jumlahBabKualifikasi} bab
         </span>
       </div>
       <p className="mt-1 text-sm font-semibold text-slate-600">Lencana emas menyala di sebuah bab kalau kamu memenuhi semua syarat ini:</p>
@@ -527,8 +518,6 @@ function TabSertifikat({ profil, tuntas, praktikumTerkirim }: { profil: Penerima
   );
 }
 
-const HURUF_SUB = ["A", "B", "C", "D", "E", "F"];
-
 export default function RaporHalaman() {
   const [tab, setTab] = useState(rapor.subTabs[0].id);
   const profil = useProfilSiswa();
@@ -545,15 +534,7 @@ export default function RaporHalaman() {
     () => (hariIni ? poinBulanIni(capaian ?? {}, bulanJakarta(hariIni), [praktikumBlok1 ? bulanJakarta(new Date(praktikumBlok1.dikirimPada)) : null]) : poinBulanIni({}, "", [])),
     [capaian, hariIni, praktikumBlok1],
   );
-  const ringkas = useMemo(
-    () =>
-      BAB_KELAS1.map((b) => {
-        const r = ringkasBab(capaian?.[b.kode], b.totalSubBab);
-        // Ujian lulus dari catatan lama (igil_ujian_lulus_v1) tetap dihitung tuntas walau catatan baru belum ada.
-        return tuntas.has(b.kode) && !r.ujianSempurna ? { ...r, ujianSempurna: true, mulai: true } : r;
-      }),
-    [capaian, tuntas],
-  );
+  const bab = useMemo(() => babDariCapaian(capaian ?? {}, tuntas), [capaian, tuntas]);
   const tuntasBlok1 = BLOK_1.bab.filter((b) => tuntas.has(b)).length;
   const adaCatatan = Object.keys(capaian ?? {}).length > 0 || (ujianLama?.length ?? 0) > 0;
 
@@ -575,21 +556,43 @@ export default function RaporHalaman() {
           <div className="space-y-4">
             <KartuDompet profil={profil} poin={poin} />
 
-            <KartuLanjut berikutnya={babBerikutnya(URUT_BAB, tuntas)} tuntas={URUT_BAB.filter((b) => tuntas.has(b)).length} />
+            <KartuLanjut terakhir={bab.aktif[0] ?? null} aktif={bab.aktif.length} tuntas={bab.selesai.length} />
 
             <section aria-labelledby="judul-bab" className="space-y-3">
               <h2 id="judul-bab" className="text-xl font-black text-indigo-950">
-                📖 Ketuntasan Per Bab · Matematika Kelas 1 SD
+                📖 Bab yang Sedang Kamu Pelajari
               </h2>
-              <div className="grid gap-3 md:grid-cols-2">
-                {BAB_KELAS1.map((b, i) => (
-                  <KartuBab key={b.kode} kode={b.kode} judul={b.judul} r={ringkas[i]} nomor={i + 1} urutanSub={HURUF_SUB.slice(0, b.totalSubBab)} subSelesai={capaian?.[b.kode]?.subBab ?? []} />
-                ))}
-              </div>
-              <KartuPraktikumBlok tuntasBlok={tuntasBlok1} terkirim={Boolean(praktikumBlok1)} />
+              <p className="text-sm font-semibold text-slate-600">Kamu bebas memilih bab dari pelajaran dan kelas mana saja. Rapor hanya menampilkan bab yang sudah kamu mulai.</p>
+              {bab.aktif.length > 0 ? (
+                <div className="grid gap-3 md:grid-cols-2">
+                  {bab.aktif.map((b) => (
+                    <KartuBab key={b.kode} kode={b.kode} judul={judulBab(b.kode)} r={b.ringkas} urutanSub={hurufSubBab(b.kode, b.subSelesai)} subSelesai={b.subSelesai} />
+                  ))}
+                </div>
+              ) : (
+                <div className="rounded-3xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 p-4 text-center">
+                  <p className="text-sm font-black text-indigo-950">{bab.selesai.length > 0 ? "Semua bab yang kamu mulai sudah tuntas. Hebat!" : "Belum ada bab yang kamu mulai."}</p>
+                  <Link href="/ruang-belajar" className="mt-2 inline-flex min-h-[44px] items-center justify-center rounded-full border-4 border-amber-400 bg-[#1C01A5] px-4 text-sm font-black text-amber-300">
+                    Pilih bab di Ruang Belajar
+                  </Link>
+                </div>
+              )}
+
+              {bab.selesai.length > 0 ? (
+                <details className="rounded-3xl border-2 border-emerald-200 bg-emerald-50/50 p-4">
+                  <summary className="cursor-pointer list-none text-base font-black text-indigo-950">✅ Bab yang Sudah Tuntas ({bab.selesai.length})</summary>
+                  <div className="mt-3 grid gap-3 md:grid-cols-2">
+                    {bab.selesai.map((b) => (
+                      <KartuBab key={b.kode} kode={b.kode} judul={judulBab(b.kode)} r={b.ringkas} urutanSub={hurufSubBab(b.kode, b.subSelesai)} subSelesai={b.subSelesai} />
+                    ))}
+                  </div>
+                </details>
+              ) : null}
+
+              {tuntasBlok1 > 0 || praktikumBlok1 ? <KartuPraktikumBlok tuntasBlok={tuntasBlok1} terkirim={Boolean(praktikumBlok1)} /> : null}
             </section>
 
-            <PanelPapanKualifikasi jumlahBabKualifikasi={ringkas.filter((r) => r.kualifikasi).length} />
+            <PanelPapanKualifikasi jumlahBabKualifikasi={[...bab.aktif, ...bab.selesai].filter((b) => b.ringkas.kualifikasi).length} />
             <PanelPenilaianRahasia terkirim={Boolean(praktikumBlok1)} />
 
             <details className="rounded-3xl border-2 border-indigo-100 bg-indigo-50/40 p-4">

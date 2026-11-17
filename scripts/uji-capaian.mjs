@@ -143,7 +143,7 @@ cek(/catatUjianDinilai\(bab, res\.nilai\)/.test(belajar), "UjianServer mencatat 
 
 /* ------------------------------ Halaman Rapor memakai data nyata ------------------------------ */
 const raporSrc = readFileSync(new URL("../src/components/rapor/RaporHalaman.tsx", import.meta.url), "utf8");
-cek(/useCapaian\(\)/.test(raporSrc) && /poinBulanIni\(/.test(raporSrc) && /ringkasBab\(/.test(raporSrc), "Rapor membaca capaian nyata (useCapaian, ringkasBab, poinBulanIni)");
+cek(/useCapaian\(\)/.test(raporSrc) && /poinBulanIni\(/.test(raporSrc) && /babDariCapaian\(/.test(raporSrc), "Rapor membaca capaian nyata (useCapaian, babDariCapaian, poinBulanIni)");
 cek(!/sampleChaptersProgress|SpanduContoh|Tampilan contoh/.test(raporSrc), "Rapor tidak lagi memakai data contoh bab 1");
 cek(/sertifikatTerbuka\(/.test(raporSrc) && /kodeAplikasiDariServer/.test(raporSrc), "Sertifikat memakai syarat nyata (bab 100% dan Praktikum terkirim)");
 cek(!/rupiah|Rp|kurs/i.test(raporSrc.replace(/biaya server Rp 0/gi, "")), "Rapor tanpa rupiah atau kurs poin");
