@@ -48,3 +48,14 @@ Mind-map "Peta Peron" (papan pengumuman Masalah, tujuh jalur peron berurutan, ke
 (Misi Pindah Kereta bagian 1: atur kursi, lihat bagan, garis bilangan, dan dua kalimat, lalu catat). CPA: Misi Pindah Kereta bagian 2 sampai 10
 (Metode IGIL: dua kalimat, nol, dan sama; Number Bond; Number Line; Make Ten), pola visual lantai peron berubin pemandu, peta rute kereta, dan jendela kereta malam.
 Abstract diakhiri Poin Penting.
+
+## Sub-Bab C secara rinci (selesai)
+
+Story materi "Kondektur dan Penumpang": catatan kondektur tentang penumpang naik dan turun harus cocok dan sebagian kena noda; empat biru dan tiga merah naik,
+4 + 3 = 7 dan 3 + 4 = 7 (tukar tempat); keluarga tiga, empat, tujuh dengan dua penjumlahan dan dua pengurangan, pengurangan tidak boleh ditukar;
+9 − 5 = 4 diperiksa 4 + 5 = 9; catatan bernoda 6 + ? = 9 dicari dengan 9 − 6 = 3; semua catatan cocok dan kereta mendekati desa Nenek (jembatan ke Sub-Bab D).
+Story metode global: Fact Family (Keluarga Fakta) dua, enam, delapan; Fact Triangle (Segitiga Fakta) sepuluh, satu, sembilan; Think Addition (Berpikir Penjumlahan) sembilan dikurangi tujuh.
+Mind-map "Lampu Sinyal" (tiang sinyal merah Masalah, tujuh lampu sinyal berurutan, palang terbuka Hasil); Infografis "Papan Catatan Kondektur";
+Simulasi "Papan Kondektur" (Misi Kondektur bagian 1: atur penumpang biru dan merah, catat empat kalimat, tutup pojok segitiga dan tebak).
+CPA: Misi Kondektur bagian 2 sampai 10 (Metode IGIL: tukar tempat dan periksa; Fact Family; Fact Triangle; Think Addition), pola visual lantai gerbong papan kayu,
+lembar karbon biru, dan plat besi berpaku keling. Abstract diakhiri Poin Penting.

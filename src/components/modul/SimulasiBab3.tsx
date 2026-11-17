@@ -8,6 +8,7 @@ import SimulasiMesinBus from "./SimulasiMesinBus";
 import SimulasiSkenario from "./SimulasiSkenario";
 import SimulasiKotakBekal from "./bekal-k1b3a/SimulasiKotakBekal";
 import SimulasiKursiKereta from "./peron-k1b3b/SimulasiKursiKereta";
+import SimulasiPapanKondektur from "./kondektur-k1b3c/SimulasiPapanKondektur";
 import { SKENARIO_BAB3 } from "./skenario-kelas1";
 import { daftarMisiBab3, type KeadaanBab3 } from "./misi-bab3";
 import { laporMisi, tampilMisi } from "./misi-simulasi";
@@ -20,7 +21,8 @@ import { laporMisi, tampilMisi } from "./misi-simulasi";
 /*     satu, cerita Kereta ke Rumah Nenek (bekal-k1b3a).                    */
 /*   Sub-Bab B (Berbagai Cara): Kursi Kereta Lanjutan, Misi Pindah Kereta   */
 /*     bagian satu (peron-k1b3b).                                           */
-/*   Sub-Bab C (Keluarga Bilangan): + keluarga fakta dan tab Bus Sekolah.   */
+/*   Sub-Bab C (Hubungan Tambah dan Kurang): Papan Kondektur, Misi          */
+/*     Kondektur bagian satu (kondektur-k1b3c).                             */
 /*   Sub-Bab D (Soal Cerita, sub-bab akhir): semua alat + tab Pesta Jeruk,  */
 /*     sekaligus simulasi pencapaian misi bab ini.                          */
 /* Tombol LANJUTKAN aktif bila misi wajib tercapai, atau anak memilih       */
@@ -32,7 +34,7 @@ const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 const MISI = {
   A: "Misi Perjalanan bagian satu: ambil bekal dari kotak bersekat, lihat sisanya, lalu catat kalimat pengurangannya. Urutannya bebas.",
   B: "Misi Pindah Kereta bagian satu: atur kursi kereta lanjutan, lihat bagan, garis bilangan, dan dua kalimatnya, lalu catat. Urutannya bebas.",
-  C: "Temukan keluarga bilangan, periksa dengan tambah, dan bantu Bus Sekolah. Selesaikan misi wajib, lalu coba tantangan bebas.",
+  C: "Misi Kondektur bagian satu: atur penumpang biru dan merah, catat empat kalimat keluarganya, lalu tutup pojok segitiga dan tebak. Urutannya bebas.",
   D: "Ubah soal cerita menjadi pengurangan, periksa jawabanmu, dan bantu Bu Lina di pesta. Selesaikan semua misi wajib, lalu coba tantangan bebas.",
 } as const;
 
@@ -49,7 +51,7 @@ const langkahBab3 = (sub: string): LangkahSim[] => {
   return [
     {
       metode: "PhET",
-      sub: huruf === "D" ? "Lab Pengurangan: Pencapaian Misi" : huruf === "A" ? "Kotak Bekal" : huruf === "B" ? "Kursi Kereta Lanjutan" : "Lab Pengurangan",
+      sub: huruf === "D" ? "Lab Pengurangan: Pencapaian Misi" : huruf === "A" ? "Kotak Bekal" : huruf === "B" ? "Kursi Kereta Lanjutan" : huruf === "C" ? "Papan Kondektur" : "Lab Pengurangan",
       petunjuk: MAINKAN_DULU,
       misi: MISI[huruf],
       misiDaftar: tampilMisi(daftar),
@@ -62,7 +64,8 @@ const langkahBab3 = (sub: string): LangkahSim[] => {
         const pesta: TabLab = { id: "pesta", nama: "Pesta Jeruk", render: () => <SimulasiSkenario def={SKENARIO_BAB3} speakGuru={a.speakGuru} onTuntas={() => selesai("pesta")} /> };
         const kotakBekal: TabLab = { id: "bekal", nama: "Kotak Bekal", render: () => <SimulasiKotakBekal speakGuru={a.speakGuru} onKeadaan={lapor} /> };
         const kursiKereta: TabLab = { id: "kursi", nama: "Kursi Kereta", render: () => <SimulasiKursiKereta speakGuru={a.speakGuru} onKeadaan={lapor} /> };
-        const tab = huruf === "A" ? [kotakBekal] : huruf === "B" ? [kursiKereta] : huruf === "C" ? [kurang, bus] : [kurang, bus, pesta];
+        const papan: TabLab = { id: "kondektur", nama: "Papan Kondektur", render: () => <SimulasiPapanKondektur speakGuru={a.speakGuru} onKeadaan={lapor} /> };
+        const tab = huruf === "A" ? [kotakBekal] : huruf === "B" ? [kursiKereta] : huruf === "C" ? [papan] : [kurang, bus, pesta];
         return <LabBertahap tab={tab} label="Alat laboratorium pengurangan" />;
       },
     },

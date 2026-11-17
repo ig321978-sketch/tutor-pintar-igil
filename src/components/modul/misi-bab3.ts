@@ -4,7 +4,7 @@
  *
  * Simulasi bertahap: satu Laboratorium Pengurangan yang membuka alat sedikit demi sedikit
  * (A: kini Kotak Bekal, Misi Perjalanan bagian satu (bekal-k1b3a); B: kini Kursi Kereta Lanjutan, Misi Pindah Kereta bagian satu (peron-k1b3b);
- * C: + keluarga fakta dan tab Bus Sekolah; D: semua alat + tab Pesta Jeruk, sekaligus
+ * C: kini Papan Kondektur, Misi Kondektur bagian satu (kondektur-k1b3c); D: semua alat + tab Pesta Jeruk, sekaligus
  * simulasi pencapaian misi bab ini).
  */
 
@@ -12,6 +12,7 @@
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanBekal } from "./bekal-k1b3a/logika";
 import type { KeadaanKursi } from "./peron-k1b3b/logika";
+import type { KeadaanKeluarga } from "./kondektur-k1b3c/logika";
 
 export type KeadaanKurang = {
   alat: "kurang";
@@ -29,7 +30,7 @@ export type KeadaanKurang = {
   keluarga: boolean;
 };
 
-export type KeadaanBab3 = KeadaanKurang | KeadaanSelesai | KeadaanBekal | KeadaanKursi;
+export type KeadaanBab3 = KeadaanKurang | KeadaanSelesai | KeadaanBekal | KeadaanKursi | KeadaanKeluarga;
 
 const kur = (k: KeadaanBab3): k is KeadaanKurang => k.alat === "kurang";
 const selesai = (k: KeadaanBab3, id: string) => k.alat === "selesai" && k.id === id;
@@ -59,14 +60,22 @@ export const MISI_B: DefMisi<KeadaanBab3>[] = [
   { id: "b-mundur", teks: "Buat delapan kursi dengan lima terisi. Lihat lompat mundurnya.", wajib: false, cek: (k) => kursi(k) && k.utuh === 8 && k.terisi === 5 },
 ];
 
-/** Sub-Bab C: keluarga bilangan, periksa dengan tambah, cari yang hilang; ditambah Bus Sekolah. */
+/** Sub-Bab C: Misi Kondektur bagian satu, papan kondektur (Simulasi "Kondektur dan Penumpang"). Mulai dua biru dan lima merah. */
+const keluarga = (k: KeadaanBab3): k is KeadaanKeluarga => k.alat === "keluarga";
+const angka = (t: string) => t.split(/[-+=]/).map(Number);
+const empatAda = (c: string[]) =>
+  c.some((t) => {
+    if (!t.includes("+")) return false;
+    const [a, b, z] = angka(t);
+    return a !== b && [`${a}+${b}=${z}`, `${b}+${a}=${z}`, `${z}-${a}=${b}`, `${z}-${b}=${a}`].every((x) => c.includes(x));
+  });
 export const MISI_C: DefMisi<KeadaanBab3>[] = [
-  { id: "c-keluarga", teks: "Nyalakan Keluarga fakta, lalu buat 7 - 3.", wajib: true, cek: (k) => kur(k) && k.keluarga && k.t === 7 && k.k === 3 },
-  { id: "c-periksa", teks: "Periksa 9 - 4 dengan kalimat tambah di keluarga fakta.", wajib: true, cek: (k) => kur(k) && k.keluarga && k.t === 9 && k.k === 4 },
-  { id: "c-cari", teks: "Cari yang hilang: 6 + ? = 9. Buat 9 - 6.", wajib: true, cek: (k) => soal(k, 9, 6) },
-  { id: "c-bus", teks: "Selesaikan Bus Sekolah sampai selesai.", wajib: true, cek: (k) => selesai(k, "bus") },
-  { id: "c-sepuluh", teks: "Buat keluarga fakta dari 10 - 4.", wajib: false, cek: (k) => kur(k) && k.keluarga && k.t === 10 && k.k === 4 },
-  { id: "c-nol", teks: "Cari keluarga fakta yang salah satu bilangannya nol: buat 8 - 8.", wajib: false, cek: (k) => kur(k) && k.keluarga && k.t === 8 && k.k === 8 },
+  { id: "c-empat", teks: "Catat empat kalimat dari satu keluarga bilangan.", wajib: true, cek: (k) => keluarga(k) && empatAda(k.catat) },
+  { id: "c-periksa", teks: "Catat satu pengurangan dan penjumlahan yang memeriksanya.", wajib: true, cek: (k) => keluarga(k) && k.catat.some((t) => { if (!t.includes("-")) return false; const [z, b, a] = angka(t); return k.catat.includes(`${a}+${b}=${z}`) || k.catat.includes(`${b}+${a}=${z}`); }) },
+  { id: "c-pucuk", teks: "Tutup pucuk segitiga, lalu tebak semuanya.", wajib: true, cek: (k) => keluarga(k) && k.dibuka.includes("z") },
+  { id: "c-pojok", teks: "Tutup satu pojok bawah, lalu tebak bilangannya.", wajib: true, cek: (k) => keluarga(k) && (k.dibuka.includes("x") || k.dibuka.includes("y")) },
+  { id: "c-sepuluh", teks: "Buat keluarga yang semuanya sepuluh.", wajib: false, cek: (k) => keluarga(k) && k.x > 0 && k.y > 0 && k.x + k.y === 10 },
+  { id: "c-nol", teks: "Catat kalimat keluarga yang memakai nol.", wajib: false, cek: (k) => keluarga(k) && k.catat.some((t) => angka(t).includes(0)) },
 ];
 
 /** Sub-Bab D (sub-bab akhir): soal cerita pengurangan, sekaligus pencapaian misi bab ini. */
