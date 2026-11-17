@@ -11,7 +11,7 @@ export const kepala = (i: number): Obj[] =>
   kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [NAMA_METODE[i] === NAMA_METODE_ID[i] ? NAMA_METODE[i] : `${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka ------------------------------ */
-const SUARA_O1 = "Festival sudah selesai, tetapi Abang masih senang menyusun bentuk. Anak-anak di negara lain juga belajar menyusun dan mengurai bentuk.";
+const SUARA_O1 = "Sepulang dari festival, juri menitipkan sebuah kotak hadiah. Isinya keping-keping bentuk dari kota lain, dan Abang langsung ingin mencoba menyusun dan mengurai.";
 const SUARA_O2 = "Kita lihat tiga metode global: Tangram, Pattern Blocks, dan Toothpick Shapes.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Tangram, Balok Pola, dan Bentuk dari Lidi.";
 const SUARA_O4 = "Semua metode mengajak kita menyusun bentuk, mengurai bentuk, lalu menghitung bagiannya.";
@@ -26,7 +26,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       SUARA_O1,
       tambah(0, judul("Setelah festival"), emo("tn", 150, 80, E.tenda, 40)),
       tambah("Abang", ...orang("ab", 40, 120, E.abang, "Abang")),
-      tambah("negara", emo("gl", 250, 110, E.dunia, 44)),
+      tambah("kota", emo("gl", 250, 110, E.dunia, 44)),
       tambah("mengurai", ...kartu("pk", 50, 150, 200, 30, W.emas, ["menyusun dan mengurai bentuk"], 10)),
     ),
     k(
@@ -54,6 +54,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 };
 
 /* ------------------------------ 2. Tangram: konsep ------------------------------ */
+const SUARA_A4 = "Tangram cocok untuk membuat gambar dari keping yang sudah ada, tetapi kepingnya tetap tujuh, tidak bisa ditambah.";
 const SUARA_A1 = "Metode pertama, Tangram. Tangram adalah tujuh keping bentuk yang bisa disusun menjadi banyak gambar.";
 const SUARA_A2 = "Ada lima segitiga, satu segi empat, dan satu segi empat miring. Lima tambah dua sama dengan tujuh keping.";
 const SUARA_A3 = "Keping bisa diputar dan digeser. Dua segitiga kecil yang digabung menjadi satu segi empat.";
@@ -86,6 +87,13 @@ export const ADEGAN_LUAR_TANGRAM: AdeganStory = {
       ubah("digabung", { id: "sb", x: 132, y: 80 }),
       tambah(idx(SUARA_A3, "satu"), teks("n1", 150, 168, "1 segi empat", 10)),
       sorotkan(idx(SUARA_A3, "empat."), "sa", "sb"),
+    ),
+    k(
+      SUARA_A4,
+      bersih(0),
+      tambah(0, ...kepala(0)),
+      tambah("cocok", emo("bc", 40, 84, "👍", 26), ...kartu("bk", 64, 66, 222, 38, W.hijauMuda, ["cocok: gambar dari keping yang ada"], 9.4)),
+      tambah("tetapi", emo("bt", 40, 142, "🔒", 26), ...kartu("bl", 64, 124, 222, 38, W.merahMuda, ["kepingnya tetap 7"], 9.4)),
     ),
   ],
 };

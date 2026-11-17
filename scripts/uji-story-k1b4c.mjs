@@ -246,7 +246,13 @@ const nilaiKalimat = (s) => {
   const d0 = akhirAdegan(d, 0);
   const d1 = akhirAdegan(d, 1);
   const d2 = akhirAdegan(d, 2);
-  cek(Math.abs(luasJalur(ketemu(d0, "ta")) - luasJalur(ketemu(d0, "tb"))) < 0.5 && ketemu(d0, "tb").x !== ketemu(d0, "ta").x, "dua segitiga sama besar, mula-mula terpisah");
+  // Salah langkah (pedoman mutu): Igil menumpuk dua segitiga sama besar, hasilnya tetap segitiga kecil; Kaka membetulkan.
+  cek(Math.abs(luasJalur(ketemu(d0, "ta")) - luasJalur(ketemu(d0, "tx"))) < 0.5 && Math.hypot(ketemu(d0, "tx").x - ketemu(d0, "ta").x, ketemu(d0, "tx").y - ketemu(d0, "ta").y) < 10 && /tetap kecil/.test(isiTeks(d0, "tm") ?? ""), "salah langkah: dua segitiga ditumpuk tetap segitiga kecil");
+  cek(/menumpuk/.test(d.ketukan[0].suara) && /jangan ditumpuk/.test(d.ketukan[1].suara) && /Kaka/.test(d.ketukan[1].suara), "salah langkah: Kaka meminta menempel sisi, bukan menumpuk");
+  {
+    const awal = L.keadaanStory(d, 1, 0);
+    cek(!ketemu(awal, "tx") && Math.abs(luasJalur(ketemu(awal, "ta")) - luasJalur(ketemu(awal, "tb"))) < 0.5 && ketemu(awal, "tb").x !== ketemu(awal, "ta").x, "dua segitiga sama besar, lalu dipisah sebelum ditempel");
+  }
   const persegi = new Set([...titikBangun(ketemu(d1, "ta")), ...titikBangun(ketemu(d1, "tb"))]);
   const tp = [...persegi].map((s) => s.split(",").map(Number));
   const xs = new Set(tp.map((p) => p[0]));
@@ -309,7 +315,11 @@ const nilaiKalimat = (s) => {
   cek(["ig", "kk", "kk-pita", "ab", "mm"].every((id) => ketemu(h1, id)) && /Festival Mainan Kardus selesai/.test(isiTeks(h1, "sl-t0")), "akhir: semua merayakan, cerita bab selesai");
   cek(/bahan bekas/.test(h.ketukan[0].suara) && /menjadi mainan/.test(h.ketukan[0].suara) && /selesai/.test(h.ketukan[1].suara), "akhir: bahan bekas menjadi mainan, cerita selesai");
   const pn = adegan(M_VIDEO, "penutup");
-  cek(/Sampai jumpa/.test(pn.ketukan.at(-1).suara) && /bertambah/.test(pn.ketukan[0].suara) && /berkurang/.test(pn.ketukan[1].suara), "penutup: menyusun bertambah, mengurai berkurang, sampai jumpa");
+  cek(pn.ketukan.at(-1).suara.endsWith("?") && /kamu/.test(pn.ketukan.at(-1).suara) && /bertambah/.test(pn.ketukan[0].suara) && /berkurang/.test(pn.ketukan[1].suara), "penutup: menyusun bertambah, mengurai berkurang, pertanyaan untuk anak");
+  {
+    const langsung = M_VIDEO.adegan.reduce((n, a) => n + a.ketukan.reduce((m, kt) => m + (kt.suara.match(/"[^"]+"/g) ?? []).length, 0), 0);
+    cek(langsung >= 3, `pedoman: paling sedikit tiga kalimat langsung antartokoh (${langsung})`);
+  }
 }
 {
   // Metode global: konsep dan terapan tiap metode.
@@ -319,7 +329,7 @@ const nilaiKalimat = (s) => {
   sama([keping.length, keping.filter((o) => titikBangun(o).length === 3).length, keping.filter((o) => titikBangun(o).length === 4).length], [7, 5, 2], "Tangram: tujuh keping, lima segitiga, dua segi empat");
   cek(Math.abs(keping.reduce((s, o) => s + luasJalur(o), 0) - 96 * 96) < 1, "Tangram: tujuh keping menutup persegi tanpa celah");
   sama([kalimatDi(t1, "kt"), isiTeks(akhirAdegan(t, 0), "n7")], ["5 + 2 = 7", "7 keping"], "Tangram: lima tambah dua sama dengan tujuh");
-  const t2 = akhirAdegan(t);
+  const t2 = akhirAdegan(t, t.ketukan.length - 2);
   cek(new Set([...titikBangun(ketemu(t2, "sa")), ...titikBangun(ketemu(t2, "sb"))]).size === 4 && isiTeks(t2, "n1") === "1 segi empat", "Tangram: dua segitiga kecil menjadi segi empat");
   const tt = adegan(U, "luar-tangram-terapan");
   const tt1 = akhirAdegan(tt, 1);
@@ -327,13 +337,17 @@ const nilaiKalimat = (s) => {
   cek(["ly0", "ly1", "bd", "bn"].every((id) => ketemu(tt1, id)) && ketemu(tt2, "ly0").x !== ketemu(tt1, "ly0").x, "Tangram terapan: perahu empat keping, lalu diurai");
   sama(kalimatDi(tt2, "kp", 7), "2 + 1 + 1 = 4", "Tangram terapan: dua tambah satu tambah satu");
   const b = adegan(U, "luar-balok");
-  cek(["pb0", "pb1", "pb2"].every((id) => ketemu(akhirAdegan(b), id)) && /segitiga hijau/.test(isiTeks(akhirAdegan(b), "w0")), "Pattern Blocks: balok bentuk berwarna");
+  cek(["pb0", "pb1", "pb2"].every((id) => ketemu(akhirAdegan(b, b.ketukan.length - 2), id)) && /segitiga hijau/.test(isiTeks(akhirAdegan(b, b.ketukan.length - 2), "w0")), "Pattern Blocks: balok bentuk berwarna");
   const bt = adegan(U, "luar-balok-terapan");
   const bt2 = akhirAdegan(bt, 2);
   sama([hitung(bt2, "dn"), hitung(bt2, "bt"), kalimatDi(bt2, "kb")], [3, 2, "3 + 2 = 5"], "Pattern Blocks terapan: pohon tiga segitiga dan dua segi empat");
   cek(ketemu(akhirAdegan(bt), "dn0").x !== ketemu(bt2, "dn0").x, "Pattern Blocks terapan: pohon diurai");
   const l = adegan(U, "luar-lidi");
-  const la = akhirAdegan(l);
+  const la = akhirAdegan(l, l.ketukan.length - 2);
+  // Pedoman mutu: tiap metode dibandingkan kapan cocok dan kapan kurang cocok; ringkasan berupa pilihan.
+  for (const a of [t, b, l]) cek(/cocok/.test(a.ketukan.at(-1).suara) && /tetapi/.test(a.ketukan.at(-1).suara) && isiTeks(akhirAdegan(a), "bk-t0") && isiTeks(akhirAdegan(a), "bl-t0"), `${a.id}: dibandingkan kapan cocok`);
+  cek(adegan(U, "luar-ringkas").ketukan.slice(1).every((kt) => /^Kalau/.test(kt.suara)), "ringkasan: pilihan kalau ..., pakai ...");
+  cek(/juri/.test(adegan(U, "luar-pembuka").ketukan[0].suara), "pembuka global di dalam cerita");
   sama([hitung(la, "sg"), hitung(la, "se"), isiTeks(la, "t3"), isiTeks(la, "t4")], [3, 4, "3 lidi", "4 lidi"], "Toothpick Shapes: segitiga tiga lidi, segi empat empat lidi");
   const lt = adegan(U, "luar-lidi-terapan");
   const lt1 = akhirAdegan(lt, 1);

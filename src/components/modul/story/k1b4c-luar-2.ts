@@ -6,6 +6,7 @@ import { WARNA_METODE, kepala } from "./k1b4c-luar-1";
 /* Video metode global Sub-Bab C: Pattern Blocks (Balok Pola), Toothpick Shapes (Bentuk dari Lidi), dan ringkasan. */
 
 /* ------------------------------ 4. Pattern Blocks: konsep ------------------------------ */
+const SUARA_C4 = "Balok Pola cocok untuk gambar berwarna yang cepat dibuat, tetapi bentuk baloknya hanya beberapa macam.";
 const SUARA_C1 = "Metode kedua, Pattern Blocks, atau Balok Pola. Balok pola adalah keping bentuk berwarna yang ditempel menjadi gambar.";
 const SUARA_C2 = "Setiap warna punya bentuk sendiri: segitiga hijau, segi empat oranye, dan segi empat miring biru.";
 const SUARA_C3 = "Setelah gambar jadi, sebut nama bentuknya, lalu hitung banyak baloknya.";
@@ -36,6 +37,13 @@ export const ADEGAN_LUAR_BALOK: AdeganStory = {
       redamkan(0, "pb0", "pb1", "pb2"),
       tambah("sebut", ...kartu("s1", 14, 150, 130, 30, W.putih, ["sebut nama"], 10)),
       tambah("hitung", ...kartu("s2", 156, 150, 130, 30, W.putih, ["hitung banyak"], 10)),
+    ),
+    k(
+      SUARA_C4,
+      bersih(0),
+      tambah(0, ...kepala(1)),
+      tambah("cocok", emo("bc", 40, 84, "👍", 26), ...kartu("bk", 64, 66, 222, 38, W.hijauMuda, ["cocok: gambar cepat dan berwarna"], 9.4)),
+      tambah("tetapi", emo("bt", 40, 142, "🤔", 26), ...kartu("bl", 64, 124, 222, 38, W.merahMuda, ["bentuk baloknya sedikit"], 9.4)),
     ),
   ],
 };
@@ -81,6 +89,7 @@ export const ADEGAN_LUAR_BALOK_TERAPAN: AdeganStory = {
 };
 
 /* ------------------------------ 6. Toothpick Shapes: konsep ------------------------------ */
+const SUARA_F5 = "Bentuk dari Lidi cocok untuk menghitung sisi lurus, tetapi tidak bisa membuat bentuk lengkung.";
 const SUARA_F1 = "Metode ketiga, Toothpick Shapes, atau Bentuk dari Lidi. Kita menyusun bentuk dengan batang lidi yang lurus.";
 const SUARA_F2 = "Segitiga perlu tiga lidi, karena segitiga punya tiga sisi lurus.";
 const SUARA_F3 = "Segi empat perlu empat lidi, karena segi empat punya empat sisi lurus.";
@@ -113,6 +122,13 @@ export const ADEGAN_LUAR_LIDI: AdeganStory = {
       tambah("lengkung", bulat("lk", 146, 112, 16, "transparent", W.biru, { tebal: 2, putus: true })),
       tambah("tidak", emo("no", 146, 118, E.salah, 18)),
       sorotkan("lurus.", "sg0", "se0"),
+    ),
+    k(
+      SUARA_F5,
+      bersih(0),
+      tambah(0, ...kepala(2)),
+      tambah("cocok", emo("bc", 40, 84, "👍", 26), ...kartu("bk", 64, 66, 222, 38, W.hijauMuda, ["cocok: menghitung sisi lurus"], 9.4)),
+      tambah("tetapi", emo("bt", 40, 142, "🚫", 26), ...kartu("bl", 64, 124, 222, 38, W.merahMuda, ["tidak bisa: bentuk lengkung"], 9.4)),
     ),
   ],
 };
@@ -150,10 +166,10 @@ export const ADEGAN_LUAR_LIDI_TERAPAN: AdeganStory = {
 };
 
 /* ------------------------------ 8. Ringkasan ------------------------------ */
-const SUARA_Z1 = "Kita sudah melihat tiga metode global untuk menyusun dan mengurai bentuk.";
-const SUARA_Z2 = "Tangram: tujuh keping disusun menjadi gambar, lalu diurai dan dihitung bagiannya.";
-const SUARA_Z3 = "Pattern Blocks atau Balok Pola: tempel balok bentuk, sebut namanya, lalu hitung baloknya.";
-const SUARA_Z4 = "Toothpick Shapes atau Bentuk dari Lidi: segitiga tiga lidi, dan segi empat empat lidi.";
+const SUARA_Z1 = "Tiga metode, tiga kegunaan. Pilih sesuai mainan yang ingin kamu susun dan urai.";
+const SUARA_Z2 = "Kalau ingin membuat gambar dari tujuh keping yang sama, pakai Tangram.";
+const SUARA_Z3 = "Kalau ingin gambar berwarna yang cepat jadi, pakai Pattern Blocks atau Balok Pola.";
+const SUARA_Z4 = "Kalau ingin menghitung sisi lurus sebuah bentuk, pakai Toothpick Shapes atau Bentuk dari Lidi.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
@@ -161,9 +177,9 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   sumber: "Ringkasan metode global",
   latar: "#FEF9C3",
   ketukan: [
-    k(SUARA_Z1, tambah(0, judul("Ringkasan")), tambah("tiga", emo("rk", 150, 96, E.pesta, 44)), tambah("bentuk.", ...kartu("rt", 60, 124, 180, 26, W.emas, ["3 metode global"], 10))),
-    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Tangram:", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Tangram", "7 keping: susun, urai, hitung"], 9.4))),
-    k(SUARA_Z3, tambah("Pattern", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["Pattern Blocks · Balok Pola", "tempel, sebut nama, hitung"], 9.4))),
-    k(SUARA_Z4, tambah("Toothpick", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Toothpick Shapes · Bentuk dari Lidi", "segitiga 3 lidi, segi empat 4 lidi"], 9.4))),
+    k(SUARA_Z1, tambah(0, judul("Ringkasan")), tambah("tiga", emo("rk", 150, 96, E.pesta, 44)), tambah("urai.", ...kartu("rt", 60, 124, 180, 26, W.emas, ["3 metode global"], 10))),
+    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Tangram.", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Tangram", "gambar dari 7 keping"], 9.4))),
+    k(SUARA_Z3, tambah("Pattern", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["Pattern Blocks · Balok Pola", "gambar berwarna, cepat jadi"], 9.4))),
+    k(SUARA_Z4, tambah("Toothpick", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Toothpick Shapes · Bentuk dari Lidi", "menghitung sisi lurus"], 9.4))),
   ],
 };

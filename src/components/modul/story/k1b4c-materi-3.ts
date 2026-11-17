@@ -1,12 +1,12 @@
 import type { AdeganStory } from "./logika-story";
-import { E, W, emo, judul, kartu, kereta, kotak, orang, panggung, rumah, teks } from "./k1b4c-gambar";
+import { E, W, emo, judul, kartu, kereta, kotak, orang, panggung, rumah, segitiga, teks } from "./k1b4c-gambar";
 import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k1b4c-bantu";
 
 /* Akhir "Mainan untuk Festival" dan akhir cerita Bab 4 Festival Mainan Kardus: mainan tampil, Igil menjawab juri, perayaan, lalu penutup. Tanpa latihan. */
 
 /* ------------------------------ 6. Di panggung festival ------------------------------ */
 const SUARA_P1 = "Hari festival tiba. Kereta dan rumah keluarga Igil tampil di panggung lapangan.";
-const SUARA_P2 = "Juri bertanya: kereta ini tersusun dari bentuk apa saja, dan berapa banyak?";
+const SUARA_P2 = "Juri bertanya, \"Kereta ini tersusun dari bentuk apa saja, dan berapa banyak?\" Semua menunggu.";
 const SUARA_P3 = "Igil menjawab dengan lantang: tiga segi empat, satu segitiga, dan empat lengkung. Semuanya delapan bagian.";
 const SUARA_P4 = "Juri tersenyum dan memberi pita. Juri senang mendengar nama bentuk penyusunnya.";
 const KF = kereta("f", 20, 112, 0.6);
@@ -87,9 +87,9 @@ export const ADEGAN_HASIL: AdeganStory = {
 };
 
 /* ------------------------------ 8. Penutup ------------------------------ */
-const SUARA_Z1 = "Ingat, ya. Menyusun berarti menggabung bentuk, dan banyak bagiannya bertambah.";
+const SUARA_Z1 = "Menyusun berarti menggabung bentuk, dan banyak bagiannya bertambah.";
 const SUARA_Z2 = "Mengurai berarti memisah bentuk menjadi bagiannya, dan banyak bagiannya berkurang.";
-const SUARA_Z3 = "Terima kasih, Igil, Kaka, Abang, dan Mamah. Sampai jumpa di petualangan berikutnya!";
+const SUARA_Z3 = "Coba pikirkan: kalau kamu punya empat segitiga sama, mainan apa yang bisa kamu susun?";
 
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup",
@@ -112,12 +112,10 @@ export const ADEGAN_PENUTUP: AdeganStory = {
     k(
       SUARA_Z3,
       bersih(0),
-      tambah(0, judul("Sampai jumpa!"), emo("ht", 150, 62, E.hati, 30)),
-      tambah("Igil,", ...orang("ig", 45, 130, E.igil, "Igil")),
-      tambah("Kaka,", ...orang("kk", 115, 130, E.kaka, "Kaka")),
-      tambah("Abang,", ...orang("ab", 185, 130, E.abang, "Abang")),
-      tambah("Mamah.", ...orang("mm", 255, 130, E.mamah, "Mamah")),
-      tambah("berikutnya!", emo("ps", 150, 182, E.pesta, 22)),
+      tambah(0, judul("Coba pikirkan"), emo("ht", 150, 62, E.tanya, 30)),
+      tambah("empat", ...[96, 132, 168, 204].map((x, i) => segitiga(`zq${i}`, x, 92, [{ x: 0, y: 0 }, { x: 14, y: 30 }, { x: -14, y: 30 }])), teks("zn", 150, 140, "4 segitiga sama", 10)),
+      tambah("kamu", ...orang("ig", 45, 150, E.igil, "Igil")),
+      tambah("susun?", ...orang("kk", 255, 150, E.kaka, "Kaka"), teks("zt", 150, 176, "mainan apa?", 11, W.merah)),
     ),
   ],
 };

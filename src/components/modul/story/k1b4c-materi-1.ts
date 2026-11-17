@@ -28,8 +28,8 @@ import { hapus, idx, k, kalimatBertahap, sorotkan, tambah, ubah } from "./k1b4c-
  */
 
 /* ------------------------------ 1. Festival besok ------------------------------ */
-const SUARA_F1 = "Besok festival mainan kampung. Bahan dari gudang sudah rapi di keranjang: empat lengkung, dua segitiga, dan lima segi empat.";
-const SUARA_F2 = "Mamah berkata, bahan itu akan disusun menjadi dua mainan: kereta dan rumah.";
+const SUARA_F1 = "\"Juri datang besok!\" seru Igil. Bahan sudah rapi di keranjang: empat lengkung, dua segitiga, dan lima segi empat.";
+const SUARA_F2 = "Mamah bertanya, \"Mainan apa yang kita susun?\" Mereka memilih dua mainan: kereta dan rumah.";
 const SUARA_F3 = "Juri festival akan bertanya: mainanmu tersusun dari bentuk apa, dan berapa banyak bagiannya?";
 const keranjang = (id: string, x: number) => kotak(id, x, 46, 92, 86, "#FEF3C7", W.coklat, { rx: 8, tebal: 2, z: -2 });
 
@@ -69,8 +69,8 @@ export const ADEGAN_FESTIVAL_BESOK: AdeganStory = {
 };
 
 /* ------------------------------ 2. Dua segitiga, dua cara ------------------------------ */
-const SUARA_D1 = "Igil mengambil dua karton segitiga yang sama besar. Bentuk baru apa yang bisa dibuat?";
-const SUARA_D2 = "Cara pertama, Igil menempelkan sisi miringnya. Dua segitiga menjadi satu segi empat!";
+const SUARA_D1 = "Igil menumpuk dua karton segitiga. \"Kok tetap segitiga kecil?\" katanya heran.";
+const SUARA_D2 = "\"Tempelkan sisinya, jangan ditumpuk,\" kata Kaka. Sisi miring ditempel, jadilah satu segi empat!";
 const SUARA_D3 = "Cara kedua, Igil menempelkan sisi tegaknya. Dua segitiga menjadi satu segitiga besar!";
 const SUARA_D4 = "Jadi, dua segitiga bisa disusun dengan dua cara: menjadi segi empat atau segitiga besar.";
 const S = 44;
@@ -86,14 +86,17 @@ export const ADEGAN_DUA_SEGITIGA: AdeganStory = {
     k(
       SUARA_D1,
       tambah(0, judul("Dua segitiga"), ...orang("ig", 36, 150, E.igil, "Igil")),
-      tambah(idx(SUARA_D1, "dua"), segitiga("ta", KIRI.x, KIRI.y, sikuKiriAtas(S)), segitiga("tb", KIRI.x + 20, KIRI.y + 20, sikuKananBawah(S)), teks("n2", 150, 166, "2 segitiga sama besar", 10)),
-      tambah("baru", emo("tq", 168, 70, E.tanya, 24)),
+      tambah(idx(SUARA_D1, "dua"), segitiga("ta", KIRI.x, KIRI.y, sikuKiriAtas(S)), segitiga("tx", KIRI.x + 5, KIRI.y + 5, sikuKiriAtas(S)), teks("n2", 150, 166, "2 segitiga sama besar", 10)),
+      tambah("kecil?", teks("tm", 196, 60, "ditumpuk: tetap kecil", 9, W.merah)),
+      tambah("heran.", emo("tq", 196, 90, E.tanya, 24)),
     ),
     k(
       SUARA_D2,
-      hapus(0, "tq"),
-      ubah("menempelkan", { id: "tb", x: KIRI.x, y: KIRI.y }),
-      tambah("menempelkan", teks("c1", 84, 104, "cara 1", 10, W.ungu)),
+      hapus(0, "tq", "tm", "tx"),
+      tambah(0, segitiga("tb", KIRI.x + 20, KIRI.y + 20, sikuKananBawah(S))),
+      tambah("Kaka.", ...orang("kk", 264, 150, E.kaka, "Kaka")),
+      ubah("ditempel,", { id: "tb", x: KIRI.x, y: KIRI.y }),
+      tambah("ditempel,", teks("c1", 84, 104, "cara 1", 10, W.ungu)),
       tambah(idx(SUARA_D2, "satu"), teks("h1", 84, 118, "1 segi empat", 10)),
       sorotkan("empat!", "ta", "tb"),
     ),

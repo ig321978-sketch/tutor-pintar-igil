@@ -56,7 +56,7 @@ export const jenisSlot = (s: readonly Pt[]): Balok => (bentukPoligon(s) === "seg
 export type TanyaUrai = "semua" | Bentuk | { lepas: Bentuk };
 export type Langkah =
   /** Metode IGIL: mainan gabungan diurai dengan mengetuk bagiannya, lalu jawab banyak bagian (semua, satu jenis, atau sisa setelah satu jenis dilepas). */
-  | { tipe: "urai"; nama: string; bagian: Bagian[]; tanya: TanyaUrai }
+  | { tipe: "urai"; nama: string; bagian: Bagian[]; tanya: TanyaUrai; klaim?: Klaim }
   /** Tangram: dua atau tiga keping digabung; pilih bentuk hasilnya (tanpa angka). `gabung` = garis tepi hasil. */
   | { tipe: "gabung"; keping: Keping[]; gabung: Pt[]; tempel: string }
   /** Tangram untuk suara: hitung keping pada gambar tangram (semua atau satu bentuk). */
@@ -65,6 +65,10 @@ export type Langkah =
   | { tipe: "balok"; nama: string; slot: Pt[][]; isi: number[]; tanya: "semua" | Balok | "sisa" }
   /** Toothpick Shapes: ketuk garis putus-putus untuk meletakkan lidi; sisi bersama cukup satu lidi. */
   | { tipe: "lidi"; nama: string; bangun: Pt[][] };
+
+/** Soal "Cari kesalahan": tokoh sudah menyebut banyak bagian; `alasan` menjelaskan kesalahan (atau kebenaran) jawabannya. */
+export type Klaim = { tokoh: "Igil" | "Kaka" | "Abang" | "Mamah"; angka: number; alasan: string };
+export const klaimBenar = (l: Extract<Langkah, { tipe: "urai" }>): boolean => l.klaim !== undefined && l.klaim.angka === kunciLangkah(l);
 
 export type LangkahSoal = { metode: Metode; cara: Cara; judul: string; suara: string; langkah: Langkah };
 export type SoalMisi = { nomor: number; judul: string; cerita: string; cara: Cara; langkah: LangkahSoal[] };
@@ -165,6 +169,7 @@ export function kalimatTanya(l: Langkah): { atas: string; bawah: string } {
 const AKHIR: Record<Cara, string> = { klik: "Lalu pilih banyaknya.", kanvas: "Lalu tulis banyaknya di kanvas.", suara: "Lalu ucapkan banyaknya." };
 
 export function instruksi(l: Langkah, rupa: Rupa, cara: Cara): string {
+  if (l.tipe === "urai" && l.klaim) return `Cari kesalahan. ${l.klaim.tokoh} bilang, ${l.nama} ini punya ${kata(l.klaim.angka)} bagian. Benar atau salah? Periksa dulu dengan mengurai.`;
   const akhir = AKHIR[cara];
   const kartu = rupa === "lambang";
   switch (l.tipe) {

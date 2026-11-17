@@ -19,7 +19,7 @@ export const EMOJI: Record<string, string> = {
   bendera: "\u{1F6A9}",
   keju: "\u{1F9C0}",
   pizza: "\u{1F355}",
-  roda: "\u{1F6DE}",
+  roda: "\u{1F697}",
   tutup: "\u{1F96B}",
   cd: "\u{1F4BF}",
   donat: "\u{1F369}",
@@ -175,6 +175,7 @@ export const CONCRETE: SoalMisi[] = [
       tipe: "urai",
       nama: "robot",
       tanya: "semua",
+      klaim: { tokoh: "Igil", angka: 5, alasan: "Igil lupa menghitung dua roda lengkung. Semua bagian ikut dihitung, juga rodanya." },
       bagian: [
         B("segitiga", "bendera", 150, 34, 36, 24),
         B("segiempat", "kardus", 150, 66, 50, 36),
@@ -232,6 +233,7 @@ export const PICTORIAL: SoalMisi[] = [
       tipe: "urai",
       nama: "pesawat",
       tanya: "semua",
+      klaim: { tokoh: "Kaka", angka: 7, alasan: "Kaka menghitung tiap bagian satu kali dan tidak ada yang terlewat." },
       bagian: [
         B("segiempat", "pola", 140, 100, 120, 30),
         B("segiempat", "pola", 140, 68, 36, 30),
@@ -293,7 +295,7 @@ export const PICTORIAL: SoalMisi[] = [
 const A = kelompok("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(1, "klik", "Misi Festival 8: kartu juri", "Juri menulis bagian mainan di kartu kecil, tanpa gambar.", [
-    { tipe: "urai", nama: "istana", tanya: "semua", bagian: kartu(["segiempat", 4], ["segitiga", 3], ["lengkung", 2]) },
+    { tipe: "urai", nama: "istana", tanya: "semua", klaim: { tokoh: "Abang", angka: 3, alasan: "Abang hanya menghitung jenis bentuknya. Yang ditanya banyak bagian semuanya, bukan banyak jenisnya." }, bagian: kartu(["segiempat", 4], ["segitiga", 3], ["lengkung", 2]) },
     { tipe: "gabung", keping: [kp("kata", [0, 0], [2, 0], [2, 2], [0, 2]), kp("kata", [0, 2], [2, 2], [2, 4], [0, 4])], gabung: [[0, 0], [2, 0], [2, 4], [0, 4]], tempel: "satu di atas yang lain" },
     { tipe: "balok", nama: "tenda", tanya: "semua", isi: [], slot: [sq(0, 1), sq(1, 1), naik(0, 0), naik(1, 0)] },
     { tipe: "lidi", nama: "tiga segi empat berjajar", bangun: [0, 1, 2].map((i): Pt[] => [[i, 1], [i + 1, 1], [i + 1, 2], [i, 2]]) },

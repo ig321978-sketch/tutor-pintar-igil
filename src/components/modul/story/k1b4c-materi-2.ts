@@ -47,7 +47,7 @@ export const ADEGAN_SUSUN_RUMAH: AdeganStory = {
 };
 
 /* ------------------------------ 5. Mengurai roda kereta ------------------------------ */
-const SUARA_U1 = "Lem roda kereta mulai lepas. Abang mengurai kereta dan melepas keempat rodanya.";
+const SUARA_U1 = "Lem roda kereta lepas, sebuah roda menggelinding sendiri ke bawah meja! Abang mengurai kereta dan melepas keempat rodanya.";
 const SUARA_U2 = "Tadi ada delapan bagian. Delapan dikurangi empat sama dengan empat. Tersisa empat bagian di kereta.";
 const SUARA_U3 = "Setelah lemnya kering, keempat roda dipasang lagi. Empat tambah empat sama dengan delapan.";
 const SUARA_U4 = "Bagian dari mengurai sama dengan bagian saat menyusun: tiga segi empat, satu segitiga, empat lengkung.";

@@ -115,6 +115,14 @@ for (const [nama, soal, rupa] of [["Concrete", D.CONCRETE, "benda"], ["Pictorial
   }
   const angka = semua.map((x) => L.angkaJawab(x.langkah)).filter((n) => n !== null);
   cek(new Set(angka).size === angka.length && angka.length === 10, `${nama}: sepuluh angka jawaban tidak kembar (${angka.join(",")})`);
+  // Pedoman mutu: tiap tahap paling sedikit satu soal "Cari kesalahan"; alasan menjelaskan kesalahan tokoh; penilaian dihitung dari kunci.
+  const klaim = semua.filter((x) => x.langkah.tipe === "urai" && x.langkah.klaim);
+  cek(klaim.length >= 1, `${nama}: ada soal Cari kesalahan`);
+  for (const x of klaim) {
+    const kl = x.langkah.klaim;
+    cek(["Igil", "Kaka", "Abang", "Mamah"].includes(kl.tokoh) && kl.alasan.length > 20 && !/\d/.test(kl.alasan) && /Cari kesalahan/.test(x.suara) && !/\d/.test(x.suara), `${nama}: klaim ${kl.tokoh} berisi alasan dan instruksi tanpa digit`);
+    cek(L.klaimBenar(x.langkah) === (kl.angka === L.kunciLangkah(x.langkah)), `${nama}: penilaian klaim dihitung dari kunci`);
+  }
   cek(angka.every((n) => n >= 0 && n <= 10), `${nama}: nol sampai sepuluh`);
   sama(semua.filter((x) => L.angkaJawab(x.langkah) === null).map((x) => `${x.langkah.tipe}/${x.cara}`), ["gabung/klik", "gabung/kanvas"], `${nama}: dua soal tanpa angka, Tangram klik dan kanvas`);
   sama(semua.filter((x) => x.langkah.tipe === "gabung").map((x) => L.bentukGabung(x.langkah)).sort(), ["segiempat", "segitiga"], `${nama}: Tangram menghasilkan segi empat dan segitiga`);
@@ -335,5 +343,9 @@ for (const [nama, soal, rupa] of [["Concrete", D.CONCRETE, "benda"], ["Pictorial
   cek([...misi.matchAll(/^import (.*) from/gm)].every((m) => m[1].startsWith("type ")), "misi-bab4.ts: hanya impor tipe");
 }
 
+{
+  const semuaKlaim = [D.CONCRETE, D.PICTORIAL, D.ABSTRACT].flat().flatMap((so) => so.langkah).filter((x) => x.langkah.tipe === "urai" && x.langkah.klaim);
+  cek(semuaKlaim.some((x) => !L.klaimBenar(x.langkah)) && semuaKlaim.some((x) => L.klaimBenar(x.langkah)), "Cari kesalahan: ada klaim keliru dan ada klaim benar");
+}
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

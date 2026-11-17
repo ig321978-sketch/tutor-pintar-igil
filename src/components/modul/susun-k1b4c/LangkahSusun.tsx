@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { CariKesalahan } from "../CariKesalahan";
 import { KanvasTulis, TombolPeriksa } from "../opsi2/primitif";
 import { JawabSuara, JawabTulis, Pilihan } from "../lemari-k1b1a/Jawab";
 import {
@@ -8,6 +9,7 @@ import {
   NAMA_BENTUK,
   URUT_BENTUK,
   angkaJawab,
+  klaimBenar,
   bentukGabung,
   bentukKeping,
   hitungUrai,
@@ -526,6 +528,8 @@ const PETUNJUK: Record<string, string> = {
 
 export function LangkahSusun({ ls, rupa, bicara, onBenar }: P) {
   const l = ls.langkah;
+  const klaim = l.tipe === "urai" ? l.klaim : undefined;
+  const [dinilai, setDinilai] = useState(!klaim);
   const cara = ls.cara;
   const n = angkaJawab(l);
   const [siapJawab, setSiapJawab] = useState(false);
@@ -568,7 +572,20 @@ export function LangkahSusun({ ls, rupa, bicara, onBenar }: P) {
   return (
     <div className="space-y-3">
       <div className={goyang && !siapJawab ? "lm-goyang" : ""}>
-        {l.tipe === "urai" ? <Urai {...pk} l={l} /> : l.tipe === "gabung" ? <Gabung {...pk} l={l} /> : l.tipe === "keping" ? <HitungKeping {...pk} l={l} /> : l.tipe === "balok" ? <IsiBalok {...pk} l={l} /> : <Lidi {...pk} l={l} />}
+        {!dinilai && klaim && l.tipe === "urai" ? (
+          <CariKesalahan
+            tokoh={klaim.tokoh}
+            ucapan={`${l.nama.charAt(0).toUpperCase() + l.nama.slice(1)} ini punya ${klaim.angka} bagian.`}
+            benar={klaimBenar(l)}
+            alasan={klaim.alasan}
+            salah={salah}
+            onLulus={(p) => {
+              setDinilai(true);
+              setPesan(p);
+              bicara(p);
+            }}
+          />
+        ) : l.tipe === "urai" ? <Urai {...pk} l={l} /> : l.tipe === "gabung" ? <Gabung {...pk} l={l} /> : l.tipe === "keping" ? <HitungKeping {...pk} l={l} /> : l.tipe === "balok" ? <IsiBalok {...pk} l={l} /> : <Lidi {...pk} l={l} />}
       </div>
       {siapJawab && !selesai && n !== null ? (
         <div className={`space-y-2 ${goyang ? "lm-goyang" : ""}`}>
