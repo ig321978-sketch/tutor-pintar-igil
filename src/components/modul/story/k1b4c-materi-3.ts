@@ -1,227 +1,123 @@
 import type { AdeganStory } from "./logika-story";
-import { W, emo, judul, kartu, kartuAngka, lidi, poli, roket, segiEmpat, segitigaSama, siku, teks } from "./k1b4c-gambar";
-import { bersih, hapus, idx, k, rangkai, redamkan, sorotkan, tambah, tandaiSatuSatu, ubah } from "./k1b4c-bantu";
+import { E, W, emo, judul, kartu, kereta, kotak, orang, panggung, rumah, teks } from "./k1b4c-gambar";
+import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k1b4c-bantu";
 
-const ANAK = "\u{1F9D2}";
-const IGIL = "\u{1F989}";
-const MERAH = "#F87171";
-const BIRU = "#60A5FA";
+/* Akhir "Mainan untuk Festival" dan akhir cerita Bab 4 Festival Mainan Kardus: mainan tampil, Igil menjawab juri, perayaan, lalu penutup. Tanpa latihan. */
 
-/* ------------------------------ 1. Susun roket di layar ------------------------------ */
-const SUARA_M1 = "Sekarang giliranmu di layar. Kita susun sebuah roket dari lima keping. Keping-keping itu masih berserakan.";
-const SUARA_M2 = "Ketuk keping segi empat, lalu seret ke tengah untuk menjadi badan roket.";
-const SUARA_M3 = "Pasang tiga segitiga: satu untuk hidung, dan dua untuk sirip kanan dan kiri.";
-const SUARA_M4 = "Terakhir, pasang bentuk lengkung sebagai jendela roket.";
-const SUARA_M5 = "Roket sudah jadi! Ada satu segi empat, tiga segitiga, dan satu bentuk lengkung. Semuanya lima keping.";
-const SEBAR: Record<string, { x: number; y: number }> = { rk0: { x: 24, y: 70 }, rk1: { x: 224, y: 56 }, rk2: { x: 70, y: 150 }, rk3: { x: 228, y: 142 }, rk4: { x: 150, y: 176 } };
-const PAS: Record<string, { x: number; y: number }> = { rk0: { x: 130, y: 80 }, rk1: { x: 130, y: 50 }, rk2: { x: 106, y: 120 }, rk3: { x: 170, y: 120 }, rk4: { x: 150, y: 102 } };
-const pindah = (...id: string[]) => id.map((i) => ({ id: i, x: PAS[i].x, y: PAS[i].y }));
+/* ------------------------------ 6. Di panggung festival ------------------------------ */
+const SUARA_P1 = "Hari festival tiba. Kereta dan rumah keluarga Igil tampil di panggung lapangan.";
+const SUARA_P2 = "Juri bertanya: kereta ini tersusun dari bentuk apa saja, dan berapa banyak?";
+const SUARA_P3 = "Igil menjawab dengan lantang: tiga segi empat, satu segitiga, dan empat lengkung. Semuanya delapan bagian.";
+const SUARA_P4 = "Juri tersenyum dan memberi pita. Juri senang mendengar nama bentuk penyusunnya.";
+const KF = kereta("f", 20, 112, 0.6);
+const RF = rumah("g", 170, 88, 0.6);
 
-export const ADEGAN_SUSUN: AdeganStory = {
-  id: "susun-layar",
-  judul: "Menyusun roket di layar",
-  sumber: "Materi: menyusun roket di layar",
-  latar: "#ECFEFF",
-  ketukan: [
-    k(SUARA_M1, bersih(0), tambah(0, judul("Susun roket di layar")), tambah("roket", ...roket().map((o) => ({ ...o, ...SEBAR[o.id] })))),
-    k(SUARA_M2, sorotkan("Ketuk", "rk0"), redamkan("seret", "rk0"), ubah("seret", ...pindah("rk0"))),
-    k(
-      SUARA_M3,
-      sorotkan("Pasang", "rk1", "rk2", "rk3"),
-      ubah("hidung,", ...pindah("rk1")),
-      ubah("sirip", ...pindah("rk2", "rk3")),
-      redamkan("kiri.", "rk1", "rk2", "rk3"),
-    ),
-    k(SUARA_M4, sorotkan("lengkung", "rk4"), ubah("jendela", ...pindah("rk4")), redamkan("roket.", "rk4")),
-    k(SUARA_M5, tambah("Roket", emo("ok", 252, 90, "\u{2705}", 26)), tambah("Semuanya", ...kartu("rj", 200, 154, 90, 30, W.emas, ["1 + 3 + 1 = 5"], 11))),
-  ],
-};
-
-/* ------------------------------ 2. Pas atau tidak: pilih potongan ------------------------------ */
-const SUARA_N1 = "Sekarang ada bangun yang kurang satu potongan. Lihat atap rumah ini, atapnya masih berlubang.";
-const SUARA_N2 = "Ada tiga potongan. Potongan pertama berbentuk segitiga yang sama besar. Potongan kedua segitiga yang terlalu kecil. Potongan ketiga berbentuk segi empat.";
-const SUARA_N3 = "Atap segitiga punya tiga sisi lurus. Hanya potongan pertama yang pas. Ketuk potongan pertama.";
-const SUARA_N4 = "Pas! Potongan pertama kita pasang di atap. Atap rumahnya sudah lengkap.";
-const CALON = (i: number) => kartu(`c${i}`, 140, 30 + 52 * i, 150, 46, W.putih, [["pertama", "kedua", "ketiga"][i]], 10);
-
-export const ADEGAN_PAS: AdeganStory = {
-  id: "pas-potongan",
-  judul: "Pas atau tidak?",
-  sumber: "Materi: memilih potongan yang pas",
-  latar: "#F7FEE7",
-  ketukan: [
-    k(
-      SUARA_N1,
-      bersih(0),
-      tambah(0, judul("Pas atau tidak?")),
-      tambah("bangun", segiEmpat("pw", 20, 96, 64, 50, W.krem)),
-      tambah("atapnya", poli("ps", 20, 64, [[32, 0], [64, 32], [0, 32]], "none", { putus: true, tebal: 2 })),
-      sorotkan("berlubang.", "ps"),
-    ),
-    k(
-      SUARA_N2,
-      redamkan(0, "ps"),
-      tambah("pertama", ...CALON(0), segitigaSama("pc0", 168, 37, 64, 32, W.segitiga)),
-      tambah("kedua", ...CALON(1), segitigaSama("pc1", 176, 102, 40, 20, W.segitiga)),
-      tambah("ketiga", ...CALON(2), segiEmpat("pc2", 168, 141, 64, 32, W.segiEmpat)),
-    ),
-    k(SUARA_N3, tambah("tiga", teks("sl", 52, 168, "3 sisi lurus", 8.4, W.merah)), sorotkan("Ketuk", "c0-k")),
-    k(
-      SUARA_N4,
-      redamkan(0, "c0-k"),
-      ubah("pasang", { id: "pc0", x: 20, y: 64 }),
-      ubah(0, { id: "pc1", op: 0.25 }, { id: "pc2", op: 0.25 }, { id: "c1-k", op: 0.25 }, { id: "c1-t0", op: 0.25 }, { id: "c2-k", op: 0.25 }, { id: "c2-t0", op: 0.25 }),
-      tambah("Pas!", emo("ok", 112, 90, "\u{2705}", 26)),
-      hapus("lengkap.", "ps", "sl"),
-    ),
-  ],
-};
-
-/* ------------------------------ 3. Latihan 1: dua segitiga digabung ------------------------------ */
-const SUARA_P1 = "Latihan satu. Wei punya dua segitiga yang sama. Kalau dirapatkan pada sisi yang miring, bentuk apa yang muncul?";
-const SUARA_P2 = "Pilihan jawabannya ada tiga: segitiga, segi empat, atau bentuk lengkung. Ketuk jawaban yang kamu pilih.";
-const SUARA_P3 = "Betul! Dua segitiga yang dirapatkan pada sisi yang miring menjadi segi empat.";
-const SUARA_P4 = "Sekarang coba dengan dua persegi yang sama. Kalau dirapatkan, hasilnya persegi panjang. Hebat!";
-const JAWAB = (i: number, isi: string) => kartu(`a${i}`, 10 + 97 * i, 112, 86, 30, W.langit, [isi], 9.4);
-
-export const ADEGAN_LATIHAN_SATU: AdeganStory = {
-  id: "latihan-satu",
-  judul: "Latihan 1: dua segitiga",
-  sumber: "Materi: latihan dua segitiga",
-  latar: "#FFF1F2",
+export const ADEGAN_FESTIVAL: AdeganStory = {
+  id: "di-festival",
+  judul: "Igil menjawab juri",
+  sumber: "Materi: menyebut bentuk penyusun",
+  latar: "#FEF9C3",
   ketukan: [
     k(
       SUARA_P1,
-      bersih(0),
-      tambah(0, judul("Latihan 1")),
-      tambah("Wei", emo("a-Wei", 150, 164, ANAK, 26), teks("n-Wei", 150, 180, "Wei", 8.4)),
-      tambah("dua", siku("sa", 50, 46, 40, 50, "kiriBawah", MERAH), siku("sc", 210, 46, 40, 50, "kananAtas", BIRU)),
+      tambah(0, judul("Festival mainan"), ...panggung("pg", 8, 150, 284), kotak("rp", 2, 166, 296, 32, "#BBF7D0", W.hijau, { rx: 6, tebal: 1.2, z: -3 })),
+      tambah("Kereta", ...KF.badan, ...KF.bendera, ...KF.roda),
+      tambah("rumah", ...RF.atap, ...RF.dinding, ...RF.pintu),
+      tambah("Igil", ...orang("ig", 226, 124, E.igil, "Igil")),
+      tambah("lapangan.", emo("kf0", 22, 48, E.konfeti, 20), emo("kf1", 280, 48, E.konfeti, 20)),
     ),
     k(
       SUARA_P2,
-      tambah("segitiga,", ...JAWAB(0, "segitiga")),
-      tambah("empat,", ...JAWAB(1, "segi empat")),
-      tambah("lengkung.", ...JAWAB(2, "lengkung")),
-      sorotkan("Ketuk", "a0-k", "a1-k", "a2-k"),
+      tambah("Juri", ...orang("jr", 266, 124, E.juri, "juri")),
+      tambah("bertanya:", ...kartu("tq", 60, 34, 196, 40, W.putih, ["bentuk apa saja?", "berapa banyak?"], 10)),
+      sorotkan("kereta", "fs0", "fs1", "fs2", "ft0", "fl0", "fl1", "fl2", "fl3"),
     ),
     k(
       SUARA_P3,
-      redamkan(0, "a0-k", "a1-k", "a2-k"),
-      ubah("dirapatkan", { id: "sa", x: 130 }, { id: "sc", x: 130 }),
-      ubah("menjadi", { id: "a1-k", warna: W.emas }),
-      tambah("Betul!", emo("ok", 252, 70, "\u{2705}", 26)),
+      hapus(0, "tq-k", "tq-t0", "tq-t1"),
+      ubah(0, ...["fs0", "fs1", "fs2", "ft0", "fl0", "fl1", "fl2", "fl3"].map((id) => ({ id, sorot: false }))),
+      tambah("lantang:", ...kartu("jw", 46, 32, 208, 46, W.emas, ["3 segi empat, 1 segitiga, 4 lengkung", "semuanya 8 bagian"], 9)),
+      sorotkan(idx(SUARA_P3, "tiga"), "fs0", "fs1", "fs2"),
+      sorotkan(idx(SUARA_P3, "satu"), "ft0"),
+      sorotkan(idx(SUARA_P3, "empat", 2), "fl0", "fl1", "fl2", "fl3"),
+      sorotkan("delapan", "jw-k"),
     ),
     k(
       SUARA_P4,
-      bersih(0),
-      tambah(0, judul("Dua persegi")),
-      tambah("persegi", segiEmpat("q1", 40, 80, 40, 40), segiEmpat("q2", 220, 80, 40, 40)),
-      ubah("dirapatkan,", { id: "q1", x: 110 }, { id: "q2", x: 150 }),
-      tambah("panjang.", teks("lq", 150, 144, "persegi panjang", 12, W.merah)),
-      tambah("Hebat!", emo("ow", 150, 52, IGIL, 26)),
+      tambah("tersenyum", emo("sn", 286, 100, E.senyum, 16)),
+      tambah("pita.", emo("pt", 96, 94, E.pitaJuri, 24)),
+      tambah("senang", emo("ht", 246, 98, E.hati, 16)),
     ),
   ],
 };
 
-/* ------------------------------ 4. Latihan 2: hitung keping ------------------------------ */
-const SUARA_Q1 = "Latihan dua. Kira menyusun pesawat dari keping. Ada tiga keping segitiga dan tiga keping segi empat.";
-const SUARA_Q2 = "Berapa semua kepingnya? Ketuk angka jawabannya. Tiga ditambah tiga sama dengan berapa?";
-const SUARA_Q3 = "Tiga ditambah tiga sama dengan enam. Jadi ada enam keping. Ketuk angka enam.";
-const SUARA_Q4 = "Sekarang ada delapan keping di pesawat besar. Kira melepas tiga keping. Ketuk tiga keping itu: satu, dua, tiga.";
-const SUARA_Q5 = "Delapan kurang tiga sama dengan lima. Tinggal lima keping. Cocok!";
+/* ------------------------------ 7. Hasil dan akhir cerita bab ------------------------------ */
+const SUARA_H1 = "Semua bahan bekas dari gudang kini menjadi mainan. Keranjang bahan sudah kosong.";
+const SUARA_H2 = "Igil, Kaka, Abang, dan Mamah merayakan di lapangan. Cerita Festival Mainan Kardus selesai dengan gembira.";
+const SUARA_H3 = "Mamah berkata, kalian hebat menyusun bentuk, mengurai bentuk, dan menghitung bagiannya.";
+const KH = kereta("h", 150, 72, 0.6);
+const RH = rumah("u", 204, 112, 0.6);
 
-export const ADEGAN_LATIHAN_DUA: AdeganStory = {
-  id: "latihan-dua",
-  judul: "Latihan 2: hitung keping",
-  sumber: "Materi: latihan hitung keping",
+export const ADEGAN_HASIL: AdeganStory = {
+  id: "hasil-akhir",
+  judul: "Bahan bekas menjadi mainan",
+  sumber: "Materi: hasil dan akhir cerita",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_Q1,
+      SUARA_H1,
+      tambah(0, judul("Bahan menjadi mainan")),
+      tambah("bahan", kotak("kj", 20, 70, 90, 60, "#FEF3C7", W.coklat, { rx: 8, tebal: 2, z: -2 })),
+      tambah("mainan.", ...KH.badan, ...KH.bendera, ...KH.roda, ...RH.atap, ...RH.dinding, ...RH.pintu),
+      tambah("kosong.", teks("ko", 65, 146, "keranjang kosong", 9)),
+    ),
+    k(
+      SUARA_H2,
       bersih(0),
-      tambah(0, judul("Latihan 2")),
-      tambah("Kira", emo("a-Kira", 150, 120, ANAK, 26), teks("n-Kira", 150, 136, "Kira", 8.4)),
-      tambah(idx(SUARA_Q1, "tiga", 1), ...[0, 1, 2].map((i) => segitigaSama(`pt${i}`, 40 + 45 * i, 56, 30, 26, W.segitiga))),
-      tambah(idx(SUARA_Q1, "tiga", 2), ...[0, 1, 2].map((i) => segiEmpat(`ps${i}`, 170 + 45 * i, 56, 26, 26, W.segiEmpat))),
+      tambah(0, judul("Merayakan bersama")),
+      tambah("Igil,", ...orang("ig", 45, 100, E.igil, "Igil")),
+      tambah("Kaka,", ...orang("kk", 115, 100, E.kaka, "Kaka")),
+      tambah("Abang,", ...orang("ab", 185, 100, E.abang, "Abang")),
+      tambah("Mamah", ...orang("mm", 255, 100, E.mamah, "Mamah")),
+      tambah("merayakan", emo("kf0", 30, 50, E.konfeti, 22), emo("kf1", 270, 50, E.pesta, 22)),
+      tambah("selesai", ...kartu("sl", 50, 140, 200, 26, W.emas, ["Festival Mainan Kardus selesai"], 10)),
     ),
-    k(
-      SUARA_Q2,
-      hapus(0, "a-Kira", "n-Kira"),
-      tambah("angka", ...[5, 6, 7].flatMap((v, i) => kartuAngka(`ca${v}`, 70 + 60 * i, 140, String(v), W.krem, 40, 34, 20))),
-      ...rangkai(SUARA_Q2, "qa", 112, ["3", "+", "3", "=", "?"], ["Tiga", "ditambah", "tiga", "sama", "berapa?"], "jawabannya.", 20),
-    ),
-    k(SUARA_Q3, ubah("enam.", { id: "qa4", isi: "6" }), sorotkan("Ketuk", "ca6-k")),
-    k(
-      SUARA_Q4,
-      bersih(0),
-      tambah(0, judul("Lepas tiga keping")),
-      tambah("delapan", ...[0, 1, 2, 3, 4, 5, 6, 7].map((i) => segiEmpat(`pk${i}`, 66 + 40 * (i % 4), i < 4 ? 50 : 96, 30, 30, W.segiEmpat))),
-      ...tandaiSatuSatu(SUARA_Q4, ["pk7", "pk6", "pk5"], { op: 0.25 }, "itu:"),
-    ),
-    k(
-      SUARA_Q5,
-      ...rangkai(SUARA_Q5, "qb", 160, ["8", "−", "3", "=", "5"], ["Delapan", "kurang", "tiga", "sama", "lima."], undefined, 20),
-      tambah("Cocok!", emo("ok", 252, 160, "\u{2705}", 26)),
-    ),
+    k(SUARA_H3, sorotkan("Mamah", "mm"), tambah("hebat", emo("jp", 150, 56, E.jempol, 22)), tambah("menghitung", ...kartu("mh", 30, 172, 240, 22, W.hijauMuda, ["susun, urai, hitung bagian"], 10))),
   ],
 };
 
-/* ------------------------------ 5. Latihan 3: lidi untuk rumah ------------------------------ */
-const SUARA_R1 = "Latihan tiga. Upe membuat rumah dari lidi. Dindingnya segi empat, dan atapnya segitiga. Berapa lidi untuk rumah itu?";
-const SUARA_R2 = "Dinding memakai empat lidi. Atap memakai dua lidi lagi. Empat ditambah dua sama dengan berapa?";
-const SUARA_R3 = "Ketuk jawabannya di layar: lima, enam, atau tujuh.";
-const SUARA_R4 = "Betul! Empat ditambah dua sama dengan enam. Rumah itu memakai enam lidi. Hebat sekali!";
-const LIDI_RUMAH: [number, number, number, number][] = [[120, 160, 180, 160], [120, 160, 120, 100], [180, 160, 180, 100], [120, 100, 180, 100], [120, 100, 150, 48], [180, 100, 150, 48]];
-
-export const ADEGAN_LATIHAN_TIGA: AdeganStory = {
-  id: "latihan-tiga",
-  judul: "Latihan 3: lidi untuk rumah",
-  sumber: "Materi: latihan lidi untuk rumah",
-  latar: "#FFFBEB",
-  ketukan: [
-    k(
-      SUARA_R1,
-      bersih(0),
-      tambah(0, judul("Latihan 3")),
-      tambah("Upe", emo("a-Upe", 40, 70, ANAK, 26), teks("n-Upe", 40, 84, "Upe", 8.4)),
-      tambah("rumah", ...LIDI_RUMAH.map(([a, b, c, d], i) => lidi(`rl${i}`, a, b, c, d))),
-      tambah("Berapa", emo("tn", 240, 110, "\u{2753}", 30)),
-    ),
-    k(
-      SUARA_R2,
-      hapus(0, "tn"),
-      sorotkan("Dinding", "rl0", "rl1", "rl2", "rl3"),
-      redamkan("Atap", "rl0", "rl1", "rl2", "rl3"),
-      sorotkan("Atap", "rl4", "rl5"),
-      ...rangkai(SUARA_R2, "rr", 188, ["4", "+", "2", "=", "?"], ["Empat", "ditambah", "dua", "sama", "berapa?"], "lagi.", 20),
-    ),
-    k(
-      SUARA_R3,
-      redamkan(0, "rl4", "rl5"),
-      tambah("lima,", ...kartuAngka("jr5", 230, 40, "5", W.krem, 40, 34, 20)),
-      tambah("enam,", ...kartuAngka("jr6", 230, 84, "6", W.krem, 40, 34, 20)),
-      tambah("tujuh.", ...kartuAngka("jr7", 230, 128, "7", W.krem, 40, 34, 20)),
-    ),
-    k(SUARA_R4, ubah("enam.", { id: "rr4", isi: "6" }), ubah("enam.", { id: "jr6-k", warna: W.emas }), tambah("Betul!", emo("ok", 40, 140, "\u{2705}", 28))),
-  ],
-};
-
-/* ------------------------------ 6. Penutup ------------------------------ */
-const SUARA_Z1 = "Mari kita ingat lagi. Menyusun artinya menggabungkan beberapa bentuk menjadi bangun yang baru.";
-const SUARA_Z2 = "Mengurai artinya memisahkan bangun menjadi bagian-bagiannya. Kita bisa menyebut jenis dan banyak tiap bagian.";
-const SUARA_Z3 = "Menyusun kita hitung dengan tambah. Mengurai kita hitung dengan kurang.";
-const SUARA_Z4 = "Hebat sekali, anak-anak! Sampai jumpa di pelajaran berikutnya. Teruslah berlatih di layar, ya.";
-const LANGKAH = (i: number, isi: string, warna: string) => kartu(`z${i}`, 14, 30 + i * 40, 272, 32, warna, [isi], 10);
+/* ------------------------------ 8. Penutup ------------------------------ */
+const SUARA_Z1 = "Ingat, ya. Menyusun berarti menggabung bentuk, dan banyak bagiannya bertambah.";
+const SUARA_Z2 = "Mengurai berarti memisah bentuk menjadi bagiannya, dan banyak bagiannya berkurang.";
+const SUARA_Z3 = "Terima kasih, Igil, Kaka, Abang, dan Mamah. Sampai jumpa di petualangan berikutnya!";
 
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup",
-  judul: "Penutup: mari ingat lagi",
+  judul: "Penutup: menyusun dan mengurai",
   sumber: "Materi: ringkasan dan penutup",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_Z1, tambah(0, judul("Mari ingat lagi")), tambah("Menyusun", ...LANGKAH(0, "1. Menyusun: menggabung bentuk", W.hijauMuda))),
-    k(SUARA_Z2, tambah("Mengurai", ...LANGKAH(1, "2. Mengurai: memisahkan bangun", W.langit)), tambah("jenis", ...LANGKAH(2, "3. Sebut jenis dan banyak bagian", W.pink))),
-    k(SUARA_Z3, tambah("tambah.", ...LANGKAH(3, "4. Susun: tambah, urai: kurang", W.krem))),
-    k(SUARA_Z4, bersih(0), tambah(0, judul("Sampai jumpa!"), emo("sj", 150, 110, IGIL, 56)), tambah("anak-anak!", emo("pa", 80, 150, "\u{1F389}", 30), emo("pb", 220, 150, "\u{1F389}", 30))),
+    k(
+      SUARA_Z1,
+      tambah(0, judul("Ingat, ya!")),
+      tambah("Menyusun", ...kartu("p1", 14, 34, 272, 40, W.langit, ["menyusun: gabung bentuk", "bagian bertambah"], 10)),
+      sorotkan("bertambah.", "p1-k"),
+    ),
+    k(
+      SUARA_Z2,
+      ubah(0, { id: "p1-k", sorot: false }),
+      tambah("Mengurai", ...kartu("p2", 14, 84, 272, 40, W.pink, ["mengurai: pisah bentuk", "bagian berkurang"], 10)),
+      sorotkan("berkurang.", "p2-k"),
+    ),
+    k(
+      SUARA_Z3,
+      bersih(0),
+      tambah(0, judul("Sampai jumpa!"), emo("ht", 150, 62, E.hati, 30)),
+      tambah("Igil,", ...orang("ig", 45, 130, E.igil, "Igil")),
+      tambah("Kaka,", ...orang("kk", 115, 130, E.kaka, "Kaka")),
+      tambah("Abang,", ...orang("ab", 185, 130, E.abang, "Abang")),
+      tambah("Mamah.", ...orang("mm", 255, 130, E.mamah, "Mamah")),
+      tambah("berikutnya!", emo("ps", 150, 182, E.pesta, 22)),
+    ),
   ],
 };

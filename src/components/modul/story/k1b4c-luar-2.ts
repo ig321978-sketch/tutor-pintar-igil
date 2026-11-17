@@ -1,142 +1,169 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { W, bulat, emo, garis, judul, kartu, kotak, lengkung, segiEmpat, segitigaSama, teks } from "./k1b4c-gambar";
-import { bersih, hapus, hitungBagian, k, rangkai, redamkan, sorotkan, tambah, ubah, urutKata } from "./k1b4c-bantu";
-import { NAMA_METODE, WARNA_METODE, kepala } from "./k1b4c-luar-1";
+import type { AdeganStory } from "./logika-story";
+import { E, KURANG, W, bentukLidi, bulat, emo, geserLidi, judul, kartu, lidi, orang, poligon, segiEmpat, segitiga, teks, WARNA, type Titik } from "./k1b4c-gambar";
+import { bersih, hapus, idx, k, kalimatBertahap, redamkan, sorotkan, tambah, ubah } from "./k1b4c-bantu";
+import { WARNA_METODE, kepala } from "./k1b4c-luar-1";
 
-const ANAK = "\u{1F9D2}";
-const IGIL = "\u{1F989}";
+/* Video metode global Sub-Bab C: Pattern Blocks (Balok Pola), Toothpick Shapes (Bentuk dari Lidi), dan ringkasan. */
 
-/* ------------------------------ 1. Pilah Ciri: terapan pada keping kereta ------------------------------ */
-const SUARA_Q1 = "Sekarang kita pilah keping kereta Halim. Ada sembilan keping, dan semuanya masih bercampur.";
-const SUARA_Q2 = "Keping yang punya sisi lengkung masuk ke kotak lengkung. Ada tiga keping: satu, dua, tiga.";
-const SUARA_Q3 = "Keping yang semua sisinya lurus masuk ke kotak lurus. Kita pindahkan: satu, dua, tiga, empat, lima, enam.";
-const SUARA_Q4 = "Enam keping lurus ditambah tiga keping lengkung sama dengan sembilan keping.";
-const SUARA_Q5 = "Jumlahnya sama dengan keping kereta tadi. Memilah tidak mengubah banyak keping, hanya memisahkan jenisnya.";
-/** Sembilan keping kereta di baris bawah: j = jenis (s segi empat, g segitiga, l lengkung). */
-const JENIS = ["s", "l", "s", "s", "l", "g", "s", "l", "s"];
-const keping = (i: number, x: number, y: number): Obj => {
-  const j = JENIS[i];
-  if (j === "l") return lengkung(`kp${i}`, x, y, 8);
-  if (j === "g") return segitigaSama(`kp${i}`, x - 10, y - 10, 20, 18, W.segitiga);
-  return segiEmpat(`kp${i}`, x - 9, y - 8, 18, 16, W.segiEmpat);
+/* ------------------------------ 4. Pattern Blocks: konsep ------------------------------ */
+const SUARA_C1 = "Metode kedua, Pattern Blocks, atau Balok Pola. Balok pola adalah keping bentuk berwarna yang ditempel menjadi gambar.";
+const SUARA_C2 = "Setiap warna punya bentuk sendiri: segitiga hijau, segi empat oranye, dan segi empat miring biru.";
+const SUARA_C3 = "Setelah gambar jadi, sebut nama bentuknya, lalu hitung banyak baloknya.";
+
+export const ADEGAN_LUAR_BALOK: AdeganStory = {
+  id: "luar-balok",
+  judul: "Pattern Blocks: balok pola",
+  sumber: "Metode global: Pattern Blocks",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_C1,
+      tambah("kedua,", ...kepala(1)),
+      tambah("keping", segitiga("pb0", 60, 70, [{ x: 0, y: 0 }, { x: 24, y: 40 }, { x: -24, y: 40 }], WARNA.hijau), segiEmpat("pb1", 128, 70, 40, 40, WARNA.oranye)),
+      tambah("ditempel", poligon("pb2", 210, 70, [{ x: 10, y: 0 }, { x: 60, y: 0 }, { x: 50, y: 40 }, { x: 0, y: 40 }], WARNA.biru)),
+    ),
+    k(
+      SUARA_C2,
+      tambah("hijau,", teks("w0", 60, 128, "segitiga hijau", 8)),
+      sorotkan("hijau,", "pb0"),
+      tambah("oranye,", teks("w1", 148, 128, "segi empat oranye", 8)),
+      sorotkan("oranye,", "pb1"),
+      tambah("biru.", teks("w2", 240, 128, "segi empat miring biru", 8)),
+      sorotkan("biru.", "pb2"),
+    ),
+    k(
+      SUARA_C3,
+      redamkan(0, "pb0", "pb1", "pb2"),
+      tambah("sebut", ...kartu("s1", 14, 150, 130, 30, W.putih, ["sebut nama"], 10)),
+      tambah("hitung", ...kartu("s2", 156, 150, 130, 30, W.putih, ["hitung banyak"], 10)),
+    ),
+  ],
 };
-const AWAL = (i: number) => ({ x: 20 + 30 * i, y: 182 });
-const LENGKUNG_ID = [1, 4, 7];
-const LURUS_ID = [0, 2, 3, 5, 6, 8];
-const letakAkhir = (i: number): { x: number; y: number } => {
-  const l = LENGKUNG_ID.indexOf(i);
-  if (l >= 0) return { x: 35 + 42 * l, y: 112 };
-  const s = LURUS_ID.indexOf(i);
-  const x = 157 + 38 * (s % 3);
-  const y = 90 + 32 * Math.floor(s / 3);
-  return { x, y };
-};
-const pindahKe = (i: number) => ({ id: `kp${i}`, ...letakAkhir(i) });
 
-export const ADEGAN_LUAR_PILAH_TERAPAN: AdeganStory = {
-  id: "luar-pilah-terapan",
-  judul: "Pilah Ciri: keping kereta Halim",
-  sumber: "Metode luar: Pilah Ciri, terapan",
+/* ------------------------------ 5. Pattern Blocks: terapan ------------------------------ */
+const SUARA_D1 = "Igil menempel balok pola menjadi pohon. Tiga segitiga hijau menjadi daun.";
+const SUARA_D2 = "Dua segi empat oranye disusun menjadi batang pohon.";
+const SUARA_D3 = "Igil menghitung: tiga tambah dua sama dengan lima balok. Pohonnya tersusun dari lima bagian.";
+const SUARA_D4 = "Lalu Igil mengurai pohonnya. Daun dan batang terpisah lagi menjadi lima balok.";
+const DAUN = [54, 72, 90];
+const daunPts: Titik[] = [{ x: 0, y: 0 }, { x: 30, y: 30 }, { x: -30, y: 30 }];
+
+export const ADEGAN_LUAR_BALOK_TERAPAN: AdeganStory = {
+  id: "luar-balok-terapan",
+  judul: "Pattern Blocks: pohon Igil",
+  sumber: "Metode global: Pattern Blocks, terapan",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_D1,
+      tambah(0, ...kepala(1), ...orang("ig", 36, 110, E.igil, "Igil")),
+      tambah(idx(SUARA_D1, "Tiga"), ...DAUN.map((y, i) => segitiga(`dn${i}`, 130, y, daunPts, WARNA.hijau)), teks("n3", 240, 80, "3 segitiga", 10)),
+      sorotkan("daun.", "dn0", "dn1", "dn2"),
+    ),
+    k(
+      SUARA_D2,
+      redamkan(0, "dn0", "dn1", "dn2"),
+      tambah("Dua", segiEmpat("bt0", 120, 120, 20, 20, WARNA.oranye), segiEmpat("bt1", 120, 140, 20, 20, WARNA.oranye), teks("n2", 240, 130, "2 segi empat", 10)),
+      sorotkan("batang", "bt0", "bt1"),
+    ),
+    k(
+      SUARA_D3,
+      redamkan(0, "bt0", "bt1"),
+      ...kalimatBertahap(SUARA_D3, "kb", 150, 184, ["3", "+", "2", "=", "5"], ["tiga", "tambah", "dua", "sama", "lima"]),
+      sorotkan(idx(SUARA_D3, "lima", 2), "kb4"),
+    ),
+    k(
+      SUARA_D4,
+      ubah("mengurai", { id: "dn0", x: 100, y: 52 }, { id: "dn1", x: 160, y: 60 }, { id: "dn2", x: 196, y: 92 }, { id: "bt0", x: 84, y: 128 }, { id: "bt1", x: 168, y: 138 }, { id: "kb4", sorot: false }),
+      tambah("terpisah", teks("n5", 240, 160, "5 balok", 10, W.ungu)),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. Toothpick Shapes: konsep ------------------------------ */
+const SUARA_F1 = "Metode ketiga, Toothpick Shapes, atau Bentuk dari Lidi. Kita menyusun bentuk dengan batang lidi yang lurus.";
+const SUARA_F2 = "Segitiga perlu tiga lidi, karena segitiga punya tiga sisi lurus.";
+const SUARA_F3 = "Segi empat perlu empat lidi, karena segi empat punya empat sisi lurus.";
+const SUARA_F4 = "Bentuk lengkung tidak bisa dibuat dari lidi, sebab lidi selalu lurus.";
+const SGT: Titik[] = [{ x: 70, y: 70 }, { x: 110, y: 140 }, { x: 30, y: 140 }];
+const SGE: Titik[] = [{ x: 184, y: 76 }, { x: 250, y: 76 }, { x: 250, y: 140 }, { x: 184, y: 140 }];
+
+export const ADEGAN_LUAR_LIDI: AdeganStory = {
+  id: "luar-lidi",
+  judul: "Toothpick Shapes: bentuk dari lidi",
+  sumber: "Metode global: Toothpick Shapes",
+  latar: "#EFF6FF",
+  ketukan: [
+    k(SUARA_F1, tambah("ketiga,", ...kepala(2)), tambah("lidi", ...[0, 1, 2].map((i) => lidi(`lp${i}`, 110, 80 + i * 24, 190, 80 + i * 24))), sorotkan("lurus.", "lp0", "lp1", "lp2")),
+    k(
+      SUARA_F2,
+      hapus(0, "lp0", "lp1", "lp2"),
+      tambah(0, ...bentukLidi("sg", SGT)),
+      tambah(idx(SUARA_F2, "tiga"), teks("a0", 104, 100, "1", 11, W.merah), teks("a1", 70, 156, "2", 11, W.merah), teks("a2", 36, 100, "3", 11, W.merah)),
+      tambah(idx(SUARA_F2, "tiga", 2), teks("t3", 70, 176, "3 lidi", 11)),
+    ),
+    k(
+      SUARA_F3,
+      tambah(0, ...bentukLidi("se", SGE)),
+      tambah(idx(SUARA_F3, "empat", 2), teks("b0", 217, 68, "1", 11, W.merah), teks("b1", 262, 112, "2", 11, W.merah), teks("b2", 217, 156, "3", 11, W.merah), teks("b3", 172, 112, "4", 11, W.merah)),
+      tambah(idx(SUARA_F3, "empat", 4), teks("t4", 217, 176, "4 lidi", 11)),
+    ),
+    k(
+      SUARA_F4,
+      tambah("lengkung", bulat("lk", 146, 112, 16, "transparent", W.biru, { tebal: 2, putus: true })),
+      tambah("tidak", emo("no", 146, 118, E.salah, 18)),
+      sorotkan("lurus.", "sg0", "se0"),
+    ),
+  ],
+};
+
+/* ------------------------------ 7. Toothpick Shapes: terapan ------------------------------ */
+const SUARA_G1 = "Abang menyusun rumah dari lidi. Atapnya segitiga dari tiga lidi, dindingnya segi empat dari empat lidi.";
+const SUARA_G2 = "Abang menghitung lidinya: tiga tambah empat sama dengan tujuh lidi.";
+const SUARA_G3 = "Lalu Abang mengurai atapnya. Tujuh dikurangi tiga sama dengan empat lidi yang tersisa.";
+const ATAP: Titik[] = [{ x: 130, y: 52 }, { x: 170, y: 88 }, { x: 90, y: 88 }];
+const DINDING: Titik[] = [{ x: 96, y: 94 }, { x: 164, y: 94 }, { x: 164, y: 150 }, { x: 96, y: 150 }];
+
+export const ADEGAN_LUAR_LIDI_TERAPAN: AdeganStory = {
+  id: "luar-lidi-terapan",
+  judul: "Toothpick Shapes: rumah lidi Abang",
+  sumber: "Metode global: Toothpick Shapes, terapan",
   latar: "#EFF6FF",
   ketukan: [
     k(
-      SUARA_Q1,
-      tambah(0, ...kepala(1)),
-      tambah("kereta", kotak("bk", 10, 56, 135, 100, W.lengkung + "55", W.biru, { rx: 8 }), teks("tk", 77, 72, "ada sisi lengkung", 9, W.merah)),
-      tambah("Halim", kotak("bl", 155, 56, 135, 100, "#BFDBFE88", W.biru, { rx: 8 }), teks("tl", 222, 72, "semua sisi lurus", 9, W.merah)),
-      tambah("sembilan", ...JENIS.map((_, i) => keping(i, AWAL(i).x, AWAL(i).y))),
+      SUARA_G1,
+      tambah(0, ...kepala(2), ...orang("ab", 34, 120, E.abang, "Abang")),
+      tambah("Atapnya", ...bentukLidi("la", ATAP)),
+      tambah(idx(SUARA_G1, "tiga"), teks("n3", 240, 72, "3 lidi", 11)),
+      tambah("dindingnya", ...bentukLidi("ld", DINDING)),
+      tambah(idx(SUARA_G1, "empat", 2), teks("n4", 240, 124, "4 lidi", 11)),
     ),
-    k(SUARA_Q2, ...urutKata(SUARA_Q2, ["satu", "dua", "tiga"], "keping:").map((p, n) => ubah(p, { ...pindahKe(LENGKUNG_ID[n]) }))),
-    k(SUARA_Q3, ...urutKata(SUARA_Q3, ["satu", "dua", "tiga", "empat", "lima", "enam"], "pindahkan:").map((p, n) => ubah(p, { ...pindahKe(LURUS_ID[n]) }))),
-    k(SUARA_Q4, ...rangkai(SUARA_Q4, "qr", 188, ["6", "+", "3", "=", "9"], ["Enam", "ditambah", "tiga", "sama", "sembilan"], undefined, 18)),
-    k(SUARA_Q5, tambah("Jumlahnya", emo("ok", 262, 172, "\u{2705}", 22)), tambah("Memilah", emo("ow", 38, 172, IGIL, 22))),
-  ],
-};
-
-/* ------------------------------ 2. Bentuk di Sekitar: konsep ------------------------------ */
-const SUARA_S1 = "Cara ketiga, Bentuk di Sekitar. Bentuk ada di benda yang kita lihat setiap hari.";
-const SUARA_S2 = "Jam dinding berbentuk lengkung. Pintu berbentuk segi empat. Potongan pizza berbentuk segitiga.";
-const SUARA_S3 = "Sekarang ketuk benda yang berbentuk lengkung. Ketuk jam dinding.";
-const SUARA_S4 = "Sekarang ketuk benda yang berbentuk segitiga. Ketuk potongan pizza.";
-const SUARA_S5 = "Hebat! Bentuk ada di sekitar kita, di rumah dan di taman. Teruslah mencari bentuk.";
-
-export const ADEGAN_LUAR_SEKITAR: AdeganStory = {
-  id: "luar-sekitar",
-  judul: "Bentuk di Sekitar: cari di benda sehari-hari",
-  sumber: "Metode luar: Bentuk di Sekitar",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(SUARA_S1, tambah(0, ...kepala(2)), tambah("benda", emo("mt", 150, 104, "\u{1F50E}", 50)), tambah("setiap", ...kartu("sk", 50, 140, 200, 32, W.emas, ["cari bentuk di benda"], 11))),
+    k(SUARA_G2, ...kalimatBertahap(SUARA_G2, "kl", 150, 180, ["3", "+", "4", "=", "7"], ["tiga", "tambah", "empat", "sama", "tujuh"])),
     k(
-      SUARA_S2,
-      hapus(0, "mt", "sk-k", "sk-t0"),
-      tambah("Jam", bulat("oj", 55, 96, 22, W.putih, W.biru, { tebal: 2 }), garis("oj1", 55, 96, 0, -14, W.biru, 2.4), garis("oj2", 55, 96, 10, 0, W.biru, 2.4), teks("nj", 55, 146, "jam dinding", 8.4)),
-      tambah("lengkung.", teks("sj", 55, 160, "lengkung", 8.4, W.merah)),
-      tambah("Pintu", kotak("op", 118, 66, 44, 64, "#FDE68A", W.coklat, { rx: 2, tebal: 2 }), teks("np", 140, 146, "pintu", 8.4)),
-      tambah("empat.", teks("sp", 140, 160, "segi empat", 8.4, W.merah)),
-      tambah("pizza", emo("oz", 240, 108, "\u{1F355}", 44), teks("nz", 240, 146, "pizza", 8.4)),
-      tambah("segitiga.", teks("sz", 240, 160, "segitiga", 8.4, W.merah)),
-    ),
-    k(SUARA_S3, sorotkan("jam", "oj", "oj1", "oj2"), tambah("dinding.", emo("ck", 55, 62, "\u{2705}", 22))),
-    k(SUARA_S4, redamkan(0, "oj", "oj1", "oj2"), sorotkan("pizza.", "oz"), tambah("pizza.", emo("cz", 240, 62, "\u{2705}", 22))),
-    k(SUARA_S5, redamkan(0, "oz"), tambah("Hebat!", emo("ow", 150, 190, IGIL, 26))),
-  ],
-};
-
-/* ------------------------------ 3. Bentuk di Sekitar: taman ------------------------------ */
-const SUARA_T1 = "Di taman, Upe melihat tiga benda: tenda, matahari, dan papan nama. Bentuk apa saja yang ada?";
-const SUARA_T2 = "Tenda berbentuk segitiga. Matahari berbentuk lengkung. Papan nama berbentuk segi empat.";
-const SUARA_T3 = "Ketuk benda yang berbentuk segi empat. Satu, dua. Ada dua benda segi empat, yaitu papan nama dan pintu tenda.";
-const SUARA_T4 = "Jadi ada satu segitiga, dua segi empat, dan satu bentuk lengkung. Satu ditambah dua ditambah satu sama dengan empat.";
-
-export const ADEGAN_LUAR_SEKITAR_TERAPAN: AdeganStory = {
-  id: "luar-sekitar-terapan",
-  judul: "Bentuk di Sekitar: taman Upe",
-  sumber: "Metode luar: Bentuk di Sekitar, terapan",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      SUARA_T1,
-      tambah(0, ...kepala(2)),
-      tambah("Upe", emo("a-Upe", 40, 172, ANAK, 24), teks("n-Upe", 40, 188, "Upe", 8.4)),
-      tambah("tenda,", segitigaSama("tn0", 30, 64, 76, 44, W.segitiga), segiEmpat("tn1", 56, 88, 24, 20, W.krem), teks("nt", 68, 126, "tenda", 8.4)),
-      tambah("matahari,", lengkung("mt0", 150, 88, 20), teks("nm", 150, 126, "matahari", 8.4)),
-      tambah("papan", segiEmpat("pn0", 196, 72, 70, 36, W.segiEmpat), teks("pn1", 231, 95, "taman", 9), teks("nn", 231, 126, "papan nama", 8.4)),
-    ),
-    k(
-      SUARA_T2,
-      tambah("segitiga.", teks("s0", 68, 142, "segitiga", 8.4, W.merah)),
-      tambah("lengkung.", teks("s1", 150, 142, "lengkung", 8.4, W.merah)),
-      tambah("empat.", teks("s2", 231, 142, "segi empat", 8.4, W.merah)),
-    ),
-    k(SUARA_T3, ...hitungBagian(SUARA_T3, ["pn0", "tn1"], "segi empat", "tc", 150, 176, "empat.")),
-    k(
-      SUARA_T4,
-      hapus(0, "tc"),
-      redamkan(0, "tn1"),
-      ...rangkai(SUARA_T4, "tr", 190, ["1", "+", "2", "+", "1", "=", "4"], ["Satu", "ditambah", "dua", "ditambah", "satu", "sama", "empat."], "lengkung.", 18, 24),
+      SUARA_G3,
+      hapus(0, "kl0", "kl1", "kl2", "kl3", "kl4"),
+      ubah("mengurai", ...geserLidi("la", ATAP, -60, 0)),
+      ...kalimatBertahap(SUARA_G3, "kk", 150, 180, ["7", KURANG, "3", "=", "4"], ["tujuh", "dikurangi", "tiga", "sama", "empat"]),
+      sorotkan(idx(SUARA_G3, "tersisa."), "ld0", "ld1", "ld2", "ld3"),
     ),
   ],
 };
 
-/* ------------------------------ 4. Ringkasan tiga metode ------------------------------ */
-const SUARA_R1 = "Mari kita ringkas tiga cara dari luar tadi.";
-const SUARA_R2 = "Kenali Bentuk: lihat wujudnya. Pilah Ciri: pisahkan menurut sisi lengkung dan lurus.";
-const SUARA_R3 = "Bentuk di Sekitar: cari bentuk pada benda sehari-hari. Ketiganya membantu kita menyusun dan mengurai bangun.";
-const SUARA_R4 = "Terima kasih sudah belajar. Teruslah berlatih di layar, ya. Sampai jumpa!";
-const DESKRIPSI = ["lihat wujud, lalu sebut nama", "pilah sisi lengkung dan sisi lurus", "cari bentuk pada benda sehari-hari"];
-const kartuMetode = (i: number): Obj[] => [kotak(`rm${i}-k`, 14, 34 + i * 54, 272, 46, WARNA_METODE[i], W.biru, { rx: 8, tebal: 1.5 }), teks(`rm${i}-n`, 150, 34 + i * 54 + 19, NAMA_METODE[i], 10, W.biru)];
-const deskripsi = (i: number): Obj => teks(`rm${i}-d`, 150, 34 + i * 54 + 36, DESKRIPSI[i], 8.8, W.merah);
+/* ------------------------------ 8. Ringkasan ------------------------------ */
+const SUARA_Z1 = "Kita sudah melihat tiga metode global untuk menyusun dan mengurai bentuk.";
+const SUARA_Z2 = "Tangram: tujuh keping disusun menjadi gambar, lalu diurai dan dihitung bagiannya.";
+const SUARA_Z3 = "Pattern Blocks atau Balok Pola: tempel balok bentuk, sebut namanya, lalu hitung baloknya.";
+const SUARA_Z4 = "Toothpick Shapes atau Bentuk dari Lidi: segitiga tiga lidi, dan segi empat empat lidi.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Ringkasan metode luar",
-  latar: "#FFF7ED",
+  judul: "Ringkasan tiga metode global",
+  sumber: "Ringkasan metode global",
+  latar: "#FEF9C3",
   ketukan: [
-    k(SUARA_R1, tambah(0, judul("Ringkasan")), tambah("ringkas", ...kartuMetode(0)), tambah("tiga", ...kartuMetode(1)), tambah("luar", ...kartuMetode(2))),
-    k(SUARA_R2, sorotkan("Kenali", "rm0-k"), tambah("lihat", deskripsi(0)), redamkan("Pilah", "rm0-k"), sorotkan("Pilah", "rm1-k"), tambah("pisahkan", deskripsi(1))),
-    k(SUARA_R3, redamkan(0, "rm1-k"), sorotkan("Bentuk", "rm2-k"), tambah("cari", deskripsi(2)), ubah("Ketiganya", { id: "jud", isi: "Menyusun dan mengurai bangun" })),
-    k(SUARA_R4, bersih(0), tambah(0, judul("Terima kasih"), emo("ow", 150, 100, IGIL, 54)), tambah("layar,", ...kartu("rz", 40, 124, 220, 34, W.emas, ["susun dan urai bentuk"], 11)), tambah("Sampai", teks("rt", 150, 184, "Sampai jumpa!", 12, W.ungu))),
+    k(SUARA_Z1, tambah(0, judul("Ringkasan")), tambah("tiga", emo("rk", 150, 96, E.pesta, 44)), tambah("bentuk.", ...kartu("rt", 60, 124, 180, 26, W.emas, ["3 metode global"], 10))),
+    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Tangram:", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Tangram", "7 keping: susun, urai, hitung"], 9.4))),
+    k(SUARA_Z3, tambah("Pattern", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["Pattern Blocks · Balok Pola", "tempel, sebut nama, hitung"], 9.4))),
+    k(SUARA_Z4, tambah("Toothpick", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Toothpick Shapes · Bentuk dari Lidi", "segitiga 3 lidi, segi empat 4 lidi"], 9.4))),
   ],
 };

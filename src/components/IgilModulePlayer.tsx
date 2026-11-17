@@ -119,6 +119,10 @@ import PagarTeras from "@/components/modul/teras-k1b4b/PagarTeras";
 import KartonTelur from "@/components/modul/teras-k1b4b/KartonTelur";
 import TahapTeras from "@/components/modul/teras-k1b4b/TahapTeras";
 import { ABSTRACT as ABSTRACT_TERAS, CONCRETE as CONCRETE_TERAS, PICTORIAL as PICTORIAL_TERAS, TEMA_TAHAP as TEMA_TERAS } from "@/components/modul/teras-k1b4b/data";
+import PitaJuri from "@/components/modul/susun-k1b4c/PitaJuri";
+import LabelMainan from "@/components/modul/susun-k1b4c/LabelMainan";
+import TahapSusun from "@/components/modul/susun-k1b4c/TahapSusun";
+import { ABSTRACT as ABSTRACT_SUSUN, CONCRETE as CONCRETE_SUSUN, PICTORIAL as PICTORIAL_SUSUN, TEMA_TAHAP as TEMA_SUSUN } from "@/components/modul/susun-k1b4c/data";
 import PetaRumah from "@/components/modul/rumah-k1b3d/PetaRumah";
 import KartuResep from "@/components/modul/rumah-k1b3d/KartuResep";
 import TahapRumah from "@/components/modul/rumah-k1b3d/TahapRumah";
@@ -2317,6 +2321,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               teksLanjut="LANJUTKAN KE INFOGRAFIS ⬇️"
               onLanjut={() => handleUnlockNextSmicpa(3, infografisRef, "Pagar teras sudah lengkap! Sekarang kita buka Infografis.")}
             />
+            ) : bab === "mtk-1-bab4" && activeSubBab === "C" ? (
+            <PitaJuri
+              key={`${bab}-${activeSubBab}-pita`}
+              speakGuru={speakGuru}
+              teksLanjut="LANJUTKAN KE INFOGRAFIS ⬇️"
+              onLanjut={() => handleUnlockNextSmicpa(3, infografisRef, "Pita juri sudah lengkap! Sekarang kita buka Infografis.")}
+            />
             ) : bab === "mtk-1-bab3" && activeSubBab === "D" ? (
             <PetaRumah
               key={`${bab}-${activeSubBab}-rumah`}
@@ -2499,6 +2510,19 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                   TAHAP_SIMULASI,
                   simulasiRef,
                   `Catatan karton telur lengkap! Sekarang kita bereksperimen di Simulasi. ${SIMULASI_MISI_AWAL[bab]?.(activeSubBab) ?? ""}`.trim()
+                )
+              }
+            />
+            ) : bab === "mtk-1-bab4" && activeSubBab === "C" ? (
+            <LabelMainan
+              key={`${bab}-${activeSubBab}-pita-info`}
+              speakGuru={speakGuru}
+              teksLanjut="LANJUTKAN KE SIMULASI ⬇️"
+              onLanjut={() =>
+                handleUnlockNextSmicpa(
+                  TAHAP_SIMULASI,
+                  simulasiRef,
+                  `Label mainan lengkap! Sekarang kita bereksperimen di Simulasi. ${SIMULASI_MISI_AWAL[bab]?.(activeSubBab) ?? ""}`.trim()
                 )
               }
             />
@@ -2975,6 +2999,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                     hentikan: hentikanRekamConcrete,
                     gulir: () => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
                     onSelesai: () => handleUnlockNextSmicpa(5, pictorialRef, "Dua belas soal barang di teras selesai. Sekarang kita lihat bangun polosnya."),
+                  }}
+                />
+              ) : bab === "mtk-1-bab4" && activeSubBab === "C" ? (
+                <TahapSusun
+                  rupa="benda"
+                  soal={CONCRETE_SUSUN}
+                  pita={TEMA_SUSUN.concrete}
+                  teksAkhir="LANJUTKAN KE PICTORIAL ⬇️"
+                  umum={{
+                    speakGuru,
+                    panel: panelConcrete,
+                    hentikan: hentikanRekamConcrete,
+                    gulir: () => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+                    onSelesai: () => handleUnlockNextSmicpa(5, pictorialRef, "Dua belas soal mainan kardus selesai. Sekarang kita lihat bangun polosnya."),
                   }}
                 />
               ) : bab === "mtk-1-bab3" && activeSubBab === "D" ? (
@@ -3546,6 +3584,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                   rupa="diagram"
                   soal={PICTORIAL_TERAS}
                   pita={TEMA_TERAS.pictorial}
+                  teksAkhir="LANJUTKAN KE ABSTRACT ⬇️"
+                  umum={{
+                    speakGuru,
+                    panel: panelGambar,
+                    hentikan: hentikanRekamConcrete,
+                    gulir: () => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+                    onSelesai: () => handleUnlockNextSmicpa(6, abstractRef, "Dua belas soal bangun polos selesai. Ayo lihat kata dan angkanya saja."),
+                  }}
+                />
+              ) : bab === "mtk-1-bab4" && activeSubBab === "C" ? (
+                <TahapSusun
+                  rupa="diagram"
+                  soal={PICTORIAL_SUSUN}
+                  pita={TEMA_SUSUN.pictorial}
                   teksAkhir="LANJUTKAN KE ABSTRACT ⬇️"
                   umum={{
                     speakGuru,
@@ -4147,6 +4199,21 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                   soal={ABSTRACT_TERAS}
                   pita={TEMA_TERAS.abstract}
                   teksAkhir="SELESAI SUB-BAB B ✅"
+                  poinPenting
+                  umum={{
+                    speakGuru,
+                    panel: panelLambang,
+                    hentikan: hentikanRekamConcrete,
+                    gulir: () => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+                    onSelesai: () => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }),
+                  }}
+                />
+              ) : bab === "mtk-1-bab4" && activeSubBab === "C" ? (
+                <TahapSusun
+                  rupa="lambang"
+                  soal={ABSTRACT_SUSUN}
+                  pita={TEMA_SUSUN.abstract}
+                  teksAkhir="SELESAI SUB-BAB C ✅"
                   poinPenting
                   umum={{
                     speakGuru,

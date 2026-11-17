@@ -3,14 +3,14 @@
  * Diuji di scripts/uji-lab-kelas1.mjs.
  *
  * Simulasi bertahap: satu laboratorium bentuk yang alatnya bertambah per sub-bab
- * (A: kini Meja Periksa Bahan, Misi Festival bagian satu (bahan-k1b4a); dulu Ciri Bentuk + Papan Paku; B: kini Rak Teras (teras-k1b4b), dulu + Kelompok; C: + menyusun bentuk, Bangun Gabungan, dan tab
- * Arsitek Cilik, sekaligus simulasi pencapaian misi bab ini).
+ * (A: kini Meja Periksa Bahan, Misi Festival bagian satu (bahan-k1b4a); dulu Ciri Bentuk + Papan Paku; B: kini Rak Teras (teras-k1b4b), dulu + Kelompok; C: kini Meja Rakit Mainan (susun-k1b4c), sekaligus penutup bab).
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanBahan } from "./bahan-k1b4a/logika";
 import type { KeadaanTeras } from "./teras-k1b4b/logika";
+import type { KeadaanSusun } from "./susun-k1b4c/logika";
 
 export type KeadaanCiri = {
   alat: "ciri";
@@ -33,13 +33,8 @@ export type KeadaanKelompok = { alat: "kelompok"; aturan: string; terpilih: numb
 
 export type KeadaanBangun = { alat: "bangun"; id: string; urai: boolean; jenis: string | null; diambil: boolean };
 
-export type KeadaanBab4 = KeadaanCiri | KeadaanPaku | KeadaanKelompok | KeadaanBangun | KeadaanSelesai | KeadaanBahan | KeadaanTeras;
+export type KeadaanBab4 = KeadaanCiri | KeadaanPaku | KeadaanKelompok | KeadaanBangun | KeadaanSelesai | KeadaanBahan | KeadaanTeras | KeadaanSusun;
 
-const ciri = (k: KeadaanBab4): k is KeadaanCiri => k.alat === "ciri";
-const paku = (k: KeadaanBab4, nama: string) => k.alat === "paku" && k.tertutup && k.bentuk === nama;
-const kel = (k: KeadaanBab4): k is KeadaanKelompok => k.alat === "kelompok";
-const ban = (k: KeadaanBab4): k is KeadaanBangun => k.alat === "bangun";
-const selesai = (k: KeadaanBab4, id: string) => k.alat === "selesai" && k.id === id;
 
 /**
  * Sub-Bab A: Misi Festival bagian satu, meja periksa bahan (Simulasi "Bahan dari Gudang"). Bahan dan bentuknya sama dengan BAHAN_SIM
@@ -73,16 +68,31 @@ export const MISI_B: DefMisi<KeadaanBab4>[] = [
   { id: "b-sama", teks: "Pakai aturan ukuran. Ubah ukuran barang sampai keranjang besar dan kecil sama banyak.", wajib: false, cek: (k) => teras(k) && k.aturan === "ukuran" && k.barang.filter((b) => b.ukuran === "besar").length * 2 === k.barang.length },
 ];
 
-/** Sub-Bab C (sub-bab akhir): menyusun dan menguraikan bentuk, sekaligus pencapaian misi bab ini. */
+/**
+ * Sub-Bab C (akhir bab): Misi Festival bagian satu, meja rakit mainan (susun-k1b4c), sekaligus penutup bab. Banyak bagian tiap mainan
+ * sama dengan MAINAN_SIM di susun-k1b4c/data.ts (diuji di scripts/uji-susun-k1b4c.mjs): robot enam bagian, mobil hias lima, pesawat enam.
+ */
+const rakit = (k: KeadaanBab4): k is KeadaanSusun => k.alat === "susun";
+export const TOTAL_RAKIT_C: Record<string, number> = { robot: 6, mobil: 5, pesawat: 6 };
+const ID_RAKIT = Object.keys(TOTAL_RAKIT_C);
+const catatRakit = (k: KeadaanBab4, c: string) => rakit(k) && k.catat.includes(c);
 export const MISI_C: DefMisi<KeadaanBab4>[] = [
-  { id: "c-segitiga", teks: "Pilih 2 segitiga, lalu gabungkan bagian. Bentuk apa yang lahir?", wajib: true, cek: (k) => ciri(k) && k.menyusun && k.idSusun === "dua-segitiga" && k.gabung },
-  { id: "c-persegi", teks: "Pilih 2 persegi, lalu gabungkan bagian. Bentuk apa yang lahir?", wajib: true, cek: (k) => ciri(k) && k.menyusun && k.idSusun === "dua-persegi" && k.gabung },
-  { id: "c-kereta", teks: "Uraikan kereta menjadi bagian-bagiannya.", wajib: true, cek: (k) => ban(k) && k.id === "kereta" && k.urai },
-  { id: "c-lidi", teks: "Pilih Rumah dari lidi, lalu uraikan. Hitung lidi dinding dan lidi atap.", wajib: true, cek: (k) => ban(k) && k.id === "rumah-lidi" && k.urai },
-  { id: "c-arsitek", teks: "Selesaikan skenario Arsitek Cilik sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, "arsitek") },
-  { id: "c-ambil", teks: "Uraikan sebuah bangun, pilih satu jenis bagian, lalu ambil. Baca kalimat kurangnya.", wajib: false, cek: (k) => ban(k) && k.urai && k.diambil },
-  { id: "c-panjang", teks: "Ingat Sub-Bab A: buat persegi panjang di Papan Paku.", wajib: false, cek: (k) => paku(k, "Persegi panjang") },
-  { id: "c-ingat-warna", teks: "Ingat Sub-Bab B: kelompokkan balok menurut Warna.", wajib: false, cek: (k) => kel(k) && k.aturan === "warna" },
+  { id: "c-robot", teks: "Susun robot sampai lengkap, lalu baca kalimat tambahnya.", wajib: true, cek: (k) => catatRakit(k, "robot:lengkap") },
+  { id: "c-roda", teks: "Lepas semua roda lengkung dari mobil hias yang sudah lengkap. Baca kalimat kurangnya.", wajib: true, cek: (k) => catatRakit(k, "mobil:kurang:lengkung") },
+  { id: "c-semua", teks: "Susun ketiga mainan sampai lengkap.", wajib: true, cek: (k) => ID_RAKIT.every((id) => catatRakit(k, `${id}:lengkap`)) },
+  { id: "c-juri", teks: "Penutup festival: bawa semua mainan ke panggung, lalu jawab pertanyaan juri tentang banyak bagiannya.", wajib: true, cek: (k) => rakit(k) && k.panggung && ID_RAKIT.every((id) => k.juri[id] === TOTAL_RAKIT_C[id]) },
+  { id: "c-urai", teks: "Urai pesawat yang sudah lengkap sampai semua bagiannya lepas.", wajib: false, cek: (k) => catatRakit(k, "pesawat:kosong") },
+  {
+    id: "c-kembali",
+    teks: "Lepas satu jenis bagian, lalu pasang lagi. Banyak bagiannya kembali sama.",
+    wajib: false,
+    cek: (k) =>
+      rakit(k) &&
+      ID_RAKIT.some((id) => {
+        const kurang = k.catat.findIndex((c) => c.startsWith(`${id}:kurang:`));
+        return kurang >= 0 && k.catat.lastIndexOf(`${id}:lengkap`) > kurang;
+      }),
+  },
 ];
 
 export const daftarMisiBab4 = (sub: string): DefMisi<KeadaanBab4>[] => (sub === "B" ? MISI_B : sub === "C" ? MISI_C : MISI_A);

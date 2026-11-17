@@ -63,7 +63,7 @@ ganti aturan dan barang pindah keranjang, cat atau ubah ukuran barang; delapan b
 (Metode IGIL: pilih aturan, periksa, taruh, beri nama, hitung; Attribute Sort; Guess My Rule; Odd One Out), pola visual ubin teraso dengan
 keranjang terisi (Concrete), papan berlubang dengan pasak (Pictorial), dinding kertas tempel (Abstract). Abstract diakhiri Poin Penting.
 
-## Sub-Bab C secara rinci (akhir cerita bab)
+## Sub-Bab C secara rinci (selesai, akhir cerita bab)
 
 Story materi "Mainan untuk Festival" (sekitar tiga menit, tanpa latihan):
 1. Sapaan: menyusun bentuk, mengurai bentuk, menghitung bagian.
@@ -77,3 +77,9 @@ Story materi "Mainan untuk Festival" (sekitar tiga menit, tanpa latihan):
 9. Penutup.
 
 Story metode global: Tangram, Pattern Blocks (Balok Pola), Toothpick Shapes (Bentuk dari Lidi).
+
+Mind-map "Meja Juri": papan klip juri = Masalah, tujuh pita juri bernomor = Penyelesaian berurutan (semua metode Story), alas piala = Hasil.
+Infografis "Label Mainan Festival" (kereta, perahu, pohon, rumah: kalimat, banyak, diurai). Simulasi "Meja Rakit Mainan" (Misi Festival bagian 1:
+robot, mobil hias, pesawat; susun, urai, kalimat tambah dan kurang, lalu panggung juri sebagai penutup bab). CPA: Misi Festival bagian 2 sampai 10
+(Metode IGIL: susun, urai, hitung bagian; Tangram; Pattern Blocks; Toothpick Shapes), pola visual alas potong hijau (Concrete), kertas titik
+dengan lidi (Pictorial), tirai panggung beludru (Abstract). Abstract diakhiri Poin Penting dan perayaan akhir Festival Mainan Kardus.
