@@ -10,6 +10,7 @@
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanKamar } from "./lemari-k1b1a/logika";
+import type { KeadaanHadiah } from "./banding-k1b1b/logika";
 
 export type KeadaanBilangan = {
   alat: "bilangan";
@@ -25,7 +26,7 @@ export type KeadaanBilangan = {
   banding: boolean;
 };
 
-export type KeadaanBab1 = KeadaanBilangan | KeadaanSelesai | KeadaanKamar;
+export type KeadaanBab1 = KeadaanBilangan | KeadaanSelesai | KeadaanKamar | KeadaanHadiah;
 
 const bil = (k: KeadaanBab1): k is KeadaanBilangan => k.alat === "bilangan";
 const selesai = (k: KeadaanBab1, id: string) => k.alat === "selesai" && k.id === id;
@@ -44,15 +45,15 @@ export const MISI_A: DefMisi<KeadaanBab1>[] = [
   { id: "a-kosong", teks: "Tekan Hitung di rak pesawat. Kotak kosong, banyaknya nol.", wajib: false, cek: (k) => kamar(k) && k.dihitung.includes("pesawat") },
 ];
 
-/** Sub-Bab B: membandingkan dengan benda, bingkai sepuluh, dan garis bilangan. */
+/** Sub-Bab B: Misi Hadiah Nenek bagian satu, gudang hadiah (Simulasi "Hadiah Nenek untuk Rak yang Lebih Sedikit"). Robot 2, yoyo 7, kotak 6. */
+const gudang = (k: KeadaanBab1): k is KeadaanHadiah => k.alat === "hadiah";
 export const MISI_B: DefMisi<KeadaanBab1>[] = [
-  { id: "b-sama", teks: "Atur bilangan pertama dan kedua sampai sama banyak.", wajib: true, cek: (k) => bil(k) && k.banding && k.n === k.m },
-  { id: "b-kecil", teks: "Buat bilangan kedua lebih besar dari bilangan pertama.", wajib: true, cek: (k) => bil(k) && k.banding && k.n < k.m },
-  { id: "b-jauh", teks: "Buat bilangan pertama lebih besar 5 atau lebih dari bilangan kedua.", wajib: true, cek: (k) => bil(k) && k.banding && k.n - k.m >= 5 },
-  { id: "b-bingkai", teks: "Pakai bingkai sepuluh: buat bilangan 8, lalu hitung kotak kosongnya.", wajib: true, cek: (k) => bil(k) && k.bingkai && k.n === 8 },
-  { id: "b-garis", teks: "Buat bilangan pertama 3 dan bilangan kedua 9. Lihat letaknya di garis bilangan.", wajib: true, cek: (k) => bil(k) && k.banding && k.garis && k.n === 3 && k.m === 9 },
-  { id: "b-selisih", teks: "Buat dua bilangan yang hanya beda satu.", wajib: false, cek: (k) => bil(k) && k.banding && beda(k) === 1 },
-  { id: "b-ujung", teks: "Bandingkan bilangan paling kecil dengan paling besar: 0 dan 10.", wajib: false, cek: (k) => bil(k) && k.banding && ((k.n === 0 && k.m === 10) || (k.n === 10 && k.m === 0)) },
+  { id: "b-pasang", teks: "Tekan Pasangkan saat kedua rak berbeda. Lihat yang bersisa.", wajib: true, cek: (k) => gudang(k) && k.dipasang && k.igil !== k.kaka },
+  { id: "b-sama", teks: "Bagi hadiah Nenek sampai kedua rak sama banyak.", wajib: true, cek: (k) => gudang(k) && k.dipakai > 0 && k.igil === k.kaka },
+  { id: "b-satu", teks: "Buat rak Igil satu lebih banyak dari rak Kaka.", wajib: true, cek: (k) => gudang(k) && k.igil === k.kaka + 1 },
+  { id: "b-bingkai", teks: "Lihat lewat bingkai sepuluh saat rak Kaka lebih banyak.", wajib: true, cek: (k) => gudang(k) && k.tampil === "bingkai" && k.kaka > k.igil },
+  { id: "b-nol", teks: "Kosongkan rak Igil. Nol paling sedikit.", wajib: false, cek: (k) => gudang(k) && k.igil === 0 },
+  { id: "b-garis", teks: "Lihat garis bilangan saat rak Igil lebih kanan.", wajib: false, cek: (k) => gudang(k) && k.tampil === "garis" && k.igil > k.kaka },
 ];
 
 /** Sub-Bab C: maju dan mundur di garis bilangan, dan Katak Maju Mundur. */

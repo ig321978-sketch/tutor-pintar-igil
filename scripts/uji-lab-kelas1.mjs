@@ -1189,14 +1189,13 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   const catatPas = { robot: 6, yoyo: 2, kelereng: 8, pesawat: 0 };
   cek(ada("A", K({}), "a-rak") && ada("A", K({}), "a-laci") && ada("A", K({ dihitung: ["robot"] }), "a-robot") && ada("A", K({ catat: catatPas }), "a-catat") && !ada("A", K({ catat: { ...catatPas, pesawat: 1 } }), "a-catat"), "bab1 A: wajib");
   cek(ada("A", K({ sekilas: ["yoyo"] }), "a-sekilas") && ada("A", K({ dihitung: ["pesawat"] }), "a-kosong") && !ada("A", L({ n: 5 }), "a-rak"), "bab1 A: bebas");
-  const B = (o) => L({ bingkai: true, garis: true, banding: true, ...o });
-  cek(ada("B", B({ n: 4, m: 4 }), "b-sama") && !ada("B", L({ n: 4, m: 4 }), "b-sama"), "bab1 B: sama hanya bila Bandingkan menyala");
-  cek(ada("B", B({ n: 2, m: 7 }), "b-kecil") && !ada("B", B({ n: 7, m: 7 }), "b-kecil"), "bab1 B: kedua lebih besar");
-  cek(ada("B", B({ n: 9, m: 4 }), "b-jauh") && !ada("B", B({ n: 8, m: 4 }), "b-jauh"), "bab1 B: selisih lima");
-  cek(ada("B", B({ n: 8 }), "b-bingkai") && !ada("B", B({ n: 8, bingkai: false }), "b-bingkai"), "bab1 B: bingkai harus tampil");
-  cek(ada("B", B({ n: 3, m: 9 }), "b-garis") && !ada("B", B({ n: 3, m: 9, garis: false }), "b-garis"), "bab1 B: garis harus tampil");
-  cek(ada("B", B({ n: 5, m: 4 }), "b-selisih") && !ada("B", B({ n: 6, m: 4 }), "b-selisih"), "bab1 B: beda satu");
-  cek(ada("B", B({ n: 10, m: 0 }), "b-ujung") && ada("B", B({ n: 0, m: 10 }), "b-ujung"), "bab1 B: nol dan sepuluh");
+  // Sub-Bab B memakai Gudang Hadiah (banding-k1b1b): robot 2, yoyo 7, kotak 6. Rincian di scripts/uji-banding-k1b1b.mjs.
+  const H = (o) => ({ alat: "hadiah", igil: 2, kaka: 7, kotak: 6, dipasang: false, tampil: "barisan", dipakai: 0, ...o });
+  cek(ada("B", H({ dipasang: true }), "b-pasang") && !ada("B", H({ dipasang: true, igil: 7 }), "b-pasang") && !ada("B", H({}), "b-pasang"), "bab1 B: pasangkan saat berbeda");
+  cek(ada("B", H({ igil: 7, dipakai: 5 }), "b-sama") && !ada("B", H({ igil: 7, kaka: 7, dipakai: 0 }), "b-sama"), "bab1 B: sama banyak dengan hadiah");
+  cek(ada("B", H({ igil: 8 }), "b-satu") && !ada("B", H({ igil: 9 }), "b-satu"), "bab1 B: satu lebih banyak");
+  cek(ada("B", H({ tampil: "bingkai" }), "b-bingkai") && !ada("B", H({ tampil: "bingkai", igil: 8 }), "b-bingkai"), "bab1 B: bingkai saat Kaka lebih banyak");
+  cek(ada("B", H({ igil: 0 }), "b-nol") && ada("B", H({ tampil: "garis", igil: 9 }), "b-garis") && !ada("B", H({ tampil: "garis" }), "b-garis") && !ada("B", L({ n: 4, m: 4 }), "b-sama"), "bab1 B: bebas");
   const C = (o) => L({ bingkai: true, garis: true, ...o });
   cek(ada("C", C({ n: 9 }), "c-sembilan") && ada("C", C({ n: 1 }), "c-satu") && ada("C", C({ n: 0 }), "c-nol"), "bab1 C: garis");
   cek(ada("C", SEL("katak"), "c-katak") && !ada("C", SEL("kasir"), "c-katak"), "bab1 C: katak");

@@ -1,139 +1,144 @@
-import type { AdeganStory } from "./logika-story";
-import { W, emo, judul, kartu, kelompok, pasang, teks } from "./k1b1b-gambar";
-import { bersih, hapus, idx, k, redamkan, sebar, sorotkan, tambah, urutKata } from "./k1b1b-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, baris, bicara, deretMainan, emo, garis, judul, kado, kartu, orang, papanRak, teks, type Titik } from "./k1b1b-gambar";
+import { hapus, hitungMainan, k, pasangAksi, sorotkan, tambah, ubah } from "./k1b1b-bantu";
 
-/* ------------------------------ 1. Cerita di taman ------------------------------ */
-const SUARA_C1 = "Pagi ini Malosi, Kira, Upe, dan Wei bermain di taman bersama Igil, si burung hantu. Banyak benda ada di taman itu.";
-const SUARA_C2 = "Upe melihat tiga sepeda dan tiga burung. Wei melihat enam kursi dan empat balon.";
-const SUARA_C3 = "Igil bertanya, mana yang lebih banyak? Untuk tahu, kita bisa memasangkan benda satu dengan satu.";
-const SUARA_C4 = "Hari ini kita belajar tiga hal. Pertama, memasangkan benda. Kedua, mengenal banyak dan sedikit. Ketiga, memilih tanda yang tepat.";
-const SUARA_C5 = "Kita memakai bilangan yang kecil saja. Pelan-pelan, ya. Kalau bingung, kita ulangi lagi, tidak apa-apa.";
+/*
+ * Cerita orisinal IGIL "Hadiah Nenek untuk Rak yang Lebih Sedikit" (Kelas 1 Bab 1 Sub-Bab B, membandingkan banyak benda),
+ * lanjutan "Merapikan Lemari Mainan Igil". Tokoh: Igil, Kaka, Abang, Mamah. Masalah: hadiah Nenek hanya untuk rak yang
+ * isinya lebih sedikit, dan Kaka tertipu barisan bonekanya yang rapat dan pendek.
+ * Penyelesaian: memasangkan satu-satu, melihat yang bersisa, menghitung lalu membandingkan angkanya.
+ */
 
-const ANAK: [string, number][] = [["Malosi", 40], ["Kira", 95], ["Upe", 150], ["Wei", 205]];
+/** Barisan utama: lima mobil Igil renggang (panjang) dan enam boneka Kaka rapat (pendek). Titik = pusat gambar emoji. */
+export const MOBIL: Titik[] = baris(5, 64, 50, 76);
+export const BONEKA: Titik[] = baris(6, 95, 22, 150);
+const pusat = (p: Titik): Titik => ({ x: p.x, y: p.y - 8 });
+const rakDua = (): Obj[] => [...papanRak("pa", 14, 54, 272, "Rak Igil"), ...papanRak("pb", 14, 126, 272, "Rak Kaka")];
 
-export const ADEGAN_CERITA: AdeganStory = {
-  id: "cerita-taman",
-  judul: "Malosi, Kira, Upe, dan Wei di taman",
-  sumber: "Materi: cerita di taman",
-  latar: "#ECFCCB",
+/* ------------------------------ 1. Hadiah dari Nenek ------------------------------ */
+const SUARA_H1 = "Lemari Igil sudah rapi. Ding dong! Kotak hadiah dari Nenek datang.";
+const SUARA_H2 = "Ada surat dari Nenek. Hadiah ini untuk rak yang isinya lebih sedikit.";
+const SUARA_H3 = "Kaka berseru, barisan bonekaku pendek, jadi bonekaku lebih sedikit. Hadiah untukku! Igil sedih.";
+
+export const ADEGAN_HADIAH: AdeganStory = {
+  id: "hadiah-nenek",
+  judul: "Hadiah dari Nenek",
+  sumber: "Materi: masalah hadiah untuk rak",
+  latar: "#FEF3C7",
   ketukan: [
     k(
-      SUARA_C1,
-      tambah(0, judul("Di taman bermain"), { id: "tanah", t: "garis", x: 14, y: 142, x2: 272, y2: 0, warna: W.hijau, tebal: 3 }),
-      ...ANAK.map(([nama, x]) => tambah(nama, emo(`a-${nama}`, x, 112, "\u{1F9D2}", 30), teks(`n-${nama}`, x, 132, nama, 8.6))),
-      tambah("Igil,", emo("a-Igil", 262, 112, "\u{1F989}", 30), teks("n-Igil", 262, 132, "Igil", 8.6, W.ungu)),
+      SUARA_H1,
+      tambah(0, judul("Hadiah dari Nenek"), ...papanRak("ra", 14, 40, 130, "Rak Igil"), ...papanRak("rb", 156, 40, 130, "Rak Kaka")),
+      tambah(0, ...deretMainan(E.mobil, "ma", baris(5, 30, 24, 68), 16), ...deretMainan(E.boneka, "ba", baris(6, 178, 13, 68), 14)),
+      tambah("Ding", teks("dd", 150, 112, "Ding dong!", 12, W.merah)),
+      tambah("Kotak", kado("kd", 150, 160, 40), ...orang("ig", 40, 176, E.igil, "Igil"), ...orang("kk", 260, 176, E.kaka, "Kaka")),
     ),
     k(
-      SUARA_C2,
-      bersih(0),
-      tambah(0, judul("Benda di taman")),
-      tambah("Upe", ...kartu("cu", 10, 36, 135, 52, W.langit, ["Upe", "3 sepeda, 3 burung"], 9)),
-      tambah("Wei", ...kartu("cw", 155, 36, 135, 52, W.krem, ["Wei", "6 kursi, 4 balon"], 9)),
-      tambah("burung.", emo("cue", 77, 130, "\u{1F6B2}\u{1F426}", 26)),
-      tambah("balon.", emo("cwe", 222, 130, "\u{1FA91}\u{1F388}", 26)),
+      SUARA_H2,
+      hapus(0, "dd"),
+      tambah("surat", emo("srt", 108, 112, E.surat, 22), emo("nn", 200, 112, E.nenek, 24)),
+      tambah("Hadiah", ...kartu("ps", 66, 118, 168, 24, W.krem, ["untuk rak yang lebih sedikit"], 8.8)),
+      sorotkan("sedikit.", "ps-k"),
     ),
     k(
-      SUARA_C3,
-      bersih(0),
-      tambah(0, judul("Mana yang lebih banyak?"), emo("ig3", 150, 90, "\u{1F989}", 44)),
-      tambah("memasangkan", ...kartu("pj", 50, 130, 200, 30, W.emas, ["Pasangkan satu dengan satu"], 10)),
-    ),
-    k(
-      SUARA_C4,
-      bersih(0),
-      tambah(0, judul("Tiga hal hari ini")),
-      tambah("Pertama,", ...kartu("h1", 20, 36, 260, 36, W.langit, ["Memasangkan benda"], 10)),
-      tambah("Kedua,", ...kartu("h2", 20, 82, 260, 36, W.hijauMuda, ["Mengenal banyak dan sedikit"], 10)),
-      tambah("Ketiga,", ...kartu("h3", 20, 128, 260, 36, W.pink, ["Memilih tanda yang tepat"], 10)),
-    ),
-    k(
-      SUARA_C5,
-      bersih(0),
-      tambah(0, judul("Pelan-pelan saja"), emo("kura", 150, 100, "\u{1F422}", 50)),
-      tambah(idx(SUARA_C5, "ulangi"), ...kartu("ap", 60, 130, 180, 30, W.krem, ["tidak apa-apa"], 11)),
+      SUARA_H3,
+      hapus(0, "srt", "nn", "ps-k", "ps-t0"),
+      tambah("berseru,", ...bicara("kkb", 150, 100, 134, "Hadiah untukku!", W.pink)),
+      sorotkan("pendek,", "rb"),
+      tambah("sedih.", emo("sd", 76, 150, E.sedih, 20)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Memasangkan satu per satu ------------------------------ */
-const SUARA_P1 = "Lihat, ada tiga sepeda berjajar di taman. Semua sepeda ini milik Upe.";
-const SUARA_P2 = "Lalu datang burung-burung. Burung pertama, burung kedua, burung ketiga.";
-const SUARA_P3 = "Sekarang kita tarik garis. Satu sepeda dipasangkan dengan satu burung.";
-const SUARA_P4 = "Tidak ada burung yang menganggur. Tidak ada sepeda yang kosong. Semua punya pasangan.";
-const SUARA_PX = "Memasangkan itu mudah, tidak perlu menghitung. Kita cukup melihat, apakah ada yang bersisa atau tidak.";
-const SUARA_P5 = "Karena semuanya berpasangan, sepeda dan burung sama banyak. Tiga sepeda, tiga burung.";
-const SUARA_P6 = "Itulah cara memasangkan benda. Satu benda dipasangkan dengan satu benda, dan tidak boleh ada yang terlewat.";
-const SEPEDA = kelompok("sepeda", "sp", 3, 66, 100, 50, 12);
-const BURUNG = kelompok("burung", "br", 3, 128, 100, 50, 12);
-const SEMUA3 = ["sp0", "sp1", "sp2", "br0", "br1", "br2"];
-const posBurung = urutKata(SUARA_P2, ["pertama,", "kedua,", "ketiga."]);
-const posGaris = sebar(SUARA_P3, "Satu", 3, 2);
+/* ------------------------------ 2. Barisan panjang, barisan pendek ------------------------------ */
+const SUARA_B1 = "Lihat rak Igil. Lima mobil berjajar renggang, barisannya panjang.";
+const SUARA_B2 = "Rak Kaka berisi enam boneka yang rapat, barisannya pendek.";
+const SUARA_B3 = "Kata Abang, barisan panjang belum tentu lebih banyak. Ayo kita periksa!";
+
+export const ADEGAN_BARISAN: AdeganStory = {
+  id: "barisan",
+  judul: "Barisan panjang, barisan pendek",
+  sumber: "Materi: panjang barisan menipu",
+  latar: "#EEF2FF",
+  ketukan: [
+    k(
+      SUARA_B1,
+      tambah(0, judul("Barisan panjang, barisan pendek"), ...papanRak("pa", 14, 54, 272, "Rak Igil")),
+      tambah("Lima", ...deretMainan(E.mobil, "mb", MOBIL, 22)),
+      tambah("panjang.", garis("pj", 52, 102, 224, 0, W.merah, 3), teks("pjt", 150, 116, "panjang", 9, W.merah)),
+    ),
+    k(
+      SUARA_B2,
+      tambah(0, ...papanRak("pb", 14, 126, 272, "Rak Kaka")),
+      tambah("enam", ...deretMainan(E.boneka, "bn", BONEKA, 22)),
+      tambah("pendek.", garis("pd", 83, 174, 134, 0, W.ungu, 3), teks("pdt", 150, 188, "pendek", 9, W.ungu)),
+    ),
+    k(
+      SUARA_B3,
+      hapus(0, "jud"),
+      tambah("Abang,", emo("ab", 20, 26, E.abang, 22)),
+      tambah("belum", ...kartu("bt", 44, 8, 212, 24, W.emas, ["panjang belum tentu banyak"], 9)),
+      tambah("periksa!", emo("lup", 278, 26, "\u{1F50D}", 20)),
+    ),
+  ],
+};
+
+/* ------------------------------ 3. Memasangkan satu-satu ------------------------------ */
+const SUARA_P1 = "Abang memasangkan satu mobil dengan satu boneka. Satu garis untuk satu pasang.";
+const SUARA_P2 = "Garis pertama, kedua, ketiga, keempat, kelima. Mobil sudah habis.";
+const SUARA_P3 = "Masih ada satu boneka tanpa pasangan. Yang bersisa lebih banyak. Jadi boneka lebih banyak, mobil lebih sedikit.";
 
 export const ADEGAN_PASANGKAN: AdeganStory = {
   id: "pasangkan",
-  judul: "Memasangkan sepeda dengan burung",
-  sumber: "Materi: memasangkan satu per satu",
+  judul: "Memasangkan satu-satu",
+  sumber: "Materi: pasangkan dan lihat sisanya",
   latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_P1, tambah(0, judul("Sepeda dan burung")), tambah("sepeda", ...SEPEDA)),
-    k(SUARA_P2, ...posBurung.map((p, i) => tambah(p, BURUNG[i]))),
-    k(SUARA_P3, ...posGaris.map((p, i) => tambah(p, pasang("pg", i, 100 + i * 50, 84, 100 + i * 50, 110)))),
     k(
-      SUARA_P4,
-      sorotkan("menganggur.", "br0", "br1", "br2"),
-      redamkan("kosong.", "br0", "br1", "br2"),
-      sorotkan("kosong.", "sp0", "sp1", "sp2"),
-      sorotkan("Semua", ...SEMUA3),
-    ),
-    k(SUARA_PX, tambah("melihat,", emo("mt", 250, 96, "\u{1F440}", 32)), tambah("bersisa", teks("as", 250, 122, "ada sisa?", 9, W.merah))),
-    k(
-      SUARA_P5,
-      hapus(0, "mt", "as"),
-      tambah("sama", ...kartu("sm", 70, 154, 160, 28, W.emas, ["Sama banyak"], 12)),
-      tambah(idx(SUARA_P5, "tiga", 1), teks("l1", 52, 74, "3", 24, W.merah)),
-      tambah(idx(SUARA_P5, "tiga", 2), teks("l2", 52, 136, "3", 24, W.merah)),
+      SUARA_P1,
+      tambah(0, judul("Pasangkan satu-satu"), ...rakDua(), ...deretMainan(E.mobil, "mb", MOBIL, 22), ...deretMainan(E.boneka, "bn", BONEKA, 22)),
+      ...pasangAksi(SUARA_P1, "ps", [pusat(MOBIL[0])], [pusat(BONEKA[0])], ["garis"]),
     ),
     k(
-      SUARA_P6,
-      bersih(0),
-      tambah(0, judul("Pasangkan satu dengan satu"), emo("ow6", 150, 84, "\u{1F989}", 44)),
-      tambah("Satu", ...kartu("pt", 30, 110, 240, 46, W.hijauMuda, ["satu benda, satu pasangan", "tidak boleh terlewat"], 10)),
+      SUARA_P2,
+      ...pasangAksi(SUARA_P2, "ps", MOBIL.map(pusat), BONEKA.map(pusat), ["pertama,", "kedua,", "ketiga,", "keempat,", "kelima."]),
+      sorotkan("habis.", "mb0", "mb1", "mb2", "mb3", "mb4"),
+    ),
+    k(
+      SUARA_P3,
+      sorotkan("satu", "bn5"),
+      tambah("tanpa", teks("ss", 244, 146, "sisa 1", 9, W.merah, { anchor: "start" })),
+      tambah("Jadi", ...kartu("k1", 10, 178, 136, 22, W.hijauMuda, ["boneka lebih banyak"], 8.6)),
+      tambah("mobil", ...kartu("k2", 154, 178, 136, 22, W.merahMuda, ["mobil lebih sedikit"], 8.6)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Kursi lebih banyak dari balon ------------------------------ */
-const SUARA_B1 = "Sekarang Wei menata enam kursi di bawah pohon. Kursi itu berjajar rapi.";
-const SUARA_B2 = "Wei membawa balon. Satu balon diikat di satu kursi. Satu, dua, tiga, empat, lalu balonnya habis.";
-const SUARA_B3 = "Dua kursi masih kosong dan tidak dapat balon. Dua kursi ini adalah sisanya.";
-const SUARA_B4 = "Karena ada kursi yang bersisa, kursi lebih banyak dari balon.";
-const SUARA_B5 = "Sebaliknya, balon lebih sedikit dari kursi, sebab balonnya habis lebih dulu.";
-const SUARA_B6 = "Ingat, kelompok yang bersisa adalah yang lebih banyak. Kelompok yang habis lebih dulu adalah yang lebih sedikit.";
-const KURSI = kelompok("kursi", "ks", 6, 66, 55, 38, 12);
-const BALON = kelompok("balon", "bl", 4, 126, 55, 38, 11);
-const posBalon = urutKata(SUARA_B2, ["satu", "dua", "tiga", "empat"], "kursi.");
+/* ------------------------------ 4. Menghitung lalu membandingkan angka ------------------------------ */
+const SUARA_C1 = "Igil menghitung mobil. Satu, dua, tiga, empat, lima.";
+const SUARA_C2 = "Kaka menghitung boneka. Satu, dua, tiga, empat, lima, enam.";
+const SUARA_C3 = "Enam disebut sesudah lima. Jadi enam lebih banyak dari lima, dan lima lebih sedikit dari enam.";
 
-export const ADEGAN_BANYAK: AdeganStory = {
-  id: "lebih-banyak",
-  judul: "Kursi lebih banyak dari balon",
-  sumber: "Materi: lebih banyak dan lebih sedikit",
-  latar: "#FEFCE8",
+export const ADEGAN_HITUNG: AdeganStory = {
+  id: "hitung-banding",
+  judul: "Menghitung lalu membandingkan",
+  sumber: "Materi: bandingkan angkanya",
+  latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_B1, tambah(0, judul("Kursi dan balon")), tambah("kursi", ...KURSI)),
-    k(SUARA_B2, ...posBalon.map((p, i) => tambah(p, BALON[i * 2], BALON[i * 2 + 1], pasang("bg", i, 55 + i * 38, 84, 55 + i * 38, 110)))),
+    k(SUARA_C1, tambah(0, judul("Hitung, lalu bandingkan"), ...rakDua(), ...deretMainan(E.mobil, "mb", MOBIL, 22), ...deretMainan(E.boneka, "bn", BONEKA, 22)), ...hitungMainan(SUARA_C1, "mb", MOBIL, 22, "mobil.")),
+    k(SUARA_C2, ...hitungMainan(SUARA_C2, "bn", BONEKA, 22, "boneka.", undefined, true)),
     k(
-      SUARA_B3,
-      sorotkan("kosong", "ks4", "ks5"),
-      tambah("sisanya.", teks("sz4", 207, 135, "sisa", 9.4, W.merah), teks("sz5", 245, 135, "sisa", 9.4, W.merah)),
-    ),
-    k(SUARA_B4, tambah("kursi", ...kartu("k1", 50, 154, 200, 22, W.emas, ["Kursi lebih banyak"], 10))),
-    k(SUARA_B5, tambah("balon", ...kartu("k2", 50, 178, 200, 20, W.langit, ["Balon lebih sedikit"], 10))),
-    k(
-      SUARA_B6,
-      bersih(0),
-      tambah(0, judul("Ingat!"), emo("ow", 150, 70, "\u{1F989}", 40)),
-      tambah("bersisa", ...kartu("i1", 30, 90, 240, 38, W.hijauMuda, ["yang bersisa", "= lebih banyak"], 10)),
-      tambah("habis", ...kartu("i2", 30, 140, 240, 38, W.pink, ["yang habis lebih dulu", "= lebih sedikit"], 10)),
+      SUARA_C3,
+      hapus(0, "tg"),
+      sorotkan("Enam", "bn5"),
+      sorotkan("lima.", "mb4"),
+      tambah("Jadi", ...kartu("c1", 10, 178, 136, 22, W.hijauMuda, ["6 lebih banyak dari 5"], 8.6)),
+      tambah("dan", ...kartu("c2", 154, 178, 136, 22, W.merahMuda, ["5 lebih sedikit dari 6"], 8.6)),
     ),
   ],
 };
+
+/** Ekspor untuk uji: letak barisan dan ubah posisi (dipakai adegan sama banyak). */
+export const pusatMainan = pusat;
+export const pindahKe = (id: string, pts: Titik[]) => pts.map((p, i) => ({ id: `${id}${i}`, x: p.x, y: p.y }));
+export { ubah };
