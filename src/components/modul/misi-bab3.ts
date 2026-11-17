@@ -3,7 +3,7 @@
  * Diuji di scripts/uji-lab-kelas1.mjs.
  *
  * Simulasi bertahap: satu Laboratorium Pengurangan yang membuka alat sedikit demi sedikit
- * (A: kini Kotak Bekal, Misi Perjalanan bagian satu (bekal-k1b3a); B: + dua pengurangan, bagan pasangan, garis bilangan mundur;
+ * (A: kini Kotak Bekal, Misi Perjalanan bagian satu (bekal-k1b3a); B: kini Kursi Kereta Lanjutan, Misi Pindah Kereta bagian satu (peron-k1b3b);
  * C: + keluarga fakta dan tab Bus Sekolah; D: semua alat + tab Pesta Jeruk, sekaligus
  * simulasi pencapaian misi bab ini).
  */
@@ -11,6 +11,7 @@
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanBekal } from "./bekal-k1b3a/logika";
+import type { KeadaanKursi } from "./peron-k1b3b/logika";
 
 export type KeadaanKurang = {
   alat: "kurang";
@@ -28,7 +29,7 @@ export type KeadaanKurang = {
   keluarga: boolean;
 };
 
-export type KeadaanBab3 = KeadaanKurang | KeadaanSelesai | KeadaanBekal;
+export type KeadaanBab3 = KeadaanKurang | KeadaanSelesai | KeadaanBekal | KeadaanKursi;
 
 const kur = (k: KeadaanBab3): k is KeadaanKurang => k.alat === "kurang";
 const selesai = (k: KeadaanBab3, id: string) => k.alat === "selesai" && k.id === id;
@@ -46,15 +47,16 @@ export const MISI_A: DefMisi<KeadaanBab3>[] = [
   { id: "a-mundur", teks: "Ambil jeruk satu per satu sampai sisanya enam.", wajib: false, cek: (k) => bekal(k) && k.mula.jeruk - k.ambil.jeruk === 6 },
 ];
 
-/** Sub-Bab B: berbagai cara mengurang (dua pengurangan, mundur, nol dan sama, dari sepuluh). */
+/** Sub-Bab B: Misi Pindah Kereta bagian satu, kursi kereta lanjutan (Simulasi "Pindah Kereta di Stasiun Besar"). Mulai lima kursi, dua terisi. */
+const kursi = (k: KeadaanBab3): k is KeadaanKursi => k.alat === "kursi";
+const urai = (t: string) => t.split(/[-=]/).map(Number);
 export const MISI_B: DefMisi<KeadaanBab3>[] = [
-  { id: "b-dua", teks: "Nyalakan Dua pengurangan, lalu buat 6 benda dan ambil 2.", wajib: true, cek: (k) => kur(k) && k.dua && k.t === 6 && k.k === 2 },
-  { id: "b-mundur", teks: "Buat 5 - 3. Lihat lompat mundur di garis bilangan.", wajib: true, cek: (k) => kur(k) && k.garis && k.t === 5 && k.k === 3 },
-  { id: "b-nol", teks: "Buat 5 - 0. Lihat apa yang terjadi pada sisanya.", wajib: true, cek: (k) => soal(k, 5, 0) },
-  { id: "b-sama", teks: "Buat 4 - 4. Lihat sisanya.", wajib: true, cek: (k) => soal(k, 4, 4) },
-  { id: "b-sepuluh", teks: "Dari sepuluh: buat 10 - 7 dan hitung petak kosong di bingkai.", wajib: true, cek: (k) => kur(k) && k.bingkai && k.t === 10 && k.k === 7 },
-  { id: "b-bagan", teks: "Nyalakan Bagan pasangan, lalu buat 7 - 4.", wajib: false, cek: (k) => kur(k) && k.bagan && k.t === 7 && k.k === 4 },
-  { id: "b-sembilan", teks: "Buat 9 - 6 dan cari dua pengurangan dari bagan yang sama.", wajib: false, cek: (k) => kur(k) && k.dua && k.t === 9 && k.k === 6 },
+  { id: "b-dua", teks: "Catat dua kalimat berbeda dari satu bagan.", wajib: true, cek: (k) => kursi(k) && k.catat.some((t) => { const [x, y, z] = urai(t); return y !== z && k.catat.includes(`${x}-${z}=${y}`); }) },
+  { id: "b-nol", teks: "Catat kalimat yang dikurangi nol.", wajib: true, cek: (k) => kursi(k) && k.catat.some((t) => urai(t)[1] === 0) },
+  { id: "b-sama", teks: "Isi semua kursi, lalu catat kalimat yang hasilnya nol.", wajib: true, cek: (k) => kursi(k) && k.catat.some((t) => { const [x, y] = urai(t); return x > 0 && x === y; }) },
+  { id: "b-sepuluh", teks: "Buat sepuluh kursi, lalu catat dua kalimat dari sepuluh.", wajib: true, cek: (k) => kursi(k) && k.catat.filter((t) => urai(t)[0] === 10).length >= 2 },
+  { id: "b-sembilan", teks: "Catat kalimat yang hasilnya sembilan.", wajib: false, cek: (k) => kursi(k) && k.catat.some((t) => urai(t)[2] === 9) },
+  { id: "b-mundur", teks: "Buat delapan kursi dengan lima terisi. Lihat lompat mundurnya.", wajib: false, cek: (k) => kursi(k) && k.utuh === 8 && k.terisi === 5 },
 ];
 
 /** Sub-Bab C: keluarga bilangan, periksa dengan tambah, cari yang hilang; ditambah Bus Sekolah. */

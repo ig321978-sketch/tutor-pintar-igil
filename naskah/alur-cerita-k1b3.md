@@ -13,7 +13,7 @@ Cerita berakhir di Sub-Bab D, saat keluarga tiba di rumah Nenek.
 | C (Hubungan Penjumlahan dan Pengurangan) | Kondektur dan Penumpang | Kondektur harus memastikan banyak penumpang di gerbong tetap cocok saat ada yang naik dan turun; Abang membantu memeriksa | Tukar tempat pada penjumlahan, keluarga bilangan (dua penjumlahan dan dua pengurangan dari tiga bilangan), kebalikan: pengurangan diperiksa dengan penjumlahan, mencari bilangan yang hilang | Catatan kondektur cocok semua. Kereta mendekati desa Nenek (jembatan ke Sub-Bab D). |
 | D (Soal Cerita, akhir) | Tiba di Rumah Nenek | Di desa, Nenek dan tetangga bercerita dengan soal; oleh-oleh dibagi, dan semua harus dihitung tepat | Baca cerita, cari bilangan dan kata kunci, tulis kalimat pengurangan, jawab dengan kalimat lengkap, periksa dengan penjumlahan; pengurangan dua kali | Oleh-oleh terbagi tepat, semua berkumpul di rumah Nenek. Cerita bab berakhir. |
 
-## Sub-Bab A secara rinci (dikerjakan sekarang)
+## Sub-Bab A secara rinci (selesai)
 
 Story materi "Bekal untuk Nenek" (sekitar tiga menit, tanpa latihan):
 1. Sapaan: benda yang berkurang, benda yang tersisa, menulis kalimat pengurangan.
@@ -36,3 +36,15 @@ Simulasi "Kotak Bekal": Misi Perjalanan bagian 1 (bekal dengan angka lain dari S
 CPA: Misi Perjalanan bagian 2 sampai 10; tiap tahap 12 soal = Klik, Tulis di kanvas, Rekam suara x 4 metode
 (Metode IGIL: mula-mula, berkurang, sisa, dan kalimat; Take Away; Counting Back; Ten Frame). Pola visual tahap: kain jok kursi kereta (Concrete),
 papan jadwal stasiun (Pictorial), karcis kereta berlubang pons (Abstract). Abstract diakhiri Poin Penting.
+
+## Sub-Bab B secara rinci (selesai)
+
+Story materi "Pindah Kereta di Stasiun Besar": kereta lanjutan segera berangkat dan tidak ada waktu menghitung satu per satu;
+barang tujuh (lima koper, dua tas) dengan bagan pasangan dan dua kalimat 7 − 5 = 2 dan 7 − 2 = 5; troli empat bungkus 4 − 0 = 4 dan 4 − 4 = 0;
+papan peron sebagai garis bilangan, dari peron delapan mundur tiga ke peron lima (8 − 3 = 5); baris sepuluh kursi terisi tujuh, kosong tiga (pasangan sepuluh),
+tidak cukup untuk berempat, baris sebelah terisi enam sehingga kosong empat (10 − 6 = 4); semua duduk, catatan baru, kondektur datang (jembatan ke Sub-Bab C).
+Story metode global: Number Bond (Bagan Pasangan) karcis 9, 6, 3; Number Line (Garis Bilangan) stasiun 7 mundur 4; Make Ten (Pasangan Sepuluh) jendela 10 dan 8.
+Mind-map "Peta Peron" (papan pengumuman Masalah, tujuh jalur peron berurutan, kereta lanjutan Hasil); Infografis "Label Bagasi"; Simulasi "Kursi Kereta Lanjutan"
+(Misi Pindah Kereta bagian 1: atur kursi, lihat bagan, garis bilangan, dan dua kalimat, lalu catat). CPA: Misi Pindah Kereta bagian 2 sampai 10
+(Metode IGIL: dua kalimat, nol, dan sama; Number Bond; Number Line; Make Ten), pola visual lantai peron berubin pemandu, peta rute kereta, dan jendela kereta malam.
+Abstract diakhiri Poin Penting.
