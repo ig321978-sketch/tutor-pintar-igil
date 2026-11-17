@@ -37,3 +37,11 @@ turun sambil menghitung mundur (sepuluh sampai nol); kardus jatuh di anak tangga
 nomor yang hilang (tiga pada barisan maju, tujuh pada barisan mundur); kardus urut dan Mamah menemukan piring, gelas, dan balon pesta (jembatan ke Sub-Bab D).
 Story metode global: Number Track (Jalur Angka), Counting On (Hitung Lanjut), Counting Stick (Tongkat Hitung).
 Simulasi dan CPA: Misi Gudang Loteng bagian 1 (Simulasi tangga loteng) sampai bagian 10 (Abstract).
+
+## Sub-Bab D secara rinci (selesai, akhir cerita Bab 1)
+
+Story materi "Pesta Rumah Rapi": pesta untuk merayakan rumah yang rapi; lima kue dipisah ke dua piring (dua dan tiga, lalu empat dan satu);
+gelas tiga dan empat digabung menjadi tujuh; semua pasangan enam dengan balon (nol dan enam sampai tiga dan tiga); sepuluh kursi dibagi ke dua meja
+(tujuh dan tiga, delapan dan dua, lima dan lima); semua terbagi tanpa tertinggal; Mamah memeluk semua, Misi Rumah Rapi selesai.
+Story metode global: Number Bond (Ikatan Bilangan), Bar Model (Model Batang), Rekenrek (Rak Manik).
+Simulasi dan CPA: Misi Pesta bagian 1 (Simulasi meja pesta) sampai bagian 10 (Abstract), ditutup Poin Penting dan perayaan akhir bab.

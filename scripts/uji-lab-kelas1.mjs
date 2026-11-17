@@ -1204,13 +1204,13 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   cek(ada("C", T({ kardus: kardus((n) => ([4, 9].includes(n) ? "lantai" : n)) }), "c-susun") && !ada("C", T({}), "c-susun"), "bab1 C: susun kardus bernomor");
   cek(ada("C", T({ kardus: kardus((n) => n) }), "c-hilang") && !ada("C", T({ kardus: kardus((n) => (n === 9 ? "lantai" : n)) }), "c-hilang"), "bab1 C: lengkapi yang hilang");
   cek(ada("C", T({ bacaMundur: true }), "c-baca") && ada("C", T({ pos: 8 }), "c-sesudah") && !ada("C", L({ n: 9 }), "c-naik"), "bab1 C: bebas");
-  const D = (o) => L({ bingkai: true, garis: true, pasangan: true, ...o });
-  cek(ada("D", D({ n: 10, a: 6 }), "d-sepuluh") && !ada("D", D({ n: 10, a: 4 }), "d-sepuluh"), "bab1 D: 6 dan 4");
-  cek(ada("D", D({ n: 8, a: 4 }), "d-sama") && ada("D", D({ n: 7, a: 0 }), "d-nol"), "bab1 D: sama dan nol");
-  cek(!ada("D", D({ n: 8, a: 4, pasangan: false }), "d-sama"), "bab1 D: pasangan harus tampil");
-  cek(ada("D", D({ n: 7, a: 9 }), "d-nol") === false, "bab1 D: a dibatasi oleh batasPecah (a besar bukan nol)");
-  cek(ada("D", SEL("kasir"), "d-kasir") && ada("D", SEL("katak"), "d-ingat-katak"), "bab1 D: skenario dan katak");
-  cek(ada("D", D({ banding: true, n: 5, m: 5 }), "d-ingat-banding"), "bab1 D: ingat banding");
+  // Sub-Bab D memakai Meja Pesta (pesta-k1b1d): kue 6, gelas 8, kursi 9. Rincian di scripts/uji-pesta-k1b1d.mjs.
+  const PS = (o) => ({ alat: "pesta", barang: "kue", utuh: { kue: 6, gelas: 8, kursi: 9 }, dalam: { kue: 6, gelas: 8, kursi: 9 }, catat: { kue: [], gelas: [], kursi: [] }, ...o });
+  cek(ada("D", PS({ catat: { kue: ["6-0", "5-1", "2-4", "3-3"], gelas: [], kursi: [] } }), "d-kue") && !ada("D", PS({ catat: { kue: ["6-0", "0-6", "5-1", "1-5"], gelas: [], kursi: [] } }), "d-kue"), "bab1 D: semua pasangan kue tanpa urutan");
+  cek(ada("D", PS({ dalam: { kue: 6, gelas: 4, kursi: 9 } }), "d-gelas") && !ada("D", PS({}), "d-gelas"), "bab1 D: gelas sama banyak");
+  cek(ada("D", PS({ catat: { kue: [], gelas: ["0-8"], kursi: [] } }), "d-nol") && !ada("D", PS({ catat: { kue: ["2-4"], gelas: [], kursi: [] } }), "d-nol"), "bab1 D: pasangan nol");
+  cek(ada("D", PS({ catat: { kue: [], gelas: [], kursi: ["9-0", "8-1", "2-7", "6-3", "4-5"] } }), "d-kursi") && !ada("D", PS({ catat: { kue: [], gelas: [], kursi: ["9-0", "8-1", "2-7", "6-3"] } }), "d-kursi"), "bab1 D: semua pasangan kursi");
+  cek(ada("D", PS({ dalam: { kue: 6, gelas: 8, kursi: 0 } }), "d-teras") && ada("D", PS({ catat: { kue: ["2-4", "4-2"], gelas: [], kursi: [] } }), "d-balik") && !ada("D", PS({ catat: { kue: ["3-3"], gelas: [], kursi: [] } }), "d-balik") && !ada("D", L({ n: 5 }), "d-kue"), "bab1 D: bebas");
 }
 
 /* ---------------- Misi Bab 2 (hibrida) ---------------- */

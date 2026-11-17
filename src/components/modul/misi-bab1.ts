@@ -12,6 +12,7 @@ import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanKamar } from "./lemari-k1b1a/logika";
 import type { KeadaanHadiah } from "./banding-k1b1b/logika";
 import type { KeadaanLoteng } from "./loteng-k1b1c/logika";
+import type { KeadaanPesta } from "./pesta-k1b1d/logika";
 
 export type KeadaanBilangan = {
   alat: "bilangan";
@@ -27,10 +28,8 @@ export type KeadaanBilangan = {
   banding: boolean;
 };
 
-export type KeadaanBab1 = KeadaanBilangan | KeadaanSelesai | KeadaanKamar | KeadaanHadiah | KeadaanLoteng;
+export type KeadaanBab1 = KeadaanBilangan | KeadaanSelesai | KeadaanKamar | KeadaanHadiah | KeadaanLoteng | KeadaanPesta;
 
-const bil = (k: KeadaanBab1): k is KeadaanBilangan => k.alat === "bilangan";
-const selesai = (k: KeadaanBab1, id: string) => k.alat === "selesai" && k.id === id;
 
 /** Sub-Bab A: Misi Rumah Rapi bagian satu, kamar Kaka (Simulasi "Merapikan Lemari Mainan Igil"). Robot 6, yoyo 2, kelereng 8, pesawat 0. */
 const kamar = (k: KeadaanBab1): k is KeadaanKamar => k.alat === "kamar";
@@ -67,14 +66,16 @@ export const MISI_C: DefMisi<KeadaanBab1>[] = [
   { id: "c-sesudah", teks: "Berhenti di anak tangga sesudah tujuh.", wajib: false, cek: (k) => loteng(k) && k.pos === 8 },
 ];
 
-/** Sub-Bab D (sub-bab akhir): pasangan bilangan, sekaligus pencapaian misi bab ini. */
+/** Sub-Bab D (sub-bab akhir): Misi Pesta bagian satu, meja pesta (Simulasi "Pesta Rumah Rapi"). Kue enam, gelas delapan, kursi sembilan. */
+const pesta = (k: KeadaanBab1): k is KeadaanPesta => k.alat === "pesta";
+const unik = (daftar: string[]) => new Set(daftar.map((p) => p.split("-").map(Number).sort((x, y) => x - y).join("-"))).size;
 export const MISI_D: DefMisi<KeadaanBab1>[] = [
-  { id: "d-sepuluh", teks: "Pecah bilangan 10 menjadi 6 dan 4 dengan Bagian merah.", wajib: true, cek: (k) => bil(k) && k.pasangan && k.n === 10 && k.a === 6 },
-  { id: "d-sama", teks: "Bagi bilangan 8 menjadi dua bagian sama banyak: 4 dan 4.", wajib: true, cek: (k) => bil(k) && k.pasangan && k.n === 8 && k.a === 4 },
-  { id: "d-nol", teks: "Pecah bilangan 7 dengan Bagian merah 0. Lihat pasangannya.", wajib: true, cek: (k) => bil(k) && k.pasangan && k.n === 7 && k.a === 0 },
-  { id: "d-kasir", teks: "Selesaikan skenario Kasir Warung sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, "kasir") },
-  { id: "d-ingat-banding", teks: "Ingat Sub-Bab B: buat dua bilangan sama banyak.", wajib: false, cek: (k) => bil(k) && k.banding && k.n === k.m },
-  { id: "d-ingat-katak", teks: "Ingat Sub-Bab C: antar Katak sampai selesai.", wajib: false, cek: (k) => selesai(k, "katak") },
+  { id: "d-kue", teks: "Catat semua pasangan kue.", wajib: true, cek: (k) => pesta(k) && unik(k.catat.kue) >= Math.floor(k.utuh.kue / 2) + 1 },
+  { id: "d-gelas", teks: "Bagi gelas sama banyak ke dua meja.", wajib: true, cek: (k) => pesta(k) && k.dalam.gelas * 2 === k.utuh.gelas },
+  { id: "d-nol", teks: "Catat satu pasangan dengan nol.", wajib: true, cek: (k) => pesta(k) && Object.values(k.catat).some((d) => d.some((p) => p.startsWith("0-") || p.endsWith("-0"))) },
+  { id: "d-kursi", teks: "Catat semua pasangan kursi.", wajib: true, cek: (k) => pesta(k) && unik(k.catat.kursi) >= Math.floor(k.utuh.kursi / 2) + 1 },
+  { id: "d-teras", teks: "Pindahkan semua kursi ke meja teras.", wajib: false, cek: (k) => pesta(k) && k.dalam.kursi === 0 },
+  { id: "d-balik", teks: "Catat satu pasangan dan kebalikannya.", wajib: false, cek: (k) => pesta(k) && Object.values(k.catat).some((d) => d.some((p) => { const [x, y] = p.split("-"); return x !== y && d.includes(`${y}-${x}`); })) },
 ];
 
 export const daftarMisiBab1 = (sub: string): DefMisi<KeadaanBab1>[] => (sub === "B" ? MISI_B : sub === "C" ? MISI_C : sub === "D" ? MISI_D : MISI_A);

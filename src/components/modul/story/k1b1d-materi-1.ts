@@ -1,143 +1,89 @@
-import type { AdeganStory } from "./logika-story";
-import { W, bulat, emo, garis, ikatan, judul, kartu, piring, tata, teks } from "./k1b1d-gambar";
-import { bersih, hapus, hitungAksi, idx, k, redamkan, sorotkan, tambah, ubah } from "./k1b1d-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, deret, deretEmo, emo, ikatan, judul, kotak, meja, teks } from "./k1b1d-gambar";
+import { hapus, k, sorotkan, tambah, ubah, urutKata } from "./k1b1d-bantu";
+import { hitungMainan } from "./k1b1a-bantu";
 
-const OWL = "\u{1F989}";
-const DONAT = "\u{1F369}";
-const BOLU = "\u{1F370}";
+/*
+ * Cerita orisinal IGIL "Pesta Rumah Rapi" (Kelas 1 Bab 1 Sub-Bab D, pasangan bilangan), akhir cerita Misi Rumah Rapi
+ * sesudah "Tangga Gudang Loteng". Masalah: kue, gelas, dan kursi pesta harus dibagi ke dua meja tanpa ada yang tertinggal.
+ * Penyelesaian: memisahkan menjadi dua bagian, menggabungkan dua bagian menjadi utuh, mencari semua pasangan, pasangan sepuluh.
+ */
 
-/* ------------------------------ 1. Cerita di taman ------------------------------ */
-const SUARA_C1 = "Pagi ini Malosi, Kira, Upe, dan Wei bermain di taman bersama Igil, si burung hantu. Mereka membawa kue, bola, dan kelereng.";
-const SUARA_C2 = "Kira membawa kue di piring besar. Upe dan Wei membawa bola. Malosi membawa kelereng. Banyak sekali benda yang bisa kita bagi.";
-const SUARA_C3 = "Igil bertanya, bagaimana kalau satu bilangan kita pisahkan menjadi dua bagian? Lalu bagaimana kalau dua bagian kita gabungkan kembali menjadi satu yang utuh?";
-const SUARA_C4 = "Hari ini kita belajar memisahkan, menggabungkan, dan mencari pasangan bilangan. Kita memakai bilangan sampai sepuluh saja.";
-const SUARA_C5 = "Pelan-pelan saja, ya. Kita mulai dari benda yang bisa kita pegang. Ayo ikut Kira dan kuenya.";
+/* ------------------------------ 1. Pesta Rumah Rapi ------------------------------ */
+const SUARA_P1 = "Hari ini Pesta Rumah Rapi! Rumah sudah rapi dari kamar, rak, sampai loteng.";
+const SUARA_P2 = "Mamah menyiapkan dua meja, meja dalam dan meja teras. Tamunya Nenek dan para tetangga.";
+const SUARA_P3 = "Masalahnya, kue, gelas, dan kursi harus dibagi ke dua meja tanpa ada yang tertinggal.";
 
-const ANAK: [string, number][] = [["Malosi", 40], ["Kira", 95], ["Upe", 150], ["Wei", 205]];
-
-export const ADEGAN_CERITA: AdeganStory = {
-  id: "cerita-taman",
-  judul: "Malosi, Kira, Upe, dan Wei di taman",
-  sumber: "Materi: cerita di taman",
-  latar: "#ECFCCB",
+export const ADEGAN_PESTA: AdeganStory = {
+  id: "pesta",
+  judul: "Pesta Rumah Rapi",
+  sumber: "Materi: masalah membagi ke dua meja",
+  latar: "#FEF3C7",
   ketukan: [
-    k(
-      SUARA_C1,
-      tambah(0, judul("Di taman bermain"), garis("tanah", 14, 142, 272, 0, W.hijau, 3)),
-      ...ANAK.map(([nama, x]) => tambah(nama, emo(`a-${nama}`, x, 112, "\u{1F9D2}", 30), teks(`n-${nama}`, x, 132, nama, 8.6))),
-      tambah("Igil,", emo("a-Igil", 262, 112, OWL, 30), teks("n-Igil", 262, 132, "Igil", 8.6, W.ungu)),
-    ),
-    k(
-      SUARA_C2,
-      tambah("Kira", emo("bk", 95, 90, DONAT, 24)),
-      tambah("bola.", emo("bu", 150, 90, "⚽", 24), emo("bw", 205, 90, "⚽", 24)),
-      tambah("kelereng.", bulat("bm", 40, 80, 10, "#F472B6", W.biru)),
-      tambah("Banyak", teks("bn", 150, 60, "Banyak benda untuk dibagi", 9, W.ungu)),
-    ),
-    k(
-      SUARA_C3,
-      bersih(0),
-      tambah(0, judul("Pisah dan gabung"), emo("ig3", 150, 176, OWL, 30)),
-      tambah("pisahkan", ...kartu("cp", 40, 40, 220, 30, W.langit, ["satu bilangan jadi dua bagian"], 9.4)),
-      tambah("gabungkan", ...kartu("cg", 40, 90, 220, 30, W.pink, ["dua bagian jadi satu utuh"], 9.4)),
-    ),
-    k(
-      SUARA_C4,
-      bersih(0),
-      tambah(0, judul("Hari ini kita belajar")),
-      tambah("memisahkan,", ...kartu("h1", 20, 34, 260, 30, W.hijauMuda, ["memisahkan satu bilangan"], 9.4)),
-      tambah("menggabungkan,", ...kartu("h2", 20, 74, 260, 30, W.langit, ["menggabungkan dua bagian"], 9.4)),
-      tambah("mencari", ...kartu("h3", 20, 114, 260, 30, W.krem, ["mencari pasangan bilangan"], 9.4)),
-      tambah("sepuluh", ...kartu("h4", 70, 156, 160, 28, W.emas, ["bilangan sampai 10"], 10)),
-    ),
-    k(
-      SUARA_C5,
-      bersih(0),
-      tambah(0, judul("Mulai dari benda")),
-      tambah("benda", emo("pg", 100, 120, "✋", 52)),
-      tambah("kuenya.", emo("pk", 200, 120, DONAT, 52)),
-    ),
+    k(SUARA_P1, tambah(0, judul("Pesta Rumah Rapi")), tambah("Pesta", emo("b1", 40, 60, E.balon, 30), emo("b2", 260, 60, E.balon, 30)), tambah("loteng.", emo("kf", 150, 70, E.konfeti, 34))),
+    k(SUARA_P2, tambah("dalam", ...meja("md", 20, 140, 110, "Meja dalam")), tambah("teras.", ...meja("mt", 170, 140, 110, "Meja teras")), tambah("Nenek", emo("nn", 150, 120, E.nenek, 24))),
+    k(SUARA_P3, hapus(0, "kf", "nn"), tambah("kue,", emo("ik", 104, 100, E.kue, 26)), tambah("gelas,", emo("ig", 150, 100, E.gelas, 26)), tambah("kursi", emo("ir", 196, 100, E.kursi, 26)), tambah("tertinggal.", teks("tq", 150, 66, "dibagi ke dua meja?", 10, W.merah))),
   ],
 };
 
-/* ------------------------------ 2. Lima kue Kira dipisahkan ------------------------------ */
-const SUARA_K1 = "Kira mempunyai lima kue di piring besar. Ada dua donat cokelat dan tiga kue bolu kuning.";
-const SUARA_K2 = "Kita hitung dulu semuanya. Satu, dua, tiga, empat, lima.";
-const SUARA_K3 = "Lima adalah bilangan yang utuh. Semua kue masih berkumpul di satu piring besar.";
-const SUARA_K4 = "Sekarang Kira memisahkan kuenya ke dua piring kecil. Donat cokelat pindah ke piring kiri.";
-const SUARA_K5 = "Kue bolu kuning pindah ke piring kanan. Piring kiri berisi dua kue, dan piring kanan berisi tiga kue.";
-const SUARA_K6 = "Lima dipisahkan menjadi dua dan tiga. Dua adalah satu bagian, dan tiga adalah bagian yang lain.";
-const SUARA_K7 = "Kalau dua bagian digabung lagi, kuenya kembali menjadi lima. Tidak ada kue yang hilang.";
-const P5 = tata(5, 98);
-const kue = (i: number) => emo(`kue${i}`, P5[i].x, P5[i].y, i < 2 ? DONAT : BOLU, 22, { z: 1 });
-const IDK = [0, 1, 2, 3, 4].map((i) => `kue${i}`);
-const LABEL_K = [0, 1, 2, 3, 4].map((i) => `kuen${i}`);
+/* ------------------------------ 2. Memisahkan lima kue ------------------------------ */
+const SUARA_K1 = "Ada lima kue di nampan. Kaka membagi ke dua piring, dua kue dan tiga kue.";
+const SUARA_K2 = "Dua dan tiga adalah dua bagian. Kalau digabung lagi, utuhnya tetap lima.";
+const SUARA_K3 = "Lima juga bisa dibagi empat dan satu. Bagiannya berubah, tetapi utuhnya tetap lima.";
+const NAMPAN = deret(5, 90, 30, 176);
+const KIRI = deret(4, 24, 26, 176);
+const KANAN = deret(3, 200, 26, 176);
+const piring = (id: string, x: number): Obj => kotak(id, x, 164, 110, 22, W.putih, W.biru, { rx: 11, tebal: 2, z: -1 });
 
 export const ADEGAN_KUE: AdeganStory = {
-  id: "kue-kira",
-  judul: "Kira memisahkan lima kue",
-  sumber: "Materi: lima kue Kira",
-  latar: "#FFF7ED",
+  id: "pisah-kue",
+  judul: "Memisahkan lima kue",
+  sumber: "Materi: memisahkan menjadi dua bagian",
+  latar: "#FDF2F8",
   ketukan: [
     k(
       SUARA_K1,
-      tambah(0, judul("Lima kue Kira")),
-      tambah("piring", { id: "pb", t: "kotak", x: 16, y: 62, w: 268, h: 52, warna: W.putih, garis: W.coklat, rx: 24, tebal: 2.4, z: -1 }),
-      tambah("dua", ...[0, 1].map(kue)),
-      tambah("tiga", ...[2, 3, 4].map(kue)),
+      tambah(0, judul("Lima kue, dua piring"), kotak("np", 74, 162, 152, 26, "#FDE68A", W.coklat, { rx: 6, z: -1 }), ...deretEmo(E.kue, "ku", NAMPAN, 22)),
+      tambah("piring,", piring("pa", 10), piring("pb", 180)),
+      hapus("piring,", "np"),
+      ubah("dua@2", { id: "ku0", ...KIRI[0] }, { id: "ku1", ...KIRI[1] }),
+      ubah("tiga", { id: "ku2", ...KANAN[0] }, { id: "ku3", ...KANAN[1] }, { id: "ku4", ...KANAN[2] }),
     ),
-    k(SUARA_K2, ...hitungAksi(SUARA_K2, "kue", P5, "semuanya.")),
-    k(SUARA_K3, sorotkan("utuh.", ...IDK), tambah(idx(SUARA_K3, "piring"), ...kartu("ut", 60, 146, 180, 30, W.krem, ["lima kue: yang utuh"], 9.4))),
+    k(SUARA_K2, tambah("bagian.", ...ikatan("ik", 150, 40, "?", "2", "3")), ubah("lima.", { id: "ik-tu", isi: "5", warna: W.biru }), sorotkan("utuhnya", "ik-u")),
     k(
-      SUARA_K4,
-      hapus(0, "tg", "ut-k", "ut-t0", "pb", ...LABEL_K),
-      tambah("memisahkan", piring("pl", 80, 148, 38, { z: -1 }), piring("pr", 220, 148, 38, { z: -1 })),
-      ubah(idx(SUARA_K4, "Donat"), { id: "kue0", x: 66, y: 152 }, { id: "kue1", x: 94, y: 152 }),
-    ),
-    k(
-      SUARA_K5,
-      ubah("bolu", { id: "kue2", x: 194, y: 152 }, { id: "kue3", x: 220, y: 152 }, { id: "kue4", x: 246, y: 152 }),
-      tambah(idx(SUARA_K5, "dua"), teks("l2", 80, 196, "2", 16, W.merah)),
-      tambah(idx(SUARA_K5, "tiga"), teks("l3", 220, 196, "3", 16, W.merah)),
-    ),
-    k(SUARA_K6, tambah("dipisahkan", ...kartu("k6", 70, 34, 160, 28, W.emas, ["5 jadi 2 dan 3"], 11)), sorotkan("bagian,", "pl", "pr")),
-    k(
-      SUARA_K7,
-      ubah("digabung", ...P5.map((p, i) => ({ id: `kue${i}`, x: p.x, y: 94 })), { id: "k6-t0", isi: "2 dan 3 jadi 5" }),
-      tambah("hilang.", emo("ow", 262, 182, OWL, 28)),
+      SUARA_K3,
+      ubah(0, { id: "ik-u", sorot: false }),
+      ubah("empat", { id: "ku2", ...KIRI[2] }, { id: "ku3", ...KIRI[3] }, { id: "ku4", ...KANAN[1] }),
+      ubah("satu.", { id: "ik-ta", isi: "4" }, { id: "ik-tb", isi: "1" }),
+      sorotkan("tetap", "ik-u"),
     ),
   ],
 };
 
-/* ------------------------------ 3. Bagian dan utuh ------------------------------ */
-const SUARA_B1 = "Perhatikan lingkaran ini. Lingkaran di atas menunjukkan bilangan yang utuh, yaitu semua benda yang berkumpul jadi satu.";
-const SUARA_B2 = "Dua lingkaran di bawah menunjukkan bagian. Ada bagian yang satu, dan ada bagian yang lain.";
-const SUARA_B3 = "Lima kue tadi adalah yang utuh. Dua donat adalah satu bagian, dan tiga kue bolu adalah bagian yang lain.";
-const SUARA_B4 = "Kalau dua bagian digabung, kita mendapat yang utuh lagi. Dua dan tiga digabung menjadi lima.";
-const SUARA_B5 = "Kalau yang utuh dipisah, kita mendapat dua bagian. Lima dipisahkan menjadi dua dan tiga.";
-const SUARA_B6 = "Ingat ya, dua bagian digabung menjadi satu utuh. Satu utuh dipisah menjadi dua bagian.";
+/* ------------------------------ 3. Menggabungkan gelas ------------------------------ */
+const SUARA_G1 = "Abang menaruh tiga gelas di meja dalam dan empat gelas di meja teras.";
+const SUARA_G2 = "Lalu semua gelas digabung di satu nampan. Satu, dua, tiga, empat, lima, enam, tujuh.";
+const SUARA_G3 = "Tiga dan empat digabung menjadi tujuh. Tiga dan empat adalah pasangan dari tujuh.";
+const GELAS_AWAL = [...deret(3, 40, 26, 128), ...deret(4, 186, 26, 128)];
+const GELAS_GABUNG = deret(7, 66, 28, 104);
 
-export const ADEGAN_BAGIAN: AdeganStory = {
-  id: "bagian-utuh",
-  judul: "Bagian dan utuh",
-  sumber: "Materi: bagian dan utuh",
-  latar: "#F0FDFA",
+export const ADEGAN_GELAS: AdeganStory = {
+  id: "gabung-gelas",
+  judul: "Menggabungkan gelas",
+  sumber: "Materi: menggabungkan dua bagian",
+  latar: "#EFF6FF",
   ketukan: [
-    k(SUARA_B1, tambah(0, judul("Utuh dan bagian"), ...ikatan("ik", 150, 62, ["5", "2", "3"], ["u"])), tambah("utuh,", teks("lu", 150, 40, "utuh", 10, W.ungu))),
+    k(SUARA_G1, tambah(0, judul("Gelas di dua meja"), ...meja("md", 14, 136, 120, "Meja dalam"), ...meja("mt", 166, 136, 120, "Meja teras")), tambah("tiga", ...deretEmo(E.gelas, "gl", GELAS_AWAL.slice(0, 3), 22)), tambah("empat", ...GELAS_AWAL.slice(3).map((p, i) => emo(`gl${3 + i}`, p.x, p.y, E.gelas, 22)))),
     k(
-      SUARA_B2,
-      tambah("bawah", ...ikatan("ik", 150, 62, ["5", "2", "3"], ["a", "b"])),
-      tambah(idx(SUARA_B2, "bagian"), teks("la", 102, 152, "bagian", 10, W.ungu)),
-      tambah(idx(SUARA_B2, "lain"), teks("lb", 198, 152, "bagian", 10, W.ungu)),
+      SUARA_G2,
+      hapus(0, "md", "md-k1", "md-k2", "md-n", "mt", "mt-k1", "mt-k2", "mt-n"),
+      tambah("nampan.", kotak("np", 46, 90, 208, 22, "#FDE68A", W.coklat, { rx: 6, z: -1 })),
+      ubah("digabung", ...GELAS_GABUNG.map((p, i) => ({ id: `gl${i}`, x: p.x, y: p.y }))),
+      ...hitungMainan(SUARA_G2, "gl", GELAS_GABUNG, 22, "nampan."),
     ),
-    k(
-      SUARA_B3,
-      sorotkan(idx(SUARA_B3, "utuh"), "ik-u"),
-      tambah("donat", teks("ea", 102, 182, DONAT + DONAT, 18)),
-      tambah("bolu", teks("eb", 198, 182, BOLU + BOLU + BOLU, 18)),
-    ),
-    k(SUARA_B4, redamkan(0, "ik-u"), tambah("digabung,", ...kartu("bg", 8, 40, 116, 26, W.hijauMuda, ["2 dan 3 jadi 5"], 9.4)), sorotkan("utuh", "ik-u")),
-    k(SUARA_B5, tambah("dipisah,", ...kartu("bp", 176, 40, 116, 26, W.pink, ["5 jadi 2 dan 3"], 9.4)), sorotkan("dua", "ik-a", "ik-b")),
-    k(SUARA_B6, tambah("Ingat", emo("ow", 40, 112, OWL, 30)), tambah("bagian.", emo("ow2", 262, 112, "✅", 30))),
+    k(SUARA_G3, hapus(0, "tg"), tambah("tujuh.", ...ikatan("ik", 150, 140, "7", "3", "4", 60)), sorotkan("pasangan", "ik-a", "ik-b")),
   ],
 };
+
+/** Ekspor untuk uji: letak urutan kata gelas. */
+export const POS_GELAS = urutKata(SUARA_G2, ["Satu,", "dua,", "tiga,", "empat,", "lima,", "enam,", "tujuh."]);
