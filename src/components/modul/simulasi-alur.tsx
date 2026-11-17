@@ -149,13 +149,13 @@ export default function SimulasiAlur({
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <span className="rounded-full bg-[#1C01A5] px-3 py-1 text-xs font-black uppercase text-[#FFE566]">LABORATORIUM SIMULASI • {judulBab}</span>
-          <p className="mt-1 text-sm font-bold text-[#1C01A5]/80">Bermain bebas. Tidak ada nilai dan tidak ada salah. Ayo bereksperimen!</p>
+          <p className="mt-1 text-sm font-bold text-[#1C01A5]/80">Bermain bebas. Tidak ada yang salah. Ayo bereksperimen!</p>
         </div>
         <TombolSuaraGuru
           label="Dengarkan petunjuk simulasi"
           onClick={() =>
             speakGuru(
-              "Selamat datang di Laboratorium Simulasi. Di sini kamu boleh bermain bebas. Geser, ketuk, dan tekan plus atau minus. Lihat apa yang berubah. Tidak ada nilai dan tidak ada yang salah."
+              "Selamat datang di Laboratorium Simulasi. Di sini kamu boleh bermain bebas. Geser, ketuk, dan tekan plus atau minus. Lihat apa yang berubah. Tidak ada yang salah."
             )
           }
         />

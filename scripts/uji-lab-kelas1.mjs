@@ -1223,30 +1223,47 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   cek(ada("C", Tu({ tutup: true, lapor: semuaC, periksa: ["sosis", "jagung", "permen", "donat"] }), "c-tutup") && !ada("C", Tu({ tutup: false, lapor: semuaC, periksa: ["sosis", "jagung", "permen", "donat"] }), "c-tutup") && !ada("C", Tu({ tutup: true, lapor: semuaC, periksa: ["sosis"] }), "c-tutup") && !ada("C", Tu({ tutup: true, lapor: { sosis: ["mundur"] }, periksa: ["sosis"] }), "c-tutup"), "bab6 C: tutup pasar malam setelah semua dilaporkan dan diperiksa");
   cek(X6.selisihPasang(Bj({ jumlah: [3, 8, 5], pas: 2 })) === 3, "bab6: selisihPasang");
 }
-/* ---------------- Misi Bab 8 (hibrida) ---------------- */
+/* ---------------- Misi Bab 8 (Perpustakaan Keliling) ---------------- */
 {
   const kosong = new Set();
   const X8 = await import("../src/components/modul/misi-bab8.ts");
-  const Da = (o) => ({ alat: "data", jumlah: [5, 3, 4, 2], rak: [0, 0, 0, 0], daftar: true, turus: true, tabel: true, arahTabel: "menurun", ...o });
-  const Di = (o) => ({ alat: "diagram", tema: "sayur", jumlah: [3, 4, 3, 2], arah: "tegak", lambang: "benda", tabel: true, kalimat: true, arahTabel: "menurun", banding: [], ...o });
-  const SEL = (id) => ({ alat: "selesai", id });
-  const awalSemua = [Da({}), Di({}), Di({ tema: "mainan", jumlah: [4, 3, 2, 5] }), Di({ tema: "buah", jumlah: [6, 3, 4, 5] }), Di({ tema: "hewan", jumlah: [4, 2, 5] })];
-  for (const sub of ["A", "B"]) {
-    const daftar = X8.daftarMisiBab8(sub);
-    for (const k of awalSemua) cek(M0.misiBaru(daftar, k, kosong).length === 0, `bab8 ${sub}: keadaan awal ${k.alat}${k.tema ?? ""} tidak memenuhi misi`);
+  const SEL8 = (id) => ({ alat: "selesai", id });
+  // BAGIAN A (Meja Pilah: sepuluh benda, pensil empat, gunting dua, klip empat; rincian di scripts/uji-pustaka-k1b8a.mjs)
+  {
+    const daftarA = X8.daftarMisiBab8("A");
+    const MJ = (o = {}) => ({ alat: "meja", mode: "pilah", tempat: Array(10).fill(-1), terpilah: false, dihitung: [], datar: false, pernahDatar: false, banding: [], bandingTuntas: 0, samaTuntas: 0, jumlahDilihat: false, ...o });
+    const adaA = (k, id) => M0.misiBaru(daftarA, k, kosong).includes(id);
+    cek(daftarA === X8.MISI_A && daftarA.filter((m) => m.wajib).length === 4 && daftarA.filter((m) => !m.wajib).length === 2 && new Set(daftarA.map((m) => m.id)).size === 6 && daftarA.every((m) => m.id.startsWith("a-")), "bab8 A: empat wajib, dua bebas, id unik");
+    cek(daftarA.every((m) => !/\d/.test(m.teks) && m.teks.length >= 10 && m.teks.length <= 120 && !/\b(buku|teman|kelompok|kelas|skor|nilai|soal|tebak)\b/i.test(m.teks)), "bab8 A: teks misi tanpa digit, panjang cukup, bersih");
+    cek(M0.misiBaru(daftarA, MJ(), kosong).length === 0 && M0.misiBaru(daftarA, SEL8("x"), kosong).length === 0 && daftarA.every((m) => !m.cek({ alat: "survei" })), "bab8 A: keadaan awal dan alat lain tidak memenuhi misi");
+    cek(adaA(MJ({ terpilah: true }), "a-pilah") && !adaA(MJ({ tempat: Array(10).fill(0) }), "a-pilah"), "bab8 A: pilah semua benda");
+    cek(!adaA(MJ({ dihitung: [0, 1] }), "a-turus") && adaA(MJ({ dihitung: [0, 1, 2] }), "a-turus"), "bab8 A: turus di tiga rak");
+    cek(!adaA(MJ({ pernahDatar: true }), "a-tabel") && !adaA(MJ({ terpilah: true }), "a-tabel") && adaA(MJ({ terpilah: true, pernahDatar: true }), "a-tabel"), "bab8 A: tabel diputar mendatar setelah rak rapi");
+    cek(!adaA(MJ({ banding: [0, 1] }), "a-banding") && adaA(MJ({ bandingTuntas: 1 }), "a-banding"), "bab8 A: banding hanya dihitung setelah rak rapi");
+    cek(adaA(MJ({ samaTuntas: 1 }), "a-sama") && !adaA(MJ({ bandingTuntas: 1 }), "a-sama") && adaA(MJ({ terpilah: true, jumlahDilihat: true }), "a-jumlah") && !adaA(MJ({ jumlahDilihat: true }), "a-jumlah"), "bab8 A: tantangan bebas");
+    const tampA = daftarA.map(({ id, teks, wajib }) => ({ id, teks, wajib }));
+    const wajibA = tampA.filter((m) => m.wajib).map((m) => m.id);
+    cek(M0.wajibSelesai(tampA, new Set(wajibA)) && !M0.wajibSelesai(tampA, new Set(wajibA.slice(1))), "bab8 A: gerbang misi");
   }
-  ujiStruktur("bab8", X8.daftarMisiBab8, ["A", "B"], { A: Da({}), B: Di({}) });
-  const ada = (sub, k, id) => M0.misiBaru(X8.daftarMisiBab8(sub), k, kosong).includes(id);
-  const rapi = (o) => Da({ rak: o.jumlah ?? [5, 3, 4, 2], ...o });
-  cek(ada("A", rapi({}), "a-rapi") && !ada("A", Da({ rak: [5, 3, 4, 1] }), "a-rapi") && !ada("A", Da({ jumlah: [0, 0, 0, 0] }), "a-rapi"), "bab8 A: rapi");
-  cek(ada("A", rapi({ jumlah: [3, 3, 5, 2] }), "a-boneka") && !ada("A", rapi({ jumlah: [5, 3, 4, 2] }), "a-boneka") && !ada("A", rapi({ jumlah: [3, 3, 5, 5] }), "a-boneka"), "bab8 A: boneka paling banyak sendirian");
-  cek(ada("A", rapi({ jumlah: [3, 3, 3, 3] }), "a-sama") && ada("A", rapi({ jumlah: [3, 0, 3, 3] }), "a-sama") && !ada("A", rapi({ jumlah: [3, 0, 0, 0] }), "a-sama") && !ada("A", rapi({ jumlah: [3, 3, 3, 2] }), "a-sama"), "bab8 A: semua sama");
-  cek(ada("A", rapi({ arahTabel: "mendatar" }), "a-tabel") && !ada("A", rapi({ arahTabel: "mendatar", tabel: false }), "a-tabel") && !ada("A", rapi({}), "a-tabel"), "bab8 A: tabel mendatar");
-  cek(ada("A", rapi({ jumlah: [5, 3, 4, 0] }), "a-bola") && !ada("A", Da({ jumlah: [5, 3, 4, 0] }), "a-bola") && ada("A", rapi({ jumlah: [4, 2, 3, 1] }), "a-sepuluh") && !ada("A", rapi({}), "a-sepuluh"), "bab8 A: bebas");
-  cek(ada("B", Di({ jumlah: [4, 4, 2, 1] }), "b-kembar") && !ada("B", Di({ jumlah: [3, 4, 3, 2] }), "b-kembar") && !ada("B", Di({ jumlah: [3, 3, 3, 3] }), "b-kembar") && ada("B", Di({ jumlah: [3, 3, 3, 3] }), "b-sama"), "bab8 B: kembar dan sama");
-  cek(ada("B", Di({ banding: [0, 1] }), "b-banding") && !ada("B", Di({ banding: [0, 2] }), "b-banding") && !ada("B", Di({ banding: [0] }), "b-banding"), "bab8 B: banding");
-  cek(ada("B", Di({ arah: "mendatar", lambang: "bulat" }), "b-mendatar") && !ada("B", Di({ arah: "mendatar" }), "b-mendatar") && ada("B", SEL("mesin"), "b-mesin") && ada("B", SEL("skenario"), "b-skenario") && ada("B", rapi({}), "b-ingat"), "bab8 B: mesin, skenario, ingat");
-  cek(X8.semuaSamaBanyak([2, 0, 2]) && !X8.semuaSamaBanyak([2]) && !X8.semuaSamaBanyak([2, 3]), "bab8: semuaSamaBanyak");
+  // BAGIAN B (Papan Survei: dua belas anak, kucing enam, ayam dua, ikan satu, burung tiga)
+  {
+    const daftarB = X8.daftarMisiBab8("B");
+    const SV = (o = {}) => ({ alat: "survei", mode: "tanya", ditanya: 0, menunggu: false, dobelDicoba: 0, gambar: [0, 0, 0, 0], rapat: true, renggangDicoba: 0, mendatar: false, mendatarDilihat: false, bandingA: null, bandingB: null, bandingTuntas: 0, lapor: false, ...o });
+    const adaB = (k, id) => M0.misiBaru(daftarB, k, kosong).includes(id);
+    cek(daftarB === X8.MISI_B && daftarB.filter((m) => m.wajib).length === 4 && daftarB.filter((m) => !m.wajib).length === 2 && new Set(daftarB.map((m) => m.id)).size === 6, "bab8 B: empat wajib, dua bebas, id unik");
+    cek(daftarB.every((m) => !/\d/.test(m.teks) && m.teks.length >= 10 && m.teks.length <= 120 && !/\b(buku|teman|kelompok|kelas|skor|nilai|soal|tebak)\b/i.test(m.teks)), "bab8 B: teks misi tanpa digit, panjang cukup, bersih");
+    cek(M0.misiBaru(daftarB, SV(), kosong).length === 0 && M0.misiBaru(daftarB, SEL8("x"), kosong).length === 0, "bab8 B: keadaan awal tidak memenuhi misi");
+    sama([X8.ANAK_SURVEI_B, X8.TABEL_SURVEI_B], [12, [6, 2, 1, 3]], "bab8 B: dua belas anak dan tabel tetap");
+    cek(adaB(SV({ ditanya: 11 }), "b-tanya") === false && adaB(SV({ ditanya: 12 }), "b-tanya"), "bab8 B: semua anak ditanya");
+    cek(!adaB(SV({ ditanya: 11, gambar: [6, 2, 1, 3] }), "b-diagram") && !adaB(SV({ ditanya: 12, gambar: [6, 2, 1, 2] }), "b-diagram") && !adaB(SV({ ditanya: 12, gambar: [6, 2, 1, 3], rapat: false }), "b-diagram") && adaB(SV({ ditanya: 12, gambar: [6, 2, 1, 3] }), "b-diagram"), "bab8 B: diagram sama dengan tabel dan rapat");
+    cek(!adaB(SV({ bandingTuntas: 0, bandingA: 0, bandingB: 3 }), "b-banding") && adaB(SV({ bandingTuntas: 1 }), "b-banding"), "bab8 B: bandingkan dua jenis berbeda");
+    cek(!adaB(SV({ ditanya: 12, gambar: [6, 2, 1, 3] }), "b-lapor") && adaB(SV({ lapor: true }), "b-lapor") && !adaB(SV({ lapor: true }), "b-dobel"), "bab8 B: lapor penutup bab");
+    cek(adaB(SV({ dobelDicoba: 1 }), "b-dobel") && !adaB(SV(), "b-dobel") && adaB(SV({ mendatarDilihat: true }), "b-mendatar") && !adaB(SV({ mendatar: true }), "b-mendatar"), "bab8 B: tantangan bebas");
+    const tamp = daftarB.map(({ id, teks, wajib }) => ({ id, teks, wajib }));
+    const wajibB = tamp.filter((m) => m.wajib).map((m) => m.id);
+    cek(M0.wajibSelesai(tamp, new Set(wajibB)) && !M0.wajibSelesai(tamp, new Set(wajibB.slice(1))), "bab8 B: gerbang misi");
+  }
+  cek(X8.daftarMisiBab8("A").length >= 0 && SEL8("x").alat === "selesai", "bab8: kerangka");
 }
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

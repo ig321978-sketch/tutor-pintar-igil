@@ -85,6 +85,9 @@ const FRASA_DASAR: ReadonlyArray<readonly [string, string]> = [
   ["unit iteration", "yu nit i te rei syen"],
   ["estimate and check", "es ti meit en cek"],
   ["grid measuring", "grid me syu ring"],
+  ["block graph", "blok graf"],
+  ["dot plot", "dot plot"],
+  ["bar graph", "bar graf"],
   ["direct comparison", "di rekt kom pe ri sen"],
   ["indirect comparison", "in di rekt kom pe ri sen"],
   ["seriation", "si ri ei syen"],
@@ -94,6 +97,8 @@ const FRASA_DASAR: ReadonlyArray<readonly [string, string]> = [
   ["number line jumps", "nam ber lain jamps"],
   ["estimation jar", "es ti mei syen jar"],
   ["bundling sticks", "ban dling stiks"],
+  ["sorting hoops", "sor ting hups"],
+  ["frequency table", "fri kuen si tei bel"],
 ];
 const FRASA = [...FRASA_DASAR].sort((a, b) => b[0].length - a[0].length);
 

@@ -1,149 +1,102 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { EMO_BURUNG, EMO_KELINCI, EMO_KUCING, OWL, W, angkaMendatar, angkaMenurun, bendaDi, emo, jumlahG, judul, kartu, namaG, tabelMendatar, tabelMenurun, teks, type Geo } from "./k1b8A-gambar";
-import { gilir, hapus, idx, k, pilihKata, redamkan, sorotkan, tambah } from "./k1b8A-bantu";
+import type { AdeganStory } from "./logika-story";
+import { BANYAK, E, JENIS, URUT_JENIS, W, WK, emo, jam, judul, kapur, kartu, kotakCerita, mobil, orang, pakPos, papan, rak, tanah, tengahPetak } from "./k1b8A-gambar";
+import { bersih, hapus, k, tambah, ubah } from "./k1b8A-bantu";
 
-/* ------------------------------ 8. Tabel menurun: bola Upe ------------------------------ */
-const GM: Geo = { x: 30, y: 46, w1: 120, w2: 100, rh: 26, u: 10 };
-const WARNA = ["Merah", "Kuning", "Hijau"];
-const BANYAK = [7, 4, 6];
-const NAMA_TABEL = "Tabel Bola Upe";
+/*
+ * Cerita orisinal IGIL "Kotak Cerita Berantakan" (Kelas 1 Bab 8 Sub-Bab A). Naskah suara dari naskah/story-naskah-k1b8a.md.
+ * Bagian ini: jumlah semuanya dan penutup yang menjembatani ke Sub-Bab B.
+ */
 
-const SUARA_M1 = "Data bola Upe bisa kita sajikan dalam tabel. Tabel membuat data tersusun rapi.";
-const SUARA_M2 = "Bagian paling atas adalah judul tabel. Judul memberi tahu kita tentang apa data itu.";
-const SUARA_M3 = "Baris berjalan ke samping. Ini baris merah. Baris itu berisi warna merah dan banyaknya.";
-const SUARA_M4 = "Kolom berjalan ke bawah. Ini kolom warna. Kolom itu berisi merah, kuning, dan hijau.";
-const SUARA_M5 = "Sekarang kita isi tabelnya. Merah ada tujuh. Kuning ada empat. Hijau ada enam.";
-const SUARA_M6 = "Baca tabelnya. Judulnya Tabel Bola Upe. Yang didata adalah warna bola. Banyaknya ada di kolom banyak.";
-const SUARA_M7 = "Tabel ini bentuknya menurun, karena nama warna ada di bawah satu sama lain.";
+/* ------------------------------ 8. Jumlah semuanya ------------------------------ */
+const SUARA_J1 = "Pak Pos bertanya lagi, semuanya ada berapa kotak?";
+const SUARA_J2 = "Enam tambah empat sama dengan sepuluh. Sepuluh tambah lima sama dengan lima belas. Lima belas tambah tiga sama dengan delapan belas.";
+const SUARA_J3 = "Delapan belas kotak, dan laporan selesai sebelum pukul empat!";
 
-export const ADEGAN_TABEL_MENURUN: AdeganStory = {
-  id: "tabel-menurun",
-  judul: "Tabel menurun: baris, kolom, dan judul",
-  sumber: "Materi: tabel, baris, kolom, judul",
-  latar: "#F5F3FF",
-  ketukan: [
-    k(SUARA_M1, tambah(0, judul("Tabel")), tambah(idx(SUARA_M1, "tabel."), ...tabelMenurun("tm", GM, NAMA_TABEL, ["Warna", "Banyak"], WARNA))),
-    k(SUARA_M2, sorotkan(idx(SUARA_M2, "judul"), "tm-jd")),
-    k(SUARA_M3, redamkan(0, "tm-jd"), sorotkan(idx(SUARA_M3, "Ini"), "tm-r0a-k", "tm-r0b-k"), tambah(idx(SUARA_M3, "samping"), emo("pb", 272, 86, "➡️", 22))),
-    k(SUARA_M4, redamkan(0, "tm-r0a-k", "tm-r0b-k"), hapus(0, "pb"), sorotkan(idx(SUARA_M4, "Ini"), "tm-h0-k", "tm-r0a-k", "tm-r1a-k", "tm-r2a-k"), tambah(idx(SUARA_M4, "bawah"), emo("pk", 272, 110, "⬇️", 22))),
-    k(SUARA_M5, redamkan(0, "tm-h0-k", "tm-r0a-k", "tm-r1a-k", "tm-r2a-k"), hapus(0, "pk"), ...BANYAK.map((n, r) => tambah(idx(SUARA_M5, ["tujuh", "empat", "enam"][r]), angkaMenurun("tm", GM, r, String(n))))),
-    k(
-      SUARA_M6,
-      ...gilir(SUARA_M6, [
-        ["Judulnya", ["tm-jd"]],
-        ["didata", ["tm-h0-k"]],
-        ["Banyaknya", ["tm-h1-k"]],
-      ]),
-    ),
-    k(SUARA_M7, redamkan(0, "tm-h1-k"), tambah(idx(SUARA_M7, "menurun,"), emo("ar", 272, 100, "⬇️", 30)), tambah("karena", ...kartu("sm", 50, 160, 200, 28, W.krem, ["tabel menurun"], 11))),
-  ],
-};
+const BARIS_Y = [56, 86, 116, 146];
+/** Letak tiap bagian kalimat penjumlahan di papan: lambang ke-s pada baris ke-b. */
+const KX = [46, 80, 114, 148, 190];
+const KY = [68, 108, 148];
 
-/* ------------------------------ 9. Tabel mendatar ------------------------------ */
-const G1: Geo = { x: 10, y: 44, w1: 62, w2: 52, rh: 20, u: 8.6 };
-const G2: Geo = { x: 140, y: 44, w1: 44, w2: 38, rh: 20, u: 8.4 };
-const SUARA_D1 = "Ini tabel bola Upe yang tadi. Bentuknya menurun, nama warna ada di bawah satu sama lain.";
-const SUARA_D2 = "Kita bisa menyajikan data yang sama dalam bentuk mendatar. Nama warna berjajar ke samping.";
-const SUARA_D3 = "Sekarang isi tabel mendatar. Merah ada tujuh. Kuning ada empat. Hijau ada enam.";
-const SUARA_D4 = "Bandingkan kedua tabel. Merah tujuh, kuning empat, hijau enam. Datanya sama persis.";
-const SUARA_D5 = "Tabel menurun dan tabel mendatar memuat data yang sama. Yang berbeda hanya bentuknya.";
-const SUARA_D6 = "Pilih: tabel yang namanya berjajar ke samping adalah tabel apa? Ketuk kartu mendatar.";
-const SUARA_D7 = "Betul! Nama warna berjajar ke samping, itu tabel mendatar. Hebat!";
-
-export const ADEGAN_TABEL_MENDATAR: AdeganStory = {
-  id: "tabel-mendatar",
-  judul: "Tabel menurun dan tabel mendatar",
-  sumber: "Materi: tabel menurun dan mendatar",
-  latar: "#F0F9FF",
-  ketukan: [
-    k(SUARA_D1, tambah(0, judul("Dua bentuk tabel")), tambah(idx(SUARA_D1, "tabel"), ...tabelMenurun("tm", G1, "Menurun", ["Warna", "Banyak"], WARNA)), ...BANYAK.map((n, r) => tambah(idx(SUARA_D1, "bawah"), angkaMenurun("tm", G1, r, String(n))))),
-    k(SUARA_D2, tambah(idx(SUARA_D2, "mendatar."), ...tabelMendatar("td", G2, "Mendatar", ["Warna", "Banyak"], WARNA))),
-    k(SUARA_D3, ...BANYAK.map((n, c) => tambah(idx(SUARA_D3, ["tujuh", "empat", "enam"][c]), angkaMendatar("td", G2, c, String(n))))),
-    k(
-      SUARA_D4,
-      ...gilir(SUARA_D4, [
-        ["tujuh", ["tm-r0b-k", "td-c0b-k"]],
-        ["empat", ["tm-r1b-k", "td-c1b-k"]],
-        ["enam", ["tm-r2b-k", "td-c2b-k"]],
-      ]),
-    ),
-    k(SUARA_D5, redamkan(0, "tm-r2b-k", "td-c2b-k"), tambah("Yang", ...kartu("sm", 40, 144, 220, 40, W.krem, ["datanya sama,", "bentuknya beda"], 10.6))),
-    k(SUARA_D6, hapus(0, "sm-k", "sm-t0", "sm-t1"), tambah("Pilih:", ...pilihKata(150, ["menurun", "mendatar"])), sorotkan("Ketuk", "c2-k")),
-    k(SUARA_D7, tambah("Betul!", emo("ok", 150, 197, "✅", 20)), tambah("Hebat!", emo("ow", 262, 197, OWL, 20))),
-  ],
-};
-
-/* ------------------------------ 10. Pilihan hewan kesukaan ------------------------------ */
-const HEWAN = [
-  { key: "a", nama: "Kucing", e: EMO_KUCING, y: 62, anak: ["Malosi", "Upe", "Wei"] },
-  { key: "b", nama: "Kelinci", e: EMO_KELINCI, y: 106, anak: ["Kira", "Halim"] },
-  { key: "c", nama: "Burung", e: EMO_BURUNG, y: 150, anak: ["Igil"] },
-];
-const XH = (q: number): number => 90 + q * 62;
-const ANAK = HEWAN.flatMap((h, r) => h.anak.map((nama, q) => ({ nama, r, q })));
-/** Satu pilihan anak: gambar hewan dan nama anak di bawahnya. */
-const pilihan = (nama: string): Obj[] => {
-  const a = ANAK.find((x) => x.nama === nama)!;
-  const h = HEWAN[a.r];
-  return [...bendaDi(h.key, h.e, [{ x: XH(a.q), y: h.y }]).map((o) => ({ ...o, id: `e${h.key}${a.q}` })), teks(`pm-${nama}`, XH(a.q), h.y + 11, nama, 8, W.biru)];
-};
-const SUARA_P1 = "Malosi, Kira, Upe, Wei, Halim, dan Igil memilih hewan kesukaan masing-masing. Kita lihat pilihan mereka.";
-const SUARA_P2 = "Malosi, Upe, dan Wei memilih kucing. Kira dan Halim memilih kelinci. Igil memilih burung.";
-const SUARA_P3 = "Kita kelompokkan pilihan mereka menurut hewannya, lalu kita hitung. Kucing ada tiga. Kelinci ada dua. Burung ada satu.";
-const idsHewan = (r: number): string[] => [`e${HEWAN[r].key}-nm`, ...HEWAN[r].anak.map((_, q) => `e${HEWAN[r].key}${q}`)];
-
-export const ADEGAN_HEWAN_PILIHAN: AdeganStory = {
-  id: "hewan-pilihan",
-  judul: "Hewan kesukaan enam anak",
-  sumber: "Materi: mengelompokkan pilihan",
-  latar: "#FFFBEB",
+export const ADEGAN_JUMLAH: AdeganStory = {
+  id: "jumlah",
+  judul: "Jumlah semuanya",
+  sumber: "Materi: jumlah semua, jumlah berjalan",
+  latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_P1,
-      tambah(0, judul("Hewan kesukaan")),
-      tambah(idx(SUARA_P1, "memilih"), ...HEWAN.map((h) => namaG(h.key, h.y, h.nama))),
-      ...["Malosi", "Kira", "Upe", "Wei", "Halim", "Igil"].map((n) => tambah(idx(SUARA_P1, n), pilihan(n))),
+      SUARA_J1,
+      tambah(0, judul("Jumlah semuanya"), papan("pj", 18, 28, 212, 156)),
+      tambah("Pak", ...pakPos("pp", 264, 110)),
+      tambah("bertanya", emo("tn", 264, 76, E.tanya, 24)),
+      tambah("semuanya", ...URUT_JENIS.flatMap((j, i) => [emo(`lb${i}`, 44, BARIS_Y[i] + 14, JENIS[j].e, 17), kapur(`ns${i}`, 150, BARIS_Y[i] + 15, String(BANYAK[j]), 14, { warna: WK.kapurKuning })])),
     ),
     k(
-      SUARA_P2,
-      ...gilir(SUARA_P2, [
-        ["kucing.", idsHewan(0)],
-        ["kelinci.", idsHewan(1)],
-        ["burung.", idsHewan(2)],
-      ]),
+      SUARA_J2,
+      hapus(0, ...URUT_JENIS.flatMap((_, i) => [`lb${i}`, `ns${i}`])),
+      ...[
+        [0, "6", 0], [1, "+", 1], [2, "4", 2], [3, "=", 3], [5, "10", 4],
+        [6, "10", 0], [7, "+", 1], [8, "5", 2], [9, "=", 3], [11, "15", 4],
+        [13, "15", 0], [15, "+", 1], [16, "3", 2], [17, "=", 3], [19, "18", 4],
+      ].map(([at, isi, s], n) => tambah(at as number, kapur(`kj${n}`, KX[s as number], KY[Math.floor(n / 5)], isi as string, 15, { warna: n % 5 === 4 ? WK.kapurKuning : WK.kapur }))),
     ),
     k(
-      SUARA_P3,
-      redamkan(0, ...idsHewan(2)),
-      tambah(idx(SUARA_P3, "tiga"), jumlahG("a", HEWAN[0].y, "3")),
-      tambah(idx(SUARA_P3, "dua"), jumlahG("b", HEWAN[1].y, "2")),
-      tambah(idx(SUARA_P3, "satu"), jumlahG("c", HEWAN[2].y, "1")),
+      SUARA_J3,
+      bersih(0),
+      tambah(0, judul("Laporan selesai"), tanah("tn", 120)),
+      tambah("Delapan", ...kartu("k18", 70, 32, 160, 40, W.emas, ["18 kotak"], 18)),
+      tambah("laporan", ...kartu("lp", 70, 80, 160, 22, W.hijauMuda, ["Laporan: selesai"], 9.4)),
+      tambah("pukul", ...jam("jm", 70, 154, 20)),
+      tambah("empat!", ...kartu("j4", 100, 142, 56, 18, W.krem, ["jam 4"], 9)),
+      tambah("empat!", ...pakPos("pp", 220, 160), emo("jp", 252, 150, E.jempol, 24)),
     ),
   ],
 };
 
-/* ------------------------------ 11. Tabel hewan kesukaan ------------------------------ */
-const GH: Geo = { x: 40, y: 46, w1: 110, w2: 90, rh: 26, u: 10 };
-const NAMA_HEWAN = ["Kucing", "Kelinci", "Burung"];
-const BANYAK_HEWAN = [3, 2, 1];
-const SUARA_H1 = "Data pilihan hewan kita tulis dalam tabel. Judulnya Hewan Kesukaan.";
-const SUARA_H2 = "Kucing ada tiga. Kelinci ada dua. Burung ada satu.";
-const SUARA_H3 = "Hewan apa yang paling banyak dipilih? Kucing paling banyak, yaitu tiga.";
-const SUARA_H4 = "Hewan apa yang paling sedikit dipilih? Burung paling sedikit, yaitu satu.";
-const SUARA_H5 = "Kucing lebih banyak dua dari burung. Itu artinya selisihnya dua.";
-const SUARA_H6 = "Jumlah semuanya enam. Sama seperti enam anak yang memilih.";
+/* ------------------------------ 9. Penutup: jembatan ke Sub-Bab B ------------------------------ */
+const SUARA_N1 = "Mobil pustaka dibuka, dan rak yang rapi menyambut anak-anak kampung.";
+const SUARA_N2 = "Kaka merangkum. Pilah menurut jenis, hitung dengan turus, tulis di tabel, lalu bandingkan.";
+const SUARA_N3 = "Pak Pos berbisik. Bagaimana cara tahu cerita mana yang paling disukai anak-anak? Terima kasih, Igil, Kaka, Abang, dan Mamah!";
 
-export const ADEGAN_HEWAN_TABEL: AdeganStory = {
-  id: "hewan-tabel",
-  judul: "Tabel hewan kesukaan",
-  sumber: "Materi: membaca tabel data",
-  latar: "#FFF7ED",
+const RX = 14;
+const RW = 152;
+
+export const ADEGAN_PENUTUP_A: AdeganStory = {
+  id: "penutup",
+  judul: "Mobil pustaka dibuka",
+  sumber: "Materi: penutup dan jembatan ke Sub-Bab B",
+  latar: "#EFF6FF",
   ketukan: [
-    k(SUARA_H1, tambah(0, judul("Tabel hewan")), tambah(idx(SUARA_H1, "tabel."), ...tabelMenurun("hw", GH, "Hewan Kesukaan", ["Hewan", "Banyak"], NAMA_HEWAN))),
-    k(SUARA_H2, ...BANYAK_HEWAN.map((n, r) => tambah(idx(SUARA_H2, ["tiga", "dua", "satu"][r]), angkaMenurun("hw", GH, r, String(n))))),
-    k(SUARA_H3, sorotkan("Kucing", "hw-r0a-k", "hw-r0b-k")),
-    k(SUARA_H4, redamkan(0, "hw-r0a-k", "hw-r0b-k"), sorotkan("Burung", "hw-r2a-k", "hw-r2b-k")),
-    k(SUARA_H5, sorotkan("Kucing", "hw-r0a-k", "hw-r0b-k"), tambah("selisihnya", ...kartu("sl", 60, 160, 180, 28, W.krem, ["selisihnya: 2"], 10.4))),
-    k(SUARA_H6, redamkan(0, "hw-r0a-k", "hw-r0b-k", "hw-r2a-k", "hw-r2b-k"), hapus(0, "sl-k", "sl-t0"), tambah("Jumlah", ...kartu("js", 60, 160, 180, 28, W.emas, ["jumlah semuanya: 6"], 10.4))),
+    k(
+      SUARA_N1,
+      tambah(0, judul("Mobil pustaka dibuka"), tanah("tn", 150)),
+      tambah("Mobil", ...mobil("mb", 176, 100)),
+      ubah("dibuka,", { id: "mb-t", y: 92 }),
+      tambah("rak", ...rak("rk", RX, 64, RW, 70, 4)),
+      tambah("rapi", ...URUT_JENIS.flatMap((j, i) => Array.from({ length: 3 }, (_, s) => kotakCerita(`rr${i}${s}`, tengahPetak(RX, RW, 4, i) - 10 + 10 * s, 112, j, 10)).flat())),
+      tambah("rapi", ...URUT_JENIS.map((j, i) => emo(`re${i}`, tengahPetak(RX, RW, 4, i), 88, JENIS[j].e, 15))),
+      tambah("anak-anak", emo("a1", 30, 176, E.anak, 22), emo("a2", 62, 176, E.anak, 22), emo("a3", 94, 176, E.anak, 22)),
+    ),
+    k(
+      SUARA_N2,
+      bersih(0),
+      tambah(0, judul("Ringkasan")),
+      tambah("Kaka", ...orang("kk", 262, 150, E.kaka, "Kaka")),
+      tambah("Pilah", ...kartu("r1", 20, 30, 200, 26, W.hijauMuda, ["1. Pilah menurut jenis"], 10)),
+      tambah("hitung", ...kartu("r2", 20, 64, 200, 26, W.langit, ["2. Hitung dengan turus"], 10)),
+      tambah("tulis", ...kartu("r3", 20, 98, 200, 26, W.krem, ["3. Tulis di tabel"], 10)),
+      tambah("bandingkan.", ...kartu("r4", 20, 132, 200, 26, W.pink, ["4. Bandingkan"], 10)),
+    ),
+    k(
+      SUARA_N3,
+      bersih(0),
+      tambah(0, judul("Cerita kesukaan"), tanah("tn", 130)),
+      tambah("Pak", ...pakPos("pp", 150, 96)),
+      tambah("berbisik.", emo("bb", 190, 90, "\u{1F92B}", 20)),
+      tambah("cerita", ...kartu("cq", 60, 32, 180, 22, W.putih, ["cerita mana paling disukai?"], 9)),
+      tambah("Igil,", ...orang("ig", 54, 176, E.igil, "Igil"), emo("l1", 54, 150, E.lambai, 18)),
+      tambah("Kaka,", ...orang("kk", 118, 176, E.kaka, "Kaka"), emo("l2", 118, 150, E.lambai, 18)),
+      tambah("Abang,", ...orang("ab", 182, 176, E.abang, "Abang"), emo("l3", 182, 150, E.lambai, 18)),
+      tambah("Mamah!", ...orang("mm", 246, 176, E.mamah, "Mamah"), emo("l4", 246, 150, E.lambai, 18)),
+    ),
   ],
 };

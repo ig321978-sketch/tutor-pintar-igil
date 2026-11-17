@@ -1,126 +1,166 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { EMO_KUCING, OWL, W, bendaDi, emo, goresan, jumlahG, judul, kartu, kartuAngka, namaG, teks, titikBaris } from "./k1b8A-gambar";
-import { bersih, gilir, goresAksi, idx, ids, k, pilihKata, redamkan, sorotUrut, sorotkan, tambah } from "./k1b8A-bantu";
+import { E, W, WK, bulat, emo, judul, kartu, kotak, lingkaran, orang, pakPos, tanah, teks } from "./k1b8A-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k1b8A-bantu";
 
-export const NAMA_METODE_ID = ["Turus", "Diagram Gambar", "Banding Kategori"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
-export const EMO_BIRU = "\u{1F535}";
+/* Video metode global Sub-Bab A "Kotak Cerita Berantakan": pembuka, Sorting Hoops (Lingkaran Pilah), dan terapannya. */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Sorting Hoops", "One-to-One Matching", "Frequency Table"];
+export const NAMA_METODE_ID = ["Lingkaran Pilah", "Pasangkan Satu-Satu", "Tabel Frekuensi"];
+export const WARNA_METODE = [W.hijauMuda, W.krem, W.pink];
+export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara mengajarkan cara mengelompokkan dan membaca data yang berbeda-beda. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu bernama Turus, Diagram Gambar, dan Banding Kategori.";
-const SUARA_O3 = "Semua metode ini menjawab satu pertanyaan. Mana yang paling banyak, dan berapa selisihnya?";
-const SUARA_O4 = "Kita memakai benda bergambar di layar. Kamu cukup mengetuk dan melihat dengan teliti.";
-const SUARA_O5 = "Semua contoh memakai paling banyak sepuluh benda. Siap? Ayo kita mulai dengan metode pertama.";
+/* ------------------------------ 1. Pembuka ------------------------------ */
+const SUARA_O1 = "Ketika merapikan kotak kartu peminjam, Igil menemukan tiga kartu bergambar terselip di dasarnya.";
+const SUARA_O2 = "Pak Pos Pustaka tertawa. Itu kartu cara mencatat benda dari petugas pustaka zaman dulu!";
+const SUARA_O3 = "Tiga cara itu: Sorting Hoops, One-to-One Matching, dan Frequency Table.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Lingkaran Pilah, Pasangkan Satu-Satu, dan Tabel Frekuensi.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk mengelompokkan data",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Tiga kartu cara mencatat benda",
+  sumber: "Metode global: pembuka",
+  latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)), tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11))),
+    k(
+      SUARA_O1,
+      tambah(0, judul("Tiga cara mencatat benda"), tanah("tn", 150)),
+      tambah("kotak", kotak("kl", 60, 104, 110, 46, "#D6A15E", W.coklat, { rx: 4, tebal: 2.4 }), kotak("kl2", 60, 104, 110, 8, "#B45309", W.coklat, { rx: 3, tebal: 1.6, z: 1 })),
+      tambah("peminjam,", teks("kt", 115, 136, "kartu peminjam", 8.6, W.biru, { z: 2 })),
+      tambah("Igil", ...orang("ig", 268, 176, E.igil, "Igil")),
+      tambah("tiga", ...[E.bintang, E.hati, E.bulan].flatMap((e, i) => [kotak(`kk${i}`, 74 + i * 28, 84, 22, 28, W.putih, W.biru, { rx: 3, tebal: 1.4 }), emo(`ke${i}`, 85 + i * 28, 104, e, 14)])),
+      tambah("terselip", ...kartu("tk", 190, 60, 90, 22, W.krem, ["3 kartu"], 9.4)),
+    ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      tambah(idx(SUARA_O2, "Turus,"), ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah(idx(SUARA_O2, "Diagram"), ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "Banding"), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      hapus(0, "tk-k", "tk-t0"),
+      tambah("Pak", ...pakPos("pp", 222, 176)),
+      tambah("tertawa.", emo("tw", 250, 140, E.tertawa, 24)),
+      tambah("kartu", emo("kr", 200, 100, "\u{1F4C4}", 24)),
+      tambah("zaman", ...kartu("zm", 150, 44, 140, 22, W.krem, ["cara dari zaman dulu"], 8.6)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah("satu", emo("i1", 60, 84, "⚖️", 34), emo("i2", 150, 84, "❓", 34), emo("i3", 240, 84, "\u{1F440}", 34)),
-      tambah("Mana", ...kartu("iq", 20, 112, 260, 52, W.emas, ["mana yang paling banyak,", "dan berapa selisihnya?"], 10)),
+      tambah(0, judul("3 metode global")),
+      tambah(3, ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], ["1. Sorting Hoops"], 11)),
+      tambah(5, ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], ["2. One-to-One Matching"], 11)),
+      tambah(8, ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], ["3. Frequency Table"], 11)),
     ),
     k(
       SUARA_O4,
       bersih(0),
-      tambah(0, judul("Alat bantu hari ini")),
-      tambah("benda", ...bendaDi("a", EMO_KUCING, titikBaris(3, 100, 100, 50), 26), teks("ea-t", 150, 128, "benda bergambar", 10, W.ungu)),
-      tambah("mengetuk", emo("tg", 190, 152, "\u{1F446}", 22)),
+      tambah(0, judul("Nama dalam bahasa Indonesia")),
+      tambah(4, ...kartu("n0", 20, 40, 260, 38, WARNA_METODE[0], ["1. Lingkaran Pilah"], 11)),
+      tambah(6, ...kartu("n1", 20, 88, 260, 38, WARNA_METODE[1], ["2. Pasangkan Satu-Satu"], 11)),
+      tambah(9, ...kartu("n2", 20, 136, 260, 38, WARNA_METODE[2], ["3. Tabel Frekuensi"], 11)),
+    ),
+  ],
+};
+
+/* ------------------------------ 2. Sorting Hoops: konsep ------------------------------ */
+const SUARA_H1 = "Cara pertama, Sorting Hoops, atau Lingkaran Pilah.";
+const SUARA_H2 = "Letakkan lingkaran tali di tanah, satu lingkaran untuk satu jenis.";
+const SUARA_H3 = "Masukkan setiap benda ke lingkaran jenisnya.";
+const SUARA_H4 = "Setelah semua masuk, hitung isi tiap lingkaran.";
+
+const LX = [56, 150, 244];
+const LY = 96;
+const WARNA_L = ["#FEF9C3", "#FBCFE8", "#DBEAFE"];
+const E_BENDA = [E.bintang, E.hati, E.bulan];
+/** Posisi benda di dalam lingkaran (relatif pusat). */
+const DALAM = [[-13, -11], [13, -11], [-13, 12], [13, 12]];
+/** Benda berserakan di rumput: nomor 0 sampai 8, urut bintang, hati, bulan tetapi letaknya diacak. */
+const SEBAR_H: [number, number][] = [[30, 168], [64, 182], [96, 160], [128, 178], [160, 164], [192, 184], [224, 162], [256, 176], [284, 160]];
+const URUT_ACAK = [0, 4, 7, 2, 5, 8, 1, 3, 6];
+const bendaKe = (n: number): number => (n < 4 ? 0 : n < 7 ? 1 : 2);
+const nomorDalam = (n: number): number => (n < 4 ? n : n < 7 ? n - 4 : n - 7);
+
+export const ADEGAN_LUAR_PILAH: AdeganStory = {
+  id: "luar-pilah",
+  judul: "Sorting Hoops: lingkaran pilah",
+  sumber: "Metode global: Sorting Hoops",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_H1,
+      tambah(0, ...kepala(0), tanah("tn", 124)),
+      tambah("Sorting", ...URUT_ACAK.flatMap((n, s) => [emo(`bd${n}`, SEBAR_H[s][0], SEBAR_H[s][1], E_BENDA[bendaKe(n)], 17)])),
+      tambah("Lingkaran", ...kartu("lc", 60, 64, 180, 40, W.putih, ["Lingkaran Pilah"], 15)),
     ),
     k(
-      SUARA_O5,
+      SUARA_H2,
+      hapus(0, "lc-k", "lc-t0"),
+      tambah("lingkaran", ...LX.map((x, i) => lingkaran(`ln${i}`, x, LY, 34, WARNA_L[i]))),
+      tambah("tali", ...LX.map((x, i) => bulat(`lt${i}`, x, LY, 28, "none", "#D97706", { tebal: 1.2, op: 0.6, z: -1 }))),
+      tambah("jenis.", ...LX.map((x, i) => teks(`jn${i}`, x, 55, `jenis ${i + 1}`, 8.4, WK.bingkai))),
+    ),
+    k(
+      SUARA_H3,
+      ...[0, 1, 2, 3].map((n) => ubah("benda", { id: `bd${n}`, x: LX[0] + DALAM[n][0], y: LY + DALAM[n][1] + 5 })),
+      ...[4, 5, 6].map((n) => ubah("lingkaran", { id: `bd${n}`, x: LX[1] + DALAM[nomorDalam(n)][0], y: LY + DALAM[nomorDalam(n)][1] + 5 })),
+      ...[7, 8].map((n) => ubah("jenisnya.", { id: `bd${n}`, x: LX[2] + DALAM[nomorDalam(n)][0], y: LY + DALAM[nomorDalam(n)][1] + 5 })),
+    ),
+    k(
+      SUARA_H4,
+      tambah("hitung", teks("hc0", LX[0], 146, "4", 14, W.merah)),
+      tambah("isi", teks("hc1", LX[1], 146, "3", 14, W.merah)),
+      tambah("tiap", teks("hc2", LX[2], 146, "2", 14, W.merah)),
+      sorotkan("lingkaran.", "ln0", "ln1", "ln2"),
+    ),
+  ],
+};
+
+/* ------------------------------ 3. Sorting Hoops: terapan ------------------------------ */
+const SUARA_I1 = "Abang memilah stempel pustaka ke tiga lingkaran. Bintang lima, hati tiga, bulat dua.";
+const SUARA_I2 = "Semuanya sepuluh stempel, dan yang paling banyak adalah bintang.";
+const SUARA_I3 = "Cocok kalau bendanya kecil dan bisa dipindahkan, supaya yang sejenis berkumpul.";
+const SUARA_I4 = "Kurang cocok kalau bendanya berat atau tidak bisa dipindahkan, misalnya pohon di halaman.";
+
+const E_STEMPEL = [E.bintang, E.hati, E.biru];
+const ISI5: [number, number][] = [[-13, -11], [13, -11], [0, 1], [-13, 13], [13, 13]];
+const isiLingkaran = (n: number): [number, number][] => (n === 5 ? ISI5 : (DALAM.slice(0, n) as [number, number][]));
+const stempel = (j: number, n: number, y = LY): Obj[] => isiLingkaran(n).map(([dx, dy], i) => emo(`st${j}${i}`, LX[j] + dx, y + dy + 5, E_STEMPEL[j], 15));
+
+export const ADEGAN_LUAR_PILAH_TERAPAN: AdeganStory = {
+  id: "luar-pilah-terapan",
+  judul: "Lingkaran pilah: stempel pustaka",
+  sumber: "Metode global: Sorting Hoops, terapan",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_I1,
       bersih(0),
-      tambah(0, judul("Sampai sepuluh")),
-      tambah("sepuluh", ...kartuAngka("ob", 112, 60, "10", W.emas, 76, 44, 26)),
-      tambah("pertama.", emo("ow", 150, 168, OWL, 30)),
-    ),
-  ],
-};
-
-/* ------------------------------ 2. Turus: konsep ------------------------------ */
-const YB = 82;
-const YT = 126;
-const XT = 84;
-const ITEM_B = ids("ea", 0, 7);
-const SUARA_A1 = "Metode pertama bernama Turus. Kita memakai goresan kecil untuk menghitung, satu benda satu goresan.";
-const SUARA_A2 = "Ini kelereng biru. Ketuk satu kelereng, tambah satu goresan. Kita hitung. Satu, dua, tiga, empat.";
-const SUARA_A3 = "Goresan kelima miring, memotong empat goresan tadi. Lima.";
-const SUARA_A4 = "Teruskan sampai kelereng habis. Enam, tujuh, delapan. Satu kelompok lima, dan tiga goresan lagi.";
-const SUARA_A5 = "Sekarang kita baca turusnya. Satu kelompok lima, dan tiga goresan. Jadi kelereng biru ada delapan.";
-const SUARA_A6 = "Ucapkan lagi mengikuti suara guru. Satu benda satu goresan, dan goresan kelima miring.";
-
-export const ADEGAN_LUAR_TURUS: AdeganStory = {
-  id: "luar-turus",
-  judul: "Turus: satu benda satu goresan",
-  sumber: "Metode luar: Turus",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(
-      SUARA_A1,
-      tambah("pertama", ...kepala(0)),
-      tambah("memakai", namaG("a", YB, "Kelereng biru"), ...bendaDi("a", EMO_BIRU, titikBaris(8, XT, YB, 24)), teks("tt-a", 4, YT - 4, "Turus", 8.6, W.ungu, { anchor: "start" })),
-    ),
-    k(SUARA_A2, ...goresAksi(SUARA_A2, "a", 4, XT, YT, { setelah: "hitung." }), ...sorotUrut(SUARA_A2, ITEM_B.slice(0, 4), 1, "hitung.")),
-    k(SUARA_A3, ...goresAksi(SUARA_A3, "a", 5, XT, YT, { dari: 4, setelah: "tadi." }), redamkan(0, "ea3"), sorotkan(idx(SUARA_A3, "Lima"), "ea4")),
-    k(SUARA_A4, ...goresAksi(SUARA_A4, "a", 8, XT, YT, { dari: 5, setelah: "habis." }), redamkan(0, "ea4"), ...sorotUrut(SUARA_A4, ITEM_B.slice(5, 8), 6, "habis.")),
-    k(SUARA_A5, redamkan(0, "ea7"), tambah(idx(SUARA_A5, "delapan"), jumlahG("a", YB, "8"))),
-    k(SUARA_A6, tambah("Ucapkan", emo("ucap", 262, 190, "\u{1F5E3}", 24))),
-  ],
-};
-
-/* ------------------------------ 3. Turus: terapan ------------------------------ */
-const YK = 76;
-const YR = 116;
-const SUARA_B1 = "Terapkan pada data baru. Ada turus kucing dan turus burung. Kita baca satu per satu.";
-const SUARA_B2 = "Turus kucing: satu kelompok lima, dan empat goresan lagi. Jadi kucing ada sembilan.";
-const SUARA_B3 = "Turus burung: satu kelompok lima, dan satu goresan lagi. Jadi burung ada enam.";
-const SUARA_B4 = "Pilih: yang mana lebih banyak? Ketuk hewan yang turusnya lebih banyak.";
-const SUARA_B5 = "Betul! Kucing lebih banyak tiga dari burung. Tiga adalah selisihnya.";
-const tally = (key: string, y: number, n: number): Obj[] => Array.from({ length: n }, (_, i) => goresan(key, i, XT, y));
-
-export const ADEGAN_LUAR_TURUS_TERAPAN: AdeganStory = {
-  id: "luar-turus-terapan",
-  judul: "Turus: membaca turus kucing dan burung",
-  sumber: "Metode luar: Turus, terapan",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(SUARA_B1, tambah("Terapkan", ...kepala(0)), tambah("turus", namaG("a", YK, "Kucing"), ...tally("a", YK, 9), namaG("b", YR, "Burung"), ...tally("b", YR, 6))),
-    k(
-      SUARA_B2,
-      ...gilir(SUARA_B2, [
-        ["lima,", ids("ta-g", 0, 4)],
-        ["empat", ids("ta-g", 5, 8)],
-      ]),
-      tambah(idx(SUARA_B2, "sembilan"), jumlahG("a", YK, "9")),
+      tambah(0, ...kepala(0), tanah("tn", 138)),
+      tambah("Abang", ...orang("ab", 150, 176, E.abang, "Abang")),
+      tambah("tiga", ...LX.map((x, i) => lingkaran(`ln${i}`, x, LY, 34, WARNA_L[i]))),
+      tambah("tiga", ...kartu("l3", 8, 150, 84, 18, W.krem, ["3 lingkaran"], 8.6)),
+      tambah("lima,", ...stempel(0, 5), teks("sc0", LX[0], 146, "5", 14, W.merah)),
+      tambah("tiga@2", ...stempel(1, 3), teks("sc1", LX[1], 146, "3", 14, W.merah)),
+      tambah("dua.", ...stempel(2, 2), teks("sc2", LX[2], 146, "2", 14, W.merah)),
     ),
     k(
-      SUARA_B3,
-      redamkan(0, ...ids("ta-g", 0, 8)),
-      ...gilir(SUARA_B3, [
-        ["lima,", ids("tb-g", 0, 4)],
-        ["satu", ["tb-g5"], 2],
-      ]),
-      tambah(idx(SUARA_B3, "enam"), jumlahG("b", YR, "6")),
+      SUARA_I2,
+      hapus(0, "l3-k", "l3-t0"),
+      tambah("sepuluh", ...kartu("sp", 194, 150, 92, 18, W.putih, ["10 stempel"], 9.4)),
+      sorotkan("bintang.", "ln0"),
+      tambah("banyak", teks("pb", LX[0], 58, "paling banyak", 8, W.merah)),
     ),
-    k(SUARA_B4, redamkan(0, ...ids("tb-g", 0, 5)), tambah("Pilih:", ...pilihKata(146, ["Kucing", "Burung"])), sorotkan("Ketuk", "c1-k")),
-    k(SUARA_B5, tambah("Betul!", emo("ok", 150, 197, "✅", 20)), tambah("selisihnya.", emo("ow", 262, 197, OWL, 20))),
+    k(
+      SUARA_I3,
+      hapus(0, "sp-k", "sp-t0", "pb", "sc0", "sc1", "sc2"),
+      ubah(0, { id: "ln0", sorot: false }),
+      tambah("Cocok", emo("ok", 262, 176, E.benar, 28)),
+      tambah("kecil", ...kartu("kc", 24, 150, 118, 18, W.hijauMuda, ["kecil, bisa dipindah"], 8.6)),
+      sorotkan("berkumpul.", "ln0", "ln1", "ln2"),
+    ),
+    k(
+      SUARA_I4,
+      bersih(0),
+      tambah(0, ...kepala(0), tanah("tn", 150)),
+      tambah("berat", ...kartu("br", 150, 70, 130, 22, W.merahMuda, ["berat atau tertanam"], 8.6)),
+      tambah("dipindahkan,", emo("sl", 112, 100, E.salah, 30)),
+      tambah("pohon", emo("ph", 62, 112, E.pohon, 46)),
+      tambah("halaman.", teks("hl", 62, 168, "pohon di halaman", 8.4, W.biru)),
+    ),
   ],
 };

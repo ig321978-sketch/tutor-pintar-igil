@@ -1,138 +1,140 @@
 import type { AdeganStory } from "./logika-story";
-import { MAINAN, SAYUR, W, diagram, emo, judul, kartu, tabel, teks, turus } from "./k1b8B-gambar";
-import { bersih, hitungAksi, idx, k, redamkan, sorotkan, tambah } from "./k1b8B-bantu";
+import { DG, E, W, barisBintang, emo, garis, idKolom, judul, kartu, kolomBintang, namaBaris, namaKol, orang, panah, rapatkan, sumbuMendatar, sumbuTegak, teks, xKol, bintang } from "./k1b8B-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k1b8B-bantu";
 
-/* ------------------------------ 6. Diagram gambar mendatar ------------------------------ */
-export const DD = diagram("sd", "datar", SAYUR, "Sayur Kesukaan", "anak");
-const SUARA_M1 = "Ini bentuk lain diagram gambar. Gambarnya berjajar ke samping, jadi disebut diagram mendatar.";
-const SUARA_M2 = "Barisnya jagung, wortel, brokoli, dan kol. Datanya sama dengan diagram tegak.";
-const SUARA_M3 = "Jagung tiga gambar, wortel empat gambar, brokoli tiga gambar, dan kol dua gambar.";
-const SUARA_M4 = "Angka di bawah menunjukkan banyaknya gambar pada tiap baris.";
-const SUARA_M5 = "Baris wortel paling panjang, jadi wortel paling banyak disukai.";
-const SUARA_M6 = "Tegak atau mendatar, datanya sama. Kita boleh memilih salah satu.";
+/*
+ * Cerita orisinal IGIL "Cerita Kesukaan Anak Kampung" (Kelas 1 Bab 8 Sub-Bab B), akhir cerita Perpustakaan Keliling.
+ * Naskah suara dari naskah/story-naskah-k1b8b.md. Bagian ini: bintang renggang (salah langkah), bagian diagram tegak dan mendatar, dan membandingkan kolom.
+ * Data survei: dinosaurus 5, robot 4, peri 2, sirkus 4.
+ */
 
-export const ADEGAN_MENDATAR: AdeganStory = {
-  id: "diagram-mendatar",
-  judul: "Diagram gambar mendatar",
-  sumber: "Materi: diagram gambar mendatar",
-  latar: "#F0FDFA",
+const DATA = [5, 4, 2, 4];
+const kolomSemua = (id: string, dy4: number = DG.dy) => DATA.flatMap((n, i) => kolomBintang(id, i, n, i === 1 ? dy4 : DG.dy));
+const namaSemua = (id: string) => DATA.map((_, i) => namaKol(`${id}${i}`, i));
+
+/* ------------------------------ 4. Bintang renggang (salah langkah) ------------------------------ */
+const SUARA_R1 = "Igil menggambar diagram gambar dengan buru-buru. Bintang robot ia renggangkan, jadi kolom robot tampak tinggi.";
+const SUARA_R2 = "Kaka menggeleng. Robot hanya empat, dinosaurus lima, tetapi kolom robot kelihatan lebih tinggi!";
+const SUARA_R3 = "Gambar harus sama besar, rapat, dan dimulai dari garis bawah. Mamah bertanya, mengapa? Karena yang dihitung banyak gambarnya, bukan tinggi kolomnya.";
+
+export const ADEGAN_RENGGANG: AdeganStory = {
+  id: "renggang",
+  judul: "Bintang robot yang direnggangkan",
+  sumber: "Materi: gambar harus sama besar dan rapat",
+  latar: "#FEF2F2",
   ketukan: [
-    k(SUARA_M1, tambah(0, ...DD.dasar)),
-    k(SUARA_M2, tambah("jagung,", DD.label(0)), tambah("wortel,", DD.label(1)), tambah("brokoli,", DD.label(2)), tambah("kol.", DD.label(3))),
     k(
-      SUARA_M3,
-      tambah(idx(SUARA_M3, "tiga", 1), ...DD.gambar(0)),
-      tambah("empat", ...DD.gambar(1)),
-      tambah(idx(SUARA_M3, "tiga", 2), ...DD.gambar(2)),
-      tambah("dua", ...DD.gambar(3)),
+      SUARA_R1,
+      tambah(0, judul("Diagram Igil")),
+      tambah("Igil", ...orang("ig", 272, 120, E.igil, "Igil")),
+      tambah("diagram", ...sumbuTegak("sb", 5, false), ...namaSemua("nm")),
+      tambah("menggambar", ...[0, 2, 3].flatMap((i) => kolomBintang("gm", i, DATA[i]))),
+      tambah("renggangkan,", ...kolomBintang("gm", 1, 4, 20)),
+      tambah("tinggi.", emo("tq", xKol(1) + 22, 70, E.tanya, 18)),
     ),
-    k(SUARA_M4, sorotkan("angka", ...DD.idSumbu)),
-    k(SUARA_M5, redamkan(0, ...DD.idSumbu), sorotkan("Baris", ...DD.idGambar(1))),
-    k(SUARA_M6, redamkan(0, ...DD.idGambar(1)), tambah("Tegak", ...kartu("tm", 30, 162, 240, 18, W.emas, ["tegak atau mendatar: data sama"], 9.6))),
+    k(
+      SUARA_R2,
+      hapus("Kaka", "tq"),
+      tambah("Kaka", ...orang("kk", 272, 172, E.kaka, "Kaka")),
+      tambah("empat,", teks("r4", xKol(1), 66, "4", 12, W.merah)),
+      tambah("lima,", teks("d5", xKol(0), 80, "5", 12, W.merah)),
+      tambah("lebih", emo("sl", xKol(1) + 24, 100, E.salah, 18)),
+    ),
+    k(
+      SUARA_R3,
+      hapus(0, "r4", "d5", "sl"),
+      tambah("Gambar", ...kartu("c0", 6, 28, 92, 20, W.hijauMuda, ["sama besar"], 8.2)),
+      ubah("rapat,", ...rapatkan("gm", 1, 4)),
+      tambah("rapat,", ...kartu("c1", 104, 28, 92, 20, W.hijauMuda, ["rapat"], 8.2)),
+      tambah("garis", ...kartu("c2", 202, 28, 92, 20, W.hijauMuda, ["mulai garis bawah"], 8.2)),
+      tambah("Mamah", ...orang("mm", 272, 76, E.mamah, "Mamah")),
+      tambah("mengapa?", emo("tn", 246, 70, E.tanya, 20)),
+      tambah("dihitung", teks("hg", 150, 66, "yang dihitung: banyak gambar", 9, W.ungu)),
+    ),
   ],
 };
 
-/* ------------------------------ 7. Turus ------------------------------ */
-export const TR = turus("tu", MAINAN, "Mainan Kesukaan");
-const JAWABAN = ["\u{1F3C0}", "\u{1F697}", "\u{1F3C0}", "\u{1F9F8}", "\u{1F3C0}", "\u{1F697}", "\u{1F3C0}", "\u{1F9F8}", "\u{1F697}", "\u{1F3C0}", "\u{1F3C0}", "\u{1F697}", "\u{1F9F8}"];
-const strip = JAWABAN.map((e, i) => emo(`jb${i}`, 26 + (i % 7) * 41, i < 7 ? 70 : 108, e, 24));
-const SUARA_U1 = "Wei mencatat mainan kesukaan anak-anak. Ada tiga belas jawaban di layar.";
-const SUARA_U2 = "Cara mencatatnya adalah turus. Setiap jawaban kita beri satu goresan tegak.";
-const SUARA_U3 = "Bola ada enam. Satu, dua, tiga, empat, lima, enam. Goresan kelima miring, menutup empat goresan tadi.";
-const SUARA_U4 = "Mobil ada empat. Satu, dua, tiga, empat.";
-const SUARA_U5 = "Boneka ada tiga. Satu, dua, tiga.";
-const SUARA_U6 = "Lima goresan menjadi satu ikat. Karena itu, turus mudah dihitung.";
-const SUARA_U7 = "Jumlah semuanya tiga belas, karena enam, empat, dan tiga.";
+/* ------------------------------ 5. Bagian diagram ------------------------------ */
+const SUARA_G1 = "Diagram gambar yang benar punya judul di atas dan nama di bawah tiap kolom.";
+const SUARA_G2 = "Angka di sisi kiri menunjukkan banyak gambar, dan keterangan menjelaskan satu bintang sama dengan satu anak.";
+const SUARA_G3 = "Abang membuat bentuk lain. Gambarnya berjajar ke samping, itu diagram mendatar, dan datanya sama.";
 
-export const ADEGAN_TURUS: AdeganStory = {
-  id: "turus",
-  judul: "Mencatat data dengan turus",
-  sumber: "Materi: turus",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(SUARA_U1, tambah(0, judul("Jawaban anak-anak")), tambah("Ada", ...strip), tambah("tiga", ...kartu("jw", 90, 140, 120, 24, W.krem, ["13 jawaban"], 10))),
-    k(SUARA_U2, bersih(0), tambah(0, TR.jd), tambah("turus.", TR.label(0), TR.label(1), TR.label(2))),
-    k(
-      SUARA_U3,
-      ...hitungAksi(SUARA_U3, TR.goresan(0), { setelah: "enam." }),
-      tambah(idx(SUARA_U3, "enam", 2), TR.angka(0)),
-      sorotkan("miring,", "tus0_4"),
-    ),
-    k(SUARA_U4, redamkan(0, "tus0_4"), ...hitungAksi(SUARA_U4, TR.goresan(1), { setelah: "empat." }), tambah(idx(SUARA_U4, "empat", 2), TR.angka(1))),
-    k(SUARA_U5, ...hitungAksi(SUARA_U5, TR.goresan(2), { setelah: "tiga." }), tambah(idx(SUARA_U5, "tiga", 2), TR.angka(2))),
-    k(SUARA_U6, sorotkan("ikat.", "tus0_4"), tambah("Lima", ...kartu("ik", 60, 170, 180, 22, W.hijauMuda, ["5 goresan = 1 ikat"], 10))),
-    k(SUARA_U7, redamkan(0, "tus0_4"), tambah("tiga", teks("jm", 150, 150, "6 + 4 + 3 = 13", 13, W.coklat))),
-  ],
-};
-
-/* ------------------------------ 8. Tabel menurun ------------------------------ */
-export const TM = tabel("tm", "menurun", MAINAN, "Mainan Kesukaan", "mainan");
-const KOLOM_ISI = [0, 1, 2, 3].map((r) => `tmx${r}_1`);
-const SUARA_V1 = "Data turus bisa kita pindahkan ke tabel. Ini tabel menurun, nama mainan turun ke bawah.";
-const SUARA_V2 = "Mulai dari baris pertama. Bola ada enam.";
-const SUARA_V3 = "Baris kedua, mobil ada empat. Baris ketiga, boneka ada tiga.";
-const SUARA_V4 = "Tabel punya judul, baris, dan kolom. Baris membentang ke samping. Kolom turun ke bawah.";
-const SUARA_V5 = "Jumlah semuanya tiga belas. Hasilnya ada di baris paling bawah.";
-
-export const ADEGAN_TABEL_MENURUN: AdeganStory = {
-  id: "tabel-menurun",
-  judul: "Tabel menurun",
-  sumber: "Materi: tabel menurun",
+export const ADEGAN_BAGIAN: AdeganStory = {
+  id: "bagian",
+  judul: "Bagian-bagian diagram gambar",
+  sumber: "Materi: judul, nama kolom, gambar, angka, keterangan; diagram mendatar",
   latar: "#F5F3FF",
   ketukan: [
-    k(SUARA_V1, tambah(0, ...TM.kepala)),
-    k(SUARA_V2, tambah("bola", ...TM.isi(0))),
-    k(SUARA_V3, tambah("mobil", ...TM.isi(1)), tambah("boneka", ...TM.isi(2))),
     k(
-      SUARA_V4,
-      sorotkan("judul,", "tmjd"),
-      redamkan("Baris@2", "tmjd"),
-      sorotkan("Baris@2", ...TM.selBaris(2)),
-      redamkan("Kolom@2", ...TM.selBaris(2)),
-      sorotkan("Kolom@2", ...KOLOM_ISI),
+      SUARA_G1,
+      tambah(0, judul("Bagian diagram")),
+      tambah("Diagram", ...sumbuTegak("sb", 5, false)),
+      tambah("gambar", ...kolomSemua("bd")),
+      tambah("judul", teks("dt", 140, 44, "Cerita Kesukaan Anak", 9.6, W.ungu), ...kartu("pj", 214, 36, 78, 20, W.merahMuda, ["judul"], 8.4), panah("pjp", 214, 46, -16, 2)),
+      tambah("nama", ...namaSemua("nm"), ...kartu("pn", 252, 158, 46, 20, W.langit, ["nama kolom"], 7.2), panah("pnp", 252, 168, -8, 0)),
     ),
-    k(SUARA_V5, redamkan(0, ...KOLOM_ISI), tambah("tiga", ...TM.total)),
+    k(
+      SUARA_G2,
+      hapus(0, "pj-k", "pj-t0", "pjp", "pn-k", "pn-t0", "pnp"),
+      tambah("Angka", ...sumbuTegak("sb", 5, true).filter((o) => /^sba\d$/.test(o.id)), ...kartu("pa", 8, 92, 38, 18, W.krem, ["angka"], 8.2), panah("pap", 46, 101, 8, 0)),
+      tambah("gambar,", ...kartu("pg", 246, 100, 46, 18, W.pink, ["gambar"], 8.2), panah("pgp", 246, 108, -12, 6)),
+      tambah("keterangan", ...kartu("pk", 214, 178, 80, 20, W.hijauMuda, ["keterangan"], 8.2), teks("kt", 112, 191, "1 bintang = 1 anak", 8.6, W.biru), bintang("kb", 50, 188, 5)),
+    ),
+    k(
+      SUARA_G3,
+      bersih(0),
+      tambah(0, judul("Diagram mendatar")),
+      tambah("Abang", ...orang("ab", 250, 150, E.abang, "Abang")),
+      tambah("Gambarnya", ...sumbuMendatar("sm", 5), ...DATA.map((_, i) => namaBaris(`nb${i}`, i))),
+      tambah("berjajar", ...DATA.flatMap((n, i) => barisBintang("bm", i, n))),
+      tambah("mendatar,", ...kartu("md", 180, 50, 112, 26, W.langit, ["diagram mendatar"], 9)),
+      tambah("datanya", ...kartu("ds", 180, 90, 112, 26, W.krem, ["datanya sama"], 9)),
+    ),
   ],
 };
 
-/* ------------------------------ 9. Tabel mendatar ------------------------------ */
-export const TN = tabel("tn", "mendatar", MAINAN, "Mainan Kesukaan", "mainan");
-const SUARA_N1 = "Sekarang ada tabel mendatar. Nama mainan berderet ke samping.";
-const SUARA_N2 = "Bola ada enam, mobil ada empat, dan boneka ada tiga.";
-const SUARA_N3 = "Tabel menurun dan tabel mendatar memuat data yang sama. Hanya letaknya yang berbeda.";
-const SUARA_N4 = "Jumlah semuanya tiga belas, sama seperti tadi.";
+/* ------------------------------ 6. Membandingkan kolom ------------------------------ */
+const SUARA_P1 = "Dinosaurus paling banyak, ada lima. Peri paling sedikit, ada dua.";
+const SUARA_P2 = "Robot dan sirkus sama banyak, masing-masing empat.";
+const SUARA_P3 = "Dinosaurus lebih banyak satu dari robot. Lima dikurangi dua sama dengan tiga, jadi dinosaurus lebih banyak tiga dari peri.";
 
-export const ADEGAN_TABEL_MENDATAR: AdeganStory = {
-  id: "tabel-mendatar",
-  judul: "Tabel mendatar",
-  sumber: "Materi: tabel mendatar",
-  latar: "#F5F3FF",
+const idDino = idKolom("bp", 0, 0, 4);
+const idRobot = idKolom("bp", 1, 0, 3);
+const idPeri = idKolom("bp", 2, 0, 1);
+const idSirkus = idKolom("bp", 3, 0, 3);
+
+export const ADEGAN_BANDING: AdeganStory = {
+  id: "banding",
+  judul: "Membandingkan banyak gambar",
+  sumber: "Materi: paling banyak, paling sedikit, sama banyak, selisih",
+  latar: "#ECFEFF",
   ketukan: [
-    k(SUARA_N1, tambah(0, ...TN.kepala)),
-    k(SUARA_N2, tambah("Bola", ...TN.isi(0)), tambah("mobil", ...TN.isi(1)), tambah("boneka", ...TN.isi(2))),
-    k(SUARA_N3, tambah("Tabel", ...kartu("sm", 30, 160, 240, 28, W.emas, ["data sama, letak berbeda"], 10))),
-    k(SUARA_N4, tambah("tiga", ...TN.total)),
-  ],
-};
-
-/* ------------------------------ 10. Dari tabel ke diagram gambar ------------------------------ */
-export const DM = diagram("mt", "tegak", MAINAN, "Mainan Kesukaan", "anak");
-const SUARA_P1 = "Sekarang kita ubah tabel menjadi diagram gambar.";
-const SUARA_P2 = "Kita pilih diagram tegak. Gambar bola, mobil, dan boneka akan tersusun ke atas.";
-const SUARA_P3 = "Bola ada enam. Satu, dua, tiga, empat, lima, enam. Kita susun enam gambar bola.";
-const SUARA_P4 = "Mobil ada empat, jadi empat gambar. Boneka ada tiga, jadi tiga gambar.";
-const SUARA_P5 = "Diagram gambar sudah selesai. Datanya sama dengan tabel.";
-
-export const ADEGAN_TABEL_KE_DIAGRAM: AdeganStory = {
-  id: "tabel-ke-diagram",
-  judul: "Dari tabel ke diagram gambar",
-  sumber: "Materi: tabel menjadi diagram",
-  latar: "#F0F9FF",
-  ketukan: [
-    k(SUARA_P1, tambah(0, ...TN.semua)),
-    k(SUARA_P2, bersih(0), tambah(0, ...DM.dasar), tambah("bola,", DM.label(0)), tambah("mobil,", DM.label(1)), tambah("boneka", DM.label(2))),
-    k(SUARA_P3, ...hitungAksi(SUARA_P3, DM.gambar(0), { setelah: "enam." }), tambah(idx(SUARA_P3, "enam", 2), DM.angka(0))),
-    k(SUARA_P4, tambah("empat,", ...DM.gambar(1), DM.angka(1)), tambah(idx(SUARA_P4, "tiga", 1), ...DM.gambar(2), DM.angka(2))),
-    k(SUARA_P5, sorotkan("selesai.", ...DM.idGambar(0), ...DM.idGambar(1), ...DM.idGambar(2)), tambah("tabel.", ...kartu("tt", 150, 30, 140, 24, W.hijauMuda, ["data sama dengan tabel"], 8.8))),
+    k(
+      SUARA_P1,
+      tambah(0, judul("Membandingkan kolom"), ...sumbuTegak("sb", 5, true), ...kolomSemua("bp"), ...namaSemua("nm")),
+      sorotkan("Dinosaurus", ...idDino),
+      tambah("banyak,", ...kartu("pb", 70, 56, 80, 20, W.hijauMuda, ["paling banyak"], 8)),
+      tambah("lima.", teks("d5", xKol(0), 84, "5", 11, W.merah)),
+      sorotkan("Peri", ...idPeri),
+      tambah("sedikit,", ...kartu("ps", 146, 90, 76, 20, W.merahMuda, ["paling sedikit"], 8)),
+      tambah("dua.", teks("p2", xKol(2), 118, "2", 11, W.merah)),
+    ),
+    k(
+      SUARA_P2,
+      hapus(0, "pb-k", "pb-t0", "d5", "ps-k", "ps-t0", "p2"),
+      redamkan(0, ...idDino, ...idPeri),
+      sorotkan("Robot", ...idRobot, ...idSirkus),
+      tambah("sama", garis("gs", 120, 102, 130, 0, W.merah, 1.4, { putus: true })),
+      tambah("empat.", teks("e4", xKol(2), 96, "4 = 4", 12, W.merah)),
+    ),
+    k(
+      SUARA_P3,
+      hapus(0, "gs", "e4"),
+      redamkan("Dinosaurus", ...idRobot, ...idSirkus),
+      sorotkan("Dinosaurus", ...idDino),
+      tambah("satu", teks("k1", 150, 60, "5 – 4 = 1", 11, W.merah)),
+      ubah("Lima", { id: "k1", isi: "5 – 2 = 3" }),
+      sorotkan("tiga,", ...idPeri),
+    ),
   ],
 };

@@ -2,7 +2,7 @@ import type { DefSkenario } from "./skenario-umum";
 
 /**
  * Skenario kontekstual Matematika Kelas 1. Tiap bab punya cerita, tokoh, angka, dan urutan pilihan sendiri.
- * Bab 8 punya skenario khusus (skenario-pesta-bab8.ts) karena memakai mesin data tersendiri.
+ * Bab 8 memakai simulasi sendiri (pustaka-k1b8a dan survei-k1b8b).
  *
  * Aturan angka: Bab 1 sampai 10. Bab 2 dan 3 sampai 10. Bab 4 tanpa hitungan besar. Bab 6 sampai 20. Bab 7 satuan tak baku.
  * Diperiksa oleh scripts/uji-skenario-umum.mjs: jawaban ada di pilihan, hasil hitung benar, satu pilihan benar per adegan.

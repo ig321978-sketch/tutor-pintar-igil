@@ -1,151 +1,224 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { EMO_HIJAU, EMO_KUNING, EMO_MERAH, W, bendaDi, emo, jumlahG, jumlahTurus, judul, kartu, kotak, namaG, teks, titikBaris } from "./k1b8A-gambar";
-import { barisKelompok, gilir, goresAksi, hapus, ids, idx, k, redamkan, sorotUrut, sorotkan, tambah } from "./k1b8A-bantu";
-import { TOKO } from "./k1b8A-materi-1";
+import type { AdeganStory } from "./logika-story";
+import {
+  BANYAK,
+  E,
+  JENIS,
+  URUT_JENIS,
+  W,
+  WK,
+  bayangan,
+  emo,
+  gs,
+  idKotak,
+  idTabelMendatar,
+  idTabelMenurun,
+  judul,
+  kapur,
+  kartu,
+  kotakCerita,
+  orang,
+  panah,
+  papan,
+  selBaris,
+  selKolom,
+  tabelMendatar,
+  tabelMenurun,
+  teks,
+  turus,
+  type JenisKotak,
+} from "./k1b8A-gambar";
+import { hapus, k, sorotkan, tambah, ubah } from "./k1b8A-bantu";
 
-/* ------------------------------ 4. Daftar mainan ------------------------------ */
-const DAFTAR_Y = [34, 68, 102, 136];
-/** Satu baris daftar: kartu, gambar kecil, dan nama (`e{huruf}-nm`). Angka (`e{huruf}-ln`) menyusul. */
-const barisDaftar = (r: number): Obj[] => {
-  const g = TOKO[r];
-  const y = DAFTAR_Y[r];
-  return [kotak(`dr${r}-k`, 24, y, 252, 28, W.putih, W.biru, { rx: 6 }), emo(`ic${r}`, 44, y + 21, g.e, 16), teks(`e${g.key}-nm`, 66, y + 19, g.nama, 10.5, W.biru, { anchor: "start" })];
-};
-const angkaDaftar = (r: number): Obj => teks(`e${TOKO[r].key}-ln`, 250, DAFTAR_Y[r] + 20, String(TOKO[r].n), 13, W.merah);
-const sorotDaftar = (r: number): string[] => [`dr${r}-k`, `e${TOKO[r].key}-nm`, `e${TOKO[r].key}-ln`];
+/*
+ * Cerita orisinal IGIL "Kotak Cerita Berantakan" (Kelas 1 Bab 8 Sub-Bab A). Naskah suara dari naskah/story-naskah-k1b8a.md.
+ * Bagian ini: turus di papan kapur, tabel (baris, kolom, menurun, mendatar), dan paling banyak, paling sedikit, sama banyak.
+ */
 
-const SUARA_D1 = "Hasil menghitung tadi kita tulis dalam daftar. Daftar membuat data rapi dan mudah dibaca.";
-const SUARA_D2 = "Kereta ada enam. Mobil ada empat. Boneka ada lima. Bola ada tiga.";
-const SUARA_D3 = "Kereta, mobil, boneka, dan bola adalah contoh data. Data adalah keterangan yang kita dapat dari menghitung.";
-const SUARA_D4 = "Sekarang kita baca daftarnya. Mainan apa yang paling banyak? Kereta paling banyak, yaitu enam.";
-const SUARA_D5 = "Mainan apa yang paling sedikit? Bola paling sedikit, yaitu tiga.";
-const SUARA_D6 = "Boneka lebih banyak dari mobil. Boneka ada lima, mobil ada empat.";
-const SUARA_D7 = "Sekarang jumlah semuanya. Enam, lima, empat, dan tiga. Jumlah semuanya delapan belas mainan.";
+const DATA = URUT_JENIS.map((j) => ({ nama: JENIS[j].nama, n: BANYAK[j] }));
 
-export const ADEGAN_DAFTAR: AdeganStory = {
-  id: "daftar-mainan",
-  judul: "Daftar mainan di toko",
-  sumber: "Materi: daftar dan data",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_D1, tambah(0, judul("Daftar mainan toko")), tambah(idx(SUARA_D1, "daftar"), ...[0, 1, 2, 3].flatMap(barisDaftar))),
-    k(SUARA_D2, tambah(idx(SUARA_D2, "enam"), angkaDaftar(0)), tambah(idx(SUARA_D2, "empat"), angkaDaftar(1)), tambah(idx(SUARA_D2, "lima"), angkaDaftar(2)), tambah(idx(SUARA_D2, "tiga"), angkaDaftar(3))),
-    k(
-      SUARA_D3,
-      ...gilir(SUARA_D3, [
-        ["Kereta", ["ea-nm"]],
-        ["mobil", ["eb-nm"]],
-        ["boneka", ["ec-nm"]],
-        ["bola", ["ed-nm"]],
-      ]),
-    ),
-    k(SUARA_D4, redamkan(0, "ed-nm"), sorotkan("Kereta", ...sorotDaftar(0))),
-    k(SUARA_D5, redamkan(0, ...sorotDaftar(0)), sorotkan("Bola", ...sorotDaftar(3))),
-    k(SUARA_D6, redamkan(0, ...sorotDaftar(3)), ...gilir(SUARA_D6, [["Boneka", sorotDaftar(2)], ["mobil", sorotDaftar(1)]])),
-    k(SUARA_D7, redamkan(0, ...sorotDaftar(2), ...sorotDaftar(1)), tambah("delapan", ...kartu("js", 40, 170, 220, 28, W.emas, ["jumlah semuanya: 18"], 10.4))),
-  ],
-};
+/* ------------------------------ 4. Turus ------------------------------ */
+const SUARA_T1 = "Abang menghitung kotak hewan dengan turus. Satu kotak, satu goresan.";
+const SUARA_T2 = "Setiap lima goresan dicoret miring. Kotak hewan ada enam.";
+const SUARA_T3 = "Laut empat, roket lima, bunga tiga. Abang menggambar semua goresan di papan kapur.";
 
-/* ------------------------------ 5. Bola warna Upe ------------------------------ */
-const BOLA = [
-  { key: "a", nama: "Bola merah", e: EMO_MERAH, n: 7, y: 62 },
-  { key: "b", nama: "Bola kuning", e: EMO_KUNING, n: 4, y: 102 },
-  { key: "c", nama: "Bola hijau", e: EMO_HIJAU, n: 6, y: 142 },
-];
-const barisBola = (r: number): Obj[] => barisKelompok(BOLA[r].key, BOLA[r].nama, BOLA[r].e, BOLA[r].n, BOLA[r].y);
-const sorotBola = (r: number): string[] => [`e${BOLA[r].key}-nm`, `e${BOLA[r].key}-ln`, ...ids(`e${BOLA[r].key}`, 0, BOLA[r].n - 1)];
-const angkaBola = (r: number): Obj => jumlahG(BOLA[r].key, BOLA[r].y, String(BOLA[r].n));
+const BARIS_Y = [56, 86, 116, 146];
+const TURUS_X = 74;
+const ANGKA_X = 176;
 
-const SUARA_W1 = "Upe mempunyai banyak bola. Bolanya berwarna merah, kuning, dan hijau. Kita kelompokkan menurut warnanya.";
-const SUARA_W2 = "Kita hitung dulu. Ada tujuh bola merah. Ada empat bola kuning. Ada enam bola hijau.";
-const SUARA_W3 = "Warna apa yang paling banyak? Bola merah paling banyak, yaitu tujuh.";
-const SUARA_W4 = "Warna apa yang paling sedikit? Bola kuning paling sedikit, yaitu empat.";
-const SUARA_W5 = "Bola hijau lebih banyak dari bola kuning. Bola hijau lebih sedikit dari bola merah.";
-const SUARA_W6 = "Jadi urutan dari yang paling banyak adalah merah, hijau, lalu kuning.";
-const SUARA_W7 = "Sekarang kita belajar cara menghitung yang lain, yaitu turus.";
-const URUT = ["Merah", "Hijau", "Kuning"];
-const chipUrut = (i: number): Obj[] => kartu(`ur${i}`, 14 + i * 94, 164, 84, 26, [W.merahMuda, W.hijauMuda, W.krem][i], [URUT[i]], 10);
-
-export const ADEGAN_BOLA: AdeganStory = {
-  id: "bola-warna",
-  judul: "Bola warna milik Upe",
-  sumber: "Materi: mengelompokkan menurut warna",
-  latar: "#FFF1F2",
-  ketukan: [
-    k(SUARA_W1, tambah(0, judul("Bola Upe")), tambah(idx(SUARA_W1, "merah"), ...barisBola(0)), tambah(idx(SUARA_W1, "kuning"), ...barisBola(1)), tambah(idx(SUARA_W1, "hijau"), ...barisBola(2))),
-    k(SUARA_W2, tambah(idx(SUARA_W2, "tujuh"), angkaBola(0)), tambah(idx(SUARA_W2, "empat"), angkaBola(1)), tambah(idx(SUARA_W2, "enam"), angkaBola(2))),
-    k(SUARA_W3, sorotkan("Bola", ...sorotBola(0))),
-    k(SUARA_W4, redamkan(0, ...sorotBola(0)), sorotkan("Bola", ...sorotBola(1))),
-    k(SUARA_W5, redamkan(0, ...sorotBola(1)), sorotkan("Bola", ...sorotBola(2))),
-    k(SUARA_W6, redamkan(0, ...sorotBola(2)), tambah(idx(SUARA_W6, "merah"), chipUrut(0)), tambah(idx(SUARA_W6, "hijau"), chipUrut(1)), tambah(idx(SUARA_W6, "kuning"), chipUrut(2))),
-    k(SUARA_W7, hapus(0, ...[0, 1, 2].flatMap((i) => [`ur${i}-k`, `ur${i}-t0`])), tambah("turus.", ...kartu("tr", 40, 164, 220, 28, W.krem, ["cara lain: turus"], 10.4))),
-  ],
-};
-
-/* ------------------------------ 6. Turus: bola merah ------------------------------ */
-const YB = 62;
-const YT = 122;
-const XT = 84;
-const kunciTurus = (key: string, y: number): Obj => teks(`tt-${key}`, 4, y - 4, "Turus", 8.6, W.ungu, { anchor: "start" });
-const SUARA_T1 = "Menghitung bisa memakai turus. Turus adalah goresan kecil. Satu benda dihitung dengan satu goresan.";
-const SUARA_T2 = "Ketuk bola merah satu demi satu. Setiap ketukan menambah satu goresan. Satu, dua.";
-const SUARA_T3 = "Teruskan. Tiga, empat. Sekarang ada empat goresan tegak.";
-const SUARA_T4 = "Sekarang bola kelima. Lima! Goresan kelima miring, memotong empat goresan tadi.";
-const SUARA_T5 = "Lanjut. Enam, tujuh. Sekarang ada tujuh goresan. Satu kelompok lima, dan dua goresan lagi.";
-const SUARA_T6 = "Banyaknya goresan sama banyak dengan bola merah. Tujuh goresan, tujuh bola merah. Turus cocok!";
-const ITEM_M = ids("ea", 0, 6);
-
-export const ADEGAN_TURUS_MERAH: AdeganStory = {
-  id: "turus-merah",
-  judul: "Turus: menghitung bola merah",
-  sumber: "Materi: turus",
+export const ADEGAN_TURUS: AdeganStory = {
+  id: "turus",
+  judul: "Turus: satu kotak, satu goresan",
+  sumber: "Materi: turus, lima dicoret miring",
   latar: "#F0FDF4",
   ketukan: [
     k(
       SUARA_T1,
-      tambah(0, judul("Turus")),
-      tambah(idx(SUARA_T1, "Satu"), namaG("a", YB, "Bola merah"), ...bendaDi("a", EMO_MERAH, titikBaris(7, XT, YB)), kunciTurus("a", YT)),
+      tambah(0, judul("Turus di papan kapur"), papan("pk", 18, 28, 212, 156)),
+      tambah("Abang", ...orang("ab", 262, 100, E.abang, "Abang")),
+      tambah("kotak", ...URUT_JENIS.map((j, i) => emo(`lb${i}`, 44, BARIS_Y[i] + 14, JENIS[j].e, 17))),
+      tambah("Satu", kapur("n0", ANGKA_X, BARIS_Y[0] + 14, "1", 13, { warna: WK.kapurKuning })),
+      tambah("goresan.", ...turus("t0", TURUS_X, BARIS_Y[0], 1)),
     ),
-    k(SUARA_T2, ...goresAksi(SUARA_T2, "a", 2, XT, YT, { setelah: "goresan." }), ...sorotUrut(SUARA_T2, ITEM_M.slice(0, 2), 1, "goresan.")),
-    k(SUARA_T3, ...goresAksi(SUARA_T3, "a", 4, XT, YT, { dari: 2, setelah: "Teruskan." }), redamkan(0, "ea1"), ...sorotUrut(SUARA_T3, ITEM_M.slice(2, 4), 3, "Teruskan.")),
-    k(SUARA_T4, ...goresAksi(SUARA_T4, "a", 5, XT, YT, { dari: 4, setelah: "Sekarang" }), redamkan(0, "ea3"), sorotkan(idx(SUARA_T4, "Lima"), "ea4")),
     k(
-      SUARA_T5,
-      ...goresAksi(SUARA_T5, "a", 7, XT, YT, { dari: 5, setelah: "Lanjut." }),
-      redamkan(0, "ea4"),
-      ...sorotUrut(SUARA_T5, ITEM_M.slice(5, 7), 6, "Lanjut."),
-      tambah(idx(SUARA_T5, "tujuh", 2), jumlahTurus("a", 150, YT, "7")),
+      SUARA_T2,
+      tambah("Setiap", ...turus("t0", TURUS_X, BARIS_Y[0], 4).slice(1)),
+      tambah("lima", ...turus("t0", TURUS_X, BARIS_Y[0], 5).slice(4)),
+      ubah("lima", { id: "n0", isi: "5" }),
+      sorotkan("dicoret", "t04"),
+      tambah("enam.", ...turus("t0", TURUS_X, BARIS_Y[0], 6).slice(5)),
+      ubah("enam.", { id: "n0", isi: "6" }, { id: "t04", sorot: false }),
     ),
-    k(SUARA_T6, redamkan(0, "ea6"), tambah(idx(SUARA_T6, "Tujuh"), jumlahG("a", YB, "7")), tambah("cocok!", emo("ok", 260, 170, "✅", 26))),
+    k(
+      SUARA_T3,
+      tambah("empat,", ...turus("t1", TURUS_X, BARIS_Y[1], BANYAK.laut), kapur("n1", ANGKA_X, BARIS_Y[1] + 14, "4", 13, { warna: WK.kapurKuning })),
+      tambah("lima,", ...turus("t2", TURUS_X, BARIS_Y[2], BANYAK.roket), kapur("n2", ANGKA_X, BARIS_Y[2] + 14, "5", 13, { warna: WK.kapurKuning })),
+      tambah("tiga.", ...turus("t3", TURUS_X, BARIS_Y[3], BANYAK.bunga), kapur("n3", ANGKA_X, BARIS_Y[3] + 14, "3", 13, { warna: WK.kapurKuning })),
+      tambah("papan", emo("kp", 262, 150, E.pensil, 22)),
+    ),
   ],
 };
 
-/* ------------------------------ 7. Turus: bola kuning dan bola hijau ------------------------------ */
-const YK = 50;
-const YKT = 84;
-const YH = 118;
-const YHT = 152;
-const SUARA_U1 = "Sekarang bola kuning dan bola hijau. Kita hitung dengan turus juga.";
-const SUARA_U2 = "Bola kuning dulu. Satu, dua, tiga, empat. Empat goresan tegak, belum ada yang miring.";
-const SUARA_U3 = "Sekarang bola hijau. Satu, dua, tiga, empat, lima, enam. Goresan kelima miring. Ada enam goresan.";
-const SUARA_U4 = "Lihat turus bola hijau. Satu kelompok lima, dan satu goresan lagi. Jadi bola hijau ada enam.";
-const SUARA_U5 = "Turus bola hijau lebih banyak dari turus bola kuning. Bola hijau lebih banyak dua dari bola kuning.";
+/* ------------------------------ 5. Tabel: judul, baris, kolom ------------------------------ */
+const SUARA_B1 = "Kaka menyalin hasilnya ke tabel, berjudul Kotak Cerita Bergambar.";
+const SUARA_B2 = "Garis ke samping disebut baris. Garis ke bawah disebut kolom. Jari Igil menyusuri baris sampai ke hidung Abang, dan Abang bersin!";
+const SUARA_B3 = "Abang memutar tabel menjadi mendatar. Isinya sama, hanya bentuknya berbeda.";
 
-export const ADEGAN_TURUS_LAIN: AdeganStory = {
-  id: "turus-lain",
-  judul: "Turus: bola kuning dan bola hijau",
-  sumber: "Materi: turus untuk dua kelompok",
+const TX = 60;
+const TY = 36;
+const ID_MENURUN = idTabelMenurun("tb", 4);
+
+export const ADEGAN_TABEL: AdeganStory = {
+  id: "tabel",
+  judul: "Tabel: baris dan kolom",
+  sumber: "Materi: tabel menurun dan mendatar",
+  latar: "#EFF6FF",
+  ketukan: [
+    k(
+      SUARA_B1,
+      tambah(0, judul("Tabel data")),
+      tambah("Kaka", ...orang("kk", 248, 170, E.kaka, "Kaka")),
+      tambah("tabel,", ...tabelMenurun("tb", TX, TY, "Kotak Cerita Bergambar", DATA)),
+      sorotkan("Bergambar.", "tb-jd-k"),
+    ),
+    k(
+      SUARA_B2,
+      ubah(0, { id: "tb-jd-k", sorot: false }),
+      tambah("samping", panah("pb", TX, 144, TX + 116, 144, W.merah, { tebal: 2.6 })),
+      tambah("baris.", teks("lbr", TX + 58, 158, "baris", 9.4, W.merah)),
+      sorotkan("baris.", ...selBaris("tb", 0)),
+      ubah("baris.", { id: "tb-r0a", warna: "#FDE68A" }, { id: "tb-r0b", warna: "#FDE68A" }),
+      tambah("bawah", panah("pk", 30, TY + 20, 30, TY + 82, W.hijau, { tebal: 2.6 })),
+      tambah("kolom.", teks("lkl", 30, TY + 96, "kolom", 9.4, W.hijau)),
+      sorotkan("kolom.", ...selKolom("tb", 4)),
+      tambah("Jari", ...orang("ig", 206, 150, E.igil, "Igil"), emo("jr", 190, 74, E.jari, 22)),
+      ubah("menyusuri", { id: "jr", x: 200 }),
+      tambah("hidung", ...orang("ab", 262, 78, E.abang, "Abang")),
+      ubah("hidung", { id: "jr", x: 228 }),
+      tambah("bersin!", emo("bs", 248, 54, E.angin, 20), emo("bn", 262, 50, E.bersin, 16)),
+    ),
+    k(
+      SUARA_B3,
+      hapus("memutar", ...ID_MENURUN, "pb", "pk", "lbr", "lkl", "jr", "bs", "bn", "ig", "ig-n"),
+      tambah("memutar", emo("pt", 150, 84, E.putar, 30)),
+      hapus("mendatar.", "pt"),
+      tambah("mendatar.", ...tabelMendatar("tm", 24, 70, "Kotak Cerita Bergambar", DATA)),
+      sorotkan("sama,", ...idTabelMendatar("tm", 4).filter((id) => /-c\dbt?$/.test(id) && !id.endsWith("t"))),
+      tambah("berbeda.", ...kartu("sb", 60, 130, 180, 20, W.krem, ["isi sama, bentuk berbeda"], 9.4)),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. Paling banyak, paling sedikit, sama banyak ------------------------------ */
+const SUARA_Q1 = "Mamah bertanya, jenis mana yang paling banyak, dan jenis mana yang paling sedikit?";
+const SUARA_Q2 = "Kaka membaca tabel. Hewan paling banyak, ada enam. Bunga paling sedikit, ada tiga.";
+const SUARA_Q3 = "Roket ada lima. Kurang satu lagi, maka roket sama banyak dengan hewan.";
+
+const QX = 14;
+const QY = 34;
+/** Tengah tinggi baris ke-i pada tabel menurun yang berpojok (QX, QY). */
+const barisY = (i: number): number => QY + 15 * (i + 2) + 7.5;
+const deretKotak = (j: JenisKotak, i: number) => Array.from({ length: BANYAK[j] }, (_, s) => kotakCerita(`q${i}-${s}`, 156 + s * 15, barisY(i), j, 12)).flat();
+const idDeret = (i: number, j: JenisKotak) => Array.from({ length: BANYAK[j] }, (_, s) => idKotak(`q${i}-${s}`)).flat();
+
+export const ADEGAN_TERBANYAK: AdeganStory = {
+  id: "terbanyak",
+  judul: "Paling banyak dan paling sedikit",
+  sumber: "Materi: paling banyak, paling sedikit",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_Q1,
+      tambah(0, judul("Membaca tabel"), ...tabelMenurun("tq", QX, QY, "Kotak Cerita Bergambar", DATA)),
+      tambah(0, ...URUT_JENIS.flatMap((j, i) => deretKotak(j, i))),
+      tambah("Mamah", ...orang("mm", 262, 168, E.mamah, "Mamah")),
+      tambah("bertanya,", emo("tn", 236, 146, E.tanya, 22)),
+      tambah("banyak,", ...kartu("q1", 14, 148, 116, 18, W.merahMuda, ["paling banyak?"], 9)),
+      tambah("sedikit?", ...kartu("q2", 14, 172, 116, 18, W.langit, ["paling sedikit?"], 9)),
+    ),
+    k(
+      SUARA_Q2,
+      hapus(0, "q1-k", "q1-t0", "q2-k", "q2-t0", "tn"),
+      tambah("Kaka", ...orang("kk", 206, 170, E.kaka, "Kaka")),
+      ubah("banyak,", ...selBaris("tq", 0).map((id) => ({ id, warna: "#FCA5A5", sorot: true })), ...idDeret(0, "hewan").map((id) => ({ id, sorot: true }))),
+      tambah("banyak,", ...kartu("h1", 14, 148, 116, 18, W.merahMuda, ["paling banyak: Hewan"], 8.4)),
+      ubah("sedikit,", ...selBaris("tq", 3).map((id) => ({ id, warna: "#93C5FD", sorot: true })), ...idDeret(3, "bunga").map((id) => ({ id, sorot: true }))),
+      tambah("sedikit,", ...kartu("h2", 14, 172, 116, 18, W.langit, ["paling sedikit: Bunga"], 8.4)),
+    ),
+    k(
+      SUARA_Q3,
+      hapus(0, "h1-k", "h1-t0", "h2-k", "h2-t0"),
+      ubah(0, ...selBaris("tq", 0).map((id) => ({ id, sorot: false })), ...selBaris("tq", 3).map((id) => ({ id, sorot: false })), ...idDeret(0, "hewan").map((id) => ({ id, sorot: false })), ...idDeret(3, "bunga").map((id) => ({ id, sorot: false }))),
+      ubah("Roket", ...selBaris("tq", 2).map((id) => ({ id, warna: "#FEF08A", sorot: true })), ...idDeret(2, "roket").map((id) => ({ id, sorot: true }))),
+      tambah("Kurang", bayangan("by", 156 + 5 * 15, barisY(2), 12)),
+      tambah("satu", teks("p1", 250, barisY(2) + 3, "+1", 11, W.merah)),
+      sorotkan("maka", ...idDeret(0, "hewan")),
+      tambah("sama", ...kartu("sm", 10, 160, 150, 20, W.krem, ["roket sama banyak dengan hewan"], 7.8)),
+    ),
+  ],
+};
+
+/* ------------------------------ 7. Selisih ------------------------------ */
+const SUARA_S1 = "Berapa lebihnya kotak hewan dari kotak bunga? Igil memasangkan satu kotak hewan dengan satu kotak bunga.";
+const SUARA_S2 = "Tiga kotak hewan tidak punya pasangan. Itu selisihnya.";
+const SUARA_S3 = "Enam dikurangi tiga sama dengan tiga. Kotak hewan lebih banyak tiga.";
+
+const SX = (i: number): number => 52 + i * 24;
+const Y_HEWAN = 58;
+const Y_BUNGA = 118;
+
+export const ADEGAN_SELISIH: AdeganStory = {
+  id: "selisih",
+  judul: "Selisih dengan memasangkan",
+  sumber: "Materi: selisih, dipasangkan satu-satu",
   latar: "#FEFCE8",
   ketukan: [
     k(
-      SUARA_U1,
-      tambah(0, judul("Turus dua kelompok")),
-      tambah(idx(SUARA_U1, "kuning"), namaG("b", YK, "Bola kuning"), ...bendaDi("b", EMO_KUNING, titikBaris(4, XT, YK)), kunciTurus("b", YKT)),
-      tambah(idx(SUARA_U1, "hijau"), namaG("c", YH, "Bola hijau"), ...bendaDi("c", EMO_HIJAU, titikBaris(6, XT, YH)), kunciTurus("c", YHT)),
+      SUARA_S1,
+      tambah(0, judul("Selisih hewan dan bunga")),
+      tambah("hewan", emo("lh", 24, Y_HEWAN + 6, E.hewan, 18), ...Array.from({ length: 6 }, (_, i) => kotakCerita(`sh${i}`, SX(i), Y_HEWAN, "hewan", 18)).flat()),
+      tambah("bunga?", emo("lg", 24, Y_BUNGA + 6, E.bunga, 18), ...Array.from({ length: 3 }, (_, i) => kotakCerita(`sg${i}`, SX(i), Y_BUNGA, "bunga", 18)).flat()),
+      tambah("Igil", ...orang("ig", 258, 90, E.igil, "Igil")),
+      tambah("memasangkan", gs("pr0", SX(0), Y_HEWAN + 10, SX(0), Y_BUNGA - 10, W.merah, 2.2, { gambar: true })),
+      tambah("satu", ...kartu("p1k", 196, 150, 92, 18, W.krem, ["1 pasang"], 9)),
     ),
-    k(SUARA_U2, ...goresAksi(SUARA_U2, "b", 4, XT, YKT, { setelah: "dulu." }), tambah(idx(SUARA_U2, "empat", 2), jumlahG("b", YK, "4"))),
-    k(SUARA_U3, ...goresAksi(SUARA_U3, "c", 6, XT, YHT, { setelah: "hijau." }), tambah(idx(SUARA_U3, "enam", 2), jumlahG("c", YH, "6"))),
-    k(SUARA_U4, ...gilir(SUARA_U4, [["lima", ids("tc-g", 0, 4)], ["satu", ["tc-g5"], 2]])),
-    k(SUARA_U5, redamkan(0, "tc-g5"), sorotkan(idx(SUARA_U5, "dua"), "ec4", "ec5")),
+    k(
+      SUARA_S2,
+      hapus(0, "p1k-k", "p1k-t0"),
+      tambah("Tiga", gs("pr1", SX(1), Y_HEWAN + 10, SX(1), Y_BUNGA - 10, W.merah, 2.2, { gambar: true }), gs("pr2", SX(2), Y_HEWAN + 10, SX(2), Y_BUNGA - 10, W.merah, 2.2, { gambar: true }), teks("t3", 150, 38, "3", 14, W.merah)),
+      sorotkan("hewan", ...[3, 4, 5].flatMap((i) => idKotak(`sh${i}`))),
+      tambah("pasangan.", ...[3, 4, 5].map((i) => emo(`qs${i}`, SX(i), Y_HEWAN + 30, E.tanya, 14))),
+      tambah("selisihnya.", ...kartu("sl", 196, 132, 92, 18, W.pink, ["selisih"], 9)),
+    ),
+    k(
+      SUARA_S3,
+      hapus(0, "sl-k", "sl-t0", "t3", ...[3, 4, 5].map((i) => `qs${i}`)),
+      tambah("Enam", teks("k6", 92, 174, "6", 16, W.biru)),
+      tambah("dikurangi", teks("km", 118, 174, "–", 16, W.biru)),
+      tambah("tiga", teks("k3", 144, 174, "3", 16, W.biru)),
+      tambah("sama", teks("ks", 170, 174, "=", 16, W.biru)),
+      tambah("tiga.", teks("kh", 196, 174, "3", 16, W.merah)),
+      sorotkan("lebih", ...[3, 4, 5].flatMap((i) => idKotak(`sh${i}`))),
+      tambah("tiga@3", ...kartu("lb", 190, 130, 100, 18, W.merahMuda, ["hewan lebih 3"], 9)),
+    ),
   ],
 };
