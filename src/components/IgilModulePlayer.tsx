@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback, type ComponentType } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef, useCallback, type ComponentType } from "react";
 import {
   bukaLembarLatihan,
   kirimJawabanLatihan,
@@ -351,6 +351,8 @@ import {
   fontAnak,
 } from "@/components/modul/elemen-kelas1";
 import { catatLatihanDinilai, catatSubBabSelesai } from "@/lib/capaian-klien";
+import { bukaTahap, catatTab, gabungJejak, selesaiSub, tempatKembali, type JejakBab, type TabJejak } from "@/lib/jejak-tahap";
+import { akunPerangkat, ambilJejakServer, kirimJejakServer, muatJejakLokal, tulisJejakLokal } from "@/lib/jejak-tahap-klien";
 import { SUARA_SERAGAM } from "@/lib/suara-guru-seragam";
 
 // ============================================================================
@@ -1098,6 +1100,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const peta = paket ? paket.emoji : adaK2B8 ? SUB_ANAK_K2B8 : adaK2B7 ? SUB_ANAK_K2B7 : adaK2B6 ? SUB_ANAK_K2B6 : adaK2B5 ? SUB_ANAK_K2B5 : adaK2B4 ? SUB_ANAK_K2B4 : adaK2B3 ? SUB_ANAK_K2B3 : adaK2B2 ? SUB_ANAK_K2B2 : adaK2B1 ? SUB_ANAK_K2B1 : adaBab8 ? SUB_ANAK_BAB8 : adaBab7 ? SUB_ANAK_BAB7 : adaBab6 ? SUB_ANAK_BAB6 : adaBab5 ? SUB_ANAK_BAB5 : adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
   /** Sub-bab yang sudah punya naskah dan permainan. Sub-bab "segera hadir" tidak menahan Latihan dan Ujian. */
   const daftarSubTersedia = daftarSub.filter((id) => !SUB_BABS[id].segeraHadir);
+  const kunciSubJejak = daftarSubTersedia.join(",");
 
   // 1. State Navigasi Tab Utama (Langsung mengaktifkan Tab Silabus)
   const [activeMainTab, setActiveMainTab] = useState<MainTabId>("silabus");
@@ -1116,6 +1119,114 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const periksaBebas = useBukaSemuaKunci();
   const tahapTerbuka = periksaBebas ? 99 : unlockedSmicpaStage;
   const [popupTahap, setPopupTahap] = useState<number | null>(null);
+  const jejakRef = useRef<JejakBab>({ subSelesai: [], tahap: { A: 1 }, subAktif: "A", tab: "silabus" });
+  const jejakSiapRef = useRef(false);
+  const jejakTimer = useRef<number | null>(null);
+  const kirimTertunda = useRef(false);
+  const profilSiapRef = useRef(false);
+  const akunJejakRef = useRef<string | null>(null);
+  const babJejakRef = useRef(bab);
+  babJejakRef.current = bab;
+  const urutanJejakRef = useRef(daftarSubTersedia);
+  urutanJejakRef.current = daftarSubTersedia;
+  const subJejakRef = useRef(activeSubBab);
+  subJejakRef.current = activeSubBab;
+  akunJejakRef.current =
+    profilBelajar.status === "siap" && profilBelajar.aktif?.id
+      ? profilBelajar.aktif.id
+      : profilBelajar.status === "memuat"
+        ? null
+        : akunPerangkat();
+  profilSiapRef.current = profilBelajar.status === "siap" && Boolean(profilBelajar.aktif?.id);
+
+  const simpanJejak = useCallback((berikut: JejakBab) => {
+    if (berikut === jejakRef.current) return;
+    jejakRef.current = berikut;
+    const akun = akunJejakRef.current ?? akunPerangkat();
+    tulisJejakLokal(akun, babJejakRef.current, berikut);
+    if (!profilSiapRef.current || !akunJejakRef.current || akunJejakRef.current === "tamu") return;
+    kirimTertunda.current = true;
+    if (jejakTimer.current) window.clearTimeout(jejakTimer.current);
+    jejakTimer.current = window.setTimeout(() => {
+      jejakTimer.current = null;
+      kirimTertunda.current = false;
+      const id = akunJejakRef.current;
+      if (!id || id === "tamu") return;
+      const terkirim = jejakRef.current;
+      void kirimJejakServer(id, babJejakRef.current, terkirim).then((dariServer) => {
+        if (!dariServer) return;
+        const gabung = gabungJejak(jejakRef.current, dariServer);
+        jejakRef.current = gabung;
+        tulisJejakLokal(id, babJejakRef.current, gabung);
+      });
+    }, 700);
+  }, []);
+
+  const pindahTab = (tab: MainTabId) => {
+    setActiveMainTab(tab);
+    if (!jejakSiapRef.current) return;
+    simpanJejak(catatTab(jejakRef.current, tab, subJejakRef.current));
+  };
+
+  const pindahSub = (sub: SubBabId) => {
+    setActiveSubBab(sub);
+    if (!jejakSiapRef.current) return;
+    const tabSekarang = jejakRef.current.tab === "silabus" ? "materi" : jejakRef.current.tab;
+    simpanJejak(catatTab(jejakRef.current, tabSekarang, sub));
+  };
+
+  useLayoutEffect(() => {
+    let batal = false;
+    const akun =
+      profilBelajar.status === "siap" && profilBelajar.aktif?.id
+        ? profilBelajar.aktif.id
+        : akunPerangkat();
+    const lokal = muatJejakLokal(akun, bab);
+    jejakRef.current = lokal;
+    const urutan = urutanJejakRef.current;
+    const p = tempatKembali(lokal, urutan);
+    const sub = urutan.includes(p.sub) ? p.sub : urutan[0] ?? "A";
+    setCompletedSubBabs(lokal.subSelesai.filter((id) => urutan.includes(id)));
+    setActiveSubBab(sub);
+    setUnlockedSmicpaStage(p.tahap);
+    setActiveMainTab(p.tab);
+    jejakSiapRef.current = true;
+
+    if (profilBelajar.status !== "siap" || !profilBelajar.aktif?.id) return;
+    const id = profilBelajar.aktif.id;
+    const sidik = JSON.stringify(lokal);
+    void ambilJejakServer(id, bab).then((jauh) => {
+      if (batal || !jauh) return;
+      const siswaSudahBergerak = JSON.stringify(jejakRef.current) !== sidik;
+      const gabung = gabungJejak(jejakRef.current, jauh);
+      jejakRef.current = gabung;
+      tulisJejakLokal(id, bab, gabung);
+      if (siswaSudahBergerak) return;
+      const daftar = urutanJejakRef.current;
+      const q = tempatKembali(gabung, daftar);
+      setCompletedSubBabs(gabung.subSelesai.filter((s) => daftar.includes(s)));
+      setActiveSubBab(daftar.includes(q.sub) ? q.sub : daftar[0] ?? "A");
+      setUnlockedSmicpaStage(q.tahap);
+      setActiveMainTab(q.tab);
+    });
+    return () => {
+      batal = true;
+    };
+  }, [profilBelajar.status, profilBelajar.aktif?.id, bab, kunciSubJejak]);
+
+  useEffect(() => {
+    return () => {
+      if (jejakTimer.current) {
+        window.clearTimeout(jejakTimer.current);
+        jejakTimer.current = null;
+      }
+      const id = akunJejakRef.current;
+      if (!kirimTertunda.current || !id || id === "tamu") return;
+      kirimTertunda.current = false;
+      void kirimJejakServer(id, babJejakRef.current, jejakRef.current);
+    };
+  }, []);
+
   const [concreteCounter, setConcreteCounter] = useState<number>(3);
 
   // Ref untuk auto-scroll mulus saat tombol floating-end LANJUTKAN diklik
@@ -1496,11 +1607,16 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
     setUnlockedSmicpaStage((prev) => Math.max(prev, nextStageNumber));
     setPopupTahap(nextStageNumber);
     speakGuru(voiceAnnouncement);
+    if (jejakSiapRef.current) simpanJejak(bukaTahap(jejakRef.current, activeSubBab, nextStageNumber));
   };
 
   useEffect(() => {
-    setUnlockedSmicpaStage(1);
-    setPopupTahap(null);
+    if (!jejakSiapRef.current) return;
+    const sub = activeSubBab;
+    const jejak = jejakRef.current;
+    const n = jejak.subSelesai.includes(sub) ? 7 : Math.min(7, Math.max(1, jejak.tahap[sub] ?? 1));
+    setUnlockedSmicpaStage((prev) => (subJejakRef.current === sub ? n : prev));
+    if (subJejakRef.current === sub) setPopupTahap(null);
   }, [activeSubBab]);
 
   const handleCompleteCurrentSubBab = () => {
@@ -1510,6 +1626,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
     catatSubBabSelesai(bab, activeSubBab); // capaian di perangkat untuk halaman Rapor
     const order = daftarSubTersedia;
     const currIdx = order.indexOf(activeSubBab);
+    const tabAkhir: TabJejak = adaBab2 ? "latihan" : adaTabSimulasi ? "simulasi" : "latihan";
+    if (jejakSiapRef.current) simpanJejak(selesaiSub(jejakRef.current, activeSubBab, order, tabAkhir));
     if (currIdx < order.length - 1) {
       const nextSub = order[currIdx + 1];
       setActiveSubBab(nextSub);
@@ -1532,7 +1650,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
     const order = daftarSub;
     const currIdx = order.indexOf(activeSubBab);
     if (currIdx > 0) {
-      setActiveSubBab(order[currIdx - 1]);
+      pindahSub(order[currIdx - 1]);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
@@ -1715,7 +1833,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                   type="button"
                   aria-current={isActive ? "page" : undefined}
                   onClick={() => {
-                    setActiveMainTab(tab.id);
+                    pindahTab(tab.id);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                   style={{
@@ -2095,7 +2213,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                 if (silabusPage === 1) {
                   setSilabusPage(2);
                 } else {
-                  setActiveMainTab("materi");
+                  pindahTab("materi");
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
@@ -2128,7 +2246,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                       key={subId}
                       type="button"
                       onClick={() => {
-                        setActiveSubBab(subId);
+                        pindahSub(subId);
                       }}
                       aria-current={isSelected ? "true" : undefined}
                       style={{
@@ -2183,7 +2301,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               </p>
               <button
                 type="button"
-                onClick={() => setActiveSubBab(daftarSub[0])}
+                onClick={() => pindahSub(daftarSub[0])}
                 className="rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-3 text-sm font-black text-[#FFE566] md:text-base"
               >
                 ⬅️ KEMBALI KE SUB-BAB {daftarSub[0]}
@@ -5061,7 +5179,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
         <SimulasiBab
           speakGuru={speakGuru}
           onKeLatihan={() => {
-            setActiveMainTab("latihan");
+            pindahTab("latihan");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         />
@@ -5083,7 +5201,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           <button
             type="button"
             onClick={() => {
-              setActiveMainTab("materi");
+              pindahTab("materi");
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className="rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-3 text-sm font-black text-[#FFE566] md:text-base"
@@ -5105,7 +5223,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           <button
             type="button"
             onClick={() => {
-              setActiveMainTab("materi");
+              pindahTab("materi");
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className="rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-3 text-sm font-black text-[#FFE566] md:text-base"
@@ -5275,7 +5393,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                         if (practiceIdx < soalLatihan.length - 1) {
                           setPracticeIdx((i) => i + 1);
                         } else {
-                          setActiveMainTab("ujian");
+                          pindahTab("ujian");
                         }
                       }}
                       className="px-7 py-3 rounded-2xl bg-[#F59E0B] text-white font-black text-xs md:text-sm shadow"
@@ -5289,7 +5407,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                         if (practiceIdx < soalLatihan.length - 1) {
                           setPracticeIdx((i) => i + 1);
                         } else {
-                          setActiveMainTab("ujian");
+                          pindahTab("ujian");
                         }
                       }}
                       className="px-8 py-3 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs md:text-sm shadow-md"

@@ -82,6 +82,7 @@ export function ruteApiPublikSaatTerkunci(pathname: string): boolean {
     pathname === "/api/daftar/status" ||
     pathname === "/api/daftar/anak" ||
     pathname === "/api/belajar/profil" ||
+    pathname === "/api/belajar/jejak" ||
     pathname === "/api/belajar/latihan" ||
     pathname === "/api/belajar/ujian/mulai" ||
     pathname === "/api/belajar/ujian/serahkan" ||
