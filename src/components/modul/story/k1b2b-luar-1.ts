@@ -1,110 +1,74 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { W, bulat, deret, emo, judul, kartu, kelompok, tata, teks } from "./k1b2b-gambar";
-import { bersih, idx, k, sorotkan, tambah, ubah } from "./k1b2b-bantu";
+import { E, W, deret, deretEmo, emo, judul, kalimat, kartu, lompat, orang, pagar, teks, xPagar } from "./k1b2b-gambar";
+import { bersih, k, sorotkan, tambah, ubah, urutKata } from "./k1b2b-bantu";
 
-export const NAMA_METODE = ["Counting On", "Part-Part-Whole", "Ten Frame Add"];
-export const NAMA_METODE_ID = ["Menghitung Maju", "Bagian-Utuh", "Jumlah di Bingkai Sepuluh"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/* Video metode global Sub-Bab B "Panen Pertama dan Keranjang Sepuluh": pembuka dan Number Line (Garis Bilangan). */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
+export const NAMA_METODE = ["Number Line", "Doubles", "Make Ten"];
+export const NAMA_METODE_ID = ["Garis Bilangan", "Penjumlahan Kembar", "Membuat Sepuluh"];
+export const WARNA_METODE = [W.langit, W.pink, W.hijauMuda];
 export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara mengajarkan cara berbeda untuk menjumlahkan. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu: Counting On, Part-Part-Whole, dan Ten Frame Add.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Menghitung Maju, Bagian-Utuh, dan Jumlah di Bingkai Sepuluh.";
-const SUARA_O4 = "Semua metode ini menjawab satu pertanyaan: bagaimana mencari jumlah dua bagian dengan benar?";
-const SUARA_O5 = "Kita akan memakai benda yang akrab, seperti pensil, apel, dan balon.";
+/* ------------------------------ 1. Pembuka ------------------------------ */
+const SUARA_O1 = "Panen sudah dikemas. Abang bercerita, anak-anak di negara lain juga punya cara cepat untuk menjumlah. Kita lihat tiga metode global.";
+const SUARA_O2 = "Tiga metode itu: Number Line, Doubles, dan Make Ten.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Garis Bilangan, Penjumlahan Kembar, dan Membuat Sepuluh.";
+const SUARA_O4 = "Semua metode membantu kita menjumlah tanpa menghitung satu per satu dari awal.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk menjumlahkan",
-  sumber: "Metode luar: pembuka",
+  judul: "Tiga metode global untuk cara cepat menjumlah",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
-    k(
-      SUARA_O1,
-      tambah(0, judul("Tiga metode dari luar")),
-      tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)),
-      tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11)),
-    ),
-    k(
-      SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      ...NAMA_METODE.map((m, i) => tambah(["On,", "Part-Part-Whole,", "Add."][i], ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11))),
-    ),
-    k(
-      SUARA_O3,
-      bersih(0),
-      tambah(0, judul("Nama dalam bahasa Indonesia")),
-      ...NAMA_METODE_ID.map((m, i) => tambah(["Maju,", "Bagian-Utuh,", "Sepuluh."][i], ...kartu(`n${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 10.5))),
-      tambah("Sepuluh.", teks("n10", 272, 160, "10", 14, W.merah)),
-    ),
-    k(
-      SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah("satu", emo("i1", 60, 90, "\u{1F517}", 36), emo("i2", 150, 90, "\u{1F4CF}", 36), emo("i3", 240, 90, "\u{1F440}", 36)),
-      tambah("pertanyaan:", ...kartu("iq", 20, 120, 260, 44, W.emas, ["bagaimana mencari jumlah", "dua bagian dengan benar?"], 10)),
-    ),
-    k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Benda yang akrab")),
-      tambah("pensil,", ...kelompok("pensil", "tb", 1, 100, 60, 1, 16)),
-      tambah("apel,", ...kelompok("apel", "tc", 1, 100, 150, 1, 16)),
-      tambah("balon.", ...deret("balon", "td", [{ x: 240, y: 100 }], 18)),
-    ),
+    k(SUARA_O1, tambah(0, judul("Tiga metode global"), emo("kj", 150, 96, E.keranjang, 40)), tambah("Abang", ...orang("ab", 40, 120, E.abang, "Abang")), tambah("negara", emo("gl", 250, 110, "\u{1F30D}", 44)), tambah("tiga", ...kartu("pk", 50, 146, 200, 32, W.emas, ["3 metode global"], 11))),
+    k(SUARA_O2, bersih(0), tambah(0, judul("Tiga metode")), ...NAMA_METODE.map((m, i) => tambah(["Line,", "Doubles,", "Ten."][i], ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11)))),
+    k(SUARA_O3, bersih(0), tambah(0, judul("Nama dalam bahasa Indonesia")), ...NAMA_METODE_ID.map((m, i) => tambah(["Garis", "Kembar,", "Membuat"][i], ...kartu(`n${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11)))),
+    k(SUARA_O4, bersih(0), tambah(0, judul("Cara cepat")), tambah("menjumlah", emo("jm", 150, 100, E.jam, 40)), tambah("satu", teks("bk", 150, 150, "tidak perlu dari 1", 12, W.merah))),
   ],
 };
 
-/* ------------------------------ 2. Counting On: konsep ------------------------------ */
-const SUARA_A1 = "Metode pertama, Counting On, atau Menghitung Maju. Kita simpan bilangan pertama di kepala, lalu maju.";
-const SUARA_A2 = "Misalnya enam tambah tiga. Kita ucapkan enam, lalu maju tiga langkah. Tujuh, delapan, sembilan.";
-const SUARA_A3 = "Sembilan adalah hasilnya. Jadi enam tambah tiga sama dengan sembilan.";
-const SUARA_A4 = "Kita tidak menghitung lagi dari awal. Cara ini menghemat waktu, apalagi untuk bilangan yang lebih besar.";
-const LOMPAT = [{ x: 140, y: 100 }, { x: 185, y: 100 }, { x: 230, y: 100 }];
+/* ------------------------------ 2. Number Line: konsep ------------------------------ */
+const SUARA_N1 = "Metode pertama, Number Line, atau Garis Bilangan. Angka berjajar urut dari nol sampai sepuluh.";
+const SUARA_N2 = "Taruh jari di bilangan pertama. Lalu melompat ke kanan sebanyak bilangan kedua.";
+const SUARA_N3 = "Tiap lompatan maju satu. Angka tempat kita mendarat adalah hasilnya.";
+const SUARA_N4 = "Garis bilangan mirip pagar bernomor di kebun Mamah.";
+const G = { x0: 20, y: 110, s: 26 };
 
-export const ADEGAN_LUAR_MAJU: AdeganStory = {
-  id: "luar-maju",
-  judul: "Counting On: simpan bilangan pertama, lalu maju",
-  sumber: "Metode luar: Counting On",
-  latar: "#F0FDF4",
+export const ADEGAN_LUAR_GARIS: AdeganStory = {
+  id: "luar-garis",
+  judul: "Number Line: garis bilangan",
+  sumber: "Metode global: Number Line",
+  latar: "#EFF6FF",
   ketukan: [
-    k(SUARA_A1, tambah("pertama,", ...kepala(0)), tambah("simpan", emo("kp", 60, 86, "\u{1F4AD}", 40), teks("a6", 60, 128, "6", 40, W.merah)), tambah("maju.", emo("mj", 190, 100, "\u{27A1}", 36))),
-    k(
-      SUARA_A2,
-      bersih(0),
-      tambah(0, ...kepala(0), teks("a6", 60, 112, "6", 48, W.merah)),
-      ...["Tujuh,", "delapan,", "sembilan."].map((kata, i) => tambah(kata, bulat(`fj${i}`, LOMPAT[i].x, 100, 15, W.krem, W.biru), teks(`fl${i}`, LOMPAT[i].x, 105, String(7 + i), 14, W.merah))),
-      tambah("langkah.", teks("a3", 185, 148, "maju 3 langkah", 10, W.ungu)),
-    ),
-    k(SUARA_A3, tambah("Jadi", teks("a9", 150, 186, "6 + 3 = 9", 28, W.hijau)), sorotkan("Sembilan", "fl2")),
-    k(SUARA_A4, bersih(0), tambah(0, ...kepala(0), emo("ow", 150, 90, "\u{1F989}", 44)), tambah("menghemat", ...kartu("ah", 40, 124, 220, 34, W.emas, ["mulai dari bilangan pertama"], 10.5))),
+    k(SUARA_N1, tambah("pertama,", ...kepala(0)), tambah("Angka", ...pagar("gb", G.x0, G.y, G.s, W.biru)), sorotkan("nol", "gba0"), sorotkan("sepuluh.", "gba10")),
+    k(SUARA_N2, tambah("jari", emo("jr", xPagar(G.x0, 2, G.s), G.y - 26, "\u{1F446}", 20)), tambah("melompat", lompat("l0", G.x0, G.y, 2, G.s)), tambah("kedua.", ...kartu("cth", 100, 56, 100, 22, W.emas, ["2 + 1"], 11))),
+    k(SUARA_N3, ubah("maju", { id: "jr", x: xPagar(G.x0, 3, G.s) }), sorotkan("mendarat", "gba3"), ubah("hasilnya.", { id: "cth-t0", isi: "2 + 1 = 3" })),
+    k(SUARA_N4, tambah("pagar", emo("pg", 262, 172, "\u{1F33F}", 20)), tambah("Mamah.", teks("pm", 150, 172, "seperti pagar kebun", 10, W.hijau))),
   ],
 };
 
-/* ------------------------------ 3. Counting On: terapan ------------------------------ */
-const SUARA_B1 = "Wei punya lima balon, lalu mendapat dua balon lagi. Berapa semua balonnya?";
-const SUARA_B2 = "Kita mulai dari lima. Lima balon itu tidak perlu dihitung lagi dari awal.";
-const SUARA_B3 = "Lalu kita maju sebanyak dua balon baru. Enam, tujuh.";
-const SUARA_B4 = "Jadi lima tambah dua sama dengan tujuh. Wei punya tujuh balon.";
-const BALON_LAMA = tata(5, 76);
+/* ------------------------------ 3. Number Line: terapan ------------------------------ */
+const SUARA_T1 = "Kaka memetik lima terong, lalu empat terong lagi.";
+const SUARA_T2 = "Mulai dari lima di garis bilangan. Lompat empat kali: enam, tujuh, delapan, sembilan.";
+const SUARA_T3 = "Kita mendarat di sembilan. Jadi ada sembilan terong.";
+const SUARA_T4 = "Kalimatnya, lima ditambah empat sama dengan sembilan.";
+const posT2 = urutKata(SUARA_T2, ["enam,", "tujuh,", "delapan,", "sembilan."], "kali:");
 
-export const ADEGAN_LUAR_MAJU_TERAPAN: AdeganStory = {
-  id: "luar-maju-terapan",
-  judul: "Counting On: lima balon, maju dua",
-  sumber: "Metode luar: Counting On, terapan",
-  latar: "#F0FDF4",
+export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
+  id: "luar-garis-terapan",
+  judul: "Number Line: lima terong dan empat lagi",
+  sumber: "Metode global: Number Line, terapan",
+  latar: "#EFF6FF",
   ketukan: [
+    k(SUARA_T1, tambah(0, ...kepala(0)), tambah("lima", ...deretEmo(E.terong, "tr", deret(5, 30, 26, 70), 20)), tambah("empat", ...deretEmo(E.terong, "ts", deret(4, 180, 26, 70), 20))),
     k(
-      SUARA_B1,
-      tambah("lima", ...kepala(0), ...deret("balon", "wa", BALON_LAMA, 12)),
-      tambah(idx(SUARA_B1, "dua", 1), ...deret("balon", "wb", [{ x: 125, y: 144 }, { x: 175, y: 144 }], 12)),
+      SUARA_T2,
+      tambah("Mulai", ...pagar("gb", G.x0, 128, G.s, W.biru), emo("jr", xPagar(G.x0, 5, G.s), 102, "\u{1F446}", 18)),
+      ...posT2.map((p, i) => tambah(p, lompat(`l${i}`, G.x0, 128, 5 + i, G.s))),
+      ...posT2.map((p, i) => ubah(p, { id: "jr", x: xPagar(G.x0, 6 + i, G.s) })),
     ),
-    k(SUARA_B2, sorotkan("lima.", "wa0", "wa1", "wa2", "wa3", "wa4"), tambah("lima.", teks("m5", 150, 112, "5", 24, W.merah))),
-    k(SUARA_B3, tambah("Enam,", teks("bq0", 125, 124, "6", 12, W.merah)), tambah("tujuh.", teks("bq1", 175, 124, "7", 12, W.merah))),
-    k(SUARA_B4, tambah("Jadi", teks("b7", 150, 192, "5 + 2 = 7", 22, W.hijau)), ubah("tujuh", { id: "m5", warna: W.hijau })),
+    k(SUARA_T3, sorotkan("sembilan.", "gba9"), tambah("Jadi", ...kartu("sm", 14, 84, 90, 22, W.emas, ["9 terong"], 10))),
+    k(SUARA_T4, tambah("lima", ...kalimat("kl", 150, 186, ["5", "+", "4", "=", "9"], 16, 24))),
   ],
 };

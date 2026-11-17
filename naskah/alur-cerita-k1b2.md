@@ -32,3 +32,14 @@ Infografis "Teralis Catatan Tanam": tabel data di teralis bambu dari angka Story
 Simulasi "Bedeng Mamah": Misi Kebun bagian 1 (bibit dengan angka lain dari Story, catat kalimat penjumlahan tiap bedeng).
 CPA: Misi Kebun bagian 2 sampai 10; tiap tahap 12 soal = Klik, Tulis di kanvas, Rekam suara x 4 metode
 (Metode IGIL: gabung, bertambah, dan tulis kalimat; Counting On; Part-Part-Whole; Ten Frame). Abstract diakhiri Poin Penting.
+
+## Sub-Bab B secara rinci (selesai)
+
+Story materi "Panen Pertama dan Keranjang Sepuluh": panen pertama, keranjang Nenek muat tepat sepuluh dan sayur cepat layu;
+tomat tiga dan timun dua (pasangan bilangan), keranjang ditukar tempat, hasil tetap lima; Abang melompat di pagar bernomor dari enam tiga kali
+sampai sembilan; kantong kembar empat dan empat, dua dan dua (penjumlahan berulang); keranjang Nenek tujuh timun ditambah tiga menjadi sepuluh
+dan pasangan sepuluh lainnya; panen siap dikirim, tetangga ingin memesan (jembatan ke Sub-Bab C).
+Story metode global: Number Line (Garis Bilangan) terong 5 dan 4; Doubles (Penjumlahan Kembar) bawang 3 dan 3; Make Ten (Membuat Sepuluh) kentang 8 dan 2.
+Mind-map "Gerobak Panen" (bendera Masalah, delapan karung berurutan, peti Hasil); Infografis "Nota Panen"; Simulasi "Meja Kemas" (Misi Panen bagian 1).
+CPA: Misi Panen bagian 2 sampai 10 (Metode IGIL: pasangan bilangan dan tukar tempat; Number Line; Doubles; Make Ten), pola visual anyaman keranjang,
+cetak biru, dan nota. Abstract diakhiri Poin Penting.

@@ -1,162 +1,111 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { W, bingkai, bulat, emo, garis, isiBingkai, judul, kartu, kelompok, kotak, teks } from "./k1b2b-gambar";
-import { bersih, idx, k, sorotkan, tambah, ubah } from "./k1b2b-bantu";
-import { NAMA_METODE, NAMA_METODE_ID, WARNA_METODE, kepala } from "./k1b2b-luar-1";
+import type { AdeganStory } from "./logika-story";
+import { E, W, bedengSepuluh, emo, garis, judul, kalimat, kartu, petak, teks } from "./k1b2b-gambar";
+import { bersih, k, sorotkan, tambah, ubah } from "./k1b2b-bantu";
+import { WARNA_METODE, kepala } from "./k1b2b-luar-1";
 
-/** Bagan bagian dan utuh: lingkaran utuh `wh` di atas, lingkaran bagian `pa` dan `pb` di bawah, dua garis penghubung. Isi: teks `wh-t`, `pa-t`, `pb-t`. */
-const bagan = (): Obj[] => [
-  garis("bg1", 150, 102, -50, 20, W.biru, 2),
-  garis("bg2", 150, 102, 50, 20, W.biru, 2),
-  bulat("wh", 150, 78, 24, W.emas, W.biru),
-  bulat("pa", 100, 142, 22, W.langit, W.biru),
-  bulat("pb", 200, 142, 22, W.hijauMuda, W.biru),
-];
-const isi = (id: string, x: number, y: number, t: string, u = 22, w: string = W.merah): Obj => teks(`${id}-t`, x, y + u * 0.35, t, u, w);
+/* Video metode global Sub-Bab B: Doubles (Penjumlahan Kembar), Make Ten (Membuat Sepuluh), dan ringkasan. */
 
-/* ------------------------------ 1. Part-Part-Whole: konsep ------------------------------ */
-const SUARA_C1 = "Metode kedua, Part-Part-Whole, atau Bagian-Utuh. Dua bagian membentuk satu utuh.";
-const SUARA_C2 = "Lingkaran besar adalah jumlah, atau utuh. Dua lingkaran kecil adalah bagiannya.";
-const SUARA_C3 = "Misalnya bagian pertama tiga dan bagian kedua dua. Kita gabungkan, jadinya lima.";
-const SUARA_C4 = "Dua bagian ini bisa ditukar tempat, tetapi jumlahnya tetap lima.";
+/* ------------------------------ 4. Doubles: konsep ------------------------------ */
+const SUARA_D1 = "Metode kedua, Doubles, atau Penjumlahan Kembar. Dua bilangan yang sama ditambahkan.";
+const SUARA_D2 = "Seperti bayangan di cermin. Sisi kiri dan sisi kanan sama banyak.";
+const SUARA_D3 = "Satu ditambah satu sama dengan dua. Dua ditambah dua sama dengan empat.";
+const SUARA_D4 = "Kalau sudah hafal yang kembar, menjumlah jadi lebih cepat.";
 
-export const ADEGAN_LUAR_BAGIAN: AdeganStory = {
-  id: "luar-bagian",
-  judul: "Part-Part-Whole: dua bagian, satu utuh",
-  sumber: "Metode luar: Part-Part-Whole",
-  latar: "#EFF6FF",
+export const ADEGAN_LUAR_KEMBAR: AdeganStory = {
+  id: "luar-kembar",
+  judul: "Doubles: penjumlahan kembar",
+  sumber: "Metode global: Doubles",
+  latar: "#FDF2F8",
   ketukan: [
-    k(SUARA_C1, tambah("kedua,", ...kepala(1)), tambah("Dua", ...bagan())),
-    k(
-      SUARA_C2,
-      tambah("besar", teks("sw", 232, 82, "jumlah (utuh)", 9.4, W.ungu)),
-      sorotkan("besar", "wh"),
-      tambah("kecil", teks("sa", 48, 176, "bagian", 9.4, W.ungu), teks("sb", 252, 176, "bagian", 9.4, W.ungu)),
-    ),
-    k(
-      SUARA_C3,
-      tambah(idx(SUARA_C3, "tiga"), isi("pa", 100, 142, "3")),
-      tambah(idx(SUARA_C3, "dua", 1), isi("pb", 200, 142, "2")),
-      tambah("lima.", isi("wh", 150, 78, "5", 26)),
-    ),
-    k(
-      SUARA_C4,
-      ubah("ditukar", { id: "pa-t", isi: "2" }, { id: "pb-t", isi: "3" }),
-      sorotkan("tetap", "wh"),
-      tambah("tetap", teks("tp", 150, 192, "jumlahnya tetap 5", 10, W.ungu)),
-    ),
+    k(SUARA_D1, tambah("kedua,", ...kepala(1)), tambah("sama", teks("sm", 150, 80, "bilangan yang sama", 11, W.ungu))),
+    k(SUARA_D2, tambah("cermin.", garis("cm", 150, 94, 0, 70, W.biru, 2, { putus: true })), tambah("kiri", emo("a0", 110, 128, E.bawang, 20), emo("a1", 84, 128, E.bawang, 20)), tambah("kanan", emo("b0", 190, 128, E.bawang, 20), emo("b1", 216, 128, E.bawang, 20))),
+    k(SUARA_D3, bersih(0), tambah(0, ...kepala(1)), tambah("Satu", ...kalimat("k2", 150, 90, ["1", "+", "1", "=", "2"], 18, 26)), tambah("Dua", ...kalimat("k4", 150, 130, ["2", "+", "2", "=", "4"], 18, 26))),
+    k(SUARA_D4, tambah("hafal", ...kalimat("k6", 150, 170, ["3", "+", "3", "=", "?"], 18, 26)), tambah("cepat.", emo("ok", 262, 170, E.benar, 20))),
   ],
 };
 
-/* ------------------------------ 2. Part-Part-Whole: terapan ------------------------------ */
-const SUARA_D1 = "Sekarang ada enam apel dan tiga jeruk. Berapa jumlah buahnya?";
-const SUARA_D2 = "Bagian pertama adalah enam apel. Bagian kedua adalah tiga jeruk.";
-const SUARA_D3 = "Kita gabungkan dua bagian itu. Jumlahnya sembilan buah.";
-const SUARA_D4 = "Bagan ini membantu kita melihat dua bagian dan satu jumlah sekaligus.";
+/* ------------------------------ 5. Doubles: terapan ------------------------------ */
+const SUARA_E1 = "Mamah menaruh tiga bawang di piring kiri dan tiga bawang di piring kanan.";
+const SUARA_E2 = "Kedua piring sama banyak. Ini kembar tiga.";
+const SUARA_E3 = "Tiga ditambah tiga sama dengan enam. Semuanya enam bawang.";
+const SUARA_E4 = "Igil langsung ingat, kembar tiga hasilnya enam, tanpa menghitung lagi.";
 
-export const ADEGAN_LUAR_BAGIAN_TERAPAN: AdeganStory = {
-  id: "luar-bagian-terapan",
-  judul: "Part-Part-Whole: enam apel dan tiga jeruk",
-  sumber: "Metode luar: Part-Part-Whole, terapan",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      SUARA_D1,
-      tambah("Sekarang", ...kepala(1)),
-      tambah("enam", ...kelompok("apel", "da", 6, 74, 40, 44, 11)),
-      tambah(idx(SUARA_D1, "tiga"), ...kelompok("jeruk", "db", 3, 124, 84, 44, 11)),
-    ),
-    k(
-      SUARA_D2,
-      bersih(0),
-      tambah(0, ...kepala(1), ...bagan()),
-      tambah("enam", isi("pa", 100, 142, "6")),
-      tambah(idx(SUARA_D2, "tiga"), isi("pb", 200, 142, "3")),
-      tambah("apel.", emo("ea", 60, 150, "\u{1F34E}", 22)),
-      tambah("jeruk.", emo("ej", 240, 150, "\u{1F34A}", 22)),
-    ),
-    k(SUARA_D3, sorotkan("gabungkan", "pa", "pb"), tambah("sembilan", isi("wh", 150, 78, "9", 26)), tambah("sembilan", teks("d9", 150, 192, "6 + 3 = 9", 20, W.hijau))),
-    k(SUARA_D4, bersih(0), tambah(0, ...kepala(1), emo("ow", 150, 90, "\u{1F989}", 44)), tambah("bagan", ...kartu("dk", 40, 124, 220, 34, W.emas, ["dua bagian, satu jumlah"], 10.5))),
-  ],
-};
-
-/* ------------------------------ 3. Ten Frame Add: konsep ------------------------------ */
-const SUARA_E1 = "Metode ketiga, Ten Frame Add, atau Jumlah di Bingkai Sepuluh. Bingkai ini punya sepuluh kotak.";
-const SUARA_E2 = "Kita isi titik merah untuk bilangan pertama, yaitu lima. Lima titik memenuhi baris atas.";
-const SUARA_E3 = "Lalu kita isi titik biru untuk bilangan kedua, yaitu empat. Baris bawah terisi empat titik.";
-const SUARA_E4 = "Masih ada satu kotak kosong. Lima tambah empat sama dengan sembilan. Satu titik lagi, dan bingkainya penuh sepuluh.";
-const BIRU = "#2563EB";
-
-export const ADEGAN_LUAR_BINGKAI: AdeganStory = {
-  id: "luar-bingkai",
-  judul: "Ten Frame Add: bingkai sepuluh kotak",
-  sumber: "Metode luar: Ten Frame Add",
-  latar: "#FEFCE8",
+export const ADEGAN_LUAR_KEMBAR_TERAPAN: AdeganStory = {
+  id: "luar-kembar-terapan",
+  judul: "Doubles: bawang di dua piring",
+  sumber: "Metode global: Doubles, terapan",
+  latar: "#FDF2F8",
   ketukan: [
     k(
       SUARA_E1,
-      tambah("ketiga,", ...kepala(2)),
-      tambah("punya", ...bingkai("bk", 85, 62, 0, 26)),
-      tambah(idx(SUARA_E1, "sepuluh", 2), teks("b10", 150, 138, "10", 26, W.merah)),
+      tambah(0, ...kepala(1)),
+      tambah("kiri", { id: "p1", t: "bulat", x: 90, y: 110, r: 40, warna: W.putih, garis: W.biru, tebal: 2 }, ...[0, 1, 2].map((i) => emo(`bk${i}`, 66 + i * 24, 118, E.bawang, 20))),
+      tambah("kanan.", { id: "p2", t: "bulat", x: 210, y: 110, r: 40, warna: W.putih, garis: W.biru, tebal: 2 }, ...[0, 1, 2].map((i) => emo(`bn${i}`, 186 + i * 24, 118, E.bawang, 20))),
     ),
-    k(SUARA_E2, tambah("lima.", ...isiBingkai("bk", 85, 62, 0, 5, 26), teks("e5", 250, 84, "5", 30, W.merah))),
-    k(SUARA_E3, tambah("empat.", ...isiBingkai("bk", 85, 62, 5, 9, 26, {}, BIRU), teks("e4", 250, 124, "4", 30, BIRU))),
-    k(SUARA_E4, sorotkan("kosong.", "bk-c9"), tambah("sembilan.", teks("e9", 150, 180, "5 + 4 = 9", 24, W.hijau)), sorotkan("penuh", "bk-c9")),
+    k(SUARA_E2, sorotkan("sama", "p1", "p2"), tambah("kembar", ...kartu("kb", 110, 160, 80, 22, W.pink, ["kembar 3"], 10))),
+    k(SUARA_E3, tambah("Tiga", ...kalimat("kl", 150, 66, ["3", "+", "3", "=", "6"], 18, 26)), tambah("Semuanya", teks("s6", 150, 194, "6 bawang", 11, W.merah))),
+    k(SUARA_E4, tambah("Igil", emo("ig", 262, 166, E.igil, 24)), tambah("ingat,", emo("ot", 262, 136, "\u{1F4A1}", 20))),
   ],
 };
 
-/* ------------------------------ 4. Ten Frame Add: terapan ------------------------------ */
-const SUARA_F1 = "Wei punya sembilan bola merah di dalam bingkai, dan satu bola biru di luar bingkai.";
-const SUARA_F2 = "Bola biru kita masukkan ke kotak yang masih kosong.";
-const SUARA_F3 = "Bingkainya penuh! Sembilan tambah satu sama dengan sepuluh.";
-const SUARA_F4 = "Bingkai membantu kita menemukan pasangan sepuluh dengan cepat. Apakah kamu menemukan pasangan lainnya?";
+/* ------------------------------ 6. Make Ten: konsep ------------------------------ */
+const SUARA_M1 = "Metode ketiga, Make Ten, atau Membuat Sepuluh. Kita cari berapa lagi supaya menjadi sepuluh.";
+const SUARA_M2 = "Pakai bingkai sepuluh. Hitung kotak yang masih kosong.";
+const SUARA_M3 = "Kotak kosong itu adalah pasangan sepuluh dari bilangan yang sudah ada.";
+const SUARA_M4 = "Sepuluh itu bilangan yang penting. Banyak penjumlahan jadi mudah kalau kita ingat pasangan sepuluh.";
+const BF = { x: 85, y: 64, s: 26 };
+const sel = (i: number) => {
+  const p = petak(BF.x, BF.y, i, BF.s);
+  return { x: p.x, y: p.y + 7 };
+};
 
-export const ADEGAN_LUAR_BINGKAI_TERAPAN: AdeganStory = {
-  id: "luar-bingkai-terapan",
-  judul: "Ten Frame Add: sembilan tambah satu",
-  sumber: "Metode luar: Ten Frame Add, terapan",
-  latar: "#FEFCE8",
+export const ADEGAN_LUAR_SEPULUH: AdeganStory = {
+  id: "luar-sepuluh",
+  judul: "Make Ten: membuat sepuluh",
+  sumber: "Metode global: Make Ten",
+  latar: "#F0FDF4",
   ketukan: [
-    k(
-      SUARA_F1,
-      tambah("Wei", ...kepala(2)),
-      tambah("sembilan", ...bingkai("bu", 85, 62, 9, 26), teks("f9", 250, 88, "9", 30, W.merah)),
-      tambah("satu", bulat("bz", 260, 150, 10, BIRU, BIRU)),
-    ),
-    k(SUARA_F2, ubah("masukkan", { id: "bz", x: 85 + 4 * 26 + 13, y: 62 + 26 + 13 }), sorotkan("kosong.", "bu-c9")),
-    k(SUARA_F3, tambah("Bingkainya", kotak("fr", 85, 62, 130, 52, "none", W.hijau, { rx: 0, tebal: 3 })), tambah("sepuluh.", teks("f10", 150, 150, "9 + 1 = 10", 28, W.hijau))),
-    k(
-      SUARA_F4,
-      bersih(0),
-      tambah(0, ...kepala(2), emo("ow", 150, 84, "\u{1F989}", 44)),
-      tambah("pasangan", ...kartu("fq", 40, 114, 220, 44, W.emas, ["? + ? = 10", "cari pasangan lain"], 10.5)),
-    ),
+    k(SUARA_M1, tambah("ketiga,", ...kepala(2)), tambah("sepuluh.", ...kartu("ts", 90, 150, 120, 26, W.emas, ["... lagi jadi 10"], 10))),
+    k(SUARA_M2, tambah("bingkai", ...bedengSepuluh("bf", BF.x, BF.y, BF.s), ...[0, 1, 2, 3, 4, 5].map((i) => emo(`mk${i}`, sel(i).x, sel(i).y, E.kentang, 18))), sorotkan("kosong.", "bfc6", "bfc7", "bfc8", "bfc9")),
+    k(SUARA_M3, ubah("pasangan", { id: "ts-t0", isi: "6 dan 4 jadi 10" })),
+    k(SUARA_M4, tambah("penting.", emo("bt", 262, 80, E.bintang, 26)), tambah("ingat", teks("ig", 150, 194, "9 dan 1, 8 dan 2, 7 dan 3", 10, W.ungu))),
   ],
 };
 
-/* ------------------------------ 5. Ringkasan tiga metode ------------------------------ */
-const SUARA_R1 = "Mari kita ringkas tiga metode dari luar tadi.";
-const SUARA_R2 = "Counting On: simpan bilangan pertama, lalu maju.";
-const SUARA_R3 = "Part-Part-Whole: dua bagian membentuk jumlah. Ten Frame Add: isi bingkai sepuluh kotak sampai penuh.";
-const SUARA_R4 = "Ketiganya membantu kita menjumlahkan dengan benar. Terima kasih sudah belajar.";
-const DESKRIPSI = ["simpan bilangan pertama, lalu maju", "dua bagian membentuk jumlah", "isi 10 kotak sampai penuh"];
-const kartuMetode = (i: number): Obj[] => [kotak(`rm${i}-k`, 14, 34 + i * 54, 272, 46, WARNA_METODE[i], W.biru, { rx: 8, tebal: 1.5 }), teks(`rm${i}-n`, 150, 34 + i * 54 + 19, `${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`, 9.6, W.biru)];
-const deskripsi = (i: number): Obj => teks(`rm${i}-d`, 150, 34 + i * 54 + 36, DESKRIPSI[i], 8.8, W.merah);
+/* ------------------------------ 7. Make Ten: terapan ------------------------------ */
+const SUARA_P1 = "Keranjang kentang sudah berisi delapan. Berapa lagi supaya penuh sepuluh?";
+const SUARA_P2 = "Lihat bingkai. Masih ada dua kotak kosong.";
+const SUARA_P3 = "Abang menambah dua kentang. Delapan ditambah dua sama dengan sepuluh.";
+const SUARA_P4 = "Delapan dan dua adalah pasangan sepuluh. Keranjang penuh!";
+
+export const ADEGAN_LUAR_SEPULUH_TERAPAN: AdeganStory = {
+  id: "luar-sepuluh-terapan",
+  judul: "Make Ten: delapan kentang",
+  sumber: "Metode global: Make Ten, terapan",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(SUARA_P1, tambah(0, ...kepala(2), ...bedengSepuluh("bf", BF.x, BF.y, BF.s)), tambah("delapan.", ...[0, 1, 2, 3, 4, 5, 6, 7].map((i) => emo(`kt${i}`, sel(i).x, sel(i).y, E.kentang, 18))), tambah("Berapa", teks("tq", 150, 150, "berapa lagi?", 11, W.merah))),
+    k(SUARA_P2, sorotkan("kosong.", "bfc8", "bfc9"), tambah("dua", teks("t2", 252, 104, "2", 16, W.merah))),
+    k(SUARA_P3, tambah("menambah", emo("kt8", sel(8).x, sel(8).y, E.kentang, 18), emo("kt9", sel(9).x, sel(9).y, E.kentang, 18)), ubah("Delapan", { id: "tq", isi: "penuh 10" }), tambah("ditambah", ...kalimat("kl", 150, 182, ["8", "+", "2", "=", "10"], 16, 26))),
+    k(SUARA_P4, tambah("pasangan", ...kartu("ps", 196, 136, 90, 22, W.hijauMuda, ["8 dan 2"], 10)), sorotkan("penuh!", ...[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => `bfc${i}`))),
+  ],
+};
+
+/* ------------------------------ 8. Ringkasan ------------------------------ */
+const SUARA_Z1 = "Kita sudah melihat tiga metode global untuk menjumlah dengan cepat.";
+const SUARA_Z2 = "Number Line: mulai dari bilangan pertama, lalu melompat ke kanan.";
+const SUARA_Z3 = "Doubles: hafalkan penjumlahan kembar, dua bilangan yang sama.";
+const SUARA_Z4 = "Make Ten: cari berapa lagi supaya menjadi sepuluh.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Ringkasan metode luar",
+  judul: "Ringkasan tiga metode global",
+  sumber: "Ringkasan metode global",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_R1, tambah(0, judul("Ringkasan")), tambah("ringkas", ...kartuMetode(0)), tambah("tiga", ...kartuMetode(1)), tambah("luar", ...kartuMetode(2))),
-    k(SUARA_R2, sorotkan("Counting", "rm0-k"), tambah("simpan", deskripsi(0))),
-    k(SUARA_R3, sorotkan("Part-Part-Whole:", "rm1-k"), tambah("bagian", deskripsi(1)), sorotkan("Frame", "rm2-k"), tambah("isi", deskripsi(2))),
-    k(
-      SUARA_R4,
-      bersih(0),
-      tambah(0, judul("Terima kasih"), emo("ow", 150, 100, "\u{1F989}", 54)),
-      tambah("menjumlahkan", ...kartu("rz", 60, 124, 180, 34, W.emas, ["menjumlahkan dengan benar"], 10.5)),
-      tambah("Terima", teks("rt", 150, 184, "Sampai jumpa!", 12, W.ungu)),
-    ),
+    k(SUARA_Z1, tambah(0, judul("Ringkasan")), tambah("tiga", emo("rk", 150, 96, E.bintang, 44)), tambah("cepat.", ...kartu("rt", 60, 124, 180, 26, W.emas, ["3 metode global"], 10))),
+    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Number", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Number Line", "mulai, lalu lompat ke kanan"], 9.4))),
+    k(SUARA_Z3, tambah("Doubles:", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["Doubles", "dua bilangan yang sama"], 9.4))),
+    k(SUARA_Z4, tambah("Make", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Make Ten", "berapa lagi supaya 10"], 9.4))),
   ],
 };

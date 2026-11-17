@@ -1230,7 +1230,8 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   const T2 = (o) => ({ alat: "tambah", a: 3, b: 4, ditukar: 0, gabung: false, benda: true, kalimat: true, bingkai: true, garis: false, bagan: false, ...o });
   // Sub-Bab A memakai Bedeng Mamah (kebun-k1b2a): timun 3 datang 4, kentang 5 datang 5, bawang 6 keranjang kosong. Rincian di scripts/uji-kebun-k1b2a.mjs.
   const KB = (o) => ({ alat: "kebun", sayur: "timun", mula: { timun: 3, kentang: 5, bawang: 6 }, datang: { timun: 4, kentang: 5, bawang: 0 }, tanam: { timun: 0, kentang: 0, bawang: 0 }, catat: { timun: [], kentang: [], bawang: [] }, ...o });
-  ujiStruktur("bab2", X2.daftarMisiBab2, ["A", "B", "C"], { A: KB({}), B: T2({ garis: true, bagan: true }), C: T2({ garis: true, bagan: true }) });
+  const PN = (o) => ({ alat: "panen", a: 3, b: 1, ditukar: 0, catat: [], ...o });
+  ujiStruktur("bab2", X2.daftarMisiBab2, ["A", "B", "C"], { A: KB({}), B: PN({}), C: T2({ garis: true, bagan: true }) });
   const ada = (sub, k, id) => M0.misiBaru(X2.daftarMisiBab2(sub), k, kosong).includes(id);
   const SEL = (id) => ({ alat: "selesai", id });
   const CT = (timun, kentang = [], bawang = []) => ({ timun, kentang, bawang });
@@ -1238,10 +1239,10 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   cek(ada("A", KB({ tanam: { timun: 0, kentang: 5, bawang: 0 } }), "a-penuh") && !ada("A", KB({ tanam: { timun: 0, kentang: 4, bawang: 0 } }), "a-penuh"), "bab2 A: kentang penuh sepuluh");
   cek(ada("A", KB({ catat: CT([], [], ["6+0=6"]) }), "a-nol") && ada("A", KB({ catat: CT(["3+0=3", "3+1=4"]) }), "a-dua") && !ada("A", KB({ catat: CT(["3+0=3"], ["5+0=5"]) }), "a-dua"), "bab2 A: nol dan dua kalimat");
   cek(ada("A", KB({ catat: CT([], ["5+3=8"]) }), "a-delapan") && ada("A", KB({ catat: CT([], ["5+2=7"]) }), "a-tujuh") && !ada("A", T2({ a: 4, b: 4 }), "a-delapan"), "bab2 A: bebas");
-  cek(ada("B", T2({ ditukar: 1 }), "b-tukar") && !ada("B", T2({}), "b-tukar"), "bab2 B: tukar");
-  cek(ada("B", T2({ garis: true, a: 6, b: 3 }), "b-garis") && !ada("B", T2({ garis: false, a: 6, b: 3 }), "b-garis"), "bab2 B: garis");
-  cek(ada("B", T2({ a: 5, b: 5 }), "b-kembar") && ada("B", T2({ a: 8, b: 2 }), "b-sepuluh") && ada("B", T2({ bagan: true, a: 4, b: 3 }), "b-bagan"), "bab2 B: kembar, sepuluh, bagan");
-  cek(ada("B", T2({ ditukar: 1, a: 1, b: 9 }), "b-sembilan") && !ada("B", T2({ a: 1, b: 9 }), "b-sembilan") && ada("B", SEL("mesin"), "b-ingat-mesin"), "bab2 B: bebas");
+  // Sub-Bab B memakai Meja Kemas (panen-k1b2b): mulai tiga dan satu. Rincian di scripts/uji-panen-k1b2b.mjs.
+  cek(ada("B", PN({ ditukar: 1, a: 1, b: 3 }), "b-tukar") && !ada("B", PN({}), "b-tukar") && ada("B", PN({ a: 2, b: 6 }), "b-maju") && !ada("B", PN({ a: 6, b: 2 }), "b-maju"), "bab2 B: tukar dan hitung maju");
+  cek(ada("B", PN({ catat: ["4+4=8"] }), "b-kembar") && !ada("B", PN({ catat: ["0+0=0"] }), "b-kembar") && ada("B", PN({ catat: ["6+4=10", "4+6=10"] }), "b-sepuluh") && !ada("B", PN({ catat: ["6+4=10"] }), "b-sepuluh"), "bab2 B: kembar dan sepuluh");
+  cek(ada("B", PN({ catat: ["5+0=5"] }), "b-nol") && ada("B", PN({ catat: ["4+5=9"] }), "b-sembilan") && !ada("B", T2({ a: 4, b: 4 }), "b-kembar"), "bab2 B: bebas");
   cek(ada("C", T2({ a: 5, b: 3 }), "c-cerita") && ada("C", T2({ garis: true, a: 4, b: 2 }), "c-garis") && ada("C", T2({ ditukar: 2, a: 6, b: 2 }), "c-tukar"), "bab2 C: periksa");
   cek(!ada("C", T2({ a: 6, b: 2 }), "c-tukar"), "bab2 C: tukar harus ditekan");
   cek(ada("C", SEL("kantin"), "c-kantin") && ada("C", SEL("mesin"), "c-mesin") && ada("C", T2({ a: 7, b: 3 }), "c-sepuluh"), "bab2 C: kantin, mesin, sepuluh");

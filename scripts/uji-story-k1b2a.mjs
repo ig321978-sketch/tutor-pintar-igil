@@ -142,6 +142,8 @@ for (const v of VIDEO) {
   }
 }
 
+for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { for (const o of L.keadaanStory(a, i, 9999)) if (o.t === "teks") cek(typeof o.isi === "string" && o.isi.length > 0, `${v.id}/${a.id}#${i + 1}: teks berisi (${o.id})`); });
+
 /* ------------------------------ Khusus Sub-Bab A Bab 2 ------------------------------ */
 const M_VIDEO = V.VIDEO_MATERI_K1B2A;
 const U = V.VIDEO_LUAR_K1B2A;

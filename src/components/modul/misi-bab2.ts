@@ -10,6 +10,7 @@
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanKebun } from "./kebun-k1b2a/logika";
+import type { KeadaanPanen } from "./panen-k1b2b/logika";
 
 export type KeadaanTambah = {
   alat: "tambah";
@@ -26,7 +27,7 @@ export type KeadaanTambah = {
   bagan: boolean;
 };
 
-export type KeadaanBab2 = KeadaanTambah | KeadaanSelesai | KeadaanKebun;
+export type KeadaanBab2 = KeadaanTambah | KeadaanSelesai | KeadaanKebun | KeadaanPanen;
 
 const tam = (k: KeadaanBab2): k is KeadaanTambah => k.alat === "tambah";
 const selesai = (k: KeadaanBab2, id: string) => k.alat === "selesai" && k.id === id;
@@ -44,15 +45,16 @@ export const MISI_A: DefMisi<KeadaanBab2>[] = [
   { id: "a-tujuh", teks: "Buat kalimat kentang yang hasilnya tujuh, lalu catat.", wajib: false, cek: (k) => kebun(k) && k.catat.kentang.some((t) => t.endsWith("=7")) },
 ];
 
-/** Sub-Bab B: berbagai cara menjumlah (tukar tempat, hitung maju, kembar, jadi sepuluh). */
+/** Sub-Bab B: Misi Panen bagian satu, meja kemas (Simulasi "Panen Pertama dan Keranjang Sepuluh"). Mulai dari tiga dan satu. */
+const panen = (k: KeadaanBab2): k is KeadaanPanen => k.alat === "panen";
+const bagian = (t: string) => t.split(/[+=]/).map(Number);
 export const MISI_B: DefMisi<KeadaanBab2>[] = [
-  { id: "b-tukar", teks: "Tekan Tukar tempat. Lihat dua kalimat yang jumlahnya sama.", wajib: true, cek: (k) => tam(k) && k.ditukar > 0 },
-  { id: "b-garis", teks: "Buat merah 6 dan biru 3. Hitung maju 3 dari 6 di garis bilangan.", wajib: true, cek: (k) => tam(k) && k.garis && k.a === 6 && k.b === 3 },
-  { id: "b-kembar", teks: "Buat penjumlahan kembar: dua kelompok sama banyak.", wajib: true, cek: (k) => tam(k) && k.a === k.b && k.a > 0 },
-  { id: "b-sepuluh", teks: "Buat 8 + 2. Lihat bagaimana bingkai sepuluh menjadi penuh.", wajib: true, cek: (k) => tam(k) && k.bingkai && k.a === 8 && k.b === 2 },
-  { id: "b-bagan", teks: "Nyalakan Bagan pasangan, lalu buat 4 + 3.", wajib: true, cek: (k) => tam(k) && k.bagan && k.a === 4 && k.b === 3 },
-  { id: "b-sembilan", teks: "Buat 9 + 1, lalu tukar tempatnya.", wajib: false, cek: (k) => tam(k) && k.ditukar > 0 && k.a === 1 && k.b === 9 },
-  { id: "b-ingat-mesin", teks: "Ingat Sub-Bab A: selesaikan Mesin Tambah.", wajib: false, cek: (k) => selesai(k, "mesin") },
+  { id: "b-tukar", teks: "Tukar tempat dua keranjang yang isinya berbeda. Lihat hasilnya tetap sama.", wajib: true, cek: (k) => panen(k) && k.ditukar > 0 },
+  { id: "b-maju", teks: "Buat dua ditambah enam, lalu lihat lompatannya di garis bilangan.", wajib: true, cek: (k) => panen(k) && k.a === 2 && k.b === 6 },
+  { id: "b-kembar", teks: "Buat dua keranjang sama banyak, lalu catat kalimat kembarnya.", wajib: true, cek: (k) => panen(k) && k.catat.some((t) => { const [x, y] = bagian(t); return x === y && x > 0; }) },
+  { id: "b-sepuluh", teks: "Catat dua kalimat berbeda yang hasilnya sepuluh.", wajib: true, cek: (k) => panen(k) && k.catat.filter((t) => t.endsWith("=10")).length >= 2 },
+  { id: "b-nol", teks: "Catat kalimat dengan nol.", wajib: false, cek: (k) => panen(k) && k.catat.some((t) => bagian(t).slice(0, 2).includes(0)) },
+  { id: "b-sembilan", teks: "Catat kalimat yang hasilnya sembilan.", wajib: false, cek: (k) => panen(k) && k.catat.some((t) => t.endsWith("=9")) },
 ];
 
 /** Sub-Bab C (sub-bab akhir): soal cerita, periksa jawaban, sekaligus pencapaian misi bab ini. */
