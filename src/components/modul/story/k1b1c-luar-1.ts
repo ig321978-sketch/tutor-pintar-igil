@@ -1,145 +1,70 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { W, emo, judul, kartu, labelTs, tangga, tanggaBalok, teks, garis, LANTAI } from "./k1b1c-gambar";
-import { bersih, hapus, k, sorotkan, tambah, urutKata } from "./k1b1c-bantu";
+import { E, W, emo, jalur, judul, kartu, kotak, orang, panahObj, tengahPetak, teks } from "./k1b1c-materi-gambar";
+import { bersih, k, sorotkan, tambah, ubah } from "./k1b1c-bantu";
 
-export const NAMA_METODE = ["CPA Concrete", "CPA Pictorial", "CPA Abstract"];
-export const NAMA_METODE_ID = ["Benda Nyata Dulu", "Gambar Representasi", "Simbol Matematika"];
+/* Video metode global Sub-Bab C "Tangga Gudang Loteng": pembuka dan Number Track (Jalur Angka). */
+
+export const NAMA_METODE = ["Number Track", "Counting On", "Counting Stick"];
+export const NAMA_METODE_ID = ["Jalur Angka", "Hitung Lanjut", "Tongkat Hitung"];
 export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
-
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
 export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
-const ANAK = "\u{1F9D2}";
-const IGIL = "\u{1F989}";
-const KOLOM = [0, 1, 2, 3, 4];
-const idKolom = (i: number): string[] => Array.from({ length: i + 1 }, (_, j) => `bl${i}b${j}`);
-
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara mengajar secara bertahap, dari benda, lalu gambar, lalu angka. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu: CPA Concrete, CPA Pictorial, dan CPA Abstract.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Benda Nyata Dulu, Gambar Representasi, dan Simbol Matematika.";
-const SUARA_O4 = "Urutannya dari benda yang bisa dipegang, lalu gambar, lalu angka saja. Semuanya untuk belajar menghitung maju dan mundur.";
-const SUARA_O5 = "Kita akan mencoba tiap metode dengan tangga, batu, dan angka, seperti yang dilakukan Upe, Kira, Malosi, dan Wei.";
+/* ------------------------------ 1. Pembuka ------------------------------ */
+const SUARA_O1 = "Gudang loteng sudah rapi. Kaka bercerita, anak-anak di negara lain juga belajar menghitung maju dan mundur. Kita lihat tiga metode global.";
+const SUARA_O2 = "Tiga metode itu: Number Track, Counting On, dan Counting Stick.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Jalur Angka, Hitung Lanjut, dan Tongkat Hitung.";
+const SUARA_O4 = "Semua metode menjawab pertanyaan Igil: angka berapa sesudahnya, dan angka berapa sebelumnya?";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk berhitung",
-  sumber: "Metode luar: pembuka",
+  judul: "Tiga metode global untuk maju dan mundur",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
-    k(
-      SUARA_O1,
-      tambah(0, judul("Tiga metode dari luar")),
-      tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)),
-      tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11)),
-    ),
-    k(
-      SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      ...NAMA_METODE.map((m, i) => tambah(["Concrete,", "Pictorial,", "Abstract."][i], ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11))),
-    ),
-    k(
-      SUARA_O3,
-      bersih(0),
-      tambah(0, judul("Nama dalam bahasa Indonesia")),
-      ...NAMA_METODE_ID.map((m, i) => tambah(["Benda", "Gambar", "Simbol"][i], ...kartu(`n${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11))),
-    ),
-    k(
-      SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Dari benda ke angka")),
-      tambah("benda", emo("i1", 60, 90, "\u{1F9F1}", 40)),
-      tambah("gambar,", emo("i2", 150, 90, "\u{1F5BC}️", 40)),
-      tambah("angka", emo("i3", 240, 90, "\u{1F522}", 40)),
-      tambah("Semuanya", ...kartu("iq", 20, 124, 260, 44, W.emas, ["berhitung maju dan mundur", "dari satu sampai sepuluh"], 10)),
-    ),
-    k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Dicoba bersama")),
-      ...[["Upe", 45], ["Kira", 115], ["Malosi", 185], ["Wei", 255]].map(([nama, px]) => tambah(`${nama},`.replace("Wei,", "Wei."), emo(`o-${nama}`, px as number, 110, ANAK, 34), teks(`on-${nama}`, px as number, 130, nama as string, 8.6))),
-      tambah("tangga,", ...kartu("ot", 40, 150, 220, 30, W.krem, ["tangga, batu, dan angka"], 10)),
-    ),
+    k(SUARA_O1, tambah(0, judul("Tiga metode global"), emo("kd", 150, 96, E.kardus, 40)), tambah("Kaka", ...orang("kk", 40, 120, E.kaka, "Kaka")), tambah("negara", emo("gl", 250, 110, "\u{1F30D}", 44)), tambah("tiga", ...kartu("pk", 50, 146, 200, 32, W.emas, ["3 metode global"], 11))),
+    k(SUARA_O2, bersih(0), tambah(0, judul("Tiga metode")), ...NAMA_METODE.map((m, i) => tambah(["Track,", "On,", "Stick."][i], ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11)))),
+    k(SUARA_O3, bersih(0), tambah(0, judul("Nama dalam bahasa Indonesia")), ...NAMA_METODE_ID.map((m, i) => tambah(["Jalur", "Lanjut,", "Tongkat"][i], ...kartu(`n${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11)))),
+    k(SUARA_O4, bersih(0), tambah(0, judul("Satu pertanyaan"), emo("i2", 150, 90, E.igil, 40)), tambah("sesudahnya,", ...kartu("q1", 156, 120, 130, 34, W.hijauMuda, ["sesudahnya?"], 10)), tambah("sebelumnya?", ...kartu("q2", 14, 120, 130, 34, W.merahMuda, ["sebelumnya?"], 10))),
   ],
 };
 
-/* ------------------------------ 2. CPA Concrete: konsep ------------------------------ */
-const SUARA_K1 = "Metode pertama, CPA Concrete, atau Benda Nyata Dulu. Kita belajar dari benda yang bisa dipegang.";
-const SUARA_K2 = "Pegang balok, lalu susun pelan-pelan. Satu balok, dua balok, tiga balok, empat balok, lima balok.";
-const SUARA_K3 = "Dengan benda nyata, kita merasakan tangga makin tinggi saat balok makin banyak. Itulah menghitung maju.";
-const SUARA_K4 = "Kalau balok diambil satu per satu dari yang tertinggi, tangga makin rendah. Itulah menghitung mundur.";
-const posK2 = urutKata(SUARA_K2, ["satu", "dua", "tiga", "empat", "lima"], "pelan-pelan.");
+/* ------------------------------ 2. Number Track: konsep ------------------------------ */
+const SUARA_J1 = "Metode pertama, Number Track, atau Jalur Angka. Petak bernomor satu sampai sepuluh berjajar seperti jalan.";
+const SUARA_J2 = "Maju berarti pindah ke petak sesudahnya. Mundur berarti pindah ke petak sebelumnya.";
+const SUARA_J3 = "Setiap petak punya tetangga di kiri dan tetangga di kanan.";
+const SUARA_J4 = "Jadi jalur angka membantu kita melihat angka sebelum dan sesudah.";
+const JX = 20;
+const JY = 96;
 
-export const ADEGAN_LUAR_KONKRET: AdeganStory = {
-  id: "luar-konkret",
-  judul: "CPA Concrete: belajar dari benda nyata",
-  sumber: "Metode luar: CPA Concrete",
+export const ADEGAN_LUAR_JALUR: AdeganStory = {
+  id: "luar-jalur",
+  judul: "Number Track: jalur angka",
+  sumber: "Metode global: Number Track",
   latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_K1, tambah("pertama,", ...kepala(0)), tambah("benda", emo("bn", 100, 100, "\u{1F9F1}", 50)), tambah("dipegang.", emo("tg", 190, 100, "✋", 44))),
-    k(
-      SUARA_K2,
-      hapus(0, "bn", "tg"),
-      ...KOLOM.map((i) => tambah(posK2[i], ...tanggaBalok("bl", 100, LANTAI, [i], 20))),
-    ),
-    k(SUARA_K3, tambah("tinggi", emo("kn", 262, 100, "➡️", 28)), tambah("banyak.", ...kartu("kt", 20, 160, 210, 26, W.krem, ["makin banyak balok, makin tinggi"], 9))),
-    k(
-      SUARA_K4,
-      hapus(0, "kt-k", "kt-t0", "kn"),
-      hapus("diambil", ...idKolom(4)),
-      hapus("rendah.", ...idKolom(3)),
-      tambah("mundur.", ...kartu("kr", 20, 160, 210, 26, W.langit, ["makin sedikit balok, makin rendah"], 9)),
-    ),
+    k(SUARA_J1, tambah("pertama,", ...kepala(0)), tambah("Petak", ...jalur("jp", JX, JY))),
+    k(SUARA_J2, tambah("Maju", panahObj("pm", 160, 84, 60, 0, W.hijau), teks("pmt", 190, 76, "maju", 9, W.hijau)), tambah("Mundur", panahObj("pd", 140, 84, -60, 0, W.merah), teks("pdt", 110, 76, "mundur", 9, W.merah))),
+    k(SUARA_J3, sorotkan("tetangga", "jp3"), sorotkan("kiri", "jp4"), sorotkan("kanan.", "jp5"), tambah("Setiap", teks("t5", tengahPetak(JX, JY, 4).x, 140, "tetangga 5: 4 dan 6", 9, W.ungu))),
+    k(SUARA_J4, tambah("sebelum", ...kartu("js", 30, 156, 110, 24, W.merahMuda, ["sebelum"], 9.4)), tambah("sesudah.", ...kartu("ju", 160, 156, 110, 24, W.hijauMuda, ["sesudah"], 9.4))),
   ],
 };
 
-/* ------------------------------ 3. CPA Concrete: terapan ------------------------------ */
-const SUARA_T1 = "Wei membangun tangga dari lima balok yang berbeda tinggi. Ia akan menyusunnya dari yang paling pendek.";
-const SUARA_T2 = "Wei menghitung maju sambil menyusun. Satu, dua, tiga, empat, lima.";
-const SUARA_T3 = "Sekarang Wei membongkarnya dari yang tertinggi. Lima, empat, tiga, dua, satu.";
-const SUARA_T4 = "Dengan benda nyata, kita memegang bilangan itu sendiri. Cara ini bagus untuk memulai, sebelum memakai gambar.";
-const posT2 = urutKata(SUARA_T2, ["satu", "dua", "tiga", "empat", "lima"], "menyusun.");
-const posT3 = urutKata(SUARA_T3, ["lima", "empat", "tiga", "dua", "satu"], "tertinggi.");
+/* ------------------------------ 3. Number Track: terapan ------------------------------ */
+const SUARA_P1 = "Kardus Igil berdiri di petak nomor empat.";
+const SUARA_P2 = "Maju satu petak, kardus sampai di lima. Lima adalah angka sesudah empat.";
+const SUARA_P3 = "Kembali ke empat, lalu mundur satu petak, kardus sampai di tiga. Tiga adalah angka sebelum empat.";
+const SUARA_P4 = "Jadi sebelum empat adalah tiga, dan sesudah empat adalah lima.";
+const atas = (i: number) => ({ x: tengahPetak(JX, JY, i).x, y: JY - 6 });
 
-export const ADEGAN_LUAR_KONKRET_TERAPAN: AdeganStory = {
-  id: "luar-konkret-terapan",
-  judul: "CPA Concrete: Wei menyusun tangga balok",
-  sumber: "Metode luar: CPA Concrete, terapan",
+export const ADEGAN_LUAR_JALUR_TERAPAN: AdeganStory = {
+  id: "luar-jalur-terapan",
+  judul: "Number Track: kardus di jalur angka",
+  sumber: "Metode global: Number Track, terapan",
   latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_T1, tambah("membangun", ...kepala(0)), tambah("Wei", emo("wei", 40, 120, ANAK, 34), teks("wn", 40, 136, "Wei", 8.6)), tambah("lima", garis("ls", 90, LANTAI, 130, 0, W.hijau, 3))),
-    k(SUARA_T2, ...KOLOM.flatMap((i) => [tambah(posT2[i], ...tanggaBalok("bl", 100, LANTAI, [i], 20), teks(`lb${i}`, 110 + i * 20, LANTAI + 13, String(i + 1), 10, W.merah))])),
-    k(SUARA_T3, ...[4, 3, 2, 1, 0].flatMap((i, q) => [hapus(posT3[q], ...idKolom(i), `lb${i}`)])),
-    k(SUARA_T4, tambah("memegang", ...kartu("tp", 60, 156, 180, 28, W.krem, ["pegang dulu, gambar nanti"], 10)), tambah("bagus", emo("ow", 150, 100, IGIL, 40))),
-  ],
-};
-
-/* ------------------------------ 4. CPA Pictorial: konsep ------------------------------ */
-const SUARA_G1 = "Metode kedua, CPA Pictorial, atau Gambar Representasi. Sekarang kita pindah dari benda ke gambar.";
-const SUARA_G2 = "Gambar tangga mewakili benda. Tiap anak tangga diberi angka, mulai dari satu sampai sepuluh.";
-const SUARA_G3 = "Pada gambar, menghitung maju berarti menelusuri anak tangga ke atas. Menghitung mundur berarti menelusuri ke bawah.";
-const SUARA_G4 = "Gambar membantu kita melihat urutan bilangan sekaligus, tanpa harus memegang benda.";
-
-export const ADEGAN_LUAR_GAMBAR: AdeganStory = {
-  id: "luar-gambar",
-  judul: "CPA Pictorial: pindah ke gambar",
-  sumber: "Metode luar: CPA Pictorial",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_G1, tambah("kedua,", ...kepala(1)), tambah("pindah", emo("gm", 150, 100, "\u{1F5BC}️", 50))),
-    k(
-      SUARA_G2,
-      hapus(0, "gm"),
-      tambah(0, garis("tanah", 14, LANTAI + 2, 272, 0, W.hijau, 3), ...tangga("gs")),
-      ...urutKata(SUARA_G2, ["satu", "sepuluh"], "mulai").map((p, i) => tambah(p, ...(i === 0 ? [1, 2, 3, 4, 5, 6, 7, 8, 9] : [10]).map((v) => labelTs(v)))),
-    ),
-    k(
-      SUARA_G3,
-      tambah("maju", ...kartu("g1", 14, 62, 84, 24, W.hijauMuda, ["naik: maju"], 9)),
-      tambah("mundur", ...kartu("g2", 14, 92, 84, 24, W.langit, ["turun: mundur"], 9)),
-      sorotkan("atas.", "gs9"),
-    ),
-    k(SUARA_G4, tambah("urutan", ...kartu("g3", 40, 164, 220, 26, W.krem, ["lihat urutan sekaligus"], 10)), tambah("sekaligus,", emo("mt", 262, 120, "\u{1F440}", 30))),
+    k(SUARA_P1, tambah(0, ...kepala(0), ...jalur("jp", JX, JY)), tambah("Kardus", emo("kd", atas(3).x, atas(3).y, E.kardus, 20)), sorotkan("empat.", "jp3")),
+    k(SUARA_P2, ubah("Maju", { id: "kd", x: atas(4).x }), sorotkan("lima.", "jp4"), tambah("sesudah", teks("su", atas(4).x, 140, "sesudah", 9, W.hijau))),
+    k(SUARA_P3, ubah("Kembali", { id: "kd", x: atas(3).x }), ubah("mundur", { id: "kd", x: atas(2).x }), sorotkan("tiga.", "jp2"), tambah("sebelum", teks("sb", atas(2).x, 156, "sebelum", 9, W.merah))),
+    k(SUARA_P4, tambah("Jadi", ...kartu("jj", 40, 166, 220, 24, W.emas, ["3, lalu 4, lalu 5"], 10)), tambah("empat", kotak("fk", JX + 3 * 26 - 2, JY - 2, 30, 30, "#FFFFFF00", W.merah, { tebal: 2.5, rx: 4 }))),
   ],
 };

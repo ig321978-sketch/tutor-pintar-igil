@@ -29,3 +29,11 @@ Story metode global: Ten Frame (Bingkai Sepuluh): mobil 6 dan bola 3; Number Lin
 Simulasi dan CPA: Misi Hadiah Nenek bagian 1 (Simulasi, gudang hadiah) sampai bagian 10 (Abstract, papan banding akhir).
 CPA: tiap tahap 12 soal = Klik, Tulis di kanvas, Rekam suara x 4 metode (Metode IGIL: pasangkan dan bandingkan; Ten Frame; Number Line; One More One Less).
 Kelas 1 Bab 1 memakai kata (lebih banyak, lebih sedikit, sama banyak), tanpa tanda > < =.
+
+## Sub-Bab C secara rinci (selesai)
+
+Story materi "Tangga Gudang Loteng": gudang loteng dan sepuluh kardus bernomor yang tercampur; naik tangga sambil menghitung maju (satu sampai sepuluh);
+turun sambil menghitung mundur (sepuluh sampai nol); kardus jatuh di anak tangga lima, Abang mulai dari tengah; sebelum dan sesudah enam;
+nomor yang hilang (tiga pada barisan maju, tujuh pada barisan mundur); kardus urut dan Mamah menemukan piring, gelas, dan balon pesta (jembatan ke Sub-Bab D).
+Story metode global: Number Track (Jalur Angka), Counting On (Hitung Lanjut), Counting Stick (Tongkat Hitung).
+Simulasi dan CPA: Misi Gudang Loteng bagian 1 (Simulasi tangga loteng) sampai bagian 10 (Abstract).

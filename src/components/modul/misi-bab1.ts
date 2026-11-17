@@ -11,6 +11,7 @@
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanKamar } from "./lemari-k1b1a/logika";
 import type { KeadaanHadiah } from "./banding-k1b1b/logika";
+import type { KeadaanLoteng } from "./loteng-k1b1c/logika";
 
 export type KeadaanBilangan = {
   alat: "bilangan";
@@ -26,11 +27,10 @@ export type KeadaanBilangan = {
   banding: boolean;
 };
 
-export type KeadaanBab1 = KeadaanBilangan | KeadaanSelesai | KeadaanKamar | KeadaanHadiah;
+export type KeadaanBab1 = KeadaanBilangan | KeadaanSelesai | KeadaanKamar | KeadaanHadiah | KeadaanLoteng;
 
 const bil = (k: KeadaanBab1): k is KeadaanBilangan => k.alat === "bilangan";
 const selesai = (k: KeadaanBab1, id: string) => k.alat === "selesai" && k.id === id;
-const beda = (k: KeadaanBilangan) => Math.abs(k.n - k.m);
 
 /** Sub-Bab A: Misi Rumah Rapi bagian satu, kamar Kaka (Simulasi "Merapikan Lemari Mainan Igil"). Robot 6, yoyo 2, kelereng 8, pesawat 0. */
 const kamar = (k: KeadaanBab1): k is KeadaanKamar => k.alat === "kamar";
@@ -56,13 +56,15 @@ export const MISI_B: DefMisi<KeadaanBab1>[] = [
   { id: "b-garis", teks: "Lihat garis bilangan saat rak Igil lebih kanan.", wajib: false, cek: (k) => gudang(k) && k.tampil === "garis" && k.igil > k.kaka },
 ];
 
-/** Sub-Bab C: maju dan mundur di garis bilangan, dan Katak Maju Mundur. */
+/** Sub-Bab C: Misi Gudang Loteng bagian satu, tangga loteng (Simulasi "Tangga Gudang Loteng"). Kardus tanpa nomor: empat dan sembilan. */
+const loteng = (k: KeadaanBab1): k is KeadaanLoteng => k.alat === "loteng";
 export const MISI_C: DefMisi<KeadaanBab1>[] = [
-  { id: "c-sembilan", teks: "Ketuk angka 9 di garis bilangan. Makin ke kanan, makin besar.", wajib: true, cek: (k) => bil(k) && k.garis && k.n === 9 },
-  { id: "c-satu", teks: "Geser bilangan ke kiri sampai 1 di garis bilangan.", wajib: true, cek: (k) => bil(k) && k.garis && k.n === 1 },
-  { id: "c-katak", teks: "Antar Katak sampai semua misi sungai selesai.", wajib: true, cek: (k) => selesai(k, "katak") },
-  { id: "c-nol", teks: "Mundur sampai nol di garis bilangan.", wajib: false, cek: (k) => bil(k) && k.garis && k.n === 0 },
-  { id: "c-sebelah", teks: "Buat dua bilangan yang bersebelahan di garis bilangan.", wajib: false, cek: (k) => bil(k) && k.banding && k.garis && beda(k) === 1 },
+  { id: "c-naik", teks: "Bawa Igil naik sampai anak tangga paling atas sambil menghitung maju.", wajib: true, cek: (k) => loteng(k) && k.puncak },
+  { id: "c-turun", teks: "Bawa Igil turun lagi sampai lantai sambil menghitung mundur.", wajib: true, cek: (k) => loteng(k) && k.turun },
+  { id: "c-susun", teks: "Susun semua kardus bernomor di rak loteng.", wajib: true, cek: (k) => loteng(k) && k.kardus.filter((x) => x.bernomor).every((x) => x.tempat === x.nomor) },
+  { id: "c-hilang", teks: "Lengkapi kardus tanpa nomor di tempat nomor yang hilang.", wajib: true, cek: (k) => loteng(k) && k.kardus.filter((x) => !x.bernomor).every((x) => x.tempat === x.nomor) },
+  { id: "c-baca", teks: "Baca rak mundur dari kanan.", wajib: false, cek: (k) => loteng(k) && k.bacaMundur },
+  { id: "c-sesudah", teks: "Berhenti di anak tangga sesudah tujuh.", wajib: false, cek: (k) => loteng(k) && k.pos === 8 },
 ];
 
 /** Sub-Bab D (sub-bab akhir): pasangan bilangan, sekaligus pencapaian misi bab ini. */

@@ -1196,10 +1196,14 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   cek(ada("B", H({ igil: 8 }), "b-satu") && !ada("B", H({ igil: 9 }), "b-satu"), "bab1 B: satu lebih banyak");
   cek(ada("B", H({ tampil: "bingkai" }), "b-bingkai") && !ada("B", H({ tampil: "bingkai", igil: 8 }), "b-bingkai"), "bab1 B: bingkai saat Kaka lebih banyak");
   cek(ada("B", H({ igil: 0 }), "b-nol") && ada("B", H({ tampil: "garis", igil: 9 }), "b-garis") && !ada("B", H({ tampil: "garis" }), "b-garis") && !ada("B", L({ n: 4, m: 4 }), "b-sama"), "bab1 B: bebas");
-  const C = (o) => L({ bingkai: true, garis: true, ...o });
-  cek(ada("C", C({ n: 9 }), "c-sembilan") && ada("C", C({ n: 1 }), "c-satu") && ada("C", C({ n: 0 }), "c-nol"), "bab1 C: garis");
-  cek(ada("C", SEL("katak"), "c-katak") && !ada("C", SEL("kasir"), "c-katak"), "bab1 C: katak");
-  cek(ada("C", C({ banding: true, n: 5, m: 4 }), "c-sebelah") && !ada("C", C({ n: 5, m: 4 }), "c-sebelah"), "bab1 C: bersebelahan");
+  // Sub-Bab C memakai Tangga Loteng (loteng-k1b1c): kardus tanpa nomor empat dan sembilan. Rincian di scripts/uji-loteng-k1b1c.mjs.
+  const kardus = (tempatkan) => Array.from({ length: 10 }, (_, i) => ({ id: `kd${i + 1}`, nomor: i + 1, bernomor: ![4, 9].includes(i + 1), tempat: tempatkan(i + 1) }));
+  const T = (o) => ({ alat: "loteng", pos: 0, puncak: false, turun: false, bacaMundur: false, kardus: kardus(() => "lantai"), ...o });
+  cek(ada("C", T({ puncak: true, pos: 10 }), "c-naik") && !ada("C", T({ pos: 9 }), "c-naik"), "bab1 C: naik sampai puncak");
+  cek(ada("C", T({ puncak: true, turun: true }), "c-turun") && !ada("C", T({ puncak: true }), "c-turun"), "bab1 C: turun sampai lantai");
+  cek(ada("C", T({ kardus: kardus((n) => ([4, 9].includes(n) ? "lantai" : n)) }), "c-susun") && !ada("C", T({}), "c-susun"), "bab1 C: susun kardus bernomor");
+  cek(ada("C", T({ kardus: kardus((n) => n) }), "c-hilang") && !ada("C", T({ kardus: kardus((n) => (n === 9 ? "lantai" : n)) }), "c-hilang"), "bab1 C: lengkapi yang hilang");
+  cek(ada("C", T({ bacaMundur: true }), "c-baca") && ada("C", T({ pos: 8 }), "c-sesudah") && !ada("C", L({ n: 9 }), "c-naik"), "bab1 C: bebas");
   const D = (o) => L({ bingkai: true, garis: true, pasangan: true, ...o });
   cek(ada("D", D({ n: 10, a: 6 }), "d-sepuluh") && !ada("D", D({ n: 10, a: 4 }), "d-sepuluh"), "bab1 D: 6 dan 4");
   cek(ada("D", D({ n: 8, a: 4 }), "d-sama") && ada("D", D({ n: 7, a: 0 }), "d-nol"), "bab1 D: sama dan nol");
