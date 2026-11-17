@@ -3,12 +3,13 @@
  * Diuji di scripts/uji-lab-kelas1.mjs.
  *
  * Simulasi bertahap: satu Laboratorium Penjumlahan yang membuka alat sedikit demi sedikit
- * (A: benda, kalimat, bingkai + tab Mesin Tambah; B: + bagan pasangan, garis bilangan, Tukar tempat;
+ * (A: Bedeng Mamah, Misi Kebun bagian satu (kebun-k1b2a); B: Lab Penjumlahan + bagan pasangan, garis bilangan, Tukar tempat;
  * C: semua alat + tab Kantin Sekolah, sekaligus simulasi pencapaian misi bab ini).
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
+import type { KeadaanKebun } from "./kebun-k1b2a/logika";
 
 export type KeadaanTambah = {
   alat: "tambah";
@@ -25,21 +26,22 @@ export type KeadaanTambah = {
   bagan: boolean;
 };
 
-export type KeadaanBab2 = KeadaanTambah | KeadaanSelesai;
+export type KeadaanBab2 = KeadaanTambah | KeadaanSelesai | KeadaanKebun;
 
 const tam = (k: KeadaanBab2): k is KeadaanTambah => k.alat === "tambah";
 const selesai = (k: KeadaanBab2, id: string) => k.alat === "selesai" && k.id === id;
 const jml = (k: KeadaanTambah) => k.a + k.b;
 
-/** Sub-Bab A: cerita penjumlahan, menggabungkan dua kelompok. */
+/** Sub-Bab A: Misi Kebun bagian satu, bedeng Mamah (Simulasi "Bibit Kiriman Nenek"). Timun 3 datang 4, kentang 5 datang 5, bawang 6 keranjang kosong. */
+const kebun = (k: KeadaanBab2): k is KeadaanKebun => k.alat === "kebun";
+const adaCatat = (k: KeadaanKebun, s: "timun" | "kentang" | "bawang", t: string) => k.catat[s].includes(t);
 export const MISI_A: DefMisi<KeadaanBab2>[] = [
-  { id: "a-gabung", teks: "Nyalakan Gabungkan kelompok. Hitung semua benda dari 1.", wajib: true, cek: (k) => tam(k) && k.benda && k.gabung },
-  { id: "a-lima", teks: "Atur dua kelompok sampai jumlahnya 5.", wajib: true, cek: (k) => tam(k) && jml(k) === 5 },
-  { id: "a-nol", teks: "Kosongkan kelompok biru. Lihat jumlahnya.", wajib: true, cek: (k) => tam(k) && k.b === 0 && k.a > 0 },
-  { id: "a-sepuluh", teks: "Buat jumlah tepat 10. Lihat bingkai sepuluh penuh.", wajib: true, cek: (k) => tam(k) && k.bingkai && jml(k) === 10 },
-  { id: "a-mesin", teks: "Selesaikan Mesin Tambah: gabungkan dulu, baru jawab.", wajib: true, cek: (k) => selesai(k, "mesin") },
-  { id: "a-kembar", teks: "Buat dua kelompok sama banyak.", wajib: false, cek: (k) => tam(k) && k.a === k.b && k.a > 0 },
-  { id: "a-sembilan", teks: "Buat jumlah 9.", wajib: false, cek: (k) => tam(k) && jml(k) === 9 },
+  { id: "a-timun", teks: "Tanam semua bibit timun dari keranjang, lalu catat kalimatnya.", wajib: true, cek: (k) => kebun(k) && adaCatat(k, "timun", `${k.mula.timun}+${k.datang.timun}=${k.mula.timun + k.datang.timun}`) },
+  { id: "a-penuh", teks: "Isi bedeng kentang sampai penuh sepuluh.", wajib: true, cek: (k) => kebun(k) && k.mula.kentang + k.tanam.kentang === 10 },
+  { id: "a-nol", teks: "Catat kalimat bawang. Keranjangnya kosong!", wajib: true, cek: (k) => kebun(k) && adaCatat(k, "bawang", `${k.mula.bawang}+0=${k.mula.bawang}`) },
+  { id: "a-dua", teks: "Catat dua kalimat berbeda untuk satu sayur.", wajib: true, cek: (k) => kebun(k) && Object.values(k.catat).some((d) => d.length >= 2) },
+  { id: "a-delapan", teks: "Catat kalimat yang hasilnya delapan.", wajib: false, cek: (k) => kebun(k) && Object.values(k.catat).some((d) => d.some((t) => t.endsWith("=8"))) },
+  { id: "a-tujuh", teks: "Buat kalimat kentang yang hasilnya tujuh, lalu catat.", wajib: false, cek: (k) => kebun(k) && k.catat.kentang.some((t) => t.endsWith("=7")) },
 ];
 
 /** Sub-Bab B: berbagai cara menjumlah (tukar tempat, hitung maju, kembar, jadi sepuluh). */

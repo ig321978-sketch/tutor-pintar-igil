@@ -1,146 +1,75 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { BIRU_PENSIL, MERAH_BENDA, W, baris, bulat, emo, ikatan, judul, kartu, kartuAngka, pensilSatu, teks, type Titik } from "./k1b2a-gambar";
-import { bersih, hapus, idx, k, sorotkan, tambah, ubah, urutKata } from "./k1b2a-bantu";
+import { E, W, deret, deretEmo, emo, judul, kalimat, kartu, orang, panahObj, teks } from "./k1b2a-gambar";
+import { jalur, tengahPetak } from "./k1b1c-gambar";
+import { bersih, k, sorotkan, tambah, ubah, urutKata } from "./k1b2a-bantu";
 
-export const NAMA_METODE = ["Counting On", "Part-Part-Whole", "Ten Frame Add"];
-export const NAMA_METODE_ID = ["Menghitung Maju", "Bagian-Utuh", "Jumlah di Bingkai Sepuluh"];
+/* Video metode global Sub-Bab A "Bibit Kiriman Nenek": pembuka dan Counting On (Menghitung Maju). */
+
+export const NAMA_METODE = ["Counting On", "Part-Part-Whole", "Ten Frame"];
+export const NAMA_METODE_ID = ["Menghitung Maju", "Bagian-Bagian-Utuh", "Bingkai Sepuluh"];
 export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
-
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
 export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
-const ANAK_EMO = "\u{1F9D2}";
-
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara mengajarkan penjumlahan dengan cara yang berbeda-beda. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu: Counting On, Part-Part-Whole, dan Ten Frame Add.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Menghitung Maju, Bagian-Utuh, dan Jumlah di Bingkai Sepuluh.";
-const SUARA_O4 = "Semua metode ini menjawab satu pertanyaan: bagaimana menjumlahkan dua bagian dengan cepat dan benar?";
-const SUARA_O5 = "Kita akan melihat tiap metode dengan benda di taman, seperti bebek, mobil, dan kelereng.";
+/* ------------------------------ 1. Pembuka ------------------------------ */
+const SUARA_O1 = "Bibit sudah tertanam. Kaka bercerita, anak-anak di negara lain juga belajar penjumlahan. Kita lihat tiga metode global.";
+const SUARA_O2 = "Tiga metode itu: Counting On, Part-Part-Whole, dan Ten Frame.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Menghitung Maju, Bagian-Bagian-Utuh, dan Bingkai Sepuluh.";
+const SUARA_O4 = "Semua metode menjawab pertanyaan Mamah: kalau bibit bertambah, berapa semuanya?";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk menjumlahkan",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Tiga metode global untuk penjumlahan",
+  sumber: "Metode global: pembuka",
+  latar: "#F0FDF4",
   ketukan: [
-    k(
-      SUARA_O1,
-      tambah(0, judul("Tiga metode dari luar")),
-      tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)),
-      tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11)),
-    ),
-    k(
-      SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      ...NAMA_METODE.map((m, i) => tambah(["Counting", "Part-Part-Whole,", "Frame"][i], ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11))),
-    ),
-    k(
-      SUARA_O3,
-      bersih(0),
-      tambah(0, judul("Nama dalam bahasa Indonesia")),
-      ...NAMA_METODE_ID.map((m, i) => tambah(["Menghitung", "Bagian-Utuh,", "Jumlah"][i], ...kartu(`n${i}`, 20, 40 + i * 44, 260, 36, WARNA_METODE[i], [`${i + 1}. ${m}`], 10.5))),
-      tambah("Sepuluh.", teks("n10", 150, 184, "jumlah sampai 10", 10, W.ungu)),
-    ),
-    k(
-      SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah("satu", emo("i1", 60, 90, "\u{1F446}", 36), emo("i2", 150, 90, "➕", 36), emo("i3", 240, 90, "\u{1F440}", 36)),
-      tambah("pertanyaan:", ...kartu("iq", 20, 120, 260, 44, W.emas, ["bagaimana menjumlahkan", "dua bagian dengan benar?"], 10)),
-    ),
-    k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Benda-benda di taman")),
-      tambah("bebek,", emo("tb", 60, 100, "\u{1F986}", 40)),
-      tambah("mobil,", emo("tc", 150, 100, "\u{1F697}", 40)),
-      tambah("kelereng.", bulat("td", 240, 90, 16, "#F472B6", W.biru, { tebal: 2 })),
-    ),
+    k(SUARA_O1, tambah(0, judul("Tiga metode global"), emo("bb", 150, 96, E.bibit, 40)), tambah("Kaka", ...orang("kk", 40, 120, E.kaka, "Kaka")), tambah("negara", emo("gl", 250, 110, "\u{1F30D}", 44)), tambah("tiga", ...kartu("pk", 50, 146, 200, 32, W.emas, ["3 metode global"], 11))),
+    k(SUARA_O2, bersih(0), tambah(0, judul("Tiga metode")), ...NAMA_METODE.map((m, i) => tambah(["Counting", "Part-Part-Whole,", "Frame."][i], ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11)))),
+    k(SUARA_O3, bersih(0), tambah(0, judul("Nama dalam bahasa Indonesia")), ...NAMA_METODE_ID.map((m, i) => tambah(["Menghitung", "Bagian-Bagian-Utuh,", "Bingkai"][i], ...kartu(`n${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11)))),
+    k(SUARA_O4, bersih(0), tambah(0, judul("Satu pertanyaan"), ...orang("mm", 150, 90, E.mamah, "Mamah")), tambah("bertambah,", ...deretEmo(E.bibit, "bt", deret(3, 70, 30, 150), 22), emo("bt3", 210, 150, E.bibit, 22), panahObj("pa", 168, 144, 24, 0, W.hijau)), tambah("semuanya?", teks("tq", 150, 186, "berapa semuanya?", 11, W.merah))),
   ],
 };
 
 /* ------------------------------ 2. Counting On: konsep ------------------------------ */
-const SUARA_C1 = "Metode pertama, Counting On, atau Menghitung Maju. Mulai dari bilangan pertama, lalu maju.";
-const SUARA_C2 = "Contohnya lima ditambah tiga. Kita mulai dari lima. Tidak perlu menghitung dari awal lagi.";
-const SUARA_C3 = "Lalu maju tiga langkah. Enam, tujuh, delapan.";
-const SUARA_C4 = "Berhenti di delapan. Jadi lima ditambah tiga sama dengan delapan.";
-const UBIN = (n: number): number => 10 + 28 * (n - 1) + 13;
-const ubin = (): Obj[] => Array.from({ length: 10 }, (_, i) => kartuAngka(`nm${i + 1}`, 10 + 28 * i, 76, String(i + 1), W.krem, 26, 28, 14)).flat();
+const SUARA_N1 = "Metode pertama, Counting On, atau Menghitung Maju. Kita mulai dari bilangan pertama, tidak dari satu.";
+const SUARA_N2 = "Simpan bilangan pertama di kepala. Lalu sebut bilangan berikutnya satu per satu.";
+const SUARA_N3 = "Kalau bisa, mulai dari bilangan yang lebih besar supaya hitungannya pendek.";
+const SUARA_N4 = "Menghitung maju lebih cepat daripada menghitung semua dari awal.";
+const J = { x0: 20, y: 110, s: 26 };
 
 export const ADEGAN_LUAR_MAJU: AdeganStory = {
   id: "luar-maju",
-  judul: "Counting On: mulai dari bilangan pertama",
-  sumber: "Metode luar: Counting On",
+  judul: "Counting On: menghitung maju",
+  sumber: "Metode global: Counting On",
   latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_C1, tambah("pertama,", ...kepala(0)), tambah("bilangan", ...ubin())),
+    k(SUARA_N1, tambah("pertama,", ...kepala(0)), tambah("bilangan", ...jalur("jl", J.x0, J.y, J.s), ...kartu("sl", 110, 56, 80, 26, W.emas, ["5 + 3"], 13)), sorotkan("pertama,@2", "jl4")),
     k(
-      SUARA_C2,
-      tambah("Kita", emo("kt", UBIN(5), 66, "\u{1F438}", 24), teks("ms", UBIN(5), 124, "mulai", 9, W.merah)),
-      sorotkan("lima.", "nm5-k"),
+      SUARA_N2,
+      tambah("kepala.", emo("ot", 137, 104, "\u{1F9E0}", 18)),
+      ...["6", "7", "8"].map((n, i) => tambah(["berikutnya", "satu", "satu@2"][i], panahObj(`ln${i}`, tengahPetak(J.x0, J.y, 4 + i, J.s).x + 4, J.y + 34, 18, 0, W.merah), teks(`lt${i}`, tengahPetak(J.x0, J.y, 5 + i, J.s).x, J.y + 46, n, 11, W.merah))),
     ),
-    k(
-      SUARA_C3,
-      ...urutKata(SUARA_C3, ["Enam", "tujuh", "delapan"]).flatMap((p, i) => [ubah(p, { id: "kt", x: UBIN(6 + i) }), tambah(p, teks(`ml${i}`, UBIN(6 + i), 124, `+${i + 1}`, 10, W.hijau))]),
-    ),
-    k(SUARA_C4, sorotkan(idx(SUARA_C4, "delapan"), "nm8-k"), tambah("Jadi", ...kartu("mj", 80, 146, 140, 30, W.emas, ["5 + 3 = 8"], 14))),
+    k(SUARA_N3, tambah("besar", ...kartu("bs", 30, 166, 240, 26, W.hijauMuda, ["3 + 5: mulai dari 5"], 10))),
+    k(SUARA_N4, ubah("cepat", { id: "sl-t0", isi: "5 + 3 = 8" }), tambah("awal.", emo("ok", 262, 78, E.benar, 22))),
   ],
 };
 
 /* ------------------------------ 3. Counting On: terapan ------------------------------ */
-const SUARA_D1 = "Terapkan pada lompat tali. Empat anak sudah bermain, lalu datang lagi dua anak.";
-const SUARA_D2 = "Kita tidak menghitung dari awal lagi. Kita mulai dari empat.";
-const SUARA_D3 = "Lalu maju sesuai anak yang datang. Lima, enam.";
-const SUARA_D4 = "Berhenti di enam. Jadi empat ditambah dua sama dengan enam anak.";
-const P6: Titik[] = baris(6, 112, 44);
-const kid = (i: number) => emo(`ta${i}`, P6[i].x, P6[i].y, ANAK_EMO, 26);
+const SUARA_T1 = "Di kebun ada tujuh bibit wortel. Abang membawa dua bibit wortel lagi.";
+const SUARA_T2 = "Kita tidak menghitung dari satu. Simpan tujuh di kepala.";
+const SUARA_T3 = "Lalu hitung maju: delapan, sembilan. Jadi ada sembilan bibit wortel.";
+const SUARA_T4 = "Kalimatnya, tujuh ditambah dua sama dengan sembilan.";
+const WORTEL = deret(7, 30, 28, 110);
+const posT3 = urutKata(SUARA_T3, ["delapan,", "sembilan."], "maju:");
 
 export const ADEGAN_LUAR_MAJU_TERAPAN: AdeganStory = {
   id: "luar-maju-terapan",
-  judul: "Counting On: anak lompat tali",
-  sumber: "Metode luar: Counting On, terapan",
+  judul: "Counting On: bibit wortel",
+  sumber: "Metode global: Counting On, terapan",
   latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_D1, tambah("pada", ...kepala(0)), tambah("Empat", ...[0, 1, 2, 3].map(kid)), tambah("datang", ...[4, 5].map(kid))),
-    k(SUARA_D2, tambah("mulai", teks("m4", 106, 84, "4", 30, W.biru)), sorotkan("empat.", "ta0", "ta1", "ta2", "ta3")),
-    k(
-      SUARA_D3,
-      sorotkan("Lima,", "ta4"),
-      tambah("Lima,", teks("m5", P6[4].x, 84, "5", 18, W.merah)),
-      sorotkan("enam.", "ta5"),
-      tambah("enam.", teks("m6", P6[5].x, 84, "6", 18, W.merah)),
-    ),
-    k(SUARA_D4, tambah("Jadi", ...kartu("dj", 70, 142, 160, 32, W.emas, ["4 + 2 = 6"], 15))),
-  ],
-};
-
-/* ------------------------------ 4. Part-Part-Whole: konsep ------------------------------ */
-const SUARA_P1 = "Metode kedua, Part-Part-Whole, atau Bagian-Utuh. Dua bagian membentuk jumlah.";
-const SUARA_P2 = "Lihat tiga pensil merah dan empat pensil biru. Itu dua bagian.";
-const SUARA_P3 = "Dua bagian itu digabung menjadi jumlah. Jumlahnya tujuh.";
-const SUARA_P4 = "Kalimat tambahnya: tiga ditambah empat sama dengan tujuh. Bagian ditambah bagian sama dengan jumlah.";
-const MERAH_X = [60, 84, 108];
-const BIRU_X = [172, 196, 220, 244];
-
-export const ADEGAN_LUAR_BAGIAN: AdeganStory = {
-  id: "luar-bagian",
-  judul: "Part-Part-Whole: dua bagian membentuk jumlah",
-  sumber: "Metode luar: Part-Part-Whole",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_P1, tambah("kedua,", ...kepala(1)), tambah("Dua", ...ikatan("ik", 150, 78, ["?", "3", "4"], ["a", "b"]))),
-    k(
-      SUARA_P2,
-      tambah("tiga", ...MERAH_X.map((x, i) => pensilSatu(`pr${i}`, x, 176, MERAH_BENDA, 1))),
-      tambah("empat", ...BIRU_X.map((x, i) => pensilSatu(`pb${i}`, x, 176, BIRU_PENSIL, 1))),
-    ),
-    k(SUARA_P3, tambah("digabung", ...ikatan("ik", 150, 78, ["?", "3", "4"], ["u"])), ubah("tujuh.", { id: "ik-ut", isi: "7" })),
-    k(
-      SUARA_P4,
-      hapus(0, ...MERAH_X.map((_, i) => `pr${i}`), ...BIRU_X.map((_, i) => `pb${i}`)),
-      tambah("Kalimat", ...kartu("pj", 70, 160, 160, 30, W.emas, ["3 + 4 = 7"], 14)),
-    ),
+    k(SUARA_T1, tambah(0, ...kepala(0)), tambah("tujuh", ...deretEmo(E.wortel, "wt", WORTEL, 22)), tambah("Abang", ...orang("ab", 262, 166, E.abang, "Abang")), tambah("dua", emo("wt7", 230, 110, E.wortel, 22), emo("wt8", 258, 110, E.wortel, 22))),
+    k(SUARA_T2, sorotkan("Simpan", ...WORTEL.map((_, i) => `wt${i}`)), tambah("tujuh", ...kartu("k7", 96, 60, 60, 24, W.emas, ["7"], 14))),
+    k(SUARA_T3, tambah(posT3[0], teks("h8", 230, 86, "8", 13, W.merah)), tambah(posT3[1], teks("h9", 258, 86, "9", 13, W.merah)), tambah("Jadi", ...kartu("sm", 60, 146, 140, 26, W.hijauMuda, ["9 bibit wortel"], 11))),
+    k(SUARA_T4, tambah("tujuh", ...kalimat("kl", 130, 190, ["7", "+", "2", "=", "9"], 16, 24))),
   ],
 };

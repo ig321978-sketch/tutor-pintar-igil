@@ -11,6 +11,7 @@ const FRASA_DASAR: ReadonlyArray<readonly [string, string]> = [
   ["triangle inequality", "trai enggel ini kuo li ti"],
   ["leftmost place priority", "lef mous pleis prai o ri ti"],
   ["part-whole place model", "part houl pleis mo del"],
+  ["part-part-whole", "part part houl"],
   ["unit symbol consistency", "yu nit sim bol kon sis ten si"],
   ["isoperimetric relationship", "ai so pe ri met rik ri lei syen syip"],
   ["flexible decomposition", "flek si bel de kom po si syen"],

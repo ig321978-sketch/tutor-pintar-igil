@@ -6,6 +6,7 @@ import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiTambah, { SEMUA_TAMPIL_TAMBAH, type TampilTambah } from "./SimulasiTambah";
 import SimulasiMesinTambah from "./SimulasiMesinTambah";
 import SimulasiSkenario from "./SimulasiSkenario";
+import SimulasiBedengMamah from "./kebun-k1b2a/SimulasiBedengMamah";
 import { SKENARIO_BAB2 } from "./skenario-kelas1";
 import { daftarMisiBab2, type KeadaanBab2 } from "./misi-bab2";
 import { laporMisi, tampilMisi } from "./misi-simulasi";
@@ -27,7 +28,7 @@ import { laporMisi, tampilMisi } from "./misi-simulasi";
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
 const MISI = {
-  A: "Gabungkan dua kelompok benda dan bantu Mesin Tambah. Selesaikan misi di bawah, urutannya bebas.",
+  A: "Misi Kebun bagian satu: tanam bibit kiriman ke bedeng Mamah, lalu catat kalimat penjumlahannya. Urutannya bebas.",
   B: "Coba berbagai cara menjumlah: tukar tempat, hitung maju, kembar, dan jadi sepuluh. Selesaikan misi wajib, lalu coba tantangan bebas.",
   C: "Ubah soal cerita menjadi penjumlahan, periksa jawabanmu, dan bantu Rani di kantin. Selesaikan semua misi wajib, lalu coba tantangan bebas.",
 } as const;
@@ -44,7 +45,7 @@ const langkahBab2 = (sub: string): LangkahSim[] => {
   return [
     {
       metode: "PhET",
-      sub: huruf === "C" ? "Lab Penjumlahan: Pencapaian Misi" : "Lab Penjumlahan",
+      sub: huruf === "C" ? "Lab Penjumlahan: Pencapaian Misi" : huruf === "A" ? "Bedeng Mamah" : "Lab Penjumlahan",
       petunjuk: MAINKAN_DULU,
       misi: MISI[huruf],
       misiDaftar: tampilMisi(daftar),
@@ -55,7 +56,8 @@ const langkahBab2 = (sub: string): LangkahSim[] => {
         const tambah: TabLab = { id: "tambah", nama: "Penjumlahan", render: () => <SimulasiTambah speakGuru={a.speakGuru} tampil={TAMPIL[huruf]} onKeadaan={lapor} /> };
         const mesin: TabLab = { id: "mesin", nama: "Mesin Tambah", render: () => <SimulasiMesinTambah speakGuru={a.speakGuru} onTuntas={() => selesai("mesin")} /> };
         const kantin: TabLab = { id: "kantin", nama: "Kantin Sekolah", render: () => <SimulasiSkenario def={SKENARIO_BAB2} speakGuru={a.speakGuru} onTuntas={() => selesai("kantin")} /> };
-        return <LabBertahap tab={huruf === "C" ? [tambah, mesin, kantin] : [tambah, mesin]} label="Alat laboratorium penjumlahan" />;
+        const bedeng: TabLab = { id: "bedeng", nama: "Bedeng Mamah", render: () => <SimulasiBedengMamah speakGuru={a.speakGuru} onKeadaan={lapor} /> };
+        return <LabBertahap tab={huruf === "A" ? [bedeng] : huruf === "C" ? [tambah, mesin, kantin] : [tambah, mesin]} label="Alat laboratorium penjumlahan" />;
       },
     },
   ];

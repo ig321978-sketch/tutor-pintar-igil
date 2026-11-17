@@ -99,6 +99,10 @@ import PetaTangga from "@/components/modul/loteng-k1b1c/PetaTangga";
 import PapanGabus from "@/components/modul/loteng-k1b1c/PapanGabus";
 import TahapUrut from "@/components/modul/loteng-k1b1c/TahapUrut";
 import PetaMeja from "@/components/modul/pesta-k1b1d/PetaMeja";
+import PetaKebun from "@/components/modul/kebun-k1b2a/PetaKebun";
+import TeralisCatatan from "@/components/modul/kebun-k1b2a/TeralisCatatan";
+import TahapKebun from "@/components/modul/kebun-k1b2a/TahapKebun";
+import { ABSTRACT as ABSTRACT_KEBUN, CONCRETE as CONCRETE_KEBUN, PICTORIAL as PICTORIAL_KEBUN, TEMA_TAHAP as TEMA_KEBUN } from "@/components/modul/kebun-k1b2a/data";
 import KartuMenu from "@/components/modul/pesta-k1b1d/KartuMenu";
 import TahapPesta from "@/components/modul/pesta-k1b1d/TahapPesta";
 import { ABSTRACT as ABSTRACT_PESTA, CONCRETE as CONCRETE_PESTA, PICTORIAL as PICTORIAL_PESTA, TEMA_TAHAP as TEMA_PESTA } from "@/components/modul/pesta-k1b1d/data";
@@ -2267,7 +2271,14 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             pertahankan={adaSimMateri}
             tutupDiLatar={!adaSimMateri}
           >
-            {bab === "mtk-1-bab1" && activeSubBab === "A" ? (
+            {bab === "mtk-1-bab2" && activeSubBab === "A" ? (
+            <PetaKebun
+              key={`${bab}-${activeSubBab}-kebun`}
+              speakGuru={speakGuru}
+              teksLanjut="LANJUTKAN KE INFOGRAFIS ⬇️"
+              onLanjut={() => handleUnlockNextSmicpa(3, infografisRef, "Peta kebun sudah lengkap! Sekarang kita buka Infografis.")}
+            />
+            ) : bab === "mtk-1-bab1" && activeSubBab === "A" ? (
             <PetaPohon
               key={`${bab}-${activeSubBab}-pohon`}
               speakGuru={speakGuru}
@@ -2377,7 +2388,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             pertahankan={adaSimMateri}
             tutupDiLatar={!adaSimMateri}
           >
-            {bab === "mtk-1-bab1" && activeSubBab === "A" ? (
+            {bab === "mtk-1-bab2" && activeSubBab === "A" ? (
+            <TeralisCatatan
+              key={`${bab}-${activeSubBab}-teralis`}
+              speakGuru={speakGuru}
+              teksLanjut="LANJUTKAN KE SIMULASI ⬇️"
+              onLanjut={() =>
+                handleUnlockNextSmicpa(
+                  TAHAP_SIMULASI,
+                  simulasiRef,
+                  `Teralis catatan lengkap! Sekarang kita bereksperimen di Simulasi. ${SIMULASI_MISI_AWAL[bab]?.(activeSubBab) ?? ""}`.trim()
+                )
+              }
+            />
+            ) : bab === "mtk-1-bab1" && activeSubBab === "A" ? (
             <RakTabel
               key={`${bab}-${activeSubBab}-rak`}
               speakGuru={speakGuru}
@@ -2690,6 +2714,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                   onSelesai={() =>
                     handleUnlockNextSmicpa(5, pictorialRef, "Empat permainan benda nyata sudah selesai. Sekarang kita lihat gambarnya.")
                   }
+                />
+              ) : bab === "mtk-1-bab2" && activeSubBab === "A" ? (
+                <TahapKebun
+                  rupa="benda"
+                  soal={CONCRETE_KEBUN}
+                  pita={TEMA_KEBUN.concrete}
+                  teksAkhir="LANJUTKAN KE PICTORIAL ⬇️"
+                  umum={{
+                    speakGuru,
+                    panel: panelConcrete,
+                    hentikan: hentikanRekamConcrete,
+                    gulir: () => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+                    onSelesai: () => handleUnlockNextSmicpa(5, pictorialRef, "Dua belas soal bibit dan sayur selesai. Sekarang kita lihat gambarnya."),
+                  }}
                 />
               ) : subC2 ? (
                 <ConcreteSoalC
@@ -3142,6 +3180,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                   onSelesai={() =>
                     handleUnlockNextSmicpa(6, abstractRef, "Tiga permainan gambar sudah selesai. Ayo lihat lambang angkanya.")
                   }
+                />
+              ) : bab === "mtk-1-bab2" && activeSubBab === "A" ? (
+                <TahapKebun
+                  rupa="diagram"
+                  soal={PICTORIAL_KEBUN}
+                  pita={TEMA_KEBUN.pictorial}
+                  teksAkhir="LANJUTKAN KE ABSTRACT ⬇️"
+                  umum={{
+                    speakGuru,
+                    panel: panelGambar,
+                    hentikan: hentikanRekamConcrete,
+                    gulir: () => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+                    onSelesai: () => handleUnlockNextSmicpa(6, abstractRef, "Dua belas soal gambar selesai. Ayo lihat angka dan tandanya saja."),
+                  }}
                 />
               ) : subC2 ? (
                 <PictureSoalC
@@ -3612,6 +3664,21 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                   hentikan={hentikanRekamConcrete}
                   gulir={() => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
                   onSelesai={() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                />
+              ) : bab === "mtk-1-bab2" && activeSubBab === "A" ? (
+                <TahapKebun
+                  rupa="lambang"
+                  soal={ABSTRACT_KEBUN}
+                  pita={TEMA_KEBUN.abstract}
+                  teksAkhir="SELESAI SUB-BAB A ✅"
+                  poinPenting
+                  umum={{
+                    speakGuru,
+                    panel: panelLambang,
+                    hentikan: hentikanRekamConcrete,
+                    gulir: () => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+                    onSelesai: () => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }),
+                  }}
                 />
               ) : subC2 ? (
                 <AbstractSoalC

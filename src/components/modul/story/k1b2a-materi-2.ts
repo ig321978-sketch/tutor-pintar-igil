@@ -1,172 +1,122 @@
 import type { AdeganStory } from "./logika-story";
-import { BIRU_PENSIL, KUNING, KUNING_MOBIL, MERAH_BENDA, MERAH_MOBIL, OWL, W, bulat, emo, judul, kartu, kepingBingkai, kotak, mobil, pensilSatu, piring, selBingkai, teks, type Titik } from "./k1b2a-gambar";
-import { hapus, hitungAksi, k, redamkan, sorotkan, tambah, ubah } from "./k1b2a-bantu";
+import { E, W, bedeng, bedengSepuluh, deret, deretEmo, emo, judul, kalimat, kotak, label, lubang, orang, petak, teks } from "./k1b2a-gambar";
+import { hapus, k, sorotkan, tambah, ubah, urutKata } from "./k1b2a-bantu";
 
-/* ------------------------------ 1. Pensil Kira dan Upe digabung ------------------------------ */
-const SUARA_N1 = "Kira mempunyai tiga pensil merah. Upe mempunyai empat pensil biru. Mereka ingin menggabungkan semua pensilnya.";
-const SUARA_N2 = "Hitung dulu pensil Kira. Satu, dua, tiga. Ada tiga pensil merah. Itu bagian milik Kira.";
-const SUARA_N3 = "Sekarang pensil Upe. Satu, dua, tiga, empat. Ada empat pensil biru. Itu bagian milik Upe.";
-const SUARA_N4 = "Semua pensil dimasukkan ke satu kotak pensil. Pensil merah dan pensil biru sekarang berkumpul di satu tempat. Rapi sekali, bukan?";
-const SUARA_N5 = "Kita hitung semuanya dari awal. Satu, dua, tiga, empat, lima, enam, tujuh.";
-const SUARA_N6 = "Tiga pensil merah ditambah empat pensil biru sama dengan tujuh pensil. Menjumlahkan artinya menggabungkan.";
-const AWAL: Titik[] = [{ x: 28, y: 86 }, { x: 58, y: 86 }, { x: 88, y: 86 }, { x: 160, y: 86 }, { x: 190, y: 86 }, { x: 220, y: 86 }, { x: 250, y: 86 }];
-const DALAM: Titik[] = [54, 86, 118, 150, 182, 214, 246].map((x) => ({ x, y: 156 }));
-const pensil = (i: number, p: Titik) => pensilSatu(`pc${i}`, p.x, p.y, i < 3 ? MERAH_BENDA : BIRU_PENSIL, 1.2);
+/* Lanjutan "Bibit Kiriman Nenek": menggabungkan dua keranjang tomat di bedeng sepuluh lubang, selada dan nol, sawi sampai sepuluh. */
 
-export const ADEGAN_PENSIL: AdeganStory = {
-  id: "pensil-digabung",
-  judul: "Pensil Kira dan Upe digabung",
-  sumber: "Materi: pensil digabung",
-  latar: "#F5F3FF",
+/* ------------------------------ 4. Dua keranjang tomat digabung ------------------------------ */
+const SUARA_T1 = "Kaka membawa keranjang berisi tiga bibit tomat. Igil membawa keranjang berisi lima bibit tomat.";
+const SUARA_T2 = "Semua bibit tomat ditanam bersama di satu bedeng. Dua kumpulan digabung menjadi satu.";
+const SUARA_T3 = "Bedeng ini punya dua baris lubang, seperti bingkai sepuluh. Terisi delapan, kosong dua. Tiga ditambah lima sama dengan delapan.";
+const BS = { x: 85, y: 144, s: 22 };
+const KIRI = deret(3, 30, 30, 126);
+const KANAN = deret(5, 170, 26, 126);
+const TOMAT = [...KIRI, ...KANAN];
+const DI_BEDENG = TOMAT.map((_, i) => {
+  const p = petak(BS.x, BS.y, i, BS.s);
+  return { x: p.x, y: p.y + 6 };
+});
+
+export const ADEGAN_TOMAT: AdeganStory = {
+  id: "tomat-digabung",
+  judul: "Dua keranjang tomat digabung",
+  sumber: "Materi: menggabungkan dua kumpulan",
+  latar: "#FFF1F2",
+  ketukan: [
+    k(
+      SUARA_T1,
+      tambah(0, judul("Dua keranjang tomat")),
+      tambah("Kaka", ...orang("kk", 60, 70, E.kaka, "Kaka")),
+      tambah("tiga", kotak("kr1", 10, 106, 120, 30, "#FDE68A", W.coklat, { rx: 6, z: -1 }), ...deretEmo(E.tomat, "tm", KIRI, 20)),
+      tambah("Igil", ...orang("ig", 222, 70, E.igil, "Igil")),
+      tambah("lima", kotak("kr2", 152, 106, 140, 30, "#FDE68A", W.coklat, { rx: 6, z: -1 }), ...KANAN.map((p, i) => emo(`tm${3 + i}`, p.x, p.y, E.tomat, 20))),
+    ),
+    k(
+      SUARA_T2,
+      tambah("bedeng.", ...bedengSepuluh("bs", BS.x, BS.y, BS.s)),
+      hapus("digabung", "kr1", "kr2"),
+      ubah("digabung", ...DI_BEDENG.map((p, i) => ({ id: `tm${i}`, x: p.x, y: p.y, u: 16 }))),
+      tambah("satu.@2", ...label("gb", 106, 106, 88, "jadi satu", W.hijauMuda)),
+    ),
+    k(
+      SUARA_T3,
+      hapus(0, "gb-k", "gb-t0"),
+      tambah("bingkai", teks("bk", 150, 132, "bingkai sepuluh", 9, W.coklat)),
+      sorotkan("kosong", "bsc8", "bsc9"),
+      tambah("Tiga", ...kalimat("kl", 150, 108, ["3", "+", "5", "=", "8"], 18, 26)),
+    ),
+  ],
+};
+
+/* ------------------------------ 5. Selada dan nol ------------------------------ */
+const SUARA_N1 = "Bedeng selada sudah berisi tujuh bibit. Keranjang selada yang kedua ternyata kosong.";
+const SUARA_N2 = "Kosong artinya nol. Tujuh ditambah nol sama dengan tujuh. Tidak ada yang bertambah.";
+const SUARA_N3 = "Jadi Mamah cukup menggali tujuh lubang untuk selada, tidak lebih.";
+const SELADA = deret(7, 34, 24, 146);
+
+export const ADEGAN_NOL: AdeganStory = {
+  id: "selada-nol",
+  judul: "Selada dan nol",
+  sumber: "Materi: menambah dengan nol",
+  latar: "#ECFDF5",
   ketukan: [
     k(
       SUARA_N1,
-      tambah(0, judul("Pensil Kira dan Upe")),
-      tambah("Kira", teks("nk", 58, 124, "Kira", 10, W.ungu), ...[0, 1, 2].map((i) => pensil(i, AWAL[i]))),
-      tambah("Upe", teks("nu", 205, 124, "Upe", 10, W.ungu), ...[3, 4, 5, 6].map((i) => pensil(i, AWAL[i]))),
+      tambah(0, judul("Selada dan nol"), ...bedeng("bd", 14, 118, 186, 42)),
+      tambah("tujuh", ...deretEmo(E.selada, "sl", SELADA, 18)),
+      tambah("Keranjang", kotak("kr", 214, 118, 74, 42, "#FDE68A", W.coklat, { rx: 6, z: -1 })),
+      tambah("kosong.", teks("ks", 251, 144, "kosong", 9, W.coklat)),
     ),
-    k(SUARA_N2, ...hitungAksi(SUARA_N2, "ka", AWAL.slice(0, 3), "Kira.")),
-    k(SUARA_N3, hapus(0, "tg", "kan0", "kan1", "kan2"), ...hitungAksi(SUARA_N3, "up", AWAL.slice(3), "Upe.")),
     k(
-      SUARA_N4,
-      hapus(0, "tg", "upn0", "upn1", "upn2", "upn3", "nk", "nu"),
-      tambah(0, kotak("kb", 28, 126, 244, 56, "#FDE68A", W.coklat, { rx: 8, tebal: 2, z: -1 })),
-      ubah("dimasukkan", ...DALAM.map((p, i) => ({ id: `pc${i}`, x: p.x, y: p.y }))),
+      SUARA_N2,
+      tambah("nol.", teks("n0", 251, 104, "0", 22, W.merah)),
+      tambah("Tujuh", ...kalimat("kl", 120, 70, ["7", "+", "0", "=", "7"], 18, 26)),
+      sorotkan("Tidak", "bd"),
     ),
-    k(SUARA_N5, ...hitungAksi(SUARA_N5, "pc", DALAM, "awal.")),
-    k(SUARA_N6, hapus(0, "tg"), tambah("Tiga", ...kartu("pj", 70, 36, 160, 32, W.emas, ["3 + 4 = 7"], 14)), sorotkan("tujuh", ...DALAM.map((_, i) => `pc${i}`))),
+    k(
+      SUARA_N3,
+      hapus(0, "kr", "ks", "n0"),
+      tambah("Mamah", ...orang("mm", 250, 150, E.mamah, "Mamah")),
+      tambah("lubang", ...SELADA.map((p, i) => lubang(`lb${i}`, p.x, 155, 4))),
+      tambah("lebih.", ...label("tj", 214, 88, 76, "7 lubang", W.emas)),
+    ),
   ],
 };
 
-/* ------------------------------ 2. Mobil mainan Malosi ------------------------------ */
-const SUARA_M1 = "Malosi bermain mobil mainan di atas karpet. Ada empat mobil kuning di barisan atas.";
-const SUARA_M2 = "Ada juga empat mobil merah di barisan bawah. Berapa semua mobil mainan Malosi? Pikirkan dulu jawabanmu.";
-const SUARA_M3 = "Kita hitung semuanya. Satu, dua, tiga, empat, lima, enam, tujuh, delapan.";
-const SUARA_M4 = "Empat ditambah empat sama dengan delapan. Semuanya ada delapan mobil.";
-const SUARA_M5 = "Dua bagian yang sama banyak pun bisa digabung. Hasilnya delapan, dan Malosi senang sekali melihat mobilnya berbaris rapi.";
-const PM: Titik[] = [75, 125, 175, 225, 75, 125, 175, 225].map((x, i) => ({ x, y: i < 4 ? 60 : 130 }));
-const mob = (i: number) => mobil(`mb${i}`, PM[i].x, PM[i].y, i < 4 ? KUNING_MOBIL : MERAH_MOBIL);
+/* ------------------------------ 6. Bedeng sawi penuh sepuluh ------------------------------ */
+const SUARA_S1 = "Bedeng terakhir untuk sawi. Abang menanam enam bibit sawi.";
+const SUARA_S2 = "Mamah menambah empat bibit lagi. Mulai dari enam, lalu tujuh, delapan, sembilan, sepuluh.";
+const SUARA_S3 = "Enam ditambah empat sama dengan sepuluh. Semua lubang di bedeng terisi penuh.";
+const BW = { x: 85, y: 118, s: 26 };
+const SAWI = Array.from({ length: 10 }, (_, i) => {
+  const p = petak(BW.x, BW.y, i, BW.s);
+  return { x: p.x, y: p.y + 7 };
+});
+const posS2 = urutKata(SUARA_S2, ["enam,", "tujuh,", "delapan,", "sembilan,", "sepuluh."], "dari");
 
-export const ADEGAN_MOBIL: AdeganStory = {
-  id: "mobil-mainan",
-  judul: "Mobil mainan Malosi",
-  sumber: "Materi: mobil mainan",
-  latar: "#FFF7ED",
+export const ADEGAN_SAWI: AdeganStory = {
+  id: "sawi-sepuluh",
+  judul: "Bedeng sawi penuh sepuluh",
+  sumber: "Materi: penjumlahan sampai sepuluh",
+  latar: "#F7FEE7",
   ketukan: [
     k(
-      SUARA_M1,
-      tambah(0, judul("Mobil mainan Malosi"), kotak("kr", 20, 36, 260, 150, "#FECACA", W.biru, { rx: 10, tebal: 1.5, z: -2 })),
-      tambah("empat", ...[0, 1, 2, 3].flatMap(mob)),
+      SUARA_S1,
+      tambah(0, judul("Bedeng sawi"), ...bedengSepuluh("bs", BW.x, BW.y, BW.s)),
+      tambah("Abang", ...orang("ab", 38, 90, E.abang, "Abang")),
+      tambah("enam", ...deretEmo(E.sawi, "sw", SAWI.slice(0, 6), 18)),
     ),
-    k(SUARA_M2, tambah("merah", ...[4, 5, 6, 7].flatMap(mob)), tambah("Berapa", emo("tn", 262, 100, "❓", 30))),
-    k(SUARA_M3, hapus(0, "tn"), ...hitungAksi(SUARA_M3, "mb", PM)),
-    k(SUARA_M4, hapus(0, "tg"), tambah("Empat", ...kartu("mj", 90, 154, 120, 28, W.emas, ["4 + 4 = 8"], 13))),
-    k(SUARA_M5, sorotkan("sama", "mb0", "mb1", "mb2", "mb3", "mb4", "mb5", "mb6", "mb7"), tambah("Malosi", emo("ow", 262, 100, OWL, 30))),
-  ],
-};
-
-/* ------------------------------ 3. Bebek di kolam ------------------------------ */
-const SUARA_B1 = "Di kolam ada lima bebek yang sedang berenang. Ayo kita hitung bebeknya satu per satu di layar.";
-const SUARA_B2 = "Satu, dua, tiga, empat, lima. Ada lima bebek di kolam.";
-const SUARA_B3 = "Lalu datang lagi dua bebek. Bebek yang berenang bertambah banyak, dan kolamnya jadi ramai.";
-const SUARA_B4 = "Sekarang kita hitung semua bebek. Satu, dua, tiga, empat, lima, enam, tujuh.";
-const SUARA_B5 = "Lima ditambah dua sama dengan tujuh. Sekarang ada tujuh bebek di kolam.";
-const PB = Array.from({ length: 7 }, (_, i) => ({ x: 36 + 38 * i, y: 100 }));
-const bebek = (i: number, x = PB[i].x) => emo(`bb${i}`, x, PB[i].y, "\u{1F986}", 26);
-
-export const ADEGAN_BEBEK: AdeganStory = {
-  id: "bebek-kolam",
-  judul: "Bebek di kolam",
-  sumber: "Materi: bebek di kolam",
-  latar: "#EFF6FF",
-  ketukan: [
     k(
-      SUARA_B1,
-      tambah(0, judul("Bebek di kolam"), kotak("kol", 10, 54, 280, 90, "#BFDBFE", "#3B82F6", { rx: 40, tebal: 2, z: -2 })),
-      tambah("lima", ...[0, 1, 2, 3, 4].map((i) => bebek(i))),
+      SUARA_S2,
+      tambah("Mamah", ...orang("mm", 262, 90, E.mamah, "Mamah")),
+      tambah(posS2[0], teks("hn5", SAWI[5].x, 194, "6", 11, W.merah)),
+      ...[6, 7, 8, 9].map((i, n) => tambah(posS2[n + 1], emo(`sw${i}`, SAWI[i].x, SAWI[i].y, E.sawi, 18), teks(`hn${i}`, SAWI[i].x, 194, String(i + 1), 11, W.merah))),
     ),
-    k(SUARA_B2, ...hitungAksi(SUARA_B2, "bb", PB.slice(0, 5))),
     k(
-      SUARA_B3,
-      hapus(0, "tg"),
-      tambah("datang", bebek(5, 284), bebek(6, 284)),
-      ubah("bertambah.", { id: "bb5", x: PB[5].x }, { id: "bb6", x: PB[6].x }),
-    ),
-    k(SUARA_B4, hapus(0, "bbn0", "bbn1", "bbn2", "bbn3", "bbn4"), ...hitungAksi(SUARA_B4, "bb", PB, "bebek.")),
-    k(SUARA_B5, hapus(0, "tg"), tambah("Lima", ...kartu("bj", 80, 156, 140, 30, W.emas, ["5 + 2 = 7"], 14)), sorotkan("tujuh", "bb5", "bb6")),
-  ],
-};
-
-/* ------------------------------ 4. Kelereng di dua piring ------------------------------ */
-const SUARA_K1 = "Ayo mencoba! Upe menaruh lima kelereng di satu piring. Wei menaruh tiga kelereng di piring yang lain.";
-const SUARA_K2 = "Berapa jumlah semua kelereng? Tebak dulu sebelum menghitung. Ketuk jawabanmu di layar, lalu kita periksa bersama suara guru.";
-const SUARA_K3 = "Sekarang kita hitung. Mulai dari piring Upe: satu, dua, tiga, empat, lima.";
-const SUARA_K4 = "Lalu piring Wei: satu, dua, tiga. Ada tiga kelereng di piring Wei.";
-const SUARA_K5 = "Semua kelereng digabung ke sebuah mangkuk. Kita hitung lagi dari awal. Satu, dua, tiga, empat, lima, enam, tujuh, delapan.";
-const SUARA_K6 = "Lima ditambah tiga sama dengan delapan. Jumlah semua kelereng ada delapan. Tebakanmu tadi tepat atau belum?";
-const KL_AWAL: Titik[] = [
-  { x: 56, y: 96 }, { x: 96, y: 96 }, { x: 76, y: 124 }, { x: 56, y: 150 }, { x: 96, y: 150 },
-  { x: 204, y: 100 }, { x: 240, y: 100 }, { x: 222, y: 134 },
-];
-const KL_DALAM: Titik[] = [{ x: 90, y: 96 }, { x: 130, y: 96 }, { x: 170, y: 96 }, { x: 210, y: 96 }, { x: 90, y: 136 }, { x: 130, y: 136 }, { x: 170, y: 136 }, { x: 210, y: 136 }];
-const WARNA_KL = ["#38BDF8", "#F472B6", "#A3E635", "#FB923C", "#818CF8", "#38BDF8", "#F472B6", "#A3E635"];
-const kel = (i: number) => bulat(`kl${i}`, KL_AWAL[i].x, KL_AWAL[i].y, 9, WARNA_KL[i], W.biru, { tebal: 2 });
-
-export const ADEGAN_PIRING: AdeganStory = {
-  id: "dua-piring",
-  judul: "Kelereng Upe dan Wei di dua piring",
-  sumber: "Materi: kelereng di dua piring",
-  latar: "#FFFBEB",
-  ketukan: [
-    k(
-      SUARA_K1,
-      tambah(0, judul("Dua piring kelereng"), piring("pl", 76, 122, 54, { z: -1 }), piring("pr", 222, 122, 54, { z: -1 })),
-      tambah("Upe", teks("nup", 76, 196, "Upe", 10, W.ungu), ...[0, 1, 2, 3, 4].map(kel)),
-      tambah("Wei", teks("nwe", 222, 196, "Wei", 10, W.ungu), ...[5, 6, 7].map(kel)),
-    ),
-    k(SUARA_K2, tambah("Berapa", emo("tn", 150, 100, "❓", 36)), tambah("Tebak", ...kartu("tb", 90, 32, 120, 26, W.krem, ["tebak dulu"], 10))),
-    k(SUARA_K3, hapus(0, "tn", "tb-k", "tb-t0"), ...hitungAksi(SUARA_K3, "pu", KL_AWAL.slice(0, 5), "Upe:")),
-    k(SUARA_K4, hapus(0, "tg", "pun0", "pun1", "pun2", "pun3", "pun4"), ...hitungAksi(SUARA_K4, "pw", KL_AWAL.slice(5), "Wei:")),
-    k(
-      SUARA_K5,
-      hapus(0, "tg", "pwn0", "pwn1", "pwn2", "pl", "pr", "nup", "nwe"),
-      tambah(0, kotak("mk", 60, 62, 180, 100, "#FDE68A", W.coklat, { rx: 20, tebal: 2, z: -1 })),
-      ubah("digabung", ...KL_DALAM.map((p, i) => ({ id: `kl${i}`, x: p.x, y: p.y }))),
-      ...hitungAksi(SUARA_K5, "kl", KL_DALAM, "awal."),
-    ),
-    k(SUARA_K6, hapus(0, "tg"), tambah("Lima", ...kartu("kj", 90, 168, 120, 28, W.emas, ["5 + 3 = 8"], 13))),
-  ],
-};
-
-/* ------------------------------ 5. Kotak sepuluh ------------------------------ */
-const SUARA_S1 = "Kita boleh menjumlahkan sampai sepuluh. Lihat kotak sepuluh ini. Di dalamnya ada sepuluh petak yang masih kosong. Kita akan mengisinya pelan-pelan.";
-const SUARA_S2 = "Enam keping merah masuk ke kotak. Keping merah mengisi petak dari kiri ke kanan.";
-const SUARA_S3 = "Lalu dua keping biru ikut masuk. Enam ditambah dua sama dengan delapan.";
-const SUARA_S4 = "Dua keping biru lagi masuk. Sekarang enam ditambah empat sama dengan sepuluh. Kotaknya penuh! Tidak ada petak yang kosong lagi di dalamnya.";
-const SUARA_S5 = "Sepuluh adalah jumlah paling banyak yang kita pelajari. Jumlahnya tidak lebih dari sepuluh.";
-const SUARA_S6 = "Lima ditambah lima juga sama dengan sepuluh. Sebagian keping berganti warna, tetapi kotaknya tetap penuh.";
-const BX = 25;
-const BY = 36;
-const SEL = 50;
-const keping = (dari: number, sampai: number, warna: string) => kepingBingkai("kg", BX, BY, dari, sampai, warna, SEL);
-
-export const ADEGAN_SEPULUH: AdeganStory = {
-  id: "sampai-sepuluh",
-  judul: "Menjumlahkan sampai sepuluh",
-  sumber: "Materi: jumlah sampai sepuluh",
-  latar: "#F0FDFA",
-  ketukan: [
-    k(SUARA_S1, tambah(0, judul("Kotak sepuluh")), tambah("Lihat", ...selBingkai("kt", BX, BY, SEL)), tambah("sepuluh", teks("s10", 150, 154, "10 petak", 12, W.ungu))),
-    k(SUARA_S2, tambah("Enam", ...keping(0, 6, KUNING))),
-    k(SUARA_S3, tambah("biru", ...keping(6, 8, W.hijau)), tambah("Enam", ...kartu("p8", 80, 166, 140, 26, W.emas, ["6 + 2 = 8"], 12))),
-    k(SUARA_S4, hapus(0, "p8-k", "p8-t0"), tambah("lagi", ...keping(8, 10, W.hijau)), tambah("sepuluh.", ...kartu("p10", 80, 166, 140, 26, W.emas, ["6 + 4 = 10"], 12))),
-    k(SUARA_S5, hapus(0, "p10-k", "p10-t0", "s10"), sorotkan("sepuluh", ...Array.from({ length: 10 }, (_, i) => `kg${i}`)), tambah("paling", teks("mk", 150, 154, "paling banyak: 10", 11, W.merah))),
-    k(
-      SUARA_S6,
-      hapus(0, "mk"),
-      redamkan(0, ...Array.from({ length: 10 }, (_, i) => `kg${i}`)),
-      ubah("berganti", { id: "kg5", warna: W.hijau }),
-      tambah("Lima", ...kartu("p55", 80, 166, 140, 26, W.emas, ["5 + 5 = 10"], 12)),
+      SUARA_S3,
+      tambah("Enam", ...kalimat("kl", 150, 60, ["6", "+", "4", "=", "10"], 18, 28)),
+      sorotkan("Semua", ...SAWI.map((_, i) => `bsc${i}`)),
+      tambah("penuh.", ...label("pn", 110, 76, 80, "penuh!", W.hijauMuda)),
     ),
   ],
 };

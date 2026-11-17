@@ -1228,13 +1228,16 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
 {
   const kosong = new Set();
   const T2 = (o) => ({ alat: "tambah", a: 3, b: 4, ditukar: 0, gabung: false, benda: true, kalimat: true, bingkai: true, garis: false, bagan: false, ...o });
-  ujiStruktur("bab2", X2.daftarMisiBab2, ["A", "B", "C"], { A: T2({}), B: T2({ garis: true, bagan: true }), C: T2({ garis: true, bagan: true }) });
+  // Sub-Bab A memakai Bedeng Mamah (kebun-k1b2a): timun 3 datang 4, kentang 5 datang 5, bawang 6 keranjang kosong. Rincian di scripts/uji-kebun-k1b2a.mjs.
+  const KB = (o) => ({ alat: "kebun", sayur: "timun", mula: { timun: 3, kentang: 5, bawang: 6 }, datang: { timun: 4, kentang: 5, bawang: 0 }, tanam: { timun: 0, kentang: 0, bawang: 0 }, catat: { timun: [], kentang: [], bawang: [] }, ...o });
+  ujiStruktur("bab2", X2.daftarMisiBab2, ["A", "B", "C"], { A: KB({}), B: T2({ garis: true, bagan: true }), C: T2({ garis: true, bagan: true }) });
   const ada = (sub, k, id) => M0.misiBaru(X2.daftarMisiBab2(sub), k, kosong).includes(id);
   const SEL = (id) => ({ alat: "selesai", id });
-  cek(ada("A", T2({ gabung: true }), "a-gabung") && !ada("A", T2({ gabung: true, benda: false }), "a-gabung"), "bab2 A: gabung");
-  cek(ada("A", T2({ a: 2, b: 3 }), "a-lima") && ada("A", T2({ a: 5, b: 0 }), "a-nol") && !ada("A", T2({ a: 0, b: 0 }), "a-nol"), "bab2 A: lima dan nol");
-  cek(ada("A", T2({ a: 6, b: 4 }), "a-sepuluh") && !ada("A", T2({ a: 6, b: 4, bingkai: false }), "a-sepuluh"), "bab2 A: sepuluh");
-  cek(ada("A", SEL("mesin"), "a-mesin") && ada("A", T2({ a: 4, b: 4 }), "a-kembar") && !ada("A", T2({ a: 0, b: 0 }), "a-kembar") && ada("A", T2({ a: 5, b: 4 }), "a-sembilan"), "bab2 A: mesin, kembar, sembilan");
+  const CT = (timun, kentang = [], bawang = []) => ({ timun, kentang, bawang });
+  cek(ada("A", KB({ catat: CT(["3+4=7"]) }), "a-timun") && !ada("A", KB({ catat: CT(["3+2=5"]) }), "a-timun"), "bab2 A: timun semua ditanam lalu dicatat");
+  cek(ada("A", KB({ tanam: { timun: 0, kentang: 5, bawang: 0 } }), "a-penuh") && !ada("A", KB({ tanam: { timun: 0, kentang: 4, bawang: 0 } }), "a-penuh"), "bab2 A: kentang penuh sepuluh");
+  cek(ada("A", KB({ catat: CT([], [], ["6+0=6"]) }), "a-nol") && ada("A", KB({ catat: CT(["3+0=3", "3+1=4"]) }), "a-dua") && !ada("A", KB({ catat: CT(["3+0=3"], ["5+0=5"]) }), "a-dua"), "bab2 A: nol dan dua kalimat");
+  cek(ada("A", KB({ catat: CT([], ["5+3=8"]) }), "a-delapan") && ada("A", KB({ catat: CT([], ["5+2=7"]) }), "a-tujuh") && !ada("A", T2({ a: 4, b: 4 }), "a-delapan"), "bab2 A: bebas");
   cek(ada("B", T2({ ditukar: 1 }), "b-tukar") && !ada("B", T2({}), "b-tukar"), "bab2 B: tukar");
   cek(ada("B", T2({ garis: true, a: 6, b: 3 }), "b-garis") && !ada("B", T2({ garis: false, a: 6, b: 3 }), "b-garis"), "bab2 B: garis");
   cek(ada("B", T2({ a: 5, b: 5 }), "b-kembar") && ada("B", T2({ a: 8, b: 2 }), "b-sepuluh") && ada("B", T2({ bagan: true, a: 4, b: 3 }), "b-bagan"), "bab2 B: kembar, sepuluh, bagan");
