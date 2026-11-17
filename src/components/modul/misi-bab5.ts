@@ -3,13 +3,14 @@
  * Diuji di scripts/uji-lab-kelas1.mjs.
  *
  * Simulasi bertahap: satu laboratorium bilangan yang alatnya bertambah per sub-bab
- * (A: Lab Puluhan dan Satuan sampai 20; B: + Maju dan Mundur, Ulat dan Kisi; C: + nilai tempat
+ * (A: kini Wadah Sekat Sepuluh, Misi Lapak Ikan bagian satu (ikan-k1b5a); dulu Lab Puluhan dan Satuan sampai 20; B: + Maju dan Mundur, Ulat dan Kisi; C: + nilai tempat
  * dan tab Odometer; D: semua alat + Banding dan Urutan + bandingkan nilai tempat, sekaligus
  * simulasi pencapaian misi bab ini).
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
+import type { KeadaanIkan } from "./ikan-k1b5a/logika";
 
 export type KeadaanPuluhan = {
   alat: "puluhan";
@@ -55,7 +56,7 @@ export type KeadaanBandingJeruk = {
   garis: boolean;
 };
 
-export type KeadaanBab5 = KeadaanPuluhan | KeadaanDeret | KeadaanBandingJeruk | KeadaanSelesai;
+export type KeadaanBab5 = KeadaanPuluhan | KeadaanDeret | KeadaanBandingJeruk | KeadaanSelesai | KeadaanIkan;
 
 const pul = (k: KeadaanBab5): k is KeadaanPuluhan => k.alat === "puluhan";
 const der = (k: KeadaanBab5): k is KeadaanDeret => k.alat === "deret";
@@ -69,15 +70,22 @@ export function puncakTunggal(a: number[]): number {
   return di.length === 1 ? di[0] : -1;
 }
 
-/** Sub-Bab A: bilangan 11 sampai 20 dengan benda, bingkai, kalimat sepuluh, dan garis bilangan. */
+/**
+ * Sub-Bab A: Misi Lapak Ikan bagian satu, wadah sekat sepuluh (Simulasi "Ikan Baru Datang", ikan-k1b5a). Banyak ikan tiap kantong sama dengan
+ * KANTONG_SIM di ikan-k1b5a/data.ts (diuji di scripts/uji-ikan-k1b5a.mjs): ikan cupang dua belas, ikan molly enam belas, ikan buntal sembilan belas.
+ */
+const ikan = (k: KeadaanBab5): k is KeadaanIkan => k.alat === "ikan";
+export const TOTAL_IKAN_A: Record<string, number> = { cupang: 12, molly: 16, buntal: 19 };
+const ID_IKAN = Object.keys(TOTAL_IKAN_A);
+const habis = (k: KeadaanIkan, id: string) => k.pindah[id] === TOTAL_IKAN_A[id];
+const labelPas = (k: KeadaanIkan, id: string) => habis(k, id) && k.angka[id] === TOTAL_IKAN_A[id] && k.nama[id] === TOTAL_IKAN_A[id];
 export const MISI_A: DefMisi<KeadaanBab5>[] = [
-  { id: "a-sebelas", teks: "Buat bilangan 11: sepuluh ditambah satu. Lihat bingkai kedua mulai terisi.", wajib: true, cek: (k) => pul(k) && k.bingkai && k.n === 11 },
-  { id: "a-sepuluh", teks: "Buat tepat 10. Bingkai pertama penuh, bingkai kedua kosong.", wajib: true, cek: (k) => pul(k) && k.n === 10 },
-  { id: "a-ikat", teks: "Buat 13, lalu nyalakan Ikat sepuluh.", wajib: true, cek: (k) => pul(k) && k.ikat && k.n === 13 },
-  { id: "a-garis", teks: "Ketuk angka 17 di garis bilangan. Letaknya di kanan angka 10.", wajib: true, cek: (k) => pul(k) && k.garis && k.n === 17 },
-  { id: "a-dua-puluh", teks: "Isi sampai 20: dua bingkai penuh.", wajib: true, cek: (k) => pul(k) && k.n === 20 },
-  { id: "a-sembilan-belas", teks: "Buat 19. Tinggal satu lagi menjadi 20.", wajib: false, cek: (k) => pul(k) && k.n === 19 },
-  { id: "a-kalimat", teks: "Buat 16 dan baca kalimat sepuluh ditambah sisanya.", wajib: false, cek: (k) => pul(k) && k.kalimat && k.n === 16 },
+  { id: "a-tebak", teks: "Pilih tebakan untuk satu kantong, lalu pindahkan semua ikannya satu per satu dengan jaring.", wajib: true, cek: (k) => ikan(k) && ID_IKAN.some((id) => k.tebak[id] !== null && habis(k, id)) },
+  { id: "a-sepuluh", teks: "Penuhi wadah pertama sampai sepuluh sekat terisi, lalu mulai isi wadah kedua.", wajib: true, cek: (k) => ikan(k) && ID_IKAN.some((id) => k.pindah[id] > 10) },
+  { id: "a-label", teks: "Pasang label angka dan label nama yang tepat pada satu kantong yang sudah dihitung.", wajib: true, cek: (k) => ikan(k) && ID_IKAN.some((id) => labelPas(k, id)) },
+  { id: "a-semua", teks: "Hitung dan pasang label angka dan nama yang tepat pada ketiga kantong ikan.", wajib: true, cek: (k) => ikan(k) && ID_IKAN.every((id) => labelPas(k, id)) },
+  { id: "a-dekat", teks: "Buat tebakan yang dekat dengan hasil hitung, lalu buktikan dengan menghitung.", wajib: false, cek: (k) => ikan(k) && ID_IKAN.some((id) => k.tebak[id] !== null && habis(k, id) && Math.abs((k.tebak[id] ?? 0) - TOTAL_IKAN_A[id]) <= 2) },
+  { id: "a-ulang", teks: "Kembalikan satu ikan ke kantong, lalu hitung lagi sampai habis. Hasilnya tetap sama.", wajib: false, cek: (k) => ikan(k) && k.ulang.some((id) => habis(k, id)) },
 ];
 
 /** Sub-Bab B: menghitung maju dan mundur, bilangan yang hilang, kisi 1 sampai 20. */

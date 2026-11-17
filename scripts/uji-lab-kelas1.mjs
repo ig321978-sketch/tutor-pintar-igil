@@ -1332,16 +1332,26 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   const De = (o) => ({ alat: "deret", awal: 12, n: 12, maju: 0, mundur: 0, sembunyi: false, tetangga: true, kisi: true, ...o });
   const Bj = (o) => ({ alat: "banding", jumlah: [12, 15, 9], pas: 0, pasang: true, tanda: true, selisih: false, batang: false, benda: true, paling: true, urut: true, garis: true, ...o });
   const SEL = (id) => ({ alat: "selesai", id });
-  const semuaAwal = [Pu({}), Pu({ tabel: true }), Pu({ tabel: true, banding: false }), De({}), Bj({})];
+  // Sub-Bab A memakai Wadah Sekat Sepuluh (ikan-k1b5a): cupang dua belas, molly enam belas, buntal sembilan belas. Rincian di scripts/uji-ikan-k1b5a.mjs.
+  const ID_IK = ["cupang", "molly", "buntal"];
+  const TOT = { cupang: 12, molly: 16, buntal: 19 };
+  const rk = (v) => Object.fromEntries(ID_IK.map((id) => [id, v]));
+  const Ik = (o) => ({ alat: "ikan", pilih: "cupang", pindah: rk(0), tebak: rk(null), angka: rk(null), nama: rk(null), ulang: [], ...o });
+  const semuaAwal = [Pu({}), Pu({ tabel: true }), Pu({ tabel: true, banding: false }), De({}), Bj({}), Ik({})];
   for (const sub of ["A", "B", "C", "D"]) {
     const daftar = X5.daftarMisiBab5(sub);
     for (const k of semuaAwal) cek(M0.misiBaru(daftar, k, kosong).length === 0, `bab5 ${sub}: keadaan awal ${k.alat} tidak memenuhi misi`);
   }
-  ujiStruktur("bab5", X5.daftarMisiBab5, ["A", "B", "C", "D"], { A: Pu({}), B: De({}), C: Pu({ tabel: true }), D: Pu({ tabel: true }) });
+  ujiStruktur("bab5", X5.daftarMisiBab5, ["A", "B", "C", "D"], { A: Ik({}), B: De({}), C: Pu({ tabel: true }), D: Pu({ tabel: true }) });
   const ada = (sub, k, id) => M0.misiBaru(X5.daftarMisiBab5(sub), k, kosong).includes(id);
-  cek(ada("A", Pu({ n: 11 }), "a-sebelas") && !ada("A", Pu({ n: 11, bingkai: false }), "a-sebelas") && ada("A", Pu({ n: 10 }), "a-sepuluh"), "bab5 A: sebelas dan sepuluh");
-  cek(ada("A", Pu({ n: 13, ikat: true }), "a-ikat") && !ada("A", Pu({ n: 13 }), "a-ikat") && ada("A", Pu({ n: 17 }), "a-garis") && !ada("A", Pu({ n: 17, garis: false }), "a-garis"), "bab5 A: ikat dan garis");
-  cek(ada("A", Pu({ n: 20 }), "a-dua-puluh") && ada("A", Pu({ n: 19 }), "a-sembilan-belas") && ada("A", Pu({ n: 16 }), "a-kalimat"), "bab5 A: dua puluh, sembilan belas, kalimat");
+  sama(X5.TOTAL_IKAN_A, TOT, "bab5 A: banyak ikan tiap kantong");
+  cek(ada("A", Ik({ pindah: { ...rk(0), molly: 16 }, tebak: { ...rk(null), molly: 10 } }), "a-tebak") && !ada("A", Ik({ pindah: { ...rk(0), molly: 16 } }), "a-tebak") && !ada("A", Ik({ pindah: { ...rk(0), molly: 15 }, tebak: { ...rk(null), molly: 10 } }), "a-tebak"), "bab5 A: tebak lalu pindahkan semua");
+  cek(ada("A", Ik({ pindah: { ...rk(0), buntal: 11 } }), "a-sepuluh") && !ada("A", Ik({ pindah: { ...rk(0), buntal: 10 } }), "a-sepuluh") && !ada("A", Pu({ n: 11 }), "a-sepuluh"), "bab5 A: wadah kedua mulai terisi");
+  const pas = Ik({ pindah: { ...TOT }, angka: { ...TOT }, nama: { ...TOT } });
+  cek(ada("A", Ik({ pindah: { ...rk(0), cupang: 12 }, angka: { ...rk(null), cupang: 12 }, nama: { ...rk(null), cupang: 12 } }), "a-label") && !ada("A", Ik({ pindah: { ...rk(0), cupang: 12 }, angka: { ...rk(null), cupang: 12 }, nama: { ...rk(null), cupang: 13 } }), "a-label") && !ada("A", Ik({ pindah: { ...rk(0), cupang: 11 }, angka: { ...rk(null), cupang: 12 }, nama: { ...rk(null), cupang: 12 } }), "a-label"), "bab5 A: label angka dan nama tepat");
+  cek(ada("A", pas, "a-semua") && !ada("A", { ...pas, nama: { ...TOT, buntal: 18 } }, "a-semua"), "bab5 A: semua kantong berlabel");
+  cek(ada("A", Ik({ pindah: { ...rk(0), molly: 16 }, tebak: { ...rk(null), molly: 15 } }), "a-dekat") && !ada("A", Ik({ pindah: { ...rk(0), molly: 16 }, tebak: { ...rk(null), molly: 5 } }), "a-dekat"), "bab5 A: tebakan dekat");
+  cek(ada("A", Ik({ pindah: { ...rk(0), cupang: 12 }, ulang: ["cupang"] }), "a-ulang") && !ada("A", Ik({ pindah: { ...rk(0), cupang: 11 }, ulang: ["cupang"] }), "a-ulang"), "bab5 A: kembalikan lalu hitung lagi");
   cek(ada("B", De({ maju: 3 }), "b-maju") && !ada("B", De({ maju: 2 }), "b-maju") && ada("B", De({ mundur: 4 }), "b-mundur"), "bab5 B: maju dan mundur");
   cek(ada("B", De({ awal: 18, n: 20, maju: 2 }), "b-mulai") && !ada("B", De({ awal: 12, n: 20 }), "b-mulai"), "bab5 B: mulai dari 18");
   cek(ada("B", De({ sembunyi: true }), "b-ulat") && ada("B", De({ n: 16 }), "b-tetangga") && !ada("B", De({ n: 16, tetangga: false }), "b-tetangga") && ada("B", Pu({ n: 20 }), "b-ingat"), "bab5 B: ulat, tetangga, ingat");

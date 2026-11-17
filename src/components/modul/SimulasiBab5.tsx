@@ -7,6 +7,7 @@ import SimulasiPuluhan, { SEMUA_TAMPIL_PULUHAN, type TampilPuluhan } from "./Sim
 import SimulasiDeret from "./SimulasiDeret";
 import SimulasiOdometer from "./SimulasiOdometer";
 import SimulasiBanding, { type TampilBanding } from "./SimulasiBanding";
+import SimulasiJaringIkan from "./ikan-k1b5a/SimulasiJaringIkan";
 import { daftarMisiBab5, type KeadaanBab5 } from "./misi-bab5";
 import { laporMisi, tampilMisi } from "./misi-simulasi";
 
@@ -15,7 +16,8 @@ import { laporMisi, tampilMisi } from "./misi-simulasi";
 /* dan Concrete). Pola hibrida: satu laboratorium bilangan yang alatnya     */
 /* bertambah per sub-bab, dengan misi wajib dan tantangan bebas             */
 /* (misi-bab5.ts).                                                          */
-/*   Sub-Bab A (11 sampai 20): Lab Puluhan dan Satuan tanpa tabel.          */
+/*   Sub-Bab A (11 sampai 20): Wadah Sekat Sepuluh, Misi Lapak Ikan bagian  */
+/*     satu, cerita Ikan Baru Datang (ikan-k1b5a).                          */
 /*   Sub-Bab B (Maju dan mundur): + tab Maju dan Mundur dan Ulat dan Kisi.  */
 /*   Sub-Bab C (Nilai tempat): + tabel nilai tempat dan tab Odometer.       */
 /*   Sub-Bab D (Membandingkan, sub-bab akhir): semua alat + tab Banding     */
@@ -27,7 +29,7 @@ import { laporMisi, tampilMisi } from "./misi-simulasi";
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
 const MISI = {
-  A: "Buat bilangan 11 sampai 20 dengan benda, bingkai, dan garis bilangan. Selesaikan misi di bawah, urutannya bebas.",
+  A: "Misi Lapak Ikan bagian satu: tebak dulu, pindahkan ikan satu per satu ke wadah bersekat sepuluh, lalu pasang label angka dan nama. Urutannya bebas.",
   B: "Maju dan mundur di deret bilangan, lalu cari bilangan yang hilang. Selesaikan misi wajib, lalu coba tantangan bebas.",
   C: "Baca puluhan dan satuan di tabel, lalu putar Odometer Bilangan. Selesaikan misi wajib, lalu coba tantangan bebas.",
   D: "Bandingkan dan urutkan bilangan sampai 20. Selesaikan semua misi wajib, lalu coba tantangan bebas.",
@@ -48,7 +50,7 @@ const langkahBab5 = (sub: string): LangkahSim[] => {
   return [
     {
       metode: "PhET",
-      sub: huruf === "D" ? "Lab Bilangan 20: Pencapaian Misi" : "Lab Bilangan 20",
+      sub: huruf === "D" ? "Lab Bilangan 20: Pencapaian Misi" : huruf === "A" ? "Wadah Sekat Sepuluh" : "Lab Bilangan 20",
       petunjuk: MAINKAN_DULU,
       misi: MISI[huruf],
       misiDaftar: tampilMisi(daftar),
@@ -60,7 +62,8 @@ const langkahBab5 = (sub: string): LangkahSim[] => {
         const deret: TabLab = { id: "deret", nama: "Maju dan Mundur", render: () => <SimulasiDeret speakGuru={a.speakGuru} onKeadaan={lapor} /> };
         const odometer: TabLab = { id: "odometer", nama: "Odometer", render: () => <SimulasiOdometer speakGuru={a.speakGuru} onTuntas={() => selesai("odometer")} /> };
         const banding: TabLab = { id: "banding", nama: "Banding dan Urutan", render: () => <SimulasiBanding speakGuru={a.speakGuru} tampil={TAMPIL_BANDING} onKeadaan={lapor} /> };
-        const tab = huruf === "A" ? [puluhan] : huruf === "B" ? [puluhan, deret] : huruf === "C" ? [puluhan, deret, odometer] : [puluhan, deret, odometer, banding];
+        const wadahIkan: TabLab = { id: "ikan", nama: "Wadah Ikan", render: () => <SimulasiJaringIkan speakGuru={a.speakGuru} onKeadaan={lapor} /> };
+        const tab = huruf === "A" ? [wadahIkan] : huruf === "B" ? [puluhan, deret] : huruf === "C" ? [puluhan, deret, odometer] : [puluhan, deret, odometer, banding];
         return <LabBertahap tab={tab} label="Alat laboratorium bilangan 20" />;
       },
     },
