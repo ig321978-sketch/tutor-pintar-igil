@@ -12,7 +12,7 @@ export { W, bulat, emo, garis, judul, kartu, kotak, orang, teks, label, type Tit
 export const E = {
   ...E_A,
   tenda: "\u{1F3AA}",
-  roda: "\u{1F6DE}",
+  roda: "\u{1F697}",
   kuas: "\u{1F58C}\u{FE0F}",
   rumah: "\u{1F3E0}",
   dunia: "\u{1F30D}",
