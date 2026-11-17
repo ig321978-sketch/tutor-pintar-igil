@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { catatUjianLulus } from "@/lib/praktikum-blok";
 import { catatUjianDinilai } from "@/lib/capaian-klien";
+import { useBukaSemuaKunci } from "@/lib/buka-semua-kunci";
 import { TombolSuaraGuru } from "@/components/modul/tahap-b-gaya";
 
 /**
@@ -250,33 +251,51 @@ function teksJeda(iso: string): string {
 function PratinjauUjianLokal({
   bab,
   bacakan,
+  sumber = "lokal",
 }: {
   bab: string;
   bacakan: (teks: string) => void;
+  /** "lokal": berkas seed di komputer pengembangan. "admin": server produksi, hanya untuk admin (tanpa kunci jawaban, tanpa poin). */
+  sumber?: "lokal" | "admin";
 }) {
   const [soal, setSoal] = useState<{ id: string; pertanyaan: string; pilihan: string[] }[]>([]);
   const [indeks, setIndeks] = useState(0);
   const [pesan, setPesan] = useState("Membaca lembar ujian…");
+  const [paket, setPaket] = useState<string | null>(null);
+  const [daftarPaket, setDaftarPaket] = useState<string[]>([]);
 
   useEffect(() => {
     let batal = false;
     (async () => {
-      const res = await panggil<{ status: string; soal?: { id: string; pertanyaan: string; pilihan: string[] }[] }>(
-        `/api/dev/pratinjau-ujian?bab=${encodeURIComponent(bab)}`,
-      );
+      const alamat =
+        sumber === "lokal"
+          ? `/api/dev/pratinjau-ujian?bab=${encodeURIComponent(bab)}`
+          : `/api/belajar/ujian/pratinjau?bab=${encodeURIComponent(bab)}${paket ? `&paket=${encodeURIComponent(paket)}` : ""}`;
+      const res = await panggil<{ status: string; soal?: { id: string; pertanyaan: string; pilihan: string[] }[]; paket?: string | null; daftarPaket?: string[] }>(alamat);
       if (batal) return;
       if (!res || res.status !== "ok" || !res.soal || res.soal.length === 0) {
-        setPesan("Lembar ujian bab ini belum ada di berkas lokal.");
+        setPesan(
+          sumber === "lokal"
+            ? "Lembar ujian bab ini belum ada di berkas lokal."
+            : res?.status === "belum_siap"
+              ? "Pratinjau Ujian belum aktif di server. Jalankan berkas supabase/migrations/06_pratinjau_ujian_admin.sql di Supabase (cukup sekali)."
+              : res?.status === "belum_masuk" || res?.status === "dilarang"
+                ? "Pratinjau Ujian hanya untuk admin yang sudah masuk."
+                : "Lembar ujian bab ini belum tersedia di server.",
+        );
         setSoal([]);
         return;
       }
       setSoal(res.soal);
+      setIndeks(0);
+      setDaftarPaket(res.daftarPaket ?? []);
+      if (res.paket && res.paket !== paket) setPaket(res.paket);
       setPesan("");
     })();
     return () => {
       batal = true;
     };
-  }, [bab]);
+  }, [bab, sumber, paket]);
 
   if (soal.length === 0) {
     return (
@@ -291,9 +310,27 @@ function PratinjauUjianLokal({
   return (
     <section className="mx-auto mt-4 w-[98%] space-y-5 rounded-3xl border-2 border-[#EF4444] bg-[#FFF1F2] p-5 md:p-7">
       <div className="rounded-2xl bg-[#1C01A5] p-4 text-white">
-        <span className="text-xs font-black uppercase text-[#FFE566]">Pratinjau Ujian • tidak dinilai</span>
-        <h2 className="text-base font-black md:text-lg">Soal bisa dibaca tanpa melewati materi. Poin tidak tercatat.</h2>
+        <span className="text-xs font-black uppercase text-[#FFE566]">Pratinjau Ujian{sumber === "admin" ? " (admin)" : ""} • tidak dinilai</span>
+        <h2 className="text-base font-black md:text-lg">
+          {sumber === "admin" ? "Soal dibaca langsung dari server tanpa kunci jawaban. Poin tidak tercatat." : "Soal bisa dibaca tanpa melewati materi. Poin tidak tercatat."}
+        </h2>
       </div>
+      {sumber === "admin" && daftarPaket.length > 1 ? (
+        <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Paket soal">
+          <span className="text-xs font-black text-[#991B1B]">Paket:</span>
+          {daftarPaket.map((kode) => (
+            <button
+              key={kode}
+              type="button"
+              onClick={() => setPaket(kode)}
+              aria-pressed={kode === paket}
+              className={`rounded-full border-2 px-3 py-1 text-xs font-black ${kode === paket ? "border-[#FFE566] bg-[#1C01A5] text-[#FFE566]" : "border-slate-300 bg-white text-[#334155]"}`}
+            >
+              {kode}
+            </button>
+          ))}
+        </div>
+      ) : null}
       <div className="flex flex-wrap gap-2" role="group" aria-label="Nomor soal">
         {soal.map((s, i) => (
           <button
@@ -371,6 +408,7 @@ export function UjianServer({
   const [nilai, setNilai] = useState<number | null>(null);
   const [pesan, setPesan] = useState("");
   const [percobaan, setPercobaan] = useState(1);
+  const bukaSemua = useBukaSemuaKunci();
 
   const idAnak = profil.status === "siap" ? (profil.aktif?.id ?? null) : null;
   // Praktikum Blok baru ada untuk Kelas 1; bab lain mengarah ke Rapor sampai blok mereka dibuka.
@@ -471,9 +509,10 @@ export function UjianServer({
   // Server hanya mengirim jedaSampai bila jeda masih berlaku saat status dibaca.
   const jedaAktif = Boolean(statusBab?.jedaSampai);
 
-  // Di komputer pengembangan, tab Ujian bisa dibaca tanpa akun. Tidak dinilai dan tidak menyimpan poin.
-  if (process.env.NODE_ENV === "development" && (profil.status !== "siap" || !idAnak)) {
-    return <PratinjauUjianLokal bab={chapterId} bacakan={bacakan} />;
+  // Di komputer pengembangan (berkas lokal) atau untuk admin yang masuk di produksi (dibaca dari server), tab Ujian bisa dibaca
+  // tanpa akun anak. Tidak dinilai, tanpa kunci jawaban, dan tidak menyimpan poin.
+  if ((process.env.NODE_ENV === "development" || bukaSemua) && (profil.status !== "siap" || !idAnak)) {
+    return <PratinjauUjianLokal bab={chapterId} bacakan={bacakan} sumber={process.env.NODE_ENV === "development" ? "lokal" : "admin"} />;
   }
 
   // ---------- Belum bisa dinilai server ----------
