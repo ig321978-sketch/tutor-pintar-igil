@@ -3,12 +3,13 @@
  * Diuji di scripts/uji-lab-kelas1.mjs.
  *
  * Simulasi bertahap: satu laboratorium bentuk yang alatnya bertambah per sub-bab
- * (A: Ciri Bentuk + Papan Paku; B: + Kelompok; C: + menyusun bentuk, Bangun Gabungan, dan tab
+ * (A: kini Meja Periksa Bahan, Misi Festival bagian satu (bahan-k1b4a); dulu Ciri Bentuk + Papan Paku; B: + Kelompok; C: + menyusun bentuk, Bangun Gabungan, dan tab
  * Arsitek Cilik, sekaligus simulasi pencapaian misi bab ini).
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
+import type { KeadaanBahan } from "./bahan-k1b4a/logika";
 
 export type KeadaanCiri = {
   alat: "ciri";
@@ -31,7 +32,7 @@ export type KeadaanKelompok = { alat: "kelompok"; aturan: string; terpilih: numb
 
 export type KeadaanBangun = { alat: "bangun"; id: string; urai: boolean; jenis: string | null; diambil: boolean };
 
-export type KeadaanBab4 = KeadaanCiri | KeadaanPaku | KeadaanKelompok | KeadaanBangun | KeadaanSelesai;
+export type KeadaanBab4 = KeadaanCiri | KeadaanPaku | KeadaanKelompok | KeadaanBangun | KeadaanSelesai | KeadaanBahan;
 
 const ciri = (k: KeadaanBab4): k is KeadaanCiri => k.alat === "ciri";
 const paku = (k: KeadaanBab4, nama: string) => k.alat === "paku" && k.tertutup && k.bentuk === nama;
@@ -39,15 +40,21 @@ const kel = (k: KeadaanBab4): k is KeadaanKelompok => k.alat === "kelompok";
 const ban = (k: KeadaanBab4): k is KeadaanBangun => k.alat === "bangun";
 const selesai = (k: KeadaanBab4, id: string) => k.alat === "selesai" && k.id === id;
 
-/** Sub-Bab A: ciri bentuk (sisi dan sudut tetap saat diputar dan dibesarkan) dan Papan Paku. */
+/**
+ * Sub-Bab A: Misi Festival bagian satu, meja periksa bahan (Simulasi "Bahan dari Gudang"). Bahan dan bentuknya sama dengan BAHAN_SIM
+ * di bahan-k1b4a/data.ts (diuji di scripts/uji-bahan-k1b4a.mjs): tutup botol dan piring kertas lengkung, bungkus roti lapis dan
+ * potongan triplek segitiga, kotak teh dan kotak pasta gigi segi empat.
+ */
+const bahan = (k: KeadaanBab4): k is KeadaanBahan => k.alat === "bahan";
+export const BENTUK_BAHAN_A: Record<string, "lengkung" | "segitiga" | "segiempat"> = { botol: "lengkung", piring: "lengkung", roti: "segitiga", triplek: "segitiga", teh: "segiempat", pasta: "segiempat" };
+const LABEL_A = { lengkung: "roda", segitiga: "atap", segiempat: "badan" } as const;
 export const MISI_A: DefMisi<KeadaanBab4>[] = [
-  { id: "a-putar", teks: "Pilih persegi, lalu tekan Putar 90°. Sisinya tetap 4.", wajib: true, cek: (k) => ciri(k) && k.id === "persegi" && k.putar !== 0 },
-  { id: "a-besar", teks: "Besarkan segitiga sampai ukuran 3. Sudutnya tetap 3.", wajib: true, cek: (k) => ciri(k) && k.id === "segitiga" && k.skala === 3 },
-  { id: "a-lingkaran", teks: "Pilih lingkaran. Cari sisi lurus dan sudutnya.", wajib: true, cek: (k) => ciri(k) && k.id === "lingkaran" },
-  { id: "a-segitiga", teks: "Papan Paku: pasang 3 paku, lalu tutup bentuk sampai jadi segitiga.", wajib: true, cek: (k) => paku(k, "Segitiga") },
-  { id: "a-persegi", teks: "Papan Paku: buat persegi dengan 4 paku, lalu tutup bentuk.", wajib: true, cek: (k) => paku(k, "Persegi") },
-  { id: "a-lengkung", teks: "Papan Paku: nyalakan bentuk lengkung, lalu tutup bentuk.", wajib: false, cek: (k) => paku(k, "Bentuk lengkung") },
-  { id: "a-polos", teks: "Matikan Tampilkan sisi dan Tampilkan sudut. Kenali bentuknya saja.", wajib: false, cek: (k) => ciri(k) && !k.sisi && !k.sudut },
+  { id: "a-putar", teks: "Putar bahan segitiga, lalu tampilkan sudutnya. Sudutnya tetap tiga.", wajib: true, cek: (k) => bahan(k) && BENTUK_BAHAN_A[k.pilih] === "segitiga" && k.putar[k.pilih] !== 0 && k.sudut },
+  { id: "a-gelinding", teks: "Gelindingkan bahan yang tepinya lengkung.", wajib: true, cek: (k) => bahan(k) && k.gelinding.some((id) => BENTUK_BAHAN_A[id] === "lengkung") },
+  { id: "a-sudut", teks: "Coba gelindingkan bahan yang punya sudut. Apa yang terjadi?", wajib: true, cek: (k) => bahan(k) && k.gelinding.some((id) => BENTUK_BAHAN_A[id] !== "lengkung") },
+  { id: "a-label", teks: "Beri label roda, atap, atau badan yang tepat pada semua bahan.", wajib: true, cek: (k) => bahan(k) && Object.keys(BENTUK_BAHAN_A).every((id) => k.label[id] === LABEL_A[BENTUK_BAHAN_A[id]]) },
+  { id: "a-besar", teks: "Besarkan kotak teh sampai paling besar. Sisinya tetap empat.", wajib: false, cek: (k) => bahan(k) && k.skala.teh === 3 },
+  { id: "a-sisi", teks: "Tampilkan sisi lurus piring kertas. Ada berapa?", wajib: false, cek: (k) => bahan(k) && k.pilih === "piring" && k.sisi },
 ];
 
 /** Sub-Bab B: mengelompokkan benda menurut satu aturan (bentuk, warna, ukuran). */

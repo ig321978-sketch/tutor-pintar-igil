@@ -8,6 +8,7 @@ import SimulasiPapanPaku from "./SimulasiPapanPaku";
 import SimulasiKelompok from "./SimulasiKelompok";
 import SimulasiBangunGabungan from "./SimulasiBangunGabungan";
 import SimulasiSkenario from "./SimulasiSkenario";
+import SimulasiMejaBahan from "./bahan-k1b4a/SimulasiMejaBahan";
 import { SKENARIO_BAB4 } from "./skenario-kelas1";
 import { daftarMisiBab4, type KeadaanBab4 } from "./misi-bab4";
 import { laporMisi, tampilMisi } from "./misi-simulasi";
@@ -17,7 +18,8 @@ import { laporMisi, tampilMisi } from "./misi-simulasi";
 /* dan Concrete). Pola hibrida: satu laboratorium bentuk yang alatnya       */
 /* bertambah per sub-bab, dengan misi wajib dan tantangan bebas             */
 /* (misi-bab4.ts).                                                          */
-/*   Sub-Bab A (Mengenal Bentuk): tab Ciri Bentuk dan Papan Paku.           */
+/*   Sub-Bab A (Mengenal Bentuk): Meja Periksa Bahan, Misi Festival bagian  */
+/*     satu, cerita Festival Mainan Kardus (bahan-k1b4a).                   */
 /*   Sub-Bab B (Mengelompokkan): + tab Kelompok.                            */
 /*   Sub-Bab C (Menyusun Bentuk, sub-bab akhir): + menyusun bentuk,         */
 /*     tab Bangun Gabungan dan Arsitek Cilik, sekaligus simulasi            */
@@ -29,7 +31,7 @@ import { laporMisi, tampilMisi } from "./misi-simulasi";
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
 const MISI = {
-  A: "Putar dan besarkan bentuk, lalu buat bentuk di Papan Paku. Selesaikan misi di bawah, urutannya bebas.",
+  A: "Misi Festival bagian satu: periksa bahan bekas di meja. Putar, tampilkan sisi dan sudut, gelindingkan, lalu beri label roda, atap, atau badan. Urutannya bebas.",
   B: "Kelompokkan balok dengan satu aturan, lalu ganti aturannya. Selesaikan misi wajib, lalu coba tantangan bebas.",
   C: "Susun bentuk, uraikan bangun, dan bantu Pak Arsitek. Selesaikan semua misi wajib, lalu coba tantangan bebas.",
 } as const;
@@ -40,7 +42,7 @@ const langkahBab4 = (sub: string): LangkahSim[] => {
   return [
     {
       metode: "PhET",
-      sub: huruf === "C" ? "Lab Bentuk: Pencapaian Misi" : "Lab Bentuk",
+      sub: huruf === "C" ? "Lab Bentuk: Pencapaian Misi" : huruf === "A" ? "Meja Periksa Bahan" : "Lab Bentuk",
       petunjuk: MAINKAN_DULU,
       misi: MISI[huruf],
       misiDaftar: tampilMisi(daftar),
@@ -57,7 +59,8 @@ const langkahBab4 = (sub: string): LangkahSim[] => {
         const kelompok: TabLab = { id: "kelompok", nama: "Kelompok", render: () => <SimulasiKelompok speakGuru={a.speakGuru} tampil={["benda", "tabel", "ciri", "kalimat"]} onKeadaan={lapor} /> };
         const bangun: TabLab = { id: "bangun", nama: "Bangun Gabungan", render: () => <SimulasiBangunGabungan speakGuru={a.speakGuru} onKeadaan={lapor} /> };
         const arsitek: TabLab = { id: "arsitek", nama: "Arsitek Cilik", render: () => <SimulasiSkenario def={SKENARIO_BAB4} speakGuru={a.speakGuru} onTuntas={() => selesai("arsitek")} /> };
-        const tab = huruf === "A" ? [ciri, papan] : huruf === "B" ? [ciri, papan, kelompok] : [ciri, papan, kelompok, bangun, arsitek];
+        const mejaBahan: TabLab = { id: "bahan", nama: "Meja Bahan", render: () => <SimulasiMejaBahan speakGuru={a.speakGuru} onKeadaan={lapor} /> };
+        const tab = huruf === "A" ? [mejaBahan] : huruf === "B" ? [ciri, papan, kelompok] : [ciri, papan, kelompok, bangun, arsitek];
         return <LabBertahap tab={tab} label="Alat laboratorium bentuk" />;
       },
     },

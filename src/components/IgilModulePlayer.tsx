@@ -111,6 +111,10 @@ import TahapPesanan from "@/components/modul/pesanan-k1b2c/TahapPesanan";
 import PetaRelKereta from "@/components/modul/bekal-k1b3a/PetaRelKereta";
 import JendelaGerbong from "@/components/modul/bekal-k1b3a/JendelaGerbong";
 import TahapBekal from "@/components/modul/bekal-k1b3a/TahapBekal";
+import BenderaFestival from "@/components/modul/bahan-k1b4a/BenderaFestival";
+import KartuBahan from "@/components/modul/bahan-k1b4a/KartuBahan";
+import TahapBahan from "@/components/modul/bahan-k1b4a/TahapBahan";
+import { ABSTRACT as ABSTRACT_BAHAN, CONCRETE as CONCRETE_BAHAN, PICTORIAL as PICTORIAL_BAHAN, TEMA_TAHAP as TEMA_BAHAN } from "@/components/modul/bahan-k1b4a/data";
 import PetaRumah from "@/components/modul/rumah-k1b3d/PetaRumah";
 import KartuResep from "@/components/modul/rumah-k1b3d/KartuResep";
 import TahapRumah from "@/components/modul/rumah-k1b3d/TahapRumah";
@@ -2295,7 +2299,14 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             pertahankan={adaSimMateri}
             tutupDiLatar={!adaSimMateri}
           >
-            {bab === "mtk-1-bab3" && activeSubBab === "D" ? (
+            {bab === "mtk-1-bab4" && activeSubBab === "A" ? (
+            <BenderaFestival
+              key={`${bab}-${activeSubBab}-bendera`}
+              speakGuru={speakGuru}
+              teksLanjut="LANJUTKAN KE INFOGRAFIS ⬇️"
+              onLanjut={() => handleUnlockNextSmicpa(3, infografisRef, "Untaian bendera festival sudah lengkap! Sekarang kita buka Infografis.")}
+            />
+            ) : bab === "mtk-1-bab3" && activeSubBab === "D" ? (
             <PetaRumah
               key={`${bab}-${activeSubBab}-rumah`}
               speakGuru={speakGuru}
@@ -2454,7 +2465,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             pertahankan={adaSimMateri}
             tutupDiLatar={!adaSimMateri}
           >
-            {bab === "mtk-1-bab3" && activeSubBab === "D" ? (
+            {bab === "mtk-1-bab4" && activeSubBab === "A" ? (
+            <KartuBahan
+              key={`${bab}-${activeSubBab}-bendera-info`}
+              speakGuru={speakGuru}
+              teksLanjut="LANJUTKAN KE SIMULASI ⬇️"
+              onLanjut={() =>
+                handleUnlockNextSmicpa(
+                  TAHAP_SIMULASI,
+                  simulasiRef,
+                  `Kartu bahan lengkap! Sekarang kita bereksperimen di Simulasi. ${SIMULASI_MISI_AWAL[bab]?.(activeSubBab) ?? ""}`.trim()
+                )
+              }
+            />
+            ) : bab === "mtk-1-bab3" && activeSubBab === "D" ? (
             <KartuResep
               key={`${bab}-${activeSubBab}-resep`}
               speakGuru={speakGuru}
@@ -2899,6 +2923,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                     hentikan: hentikanRekamConcrete,
                     gulir: () => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
                     onSelesai: () => handleUnlockNextSmicpa(5, pictorialRef, "Dua belas soal pesanan selesai. Sekarang kita lihat gambarnya."),
+                  }}
+                />
+              ) : bab === "mtk-1-bab4" && activeSubBab === "A" ? (
+                <TahapBahan
+                  rupa="benda"
+                  soal={CONCRETE_BAHAN}
+                  pita={TEMA_BAHAN.concrete}
+                  teksAkhir="LANJUTKAN KE PICTORIAL ⬇️"
+                  umum={{
+                    speakGuru,
+                    panel: panelConcrete,
+                    hentikan: hentikanRekamConcrete,
+                    gulir: () => concreteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+                    onSelesai: () => handleUnlockNextSmicpa(5, pictorialRef, "Dua belas soal barang bekas selesai. Sekarang kita lihat pola garisnya."),
                   }}
                 />
               ) : bab === "mtk-1-bab3" && activeSubBab === "D" ? (
@@ -3449,6 +3487,20 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                     hentikan: hentikanRekamConcrete,
                     gulir: () => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
                     onSelesai: () => handleUnlockNextSmicpa(6, abstractRef, "Dua belas soal gambar selesai. Ayo lihat angka dan tandanya saja."),
+                  }}
+                />
+              ) : bab === "mtk-1-bab4" && activeSubBab === "A" ? (
+                <TahapBahan
+                  rupa="diagram"
+                  soal={PICTORIAL_BAHAN}
+                  pita={TEMA_BAHAN.pictorial}
+                  teksAkhir="LANJUTKAN KE ABSTRACT ⬇️"
+                  umum={{
+                    speakGuru,
+                    panel: panelGambar,
+                    hentikan: hentikanRekamConcrete,
+                    gulir: () => pictorialRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+                    onSelesai: () => handleUnlockNextSmicpa(6, abstractRef, "Dua belas soal pola garis selesai. Ayo lihat kata dan angkanya saja."),
                   }}
                 />
               ) : bab === "mtk-1-bab3" && activeSubBab === "D" ? (
@@ -4013,6 +4065,21 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                   soal={ABSTRACT_PESANAN}
                   pita={TEMA_PESANAN.abstract}
                   teksAkhir="SELESAI SUB-BAB C ✅"
+                  poinPenting
+                  umum={{
+                    speakGuru,
+                    panel: panelLambang,
+                    hentikan: hentikanRekamConcrete,
+                    gulir: () => abstractRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+                    onSelesai: () => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }),
+                  }}
+                />
+              ) : bab === "mtk-1-bab4" && activeSubBab === "A" ? (
+                <TahapBahan
+                  rupa="lambang"
+                  soal={ABSTRACT_BAHAN}
+                  pita={TEMA_BAHAN.abstract}
+                  teksAkhir="SELESAI SUB-BAB A ✅"
                   poinPenting
                   umum={{
                     speakGuru,
