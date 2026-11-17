@@ -2,6 +2,7 @@
 
 import React, { forwardRef, useEffect, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
+import { useBukaSemuaKunci } from "@/lib/buka-semua-kunci";
 
 /** Penanda build UI pop-up tahap SMICPA. */
 export const IGIL_POPUP_TAHAP_UI = "popup-tahap-smicpa-v2-hp-turun";
@@ -58,14 +59,12 @@ export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUp
 ) {
   const [portalSiap, setPortalSiap] = useState(false);
   const [pernahBuka, setPernahBuka] = useState(false);
-  // Pemeriksaan di komputer ini: kartu tahap tidak menunggu tahap sebelumnya.
-  const [paksaBuka, setPaksaBuka] = useState(process.env.NODE_ENV === "development");
+  // Mode periksa pemilik (localhost atau admin yang masuk): kartu tahap tidak menunggu tahap sebelumnya.
+  const paksaBuka = useBukaSemuaKunci();
   const boleh = terbuka || paksaBuka;
 
   useEffect(() => {
     setPortalSiap(true);
-    const host = window.location.hostname;
-    if (host === "localhost" || host === "127.0.0.1") setPaksaBuka(true);
   }, []);
 
   // Isi dipasang pertama kali saat tahap dibuka, lalu bertahan sampai tahap terkunci lagi (ganti sub-bab).

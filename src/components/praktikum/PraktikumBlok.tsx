@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import dataBlok from "@/data/praktikum-blok.json";
+import { useBukaSemuaKunci } from "@/lib/buka-semua-kunci";
 import {
   catatPraktikumTerkirim,
   useUjianLulus,
@@ -58,6 +59,7 @@ export default function PraktikumBlok({ blokId }: { blokId: string }) {
   const blok = SEMUA_BLOK.find((b) => b.blok_id === blokId);
   const lulus = useUjianLulus();
   const terkirim = usePraktikumTerkirim(blokId);
+  const bukaSemua = useBukaSemuaKunci();
   const [jawabanLangkah, setJawabanLangkah] = useState<Record<string, string>>({});
   const [penjelasan, setPenjelasan] = useState("");
 
@@ -73,7 +75,8 @@ export default function PraktikumBlok({ blokId }: { blokId: string }) {
   const siapDibaca = lulus !== null && terkirim !== null;
   const babLulus = new Set(lulus ?? []);
   const jumlahLulus = blok.chapters.filter((b) => babLulus.has(b.chapter_id)).length;
-  const terbuka = jumlahLulus === blok.chapters.length;
+  // Mode periksa pemilik (localhost atau admin yang masuk) membuka Praktikum tanpa menunggu empat bab lulus.
+  const terbuka = bukaSemua || jumlahLulus === blok.chapters.length;
   const kata = hitungKata(penjelasan);
   const semuaTerjawab = tugas.steps.every((s) => Boolean(jawabanLangkah[s.step_id]));
   const siapKirim = semuaTerjawab && kata >= tugas.min_words;
