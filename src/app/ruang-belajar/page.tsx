@@ -2,15 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { BookOpen, Lightbulb, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import PilihGuru from "@/components/PilihGuru";
 import { MUAT_BAB_BARU } from "@/components/modul/registri-bab-baru";
 import { type KelaminGuru } from "@/lib/guru";
 import {
   DATA_KURIKULUM,
-  DATA_MODUL_IGIL,
-  JALUR_MODUL_IGIL,
   DAFTAR_KELAS,
   JUDUL_MTK_1_BAB1,
   JUDUL_MTK_1_BAB2,
@@ -71,8 +69,43 @@ import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 const OPSI_MAPEL_LAIN = OPSI_LAINNYA;
 const OPSI_MATERI_LAIN = OPSI_LAINNYA;
 const KUNCI_HALAMAN_BUKU = "igil-halaman-buku-v1";
-/** Opsi 1: buku Kurikulum Merdeka. Opsi 2: modul naskah orisinal IGIL. */
-type SumberBelajar = "kurikulum" | "igil";
+
+/** Jalur halaman modul untuk satu materi (kosong bila modulnya belum siap). */
+function cariJalurModul(kelas: string, mapel: string, materi: string): string {
+  const jalurKelas: Record<string, string> =
+    kelas === "1 SD"
+      ? {
+          [JUDUL_MTK_1_BAB1]: "/ruang-belajar/mtk-1-bab1",
+          [JUDUL_MTK_1_BAB2]: "/ruang-belajar/mtk-1-bab2",
+          [JUDUL_MTK_1_BAB3]: "/ruang-belajar/mtk-1-bab3",
+          [JUDUL_MTK_1_BAB4]: "/ruang-belajar/mtk-1-bab4",
+          [JUDUL_MTK_1_BAB5]: "/ruang-belajar/mtk-1-bab5",
+          [JUDUL_MTK_1_BAB6]: "/ruang-belajar/mtk-1-bab6",
+          [JUDUL_MTK_1_BAB7]: "/ruang-belajar/mtk-1-bab7",
+          [JUDUL_MTK_1_BAB8]: "/ruang-belajar/mtk-1-bab8",
+        }
+      : kelas === "2 SD"
+        ? { [JUDUL_MTK_2_BAB1]: "/ruang-belajar/mtk-2-bab1", [JUDUL_MTK_2_BAB2]: "/ruang-belajar/mtk-2-bab2", [JUDUL_MTK_2_BAB3]: "/ruang-belajar/mtk-2-bab3", [JUDUL_MTK_2_BAB4]: "/ruang-belajar/mtk-2-bab4", [JUDUL_MTK_2_BAB5]: "/ruang-belajar/mtk-2-bab5", [JUDUL_MTK_2_BAB6]: "/ruang-belajar/mtk-2-bab6", [JUDUL_MTK_2_BAB7]: "/ruang-belajar/mtk-2-bab7", [JUDUL_MTK_2_BAB8]: "/ruang-belajar/mtk-2-bab8" }
+        : kelas === "4 SD"
+          ? { [JUDUL_MTK_4_BAB1]: "/ruang-belajar/mtk-4-bab1", [JUDUL_MTK_4_BAB2]: "/ruang-belajar/mtk-4-bab2", [JUDUL_MTK_4_BAB3]: "/ruang-belajar/mtk-4-bab3", [JUDUL_MTK_4_BAB4]: "/ruang-belajar/mtk-4-bab4", [JUDUL_MTK_4_BAB5]: "/ruang-belajar/mtk-4-bab5", [JUDUL_MTK_4_BAB6]: "/ruang-belajar/mtk-4-bab6" }
+          : kelas === "5 SD"
+            ? { [JUDUL_MTK_5_BAB1]: "/ruang-belajar/mtk-5-bab1", [JUDUL_MTK_5_BAB2]: "/ruang-belajar/mtk-5-bab2", [JUDUL_MTK_5_BAB3]: "/ruang-belajar/mtk-5-bab3", [JUDUL_MTK_5_BAB4]: "/ruang-belajar/mtk-5-bab4", [JUDUL_MTK_5_BAB5]: "/ruang-belajar/mtk-5-bab5", [JUDUL_MTK_5_BAB6]: "/ruang-belajar/mtk-5-bab6", [JUDUL_MTK_5_BAB7]: "/ruang-belajar/mtk-5-bab7", [JUDUL_MTK_5_BAB8]: "/ruang-belajar/mtk-5-bab8", [JUDUL_MTK_5_BAB9]: "/ruang-belajar/mtk-5-bab9" }
+            : kelas === "6 SD"
+              ? {
+                  [JUDUL_MTK_6_BAB1]: "/ruang-belajar/mtk-6-bab1",
+                  [JUDUL_MTK_6_BAB2]: "/ruang-belajar/mtk-6-bab2",
+                  [JUDUL_MTK_6_BAB3]: "/ruang-belajar/mtk-6-bab3",
+                  [JUDUL_MTK_6_BAB4]: "/ruang-belajar/mtk-6-bab4",
+                }
+              : {};
+  // Bab Matematika Kelas 3 sampai 6 yang sudah dipasang di registri-bab-baru: jalurnya dibaca dari judul "Bab N: ...".
+  const nomorKelas = kelas.match(/^(\d) SD$/)?.[1];
+  const nomorBab = materi.match(/^Bab (\d+):/)?.[1];
+  const kunciBabBaru = nomorKelas && nomorBab && mapel === "Matematika" ? `mtk-${nomorKelas}-bab${nomorBab}` : "";
+  const jalurBabBaru = kunciBabBaru && kunciBabBaru in MUAT_BAB_BARU ? `/ruang-belajar/${kunciBabBaru}` : "";
+
+  return jalurKelas[materi] ?? jalurBabBaru;
+}
 
 export default function RuangBelajarPage() {
   const router = useRouter();
@@ -83,7 +116,6 @@ export default function RuangBelajarPage() {
     situsHanyaAdmin() ? KELAS_TERBUKA_PUBLIK : "3 SD",
   );
   const [kota, setKota] = useState("Jakarta");
-  const [sumber, setSumber] = useState<SumberBelajar>("kurikulum");
   const [pilihanMapel, setPilihanMapel] = useState(() =>
     situsHanyaAdmin()
       ? MAPEL_TERBUKA_PUBLIK
@@ -102,22 +134,22 @@ export default function RuangBelajarPage() {
   const [menyiapkanSapaan, setMenyiapkanSapaan] = useState(false);
 
   const daftarKelasTampil = useMemo(() => {
-    if (!kunciPublik) return DAFTAR_KELAS;
+    if (!kunciPublik) return DAFTAR_KELAS.filter((k) => /SD$/.test(k));
     return [...KELAS_PILOT_SD];
   }, [kunciPublik]);
   const daftarMapel = useMemo(() => {
-    if (!kunciPublik) return daftarMapelUntukKelas(kelas);
+    if (!kunciPublik) return daftarMapelUntukKelas(kelas).filter((m) => (DATA_KURIKULUM[kelas]?.[m] ?? []).some((materi) => cariJalurModul(kelas, m, materi)));
     return adalahPilotMatematikaSd(kelas, MAPEL_TERBUKA_PUBLIK)
       ? [MAPEL_TERBUKA_PUBLIK]
       : [];
   }, [kelas, kunciPublik]);
   const daftarMateri = useMemo(() => {
     if (pilihanMapel === OPSI_MAPEL_LAIN) return [];
-    const buku = (sumber === "igil" ? DATA_MODUL_IGIL : DATA_KURIKULUM)[kelas]?.[pilihanMapel] ?? [];
+    const buku = DATA_KURIKULUM[kelas]?.[pilihanMapel] ?? [];
     if (!kunciPublik) return buku;
     if (adalahPilotMatematikaSd(kelas, pilihanMapel)) return buku;
     return [];
-  }, [kelas, kunciPublik, pilihanMapel, sumber]);
+  }, [kelas, kunciPublik, pilihanMapel]);
   const mapel =
     pilihanMapel === OPSI_MAPEL_LAIN ? mapelManual : pilihanMapel;
   const materi =
@@ -149,15 +181,15 @@ export default function RuangBelajarPage() {
   }, [daftarMapel, pilihanMapel]);
 
   useEffect(() => {
-    if (sumber !== "igil" && pilihanMapel === OPSI_MAPEL_LAIN) {
+    if (pilihanMapel === OPSI_MAPEL_LAIN) {
       setPilihanMateri(OPSI_MATERI_LAIN);
       return;
     }
-    if (sumber !== "igil" && pilihanMateri === OPSI_MATERI_LAIN) return;
+    if (pilihanMateri === OPSI_MATERI_LAIN) return;
     if (!pilihanMateri || !daftarMateri.includes(pilihanMateri)) {
-      setPilihanMateri(daftarMateri[0] ?? (sumber === "igil" ? "" : OPSI_MATERI_LAIN));
+      setPilihanMateri(daftarMateri[0] ?? OPSI_MATERI_LAIN);
     }
-  }, [daftarMateri, pilihanMapel, pilihanMateri, sumber]);
+  }, [daftarMateri, pilihanMapel, pilihanMateri]);
 
   const naskahSapaanSesi = () => {
     const namaPakai = nama.trim() || "Siswa";
@@ -173,7 +205,7 @@ export default function RuangBelajarPage() {
     return () => window.clearTimeout(t);
     // naskahSapaanSesi follows the fields below
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nama, kelas, guruKelamin, sumber, mapel, materi]);
+  }, [nama, kelas, guruKelamin, mapel, materi]);
 
   const mulaiPembelajaran = async () => {
     if (kunciPublik && !adalahPilotMatematikaSd(kelas, mapel)) {
@@ -182,10 +214,6 @@ export default function RuangBelajarPage() {
     }
     if (!mapel.trim()) {
       setPesanGalat("Mohon pilih mata pelajaran.");
-      return;
-    }
-    if (sumber === "igil" && !JALUR_MODUL_IGIL[materi]) {
-      setPesanGalat("Belum ada modul naskah IGIL untuk pilihan ini. Coba Opsi 1 (buku Kurikulum Merdeka).");
       return;
     }
     window.sessionStorage.removeItem(KUNCI_HALAMAN_BUKU);
@@ -197,39 +225,7 @@ export default function RuangBelajarPage() {
       guruKelamin,
     });
 
-    const jalurKelas: Record<string, string> =
-      kelas === "1 SD"
-        ? {
-            [JUDUL_MTK_1_BAB1]: "/ruang-belajar/mtk-1-bab1",
-            [JUDUL_MTK_1_BAB2]: "/ruang-belajar/mtk-1-bab2",
-            [JUDUL_MTK_1_BAB3]: "/ruang-belajar/mtk-1-bab3",
-            [JUDUL_MTK_1_BAB4]: "/ruang-belajar/mtk-1-bab4",
-            [JUDUL_MTK_1_BAB5]: "/ruang-belajar/mtk-1-bab5",
-            [JUDUL_MTK_1_BAB6]: "/ruang-belajar/mtk-1-bab6",
-            [JUDUL_MTK_1_BAB7]: "/ruang-belajar/mtk-1-bab7",
-            [JUDUL_MTK_1_BAB8]: "/ruang-belajar/mtk-1-bab8",
-          }
-        : kelas === "2 SD"
-          ? { [JUDUL_MTK_2_BAB1]: "/ruang-belajar/mtk-2-bab1", [JUDUL_MTK_2_BAB2]: "/ruang-belajar/mtk-2-bab2", [JUDUL_MTK_2_BAB3]: "/ruang-belajar/mtk-2-bab3", [JUDUL_MTK_2_BAB4]: "/ruang-belajar/mtk-2-bab4", [JUDUL_MTK_2_BAB5]: "/ruang-belajar/mtk-2-bab5", [JUDUL_MTK_2_BAB6]: "/ruang-belajar/mtk-2-bab6", [JUDUL_MTK_2_BAB7]: "/ruang-belajar/mtk-2-bab7", [JUDUL_MTK_2_BAB8]: "/ruang-belajar/mtk-2-bab8" }
-          : kelas === "4 SD"
-            ? { [JUDUL_MTK_4_BAB1]: "/ruang-belajar/mtk-4-bab1", [JUDUL_MTK_4_BAB2]: "/ruang-belajar/mtk-4-bab2", [JUDUL_MTK_4_BAB3]: "/ruang-belajar/mtk-4-bab3", [JUDUL_MTK_4_BAB4]: "/ruang-belajar/mtk-4-bab4", [JUDUL_MTK_4_BAB5]: "/ruang-belajar/mtk-4-bab5", [JUDUL_MTK_4_BAB6]: "/ruang-belajar/mtk-4-bab6" }
-            : kelas === "5 SD"
-              ? { [JUDUL_MTK_5_BAB1]: "/ruang-belajar/mtk-5-bab1", [JUDUL_MTK_5_BAB2]: "/ruang-belajar/mtk-5-bab2", [JUDUL_MTK_5_BAB3]: "/ruang-belajar/mtk-5-bab3", [JUDUL_MTK_5_BAB4]: "/ruang-belajar/mtk-5-bab4", [JUDUL_MTK_5_BAB5]: "/ruang-belajar/mtk-5-bab5", [JUDUL_MTK_5_BAB6]: "/ruang-belajar/mtk-5-bab6", [JUDUL_MTK_5_BAB7]: "/ruang-belajar/mtk-5-bab7", [JUDUL_MTK_5_BAB8]: "/ruang-belajar/mtk-5-bab8", [JUDUL_MTK_5_BAB9]: "/ruang-belajar/mtk-5-bab9" }
-              : kelas === "6 SD"
-                ? {
-                    [JUDUL_MTK_6_BAB1]: "/ruang-belajar/mtk-6-bab1",
-                    [JUDUL_MTK_6_BAB2]: "/ruang-belajar/mtk-6-bab2",
-                    [JUDUL_MTK_6_BAB3]: "/ruang-belajar/mtk-6-bab3",
-                    [JUDUL_MTK_6_BAB4]: "/ruang-belajar/mtk-6-bab4",
-                  }
-                : {};
-    // Bab Matematika Kelas 3 sampai 6 yang sudah dipasang di registri-bab-baru: jalurnya dibaca dari judul "Bab N: ...".
-    const nomorKelas = kelas.match(/^(\d) SD$/)?.[1];
-    const nomorBab = materi.match(/^Bab (\d+):/)?.[1];
-    const kunciBabBaru = nomorKelas && nomorBab && mapel === "Matematika" ? `mtk-${nomorKelas}-bab${nomorBab}` : "";
-    const jalurBabBaru = kunciBabBaru && kunciBabBaru in MUAT_BAB_BARU ? `/ruang-belajar/${kunciBabBaru}` : "";
-    const jalurModul =
-      sumber === "igil" ? (JALUR_MODUL_IGIL[materi] ?? "") : (jalurKelas[materi] ?? jalurBabBaru);
+    const jalurModul = cariJalurModul(kelas, mapel, materi);
     if (jalurModul) {
       router.push(
         `${jalurModul}?nama=${encodeURIComponent(nama.trim() || "Siswa")}`,
@@ -296,39 +292,8 @@ export default function RuangBelajarPage() {
         </div>
 
         <div className="rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
-        <div>
-          <label className={kelasLabel}>Pilih sumber pembelajaran</label>
-          <div className="grid gap-2 rounded-2xl bg-[#F0AB00]/15 p-1 sm:grid-cols-2" role="radiogroup" aria-label="Sumber pembelajaran">
-            {(
-              [
-                { nilai: "kurikulum", judul: "Opsi 1: Buku Kurikulum Merdeka", ikon: BookOpen },
-                { nilai: "igil", judul: "Opsi 2: Naskah Orisinal IGIL", ikon: Lightbulb },
-              ] as const
-            ).map(({ nilai, judul, ikon: Ikon }) => (
-              <button
-                key={nilai}
-                type="button"
-                role="radio"
-                aria-checked={sumber === nilai}
-                onClick={() => {
-                  setSumber(nilai);
-                  setPilihanMateri("");
-                  setMateriManual("");
-                  setPesanGalat("");
-                }}
-                className={`flex w-full items-center justify-center gap-2 rounded-xl px-3 py-3 text-center text-sm font-extrabold transition-all sm:text-base ${
-                  sumber === nilai ? "bg-[#1C01A5] text-white shadow-sm" : "text-[#1C01A5] hover:bg-white/60"
-                }`}
-              >
-                <Ikon className="h-5 w-5 shrink-0" />
-                <span>{judul}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
         <>
-            <div className="mt-6">
+            <div>
               <label className={kelasLabel}>Pilih mata pelajaran</label>
               <select
                 value={pilihanMapel}
@@ -348,9 +313,6 @@ export default function RuangBelajarPage() {
                     {item}
                   </option>
                 ))}
-                {kunciPublik || sumber === "igil" ? null : (
-                  <option value={OPSI_MAPEL_LAIN}>{OPSI_MAPEL_LAIN}</option>
-                )}
               </select>
               {pilihanMapel === OPSI_MAPEL_LAIN ? (
                 <input
@@ -381,16 +343,9 @@ export default function RuangBelajarPage() {
                     {item}
                   </option>
                 ))}
-                {sumber === "igil" ? null : (
-                  <option value={OPSI_MATERI_LAIN}>{OPSI_MATERI_LAIN}</option>
-                )}
+                <option value={OPSI_MATERI_LAIN}>{OPSI_MATERI_LAIN}</option>
               </select>
-              {sumber === "igil" && daftarMateri.length === 0 ? (
-                <p className="mt-2 text-sm font-semibold text-[#1C01A5]/80">
-                  Belum ada modul naskah IGIL untuk kelas ini. Pilih Opsi 1 atau kelas lain.
-                </p>
-              ) : null}
-              {sumber === "kurikulum" && pilihanMateri === OPSI_MATERI_LAIN ? (
+              {pilihanMateri === OPSI_MATERI_LAIN ? (
                 <input
                   value={materiManual}
                   onChange={(e) => setMateriManual(e.target.value)}
