@@ -3,6 +3,7 @@
 import React, { forwardRef, useEffect, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { useBukaSemuaKunci } from "@/lib/buka-semua-kunci";
+import { MasukanTahap } from "@/components/modul/MasukanTahap";
 
 /** Penanda build UI pop-up tahap SMICPA. */
 export const IGIL_POPUP_TAHAP_UI = "popup-tahap-smicpa-v2-hp-turun";
@@ -176,6 +177,8 @@ export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUp
           </span>
         </button>
       </article>
+      {/* Pertanyaan, Kritik, dan Saran lewat suara, di bawah tombol Buka (hanya tahap yang sudah terbuka). */}
+      {boleh ? <MasukanTahap tahap={judul} /> : null}
       {popup}
     </div>
   );

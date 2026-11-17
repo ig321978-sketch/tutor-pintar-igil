@@ -84,6 +84,8 @@ export function ruteApiPublikSaatTerkunci(pathname: string): boolean {
     pathname === "/api/belajar/profil" ||
     pathname === "/api/belajar/latihan" ||
     pathname === "/api/belajar/ujian/mulai" ||
-    pathname === "/api/belajar/ujian/serahkan"
+    pathname === "/api/belajar/ujian/serahkan" ||
+    // Pertanyaan, Kritik, Saran di kartu Tahap: akun masuk, satu kali sehari (RPC kirim_masukan_tahap).
+    pathname === "/api/masukan"
   );
 }
