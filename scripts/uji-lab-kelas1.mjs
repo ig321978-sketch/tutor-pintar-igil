@@ -1297,20 +1297,25 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   const rec = (v) => Object.fromEntries(ID_BH.map((id) => [id, v]));
   const BH = (o) => ({ alat: "bahan", pilih: "botol", putar: rec(0), skala: rec(2), sisi: false, sudut: false, gelinding: [], label: rec(null), ...o });
   const LBL = { botol: "roda", piring: "roda", roti: "atap", triplek: "atap", teh: "badan", pasta: "badan" };
-  const semuaAwal = [Ci({}), Ci({ menyusun: true }), Pk({}), Kl({}), Bg({}), BH({})];
+  // Sub-Bab B memakai Rak Teras (teras-k1b4b): delapan barang, belum ada yang kuning, aturan bentuk. Rincian di scripts/uji-teras-k1b4b.mjs.
+  const BRG = (k) => ({ bentuk: { L: "lengkung", S: "segitiga", E: "segiempat" }[k[0]], warna: { m: "merah", b: "biru", k: "kuning" }[k[1]], ukuran: k[2] === "+" ? "besar" : "kecil" });
+  const ISI_TR = ["Lm+", "Sb-", "Em-", "Lb-", "Sm+", "Eb+", "Lm-", "Eb-"].map(BRG);
+  const TR = (o) => ({ alat: "teras", aturan: "bentuk", terpilih: null, barang: ISI_TR, ikut: [], ...o });
+  const semuaAwal = [Ci({}), Ci({ menyusun: true }), Pk({}), Kl({}), Bg({}), BH({}), TR({})];
   for (const sub of ["A", "B", "C"]) {
     const daftar = X4.daftarMisiBab4(sub);
     for (const k of semuaAwal) cek(M0.misiBaru(daftar, k, kosong).length === 0, `bab4 ${sub}: keadaan awal ${k.alat} tidak memenuhi misi`);
   }
-  ujiStruktur("bab4", X4.daftarMisiBab4, ["A", "B", "C"], { A: BH({}), B: Ci({}), C: Ci({ menyusun: true }) });
+  ujiStruktur("bab4", X4.daftarMisiBab4, ["A", "B", "C"], { A: BH({}), B: TR({}), C: Ci({ menyusun: true }) });
   const ada = (sub, k, id) => M0.misiBaru(X4.daftarMisiBab4(sub), k, kosong).includes(id);
   cek(ada("A", BH({ pilih: "roti", putar: { ...rec(0), roti: 45 }, sudut: true }), "a-putar") && !ada("A", BH({ pilih: "roti", putar: { ...rec(0), roti: 45 } }), "a-putar") && !ada("A", BH({ pilih: "teh", putar: { ...rec(0), teh: 45 }, sudut: true }), "a-putar") && !ada("A", Ci({ id: "segitiga", putar: 90 }), "a-putar"), "bab4 A: putar segitiga dan lihat sudut");
   cek(ada("A", BH({ gelinding: ["piring"] }), "a-gelinding") && !ada("A", BH({ gelinding: ["teh"] }), "a-gelinding") && ada("A", BH({ gelinding: ["teh"] }), "a-sudut") && !ada("A", BH({ gelinding: ["botol"] }), "a-sudut"), "bab4 A: gelinding lengkung dan bersudut");
   cek(ada("A", BH({ label: LBL }), "a-label") && !ada("A", BH({ label: { ...LBL, roti: "badan" } }), "a-label") && !ada("A", BH({ label: { ...LBL, pasta: null } }), "a-label"), "bab4 A: semua label tepat");
   cek(ada("A", BH({ skala: { ...rec(2), teh: 3 } }), "a-besar") && ada("A", BH({ pilih: "piring", sisi: true }), "a-sisi") && !ada("A", BH({ pilih: "botol", sisi: true }), "a-sisi"), "bab4 A: bebas");
-  cek(ada("B", Kl({ aturan: "warna" }), "b-warna") && ada("B", Kl({ aturan: "ukuran" }), "b-ukuran") && ada("B", Kl({ terpilih: 3 }), "b-blok"), "bab4 B: kelompok");
-  cek(ada("B", Kl({ aturan: "warna", terpilih: 2 }), "b-ganti") && !ada("B", Kl({ terpilih: 2 }), "b-ganti"), "bab4 B: ganti aturan setelah memilih balok");
-  cek(ada("B", Pk({ tertutup: true, bentuk: "Segitiga" }), "b-ingat-papan") && ada("B", Ci({ putar: 180 }), "b-ingat-putar"), "bab4 B: ingat A");
+  cek(ada("B", TR({ aturan: "warna" }), "b-warna") && ada("B", TR({ aturan: "ukuran" }), "b-ukuran") && !ada("B", Kl({ aturan: "warna" }), "b-warna"), "bab4 B: ganti aturan di rak teras");
+  cek(ada("B", TR({ terpilih: 2, ikut: ["bentuk"] }), "b-pilih") && !ada("B", TR({ terpilih: 2, ikut: ["bentuk"] }), "b-pindah") && ada("B", TR({ terpilih: 2, aturan: "warna", ikut: ["bentuk", "warna"] }), "b-pindah"), "bab4 B: barang pindah keranjang");
+  cek(ada("B", TR({ barang: ISI_TR.map((b, i) => (i === 1 ? { ...b, warna: "kuning" } : b)) }), "b-kuning") && !ada("B", TR({ aturan: "warna" }), "b-kuning"), "bab4 B: cat kuning");
+  cek(ada("B", TR({ aturan: "ukuran", barang: ISI_TR.map((b, i) => (i === 1 ? { ...b, ukuran: "besar" } : b)) }), "b-sama") && !ada("B", TR({ aturan: "ukuran" }), "b-sama") && !ada("B", TR({ barang: ISI_TR.map((b, i) => (i === 1 ? { ...b, ukuran: "besar" } : b)) }), "b-sama"), "bab4 B: besar dan kecil sama banyak");
   cek(ada("C", Ci({ menyusun: true, idSusun: "dua-segitiga", gabung: true }), "c-segitiga") && !ada("C", Ci({ menyusun: false, gabung: true }), "c-segitiga"), "bab4 C: dua segitiga");
   cek(ada("C", Ci({ menyusun: true, idSusun: "dua-persegi", gabung: true }), "c-persegi"), "bab4 C: dua persegi");
   cek(ada("C", Bg({ urai: true }), "c-kereta") && !ada("C", Bg({ urai: false }), "c-kereta") && ada("C", Bg({ id: "rumah-lidi", urai: true }), "c-lidi"), "bab4 C: urai");

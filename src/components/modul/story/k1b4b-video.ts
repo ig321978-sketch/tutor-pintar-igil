@@ -1,51 +1,50 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_ATURAN, ADEGAN_BENTUK, ADEGAN_CERITA, ADEGAN_NAMA, ADEGAN_PERIKSA } from "./k1b4b-materi-1";
-import { ADEGAN_BESAR, ADEGAN_GANTI, ADEGAN_LANGKAH, ADEGAN_MAINAN, ADEGAN_RAPI, ADEGAN_WARNA } from "./k1b4b-materi-2";
-import { ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_SATU, ADEGAN_LATIHAN_TIGA, ADEGAN_PENUTUP } from "./k1b4b-materi-3";
-import { ADEGAN_LUAR_KENALI, ADEGAN_LUAR_KENALI_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k1b4b-luar-1";
-import { ADEGAN_LUAR_PILAH, ADEGAN_LUAR_PILAH_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_SEKITAR, ADEGAN_LUAR_SEKITAR_TERAPAN } from "./k1b4b-luar-2";
+import { ADEGAN_BENTUK, ADEGAN_NAMA, ADEGAN_TERAS } from "./k1b4b-materi-1";
+import { ADEGAN_UKURAN, ADEGAN_WARNA } from "./k1b4b-materi-2";
+import { ADEGAN_PENUTUP, ADEGAN_RAPI, ADEGAN_SATU } from "./k1b4b-materi-3";
+import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_PILAH, ADEGAN_LUAR_PILAH_TERAPAN } from "./k1b4b-luar-1";
+import { ADEGAN_LUAR_BEDA, ADEGAN_LUAR_BEDA_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_TEBAK, ADEGAN_LUAR_TEBAK_TERAPAN } from "./k1b4b-luar-2";
 
-/** Kelas 1 Bab 4 Sub-Bab B (Mengelompokkan Benda): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 1 Bab 4 Sub-Bab B (memilah benda), lanjutan cerita Festival Mainan Kardus.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Teras Penuh Barang" (Igil, Kaka, Abang, Mamah).
+ * Video kedua: tiga metode global, terpisah.
+ */
+export const JUDUL_K1B4B = "Teras Penuh Barang";
+
 export const VIDEO_MATERI_K1B4B: VideoStory = {
   id: "k1b4b-materi",
-  judul: "Mengelompokkan Benda",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K1B4B,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "mengelompokkan benda", daftar: ["Memilih satu aturan", "Memeriksa tiap benda", "Menghitung anggota"] }),
-    ADEGAN_CERITA,
-    ADEGAN_ATURAN,
+    adeganSapaan({ jenis: "materi", topik: "memilah benda", daftar: ["Satu aturan", "Nama dan isi", "Ganti aturan"] }),
+    ADEGAN_TERAS,
     ADEGAN_BENTUK,
-    ADEGAN_PERIKSA,
     ADEGAN_NAMA,
     ADEGAN_WARNA,
-    ADEGAN_GANTI,
-    ADEGAN_BESAR,
-    ADEGAN_MAINAN,
+    ADEGAN_UKURAN,
+    ADEGAN_SATU,
     ADEGAN_RAPI,
-    ADEGAN_LANGKAH,
-    ADEGAN_LATIHAN_SATU,
-    ADEGAN_LATIHAN_DUA,
-    ADEGAN_LATIHAN_TIGA,
     ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K1B4B: VideoStory = {
   id: "k1b4b-luar",
-  judul: "Mengelompokkan Benda: Metode dari Luar",
-  subjudul: "Tiga metode luar",
+  judul: JUDUL_K1B4B,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "mengelompokkan benda" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "memilah benda", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_KENALI,
-    ADEGAN_LUAR_KENALI_TERAPAN,
     ADEGAN_LUAR_PILAH,
     ADEGAN_LUAR_PILAH_TERAPAN,
-    ADEGAN_LUAR_SEKITAR,
-    ADEGAN_LUAR_SEKITAR_TERAPAN,
+    ADEGAN_LUAR_TEBAK,
+    ADEGAN_LUAR_TEBAK_TERAPAN,
+    ADEGAN_LUAR_BEDA,
+    ADEGAN_LUAR_BEDA_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

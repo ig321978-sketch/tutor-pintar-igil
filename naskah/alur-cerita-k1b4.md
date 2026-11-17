@@ -42,7 +42,7 @@ Rekam suara x 4 metode (Metode IGIL: amati, hitung sisi dan sudut, beri nama; Sh
 kardus bergelombang dengan tumpukan kardus (Concrete), kertas pola jahit bergaris potong (Pictorial), kertas kado bergaris dengan lampu festival (Abstract).
 Abstract diakhiri Poin Penting.
 
-## Sub-Bab B secara rinci
+## Sub-Bab B secara rinci (selesai)
 
 Story materi "Teras Penuh Barang" (sekitar tiga menit, tanpa latihan; kata "kelompok" tidak dipakai di Story, diganti "keranjang", "dipilah", "aturan"):
 1. Sapaan: satu aturan, nama dan isi keranjang, ganti aturan.
@@ -56,6 +56,12 @@ Story materi "Teras Penuh Barang" (sekitar tiga menit, tanpa latihan; kata "kelo
 9. Penutup.
 
 Story metode global: Attribute Sort (Pilah Ciri), Guess My Rule (Tebak Aturan), Odd One Out (Cari yang Beda).
+
+Mind-map "Pagar Teras": keset sabut = Masalah, tujuh papan pagar runcing bernomor = Penyelesaian berurutan (semua metode Story), pot gantung = Hasil.
+Infografis "Catatan di Karton Telur" (aturan bentuk, warna, ukuran; keranjang, isi, semua). Simulasi "Rak Teras" (Misi Festival bagian 1:
+ganti aturan dan barang pindah keranjang, cat atau ubah ukuran barang; delapan barang lain dari Story). CPA: Misi Festival bagian 2 sampai 10
+(Metode IGIL: pilih aturan, periksa, taruh, beri nama, hitung; Attribute Sort; Guess My Rule; Odd One Out), pola visual ubin teraso dengan
+keranjang terisi (Concrete), papan berlubang dengan pasak (Pictorial), dinding kertas tempel (Abstract). Abstract diakhiri Poin Penting.
 
 ## Sub-Bab C secara rinci (akhir cerita bab)
 

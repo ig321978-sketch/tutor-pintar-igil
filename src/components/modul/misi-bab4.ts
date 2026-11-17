@@ -3,13 +3,14 @@
  * Diuji di scripts/uji-lab-kelas1.mjs.
  *
  * Simulasi bertahap: satu laboratorium bentuk yang alatnya bertambah per sub-bab
- * (A: kini Meja Periksa Bahan, Misi Festival bagian satu (bahan-k1b4a); dulu Ciri Bentuk + Papan Paku; B: + Kelompok; C: + menyusun bentuk, Bangun Gabungan, dan tab
+ * (A: kini Meja Periksa Bahan, Misi Festival bagian satu (bahan-k1b4a); dulu Ciri Bentuk + Papan Paku; B: kini Rak Teras (teras-k1b4b), dulu + Kelompok; C: + menyusun bentuk, Bangun Gabungan, dan tab
  * Arsitek Cilik, sekaligus simulasi pencapaian misi bab ini).
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanBahan } from "./bahan-k1b4a/logika";
+import type { KeadaanTeras } from "./teras-k1b4b/logika";
 
 export type KeadaanCiri = {
   alat: "ciri";
@@ -32,7 +33,7 @@ export type KeadaanKelompok = { alat: "kelompok"; aturan: string; terpilih: numb
 
 export type KeadaanBangun = { alat: "bangun"; id: string; urai: boolean; jenis: string | null; diambil: boolean };
 
-export type KeadaanBab4 = KeadaanCiri | KeadaanPaku | KeadaanKelompok | KeadaanBangun | KeadaanSelesai | KeadaanBahan;
+export type KeadaanBab4 = KeadaanCiri | KeadaanPaku | KeadaanKelompok | KeadaanBangun | KeadaanSelesai | KeadaanBahan | KeadaanTeras;
 
 const ciri = (k: KeadaanBab4): k is KeadaanCiri => k.alat === "ciri";
 const paku = (k: KeadaanBab4, nama: string) => k.alat === "paku" && k.tertutup && k.bentuk === nama;
@@ -57,14 +58,19 @@ export const MISI_A: DefMisi<KeadaanBab4>[] = [
   { id: "a-sisi", teks: "Tampilkan sisi lurus piring kertas. Ada berapa?", wajib: false, cek: (k) => bahan(k) && k.pilih === "piring" && k.sisi },
 ];
 
-/** Sub-Bab B: mengelompokkan benda menurut satu aturan (bentuk, warna, ukuran). */
+/**
+ * Sub-Bab B: Misi Festival bagian satu, rak teras (Simulasi "Teras Penuh Barang"). Keadaan dari teras-k1b4b/logika.ts
+ * (diuji di scripts/uji-teras-k1b4b.mjs): aturan bentuk, warna, atau ukuran; barang terpilih; barang yang dicat atau diubah ukurannya.
+ * Mula-mula aturan bentuk, belum ada barang terpilih, dan belum ada barang kuning.
+ */
+const teras = (k: KeadaanBab4): k is KeadaanTeras => k.alat === "teras";
 export const MISI_B: DefMisi<KeadaanBab4>[] = [
-  { id: "b-warna", teks: "Kelompokkan balok menurut Warna. Lihat balok pindah nampan.", wajib: true, cek: (k) => kel(k) && k.aturan === "warna" },
-  { id: "b-ukuran", teks: "Kelompokkan balok menurut Ukuran. Hitung tiap nampan.", wajib: true, cek: (k) => kel(k) && k.aturan === "ukuran" },
-  { id: "b-blok", teks: "Ketuk satu balok. Lihat kelompoknya menurut bentuk, warna, dan ukuran.", wajib: true, cek: (k) => kel(k) && k.terpilih !== null },
-  { id: "b-ganti", teks: "Pilih satu balok, lalu ganti aturannya. Lihat balok itu pindah kelompok.", wajib: true, cek: (k) => kel(k) && k.terpilih !== null && k.aturan !== "bentuk" },
-  { id: "b-ingat-papan", teks: "Ingat Sub-Bab A: buat segitiga di Papan Paku.", wajib: false, cek: (k) => paku(k, "Segitiga") },
-  { id: "b-ingat-putar", teks: "Ingat Sub-Bab A: putar persegi, sisinya tetap 4.", wajib: false, cek: (k) => ciri(k) && k.id === "persegi" && k.putar !== 0 },
+  { id: "b-warna", teks: "Ganti aturan menjadi warna. Lihat barang pindah keranjang.", wajib: true, cek: (k) => teras(k) && k.aturan === "warna" },
+  { id: "b-ukuran", teks: "Ganti aturan menjadi ukuran, lalu baca isi tiap keranjang.", wajib: true, cek: (k) => teras(k) && k.aturan === "ukuran" },
+  { id: "b-pilih", teks: "Ketuk satu barang, lalu baca cirinya: bentuk, warna, dan ukuran.", wajib: true, cek: (k) => teras(k) && k.terpilih !== null },
+  { id: "b-pindah", teks: "Pilih satu barang, lalu ganti aturannya. Lihat barang itu pindah keranjang.", wajib: true, cek: (k) => teras(k) && k.terpilih !== null && k.ikut.length >= 2 },
+  { id: "b-kuning", teks: "Cat satu barang menjadi kuning. Keranjang kuning tidak kosong lagi.", wajib: false, cek: (k) => teras(k) && k.barang.some((b) => b.warna === "kuning") },
+  { id: "b-sama", teks: "Pakai aturan ukuran. Ubah ukuran barang sampai keranjang besar dan kecil sama banyak.", wajib: false, cek: (k) => teras(k) && k.aturan === "ukuran" && k.barang.filter((b) => b.ukuran === "besar").length * 2 === k.barang.length },
 ];
 
 /** Sub-Bab C (sub-bab akhir): menyusun dan menguraikan bentuk, sekaligus pencapaian misi bab ini. */
