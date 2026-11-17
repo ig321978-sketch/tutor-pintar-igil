@@ -11,7 +11,7 @@ import { hapus, k, sorotkan, tambah, ubah } from "./k1b3b-bantu";
 /* ------------------------------ 1. Pindah kereta di stasiun besar ------------------------------ */
 const SUARA_S1 = "Kereta berhenti di stasiun besar. Igil, Kaka, Abang, dan Mamah harus pindah ke kereta lanjutan.";
 const SUARA_S2 = "Kereta lanjutan berangkat sebentar lagi. Barang harus dibawa, peronnya harus dicari, dan kursinya harus cukup.";
-const SUARA_S3 = "Masalahnya, tidak ada waktu untuk menghitung satu per satu. Mereka butuh cara cepat untuk mengurangi.";
+const SUARA_S3 = "Mamah berseru, ayo cepat, kereta tidak mau menunggu! Tidak ada waktu untuk menghitung satu per satu. Mereka butuh cara cepat untuk mengurangi.";
 
 export const ADEGAN_STASIUN: AdeganStory = {
   id: "stasiun-besar",
@@ -87,7 +87,7 @@ export const ADEGAN_BAGAN: AdeganStory = {
 
 /* ------------------------------ 3. Dikurangi nol dan bilangan yang sama ------------------------------ */
 const SUARA_T1 = "Di troli Mamah ada empat bungkus oleh-oleh. Belum ada yang diambil, berarti dikurangi nol.";
-const SUARA_T2 = "Empat dikurangi nol sama dengan empat. Kalau tidak ada yang diambil, banyaknya tetap.";
+const SUARA_T2 = "Igil menebak, empat dikurangi nol pasti nol! Kaka menggeleng, tidak ada yang diambil, jadi banyaknya tetap. Empat dikurangi nol sama dengan empat.";
 const SUARA_T3 = "Lalu Mamah memindahkan keempat bungkus ke tas besar. Empat dikurangi empat sama dengan nol. Troli kosong.";
 const BUNGKUS = deret(4, 124, 26, 124);
 
@@ -104,7 +104,13 @@ export const ADEGAN_NOL_SAMA: AdeganStory = {
       tambah("empat", ...deretEmo(E.bungkus, "bk", BUNGKUS, 20)),
       tambah("nol.", teks("t0", 164, 92, "diambil 0", 10, W.merah)),
     ),
-    k(SUARA_T2, tambah("Empat", ...kalimatK("k1", 164, 60, ["4", KURANG, "0", "=", "4"], 18, 26)), tambah("tetap.", teks("tp", 164, 186, "tetap 4", 10, W.hijau))),
+    k(
+      SUARA_T2,
+      tambah("nol!", teks("sl", 164, 60, "0? keliru!", 13, W.merah)),
+      hapus("menggeleng,", "sl"),
+      tambah("tetap.", teks("tp", 164, 186, "tetap 4", 10, W.hijau)),
+      tambah("Empat@2", ...kalimatK("k1", 164, 60, ["4", KURANG, "0", "=", "4"], 18, 26)),
+    ),
     k(
       SUARA_T3,
       hapus(0, "t0", "tp", "k10", "k11", "k12", "k13", "k14"),

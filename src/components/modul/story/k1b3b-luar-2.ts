@@ -95,9 +95,9 @@ export const ADEGAN_LUAR_SEPULUH_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 8. Ringkasan ------------------------------ */
 const SUARA_Z1 = "Kita sudah melihat tiga metode global untuk mengurangi dengan cepat di perjalanan.";
-const SUARA_Z2 = "Number Bond: utuh dikurangi satu bagian sama dengan bagian yang lain.";
-const SUARA_Z3 = "Number Line: letakkan penanda di bilangan pertama, lalu lompat ke kiri.";
-const SUARA_Z4 = "Make Ten: sepuluh dikurangi satu bilangan sama dengan pasangan sepuluhnya.";
+const SUARA_Z2 = "Number Bond: utuh dikurangi satu bagian sama dengan bagian yang lain. Cocok kalau utuh dan satu bagian sudah diketahui.";
+const SUARA_Z3 = "Number Line: letakkan penanda di bilangan pertama, lalu lompat ke kiri. Cocok kalau ingin melihat setiap langkah mundur.";
+const SUARA_Z4 = "Make Ten: sepuluh dikurangi satu bilangan sama dengan pasangan sepuluhnya. Cocok kalau mula-mulanya tepat sepuluh.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
@@ -106,8 +106,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   latar: "#EEF2FF",
   ketukan: [
     k(SUARA_Z1, tambah(0, judul("Ringkasan")), tambah("tiga", emo("rk", 150, 96, E.bintang, 44)), tambah("perjalanan.", ...kartu("rt", 60, 124, 180, 26, W.emas, ["3 metode global"], 10))),
-    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Number", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Number Bond", "utuh dikurangi bagian = bagian lain"], 9.4))),
-    k(SUARA_Z3, tambah("Line:", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["Number Line", "mulai dari bilangan pertama, ke kiri"], 9.4))),
-    k(SUARA_Z4, tambah("Make", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Make Ten", "10 dikurangi bilangan = pasangannya"], 9.4))),
+    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Number", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Number Bond", "cocok bila utuh dan bagian diketahui"], 9.4))),
+    k(SUARA_Z3, tambah("Line:", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["Number Line", "cocok untuk melihat langkah mundur"], 9.4))),
+    k(SUARA_Z4, tambah("Make", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Make Ten", "cocok bila mula-mula tepat 10"], 9.4))),
   ],
 };

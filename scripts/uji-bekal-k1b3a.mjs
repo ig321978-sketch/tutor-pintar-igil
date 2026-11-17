@@ -114,6 +114,18 @@ for (const [nama, soal, rupa] of [["Concrete", D.CONCRETE, "benda"], ["Pictorial
   cek(D.POIN_PENTING.some((p) => p.includes(MINUS)) && D.POIN_PENTING.some((p) => /nol/.test(p)), "poin penting: tanda kurang dan nol");
 }
 
+/* ------------------------------ Cari kesalahan (pedoman mutu) ------------------------------ */
+for (const [nama, soal] of [["Concrete", D.CONCRETE], ["Pictorial", D.PICTORIAL], ["Abstract", D.ABSTRACT]]) {
+  const klik = soal.find((s) => s.cara === "klik");
+  const l = klik.langkah[0].langkah;
+  const klaim = L.kalimatTokoh(l);
+  cek(typeof l.tokoh === "string" && klaim !== null && l.pilihan.includes(klaim), `${nama}: soal klik pertama adalah cari kesalahan tokoh`);
+  cek(klaim !== null && !(klaim[0] - klaim[1] === klaim[2]), `${nama}: tulisan tokoh memang keliru`);
+  cek(/Cari kesalahan\./.test(klik.langkah[0].suara) && !/\d/.test(klik.langkah[0].suara), `${nama}: instruksi cari kesalahan tanpa digit`);
+}
+const tokohSemua = [D.CONCRETE, D.PICTORIAL, D.ABSTRACT].map((s) => s.find((x) => x.cara === "klik").langkah[0].langkah.tokoh);
+cek(new Set(tokohSemua).size === 3, "cari kesalahan: tokoh berganti tiap tahap");
+
 /* ------------------------------ Kanvas dan tata letak ------------------------------ */
 {
   const dalam = (t, k, pad = 8) => t.x >= k.x + pad && t.x <= k.x + k.w - pad && t.y >= k.y + pad && t.y <= k.y + k.h - pad;

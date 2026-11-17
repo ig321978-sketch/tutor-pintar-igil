@@ -10,7 +10,7 @@ export const WARNA_METODE = [W.emas, W.hijauMuda, W.langit];
 export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka ------------------------------ */
-const SUARA_O1 = "Semua sudah berkumpul di rumah Nenek. Abang bercerita, anak-anak di negara lain juga belajar cerita hitungan pengurangan. Kita lihat tiga metode global.";
+const SUARA_O1 = "Malam itu, sepupu dari kota menunjukkan cara membaca cerita hitungan yang ia pelajari dari negara lain. Kita lihat tiga metode global.";
 const SUARA_O2 = "Tiga metode itu: Bar Model, CUBES, dan Draw a Picture.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Model Batang, Langkah CUBES, dan Gambar Sketsa.";
 const SUARA_O4 = "Semua metode membantu kita memahami cerita sebelum menghitung.";
@@ -24,7 +24,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
     k(
       SUARA_O1,
       tambah(0, judul("Tiga metode global"), emo("rm", 150, 96, E.rumah, 40)),
-      tambah("Abang", ...orang("ab", 40, 120, E.abang, "Abang")),
+      tambah("sepupu", ...orang("sp", 40, 120, "🧒", "sepupu")),
       tambah("negara", emo("gl", 250, 110, "\u{1F30D}", 44)),
       tambah("tiga", ...kartu("pk", 50, 146, 200, 32, W.emas, ["3 metode global"], 11)),
     ),

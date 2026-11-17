@@ -94,7 +94,7 @@ const kelompok =
 const C = kelompok("benda");
 export const CONCRETE: SoalMisi[] = [
   C(1, "klik", "penumpang", "Misi Kondektur 2: lantai gerbong", "Penumpang naik dan turun di gerbong. Bantu Abang memeriksa catatannya.", [
-    { tipe: "periksa", a: 6, b: 4, pilihan: pilihanPeriksa(6, 4, 1) },
+    { tipe: "periksa", a: 6, b: 4, pilihan: pilihanPeriksa(6, 4, 1), tokoh: "Igil" },
     { tipe: "keluarga", x: 1, y: 4 },
     { tipe: "segitiga", x: 2, y: 5, tutup: "z" },
     { tipe: "hilang", a: 2, b: 1 },
@@ -116,7 +116,7 @@ export const CONCRETE: SoalMisi[] = [
 const P = kelompok("diagram");
 export const PICTORIAL: SoalMisi[] = [
   P(1, "klik", "penumpang", "Misi Kondektur 5: lembar karbon", "Kondektur menyalin catatan dengan titik di lembar karbon biru.", [
-    { tipe: "periksa", a: 9, b: 1, pilihan: pilihanPeriksa(9, 1, 0) },
+    { tipe: "periksa", a: 9, b: 1, pilihan: pilihanPeriksa(9, 1, 0), tokoh: "Abang" },
     { tipe: "keluarga", x: 5, y: 2 },
     { tipe: "segitiga", x: 1, y: 8, tutup: "z" },
     { tipe: "hilang", a: 4, b: 6 },
@@ -138,7 +138,7 @@ export const PICTORIAL: SoalMisi[] = [
 const A = kelompok("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(1, "klik", "penumpang", "Misi Kondektur 8: plat gerbong", "Kaka menulis hitungan dengan angka dan tanda saja.", [
-    { tipe: "periksa", a: 10, b: 4, pilihan: pilihanPeriksa(10, 4, 2) },
+    { tipe: "periksa", a: 10, b: 4, pilihan: pilihanPeriksa(10, 4, 2), tokoh: "Kaka" },
     { tipe: "keluarga", x: 2, y: 5 },
     { tipe: "segitiga", x: 1, y: 8, tutup: "z" },
     { tipe: "hilang", a: 1, b: 3 },

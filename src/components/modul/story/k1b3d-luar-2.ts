@@ -104,9 +104,9 @@ export const ADEGAN_LUAR_SKETSA_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 8. Ringkasan ------------------------------ */
 const SUARA_Z1 = "Kita sudah melihat tiga metode global untuk cerita hitungan pengurangan.";
-const SUARA_Z2 = "Bar Model: gambar batang, lalu cari bagian yang bertanda tanya.";
-const SUARA_Z3 = "CUBES: lingkari bilangan, garis bawahi pertanyaan, kotaki kata kunci, lalu selesaikan dan periksa.";
-const SUARA_Z4 = "Draw a Picture: gambar lingkaran, coret yang pergi, lalu hitung yang tersisa.";
+const SUARA_Z2 = "Bar Model: gambar batang, lalu cari bagian yang bertanda tanya. Cocok kalau yang ditanya adalah bagian yang hilang.";
+const SUARA_Z3 = "CUBES: lingkari bilangan, garis bawahi pertanyaan, kotaki kata kunci, lalu selesaikan dan periksa. Cocok untuk cerita yang panjang.";
+const SUARA_Z4 = "Draw a Picture: gambar lingkaran, coret yang pergi, lalu hitung yang tersisa. Cocok kalau benda berkurang lebih dari sekali.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
@@ -115,8 +115,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   latar: "#FEF9C3",
   ketukan: [
     k(SUARA_Z1, tambah(0, judul("Ringkasan")), tambah("tiga", emo("rk", 150, 96, E.bintang, 44)), tambah("pengurangan.", ...kartu("rt", 60, 124, 180, 26, W.emas, ["3 metode global"], 10))),
-    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Bar", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Bar Model", "batang, cari bagian bertanda tanya"], 9.4))),
-    k(SUARA_Z3, tambah("CUBES:", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["CUBES", "lingkari, garis bawahi, kotaki, periksa"], 9.4))),
-    k(SUARA_Z4, tambah("Draw", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Draw a Picture", "gambar, coret yang pergi, hitung"], 9.4))),
+    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Bar", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Bar Model", "cocok bila bagian yang hilang ditanya"], 9.4))),
+    k(SUARA_Z3, tambah("CUBES:", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["CUBES", "cocok untuk cerita panjang"], 9.4))),
+    k(SUARA_Z4, tambah("Draw", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Draw a Picture", "cocok bila berkurang dua kali"], 9.4))),
   ],
 };

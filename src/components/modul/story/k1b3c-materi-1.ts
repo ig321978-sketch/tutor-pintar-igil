@@ -39,7 +39,7 @@ export const ADEGAN_KONDEKTUR: AdeganStory = {
 /* ------------------------------ 2. Penumpang naik, tukar tempat ------------------------------ */
 const SUARA_T1 = "Di stasiun kecil naik empat penumpang berbaju biru dan tiga penumpang berbaju merah.";
 const SUARA_T2 = "Abang menulis empat ditambah tiga sama dengan tujuh. Kaka menulis tiga ditambah empat sama dengan tujuh.";
-const SUARA_T3 = "Urutannya ditukar, hasilnya tetap tujuh. Pada penjumlahan, tukar tempat boleh dan hasilnya selalu sama.";
+const SUARA_T3 = "Igil dan Kaka berdebat, siapa yang benar? Ternyata dua-duanya benar! Urutannya ditukar, hasilnya tetap tujuh. Pada penjumlahan, tukar tempat boleh.";
 
 export const ADEGAN_TUKAR: AdeganStory = {
   id: "naik-tukar",

@@ -50,7 +50,7 @@ export const ADEGAN_PERON: AdeganStory = {
 /* ------------------------------ 5. Pengurangan dari sepuluh ------------------------------ */
 const SUARA_K1 = "Satu baris di kereta lanjutan punya sepuluh kursi. Tujuh kursi sudah terisi penumpang.";
 const SUARA_K2 = "Tujuh dan tiga adalah pasangan sepuluh. Jadi, sepuluh dikurangi tujuh sama dengan tiga kursi kosong.";
-const SUARA_K3 = "Padahal mereka berempat. Tiga kursi tidak cukup!";
+const SUARA_K3 = "Padahal mereka berempat. Abang bercanda, Igil duduk di atas koper saja! Igil cemberut. Tiga kursi memang tidak cukup.";
 const SUARA_K4 = "Baris sebelah terisi enam. Enam dan empat pasangan sepuluh, jadi kosongnya empat. Sepuluh dikurangi enam sama dengan empat.";
 const KR = { x0: 20, y: 112, s: 26 };
 const tk = (i: number) => tengahKursi(KR.x0, KR.y, i, KR.s);
@@ -78,7 +78,7 @@ export const ADEGAN_KURSI: AdeganStory = {
       SUARA_K3,
       hapus(0, "ps-k", "ps-t0"),
       tambah("berempat.", ...wajah("w1", 196, 62, E.igil, 20), ...wajah("w2", 220, 62, E.kaka, 20, true), ...wajah("w3", 244, 62, E.abang, 20), ...wajah("w4", 268, 62, E.mamah, 20)),
-      tambah("cukup!", teks("tc", 90, 66, "tidak cukup!", 11, W.merah)),
+      tambah("cukup.", teks("tc", 90, 66, "tidak cukup!", 11, W.merah)),
     ),
     k(
       SUARA_K4,

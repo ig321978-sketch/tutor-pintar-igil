@@ -1,6 +1,6 @@
 import type { AdeganStory } from "./logika-story";
-import { E, KURANG, W, deret, deretEmo, emo, judul, kalimatC, kartu, kotak, orang } from "./k1b3c-gambar";
-import { k, sorotkan, tambah, ubah } from "./k1b3c-bantu";
+import { E, KURANG, W, deret, deretEmo, emo, judul, kalimatC, kartu, kotak, orang, teks } from "./k1b3c-gambar";
+import { hapus, k, sorotkan, tambah, ubah } from "./k1b3c-bantu";
 
 /* Lanjutan "Kondektur dan Penumpang": memeriksa pengurangan dengan penjumlahan, lalu mencari bilangan yang hilang. */
 
@@ -37,7 +37,7 @@ export const ADEGAN_PERIKSA: AdeganStory = {
 
 /* ------------------------------ 5. Mencari bilangan yang hilang ------------------------------ */
 const SUARA_H1 = "Satu catatan kena noda, jadi satu bilangan tidak terbaca: enam ditambah berapa sama dengan sembilan?";
-const SUARA_H2 = "Abang memakai pengurangan. Sembilan dikurangi enam sama dengan tiga.";
+const SUARA_H2 = "Igil cepat menjawab, tambah saja, sembilan ditambah enam! Abang menggeleng, hasilnya pasti terlalu besar. Abang memakai pengurangan. Sembilan dikurangi enam sama dengan tiga.";
 const SUARA_H3 = "Jadi tiga penumpang naik. Abang memeriksa lagi: enam ditambah tiga sama dengan sembilan. Cocok!";
 
 export const ADEGAN_HILANG: AdeganStory = {
@@ -52,7 +52,7 @@ export const ADEGAN_HILANG: AdeganStory = {
       tambah("noda,", emo("nd", 150, 58, E.noda, 26)),
       tambah("berapa", ...kalimatC("k1", 150, 74, ["6", "+", "?", "=", "9"], 20, 28)),
     ),
-    k(SUARA_H2, tambah("Abang", ...orang("ab", 40, 150, E.abang, "Abang")), tambah("dikurangi", ...kalimatC("k2", 170, 130, ["9", KURANG, "6", "=", "3"], 18, 26))),
+    k(SUARA_H2, tambah("enam!", teks("sl", 170, 130, "9 + 6? keliru!", 13, W.merah)), tambah("Abang", ...orang("ab", 40, 150, E.abang, "Abang")), hapus("pengurangan.", "sl"), tambah("dikurangi", ...kalimatC("k2", 170, 130, ["9", KURANG, "6", "=", "3"], 18, 26))),
     k(
       SUARA_H3,
       ubah("tiga", { id: "k12", isi: "3", warna: W.hijau }),

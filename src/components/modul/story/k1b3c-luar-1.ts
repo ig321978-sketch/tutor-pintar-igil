@@ -10,7 +10,7 @@ export const WARNA_METODE = [W.pink, W.lavender, W.hijauMuda];
 export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka ------------------------------ */
-const SUARA_O1 = "Catatan kondektur sudah cocok. Kaka bercerita, anak-anak di negara lain juga belajar hubungan penjumlahan dan pengurangan. Kita lihat tiga metode global.";
+const SUARA_O1 = "Kondektur mengeluarkan kartu kecil dari kantongnya. Katanya, ia belajar cara memeriksa ini dari rekan kerjanya di negara lain. Kita lihat tiga metode global.";
 const SUARA_O2 = "Tiga metode itu: Fact Family, Fact Triangle, dan Think Addition.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Keluarga Fakta, Segitiga Fakta, dan Berpikir Penjumlahan.";
 const SUARA_O4 = "Semua metode memakai satu ide: penjumlahan dan pengurangan saling berkebalikan.";
@@ -24,7 +24,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
     k(
       SUARA_O1,
       tambah(0, judul("Tiga metode global"), emo("kc", 150, 96, E.karcis, 40)),
-      tambah("Kaka", ...orang("kk", 40, 120, E.kaka, "Kaka")),
+      tambah("Kondektur", ...orang("kd", 40, 120, E.kondektur, "kondektur")),
       tambah("negara", emo("gl", 250, 110, "\u{1F30D}", 44)),
       tambah("tiga", ...kartu("pk", 50, 146, 200, 32, W.emas, ["3 metode global"], 11)),
     ),

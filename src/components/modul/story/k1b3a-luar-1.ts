@@ -12,7 +12,7 @@ export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_ME
 export const coret = (id: string, x: number, y: number, u = 20): Obj => garis(id, x - u * 0.5, y - u * 0.4, u, u * 0.8, W.merah, 2.6);
 
 /* ------------------------------ 1. Pembuka ------------------------------ */
-const SUARA_O1 = "Kue untuk Nenek sudah aman. Kaka bercerita, anak-anak di negara lain juga belajar pengurangan. Kita lihat tiga metode global.";
+const SUARA_O1 = "Di kursi sebelah, ada penumpang yang baru pulang dari luar negeri. Ia bercerita, anak-anak di sana punya cara lain untuk mengurangi. Kita lihat tiga metode global.";
 const SUARA_O2 = "Tiga metode itu: Take Away, Counting Back, dan Ten Frame.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Mengambil, Menghitung Mundur, dan Bingkai Sepuluh.";
 const SUARA_O4 = "Semua metode menjawab pertanyaan Mamah: kalau bekal berkurang, berapa yang tersisa?";
@@ -26,8 +26,8 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
     k(
       SUARA_O1,
       tambah(0, judul("Tiga metode global"), emo("ku", 150, 96, E.kue, 40)),
-      tambah("Kaka", ...orang("kk", 40, 120, E.kaka, "Kaka")),
-      tambah("negara", emo("gl", 250, 110, "\u{1F30D}", 44)),
+      tambah("penumpang", ...orang("pn", 40, 120, E.penumpang, "penumpang")),
+      tambah("negeri.", emo("gl", 250, 110, "\u{1F30D}", 44)),
       tambah("tiga", ...kartu("pk", 50, 146, 200, 32, W.emas, ["3 metode global"], 11)),
     ),
     k(SUARA_O2, bersih(0), tambah(0, judul("Tiga metode")), ...NAMA_METODE.map((m, i) => tambah(["Take", "Counting", "Frame."][i], ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11)))),

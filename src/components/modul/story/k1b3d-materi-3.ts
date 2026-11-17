@@ -1,5 +1,5 @@
 import type { AdeganStory } from "./logika-story";
-import { E, W, emo, judul, kartu, orang } from "./k1b3d-gambar";
+import { E, W, emo, judul, kartu, orang, teks } from "./k1b3d-gambar";
 import { bersih, k, sorotkan, tambah } from "./k1b3d-bantu";
 
 /* Akhir "Tiba di Rumah Nenek" dan akhir cerita Bab 3 Kereta ke Rumah Nenek: semua cerita terjawab, berkumpul bersama Nenek, lalu penutup. Tanpa latihan. */
@@ -41,7 +41,7 @@ export const ADEGAN_KUMPUL: AdeganStory = {
 /* ------------------------------ 7. Penutup ------------------------------ */
 const SUARA_Z1 = "Ingat langkah cerita hitungan: baca, cari bilangan dan kata kunci, lalu tulis kalimat pengurangan.";
 const SUARA_Z2 = "Jawab dengan kalimat lengkap, lalu periksa dengan penjumlahan.";
-const SUARA_Z3 = "Terima kasih, Igil, Kaka, Abang, Mamah, dan Nenek. Sampai jumpa di petualangan berikutnya!";
+const SUARA_Z3 = "Sekarang giliranmu, buat satu cerita hitungan tentang barang di rumahmu! Terima kasih, Igil, Kaka, Abang, Mamah, dan Nenek. Sampai jumpa di petualangan berikutnya!";
 
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup",
@@ -61,6 +61,7 @@ export const ADEGAN_PENUTUP: AdeganStory = {
       SUARA_Z3,
       bersih(0),
       tambah(0, judul("Sampai jumpa!"), emo("ht", 150, 66, E.hati, 30)),
+      tambah("giliranmu,", teks("gl", 150, 100, "giliranmu membuat cerita!", 11, W.ungu)),
       tambah("Igil,", ...orang("ig", 30, 140, E.igil, "Igil")),
       tambah("Kaka,", ...orang("kk", 90, 140, E.kaka, "Kaka")),
       tambah("Abang,", ...orang("ab", 150, 140, E.abang, "Abang")),

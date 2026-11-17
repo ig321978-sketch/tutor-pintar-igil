@@ -51,7 +51,7 @@ export const ADEGAN_COCOK: AdeganStory = {
 /* ------------------------------ 7. Penutup ------------------------------ */
 const SUARA_Z1 = "Ingat, penjumlahan dan pengurangan saling berkebalikan.";
 const SUARA_Z2 = "Tiga bilangan membuat keluarga bilangan. Periksa pengurangan dengan penjumlahan, dan cari bilangan yang hilang dengan pengurangan.";
-const SUARA_Z3 = "Terima kasih, Abang. Sampai jumpa di desa Nenek!";
+const SUARA_Z3 = "Coba pikirkan, enam ditambah berapa sama dengan sepuluh? Terima kasih, Abang. Sampai jumpa di desa Nenek!";
 
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup",
@@ -70,6 +70,7 @@ export const ADEGAN_PENUTUP: AdeganStory = {
       SUARA_Z3,
       bersih(0),
       tambah(0, judul("Sampai jumpa!"), emo("ht", 150, 66, E.hati, 30)),
+      tambah("sepuluh?", teks("tq", 150, 104, "6 + ? = 10", 14, W.merah)),
       tambah("Abang.", ...orang("ab", 110, 140, E.abang, "Abang")),
       tambah("Nenek!", emo("rm", 200, 140, E.rumah, 30)),
       sorotkan("Nenek!", "ab"),

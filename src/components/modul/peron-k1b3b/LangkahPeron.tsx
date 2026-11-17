@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { KanvasTulis, TombolPeriksa } from "../opsi2/primitif";
 import { JawabSuara, JawabTulis, Pilihan } from "../lemari-k1b1a/Jawab";
-import { KURANG, angkaJawab, bacaKalimat, kalimatKedua, kalimatPertama, kata, nomorBenar, pasanganLangkah, pilihanDari, tulisKalimat, type Langkah, type LangkahSoal, type Rupa } from "./logika";
+import { TokohKeliru } from "../bekal-k1b3a/TokohKeliru";
+import { KURANG, angkaJawab, bacaKalimat, kalimatKedua, kalimatPertama, kalimatTokoh, kata, nomorBenar, pasanganLangkah, pilihanDari, tulisKalimat, type Langkah, type LangkahSoal, type Rupa } from "./logika";
 import { EMOJI } from "./data";
 import {
   BAGIAN_A,
@@ -109,6 +110,7 @@ function Dua({ l, rupa, benda, kanvas, salah, siap }: PK & { l: Extract<Langkah,
   const petunjuk = (i: number) => {
     const p = l.pilihan[i];
     if (p[0] === pertama[0] && p[1] === pertama[1] && p[2] === pertama[2]) return "Kalimat itu sudah ditulis. Cari kalimat kedua: utuh dikurangi bagian yang lain.";
+    if (l.tokoh && p === kalimatTokoh(l)) return `Itu tulisan ${l.tokoh} yang keliru. Utuh dikurangi bagian kedua sama dengan bagian pertama.`;
     return "Sisanya belum pas. Utuh dikurangi satu bagian sama dengan bagian yang lain.";
   };
   const ketukKartu = (i: number) => {
@@ -521,10 +523,11 @@ export function LangkahPeron({ ls, rupa, benda, bicara, onBenar }: P) {
       bicara(p);
     }
   };
-  const jawab = (m: number, awalan = "") => {
+  const jawab = (m: number, awalan = "", ditunjukkan = false) => {
+    const awal = ditunjukkan ? "Ini jawaban yang benar. " : "Betul! ";
     bicara(kata(m));
     const [a, b] = pasanganLangkah(l);
-    if (m === n) tuntas(`Betul! ${kapital(bacaKalimat([a, b, m]))}.`);
+    if (m === n) tuntas(`${awal}${kapital(bacaKalimat([a, b, m]))}.`);
     else {
       setMati((s) => [...s, m]);
       salah(`${awalan}${PETUNJUK[ls.metode]}`);
@@ -534,6 +537,7 @@ export function LangkahPeron({ ls, rupa, benda, bicara, onBenar }: P) {
   const tanya = l.tipe === "bagan" ? "Berapa bagian yang lain?" : l.tipe === "garis" ? "Berhenti di bilangan berapa?" : l.tipe === "sepuluh" ? "Berapa kursi yang kosong?" : "Berapa sisanya?";
   return (
     <div className="space-y-3">
+      {l.tipe === "dua" && l.tokoh && kalimatTokoh(l) ? <TokohKeliru tokoh={l.tokoh} tulisan={rupa === "lambang" ? tulisKalimat(kalimatTokoh(l)!) : bacaKalimat(kalimatTokoh(l)!)} /> : null}
       <div className={goyang && !siapJawab ? "lm-goyang" : ""}>
         {l.tipe === "dua" ? <Dua {...pk} l={l} /> : l.tipe === "nolsama" ? <NolSama {...pk} l={l} /> : l.tipe === "bagan" ? <Bagan {...pk} l={l} /> : l.tipe === "garis" ? <Garis {...pk} l={l} /> : <Sepuluh {...pk} l={l} />}
       </div>
@@ -541,9 +545,9 @@ export function LangkahPeron({ ls, rupa, benda, bicara, onBenar }: P) {
         <div className={`space-y-2 ${goyang ? "lm-goyang" : ""}`}>
           <p className="text-center text-sm font-black text-[#1C01A5]">{tanya}</p>
           {cara === "kanvas" ? (
-            <JawabTulis kunci={n} onBenar={() => jawab(n)} onSalah={salah} />
+            <JawabTulis kunci={n} onBenar={(t) => jawab(n, "", t)} onSalah={salah} />
           ) : cara === "suara" ? (
-            <JawabSuara kunci={n} pilihan={pilihanDari(l)} rupa={rupa} mati={mati} onJawab={(m, terdengar) => jawab(m, terdengar && m !== n ? `Terdengar ${kata(m)}. ` : "")} onPesan={setPesan} />
+            <JawabSuara kunci={n} pilihan={pilihanDari(l)} rupa={rupa} mati={mati} onJawab={(m, terdengar, t) => jawab(m, terdengar && m !== n ? `Terdengar ${kata(m)}. ` : "", t)} onPesan={setPesan} />
           ) : (
             <Pilihan pilihan={pilihanDari(l)} rupa={rupa} mati={mati} onPilih={(m) => jawab(m)} />
           )}

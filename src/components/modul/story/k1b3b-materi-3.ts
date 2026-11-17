@@ -1,5 +1,5 @@
 import type { AdeganStory } from "./logika-story";
-import { E, W, emo, judul, kartu, kotak, orang, teks, tulis } from "./k1b3b-gambar";
+import { E, KURANG, W, emo, judul, kartu, kotak, orang, teks, tulis } from "./k1b3b-gambar";
 import { bersih, k, sorotkan, tambah } from "./k1b3b-bantu";
 
 /* Akhir "Pindah Kereta di Stasiun Besar": semua duduk di kereta lanjutan, catatan baru, kondektur datang, lalu penutup. Tanpa latihan. */
@@ -53,7 +53,7 @@ export const ADEGAN_DUDUK: AdeganStory = {
 /* ------------------------------ 7. Penutup ------------------------------ */
 const SUARA_Z1 = "Ingat, satu bagan pasangan memberi dua kalimat pengurangan.";
 const SUARA_Z2 = "Dikurangi nol hasilnya tetap. Dikurangi bilangan yang sama hasilnya nol. Hitung mundur di garis bilangan.";
-const SUARA_Z3 = "Untuk sepuluh, cari pasangan sepuluhnya. Sampai jumpa saat kondektur datang!";
+const SUARA_Z3 = "Untuk sepuluh, cari pasangan sepuluhnya. Coba pikirkan, kalau terisi delapan, berapa yang kosong? Sampai jumpa saat kondektur datang!";
 
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup",
@@ -73,6 +73,7 @@ export const ADEGAN_PENUTUP: AdeganStory = {
       bersih(0),
       tambah(0, judul("Sampai jumpa!"), emo("ht", 150, 66, E.hati, 30)),
       tambah("sepuluhnya.", ...kartu("p5", 60, 96, 180, 26, W.lavender, ["10: cari pasangannya"], 10)),
+      tambah("delapan,", teks("tq", 150, 140, `10 ${KURANG} 8 = ?`, 14, W.merah)),
       tambah("Sampai", ...orang("ig", 45, 160, E.igil, "Igil"), ...orang("kk", 115, 160, E.kaka, "Kaka"), ...orang("ab", 185, 160, E.abang, "Abang"), ...orang("mm", 255, 160, E.mamah, "Mamah")),
       tambah("datang!", emo("kd", 150, 186, E.kondektur, 20)),
     ),

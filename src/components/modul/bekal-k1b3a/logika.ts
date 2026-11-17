@@ -27,7 +27,7 @@ export type Kalimat = [number, number, number];
 
 export type Langkah =
   /** Pilih kalimat pengurangan yang cocok dengan adegan: bekal dimakan atau penumpang turun. Tanpa jawaban angka. */
-  | { tipe: "kalimat"; a: number; b: number; adegan: "makan" | "turun"; pilihan: Kalimat[] }
+  | { tipe: "kalimat"; a: number; b: number; adegan: "makan" | "turun"; pilihan: Kalimat[]; tokoh?: string }
   /** Ada a, b pergi (sudah ditandai): ketuk yang pergi supaya keluar, lalu berapa sisanya. */
   | { tipe: "pergi"; a: number; b: number }
   /** Mengambil: ambil (coret) b benda mana saja dari a, lalu hitung yang tinggal. */
@@ -46,6 +46,9 @@ export const samaKalimat = (p: Kalimat, q: Kalimat): boolean => p[0] === q[0] &&
 /** Kalimat cocok dengan adegan: bilangannya a lalu b dan hasilnya benar. */
 export const kalimatCocok = (l: Extract<Langkah, { tipe: "kalimat" }>, p: Kalimat): boolean => samaKalimat(p, kalimatBenar(l.a, l.b));
 export const nomorBenar = (l: Extract<Langkah, { tipe: "kalimat" }>): number[] => l.pilihan.map((p, i) => (kalimatCocok(l, p) ? i : -1)).filter((i) => i >= 0);
+/** Cari kesalahan: kalimat keliru yang sudah ditulis tokoh (bilangan dari cerita, sisanya salah). Null bila bukan soal cari kesalahan. */
+export const kalimatTokoh = (l: Extract<Langkah, { tipe: "kalimat" }>): Kalimat | null =>
+  l.tokoh ? (l.pilihan.find((p) => p[0] === l.a && p[1] === l.b && p[2] !== l.a - l.b) ?? null) : null;
 export const tulisKalimat = (p: Kalimat): string => `${p[0]} ${KURANG} ${p[1]} = ${p[2]}`;
 /** Kalimat dibaca dengan kata (untuk suara, tanpa digit). */
 export const bacaKalimat = (p: Kalimat): string => `${kata(p[0])} dikurangi ${kata(p[1])} sama dengan ${kata(p[2])}`;
@@ -69,6 +72,7 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara): string {
   const akhir = AKHIR[cara];
   switch (l.tipe) {
     case "kalimat":
+      if (l.tokoh) return `Cari kesalahan. ${l.tokoh} sudah menulis kalimat untuk cerita ini. Apakah benar? ${cara === "kanvas" ? "Lingkari" : "Ketuk"} kalimat yang benar.`;
       return cara === "kanvas" ? "Lingkari kalimat pengurangan yang cocok dengan ceritanya." : "Ketuk kalimat pengurangan yang cocok dengan ceritanya.";
     case "pergi":
       if (rupa === "lambang") return `Mula-mula ${kata(l.a)}, pergi ${kata(l.b)}. Berapa sisanya? ${akhir}`;

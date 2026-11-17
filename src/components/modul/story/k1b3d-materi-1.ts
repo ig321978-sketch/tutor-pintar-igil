@@ -1,6 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { E, KURANG, W, bulat, deret, deretEmo, emo, judul, kalimatC, kartu, kotak, label, modelBatang, orang, teks } from "./k1b3d-gambar";
-import { bersih, k, sorotkan, tambah, ubah } from "./k1b3d-bantu";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k1b3d-bantu";
 
 /*
  * Cerita orisinal IGIL "Tiba di Rumah Nenek" (Kelas 1 Bab 3 Sub-Bab D, soal cerita pengurangan), akhir cerita Kereta ke Rumah Nenek.
@@ -81,7 +81,7 @@ export const ADEGAN_KUE: AdeganStory = {
 
 /* ------------------------------ 3. Cerita jeruk tetangga ------------------------------ */
 const SUARA_J1 = "Tetangga membawa sepuluh jeruk. Setelah dibagikan, jeruknya tinggal tujuh. Berapa jeruk yang dibagikan?";
-const SUARA_J2 = "Abang menggambar model batang. Batang utuh sepuluh, bagian tujuh, dan bagian yang dicari bertanda tanya.";
+const SUARA_J2 = "Igil langsung menjawab, tujuh! Abang menggeleng, tujuh itu yang tinggal. Abang menggambar model batang. Batang utuh sepuluh, bagian tujuh, dan bagian yang dicari bertanda tanya.";
 const SUARA_J3 = "Sepuluh dikurangi tujuh sama dengan tiga. Jadi, tiga jeruk dibagikan.";
 const JERUK = deret(10, 33, 26, 64);
 
@@ -99,7 +99,7 @@ export const ADEGAN_JERUK: AdeganStory = {
       tambah("tinggal", teks("tl", 120, 92, "tinggal 7", 10, W.biru)),
       tambah("dibagikan@2", teks("tq", 236, 92, "dibagikan?", 10, W.merah)),
     ),
-    k(SUARA_J2, tambah("model", ...modelBatang("mb", 40, 104, 220, 154, "10", "7", "?")), sorotkan("tanya.", "mb-tb")),
+    k(SUARA_J2, tambah("tujuh!", teks("sl", 150, 186, "7? keliru!", 13, W.merah)), hapus("model", "sl"), tambah("model", ...modelBatang("mb", 40, 104, 220, 154, "10", "7", "?")), sorotkan("tanya.", "mb-tb")),
     k(SUARA_J3, tambah("Sepuluh", ...kalimatC("kl", 150, 186, ["10", KURANG, "7", "=", "3"], 16, 26)), ubah("tiga.", { id: "mb-tb", isi: "3", warna: W.biru, sorot: false })),
   ],
 };

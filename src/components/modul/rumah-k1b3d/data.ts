@@ -95,7 +95,7 @@ const kelompok =
 const C = kelompok("benda");
 export const CONCRETE: SoalMisi[] = [
   C(1, "klik", "Misi Rumah Nenek 2: meja makan", "Tetangga bercerita di meja makan. Bantu Igil menjawab.", [
-    { tipe: "cerita", benda: "kue", a: 8, b: 3, kata: "dimakan", pilihan: pilihanKalimat(8, 3, 1) },
+    { tipe: "cerita", benda: "kue", a: 8, b: 3, kata: "dimakan", pilihan: pilihanKalimat(8, 3, 1), tokoh: "Kaka" },
     { tipe: "batang", benda: "jeruk", a: 7, b: 6, cari: "sisa" },
     { tipe: "kunci", benda: "rambutan", a: 9, b: 5, kata: "diberikan", pengecoh: TAMBAH },
     { tipe: "dua", benda: "permen", a: 10, b: 4, c: 1 },
@@ -117,7 +117,7 @@ export const CONCRETE: SoalMisi[] = [
 const P = kelompok("diagram");
 export const PICTORIAL: SoalMisi[] = [
   P(1, "klik", "Misi Rumah Nenek 5: surat untuk Mamah", "Igil menulis surat bergambar titik dan batang.", [
-    { tipe: "cerita", benda: "kue", a: 7, b: 3, kata: "dimakan", pilihan: pilihanKalimat(7, 3, 0) },
+    { tipe: "cerita", benda: "kue", a: 7, b: 3, kata: "dimakan", pilihan: pilihanKalimat(7, 3, 0), tokoh: "Abang" },
     { tipe: "batang", benda: "jeruk", a: 8, b: 2, cari: "sisa" },
     { tipe: "kunci", benda: "rambutan", a: 10, b: 9, kata: "dibagikan", pengecoh: TAMBAH },
     { tipe: "dua", benda: "permen", a: 9, b: 3, c: 3 },
@@ -139,7 +139,7 @@ export const PICTORIAL: SoalMisi[] = [
 const A = kelompok("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(1, "klik", "Misi Rumah Nenek 8: papan tulis Nenek", "Nenek punya papan tulis kecil. Kaka menulis dengan angka dan tanda saja.", [
-    { tipe: "cerita", benda: "jeruk", a: 10, b: 6, kata: "dibagikan", pilihan: pilihanKalimat(10, 6, 2) },
+    { tipe: "cerita", benda: "jeruk", a: 10, b: 6, kata: "dibagikan", pilihan: pilihanKalimat(10, 6, 2), tokoh: "Igil" },
     { tipe: "batang", benda: "kue", a: 5, b: 3, cari: "sisa" },
     { tipe: "kunci", benda: "teh", a: 6, b: 1, kata: "diminum", pengecoh: TAMBAH },
     { tipe: "dua", benda: "permen", a: 8, b: 2, c: 3 },

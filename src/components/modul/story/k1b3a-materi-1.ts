@@ -12,7 +12,7 @@ import { hapus, hitungMainan, k, sorotkan, tambah, ubah } from "./k1b3a-bantu";
 /* ------------------------------ 1. Naik kereta ke rumah Nenek ------------------------------ */
 const SUARA_N1 = "Pagi ini Igil, Kaka, Abang, dan Mamah naik kereta. Mereka pergi ke rumah Nenek di desa.";
 const SUARA_N2 = "Mamah membawa kotak berisi delapan kue. Kue itu oleh-oleh untuk Nenek.";
-const SUARA_N3 = "Masalahnya, perjalanan masih panjang dan semua mulai lapar. Kalau kue dimakan, berapa yang tersisa untuk Nenek?";
+const SUARA_N3 = "Belum lama berangkat, Igil sudah berseru, Mah, aku lapar! Mamah menjawab, boleh makan, asal Nenek tetap kebagian. Jadi setiap ada yang makan, kita harus tahu sisanya.";
 const KUE_KECIL = Array.from({ length: 8 }, (_, i) => ({ x: 105 + (i % 4) * 30, y: 60 + Math.floor(i / 4) * 24 }));
 
 export const ADEGAN_KERETA: AdeganStory = {
@@ -40,9 +40,9 @@ export const ADEGAN_KERETA: AdeganStory = {
     ),
     k(
       SUARA_N3,
-      tambah("lapar.", emo("lp", 45, 118, E.lapar, 18), emo("lp2", 185, 118, E.lapar, 18)),
-      ubah("lapar.", { id: "un", isi: "perjalanan masih panjang" }),
-      tambah("tersisa", teks("tq", 150, 196, "berapa yang tersisa?", 10, W.merah)),
+      tambah("lapar!", emo("lp", 45, 118, E.lapar, 18)),
+      ubah("Nenek", { id: "un", isi: "Nenek harus kebagian" }),
+      tambah("sisanya.", teks("tq", 150, 196, "berapa yang tersisa?", 10, W.merah)),
     ),
   ],
 };
@@ -50,7 +50,7 @@ export const ADEGAN_KERETA: AdeganStory = {
 /* ------------------------------ 2. Kue di kotak berkurang ------------------------------ */
 const SUARA_K1 = "Abang mengambil satu kue. Igil juga mengambil satu kue. Kuenya diambil dua.";
 const SUARA_K2 = "Mula-mula ada delapan kue. Sekarang kuenya berkurang, lebih sedikit dari tadi.";
-const SUARA_K3 = "Igil menghitung kue yang tersisa. Satu, dua, tiga, empat, lima, enam. Sisanya enam kue.";
+const SUARA_K3 = "Igil cepat menjawab, delapan! Kaka tertawa, dua kue itu sudah di perut Abang. Igil menghitung lagi yang tersisa. Satu, dua, tiga, empat, lima, enam.";
 const KUE = deret(8, 46, 30, 100);
 
 export const ADEGAN_KUE: AdeganStory = {
@@ -78,8 +78,11 @@ export const ADEGAN_KUE: AdeganStory = {
     k(
       SUARA_K3,
       hapus(0, "t8", "tb"),
+      tambah("delapan!", teks("sl", 150, 62, "8? keliru!", 13, W.merah)),
+      sorotkan("perut", "ku6", "ku7"),
+      hapus("lagi", "sl"),
       ...hitungMainan(SUARA_K3, "ku", KUE.slice(0, 6), 20, "tersisa."),
-      tambah("Sisanya", ...label("ss", 110, 140, 80, "sisa 6", W.emas)),
+      tambah("enam.", ...label("ss", 110, 140, 80, "sisa 6", W.emas)),
     ),
   ],
 };

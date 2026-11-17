@@ -104,7 +104,7 @@ const kelompok =
 const C = kelompok("benda");
 export const CONCRETE: SoalMisi[] = [
   C(1, "klik", "roti", "Misi Perjalanan 2: meja makan kereta", "Bekal roti dibuka di meja kereta. Bantu Mamah menghitung sisanya.", [
-    { tipe: "kalimat", a: 9, b: 6, adegan: "makan", pilihan: pilihanKalimat(9, 6, 1) },
+    { tipe: "kalimat", a: 9, b: 6, adegan: "makan", pilihan: pilihanKalimat(9, 6, 1), tokoh: "Abang" },
     { tipe: "ambil", a: 7, b: 2 },
     { tipe: "mundur", a: 5, b: 1 },
     { tipe: "bingkai", a: 10, b: 4 },
@@ -126,7 +126,7 @@ export const CONCRETE: SoalMisi[] = [
 const P = kelompok("diagram");
 export const PICTORIAL: SoalMisi[] = [
   P(1, "klik", "kue", "Misi Perjalanan 5: denah gerbong", "Abang menggambar denah gerbong dengan titik.", [
-    { tipe: "kalimat", a: 7, b: 5, adegan: "turun", pilihan: pilihanKalimat(7, 5, 0) },
+    { tipe: "kalimat", a: 7, b: 5, adegan: "turun", pilihan: pilihanKalimat(7, 5, 0), tokoh: "Igil" },
     { tipe: "ambil", a: 8, b: 1 },
     { tipe: "mundur", a: 6, b: 3 },
     { tipe: "bingkai", a: 10, b: 5 },
@@ -148,7 +148,7 @@ export const PICTORIAL: SoalMisi[] = [
 const A = kelompok("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(1, "klik", "kue", "Misi Perjalanan 8: balik karcis", "Kaka menulis hitungan di balik karcis dengan angka dan tanda saja.", [
-    { tipe: "kalimat", a: 8, b: 4, adegan: "makan", pilihan: pilihanKalimat(8, 4, 2) },
+    { tipe: "kalimat", a: 8, b: 4, adegan: "makan", pilihan: pilihanKalimat(8, 4, 2), tokoh: "Kaka" },
     { tipe: "ambil", a: 6, b: 1 },
     { tipe: "mundur", a: 9, b: 3 },
     { tipe: "bingkai", a: 7, b: 7 },

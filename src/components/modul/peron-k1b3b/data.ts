@@ -103,7 +103,7 @@ const kelompok =
 const C = kelompok("benda");
 export const CONCRETE: SoalMisi[] = [
   C(1, "klik", "koper", "Misi Pindah Kereta 2: troli koper", "Koper diturunkan dari kereta pertama. Bantu Abang menghitung dengan cepat.", [
-    { tipe: "dua", u: 8, a: 5, pilihan: pilihanDua(8, 5, 1) },
+    { tipe: "dua", u: 8, a: 5, pilihan: pilihanDua(8, 5, 1), tokoh: "Igil" },
     { tipe: "bagan", u: 6, a: 4 },
     { tipe: "garis", a: 9, b: 4 },
     { tipe: "sepuluh", b: 1 },
@@ -125,7 +125,7 @@ export const CONCRETE: SoalMisi[] = [
 const P = kelompok("diagram");
 export const PICTORIAL: SoalMisi[] = [
   P(1, "klik", "koper", "Misi Pindah Kereta 5: peta rute", "Abang membuka peta rute kereta dan menggambar dengan titik dan garis.", [
-    { tipe: "dua", u: 9, a: 2, pilihan: pilihanDua(9, 2, 0) },
+    { tipe: "dua", u: 9, a: 2, pilihan: pilihanDua(9, 2, 0), tokoh: "Kaka" },
     { tipe: "bagan", u: 8, a: 2 },
     { tipe: "garis", a: 10, b: 3 },
     { tipe: "sepuluh", b: 9 },
@@ -147,7 +147,7 @@ export const PICTORIAL: SoalMisi[] = [
 const A = kelompok("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(1, "klik", "koper", "Misi Pindah Kereta 8: jendela malam", "Hari mulai gelap. Kaka menulis hitungan dengan angka dan tanda saja.", [
-    { tipe: "dua", u: 10, a: 4, pilihan: pilihanDua(10, 4, 2) },
+    { tipe: "dua", u: 10, a: 4, pilihan: pilihanDua(10, 4, 2), tokoh: "Abang" },
     { tipe: "bagan", u: 9, a: 5 },
     { tipe: "garis", a: 8, b: 2 },
     { tipe: "sepuluh", b: 5 },

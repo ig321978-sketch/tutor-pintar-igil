@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { KanvasTulis, TombolPeriksa } from "../opsi2/primitif";
 import { JawabSuara, JawabTulis, Pilihan } from "../lemari-k1b1a/Jawab";
-import { KURANG, angkaJawab, bacaKalimat, kalimatCerita, kata, kataKunci, nomorBenar, pilihanDari, teksCerita, tulisKalimat, type Langkah, type LangkahSoal, type Rupa } from "./logika";
+import { TokohKeliru } from "../bekal-k1b3a/TokohKeliru";
+import { KURANG, angkaJawab, bacaKalimat, kalimatCerita, kalimatTokoh, kata, kataKunci, nomorBenar, pilihanDari, teksCerita, tulisKalimat, type Langkah, type LangkahSoal, type Rupa } from "./logika";
 import { EMOJI } from "./data";
 import {
   CERITA_KECIL,
@@ -130,7 +131,7 @@ function Cerita({ l, rupa, kanvas, salah, siap }: PK & { l: Extract<Langkah, { t
   const [selesai, setSelesai] = useState(false);
   const benar = nomorBenar(l);
   const pesanBetul = `Betul! ${kapital(bacaKalimat(kalimatCerita(l)))}.`;
-  const petunjuk = (i: number) => (l.pilihan[i][0] - l.pilihan[i][1] !== l.pilihan[i][2] ? "Hitung lagi sisanya." : "Bilangannya belum sama dengan cerita. Lingkari lagi bilangan di cerita.");
+  const petunjuk = (i: number) => (l.tokoh && l.pilihan[i] === kalimatTokoh(l) ? `Itu jawaban ${l.tokoh} yang keliru. Hitung lagi sisanya.` : l.pilihan[i][0] - l.pilihan[i][1] !== l.pilihan[i][2] ? "Hitung lagi sisanya." : "Bilangannya belum sama dengan cerita. Lingkari lagi bilangan di cerita.");
   const ketukKartu = (i: number) => {
     if (selesai || mati.includes(i)) return;
     setPilih(i);
@@ -480,11 +481,12 @@ export function LangkahRumah({ ls, rupa, bicara, onBenar }: P) {
       bicara(p);
     }
   };
-  const jawab = (m: number, awalan = "") => {
+  const jawab = (m: number, awalan = "", ditunjukkan = false) => {
+    const awal = ditunjukkan ? "Ini jawaban yang benar. " : "Betul! ";
     bicara(kata(m));
     if (m === n) {
       const kal = l.tipe === "dua" ? `${kata(l.a)} dikurangi ${kata(l.b)} dikurangi ${kata(l.c)} sama dengan ${kata(m)}` : bacaKalimat([l.a, l.b, m]);
-      tuntas(`Betul! ${kapital(kal)}. Jadi, jawabannya ${kata(m)}.`);
+      tuntas(`${awal}${kapital(kal)}. Jadi, jawabannya ${kata(m)}.`);
     } else {
       setMati((s) => [...s, m]);
       salah(`${awalan}${PETUNJUK[ls.metode]}`);
@@ -493,6 +495,7 @@ export function LangkahRumah({ ls, rupa, bicara, onBenar }: P) {
   const pk: PK = { rupa, kanvas: cara === "kanvas", salah, siap };
   return (
     <div className="space-y-3">
+      {l.tipe === "cerita" && l.tokoh && kalimatTokoh(l) ? <TokohKeliru tokoh={l.tokoh} tulisan={rupa === "lambang" ? tulisKalimat(kalimatTokoh(l)!) : bacaKalimat(kalimatTokoh(l)!)} /> : null}
       <div className={goyang && !siapJawab ? "lm-goyang" : ""}>
         {l.tipe === "cerita" ? <Cerita {...pk} l={l} /> : l.tipe === "jawab" ? <Jawab {...pk} l={l} /> : l.tipe === "batang" ? <Batang {...pk} l={l} /> : l.tipe === "kunci" ? <Kunci {...pk} l={l} /> : <Dua {...pk} l={l} />}
       </div>
@@ -500,9 +503,9 @@ export function LangkahRumah({ ls, rupa, bicara, onBenar }: P) {
         <div className={`space-y-2 ${goyang ? "lm-goyang" : ""}`}>
           <p className="text-center text-sm font-black text-[#1C01A5]">{l.tipe === "batang" && l.cari === "pergi" ? "Berapa yang dimakan?" : "Berapa yang tersisa?"}</p>
           {cara === "kanvas" ? (
-            <JawabTulis kunci={n} onBenar={() => jawab(n)} onSalah={salah} />
+            <JawabTulis kunci={n} onBenar={(t) => jawab(n, "", t)} onSalah={salah} />
           ) : cara === "suara" ? (
-            <JawabSuara kunci={n} pilihan={pilihanDari(l)} rupa={rupa} mati={mati} onJawab={(m, terdengar) => jawab(m, terdengar && m !== n ? `Terdengar ${kata(m)}. ` : "")} onPesan={setPesan} />
+            <JawabSuara kunci={n} pilihan={pilihanDari(l)} rupa={rupa} mati={mati} onJawab={(m, terdengar, t) => jawab(m, terdengar && m !== n ? `Terdengar ${kata(m)}. ` : "", t)} onPesan={setPesan} />
           ) : (
             <Pilihan pilihan={pilihanDari(l)} rupa={rupa} mati={mati} onPilih={(m) => jawab(m)} />
           )}

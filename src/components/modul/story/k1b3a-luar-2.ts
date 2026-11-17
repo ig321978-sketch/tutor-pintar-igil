@@ -107,9 +107,9 @@ export const ADEGAN_LUAR_BINGKAI_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 8. Ringkasan ------------------------------ */
 const SUARA_Z1 = "Kita sudah melihat tiga metode global untuk pengurangan. Semuanya membantu menjaga bekal untuk Nenek.";
-const SUARA_Z2 = "Take Away: ambil benda yang pergi, lalu hitung benda yang masih tinggal.";
-const SUARA_Z3 = "Counting Back: mulai dari bilangan pertama, lalu mundur satu langkah untuk tiap benda yang pergi.";
-const SUARA_Z4 = "Ten Frame: kosongkan kotak dari belakang, lalu lihat kotak yang masih terisi.";
+const SUARA_Z2 = "Take Away: ambil benda yang pergi, lalu hitung yang tinggal. Cocok kalau bendanya ada di depan mata.";
+const SUARA_Z3 = "Counting Back: mulai dari bilangan pertama, lalu mundur. Cocok kalau yang pergi hanya sedikit, satu sampai tiga.";
+const SUARA_Z4 = "Ten Frame: kosongkan kotak dari belakang, lalu lihat yang masih terisi. Cocok kalau mula-mulanya dekat sepuluh.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
@@ -118,8 +118,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   latar: "#EFF6FF",
   ketukan: [
     k(SUARA_Z1, tambah(0, judul("Ringkasan")), tambah("tiga", emo("rk", 150, 96, E.bintang, 44)), tambah("Nenek.", ...kartu("rt", 60, 124, 180, 26, W.emas, ["3 metode global"], 10))),
-    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Take", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Take Away", "ambil, lalu hitung yang tinggal"], 9.4))),
-    k(SUARA_Z3, tambah("Counting", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["Counting Back", "mulai dari bilangan pertama, mundur"], 9.4))),
-    k(SUARA_Z4, tambah("Ten", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Ten Frame", "kosongkan dari belakang, lihat sisanya"], 9.4))),
+    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Take", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Take Away", "cocok bila bendanya terlihat"], 9.4))),
+    k(SUARA_Z3, tambah("Counting", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["Counting Back", "cocok bila yang pergi sedikit"], 9.4))),
+    k(SUARA_Z4, tambah("Ten", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Ten Frame", "cocok bila dekat sepuluh"], 9.4))),
   ],
 };

@@ -26,7 +26,7 @@ export type KalimatOp = { x: number; op: "+" | "-"; y: number; z: number };
 
 export type Langkah =
   /** Kondektur menulis a − b = a − b; pilih penjumlahan yang memeriksanya: (a − b) + b = a. Tanpa jawaban angka. */
-  | { tipe: "periksa"; a: number; b: number; pilihan: KalimatOp[] }
+  | { tipe: "periksa"; a: number; b: number; pilihan: KalimatOp[]; tokoh?: string }
   /** Tukar tempat: a + b sama dengan b + a; berapa hasilnya. */
   | { tipe: "tukar"; a: number; b: number }
   /** Keluarga x, y, x + y: berapa (x + y) − x. */
@@ -46,6 +46,8 @@ export const samaOp = (p: KalimatOp, q: KalimatOp): boolean => p.x === q.x && p.
 export const benarOp = (k: KalimatOp): boolean => (k.op === "+" ? k.x + k.y === k.z : k.x - k.y === k.z);
 /** Penjumlahan pemeriksa a − b: sisa ditambah yang pergi sama dengan mula-mula. */
 export const pemeriksa = (l: Extract<Langkah, { tipe: "periksa" }>): KalimatOp => ({ x: l.a - l.b, op: "+", y: l.b, z: l.a });
+/** Cari kesalahan: tokoh keliru memeriksa pengurangan dengan pengurangan lagi. Null bila bukan soal cari kesalahan. */
+export const kalimatTokoh = (l: Extract<Langkah, { tipe: "periksa" }>): KalimatOp | null => (l.tokoh ? (l.pilihan.find((p) => p.op === "-") ?? null) : null);
 export const nomorBenar = (l: Extract<Langkah, { tipe: "periksa" }>): number[] => l.pilihan.map((p, i) => (samaOp(p, pemeriksa(l)) ? i : -1)).filter((i) => i >= 0);
 
 /** Tiga bilangan keluarga tiap langkah (kecil, kecil, besar), untuk memeriksa pasangan Story. */
@@ -108,6 +110,7 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara): string {
   const akhir = AKHIR[cara];
   switch (l.tipe) {
     case "periksa":
+      if (l.tokoh) return `Cari kesalahan. ${l.tokoh} sudah memeriksa catatan kondektur. Apakah caranya benar? ${cara === "kanvas" ? "Lingkari" : "Ketuk"} penjumlahan yang benar.`;
       return cara === "kanvas" ? "Lingkari penjumlahan yang memeriksa catatan pengurangan itu." : "Ketuk penjumlahan yang memeriksa catatan pengurangan itu.";
     case "tukar":
       if (rupa === "lambang") return `${kata(l.a)} ditambah ${kata(l.b)} sama dengan ${kata(l.b)} ditambah ${kata(l.a)}. Berapa hasilnya? ${akhir}`;

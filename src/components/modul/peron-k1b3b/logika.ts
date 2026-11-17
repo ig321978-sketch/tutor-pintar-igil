@@ -23,7 +23,7 @@ export type Rupa = "benda" | "diagram" | "lambang";
 
 export type Langkah =
   /** Satu bagan (utuh u, bagian a dan u − a) sudah punya kalimat u − a; pilih kalimat kedua u − (u − a) = a. Tanpa jawaban angka. */
-  | { tipe: "dua"; u: number; a: number; pilihan: Kalimat[] }
+  | { tipe: "dua"; u: number; a: number; pilihan: Kalimat[]; tokoh?: string }
   /** Dikurangi nol (b = 0) atau dikurangi bilangan yang sama (b = a). */
   | { tipe: "nolsama"; a: number; b: number }
   /** Bagan pasangan: utuh u, satu bagian a; cari bagian yang lain. */
@@ -51,6 +51,9 @@ export function pasanganLangkah(l: Langkah): [number, number] {
 /** Kalimat kedua yang benar dari bagan pada langkah dua. */
 export const kalimatKedua = (l: Extract<Langkah, { tipe: "dua" }>): Kalimat => [l.u, l.u - l.a, l.a];
 export const kalimatPertama = (l: Extract<Langkah, { tipe: "dua" }>): Kalimat => [l.u, l.a, l.u - l.a];
+/** Cari kesalahan: kalimat kedua keliru yang sudah ditulis tokoh. Null bila bukan soal cari kesalahan. */
+export const kalimatTokoh = (l: Extract<Langkah, { tipe: "dua" }>): Kalimat | null =>
+  l.tokoh ? (l.pilihan.find((p) => p[0] === l.u && p[1] === l.u - l.a && p[2] !== l.a) ?? null) : null;
 export const nomorBenar = (l: Extract<Langkah, { tipe: "dua" }>): number[] => {
   const t = kalimatKedua(l);
   return l.pilihan.map((p, i) => (p[0] === t[0] && p[1] === t[1] && p[2] === t[2] ? i : -1)).filter((i) => i >= 0);
@@ -79,6 +82,7 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara): string {
   const akhir = AKHIR[cara];
   switch (l.tipe) {
     case "dua":
+      if (l.tokoh) return `Cari kesalahan. ${l.tokoh} sudah menulis kalimat kedua dari bagan ini. Apakah benar? ${cara === "kanvas" ? "Lingkari" : "Ketuk"} kalimat kedua yang benar.`;
       return cara === "kanvas" ? "Satu kalimat sudah ditulis. Lingkari kalimat kedua dari bagan yang sama." : "Satu kalimat sudah ditulis. Ketuk kalimat kedua dari bagan yang sama.";
     case "nolsama":
       if (rupa === "lambang") return `Ada ${kata(l.a)}, diambil ${kata(l.b)}. Berapa sisanya? ${akhir}`;

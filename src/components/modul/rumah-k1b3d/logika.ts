@@ -25,7 +25,7 @@ export const NAMA_BENDA: Record<Benda, string> = { kue: "kue", jeruk: "jeruk", p
 
 export type Langkah =
   /** Baca cerita a berkurang b, lalu pilih kalimat pengurangan yang cocok. Tanpa jawaban angka. */
-  | { tipe: "cerita"; benda: Benda; a: number; b: number; kata: string; pilihan: Kalimat[] }
+  | { tipe: "cerita"; benda: Benda; a: number; b: number; kata: string; pilihan: Kalimat[]; tokoh?: string }
   /** Baca cerita a berkurang b; ketuk yang pergi, lalu jawab sisanya. */
   | { tipe: "jawab"; benda: Benda; a: number; b: number; kata: string }
   /** Model batang: utuh a; cari sisa (b pergi) atau cari yang pergi (sisa b). Jawaban a − b. */
@@ -40,6 +40,9 @@ export type SoalMisi = { nomor: number; judul: string; cerita: string; cara: Car
 
 /** Kalimat cocok untuk cerita. */
 export const kalimatCerita = (l: Extract<Langkah, { tipe: "cerita" }>): Kalimat => [l.a, l.b, l.a - l.b];
+/** Cari kesalahan: kalimat keliru yang sudah ditulis tokoh (bilangan dari cerita, sisanya salah). Null bila bukan soal cari kesalahan. */
+export const kalimatTokoh = (l: Extract<Langkah, { tipe: "cerita" }>): Kalimat | null =>
+  l.tokoh ? (l.pilihan.find((p) => p[0] === l.a && p[1] === l.b && p[2] !== l.a - l.b) ?? null) : null;
 export const nomorBenar = (l: Extract<Langkah, { tipe: "cerita" }>): number[] => {
   const t = kalimatCerita(l);
   return l.pilihan.map((p, i) => (p[0] === t[0] && p[1] === t[1] && p[2] === t[2] ? i : -1)).filter((i) => i >= 0);
@@ -98,6 +101,7 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara): string {
   const cerita = teksCerita(l, kata).join(" ");
   switch (l.tipe) {
     case "cerita":
+      if (l.tokoh) return `${cerita} Cari kesalahan. ${l.tokoh} sudah menjawab. Apakah benar? ${cara === "kanvas" ? "Lingkari" : "Ketuk"} kalimat yang benar.`;
       return `${cerita} ${cara === "kanvas" ? "Lingkari kalimat pengurangan yang cocok." : "Ketuk kalimat pengurangan yang cocok."}`;
     case "jawab":
       if (rupa === "lambang" || l.b === 0) return `${cerita} ${akhir}`;

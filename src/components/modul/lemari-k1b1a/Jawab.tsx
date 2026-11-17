@@ -55,20 +55,44 @@ export function Pilihan({ pilihan, rupa, mati, onPilih }: { pilihan: number[]; r
  * Anak menulis angka jawabannya. Benar bila pengenal membaca angka kunci. Setelah dua kali belum terbaca,
  * muncul jejak putus-putus angka yang benar sebagai petunjuk (tulisan yang mengikuti jejak juga diterima).
  */
-export function JawabTulis({ kunci, onBenar, onSalah }: { kunci: number; onBenar: () => void; onSalah: (pesan: string) => void }) {
+/** Batas salah di kanvas dan suara: setelah tiga kali, jawaban yang benar ditampilkan (tulisan atau ucapan anak bisa sulit dikenali mesin). */
+export const BATAS_SALAH = 3;
+
+/** Panel jawaban benar setelah tiga kali salah: angka besar, katanya, dan tombol lanjut. */
+export function JawabanBenar({ kunci, onLanjut }: { kunci: number; onLanjut: () => void }) {
+  return (
+    <div className="space-y-2 rounded-2xl border-4 border-[#15803D] bg-[#F0FDF4] p-3 text-center" role="status" data-uji="jawaban-benar">
+      <p className="text-sm font-black text-[#14532D]">Tidak apa-apa. Ini jawaban yang benar:</p>
+      <p className="text-5xl font-black text-[#15803D]">{kunci}</p>
+      <p className="text-base font-black text-[#14532D]">{kata(kunci)}</p>
+      <button type="button" onClick={onLanjut} className="min-h-[48px] rounded-full border-4 border-[#15803D] bg-white px-5 text-sm font-black text-[#15803D]">
+        Aku mengerti, lanjut {"➡️"}
+      </button>
+    </div>
+  );
+}
+
+export function JawabTulis({ kunci, onBenar, onSalah }: { kunci: number; onBenar: (ditunjukkan?: boolean) => void; onSalah: (pesan: string) => void }) {
   const [goresan, setGoresan] = useState<Goresan[]>([]);
   const [gagal, setGagal] = useState(0);
   const jejak = gagal >= 2;
+  const tunjuk = gagal >= BATAS_SALAH;
   const periksa = () => {
     const r = periksaTulis(goresan, kunci);
     if (r.benar || (jejak && coretanMengikutiJejak(goresan, modelKanvas(kunci)))) {
       onBenar();
       return;
     }
-    setGagal((g) => g + 1);
+    const g = gagal + 1;
+    setGagal(g);
     setGoresan([]);
+    if (g >= BATAS_SALAH) {
+      onSalah(`Tidak apa-apa. Jawaban yang benar adalah ${kata(kunci)}.`);
+      return;
+    }
     onSalah(r.terbaca === null ? "Tulisannya belum terbaca. Tulis lebih besar." : `Tulisanmu terbaca ${kata(r.terbaca)}. Hitung lagi, lalu tulis ulang.`);
   };
+  if (tunjuk) return <JawabanBenar kunci={kunci} onLanjut={() => onBenar(true)} />;
   const panduan = jejak ? (
     <g aria-hidden="true" transform="scale(2) translate(0 8)">
       {goresanTulis(kunci).map((g, i) => (
@@ -122,10 +146,22 @@ export function JawabSuara({
   pilihan: number[];
   rupa: Rupa;
   mati: number[];
-  onJawab: (n: number, terdengar: boolean) => void;
+  onJawab: (n: number, terdengar: boolean, ditunjukkan?: boolean) => void;
   onPesan: (pesan: string) => void;
 }) {
   const [dengar, setDengar] = useState(false);
+  const [tunjuk, setTunjuk] = useState(false);
+  const salahRef = useRef(0);
+  /** Satu percobaan gagal (salah terdengar atau tidak terdengar); setelah tiga kali, tampilkan jawaban yang benar. */
+  const gagalSekali = (): boolean => {
+    salahRef.current += 1;
+    if (salahRef.current >= BATAS_SALAH) {
+      setTunjuk(true);
+      onPesan(`Tidak apa-apa. Jawaban yang benar adalah ${kata(kunci)}.`);
+      return true;
+    }
+    return false;
+  };
   const [cadangan, setCadangan] = useState(false);
   const [sepi, setSepi] = useState(0);
   const mesin = useRef<MesinDengar | null>(null);
@@ -200,6 +236,7 @@ export function JawabSuara({
       } else if (final && terdengar.length > 0) {
         tutup();
         onJawab(terdengar[0], true);
+        gagalSekali();
       }
     };
     m.onerror = (e) => {
@@ -211,7 +248,7 @@ export function JawabSuara({
       } else {
         setSepi((s) => s + 1);
         if (sepi >= 1) setCadangan(true);
-        onPesan("Belum terdengar. Tekan mikrofon, lalu ucapkan sekali lagi.");
+        if (!gagalSekali()) onPesan("Belum terdengar. Tekan mikrofon, lalu ucapkan sekali lagi.");
       }
     };
     m.onend = () => {
@@ -219,7 +256,7 @@ export function JawabSuara({
       tutup();
       setSepi((s) => s + 1);
       if (sepi >= 1) setCadangan(true);
-      onPesan(terdengar.length ? "Coba ucapkan sekali lagi." : "Belum terdengar. Tekan mikrofon, lalu ucapkan sekali lagi.");
+      if (!gagalSekali()) onPesan(terdengar.length ? "Coba ucapkan sekali lagi." : "Belum terdengar. Tekan mikrofon, lalu ucapkan sekali lagi.");
     };
     try {
       mesin.current = m;
@@ -233,6 +270,7 @@ export function JawabSuara({
     }
   };
 
+  if (tunjuk) return <JawabanBenar kunci={kunci} onLanjut={() => onJawab(kunci, false, true)} />;
   return (
     <div className="space-y-2" data-uji="jawab-suara">
       <div className="flex justify-center">

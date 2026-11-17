@@ -7,7 +7,7 @@ import { bersih, hapus, k, sorotkan, tambah, ubah, urutKata } from "./k1b3a-bant
 /* ------------------------------ 4. Penumpang turun, hitung mundur ------------------------------ */
 const SUARA_P1 = "Di bangku panjang depan Igil duduk tujuh penumpang. Kereta berhenti di stasiun kecil.";
 const SUARA_P2 = "Tiga penumpang turun. Igil tidak menghitung ulang dari satu. Ia mulai dari tujuh, lalu mundur: enam, lima, empat.";
-const SUARA_P3 = "Tinggal empat penumpang. Tujuh dikurangi tiga sama dengan empat. Ada tiga kursi kosong untuk Kaka, Abang, dan Igil.";
+const SUARA_P3 = "Tinggal empat penumpang. Tujuh dikurangi tiga sama dengan empat. Sekarang ada tiga kursi kosong.";
 const PN = deret(7, 46, 34, 104);
 const posP2 = urutKata(SUARA_P2, ["tujuh,", "enam,", "lima,", "empat."], "mulai");
 
@@ -40,7 +40,7 @@ export const ADEGAN_TURUN: AdeganStory = {
       hapus(0, "pn4", "pn5", "pn6", "h7", "h6", "h5"),
       tambah("Tujuh", ...kalimatK("kl", 150, 52, ["7", KURANG, "3", "=", "4"], 20, 28)),
       tambah("kursi", ...[4, 5, 6].map((i) => emo(`ks${i}`, PN[i].x, PN[i].y, E.kursi, 22))),
-      sorotkan("Igil.", "ig"),
+      sorotkan("kosong.", "ig"),
     ),
   ],
 };

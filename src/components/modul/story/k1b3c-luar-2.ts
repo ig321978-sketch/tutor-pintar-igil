@@ -87,9 +87,9 @@ export const ADEGAN_LUAR_PIKIR_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 8. Ringkasan ------------------------------ */
 const SUARA_Z1 = "Kita sudah melihat tiga metode global untuk hubungan penjumlahan dan pengurangan.";
-const SUARA_Z2 = "Fact Family: tiga bilangan membuat empat kalimat, dua penjumlahan dan dua pengurangan.";
-const SUARA_Z3 = "Fact Triangle: tutup satu pojok, lalu cari bilangan yang tertutup.";
-const SUARA_Z4 = "Think Addition: untuk mengurangi, pikirkan penjumlahannya, lalu hitung maju.";
+const SUARA_Z2 = "Fact Family: tiga bilangan membuat empat kalimat. Cocok untuk menulis semua kalimat sekaligus.";
+const SUARA_Z3 = "Fact Triangle: tutup satu pojok, lalu cari bilangan yang tertutup. Cocok untuk berlatih cepat setiap hari.";
+const SUARA_Z4 = "Think Addition: untuk mengurangi, pikirkan penjumlahannya, lalu hitung maju. Cocok kalau penjumlahannya sudah hafal.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
@@ -98,8 +98,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   latar: "#FDF4FF",
   ketukan: [
     k(SUARA_Z1, tambah(0, judul("Ringkasan")), tambah("tiga", emo("rk", 150, 96, E.bintang, 44)), tambah("pengurangan.", ...kartu("rt", 60, 124, 180, 26, W.emas, ["3 metode global"], 10))),
-    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Family:", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Fact Family", "3 bilangan, 4 kalimat"], 9.4))),
-    k(SUARA_Z3, tambah("Triangle:", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["Fact Triangle", "tutup satu pojok, cari"], 9.4))),
-    k(SUARA_Z4, tambah("Addition:", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Think Addition", "pikirkan tambah, hitung maju"], 9.4))),
+    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Family:", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], ["Fact Family", "cocok untuk menulis semua kalimat"], 9.4))),
+    k(SUARA_Z3, tambah("Triangle:", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], ["Fact Triangle", "cocok untuk mengingat cepat"], 9.4))),
+    k(SUARA_Z4, tambah("Addition:", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], ["Think Addition", "cocok bila penjumlahan sudah hafal"], 9.4))),
   ],
 };

@@ -10,7 +10,7 @@ export const WARNA_METODE = [W.langit, W.hijauMuda, W.emas];
 export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka ------------------------------ */
-const SUARA_O1 = "Semua sudah duduk di kereta lanjutan. Abang bercerita, anak-anak di negara lain juga punya cara cepat mengurangi. Kita lihat tiga metode global.";
+const SUARA_O1 = "Di dinding gerbong tertempel poster cara berhitung dari berbagai negara. Abang membacanya keras-keras. Kita lihat tiga metode global.";
 const SUARA_O2 = "Tiga metode itu: Number Bond, Number Line, dan Make Ten.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Bagan Pasangan, Garis Bilangan, dan Pasangan Sepuluh.";
 const SUARA_O4 = "Semua metode membantu kita mengurangi dengan cepat, tanpa menghitung satu per satu.";

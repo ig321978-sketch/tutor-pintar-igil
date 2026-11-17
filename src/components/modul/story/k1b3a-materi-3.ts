@@ -53,7 +53,7 @@ export const ADEGAN_HASIL: AdeganStory = {
 /* ------------------------------ 8. Penutup ------------------------------ */
 const SUARA_Q1 = "Ingat, pengurangan berarti benda berkurang karena diambil, dimakan, atau pergi.";
 const SUARA_Q2 = "Mula-mula dikurangi yang pergi sama dengan sisa. Bisa juga hitung mundur dari bilangan pertama.";
-const SUARA_Q3 = "Terima kasih, Igil, Kaka, Abang, dan Mamah. Sampai jumpa di stasiun besar!";
+const SUARA_Q3 = "Coba pikirkan, kalau Mamah makan satu kue lagi, berapa kue untuk Nenek? Sampai jumpa di stasiun besar!";
 
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup",
@@ -76,12 +76,11 @@ export const ADEGAN_PENUTUP: AdeganStory = {
     k(
       SUARA_Q3,
       bersih(0),
-      tambah(0, judul("Terima kasih!"), emo("ht", 150, 66, E.hati, 30)),
-      tambah("Igil,", ...orang("ig", 45, 130, E.igil, "Igil")),
-      tambah("Kaka,", ...orang("kk", 115, 130, E.kaka, "Kaka")),
-      tambah("Abang,", ...orang("ab", 185, 130, E.abang, "Abang")),
-      tambah("Mamah.", ...orang("mm", 255, 130, E.mamah, "Mamah")),
-      tambah("besar!", emo("kr", 90, 182, E.kereta, 26), emo("st", 210, 182, E.stasiun, 26)),
+      tambah(0, judul("Coba pikirkan!"), emo("tn", 150, 56, E.tanya, 26)),
+      tambah("Mamah", ...orang("mm", 50, 120, E.mamah, "Mamah")),
+      tambah("kue", ...deret(6, 110, 28, 110).map((p, i) => emo(`kq${i}`, p.x, p.y, E.kue, 20))),
+      tambah("berapa", teks("tq", 180, 150, `6 ${KURANG} 1 = ?`, 16, W.merah)),
+      tambah("besar!", emo("kr", 90, 186, E.kereta, 24), emo("st", 210, 186, E.stasiun, 24)),
     ),
   ],
 };
