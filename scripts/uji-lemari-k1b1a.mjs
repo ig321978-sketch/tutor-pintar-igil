@@ -1,5 +1,6 @@
 // Uji tahap Mind-map, Infografis, Simulasi, Concrete, Pictorial, dan Abstract Kelas 1 Bab 1 Sub-Bab A ("Merapikan Lemari Mainan Igil").
-// Memeriksa: kunci dihitung ulang terpisah, tiap soal empat metode berurutan, angka berbeda dari Story, semua contoh Story tercakup,
+// Memeriksa: kunci dihitung ulang terpisah, CPA dua belas soal per tahap (Klik, Kanvas, Suara x empat metode), angka berbeda dari Story
+// dan tidak kembar dalam satu tahap, semua contoh Story tercakup, pemeriksa kanvas (tulis, lingkari, tanda, titik, garis) dan ucapan,
 // instruksi tanpa digit dan tanpa kata terlarang, pilihan memuat kunci dan unik, emoji paling tinggi U+1FA95, misi simulasi.
 // Jalankan: node --no-warnings scripts/uji-lemari-k1b1a.mjs
 import { readFileSync, readdirSync } from "node:fs";
@@ -118,26 +119,37 @@ const TERLARANG = /\b(kelas|buku|teman|kelompok|tambah|kurang|jumlah|skor|nilai)
   cek(daftar.every((d) => !TERLARANG.test(d.teks)), "simulasi: teks misi tanpa kata terlarang");
 }
 
-/* ------------------------------ CPA: empat soal x empat metode ------------------------------ */
+/* ------------------------------ CPA: tiga cara x empat metode = dua belas soal per tahap ------------------------------ */
+const J = await import("../src/components/modul/lemari-k1b1a/periksa-jawab.ts");
 const TAHAP = { concrete: [D.CONCRETE, "benda"], pictorial: [D.PICTORIAL, "diagram"], abstract: [D.ABSTRACT, "lambang"] };
 const tipeAda = new Set();
 const varian = new Set();
 const angkaStory = { mobil: 5, boneka: 4, bola: 3, balok: 10 };
+const KANVAS_GAMBAR = ["lingkari", "centang", "titik", "hubung"];
+let misiKe = 2;
 for (const [nama, [daftar, rupa]] of Object.entries(TAHAP)) {
-  sama(daftar.length, 4, `${nama}: empat soal`);
-  sama(daftar.map((s) => s.nomor), [1, 2, 3, 4], `${nama}: nomor satu sampai empat`);
+  sama(daftar.map((s) => s.cara), ["klik", "kanvas", "suara"], `${nama}: tiga kelompok cara berurutan (klik, kanvas, suara)`);
+  sama(daftar.map((s) => s.langkah.length), [4, 4, 4], `${nama}: tiap kelompok empat soal`);
+  sama(daftar.reduce((n, s) => n + s.langkah.length, 0), 12, `${nama}: dua belas soal`);
+  sama(daftar.map((s) => s.nomor), [1, 2, 3], `${nama}: nomor kelompok satu sampai tiga`);
   const tanda = new Set();
+  const jawabTahap = [];
+  const metodeTipe = {};
   for (const s of daftar) {
-    sama(s.langkah.map((x) => x.metode), ["igil", "satu", "kardinal", "sekilas"], `${nama} soal ${s.nomor}: empat metode berurutan`);
-    cek(/^Misi Rumah Rapi \d+: /.test(s.judul) && !/\d/.test(s.cerita), `${nama} soal ${s.nomor}: judul misi lanjutan dan cerita tanpa digit`);
-    cek(!TERLARANG.test(s.cerita), `${nama} soal ${s.nomor}: cerita tanpa kata terlarang`);
+    sama(s.langkah.map((x) => x.metode), ["igil", "satu", "kardinal", "sekilas"], `${nama} ${s.cara}: empat metode berbeda berurutan`);
+    cek(s.langkah.every((x) => x.cara === s.cara), `${nama} ${s.cara}: tiap soal memakai cara kelompoknya`);
+    cek(s.judul.startsWith(`Misi Rumah Rapi ${misiKe}: `) && !/\d/.test(s.cerita), `${nama} ${s.cara}: judul Misi Rumah Rapi ${misiKe} dan cerita tanpa digit`);
+    misiKe += 1;
+    cek(!TERLARANG.test(s.cerita), `${nama} ${s.cara}: cerita tanpa kata terlarang`);
     for (const ls of s.langkah) {
       const l = ls.langkah;
       tipeAda.add(l.tipe);
-      const nm = `${nama} soal ${s.nomor} ${ls.metode} (${l.tipe})`;
+      (metodeTipe[ls.metode] ??= []).push(`${l.tipe}:${s.cara}`);
+      const nm = `${nama} ${s.cara} ${ls.metode} (${l.tipe})`;
       cek(!/\d/.test(ls.suara) && !/\d/.test(ls.judul), `${nm}: instruksi tanpa digit`);
       cek(!TERLARANG.test(ls.suara), `${nm}: instruksi tanpa kata terlarang`);
-      cek(ls.suara === D.instruksi(l, rupa), `${nm}: instruksi dari templat`);
+      cek(ls.suara === D.instruksi(l, rupa, s.cara), `${nm}: instruksi dari templat`);
+      cek(ls.suara.split(/[.!?]/).every((q) => q.trim().split(/\s+/).length <= 11), `${nm}: kalimat instruksi pendek`);
       // Kunci dihitung ulang terpisah dari kunciLangkah.
       let kunci;
       switch (l.tipe) {
@@ -170,39 +182,147 @@ for (const [nama, [daftar, rupa]] of Object.entries(TAHAP)) {
           kunci = l.n;
           cek(L.benarPasang(l.n, Array.from({ length: l.n }, (_, i) => l.n - i)) && !L.benarPasang(l.n, Array.from({ length: l.n }, () => 1)), `${nm}: pemeriksa pasang satu-satu`);
           break;
+        case "lingkari":
+          kunci = l.benda.filter((b) => b === l.target).length;
+          cek(l.benda.some((b) => b !== l.target) && kunci >= 2, `${nm}: ada benda lain selain sasaran`);
+          break;
         default:
           kunci = l.n;
       }
       sama(L.kunciLangkah(l), kunci, `${nm}: kunci dihitung ulang`);
+      const aj = L.angkaJawab(l);
+      // Cara menjawab cocok dengan kelompok: suara dan kanvas tulis butuh jawaban angka; kanvas gambar diperiksa dari goresan.
+      if (s.cara === "suara") cek(aj !== null && L.pilihanDari(l).includes(aj), `${nm}: jawaban suara berupa angka, cadangan ketuk memuat kunci`);
+      if (s.cara === "kanvas") cek(KANVAS_GAMBAR.includes(l.tipe) || aj !== null, `${nm}: kanvas berupa gambar atau tulis angka`);
+      if (s.cara === "klik") cek(!KANVAS_GAMBAR.includes(l.tipe), `${nm}: klik tidak memakai kanvas gambar`);
+      const angkaUtama = l.tipe === "titik" ? l.n : aj;
+      if (angkaUtama !== null) jawabTahap.push(angkaUtama);
       if ("pilihan" in l) {
         cek(l.pilihan.includes(l.n) && new Set(l.pilihan).size === l.pilihan.length && l.pilihan.length >= 3, `${nm}: pilihan memuat kunci dan unik`);
         cek(l.pilihan.every((v) => v >= 0 && v <= 10), `${nm}: pilihan nol sampai sepuluh`);
         cek(L.benarPilih(l, l.n) && !L.benarPilih(l, l.pilihan.find((v) => v !== l.n)), `${nm}: pemeriksa pilih`);
       }
       if ("n" in l) cek(l.n >= 0 && l.n <= 10, `${nm}: bilangan nol sampai sepuluh`);
-      if (l.tipe === "sekilas") {
+      if (l.tipe === "sekilas" || l.tipe === "titik") {
         cek(rupa === "lambang" || l.n <= 6, `${nm}: sekilas hanya untuk yang sedikit`);
         varian.add(`sekilas-${l.pola}`);
       }
       if (l.tipe === "terakhir") varian.add(`terakhir-${l.arah}`);
       if (l.tipe === "baca") varian.add(`baca-${l.ke}`);
-      if ("n" in l && "jenis" in l && angkaStory[l.jenis] !== undefined) cek(angkaStory[l.jenis] !== l.n, `${nm}: angka berbeda dari Story untuk ${l.jenis}`);
-      // Batas rupa: Pictorial memakai bentuk, bukan emoji mainan; Abstract memakai kata atau lambang.
-      if (rupa === "diagram" && "jenis" in l && typeof l.jenis === "string") cek(["bulat", "kotak", "segitiga"].includes(l.jenis), `${nm}: Pictorial memakai bentuk diagram`);
-      if (rupa === "lambang" && "jenis" in l && typeof l.jenis === "string") cek(["kata", "lambang"].includes(l.jenis), `${nm}: Abstract memakai kata atau lambang`);
+      const jenisSoal = l.tipe === "lingkari" ? l.target : l.jenis;
+      if (typeof jenisSoal === "string" && angkaStory[jenisSoal] !== undefined && angkaUtama !== null) cek(angkaStory[jenisSoal] !== angkaUtama, `${nm}: angka berbeda dari Story untuk ${jenisSoal}`);
+      // Batas rupa: Concrete emoji benda; Pictorial bentuk diagram tanpa emoji; Abstract kata atau lambang.
+      const semuaJenis = [l.jenis, l.target, ...(l.benda ?? []), ...(Array.isArray(l.jenis) ? l.jenis : []), ...(l.kotak ?? []).map((k) => k.jenis)].filter((x) => typeof x === "string");
+      if (rupa === "benda") cek(semuaJenis.every((j) => D.EMOJI[j]), `${nm}: Concrete memakai benda (emoji)`);
+      if (rupa === "diagram") cek(semuaJenis.every((j) => ["bulat", "kotak", "segitiga"].includes(j)) && (l.baris ?? []).every((b) => ["bulat", "kotak", "segitiga"].includes(b.jenis)), `${nm}: Pictorial memakai bentuk diagram`);
+      if (rupa === "lambang" && typeof l.jenis === "string") cek(["kata", "lambang"].includes(l.jenis), `${nm}: Abstract memakai kata atau lambang`);
       tanda.add(JSON.stringify(l));
     }
   }
-  cek(tanda.size === 16, `${nama}: enam belas langkah berbeda (aktivitas dan angka)`);
+  cek(tanda.size === 12, `${nama}: dua belas soal berbeda (aktivitas dan angka)`);
+  cek(new Set(jawabTahap).size === jawabTahap.length, `${nama}: angka jawaban tidak kembar (${jawabTahap.join(",")})`);
+  // Aktivitas tiap metode tidak seragam di seluruh kelompok: paling tidak dua tipe kegiatan berbeda per metode.
+  for (const [m, t] of Object.entries(metodeTipe)) cek(t.length === 3, `${nama} ${m}: muncul sekali di tiap kelompok`);
+  cek(Object.values(metodeTipe).filter((t) => new Set(t.map((x) => x.split(":")[0])).size >= 2).length >= 2, `${nama}: aktivitas metode berbeda-beda antar kelompok`);
+  cek(daftar[1].langkah.some((x) => KANVAS_GAMBAR.includes(x.langkah.tipe)) && daftar[1].langkah.some((x) => L.angkaJawab(x.langkah) !== null), `${nama}: kanvas memuat menggambar dan menulis angka`);
 }
-for (const t of ["pisah", "tunjuk", "pindah", "pasang", "dobel", "terakhir", "sekilas", "laci", "nol", "tabel", "baca"]) cek(tipeAda.has(t), `CPA memuat contoh Story: ${t}`);
-for (const v of ["dobel-dobel", "dobel-lewat", "terakhir-kiri", "terakhir-kanan", "sekilas-dadu", "sekilas-baris", "baca-kata", "baca-lambang", "nol"]) cek(varian.has(v), `CPA memuat variasi: ${v}`);
+for (const t of ["pisah", "tunjuk", "pindah", "pasang", "dobel", "terakhir", "sekilas", "laci", "nol", "tabel", "baca", "lingkari", "centang", "titik", "hubung"]) cek(tipeAda.has(t), `CPA memuat kegiatan: ${t}`);
+for (const v of ["dobel-dobel", "dobel-lewat", "terakhir-kiri", "terakhir-kanan", "sekilas-dadu", "sekilas-baris", "baca-kata", "baca-lambang", "nol"]) cek(varian.has(v), `CPA memuat variasi contoh Story: ${v}`);
+sama(misiKe, 11, "CPA: Misi Rumah Rapi dua sampai sepuluh berurutan");
+
+/* ------------------------------ Pemeriksa kanvas ------------------------------ */
+{
+  // Tulis angka: model tiap lambang (digeser, diperbesar atau diperkecil, miring, goyang, dan arah goresan terbalik) terbaca benar.
+  let s = 7;
+  const r = () => ((s = (s * 16807) % 2147483647), s / 2147483647);
+  let benar = 0;
+  let total = 0;
+  for (let n = 0; n <= 10; n += 1) {
+    sama(J.periksaTulis(J.modelKanvas(n), n), { benar: true, terbaca: n }, `tulis: model ${n} terbaca tepat`);
+    for (let v = 0; v < 20; v += 1) {
+      const sk = 0.5 + r() * 0.8, sy = 0.85 + r() * 0.3, dx = r() * 80 - 40, dy = r() * 40 - 20, mi = r() * 0.3 - 0.15, j = 2 + r() * 4;
+      const g = J.modelKanvas(n).map((gs) => {
+        const a = gs.map((t) => ({ x: t.x * sk + dx + t.y * mi + j * Math.sin(t.y / 15 + v), y: t.y * sk * sy + dy + j * Math.cos(t.x / 13 + v) }));
+        return v % 2 ? a.reverse() : a;
+      });
+      total += 1;
+      if (J.periksaTulis(g, n).benar) benar += 1;
+    }
+  }
+  cek(benar / total >= 0.95, `tulis: tulisan bervariasi terbaca benar ${benar}/${total} (paling sedikit 95%)`);
+  let tolak = true;
+  for (let n = 0; n <= 10; n += 1) for (let m = 0; m <= 10; m += 1) if (m !== n && J.periksaTulis(J.modelKanvas(m), n).benar) tolak = false;
+  cek(tolak, "tulis: angka lain tidak diterima sebagai kunci");
+  sama(J.periksaTulis([[{ x: 10, y: 10 }, { x: 12, y: 11 }]], 1), { benar: false, terbaca: null }, "tulis: coretan sangat kecil belum terbaca");
+  sama(J.periksaTulis([], 3).benar, false, "tulis: kanvas kosong salah");
+
+  // Lingkari: satu lingkaran per sasaran atau satu lingkaran besar; benda lain tidak boleh ikut.
+  const letak = J.letakBenda(6, 3);
+  cek(letak.every((a, i) => letak.every((b, k) => k === i || Math.hypot(a.x - b.x, a.y - b.y) >= 40)), "letak: benda tidak bertumpuk");
+  cek(letak.every((t) => t.x > 0 && t.x < J.LEBAR_ADEGAN && t.y > 0 && t.y < J.TINGGI_ADEGAN), "letak: benda di dalam kanvas");
+  const cincin = (t, rr = 22) => Array.from({ length: 24 }, (_, i) => ({ x: t.x + rr * Math.cos((i / 24) * 2 * Math.PI), y: t.y + rr * Math.sin((i / 24) * 2 * Math.PI) }));
+  const sasaran = [true, false, true, true, false, true];
+  cek(J.periksaLingkari(letak.filter((_, i) => sasaran[i]).map((t) => cincin(t)), letak, sasaran).benar, "lingkari: tiap sasaran dilingkari = benar");
+  sama(J.periksaLingkari(letak.map((t) => cincin(t)), letak, sasaran), { benar: false, kurang: 0, lebih: 2 }, "lingkari: benda lain ikut = salah (lebih dua)");
+  sama(J.periksaLingkari([cincin(letak[0])], letak, sasaran), { benar: false, kurang: 3, lebih: 0 }, "lingkari: baru satu = salah (kurang tiga)");
+  const besar = [{ x: -5, y: -5 }, { x: 305, y: -5 }, { x: 305, y: 205 }, { x: -5, y: 205 }];
+  cek(J.periksaLingkari([besar], letak, letak.map(() => true)).benar, "lingkari: satu lingkaran besar untuk semua sasaran = benar");
+  cek(J.diDalam({ x: 1, y: 1 }, besar) && !J.diDalam({ x: 400, y: 1 }, besar), "lingkari: titik di dalam dan di luar");
+
+  // Tanda satu per satu.
+  const titik = (t, dx = 0) => [{ x: t.x + dx, y: t.y }];
+  cek(J.periksaCentang(letak.map((t) => titik(t, 3)), letak).benar, "tanda: satu tanda tiap benda = benar");
+  sama(J.periksaCentang([...letak.map((t) => titik(t)), titik(letak[2])], letak).dobel, 1, "tanda: dua tanda pada satu benda = dobel");
+  sama(J.periksaCentang(letak.slice(1).map((t) => titik(t)), letak).lewat, 1, "tanda: satu benda terlewat");
+  cek(!J.periksaCentang([...letak.map((t) => titik(t)), [{ x: 1000, y: 1000 }]], letak).benar, "tanda: tanda di luar benda = salah");
+
+  // Gambar titik: ketukan dihitung, coretan panjang ditolak.
+  sama(J.hitungTitik(Array.from({ length: 4 }, (_, i) => [{ x: 30 * i, y: 10 }])), { titik: 4, coretan: 0 }, "titik: empat ketukan = empat titik");
+  sama(J.hitungTitik([[{ x: 0, y: 0 }, { x: 100, y: 0 }]]), { titik: 0, coretan: 1 }, "titik: coretan panjang bukan titik");
+
+  // Tarik garis: nama angka ke lambangnya (harus sama) atau benda ke kartu (cukup satu-satu).
+  const kiri = [0, 1, 2].map((i) => ({ x: 50, y: 40 + 60 * i }));
+  const kanan = [0, 1, 2].map((i) => ({ x: 250, y: 40 + 60 * i }));
+  const garis = (a, b) => [a, { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, b];
+  cek(J.periksaHubung([garis(kiri[0], kanan[2]), garis(kanan[1], kiri[1]), garis(kiri[2], kanan[0])], kiri, kanan, [1, 2, 3], [3, 2, 1], true).benar, "garis: nama ke lambang yang sama (arah bebas) = benar");
+  cek(!J.periksaHubung([garis(kiri[0], kanan[0]), garis(kiri[1], kanan[1]), garis(kiri[2], kanan[2])], kiri, kanan, [1, 2, 3], [3, 2, 1], true).benar, "garis: nama ke lambang lain = salah");
+  cek(J.periksaHubung([garis(kiri[0], kanan[0]), garis(kiri[1], kanan[1]), garis(kiri[2], kanan[2])], kiri, kanan, [0, 0, 0], [3, 2, 1], false).benar, "garis: benda ke kartu satu-satu = benar");
+  cek(!J.periksaHubung([garis(kiri[0], kanan[0]), garis(kiri[1], kanan[0]), garis(kiri[2], kanan[2])], kiri, kanan, [0, 0, 0], [3, 2, 1], false).benar, "garis: dua benda ke satu kartu = salah");
+  cek(!J.periksaHubung([garis(kiri[0], kanan[0])], kiri, kanan, [0, 0, 0], [3, 2, 1], false).benar, "garis: belum semua punya garis = salah");
+}
+
+/* ------------------------------ Ucapan ------------------------------ */
+{
+  const kasus = [
+    ["lima", [5]], ["Lima.", [5]], ["5", [5]], ["ada tujuh", [7]], ["tuju", [7]], ["se puluh", [10]], ["sepuluh", [10]], ["10", [10]],
+    ["nol", [0]], ["kosong", [0]], ["enol", [0]], ["delapan", [8]], ["lapan", [8]], ["sembilang", [9]], ["empat ekor", [4]],
+    ["tiga eh empat", [3, 4]], ["dua dua", [2]], ["Enam!", [6]], ["dua belas", [2]], ["12", []], ["halo", []], ["", []],
+  ];
+  for (const [t, h] of kasus) sama(J.bilanganDariUcapan(t), h, `ucapan "${t}"`);
+  for (let n = 0; n <= 10; n += 1) sama(J.bilanganDariUcapan(L.kata(n)), [n], `ucapan nama angka ${n}`);
+}
+
+/* ------------------------------ Komponen kanvas dan suara terpasang ------------------------------ */
+{
+  const baca = (f) => readFileSync(new URL(`../src/components/modul/lemari-k1b1a/${f}`, import.meta.url), "utf8");
+  const jawab = baca("Jawab.tsx");
+  cek(/import \{ KanvasTulis, TombolPeriksa \} from "\.\.\/opsi2\/primitif"/.test(jawab), "Jawab: memakai ulang KanvasTulis Opsi 2");
+  cek(/webkitSpeechRecognition/.test(jawab) && /lang = "id-ID"/.test(jawab) && /maxAlternatives = 5/.test(jawab), "Jawab: Web Speech id-ID dengan lima alternatif");
+  cek(/setCadangan\(true\)/.test(jawab) && /Ketuk jawabannya/.test(jawab) && /<Pilihan /.test(jawab), "Jawab: cadangan pilihan ketuk dan pemberitahuan bila tidak bisa mendengar");
+  cek(/hentikanSuaraGuruModul\(\)/.test(jawab) && /abort\(\)/.test(jawab), "Jawab: suara guru dihentikan saat mendengar dan mikrofon dilepas");
+  cek(/coretanMengikutiJejak/.test(jawab) && /periksaTulis\(/.test(jawab), "Jawab: tulisan diperiksa pengenal, dengan jejak petunjuk setelah dua kali salah");
+  const lm = baca("LangkahMetode.tsx");
+  cek(/<JawabTulis /.test(lm) && /<JawabSuara\s/.test(lm) && /<KanvasGambar/.test(lm) && /cara === "kanvas"/.test(lm) && /cara === "suara"/.test(lm), "LangkahMetode: tiga cara menjawab terpasang");
+  const tl = baca("TahapLemari.tsx");
+  cek(/NAMA_CARA/.test(tl) && /Soal \{nomor\} dari \{total\}/.test(tl), "TahapLemari: kelompok cara dan nomor soal dari dua belas");
+  for (const f of ["periksa-jawab.ts", "logika.ts", "data.ts"]) cek(!/from "react"/.test(baca(f)), `${f}: tanpa React`);
+}
 
 /* ------------------------------ Berkas: emoji, akhir baris, tanpa jaringan dan skor ------------------------------ */
 {
   const dir = new URL("../src/components/modul/lemari-k1b1a/", import.meta.url);
   const berkas = readdirSync(dir).filter((f) => /\.(ts|tsx)$/.test(f));
-  cek(berkas.length >= 8, `berkas lemari-k1b1a lengkap (${berkas.length})`);
+  cek(berkas.length >= 10, `berkas lemari-k1b1a lengkap (${berkas.length})`);
   for (const f of berkas) {
     const s = readFileSync(new URL(f, dir), "utf8");
     const kode = s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");

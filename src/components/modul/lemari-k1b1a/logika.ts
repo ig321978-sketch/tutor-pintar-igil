@@ -93,10 +93,25 @@ export type Langkah =
   /** Tabel data: isi angka banyak tiap baris. */
   | { tipe: "tabel"; baris: { jenis: string; n: number }[] }
   /** Baca dan tulis: lambang ke nama (`ke: "kata"`) atau nama ke lambang (`ke: "lambang"`). */
-  | { tipe: "baca"; n: number; ke: "kata" | "lambang"; pilihan: number[] };
+  | { tipe: "baca"; n: number; ke: "kata" | "lambang"; pilihan: number[] }
+  /** Kanvas: lingkari semua benda `target` di antara `benda` dengan satu garis melingkar, lalu tulis banyaknya. */
+  | { tipe: "lingkari"; benda: string[]; target: string }
+  /** Kanvas: beri tepat satu tanda pada tiap benda (satu benda, satu tanda), lalu tulis banyaknya. */
+  | { tipe: "centang"; n: number; jenis: string }
+  /** Kanvas: lihat sekilas, lalu gambar titik sebanyak yang dilihat. */
+  | { tipe: "titik"; n: number; jenis: string; pola: "dadu" | "baris" }
+  /** Kanvas: tarik garis dari tiap benda (atau nama angka) ke satu kartu angka (atau lambangnya). */
+  | { tipe: "hubung"; n: number; jenis: string };
 
-export type LangkahSoal = { metode: Metode; judul: string; suara: string; langkah: Langkah };
-export type SoalMisi = { nomor: number; judul: string; cerita: string; langkah: LangkahSoal[] };
+/** Cara menjawab: ketuk dan pilih (klik), tulis atau gambar di kanvas, atau ucapkan (rekam suara). */
+export type Cara = "klik" | "kanvas" | "suara";
+export const URUT_CARA: Cara[] = ["klik", "kanvas", "suara"];
+export const NAMA_CARA: Record<Cara, string> = { klik: "Klik", kanvas: "Tulis di kanvas", suara: "Rekam suara" };
+export const IKON_CARA: Record<Cara, string> = { klik: "\u{1F446}", kanvas: "\u{270F}\u{FE0F}", suara: "\u{1F3A4}" };
+
+export type LangkahSoal = { metode: Metode; cara: Cara; judul: string; suara: string; langkah: Langkah };
+/** Satu kelompok cara (klik, kanvas, atau suara) berisi empat soal, satu untuk tiap metode. */
+export type SoalMisi = { nomor: number; judul: string; cerita: string; cara: Cara; langkah: LangkahSoal[] };
 
 /** Kunci tiap langkah, dihitung dari datanya (bukan disimpan), supaya data dan kunci tidak bisa berbeda. */
 export function kunciLangkah(l: Langkah): number | string | number[] {
@@ -118,7 +133,43 @@ export function kunciLangkah(l: Langkah): number | string | number[] {
       return l.kotak.findIndex((k) => k.n === 0);
     case "tabel":
       return l.baris.map((b) => b.n);
+    case "lingkari":
+      return l.benda.filter((b) => b === l.target).length;
+    case "centang":
+    case "titik":
+    case "hubung":
+      return l.n;
   }
+}
+
+/**
+ * Angka yang dijawab anak (dipilih, ditulis, atau diucapkan), atau null bila jawabannya bukan angka
+ * (memisahkan, mencari yang dobel, memasangkan, mengisi tabel, menarik garis, menggambar titik).
+ */
+export function angkaJawab(l: Langkah): number | null {
+  switch (l.tipe) {
+    case "tunjuk":
+    case "pindah":
+    case "terakhir":
+    case "sekilas":
+    case "laci":
+    case "baca":
+    case "centang":
+      return l.n;
+    case "lingkari":
+      return kunciLangkah(l) as number;
+    case "nol":
+      return 0;
+    default:
+      return null;
+  }
+}
+
+/** Pilihan ketuk (juga cadangan bila peramban tidak bisa mendengar): pilihan bawaan, atau kunci dengan dua tetangganya. */
+export function pilihanDari(l: Langkah): number[] {
+  if ("pilihan" in l) return l.pilihan;
+  const k = angkaJawab(l) ?? 0;
+  return k === 0 ? [0, 1, 2] : k === 10 ? [9, 10, 8] : [k - 1, k, k + 1];
 }
 
 /** Pemeriksa jawaban pilihan banyaknya (angka). */

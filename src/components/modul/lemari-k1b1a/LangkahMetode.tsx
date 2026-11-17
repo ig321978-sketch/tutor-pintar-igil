@@ -1,12 +1,14 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { POLA_DADU, acak, benarPisah, kata, kunciLangkah, labelDobel, type Langkah, type LangkahSoal, type Rupa } from "./logika";
+import { POLA_DADU, acak, angkaJawab, benarPisah, kata, kunciLangkah, labelDobel, pilihanDari, type Cara, type Langkah, type LangkahSoal, type Rupa } from "./logika";
 import { EMOJI, NAMA } from "./data";
+import { JawabSuara, JawabTulis, KanvasGambar, Pilihan } from "./Jawab";
 
 /**
  * Satu langkah metode (Concrete, Pictorial, Abstract) Kelas 1 Bab 1 Sub-Bab A. Satu komponen untuk semua tipe langkah;
  * rupa menentukan gambar: benda (emoji mainan), diagram (titik, petak, segitiga), lambang (lambang dan nama angka).
+ * Cara menjawab angka mengikuti kelompok soal: pilih (klik), tulis di kanvas, atau ucapkan (rekam suara).
  * Tanpa skor: salah = goyang dan petunjuk, coba lagi sampai benar.
  */
 
@@ -29,34 +31,17 @@ function Bentuk({ jenis, rupa, nilai, kecil = false }: { jenis: string; rupa: Ru
 
 const KOTAK = "relative flex min-h-[52px] min-w-[52px] items-center justify-center rounded-xl border-[3px] px-1";
 
-/** Pilihan banyaknya: kata di Concrete dan Pictorial, lambang di Abstract. */
-function Pilihan({ pilihan, rupa, mati, onPilih }: { pilihan: number[]; rupa: Rupa; mati: number[]; onPilih: (n: number) => void }) {
-  return (
-    <div className="flex flex-wrap justify-center gap-2" role="group" aria-label="Pilih banyaknya">
-      {pilihan.map((n) => (
-        <button
-          key={n}
-          type="button"
-          disabled={mati.includes(n)}
-          onClick={() => onPilih(n)}
-          className="min-h-[52px] min-w-[84px] rounded-2xl border-4 border-[#1C01A5] bg-[#FFE566] px-3 text-lg font-black text-[#1C01A5] shadow-[0_4px_0_rgba(28,1,165,0.3)] disabled:opacity-30"
-        >
-          {rupa === "lambang" ? n : kata(n)}
-        </button>
-      ))}
-    </div>
-  );
-}
-
 const AKHIR: Record<string, (n: number) => string> = {
   igil: (n) => `Betul! Ada ${kata(n)}.`,
   satu: () => "Betul! Satu benda, satu angka.",
   kardinal: (n) => `Betul! Angka terakhir ${kata(n)}, jadi banyaknya ${kata(n)}.`,
-  sekilas: (n) => `Betul! ${kata(n)}, dikenali sekilas tanpa menghitung.`,
+  sekilas: (n) => `Betul! ${kapital(kata(n))}, dikenali sekilas tanpa menghitung.`,
 };
+const kapital = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 
 export function LangkahMetode({ ls, rupa, benih, bicara, onBenar }: P) {
   const l = ls.langkah;
+  const cara: Cara = ls.cara;
   const [selesai, setSelesai] = useState(false);
   const [pesan, setPesan] = useState("");
   const [goyang, setGoyang] = useState<string | null>(null);
@@ -75,26 +60,46 @@ export function LangkahMetode({ ls, rupa, benih, bicara, onBenar }: P) {
     bicara(p);
     onBenar(p);
   };
-  const pilihBanyak = (n: number) => {
-    const k = kunciLangkah(l) as number;
+  const k = angkaJawab(l);
+  const hint = () => (ls.metode === "kardinal" ? "Lihat angka terakhir yang disebut." : ls.metode === "sekilas" ? "Lihat lagi polanya." : l.tipe === "nol" ? "Lihat lagi kotak yang kosong." : "Hitung lagi pelan-pelan, satu per satu.");
+  const pilihBanyak = (n: number, awalan = "") => {
     bicara(kata(n));
-    if (n === k) tuntas(AKHIR[ls.metode](k));
+    if (n === k) tuntas(l.tipe === "baca" ? (l.ke === "kata" ? `Betul! Lambang itu dibaca ${kata(n)}.` : `Betul! Itu lambang ${kata(n)}.`) : AKHIR[ls.metode](n));
     else {
       setMati((m) => [...m, n]);
-      salah("pilihan", ls.metode === "kardinal" ? "Lihat angka terakhir yang disebut." : ls.metode === "sekilas" ? "Lihat lagi polanya." : "Hitung lagi pelan-pelan, satu per satu.");
+      salah("pilihan", `${awalan}${hint()}`);
     }
   };
-  const pilihanPanel = "pilihan" in l && (siapPilih || l.tipe === "baca") && !selesai ? (
-    <div className={goyang === "pilihan" ? "lm-goyang" : ""}>
-      <p className="mb-1 text-center text-sm font-black text-[#1C01A5]">{l.tipe === "baca" ? (l.ke === "kata" ? "Dibaca apa?" : "Lambangnya yang mana?") : "Berapa banyaknya?"}</p>
-      <Pilihan pilihan={l.pilihan} rupa={l.tipe === "baca" && l.ke === "kata" ? "benda" : rupa} mati={mati} onPilih={pilihBanyak} />
-    </div>
-  ) : null;
+  // Nol dengan cara klik dijawab dengan mengetuk kotaknya; tipe lain yang jawabannya angka memakai panel jawab.
+  const pakaiPanel = k !== null && !(l.tipe === "nol" && cara === "klik");
+  const siapAwal = l.tipe === "baca" || l.tipe === "nol";
+  const rupaPilihan: Rupa = l.tipe === "baca" && l.ke === "kata" ? "benda" : rupa;
+  const tanya = l.tipe === "baca" ? (l.ke === "kata" ? "Dibaca apa?" : cara === "kanvas" ? "Tulis lambangnya." : "Lambangnya yang mana?") : l.tipe === "nol" ? "Kotak yang kosong isinya berapa?" : "Berapa banyaknya?";
+  const panelJawab =
+    pakaiPanel && k !== null && (siapPilih || siapAwal) && !selesai ? (
+      <div className={goyang === "pilihan" ? "lm-goyang" : ""}>
+        <p className="mb-1 text-center text-sm font-black text-[#1C01A5]">{tanya}</p>
+        {cara === "kanvas" ? (
+          <JawabTulis kunci={k} onBenar={() => pilihBanyak(k)} onSalah={(p) => salah("pilihan", p)} />
+        ) : cara === "suara" ? (
+          <JawabSuara
+            kunci={k}
+            pilihan={pilihanDari(l)}
+            rupa={rupaPilihan}
+            mati={mati}
+            onJawab={(n, terdengar) => pilihBanyak(n, terdengar && n !== k ? `Terdengar ${kata(n)}. ` : "")}
+            onPesan={setPesan}
+          />
+        ) : (
+          <Pilihan pilihan={pilihanDari(l)} rupa={rupaPilihan} mati={mati} onPilih={(n) => pilihBanyak(n)} />
+        )}
+      </div>
+    ) : null;
 
   return (
     <div className="space-y-3">
-      <Isi l={l} rupa={rupa} benih={benih} selesai={selesai} goyang={goyang} salah={salah} tuntas={(p) => tuntas(p ?? AKHIR[ls.metode](typeof kunciLangkah(l) === "number" ? (kunciLangkah(l) as number) : 0))} siap={() => setSiapPilih(true)} bicara={bicara} />
-      {pilihanPanel}
+      <Isi l={l} rupa={rupa} cara={cara} benih={benih} selesai={selesai} goyang={goyang} salah={salah} tuntas={(p) => tuntas(p ?? AKHIR[ls.metode](typeof kunciLangkah(l) === "number" ? (kunciLangkah(l) as number) : 0))} siap={(p) => { setSiapPilih(true); if (p) { setPesan(p); bicara(p); } }} bicara={bicara} />
+      {panelJawab}
       <p role="status" aria-live="polite" className={`min-h-[1.5rem] text-center text-sm font-black ${selesai ? "text-[#15803D]" : "text-[#B45309]"}`}>
         {pesan}
       </p>
@@ -106,12 +111,14 @@ export function LangkahMetode({ ls, rupa, benih, bicara, onBenar }: P) {
 type PI = {
   l: Langkah;
   rupa: Rupa;
+  cara: Cara;
   benih: number;
   selesai: boolean;
   goyang: string | null;
   salah: (id: string, p: string) => void;
   tuntas: (p?: string) => void;
-  siap: () => void;
+  /** Kegiatan selesai, lanjut menjawab banyaknya (pesan opsional, mis. setelah gambar benar). */
+  siap: (pesan?: string) => void;
   bicara: (t: string) => void;
 };
 
@@ -136,6 +143,21 @@ function Isi(p: PI) {
       return <Nol {...p} l={p.l} />;
     case "tabel":
       return <Tabel {...p} l={p.l} />;
+    case "lingkari":
+    case "centang":
+    case "titik":
+    case "hubung":
+      return (
+        <KanvasGambar
+          l={p.l}
+          rupa={p.rupa}
+          benih={p.benih}
+          selesai={p.selesai}
+          goyang={p.goyang === "kanvas"}
+          salah={(x) => p.salah("kanvas", x)}
+          lulus={(x) => (p.l.tipe === "lingkari" || p.l.tipe === "centang" ? p.siap(x) : p.tuntas(x))}
+        />
+      );
     case "baca":
       return (
         <div className="flex justify-center">
@@ -436,9 +458,9 @@ function Sekilas({ l, rupa, siap }: PI & { l: Extract<Langkah, { tipe: "sekilas"
   );
 }
 
-function Nol({ l, rupa, selesai, goyang, salah, tuntas }: PI & { l: Extract<Langkah, { tipe: "nol" }> }) {
+function Nol({ l, rupa, cara, selesai, goyang, salah, tuntas }: PI & { l: Extract<Langkah, { tipe: "nol" }> }) {
   const ketuk = (i: number) => {
-    if (selesai) return;
+    if (selesai || cara !== "klik") return;
     if (l.kotak[i].n === 0) tuntas("Betul! Kotak itu tidak ada isinya. Banyaknya nol.");
     else salah(`b${i}`, "Kotak ini ada isinya. Cari yang kosong.");
   };
