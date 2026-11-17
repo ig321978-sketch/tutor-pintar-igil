@@ -7,7 +7,7 @@ import { bersih, k, sorotkan, tambah } from "./k1b5a-bantu";
 /* ------------------------------ 7. Akuarium berlabel ------------------------------ */
 const SUARA_H1 = "Tiga akuarium kini berlabel. Guppy empat belas, koki sebelas, dan neon dua puluh.";
 const SUARA_H2 = "Abang lalu menjajarkan dua puluh akuarium kecil bernomor di teras, dari satu sampai dua puluh.";
-const SUARA_H3 = "Kata Abang, besok pagi semua ikan harus diberi pakan. Akuarium mana dulu, ya?";
+const SUARA_H3 = "Mulai besok pagi, semua ikan harus diberi pakan. Menurutmu, mulai dari akuarium nomor berapa, dan lanjut ke mana?";
 const AQ_X = [14, 109, 204];
 const diAkuarium = (x: number): { x: number; y: number }[] => [
   { x: x + 18, y: 52 },
@@ -45,7 +45,7 @@ export const ADEGAN_HASIL: AdeganStory = {
       SUARA_H3,
       tambah("besok", ...kartu("bs", 80, 140, 210, 22, W.pink, ["besok pagi: beri pakan"], 9.4)),
       tambah("pakan.", emo("pk", 270, 180, E.pakan, 20)),
-      tambah("dulu,", teks("tq", 180, 182, "mulai nomor berapa?", 9, W.merah)),
+      tambah("mulai", teks("tq", 180, 182, "mulai nomor berapa?", 9, W.merah)),
     ),
   ],
 };

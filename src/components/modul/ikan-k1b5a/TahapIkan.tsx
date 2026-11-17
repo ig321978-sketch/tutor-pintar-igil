@@ -193,7 +193,7 @@ export default function TahapIkan({
           </button>
           <div>
             <p className="text-xs font-black text-[#1D4ED8]">
-              Soal {nomor} dari {total} · {IKON_METODE[ls.metode]} {NAMA_METODE[ls.metode]}
+              Soal {nomor} dari {total} · {ls.langkah.tipe === "salah" ? "🔍 Cari kesalahan" : `${IKON_METODE[ls.metode]} ${NAMA_METODE[ls.metode]}`}
             </p>
             <p className="text-sm font-black text-[#1C01A5]">{ls.judul}</p>
           </div>

@@ -83,6 +83,15 @@ for (const [nama, soal, rupa] of [["Concrete", D.CONCRETE, "benda"], ["Pictorial
   cek(angka.every((n) => n >= 0 && n <= 10) && angka.includes(0), `${nama}: nol sampai sepuluh, ada nol (lengkung)`);
   const ciri = semua.filter((x) => x.langkah.tipe === "ciri").map((x) => x.langkah.benda.bentuk).sort();
   sama(ciri, ["lengkung", "segiempat", "segitiga"], `${nama}: Metode IGIL memuat tiga bentuk`);
+  // Pedoman mutu: tiap tahap paling sedikit satu soal "Cari kesalahan" (tokoh sudah menjawab), dengan alasan yang menjelaskan kesalahannya.
+  const klaim = semua.filter((x) => x.langkah.tipe === "ciri" && x.langkah.klaim);
+  cek(klaim.length >= 1, `${nama}: ada soal Cari kesalahan`);
+  for (const x of klaim) {
+    const kl = x.langkah.klaim;
+    cek(["Igil", "Kaka", "Abang", "Mamah"].includes(kl.tokoh) && kl.alasan.length > 20 && !/\d/.test(kl.alasan) && kl.angka >= 0 && kl.angka <= 10, `${nama}: klaim ${kl.tokoh} berisi alasan tanpa digit`);
+    cek(L.klaimBenar(x.langkah) === (kl.angka === L.kunciLangkah(x.langkah)), `${nama}: penilaian klaim dihitung dari kunci`);
+    cek(/Cari kesalahan/.test(x.suara) && /Benar atau salah/.test(x.suara), `${nama}: instruksi Cari kesalahan`);
+  }
   for (const x of semua) {
     const l = x.langkah;
     const k = L.kunciLangkah(l);
@@ -128,6 +137,8 @@ for (const [nama, soal, rupa] of [["Concrete", D.CONCRETE, "benda"], ["Pictorial
   }
 }
 {
+  const semuaKlaim = [D.CONCRETE, D.PICTORIAL, D.ABSTRACT].flat().flatMap((so) => so.langkah).filter((x) => x.langkah.tipe === "ciri" && x.langkah.klaim);
+  cek(semuaKlaim.some((x) => !L.klaimBenar(x.langkah)) && semuaKlaim.some((x) => L.klaimBenar(x.langkah)), "Cari kesalahan: ada klaim keliru dan ada klaim benar");
   cek(D.POIN_PENTING.length >= 5 && D.POIN_PENTING_SUARA.every((p) => !/\d/.test(p)), "poin penting: suara tanpa digit");
   cek(D.POIN_PENTING.some((p) => /lengkung/.test(p)) && D.POIN_PENTING.some((p) => /diputar/.test(p)), "poin penting: lengkung dan diputar");
   for (const b of L.URUT_BENTUK) cek(!/\d/.test(L.deskripsi(b)), `deskripsi ${b} tanpa digit`);

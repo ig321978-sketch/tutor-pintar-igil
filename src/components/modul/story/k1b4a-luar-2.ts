@@ -12,6 +12,7 @@ const SUARA_C1 = "Metode kedua, Geoboard, atau Papan Paku. Papan ini punya paku 
 const SUARA_C2 = "Kita kaitkan karet gelang pada beberapa paku. Karet membentuk sisi lurus di antara paku.";
 const SUARA_C3 = "Paku tempat karet berbelok menjadi sudut. Banyak paku belokan sama dengan banyak sudut.";
 const SUARA_C4 = "Jadi kita bisa membuat bentuk dan langsung menghitung sisi lurus serta sudutnya.";
+const SUARA_C5 = "Papan paku cocok untuk membuat bentuk sendiri, tetapi karet tidak bisa membuat bentuk lengkung.";
 const TRI = [paku(1, 0), paku(3, 3), paku(0, 3)];
 
 export const ADEGAN_LUAR_PAKU: AdeganStory = {
@@ -42,6 +43,13 @@ export const ADEGAN_LUAR_PAKU: AdeganStory = {
       SUARA_C4,
       ubah("membuat", { id: "kr", garis: W.hijau }),
       tambah("menghitung", ...kartu("hc", 40, 177, 220, 20, W.langit, ["buat bentuk, hitung sisi dan sudut"], 9)),
+    ),
+    k(
+      SUARA_C5,
+      bersih(0),
+      tambah(0, ...kepala(1)),
+      tambah("cocok", emo("bc", 40, 84, "👍", 26), ...kartu("bk", 64, 66, 222, 38, W.hijauMuda, ["cocok: membuat bentuk sendiri"], 9.4)),
+      tambah("tetapi", emo("bt", 40, 142, "🚫", 26), ...kartu("bl", 64, 124, 222, 38, W.merahMuda, ["tidak bisa: bentuk lengkung"], 9.4)),
     ),
   ],
 };
@@ -94,6 +102,7 @@ const SUARA_E1 = "Metode ketiga, Mystery Shape, atau Bentuk Misterius. Sebuah be
 const SUARA_E2 = "Kita tidak melihatnya. Kita hanya mendengar petunjuk tentang sisi lurus dan sudutnya.";
 const SUARA_E3 = "Dari petunjuk itu, kita menebak nama bentuknya. Lalu bentuk dikeluarkan untuk diperiksa.";
 const SUARA_E4 = "Petunjuk tentang sisi lurus dan sudut lebih penting daripada warna atau ukuran.";
+const SUARA_E5 = "Bentuk misterius cocok untuk melatih berpikir dari petunjuk, tetapi lebih lama daripada melihat langsung.";
 const KELUAR = sudutMutlak(240, 112, segitigaRel(18));
 
 export const ADEGAN_LUAR_MISTERI: AdeganStory = {
@@ -131,6 +140,13 @@ export const ADEGAN_LUAR_MISTERI: AdeganStory = {
       tambah("penting", teks("pn", 150, 104, "penting", 10, W.merah)),
       tambah("warna", ...label("c1", 30, 130, 110, "warna", W.abu)),
       tambah("ukuran.", ...label("c2", 160, 130, 110, "ukuran", W.abu), teks("tp", 150, 176, "warna dan ukuran tidak penting", 9, W.ungu)),
+    ),
+    k(
+      SUARA_E5,
+      bersih(0),
+      tambah(0, ...kepala(2)),
+      tambah("cocok", emo("bc", 40, 84, "👍", 26), ...kartu("bk", 64, 66, 222, 38, W.hijauMuda, ["cocok: berpikir dari petunjuk"], 9.4)),
+      tambah("tetapi", emo("bt", 40, 142, "⏳", 26), ...kartu("bl", 64, 124, 222, 38, W.merahMuda, ["lebih lama dari melihat"], 9.4)),
     ),
   ],
 };
@@ -183,10 +199,10 @@ export const ADEGAN_LUAR_MISTERI_TERAPAN: AdeganStory = {
 };
 
 /* ------------------------------ 8. Ringkasan ------------------------------ */
-const SUARA_Z1 = "Kita sudah melihat tiga metode global untuk mengenal bentuk. Semuanya membantu menyiapkan bahan festival.";
-const SUARA_Z2 = "Shape Hunt: cari bentuk pada benda di sekitar, sebutkan namanya, lalu hitung.";
-const SUARA_Z3 = "Geoboard: bentangkan karet pada paku, lalu hitung sisi lurus dan sudutnya.";
-const SUARA_Z4 = "Mystery Shape: dengarkan petunjuk sisi lurus dan sudut, lalu tebak nama bentuknya.";
+const SUARA_Z1 = "Tiga metode, tiga kegunaan. Pilih yang paling cocok dengan keadaanmu saat menyiapkan festival.";
+const SUARA_Z2 = "Kalau bendanya banyak di sekitar dan terlihat jelas, pakai Shape Hunt.";
+const SUARA_Z3 = "Kalau ingin membuat dan memeriksa bentuk sendiri, pakai Geoboard.";
+const SUARA_Z4 = "Kalau bendanya tersembunyi dan hanya ada petunjuk, pakai Mystery Shape.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
@@ -197,11 +213,11 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_Z1,
       tambah(0, judul("Ringkasan")),
-      tambah("tiga", emo("rk", 150, 96, E.bintang, 44), ...kartu("rt", 60, 124, 180, 26, W.emas, ["3 metode global"], 10)),
+      tambah("Tiga", emo("rk", 150, 96, E.bintang, 44), ...kartu("rt", 60, 124, 180, 26, W.emas, ["3 metode global"], 10)),
       tambah("festival.", ...tutupKaleng("f0", 90, 172, 12), karton("f1", 150, 176, 14), poligon("f2", 210, 172, segiEmpatRel(28, 20), WARNA_BAHAN.kardus)),
     ),
-    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Shape", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], [NAMA_METODE[0], "cari bentuk di sekitar, beri nama, hitung"], 9.4))),
-    k(SUARA_Z3, tambah("Geoboard:", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], [NAMA_METODE[1], "karet pada paku, hitung sisi dan sudut"], 9.4))),
-    k(SUARA_Z4, tambah("Mystery", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], [NAMA_METODE[2], "dengar petunjuk, tebak nama bentuk"], 9.4))),
+    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Shape", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], [NAMA_METODE[0], "benda banyak dan terlihat jelas"], 9.4))),
+    k(SUARA_Z3, tambah("Geoboard.", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], [NAMA_METODE[1], "membuat dan memeriksa bentuk sendiri"], 9.4))),
+    k(SUARA_Z4, tambah("Mystery", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], [NAMA_METODE[2], "benda tersembunyi, hanya petunjuk"], 9.4))),
   ],
 };

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { KanvasTulis, TombolPeriksa } from "../opsi2/primitif";
-import { angkaJawab, geserManik, kata, kataSepuluh, pilihanDari, pilihanNama, tebakanDekat, type Langkah, type LangkahSoal, type Rupa } from "./logika";
+import { alasanSalah, angkaJawab, geserManik, kata, kataSepuluh, klaimSalah, petunjukBanyak, petunjukKira, pilihanDari, pilihanNama, tebakanDekat, type Langkah, type LangkahSoal, type Rupa } from "./logika";
 import { EMOJI, NAMA_BENDA, WARNA_BENDA } from "./data";
 import {
   BINGKAI,
@@ -582,6 +582,118 @@ function Toples({ l, rupa, kanvas, salah, siap, info }: PK & { l: Extract<Langka
   );
 }
 
+/* ------------------------------ Cari kesalahan ------------------------------ */
+const huruf = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+const WARNA_TOKOH: Record<string, string> = { Igil: "#DBEAFE", Kaka: "#FCE7F3", Abang: "#FEF3C7" };
+
+/** Adegan jawaban tokoh: kantong dan wadah (hitung ulang) atau dua bingkai sepuluh; rupa lambang memakai kartu kata. */
+function AdeganSalah({ l, rupa }: { l: Extract<Langkah, { tipe: "salah" }>; rupa: Rupa }) {
+  if (rupa === "lambang")
+    return (
+      <KartuTanya
+        atas={
+          <>
+            <Kotak>sepuluh</Kotak> dan <Kotak>{kata(l.n - 10)}</Kotak>
+          </>
+        }
+        bawah={<>jadi {kata(l.n)}</>}
+      />
+    );
+  if (l.kesalahan === "ulang")
+    return (
+      <Gambar label="Wadah pertama penuh sepuluh, sisanya di kantong">
+        <KantongWadah rupa={rupa} />
+        {Array.from({ length: 10 }, (_, j) => {
+          const p = letakSekat(j);
+          return <Hewan key={j} jenis={l.jenis} rupa={rupa} x={p.x} y={p.y} r={10} />;
+        })}
+        {Array.from({ length: l.n - 10 }, (_, i) => {
+          const p = letakKantong(i);
+          return <Hewan key={i} jenis={l.jenis} rupa={rupa} x={p.x} y={p.y} r={12} />;
+        })}
+      </Gambar>
+    );
+  return (
+    <Gambar label="Dua bingkai sepuluh">
+      {BINGKAI.map((b, f) => (
+        <rect key={f} x={b.x} y={b.y} width={b.w} height={b.h} rx={6} fill={f === 0 ? "#DCFCE7" : rupa === "benda" ? "#E0F2FE" : "#FFFFFF"} stroke={UNGU} strokeWidth={2.4} />
+      ))}
+      {Array.from({ length: l.n }, (_, j) => {
+        const p = letakKotak(j);
+        return <Hewan key={j} jenis={l.jenis} rupa={rupa} x={p.x} y={p.y} r={10} />;
+      })}
+      <text x={150} y={36} textAnchor="middle" fontSize={11} fontWeight={900} fill={UNGU}>
+        dua bingkai sepuluh
+      </text>
+    </Gambar>
+  );
+}
+
+function CariSalah({ l, rupa, salah, siap, info, bicara }: PK & { l: Extract<Langkah, { tipe: "salah" }>; bicara: (t: string) => void }) {
+  const [langkah, setLangkah] = useState<"nilai" | "alasan" | "selesai">("nilai");
+  const [matiAlasan, setMatiAlasan] = useState<number[]>([]);
+  const nama = rupa === "benda" ? NAMA_BENDA[l.jenis] ?? "ikan" : "titik";
+  const klaim = klaimSalah(l, nama);
+  const alasan = alasanSalah(l, nama);
+  const warna = WARNA_TOKOH[l.tokoh] ?? "#E0F2FE";
+  useEffect(() => {
+    bicara(`${l.tokoh} berkata: ${klaim.ucap}`);
+    // Hanya saat soal dibuka.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const nilai = (benar: boolean) => {
+    if (benar) salah(petunjukKira(l, nama));
+    else {
+      setLangkah("alasan");
+      info(`Betul, jawaban ${l.tokoh} keliru. Apa alasannya?`);
+    }
+  };
+  const pilihAlasan = (i: number) => {
+    if (langkah !== "alasan" || matiAlasan.includes(i)) return;
+    if (alasan[i].benar) {
+      setLangkah("selesai");
+      siap(`Betul! ${alasan[i].teks}. Sekarang pilih banyak yang benar.`);
+    } else {
+      setMatiAlasan((m) => [...m, i]);
+      salah(alasan[i].petunjuk);
+    }
+  };
+  const tombol = "min-h-[52px] rounded-2xl border-4 border-[#1C01A5] bg-white px-4 text-base font-black text-[#1C01A5] shadow-[0_4px_0_rgba(28,1,165,0.3)] disabled:opacity-30";
+  return (
+    <div className="space-y-3">
+      <AdeganSalah l={l} rupa={rupa} />
+      <div className="rounded-2xl border-4 border-[#B45309] px-3 py-2 text-center" style={{ backgroundColor: warna }}>
+        <p className="text-xs font-black text-[#B45309]">{l.tokoh} menjawab:</p>
+        <p className="text-lg font-black text-[#1C01A5]">{klaim.tampil}</p>
+      </div>
+      {langkah === "nilai" ? (
+        <div className="space-y-2">
+          <p className="text-center text-sm font-black text-[#1C01A5]">Jawaban {l.tokoh} benar atau salah?</p>
+          <div className="flex justify-center gap-3" role="group" aria-label="Benar atau salah">
+            <button type="button" className={tombol} onClick={() => nilai(true)}>
+              Benar
+            </button>
+            <button type="button" className={tombol} onClick={() => nilai(false)}>
+              Salah
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="space-y-2">
+          <p className="text-center text-sm font-black text-[#1C01A5]">{langkah === "alasan" ? "Pilih alasan yang benar" : "Alasan yang benar sudah dipilih"}</p>
+          <div className="flex flex-col gap-2" role="group" aria-label="Pilih alasan">
+            {alasan.map((a, i) => (
+              <button key={a.teks} type="button" disabled={matiAlasan.includes(i) || (langkah === "selesai" && !a.benar)} onClick={() => pilihAlasan(i)} className={`${tombol} text-left ${langkah === "selesai" && a.benar ? "border-[#15803D] bg-[#DCFCE7]" : ""}`}>
+                {huruf(a.teks)}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ------------------------------ Satu soal ------------------------------ */
 const PETUNJUK: Record<string, string> = {
   igil: "Hitung lagi satu per satu. Sepuluh dulu, lalu sisanya.",
@@ -628,7 +740,7 @@ export function LangkahIkan({ ls, rupa, bicara, onBenar }: P) {
     if (m === n) tuntas(`Betul! Jawabannya ${kata(m)}.`);
     else {
       setMati((s) => [...s, m]);
-      salah(`${awalan}${PETUNJUK[ls.metode]}`);
+      salah(`${awalan}${l.tipe === "salah" ? petunjukBanyak(l.kesalahan) : PETUNJUK[ls.metode]}`);
     }
   };
   const pk: PK = { rupa, kanvas: cara === "kanvas", salah, siap, info };
@@ -636,7 +748,7 @@ export function LangkahIkan({ ls, rupa, bicara, onBenar }: P) {
   return (
     <div className="space-y-3">
       <div className={goyang && !siapJawab ? "lm-goyang" : ""}>
-        {l.tipe === "jaring" ? <Jaring {...pk} l={l} /> : l.tipe === "bingkai" ? <Bingkai {...pk} l={l} /> : l.tipe === "manik" ? <Manik {...pk} l={l} /> : <Toples {...pk} l={l} />}
+        {l.tipe === "jaring" ? <Jaring {...pk} l={l} /> : l.tipe === "bingkai" ? <Bingkai {...pk} l={l} /> : l.tipe === "manik" ? <Manik {...pk} l={l} /> : l.tipe === "salah" ? <CariSalah {...pk} l={l} bicara={bicara} /> : <Toples {...pk} l={l} />}
       </div>
       {siapJawab && !selesai && n !== null ? (
         <div className={`space-y-2 ${goyang ? "lm-goyang" : ""}`}>

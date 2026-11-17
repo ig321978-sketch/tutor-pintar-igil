@@ -212,14 +212,16 @@ const ANGKA = ["satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan
   cek(ada(akhirAdegan(n, 0), "rt", "ig", "kk", "kk-pita", "ab", "mm") && /Festival/.test(isiTeks(akhirAdegan(n, 0), "pg-t0")), "festival: Pak RT mengumumkan, empat tokoh, Kaka berpita");
   cek(ada(akhirAdegan(n, 1), "c0", "t0", "d0", "c1", "t1", "d1"), "festival: tutup kaleng, karton, dan kardus bercampur");
   sama(["nr-t0", "na-t0", "nb-t0"].map((id) => isiTeks(akhirAdegan(n), id)), ["roda", "atap", "badan"], "festival: butuh roda, atap, badan");
-  // Tutup kaleng: lengkung, tanpa sisi lurus dan sudut, menggelinding, empat roda.
+  // Roda pertama: salah langkah dulu (sisi kardus bersudut tersangkut), lalu tutup kaleng lengkung menggelinding, empat roda.
   const t = adegan(M_VIDEO, "tutup-kaleng");
-  const t0 = akhirAdegan(t, 0);
+  const ts0 = akhirAdegan(t, 1);
+  sama([banyakTitik(ketemu(ts0, "rk")), jumlahSudut(ts0, "rk"), isiTeks(ts0, "ts-t0")], [4, 4, "sudut: tersangkut"], "salah langkah: sisi kardus bersudut tersangkut sebagai roda");
+  cek(/terburu-buru/.test(t.ketukan[0].suara) && /Kaka/.test(t.ketukan[1].suara), "salah langkah: Igil terburu-buru, Kaka menunjukkan sudutnya");
+  const t0 = akhirAdegan(t, 2);
   sama([ketemu(t0, "bt")?.t, isiTeks(t0, "ts"), isiTeks(t0, "tu"), jumlahSudut(t0, "bt"), jumlahSisi(t0, "bt")], ["bulat", "tanpa sisi lurus", "tanpa sudut", 0, 0], "kaleng: bulat tanpa sisi lurus dan sudut");
-  const t1 = akhirAdegan(t, 1);
-  sama([isiTeks(t1, "nm-t0"), ketemu(t1, "bt")?.x, isiTeks(t1, "ur-t0")], ["lengkung", 230, "untuk roda"], "kaleng: lengkung, menggelinding, untuk roda");
+  sama([isiTeks(t0, "nm-t0"), ketemu(t0, "bt")?.x], ["lengkung", 230], "kaleng: lengkung dan menggelinding");
   const t2 = akhirAdegan(t);
-  sama([hitung(t2, "tk"), [0, 1, 2, 3].map((i) => isiTeks(t2, `tkn${i}`)).join(), isiTeks(t2, "rd-t0")], [4, "1,2,3,4", "4 roda"], "kaleng: empat tutup kaleng untuk roda");
+  sama([hitung(t2, "tk"), isiTeks(t2, "rd-t0"), isiTeks(t2, "jw-t0")], [4, "4 roda", "tidak punya sudut!"], "kaleng: Mamah menanyakan alasan, empat tutup kaleng untuk roda");
   // Karton segitiga: tiga sisi lurus, tiga sudut, dua karton untuk atap.
   const s = adegan(M_VIDEO, "karton-segitiga");
   const s0 = akhirAdegan(s, 0);
@@ -233,7 +235,8 @@ const ANGKA = ["satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan
   const d0 = akhirAdegan(d, 0);
   sama([banyakTitik(ketemu(d0, "kd")), jumlahSisi(d0, "kd"), [0, 1, 2, 3].map((i) => isiTeks(d0, `kd-a${i}`)).join(), jumlahSudut(d0, "kd"), isiTeks(d0, "su")], [4, 4, "1,2,3,4", 4, "4 sudut"], "kardus: empat sisi lurus dan empat sudut");
   const d1 = akhirAdegan(d, 1);
-  sama([isiTeks(d1, "nm-t0"), banyakTitik(ketemu(d1, "kk")), jumlahSudut(d1, "kk"), isiTeks(d1, "bs"), isiTeks(d1, "kc")], ["segi empat", 4, 4, "besar", "kecil"], "kardus: besar dan kecil sama-sama segi empat");
+  sama([isiTeks(d1, "k44"), banyakTitik(ketemu(d1, "kk")), jumlahSudut(d1, "kk"), isiTeks(d1, "bs"), isiTeks(d1, "kc")], ["4 sisi, 4 sudut", 4, 4, "besar", "kecil"], "kardus: salah kira kotak korek kecil, ternyata segi empat juga");
+  sama(isiTeks(akhirAdegan(d), "nm-t0"), "segi empat", "kardus: besar atau kecil tetap segi empat");
   const d2 = akhirAdegan(d);
   sama([hitung(d2, "kd"), [0, 1, 2, 3, 4].map((i) => isiTeks(d2, `kdn${i}`)).join(), isiTeks(d2, "ld-t0")], [5, "1,2,3,4,5", "5 kardus"], "kardus: lima kardus untuk badan");
   // Diputar dan dibalik tetap segitiga.
@@ -243,6 +246,7 @@ const ANGKA = ["satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan
   sama([jumlahSisi(p1, "sg"), jumlahSudut(p1, "sg"), isiTeks(p1, "ls-t0"), isiTeks(p1, "lu-t0")], [3, 3, "3 sisi lurus", "3 sudut"], "diputar: tetap tiga sisi lurus dan tiga sudut");
   const p2 = akhirAdegan(p);
   sama([banyakTitik(ketemu(p2, "kc")), jumlahSudut(p2, "kc"), isiTeks(p2, "nm-t0")], [3, 3, "tetap segitiga"], "diputar: ukuran kecil tetap segitiga");
+  cek(/corong/.test(p.ketukan[0].suara) && /bukan segitiga/.test(p.ketukan[0].suara), "diputar: salah kira karton terbalik bukan segitiga lagi");
   // Kartu bahan: kalimat nama bentuk, banyak sisi lurus, banyak sudut.
   const kb = akhirAdegan(adegan(M_VIDEO, "kartu-bahan"));
   sama([0, 1, 2].map((i) => [isiTeks(kb, `r${i}-a`), isiTeks(kb, `r${i}-b`)]), [["lengkung", "tanpa sisi lurus, tanpa sudut"], ["segitiga", "3 sisi lurus, 3 sudut"], ["segi empat", "4 sisi lurus, 4 sudut"]], "kartu bahan: tiga kalimat bentuk");
@@ -257,6 +261,11 @@ const ANGKA = ["satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan
   const q = akhirAdegan(adegan(M_VIDEO, "penutup"), 1);
   sama(["p0a", "p1a", "p2a"].map((id) => isiTeks(q, id)), ["lengkung: tanpa sisi lurus dan sudut", "segitiga: 3 sisi lurus, 3 sudut", "segi empat: 4 sisi lurus, 4 sudut"], "penutup: ringkasan tiga bentuk");
   cek(/diputar/.test(isiTeks(akhirAdegan(adegan(M_VIDEO, "penutup")), "tt") ?? ""), "penutup: bentuk tetap sama walau diputar");
+  // Pedoman mutu: tokoh berbicara, penutup berupa pertanyaan untuk anak.
+  const kalimatLangsung = M_VIDEO.adegan.reduce((n, a) => n + a.ketukan.reduce((m, kt) => m + (kt.suara.match(/"[^"]+"/g) ?? []).length, 0), 0);
+  cek(kalimatLangsung >= 3, `pedoman: paling sedikit tiga kalimat langsung antartokoh (${kalimatLangsung})`);
+  const qAkhir = adegan(M_VIDEO, "penutup").ketukan.at(-1).suara;
+  cek(qAkhir.endsWith("?") && /kamu/.test(qAkhir) && /teras/.test(qAkhir), "pedoman: penutup bertanya kepada anak tentang Sub-Bab berikutnya");
   // Metode global: Shape Hunt di dapur.
   const bt = adegan(U, "luar-berburu-terapan");
   sama([isiTeks(akhirAdegan(bt, 0), "l0-t0"), isiTeks(akhirAdegan(bt, 1), "l1-t0"), isiTeks(akhirAdegan(bt, 2), "l2-t0"), hitung(akhirAdegan(bt, 2), "rt")], ["2 lengkung", "2 segi empat", "3 segitiga", 3], "Shape Hunt: dua lengkung, dua segi empat, tiga segitiga");

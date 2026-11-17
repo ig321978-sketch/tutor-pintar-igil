@@ -1,240 +1,242 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { W, WB, angka, bingkai, bulat, emo, judul, kartu, keping, panah, teks } from "./k1b5b-gambar";
-import { bersih, bilKe, hapus, idx, k, redamkan, sorotkan, tambah, ubah } from "./k1b5b-bantu";
-import { NAMA_METODE_ID, WARNA_METODE, kepala } from "./k1b5b-luar-1";
+import { E, TIGA, W, angkaKisi, emo, ikan, isiKotak, judul, judulKotak, kartu, kisi, kotak, orang, selKisi, teks, tigaKotak } from "./k1b5b-gambar";
+import { bersih, hapus, idx, k, sorotkan, tambah, ubah, urutBilangan } from "./k1b5b-bantu";
+import { NAMA_METODE, WARNA_METODE, kepala } from "./k1b5b-luar-1";
 
-/* ------------------------------ 1. Sepuluh dan Satuan: konsep ------------------------------ */
-const SUARA_S1 = "Metode kedua, Sepuluh dan Satuan. Bilangan sebelas sampai dua puluh bisa dipecah menjadi sepuluh dan sisanya.";
-const SUARA_S2 = "Lihat empat belas. Empat belas adalah sepuluh dan empat.";
-const SUARA_S3 = "Tiga belas adalah sepuluh dan tiga. Dua belas adalah sepuluh dan dua. Setiap kali, sepuluhnya tetap.";
-const SUARA_S4 = "Kalau menghitung maju, sepuluhnya tetap dan sisanya naik. Kalau menghitung mundur, sepuluhnya tetap dan sisanya turun.";
+/* Video metode global Sub-Bab B: Number Grid (Kisi Bilangan), Before and After (Sebelum dan Sesudah), dan ringkasan. */
 
-export const ADEGAN_LUAR_SATUAN: AdeganStory = {
-  id: "luar-satuan",
-  judul: "Sepuluh dan Satuan: pecah menjadi sepuluh dan sisa",
-  sumber: "Metode luar: Sepuluh dan Satuan",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      SUARA_S1,
-      tambah(0, ...kepala(1)),
-      tambah("Bilangan", teks("sr", 150, 76, "11 sampai 20", 14, W.ungu)),
-      tambah(idx(SUARA_S1, "Sepuluh"), ...angka("sa", 50, 100, 10, 90, 56, W.hijauMuda, 30)),
-      tambah("sisanya.", ...kartu("sb", 160, 100, 90, 56, W.merahMuda, ["sisa"], 20)),
-    ),
-    k(
-      SUARA_S2,
-      bersih(0),
-      tambah(0, ...kepala(1)),
-      tambah("Lihat", ...angka("sc", 110, 58, 14, 80, 46, W.langit, 28)),
-      tambah(idx(SUARA_S2, "sepuluh"), panah("sp1", 130, 106, -40, 22, W.merah, 2.4), ...angka("sd", 40, 134, 10, 70, 46, W.hijauMuda, 26)),
-      tambah(idx(SUARA_S2, "empat", 3), panah("sp2", 170, 106, 40, 22, W.merah, 2.4), ...angka("se", 190, 134, 4, 70, 46, W.merahMuda, 26)),
-    ),
-    k(
-      SUARA_S3,
-      bersih(0),
-      tambah(0, ...kepala(1)),
-      tambah("Tiga", teks("sf0", 150, 86, "13: 10 dan 3", 16, W.biru)),
-      tambah(idx(SUARA_S3, "Dua"), teks("sf1", 150, 118, "12: 10 dan 2", 16, W.biru)),
-      tambah("tetap.", ...kartu("sg", 60, 140, 180, 36, W.hijauMuda, ["sepuluhnya tetap: 10"], 11)),
-    ),
-    k(
-      SUARA_S4,
-      bersih(0),
-      tambah(0, ...kepala(1)),
-      tambah("maju,", ...kartu("sh", 12, 56, 134, 100, W.hijauMuda, ["maju", "10 dan 1", "10 dan 2", "10 dan 3"], 10.5), panah("si", 79, 160, 0, 30, W.hijau, 2.6)),
-      tambah("mundur,", ...kartu("sj", 154, 56, 134, 100, W.merahMuda, ["mundur", "10 dan 3", "10 dan 2", "10 dan 1"], 10.5), panah("sk", 221, 190, 0, -30, W.merah, 2.6)),
-      sorotkan("naik", "sh-k"),
-      redamkan("Kalau@2", "sh-k"),
-      sorotkan("turun.", "sj-k"),
-    ),
-  ],
+const GK = { x: 20, y: 60, s: 26 };
+const kisiGlobal = (tanpa: number[] = []): Obj[] => kisi("gk", GK.x, GK.y, GK.s, W.krem, W.pink, tanpa);
+/** Bingkai penanda merah `pn` di sel n. */
+const penanda = (n: number): Obj => {
+  const p = selKisi(GK.x, GK.y, n, GK.s);
+  return kotak("pn", p.x, p.y, GK.s, GK.s, "none", W.merah, { rx: 2, tebal: 3, z: 2 });
+};
+const geserPenanda = (n: number) => {
+  const p = selKisi(GK.x, GK.y, n, GK.s);
+  return { id: "pn", x: p.x, y: p.y };
+};
+/** Tutup abu-abu `tp{n}` di sel n. */
+const tutup = (n: number): Obj => {
+  const p = selKisi(GK.x, GK.y, n, GK.s);
+  return kotak(`tp${n}`, p.x + 2, p.y + 2, GK.s - 4, GK.s - 4, "#94A3B8", W.biru, { rx: 3, tebal: 1, z: 1 });
 };
 
-/* ------------------------------ 2. Sepuluh dan Satuan: terapan ------------------------------ */
-const SUARA_T1 = "Wei bertemu ulat bilangan lagi. Badan ulat bertanda sepuluh, sebelas, satu bulatan kosong, dan tiga belas.";
-const SUARA_T2 = "Pakai cara Sepuluh dan Satuan. Sebelas adalah sepuluh dan satu. Tiga belas adalah sepuluh dan tiga.";
-const SUARA_T3 = "Sisanya satu, lalu kosong, lalu tiga. Kalau sisanya naik satu demi satu, yang kosong punya sisa dua.";
-const SUARA_T4 = "Sepuluh dan dua, itu bilangan apa? Pilih kartu angka yang pas, lalu seret ke badan ulat.";
-const SUARA_T5 = "Ketuk dua belas. Benar! Sepuluh dan dua adalah dua belas. Hebat sekali!";
-const UX = [45, 95, 145, 195];
-const ruas = (i: number, isi: number | null): Obj[] => [
-  bulat(`tu${i}`, UX[i], 86, 21, isi === null ? W.krem : WB.kuning, W.biru, { tebal: 1.8 }),
-  teks(`tut${i}`, UX[i], 91, isi === null ? "?" : String(isi), 14, isi === null ? W.merah : W.biru),
-];
+/* ------------------------------ 4. Number Grid: konsep ------------------------------ */
+const SUARA_C1 = "Metode kedua, Number Grid, atau Kisi Bilangan. Bilangan satu sampai dua puluh ditulis dalam dua baris, tiap baris sepuluh kotak.";
+const SUARA_C2 = "Geser satu kotak ke kanan, bilangannya bertambah satu. Geser satu kotak ke kiri, bilangannya berkurang satu.";
+const SUARA_C3 = "Turun satu kotak ke bawah, kita dapat sepuluh dan bilangan di atasnya. Di bawah empat ada empat belas.";
+const SUARA_C4 = "Naik satu kotak, kita kembali ke bilangan atas. Di atas sembilan belas ada sembilan.";
 
-export const ADEGAN_LUAR_SATUAN_TERAPAN: AdeganStory = {
-  id: "luar-satuan-terapan",
-  judul: "Sepuluh dan Satuan: ulat bilangan",
-  sumber: "Metode luar: Sepuluh dan Satuan, terapan",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      SUARA_T1,
-      tambah(0, ...kepala(1)),
-      tambah(0, bulat("tu-h", 245, 86, 24, W.hijau, W.biru, { tebal: 1.8 }), emo("tu-m", 245, 93, "\u{1F60A}", 20)),
-      tambah(idx(SUARA_T1, "sepuluh"), ...ruas(0, 10)),
-      tambah(idx(SUARA_T1, "sebelas"), ...ruas(1, 11)),
-      tambah("kosong,", ...ruas(2, null)),
-      tambah(idx(SUARA_T1, "tiga"), ...ruas(3, 13)),
-    ),
-    k(
-      SUARA_T2,
-      tambah(idx(SUARA_T2, "Sebelas"), teks("tv1", UX[1], 130, "10 dan 1", 9.4, W.hijau)),
-      tambah(idx(SUARA_T2, "Tiga"), teks("tv3", UX[3], 130, "10 dan 3", 9.4, W.hijau)),
-    ),
-    k(
-      SUARA_T3,
-      tambah("Sisanya", teks("tw1", UX[1], 150, "sisa 1", 10, W.biru), teks("tw3", UX[3], 150, "sisa 3", 10, W.biru)),
-      tambah("kosong,", teks("tw2", UX[2], 150, "sisa ?", 10, W.merah)),
-      ubah(idx(SUARA_T3, "dua"), { id: "tw2", isi: "sisa 2", warna: W.hijau }),
-      sorotkan(idx(SUARA_T3, "dua"), "tu2"),
-    ),
-    k(
-      SUARA_T4,
-      redamkan(0, "tu2"),
-      tambah("Pilih", ...angka("tk0", 45, 164, 12, 50, 34, W.langit, 18), ...angka("tk1", 125, 164, 14, 50, 34, W.langit, 18), ...angka("tk2", 205, 164, 16, 50, 34, W.langit, 18)),
-      sorotkan("apa?", "tu2"),
-    ),
-    k(
-      SUARA_T5,
-      redamkan(0, "tu2"),
-      sorotkan("Ketuk", "tk0-k"),
-      ubah(idx(SUARA_T5, "Benar"), { id: "tk0-k", sorot: false }, { id: "tut2", isi: "12", warna: W.biru }, { id: "tu2", warna: W.hijauMuda }),
-      tambah("Hebat", emo("ow", 245, 140, "\u{1F989}", 26)),
-    ),
-  ],
-};
-
-/* ------------------------------ 3. Dua Bingkai Sepuluh: konsep ------------------------------ */
-const SUARA_B1 = "Metode ketiga, Dua Bingkai Sepuluh. Satu bingkai punya sepuluh kotak, dua baris dengan lima kotak tiap baris.";
-const SUARA_B2 = "Untuk bilangan sebelas sampai dua puluh, kita pakai dua bingkai. Bingkai pertama penuh, isinya sepuluh.";
-const SUARA_B3 = "Bingkai kedua berisi sisanya. Ini lima belas: satu bingkai penuh dan lima kepingnya di bingkai kedua.";
-const SUARA_B4 = "Kalau bingkai kedua juga penuh, banyaknya dua puluh. Dua bingkai penuh, sepuluh dan sepuluh.";
-const FA = { x: 30, y: 84 };
-const FB = { x: 190, y: 84 };
-
-export const ADEGAN_LUAR_BINGKAI: AdeganStory = {
-  id: "luar-bingkai",
-  judul: "Dua Bingkai Sepuluh: dua bingkai untuk sebelas sampai dua puluh",
-  sumber: "Metode luar: Dua Bingkai Sepuluh",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      SUARA_B1,
-      tambah(0, ...kepala(2)),
-      tambah(idx(SUARA_B1, "bingkai", 2), ...bingkai("fa", 110, 76)),
-      tambah("sepuluh", ...keping("fa", 110, 76, 0, 9, WB.biru), teks("fl", 150, 130, "10", 18, W.merah)),
-    ),
-    k(
-      SUARA_B2,
-      bersih(0),
-      tambah(0, ...kepala(2)),
-      tambah("sebelas", teks("fr", 150, 70, "11 sampai 20", 12, W.ungu)),
-      tambah("dua", ...bingkai("fa", FA.x, FA.y), ...bingkai("fb", FB.x, FB.y)),
-      tambah("penuh,", ...keping("fa", FA.x, FA.y, 0, 9, WB.biru)),
-      tambah("isinya", teks("fl", FA.x + 40, 134, "10", 18, W.merah)),
-    ),
-    k(
-      SUARA_B3,
-      sorotkan("kedua", ...Array.from({ length: 10 }, (_, i) => `fbc${i}`)),
-      redamkan("Ini", ...Array.from({ length: 10 }, (_, i) => `fbc${i}`)),
-      tambah(idx(SUARA_B3, "kepingnya"), ...keping("fb", FB.x, FB.y, 0, 4, WB.kuning)),
-      tambah(bilKe(SUARA_B3, 15), teks("fm", 150, 170, "15", 22, W.hijau)),
-    ),
-    k(
-      SUARA_B4,
-      ubah(0, { id: "fm", isi: "20" }),
-      tambah("penuh,", ...keping("fb", FB.x, FB.y, 5, 9, WB.kuning)),
-      tambah("sepuluh", teks("fn", 150, 192, "10 dan 10", 11, W.ungu)),
-    ),
-  ],
-};
-
-/* ------------------------------ 4. Dua Bingkai Sepuluh: terapan roket hitung mundur ------------------------------ */
-const SUARA_R1 = "Kira punya sebuah roket. Dua bingkai menunjukkan lima belas: satu bingkai penuh, dan lima keping di bingkai kedua.";
-const SUARA_R2 = "Mulai hitung mundur. Ketuk keping terakhir, dan lima belas menjadi empat belas.";
-const SUARA_R3 = "Ketuk lagi. Tiga belas, dua belas, sebelas. Keping di bingkai kedua tinggal satu.";
-const SUARA_R4 = "Ketuk sekali lagi, kepingnya pergi, dan tersisa sepuluh. Tinggal satu bingkai penuh.";
-const SUARA_R5 = "Roket meluncur! Dari lima belas kita menghitung mundur sampai sepuluh, dan satu bingkai penuh tersisa.";
-const LABEL_R = (n: number): Obj => teks("rl", 150, 150, String(n), 20, W.merah);
-
-export const ADEGAN_LUAR_BINGKAI_TERAPAN: AdeganStory = {
-  id: "luar-bingkai-terapan",
-  judul: "Dua Bingkai Sepuluh: roket hitung mundur",
-  sumber: "Metode luar: Dua Bingkai Sepuluh, terapan",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      SUARA_R1,
-      tambah(0, ...kepala(2)),
-      tambah("roket.", emo("rk", 40, 190, "\u{1F680}", 30)),
-      tambah("Dua", ...bingkai("fa", FA.x, FA.y), ...bingkai("fb", FB.x, FB.y)),
-      tambah("penuh,", ...keping("fa", FA.x, FA.y, 0, 9, WB.biru)),
-      tambah(idx(SUARA_R1, "keping"), ...keping("fb", FB.x, FB.y, 0, 4, WB.kuning)),
-      tambah(bilKe(SUARA_R1, 15), LABEL_R(15)),
-    ),
-    k(
-      SUARA_R2,
-      tambah("Ketuk", emo("tg", FB.x + sbOff(4), FB.y + 50, "\u{1F446}", 20)),
-      hapus("terakhir,", "fbb4"),
-      ubah(bilKe(SUARA_R2, 14), { id: "rl", isi: "14" }),
-    ),
-    k(
-      SUARA_R3,
-      hapus(bilKe(SUARA_R3, 13), "fbb3"),
-      ubah(bilKe(SUARA_R3, 13), { id: "rl", isi: "13" }, { id: "tg", x: FB.x + sbOff(3) }),
-      hapus(bilKe(SUARA_R3, 12), "fbb2"),
-      ubah(bilKe(SUARA_R3, 12), { id: "rl", isi: "12" }, { id: "tg", x: FB.x + sbOff(2) }),
-      hapus(bilKe(SUARA_R3, 11), "fbb1"),
-      ubah(bilKe(SUARA_R3, 11), { id: "rl", isi: "11" }, { id: "tg", x: FB.x + sbOff(1) }),
-    ),
-    k(
-      SUARA_R4,
-      hapus("pergi,", "fbb0"),
-      ubah(bilKe(SUARA_R4, 10), { id: "rl", isi: "10" }, { id: "tg", x: FB.x + sbOff(0) }),
-      sorotkan("Tinggal", ...Array.from({ length: 10 }, (_, i) => `fac${i}`)),
-    ),
-    k(
-      SUARA_R5,
-      hapus(0, "tg"),
-      redamkan(0, ...Array.from({ length: 10 }, (_, i) => `fac${i}`)),
-      tambah("Dari", teks("rm", 150, 176, "mulai 15, mundur ke 10", 10.5, W.ungu)),
-      ubah("meluncur!", { id: "rk", y: 150 }),
-      tambah("meluncur!", emo("ap", 40, 192, "\u{1F525}", 20)),
-    ),
-  ],
-};
-/** Letak mendatar pusat sel ke-i (0 sampai 4, baris atas) terhadap pojok kiri bingkai. */
-function sbOff(i: number): number {
-  return 8 + (i % 5) * 16;
-}
-
-/* ------------------------------ 5. Ringkasan ------------------------------ */
-const SUARA_Z1 = "Kita ringkas tiga metode. Metode pertama, Hitung sampai dua puluh: lanjut hitung melewati sepuluh.";
-const SUARA_Z2 = "Metode kedua, Sepuluh dan Satuan: sebelas sampai dua puluh adalah sepuluh dan sisanya.";
-const SUARA_Z3 = "Metode ketiga, Dua Bingkai Sepuluh: dua bingkai untuk bilangan sebelas sampai dua puluh.";
-const SUARA_Z4 = "Ketiganya membantu kita menghitung maju dan mundur. Pilih cara yang paling cocok untukmu. Sampai jumpa!";
-const DETAIL = ["lanjut melewati 10, sampai 20", "11 sampai 20: 10 dan sisa", "dua bingkai: 11 sampai 20"];
-
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Ringkasan metode luar",
+export const ADEGAN_LUAR_KISI: AdeganStory = {
+  id: "luar-kisi",
+  judul: "Number Grid: kisi bilangan",
+  sumber: "Metode global: Number Grid",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      SUARA_Z1,
-      tambah(0, judul("Ringkasan tiga metode")),
-      tambah("pertama,", ...kartu("zm0", 20, 36, 260, 46, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`, DETAIL[0]], 10.5)),
+      SUARA_C1,
+      tambah("kedua,", ...kepala(1)),
+      tambah(idx(SUARA_C1, "Bilangan", 2), ...kisiGlobal()),
+      tambah("baris,", teks("b2", 90, 136, "2 baris", 10, W.ungu)),
+      tambah("kotak.", teks("k10", 210, 136, "10 kotak tiap baris", 9.4, W.ungu)),
     ),
-    k(SUARA_Z2, tambah("kedua,", ...kartu("zm1", 20, 90, 260, 46, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`, DETAIL[1]], 10.5))),
-    k(SUARA_Z3, tambah("ketiga,", ...kartu("zm2", 20, 144, 260, 46, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`, DETAIL[2]], 10.5))),
     k(
-      SUARA_Z4,
-      bersih(0),
-      tambah(0, judul("Sampai jumpa!"), emo("zo", 150, 100, "\u{1F989}", 56)),
-      tambah("Pilih", ...kartu("zt", 40, 130, 220, 34, W.emas, ["pilih cara yang cocok"], 11)),
+      SUARA_C2,
+      hapus(0, "b2", "k10"),
+      tambah(0, penanda(5)),
+      ubah("kanan,", geserPenanda(6)),
+      tambah("bertambah", teks("kn", 150, 140, "ke kanan: 5, lalu 6, bertambah 1", 9.4, W.merah)),
+      ubah("kiri,", geserPenanda(5)),
+      tambah("berkurang", teks("kr", 150, 158, "ke kiri: 6, lalu 5, berkurang 1", 9.4, W.ungu)),
     ),
+    k(
+      SUARA_C3,
+      hapus(0, "kn", "kr"),
+      ubah(0, geserPenanda(4)),
+      ubah("Turun", geserPenanda(14)),
+      tambah("sepuluh", teks("tb", 150, 140, "bawah: 10 dan bilangan atasnya", 9.4, W.merah)),
+      sorotkan(urutBilangan(SUARA_C3, [4])[0], "gkc4"),
+      sorotkan(urutBilangan(SUARA_C3, [14])[0], "gkc14"),
+      tambah(urutBilangan(SUARA_C3, [14])[0], teks("t14", 150, 158, "14: 10 dan 4", 10, W.biru)),
+    ),
+    k(
+      SUARA_C4,
+      hapus(0, "tb", "t14"),
+      ubah(0, geserPenanda(19)),
+      ubah("Naik", geserPenanda(9)),
+      tambah("atas.", teks("na", 150, 140, "naik: kembali ke bilangan atas", 9.4, W.ungu)),
+      sorotkan(urutBilangan(SUARA_C4, [19])[0], "gkc19"),
+      sorotkan(idx(SUARA_C4, "sembilan.", 2), "gkc9"),
+      tambah(idx(SUARA_C4, "sembilan.", 2), teks("t9", 150, 158, "di atas 19 ada 9", 10, W.biru)),
+    ),
+  ],
+};
+
+/* ------------------------------ 5. Number Grid: terapan pada label yang jatuh ------------------------------ */
+const SUARA_D1 = "Abang menutup dua kotak pada kisi, seperti dua label yang jatuh tadi. Kotak mana saja yang tertutup?";
+const SUARA_D2 = "Kotak pertama ada sesudah dua belas. Di atasnya ada tiga, jadi kotak itu tiga belas.";
+const SUARA_D3 = "Kotak kedua ada sebelum delapan belas. Di atasnya ada tujuh, jadi kotak itu tujuh belas.";
+const SUARA_D4 = "Dengan kisi, Abang cepat menemukan nomor akuarium dari kiri, kanan, atas, atau bawah.";
+
+export const ADEGAN_LUAR_KISI_TERAPAN: AdeganStory = {
+  id: "luar-kisi-terapan",
+  judul: "Number Grid: label yang jatuh",
+  sumber: "Metode global: Number Grid, terapan",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_D1,
+      tambah(0, ...kepala(1), ...kisiGlobal([13, 17])),
+      tambah("Abang", ...orang("ab", 30, 180, E.abang, "Abang")),
+      tambah("menutup", tutup(13), tutup(17)),
+      tambah(idx(SUARA_D1, "dua"), teks("d2", 150, 136, "2 kotak tertutup", 10, W.merah)),
+      tambah("tertutup?", teks("tq", 150, 156, "nomor berapa?", 10, W.ungu)),
+    ),
+    k(
+      SUARA_D2,
+      hapus(0, "d2", "tq"),
+      sorotkan(urutBilangan(SUARA_D2, [12])[0], "gkc12"),
+      sorotkan(idx(SUARA_D2, "tiga,"), "gkc3"),
+      hapus(urutBilangan(SUARA_D2, [13])[0], "tp13"),
+      tambah(urutBilangan(SUARA_D2, [13])[0], angkaKisi("gk", GK.x, GK.y, GK.s, 13), teks("h13", 150, 140, "sesudah 12, di bawah 3: 13", 9.4, W.merah)),
+    ),
+    k(
+      SUARA_D3,
+      sorotkan(urutBilangan(SUARA_D3, [18])[0], "gkc18"),
+      sorotkan(idx(SUARA_D3, "tujuh,"), "gkc7"),
+      hapus(urutBilangan(SUARA_D3, [17])[0], "tp17"),
+      tambah(urutBilangan(SUARA_D3, [17])[0], angkaKisi("gk", GK.x, GK.y, GK.s, 17), teks("h17", 150, 156, "sebelum 18, di bawah 7: 17", 9.4, W.merah)),
+    ),
+    k(
+      SUARA_D4,
+      hapus(0, "h13", "h17"),
+      sorotkan("kiri,", "gkc12"),
+      sorotkan("kanan,", "gkc14"),
+      sorotkan("atas,", "gkc3"),
+      sorotkan("bawah.", "gkc13"),
+      tambah("akuarium", ...kartu("ok", 80, 136, 140, 24, W.emas, ["13 dan 17 ketemu"], 10)),
+      tambah("bawah.", emo("jp", 270, 176, E.jempol, 18)),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. Before and After: konsep ------------------------------ */
+const SUARA_E1 = "Metode ketiga, Before and After, atau Sebelum dan Sesudah. Ada tiga kotak berjajar: kiri, tengah, dan kanan.";
+const SUARA_E2 = "Kotak tengah berisi bilangan pilihan kita, misalnya tujuh. Kotak kanan berisi bilangan sesudahnya, satu lebih banyak, yaitu delapan.";
+const SUARA_E3 = "Kotak kiri berisi bilangan sebelumnya, satu lebih sedikit, yaitu enam.";
+const SUARA_E4 = "Bilangan tengah berada di antara keduanya. Tujuh ada di antara enam dan delapan.";
+const panah = (id: string, x: number, x2: number, warna: string): Obj => ({ id, t: "panah", x, y: TIGA.y + TIGA.h + 14, x2, y2: 0, warna, tebal: 2.2 });
+
+export const ADEGAN_LUAR_SEBELUM: AdeganStory = {
+  id: "luar-sebelum",
+  judul: "Before and After: sebelum dan sesudah",
+  sumber: "Metode global: Before and After",
+  latar: "#FDF2F8",
+  ketukan: [
+    k(
+      SUARA_E1,
+      tambah("ketiga,", ...kepala(2)),
+      tambah(idx(SUARA_E1, "tiga"), ...tigaKotak("bk"), teks("t3", 150, 168, "3 kotak", 10, W.ungu)),
+      tambah("kiri,", judulKotak("bk", 0, "kiri")),
+      tambah("tengah,", judulKotak("bk", 1, "tengah")),
+      tambah("kanan.", judulKotak("bk", 2, "kanan")),
+    ),
+    k(
+      SUARA_E2,
+      hapus(0, "t3"),
+      ubah("pilihan", { id: "bk1j", isi: "pilihan" }),
+      tambah("tujuh.", isiKotak("bk", 1, "7")),
+      ubah("sesudahnya,", { id: "bk2j", isi: "sesudah" }),
+      tambah("satu", panah("ps", 160, 76, W.hijau), teks("pl", 236, 168, "1 lebih banyak", 9, W.hijau)),
+      tambah("delapan.", isiKotak("bk", 2, "8", W.hijau)),
+    ),
+    k(
+      SUARA_E3,
+      ubah("sebelumnya,", { id: "bk0j", isi: "sebelum" }),
+      tambah("satu", panah("pb", 140, -76, W.ungu), teks("ps2", 64, 168, "1 lebih sedikit", 9, W.ungu)),
+      tambah("enam.", isiKotak("bk", 0, "6", W.ungu)),
+    ),
+    k(
+      SUARA_E4,
+      hapus(0, "ps", "pb", "pl", "ps2"),
+      sorotkan("tengah", "bk1"),
+      tambah(idx(SUARA_E4, "antara", 2), ...kartu("da", 70, 150, 160, 24, W.krem, ["7 di antara 6 dan 8"], 10)),
+    ),
+  ],
+};
+
+/* ------------------------------ 7. Before and After: terapan pada nomor akuarium ------------------------------ */
+const SUARA_F1 = "Kaka memakai tiga kotak untuk akuarium sepuluh. Sebelum sepuluh adalah sembilan, sesudah sepuluh adalah sebelas.";
+const SUARA_F2 = "Untuk akuarium sembilan belas, sebelumnya delapan belas, dan sesudahnya dua puluh, akuarium terakhir di rak.";
+const SUARA_F3 = "Igil bertanya, apa yang ada di antara empat belas dan enam belas? Kotak tengah diisi lima belas.";
+const SUARA_F4 = "Dengan tiga kotak ini, Igil dan Kaka cepat menemukan tetangga tiap nomor akuarium.";
+const judulTiga = (): Obj[] => [judulKotak("bk", 0, "sebelum"), judulKotak("bk", 1, "nomor"), judulKotak("bk", 2, "sesudah")];
+const ikanKecil = (): Obj[] => [0, 1, 2].flatMap((i) => ikan(`if${i}`, TIGA.x[i] + 62, TIGA.y + 12, ["#22D3EE", "#F59E0B", "#FB923C"][i], 0.5));
+
+export const ADEGAN_LUAR_SEBELUM_TERAPAN: AdeganStory = {
+  id: "luar-sebelum-terapan",
+  judul: "Before and After: nomor akuarium",
+  sumber: "Metode global: Before and After, terapan",
+  latar: "#FDF2F8",
+  ketukan: [
+    k(
+      SUARA_F1,
+      tambah(0, ...kepala(2)),
+      tambah("Kaka", ...orang("kk", 270, 182, E.kaka, "Kaka")),
+      tambah(idx(SUARA_F1, "tiga"), ...tigaKotak("bk"), ...judulTiga(), ...ikanKecil(), teks("t3", 150, 172, "3 kotak", 10, W.ungu)),
+      tambah(idx(SUARA_F1, "sepuluh."), isiKotak("bk", 1, "10")),
+      tambah("sembilan,", isiKotak("bk", 0, "9", W.ungu)),
+      tambah("sebelas.", isiKotak("bk", 2, "11", W.hijau)),
+    ),
+    k(
+      SUARA_F2,
+      hapus(0, "t3"),
+      ubah(urutBilangan(SUARA_F2, [19])[0], { id: "bk1n", isi: "19" }),
+      ubah(urutBilangan(SUARA_F2, [18])[0], { id: "bk0n", isi: "18" }),
+      ubah(urutBilangan(SUARA_F2, [20])[0], { id: "bk2n", isi: "20" }),
+      tambah("terakhir", teks("ta", 150, 172, "20: terakhir di rak", 9, W.hijau)),
+    ),
+    k(
+      SUARA_F3,
+      hapus(0, "ta"),
+      tambah("Igil", ...orang("ig", 30, 182, E.igil, "Igil")),
+      ubah("empat", { id: "bk0n", isi: "14" }),
+      ubah("enam", { id: "bk2n", isi: "16" }),
+      ubah("antara", { id: "bk1n", isi: "?", warna: W.merah }),
+      ubah(urutBilangan(SUARA_F3, [15])[0], { id: "bk1n", isi: "15" }),
+      sorotkan(urutBilangan(SUARA_F3, [15])[0], "bk1"),
+    ),
+    k(
+      SUARA_F4,
+      tambah(idx(SUARA_F4, "tiga"), teks("t3", 150, 160, "3 kotak", 10, W.ungu)),
+      sorotkan("tetangga", "bk0", "bk2"),
+      tambah("akuarium.", ...kartu("tt", 90, 166, 120, 22, W.emas, ["14, 15, 16"], 10)),
+    ),
+  ],
+};
+
+/* ------------------------------ 8. Ringkasan ------------------------------ */
+const SUARA_Z1 = "Kita sudah melihat tiga metode global. Mana yang paling cepat untuk rak Abang? Itu tergantung pertanyaannya.";
+const SUARA_Z2 = "Number Line Hop cocok untuk maju dan mundur beberapa langkah, tetapi lambat bila harus melompat jauh.";
+const SUARA_Z3 = "Number Grid cocok untuk pindah ke rak bawah, turun satu kotak dapat sepuluh dan bilangan atasnya, tetapi kurang cocok bila bilangannya sangat banyak.";
+const SUARA_Z4 = "Before and After paling cepat untuk mencari tetangga satu nomor: sebelum satu lebih sedikit, sesudah satu lebih banyak.";
+
+export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
+  id: "luar-ringkas",
+  judul: "Ringkasan tiga metode global",
+  sumber: "Ringkasan metode global",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_Z1,
+      tambah(0, judul("Ringkasan")),
+      tambah("tiga", emo("rk", 150, 76, E.bintang, 40), ...kartu("rt", 60, 98, 180, 26, W.emas, ["3 metode global"], 10)),
+      tambah("pertanyaannya.", teks("mm", 150, 144, "maju dan mundur", 10, W.ungu)),
+      tambah("Abang?", ...ikan("ik0", 110, 174, "#FB923C", 1.1), ...ikan("ik1", 150, 174, "#F59E0B", 1.1), ...ikan("ik2", 190, 174, "#22D3EE", 1.1)),
+    ),
+    k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Line", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], [NAMA_METODE[0], "kanan untuk maju, kiri untuk mundur"], 9.4))),
+    k(SUARA_Z3, tambah("Grid:", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], [NAMA_METODE[1], "kanan, kiri beda 1; bawah: 10 dan atasnya"], 9))),
+    k(SUARA_Z4, tambah("Before", ...kartu("r2", 14, 138, 272, 44, WARNA_METODE[2], [NAMA_METODE[2], "sebelum 1 lebih sedikit, sesudah 1 lebih banyak"], 8.6))),
   ],
 };

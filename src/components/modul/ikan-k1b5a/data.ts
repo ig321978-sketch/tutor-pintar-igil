@@ -2,9 +2,9 @@
  * Isi tahap Mind-map, Infografis, Simulasi, Concrete, Pictorial, dan Abstract Kelas 1 Bab 5 Sub-Bab A "Ikan Baru Datang",
  * awal cerita Akuarium Ikan Hias Abang. Angka Story (empat belas guppy, sebelas koki, neon tujuh belas ditambah tiga menjadi dua puluh,
  * hitungan Igil tiga belas dan lima belas, tebakan sepuluh) hanya dipakai di Mind-map dan Infografis. Simulasi dan CPA memakai ikan dan
- * bilangan lain dan melanjutkan "Misi Lapak Ikan" bagian satu sampai sepuluh. Diuji: scripts/uji-ikan-k1b5a.mjs.
+ * bilangan lain dan melanjutkan "Misi Lapak Ikan" bagian satu sampai sepuluh. Tiap tahap punya satu soal Klik "Cari kesalahan" (menggantikan satu soal Klik; tetap di slot metodenya). Diuji: scripts/uji-ikan-k1b5a.mjs.
  */
-import type { Cara, KantongSim, Langkah, LangkahSoal, Rupa, SoalMisi, Tempat } from "./logika";
+import type { Cara, KantongSim, Kesalahan, Langkah, LangkahSoal, Rupa, SoalMisi, Tempat, Tokoh } from "./logika";
 import { URUT_METODE, instruksi, kata } from "./logika";
 
 const tp = (id: string, kelompok: string, kunci: string, urutan?: number): Tempat => (urutan === undefined ? { id, kelompok, kunci } : { id, kelompok, kunci, urutan });
@@ -101,6 +101,8 @@ const bingkai = (isi: number, jawab: "angka" | "nama", jenis = "titik"): Langkah
 const manik = (sasaran: number, tanya: "bawah" | "semua"): Langkah => ({ tipe: "manik", sasaran, tanya });
 const toples = (ikan: number, tebakan: number[], jenis = "titik"): Langkah => ({ tipe: "toples", ikan, jenis, tebakan });
 
+const salah = (tokoh: Tokoh, kesalahan: Kesalahan, n: number, jenis: string): Langkah => ({ tipe: "salah", tokoh, kesalahan, n, jenis });
+
 const kelompok =
   (rupa: Rupa) =>
   (nomor: number, cara: Cara, judul: string, cerita: string, isi: [Langkah, Langkah, Langkah, Langkah]): SoalMisi => ({
@@ -120,7 +122,7 @@ export const CONCRETE: SoalMisi[] = [
     jaring(16, "ikan"),
     bingkai(16, "nama", "udang"),
     manik(18, "bawah"),
-    toples(12, [5, 10, 20], "siput"),
+    salah("Abang", "ulang", 12, "siput"),
   ]),
   C(2, "kanvas", "Misi Lapak Ikan 3: catatan Kaka", "Kaka mencatat isi tiap wadah. Beri tanda, lalu tulis jawabanmu.", [
     jaring(19, "tropis"),
@@ -138,14 +140,14 @@ export const CONCRETE: SoalMisi[] = [
 
 const P = kelompok("diagram");
 export const PICTORIAL: SoalMisi[] = [
-  P(1, "klik", "Misi Lapak Ikan 5: gambar titik", "Abang menggambar tiap ikan sebagai titik supaya cepat dihitung.", [jaring(18), bingkai(18, "nama"), manik(19, "bawah"), toples(5, [5, 10, 15])]),
+  P(1, "klik", "Misi Lapak Ikan 5: gambar titik", "Abang menggambar tiap ikan sebagai titik supaya cepat dihitung.", [salah("Kaka", "tukar", 18, "titik"), bingkai(18, "nama"), manik(19, "bawah"), toples(5, [5, 10, 15])]),
   P(2, "kanvas", "Misi Lapak Ikan 6: pola jaring", "Kaka menandai titik di pola jaring. Beri tanda, lalu tulis jawabanmu.", [jaring(12), bingkai(12, "nama"), manik(16, "semua"), toples(4, [5, 10, 15])]),
   P(3, "suara", "Misi Lapak Ikan 7: lapor ke Mamah", "Abang melaporkan hitungannya kepada Mamah. Sebutkan jawabanmu.", [jaring(10), bingkai(19, "angka"), manik(11, "bawah"), toples(8, [5, 10, 15])]),
 ];
 
 const A = kelompok("lambang");
 export const ABSTRACT: SoalMisi[] = [
-  A(1, "klik", "Misi Lapak Ikan 8: kartu label", "Kaka menulis label akuarium dengan kata dan angka saja.", [jaring(19), bingkai(16, "nama"), manik(16, "bawah"), toples(12, [5, 10, 20])]),
+  A(1, "klik", "Misi Lapak Ikan 8: kartu label", "Kaka menulis label akuarium dengan kata dan angka saja.", [jaring(19), bingkai(16, "nama"), manik(16, "bawah"), salah("Igil", "seratus", 12, "titik")]),
   A(2, "kanvas", "Misi Lapak Ikan 9: tulis label", "Kaka meminta Igil menulis lambang bilangan di kanvas.", [jaring(9), bingkai(18, "nama"), manik(18, "semua"), toples(4, [5, 10, 15])]),
   A(3, "suara", "Misi Lapak Ikan 10: semua label siap", "Semua label hampir siap. Bacakan jawaban terakhir untuk Abang.", [jaring(8), bingkai(16, "angka"), manik(12, "bawah"), toples(5, [1, 8, 15])]),
 ];

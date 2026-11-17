@@ -135,6 +135,21 @@ for (const [nama, soal, rupa] of [["Concrete", D.CONCRETE, "benda"], ["Pictorial
       t[1] = L.geserManik(t[1], l.sasaran - 11);
       sama(t, [10, l.sasaran - 10], `${nama}: manik bisa digeser ke sasaran`);
     }
+    if (l.tipe === "salah") {
+      sama(k, l.n, `${nama}: kunci cari kesalahan`);
+      cek(x.cara === "klik" && l.n >= 12 && l.n <= 19, `${nama}: cari kesalahan di soal Klik, belasan`);
+      cek(["Igil", "Kaka", "Abang"].includes(l.tokoh) && ["ulang", "tukar", "seratus"].includes(l.kesalahan), `${nama}: tokoh dan jenis kesalahan`);
+      const kl = L.klaimSalah(l, "ikan");
+      const al = L.alasanSalah(l, "ikan");
+      cek(tanpaDigit(kl.ucap) && !TERLARANG.test(kl.ucap + kl.tampil), `${nama}: klaim tokoh, ucapan tanpa digit`);
+      cek(al.length === 3 && al.filter((a) => a.benar).length === 1 && al.filter((a) => !a.benar).every((a) => a.petunjuk.includes(l.tokoh) || /ikan|titik|angka|bilangan|dikali/.test(a.petunjuk)) && al.every((a) => !TERLARANG.test(a.teks + a.petunjuk)), `${nama}: tiga alasan, satu benar, petunjuk menunjuk kesalahan`);
+      cek(al.filter((a) => !a.benar).every((a) => tanpaDigit(a.petunjuk)) && tanpaDigit(L.petunjukKira(l)) && tanpaDigit(L.petunjukBanyak(l.kesalahan)), `${nama}: petunjuk tanpa digit`);
+      cek(L.petunjukKira(l).includes(l.tokoh), `${nama}: petunjuk "kira benar" menyebut tokoh`);
+      // Rupa: Concrete hewan air, Pictorial titik, Abstract tanpa benda; alasan tanpa emoji.
+      cek(![...(kl.tampil + al.map((a) => a.teks).join(""))].some((c) => c.codePointAt(0) > 0x2000), `${nama}: klaim dan alasan tanpa emoji`);
+      if (rupa === "benda") cek(D.EMOJI[l.jenis] !== undefined, `${nama}: cari kesalahan memakai hewan air`);
+      cek(L.instruksi(l, rupa, x.cara).includes(l.tokoh), `${nama}: instruksi menyebut tokoh`);
+    }
     if (l.tipe === "toples") {
       sama(k, l.ikan, `${nama}: kunci toples`);
       cek(l.ikan >= 1 && l.ikan <= 12 && l.tebakan.length === 3 && L.tebakanDekat(l.tebakan, l.ikan) >= 0, `${nama}: toples muat dan ada satu tebakan paling dekat`);
@@ -147,10 +162,13 @@ for (const [nama, soal, rupa] of [["Concrete", D.CONCRETE, "benda"], ["Pictorial
     if (x.cara === "kanvas" && k !== null) cek(k <= 20, `${nama}: tulisan kanvas satu atau dua kotak`);
     cek(tanpaDigit(x.suara) && !TERLARANG.test(x.suara) && x.suara.length <= 170, `${nama} ${x.metode}/${x.cara}: instruksi tanpa digit ("${x.suara}")`);
   }
+  cek(semua.some((x) => x.langkah.tipe === "salah") && semua.filter((x) => x.langkah.tipe === "salah").length >= 1, `${nama}: ada soal Cari kesalahan`);
   // Dua soal tanpa jawaban angka (nama bilangan), hanya Klik dan Kanvas.
   sama(semua.filter((x) => L.angkaJawab(x.langkah) === null).map((x) => x.cara), ["klik", "kanvas"], `${nama}: dua soal nama bilangan di Klik dan Kanvas`);
 }
 {
+  cek([D.CONCRETE, D.PICTORIAL, D.ABSTRACT].every((t) => t.flatMap((x) => x.langkah).some((x) => x.langkah.tipe === "salah")), "Cari kesalahan ada di tiap tahap");
+  sama([D.CONCRETE, D.PICTORIAL, D.ABSTRACT].map((t) => t.flatMap((x) => x.langkah).filter((x) => x.langkah.tipe === "salah").map((x) => x.langkah.kesalahan)), [["ulang"], ["tukar"], ["seratus"]], "Cari kesalahan: jenis kesalahan beragam antar tahap");
   cek(D.POIN_PENTING.length >= 5 && D.POIN_PENTING_SUARA.every(tanpaDigit), "poin penting: suara tanpa digit");
   cek(D.POIN_PENTING.some((p) => /sepuluh dulu/.test(p)) && D.POIN_PENTING.some((p) => /dua puluh/.test(p)) && D.POIN_PENTING.some((p) => /sebelas/.test(p)), "poin penting: sepuluh dulu, sebelas, dua puluh");
   sama(L.pilihanNama(13), [3, 13, 14], "pilihan nama: satuan saja dan tetangga");

@@ -10,7 +10,7 @@ export const WARNA_METODE = [W.merahMuda, W.langit, W.lavender];
 export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka ------------------------------ */
-const SUARA_O1 = "Bahan festival sudah siap. Kaka bercerita, anak-anak di negara lain juga belajar mengenal bentuk. Kita lihat tiga metode global.";
+const SUARA_O1 = "Pak RT membawa poster dari festival kota lain. Di sana, anak-anak mengenal bentuk dengan tiga cara. Kaka ingin mencobanya.";
 const SUARA_O2 = "Tiga metode itu: Shape Hunt, Geoboard, dan Mystery Shape.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Berburu Bentuk, Papan Paku, dan Bentuk Misterius.";
 const SUARA_O4 = "Semua metode membantu kita mengenali bentuk dari sisi lurus dan sudutnya.";
@@ -26,7 +26,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       SUARA_O1,
       tambah(0, judul("Tiga metode global"), ...tutupKaleng("i0", 112, 90, 16), karton("i1", 152, 94, 18), ...kardus("i2", 196, 92, 30, 24)),
       tambah("Kaka", ...orang("kk", 40, 120, E.kaka, "Kaka")),
-      tambah("negara", emo("gl", 262, 110, "\u{1F30D}", 40)),
+      tambah("kota", emo("gl", 262, 110, "\u{1F30D}", 40)),
       tambah("tiga", ...kartu("pk", 50, 146, 200, 32, W.emas, ["3 metode global"], 11)),
     ),
     k(
@@ -57,6 +57,7 @@ const SUARA_A1 = "Metode pertama, Shape Hunt, atau Berburu Bentuk. Kita mencari 
 const SUARA_A2 = "Lihat tepi benda itu. Apakah tepinya lengkung, atau punya sisi lurus dan sudut?";
 const SUARA_A3 = "Lalu sebutkan nama bentuknya: lengkung, segitiga, atau segi empat.";
 const SUARA_A4 = "Terakhir, hitung berapa benda yang ditemukan untuk tiap bentuk.";
+const SUARA_A5 = "Berburu bentuk cocok bila bendanya terlihat jelas, tetapi lambat bila benda bertumpuk di teras.";
 const B1 = sudutMutlak(182, 106, segitigaRel(22));
 const B2 = sudutMutlak(248, 102, segiEmpatRel(44, 32));
 
@@ -89,6 +90,13 @@ export const ADEGAN_LUAR_BERBURU: AdeganStory = {
       SUARA_A4,
       tambah("hitung", ...kartu("hc", 50, 162, 200, 26, W.emas, ["hitung tiap bentuk"], 10)),
       tambah("ditemukan", emo("c0", 120, 74, E.benar, 12), emo("c1", 182, 74, E.benar, 12), emo("c2", 248, 74, E.benar, 12)),
+    ),
+    k(
+      SUARA_A5,
+      bersih(0),
+      tambah(0, ...kepala(0)),
+      tambah("cocok", emo("bc", 40, 84, "👍", 26), ...kartu("bk", 64, 66, 222, 38, W.hijauMuda, ["cocok: benda terlihat jelas"], 9.4)),
+      tambah("tetapi", emo("bt", 40, 142, "🐢", 26), ...kartu("bl", 64, 124, 222, 38, W.merahMuda, ["lambat: benda bertumpuk"], 9.4)),
     ),
   ],
 };

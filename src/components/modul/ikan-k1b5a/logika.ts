@@ -42,7 +42,13 @@ export type Langkah =
   /** Rekenrek: geser manik sampai sasaran (sepuluh di baris atas), lalu jawab manik baris bawah; atau manik sudah tergeser, jawab semuanya. */
   | { tipe: "manik"; sasaran: number; tanya: "bawah" | "semua" }
   /** Estimation Jar: pilih tebakan dulu, lalu hitung isi toples satu per satu. */
-  | { tipe: "toples"; ikan: number; jenis: string; tebakan: number[] };
+  | { tipe: "toples"; ikan: number; jenis: string; tebakan: number[] }
+  /** Cari kesalahan: tokoh sudah menjawab dengan salah paham. Anak menilai benar atau salah, memilih alasan, lalu memilih banyak yang benar (n). */
+  | { tipe: "salah"; tokoh: Tokoh; kesalahan: Kesalahan; n: number; jenis: string };
+
+export type Tokoh = "Igil" | "Kaka" | "Abang";
+/** ulang: menghitung ulang dari satu padahal wadah sepuluh penuh. tukar: angka puluhan dan satuan tertukar. seratus: sepuluh dan sisa ditulis tiga angka. */
+export type Kesalahan = "ulang" | "tukar" | "seratus";
 
 export type LangkahSoal = { metode: Metode; cara: Cara; judul: string; suara: string; langkah: Langkah };
 export type SoalMisi = { nomor: number; judul: string; cerita: string; cara: Cara; langkah: LangkahSoal[] };
@@ -58,6 +64,8 @@ export function kunciLangkah(l: Langkah): number | null {
       return l.tanya === "bawah" ? l.sasaran - 10 : l.sasaran;
     case "toples":
       return l.ikan;
+    case "salah":
+      return l.n;
   }
 }
 export const angkaJawab = kunciLangkah;
@@ -76,6 +84,62 @@ export function pilihanNama(n: number): number[] {
   const satuan = n > 10 && n < 20 ? n - 10 : n === 20 ? 2 : n >= 1 ? n - 1 : 2;
   return [...new Set([n, lain, satuan])].sort((p, q) => p - q);
 }
+
+/* ------------------------------ Cari kesalahan ------------------------------ */
+type Salah = Extract<Langkah, { tipe: "salah" }>;
+export type Alasan = { teks: string; benar: boolean; petunjuk: string };
+/** Jawaban salah tokoh: kalimat tampil dan kalimat ucap (tanpa digit). */
+export function klaimSalah(l: Salah, nama = "ikan"): { tampil: string; ucap: string } {
+  const sisa = l.n - 10;
+  switch (l.kesalahan) {
+    case "ulang": {
+      const urut = Array.from({ length: sisa }, (_, i) => kata(i + 1)).join(", ");
+      return { tampil: `Kuhitung dari satu: ${urut}. Jadi ada ${kata(sisa)} ${nama}.`, ucap: `Aku hitung dari satu: ${urut}. Jadi ada ${kata(sisa)} ${nama}.` };
+    }
+    case "tukar":
+      return { tampil: `Kutulis ${kata(l.n)} jadi ${sisa}1.`, ucap: `Aku menulis angka ${kata(sisa)} lalu angka satu.` };
+    case "seratus":
+      return { tampil: `Kutulis ${kata(l.n)} jadi 10${sisa}.`, ucap: `Aku menulis angka satu, angka nol, lalu angka ${kata(sisa)}.` };
+  }
+}
+/** Tiga alasan (satu benar) dan petunjuk salahnya, yang menunjuk kesalahan tokoh. Urutan sudah tetap (benar tidak selalu pertama). */
+export function alasanSalah(l: Salah, nama = "ikan"): Alasan[] {
+  const sisa = l.n - 10;
+  const t = l.tokoh;
+  switch (l.kesalahan) {
+    case "ulang":
+      return [
+        { teks: `${nama} di wadah penuh tidak perlu dihitung lagi`, benar: false, petunjuk: `Semua ${nama} ikut dihitung, termasuk yang di wadah penuh. Sepuluh di wadah itu juga banyaknya.` },
+        { teks: "Wadah pertama sudah penuh sepuluh, jadi hitungan lanjut dari sepuluh, bukan dari satu", benar: true, petunjuk: "" },
+        { teks: `${nama} di kantong harus mendapat dua hitungan`, benar: false, petunjuk: `Satu ${nama} hanya mendapat satu hitungan. Yang keliru ialah ${t} memulai lagi dari satu.` },
+      ];
+    case "tukar":
+      return [
+        { teks: `${sisa}1 sama saja dengan ${l.n}, urutan angka tidak penting`, benar: false, petunjuk: `Urutan angka penting. ${t} menaruh angka sisanya di depan. Puluhan ditulis di depan.` },
+        { teks: `Sepuluh dan ${kata(sisa)} tidak boleh ditulis dengan angka`, benar: false, petunjuk: `Bilangan boleh ditulis dengan angka. Yang keliru ialah angka ${t} tertukar.` },
+        { teks: `Angka satu ditulis dulu karena sepuluh, lalu ${kata(sisa)}: ${l.n}`, benar: true, petunjuk: "" },
+      ];
+    case "seratus":
+      return [
+        { teks: `Angka nol ditulis dulu, baru angka ${kata(sisa)}`, benar: false, petunjuk: `Sepuluh dan ${kata(sisa)} tidak memakai tiga angka. ${t} menambahkan angka yang tidak perlu.` },
+        { teks: `${kata(l.n)} memang ditulis dengan tiga angka`, benar: false, petunjuk: `Bilangan sampai dua puluh paling banyak dua angka. ${t} menulis tiga angka.` },
+        { teks: `Sepuluh dan ${kata(sisa)} cukup dua angka: satu di depan, ${kata(sisa)} di belakang`, benar: true, petunjuk: "" },
+      ];
+  }
+}
+/** Petunjuk bila anak mengira jawaban tokoh benar. */
+export function petunjukKira(l: Salah, nama = "ikan"): string {
+  switch (l.kesalahan) {
+    case "ulang":
+      return `Belum benar. ${l.tokoh} hanya menghitung ${nama} di kantong, padahal wadah pertama sudah penuh sepuluh.`;
+    case "tukar":
+      return `Belum benar. ${l.tokoh} menukar angkanya. Yang ditulis bukan ${kata(l.n)}.`;
+    case "seratus":
+      return `Belum benar. ${l.tokoh} menulis tiga angka, padahal ${kata(l.n)} cukup dua angka.`;
+  }
+}
+/** Petunjuk bila banyak yang dipilih salah. */
+export const petunjukBanyak = (k: Kesalahan): string => (k === "ulang" ? "Sepuluh di wadah ditambah sisa di kantong. Hitung sepuluh dulu, lalu lanjut." : "Sepuluh dan sisanya digabung. Hitung lagi puluhan dan sisanya.");
 
 /** Tebakan yang paling dekat dengan banyak sebenarnya (indeks), atau -1 bila ada dua yang sama dekat. */
 export function tebakanDekat(tebakan: readonly number[], n: number): number {
@@ -111,6 +175,8 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara): string {
       }
       if (rupa === "lambang") return `Pecah ${kata(l.sasaran)} menjadi sepuluh dan sisanya. Berapa sisanya? ${cara === "klik" ? "Pilih jawabannya." : cara === "kanvas" ? "Tulis angkanya." : "Ucapkan jawabannya."}`;
       return `Geser manik sampai ${kata(l.sasaran)}. Penuhi baris atas dulu. Berapa manik di baris bawah? ${cara === "klik" ? "Pilih jawabannya." : "Ucapkan jawabannya."}`;
+    case "salah":
+      return `${l.tokoh} sudah menjawab. Apakah jawabannya benar atau salah? Pilih alasannya, lalu pilih banyak yang benar.`;
     case "toples":
       if (rupa === "lambang") return `Pilih tebakan yang paling dekat dengan hasil hitung. Lalu ${cara === "kanvas" ? "tulis lambang bilangannya." : cara === "suara" ? "ucapkan bilangannya." : "pilih lambang bilangannya."}`;
       if (cara === "kanvas") return `Tebak dulu banyaknya. Lalu beri satu tanda pada tiap ${rupa === "benda" ? "isi toples" : "titik"}. ${akhir}`;

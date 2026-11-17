@@ -65,3 +65,6 @@ Diisi rinci per sub-bab setelah komponennya selesai (Mind-map, Infografis, Simul
 - Sub-Bab A (`src/components/modul/ikan-k1b5a/`): Mind-map akuarium dengan gelembung bernomor naik (kantong plastik ikan = Masalah, tujuh gelembung = Penyelesaian dibaca dari bawah, tutup akuarium berlampu = Hasil);
   Infografis label di kaca akuarium; Simulasi wadah sekat sepuluh (kantong ikan dan dua wadah bersekat); Concrete dasar akuarium berpasir dengan kerikil, kemajuan rumput air tumbuh;
   Pictorial pola jaring ikan (simpul jala), kemajuan simpul terikat; Abstract kaca berembun, kemajuan tetes air meluncur.
+- Sub-Bab B (`src/components/modul/rak-k1b5b/`): Mind-map pompa udara dengan selang aerator (tabung pompa = Masalah, tujuh katup cabang selang bernomor = Penyelesaian dibaca dari atas, batu aerasi berbuih = Hasil);
+  Infografis catatan di tutup kaleng pakan; Simulasi rak akuarium bernomor (rak ikan cupang dua tingkat, label sembilan dan delapan belas jatuh); Concrete batu kali berlumut, kemajuan batu pijakan berlumut;
+  Pictorial pita ukur kain kuning bertanda, kemajuan tanda pita terisi; Abstract papan angka lampu hijau tujuh segmen, kemajuan lampu menyala.

@@ -1,351 +1,149 @@
-import type { AdeganStory, Aksi, Obj } from "./logika-story";
-import { W, WB, angka, bulat, emo, garisBilangan, glX, judul, kartu, panah, teks } from "./k1b5b-gambar";
-import { bersih, bilKe, hapus, idx, k, redamkan, sorotkan, tambah, ubah, urutBil } from "./k1b5b-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, angkaKisi, emo, ikan, judul, kartu, kisi, kotak, nyala, orang, pakan, rakLengkap, rentang, selKisi, teks } from "./k1b5b-gambar";
+import { bersih, idx, hapus, k, sorotkan, tambah, ubah, urutBilangan } from "./k1b5b-bantu";
 
-/* ------------------------------ 1. Mesin deret: maju atau mundur ------------------------------ */
-const SUARA_R1 = "Mesin deret menunjukkan beberapa bilangan. Tugas kita, tentukan deret ini maju atau mundur.";
-const SUARA_R2 = "Lihat dua bilangan pertama. Tiga belas, lalu empat belas. Bilangannya makin besar.";
-const SUARA_R3 = "Kalau makin besar, deretnya maju. Jadi bilangan berikutnya adalah enam belas.";
-const SUARA_R4 = "Deret yang lain: delapan belas, tujuh belas, enam belas, lalu satu kotak kosong.";
-const SUARA_R5 = "Bilangannya makin kecil, jadi deretnya mundur. Bilangan berikutnya adalah lima belas.";
-const SUARA_R6 = "Ucapkan lagi mengikuti suara guru. Maju, tiga belas, empat belas, lima belas, enam belas. Mundur, delapan belas, tujuh belas, enam belas, lima belas.";
-const RX = [20, 90, 160, 230];
-const baris = (id: string, y: number, isi: (number | null)[], warna: string): Obj[] => isi.flatMap((v, i) => angka(`${id}${i}`, RX[i], y, v === null ? "?" : v, 56, 40, v === null ? W.krem : warna, 18));
-const P_R4 = urutBil(SUARA_R4, [18, 17, 16]);
-const P_R6a = urutBil(SUARA_R6, [13, 14, 15, 16], "Maju,");
-const P_R6b = urutBil(SUARA_R6, [18, 17, 16, 15], "Mundur,");
+/* Akhir "Rak Akuarium Bernomor": rak dilihat sebagai kisi, semua akuarium beres, bungkus pakan dan kantong ikan berserakan (jembatan ke Sub-Bab C), lalu penutup. Tanpa latihan. */
 
-export const ADEGAN_MESIN: AdeganStory = {
-  id: "mesin-deret",
-  judul: "Mesin deret: maju atau mundur",
-  sumber: "Materi: arah deret bilangan",
-  latar: "#F5F3FF",
-  ketukan: [
-    k(
-      SUARA_R1,
-      tambah(0, judul("Mesin deret")),
-      tambah("bilangan.", baris("ra", 34, [13, 14, 15, null], WB.biru)),
-      tambah("maju", teks("ca", 150, 98, "maju atau mundur?", 11, W.merah)),
-    ),
-    k(
-      SUARA_R2,
-      sorotkan("Lihat", "ra0-k", "ra1-k"),
-      ubah("makin", { id: "ca", isi: "makin besar", warna: W.hijau }),
-      tambah("besar.", panah("pg", 60, 86, 90, 0, W.hijau, 2.4)),
-    ),
-    k(
-      SUARA_R3,
-      redamkan(0, "ra0-k", "ra1-k"),
-      hapus(0, "pg"),
-      ubah("maju.", { id: "ca", isi: "deretnya maju", warna: W.hijau }),
-      ubah(bilKe(SUARA_R3, 16), { id: "ra3-t0", isi: "16", warna: W.biru }, { id: "ra3-k", warna: W.hijauMuda, sorot: true }),
-    ),
-    k(
-      SUARA_R4,
-      redamkan(0, "ra3-k"),
-      tambah(0, teks("cb", 150, 160, "deret yang lain", 11, W.ungu)),
-      tambah(P_R4[0], ...angka("rb0", RX[0], 104, 18, 56, 40, WB.pink, 18)),
-      tambah(P_R4[1], ...angka("rb1", RX[1], 104, 17, 56, 40, WB.pink, 18)),
-      tambah(P_R4[2], ...angka("rb2", RX[2], 104, 16, 56, 40, WB.pink, 18)),
-      tambah("kosong.", ...angka("rb3", RX[3], 104, "?", 56, 40, W.krem, 18)),
-    ),
-    k(
-      SUARA_R5,
-      sorotkan("makin", "rb0-k", "rb1-k", "rb2-k"),
-      ubah("kecil,", { id: "cb", isi: "makin kecil: mundur", warna: W.merah }),
-      redamkan("Bilangan@2", "rb0-k", "rb1-k", "rb2-k"),
-      ubah(bilKe(SUARA_R5, 15), { id: "rb3-t0", isi: "15", warna: W.biru }, { id: "rb3-k", warna: W.merahMuda, sorot: true }),
-    ),
-    k(
-      SUARA_R6,
-      redamkan(0, "rb3-k"),
-      hapus(0, "ca", "cb"),
-      tambah(0, emo("uc", 150, 175, "\u{1F4AC}", 30)),
-      ...P_R6a.flatMap((p, i) => [...(i > 0 ? [redamkan(p, `ra${i - 1}-k`)] : []), sorotkan(p, `ra${i}-k`)]),
-      redamkan(P_R6b[0], "ra3-k"),
-      ...P_R6b.flatMap((p, i) => [...(i > 0 ? [redamkan(p, `rb${i - 1}-k`)] : []), sorotkan(p, `rb${i}-k`)]),
-    ),
-  ],
+/* ------------------------------ 6. Rak seperti kisi ------------------------------ */
+const SUARA_K1 = "Kaka melihat rak seperti kisi. Baris atas satu sampai sepuluh, baris bawah sebelas sampai dua puluh.";
+const SUARA_K2 = "Di bawah tiga ada tiga belas. Di bawah tujuh ada tujuh belas.";
+const SUARA_K3 = "Nomor bawah adalah sepuluh dan nomor di atasnya. Tiga belas adalah sepuluh dan tiga.";
+const KS = { x: 20, y: 44, s: 26 };
+const ANGKA = (dari: number, sampai: number): Obj[] => rentang(dari, sampai).map((n) => angkaKisi("ks", KS.x, KS.y, KS.s, n, W.biru));
+/** Panah turun kecil di sisi kanan sel atas n menuju sel bawahnya. */
+const turun = (id: string, n: number): Obj => {
+  const p = selKisi(KS.x, KS.y, n, KS.s);
+  return { id, t: "panah", x: p.x + KS.s - 5, y: p.y + 6, x2: 0, y2: KS.s + 10, warna: W.merah, tebal: 1.6 };
 };
+const [K2_3, K2_13, K2_7, K2_17] = urutBilangan(SUARA_K2, [3, 13, 7, 17]);
 
-/* ------------------------------ 2. Tetangga bilangan: sebelum, sesudah, di antara ------------------------------ */
-const SUARA_T1 = "Bilangan punya tetangga. Ada bilangan sebelum, ada bilangan sesudah, dan ada bilangan di antara.";
-const SUARA_T2 = "Bilangan sebelum lima belas adalah empat belas.";
-const SUARA_T3 = "Bilangan sesudah lima belas adalah enam belas. Sesudah artinya datang setelahnya.";
-const SUARA_T4 = "Tiga belas ada di antara dua belas dan empat belas. Di antara artinya di tengah dua bilangan.";
-const SUARA_T5 = "Sekarang tebak. Bilangan sebelum delapan belas adalah bilangan apa? Ketuk jawabannya.";
-const SUARA_T6 = "Sebelum delapan belas adalah tujuh belas. Hebat! Sesudah delapan belas adalah sembilan belas.";
-const TX = [30, 120, 210];
-const tiga = (id: string, a: number, b: number, c: number, warna: string): Obj[] => [...angka(`${id}0`, TX[0], 60, a, 60, 54, warna, 24), ...angka(`${id}1`, TX[1], 60, b, 60, 54, warna, 24), ...angka(`${id}2`, TX[2], 60, c, 60, 54, warna, 24)];
-
-export const ADEGAN_TETANGGA: AdeganStory = {
-  id: "tetangga",
-  judul: "Tetangga bilangan: sebelum, sesudah, di antara",
-  sumber: "Materi: sebelum, sesudah, di antara",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(
-      SUARA_T1,
-      tambah(0, judul("Tetangga bilangan")),
-      tambah("sebelum,", ...kartu("ta", 30, 70, 76, 34, W.hijauMuda, ["sebelum"], 11)),
-      tambah("sesudah,", ...kartu("tb", 112, 70, 76, 34, W.langit, ["sesudah"], 11)),
-      tambah("antara.", ...kartu("tc", 194, 70, 76, 34, W.pink, ["di antara"], 11)),
-    ),
-    k(
-      SUARA_T2,
-      bersih(0),
-      tambah(0, judul("Sebelum")),
-      tambah("sebelum", ...tiga("ts", 14, 15, 16, W.langit)),
-      tambah("sebelum", teks("tt0", TX[0] + 30, 140, "sebelum", 10, W.hijau)),
-      sorotkan("empat", "ts0-k"),
-    ),
-    k(
-      SUARA_T3,
-      redamkan(0, "ts0-k"),
-      hapus(0, "tt0"),
-      ubah(0, { id: "jud", isi: "Sesudah" }),
-      tambah("sesudah", teks("tt2", TX[2] + 30, 140, "sesudah", 10, W.hijau)),
-      sorotkan("enam", "ts2-k"),
-    ),
-    k(
-      SUARA_T4,
-      bersih(0),
-      tambah(0, judul("Di antara")),
-      tambah("Tiga", ...tiga("tu", 12, 13, 14, W.krem)),
-      sorotkan("Tiga", "tu1-k"),
-      tambah("antara", teks("tt3", TX[1] + 30, 140, "di antara", 10, W.hijau)),
-      tambah("tengah", panah("pu", TX[0] + 60, 96, 30, 0, W.merah, 2), panah("pv", TX[2], 96, -30, 0, W.merah, 2)),
-    ),
-    k(
-      SUARA_T5,
-      bersih(0),
-      tambah(0, judul("Tebak bilangannya")),
-      tambah("Sekarang", ...angka("sa", 120, 34, 18, 60, 46, W.langit, 22)),
-      tambah("apa?", teks("sq", 150, 104, "bilangan sebelum ini?", 11, W.merah)),
-      tambah("Ketuk", ...angka("sb0", 30, 124, 17, 60, 46, W.krem, 22), ...angka("sb1", 120, 124, 19, 60, 46, W.krem, 22), ...angka("sb2", 210, 124, 20, 60, 46, W.krem, 22)),
-    ),
-    k(
-      SUARA_T6,
-      sorotkan(bilKe(SUARA_T6, 17), "sb0-k"),
-      tambah("Hebat!", emo("ow", 150, 198, "\u{1F989}", 20)),
-      redamkan("Sesudah", "sb0-k"),
-      sorotkan(bilKe(SUARA_T6, 19), "sb1-k"),
-      ubah("Sesudah", { id: "sq", isi: "bilangan sesudah ini?" }),
-    ),
-  ],
-};
-
-/* ------------------------------ 3. Latihan 1: ulat bilangan ------------------------------ */
-const SUARA_S1 = "Latihan satu. Ulat bilangan punya badan bertanda empat belas, lima belas, satu kotak kosong, dan tujuh belas.";
-const SUARA_S2 = "Bilangan apa yang hilang? Pilih kartu angka yang pas. Pilihannya lima belas, enam belas, atau delapan belas.";
-const SUARA_S3 = "Seret kartu enam belas ke badan ulat yang kosong. Benar! Empat belas, lima belas, enam belas, tujuh belas.";
-const SUARA_S4 = "Kita periksa dengan menghitung mundur. Tujuh belas, enam belas, lima belas, empat belas. Cocok!";
-const SUARA_S5 = "Ucapkan lagi mengikuti suara guru. Bilangan yang hilang adalah enam belas.";
-const SX = [25, 85, 145, 205];
-const ruasS = (i: number, isi: number | null): Obj[] => [
-  bulat(`su${i}`, SX[i] + 24, 70, 24, isi === null ? W.krem : WB.kuning, W.biru, { tebal: 1.8 }),
-  teks(`sut${i}`, SX[i] + 24, 76, isi === null ? "?" : String(isi), 15, isi === null ? W.merah : W.biru),
-];
-const P_S3 = urutBil(SUARA_S3, [14, 15, 16, 17], "Benar!");
-const P_S4 = urutBil(SUARA_S4, [17, 16, 15, 14], "mundur.");
-
-export const ADEGAN_LATIHAN_SATU: AdeganStory = {
-  id: "latihan-satu",
-  judul: "Latihan 1: ulat bilangan",
-  sumber: "Materi: latihan bilangan yang hilang",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      SUARA_S1,
-      tambah(0, judul("Latihan 1")),
-      tambah(idx(SUARA_S1, "empat"), ...ruasS(0, 14)),
-      tambah(idx(SUARA_S1, "lima"), ...ruasS(1, 15)),
-      tambah("kosong,", ...ruasS(2, null)),
-      tambah(idx(SUARA_S1, "tujuh"), ...ruasS(3, 17), bulat("su-h", 274, 70, 18, W.hijau, W.biru, { tebal: 1.8 }), emo("su-m", 274, 76, "\u{1F60A}", 16)),
-    ),
-    k(
-      SUARA_S2,
-      tambah("Pilih", ...angka("sk0", 30, 130, 15, 60, 46, W.langit, 22), ...angka("sk1", 120, 130, 16, 60, 46, W.langit, 22), ...angka("sk2", 210, 130, 18, 60, 46, W.langit, 22)),
-      sorotkan("apa", "su2"),
-    ),
-    k(
-      SUARA_S3,
-      redamkan(0, "su2"),
-      sorotkan("Seret", "sk1-k"),
-      ubah(idx(SUARA_S3, "kosong"), { id: "sk1-k", x: 139, y: 47, sorot: false }, { id: "sk1-t0", x: 169, y: 78 }),
-      ubah("Benar!", { id: "sut2", isi: "" }),
-      ...P_S3.flatMap((p, i) => [...(i > 0 ? [redamkan(p, `su${i - 1}`)] : []), sorotkan(p, `su${i}`)]),
-    ),
-    k(
-      SUARA_S4,
-      redamkan(0, "su3"),
-      tambah(0, panah("pr", 230, 112, -190, 0, W.merah, 2.6)),
-      ...P_S4.flatMap((p, i) => [...(i > 0 ? [redamkan(p, `su${4 - i}`)] : []), sorotkan(p, `su${3 - i}`)]),
-      tambah("Cocok!", cocok2("sc", 150, 190)),
-    ),
-    k(
-      SUARA_S5,
-      redamkan(0, "su0"),
-      hapus(0, "pr", "sc"),
-      tambah(0, emo("uc", 150, 190, "\u{1F4AC}", 30)),
-      sorotkan("hilang", "sk1-k"),
-      tambah("enam", teks("sh", 150, 160, "yang hilang: 16", 13, W.hijau)),
-    ),
-  ],
-};
-function cocok2(id: string, x: number, y: number): Obj {
-  return emo(id, x, y, "\u{2705}", 22);
-}
-
-/* ------------------------------ 4. Latihan 2: roket hitung mundur ------------------------------ */
-const SUARA_O1 = "Latihan dua. Kira punya sebuah roket. Ada lima lampu bertanda lima belas sampai sebelas.";
-const SUARA_O2 = "Kita hitung mundur dari lima belas. Ketuk lampu satu per satu, mulai dari bilangan yang paling besar.";
-const SUARA_O3 = "Lima belas, empat belas, tiga belas. Tiga lampu sudah padam.";
-const SUARA_O4 = "Dua belas, sebelas. Semua lampu padam, dan roket meluncur!";
-const SUARA_O5 = "Lampu terakhir yang padam bertanda sebelas. Ucapkan lagi mengikuti suara guru. Lima belas sampai sebelas, mundur satu demi satu.";
-const OX = [40, 95, 150, 205, 260];
-const LAMPU = (i: number): Obj[] => [
-  bulat(`lm${i}`, OX[i], 70, 20, WB.kuning, W.biru, { tebal: 1.8 }),
-  teks(`lmt${i}`, OX[i], 76, String(15 - i), 15, W.biru),
-];
-const padam = (at: number, i: number): Aksi => ubah(at, { id: `lm${i}`, warna: W.abu, sorot: false });
-const P_O3 = urutBil(SUARA_O3, [15, 14, 13]);
-const P_O4 = urutBil(SUARA_O4, [12, 11]);
-
-export const ADEGAN_LATIHAN_DUA: AdeganStory = {
-  id: "latihan-dua",
-  judul: "Latihan 2: roket hitung mundur",
-  sumber: "Materi: latihan menghitung mundur",
+export const ADEGAN_KISI_RAK: AdeganStory = {
+  id: "kisi-rak",
+  judul: "Rak seperti kisi",
+  sumber: "Materi: rak sebagai kisi",
   latar: "#EFF6FF",
   ketukan: [
     k(
-      SUARA_O1,
-      tambah(0, judul("Latihan 2")),
-      tambah("roket.", emo("rk", 150, 170, "\u{1F680}", 40)),
-      tambah("lampu", [0, 1, 2, 3, 4].flatMap(LAMPU)),
+      SUARA_K1,
+      tambah(0, judul("Rak seperti kisi")),
+      tambah("Kaka", ...orang("kk", 278, 182, E.kaka, "Kaka")),
+      tambah("kisi.", ...kisi("ks", KS.x, KS.y, KS.s, W.langit, W.hijauMuda, rentang(1, 20))),
+      tambah("atas", ...ANGKA(1, 10), teks("ba", 150, 128, "atas: 1 sampai 10", 9, W.biru)),
+      tambah("bawah", ...ANGKA(11, 20), teks("bb", 150, 144, "bawah: 11 sampai 20", 9, W.hijau)),
     ),
     k(
-      SUARA_O2,
-      tambah("Ketuk", emo("tg", OX[0], 118, "\u{1F446}", 22)),
-      sorotkan("Ketuk", "lm0"),
-      tambah("besar.", teks("tp", 150, 194, "mulai dari 15", 11, W.ungu)),
+      SUARA_K2,
+      hapus(0, "ba", "bb"),
+      sorotkan(K2_3, "ksc3"),
+      tambah(K2_13, turun("t3", 3)),
+      sorotkan(K2_13, "ksc13"),
+      sorotkan(K2_7, "ksc7"),
+      tambah(K2_17, turun("t7", 7)),
+      sorotkan(K2_17, "ksc17"),
     ),
     k(
-      SUARA_O3,
-      padam(P_O3[0], 0),
-      sorotkan(P_O3[1], "lm1"),
-      ubah(P_O3[1], { id: "tg", x: OX[1] }),
-      padam(P_O3[1], 1),
-      sorotkan(P_O3[2], "lm2"),
-      ubah(P_O3[2], { id: "tg", x: OX[2] }),
-      padam(P_O3[2], 2),
-      tambah("padam.", teks("pp", 150, 140, "tiga lampu padam", 10, W.merah)),
-    ),
-    k(
-      SUARA_O4,
-      hapus(0, "pp"),
-      ubah(P_O4[0], { id: "tg", x: OX[3] }),
-      padam(P_O4[0], 3),
-      ubah(P_O4[1], { id: "tg", x: OX[4] }),
-      padam(P_O4[1], 4),
-      ubah("meluncur!", { id: "rk", y: 128 }),
-      tambah("meluncur!", emo("ap", 150, 196, "\u{1F525}", 20)),
-    ),
-    k(
-      SUARA_O5,
-      hapus(0, "tg", "ap"),
-      sorotkan("terakhir", "lmt4"),
-      tambah("sebelas.", ...kartu("lt", 60, 150, 180, 30, W.emas, ["lampu terakhir: 11"], 11)),
-      tambah(idx(SUARA_O5, "Ucapkan"), emo("uc", 40, 190, "\u{1F4AC}", 24)),
+      SUARA_K3,
+      tambah("sepuluh", ...kartu("kb", 40, 116, 220, 22, W.krem, ["bawah: 10 dan nomor atasnya"], 9.4)),
+      tambah(idx(SUARA_K3, "Tiga"), ...kartu("k13", 80, 146, 140, 22, W.pink, ["13: 10 dan 3"], 10)),
+      ubah(idx(SUARA_K3, "tiga", 2), { id: "ksa3", warna: W.merah }, { id: "ksa13", warna: W.merah }),
     ),
   ],
 };
 
-/* ------------------------------ 5. Latihan 3: garis bilangan dua belas sampai sembilan belas ------------------------------ */
-const SUARA_G1 = "Latihan tiga. Garis bilangan ini dari dua belas sampai sembilan belas, tetapi ada dua tanda tanya.";
-const SUARA_G2 = "Ketuk tanda tanya yang pertama. Dari tiga belas maju satu langkah, bilangannya empat belas.";
-const SUARA_G3 = "Ketuk tanda tanya yang kedua. Dari delapan belas mundur satu langkah, bilangannya tujuh belas.";
-const SUARA_G4 = "Kodok mulai di sembilan belas dan mundur tiga langkah. Delapan belas, tujuh belas, enam belas.";
-const SUARA_G5 = "Pilih bilangan tempat kodok berhenti. Pilihannya lima belas, enam belas, atau tujuh belas. Enam belas yang benar.";
-const LY = 110;
-const xg = (n: number): number => glX(n, 12, 19);
-const labelG = (n: number, isi: string, warna: string = W.biru): Obj => teks(`lat${n}`, xg(n), LY + 21, isi, 11, warna);
-const kodokG = (n: number) => ({ id: "kd", x: xg(n), y: LY - 12 });
-const P_G4 = urutBil(SUARA_G4, [18, 17, 16], "mundur");
+/* ------------------------------ 7. Semua akuarium beres ------------------------------ */
+const SUARA_H1 = "Abang memberi pakan nomor satu sampai tujuh, Mamah enam belas sampai dua puluh. Kaka menyalakan sisa lampu.";
+const SUARA_H2 = "Kini dua puluh akuarium mendapat pakan tepat sekali, semua lampu menyala, dan label terpasang rapi.";
+const SUARA_H3 = "Abang ingin menjual pakan dan ikan, tetapi bungkus pakan dan kantong ikan masih berserakan. Menurutmu, bagaimana menghitungnya dengan cepat?";
+/** Bungkus pakan miring di meja: `bk{i}` dan pita labelnya `bk{i}-l`. */
+const BUNGKUS: [number, number, number][] = [[46, 74, -18], [92, 96, 12], [70, 128, 30], [130, 70, -8], [118, 120, -25], [160, 104, 20], [56, 104, 8]];
+const bungkus = (): Obj[] =>
+  BUNGKUS.flatMap(([x, y, r], i) => [
+    kotak(`bk${i}`, x, y, 16, 22, "#FDBA74", W.coklat, { rx: 2, tebal: 1.2, rot: r }),
+    kotak(`bk${i}-l`, x + 2, y + 8, 12, 5, W.krem, undefined, { rx: 1, rot: r, z: 1 }),
+  ]);
+/** Kantong ikan kecil berserakan: `kn{i}` dan ikan di dalamnya `kf{i}`. */
+const KANTONG: [number, number][] = [[196, 70], [236, 84], [206, 112], [250, 120], [180, 132]];
+const kantong = (): Obj[] =>
+  KANTONG.flatMap(([x, y], i) => [kotak(`kn${i}`, x, y, 26, 24, "#E0F2FE", "#0EA5E9", { rx: 10, tebal: 1.6 }), ...ikan(`kf${i}`, x + 13, y + 13, ["#FB923C", "#F59E0B", "#22D3EE"][i % 3], 0.45)]);
 
-export const ADEGAN_LATIHAN_TIGA: AdeganStory = {
-  id: "latihan-tiga",
-  judul: "Latihan 3: garis bilangan",
-  sumber: "Materi: latihan garis bilangan",
-  latar: "#FEFCE8",
+export const ADEGAN_BERES: AdeganStory = {
+  id: "semua-beres",
+  judul: "Semua akuarium beres",
+  sumber: "Materi: hasil dan masalah berikutnya",
+  latar: "#ECFDF5",
   ketukan: [
     k(
-      SUARA_G1,
-      tambah(0, judul("Latihan 3")),
-      tambah("garis", ...garisBilangan("la", 12, 19, LY, (n) => n !== 14 && n !== 17)),
-      tambah("tanda", labelG(14, "?", W.merah), labelG(17, "?", W.merah)),
+      SUARA_H1,
+      tambah(0, judul("Semua akuarium beres"), ...rakLengkap(), ...rentang(8, 15).flatMap(pakan)),
+      ubah(0, ...rentang(12, 20).map(nyala)),
+      tambah("Abang", ...orang("ab", 22, 182, E.abang, "Abang")),
+      tambah("tujuh,", ...rentang(1, 7).flatMap(pakan), teks("r17", 90, 170, "1 sampai 7", 9, W.coklat)),
+      tambah("Mamah", ...orang("mm", 278, 182, E.mamah, "Mamah")),
+      tambah(idx(SUARA_H1, "puluh."), ...rentang(16, 20).flatMap(pakan), teks("r16", 210, 170, "16 sampai 20", 9, W.coklat)),
+      tambah("Kaka", ...orang("kk", 150, 184, E.kaka, "Kaka")),
+      ubah("lampu.", ...rentang(1, 11).map(nyala)),
     ),
     k(
-      SUARA_G2,
-      sorotkan("pertama.", "lat14"),
-      tambah("Dari", emo("kd", xg(13), LY - 12, "\u{1F438}", 24)),
-      ubah(bilKe(SUARA_G2, 14), { id: "lat14", isi: "14", warna: W.hijau }, kodokG(14)),
+      SUARA_H2,
+      hapus(0, "r17", "r16", "kk", "kk-n", "kk-pita"),
+      tambah("puluh", ...kartu("hs", 70, 158, 160, 20, W.emas, ["20 akuarium beres"], 9.4)),
+      tambah("sekali,", emo("ok", 60, 172, E.benar, 12)),
+      sorotkan("menyala,", ...rentang(1, 20).map((n) => `lm${n}`)),
+      tambah("rapi.", emo("jp", 246, 174, E.jempol, 16)),
     ),
     k(
-      SUARA_G3,
-      redamkan(0, "lat14"),
-      sorotkan("kedua.", "lat17"),
-      ubah("Dari", kodokG(18)),
-      ubah(bilKe(SUARA_G3, 17), { id: "lat17", isi: "17", warna: W.hijau }, kodokG(17)),
-    ),
-    k(
-      SUARA_G4,
-      redamkan(0, "lat17"),
-      ubah("mulai", kodokG(19)),
-      ...P_G4.map((p, i) => ubah(p, kodokG(18 - i))),
-      tambah("tiga", ...kartu("kg", 60, 160, 180, 30, W.merahMuda, ["mundur tiga langkah"], 10.5)),
-    ),
-    k(
-      SUARA_G5,
-      hapus(0, "kg-k", "kg-t0"),
-      tambah("Pilih", ...angka("gp0", 30, 144, 15, 60, 38, W.langit, 20), ...angka("gp1", 120, 144, 16, 60, 38, W.langit, 20), ...angka("gp2", 210, 144, 17, 60, 38, W.langit, 20)),
-      sorotkan(bilKe(SUARA_G5, 16, 2), "gp1-k"),
-      tambah("benar.", cocok2("gc", 150, 198)),
+      SUARA_H3,
+      bersih(0),
+      tambah(0, judul("Pakan dan ikan berserakan"), kotak("mj", 20, 56, 262, 106, "#F5D0A9", W.coklat, { rx: 8, tebal: 2.2, z: -4 })),
+      tambah("Abang", ...orang("ab", 30, 186, E.abang, "Abang")),
+      tambah("menjual", emo("lpk", 268, 46, E.lapak, 20)),
+      tambah("bungkus", ...bungkus()),
+      tambah("kantong", ...kantong()),
+      sorotkan("berserakan.", "mj"),
+      tambah("menghitungnya?", teks("tq", 170, 186, "berapa banyak?", 11, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 6. Penutup ------------------------------ */
-const SUARA_Z1 = "Mari kita ingat lagi. Menghitung maju, dari bilangan kecil ke bilangan besar. Menghitung mundur, dari bilangan besar ke bilangan kecil.";
-const SUARA_Z2 = "Langkahnya sama, satu demi satu. Kita bisa mencari bilangan yang hilang, bilangan sebelum, bilangan sesudah, dan bilangan di antara.";
-const SUARA_Z3 = "Sekarang giliranmu. Ketuk, seret, pilih jawaban, dan ucapkan lagi mengikuti suara guru.";
-const SUARA_Z4 = "Sampai jumpa, anak-anak. Terima kasih sudah belajar bersama Igil. Sampai bertemu lagi!";
+/* ------------------------------ 8. Penutup ------------------------------ */
+const SUARA_Q1 = "Ingat, ya. Menghitung maju, bilangannya bertambah satu. Menghitung mundur, bilangannya berkurang satu.";
+const SUARA_Q2 = "Sesudah berarti satu lebih banyak, sebelum berarti satu lebih sedikit. Nomor yang hilang dicari dari tetangganya.";
+const SUARA_Q3 = "Rak bernomor juga seperti kisi. Terima kasih, Igil, Kaka, Abang, dan Mamah!";
+const baris = (i: number, y: number, h: number, warna: string): Obj => kotak(`p${i}`, 14, y, 272, h, warna, W.biru, { rx: 8, tebal: 1.6, z: -2 });
+const kiri = (id: string, y: number, isi: string, u = 9.4, warna: string = W.biru): Obj => teks(id, 24, y, isi, u, warna, { anchor: "start" });
+const kanan = (id: string, y: number, isi: string, u = 9, warna: string = W.ungu): Obj => teks(id, 278, y, isi, u, warna, { anchor: "end" });
 
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup",
-  judul: "Penutup: maju dan mundur",
-  sumber: "Materi: rangkuman dan penutup",
+  judul: "Penutup: ingat cara menghitung",
+  sumber: "Materi: ringkasan dan penutup",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      SUARA_Z1,
-      tambah(0, judul("Kita ingat lagi")),
-      tambah("maju,", ...kartu("zm", 20, 40, 260, 44, W.hijauMuda, ["maju: kecil ke besar", "10, 11, 12, 13"], 10)),
-      tambah("mundur,", ...kartu("zn", 20, 98, 260, 44, W.merahMuda, ["mundur: besar ke kecil", "13, 12, 11, 10"], 10)),
+      SUARA_Q1,
+      tambah(0, judul("Ingat, ya!")),
+      tambah("maju,", baris(0, 32, 40, W.hijauMuda), kiri("p0a", 56, "maju: 8, 9, 10, 11")),
+      tambah("bertambah", kanan("p0b", 56, "bertambah 1", 9, W.hijau)),
+      tambah("mundur,", baris(1, 78, 40, W.lavender), kiri("p1a", 102, "mundur: 20, 19, 18, 17")),
+      tambah("berkurang", kanan("p1b", 102, "berkurang 1")),
     ),
     k(
-      SUARA_Z2,
-      tambah("Langkahnya", ...kartu("zl", 20, 152, 260, 30, W.emas, ["langkah sama: satu demi satu"], 10.5)),
-      tambah("hilang,", teks("zh", 150, 196, "hilang, sebelum, sesudah, di antara", 9.4, W.ungu)),
+      SUARA_Q2,
+      tambah("Sesudah", baris(2, 124, 30, W.krem), kiri("p2a", 143, "sesudah: 1 lebih banyak", 8.6, W.hijau)),
+      tambah("sebelum", kanan("p2b", 143, "sebelum: 1 lebih sedikit", 8.6)),
+      tambah("hilang", baris(3, 160, 32, W.pink), kiri("p3a", 180, "12, ?, 14: hilang 13", 9.4, W.merah)),
+      tambah("tetangganya.", kanan("p3b", 180, "lihat tetangga", 8.6)),
     ),
     k(
-      SUARA_Z3,
+      SUARA_Q3,
       bersih(0),
-      tambah(0, judul("Giliranmu")),
-      tambah("Ketuk,", ...kartu("zq", 20, 50, 80, 40, W.langit, ["ketuk"], 12), emo("zq2", 60, 124, "\u{1F446}", 30)),
-      tambah("seret,", ...kartu("zr", 110, 50, 80, 40, W.hijauMuda, ["seret"], 12), emo("zr2", 150, 124, "\u{2194}", 30)),
-      tambah("pilih", ...kartu("zs", 200, 50, 80, 40, W.pink, ["pilih"], 12), emo("zs2", 240, 124, "\u{2705}", 30)),
+      tambah(0, judul("Terima kasih!")),
+      tambah("kisi.", ...kisi("qk", 50, 34, 20, W.langit, W.hijauMuda, [], 8)),
+      sorotkan("kisi.", "qkc13", "qkc17"),
+      tambah("Igil,", ...orang("ig", 45, 150, E.igil, "Igil")),
+      tambah("Kaka,", ...orang("kk", 115, 150, E.kaka, "Kaka")),
+      tambah("Abang,", ...orang("ab", 185, 150, E.abang, "Abang")),
+      tambah("Mamah!", ...orang("mm", 255, 150, E.mamah, "Mamah")),
     ),
-    k(SUARA_Z4, bersih(0), tambah(0, judul("Sampai jumpa!"), emo("zo", 150, 110, "\u{1F989}", 56)), tambah("Terima", ...kartu("zt", 60, 140, 180, 34, W.krem, ["terima kasih, Igil"], 11))),
   ],
 };

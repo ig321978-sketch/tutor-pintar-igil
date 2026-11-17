@@ -192,10 +192,10 @@ export const ADEGAN_LUAR_TOPLES_TERAPAN: AdeganStory = {
 };
 
 /* ------------------------------ 8. Ringkasan ------------------------------ */
-const SUARA_Z1 = "Kita sudah melihat tiga metode global untuk menghitung sampai dua puluh. Semuanya membantu Abang menyiapkan ikan.";
-const SUARA_Z2 = "Double Ten Frame: isi bingkai pertama sampai penuh, lalu sisanya di bingkai kedua.";
-const SUARA_Z3 = "Rekenrek: geser manik kawat atas sepuluh, lalu kawat bawah untuk sisanya.";
-const SUARA_Z4 = "Estimation Jar: perkirakan isi toples dulu, lalu buktikan dengan menghitung.";
+const SUARA_Z1 = "Kita sudah melihat tiga metode global. Mana yang paling cocok untuk Abang? Itu tergantung masalahnya.";
+const SUARA_Z2 = "Double Ten Frame cocok bila ikannya banyak dan harus rapi: isi bingkai pertama sampai penuh, lalu sisanya di bingkai kedua.";
+const SUARA_Z3 = "Rekenrek cepat dibaca, tetapi kurang cocok untuk benda yang tidak bisa digeser seperti manik. Kawat atas sepuluh, kawat bawah sisanya.";
+const SUARA_Z4 = "Estimation Jar cocok saat belum sempat menghitung: perkirakan dulu. Tetapi hasil akhirnya tetap harus dibuktikan dengan menghitung.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
@@ -207,8 +207,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       SUARA_Z1,
       tambah(0, judul("Ringkasan")),
       tambah("tiga", emo("rk", 150, 76, E.bintang, 40), ...kartu("rt", 60, 98, 180, 26, W.emas, ["3 metode global"], 10)),
-      tambah("puluh.", teks("sd", 150, 144, "sampai 20", 10, W.ungu)),
-      tambah("ikan.", ...kawanan("ik", [{ x: 110, y: 174 }, { x: 150, y: 174 }, { x: 190, y: 174 }], [WARNA_IKAN.guppy[0], WARNA_IKAN.koki, WARNA_IKAN.neon], 1.1)),
+      tambah("global.", teks("sd", 150, 144, "sampai 20", 10, W.ungu)),
+      tambah("Abang?", ...kawanan("ik", [{ x: 110, y: 174 }, { x: 150, y: 174 }, { x: 190, y: 174 }], [WARNA_IKAN.guppy[0], WARNA_IKAN.koki, WARNA_IKAN.neon], 1.1)),
     ),
     k(SUARA_Z2, bersih(0), tambah(0, judul("Ringkasan")), tambah("Double", ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], [NAMA_METODE[0], "bingkai pertama penuh, sisanya di bingkai kedua"], 9))),
     k(SUARA_Z3, tambah("Rekenrek:", ...kartu("r1", 14, 86, 272, 44, WARNA_METODE[1], [NAMA_METODE[1], "kawat atas 10, kawat bawah sisanya"], 9.4))),

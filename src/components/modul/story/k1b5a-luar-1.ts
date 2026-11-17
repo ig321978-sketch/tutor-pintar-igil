@@ -16,7 +16,7 @@ export const isi1 = (dari: number, sampai: number, warna: string = W.merah): Obj
 export const isi2 = (dari: number, sampai: number, warna: string = W.merah): Obj[] => isiBingkai("b2", B.x2, B.y, dari, sampai, warna, B.s);
 
 /* ------------------------------ 1. Pembuka ------------------------------ */
-const SUARA_O1 = "Ikan Abang sudah berlabel. Kaka bercerita, anak-anak di negara lain juga belajar menghitung sampai dua puluh. Kita lihat tiga metode global.";
+const SUARA_O1 = "Di rak toko ikan, Kaka menemukan poster tentang tiga cara menghitung sampai dua puluh. Abang bertanya, mana yang paling cocok untuk lapakku?";
 const SUARA_O2 = "Tiga metode itu: Double Ten Frame, Rekenrek, dan Estimation Jar.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Dua Bingkai Sepuluh, Manik Hitung, dan Toples Tebakan.";
 const SUARA_O4 = "Semua metode membantu kita melihat sepuluh dulu, lalu sisanya.";
@@ -31,7 +31,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       SUARA_O1,
       tambah(0, judul("Tiga metode global"), ...kawanan("ik", [{ x: 116, y: 76 }, { x: 150, y: 70 }, { x: 184, y: 76 }], [WARNA_IKAN.guppy[0], WARNA_IKAN.koki, WARNA_IKAN.neon], 1.1)),
       tambah("Kaka", ...orang("kk", 40, 120, E.kaka, "Kaka")),
-      tambah("negara", emo("gl", 262, 110, E.dunia, 40)),
+      tambah("poster", emo("gl", 262, 110, E.bintang, 40)),
       tambah("puluh.", teks("sd", 150, 118, "sampai 20", 10, W.ungu)),
       tambah("tiga", ...kartu("pk", 50, 146, 200, 32, W.emas, ["3 metode global"], 11)),
     ),

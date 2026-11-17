@@ -152,7 +152,7 @@ const kelompok =
 const C = kelompok("benda");
 export const CONCRETE: SoalMisi[] = [
   C(1, "klik", "Misi Festival 2: bendera panggung", "Pak RT memasang hiasan festival. Bantu Igil memeriksa bahan hiasannya.", [
-    { tipe: "ciri", benda: bd("segitiga", "bendera", { putar: 20, ragam: "sama" }), tanya: "sudut" },
+    { tipe: "ciri", benda: bd("segitiga", "bendera", { putar: 20, ragam: "sama" }), tanya: "sudut", klaim: { tokoh: "Igil", angka: 4, alasan: "Igil menghitung ujung atas dua kali. Sentuh tiap sudut satu kali saja." } },
     { tipe: "buru", sasaran: "lengkung", isi: [bd("segitiga", "pizza"), bd("lengkung", "donat"), bd("segiempat", "bingkai"), bd("segitiga", "keju"), bd("segiempat", "cokelat"), bd("lengkung", "jam"), bd("segiempat", "amplop")] },
     { tipe: "paku", bangun: [[[0, 0], [2, 0], [2, 2], [0, 2]], [[3, 2], [6, 2], [6, 4], [3, 4]]] },
     misteri(["tanpa-sudut", "menggelinding"], [bd("segitiga", "keju"), bd("lengkung", "piring"), bd("segiempat", "bingkai")]),
@@ -174,7 +174,7 @@ export const CONCRETE: SoalMisi[] = [
 const P = kelompok("diagram");
 export const PICTORIAL: SoalMisi[] = [
   P(1, "klik", "Misi Festival 5: pola potong", "Abang menggambar pola potong bahan dengan garis saja.", [
-    { tipe: "ciri", benda: bd("segiempat", "pola", { putar: 45, ragam: "persegi" }), tanya: "sudut" },
+    { tipe: "ciri", benda: bd("segiempat", "pola", { putar: 45, ragam: "persegi" }), tanya: "sudut", klaim: { tokoh: "Abang", angka: 4, alasan: "Walau dibuat miring, segi empat tetap punya empat sudut." } },
     { tipe: "buru", sasaran: "lengkung", isi: [bd("lengkung", "pola"), bd("lengkung", "pola", { ragam: "lonjong" }), bd("segitiga", "pola"), bd("lengkung", "pola", { skala: 1 }), bd("lengkung", "pola", { ragam: "lonjong", putar: 90 }), bd("segiempat", "pola"), bd("lengkung", "pola"), bd("lengkung", "pola", { skala: 1 }), bd("lengkung", "pola", { ragam: "lonjong" })] },
     { tipe: "paku", bangun: [[[0, 0], [2, 0], [1, 2]], [[0, 3], [0, 4], [2, 4]], [[3, 1], [6, 1], [6, 4], [3, 4]]] },
     misteri(["tiga-sisi"], [bd("segiempat", "pola", { ragam: "panjang" }), bd("lengkung", "pola"), bd("segitiga", "pola", { ragam: "siku", putar: 90 })]),
@@ -196,7 +196,7 @@ export const PICTORIAL: SoalMisi[] = [
 const A = kelompok("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(1, "klik", "Misi Festival 8: kartu kata", "Kaka menulis nama bentuk dan cirinya di kartu kecil, tanpa gambar.", [
-    { tipe: "ciri", benda: L("lengkung"), tanya: "sudut" },
+    { tipe: "ciri", benda: L("lengkung"), tanya: "sudut", klaim: { tokoh: "Igil", angka: 1, alasan: "Igil mengira titik awal tepi lengkung itu sudut. Tepi lengkung tidak punya sudut." } },
     { tipe: "buru", sasaran: "segiempat", isi: kt("segiempat", "3sudut", "4sisi", "lengkung", "4sudut", "segiempat", "0sudut", "4sisi", "segiempat") },
     { tipe: "paku", bangun: [[[0, 0], [2, 0], [1, 2]], [[3, 0], [6, 0], [6, 2], [3, 2]]] },
     misteri(["tiga-sudut"], kt("segiempat", "segitiga", "lengkung")),

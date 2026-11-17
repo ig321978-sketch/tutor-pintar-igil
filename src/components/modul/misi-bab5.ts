@@ -3,7 +3,7 @@
  * Diuji di scripts/uji-lab-kelas1.mjs.
  *
  * Simulasi bertahap: satu laboratorium bilangan yang alatnya bertambah per sub-bab
- * (A: kini Wadah Sekat Sepuluh, Misi Lapak Ikan bagian satu (ikan-k1b5a); dulu Lab Puluhan dan Satuan sampai 20; B: + Maju dan Mundur, Ulat dan Kisi; C: + nilai tempat
+ * (A: kini Wadah Sekat Sepuluh, Misi Lapak Ikan bagian satu (ikan-k1b5a); dulu Lab Puluhan dan Satuan sampai 20; B: kini Rak Akuarium Bernomor, Misi Lapak Ikan bagian satu (rak-k1b5b); dulu Maju dan Mundur, Ulat dan Kisi; C: + nilai tempat
  * dan tab Odometer; D: semua alat + Banding dan Urutan + bandingkan nilai tempat, sekaligus
  * simulasi pencapaian misi bab ini).
  */
@@ -11,6 +11,7 @@
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanIkan } from "./ikan-k1b5a/logika";
+import type { KeadaanRak } from "./rak-k1b5b/logika";
 
 export type KeadaanPuluhan = {
   alat: "puluhan";
@@ -56,7 +57,7 @@ export type KeadaanBandingJeruk = {
   garis: boolean;
 };
 
-export type KeadaanBab5 = KeadaanPuluhan | KeadaanDeret | KeadaanBandingJeruk | KeadaanSelesai | KeadaanIkan;
+export type KeadaanBab5 = KeadaanPuluhan | KeadaanDeret | KeadaanBandingJeruk | KeadaanSelesai | KeadaanIkan | KeadaanRak;
 
 const pul = (k: KeadaanBab5): k is KeadaanPuluhan => k.alat === "puluhan";
 const der = (k: KeadaanBab5): k is KeadaanDeret => k.alat === "deret";
@@ -88,14 +89,20 @@ export const MISI_A: DefMisi<KeadaanBab5>[] = [
   { id: "a-ulang", teks: "Kembalikan satu ikan ke kantong, lalu hitung lagi sampai habis. Hasilnya tetap sama.", wajib: false, cek: (k) => ikan(k) && k.ulang.some((id) => habis(k, id)) },
 ];
 
-/** Sub-Bab B: menghitung maju dan mundur, bilangan yang hilang, kisi 1 sampai 20. */
+/**
+ * Sub-Bab B: Misi Lapak Ikan bagian satu, rak akuarium bernomor (Simulasi "Rak Akuarium Bernomor", rak-k1b5b). Label nomor yang jatuh sama dengan
+ * HILANG_SIM di rak-k1b5b/data.ts (diuji di scripts/uji-rak-k1b5b.mjs): sembilan dan delapan belas, berbeda dari Story (tiga belas dan tujuh belas).
+ */
+const rak = (k: KeadaanBab5): k is KeadaanRak => k.alat === "rak";
+export const HILANG_RAK_B = [9, 18] as const;
+const pakanSekali = (k: KeadaanRak) => k.pakan.slice(1).every((p) => p === 1);
 export const MISI_B: DefMisi<KeadaanBab5>[] = [
-  { id: "b-maju", teks: "Tekan Maju 3 kali. Lihat bilangan bergerak ke kanan.", wajib: true, cek: (k) => der(k) && k.maju >= 3 },
-  { id: "b-mundur", teks: "Tekan Mundur 3 kali. Lihat bilangan bergerak ke kiri.", wajib: true, cek: (k) => der(k) && k.mundur >= 3 },
-  { id: "b-mulai", teks: "Ubah Mulai dari menjadi 18, lalu maju sampai 20.", wajib: true, cek: (k) => der(k) && k.awal === 18 && k.n === 20 },
-  { id: "b-ulat", teks: "Sembunyikan bilangan sekarang di ulat bilangan. Tebak, lalu buka.", wajib: true, cek: (k) => der(k) && k.sembunyi },
-  { id: "b-tetangga", teks: "Pindah ke bilangan 16. Lihat tetangga sebelum dan sesudahnya.", wajib: false, cek: (k) => der(k) && k.tetangga && k.n === 16 },
-  { id: "b-ingat", teks: "Ingat Sub-Bab A: buat bilangan 20 di Lab Bilangan.", wajib: false, cek: (k) => pul(k) && k.n === 20 },
+  { id: "b-maju", teks: "Pilih nomor mulai, lalu hitung maju: tekan Maju lima langkah berturut-turut.", wajib: true, cek: (k) => rak(k) && k.terbaikMaju >= 5 },
+  { id: "b-mundur", teks: "Hitung mundur dari nomor lain: tekan Mundur lima langkah berturut-turut.", wajib: true, cek: (k) => rak(k) && k.terbaikMundur >= 5 },
+  { id: "b-label", teks: "Pasang lagi dua label nomor yang jatuh. Lihat nomor sebelum dan sesudahnya.", wajib: true, cek: (k) => rak(k) && HILANG_RAK_B.every((n) => k.label[String(n)] === n) },
+  { id: "b-pakan", teks: "Beri pakan semua akuarium rak cupang tepat sekali, tidak ada yang terlewat.", wajib: true, cek: (k) => rak(k) && pakanSekali(k) },
+  { id: "b-tetangga", teks: "Nyalakan Tetangga, lalu berdiri di akuarium sembilan belas. Sebutkan sebelum dan sesudahnya.", wajib: false, cek: (k) => rak(k) && k.tetangga && k.posisi === 19 },
+  { id: "b-kisi", teks: "Nyalakan Kisi, lalu turun satu tingkat. Nomor di bawahnya tambah sepuluh.", wajib: false, cek: (k) => rak(k) && k.kisi && k.turun >= 1 },
 ];
 
 /** Sub-Bab C: puluhan dan satuan di papan nilai tempat, odometer bilangan. */

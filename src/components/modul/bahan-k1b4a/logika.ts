@@ -92,8 +92,11 @@ export const KARTU_KATA: Record<string, KartuKata> = {
 
 /* ------------------------------ Langkah soal ------------------------------ */
 export type Langkah =
-  /** Metode IGIL: satu benda. Ketuk tiap sudut (atau sisi lurus), lalu jawab banyaknya. Lengkung: nol. */
-  | { tipe: "ciri"; benda: Benda; tanya: "sisi" | "sudut" }
+  /**
+   * Metode IGIL: satu benda. Ketuk tiap sudut (atau sisi lurus), lalu jawab banyaknya. Lengkung: nol.
+   * `klaim` = soal "Cari kesalahan": seorang tokoh sudah menjawab; anak menilai benar atau salah dulu. `alasan` menjelaskan kesalahan tokoh.
+   */
+  | { tipe: "ciri"; benda: Benda; tanya: "sisi" | "sudut"; klaim?: Klaim }
   /** Shape Hunt: ketuk semua benda yang bentuknya sama dengan sasaran, lalu jawab banyaknya. */
   | { tipe: "buru"; sasaran: Bentuk; isi: Benda[] }
   /** Geoboard: karet membentuk beberapa bangun di papan paku. Ketuk paku sudut, lalu jawab banyak sudut semuanya. */
@@ -102,6 +105,10 @@ export type Langkah =
   | { tipe: "misteri"; syarat: Syarat[]; pilihan: Benda[] }
   /** Mystery Shape untuk suara: keluarkan dari kantong semua benda yang memenuhi petunjuk, lalu jawab banyaknya. */
   | { tipe: "kantong"; syarat: Syarat; isi: Benda[] };
+
+export type Klaim = { tokoh: "Igil" | "Kaka" | "Abang" | "Mamah"; angka: number; alasan: string };
+/** Klaim tokoh benar bila angkanya sama dengan kunci. */
+export const klaimBenar = (l: Extract<Langkah, { tipe: "ciri" }>): boolean => l.klaim !== undefined && l.klaim.angka === kunciLangkah(l);
 
 export type LangkahSoal = { metode: Metode; cara: Cara; judul: string; suara: string; langkah: Langkah };
 export type SoalMisi = { nomor: number; judul: string; cerita: string; cara: Cara; langkah: LangkahSoal[] };
@@ -147,6 +154,7 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara): string {
   switch (l.tipe) {
     case "ciri": {
       const apa = l.tanya === "sisi" ? "sisi lurus" : "sudut";
+      if (l.klaim) return `Cari kesalahan. ${l.klaim.tokoh} bilang, ${apa}nya ${kata(l.klaim.angka)}. Benar atau salah? Periksa dulu, lalu jawab.`;
       if (rupa === "lambang") return `Pikirkan ${NAMA_BENTUK[l.benda.bentuk]}. Berapa ${apa}nya? ${akhir}`;
       if (l.benda.bentuk === "lengkung") return `Amati tepinya. Cari ${apa}nya, kalau ada. ${akhir}`;
       if (cara === "kanvas") return `Beri satu tanda pada tiap ${apa}. ${akhir}`;

@@ -6,8 +6,8 @@ import { bersih, hapus, k, sorotkan, tambah } from "./k1b4a-bantu";
 
 /* ------------------------------ 7. Bahan siap, teras berantakan ------------------------------ */
 const SUARA_H1 = "Bahan siap! Ada empat roda, dua atap, dan lima badan mainan.";
-const SUARA_H2 = "Tetapi teras penuh barang bekas yang berantakan. Botol, tali, dan potongan karton bercampur.";
-const SUARA_H3 = "Kata Mamah, besok barang di teras harus dipilah supaya mudah dicari.";
+const SUARA_H2 = "Tetapi teras jadi penuh barang bekas. Botol, tali, dan potongan karton bercampur.";
+const SUARA_H3 = "Mamah berkata, besok barang di teras harus dipilah supaya bahan mudah dicari.";
 const RODA = deret(4, 30, 26, 56);
 const ATAP = deret(2, 136, 28, 58);
 const BADAN = deret(5, 206, 20, 56);
@@ -29,7 +29,7 @@ export const ADEGAN_HASIL: AdeganStory = {
     k(
       SUARA_H2,
       tambah("teras", ...teras("ts", 10, 98, 280, 74), teks("tsn", 150, 186, "teras", 9, W.coklat)),
-      tambah("berantakan.", ...tutupKaleng("x0", 78, 122, 10), poligon("x1", 226, 150, segiEmpatRel(30, 20), WARNA_BAHAN.kardus, { rot: 20 })),
+      tambah("penuh", ...tutupKaleng("x0", 78, 122, 10), poligon("x1", 226, 150, segiEmpatRel(30, 20), WARNA_BAHAN.kardus, { rot: 20 })),
       tambah("Botol,", emo("x2", 124, 146, E.botol, 20)),
       tambah("tali,", emo("x3", 180, 128, E.tali, 20)),
       tambah("karton", karton("x4", 262, 120, 12, { rot: 160 }), karton("x5", 96, 156, 10, { rot: 60 })),
@@ -45,9 +45,9 @@ export const ADEGAN_HASIL: AdeganStory = {
 };
 
 /* ------------------------------ 8. Penutup ------------------------------ */
-const SUARA_Q1 = "Ingat, bentuk lengkung tanpa sisi lurus dan sudut, jadi bisa menggelinding.";
+const SUARA_Q1 = "Bentuk lengkung tanpa sisi lurus dan sudut, jadi bisa menggelinding.";
 const SUARA_Q2 = "Segitiga punya tiga sisi lurus dan tiga sudut. Segi empat punya empat sisi lurus dan empat sudut.";
-const SUARA_Q3 = "Bentuk tetap sama walau diputar. Terima kasih, Igil, Kaka, Abang, dan Mamah!";
+const SUARA_Q3 = "Coba pikirkan: kalau kamu memilah barang di teras, aturan apa yang kamu pakai?";
 const baris = (i: number, warna: string) => kotak(`p${i}`, 14, 32 + i * 50, 272, 42, warna, W.biru, { rx: 8, tebal: 1.6, z: -2 });
 
 export const ADEGAN_PENUTUP: AdeganStory = {
@@ -70,13 +70,12 @@ export const ADEGAN_PENUTUP: AdeganStory = {
     k(
       SUARA_Q3,
       bersih(0),
-      tambah(0, judul("Terima kasih!")),
-      tambah("Bentuk", ...tutupKaleng("q0", 96, 64, 16), karton("q1", 150, 68, 18, { rot: 180 }), poligon("q2", 206, 66, segiEmpatRel(32, 24), WARNA_BAHAN.kardus, { rot: 30 })),
-      tambah("diputar.", teks("tt", 150, 104, "tetap sama walau diputar", 10, W.ungu)),
-      tambah("Igil,", ...orang("ig", 45, 150, E.igil, "Igil")),
-      tambah("Kaka,", ...orang("kk", 115, 150, E.kaka, "Kaka")),
-      tambah("Abang,", ...orang("ab", 185, 150, E.abang, "Abang")),
-      tambah("Mamah!", ...orang("mm", 255, 150, E.mamah, "Mamah")),
+      tambah(0, judul("Coba pikirkan")),
+      tambah(0, ...tutupKaleng("q0", 96, 64, 16), karton("q1", 150, 68, 18, { rot: 180 }), poligon("q2", 206, 66, segiEmpatRel(32, 24), WARNA_BAHAN.kardus, { rot: 30 })),
+      tambah(0, teks("tt", 150, 104, "tetap sama walau diputar", 10, W.ungu)),
+      tambah("pikirkan:", ...orang("ig", 45, 160, E.igil, "Igil"), ...orang("kk", 255, 160, E.kaka, "Kaka")),
+      tambah("teras,", emo("tr", 150, 150, E.keranjang, 26)),
+      tambah("pakai?", ...kartu("pt", 70, 120, 160, 20, W.emas, ["aturan apa yang kamu pakai?"], 9)),
     ),
   ],
 };

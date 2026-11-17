@@ -1,13 +1,13 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { E, W, deret, emo, judul, kardus, karton, kotak, label, orang, poligon, segiEmpatRel, segitigaRel, semuaSisi, semuaSudut, sisiKe, sudutMutlak, teks, tutupKaleng, WARNA_BAHAN } from "./k1b4a-gambar";
+import { E, W, deret, emo, judul, kardus, karton, kartu, kotak, label, orang, poligon, segiEmpatRel, segitigaRel, semuaSisi, semuaSudut, sisiKe, sudutMutlak, teks, tutupKaleng, WARNA_BAHAN } from "./k1b4a-gambar";
 import { bersih, hapus, hitungMainan, k, sorotkan, tambah, ubah, urutKata } from "./k1b4a-bantu";
 
 /* Lanjutan "Bahan dari Gudang": sisi kardus segi empat, diputar tetap segitiga, lalu kartu bahan dengan kalimat. */
 
 /* ------------------------------ 4. Sisi kardus segi empat ------------------------------ */
 const SUARA_K1 = "Abang menunjuk sisi kardus. Sisi lurusnya satu, dua, tiga, empat. Sudutnya juga empat.";
-const SUARA_K2 = "Bentuknya segi empat, cocok untuk badan. Kotak korek kecil juga segi empat, sama seperti kardus besar.";
-const SUARA_K3 = "Abang menghitung kardus. Satu, dua, tiga, empat, lima. Ada lima kardus.";
+const SUARA_K2 = "Igil memegang kotak korek. \"Ini kecil sekali, pasti bentuknya lain.\" Kaka menghitung, ternyata empat sisi lurus dan empat sudut juga.";
+const SUARA_K3 = "Besar atau kecil, bentuknya tetap segi empat, cocok untuk badan. Abang menghitung kardus. Satu, dua, tiga, empat, lima.";
 const KD = sudutMutlak(150, 96, segiEmpatRel(120, 76));
 const KK = sudutMutlak(256, 96, segiEmpatRel(34, 22));
 const posK1 = urutKata(SUARA_K1, ["satu,", "dua,", "tiga,", "empat."], "lurusnya");
@@ -30,27 +30,30 @@ export const ADEGAN_KARDUS: AdeganStory = {
     k(
       SUARA_K2,
       hapus(0, "kd-a0", "kd-a1", "kd-a2", "kd-a3", "su"),
-      tambah("segi", ...label("nm", 100, 148, 100, "segi empat", W.emas)),
-      tambah("badan.", emo("bd", 252, 170, E.kardus, 18)),
-      tambah("korek", ...kardus("kk", 256, 96, 34, 22), teks("kkn", 256, 122, "kotak korek", 8, W.coklat)),
-      tambah("segi@2", ...semuaSudut("kk", KK)),
-      tambah("sama", teks("kc", 256, 74, "kecil", 9, W.coklat), teks("bs", 150, 48, "besar", 9, W.coklat)),
-      sorotkan("besar.", "kk"),
+      tambah("Igil", ...orang("ig", 264, 168, E.igil, "Igil")),
+      tambah("korek.", ...kardus("kk", 256, 96, 34, 22), teks("kkn", 256, 122, "kotak korek", 8, W.coklat)),
+      tambah("kecil", teks("kc", 256, 74, "kecil", 9, W.coklat), teks("bs", 150, 48, "besar", 9, W.coklat)),
+      tambah("lain.", ...kartu("ln", 70, 140, 150, 20, W.merahMuda, ["pasti bentuknya lain?"], 9)),
+      tambah("Kaka", ...orang("kk2", 36, 120, E.kaka, "Kaka")),
+      tambah("sudut", ...semuaSudut("kk", KK), teks("k44", 256, 140, "4 sisi, 4 sudut", 8.4, W.hijau)),
+      sorotkan("juga.", "kk"),
     ),
     k(
       SUARA_K3,
       bersih(0),
       tambah(0, judul("Lima kardus"), ...orang("ab", 36, 168, E.abang, "Abang")),
+      tambah(0, ...label("nm", 100, 148, 100, "segi empat", W.emas)),
+      tambah("badan.", emo("bd", 252, 170, E.kardus, 18)),
       tambah("kardus.", ...LIMA.flatMap((p, i) => kardus(`kd${i}`, p.x, p.y, 38, 30))),
       ...hitungMainan(SUARA_K3, "kd", LIMA, 22, "kardus."),
-      tambah("kardus.@2", ...label("ld", 110, 148, 100, "5 kardus", W.emas)),
+      tambah("lima.", ...label("ld", 190, 148, 90, "5 kardus", W.emas)),
     ),
   ],
 };
 
 /* ------------------------------ 5. Diputar tetap segitiga ------------------------------ */
-const SUARA_P1 = "Igil memutar karton segitiga, lalu membaliknya. Ujung runcingnya pindah tempat.";
-const SUARA_P2 = "Kaka menghitung lagi. Tetap tiga sisi lurus dan tiga sudut.";
+const SUARA_P1 = "Igil memutar karton segitiga, lalu membaliknya. \"Lihat, sekarang jadi corong, bukan segitiga lagi!\" katanya.";
+const SUARA_P2 = "Kaka menghitung lagi dengan teliti. Tetap tiga sisi lurus dan tiga sudut.";
 const SUARA_P3 = "Bentuk tidak berubah walau diputar, dibalik, atau berbeda ukuran. Segitiga tetap segitiga.";
 const BALIK = sudutMutlak(150, 100, segitigaRel(44), 180);
 const KECIL = sudutMutlak(256, 136, segitigaRel(14), 90);
@@ -66,7 +69,7 @@ export const ADEGAN_DIPUTAR: AdeganStory = {
       tambah(0, judul("Diputar tetap segitiga"), ...orang("ig", 36, 168, E.igil, "Igil"), karton("bg", 150, 100, 44, { warna: "none", putus: true, op: 0.5, z: -1 }), karton("sg", 150, 100, 44)),
       ubah("memutar", { id: "sg", rot: 90 }),
       ubah("membaliknya.", { id: "sg", rot: 180 }),
-      tambah("pindah", teks("pj", 240, 150, "ujung pindah", 9, W.ungu)),
+      tambah("corong,", teks("pj", 240, 150, "jadi corong?", 9, W.merah)),
     ),
     k(
       SUARA_P2,
@@ -87,10 +90,10 @@ export const ADEGAN_DIPUTAR: AdeganStory = {
 };
 
 /* ------------------------------ 6. Kartu bahan ------------------------------ */
-const SUARA_B1 = "Mamah mengajak membuat kartu bahan. Tiap bahan diceritakan dengan nama bentuk, banyak sisi lurus, dan banyak sudut.";
-const SUARA_B2 = "Tutup kaleng berbentuk lengkung, tanpa sisi lurus dan tanpa sudut.";
-const SUARA_B3 = "Karton berbentuk segitiga, dengan tiga sisi lurus dan tiga sudut.";
-const SUARA_B4 = "Sisi kardus berbentuk segi empat, dengan empat sisi lurus dan empat sudut.";
+const SUARA_B1 = "Mamah bertanya, \"Bagaimana Pak RT tahu bahan kita?\" Kaka mengusulkan kartu bahan: nama bentuk, banyak sisi lurus, dan banyak sudut.";
+const SUARA_B2 = "Tutup kaleng: lengkung, tanpa sisi lurus, tanpa sudut.";
+const SUARA_B3 = "Karton: segitiga, tiga sisi lurus, tiga sudut.";
+const SUARA_B4 = "Sisi kardus: segi empat, empat sisi lurus, empat sudut.";
 const WARNA_BARIS = [W.langit, W.pink, W.hijauMuda];
 const yBaris = (i: number): number => 34 + i * 54;
 const bingkai = (i: number): Obj => kotak(`r${i}`, 14, yBaris(i), 272, 46, WARNA_BARIS[i], W.biru, { rx: 8, tebal: 1.6, z: -2 });
@@ -107,7 +110,8 @@ export const ADEGAN_KARTU: AdeganStory = {
   ketukan: [
     k(
       SUARA_B1,
-      tambah(0, judul("Kartu bahan"), ...orang("mm", 40, 110, E.mamah, "Mamah")),
+      tambah(0, judul("Kartu bahan"), ...orang("mm", 40, 84, E.mamah, "Mamah")),
+      tambah("Kaka", ...orang("kk", 40, 160, E.kaka, "Kaka")),
       tambah("kartu", kotak("kb", 80, 36, 206, 150, W.putih, W.biru, { rx: 8, tebal: 2, z: -2 })),
       tambah("nama", ...label("c0", 96, 52, 174, "nama bentuk", W.emas)),
       tambah("sisi", ...label("c1", 96, 98, 174, "banyak sisi lurus", W.merahMuda)),

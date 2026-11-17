@@ -10,6 +10,7 @@ import {
   TEKS_SYARAT,
   angkaJawab,
   benarMisteri,
+  klaimBenar,
   kata,
   memenuhi,
   pilihanDari,
@@ -53,7 +54,7 @@ import {
  */
 
 type P = { ls: LangkahSoal; rupa: Rupa; bicara: (t: string) => void; onBenar: () => void };
-type PK = { rupa: Rupa; kanvas: boolean; salah: (p: string) => void; siap: (p?: string) => void };
+type PK = { rupa: Rupa; kanvas: boolean; salah: (p: string) => void; siap: (p?: string) => void; kabar: (p: string) => void };
 const SVG = "mx-auto block w-full max-w-[420px] touch-none select-none rounded-2xl bg-white/90";
 const ketuk = (f: () => void) => ({ role: "button" as const, tabIndex: 0, onClick: f, onKeyDown: (e: React.KeyboardEvent) => (e.key === "Enter" || e.key === " ") && f(), style: { cursor: "pointer" } });
 const UNGU = "#1C01A5";
@@ -131,20 +132,56 @@ function KartuTanya({ atas, bawah }: { atas: React.ReactNode; bawah: React.React
 }
 
 /* ------------------------------ Metode IGIL: hitung sisi lurus atau sudut ------------------------------ */
-function Ciri({ l, rupa, kanvas, salah, siap }: PK & { l: Extract<Langkah, { tipe: "ciri" }> }) {
+/** Soal "Cari kesalahan": tokoh sudah menjawab; anak menilai benar atau salah dulu, lalu memeriksa sendiri. */
+function NilaiKlaim({ l, salah, onLulus }: { l: Extract<Langkah, { tipe: "ciri" }>; salah: (p: string) => void; onLulus: (pesan: string) => void }) {
+  const [mati, setMati] = useState<boolean[]>([]);
+  const k = l.klaim;
+  if (!k) return null;
+  const apa = l.tanya === "sisi" ? "sisi lurus" : "sudut";
+  const benar = klaimBenar(l);
+  const tentukan = (b: boolean) => {
+    if (b === benar) onLulus(benar ? `Betul, ${k.tokoh} benar. ${k.alasan}` : `Betul, ${k.tokoh} keliru. ${k.alasan} Sekarang periksa sendiri.`);
+    else {
+      setMati((m) => [...m, b]);
+      salah(benar ? `Hitung lagi dengan teliti. ${k.alasan}` : `Coba periksa lagi. ${k.alasan}`);
+    }
+  };
+  return (
+    <div className="mb-2 space-y-2 rounded-2xl border-4 border-dashed border-[#DC2626] bg-[#FFF1F2] p-2">
+      <p className="text-center text-xs font-black uppercase tracking-wide text-[#B91C1C]">{"🔎"} Cari kesalahan</p>
+      <p className="mx-auto max-w-xs rounded-2xl border-2 border-[#1C01A5] bg-white px-3 py-1.5 text-center text-sm font-black text-[#1C01A5]">
+        {k.tokoh}: &ldquo;{apa.charAt(0).toUpperCase() + apa.slice(1)}nya {k.angka}.&rdquo;
+      </p>
+      <div className="flex justify-center gap-2" role="group" aria-label="Periksa jawaban tokoh">
+        {[true, false].map((b) => (
+          <button key={String(b)} type="button" disabled={mati.includes(b)} onClick={() => tentukan(b)} className="min-h-[48px] min-w-[96px] rounded-2xl border-4 border-[#1C01A5] bg-[#FFE566] px-3 text-base font-black text-[#1C01A5] disabled:opacity-30">
+            {b ? "✅ Benar" : "❌ Salah"}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Ciri({ l, rupa, kanvas, salah, siap, kabar }: PK & { l: Extract<Langkah, { tipe: "ciri" }> }) {
+  const [dinilai, setDinilai] = useState(!l.klaim);
   const [kena, setKena] = useState<number[]>([]);
   const [goresan, setGoresan] = useState<Goresan[]>([]);
   const [selesai, setSelesai] = useState(false);
   const lengkung = l.benda.bentuk === "lengkung";
   const apa = l.tanya === "sisi" ? "sisi lurus" : "sudut";
   useEffect(() => {
+    if (!dinilai) return;
     if (rupa === "lambang") siap();
     else if (lengkung && kanvas) siap(`Tepinya melengkung terus. Tidak ada ${apa}.`);
-    // Hanya saat soal dibuka.
+    // Hanya saat soal dibuka atau setelah jawaban tokoh dinilai.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dinilai]);
+  const klaim = !dinilai ? <NilaiKlaim l={l} salah={salah} onLulus={(p) => { setDinilai(true); kabar(p); }} /> : null;
   if (rupa === "lambang")
     return (
+      <>
+      {klaim}
       <KartuTanya
         atas={<span className="rounded-xl border-4 border-[#1C01A5] bg-[#FEF9C3] px-3 py-1">{NAMA_PENDEK[l.benda.bentuk]}</span>}
         bawah={
@@ -153,12 +190,13 @@ function Ciri({ l, rupa, kanvas, salah, siap }: PK & { l: Extract<Langkah, { tip
           </>
         }
       />
+      </>
     );
   const r = jariCiri(l.benda);
   const sudut = sudutBenda(l.benda, PUSAT_CIRI.x, PUSAT_CIRI.y, r * (l.benda.skala === 1 ? 0.72 : l.benda.skala === 3 ? 1.12 : 1));
   const sasaran: Titik[] = l.tanya === "sisi" ? tengahSisi(sudut) : sudut;
   const ketukDi = (i: number) => {
-    if (selesai || kanvas || kena.includes(i)) return;
+    if (!dinilai || selesai || kanvas || kena.includes(i)) return;
     const baru = [...kena, i];
     setKena(baru);
     if (baru.length === sasaran.length) {
@@ -167,7 +205,7 @@ function Ciri({ l, rupa, kanvas, salah, siap }: PK & { l: Extract<Langkah, { tip
     }
   };
   const ketukBenda = () => {
-    if (selesai || kanvas) return;
+    if (!dinilai || selesai || kanvas) return;
     if (lengkung) {
       setSelesai(true);
       siap(`Tepinya melengkung terus. Tidak ada ${apa}.`);
@@ -209,7 +247,12 @@ function Ciri({ l, rupa, kanvas, salah, siap }: PK & { l: Extract<Langkah, { tip
     </g>
   );
   if (kanvas) return <Kanvas gambar={gambar} selesai={selesai || lengkung} goresan={goresan} setGoresan={setGoresan} periksa={periksa} />;
-  return <Gambar label={`Hitung ${apa}`}>{gambar}</Gambar>;
+  return (
+    <>
+      {klaim}
+      <Gambar label={`Hitung ${apa}`}>{gambar}</Gambar>
+    </>
+  );
 }
 
 /* ------------------------------ Shape Hunt: berburu bentuk ------------------------------ */
@@ -519,7 +562,11 @@ export function LangkahBahan({ ls, rupa, bicara, onBenar }: P) {
       salah(`${awalan}${PETUNJUK[ls.metode]}`);
     }
   };
-  const pk: PK = { rupa, kanvas: cara === "kanvas", salah, siap };
+  const kabar = (p: string) => {
+    setPesan(p);
+    bicara(p);
+  };
+  const pk: PK = { rupa, kanvas: cara === "kanvas", salah, siap, kabar };
   return (
     <div className="space-y-3">
       <div className={goyang && !siapJawab ? "lm-goyang" : ""}>
