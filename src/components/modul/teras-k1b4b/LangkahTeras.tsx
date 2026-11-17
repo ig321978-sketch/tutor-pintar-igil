@@ -445,9 +445,9 @@ export function LangkahTeras({ ls, rupa, bicara, onBenar }: P) {
       bicara(p);
     }
   };
-  const jawab = (m: number, awalan = "") => {
+  const jawab = (m: number, awalan = "", ditunjukkan = false) => {
     bicara(kata(m));
-    if (m === n) tuntas(`Betul! Banyaknya ${kata(m)}.`);
+    if (m === n) tuntas(`${ditunjukkan ? "Ini jawaban yang benar." : "Betul!"} Banyaknya ${kata(m)}.`);
     else {
       setMati((s) => [...s, m]);
       salah(`${awalan}${PETUNJUK[ls.metode]}`);
@@ -476,9 +476,9 @@ export function LangkahTeras({ ls, rupa, bicara, onBenar }: P) {
         <div className={`space-y-2 ${goyang ? "lm-goyang" : ""}`}>
           <p className="text-center text-sm font-black text-[#1C01A5]">{tanyaAngka(l)}</p>
           {cara === "kanvas" ? (
-            <JawabTulis kunci={n} onBenar={() => jawab(n)} onSalah={salah} />
+            <JawabTulis kunci={n} onBenar={(t) => jawab(n, "", t)} onSalah={salah} />
           ) : cara === "suara" ? (
-            <JawabSuara kunci={n} pilihan={pilihanDari(l)} rupa={rupa} mati={mati} onJawab={(m, terdengar) => jawab(m, terdengar && m !== n ? `Terdengar ${kata(m)}. ` : "")} onPesan={setPesan} />
+            <JawabSuara kunci={n} pilihan={pilihanDari(l)} rupa={rupa} mati={mati} onJawab={(m, terdengar, t) => jawab(m, terdengar && m !== n ? `Terdengar ${kata(m)}. ` : "", t)} onPesan={setPesan} />
           ) : (
             <Pilihan pilihan={pilihanDari(l)} rupa={rupa} mati={mati} onPilih={(m) => jawab(m)} />
           )}
