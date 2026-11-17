@@ -94,6 +94,14 @@ for (const [nama, soal, rupa] of [["Concrete", D.CONCRETE, "benda"], ["Pictorial
   for (const m of L.URUT_METODE) cek(/^(Metode IGIL|Attribute Sort|Guess My Rule|Odd One Out)/.test(L.NAMA_METODE[m]), `${nama}: judul metode ${m}`);
   const angka = semua.map((x) => L.angkaJawab(x.langkah)).filter((n) => n !== null);
   cek(new Set(angka).size === angka.length && angka.length === 10, `${nama}: sepuluh angka jawaban tidak kembar (${angka.join(",")})`);
+  // Pedoman mutu: tiap tahap paling sedikit satu soal "Cari kesalahan"; alasan menjelaskan kesalahan tokoh; penilaian dihitung dari kunci.
+  const klaim = semua.filter((x) => x.langkah.tipe === "pilah" && x.langkah.klaim);
+  cek(klaim.length >= 1, `${nama}: ada soal Cari kesalahan`);
+  for (const x of klaim) {
+    const kl = x.langkah.klaim;
+    cek(["Igil", "Kaka", "Abang", "Mamah"].includes(kl.tokoh) && kl.alasan.length > 20 && !/\d/.test(kl.alasan) && /Cari kesalahan/.test(x.suara) && !/\d/.test(x.suara), `${nama}: klaim ${kl.tokoh} berisi alasan dan instruksi tanpa digit`);
+    cek(L.klaimBenar(x.langkah) === (kl.angka === L.kunciLangkah(x.langkah)), `${nama}: penilaian klaim dihitung dari kunci`);
+  }
   cek(angka.every((n) => n >= 0 && n <= 10) && angka.includes(0), `${nama}: nol sampai sepuluh, ada nol (keranjang kosong)`);
   const tanpa = semua.filter((x) => L.angkaJawab(x.langkah) === null);
   cek(tanpa.length === 2 && tanpa.every((x) => x.cara !== "suara" && x.langkah.tipe === "tebak"), `${nama}: dua soal tanpa angka, tebak aturan klik dan kanvas`);
@@ -266,5 +274,9 @@ for (const [nama, soal, rupa] of [["Concrete", D.CONCRETE, "benda"], ["Pictorial
   for (const f of ["misi-bab4.ts", "SimulasiBab4.tsx"]) cek(!readFileSync(new URL(`../src/components/modul/${f}`, import.meta.url), "utf8").includes("\r"), `${f}: akhir baris LF`);
 }
 
+{
+  const semuaKlaim = [D.CONCRETE, D.PICTORIAL, D.ABSTRACT].flat().flatMap((so) => so.langkah).filter((x) => x.langkah.tipe === "pilah" && x.langkah.klaim);
+  cek(semuaKlaim.some((x) => !L.klaimBenar(x.langkah)) && semuaKlaim.some((x) => L.klaimBenar(x.langkah)), "Cari kesalahan: ada klaim keliru dan ada klaim benar");
+}
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

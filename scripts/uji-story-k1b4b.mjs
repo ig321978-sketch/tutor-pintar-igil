@@ -288,6 +288,16 @@ const isiKeranjang = (objs, id) => {
   });
 }
 {
+  // Pedoman mutu: tokoh berbicara, ada salah langkah (dua aturan sekaligus), penutup bertanya kepada anak.
+  const M = V.VIDEO_MATERI_K1B4B;
+  const langsung = M.adegan.reduce((n, a) => n + a.ketukan.reduce((m, kt) => m + (kt.suara.match(/"[^"]+"/g) ?? []).length, 0), 0);
+  cek(langsung >= 3, `pedoman: paling sedikit tiga kalimat langsung antartokoh (${langsung})`);
+  const sa = M.adegan.find((a) => a.id === "satu-aturan");
+  cek(/dua aturan sekaligus/.test(sa.ketukan[0].suara) && /satu aturan dulu/.test(sa.ketukan.at(-1).suara), "pedoman: salah langkah dua aturan sekaligus lalu dibetulkan Mamah");
+  const qa = M.adegan.at(-1).ketukan.at(-1).suara;
+  cek(qa.endsWith("?") && /kamu/.test(qa) && /mainan/.test(qa), "pedoman: penutup bertanya kepada anak tentang Sub-Bab berikutnya");
+}
+{
   const folder = new URL("../src/components/modul/story/", import.meta.url);
   const berkas = readdirSync(folder).filter((f) => /^k1b4b-.*\.ts$/.test(f));
   cek(berkas.length >= 8, `berkas story k1b4b (${berkas.length})`);

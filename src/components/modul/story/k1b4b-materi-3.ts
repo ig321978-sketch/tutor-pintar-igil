@@ -21,9 +21,9 @@ import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k1b4b-bant
 /* Akhir "Teras Penuh Barang": satu aturan sekali, bahan rapi menurut bentuk, jembatan ke merakit mainan (Sub-Bab C), lalu penutup. Tanpa latihan. */
 
 /* ------------------------------ 6. Satu aturan sekali ------------------------------ */
-const SUARA_S1 = "Igil mencoba dua aturan sekaligus, bentuk dan warna. Ia jadi bingung.";
-const SUARA_S2 = "Karton segitiga merah masuk keranjang segitiga atau keranjang merah? Igil tidak tahu.";
-const SUARA_S3 = "Mamah mengingatkan, pilih satu aturan dulu. Setelah selesai, baru boleh ganti aturan.";
+const SUARA_S1 = "Igil mencoba dua aturan sekaligus, bentuk dan warna. Karton segitiga merah ia pindahkan bolak-balik.";
+const SUARA_S2 = "\"Masuk keranjang segitiga atau keranjang merah?\" tanya Igil, sampai kartonnya terlipat.";
+const SUARA_S3 = "Mamah tersenyum, \"Pilih satu aturan dulu,\" katanya. Setelah selesai, baru boleh ganti aturan.";
 const KIRI: Tempat = { x: 20, y: 118, w: 100, h: 56 };
 const KANAN: Tempat = { x: 180, y: 118, w: 100, h: 56 };
 const KR_MERAH = keranjangAnyam("k-merah", KANAN, "merah", W.merahMuda);
@@ -41,14 +41,14 @@ export const ADEGAN_SATU: AdeganStory = {
       tambah("dua", ...kartu("da", 70, 30, 160, 20, W.merahMuda, ["2 aturan sekaligus?"], 9.5)),
       tambah("bentuk", ...keranjangAnyam("k-segitiga", KIRI, "segitiga", W.krem)),
       tambah("warna.", ...KR_MERAH),
-      tambah("bingung.", emo("pz", 54, 58, E.pusing, 16)),
+      tambah("bolak-balik.", emo("pz", 54, 58, E.pusing, 16)),
     ),
     k(
       SUARA_S2,
       tambah("Karton", { ...barang(1, { x: 150, y: 76 }), sorot: true }),
-      tambah("segitiga@2", tunjukKe("g0", DARI, { x: 70, y: 114 })),
-      tambah("merah@2", tunjukKe("g1", DARI, { x: 230, y: 114 })),
-      tambah("tahu.", teks("tq", 150, 116, "?", 18, W.merah)),
+      tambah("segitiga", tunjukKe("g0", DARI, { x: 70, y: 114 })),
+      tambah("merah", tunjukKe("g1", DARI, { x: 230, y: 114 })),
+      tambah("terlipat.", teks("tq", 150, 116, "?", 18, W.merah)),
     ),
     k(
       SUARA_S3,
@@ -103,9 +103,9 @@ export const ADEGAN_RAPI: AdeganStory = {
 };
 
 /* ------------------------------ 8. Penutup ------------------------------ */
-const SUARA_Z1 = "Ingat, pilih satu aturan dulu, misalnya bentuk, warna, atau ukuran.";
+const SUARA_Z1 = "Pilih satu aturan dulu, misalnya bentuk, warna, atau ukuran.";
 const SUARA_Z2 = "Periksa tiap barang, taruh di keranjangnya, lalu beri nama dan hitung isinya.";
-const SUARA_Z3 = "Kalau aturan diganti, barang yang sama bisa pindah keranjang. Sampai jumpa di festival!";
+const SUARA_Z3 = "Kalau aturan diganti, barang yang sama bisa pindah keranjang. Coba pikirkan, bentuk apa saja yang kamu perlukan untuk membuat mobil mainan?";
 
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup",
@@ -129,16 +129,16 @@ export const ADEGAN_PENUTUP: AdeganStory = {
     k(
       SUARA_Z3,
       bersih(0),
-      tambah(0, judul("Sampai jumpa!")),
+      tambah(0, judul("Coba pikirkan")),
       tambah("aturan", ...kartu("p4", 30, 32, 240, 26, W.lavender, ["ganti aturan, barang bisa pindah"], 9.5), barang(1, { x: 150, y: 84 })),
       tambah(
-        "Sampai",
+        "Coba",
         ...orang("ig", 45, 150, E.igil, "Igil"),
         ...orang("kk", 115, 150, E.kaka, "Kaka"),
         ...orang("ab", 185, 150, E.abang, "Abang"),
         ...orang("mm", 255, 150, E.mamah, "Mamah"),
       ),
-      tambah("festival!", emo("td", 150, 188, E.tenda, 16)),
+      tambah("mainan?", teks("tq", 150, 116, "bentuk apa untuk mobil mainan?", 9.4, W.merah)),
     ),
   ],
 };

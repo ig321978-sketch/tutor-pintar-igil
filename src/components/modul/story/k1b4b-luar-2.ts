@@ -11,6 +11,7 @@ const gambarBenda = (id: string, d: Benda, x: number, y: number, o: Partial<Obj>
 /* ------------------------------ 4. Guess My Rule: konsep ------------------------------ */
 const SUARA_C1 = "Metode kedua, Guess My Rule, atau Tebak Aturan. Satu orang memilah benda diam-diam.";
 const SUARA_C2 = "Aturannya tidak diucapkan. Yang lain hanya melihat isi tiap keranjang.";
+const SUARA_C4 = "Tebak Aturan cocok untuk melatih mata, tetapi sulit bila isi keranjangnya hanya sedikit.";
 const SUARA_C3 = "Lalu yang lain menebak aturannya. Kalau tebakan cocok dengan semua isi keranjang, aturannya ketemu.";
 const ISI_KIRI: Benda[] = [
   { b: "lengkung", w: "merah", s: 10 },
@@ -47,6 +48,13 @@ export const ADEGAN_LUAR_TEBAK: AdeganStory = {
       sorotkan("cocok", ...ID_KONSEP),
       ubah("ketemu.", { id: "t-a-nm-t0", isi: "lengkung" }, { id: "t-b-nm-t0", isi: "segi empat" }, { id: "tb-t0", isi: "aturan: bentuk" }),
       tambah("ketemu.", emo("ok", 214, 92, E.benar, 18)),
+    ),
+    k(
+      SUARA_C4,
+      bersih(0),
+      tambah(0, ...kepala(1)),
+      tambah("cocok", emo("bc", 40, 84, "👍", 26), ...kartu("bk", 64, 66, 222, 38, W.hijauMuda, ["cocok: melatih mata"], 9.4)),
+      tambah("tetapi", emo("bt", 40, 142, "🤔", 26), ...kartu("bl", 64, 124, 222, 38, W.merahMuda, ["sulit: isi keranjang sedikit"], 9.4)),
     ),
   ],
 };
@@ -124,6 +132,7 @@ export const ADEGAN_LUAR_TEBAK_TERAPAN: AdeganStory = {
 /* ------------------------------ 6. Odd One Out: konsep ------------------------------ */
 const SUARA_E1 = "Metode ketiga, Odd One Out, atau Cari yang Beda. Ada empat benda, tiga sama dan satu berbeda.";
 const SUARA_E2 = "Cari benda yang berbeda, lalu tunjuk benda itu dengan jari.";
+const SUARA_E4 = "Cari yang Beda cocok untuk benda yang sedikit, tetapi kurang cocok untuk memilah banyak benda.";
 const SUARA_E3 = "Lalu sebut cirinya yang berbeda. Bedanya bisa pada bentuk, warna, atau ukuran.";
 const X4 = [75, 125, 175, 225];
 const EMPAT: Benda[] = [
@@ -153,6 +162,13 @@ export const ADEGAN_LUAR_BEDA: AdeganStory = {
       tambah("bentuk,", ...kartu("ch0", 20, 168, 80, 20, W.krem, ["bentuk"], 9.5)),
       tambah("warna,", ...kartu("ch1", 110, 168, 80, 20, W.merahMuda, ["warna"], 9.5)),
       tambah("ukuran.", ...kartu("ch2", 200, 168, 80, 20, W.lavender, ["ukuran"], 9.5)),
+    ),
+    k(
+      SUARA_E4,
+      bersih(0),
+      tambah(0, ...kepala(2)),
+      tambah("cocok", emo("bc", 40, 84, "👍", 26), ...kartu("bk", 64, 66, 222, 38, W.hijauMuda, ["cocok: benda sedikit"], 9.4)),
+      tambah("tetapi", emo("bt", 40, 142, "🐢", 26), ...kartu("bl", 64, 124, 222, 38, W.merahMuda, ["kurang cocok: benda banyak"], 9.4)),
     ),
   ],
 };
@@ -225,9 +241,9 @@ export const ADEGAN_LUAR_BEDA_TERAPAN: AdeganStory = {
 };
 
 /* ------------------------------ 8. Ringkasan ------------------------------ */
-const SUARA_R1 = "Attribute Sort atau Pilah Ciri: pilih satu ciri, lalu pilah semua benda menurut ciri itu.";
-const SUARA_R2 = "Guess My Rule atau Tebak Aturan: lihat isi tiap keranjang, lalu tebak aturannya.";
-const SUARA_R3 = "Odd One Out atau Cari yang Beda: cari satu yang berbeda, lalu sebut cirinya.";
+const SUARA_R1 = "Kalau kamu sudah punya satu aturan, pakai Attribute Sort atau Pilah Ciri.";
+const SUARA_R2 = "Kalau orang lain sudah memilah dan kamu ingin tahu aturannya, pakai Guess My Rule atau Tebak Aturan.";
+const SUARA_R3 = "Kalau hanya satu benda yang tidak cocok, pakai Odd One Out atau Cari yang Beda.";
 const SUARA_R4 = "Sampai jumpa! Besok bahan di keranjang dirakit menjadi mainan untuk festival.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
@@ -236,9 +252,9 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   sumber: "Metode global: ringkasan",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_R1, tambah(0, judul("Ringkasan")), tambah("satu", ...kartu("r0", 14, 30, 272, 44, WARNA_METODE[0], ["Attribute Sort · Pilah Ciri", "pilih 1 ciri, lalu pilah"], 9.5))),
-    k(SUARA_R2, tambah("lihat", ...kartu("r1", 14, 80, 272, 44, WARNA_METODE[1], ["Guess My Rule · Tebak Aturan", "lihat isi, tebak aturannya"], 9.5))),
-    k(SUARA_R3, tambah("satu", ...kartu("r2", 14, 130, 272, 44, WARNA_METODE[2], ["Odd One Out · Cari yang Beda", "cari 1 yang beda, sebut cirinya"], 9.5))),
+    k(SUARA_R1, tambah(0, judul("Ringkasan")), tambah("satu", ...kartu("r0", 14, 30, 272, 44, WARNA_METODE[0], ["Attribute Sort · Pilah Ciri", "sudah punya 1 aturan"], 9.5))),
+    k(SUARA_R2, tambah("tahu", ...kartu("r1", 14, 80, 272, 44, WARNA_METODE[1], ["Guess My Rule · Tebak Aturan", "ingin tahu aturan orang lain"], 9.5))),
+    k(SUARA_R3, tambah("satu", ...kartu("r2", 14, 130, 272, 44, WARNA_METODE[2], ["Odd One Out · Cari yang Beda", "hanya 1 benda tidak cocok"], 9.5))),
     k(
       SUARA_R4,
       bersih(0),

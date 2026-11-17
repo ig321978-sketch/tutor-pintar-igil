@@ -10,7 +10,7 @@ export const WARNA_METODE = [W.langit, W.hijauMuda, W.pink];
 export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka ------------------------------ */
-const SUARA_O1 = "Bahan festival sudah rapi di keranjang. Abang bercerita, anak-anak di negara lain juga punya cara seru untuk memilah benda. Kita lihat tiga metode global.";
+const SUARA_O1 = "Tetangga mampir membawa toples kancing. \"Di kota lain, anak-anak memilah benda dengan tiga cara,\" kata Abang sambil menunjuk keranjang.";
 const SUARA_O2 = "Tiga metode itu adalah Attribute Sort, Guess My Rule, dan Odd One Out.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Pilah Ciri, Tebak Aturan, dan Cari yang Beda.";
 const SUARA_O4 = "Semua metode membantu kita melihat ciri benda, yaitu bentuk, warna, dan ukuran.";
@@ -26,7 +26,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah(0, judul("Tiga metode global")),
       tambah("keranjang.", ...[90, 150, 210].map((x, i) => emo(`kj${i}`, x, 74, E.keranjang, 30))),
       tambah("Abang", ...orang("ab", 40, 150, E.abang, "Abang")),
-      tambah("negara", emo("gl", 250, 146, E.dunia, 40)),
+      tambah("kota", emo("gl", 250, 146, E.dunia, 40)),
       tambah("tiga", ...kartu("pk", 90, 160, 120, 24, W.emas, ["3 metode global"], 10)),
     ),
     k(SUARA_O2, bersih(0), tambah(0, judul("Tiga metode")), ...NAMA_METODE.map((m, i) => tambah(["Attribute", "Guess", "Odd"][i], ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11)))),
@@ -46,6 +46,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 const SUARA_A1 = "Metode pertama, Attribute Sort, atau Pilah Ciri. Ciri adalah sifat benda yang bisa kita lihat.";
 const SUARA_A2 = "Ciri bisa berupa bentuk, warna, atau ukuran. Pilih satu ciri sebagai aturan.";
 const SUARA_A3 = "Lalu periksa tiap benda. Benda yang cocok dengan aturan masuk ke tempat yang sama.";
+const SUARA_A5 = "Pilah Ciri cocok bila bendanya banyak, tetapi aturannya harus dipilih dulu sebelum mulai.";
 const SUARA_A4 = "Beri nama tiap tempat, lalu hitung isi tiap tempat. Begitulah cara memilah dengan ciri.";
 /** Lima benda contoh: biru tiga, merah dua. */
 const CONTOH: { b: Bentuk; w: "merah" | "biru" }[] = [
@@ -99,6 +100,13 @@ export const ADEGAN_LUAR_PILAH: AdeganStory = {
       sorotkan("nama", "w-merah-nm-k", "w-biru-nm-k"),
       tambah("hitung", ...lencana("w-merah", DUA[0], 2), ...lencana("w-biru", DUA[1], 3)),
       tambah("Begitulah", emo("ok", 150, 76, E.benar, 22)),
+    ),
+    k(
+      SUARA_A5,
+      bersih(0),
+      tambah(0, ...kepala(0)),
+      tambah("cocok", emo("bc", 40, 84, "👍", 26), ...kartu("bk", 64, 66, 222, 38, W.hijauMuda, ["cocok: benda banyak"], 9.4)),
+      tambah("tetapi", emo("bt", 40, 142, "✋", 26), ...kartu("bl", 64, 124, 222, 38, W.merahMuda, ["harus memilih aturan dulu"], 9.4)),
     ),
   ],
 };

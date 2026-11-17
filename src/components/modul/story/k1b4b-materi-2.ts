@@ -29,7 +29,7 @@ import { hapus, k, sorotkan, tambah, ubah } from "./k1b4b-bantu";
 const keJajar = () => JAJAR.map((p, i) => ({ id: `b${i}`, x: p.x, y: p.y, sorot: false }));
 
 /* ------------------------------ 4. Ganti aturan: warna ------------------------------ */
-const SUARA_W1 = "Abang ingin mengecat, jadi barang yang sama dipilah lagi menurut warna.";
+const SUARA_W1 = "\"Aku mau mengecat semuanya,\" kata Abang. Barang yang sama dipilah lagi menurut warna.";
 const SUARA_W2 = "Abang menyiapkan dua keranjang, yaitu merah dan biru.";
 const SUARA_W3 = "Abang memeriksa warna. Barang merah masuk keranjang merah, ada lima.";
 const SUARA_W4 = "Barang biru masuk keranjang biru, ada empat. Lima dan empat, tetap sembilan.";
@@ -73,7 +73,7 @@ export const ADEGAN_WARNA: AdeganStory = {
 };
 
 /* ------------------------------ 5. Aturan ukuran dan satu barang ------------------------------ */
-const SUARA_U1 = "Igil mencoba aturan ukuran. Barang dipindah ke dua keranjang, besar dan kecil.";
+const SUARA_U1 = "Igil mencoba aturan ukuran dengan dua keranjang, besar dan kecil.";
 const SUARA_U2 = "Igil memeriksa ukuran. Barang besar ada tiga. Barang kecil ada enam.";
 const SUARA_U3 = "Lihat karton segitiga merah kecil ini. Menurut aturan bentuk, ia masuk keranjang segitiga.";
 const SUARA_U4 = "Menurut aturan warna, ia masuk keranjang merah. Menurut aturan ukuran, keranjang kecil.";
@@ -97,8 +97,8 @@ export const ADEGAN_UKURAN: AdeganStory = {
     k(
       SUARA_U1,
       tambah(0, judul("Ganti aturan: ukuran"), ...semuaKeranjang("warna"), ...barangDi(letakAturan("warna")), ...orang("ig", 26, 80, E.igil, "Igil")),
-      hapus("dipindah", ...idKeranjangAturan("warna")),
-      ubah("dipindah", ...keJajar()),
+      hapus("dua", ...idKeranjangAturan("warna")),
+      ubah("dua", ...keJajar()),
       tambah("dua", teks("tk", 150, 108, "2 keranjang", 10, W.coklat)),
       tambah("besar", ...keranjangAturan("ukuran", 0)),
       tambah("kecil.", ...keranjangAturan("ukuran", 1)),

@@ -67,7 +67,7 @@ export const MISI_TERAS =
   "Misi Festival bagian satu: rak teras. Pilih aturan bentuk, warna, atau ukuran, lalu lihat barang pindah keranjang. Ketuk barang, cat, atau ubah ukurannya.";
 
 /* ------------------------------ CPA: lanjutan Misi Festival ------------------------------ */
-const pilah = (aturan: Aturan, tanya: string, ...isi: string[]): Langkah => ({ tipe: "pilah", aturan, tanya, isi: bds(...isi) });
+const pilah = (aturan: Aturan, tanya: string, ...isi: string[]): Extract<Langkah, { tipe: "pilah" }> => ({ tipe: "pilah", aturan, tanya, isi: bds(...isi) });
 const ganti = (dari: Aturan, ke: Aturan, tanya: string, ...isi: string[]): Langkah => ({ tipe: "ganti", dari, ke, tanya, isi: bds(...isi) });
 const tebak = (aturan: Aturan, kiri: string[], kanan: string[], tanya?: "kiri" | "kanan"): Langkah =>
   tanya ? { tipe: "tebak", aturan, kiri: bds(...kiri), kanan: bds(...kanan), tanya } : { tipe: "tebak", aturan, kiri: bds(...kiri), kanan: bds(...kanan) };
@@ -89,7 +89,7 @@ const misi =
 const C = misi("benda");
 export const CONCRETE: SoalMisi[] = [
   C(1, "klik", "Misi Festival 2: keranjang cat", "Abang memilah potongan bahan sebelum dicat. Bantu Igil menaruh tiap potongan di keranjangnya.", [
-    pilah("warna", "kuning", "Lm+", "Sb-", "Em-", "Lb+", "Sm+", "Eb-"),
+    { ...pilah("warna", "kuning", "Lm+", "Sb-", "Em-", "Lb+", "Sm+", "Eb-"), klaim: { tokoh: "Igil", angka: 3, alasan: "Igil menghitung barang besar, padahal aturannya warna. Tidak ada barang kuning, jadi keranjang kuning kosong." } },
     ganti("bentuk", "ukuran", "besar", "Lm+", "Lk-", "Sb+", "Sk+", "Em+", "Eb-", "Ek+", "Lb-"),
     tebak("warna", ["Lb+", "Sb-", "Eb+", "Lb-"], ["Sm+", "Ek-", "Lm-"]),
     beda("Lb+", "Lb-", "Lk+", "Lb-"),
@@ -111,7 +111,7 @@ export const CONCRETE: SoalMisi[] = [
 const P = misi("diagram");
 export const PICTORIAL: SoalMisi[] = [
   P(1, "klik", "Misi Festival 5: gambar bangun", "Kaka menggambar tiap potongan bahan sebagai bangun polos berwarna.", [
-    pilah("bentuk", "segitiga", "Sm-", "Lb+", "Sk+", "Em-", "Sb-", "Lk-", "Sm+", "Eb+"),
+    { ...pilah("bentuk", "segitiga", "Sm-", "Lb+", "Sk+", "Em-", "Sb-", "Lk-", "Sm+", "Eb+"), klaim: { tokoh: "Kaka", angka: 4, alasan: "Kaka memeriksa tiap barang. Semua yang punya tiga sudut masuk keranjang segitiga, warna dan ukurannya tidak dihiraukan." } },
     ganti("warna", "ukuran", "kecil", "Lm-", "Sm-", "Em+", "Lm-", "Sb-", "Eb-", "Lb+", "Ek-", "Sk-"),
     tebak("bentuk", ["Lm+", "Lb-", "Lk+"], ["Sm+", "Eb-", "Sk-", "Em+"]),
     beda("Lk+", "Eb+", "Lb+", "Ek+", "Lk-", "Eb+"),
@@ -133,7 +133,7 @@ export const PICTORIAL: SoalMisi[] = [
 const A = misi("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(1, "klik", "Misi Festival 8: kartu kata", "Kaka menulis ciri tiap potongan bahan di kartu kecil, tanpa gambar.", [
-    pilah("ukuran", "kecil", "Lm+", "Sb-", "Ek+", "Lk-", "Sm+", "Eb-", "Lb+"),
+    { ...pilah("ukuran", "kecil", "Lm+", "Sb-", "Ek+", "Lk-", "Sm+", "Eb-", "Lb+"), klaim: { tokoh: "Abang", angka: 4, alasan: "Abang ikut menghitung segi empat kuning yang besar. Aturannya ukuran, jadi hitung yang kecil saja." } },
     ganti("bentuk", "warna", "biru", "Lb+", "Lb-", "Lb+", "Sb+", "Sb-", "Sk-", "Eb+", "Eb-", "Eb+", "Em-"),
     tebak("ukuran", ["Lm-", "Sb-", "Ek-"], ["Lb+", "Sm+", "Ek+", "Em+"]),
     beda("Em+", "Ek+", "Em-", "Lk-", "Ek-"),

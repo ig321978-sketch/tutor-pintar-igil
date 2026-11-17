@@ -54,13 +54,17 @@ export const kalimatBenda = (b: Benda): string => `${NAMA_NILAI[b.bentuk]} ${b.w
 /* ------------------------------ Langkah soal ------------------------------ */
 export type Langkah =
   /** Metode IGIL: pilah semua barang ke keranjang menurut satu aturan, lalu jawab isi keranjang `tanya` (boleh nol). */
-  | { tipe: "pilah"; aturan: Aturan; isi: Benda[]; tanya: string }
+  | { tipe: "pilah"; aturan: Aturan; isi: Benda[]; tanya: string; klaim?: Klaim }
   /** Attribute Sort: barang sudah terpilah menurut `dari`; aturan diganti `ke`. Ketuk barang yang pindah ke keranjang `tanya`. */
   | { tipe: "ganti"; dari: Aturan; ke: Aturan; isi: Benda[]; tanya: string }
   /** Guess My Rule: keranjang kiri berisi barang bernilai `kiri` menurut aturan rahasia, kanan sisanya. Pilih kartu aturan; suara lalu jawab isi satu keranjang. */
   | { tipe: "tebak"; aturan: Aturan; kiri: Benda[]; kanan: Benda[]; tanya?: "kiri" | "kanan" }
   /** Odd One Out: semua sama pada satu ciri kecuali satu. Ketuk yang beda, lalu jawab banyak barang yang sama. */
   | { tipe: "beda"; isi: Benda[] };
+
+/** Soal "Cari kesalahan": tokoh sudah menyebut isi keranjang; `alasan` menjelaskan kesalahan (atau kebenaran) jawabannya. */
+export type Klaim = { tokoh: "Igil" | "Kaka" | "Abang" | "Mamah"; angka: number; alasan: string };
+export const klaimBenar = (l: Extract<Langkah, { tipe: "pilah" }>): boolean => l.klaim !== undefined && l.klaim.angka === kunciLangkah(l);
 
 export type LangkahSoal = { metode: Metode; cara: Cara; judul: string; suara: string; langkah: Langkah };
 export type SoalMisi = { nomor: number; judul: string; cerita: string; cara: Cara; langkah: LangkahSoal[] };
@@ -119,6 +123,7 @@ const benda = (r: Rupa) => (r === "benda" ? "barang" : r === "diagram" ? "bangun
 const akhir = (cara: Cara, apa: string) => (cara === "klik" ? `Lalu pilih ${apa}.` : cara === "kanvas" ? `Lalu tulis ${apa} di kanvas.` : `Lalu ucapkan ${apa}.`);
 
 export function instruksi(l: Langkah, rupa: Rupa, cara: Cara): string {
+  if (l.tipe === "pilah" && l.klaim) return `Cari kesalahan. ${l.klaim.tokoh} bilang, isi keranjang ${NAMA_NILAI[l.tanya]} ada ${kata(l.klaim.angka)}. Benar atau salah? Periksa dulu dengan memilah.`;
   switch (l.tipe) {
     case "pilah": {
       const isi = akhir(cara, `isi keranjang ${NAMA_NILAI[l.tanya]}`);

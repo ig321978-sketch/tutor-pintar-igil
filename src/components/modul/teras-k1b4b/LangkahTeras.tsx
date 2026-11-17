@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { CariKesalahan } from "../CariKesalahan";
 import { KanvasTulis, TombolPeriksa } from "../opsi2/primitif";
 import { JawabSuara, JawabTulis, Pilihan } from "../lemari-k1b1a/Jawab";
 import {
@@ -8,6 +9,7 @@ import {
   NILAI,
   URUT_ATURAN,
   angkaJawab,
+  klaimBenar,
   isiKeranjang,
   kalimatBenda,
   kartuKata,
@@ -411,6 +413,8 @@ function tanyaAngka(l: Langkah): string {
 
 export function LangkahTeras({ ls, rupa, bicara, onBenar }: P) {
   const l = ls.langkah;
+  const klaim = l.tipe === "pilah" ? l.klaim : undefined;
+  const [dinilai, setDinilai] = useState(!klaim);
   const cara = ls.cara;
   const n = angkaJawab(l);
   const [siapJawab, setSiapJawab] = useState(false);
@@ -453,7 +457,20 @@ export function LangkahTeras({ ls, rupa, bicara, onBenar }: P) {
   return (
     <div className="space-y-3">
       <div className={goyang && !siapJawab ? "lm-goyang" : ""}>
-        {l.tipe === "pilah" ? <Pilah {...pk} l={l} /> : l.tipe === "ganti" ? <Ganti {...pk} l={l} /> : l.tipe === "tebak" ? <Tebak {...pk} l={l} /> : <Beda {...pk} l={l} />}
+        {!dinilai && klaim && l.tipe === "pilah" ? (
+          <CariKesalahan
+            tokoh={klaim.tokoh}
+            ucapan={`Isi keranjang ${NAMA_NILAI[l.tanya]} ada ${klaim.angka}.`}
+            benar={klaimBenar(l)}
+            alasan={klaim.alasan}
+            salah={salah}
+            onLulus={(p) => {
+              setDinilai(true);
+              setPesan(p);
+              bicara(p);
+            }}
+          />
+        ) : l.tipe === "pilah" ? <Pilah {...pk} l={l} /> : l.tipe === "ganti" ? <Ganti {...pk} l={l} /> : l.tipe === "tebak" ? <Tebak {...pk} l={l} /> : <Beda {...pk} l={l} />}
       </div>
       {siapJawab && !selesai && n !== null ? (
         <div className={`space-y-2 ${goyang ? "lm-goyang" : ""}`}>

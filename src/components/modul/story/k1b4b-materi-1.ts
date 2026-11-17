@@ -29,10 +29,10 @@ import { hapus, k, redamkan, sorotkan, tambah, ubah } from "./k1b4b-bantu";
  */
 
 /* ------------------------------ 1. Teras penuh barang ------------------------------ */
-const SUARA_T1 = "Teras rumah Igil penuh barang dari gudang. Festival mainan tinggal dua hari lagi.";
-const SUARA_T2 = "Igil mencari roda dan harus membongkar semua barang satu per satu.";
+const SUARA_T1 = "\"Rodaku di mana?\" Igil mengaduk teras yang penuh barang dari gudang. Festival tinggal dua hari lagi.";
+const SUARA_T2 = "Igil membongkar barang satu per satu sampai teras makin berantakan. Waktunya habis untuk mencari.";
 const SUARA_T3 = "Ada sembilan barang bercampur: lengkung, segitiga, segi empat, merah, dan biru.";
-const SUARA_T4 = "Mamah berkata, pilah dengan satu aturan. Barang yang cocok masuk ke keranjang yang sama.";
+const SUARA_T4 = "Mamah bertanya, \"Bagaimana kalau dipilah dengan satu aturan?\" Barang yang cocok masuk ke keranjang yang sama.";
 const ACAK = SERAK.map((p, i) => ({ id: `b${i}`, x: p.x + (i % 2 ? 10 : -10), y: p.y + ((i % 3) - 1) * 6 }));
 
 export const ADEGAN_TERAS: AdeganStory = {
@@ -52,7 +52,7 @@ export const ADEGAN_TERAS: AdeganStory = {
     ),
     k(
       SUARA_T2,
-      tambah("roda.", emo("rd", 76, 166, E.roda, 18), teks("rq", 94, 162, "?", 14, W.merah)),
+      tambah("mencari.", emo("rd", 76, 166, E.roda, 18), teks("rq", 94, 162, "?", 14, W.merah)),
       ubah("membongkar", ...ACAK),
       tambah("satu", emo("pz", 64, 146, E.pusing, 16)),
     ),
@@ -75,10 +75,10 @@ export const ADEGAN_TERAS: AdeganStory = {
 };
 
 /* ------------------------------ 2. Aturan bentuk ------------------------------ */
-const SUARA_B1 = "Kaka memilih aturan bentuk. Ia menyiapkan tiga keranjang: lengkung, segitiga, dan segi empat.";
-const SUARA_B2 = "Barang pertama melengkung, tanpa sisi lurus dan tanpa sudut. Ia masuk keranjang lengkung.";
-const SUARA_B3 = "Barang kedua punya tiga sisi lurus dan tiga sudut, masuk keranjang segitiga.";
-const SUARA_B4 = "Barang ketiga punya empat sisi lurus dan empat sudut, masuk keranjang segi empat.";
+const SUARA_B1 = "Kaka yang teliti memilih aturan bentuk. Ia menyiapkan tiga keranjang: lengkung, segitiga, dan segi empat.";
+const SUARA_B2 = "Barang pertama melengkung, tanpa sudut. Ia masuk keranjang lengkung.";
+const SUARA_B3 = "Barang kedua punya tiga sudut, masuk keranjang segitiga.";
+const SUARA_B4 = "Barang ketiga punya empat sudut, masuk keranjang segi empat.";
 const SUARA_B5 = "Begitu terus satu per satu, sampai sembilan barang diperiksa. Teras pun bersih.";
 const kaca = (i: number) => ({ id: "kc", x: JAJAR[i].x, y: JAJAR[i].y - 20 });
 
@@ -136,7 +136,7 @@ export const ADEGAN_BENTUK: AdeganStory = {
 const SUARA_N1 = "Tiap keranjang diberi nama dan dihitung isinya. Keranjang lengkung berisi tiga.";
 const SUARA_N2 = "Keranjang segitiga berisi dua. Keranjang segi empat berisi empat.";
 const SUARA_N3 = "Tiga, dua, dan empat, semuanya sembilan, sama dengan barang di teras.";
-const SUARA_N4 = "Nama keranjang memberi tahu isinya. Igil cukup membaca namanya.";
+const SUARA_N4 = "\"Sekarang aku cukup membaca nama keranjangnya!\" seru Igil senang.";
 const PAPAN = ["lengkung", "segitiga", "segi empat"].map((n) => `${idKeranjang(n)}-nm-k`);
 
 export const ADEGAN_NAMA: AdeganStory = {
