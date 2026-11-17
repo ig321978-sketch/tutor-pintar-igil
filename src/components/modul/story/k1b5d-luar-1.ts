@@ -1,121 +1,152 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { W, baris, bingkaiDua, emo, judul, kartu, kelereng, petak, teks, titikPetak, type Titik } from "./k1b5d-gambar";
-import { bersih, hitungMuncul, idx, penghitung, k, sorotkan, tambah, ubah } from "./k1b5d-bantu";
+import { E, W, WI, akuariumIsi, barisIkan, emo, garisPasang, idIkan, judul, kartu, orang, teks } from "./k1b5d-gambar";
+import { bersih, hapus, idx, k, sorotkan, tambah, ubah, urutBilangan } from "./k1b5d-bantu";
 
-/** Nama metode luar dalam bahasa Indonesia saja (data sumber memuat nama Inggris, yang tidak dipakai di video). */
-export const NAMA_METODE_ID = ["Hitung sampai 20", "Sepuluh dan Satuan", "Dua Bingkai Sepuluh"];
-export const RINGKAS_METODE = ["lanjut hitung melewati 10", "11 sampai 20 jadi 10 dan sisa", "dua bingkai untuk 11 sampai 20"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/* Video metode global Sub-Bab D "Lapak Ikan Dibuka": pembuka dan One-to-One Matching (Pasangkan Satu-Satu). */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE_ID[i]} · ${RINGKAS_METODE[i]}`], 8.8);
+export const NAMA_METODE = ["One-to-One Matching", "Cube Towers", "Number Line Order"];
+export const NAMA_METODE_ID = ["Pasangkan Satu-Satu", "Menara Kubus", "Urut di Garis Bilangan"];
+export const WARNA_METODE = [W.hijauMuda, W.krem, W.pink];
+export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
-const ANAK = "\u{1F9D2}";
-const BY1 = 64;
+/** Dua baris ikan berpasangan: baris atas `${a}` (n1 ikan) di y=84 dan baris bawah `${b}` (n2 ikan) di y=128, jarak dx, mulai x0. */
+const duaBaris = (n1: number, n2: number, x0: number, dx: number, wa: string, wb: string, s = 0.6): Obj[] => [
+  ...barisIkan("a", n1, x0, 84, dx, wa, s),
+  ...barisIkan("b", n2, x0, 128, dx, wb, s),
+];
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara punya cara lain untuk mengajar membandingkan bilangan sampai dua puluh. Di video ini kita lihat tiga cara itu.";
-const SUARA_O2 = "Tiga metode itu: Hitung sampai dua puluh, Sepuluh dan Satuan, dan Dua Bingkai Sepuluh.";
-const SUARA_O3 = "Hitung sampai dua puluh artinya kita lanjut hitung melewati sepuluh. Sepuluh dan Satuan artinya bilangan sebelas sampai dua puluh kita lihat sebagai sepuluh dan sisa. Dua Bingkai Sepuluh artinya kita pakai dua bingkai untuk bilangan sebelas sampai dua puluh.";
-const SUARA_O4 = "Ketiga cara ini sama-sama membantu kita membandingkan bilangan dengan mudah, dari menghitung sampai menemukan jawabannya.";
-const SUARA_O5 = "Kita akan mencoba tiap cara bersama Upe, Kira, Malosi, dan Wei, di layar.";
+/* ------------------------------ 1. Pembuka ------------------------------ */
+const SUARA_O1 = "Tetangga membawa selembar kertas lomba dengan tiga cara membandingkan isi akuarium. Abang bertanya, mana yang paling pas untuk lapakku?";
+const SUARA_O2 = "Tiga metode itu: One-to-One Matching, Cube Towers, dan Number Line Order.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Pasangkan Satu-Satu, Menara Kubus, dan Urut di Garis Bilangan.";
+const SUARA_O4 = "Semua metode membantu kita menentukan mana yang lebih banyak dan mana yang lebih sedikit.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk membandingkan bilangan",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Tiga metode global untuk membandingkan isi akuarium",
+  sumber: "Metode global: pembuka",
+  latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)), tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11)), tambah("puluh.", teks("p20", 150, 54, "bilangan sampai 20", 11, W.merah))),
+    k(
+      SUARA_O1,
+      tambah(0, judul("Tiga cara membandingkan")),
+      tambah("Tetangga", ...orang("tg", 36, 100, E.warga, "Tetangga")),
+      tambah("kertas", emo("kr", 90, 100, E.kertas, 30)),
+      tambah("tiga", ...kartu("pk", 124, 78, 160, 32, W.emas, ["3 cara membandingkan"], 10)),
+      tambah("akuarium.", ...akuariumIsi("aq", 100, 128, 100, 44, 10, WI.guppy)),
+      tambah("Abang", ...orang("ab", 258, 166, E.abang, "Abang")),
+      tambah("lapakku?", emo("lp", 40, 168, E.lapak, 28)),
+    ),
     k(
       SUARA_O2,
       bersih(0),
-      tambah(0, judul("Tiga metode")),
-      tambah(idx(SUARA_O2, "Hitung"), ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah(idx(SUARA_O2, "Satuan"), ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "Bingkai"), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      tambah(0, judul("3 metode global")),
+      ...NAMA_METODE.map((m, i) => tambah(idx(SUARA_O2, ["One-to-One", "Cube", "Number"][i]), ...kartu(`m${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11))),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Apa artinya?")),
-      tambah(idx(SUARA_O3, "Hitung"), ...kartu("n0", 14, 40, 272, 38, WARNA_METODE[0], [NAMA_METODE_ID[0], RINGKAS_METODE[0]], 9.6)),
-      tambah(idx(SUARA_O3, "Satuan"), ...kartu("n1", 14, 88, 272, 38, WARNA_METODE[1], [NAMA_METODE_ID[1], RINGKAS_METODE[1]], 9.6)),
-      tambah(idx(SUARA_O3, "Bingkai"), ...kartu("n2", 14, 136, 272, 38, WARNA_METODE[2], [NAMA_METODE_ID[2], RINGKAS_METODE[2]], 9.6)),
+      tambah(0, judul("Nama dalam bahasa Indonesia")),
+      ...NAMA_METODE_ID.map((m, i) => tambah(idx(SUARA_O3, ["Pasangkan", "Menara", "Urut"][i]), ...kartu(`n${i}`, 20, 40 + i * 48, 260, 38, WARNA_METODE[i], [`${i + 1}. ${m}`], 11))),
     ),
     k(
       SUARA_O4,
       bersih(0),
-      tambah(0, judul("Dari menghitung ke jawaban")),
-      tambah("membantu", emo("i1", 60, 90, "\u{1F463}", 40), emo("i2", 150, 90, "\u{1F9E9}", 40), emo("i3", 240, 90, "\u{1F51F}", 40)),
-      tambah("mudah,", ...kartu("iq", 30, 124, 240, 44, W.emas, ["membandingkan dengan mudah", "dari hitungan sampai jawaban"], 10)),
-    ),
-    k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Dicoba di layar")),
-      ...[["Upe", 45], ["Kira", 115], ["Malosi", 185], ["Wei", 255]].map(([nama, px]) => tambah(nama as string, emo(`o-${nama}`, px as number, 110, ANAK, 34), teks(`on-${nama}`, px as number, 130, nama as string, 8.6))),
-      tambah("layar.", ...kartu("ot", 40, 150, 220, 30, W.krem, ["bingkai, titik, dan angka"], 10)),
+      tambah(0, judul("Mana yang lebih banyak?")),
+      tambah("metode", ...akuariumIsi("sa", 24, 56, 112, 48, 15, WI.guppy), ...akuariumIsi("sb", 164, 56, 112, 48, 12, WI.koki)),
+      tambah("banyak", ...kartu("sk", 36, 122, 88, 24, W.hijauMuda, ["lebih banyak"], 10), emo("mk", 80, 52, E.mahkota, 16)),
+      tambah("sedikit.", ...kartu("ss", 176, 122, 88, 24, W.lavender, ["lebih sedikit"], 10)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Hitung sampai 20: konsep ------------------------------ */
-const SUARA_A1 = "Metode pertama, Hitung sampai dua puluh. Kita hitung benda satu per satu, dan tidak berhenti di sepuluh.";
-const SUARA_A2 = "Ketuk kelereng di layar: satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh. Bingkai pertama sudah penuh.";
-const SUARA_A3 = "Lanjut hitung melewati sepuluh: sebelas, dua belas, tiga belas, empat belas, lima belas, enam belas. Ada enam belas titik.";
-const SUARA_A4 = "Jadi kita terus menghitung, tidak berhenti di sepuluh. Sampai dua puluh pun bisa kita hitung.";
-const PTS = (a: number, b: number): Titik[] => Array.from({ length: b - a }, (_, i) => petak(a + i, BY1));
+/* ------------------------------ 2. One-to-One Matching: konsep ------------------------------ */
+const SUARA_A1 = "Metode pertama, One-to-One Matching, atau Pasangkan Satu-Satu. Dua kumpulan benda dipasangkan, satu dengan satu.";
+const SUARA_A2 = "Benda yang punya pasangan sama banyak. Benda yang tersisa tanpa pasangan menunjukkan kumpulan yang lebih banyak.";
+const SUARA_A3 = "Kumpulan yang habis lebih dulu adalah yang lebih sedikit.";
+const SUARA_A4 = "Bila semuanya berpasangan, kedua kumpulan sama banyak.";
 
-export const ADEGAN_LUAR_HITUNG: AdeganStory = {
-  id: "luar-hitung",
-  judul: "Hitung sampai 20: lanjut hitung melewati sepuluh",
-  sumber: "Metode luar: Hitung sampai 20",
+export const ADEGAN_LUAR_PASANG: AdeganStory = {
+  id: "luar-pasang",
+  judul: "One-to-One Matching: pasangkan satu-satu",
+  sumber: "Metode global: One-to-One Matching",
   latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_A1, tambah("pertama,", ...kepala(0)), tambah("benda", ...bingkaiDua("bf", BY1))),
+    k(
+      SUARA_A1,
+      tambah("pertama,", ...kepala(0)),
+      tambah("Dua", teks("kp", 150, 66, "2 kumpulan", 10, W.ungu), ...duaBaris(4, 4, 76, 32, WI.guppy, WI.koki)),
+      tambah("dipasangkan,", ...garisPasang("pg", 4, 76, 32, 91, 121)),
+      tambah(idx(SUARA_A1, "satu"), teks("ps", 150, 160, "1 dengan 1", 10, W.merah)),
+    ),
     k(
       SUARA_A2,
-      ...hitungMuncul(SUARA_A2, "bt", PTS(0, 10), (i) => titikPetak(`m${i}`, i, BY1), "layar", false),
-      ...penghitung(SUARA_A2, "ct", 150, 140, 1, 10, "layar"),
-      tambah("penuh.", teks("tp", 80, 130, "penuh: 10", 10, W.merah)),
+      bersih(0),
+      tambah(0, ...kepala(0), ...duaBaris(6, 4, 52, 34, WI.guppy, WI.koki), ...garisPasang("pg", 4, 52, 34, 91, 121)),
+      tambah("banyak.", teks("sm", 150, 66, "punya pasangan: sama banyak", 9, W.hijau)),
+      sorotkan("tersisa", ...idIkan("a", 4, 5)),
+      tambah("banyak.@2", teks("sl", 150, 160, "sisa: lebih banyak", 10, W.merah)),
     ),
     k(
       SUARA_A3,
-      ...hitungMuncul(SUARA_A3, "bu", PTS(10, 16), (i) => titikPetak(`m${10 + i}`, 10 + i, BY1), "melewati", false, 11),
-      ...penghitung(SUARA_A3, "ct", 150, 140, 11, 16, "melewati", true),
-      tambah(idx(SUARA_A3, "titik"), teks("tt", 150, 170, "16 titik", 13, W.merah)),
+      hapus(0, "sm", "sl"),
+      tambah("habis", teks("hd2", 150, 66, "habis lebih dulu", 10, W.ungu)),
+      sorotkan("habis", ...idIkan("b", 0, 3)),
+      tambah("sedikit.", ...kartu("sd", 70, 152, 160, 24, W.lavender, ["koki: lebih sedikit"], 10)),
     ),
     k(
       SUARA_A4,
-      tambah("Sampai", ...[16, 17, 18, 19].map((i) => titikPetak(`m${i}`, i, BY1, W.hijau))),
-      ubah("pun", { id: "tt", isi: "20 titik" }),
+      bersih(0),
+      tambah(0, ...kepala(0), ...duaBaris(5, 5, 60, 40, WI.cupang, WI.koki), ...garisPasang("pg", 5, 60, 40, 91, 121)),
+      sorotkan("berpasangan,", "pg0", "pg1", "pg2", "pg3", "pg4"),
+      tambah("sama", ...kartu("sb", 80, 152, 140, 24, W.hijauMuda, ["sama banyak"], 12), emo("ok", 262, 106, E.benar, 20)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Hitung sampai 20: terapan ------------------------------ */
-const SUARA_T1 = "Soal cerita: Kira punya kelereng, dan Wei juga punya kelereng. Siapa yang kelerengnya lebih banyak? Kita hitung dulu.";
-const SUARA_T2 = "Hitung kelereng Kira dulu: satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh, sebelas, dua belas, tiga belas, empat belas, lima belas, enam belas, tujuh belas.";
-const SUARA_T3 = "Lalu kelereng Wei, hitung juga: satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh, sebelas, dua belas, tiga belas, empat belas.";
-const SUARA_T4 = "Tujuh belas lebih banyak dari empat belas. Jadi kelereng Kira lebih banyak, dan kelereng Wei lebih sedikit.";
-const KIRA: Titik[] = baris(17, 84, 22, 15.5);
-const WEI: Titik[] = baris(14, 140, 22, 15.5);
+/* ------------------------------ 3. One-to-One Matching: terapan pada pesanan ------------------------------ */
+const SUARA_B1 = "Abang memasangkan guppy lima belas dengan neon dua puluh.";
+const SUARA_B2 = "Guppy habis lebih dulu, lima neon tanpa pasangan. Jadi neon lebih banyak.";
+const SUARA_B3 = "Cupang dua belas dan koki dua belas berpasangan semua. Sama banyak.";
+const SUARA_B4 = "Cara ini jelas dan tanpa menghitung, tetapi lama bila bendanya sangat banyak.";
+const [B1_15, B1_20] = urutBilangan(SUARA_B1, [15, 20]);
+const [B3_12a, B3_12b] = urutBilangan(SUARA_B3, [12, 12]);
 
-export const ADEGAN_LUAR_HITUNG_TERAPAN: AdeganStory = {
-  id: "luar-hitung-terapan",
-  judul: "Hitung sampai 20: kelereng Kira dan Wei",
-  sumber: "Metode luar: Hitung sampai 20, terapan",
+export const ADEGAN_LUAR_PASANG_TERAPAN: AdeganStory = {
+  id: "luar-pasang-terapan",
+  judul: "One-to-One Matching: guppy, neon, cupang, koki",
+  sumber: "Metode global: One-to-One Matching, terapan",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_T1,
+      SUARA_B1,
       tambah(0, ...kepala(0)),
-      tambah("Kira", teks("nk", 150, 62, "Kira", 9.4, W.ungu), ...KIRA.map((p, i) => kelereng(`ki${i}`, p.x, p.y, 6.5, i))),
-      tambah("Wei", teks("nw", 150, 118, "Wei", 9.4, W.ungu), ...WEI.map((p, i) => kelereng(`we${i}`, p.x, p.y, 6.5, i + 2))),
+      tambah("Abang", ...orang("ab", 262, 178, E.abang, "Abang")),
+      tambah(B1_15, ...barisIkan("g", 15, 16, 84, 13.5, WI.guppy, 0.42), teks("lg", 16, 68, "guppy: 15", 9.4, W.biru, { anchor: "start" })),
+      tambah(B1_20, ...barisIkan("n", 20, 16, 128, 13.5, WI.neon, 0.42), teks("ln", 16, 150, "neon: 20", 9.4, W.biru, { anchor: "start" })),
+      tambah("puluh.", ...garisPasang("pg", 15, 16, 13.5, 90, 122)),
     ),
-    k(SUARA_T2, ...hitungMuncul(SUARA_T2, "k", KIRA, () => [], "dulu", true, 1, 13), ubah(idx(SUARA_T2, "belas", 6), { id: "nk", isi: "Kira: 17", warna: W.merah })),
-    k(SUARA_T3, ...hitungMuncul(SUARA_T3, "w", WEI, () => [], "juga", true, 1, 13), ubah(idx(SUARA_T3, "belas", 3), { id: "nw", isi: "Wei: 14", warna: W.merah })),
-    k(SUARA_T4, sorotkan("Jadi", ...KIRA.map((_, i) => `ki${i}`)), tambah("banyak", ...kartu("tk", 30, 160, 240, 24, W.emas, ["17 lebih banyak dari 14"], 10))),
+    k(
+      SUARA_B2,
+      sorotkan("lima", ...idIkan("n", 15, 19)),
+      tambah("tanpa", teks("sa", 246, 150, "sisa 5", 9.4, W.merah)),
+      ubah("banyak.", { id: "ln", isi: "neon: 20, lebih banyak", warna: W.hijau }),
+    ),
+    k(
+      SUARA_B3,
+      bersih(0),
+      tambah(0, ...kepala(0)),
+      tambah(B3_12a, ...barisIkan("c", 12, 18, 84, 18, WI.cupang, 0.55), teks("lc", 18, 68, "cupang: 12", 9.4, W.biru, { anchor: "start" })),
+      tambah(B3_12b, ...barisIkan("o", 12, 18, 128, 18, WI.koki, 0.55), teks("lo", 18, 150, "koki: 12", 9.4, W.biru, { anchor: "start" })),
+      tambah("berpasangan", ...garisPasang("pg", 12, 18, 18, 90, 122)),
+      tambah("Sama", ...kartu("sb", 80, 160, 140, 24, W.hijauMuda, ["sama banyak"], 12)),
+    ),
+    k(
+      SUARA_B4,
+      bersih(0),
+      tambah(0, ...kepala(0)),
+      tambah("jelas", ...kartu("jl", 40, 60, 220, 32, W.hijauMuda, ["jelas, tanpa menghitung"], 10.5), emo("ok", 276, 82, E.benar, 18)),
+      tambah("lama", ...kartu("lm", 40, 108, 220, 32, W.merahMuda, ["lama bila sangat banyak"], 10.5), emo("jm", 276, 130, E.jam, 18)),
+    ),
   ],
 };

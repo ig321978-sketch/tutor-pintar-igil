@@ -68,3 +68,7 @@ Diisi rinci per sub-bab setelah komponennya selesai (Mind-map, Infografis, Simul
 - Sub-Bab B (`src/components/modul/rak-k1b5b/`): Mind-map pompa udara dengan selang aerator (tabung pompa = Masalah, tujuh katup cabang selang bernomor = Penyelesaian dibaca dari atas, batu aerasi berbuih = Hasil);
   Infografis catatan di tutup kaleng pakan; Simulasi rak akuarium bernomor (rak ikan cupang dua tingkat, label sembilan dan delapan belas jatuh); Concrete batu kali berlumut, kemajuan batu pijakan berlumut;
   Pictorial pita ukur kain kuning bertanda, kemajuan tanda pita terisi; Abstract papan angka lampu hijau tujuh segmen, kemajuan lampu menyala.
+- Sub-Bab C (`src/components/modul/kemas-k1b5c/`): Mind-map ban berjalan pengemasan; Infografis papan persediaan bermagnet; Simulasi Meja Kemas (jaring kecil empat belas, botol vitamin delapan belas, pot tanaman air dua belas diikat karet per sepuluh);
+  Concrete plastik gelembung; Pictorial kertas kotak hijau pembukuan; Abstract label harga kertas termal.
+- Sub-Bab D (`src/components/modul/lapak-k1b5d/`): Mind-map payung lapak; Infografis papan pesanan di bawah atap lapak; Simulasi Lapak Ikan (bandingkan, urutkan di rak, layani tiga pembeli, buka lapak, penutup bab);
+  Concrete terpal biru lapak; Pictorial lintasan lomba; Abstract spanduk pembukaan berkonfeti.

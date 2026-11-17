@@ -292,9 +292,10 @@ for (const [nama, soal, rupa] of [["Concrete", D.CONCRETE, "benda"], ["Pictorial
   }
   const ms = readFileSync(new URL("../src/components/modul/SimulasiBab5.tsx", import.meta.url), "utf8");
   cek(/A: "Misi Lapak Ikan[^"\d]*"/.test(ms), "SimulasiBab5: teks misi A tanpa digit");
-  cek(ms.includes("SimulasiJaringIkan") && /huruf === "A" \? \[wadahIkan\]/.test(ms), "SimulasiBab5: tab Sub-Bab A memakai wadah ikan");
+  cek(ms.includes("SimulasiJaringIkan") && /: \[wadahIkan\]/.test(ms), "SimulasiBab5: tab Sub-Bab A memakai wadah ikan");
   for (const f of ["misi-bab5.ts", "SimulasiBab5.tsx"]) cek(!readFileSync(new URL(`../src/components/modul/${f}`, import.meta.url), "utf8").includes("\r"), `${f}: akhir baris LF`);
 }
 
+{ const sl = readFileSync(new URL("../src/components/modul/ikan-k1b5a/LangkahIkan.tsx", import.meta.url), "utf8"); cek(sl.includes("Ini jawaban yang benar.") && /ditunjukkan/.test(sl) && sl.includes("onBenar={(t) => jawab(n, \"\", t)}"), "ikan-k1b5a/LangkahIkan: jawaban ditunjukkan setelah tiga kali salah memakai pesan Ini jawaban yang benar."); }
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

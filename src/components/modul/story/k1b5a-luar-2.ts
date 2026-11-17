@@ -194,8 +194,8 @@ export const ADEGAN_LUAR_TOPLES_TERAPAN: AdeganStory = {
 /* ------------------------------ 8. Ringkasan ------------------------------ */
 const SUARA_Z1 = "Kita sudah melihat tiga metode global. Mana yang paling cocok untuk Abang? Itu tergantung masalahnya.";
 const SUARA_Z2 = "Double Ten Frame cocok bila ikannya banyak dan harus rapi: isi bingkai pertama sampai penuh, lalu sisanya di bingkai kedua.";
-const SUARA_Z3 = "Rekenrek cepat dibaca, tetapi kurang cocok untuk benda yang tidak bisa digeser seperti manik. Kawat atas sepuluh, kawat bawah sisanya.";
-const SUARA_Z4 = "Estimation Jar cocok saat belum sempat menghitung: perkirakan dulu. Tetapi hasil akhirnya tetap harus dibuktikan dengan menghitung.";
+const SUARA_Z3 = "Rekenrek cepat dibaca, tetapi butuh manik yang bisa digeser. Kawat atas sepuluh, kawat bawah sisanya.";
+const SUARA_Z4 = "Estimation Jar cocok saat belum sempat menghitung: perkirakan dulu, lalu buktikan. Menurutmu, kalau ikan banyak sekali, alat mana yang kamu pilih?";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",

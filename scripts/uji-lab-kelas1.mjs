@@ -1328,10 +1328,11 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
 /* ---------------- Misi Bab 5 (hibrida) ---------------- */
 {
   const kosong = new Set();
+  const SEL = (id) => ({ alat: "selesai", id });
+  // Alat lama (puluhan, deret, banding jeruk): tidak boleh memenuhi misi Sub-Bab mana pun.
   const Pu = (o) => ({ alat: "puluhan", n: 14, m: 12, ikat: false, banding: false, benda: true, bingkai: true, kalimat: true, tabel: false, garis: true, ...o });
   const De = (o) => ({ alat: "deret", awal: 12, n: 12, maju: 0, mundur: 0, sembunyi: false, tetangga: true, kisi: true, ...o });
   const Bj = (o) => ({ alat: "banding", jumlah: [12, 15, 9], pas: 0, pasang: true, tanda: true, selisih: false, batang: false, benda: true, paling: true, urut: true, garis: true, ...o });
-  const SEL = (id) => ({ alat: "selesai", id });
   // Sub-Bab A memakai Wadah Sekat Sepuluh (ikan-k1b5a): cupang dua belas, molly enam belas, buntal sembilan belas. Rincian di scripts/uji-ikan-k1b5a.mjs.
   const ID_IK = ["cupang", "molly", "buntal"];
   const TOT = { cupang: 12, molly: 16, buntal: 19 };
@@ -1340,12 +1341,19 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   // Sub-Bab B memakai Rak Akuarium Bernomor (rak-k1b5b): rak cupang satu sampai dua puluh, label sembilan dan delapan belas jatuh. Rincian di scripts/uji-rak-k1b5b.mjs.
   const HB = [9, 18];
   const Rk = (o) => ({ alat: "rak", posisi: 1, awal: 1, arah: null, beruntun: 0, terbaikMaju: 0, terbaikMundur: 0, pakan: Array(21).fill(0), label: { 9: null, 18: null }, tetangga: false, kisi: false, turun: 0, ...o });
-  const semuaAwal = [Pu({}), Pu({ tabel: true }), Pu({ tabel: true, banding: false }), De({}), Bj({}), Ik({}), Rk({})];
+  // Sub-Bab C memakai Meja Kemas (kemas-k1b5c): jaring empat belas, botol delapan belas, pot dua belas. Rincian di scripts/uji-kemas-k1b5c.mjs.
+  const ID_KM = ["jaring", "botol", "pot"];
+  const TK = { jaring: 14, botol: 18, pot: 12 };
+  const rm = (v) => Object.fromEntries(ID_KM.map((id) => [id, v]));
+  const Km = (o) => ({ alat: "kemas", pilih: "jaring", ikat: rm(0), kumpul: rm(0), puluhan: rm(null), satuan: rm(null), lepas: [], kalimat: false, ...o });
+  // Sub-Bab D memakai Lapak Ikan (lapak-k1b5d). Rincian di scripts/uji-lapak-k1b5d.mjs.
+  const Lp = (o) => ({ alat: "lapak", mode: "pasang", kiri: null, kanan: null, dipasang: 0, pasangTuntas: 0, samaTuntas: 0, penanda: "banyak", palingBanyak: null, palingSedikit: null, urutan: [], urutNaik: false, urutTurun: false, layani: [null, null, null], buka: false, ...o });
+  const semuaAwal = [Pu({}), Pu({ tabel: true }), De({}), Bj({}), SEL("odometer"), Ik({}), Rk({}), Km({}), Lp({})];
   for (const sub of ["A", "B", "C", "D"]) {
     const daftar = X5.daftarMisiBab5(sub);
     for (const k of semuaAwal) cek(M0.misiBaru(daftar, k, kosong).length === 0, `bab5 ${sub}: keadaan awal ${k.alat} tidak memenuhi misi`);
   }
-  ujiStruktur("bab5", X5.daftarMisiBab5, ["A", "B", "C", "D"], { A: Ik({}), B: Rk({}), C: Pu({ tabel: true }), D: Pu({ tabel: true }) });
+  ujiStruktur("bab5", X5.daftarMisiBab5, ["A", "B", "C", "D"], { A: Ik({}), B: Rk({}), C: Km({}), D: Lp({}) });
   const ada = (sub, k, id) => M0.misiBaru(X5.daftarMisiBab5(sub), k, kosong).includes(id);
   sama(X5.TOTAL_IKAN_A, TOT, "bab5 A: banyak ikan tiap kantong");
   cek(ada("A", Ik({ pindah: { ...rk(0), molly: 16 }, tebak: { ...rk(null), molly: 10 } }), "a-tebak") && !ada("A", Ik({ pindah: { ...rk(0), molly: 16 } }), "a-tebak") && !ada("A", Ik({ pindah: { ...rk(0), molly: 15 }, tebak: { ...rk(null), molly: 10 } }), "a-tebak"), "bab5 A: tebak lalu pindahkan semua");
@@ -1363,15 +1371,22 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   cek(ada("B", Rk({ pakan: sekali }), "b-pakan") && !ada("B", Rk({ pakan: sekali.map((p, i) => (i === 7 ? 2 : p)) }), "b-pakan") && !ada("B", Rk({ pakan: sekali.map((p, i) => (i === 20 ? 0 : p)) }), "b-pakan"), "bab5 B: pakan tepat sekali, tidak terlewat");
   cek(ada("B", Rk({ tetangga: true, posisi: 19 }), "b-tetangga") && !ada("B", Rk({ posisi: 19 }), "b-tetangga") && !ada("B", Rk({ tetangga: true, posisi: 18 }), "b-tetangga"), "bab5 B: tetangga sembilan belas");
   cek(ada("B", Rk({ kisi: true, turun: 1 }), "b-kisi") && !ada("B", Rk({ turun: 1 }), "b-kisi") && !ada("B", Rk({ kisi: true }), "b-kisi"), "bab5 B: turun satu tingkat di kisi");
-  const Tb = (o) => Pu({ tabel: true, ...o });
-  cek(ada("C", Tb({ n: 10, ikat: true }), "c-ikat") && !ada("C", Tb({ n: 10 }), "c-ikat") && ada("C", Tb({ n: 15 }), "c-lima-belas") && ada("C", Tb({ n: 11 }), "c-sebelas"), "bab5 C: tabel");
-  cek(!ada("C", Pu({ n: 15 }), "c-lima-belas"), "bab5 C: tabel harus tampil");
-  cek(ada("C", SEL("odometer"), "c-odometer") && ada("C", Tb({ n: 20 }), "c-dua-puluh") && ada("C", De({ maju: 3 }), "c-ingat"), "bab5 C: odometer, dua puluh, ingat");
-  cek(ada("D", Pu({ banding: true, n: 13, m: 16 }), "d-satuan") && ada("D", Pu({ banding: true, n: 16, m: 13 }), "d-satuan") && !ada("D", Pu({ n: 13, m: 16 }), "d-satuan"), "bab5 D: satuan");
-  cek(ada("D", Pu({ banding: true, n: 15, m: 9 }), "d-puluhan") && ada("D", Pu({ banding: true, n: 8, m: 14 }), "d-puluhan") && !ada("D", Pu({ banding: true, n: 14, m: 12 }), "d-puluhan"), "bab5 D: puluhan lebih dulu");
-  cek(ada("D", Bj({ jumlah: [12, 15, 17] }), "d-wei") && !ada("D", Bj({ jumlah: [12, 17, 17] }), "d-wei"), "bab5 D: Wei terbanyak sendirian");
-  cek(ada("D", Bj({ jumlah: [15, 12, 9] }), "d-urut") && !ada("D", Bj({ jumlah: [15, 12, 12] }), "d-urut"), "bab5 D: urutan");
-  cek(ada("D", Bj({ jumlah: [12, 12, 9] }), "d-sama") && ada("D", SEL("odometer"), "d-odometer"), "bab5 D: sama dan odometer");
+  sama(X5.TOTAL_KEMAS_C, TK, "bab5 C: banyak barang tiap jenis");
+  const rapiJ = { jaring: 1, botol: 1, pot: 1 };
+  const tabelJ = (o) => Km({ ikat: rapiJ, puluhan: { jaring: 1, botol: 1, pot: 1 }, satuan: { jaring: 4, botol: 8, pot: 2 }, ...o });
+  cek(ada("C", Km({ ikat: { ...rm(0), botol: 1 } }), "c-ikat") && !ada("C", Km({}), "c-ikat") && !ada("C", Km({ kumpul: { ...rm(0), botol: 10 } }), "c-ikat"), "bab5 C: satu ikatan");
+  cek(ada("C", Km({ ikat: { ...rm(0), jaring: 1 } }), "c-rapi") && !ada("C", Km({ ikat: { ...rm(0), botol: 0 } }), "c-rapi") && !ada("C", Km({ ikat: { ...rm(0), pot: 2 } }), "c-rapi"), "bab5 C: semua sepuluhan diikat");
+  cek(ada("C", Km({ ikat: { ...rm(0), jaring: 1 }, puluhan: { ...rm(null), jaring: 1 }, satuan: { ...rm(null), jaring: 4 } }), "c-tabel") && !ada("C", Km({ ikat: { ...rm(0), jaring: 1 }, puluhan: { ...rm(null), jaring: 1 }, satuan: { ...rm(null), jaring: 5 } }), "c-tabel") && !ada("C", Km({ puluhan: { ...rm(null), jaring: 1 }, satuan: { ...rm(null), jaring: 4 } }), "c-tabel"), "bab5 C: tabel tepat setelah diikat");
+  cek(ada("C", tabelJ({}), "c-semua") && !ada("C", tabelJ({ satuan: { jaring: 4, botol: 8, pot: 3 } }), "c-semua"), "bab5 C: ketiga barang");
+  cek(ada("C", Km({ ikat: { ...rm(0), pot: 1 }, lepas: ["pot"] }), "c-lepas") && !ada("C", Km({ ikat: { ...rm(0), pot: 1 } }), "c-lepas") && !ada("C", Km({ lepas: ["pot"] }), "c-lepas"), "bab5 C: lepas lalu ikat lagi");
+  cek(ada("C", tabelJ({ kalimat: true }), "c-kalimat") && !ada("C", tabelJ({}), "c-kalimat") && !ada("C", Km({ kalimat: true }), "c-kalimat"), "bab5 C: kalimat");
+  const ISI_L = { cupang: 14, molly: 11, buntal: 17, udang: 6, siput: 11 };
+  sama(X5.ISI_LAPAK_D, ISI_L, "bab5 D: isi akuarium");
+  sama([...X5.PESANAN_LAPAK_D], [10, 17, 7], "bab5 D: pesanan pembeli");
+  cek(ada("D", Lp({ pasangTuntas: 1 }), "d-pasang") && !ada("D", Lp({ samaTuntas: 1 }), "d-pasang") && ada("D", Lp({ samaTuntas: 1 }), "d-sama"), "bab5 D: pasang dan sama");
+  cek(ada("D", Lp({ palingBanyak: "buntal", palingSedikit: "udang" }), "d-paling") && !ada("D", Lp({ palingBanyak: "cupang", palingSedikit: "udang" }), "d-paling") && !ada("D", Lp({ palingBanyak: "buntal" }), "d-paling"), "bab5 D: paling banyak dan sedikit");
+  cek(ada("D", Lp({ urutNaik: true }), "d-urut") && ada("D", Lp({ urutTurun: true }), "d-turun") && !ada("D", Lp({ urutTurun: true }), "d-urut"), "bab5 D: urutan naik dan turun");
+  cek(ada("D", Lp({ buka: true, layani: ["cupang", "buntal", "molly"] }), "d-buka") && !ada("D", Lp({ buka: true, layani: ["cupang", "buntal", "udang"] }), "d-buka") && !ada("D", Lp({ buka: true, layani: ["cupang", "buntal", null] }), "d-buka") && !ada("D", Lp({ layani: ["cupang", "buntal", "molly"] }), "d-buka"), "bab5 D: buka lapak dengan akuarium cukup");
   cek(X5.puncakTunggal([3, 3, 1]) === -1 && X5.puncakTunggal([1, 4, 2]) === 1, "bab5: puncakTunggal");
 }
 /* ---------------- Misi Bab 6 (hibrida) ---------------- */

@@ -17,7 +17,7 @@ export default function LabelAkuarium({ speakGuru, onLanjut, teksLanjut }: { spe
     71,
     (l, tujuan) => {
       const t = TEMPAT_LABEL.find((x) => x.kunci === l.teks);
-      if (t && t.kelompok === tujuan.kelompok) return "Kolomnya sudah benar, tetapi barisnya bukan ini. Cocokkan dengan kegiatan di baris ini.";
+      if (t && t.kelompok === tujuan.kelompok) return "Kolomnya sudah benar, tetapi barisnya bukan ini. Cocokkan dengan jenis ikan di baris ini.";
       return t ? KELOMPOK_LABEL[t.kelompok] : "Coba tempat yang lain.";
     },
     speakGuru,

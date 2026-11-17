@@ -77,7 +77,11 @@ const FRASA_DASAR: ReadonlyArray<readonly [string, string]> = [
   ["number line hop", "nam ber lain hop"],
   ["number grid", "nam ber grid"],
   ["before and after", "bi for en af ter"],
+  ["one-to-one matching", "wan tu wan me ching"],
+  ["cube towers", "kyub tau erz"],
+  ["number line order", "nam ber lain or der"],
   ["estimation jar", "es ti mei syen jar"],
+  ["bundling sticks", "ban dling stiks"],
 ];
 const FRASA = [...FRASA_DASAR].sort((a, b) => b[0].length - a[0].length);
 

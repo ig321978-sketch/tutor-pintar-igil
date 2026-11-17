@@ -1,53 +1,50 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_CERITA, ADEGAN_KATA, ADEGAN_KATA_TELITI, ADEGAN_PASANGKAN } from "./k1b5d-materi-1";
-import { ADEGAN_JERUK, ADEGAN_PALING, ADEGAN_URUT_BESAR, ADEGAN_URUT_KECIL } from "./k1b5d-materi-2";
-import { ADEGAN_GARIS, ADEGAN_PULUHAN_BEDA, ADEGAN_STOPLES, ADEGAN_TANDA } from "./k1b5d-materi-3";
-import { ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_SATU, ADEGAN_LATIHAN_TIGA, ADEGAN_PENUTUP } from "./k1b5d-materi-4";
-import { ADEGAN_LUAR_HITUNG, ADEGAN_LUAR_HITUNG_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k1b5d-luar-1";
-import { ADEGAN_LUAR_BINGKAI, ADEGAN_LUAR_BINGKAI_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_SEPULUH, ADEGAN_LUAR_SEPULUH_TERAPAN } from "./k1b5d-luar-2";
+import { ADEGAN_PASANGAN, ADEGAN_PEMBUKAAN } from "./k1b5d-materi-1";
+import { ADEGAN_PALING, ADEGAN_PULUHAN_DULU, ADEGAN_URUT } from "./k1b5d-materi-2";
+import { ADEGAN_LAPAK_BUKA, ADEGAN_PENUTUP, ADEGAN_PESANAN } from "./k1b5d-materi-3";
+import { ADEGAN_LUAR_PASANG, ADEGAN_LUAR_PASANG_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k1b5d-luar-1";
+import { ADEGAN_LUAR_GARIS, ADEGAN_LUAR_GARIS_TERAPAN, ADEGAN_LUAR_MENARA, ADEGAN_LUAR_MENARA_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k1b5d-luar-2";
 
-/** Kelas 1 Bab 5 Sub-Bab D (Membandingkan dan Mengurutkan Bilangan): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 1 Bab 5 Sub-Bab D (membandingkan dan mengurutkan bilangan), akhir cerita Akuarium Ikan Hias Abang.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Lapak Ikan Dibuka" (Igil, Kaka, Abang, Mamah, Pak RT).
+ * Video kedua: tiga metode global, terpisah.
+ */
+export const JUDUL_K1B5D = "Lapak Ikan Dibuka";
+
 export const VIDEO_MATERI_K1B5D: VideoStory = {
   id: "k1b5d-materi",
-  judul: "Membandingkan dan Mengurutkan Bilangan",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K1B5D,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "membandingkan dan mengurutkan bilangan", daftar: ["Membandingkan dua kumpulan", "Mencari paling banyak", "Mengurutkan bilangan"] }),
-    ADEGAN_CERITA,
-    ADEGAN_KATA_TELITI,
-    ADEGAN_PASANGKAN,
-    ADEGAN_KATA,
-    ADEGAN_JERUK,
+    adeganSapaan({ jenis: "materi", topik: "membandingkan dan mengurutkan bilangan", daftar: ["Membandingkan kumpulan", "Paling banyak, paling sedikit", "Mengurutkan bilangan"] }),
+    ADEGAN_PEMBUKAAN,
+    ADEGAN_PASANGAN,
+    ADEGAN_PULUHAN_DULU,
     ADEGAN_PALING,
-    ADEGAN_URUT_KECIL,
-    ADEGAN_URUT_BESAR,
-    ADEGAN_STOPLES,
-    ADEGAN_PULUHAN_BEDA,
-    ADEGAN_GARIS,
-    ADEGAN_TANDA,
-    ADEGAN_LATIHAN_SATU,
-    ADEGAN_LATIHAN_DUA,
-    ADEGAN_LATIHAN_TIGA,
+    ADEGAN_URUT,
+    ADEGAN_PESANAN,
+    ADEGAN_LAPAK_BUKA,
     ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K1B5D: VideoStory = {
   id: "k1b5d-luar",
-  judul: "Membandingkan dan Mengurutkan Bilangan: Metode dari Luar",
-  subjudul: "Tiga metode luar",
+  judul: JUDUL_K1B5D,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "membandingkan dan mengurutkan bilangan" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "membandingkan dan mengurutkan bilangan", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_HITUNG,
-    ADEGAN_LUAR_HITUNG_TERAPAN,
-    ADEGAN_LUAR_SEPULUH,
-    ADEGAN_LUAR_SEPULUH_TERAPAN,
-    ADEGAN_LUAR_BINGKAI,
-    ADEGAN_LUAR_BINGKAI_TERAPAN,
+    ADEGAN_LUAR_PASANG,
+    ADEGAN_LUAR_PASANG_TERAPAN,
+    ADEGAN_LUAR_MENARA,
+    ADEGAN_LUAR_MENARA_TERAPAN,
+    ADEGAN_LUAR_GARIS,
+    ADEGAN_LUAR_GARIS_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

@@ -591,9 +591,9 @@ function LangkahBiasa({ ls, rupa, bicara, onBenar, l }: P & { l: Exclude<Langkah
     setSiapJawab(true);
     if (p) info(p);
   };
-  const jawab = (m: number, awalan = "") => {
+  const jawab = (m: number, awalan = "", ditunjukkan = false) => {
     bicara(kata(m));
-    if (m === n) tuntas(`Betul! Jawabannya ${kata(m)}.`);
+    if (m === n) tuntas(`${ditunjukkan ? "Ini jawaban yang benar." : "Betul!"} Jawabannya ${kata(m)}.`);
     else {
       setMati((s) => [...s, m]);
       salah(`${awalan}${PETUNJUK[ls.metode]}`);
@@ -610,9 +610,9 @@ function LangkahBiasa({ ls, rupa, bicara, onBenar, l }: P & { l: Exclude<Langkah
         <div className={`space-y-2 ${goyang ? "lm-goyang" : ""}`}>
           <p className="text-center text-sm font-black text-[#1C01A5]">{tanya}</p>
           {cara === "kanvas" ? (
-            <JawabTulisIkan kunci={n} onBenar={() => jawab(n)} onSalah={salah} />
+            <JawabTulisIkan kunci={n} onBenar={(t) => jawab(n, "", t)} onSalah={salah} />
           ) : cara === "suara" ? (
-            <JawabSuaraIkan kunci={n} pilihan={pilihanDari(l)} rupa={rupa} mati={mati} onJawab={(m, terdengar) => jawab(m, terdengar && m !== n ? `Terdengar ${kata(m)}. ` : "")} onPesan={setPesan} />
+            <JawabSuaraIkan kunci={n} pilihan={pilihanDari(l)} rupa={rupa} mati={mati} onJawab={(m, terdengar, t) => jawab(m, terdengar && m !== n ? `Terdengar ${kata(m)}. ` : "", t)} onPesan={setPesan} />
           ) : (
             <PilihanIkan pilihan={pilihanDari(l)} rupa={rupa} mati={mati} onPilih={(m) => jawab(m)} />
           )}

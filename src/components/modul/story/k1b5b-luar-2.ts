@@ -74,7 +74,7 @@ export const ADEGAN_LUAR_KISI: AdeganStory = {
 };
 
 /* ------------------------------ 5. Number Grid: terapan pada label yang jatuh ------------------------------ */
-const SUARA_D1 = "Abang menutup dua kotak pada kisi, seperti dua label yang jatuh tadi. Kotak mana saja yang tertutup?";
+const SUARA_D1 = "Abang menutup dua kotak pada kisi, seperti dua label yang pernah jatuh dari rak. Kotak mana saja yang tertutup?";
 const SUARA_D2 = "Kotak pertama ada sesudah dua belas. Di atasnya ada tiga, jadi kotak itu tiga belas.";
 const SUARA_D3 = "Kotak kedua ada sebelum delapan belas. Di atasnya ada tujuh, jadi kotak itu tujuh belas.";
 const SUARA_D4 = "Dengan kisi, Abang cepat menemukan nomor akuarium dari kiri, kanan, atas, atau bawah.";
@@ -219,8 +219,8 @@ export const ADEGAN_LUAR_SEBELUM_TERAPAN: AdeganStory = {
 /* ------------------------------ 8. Ringkasan ------------------------------ */
 const SUARA_Z1 = "Kita sudah melihat tiga metode global. Mana yang paling cepat untuk rak Abang? Itu tergantung pertanyaannya.";
 const SUARA_Z2 = "Number Line Hop cocok untuk maju dan mundur beberapa langkah, tetapi lambat bila harus melompat jauh.";
-const SUARA_Z3 = "Number Grid cocok untuk pindah ke rak bawah, turun satu kotak dapat sepuluh dan bilangan atasnya, tetapi kurang cocok bila bilangannya sangat banyak.";
-const SUARA_Z4 = "Before and After paling cepat untuk mencari tetangga satu nomor: sebelum satu lebih sedikit, sesudah satu lebih banyak.";
+const SUARA_Z3 = "Number Grid cocok untuk pindah ke rak bawah: turun satu kotak, bilangannya bertambah sepuluh. Tetapi kurang cocok untuk melompat jauh.";
+const SUARA_Z4 = "Before and After paling cepat untuk mencari tetangga satu nomor. Menurutmu, kalau nomor akuarium hilang, alat mana yang paling cepat?";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",

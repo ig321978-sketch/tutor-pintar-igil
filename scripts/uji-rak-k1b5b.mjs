@@ -331,5 +331,6 @@ for (const [nama, soal, rupa] of [["Concrete", D.CONCRETE, "benda"], ["Pictorial
   for (const f of ["misi-bab5.ts", "SimulasiBab5.tsx"]) cek(!readFileSync(new URL(`../src/components/modul/${f}`, import.meta.url), "utf8").includes("\r"), `${f}: akhir baris LF`);
 }
 
+{ const sl = readFileSync(new URL("../src/components/modul/rak-k1b5b/LangkahRak.tsx", import.meta.url), "utf8"); cek(sl.includes("Ini jawaban yang benar.") && /ditunjukkan/.test(sl) && sl.includes("onBenar={(t) => jawab(n, \"\", t)}"), "rak-k1b5b/LangkahRak: jawaban ditunjukkan setelah tiga kali salah memakai pesan Ini jawaban yang benar."); }
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

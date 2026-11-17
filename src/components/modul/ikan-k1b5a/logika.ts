@@ -116,7 +116,7 @@ export function alasanSalah(l: Salah, nama = "ikan"): Alasan[] {
     case "tukar":
       return [
         { teks: `${sisa}1 sama saja dengan ${l.n}, urutan angka tidak penting`, benar: false, petunjuk: `Urutan angka penting. ${t} menaruh angka sisanya di depan. Puluhan ditulis di depan.` },
-        { teks: `Sepuluh dan ${kata(sisa)} tidak boleh ditulis dengan angka`, benar: false, petunjuk: `Bilangan boleh ditulis dengan angka. Yang keliru ialah angka ${t} tertukar.` },
+        { teks: `Sepuluh dan ${kata(sisa)} tidak boleh ditulis dengan angka`, benar: false, petunjuk: `Bilangan boleh ditulis dengan angka. Yang keliru ialah angka yang ditulis ${t} tertukar.` },
         { teks: `Angka satu ditulis dulu karena sepuluh, lalu ${kata(sisa)}: ${l.n}`, benar: true, petunjuk: "" },
       ];
     case "seratus":

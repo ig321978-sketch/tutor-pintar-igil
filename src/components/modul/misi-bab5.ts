@@ -3,15 +3,15 @@
  * Diuji di scripts/uji-lab-kelas1.mjs.
  *
  * Simulasi bertahap: satu laboratorium bilangan yang alatnya bertambah per sub-bab
- * (A: kini Wadah Sekat Sepuluh, Misi Lapak Ikan bagian satu (ikan-k1b5a); dulu Lab Puluhan dan Satuan sampai 20; B: kini Rak Akuarium Bernomor, Misi Lapak Ikan bagian satu (rak-k1b5b); dulu Maju dan Mundur, Ulat dan Kisi; C: + nilai tempat
- * dan tab Odometer; D: semua alat + Banding dan Urutan + bandingkan nilai tempat, sekaligus
- * simulasi pencapaian misi bab ini).
+ * (A: kini Wadah Sekat Sepuluh, Misi Lapak Ikan bagian satu (ikan-k1b5a); dulu Lab Puluhan dan Satuan sampai 20; B: kini Rak Akuarium Bernomor, Misi Lapak Ikan bagian satu (rak-k1b5b); dulu Maju dan Mundur, Ulat dan Kisi; C: kini Meja Kemas (kemas-k1b5c); D: kini Lapak Ikan (lapak-k1b5d), penutup bab).
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanIkan } from "./ikan-k1b5a/logika";
 import type { KeadaanRak } from "./rak-k1b5b/logika";
+import type { KeadaanKemas } from "./kemas-k1b5c/logika";
+import type { KeadaanLapak } from "./lapak-k1b5d/logika";
 
 export type KeadaanPuluhan = {
   alat: "puluhan";
@@ -57,12 +57,8 @@ export type KeadaanBandingJeruk = {
   garis: boolean;
 };
 
-export type KeadaanBab5 = KeadaanPuluhan | KeadaanDeret | KeadaanBandingJeruk | KeadaanSelesai | KeadaanIkan | KeadaanRak;
+export type KeadaanBab5 = KeadaanPuluhan | KeadaanDeret | KeadaanBandingJeruk | KeadaanSelesai | KeadaanIkan | KeadaanRak | KeadaanKemas | KeadaanLapak;
 
-const pul = (k: KeadaanBab5): k is KeadaanPuluhan => k.alat === "puluhan";
-const der = (k: KeadaanBab5): k is KeadaanDeret => k.alat === "deret";
-const ban = (k: KeadaanBab5): k is KeadaanBandingJeruk => k.alat === "banding";
-const selesai = (k: KeadaanBab5, id: string) => k.alat === "selesai" && k.id === id;
 
 /** Indeks yang paling besar sendirian, atau -1 bila ada yang sama besar di puncak. */
 export function puncakTunggal(a: number[]): number {
@@ -105,24 +101,47 @@ export const MISI_B: DefMisi<KeadaanBab5>[] = [
   { id: "b-kisi", teks: "Nyalakan Kisi, lalu turun satu tingkat. Nomor di bawahnya tambah sepuluh.", wajib: false, cek: (k) => rak(k) && k.kisi && k.turun >= 1 },
 ];
 
-/** Sub-Bab C: puluhan dan satuan di papan nilai tempat, odometer bilangan. */
+/**
+ * Sub-Bab C: Misi Lapak Ikan bagian dua, meja kemas (Simulasi "Meja Kemas", kemas-k1b5c). Banyak tiap barang sama dengan BARANG_SIM di kemas-k1b5c/data.ts
+ * (diuji di scripts/uji-kemas-k1b5c.mjs): jaring kecil empat belas, botol vitamin delapan belas, pot tanaman air dua belas.
+ */
+const kemas = (k: KeadaanBab5): k is KeadaanKemas => k.alat === "kemas";
+export const TOTAL_KEMAS_C: Record<string, number> = { jaring: 14, botol: 18, pot: 12 };
+const ID_KEMAS = Object.keys(TOTAL_KEMAS_C);
+const rapi = (k: KeadaanKemas, id: string) => k.ikat[id] === Math.floor(TOTAL_KEMAS_C[id] / 10);
+const tabelPas = (k: KeadaanKemas, id: string) => rapi(k, id) && k.puluhan[id] === Math.floor(TOTAL_KEMAS_C[id] / 10) && k.satuan[id] === TOTAL_KEMAS_C[id] % 10;
 export const MISI_C: DefMisi<KeadaanBab5>[] = [
-  { id: "c-ikat", teks: "Buat tepat 10, lalu nyalakan Ikat sepuluh. Lihat tabel nilai tempat.", wajib: true, cek: (k) => pul(k) && k.tabel && k.ikat && k.n === 10 },
-  { id: "c-lima-belas", teks: "Buat 15. Baca puluhan dan satuannya di tabel.", wajib: true, cek: (k) => pul(k) && k.tabel && k.n === 15 },
-  { id: "c-sebelas", teks: "Buat 11. Angka 1 di kiri dan angka 1 di kanan nilainya beda.", wajib: true, cek: (k) => pul(k) && k.tabel && k.n === 11 },
-  { id: "c-odometer", teks: "Selesaikan Odometer Bilangan sampai selesai.", wajib: true, cek: (k) => selesai(k, "odometer") },
-  { id: "c-dua-puluh", teks: "Buat 20: dua puluhan dan nol satuan di tabel.", wajib: false, cek: (k) => pul(k) && k.tabel && k.n === 20 },
-  { id: "c-ingat", teks: "Ingat Sub-Bab B: tekan Maju 3 kali di Maju dan Mundur.", wajib: false, cek: (k) => der(k) && k.maju >= 3 },
+  { id: "c-ikat", teks: "Kumpulkan sepuluh barang, lalu ikat dengan karet menjadi satu puluhan.", wajib: true, cek: (k) => kemas(k) && ID_KEMAS.some((id) => k.ikat[id] >= 1) },
+  { id: "c-rapi", teks: "Ikat semua sepuluhan pada satu barang sampai sisanya kurang dari sepuluh.", wajib: true, cek: (k) => kemas(k) && ID_KEMAS.some((id) => rapi(k, id)) },
+  { id: "c-tabel", teks: "Isi tabel puluhan dan satuan yang tepat untuk satu barang yang sudah diikat.", wajib: true, cek: (k) => kemas(k) && ID_KEMAS.some((id) => tabelPas(k, id)) },
+  { id: "c-semua", teks: "Ikat dan isi tabel yang tepat untuk ketiga barang di meja kemas.", wajib: true, cek: (k) => kemas(k) && ID_KEMAS.every((id) => tabelPas(k, id)) },
+  { id: "c-lepas", teks: "Lepas satu ikatan, lalu ikat lagi. Banyak barangnya tetap sama.", wajib: false, cek: (k) => kemas(k) && k.lepas.some((id) => rapi(k, id)) },
+  { id: "c-kalimat", teks: "Nyalakan Kalimat, lalu baca puluhan dan satuan barang yang tabelnya tepat.", wajib: false, cek: (k) => kemas(k) && k.kalimat && tabelPas(k, k.pilih) },
 ];
 
-/** Sub-Bab D (sub-bab akhir): membandingkan dan mengurutkan, sekaligus pencapaian misi bab ini. */
+/**
+ * Sub-Bab D (penutup bab): Lapak Ikan Dibuka (Simulasi Lapak Ikan, lapak-k1b5d). Isi akuarium dan pesanan sama dengan AKUARIUM_SIM dan PEMBELI_SIM di lapak-k1b5d/data.ts
+ * (diuji di scripts/uji-lapak-k1b5d.mjs).
+ */
+const lapak = (k: KeadaanBab5): k is KeadaanLapak => k.alat === "lapak";
+/** Isi akuarium di lapak (berbeda dari Story): paling banyak buntal, paling sedikit udang. */
+export const ISI_LAPAK_D: Record<string, number> = { cupang: 14, molly: 11, buntal: 17, udang: 6, siput: 11 };
+export const PESANAN_LAPAK_D = [10, 17, 7] as const;
+const ID_LAPAK = Object.keys(ISI_LAPAK_D);
+const palingId = (banyak: boolean) => ID_LAPAK.reduce((a, b) => ((banyak ? ISI_LAPAK_D[b] > ISI_LAPAK_D[a] : ISI_LAPAK_D[b] < ISI_LAPAK_D[a]) ? b : a));
+
 export const MISI_D: DefMisi<KeadaanBab5>[] = [
-  { id: "d-satuan", teks: "Nyalakan Bandingkan, lalu buat 13 dan 16. Puluhan sama, satuan menentukan.", wajib: true, cek: (k) => pul(k) && k.banding && ((k.n === 13 && k.m === 16) || (k.n === 16 && k.m === 13)) },
-  { id: "d-puluhan", teks: "Bandingkan bilangan belasan dengan bilangan di bawah 10. Puluhan dibandingkan lebih dulu.", wajib: true, cek: (k) => pul(k) && k.banding && ((k.n >= 10 && k.m < 10) || (k.n < 10 && k.m >= 10)) },
-  { id: "d-wei", teks: "Buat jeruk Wei paling banyak sendirian.", wajib: true, cek: (k) => ban(k) && puncakTunggal(k.jumlah) === 2 },
-  { id: "d-urut", teks: "Atur jeruk supaya Kira terbanyak, Tika sedang, Wei paling sedikit.", wajib: true, cek: (k) => ban(k) && k.jumlah[0] > k.jumlah[1] && k.jumlah[1] > k.jumlah[2] },
-  { id: "d-sama", teks: "Buat dua orang punya jeruk sama banyak.", wajib: false, cek: (k) => ban(k) && new Set(k.jumlah).size < k.jumlah.length },
-  { id: "d-odometer", teks: "Ingat Sub-Bab C: selesaikan Odometer Bilangan.", wajib: false, cek: (k) => selesai(k, "odometer") },
+  { id: "d-pasang", teks: "Pilih dua akuarium yang isinya berbeda, lalu pasangkan ikannya satu-satu sampai terlihat sisanya.", wajib: true, cek: (k) => lapak(k) && k.pasangTuntas >= 1 },
+  { id: "d-paling", teks: "Tandai akuarium yang paling banyak dan akuarium yang paling sedikit isinya.", wajib: true, cek: (k) => lapak(k) && k.palingBanyak === palingId(true) && k.palingSedikit === palingId(false) },
+  { id: "d-urut", teks: "Pindahkan semua akuarium ke rak lapak, urut dari yang paling sedikit sampai yang paling banyak.", wajib: true, cek: (k) => lapak(k) && k.urutNaik },
+  {
+    id: "d-buka",
+    teks: "Penutup bab: layani pembeli berurutan dengan akuarium yang cukup, lalu buka lapak ikan Abang.",
+    wajib: true,
+    cek: (k) => lapak(k) && k.buka && k.layani.length === PESANAN_LAPAK_D.length && k.layani.every((id, i) => id !== null && ISI_LAPAK_D[id] >= PESANAN_LAPAK_D[i]),
+  },
+  { id: "d-sama", teks: "Pasangkan dua akuarium yang isinya sama banyak sampai tidak ada sisa.", wajib: false, cek: (k) => lapak(k) && k.samaTuntas >= 1 },
+  { id: "d-turun", teks: "Susun lagi semua akuarium dari yang paling banyak sampai yang paling sedikit.", wajib: false, cek: (k) => lapak(k) && k.urutTurun },
 ];
 
 export const daftarMisiBab5 = (sub: string): DefMisi<KeadaanBab5>[] => (sub === "B" ? MISI_B : sub === "C" ? MISI_C : sub === "D" ? MISI_D : MISI_A);
