@@ -6,7 +6,7 @@ const masterDir = path.join(root, "src", "content-master");
 const dataDir = path.join(root, "src", "data");
 const seedDir = path.join(root, "supabase", "seed");
 /** Bab yang memakai bank acak (sama dengan src/lib/bank-acak.ts). Seed 10 soal tidak boleh menimpa bank-nya. */
-const BAB_BANK_ACAK = new Set(["k1-mat-bab1", "k1-mat-bab2", "k1-mat-bab8"]);
+const BAB_BANK_ACAK = new Set(["k1-mat-bab1", "k1-mat-bab2", "k1-mat-bab3", "k1-mat-bab8"]);
 const kunciRahasia =new Set(["correct_index", "correctAnswer", "explanation"]);
 
 function sqlTeks(nilai) {
