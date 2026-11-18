@@ -115,6 +115,17 @@ for (const rute of ["/api/belajar/latihan", "/api/belajar/latihan/mulai", "/api/
 }
 cek(!situs.ruteApiPublikSaatTerkunci("/api/belajar/ujian/pratinjau"), "pratinjau Ujian tetap khusus admin");
 
+/* ---------- halaman modul lama dengan Latihan sendiri: hanya admin ---------- */
+const mw = baca("src/middleware.ts");
+const mulaiLama = mw.indexOf("function ruteLatihanLama");
+const polaLama = mw.slice(mulaiLama, mw.indexOf("\n}", mulaiLama) + 2).replace("(pathname: string): boolean", "(pathname)");
+const lama = new Function("p", polaLama + "; return ruteLatihanLama(p);");
+for (const r of ["/ruang-belajar/mtk-1-bab1-lama", "/ruang-belajar/mtk-1-bab3-lama", "/ruang-belajar/mtk-1-bab5-lama", "/ruang-belajar/mtk-1-bab2-baru", "/ruang-belajar/mtk-1-bab2-p4", "/ruang-belajar/mtk-1-bab2-ulangan"]) {
+  cek(lama(r), `${r} ditutup untuk non-admin`);
+}
+cek(!lama("/ruang-belajar/mtk-1-bab2") && !lama("/ruang-belajar/mtk-2-bab3") && !lama("/ruang-belajar/mtk-1-bab1-kedua"), "pemutar baru tidak ikut tertutup");
+cek(/if \(ruteLatihanLama\(pathname\)\) \{\s*return tanpaCache\(NextResponse\.redirect/.test(mw) && /!ruteAdmin\(pathname\) && !ruteLatihanLama\(pathname\)/.test(mw), "middleware: pilot dan non-pilot sama-sama menutupnya");
+
 /* ---------- pemutar modul ---------- */
 const pemutar = baca("src/components/IgilModulePlayer.tsx");
 cek(/kondisiTab\(\{/.test(pemutar) && /<KartuTerkunciLatihanUjian/.test(pemutar), "pemutar modul memakai kartu terkunci");

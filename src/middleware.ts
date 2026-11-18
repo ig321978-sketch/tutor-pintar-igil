@@ -41,6 +41,15 @@ function ruteModulLama(pathname: string): boolean {
   );
 }
 
+/**
+ * Halaman modul lama yang punya Latihan/Ujian sendiri di sisi klien (tanpa penjaga akses dan tanpa penilaian server).
+ * Pilot: hanya admin. Siswa memakai /ruang-belajar/mtk-<kelas>-bab<n>, yang dijaga aturan Latihan dan Ujian.
+ */
+function ruteLatihanLama(pathname: string): boolean {
+  return /^\/ruang-belajar\/mtk-1-bab[1-5]-lama(\/|$)/.test(pathname) ||
+    /^\/ruang-belajar\/mtk-1-bab2-(baru|ulangan|laporan|p\d+)(\/|$)/.test(pathname);
+}
+
 function ruteSitusDitutup(pathname: string): boolean {
   return pathname === "/situs-ditutup" || pathname.startsWith("/situs-ditutup/");
 }
@@ -117,6 +126,9 @@ export async function middleware(request: NextRequest) {
     if (ruteSitusDitutup(pathname)) {
       return tanpaCache(NextResponse.next());
     }
+    if (ruteLatihanLama(pathname)) {
+      return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
+    }
     if (
       ruteHalamanPublikSaatTerkunci(pathname) ||
       ruteApiPublikSaatTerkunci(pathname)
@@ -130,7 +142,7 @@ export async function middleware(request: NextRequest) {
     return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
   }
 
-  if (!ruteAdmin(pathname)) {
+  if (!ruteAdmin(pathname) && !ruteLatihanLama(pathname)) {
     return tanpaCache(NextResponse.next());
   }
 
