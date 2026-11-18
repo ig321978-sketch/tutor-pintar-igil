@@ -95,7 +95,7 @@ export const K2B2_META = {
   "phaseCode": "FASE_A",
   "grade": 2,
   "subjectLabel": "MATEMATIKA - KELAS 2 SD",
-  "title": "BAB 2: PENJUMLAHAN DAN PENGURANGAN",
+  "title": "BAB 2: TOKO SERAGAM DAN ALAT TULIS",
   "silabusElemen": "🌈 Fase A • Elemen Bilangan (Kelas 2 SD/MI)",
   "suaraLaju": 0.7,
   "suaraNada": 1
