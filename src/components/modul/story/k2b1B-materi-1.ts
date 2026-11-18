@@ -1,107 +1,140 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { OWL, TABEL_BESAR, W, angkaP, angkaS, batang, bilanganT, emo, idBatang, isiTabel, judul, kartu, kubus, kubusKisi, labelN, tabelNT, teks, titikKubusTabel, type Titik } from "./k2b1B-gambar";
-import { bersih, hapus, hitungAksi, idKubus, idx, k, redamkan, sorotkan, tambah } from "./k2b1B-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, buSari, emo, gs, judul, kartu, kertasPesanan, kotakKue, lantai, lepas, mejaKasir, nia, pakAnto, panah, teks, tokoh, xBaris } from "./k2b1B-gambar";
+import { hapus, k, sorotkan, tambah, ubah } from "./k2b1B-bantu";
 
-/* ------------------------------ 1. Kubus Malosi berserakan ------------------------------ */
-/** Letak empat belas kubus yang berserakan (tersebar, tidak saling menimpa). */
-export const SEBAR: Titik[] = Array.from({ length: 14 }, (_, i) => {
-  const c = i % 5;
-  const r = Math.floor(i / 5);
-  return { x: 28 + c * 52 + (((i * 7) % 5) - 2) * 6, y: 52 + r * 38 + (((i * 3) % 4) - 1.5) * 5 };
-});
-const kubusSebar = (): Obj[] => SEBAR.map((p, i) => kubus("a", i, p.x, p.y));
+/*
+ * Cerita orisinal IGIL "Pesanan Kue Hari Olahraga" (Kelas 2 Bab 1 Sub-Bab B, puluhan dan satuan), tengah cerita Kue di Kantin Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b1b.md. Bagian ini: pesanan datang, salah baca (dua dan lima jadi tujuh), dan kotak kue (dua kotak dan lima lepas).
+ */
 
-const SUARA_A1 = "Hari ini Malosi bermain kubus susun. Aduh, kubus-kubusnya berserakan di layar!";
-const SUARA_A2 = "Malosi ingin tahu, ada berapa kubus? Kalau dihitung satu per satu, bisa lama dan mudah salah.";
-const SUARA_A3 = "Kita coba hitung. Satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh, sebelas, dua belas, tiga belas, empat belas.";
-const SUARA_A4 = "Ada empat belas kubus. Tetapi menghitung satu per satu itu lama. Ada cara yang lebih rapi, yaitu memakai nilai tempat.";
-const SUARA_A5 = "Nilai tempat membantu kita menghitung dengan puluhan dan satuan. Ayo kita belajar bersama Malosi!";
+/* ------------------------------ 1. Pesanan datang ------------------------------ */
+const SUARA_P1 = "Pak Anto, guru olahraga, menyerahkan kertas pesanan untuk lomba lari hari Sabtu.";
+const SUARA_P2 = "Di kertas tertulis dua puluh lima, jumlah kue yang dibuat dapur.";
+const SUARA_P3 = "Bu Sari berkata, kalau salah baca, dapur membuat terlalu sedikit dan para pelari tidak kebagian!";
 
-export const ADEGAN_BERSERAKAN: AdeganStory = {
-  id: "kubus-berserakan",
-  judul: "Kubus Malosi yang berserakan",
-  sumber: "Materi: banyak kubus yang berserakan",
+export const ADEGAN_PESANAN: AdeganStory = {
+  id: "pesanan-datang",
+  judul: "Pesanan datang",
+  sumber: "Materi: pesanan 25 kue",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_A1, tambah(0, judul("Kubus Malosi")), tambah(idx(SUARA_A1, "Aduh"), ...kubusSebar())),
-    k(SUARA_A2, sorotkan(idx(SUARA_A2, "berapa"), ...idKubus("a", 0, 13)), redamkan(idx(SUARA_A2, "Kalau"), ...idKubus("a", 0, 13)), tambah(idx(SUARA_A2, "lama"), emo("q", 150, 172, "\u{1F615}", 26))),
-    k(SUARA_A3, bersih(0), tambah(0, judul("Hitung satu per satu"), ...kubusSebar()), ...hitungAksi(SUARA_A3, "bsa", SEBAR.map((p) => ({ x: p.x + 5, y: p.y + 5 })), { setelah: "hitung." })),
-    k(SUARA_A4, tambah(idx(SUARA_A4, "Ada"), labelN("a", 150, 176, "14", 22)), tambah(idx(SUARA_A4, "rapi,"), ...kartu("cr", 40, 180, 220, 20, W.emas, ["cara rapi: nilai tempat"], 9.6))),
-    k(SUARA_A5, bersih(0), tambah(0, judul("Nilai tempat")), tambah("puluhan", ...kartu("pn", 30, 50, 240, 40, W.krem, ["nilai tempat:", "puluhan dan satuan"], 11)), tambah("bersama", emo("ow", 150, 150, OWL, 44))),
+    k(
+      SUARA_P1,
+      tambah(0, judul("Pesanan Kue Hari Olahraga"), lantai("tn", 150), ...mejaKasir("mj", 100, 112, 100)),
+      tambah("Pak", ...pakAnto("pa", 52, 150)),
+      tambah("olahraga,", emo("lr", 258, 150, E.lari, 26)),
+      ubah("menyerahkan", { id: "pa", x: 76 }, { id: "pa-p", x: 84 }, { id: "pa-q", x: 74 }, { id: "pa-n", x: 76 }),
+      tambah("kertas", ...kertasPesanan("kr", 106, 76, 52, 34)),
+      tambah("lomba", ...kartu("lb", 200, 30, 90, 20, W.krem, ["lomba lari"], 8.6)),
+    ),
+    k(
+      SUARA_P2,
+      tambah("tertulis", teks("pn", 132, 98, "", 22, W.merah, { z: 2 })),
+      ubah("dua", { id: "pn", isi: "2" }),
+      ubah("puluh", { id: "pn", isi: "20" }),
+      ubah("lima,", { id: "pn", isi: "25" }),
+      tambah("kue", ...[0, 1, 2, 3].map((i) => lepas(`ke${i}`, xBaris(250, 4, i, 20), 100, 15))),
+      tambah("dapur.", ...kartu("dp", 208, 56, 84, 20, W.krem, ["dapur sekolah"], 8.4)),
+    ),
+    k(
+      SUARA_P3,
+      tambah("Bu", ...buSari("bs", 222, 150)),
+      tambah("salah", emo("sl", 132, 66, E.salah, 18)),
+      ubah("sedikit", { id: "ke2", op: 0.2 }, { id: "ke3", op: 0.2 }),
+      tambah("pelari", emo("pl", 262, 150, E.lari, 24)),
+      tambah("kebagian!", emo("sd", 262, 122, E.sedih, 20)),
+    ),
   ],
 };
 
-/* ------------------------------ 2. Sepuluh kubus menjadi satu puluhan ------------------------------ */
-const X0 = 60;
-const BARIS1 = 62;
-const BARIS2 = 84;
-const baris1 = (): Obj[] => kubusKisi("a", 0, 9, X0, BARIS1, 10, 10);
-const baris2 = (): Obj[] => kubusKisi("a", 10, 13, X0, BARIS1, 10, 10).map((o) => ({ ...o, y: BARIS2 }));
-const SUARA_B1 = "Malosi punya empat belas kubus. Ia menyusunnya rapi, sepuluh kubus dalam satu baris.";
-const SUARA_B2 = "Sepuluh kubus itu kita satukan menjadi satu batang. Satu batang berisi sepuluh kubus.";
-const SUARA_B3 = "Satu batang berisi sepuluh kubus disebut satu puluhan.";
-const SUARA_B4 = "Kubus yang tersisa, kurang dari sepuluh, disebut satuan. Ada empat kubus, jadi empat satuan.";
-const SUARA_B5 = "Jadi empat belas adalah satu puluhan dan empat satuan.";
-const SUARA_B6 = "Mudah, bukan? Kita tidak perlu menghitung satu per satu lagi.";
+/* ------------------------------ 2. Dua dan lima jadi tujuh kue (salah langkah) ------------------------------ */
+const SUARA_T1 = "Chacha membaca cepat. Dua dan lima, jadi tujuh kue saja!";
+const SUARA_T2 = "Dika menggeleng. Kalau hanya tujuh kue, hampir semua pelari pulang dengan tangan kosong.";
+const SUARA_T3 = "Bu Sari bertanya, mengapa dua puluh lima bukan dua ditambah lima? Nia menjawab, kita lihat dulu kuenya.";
 
-export const ADEGAN_SATU_PULUHAN: AdeganStory = {
-  id: "satu-puluhan",
-  judul: "Sepuluh kubus menjadi satu puluhan",
-  sumber: "Materi: satu puluhan dan satuan",
-  latar: "#F0FDF4",
+const TUJUH: [number, number][] = [[218, 88], [238, 88], [258, 88], [278, 88], [228, 108], [248, 108], [268, 108]];
+
+export const ADEGAN_TUJUH: AdeganStory = {
+  id: "tujuh-kue",
+  judul: "Dua dan lima jadi tujuh kue",
+  sumber: "Materi: salah baca 2 + 5 = 7",
+  latar: "#FEF2F2",
   ketukan: [
     k(
-      SUARA_B1,
-      tambah(0, judul("Satu puluhan")),
-      tambah(idx(SUARA_B1, "punya"), ...baris1(), ...baris2()),
-      tambah(idx(SUARA_B1, "belas"), labelN("a", 233, 150, "14", 24)),
-      tambah(idx(SUARA_B1, "sepuluh"), teks("lb10", X0 + 50, BARIS1 - 6, "10", 10, W.merah)),
+      SUARA_T1,
+      tambah(0, judul("Salah baca"), lantai("tn", 150), ...mejaKasir("mj", 100, 112, 100)),
+      tambah("Chacha", ...tokoh("ch", 52, 150, E.chacha, "Chacha")),
+      tambah("membaca", ...kertasPesanan("kr", 106, 58, 56, 34), teks("d2", 124, 86, "2", 22, W.biru, { z: 2 }), teks("d5", 146, 86, "5", 22, W.biru, { z: 2 })),
+      ubah("Dua", { id: "d2", warna: W.merah }),
+      ubah("lima,", { id: "d5", warna: W.merah }),
+      tambah("jadi", ...kartu("pj", 176, 28, 112, 22, W.putih, ["2 + 5 ="], 11)),
+      ubah("tujuh", { id: "pj-t0", isi: "2 + 5 = 7" }),
+      tambah("tujuh", ...TUJUH.map(([x, y], i) => lepas(`ke${i}`, x, y, 15))),
     ),
     k(
-      SUARA_B2,
-      hapus(idx(SUARA_B2, "satukan"), ...idKubus("a", 0, 9), "lb10"),
-      tambah(idx(SUARA_B2, "satukan"), ...batang("a", 0, X0, BARIS1)),
-      tambah(idx(SUARA_B2, "berisi"), teks("lg", 150, 196, "1 batang: 10 kubus", 8.4, W.ungu)),
+      SUARA_T2,
+      tambah("Dika", ...tokoh("dk", 258, 150, E.dika, "Dika")),
+      tambah("menggeleng.", emo("gl", 232, 140, E.salah, 18)),
+      sorotkan("tujuh", ...TUJUH.map((_, i) => `ke${i}`)),
+      tambah("pelari", ...[0, 1, 2].map((i) => emo(`pl${i}`, 22 + i * 22, 90, E.lari, 20))),
+      tambah("kosong.", emo("sd", 44, 62, E.sedih, 22)),
     ),
-    k(SUARA_B3, sorotkan(idx(SUARA_B3, "Satu"), ...idBatang("a", 0)), tambah(idx(SUARA_B3, "puluhan."), ...kartu("kp", 176, 46, 114, 26, W.hijauMuda, ["1 puluhan"], 11))),
-    k(SUARA_B4, redamkan(0, ...idBatang("a", 0)), sorotkan(idx(SUARA_B4, "tersisa,"), ...idKubus("a", 10, 13)), tambah(idx(SUARA_B4, "satuan."), ...kartu("ks", 176, 80, 114, 26, W.langit, ["4 satuan"], 11))),
-    k(SUARA_B5, redamkan(0, ...idKubus("a", 10, 13)), sorotkan(idx(SUARA_B5, "satu"), ...idBatang("a", 0)), redamkan(idx(SUARA_B5, "empat", 2), ...idBatang("a", 0)), sorotkan(idx(SUARA_B5, "empat", 2), ...idKubus("a", 10, 13)), sorotkan(idx(SUARA_B5, "satuan."), "n-a")),
-    k(SUARA_B6, redamkan(0, ...idKubus("a", 10, 13)), tambah("bukan?", emo("ok", 262, 190, "✅", 22)), tambah("perlu", ...kartu("kc", 50, 164, 200, 22, W.emas, ["cepat, rapi, dan mudah"], 10))),
+    k(
+      SUARA_T3,
+      tambah("Bu", ...buSari("bs", 218, 150)),
+      tambah("mengapa", emo("tq", 218, 124, E.tanya, 20)),
+      tambah("lima", ...kartu("p25", 176, 54, 112, 22, W.hijauMuda, ["25 bukan 2 + 5"], 9.4)),
+      tambah("bukan", gs("cr", 178, 30, 286, 48, W.merah, 2.5)),
+      tambah("Nia", ...nia("ni", 22, 150)),
+      tambah("lihat", emo("ms", 22, 122, E.mata, 20)),
+      ubah("kuenya.", { id: "ni-n", warna: W.merah }),
+    ),
   ],
 };
 
-/* ------------------------------ 3. Tabel nilai tempat ------------------------------ */
-const G = TABEL_BESAR;
-const SUARA_C1 = "Ini tabel nilai tempat. Kolom kiri untuk puluhan, kolom kanan untuk satuan.";
-const SUARA_C2 = "Malosi menaruh satu batang di kolom puluhan, dan empat kubus di kolom satuan.";
-const SUARA_C3 = "Sekarang kita isi angkanya. Di kolom puluhan kita pilih angka satu. Di kolom satuan kita pilih angka empat.";
-const SUARA_C4 = "Angka di sebelah kiri menunjukkan banyak puluhan. Angka di sebelah kanan menunjukkan banyak satuan.";
-const SUARA_C5 = "Satu puluhan dan empat satuan dibaca empat belas.";
-const SUARA_C6 = "Dengan tabel ini, kita bisa menuliskan banyaknya kubus dengan rapi dan mudah dibaca.";
+/* ------------------------------ 3. Dikemas per sepuluh: dua kotak dan lima lepas ------------------------------ */
+const SUARA_K1 = "Nia menyusun kue di kotak yang muat sepuluh. Hasilnya dua kotak penuh, ditambah lima kue lepas.";
+const SUARA_K2 = "Dua puluh ditambah lima sama dengan dua puluh lima, jadi pesanannya benar.";
+const SUARA_K3 = "Chacha melongo. Ternyata angka dua itu menyimpan dua kotak sepuluh!";
 
-export const ADEGAN_TABEL: AdeganStory = {
-  id: "tabel-nilai-tempat",
-  judul: "Tabel nilai tempat",
-  sumber: "Materi: tabel nilai tempat",
-  latar: "#FEFCE8",
+const LEPAS5 = [0, 1, 2, 3, 4];
+
+export const ADEGAN_KOTAK: AdeganStory = {
+  id: "kotak-kue",
+  judul: "Dikemas per sepuluh",
+  sumber: "Materi: dua kotak dan lima lepas",
+  latar: "#FFFBEB",
   ketukan: [
     k(
-      SUARA_C1,
-      tambah(0, judul("Tabel nilai tempat")),
-      tambah(idx(SUARA_C1, "tabel"), ...tabelNT("a", G)),
-      sorotkan(idx(SUARA_C1, "puluhan,"), "ta-hk", "ta-hp"),
-      redamkan(idx(SUARA_C1, "kanan"), "ta-hk", "ta-hp"),
-      sorotkan(idx(SUARA_C1, "satuan."), "ta-hk2", "ta-hs"),
+      SUARA_K1,
+      tambah(0, judul("Dikemas per sepuluh"), lantai("tn", 150)),
+      tambah("Nia", ...nia("ni", 30, 150)),
+      tambah("muat", ...kotakKue("bk0", 80, 100)),
+      tambah("dua", ...kotakKue("bk1", 128, 100), ...kartu("kk", 58, 122, 92, 18, W.krem, ["2 kotak"], 9)),
+      sorotkan("penuh,", "bk0", "bk1"),
+      tambah("lima", ...LEPAS5.map((i) => lepas(`lp${i}`, xBaris(236, 5, i, 16), 100, 15)), ...kartu("ll", 196, 122, 80, 18, W.merahMuda, ["5 lepas"], 9)),
     ),
     k(
-      SUARA_C2,
-      redamkan(0, "ta-hk2", "ta-hs"),
-      tambah(idx(SUARA_C2, "batang"), ...isiTabel("a", G, 1, 0)),
-      tambah(idx(SUARA_C2, "kubus"), ...Array.from({ length: 4 }, (_, j) => kubus("a", j, titikKubusTabel(G, j).x, titikKubusTabel(G, j).y))),
+      SUARA_K2,
+      ubah("Dua", { id: "bk0", sorot: false }, { id: "bk1", sorot: false }),
+      tambah("Dua", teks("eq", 150, 54, "2", 16, W.merah)),
+      ubah("puluh", { id: "eq", isi: "20" }),
+      ubah("ditambah", { id: "eq", isi: "20 +" }),
+      ubah("lima", { id: "eq", isi: "20 + 5" }),
+      ubah("sama", { id: "eq", isi: "20 + 5 =" }),
+      ubah("dua@2", { id: "eq", isi: "20 + 5 = 2" }),
+      ubah("puluh@2", { id: "eq", isi: "20 + 5 = 20" }),
+      ubah("lima@2", { id: "eq", isi: "20 + 5 = 25" }),
+      tambah("benar.", emo("ok", 150, 82, E.benar, 20)),
     ),
-    k(SUARA_C3, tambah(idx(SUARA_C3, "satu"), angkaP("a", G, "1")), tambah(idx(SUARA_C3, "empat"), angkaS("a", G, "4"))),
-    k(SUARA_C4, sorotkan(idx(SUARA_C4, "kiri"), "ta-p"), redamkan(idx(SUARA_C4, "kanan"), "ta-p"), sorotkan(idx(SUARA_C4, "kanan"), "ta-s")),
-    k(SUARA_C5, redamkan(0, "ta-s"), tambah(idx(SUARA_C5, "dibaca"), bilanganT("a", G, "14"))),
-    k(SUARA_C6, tambah("rapi", emo("ok", 262, 196, "✅", 22))),
+    k(
+      SUARA_K3,
+      hapus(0, "eq", "ok", "kk-k", "kk-t0", "ll-k", "ll-t0"),
+      tambah("Chacha", ...tokoh("ch", 258, 150, E.chacha, "Chacha")),
+      tambah("melongo.", emo("ml", 258, 124, E.kaget, 22)),
+      tambah("angka", teks("bg", 104, 52, "2", 30, W.merah)),
+      tambah("menyimpan", panah("pn", 104, 58, 104, 74, W.merah)),
+      ubah("sepuluh!", { id: "bk0-l", warna: W.merah }, { id: "bk1-l", warna: W.merah }),
+    ),
   ],
 };

@@ -1,65 +1,60 @@
 /**
- * Misi dan tantangan bebas Kelas 2 Bab 1 (Membilang sampai 50). Murni: tanpa React, tanpa jaringan.
+ * Misi dan tantangan bebas Kelas 2 Bab 1 (Ayo Membilang sampai dengan 50, tema Kue di Kantin Sekolah). Murni: tanpa React, tanpa jaringan.
  * Diuji di scripts/uji-lab-kelas2.mjs.
  *
- * Simulasi bertahap: satu Laboratorium Bilangan 50 yang alatnya bertambah per sub-bab
- * (A: Lab batang/satuan/kalimat/garis; B: + tabel nilai tempat + Mesin Tukar;
- * C: semua alat + Bandingkan + skenario Stoples Permen, sekaligus pencapaian misi bab ini).
+ * Sub-Bab A memakai Simulasi Kotak Kue (etalase-k2b1a), Sub-Bab B Meja Kasir (kasir-k2b1b), Sub-Bab C (akhir bab) Meja Pesta (pesta-k2b1c).
+ * KERANGKA: agen tiap Sub-Bab mengganti MISI_A / MISI_B / MISI_C dan menambah tipe keadaannya ke union KeadaanK2Bab1.
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
-import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
+import type { DefMisi } from "./misi-simulasi";
 
-export type KeadaanLab50 = {
-  alat: "lab50";
-  n: number;
-  m: number;
-  /** Batang puluhan sedang ditampilkan. */
-  batang: boolean;
-  /** Tabel nilai tempat sedang tampil. */
-  tabel: boolean;
-  /** Kalimat nilai (n = p puluhan + s satuan) sedang tampil. */
-  kalimat: boolean;
-  /** Garis bilangan sedang tampil. */
-  garis: boolean;
-  /** Mode Bandingkan menyala. */
-  banding: boolean;
-};
+import type { KeadaanEtalase } from "./etalase-k2b1a/logika";
+import type { KeadaanKasir } from "./kasir-k2b1b/logika";
+import type { KeadaanPesta } from "./pesta-k2b1c/logika";
 
-export type KeadaanK2Bab1 = KeadaanLab50 | KeadaanSelesai;
+export type KeadaanK2Bab1 = { alat: "kerangka" } | KeadaanEtalase | KeadaanKasir | KeadaanPesta;
 
-const lab = (k: KeadaanK2Bab1): k is KeadaanLab50 => k.alat === "lab50";
-const selesai = (k: KeadaanK2Bab1, id: string) => k.alat === "selesai" && k.id === id;
-const puluhan = (n: number) => Math.floor(n / 10);
-
-/** Sub-Bab A: menghitung, membaca, menulis, maju-mundur sampai 50. */
+/**
+ * Sub-Bab A (awal cerita Kue di Kantin Sekolah): Misi Kotak Kue, Simulasi Kotak Kue (etalase-k2b1a). Dua puluh tiga pastel, nomor antrean mulai empat puluh satu,
+ * dan tiga urutan karcis yang sobek (sama dengan N_KUE_SIM, NOMOR_AWAL_SIM, URUTAN_SIM di etalase-k2b1a/data.ts), berbeda dari Story; diuji di scripts/uji-etalase-k2b1a.mjs.
+ */
+const etalase = (k: KeadaanK2Bab1): k is KeadaanEtalase => k.alat === "etalase";
 export const MISI_A: DefMisi<KeadaanK2Bab1>[] = [
-  { id: "a-26", teks: "Buat bilangan 26 seperti tas di loker Malosi. Lihat batang dan satuannya.", wajib: true, cek: (k) => lab(k) && k.batang && k.n === 26 },
-  { id: "a-40", teks: "Buat tepat 40: empat batang penuh, nol satuan.", wajib: true, cek: (k) => lab(k) && k.batang && k.n === 40 },
-  { id: "a-50", teks: "Isi sampai 50: lima batang puluhan penuh.", wajib: true, cek: (k) => lab(k) && k.n === 50 },
-  { id: "a-garis", teks: "Ketuk angka 30 di garis bilangan. Makin ke kanan, makin besar.", wajib: true, cek: (k) => lab(k) && k.garis && k.n === 30 },
-  { id: "a-kalimat", teks: "Buat 35 dan baca kalimat puluhan ditambah satuan.", wajib: false, cek: (k) => lab(k) && k.kalimat && k.n === 35 },
-  { id: "a-21", teks: "Buat 21: dua puluh satu. Angka kiri 2, angka kanan 1.", wajib: false, cek: (k) => lab(k) && k.n === 21 },
+  { id: "a-kemas", teks: "Pindahkan semua kue ke kotak kue sampai tidak ada yang tersisa di meja.", wajib: true, cek: (k) => etalase(k) && k.selesai },
+  { id: "a-papan", teks: "Setelah semua kue dikemas, buka papan catatan dan baca banyak kue sebagai puluhan dan satuan.", wajib: true, cek: (k) => etalase(k) && k.papanDilihat },
+  { id: "a-antrean", teks: "Panggil nomor antrean maju tiga kali, lalu mundur tiga kali, dan dengar bilangannya.", wajib: true, cek: (k) => etalase(k) && k.maju >= 3 && k.mundur >= 3 },
+  { id: "a-urutan", teks: "Lengkapi satu karcis yang sobek dengan nomor yang hilang.", wajib: true, cek: (k) => etalase(k) && k.urutanSelesai.length >= 1 },
+  { id: "a-kira", teks: "Perkirakan dulu banyak kue dengan patokan sepuluh, lalu buktikan dengan mengemas semuanya.", wajib: false, cek: (k) => etalase(k) && k.kiraTuntas >= 1 },
+  { id: "a-semua", teks: "Lengkapi ketiga urutan karcis yang sobek, yang naik dan yang turun.", wajib: false, cek: (k) => etalase(k) && k.urutanSelesai.length >= 3 },
 ];
 
-/** Sub-Bab B: nilai tempat + Mesin Tukar Puluhan. */
+/**
+ * Sub-Bab B (tengah cerita): Misi Meja Kasir bagian satu, Simulasi Meja Kasir (kasir-k2b1b). Pesanan contoh di meja (tujuh belas, dua puluh enam, tiga puluh dua,
+ * empat puluh lima, lima puluh) dan kartu awal satu dan dua berbeda dari Story; diuji di scripts/uji-kasir-k2b1b.mjs.
+ */
+const kasir = (k: KeadaanK2Bab1): k is KeadaanKasir => k.alat === "kasir";
 export const MISI_B: DefMisi<KeadaanK2Bab1>[] = [
-  { id: "b-tabel-26", teks: "Buat 26 dan baca tabel: 2 puluhan, 6 satuan.", wajib: true, cek: (k) => lab(k) && k.tabel && k.n === 26 },
-  { id: "b-tabel-11", teks: "Buat 11. Angka 1 di kiri dan 1 di kanan nilainya beda.", wajib: true, cek: (k) => lab(k) && k.tabel && k.n === 11 },
-  { id: "b-tabel-50", teks: "Buat 50 di tabel: 5 puluhan dan 0 satuan.", wajib: true, cek: (k) => lab(k) && k.tabel && k.n === 50 },
-  { id: "b-tukar", teks: "Selesaikan Mesin Tukar Puluhan sampai semua misi ringkas selesai.", wajib: true, cek: (k) => selesai(k, "tukar") },
-  { id: "b-34", teks: "Buat 34. Baca 3 puluhan dan 4 satuan di tabel.", wajib: false, cek: (k) => lab(k) && k.tabel && k.n === 34 },
-  { id: "b-ingat", teks: "Ingat Sub-Bab A: buat bilangan 26 dengan batang puluhan.", wajib: false, cek: (k) => lab(k) && k.batang && k.n === 26 },
+  { id: "b-susun", teks: "Susun satu pesanan di meja dengan kotak penuh dan kue lepas, sampai ada kotak dan ada kue lepas.", wajib: true, cek: (k) => kasir(k) && k.susun },
+  { id: "b-kemas", teks: "Kumpulkan sepuluh kue lepas, lalu kemas jadi satu kotak penuh.", wajib: true, cek: (k) => kasir(k) && k.kemas >= 1 },
+  { id: "b-tabel", teks: "Buka tabel puluhan dan satuan, lalu baca angka tiap kolom untuk pesananmu.", wajib: true, cek: (k) => kasir(k) && k.tabelDilihat },
+  { id: "b-panjang", teks: "Buka bentuk panjang untuk pesananmu, lalu dengarkan puluhan ditambah satuan.", wajib: true, cek: (k) => kasir(k) && k.uraianDilihat },
+  { id: "b-tukar", teks: "Tukar kartu angka puluhan dan satuan, lalu dengarkan bilangan barunya dan arti angkanya.", wajib: false, cek: (k) => kasir(k) && k.tukarTuntas >= 1 },
+  { id: "b-nol", teks: "Susun bilangan yang hanya punya kotak penuh, lalu lihat angka nol di kolom satuan pada tabel.", wajib: false, cek: (k) => kasir(k) && k.nolDilihat },
 ];
 
-/** Sub-Bab C (sub-bab akhir): membandingkan + skenario, sekaligus pencapaian misi bab ini. */
+/**
+ * Sub-Bab C (akhir bab, pencapaian misi bab ini): Misi Meja Pesta, Simulasi Meja Pesta (pesta-k2b1c). Nampan di meja sama dengan NAMPAN_SIM
+ * di pesta-k2b1c/data.ts (kukis 26, roti 18, pai 44, wafel 36, kue bulan 26, pretzel 39), diuji di scripts/uji-pesta-k2b1c.mjs.
+ */
+const pesta = (k: KeadaanK2Bab1): k is KeadaanPesta => k.alat === "pesta";
 export const MISI_C: DefMisi<KeadaanK2Bab1>[] = [
-  { id: "c-puluhan", teks: "Nyalakan Bandingkan. Buat 32 dan 26. Puluhan menentukan pemenang.", wajib: true, cek: (k) => lab(k) && k.banding && ((k.n === 32 && k.m === 26) || (k.n === 26 && k.m === 32)) },
-  { id: "c-satuan", teks: "Bandingkan 28 dan 25. Puluhan sama, satuan menentukan.", wajib: true, cek: (k) => lab(k) && k.banding && ((k.n === 28 && k.m === 25) || (k.n === 25 && k.m === 28)) },
-  { id: "c-sama", teks: "Buat dua bilangan sama banyak: 26 dan 26.", wajib: true, cek: (k) => lab(k) && k.banding && k.n === 26 && k.m === 26 },
-  { id: "c-stoples", teks: "Selesaikan skenario Stoples Permen Kira sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, "stoples") },
-  { id: "c-ujung", teks: "Bandingkan bilangan paling kecil dengan paling besar yang kamu buat: selisih puluhan 3 atau lebih.", wajib: false, cek: (k) => lab(k) && k.banding && Math.abs(puluhan(k.n) - puluhan(k.m)) >= 3 },
-  { id: "c-ingat-tukar", teks: "Ingat Sub-Bab B: selesaikan Mesin Tukar Puluhan.", wajib: false, cek: (k) => selesai(k, "tukar") },
+  { id: "c-taksir", teks: "Perkirakan dulu: pilih patokan terdekat untuk satu nampan sebelum menghitungnya.", wajib: true, cek: (k) => pesta(k) && k.taksir.length >= 1 },
+  { id: "c-tabel", teks: "Pilih dua nampan, lalu buka tabel puluhan dan satuan untuk membandingkannya.", wajib: true, cek: (k) => pesta(k) && k.tabelDibuka >= 1 },
+  { id: "c-tanda", teks: "Setelah melihat tabel, pasang tanda lebih besar atau lebih kecil yang benar.", wajib: true, cek: (k) => pesta(k) && k.tandaBenar >= 1 },
+  { id: "c-urut", teks: "Urutkan tiga nampan dari yang paling sedikit sampai yang paling banyak.", wajib: true, cek: (k) => pesta(k) && k.urutTuntas >= 1 },
+  { id: "c-sama", teks: "Cari dua nampan yang sama banyak, lalu pasang tanda sama dengan.", wajib: false, cek: (k) => pesta(k) && k.samaBenar >= 1 },
+  { id: "c-tukar", teks: "Tukar sepuluh kue lepas dengan satu kotak sepuluh, lalu lihat jumlah kuenya tetap sama.", wajib: false, cek: (k) => pesta(k) && k.tukar >= 1 },
 ];
 
 export const daftarMisiK2Bab1 = (sub: string): DefMisi<KeadaanK2Bab1>[] => (sub === "B" ? MISI_B : sub === "C" ? MISI_C : MISI_A);

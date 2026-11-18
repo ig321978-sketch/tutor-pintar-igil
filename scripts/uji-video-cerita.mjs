@@ -16,11 +16,8 @@ const cek = (nama, ok, info = "") => {
 
 const kalimatDari = (teks) => (teks.match(/[^.!?]+[.!?]+/g) ?? [teks]).map((k) => k.trim()).filter(Boolean);
 
-const SET = [
-  { kode: "A", awalan: "K2A", gambar: "gambar-hitung-k2a.tsx", video: "video-cerita-k2a.tsx", harapan: [9, 8, 9, 13, 8, 5], komponen: "VideoHitungK2A" },
-  { kode: "B", awalan: "K2B", gambar: "gambar-nilai-k2b.tsx", video: "video-cerita-k2b.tsx", harapan: [7, 7, 6, 6, 7, 9], komponen: "VideoNilaiK2B" },
-  { kode: "C", awalan: "K2C", gambar: "gambar-banding-k2c.tsx", video: "video-cerita-k2c.tsx", harapan: [7, 5, 7, 7, 8, 8], komponen: "VideoBandingK2C" },
-];
+// Video cerita lama Kelas 2 Bab 1 diganti Story gaya baru (diuji scripts/uji-story-k2b1A/B/C.mjs); tidak ada lagi set lama.
+const SET = [];
 
 const pemutar = baca("src/components/IgilModulePlayer.tsx");
 const mesin = baca("src/components/modul/video-cerita.tsx");

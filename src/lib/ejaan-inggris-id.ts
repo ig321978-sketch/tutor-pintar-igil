@@ -99,6 +99,11 @@ const FRASA_DASAR: ReadonlyArray<readonly [string, string]> = [
   ["bundling sticks", "ban dling stiks"],
   ["sorting hoops", "sor ting hups"],
   ["frequency table", "fri kuen si tei bel"],
+  ["skip counting", "skip kaun ting"],
+  ["benchmark numbers", "benci mark nam bers"],
+  ["base-ten blocks", "beis ten bloks"],
+  ["base ten blocks", "beis ten bloks"],
+  ["place value chart", "pleis velyu cart"],
 ];
 const FRASA = [...FRASA_DASAR].sort((a, b) => b[0].length - a[0].length);
 

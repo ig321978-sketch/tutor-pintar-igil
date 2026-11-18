@@ -2,7 +2,6 @@
 // Jalankan: node --no-warnings scripts/uji-lab-kelas2.mjs
 import * as M0 from "../src/components/modul/misi-simulasi.ts";
 import * as K2B1 from "../src/components/modul/misi-k2bab1.ts";
-import * as L from "../src/components/modul/lab-bilangan-k2b1.ts";
 import * as K2B2 from "../src/components/modul/misi-k2bab2.ts";
 import * as LC from "../src/components/modul/lab-cara-k2b2.ts";
 import * as LK from "../src/components/modul/lab-cerita-k2b2.ts";
@@ -39,63 +38,56 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   }
 }
 
-/* --------------------------- Kelas 2 Bab 1: lab + misi --------------------------- */
-sama(L.AWAL_N, 12, "awal n netral");
-sama(L.AWAL_M, 18, "awal m netral");
-cek(L.AWAL_N !== 26 && L.AWAL_N !== 40 && L.AWAL_N !== 50 && L.AWAL_N !== 30 && L.AWAL_N !== 11 && L.AWAL_N !== 35, "awal bukan target misi A/B");
-
+/* --------------------------- Kelas 2 Bab 1: misi (Kue di Kantin Sekolah) --------------------------- */
 {
   const kosong = new Set();
-  const Lab = (o) => ({
-    alat: "lab50",
-    n: L.AWAL_N,
-    m: L.AWAL_M,
-    batang: true,
-    tabel: false,
-    kalimat: true,
-    garis: true,
-    banding: false,
-    ...o,
-  });
-  const awalSub = {
-    A: Lab({}),
-    B: Lab({ tabel: true }),
-    C: Lab({ tabel: true, banding: false }),
-  };
-  ujiStruktur("k2bab1", K2B1.daftarMisiK2Bab1, ["A", "B", "C"], awalSub);
-
-  for (const sub of ["A", "B", "C"]) {
-    const daftar = K2B1.daftarMisiK2Bab1(sub);
-    cek(M0.misiBaru(daftar, awalSub[sub], kosong).length === 0, `k2bab1 ${sub}: ulang cek awal`);
+  // KERANGKA: agen Sub-Bab mengganti komentar BAGIAN-nya dengan ujinya (keadaan awal tidak memenuhi misi; ujiStruktur untuk sub-bab itu).
+  // BAGIAN A (Kotak Kue: dua puluh tiga pastel, nomor antrean mulai empat puluh satu, tiga urutan karcis; rincian di scripts/uji-etalase-k2b1a.mjs)
+  {
+    const KT = (o = {}) => ({ alat: "etalase", mode: "kemas", dikemas: 0, selesai: false, papanDilihat: false, nomor: 41, maju: 0, mundur: 0, urutanSelesai: [], perkiraan: null, kiraTuntas: 0, ...o });
+    const dA = K2B1.daftarMisiK2Bab1("A");
+    ujiStruktur("k2bab1", K2B1.daftarMisiK2Bab1, ["A"], { A: KT() });
+    cek(dA === K2B1.MISI_A && dA.filter((m) => m.wajib).length === 4 && dA.filter((m) => !m.wajib).length === 2 && dA.every((m) => m.id.startsWith("a-")), "k2bab1 A: empat wajib, dua bebas, id berawalan a-");
+    cek(dA.every((m) => !/\d/.test(m.teks) && !/\b(buku|teman|kelompok|kelas|skor|nilai|soal|tebak|kunci|latihan)\b/i.test(m.teks)), "k2bab1 A: teks misi tanpa digit dan kata terlarang");
+    cek(dA.every((m) => !m.cek({ alat: "kerangka" })), "k2bab1 A: alat lain tidak memenuhi misi");
+    const adaKT = (o, id) => M0.misiBaru(dA, KT(o), kosong).includes(id);
+    cek(!adaKT({ dikemas: 22 }, "a-kemas") && adaKT({ dikemas: 23, selesai: true }, "a-kemas"), "k2bab1 A: kemas semua kue");
+    cek(!adaKT({ dikemas: 23 }, "a-papan") && adaKT({ papanDilihat: true }, "a-papan"), "k2bab1 A: papan dibuka setelah semua kue dikemas");
+    cek(!adaKT({ maju: 3, mundur: 2 }, "a-antrean") && !adaKT({ maju: 2, mundur: 3 }, "a-antrean") && adaKT({ maju: 3, mundur: 3 }, "a-antrean"), "k2bab1 A: nomor antrean maju tiga kali dan mundur tiga kali");
+    cek(!adaKT({}, "a-urutan") && adaKT({ urutanSelesai: [1] }, "a-urutan"), "k2bab1 A: lengkapi satu karcis");
+    cek(!adaKT({ kiraTuntas: 0, perkiraan: 20 }, "a-kira") && adaKT({ kiraTuntas: 1 }, "a-kira") && !adaKT({ urutanSelesai: [0, 1] }, "a-semua") && adaKT({ urutanSelesai: [0, 1, 2] }, "a-semua"), "k2bab1 A: tantangan bebas (perkiraan dibuktikan, tiga urutan)");
   }
-
-  const ada = (sub, k, id) => M0.misiBaru(K2B1.daftarMisiK2Bab1(sub), k, kosong).includes(id);
-  const SEL = (id) => ({ alat: "selesai", id });
-
-  // Sub-Bab A
-  cek(ada("A", Lab({ n: 26 }), "a-26") && !ada("A", Lab({ n: 26, batang: false }), "a-26"), "k2bab1 A: 26 butuh batang");
-  cek(ada("A", Lab({ n: 40 }), "a-40") && ada("A", Lab({ n: 50 }), "a-50"), "k2bab1 A: 40 dan 50");
-  cek(ada("A", Lab({ n: 30 }), "a-garis") && !ada("A", Lab({ n: 30, garis: false }), "a-garis"), "k2bab1 A: garis 30");
-  cek(ada("A", Lab({ n: 35 }), "a-kalimat") && !ada("A", Lab({ n: 35, kalimat: false }), "a-kalimat"), "k2bab1 A: kalimat");
-  cek(ada("A", Lab({ n: 21 }), "a-21") && !ada("A", Lab({}), "a-21"), "k2bab1 A: 21 bebas");
-  cek(!ada("A", Lab({}), "a-26") && !ada("A", Lab({}), "a-40") && !ada("A", Lab({}), "a-50"), "k2bab1 A: awal tidak memenuhi wajib");
-
-  // Sub-Bab B
-  const B = (o) => Lab({ tabel: true, ...o });
-  cek(ada("B", B({ n: 26 }), "b-tabel-26") && !ada("B", Lab({ n: 26, tabel: false }), "b-tabel-26"), "k2bab1 B: tabel 26");
-  cek(ada("B", B({ n: 11 }), "b-tabel-11") && ada("B", B({ n: 50 }), "b-tabel-50"), "k2bab1 B: 11 dan 50");
-  cek(ada("B", SEL("tukar"), "b-tukar") && !ada("B", SEL("stoples"), "b-tukar"), "k2bab1 B: mesin tukar");
-  cek(ada("B", B({ n: 34 }), "b-34") && ada("B", Lab({ n: 26, batang: true }), "b-ingat"), "k2bab1 B: bebas");
-  cek(!ada("B", B({}), "b-tabel-26") && !ada("B", B({}), "b-tabel-11"), "k2bab1 B: awal tidak memenuhi tabel");
-
-  // Sub-Bab C
-  const C = (o) => Lab({ tabel: true, banding: true, ...o });
-  cek(ada("C", C({ n: 32, m: 26 }), "c-puluhan") && ada("C", C({ n: 26, m: 32 }), "c-puluhan"), "k2bab1 C: puluhan");
-  cek(!ada("C", Lab({ n: 32, m: 26, banding: false }), "c-puluhan"), "k2bab1 C: banding harus menyala");
-  cek(ada("C", C({ n: 28, m: 25 }), "c-satuan") && ada("C", C({ n: 26, m: 26 }), "c-sama"), "k2bab1 C: satuan dan sama");
-  cek(ada("C", SEL("stoples"), "c-stoples") && ada("C", SEL("tukar"), "c-ingat-tukar"), "k2bab1 C: stoples dan ingat");
-  cek(ada("C", C({ n: 40, m: 10 }), "c-ujung") && !ada("C", C({ n: 25, m: 22 }), "c-ujung"), "k2bab1 C: selisih puluhan");
-  cek(!ada("C", Lab({ tabel: true, banding: false }), "c-puluhan") && !ada("C", Lab({ tabel: true, banding: false }), "c-sama"), "k2bab1 C: awal tidak memenuhi banding");
+  // BAGIAN B (Meja Kasir: pesanan contoh tujuh belas, dua puluh enam, tiga puluh dua, empat puluh lima, lima puluh; kartu awal satu dan dua; rincian di scripts/uji-kasir-k2b1b.mjs)
+  {
+    const KS = (o = {}) => ({ alat: "kasir", mode: "meja", kotak: 0, lepas: 0, kartuP: 1, kartuS: 2, susun: false, kemas: 0, tabelDilihat: false, uraianDilihat: false, tukarTuntas: 0, nolDilihat: false, ...o });
+    const dB = K2B1.daftarMisiK2Bab1("B");
+    ujiStruktur("k2bab1", K2B1.daftarMisiK2Bab1, ["B"], { B: KS() });
+    cek(dB === K2B1.MISI_B && dB.filter((m) => m.wajib).length === 4 && dB.filter((m) => !m.wajib).length === 2 && dB.every((m) => m.id.startsWith("b-")), "k2bab1 B: empat wajib, dua bebas, id berawalan b-");
+    cek(dB.every((m) => !/\d/.test(m.teks) && !/\b(buku|teman|kelompok|kelas|skor|nilai|soal|tebak|kunci|latihan)\b/i.test(m.teks)), "k2bab1 B: teks misi tanpa digit dan kata terlarang");
+    cek(dB.every((m) => !m.cek({ alat: "kerangka" }) && !m.cek({ alat: "etalase" }) && !m.cek({ alat: "pesta" })), "k2bab1 B: alat lain tidak memenuhi misi");
+    const adaKS = (o, id) => M0.misiBaru(dB, KS(o), kosong).includes(id);
+    cek(!adaKS({ kotak: 1 }, "b-susun") && !adaKS({ lepas: 3 }, "b-susun") && adaKS({ susun: true }, "b-susun"), "k2bab1 B: susun butuh kotak penuh dan kue lepas");
+    cek(!adaKS({ kemas: 0 }, "b-kemas") && adaKS({ kemas: 1 }, "b-kemas"), "k2bab1 B: kemas sepuluh jadi satu kotak");
+    cek(!adaKS({ mode: "tabel" }, "b-tabel") && adaKS({ tabelDilihat: true }, "b-tabel"), "k2bab1 B: tabel dibaca untuk pesanan yang tersusun");
+    cek(!adaKS({ mode: "uraian" }, "b-panjang") && adaKS({ uraianDilihat: true }, "b-panjang"), "k2bab1 B: bentuk panjang dibuka untuk pesanan yang tersusun");
+    cek(!adaKS({ tukarTuntas: 0 }, "b-tukar") && adaKS({ tukarTuntas: 1 }, "b-tukar") && !adaKS({ nolDilihat: false }, "b-nol") && adaKS({ nolDilihat: true }, "b-nol"), "k2bab1 B: tantangan bebas (tukar kartu, nol di satuan)");
+  }
+  // BAGIAN C (Meja Pesta: kukis 26, roti 18, pai 44, wafel 36, kue bulan 26, pretzel 39; rincian di scripts/uji-pesta-k2b1c.mjs)
+  {
+    const PS = (o = {}) => ({ alat: "pesta", mode: "banding", pilih: [], taksir: [], tabelDibuka: 0, tabel: false, tandaBenar: 0, samaBenar: 0, tandaSalah: 0, urut: [], urutTuntas: 0, tukar: 0, sudahTukar: false, ...o });
+    const dC = K2B1.daftarMisiK2Bab1("C");
+    ujiStruktur("k2bab1", K2B1.daftarMisiK2Bab1, ["C"], { C: PS() });
+    cek(dC === K2B1.MISI_C && dC.filter((m) => m.wajib).length === 4 && dC.filter((m) => !m.wajib).length === 2 && dC.every((m) => m.id.startsWith("c-")), "k2bab1 C: empat wajib, dua bebas, id berawalan c-");
+    cek(dC.every((m) => !/\d/.test(m.teks) && !/\b(buku|teman|kelompok|kelas|skor|nilai|soal|tebak|kunci|latihan)\b/i.test(m.teks)), "k2bab1 C: teks misi tanpa digit dan kata terlarang");
+    cek(dC.every((m) => !m.cek({ alat: "kerangka" })), "k2bab1 C: alat lain tidak memenuhi misi");
+    const adaPS = (o, id) => M0.misiBaru(dC, PS(o), kosong).includes(id);
+    cek(!adaPS({}, "c-taksir") && adaPS({ taksir: [0] }, "c-taksir"), "k2bab1 C: perkiraan dulu");
+    cek(!adaPS({ pilih: [0, 1] }, "c-tabel") && adaPS({ tabelDibuka: 1 }, "c-tabel"), "k2bab1 C: tabel puluhan dan satuan dibuka");
+    cek(!adaPS({ tandaSalah: 2 }, "c-tanda") && !adaPS({ samaBenar: 1 }, "c-tanda") && adaPS({ tandaBenar: 1 }, "c-tanda"), "k2bab1 C: tanda lebih besar atau lebih kecil yang benar");
+    cek(!adaPS({ urut: [0, 3] }, "c-urut") && adaPS({ urutTuntas: 1 }, "c-urut"), "k2bab1 C: tiga nampan terurut");
+    cek(!adaPS({ tandaBenar: 1 }, "c-sama") && adaPS({ samaBenar: 1 }, "c-sama") && !adaPS({ sudahTukar: true }, "c-tukar") && adaPS({ tukar: 1 }, "c-tukar"), "k2bab1 C: tantangan bebas (sama dengan, tukar sepuluh)");
+  }
+  void kosong;
 }
 
 /* ---------------- Kelas 2 Bab 2: lab cara hitung, lab cerita, mesin, skenario ---------------- */

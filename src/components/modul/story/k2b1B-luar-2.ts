@@ -1,178 +1,256 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { GK, W, emo, garis, kartu, kartuAngka, kotak, panah, teks, xGB, xGK } from "./k2b1B-gambar";
-import { bersih, hapus, idx, k, pilihKata, redamkan, sorotkan, tambah, ubah, urutBilangan, urutNilai } from "./k2b1B-bantu";
-import { NAMA_METODE_ID, WARNA_METODE, kepala } from "./k2b1B-luar-1";
+import type { AdeganStory } from "./logika-story";
+import { E, W, WK, bagan, emo, judul, kartu, kartuAngka, lantai, teks, tokoh } from "./k2b1B-gambar";
+import { hapus, idx, k, redamkan, sorotkan, tambah, ubah } from "./k2b1B-bantu";
+import { NAMA_METODE, WARNA_METODE, kepala } from "./k2b1B-luar-1";
 
-/* ------------------------------ 4. Kartu Tumpuk: konsep ------------------------------ */
-const kartuPuluhan = (i: number): Obj[] => kartuAngka(`kp${i}`, 20 + i * 66, 56, String((i + 1) * 10), W.krem, 60, 34, 16);
-const kartuSatuan = (i: number): Obj[] => kartuAngka(`ks${i}`, 12 + i * 31, 118, String(i + 1), W.langit, 27, 30, 14);
-/** Kartu puluhan besar `p` (dua angka: puluhan dan nol) di (100, 56); id `kt-k`, `kt-{angka}`, `kt-0`. */
-const kartuBesarP = (y: number, p: string): Obj[] => [kotak("kt-k", 100, y, 100, 50, W.krem, W.biru, { rx: 6, tebal: 1.6 }), teks(`kt-${p}`, 125, y + 36, p, 34, W.merah), teks("kt-0", 175, y + 36, "0", 34, W.merah)];
-/** Kartu satuan besar `s` di (125, y); id `ku-k` dan `ku-{angka}`. */
-const kartuBesarS = (y: number, s: string): Obj[] => [kotak("ku-k", 125, y, 50, 50, W.langit, W.biru, { rx: 6, tebal: 1.6 }), teks(`ku-${s}`, 150, y + 36, s, 34, W.merah)];
-const tumpukKe = (at: string | number | undefined, s: string, y: number) => [ubah(at, { id: "ku-k", x: 150, y }, { id: `ku-${s}`, x: 175, y: y + 36 }), ubah(at, { id: "kt-0", op: 0 })];
+/* Video metode global Sub-Bab B: Place Value Chart (Bagan Puluhan dan Satuan), Expanded Form (Bentuk Panjang), dan ringkasan. */
 
-const SUARA_C1 = "Metode kedua bernama Kartu Tumpuk. Ada kartu puluhan dan kartu satuan.";
-const SUARA_C2 = "Kartu puluhan selalu berakhir dengan angka nol. Misalnya dua puluh dan tiga puluh.";
-const SUARA_C3 = "Kita ingin membuat dua puluh enam. Ketuk kartu dua puluh, lalu kartu enam.";
-const SUARA_C4 = "Sekarang tumpuk kartu enam di atas angka nol. Angka nol tertutup.";
-const SUARA_C5 = "Sekarang kartu itu terbaca dua puluh enam. Dua puluhan dan enam satuan menjadi satu bilangan.";
-const SUARA_C6 = "Kartu tumpuk menunjukkan nilai tempat dengan jelas. Angka kiri adalah puluhan dan angka kanan adalah satuan.";
-const posC2 = urutNilai(SUARA_C2, [20, 30], "Misalnya");
+/* ------------------------------ 4. Place Value Chart: konsep ------------------------------ */
+const SUARA_G1 = "Cara kedua, Place Value Chart, atau Bagan Puluhan dan Satuan.";
+const SUARA_G2 = "Bagan ini punya dua kolom, puluhan di kiri dan satuan di kanan.";
+const SUARA_G3 = "Tulis satu angka di tiap kolom, sesuai banyak puluhan dan satuannya.";
+const SUARA_G4 = "Letak angka menentukan artinya, jadi angka tidak boleh tertukar.";
 
-export const ADEGAN_LUAR_KARTU: AdeganStory = {
-  id: "luar-kartu",
-  judul: "Kartu Tumpuk: kartu puluhan dan kartu satuan",
-  sumber: "Metode luar: Kartu Tumpuk",
-  latar: "#EFF6FF",
+export const ADEGAN_LUAR_BAGAN: AdeganStory = {
+  id: "luar-bagan",
+  judul: "Place Value Chart: bagan puluhan dan satuan",
+  sumber: "Metode global: Place Value Chart",
+  latar: "#FEFCE8",
   ketukan: [
     k(
-      SUARA_C1,
-      tambah("kedua", ...kepala(1)),
-      tambah(idx(SUARA_C1, "puluhan"), teks("kp-lb", 150, 53, "kartu puluhan", 8.6, W.ungu), ...[0, 1, 2, 3].flatMap(kartuPuluhan)),
-      tambah(idx(SUARA_C1, "satuan."), teks("ks-lb", 150, 112, "kartu satuan", 8.6, W.ungu), ...Array.from({ length: 9 }, (_, i) => kartuSatuan(i)).flat()),
-    ),
-    k(SUARA_C2, sorotkan(posC2[0], "kp1-k", "kp1-t"), redamkan(posC2[1], "kp1-k", "kp1-t"), sorotkan(posC2[1], "kp2-k", "kp2-t")),
-    k(
-      SUARA_C3,
-      bersih(0),
+      SUARA_G1,
       tambah(0, ...kepala(1)),
-      tambah(idx(SUARA_C3, "dua"), teks("tg", 150, 196, "target: 26", 11, W.ungu)),
-      tambah(idx(SUARA_C3, "dua", 2), ...kartuBesarP(56, "2")),
-      tambah(idx(SUARA_C3, "enam", 2), ...kartuBesarS(130, "6")),
+      tambah("Place", ...bagan("bg", 88, 56, "", "")),
+      tambah("Bagan", teks("bt", 150, 152, "Bagan Puluhan dan Satuan", 10, W.coklat)),
     ),
-    k(SUARA_C4, ...tumpukKe(idx(SUARA_C4, "tumpuk"), "6", 56), tambah(idx(SUARA_C4, "tertutup."), emo("tt", 262, 100, "\u{1F4A1}", 24))),
-    k(SUARA_C5, hapus(0, "tt"), tambah(idx(SUARA_C5, "terbaca"), teks("kn", 150, 156, "26", 30, W.merah)), sorotkan(idx(SUARA_C5, "terbaca"), "kt-k", "ku-k")),
-    k(SUARA_C6, redamkan(0, "kt-k", "ku-k"), sorotkan(idx(SUARA_C6, "kiri"), "kt-2"), redamkan(idx(SUARA_C6, "kanan"), "kt-2"), sorotkan(idx(SUARA_C6, "kanan"), "ku-6"), tambah(idx(SUARA_C6, "satuan."), emo("ok", 262, 156, "✅", 24))),
+    k(
+      SUARA_G2,
+      hapus(0, "bt"),
+      tambah("dua", ...kartu("k2", 98, 134, 104, 18, W.krem, ["2 kolom"], 9)),
+      sorotkan("puluhan", "bg-kp"),
+      tambah("kiri", teks("lk", 66, 104, "kiri", 9, W.merah)),
+      sorotkan("satuan", "bg-ks"),
+      tambah("kanan.", teks("lr", 234, 104, "kanan", 9, W.merah)),
+    ),
+    k(
+      SUARA_G3,
+      hapus(0, "k2-k", "k2-t0", "lk", "lr"),
+      tambah("satu", ...kartu("a1", 98, 134, 104, 18, W.krem, ["1 angka"], 9)),
+      tambah("puluhan", teks("bg-ap", 119, 104, "2", 30, W.biru, { z: 1 })),
+      tambah("satuannya.", teks("bg-as", 181, 104, "5", 30, W.biru, { z: 1 })),
+    ),
+    k(
+      SUARA_G4,
+      hapus(0, "a1-k", "a1-t0"),
+      sorotkan("Letak", "bg-kp", "bg-ks"),
+      tambah("artinya,", emo("lp", 262, 90, E.lampu, 24)),
+      tambah("tidak", emo("sl", 150, 148, E.salah, 22)),
+      ubah("tertukar.", { id: "bg-ap", isi: "5" }, { id: "bg-as", isi: "2" }),
+    ),
   ],
 };
 
-/* ------------------------------ 5. Kartu Tumpuk: terapan ------------------------------ */
-const SUARA_D1 = "Terapkan pada bilangan baru. Ada kartu tiga puluh dan kartu delapan.";
-const SUARA_D2 = "Tumpuk kartu delapan di atas angka nol. Bilangan apa yang terbaca?";
-const SUARA_D3 = "Betul! Kartu tiga puluh dan kartu delapan terbaca tiga puluh delapan.";
-const SUARA_D4 = "Angka tiga di kiri menunjukkan tiga puluhan. Angka delapan di kanan menunjukkan delapan satuan.";
-const SUARA_D5 = "Mudah, bukan? Kartu tumpuk membantu kita membaca nilai tempat.";
+/* ------------------------------ 5. Place Value Chart: terapan ------------------------------ */
+const SUARA_Q1 = "Dika menulis tiga puluh enam. Angka tiga di kolom puluhan, angka enam di kolom satuan.";
+const SUARA_Q2 = "Kalau angkanya tertukar jadi enam puluh tiga, artinya sudah berbeda jauh.";
+const SUARA_Q3 = "Cocok untuk memeriksa angka mana yang ada di puluhan dan di satuan.";
+const SUARA_Q4 = "Kurang cocok kalau bilangannya hanya satu angka, karena kolom puluhan akan kosong.";
 
-export const ADEGAN_LUAR_KARTU_TERAPAN: AdeganStory = {
-  id: "luar-kartu-terapan",
-  judul: "Kartu Tumpuk: membaca kartu tiga puluh dan delapan",
-  sumber: "Metode luar: Kartu Tumpuk, terapan",
-  latar: "#EFF6FF",
+export const ADEGAN_LUAR_BAGAN_TERAPAN: AdeganStory = {
+  id: "luar-bagan-terapan",
+  judul: "Bagan puluhan dan satuan: terapan",
+  sumber: "Metode global: Place Value Chart (terapan)",
+  latar: "#FEFCE8",
   ketukan: [
-    k(SUARA_D1, tambah("Terapkan", ...kepala(1)), tambah(idx(SUARA_D1, "tiga"), ...kartuBesarP(56, "3"), teks("kt-lb", 150, 52, "kartu 30", 9, W.ungu)), tambah(idx(SUARA_D1, "delapan."), ...kartuBesarS(114, "8"))),
-    k(SUARA_D2, ...tumpukKe(idx(SUARA_D2, "Tumpuk"), "8", 56), tambah(idx(SUARA_D2, "Bilangan"), ...pilihKata(130, ["30", "38", "48"]))),
-    k(SUARA_D3, sorotkan(idx(SUARA_D3, "Betul!"), "c2-k"), tambah(idx(SUARA_D3, "terbaca"), teks("kn", 150, 196, "38", 24, W.merah))),
-    k(SUARA_D4, redamkan(0, "c2-k"), sorotkan(idx(SUARA_D4, "tiga"), "kt-3"), redamkan(idx(SUARA_D4, "delapan"), "kt-3"), sorotkan(idx(SUARA_D4, "delapan"), "ku-8")),
-    k(SUARA_D5, redamkan(0, "ku-8"), tambah("Mudah,", emo("ok", 262, 196, "✅", 24))),
+    k(
+      SUARA_Q1,
+      tambah(0, ...kepala(1), lantai("tn", 150), ...tokoh("dk", 28, 150, E.dika, "Dika")),
+      tambah("menulis", ...bagan("bg", 88, 56, "", "")),
+      tambah("tiga", teks("n36", 256, 96, "3", 28, W.merah)),
+      ubah("puluh", { id: "n36", isi: "30" }),
+      ubah("enam.", { id: "n36", isi: "36" }),
+      tambah(idx(SUARA_Q1, "tiga", 2), teks("bg-ap", 119, 104, "3", 30, W.biru, { z: 1 })),
+      sorotkan(idx(SUARA_Q1, "kolom", 1), "bg-kp"),
+      tambah(idx(SUARA_Q1, "enam", 2), teks("bg-as", 181, 104, "6", 30, W.biru, { z: 1 })),
+      sorotkan(idx(SUARA_Q1, "kolom", 2), "bg-ks"),
+    ),
+    k(
+      SUARA_Q2,
+      ubah("tertukar", { id: "bg-ap", isi: "6" }, { id: "bg-as", isi: "3" }),
+      ubah("enam", { id: "n36", isi: "6" }),
+      ubah("puluh", { id: "n36", isi: "60" }),
+      ubah("tiga,", { id: "n36", isi: "63" }),
+      tambah("berbeda", teks("ne", 150, 176, "36 ≠ 63", 16, W.merah)),
+      tambah("jauh.", emo("kg", 262, 130, E.kaget, 22)),
+    ),
+    k(
+      SUARA_Q3,
+      hapus(0, "ne", "kg"),
+      redamkan(0, "bg-kp", "bg-ks"),
+      tambah("Cocok", emo("ok", 262, 66, E.benar, 24)),
+      sorotkan("puluhan", "bg-kp"),
+      sorotkan("satuan.", "bg-ks"),
+    ),
+    k(
+      SUARA_Q4,
+      hapus(0, "ok", "n36", "bg-ap"),
+      ubah("hanya", { id: "bg-as", isi: "7" }),
+      tambah("Kurang", emo("sl", 262, 66, E.salah, 24)),
+      tambah("satu", ...kartu("a1", 98, 134, 104, 18, W.krem, ["1 angka"], 9)),
+      tambah("kosong.", emo("tq", 119, 108, E.tanya, 26)),
+    ),
   ],
 };
 
-/* ------------------------------ 6. Garis Bilangan Puluhan: konsep ------------------------------ */
-const Y_GB = 96;
-const Y_GK = GK.y;
-const KATA_KATA = [0, 10, 20, 30, 40, 50];
-const garisUtama = (): Obj[] => [
-  garis("gb-g", xGB(0), Y_GB, xGB(50) - xGB(0), 0, W.biru, 2.5),
-  ...KATA_KATA.flatMap((n) => [garis(`gb-q${n}`, xGB(n), Y_GB - 6, 0, 12, W.biru, 1.8), teks(`gb-l${n}`, xGB(n), 114, String(n), 9, W.biru)]),
-];
-const loncatPuluhan = (i: number): Obj => panah(`gb-hp${i}`, xGB(i * 10) + 3, 84, xGB(10) - xGB(0) - 6, 0, W.hijau, 2.2);
-const katak = (x: number, y: number): Obj => emo("gb-tanda", x, y, "\u{1F438}", 16);
-const garisZoom = (dasar: number): Obj[] => [
-  garis("gk-c0", xGB(dasar), 120, xGK(dasar, dasar) - xGB(dasar), Y_GK - 8 - 120, W.abu, 1.2, { putus: true }),
-  garis("gk-c1", xGB(dasar + 10), 120, xGK(dasar + 10, dasar) - xGB(dasar + 10), Y_GK - 8 - 120, W.abu, 1.2, { putus: true }),
-  garis("gk-g", xGK(dasar, dasar), Y_GK, xGK(dasar + 10, dasar) - xGK(dasar, dasar), 0, W.biru, 2.5),
-  ...Array.from({ length: 11 }, (_, q) => dasar + q).flatMap((n) => [garis(`gk-q${n}`, xGK(n, dasar), Y_GK - 6, 0, 12, W.biru, 1.5), teks(`gk-l${n}`, xGK(n, dasar), Y_GK + 18, String(n), 9, W.biru)]),
-];
-const loncatSatuan = (i: number, dasar: number): Obj => panah(`gb-hs${i}`, xGK(dasar + i, dasar) + 3, Y_GK - 10, GK.dx - 6, 0, W.merah, 2);
-const katakZoom = (n: number, dasar: number): Obj => emo("gk-tanda", xGK(n, dasar), Y_GK - 16, "\u{1F438}", 16);
+/* ------------------------------ 6. Expanded Form: konsep ------------------------------ */
+const SUARA_P1 = "Cara ketiga, Expanded Form, atau Bentuk Panjang.";
+const SUARA_P2 = "Bilangan diuraikan menjadi puluhan ditambah satuan.";
+const SUARA_P3 = "Misalnya empat puluh dua sama dengan empat puluh ditambah dua.";
+const SUARA_P4 = "Dengan cara ini, arti tiap angka terlihat jelas dalam satu kalimat.";
 
-const SUARA_E1 = "Metode ketiga bernama Garis Bilangan Puluhan. Kita melompat sepuluh-sepuluh di garis bilangan.";
-const SUARA_E2 = "Kita mencari tiga puluh empat. Mulai dari nol, lalu lompat sepuluh, dua puluh, tiga puluh.";
-const SUARA_E3 = "Sekarang lompat satu-satu. Perbesar garis dari tiga puluh sampai empat puluh. Tiga puluh satu, tiga puluh dua, tiga puluh tiga, tiga puluh empat.";
-const SUARA_E4 = "Kita berhenti di tiga puluh empat. Tiga puluh empat adalah tiga puluhan dan empat satuan.";
-const SUARA_E5 = "Tiga lompatan besar berarti tiga puluhan. Empat lompatan kecil berarti empat satuan.";
-const posE2 = urutNilai(SUARA_E2, [10, 20, 30], "lompat");
-const posE3 = urutBilangan(SUARA_E3, 31, 34, "empat");
-
-export const ADEGAN_LUAR_GARIS: AdeganStory = {
-  id: "luar-garis",
-  judul: "Garis Bilangan Puluhan: lompat sepuluh lalu satu",
-  sumber: "Metode luar: Garis Bilangan Puluhan",
+export const ADEGAN_LUAR_PANJANG: AdeganStory = {
+  id: "luar-panjang",
+  judul: "Expanded Form: bentuk panjang",
+  sumber: "Metode global: Expanded Form",
   latar: "#FDF2F8",
   ketukan: [
-    k(SUARA_E1, tambah("ketiga", ...kepala(2)), tambah(idx(SUARA_E1, "melompat"), ...garisUtama())),
     k(
-      SUARA_E2,
-      tambah(idx(SUARA_E2, "mencari"), teks("gb-tg", 150, 62, "cari 34", 12, W.ungu)),
-      tambah(idx(SUARA_E2, "nol,"), katak(xGB(0), 80)),
-      tambah(posE2[0], loncatPuluhan(0)),
-      ubah(posE2[0], { id: "gb-tanda", x: xGB(10) }),
-      tambah(posE2[1], loncatPuluhan(1)),
-      ubah(posE2[1], { id: "gb-tanda", x: xGB(20) }),
-      tambah(posE2[2], loncatPuluhan(2)),
-      ubah(posE2[2], { id: "gb-tanda", x: xGB(30) }),
+      SUARA_P1,
+      tambah(0, ...kepala(2)),
+      tambah("Expanded", ...kartu("ep", 30, 70, 240, 40, W.krem, ["Expanded Form"], 14)),
+      tambah("Bentuk", ...kartu("bp", 30, 124, 240, 40, W.putih, ["Bentuk Panjang"], 14)),
     ),
     k(
-      SUARA_E3,
-      tambah(idx(SUARA_E3, "Perbesar"), ...garisZoom(30), katakZoom(30, 30)),
-      ...[0, 1, 2, 3].flatMap((i) => [tambah(posE3[i], loncatSatuan(i, 30)), ubah(posE3[i], { id: "gk-tanda", x: xGK(31 + i, 30) })]),
+      SUARA_P2,
+      hapus(0, "ep-k", "ep-t0", "bp-k", "bp-t0"),
+      tambah("Bilangan", ...kartu("u0", 14, 76, 80, 34, W.krem, ["bilangan"], 10)),
+      tambah("diuraikan", teks("s1", 102, 100, "=", 18, W.merah)),
+      tambah("puluhan", ...kartu("u1", 112, 76, 80, 34, WK.puluhan, ["puluhan"], 10)),
+      tambah("ditambah", teks("s2", 200, 100, "+", 18, W.merah)),
+      tambah("satuan.", ...kartu("u2", 210, 76, 80, 34, WK.satuan, ["satuan"], 10)),
     ),
-    k(SUARA_E4, sorotkan(idx(SUARA_E4, "berhenti"), "gk-tanda"), tambah(idx(SUARA_E4, "adalah"), emo("ok", 262, 62, "✅", 22))),
     k(
-      SUARA_E5,
-      redamkan(0, "gk-tanda"),
-      sorotkan(idx(SUARA_E5, "Tiga"), "gb-hp0", "gb-hp1", "gb-hp2"),
-      redamkan(idx(SUARA_E5, "Empat"), "gb-hp0", "gb-hp1", "gb-hp2"),
-      sorotkan(idx(SUARA_E5, "Empat"), "gb-hs0", "gb-hs1", "gb-hs2", "gb-hs3"),
+      SUARA_P3,
+      hapus(0, "u0-k", "u0-t0", "s1", "u1-k", "u1-t0", "s2", "u2-k", "u2-t0"),
+      tambah("empat", teks("eq", 150, 100, "4", 26, W.merah)),
+      ubah("puluh", { id: "eq", isi: "40" }),
+      ubah("dua", { id: "eq", isi: "42" }),
+      ubah("sama", { id: "eq", isi: "42 =" }),
+      ubah(idx(SUARA_P3, "empat", 2), { id: "eq", isi: "42 = 4" }),
+      ubah(idx(SUARA_P3, "puluh", 2), { id: "eq", isi: "42 = 40" }),
+      ubah("ditambah", { id: "eq", isi: "42 = 40 +" }),
+      ubah(idx(SUARA_P3, "dua", 2), { id: "eq", isi: "42 = 40 + 2" }),
+    ),
+    k(
+      SUARA_P4,
+      hapus(0, "eq"),
+      tambah("Dengan", teks("p42", 62, 100, "42", 26, W.biru), teks("s1", 106, 100, "=", 22, W.merah)),
+      tambah("cara", teks("p40", 156, 100, "40", 26, W.biru), teks("s2", 202, 100, "+", 22, W.merah), teks("p2", 238, 100, "2", 26, W.biru)),
+      tambah("arti", teks("m1", 156, 128, "4 puluhan", 9.4, W.coklat), teks("m2", 238, 128, "2 satuan", 9.4, W.coklat)),
+      sorotkan("terlihat", "p40", "p2"),
+      tambah(idx(SUARA_P4, "satu"), ...kartu("kl", 90, 150, 120, 20, W.krem, ["1 kalimat"], 9.4)),
     ),
   ],
 };
 
-/* ------------------------------ 7. Garis Bilangan Puluhan: terapan ------------------------------ */
-const SUARA_F1 = "Terapkan pada bilangan baru. Kita mencari empat puluh tujuh di garis bilangan.";
-const SUARA_F2 = "Lompat dulu sepuluh-sepuluh. Sepuluh, dua puluh, tiga puluh, empat puluh.";
-const SUARA_F3 = "Berapa lompatan kecil sesudah itu? Ketuk jawaban yang benar.";
-const SUARA_F4 = "Betul! Tujuh langkah kecil, jadi tujuh satuan.";
-const SUARA_F5 = "Empat puluh tujuh adalah empat puluhan dan tujuh satuan. Lihat, ada tujuh lompatan kecil.";
-const SUARA_F6 = "Hebat! Garis bilangan puluhan membantu kita memilih puluhan dulu, lalu satuan.";
-const posF2 = urutNilai(SUARA_F2, [10, 20, 30, 40], "sepuluh-sepuluh.");
+/* ------------------------------ 7. Expanded Form: terapan ------------------------------ */
+const SUARA_X1 = "Chacha menguraikan dua puluh sembilan menjadi dua puluh ditambah sembilan.";
+const SUARA_X2 = "Lalu ia menyatukannya lagi, dua puluh ditambah sembilan sama dengan dua puluh sembilan.";
+const SUARA_X3 = "Cocok untuk melatih menulis bilangan tanpa alat bantu.";
+const SUARA_X4 = "Kurang cocok kalau kita belum paham arti puluhan, karena uraiannya tidak terlihat bendanya.";
 
-export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
-  id: "luar-garis-terapan",
-  judul: "Garis Bilangan Puluhan: mencari empat puluh tujuh",
-  sumber: "Metode luar: Garis Bilangan Puluhan, terapan",
+export const ADEGAN_LUAR_PANJANG_TERAPAN: AdeganStory = {
+  id: "luar-panjang-terapan",
+  judul: "Bentuk panjang: terapan",
+  sumber: "Metode global: Expanded Form (terapan)",
   latar: "#FDF2F8",
   ketukan: [
-    k(SUARA_F1, tambah("Terapkan", ...kepala(2)), tambah(idx(SUARA_F1, "mencari"), ...garisUtama(), teks("gb-tg", 150, 62, "cari 47", 12, W.ungu), katak(xGB(0), 80))),
-    k(SUARA_F2, ...[0, 1, 2, 3].flatMap((i) => [tambah(posF2[i], loncatPuluhan(i)), ubah(posF2[i], { id: "gb-tanda", x: xGB((i + 1) * 10) })])),
-    k(SUARA_F3, tambah(idx(SUARA_F3, "Berapa"), ...pilihKata(130, ["6", "7", "8"]))),
-    k(SUARA_F4, sorotkan(idx(SUARA_F4, "Betul!"), "c2-k")),
     k(
-      SUARA_F5,
-      hapus(0, ...[1, 2, 3].flatMap((i) => [`c${i}-k`, `c${i}-t`])),
-      tambah(idx(SUARA_F5, "puluhan"), ...garisZoom(40), katakZoom(47, 40)),
-      tambah(idx(SUARA_F5, "tujuh", 3), ...Array.from({ length: 7 }, (_, i) => loncatSatuan(i, 40))),
+      SUARA_X1,
+      tambah(0, ...kepala(2), lantai("tn", 150), ...tokoh("ch", 24, 150, E.chacha, "Chacha")),
+      tambah("dua", teks("eq", 150, 84, "2", 24, W.merah)),
+      ubah("puluh", { id: "eq", isi: "20" }),
+      ubah("sembilan", { id: "eq", isi: "29" }),
+      ubah("menjadi", { id: "eq", isi: "29 =" }),
+      ubah(idx(SUARA_X1, "dua", 2), { id: "eq", isi: "29 = 2" }),
+      ubah(idx(SUARA_X1, "puluh", 2), { id: "eq", isi: "29 = 20" }),
+      ubah("ditambah", { id: "eq", isi: "29 = 20 +" }),
+      ubah(idx(SUARA_X1, "sembilan", 2), { id: "eq", isi: "29 = 20 + 9" }),
     ),
-    k(SUARA_F6, tambah("Hebat!", emo("ok", 262, 62, "✅", 22))),
+    k(
+      SUARA_X2,
+      tambah("menyatukannya", emo("tk", 150, 112, E.tukar, 18)),
+      tambah(idx(SUARA_X2, "dua", 1), teks("e2", 150, 142, "2", 24, W.biru)),
+      ubah("puluh", { id: "e2", isi: "20" }),
+      ubah("ditambah", { id: "e2", isi: "20 +" }),
+      ubah("sembilan", { id: "e2", isi: "20 + 9" }),
+      ubah("sama", { id: "e2", isi: "20 + 9 =" }),
+      ubah(idx(SUARA_X2, "dua", 2), { id: "e2", isi: "20 + 9 = 2" }),
+      ubah(idx(SUARA_X2, "puluh", 2), { id: "e2", isi: "20 + 9 = 20" }),
+      ubah(idx(SUARA_X2, "sembilan", 2), { id: "e2", isi: "20 + 9 = 29" }),
+    ),
+    k(
+      SUARA_X3,
+      hapus(0, "tk"),
+      tambah("Cocok", emo("ok", 262, 66, E.benar, 24)),
+      tambah("menulis", emo("ps", 262, 112, E.pensil, 24)),
+      tambah("alat", emo("tg", 262, 150, E.jempol, 22)),
+    ),
+    k(
+      SUARA_X4,
+      ubah("Kurang", { id: "ok", isi: E.salah }),
+      tambah("paham", emo("tq", 262, 84, E.tanya, 24)),
+      tambah("uraiannya", emo("kb", 262, 150, E.kaca, 22)),
+      tambah("bendanya.", emo("pk", 150, 112, E.pikir, 28)),
+    ),
   ],
 };
 
 /* ------------------------------ 8. Ringkasan ------------------------------ */
-const SUARA_R1 = "Mari kita ingat tiga metode dari luar. Metode pertama, Balok Dienes, memakai batang puluhan dan kubus satuan.";
-const SUARA_R2 = "Metode kedua, Kartu Tumpuk, menutup angka nol pada kartu puluhan dengan kartu satuan.";
-const SUARA_R3 = "Metode ketiga, Garis Bilangan Puluhan, melompat sepuluh-sepuluh, lalu satu-satu.";
-const SUARA_R4 = "Ketiganya menjawab pertanyaan yang sama. Berapa puluhan dan berapa satuan? Pilih yang paling cocok untukmu.";
+const SUARA_R1 = "Kita sudah melihat tiga cara. Mana yang pas? Itu tergantung kebutuhan.";
+const SUARA_R2 = "Ingin melihat bendanya, pakai Balok Puluhan dan Satuan. Ingin memeriksa letak angka, pakai Bagan Puluhan dan Satuan.";
+const SUARA_R3 = "Ingin menulis tanpa alat, pakai Bentuk Panjang. Apa pun caranya, ingat selalu bahwa letak angka menentukan artinya.";
+const SUARA_R4 = "Menurutmu, untuk menjelaskan arti angka tiga pada tiga puluh empat, kamu pilih cara yang mana?";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Ringkasan: tiga metode dari luar",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan metode global",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_R1, tambah(0, teks("jud", 150, 18, "Tiga metode dari luar", 11, W.ungu)), tambah(idx(SUARA_R1, "pertama,"), ...kartu("r0", 14, 34, 272, 44, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`, "batang puluhan, kubus satuan"], 9.6))),
-    k(SUARA_R2, tambah(idx(SUARA_R2, "kedua,"), ...kartu("r1", 14, 88, 272, 44, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`, "kartu satuan menutup nol"], 9.6))),
-    k(SUARA_R3, tambah(idx(SUARA_R3, "ketiga,"), ...kartu("r2", 14, 142, 272, 44, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`, "loncat sepuluh, lalu satu"], 9.6))),
-    k(SUARA_R4, bersih(0), tambah(0, teks("jud", 150, 18, "Satu pertanyaan", 11, W.ungu)), tambah("Berapa", ...kartu("rq", 20, 60, 260, 56, W.emas, ["berapa puluhan dan", "berapa satuan?"], 12)), tambah("cocok", emo("ow", 150, 168, "\u{1F989}", 34))),
+    k(
+      SUARA_R1,
+      tambah(0, judul("3 cara, mana yang pas?")),
+      tambah("tiga", ...kartu("r0", 14, 40, 244, 38, WARNA_METODE[0], [`1. ${NAMA_METODE[0]}`], 11)),
+      tambah("cara.", ...kartu("r1", 14, 88, 244, 38, WARNA_METODE[1], [`2. ${NAMA_METODE[1]}`], 11)),
+      tambah("pas?", ...kartu("r2", 14, 136, 244, 38, WARNA_METODE[2], [`3. ${NAMA_METODE[2]}`], 11)),
+      tambah("kebutuhan.", emo("tq", 280, 100, E.tanya, 16)),
+    ),
+    k(
+      SUARA_R2,
+      hapus(0, "tq"),
+      tambah("melihat", emo("ms", 280, 59, E.mata, 22)),
+      ubah("Balok", { id: "r0-k", sorot: true }),
+      tambah("memeriksa", emo("kc", 280, 107, E.kaca, 22)),
+      ubah("Bagan", { id: "r1-k", sorot: true }),
+    ),
+    k(
+      SUARA_R3,
+      hapus(0, "ms", "kc"),
+      tambah("menulis", emo("ps", 280, 155, E.pensil, 22)),
+      ubah("Bentuk", { id: "r2-k", sorot: true }),
+      tambah("letak", ...kartu("lt", 30, 178, 220, 18, W.putih, ["letak angka menentukan artinya"], 9)),
+      tambah("artinya.", emo("lp", 280, 100, E.lampu, 22)),
+    ),
+    k(
+      SUARA_R4,
+      hapus(0, "ps", "lt-k", "lt-t0", "lp", "r0-k", "r0-t0", "r1-k", "r1-t0", "r2-k", "r2-t0"),
+      tambah(0, ...kartu("c0", 10, 140, 88, 30, WARNA_METODE[0], ["Balok"], 9), ...kartu("c1", 106, 140, 88, 30, WARNA_METODE[1], ["Bagan"], 9), ...kartu("c2", 202, 140, 88, 30, WARNA_METODE[2], ["Bentuk Panjang"], 9)),
+      tambah(idx(SUARA_R4, "tiga", 1), ...kartuAngka("k3", 122, 62, "3")),
+      sorotkan(idx(SUARA_R4, "tiga", 2), "k3"),
+      tambah("empat,", ...kartuAngka("k4", 158, 62, "4"), teks("t34", 140, 118, "34", 20, W.merah)),
+      tambah("pilih", emo("pk", 262, 70, E.pikir, 26)),
+      tambah("mana?", emo("tq", 150, 192, E.tanya, 18)),
+    ),
   ],
 };

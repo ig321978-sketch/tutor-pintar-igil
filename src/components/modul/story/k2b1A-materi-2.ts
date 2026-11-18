@@ -1,88 +1,144 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { W, barisDaftar, batangP, emo, judul, kartu, kotak, kubusS, nilaiV, teks } from "./k2b1A-gambar";
-import { bersih, hapus, idx, k, NAMA_BILANGAN, redamkan, sorotkan, tambah, ubah, urutBilangan } from "./k2b1A-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, WK, deretKue, emo, judul, karcis, kapur, kotak, kotakKue, lantai, panah, papan, teks, tokoh } from "./k2b1A-gambar";
+import { hapus, k, tambah, ubah } from "./k2b1A-bantu";
 
-const batang = (n: number): Obj[] => Array.from({ length: n }, (_, i) => batangP("a", i)).flat();
-const kubus = (n: number): Obj[] => Array.from({ length: n }, (_, i) => kubusS("a", i));
-const batangIds = (n: number): string[] => Array.from({ length: n }, (_, i) => `pa${i}-k`);
-const kubusIds = (n: number): string[] => Array.from({ length: n }, (_, i) => `sa${i}`);
+/*
+ * Cerita orisinal IGIL "Kue Kiriman dari Dapur" (Kelas 2 Bab 1 Sub-Bab A), awal cerita Kue di Kantin Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b1a.md. Bagian ini: kotak kue isi sepuluh, membaca dan menulis (puluhan dan satuan), dan nomor antrean maju dan mundur.
+ */
 
-/* ------------------------------ 6. Membaca bilangan ------------------------------ */
-const SUARA_B1 = "Sekarang kita baca bilangan lain. Ini bilangan tiga puluh satu. Ada tiga batang puluhan dan satu kubus satuan.";
-const SUARA_B2 = "Cara membacanya mudah. Sebut nama puluhannya dulu, yaitu tiga puluh. Lalu sebut satuannya, yaitu satu.";
-const SUARA_B3 = "Jadi tiga puluh dan satu dibaca tiga puluh satu.";
-const SUARA_B4 = "Sekarang empat puluh tujuh. Ada empat batang puluhan dan tujuh kubus satuan.";
-const SUARA_B5 = "Empat puluh dan tujuh dibaca empat puluh tujuh. Mudah, bukan?";
-const SUARA_B6 = "Bilangan yang satuannya nol dibaca nama puluhannya saja. Tiga batang puluhan tanpa kubus satuan dibaca tiga puluh.";
+/** Mengisi lubang kue c0 sampai c{n-1} sebuah kotak kue. */
+const isiLubang = (id: string, dari: number, sampai: number) =>
+  Array.from({ length: sampai - dari }, (_, i) => ({ id: `${id}-c${dari + i}`, warna: WK.lapis, garis: WK.lapisGaris }));
 
-export const ADEGAN_BACA: AdeganStory = {
-  id: "baca-bilangan",
-  judul: "Membaca bilangan",
-  sumber: "Materi: membaca bilangan",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(SUARA_B1, tambah(0, judul("Membaca bilangan")), tambah(idx(SUARA_B1, "satu", 1), nilaiV("a", "31", 150, 124)), tambah(idx(SUARA_B1, "batang"), ...batang(3)), tambah(idx(SUARA_B1, "kubus"), ...kubus(1))),
-    k(SUARA_B2, sorotkan(idx(SUARA_B2, "puluhannya"), ...batangIds(3)), tambah(idx(SUARA_B2, "yaitu", 1), teks("p30", 60, 108, "30", 14, W.merah)), redamkan(idx(SUARA_B2, "Lalu"), ...batangIds(3)), sorotkan(idx(SUARA_B2, "satuannya,"), ...kubusIds(1))),
-    k(SUARA_B3, redamkan(0, ...kubusIds(1)), tambah("Jadi", ...kartu("bc", 40, 146, 220, 36, W.krem, ["30 dan 1", "dibaca tiga puluh satu"], 10.4))),
-    k(SUARA_B4, bersih(0), tambah(0, judul("Empat puluh tujuh")), tambah(idx(SUARA_B4, "tujuh.", 1), nilaiV("a", "47", 150, 124)), tambah(idx(SUARA_B4, "batang"), ...batang(4)), tambah(idx(SUARA_B4, "kubus"), ...kubus(7))),
-    k(SUARA_B5, tambah(idx(SUARA_B5, "dan"), ...kartu("bd", 40, 146, 220, 36, W.krem, ["40 dan 7", "dibaca empat puluh tujuh"], 10.4)), sorotkan(idx(SUARA_B5, "Mudah,"), "va")),
-    k(SUARA_B6, bersih(0), tambah(0, judul("Satuannya nol")), tambah(idx(SUARA_B6, "nol"), ...kartu("nz", 190, 56, 90, 28, W.krem, ["satuan: 0"], 10)), tambah(idx(SUARA_B6, "batang"), ...batang(3)), tambah(idx(SUARA_B6, "dibaca", 2), nilaiV("a", "30", 150, 124))),
-  ],
-};
+/* ------------------------------ 4. Kotak kue isi sepuluh ------------------------------ */
+const SUARA_K1 = "Nia mengeluarkan kotak kue yang muat tepat sepuluh kue.";
+const SUARA_K2 = "Satu kotak penuh disebut satu puluhan. Tiga kotak penuh berarti tiga puluh.";
+const SUARA_K3 = "Tinggal enam kue lepas. Tiga puluh ditambah enam sama dengan tiga puluh enam, persis hitungan Dika!";
 
-/* ------------------------------ 7. Menulis bilangan ------------------------------ */
-const SUARA_W1 = "Sekarang kita menulis bilangan. Bilangan dua puluh sampai lima puluh ditulis dengan dua angka.";
-const SUARA_W2 = "Angka di kiri menunjukkan banyak puluhan. Angka di kanan menunjukkan banyak satuan.";
-const SUARA_W3 = "Contohnya empat puluh tujuh. Empat puluh tujuh ditulis angka empat lalu angka tujuh.";
-const SUARA_W4 = "Sekarang dua puluh delapan. Dua puluh delapan ditulis angka dua lalu angka delapan.";
-const SUARA_W5 = "Satuannya bisa nol. Tiga puluh ditulis angka tiga lalu angka nol.";
-const kotakTulis = (): Obj[] => [
-  kotak("wr-pk", 70, 52, 62, 58, W.hijauMuda, W.biru, { rx: 8, tebal: 2 }),
-  kotak("wr-sk", 168, 52, 62, 58, W.pink, W.biru, { rx: 8, tebal: 2 }),
-];
+const PUSAT_KOTAK = [52, 130, 208];
 
-export const ADEGAN_TULIS: AdeganStory = {
-  id: "tulis-bilangan",
-  judul: "Menulis bilangan",
-  sumber: "Materi: menulis bilangan",
-  latar: "#F0FDFA",
-  ketukan: [
-    k(SUARA_W1, tambah(0, judul("Menulis bilangan")), tambah(idx(SUARA_W1, "dua", 2), ...kartu("rg", 80, 130, 140, 28, W.krem, ["20 sampai 50"], 11)), tambah(idx(SUARA_W1, "angka."), ...kotakTulis())),
-    k(SUARA_W2, tambah(idx(SUARA_W2, "kiri"), teks("wr-hp", 101, 44, "puluhan", 10, W.ungu)), sorotkan(idx(SUARA_W2, "kiri"), "wr-pk"), redamkan(idx(SUARA_W2, "Angka", 2), "wr-pk"), tambah(idx(SUARA_W2, "kanan"), teks("wr-hs", 199, 44, "satuan", 10, W.ungu)), sorotkan(idx(SUARA_W2, "kanan"), "wr-sk")),
-    k(
-      SUARA_W3,
-      redamkan(0, "wr-sk"),
-      hapus(0, "rg-k", "rg-t0"),
-      tambah(idx(SUARA_W3, "empat", 3), teks("wr-p", 101, 98, "4", 38, W.merah)),
-      tambah(idx(SUARA_W3, "tujuh", 3), teks("wr-s", 199, 98, "7", 38, W.merah), nilaiV("w", "47", 150, 152)),
-    ),
-    k(SUARA_W4, ubah(idx(SUARA_W4, "dua", 3), { id: "wr-p", isi: "2" }), ubah(idx(SUARA_W4, "delapan", 3), { id: "wr-s", isi: "8" }, { id: "vw", isi: "28" })),
-    k(SUARA_W5, ubah(idx(SUARA_W5, "tiga", 2), { id: "wr-p", isi: "3" }), ubah(idx(SUARA_W5, "nol", 2), { id: "wr-s", isi: "0" }, { id: "vw", isi: "30" }), sorotkan(idx(SUARA_W5, "nol", 2), "wr-sk")),
-  ],
-};
-
-/* ------------------------------ 8. Daftar bilangan 21 sampai 30 ------------------------------ */
-const SUARA_D1 = "Sekarang kita baca bilangan berurutan, bersama Igil. Dua puluh satu, dua puluh dua, dua puluh tiga, dua puluh empat, dua puluh lima.";
-const SUARA_D2 = "Perhatikan! Nama puluhannya sama, yaitu dua puluh. Hanya nama satuannya yang berganti.";
-const SUARA_D3 = "Sekarang kita lanjutkan. Dua puluh enam, dua puluh tujuh, dua puluh delapan, dua puluh sembilan, tiga puluh.";
-const SUARA_D4 = "Perhatikan! Setelah dua puluh sembilan datang tiga puluh. Tiga puluh punya satuan nol, jadi namanya hanya tiga puluh.";
-const baris = (dari: number, q: number): Obj[] => barisDaftar(q, String(dari + q), NAMA_BILANGAN[dari + q]);
-const idsDm = (n: number): string[] => Array.from({ length: n }, (_, q) => `dm${q}`);
-
-export const ADEGAN_DAFTAR: AdeganStory = {
-  id: "daftar-bilangan",
-  judul: "Bilangan dua puluh satu sampai tiga puluh",
-  sumber: "Materi: nama bilangan 21 sampai 30",
+export const ADEGAN_KOTAK: AdeganStory = {
+  id: "kotak-sepuluh",
+  judul: "Kotak kue isi sepuluh",
+  sumber: "Materi: kotak isi sepuluh, puluhan",
   latar: "#FFFBEB",
   ketukan: [
-    k(SUARA_D1, tambah(0, judul("Bilangan berurutan")), ...urutBilangan(SUARA_D1, 21, 25).map((p, q) => tambah(p, baris(21, q)))),
-    k(SUARA_D2, sorotkan(idx(SUARA_D2, "puluhannya"), ...idsDm(5)), tambah(idx(SUARA_D2, "puluh"), teks("np", 26, 98, "20", 14, W.merah)), redamkan(idx(SUARA_D2, "Hanya"), ...idsDm(5))),
     k(
-      SUARA_D3,
-      bersih(0),
-      tambah(0, judul("Lanjutkan")),
-      ...urutBilangan(SUARA_D3, 26, 30).map((p, q) => tambah(p, baris(26, q))),
+      SUARA_K1,
+      tambah(0, judul("Kotak Kue Isi Sepuluh"), lantai("lt", 168)),
+      tambah("Nia", ...tokoh("ni", 30, 178, "Nia")),
+      tambah("kotak", ...kotakKue("b0", PUSAT_KOTAK[0], 62, false)),
+      ubah("muat", ...isiLubang("b0", 0, 5)),
+      ubah("tepat", ...isiLubang("b0", 5, 10)),
+      tambah("sepuluh", teks("l0", PUSAT_KOTAK[0], 92, "10", 11, W.merah)),
     ),
-    k(SUARA_D4, sorotkan(idx(SUARA_D4, "tiga"), "dm4", "dl4"), tambah(idx(SUARA_D4, "nol"), emo("nn", 270, 170, "\u{1F4A1}", 24))),
+    k(
+      SUARA_K2,
+      tambah("Satu", teks("e1", 52, 112, "1 kotak", 9, W.ungu)),
+      tambah("puluhan.", teks("e2", 52, 126, "1 puluhan", 9, W.biru)),
+      tambah("Tiga", teks("e3", 169, 112, "3 kotak", 9, W.ungu)),
+      tambah("berarti", ...kotakKue("b1", PUSAT_KOTAK[1], 62, true), ...kotakKue("b2", PUSAT_KOTAK[2], 62, true), teks("l1", PUSAT_KOTAK[1], 92, "10", 11, W.merah), teks("l2", PUSAT_KOTAK[2], 92, "10", 11, W.merah)),
+      tambah("puluh@2", teks("e30", 150, 152, "3 puluhan = 30", 13, W.merah)),
+    ),
+    k(
+      SUARA_K3,
+      hapus(0, "e1", "e2", "e3", "e30"),
+      tambah("kue", ...deretKue("lp", 6, 70, 24, 118)),
+      tambah("lepas.", teks("e6", 230, 122, "6 lepas", 9, W.ungu)),
+      tambah("Tiga", teks("f30", 70, 160, "30", 16, W.biru)),
+      tambah("ditambah", teks("fp", 96, 160, "+", 16, W.biru)),
+      tambah("enam@2", teks("f6", 118, 160, "6", 16, W.merah)),
+      tambah("sama", teks("fs", 140, 160, "=", 16, W.biru)),
+      tambah("enam@3", teks("f36", 170, 160, "36", 16, W.hijau)),
+    ),
+  ],
+};
+
+/* ------------------------------ 5. Membaca dan menulis: puluhan dan satuan ------------------------------ */
+const SUARA_B1 = "Bu Sari menuliskan banyak kue di papan catatan, tiga puluh enam.";
+const SUARA_B2 = "Angka di kiri menunjukkan puluhan, angka di kanan menunjukkan satuan.";
+const SUARA_B3 = "Jadi tiga puluh enam itu tiga puluhan dan enam satuan.";
+
+export const ADEGAN_BACA: AdeganStory = {
+  id: "baca-tulis",
+  judul: "Membaca dan menulis bilangan",
+  sumber: "Materi: membaca dan menulis, puluhan dan satuan",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_B1,
+      tambah(0, judul("Papan Catatan"), lantai("lt", 168)),
+      tambah("Sari", ...tokoh("bs", 30, 178, "Bu Sari")),
+      tambah("menuliskan", papan("pk", 50, 30, 200, 104)),
+      tambah("banyak", kapur("bb", 150, 52, "banyak kue", 9.4)),
+      tambah("tiga", kapur("w36", 150, 108, "36", 56)),
+      ubah("enam.", { id: "w36", sorot: true }),
+    ),
+    k(
+      SUARA_B2,
+      hapus(0, "w36"),
+      tambah(0, kapur("d3", 134, 108, "3", 56), kapur("d6", 166, 108, "6", 56)),
+      ubah("kiri", { id: "d3", warna: "#93C5FD", sorot: true }),
+      tambah("puluhan,", kapur("lp", 124, 128, "puluhan", 9, { warna: "#93C5FD" })),
+      ubah("kanan", { id: "d6", warna: "#FCA5A5", sorot: true }, { id: "d3", sorot: false }),
+      tambah("satuan.", kapur("ls", 178, 128, "satuan", 9, { warna: "#FCA5A5" })),
+    ),
+    k(
+      SUARA_B3,
+      tambah("Jadi", teks("g36", 76, 162, "36", 13, W.hijau)),
+      tambah("itu", teks("gs", 96, 162, "=", 13, W.biru)),
+      tambah("puluhan", teks("g3", 142, 162, "3 puluhan", 13, W.biru)),
+      ubah("puluhan", { id: "d3", sorot: true }, { id: "d6", sorot: false }),
+      tambah("dan", teks("gp", 188, 162, "+", 13, W.biru)),
+      tambah("satuan.", teks("g6", 226, 162, "6 satuan", 13, W.merah)),
+      ubah("satuan.", { id: "d6", sorot: true }, { id: "d3", sorot: false }),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. Nomor antrean maju dan mundur ------------------------------ */
+const SUARA_A1 = "Bel berbunyi, dan anak-anak mengantre membawa nomor antrean.";
+const SUARA_A2 = "Bu Sari memanggil maju, tiga puluh empat, tiga puluh lima, tiga puluh enam. Makin maju, makin besar.";
+const SUARA_A3 = "Dika menghitung mundur, tiga puluh enam, tiga puluh lima, tiga puluh empat. Makin mundur, makin kecil.";
+
+const KID_X = [70, 150, 230];
+const NOMOR = ["34", "35", "36"];
+const sorotNomor = (at: string | number, nyala: number) => ubah(at, ...[0, 1, 2].flatMap((i) => [{ id: `p${i}`, sorot: i === nyala }, { id: `p${i}t`, sorot: i === nyala }]));
+
+export const ADEGAN_ANTREAN: AdeganStory = {
+  id: "antrean",
+  judul: "Antrean maju dan mundur",
+  sumber: "Materi: nomor antrean, maju dan mundur",
+  latar: "#EFF6FF",
+  ketukan: [
+    k(
+      SUARA_A1,
+      tambah(0, judul("Antrean di Jendela Kantin"), kotak("jn", 14, 30, 272, 62, WK.kaca, WK.kacaGaris, { rx: 6, tebal: 2.4, z: -1 }), kotak("sl", 14, 92, 272, 8, WK.kayu, W.coklat, { rx: 2, z: -1 })),
+      tambah("Bel", emo("bl", 150, 62, E.bel, 22)),
+      ubah("berbunyi,", { id: "bl", rot: 24 }),
+      tambah("anak-anak", ...KID_X.map((x, i) => emo(`a${i}`, x, 154, E.anak, 26))),
+      tambah("nomor", ...KID_X.flatMap((x, i) => karcis(`p${i}`, x - 20, 106, NOMOR[i], 40, 22))),
+    ),
+    k(
+      SUARA_A2,
+      tambah("Sari", ...tokoh("bs", 258, 74, "Bu Sari")),
+      tambah("maju,", panah("mj", 50, 174, 250, 174, W.hijau)),
+      sorotNomor("empat,", 0),
+      sorotNomor("lima,", 1),
+      sorotNomor("enam.", 2),
+      tambah("Makin", teks("lb", 150, 190, "maju: makin besar", 9.4, W.hijau)),
+    ),
+    k(
+      SUARA_A3,
+      hapus(0, "mj", "lb", "bs", "bs-ap", "bs-n"),
+      sorotNomor(0, 5),
+      tambah("Dika", ...tokoh("dk", 28, 74, "Dika")),
+      tambah("mundur,", panah("mn", 250, 174, 50, 174, W.merah)),
+      sorotNomor("enam,", 2),
+      sorotNomor("lima,", 1),
+      sorotNomor("empat.", 0),
+      tambah("Makin", teks("lb2", 150, 190, "mundur: makin kecil", 9.4, W.merah)),
+    ),
   ],
 };

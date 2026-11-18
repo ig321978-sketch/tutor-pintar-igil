@@ -1,143 +1,141 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { EMO_BIRU, EMO_TAS, W, angkaKotak, batangP, bendaDi, benda, emo, jumlahG, judul, kartu, kotakSepuluh, kubusS, letakKotak, namaG, nilaiV, pusatBenda, teks, titikGrid, titikKotak, type Titik } from "./k2b1A-gambar";
-import { bersih, hapus, hitungAksi, idx, ids, isiAksi, k, redamkan, sorotkan, tambah } from "./k2b1A-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, WK, bulat, deretKue, emo, etalase, gs, judul, jam, kartu, kue, lantai, nampan, teks, tokoh } from "./k2b1A-gambar";
+import { hapus, k, sorotkan, tambah, ubah } from "./k2b1A-bantu";
 
-/** Tas di rak toko Upe: dua puluh enam tas dalam tiga baris (sepuluh, sepuluh, enam). */
-export const N_TAS = 26;
-export const titikTas = (): Titik[] => titikGrid(N_TAS, 28, 66, 27, 30);
-export const tasObjs = (): Obj[] => [namaG("a", 4, 36, "Tas"), ...bendaDi("a", EMO_TAS, titikTas())];
-const idsTas = (dari: number, sampai: number): string[] => ids("ea", dari, sampai);
+/*
+ * Cerita orisinal IGIL "Kue Kiriman dari Dapur" (Kelas 2 Bab 1 Sub-Bab A, menghitung, membaca, dan menulis bilangan sampai lima puluh), awal cerita Kue di Kantin Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b1a.md. Bagian ini: kue datang, jari berkrim (salah langkah), dan menggeser sambil menyebut bilangan.
+ */
 
-/* ------------------------------ 1. Tas di rak toko ------------------------------ */
-const SUARA_T1 = "Hari ini Upe menata tas di rak tokonya. Lihat, tasnya berbaris rapi!";
-const SUARA_T2 = "Kira ingin tahu, ada berapa banyak tas di rak ini? Wah, banyak sekali!";
-const SUARA_T3 = "Menurut Kira, tasnya lebih dari sepuluh. Betulkah begitu? Kita buktikan dengan menghitung.";
-const SUARA_T4 = "Caranya mudah. Sentuh tiap tas satu kali sambil menyebut bilangannya. Ayo kita mulai!";
+/* ------------------------------ 1. Kue datang ------------------------------ */
+const SUARA_D1 = "Dapur sekolah mengirim banyak kue, dan Bu Sari menatanya di nampan etalase.";
+const SUARA_D2 = "Bu Sari berpesan, sebelum bel istirahat berbunyi, jumlah kuenya harus sudah tercatat.";
+const SUARA_D3 = "Kalau salah catat, ada anak yang antre lama lalu pulang tanpa kue!";
 
-export const ADEGAN_RAK_TAS: AdeganStory = {
-  id: "rak-tas",
-  judul: "Tas di rak toko",
-  sumber: "Materi: banyak benda di rak",
+export const ADEGAN_KUE_DATANG: AdeganStory = {
+  id: "kue-datang",
+  judul: "Kue datang ke kantin",
+  sumber: "Materi: kue datang dari dapur",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_T1, tambah(0, judul("Tas di rak toko")), tambah(idx(SUARA_T1, "Lihat,"), ...tasObjs())),
-    k(SUARA_T2, tambah(idx(SUARA_T2, "berapa"), emo("q", 150, 168, "❓", 28))),
-    k(SUARA_T3, hapus(0, "q"), tambah(idx(SUARA_T3, "sepuluh"), ...kartu("tk", 70, 150, 160, 28, W.krem, ["lebih dari 10?"], 11)), sorotkan(idx(SUARA_T3, "sepuluh"), ...idsTas(0, 9))),
-    k(SUARA_T4, redamkan(0, ...idsTas(0, 9)), hapus(0, "tk-k", "tk-t0"), tambah(idx(SUARA_T4, "Sentuh"), emo("tg", 150, 176, "\u{1F446}", 26))),
+    k(
+      SUARA_D1,
+      tambah(0, judul("Kue Kiriman dari Dapur"), lantai("lt", 168), ...etalase("et", 64, 32, 170, 112, 2)),
+      tambah("Dapur", emo("dp", 32, 110, E.dapur, 26), teks("dpn", 32, 126, "Dapur", 8.4, W.ungu)),
+      tambah("mengirim", emo("tr", 30, 160, E.truk, 24)),
+      ubah("banyak", { id: "tr", x: 44 }),
+      tambah("kue,", nampan("n1", 76, 82, 146, 6), ...deretKue("a", 6, 92, 24, 72)),
+      tambah("Sari", ...tokoh("bs", 268, 178, "Bu Sari")),
+      tambah("nampan", nampan("n2", 76, 124, 146, 6), ...deretKue("b", 6, 92, 24, 116)),
+      sorotkan("etalase.", "et"),
+    ),
+    k(
+      SUARA_D2,
+      hapus(0, "tr"),
+      tambah("berpesan,", ...kartu("ps", 150, 148, 112, 20, W.putih, ["Catat dulu, ya!"], 8.4)),
+      tambah("bel", emo("bl", 30, 70, E.bel, 22)),
+      ubah("berbunyi,", { id: "bl", rot: 24 }),
+      tambah("berbunyi,", teks("tr2", 30, 42, "tring!", 9, W.merah)),
+      tambah("tercatat.", ...kartu("ct", 12, 150, 100, 26, W.krem, ["Jumlah kue:", "belum ada"], 8.4)),
+    ),
+    k(
+      SUARA_D3,
+      hapus(0, "ps-k", "ps-t0"),
+      ubah("catat,", { id: "ct-t1", isi: "salah catat!", warna: W.merah }),
+      tambah("anak", ...[0, 1, 2].map((i) => emo(`ak${i}`, 140 + i * 28, 188, E.anak, 20))),
+      tambah("lama", ...jam("jm", 222, 160, 12)),
+      ubah("pulang", { id: "ak2", x: 206 }),
+      tambah("tanpa", emo("sd", 150, 160, E.sedih, 22)),
+      tambah("kue!", emo("xk", 178, 160, E.salah, 20)),
+    ),
   ],
 };
 
-/* ------------------------------ 2. Hitung satu per satu ------------------------------ */
-const SUARA_H1 = "Sekarang kita hitung tas itu satu per satu. Kita mulai dari baris pertama.";
-const SUARA_H2 = "Satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh. Baris pertama berisi sepuluh tas.";
-const SUARA_H3 = "Lanjut ke baris kedua. Sebelas, dua belas, tiga belas, empat belas, lima belas, enam belas, tujuh belas, delapan belas, sembilan belas, dua puluh.";
-const SUARA_H4 = "Sekarang baris ketiga. Dua puluh satu, dua puluh dua, dua puluh tiga, dua puluh empat, dua puluh lima, dua puluh enam.";
-const SUARA_H5 = "Jadi ada dua puluh enam tas di rak itu.";
-const SUARA_H6 = "Ingat, setiap tas hanya dihitung satu kali. Bilangan yang terakhir kita sebut adalah banyaknya.";
-const pusatTas = (): Titik[] => pusatBenda(titikTas());
+/* ------------------------------ 2. Jari berkrim (salah langkah) ------------------------------ */
+const SUARA_J1 = "Chacha buru-buru menghitung kue sambil menunjuk-nunjuk, padahal jarinya berlumur krim.";
+const SUARA_J2 = "Dika menyipitkan mata. Itu sudah kamu hitung, Chacha, ada bekas krimnya!";
+const SUARA_J3 = "Hitungan Chacha berubah-ubah, dan Bu Sari bertanya, bagaimana supaya tidak ada yang terlewat atau terhitung dua kali?";
 
-export const ADEGAN_HITUNG_SATU: AdeganStory = {
-  id: "hitung-satu",
-  judul: "Menghitung tas satu per satu",
-  sumber: "Materi: menghitung satu per satu",
+export const ADEGAN_JARI_KRIM: AdeganStory = {
+  id: "jari-krim",
+  judul: "Jari berkrim menghitung kue",
+  sumber: "Materi: terhitung dua kali (salah langkah)",
   latar: "#FEFCE8",
   ketukan: [
-    k(SUARA_H1, tambah(0, judul("Hitung satu per satu")), tambah(idx(SUARA_H1, "tas"), ...tasObjs())),
-    k(SUARA_H2, ...hitungAksi(SUARA_H2, "ea", pusatTas().slice(0, 10), {})),
-    k(SUARA_H3, ...hitungAksi(SUARA_H3, "ea", pusatTas().slice(0, 20), { dari: 11, awal: 10, setelah: "kedua." })),
-    k(SUARA_H4, ...hitungAksi(SUARA_H4, "ea", pusatTas(), { dari: 21, awal: 20, setelah: "ketiga." })),
-    k(SUARA_H5, tambah(idx(SUARA_H5, "enam"), jumlahG("a", 150, 164, "26", 18))),
-    k(SUARA_H6, sorotkan(idx(SUARA_H6, "terakhir"), "ea-ln")),
-  ],
-};
-
-/* ------------------------------ 3. Kotak sepuluh ------------------------------ */
-const Y_K = 40;
-const SUARA_K1 = "Kalau bendanya banyak, menghitung satu per satu bisa lama. Ada cara yang lebih cepat.";
-const SUARA_K2 = "Kita kelompokkan setiap sepuluh benda ke dalam satu kotak sepuluh. Kotak ini punya sepuluh petak.";
-const SUARA_K3 = "Isi petaknya sambil menghitung. Satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh. Kotaknya penuh!";
-const SUARA_K4 = "Sepuluh benda dalam satu kotak penuh kita sebut satu puluhan.";
-const SUARA_K5 = "Dua kotak penuh adalah dua puluh. Tiga kotak penuh adalah tiga puluh.";
-const SUARA_K6 = "Empat kotak penuh adalah empat puluh. Lima kotak penuh adalah lima puluh. Lima puluh adalah bilangan terbesar di pelajaran ini.";
-const biru = (i: number): Obj => benda("a", i, titikKotak(i, Y_K).x, titikKotak(i, Y_K).y, EMO_BIRU, 15);
-const kotakKe = (f: number): Obj[] => kotakSepuluh("a", f, letakKotak(f, Y_K));
-const isiKotak = (dari: number, sampai: number): Obj[] => Array.from({ length: sampai - dari }, (_, q) => biru(dari + q));
-
-export const ADEGAN_KOTAK_SEPULUH: AdeganStory = {
-  id: "kotak-sepuluh",
-  judul: "Kelompok sepuluh dalam satu kotak",
-  sumber: "Materi: kelompok sepuluh",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(SUARA_K1, tambah(0, judul("Kelompok sepuluh")), tambah(idx(SUARA_K1, "lama."), emo("kl", 90, 130, "\u{1F422}", 34)), tambah(idx(SUARA_K1, "cepat."), emo("kc", 210, 130, "\u{1F407}", 34))),
-    k(SUARA_K2, bersih(0), tambah(0, judul("Kotak sepuluh")), tambah(idx(SUARA_K2, "kotak", 1), ...kotakKe(0)), tambah(idx(SUARA_K2, "petak."), ...kartu("pt", 90, 150, 120, 26, W.krem, ["10 petak"], 11))),
-    k(SUARA_K3, ...isiAksi(SUARA_K3, 0, 10, biru), tambah(idx(SUARA_K3, "penuh!"), angkaKotak("a", 0, "10", Y_K))),
-    k(SUARA_K4, hapus(0, "pt-k", "pt-t0"), tambah(idx(SUARA_K4, "puluhan."), ...kartu("sp", 50, 150, 200, 26, W.emas, ["1 puluhan = 10 benda"], 10.4)), sorotkan(idx(SUARA_K4, "puluhan."), "fra0")),
     k(
-      SUARA_K5,
-      tambah(idx(SUARA_K5, "kotak", 1), ...kotakKe(1)),
-      tambah(idx(SUARA_K5, "penuh", 1), ...isiKotak(10, 20)),
-      tambah(idx(SUARA_K5, "puluh.", 1), angkaKotak("a", 1, "20", Y_K)),
-      tambah(idx(SUARA_K5, "kotak", 2), ...kotakKe(2)),
-      tambah(idx(SUARA_K5, "penuh", 2), ...isiKotak(20, 30)),
-      tambah(idx(SUARA_K5, "puluh.", 2), angkaKotak("a", 2, "30", Y_K)),
+      SUARA_J1,
+      tambah(0, judul("Jari Berkrim"), lantai("lt", 168), nampan("np", 50, 60, 200, 64, { z: -1 }), ...deretKue("g", 6, 72, 32, 80), ...deretKue("h", 6, 72, 32, 108)),
+      tambah("Chacha", ...tokoh("ch", 30, 178, "Chacha")),
+      ubah("buru-buru", { id: "ch", x: 52 }, { id: "ch-n", x: 52 }),
+      tambah("menghitung", emo("jr", 72, 142, E.jari, 22)),
+      ubah("menunjuk-nunjuk,", { id: "jr", x: 136 }),
+      ubah("jarinya", { id: "jr", x: 200 }),
+      tambah("krim.", bulat("kr", 200, 128, 4, WK.krim, W.merah, { z: 3 })),
     ),
     k(
-      SUARA_K6,
-      redamkan(0, "fra0"),
-      hapus(0, "sp-k", "sp-t0"),
-      tambah(idx(SUARA_K6, "kotak", 1), ...kotakKe(3)),
-      tambah(idx(SUARA_K6, "penuh", 1), ...isiKotak(30, 40)),
-      tambah(idx(SUARA_K6, "puluh.", 1), angkaKotak("a", 3, "40", Y_K)),
-      tambah(idx(SUARA_K6, "kotak", 2), ...kotakKe(4)),
-      tambah(idx(SUARA_K6, "penuh", 2), ...isiKotak(40, 50)),
-      tambah(idx(SUARA_K6, "puluh.", 2), angkaKotak("a", 4, "50", Y_K)),
+      SUARA_J2,
+      hapus(0, "jr", "kr"),
+      tambah("Dika", ...tokoh("dk", 266, 178, "Dika")),
+      tambah("mata.", emo("mt", 236, 152, E.mata, 20)),
+      tambah("sudah", bulat("bk", 172, 77, 3.5, WK.krim, W.merah, { z: 3 })),
+      ubah("krimnya!", { id: "g3", sorot: true }),
+    ),
+    k(
+      SUARA_J3,
+      hapus(0, "mt", "bk"),
+      ubah(0, { id: "g3", sorot: false }),
+      tambah("Hitungan", teks("h1", 70, 48, "35", 15, W.merah)),
+      tambah("berubah-ubah,", teks("h2", 150, 48, "38", 15, W.merah)),
+      tambah("dan", teks("h3", 230, 48, "34", 15, W.merah)),
+      tambah("Sari", ...tokoh("bs", 150, 180, "Bu Sari")),
+      tambah("tidak", gs("c1", 58, 52, 82, 40, W.biru, 2), gs("c2", 138, 52, 162, 40, W.biru, 2), gs("c3", 218, 52, 242, 40, W.biru, 2)),
+      tambah("supaya", ...kartu("td", 84, 130, 132, 20, W.hijauMuda, ["tandai yang sudah dihitung"], 8.4)),
+      tambah("dua", teks("tk", 244, 146, "2 kali", 10, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 4. Sepuluh, sepuluh, enam ------------------------------ */
-const Y_S = 50;
-const SUARA_P1 = "Sekarang kita hitung tas tadi dengan kotak sepuluh. Kotak pertama diisi sepuluh tas.";
-const SUARA_P2 = "Kotak kedua juga diisi sepuluh tas. Jadi dua kotak penuh berisi dua puluh tas.";
-const SUARA_P3 = "Sisanya masuk ke kotak ketiga. Kotak ketiga berisi enam tas. Kotak ini belum penuh.";
-const SUARA_P4 = "Dua puluh ditambah enam sama dengan dua puluh enam. Hasilnya sama seperti hitungan satu per satu.";
-const SUARA_P5 = "Menghitung per sepuluh lebih cepat dan tidak mudah salah. Hasilnya tetap dua puluh enam tas.";
-const tas = (i: number): Obj => benda("a", i, titikKotak(i, Y_S).x, titikKotak(i, Y_S).y, EMO_TAS, 15);
-const isiTas = (dari: number, sampai: number): Obj[] => Array.from({ length: sampai - dari }, (_, q) => tas(dari + q));
+/* ------------------------------ 3. Geser sambil menyebut bilangan ------------------------------ */
+const SUARA_G1 = "Dika punya cara. Tiap kue yang dihitung ia geser ke nampan kosong sambil menyebut bilangannya.";
+const SUARA_G2 = "Bilangan yang terakhir disebut adalah banyak seluruh kue. Hasilnya tiga puluh enam.";
+const SUARA_G3 = "Chacha bertanya, adakah cara yang lebih cepat, karena tangannya pegal!";
 
-export const ADEGAN_SEPULUH_ENAM: AdeganStory = {
-  id: "sepuluh-sepuluh-enam",
-  judul: "Sepuluh, sepuluh, dan enam",
-  sumber: "Materi: menghitung per sepuluh",
-  latar: "#FFF1F2",
+/** Tempat kue ke-i di nampan kiri (c = 0) atau nampan kanan (c = 1): enam kolom, enam baris. */
+const slot = (i: number, kanan: boolean): [number, number] => [(kanan ? 170 : 26) + 20 * (i % 6), 52 + 11 * Math.floor(i / 6)];
+const pindah = (...nomor: number[]) => nomor.map((i) => ({ id: `k${i}`, x: slot(i, true)[0] - 6, y: slot(i, true)[1] - 4.5 }));
+
+export const ADEGAN_GESER: AdeganStory = {
+  id: "geser",
+  judul: "Menggeser sambil menyebut",
+  sumber: "Materi: geser tiap kue, bilangan terakhir",
+  latar: "#F0F9FF",
   ketukan: [
-    k(SUARA_P1, tambah(0, judul("Tas dalam kotak sepuluh")), tambah(idx(SUARA_P1, "kotak", 1), namaG("a", 4, 36, "Tas"), ...[0, 1, 2].flatMap((f) => kotakSepuluh("a", f, letakKotak(f, Y_S)))), tambah(idx(SUARA_P1, "diisi"), ...isiTas(0, 10)), tambah(idx(SUARA_P1, "sepuluh", 2), angkaKotak("a", 0, "10", Y_S))),
-    k(SUARA_P2, tambah(idx(SUARA_P2, "juga"), ...isiTas(10, 20)), tambah(idx(SUARA_P2, "puluh"), angkaKotak("a", 1, "20", Y_S))),
-    k(SUARA_P3, tambah(idx(SUARA_P3, "masuk"), ...isiTas(20, 26)), tambah(idx(SUARA_P3, "enam"), angkaKotak("a", 2, "26", Y_S))),
-    k(SUARA_P4, tambah(idx(SUARA_P4, "ditambah"), ...kartu("eq", 60, 128, 180, 28, W.emas, ["20 + 6 = 26"], 13))),
-    k(SUARA_P5, tambah(idx(SUARA_P5, "enam"), jumlahG("a", 150, 176, "26", 16))),
+    k(
+      SUARA_G1,
+      tambah(0, judul("Geser sambil Menyebut"), lantai("lt", 168), nampan("nk", 14, 44, 128, 70, { z: -1 }), nampan("nb", 158, 44, 128, 70, { z: -1 }), ...Array.from({ length: 36 }, (_, i) => kue(`k${i}`, ...slot(i, false)))),
+      tambah("Dika", ...tokoh("dk", 30, 178, "Dika")),
+      tambah("cara.", emo("ld", 58, 160, E.lampu, 20)),
+      tambah("dihitung", teks("ct", 150, 150, "0", 24, W.merah)),
+      ubah("geser", ...pindah(0), { id: "ct", isi: "1" }),
+      ubah("nampan", ...pindah(1), { id: "ct", isi: "2" }),
+      ubah("sambil", ...pindah(2), { id: "ct", isi: "3" }),
+      ubah("bilangannya.", ...pindah(3), { id: "ct", isi: "4" }),
+    ),
+    k(
+      SUARA_G2,
+      ubah("Bilangan", ...pindah(...Array.from({ length: 14 }, (_, i) => i + 4)), { id: "ct", isi: "18" }),
+      ubah("terakhir", ...pindah(...Array.from({ length: 18 }, (_, i) => i + 18)), { id: "ct", isi: "36" }),
+      tambah("seluruh", teks("bk", 150, 168, "banyak seluruh kue", 9, W.ungu)),
+      ubah("enam.", { id: "ct", u: 30, sorot: true }, { id: "nb", sorot: true }),
+    ),
+    k(
+      SUARA_G3,
+      ubah(0, { id: "ct", sorot: false }, { id: "nb", sorot: false }),
+      tambah("Chacha", ...tokoh("ch", 266, 178, "Chacha")),
+      tambah("bertanya,", emo("qm", 236, 152, E.tanya, 22)),
+      ubah("tangannya", { id: "ch", isi: E.capek }),
+      tambah("pegal!", teks("ad", 236, 178, "aduh!", 10, W.merah)),
+    ),
   ],
 };
 
-/* ------------------------------ 5. Puluhan dan satuan ------------------------------ */
-const SUARA_U1 = "Sekarang kita lihat bilangan dengan balok. Satu batang berisi sepuluh kubus kecil. Itulah satu puluhan.";
-const SUARA_U2 = "Kira menyusun dua batang puluhan. Dua batang puluhan berarti dua puluh.";
-const SUARA_U3 = "Sisanya enam kubus satuan. Satu kubus adalah satu satuan.";
-const SUARA_U4 = "Jadi dua puluh enam itu dua puluhan dan enam satuan.";
-const SUARA_U5 = "Dua puluhan artinya dua puluh. Enam satuan artinya enam. Dua puluh ditambah enam sama dengan dua puluh enam.";
-const label = (id: string, x: number, isi: string): Obj => teks(id, x, 108, isi, 9, W.ungu);
-
-export const ADEGAN_PULUHAN_SATUAN: AdeganStory = {
-  id: "puluhan-satuan",
-  judul: "Puluhan dan satuan",
-  sumber: "Materi: puluhan dan satuan",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_U1, tambah(0, judul("Batang puluhan")), tambah(idx(SUARA_U1, "batang"), ...batangP("a", 0)), tambah(idx(SUARA_U1, "puluhan."), label("lbp", 50, "puluhan"))),
-    k(SUARA_U2, tambah(idx(SUARA_U2, "batang"), ...batangP("a", 1)), tambah(idx(SUARA_U2, "berarti"), ...kartu("dp", 20, 134, 120, 26, W.krem, ["2 puluhan = 20"], 10.4))),
-    k(SUARA_U3, tambah(idx(SUARA_U3, "enam"), ...Array.from({ length: 6 }, (_, i) => kubusS("a", i))), tambah(idx(SUARA_U3, "satuan."), label("lbs", 212, "satuan"))),
-    k(SUARA_U4, tambah(idx(SUARA_U4, "itu"), nilaiV("a", "26", 150, 112)), tambah(idx(SUARA_U4, "dan"), ...kartu("ps", 160, 134, 124, 26, W.pink, ["2 puluhan 6 satuan"], 9.4))),
-    k(SUARA_U5, hapus(0, "dp-k", "dp-t0", "ps-k", "ps-t0"), tambah(idx(SUARA_U5, "ditambah"), ...kartu("eq", 60, 150, 180, 28, W.emas, ["20 + 6 = 26"], 13))),
-  ],
-};

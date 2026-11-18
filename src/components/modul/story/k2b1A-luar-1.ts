@@ -1,182 +1,165 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { EMO_BALON, EMO_JERUK, EMO_MERAH, OWL, W, angkaKotak, benda, bendaDi, emo, jumlahG, kartu, kartuAngka, kotak, kotakSepuluh, judul, letakKotak, namaG, pusatBenda, teks, titikGrid, titikKotak, titikPetak, type Kotak10 } from "./k2b1A-gambar";
-import { bersih, hapus, hitungAksi, idx, isiAksi, k, pilihKata, redamkan, sorotkan, tambah, urutBilangan, urutNilai } from "./k2b1A-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, WK, bingkaiSepuluh, emo, judul, kartu, kotak, kueEmo, lantai, pusatSel, teks, tokoh } from "./k2b1A-gambar";
+import { bersih, hapus, k, tambah, ubah } from "./k2b1A-bantu";
 
-export const NAMA_METODE_ID = ["Bingkai Sepuluh", "Hitung Sepuluh-Sepuluh", "Garis Bilangan"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/*
+ * Cerita orisinal IGIL "Kue Kiriman dari Dapur" (Kelas 2 Bab 1 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k2b1a.md. Bagian ini: pembuka (tiga kartu resep tua), Ten Frame, dan terapannya.
+ */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Ten Frame", "Skip Counting", "Counting On"] as const;
+export const NAMA_METODE_ID = ["Bingkai Sepuluh", "Hitung Meloncat", "Hitung Lanjut"] as const;
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara mengajarkan cara menghitung yang berbeda-beda. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu bernama Bingkai Sepuluh, Hitung Sepuluh-Sepuluh, dan Garis Bilangan.";
-const SUARA_O3 = "Semua metode ini menjawab satu pertanyaan. Berapa banyak bendanya, dan bagaimana cara menghitung dengan cepat?";
-const SUARA_O4 = "Kita memakai benda bergambar di layar. Kamu cukup mengetuk dan melihat dengan teliti.";
-const SUARA_O5 = "Semua contoh memakai paling banyak lima puluh benda. Siap? Ayo kita mulai dengan metode pertama.";
+const sel = (id: string, i: number) => `${id}-s${i}`;
+const semuaSel = (id: string) => Array.from({ length: 10 }, (_, i) => sel(id, i));
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Saat membersihkan laci etalase, Nia menemukan tiga kartu resep tua milik penjaga kantin zaman dulu.";
+const SUARA_O2 = "Bu Sari tertawa. Itu kartu cara menghitung kue dari kantin zaman dulu!";
+const SUARA_O3 = "Tiga cara itu: Ten Frame, Skip Counting, dan Counting On.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Bingkai Sepuluh, Hitung Meloncat, dan Hitung Lanjut.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk menghitung",
-  sumber: "Metode luar: pembuka",
+  judul: "Tiga kartu resep tua",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)), tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11))),
+    k(
+      SUARA_O1,
+      tambah(0, judul("Kartu Resep Tua"), lantai("lt", 168)),
+      tambah("laci", kotak("lc", 40, 50, 220, 70, WK.kayu, W.coklat, { rx: 6, tebal: 2.4, z: -1 }), kotak("gg", 138, 56, 24, 6, W.coklat, W.coklat, { rx: 3 })),
+      tambah("etalase,", teks("ll", 150, 112, "laci etalase", 9, W.coklat)),
+      tambah("Nia", ...tokoh("ni", 30, 178, "Nia")),
+      tambah("menemukan", ...[0, 1, 2].flatMap((i) => kartu(`rk${i}`, 62 + i * 66, 72, 52, 30, W.krem, ["resep"], 8.4))),
+      tambah("tiga", teks("n3", 150, 144, "3 kartu resep", 11, W.ungu)),
+      ubah("tua", ...[0, 1, 2].map((i) => ({ id: `rk${i}-k`, warna: "#FDE68A" }))),
+    ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      tambah(idx(SUARA_O2, "Bingkai"), ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah(idx(SUARA_O2, "Hitung"), ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "Garis"), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      tambah("Sari", ...tokoh("bs", 268, 178, "Bu Sari")),
+      ubah("tertawa.", { id: "bs", isi: E.tertawa }),
+      ubah("kartu", ...[0, 1, 2].map((i) => ({ id: `rk${i}-k`, sorot: true }))),
+      tambah("menghitung", kueEmo("kq", 226, 152, 24)),
+      tambah("zaman", emo("kl", 190, 152, E.kartuResep, 20)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah("satu", emo("i1", 60, 84, "\u{1F522}", 34), emo("i2", 150, 84, "❓", 34), emo("i3", 240, 84, "\u{1F440}", 34)),
-      tambah("Berapa", ...kartu("iq", 20, 112, 260, 52, W.emas, ["berapa banyak bendanya,", "dan cara menghitung yang cepat?"], 10)),
+      tambah(0, judul("Tiga Cara Menghitung")),
+      tambah("Frame,", teks("m0", 80, 62, "1. Ten Frame", 14, W.biru)),
+      tambah("Counting,", teks("m1", 80, 98, "2. Skip Counting", 14, W.biru)),
+      tambah("On.", teks("m2", 80, 134, "3. Counting On", 14, W.biru)),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Alat bantu hari ini")),
-      tambah("benda", ...bendaDi("a", EMO_MERAH, titikGrid(3, 100, 100, 50, 0), 26), teks("ea-t", 150, 128, "benda bergambar", 10, W.ungu)),
-      tambah("mengetuk", emo("tg", 190, 152, "\u{1F446}", 22)),
-    ),
-    k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Sampai lima puluh")),
-      tambah("lima", ...kartuAngka("ob", 112, 60, "50", W.emas, 76, 44, 26)),
-      tambah("pertama.", emo("ow", 150, 168, OWL, 30)),
+      tambah("Bingkai", teks("n0", 225, 62, "Bingkai Sepuluh", 11, W.ungu)),
+      tambah("Sepuluh,", teks("s10", 168, 62, "10", 9, W.merah)),
+      tambah("Meloncat,", teks("n1", 225, 98, "Hitung Meloncat", 11, W.ungu)),
+      tambah("Lanjut.", teks("n2", 225, 134, "Hitung Lanjut", 11, W.ungu)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Bingkai Sepuluh: konsep ------------------------------ */
-const GB: Kotak10 = { x: 75, y: 58, c: 30 };
-const merah = (i: number): Obj => benda("a", i, titikPetak(i, GB, 22).x, titikPetak(i, GB, 22).y, EMO_MERAH, 22);
-const kosong = (dari: number): Obj[] => Array.from({ length: 10 - dari }, (_, q) => {
-  const i = dari + q;
-  const p = i % 10;
-  return kotak(`ko${i}`, GB.x + (p % 5) * GB.c + 3, GB.y + Math.floor(p / 5) * GB.c + 3, GB.c - 6, GB.c - 6, W.putih, W.merah, { rx: 6, tebal: 1.4, putus: true });
-});
-const SUARA_A1 = "Metode pertama bernama Bingkai Sepuluh. Bingkai ini punya dua baris, dan tiap baris punya lima petak.";
-const SUARA_A2 = "Kita isi dari kiri ke kanan, baris atas dulu. Satu, dua, tiga, empat, lima. Baris atas penuh, ada lima.";
-const SUARA_A3 = "Lanjut ke baris bawah. Enam, tujuh, delapan, sembilan, sepuluh. Semua petak penuh, ada sepuluh.";
-const SUARA_A4 = "Bingkai penuh berarti sepuluh. Kita tidak perlu menghitung ulang. Kita langsung tahu, sepuluh.";
-const SUARA_A5 = "Sekarang tujuh. Baris atas penuh, lima. Baris bawah berisi dua. Lima ditambah dua sama dengan tujuh.";
-const SUARA_A6 = "Ada tiga petak kosong. Jadi tujuh butuh tiga lagi supaya penuh sepuluh.";
+/* ------------------------------ Ten Frame: konsep ------------------------------ */
+const SUARA_F1 = "Cara pertama, Ten Frame, atau Bingkai Sepuluh.";
+const SUARA_F2 = "Bingkai ini punya sepuluh kotak, dua baris dengan lima kotak tiap baris.";
+const SUARA_F3 = "Isi kotaknya dengan benda, satu kotak untuk satu benda.";
+const SUARA_F4 = "Bingkai yang penuh berarti tepat sepuluh, jadi tidak perlu dihitung lagi.";
 
 export const ADEGAN_LUAR_BINGKAI: AdeganStory = {
   id: "luar-bingkai",
-  judul: "Bingkai Sepuluh: dua baris lima petak",
-  sumber: "Metode luar: Bingkai Sepuluh",
-  latar: "#F0FDF4",
+  judul: "Ten Frame: Bingkai Sepuluh",
+  sumber: "Metode global: Ten Frame (konsep)",
+  latar: "#EFF6FF",
   ketukan: [
-    k(SUARA_A1, tambah("pertama", ...kepala(0)), tambah(idx(SUARA_A1, "Bingkai", 2), ...kotakSepuluh("a", 0, GB))),
-    k(SUARA_A2, ...isiAksi(SUARA_A2, 0, 5, merah, "dulu.")),
-    k(SUARA_A3, ...isiAksi(SUARA_A3, 5, 10, merah, "bawah."), tambah(idx(SUARA_A3, "penuh,"), jumlahG("a", 150, 176, "10", 22))),
-    k(SUARA_A4, sorotkan(idx(SUARA_A4, "Bingkai"), "fra0", "ea-ln"), redamkan(idx(SUARA_A4, "Kita", 2), "fra0")),
     k(
-      SUARA_A5,
-      bersih(0),
-      tambah(0, ...kepala(0), ...kotakSepuluh("a", 0, GB)),
-      tambah(idx(SUARA_A5, "penuh,"), ...Array.from({ length: 5 }, (_, i) => merah(i))),
-      tambah(idx(SUARA_A5, "berisi"), merah(5), merah(6)),
-      tambah(idx(SUARA_A5, "ditambah"), ...kartu("eq", 90, 134, 120, 28, W.emas, ["5 + 2 = 7"], 12)),
+      SUARA_F1,
+      tambah(0, judul("Cara 1: Ten Frame"), lantai("lt", 168)),
+      tambah("Ten", ...bingkaiSepuluh("bf", 100, 70, 20)),
+      tambah("Bingkai", teks("bn", 150, 132, "Bingkai Sepuluh", 12, W.ungu)),
+      tambah("Sepuluh.", teks("s10", 150, 156, "10", 18, W.merah)),
     ),
-    k(SUARA_A6, tambah(idx(SUARA_A6, "kosong."), ...kosong(7)), tambah(idx(SUARA_A6, "butuh"), ...kartu("bt", 90, 168, 120, 28, W.krem, ["7 + 3 = 10"], 12))),
+    k(
+      SUARA_F2,
+      hapus(0, "bn", "s10"),
+      tambah("sepuluh", teks("t10", 252, 94, "10 kotak", 10, W.merah)),
+      ubah("dua", ...[0, 1, 2, 3, 4].map((i) => ({ id: sel("bf", i), warna: "#FEF9C3" }))),
+      tambah("dua", teks("t2", 52, 86, "2 baris", 10, W.ungu)),
+      tambah("lima", teks("t5", 150, 62, "5 kotak", 10, W.ungu)),
+      ubah("lima", ...[0, 1, 2, 3, 4].map((i) => ({ id: sel("bf", i), sorot: true }))),
+    ),
+    k(
+      SUARA_F3,
+      hapus(0, "t10", "t2", "t5"),
+      ubah(0, ...semuaSel("bf").map((id) => ({ id, sorot: false, warna: "#FFFFFF" }))),
+      tambah("Isi", ...Array.from({ length: 5 }, (_, i) => kueEmo(`bk${i}`, ...pusatSel(100, 70, 20, i), 14))),
+      tambah("benda,", ...Array.from({ length: 5 }, (_, i) => kueEmo(`bk${i + 5}`, ...pusatSel(100, 70, 20, i + 5), 14))),
+      tambah("satu", teks("ee", 150, 136, "1 kotak = 1 benda", 11, W.ungu)),
+    ),
+    k(
+      SUARA_F4,
+      hapus(0, "ee"),
+      ubah("penuh", ...semuaSel("bf").map((id) => ({ id, sorot: true, warna: "#DCFCE7" }))),
+      tambah("sepuluh,", teks("pn", 150, 140, "= 10", 20, W.merah)),
+      tambah("tidak", emo("xx", 236, 98, E.salah, 22)),
+      tambah("dihitung", teks("hg", 150, 168, "tidak perlu dihitung lagi", 9.4, W.merah)),
+    ),
   ],
 };
 
-/* ------------------------------ 3. Bingkai Sepuluh: terapan ------------------------------ */
-const Y_B = 56;
-const SUARA_B1 = "Terapkan pada bilangan baru. Ada tiga bingkai sepuluh. Dua bingkai penuh dan satu bingkai berisi tujuh.";
-const SUARA_B2 = "Dua bingkai penuh berarti dua puluh. Dua puluh ditambah tujuh sama dengan dua puluh tujuh.";
-const SUARA_B3 = "Pilih jawabannya. Ada berapa benda semuanya? Ketuk bilangan yang tepat.";
-const SUARA_B4 = "Betul! Ada dua puluh tujuh benda. Dua bingkai penuh dan tujuh lagi. Hebat!";
-const merahKecil = (i: number): Obj => benda("a", i, titikKotak(i, Y_B).x, titikKotak(i, Y_B).y, EMO_MERAH, 15);
+/* ------------------------------ Ten Frame: terapan ------------------------------ */
+const SUARA_T1 = "Dika menaruh donat ke bingkai. Satu bingkai penuh, dan bingkai kedua baru terisi tujuh.";
+const SUARA_T2 = "Sepuluh ditambah tujuh sama dengan tujuh belas donat.";
+const SUARA_T3 = "Cocok kalau bendanya rapi dan jumlahnya tidak terlalu banyak.";
+const SUARA_T4 = "Kurang cocok kalau bendanya ratusan, karena bingkainya terlalu banyak.";
+
+const donat = (id: string, i: number, x: number, y: number) => {
+  const [cx, cy] = pusatSel(x, y, 20, i);
+  return emo(id, cx, cy + 5, E.donat, 14);
+};
 
 export const ADEGAN_LUAR_BINGKAI_TERAPAN: AdeganStory = {
   id: "luar-bingkai-terapan",
-  judul: "Bingkai Sepuluh: dua puluh tujuh benda",
-  sumber: "Metode luar: Bingkai Sepuluh, terapan",
-  latar: "#F0FDF4",
+  judul: "Ten Frame: menghitung donat",
+  sumber: "Metode global: Ten Frame (terapan)",
+  latar: "#FFFBEB",
   ketukan: [
     k(
-      SUARA_B1,
-      tambah("Terapkan", ...kepala(0)),
-      tambah(idx(SUARA_B1, "bingkai", 1), namaG("a", 4, 50, "Benda"), ...[0, 1, 2].flatMap((f) => kotakSepuluh("a", f, letakKotak(f, Y_B)))),
-      tambah(idx(SUARA_B1, "penuh"), ...Array.from({ length: 20 }, (_, i) => merahKecil(i))),
-      tambah(idx(SUARA_B1, "berisi"), ...Array.from({ length: 7 }, (_, i) => merahKecil(20 + i))),
+      SUARA_T1,
+      tambah(0, judul("Menaruh Donat"), lantai("lt", 168), ...bingkaiSepuluh("f1", 20, 60, 20), ...bingkaiSepuluh("f2", 170, 60, 20)),
+      tambah("Dika", ...tokoh("dk", 270, 178, "Dika")),
+      tambah("donat", ...Array.from({ length: 5 }, (_, i) => donat(`d1-${i}`, i, 20, 60))),
+      tambah("bingkai.", ...Array.from({ length: 5 }, (_, i) => donat(`d1-${i + 5}`, i + 5, 20, 60))),
+      tambah("Satu", teks("a1", 70, 122, "1 bingkai penuh", 9.4, W.hijau)),
+      tambah("terisi", ...Array.from({ length: 4 }, (_, i) => donat(`d2-${i}`, i, 170, 60))),
+      tambah("tujuh.", ...Array.from({ length: 3 }, (_, i) => donat(`d2-${i + 4}`, i + 4, 170, 60)), teks("a7", 220, 122, "7 terisi", 9.4, W.merah)),
     ),
-    k(SUARA_B2, tambah(idx(SUARA_B2, "berarti"), angkaKotak("a", 1, "20", Y_B)), tambah(idx(SUARA_B2, "ditambah"), ...kartu("eq", 20, 118, 160, 28, W.emas, ["20 + 7 = 27"], 12))),
-    k(SUARA_B3, tambah(idx(SUARA_B3, "jawabannya."), ...pilihKata(152, ["26", "27", "28"])), sorotkan(idx(SUARA_B3, "Ketuk"), "c2-k")),
-    k(SUARA_B4, tambah(idx(SUARA_B4, "tujuh", 1), jumlahG("a", 240, 140, "27", 20)), tambah(idx(SUARA_B4, "Hebat!"), emo("ow", 262, 100, OWL, 22))),
-  ],
-};
-
-/* ------------------------------ 4. Hitung Sepuluh-Sepuluh: konsep ------------------------------ */
-const Y0_R = 60;
-const DY_R = 28;
-const titikBalon = (n: number) => titikGrid(n, 36, Y0_R, 24, DY_R, 10);
-const angkaBaris = (f: number, isi: string, y0 = Y0_R, dy = DY_R): Obj => teks(`fna${f}`, 276, y0 + f * dy - 4, isi, 11, W.merah);
-const SUARA_C1 = "Metode kedua bernama Hitung Sepuluh-Sepuluh. Kita meloncat sepuluh demi sepuluh, tidak satu per satu.";
-const SUARA_C2 = "Balon disusun dalam baris, sepuluh balon tiap baris. Kita hitung per baris: sepuluh, dua puluh, tiga puluh.";
-const SUARA_C3 = "Baris terakhir belum penuh. Kita lanjutkan satu per satu. Tiga puluh satu, tiga puluh dua, tiga puluh tiga, tiga puluh empat.";
-const SUARA_C4 = "Jadi ada tiga puluh empat balon.";
-const SUARA_C5 = "Meloncat sepuluh membuat hitungan lebih cepat. Cara ini cocok untuk benda yang banyak.";
-
-export const ADEGAN_LUAR_SEPULUH: AdeganStory = {
-  id: "luar-sepuluh",
-  judul: "Hitung Sepuluh-Sepuluh: meloncat per baris",
-  sumber: "Metode luar: Hitung Sepuluh-Sepuluh",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_C1, tambah("kedua", ...kepala(1)), tambah(idx(SUARA_C1, "meloncat"), ...kartu("lc", 40, 100, 220, 32, W.emas, ["10, 20, 30, 40, 50"], 12))),
     k(
-      SUARA_C2,
+      SUARA_T2,
+      tambah("Sepuluh", teks("p10", 50, 158, "10", 20, W.biru)),
+      tambah("ditambah", teks("pp", 90, 158, "+", 20, W.biru)),
+      tambah("tujuh", teks("p7", 126, 158, "7", 20, W.merah)),
+      tambah("sama", teks("ps", 164, 158, "=", 20, W.biru)),
+      tambah("belas", teks("p17", 206, 158, "17", 20, W.hijau)),
+      ubah("donat.", ...[...semuaSel("f1"), ...semuaSel("f2").slice(0, 7)].map((id) => ({ id, warna: "#FEF9C3" }))),
+    ),
+    k(
+      SUARA_T3,
       bersih(0),
-      tambah(0, ...kepala(1)),
-      tambah(idx(SUARA_C2, "disusun"), namaG("a", 4, 52, "Balon"), ...bendaDi("a", EMO_BALON, titikBalon(34), 16)),
-      ...urutNilai(SUARA_C2, [10, 20, 30], "hitung").map((p, q) => tambah(p, angkaBaris(q, String((q + 1) * 10)))),
+      tambah(0, judul("Kapan Cocok?"), ...bingkaiSepuluh("g", 100, 56, 20)),
+      tambah("Cocok", emo("ok", 236, 84, E.benar, 28)),
+      tambah("rapi", ...Array.from({ length: 10 }, (_, i) => donat(`dg${i}`, i, 100, 56))),
+      tambah("jumlahnya", ...kartu("cc", 70, 120, 160, 26, W.hijauMuda, ["rapi dan sedikit"], 10)),
+      ubah("banyak.", { id: "cc-k", sorot: true }),
     ),
     k(
-      SUARA_C3,
-      ...hitungAksi(SUARA_C3, "ea", pusatBenda(titikBalon(34), 16), { dari: 31, awal: 30, setelah: "lanjutkan", naik: 10, u: 10 }),
-      tambah(urutBilangan(SUARA_C3, 34, 34, "lanjutkan")[0], angkaBaris(3, "34")),
+      SUARA_T4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?")),
+      tambah("ratusan,", ...Array.from({ length: 12 }, (_, i) => kotak(`mf${i}`, 20 + (i % 4) * 66, 44 + Math.floor(i / 4) * 32, 56, 24, W.putih, W.biru, { rx: 2, tebal: 1.4 }))),
+      tambah("bingkainya", teks("rb", 150, 152, "ratusan benda = banyak bingkai", 9.4, W.merah)),
+      tambah("banyak.", emo("xs", 150, 182, E.salah, 24)),
     ),
-    k(SUARA_C4, tambah(idx(SUARA_C4, "empat"), jumlahG("a", 160, 186, "34", 18))),
-    k(SUARA_C5, sorotkan(idx(SUARA_C5, "Meloncat"), "fna0", "fna1", "fna2"), tambah(idx(SUARA_C5, "cocok"), emo("ow", 262, 196, OWL, 22))),
-  ],
-};
-
-/* ------------------------------ 5. Hitung Sepuluh-Sepuluh: terapan ------------------------------ */
-const Y0_J = 58;
-const DY_J = 26;
-const titikJeruk = (n: number) => titikGrid(n, 36, Y0_J, 24, DY_J, 10);
-const SUARA_D1 = "Terapkan pada jeruk. Jeruk disusun dalam baris, sepuluh jeruk tiap baris.";
-const SUARA_D2 = "Hitung per baris: sepuluh, dua puluh, tiga puluh, empat puluh. Baris terakhir belum penuh.";
-const SUARA_D3 = "Lanjutkan satu per satu: empat puluh satu, empat puluh dua, empat puluh tiga, empat puluh empat, empat puluh lima, empat puluh enam, empat puluh tujuh.";
-const SUARA_D4 = "Pilih jawabannya. Ada berapa jeruk semuanya? Ketuk bilangan yang tepat.";
-const SUARA_D5 = "Betul! Ada empat puluh tujuh jeruk. Hebat!";
-
-export const ADEGAN_LUAR_SEPULUH_TERAPAN: AdeganStory = {
-  id: "luar-sepuluh-terapan",
-  judul: "Hitung Sepuluh-Sepuluh: empat puluh tujuh jeruk",
-  sumber: "Metode luar: Hitung Sepuluh-Sepuluh, terapan",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_D1, tambah("Terapkan", ...kepala(1)), tambah(idx(SUARA_D1, "disusun"), namaG("a", 4, 54, "Jeruk"), ...bendaDi("a", EMO_JERUK, titikJeruk(47), 16)), tambah(idx(SUARA_D1, "sepuluh"), teks("tb", 150, 190, "10 jeruk tiap baris", 10, W.ungu))),
-    k(SUARA_D2, hapus(0, "tb"), ...urutNilai(SUARA_D2, [10, 20, 30, 40], "baris:").map((p, q) => tambah(p, angkaBaris(q, String((q + 1) * 10), Y0_J, DY_J)))),
-    k(
-      SUARA_D3,
-      ...hitungAksi(SUARA_D3, "ea", pusatBenda(titikJeruk(47), 16), { dari: 41, awal: 40, naik: 10, u: 9 }),
-      tambah(urutBilangan(SUARA_D3, 47, 47)[0], angkaBaris(4, "47", Y0_J, DY_J)),
-    ),
-    k(SUARA_D4, tambah(idx(SUARA_D4, "jawabannya."), ...pilihKata(168, ["46", "47", "48"])), sorotkan(idx(SUARA_D4, "Ketuk"), "c2-k")),
-    k(SUARA_D5, tambah(idx(SUARA_D5, "empat"), jumlahG("a", 250, 166, "47", 20)), tambah(idx(SUARA_D5, "Hebat!"), emo("ok", 262, 140, "✅", 20))),
   ],
 };
