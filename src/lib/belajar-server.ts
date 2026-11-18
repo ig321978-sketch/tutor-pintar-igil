@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
-import type { SupabaseClient } from "@supabase/supabase-js";
+import type { SupabaseClient, User } from "@supabase/supabase-js";
 import { supabaseAuthServer } from "@/lib/supabase-auth";
+import { adalahPeranAdmin, bacaPeranPengguna } from "@/lib/peran";
+import { kodeBabAplikasi, pesanTutup, putuskanAkses } from "@/lib/akses-latihan-ujian";
 
 /**
  * Jembatan Latihan dan Ujian ke Supabase.
@@ -84,6 +86,7 @@ export function pesanGalat(error: { message?: string } | null): string {
 export interface SesiBelajar {
   supabase: SupabaseClient;
   userId: string;
+  user: User;
 }
 
 /** Mengembalikan sesi akun, atau respons siap kirim bila belum bisa dipakai. */
@@ -93,7 +96,7 @@ export async function sesiBelajar(): Promise<SesiBelajar | NextResponse> {
   try {
     const { data, error } = await supabase.auth.getUser();
     if (error || !data.user) return jawab({ status: "belum_masuk" });
-    return { supabase, userId: data.user.id };
+    return { supabase, userId: data.user.id, user: data.user };
   } catch {
     return jawab({ status: "belum_siap" });
   }
@@ -101,4 +104,31 @@ export async function sesiBelajar(): Promise<SesiBelajar | NextResponse> {
 
 export function adalahRespons(nilai: SesiBelajar | NextResponse): nilai is NextResponse {
   return nilai instanceof NextResponse;
+}
+
+/**
+ * Penjaga Latihan dan Ujian di server. ADMIN lolos kapan pun; user yang masuk lolos bila semua Sub-Bab Materi bab itu
+ * tuntas menurut catatan di server (tabel jejak_tahap, bukan perangkat). Mengembalikan respons 403 bila ditutup, null bila boleh.
+ * Batas: catatan Materi dikirim oleh aplikasi siswa sendiri (server tidak melihat isi layar), jadi ini mencegah
+ * melompati tab lewat API dan perangkat lain, bukan pemalsuan catatan yang disengaja.
+ */
+export async function periksaAksesLatihanUjian(
+  sesi: SesiBelajar,
+  anak: string,
+  chapterId: string,
+  tab: "Latihan" | "Ujian",
+): Promise<NextResponse | null> {
+  const admin = adalahPeranAdmin(await bacaPeranPengguna(sesi.supabase, sesi.user));
+  let catatan: unknown = null;
+  if (!admin) {
+    const kode = kodeBabAplikasi(chapterId);
+    if (kode) {
+      const { data, error } = await sesi.supabase.rpc("baca_jejak_tahap", { p_student: anak, p_chapter: kode });
+      if (error && !skemaBelumAda(error)) return jawab({ status: "galat", pesan: pesanGalat(error) }, 422);
+      catatan = error ? null : data;
+    }
+  }
+  const k = putuskanAkses({ admin, masuk: true, chapterId, catatan });
+  if (k.boleh) return null;
+  return jawab({ status: "terkunci", alasan: k.alasan, pesan: pesanTutup(k, tab).isi }, 403);
 }

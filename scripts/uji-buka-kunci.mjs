@@ -29,7 +29,7 @@ cek(/catch\(\(\) => \{\s*admin = false;/.test(h), "gagal membaca peran: kunci te
 cek(/sudahMinta/.test(h) && /pendengar/.test(h), "peran dibaca sekali per muat halaman dan dibagi ke semua pemakai hook");
 const player = baca("src/components/IgilModulePlayer.tsx");
 cek(/useBukaSemuaKunci\(\)/.test(player) && /periksaBebas \? 99 : unlockedSmicpaStage/.test(player), "pemutar modul: semua tahap terbuka di mode periksa");
-cek(/materiSelesai = periksaBebas/.test(player), "pemutar modul: tab Latihan dan Ujian terbuka di mode periksa");
+cek(/bebas: periksaBebas,/.test(player) && /const materiSelesai = kondisiLatihanUjian === "terbuka"/.test(player), "pemutar modul: tab Latihan dan Ujian terbuka di mode periksa");
 const popup = baca("src/components/modul/popup-tahap-smicpa.tsx");
 cek(/useBukaSemuaKunci\(\)/.test(popup) && !/hostname === "localhost"/.test(popup), "kartu tahap memakai aturan bersama (bukan cek localhost sendiri)");
 const prak = baca("src/components/praktikum/PraktikumBlok.tsx");

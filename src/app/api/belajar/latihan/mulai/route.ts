@@ -5,6 +5,7 @@ import {
   bacaBody,
   galatBacaBody,
   jawab,
+  periksaAksesLatihanUjian,
   pesanGalat,
   sesiBelajar,
   skemaBelumAda,
@@ -58,6 +59,8 @@ export async function POST(req: Request) {
 
   const sesi = await sesiBelajar();
   if (adalahRespons(sesi)) return sesi;
+  const terkunci = await periksaAksesLatihanUjian(sesi, anak, bab, "Latihan");
+  if (terkunci) return terkunci;
 
   const { data, error } = await sesi.supabase.rpc("buka_latihan", {
     p_student: anak,

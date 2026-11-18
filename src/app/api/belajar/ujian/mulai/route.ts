@@ -5,6 +5,7 @@ import {
   bacaBody,
   galatBacaBody,
   jawab,
+  periksaAksesLatihanUjian,
   pesanGalat,
   sesiBelajar,
   skemaBelumAda,
@@ -47,6 +48,8 @@ export async function POST(req: Request) {
 
   const sesi = await sesiBelajar();
   if (adalahRespons(sesi)) return sesi;
+  const terkunci = await periksaAksesLatihanUjian(sesi, anak, bab, "Ujian");
+  if (terkunci) return terkunci;
   const { supabase } = sesi;
 
   // Lanjutkan lembar yang masih aktif lebih dulu.

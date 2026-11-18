@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useLayoutEffect, useRef, useCallback, type ComponentType } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef, useCallback, useSyncExternalStore, type ComponentType } from "react";
 import {
   bukaLembarLatihan,
   kirimJawabanLatihan,
@@ -172,6 +172,8 @@ import {
   SIMULASI_BAB,
   SIMULASI_MATERI,
   SIMULASI_MISI_AWAL,
+import { kondisiTab } from "@/lib/akses-latihan-ujian";
+import { KartuTerkunciLatihanUjian } from "@/components/modul/KartuTerkunciLatihanUjian";
   TAHAP_SIMULASI,
 } from "@/components/modul/registri-simulasi";
 import { useBukaSemuaKunci } from "@/lib/buka-semua-kunci";
@@ -1107,7 +1109,22 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   // Mulai dari Story saja; isi tahap hanya dipasang di pop-up saat dibuka (hemat memori + layar desktop).
   const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(1); // 1=Story .. 6=Abstract
   // Hanya saat `next dev`. Di produksi nilai ini hilang, jadi siswa tetap melewati tahap satu per satu.
-  const periksaBebas = useBukaSemuaKunci();
+  const bebasPemilik = useBukaSemuaKunci();
+  // Hanya untuk pemeriksaan di localhost: tambahkan ?akses=asli pada alamat (atau sessionStorage igil_akses_asli=1) agar aturan akses siswa berlaku walau di localhost.
+  const aksesAsliLokal = useSyncExternalStore(
+    () => () => {},
+    () => {
+      if (!["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname)) return false;
+      if (new URLSearchParams(window.location.search).get("akses") === "asli") return true;
+      try {
+        return window.sessionStorage.getItem("igil_akses_asli") === "1";
+      } catch {
+        return false;
+      }
+    },
+    () => false,
+  );
+  const periksaBebas = bebasPemilik && !aksesAsliLokal;
   const tahapTerbuka = periksaBebas ? 99 : unlockedSmicpaStage;
   const [popupTahap, setPopupTahap] = useState<number | null>(null);
   const jejakRef = useRef<JejakBab>({ subSelesai: [], tahap: { A: 1 }, subAktif: "A", tab: "silabus" });
@@ -1187,7 +1204,15 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
     const id = profilBelajar.aktif.id;
     const sidik = JSON.stringify(lokal);
     void ambilJejakServer(id, bab).then((jauh) => {
-      if (batal || !jauh) return;
+      if (batal) return;
+      if (!jauh) {
+        // Belum ada catatan di server: kirim catatan perangkat bila sudah ada Sub-Bab tuntas (server membaca ketuntasan dari sini).
+        if (jejakRef.current.subSelesai.length > 0) void kirimJejakServer(id, bab, jejakRef.current);
+        return;
+      }
+      if (jejakRef.current.subSelesai.some((h) => !jauh.subSelesai.includes(h))) {
+        void kirimJejakServer(id, bab, gabungJejak(jejakRef.current, jauh));
+      }
       const siswaSudahBergerak = JSON.stringify(jejakRef.current) !== sidik;
       const gabung = gabungJejak(jejakRef.current, jauh);
       jejakRef.current = gabung;
@@ -1519,8 +1544,15 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const examTokens = examScore === 100 ? poin.exam : 0;
   const batasToken =
     poin.practice + poin.exam;
-  // Bab 2: Latihan dan Ujian baru terbuka setelah semua sub-bab materi selesai.
-  const materiSelesai = periksaBebas || !adaBab2 || daftarSubTersedia.every((id) => completedSubBabs.includes(id));
+  // Pilot: Latihan dan Ujian hanya untuk ADMIN, atau user yang sudah masuk dan menuntaskan semua Sub-Bab Materi.
+  // Server menegakkan aturan yang sama (src/lib/akses-latihan-ujian.ts); ini hanya tampilannya.
+  const jumlahSubTuntas = daftarSubTersedia.filter((id) => completedSubBabs.includes(id)).length;
+  const kondisiLatihanUjian = kondisiTab({
+    bebas: periksaBebas,
+    status: profilBelajar.status,
+    materiTuntas: jumlahSubTuntas === daftarSubTersedia.length,
+  });
+  const materiSelesai = kondisiLatihanUjian === "terbuka";
 
   // ============================================================================
   // SUARA GURU IGIL — audio statis yang dibuat sekali saat penulisan (public/audio-guru),
@@ -5456,27 +5488,18 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
       {/* =================================================================== */}
       {/* 4. HALAMAN LATIHAN (10 SOAL • LOTS 30%, MOTS 30%, HOTS 40%)         */}
       {/* =================================================================== */}
-      {(activeMainTab === "latihan" || activeMainTab === "ujian") && !materiSelesai && (
-        <section className="mx-auto mt-4 w-[98%] space-y-4 rounded-3xl border-4 border-dashed border-[#FFE566] bg-[#FFFDF2] p-8 text-center">
-          <div className="igil-lompat text-6xl" aria-hidden="true">🔒</div>
-          <h2 className="text-xl font-black text-[#1C01A5] md:text-2xl">
-            {activeMainTab === "latihan" ? "Latihan" : "Ujian"} terbuka setelah semua materi selesai
-          </h2>
-          <p className="mx-auto max-w-xl text-base leading-relaxed text-[#334155] md:text-lg">
-            Selesaikan {daftarSubTersedia.length} sub-bab di tab Materi dulu, ya. Bintangmu sekarang{" "}
-            {daftarSubTersedia.filter((id) => completedSubBabs.includes(id)).length} dari {daftarSubTersedia.length}.
-          </p>
-          <button
-            type="button"
-            onClick={() => {
-              pindahTab("materi");
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-3 text-sm font-black text-[#FFE566] md:text-base"
-          >
-            KE MATERI ➡️
-          </button>
-        </section>
+      {(activeMainTab === "latihan" || activeMainTab === "ujian") && kondisiLatihanUjian !== "terbuka" && (
+        <KartuTerkunciLatihanUjian
+          tab={activeMainTab === "latihan" ? "Latihan" : "Ujian"}
+          kondisi={kondisiLatihanUjian}
+          bab={bab}
+          selesai={jumlahSubTuntas}
+          total={daftarSubTersedia.length}
+          onKeMateri={() => {
+            pindahTab("materi");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        />
       )}
 
       {(activeMainTab === "latihan" || activeMainTab === "ujian") && materiSelesai && !soalSiap && (
