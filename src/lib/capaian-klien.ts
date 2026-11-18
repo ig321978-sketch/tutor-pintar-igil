@@ -9,6 +9,7 @@ import {
   catatUjian,
   urai,
   type GudangCapaian,
+  type LevelSoal,
 } from "./capaian";
 
 /**
@@ -42,10 +43,11 @@ function ubah(fungsi: (g: GudangCapaian) => GudangCapaian): void {
 export const catatSubBabSelesai = (bab: string, huruf: string): void => ubah((g) => catatSubBab(g, bab, huruf));
 
 /** Dipanggil saat server menilai satu jawaban Latihan. */
-export const catatLatihanDinilai = (bab: string, idSoal: string, benar: boolean): void => ubah((g) => catatJawabanLatihan(g, bab, idSoal, benar));
+export const catatLatihanDinilai = (bab: string, idSoal: string, benar: boolean, opsi: { level?: LevelSoal; detik?: number } = {}): void =>
+  ubah((g) => catatJawabanLatihan(g, bab, idSoal, benar, new Date(), opsi));
 
 /** Dipanggil saat server mengembalikan nilai akhir Ujian. */
-export const catatUjianDinilai = (bab: string, nilai: number): void => ubah((g) => catatUjian(g, bab, nilai));
+export const catatUjianDinilai = (bab: string, nilai: number, detik?: number): void => ubah((g) => catatUjian(g, bab, nilai, new Date(), detik));
 
 function langgan(panggil: () => void): () => void {
   window.addEventListener("storage", panggil);

@@ -32,6 +32,7 @@ import {
   useProfilSiswa,
 } from "./umum";
 import { SertifikatDigital, kodeVerifikasi, type PenerimaSertifikat } from "./SertifikatDigital";
+import RaporPerkembangan from "./RaporPerkembangan";
 
 const rapor = data.raporPage;
 
@@ -552,6 +553,8 @@ export default function RaporHalaman() {
             <div className="h-56 animate-pulse rounded-3xl bg-indigo-50" />
             <div className="h-32 animate-pulse rounded-3xl bg-indigo-50" />
           </div>
+        ) : tab === "rapor-perkembangan" && hariIni ? (
+          <RaporPerkembangan profil={profil} capaian={capaian ?? {}} tuntas={tuntas} hariIni={hariIni} />
         ) : tab === "rapor-ketuntasan" ? (
           <div className="space-y-4">
             <KartuDompet profil={profil} poin={poin} />

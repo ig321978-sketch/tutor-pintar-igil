@@ -39,6 +39,11 @@
     },
     "subTabs": [
       {
+        "id": "rapor-perkembangan",
+        "label": "📈 Rapor Perkembangan",
+        "description": "Bukti perkembangan Ilmu & Logika anak: peta ketuntasan dan jejak SMISCPA, telemetri Latihan dan Ujian, diagnosis, parameter Praktikum, dan misi bulan depan. Siap dicetak PDF."
+      },
+      {
         "id": "rapor-ketuntasan",
         "label": "📋 Rapor Ketuntasan & Poin",
         "description": "Rekap capaian per bab (Materi SMISCPA, Latihan 30 Poin Kualifikasi, Ujian 70 Poin Kualifikasi), Praktikum 50 Poin Kualifikasi per blok 4 bab, dan status kandidat Papan Kualifikasi Beasiswa."

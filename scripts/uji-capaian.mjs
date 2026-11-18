@@ -17,6 +17,8 @@ const cek = (ok, pesan) => {
 const sama = (a, b, pesan) => cek(JSON.stringify(a) === JSON.stringify(b), `${pesan}: ${JSON.stringify(a)} != ${JSON.stringify(b)}`);
 
 const BAB = "mtk-1-bab1";
+/** Ujian tanpa riwayat percobaan (riwayat diuji tersendiri di bawah). */
+const inti = ({ terbaik, percobaan, lulusPertama }) => ({ terbaik, percobaan, lulusPertama });
 const T = (s) => new Date(s);
 const NOV = T("2026-11-16T10:00:00+07:00");
 const DES = T("2026-12-02T10:00:00+07:00");
@@ -52,15 +54,15 @@ cek(l10b === l10, "poin Latihan tidak terbit dua kali");
 /* ------------------------------ Ujian ------------------------------ */
 let u = {};
 u = C.catatUjian(u, BAB, 80, NOV);
-sama([u[BAB].ujian, u[BAB].poin.ujian], [{ terbaik: 80, percobaan: 1, lulusPertama: false }, undefined], "ujian 80: belum ada poin");
+sama([inti(u[BAB].ujian), u[BAB].poin.ujian], [{ terbaik: 80, percobaan: 1, lulusPertama: false }, undefined], "ujian 80: belum ada poin");
 u = C.catatUjian(u, BAB, 100, NOV);
-sama(u[BAB].ujian, { terbaik: 100, percobaan: 2, lulusPertama: false }, "100 di percobaan kedua: bukan lulus pertama");
+sama(inti(u[BAB].ujian), { terbaik: 100, percobaan: 2, lulusPertama: false }, "100 di percobaan kedua: bukan lulus pertama");
 sama(u[BAB].poin.ujian, "2026-11", "ujian 100: poin Ujian terbit");
 u = C.catatUjian(u, BAB, 60, DES);
-sama(u[BAB].ujian, { terbaik: 100, percobaan: 3, lulusPertama: false }, "nilai lebih rendah tidak menurunkan skor terbaik");
+sama(inti(u[BAB].ujian), { terbaik: 100, percobaan: 3, lulusPertama: false }, "nilai lebih rendah tidak menurunkan skor terbaik");
 sama(u[BAB].poin.ujian, "2026-11", "poin Ujian tidak terbit ulang");
 const p1 = C.catatUjian({}, BAB, 100, NOV);
-sama(p1[BAB].ujian, { terbaik: 100, percobaan: 1, lulusPertama: true }, "100 di percobaan pertama: lulus pertama");
+sama(inti(p1[BAB].ujian), { terbaik: 100, percobaan: 1, lulusPertama: true }, "100 di percobaan pertama: lulus pertama");
 cek(C.catatUjian({}, BAB, 101, NOV) !== undefined && Object.keys(C.catatUjian({}, BAB, 101, NOV)).length === 0, "nilai di luar 0..100 ditolak");
 cek(Object.keys(C.catatUjian({}, BAB, Number.NaN, NOV)).length === 0, "nilai bukan angka ditolak");
 
@@ -137,9 +139,9 @@ cek(/useSyncExternalStore\(langgan, \(\) => bacaMentah\(\) \|\| "\{\}", \(\) => 
 /* ------------------------------ Terpasang di modul ------------------------------ */
 const player = readFileSync(new URL("../src/components/IgilModulePlayer.tsx", import.meta.url), "utf8");
 cek(/catatSubBabSelesai\(bab, activeSubBab\)/.test(player), "pemutar mencatat Sub-Bab selesai");
-cek(/catatLatihanDinilai\(bab, kunci, balasan\.hasil\.benar\)/.test(player), "pemutar mencatat Latihan hanya dari jawaban yang dinilai server");
+cek(/catatLatihanDinilai\(bab, kunci, balasan\.hasil\.benar[,)]/.test(player), "pemutar mencatat Latihan hanya dari jawaban yang dinilai server");
 const belajar = readFileSync(new URL("../src/components/modul/BelajarServer.tsx", import.meta.url), "utf8");
-cek(/catatUjianDinilai\(bab, res\.nilai\)/.test(belajar), "UjianServer mencatat nilai dari server");
+cek(/catatUjianDinilai\(bab, res\.nilai[,)]/.test(belajar), "UjianServer mencatat nilai dari server");
 
 /* ------------------------------ Halaman Rapor memakai data nyata ------------------------------ */
 const raporSrc = readFileSync(new URL("../src/components/rapor/RaporHalaman.tsx", import.meta.url), "utf8");
@@ -149,6 +151,24 @@ cek(/sertifikatTerbuka\(/.test(raporSrc) && /kodeAplikasiDariServer/.test(raporS
 cek(!/rupiah|Rp|kurs/i.test(raporSrc.replace(/biaya server Rp 0/gi, "")), "Rapor tanpa rupiah atau kurs poin");
 cek(/Bukan uang tunai/.test(raporSrc) && /di-reset ke 0 setiap akhir bulan/.test(raporSrc), "Rapor menyebut poin bukan uang tunai dan reset bulanan");
 cek(!/getUserMedia|kamera aktif|face/i.test(raporSrc), "Rapor tanpa kamera atau deteksi wajah");
+
+/* ------------------------------ Riwayat Ujian, stopwatch, level Latihan ------------------------------ */
+{
+  let r = C.catatUjian({}, BAB, 60, NOV, 540);
+  r = C.catatUjian(r, BAB, 100, DES, 3);
+  sama(r[BAB].ujian.riwayat.map((x) => [x.nilai, x.detik]), [[60, 540], [100, 3]], "riwayat Ujian mencatat nilai dan lama mengerjakan");
+  sama(C.catatUjian({}, BAB, 90, NOV, -5)[BAB].ujian.riwayat[0].detik, undefined, "lama mengerjakan tidak masuk akal dibuang");
+  let banyak = {};
+  for (let i = 0; i < C.RIWAYAT_UJIAN_MAKS + 5; i++) banyak = C.catatUjian(banyak, BAB, 50, NOV, 100);
+  sama(banyak[BAB].ujian.riwayat.length, C.RIWAYAT_UJIAN_MAKS, "riwayat dibatasi");
+  sama(banyak[BAB].ujian.percobaan, C.RIWAYAT_UJIAN_MAKS + 5, "jumlah percobaan tetap dihitung semua");
+  const l = C.catatJawabanLatihan({}, BAB, "s1", false, NOV, { level: "HOTS", detik: 42 });
+  sama(l[BAB].latihan[0], { id: "s1", benar: false, level: "HOTS", detik: 42 }, "Latihan mencatat level dan lama menjawab");
+  const baca = C.urai(JSON.stringify({ [BAB]: { ...r[BAB], latihan: [{ id: "a", benar: true, level: "XX", detik: "lama" }], ujian: { ...r[BAB].ujian, riwayat: [{ nilai: 500, waktu: "x" }, { nilai: 70, waktu: "y", detik: 30 }] } } }));
+  sama(baca[BAB].latihan[0], { id: "a", benar: true }, "level dan detik rusak dibuang saat dibaca");
+  sama(baca[BAB].ujian.riwayat, [{ nilai: 70, waktu: "y", detik: 30 }], "riwayat rusak dibuang saat dibaca");
+  sama(C.urai(JSON.stringify({ [BAB]: { ujian: { terbaik: 80, percobaan: 1 } } }))[BAB].ujian.riwayat, undefined, "catatan lama tanpa riwayat tetap terbaca");
+}
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

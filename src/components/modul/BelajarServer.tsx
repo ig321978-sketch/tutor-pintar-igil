@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { catatUjianLulus } from "@/lib/praktikum-blok";
 import { catatUjianDinilai } from "@/lib/capaian-klien";
 import { useBukaSemuaKunci } from "@/lib/buka-semua-kunci";
@@ -439,6 +439,9 @@ export function UjianServer({
     };
   }, [idAnak, chapterId]);
 
+  /** Stopwatch Ujian untuk Rapor Perkembangan (hanya di perangkat; nilai tetap dari server). */
+  const mulaiUjianRef = useRef<number>(0);
+
   const mulai = useCallback(async () => {
     if (!idAnak) return;
     setFase("memuat");
@@ -461,6 +464,7 @@ export function UjianServer({
       setIndeks(0);
       setNilai(null);
       setFase("berjalan");
+      mulaiUjianRef.current = Date.now();
       return;
     }
     setFase("awal");
@@ -489,7 +493,8 @@ export function UjianServer({
       setNilai(res.nilai);
       setFase("selesai");
       onNilai(res.nilai);
-      catatUjianDinilai(bab, res.nilai); // capaian di perangkat untuk halaman Rapor
+      const detik = mulaiUjianRef.current ? (Date.now() - mulaiUjianRef.current) / 1000 : undefined;
+      catatUjianDinilai(bab, res.nilai, detik); // capaian di perangkat untuk halaman Rapor
       if (res.nilai === 100) catatUjianLulus(bab);
       void muatStatus();
       return;

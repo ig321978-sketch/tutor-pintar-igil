@@ -101,7 +101,7 @@ export function SubTabBar({
   onPilih: (id: string) => void;
 }) {
   return (
-    <div role="tablist" className="grid gap-2 sm:grid-cols-2">
+    <div role="tablist" className={`grid gap-2 ${tabs.length > 2 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
       {tabs.map((tab) => {
         const menyala = tab.id === aktif;
         return (

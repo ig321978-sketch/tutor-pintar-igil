@@ -370,6 +370,12 @@ import { SUARA_SERAGAM } from "@/lib/suara-guru-seragam";
 // ============================================================================
 
 type MainTabId = "silabus" | "materi" | "simulasi" | "latihan" | "ujian";
+
+/** "HOTS (40%)" menjadi "HOTS" untuk catatan Rapor. */
+function levelSoal(level: string): "LOTS" | "MOTS" | "HOTS" | undefined {
+  const m = /^(LOTS|MOTS|HOTS)/.exec(level);
+  return m ? (m[1] as "LOTS" | "MOTS" | "HOTS") : undefined;
+}
 /** Kode sub-bab: "A" sampai "I" (Kelas 3 sampai 6 punya sampai sembilan sub-bab). */
 type SubBabId = string;
 type SmicpaStageId = "story" | "mindmap" | "infografis" | "concrete" | "pictorial" | "abstract";
@@ -1510,6 +1516,12 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const pakaiBank = bankAcak && akunSiap;
   const tungguLembar = (bankAcak && profilBelajar.status === "memuat") || (pakaiBank && memuatLembar);
   const soalLatihan: QuestionItem[] = pakaiBank && lembarLatihan ? lembarLatihan : PRACTICE_QUESTIONS;
+
+  /** Stopwatch Latihan untuk Rapor Perkembangan: waktu soal yang sedang tampil mulai terlihat. */
+  const soalTampilSejakRef = useRef<number>(0);
+  useEffect(() => {
+    if (activeMainTab === "latihan") soalTampilSejakRef.current = Date.now();
+  }, [activeMainTab, practiceIdx, lembarLatihan]);
 
   useEffect(() => {
     if (!pakaiBank || activeMainTab !== "latihan") return;
@@ -5948,7 +5960,10 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               if (balasan.jenis === "ok") {
                 setPracticeAnswers((prev) => ({ ...prev, [kunci]: opt }));
                 setHasilLatihan((prev) => ({ ...prev, [kunci]: balasan.hasil }));
-                catatLatihanDinilai(bab, kunci, balasan.hasil.benar); // hanya jawaban yang dinilai server
+                catatLatihanDinilai(bab, kunci, balasan.hasil.benar, {
+                  level: levelSoal(q.level),
+                  detik: soalTampilSejakRef.current ? (Date.now() - soalTampilSejakRef.current) / 1000 : undefined,
+                }); // hanya jawaban yang dinilai server
               } else if (balasan.jenis === "belum_siap") {
                 setPracticeAnswers((prev) => ({ ...prev, [kunci]: opt }));
               } else {
