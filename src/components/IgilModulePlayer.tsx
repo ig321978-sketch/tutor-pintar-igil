@@ -164,6 +164,7 @@ import {
   SIMULASI_MISI_AWAL,
   TAHAP_SIMULASI,
 } from "@/components/modul/registri-simulasi";
+import SimulasiGabungan from "@/components/modul/SimulasiGabungan";
 import { useBukaSemuaKunci } from "@/lib/buka-semua-kunci";
 import { kondisiTab } from "@/lib/akses-latihan-ujian";
 import { KartuTerkunciLatihanUjian } from "@/components/modul/KartuTerkunciLatihanUjian";
@@ -1083,9 +1084,12 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const adaK2B8 = bab === "mtk-2-bab8";
   /** Bab bergaya baru (Bab 2 sampai Bab 8): Latihan terbuka setelah materi tersedia selesai. */
   const adaBab2 = bab === "mtk-1-bab2" || adaBab3 || adaBab4 || adaBab5 || adaBab6 || adaBab7 || adaBab8 || adaK2B1 || adaK2B2 || adaK2B3 || adaK2B4 || adaK2B5 || adaK2B6 || adaK2B7 || adaK2B8 || paket !== undefined;
-  /** Tab Simulasi tampil hanya di bab yang sudah punya simulasi (lihat SIMULASI_BAB). */
+  /**
+   * Tab Simulasi tampil di bab yang punya simulasi: komponen bab lama (SIMULASI_BAB) atau
+   * gabungan semua simulasi per Sub-Bab (SIMULASI_MATERI, lihat SimulasiGabungan).
+   */
   const SimulasiBab = SIMULASI_BAB[bab];
-  const adaTabSimulasi = SimulasiBab !== undefined;
+  const adaTabSimulasi = SimulasiBab !== undefined || SIMULASI_MATERI[bab] !== undefined;
   /** Bab pilot SMISCPA: tahap Simulasi ada di dalam Materi (tahap 4), dan tab Simulasi tidak ada. */
   const SimulasiMateri = SIMULASI_MATERI[bab];
   const adaSimMateri = SimulasiMateri !== undefined;
@@ -5878,6 +5882,32 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           speakGuru={speakGuru}
           onKeLatihan={() => {
             pindahTab("latihan");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        />
+      )}
+      {activeMainTab === "simulasi" && !SimulasiBab && SimulasiMateri && (
+        <SimulasiGabungan
+          key={bab}
+          Simulasi={SimulasiMateri}
+          subs={daftarSubTersedia.map((id) => ({
+            id,
+            judul: SUB_BABS[id].fullTitle.split(": ").slice(1).join(": ") || SUB_BABS[id].fullTitle,
+            // Terbuka setelah siswa sampai tahap Simulasi di Materi Sub-Bab itu (atau Sub-Bab sudah selesai).
+            terbuka:
+              bebasPemilik ||
+              completedSubBabs.includes(id) ||
+              (id === activeSubBab && unlockedSmicpaStage >= TAHAP_SIMULASI),
+          }))}
+          speakGuru={speakGuru}
+          misiAwal={SIMULASI_MISI_AWAL[bab]}
+          onKeLatihan={() => {
+            pindahTab("latihan");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          onKeMateri={(sub) => {
+            setActiveSubBab(sub as SubBabId);
+            pindahTab("materi");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         />

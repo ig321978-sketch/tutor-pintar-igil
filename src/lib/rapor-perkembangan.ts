@@ -14,12 +14,22 @@
 import type { CapaianBab, GudangCapaian, LevelSoal, PercobaanUjian } from "./capaian";
 import type { JejakBab } from "./jejak-tahap";
 
-/** Urutan tahap Materi. Nomor tahap di jejak: 1 = Story ... 7 = Abstract. */
+/** Urutan 7 tahap Materi untuk tampilan rapor: 1 = Story ... 7 = Abstract. */
 export const NAMA_TAHAP = ["Story", "Mind-map", "Infografis", "Simulasi", "Concrete", "Pictorial", "Abstract"] as const;
 export const JUMLAH_TAHAP = NAMA_TAHAP.length;
 export const NOMOR_TAHAP_SIMULASI = 4;
 /** Banyak soal satu lembar Ujian (diundi server). */
 export const JUMLAH_SOAL_UJIAN = 10;
+
+/**
+ * Nomor di jejak tahap (src/lib/jejak-tahap.ts) BERBEDA dengan urutan tampilan: Simulasi (3,5 di pemutar)
+ * tidak punya nomor sendiri. Jejak: 1 Story, 2 Mind-map, 3 Infografis (Simulasi menyusul), 4 Concrete,
+ * 5 Pictorial, 6 Abstract, 7 Sub-Bab selesai. Concrete baru terbuka setelah Simulasi selesai.
+ */
+export function tahapDariJejak(nomorJejak: number): number {
+  const n = Math.min(7, Math.max(1, Math.round(nomorJejak)));
+  return n <= 3 ? n : Math.min(JUMLAH_TAHAP, n + 1);
+}
 
 export const namaTahap = (nomor: number): string => NAMA_TAHAP[Math.min(JUMLAH_TAHAP, Math.max(1, nomor)) - 1];
 
@@ -44,9 +54,10 @@ export function statusBab(c: CapaianBab | undefined, jejak: JejakBab | undefined
 
 export type JejakSubBab = {
   huruf: string;
-  /** Tahap tertinggi yang sudah terbuka (1 sampai 7). */
+  /** Tahap tertinggi yang sudah terbuka, dalam urutan tampilan 7 tahap (1 Story sampai 7 Abstract). */
   tahapTerbuka: number;
   selesai: boolean;
+  /** Simulasi sudah dijelajahi: Concrete terbuka, dan Concrete hanya terbuka setelah Simulasi selesai. */
   simulasiDibuka: boolean;
 };
 
@@ -59,8 +70,8 @@ export function jejakSmiscpa(c: CapaianBab | undefined, jejak: JejakBab | undefi
     .sort()
     .map((h) => {
       const selesai = Boolean(c?.subBab.includes(h) || jejak?.subSelesai.includes(h));
-      const tahapTerbuka = selesai ? JUMLAH_TAHAP : Math.min(JUMLAH_TAHAP, Math.max(1, jejak?.tahap[h] ?? 1));
-      return { huruf: h, tahapTerbuka, selesai, simulasiDibuka: tahapTerbuka >= NOMOR_TAHAP_SIMULASI };
+      const tahapTerbuka = selesai ? JUMLAH_TAHAP : tahapDariJejak(jejak?.tahap[h] ?? 1);
+      return { huruf: h, tahapTerbuka, selesai, simulasiDibuka: tahapTerbuka > NOMOR_TAHAP_SIMULASI };
     });
 }
 

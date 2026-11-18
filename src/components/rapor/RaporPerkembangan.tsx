@@ -344,7 +344,7 @@ export default function RaporPerkembangan({
               </div>
             ))}
             <p className="text-[11px] font-semibold text-slate-500">
-              Urutan tahap: {NAMA_TAHAP.join(" → ")}. Hijau = tuntas, kuning = sedang dikerjakan. 🎛️ = alat peraga Simulasi sudah dibuka.
+              Urutan tahap: {NAMA_TAHAP.join(" → ")}. Hijau = tuntas, kuning = sedang dikerjakan. 🎛️ = alat peraga Simulasi sudah dijelajahi.
             </p>
           </div>
         ) : null}

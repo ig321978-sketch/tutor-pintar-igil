@@ -28,8 +28,12 @@ sama(R.statusBab(g[BAB], undefined, true), "lulus", "lulus menang");
 
 /* Jejak SMISCPA */
 const sub = R.jejakSmiscpa({ ...C.babKosong(), subBab: ["A"] }, jejak({ A: 2, B: 5 }), 3);
-sama(sub.map((s) => [s.huruf, s.tahapTerbuka, s.selesai, s.simulasiDibuka]), [["A", 7, true, true], ["B", 5, false, true], ["C", 1, false, false]], "jejak per Sub-Bab");
-sama(R.persenEksplorasi(sub), Math.round(((7 + 4 + 0) / 21) * 100), "persen eksplorasi");
+// Jejak B:5 = Pictorial (jejak tidak punya nomor Simulasi), jadi tahap tampilan 6.
+sama(sub.map((s) => [s.huruf, s.tahapTerbuka, s.selesai, s.simulasiDibuka]), [["A", 7, true, true], ["B", 6, false, true], ["C", 1, false, false]], "jejak per Sub-Bab");
+sama(R.persenEksplorasi(sub), Math.round(((7 + 5 + 0) / 21) * 100), "persen eksplorasi");
+sama([1, 2, 3, 4, 5, 6, 7].map(R.tahapDariJejak), [1, 2, 3, 5, 6, 7, 7], "nomor jejak ke urutan tampilan (Simulasi 3,5 tidak tercatat)");
+sama(R.jejakSmiscpa(undefined, jejak({ A: 3 }), 1)[0].simulasiDibuka, false, "Infografis saja: Simulasi belum pasti dijelajahi");
+sama(R.jejakSmiscpa(undefined, jejak({ A: 4 }), 1).map((s) => [R.namaTahap(s.tahapTerbuka), s.simulasiDibuka]), [["Concrete", true]], "Concrete terbuka: Simulasi sudah dijelajahi");
 sama(R.namaTahap(5), "Concrete", "tahap 5 = Concrete");
 
 /* Telemetri */
@@ -46,7 +50,7 @@ sama(R.telemetriBab(undefined).riwayat, [], "bab kosong tanpa riwayat");
 
 /* Diagnosis */
 const d = R.diagnosisBab(g[BAB], sub, false);
-sama(d.map((x) => [x.subBab, x.tahap]), [["B", 5], ["C", 1], [null, 7]], "diagnosis: Sub-Bab belum tuntas lalu level paling banyak salah");
+sama(d.map((x) => [x.subBab, x.tahap]), [["B", 6], ["C", 1], [null, 7]], "diagnosis: Sub-Bab belum tuntas lalu level paling banyak salah");
 cek(d.every((x) => !/soal nomor|kunci|jawaban benar/i.test(x.alasan)), "diagnosis tidak menyebut nomor soal atau kunci");
 sama(R.diagnosisBab(g[BAB], sub, true), [], "bab lulus tanpa diagnosis");
 const semuaSelesai = R.jejakSmiscpa({ ...C.babKosong(), subBab: ["A", "B"] }, undefined, 2);
