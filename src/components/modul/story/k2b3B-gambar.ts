@@ -1,15 +1,14 @@
 import type { Obj } from "./logika-story";
 
 /**
- * Gambar khusus Story Kelas 2 Bab 3 Sub-Bab B (mengurai dan menyusun bangun datar):
- * bangun datar sebagai jalur tertutup (titik sudut ditulis mutlak), garis pembagi, penanda sisi bernomor, angka keping, dan kepingan tangram.
- * Berkas ini TIDAK dipakai bab lain.
+ * Gambar khusus Story Kelas 2 Bab 3 Sub-Bab B "Papan Puzzle yang Berantakan" (mengurai dan menyusun bangun datar), tengah cerita Taman Bermain Sekolah.
+ * Bangun datar sebagai jalur tertutup (titik sudut ditulis mutlak), garis pembagi, penanda sisi bernomor, angka keping, dan tujuh keping tangram.
+ * Rupa taman: rumput, pagar taman berpita, papan puzzle raksasa, kuas dan palet Bu Ratna, papan aturan, poster tua, blok kayu, serta tokoh Chacha, Dika, Nia, Bu Sari, dan Bu Ratna.
  *
  * Kesepakatan id (dipakai uji hitung ulang):
  * - Bangun utuh `ut` (atau `ht` bila hasil susunan, tanpa isi). Keping `kp{i}`; angka keping `kn{i}`. Garis pembagi `ug{i}`.
- * - Nama bangun di dekat benda: `${id}-nm` (isi nama: segitiga, segi empat, persegi, segi lima, segi enam, ...).
- * - Penanda sisi bangun `${id}`: garis `${id}s{i}` dan angka `${id}sn{i}` (satu penanda per sisi).
- * - Hasil hitung dalam kalimat: `hs` ("2 segitiga + 2 segi empat"). Tabel pola: `tb-r{r}c{c}`.
+ * - Nama bangun di dekat benda: `${id}-nm`. Penanda sisi bangun `${id}`: garis `${id}s{i}` dan angka `${id}sn{i}`.
+ * - Hasil hitung dalam kalimat: `hs`. Tokoh: wajah `${id}`, nama `${id}-n`.
  */
 
 export const W = {
@@ -144,3 +143,91 @@ export const tangram = (ox: number, oy: number): { id: string; jenis: string; pt
     { id: "kp6", jenis: "segitiga", pts: [t(4, 2), t(4, 0), t(3, 1)] },
   ];
 };
+
+/* ------------------------------ Rupa taman bermain, tokoh, dan benda ------------------------------ */
+
+export const E = {
+  chacha: "\u{1F467}",
+  dika: "\u{1F913}",
+  nia: "\u{1F467}",
+  topi: "\u{1F9E2}",
+  bu: "\u{1F469}",
+  kuas: "\u{1F58C}\u{FE0F}",
+  palet: "\u{1F3A8}",
+  angin: "\u{1F4A8}",
+  kalender: "\u{1F4C5}",
+  pikir: "\u{1F914}",
+  senyum: "\u{1F60A}",
+  tertawa: "\u{1F604}",
+  kaget: "\u{1F632}",
+  sedih: "\u{1F622}",
+  tanya: "\u{2753}",
+  lampu: "\u{1F4A1}",
+  benar: "\u{2705}",
+  salah: "\u{274C}",
+  lambai: "\u{1F44B}",
+  gunting: "\u{2702}",
+  pohon: "\u{1F333}",
+  bunga: "\u{1F33C}",
+  matahari: "\u{2600}\u{FE0F}",
+  gudang: "\u{1F3DA}\u{FE0F}",
+  kucing: "\u{1F431}",
+  rumah: "\u{1F3E0}",
+  lukisan: "\u{1F5BC}\u{FE0F}",
+  poster: "\u{1F4DC}",
+  kayu: "\u{1F9F1}",
+} as const;
+
+export type NamaTokoh = "Chacha" | "Dika" | "Nia" | "Bu Sari" | "Bu Ratna";
+
+/**
+ * Tokoh berdiri: wajah `${id}`, nama `${id}-n`. Nia bertopi `${id}-tp`; Bu Sari bertopi proyek kuning `${id}-tp`;
+ * Bu Ratna berkerudung merah muda `${id}-kd` dan membawa kuas `${id}-ks`.
+ */
+export function tokoh(id: string, x: number, y: number, nama: NamaTokoh, u = 30): Obj[] {
+  const wajah = nama === "Chacha" ? E.chacha : nama === "Dika" ? E.dika : nama === "Nia" ? E.nia : E.bu;
+  const out: Obj[] = [];
+  if (nama === "Bu Ratna") out.push(bulat(`${id}-kd`, x, r1(y - u * 0.28), r1(u * 0.62), "#F9A8D4", W.ungu, { z: 0, tebal: 1.2 }));
+  out.push(emo(id, x, y, wajah, u, { z: 1 }));
+  if (nama === "Nia") out.push(emo(`${id}-tp`, x, r1(y - u * 0.5), E.topi, r1(u * 0.55), { z: 2 }));
+  if (nama === "Bu Sari") out.push(kotak(`${id}-tp`, r1(x - 10), r1(y - u * 0.78), 20, 7, "#FACC15", "#A16207", { rx: 3, tebal: 1, z: 2 }));
+  if (nama === "Bu Ratna") out.push(emo(`${id}-ks`, r1(x + u * 0.72), r1(y + 2), E.kuas, r1(u * 0.55), { z: 2 }));
+  out.push(teks(`${id}-n`, x, r1(y + 13), nama, 8.4, W.ungu, { z: 2 }));
+  return out;
+}
+export const idTokoh = (id: string, nama: NamaTokoh): string[] => [
+  id,
+  `${id}-n`,
+  ...(nama === "Nia" || nama === "Bu Sari" ? [`${id}-tp`] : []),
+  ...(nama === "Bu Ratna" ? [`${id}-kd`, `${id}-ks`] : []),
+];
+
+/** Rumput taman `${id}` dari tinggi y sampai bawah kanvas. */
+export const rumput = (id: string, y = 150): Obj => kotak(id, 2, y, 296, 198 - y, "#BBF7D0", "#16A34A", { rx: 4, tebal: 1.2, z: -3 });
+
+/** Pagar taman: palang `${id}-r`, tiang `${id}-p{i}`, dan pita `${id}-pt` (kotak merah kecil) di tiang pertama. Pojok kiri-atas (x, y). */
+export function pagar(id: string, x: number, y: number, w: number, n = 6): Obj[] {
+  return [
+    kotak(`${id}-r`, x, y + 8, w, 5, "#D6A15E", "#92400E", { rx: 1, tebal: 1, z: -2 }),
+    ...Array.from({ length: n }, (_, i) => kotak(`${id}-p${i}`, r1(x + (w - 6) * (i / (n - 1))), y, 6, 30, "#FDE68A", "#92400E", { rx: 1, tebal: 1, z: -1 })),
+  ];
+}
+
+/** Papan puzzle raksasa utuh: bingkai kayu `${id}`, langit `${id}-l`, rumput `${id}-g`, matahari `${id}-s`. Pojok kiri-atas (x, y). */
+export function papanPuzzle(id: string, x: number, y: number, w: number, h: number, o: Opsi = {}): Obj[] {
+  return [
+    kotak(id, x, y, w, h, "#D6A15E", "#92400E", { rx: 5, tebal: 3, z: -1, ...o }),
+    kotak(`${id}-l`, x + 5, y + 5, w - 10, r1((h - 10) * 0.6), "#BAE6FD", undefined, { rx: 2, z: 0, ...o }),
+    kotak(`${id}-g`, x + 5, r1(y + 5 + (h - 10) * 0.6), w - 10, r1((h - 10) * 0.4), "#86EFAC", undefined, { rx: 2, z: 0, ...o }),
+    bulat(`${id}-s`, r1(x + w - 18), r1(y + 18), 8, "#FDE047", "#CA8A04", { z: 1, tebal: 1.2, ...o }),
+  ];
+}
+export const idPapanPuzzle = (id: string): string[] => [id, `${id}-l`, `${id}-g`, `${id}-s`];
+
+/** Lubang kosong pada papan: kotak abu-abu putus-putus `${id}`. */
+export const lubang = (id: string, x: number, y: number, w: number, h: number): Obj => kotak(id, x, y, w, h, "#E2E8F0", "#475569", { rx: 2, tebal: 1.4, z: 1, putus: true });
+
+/** Warna dasar bangun bayangan gelap `${id}`. */
+export const BAYANGAN = "#475569";
+
+export { r1 as bulatkan };

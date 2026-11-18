@@ -1,131 +1,61 @@
 /**
- * Misi dan tantangan bebas Kelas 2 Bab 3 (Bentuk di Sekitar Kita). Murni: tanpa React, tanpa jaringan.
+ * Misi dan tantangan bebas Kelas 2 Bab 3 (Bentuk di Sekitar Kita, tema Taman Bermain Sekolah). Murni: tanpa React, tanpa jaringan.
  * Diuji di scripts/uji-lab-kelas2.mjs.
  *
- * Simulasi bertahap per sub-bab (paling banyak tiga alat):
- *  A: Lab Bentuk Datar (dengan uji Cetakan) + Mesin Tiga Pertanyaan.
- *  B: Bengkel Urai + Lab Pola Segitiga + Lab Bentuk Datar (alat Sub-Bab A, untuk mengingat).
- *  C (akhir): Lereng Gelinding + Lab Cetak Permukaan + skenario Toko Mainan Upe, sekaligus pencapaian misi bab ini.
+ * Sub-Bab A memakai Simulasi Petak Ubin (ubin-k2b3a), Sub-Bab B Papan Puzzle (puzzle-k2b3b), Sub-Bab C (akhir bab) Gudang Mainan (gudang-k2b3c).
+ * KERANGKA: agen tiap Sub-Bab mengganti MISI_A / MISI_B / MISI_C dan menambah tipe keadaannya ke union KeadaanK2Bab3.
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
-import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
+import type { DefMisi } from "./misi-simulasi";
 
-export type KeadaanBentuk = {
-  alat: "bentuk";
-  tipe: "segi" | "lengkung";
-  /** Banyak sisi segi banyak (3 sampai 6). */
-  n: number;
-  jenis: "lingkaran" | "lonjong";
-  /** Putaran dalam derajat, kelipatan 30. */
-  putar: number;
-  /** Indeks ukuran: 0 kecil, 1 sedang, 2 besar. */
-  skala: number;
-  /** Cetakan (garis putus-putus pada posisi awal) sedang tampil. */
-  cetakan: boolean;
-  /** Bentuk yang sedang diputar pas dengan cetakannya. */
-  pas: boolean;
-  /** Nomor sisi sedang tampil. */
-  sisi: boolean;
-};
+import type { KeadaanUbin } from "./ubin-k2b3a/logika";
+import type { KeadaanPuzzle } from "./puzzle-k2b3b/logika";
+import type { KeadaanGudang } from "./gudang-k2b3c/logika";
 
-export type KeadaanUrai = {
-  alat: "urai";
-  bentuk: "persegi" | "persegiPanjang" | "segienam";
-  keping: number;
-  segitiga: number;
-  /** Tingkat renggang keping (0 = rapat). */
-  renggang: number;
-  /** Keping pernah direnggangkan lalu dirapatkan lagi (dan masih terurai). */
-  rapatLagi: boolean;
-};
+export type KeadaanK2Bab3 = { alat: "kerangka" } | KeadaanUbin | KeadaanPuzzle | KeadaanGudang;
 
-export type KeadaanPola = {
-  alat: "pola";
-  n: number;
-  cara: "pojok" | "tengah";
-  /** Cara lain ditampilkan berdampingan. */
-  banding: boolean;
-  /** Tabel pola sedang tampil. */
-  tabel: boolean;
-};
-
-export type KeadaanLereng = {
-  alat: "lereng";
-  ruang: "kubus" | "balok" | "tabung" | "kerucut" | "bola";
-  posisi: "berdiri" | "rebah";
-  /** Benda sudah dilepas di lereng. */
-  meluncur: boolean;
-  gerak: "diam" | "menggelinding" | "melingkar";
-};
-
-export type KeadaanCetak = {
-  alat: "cetak";
-  ruang: "kubus" | "balok" | "tabung" | "kerucut" | "bola";
-  permukaan: string;
-  /** Tombol Cetak sudah ditekan untuk permukaan ini. */
-  dicetak: boolean;
-  /** Bangun datar hasil cetakan, atau null bila permukaannya lengkung. */
-  bentuk: "persegi" | "persegiPanjang" | "lingkaran" | null;
-};
-
-export type KeadaanK2Bab3 = KeadaanBentuk | KeadaanUrai | KeadaanPola | KeadaanLereng | KeadaanCetak | KeadaanSelesai;
-
-const bentuk = (k: KeadaanK2Bab3): k is KeadaanBentuk => k.alat === "bentuk";
-const urai = (k: KeadaanK2Bab3): k is KeadaanUrai => k.alat === "urai";
-const pola = (k: KeadaanK2Bab3): k is KeadaanPola => k.alat === "pola";
-const lereng = (k: KeadaanK2Bab3): k is KeadaanLereng => k.alat === "lereng";
-const cetak = (k: KeadaanK2Bab3): k is KeadaanCetak => k.alat === "cetak";
-const selesai = (k: KeadaanK2Bab3, id: string) => k.alat === "selesai" && k.id === id;
-
-/** Sub-Bab A: sisi menentukan nama, lingkaran selalu pas, tiga pertanyaan detektif. */
+/**
+ * Sub-Bab A (awal cerita Taman Bermain Sekolah): Misi Petak Ubin, Simulasi Petak Ubin (ubin-k2b3a). Tujuh ubin keranjang sama dengan UBIN_SIM di
+ * ubin-k2b3a/data-peta.ts (bendera, layang-layang, pos jaga, kolam bata, papan petunjuk, roda ayun, kolam oval), berbeda dari Story; nomor ubin enam sisi
+ * ke atas: 3 (kolam bata) dan 4 (papan petunjuk). Diuji di scripts/uji-ubin-k2b3a.mjs.
+ */
+const ubin = (k: KeadaanK2Bab3): k is KeadaanUbin => k.alat === "ubin";
 export const MISI_A: DefMisi<KeadaanK2Bab3>[] = [
-  { id: "a-lima", teks: "Buat segi lima. Nyalakan nomor sisi dan hitung sisinya sampai 5.", wajib: true, cek: (k) => bentuk(k) && k.tipe === "segi" && k.n === 5 && k.sisi },
-  {
-    id: "a-lingkaran",
-    teks: "Pilih Bentuk lengkung, nyalakan Cetakan, lalu putar lingkaran. Selalu pas, ke arah mana pun.",
-    wajib: true,
-    cek: (k) => bentuk(k) && k.tipe === "lengkung" && k.jenis === "lingkaran" && k.cetakan && k.putar !== 0 && k.pas,
-  },
-  {
-    id: "a-lonjong",
-    teks: "Pilih bentuk lonjong, nyalakan Cetakan, lalu putar 30 derajat. Sekarang tidak pas lagi.",
-    wajib: true,
-    cek: (k) => bentuk(k) && k.tipe === "lengkung" && k.jenis === "lonjong" && k.cetakan && !k.pas,
-  },
-  { id: "a-mesin", teks: "Selesaikan Mesin Tiga Pertanyaan sampai semua bentuk misterius dikenali.", wajib: true, cek: (k) => selesai(k, "detektif") },
-  {
-    id: "a-ciri-tetap",
-    teks: "Buat segi enam, putar, lalu pilih ukuran Besar. Lihat tabel: ciri tetap sama.",
-    wajib: false,
-    cek: (k) => bentuk(k) && k.tipe === "segi" && k.n === 6 && k.putar !== 0 && k.skala === 2,
-  },
-  { id: "a-segitiga", teks: "Kurangi sisi sampai 3. Segitiga punya 3 sisi dan 3 sudut.", wajib: false, cek: (k) => bentuk(k) && k.tipe === "segi" && k.n === 3 },
+  { id: "a-hitung", teks: "Pegang satu ubin bertepi lurus, lalu hitung sisinya berputar mulai dari tanda awal sampai selesai.", wajib: true, cek: (k) => ubin(k) && k.dihitung.length >= 1 },
+  { id: "a-nama", teks: "Setelah sisinya terhitung, lihat nama bentuk ubin itu.", wajib: true, cek: (k) => ubin(k) && k.namaDilihat.length >= 1 },
+  { id: "a-pilah", teks: "Pilah satu ubin tepi lurus ke keranjang kuning dan satu ubin tepi lengkung ke keranjang hijau.", wajib: true, cek: (k) => ubin(k) && k.kuning.length >= 1 && k.hijau.length >= 1 },
+  { id: "a-pasang", teks: "Pasang tiga ubin pada petak papan permainan yang bentuknya tepat.", wajib: true, cek: (k) => ubin(k) && k.dipasang.length >= 3 },
+  { id: "a-semua", teks: "Isi semua petak papan permainan sampai tidak ada yang kosong.", wajib: false, cek: (k) => ubin(k) && k.dipasang.length >= 7 },
+  { id: "a-banyak", teks: "Hitung sisi ubin yang sisinya lebih dari lima, lalu lihat namanya.", wajib: false, cek: (k) => ubin(k) && k.dihitung.some((i) => (i === 3 || i === 4) && k.namaDilihat.includes(i)) },
 ];
 
-/** Sub-Bab B: mengurai, menyusun, pola banyak segitiga. */
+/**
+ * Sub-Bab B (tengah cerita): Misi Papan Puzzle bagian satu, Simulasi Papan Puzzle (puzzle-k2b3b). Segi lima, persegi, dan segi enam untuk diurai, tiga bayangan
+ * (enam segitiga, atas dan bawah, segitiga besar), dan tangram tujuh keping; berbeda dari Story. Diuji di scripts/uji-puzzle-k2b3b.mjs.
+ */
+const puzzle = (k: KeadaanK2Bab3): k is KeadaanPuzzle => k.alat === "puzzle";
 export const MISI_B: DefMisi<KeadaanK2Bab3>[] = [
-  { id: "b-diagonal", teks: "Pilih persegi dan nyalakan satu diagonal. Hasilnya dua segitiga.", wajib: true, cek: (k) => urai(k) && k.bentuk === "persegi" && k.keping === 2 && k.segitiga === 2 },
-  { id: "b-tengah", teks: "Urai persegi yang sama dengan satu garis tengah. Hasilnya bukan segitiga: cara beda, hasil beda.", wajib: true, cek: (k) => urai(k) && k.bentuk === "persegi" && k.keping === 2 && k.segitiga === 0 },
-  { id: "b-enam-pojok", teks: "Pilih segi enam dan urai dari satu titik. Hasilnya empat segitiga.", wajib: true, cek: (k) => urai(k) && k.bentuk === "segienam" && k.keping === 4 && k.segitiga === 4 },
-  { id: "b-pola-lima", teks: "Di Lab Pola, pilih segi lima dari satu pojok. Banyak sisi dikurangi dua: 5 − 2 = 3 segitiga.", wajib: true, cek: (k) => pola(k) && k.n === 5 && k.cara === "pojok" },
-  { id: "b-pola-tengah", teks: "Di Lab Pola, pilih segi tujuh dari titik tengah. Banyak segitiga sama dengan banyak sisi: 7.", wajib: true, cek: (k) => pola(k) && k.n === 7 && k.cara === "tengah" },
-  { id: "b-rapat", teks: "Renggangkan keping persegi yang terurai, lalu rapatkan lagi. Bentuknya kembali seperti semula.", wajib: false, cek: (k) => urai(k) && k.keping >= 2 && k.rapatLagi },
-  { id: "b-enam-tengah", teks: "Urai segi enam lewat titik tengah dan hitung enam segitiga di Bengkel.", wajib: false, cek: (k) => urai(k) && k.bentuk === "segienam" && k.keping === 6 && k.segitiga === 6 },
-  { id: "b-banding", teks: "Nyalakan Bandingkan di Lab Pola untuk segi delapan. Dua cara beda dua segitiga.", wajib: false, cek: (k) => pola(k) && k.n === 8 && k.banding },
-  { id: "b-ingat", teks: "Ingat Sub-Bab A: di Lab Bentuk Datar buat segi lima dan lihat lima sisinya.", wajib: false, cek: (k) => bentuk(k) && k.tipe === "segi" && k.n === 5 && k.sisi },
+  { id: "b-pojok", teks: "Urai segi lima dengan garis dari satu pojok, lalu lihat banyak segitiga hasilnya.", wajib: true, cek: (k) => puzzle(k) && k.uraiDilihat.includes("5-pojok") },
+  { id: "b-pusat", teks: "Urai segi lima yang sama dengan garis dari titik tengah, lalu bandingkan banyak segitiganya.", wajib: true, cek: (k) => puzzle(k) && k.uraiDilihat.includes("5-pusat") },
+  { id: "b-susun", teks: "Susun semua keping pada satu bayangan sampai penuh, tanpa bertumpuk.", wajib: true, cek: (k) => puzzle(k) && k.susunTuntas.length >= 1 },
+  { id: "b-tangram", teks: "Pasang ketujuh keping tangram sampai persegi besar terisi penuh.", wajib: true, cek: (k) => puzzle(k) && k.tangramTuntas },
+  { id: "b-tumpuk", teks: "Coba menumpuk keping, lalu lihat mengapa keping tidak boleh bertumpuk.", wajib: false, cek: (k) => puzzle(k) && k.tumpuk >= 1 },
+  { id: "b-semua", teks: "Susun ketiga bayangan yang berbeda sampai semuanya penuh.", wajib: false, cek: (k) => puzzle(k) && k.susunTuntas.length >= 3 },
 ];
 
-/** Sub-Bab C (sub-bab akhir): bangun ruang, sekaligus pencapaian misi bab ini. */
+/**
+ * Sub-Bab C (akhir bab, pencapaian misi bab ini): Misi Gudang Mainan, Simulasi Gudang Mainan (gudang-k2b3c). Benda di gudang sama dengan BENDA_SIM di
+ * gudang-k2b3c/logika.ts (es batu, bata, baterai, es krim, bola tenis, kotak hadiah), berbeda dari Story. Diuji di scripts/uji-gudang-k2b3c.mjs.
+ */
+const gudang = (k: KeadaanK2Bab3): k is KeadaanGudang => k.alat === "gudang";
 export const MISI_C: DefMisi<KeadaanK2Bab3>[] = [
-  { id: "c-bola", teks: "Lepaskan bola di lereng. Seluruh permukaannya lengkung, jadi menggelinding.", wajib: true, cek: (k) => lereng(k) && k.ruang === "bola" && k.meluncur && k.gerak === "menggelinding" },
-  { id: "c-tabung", teks: "Rebahkan tabung lalu lepaskan. Permukaan lengkung menyentuh lereng, jadi menggelinding.", wajib: true, cek: (k) => lereng(k) && k.ruang === "tabung" && k.posisi === "rebah" && k.meluncur && k.gerak === "menggelinding" },
-  { id: "c-kerucut", teks: "Rebahkan kerucut lalu lepaskan. Ujungnya runcing, jadi geraknya melingkar.", wajib: true, cek: (k) => lereng(k) && k.ruang === "kerucut" && k.posisi === "rebah" && k.meluncur && k.gerak === "melingkar" },
-  { id: "c-cetak-kubus", teks: "Di Lab Cetak, pilih kubus lalu tekan Cetak. Hasilnya segi empat yang sama sisinya.", wajib: true, cek: (k) => cetak(k) && k.ruang === "kubus" && k.dicetak && k.bentuk === "persegi" },
-  { id: "c-skenario", teks: "Selesaikan skenario Toko Mainan Upe sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, "toko-mainan") },
-  { id: "c-kubus-diam", teks: "Lepaskan kubus di lereng. Permukaannya datar, jadi diam.", wajib: false, cek: (k) => lereng(k) && k.ruang === "kubus" && k.meluncur && k.gerak === "diam" },
-  { id: "c-balok", teks: "Cetak sisi besar balok. Hasilnya segi empat yang sisinya berbeda.", wajib: false, cek: (k) => cetak(k) && k.ruang === "balok" && k.permukaan === "besar" && k.dicetak && k.bentuk === "persegiPanjang" },
-  { id: "c-alas", teks: "Cetak alas tabung atau alas kerucut. Hasilnya lingkaran, bangun datar dari Sub-Bab A.", wajib: false, cek: (k) => cetak(k) && (k.ruang === "tabung" || k.ruang === "kerucut") && k.dicetak && k.bentuk === "lingkaran" },
+  { id: "c-lepas", teks: "Lepaskan sebuah benda di papan lereng, lalu lihat ia menggelinding atau diam.", wajib: true, cek: (k) => gudang(k) && k.lepasTotal >= 1 },
+  { id: "c-beda", teks: "Lepaskan satu benda yang menggelinding dan satu benda yang diam di papan lereng.", wajib: true, cek: (k) => gudang(k) && k.guling >= 1 && k.diam >= 1 },
+  { id: "c-rak", teks: "Tata tiga benda ke tempat yang tepat: rak datar atau wadah berpagar.", wajib: true, cek: (k) => gudang(k) && Object.keys(k.rak).length >= 3 },
+  { id: "c-cetak", teks: "Cetak satu permukaan benda di kertas, lalu lihat bangun datar yang tercetak.", wajib: true, cek: (k) => gudang(k) && k.cetak.length >= 1 },
+  { id: "c-lingkaran", teks: "Cari benda yang cetakannya berbentuk lingkaran.", wajib: false, cek: (k) => gudang(k) && k.cetakLingkaran },
+  { id: "c-semua", teks: "Tata semua benda ke tempat yang tepat tanpa salah satu pun.", wajib: false, cek: (k) => gudang(k) && Object.keys(k.rak).length >= 6 && k.rakSalah === 0 },
 ];
 
 export const daftarMisiK2Bab3 = (sub: string): DefMisi<KeadaanK2Bab3>[] => (sub === "B" ? MISI_B : sub === "C" ? MISI_C : MISI_A);

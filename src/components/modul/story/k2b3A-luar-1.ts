@@ -1,141 +1,162 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { OWL, W, bangun, emo, judul, kartu, kotak, lingkaran, namaBangun, relBeraturan, relSegiempat, relSegitiga, teks, warnaSegi } from "./k2b3A-gambar";
-import { bersih, hapus, idx, k, redamkan, sorotkan, tambah } from "./k2b3A-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, WARNA_BENTUK, WT, angkaSisi, bangun, bangunTitik, emo, judul, kartu, karung, papanPaku, relBeraturan, rumahBurung, rumput, tarikKaret, teks, titikPaku, tokoh, type Titik } from "./k2b3A-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k2b3A-bantu";
 
-export const NAMA_METODE_ID = ["van Hiele Visual", "Pilah Ciri", "Papan Paku"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/*
+ * Cerita orisinal IGIL "Ubin untuk Taman Bermain" (Kelas 2 Bab 3 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k2b3a.md. Bagian ini: pembuka (tiga kartu tua tukang ubin), Geoboard (Papan Paku), dan terapannya.
+ */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Geoboard", "Venn Diagram", "Shape Hunt"] as const;
+export const NAMA_METODE_ID = ["Papan Paku", "Diagram Venn", "Berburu Bentuk"] as const;
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara punya cara lain untuk mengenal bangun datar. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu bernama van Hiele Visual, Pilah Ciri, dan satu lagi, Papan Paku.";
-const SUARA_O3 = "Semua metode ini menjawab satu pertanyaan. Bagaimana cara mengenali bangun datar dengan cepat dan tepat?";
-const SUARA_O4 = "Kita memakai bentuk di layar. Kamu cukup mengetuk, menyeret, dan melihat dengan teliti.";
-const SUARA_O5 = "Semua bangunnya paling banyak enam sisi. Siap? Ayo kita mulai dengan metode pertama.";
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Di dasar karung ubin yang terakhir, Chacha menemukan tiga kartu tua milik tukang ubin zaman dulu.";
+const SUARA_O2 = "Pak Tono tertawa. Itu kartu cara tukang ubin mengenali bentuk sebelum memasangnya!";
+const SUARA_O3 = "Tiga cara itu: Geoboard, Venn Diagram, dan Shape Hunt.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Papan Paku, Diagram Venn, dan Berburu Bentuk.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk bangun datar",
-  sumber: "Metode luar: pembuka",
+  judul: "Tiga kartu tua tukang ubin",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)), tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11))),
+    k(
+      SUARA_O1,
+      tambah(0, judul("Kartu Tua Tukang Ubin"), rumput("rp")),
+      tambah("dasar", ...karung("kr", 24, 124)),
+      tambah("Chacha,", ...tokoh("ch", 150, 178, "Chacha")),
+      tambah("menemukan", ...[0, 1, 2].flatMap((i) => kartu(`rk${i}`, 84 + i * 62, 92, 54, 32, W.krem, ["kartu"], 8.4))),
+      tambah("tiga", teks("n3", 176, 66, "3 kartu", 11, W.ungu)),
+      ubah("tua", ...[0, 1, 2].map((i) => ({ id: `rk${i}-k`, warna: "#FDE68A" }))),
+    ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      tambah(idx(SUARA_O2, "van"), ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah(idx(SUARA_O2, "Pilah"), ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "Papan"), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      tambah("Pak", ...tokoh("pt", 262, 178, "Pak Tono")),
+      ubah("tertawa.", { id: "pt", isi: E.tertawa }),
+      ubah("kartu", ...[0, 1, 2].map((i) => ({ id: `rk${i}-k`, sorot: true }))),
+      tambah("mengenali", emo("kc", 214, 150, E.kaca, 22)),
+      tambah("bentuk", bangun("ub1", relBeraturan(6, 11), 96, 62, WT.ubinKuning), bangun("ub2", relBeraturan(5, 11), 150, 62, WT.ubinHijau), bangun("ub3", relBeraturan(3, 12), 204, 62, WARNA_BENTUK[3])),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah("satu", emo("i1", 60, 84, "\u{1F53A}", 34), emo("i2", 150, 84, "❓", 34), emo("i3", 240, 84, "\u{1F440}", 34)),
-      tambah("Bagaimana", ...kartu("iq", 20, 112, 260, 52, W.emas, ["bagaimana cara mengenali", "bangun datar dengan tepat?"], 10)),
+      tambah(0, judul("Tiga Cara Tukang Ubin")),
+      tambah("Geoboard,", teks("m0", 80, 62, "1. Geoboard", 14, W.biru), bangun("i0", relBeraturan(5, 9), 284, 58, WT.ubinHijau)),
+      tambah("Venn", teks("m1", 80, 98, "2. Venn Diagram", 14, W.biru), bangun("i1", relBeraturan(6, 9), 284, 94, WT.ubinKuning)),
+      tambah("Shape", teks("m2", 80, 134, "3. Shape Hunt", 14, W.biru), bangun("i2", relBeraturan(3, 10), 284, 130, WARNA_BENTUK[3])),
     ),
     k(
       SUARA_O4,
+      tambah("Papan", teks("n0", 225, 62, "Papan Paku", 11, W.ungu)),
+      tambah("Diagram", teks("n1", 225, 98, "Diagram Venn", 11, W.ungu)),
+      tambah("Berburu", teks("n2", 225, 134, "Berburu Bentuk", 11, W.ungu)),
+    ),
+  ],
+};
+
+/* ------------------------------ Geoboard: konsep ------------------------------ */
+const SUARA_G1 = "Cara pertama, Geoboard, atau Papan Paku.";
+const SUARA_G2 = "Papan ini punya deretan paku, dan karet gelang direntangkan di antara paku-paku itu.";
+const SUARA_G3 = "Karet yang rapat membentuk segi banyak, dan banyak sisinya sama dengan banyak karet yang lurus.";
+const SUARA_G4 = "Karet tidak boleh bersilangan supaya bentuknya tertutup dan jelas.";
+
+const PEG4: [number, number][] = [[1, 0], [3, 1], [2, 3], [0, 2]];
+const titik = (p: [number, number]): Titik => titikPaku(p[0], p[1]);
+const ptsPeg4 = PEG4.map(titik);
+
+export const ADEGAN_LUAR_PAPAN: AdeganStory = {
+  id: "luar-papan",
+  judul: "Geoboard: Papan Paku",
+  sumber: "Metode global: Geoboard (konsep)",
+  latar: "#EFF6FF",
+  ketukan: [
+    k(
+      SUARA_G1,
+      tambah(0, judul("Cara 1: Geoboard"), ...papanPaku()),
+      tambah("Geoboard,", teks("gn", 150, 184, "Geoboard", 12, W.ungu)),
+      ubah("Paku.", { id: "gn", isi: "Papan Paku" }),
+    ),
+    k(
+      SUARA_G2,
+      sorotkan("paku,", "pg00", "pg01", "pg02", "pg03", "pg10", "pg11", "pg12", "pg13"),
+      tambah("karet", tarikKaret(0, PEG4[3], PEG4[0])),
+      tambah("direntangkan", tarikKaret(1, PEG4[0], PEG4[1])),
+      tambah("antara", tarikKaret(2, PEG4[1], PEG4[2])),
+    ),
+    k(
+      SUARA_G3,
+      hapus(0, "gn"),
+      redamkan(0, "pg00", "pg01", "pg02", "pg03", "pg10", "pg11", "pg12", "pg13"),
+      tambah("rapat", bangunTitik("fl", ptsPeg4, "#BFDBFE", { z: -1, tebal: 0 })),
+      tambah("membentuk", tarikKaret(3, PEG4[2], PEG4[3])),
+      tambah("segi", teks("sb", 150, 184, "segi banyak", 11, W.ungu)),
+      tambah("sisinya", ...ptsPeg4.map((_, i) => angkaSisi("fl", ptsPeg4, i, 9))),
+      tambah("karet@2", teks("sk", 150, 170, "sisi = karet yang lurus", 8.6, W.merah)),
+    ),
+    k(
+      SUARA_G4,
+      hapus(0, "sb", "sk"),
+      tambah("tidak", tarikKaret(4, [0, 0], [3, 3]), emo("xs", 232, 70, E.salah, 22)),
+      ubah("tidak", { id: "kr4", warna: "#F97316" }),
+      tambah("bersilangan", teks("tb", 150, 184, "karet tidak bersilangan", 10, W.merah)),
+      tambah("tertutup", teks("tp", 150, 172, "tertutup dan jelas", 9, W.hijau)),
+    ),
+  ],
+};
+
+/* ------------------------------ Geoboard: terapan ------------------------------ */
+const SUARA_T1 = "Nia merentangkan karet di lima paku, lalu menutupnya di paku pertama.";
+const SUARA_T2 = "Ia menghitung karet yang lurus, ada lima, jadi bentuknya segi lima.";
+const SUARA_T3 = "Cocok kalau kita ingin membuat bentuk sendiri sambil menghitung sisinya.";
+const SUARA_T4 = "Kurang cocok kalau bendanya sudah jadi dan tidak bisa dipasang di papan.";
+
+const PEG5: [number, number][] = [[0, 1], [1, 0], [3, 0], [3, 3], [1, 3]];
+const ptsPeg5 = PEG5.map(titik);
+
+export const ADEGAN_LUAR_PAPAN_TERAPAN: AdeganStory = {
+  id: "luar-papan-terapan",
+  judul: "Geoboard: segi lima Nia",
+  sumber: "Metode global: Geoboard (terapan)",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_T1,
+      tambah(0, judul("Segi Lima Nia"), ...papanPaku()),
+      tambah("Nia", ...tokoh("ni", 36, 178, "Nia")),
+      tambah("merentangkan", tarikKaret(0, PEG5[0], PEG5[1])),
+      tambah("karet", tarikKaret(1, PEG5[1], PEG5[2])),
+      tambah("lima", teks("p5", 150, 184, "5 paku", 11, W.merah), ...PEG5.map((p, i) => ({ id: `ph${i}`, t: "bulat" as const, x: titik(p).x, y: titik(p).y, r: 5.4, warna: "none", garis: W.merah, tebal: 2, z: 4 }))),
+      tambah("lalu", tarikKaret(2, PEG5[2], PEG5[3]), tarikKaret(3, PEG5[3], PEG5[4])),
+      tambah("menutupnya", tarikKaret(4, PEG5[4], PEG5[0])),
+      sorotkan("pertama.", "ph0"),
+    ),
+    k(
+      SUARA_T2,
+      hapus(0, "p5"),
+      tambah("menghitung", bangunTitik("fl", ptsPeg5, "#FBCFE8", { z: -1, tebal: 0 })),
+      tambah("lurus,", ...ptsPeg5.map((_, i) => angkaSisi("fl", ptsPeg5, i, 9))),
+      tambah("ada", teks("a5", 232, 70, "5", 18, W.merah)),
+      sorotkan("lima,", "a5"),
+      tambah("segi", teks("n5", 150, 184, "segi lima", 11, W.ungu)),
+    ),
+    k(
+      SUARA_T3,
       bersih(0),
-      tambah(0, judul("Alat bantu hari ini")),
-      tambah("bentuk", bangun("al0", relSegitiga(40, 36), 70, 96, warnaSegi(3)), lingkaran("al1", 150, 96, 20), bangun("al2", relSegiempat(36, 36), 230, 96, warnaSegi(4))),
-      tambah("mengetuk,", emo("tg", 160, 130, "\u{1F446}", 22)),
-      tambah("melihat", teks("al-t", 150, 168, "bentuk di layar", 10, W.ungu)),
+      tambah(0, judul("Kapan Cocok?")),
+      tambah("Cocok", emo("ok", 236, 84, E.benar, 28)),
+      tambah("membuat", bangun("sg", relBeraturan(5, 24), 150, 66, WARNA_BENTUK[5])),
+      tambah("sendiri", ...kartu("cc", 70, 120, 160, 26, W.hijauMuda, ["buat bentuk sendiri"], 10)),
+      ubah("sisinya.", { id: "cc-k", sorot: true }),
     ),
     k(
-      SUARA_O5,
+      SUARA_T4,
       bersih(0),
-      tambah(0, judul("Paling banyak enam sisi")),
-      tambah(idx(SUARA_O5, "enam"), bangun("al3", relBeraturan(6, 34), 150, 90, warnaSegi(6))),
-      tambah(idx(SUARA_O5, "pertama."), emo("ow", 150, 172, OWL, 30)),
+      tambah(0, judul("Kapan Kurang Cocok?")),
+      tambah("Kurang", emo("xs", 236, 84, E.salah, 28)),
+      tambah("jadi", ...rumahBurung("rb", 150, 80, 40, 44)),
+      tambah("tidak", ...kartu("kc", 50, 140, 200, 26, W.merahMuda, ["sudah jadi, tak bisa dipasang"], 9.4)),
     ),
-  ],
-};
-
-/* ------------------------------ 2. van Hiele Visual: konsep ------------------------------ */
-const SUARA_V1 = "Metode pertama bernama van Hiele Visual. Kita mengenali bangun dari bentuknya yang utuh.";
-const SUARA_V2 = "Lihat tiga segitiga ini. Ada yang tinggi, ada yang lebar, dan ada yang miring.";
-const SUARA_V3 = "Meski berbeda, semuanya segitiga. Bentuknya yang utuh tetap sama.";
-const SUARA_V4 = "Sekarang lihat dua segi empat. Satu tegak dan satu miring. Keduanya segi empat.";
-const SUARA_V5 = "Kita tidak perlu menghitung dulu. Dari bentuknya yang utuh, kita sudah bisa mengenali.";
-const TIGA = [
-  { id: "v0", x: 50, rel: relSegitiga(30, 68), rot: 0 },
-  { id: "v1", x: 150, rel: relSegitiga(80, 34), rot: 0 },
-  { id: "v2", x: 250, rel: relSegitiga(52, 44), rot: 40 },
-];
-
-export const ADEGAN_LUAR_VISUAL: AdeganStory = {
-  id: "luar-visual",
-  judul: "van Hiele Visual: kenali bentuk utuh",
-  sumber: "Metode luar: van Hiele Visual",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(SUARA_V1, tambah(0, ...kepala(0)), tambah(idx(SUARA_V1, "bentuknya"), ...kartu("kk", 50, 100, 200, 30, W.krem, ["kenali dari bentuk utuh"], 11))),
-    k(
-      SUARA_V2,
-      hapus(0, "kk-k", "kk-t0"),
-      tambah(idx(SUARA_V2, "tinggi,"), bangun("v0", TIGA[0].rel, TIGA[0].x, 98, warnaSegi(3))),
-      tambah(idx(SUARA_V2, "lebar,"), bangun("v1", TIGA[1].rel, TIGA[1].x, 98, warnaSegi(3))),
-      tambah(idx(SUARA_V2, "miring."), bangun("v2", TIGA[2].rel, TIGA[2].x, 98, warnaSegi(3), TIGA[2].rot)),
-    ),
-    k(SUARA_V3, tambah(idx(SUARA_V3, "semuanya"), ...TIGA.map((t) => namaBangun(t.id, t.x, 152, "segitiga", 10))), sorotkan(idx(SUARA_V3, "utuh"), "v0", "v1", "v2")),
-    k(
-      SUARA_V4,
-      redamkan(0, "v0", "v1", "v2"),
-      hapus(idx(SUARA_V4, "dua"), "v0", "v1", "v2", "v0-nm", "v1-nm", "v2-nm"),
-      tambah(idx(SUARA_V4, "tegak"), bangun("w0", relSegiempat(44, 44), 90, 98, warnaSegi(4))),
-      tambah(idx(SUARA_V4, "miring."), bangun("w1", relSegiempat(40, 40), 210, 98, warnaSegi(4), 45)),
-      tambah(idx(SUARA_V4, "Keduanya"), namaBangun("w0", 90, 152, "segi empat", 10), namaBangun("w1", 210, 152, "segi empat", 10)),
-    ),
-    k(SUARA_V5, sorotkan(idx(SUARA_V5, "mengenali."), "w0", "w1"), tambah(idx(SUARA_V5, "utuh,"), ...kartu("kv", 40, 164, 220, 26, W.krem, ["kenali sekilas, lalu hitung"], 10))),
-  ],
-};
-
-/* ------------------------------ 3. van Hiele Visual: terapan ------------------------------ */
-const SUARA_W1 = "Terapkan pada soal ini. Wei melihat satu segi lima, lalu mencari bentuk yang sama.";
-const SUARA_W2 = "Ada tiga pilihan. Pilih bangun yang bentuk utuhnya sama dengan yang ini.";
-const SUARA_W3 = "Perhatikan pilihan kedua. Sisinya ada lima, sama seperti contoh, hanya diputar.";
-const SUARA_W4 = "Betul! Pilihan kedua juga segi lima. Hanya letaknya yang miring. Hebat!";
-const OPSI_X = [12, 106, 200];
-const kotakOpsi = (q: number): Obj => kotak(`c${q + 1}-k`, OPSI_X[q], 130, 88, 46, [W.hijauMuda, W.pink, W.langit][q], W.biru, { rx: 8, tebal: 1.6 });
-
-export const ADEGAN_LUAR_VISUAL_TERAPAN: AdeganStory = {
-  id: "luar-visual-terapan",
-  judul: "van Hiele Visual: cari bentuk yang sama",
-  sumber: "Metode luar: van Hiele Visual",
-  latar: "#ECFCCB",
-  ketukan: [
-    k(SUARA_W1, tambah(0, ...kepala(0)), tambah(idx(SUARA_W1, "segi"), bangun("rf", relBeraturan(5, 24), 150, 86, warnaSegi(5)))),
-    k(
-      SUARA_W2,
-      tambah(idx(SUARA_W2, "tiga"), kotakOpsi(0), kotakOpsi(1), kotakOpsi(2)),
-      tambah(idx(SUARA_W2, "pilihan."), bangun("o1", relBeraturan(6, 16), OPSI_X[0] + 44, 153, warnaSegi(6)), bangun("o2", relBeraturan(5, 16), OPSI_X[1] + 44, 153, warnaSegi(5), 36), lingkaran("o3", OPSI_X[2] + 44, 153, 16)),
-    ),
-    k(SUARA_W3, sorotkan(idx(SUARA_W3, "kedua."), "c2-k"), tambah(idx(SUARA_W3, "lima,"), teks("rf-jn", 232, 90, "5 sisi", 12, W.merah))),
-    k(SUARA_W4, tambah(idx(SUARA_W4, "segi"), namaBangun("rf", 150, 121, "segi lima", 10)), tambah(idx(SUARA_W4, "Hebat!"), emo("ok", 262, 118, "✅", 22))),
-  ],
-};
-
-/* ------------------------------ 4. Ringkasan metode luar ------------------------------ */
-const SUARA_R1 = "Mari kita ringkas tiga metode dari luar. Semuanya membantu kita mengenali bangun datar.";
-const SUARA_R2 = "Metode van Hiele Visual, kenali bangun dari bentuknya yang utuh.";
-const SUARA_R3 = "Metode Pilah Ciri, pilah bangun menurut banyak sisinya.";
-const SUARA_R4 = "Metode Papan Paku, tarik karet pada paku untuk membentuk bangun.";
-const SUARA_R5 = "Pilih metode yang kamu suka, lalu periksa dengan metode lain. Hasilnya harus sama.";
-
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Metode luar: ringkasan",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(SUARA_R1, tambah(0, judul("Ringkasan")), tambah(idx(SUARA_R1, "ringkas"), ...kartu("r0", 14, 34, 272, 30, W.emas, ["3 metode dari luar"], 11))),
-    k(SUARA_R2, tambah(idx(SUARA_R2, "van"), ...kartu("r1", 14, 72, 272, 34, WARNA_METODE[0], [NAMA_METODE_ID[0], "kenali dari bentuk utuh"], 9.2))),
-    k(SUARA_R3, tambah(idx(SUARA_R3, "Pilah"), ...kartu("r2", 14, 114, 272, 34, WARNA_METODE[1], [NAMA_METODE_ID[1], "pilah menurut banyak sisi"], 9.2))),
-    k(SUARA_R4, tambah(idx(SUARA_R4, "Papan"), ...kartu("r3", 14, 156, 272, 34, WARNA_METODE[2], [NAMA_METODE_ID[2], "tarik karet pada paku"], 9.2))),
-    k(SUARA_R5, bersih(0), tambah(0, judul("Hasilnya harus sama"), emo("rw", 150, 100, OWL, 54)), tambah(idx(SUARA_R5, "sama."), emo("rk", 150, 160, "✅", 30))),
   ],
 };

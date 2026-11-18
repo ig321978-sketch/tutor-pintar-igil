@@ -1,194 +1,142 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { W, WARNA_KEPING, P, angkaKeping, angkaSisi, bg, bulat, emo, garisSisi, panah, garisUrai, idSisi, judul, kartu, kotak, namaBangun, persegi, segiBanyak, teks, type Titik } from "./k2b3B-gambar";
-import { bersih, hapus, idx, k, tambah, urutBilangan } from "./k2b3B-bantu";
+import { E, W, WARNA_KEPING, P, bg, emo, garis, idPapanPuzzle, judul, kartu, kotak, lubang, papanPuzzle, rumput, segiBanyak, tangram, teks, tokoh, type Titik } from "./k2b3B-gambar";
+import { hapus, idx, k, redamkan, sorotkan, tambah, ubah } from "./k2b3B-bantu";
 
-const keping = (i: number, pts: Titik[], o: Partial<Obj> = {}): Obj => bg(`kp${i}`, pts, WARNA_KEPING[i % WARNA_KEPING.length], { z: 1, ...o });
-const rumusTeks = (isi: string, y = 184): Obj => teks("rm", 150, y, isi, 12, W.merah);
+/*
+ * Cerita orisinal IGIL "Papan Puzzle yang Berantakan" (Kelas 2 Bab 3 Sub-Bab B), tengah cerita Taman Bermain Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b3b.md. Bagian ini: tangram tujuh keping, pola banyak segitiga pada segi enam, dan penutup (jembatan ke Sub-Bab C).
+ */
+const keping = (id: string, pts: Titik[], i: number, o: Partial<Obj> = {}): Obj => bg(id, pts, WARNA_KEPING[i % WARNA_KEPING.length], { z: 2, ...o });
 
-/** Segitiga dari satu pojok (pojok 0) ke semua pojok lain pada segi banyak `pts`. */
-export const dariPojok = (pts: Titik[]): Titik[][] => Array.from({ length: pts.length - 2 }, (_, i) => [pts[0], pts[i + 1], pts[i + 2]]);
-/** Segitiga dari titik tengah `c` ke tiap sisi segi banyak `pts`. */
-export const dariTengah = (pts: Titik[], c: Titik): Titik[][] => pts.map((p, i) => [c, p, pts[(i + 1) % pts.length]]);
+/* ------------------------------ 7. Tangram ------------------------------ */
+export const TANGRAM_B = tangram(110, 50);
+const SUARA_T1 = "Bu Ratna mengeluarkan satu permainan tangram. Satu persegi besar dipotong menjadi tujuh keping.";
+const SUARA_T2 = "Ada lima segitiga, satu persegi, dan satu segi empat miring.";
+const SUARA_T3 = "Ketujuh keping bisa menjadi rumah, perahu, atau kucing, selalu tujuh.";
+const SEGITIGA = ["kp0", "kp1", "kp2", "kp5", "kp6"];
+const GESER_T3: [number, number][] = [[-46, 18], [-6, 30], [38, -4], [-30, -8], [26, 26], [44, 14], [-14, -22]];
 
-/* ------------------------------ 9b. Segi empat dari satu pojok ------------------------------ */
-export const SEGI_EMPAT = [P(110, 50), P(200, 50), P(180, 120), P(90, 120)];
-const SUARA_Y1 = "Halim punya segi empat yang miring. Hitung sisinya: satu, dua, tiga, empat.";
-const SUARA_Y2 = "Dari satu pojok, kita tarik garis ke pojok yang tidak bersebelahan. Ada satu garis.";
-const SUARA_Y3 = "Segi empat terurai menjadi dua keping: satu, dua.";
-const SUARA_Y4 = "Semuanya segitiga. Empat dikurangi dua sama dengan dua.";
-const POS_Y1 = urutBilangan(SUARA_Y1, 1, 4, "sisinya:");
-const POS_Y3 = urutBilangan(SUARA_Y3, 1, 2, "keping:");
-const TRI_EMPAT = dariPojok(SEGI_EMPAT);
-
-export const ADEGAN_POLA_EMPAT: AdeganStory = {
-  id: "pola-empat",
-  judul: "Segi empat dari satu pojok",
-  sumber: "Materi: pola segitiga pada segi empat",
-  latar: "#F5F3FF",
-  ketukan: [
-    k(
-      SUARA_Y1,
-      tambah(0, judul("Segi empat")),
-      tambah(idx(SUARA_Y1, "segi"), bg("ut", SEGI_EMPAT, W.krem), namaBangun("ut", 150, 160, "segi empat")),
-      ...POS_Y1.map((p, q) => tambah(p, garisSisi("ut", SEGI_EMPAT, q), angkaSisi("ut", SEGI_EMPAT, q))),
-    ),
-    k(SUARA_Y2, hapus(idx(SUARA_Y2, "Dari"), ...idSisi("ut", 4)), tambah(idx(SUARA_Y2, "tarik"), garisUrai(0, SEGI_EMPAT[0], SEGI_EMPAT[2]))),
-    k(SUARA_Y3, tambah(idx(SUARA_Y3, "terurai"), ...TRI_EMPAT.map((p, i) => keping(i, p))), ...POS_Y3.map((p, q) => tambah(p, angkaKeping(q, TRI_EMPAT[q], String(q + 1), 9)))),
-    k(SUARA_Y4, tambah(idx(SUARA_Y4, "Empat"), rumusTeks("4 − 2 = 2"))),
-  ],
-};
-
-/* ------------------------------ 10. Segi lima dari satu pojok ------------------------------ */
-export const SEGI_LIMA = segiBanyak(5, 150, 92, 52);
-const SUARA_L1 = "Upe punya segi lima. Hitung sisinya: satu, dua, tiga, empat, lima.";
-const SUARA_L2 = "Dari satu pojok, kita tarik garis ke pojok yang tidak bersebelahan. Ada dua garis.";
-const SUARA_L3 = "Segi lima terurai menjadi tiga keping: satu, dua, tiga.";
-const SUARA_L4 = "Semuanya segitiga. Lima dikurangi dua sama dengan tiga.";
-const POS_L1 = urutBilangan(SUARA_L1, 1, 5, "sisinya:");
-const POS_L3 = urutBilangan(SUARA_L3, 1, 3, "keping:");
-const TRI_LIMA = dariPojok(SEGI_LIMA);
-
-export const ADEGAN_POLA_LIMA: AdeganStory = {
-  id: "pola-lima",
-  judul: "Segi lima dari satu pojok",
-  sumber: "Materi: pola segitiga pada segi lima",
+export const ADEGAN_TANGRAM: AdeganStory = {
+  id: "tangram",
+  judul: "Tangram: tujuh keping",
+  sumber: "Materi: tangram tujuh keping",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      SUARA_L1,
-      tambah(0, judul("Segi lima")),
-      tambah(idx(SUARA_L1, "segi"), bg("ut", SEGI_LIMA, W.krem), namaBangun("ut", 150, 160, "segi lima")),
-      ...POS_L1.map((p, q) => tambah(p, garisSisi("ut", SEGI_LIMA, q), angkaSisi("ut", SEGI_LIMA, q))),
+      SUARA_T1,
+      tambah(0, judul("Tangram"), ...tokoh("br", 40, 160, "Bu Ratna")),
+      tambah(idx(SUARA_T1, "satu"), teks("cn", 240, 100, "1", 28, W.merah)),
+      tambah(idx(SUARA_T1, "persegi"), bg("pb", [P(110, 50), P(190, 50), P(190, 130), P(110, 130)], "#FEF3C7", { z: 1, tebal: 2.6 })),
+      hapus(idx(SUARA_T1, "dipotong"), "pb"),
+      tambah(idx(SUARA_T1, "dipotong"), ...TANGRAM_B.map((t, i) => keping(t.id, t.pts, i))),
+      ubah(idx(SUARA_T1, "tujuh"), { id: "cn", isi: "7" }),
     ),
-    k(SUARA_L2, hapus(idx(SUARA_L2, "Dari"), ...idSisi("ut", 5)), tambah(idx(SUARA_L2, "tarik"), garisUrai(0, SEGI_LIMA[0], SEGI_LIMA[2])), tambah(idx(SUARA_L2, "dua"), garisUrai(1, SEGI_LIMA[0], SEGI_LIMA[3]))),
-    k(SUARA_L3, tambah(idx(SUARA_L3, "terurai"), ...TRI_LIMA.map((p, i) => keping(i, p))), ...POS_L3.map((p, q) => tambah(p, angkaKeping(q, TRI_LIMA[q], String(q + 1), 9)))),
-    k(SUARA_L4, tambah(idx(SUARA_L4, "Lima"), rumusTeks("5 − 2 = 3"))),
+    k(
+      SUARA_T2,
+      ubah(idx(SUARA_T2, "lima"), { id: "cn", isi: "5" }),
+      sorotkan(idx(SUARA_T2, "lima"), ...SEGITIGA),
+      tambah(idx(SUARA_T2, "lima"), teks("jn", 150, 160, "segitiga", 10, W.ungu)),
+      redamkan(idx(SUARA_T2, "persegi,"), ...SEGITIGA),
+      sorotkan(idx(SUARA_T2, "persegi,"), "kp4"),
+      ubah(idx(SUARA_T2, "persegi,"), { id: "cn", isi: "1" }, { id: "jn", isi: "persegi" }),
+      redamkan(idx(SUARA_T2, "empat"), "kp4"),
+      sorotkan(idx(SUARA_T2, "empat"), "kp3"),
+      ubah(idx(SUARA_T2, "miring."), { id: "jn", isi: "segi empat miring" }),
+    ),
+    k(
+      SUARA_T3,
+      redamkan(idx(SUARA_T3, "Ketujuh"), "kp3"),
+      hapus(idx(SUARA_T3, "Ketujuh"), "jn", "br", "br-n"),
+      ubah(idx(SUARA_T3, "bisa"), ...TANGRAM_B.map((t, i) => ({ id: t.id, x: GESER_T3[i][0], y: GESER_T3[i][1] }))),
+      tambah(idx(SUARA_T3, "rumah,"), emo("hm", 40, 60, E.rumah, 24)),
+      tambah(idx(SUARA_T3, "perahu,"), emo("ph", 40, 110, "\u{26F5}", 24)),
+      tambah(idx(SUARA_T3, "kucing,"), emo("kc", 40, 160, E.kucing, 24)),
+      ubah(idx(SUARA_T3, "tujuh."), { id: "cn", isi: "7", u: 30, sorot: true }),
+    ),
   ],
 };
 
-/* ------------------------------ 11. Segi enam dari satu pojok ------------------------------ */
-export const SEGI_ENAM = segiBanyak(6, 150, 90, 50);
-const SUARA_M1 = "Wei punya segi enam. Hitung sisinya: satu, dua, tiga, empat, lima, enam.";
-const SUARA_M2 = "Dari satu pojok, kita tarik garis ke pojok yang tidak bersebelahan. Ada tiga garis.";
-const SUARA_M3 = "Segi enam terurai menjadi empat keping: satu, dua, tiga, empat.";
-const SUARA_M4 = "Semuanya segitiga. Enam dikurangi dua sama dengan empat.";
-const POS_M1 = urutBilangan(SUARA_M1, 1, 6, "sisinya:");
-const POS_M3 = urutBilangan(SUARA_M3, 1, 4, "keping:");
-const TRI_ENAM = dariPojok(SEGI_ENAM);
+/* ------------------------------ 8. Pola segitiga pada segi enam ------------------------------ */
+const SUARA_P1 = "Dika penasaran. Segi enam dari satu pojok jadi berapa segitiga?";
+const SUARA_P2 = "Garis dari satu pojok menghasilkan empat segitiga. Banyak sisi dikurangi dua sama dengan empat.";
+const SUARA_P3 = "Dari titik tengah ke setiap pojok, jadinya enam segitiga, sama dengan banyak sisinya.";
+const HEX = segiBanyak(6, 150, 92, 52, 0);
+const TENGAH = P(150, 92);
+const kipas = HEX.slice(1, 5).map((_, i) => [HEX[0], HEX[i + 1], HEX[i + 2]]);
+const jari = HEX.map((v, i) => [TENGAH, v, HEX[(i + 1) % 6]]);
 
-export const ADEGAN_POLA_ENAM: AdeganStory = {
-  id: "pola-enam",
-  judul: "Segi enam dari satu pojok",
-  sumber: "Materi: pola segitiga pada segi enam",
+export const ADEGAN_POLA: AdeganStory = {
+  id: "pola-segitiga",
+  judul: "Pola banyak segitiga",
+  sumber: "Materi: pola banyak segitiga",
+  latar: "#F0F9FF",
+  ketukan: [
+    k(
+      SUARA_P1,
+      tambah(0, judul("Pola Segitiga"), ...tokoh("dk", 40, 150, "Dika")),
+      tambah(idx(SUARA_P1, "penasaran."), emo("pk", 70, 128, E.pikir, 22)),
+      tambah(idx(SUARA_P1, "enam"), bg("ut", HEX, "#FEF9C3", { z: 1, tebal: 2.4 }), teks("n6", 150, 172, "6 sisi", 11, W.merah)),
+      tambah(idx(SUARA_P1, "satu"), emo("tn", 196, 40, "\u{1F4CD}", 20), teks("n1", 236, 90, "1 pojok", 11, W.merah)),
+      tambah(idx(SUARA_P1, "berapa"), emo("qm", 262, 130, E.tanya, 24)),
+    ),
+    k(
+      SUARA_P2,
+      hapus(idx(SUARA_P2, "Garis"), "qm", "pk"),
+      tambah(idx(SUARA_P2, "Garis"), ...[2, 3, 4].map((v) => garis(`ug${v}`, HEX[0].x, HEX[0].y, HEX[v].x - HEX[0].x, HEX[v].y - HEX[0].y, W.merah, 2.4, { gambar: true, z: 5 }))),
+      tambah(idx(SUARA_P2, "menghasilkan"), ...kipas.map((t, i) => keping(`f${i}`, t, i))),
+      tambah(idx(SUARA_P2, "empat"), teks("n4", 260, 60, "4 segitiga", 10, W.merah)),
+      tambah(idx(SUARA_P2, "dikurangi"), ...kartu("ms", 196, 150, 96, 24, W.emas, ["6 − 2 = 4"], 11)),
+    ),
+    k(
+      SUARA_P3,
+      hapus(idx(SUARA_P3, "Dari"), "ug2", "ug3", "ug4", "f0", "f1", "f2", "f3", "n4", "n1", "tn", "ms-k", "ms-t0"),
+      tambah(idx(SUARA_P3, "titik"), emo("tt", 150, 96, "\u{1F4CD}", 16, { z: 6 })),
+      tambah(idx(SUARA_P3, "pojok,"), ...HEX.map((v, i) => garis(`uc${i}`, TENGAH.x, TENGAH.y, v.x - TENGAH.x, v.y - TENGAH.y, W.merah, 2.2, { gambar: true, z: 5 }))),
+      tambah(idx(SUARA_P3, "enam"), ...jari.map((t, i) => keping(`c${i}`, t, i + 2))),
+      tambah(idx(SUARA_P3, "sama"), teks("n6b", 236, 80, "6 segitiga", 10, W.merah), teks("n6c", 236, 100, "= 6 sisi", 10, W.ungu)),
+    ),
+  ],
+};
+
+/* ------------------------------ 9. Penutup (jembatan ke Sub-Bab C) ------------------------------ */
+const SUARA_C1 = "Papan puzzle utuh lagi, dan Bu Ratna memasang keping terakhir yang tersangkut di topi Nia.";
+const SUARA_C2 = "Dika merangkum. Mengurai itu satu menjadi banyak, menyusun itu banyak menjadi satu, dan caranya memengaruhi hasil.";
+const SUARA_C3 = "Besok Pak Rudi membuka gudang mainan. Menurutmu, benda apa yang bisa diisi? Terima kasih, Chacha, Dika, Nia, Bu Sari, dan Bu Ratna!";
+const PAPAN = idPapanPuzzle("pp");
+
+export const ADEGAN_PENUTUP_B: AdeganStory = {
+  id: "penutup",
+  judul: "Papan puzzle utuh lagi",
+  sumber: "Materi: penutup dan rangkuman",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_M1,
-      tambah(0, judul("Segi enam")),
-      tambah(idx(SUARA_M1, "segi"), bg("ut", SEGI_ENAM, W.krem), namaBangun("ut", 150, 160, "segi enam")),
-      ...POS_M1.map((p, q) => tambah(p, garisSisi("ut", SEGI_ENAM, q), angkaSisi("ut", SEGI_ENAM, q))),
+      SUARA_C1,
+      tambah(0, judul("Papan Puzzle Utuh"), rumput("rm", 160), ...papanPuzzle("pp", 80, 30, 140, 76), lubang("lb", 190, 70, 20, 20)),
+      tambah(idx(SUARA_C1, "Ratna"), ...tokoh("br", 40, 150, "Bu Ratna")),
+      tambah(idx(SUARA_C1, "Nia."), ...tokoh("ni", 262, 150, "Nia"), keping("kt", [P(268, 118), P(284, 118), P(268, 106)], 3, { z: 6 })),
+      ubah(idx(SUARA_C1, "tersangkut"), { id: "kt", x: -76, y: -28 }),
+      hapus(idx(SUARA_C1, "tersangkut"), "lb"),
     ),
-    k(SUARA_M2, hapus(idx(SUARA_M2, "Dari"), ...idSisi("ut", 6)), tambah(idx(SUARA_M2, "tarik"), garisUrai(0, SEGI_ENAM[0], SEGI_ENAM[2])), tambah(idx(SUARA_M2, "bersebelahan."), garisUrai(1, SEGI_ENAM[0], SEGI_ENAM[3])), tambah(idx(SUARA_M2, "tiga"), garisUrai(2, SEGI_ENAM[0], SEGI_ENAM[4]))),
-    k(SUARA_M3, tambah(idx(SUARA_M3, "terurai"), ...TRI_ENAM.map((p, i) => keping(i, p))), ...POS_M3.map((p, q) => tambah(p, angkaKeping(q, TRI_ENAM[q], String(q + 1), 9)))),
-    k(SUARA_M4, tambah(idx(SUARA_M4, "Enam"), rumusTeks("6 − 2 = 4"))),
-  ],
-};
-
-/* ------------------------------ 12. Dari titik tengah ------------------------------ */
-const PUSAT_ENAM = P(150, 90);
-export const PUSAT_LIMA = P(150, 92);
-const SUARA_T1 = "Sekarang kita pakai titik tengah. Wei menandai titik di tengah segi enam.";
-const SUARA_T2 = "Dari titik tengah, kita tarik garis ke setiap pojok. Ada enam garis.";
-const SUARA_T3 = "Segi enam terurai menjadi keping: satu, dua, tiga, empat, lima, enam.";
-const SUARA_T4 = "Ada enam segitiga. Banyaknya sama dengan banyak sisi, yaitu enam.";
-const SUARA_T5 = "Segi lima juga begitu. Dari titik tengah, lima garis membuat lima segitiga.";
-const TENGAH_ENAM = dariTengah(SEGI_ENAM, PUSAT_ENAM);
-const TENGAH_LIMA = dariTengah(SEGI_LIMA, PUSAT_LIMA);
-const POS_T3 = urutBilangan(SUARA_T3, 1, 6, "keping:");
-
-export const ADEGAN_POLA_TENGAH: AdeganStory = {
-  id: "pola-tengah",
-  judul: "Segitiga dari titik tengah",
-  sumber: "Materi: pola segitiga dari titik tengah",
-  latar: "#FFF1F2",
-  ketukan: [
-    k(SUARA_T1, tambah(0, judul("Titik tengah")), tambah(idx(SUARA_T1, "Sekarang"), bg("ut", SEGI_ENAM, W.krem), namaBangun("ut", 150, 160, "segi enam")), tambah(idx(SUARA_T1, "menandai"), bulat("tt", 150, 90, 3.6, W.merah, W.biru, { z: 6 }))),
-    k(SUARA_T2, ...SEGI_ENAM.map((p, i) => tambah(i === 0 ? idx(SUARA_T2, "tarik") : i === 5 ? idx(SUARA_T2, "enam") : idx(SUARA_T2, "setiap"), garisUrai(i, PUSAT_ENAM, p)))),
-    k(SUARA_T3, ...TENGAH_ENAM.map((p, q) => tambah(POS_T3[q], keping(q, p), angkaKeping(q, p, String(q + 1), 8.6)))),
-    k(SUARA_T4, tambah(idx(SUARA_T4, "Ada"), teks("hs", 150, 182, "6 segitiga = 6 sisi", 11, W.merah))),
     k(
-      SUARA_T5,
-      bersih(0),
-      tambah(0, judul("Segi lima, titik tengah")),
-      tambah(idx(SUARA_T5, "Segi"), bg("ut", SEGI_LIMA, W.krem), namaBangun("ut", 150, 160, "segi lima"), bulat("tt", 150, 92, 3.6, W.merah, W.biru, { z: 6 })),
-      tambah(idx(SUARA_T5, "garis"), ...TENGAH_LIMA.map((p, i) => keping(i, p)), ...SEGI_LIMA.map((p, i) => garisUrai(i, PUSAT_LIMA, p))),
-      tambah(idx(SUARA_T5, "lima", 3), teks("hs", 150, 182, "5 segitiga = 5 sisi", 11, W.merah)),
+      SUARA_C2,
+      hapus(idx(SUARA_C2, "Dika"), "br", "br-n", "kt"),
+      tambah(idx(SUARA_C2, "Dika"), ...tokoh("dk", 40, 150, "Dika")),
+      tambah(idx(SUARA_C2, "satu"), ...kartu("r1", 100, 118, 160, 22, W.hijauMuda, ["Mengurai: 1 jadi banyak"], 9)),
+      tambah(idx(SUARA_C2, "banyak"), ...kartu("r2", 100, 144, 160, 22, W.langit, ["Menyusun: banyak jadi 1"], 9)),
+      tambah(idx(SUARA_C2, "memengaruhi"), ...kartu("r3", 100, 170, 160, 22, W.krem, ["Cara memengaruhi hasil"], 9)),
     ),
-  ],
-};
-
-/* ------------------------------ 13. Tabel pola ------------------------------ */
-export const TABEL_POLA = [
-  ["segitiga", "3", "1"],
-  ["segi empat", "4", "2"],
-  ["segi lima", "5", "3"],
-  ["segi enam", "6", "4"],
-];
-const KOLX = [40, 150, 205, 260];
-const barisTabel = (r: number): Obj[] =>
-  TABEL_POLA[r].flatMap((isi, c) => [
-    kotak(`tb-r${r}c${c}-k`, KOLX[c], 54 + 26 * r, KOLX[c + 1] - KOLX[c], 26, r % 2 === 0 ? W.krem : W.hijauMuda, W.biru, { rx: 2, tebal: 1.2 }),
-    teks(`tb-r${r}c${c}`, (KOLX[c] + KOLX[c + 1]) / 2, 54 + 26 * r + 17.5, isi, c === 0 ? 9.6 : 13, c === 0 ? W.biru : W.merah),
-  ]);
-const kepalaTabel = (): Obj[] =>
-  ["Bangun", "Sisi", "Segitiga"].flatMap((isi, c) => [
-    kotak(`tb-h${c}-k`, KOLX[c], 32, KOLX[c + 1] - KOLX[c], 22, W.lavender, W.biru, { rx: 2, tebal: 1.2 }),
-    teks(`tb-h${c}`, (KOLX[c] + KOLX[c + 1]) / 2, 46, isi, 9.2, W.ungu),
-  ]);
-
-const SUARA_K1 = "Kita catat hasilnya dalam tabel. Segitiga punya tiga sisi dan hanya menjadi satu keping.";
-const SUARA_K2 = "Segi empat punya empat sisi. Dari satu pojok, ia terurai menjadi dua segitiga.";
-const SUARA_K3 = "Segi lima punya lima sisi, dan terurai menjadi tiga segitiga.";
-const SUARA_K4 = "Segi enam punya enam sisi, dan terurai menjadi empat segitiga.";
-const SUARA_K5 = "Lihat polanya. Banyak segitiga sama dengan banyak sisi dikurangi dua.";
-
-export const ADEGAN_POLA_TABEL: AdeganStory = {
-  id: "pola-tabel",
-  judul: "Tabel pola banyak segitiga",
-  sumber: "Materi: tabel pola segitiga",
-  latar: "#F0F9FF",
-  ketukan: [
-    k(SUARA_K1, tambah(0, judul("Tabel pola"), ...kepalaTabel()), tambah(idx(SUARA_K1, "Segitiga"), ...barisTabel(0))),
-    k(SUARA_K2, tambah(idx(SUARA_K2, "Segi"), ...barisTabel(1))),
-    k(SUARA_K3, tambah(idx(SUARA_K3, "Segi"), ...barisTabel(2))),
-    k(SUARA_K4, tambah(idx(SUARA_K4, "Segi"), ...barisTabel(3))),
-    k(SUARA_K5, tambah(idx(SUARA_K5, "polanya."), ...kartu("pl", 40, 168, 220, 24, W.emas, ["segitiga = sisi − 2"], 11))),
-  ],
-};
-
-/* ------------------------------ 14. Mengurai dan menyusun saling berlawanan ------------------------------ */
-export const BALIK = {
-  utuhAtas: persegi(50, 40, 40),
-  kepingAtas: [[P(200, 40), P(240, 40), P(240, 80)], [P(200, 40), P(240, 80), P(200, 80)]],
-  kepingBawah: [[P(50, 125), P(90, 125), P(90, 165)], [P(50, 125), P(90, 165), P(50, 165)]],
-  utuhBawah: persegi(200, 125, 40),
-};
-const SUARA_Z1 = "Igil mengajak kita melihat dua kegiatan yang saling berlawanan. Pertama, mengurai.";
-const SUARA_Z2 = "Satu persegi diurai menjadi dua keping. Satu bangun menjadi banyak keping.";
-const SUARA_Z3 = "Kedua, menyusun. Kita mulai dari dua keping yang terpisah.";
-const SUARA_Z4 = "Dua keping disusun kembali menjadi satu persegi. Banyak keping menjadi satu bangun.";
-const SUARA_Z5 = "Jadi mengurai dan menyusun saling berlawanan, dan bentuknya kembali seperti semula.";
-
-export const ADEGAN_BALIK: AdeganStory = {
-  id: "urai-susun-balik",
-  judul: "Mengurai dan menyusun saling berlawanan",
-  sumber: "Materi: urai dan susun berlawanan",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(SUARA_Z1, tambah(0, judul("Dua kegiatan")), tambah(idx(SUARA_Z1, "Pertama,"), bg("bt", BALIK.utuhAtas, W.krem), teks("tl1", 70, 94, "1 bangun", 9, W.biru), panah("pa", 110, 60, 40, 0), teks("ta", 130, 52, "mengurai", 8.6, W.ungu))),
-    k(SUARA_Z2, tambah(idx(SUARA_Z2, "dua"), keping(0, BALIK.kepingAtas[0], { x: 8 }), keping(1, BALIK.kepingAtas[1], { x: -8 })), tambah(idx(SUARA_Z2, "banyak"), teks("tl2", 220, 94, "2 keping", 9, W.biru))),
-    k(SUARA_Z3, tambah(idx(SUARA_Z3, "Kedua,"), keping(2, BALIK.kepingBawah[0], { x: 8 }), keping(3, BALIK.kepingBawah[1], { x: -8 }), teks("tl3", 70, 180, "2 keping", 9, W.biru))),
-    k(SUARA_Z4, tambah(idx(SUARA_Z4, "disusun"), panah("pb", 110, 145, 40, 0), teks("tb", 130, 137, "menyusun", 8.6, W.ungu)), tambah(idx(SUARA_Z4, "persegi"), bg("bb", BALIK.utuhBawah, W.krem), teks("tl4", 220, 180, "1 bangun", 9, W.biru))),
-    k(SUARA_Z5, tambah(idx(SUARA_Z5, "saling"), emo("ul", 150, 112, "\u{1F501}", 22))),
+    k(
+      SUARA_C3,
+      hapus(idx(SUARA_C3, "Besok"), "r1-k", "r1-t0", "r2-k", "r2-t0", "r3-k", "r3-t0", "dk", "dk-n", "ni", "ni-n", ...PAPAN),
+      tambah(idx(SUARA_C3, "Besok"), emo("gd", 150, 76, E.gudang, 54), kotak("pt", 128, 84, 44, 30, "#C4B5FD", W.ungu, { rx: 3, tebal: 2, z: 1 })),
+      tambah(idx(SUARA_C3, "gudang"), teks("rd", 150, 130, "Pak Rudi", 10, W.ungu)),
+      tambah(idx(SUARA_C3, "diisi?"), emo("qm", 150, 104, E.tanya, 22, { z: 3 })),
+      tambah(idx(SUARA_C3, "Chacha,"), ...tokoh("t1", 36, 176, "Chacha")),
+      tambah(idx(SUARA_C3, "Dika,"), ...tokoh("t2", 92, 176, "Dika")),
+      tambah(idx(SUARA_C3, "Nia,"), ...tokoh("t3", 148, 176, "Nia")),
+      tambah(idx(SUARA_C3, "Sari,"), ...tokoh("t4", 204, 176, "Bu Sari")),
+      tambah(idx(SUARA_C3, "Ratna!"), ...tokoh("t5", 262, 176, "Bu Ratna"), emo("lb2", 150, 160, E.lambai, 18)),
+    ),
   ],
 };

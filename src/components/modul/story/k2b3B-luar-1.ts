@@ -1,169 +1,199 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { OWL, W, WARNA_KEPING, P, angkaKeping, angkaSisi, bg, emo, garisSisi, garisUrai, hasilHitung, judul, kartu, namaBangun, persegi, teks, type Titik } from "./k2b3B-gambar";
-import { hapus, idx, k, pilihKata, redamkan, sorotkan, tambah, ubah, urutBilangan } from "./k2b3B-bantu";
+import { E, W, P, bg, emo, garis, judul, kartu, kotak, persegi, segiBanyak, teks, tokoh, type Titik } from "./k2b3B-gambar";
+import { hapus, idx, k, redamkan, sorotkan, tambah, ubah } from "./k2b3B-bantu";
 
-export const NAMA_METODE_ID = ["Susun Bangun", "Urai Bangun", "Tangram"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/*
+ * Video metode global Kelas 2 Bab 3 Sub-Bab B "Papan Puzzle yang Berantakan": Pattern Blocks (Pola Blok), Paper Folding (Lipat Kertas), Silhouette Puzzle (Teka-Teki Bayangan).
+ * Naskah suara dari naskah/story-naskah-k2b3b.md. Bagian ini: pembuka (poster tua), Pola Blok dan terapannya, dan Lipat Kertas.
+ */
+export const NAMA_METODE = ["Pattern Blocks", "Paper Folding", "Silhouette Puzzle"] as const;
+export const NAMA_METODE_ID = ["Pola Blok", "Lipat Kertas", "Teka-Teki Bayangan"] as const;
 
-/** Kepala metode: kartu nama kecil di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 20, 288, 14, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.2);
+export const BLOK = { segitiga: "#86EFAC", segiEmpat: "#FDBA74", segiEnam: "#FDE047", belah: "#93C5FD" } as const;
+const blok = (id: string, pts: Titik[], warna: string, o: Partial<Obj> = {}): Obj => bg(id, pts, warna, { z: 2, tebal: 2, ...o });
 
-const keping = (i: number, pts: Titik[], o: Partial<Obj> = {}): Obj => bg(`kp${i}`, pts, WARNA_KEPING[i % WARNA_KEPING.length], { z: 1, ...o });
-const hasil = (id: string, pts: Titik[]): Obj => bg(id, pts, "none", { tebal: 2.4, z: 2 });
-
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara mengajarkan bangun datar dengan cara yang berbeda-beda. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu bernama Susun Bangun, Urai Bangun, dan Tangram.";
-const SUARA_O3 = "Susun Bangun menggabungkan bangun kecil menjadi bangun besar. Urai Bangun memecah satu bangun menjadi beberapa bagian.";
-const SUARA_O4 = "Kita memakai gambar di layar. Kamu cukup mengetuk dan memilih jawaban dengan teliti.";
-const SUARA_O5 = "Siap? Ayo kita mulai dengan metode pertama, yaitu Susun Bangun.";
+/* ------------------------------ Pembuka: poster tua ------------------------------ */
+const SUARA_O1 = "Di dinding ruang seni, Nia menemukan poster tua yang terlipat dan memuat tiga cara bermain bentuk.";
+const SUARA_O2 = "Bu Ratna tertawa. Itu poster guru seni zaman dulu, tersembunyi di balik lukisan!";
+const SUARA_O3 = "Tiga cara itu: Pattern Blocks, Paper Folding, dan Silhouette Puzzle.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Pola Blok, Lipat Kertas, dan Teka-Teki Bayangan.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk bangun datar",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Poster tua di ruang seni",
+  sumber: "Metode global: tiga cara bermain bentuk",
+  latar: "#FEF3C7",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)), tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11))),
+    k(
+      SUARA_O1,
+      tambah(0, judul("Poster Tua"), kotak("dn", 4, 26, 292, 130, "#FDE9C9", "#B45309", { rx: 4, tebal: 1.4, z: -3 }), kotak("lk", 214, 40, 64, 48, "#BAE6FD", "#92400E", { rx: 3, tebal: 3, z: -1 })),
+      tambah(idx(SUARA_O1, "Nia"), ...tokoh("ni", 40, 168, "Nia")),
+      tambah(idx(SUARA_O1, "poster"), kotak("ps", 100, 44, 90, 96, "#FFF7ED", "#92400E", { rx: 3, tebal: 2, z: 1 })),
+      tambah(idx(SUARA_O1, "terlipat"), garis("pl1", 100, 76, 90, 0, "#B45309", 1.4, { putus: true, z: 2 }), garis("pl2", 100, 108, 90, 0, "#B45309", 1.4, { putus: true, z: 2 })),
+      tambah(idx(SUARA_O1, "tiga"), teks("t3", 145, 96, "3 cara", 14, W.merah, { z: 3 })),
+    ),
     k(
       SUARA_O2,
-      { at: 0, bersih: true },
-      tambah(0, judul("Tiga metode")),
-      tambah(idx(SUARA_O2, "Susun"), ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah(idx(SUARA_O2, "Urai"), ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "Tangram."), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      tambah(idx(SUARA_O2, "Ratna"), ...tokoh("br", 262, 168, "Bu Ratna")),
+      tambah(idx(SUARA_O2, "tertawa."), emo("tw", 232, 144, E.tertawa, 20)),
+      ubah(idx(SUARA_O2, "tersembunyi"), { id: "ps", x: 26 }, { id: "pl1", x: 26 }, { id: "pl2", x: 26 }, { id: "t3", x: 26 }),
+      tambah(idx(SUARA_O2, "lukisan!"), emo("ls", 246, 66, E.lukisan, 20, { z: 4 })),
     ),
     k(
       SUARA_O3,
-      { at: 0, bersih: true },
-      tambah(0, judul("Gabung dan pecah")),
-      tambah(idx(SUARA_O3, "Susun"), ...kartu("g0", 20, 46, 260, 44, WARNA_METODE[0], ["Susun Bangun", "gabung bangun kecil jadi besar"], 10)),
-      tambah(idx(SUARA_O3, "Urai"), ...kartu("g1", 20, 104, 260, 44, WARNA_METODE[1], ["Urai Bangun", "pecah bangun menjadi bagian"], 10)),
+      hapus(idx(SUARA_O3, "Tiga"), "ps", "pl1", "pl2", "t3", "lk", "ls", "br", "br-n", "br-kd", "br-ks", "tw"),
+      tambah(idx(SUARA_O3, "Tiga"), teks("jm", 150, 44, "3 cara", 13, W.merah)),
+      tambah(idx(SUARA_O3, "Pattern"), ...kartu("m0", 14, 56, 150, 28, "#BBF7D0", ["1. Pattern Blocks"], 10)),
+      tambah(idx(SUARA_O3, "Paper"), ...kartu("m1", 14, 96, 150, 28, "#FDE68A", ["2. Paper Folding"], 10)),
+      tambah(idx(SUARA_O3, "Silhouette"), ...kartu("m2", 14, 136, 150, 28, "#DDD6FE", ["3. Silhouette Puzzle"], 10)),
     ),
     k(
       SUARA_O4,
-      { at: 0, bersih: true },
-      tambah(0, judul("Alat bantu hari ini")),
-      tambah("gambar", bg("ua", persegi(60, 54, 40), W.krem), bg("ub", [P(150, 94), P(190, 94), P(150, 54)], W.pink), bg("uc", [P(220, 94), P(260, 94), P(240, 54)], W.langit)),
-      tambah("mengetuk", emo("tg", 150, 150, "\u{1F446}", 26)),
+      tambah(idx(SUARA_O4, "Pola"), ...kartu("n0", 172, 56, 114, 28, "#DCFCE7", ["Pola Blok"], 10)),
+      tambah(idx(SUARA_O4, "Lipat"), ...kartu("n1", 172, 96, 114, 28, "#FEF9C3", ["Lipat Kertas"], 10)),
+      tambah(idx(SUARA_O4, "Teka-Teki"), ...kartu("n2", 172, 136, 114, 28, "#EDE9FE", ["Teka-Teki Bayangan"], 9)),
+    ),
+  ],
+};
+
+/* ------------------------------ Pola Blok: konsep ------------------------------ */
+const SUARA_B1 = "Cara pertama, Pattern Blocks, atau Pola Blok.";
+const SUARA_B2 = "Blok kayu berbentuk segitiga, segi empat, dan segi enam, yang bisa ditempelkan sisi ke sisi.";
+const SUARA_B3 = "Kita menyusun blok sampai membentuk pola atau bentuk baru yang lebih besar.";
+const SUARA_B4 = "Setiap blok punya bentuk tetap, jadi mudah dihitung dan diganti.";
+const TRI = [P(46, 120), P(86, 120), P(66, 85)];
+const SEG4 = persegi(116, 90, 34);
+const HEX_B = segiBanyak(6, 222, 104, 24, 90);
+const meja = kotak("mj", 14, 134, 272, 40, "#D6A15E", "#92400E", { rx: 5, tebal: 2, z: -2 });
+
+export const ADEGAN_LUAR_BLOK: AdeganStory = {
+  id: "luar-blok",
+  judul: "Pattern Blocks: Pola Blok",
+  sumber: "Metode global: Pola Blok",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_B1,
+      tambah(0, judul("1. Pola Blok"), meja),
+      tambah(idx(SUARA_B1, "pertama,"), ...kartu("kb", 60, 40, 180, 30, "#BBF7D0", ["Pattern Blocks"], 12)),
+      tambah(idx(SUARA_B1, "Pola"), ...kartu("kc", 80, 78, 140, 26, "#DCFCE7", ["Pola Blok"], 11)),
     ),
     k(
-      SUARA_O5,
-      { at: 0, bersih: true },
-      tambah(0, judul("Metode pertama")),
-      tambah("Siap?", ...kartu("pm", 30, 60, 240, 44, WARNA_METODE[0], [NAMA_METODE_ID[0]], 14)),
-      tambah("yaitu", emo("ow", 150, 150, OWL, 30)),
+      SUARA_B2,
+      hapus(idx(SUARA_B2, "Blok"), "kb-k", "kb-t0", "kc-k", "kc-t0"),
+      tambah(idx(SUARA_B2, "segitiga,"), blok("b0", TRI, BLOK.segitiga)),
+      tambah(idx(SUARA_B2, "empat,"), blok("b1", SEG4, BLOK.segiEmpat)),
+      tambah(idx(SUARA_B2, "enam,"), blok("b2", HEX_B, BLOK.segiEnam), teks("n6", 222, 156, "6 sisi", 11, W.merah)),
+      sorotkan(idx(SUARA_B2, "ditempelkan"), "b0", "b1", "b2"),
+    ),
+    k(
+      SUARA_B3,
+      redamkan(idx(SUARA_B3, "Kita"), "b0", "b1", "b2"),
+      hapus(idx(SUARA_B3, "Kita"), "n6"),
+      ubah(idx(SUARA_B3, "menyusun"), { id: "b0", x: 66, y: -10 }, { id: "b1", x: -4, y: 0 }),
+      ubah(idx(SUARA_B3, "pola"), { id: "b2", x: -78, y: 0 }),
+      tambah(idx(SUARA_B3, "baru"), ...kartu("pl", 80, 44, 140, 26, W.krem, ["pola baru yang besar"], 10)),
+    ),
+    k(
+      SUARA_B4,
+      hapus(idx(SUARA_B4, "Setiap"), "pl-k", "pl-t0"),
+      tambah(idx(SUARA_B4, "bentuk"), ...kartu("tt", 80, 44, 140, 26, W.langit, ["bentuk tetap"], 11)),
+      tambah(idx(SUARA_B4, "dihitung"), emo("cn", 150, 188, E.benar, 16)),
+      tambah(idx(SUARA_B4, "diganti."), emo("gn", 190, 188, "\u{1F501}", 16)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Susun Bangun: empat persegi kecil ------------------------------ */
-export const EMPAT_KECIL = [persegi(120, 52, 30), persegi(150, 52, 30), persegi(120, 82, 30), persegi(150, 82, 30)];
-export const PERSEGI_BESAR = persegi(120, 52, 60);
-const GESER_EMPAT = [
-  [-40, -8],
-  [40, -8],
-  [-40, 8],
-  [40, 8],
-];
+/* ------------------------------ Pola Blok: terapan ------------------------------ */
+const SUARA_P1 = "Dika menyusun enam blok segitiga yang sama, dan jadilah satu segi enam yang besar.";
+const SUARA_P2 = "Lalu ia mengganti enam segitiga itu dengan tiga blok segi empat miring, dan bentuk besarnya tetap sama.";
+const SUARA_P3 = "Cocok kalau kita ingin mencoba banyak susunan dengan cepat.";
+const SUARA_P4 = "Kurang cocok kalau tidak ada blok yang bentuknya pas untuk lubangnya.";
+const PC = P(200, 100);
+const HEX_G = segiBanyak(6, PC.x, PC.y, 52, 0);
+const SEGITIGA_G = HEX_G.map((v, i) => [PC, v, HEX_G[(i + 1) % 6]]);
+const BELAH_G = [0, 2, 4].map((i) => [PC, HEX_G[i], HEX_G[i + 1], HEX_G[(i + 2) % 6]]);
 
-const SUARA_N1 = "Metode pertama bernama Susun Bangun. Kita menggabungkan bangun kecil menjadi bangun besar.";
-const SUARA_N2 = "Ada empat persegi kecil yang sama besar. Hitung: satu, dua, tiga, empat.";
-const SUARA_N3 = "Kita rapatkan keempat persegi itu sampai sisinya saling menempel.";
-const SUARA_N4 = "Hasilnya sebuah persegi yang lebih besar. Bangun kecil menjadi bangun besar.";
-const SUARA_N5 = "Cara ini berguna untuk membuat bentuk baru dari bangun yang sudah ada.";
-const POS_N2 = urutBilangan(SUARA_N2, 1, 4, "Hitung:");
-
-export const ADEGAN_LUAR_SUSUN: AdeganStory = {
-  id: "luar-susun",
-  judul: "Susun Bangun: empat persegi menjadi satu",
-  sumber: "Metode luar: Susun Bangun",
+export const ADEGAN_LUAR_BLOK_TERAPAN: AdeganStory = {
+  id: "luar-blok-terapan",
+  judul: "Pola Blok: menyusun segi enam",
+  sumber: "Metode global: Pola Blok dipakai",
   latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_N1, tambah(0, ...kepala(0)), tambah(idx(SUARA_N1, "kecil"), ...EMPAT_KECIL.map((p, i) => keping(i, p, { x: GESER_EMPAT[i][0], y: GESER_EMPAT[i][1] })))),
-    k(SUARA_N2, ...POS_N2.map((p, q) => tambah(p, angkaKeping(q, geserTitik(EMPAT_KECIL[q], GESER_EMPAT[q]), String(q + 1), 9)))),
-    k(SUARA_N3, ...EMPAT_KECIL.map((_, i) => ubah(idx(SUARA_N3, "rapatkan"), { id: `kp${i}`, x: 0, y: 0 })), ...EMPAT_KECIL.map((p, i) => ubah(idx(SUARA_N3, "rapatkan"), { id: `kn${i}`, x: angkaKeping(i, p).x, y: angkaKeping(i, p).y }))),
-    k(SUARA_N4, tambah(idx(SUARA_N4, "persegi"), hasil("ht", PERSEGI_BESAR), namaBangun("ht", 150, 134, "persegi besar")), tambah(idx(SUARA_N4, "menjadi"), teks("hs", 150, 156, "4 persegi kecil, 1 persegi besar", 10, W.merah))),
-    k(SUARA_N5, tambah(idx(SUARA_N5, "berguna"), ...kartu("sg", 40, 166, 220, 24, W.emas, ["bangun kecil jadi besar"], 10.4))),
-  ],
-};
-function geserTitik(pts: Titik[], d: number[]): Titik[] {
-  return pts.map((p) => P(p.x + d[0], p.y + d[1]));
-}
-
-/* ------------------------------ 3. Susun Bangun: rumah dari dua keping ------------------------------ */
-export const RUMAH_BADAN = [P(130, 80), P(170, 80), P(170, 120), P(130, 120)];
-export const RUMAH_ATAP = [P(130, 80), P(150, 56), P(170, 80)];
-export const RUMAH_HASIL = [P(130, 120), P(130, 80), P(150, 56), P(170, 80), P(170, 120)];
-const SUARA_T1 = "Coba lagi. Kita punya satu persegi dan satu segitiga.";
-const SUARA_T2 = "Letakkan segitiga di atas persegi, dengan sisi yang sama panjang saling menempel.";
-const SUARA_T3 = "Sekarang giliranmu. Bangun yang jadi punya berapa sisi? Ketuk jawabannya.";
-const SUARA_T4 = "Betul, lima sisi! Persegi dan segitiga menjadi segi lima, seperti bentuk rumah.";
-const SUARA_T5 = "Hitung sisinya: satu, dua, tiga, empat, lima.";
-const POS_T5 = urutBilangan(SUARA_T5, 1, 5, "sisinya:");
-
-export const ADEGAN_LUAR_SUSUN_TERAPAN: AdeganStory = {
-  id: "luar-susun-terapan",
-  judul: "Susun Bangun: persegi dan segitiga",
-  sumber: "Metode luar: Susun Bangun, terapan",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(SUARA_T1, tambah(0, ...kepala(0)), tambah(idx(SUARA_T1, "persegi"), keping(0, RUMAH_BADAN, { x: -50 })), tambah(idx(SUARA_T1, "segitiga."), keping(1, RUMAH_ATAP, { x: 60, y: 40 }))),
-    k(SUARA_T2, ubah(idx(SUARA_T2, "Letakkan"), { id: "kp0", x: 0 }), ubah(idx(SUARA_T2, "atas"), { id: "kp1", x: 0, y: 0 })),
-    k(SUARA_T3, tambah(idx(SUARA_T3, "Ketuk"), ...pilihKata(138, ["4 sisi", "5 sisi", "6 sisi"], 12))),
-    k(SUARA_T4, sorotkan(idx(SUARA_T4, "Betul,"), "c2-k"), tambah(idx(SUARA_T4, "segi"), hasil("ht", RUMAH_HASIL), namaBangun("ht", 150, 184, "segi lima"))),
-    k(SUARA_T5, redamkan(0, "c2-k"), ...POS_T5.map((p, q) => tambah(p, garisSisi("ht", RUMAH_HASIL, q), angkaSisi("ht", RUMAH_HASIL, q)))),
+    k(
+      SUARA_P1,
+      tambah(0, judul("Pola Blok Dipakai"), ...tokoh("dk", 40, 168, "Dika")),
+      tambah(idx(SUARA_P1, "enam"), ...SEGITIGA_G.map((t, i) => blok(`s${i}`, t, BLOK.segitiga, { op: i === 0 ? 1 : 0.95 })), teks("c6", 60, 100, "6 segitiga", 11, W.merah)),
+      tambah(idx(SUARA_P1, "satu"), teks("c1", 60, 120, "1 segi enam", 11, W.ungu)),
+      sorotkan(idx(SUARA_P1, "besar."), ...SEGITIGA_G.map((_, i) => `s${i}`)),
+    ),
+    k(
+      SUARA_P2,
+      redamkan(idx(SUARA_P2, "Lalu"), ...SEGITIGA_G.map((_, i) => `s${i}`)),
+      hapus(idx(SUARA_P2, "mengganti"), ...SEGITIGA_G.map((_, i) => `s${i}`)),
+      tambah(idx(SUARA_P2, "mengganti"), ...BELAH_G.map((t, i) => blok(`r${i}`, t, BLOK.belah))),
+      ubah(idx(SUARA_P2, "tiga"), { id: "c6", isi: "3 segi empat miring", x: 62 }),
+      tambah(idx(SUARA_P2, "tetap"), emo("sm", 262, 40, E.benar, 20)),
+    ),
+    k(
+      SUARA_P3,
+      hapus(idx(SUARA_P3, "Cocok"), "c6", "c1", "sm"),
+      tambah(idx(SUARA_P3, "Cocok"), emo("ok", 40, 100, E.benar, 24)),
+      tambah(idx(SUARA_P3, "banyak"), ...kartu("cc", 14, 124, 110, 30, W.hijauMuda, ["banyak susunan"], 9.4)),
+      tambah(idx(SUARA_P3, "cepat."), emo("cp", 60, 60, "\u{1F680}", 20)),
+    ),
+    k(
+      SUARA_P4,
+      hapus(idx(SUARA_P4, "Kurang"), "ok", "cc-k", "cc-t0", "cp", ...BELAH_G.map((_, i) => `r${i}`)),
+      tambah(idx(SUARA_P4, "Kurang"), emo("xs", 40, 100, E.salah, 24)),
+      tambah(idx(SUARA_P4, "lubangnya."), bg("lb", [P(160, 60), P(250, 70), P(240, 140), P(176, 150), P(150, 110)], "#E2E8F0", { z: 1, putus: true, tebal: 1.8 })),
+      tambah(idx(SUARA_P4, "pas"), blok("sx", [P(60, 150), P(96, 150), P(78, 120)], BLOK.segitiga), emo("qm", 205, 104, E.tanya, 24)),
+      tambah(idx(SUARA_P4, "blok"), ...kartu("kk", 156, 160, 130, 26, W.merahMuda, ["tidak ada blok pas"], 9)),
+    ),
   ],
 };
 
-/* ------------------------------ 4. Urai Bangun: bentuk huruf L ------------------------------ */
-export const BANGUN_L = [P(110, 50), P(150, 50), P(150, 90), P(190, 90), P(190, 130), P(110, 130)];
-export const L_ATAS = [P(110, 50), P(150, 50), P(150, 90), P(110, 90)];
-export const L_BAWAH = [P(110, 90), P(190, 90), P(190, 130), P(110, 130)];
-const SUARA_U1 = "Metode kedua bernama Urai Bangun. Kita memecah satu bangun menjadi beberapa bagian.";
-const SUARA_U2 = "Ini bangun yang bentuknya seperti huruf L. Hitung sisinya: satu, dua, tiga, empat, lima, enam.";
-const SUARA_U3 = "Kita tarik satu garis lurus dari pojok yang menekuk sampai ke sisi kiri.";
-const SUARA_U4 = "Bangun L terpecah menjadi dua keping. Keduanya segi empat.";
-const SUARA_U5 = "Bangun yang rumit menjadi mudah dikenali setelah diurai.";
-const POS_U2 = urutBilangan(SUARA_U2, 1, 6, "sisinya:");
-const ARAH_L: Titik[] = [P(0, -1), P(1, 0), P(0, -1), P(1, 0), P(0, 1), P(-1, 0)];
-const ARAH_T: Titik[] = [P(0, -1), P(1, 0), P(0, 1), P(1, 0), P(0, 1), P(-1, 0), P(0, 1), P(-1, 0)];
+/* ------------------------------ Lipat Kertas: konsep ------------------------------ */
+const SUARA_L1 = "Cara kedua, Paper Folding, atau Lipat Kertas.";
+const SUARA_L2 = "Kertas dilipat dulu, dan bekas lipatannya menjadi garis untuk mengurai.";
+const SUARA_L3 = "Gunting sepanjang bekas lipatan, dan kertas terurai menjadi bagian-bagian yang sama persis.";
+const SUARA_L4 = "Dua bagian yang sama bisa ditumpuk untuk memeriksa apakah ukurannya pas.";
+const KERTAS = persegi(110, 56, 80);
 
-export const ADEGAN_LUAR_URAI: AdeganStory = {
-  id: "luar-urai",
-  judul: "Urai Bangun: bentuk huruf L",
-  sumber: "Metode luar: Urai Bangun",
-  latar: "#EFF6FF",
+export const ADEGAN_LUAR_LIPAT: AdeganStory = {
+  id: "luar-lipat",
+  judul: "Paper Folding: Lipat Kertas",
+  sumber: "Metode global: Lipat Kertas",
+  latar: "#FFFBEB",
   ketukan: [
-    k(SUARA_U1, tambah(0, ...kepala(1)), tambah(idx(SUARA_U1, "bangun", 2), bg("ut", BANGUN_L, W.krem))),
-    k(SUARA_U2, tambah(idx(SUARA_U2, "huruf"), teks("ut-lb", 245, 112, "bangun L", 9, W.ungu)), ...POS_U2.map((p, q) => tambah(p, garisSisi("ut", BANGUN_L, q), angkaSisi("ut", BANGUN_L, q, 10, ARAH_L[q])))),
-    k(SUARA_U3, hapus(idx(SUARA_U3, "Kita"), ...Array.from({ length: 6 }, (_, i) => [`uts${i}`, `utsn${i}`]).flat()), tambah(idx(SUARA_U3, "tarik"), garisUrai(0, P(150, 90), P(110, 90)))),
-    k(SUARA_U4, tambah(idx(SUARA_U4, "dua"), keping(0, L_ATAS), keping(1, L_BAWAH)), ubah(idx(SUARA_U4, "Keduanya"), { id: "kp0", y: -6 }, { id: "kp1", y: 6 }), tambah(idx(SUARA_U4, "segi"), hasilHitung("2 segi empat", 160))),
-    k(SUARA_U5, tambah(idx(SUARA_U5, "rumit"), ...kartu("ur", 40, 170, 220, 24, W.emas, ["pecah, lalu kenali tiap bagian"], 9.6))),
-  ],
-};
-
-/* ------------------------------ 5. Urai Bangun: bentuk huruf T ------------------------------ */
-export const BANGUN_T = [P(90, 50), P(210, 50), P(210, 80), P(165, 80), P(165, 130), P(135, 130), P(135, 80), P(90, 80)];
-export const T_ATAS = [P(90, 50), P(210, 50), P(210, 80), P(90, 80)];
-export const T_BATANG = [P(135, 80), P(165, 80), P(165, 130), P(135, 130)];
-const SUARA_V1 = "Coba satu bangun lagi, yang bentuknya seperti huruf T.";
-const SUARA_V2 = "Hitung sisinya: satu, dua, tiga, empat, lima, enam, tujuh, delapan.";
-const SUARA_V3 = "Kita tarik satu garis lurus mendatar tepat di bawah bagian atas huruf T.";
-const SUARA_V4 = "Berapa keping yang terbentuk? Ketuk jawabannya.";
-const SUARA_V5 = "Betul, dua keping! Keduanya segi empat.";
-const POS_V2 = urutBilangan(SUARA_V2, 1, 8, "sisinya:");
-
-export const ADEGAN_LUAR_URAI_TERAPAN: AdeganStory = {
-  id: "luar-urai-terapan",
-  judul: "Urai Bangun: bentuk huruf T",
-  sumber: "Metode luar: Urai Bangun, terapan",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_V1, tambah(0, ...kepala(1)), tambah(idx(SUARA_V1, "bangun"), bg("ut", BANGUN_T, W.krem), teks("ut-lb", 250, 104, "bangun T", 9, W.ungu))),
-    k(SUARA_V2, ...POS_V2.map((p, q) => tambah(p, garisSisi("ut", BANGUN_T, q), angkaSisi("ut", BANGUN_T, q, 10, ARAH_T[q])))),
-    k(SUARA_V3, hapus(idx(SUARA_V3, "Kita"), ...Array.from({ length: 8 }, (_, i) => [`uts${i}`, `utsn${i}`]).flat()), tambah(idx(SUARA_V3, "tarik"), garisUrai(0, P(90, 80), P(210, 80)))),
-    k(SUARA_V4, tambah(idx(SUARA_V4, "Ketuk"), ...pilihKata(158, ["2 keping", "3 keping", "4 keping"], 11))),
-    k(SUARA_V5, sorotkan(idx(SUARA_V5, "Betul,"), "c1-k"), tambah(idx(SUARA_V5, "dua"), keping(0, T_ATAS), keping(1, T_BATANG)), ubah(idx(SUARA_V5, "Keduanya"), { id: "kp1", y: 4 }), tambah(idx(SUARA_V5, "segi"), hasilHitung("2 segi empat", 146, 10))),
+    k(
+      SUARA_L1,
+      tambah(0, judul("2. Lipat Kertas")),
+      tambah(idx(SUARA_L1, "kedua,"), ...kartu("kb", 60, 40, 180, 30, "#FDE68A", ["Paper Folding"], 12)),
+      tambah(idx(SUARA_L1, "Lipat"), ...kartu("kc", 80, 84, 140, 26, "#FEF9C3", ["Lipat Kertas"], 11), bg("kr", persegi(112, 124, 76, 56), "#FFFFFF", { z: 1, tebal: 2 })),
+    ),
+    k(
+      SUARA_L2,
+      hapus(idx(SUARA_L2, "Kertas"), "kb-k", "kb-t0", "kc-k", "kc-t0", "kr"),
+      tambah(idx(SUARA_L2, "Kertas"), bg("kt", KERTAS, "#FFFFFF", { z: 1, tebal: 2.2 })),
+      tambah(idx(SUARA_L2, "dilipat"), garis("fl", 110, 56, 80, 80, "#2563EB", 2.4, { putus: true, z: 4 })),
+      tambah(idx(SUARA_L2, "bekas"), emo("lp", 224, 70, "\u{1F4D0}", 20)),
+      tambah(idx(SUARA_L2, "garis"), teks("gl", 150, 160, "bekas lipatan = garis", 10, W.biru)),
+    ),
+    k(
+      SUARA_L3,
+      hapus(idx(SUARA_L3, "Gunting"), "lp", "gl"),
+      tambah(idx(SUARA_L3, "Gunting"), emo("gt", 96, 120, E.gunting, 22, { z: 6 })),
+      ubah(idx(SUARA_L3, "terurai"), { id: "kt", op: 0.2 }, { id: "gt", x: 214, y: 56 }),
+      tambah(idx(SUARA_L3, "menjadi"), bg("g0", [P(110, 56), P(190, 56), P(190, 136)], "#FEF9C3", { z: 3, x: 14, y: -4 }), bg("g1", [P(110, 56), P(190, 136), P(110, 136)], "#FDE68A", { z: 3, x: -14, y: 4 })),
+      tambah(idx(SUARA_L3, "persis."), teks("sm", 150, 172, "sama persis", 11, W.ungu)),
+    ),
+    k(
+      SUARA_L4,
+      hapus(idx(SUARA_L4, "Dua"), "gt", "kt", "fl", "sm"),
+      tambah(idx(SUARA_L4, "Dua"), teks("d2", 240, 100, "2 bagian", 11, W.merah)),
+      ubah(idx(SUARA_L4, "ditumpuk"), { id: "g0", x: -28, y: 22 }, { id: "g1", x: -10, y: 0 }),
+      tambah(idx(SUARA_L4, "pas."), emo("ok", 150, 180, E.benar, 20), bg("tp", [P(110, 56), P(190, 136), P(110, 136)], "none", { z: 5, tebal: 2.4, x: -10 })),
+    ),
   ],
 };

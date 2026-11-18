@@ -2,100 +2,62 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import LabBertahap, { type TabLab } from "./LabBertahap";
-import SimulasiBentukDatar from "./SimulasiBentukDatar";
-import SimulasiMesinDetektif from "./SimulasiMesinDetektif";
-import SimulasiBengkelUrai from "./SimulasiBengkelUrai";
-import SimulasiLabPola from "./SimulasiLabPola";
-import SimulasiLerengGelinding from "./SimulasiLerengGelinding";
-import SimulasiLabCetak from "./SimulasiLabCetak";
-import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K2B3 } from "./skenario-k2b3";
-import { daftarMisiK2Bab3, type KeadaanK2Bab3 } from "./misi-k2bab3";
-import { laporMisi, tampilMisi } from "./misi-simulasi";
+import { daftarMisiK2Bab3 } from "./misi-k2bab3";
+import { laporMisi } from "./misi-simulasi";
+import SimulasiPetakUbin from "./ubin-k2b3a/SimulasiPetakUbin";
+import { MISI_PETAK } from "./ubin-k2b3a/data-peta";
+import type { KeadaanUbin } from "./ubin-k2b3a/logika";
+import SimulasiPapanPuzzle from "./puzzle-k2b3b/SimulasiPapanPuzzle";
+import { MISI_PAPAN_TEKS } from "./puzzle-k2b3b/data";
+import type { KeadaanPuzzle } from "./puzzle-k2b3b/logika";
+import SimulasiGudangMainan from "./gudang-k2b3c/SimulasiGudangMainan";
+import { MISI_GUDANG } from "./gudang-k2b3c/data";
+import type { KeadaanGudang } from "./gudang-k2b3c/logika";
 
 /* ======================================================================== */
-/* Simulasi Kelas 2 Bab 3 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
-/* alat bertambah per sub-bab, dengan misi wajib dan tantangan bebas         */
-/* (misi-k2bab3.ts).                                                         */
-/*   Sub-Bab A (bentuk datar): Lab Bentuk Datar (dengan Cetakan) + Mesin     */
-/*                             Tiga Pertanyaan.                              */
-/*   Sub-Bab B (mengurai dan menyusun): Bengkel Urai + Lab Pola Segitiga +   */
-/*                             Lab Bentuk Datar (mengingat Sub-Bab A).       */
-/*   Sub-Bab C (akhir, bangun ruang): Lereng Gelinding + Lab Cetak           */
-/*                             Permukaan + skenario Toko Mainan Upe.         */
+/* Simulasi Kelas 2 Bab 3 di dalam Materi (tahap 4 SMISCPA). Taman Bermain   */
+/* Sekolah: Sub-Bab A Petak Ubin, Sub-Bab B Papan Puzzle, Sub-Bab C Gudang   */
+/* Mainan. KERANGKA: agen Sub-Bab mengisi fungsi langkahPetakUbinA /         */
+/* langkahPapanPuzzleB / langkahGudangMainanC (impor dari folder miliknya).  */
 /* ======================================================================== */
 
-const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
+/** Sub-Bab C (akhir bab): Gudang Mainan. */
+const langkahGudangMainanC = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Gudang Mainan",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_GUDANG,
+  misiDaftar: daftarMisiK2Bab3("C").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiGudangMainan speakGuru={a.speakGuru} onKeadaan={(k: KeadaanGudang) => laporMisi(daftarMisiK2Bab3("C"), k, a.capai)} />,
+});
 
-const MISI = {
-  A: "Hitung sisi segi lima, uji lingkaran dan bentuk lonjong dengan Cetakan, lalu selesaikan Mesin Tiga Pertanyaan. Selesaikan misi wajib di bawah, urutannya bebas.",
-  B: "Potong bentuk lewat diagonal, uraikan segi enam menjadi segitiga, lalu temukan polanya di Lab Pola. Selesaikan misi wajib, lalu coba tantangan bebas.",
-  C: "Lepaskan bangun ruang di lereng, cetak permukaannya, lalu selesaikan skenario Toko Mainan Upe. Selesaikan semua misi wajib.",
-} as const;
+/** Sub-Bab B (tengah cerita): Papan Puzzle. */
+const langkahPapanPuzzleB = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Papan Puzzle",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_PAPAN_TEKS,
+  misiDaftar: daftarMisiK2Bab3("B").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiPapanPuzzle speakGuru={a.speakGuru} onKeadaan={(k: KeadaanPuzzle) => laporMisi(daftarMisiK2Bab3("B"), k, a.capai)} />,
+});
 
-const NAMA_SIM = {
-  A: "Lab Bentuk Datar dan Mesin Tiga Pertanyaan",
-  B: "Bengkel Urai dan Lab Pola Segitiga",
-  C: "Bangun Ruang: Pencapaian Misi",
-} as const;
+/** Sub-Bab A (awal cerita): Petak Ubin. */
+const langkahPetakUbinA = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Petak Ubin",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_PETAK,
+  misiDaftar: daftarMisiK2Bab3("A").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiPetakUbin speakGuru={a.speakGuru} onKeadaan={(k: KeadaanUbin) => laporMisi(daftarMisiK2Bab3("A"), k, a.capai)} />,
+});
 
 const langkahK2Bab3 = (sub: string): LangkahSim[] => {
-  const huruf = (["A", "B", "C"].includes(sub) ? sub : "A") as "A" | "B" | "C";
-  const daftar = daftarMisiK2Bab3(huruf);
-  return [
-    {
-      metode: "PhET",
-      sub: NAMA_SIM[huruf],
-      petunjuk: MAINKAN_DULU,
-      misi: MISI[huruf],
-      misiDaftar: tampilMisi(daftar),
-      mode: "sentuh",
-      render: (a) => {
-        const lapor = (k: KeadaanK2Bab3) => laporMisi(daftar, k, a.capai);
-        const selesai = (id: string) => lapor({ alat: "selesai", id });
-
-        const bentuk: TabLab = {
-          id: "bentuk",
-          nama: "Lab Bentuk Datar",
-          render: () => <SimulasiBentukDatar speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const detektif: TabLab = {
-          id: "detektif",
-          nama: "Mesin Tiga Pertanyaan",
-          render: () => <SimulasiMesinDetektif speakGuru={a.speakGuru} onTuntas={() => selesai("detektif")} />,
-        };
-        const urai: TabLab = {
-          id: "urai",
-          nama: "Bengkel Urai",
-          render: () => <SimulasiBengkelUrai speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const pola: TabLab = {
-          id: "pola",
-          nama: "Lab Pola Segitiga",
-          render: () => <SimulasiLabPola speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const lereng: TabLab = {
-          id: "lereng",
-          nama: "Lereng Gelinding",
-          render: () => <SimulasiLerengGelinding speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const cetak: TabLab = {
-          id: "cetak",
-          nama: "Lab Cetak",
-          render: () => <SimulasiLabCetak speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const skenario: TabLab = {
-          id: "skenario",
-          nama: "Toko Mainan Upe",
-          render: () => <SimulasiSkenario def={SKENARIO_K2B3} speakGuru={a.speakGuru} onTuntas={() => selesai("toko-mainan")} />,
-        };
-
-        const tab = huruf === "A" ? [bentuk, detektif] : huruf === "B" ? [urai, pola, bentuk] : [lereng, cetak, skenario];
-        return <LabBertahap tab={tab} label="Alat laboratorium bentuk dan bangun ruang" />;
-      },
-    },
-  ];
+  if (sub === "B") return [langkahPapanPuzzleB()];
+  if (sub === "C") return [langkahGudangMainanC()];
+  return [langkahPetakUbinA()];
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */
@@ -115,7 +77,7 @@ export default function SimulasiK2Bab3Materi({
   const huruf = ["A", "B", "C"].includes(sub) ? sub : "A";
   return (
     <SimulasiAlur
-      judulBab={`Kelas 2 Bab 3 · Sub-Bab ${huruf}`}
+      judulBab={`Bab 3 · Sub-Bab ${huruf}`}
       langkah={langkahK2Bab3(sub)}
       speakGuru={speakGuru}
       onSelesai={onSelesai}

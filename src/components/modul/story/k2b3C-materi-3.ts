@@ -1,160 +1,146 @@
 import type { AdeganStory } from "./logika-story";
-import { W, chipPermukaan, emo, judul, kartu, letakTitikSudut, ruang, rusukBox, teks, tengahRusuk, titikSudut, cocok, type Titik } from "./k2b3C-gambar";
-import { bersih, hapus, hitungObjek, idx, k, redamkan, sorotkan, tambah } from "./k2b3C-bantu";
+import { E, W, benda, emo, geserBola, gerbang, isiTabelRuang, judul, kartu, konfeti, lantai, papanCatatan, papanPuzzle, petakUbin, rak, tabelRuang, teks, tokoh, wadah } from "./k2b3C-gambar";
+import { bersih, k, sorotkan, tambah, ubah } from "./k2b3C-bantu";
 
-/* Kubus besar: pusat dan ukuran dipakai bersama adegan sisi dan rusuk. */
-export const KUBUS = { cx: 92, cy: 112, s: 50 };
+/*
+ * Cerita orisinal IGIL "Gudang Mainan Pak Rudi" (Kelas 2 Bab 3 Sub-Bab C, bangun ruang), akhir cerita Taman Bermain Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b3c.md. Bagian ini: tabel catatan Dika, rak yang rapi, dan penutup perayaan taman dibuka.
+ */
 
-/** Titik angka di luar balok: dari pusat menuju tengah rusuk atau titik sudut, ditambah `jarak` ke luar. */
-const keluar = (p: Titik, cx: number, cy: number, jarak: number): Titik => {
-  const dx = p.x - cx;
-  const dy = p.y - cy;
-  const n = Math.hypot(dx, dy) || 1;
-  return { x: p.x + (dx / n) * jarak, y: p.y + (dy / n) * jarak + 3 };
-};
-export const titikAngkaRusuk = (jenis: "kubus" | "balok", cx: number, cy: number, s: number): Titik[] => Array.from({ length: 12 }, (_, i) => keluar(tengahRusuk(jenis, cx, cy, s, i), cx, cy, 11));
-export const titikAngkaSudut = (jenis: "kubus" | "balok", cx: number, cy: number, s: number): Titik[] => Array.from({ length: 8 }, (_, i) => keluar(letakTitikSudut(jenis, cx, cy, s, i), cx, cy, 10));
+/* ------------------------------ 7. Tabel di papan catatan ------------------------------ */
+const SUARA_T1 = "Dika membuat tabel di papan catatan dengan lima baris: kubus, balok, tabung, kerucut, dan bola.";
+const SUARA_T2 = "Dadu masuk baris kubus, kotak pensil masuk baris balok, dan kaleng masuk baris tabung.";
+const SUARA_T3 = "Topi pesta masuk baris kerucut, dan kelereng masuk baris bola.";
 
-/* ------------------------------ 1. Kubus: enam sisi ------------------------------ */
-export const SISI_KUBUS = ["depan", "atas", "kanan", "belakang", "bawah", "kiri"];
-const letakSisi = (i: number): { x: number; y: number } => ({ x: i < 3 ? 176 : 236, y: 44 + (i % 3) * 32 });
-const SUARA_S1 = "Sekarang kita kenali kubus. Dadu adalah contoh kubus.";
-const SUARA_S2 = "Kubus punya permukaan berbentuk segi empat yang sama besar. Permukaan kubus kita sebut sisi.";
-const SUARA_S3 = "Ayo hitung sisinya. Satu depan, dua atas, tiga kanan, empat belakang, lima bawah, enam kiri.";
-const SUARA_S4 = "Jadi kubus punya enam sisi, dan semua sisinya segi empat yang sama besar.";
-const SUARA_S5 = "Dadu juga begitu. Dadu punya enam sisi, dan tiap sisi punya satu angka dari satu sampai enam.";
+const TB = { x: 70, y: 34 };
+const BARIS_KOSONG = [0, 1, 2, 3, 4].map(() => ({ bangun: "", benda: "" }));
+const NAMA_BARIS = ["kubus", "balok", "tabung", "kerucut", "bola"];
+const sorotBaris = (id: string, i: number) => [`${id}-r${i}a`, `${id}-r${i}b`];
 
-export const ADEGAN_KUBUS_SISI: AdeganStory = {
-  id: "kubus-sisi",
-  judul: "Kubus: enam sisi",
-  sumber: "Materi: kubus dan sisinya",
-  latar: "#FEF2F2",
-  ketukan: [
-    k(SUARA_S1, tambah(0, judul("Kubus")), tambah(idx(SUARA_S1, "kubus"), ...ruang("kubus", "kba", KUBUS.cx, KUBUS.cy, KUBUS.s)), tambah(idx(SUARA_S1, "Dadu"), teks("dd", KUBUS.cx, 178, "contoh: dadu", 10, W.merah))),
-    k(SUARA_S2, tambah(idx(SUARA_S2, "segi"), ...kartu("sg", 168, 56, 124, 40, W.krem, ["segi empat", "sama besar"], 10)), sorotkan(idx(SUARA_S2, "sama"), "kba-fd", "kba-fa", "kba-fk"), tambah(idx(SUARA_S2, "sisi"), teks("ns", 230, 124, "disebut sisi", 11, W.merah))),
-    k(
-      SUARA_S3,
-      redamkan(0, "kba-fd", "kba-fa", "kba-fk"),
-      hapus(0, "sg-k", "sg-t0", "sg-t1", "ns"),
-      ...SISI_KUBUS.map((nama, i) => tambah(idx(SUARA_S3, ["Satu", "dua", "tiga", "empat", "lima", "enam"][i]), ...kartu(`kba-s${i}`, letakSisi(i).x, letakSisi(i).y, 56, 24, i < 3 ? W.hijauMuda : W.langit, [`${i + 1} ${nama}`], 8.6))),
-      sorotkan(idx(SUARA_S3, "depan"), "kba-fd"),
-      redamkan(idx(SUARA_S3, "atas"), "kba-fd"),
-      sorotkan(idx(SUARA_S3, "atas"), "kba-fa"),
-      redamkan(idx(SUARA_S3, "kanan"), "kba-fa"),
-      sorotkan(idx(SUARA_S3, "kanan"), "kba-fk"),
-      redamkan(idx(SUARA_S3, "belakang"), "kba-fk"),
-    ),
-    k(SUARA_S4, tambah(idx(SUARA_S4, "enam"), teks("e6", 230, 156, "6 sisi", 14, W.merah)), tambah(idx(SUARA_S4, "sama"), cocok("ok", 230, 186, 20))),
-    k(SUARA_S5, hapus(0, "dd"), tambah(idx(SUARA_S5, "Dadu"), teks("dd", KUBUS.cx, 178, "dadu: sisi 1 sampai 6", 9.6, W.biru))),
-  ],
-};
-
-/* ------------------------------ 2. Kubus: rusuk dan titik sudut ------------------------------ */
-const PTS_RUSUK = titikAngkaRusuk("kubus", KUBUS.cx, KUBUS.cy, KUBUS.s);
-const PTS_SUDUT = titikAngkaSudut("kubus", KUBUS.cx, KUBUS.cy, KUBUS.s);
-const SUARA_RK1 = "Sisi-sisi kubus bertemu di sebuah garis. Garis tempat sisi bertemu itu kita sebut rusuk.";
-const SUARA_RK2 = "Ayo hitung rusuknya. Satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh, sebelas, dua belas.";
-const SUARA_RK3 = "Rusuk yang putus-putus tersembunyi di belakang kubus. Jadi kubus punya dua belas rusuk.";
-const SUARA_RK4 = "Rusuk-rusuk bertemu di pojok. Pojok itu kita sebut titik sudut.";
-const SUARA_RK5 = "Ayo hitung titik sudutnya. Satu, dua, tiga, empat, lima, enam, tujuh, delapan.";
-const SUARA_RK6 = "Jadi kubus punya enam sisi, dua belas rusuk, dan delapan titik sudut.";
-
-export const ADEGAN_KUBUS_RUSUK: AdeganStory = {
-  id: "kubus-rusuk",
-  judul: "Kubus: rusuk dan titik sudut",
-  sumber: "Materi: rusuk dan titik sudut kubus",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(SUARA_RK1, tambah(0, judul("Rusuk kubus"), ...ruang("kubus", "kba", KUBUS.cx, KUBUS.cy, KUBUS.s)), tambah(idx(SUARA_RK1, "garis"), rusukBox("kubus", "kba", KUBUS.cx, KUBUS.cy, KUBUS.s, 3)), tambah(idx(SUARA_RK1, "rusuk"), teks("lr", 230, 100, "rusuk", 14, W.merah))),
-    k(
-      SUARA_RK2,
-      hapus(0, "lr"),
-      ...hitungObjek(SUARA_RK2, "kbar", PTS_RUSUK, (i) => [rusukBox("kubus", "kba", KUBUS.cx, KUBUS.cy, KUBUS.s, i)], { setelah: "rusuknya" }),
-    ),
-    k(SUARA_RK3, tambah(idx(SUARA_RK3, "putus-putus"), ...kartu("hd", 176, 150, 114, 28, W.krem, ["tersembunyi: putus-putus"], 7.4)), tambah(idx(SUARA_RK3, "dua"), teks("e12", 232, 110, "12 rusuk", 14, W.merah))),
-    k(
-      SUARA_RK4,
-      bersih(0),
-      tambah(0, judul("Titik sudut kubus"), ...ruang("kubus", "kba", KUBUS.cx, KUBUS.cy, KUBUS.s)),
-      tambah(idx(SUARA_RK4, "pojok"), titikSudut("kubus", "kba", KUBUS.cx, KUBUS.cy, KUBUS.s, 0)),
-      tambah(idx(SUARA_RK4, "titik"), teks("lt", 230, 100, "titik sudut", 12, W.merah)),
-    ),
-    k(SUARA_RK5, hapus(0, "lt"), ...hitungObjek(SUARA_RK5, "kbat", PTS_SUDUT, (i) => [titikSudut("kubus", "kba", KUBUS.cx, KUBUS.cy, KUBUS.s, i)], { setelah: "sudutnya" })),
-    k(
-      SUARA_RK6,
-      tambah(idx(SUARA_RK6, "enam"), teks("r1", 236, 70, "6 sisi", 12, W.merah)),
-      tambah(idx(SUARA_RK6, "dua"), teks("r2", 236, 100, "12 rusuk", 12, W.merah)),
-      tambah(idx(SUARA_RK6, "delapan"), teks("r3", 236, 130, "8 titik sudut", 11, W.merah)),
-    ),
-  ],
-};
-
-/* ------------------------------ 3. Balok ------------------------------ */
-export const BALOK = { cx: 90, cy: 106, s: 34 };
-const SUARA_BL1 = "Sekarang balok. Kardus dan kotak hadiah yang panjang adalah contoh balok.";
-const SUARA_BL2 = "Balok juga punya enam sisi berbentuk segi empat. Tetapi ukuran sisinya tidak sama semua.";
-const SUARA_BL3 = "Kubus punya sisi yang semuanya sama besar. Balok punya sisi yang berbeda ukuran.";
-const SUARA_BL4 = "Balok punya dua belas rusuk dan delapan titik sudut. Jumlahnya sama dengan kubus.";
-const SUARA_BL5 = "Jadi kubus dan balok sama-sama punya enam sisi, dua belas rusuk, dan delapan titik sudut.";
-
-export const ADEGAN_BALOK: AdeganStory = {
-  id: "balok",
-  judul: "Balok: enam sisi berbeda ukuran",
-  sumber: "Materi: balok",
+export const ADEGAN_TABEL: AdeganStory = {
+  id: "tabel",
+  judul: "Tabel di papan catatan",
+  sumber: "Materi: tabel bangun ruang dan benda",
   latar: "#FFFBEB",
   ketukan: [
-    k(SUARA_BL1, tambah(0, judul("Balok")), tambah(idx(SUARA_BL1, "balok"), ...ruang("balok", "bla", BALOK.cx, BALOK.cy, BALOK.s)), tambah(idx(SUARA_BL1, "Kardus"), teks("dd", BALOK.cx, 170, "contoh: kardus", 10, W.merah))),
-    k(SUARA_BL2, tambah(idx(SUARA_BL2, "enam"), teks("e6", 232, 60, "6 sisi", 14, W.merah)), sorotkan(idx(SUARA_BL2, "segi"), "bla-fd", "bla-fa", "bla-fk"), tambah(idx(SUARA_BL2, "tidak"), ...kartu("bs", 176, 76, 116, 30, W.krem, ["ukuran berbeda"], 10))),
     k(
-      SUARA_BL3,
-      redamkan(0, "bla-fd", "bla-fa", "bla-fk"),
-      tambah(idx(SUARA_BL3, "Kubus"), ...ruang("kubus", "kba", 232, 142, 26), teks("lk-kb", 232, 180, "kubus: sama", 8.6)),
-      tambah(idx(SUARA_BL3, "Balok", 1), teks("lk-bl", BALOK.cx, 150, "balok: berbeda", 8.6)),
+      SUARA_T1,
+      tambah(0, judul("Papan catatan Dika")),
+      tambah("Dika", tokoh("dk", 272, 100, "dika")),
+      tambah("papan", papanCatatan("pc", 64, 24, 188, 146)),
+      tambah("tabel", ...tabelRuang("tb", TB.x, TB.y, BARIS_KOSONG)),
+      tambah("lima", ...kartu("lm", 150, 174, 100, 18, W.krem, ["5 baris"], 9.4)),
+      tambah("kubus,", isiTabelRuang("tb", TB.x, TB.y, 0, 0, NAMA_BARIS[0]), isiTabelRuang("tb", TB.x, TB.y, 1, 0, NAMA_BARIS[1])),
+      tambah("tabung,", isiTabelRuang("tb", TB.x, TB.y, 2, 0, NAMA_BARIS[2])),
+      tambah("kerucut,", isiTabelRuang("tb", TB.x, TB.y, 3, 0, NAMA_BARIS[3])),
+      tambah("bola.", isiTabelRuang("tb", TB.x, TB.y, 4, 0, NAMA_BARIS[4])),
     ),
     k(
-      SUARA_BL4,
-      hapus(0, "lk-bl", "dd"),
-      ...Array.from({ length: 12 }, (_, i) => tambah(idx(SUARA_BL4, "dua"), rusukBox("balok", "bla", BALOK.cx, BALOK.cy, BALOK.s, i, W.hijau))),
-      ...Array.from({ length: 8 }, (_, i) => tambah(idx(SUARA_BL4, "delapan"), titikSudut("balok", "bla", BALOK.cx, BALOK.cy, BALOK.s, i))),
-      tambah(idx(SUARA_BL4, "dua"), teks("r2", 60, 168, "12 rusuk", 11, W.merah)),
-      tambah(idx(SUARA_BL4, "delapan"), teks("r3", 140, 168, "8 titik sudut", 10.4, W.merah)),
+      SUARA_T2,
+      tambah("Dadu", ...benda("b1", "dadu", 34, 70, 24)),
+      sorotkan("masuk", ...sorotBaris("tb", 0)),
+      tambah("kubus,", isiTabelRuang("tb", TB.x, TB.y, 0, 1, "dadu", W.merah)),
+      tambah("kotak", ...benda("b2", "balok", 34, 92, 22)),
+      sorotkan("balok,", ...sorotBaris("tb", 1)),
+      tambah("balok,", isiTabelRuang("tb", TB.x, TB.y, 1, 1, "kotak pensil", W.merah)),
+      tambah("kaleng", ...benda("b3", "kaleng", 34, 116, 24)),
+      tambah("tabung.", isiTabelRuang("tb", TB.x, TB.y, 2, 1, "kaleng", W.merah)),
     ),
     k(
-      SUARA_BL5,
-      bersih(0),
-      tambah(0, judul("Kubus dan balok")),
-      tambah(idx(SUARA_BL5, "Jadi"), ...ruang("kubus", "kba", 60, 70, 24), ...ruang("balok", "bla", 140, 70, 20)),
-      tambah(idx(SUARA_BL5, "enam"), ...kartu("t1", 20, 118, 80, 28, W.hijauMuda, ["6 sisi"], 11)),
-      tambah(idx(SUARA_BL5, "dua"), ...kartu("t2", 110, 118, 80, 28, W.krem, ["12 rusuk"], 11)),
-      tambah(idx(SUARA_BL5, "delapan"), ...kartu("t3", 200, 118, 90, 28, W.pink, ["8 titik sudut"], 10)),
+      SUARA_T3,
+      tambah("Topi", ...benda("b4", "topi", 34, 140, 24)),
+      tambah("kerucut,", isiTabelRuang("tb", TB.x, TB.y, 3, 1, "topi pesta", W.merah)),
+      tambah("kelereng", ...benda("b5", "kelereng", 34, 166, 20)),
+      tambah("bola.", isiTabelRuang("tb", TB.x, TB.y, 4, 1, "kelereng", W.merah)),
+      tambah("bola.", emo("ok", 272, 140, E.jempol, 20)),
     ),
   ],
 };
 
-/* ------------------------------ 4. Tabung ------------------------------ */
-export const TABUNG = { cx: 86, cy: 108, s: 46 };
-const SUARA_TB1 = "Sekarang tabung. Kaleng dan botol adalah contoh tabung.";
-const SUARA_TB2 = "Tabung punya dua permukaan datar. Bentuknya lingkaran, satu di atas dan satu di bawah.";
-const SUARA_TB3 = "Tabung juga punya satu permukaan lengkung, yaitu bagian sampingnya.";
-const SUARA_TB4 = "Karena ada permukaan lengkung, tabung mudah menggelinding kalau berbaring. Kalau berdiri, tabung kokoh.";
-const SUARA_TB5 = "Jadi tabung punya dua permukaan datar dan satu permukaan lengkung.";
+/* ------------------------------ 8. Rak yang rapi ------------------------------ */
+const SUARA_R1 = "Bu Sari meminta Chacha menata rak. Kardus dan dadu ditumpuk di rak yang datar.";
+const SUARA_R2 = "Bola dan kelereng ditaruh di wadah berpagar, supaya tidak menggelinding lagi.";
+const SUARA_R3 = "Kali ini semua mainan diam di tempatnya, dan Chacha bernapas lega.";
 
-export const ADEGAN_TABUNG: AdeganStory = {
-  id: "tabung",
-  judul: "Tabung: dua datar, satu lengkung",
-  sumber: "Materi: tabung",
-  latar: "#F0FDF4",
+export const ADEGAN_RAK_RAPI: AdeganStory = {
+  id: "rak-rapi",
+  judul: "Menata rak",
+  sumber: "Materi: rak datar dan wadah berpagar",
+  latar: "#F0F9FF",
   ketukan: [
-    k(SUARA_TB1, tambah(0, judul("Tabung")), tambah(idx(SUARA_TB1, "tabung"), ...ruang("tabung", "tba", TABUNG.cx, TABUNG.cy, TABUNG.s)), tambah(idx(SUARA_TB1, "Kaleng"), teks("dd", TABUNG.cx, 178, "contoh: kaleng", 10, W.merah))),
     k(
-      SUARA_TB2,
-      sorotkan(idx(SUARA_TB2, "lingkaran"), "tba-ta"),
-      tambah(idx(SUARA_TB2, "satu"), ...chipPermukaan("tba", 0, 176, 50, "datar"), teks("tba-l0", 152, 64, "atas", 9, W.biru, { anchor: "end" })),
-      tambah(idx(SUARA_TB2, "satu", 2), ...chipPermukaan("tba", 1, 176, 82, "datar"), teks("tba-l1", 152, 96, "bawah", 9, W.biru, { anchor: "end" })),
+      SUARA_R1,
+      tambah(0, judul("Rak yang rapi"), lantai("lt", 150)),
+      tambah("Sari", tokoh("sr", 272, 172, "sari")),
+      tambah("Chacha", tokoh("ch", 28, 172, "chacha")),
+      tambah("rak.", ...rak("rk", 70, 112, 120), teks("rn", 130, 106, "rak datar", 8.6, W.coklat)),
+      tambah("Kardus", ...benda("k1", "kardus", 98, 97, 30)),
+      tambah("dadu", ...benda("dd", "dadu", 160, 97, 30)),
+      tambah("ditumpuk", ...benda("k2", "kardus", 98, 76, 30)),
     ),
-    k(SUARA_TB3, redamkan(0, "tba-ta"), sorotkan(idx(SUARA_TB3, "lengkung"), "tba-bd"), tambah(idx(SUARA_TB3, "sampingnya"), ...chipPermukaan("tba", 2, 176, 114, "lengkung"), teks("tba-l2", 152, 128, "samping", 9, W.biru, { anchor: "end" }))),
-    k(SUARA_TB4, redamkan(0, "tba-bd"), tambah(idx(SUARA_TB4, "menggelinding"), ...kartu("mg", 176, 150, 114, 28, W.krem, ["berbaring: menggelinding"], 7.6)), tambah(idx(SUARA_TB4, "berdiri"), emo("ok", 232, 196, "✅", 14))),
-    k(SUARA_TB5, tambah(idx(SUARA_TB5, "dua"), teks("sm", TABUNG.cx, 158, "2 datar, 1 lengkung", 9.6, W.merah))),
+    k(
+      SUARA_R2,
+      tambah("Bola", ...benda("bl", "bola", 212, 104, 16)),
+      tambah("kelereng", ...benda("kr", "kelereng", 244, 106, 14)),
+      tambah("wadah", ...wadah("wd", 196, 128, 76, 20)),
+      ubah("berpagar,", ...geserBola("bl", 214, 138, 8), ...geserBola("kr", 246, 139, 7)),
+      tambah("tidak", emo("sl", 230, 112, "\u{274C}", 14)),
+      tambah("lagi.", emo("jm", 150, 190, E.jempol, 18)),
+    ),
+    k(
+      SUARA_R3,
+      tambah("Kali", ...kartu("sm", 60, 28, 180, 20, W.hijauMuda, ["semua mainan diam"], 10)),
+      sorotkan("tempatnya,", "k1-d", "dd-d", "wd"),
+      ubah("Chacha", { id: "ch", isi: E.lega }),
+      tambah("bernapas", emo("an", 52, 146, E.angin, 16)),
+      tambah("lega.", emo("bn", 28, 138, E.bintang, 14)),
+    ),
   ],
 };
 
+/* ------------------------------ 9. Penutup: taman dibuka ------------------------------ */
+const SUARA_P1 = "Keesokan harinya taman bermain dibuka, dan anak-anak berlarian di petak ubin yang rapi.";
+const SUARA_P2 = "Papan puzzle terpasang lengkap, dan rak mainan tertata tanpa ada bola yang kabur.";
+const SUARA_P3 = "Dika merangkum. Bangun ruang bisa diisi, ada yang datar dan lengkung. Menurutmu, bentuk apa yang paling kamu suka di taman ini? Terima kasih, Chacha, Dika, Nia, Bu Sari, dan Pak Rudi!";
+
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Taman bermain dibuka",
+  sumber: "Materi: taman dibuka dan rangkuman",
+  latar: "#ECFDF5",
+  ketukan: [
+    k(
+      SUARA_P1,
+      tambah(0, judul("Hari pembukaan"), lantai("lt", 120, "#BBF7D0")),
+      tambah("taman", ...gerbang("gb", 60, 24, 180, "Taman Dibuka")),
+      tambah("dibuka,", ...konfeti("kf", 4, 40, 290, 70, 14), emo("kn", 28, 64, E.konfeti, 22), emo("kn2", 272, 64, E.konfeti, 22)),
+      tambah("anak-anak", emo("ak1", 100, 150, E.larian, 22), emo("ak2", 150, 170, E.larian, 22), emo("ak3", 214, 150, E.larian, 22)),
+      tambah("petak", ...petakUbin("pt", 86, 128, 4, 8, 16)),
+    ),
+    k(
+      SUARA_P2,
+      tambah("Papan", ...papanPuzzle("pz", 14, 78, 22)),
+      tambah("lengkap,", emo("jp", 38, 134, E.jempol, 16)),
+      tambah("rak", ...rak("rk", 204, 94, 84)),
+      tambah("tertata", ...benda("k1", "kardus", 226, 79, 26), ...benda("dd", "dadu", 252, 79, 20)),
+      tambah("bola", ...wadah("wd", 214, 70, 30, 16)),
+      tambah("kabur.", emo("sn", 272, 62, E.senang, 18)),
+    ),
+    k(
+      SUARA_P3,
+      bersih(0),
+      tambah(0, judul("Rangkuman Dika"), lantai("lt", 130, "#BBF7D0")),
+      tambah("Dika", papanCatatan("pc", 40, 26, 220, 90)),
+      tambah("Bangun", teks("r1", 150, 56, "bangun ruang bisa diisi", 10)),
+      tambah("datar", teks("r2", 150, 76, "ada yang datar", 10, W.hijau)),
+      tambah("lengkung.", teks("r3", 150, 96, "ada yang lengkung", 10, W.merah)),
+      tambah("Menurutmu,", emo("tn", 150, 126, E.tanya, 20)),
+      tambah("Terima", emo("lb1", 30, 150, E.lambai, 16), emo("lb2", 270, 150, E.lambai, 16), ...konfeti("kf", 4, 20, 290, 100, 10)),
+      tambah("Chacha,", ...tokoh("ch", 30, 174, "chacha")),
+      tambah("Dika@2", ...tokoh("dk", 90, 174, "dika")),
+      tambah("Nia,", ...tokoh("ni", 150, 174, "nia")),
+      tambah("Sari,", ...tokoh("sr", 210, 174, "sari")),
+      tambah("Rudi!", ...tokoh("rd", 270, 174, "rudi")),
+    ),
+  ],
+};

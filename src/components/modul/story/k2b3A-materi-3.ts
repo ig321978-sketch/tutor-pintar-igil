@@ -1,143 +1,132 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { OWL, W, bangun, bulat, capLingkaran, capTelur, emo, garis, hati, judul, kartu, lingkaran, namaBangun, relBeraturan, relRumah, relSegiempat, relSegitiga, teks, telur, warnaSegi } from "./k2b3A-gambar";
-import { bersih, hapus, idx, k, redamkan, sorotkan, tambah, ubah } from "./k2b3A-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, WARNA_BENTUK, WT, bangun, bulat, capTelur, emo, garis, judul, kapur, kotak, papanCatat, papanPetak, relSegiempat, rumput, teks, telur, tengahPetak, tokoh } from "./k2b3A-gambar";
+import { hapus, k, tambah, ubah } from "./k2b3A-bantu";
 
-/* ------------------------------ 10. Lingkaran: cetak dan putar ------------------------------ */
-const SUARA_C1 = "Sekarang kita kenali lingkaran. Lingkaran berbeda dari bentuk lengkung yang lain.";
-const SUARA_C2 = "Titik di tepi lingkaran sama jauh dari titik tengah. Garis ini semuanya sama panjang.";
-const SUARA_C3 = "Sekarang kita cetak lingkaran di layar. Tekan lingkaran, lalu muncul cap tepinya.";
-const SUARA_C4 = "Sekarang putar lingkaran di atas capnya. Ke mana pun diputar, bentuknya selalu pas.";
-const SUARA_C5 = "Sekarang kita coba bentuk telur. Cetak dulu tepinya, lalu siap diputar.";
-const SUARA_C6 = "Saat telur diputar, ada bagian yang keluar dari cap. Bentuknya tidak pas.";
-const SUARA_C7 = "Jadi hanya lingkaran yang selalu pas ketika diputar. Itulah ciri lingkaran. Telur dan hati tidak punya ciri itu.";
-/** Jari-jari lingkaran pada langkah menguji: lingkaran `lg` berpusat (150, 100). */
-export const R_UJI = 38;
-const jari = (i: number, r: number): Obj => garis(`jr${i}`, 150, 98, Math.round(r * Math.cos((i * Math.PI) / 3) * 10) / 10, Math.round(r * Math.sin((i * Math.PI) / 3) * 10) / 10, W.merah, 2.4);
+/*
+ * Cerita orisinal IGIL "Ubin untuk Taman Bermain" (Kelas 2 Bab 3 Sub-Bab A, bangun datar), awal cerita Taman Bermain Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b3a.md. Bagian ini: ubin telur (bukan lingkaran), tiga pertanyaan Dika, dan penutup.
+ */
 
-export const ADEGAN_LINGKARAN_PUTAR: AdeganStory = {
-  id: "lingkaran-putar",
-  judul: "Lingkaran: cetak dan putar",
-  sumber: "Materi: lingkaran bisa berputar",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      SUARA_C1,
-      tambah(0, judul("Lingkaran")),
-      tambah(idx(SUARA_C1, "lingkaran."), lingkaran("lg", 55, 96, 24), namaBangun("lg", 55, 146, "lingkaran", 10)),
-      tambah(idx(SUARA_C1, "lain."), telur("tl", 150, 96, 34, 22), namaBangun("tl", 150, 146, "telur", 10), hati("ht", 245, 98, 24), namaBangun("ht", 245, 146, "hati", 10)),
-    ),
-    k(
-      SUARA_C2,
-      bersih(0),
-      tambah(0, judul("Sama jauh"), lingkaran("lg", 150, 98, 44)),
-      tambah(idx(SUARA_C2, "tengah."), bulat("lt", 150, 98, 3.4, W.merah, W.merah)),
-      tambah(idx(SUARA_C2, "Garis"), ...[0, 1, 2, 3, 4, 5].map((i) => jari(i, 44))),
-      tambah(idx(SUARA_C2, "panjang."), ...kartu("sj", 70, 158, 160, 26, W.krem, ["sama jauh dari tengah"], 10)),
-    ),
-    k(
-      SUARA_C3,
-      bersih(0),
-      tambah(0, judul("Cetak lingkaran"), lingkaran("lg", 150, 100, R_UJI)),
-      sorotkan(idx(SUARA_C3, "Tekan"), "lg"),
-      tambah(idx(SUARA_C3, "Tekan"), emo("tg", 150, 108, "\u{1F446}", 22)),
-      redamkan(idx(SUARA_C3, "muncul"), "lg"),
-      hapus(idx(SUARA_C3, "muncul"), "tg"),
-      tambah(idx(SUARA_C3, "cap"), capLingkaran("lg", 150, 100, R_UJI)),
-      tambah(idx(SUARA_C3, "tepinya."), ...kartu("cp", 80, 152, 140, 24, W.krem, ["cap: tepi lingkaran"], 10)),
-    ),
-    k(
-      SUARA_C4,
-      hapus(0, "cp-k", "cp-t0"),
-      tambah(idx(SUARA_C4, "putar"), garis("pt", 150, 100, R_UJI, 0, W.merah, 3)),
-      ubah(idx(SUARA_C4, "Ke"), { id: "pt", rot: 90 }),
-      ubah(idx(SUARA_C4, "diputar,"), { id: "pt", rot: 180 }),
-      ubah(idx(SUARA_C4, "selalu"), { id: "pt", rot: 300 }),
-      tambah(idx(SUARA_C4, "pas."), ...kartu("sp", 80, 152, 140, 24, W.hijauMuda, ["selalu pas"], 11)),
-    ),
-    k(
-      SUARA_C5,
-      bersih(0),
-      tambah(0, judul("Cetak telur")),
-      tambah(idx(SUARA_C5, "telur."), telur("tl", 150, 100, 44, 26)),
-      tambah(idx(SUARA_C5, "tepinya,"), capTelur("tl", 150, 100, 44, 26)),
-      tambah(idx(SUARA_C5, "siap"), ...kartu("cp", 80, 158, 140, 24, W.krem, ["cap tepi telur"], 10)),
-    ),
-    k(SUARA_C6, ubah(idx(SUARA_C6, "diputar,"), { id: "tl", rot: 90 }), hapus(idx(SUARA_C6, "keluar"), "cp-k", "cp-t0"), tambah(idx(SUARA_C6, "tidak"), emo("no", 150, 182, "❌", 24))),
-    k(
-      SUARA_C7,
-      bersih(0),
-      tambah(0, judul("Hanya lingkaran selalu pas")),
-      tambah(idx(SUARA_C7, "lingkaran"), lingkaran("lg", 75, 100, 32), capLingkaran("lg", 75, 100, 32), emo("lg-ok", 75, 166, "✅", 24), namaBangun("lg", 75, 190, "lingkaran", 11)),
-      tambah(idx(SUARA_C7, "diputar."), telur("tl", 225, 100, 40, 24, undefined, { rot: 90 }), capTelur("tl", 225, 100, 40, 24), emo("tl-no", 225, 166, "❌", 24), namaBangun("tl", 225, 190, "telur", 11)),
-    ),
-  ],
-};
+/* ------------------------------ 7. Ubin telur ------------------------------ */
+const SUARA_E1 = "Chacha memutar ubin yang berbentuk telur di atas cetakannya.";
+const SUARA_E2 = "Ubin itu tidak pas lagi, jadi bukan lingkaran.";
+const SUARA_E3 = "Chacha tertawa, ubin telurnya ikut berputar!";
 
-/* ------------------------------ 11. Temukan bentuk di layar ------------------------------ */
-const SUARA_T1 = "Ayo bantu Kira mencari bentuk bangun datar yang tampil di layar. Ketuk benda yang kamu lihat.";
-const SUARA_T2 = "Rambu ini berbentuk segitiga. Sisinya tiga.";
-const SUARA_T3 = "Bendera berbentuk segi empat. Sisinya empat.";
-const SUARA_T4 = "Rumah burung berbentuk segi lima. Sisinya lima.";
-const SUARA_T5 = "Sarang lebah berbentuk segi enam. Sisinya enam.";
-const SUARA_T6 = "Jam dinding berbentuk lingkaran, dan telur berbentuk lengkung. Keduanya tidak punya sisi lurus.";
-const SUARA_T7 = "Kamu hebat! Bentuk bangun datar ada di mana-mana. Sekarang kamu bisa mengenali dan menamainya.";
-const XB = [50, 150, 250, 50, 150, 250];
-const YB = [58, 58, 58, 134, 134, 134];
-const NAMA_BENDA = ["rambu", "bendera", "rumah burung", "sarang lebah", "jam dinding", "telur"];
-const bendaKe = (i: number): Obj =>
-  [
-    bangun("bn0", relSegitiga(40, 36), XB[0], YB[0], warnaSegi(3)),
-    bangun("bn1", relSegiempat(46, 30), XB[1], YB[1], warnaSegi(4)),
-    bangun("bn2", relRumah(38, 38), XB[2], YB[2], warnaSegi(5)),
-    bangun("bn3", relBeraturan(6, 21), XB[3], YB[3], warnaSegi(6)),
-    lingkaran("bn4", XB[4], YB[4], 20),
-    telur("bn5", XB[5], YB[5], 24, 16),
-  ][i];
-const bd = (i: number): Obj => teks(`bn${i}-bd`, XB[i], YB[i] + 32, NAMA_BENDA[i], 8.4);
-const nmB = (i: number, isi: string): Obj => teks(`bn${i}-nm`, XB[i], YB[i] + 43, isi, 9.5, W.ungu);
-
-export const ADEGAN_TEMUKAN_BENTUK: AdeganStory = {
-  id: "temukan-bentuk",
-  judul: "Temukan bentuk di layar",
-  sumber: "Materi: bangun datar pada benda",
-  latar: "#F0FDFA",
-  ketukan: [
-    k(SUARA_T1, tambah(0, judul("Cari bentuk")), tambah(idx(SUARA_T1, "layar."), ...[0, 1, 2, 3, 4, 5].map(bendaKe)), tambah(idx(SUARA_T1, "benda"), ...[0, 1, 2, 3, 4, 5].map(bd))),
-    k(SUARA_T2, sorotkan(idx(SUARA_T2, "Rambu"), "bn0"), tambah(idx(SUARA_T2, "segitiga."), nmB(0, "segitiga")), redamkan(idx(SUARA_T2, "tiga."), "bn0")),
-    k(SUARA_T3, sorotkan(idx(SUARA_T3, "Bendera"), "bn1"), tambah(idx(SUARA_T3, "empat.", 1), nmB(1, "segi empat")), redamkan(idx(SUARA_T3, "empat.", 2), "bn1")),
-    k(SUARA_T4, sorotkan(idx(SUARA_T4, "Rumah"), "bn2"), tambah(idx(SUARA_T4, "lima.", 1), nmB(2, "segi lima")), redamkan(idx(SUARA_T4, "lima.", 2), "bn2")),
-    k(SUARA_T5, sorotkan(idx(SUARA_T5, "Sarang"), "bn3"), tambah(idx(SUARA_T5, "enam.", 1), nmB(3, "segi enam")), redamkan(idx(SUARA_T5, "enam.", 2), "bn3")),
-    k(
-      SUARA_T6,
-      sorotkan(idx(SUARA_T6, "Jam"), "bn4"),
-      tambah(idx(SUARA_T6, "lingkaran,"), nmB(4, "lingkaran")),
-      sorotkan(idx(SUARA_T6, "telur"), "bn5"),
-      tambah(idx(SUARA_T6, "lengkung."), nmB(5, "lengkung")),
-      redamkan(idx(SUARA_T6, "lurus."), "bn4", "bn5"),
-    ),
-    k(SUARA_T7, tambah(idx(SUARA_T7, "hebat!"), emo("ok", 150, 196, "\u{1F31F}", 16))),
-  ],
-};
-
-/* ------------------------------ 12. Tiga pertanyaan detektif bentuk ------------------------------ */
-const SUARA_Q1 = "Sekarang kita jadi detektif bentuk. Ada tiga pertanyaan untuk mengenali bangun datar.";
-const SUARA_Q2 = "Pertanyaan pertama, tepinya garis lurus atau garis lengkung?";
-const SUARA_Q3 = "Pertanyaan kedua, kalau lurus, berapa sisinya? Hitung, lalu sebut namanya.";
-const SUARA_Q4 = "Pertanyaan ketiga, kalau lengkung, apakah pas saat diputar? Kalau selalu pas, itu lingkaran.";
-const SUARA_Q5 = "Dengan tiga pertanyaan ini, kamu bisa mengenali bangun datar apa pun. Ayo kita berlatih!";
-const kartuQ = (i: number): Obj[] =>
-  kartu(`q${i}`, 14, 34 + i * 50, 272, 44, [W.langit, W.hijauMuda, W.pink][i], [["1. Tepinya lurus atau lengkung?"], ["2. Kalau lurus, berapa sisinya?"], ["3. Kalau lengkung, pas saat diputar?"]][i], 10);
-
-export const ADEGAN_TIGA_PERTANYAAN: AdeganStory = {
-  id: "tiga-pertanyaan",
-  judul: "Tiga pertanyaan detektif bentuk",
-  sumber: "Materi: tiga pertanyaan detektif bentuk",
+export const ADEGAN_UBIN_TELUR: AdeganStory = {
+  id: "ubin-telur",
+  judul: "Ubin telur diputar",
+  sumber: "Materi: ubin telur bukan lingkaran",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_Q1, tambah(0, judul("Detektif bentuk")), tambah(idx(SUARA_Q1, "detektif"), emo("dt", 150, 112, "\u{1F575}", 56))),
-    k(SUARA_Q2, bersih(0), tambah(0, judul("Detektif bentuk")), tambah(idx(SUARA_Q2, "tepinya"), ...kartuQ(0))),
-    k(SUARA_Q3, tambah(idx(SUARA_Q3, "kalau"), ...kartuQ(1)), sorotkan(idx(SUARA_Q3, "Hitung,"), "q1-k")),
-    k(SUARA_Q4, redamkan(0, "q1-k"), tambah(idx(SUARA_Q4, "lengkung,"), ...kartuQ(2)), sorotkan(idx(SUARA_Q4, "lingkaran."), "q2-k")),
-    k(SUARA_Q5, redamkan(0, "q2-k"), sorotkan(idx(SUARA_Q5, "mengenali"), "q0-k", "q1-k", "q2-k"), tambah(idx(SUARA_Q5, "apa"), emo("ow", 150, 196, OWL, 16))),
+    k(
+      SUARA_E1,
+      tambah(0, judul("Ubin Telur"), rumput("rp"), kotak("kt", 70, 40, 160, 120, W.putih, W.abu, { rx: 4, tebal: 2, z: -1 })),
+      tambah("Chacha", ...tokoh("ch", 40, 178, "Chacha")),
+      tambah(0, capTelur("tl", 150, 100, 40, 26)),
+      tambah("memutar", telur("tl", 150, 100, 40, 26, WARNA_BENTUK.lengkung)),
+      ubah("berbentuk", { id: "tl", rot: 50 }),
+      tambah("cetakannya.", emo("pt", 252, 72, "\u{1F504}", 18)),
+    ),
+    k(
+      SUARA_E2,
+      tambah("tidak", emo("xx", 210, 70, E.salah, 20)),
+      ubah("tidak", { id: "tl", rot: 90 }),
+      tambah("lagi,", teks("tn", 150, 176, "tidak pas", 10, W.merah)),
+      tambah("bukan", teks("bl", 150, 190, "bukan lingkaran", 9, W.ungu)),
+    ),
+    k(
+      SUARA_E3,
+      hapus(0, "xx", "pt"),
+      ubah("tertawa,", { id: "ch", isi: E.tertawa }),
+      tambah("tertawa,", emo("ha", 66, 150, "\u{1F606}", 16)),
+      ubah("telurnya", { id: "tl", rot: 160 }),
+      ubah("berputar!", { id: "tl", rot: 300 }),
+      tambah("berputar!", emo("pt2", 214, 70, "\u{1F504}", 18)),
+    ),
+  ],
+};
+
+/* ------------------------------ 8. Tiga pertanyaan Dika ------------------------------ */
+const SUARA_Q1 = "Dika mencatat tiga pertanyaan di papan catatan kecilnya.";
+const SUARA_Q2 = "Satu, tepinya garis lurus atau melengkung? Dua, kalau lurus, berapa sisinya?";
+const SUARA_Q3 = "Tiga, kalau melengkung, pas atau tidak bila diputar?";
+
+export const ADEGAN_TIGA_TANYA: AdeganStory = {
+  id: "tiga-tanya",
+  judul: "Tiga pertanyaan Dika",
+  sumber: "Materi: tiga pertanyaan Dika",
+  latar: "#F0F9FF",
+  ketukan: [
+    k(
+      SUARA_Q1,
+      tambah(0, judul("Papan Catatan Dika"), rumput("rp")),
+      tambah("Dika", ...tokoh("dk", 270, 178, "Dika")),
+      tambah("mencatat", emo("ct", 250, 150, E.catat, 18)),
+      tambah("papan", papanCatat("pc", 40, 34, 200, 120)),
+      tambah("tiga", kapur("p3", 140, 56, "3 pertanyaan", 11, { warna: "#FDE047" })),
+    ),
+    k(
+      SUARA_Q2,
+      hapus(0, "ct"),
+      tambah("Satu,", kapur("r1", 128, 84, "1. lurus atau lengkung?", 9)),
+      tambah("garis", garis("il", 206, 76, 24, 0, "#F8FAFC", 2.4, { z: 3 }), { id: "ik", t: "jalur", x: 206, y: 96, d: "M0 0 C6 -10 12 -10 18 0", warna: "none", garis: "#F8FAFC", tebal: 2.4, z: 3 }),
+      tambah("Dua,", kapur("r2", 120, 108, "2. lurus: berapa sisi?", 9)),
+      tambah("sisinya?", kapur("rs", 214, 108, "3 4 5 6", 9, { warna: "#FDE047" })),
+    ),
+    k(
+      SUARA_Q3,
+      tambah("Tiga,", kapur("r3", 128, 132, "3. lengkung: pas bila diputar?", 9)),
+      tambah("diputar?", bulat("ic", 214, 126, 6, "none", "#F8FAFC", { tebal: 2.2, z: 3 }), emo("ik2", 232, 126, "\u{1F504}", 12, { z: 4 })),
+    ),
+  ],
+};
+
+/* ------------------------------ 9. Penutup ------------------------------ */
+const SUARA_N1 = "Semua petak terisi pas, tanpa celah dan tanpa ada yang tersandung.";
+const SUARA_N2 = "Dika merangkum. Lihat tepinya, hitung sisinya dengan satu tanda awal, lalu sebut namanya.";
+const SUARA_N3 = "Bu Sari tersenyum. Besok ada papan puzzle. Menurutmu, satu persegi bisa dipotong menjadi bentuk apa saja? Terima kasih, Chacha, Dika, Nia, Bu Sari, dan Pak Tono!";
+
+const GX = 170;
+const GY = 96;
+const WARNA_PETAK = [WT.ubinKuning, WT.ubinHijau, "#F9A8D4", "#FDBA74", "#93C5FD", "#C4B5FD"];
+
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Petak terisi dan pertanyaan penutup",
+  sumber: "Materi: penutup dan jembatan ke puzzle",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_N1,
+      tambah(0, judul("Semua Petak Terisi"), rumput("rp"), ...papanPetak("pp", GX, GY, 3, 2, 30)),
+      tambah("petak", ...[0, 1, 2, 3, 4, 5].map((i) => bangun(`ub${i}`, relSegiempat(26, 26), tengahPetak(GX, GY, 3, i, 30).x, tengahPetak(GX, GY, 3, i, 30).y, WARNA_PETAK[i]))),
+      tambah("pas,", emo("ok", 215, 82, E.benar, 20)),
+      tambah("celah", emo("an1", 60, 178, E.anak, 24)),
+      tambah("tersandung.", emo("an2", 120, 178, E.senyum, 24)),
+    ),
+    k(
+      SUARA_N2,
+      hapus(0, "ok", "an1", "an2"),
+      tambah("Dika", ...tokoh("dk", 262, 178, "Dika")),
+      tambah("merangkum.", papanCatat("pc", 14, 34, 140, 86)),
+      tambah("tepinya,", kapur("c1", 84, 62, "1. lihat tepinya", 8.6)),
+      tambah("hitung", kapur("c2", 84, 82, "2. hitung sisinya", 8.6)),
+      tambah("tanda", emo("bd", 128, 94, E.bendera, 12, { z: 4 })),
+      tambah("namanya.", kapur("c3", 84, 102, "3. sebut namanya", 8.6)),
+    ),
+    k(
+      SUARA_N3,
+      { at: 0, bersih: true },
+      tambah(0, judul("Besok: Papan Puzzle"), rumput("rp")),
+      tambah("Sari", ...tokoh("bs", 210, 178, "Bu Sari")),
+      tambah("puzzle.", kotak("pz", 40, 36, 220, 108, "#FEF3C7", W.coklat, { rx: 6, tebal: 4, z: -1 }), emo("qq", 238, 62, E.tanya, 22)),
+      tambah("satu", bangun("sq", relSegiempat(50, 50), 150, 92, WT.ubinKuning), teks("sn", 150, 134, "1 persegi", 10, W.merah)),
+      tambah("dipotong", garis("gp", 125, 117, 50, -50, W.merah, 3, { gambar: true, z: 3, putus: true })),
+      tambah("Chacha,", ...tokoh("ch", 40, 178, "Chacha")),
+      tambah("Dika,", ...tokoh("dk", 90, 178, "Dika")),
+      tambah("Nia,", ...tokoh("ni", 150, 178, "Nia")),
+      tambah("Sari,@2", emo("lb0", 210, 150, E.lambai, 16)),
+      tambah("Tono!", ...tokoh("pt", 270, 178, "Pak Tono"), emo("lb1", 270, 150, E.lambai, 16)),
+    ),
   ],
 };

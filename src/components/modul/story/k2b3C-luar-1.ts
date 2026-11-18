@@ -1,111 +1,164 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { W, cap, cocok, emo, judul, kartu, panah, ruang, teks, type Jenis, OWL } from "./k2b3C-gambar";
-import { bersih, idx, k, pilihKata, sorotkan, tambah } from "./k2b3C-bantu";
+import { E, W, WK, benda, campur, emo, idBenda, idTasKain, judul, kartu, kotak, lantai, panah, tasKain, teks, tokoh } from "./k2b3C-gambar";
+import { bersih, hapus, k, tambah, ubah } from "./k2b3C-bantu";
 
-export const NAMA_METODE_ID = ["Cetak Permukaan", "Tas Misteri", "Ciri Bangun Ruang"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/* Video metode global Sub-Bab C "Gudang Mainan Pak Rudi": pembuka, Mystery Bag (Tas Misteri), dan terapannya. */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Mystery Bag", "Face Printing", "Top and Side Views"];
+export const NAMA_METODE_ID = ["Tas Misteri", "Cetak Permukaan", "Pandangan Atas dan Samping"];
+export const WARNA_METODE = [W.hijauMuda, W.krem, W.pink];
+export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara memakai cara lain untuk belajar bangun ruang. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Cara pertama bernama Cetak Permukaan. Cara kedua bernama Tas Misteri. Cara ketiga bernama Ciri Bangun Ruang.";
-const SUARA_O3 = "Semua cara ini membantu kita mengenali bentuk permukaan dan ciri-ciri bangun ruang.";
-const SUARA_O4 = "Kita memakai bentuk di layar. Kamu cukup mengamati dengan teliti, lalu memilih jawabannya.";
-const SUARA_O5 = "Siap? Ayo kita mulai dengan cara pertama.";
+/** Amplop tua: badan `${id}` dan tutup segitiga `${id}-f`. Pojok kiri-atas (x, y). */
+const amplop = (id: string, x: number, y: number, w: number, h: number, warna: string): Obj[] => [
+  kotak(id, x, y, w, h, warna, W.biru, { rx: 2, tebal: 1.6 }),
+  { id: `${id}-f`, t: "jalur", x, y, d: `M0 0 L${w / 2} ${h * 0.55} L${w} 0 Z`, warna: campur(warna, 0.4), garis: W.biru, tebal: 1.4, z: 1 },
+];
+
+/* ------------------------------ 1. Pembuka ------------------------------ */
+const SUARA_O1 = "Sebelum pulang, Pak Rudi menyerahkan tiga amplop tua yang ia temukan di laci gudang.";
+const SUARA_O2 = "Bu Sari membukanya. Ternyata isinya tiga cara mengenali benda dari penjaga gudang zaman dulu!";
+const SUARA_O3 = "Tiga cara itu: Mystery Bag, Face Printing, dan Top and Side Views.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Tas Misteri, Cetak Permukaan, dan Pandangan Atas dan Samping.";
+
+const KERTAS = ["#FDE68A", "#BAE6FD", "#FBCFE8"];
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk bangun ruang",
-  sumber: "Metode luar: pembuka",
+  judul: "Tiga amplop tua dari laci gudang",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)), tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["tiga cara lain"], 11))),
+    k(
+      SUARA_O1,
+      tambah(0, judul("Laci gudang"), lantai("lt", 150), kotak("lc", 196, 100, 90, 40, WK.kayu, WK.kayuTua, { rx: 3, tebal: 2 }), teks("lc-n", 241, 94, "laci gudang", 8.6, WK.kayuTua)),
+      tambah("Rudi", ...tokoh("rd", 36, 172, "rudi")),
+      tambah("menyerahkan", emo("tg", 70, 150, E.tangan, 18)),
+      tambah("tiga", ...[0, 1, 2].flatMap((i) => amplop(`am${i}`, 90 + 34 * i, 108, 28, 20, KERTAS[i])), ...kartu("tg3", 100, 70, 96, 20, W.krem, ["3 amplop tua"], 9)),
+      tambah("laci", emo("lcs", 241, 122, E.kaca, 18)),
+    ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      tambah(idx(SUARA_O2, "pertama"), ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah(idx(SUARA_O2, "kedua"), ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "ketiga"), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      hapus("Bu", "tg", "lc", "lc-n", "lcs"),
+      tambah("Sari", ...tokoh("sr", 272, 172, "sari")),
+      ubah("membukanya.", { id: "am0", y: 96 }, { id: "am0-f", y: 96 }),
+      tambah("tiga", ...kartu("cr", 60, 56, 180, 20, W.hijauMuda, ["3 cara mengenali benda"], 9.6)),
+      tambah("zaman", emo("sc", 150, 168, "\u{1F4DC}", 22)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu tujuan")),
-      tambah("permukaan", ...ruang("kubus", "kba", 70, 84, 28), ...ruang("tabung", "tba", 150, 84, 28), ...ruang("bola", "boa", 230, 84, 28)),
-      tambah("ciri-ciri", ...kartu("tj", 30, 140, 240, 40, W.emas, ["mengenali bangun ruang"], 12)),
+      tambah(0, judul("3 cara mengenali benda")),
+      tambah("Mystery", ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], ["1. Mystery Bag"], 11)),
+      tambah("Face", ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], ["2. Face Printing"], 11)),
+      tambah("Top", ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], ["3. Top and Side Views"], 11)),
     ),
-    k(SUARA_O4, bersih(0), tambah(0, judul("Lihat dan pilih")), tambah("bentuk", emo("la", 150, 100, "\u{1F4F1}", 50)), tambah("memilih", ...kartu("pl", 40, 130, 220, 34, W.hijauMuda, ["amati, lalu pilih jawabannya"], 10))),
-    k(SUARA_O5, bersih(0), tambah(0, judul("Ayo mulai!")), tambah("Ayo", ...kartu("sb", 40, 60, 220, 40, W.krem, ["cara pertama"], 12)), tambah("Siap?", emo("ow", 150, 150, OWL, 40))),
+    k(
+      SUARA_O4,
+      bersih(0),
+      tambah(0, judul("Nama dalam bahasa Indonesia")),
+      tambah("Tas", ...kartu("n0", 20, 40, 260, 38, WARNA_METODE[0], ["1. Tas Misteri"], 11)),
+      tambah("Cetak", ...kartu("n1", 20, 88, 260, 38, WARNA_METODE[1], ["2. Cetak Permukaan"], 11)),
+      tambah("Pandangan", ...kartu("n2", 20, 136, 260, 38, WARNA_METODE[2], ["3. Pandangan Atas dan Samping"], 10)),
+    ),
   ],
 };
 
-/* ------------------------------ 2. Cetak Permukaan: konsep ------------------------------ */
-/** Lima baris: bangun ruang di kiri, panah penekan, cap di tengah, nama cap di kanan. Pusat baris ke-i. */
-export const yBarisCetak = (i: number): number => 74 + i * 28;
-export const URUT_CETAK: { jenis: Jenis; kunci: string; nama: string }[] = [
-  { jenis: "kubus", kunci: "kba", nama: "segi empat sama" },
-  { jenis: "balok", kunci: "bla", nama: "segi empat panjang" },
-  { jenis: "tabung", kunci: "tba", nama: "lingkaran" },
-  { jenis: "kerucut", kunci: "kra", nama: "lingkaran" },
-  { jenis: "bola", kunci: "boa", nama: "tidak ada cap" },
-];
-const UK_CETAK = 17;
-const barisSolid = (i: number): Obj[] => ruang(URUT_CETAK[i].jenis, URUT_CETAK[i].kunci, 44, yBarisCetak(i), UK_CETAK);
-const barisCap = (i: number): Obj[] => {
-  const b = URUT_CETAK[i];
-  const y = yBarisCetak(i);
-  const out: Obj[] = [panah(`pn${i}`, 82, y, 44, 0, W.merah, 2)];
-  if (b.jenis !== "bola") out.push(...cap(b.jenis, "a", 168, y, UK_CETAK));
-  out.push(teks(`cn${i}`, 248, y + 3, b.nama, 8.6, W.merah));
-  return out;
-};
-const SUARA_P1 = "Cara pertama bernama Cetak Permukaan. Bangun ruang di layar ditekan, seperti membuat cap.";
-const SUARA_P2 = "Dadu kubus ditekan. Cap yang muncul berbentuk segi empat yang sisinya sama panjang.";
-const SUARA_P3 = "Kardus balok ditekan. Cap yang muncul juga segi empat, tetapi sisinya tidak sama panjang.";
-const SUARA_P4 = "Kaleng tabung dan topi kerucut ditekan. Keduanya meninggalkan cap berbentuk lingkaran.";
-const SUARA_P5 = "Bola ditekan, tetapi tidak ada cap yang rapi, karena bola tidak punya permukaan datar.";
+/* ------------------------------ 2. Mystery Bag (Tas Misteri) ------------------------------ */
+const SUARA_T1 = "Cara pertama, Mystery Bag, atau Tas Misteri.";
+const SUARA_T2 = "Sebuah benda disembunyikan di dalam tas, dan kita hanya boleh meraba.";
+const SUARA_T3 = "Rasakan permukaannya, rata atau melengkung, lalu sebutkan cirinya satu per satu.";
+const SUARA_T4 = "Dari ciri-ciri itu, kita menyebut nama bangun ruangnya.";
 
-export const ADEGAN_LUAR_CETAK: AdeganStory = {
-  id: "luar-cetak",
-  judul: "Cetak Permukaan: bangun ruang jadi bangun datar",
-  sumber: "Metode luar: Cetak Permukaan",
+export const ADEGAN_LUAR_TAS: AdeganStory = {
+  id: "luar-tas",
+  judul: "Mystery Bag: Tas Misteri",
+  sumber: "Metode global: Mystery Bag, konsep",
   latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_P1, tambah(0, ...kepala(0)), tambah(idx(SUARA_P1, "layar"), ...barisSolid(0)), tambah(idx(SUARA_P1, "ditekan"), teks("ht", 150, 62, "tekan, lalu lihat cap", 9, W.biru))),
-    k(SUARA_P2, tambah(idx(SUARA_P2, "ditekan"), ...barisCap(0).slice(0, 1)), tambah(idx(SUARA_P2, "berbentuk"), ...barisCap(0).slice(1))),
-    k(SUARA_P3, tambah(idx(SUARA_P3, "balok"), ...barisSolid(1)), tambah(idx(SUARA_P3, "ditekan"), ...barisCap(1).slice(0, 1)), tambah(idx(SUARA_P3, "juga"), ...barisCap(1).slice(1))),
+    k(
+      SUARA_T1,
+      tambah(0, ...kepala(0), lantai("lt", 150)),
+      tambah("Mystery", teks("mb", 150, 74, "Mystery Bag", 15, W.hijau)),
+      tambah("Tas", ...tasKain("ts", 150, 112, 56)),
+      tambah("Misteri.", teks("tm", 150, 172, "Tas Misteri", 13, W.ungu)),
+    ),
+    k(
+      SUARA_T2,
+      hapus("Sebuah", "mb", "tm"),
+      tambah("benda", ...benda("bn", "kubus", 150, 78, 30)),
+      hapus("dalam", ...idBenda("bn", "kubus")),
+      ubah("tas,", { id: "ts-q", op: 0.9 }),
+      tambah("hanya", ...kartu("hm", 80, 160, 140, 20, W.krem, ["hanya boleh meraba"], 9.4)),
+      tambah("meraba.", emo("rb", 150, 136, E.raba, 22)),
+    ),
+    k(
+      SUARA_T3,
+      hapus("Rasakan", "hm-k", "hm-t0"),
+      ubah("Rasakan", { id: "ts", x: 54 }, { id: "ts-t", x: 26 }, { id: "ts-q", x: 54 }),
+      ubah("Rasakan", { id: "rb", x: 54, y: 138 }),
+      tambah("rata", ...kartu("r1", 124, 56, 164, 22, W.hijauMuda, ["permukaan rata"], 9.6)),
+      tambah("melengkung,", ...kartu("r2", 124, 90, 164, 22, W.merahMuda, ["permukaan lengkung"], 9.6)),
+      tambah("satu", teks("c1", 112, 71, "1", 12, W.merah)),
+      tambah("satu@2", teks("c2", 112, 105, "2", 12, W.merah)),
+    ),
+    k(
+      SUARA_T4,
+      hapus("Dari", "rb", "c1", "c2"),
+      tambah("ciri-ciri", panah("pn", 86, 112, 120, 134, W.merah)),
+      tambah("nama", ...kartu("nm", 124, 124, 164, 22, W.krem, ["nama bangun ruang"], 9.6)),
+      tambah("ruangnya.", emo("jm", 270, 168, E.jempol, 22)),
+    ),
+  ],
+};
+
+/* ------------------------------ 3. Terapan Mystery Bag ------------------------------ */
+const SUARA_P1 = "Chacha meraba benda di dalam tas. Permukaannya rata, dan bentuknya persis sama di semua sisi.";
+const SUARA_P2 = "Ia menyimpulkan benda itu kubus, dan ternyata benar, sebuah dadu.";
+const SUARA_P3 = "Cocok kalau kita ingin melatih mengenali ciri lewat rasa.";
+const SUARA_P4 = "Kurang cocok untuk benda yang mirip, karena kubus dan balok sulit dibedakan hanya dengan meraba.";
+
+export const ADEGAN_LUAR_TAS_TERAPAN: AdeganStory = {
+  id: "luar-tas-terapan",
+  judul: "Chacha meraba tas misteri",
+  sumber: "Metode global: Mystery Bag, terapan",
+  latar: "#ECFCCB",
+  ketukan: [
+    k(
+      SUARA_P1,
+      tambah(0, ...kepala(0), lantai("lt", 150), ...tasKain("ts", 150, 108, 56)),
+      tambah("Chacha", ...tokoh("ch", 40, 172, "chacha")),
+      tambah("meraba", emo("rb", 150, 138, E.raba, 22)),
+      tambah("rata,", ...kartu("rt", 20, 62, 80, 20, W.hijauMuda, ["rata"], 10)),
+      tambah("sama", ...kartu("sm", 196, 62, 90, 36, W.krem, ["semua sisi", "sama"], 9)),
+    ),
+    k(
+      SUARA_P2,
+      hapus("Ia", "rt-k", "rt-t0", "sm-k", "sm-t0", "sm-t1"),
+      tambah("menyimpulkan", emo("lm", 40, 136, E.lampu, 20)),
+      tambah("kubus,", ...kartu("kb", 100, 60, 100, 22, W.krem, ["kubus?"], 11)),
+      hapus("ternyata", ...idTasKain("ts"), "rb"),
+      tambah("ternyata", ...benda("dd", "dadu", 150, 104, 50)),
+      tambah("benar,", emo("jm", 220, 100, E.jempol, 24)),
+      tambah("dadu.", teks("dn", 150, 150, "dadu", 12, W.coklat)),
+    ),
+    k(
+      SUARA_P3,
+      bersih(0),
+      tambah(0, ...kepala(0), lantai("lt", 150)),
+      tambah("Cocok", ...kartu("ck", 70, 62, 160, 26, W.hijauMuda, ["cocok untuk rasa"], 11), emo("jm", 252, 72, E.jempol, 22)),
+      tambah("ciri", ...tasKain("ts", 70, 118, 40), ...kartu("cr", 130, 104, 150, 22, W.krem, ["mengenali ciri"], 9.6)),
+      tambah("rasa.", emo("rb", 70, 140, E.raba, 20)),
+    ),
     k(
       SUARA_P4,
-      tambah(idx(SUARA_P4, "tabung"), ...barisSolid(2)),
-      tambah(idx(SUARA_P4, "kerucut"), ...barisSolid(3)),
-      tambah(idx(SUARA_P4, "ditekan"), ...barisCap(2).slice(0, 1), ...barisCap(3).slice(0, 1)),
-      tambah(idx(SUARA_P4, "lingkaran"), ...barisCap(2).slice(1), ...barisCap(3).slice(1)),
+      bersih(0),
+      tambah(0, ...kepala(0), lantai("lt", 150)),
+      tambah("Kurang", ...kartu("kr", 70, 56, 160, 26, W.merahMuda, ["kurang cocok"], 11)),
+      tambah("kubus", ...benda("kk", "kubus", 80, 112, 46), teks("kkn", 80, 144, "kubus", 10, W.coklat)),
+      tambah("balok", ...benda("bb", "balok", 220, 112, 66), teks("bbn", 220, 144, "balok", 10, W.coklat)),
+      tambah("sulit", emo("tn", 150, 114, E.tanya, 24)),
+      tambah("meraba.", emo("rb", 150, 168, E.raba, 22)),
     ),
-    k(SUARA_P5, tambah(idx(SUARA_P5, "Bola"), ...barisSolid(4)), tambah(idx(SUARA_P5, "ditekan"), ...barisCap(4).slice(0, 1)), tambah(idx(SUARA_P5, "tidak", 1), ...barisCap(4).slice(1))),
   ],
 };
-
-/* ------------------------------ 3. Cetak Permukaan: terapan ------------------------------ */
-const SUARA_Q1 = "Sekarang kita coba. Ada kaleng di layar. Kita tekan permukaannya yang rata.";
-const SUARA_Q2 = "Kaleng ditekan, dan sebuah cap muncul di sebelahnya.";
-const SUARA_Q3 = "Cap itu bangun datar apa? Pilih jawabannya.";
-const SUARA_Q4 = "Cap kaleng berbentuk lingkaran. Jawabannya lingkaran.";
-const SUARA_Q5 = "Cetak Permukaan membantu kita mengenali bentuk datar pada permukaan bangun ruang.";
-
-export const ADEGAN_LUAR_CETAK_TERAPAN: AdeganStory = {
-  id: "luar-cetak-terapan",
-  judul: "Cetak Permukaan: cap kaleng",
-  sumber: "Metode luar: Cetak Permukaan, terapan",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(SUARA_Q1, tambah(0, ...kepala(0)), tambah(idx(SUARA_Q1, "kaleng"), ...ruang("tabung", "tba", 70, 92, 40), teks("kl", 70, 138, "kaleng", 9)), tambah(idx(SUARA_Q1, "tekan"), emo("tp", 70, 52, "\u{1F446}", 18))),
-    k(SUARA_Q2, tambah(idx(SUARA_Q2, "ditekan"), panah("pq", 112, 92, 50, 0, W.merah, 2.4)), tambah(idx(SUARA_Q2, "cap"), ...cap("tabung", "q", 220, 92, 40), teks("cq", 220, 138, "cap", 9))),
-    k(SUARA_Q3, bersih(0), tambah(0, ...kepala(0), ...ruang("tabung", "tba", 70, 76, 34), ...cap("tabung", "q", 220, 76, 34)), tambah(idx(SUARA_Q3, "Pilih"), ...pilihKata(130, ["segi empat sama", "segi empat panjang", "lingkaran"], 7.4))),
-    k(SUARA_Q4, sorotkan(idx(SUARA_Q4, "lingkaran"), "c3-k", "c3-t"), tambah(idx(SUARA_Q4, "Jawabannya"), cocok("ok", 242, 176, 22))),
-    k(SUARA_Q5, tambah(idx(SUARA_Q5, "mengenali"), ...kartu("rm", 20, 172, 200, 24, W.krem, ["cap = bentuk datar"], 9.6)), tambah(idx(SUARA_Q5, "Cetak"), emo("ow", 262, 196, OWL, 20))),
-  ],
-};
-

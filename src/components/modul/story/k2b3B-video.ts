@@ -1,57 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_BEDA_CARA, ADEGAN_DUA_GARIS, ADEGAN_URAI_ARTI, ADEGAN_URAI_MIRING, ADEGAN_URAI_TENGAH } from "./k2b3B-materi-1";
-import { ADEGAN_DUA_SEGITIGA, ADEGAN_HITUNG_KEPING, ADEGAN_SUSUN_ARTI, ADEGAN_SUSUN_SEGIENAM } from "./k2b3B-materi-2";
-import { ADEGAN_BALIK, ADEGAN_POLA_EMPAT, ADEGAN_POLA_ENAM, ADEGAN_POLA_LIMA, ADEGAN_POLA_TABEL, ADEGAN_POLA_TENGAH } from "./k2b3B-materi-3";
-import { ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_EMPAT, ADEGAN_LATIHAN_SATU, ADEGAN_LATIHAN_TIGA, ADEGAN_PENUTUP } from "./k2b3B-materi-4";
-import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_SUSUN, ADEGAN_LUAR_SUSUN_TERAPAN, ADEGAN_LUAR_URAI, ADEGAN_LUAR_URAI_TERAPAN } from "./k2b3B-luar-1";
-import { ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_TANGRAM, ADEGAN_LUAR_TANGRAM_TERAPAN } from "./k2b3B-luar-2";
+import { ADEGAN_ANGIN, ADEGAN_ATURAN, ADEGAN_TUMPUK } from "./k2b3B-materi-1";
+import { ADEGAN_SEGIENAM, ADEGAN_SUSUN, ADEGAN_URAI } from "./k2b3B-materi-2";
+import { ADEGAN_PENUTUP_B, ADEGAN_POLA, ADEGAN_TANGRAM } from "./k2b3B-materi-3";
+import { ADEGAN_LUAR_BLOK, ADEGAN_LUAR_BLOK_TERAPAN, ADEGAN_LUAR_LIPAT, ADEGAN_LUAR_PEMBUKA } from "./k2b3B-luar-1";
+import { ADEGAN_LUAR_BAYANGAN, ADEGAN_LUAR_BAYANGAN_TERAPAN, ADEGAN_LUAR_LIPAT_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k2b3B-luar-2";
 
-/** Kelas 2 Bab 3 Sub-Bab B (Mengurai dan Menyusun Bangun Datar): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 2 Bab 3 Sub-Bab B (mengurai dan menyusun bangun datar), tengah cerita Taman Bermain Sekolah.
+ * Video materi (tiga ketukan tiap adegan, tanpa latihan): cerita orisinal IGIL "Papan Puzzle yang Berantakan" (Chacha, Dika, Nia, Bu Sari, Bu Ratna).
+ * Video kedua: tiga metode global (Pattern Blocks, Paper Folding, Silhouette Puzzle), terpisah.
+ */
+export const JUDUL_K2B3B = "Papan Puzzle yang Berantakan";
+
 export const VIDEO_MATERI_K2B3B: VideoStory = {
   id: "k2b3B-materi",
-  judul: "Mengurai dan Menyusun Bangun Datar",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K2B3B,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "mengurai dan menyusun bangun datar", daftar: ["Mengurai satu bangun", "Menyusun beberapa bangun", "Pola segitiga"] }),
-    ADEGAN_URAI_ARTI,
-    ADEGAN_URAI_MIRING,
-    ADEGAN_URAI_TENGAH,
-    ADEGAN_BEDA_CARA,
-    ADEGAN_DUA_GARIS,
-    ADEGAN_HITUNG_KEPING,
-    ADEGAN_SUSUN_ARTI,
-    ADEGAN_DUA_SEGITIGA,
-    ADEGAN_SUSUN_SEGIENAM,
-    ADEGAN_POLA_EMPAT,
-    ADEGAN_POLA_LIMA,
-    ADEGAN_POLA_ENAM,
-    ADEGAN_POLA_TENGAH,
-    ADEGAN_POLA_TABEL,
-    ADEGAN_BALIK,
-    ADEGAN_LATIHAN_SATU,
-    ADEGAN_LATIHAN_DUA,
-    ADEGAN_LATIHAN_TIGA,
-    ADEGAN_LATIHAN_EMPAT,
-    ADEGAN_PENUTUP,
+    adeganSapaan({ jenis: "materi", topik: "mengurai dan menyusun bangun datar", daftar: ["Mengurai satu bangun menjadi beberapa bagian", "Menyusun beberapa bagian menjadi satu bentuk", "Bermain tangram"] }),
+    ADEGAN_ANGIN,
+    ADEGAN_TUMPUK,
+    ADEGAN_ATURAN,
+    ADEGAN_URAI,
+    ADEGAN_SUSUN,
+    ADEGAN_SEGIENAM,
+    ADEGAN_TANGRAM,
+    ADEGAN_POLA,
+    ADEGAN_PENUTUP_B,
   ],
 };
 
 export const VIDEO_LUAR_K2B3B: VideoStory = {
   id: "k2b3B-luar",
-  judul: "Mengurai dan Menyusun Bangun Datar: Metode dari Luar",
-  subjudul: "Tiga metode luar",
+  judul: JUDUL_K2B3B,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "mengurai dan menyusun bangun datar" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "mengurai dan menyusun bangun datar", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_SUSUN,
-    ADEGAN_LUAR_SUSUN_TERAPAN,
-    ADEGAN_LUAR_URAI,
-    ADEGAN_LUAR_URAI_TERAPAN,
-    ADEGAN_LUAR_TANGRAM,
-    ADEGAN_LUAR_TANGRAM_TERAPAN,
+    ADEGAN_LUAR_BLOK,
+    ADEGAN_LUAR_BLOK_TERAPAN,
+    ADEGAN_LUAR_LIPAT,
+    ADEGAN_LUAR_LIPAT_TERAPAN,
+    ADEGAN_LUAR_BAYANGAN,
+    ADEGAN_LUAR_BAYANGAN_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };
