@@ -1,10 +1,12 @@
 import {
+  adalahIdBab,
   adalahIdSoal,
   adalahRespons,
   adalahUuid,
   bacaBody,
   galatBacaBody,
   jawab,
+  periksaAksesLatihanUjian,
   pesanGalat,
   sesiBelajar,
   skemaBelumAda,
@@ -36,6 +38,26 @@ export async function POST(req: Request) {
 
   const sesi = await sesiBelajar();
   if (adalahRespons(sesi)) return sesi;
+
+  const sesiUjian = await sesi.supabase
+    .from("exam_sessions")
+    .select("student_id, chapter_id")
+    .eq("id", idSesi)
+    .maybeSingle();
+  if (
+    sesiUjian.data &&
+    typeof sesiUjian.data.student_id === "string" &&
+    typeof sesiUjian.data.chapter_id === "string" &&
+    adalahIdBab(sesiUjian.data.chapter_id)
+  ) {
+    const terkunci = await periksaAksesLatihanUjian(
+      sesi,
+      sesiUjian.data.student_id,
+      sesiUjian.data.chapter_id,
+      "Ujian",
+    );
+    if (terkunci) return terkunci;
+  }
 
   const { data, error } = await sesi.supabase.rpc("serahkan_ujian", {
     p_session: idSesi,

@@ -32,6 +32,7 @@ import {
   useProfilSiswa,
 } from "./umum";
 import { SertifikatDigital, kodeVerifikasi, type PenerimaSertifikat } from "./SertifikatDigital";
+import LencanaBeasiswaApresiasi from "@/components/pembayaran/LencanaBeasiswaApresiasi";
 import RaporPerkembangan from "./RaporPerkembangan";
 
 const rapor = data.raporPage;
@@ -543,6 +544,7 @@ export default function RaporHalaman() {
     <main className="flex-1 bg-white text-slate-700">
       <div className="mx-auto w-full max-w-4xl space-y-4 px-2 py-4 sm:py-8">
         <KepalaHalaman ikon="📊" lencana={rapor.header.badge} judul={rapor.header.title} subjudul={rapor.header.subtitle} />
+        <LencanaBeasiswaApresiasi />
 
         {siap ? <CatatanData adaCatatan={adaCatatan} /> : null}
 

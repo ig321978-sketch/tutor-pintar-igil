@@ -6,6 +6,8 @@
  *  1. ADMIN boleh kapan pun.
  *  2. USER yang sudah terdaftar dan masuk (login) boleh setelah semua Sub-Bab Materi bab itu tuntas.
  *  3. Selain itu (tamu, atau user yang Materinya belum tuntas) ditutup.
+ *  4. Bila profil mengirim langgananAktif === false, tab ditutup (langganan belum aktif) meskipun mode periksa
+ *     pemilik. null berarti tabel langganan belum terpasang, jadi kunci ini tidak ditambahkan.
  *
  * Penegakan di server: rute /api/belajar/latihan, latihan/mulai, ujian/mulai memanggil `periksaAksesLatihanUjian`
  * (src/lib/belajar-server.ts), yang memakai fungsi di sini. Tampilan kartu terkunci di pemutar modul memakai
@@ -122,17 +124,32 @@ export function pesanTutup(k: Extract<KeputusanAkses, { boleh: false }>, tab: "L
 }
 
 export type StatusProfilAkses = "memuat" | "belum_siap" | "belum_masuk" | "belum_ada_anak" | "siap";
-export type KondisiTab = "terbuka" | "memuat" | "belum_masuk" | "belum_ada_anak" | "server_belum_siap" | "materi_belum_tuntas";
+export type KondisiTab =
+  | "terbuka"
+  | "memuat"
+  | "belum_masuk"
+  | "belum_ada_anak"
+  | "server_belum_siap"
+  | "materi_belum_tuntas"
+  | "langganan_nonaktif";
 
 /**
  * Keadaan tab Latihan dan Ujian di layar. `bebas` = mode periksa pemilik (localhost atau admin yang masuk).
  * Ini hanya tampilan; server menegakkan aturan yang sama lewat `putuskanAkses`.
  */
-export function kondisiTab(opsi: { bebas: boolean; status: StatusProfilAkses; materiTuntas: boolean }): KondisiTab {
-  if (opsi.bebas) return "terbuka";
+export function kondisiTab(opsi: {
+  bebas: boolean;
+  status: StatusProfilAkses;
+  materiTuntas: boolean;
+  /** false = langganan belum aktif. null/undefined = belum diketahui, tidak menambah kunci. */
+  langgananAktif?: boolean | null;
+}): KondisiTab {
+  if (opsi.bebas && opsi.langgananAktif !== false) return "terbuka";
   if (opsi.status === "memuat") return "memuat";
   if (opsi.status === "belum_masuk") return "belum_masuk";
   if (opsi.status === "belum_ada_anak") return "belum_ada_anak";
   if (opsi.status === "belum_siap") return "server_belum_siap";
+  if (opsi.langgananAktif === false) return "langganan_nonaktif";
+  if (opsi.bebas) return "terbuka";
   return opsi.materiTuntas ? "terbuka" : "materi_belum_tuntas";
 }

@@ -11,6 +11,7 @@ const MENU = [
   { href: "/ruang-belajar", label: "📚 Ruang Belajar" },
   { href: "/praktikum", label: "🧪 Praktikum" },
   { href: "/rapor", label: "📊 Rapor & Sertifikat" },
+  { href: "/langganan", label: "🎟️ Langganan" },
   { href: "/ranking", label: "🏆 Ranking & Beasiswa" },
   { href: "/komunitas", label: "🏫 Komunitas IGIL" },
 ] as const;

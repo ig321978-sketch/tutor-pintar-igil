@@ -73,6 +73,10 @@ const PESAN_RAMAH: Array<[RegExp, string]> = [
   [/Kunci HMAC NISN belum dipasang/i, "Pendaftaran belum aktif di server. Mohon coba lagi nanti."],
   [/PIN harus 6 digit/i, "PIN harus 6 angka."],
   [/PIN sudah dipasang/i, "Rumah ini sudah punya PIN."],
+  [/Persetujuan wali belum lengkap/i, "Centang kedua persetujuan orang tua atau wali dulu."],
+  [/QRIS order ini sudah terbit/i, "QRIS ini sudah tampil. Muat ulang halaman."],
+  [/Muatan QRIS tidak valid/i, "Gambar QR belum bisa disimpan."],
+  [/Order tidak ditemukan/i, "Order pembayaran tidak ditemukan."],
 ];
 
 export function pesanGalat(error: { message?: string } | null): string {
@@ -112,6 +116,19 @@ export function adalahRespons(nilai: SesiBelajar | NextResponse): nilai is NextR
  * Batas: catatan Materi dikirim oleh aplikasi siswa sendiri (server tidak melihat isi layar), jadi ini mencegah
  * melompati tab lewat API dan perangkat lain, bukan pemalsuan catatan yang disengaja.
  */
+const PESAN_LANGGANAN =
+  "Latihan, Ujian, dan Praktikum terbuka setelah langganan 30 hari aktif. Materi dan Simulasi tetap gratis.";
+
+/** null = boleh lanjut (aktif, admin, atau tabel langganan belum ada). Respons = ditolak. */
+async function langgananMengizinkan(sesi: SesiBelajar, anak: string): Promise<NextResponse | null> {
+  const { data, error } = await sesi.supabase.rpc("status_langganan_anak", { p_student: anak });
+  if (skemaBelumAda(error)) return null;
+  if (error) return jawab({ status: "galat", pesan: pesanGalat(error) }, 422);
+  const baris = (data ?? null) as { aktif?: boolean } | null;
+  if (baris?.aktif === true) return null;
+  return jawab({ status: "terkunci", alasan: "langganan_nonaktif", pesan: PESAN_LANGGANAN }, 403);
+}
+
 export async function periksaAksesLatihanUjian(
   sesi: SesiBelajar,
   anak: string,
@@ -121,6 +138,8 @@ export async function periksaAksesLatihanUjian(
   const admin = adalahPeranAdmin(await bacaPeranPengguna(sesi.supabase, sesi.user));
   let catatan: unknown = null;
   if (!admin) {
+    const pagar = await langgananMengizinkan(sesi, anak);
+    if (pagar) return pagar;
     const kode = kodeBabAplikasi(chapterId);
     if (kode) {
       const { data, error } = await sesi.supabase.rpc("baca_jejak_tahap", { p_student: anak, p_chapter: kode });

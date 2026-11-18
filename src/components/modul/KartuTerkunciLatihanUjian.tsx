@@ -62,6 +62,14 @@ export function KartuTerkunciLatihanUjian({
         KE MATERI ➡️
       </button>
     );
+  } else if (kondisi === "langganan_nonaktif") {
+    judul = `${tab} terbuka setelah langganan aktif`;
+    isi = `Langganan 30 hari seharga Rp 50.000 membuka Latihan, Ujian, dan Praktikum. Materi dan Simulasi tetap gratis.`;
+    aksi = (
+      <Link href="/langganan" className={tombol}>
+        BUKA PEMBAYARAN
+      </Link>
+    );
   }
   return (
     <section

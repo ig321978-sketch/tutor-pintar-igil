@@ -60,6 +60,7 @@ export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
     pathname === "/" ||
     pathname === "/ranking" ||
     pathname === "/rapor" ||
+    pathname === "/langganan" ||
     pathname === "/komunitas" ||
     pathname.startsWith("/komunitas/") ||
     pathname === "/daftar" ||
@@ -89,6 +90,11 @@ export function ruteApiPublikSaatTerkunci(pathname: string): boolean {
     pathname === "/api/belajar/ujian/mulai" ||
     pathname === "/api/belajar/ujian/serahkan" ||
     // Pertanyaan, Kritik, Saran di kartu Tahap: akun masuk, satu kali sehari (RPC kirim_masukan_tahap).
-    pathname === "/api/masukan"
+    pathname === "/api/masukan" ||
+    pathname === "/api/payments/qris" ||
+    pathname === "/api/payments/status" ||
+    pathname === "/api/payments/notices" ||
+    pathname === "/api/payments/mock-settle" ||
+    pathname === "/api/payments/midtrans-webhook"
   );
 }

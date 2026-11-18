@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useProfilSiswa } from "@/components/rapor/umum";
 import { faseDariKelas } from "@/lib/fase";
+import LencanaBeasiswaApresiasi from "@/components/pembayaran/LencanaBeasiswaApresiasi";
 import HowIgilWorksSection from "./HowIgilWorksSection";
 import PenegasanDalamAplikasi from "./PenegasanDalamAplikasi";
 
@@ -16,6 +17,23 @@ export default function DasborInformasi() {
 
   return (
     <div className="space-y-6 pb-10">
+      <LencanaBeasiswaApresiasi />
+      <div className="mx-auto w-full max-w-5xl px-2">
+        <Link
+          href="/langganan"
+          className="igil-tombol flex items-center gap-3 rounded-3xl border-amber-400 bg-amber-400 p-4 text-indigo-950 shadow-md hover:bg-amber-300"
+        >
+          <span aria-hidden="true" className="text-3xl">
+            🎟️
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-base font-black leading-tight">Langganan 30 hari · Rp 50.000</span>
+            <span className="block text-sm font-semibold leading-snug">
+              Membuka Latihan, Ujian, dan Praktikum. Materi dan Simulasi tetap gratis.
+            </span>
+          </span>
+        </Link>
+      </div>
       <HowIgilWorksSection faseAnak={fase} namaAnak={profil.nama} />
       <div className="mx-auto w-full max-w-5xl px-2">
         <Link

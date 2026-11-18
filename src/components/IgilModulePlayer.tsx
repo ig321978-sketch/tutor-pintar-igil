@@ -1571,10 +1571,12 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   // Pilot: Latihan dan Ujian hanya untuk ADMIN, atau user yang sudah masuk dan menuntaskan semua Sub-Bab Materi.
   // Server menegakkan aturan yang sama (src/lib/akses-latihan-ujian.ts); ini hanya tampilannya.
   const jumlahSubTuntas = daftarSubTersedia.filter((id) => completedSubBabs.includes(id)).length;
+  const langgananAktif = profilBelajar.status === "siap" ? (profilBelajar.aktif?.langgananAktif ?? null) : null;
   const kondisiLatihanUjian = kondisiTab({
     bebas: periksaBebas,
     status: profilBelajar.status,
     materiTuntas: jumlahSubTuntas === daftarSubTersedia.length,
+    langgananAktif,
   });
   const materiSelesai = kondisiLatihanUjian === "terbuka";
 

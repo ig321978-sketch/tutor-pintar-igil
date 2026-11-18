@@ -6,6 +6,8 @@ import {
   sesiBelajar,
   skemaBelumAda,
 } from "@/lib/belajar-server";
+import { langgananAktif } from "@/lib/pembayaran-qris";
+import { adalahPeranAdmin, bacaPeranPengguna } from "@/lib/peran";
 
 export const dynamic = "force-dynamic";
 
@@ -39,6 +41,26 @@ export async function GET(req: Request) {
     if (error) return jawab({ status: "galat", pesan: "Daftar anak belum bisa dibaca." }, 500);
     const baris = (data ?? []) as BarisAnak[];
     if (baris.length === 0) return jawab({ status: "belum_ada_anak" });
+    const admin = adalahPeranAdmin(await bacaPeranPengguna(sesi.supabase, sesi.user));
+    const peta = new Map<string, { aktif: boolean; berakhir: string | null }>();
+    let diketahui = false;
+    if (!admin) {
+      const sub = await supabase
+        .from("subscriptions")
+        .select("student_id, status, expires_at")
+        .in("student_id", baris.map((b) => b.id));
+      if (!sub.error) {
+        diketahui = true;
+        const sekarang = Date.now();
+        for (const row of sub.data ?? []) {
+          const status = typeof row.status === "string" ? row.status : null;
+          const berakhir = typeof row.expires_at === "string" ? row.expires_at : null;
+          peta.set(String(row.student_id), { aktif: langgananAktif(status, berakhir, sekarang), berakhir });
+        }
+      } else if (!skemaBelumAda(sub.error)) {
+        diketahui = false;
+      }
+    }
     return jawab({
       status: "siap",
       anak: baris.map((b) => ({
@@ -46,6 +68,8 @@ export async function GET(req: Request) {
         nama: b.display_name,
         kelas: b.grade,
         fase: b.phase_code,
+        langgananAktif: admin ? true : diketahui ? (peta.get(b.id)?.aktif ?? false) : null,
+        langgananBerakhir: diketahui ? (peta.get(b.id)?.berakhir ?? null) : null,
       })),
     });
   }

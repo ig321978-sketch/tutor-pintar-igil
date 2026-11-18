@@ -1,0 +1,289 @@
+"use client";
+
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+
+import {
+  LABEL_TOMBOL_LUNAS,
+  LABEL_TOMBOL_QRIS,
+  TEKS_AKAD,
+  TEKS_PDP,
+  modePembayaran,
+} from "@/lib/pembayaran-qris";
+
+interface AnakProfil {
+  id: string;
+  nama: string;
+  kelas: number;
+  langgananAktif?: boolean | null;
+  langgananBerakhir?: string | null;
+}
+
+type Langkah = "form" | "memuat" | "qr" | "lunas" | "galat";
+
+function tanggalId(iso: string | null | undefined): string {
+  if (!iso) return "";
+  const t = Date.parse(iso);
+  if (!Number.isFinite(t)) return "";
+  return new Intl.DateTimeFormat("id-ID", { dateStyle: "long", timeZone: "Asia/Jakarta" }).format(t);
+}
+
+/**
+ * Checkout langganan 30 hari. Tombol QR baru hidup setelah dua persetujuan wali dicentang.
+ */
+export default function CheckoutQris() {
+  const params = useSearchParams();
+  const mode = modePembayaran(process.env.NEXT_PUBLIC_PAYMENT_MODE, process.env.NODE_ENV === "production");
+  const [anak, setAnak] = useState<AnakProfil[]>([]);
+  const [idAnak, setIdAnak] = useState<string>("");
+  const [siap, setSiap] = useState<"memuat" | "masuk" | "tamu" | "kosong" | "galat">("memuat");
+  const [akad, setAkad] = useState(false);
+  const [pdp, setPdp] = useState(false);
+  const [langkah, setLangkah] = useState<Langkah>("form");
+  const [pesan, setPesan] = useState("");
+  const [orderId, setOrderId] = useState("");
+  const [gambar, setGambar] = useState("");
+  const [simulasi, setSimulasi] = useState(false);
+  const [berakhir, setBerakhir] = useState<string | null>(null);
+
+  useEffect(() => {
+    let batal = false;
+    void (async () => {
+      try {
+        const res = await fetch("/api/belajar/profil", { cache: "no-store" });
+        const json = (await res.json()) as { status?: string; anak?: AnakProfil[] };
+        if (batal) return;
+        if (json.status === "belum_masuk") {
+          setSiap("tamu");
+          return;
+        }
+        if (json.status === "belum_ada_anak") {
+          setSiap("kosong");
+          return;
+        }
+        if (json.status !== "siap" || !json.anak?.length) {
+          setSiap("galat");
+          return;
+        }
+        setAnak(json.anak);
+        const minta = params.get("anak");
+        const pilih = json.anak.find((a) => a.id === minta)?.id ?? json.anak[0].id;
+        setIdAnak(pilih);
+        setSiap("masuk");
+      } catch {
+        if (!batal) setSiap("galat");
+      }
+    })();
+    return () => {
+      batal = true;
+    };
+  }, [params]);
+
+  const dipilih = useMemo(() => anak.find((a) => a.id === idAnak) ?? null, [anak, idAnak]);
+  const bolehTampil = akad && pdp && Boolean(idAnak) && langkah !== "memuat";
+
+  useEffect(() => {
+    if (langkah !== "qr" || !orderId) return;
+    let batal = false;
+    const t = window.setInterval(() => {
+      void (async () => {
+        try {
+          const res = await fetch(`/api/payments/status?order=${orderId}`, { cache: "no-store" });
+          const json = (await res.json()) as { lunas?: boolean; berakhir?: string | null };
+          if (batal || !json.lunas) return;
+          setBerakhir(json.berakhir ?? null);
+          setLangkah("lunas");
+        } catch {
+          // Jaringan putus. Percobaan berikutnya mengulang.
+        }
+      })();
+    }, 4000);
+    return () => {
+      batal = true;
+      window.clearInterval(t);
+    };
+  }, [langkah, orderId]);
+
+  async function tampilkanQris() {
+    if (!bolehTampil) return;
+    setLangkah("memuat");
+    setPesan("");
+    try {
+      const res = await fetch("/api/payments/qris", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ anak: idAnak, akad: true, pdp: true }),
+      });
+      const json = (await res.json()) as {
+        status?: string;
+        pesan?: string;
+        orderId?: string;
+        qrDataUrl?: string;
+        simulasi?: boolean;
+      };
+      if (json.status !== "ok" || !json.orderId || !json.qrDataUrl) {
+        setPesan(json.pesan || "QRIS belum terbit. Coba lagi.");
+        setLangkah("galat");
+        return;
+      }
+      setOrderId(json.orderId);
+      setGambar(json.qrDataUrl);
+      setSimulasi(json.simulasi === true);
+      setLangkah("qr");
+    } catch {
+      setPesan("Jaringan putus sebelum QR tampil. Coba lagi.");
+      setLangkah("galat");
+    }
+  }
+
+  async function simulasiLunas() {
+    if (!orderId) return;
+    setPesan("");
+    try {
+      const res = await fetch("/api/payments/mock-settle", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderId }),
+      });
+      const json = (await res.json()) as { applied?: boolean; expires_at?: string | null; pesan?: string };
+      if (!res.ok || json.applied !== true) {
+        setPesan(json.pesan || "Simulasi lunas belum berhasil.");
+        return;
+      }
+      setBerakhir(json.expires_at ?? null);
+      setLangkah("lunas");
+    } catch {
+      setPesan("Jaringan putus saat simulasi lunas.");
+    }
+  }
+
+  return (
+    <section
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="judul-checkout"
+      data-testid="checkout-qris"
+      className="mx-auto w-full max-w-lg space-y-4 rounded-3xl bg-white p-5 text-indigo-950 shadow-xl sm:p-7"
+    >
+      <p className="text-xs font-black uppercase tracking-wide text-amber-700">Langganan 30 hari</p>
+      <h1 id="judul-checkout" className="text-2xl font-black">
+        Akses belajar mandiri IGIL
+      </h1>
+      <p className="text-sm leading-relaxed text-slate-700">
+        Rp 50.000 untuk 30 hari. Ini jual-beli layanan, bukan iuran dan bukan undian. Materi dan Simulasi tetap gratis.
+        Tidak ada batas kuota siswa per sekolah.
+      </p>
+
+      {siap === "memuat" ? <p className="text-sm font-bold">Memeriksa akun…</p> : null}
+      {siap === "tamu" ? (
+        <Link href="/login?next=%2Flangganan" className="inline-flex rounded-full bg-amber-400 px-5 py-3 text-sm font-black text-indigo-950">
+          MASUK DULU
+        </Link>
+      ) : null}
+      {siap === "kosong" ? (
+        <Link href="/daftar" className="inline-flex rounded-full bg-amber-400 px-5 py-3 text-sm font-black text-indigo-950">
+          DAFTARKAN PROFIL ANAK
+        </Link>
+      ) : null}
+      {siap === "galat" || mode === "tertutup" ? (
+        <p className="rounded-2xl bg-indigo-50 px-3 py-2 text-sm font-bold text-indigo-950">
+          {mode === "tertutup" ? "Pembayaran belum diaktifkan di server." : "Akun belum bisa dibaca. Muat ulang sebentar lagi."}
+        </p>
+      ) : null}
+
+      {siap === "masuk" && dipilih?.langgananAktif ? (
+        <p className="rounded-2xl border border-amber-400 bg-amber-50 px-3 py-2 text-sm font-bold">
+          Langganan {dipilih.nama} masih aktif{dipilih.langgananBerakhir ? ` sampai ${tanggalId(dipilih.langgananBerakhir)}` : ""}. Perpanjangan menambah 30 hari.
+        </p>
+      ) : null}
+
+      {siap === "masuk" && (langkah === "form" || langkah === "galat" || langkah === "memuat") ? (
+        <form
+          className="space-y-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+            void tampilkanQris();
+          }}
+        >
+          {anak.length > 1 ? (
+            <label className="block text-sm font-black">
+              Anak
+              <select
+                value={idAnak}
+                onChange={(e) => setIdAnak(e.target.value)}
+                className="mt-1 w-full rounded-2xl border-2 border-indigo-100 bg-indigo-50/40 px-3 py-3 text-base font-bold"
+              >
+                {anak.map((a) => (
+                  <option key={a.id} value={a.id}>
+                    {a.nama} · Kelas {a.kelas}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ) : (
+            <p className="text-sm font-black">Untuk {dipilih?.nama}</p>
+          )}
+
+          <label className="flex gap-3 rounded-2xl border border-indigo-100 bg-indigo-50/40 p-3 text-sm leading-relaxed">
+            <input
+              type="checkbox"
+              checked={akad}
+              onChange={(e) => setAkad(e.target.checked)}
+              className="mt-1 h-5 w-5 shrink-0 accent-indigo-800"
+            />
+            <span>{TEKS_AKAD}</span>
+          </label>
+          <label className="flex gap-3 rounded-2xl border border-indigo-100 bg-indigo-50/40 p-3 text-sm leading-relaxed">
+            <input
+              type="checkbox"
+              checked={pdp}
+              onChange={(e) => setPdp(e.target.checked)}
+              className="mt-1 h-5 w-5 shrink-0 accent-indigo-800"
+            />
+            <span>{TEKS_PDP}</span>
+          </label>
+
+          <button
+            type="submit"
+            data-testid="tombol-qris"
+            disabled={!bolehTampil || mode === "tertutup"}
+            className="w-full rounded-full border-4 border-amber-400 bg-amber-400 px-4 py-3 text-base font-black text-indigo-950 disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            {langkah === "memuat" ? "Menyiapkan QR…" : LABEL_TOMBOL_QRIS}
+          </button>
+        </form>
+      ) : null}
+
+      {langkah === "qr" ? (
+        <div className="space-y-3 text-center">
+          <p className="text-sm font-bold text-slate-700">
+            {simulasi ? "QRIS simulasi. Kode ini tidak bisa dibayar di aplikasi bank." : "Pindai QRIS ini sebesar Rp 50.000."}
+          </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={gambar} alt="QRIS langganan IGIL Rp 50.000" className="mx-auto h-64 w-64 rounded-2xl bg-white p-2 ring-1 ring-indigo-100" />
+          {simulasi ? (
+            <button
+              type="button"
+              data-testid="tombol-simulasi-lunas"
+              onClick={() => void simulasiLunas()}
+              className="w-full rounded-full border-2 border-indigo-950 bg-indigo-950 px-4 py-3 text-sm font-black text-amber-300"
+            >
+              {LABEL_TOMBOL_LUNAS}
+            </button>
+          ) : (
+            <p className="text-xs font-semibold text-slate-500">Halaman ini menunggu konfirmasi pembayaran.</p>
+          )}
+        </div>
+      ) : null}
+
+      {langkah === "lunas" ? (
+        <p className="rounded-2xl border-4 border-amber-400 bg-amber-50 px-4 py-3 text-sm font-black" data-testid="langganan-aktif">
+          Langganan aktif{berakhir ? ` sampai ${tanggalId(berakhir)}` : ""}. Latihan, Ujian, dan Praktikum sudah terbuka.
+        </p>
+      ) : null}
+
+      {pesan ? <p className="text-sm font-bold text-rose-800">{pesan}</p> : null}
+    </section>
+  );
+}

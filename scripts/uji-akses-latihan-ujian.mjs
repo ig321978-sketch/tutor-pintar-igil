@@ -66,6 +66,10 @@ cek(T(false, "memuat", true) === "memuat", "akun sedang diperiksa: kartu memuat"
 cek(T(false, "belum_siap", true) === "server_belum_siap", "layanan belum tersambung: tertutup");
 cek(T(false, "siap", false) === "materi_belum_tuntas", "user siap, Materi belum tuntas: tertutup");
 cek(T(false, "siap", true) === "terbuka", "user siap, Materi tuntas: terbuka");
+cek(A.kondisiTab({ bebas: false, status: "siap", materiTuntas: true, langgananAktif: false }) === "langganan_nonaktif", "langganan nonaktif menutup Latihan dan Ujian");
+cek(A.kondisiTab({ bebas: true, status: "siap", materiTuntas: true, langgananAktif: false }) === "langganan_nonaktif", "mode periksa tidak membuka tab bila langganan diketahui nonaktif");
+cek(A.kondisiTab({ bebas: false, status: "siap", materiTuntas: true, langgananAktif: null }) === "terbuka", "tabel langganan belum diketahui: tidak menambah kunci");
+cek(A.kondisiTab({ bebas: true, status: "belum_masuk", materiTuntas: false, langgananAktif: false }) === "belum_masuk", "tamu tetap kartu masuk sebelum kartu langganan");
 
 /* ---------- pesan memakai istilah baku ---------- */
 for (const alasan of ["belum_masuk", "materi_belum_tuntas", "bab_tidak_dikenal"]) {

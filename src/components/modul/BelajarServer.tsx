@@ -19,6 +19,9 @@ export interface AnakBelajar {
   nama: string;
   kelas: number;
   fase: string;
+  /** false = langganan belum aktif. null = tabel belum ada. Admin selalu true. */
+  langgananAktif?: boolean | null;
+  langgananBerakhir?: string | null;
 }
 
 export type StatusProfil = "memuat" | "belum_siap" | "belum_masuk" | "belum_ada_anak" | "siap";
