@@ -1,6 +1,7 @@
 import { skemaBelumAda } from "@/lib/belajar-server";
 import {
   langgananAktif,
+  langgananMenunggu,
   putuskanPagar,
   type AlasanPagar,
   type AnakLangganan,
@@ -22,6 +23,7 @@ interface BarisAnak {
 interface BarisLangganan {
   student_id: string;
   status: string;
+  starts_at: string | null;
   expires_at: string | null;
 }
 
@@ -44,9 +46,9 @@ export async function bacaKeputusanLangganan(anakDipilih: string | null): Promis
   const baris = (anak.data ?? []) as BarisAnak[];
   const ids = baris.map((b) => b.id);
   let skemaSiap = false;
-  const peta = new Map<string, { aktif: boolean; berakhir: string | null }>();
+  const peta = new Map<string, { aktif: boolean; menunggu: boolean; mulai: string | null; berakhir: string | null }>();
   if (ids.length > 0) {
-    const sub = await supabase.from("subscriptions").select("student_id, status, expires_at").in("student_id", ids);
+    const sub = await supabase.from("subscriptions").select("student_id, status, starts_at, expires_at").in("student_id", ids);
     if (skemaBelumAda(sub.error)) {
       skemaSiap = false;
     } else if (sub.error) {
@@ -56,7 +58,9 @@ export async function bacaKeputusanLangganan(anakDipilih: string | null): Promis
       const sekarang = Date.now();
       for (const row of (sub.data ?? []) as BarisLangganan[]) {
         peta.set(row.student_id, {
-          aktif: langgananAktif(row.status, row.expires_at, sekarang),
+          aktif: langgananAktif(row.status, row.starts_at, row.expires_at, sekarang),
+          menunggu: langgananMenunggu(row.status, row.starts_at, row.expires_at, sekarang),
+          mulai: row.starts_at,
           berakhir: row.expires_at,
         });
       }
@@ -74,6 +78,8 @@ export async function bacaKeputusanLangganan(anakDipilih: string | null): Promis
     id: b.id,
     nama: b.display_name,
     aktif: peta.get(b.id)?.aktif ?? false,
+    menunggu: peta.get(b.id)?.menunggu ?? false,
+    mulai: peta.get(b.id)?.mulai ?? null,
     berakhir: peta.get(b.id)?.berakhir ?? null,
   }));
   const putusan = putuskanPagar({

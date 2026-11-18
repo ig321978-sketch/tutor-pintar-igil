@@ -1,6 +1,9 @@
 -- Pembayaran langganan QRIS (Midtrans Core API) dan token beasiswa apresiasi 18%.
--- Harga tetap Rp 50.000 / 30 hari. Tidak ada kolom kuota dan tidak ada penolakan karena jumlah siswa.
--- Materi dan Simulasi tidak melewati tabel ini.
+-- Harga tetap Rp 50.000. Tidak ada kolom kuota dan tidak ada penolakan karena jumlah siswa.
+-- QRIS membuka satu bulan kalender WIB: lunas tanggal 1–25 untuk bulan berjalan (langsung),
+-- lunas tanggal 26–akhir bulan untuk bulan berikutnya (starts_at = tanggal 1 pukul 00:00 WIB).
+-- Token beasiswa 18% tetap menambah 30 hari. Materi dan Simulasi tidak melewati tabel ini.
+-- Berkas ini aman dijalankan ulang: kolom starts_at ditambahkan bila belum ada, fungsi diganti.
 --
 -- Setiap pelunasan QRIS Rp 50.000:
 --   gross_amount            50000 (100%)
@@ -39,17 +42,35 @@ create index if not exists students_sekolah
   on public.students (school_id)
   where school_id is not null;
 
--- Satu baris per anak. Akses belajar berbayar: status ACTIVE dan expires_at > now().
+-- Satu baris per anak. Gembok Latihan, Ujian, Praktikum terbuka hanya bila
+-- status = ACTIVE dan now() >= starts_at dan now() <= expires_at.
 create table if not exists public.subscriptions (
   student_id uuid primary key references public.students (id) on delete cascade,
   status text not null default 'INACTIVE',
   started_at timestamptz not null default now(),
+  starts_at timestamptz not null default now(),
   expires_at timestamptz not null default now(),
   last_payment_method text not null,
   updated_at timestamptz not null default now(),
   constraint status_langganan check (status in ('INACTIVE', 'ACTIVE', 'EXPIRED')),
   constraint metode_langganan check (last_payment_method in ('QRIS', 'SCHOLARSHIP_TOKEN_18PCT'))
 );
+
+alter table public.subscriptions
+  add column if not exists starts_at timestamptz;
+
+update public.subscriptions
+set starts_at = started_at
+where starts_at is null;
+
+alter table public.subscriptions
+  alter column starts_at set default now();
+
+alter table public.subscriptions
+  alter column starts_at set not null;
+
+comment on column public.subscriptions.starts_at is
+  'Awal jendela evaluasi WIB. Tab terbuka bila status ACTIVE dan now() berada di antara starts_at dan expires_at, inklusif.';
 
 create table if not exists public.payment_orders (
   id uuid primary key default gen_random_uuid(),
@@ -250,11 +271,12 @@ begin
   if p_metode not in ('QRIS', 'SCHOLARSHIP_TOKEN_18PCT') then
     raise exception 'Metode pembayaran tidak dikenal';
   end if;
-  insert into public.subscriptions as s (student_id, status, started_at, expires_at, last_payment_method)
-  values (p_student, 'ACTIVE', now(), now() + interval '30 days', p_metode)
+  insert into public.subscriptions as s (student_id, status, started_at, starts_at, expires_at, last_payment_method)
+  values (p_student, 'ACTIVE', now(), now(), now() + interval '30 days', p_metode)
   on conflict (student_id) do update set
     status = 'ACTIVE',
     started_at = case when s.expires_at > now() then s.started_at else excluded.started_at end,
+    starts_at = case when s.expires_at > now() then s.starts_at else excluded.starts_at end,
     expires_at = case
       when s.expires_at > now() then s.expires_at + interval '30 days'
       else excluded.expires_at
@@ -407,9 +429,11 @@ set search_path = public
 as $fungsi$
 declare
   v_status text;
+  v_starts timestamptz;
   v_expires timestamptz;
   v_metode text;
   v_aktif boolean;
+  v_menunggu boolean;
 begin
   if auth.uid() is null then
     raise exception 'Masuk diperlukan';
@@ -418,15 +442,25 @@ begin
     raise exception 'Anak tidak ada di rumah';
   end if;
 
-  select s.status, s.expires_at, s.last_payment_method
-    into v_status, v_expires, v_metode
+  select s.status, s.starts_at, s.expires_at, s.last_payment_method
+    into v_status, v_starts, v_expires, v_metode
   from public.subscriptions s
   where s.student_id = p_student;
 
-  v_aktif := v_status = 'ACTIVE' and v_expires > now();
+  v_aktif := v_status = 'ACTIVE'
+    and v_starts is not null
+    and v_expires is not null
+    and now() >= v_starts
+    and now() <= v_expires;
+  v_menunggu := v_status = 'ACTIVE'
+    and v_starts is not null
+    and now() < v_starts
+    and v_expires >= v_starts;
   return jsonb_build_object(
     'aktif', coalesce(v_aktif, false),
+    'menunggu', coalesce(v_menunggu, false),
     'status', coalesce(v_status, 'INACTIVE'),
+    'starts_at', v_starts,
     'expires_at', v_expires,
     'metode', v_metode
   );
@@ -434,13 +468,18 @@ end;
 $fungsi$;
 
 -- Pelunasan atomik dan idempoten. Hanya order QRIS. Token tidak lewat fungsi ini.
+-- p_saat kosong = now(). Mode mock mengisi p_saat agar tanggal 1–25 dan 26–31 bisa diuji.
+-- Webhook produksi tidak mengirim p_saat. Fungsi ini hanya untuk service_role.
+drop function if exists public.process_igil_qris_settlement(text, text, text, integer, text, jsonb);
+
 create or replace function public.process_igil_qris_settlement(
   p_order_id text,
   p_transaction_status text,
   p_fraud_status text,
   p_gross_amount integer,
   p_midtrans_transaction_id text default null,
-  p_payload jsonb default null
+  p_payload jsonb default null,
+  p_saat timestamptz default null
 ) returns jsonb
 language plpgsql
 security definer
@@ -452,7 +491,11 @@ declare
   v_fraud text := lower(coalesce(p_fraud_status, ''));
   v_lunas boolean;
   v_expires timestamptz;
+  v_mulai timestamptz;
   v_bulan date;
+  v_saat timestamptz;
+  v_wib timestamp;
+  v_hari integer;
   v_status_baru text;
 begin
   if p_payload is not null and pg_column_size(p_payload) < 16000 then
@@ -470,7 +513,7 @@ begin
   end if;
 
   if v.ledger_applied then
-    select s.expires_at into v_expires
+    select s.starts_at, s.expires_at into v_mulai, v_expires
     from public.subscriptions s
     where s.student_id = v.student_id;
     update public.payment_orders
@@ -483,7 +526,9 @@ begin
       'idempotent', true,
       'order_id', v.order_id,
       'student_id', v.student_id,
-      'expires_at', v_expires
+      'starts_at', v_mulai,
+      'expires_at', v_expires,
+      'menunggu', v_mulai is not null and v_mulai > now()
     );
   end if;
 
@@ -517,7 +562,22 @@ begin
     raise exception 'Pembagian tidak seimbang';
   end if;
 
-  v_bulan := public.bulan_jakarta(now());
+  -- Cut-off WIB. Tanggal 1–25: kolam bulan berjalan, akses langsung sampai akhir bulan 23:59:59.
+  -- Tanggal 26–akhir: kolam bulan berikutnya, starts_at = tanggal 1 pukul 00:00:00 WIB.
+  -- Seluruh Rp 50.000 (45.000 beasiswa + 5.000 operasional) masuk ke period_month yang sama.
+  v_saat := coalesce(p_saat, now());
+  v_wib := v_saat at time zone 'Asia/Jakarta';
+  v_hari := extract(day from v_wib)::integer;
+  if v_hari <= 25 then
+    v_bulan := date_trunc('month', v_wib)::date;
+    v_mulai := v_saat;
+    v_expires := (date_trunc('month', v_wib) + interval '1 month' - interval '1 second') at time zone 'Asia/Jakarta';
+  else
+    v_bulan := (date_trunc('month', v_wib) + interval '1 month')::date;
+    v_mulai := (date_trunc('month', v_wib) + interval '1 month') at time zone 'Asia/Jakarta';
+    v_expires := (date_trunc('month', v_wib) + interval '2 month' - interval '1 second') at time zone 'Asia/Jakarta';
+  end if;
+
   perform private.tambah_kolam(
     v.school_id, v_bulan,
     50000, 50000, 0,
@@ -525,7 +585,16 @@ begin
     350, 4650,
     1, 0
   );
-  v_expires := private.perpanjang_langganan(v.student_id, 'QRIS');
+
+  insert into public.subscriptions as s (student_id, status, started_at, starts_at, expires_at, last_payment_method)
+  values (v.student_id, 'ACTIVE', v_mulai, v_mulai, v_expires, 'QRIS')
+  on conflict (student_id) do update set
+    status = 'ACTIVE',
+    starts_at = excluded.starts_at,
+    expires_at = excluded.expires_at,
+    last_payment_method = 'QRIS',
+    updated_at = now()
+  returning starts_at, expires_at into v_mulai, v_expires;
 
   update public.payment_orders
   set status = 'settlement',
@@ -533,7 +602,7 @@ begin
       fraud_status = 'accept',
       midtrans_transaction_id = coalesce(p_midtrans_transaction_id, midtrans_transaction_id),
       ledger_applied = true,
-      settled_at = now(),
+      settled_at = v_saat,
       period_month = v_bulan,
       tier1_300k_cash_pool = 36000,
       tier2_50k_token_pool = 9000,
@@ -549,7 +618,9 @@ begin
     'order_id', v.order_id,
     'student_id', v.student_id,
     'school_id', v.school_id,
+    'starts_at', v_mulai,
     'expires_at', v_expires,
+    'menunggu', v_mulai > now(),
     'period_month', v_bulan,
     'gross_amount', 50000,
     'tier1_300k_cash_pool', 36000,
@@ -820,13 +891,13 @@ grant execute on function public.buat_order_qris(uuid, boolean, boolean) to auth
 grant execute on function public.lengkapi_qris_pending(text, text, text) to authenticated;
 grant execute on function public.status_langganan_anak(uuid) to authenticated;
 
-revoke all on function public.process_igil_qris_settlement(text, text, text, integer, text, jsonb) from public, anon, authenticated;
+revoke all on function public.process_igil_qris_settlement(text, text, text, integer, text, jsonb, timestamptz) from public, anon, authenticated;
 revoke all on function public.redeem_tier2_scholarship_tokens(date, uuid[]) from public, anon, authenticated;
 
 do $izin$
 begin
   if exists (select 1 from pg_roles where rolname = 'service_role') then
-    execute 'grant execute on function public.process_igil_qris_settlement(text, text, text, integer, text, jsonb) to service_role';
+    execute 'grant execute on function public.process_igil_qris_settlement(text, text, text, integer, text, jsonb, timestamptz) to service_role';
     execute 'grant execute on function public.redeem_tier2_scholarship_tokens(date, uuid[]) to service_role';
     execute 'grant select, insert on private.payment_events to service_role';
   end if;

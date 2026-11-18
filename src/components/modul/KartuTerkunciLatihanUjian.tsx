@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { KondisiTab } from "@/lib/akses-latihan-ujian";
+import { TEKS_KUNCI_JADWAL } from "@/lib/pembayaran-qris";
 
 /** Kartu pengganti tab Latihan atau Ujian yang belum boleh dibuka. Aturan: src/lib/akses-latihan-ujian.ts. */
 export function KartuTerkunciLatihanUjian({
@@ -57,6 +58,14 @@ export function KartuTerkunciLatihanUjian({
   } else if (kondisi === "server_belum_siap") {
     judul = `${tab} belum bisa dibuka sekarang`;
     isi = `Layanan penilaian belum tersambung. Coba muat ulang halaman sebentar lagi, ya.`;
+    aksi = (
+      <button type="button" onClick={onKeMateri} className={tombol}>
+        KE MATERI ➡️
+      </button>
+    );
+  } else if (kondisi === "langganan_menunggu") {
+    judul = "Langganan Bulan Depan Sudah Lunas!";
+    isi = TEKS_KUNCI_JADWAL;
     aksi = (
       <button type="button" onClick={onKeMateri} className={tombol}>
         KE MATERI ➡️

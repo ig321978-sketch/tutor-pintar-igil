@@ -3,6 +3,7 @@ import type { SupabaseClient, User } from "@supabase/supabase-js";
 import { supabaseAuthServer } from "@/lib/supabase-auth";
 import { adalahPeranAdmin, bacaPeranPengguna } from "@/lib/peran";
 import { kodeBabAplikasi, pesanTutup, putuskanAkses } from "@/lib/akses-latihan-ujian";
+import { TEKS_KUNCI_JADWAL } from "@/lib/pembayaran-qris";
 
 /**
  * Jembatan Latihan dan Ujian ke Supabase.
@@ -124,8 +125,11 @@ async function langgananMengizinkan(sesi: SesiBelajar, anak: string): Promise<Ne
   const { data, error } = await sesi.supabase.rpc("status_langganan_anak", { p_student: anak });
   if (skemaBelumAda(error)) return null;
   if (error) return jawab({ status: "galat", pesan: pesanGalat(error) }, 422);
-  const baris = (data ?? null) as { aktif?: boolean } | null;
+  const baris = (data ?? null) as { aktif?: boolean; menunggu?: boolean } | null;
   if (baris?.aktif === true) return null;
+  if (baris?.menunggu === true) {
+    return jawab({ status: "terkunci", alasan: "langganan_menunggu", pesan: TEKS_KUNCI_JADWAL }, 403);
+  }
   return jawab({ status: "terkunci", alasan: "langganan_nonaktif", pesan: PESAN_LANGGANAN }, 403);
 }
 

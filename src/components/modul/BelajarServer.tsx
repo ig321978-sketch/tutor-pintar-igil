@@ -21,6 +21,8 @@ export interface AnakBelajar {
   fase: string;
   /** false = langganan belum aktif. null = tabel belum ada. Admin selalu true. */
   langgananAktif?: boolean | null;
+  /** Lunas tanggal 26–akhir bulan: jendela evaluasi belum mulai. */
+  langgananMenunggu?: boolean;
   langgananBerakhir?: string | null;
 }
 

@@ -22,7 +22,16 @@ export const TEKS_BEASISWA_APRESIASI =
   "Selamat! Kamu meraih Beasiswa Apresiasi IGIL — Langganan Bulan Depan Gratis (Aktif Otomatis)";
 
 export const LABEL_TOMBOL_QRIS = "Tampilkan QRIS Rp 50.000";
-export const LABEL_TOMBOL_LUNAS = "Simulasi Lunas (Dev Mode)";
+export const LABEL_TOMBOL_LUNAS_AWAL = "Simulasi Lunas (Tgl 1-25)";
+export const LABEL_TOMBOL_LUNAS_AKHIR = "Simulasi Lunas (Tgl 26-31)";
+
+export const TEKS_KUNCI_JADWAL =
+  "Langganan Bulan Depan Sudah Lunas! Tab Evaluasi akan terbuka serentak tanggal 1 pukul 00.00 WIB setelah reset capaian bulanan. Silakan pelajari tab Materi & Simulasi terlebih dahulu.";
+
+export const TEKS_INFO_CUTOFF =
+  "Pembayaran di atas tanggal 25 masuk ke kolam beasiswa bulan depan. Jadwal evaluasi (Latihan, Ujian, dan Praktikum) terbuka tanggal 1 bulan depan pukul 00.00 WIB.";
+
+export type JendelaUji = "awal" | "akhir";
 
 export type ModePembayaran = "mock" | "sandbox" | "production";
 export type MetodeBayar = "QRIS" | "SCHOLARSHIP_TOKEN_18PCT";
@@ -97,15 +106,143 @@ export interface AnakLangganan {
   id: string;
   nama: string;
   aktif: boolean;
+  /** ACTIVE tetapi now() belum mencapai starts_at (lunas tanggal 26–akhir bulan). */
+  menunggu?: boolean;
+  mulai?: string | null;
   berakhir: string | null;
 }
 
 export type AlasanPagar = "belum_masuk" | "belum_ada_anak" | "nonaktif" | "pilih_anak" | "galat";
 
-export function langgananAktif(status: string | null, berakhir: string | null, sekarang: number): boolean {
-  if (status !== "ACTIVE" || !berakhir) return false;
-  const t = Date.parse(berakhir);
-  return Number.isFinite(t) && t > sekarang;
+export interface BagianWib {
+  tahun: number;
+  bulan: number;
+  hari: number;
+  jam: number;
+  menit: number;
+  detik: number;
+}
+
+/** Bagian kalender Asia/Jakarta. WIB tidak punya waktu musim. */
+export function bagianWib(saat: Date): BagianWib {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Jakarta",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(saat);
+  const ambil = (tipe: Intl.DateTimeFormatPartTypes) => Number(parts.find((p) => p.type === tipe)?.value ?? "NaN");
+  let jam = ambil("hour");
+  if (jam === 24) jam = 0;
+  return {
+    tahun: ambil("year"),
+    bulan: ambil("month"),
+    hari: ambil("day"),
+    jam,
+    menit: ambil("minute"),
+    detik: ambil("second"),
+  };
+}
+
+/** Dinding jam WIB menjadi instan UTC. bulan 1–12. */
+export function instanWib(tahun: number, bulan: number, hari: number, jam = 0, menit = 0, detik = 0): Date {
+  return new Date(Date.UTC(tahun, bulan - 1, hari, jam - 7, menit, detik));
+}
+
+function bulanBerikut(tahun: number, bulan: number): { tahun: number; bulan: number } {
+  return bulan === 12 ? { tahun: tahun + 1, bulan: 1 } : { tahun, bulan: bulan + 1 };
+}
+
+function akhirBulanWib(tahun: number, bulan: number): Date {
+  const next = bulanBerikut(tahun, bulan);
+  return new Date(instanWib(next.tahun, next.bulan, 1).getTime() - 1000);
+}
+
+export interface JendelaLangganan {
+  lewatCutoff: boolean;
+  periodMonth: string;
+  startsAt: Date;
+  expiresAt: Date;
+}
+
+/**
+ * Jendela yang sama dengan RPC process_igil_qris_settlement.
+ * Tanggal 1–25: mulai saat lunas, berakhir 23:59:59 WIB bulan itu, kolam bulan berjalan.
+ * Tanggal 26–akhir: mulai tanggal 1 pukul 00:00:00 WIB bulan depan, kolam bulan depan.
+ */
+export function jendelaLangganan(saat: Date): JendelaLangganan {
+  const w = bagianWib(saat);
+  const periode = (tahun: number, bulan: number) => `${tahun}-${String(bulan).padStart(2, "0")}-01`;
+  if (w.hari <= 25) {
+    return {
+      lewatCutoff: false,
+      periodMonth: periode(w.tahun, w.bulan),
+      startsAt: saat,
+      expiresAt: akhirBulanWib(w.tahun, w.bulan),
+    };
+  }
+  const next = bulanBerikut(w.tahun, w.bulan);
+  return {
+    lewatCutoff: true,
+    periodMonth: periode(next.tahun, next.bulan),
+    startsAt: instanWib(next.tahun, next.bulan, 1),
+    expiresAt: akhirBulanWib(next.tahun, next.bulan),
+  };
+}
+
+export function lewatTanggalDuaLima(saat: Date = new Date()): boolean {
+  return bagianWib(saat).hari >= 26;
+}
+
+/**
+ * Jam uji mode mock. "awal" selalu jatuh pada tanggal 1–25 yang tidak mengunci akses hari ini.
+ * "akhir" selalu tanggal 26 bulan WIB berjalan, jadi starts_at menjadi tanggal 1 bulan depan.
+ */
+export function saatUjiJendela(jendela: JendelaUji, sekarang: Date = new Date()): Date {
+  const w = bagianWib(sekarang);
+  if (jendela === "awal") {
+    if (w.hari <= 25) return sekarang;
+    return instanWib(w.tahun, w.bulan, 25, 12, 0, 0);
+  }
+  return instanWib(w.tahun, w.bulan, 26, 12, 0, 0);
+}
+
+function millis(iso: string | null): number | null {
+  if (!iso) return null;
+  const t = Date.parse(iso);
+  return Number.isFinite(t) ? t : null;
+}
+
+/** Terbuka hanya bila ACTIVE dan sekarang berada di dalam [starts_at, expires_at]. */
+export function langgananAktif(
+  status: string | null,
+  mulai: string | null,
+  berakhir: string | null,
+  sekarang: number,
+): boolean {
+  if (status !== "ACTIVE") return false;
+  const a = millis(mulai);
+  const b = millis(berakhir);
+  if (a === null || b === null) return false;
+  return sekarang >= a && sekarang <= b;
+}
+
+/** Sudah ACTIVE, tetapi jendela evaluasi belum mulai. */
+export function langgananMenunggu(
+  status: string | null,
+  mulai: string | null,
+  berakhir: string | null,
+  sekarang: number,
+): boolean {
+  if (status !== "ACTIVE") return false;
+  const a = millis(mulai);
+  const b = millis(berakhir);
+  if (a === null || b === null) return false;
+  return sekarang < a && a <= b;
 }
 
 /**

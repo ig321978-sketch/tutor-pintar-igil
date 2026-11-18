@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import type { AlasanPagar, AnakLangganan } from "@/lib/pembayaran-qris";
+import { TEKS_KUNCI_JADWAL, type AlasanPagar, type AnakLangganan } from "@/lib/pembayaran-qris";
 
 const tombol =
   "inline-flex min-h-[44px] items-center justify-center rounded-full border-4 border-amber-400 bg-amber-400 px-5 py-2 text-sm font-black text-indigo-950";
@@ -19,6 +19,7 @@ export function KartuPagarLangganan({
 }) {
   const masuk = `/login?next=${encodeURIComponent(kembali)}`;
   const sasaran = anak.find((a) => a.id === anakDipilih) ?? anak.find((a) => !a.aktif) ?? anak[0];
+  const menunggu = alasan === "nonaktif" && sasaran?.menunggu === true;
   let judul = "Praktikum terbuka setelah langganan aktif";
   let isi =
     "Latihan, Ujian, dan Praktikum terbuka setelah langganan 30 hari aktif. Materi dan Simulasi tetap gratis. Tidak ada batas kuota siswa.";
@@ -31,6 +32,9 @@ export function KartuPagarLangganan({
   } else if (alasan === "pilih_anak") {
     judul = "Pilih anak yang langganannya aktif";
     isi = "Setiap anak punya masa aktif sendiri. Pilih anak yang sudah berlangganan, atau bayar untuk anak yang belum.";
+  } else if (menunggu) {
+    judul = "Langganan Bulan Depan Sudah Lunas!";
+    isi = TEKS_KUNCI_JADWAL;
   } else if (alasan === "galat") {
     judul = "Status langganan belum terbaca";
     isi = "Server belum bisa memeriksa langganan. Muat ulang halaman sebentar lagi.";
@@ -54,9 +58,14 @@ export function KartuPagarLangganan({
             DAFTARKAN PROFIL ANAK
           </Link>
         ) : null}
-        {alasan === "nonaktif" ? (
+        {alasan === "nonaktif" && !menunggu ? (
           <Link href={sasaran ? `/langganan?anak=${sasaran.id}` : "/langganan"} className={tombol}>
             Buka pembayaran Rp 50.000
+          </Link>
+        ) : null}
+        {menunggu ? (
+          <Link href="/ruang-belajar" className={tombol}>
+            Pelajari Materi
           </Link>
         ) : null}
         {alasan === "pilih_anak" ? (
@@ -67,6 +76,10 @@ export function KartuPagarLangganan({
                   <Link href={`${kembali}?anak=${a.id}`} className={`${tombol} w-full`}>
                     Lanjut sebagai {a.nama}
                   </Link>
+                ) : a.menunggu ? (
+                  <p className="rounded-2xl bg-indigo-50 px-3 py-2 text-sm font-bold text-indigo-950">
+                    {a.nama}: {TEKS_KUNCI_JADWAL}
+                  </p>
                 ) : (
                   <Link href={`/langganan?anak=${a.id}`} className={`${tombol} w-full bg-white`}>
                     Bayar untuk {a.nama}

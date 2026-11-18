@@ -1,5 +1,5 @@
 import { adalahRespons, adalahUuid, jawab, sesiBelajar, skemaBelumAda } from "@/lib/belajar-server";
-import { idOrderQris, langgananAktif } from "@/lib/pembayaran-qris";
+import { idOrderQris, langgananAktif, langgananMenunggu } from "@/lib/pembayaran-qris";
 
 export const dynamic = "force-dynamic";
 
@@ -25,18 +25,23 @@ export async function GET(req: Request) {
   if (!order.data) return jawab({ status: "galat", pesan: "Order ini tidak ada di akunmu." }, 404);
 
   const siswa = typeof order.data.student_id === "string" ? order.data.student_id : "";
+  let mulai: string | null = null;
   let berakhir: string | null = null;
   let aktif = false;
+  let menunggu = false;
   if (adalahUuid(siswa)) {
     const sub = await sesi.supabase
       .from("subscriptions")
-      .select("status, expires_at")
+      .select("status, starts_at, expires_at")
       .eq("student_id", siswa)
       .maybeSingle();
     if (!sub.error && sub.data) {
       const status = typeof sub.data.status === "string" ? sub.data.status : null;
+      mulai = typeof sub.data.starts_at === "string" ? sub.data.starts_at : null;
       berakhir = typeof sub.data.expires_at === "string" ? sub.data.expires_at : null;
-      aktif = langgananAktif(status, berakhir, Date.now());
+      const sekarang = Date.now();
+      aktif = langgananAktif(status, mulai, berakhir, sekarang);
+      menunggu = langgananMenunggu(status, mulai, berakhir, sekarang);
     }
   }
 
@@ -47,6 +52,8 @@ export async function GET(req: Request) {
     lunas: order.data.ledger_applied === true,
     consentTimestamp: order.data.consent_timestamp ?? null,
     langgananAktif: aktif,
+    menunggu,
+    mulai,
     berakhir,
   });
 }

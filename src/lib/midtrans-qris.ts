@@ -91,7 +91,10 @@ export async function gambarQris(muatan: string): Promise<string> {
   });
 }
 
-export async function prosesNotifikasiMidtrans(mentah: string): Promise<{ http: number; tubuh: Record<string, unknown> }> {
+export async function prosesNotifikasiMidtrans(
+  mentah: string,
+  saatPelunasan?: string | null,
+): Promise<{ http: number; tubuh: Record<string, unknown> }> {
   let json: unknown;
   try {
     json = JSON.parse(mentah);
@@ -133,12 +136,20 @@ export async function prosesNotifikasiMidtrans(mentah: string): Promise<{ http: 
     p_gross_amount: nominal,
     p_midtrans_transaction_id: transaksiId,
     p_payload: json,
+    ...(saatPelunasan ? { p_saat: saatPelunasan } : {}),
   });
   if (error) {
     console.error("RPC pelunasan gagal", error.code ?? "");
     return { http: 500, tubuh: { ok: false } };
   }
-  const baris = (data ?? {}) as { applied?: boolean; idempotent?: boolean; alasan?: string; expires_at?: string };
+  const baris = (data ?? {}) as {
+    applied?: boolean;
+    idempotent?: boolean;
+    alasan?: string;
+    starts_at?: string;
+    expires_at?: string;
+    menunggu?: boolean;
+  };
   return {
     http: 200,
     tubuh: {
@@ -146,7 +157,9 @@ export async function prosesNotifikasiMidtrans(mentah: string): Promise<{ http: 
       applied: baris.applied === true,
       idempotent: baris.idempotent === true,
       alasan: baris.alasan ?? null,
+      starts_at: baris.starts_at ?? null,
       expires_at: baris.expires_at ?? null,
+      menunggu: baris.menunggu === true,
     },
   };
 }

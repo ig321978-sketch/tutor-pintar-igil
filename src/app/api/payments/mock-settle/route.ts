@@ -6,14 +6,15 @@ import {
   sesiBelajar,
 } from "@/lib/belajar-server";
 import { kunciTandaTangan, prosesNotifikasiMidtrans, tandaMidtrans } from "@/lib/midtrans-qris";
-import { idOrderQris, modePembayaranServer } from "@/lib/pembayaran-qris";
+import { idOrderQris, modePembayaranServer, saatUjiJendela, type JendelaUji } from "@/lib/pembayaran-qris";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 /**
- * POST /api/payments/mock-settle  { orderId }
+ * POST /api/payments/mock-settle  { orderId, jendela: "awal" | "akhir" }
  * Hanya mode mock. Menyusun notifikasi lunas bertanda tangan, lalu jalur yang sama dengan webhook.
+ * "awal" memakai waktu tanggal 1–25, "akhir" memakai tanggal 26. Klien tidak mengirim jam bebas.
  * Hanya order milik rumah yang sedang masuk.
  */
 export async function POST(req: Request) {
@@ -23,7 +24,8 @@ export async function POST(req: Request) {
   const body = await bacaBody(req);
   if (!body) return galatBacaBody();
   const orderId = typeof body.orderId === "string" ? body.orderId : "";
-  if (!idOrderQris(orderId)) return galatBacaBody();
+  const jendela: JendelaUji | null = body.jendela === "awal" || body.jendela === "akhir" ? body.jendela : null;
+  if (!idOrderQris(orderId) || !jendela) return galatBacaBody();
 
   const sesi = await sesiBelajar();
   if (adalahRespons(sesi)) return sesi;
@@ -52,6 +54,6 @@ export async function POST(req: Request) {
     payment_type: "qris",
     signature_key: tandaMidtrans(orderId, statusCode, gross, kunci),
   });
-  const hasil = await prosesNotifikasiMidtrans(mentah);
+  const hasil = await prosesNotifikasiMidtrans(mentah, saatUjiJendela(jendela).toISOString());
   return jawab(hasil.tubuh, hasil.http);
 }

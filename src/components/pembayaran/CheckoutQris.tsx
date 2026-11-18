@@ -5,11 +5,16 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import {
-  LABEL_TOMBOL_LUNAS,
+  LABEL_TOMBOL_LUNAS_AKHIR,
+  LABEL_TOMBOL_LUNAS_AWAL,
   LABEL_TOMBOL_QRIS,
   TEKS_AKAD,
+  TEKS_INFO_CUTOFF,
+  TEKS_KUNCI_JADWAL,
   TEKS_PDP,
+  lewatTanggalDuaLima,
   modePembayaran,
+  type JendelaUji,
 } from "@/lib/pembayaran-qris";
 
 interface AnakProfil {
@@ -17,6 +22,7 @@ interface AnakProfil {
   nama: string;
   kelas: number;
   langgananAktif?: boolean | null;
+  langgananMenunggu?: boolean;
   langgananBerakhir?: string | null;
 }
 
@@ -45,7 +51,14 @@ export default function CheckoutQris() {
   const [orderId, setOrderId] = useState("");
   const [gambar, setGambar] = useState("");
   const [simulasi, setSimulasi] = useState(false);
+  const [mulai, setMulai] = useState<string | null>(null);
   const [berakhir, setBerakhir] = useState<string | null>(null);
+  const [menunggu, setMenunggu] = useState(false);
+  const [infoCutoff, setInfoCutoff] = useState(false);
+
+  useEffect(() => {
+    setInfoCutoff(lewatTanggalDuaLima(new Date()));
+  }, []);
 
   useEffect(() => {
     let batal = false;
@@ -90,9 +103,16 @@ export default function CheckoutQris() {
       void (async () => {
         try {
           const res = await fetch(`/api/payments/status?order=${orderId}`, { cache: "no-store" });
-          const json = (await res.json()) as { lunas?: boolean; berakhir?: string | null };
+          const json = (await res.json()) as {
+            lunas?: boolean;
+            mulai?: string | null;
+            berakhir?: string | null;
+            menunggu?: boolean;
+          };
           if (batal || !json.lunas) return;
+          setMulai(json.mulai ?? null);
           setBerakhir(json.berakhir ?? null);
+          setMenunggu(json.menunggu === true);
           setLangkah("lunas");
         } catch {
           // Jaringan putus. Percobaan berikutnya mengulang.
@@ -137,21 +157,29 @@ export default function CheckoutQris() {
     }
   }
 
-  async function simulasiLunas() {
+  async function simulasiLunas(jendela: JendelaUji) {
     if (!orderId) return;
     setPesan("");
     try {
       const res = await fetch("/api/payments/mock-settle", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ orderId }),
+        body: JSON.stringify({ orderId, jendela }),
       });
-      const json = (await res.json()) as { applied?: boolean; expires_at?: string | null; pesan?: string };
+      const json = (await res.json()) as {
+        applied?: boolean;
+        starts_at?: string | null;
+        expires_at?: string | null;
+        menunggu?: boolean;
+        pesan?: string;
+      };
       if (!res.ok || json.applied !== true) {
         setPesan(json.pesan || "Simulasi lunas belum berhasil.");
         return;
       }
+      setMulai(json.starts_at ?? null);
       setBerakhir(json.expires_at ?? null);
+      setMenunggu(json.menunggu === true);
       setLangkah("lunas");
     } catch {
       setPesan("Jaringan putus saat simulasi lunas.");
@@ -174,6 +202,11 @@ export default function CheckoutQris() {
         Rp 50.000 untuk 30 hari. Ini jual-beli layanan, bukan iuran dan bukan undian. Materi dan Simulasi tetap gratis.
         Tidak ada batas kuota siswa per sekolah.
       </p>
+      {infoCutoff ? (
+        <p className="rounded-2xl border border-amber-400 bg-amber-50 px-3 py-2 text-sm font-bold leading-relaxed" data-testid="info-cutoff">
+          {TEKS_INFO_CUTOFF}
+        </p>
+      ) : null}
 
       {siap === "memuat" ? <p className="text-sm font-bold">Memeriksa akun…</p> : null}
       {siap === "tamu" ? (
@@ -190,6 +223,10 @@ export default function CheckoutQris() {
         <p className="rounded-2xl bg-indigo-50 px-3 py-2 text-sm font-bold text-indigo-950">
           {mode === "tertutup" ? "Pembayaran belum diaktifkan di server." : "Akun belum bisa dibaca. Muat ulang sebentar lagi."}
         </p>
+      ) : null}
+
+      {siap === "masuk" && dipilih?.langgananMenunggu ? (
+        <p className="rounded-2xl border border-amber-400 bg-amber-50 px-3 py-2 text-sm font-bold leading-relaxed">{TEKS_KUNCI_JADWAL}</p>
       ) : null}
 
       {siap === "masuk" && dipilih?.langgananAktif ? (
@@ -263,14 +300,24 @@ export default function CheckoutQris() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={gambar} alt="QRIS langganan IGIL Rp 50.000" className="mx-auto h-64 w-64 rounded-2xl bg-white p-2 ring-1 ring-indigo-100" />
           {simulasi ? (
-            <button
-              type="button"
-              data-testid="tombol-simulasi-lunas"
-              onClick={() => void simulasiLunas()}
-              className="w-full rounded-full border-2 border-indigo-950 bg-indigo-950 px-4 py-3 text-sm font-black text-amber-300"
-            >
-              {LABEL_TOMBOL_LUNAS}
-            </button>
+            <div className="space-y-2">
+              <button
+                type="button"
+                data-testid="tombol-simulasi-lunas-awal"
+                onClick={() => void simulasiLunas("awal")}
+                className="w-full rounded-full border-2 border-indigo-950 bg-indigo-950 px-4 py-3 text-sm font-black text-amber-300"
+              >
+                {LABEL_TOMBOL_LUNAS_AWAL}
+              </button>
+              <button
+                type="button"
+                data-testid="tombol-simulasi-lunas-akhir"
+                onClick={() => void simulasiLunas("akhir")}
+                className="w-full rounded-full border-2 border-amber-400 bg-white px-4 py-3 text-sm font-black text-indigo-950"
+              >
+                {LABEL_TOMBOL_LUNAS_AKHIR}
+              </button>
+            </div>
           ) : (
             <p className="text-xs font-semibold text-slate-500">Halaman ini menunggu konfirmasi pembayaran.</p>
           )}
@@ -278,8 +325,10 @@ export default function CheckoutQris() {
       ) : null}
 
       {langkah === "lunas" ? (
-        <p className="rounded-2xl border-4 border-amber-400 bg-amber-50 px-4 py-3 text-sm font-black" data-testid="langganan-aktif">
-          Langganan aktif{berakhir ? ` sampai ${tanggalId(berakhir)}` : ""}. Latihan, Ujian, dan Praktikum sudah terbuka.
+        <p className="rounded-2xl border-4 border-amber-400 bg-amber-50 px-4 py-3 text-sm font-black leading-relaxed" data-testid="langganan-aktif">
+          {menunggu
+            ? TEKS_KUNCI_JADWAL
+            : `Langganan aktif${mulai ? ` mulai ${tanggalId(mulai)}` : ""}${berakhir ? ` sampai ${tanggalId(berakhir)}` : ""}. Latihan, Ujian, dan Praktikum sudah terbuka.`}
         </p>
       ) : null}
 

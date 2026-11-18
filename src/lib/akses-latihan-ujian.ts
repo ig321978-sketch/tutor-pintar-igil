@@ -131,7 +131,8 @@ export type KondisiTab =
   | "belum_ada_anak"
   | "server_belum_siap"
   | "materi_belum_tuntas"
-  | "langganan_nonaktif";
+  | "langganan_nonaktif"
+  | "langganan_menunggu";
 
 /**
  * Keadaan tab Latihan dan Ujian di layar. `bebas` = mode periksa pemilik (localhost atau admin yang masuk).
@@ -143,12 +144,15 @@ export function kondisiTab(opsi: {
   materiTuntas: boolean;
   /** false = langganan belum aktif. null/undefined = belum diketahui, tidak menambah kunci. */
   langgananAktif?: boolean | null;
+  /** Lunas tanggal 26–akhir bulan: ACTIVE, tetapi starts_at masih di depan. */
+  langgananMenunggu?: boolean;
 }): KondisiTab {
   if (opsi.bebas && opsi.langgananAktif !== false) return "terbuka";
   if (opsi.status === "memuat") return "memuat";
   if (opsi.status === "belum_masuk") return "belum_masuk";
   if (opsi.status === "belum_ada_anak") return "belum_ada_anak";
   if (opsi.status === "belum_siap") return "server_belum_siap";
+  if (opsi.langgananMenunggu && opsi.langgananAktif !== true) return "langganan_menunggu";
   if (opsi.langgananAktif === false) return "langganan_nonaktif";
   if (opsi.bebas) return "terbuka";
   return opsi.materiTuntas ? "terbuka" : "materi_belum_tuntas";

@@ -65,11 +65,48 @@ const pilih = P.putuskanPagar({
   anakDipilih: null,
 });
 cek(!pilih.boleh && pilih.alasan === "pilih_anak", "dua anak: pilih dulu, isi tugas belum dikirim");
-cek(!P.langgananAktif("ACTIVE", new Date(Date.now() - 1000).toISOString(), Date.now()), "kedaluwarsa bukan aktif");
-cek(P.langgananAktif("ACTIVE", new Date(Date.now() + 86400000).toISOString(), Date.now()), "masih berlaku = aktif");
-cek(!P.langgananAktif("EXPIRED", new Date(Date.now() + 86400000).toISOString(), Date.now()), "status bukan ACTIVE ditolak");
+const sekarang = Date.now();
+const kemarin = new Date(sekarang - 86400000).toISOString();
+const besok = new Date(sekarang + 86400000).toISOString();
+const lusa = new Date(sekarang + 2 * 86400000).toISOString();
+cek(!P.langgananAktif("ACTIVE", kemarin, new Date(sekarang - 1000).toISOString(), sekarang), "kedaluwarsa bukan aktif");
+cek(P.langgananAktif("ACTIVE", kemarin, besok, sekarang), "masih berlaku = aktif");
+cek(P.langgananAktif("ACTIVE", new Date(sekarang).toISOString(), new Date(sekarang).toISOString(), sekarang), "batas starts_at dan expires_at inklusif");
+cek(!P.langgananAktif("ACTIVE", besok, lusa, sekarang), "belum mulai bukan aktif");
+cek(P.langgananMenunggu("ACTIVE", besok, lusa, sekarang), "ACTIVE sebelum starts_at = menunggu");
+cek(!P.langgananMenunggu("ACTIVE", kemarin, besok, sekarang), "jendela yang sedang berjalan bukan menunggu");
+cek(!P.langgananAktif("EXPIRED", kemarin, besok, sekarang), "status bukan ACTIVE ditolak");
+
+const tgl10 = P.instanWib(2026, 11, 10, 9, 0, 0);
+const j10 = P.jendelaLangganan(tgl10);
+cek(!j10.lewatCutoff && j10.periodMonth === "2026-11-01", "tanggal 10 masuk kolam bulan berjalan");
+cek(j10.startsAt.getTime() === tgl10.getTime(), "tanggal 1-25: starts_at = waktu lunas");
+const akhirNov = P.bagianWib(j10.expiresAt);
+cek(akhirNov.hari === 30 && akhirNov.jam === 23 && akhirNov.menit === 59 && akhirNov.detik === 59, "tanggal 1-25 berakhir 23:59:59 WIB bulan itu");
+
+const tgl25 = P.instanWib(2026, 11, 25, 23, 0, 0);
+cek(P.jendelaLangganan(tgl25).periodMonth === "2026-11-01", "tanggal 25 masih bulan berjalan");
+const tgl26 = P.instanWib(2026, 11, 26, 0, 0, 0);
+const j26 = P.jendelaLangganan(tgl26);
+cek(j26.lewatCutoff && j26.periodMonth === "2026-12-01", "tanggal 26 masuk kolam bulan depan");
+const mulaiDes = P.bagianWib(j26.startsAt);
+cek(mulaiDes.tahun === 2026 && mulaiDes.bulan === 12 && mulaiDes.hari === 1 && mulaiDes.jam === 0 && mulaiDes.menit === 0 && mulaiDes.detik === 0, "tanggal 26: starts_at tanggal 1 pukul 00:00 WIB");
+const akhirDes = P.bagianWib(j26.expiresAt);
+cek(akhirDes.bulan === 12 && akhirDes.hari === 31 && akhirDes.jam === 23 && akhirDes.detik === 59, "tanggal 26 berakhir akhir bulan depan");
+const feb26 = P.jendelaLangganan(P.instanWib(2028, 2, 26, 12, 0, 0));
+cek(feb26.periodMonth === "2028-03-01", "26 Februari masuk Maret");
+const feb25 = P.jendelaLangganan(P.instanWib(2028, 2, 25, 12, 0, 0));
+cek(P.bagianWib(feb25.expiresAt).hari === 29, "25 Februari tahun kabisat berakhir tanggal 29");
+
+const ujiAwal = P.saatUjiJendela("awal", P.instanWib(2026, 11, 18, 12, 0, 0));
+cek(P.bagianWib(ujiAwal).hari <= 25 && !P.jendelaLangganan(ujiAwal).lewatCutoff, "tombol 1-25 memakai tanggal sebelum cut-off");
+const ujiAkhir = P.saatUjiJendela("akhir", P.instanWib(2026, 11, 18, 12, 0, 0));
+const jendelaAkhir = P.jendelaLangganan(ujiAkhir);
+cek(P.bagianWib(ujiAkhir).hari === 26 && jendelaAkhir.lewatCutoff && jendelaAkhir.startsAt.getTime() > P.instanWib(2026, 11, 18, 12, 0, 0).getTime(), "tombol 26-31 mengunci sampai tanggal 1");
 
 cek(A.kondisiTab({ bebas: false, status: "siap", materiTuntas: true, langgananAktif: false }) === "langganan_nonaktif", "tab latihan ikut kunci langganan");
+cek(A.kondisiTab({ bebas: false, status: "siap", materiTuntas: true, langgananAktif: false, langgananMenunggu: true }) === "langganan_menunggu", "lunas tanggal 26-31 menampilkan jadwal tanggal 1");
+cek(A.kondisiTab({ bebas: true, status: "siap", materiTuntas: true, langgananAktif: false, langgananMenunggu: true }) === "langganan_menunggu", "mode periksa tetap menampilkan jadwal bulan depan");
 
 const sql = baca("supabase/migrations/09_pembayaran_qris_token.sql");
 for (const nama of ["process_igil_qris_settlement", "redeem_tier2_scholarship_tokens", "buat_order_qris", "subscriptions", "payment_orders", "school_monthly_pools", "scholarship_awards"]) {
@@ -77,7 +114,9 @@ for (const nama of ["process_igil_qris_settlement", "redeem_tier2_scholarship_to
 }
 cek(sql.includes("36000") && sql.includes("9000") && sql.includes("4650") && sql.includes("350"), "SQL memuat angka pecahan");
 cek(sql.includes(P.TEKS_BEASISWA_APRESIASI), "teks lencana sama dengan SQL");
-cek(/revoke all on function public\.process_igil_qris_settlement\(text, text, text, integer, text, jsonb\) from public, anon, authenticated/.test(sql), "pelunasan tidak boleh dipanggil peran authenticated");
+cek(/revoke all on function public\.process_igil_qris_settlement\(text, text, text, integer, text, jsonb, timestamptz\) from public, anon, authenticated/.test(sql), "pelunasan tidak boleh dipanggil peran authenticated");
+cek(sql.includes("starts_at timestamptz not null") && sql.includes("v_hari <= 25") && sql.includes("Asia/Jakarta"), "SQL memuat starts_at dan cut-off tanggal 25 WIB");
+cek(sql.includes("now() >= v_starts") && sql.includes("now() <= v_expires"), "SQL membuka gembok hanya di dalam jendela starts_at sampai expires_at");
 cek(/revoke all on function public\.redeem_tier2_scholarship_tokens\(date, uuid\[\]\) from public, anon, authenticated/.test(sql), "penebusan token tidak boleh dipanggil peran authenticated");
 cek(!/max_students|kuota_maks|raise exception 'Kuota/.test(sql), "tidak ada penolakan kuota siswa");
 cek(sql.includes("Tidak ada batas kuota"), "komentar tanpa kuota ada");
@@ -89,10 +128,19 @@ cek(situs.includes('"/api/payments/midtrans-webhook"') && situs.includes('"/lang
 cek(!situs.includes('"/api/payments/tebus-token"'), "penebusan token tidak dibuka untuk publik");
 const pemutar = baca("src/components/IgilModulePlayer.tsx");
 cek(pemutar.includes("langgananAktif"), "pemutar meneruskan status langganan ke kartu kunci");
-cek(baca("src/components/modul/KartuTerkunciLatihanUjian.tsx").includes("langganan_nonaktif"), "kartu kunci punya cabang langganan");
+const kartu = baca("src/components/modul/KartuTerkunciLatihanUjian.tsx");
+cek(kartu.includes("langganan_nonaktif") && kartu.includes("langganan_menunggu") && kartu.includes("TEKS_KUNCI_JADWAL"), "kartu kunci punya cabang belum bayar dan sudah lunas bulan depan");
+cek(baca("src/components/pembayaran/KartuPagarLangganan.tsx").includes("TEKS_KUNCI_JADWAL"), "praktikum menampilkan jadwal tanggal 1");
 const ui = baca("src/components/pembayaran/CheckoutQris.tsx");
-cek(ui.includes("LABEL_TOMBOL_QRIS") && ui.includes("LABEL_TOMBOL_LUNAS"), "checkout memakai label baku");
-cek(P.LABEL_TOMBOL_QRIS === "Tampilkan QRIS Rp 50.000" && P.LABEL_TOMBOL_LUNAS === "Simulasi Lunas (Dev Mode)", "label tombol sesuai spesifikasi");
+cek(ui.includes("LABEL_TOMBOL_QRIS") && ui.includes("LABEL_TOMBOL_LUNAS_AWAL") && ui.includes("LABEL_TOMBOL_LUNAS_AKHIR"), "checkout memakai label baku");
+cek(ui.includes("TEKS_INFO_CUTOFF") && ui.includes('simulasiLunas("awal")') && ui.includes('simulasiLunas("akhir")'), "checkout punya info cut-off dan dua tombol uji");
+cek(
+  P.LABEL_TOMBOL_QRIS === "Tampilkan QRIS Rp 50.000" &&
+    P.LABEL_TOMBOL_LUNAS_AWAL === "Simulasi Lunas (Tgl 1-25)" &&
+    P.LABEL_TOMBOL_LUNAS_AKHIR === "Simulasi Lunas (Tgl 26-31)",
+  "label tombol sesuai spesifikasi",
+);
+cek(P.TEKS_KUNCI_JADWAL.startsWith("Langganan Bulan Depan Sudah Lunas!"), "teks gembok jadwal sesuai spesifikasi");
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

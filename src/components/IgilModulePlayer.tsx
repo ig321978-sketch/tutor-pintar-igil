@@ -1572,11 +1572,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   // Server menegakkan aturan yang sama (src/lib/akses-latihan-ujian.ts); ini hanya tampilannya.
   const jumlahSubTuntas = daftarSubTersedia.filter((id) => completedSubBabs.includes(id)).length;
   const langgananAktif = profilBelajar.status === "siap" ? (profilBelajar.aktif?.langgananAktif ?? null) : null;
+  const langgananMenunggu = profilBelajar.status === "siap" && profilBelajar.aktif?.langgananMenunggu === true;
   const kondisiLatihanUjian = kondisiTab({
     bebas: periksaBebas,
     status: profilBelajar.status,
     materiTuntas: jumlahSubTuntas === daftarSubTersedia.length,
     langgananAktif,
+    langgananMenunggu,
   });
   const materiSelesai = kondisiLatihanUjian === "terbuka";
 
