@@ -1,107 +1,141 @@
 import type { AdeganStory } from "./logika-story";
-import { hasil, judul, meja, tanda } from "./k2b5B-gambar";
-import { bersihMeja, duaTempat, geser, idx, k, mejaSekaligus, pindah, redamBenda, sorotkan, tambah, ubah, type Langkah } from "./k2b5B-bantu";
+import { E, W, bedeng, bibit, emo, garis, judul, kartu, kotak, panah, rumput, teks, tokoh, tunas } from "./k2b5B-gambar";
+import { hapus, idx, k, sorotkan, tambah, ubah } from "./k2b5B-bantu";
+import { BD, slot } from "./k2b5B-materi-1";
 
-/** Langkah bergantian kiri, kanan, kiri, kanan, ... : kata "kiri" ke-j dan "kanan" ke-j dalam suara memicu benda meja ke-(2j-2) dan ke-(2j-1). */
-export const gantian = (suara: string, banyak: number): Langkah[] =>
-  Array.from({ length: banyak }, (_, n) => {
-    const kiri = n % 2 === 0;
-    return { at: idx(suara, kiri ? "kiri" : "kanan", Math.floor(n / 2) + 1), n, ke: kiri ? ("pa" as const) : ("pb" as const) };
-  });
+/*
+ * Cerita orisinal IGIL "Bibit untuk Dua Petak" (Kelas 2 Bab 5 Sub-Bab B, setengah dari kumpulan benda), tengah cerita Kebun Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b5b.md. Bagian ini: bukan setengah, pola setengah (Bu Wati dan Dika), dan bilangan ganjil.
+ */
 
-/* ------------------------------ 4. Halim dan enam ikan ------------------------------ */
-const SUARA_C1 = "Halim punya enam ikan di akuarium. Ia ingin menaruh ikan itu ke dua tempat.";
-const SUARA_C2 = "Dua tempat itu kita sebut kiri dan kanan. Kita masukkan ikan satu demi satu, bergantian.";
-const SUARA_C3 = "Satu ikan ke kiri, satu ikan ke kanan, satu lagi ke kiri, satu lagi ke kanan, satu lagi ke kiri, satu lagi ke kanan.";
-const SUARA_C4 = "Meja sudah kosong. Kiri berisi tiga ikan, kanan juga berisi tiga ikan, jadi keduanya sama banyak.";
-const SUARA_C5 = "Jadi setengah dari enam ikan adalah tiga ikan.";
-
-export const ADEGAN_IKAN_ENAM: AdeganStory = {
-  id: "ikan-enam",
-  judul: "Setengah dari enam ikan",
-  sumber: "Materi: setengah dari enam ikan",
-  latar: "#ECFEFF",
-  ketukan: [
-    k(SUARA_C1, tambah(0, judul("Ikan Halim"), meja()), mejaSekaligus(idx(SUARA_C1, "enam"), 6, "ikan")),
-    k(SUARA_C2, duaTempat(idx(SUARA_C2, "kiri"), "Kiri", "Kanan")),
-    k(SUARA_C3, ...pindah("ikan", 6, gantian(SUARA_C3, 6))),
-    k(SUARA_C4, bersihMeja(idx(SUARA_C4, "kosong")), redamBenda(idx(SUARA_C4, "Kiri"), "pa", 3, "ikan"), redamBenda(idx(SUARA_C4, "kanan"), "pb", 3, "ikan"), tambah(idx(SUARA_C4, "keduanya"), tanda(true))),
-    k(SUARA_C5, tambah(idx(SUARA_C5, "setengah"), ...hasil("hs", "setengah dari 6 = 3"))),
-  ],
-};
-
-/* ------------------------------ 5. Empat dan dua bukan setengah ------------------------------ */
-const SUARA_D1 = "Sekarang Halim punya enam ikan lagi. Kita coba membagi dengan cara lain.";
-const SUARA_D2 = "Ia memasukkan empat ikan ke kiri, dan dua ikan ke kanan.";
-const SUARA_D3 = "Kiri dan kanan tidak sama banyak. Kiri lebih banyak daripada kanan.";
-const SUARA_D4 = "Jadi empat ikan dan dua ikan itu bukan setengah dari enam ikan.";
-const SUARA_D5 = "Supaya jadi setengah, kita pindahkan satu dari kiri ke kanan. Sekarang kiri tiga ikan dan kanan tiga ikan.";
+/* ------------------------------ 4. Bukan setengah ------------------------------ */
+const SUARA_4A = "Empat bibit dan dua bibit di petak tadi memang dua bagian, tetapi tidak sama banyak.";
+const SUARA_4B = "Setengah selalu berarti dua bagian yang sama banyak.";
+const SUARA_4C = "Dika menegaskan, kalau tidak sama banyak, itu bukan setengah.";
+const KIRI4 = [
+  { x: 62, y: 70 },
+  { x: 86, y: 70 },
+  { x: 62, y: 94 },
+  { x: 86, y: 94 },
+];
+const KANAN2 = [
+  { x: 218, y: 70 },
+  { x: 218, y: 94 },
+];
 
 export const ADEGAN_BUKAN_SETENGAH: AdeganStory = {
   id: "bukan-setengah",
-  judul: "Bagian tidak sama banyak bukan setengah",
+  judul: "Dua bagian yang tidak sama banyak",
   sumber: "Materi: bukan setengah",
   latar: "#FEF2F2",
   ketukan: [
-    k(SUARA_D1, tambah(0, judul("Empat dan dua"), meja()), mejaSekaligus(idx(SUARA_D1, "enam"), 6, "ikan")),
     k(
-      SUARA_D2,
-      duaTempat(0, "Kiri", "Kanan"),
-      ...pindah("ikan", 6, [
-        { at: idx(SUARA_D2, "kiri"), n: 0, ke: "pa" },
-        { at: idx(SUARA_D2, "kiri"), n: 1, ke: "pa" },
-        { at: idx(SUARA_D2, "kiri"), n: 2, ke: "pa" },
-        { at: idx(SUARA_D2, "kiri"), n: 3, ke: "pa" },
-        { at: idx(SUARA_D2, "kanan"), n: 4, ke: "pb" },
-        { at: idx(SUARA_D2, "kanan"), n: 5, ke: "pb" },
-      ]),
+      SUARA_4A,
+      tambah(0, judul("Dua Bagian", W.merah), kotak("bl", 36, 48, 76, 68, "#F0FDF4", "#16A34A", { rx: 8, z: -1 }), kotak("br", 190, 48, 56, 68, "#F0FDF4", "#16A34A", { rx: 8, z: -1 })),
+      tambah(idx(SUARA_4A, "Empat"), ...KIRI4.map((p, i) => tunas(`l${i}`, p.x, p.y, 7)), teks("ln", 74, 134, "4", 15, W.merah)),
+      tambah(idx(SUARA_4A, "dua"), ...KANAN2.map((p, i) => tunas(`m${i}`, p.x, p.y, 7)), teks("rn", 218, 134, "2", 15, W.merah)),
+      tambah(idx(SUARA_4A, "bagian,"), teks("d2", 150, 40, "2 bagian", 9.6, W.hijau)),
+      tambah(idx(SUARA_4A, "tidak"), teks("tg", 150, 156, "tidak sama banyak", 10, W.merah)),
     ),
-    k(SUARA_D3, bersihMeja(0), redamBenda(0, "pa", 4, "ikan"), redamBenda(0, "pb", 2, "ikan"), tambah(idx(SUARA_D3, "tidak"), tanda(false))),
-    k(SUARA_D4, sorotkan(idx(SUARA_D4, "bukan"), "pa-jml", "pb-jml")),
     k(
-      SUARA_D5,
-      ...geser(idx(SUARA_D5, "kanan", 1), "ikan", 6, "pa", 3, "pb", 2, 3, 3),
-      ubah(idx(SUARA_D5, "Sekarang"), { id: "tanda", isi: "✅" }, { id: "pa-jml", sorot: false }, { id: "pb-jml", sorot: false }),
+      SUARA_4B,
+      hapus(0, "tg"),
+      tambah(idx(SUARA_4B, "berarti"), garis("g0", 93, 70, 118, 0, W.hijau, 1.6, { putus: true, z: 2 }), garis("g1", 93, 94, 118, 0, W.hijau, 1.6, { putus: true, z: 2 })),
+      sorotkan(idx(SUARA_4B, "dua"), "d2"),
+      sorotkan(idx(SUARA_4B, "bagian"), "l0", "l2"),
+      tambah(idx(SUARA_4B, "sama"), teks("sd", 150, 154, "sisa tanpa pasangan", 9.6, W.merah)),
+    ),
+    k(
+      SUARA_4C,
+      hapus(0, "sd", "g0", "g1"),
+      tambah(0, ...tokoh("dk", 262, 176, "Dika")),
+      tambah(idx(SUARA_4C, "tidak"), emo("x1", 150, 96, E.salah, 20)),
+      tambah(idx(SUARA_4C, "sama"), teks("sb", 150, 148, "sama banyak", 10, W.hijau)),
+      sorotkan(idx(SUARA_4C, "banyak,"), "sb"),
+      tambah(idx(SUARA_4C, "bukan"), teks("bk", 150, 164, "bukan setengah", 10, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 6. Kira dan delapan bintang ------------------------------ */
-const SUARA_E1 = "Kira punya delapan bintang. Ia ingin membagi bintangnya menjadi dua bagian sama banyak.";
-const SUARA_E2 = "Kita bagi ke dua tempat: kiri, kanan, kiri, kanan, kiri, kanan, kiri, kanan.";
-const SUARA_E3 = "Sekarang meja kosong. Kiri berisi empat bintang dan kanan berisi empat bintang.";
-const SUARA_E4 = "Keduanya sama banyak, jadi setengah dari delapan bintang adalah empat bintang.";
+/* ------------------------------ 5. Pola setengah ------------------------------ */
+const SUARA_5A = "Bu Wati membawa bibit lain. Setengah dari empat adalah dua, dan setengah dari enam adalah tiga.";
+const SUARA_5B = "Setengah dari delapan adalah empat, dan setengah dari sepuluh adalah lima.";
+const SUARA_5C = "Dika mencatat polanya: makin banyak bendanya, makin banyak setengahnya.";
+const BARIS_Y = [48, 74, 100, 126];
+const JUMLAH = [4, 6, 8, 10];
+const barisKiri = (r: number) => [teks(`rl${r}`, 28, BARIS_Y[r] + 4, String(JUMLAH[r]), 12, W.merah), ...Array.from({ length: JUMLAH[r] }, (_, i) => tunas(`dl${r}${i}`, 46 + 9 * i, BARIS_Y[r], 3.6)), panah(`pr${r}`, 138, BARIS_Y[r], 22, 0, W.hijau, 1.8)];
+const barisKanan = (r: number) => [teks(`rr${r}`, 236, BARIS_Y[r] + 4, String(JUMLAH[r] / 2), 12, W.merah), ...Array.from({ length: JUMLAH[r] / 2 }, (_, i) => tunas(`dr${r}${i}`, 170 + 9 * i, BARIS_Y[r], 3.6))];
 
-export const ADEGAN_BINTANG_DELAPAN: AdeganStory = {
-  id: "bintang-delapan",
-  judul: "Setengah dari delapan bintang",
-  sumber: "Materi: setengah dari delapan bintang",
-  latar: "#FFFBEB",
+export const ADEGAN_POLA_SETENGAH: AdeganStory = {
+  id: "pola-setengah",
+  judul: "Pola setengah dari bilangan",
+  sumber: "Materi: pola setengah",
+  latar: "#EFF6FF",
   ketukan: [
-    k(SUARA_E1, tambah(0, judul("Bintang Kira"), meja()), mejaSekaligus(idx(SUARA_E1, "delapan"), 8, "bintang")),
-    k(SUARA_E2, duaTempat(idx(SUARA_E2, "tempat"), "Kiri", "Kanan"), ...pindah("bintang", 8, gantian(SUARA_E2, 8))),
-    k(SUARA_E3, bersihMeja(idx(SUARA_E3, "kosong")), redamBenda(idx(SUARA_E3, "Kiri"), "pa", 4, "bintang"), redamBenda(idx(SUARA_E3, "kanan"), "pb", 4, "bintang")),
-    k(SUARA_E4, tambah(idx(SUARA_E4, "Keduanya"), tanda(true)), tambah(idx(SUARA_E4, "setengah"), ...hasil("hs", "setengah dari 8 = 4"))),
+    k(
+      SUARA_5A,
+      tambah(0, judul("Pola Setengah"), teks("hk", 84, 34, "banyak benda", 8, W.ungu), teks("hs", 200, 34, "setengahnya", 8, W.ungu)),
+      tambah(idx(SUARA_5A, "Wati"), ...tokoh("bw", 40, 176, "Bu Wati")),
+      tambah(idx(SUARA_5A, "empat"), ...barisKiri(0)),
+      tambah(idx(SUARA_5A, "dua,"), ...barisKanan(0)),
+      tambah(idx(SUARA_5A, "enam"), ...barisKiri(1)),
+      tambah(idx(SUARA_5A, "tiga."), ...barisKanan(1)),
+    ),
+    k(
+      SUARA_5B,
+      tambah(idx(SUARA_5B, "delapan"), ...barisKiri(2)),
+      tambah(idx(SUARA_5B, "empat,"), ...barisKanan(2)),
+      tambah(idx(SUARA_5B, "sepuluh"), ...barisKiri(3)),
+      tambah(idx(SUARA_5B, "lima."), ...barisKanan(3)),
+    ),
+    k(
+      SUARA_5C,
+      tambah(0, ...tokoh("dk", 262, 176, "Dika")),
+      tambah(idx(SUARA_5C, "polanya:"), ...kartu("pl", 84, 148, 136, 36, W.krem, ["makin banyak benda,", "makin banyak setengah"], 8.6)),
+      tambah(idx(SUARA_5C, "makin"), panah("pk", 286, 132, 0, -88, W.merah, 3)),
+      sorotkan(idx(SUARA_5C, "bendanya,"), "rl0", "rl1", "rl2", "rl3"),
+      sorotkan(idx(SUARA_5C, "setengahnya."), "rr0", "rr1", "rr2", "rr3"),
+    ),
   ],
 };
 
-/* ------------------------------ 7. Igil dan sepuluh kartu ------------------------------ */
-const SUARA_F1 = "Igil punya sepuluh kartu di atas meja.";
-const SUARA_F2 = "Igil ingin tahu setengah dari sepuluh kartu. Kita bagi kartu itu ke dua tempat.";
-const SUARA_F3 = "Kiri, kanan, kiri, kanan, kiri, kanan, kiri, kanan, kiri, kanan.";
-const SUARA_F4 = "Meja sudah kosong. Kiri berisi lima kartu, kanan juga berisi lima kartu, jadi keduanya sama banyak.";
-const SUARA_F5 = "Jadi setengah dari sepuluh kartu adalah lima kartu.";
+/* ------------------------------ 6. Bilangan ganjil ------------------------------ */
+const SUARA_6A = "Ada satu bibit lagi, jadi semuanya lima. Nia membaginya satu-satu.";
+const SUARA_6B = "Setiap petak mendapat dua, dan tersisa satu bibit yang tidak punya pasangan.";
+const SUARA_6C = "Bibit tidak boleh dipecah, jadi lima tidak bisa dibagi dua sama banyak dan tidak punya setengah utuh.";
+const AWAL5 = [0, 1, 2, 3, 4].map((i) => ({ x: 24 + 15 * i, y: 148 }));
 
-export const ADEGAN_KARTU_SEPULUH: AdeganStory = {
-  id: "kartu-sepuluh",
-  judul: "Setengah dari sepuluh kartu",
-  sumber: "Materi: setengah dari sepuluh kartu",
-  latar: "#F0FDF4",
+export const ADEGAN_GANJIL: AdeganStory = {
+  id: "ganjil",
+  judul: "Lima bibit tersisa satu",
+  sumber: "Materi: bilangan ganjil",
+  latar: "#FAF5FF",
   ketukan: [
-    k(SUARA_F1, tambah(0, judul("Kartu Igil"), meja()), mejaSekaligus(idx(SUARA_F1, "sepuluh"), 10, "kartu")),
-    k(SUARA_F2, duaTempat(idx(SUARA_F2, "tempat"), "Kiri", "Kanan")),
-    k(SUARA_F3, ...pindah("kartu", 10, gantian(SUARA_F3, 10))),
-    k(SUARA_F4, bersihMeja(idx(SUARA_F4, "kosong")), redamBenda(idx(SUARA_F4, "Kiri"), "pa", 5, "kartu"), redamBenda(idx(SUARA_F4, "kanan"), "pb", 5, "kartu"), tambah(idx(SUARA_F4, "keduanya"), tanda(true))),
-    k(SUARA_F5, tambah(idx(SUARA_F5, "setengah"), ...hasil("hs", "setengah dari 10 = 5"))),
+    k(
+      SUARA_6A,
+      tambah(0, judul("Lima Bibit", W.ungu), rumput("rm", 118), ...bedeng("bd", BD.x, BD.y, BD.w, BD.h), ...AWAL5.slice(0, 4).map((p, i) => bibit(`r${i}`, p.x, p.y))),
+      tambah(idx(SUARA_6A, "satu"), bibit("r4", AWAL5[4].x, AWAL5[4].y), teks("p1", 70, 130, "1 bibit lagi", 8.6, W.merah)),
+      tambah(idx(SUARA_6A, "lima."), teks("n5", 150, 42, "5 bibit", 9.6, W.merah)),
+      tambah(idx(SUARA_6A, "Nia"), ...tokoh("ni", 252, 176, "Nia")),
+      ubah(idx(SUARA_6A, "satu-satu."), { id: "r0", x: slot(0, 0).x, y: slot(0, 0).y }, { id: "r1", x: slot(1, 0).x, y: slot(1, 0).y }),
+      tambah(idx(SUARA_6A, "satu-satu."), teks("cl", 110, 124, "1", 14, W.merah), teks("cr", 190, 124, "1", 14, W.merah)),
+    ),
+    k(
+      SUARA_6B,
+      hapus(0, "p1"),
+      ubah(0, { id: "r2", x: slot(0, 1).x, y: slot(0, 1).y }, { id: "r3", x: slot(1, 1).x, y: slot(1, 1).y }, { id: "cl", isi: "2" }, { id: "cr", isi: "2" }),
+      ubah(idx(SUARA_6B, "tersisa"), { id: "r4", x: 150, y: 136, u: 18 }),
+      tambah(idx(SUARA_6B, "tersisa"), emo("qm", 176, 134, E.tanya, 16)),
+      tambah(idx(SUARA_6B, "satu"), teks("sx", 150, 156, "1 sisa", 9.6, W.merah)),
+      tambah(idx(SUARA_6B, "pasangan."), teks("pp", 150, 170, "tanpa pasangan", 9, W.ungu)),
+    ),
+    k(
+      SUARA_6C,
+      hapus(0, "sx", "pp", "qm"),
+      tambah(idx(SUARA_6C, "dipecah,"), emo("gt", 120, 142, E.gunting, 18), emo("x1", 180, 142, E.salah, 18)),
+      sorotkan(idx(SUARA_6C, "lima"), "r4"),
+      ubah(idx(SUARA_6C, "banyak"), { id: "n5", isi: "5 tidak bisa dibagi 2 sama banyak", u: 8.6 }),
+      tambah(idx(SUARA_6C, "utuh."), ...kartu("lb", 70, 156, 160, 24, W.krem, ["tidak punya setengah utuh"], 9.4)),
+    ),
   ],
 };

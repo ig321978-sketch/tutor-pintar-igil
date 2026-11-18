@@ -1,150 +1,138 @@
 import type { AdeganStory } from "./logika-story";
-import { W, anak, bendaBagi, emo, hasilBagi, jalur, judul, kartu, labelBagian, lingkaranPoli, persegiPanjang, rapatkan, tarik, teks, titikTengah } from "./k2b5A-gambar";
-import type { Titik } from "./k2b5A-gambar";
-import { bersih, hapus, idx, k, redamkan, sorotkan, tambah, ubah } from "./k2b5A-bantu";
+import { E, W, WK, bedeng, biji, emo, garis, gerobak, judul, kartu, kotak, pagar, pindahGerobak, pindahTokoh, potongBulat, rumput, semangka, teks, tokoh, wadah, idSemangka } from "./k2b5A-gambar";
+import { hapus, k, sorotkan, tambah, ubah } from "./k2b5A-bantu";
 
-/** Martabak: lingkaran berpusat di (150, 92) berjari-jari 44. Titik atas dan bawah lingkaran menjadi ujung garis potong tegak di tengah. */
-export const POLI_MARTABAK = lingkaranPoli(150, 92, 44);
-const ATAS = POLI_MARTABAK[30];
-const BAWAH = POLI_MARTABAK[10];
-const WARNA_MARTABAK = "#FBBF24";
-/** Posisi baru bagian dan tulisan setelah ditarik (nama sama, hanya koordinat dan isi yang berubah). */
-const geserLabel = (poli: Titik[], a: Titik, b: Titik, isiA: string, isiB: string, jarak: number) => labelBagian(1, poli, a, b, isiA, isiB, jarak).map((o) => ({ id: o.id, x: o.x, y: o.y, isi: o.isi }));
+/*
+ * Cerita orisinal IGIL "Semangka Raksasa Pak Danu" (Kelas 2 Bab 5 Sub-Bab A, setengah dari benda utuh), awal cerita Kebun Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b5a.md. Bagian ini: semangka datang, salah potong, adil itu tepat di tengah.
+ */
 
-/* ------------------------------ 2. Martabak Kira dan Malosi ------------------------------ */
-const SUARA_C1 = "Hari ini Kira punya satu martabak manis di layar. Baunya harum sekali. Martabak itu masih utuh.";
-const SUARA_C2 = "Malosi datang menghampiri Kira. Kira ingin berbagi martabak itu dengan Malosi.";
-const SUARA_C3 = "Kira ingin membaginya dengan adil. Adil artinya kedua bagian sama besar.";
-const SUARA_C4 = "Kalau satu bagian lebih besar, ada yang mendapat lebih sedikit. Itu tidak adil.";
-const SUARA_C5 = "Jadi, bagaimana cara membagi martabak ini menjadi dua bagian yang sama? Kita pakai garis potong di layar.";
+/* ------------------------------ 1. Semangka datang ------------------------------ */
+const SUARA_S1 = "Kebun sekolah sedang panen besar, dan Pak Danu mendorong gerobak berisi satu semangka raksasa!";
+const SUARA_S2 = "Bu Sari berkata, semangka ini untuk dua regu penyiram, regu Merah dan regu Hijau. Bagiannya harus adil.";
+const SUARA_S3 = "Kalau tidak adil, satu regu kecewa dan tidak mau menyiram kebun besok!";
 
-export const ADEGAN_CERITA_MARTABAK: AdeganStory = {
-  id: "cerita-martabak",
-  judul: "Martabak Kira dan Malosi",
-  sumber: "Materi: martabak Kira dan Malosi",
+export const ADEGAN_SEMANGKA_DATANG: AdeganStory = {
+  id: "semangka-datang",
+  judul: "Semangka raksasa datang",
+  sumber: "Materi: semangka raksasa datang",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_S1,
+      tambah(0, judul("Kebun Sekolah"), rumput("rm"), ...pagar("pg", 8, 94, 284)),
+      tambah("panen", ...bedeng("bd", 20, 134, 112), ...bedeng("be", 168, 134, 112)),
+      tambah("Danu", ...tokoh("pd", 34, 180, "Pak Danu")),
+      tambah("mendorong", ...gerobak("gr", 50, 152)),
+      ubah("gerobak", ...pindahGerobak("gr", 72, 152)),
+      tambah("satu", teks("n1", 105, 76, "1 semangka", 10, W.ungu)),
+      tambah("semangka", ...semangka("sm", 101, 140, 15)),
+      sorotkan("raksasa!", "sm"),
+    ),
+    k(
+      SUARA_S2,
+      tambah("Sari", ...tokoh("bs", 262, 180, "Bu Sari")),
+      tambah("dua", ...kartu("kr", 156, 34, 96, 22, W.krem, ["Untuk 2 regu"], 9)),
+      tambah("regu@2", emo("rk1", 186, 152, E.anak, 18)),
+      tambah("Merah", ...wadah("em", 173, 162, 26, 20, 0, "#60A5FA", "#DC2626"), teks("lm", 186, 193, "Merah", 8, W.merah)),
+      tambah("regu@3", emo("rk2", 222, 152, E.anak, 18)),
+      tambah("Hijau.", ...wadah("eh", 209, 162, 26, 20, 0, "#60A5FA", "#16A34A"), teks("lh", 222, 193, "Hijau", 8, W.hijau)),
+      sorotkan("adil.", "kr-k"),
+    ),
+    k(
+      SUARA_S3,
+      hapus(0, "kr-k", "kr-t0"),
+      tambah("adil,", ...kartu("tk", 156, 34, 96, 22, W.merahMuda, ["Tidak adil"], 9)),
+      tambah("satu", ...kartu("kc", 150, 62, 110, 22, W.merahMuda, ["1 regu kecewa"], 9)),
+      ubah("kecewa", { id: "rk1", isi: E.geleng }),
+      tambah("menyiram", emo("x1", 204, 146, E.salah, 16)),
+      tambah("besok!", emo("kl", 262, 132, E.tanya, 22)),
+    ),
+  ],
+};
+
+/* ------------------------------ 2. Salah potong ------------------------------ */
+const SUARA_P1 = "Chacha mengangkat pisau plastik dan langsung memotong semangka itu miring sembarangan.";
+const SUARA_P2 = "Dika menggeleng. Chacha, lihat! Potongan regu Hijau jauh lebih besar daripada potongan regu Merah.";
+const SUARA_P3 = "Potongan yang kecil menggelinding, dan Chacha mengejarnya sampai kakinya tersangkut di ember!";
+
+const BESAR = potongBulat("pb", 178, 146, 22, 80, 380, WK.daging, WK.kulit);
+const KECIL = potongBulat("pk", 185, 151, 22, 20, 80, WK.daging, WK.kulit);
+
+export const ADEGAN_SALAH_POTONG: AdeganStory = {
+  id: "salah-potong",
+  judul: "Salah potong",
+  sumber: "Materi: salah potong",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      SUARA_C1,
-      tambah(0, judul("Martabak Kira")),
-      tambah(idx(SUARA_C1, "martabak"), jalur("bn1-w", lingkaranPoli(150, 84, 40), WARNA_MARTABAK, { tebal: 2.2 })),
-      tambah(idx(SUARA_C1, "utuh."), teks("nm", 150, 142, "martabak manis", 9.6, W.coklat)),
+      SUARA_P1,
+      tambah(0, judul("Salah Potong"), rumput("rm"), ...pagar("pg", 8, 94, 284)),
+      tambah("Chacha", ...tokoh("ch", 52, 180, "Chacha")),
+      tambah("pisau", garis("ps", 84, 138, 24, -12, "#94A3B8", 3, { z: 4 }), kotak("ph", 76, 136, 9, 6, W.merah, "#7F1D1D", { rx: 1, tebal: 1, z: 4 })),
+      tambah("plastik", kotak("mj", 140, 168, 80, 8, WK.kayu, W.coklat, { rx: 1.5, tebal: 1.6, z: -1 }), garis("k1", 150, 176, 0, 20, W.coklat, 3), garis("k2", 210, 176, 0, 20, W.coklat, 3), ...semangka("sm", 178, 146, 22)),
+      sorotkan("semangka", "sm"),
+      ubah("memotong", { id: "ps", x: 150, y: 126 }, { id: "ph", x: 142, y: 124 }),
+      tambah("miring", garis("gm", 162, 128, 34, 42, W.merah, 2.6, { putus: true, z: 5 })),
+      tambah("sembarangan.", emo("tn", 178, 112, E.tanya, 18)),
     ),
-    k(SUARA_C2, tambah(idx(SUARA_C2, "Malosi"), ...anak("malosi", 254, 64)), tambah(idx(SUARA_C2, "Kira."), ...anak("kira", 46, 64))),
-    k(SUARA_C3, tambah(idx(SUARA_C3, "Adil"), ...kartu("ad", 50, 164, 200, 26, W.emas, ["adil: sama besar"], 11))),
-    k(SUARA_C4, hapus(idx(SUARA_C4, "Itu"), "ad-k", "ad-t0"), tambah(idx(SUARA_C4, "Itu"), teks("ta", 150, 176, "tidak adil", 12, W.merah))),
-    k(SUARA_C5, hapus(0, "ta"), tambah(idx(SUARA_C5, "bagaimana"), emo("tn", 150, 98, "❓", 34)), tambah(idx(SUARA_C5, "garis"), ...kartu("gl", 40, 164, 220, 26, W.langit, ["garis potong di layar"], 11))),
+    k(
+      SUARA_P2,
+      hapus(0, ...idSemangka("sm"), "gm", "ps", "ph", "tn"),
+      tambah(0, BESAR, KECIL),
+      tambah("Dika", ...tokoh("dk", 258, 180, "Dika")),
+      ubah("menggeleng.", { id: "dk", isi: E.geleng }),
+      tambah("Hijau", teks("th", 141, 150, "Hijau", 9, W.hijau)),
+      tambah("jauh", emo("sx", 214, 128, E.salah, 18)),
+      tambah("Merah.", teks("tm", 228, 150, "Merah", 9, W.merah)),
+    ),
+    k(
+      SUARA_P3,
+      ubah("menggelinding,", { id: "pk", x: (KECIL.x ?? 0) + 48, y: (KECIL.y ?? 0) + 14 }),
+      ubah("mengejarnya", ...pindahTokoh("ch", 98, 180, "Chacha")),
+      ubah("tersangkut", { id: "ch", isi: E.pusing }),
+      tambah("ember!", ...wadah("eb", 120, 168, 26, 20, 0, "#60A5FA", "#475569")),
+    ),
   ],
 };
 
-/* ------------------------------ 3. Dua bagian sama besar ------------------------------ */
-const M1 = bendaBagi(1, POLI_MARTABAK, ATAS, BAWAH, WARNA_MARTABAK);
-const SUARA_B1 = "Sekarang kita bagi martabak ini. Satu garis potong lewat tepat di tengah.";
-const SUARA_B2 = "Garis potong itu membuat martabak menjadi dua bagian. Ada bagian kiri dan bagian kanan.";
-const SUARA_B3 = "Lihat, kedua bagian sama besar. Tidak ada yang lebih besar dan tidak ada yang lebih kecil.";
-const SUARA_B4 = "Setiap bagian yang sama besar ini kita sebut setengah.";
-const SUARA_B5 = "Kira mendapat satu bagian, yaitu setengah martabak. Malosi juga mendapat setengah martabak.";
-const SUARA_B6 = "Cara menyebut bagian dari benda utuh seperti ini disebut pecahan.";
+/* ------------------------------ 3. Adil itu tepat di tengah ------------------------------ */
+const SUARA_A1 = "Nia berpikir. Adil berarti dua bagian sama besar, jadi kita harus memotong tepat di tengah.";
+const SUARA_A2 = "Pak Danu membelah semangka baru tepat di tengah. Satu semangka menjadi dua bagian sama besar.";
+const SUARA_A3 = "Setiap bagian itu kita sebut setengah.";
 
-export const ADEGAN_DUA_BAGIAN: AdeganStory = {
-  id: "dua-bagian",
-  judul: "Dua bagian sama besar",
-  sumber: "Materi: dua bagian sama besar",
-  latar: "#FEFCE8",
+export const ADEGAN_ADIL_TENGAH: AdeganStory = {
+  id: "adil-tengah",
+  judul: "Adil itu tepat di tengah",
+  sumber: "Materi: adil itu tepat di tengah",
+  latar: "#F0F9FF",
   ketukan: [
-    k(SUARA_B1, tambah(0, judul("Dua bagian sama besar")), tambah(idx(SUARA_B1, "martabak"), M1.w), tambah(idx(SUARA_B1, "garis"), M1.gp, titikTengah(1, POLI_MARTABAK))),
     k(
-      SUARA_B2,
-      hapus(idx(SUARA_B2, "membuat"), "bn1-w"),
-      tambah(idx(SUARA_B2, "membuat"), M1.a, M1.b),
-      sorotkan(idx(SUARA_B2, "kiri"), "bn1-a"),
-      redamkan(idx(SUARA_B2, "bagian", 3), "bn1-a"),
-      sorotkan(idx(SUARA_B2, "kanan"), "bn1-b"),
-    ),
-    k(SUARA_B3, redamkan(0, "bn1-b"), ubah(idx(SUARA_B3, "kedua"), ...tarik(1, ATAS, BAWAH, 7)), tambah(idx(SUARA_B3, "besar."), hasilBagi(1, 150, 172, "sama besar"))),
-    k(
-      SUARA_B4,
-      tambah(idx(SUARA_B4, "sebut"), ...labelBagian(1, POLI_MARTABAK, ATAS, BAWAH, "setengah", "setengah", 7)),
-      ubah(idx(SUARA_B4, "setengah."), { id: "bn1-hs", isi: "setengah" }),
-    ),
-    k(SUARA_B5, tambah(idx(SUARA_B5, "Kira"), teks("nk", 112, 156, "Kira", 9.6, W.ungu)), tambah(idx(SUARA_B5, "Malosi"), teks("nl", 188, 156, "Malosi", 9.6, W.ungu))),
-    k(SUARA_B6, bersih(idx(SUARA_B6, "disebut")), tambah(idx(SUARA_B6, "disebut"), judul("Pecahan"), ...kartu("pc", 75, 70, 150, 40, W.emas, ["pecahan"], 16), emo("ow", 150, 150, "\u{1F989}", 30))),
-  ],
-};
-
-/* ------------------------------ 4. Bagian tidak sama besar bukan setengah ------------------------------ */
-const ATAS_GESER: Titik = [124, 40];
-const BAWAH_GESER: Titik = [124, 150];
-const M2 = bendaBagi(1, POLI_MARTABAK, ATAS_GESER, BAWAH_GESER, WARNA_MARTABAK);
-const SUARA_G1 = "Sekarang garis potong tidak lewat di tengah martabak. Garis itu bergeser ke kiri.";
-const SUARA_G2 = "Martabak menjadi dua bagian lagi. Tetapi bagian kiri kecil dan bagian kanan besar.";
-const SUARA_G3 = "Dua bagian ini tidak sama besar. Jadi ini bukan setengah.";
-const SUARA_G4 = "Hanya bagian yang sama besar yang boleh disebut setengah. Walaupun jumlah bagiannya dua, ini bukan setengah.";
-const SUARA_G5 = "Kalau garis potong digeser ke tengah martabak, kedua bagian jadi sama besar. Sekarang tiap bagian bernilai setengah.";
-const T7 = tarik(1, ATAS, BAWAH, 7);
-
-export const ADEGAN_TIDAK_SAMA: AdeganStory = {
-  id: "tidak-sama",
-  judul: "Bagian tidak sama besar",
-  sumber: "Materi: bagian tidak sama besar",
-  latar: "#FEF2F2",
-  ketukan: [
-    k(SUARA_G1, tambah(0, judul("Garis tidak di tengah")), tambah(idx(SUARA_G1, "martabak"), M2.w), tambah(idx(SUARA_G1, "garis"), M2.gp, titikTengah(1, POLI_MARTABAK))),
-    k(
-      SUARA_G2,
-      hapus(idx(SUARA_G2, "menjadi"), "bn1-w"),
-      tambah(idx(SUARA_G2, "menjadi"), M2.a, M2.b),
-      tambah(idx(SUARA_G2, "kecil"), ...labelBagian(1, POLI_MARTABAK, ATAS_GESER, BAWAH_GESER, "kecil", "besar", 0)),
+      SUARA_A1,
+      tambah(0, judul("Adil Itu Sama Besar"), rumput("rm", 134)),
+      tambah("Nia", ...tokoh("ni", 40, 180, "Nia")),
+      ubah("berpikir.", { id: "ni", isi: E.pikir }),
+      tambah("dua", ...kartu("kd", 78, 34, 140, 22, W.krem, ["2 bagian sama besar"], 9)),
+      tambah("memotong", ...semangka("sm", 176, 142, 26)),
+      tambah("tepat", garis("gt", 176, 110, 0, 64, W.merah, 2.6, { putus: true, z: 5 })),
+      sorotkan("tengah.", "gt"),
     ),
     k(
-      SUARA_G3,
-      ubah(idx(SUARA_G3, "tidak"), ...tarik(1, ATAS_GESER, BAWAH_GESER, 7), ...geserLabel(POLI_MARTABAK, ATAS_GESER, BAWAH_GESER, "kecil", "besar", 7)),
-      tambah(idx(SUARA_G3, "setengah."), hasilBagi(1, 150, 172, "bukan setengah")),
+      SUARA_A2,
+      hapus(0, ...idSemangka("sm"), "gt", "kd-k", "kd-t0"),
+      tambah("Danu", ...tokoh("pd", 254, 180, "Pak Danu")),
+      tambah("membelah", ...semangka("s2", 168, 142, 26), garis("g2", 168, 110, 0, 64, W.merah, 2.6, { putus: true, z: 5 })),
+      hapus("tengah.", ...idSemangka("s2"), "g2"),
+      tambah("tengah.", potongBulat("bl", 156, 142, 26, 90, 270, WK.daging, WK.kulit), potongBulat("br", 180, 142, 26, -90, 90, WK.daging, WK.kulit), ...biji("bj1", 146, 142), ...biji("bj2", 190, 142)),
+      tambah("Satu", teks("n1", 96, 112, "1 semangka", 9, W.ungu)),
+      tambah("dua", teks("n2", 232, 112, "2 bagian sama", 9, W.ungu)),
     ),
-    k(SUARA_G4, hapus(0, "bn1-hs"), tambah(idx(SUARA_G4, "Hanya"), ...kartu("hk", 50, 160, 200, 28, W.emas, ["harus sama besar"], 12))),
     k(
-      SUARA_G5,
-      hapus(0, "hk-k", "hk-t0"),
-      ubah(
-        idx(SUARA_G5, "Sekarang"),
-        { id: "bn1-a", d: M1.a.d, x: T7[0].x, y: T7[0].y },
-        { id: "bn1-b", d: M1.b.d, x: T7[1].x, y: T7[1].y },
-        { id: "bn1-gp", x: M1.gp.x, y: M1.gp.y, x2: M1.gp.x2, y2: M1.gp.y2 },
-        ...geserLabel(POLI_MARTABAK, ATAS, BAWAH, "setengah", "setengah", 7),
-      ),
-      tambah(idx(SUARA_G5, "Sekarang"), hasilBagi(1, 150, 172, "setengah")),
+      SUARA_A3,
+      sorotkan("bagian", "bl", "br"),
+      tambah("sebut", teks("s1", 140, 188, "setengah", 9, W.hijau), teks("s2", 196, 188, "setengah", 9, W.hijau)),
+      tambah("setengah.", emo("ok", 168, 108, E.benar, 20)),
     ),
   ],
 };
 
-/* ------------------------------ 5. Dua setengah menjadi satu utuh ------------------------------ */
-export const POLI_BOLU = persegiPanjang(70, 62, 160, 72);
-const BOLU_ATAS: Titik = [150, 50];
-const BOLU_BAWAH: Titik = [150, 146];
-const M3 = bendaBagi(1, POLI_BOLU, BOLU_ATAS, BOLU_BAWAH, "#FDE68A", "#FCA5A5", "#93C5FD");
-const SUARA_U1 = "Igil menunjukkan satu kue bolu di layar. Kue bolu ini masih utuh.";
-const SUARA_U2 = "Garis potong membagi kue bolu menjadi dua bagian sama besar.";
-const SUARA_U3 = "Setiap bagian adalah setengah kue bolu.";
-const SUARA_U4 = "Sekarang kita satukan dua setengah ini lagi.";
-const SUARA_U5 = "Dua setengah disatukan menjadi satu kue bolu utuh.";
-const SUARA_U6 = "Jadi dua setengah sama dengan satu utuh.";
-
-export const ADEGAN_DUA_UTUH: AdeganStory = {
-  id: "dua-utuh",
-  judul: "Dua setengah menjadi satu utuh",
-  sumber: "Materi: dua setengah menjadi satu utuh",
-  latar: "#FFFBEB",
-  ketukan: [
-    k(SUARA_U1, tambah(0, judul("Dua setengah jadi utuh")), tambah(idx(SUARA_U1, "kue"), M3.w), tambah(idx(SUARA_U1, "utuh."), teks("nm", 150, 160, "kue bolu", 10, W.coklat))),
-    k(SUARA_U2, tambah(idx(SUARA_U2, "Garis"), M3.gp), hapus(idx(SUARA_U2, "menjadi"), "bn1-w"), tambah(idx(SUARA_U2, "menjadi"), M3.a, M3.b)),
-    k(
-      SUARA_U3,
-      hapus(0, "nm"),
-      ubah(idx(SUARA_U3, "bagian"), ...tarik(1, BOLU_ATAS, BOLU_BAWAH, 9)),
-      tambah(idx(SUARA_U3, "setengah"), ...labelBagian(1, POLI_BOLU, BOLU_ATAS, BOLU_BAWAH, "setengah", "setengah", 9)),
-    ),
-    k(SUARA_U4, hapus(idx(SUARA_U4, "satukan"), "bn1-gp"), ubah(idx(SUARA_U4, "satukan"), ...rapatkan(1), ...geserLabel(POLI_BOLU, BOLU_ATAS, BOLU_BAWAH, "setengah", "setengah", 0))),
-    k(SUARA_U5, tambah(idx(SUARA_U5, "utuh."), M3.w, teks("nu", 150, 160, "satu kue bolu utuh", 10, W.coklat))),
-    k(SUARA_U6, hapus(0, "nu"), tambah(idx(SUARA_U6, "Jadi"), ...kartu("sm", 40, 152, 220, 30, W.emas, ["setengah + setengah = utuh"], 10.5))),
-  ],
-};

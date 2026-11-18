@@ -1,156 +1,121 @@
 import type { AdeganStory } from "./logika-story";
-import { W, bendaBagi, garis, gelasAir, hasilBagi, hasilGelas, judul, kartu, lingkaranPoli, persegiPanjang, tarik, teks, titikTengah } from "./k2b5A-gambar";
-import type { Titik } from "./k2b5A-gambar";
-import { bersih, hapus, idx, k, redamkan, sorotkan, tambah, ubah } from "./k2b5A-bantu";
+import { E, W, WK, biji, emo, garis, judul, kotak, papanNama, poligon, potongBulat, rumput, teks, tokoh, wadah } from "./k2b5A-gambar";
+import { hapus, k, sorotkan, tambah } from "./k2b5A-bantu";
 
-/* ------------------------------ 6. Setengah pada benda di layar: semangka dan gelas air ------------------------------ */
-export const POLI_SEMANGKA = lingkaranPoli(82, 96, 38);
-const S_KANAN = POLI_SEMANGKA[0];
-const S_KIRI = POLI_SEMANGKA[20];
-const SM = bendaBagi(1, POLI_SEMANGKA, S_KANAN, S_KIRI, "#86EFAC", "#F87171", "#FCA5A5");
-/** Gelas air: tinggi gelas 84, air tepat setengahnya. */
-export const GELAS = { x: 190, y: 44, w: 46, h: 84 };
-const SUARA_S1 = "Setengah ada pada banyak benda di layar. Mari kita cari bersama Igil. Pertama, lihat semangka ini.";
-const SUARA_S2 = "Semangka dipotong lewat tengah menjadi dua bagian sama besar.";
-const SUARA_S3 = "Satu bagian semangka ini adalah setengah semangka.";
-const SUARA_S4 = "Kedua, lihat gelas air ini. Airnya mengisi gelas sampai setengah.";
-const SUARA_S5 = "Tinggi air sama dengan tinggi bagian yang kosong. Jadi gelas ini berisi setengah air.";
-const SUARA_S6 = "Kalau gelas ditambah air sampai penuh, airnya tidak lagi setengah. Gelas penuh adalah satu utuh.";
-const SUARA_S7 = "Setengah semangka dan setengah gelas air berbeda bendanya. Tapi artinya sama, yaitu dua bagian sama besar.";
+/*
+ * Cerita orisinal IGIL "Semangka Raksasa Pak Danu" (Kelas 2 Bab 5 Sub-Bab A, setengah dari benda utuh), awal cerita Kebun Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b5a.md. Bagian ini: bagi dua regu, setengah di sekitar kita, melipat kertas.
+ */
 
-export const ADEGAN_BENDA_LAYAR: AdeganStory = {
-  id: "benda-layar",
-  judul: "Setengah pada benda di layar",
-  sumber: "Materi: setengah pada benda di layar",
-  latar: "#F0FDF4",
+/* ------------------------------ 4. Bagi dua regu ------------------------------ */
+const SUARA_B1 = "Setengah untuk regu Merah, setengah untuk regu Hijau. Kedua regu bersorak.";
+const SUARA_B2 = "Dika menumpuk dua belahan itu, dan keduanya pas. Itu tanda sama besar.";
+const SUARA_B3 = "Kalau tidak pas, berarti bukan setengah.";
+
+export const ADEGAN_BAGI_REGU: AdeganStory = {
+  id: "bagi-regu",
+  judul: "Bagi dua regu",
+  sumber: "Materi: bagi dua regu",
+  latar: "#FEFCE8",
   ketukan: [
-    k(SUARA_S1, tambah(0, judul("Setengah pada benda")), tambah(idx(SUARA_S1, "semangka"), SM.w, teks("ns", 82, 152, "semangka", 9.6, W.coklat))),
-    k(SUARA_S2, tambah(idx(SUARA_S2, "dipotong"), SM.gp), hapus(idx(SUARA_S2, "menjadi"), "bn1-w"), tambah(idx(SUARA_S2, "menjadi"), SM.a, SM.b), ubah(idx(SUARA_S2, "sama"), ...tarik(1, S_KANAN, S_KIRI, 5))),
-    k(SUARA_S3, sorotkan(idx(SUARA_S3, "Satu"), "bn1-a"), tambah(idx(SUARA_S3, "setengah"), hasilBagi(1, 82, 170, "setengah"))),
     k(
-      SUARA_S4,
-      redamkan(0, "bn1-a"),
-      tambah(idx(SUARA_S4, "gelas"), ...gelasAir(1, GELAS.x, GELAS.y, GELAS.w, GELAS.h, 0.5), teks("ng", 213, 148, "gelas air", 9.6, W.coklat)),
-      tambah(idx(SUARA_S4, "setengah."), hasilGelas(1, 213, 166, "setengah")),
+      SUARA_B1,
+      tambah(0, judul("Dibagi Dua Regu"), rumput("rm", 134)),
+      tambah("Setengah", potongBulat("h1", 118, 126, 20, 90, 270, WK.daging, WK.kulit), ...biji("sa", 110, 126)),
+      tambah("Merah,", emo("rk1", 44, 178, E.anak, 24), ...wadah("em", 58, 164, 24, 18, 0, "#60A5FA", "#DC2626"), teks("lm", 70, 192, "Merah", 8, W.merah)),
+      tambah("setengah@2", potongBulat("h2", 154, 126, 20, -90, 90, WK.daging, WK.kulit), ...biji("sb", 162, 126)),
+      tambah("Hijau.", emo("rk2", 256, 178, E.anak, 24), ...wadah("eh", 220, 164, 24, 18, 0, "#60A5FA", "#16A34A"), teks("lh", 232, 192, "Hijau", 8, W.hijau)),
+      tambah("bersorak.", emo("sr1", 44, 150, E.sorak, 18), emo("sr2", 256, 150, E.sorak, 18)),
     ),
     k(
-      SUARA_S5,
-      tambah(idx(SUARA_S5, "Tinggi"), garis("gl1-gm", GELAS.x - 5, GELAS.y + GELAS.h / 2, GELAS.w + 10, 0, W.merah, 2, { putus: true, z: 3 })),
-      tambah(idx(SUARA_S5, "air"), teks("ga", 163, 112, "air", 9, W.biru)),
-      tambah(idx(SUARA_S5, "kosong."), teks("gk", 160, 70, "kosong", 9, W.biru)),
+      SUARA_B2,
+      tambah("Dika", ...tokoh("dk", 150, 184, "Dika")),
+      hapus("menumpuk", "h1", "sa-b0", "sa-b1", "sa-b2"),
+      tambah("dua", teks("n2", 150, 90, "2 belahan", 9, W.ungu)),
+      tambah("belahan", potongBulat("h3", 157, 129, 20, -90, 90, "#FCA5A5", WK.kulit, { z: -1 })),
+      tambah("pas.", emo("ok", 204, 106, E.benar, 20)),
+      tambah("sama", teks("t1", 150, 72, "sama besar", 11, W.hijau)),
     ),
     k(
-      SUARA_S6,
-      hapus(idx(SUARA_S6, "airnya"), "gl1-gm", "ga", "gk"),
-      ubah(idx(SUARA_S6, "penuh,"), { id: "gl1-a", y: GELAS.y, h: GELAS.h }, { id: "gl1-hs", isi: "penuh" }),
-    ),
-    k(
-      SUARA_S7,
-      bersih(0),
-      tambah(0, judul("Setengah artinya sama")),
-      tambah(idx(SUARA_S7, "semangka"), ...kartu("e1", 20, 44, 260, 34, W.hijauMuda, ["setengah semangka"], 11)),
-      tambah(idx(SUARA_S7, "gelas"), ...kartu("e2", 20, 90, 260, 34, W.langit, ["setengah gelas air"], 11)),
-      tambah(idx(SUARA_S7, "sama,"), ...kartu("e3", 20, 138, 260, 40, W.emas, ["dua bagian sama besar"], 12)),
+      SUARA_B3,
+      hapus(0, "h2", "h3", "sb-b0", "sb-b1", "sb-b2", "n2", "ok", "t1"),
+      tambah("Kalau", potongBulat("ub", 150, 130, 22, 80, 380, WK.daging, WK.kulit), potongBulat("uk", 160, 136, 22, 20, 80, "#FCA5A5", WK.kulit, { z: 2 })),
+      tambah("pas,", emo("x3", 150, 100, E.salah, 22)),
+      tambah("bukan", teks("bk", 150, 72, "bukan setengah", 11, W.merah)),
+      sorotkan("setengah.", "ub"),
     ),
   ],
 };
 
-/* ------------------------------ 7. Setengah pada lingkaran ------------------------------ */
-const CX = [52, 150, 248];
-const CY = 86;
-const R = 34;
-export const POLI_LINGKARAN = CX.map((c) => lingkaranPoli(c, CY, R));
-/** Ujung garis potong lewat titik tengah: tegak (atas-bawah), mendatar (kanan-kiri), miring (kiri-atas ke kanan-bawah). */
-export const GARIS_LINGKARAN: [Titik, Titik][] = [
-  [POLI_LINGKARAN[0][30], POLI_LINGKARAN[0][10]],
-  [POLI_LINGKARAN[1][0], POLI_LINGKARAN[1][20]],
-  [POLI_LINGKARAN[2][25], POLI_LINGKARAN[2][5]],
-];
-const LG = [0, 1, 2].map((i) => bendaBagi(i + 1, POLI_LINGKARAN[i], GARIS_LINGKARAN[i][0], GARIS_LINGKARAN[i][1], "#FDE68A"));
-const tarikLg = (i: number) => tarik(i + 1, GARIS_LINGKARAN[i][0], GARIS_LINGKARAN[i][1], 5);
+/* ------------------------------ 5. Setengah di sekitar kita ------------------------------ */
+const SUARA_C1 = "Setengah ada di mana-mana! Ada setengah ember air untuk menyiram dan setengah gelas jus.";
+const SUARA_C2 = "Bu Sari menunjukkan setengah labu kecil dan setengah karung bibit.";
+const SUARA_C3 = "Coba amati sekitarmu. Setengah apa lagi yang kamu temukan?";
 
-const SUARA_L1 = "Sekarang kita lihat lingkaran. Lingkaran bentuknya bulat dan tidak punya sudut. Ada tiga lingkaran di layar.";
-const SUARA_L2 = "Lingkaran pertama dipotong dengan garis tegak. Garis itu lewat titik tengah.";
-const SUARA_L3 = "Hasilnya dua bagian sama besar. Tiap bagian adalah setengah.";
-const SUARA_L4 = "Lingkaran kedua dipotong dengan garis mendatar. Garis itu juga lewat titik tengah.";
-const SUARA_L5 = "Hasilnya juga dua bagian sama besar, jadi tiap bagian adalah setengah.";
-const SUARA_L6 = "Lingkaran ketiga dipotong dengan garis miring. Garis itu tetap lewat titik tengah.";
-const SUARA_L7 = "Hasilnya sama, yaitu dua bagian sama besar dan tiap bagian adalah setengah.";
-const SUARA_L8 = "Jadi garis potong boleh tegak, mendatar, atau miring. Asalkan lewat titik tengah, hasilnya setengah.";
+export const ADEGAN_SETENGAH_SEKITAR: AdeganStory = {
+  id: "setengah-sekitar",
+  judul: "Setengah di sekitar kita",
+  sumber: "Materi: setengah di sekitar kita",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_C1,
+      tambah(0, judul("Setengah di Sekitar"), rumput("rm", 140)),
+      tambah("mana-mana!", emo("e1", 24, 56, E.bintang, 16), emo("e2", 282, 40, E.bintang, 16)),
+      tambah("ember", ...wadah("eb", 62, 112, 52, 46, 0.5, "#60A5FA", "#475569", true), teks("le", 88, 174, "setengah ember", 8.6, W.hijau)),
+      tambah("gelas", ...wadah("gl", 196, 112, 32, 46, 0.5, "#FB923C", "#475569", true), teks("lg", 212, 174, "setengah gelas", 8.6, W.hijau)),
+    ),
+    k(
+      SUARA_C2,
+      tambah("Sari", ...tokoh("bs", 150, 182, "Bu Sari")),
+      tambah("labu", potongBulat("lb", 50, 78, 18, 180, 360, "#FB923C", "#9A3412"), teks("ll", 50, 96, "setengah labu", 8, W.hijau)),
+      tambah("karung", kotak("kg", 228, 52, 34, 40, "#E7D3A8", W.coklat, { rx: 4, tebal: 2 }), kotak("kgi", 230, 72, 30, 18, "#C9A66B", undefined, { rx: 2, tebal: 0, z: 1 }), emo("kt", 245, 84, E.tunas, 12, { z: 2 }), teks("lk", 245, 106, "setengah karung", 8, W.hijau)),
+    ),
+    k(
+      SUARA_C3,
+      tambah("amati", emo("kc", 112, 100, E.kaca, 30)),
+      tambah("Setengah", emo("t1", 190, 98, E.tanya, 26)),
+      tambah("temukan?", emo("t2", 150, 126, E.mata, 22)),
+    ),
+  ],
+};
 
-export const ADEGAN_LINGKARAN: AdeganStory = {
-  id: "lingkaran",
-  judul: "Setengah pada lingkaran",
-  sumber: "Materi: setengah pada lingkaran",
-  latar: "#F5F3FF",
+/* ------------------------------ 6. Melipat kertas ------------------------------ */
+const SUARA_L1 = "Nia punya kertas persegi untuk papan nama tanaman. Ia melipatnya menjadi dua bagian sama besar.";
+const SUARA_L2 = "Bisa dilipat tegak, mendatar, atau miring dari pojok ke pojok.";
+const SUARA_L3 = "Setiap lipatan menghasilkan setengah, hanya bentuknya yang berbeda: persegi panjang atau segitiga.";
+
+export const ADEGAN_LIPAT_KERTAS: AdeganStory = {
+  id: "lipat-kertas",
+  judul: "Melipat kertas",
+  sumber: "Materi: melipat kertas",
+  latar: "#EFF6FF",
   ketukan: [
     k(
       SUARA_L1,
-      tambah(0, judul("Setengah pada lingkaran")),
-      tambah(idx(SUARA_L1, "lingkaran."), LG[0].w),
-      tambah(idx(SUARA_L1, "tiga"), LG[1].w),
-      tambah(idx(SUARA_L1, "layar."), LG[2].w),
+      tambah(0, judul("Melipat Kertas"), rumput("rm", 150)),
+      tambah("Nia", ...tokoh("ni", 40, 182, "Nia")),
+      tambah("kertas", kotak("kt", 100, 60, 70, 70, W.putih, W.biru, { rx: 2, tebal: 2 })),
+      tambah("papan", ...papanNama("pn", 214, 66, 34, 18)),
+      tambah("tanaman.", emo("tn", 231, 112, E.tunas, 20)),
+      tambah("melipatnya", garis("lp", 135, 56, 0, 78, W.merah, 2, { putus: true, z: 2 })),
+      tambah("dua", teks("n2", 135, 146, "2 bagian sama", 9, W.ungu)),
     ),
-    k(SUARA_L2, tambah(idx(SUARA_L2, "garis"), LG[0].gp), tambah(idx(SUARA_L2, "lewat"), titikTengah(1, POLI_LINGKARAN[0])), hapus(idx(SUARA_L2, "titik"), "bn1-w"), tambah(idx(SUARA_L2, "titik"), LG[0].a, LG[0].b), ubah(idx(SUARA_L2, "tengah."), ...tarikLg(0))),
-    k(SUARA_L3, tambah(idx(SUARA_L3, "Tiap"), hasilBagi(1, CX[0], 146, "setengah", 9))),
-    k(SUARA_L4, tambah(idx(SUARA_L4, "garis"), LG[1].gp), tambah(idx(SUARA_L4, "lewat"), titikTengah(2, POLI_LINGKARAN[1])), hapus(idx(SUARA_L4, "titik"), "bn2-w"), tambah(idx(SUARA_L4, "titik"), LG[1].a, LG[1].b), ubah(idx(SUARA_L4, "tengah."), ...tarikLg(1))),
-    k(SUARA_L5, tambah(idx(SUARA_L5, "tiap"), hasilBagi(2, CX[1], 146, "setengah", 9))),
-    k(SUARA_L6, tambah(idx(SUARA_L6, "garis"), LG[2].gp), tambah(idx(SUARA_L6, "lewat"), titikTengah(3, POLI_LINGKARAN[2])), hapus(idx(SUARA_L6, "titik"), "bn3-w"), tambah(idx(SUARA_L6, "titik"), LG[2].a, LG[2].b), ubah(idx(SUARA_L6, "tengah."), ...tarikLg(2))),
-    k(SUARA_L7, tambah(idx(SUARA_L7, "tiap"), hasilBagi(3, CX[2], 146, "setengah", 9))),
     k(
-      SUARA_L8,
-      sorotkan(idx(SUARA_L8, "tegak,"), "bn1-gp"),
-      sorotkan(idx(SUARA_L8, "mendatar,"), "bn2-gp"),
-      sorotkan(idx(SUARA_L8, "miring."), "bn3-gp"),
-      tambah(idx(SUARA_L8, "hasilnya"), ...kartu("rk", 40, 162, 220, 30, W.emas, ["lewat titik tengah: setengah"], 10.5)),
+      SUARA_L2,
+      hapus(0, "kt", "lp", "n2", ...["pn", "pn-g", "tn"]),
+      tambah("tegak,", kotak("k1", 40, 64, 50, 50, W.putih, W.biru, { rx: 2, tebal: 2 }), garis("f1", 65, 60, 0, 58, W.merah, 2, { putus: true, z: 2 }), teks("l1", 65, 132, "tegak", 9, W.ungu)),
+      tambah("mendatar,", kotak("k2", 125, 64, 50, 50, W.putih, W.biru, { rx: 2, tebal: 2 }), garis("f2", 121, 89, 58, 0, W.hijau, 2, { putus: true, z: 2 }), teks("l2", 150, 132, "mendatar", 9, W.ungu)),
+      tambah("miring", kotak("k3", 210, 64, 50, 50, W.putih, W.biru, { rx: 2, tebal: 2 }), garis("f3", 210, 64, 50, 50, W.ungu, 2, { putus: true, z: 2 }), teks("l3", 235, 132, "miring", 9, W.ungu)),
+      sorotkan("pojok.", "k3"),
+    ),
+    k(
+      SUARA_L3,
+      hapus(0, "k1", "f1", "l1", "k2", "f2", "l2", "k3", "f3", "l3"),
+      tambah("menghasilkan", emo("ok", 150, 100, E.benar, 24)),
+      tambah("persegi", kotak("hp", 40, 70, 80, 40, "#BFDBFE", W.biru, { rx: 2, tebal: 2 }), teks("sh1", 80, 94, "setengah", 10, W.hijau), teks("ph1", 80, 126, "persegi panjang", 9, W.ungu)),
+      tambah("segitiga.", poligon("hs", [[190, 112], [260, 112], [190, 62]], "#BBF7D0", W.biru, { tebal: 2 }), teks("sh2", 220, 106, "setengah", 9, W.hijau), teks("ph2", 225, 126, "segitiga", 9, W.ungu)),
     ),
   ],
 };
 
-/* ------------------------------ 8. Setengah pada persegi ------------------------------ */
-const SISI = 62;
-const PY = 58;
-export const POLI_PERSEGI = CX.map((c) => persegiPanjang(c - SISI / 2, PY, SISI, SISI));
-export const GARIS_PERSEGI: [Titik, Titik][] = [
-  [[CX[0], PY - 8], [CX[0], PY + SISI + 8]],
-  [[CX[1] + 40, PY + SISI / 2], [CX[1] - 40, PY + SISI / 2]],
-  [[CX[2] - SISI / 2, PY], [CX[2] + SISI / 2, PY + SISI]],
-];
-const PG = [0, 1, 2].map((i) => bendaBagi(i + 1, POLI_PERSEGI[i], GARIS_PERSEGI[i][0], GARIS_PERSEGI[i][1], "#BBF7D0", "#FCA5A5", "#93C5FD"));
-const tarikPg = (i: number) => tarik(i + 1, GARIS_PERSEGI[i][0], GARIS_PERSEGI[i][1], 5);
-
-const SUARA_P1 = "Sekarang kita lihat persegi. Persegi punya empat sisi yang sama panjang. Ada tiga persegi di layar.";
-const SUARA_P2 = "Persegi pertama dipotong dengan garis tegak di tengah. Hasilnya dua bagian sama besar.";
-const SUARA_P3 = "Persegi kedua dipotong dengan garis mendatar di tengah. Hasilnya juga dua bagian sama besar.";
-const SUARA_P4 = "Persegi ketiga dipotong dengan garis miring dari pojok ke pojok. Hasilnya dua segitiga yang sama besar.";
-const SUARA_P5 = "Semua potongan ini membagi persegi menjadi dua bagian sama besar, jadi tiap bagian adalah setengah.";
-const SUARA_P6 = "Bentuk potongannya berbeda, ada persegi panjang dan ada segitiga. Tapi tiap bagian tetap setengah.";
-
-const potongPersegi = (i: number, suara: string, pemicu: string, hasil: string): ReturnType<typeof tambah>[] => [
-  tambah(idx(suara, "garis"), PG[i].gp),
-  hapus(idx(suara, pemicu), `bn${i + 1}-w`),
-  tambah(idx(suara, pemicu), PG[i].a, PG[i].b),
-  ubah(idx(suara, pemicu), ...tarikPg(i)),
-  tambah(idx(suara, hasil), hasilBagi(i + 1, CX[i], 146, "sama besar", 9)),
-];
-
-export const ADEGAN_PERSEGI: AdeganStory = {
-  id: "persegi",
-  judul: "Setengah pada persegi",
-  sumber: "Materi: setengah pada persegi",
-  latar: "#ECFDF5",
-  ketukan: [
-    k(
-      SUARA_P1,
-      tambah(0, judul("Setengah pada persegi")),
-      tambah(idx(SUARA_P1, "persegi."), PG[0].w),
-      tambah(idx(SUARA_P1, "tiga"), PG[1].w),
-      tambah(idx(SUARA_P1, "layar."), PG[2].w),
-    ),
-    k(SUARA_P2, ...potongPersegi(0, SUARA_P2, "tengah.", "Hasilnya")),
-    k(SUARA_P3, ...potongPersegi(1, SUARA_P3, "tengah.", "Hasilnya")),
-    k(SUARA_P4, ...potongPersegi(2, SUARA_P4, "pojok.", "Hasilnya")),
-    k(SUARA_P5, ubah(idx(SUARA_P5, "tiap"), { id: "bn1-hs", isi: "setengah" }, { id: "bn2-hs", isi: "setengah" }, { id: "bn3-hs", isi: "setengah" })),
-    k(SUARA_P6, tambah(idx(SUARA_P6, "Tapi"), ...kartu("bk", 30, 164, 240, 28, W.emas, ["bentuk beda, tetap setengah"], 11))),
-  ],
-};

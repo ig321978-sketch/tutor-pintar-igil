@@ -5,6 +5,7 @@ import * as K2B1 from "../src/components/modul/misi-k2bab1.ts";
 import * as K2B2 from "../src/components/modul/misi-k2bab2.ts";
 import * as K2B3 from "../src/components/modul/misi-k2bab3.ts";
 import * as K2B4 from "../src/components/modul/misi-k2bab4.ts";
+import * as K2B5 from "../src/components/modul/misi-k2bab5.ts";
 
 let gagal = 0;
 let lulus = 0;
@@ -179,6 +180,57 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   cek(dB.every((m) => !m.cek({ alat: "kerangka" })), "k2bab4 B: alat lain tidak memenuhi misi");
   const baruB = (o) => M0.misiBaru(dB, { ...awalB, ...o }, new Set());
   cek(baruB({ polaPita: ["ungu-hijau"] }).join() === "b-rangkai" && baruB({ diputuskan: [0] }).length === 0 && baruB({ diputuskan: [0, 1] }).join() === "b-putus", "k2bab4 B: misi rangkai pita dan memutuskan dua kartu");
+}
+
+/* --------------------------- Kelas 2 Bab 5: misi (Kebun Sekolah) --------------------------- */
+// Rincian misi tiap Sub-Bab diuji di scripts/uji-semangka-k2b5a.mjs, uji-bibit-k2b5b.mjs, dan uji-panen-k2b5c.mjs; di sini hanya struktur bersama.
+{
+  // BAGIAN A (Meja Bagi: jeruk bali, keju, sosis, nasi kepal; kertas persegi panjang, segitiga, lingkaran; dua gelas susu; rincian di scripts/uji-semangka-k2b5a.mjs)
+  // Keadaan awal ditulis langsung (logika.ts folder memakai impor tanpa ekstensi).
+  const awalA = { alat: "semangka", mode: "belah", benda: -1, garis: -1, dibelah: [], ditumpuk: [], kertas: -1, lipat: -1, lipatBenar: [], gelasA: 6, gelasB: 0, putaran: 0, tuangBenar: [], salahBelah: 0, salahLipat: 0, salahTuang: 0 };
+  ujiStruktur("k2bab5", K2B5.daftarMisiK2Bab5, ["A"], { A: awalA });
+  const dA = K2B5.daftarMisiK2Bab5("A");
+  cek(dA === K2B5.MISI_A && dA.filter((m) => m.wajib).length === 4 && dA.filter((m) => !m.wajib).length === 2 && dA.every((m) => m.id.startsWith("a-")), "k2bab5 A: empat wajib, dua bebas, id berawalan a-");
+  cek(dA.every((m) => !/\d/.test(m.teks) && !/(buku|teman|kelompok|kelas|skor|nilai|soal|tebak|kunci|latihan)/i.test(m.teks)), "k2bab5 A: teks misi tanpa digit dan kata terlarang");
+  cek(dA.every((m) => !m.cek({ alat: "kerangka" })), "k2bab5 A: alat lain tidak memenuhi misi");
+  const baruA = (o) => M0.misiBaru(dA, { ...awalA, ...o }, new Set());
+  sama(baruA({ dibelah: [1] }), ["a-belah"], "k2bab5 A: satu benda dibelah memenuhi a-belah");
+  sama(baruA({ dibelah: [1], ditumpuk: [1] }), ["a-belah", "a-tumpuk"], "k2bab5 A: ditumpuk memenuhi a-tumpuk");
+  sama(baruA({ tuangBenar: [0] }), ["a-tuang"], "k2bab5 A: tuang sama tinggi memenuhi a-tuang");
+  sama(baruA({ lipatBenar: ["0-0"] }), ["a-lipat"], "k2bab5 A: lipatan pas memenuhi a-lipat");
+  sama(baruA({ dibelah: [0, 2], ditumpuk: [0], tuangBenar: [0], lipatBenar: ["0-0", "1-0"] }), ["a-belah", "a-tumpuk", "a-tuang", "a-lipat", "a-belahdua", "a-lipatdua"], "k2bab5 A: semua wajib dan bebas");
+  cek(M0.misiBaru(dA, { ...awalA, salahBelah: 9, salahLipat: 9, salahTuang: 9 }, new Set()).length === 0, "k2bab5 A: percobaan keliru tidak dihitung sebagai misi");
+  // BAGIAN B (Bedeng Bibit: tumpukan jagung, wortel, terong, apel, bunga; empat paket neraca; setengah dua sampai lima; rincian di scripts/uji-bibit-k2b5b.mjs)
+  // Keadaan awal ditulis langsung (logika.ts folder memakai impor tanpa ekstensi).
+  const awalB = { alat: "bibit", mode: "bagi", tumpuk: 0, sisa: 4, kiri: 0, kanan: 0, terakhir: -1, terbagi: [], ganjilSelesai: [], paket: 0, piringKiri: 6, piringKanan: 2, neracaSet: [], setengah: 0, digandakanSekarang: false, digandakan: [], salahCoba: 0 };
+  ujiStruktur("k2bab5", K2B5.daftarMisiK2Bab5, ["B"], { B: awalB });
+  const dB = K2B5.daftarMisiK2Bab5("B");
+  cek(dB === K2B5.MISI_B && dB.filter((m) => m.wajib).length === 4 && dB.filter((m) => !m.wajib).length === 2 && dB.every((m) => m.id.startsWith("b-")), "k2bab5 B: empat wajib, dua bebas, id berawalan b-");
+  cek(dB.every((m) => !/\d/.test(m.teks) && !/(buku|teman|kelompok|kelas|skor|nilai|soal|tebak|kunci|latihan)/i.test(m.teks)), "k2bab5 B: teks misi tanpa digit dan kata terlarang");
+  cek(dB.every((m) => !m.cek({ alat: "kerangka" })), "k2bab5 B: alat lain tidak memenuhi misi");
+  const baruB = (o) => M0.misiBaru(dB, { ...awalB, ...o }, new Set());
+  sama(baruB({ terbagi: [0] }), ["b-bagi"], "k2bab5 B: satu tumpukan terbagi memenuhi b-bagi");
+  sama(baruB({ ganjilSelesai: [2] }), ["b-ganjil"], "k2bab5 B: tumpukan ganjil memenuhi b-ganjil");
+  sama(baruB({ neracaSet: [1] }), ["b-neraca"], "k2bab5 B: neraca seimbang memenuhi b-neraca");
+  sama(baruB({ digandakan: [3] }), ["b-gandakan"], "k2bab5 B: setengah digandakan memenuhi b-gandakan");
+  sama(baruB({ terbagi: [0, 1, 4], neracaSet: [0, 2] }), ["b-bagi", "b-neraca", "b-semua", "b-dua"], "k2bab5 B: tantangan bebas");
+  cek(M0.misiBaru(dB, { ...awalB, salahCoba: 9 }, new Set()).length === 0, "k2bab5 B: percobaan keliru tidak dihitung sebagai misi");
+  // BAGIAN C (Meja Panen: pai apel, kain taplak, pita warna; rincian di scripts/uji-panen-sim-k2b5c.mjs)
+  // Keadaan awal ditulis langsung (logika.ts folder memakai impor tanpa ekstensi).
+  const awalC = { alat: "panen", mode: "pai", paiGaris: [], paiSeperempat: 0, paiTidakSama: 0, kainGaris: [], kainSeperempat: 0, kainSegitiga: 0, kainPersegi: 0, kainTidakSama: 0, susun: [], bukti: [], salah: 0 };
+  ujiStruktur("k2bab5", K2B5.daftarMisiK2Bab5, ["C"], { C: awalC });
+  const dC = K2B5.daftarMisiK2Bab5("C");
+  cek(dC === K2B5.MISI_C && dC.filter((m) => m.wajib).length === 4 && dC.filter((m) => !m.wajib).length === 2 && dC.every((m) => m.id.startsWith("c-")), "k2bab5 C: empat wajib, dua bebas, id berawalan c-");
+  cek(dC.every((m) => !/\d/.test(m.teks) && !/(buku|teman|kelompok|kelas|skor|nilai|soal|tebak|kunci|latihan)/i.test(m.teks)), "k2bab5 C: teks misi tanpa digit dan kata terlarang");
+  cek(dC.every((m) => !m.cek({ alat: "kerangka" })), "k2bab5 C: alat lain tidak memenuhi misi");
+  const baruC = (o) => M0.misiBaru(dC, { ...awalC, ...o }, new Set());
+  sama(baruC({ paiSeperempat: 1 }), ["c-pai"], "k2bab5 C: pai empat sama besar memenuhi c-pai");
+  sama(baruC({ paiTidakSama: 1 }), ["c-miring"], "k2bab5 C: pai tidak sama memenuhi c-miring");
+  sama(baruC({ kainSeperempat: 1 }), ["c-kain"], "k2bab5 C: kain empat sama besar memenuhi c-kain");
+  sama(baruC({ bukti: ["2s=1t"] }), ["c-pita"], "k2bab5 C: dua seperempat sama dengan setengah memenuhi c-pita");
+  sama(baruC({ bukti: ["4s=1u"], kainSegitiga: 1, kainSeperempat: 1 }), ["c-kain", "c-utuh", "c-segitiga"], "k2bab5 C: tantangan bebas");
+  cek(M0.misiBaru(dC, { ...awalC, salah: 9, kainTidakSama: 9, mode: "dinding" }, new Set()).length === 0, "k2bab5 C: percobaan keliru tidak dihitung sebagai misi");
+  void K2B5;
 }
 
 console.log(gagal === 0 ? `SEMUA LULUS (${lulus} cek)` : `GAGAL ${gagal} dari ${lulus + gagal}`);

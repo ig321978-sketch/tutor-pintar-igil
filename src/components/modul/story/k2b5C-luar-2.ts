@@ -1,153 +1,261 @@
-import type { AdeganStory } from "./logika-story";
-import { W, WARNA_APEL, bagianKotak, bagianLingkaran, emo, garisPotong, idBagian, kartu, labelBagian, panah, teks } from "./k2b5C-gambar";
-import { hapus, idx, k, pilihKata, redamkan, sorotkan, tambah } from "./k2b5C-bantu";
-import { kepala } from "./k2b5C-luar-1";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, bulat, emo, garis, judul, kartu, kertas, kotak, label, panah, petak, poligon, tali, teks, tokoh } from "./k2b5C-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k2b5C-bantu";
+import { NAMA_METODE_ID } from "./k2b5C-luar-1";
 
-/* ------------------------------ 4. Setengah dari Setengah: konsep ------------------------------ */
-const AP_UTUH = bagianLingkaran("ap", 150, 104, 46, [360], -90, WARNA_APEL);
-const AP_DUA = bagianLingkaran("ap", 150, 104, 46, [180, 180], -90, WARNA_APEL);
-/** Setengah kiri tetap utuh, setengah kanan dibagi dua: dua seperempat di kanan (nomor 1 dan 2), setengah di kiri (nomor 3). */
-const AP_TIGA = bagianLingkaran("ap", 150, 104, 46, [90, 90, 180], -90, WARNA_APEL);
+/*
+ * Cerita orisinal IGIL "Panen Raya Pak Joko" (Kelas 2 Bab 5 Sub-Bab C), video metode global.
+ * Naskah suara dari naskah/story-naskah-k2b5c.md. Bagian ini: Fraction Wall (Dinding Pecahan), Fold and Shade (Lipat dan Warnai), terapannya, dan ringkasan.
+ */
 
-const SUARA_H1 = "Metode kedua bernama Setengah dari Setengah. Kita mulai dari satu apel utuh.";
-const SUARA_H2 = "Bagi apel menjadi dua bagian yang sama besar. Tiap bagian adalah setengah.";
-const SUARA_H3 = "Ambil setengah bagian kanan, lalu bagi dua sama besar.";
-const SUARA_H4 = "Jadi setengah dari setengah apel adalah seperempat.";
-const SUARA_H5 = "Jadi seperempat apel adalah setengah dari setengah apel.";
+const WARNA_BARIS = ["#BFDBFE", "#BBF7D0", "#FDE68A"] as const;
+const X0 = 60;
+const LEBAR = 210;
 
-export const ADEGAN_LUAR_SETENGAH: AdeganStory = {
-  id: "luar-setengah",
-  judul: "Setengah dari Setengah: dua langkah",
-  sumber: "Metode luar: Setengah dari Setengah",
+/** Satu baris dinding pita: n pita sama panjang pada tinggi y; `${id}{i}` dan teks `${id}t{i}` bila ada isi. */
+const baris = (id: string, y: number, n: number, warna: string, isi = "", u = 8.6, tinggi = 24): Obj[] =>
+  Array.from({ length: n }, (_, i) => [kotak(`${id}${i}`, X0 + (i * LEBAR) / n, y, LEBAR / n, tinggi, warna, W.biru, { rx: 1, tebal: 1.4 }), ...(isi ? [teks(`${id}t${i}`, X0 + ((i + 0.5) * LEBAR) / n, y + tinggi / 2 + u * 0.35, isi, u)] : [])]).flat();
+/** Satu pita: kotak `${id}` dan teks `${id}t`. */
+const pita = (id: string, x: number, y: number, w: number, warna: string, isi: string, u = 8.6, tinggi = 24): Obj[] => [kotak(id, x, y, w, tinggi, warna, W.biru, { rx: 1, tebal: 1.4 }), teks(`${id}t`, x + w / 2, y + tinggi / 2 + u * 0.35, isi, u)];
+
+/* ------------------------------ Fraction Wall: konsep ------------------------------ */
+const SUARA_D1 = "Cara kedua, Fraction Wall, atau Dinding Pecahan. Dinding ini terbuat dari pita.";
+const SUARA_D2 = "Susun pita seperti dinding bata. Baris pertama satu pita utuh, baris kedua dua pita setengah.";
+const SUARA_D3 = "Baris ketiga berisi empat pita seperempat.";
+const SUARA_D4 = "Semua baris sama panjang, jadi kita bisa membandingkan bagian-bagiannya dari atas ke bawah.";
+
+export const ADEGAN_LUAR_DINDING: AdeganStory = {
+  id: "luar-dinding",
+  judul: "Fraction Wall: Dinding Pecahan",
+  sumber: "Metode global: Fraction Wall (konsep)",
   latar: "#EFF6FF",
   ketukan: [
-    k(SUARA_H1, tambah(0, ...kepala(1)), tambah(idx(SUARA_H1, "apel"), ...AP_UTUH), tambah(idx(SUARA_H1, "utuh."), ...labelBagian(AP_UTUH, "utuh", 10))),
     k(
-      SUARA_H2,
-      hapus(idx(SUARA_H2, "dua"), ...idBagian("ap", 1, true)),
-      tambah(idx(SUARA_H2, "dua"), ...AP_DUA),
-      tambah(idx(SUARA_H2, "Tiap"), ...labelBagian(AP_DUA, "1/2", 11)),
+      SUARA_D1,
+      bersih(0),
+      tambah(0, judul("Cara Kedua")),
+      tambah("Fraction", ...kartu("nm", 50, 34, 200, 26, W.krem, ["Fraction Wall"], 13)),
+      tambah("Dinding", teks("nid", 150, 92, "Dinding Pecahan", 12, W.ungu)),
+      tambah("pita.", kotak("pt", 30, 120, 240, 18, "#BFDBFE", W.biru, { rx: 2, tebal: 1.8 })),
     ),
     k(
-      SUARA_H3,
-      hapus(idx(SUARA_H3, "bagi"), ...idBagian("ap", 2, true)),
-      tambah(idx(SUARA_H3, "bagi"), ...AP_TIGA),
-      sorotkan(idx(SUARA_H3, "kanan,"), "pc-ap-1", "pc-ap-2"),
+      SUARA_D2,
+      bersih(0),
+      tambah(0, judul("Dinding Pita")),
+      tambah("satu", teks("c1", 36, 57, "1", 12, W.merah), ...baris("b1", 40, 1, WARNA_BARIS[0])),
+      tambah("utuh,", teks("b1t0", 165, 57, "utuh", 9)),
+      tambah("dua", teks("c2", 36, 87, "2", 12, W.merah), ...baris("b2", 70, 2, WARNA_BARIS[1])),
+      tambah("setengah.", teks("b2t0", 112.5, 87, "setengah", 9), teks("b2t1", 217.5, 87, "setengah", 9)),
     ),
     k(
-      SUARA_H4,
-      redamkan(0, "pc-ap-2"),
-      tambah(idx(SUARA_H4, "seperempat."), ...labelBagian(AP_TIGA, ["1/4", "1/4", "1/2"], 10)),
+      SUARA_D3,
+      tambah("empat", teks("c3", 36, 117, "4", 12, W.merah), ...baris("b3", 100, 4, WARNA_BARIS[2])),
+      tambah("seperempat.", ...[0, 1, 2, 3].map((i) => teks(`b3t${i}`, X0 + (i + 0.5) * 52.5, 117, "seperempat", 7))),
     ),
-    k(SUARA_H5, tambah(idx(SUARA_H5, "Jadi"), ...kartu("sm", 30, 164, 240, 24, W.krem, ["setengah dari setengah sama dengan seperempat"], 8.4))),
+    k(
+      SUARA_D4,
+      tambah("sama", garis("el", X0, 34, 0, 98, W.merah, 1.6, { putus: true, z: 3 }), garis("er", X0 + LEBAR, 34, 0, 98, W.merah, 1.6, { putus: true, z: 3 })),
+      tambah("membandingkan", emo("kc", 150, 158, E.kaca, 24)),
+      tambah("atas", panah("pa", 286, 38, 0, 92, W.ungu, 2.4)),
+      tambah("bawah.", emo("ok", 150, 190, E.benar, 20)),
+    ),
   ],
 };
 
-/* ------------------------------ 5. Setengah dari Setengah: terapan ------------------------------ */
-const RT = bagianLingkaran("rt", 150, 96, 40, [90, 90, 180], -90, ["#FED7AA", "#FDE68A", "#FED7AA", "#FDE68A"]);
+/* ------------------------------ Fraction Wall: terapan ------------------------------ */
+const SUARA_E1 = "Nia menaruh dua pita seperempat di bawah satu pita setengah, dan panjangnya sama.";
+const SUARA_E2 = "Jadi dua seperempat sama dengan satu setengah, dan dindingnya menunjukkan itu dengan jelas.";
+const SUARA_E3 = "Cocok kalau kita ingin membandingkan utuh, setengah, dan seperempat.";
+const SUARA_E4 = "Kurang cocok kalau bendanya lingkaran, karena dinding pita berbentuk lurus.";
 
-const SUARA_X1 = "Terapkan pada soal ini. Upe punya satu roti bulat. Roti dibagi dua, lalu setengah kanan dibagi dua lagi.";
-const SUARA_X2 = "Satu bagian kanan ini disebut apa? Ketuk jawaban yang tepat.";
-const SUARA_X3 = "Lihat dengan teliti. Bagian ini setengah dari setengah roti.";
-const SUARA_X4 = "Betul! Setengah dari setengah adalah seperempat. Hebat!";
-
-export const ADEGAN_LUAR_SETENGAH_TERAPAN: AdeganStory = {
-  id: "luar-setengah-terapan",
-  judul: "Setengah dari Setengah: roti bulat",
-  sumber: "Metode luar: Setengah dari Setengah",
-  latar: "#DBEAFE",
+export const ADEGAN_LUAR_DINDING_TERAPAN: AdeganStory = {
+  id: "luar-dinding-terapan",
+  judul: "Nia membandingkan pita",
+  sumber: "Metode global: Fraction Wall (terapan)",
+  latar: "#F5F3FF",
   ketukan: [
-    k(SUARA_X1, tambah(0, ...kepala(1)), tambah(idx(SUARA_X1, "roti"), ...RT)),
-    k(SUARA_X2, sorotkan(idx(SUARA_X2, "Satu"), "pc-rt-1"), tambah(idx(SUARA_X2, "tepat."), ...pilihKata(150, ["utuh", "seperempat", "setengah"], 11))),
-    k(SUARA_X3, tambah(idx(SUARA_X3, "Bagian"), panah("pw", 214, 70, -26, 6))),
-    k(SUARA_X4, hapus(0, "pw"), sorotkan(idx(SUARA_X4, "Betul!"), "c2-k"), tambah(idx(SUARA_X4, "Hebat!"), emo("ok", 262, 100, "✅", 22))),
+    k(
+      SUARA_E1,
+      bersih(0),
+      tambah(0, judul("Membandingkan Pita")),
+      tambah("Nia", ...tokoh("ni", 40, 178, "Nia")),
+      tambah("dua", teks("n2", 242, 98, "2 pita", 10, W.merah)),
+      tambah("seperempat", ...pita("e0", X0, 84, LEBAR / 4, WARNA_BARIS[2], "seperempat", 7), ...pita("e1", X0 + LEBAR / 4, 84, LEBAR / 4, WARNA_BARIS[2], "seperempat", 7)),
+      tambah("satu", teks("n1", 242, 54, "1 pita", 10, W.merah)),
+      tambah("setengah,", ...pita("h0", X0, 40, LEBAR / 2, WARNA_BARIS[1], "setengah", 9)),
+      tambah("sama.", garis("sm", X0 + LEBAR / 2, 34, 0, 80, W.merah, 1.8, { putus: true, z: 3 })),
+    ),
+    k(
+      SUARA_E2,
+      tambah("dua", teks("f2", 80, 148, "2 seperempat", 10, W.merah)),
+      tambah("sama", teks("fs", 150, 148, "=", 14, W.ungu)),
+      tambah("satu", teks("f1", 222, 148, "1 setengah", 10, W.hijau)),
+      tambah("jelas.", emo("ok", 262, 176, E.benar, 22)),
+    ),
+    k(
+      SUARA_E3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?"), ...kartu("cc", 90, 34, 120, 24, W.hijauMuda, ["Cocok"], 12)),
+      tambah("utuh,", ...baris("u", 72, 1, WARNA_BARIS[0], "utuh", 8)),
+      tambah("setengah,", ...baris("v", 98, 2, WARNA_BARIS[1], "setengah", 8)),
+      tambah("seperempat.", ...baris("w", 124, 4, WARNA_BARIS[2], "seperempat", 6.4)),
+      tambah("membandingkan", emo("ok", 150, 176, E.benar, 24)),
+    ),
+    k(
+      SUARA_E4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?"), ...kartu("kc", 80, 34, 140, 24, W.merahMuda, ["Kurang cocok"], 12)),
+      tambah("lingkaran,", bulat("lk", 70, 112, 30, "#BFDBFE", W.biru, { tebal: 2 }), emo("x1", 70, 168, E.salah, 22)),
+      tambah("dinding", kotak("pl", 130, 104, 150, 16, "#BFDBFE", W.biru, { rx: 2, tebal: 1.8 })),
+      tambah("lurus.", emo("x2", 205, 150, E.geleng, 22)),
+    ),
   ],
 };
 
-/* ------------------------------ 6. Lipat Dua Kali: konsep ------------------------------ */
-const LP_X = 108;
-const LP_Y = 54;
-const LP_S = 84;
-const LP_UTUH = bagianKotak("lp", LP_X, LP_Y, LP_S, LP_S, "utuh");
-const LP_DUA = bagianKotak("lp", LP_X, LP_Y, LP_S, LP_S, "tegak2");
-const LP_EMPAT = bagianKotak("lp", LP_X, LP_Y, LP_S, LP_S, "empat");
-
-const SUARA_F1 = "Metode ketiga bernama Lipat Dua Kali. Kita lipat gambar persegi di layar.";
-const SUARA_F2 = "Lipat pertama, ketuk lipat. Sisi kiri menutupi sisi kanan dengan pas.";
-const SUARA_F3 = "Dibuka, ada dua bagian yang sama besar. Tiap bagian adalah setengah.";
-const SUARA_F4 = "Lipat kedua, ketuk lipat lagi. Sisi atas menutupi sisi bawah dengan pas.";
-const SUARA_F5 = "Dibuka, ada empat bagian yang sama besar. Tiap bagian adalah seperempat.";
+/* ------------------------------ Fold and Shade: konsep ------------------------------ */
+const SUARA_F1 = "Cara ketiga, Fold and Shade, atau Lipat dan Warnai. Cara ini memakai selembar kertas.";
+const SUARA_F2 = "Lipat kertas dua kali supaya terbentuk empat bagian, lalu buka.";
+const SUARA_F3 = "Warnai satu bagian, dan itulah seperempat.";
+const SUARA_F4 = "Lipatan yang rapi membuat keempat bagian sama besar, dan warnanya mudah dilihat.";
 
 export const ADEGAN_LUAR_LIPAT: AdeganStory = {
   id: "luar-lipat",
-  judul: "Lipat Dua Kali: lipat di layar",
-  sumber: "Metode luar: Lipat Dua Kali",
-  latar: "#FDF2F8",
+  judul: "Fold and Shade: Lipat dan Warnai",
+  sumber: "Metode global: Fold and Shade (konsep)",
+  latar: "#FDF4FF",
   ketukan: [
-    k(SUARA_F1, tambah(0, ...kepala(2)), tambah(idx(SUARA_F1, "persegi"), ...LP_UTUH), tambah(idx(SUARA_F1, "layar."), ...labelBagian(LP_UTUH, "utuh", 10))),
+    k(
+      SUARA_F1,
+      bersih(0),
+      tambah(0, judul("Cara Ketiga")),
+      tambah("Fold", ...kartu("nm", 50, 34, 200, 26, W.krem, ["Fold and Shade"], 13)),
+      tambah("Lipat", teks("nid", 150, 88, "Lipat dan Warnai", 12, W.ungu)),
+      tambah("selembar", kertas("kr", 125, 106, 50)),
+      tambah("kertas.", emo("ks", 200, 150, E.kuas, 26)),
+    ),
     k(
       SUARA_F2,
-      tambah(idx(SUARA_F2, "ketuk"), garisPotong("gp1", LP_X + LP_S / 2, LP_Y, 0, LP_S)),
-      tambah(idx(SUARA_F2, "menutupi"), panah("fl1", LP_X + 18, LP_Y + 42, 48, 0)),
+      bersih(0),
+      tambah(0, judul("Lipat Dua Kali")),
+      tambah("kertas", kertas("kr", 100, 40, 100)),
+      tambah("dua", teks("n2", 250, 60, "2 kali", 10, W.merah)),
+      tambah("terbentuk", garis("g1", 150, 40, 0, 100, W.biru, 2, { putus: true, z: 2 }), garis("g2", 100, 90, 100, 0, W.biru, 2, { putus: true, z: 2 })),
+      tambah("empat", teks("n4", 250, 90, "4 bagian", 10, W.merah)),
+      ubah("buka.", { id: "g1", putus: false }, { id: "g2", putus: false }),
     ),
     k(
       SUARA_F3,
-      hapus(idx(SUARA_F3, "dua"), "fl1", ...idBagian("lp", 1, true)),
-      tambah(idx(SUARA_F3, "dua"), ...LP_DUA),
-      tambah(idx(SUARA_F3, "Tiap"), ...labelBagian(LP_DUA, "1/2", 11)),
+      hapus(0, "n2", "n4"),
+      tambah("satu", kotak("wn", 101, 41, 49, 49, W.emas, W.biru, { rx: 0, tebal: 1.2, z: 1 }), teks("n1", 250, 70, "1 bagian", 10, W.merah)),
+      tambah("seperempat.", ...label("lb", 150, 160, "seperempat", 8)),
     ),
     k(
       SUARA_F4,
-      tambah(idx(SUARA_F4, "ketuk"), garisPotong("gp2", LP_X, LP_Y + LP_S / 2, LP_S, 0)),
-      tambah(idx(SUARA_F4, "menutupi"), panah("fl2", LP_X + 22, LP_Y + 18, 0, 48)),
-    ),
-    k(
-      SUARA_F5,
-      hapus(idx(SUARA_F5, "empat"), "fl2", ...idBagian("lp", 2, true)),
-      tambah(idx(SUARA_F5, "empat"), ...LP_EMPAT),
-      tambah(idx(SUARA_F5, "Tiap"), ...labelBagian(LP_EMPAT, "1/4", 11)),
+      tambah("rapi", emo("b1", 70, 70, E.bintang, 22)),
+      sorotkan("sama", "g1", "g2"),
+      tambah("warnanya", emo("b2", 235, 130, E.bintang, 20)),
+      tambah("dilihat.", emo("kc", 250, 170, E.kaca, 24)),
     ),
   ],
 };
 
-/* ------------------------------ 7. Lipat Dua Kali: terapan ------------------------------ */
-const LT_UTUH = bagianKotak("lt", LP_X, LP_Y, LP_S, LP_S, "utuh");
-const LT_EMPAT = bagianKotak("lt", LP_X, LP_Y, LP_S, LP_S, "empat");
-const NOMOR = LT_EMPAT.map((b, i) => {
-  const t = labelBagian([b], String(i + 1), 12);
-  return { ...t[0], id: `nm-lt-${i + 1}` };
-});
-
-const SUARA_Y1 = "Terapkan pada soal ini. Wei melipat persegi dua kali di layar.";
-const SUARA_Y2 = "Berapa bagian sama besar yang terbentuk? Ketuk jawaban yang tepat.";
-const SUARA_Y3 = "Hitung bersama, satu, dua, tiga, empat.";
-const SUARA_Y4 = "Betul! Dua kali lipat menghasilkan empat bagian sama besar. Hebat!";
+/* ------------------------------ Fold and Shade: terapan ------------------------------ */
+const SUARA_G1 = "Dika melipat kertas persegi tegak lalu mendatar, lalu mewarnai satu persegi kecil.";
+const SUARA_G2 = "Satu dari empat bagian sama besar tertutup warna, jadi bagian berwarna itu seperempat dari seluruh kertas.";
+const SUARA_G3 = "Cocok kalau kita ingin menunjukkan seperempat dari seluruh gambar dengan jelas.";
+const SUARA_G4 = "Kurang cocok kalau kertasnya basah atau sobek, karena lipatannya tidak rapi.";
 
 export const ADEGAN_LUAR_LIPAT_TERAPAN: AdeganStory = {
   id: "luar-lipat-terapan",
-  judul: "Lipat Dua Kali: hitung bagian",
-  sumber: "Metode luar: Lipat Dua Kali",
-  latar: "#FCE7F3",
+  judul: "Dika melipat dan mewarnai",
+  sumber: "Metode global: Fold and Shade (terapan)",
+  latar: "#FEFCE8",
   ketukan: [
     k(
-      SUARA_Y1,
-      tambah(0, ...kepala(2)),
-      tambah(idx(SUARA_Y1, "persegi"), ...LT_UTUH),
-      tambah(idx(SUARA_Y1, "dua"), garisPotong("gp1", LP_X + LP_S / 2, LP_Y, 0, LP_S), garisPotong("gp2", LP_X, LP_Y + LP_S / 2, LP_S, 0)),
+      SUARA_G1,
+      bersih(0),
+      tambah(0, judul("Melipat dan Mewarnai")),
+      tambah("Dika", ...tokoh("dk", 40, 178, "Dika")),
+      tambah("kertas", kertas("kr", 110, 40, 90)),
+      tambah("tegak", garis("g1", 155, 40, 0, 90, W.biru, 2, { putus: true, z: 2 })),
+      tambah("mendatar,", garis("g2", 110, 85, 90, 0, W.biru, 2, { putus: true, z: 2 })),
+      tambah("satu", kotak("wn", 111, 41, 43, 43, W.emas, W.biru, { rx: 0, tebal: 1.2, z: 1 }), teks("n1", 250, 70, "1 persegi", 10, W.merah)),
     ),
     k(
-      SUARA_Y2,
-      hapus(idx(SUARA_Y2, "bagian"), ...idBagian("lt", 1)),
-      tambah(idx(SUARA_Y2, "bagian"), ...LT_EMPAT),
-      tambah(idx(SUARA_Y2, "tepat."), ...pilihKata(152, ["dua", "empat", "enam"], 13)),
+      SUARA_G2,
+      tambah("Satu", teks("m1", 250, 94, "1 dari", 10, W.merah)),
+      tambah("empat", teks("m4", 250, 112, "4 bagian", 10, W.merah)),
+      sorotkan("warna,", "wn"),
+      tambah("seperempat", ...label("lb", 55, 62, "seperempat", 8), panah("pl", 84, 62, 24, 0, W.ungu, 2.2)),
+      tambah("kertas.", kotak("bk", 106, 36, 98, 98, "none", W.merah, { rx: 2, tebal: 2, z: 3, op: 0.7 })),
     ),
     k(
-      SUARA_Y3,
-      tambah(idx(SUARA_Y3, "satu,"), NOMOR[0]),
-      tambah(idx(SUARA_Y3, "dua,"), NOMOR[1]),
-      tambah(idx(SUARA_Y3, "tiga,"), NOMOR[2]),
-      tambah(idx(SUARA_Y3, "empat."), NOMOR[3]),
+      SUARA_G3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?"), ...kartu("cc", 90, 34, 120, 24, W.hijauMuda, ["Cocok"], 12)),
+      tambah("menunjukkan", kertas("kr", 110, 70, 80), garis("g1", 150, 70, 0, 80, W.biru, 1.6, { putus: true, z: 2 }), garis("g2", 110, 110, 80, 0, W.biru, 1.6, { putus: true, z: 2 })),
+      tambah("seperempat", kotak("wn", 111, 71, 39, 39, W.emas, W.biru, { rx: 0, tebal: 1.2, z: 1 }), panah("pl", 70, 90, 38, 0, W.ungu, 2.4)),
+      tambah("jelas.", emo("ok", 150, 170, E.benar, 26)),
     ),
-    k(SUARA_Y4, sorotkan(idx(SUARA_Y4, "Betul!"), "c2-k"), tambah(idx(SUARA_Y4, "Hebat!"), emo("ok", 262, 96, "✅", 22), teks("tk", 150, 146, "empat bagian sama besar", 9, W.ungu))),
+    k(
+      SUARA_G4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?"), ...kartu("kc", 80, 34, 140, 24, W.merahMuda, ["Kurang cocok"], 12)),
+      tambah("kertasnya", poligon("sb", [[100, 76], [150, 70], [160, 86], [200, 78], [202, 140], [100, 142]], W.putih, W.biru, { tebal: 1.8 })),
+      tambah("basah", emo("tt1", 120, 118, "\u{1F4A7}", 20), emo("tt2", 170, 126, "\u{1F4A7}", 20)),
+      tambah("sobek,", garis("sk", 146, 74, 10, 24, W.merah, 2.2, { putus: true, z: 3 })),
+      tambah("tidak", emo("x1", 245, 110, E.salah, 26)),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Kita sudah melihat tiga cara. Mana yang pas? Itu tergantung tugasnya dan bendanya.";
+const SUARA_R2 = "Ingin membagi benda yang bisa dipotong, pakai Belah Dua Kali. Ingin membandingkan utuh, setengah, dan seperempat, pakai Dinding Pecahan.";
+const SUARA_R3 = "Ingin menunjukkan seperempat pada gambar, pakai Lipat dan Warnai. Apa pun caranya, keempat bagian harus sama besar.";
+const SUARA_R4 = "Menurutmu, untuk membagi petak tanah menjadi empat bagian sama besar, kamu pilih cara yang mana, dan mengapa?";
+
+export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
+  id: "luar-ringkas",
+  judul: "Memilih cara yang pas",
+  sumber: "Metode global: ringkasan",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_R1,
+      bersih(0),
+      tambah(0, judul("Tiga Cara")),
+      tambah("tiga", teks("t3", 262, 40, "3 cara", 10, W.ungu)),
+      tambah("cara.", ...[0, 1, 2].flatMap((i) => kartu(`r${i}`, 30, 38 + i * 44, 200, 32, [W.krem, W.langit, W.pink][i], [`${i + 1}. ${NAMA_METODE_ID[i]}`], 10.4))),
+      tambah("Mana", emo("tq", 262, 110, E.tanya, 28)),
+      tambah("tergantung", teks("tg", 150, 190, "tugas dan benda", 10, W.merah)),
+    ),
+    k(
+      SUARA_R2,
+      hapus(0, "tq", "tg"),
+      tambah("dipotong,", emo("gt", 262, 62, E.gunting, 24)),
+      sorotkan("Belah", "r0-k"),
+      tambah("Dua", teks("d2", 262, 84, "2 kali", 9, W.merah)),
+      redamkan("utuh,", "r0-k"),
+      sorotkan("utuh,", "r1-k"),
+      tambah("Dinding", kotak("dk1", 242, 108, 40, 7, "#BFDBFE", W.biru, { rx: 1, tebal: 1.2 }), kotak("dk2", 242, 115, 20, 7, "#BBF7D0", W.biru, { rx: 1, tebal: 1.2 }), kotak("dk3", 262, 115, 20, 7, "#BBF7D0", W.biru, { rx: 1, tebal: 1.2 })),
+    ),
+    k(
+      SUARA_R3,
+      redamkan(0, "r1-k"),
+      tambah("gambar,", kertas("kr", 250, 140, 28, "#FEF08A"), garis("kg", 264, 140, 0, 28, W.biru, 1.2, { putus: true })),
+      sorotkan("Lipat", "r2-k"),
+      tambah("keempat", emo("ks", 262, 190, E.kuas, 20)),
+      tambah("besar.", emo("ok", 150, 190, E.benar, 22)),
+    ),
+    k(
+      SUARA_R4,
+      bersih(0),
+      tambah(0, judul("Pilih Cara yang Pas")),
+      tambah("petak", ...petak("pt", 105, 40, 90)),
+      tambah("empat", teks("n4", 250, 80, "4 bagian", 10, W.merah)),
+      tambah("sama", tali("v1", 150, 40, 0, 90), tali("v2", 105, 85, 90, 0)),
+      tambah("mengapa?", emo("tq", 150, 170, E.tanya, 30)),
+    ),
   ],
 };

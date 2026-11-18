@@ -1,138 +1,255 @@
 import type { AdeganStory } from "./logika-story";
-import { W, bendaBagi, hasilBagi, hasilLipat, kartu, lipatan, persegiPanjang, tarik, teks } from "./k2b5A-gambar";
-import type { Titik } from "./k2b5A-gambar";
-import { hapus, idx, k, pilihKata, redamkan, sorotkan, tambah, ubah } from "./k2b5A-bantu";
-import { kepala } from "./k2b5A-luar-1";
+import { E, W, bulat, cermin, daun, emo, garis, idCermin, idPitaBar, judul, kartu, kotak, panah, pitaBar, poligon, rumput, teks, tokoh } from "./k2b5A-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k2b5A-bantu";
 
-/* ------------------------------ 5. Bagian Sama: konsep ------------------------------ */
-export const POLI_CD = [persegiPanjang(40, 66, 70, 70), persegiPanjang(190, 66, 70, 70)];
-export const GARIS_CD: [Titik, Titik][] = [
-  [[75, 58], [75, 144]],
-  [[207, 58], [207, 144]],
-];
-const CD = [0, 1].map((i) => bendaBagi(i + 1, POLI_CD[i], GARIS_CD[i][0], GARIS_CD[i][1], "#FDE68A"));
-const SUARA_X1 = "Metode kedua bernama Bagian Sama. Setengah hanya ada kalau kedua bagian sama besar.";
-const SUARA_X2 = "Ada dua gambar, yaitu gambar C dan gambar D. Keduanya dipotong menjadi dua bagian.";
-const SUARA_X3 = "Periksa gambar C. Kedua bagiannya sama besar, jadi gambar C menunjukkan setengah.";
-const SUARA_X4 = "Periksa gambar D. Satu bagiannya lebih besar, jadi gambar D bukan setengah.";
-const SUARA_X5 = "Ingat, hanya bagian yang sama besar yang disebut setengah.";
+/*
+ * Cerita orisinal IGIL "Semangka Raksasa Pak Danu" (Kelas 2 Bab 5 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k2b5a.md. Bagian ini: Mirror Test (Uji Cermin), Fraction Strips (Pita Pecahan), terapannya, dan ringkasan.
+ */
 
-export const ADEGAN_LUAR_BAGIAN: AdeganStory = {
-  id: "luar-bagian",
-  judul: "Bagian Sama: periksa besarnya",
-  sumber: "Metode luar: Bagian Sama",
-  latar: "#EFF6FF",
+const WK_HIJAU = "#166534";
+
+/* ------------------------------ Mirror Test: konsep ------------------------------ */
+const SUARA_C1 = "Cara kedua, Mirror Test, atau Uji Cermin.";
+const SUARA_C2 = "Letakkan cermin kecil tepat di garis pembagi gambar.";
+const SUARA_C3 = "Kalau bayangan bagian yang satu persis seperti bagian yang lain, garis itu membagi dua sama besar.";
+const SUARA_C4 = "Kalau bayangannya miring atau tidak pas, bagiannya tidak sama besar.";
+
+export const ADEGAN_LUAR_CERMIN: AdeganStory = {
+  id: "luar-cermin",
+  judul: "Mirror Test: Uji Cermin",
+  sumber: "Metode global: Mirror Test (konsep)",
+  latar: "#F5F3FF",
   ketukan: [
-    k(SUARA_X1, tambah(0, ...kepala(1)), tambah(idx(SUARA_X1, "kalau"), CD[0].w, CD[1].w)),
     k(
-      SUARA_X2,
-      tambah(idx(SUARA_X2, "C"), teks("huruf-c", 75, 58, "C", 13, W.ungu)),
-      tambah(idx(SUARA_X2, "D."), teks("huruf-d", 225, 58, "D", 13, W.ungu)),
-      tambah(idx(SUARA_X2, "dipotong"), CD[0].gp, CD[1].gp),
-      hapus(idx(SUARA_X2, "menjadi"), "bn1-w", "bn2-w"),
-      tambah(idx(SUARA_X2, "menjadi"), CD[0].a, CD[0].b, CD[1].a, CD[1].b),
+      SUARA_C1,
+      tambah(0, judul("Cara 2: Mirror Test"), rumput("rm", 150)),
+      tambah("Mirror", ...cermin("cm", 143, 58, 14, 80)),
+      tambah("Test,", teks("nm", 150, 172, "Uji Cermin", 11, W.ungu)),
+      tambah("Uji", ...kartu("kc", 74, 30, 152, 22, W.putih, ["bayangan harus pas"], 9)),
     ),
     k(
-      SUARA_X3,
-      sorotkan(idx(SUARA_X3, "Periksa"), "bn1-a", "bn1-b"),
-      ubah(idx(SUARA_X3, "sama"), ...tarik(1, GARIS_CD[0][0], GARIS_CD[0][1], 5)),
-      tambah(idx(SUARA_X3, "setengah."), hasilBagi(1, 75, 164, "setengah")),
+      SUARA_C2,
+      hapus(0, ...idCermin("cm"), "nm", "kc-k", "kc-t0"),
+      tambah("Letakkan", kotak("gm", 70, 62, 160, 72, "#FEF3C7", W.biru, { rx: 3, tebal: 2.4 })),
+      tambah("cermin", ...cermin("cm2", 146.5, 56, 7, 84)),
+      tambah("garis", garis("gg", 150, 60, 0, 76, W.merah, 2, { putus: true, z: 4 })),
+      tambah("gambar.", emo("kc", 150, 176, E.kaca, 26)),
     ),
     k(
-      SUARA_X4,
-      redamkan(0, "bn1-a", "bn1-b"),
-      sorotkan(idx(SUARA_X4, "Periksa"), "bn2-a", "bn2-b"),
-      ubah(idx(SUARA_X4, "lebih"), ...tarik(2, GARIS_CD[1][0], GARIS_CD[1][1], 5)),
-      tambah(idx(SUARA_X4, "setengah."), hasilBagi(2, 225, 164, "bukan setengah")),
+      SUARA_C3,
+      hapus(0, "kc"),
+      tambah("bayangan", poligon("bg", [[84, 74], [146, 74], [146, 122], [84, 122]], "#FDE68A", W.biru, { z: 1 })),
+      tambah("satu", teks("n1", 115, 160, "bagian 1", 9, W.ungu)),
+      tambah("persis", poligon("by", [[154, 74], [216, 74], [216, 122], [154, 122]], "#DDD6FE", W.ungu, { putus: true, z: 1 }), teks("n1b", 185, 160, "bayangan", 9, W.ungu), emo("ok", 150, 182, E.benar, 20)),
+      sorotkan("garis", "gg"),
+      tambah("dua", teks("n2", 150, 50, "2 bagian sama", 9, W.hijau)),
     ),
-    k(SUARA_X5, redamkan(0, "bn2-a", "bn2-b"), tambah(idx(SUARA_X5, "hanya"), ...kartu("xr", 30, 172, 240, 24, W.emas, ["hanya bagian sama besar: setengah"], 9.4))),
+    k(
+      SUARA_C4,
+      hapus(0, "by", "n1b", "ok", "n2"),
+      tambah("bayangannya", poligon("by2", [[154, 74], [222, 92], [222, 132], [154, 120]], "#DDD6FE", W.ungu, { putus: true, z: 1 })),
+      tambah("miring", teks("lm", 190, 160, "miring", 9, W.merah)),
+      tambah("tidak", emo("xp", 150, 182, E.salah, 20)),
+      tambah("bagiannya", teks("tb", 150, 50, "tidak sama besar", 9, W.merah)),
+    ),
   ],
 };
 
-/* ------------------------------ 6. Bagian Sama: terapan ------------------------------ */
-export const POLI_EF = [persegiPanjang(20, 62, 110, 56), persegiPanjang(170, 62, 110, 56)];
-export const GARIS_EF: [Titik, Titik][] = [
-  [[57, 54], [57, 126]],
-  [[225, 54], [225, 126]],
-];
-const EF = [0, 1].map((i) => bendaBagi(i + 1, POLI_EF[i], GARIS_EF[i][0], GARIS_EF[i][1], "#FDE68A"));
-const SUARA_Y1 = "Terapkan pada soal ini. Wei melihat gambar E dan gambar F. Keduanya dipotong menjadi dua bagian.";
-const SUARA_Y2 = "Gambar mana yang menunjukkan setengah? Ketuk jawaban yang tepat.";
-const SUARA_Y3 = "Betul! Gambar F dipotong menjadi dua bagian sama besar, jadi gambar F menunjukkan setengah. Hebat!";
-const SUARA_Y4 = "Gambar E dipotong tidak sama besar, jadi gambar E bukan setengah.";
+/* ------------------------------ Mirror Test: terapan ------------------------------ */
+const SUARA_T1 = "Nia meletakkan cermin di tengah gambar daun. Bayangannya persis daun yang utuh.";
+const SUARA_T2 = "Jadi garis itu membagi daun menjadi dua bagian yang sama.";
+const SUARA_T3 = "Cocok kalau gambarnya rapi dan kita ingin memeriksa garis dengan cepat.";
+const SUARA_T4 = "Kurang cocok kalau bentuknya tidak beraturan, karena bayangannya tidak pernah pas.";
 
-export const ADEGAN_LUAR_BAGIAN_TERAPAN: AdeganStory = {
-  id: "luar-bagian-terapan",
-  judul: "Bagian Sama: gambar E dan F",
-  sumber: "Metode luar: Bagian Sama",
-  latar: "#DBEAFE",
+export const ADEGAN_LUAR_CERMIN_TERAPAN: AdeganStory = {
+  id: "luar-cermin-terapan",
+  judul: "Mirror Test: Nia menguji daun",
+  sumber: "Metode global: Mirror Test (terapan)",
+  latar: "#FFFBEB",
   ketukan: [
     k(
-      SUARA_Y1,
-      tambah(0, ...kepala(1)),
-      tambah(idx(SUARA_Y1, "gambar"), EF[0].w, EF[1].w),
-      tambah(idx(SUARA_Y1, "E"), teks("huruf-e", 75, 54, "E", 13, W.ungu)),
-      tambah(idx(SUARA_Y1, "F."), teks("huruf-f", 225, 54, "F", 13, W.ungu)),
-      tambah(idx(SUARA_Y1, "dipotong"), EF[0].gp, EF[1].gp),
-      hapus(idx(SUARA_Y1, "menjadi"), "bn1-w", "bn2-w"),
-      tambah(idx(SUARA_Y1, "menjadi"), EF[0].a, EF[0].b, EF[1].a, EF[1].b),
+      SUARA_T1,
+      tambah(0, judul("Nia Menguji Daun"), rumput("rm", 150)),
+      tambah("Nia", ...tokoh("ni", 40, 182, "Nia")),
+      tambah("meletakkan", ...daun("dn", 170, 100, 38)),
+      tambah("cermin", ...cermin("cm", 166.5, 52, 7, 96)),
+      tambah("daun.", emo("pk", 240, 120, E.kaca, 24)),
+      tambah("Bayangannya", poligon("by", [[170, 62], [190.9, 84.8], [187.1, 115.2], [170, 138]], "#DDD6FE", W.ungu, { putus: true, z: 2 })),
+      tambah("utuh.", emo("ok", 232, 80, E.benar, 24)),
     ),
-    k(SUARA_Y2, tambah(idx(SUARA_Y2, "jawaban"), ...pilihKata(150, ["E", "F"], 14))),
-    k(SUARA_Y3, sorotkan(idx(SUARA_Y3, "Betul!"), "c2-k"), sorotkan(idx(SUARA_Y3, "gambar", 2), "bn2-a", "bn2-b"), tambah(idx(SUARA_Y3, "setengah."), hasilBagi(2, 225, 138, "setengah"))),
-    k(SUARA_Y4, redamkan(0, "bn2-a", "bn2-b", "c2-k"), sorotkan(idx(SUARA_Y4, "E"), "bn1-a", "bn1-b"), tambah(idx(SUARA_Y4, "bukan"), hasilBagi(1, 75, 138, "bukan setengah"))),
-  ],
-};
-/* ------------------------------ 7. Uji Lipat: konsep ------------------------------ */
-export const POLI_UL = persegiPanjang(110, 56, 80, 80);
-const UL_ATAS: Titik = [150, 48];
-const UL_BAWAH: Titik = [150, 144];
-const UL = bendaBagi(1, POLI_UL, UL_ATAS, UL_BAWAH, "#BBF7D0");
-const SUARA_Z1 = "Metode ketiga bernama Uji Lipat. Kita lipat gambar di layar untuk memeriksa.";
-const SUARA_Z2 = "Garis potong di tengah gambar menjadi garis lipat.";
-const SUARA_Z3 = "Ketuk lipat. Bagian kanan dilipat ke atas bagian kiri.";
-const SUARA_Z4 = "Kedua sisi pas menumpuk, jadi kedua bagian sama besar.";
-const SUARA_Z5 = "Pas menumpuk berarti kedua bagian sama besar, jadi tiap bagian adalah setengah.";
-
-export const ADEGAN_LUAR_LIPAT: AdeganStory = {
-  id: "luar-lipat",
-  judul: "Uji Lipat: pas menumpuk",
-  sumber: "Metode luar: Uji Lipat",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(SUARA_Z1, tambah(0, ...kepala(2)), tambah(idx(SUARA_Z1, "gambar"), UL.w)),
-    k(SUARA_Z2, tambah(idx(SUARA_Z2, "Garis"), UL.gp), hapus(idx(SUARA_Z2, "menjadi"), "bn1-w"), tambah(idx(SUARA_Z2, "menjadi"), UL.a, UL.b)),
-    k(SUARA_Z3, tambah(idx(SUARA_Z3, "Ketuk"), ...kartu("lp", 214, 150, 72, 26, W.emas, ["lipat"], 13)), hapus(idx(SUARA_Z3, "dilipat"), "bn1-b"), tambah(idx(SUARA_Z3, "dilipat"), lipatan(1, UL.titikB, UL_ATAS, UL_BAWAH))),
-    k(SUARA_Z4, tambah(idx(SUARA_Z4, "pas"), hasilLipat(1, 150, 162, "pas"))),
-    k(SUARA_Z5, sorotkan(idx(SUARA_Z5, "Pas"), "bn1-c"), tambah(idx(SUARA_Z5, "setengah."), hasilBagi(1, 150, 184, "setengah"))),
-  ],
-};
-
-/* ------------------------------ 8. Uji Lipat: terapan ------------------------------ */
-export const POLI_UL2 = persegiPanjang(110, 58, 80, 80);
-const UL2_ATAS: Titik = [130, 50];
-const UL2_BAWAH: Titik = [130, 146];
-const U2 = bendaBagi(1, POLI_UL2, UL2_ATAS, UL2_BAWAH, "#FECACA");
-const SUARA_T1 = "Terapkan pada soal ini. Halim melihat persegi dengan garis potong di dekat sisi kiri.";
-const SUARA_T2 = "Halim ketuk lipat. Bagian kanan dilipat ke atas bagian kiri. Apakah pas menumpuk? Ketuk jawaban.";
-const SUARA_T3 = "Betul! Ada bagian yang menonjol, jadi tidak pas menumpuk. Hebat!";
-const SUARA_T4 = "Tidak pas berarti tidak sama besar, jadi bukan setengah.";
-
-export const ADEGAN_LUAR_LIPAT_TERAPAN: AdeganStory = {
-  id: "luar-lipat-terapan",
-  judul: "Uji Lipat: persegi Halim",
-  sumber: "Metode luar: Uji Lipat",
-  latar: "#FCE7F3",
-  ketukan: [
-    k(SUARA_T1, tambah(0, ...kepala(2)), tambah(idx(SUARA_T1, "persegi"), U2.a, U2.b), tambah(idx(SUARA_T1, "garis"), U2.gp)),
     k(
       SUARA_T2,
-      tambah(idx(SUARA_T2, "ketuk"), ...kartu("lp", 214, 150, 72, 26, W.emas, ["lipat"], 13)),
-      hapus(idx(SUARA_T2, "dilipat"), "bn1-b"),
-      tambah(idx(SUARA_T2, "dilipat"), lipatan(1, U2.titikB, UL2_ATAS, UL2_BAWAH)),
-      hapus(idx(SUARA_T2, "jawaban"), "lp-k", "lp-t0"),
-      tambah(idx(SUARA_T2, "jawaban"), ...pilihKata(150, ["pas", "tidak pas"], 13)),
+      hapus(0, "ok"),
+      sorotkan("garis", "dn-t"),
+      tambah("membagi", poligon("hl", [[170, 62], [149.1, 84.8], [152.9, 115.2], [170, 138]], "#BBF7D0", WK_HIJAU, { z: 2 })),
+      tambah("dua", teks("n2", 250, 66, "2 bagian", 10, W.ungu)),
+      tambah("sama.", teks("sm", 250, 88, "sama besar", 10, W.hijau)),
     ),
-    k(SUARA_T3, sorotkan(idx(SUARA_T3, "Betul!"), "c2-k"), sorotkan(idx(SUARA_T3, "menonjol,"), "bn1-c"), tambah(idx(SUARA_T3, "tidak"), hasilLipat(1, 150, 142, "tidak pas", 10))),
-    k(SUARA_T4, redamkan(0, "bn1-c", "c2-k"), tambah(idx(SUARA_T4, "setengah."), hasilBagi(1, 150, 190, "bukan setengah"))),
+    k(
+      SUARA_T3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?")),
+      tambah("Cocok", emo("ok", 236, 84, E.benar, 28)),
+      tambah("gambarnya", ...kartu("gr", 40, 66, 130, 24, W.hijauMuda, ["gambar rapi"], 10), ...daun("dn2", 205, 130, 24)),
+      tambah("memeriksa", emo("kc", 60, 150, E.kaca, 28)),
+      tambah("cepat.", emo("sk", 120, 160, E.sorak, 26)),
+    ),
+    k(
+      SUARA_T4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?")),
+      tambah("Kurang", emo("xs", 236, 84, E.salah, 28)),
+      tambah("bentuknya", poligon("ir", [[60, 108], [100, 88], [130, 118], [112, 150], [70, 140]], "#FCA5A5", W.biru, { tebal: 2 })),
+      tambah("beraturan,", teks("tb", 100, 176, "tidak beraturan", 9, W.merah)),
+      tambah("bayangannya", poligon("bi", [[160, 100], [202, 92], [218, 130], [186, 152], [166, 140]], "#DDD6FE", W.ungu, { putus: true, tebal: 2 })),
+      tambah("pas.", emo("tq", 190, 68, E.tanya, 28)),
+    ),
   ],
 };
+/* ------------------------------ Fraction Strips: konsep ------------------------------ */
+const SUARA_P1 = "Cara ketiga, Fraction Strips, atau Pita Pecahan.";
+const SUARA_P2 = "Siapkan dua pita sama panjang. Satu pita dibiarkan utuh, dan satu pita dilipat menjadi dua.";
+const SUARA_P3 = "Pita yang dilipat dibuka, dan setiap bagiannya disebut setengah.";
+const SUARA_P4 = "Letakkan di bawah pita utuh, dan dua bagian itu menutupi pita utuh dengan pas.";
+
+export const ADEGAN_LUAR_PITA: AdeganStory = {
+  id: "luar-pita",
+  judul: "Fraction Strips: Pita Pecahan",
+  sumber: "Metode global: Fraction Strips (konsep)",
+  latar: "#FDF2F8",
+  ketukan: [
+    k(
+      SUARA_P1,
+      tambah(0, judul("Cara 3: Fraction Strips"), rumput("rm", 150)),
+      tambah("Fraction", ...pitaBar("pt", 50, 80, 200, "#F9A8D4", 8)),
+      tambah("Strips,", emo("pi", 150, 62, E.pita, 24)),
+      tambah("Pita", teks("nm", 150, 128, "Pita Pecahan", 11, W.ungu)),
+    ),
+    k(
+      SUARA_P2,
+      hapus(0, ...idPitaBar("pt"), "pi", "nm"),
+      tambah("dua", teks("n2", 250, 44, "2 pita", 10, W.ungu)),
+      tambah("pita", ...pitaBar("p1", 50, 70, 200, "#F9A8D4", 8)),
+      tambah("sama", ...pitaBar("p2", 50, 106, 200, "#F9A8D4", 8)),
+      tambah("Satu", teks("l1", 150, 64, "1 pita utuh", 9, W.ungu)),
+      tambah("dilipat", garis("fl", 150, 100, 0, 26, W.merah, 2.4, { putus: true, z: 3 }), teks("l2", 150, 140, "1 pita dilipat", 9, W.ungu)),
+      tambah("dua.", teks("n3", 150, 158, "jadi 2 bagian", 9, W.ungu)),
+    ),
+    k(
+      SUARA_P3,
+      hapus("dibuka,", "fl"),
+      ubah("dibuka,", { id: "p2", warna: "#FBCFE8" }),
+      tambah("setiap", teks("s1", 100, 117, "setengah", 8, WK_HIJAU), teks("s2", 200, 117, "setengah", 8, WK_HIJAU)),
+      tambah("setengah.", emo("ok", 150, 182, E.benar, 20)),
+    ),
+    k(
+      SUARA_P4,
+      hapus(0, ...idPitaBar("p2"), "l2", "n3", "s1", "s2", "ok"),
+      tambah("Letakkan", kotak("a1", 50, 86, 100, 14, "#FBCFE8", W.biru, { rx: 2, tebal: 1.4, z: 1 }), kotak("a2", 150, 86, 100, 14, "#F9A8D4", W.biru, { rx: 2, tebal: 1.4, z: 1 })),
+      tambah("dua", teks("n4", 250, 118, "2 bagian", 9, W.ungu)),
+      tambah("menutupi", garis("al", 50, 66, 0, 38, W.ungu, 1.4, { putus: true, z: 3 }), garis("ar", 250, 66, 0, 38, W.ungu, 1.4, { putus: true, z: 3 })),
+      tambah("pas.", emo("ok2", 150, 150, E.benar, 24)),
+    ),
+  ],
+};
+
+/* ------------------------------ Fraction Strips: terapan ------------------------------ */
+const SUARA_Q1 = "Chacha meletakkan satu pita setengah di bawah pita utuh. Terlihat jelas panjangnya hanya separuh.";
+const SUARA_Q2 = "Dika menambahkan pita setengah yang lain, dan keduanya pas menutupi pita utuh.";
+const SUARA_Q3 = "Cocok kalau kita ingin membandingkan bagian dengan seluruhnya.";
+const SUARA_Q4 = "Kurang cocok kalau bendanya bulat seperti lingkaran, karena pita yang lurus sulit dipakai.";
+
+export const ADEGAN_LUAR_PITA_TERAPAN: AdeganStory = {
+  id: "luar-pita-terapan",
+  judul: "Fraction Strips: Chacha dan pita",
+  sumber: "Metode global: Fraction Strips (terapan)",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_Q1,
+      tambah(0, judul("Chacha dan Pita"), rumput("rm", 150)),
+      tambah("Chacha", ...tokoh("ch", 40, 182, "Chacha")),
+      tambah("meletakkan", ...pitaBar("u", 60, 72, 200, "#F9A8D4", 8), teks("lu", 160, 66, "pita utuh", 9, W.ungu)),
+      tambah("satu", teks("n1", 110, 124, "1 pita setengah", 9, W.ungu)),
+      tambah("setengah", ...pitaBar("s1", 60, 90, 100, "#FBCFE8", 4)),
+      tambah("separuh.", teks("sp", 212, 100, "hanya separuh", 9, W.merah)),
+    ),
+    k(
+      SUARA_Q2,
+      hapus(0, "sp"),
+      tambah("Dika", ...tokoh("dk", 88, 182, "Dika")),
+      tambah("setengah", ...pitaBar("s2", 160, 90, 100, "#F9A8D4", 4)),
+      tambah("pas", emo("ok", 160, 134, E.benar, 24)),
+    ),
+    k(
+      SUARA_Q3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?")),
+      tambah("Cocok", emo("ok", 236, 84, E.benar, 28)),
+      tambah("membandingkan", ...pitaBar("cu", 50, 76, 160, "#F9A8D4", 8)),
+      tambah("bagian", ...pitaBar("ch", 50, 98, 80, "#FBCFE8", 4)),
+      tambah("seluruhnya.", ...kartu("cb", 50, 130, 160, 24, W.hijauMuda, ["bagian dan seluruhnya"], 9)),
+    ),
+    k(
+      SUARA_Q4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?")),
+      tambah("Kurang", emo("xs", 236, 84, E.salah, 28)),
+      tambah("bulat", bulat("lg", 100, 120, 30, "#FDE68A", W.biru, { tebal: 2 })),
+      tambah("pita", ...pitaBar("lp", 150, 110, 110, "#F9A8D4", 5)),
+      tambah("lurus", emo("tq", 190, 160, E.tanya, 28)),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_G1 = "Kita sudah melihat tiga cara. Mana yang pas? Itu tergantung bendanya.";
+const SUARA_G2 = "Ingin membagi benda yang bisa dipotong, pakai Berbagi Adil. Ingin memeriksa garis pembagi, pakai Uji Cermin.";
+const SUARA_G3 = "Ingin membandingkan bagian dengan seluruhnya, pakai Pita Pecahan. Apa pun caranya, setengah harus sama besar.";
+const SUARA_G4 = "Menurutmu, untuk membagi selembar kertas menjadi setengah, kamu pilih cara yang mana?";
+
+export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
+  id: "luar-ringkas",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan metode global",
+  latar: "#F5F3FF",
+  ketukan: [
+    k(
+      SUARA_G1,
+      tambah(0, judul("Tiga Cara, Satu Tugas")),
+      tambah("melihat", ...kartu("r0", 20, 40, 200, 28, W.langit, ["1. Berbagi Adil"], 11)),
+      tambah("tiga", teks("t3", 262, 138, "3 cara", 10, W.ungu), ...kartu("r1", 20, 80, 200, 28, W.hijauMuda, ["2. Uji Cermin"], 11)),
+      tambah("cara.", ...kartu("r2", 20, 120, 200, 28, W.pink, ["3. Pita Pecahan"], 11)),
+      tambah("pas?", emo("tq", 262, 172, E.tanya, 30)),
+    ),
+    k(
+      SUARA_G2,
+      sorotkan("membagi", "r0-k"),
+      tambah("benda", emo("jg", 262, 56, E.jagung, 26)),
+      tambah("Berbagi", panah("o0", 224, 54, 22, 0, W.ungu, 2.6)),
+      redamkan("Ingin@2", "r0-k"),
+      sorotkan("memeriksa", "r1-k"),
+      tambah("pembagi,", emo("kc", 262, 104, E.kaca, 26)),
+      tambah("Uji", panah("o1", 224, 98, 22, 0, W.ungu, 2.6)),
+    ),
+    k(
+      SUARA_G3,
+      hapus(0, "jg", "o0", "kc", "o1", "tq", "t3"),
+      redamkan(0, "r1-k"),
+      sorotkan("membandingkan", "r2-k"),
+      tambah("Pita", emo("pi", 262, 140, E.pita, 28), panah("o2", 224, 134, 22, 0, W.ungu, 2.6)),
+      tambah("setengah", ...kartu("kk", 20, 160, 260, 28, W.hijauMuda, ["setengah harus sama besar"], 10)),
+    ),
+    k(
+      SUARA_G4,
+      bersih(0),
+      tambah(0, judul("Kertas Jadi Setengah")),
+      tambah("selembar", kotak("kt", 100, 36, 100, 70, W.putih, W.biru, { rx: 2, tebal: 2.4 })),
+      tambah("setengah,", garis("gk", 150, 32, 0, 78, W.merah, 2.2, { putus: true, z: 3 })),
+      tambah("cara", ...kartu("o0", 14, 126, 86, 28, W.langit, ["Berbagi Adil"], 8.6), ...kartu("o1", 107, 126, 86, 28, W.hijauMuda, ["Uji Cermin"], 8.6), ...kartu("o2", 200, 126, 86, 28, W.pink, ["Pita Pecahan"], 8.6)),
+      tambah("mana?", emo("tq", 150, 180, E.tanya, 26)),
+    ),
+  ],
+};
+

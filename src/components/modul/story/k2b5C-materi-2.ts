@@ -1,154 +1,136 @@
 import type { AdeganStory } from "./logika-story";
-import { W, WARNA_APEL, bagianKotak, bagianLingkaran, emo, garisPotong, idBagian, judul, kartu, labelBagian } from "./k2b5C-gambar";
-import { hapus, idx, k, redamkan, sorotkan, tambah } from "./k2b5C-bantu";
+import { E, W, WR, WK, emo, garis, idLabu, irisLabu, judul, kartu, kertas, labu, label, papanCatat, poligon, regu, rumput, teks, tokoh } from "./k2b5C-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k2b5C-bantu";
 
-/* ------------------------------ 6. Apel dipotong dua kali ------------------------------ */
-const AP_UTUH = bagianLingkaran("ap", 150, 100, 58, [360], -90, WARNA_APEL);
-const AP_DUA = bagianLingkaran("ap", 150, 100, 58, [180, 180], -90, WARNA_APEL);
-const AP_EMPAT = bagianLingkaran("ap", 150, 100, 58, [90, 90, 90, 90], -90, WARNA_APEL);
+/*
+ * Cerita orisinal IGIL "Panen Raya Pak Joko" (Kelas 2 Bab 5 Sub-Bab C), naskah suara dari naskah/story-naskah-k2b5c.md.
+ * Bagian ini: dua kali memotong, hubungan utuh setengah seperempat, melipat kertas.
+ */
 
-const SUARA_S1 = "Mulai dari satu apel utuh. Apel ini masih belum dipotong sama sekali.";
-const SUARA_S2 = "Apel dipotong menjadi dua bagian yang sama besar. Setiap bagian adalah setengah apel.";
-const SUARA_S3 = "Sekarang setiap setengah apel dipotong lagi. Hasilnya empat bagian yang sama besar.";
-const SUARA_S4 = "Setiap bagian sekarang adalah seperempat apel. Seperempat adalah setengah dari setengah.";
-const SUARA_S5 = "Perhatikan, makin banyak potongannya, makin kecil tiap bagiannya. Tetapi semua bagian tetap sama besar.";
-
-export const ADEGAN_SETENGAH_DULU: AdeganStory = {
-  id: "setengah-dulu",
-  judul: "Apel dipotong dua kali",
-  sumber: "Materi: setengah dari setengah",
-  latar: "#FFF1F2",
-  ketukan: [
-    k(SUARA_S1, tambah(0, judul("Satu apel utuh")), tambah(idx(SUARA_S1, "apel"), ...AP_UTUH), tambah(idx(SUARA_S1, "utuh."), ...labelBagian(AP_UTUH, "utuh", 10))),
-    k(
-      SUARA_S2,
-      hapus(idx(SUARA_S2, "dua"), ...idBagian("ap", 1, true)),
-      tambah(idx(SUARA_S2, "dua"), ...AP_DUA),
-      tambah(idx(SUARA_S2, "Setiap"), ...labelBagian(AP_DUA, "1/2", 11)),
-    ),
-    k(
-      SUARA_S3,
-      hapus(idx(SUARA_S3, "lagi."), ...idBagian("ap", 2, true)),
-      tambah(idx(SUARA_S3, "lagi."), ...AP_EMPAT),
-      tambah(idx(SUARA_S3, "Hasilnya"), garisPotong("gp1", 150, 42, 0, 116), garisPotong("gp2", 92, 100, 116, 0)),
-    ),
-    k(
-      SUARA_S4,
-      tambah(idx(SUARA_S4, "Setiap"), ...labelBagian(AP_EMPAT, "1/4", 11)),
-      sorotkan(idx(SUARA_S4, "seperempat"), "pc-ap-1"),
-    ),
-    k(
-      SUARA_S5,
-      redamkan(0, "pc-ap-1"),
-      tambah(idx(SUARA_S5, "kecil"), ...kartu("mk", 40, 168, 220, 22, W.krem, ["makin banyak, makin kecil"], 10)),
-    ),
-  ],
-};
-
-/* ------------------------------ 7. Dua kali memotong kue bolu ------------------------------ */
-const BO_UTUH = bagianKotak("bo", 100, 36, 100, 100, "utuh");
-const BO_DUA = bagianKotak("bo", 100, 36, 100, 100, "tegak2");
-const BO_EMPAT = bagianKotak("bo", 100, 36, 100, 100, "empat");
-
-const SUARA_D1 = "Untuk mendapat seperempat, kita memotong dua kali. Kita pakai kue bolu.";
-const SUARA_D2 = "Potong pertama membuat dua bagian yang sama besar. Tiap bagian adalah setengah.";
-const SUARA_D3 = "Potong kedua membagi setiap setengah lagi. Hasilnya empat bagian yang sama besar.";
-const SUARA_D4 = "Setiap bagian bolu sekarang adalah seperempat. Ada empat seperempat pada satu bolu utuh.";
-const SUARA_D5 = "Setengah bagian kiri berisi dua seperempat. Jadi seperempat adalah setengah dari setengah.";
+/* ------------------------------ 4. Dua kali ------------------------------ */
+const SUARA_D1 = "Seperempat adalah setengah dari setengah, jadi kita memotong dua kali.";
+const SUARA_D2 = "Pak Joko membelah labu tepat di tengah, lalu membelah setiap belahan di tengah lagi.";
+const SUARA_D3 = "Empat regu mendapat satu potong labu yang sama besar.";
 
 export const ADEGAN_DUA_KALI: AdeganStory = {
   id: "dua-kali",
-  judul: "Dua kali memotong kue bolu",
-  sumber: "Materi: potong dua kali",
-  latar: "#FFFBEB",
+  judul: "Belah dua kali",
+  sumber: "Materi: seperempat, dua kali memotong",
+  latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_D1, tambah(0, judul("Potong dua kali")), tambah(idx(SUARA_D1, "bolu."), ...BO_UTUH), tambah(idx(SUARA_D1, "pakai"), ...labelBagian(BO_UTUH, "utuh", 10))),
+    k(
+      SUARA_D1,
+      bersih(0),
+      tambah(0, judul("Dua Kali Memotong"), rumput("rm")),
+      tambah("Seperempat", ...kartu("ks", 14, 28, 84, 18, W.hijauMuda, ["seperempat"], 8.4)),
+      tambah("adalah", teks("sm", 106, 41, "=", 12, W.ungu)),
+      tambah("setengah", ...kartu("kt", 114, 28, 62, 18, W.krem, ["setengah"], 8.4)),
+      tambah("dari", teks("dr", 190, 41, "dari", 8, W.ungu)),
+      tambah("setengah@2", ...kartu("ku", 204, 28, 62, 18, W.krem, ["setengah"], 8.4)),
+      tambah("memotong", ...tokoh("pj", 40, 178, "Pak Joko"), ...labu("lb", 150, 110, 36)),
+      tambah("dua", teks("n2", 250, 120, "2 kali", 10, W.merah)),
+    ),
     k(
       SUARA_D2,
-      tambah(idx(SUARA_D2, "Potong"), garisPotong("gp1", 150, 32, 0, 108)),
-      hapus(idx(SUARA_D2, "dua"), ...idBagian("bo", 1, true)),
-      tambah(idx(SUARA_D2, "dua"), ...BO_DUA),
-      tambah(idx(SUARA_D2, "Tiap"), ...labelBagian(BO_DUA, "1/2", 11)),
+      hapus("membelah", ...idLabu("lb")),
+      tambah("membelah", irisLabu("lh1", 144, 110, 36, 90, 270), irisLabu("lh2", 156, 110, 36, -90, 90)),
+      sorotkan("tengah,", "lh1", "lh2"),
+      tambah("setiap", garis("c2", 104, 110, 92, 0, W.biru, 2.2, { putus: true, z: 3 })),
+      redamkan("lagi.", "lh1", "lh2"),
     ),
     k(
       SUARA_D3,
-      tambah(idx(SUARA_D3, "Potong"), garisPotong("gp2", 96, 86, 108, 0)),
-      hapus(idx(SUARA_D3, "empat"), ...idBagian("bo", 2, true)),
-      tambah(idx(SUARA_D3, "empat"), ...BO_EMPAT),
+      hapus(0, "lh1", "lh2", "c2", "n2"),
+      tambah("Empat", teks("n4", 150, 60, "4 regu", 10, W.merah)),
+      tambah("regu", ...regu("r1", 115, 176, WR[0]), ...regu("r2", 167, 176, WR[1]), ...regu("r3", 219, 176, WR[2]), ...regu("r4", 271, 176, WR[3])),
+      tambah("satu", teks("n1", 150, 78, "1 potong", 10, W.merah)),
+      tambah("potong", irisLabu("p1", 100, 125, 30, 270, 360), irisLabu("p2", 152, 125, 30, 270, 360), irisLabu("p3", 204, 125, 30, 270, 360), irisLabu("p4", 256, 125, 30, 270, 360)),
+      tambah("labu", ...label("e1", 115, 142, "seperempat", 7), ...label("e2", 167, 142, "seperempat", 7), ...label("e3", 219, 142, "seperempat", 7), ...label("e4", 271, 142, "seperempat", 7)),
     ),
-    k(SUARA_D4, tambah(idx(SUARA_D4, "Setiap"), ...labelBagian(BO_EMPAT, "1/4", 11))),
-    k(SUARA_D5, sorotkan(idx(SUARA_D5, "Setengah"), "pc-bo-1", "pc-bo-3"), tambah(idx(SUARA_D5, "Jadi"), emo("pn", 62, 90, "\u{1F449}", 20))),
   ],
 };
 
-/* ------------------------------ 8. Banyak cara membagi persegi ------------------------------ */
-const C_A = bagianKotak("a", 14, 48, 80, 80, "empat");
-const C_B = bagianKotak("b", 110, 48, 80, 80, "diag4");
-const C_C = bagianKotak("c", 206, 48, 80, 80, "jalur4");
-const C_UTUH = [bagianKotak("a", 14, 48, 80, 80, "utuh"), bagianKotak("b", 110, 48, 80, 80, "utuh"), bagianKotak("c", 206, 48, 80, 80, "utuh")];
+/* ------------------------------ 5. Hubungan ------------------------------ */
+const SUARA_H1 = "Dika menyusun potongan labu kembali. Dua seperempat disatukan menjadi satu setengah.";
+const SUARA_H2 = "Empat seperempat disatukan menjadi satu labu utuh.";
+const SUARA_H3 = "Jadi satu utuh sama dengan dua setengah dan juga empat seperempat.";
 
-const SUARA_B1 = "Satu persegi bisa dipotong dengan banyak cara. Kita lihat tiga cara.";
-const SUARA_B2 = "Cara pertama, satu garis tegak dan satu garis mendatar. Hasilnya empat persegi kecil.";
-const SUARA_B3 = "Cara kedua, dua garis miring dari sudut ke sudut. Hasilnya empat segitiga.";
-const SUARA_B4 = "Cara ketiga, tiga garis tegak. Hasilnya empat jalur panjang.";
-const SUARA_B5 = "Bentuknya berbeda, tetapi tiap bagian sama besar. Jadi semuanya seperempat.";
-
-export const ADEGAN_BANYAK_CARA: AdeganStory = {
-  id: "banyak-cara",
-  judul: "Banyak cara membagi persegi",
-  sumber: "Materi: banyak cara empat bagian",
-  latar: "#F0FDFA",
+export const ADEGAN_HUBUNGAN: AdeganStory = {
+  id: "hubungan",
+  judul: "Utuh, setengah, seperempat",
+  sumber: "Materi: hubungan utuh, setengah, seperempat",
+  latar: "#FEF3C7",
   ketukan: [
-    k(SUARA_B1, tambah(0, judul("Banyak cara")), tambah(idx(SUARA_B1, "persegi"), ...C_UTUH.flat())),
     k(
-      SUARA_B2,
-      tambah(idx(SUARA_B2, "garis"), garisPotong("gp-a1", 54, 48, 0, 80), garisPotong("gp-a2", 14, 88, 80, 0)),
-      hapus(idx(SUARA_B2, "empat"), ...idBagian("a", 1)),
-      tambah(idx(SUARA_B2, "empat"), ...C_A),
-      tambah(idx(SUARA_B2, "persegi"), ...kartu("cp0", 14, 140, 80, 24, W.hijauMuda, ["empat persegi"], 8.6)),
+      SUARA_H1,
+      bersih(0),
+      tambah(0, judul("Menyusun Kembali"), rumput("rm")),
+      tambah("Dika", ...tokoh("dk", 40, 176, "Dika")),
+      tambah("potongan", irisLabu("a1", 120, 92, 34, 270, 360), irisLabu("a2", 120, 128, 34, 0, 90)),
+      tambah("Dua", teks("n2", 60, 64, "2 seperempat", 10, W.merah)),
+      ubah("disatukan", { id: "a1", x: 140, y: 110 }, { id: "a2", x: 140, y: 110 }),
+      tambah("menjadi", teks("sm", 150, 64, "=", 14, W.ungu)),
+      tambah("satu@2", teks("n1", 240, 64, "1 setengah", 10, W.hijau)),
     ),
     k(
-      SUARA_B3,
-      tambah(idx(SUARA_B3, "garis"), garisPotong("gp-b1", 110, 48, 80, 80), garisPotong("gp-b2", 190, 48, -80, 80)),
-      hapus(idx(SUARA_B3, "empat"), ...idBagian("b", 1)),
-      tambah(idx(SUARA_B3, "empat"), ...C_B),
-      tambah(idx(SUARA_B3, "segitiga."), ...kartu("cp1", 110, 140, 80, 24, W.pink, ["empat segitiga"], 8.6)),
+      SUARA_H2,
+      hapus(0, "a1", "a2", "n2", "n1", "sm"),
+      tambah("Empat", teks("n4", 70, 64, "4 seperempat", 10, W.merah)),
+      tambah("seperempat", irisLabu("b1", 162, 98, 32, 270, 360), irisLabu("b2", 162, 122, 32, 0, 90), irisLabu("b3", 138, 122, 32, 90, 180), irisLabu("b4", 138, 98, 32, 180, 270)),
+      ubah("disatukan", { id: "b1", x: 150, y: 110 }, { id: "b2", x: 150, y: 110 }, { id: "b3", x: 150, y: 110 }, { id: "b4", x: 150, y: 110 }),
+      tambah("menjadi", teks("sm", 150, 64, "=", 14, W.ungu)),
+      tambah("satu@2", teks("n1", 240, 64, "1 utuh", 10, W.hijau)),
+      sorotkan("utuh.", "b1", "b2", "b3", "b4"),
     ),
     k(
-      SUARA_B4,
-      tambah(idx(SUARA_B4, "garis"), garisPotong("gp-c1", 226, 48, 0, 80), garisPotong("gp-c2", 246, 48, 0, 80), garisPotong("gp-c3", 266, 48, 0, 80)),
-      hapus(idx(SUARA_B4, "empat"), ...idBagian("c", 1)),
-      tambah(idx(SUARA_B4, "empat"), ...C_C),
-      tambah(idx(SUARA_B4, "panjang."), ...kartu("cp2", 206, 140, 80, 24, W.langit, ["empat jalur"], 8.6)),
+      SUARA_H3,
+      bersih(0),
+      tambah(0, judul("Utuh, Setengah, Seperempat"), ...papanCatat("pc", 40, 34, 220, 112), ...tokoh("dk", 40, 178, "Dika")),
+      tambah("utuh", teks("r1", 150, 68, "1 utuh", 11, W.biru)),
+      tambah("dua", teks("r2", 150, 96, "= 2 setengah", 11, W.hijau)),
+      tambah("empat", teks("r3", 150, 124, "= 4 seperempat", 11, W.merah)),
+      tambah("seperempat.", emo("ok", 250, 176, E.benar, 22)),
     ),
-    k(SUARA_B5, tambah(idx(SUARA_B5, "sama"), ...labelBagian(C_A, "1/4", 7), ...labelBagian(C_B, "1/4", 7), ...labelBagian(C_C, "1/4", 7)), tambah(idx(SUARA_B5, "semuanya"), emo("ok", 150, 188, "✅", 22))),
   ],
 };
 
-/* ------------------------------ 9. Dua seperempat ------------------------------ */
-const PU = bagianLingkaran("pu", 150, 98, 56, [90, 90, 90, 90]);
+/* ------------------------------ 6. Lipat ------------------------------ */
+const SUARA_P1 = "Nia melipat kertas persegi dua kali, tegak lalu mendatar, dan terbentuk empat persegi kecil.";
+const SUARA_P2 = "Ia melipat kertas yang lain dua kali dari pojok ke pojok, dan terbentuk empat segitiga.";
+const SUARA_P3 = "Bentuknya berbeda, tetapi keempat bagian sama besar, jadi masing-masing seperempat.";
 
-const SUARA_Q1 = "Ini puding yang sudah dipotong menjadi empat bagian yang sama besar.";
-const SUARA_Q2 = "Ambil satu bagian puding. Bagian itu sama besar dengan tiga bagian lainnya, yaitu seperempat puding.";
-const SUARA_Q3 = "Ambil satu bagian lagi di sebelahnya. Sekarang ada dua seperempat.";
-const SUARA_Q4 = "Dua seperempat puding disatukan menjadi satu bagian yang besarnya setengah puding.";
-const SUARA_Q5 = "Dua seperempat yang lain juga sama besar dengan setengah.";
-
-export const ADEGAN_DUA_SEPEREMPAT: AdeganStory = {
-  id: "dua-seperempat",
-  judul: "Dua seperempat",
-  sumber: "Materi: dua seperempat jadi setengah",
-  latar: "#FAF5FF",
+export const ADEGAN_LIPAT: AdeganStory = {
+  id: "lipat",
+  judul: "Melipat kertas dua kali",
+  sumber: "Materi: melipat kertas jadi empat",
+  latar: "#F0F9FF",
   ketukan: [
-    k(SUARA_Q1, tambah(0, judul("Satu puding")), tambah(idx(SUARA_Q1, "puding"), ...PU)),
-    k(SUARA_Q2, sorotkan(idx(SUARA_Q2, "satu"), "pc-pu-1"), tambah(idx(SUARA_Q2, "itu"), ...labelBagian([PU[0]], "1/4", 11))),
-    k(SUARA_Q3, sorotkan(idx(SUARA_Q3, "lagi"), "pc-pu-2"), tambah(idx(SUARA_Q3, "Sekarang"), ...labelBagian([PU[1]], "1/4", 11))),
-    k(SUARA_Q4, tambah(idx(SUARA_Q4, "disatukan"), ...kartu("sm", 30, 168, 240, 22, W.krem, ["dua seperempat sama dengan setengah"], 9))),
     k(
-      SUARA_Q5,
-      redamkan(0, "pc-pu-1", "pc-pu-2"),
-      sorotkan(idx(SUARA_Q5, "lain"), "pc-pu-3", "pc-pu-4"),
-      tambah(idx(SUARA_Q5, "lain"), ...labelBagian([PU[2], PU[3]], "1/4", 11).map((o, i) => ({ ...o, id: `lb-pu-${i + 3}` }))),
+      SUARA_P1,
+      bersih(0),
+      tambah(0, judul("Melipat Kertas")),
+      tambah("Nia", ...tokoh("ni", 150, 180, "Nia")),
+      tambah("kertas", kertas("kp1", 30, 50, 90)),
+      tambah("dua", teks("n2", 75, 42, "2 kali", 10, W.merah)),
+      tambah("tegak", garis("g1", 75, 50, 0, 90, W.biru, 2, { putus: true, z: 2 })),
+      tambah("mendatar,", garis("g2", 30, 95, 90, 0, W.biru, 2, { putus: true, z: 2 })),
+      tambah("empat", teks("n4", 75, 158, "4 persegi", 10, W.merah)),
+    ),
+    k(
+      SUARA_P2,
+      tambah("kertas", kertas("kp2", 180, 50, 90)),
+      tambah("dua", teks("n3", 225, 42, "2 kali", 10, W.merah)),
+      tambah("pojok", garis("d1", 180, 50, 90, 90, WK.tali, 2, { putus: true, z: 2 })),
+      tambah("pojok@2", garis("d2", 270, 50, -90, 90, WK.tali, 2, { putus: true, z: 2 })),
+      tambah("segitiga.", teks("n5", 225, 158, "4 segitiga", 10, W.merah)),
+    ),
+    k(
+      SUARA_P3,
+      hapus(0, "n4", "n5"),
+      tambah("keempat", poligon("w1", [[31, 51], [74, 51], [74, 94], [31, 94]], W.emas, W.biru, { z: 1 }), poligon("w2", [[225, 95], [182, 52], [268, 52]], W.hijauMuda, W.biru, { z: 1 })),
+      sorotkan("sama", "w1", "w2"),
+      tambah("masing-masing", ...label("l1", 75, 158, "seperempat", 7), ...label("l2", 225, 158, "seperempat", 7)),
+      redamkan("seperempat.", "w1", "w2"),
     ),
   ],
 };

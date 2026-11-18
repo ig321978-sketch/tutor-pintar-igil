@@ -2,7 +2,6 @@
 // Jalankan: node --no-warnings scripts/uji-skenario-umum.mjs
 import { awalSk, adeganSk, langkahSk, opsiHitung, semuaKetuk, ceritaSk } from "../src/components/modul/skenario-umum.ts";
 import { SKENARIO_BAB1, SKENARIO_BAB2, SKENARIO_BAB3, SKENARIO_BAB4, SKENARIO_BAB6, SKENARIO_BAB7 } from "../src/components/modul/skenario-kelas1.ts";
-import { SKENARIO_K2B5A, SKENARIO_K2B5B, SKENARIO_K2B5C } from "../src/components/modul/skenario-k2b5.ts";
 import { SKENARIO_K2B6B } from "../src/components/modul/skenario-k2b6.ts";
 import { SKENARIO_K2B7B } from "../src/components/modul/skenario-k2b7.ts";
 import { SKENARIO_K2B8B } from "../src/components/modul/skenario-k2b8.ts";
@@ -51,9 +50,6 @@ const SEMUA = [
   ["Bab 4", SKENARIO_BAB4, 10],
   ["Bab 6", SKENARIO_BAB6, 20],
   ["Bab 7", SKENARIO_BAB7, 20],
-  ["K2 Bab 5A", SKENARIO_K2B5A, 20],
-  ["K2 Bab 5B", SKENARIO_K2B5B, 20],
-  ["K2 Bab 5C", SKENARIO_K2B5C, 20],
   ["K2 Bab 6B", SKENARIO_K2B6B, 20],
   ["K2 Bab 7B", SKENARIO_K2B7B, 100],
   ["K2 Bab 8B", SKENARIO_K2B8B, 20],

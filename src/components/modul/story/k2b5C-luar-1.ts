@@ -1,139 +1,169 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { OWL, W, bagianKotak, bagianLingkaran, bulat, emo, idBagian, judul, kartu, kotak, labelBagian, panah, teks } from "./k2b5C-gambar";
-import { bersih, hapus, idx, k, pilihKata, sorotkan, tambah } from "./k2b5C-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, WR, emo, garis, irisan, judul, kartu, kertas, kotak, labu, label, panah, petak, regu, rumput, tali, teks, tokoh } from "./k2b5C-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k2b5C-bantu";
 
-export const NAMA_METODE_ID = ["Seperempat", "Setengah dari Setengah", "Lipat Dua Kali"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/*
+ * Cerita orisinal IGIL "Panen Raya Pak Joko" (Kelas 2 Bab 5 Sub-Bab C), video metode global.
+ * Naskah suara dari naskah/story-naskah-k2b5c.md. Bagian ini: pembuka (tiga kartu tua pemilik kebun), Halving Twice (Belah Dua Kali), dan terapannya.
+ */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Halving Twice", "Fraction Wall", "Fold and Shade"] as const;
+export const NAMA_METODE_ID = ["Belah Dua Kali", "Dinding Pecahan", "Lipat dan Warnai"] as const;
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const PO = bagianLingkaran("po", 150, 108, 50, [90, 90, 90, 90]);
+const MELON = "#BEF264";
+const MELON_G = "#4D7C0F";
 
-const SUARA_O1 = "Guru di banyak negara punya cara lain untuk mengajarkan seperempat. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu bernama Seperempat, Setengah dari Setengah, dan satu lagi, Lipat Dua Kali.";
-const SUARA_O3 = "Semua metode menjawab satu pertanyaan. Bagaimana cara mendapat seperempat dari benda utuh?";
-const SUARA_O4 = "Kita memakai benda di layar. Kamu cukup mengetuk, menyeret, dan melihat dengan teliti.";
-const SUARA_O5 = "Seperempat selalu satu dari empat bagian sama besar. Siap? Ayo kita mulai dengan metode pertama.";
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Di balik labu besar, Dika menemukan tiga kartu tua milik pemilik kebun dahulu.";
+const SUARA_O2 = "Pak Joko berkata, itu cara pemilik kebun membagi tanah supaya adil dan tidak ada yang iri!";
+const SUARA_O3 = "Tiga cara itu: Halving Twice, Fraction Wall, dan Fold and Shade.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Belah Dua Kali, Dinding Pecahan, dan Lipat dan Warnai.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk seperempat",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Tiga kartu tua pemilik kebun",
+  sumber: "Metode global: pembuka",
+  latar: "#F7FEE7",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)), tambah("tiga", ...kartu("pk", 50, 142, 200, 32, W.emas, ["3 metode dari luar"], 11))),
+    k(
+      SUARA_O1,
+      tambah(0, judul("Kartu Tua Pemilik Kebun"), rumput("rm")),
+      tambah("labu", ...labu("lb", 62, 148, 26)),
+      tambah("Dika", ...tokoh("dk", 120, 178, "Dika")),
+      tambah("tiga", teks("n3", 200, 64, "3 kartu", 10, W.ungu)),
+      tambah("kartu", ...[0, 1, 2].flatMap((i) => kartu(`c${i}`, 150 + i * 46, 78, 40, 34, W.krem, ["kartu"], 8))),
+      ubah("dahulu.", ...[0, 1, 2].map((i) => ({ id: `c${i}-k`, warna: "#FDE68A" }))),
+    ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      tambah(idx(SUARA_O2, "Seperempat,"), ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah(idx(SUARA_O2, "Setengah"), ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "Lipat"), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      tambah("Pak", ...tokoh("pj", 262, 178, "Pak Joko")),
+      sorotkan("cara", "c0-k", "c1-k", "c2-k"),
+      tambah("membagi", ...petak("pt", 30, 40, 36), tali("t1", 48, 40, 0, 36)),
+      tambah("adil", emo("ok", 230, 150, E.benar, 22)),
+      tambah("iri!", emo("sn", 268, 150, E.senyum, 22)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah("satu", emo("i1", 60, 84, "\u{1F355}", 34), emo("i2", 150, 84, "❓", 34), emo("i3", 240, 84, "\u{1F440}", 34)),
-      tambah("Bagaimana", ...kartu("iq", 20, 112, 260, 52, W.emas, ["bagaimana cara mendapat", "seperempat dari benda utuh?"], 10)),
+      tambah(0, judul("Tiga Cara Pemilik Kebun")),
+      tambah("Tiga", teks("n3", 250, 40, "3 cara", 10, W.ungu)),
+      tambah("Halving", teks("m0", 100, 66, "1. Halving Twice", 13, W.biru), emo("i0", 246, 68, E.gunting, 22)),
+      tambah("Fraction", teks("m1", 100, 112, "2. Fraction Wall", 13, W.biru), kotak("i1", 226, 98, 40, 7, WR[0], W.biru, { rx: 1, tebal: 1.2 }), kotak("i1b", 226, 105, 20, 7, WR[1], W.biru, { rx: 1, tebal: 1.2 }), kotak("i1c", 246, 105, 20, 7, WR[1], W.biru, { rx: 1, tebal: 1.2 })),
+      tambah("Fold", teks("m2", 100, 158, "3. Fold and Shade", 13, W.biru), kertas("i2", 234, 144, 24, "#FEF08A"), garis("i2g", 246, 144, 0, 24, W.biru, 1.2, { putus: true })),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Alat bantu hari ini")),
-      tambah("benda", bulat("al0", 70, 96, 18, W.oranye), kotak("al1", 132, 78, 36, 36, W.langit, W.biru, { rx: 5, tebal: 2 }), emo("al2", 230, 104, "\u{1F355}", 34)),
-      tambah("mengetuk,", emo("tg", 160, 140, "\u{1F446}", 22)),
-      tambah("melihat", teks("al-t", 150, 178, "benda di layar", 10, W.ungu)),
-    ),
-    k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Seperempat")),
-      tambah(idx(SUARA_O5, "empat"), ...PO),
-      sorotkan(idx(SUARA_O5, "satu"), "pc-po-1"),
-      tambah(idx(SUARA_O5, "pertama."), emo("ow", 252, 40, OWL, 28)),
+      tambah("Belah", teks("q0", 222, 82, "Belah Dua Kali", 10, W.ungu)),
+      tambah("Dua", teks("q0b", 222, 94, "2 kali", 8, W.merah)),
+      tambah("Dinding", teks("q1", 222, 128, "Dinding Pecahan", 10, W.ungu)),
+      tambah("Lipat", teks("q2", 222, 174, "Lipat dan Warnai", 10, W.ungu)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Seperempat: konsep ------------------------------ */
-const PZ_UTUH = bagianLingkaran("pz", 150, 104, 46, [360]);
-const PZ_EMPAT = bagianLingkaran("pz", 150, 104, 46, [90, 90, 90, 90]);
+/* ------------------------------ Halving Twice: konsep ------------------------------ */
+const SUARA_C1 = "Cara pertama, Halving Twice, atau Belah Dua Kali. Namanya berarti membelah dua kali.";
+const SUARA_C2 = "Belah benda menjadi dua bagian sama besar, lalu belah lagi setiap bagiannya menjadi dua.";
+const SUARA_C3 = "Hasilnya empat bagian sama besar, dan setiap bagian seperempat.";
+const SUARA_C4 = "Periksa setiap langkah, apakah dua bagian itu sama besar, sebelum membelah lagi?";
 
-const SUARA_V1 = "Metode pertama bernama Seperempat. Kita mulai dari satu pizza yang utuh.";
-const SUARA_V2 = "Bagi pizza menjadi empat bagian yang sama besar.";
-const SUARA_V3 = "Pastikan keempat bagian sama besar, sebab bagian yang berbeda ukuran bukan seperempat.";
-const SUARA_V4 = "Satu bagian pizza itu adalah seperempat pizza.";
-const SUARA_V5 = "Itulah intinya, bagi menjadi empat bagian sama.";
-
-export const ADEGAN_LUAR_SEPEREMPAT: AdeganStory = {
-  id: "luar-seperempat",
-  judul: "Seperempat: bagi menjadi empat sama",
-  sumber: "Metode luar: Seperempat",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(SUARA_V1, tambah(0, ...kepala(0)), tambah(idx(SUARA_V1, "pizza"), ...PZ_UTUH), tambah(idx(SUARA_V1, "utuh."), ...labelBagian(PZ_UTUH, "utuh", 10))),
-    k(SUARA_V2, hapus(idx(SUARA_V2, "empat"), ...idBagian("pz", 1, true)), tambah(idx(SUARA_V2, "empat"), ...PZ_EMPAT)),
-    k(SUARA_V3, tambah(idx(SUARA_V3, "Pastikan"), emo("ok", 150, 174, "✅", 24))),
-    k(SUARA_V4, hapus(0, "ok"), sorotkan(idx(SUARA_V4, "Satu"), "pc-pz-1"), tambah(idx(SUARA_V4, "pizza"), ...labelBagian([PZ_EMPAT[0]], "1/4", 11))),
-    k(SUARA_V5, tambah(idx(SUARA_V5, "intinya,"), ...kartu("in", 40, 162, 220, 24, W.krem, ["bagi jadi empat bagian sama"], 9.6))),
-  ],
-};
-
-/* ------------------------------ 3. Seperempat: terapan ------------------------------ */
-const BP = bagianKotak("bp", 90, 58, 120, 56, "jalur4");
-
-const SUARA_W1 = "Terapkan pada soal ini. Malosi punya kue bolu panjang yang dibagi empat bagian sama besar.";
-const SUARA_W2 = "Satu bagian kue bolu disebut apa? Ketuk jawaban yang tepat.";
-const SUARA_W3 = "Lihat dengan teliti. Satu dari empat bagian yang sama besar.";
-const SUARA_W4 = "Betul! Satu bagian itu seperempat. Hebat!";
-
-export const ADEGAN_LUAR_SEPEREMPAT_TERAPAN: AdeganStory = {
-  id: "luar-seperempat-terapan",
-  judul: "Seperempat: kue bolu panjang",
-  sumber: "Metode luar: Seperempat",
-  latar: "#ECFCCB",
-  ketukan: [
-    k(SUARA_W1, tambah(0, ...kepala(0)), tambah(idx(SUARA_W1, "bolu"), ...BP)),
-    k(SUARA_W2, sorotkan(idx(SUARA_W2, "Satu"), "pc-bp-1"), tambah(idx(SUARA_W2, "tepat."), ...pilihKata(150, ["seperempat", "utuh", "setengah"], 11))),
-    k(SUARA_W3, tambah(idx(SUARA_W3, "Satu"), panah("pw", 110, 134, 0, -14))),
-    k(SUARA_W4, hapus(0, "pw"), sorotkan(idx(SUARA_W4, "Betul!"), "c1-k"), tambah(idx(SUARA_W4, "Hebat!"), emo("ok", 262, 90, "✅", 22))),
-  ],
-};
-
-/* ------------------------------ 8. Ringkasan metode luar ------------------------------ */
-const R_A = bagianLingkaran("a", 44, 80, 15, [90, 90, 90, 90]);
-const R_B = bagianLingkaran("b", 44, 120, 15, [90, 90, 90, 90]);
-const R_C = bagianKotak("c", 29, 145, 30, 30, "empat");
-
-const SUARA_R1 = "Mari kita ringkas tiga metode dari luar. Semuanya membantu kita mendapat seperempat.";
-const SUARA_R2 = "Metode Seperempat, bagi menjadi empat bagian sama.";
-const SUARA_R3 = "Metode Setengah dari Setengah, seperempat adalah setengah dari setengah.";
-const SUARA_R4 = "Metode Lipat Dua Kali, lipat dua kali menghasilkan seperempat.";
-const SUARA_R5 = "Pilih metode yang kamu suka, lalu periksa dengan metode lain. Hasilnya harus sama.";
-
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Metode luar: ringkasan",
+export const ADEGAN_LUAR_BELAH: AdeganStory = {
+  id: "luar-belah",
+  judul: "Halving Twice: Belah Dua Kali",
+  sumber: "Metode global: Halving Twice (konsep)",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_R1, tambah(0, judul("Ringkasan")), tambah(idx(SUARA_R1, "ringkas"), ...kartu("r0", 14, 28, 272, 26, W.emas, ["3 metode dari luar"], 11))),
-    k(SUARA_R2, tambah(idx(SUARA_R2, "Seperempat,"), ...kartu("r1", 80, 62, 206, 36, WARNA_METODE[0], [NAMA_METODE_ID[0], "bagi jadi empat bagian sama"], 9)), tambah(idx(SUARA_R2, "empat"), ...R_A)),
     k(
-      SUARA_R3,
-      tambah(idx(SUARA_R3, "Setengah"), ...kartu("r2", 80, 102, 206, 36, WARNA_METODE[1], [NAMA_METODE_ID[1], "seperempat: setengah dari setengah"], 8.6)),
-      tambah(idx(SUARA_R3, "seperempat"), ...R_B),
-      sorotkan(idx(SUARA_R3, "seperempat"), "pc-b-1"),
+      SUARA_C1,
+      bersih(0),
+      tambah(0, judul("Cara Pertama")),
+      tambah("Halving", ...kartu("nm", 50, 34, 200, 26, W.krem, ["Halving Twice"], 13)),
+      tambah("Belah", teks("nid", 150, 88, "Belah Dua Kali", 12, W.ungu)),
+      tambah("Dua", teks("d2", 150, 114, "2 kali", 12, W.merah)),
+      tambah("membelah", emo("gt", 150, 160, E.gunting, 28)),
     ),
     k(
-      SUARA_R4,
-      tambah(idx(SUARA_R4, "Lipat"), ...kartu("r3", 80, 142, 206, 36, WARNA_METODE[2], [NAMA_METODE_ID[2], "lipat dua kali jadi seperempat"], 9)),
-      tambah(idx(SUARA_R4, "menghasilkan"), ...R_C),
-      sorotkan(idx(SUARA_R4, "seperempat."), "pc-c-1"),
+      SUARA_C2,
+      bersih(0),
+      tambah(0, judul("Belah, Lalu Belah Lagi")),
+      tambah("benda", kotak("b1", 30, 40, 80, 80, MELON, MELON_G, { rx: 2, tebal: 2 })),
+      tambah("dua", tali("a1", 70, 40, 0, 80), teks("n2", 70, 138, "2 bagian", 10, W.merah)),
+      tambah("lalu", panah("pn", 118, 80, 44, 0, W.ungu, 2.4)),
+      tambah("belah@2", kotak("b2", 170, 40, 80, 80, MELON, MELON_G, { rx: 2, tebal: 2 }), tali("a2", 210, 40, 0, 80)),
+      tambah("setiap", tali("a3", 170, 80, 80, 0)),
+      tambah("dua@2", teks("n3", 210, 138, "2 lagi", 10, W.merah)),
     ),
-    k(SUARA_R5, bersih(0), tambah(0, judul("Hasilnya harus sama"), emo("rw", 150, 100, OWL, 54)), tambah(idx(SUARA_R5, "sama."), emo("rk", 150, 160, "✅", 30))),
+    k(
+      SUARA_C3,
+      bersih(0),
+      tambah(0, judul("Empat Bagian Sama Besar"), kotak("b3", 100, 40, 100, 100, MELON, MELON_G, { rx: 2, tebal: 2 })),
+      tambah("empat", teks("n4", 250, 80, "4 bagian", 10, W.merah)),
+      tambah("sama", tali("v1", 150, 40, 0, 100), tali("v2", 100, 90, 100, 0)),
+      tambah("seperempat.", ...label("q1", 125, 65, "seperempat", 7), ...label("q2", 175, 65, "seperempat", 7), ...label("q3", 125, 115, "seperempat", 7), ...label("q4", 175, 115, "seperempat", 7)),
+    ),
+    k(
+      SUARA_C4,
+      bersih(0),
+      tambah(0, judul("Periksa Setiap Langkah")),
+      tambah("Periksa", emo("kc", 60, 80, E.kaca, 26)),
+      tambah("langkah,", kotak("b4", 100, 50, 100, 70, MELON, MELON_G, { rx: 2, tebal: 2 }), tali("c1", 150, 50, 0, 70)),
+      tambah("dua", teks("n2", 150, 140, "2 bagian", 10, W.merah)),
+      tambah("sama", emo("ok", 230, 90, E.benar, 26)),
+      tambah("membelah", panah("pb", 250, 60, 0, 40, W.ungu, 2.4)),
+      tambah("lagi?", emo("tq", 270, 110, E.tanya, 24)),
+    ),
+  ],
+};
+
+/* ------------------------------ Halving Twice: terapan ------------------------------ */
+const SUARA_T1 = "Chacha membelah melon menjadi dua, lalu membelah setiap belahan menjadi dua lagi.";
+const SUARA_T2 = "Empat potong melon sama besar, dan setiap regu mendapat satu potong untuk dimakan.";
+const SUARA_T3 = "Cocok kalau bendanya bisa dipotong dan kita ingin memeriksa tiap langkah dengan teliti.";
+const SUARA_T4 = "Kurang cocok kalau belahan pertama sudah tidak sama besar, karena kesalahannya terbawa ke belahan kedua.";
+
+export const ADEGAN_LUAR_BELAH_TERAPAN: AdeganStory = {
+  id: "luar-belah-terapan",
+  judul: "Chacha membelah melon",
+  sumber: "Metode global: Halving Twice (terapan)",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_T1,
+      bersih(0),
+      tambah(0, judul("Membelah Melon"), rumput("rm")),
+      tambah("Chacha", ...tokoh("ch", 40, 178, "Chacha")),
+      tambah("melon", irisan("ml", 150, 100, 40, 0, 360, MELON, MELON_G)),
+      hapus("dua,", "ml"),
+      tambah("dua,", irisan("m1", 144, 100, 40, 90, 270, MELON, MELON_G), irisan("m2", 156, 100, 40, -90, 90, MELON, MELON_G), teks("n2", 250, 60, "2 bagian", 10, W.merah)),
+      tambah("setiap", garis("ct", 104, 100, 92, 0, W.biru, 2.2, { putus: true, z: 3 })),
+      tambah("dua@2", teks("n3", 250, 80, "2 lagi", 10, W.merah)),
+    ),
+    k(
+      SUARA_T2,
+      hapus(0, "m1", "m2", "ct", "n2", "n3"),
+      tambah("Empat", teks("n4", 150, 52, "4 potong", 10, W.merah)),
+      tambah("potong", irisan("p1", 100, 125, 30, 270, 360, MELON, MELON_G), irisan("p2", 152, 125, 30, 270, 360, MELON, MELON_G), irisan("p3", 204, 125, 30, 270, 360, MELON, MELON_G), irisan("p4", 256, 125, 30, 270, 360, MELON, MELON_G)),
+      tambah("regu", ...regu("r1", 115, 176, WR[0]), ...regu("r2", 167, 176, WR[1]), ...regu("r3", 219, 176, WR[2]), ...regu("r4", 271, 176, WR[3])),
+      tambah("satu", teks("n1", 150, 70, "1 potong", 10, W.merah)),
+      ubah("dimakan.", { id: "ch", isi: E.senyum }),
+    ),
+    k(
+      SUARA_T3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?"), ...kartu("cc", 90, 34, 120, 24, W.hijauMuda, ["Cocok"], 12)),
+      tambah("dipotong", emo("gt", 80, 110, E.gunting, 28)),
+      tambah("memeriksa", emo("kc", 150, 110, E.kaca, 28)),
+      tambah("langkah", ...[0, 1].map((i) => kotak(`s${i}`, 190 + i * 40, 80, 30, 30, MELON, MELON_G, { rx: 2, tebal: 1.8 }))),
+      tambah("teliti.", emo("ok", 150, 160, E.benar, 28)),
+    ),
+    k(
+      SUARA_T4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?"), ...kartu("kc", 80, 34, 140, 24, W.merahMuda, ["Kurang cocok"], 12)),
+      tambah("belahan", kotak("b1", 90, 76, 120, 70, MELON, MELON_G, { rx: 2, tebal: 2 }), tali("u1", 120, 76, 0, 70)),
+      tambah("tidak", emo("x1", 105, 168, E.salah, 20)),
+      tambah("kesalahannya", tali("u2", 90, 110, 120, 0), emo("x2", 165, 168, E.salah, 20)),
+      tambah("kedua.", emo("x3", 225, 168, E.salah, 20)),
+    ),
   ],
 };
