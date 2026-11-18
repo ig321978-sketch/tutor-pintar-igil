@@ -1,102 +1,135 @@
 import type { AdeganStory } from "./logika-story";
-import { W, judul, kartu, kurungSatuan, tanda, tata } from "./k2b4B-gambar";
-import { hapus, idx, k, munculItem, tambah } from "./k2b4B-bantu";
+import { E, M, W, bintang, bulat, dKurung, emo, idRantai, judul, kartu, kotak, kurung, lantai, lengkung, manik, rantai, teks, tokoh } from "./k2b4B-gambar";
+import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k2b4B-bantu";
 
-const T6 = tata(6, 20, 12);
-const CY1 = 56;
-const CY2 = 134;
+/*
+ * Cerita orisinal IGIL "Pita Hias Bu Mira" (Kelas 2 Bab 4 Sub-Bab B, pola), akhir cerita Pameran Kerajinan Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b4b.md. Bagian ini: cari satuan pola, pola bentuk dan warna, dan bukan pola.
+ */
 
-/* ------------------------------ 4. Pola bentuk ------------------------------ */
-export const BENTUK_SATU = ["bunga", "persegi", "bunga", "persegi", "bunga", "persegi"];
-export const BENTUK_DUA = ["hati", "hati", "segitiga", "segitiga", "hati", "hati", "segitiga", "segitiga"];
-const T8 = tata(8, 20, 6);
-const SUARA_B1 = "Pola bisa dibuat dari bentuk. Kita menyebutnya pola bentuk.";
-const SUARA_B2 = "Baris pertama: bunga, persegi, bunga, persegi, bunga, persegi.";
-const SUARA_B3 = "Satuannya bunga dan persegi. Satuannya terdiri dari dua benda.";
-const SUARA_B4 = "Baris kedua: hati, hati, segitiga, segitiga, hati, hati, segitiga, segitiga.";
-const SUARA_B5 = "Satuannya hati, hati, segitiga, dan segitiga. Satuannya terdiri dari empat benda.";
+/* ------------------------------ 4. Cari satuan ------------------------------ */
+const SUARA_4A = "Dika mengajarkan caranya. Cari dulu susunan yang muncul lagi dari awal.";
+const SUARA_4B = "Itu satuan polanya. Lanjutkan dengan urutan yang sama, lalu periksa dari awal.";
+const SUARA_4C = "Manik biru dipasang, dan pita jingga, jingga, biru pun tersambung rapi.";
+const J8 = [M.jingga, M.jingga, M.biru, M.jingga, M.jingga, M.biru, M.jingga, M.jingga];
+const XR = (i: number) => 26 + i * 29;
+
+export const ADEGAN_CARI_SATUAN: AdeganStory = {
+  id: "cari-satuan",
+  judul: "Dika mencari satuan pola",
+  sumber: "Materi: cari satuan dan periksa",
+  latar: "#F5F3FF",
+  ketukan: [
+    k(
+      SUARA_4A,
+      bersih(0),
+      tambah(0, judul("Cari Satuan"), ...rantai("r", XR(0), 62, J8), ...tokoh("dk", 244, 156, "Dika")),
+      tambah(idx(SUARA_4A, "susunan"), kurung("kr", XR(0) - 13, 78, XR(1) - XR(0) + 26)),
+      ubah(idx(SUARA_4A, "muncul"), { id: "kr", d: dKurung(XR(2) - XR(0) + 26) }),
+      tambah(idx(SUARA_4A, "lagi"), lengkung("lg", XR(0) - 13, 44, XR(3) - XR(0))),
+      sorotkan(idx(SUARA_4A, "awal."), "r0"),
+    ),
+    k(
+      SUARA_4B,
+      sorotkan(idx(SUARA_4B, "satuan"), "kr"),
+      tambah(idx(SUARA_4B, "satuan"), kotak("cat", 14, 98, 176, 60, "#FFFFFF", "#7C3AED", { rx: 6, tebal: 2, z: 0 }), teks("cl1", 102, 118, "1. Cari satuan", 9.6, W.biru, { z: 2 })),
+      tambah(idx(SUARA_4B, "Lanjutkan"), teks("cl2", 102, 135, "2. Ulangi urutan", 9.6, W.biru, { z: 2 })),
+      tambah(idx(SUARA_4B, "periksa"), teks("cl3", 102, 152, "3. Periksa dari awal", 9.6, W.biru, { z: 2 })),
+    ),
+    k(
+      SUARA_4C,
+      tambah(idx(SUARA_4C, "Manik"), manik("mb", 236, 126, 11, M.biru, { z: 4 })),
+      ubah(idx(SUARA_4C, "dipasang,"), { id: "mb", x: XR(8), y: 62 }),
+      tambah(idx(SUARA_4C, "pita"), emo("ok", XR(8), 38, E.benar, 18)),
+      sorotkan(idx(SUARA_4C, "tersambung"), ...idRantai("r", 8).slice(1), "mb"),
+      tambah(idx(SUARA_4C, "rapi."), emo("kl", 140, 40, E.kilau, 18)),
+    ),
+  ],
+};
+
+/* ------------------------------ 5. Pola bentuk dan pola warna ------------------------------ */
+const SUARA_5A = "Bu Mira menunjukkan lembar hiasan berpola bentuk: bintang, bulat, bintang, bulat.";
+const SUARA_5B = "Lembar lain berpola daun, daun, bunga, daun, daun, bunga.";
+const SUARA_5C = "Pola bisa berasal dari bentuk atau warna. Tinggal lihat apa yang berulang dan teratur.";
+const XH = (i: number) => 34 + i * 30;
 
 export const ADEGAN_POLA_BENTUK: AdeganStory = {
   id: "pola-bentuk",
-  judul: "Pola bentuk",
-  sumber: "Materi: pola bentuk",
-  latar: "#FDF2F8",
+  judul: "Pola bentuk dan pola warna",
+  sumber: "Materi: pola bentuk dan warna",
+  latar: "#FEFCE8",
   ketukan: [
-    k(SUARA_B1, tambah(0, judul("Pola bentuk")), tambah(idx(SUARA_B1, "menyebutnya"), ...kartu("pk", 50, 80, 200, 44, W.pink, ["bentuk yang", "berulang teratur"], 10.4))),
-    k(SUARA_B2, hapus(0, "pk-k", "pk-t0", "pk-t1"), ...munculItem(SUARA_B2, "ba", BENTUK_SATU, T6, CY1)),
-    k(SUARA_B3, tambah(idx(SUARA_B3, "Satuannya"), kurungSatuan("ba", 0, 2, T6, CY1))),
-    k(SUARA_B4, ...munculItem(SUARA_B4, "bb", BENTUK_DUA, T8, CY2)),
-    k(SUARA_B5, tambah(idx(SUARA_B5, "Satuannya"), kurungSatuan("bb", 0, 4, T8, CY2))),
+    k(
+      SUARA_5A,
+      bersih(0),
+      tambah(0, judul("Lembar Hiasan")),
+      tambah(idx(SUARA_5A, "Bu"), ...tokoh("bm", 262, 156, "Bu Mira")),
+      tambah(idx(SUARA_5A, "lembar"), kotak("lh1", 14, 28, 200, 46, "#FFFBEB", "#B45309", { rx: 6, tebal: 2, z: 0 })),
+      tambah(idx(SUARA_5A, "bintang,"), bintang("s0", XH(0), 51, 11, M.kuning, { z: 2 })),
+      tambah(idx(SUARA_5A, "bulat,"), bulat("s1", XH(1), 51, 9, M.biru, W.biru, { z: 2 })),
+      tambah(idx(SUARA_5A, "bintang,", 2), bintang("s2", XH(2), 51, 11, M.kuning, { z: 2 })),
+      tambah(idx(SUARA_5A, "bulat.", 1), bulat("s3", XH(3), 51, 9, M.biru, W.biru, { z: 2 }), ...kartu("lb1", 14, 138, 92, 24, W.krem, ["pola bentuk"], 9.6)),
+    ),
+    k(
+      SUARA_5B,
+      tambah(idx(SUARA_5B, "Lembar"), kotak("lh2", 14, 84, 200, 46, "#F0FDF4", "#15803D", { rx: 6, tebal: 2, z: 0 })),
+      tambah(idx(SUARA_5B, "daun,"), emo("d0", XH(0), 114, E.daun, 20, { z: 2 })),
+      tambah(idx(SUARA_5B, "daun,", 2), emo("d1", XH(1), 114, E.daun, 20, { z: 2 })),
+      tambah(idx(SUARA_5B, "bunga,"), emo("d2", XH(2), 114, E.bunga, 20, { z: 2 })),
+      tambah(idx(SUARA_5B, "daun,", 3), emo("d3", XH(3), 114, E.daun, 20, { z: 2 })),
+      tambah(idx(SUARA_5B, "daun,", 4), emo("d4", XH(4), 114, E.daun, 20, { z: 2 })),
+      tambah(idx(SUARA_5B, "bunga.", 1), emo("d5", XH(5), 114, E.bunga, 20, { z: 2 })),
+    ),
+    k(
+      SUARA_5C,
+      sorotkan(idx(SUARA_5C, "bentuk"), "lb1-k"),
+      tambah(idx(SUARA_5C, "warna."), ...kartu("lb2", 112, 138, 92, 24, W.hijauMuda, ["pola warna"], 9.6)),
+      tambah(idx(SUARA_5C, "berulang"), lengkung("lg0", XH(0), 100, 88), lengkung("lg1", XH(3), 100, 60)),
+      tambah(idx(SUARA_5C, "teratur."), emo("ok", 230, 112, E.benar, 18)),
+    ),
   ],
 };
 
-/* ------------------------------ 5. Pola warna ------------------------------ */
-export const WARNA_SATU = ["kuning", "hijau", "kuning", "hijau", "kuning", "hijau"];
-export const WARNA_DUA = ["merah", "kuning", "biru", "merah", "kuning", "biru"];
-const SUARA_W1 = "Pola juga bisa dibuat dari warna. Kita menyebutnya pola warna.";
-const SUARA_W2 = "Baris pertama: kuning, hijau, kuning, hijau, kuning, hijau.";
-const SUARA_W3 = "Baris kedua: merah, kuning, biru, merah, kuning, biru.";
-const SUARA_W4 = "Satuan baris pertama terdiri dari dua benda. Satuan baris kedua terdiri dari tiga benda.";
-const SUARA_W5 = "Warnanya berganti dengan teratur, jadi kedua baris ini adalah pola.";
+/* ------------------------------ 6. Bukan pola ------------------------------ */
+const SUARA_6A = "Nia menyusun manik sesuka hati: merah, biru, biru, merah, biru, merah. Ia mengira itu pola.";
+const SUARA_6B = "Bu Mira bertanya. Adakah satuan yang berulang dan teratur? Dika memeriksa dan tidak menemukannya. Ini bukan pola.";
+const SUARA_6C = "Barisan yang semuanya sama juga bukan pola, karena tidak ada unsur berbeda yang diulang.";
+const ACAK = [M.merah, M.biru, M.biru, M.merah, M.biru, M.merah];
 
-export const ADEGAN_POLA_WARNA: AdeganStory = {
-  id: "pola-warna",
-  judul: "Pola warna",
-  sumber: "Materi: pola warna",
-  latar: "#ECFDF5",
+export const ADEGAN_BUKAN_POLA: AdeganStory = {
+  id: "bukan-pola",
+  judul: "Susunan yang bukan pola",
+  sumber: "Materi: bukan pola",
+  latar: "#FFF1F2",
   ketukan: [
-    k(SUARA_W1, tambah(0, judul("Pola warna")), tambah(idx(SUARA_W1, "menyebutnya"), ...kartu("pk", 50, 80, 200, 44, W.hijauMuda, ["warna yang", "berulang teratur"], 10.4))),
-    k(SUARA_W2, hapus(0, "pk-k", "pk-t0", "pk-t1"), ...munculItem(SUARA_W2, "ba", WARNA_SATU, T6, CY1)),
-    k(SUARA_W3, ...munculItem(SUARA_W3, "bb", WARNA_DUA, T6, CY2)),
-    k(SUARA_W4, tambah(idx(SUARA_W4, "pertama"), kurungSatuan("ba", 0, 2, T6, CY1)), tambah(idx(SUARA_W4, "kedua"), kurungSatuan("bb", 0, 3, T6, CY2))),
-    k(SUARA_W5, tambah(idx(SUARA_W5, "kedua"), tanda("ba", true, CY1), tanda("bb", true, CY2))),
-  ],
-};
-
-/* ------------------------------ 6. Pola gerakan ------------------------------ */
-export const GERAK_SATU = ["membungkuk", "berdiri", "membungkuk", "berdiri", "membungkuk", "berdiri"];
-export const GERAK_DUA = ["berdiri", "berdiri", "naik", "berdiri", "berdiri", "naik"];
-const T6G = tata(6, 22, 12);
-const SUARA_G1 = "Gerakan juga bisa berpola. Perhatikan anak-anak yang bergerak.";
-const SUARA_G2 = "Anak-anak membungkuk, berdiri, membungkuk, berdiri, membungkuk, berdiri.";
-const SUARA_G3 = "Satuannya membungkuk dan berdiri. Itu pola gerakan.";
-const SUARA_G4 = "Gerakan yang lain: berdiri, berdiri, tangan naik, berdiri, berdiri, tangan naik.";
-const SUARA_G5 = "Satuannya berdiri, berdiri, dan tangan naik. Satuannya terdiri dari tiga gerakan.";
-
-export const ADEGAN_POLA_GERAKAN: AdeganStory = {
-  id: "pola-gerakan",
-  judul: "Pola gerakan",
-  sumber: "Materi: pola gerakan",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_G1, tambah(0, judul("Pola gerakan")), tambah(idx(SUARA_G1, "Perhatikan"), ...kartu("pk", 50, 80, 200, 44, W.langit, ["gerakan yang", "berulang teratur"], 10.4))),
-    k(SUARA_G2, hapus(0, "pk-k", "pk-t0", "pk-t1"), ...munculItem(SUARA_G2, "ba", GERAK_SATU, T6G, CY1)),
-    k(SUARA_G3, tambah(idx(SUARA_G3, "Satuannya"), kurungSatuan("ba", 0, 2, T6G, CY1))),
-    k(SUARA_G4, ...munculItem(SUARA_G4, "bb", GERAK_DUA, T6G, CY2)),
-    k(SUARA_G5, tambah(idx(SUARA_G5, "Satuannya"), kurungSatuan("bb", 0, 3, T6G, CY2))),
-  ],
-};
-
-/* ------------------------------ 7. Pola suara ------------------------------ */
-export const SUARA_SATU = ["keras", "pelan", "keras", "pelan", "keras", "pelan"];
-export const SUARA_DUA = ["keras", "pelan", "diam", "keras", "pelan", "diam"];
-const T3 = tata(3, 24, 34);
-const SUARA_U1 = "Suara juga bisa berpola. Ada tepukan keras, pelan, dan diam.";
-const SUARA_U2 = "Perhatikan bunyinya: keras, pelan, keras, pelan, keras, pelan.";
-const SUARA_U3 = "Satuannya keras dan pelan. Itu pola suara.";
-const SUARA_U4 = "Ada pola suara yang lain: keras, pelan, diam, keras, pelan, diam.";
-const SUARA_U5 = "Satuannya keras, pelan, dan diam. Satuannya terdiri dari tiga bunyi.";
-
-export const ADEGAN_POLA_SUARA: AdeganStory = {
-  id: "pola-suara",
-  judul: "Pola suara",
-  sumber: "Materi: pola suara",
-  latar: "#FFFBEB",
-  ketukan: [
-    k(SUARA_U1, tambah(0, judul("Pola suara")), ...munculItem(SUARA_U1, "lg", ["keras", "pelan", "diam"], T3, 90)),
-    k(SUARA_U2, hapus(0, "lg_0_keras", "lg_1_pelan", "lg_2_diam"), ...munculItem(SUARA_U2, "ba", SUARA_SATU, T6, CY1)),
-    k(SUARA_U3, tambah(idx(SUARA_U3, "Satuannya"), kurungSatuan("ba", 0, 2, T6, CY1))),
-    k(SUARA_U4, ...munculItem(SUARA_U4, "bb", SUARA_DUA, T6, CY2)),
-    k(SUARA_U5, tambah(idx(SUARA_U5, "Satuannya"), kurungSatuan("bb", 0, 3, T6, CY2))),
+    k(
+      SUARA_6A,
+      bersih(0),
+      tambah(0, judul("Susunan Sesuka Hati"), lantai("lt", 150), ...tokoh("ni", 40, 164, "Nia")),
+      tambah(idx(SUARA_6A, "manik"), ...rantai("a", 30, 62, ACAK, 12, 34).slice(0, 1)),
+      ...ACAK.map((c, i) => tambah(5 + i, manik(`a${i}`, 30 + i * 34, 62, 12, c))),
+      tambah(idx(SUARA_6A, "mengira"), emo("pk", 80, 130, E.pikiran, 18)),
+      tambah(idx(SUARA_6A, "pola", 1), ...kartu("qp", 116, 104, 64, 24, W.krem, ["pola?"], 10)),
+      tambah(idx(SUARA_6A, "itu"), emo("sn", 232, 126, E.senyum, 20)),
+    ),
+    k(
+      SUARA_6B,
+      hapus(0, "sn", "pk", "qp-k", "qp-t0"),
+      tambah(idx(SUARA_6B, "Bu"), ...tokoh("bm", 262, 164, "Bu Mira")),
+      tambah(idx(SUARA_6B, "Adakah"), emo("qm", 120, 40, E.tanya, 18)),
+      tambah(idx(SUARA_6B, "Dika"), ...tokoh("dk", 160, 164, "Dika")),
+      tambah(idx(SUARA_6B, "memeriksa"), emo("kc", 214, 90, E.kaca, 20)),
+      tambah(idx(SUARA_6B, "tidak"), emo("no", 242, 64, E.salah, 20)),
+      tambah(idx(SUARA_6B, "bukan"), ...kartu("bp", 190, 112, 100, 26, W.merahMuda, ["bukan pola"], 11)),
+    ),
+    k(
+      SUARA_6C,
+      bersih(0),
+      tambah(0, judul("Semuanya Sama"), lantai("lt", 150), ...rantai("m", 30, 70, [M.merah, M.merah, M.merah, M.merah, M.merah, M.merah], 12, 34)),
+      sorotkan(idx(SUARA_6C, "sama"), ...idRantai("m", 6)),
+      tambah(idx(SUARA_6C, "bukan"), ...kartu("bp", 90, 112, 120, 28, W.merahMuda, ["bukan pola"], 12), emo("no", 244, 72, E.salah, 20)),
+      tambah(idx(SUARA_6C, "berbeda"), manik("bx", 256, 130, 12, M.biru, { z: 4 }), teks("ub", 256, 158, "unsur berbeda", 8, W.ungu)),
+      tambah(idx(SUARA_6C, "diulang."), emo("ul", 150, 44, E.ulang, 18)),
+    ),
   ],
 };

@@ -1,126 +1,137 @@
 import type { AdeganStory } from "./logika-story";
-import { W, anak, benda, bola, emo, judul, kartu, kotakBenda, panah } from "./k2b4A-gambar";
-import { idx, k, redamkan, sorotkan, tambah } from "./k2b4A-bantu";
+import { E, W, anakBelakang, emo, garis, judul, kartu, karya, lantai, letakKarya, meja, panah, papanCatat, rak, teks, tokoh } from "./k2b4A-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k2b4A-bantu";
 
-/** Enam anak berderet dari kiri ke kanan (urut baru dengan tokoh tetap). */
-export const URUT_BARIS = ["upe", "wei", "halim", "kira", "malosi", "igil"];
-export const X_BARIS = [30, 76, 122, 168, 214, 260];
-export const Y_BARIS = 90;
+/*
+ * Cerita orisinal IGIL "Rak Pameran Pak Hasan" (Kelas 2 Bab 4 Sub-Bab A), awal cerita Pameran Kerajinan Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b4a.md. Bagian ini: salah kanan (salah langkah), kanan dan kiri sesuai pembaca, kata berlawanan.
+ */
 
-/* ------------------------------ 7. Enam anak berderet ------------------------------ */
-const SUARA_B1 = "Enam anak berdiri berderet di taman. Dari kiri ke kanan: Upe, Wei, Halim, Kira, Malosi, dan Igil.";
-const SUARA_B2 = "Siapa yang ada di sebelah kanan Wei? Halim ada di sebelah kanan Wei.";
-const SUARA_B3 = "Siapa yang ada di sebelah kiri Malosi? Kira ada di sebelah kiri Malosi.";
-const SUARA_B4 = "Upe berdiri paling kiri. Tidak ada anak di sebelah kiri Upe.";
-const SUARA_B5 = "Igil berdiri paling kanan. Tidak ada anak di sebelah kanan Igil.";
+/* ------------------------------ 4. Salah kanan (salah langkah) ------------------------------ */
+const SUARA_S1 = "Kartu keempat berbunyi, wayang kertas di sebelah kanan guci. Chacha cepat-cepat menaruhnya di sebelah kiri guci.";
+const SUARA_S2 = "Dika menggeleng. Chacha, kanan dan kiri dihitung dari kita yang melihat, bukan dari gucinya!";
+const SUARA_S3 = "Wayang yang digeser tersangkut di topi Nia, sehingga Nia tampak bertanduk. Semua tertawa!";
 
-export const ADEGAN_BARIS_ANAK: AdeganStory = {
-  id: "baris-anak",
-  judul: "Enam anak berderet",
-  sumber: "Materi: kanan dan kiri siapa",
-  latar: "#F0FDF4",
+export const ADEGAN_SALAH_KANAN: AdeganStory = {
+  id: "salah-kanan",
+  judul: "Salah kanan",
+  sumber: "Materi: salah kanan (salah langkah)",
+  latar: "#FEFCE8",
   ketukan: [
     k(
-      SUARA_B1,
-      tambah(0, judul("Enam anak berderet")),
-      tambah(idx(SUARA_B1, "Upe,"), ...anak("upe", X_BARIS[0], Y_BARIS)),
-      tambah(idx(SUARA_B1, "Wei,"), ...anak("wei", X_BARIS[1], Y_BARIS)),
-      tambah(idx(SUARA_B1, "Halim,"), ...anak("halim", X_BARIS[2], Y_BARIS)),
-      tambah(idx(SUARA_B1, "Kira,"), ...anak("kira", X_BARIS[3], Y_BARIS)),
-      tambah(idx(SUARA_B1, "Malosi,"), ...anak("malosi", X_BARIS[4], Y_BARIS)),
-      tambah(idx(SUARA_B1, "Igil."), ...anak("igil", X_BARIS[5], Y_BARIS)),
+      SUARA_S1,
+      tambah(0, judul("Kanan atau Kiri?"), lantai("lt"), meja("mj", 80, 130, 140)),
+      tambah("Kartu", ...kartu("k4", 62, 28, 176, 22, W.krem, ["wayang kertas di sebelah kanan guci"], 7.6)),
+      tambah("kanan", teks("lk", 216, 104, "kanan", 10, W.hijau)),
+      tambah("guci.", karya("gc", "guci", 150, 119)),
+      tambah("Chacha", ...tokoh("ch", 30, 178, "Chacha")),
+      tambah("menaruhnya", karya("wy", "wayang", 60, 150)),
+      ubah("kiri", { id: "wy", ...letakKarya("wayang", 88, 119) }),
+      tambah("kiri", teks("lr", 88, 104, "kiri", 10, W.merah)),
     ),
     k(
-      SUARA_B2,
-      sorotkan(idx(SUARA_B2, "Wei?"), "ob-wei"),
-      tambah(idx(SUARA_B2, "Halim"), panah("pn", 84, 62, 34, 0)),
-      sorotkan(idx(SUARA_B2, "Halim"), "ob-halim"),
+      SUARA_S2,
+      hapus(0, "k4-k", "k4-t0"),
+      tambah("Dika", ...tokoh("dk", 266, 178, "Dika")),
+      tambah("menggeleng.", emo("sx", 88, 90, E.salah, 18)),
+      sorotkan("kanan", "lk"),
+      tambah("kita", emo("mt", 150, 64, E.mata, 26)),
+      sorotkan("gucinya!", "gc"),
     ),
     k(
-      SUARA_B3,
-      redamkan(0, "ob-wei", "ob-halim"),
-      sorotkan(idx(SUARA_B3, "Malosi?"), "ob-malosi"),
-      tambah(idx(SUARA_B3, "Kira"), panah("pm", 208, 62, -34, 0)),
-      sorotkan(idx(SUARA_B3, "Kira"), "ob-kira"),
-    ),
-    k(
-      SUARA_B4,
-      redamkan(0, "ob-malosi", "ob-kira"),
-      sorotkan(idx(SUARA_B4, "Upe"), "ob-upe"),
-      tambah(idx(SUARA_B4, "Tidak"), emo("x0", 9, 95, "❌", 14)),
-    ),
-    k(
-      SUARA_B5,
-      redamkan(0, "ob-upe"),
-      sorotkan(idx(SUARA_B5, "Igil"), "ob-igil"),
-      tambah(idx(SUARA_B5, "Tidak"), emo("x1", 291, 95, "❌", 14)),
+      SUARA_S3,
+      bersih(0),
+      tambah(0, judul("Bertanduk!"), lantai("lt"), ...tokoh("ni", 150, 172, "Nia")),
+      tambah("Wayang", karya("wy", "wayang", 60, 150)),
+      ubah("tersangkut", { id: "wy", ...letakKarya("wayang", 150, 126) }),
+      tambah("bertanduk.", garis("th1", 140, 146, -9, -12, W.coklat, 3), garis("th2", 160, 146, 9, -12, W.coklat, 3), teks("tt", 150, 100, "bertanduk", 10, W.merah)),
+      tambah("Semua", ...tokoh("ch", 40, 178, "Chacha"), ...tokoh("dk", 262, 178, "Dika")),
+      ubah("tertawa!", { id: "ch", isi: E.tertawa }, { id: "dk", isi: E.tertawa }),
     ),
   ],
 };
 
-/* ------------------------------ 8. Anak membelakangi kita ------------------------------ */
-const SUARA_M1 = "Sekarang Halim berdiri membelakangi kita. Kita hanya melihat punggungnya.";
-const SUARA_M2 = "Ayam ada di sebelah kiri Halim.";
-const SUARA_M3 = "Rumput ada di sebelah kanan Halim. Rumput berada di sisi kanan layar kita.";
-const SUARA_M4 = "Halim menghadap ke arah yang sama dengan kita. Jadi kanan dan kiri Halim sama dengan kanan dan kiri kita.";
-const SUARA_M5 = "Halim berkata, ayam di sebelah kiri saya. Kita setuju, sebab arah kita sama.";
-const HALIM_BK = anak("halim", 150, 108, true);
+/* ------------------------------ 5. Kanan dan kiri sesuai pembaca ------------------------------ */
+const SUARA_K1 = "Nia punya cara. Ia berdiri membelakangi kita, menghadap rak.";
+const SUARA_K2 = "Arahnya sama dengan kita, jadi kiri Nia sama dengan kiri kita, dan kanan Nia sama dengan kanan kita.";
+const SUARA_K3 = "Sekarang wayang kertas ada di sebelah kanan guci, tepat sesuai kartu.";
 
-export const ADEGAN_MEMBELAKANGI: AdeganStory = {
-  id: "membelakangi",
-  judul: "Anak membelakangi kita",
-  sumber: "Materi: anak membelakangi kita",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(
-      SUARA_M1,
-      tambah(0, judul("Halim membelakangi kita")),
-      tambah(idx(SUARA_M1, "Halim"), ...HALIM_BK.filter((o) => o.id !== "ob-halim-bk")),
-      tambah(idx(SUARA_M1, "punggungnya."), ...HALIM_BK.filter((o) => o.id === "ob-halim-bk")),
-    ),
-    k(SUARA_M2, tambah(idx(SUARA_M2, "Ayam"), benda("ayam", 56, 120, 36)), sorotkan(idx(SUARA_M2, "kiri"), "ob-ayam")),
-    k(SUARA_M3, redamkan(0, "ob-ayam"), tambah(idx(SUARA_M3, "Rumput"), benda("rumput", 244, 120, 36)), sorotkan(idx(SUARA_M3, "kanan"), "ob-rumput")),
-    k(
-      SUARA_M4,
-      redamkan(0, "ob-rumput"),
-      tambah(idx(SUARA_M4, "arah"), ...kartu("hd", 196, 34, 96, 24, W.krem, ["arah hadap sama"], 9)),
-      sorotkan(idx(SUARA_M4, "kiri"), "ob-ayam"),
-      redamkan(idx(SUARA_M4, "kita", 2), "ob-ayam"),
-      sorotkan(idx(SUARA_M4, "kita", 2), "ob-rumput"),
-    ),
-    k(
-      SUARA_M5,
-      redamkan(0, "ob-rumput"),
-      tambah(idx(SUARA_M5, "ayam"), ...kartu("uc", 14, 34, 120, 24, W.putih, ["ayam di kiri saya"], 9)),
-      sorotkan(idx(SUARA_M5, "kiri"), "ob-ayam"),
-      tambah(idx(SUARA_M5, "setuju,"), emo("ok", 262, 190, "✅", 22)),
-    ),
-  ],
-};
-
-/* ------------------------------ 9. Tiga bagian kalimat posisi ------------------------------ */
-const SUARA_Q1 = "Kalimat posisi punya tiga bagian. Kita pakai contoh bola dan kotak.";
-const SUARA_Q2 = "Bagian pertama adalah benda yang diceritakan, yaitu bola.";
-const SUARA_Q3 = "Bagian kedua adalah kata posisi, yaitu di atas.";
-const SUARA_Q4 = "Bagian ketiga adalah benda acuan, yaitu kotak. Jadi bola ada di atas kotak.";
-const SUARA_Q5 = "Dengan tiga bagian ini, kalimat posisimu jelas dan mudah dipahami.";
-
-export const ADEGAN_KALIMAT: AdeganStory = {
-  id: "kalimat-posisi",
-  judul: "Tiga bagian kalimat posisi",
-  sumber: "Materi: tiga bagian kalimat posisi",
+export const ADEGAN_KANAN_KIRI: AdeganStory = {
+  id: "kanan-kiri",
+  judul: "Kanan dan kiri sesuai pembaca",
+  sumber: "Materi: kanan dan kiri sesuai pembaca",
   latar: "#F0F9FF",
   ketukan: [
-    k(SUARA_Q1, tambah(0, judul("Kalimat posisi")), tambah(idx(SUARA_Q1, "bola"), bola(150, 110, 13)), tambah(idx(SUARA_Q1, "kotak."), kotakBenda(150, 152, 64, 36))),
-    k(SUARA_Q2, tambah(idx(SUARA_Q2, "pertama"), ...kartu("kb0", 8, 30, 90, 44, W.hijauMuda, ["bola", "benda yang", "diceritakan"], 9)), sorotkan(idx(SUARA_Q2, "bola."), "ob-bola")),
-    k(SUARA_Q3, redamkan(0, "ob-bola"), tambah(idx(SUARA_Q3, "kedua"), ...kartu("kb1", 105, 30, 90, 44, W.pink, ["di atas", "kata", "posisi"], 9))),
     k(
-      SUARA_Q4,
-      tambah(idx(SUARA_Q4, "ketiga"), ...kartu("kb2", 202, 30, 90, 44, W.langit, ["kotak", "benda", "acuan"], 9)),
-      sorotkan(idx(SUARA_Q4, "kotak."), "ob-kotak"),
-      redamkan(idx(SUARA_Q4, "Jadi"), "ob-kotak"),
-      tambah(idx(SUARA_Q4, "Jadi"), ...kartu("kal0", 80, 176, 140, 22, W.krem, ["bola di atas kotak"], 9)),
+      SUARA_K1,
+      tambah(0, judul("Kanan dan Kiri"), lantai("lt")),
+      tambah("Nia", ...anakBelakang("nb", 150, 146)),
+      tambah("kita,", emo("mk", 272, 126, E.mata, 24)),
+      tambah("menghadap", panah("hd", 150, 134, 0, -22, W.ungu, 3)),
+      tambah("rak.", ...rak("rk", 84, 52, 132, 82), karya("gc", "guci", 110, 41), karya("wy", "wayang", 190, 41)),
     ),
-    k(SUARA_Q5, sorotkan(idx(SUARA_Q5, "tiga"), "kb0-k", "kb1-k", "kb2-k")),
+    k(
+      SUARA_K2,
+      tambah("Arahnya", panah("ak", 262, 150, 0, -18, W.ungu, 2.6)),
+      tambah("kiri", teks("kl", 108, 156, "kiri", 10, W.hijau)),
+      tambah("kiri@2", teks("kl2", 36, 150, "kiri kita", 10, W.hijau)),
+      tambah("kanan", teks("kn", 192, 156, "kanan", 10, W.merah)),
+      tambah("kanan@2", teks("kn2", 258, 124, "kanan kita", 10, W.merah)),
+    ),
+    k(
+      SUARA_K3,
+      bersih(0),
+      tambah(0, judul("Sesuai Kartu"), lantai("lt"), meja("mj", 80, 130, 140)),
+      tambah("wayang", karya("wy", "wayang", 214, 119)),
+      tambah("kanan", teks("lk", 214, 104, "kanan", 10, W.hijau)),
+      tambah("guci,", karya("gc", "guci", 150, 119)),
+      tambah("tepat", emo("ok", 214, 152, E.benar, 20)),
+      tambah("kartu.", ...kartu("k4", 62, 28, 176, 22, W.krem, ["wayang kertas di sebelah kanan guci"], 7.6)),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. Kata berlawanan ------------------------------ */
+const SUARA_L1 = "Dika menulis tiga pasang kata berlawanan: atas dengan bawah, depan dengan belakang, kanan dengan kiri.";
+const SUARA_L2 = "Kalau wayang di sebelah kanan guci, berarti guci ada di sebelah kiri wayang.";
+const SUARA_L3 = "Kata lawan membantu kita memeriksa.";
+
+export const ADEGAN_BERLAWANAN: AdeganStory = {
+  id: "berlawanan",
+  judul: "Kata berlawanan",
+  sumber: "Materi: kata berlawanan",
+  latar: "#FDF2F8",
+  ketukan: [
+    k(
+      SUARA_L1,
+      tambah(0, judul("Kata Berlawanan"), ...papanCatat("pc", 40, 30, 220, 116)),
+      tambah("Dika", ...tokoh("dk", 36, 178, "Dika")),
+      tambah("tiga", teks("n3", 150, 50, "3 pasang", 11, W.merah)),
+      tambah("atas", teks("p1a", 92, 78, "atas", 11)),
+      tambah("bawah,", teks("p1b", 208, 78, "bawah", 11), panah("a1", 120, 74, 56, 0, W.ungu, 2.2), panah("b1", 176, 80, -56, 0, W.ungu, 2.2)),
+      tambah("depan", teks("p2a", 92, 104, "depan", 11)),
+      tambah("belakang,", teks("p2b", 208, 104, "belakang", 11), panah("a2", 120, 100, 56, 0, W.ungu, 2.2), panah("b2", 176, 106, -56, 0, W.ungu, 2.2)),
+      tambah("kanan", teks("p3a", 92, 130, "kanan", 11)),
+      tambah("kiri.", teks("p3b", 208, 130, "kiri", 11), panah("a3", 120, 126, 56, 0, W.ungu, 2.2), panah("b3", 176, 132, -56, 0, W.ungu, 2.2)),
+    ),
+    k(
+      SUARA_L2,
+      bersih(0),
+      tambah(0, judul("Kanan lalu Kiri"), lantai("lt"), meja("mj", 80, 130, 140)),
+      tambah("wayang", karya("wy", "wayang", 214, 119)),
+      tambah("kanan", teks("lk", 214, 104, "kanan", 10, W.hijau)),
+      tambah("guci,", karya("gc", "guci", 150, 119)),
+      tambah("berarti", panah("pk", 196, 148, -40, 0, W.ungu, 2.6)),
+      tambah("kiri", teks("lr", 150, 104, "kiri", 10, W.merah)),
+      sorotkan("wayang.@2", "wy"),
+    ),
+    k(
+      SUARA_L3,
+      hapus(0, "lk", "lr"),
+      tambah("kata", panah("pb", 168, 156, 30, 0, W.ungu, 2.6)),
+      tambah("membantu", ...tokoh("ch", 40, 178, "Chacha")),
+      ubah("memeriksa.", { id: "ch", isi: E.senyum }),
+      tambah("memeriksa.", emo("ok", 214, 152, E.benar, 20), emo("ok2", 150, 152, E.benar, 20)),
+    ),
   ],
 };
