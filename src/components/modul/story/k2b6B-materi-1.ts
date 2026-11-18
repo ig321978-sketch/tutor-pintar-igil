@@ -1,119 +1,166 @@
 import type { AdeganStory } from "./logika-story";
-import { BAGIAN, EMO_BAGIAN, JAM_BESAR, JAM_KIRI, JAM_TIGA, W, angkaJam, digital, emo, jarumPanjang, jarumPendek, jam, judul, kolomBagian, kartu, mukaJam, pita, porosJam, teks } from "./k2b6B-gambar";
-import { hapus, idx, k, putarJam, sorotkan, tambah, ubah, ubahDigital } from "./k2b6B-bantu";
+import {
+  E,
+  W,
+  barisAnak,
+  emo,
+  garis,
+  jam,
+  judul,
+  kartu,
+  lapangan,
+  langitLatar,
+  matahari,
+  panah,
+  peluit,
+  setJam,
+  spanduk,
+  teks,
+  tiangBendera,
+  tokoh,
+  type PosisiJam,
+} from "./k2b6B-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k2b6B-bantu";
 
-/* ------------------------------ 2. Bagian-bagian jam ------------------------------ */
-const SUARA_A1 = "Lihat jam di layar ini. Jam milik Igil membantu kita mengetahui waktu sepanjang hari.";
-const SUARA_A2 = "Jam ini punya angka satu sampai dua belas. Angka itu tersusun melingkar.";
-const SUARA_A3 = "Ada dua jarum pada jam. Jarum yang pendek menunjukkan jam.";
-const SUARA_A4 = "Jarum yang panjang menunjukkan menit pada jam.";
-const SUARA_A5 = "Jarum pendek di angka lima dan jarum panjang di angka dua belas. Jadi jam ini menunjukkan pukul lima tepat.";
+/*
+ * Cerita orisinal IGIL "Jadwal Lomba Bu Ratna" (Kelas 2 Bab 6 Sub-Bab B, waktu dan jam), akhir cerita Hari Olahraga Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b6b.md. Bagian ini: jam di lapangan, salah membaca jarum, pukul tepat.
+ */
 
-export const ADEGAN_BAGIAN_JAM: AdeganStory = {
-  id: "bagian-jam",
-  judul: "Bagian-bagian jam analog",
-  sumber: "Materi: bagian-bagian jam",
-  latar: "#FFF7ED",
+/** Jam dinding besar di tiang lapangan (adegan pertama). */
+const JAM_TIANG: PosisiJam = { cx: 228, cy: 66, r: 32 };
+
+/* ------------------------------ 1. Jam lapangan ------------------------------ */
+const SUARA_J1 = "Hari Olahraga tiba! Bu Ratna, juru acara, menggantung jam besar di tiang lapangan.";
+const SUARA_J2 = "Bu Sari berkata, jam menolong kita tahu kapan lomba mulai. Kalau terlambat, lomba bertabrakan!";
+const SUARA_J3 = "Bu Ratna memberi peluit kepada Chacha. Kamu yang meniup peluit tepat waktu, ya!";
+
+export const ADEGAN_JAM_LAPANGAN: AdeganStory = {
+  id: "jam-lapangan",
+  judul: "Jam besar di tiang lapangan",
+  sumber: "Materi: jam besar di lapangan",
+  latar: "#F0F9FF",
   ketukan: [
-    k(SUARA_A1, tambah(0, judul("Bagian-bagian jam")), tambah(idx(SUARA_A1, "jam", 1), mukaJam("j1", JAM_BESAR), porosJam("j1", JAM_BESAR))),
-    k(SUARA_A2, tambah(idx(SUARA_A2, "angka"), angkaJam("j1", JAM_BESAR))),
-    k(SUARA_A3, tambah(idx(SUARA_A3, "pendek"), jarumPendek("j1", JAM_BESAR, 5, 0)), tambah(idx(SUARA_A3, "menunjukkan"), ...pita("zz", "jarum pendek: jam", W.langit))),
-    k(SUARA_A4, tambah(idx(SUARA_A4, "panjang"), jarumPanjang("j1", JAM_BESAR, 0)), hapus(idx(SUARA_A4, "menunjukkan"), "zz-k", "zz-t0"), tambah(idx(SUARA_A4, "menunjukkan"), ...pita("zy", "jarum panjang: menit", W.merahMuda))),
     k(
-      SUARA_A5,
-      sorotkan(idx(SUARA_A5, "pendek"), "j1-p"),
-      sorotkan(idx(SUARA_A5, "panjang"), "j1-m"),
-      hapus(idx(SUARA_A5, "Jadi"), "zy-k", "zy-t0"),
-      tambah(idx(SUARA_A5, "pukul"), ...pita("zx", "pukul 5 tepat", W.emas)),
+      SUARA_J1,
+      bersih(0),
+      tambah(0, judul("Hari Olahraga"), langitLatar("lg", 150, "#E0F2FE"), ...lapangan("rm")),
+      tambah("Olahraga", ...spanduk("sp", 14, 34, 130, "HARI OLAHRAGA", 10)),
+      tambah("Ratna,", ...tokoh("br", 50, 172, "Bu Ratna")),
+      tambah("menggantung", garis("tg", 228, 150, 0, -52, "#6B7280", 3)),
+      tambah("jam", ...jam("j", JAM_TIANG, 6, 0, false)),
+      sorotkan("tiang", "j-w"),
+    ),
+    k(
+      SUARA_J2,
+      ubah(0, { id: "j-w", sorot: false }),
+      tambah("Sari", ...tokoh("bs", 110, 172, "Bu Sari")),
+      sorotkan("menolong", "j-w"),
+      tambah("lomba", panah("pa", 30, 104, 40, 0, W.merah, 2.6), panah("pb", 160, 104, -40, 0, W.biru, 2.6)),
+      ubah("terlambat,", { id: "j-w", sorot: false }),
+      tambah("bertabrakan!", emo("sr", 100, 100, E.seru, 24), ...kartu("tb", 36, 56, 128, 22, W.merahMuda, ["Lomba bertabrakan"], 9)),
+    ),
+    k(
+      SUARA_J3,
+      hapus(0, "tb-k", "tb-t0", "sr", "pa", "pb"),
+      tambah("peluit", ...peluit("pl", 74, 160)),
+      tambah("Chacha.", ...tokoh("ch", 170, 172, "Chacha")),
+      ubah("meniup", { id: "pl", x: 160, y: 166 }, { id: "pl-c", x: 150, y: 164 }),
+      sorotkan("tepat", "ch"),
+      tambah("waktu,", emo("ok", 215, 150, E.benar, 20)),
+    ),
+  ],
+};
+
+/* ------------------------------ 2. Salah jarum ------------------------------ */
+const SUARA_S1 = "Jarum panjang menunjuk angka dua belas! Chacha meniup peluit, berteriak, sekarang pukul dua belas!";
+const SUARA_S2 = "Dika menggeleng. Lihat jarum pendeknya, Chacha. Jarum pendek di angka enam, jadi pukul enam.";
+const SUARA_S3 = "Matahari baru terbit, dan penjaga sekolah yang mengantuk jatuh dari kursinya!";
+
+export const ADEGAN_SALAH_JARUM: AdeganStory = {
+  id: "salah-jarum",
+  judul: "Chacha salah membaca jam",
+  sumber: "Materi: salah membaca jarum",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_S1,
+      bersih(0),
+      tambah(0, judul("Jam Pukul Berapa?"), langitLatar("lg", 150, "#FEF3C7"), ...lapangan("rm")),
+      tambah("Jarum", ...jam("j", { cx: 150, cy: 100, r: 52 }, 6, 0)),
+      sorotkan("panjang", "j-m"),
+      tambah("Chacha", ...tokoh("ch", 40, 172, "Chacha")),
+      tambah("meniup", ...peluit("pl", 62, 160)),
+      tambah("berteriak,", garis("s1", 74, 150, 10, -6, W.merah, 2), garis("s2", 74, 156, 12, 0, W.merah, 2), garis("s3", 74, 162, 10, 6, W.merah, 2)),
+      tambah("sekarang", ...kartu("pq", 214, 34, 80, 22, W.merahMuda, ["pukul 12?"], 10)),
+    ),
+    k(
+      SUARA_S2,
+      ubah(0, { id: "j-m", sorot: false }),
+      tambah("Dika", ...tokoh("dk", 260, 172, "Dika")),
+      tambah("menggeleng.", emo("x1", 262, 128, E.salah, 22)),
+      sorotkan("pendeknya,", "j-p"),
+      ubah("enam,", { id: "pq-t0", isi: "pukul 6!" }, { id: "pq-k", warna: W.hijauMuda }),
+      hapus("jadi", "x1"),
+      tambah("enam@2", emo("ok", 262, 128, E.benar, 22)),
+    ),
+    k(
+      SUARA_S3,
+      ubah(0, { id: "j-p", sorot: false }),
+      tambah("Matahari", ...matahari("mt", 36, 48, 13)),
+      ubah("terbit,", { id: "lg", warna: "#FEF9C3" }),
+      tambah("penjaga", emo("pj", 206, 170, E.penjaga, 26), emo("kr", 228, 172, E.kursi, 20)),
+      tambah("mengantuk", emo("tz", 214, 142, E.tidur, 18)),
+      ubah("jatuh", { id: "pj", x: 192, y: 186, rot: 80 }),
+      tambah("kursinya!", emo("ks", 250, 140, E.kaget, 20)),
     ),
   ],
 };
 
 /* ------------------------------ 3. Pukul tepat ------------------------------ */
-const SUARA_B1 = "Malosi melihat jam di layar. Kalau jarum panjang di angka dua belas, kita baca jamnya dari jarum pendek.";
-const SUARA_B2 = "Sekarang jarum pendek di angka enam. Jadi ini pukul enam tepat.";
-const SUARA_B3 = "Kita putar jamnya. Sekarang jarum pendek di angka tujuh, jadi ini pukul tujuh tepat.";
-const SUARA_B4 = "Kita putar lagi. Sekarang kedua jarum sama-sama di angka dua belas. Itu pukul dua belas tepat.";
-const SUARA_B5 = "Ingat, pada pukul tepat jarum panjang selalu di angka dua belas. Jarum pendeknya yang berganti-ganti.";
+const SUARA_P1 = "Jarum pendek menunjukkan jam, jarum panjang menunjukkan menit.";
+const SUARA_P2 = "Jarum panjang di angka dua belas berarti pukul tepat. Jarum pendek di angka tujuh, pukul tujuh tepat.";
+const SUARA_P3 = "Tepat pukul tujuh, bendera naik dan pembukaan dimulai.";
 
 export const ADEGAN_PUKUL_TEPAT: AdeganStory = {
   id: "pukul-tepat",
-  judul: "Membaca pukul tepat",
-  sumber: "Materi: membaca pukul tepat",
-  latar: "#F0FDF4",
+  judul: "Jarum panjang di dua belas, pukul tepat",
+  sumber: "Materi: pukul tepat",
+  latar: "#F5F3FF",
   ketukan: [
-    k(SUARA_B1, tambah(0, judul("Pukul tepat")), tambah(0, jam("j1", JAM_BESAR, 6, 0)), sorotkan(idx(SUARA_B1, "panjang"), "j1-m")),
-    k(SUARA_B2, sorotkan(idx(SUARA_B2, "pendek"), "j1-p"), ubah(idx(SUARA_B2, "pendek"), { id: "j1-m", sorot: false }), tambah(idx(SUARA_B2, "pukul"), ...pita("zz", "pukul 6 tepat", W.emas))),
-    k(SUARA_B3, putarJam(idx(SUARA_B3, "putar"), "j1", { h: 6, m: 0 }, { h: 7, m: 0 }), ubah(idx(SUARA_B3, "pukul"), { id: "zz-t0", isi: "pukul 7 tepat" })),
-    k(SUARA_B4, putarJam(idx(SUARA_B4, "putar"), "j1", { h: 7, m: 0 }, { h: 12, m: 0 }), ubah(idx(SUARA_B4, "pukul"), { id: "zz-t0", isi: "pukul 12 tepat" }), sorotkan(idx(SUARA_B4, "kedua"), "j1-m")),
-    k(SUARA_B5, ubah(idx(SUARA_B5, "panjang"), { id: "j1-m", sorot: true }), ubah(idx(SUARA_B5, "Jarum", 2), { id: "j1-p", sorot: true }, { id: "j1-m", sorot: false })),
-  ],
-};
-
-/* ------------------------------ 4. Jam digital ------------------------------ */
-const SUARA_C1 = "Upe punya jam lain yang disebut jam digital. Jam digital memakai angka, bukan jarum.";
-const SUARA_C2 = "Pukul lima tepat ditulis nol lima titik nol nol pada jam digital.";
-const SUARA_C3 = "Dua angka di depan titik untuk jam. Dua angka di belakang titik untuk menit.";
-const SUARA_C4 = "Sekarang jam menunjukkan pukul enam tepat. Jam digital menulis nol enam titik nol nol.";
-const SUARA_C5 = "Pukul dua belas tepat ditulis dua belas titik nol nol.";
-
-export const ADEGAN_JAM_DIGITAL: AdeganStory = {
-  id: "jam-digital",
-  judul: "Jam digital dan jam analog",
-  sumber: "Materi: jam digital",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_C1, tambah(0, judul("Jam digital")), tambah(0, jam("j1", JAM_KIRI, 5, 0)), tambah(idx(SUARA_C1, "digital", 2), digital(156, 84, 5, 0, 132))),
-    k(SUARA_C2, sorotkan(idx(SUARA_C2, "nol"), "dg-k"), sorotkan(idx(SUARA_C2, "tepat"), "j1-p")),
     k(
-      SUARA_C3,
-      ubah(0, { id: "dg-k", sorot: false }, { id: "j1-p", sorot: false }),
-      tambah(idx(SUARA_C3, "depan"), teks("dg-lj", 206, 140, "jam", 10, W.hijau)),
-      tambah(idx(SUARA_C3, "belakang"), teks("dg-lm", 240, 156, "menit", 10, W.merah)),
+      SUARA_P1,
+      bersih(0),
+      tambah(0, judul("Dua Jarum Jam"), ...jam("j", { cx: 150, cy: 112, r: 58 }, 10, 10)),
+      tambah("pendek", ...kartu("kp", 6, 52, 78, 22, W.lavender, ["jarum pendek"], 9), panah("ap", 84, 63, 36, 20, W.ungu, 2.2)),
+      sorotkan("pendek", "j-p"),
+      tambah("jam,", teks("tj", 45, 94, "= jam", 11, W.biru)),
+      tambah("panjang", ...kartu("kq", 216, 52, 78, 22, W.merahMuda, ["jarum panjang"], 9), panah("aq", 216, 63, -26, 14, W.merah, 2.2)),
+      ubah("panjang", { id: "j-p", sorot: false }),
+      sorotkan("panjang", "j-m"),
+      tambah("menit.", teks("tm", 255, 94, "= menit", 11, W.merah)),
     ),
-    k(SUARA_C4, putarJam(idx(SUARA_C4, "Sekarang"), "j1", { h: 5, m: 0 }, { h: 6, m: 0 }), ubahDigital(idx(SUARA_C4, "menulis"), 6, 0)),
-    k(SUARA_C5, putarJam(idx(SUARA_C5, "Pukul"), "j1", { h: 6, m: 0 }, { h: 12, m: 0 }), ubahDigital(idx(SUARA_C5, "dua", 2), 12, 0)),
-  ],
-};
-
-/* ------------------------------ 4b. Membaca tiga jam ------------------------------ */
-const SUARA_T1 = "Sekarang kita latihan membaca tiga buah jam. Lihat jam pertama, milik Upe.";
-const SUARA_T2 = "Jarum pendek di angka lima. Jarum panjang di angka dua belas. Jadi Upe bangun pukul lima pagi.";
-const SUARA_T3 = "Jam kedua milik Halim. Jarum pendek di angka dua dan jarum panjang di angka dua belas.";
-const SUARA_T4 = "Halim pulang pukul dua siang. Siang itu matahari masih tinggi.";
-const SUARA_T5 = "Jam ketiga milik Malosi. Jarum pendek di angka tujuh, jadi Malosi makan malam pukul tujuh malam.";
-
-export const ADEGAN_TIGA_JAM: AdeganStory = {
-  id: "tiga-jam",
-  judul: "Membaca tiga jam",
-  sumber: "Materi: membaca tiga jam",
-  latar: "#F0F9FF",
-  ketukan: [
-    k(SUARA_T1, tambah(0, judul("Tiga jam")), tambah(idx(SUARA_T1, "pertama,"), jam("j1", JAM_TIGA[0], 5, 0, false), teks("n1", 52, 152, "Upe", 11, W.ungu))),
-    k(SUARA_T2, sorotkan(idx(SUARA_T2, "pendek"), "j1-p"), sorotkan(idx(SUARA_T2, "panjang"), "j1-m"), ubah(idx(SUARA_T2, "Jadi"), { id: "j1-p", sorot: false }, { id: "j1-m", sorot: false })),
-    k(SUARA_T3, tambah(idx(SUARA_T3, "kedua"), jam("j2", JAM_TIGA[1], 2, 0, false), teks("n2", 150, 152, "Halim", 11, W.ungu))),
-    k(SUARA_T4, sorotkan(idx(SUARA_T4, "pulang"), "j2-p"), tambah(idx(SUARA_T4, "Siang", 2), emo("lg", 268, 40, EMO_BAGIAN.siang, 22, { z: 0 }))),
-    k(SUARA_T5, ubah(0, { id: "j2-p", sorot: false }), tambah(idx(SUARA_T5, "ketiga"), jam("j3", JAM_TIGA[2], 7, 0, false), teks("n3", 248, 152, "Malosi", 11, W.ungu)), hapus(idx(SUARA_T5, "ketiga"), "lg")),
-  ],
-};
-
-/* ------------------------------ 5. Empat bagian hari ------------------------------ */
-const SUARA_D1 = "Satu hari punya empat bagian. Mari kita kenali satu per satu.";
-const SUARA_D2 = "Bagian pertama adalah pagi. Matahari baru terbit.";
-const SUARA_D3 = "Bagian kedua adalah siang. Matahari ada di tempat yang paling tinggi.";
-const SUARA_D4 = "Bagian ketiga adalah sore. Matahari mulai turun.";
-const SUARA_D5 = "Bagian keempat adalah malam. Langit gelap dan kita beristirahat.";
-const NAMA_URUT = ["pertama", "kedua", "ketiga", "keempat"];
-
-export const ADEGAN_EMPAT_BAGIAN: AdeganStory = {
-  id: "empat-bagian",
-  judul: "Empat bagian hari",
-  sumber: "Materi: pagi, siang, sore, malam",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(SUARA_D1, tambah(0, judul("Satu hari")), tambah(idx(SUARA_D1, "empat"), ...kartu("zz", 30, 150, 240, 30, W.krem, ["pagi, siang, sore, malam"], 11))),
-    ...[SUARA_D2, SUARA_D3, SUARA_D4, SUARA_D5].map((s, j) =>
-      k(s, tambah(idx(s, NAMA_URUT[j]), kolomBagian(j, 86, 30)), tambah(idx(s, BAGIAN[j]), emo(`bge${j}`, 42 + j * 72, 74, EMO_BAGIAN[BAGIAN[j]], 30, { z: 1 }))),
+    k(
+      SUARA_P2,
+      ubah(0, { id: "j-m", sorot: false }),
+      hapus(0, "kp-k", "kp-t0", "ap", "tj", "kq-k", "kq-t0", "aq", "tm"),
+      ubah("dua", ...setJam("j", 10, 0)),
+      sorotkan("belas", "j-m"),
+      tambah("tepat.", ...kartu("pt", 6, 40, 86, 22, W.hijauMuda, ["pukul tepat"], 9)),
+      ubah("pendek", { id: "j-m", sorot: false }),
+      ubah("tujuh,", ...setJam("j", 7, 0)),
+      sorotkan("tujuh,", "j-p"),
+      tambah("tepat.@2", ...kartu("p7", 208, 40, 86, 22, W.krem, ["pukul 7 tepat"], 9)),
+    ),
+    k(
+      SUARA_P3,
+      bersih(0),
+      tambah(0, judul("Pembukaan Hari Olahraga"), langitLatar("lg", 150, "#E0F2FE"), ...lapangan("rm")),
+      tambah("Tepat", ...kartu("pj", 10, 30, 82, 22, W.krem, ["pukul 7"], 10)),
+      tambah("bendera", ...tiangBendera("tb", 150, 150, 100, 4)),
+      ubah("naik", { id: "tb-b", y: 52 }),
+      tambah("pembukaan", ...barisAnak("an", 72, 178, 6, 30)),
+      tambah("dimulai.", ...spanduk("sp", 188, 34, 100, "PEMBUKAAN", 10), emo("tp", 120, 168, E.tepuk, 16)),
     ),
   ],
 };

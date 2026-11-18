@@ -1,160 +1,271 @@
-import type { AdeganStory } from "./logika-story";
-import { W, deret, idBenda, idDeret, idPenunjuk, isiSisi, kartu, kerangka, labelSisi, penunjuk, spek, teks, ubahTimbang } from "./k2b6A-gambar";
-import { hapus, idKartu, idPilihan, idx, k, pilihKata, redamkan, sorotkan, tambah, ubah } from "./k2b6A-bantu";
-import { kepala } from "./k2b6A-luar-1";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, batang, bola, bulat, buah, emo, judul, kantong, kartu, keranjang, kotak, lapangan, neraca, panah, pindah, piringNeraca, raket, teks, tokoh } from "./k2b6A-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k2b6A-bantu";
+import { NAMA_METODE_ID } from "./k2b6A-luar-1";
 
-/** Balok mainan ke-`j` di piringan kanan saja. */
-const hanya = (sp: Parameters<typeof isiSisi>[0], j: number) => isiSisi(sp, "R").filter((o) => o.id.endsWith(`-${j}`));
+/*
+ * Cerita orisinal IGIL "Peralatan Lomba Pak Anton" (Kelas 2 Bab 6 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k2b6a.md. Bagian ini: Dot Balance (Neraca Titik), Heavy First (Berat di Dasar), dan ringkasan.
+ */
 
-/* ------------------------------ 5. Satuan Tak Baku Berat: konsep ------------------------------ */
-const X0 = spek(1, "timbangan", [], []);
-const Xa = spek(1, "timbangan", ["kotak"], []);
-const balok = (n: number) => spek(1, "timbangan", ["kotak"], n ? [["balok_mainan", n]] : []);
-const SUARA_X1 = "Metode kedua bernama Satuan Tak Baku Berat. Kita memakai benda acuan, yaitu balok mainan, untuk mengukur kotak.";
-const SUARA_X2 = "Langkah pertama, taruh benda yang diukur di piringan kiri. Di sini ada kotak.";
-const SUARA_X3 = "Langkah kedua, taruh balok mainan satu per satu di piringan kanan. Sekarang ada dua balok mainan, dan kotak masih lebih berat dari dua balok mainan.";
-const SUARA_X4 = "Langkah ketiga, tambah sampai sejajar, lalu hitung. Sekarang ada tiga balok mainan, dan kedua ujung sejajar.";
-const SUARA_X5 = "Jadi kotak sama berat dengan tiga balok mainan. Itulah hasil ukur dengan satuan tidak baku.";
-const BD_X = deret(["kotak", "balok_mainan"], 100, 1.3, [100, 200]);
-
-export const ADEGAN_LUAR_SATUAN: AdeganStory = {
-  id: "luar-satuan",
-  judul: "Satuan Tak Baku Berat: hitung satuan",
-  sumber: "Metode luar: Satuan Tak Baku Berat",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_X1, tambah(0, ...kepala(1)), tambah(idx(SUARA_X1, "balok"), BD_X[2], BD_X[3]), tambah(idx(SUARA_X1, "kotak."), BD_X[0], BD_X[1])),
-    k(
-      SUARA_X2,
-      hapus(0, ...idDeret(["kotak", "balok_mainan"])),
-      tambah(0, kerangka(X0)),
-      tambah(idx(SUARA_X2, "kotak."), ...isiSisi(Xa, "L"), labelSisi(Xa, "L")),
-      ubah(idx(SUARA_X2, "kotak."), ...ubahTimbang(Xa, { L: true })),
-      tambah(idx(SUARA_X2, "kiri."), ...penunjuk(Xa)),
-    ),
-    k(
-      SUARA_X3,
-      tambah(idx(SUARA_X3, "balok"), ...hanya(balok(2), 1)),
-      tambah(idx(SUARA_X3, "satu"), ...hanya(balok(2), 2), labelSisi(balok(2), "R")),
-      ubah(idx(SUARA_X3, "satu"), ...ubahTimbang(balok(2), { L: true, R: true })),
-    ),
-    k(
-      SUARA_X4,
-      tambah(idx(SUARA_X4, "tambah"), ...hanya(balok(3), 3)),
-      ubah(idx(SUARA_X4, "tambah"), ...ubahTimbang(balok(3), { L: true, R: true })),
-      hapus(idx(SUARA_X4, "sejajar,"), ...idPenunjuk(Xa)),
-    ),
-    k(SUARA_X5, sorotkan(idx(SUARA_X5, "Jadi"), idBenda(1, "L", "kotak", 1)), tambah(idx(SUARA_X5, "Itulah"), ...kartu("xs", 30, 164, 240, 26, W.emas, ["kotak = 3 balok mainan"], 11))),
-  ],
+/** Titik `${id}{i}` di piringan neraca berpusat (150, 100) setengah panjang 60; sisi "kiri" atau "kanan"; dy = naik-turun ujung (negatif: kiri turun). */
+const titikPan = (id: string, sisi: "kiri" | "kanan", dy: number, n: number): Obj[] => {
+  const p = piringNeraca(150, 100, 60, dy)[sisi];
+  return Array.from({ length: n }, (_, i) => bulat(`${id}${i}`, p.x + (i - (n - 1) / 2) * 5.2, p.y - 3, 2.4, "#F59E0B", "#92400E", { tebal: 0.9, z: 3 }));
 };
+const NERACA = (dy: number): Obj[] => neraca("nr", 150, 100, 60, dy);
 
-/* ------------------------------ 6. Satuan Tak Baku Berat: terapan ------------------------------ */
-const Y0 = spek(1, "timbangan", [], []);
-const Ya = spek(1, "timbangan", ["apel"], []);
-const Y = spek(1, "timbangan", ["apel"], [["kelereng", 3]]);
-const SUARA_Y1 = "Terapkan pada soal ini. Igil mengukur apel memakai kelereng. Apel ada di piringan kiri.";
-const SUARA_Y2 = "Igil menaruh kelereng sampai sejajar. Berapa kelereng yang sama berat dengan apel? Ketuk jawaban yang tepat.";
-const SUARA_Y3 = "Betul! Apel sama berat dengan tiga kelereng. Hebat!";
-const SUARA_Y4 = "Kelereng itu ringan, jadi kita perlu tiga kelereng untuk menyamai satu apel.";
+/* ------------------------------ Dot Balance: konsep ------------------------------ */
+const SUARA_C1 = "Cara kedua, Dot Balance, atau Neraca Titik.";
+const SUARA_C2 = "Gambar dua piringan neraca. Beri titik di tiap piringan sesuai berat bendanya.";
+const SUARA_C3 = "Satu titik mewakili satu satuan berat. Piringan yang titiknya lebih banyak adalah yang lebih berat.";
+const SUARA_C4 = "Kalau banyak titiknya sama, neracanya seimbang, dan kedua benda sama berat.";
 
-export const ADEGAN_LUAR_SATUAN_TERAPAN: AdeganStory = {
-  id: "luar-satuan-terapan",
-  judul: "Satuan Tak Baku Berat: apel Igil",
-  sumber: "Metode luar: Satuan Tak Baku Berat",
-  latar: "#E0F2FE",
-  ketukan: [
-    k(
-      SUARA_Y1,
-      tambah(0, ...kepala(1), kerangka(Y0)),
-      tambah(idx(SUARA_Y1, "apel."), ...isiSisi(Ya, "L")),
-      ubah(idx(SUARA_Y1, "apel."), ...ubahTimbang(Ya)),
-      tambah(idx(SUARA_Y1, "kiri."), ...penunjuk(Ya)),
-    ),
-    k(
-      SUARA_Y2,
-      ...[1, 2, 3].map((j) => tambah(2 + j - 1, ...hanya(Y, j))),
-      ubah(idx(SUARA_Y2, "sejajar."), ...ubahTimbang(Y)),
-      hapus(idx(SUARA_Y2, "sejajar."), ...idPenunjuk(Ya)),
-      tambah(idx(SUARA_Y2, "Berapa"), teks("tanya", 150, 152, "berapa kelereng?", 11, W.ungu)),
-      tambah(idx(SUARA_Y2, "jawaban"), ...pilihKata(160, ["dua", "tiga", "empat"], 12)),
-    ),
-    k(SUARA_Y3, sorotkan(idx(SUARA_Y3, "Betul!"), "c2-k")),
-    k(SUARA_Y4, redamkan(0, "c2-k"), hapus(idx(SUARA_Y4, "Kelereng"), "tanya", ...idPilihan(3)), tambah(idx(SUARA_Y4, "tiga"), ...kartu("yk", 30, 164, 240, 26, W.emas, ["apel = 3 kelereng"], 11))),
-  ],
-};
-
-/* ------------------------------ 7. Lebih Berat Lebih Ringan: konsep ------------------------------ */
-const SUARA_Z1 = "Metode ketiga bernama Lebih Berat Lebih Ringan. Metode ini memakai kata untuk membandingkan berat.";
-const SUARA_Z2 = "Untuk dua benda kita punya tiga kata. Lebih berat, lebih ringan, dan sama berat.";
-const SUARA_Z3 = "Mangga lebih berat dari jeruk. Jeruk lebih ringan dari mangga. Satu kalimat bisa dibalik, dan artinya tetap sama.";
-const SUARA_Z4 = "Untuk tiga benda, ada mangga, jeruk, dan pisang. Mangga paling berat dan pisang paling ringan.";
-const SUARA_Z5 = "Jadi kata lebih berat, lebih ringan, sama berat, paling berat, dan paling ringan membantu kita bercerita tentang berat.";
-const BD_Z3 = deret(["mangga", "jeruk"], 100, 1.3, [100, 200]);
-const BD_Z4 = deret(["mangga", "jeruk", "pisang"], 110, 1.2);
-
-export const ADEGAN_LUAR_LEBIH: AdeganStory = {
-  id: "luar-lebih",
-  judul: "Lebih Berat Lebih Ringan: kata banding",
-  sumber: "Metode luar: Lebih Berat Lebih Ringan",
+export const ADEGAN_LUAR_TITIK: AdeganStory = {
+  id: "luar-titik",
+  judul: "Dot Balance: Neraca Titik",
+  sumber: "Metode global: Dot Balance (konsep)",
   latar: "#FDF4FF",
   ketukan: [
-    k(SUARA_Z1, tambah(0, ...kepala(2)), tambah(idx(SUARA_Z1, "kata"), ...kartu("w1", 20, 80, 260, 44, W.emas, ["kata untuk", "membandingkan berat"], 12))),
     k(
-      SUARA_Z2,
-      hapus(0, ...idKartu("w1", 2)),
-      tambah(idx(SUARA_Z2, "Lebih"), ...kartu("w0", 30, 60, 240, 30, W.hijauMuda, ["lebih berat"], 12)),
-      tambah(idx(SUARA_Z2, "lebih", 2), ...kartu("w2", 30, 98, 240, 30, W.pink, ["lebih ringan"], 12)),
-      tambah(idx(SUARA_Z2, "sama"), ...kartu("w3", 30, 136, 240, 30, W.langit, ["sama berat"], 12)),
+      SUARA_C1,
+      tambah(0, judul("Cara 2: Dot Balance")),
+      tambah("Dot", ...NERACA(0)),
+      tambah("Neraca", teks("nm", 150, 176, "Neraca Titik", 12, W.ungu)),
     ),
     k(
-      SUARA_Z3,
-      hapus(0, ...idKartu("w0"), ...idKartu("w2"), ...idKartu("w3")),
-      tambah(idx(SUARA_Z3, "Mangga"), BD_Z3[0], BD_Z3[1]),
-      tambah(idx(SUARA_Z3, "jeruk."), BD_Z3[2], BD_Z3[3]),
-      tambah(idx(SUARA_Z3, "dibalik,"), ...kartu("w4", 30, 150, 240, 30, W.emas, ["dibalik, artinya tetap sama"], 10)),
+      SUARA_C2,
+      hapus(0, "nm"),
+      tambah("dua", teks("n2", 150, 44, "2 piringan", 10, W.ungu)),
+      tambah("titik", ...titikPan("dl", "kiri", 0, 4), ...titikPan("dr", "kanan", 0, 2)),
+      ubah("sesuai", ...pindah(NERACA(-6)), ...pindah(titikPan("dl", "kiri", -6, 4)), ...pindah(titikPan("dr", "kanan", -6, 2))),
     ),
     k(
-      SUARA_Z4,
-      hapus(0, ...idDeret(["mangga", "jeruk"]), ...idKartu("w4")),
-      tambah(idx(SUARA_Z4, "mangga,"), BD_Z4[0], BD_Z4[1]),
-      tambah(idx(SUARA_Z4, "jeruk,"), BD_Z4[2], BD_Z4[3]),
-      tambah(idx(SUARA_Z4, "pisang."), BD_Z4[4], BD_Z4[5]),
-      tambah(idx(SUARA_Z4, "paling"), teks("tg1", 60, 70, "paling berat", 9, W.merah)),
-      tambah(idx(SUARA_Z4, "paling", 2), teks("tg2", 240, 70, "paling ringan", 9, W.merah)),
+      SUARA_C3,
+      hapus(0, "n2"),
+      tambah("Satu", ...kartu("kt", 50, 32, 200, 24, W.krem, ["1 titik = 1 satuan berat"], 9)),
+      sorotkan("Piringan", "nr-pL"),
+      tambah("banyak", panah("pb", 90, 134, 0, 22, W.merah, 2.4)),
+      tambah("berat.", teks("lb", 90, 176, "lebih berat", 10, W.merah)),
     ),
-    k(SUARA_Z5, tambah(idx(SUARA_Z5, "membantu"), ...kartu("w5", 20, 150, 260, 30, W.emas, ["kata untuk bercerita tentang berat"], 10))),
+    k(
+      SUARA_C4,
+      hapus(0, "pb", "lb", "kt-k", "kt-t0"),
+      ubah("Kalau", ...pindah(NERACA(0)), ...pindah(titikPan("dl", "kiri", 0, 4)), ...pindah(titikPan("dr", "kanan", 0, 2)), { id: "nr-pL", sorot: false }),
+      tambah("sama", ...titikPan("dr", "kanan", 0, 4).slice(2)),
+      tambah("seimbang,", teks("sb", 150, 176, "seimbang", 12, W.hijau), emo("ok", 150, 70, E.benar, 26)),
+    ),
   ],
 };
 
-/* ------------------------------ 8. Lebih Berat Lebih Ringan: terapan ------------------------------ */
-const BD_A = deret(["batu", "mangga", "anggur"], 100, 1.2);
-const SUARA_A1 = "Terapkan pada soal ini. Kira melihat tiga benda, yaitu batu, mangga, dan anggur.";
-const SUARA_A2 = "Benda mana yang paling berat? Ketuk jawaban yang tepat.";
-const SUARA_A3 = "Betul! Batu paling berat. Batu lebih berat dari mangga, dan mangga lebih berat dari anggur.";
-const SUARA_A4 = "Jadi anggur paling ringan. Kita bercerita memakai kata lebih berat dan paling ringan.";
+/* ------------------------------ Dot Balance: terapan ------------------------------ */
+const SUARA_T1 = "Nia menggambar lima titik untuk bola basket dan empat titik untuk raket. Piringan bola basket turun.";
+const SUARA_T2 = "Selisihnya satu titik, jadi bola basket lebih berat satu satuan daripada raket.";
+const SUARA_T3 = "Cocok kalau kita ingin tahu selisih berat dengan menghitung titik.";
+const SUARA_T4 = "Kurang cocok kalau titiknya terlalu banyak, karena menghitungnya bisa membingungkan.";
 
-export const ADEGAN_LUAR_LEBIH_TERAPAN: AdeganStory = {
-  id: "luar-lebih-terapan",
-  judul: "Lebih Berat Lebih Ringan: benda Kira",
-  sumber: "Metode luar: Lebih Berat Lebih Ringan",
-  latar: "#FAE8FF",
+const ujung = (dy: number) => ({ kiri: { x: 90, y: 100 - dy }, kanan: { x: 210, y: 100 + dy } });
+
+export const ADEGAN_LUAR_TITIK_TERAPAN: AdeganStory = {
+  id: "luar-titik-terapan",
+  judul: "Dot Balance: titik Nia",
+  sumber: "Metode global: Dot Balance (terapan)",
+  latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_A1,
-      tambah(0, ...kepala(2)),
-      tambah(idx(SUARA_A1, "batu,"), BD_A[0], BD_A[1]),
-      tambah(idx(SUARA_A1, "mangga,"), BD_A[2], BD_A[3]),
-      tambah(idx(SUARA_A1, "anggur."), BD_A[4], BD_A[5]),
+      SUARA_T1,
+      tambah(0, judul("Titik Nia"), ...lapangan("lp", 150)),
+      tambah("Nia", ...tokoh("ni", 30, 184, "Nia")),
+      tambah("menggambar", ...NERACA(0)),
+      tambah("lima", ...titikPan("dl", "kiri", 0, 5), teks("n5", 90, 150, "5 titik", 9, W.ungu)),
+      tambah("basket", ...bola("bs", ujung(0).kiri.x, ujung(0).kiri.y - 12, 9, "#F97316", "#7C2D12")),
+      tambah("empat", ...titikPan("dr", "kanan", 0, 4), teks("n4", 210, 150, "4 titik", 9, W.ungu)),
+      tambah("raket.", ...raket("rk", ujung(0).kanan.x, ujung(0).kanan.y - 20, 8)),
+      ubah("turun.", ...pindah(NERACA(-6)), ...pindah(titikPan("dl", "kiri", -6, 5)), ...pindah(titikPan("dr", "kanan", -6, 4)), ...pindah(bola("bs", ujung(-6).kiri.x, ujung(-6).kiri.y - 12, 9, "#F97316", "#7C2D12")), ...pindah(raket("rk", ujung(-6).kanan.x, ujung(-6).kanan.y - 20, 8))),
     ),
-    k(SUARA_A2, tambah(idx(SUARA_A2, "Benda"), teks("tanya", 150, 140, "mana yang paling berat?", 11, W.ungu)), tambah(idx(SUARA_A2, "jawaban"), ...pilihKata(150, ["batu", "mangga", "anggur"], 12))),
-    k(SUARA_A3, sorotkan(idx(SUARA_A3, "Betul!"), "c1-k"), sorotkan(idx(SUARA_A3, "Batu"), "bd-1-batu")),
     k(
-      SUARA_A4,
-      redamkan(0, "c1-k", "bd-1-batu"),
-      hapus(0, "tanya", ...idPilihan(3)),
-      tambah(idx(SUARA_A4, "Jadi"), teks("tg1", 60, 76, "paling berat", 9, W.merah)),
-      tambah(idx(SUARA_A4, "anggur"), teks("tg2", 240, 76, "paling ringan", 9, W.merah)),
-      sorotkan(idx(SUARA_A4, "anggur"), "bd-3-anggur"),
+      SUARA_T2,
+      tambah("Selisihnya", teks("sl", 150, 44, "selisih 1 titik", 10, W.ungu)),
+      sorotkan("titik,", "dl4"),
+      tambah("basket", emo("ok", 150, 128, E.benar, 20)),
+      tambah("satu@2", teks("sa", 150, 176, "1 satuan lebih berat", 9, W.merah)),
+    ),
+    k(
+      SUARA_T3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?")),
+      tambah("Cocok", emo("ok", 258, 70, E.benar, 28)),
+      tambah("tahu", ...kartu("cc", 40, 40, 150, 24, W.hijauMuda, ["selisih berat"], 9)),
+      tambah("menghitung", ...Array.from({ length: 5 }, (_, i) => bulat(`ra${i}`, 70 + i * 16, 104, 4, "#F59E0B", "#92400E")), ...Array.from({ length: 4 }, (_, i) => bulat(`rb${i}`, 70 + i * 16, 128, 4, "#F59E0B", "#92400E"))),
+      tambah("titik.", teks("sl", 190, 118, "selisih 1", 10, W.ungu)),
+      sorotkan("titik.", "ra4"),
+    ),
+    k(
+      SUARA_T4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?")),
+      tambah("Kurang", emo("xs", 258, 70, E.salah, 28)),
+      tambah("titiknya", ...Array.from({ length: 40 }, (_, i) => bulat(`x${i}`, 60 + (i % 10) * 14, 70 + Math.floor(i / 10) * 14, 3.4, "#F59E0B", "#92400E", { tebal: 1 }))),
+      tambah("banyak,", teks("tb", 130, 150, "titik terlalu banyak", 10, W.merah)),
+      tambah("membingungkan.", emo("tq", 130, 180, E.pusing, 26)),
     ),
   ],
 };
+/* ------------------------------ Heavy First: konsep ------------------------------ */
+const SUARA_D1 = "Cara ketiga, Heavy First, atau Berat di Dasar.";
+const SUARA_D2 = "Urutkan benda dari yang paling berat sampai yang paling ringan sebelum menata.";
+const SUARA_D3 = "Taruh benda paling berat paling bawah, dan benda paling ringan paling atas.";
+const SUARA_D4 = "Dengan begitu tumpukannya kokoh, dan benda yang ringan tidak remuk.";
+
+const tumpuk = (id: string): Obj[] => [
+  kotak(`${id}1`, 110, 150, 80, 26, "#B45309", W.coklat, { rx: 2, tebal: 1.8 }),
+  kotak(`${id}2`, 122, 126, 56, 24, "#D6A15E", W.coklat, { rx: 2, tebal: 1.8 }),
+  kotak(`${id}3`, 134, 104, 32, 22, "#FEF3C7", W.coklat, { rx: 2, tebal: 1.8 }),
+];
+const barisItem = (xKantong: number, xBola: number, xRaket: number): Obj[] => [...kantong("ik", xKantong - 14, 124, 28, 17), ...bola("ib", xBola, 134, 9, "#F97316", "#7C2D12"), ...raket("ir", xRaket, 130, 7)];
+
+export const ADEGAN_LUAR_DASAR: AdeganStory = {
+  id: "luar-dasar",
+  judul: "Heavy First: Berat di Dasar",
+  sumber: "Metode global: Heavy First (konsep)",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_D1,
+      tambah(0, judul("Cara 3: Heavy First"), ...lapangan("lp", 180)),
+      tambah("Heavy", ...tumpuk("d")),
+      tambah("Berat", teks("nm", 150, 197, "Berat di Dasar", 12, W.ungu)),
+    ),
+    k(
+      SUARA_D2,
+      bersih(0),
+      tambah(0, judul("Urutkan Dulu"), ...lapangan("lp", 160)),
+      tambah("benda", ...barisItem(220, 80, 150)),
+      ubah("dari", ...pindah(barisItem(80, 150, 220))),
+      tambah("berat", teks("l1", 80, 176, "paling berat", 9, W.merah)),
+      tambah("sampai", panah("pa", 100, 100, 100, 0, W.biru, 2.4)),
+      tambah("ringan", teks("l3", 220, 176, "paling ringan", 9, W.hijau)),
+      tambah("menata.", emo("tq", 150, 70, E.lampu, 22)),
+    ),
+    k(
+      SUARA_D3,
+      bersih(0),
+      tambah(0, judul("Tata dari Bawah"), ...lapangan("lp", 180)),
+      tambah("Taruh", teks("tr", 150, 44, "taruh paling berat dulu", 9, W.ungu)),
+      tambah("berat", kotak("d1", 110, 150, 80, 26, "#B45309", W.coklat, { rx: 2, tebal: 1.8 }), teks("l1", 244, 168, "paling berat", 9, W.merah)),
+      tambah("bawah,", panah("pb", 70, 120, 0, 40, W.merah, 2.4)),
+      tambah("ringan", kotak("d2", 122, 126, 56, 24, "#D6A15E", W.coklat, { rx: 2, tebal: 1.8 }), kotak("d3", 134, 104, 32, 22, "#FEF3C7", W.coklat, { rx: 2, tebal: 1.8 }), teks("l3", 244, 118, "paling ringan", 9, W.hijau)),
+      tambah("atas.", panah("pt", 70, 100, 0, -34, W.hijau, 2.4)),
+    ),
+    k(
+      SUARA_D4,
+      bersih(0),
+      tambah(0, judul("Kokoh dan Aman"), ...lapangan("lp", 180), ...tumpuk("d")),
+      tambah("kokoh,", emo("ok", 230, 130, E.benar, 26), emo("bs", 70, 130, E.bintang, 24)),
+      tambah("tidak", kotak("w1", 218, 164, 56, 22, "#D6A15E", W.coklat, { rx: 2 }), kotak("w2", 222, 184, 48, 6, "#FEF3C7", W.coklat, { rx: 2 })),
+      tambah("remuk.", emo("xs", 246, 146, E.salah, 20)),
+    ),
+  ],
+};
+
+/* ------------------------------ Heavy First: terapan ------------------------------ */
+const SUARA_E1 = "Chacha menata keranjang bekal. Pepaya paling bawah, lalu mangga, dan manggis paling atas.";
+const SUARA_E2 = "Keranjang itu kokoh, dan tidak ada buah yang remuk. Chacha bersorak.";
+const SUARA_E3 = "Cocok kalau kita menata atau mengangkut banyak benda sekaligus.";
+const SUARA_E4 = "Kurang cocok kalau kita hanya ingin tahu benda mana yang lebih berat, karena tidak ada yang ditimbang.";
+
+export const ADEGAN_LUAR_DASAR_TERAPAN: AdeganStory = {
+  id: "luar-dasar-terapan",
+  judul: "Heavy First: keranjang bekal",
+  sumber: "Metode global: Heavy First (terapan)",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_E1,
+      tambah(0, judul("Keranjang Bekal"), ...lapangan("lp", 140)),
+      tambah("Chacha", ...tokoh("ch", 36, 184, "Chacha")),
+      tambah("keranjang", ...keranjang("kj", 105, 150, 90)),
+      tambah("Pepaya", buah("py", 150, 140, "pepaya")),
+      tambah("mangga,", buah("mg", 150, 121, "mangga")),
+      tambah("manggis", buah("ms", 150, 108, "manggis")),
+    ),
+    k(
+      SUARA_E2,
+      tambah("kokoh,", emo("ok", 236, 130, E.benar, 26)),
+      ubah("bersorak.", { id: "ch", isi: E.tertawa }),
+      tambah("buah", emo("bs", 64, 150, E.bintang, 22)),
+      tambah("bersorak.", emo("sr", 36, 148, E.sorak, 22)),
+    ),
+    k(
+      SUARA_E3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?")),
+      tambah("Cocok", emo("ok", 258, 70, E.benar, 28)),
+      tambah("menata", ...kartu("cc", 40, 40, 170, 24, W.hijauMuda, ["menata atau mengangkut"], 9)),
+      tambah("banyak", ...[0, 1, 2, 3, 4].map((i) => (i % 2 === 0 ? buah(`f${i}`, 70 + i * 36, 110, "pepaya") : buah(`f${i}`, 70 + i * 36, 110, "mangga")))),
+      tambah("sekaligus.", emo("kj", 150, 176, "\u{1F9FA}", 36)),
+    ),
+    k(
+      SUARA_E4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?")),
+      tambah("Kurang", emo("xs", 258, 70, E.salah, 28)),
+      tambah("hanya", ...kartu("cc", 40, 40, 170, 24, W.merahMuda, ["hanya ingin tahu lebih berat"], 9)),
+      tambah("benda", emo("nr", 110, 130, "\u{2696}", 44)),
+      tambah("tidak", emo("xt", 160, 110, E.salah, 24)),
+      tambah("ditimbang.", teks("tt", 150, 176, "tidak ada yang ditimbang", 10, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Kita sudah melihat tiga cara. Mana yang pas? Itu tergantung tugasnya.";
+const SUARA_R2 = "Ingin membandingkan banyak benda dalam satu gambar, pakai Model Batang. Ingin tahu selisih berat, pakai Neraca Titik.";
+const SUARA_R3 = "Ingin menata atau mengangkut, pakai Berat di Dasar. Apa pun caranya, bandingkan beratnya dengan adil.";
+const SUARA_R4 = "Menurutmu, untuk menata ransel sebelum berangkat, kamu pilih cara yang mana?";
+
+export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
+  id: "luar-ringkas",
+  judul: "Ringkasan tiga cara menimbang",
+  sumber: "Metode global: ringkasan",
+  latar: "#F5F3FF",
+  ketukan: [
+    k(
+      SUARA_R1,
+      tambah(0, judul("Mana yang Pas?")),
+      tambah("tiga", teks("t3", 250, 40, "3 cara", 10, W.ungu)),
+      tambah("cara.", ...NAMA_METODE_ID.flatMap((m, i) => kartu(`r${i}`, 20, 50 + i * 46, 200, 32, W.krem, [`${i + 1}. ${m}`], 11))),
+      tambah("pas?", emo("tq", 262, 96, E.tanya, 28)),
+      tambah("tugasnya.", emo("cc", 262, 142, E.catat, 26)),
+    ),
+    k(
+      SUARA_R2,
+      hapus(0, "tq", "cc"),
+      tambah("gambar,", teks("n1", 262, 120, "1 gambar", 9, W.ungu)),
+      tambah("Model", ...batang("sb1", 240, 78, 8, 3, 8, "#93C5FD"), ...batang("sb2", 252, 78, 8, 2, 8, "#BFDBFE")),
+      sorotkan("Model", "r0-k"),
+      redamkan("Neraca", "r0-k"),
+      sorotkan("Neraca", "r1-k"),
+      tambah("selisih", ...[0, 1, 2, 3, 4].map((i) => bulat(`sd${i}`, 232 + (i % 3) * 8, 118 + Math.floor(i / 3) * 8, 3, "#F59E0B", "#92400E"))),
+    ),
+    k(
+      SUARA_R3,
+      hapus(0, "n1"),
+      redamkan(0, "r1-k"),
+      tambah("menata", ...tumpuk0()),
+      sorotkan("Berat", "r2-k"),
+      tambah("adil.", emo("ok", 262, 190, E.benar, 22)),
+    ),
+    k(
+      SUARA_R4,
+      bersih(0),
+      tambah(0, judul("Pilih Caramu")),
+      tambah("ransel", emo("rs", 150, 110, E.ransel, 46)),
+      tambah("cara", ...NAMA_METODE_ID.flatMap((m, i) => kartu(`p${i}`, 10 + i * 98, 140, 90, 30, W.krem, [m], 8))),
+      tambah("mana?", emo("tq", 150, 66, E.tanya, 28)),
+    ),
+  ],
+};
+function tumpuk0(): Obj[] {
+  return [kotak("sk1", 244, 150, 40, 14, "#B45309", W.coklat, { rx: 1 }), kotak("sk2", 250, 136, 28, 14, "#D6A15E", W.coklat, { rx: 1 }), kotak("sk3", 256, 122, 16, 14, "#FEF3C7", W.coklat, { rx: 1 })];
+}

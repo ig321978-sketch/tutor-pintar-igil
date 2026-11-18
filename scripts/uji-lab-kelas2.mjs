@@ -6,6 +6,7 @@ import * as K2B2 from "../src/components/modul/misi-k2bab2.ts";
 import * as K2B3 from "../src/components/modul/misi-k2bab3.ts";
 import * as K2B4 from "../src/components/modul/misi-k2bab4.ts";
 import * as K2B5 from "../src/components/modul/misi-k2bab5.ts";
+import * as K2B6 from "../src/components/modul/misi-k2bab6.ts";
 
 let gagal = 0;
 let lulus = 0;
@@ -231,6 +232,49 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   sama(baruC({ bukti: ["4s=1u"], kainSegitiga: 1, kainSeperempat: 1 }), ["c-kain", "c-utuh", "c-segitiga"], "k2bab5 C: tantangan bebas");
   cek(M0.misiBaru(dC, { ...awalC, salah: 9, kainTidakSama: 9, mode: "dinding" }, new Set()).length === 0, "k2bab5 C: percobaan keliru tidak dihitung sebagai misi");
   void K2B5;
+}
+
+/* --------------------------- Kelas 2 Bab 6: misi (Hari Olahraga Sekolah) --------------------------- */
+// Rincian misi tiap Sub-Bab diuji di scripts/uji-timbang-k2b6a.mjs dan uji-jadwal-k2b6b.mjs; di sini hanya struktur bersama.
+{
+  // KERANGKA: agen Sub-Bab mengganti komentar BAGIAN-nya dengan ujinya (keadaan awal tidak memenuhi misi; ujiStruktur untuk sub-bab itu).
+  // BAGIAN A (Pos Timbang: layang-layang, bulu tangkis, yoyo, sarung tinju, batu curling; satuan dadu dan es batu; rincian di scripts/uji-timbang-k2b6a.mjs)
+  // Keadaan awal ditulis langsung (logika.ts folder memakai impor tanpa ekstensi).
+  {
+    const awalA6 = { alat: "timbang", mode: "jungkat", kiri: -1, kanan: -1, dibandingkan: [], besarRingan: false, benda: -1, satuan: -1, jumlah: 0, seimbang: [], tabel: [], susunPilih: [], urutanBenar: 0, salahSusun: 0 };
+    ujiStruktur("k2bab6", K2B6.daftarMisiK2Bab6, ["A"], { A: awalA6 });
+    const dA6 = K2B6.daftarMisiK2Bab6("A");
+    cek(dA6 === K2B6.MISI_A && dA6.filter((m) => m.wajib).length === 4 && dA6.filter((m) => !m.wajib).length === 2 && dA6.every((m) => m.id.startsWith("a-")), "k2bab6 A: empat wajib, dua bebas, id berawalan a-");
+    cek(dA6.every((m) => !/\d/.test(m.teks) && !/(buku|teman|kelompok|kelas|skor|nilai|soal|tebak|kunci|latihan)/i.test(m.teks)), "k2bab6 A: teks misi tanpa digit dan kata terlarang");
+    cek(dA6.every((m) => !m.cek({ alat: "kerangka" })), "k2bab6 A: alat lain tidak memenuhi misi");
+    const baruA6 = (o) => M0.misiBaru(dA6, { ...awalA6, ...o }, new Set());
+    sama(baruA6({ dibandingkan: ["0-3"] }), ["a-banding"], "k2bab6 A: satu pasangan ditimbang memenuhi a-banding");
+    sama(baruA6({ dibandingkan: ["0-3"], besarRingan: true }), ["a-banding", "a-besar"], "k2bab6 A: benda besar yang ringan memenuhi a-besar");
+    sama(baruA6({ seimbang: ["2-0"] }), ["a-satuan"], "k2bab6 A: seimbang memenuhi a-satuan");
+    sama(baruA6({ urutanBenar: 1 }), ["a-susun"], "k2bab6 A: urutan benar memenuhi a-susun");
+    sama(baruA6({ dibandingkan: ["0-1", "0-2", "0-3", "0-4", "1-2", "1-3"] }), ["a-banding", "a-pasang"], "k2bab6 A: enam pasangan memenuhi tantangan bebas");
+    sama(baruA6({ tabel: ["2-0", "2-1"] }), ["a-dua"], "k2bab6 A: dua satuan untuk satu benda memenuhi tantangan bebas");
+    sama(baruA6({ tabel: ["2-0", "3-1"] }), [], "k2bab6 A: dua satuan untuk dua benda berbeda belum memenuhi");
+    cek(M0.misiBaru(dA6, { ...awalA6, salahSusun: 9, mode: "susun" }, new Set()).length === 0, "k2bab6 A: percobaan keliru tidak dihitung sebagai misi");
+  }
+  // BAGIAN B (Pos Waktu: putar jarum, samakan jam, kegiatan pada bagian hari, lama dua kegiatan, selisih jam; rincian di scripts/uji-jadwal-k2b6b.mjs)
+  // Keadaan awal ditulis langsung (logika.ts folder memakai impor tanpa ekstensi).
+  const awalB6 = { alat: "jadwal", mode: "jarum", h24: 12, jamPernah: [], jamSama: 12, samaIndeks: 0, sudahSama: [], hariPilih: null, hariBenar: [], lamaIndeks: 0, lamaBenar: [], selIndeks: 0, selKotak: 0, selBenar: [], salah: 0 };
+  ujiStruktur("k2bab6", K2B6.daftarMisiK2Bab6, ["B"], { B: awalB6 });
+  const dB6 = K2B6.daftarMisiK2Bab6("B");
+  cek(dB6 === K2B6.MISI_B && dB6.filter((m) => m.wajib).length === 4 && dB6.filter((m) => !m.wajib).length === 2 && dB6.every((m) => m.id.startsWith("b-")), "k2bab6 B: empat wajib, dua bebas, id berawalan b-");
+  cek(dB6.every((m) => !/\d/.test(m.teks) && !/(buku|teman|kelompok|kelas|skor|nilai|soal|tebak|kunci|latihan)/i.test(m.teks)), "k2bab6 B: teks misi tanpa digit dan kata terlarang");
+  cek(dB6.every((m) => !m.cek({ alat: "kerangka" })), "k2bab6 B: alat lain tidak memenuhi misi");
+  const baruB6 = (o) => M0.misiBaru(dB6, { ...awalB6, ...o }, new Set());
+  sama(baruB6({ jamPernah: [3] }), ["b-jarum"], "k2bab6 B: jarum pendek di tiga memenuhi b-jarum");
+  sama(baruB6({ jamPernah: [4, 5] }), [], "k2bab6 B: jam lain tidak memenuhi b-jarum");
+  sama(baruB6({ sudahSama: [0] }), ["b-samakan"], "k2bab6 B: jam dinding sama dengan digital memenuhi b-samakan");
+  sama(baruB6({ hariBenar: ["Istirahat"] }), ["b-hari"], "k2bab6 B: kegiatan di bagian hari tepat memenuhi b-hari");
+  sama(baruB6({ lamaBenar: [1] }), ["b-lama"], "k2bab6 B: batang lebih panjang memenuhi b-lama");
+  sama(baruB6({ selBenar: [0] }), ["b-selisih"], "k2bab6 B: selisih jam benar memenuhi b-selisih");
+  sama(baruB6({ jamPernah: [3], sudahSama: [1], hariBenar: ["a", "b", "c", "d"], lamaBenar: [0], selBenar: [2] }), ["b-jarum", "b-samakan", "b-hari", "b-lama", "b-selisih", "b-semua"], "k2bab6 B: semua wajib dan bebas");
+  cek(M0.misiBaru(dB6, { ...awalB6, salah: 9, hariPilih: "Istirahat", selKotak: 5, mode: "selisih", h24: 15, jamSama: 3, samaIndeks: 2, lamaIndeks: 7, selIndeks: 1 }, new Set()).length === 0, "k2bab6 B: percobaan keliru dan geseran tidak dihitung sebagai misi");
+  void K2B6;
 }
 
 console.log(gagal === 0 ? `SEMUA LULUS (${lulus} cek)` : `GAGAL ${gagal} dari ${lulus + gagal}`);

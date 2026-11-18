@@ -7,7 +7,6 @@
  * Murni: tanpa React, tanpa jaringan, tanpa impor nilai. Diuji di scripts/uji-lab-k2b6.mjs.
  */
 
-import type { KeadaanLabNeraca } from "./misi-k2bab6";
 
 export type BendaNeraca = "semangka" | "kelapa" | "batu" | "apel" | "jeruk" | "buku" | "pensil" | "anggur" | "balon";
 export const URUT_BENDA_NERACA: BendaNeraca[] = ["semangka", "kelapa", "batu", "apel", "jeruk", "buku", "pensil", "anggur", "balon"];
@@ -214,19 +213,6 @@ export function kalimatUkuran(l: LabNeraca): string {
   if (UKURAN_NERACA[kiri] === UKURAN_NERACA[kanan]) return "Ukuran keduanya hampir sama, jadi hanya neraca yang bisa memutuskan.";
   return "Kali ini benda yang lebih besar juga lebih berat. Itu kebetulan, jangan jadikan aturan. Timbang dulu.";
 }
-
-/** Laporan keadaan ke papan misi. */
-export const laporanNeraca = (l: LabNeraca): KeadaanLabNeraca => ({
-  alat: "neraca",
-  kiri: l.kiri,
-  kanan: l.kanan,
-  hubungan: hubungan(l),
-  cara: l.cara,
-  ukuran: l.ukuran,
-  kontra: kontraUkuran(l.kiri, l.kanan),
-  ekstrem: tentukanEkstrem(l.catatan) !== null,
-  caraDipakai: l.caraDipakai,
-});
 
 /** Kalimat catatan untuk satu baris. */
 export const kalimatCatatan = (c: Catatan): string =>

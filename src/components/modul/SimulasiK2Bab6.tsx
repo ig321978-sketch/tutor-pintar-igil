@@ -2,93 +2,47 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import LabBertahap, { type TabLab } from "./LabBertahap";
-import SimulasiLabNeraca from "./SimulasiLabNeraca";
-import SimulasiLabSatuan from "./SimulasiLabSatuan";
-import SimulasiMesinTebak from "./SimulasiMesinTebak";
-import SimulasiLabJam from "./SimulasiLabJam";
-import SimulasiLabHari from "./SimulasiLabHari";
-import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K2B6B } from "./skenario-k2b6";
-import { daftarMisiK2Bab6, type KeadaanK2Bab6 } from "./misi-k2bab6";
-import { laporMisi, tampilMisi } from "./misi-simulasi";
+import { daftarMisiK2Bab6 } from "./misi-k2bab6";
+import { laporMisi } from "./misi-simulasi";
+import SimulasiPosWaktu from "./jadwal-k2b6b/SimulasiPosWaktu";
+import { MISI_JADWAL_TEKS } from "./jadwal-k2b6b/data-sim";
+import type { KeadaanJadwal } from "./jadwal-k2b6b/logika";
+import SimulasiPosTimbang from "./timbang-k2b6a/SimulasiPosTimbang";
+import { MISI_TIMBANG_TEKS } from "./timbang-k2b6a/data-peta";
+import type { KeadaanTimbang } from "./timbang-k2b6a/logika";
 
 /* ======================================================================== */
-/* Simulasi Kelas 2 Bab 6 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
-/* alat bertambah per sub-bab, dengan misi wajib dan tantangan bebas         */
-/* (misi-k2bab6.ts).                                                         */
-/*   Sub-Bab A (berat): Lab Neraca + Lab Satuan + Mesin Tebak dan Buktikan.  */
-/*   Sub-Bab B (waktu, akhir): Lab Jam + Lab Hariku + skenario Hari Minggu   */
-/*                             Kira (pencapaian misi bab ini).               */
+/* Simulasi Kelas 2 Bab 6 di dalam Materi (tahap 4 SMISCPA). Hari Olahraga:  */
+/* Sub-Bab A Pos Timbang, Sub-Bab B Pos Waktu.                               */
+/* KERANGKA: agen Sub-Bab mengisi fungsi langkahPosTimbangA /                */
+/* langkahPosWaktuB (impor dari folder miliknya).                            */
 /* ======================================================================== */
 
-const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
+/** Sub-Bab B (akhir bab): Pos Waktu. KERANGKA. */
+const langkahPosWaktuB = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Pos Waktu",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_JADWAL_TEKS,
+  misiDaftar: daftarMisiK2Bab6("B").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiPosWaktu speakGuru={a.speakGuru} onKeadaan={(k: KeadaanJadwal) => laporMisi(daftarMisiK2Bab6("B"), k, a.capai)} />,
+});
 
-type Huruf = "A" | "B";
-
-const MISI: Record<Huruf, string> = {
-  A: "Timbang dua benda di Lab Neraca dan lihat sisi yang turun, cari dua benda yang sama berat, temukan benda besar yang ternyata ringan, ukur boneka dengan bola tenis dan satuan lain di Lab Satuan, lalu selesaikan Mesin Tebak dan Buktikan. Selesaikan misi wajib di bawah, urutannya bebas.",
-  B: "Atur jam ke pukul 5 dan pukul 4 sore di Lab Jam, temukan dua waktu dengan jarum yang sama, urutkan kegiatan dan bandingkan lama kegiatan di Lab Hariku, lalu selesaikan skenario Hari Minggu Kira. Selesaikan semua misi wajib.",
-};
-
-const NAMA_SIM: Record<Huruf, string> = {
-  A: "Lab Neraca, Lab Satuan, dan Mesin Tebak",
-  B: "Waktu: Pencapaian Misi",
-};
-
-const hurufSub = (sub: string): Huruf => (sub === "B" ? "B" : "A");
+/** Sub-Bab A (awal cerita): Pos Timbang. */
+const langkahPosTimbangA = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Pos Timbang",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_TIMBANG_TEKS,
+  misiDaftar: daftarMisiK2Bab6("A").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiPosTimbang speakGuru={a.speakGuru} onKeadaan={(k: KeadaanTimbang) => laporMisi(daftarMisiK2Bab6("A"), k, a.capai)} />,
+});
 
 const langkahK2Bab6 = (sub: string): LangkahSim[] => {
-  const huruf = hurufSub(sub);
-  const daftar = daftarMisiK2Bab6(huruf);
-  return [
-    {
-      metode: "PhET",
-      sub: NAMA_SIM[huruf],
-      petunjuk: MAINKAN_DULU,
-      misi: MISI[huruf],
-      misiDaftar: tampilMisi(daftar),
-      mode: "sentuh",
-      render: (a) => {
-        const lapor = (k: KeadaanK2Bab6) => laporMisi(daftar, k, a.capai);
-        const selesai = (id: string) => lapor({ alat: "selesai", id });
-
-        const neraca: TabLab = {
-          id: "neraca",
-          nama: "Lab Neraca",
-          render: () => <SimulasiLabNeraca speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const satuan: TabLab = {
-          id: "satuan",
-          nama: "Lab Satuan",
-          render: () => <SimulasiLabSatuan speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const mesin: TabLab = {
-          id: "mesin-tebak",
-          nama: "Mesin Tebak dan Buktikan",
-          render: () => <SimulasiMesinTebak speakGuru={a.speakGuru} onTuntas={() => selesai("mesin-tebak")} />,
-        };
-        const jam: TabLab = {
-          id: "jam",
-          nama: "Lab Jam",
-          render: () => <SimulasiLabJam speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const hari: TabLab = {
-          id: "hari",
-          nama: "Lab Hariku",
-          render: () => <SimulasiLabHari speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const minggu: TabLab = {
-          id: "minggu-kira",
-          nama: "Hari Minggu Kira",
-          render: () => <SimulasiSkenario def={SKENARIO_K2B6B} speakGuru={a.speakGuru} onTuntas={() => selesai("minggu-kira")} />,
-        };
-
-        const tab = huruf === "A" ? [neraca, satuan, mesin] : [jam, hari, minggu];
-        return <LabBertahap tab={tab} label="Alat laboratorium pengukuran" />;
-      },
-    },
-  ];
+  if (sub === "B") return [langkahPosWaktuB()];
+  return [langkahPosTimbangA()];
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */
@@ -105,10 +59,10 @@ export default function SimulasiK2Bab6Materi({
   onSelesai: () => void;
   teksAkhir: string;
 }) {
-  const huruf = hurufSub(sub);
+  const huruf = ["A", "B"].includes(sub) ? sub : "A";
   return (
     <SimulasiAlur
-      judulBab={`Kelas 2 Bab 6 · Sub-Bab ${huruf}`}
+      judulBab={`Bab 6 · Sub-Bab ${huruf}`}
       langkah={langkahK2Bab6(sub)}
       speakGuru={speakGuru}
       onSelesai={onSelesai}

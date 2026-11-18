@@ -1,238 +1,149 @@
-import type { AdeganStory } from "./logika-story";
-import { W, anak, deret, emo, idPenunjuk, idBenda, isiSisi, judul, kartu, kerangka, labelSisi, panah, penunjuk, spek, teks, ubahTimbang } from "./k2b6A-gambar";
-import { bersih, hapus, idKartu, idx, k, redamkan, sorotkan, tambah, ubah } from "./k2b6A-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, WL, bendera, bola, emo, garis, gantungan, gawang, geser, judul, kantong, kerucut, keranjang, kotak, lapangan, panah, papan, pindah, teks, tenda, tokoh, troli } from "./k2b6A-gambar";
+import { bersih, hapus, k, tambah, ubah } from "./k2b6A-bantu";
 
-const KOSONG = (jenis: "timbangan" | "gantung") => spek(1, jenis, [], []);
+/*
+ * Cerita orisinal IGIL "Peralatan Lomba Pak Anton" (Kelas 2 Bab 6 Sub-Bab A, berat benda), awal cerita Hari Olahraga Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b6a.md. Bagian ini: troli datang, salah langkah (besar belum tentu berat), dan tiga cara membandingkan berat.
+ */
 
-/* ------------------------------ 2. Buah Kira dan Malosi ------------------------------ */
-const BUAH = ["semangka", "apel", "anggur"];
-const XS_BUAH = [92, 150, 208];
-const SUARA_C1 = "Hari ini Kira dan Malosi bermain dengan buah di layar. Ada semangka, apel, dan anggur.";
-const SUARA_C2 = "Kira bertanya, benda mana yang paling berat? Malosi menjawab, kita bisa menimbang supaya tahu.";
-const SUARA_C3 = "Menebak saja belum pasti. Karena itu kita memakai alat untuk membandingkan berat.";
-const SUARA_C4 = "Berat adalah tarikan benda ke bawah. Semangka tertarik ke bawah lebih kuat daripada anggur.";
-const SUARA_C5 = "Supaya yakin, kita buktikan dengan timbangan jungkat-jungkit. Mari kita lihat bersama.";
-const buahC = deret(BUAH, 100, 1, XS_BUAH);
+/* ------------------------------ 1. Troli datang ------------------------------ */
+const SUARA_T1 = "Besok Hari Olahraga! Pak Anton mendorong troli penuh peralatan ke lapangan.";
+const SUARA_T2 = "Bu Sari berkata, tim Biru dan tim Kuning membawa benda yang sama beratnya, supaya adil.";
+const SUARA_T3 = "Kerucut diangkat satu jari. Kantong pasir harus dua tangan. Kerucut ringan, kantong pasir berat!";
 
-export const ADEGAN_CERITA_BUAH: AdeganStory = {
-  id: "cerita-buah",
-  judul: "Buah Kira dan Malosi",
-  sumber: "Materi: buah Kira dan Malosi",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(
-      SUARA_C1,
-      tambah(0, judul("Buah Kira dan Malosi")),
-      tambah(idx(SUARA_C1, "Kira"), ...anak("kira", 36, 44)),
-      tambah(idx(SUARA_C1, "Malosi"), ...anak("malosi", 264, 44)),
-      tambah(idx(SUARA_C1, "semangka,"), buahC[0], buahC[1]),
-      tambah(idx(SUARA_C1, "apel,"), buahC[2], buahC[3]),
-      tambah(idx(SUARA_C1, "anggur."), buahC[4], buahC[5]),
-    ),
-    k(SUARA_C2, tambah(idx(SUARA_C2, "bertanya,"), emo("tn", 150, 54, "❓", 30)), tambah(idx(SUARA_C2, "menimbang"), emo("tb", 150, 160, "⚖️", 30))),
-    k(SUARA_C3, hapus(idx(SUARA_C3, "Menebak"), "tn", "tb"), tambah(idx(SUARA_C3, "alat"), ...kartu("al", 40, 140, 220, 34, W.emas, ["alat untuk membandingkan berat"], 10))),
-    k(
-      SUARA_C4,
-      hapus(0, ...idKartu("al")),
-      tambah(idx(SUARA_C4, "tarikan"), panah("pa2", 150, 124, 0, 14)),
-      tambah(idx(SUARA_C4, "Semangka"), panah("pa1", 92, 124, 0, 38)),
-      tambah(idx(SUARA_C4, "anggur."), panah("pa3", 208, 124, 0, 9)),
-    ),
-    k(SUARA_C5, bersih(0), tambah(0, judul("Timbangan jungkat-jungkit")), tambah(idx(SUARA_C5, "timbangan"), emo("tbs", 150, 96, "⚖️", 56)), tambah(idx(SUARA_C5, "lihat"), ...kartu("tk", 40, 120, 220, 34, W.langit, ["timbangan jungkat-jungkit"], 11))),
-  ],
-};
+const TROLI0 = troli("tr", 52, 160);
+const ISI_TROLI: Obj[] = [...kerucut("kc", 64, 160, 16), ...kantong("kp", 76, 145, 20, 15), ...bola("bl", 106, 153, 7)];
+const ANTON0 = tokoh("pa", 30, 184, "Pak Anton");
 
-/* ------------------------------ 3. Timbangan jungkat-jungkit ------------------------------ */
-const J0 = KOSONG("timbangan");
-const J1 = spek(1, "timbangan", ["apel"], []);
-const J2 = spek(1, "timbangan", ["apel"], ["anggur"]);
-const J3a = spek(1, "timbangan", ["anggur"], []);
-const J3 = spek(1, "timbangan", ["anggur"], ["apel"]);
-const SUARA_J1 = "Cara pertama memakai timbangan jungkat-jungkit. Ini papan panjang yang bagian tengahnya diam, dan kedua ujungnya bisa naik turun.";
-const SUARA_J2 = "Di tiap ujung ada satu piringan. Benda ditaruh di piringan itu. Sekarang piringan kiri dan piringan kanan masih kosong.";
-const SUARA_J3 = "Kita taruh apel di piringan kiri. Piringan kiri terasa berat, jadi ujung kiri turun.";
-const SUARA_J4 = "Sekarang kita taruh anggur di piringan kanan. Anggur sangat ringan.";
-const SUARA_J5 = "Lihat, ujung kiri tetap turun dan ujung kanan tetap naik. Apel lebih berat dari anggur.";
-const SUARA_J6 = "Sekarang kita tukar tempatnya. Anggur kita pindah ke kiri dan apel kita pindah ke kanan.";
-const SUARA_J7 = "Sekarang ujung kanan turun. Apel di kanan lebih berat dari anggur. Benda yang lebih berat selalu membuat ujungnya turun.";
-
-export const ADEGAN_JUNGKAT: AdeganStory = {
-  id: "jungkat-jungkit",
-  judul: "Timbangan jungkat-jungkit",
-  sumber: "Materi: timbangan jungkat-jungkit",
-  latar: "#ECFEFF",
-  ketukan: [
-    k(SUARA_J1, tambah(0, judul("Timbangan jungkat-jungkit")), tambah(idx(SUARA_J1, "papan"), kerangka(J0)), sorotkan(idx(SUARA_J1, "ujungnya"), "tm1-bl")),
-    k(
-      SUARA_J2,
-      redamkan(0, "tm1-bl"),
-      tambah(idx(SUARA_J2, "kiri"), teks("hk", 54, 44, "kiri", 11, W.ungu)),
-      tambah(idx(SUARA_J2, "kanan"), teks("hn", 246, 44, "kanan", 11, W.ungu)),
-      sorotkan(idx(SUARA_J2, "piringan"), "tm1-pL", "tm1-pR"),
-      redamkan(idx(SUARA_J2, "kosong."), "tm1-pL", "tm1-pR"),
-    ),
-    k(
-      SUARA_J3,
-      hapus(0, "hk", "hn"),
-      tambah(idx(SUARA_J3, "apel"), ...isiSisi(J1, "L"), labelSisi(J1, "L")),
-      ubah(idx(SUARA_J3, "apel"), ...ubahTimbang(J1, { L: true })),
-      tambah(idx(SUARA_J3, "turun."), ...penunjuk(J1)),
-    ),
-    k(SUARA_J4, tambah(idx(SUARA_J4, "anggur"), ...isiSisi(J2, "R"), labelSisi(J2, "R")), ubah(idx(SUARA_J4, "anggur"), ...ubahTimbang(J2, { L: true, R: true }))),
-    k(SUARA_J5, sorotkan(idx(SUARA_J5, "kiri"), "tm1-pL"), tambah(idx(SUARA_J5, "Apel"), ...kartu("hs", 40, 164, 220, 26, W.emas, ["turun berarti lebih berat"], 10))),
-    k(
-      SUARA_J6,
-      redamkan(0, "tm1-pL"),
-      hapus(idx(SUARA_J6, "tukar"), idBenda(1, "L", "apel", 1), idBenda(1, "R", "anggur", 1), "tm1-lbL", "tm1-lbR", ...idPenunjuk(J2)),
-      ubah(idx(SUARA_J6, "tukar"), ...ubahTimbang(J0)),
-      tambah(idx(SUARA_J6, "Anggur"), ...isiSisi(J3a, "L"), labelSisi(J3a, "L")),
-      ubah(idx(SUARA_J6, "Anggur"), ...ubahTimbang(J3a, { L: true })),
-      tambah(idx(SUARA_J6, "apel"), ...isiSisi(J3, "R"), labelSisi(J3, "R")),
-      ubah(idx(SUARA_J6, "apel"), ...ubahTimbang(J3, { L: true, R: true })),
-      tambah(idx(SUARA_J6, "kanan."), ...penunjuk(J3)),
-    ),
-    k(SUARA_J7, sorotkan(idx(SUARA_J7, "kanan"), "tm1-pR"), ubah(idx(SUARA_J7, "Benda"), { id: "hs-t0", isi: "yang berat selalu turun" })),
-  ],
-};
-
-/* ------------------------------ 4. Lebih berat dan lebih ringan ------------------------------ */
-const K0 = KOSONG("timbangan");
-const KA = spek(1, "timbangan", ["semangka"], []);
-const KB = spek(1, "timbangan", ["semangka"], ["apel"]);
-const KCa = spek(1, "timbangan", ["apel"], []);
-const KC = spek(1, "timbangan", ["apel"], ["semangka"]);
-const SUARA_L1 = "Sekarang kita belajar kata untuk membandingkan. Di piringan kiri ada semangka, dan di piringan kanan ada apel.";
-const SUARA_L2 = "Semangka lebih berat dari apel. Karena itu ujung semangka turun.";
-const SUARA_L3 = "Sebaliknya, apel lebih ringan dari semangka. Karena itu ujung apel naik.";
-const SUARA_L4 = "Kita ingat dua kata. Lebih berat untuk benda yang turun, dan lebih ringan untuk benda yang naik.";
-const SUARA_L5 = "Sekarang kita tukar tempatnya. Apel di kiri dan semangka di kanan.";
-const SUARA_L6 = "Ujung semangka tetap turun, walaupun sekarang di sebelah kanan. Jadi semangka tetap lebih berat dari apel, di mana pun tempatnya.";
-
-export const ADEGAN_LEBIH_BERAT: AdeganStory = {
-  id: "lebih-berat",
-  judul: "Lebih berat dan lebih ringan",
-  sumber: "Materi: lebih berat dan lebih ringan",
+export const ADEGAN_TROLI_DATANG: AdeganStory = {
+  id: "troli-datang",
+  judul: "Troli peralatan datang",
+  sumber: "Materi: troli peralatan datang",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_L1,
-      tambah(0, judul("Kata untuk berat")),
-      tambah(idx(SUARA_L1, "piringan"), kerangka(K0)),
-      tambah(idx(SUARA_L1, "semangka,"), ...isiSisi(KA, "L"), labelSisi(KA, "L")),
-      ubah(idx(SUARA_L1, "semangka,"), ...ubahTimbang(KA, { L: true })),
-      tambah(idx(SUARA_L1, "apel"), ...isiSisi(KB, "R"), labelSisi(KB, "R")),
-      ubah(idx(SUARA_L1, "apel"), ...ubahTimbang(KB, { L: true, R: true })),
-    ),
-    k(SUARA_L2, tambah(idx(SUARA_L2, "Semangka"), ...penunjuk(KB)), tambah(idx(SUARA_L2, "turun."), ...kartu("k1", 14, 164, 136, 26, W.hijauMuda, ["semangka lebih berat"], 9))),
-    k(SUARA_L3, sorotkan(idx(SUARA_L3, "apel"), idBenda(1, "R", "apel", 1)), tambah(idx(SUARA_L3, "naik."), ...kartu("k2", 154, 164, 132, 26, W.pink, ["apel lebih ringan"], 9))),
-    k(SUARA_L4, redamkan(0, idBenda(1, "R", "apel", 1)), sorotkan(idx(SUARA_L4, "turun,"), idBenda(1, "L", "semangka", 1)), sorotkan(idx(SUARA_L4, "naik."), idBenda(1, "R", "apel", 1))),
-    k(
-      SUARA_L5,
-      redamkan(0, idBenda(1, "L", "semangka", 1), idBenda(1, "R", "apel", 1)),
-      hapus(idx(SUARA_L5, "tukar"), idBenda(1, "L", "semangka", 1), idBenda(1, "R", "apel", 1), "tm1-lbL", "tm1-lbR", ...idPenunjuk(KB)),
-      ubah(idx(SUARA_L5, "tukar"), ...ubahTimbang(K0)),
-      tambah(idx(SUARA_L5, "Apel"), ...isiSisi(KCa, "L"), labelSisi(KCa, "L")),
-      ubah(idx(SUARA_L5, "Apel"), ...ubahTimbang(KCa, { L: true })),
-      tambah(idx(SUARA_L5, "semangka"), ...isiSisi(KC, "R"), labelSisi(KC, "R")),
-      ubah(idx(SUARA_L5, "semangka"), ...ubahTimbang(KC, { L: true, R: true })),
-      tambah(idx(SUARA_L5, "kanan."), ...penunjuk(KC)),
-    ),
-    k(SUARA_L6, sorotkan(idx(SUARA_L6, "semangka"), idBenda(1, "R", "semangka", 1)), tambah(idx(SUARA_L6, "tempatnya."), emo("ok", 150, 54, "✅", 24))),
-  ],
-};
-
-/* ------------------------------ 5. Sama berat ------------------------------ */
-const M0 = KOSONG("timbangan");
-const MA = spek(1, "timbangan", ["apel"], []);
-const MB = spek(1, "timbangan", ["apel"], ["jeruk"]);
-const MC = spek(1, "timbangan", ["apel"], ["jeruk", "anggur"]);
-const SUARA_M1 = "Sekarang ada apel di piringan kiri dan jeruk di piringan kanan. Kita lihat apa yang terjadi.";
-const SUARA_M2 = "Kedua ujung sejajar. Tidak ada yang turun dan tidak ada yang naik.";
-const SUARA_M3 = "Apel sama berat dengan jeruk. Kita sebut sama berat.";
-const SUARA_M4 = "Apel dan jeruk berbeda rasa dan warna. Tetapi beratnya sama, jadi timbangan jungkat-jungkit tetap sejajar.";
-const SUARA_M5 = "Sekarang kita tambah satu anggur di piringan kanan. Piringan kanan menjadi lebih berat, jadi ujung kanan turun.";
-
-export const ADEGAN_SAMA_BERAT: AdeganStory = {
-  id: "sama-berat",
-  judul: "Sama berat",
-  sumber: "Materi: sama berat",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(
-      SUARA_M1,
-      tambah(0, judul("Sama berat"), kerangka(M0)),
-      tambah(idx(SUARA_M1, "apel"), ...isiSisi(MA, "L"), labelSisi(MA, "L")),
-      ubah(idx(SUARA_M1, "apel"), ...ubahTimbang(MA, { L: true })),
-      tambah(idx(SUARA_M1, "jeruk"), ...isiSisi(MB, "R"), labelSisi(MB, "R")),
-      ubah(idx(SUARA_M1, "jeruk"), ...ubahTimbang(MB, { L: true, R: true })),
-    ),
-    k(SUARA_M2, sorotkan(idx(SUARA_M2, "Kedua"), "tm1-bl"), tambah(idx(SUARA_M2, "sejajar."), teks("sj", 150, 52, "sejajar", 12, W.merah))),
-    k(
-      SUARA_M3,
-      hapus(0, "sj"),
-      redamkan(0, "tm1-bl"),
-      sorotkan(idx(SUARA_M3, "Apel"), idBenda(1, "L", "apel", 1)),
-      sorotkan(idx(SUARA_M3, "jeruk."), idBenda(1, "R", "jeruk", 1)),
-      tambah(idx(SUARA_M3, "sebut"), ...kartu("sb", 90, 164, 120, 26, W.emas, ["sama berat"], 12)),
+      SUARA_T1,
+      tambah(0, judul("Hari Olahraga"), ...lapangan("lp", 112), ...bendera("bd", 270, 40, 70), ...tenda("tn", 196, 82, 60)),
+      tambah("Anton", ...ANTON0),
+      tambah("troli", ...TROLI0),
+      tambah("peralatan", ...ISI_TROLI),
+      ubah("lapangan.", ...geser([...TROLI0, ...ISI_TROLI, ...ANTON0], 50)),
     ),
     k(
-      SUARA_M4,
-      redamkan(0, idBenda(1, "L", "apel", 1), idBenda(1, "R", "jeruk", 1)),
-      hapus(idx(SUARA_M4, "Tetapi"), ...idKartu("sb")),
-      tambah(idx(SUARA_M4, "Tetapi"), ...kartu("sc", 30, 164, 240, 26, W.emas, ["apel dan jeruk: sama berat"], 11)),
-      tambah(idx(SUARA_M4, "tetap"), emo("ok", 150, 54, "✅", 24)),
+      SUARA_T2,
+      tambah("Sari", ...tokoh("bs", 270, 184, "Bu Sari")),
+      tambah("Biru", ...keranjang("kb", 164, 172, 28, "#60A5FA"), teks("lb", 178, 164, "Biru", 8, "#1D4ED8")),
+      tambah("Kuning", ...keranjang("kk", 200, 172, 28, "#FDE047"), teks("lk", 214, 164, "Kuning", 8, "#A16207")),
+      tambah("sama", teks("sm", 196, 130, "sama berat", 9, W.ungu)),
+      tambah("adil.", emo("ok", 196, 150, E.benar, 20)),
     ),
     k(
-      SUARA_M5,
-      hapus(0, "ok", ...idKartu("sc")),
-      tambah(idx(SUARA_M5, "anggur"), ...isiSisi(MC, "R").filter((o) => o.id.includes("anggur"))),
-      ubah(idx(SUARA_M5, "anggur"), ...ubahTimbang(MC, { L: true, R: true })),
-      tambah(idx(SUARA_M5, "turun."), ...penunjuk(MC)),
+      SUARA_T3,
+      bersih(0),
+      tambah(0, judul("Ringan atau Berat?"), ...lapangan("lp", 112)),
+      tambah("Kerucut", ...tokoh("ch", 40, 184, "Chacha"), ...kerucut("kc", 70, 132, 30)),
+      tambah("satu", teks("n1", 70, 96, "1 jari", 10, W.ungu)),
+      tambah("jari.", emo("jr", 70, 152, E.jari, 18)),
+      tambah("Kantong", ...kantong("kp", 190, 150, 44, 30)),
+      tambah("dua", teks("n2", 212, 138, "2 tangan", 10, W.ungu)),
+      tambah("tangan.", emo("tg", 212, 198, E.tangan, 16)),
+      tambah("ringan,", teks("rg", 70, 70, "ringan", 10, W.hijau)),
+      tambah("berat!", teks("br", 212, 118, "berat", 10, W.merah), emo("jg", 254, 160, E.jangkar, 16)),
     ),
   ],
 };
 
-/* ------------------------------ 6. Gantungan baju ------------------------------ */
-const G0 = KOSONG("gantung");
-const GSa = spek(1, "gantung", ["semangka"], []);
-const GA = spek(1, "gantung", ["semangka"], ["apel"]);
-const GBa = spek(1, "gantung", ["anggur"], []);
-const GB = spek(1, "gantung", ["anggur"], ["jeruk"]);
-const SUARA_G1 = "Cara kedua memakai gantungan baju. Gantungan baju punya satu kait di tengah, dan benda digantung di kedua ujungnya.";
-const SUARA_G2 = "Kita gantung semangka di ujung kiri dan apel di ujung kanan.";
-const SUARA_G3 = "Ujung semangka turun, karena semangka lebih berat dari apel.";
-const SUARA_G4 = "Gantungan baju bekerja seperti timbangan jungkat-jungkit. Benda yang lebih berat selalu turun.";
-const SUARA_G5 = "Sekarang kita ganti isinya. Di kiri ada anggur dan di kanan ada jeruk.";
-const SUARA_G6 = "Ujung jeruk turun, jadi jeruk lebih berat dari anggur. Anggur lebih ringan dari jeruk.";
+/* ------------------------------ 2. Salah langkah: besar belum tentu berat ------------------------------ */
+const SUARA_S1 = "Chacha menunjuk bola karet raksasa. Pasti paling berat, karena besar! Kalau salah, aku bawa semua kerucut!";
+const SUARA_S2 = "Ia mengangkatnya sekuat tenaga, dan bola melayang karena sangat ringan! Topi Pak Anton terbang.";
+const SUARA_S3 = "Dika tertawa. Besar belum tentu berat, Chacha. Balon besar itu ringan, batu kecil berat.";
 
-export const ADEGAN_GANTUNGAN: AdeganStory = {
-  id: "gantungan",
-  judul: "Gantungan baju",
-  sumber: "Materi: gantungan baju",
-  latar: "#F5F3FF",
+const bolaRaksasa = (x: number, y: number): Obj[] => bola("bk", x, y, 30, "#FDE047", "#A16207");
+const ANTON_S = tokoh("pa", 272, 184, "Pak Anton");
+
+export const ADEGAN_SALAH_BESAR: AdeganStory = {
+  id: "salah-besar",
+  judul: "Bola raksasa yang ringan",
+  sumber: "Materi: salah langkah, bola raksasa",
+  latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_G1, tambah(0, judul("Gantungan baju")), tambah(idx(SUARA_G1, "gantungan"), kerangka(G0)), sorotkan(idx(SUARA_G1, "kait"), "tm1-kc")),
     k(
-      SUARA_G2,
-      redamkan(0, "tm1-kc"),
-      tambah(idx(SUARA_G2, "semangka"), ...isiSisi(GSa, "L"), labelSisi(GSa, "L")),
-      ubah(idx(SUARA_G2, "semangka"), ...ubahTimbang(GSa, { L: true })),
-      tambah(idx(SUARA_G2, "apel"), ...isiSisi(GA, "R"), labelSisi(GA, "R")),
-      ubah(idx(SUARA_G2, "apel"), ...ubahTimbang(GA, { L: true, R: true })),
+      SUARA_S1,
+      tambah(0, judul("Bola Raksasa"), ...lapangan("lp", 112)),
+      tambah("Chacha", ...tokoh("ch", 40, 184, "Chacha")),
+      tambah("menunjuk", panah("pn", 64, 160, 40, -10, W.merah, 2.4)),
+      tambah("bola", ...bolaRaksasa(150, 142)),
+      tambah("berat,", teks("pb", 150, 100, "paling berat?", 9, W.merah)),
+      tambah("kerucut!", ...kerucut("k1", 214, 184, 20), ...kerucut("k2", 236, 184, 20)),
     ),
-    k(SUARA_G3, sorotkan(idx(SUARA_G3, "Ujung"), idBenda(1, "L", "semangka", 1)), tambah(idx(SUARA_G3, "turun,"), ...penunjuk(GA))),
-    k(SUARA_G4, redamkan(0, idBenda(1, "L", "semangka", 1)), sorotkan(idx(SUARA_G4, "timbangan"), "tm1-bl"), tambah(idx(SUARA_G4, "selalu"), ...kartu("kb", 40, 150, 220, 30, W.emas, ["berat di bawah, ringan di atas"], 10))),
     k(
-      SUARA_G5,
-      redamkan(0, "tm1-bl"),
-      hapus(idx(SUARA_G5, "ganti"), idBenda(1, "L", "semangka", 1), idBenda(1, "R", "apel", 1), "tm1-lbL", "tm1-lbR", ...idKartu("kb"), ...idPenunjuk(GA)),
-      ubah(idx(SUARA_G5, "ganti"), ...ubahTimbang(G0)),
-      tambah(idx(SUARA_G5, "anggur"), ...isiSisi(GBa, "L"), labelSisi(GBa, "L")),
-      ubah(idx(SUARA_G5, "anggur"), ...ubahTimbang(GBa, { L: true })),
-      tambah(idx(SUARA_G5, "jeruk."), ...isiSisi(GB, "R"), labelSisi(GB, "R")),
-      ubah(idx(SUARA_G5, "jeruk."), ...ubahTimbang(GB, { L: true, R: true })),
-      tambah(idx(SUARA_G5, "jeruk."), ...penunjuk(GB)),
+      SUARA_S2,
+      ubah("mengangkatnya", ...pindah(bolaRaksasa(70, 118))),
+      ubah("melayang", ...pindah(bolaRaksasa(70, 58))),
+      tambah("ringan!", teks("rg", 128, 84, "ringan", 10, W.hijau)),
+      tambah("Topi", ...ANTON_S),
+      ubah("terbang.", { id: "pa-cp", x: 232, y: 100 }),
     ),
-    k(SUARA_G6, sorotkan(idx(SUARA_G6, "jeruk"), idBenda(1, "R", "jeruk", 1)), tambah(idx(SUARA_G6, "anggur", 2), ...kartu("kc", 40, 150, 220, 30, W.emas, ["jeruk berat, anggur ringan"], 10))),
+    k(
+      SUARA_S3,
+      bersih(0),
+      tambah(0, judul("Besar Belum Tentu Berat"), ...lapangan("lp", 112)),
+      tambah("Dika", ...tokoh("dk", 36, 184, "Dika")),
+      ubah("tertawa.", { id: "dk", isi: E.tertawa }),
+      tambah("Besar", teks("bb", 150, 70, "besar belum tentu berat", 9, W.merah)),
+      tambah("Balon", emo("bn", 120, 150, E.balon, 46)),
+      tambah("ringan,", teks("t1", 120, 168, "ringan", 9, W.hijau)),
+      tambah("batu", emo("bt", 232, 150, E.batu, 22)),
+      tambah("berat.", teks("t2", 232, 168, "berat", 9, W.merah), emo("jg", 232, 126, E.jangkar, 16)),
+    ),
+  ],
+};
+
+/* ------------------------------ 3. Tiga cara menimbang ------------------------------ */
+const SUARA_C1 = "Nia berkata, ada tiga cara pasti untuk membandingkan berat.";
+const SUARA_C2 = "Kedua tangan, gantungan baju berbenda di tiap ujung, dan papan jungkat-jungkit.";
+const SUARA_C3 = "Dua kantong digantung di gantungan baju. Kantong yang turun lebih berat.";
+
+/** Gantungan di tiang gawang dengan dua kantong; dy = naik-turun ujung (positif: kanan turun). */
+const susunGantung = (dy: number): Obj[] => [
+  ...gantungan("gt", 150, 100, 40, dy),
+  garis("tl1", 110, 100 - dy, 0, 10, WL.besiTua, 1.4),
+  ...kantong("kl", 99, 110 - dy, 22, 15),
+  garis("tl2", 190, 100 + dy, 0, 10, WL.besiTua, 1.4),
+  ...kantong("kr", 179, 110 + dy, 22, 15),
+];
+
+export const ADEGAN_TIGA_CARA: AdeganStory = {
+  id: "tiga-cara",
+  judul: "Tiga cara membandingkan berat",
+  sumber: "Materi: tiga cara menimbang",
+  latar: "#F0F9FF",
+  ketukan: [
+    k(
+      SUARA_C1,
+      tambah(0, judul("Tiga Cara Menimbang")),
+      tambah("Nia", ...tokoh("ni", 36, 184, "Nia")),
+      tambah("tiga", teks("n3", 150, 44, "3 cara", 11, W.ungu)),
+      tambah("cara", kotak("q1", 90, 56, 56, 48, W.krem), kotak("q2", 154, 56, 56, 48, W.krem), kotak("q3", 218, 56, 56, 48, W.krem), emo("m1", 118, 90, E.tanya, 20), emo("m2", 182, 90, E.tanya, 20), emo("m3", 246, 90, E.tanya, 20)),
+      tambah("membandingkan", emo("nr", 150, 160, "\u{2696}", 34)),
+    ),
+    k(
+      SUARA_C2,
+      hapus(0, "m1", "m2", "m3", "nr"),
+      tambah("tangan,", emo("th", 118, 92, E.tangan, 24), teks("l1", 118, 122, "tangan", 8, W.ungu)),
+      tambah("gantungan", ...gantungan("mg", 182, 90, 14, 2), teks("l2", 182, 122, "gantungan", 8, W.ungu)),
+      tambah("papan", ...papan("mp", 246, 88, 22, 4), teks("l3", 246, 122, "jungkat-jungkit", 8, W.ungu)),
+    ),
+    k(
+      SUARA_C3,
+      bersih(0),
+      tambah(0, judul("Gantungan Baju"), ...lapangan("lp", 124)),
+      tambah("kantong", ...gawang("gw", 70, 50, 160, 76), garis("tk", 150, 50, 0, 25, WL.besiTua, 1.8)),
+      tambah("Dua", teks("n2", 150, 40, "2 kantong", 10, W.ungu)),
+      tambah("digantung", ...susunGantung(0)),
+      ubah("turun", ...pindah(susunGantung(8))),
+      tambah("turun", panah("pt", 216, 112, 0, 22, W.merah, 2.4), teks("tu", 220, 150, "lebih berat", 9, W.merah)),
+    ),
   ],
 };

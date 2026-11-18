@@ -1,19 +1,15 @@
 import type { Obj } from "./logika-story";
 
 /**
- * Gambar khusus Story Kelas 2 Bab 6 Sub-Bab B (Waktu): jam analog dengan jarum pendek dan jarum panjang, jam digital, baris kegiatan,
- * batang lama kegiatan, dan kartu bagian hari. Berkas ini TIDAK dipakai bab lain.
+ * Gambar khusus Story Kelas 2 Bab 6 Sub-Bab B "Jadwal Lomba Bu Ratna" (waktu dan jam), akhir cerita Hari Olahraga Sekolah.
+ * Berkas ini TIDAK dipakai bab atau sub-bab lain.
  *
- * Kesepakatan id (dipakai uji hitung ulang):
- * - Jam analog `j{n}`: muka `j{n}-w`, angka `j{n}-a{1..12}`, jarum pendek `j{n}-p`, jarum panjang `j{n}-m`, poros `j{n}-h`.
- *   Jarum digambar tegak lurus ke atas lalu diputar (`rot`, derajat searah jarum jam dari angka dua belas) mengelilingi pusat muka jam.
- *   Sudut jarum pendek = 30 x (jam mod 12) + menit / 2; sudut jarum panjang = 6 x menit.
- * - Jam digital: kotak `dg-k`, tulisan `dg-t` berbentuk "HH.MM" (jam 24).
- * - Baris kegiatan `kg{j}` (j = nomor di JADWAL): kotak `kg{j}-k`, nama `kg{j}-nm`, waktu `kg{j}-jm` berbentuk "pukul 6 pagi".
- * - Baris lama kegiatan `lm{j}`: nama `lm{j}-nm`, batang `lm{j}-b` (lebar = 2 x menit), label `lm{j}-t` berbentuk "15 menit" atau "1 jam".
- * - Kolom bagian hari `bg{j}`: judul `bg{j}-nm` (Pagi, Siang, Sore, Malam), kegiatan `bg{j}-kg`.
- * - Kartu jam digital per bagian hari `bh{j}`: bagian `bh{j}-nm`, jam `bh{j}-dg` berbentuk "HH.MM".
- * - Kartu pilihan `c1..cn` (`c1-k`, `c1-t`).
+ * Rupa Hari Olahraga dari pagi sampai malam: lapangan hijau bergaris putih, tiang bendera, tiang jam dinding besar, jam digital kotak, busur matahari,
+ * lintasan lari, tali tambang, papan jadwal, jalur jam berkotak, batang lama kegiatan, lampu lapangan malam, piala, peluit.
+ * Tokoh: Chacha, Dika, Nia (bertopi), Bu Sari (berkaus dan bertopi putih, berpeluit), Bu Ratna (bertopi biru, berpengeras suara). Tanpa ZWJ.
+ *
+ * Jam analog `${id}`: muka `${id}-w`, angka `${id}-a{n}`, jarum pendek `${id}-p`, jarum panjang `${id}-m`, poros `${id}-h`.
+ * Jarum digambar tegak ke atas lalu diputar (`rot`, derajat searah jarum jam dari angka dua belas) mengelilingi pusat muka jam.
  */
 
 export const W = {
@@ -24,6 +20,7 @@ export const W = {
   putih: "#FFFFFF",
   abu: "#CBD5E1",
   ungu: "#7C3AED",
+  coklat: "#92400E",
   krem: "#FEF9C3",
   langit: "#DBEAFE",
   merahMuda: "#FECACA",
@@ -32,58 +29,164 @@ export const W = {
   lavender: "#EDE9FE",
   oranye: "#FBA919",
   kuning: "#FDE68A",
+  malam: "#312E81",
 };
 
-export const OWL = "\u{1F989}";
+export const E = {
+  chacha: "\u{1F467}",
+  dika: "\u{1F913}",
+  nia: "\u{1F467}",
+  topi: "\u{1F9E2}",
+  bu: "\u{1F469}",
+  tertawa: "\u{1F604}",
+  senyum: "\u{1F60A}",
+  kaget: "\u{1F632}",
+  pikir: "\u{1F914}",
+  tanya: "\u{2753}",
+  seru: "\u{2757}",
+  benar: "\u{2705}",
+  salah: "\u{274C}",
+  jari: "\u{1F446}",
+  lambai: "\u{1F44B}",
+  tepuk: "\u{1F44F}",
+  kaca: "\u{1F50D}",
+  catat: "\u{1F4DD}",
+  sorak: "\u{1F389}",
+  piala: "\u{1F3C6}",
+  medali: "\u{1F3C5}",
+  bulan: "\u{1F319}",
+  sabun: "\u{1F9FC}",
+  tidur: "\u{1F634}",
+  penjaga: "\u{1F9D3}",
+  kursi: "\u{1FA91}",
+  lari: "\u{1F3C3}",
+  bintang: "\u{2B50}",
+  bola: "\u{26BD}",
+  lampu: "\u{1F4A1}",
+  jam: "\u{1F550}",
+} as const;
 
 type Opsi = Partial<Obj>;
+export type Titik = { x: number; y: number };
+const r1 = (n: number): number => Math.round(n * 10) / 10;
+export const dua = (n: number): string => String(n).padStart(2, "0");
 
 export const teks = (id: string, x: number, y: number, isi: string, u = 10, warna: string = W.biru, o: Opsi = {}): Obj => ({ id, t: "teks", x, y, isi, u, warna, ...o });
 export const kotak = (id: string, x: number, y: number, w: number, h: number, warna: string, garis: string | undefined = W.biru, o: Opsi = {}): Obj => ({ id, t: "kotak", x, y, w, h, warna, garis, rx: 3, tebal: 1.5, ...o });
 export const bulat = (id: string, x: number, y: number, r: number, warna: string, garis: string | undefined = W.biru, o: Opsi = {}): Obj => ({ id, t: "bulat", x, y, r, warna, garis, tebal: 1.5, ...o });
+export const garis = (id: string, x: number, y: number, x2: number, y2: number, warna: string = W.biru, tebal = 2, o: Opsi = {}): Obj => ({ id, t: "garis", x, y, x2, y2, warna, tebal, ...o });
+export const panah = (id: string, x: number, y: number, x2: number, y2: number, warna: string = W.biru, tebal = 2, o: Opsi = {}): Obj => ({ id, t: "panah", x, y, x2, y2, warna, tebal, ...o });
 export const emo = (id: string, x: number, y: number, e: string, u = 22, o: Opsi = {}): Obj => ({ id, t: "teks", x, y, isi: e, u, warna: W.biru, ...o });
-
 /** Judul adegan di tengah atas. */
 export const judul = (isi: string, warna: string = W.ungu): Obj => teks("jud", 150, 18, isi, 11, warna);
 
-/** Kartu berwarna dengan satu sampai empat baris teks, pojok kiri-atas (x, y). */
+/** Kartu berwarna dengan satu sampai tiga baris teks, pojok kiri-atas (x, y): `${id}-k`, `${id}-t{i}`. */
 export function kartu(id: string, x: number, y: number, w: number, h: number, warna: string, baris: string[], u = 9, o: Opsi = {}): Obj[] {
   const mulai = y + h / 2 - ((baris.length - 1) * (u + 3)) / 2 + u * 0.35;
   return [kotak(`${id}-k`, x, y, w, h, warna, W.biru, { rx: 8, ...o }), ...baris.map((b, i) => teks(`${id}-t${i}`, x + w / 2, mulai + i * (u + 3), b, u, W.biru, o))];
 }
+export const idKartu = (id: string, n = 1): string[] => [`${id}-k`, ...Array.from({ length: n }, (_, i) => `${id}-t${i}`)];
 
-/** Kartu pilihan atau kata: pojok kiri-atas (x, y); id `${id}-k` dan `${id}-t`. */
-export const kartuAngka = (id: string, x: number, y: number, isi: string, warna: string = W.krem, w = 40, h = 36, u = 22, o: Opsi = {}): Obj[] => [
-  kotak(`${id}-k`, x, y, w, h, warna, W.biru, { rx: 6, tebal: 1.6, ...o }),
-  teks(`${id}-t`, x + w / 2, y + h / 2 + u * 0.35, isi, u, W.merah, o),
+/** Poligon tertutup dari titik-titik absolut (di kanvas). */
+export const poligon = (id: string, pts: [number, number][], warna: string, garisW: string = W.biru, o: Opsi = {}): Obj => ({
+  id,
+  t: "jalur",
+  x: pts[0][0],
+  y: pts[0][1],
+  d: `M0 0 ${pts.slice(1).map(([a, b]) => `L${r1(a - pts[0][0])} ${r1(b - pts[0][1])}`).join(" ")} Z`,
+  warna,
+  garis: garisW,
+  tebal: 1.6,
+  ...o,
+});
+
+/* ------------------------------ Lapangan ------------------------------ */
+
+/** Rumput lapangan `${id}` mulai tinggi y sampai bawah kanvas, dengan garis putih `${id}-g` di tengahnya. */
+export const lapangan = (id: string, y = 150, warna = "#BBF7D0"): Obj[] => [
+  kotak(id, 2, y, 296, 198 - y, warna, "#16A34A", { rx: 4, tebal: 1.2, z: -3 }),
+  garis(`${id}-g`, 8, r1(y + (198 - y) / 2), 284, 0, W.putih, 2, { z: -2 }),
+];
+/** Langit pagi, sore, atau malam: kotak lebar `${id}` dari atas sampai tinggi y. */
+export const langitLatar = (id: string, y: number, warna: string): Obj => kotak(id, 2, 2, 296, y - 2, warna, undefined, { rx: 4, z: -4 });
+
+/** Tiang bendera `${id}` (garis) dengan bendera merah putih `${id}-b` (kotak) pada tinggi `bendera` dari dasar. */
+export const tiangBendera = (id: string, x: number, dasar: number, tinggi: number, bendera: number): Obj[] => [
+  garis(id, x, dasar, 0, -tinggi, "#6B7280", 3, { z: 0 }),
+  kotak(`${id}-b`, x + 1.5, r1(dasar - bendera - 12), 24, 12, W.merah, W.biru, { rx: 1, tebal: 1, z: 1 }),
+  bulat(`${id}-u`, x, r1(dasar - tinggi - 2), 2.6, W.emas, W.biru, { tebal: 1, z: 1 }),
+];
+export const idTiang = (id: string): string[] => [id, `${id}-b`, `${id}-u`];
+
+/** Matahari `${id}` (cakram dengan lingkar) di (x, y). */
+export const matahari = (id: string, x: number, y: number, r = 11, warna = "#FACC15"): Obj[] => [bulat(id, x, y, r, warna, "#F59E0B", { tebal: 2, z: 0 }), bulat(`${id}-i`, x, y, r1(r * 0.55), "#FEF08A", undefined, { z: 1 })];
+export const idMatahari = (id: string): string[] => [id, `${id}-i`];
+
+/** Bulan sabit `${id}` (cakram krem). */
+export const bulanMalam = (id: string, x: number, y: number, r = 10): Obj => bulat(id, x, y, r, "#FEF9C3", "#EAB308", { tebal: 1.6, z: 0 });
+
+/** Tiang lampu lapangan `${id}` dengan kepala lampu menyala `${id}-l`. */
+export const lampuLapangan = (id: string, x: number, dasar: number, tinggi = 70): Obj[] => [
+  garis(id, x, dasar, 0, -tinggi, "#475569", 3, { z: 0 }),
+  kotak(`${id}-l`, x - 9, r1(dasar - tinggi - 8), 18, 8, "#FDE047", "#A16207", { rx: 2, tebal: 1.2, z: 1 }),
+];
+export const idLampu = (id: string): string[] => [id, `${id}-l`];
+
+/** Tali tambang `${id}` melintang (garis tebal) dengan pita tengah merah `${id}-p`. */
+export const taliTambang = (id: string, x: number, y: number, panjang: number): Obj[] => [
+  garis(id, x, y, panjang, 0, "#92400E", 4, { z: 1 }),
+  kotak(`${id}-p`, r1(x + panjang / 2 - 3), r1(y - 5), 6, 10, W.merah, W.biru, { rx: 1, tebal: 1, z: 2 }),
+];
+export const idTali = (id: string): string[] => [id, `${id}-p`];
+
+/** Lintasan lari: jalur abu `${id}` dengan garis tengah putus `${id}-g`. */
+export const lintasan = (id: string, x: number, y: number, w: number, h = 22): Obj[] => [
+  kotak(id, x, y, w, h, "#FCA5A5", "#B91C1C", { rx: 3, tebal: 1.4, z: -1 }),
+  garis(`${id}-g`, x + 4, r1(y + h / 2), w - 8, 0, W.putih, 1.6, { putus: true, z: 0 }),
+];
+export const idLintasan = (id: string): string[] => [id, `${id}-g`];
+
+/** Peluit `${id}`: badan bulat kuning dan corong. */
+export const peluit = (id: string, x: number, y: number): Obj[] => [bulat(id, x, y, 4.6, W.emas, W.biru, { tebal: 1.2, z: 3 }), kotak(`${id}-c`, r1(x - 10), r1(y - 2), 9, 4, W.emas, W.biru, { rx: 1.5, tebal: 1, z: 3 })];
+export const idPeluit = (id: string): string[] => [id, `${id}-c`];
+
+/** Papan jadwal kayu `${id}` bertiang: papan krem dengan bingkai coklat dan dua kaki `${id}-a`, `${id}-b`. */
+export const papanJadwal = (id: string, x: number, y: number, w: number, h: number): Obj[] => [
+  kotak(id, x, y, w, h, "#FEF3C7", W.coklat, { rx: 5, tebal: 3.4, z: -1 }),
+  kotak(`${id}-a`, r1(x + 10), r1(y + h), 5, 14, W.coklat, W.coklat, { rx: 1, tebal: 0.8, z: -2 }),
+  kotak(`${id}-b`, r1(x + w - 15), r1(y + h), 5, 14, W.coklat, W.coklat, { rx: 1, tebal: 0.8, z: -2 }),
+];
+export const idPapan = (id: string): string[] => [id, `${id}-a`, `${id}-b`];
+
+/** Spanduk kecil `${id}` dan teksnya `${id}-t`. Pojok kiri-atas (x, y). */
+export const spanduk = (id: string, x: number, y: number, w: number, isi: string, u = 10, warna: string = W.merahMuda): Obj[] => [
+  kotak(id, x, y, w, 22, warna, W.merah, { rx: 3, tebal: 2, z: 1 }),
+  teks(`${id}-t`, x + w / 2, r1(y + 11 + u * 0.35), isi, u, W.merah, { z: 2 }),
 ];
 
-const r1 = (n: number): number => Math.round(n * 10) / 10;
-export const dua = (n: number): string => String(n).padStart(2, "0");
+/** Setengah lingkaran langit `${id}` (poligon) berpusat di (cx, cy) dengan jari-jari r, mengarah ke atas. */
+export const busurLangit = (id: string, cx: number, cy: number, r: number, warna: string): Obj => {
+  const pts: [number, number][] = [];
+  for (let d = 180; d <= 360; d += 15) pts.push([r1(cx + r * Math.cos((d * Math.PI) / 180)), r1(cy + r * Math.sin((d * Math.PI) / 180))]);
+  return poligon(id, pts, warna, "#93C5FD", { tebal: 1.4, z: -1 });
+};
+/** Titik pada busur langit (sudut d dari 180 kiri sampai 360 kanan). */
+export const titikBusur = (cx: number, cy: number, r: number, d: number): Titik => ({ x: r1(cx + r * Math.cos((d * Math.PI) / 180)), y: r1(cy + r * Math.sin((d * Math.PI) / 180)) });
 
 /* ------------------------------ Jam analog ------------------------------ */
 
-/** Sudut jarum pendek (derajat) untuk jam h (0 sampai 12) dan menit m. */
+/** Sudut jarum pendek (derajat) untuk jam h dan menit m. */
 export const sudutPendek = (h: number, m: number): number => 30 * (h % 12) + m / 2;
 /** Sudut jarum panjang (derajat) untuk menit m. */
 export const sudutPanjang = (m: number): number => 6 * m;
 
 export type PosisiJam = { cx: number; cy: number; r: number };
-/** Tiga susunan jam: satu jam besar, dua jam berdampingan, tiga atau empat jam kecil. */
 export const JAM_BESAR: PosisiJam = { cx: 150, cy: 104, r: 58 };
-export const JAM_KIRI: PosisiJam = { cx: 78, cy: 108, r: 44 };
-export const JAM_KANAN: PosisiJam = { cx: 222, cy: 108, r: 44 };
-export const JAM_TENGAH_KECIL: PosisiJam = { cx: 150, cy: 108, r: 44 };
-/** Tiga jam kecil berdampingan. */
-export const JAM_TIGA: PosisiJam[] = [
-  { cx: 52, cy: 100, r: 36 },
-  { cx: 150, cy: 100, r: 36 },
-  { cx: 248, cy: 100, r: 36 },
-];
+export const JAM_KIRI: PosisiJam = { cx: 78, cy: 106, r: 42 };
+export const JAM_KANAN: PosisiJam = { cx: 222, cy: 106, r: 42 };
+export const JAM_TENGAH: PosisiJam = { cx: 150, cy: 106, r: 42 };
 
-/** Muka jam saja (lingkaran dan poros), tanpa angka dan jarum. */
 export const mukaJam = (id: string, p: PosisiJam): Obj[] => [bulat(`${id}-w`, p.cx, p.cy, p.r, W.putih, W.biru, { tebal: 2.5, z: 0 })];
-
 /** Angka pada muka jam: semua dua belas angka, atau hanya dua belas, tiga, enam, dan sembilan. */
 export function angkaJam(id: string, p: PosisiJam, semua = true): Obj[] {
   const u = p.r >= 50 ? 9.5 : 8;
@@ -94,120 +197,99 @@ export function angkaJam(id: string, p: PosisiJam, semua = true): Obj[] {
     return teks(`${id}-a${n}`, r1(p.cx + ring * Math.sin(a)), r1(p.cy - ring * Math.cos(a) + u * 0.35), String(n), u, W.biru, { z: 1 });
   });
 }
-
-/** Jarum pendek: jam; tebal dan biru. */
 export const jarumPendek = (id: string, p: PosisiJam, h: number, m: number, o: Opsi = {}): Obj => ({ id: `${id}-p`, t: "garis", x: p.cx, y: p.cy, x2: 0, y2: -r1(p.r * 0.5), rot: sudutPendek(h, m), garis: W.biru, tebal: p.r >= 50 ? 4 : 3.4, z: 2, ...o });
-/** Jarum panjang: menit; lebih tipis dan merah. */
 export const jarumPanjang = (id: string, p: PosisiJam, m: number, o: Opsi = {}): Obj => ({ id: `${id}-m`, t: "garis", x: p.cx, y: p.cy, x2: 0, y2: -r1(p.r * 0.78), rot: sudutPanjang(m), garis: W.merah, tebal: p.r >= 50 ? 2.4 : 2, z: 2, ...o });
 export const porosJam = (id: string, p: PosisiJam): Obj => bulat(`${id}-h`, p.cx, p.cy, 3.2, W.biru, W.biru, { z: 3 });
-
 /** Jam analog lengkap: muka, angka, kedua jarum, dan poros. */
 export const jam = (id: string, p: PosisiJam, h: number, m = 0, semua = true): Obj[] => [...mukaJam(id, p), ...angkaJam(id, p, semua), jarumPendek(id, p, h, m), jarumPanjang(id, p, m), porosJam(id, p)];
-
-/** Penanda kecil nama di bawah jam, mis. "Sarapan". */
-export const namaJam = (id: string, p: PosisiJam, isi: string, warna: string = W.krem): Obj[] => kartu(`${id}-nama`, p.cx - 48, p.cy + p.r + 8, 96, 24, warna, [isi], 10);
-
-/* ------------------------------ Jam digital ------------------------------ */
+export const idJam = (id: string, semua = true): string[] => [`${id}-w`, ...(semua ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] : [3, 6, 9, 12]).map((n) => `${id}-a${n}`), `${id}-p`, `${id}-m`, `${id}-h`];
+/** Patch memindah jarum jam `${id}` ke jam h dan menit m. */
+export const setJam = (id: string, h: number, m = 0): (Partial<Obj> & { id: string })[] => [
+  { id: `${id}-p`, rot: sudutPendek(h, m) },
+  { id: `${id}-m`, rot: sudutPanjang(m) },
+];
 
 /** Tulisan jam digital "HH.MM" dari jam 24 dan menit. */
 export const tulisDigital = (jam24: number, m = 0): string => `${dua(jam24)}.${dua(m)}`;
+/** Kotak jam digital `dg` dengan tulisan `dg-t` (id awalan `id`). */
+export const digital = (id: string, x: number, y: number, jam24: number, m = 0, w = 96, h = 36, u = 18): Obj[] => [
+  kotak(`${id}-k`, x, y, w, h, "#0F172A", W.biru, { rx: 6, tebal: 2, z: 1 }),
+  teks(`${id}-t`, x + w / 2, r1(y + h / 2 + u * 0.35), tulisDigital(jam24, m), u, "#4ADE80", { z: 2 }),
+];
+export const idDigital = (id: string): string[] => [`${id}-k`, `${id}-t`];
 
-/** Kotak jam digital dengan tulisan `dg-t`. */
-export const digital = (x: number, y: number, jam24: number, m = 0, w = 96, h = 36): Obj[] => [
-  kotak("dg-k", x, y, w, h, "#E0F2FE", W.biru, { rx: 6, tebal: 2, z: 1 }),
-  teks("dg-t", x + w / 2, y + h / 2 + 18 * 0.35, tulisDigital(jam24, m), 18, W.biru, { z: 2 }),
+/* ------------------------------ Jalur jam dan batang ------------------------------ */
+
+/** Jalur jam: `n` kotak sama lebar `lebar` berderet dari (x, y); kotak ke-i `${id}${i}`, i dimulai 0; yang berwarna adalah `dari` sampai `sampai` (bukan sampai-akhir). */
+export const jalurJam = (id: string, x: number, y: number, n: number, lebar: number, h = 20, warnaIsi: string = W.hijauMuda): Obj[] =>
+  Array.from({ length: n }, (_, i) => kotak(`${id}${i}`, r1(x + i * lebar), y, lebar, h, warnaIsi, W.biru, { rx: 2, tebal: 1.4, z: 1 }));
+export const idJalur = (id: string, n: number): string[] => Array.from({ length: n }, (_, i) => `${id}${i}`);
+
+/** Batang lama kegiatan `${id}` (kotak berpanjang kotak * lebar) dengan nama `${id}-n` di kiri dan label `${id}-t` di kanan. */
+export function batangLama(id: string, y: number, nama: string, kotakJam: number, label: string, warna: string, skala = 28, x = 78): Obj[] {
+  return [
+    teks(`${id}-n`, 8, r1(y + 13), nama, 9.5, W.ungu, { anchor: "start", z: 1 }),
+    kotak(id, x, y, r1(Math.max(kotakJam, 0.25) * skala), 18, warna, W.biru, { rx: 3, tebal: 1.5, z: 1 }),
+    teks(`${id}-t`, r1(x + Math.max(kotakJam, 0.25) * skala + 6), r1(y + 13), label, 9.5, W.merah, { anchor: "start", z: 1 }),
+  ];
+}
+export const idBatang = (id: string): string[] => [id, `${id}-n`, `${id}-t`];
+
+/** Baris jadwal `${id}`: kartu berwarna bagian hari dengan jam `${id}-j` dan nama kegiatan `${id}-n`. */
+export function barisJadwal(id: string, y: number, jamTeks: string, nama: string, warna: string, x = 12, w = 276): Obj[] {
+  return [
+    kotak(`${id}-k`, x, y, w, 24, warna, W.biru, { rx: 6, tebal: 1.4, z: 1 }),
+    teks(`${id}-j`, x + 8, r1(y + 16), jamTeks, 9.2, W.merah, { anchor: "start", z: 2 }),
+    teks(`${id}-n`, x + w - 8, r1(y + 16), nama, 9.2, W.biru, { anchor: "end", z: 2 }),
+  ];
+}
+export const idBaris = (id: string): string[] => [`${id}-k`, `${id}-j`, `${id}-n`];
+/** Patch pindah baris jadwal ke tinggi y. */
+export const pindahBaris = (id: string, y: number): (Partial<Obj> & { id: string })[] => [
+  { id: `${id}-k`, y },
+  { id: `${id}-j`, y: r1(y + 16) },
+  { id: `${id}-n`, y: r1(y + 16) },
 ];
 
-/* ------------------------------ Kegiatan sehari ------------------------------ */
+/* ------------------------------ Tokoh ------------------------------ */
 
-export type Bagian = "pagi" | "siang" | "sore" | "malam";
-export const BAGIAN: Bagian[] = ["pagi", "siang", "sore", "malam"];
-export const NAMA_BAGIAN: Record<Bagian, string> = { pagi: "Pagi", siang: "Siang", sore: "Sore", malam: "Malam" };
-export const WARNA_BAGIAN: Record<Bagian, string> = { pagi: W.kuning, siang: W.emas, sore: W.oranye, malam: W.lavender };
-export const EMO_BAGIAN: Record<Bagian, string> = { pagi: "\u{1F305}", siang: "\u{1F31E}", sore: "\u{1F307}", malam: "\u{1F319}" };
+export type NamaTokoh = "Chacha" | "Dika" | "Nia" | "Bu Sari" | "Bu Ratna";
 
-/** Kegiatan Kira sepanjang hari: jam adalah jam dinding (satu sampai dua belas) dan bagian harinya. */
-export const JADWAL: { nm: string; jm: number; bh: Bagian }[] = [
-  { nm: "Sarapan", jm: 6, bh: "pagi" },
-  { nm: "Belajar", jm: 7, bh: "pagi" },
-  { nm: "Makan siang", jm: 12, bh: "siang" },
-  { nm: "Bermain", jm: 4, bh: "sore" },
-  { nm: "Tidur", jm: 9, bh: "malam" },
+/**
+ * Tokoh berdiri: wajah `${id}`, nama `${id}-n`. Nia bertopi `${id}-tp`; Bu Sari bertopi putih `${id}-cp`, berkaus putih `${id}-ks`, dan berpeluit `${id}-pl`;
+ * Bu Ratna bertopi biru `${id}-cp` dan berpengeras suara `${id}-ps`.
+ */
+export function tokoh(id: string, x: number, y: number, nama: NamaTokoh, u = 30): Obj[] {
+  const wajah = nama === "Chacha" ? E.chacha : nama === "Dika" ? E.dika : nama === "Nia" ? E.nia : E.bu;
+  const out: Obj[] = [emo(id, x, y, wajah, u, { z: 1 })];
+  if (nama === "Nia") out.push(emo(`${id}-tp`, x, r1(y - u * 0.5), E.topi, r1(u * 0.55), { z: 2 }));
+  if (nama === "Bu Sari") {
+    out.push({ id: `${id}-cp`, t: "jalur", x, y: r1(y - u * 0.62), d: "M-14 6 L-10 -6 L10 -6 L14 6 Z", warna: W.putih, garis: W.biru, tebal: 1.4, z: 2 });
+    out.push(kotak(`${id}-ks`, x - 10, y + 4, 20, 9, W.putih, W.biru, { rx: 3, tebal: 1.2, z: 1 }));
+    out.push(bulat(`${id}-pl`, x + 6, y + 8, 2.6, W.emas, W.biru, { tebal: 1, z: 3 }));
+  }
+  if (nama === "Bu Ratna") {
+    out.push({ id: `${id}-cp`, t: "jalur", x, y: r1(y - u * 0.62), d: "M-14 6 L-10 -6 L10 -6 L14 6 Z", warna: "#2563EB", garis: W.biru, tebal: 1.4, z: 2 });
+    out.push(kotak(`${id}-ps`, x + 13, y - 2, 8, 6, "#9CA3AF", "#4B5563", { rx: 1.5, tebal: 1, z: 2 }));
+  }
+  out.push(teks(`${id}-n`, x, r1(y + (nama === "Bu Sari" || nama === "Bu Ratna" ? 21 : 13)), nama, 8.4, W.ungu, { z: 2 }));
+  return out;
+}
+export const idTokoh = (id: string, nama: NamaTokoh): string[] => [
+  id,
+  `${id}-n`,
+  ...(nama === "Nia" ? [`${id}-tp`] : []),
+  ...(nama === "Bu Sari" ? [`${id}-cp`, `${id}-ks`, `${id}-pl`] : []),
+  ...(nama === "Bu Ratna" ? [`${id}-cp`, `${id}-ps`] : []),
 ];
+/** Patch posisi semua bagian tokoh ke (x, y) baru, untuk ubah. */
+export const pindahTokoh = (id: string, x: number, y: number, nama: NamaTokoh, u = 30): (Partial<Obj> & { id: string })[] => tokoh(id, x, y, nama, u).map((o) => ({ id: o.id, x: o.x, y: o.y }));
 
-/** Baris kegiatan j (nomor di JADWAL) pada urutan tampil `slot` (0 dari atas). */
-export const YBARIS = (slot: number, mulai = 34, jarak = 34): number => mulai + slot * jarak;
-export function barisKegiatan(j: number, slot: number, mulai = 34, jarak = 34): Obj[] {
-  const e = JADWAL[j];
-  const y = YBARIS(slot, mulai, jarak);
-  return [
-    kotak(`kg${j}-k`, 22, y, 256, 28, WARNA_BAGIAN[e.bh], W.biru, { rx: 8, z: 0 }),
-    teks(`kg${j}-nm`, 34, y + 18.5, e.nm, 11, W.biru, { anchor: "start", z: 1 }),
-    teks(`kg${j}-jm`, 266, y + 18.5, `pukul ${e.jm} ${e.bh}`, 10.5, W.merah, { anchor: "end", z: 1 }),
-  ];
-}
-/** Pindahkan baris kegiatan j ke urutan tampil `slot`. */
-export function geserBaris(j: number, slot: number, mulai = 34, jarak = 34): (Partial<Obj> & { id: string })[] {
-  const y = YBARIS(slot, mulai, jarak);
-  return [
-    { id: `kg${j}-k`, y },
-    { id: `kg${j}-nm`, y: y + 18.5 },
-    { id: `kg${j}-jm`, y: y + 18.5 },
-  ];
-}
+/** Anak-anak berbaris: deretan wajah `${id}0...` mulai (x, y) berjarak `jarak`. */
+export const barisAnak = (id: string, x: number, y: number, n: number, jarak = 22, u = 18): Obj[] => Array.from({ length: n }, (_, i) => emo(`${id}${i}`, r1(x + i * jarak), y, E.chacha, u, { z: 1 }));
+export const idAnak = (id: string, n: number): string[] => Array.from({ length: n }, (_, i) => `${id}${i}`);
 
-/* ------------------------------ Lama kegiatan ------------------------------ */
-
-export const LABEL_LAMA = (menit: number): string => (menit % 60 === 0 && menit >= 60 ? `${menit / 60} jam` : `${menit} menit`);
-export const SKALA_BATANG = 2;
-
-/** Baris lama kegiatan: nama di atas, batang (lebar sebanding lama dalam menit), dan label lama. */
-export function barisLama(j: number, y: number, nama: string, menit: number, warna: string = W.hijauMuda, denganBatang = true): Obj[] {
-  const lebar = menit * SKALA_BATANG;
-  return [
-    teks(`lm${j}-nm`, 14, y, nama, 10.5, W.ungu, { anchor: "start", z: 1 }),
-    ...(denganBatang ? [kotak(`lm${j}-b`, 14, y + 5, Math.max(lebar, 2), 16, warna, W.biru, { rx: 3, z: 1 })] : []),
-    teks(`lm${j}-t`, denganBatang ? r1(14 + Math.max(lebar, 2) + 8) : 14, y + 18, LABEL_LAMA(menit), 10.5, W.merah, { anchor: "start", z: 1 }),
-  ];
-}
-
-/* ------------------------------ Bagian hari ------------------------------ */
-
-/** Kolom bagian hari j (0 sampai 3: pagi, siang, sore, malam) dengan judul; kegiatan ditambah terpisah. */
-export function kolomBagian(j: number, y = 36, h = 30): Obj[] {
-  const b = BAGIAN[j];
-  const x = 8 + j * 72;
-  return [kotak(`bg${j}-k`, x, y, 68, h, WARNA_BAGIAN[b], W.biru, { rx: 8, z: 0 }), teks(`bg${j}-nm`, x + 34, y + h / 2 + 3.8, NAMA_BAGIAN[b], 11, W.biru, { z: 1 })];
-}
-/** Kegiatan di bawah kolom bagian hari j. */
-export const kegiatanBagian = (j: number, isi: string, y = 80): Obj[] => kartu(`bgk${j}`, 8 + j * 72 + 2, y, 64, 36, W.putih, [isi], 8.6).map((o) => (o.id === `bgk${j}-t0` ? { ...o, id: `bg${j}-kg` } : o));
-
-/** Kartu jam digital per bagian hari: bagian di atas dan "HH.MM" di bawahnya. */
-export function kartuBagianDigital(j: number, jam24: number, m = 0, y = 40): Obj[] {
-  const b = BAGIAN[j];
-  const x = 9 + (j % 2) * 144;
-  const yy = y + Math.floor(j / 2) * 70;
-  return [
-    kotak(`bh${j}-k`, x, yy, 138, 62, WARNA_BAGIAN[b], W.biru, { rx: 10, z: 0 }),
-    teks(`bh${j}-nm`, x + 69, yy + 20, NAMA_BAGIAN[b], 12, W.ungu, { z: 1 }),
-    teks(`bh${j}-dg`, x + 69, yy + 48, tulisDigital(jam24, m), 20, W.biru, { z: 1 }),
-  ];
-}
-
-/** Langit: satu emoji besar di pojok. */
-export const langit = (b: Bagian, x = 150, y = 70, u = 40): Obj => emo("lg", x, y, EMO_BAGIAN[b], u, { z: 0 });
-
-/** Pilihan kartu (id c1..cn), pojok kiri-atas di tinggi `y`. */
-export const pilihKata = (y: number, isi: string[], u = 11): Obj[] => {
-  const n = isi.length;
-  const w = n === 2 ? 120 : 90;
-  const jarak = n === 2 ? 20 : 5;
-  const x0 = (300 - (n * w + (n - 1) * jarak)) / 2;
-  return isi.flatMap((tx, i) => kartuAngka(`c${i + 1}`, x0 + i * (w + jarak), y, tx, [W.hijauMuda, W.pink, W.langit][i], w, 30, u));
-};
-
-/** Kartu hasil di bagian bawah: satu baris pendek. */
-export const hasil = (id: string, isi: string, warna: string = W.emas, y = 172): Obj[] => kartu(id, 30, y, 240, 26, warna, [isi], 10.5);
-
-/** Pita kecil (judul bagian) di bawah jam. */
-export const pita = (id: string, isi: string, warna: string = W.krem, y = 172): Obj[] => kartu(id, 30, y, 240, 26, warna, [isi], 10);
+/** Lintasan konfeti kecil: deretan kotak warna-warni `${id}0...` pada tinggi y. */
+export const konfeti = (id: string, y: number, n = 10): Obj[] =>
+  Array.from({ length: n }, (_, i) => kotak(`${id}${i}`, r1(14 + i * 27), r1(y + (i % 3) * 7), 5, 7, [W.merah, W.emas, W.hijau, "#3B82F6"][i % 4], undefined, { rx: 1, rot: i * 23, z: 4 }));
+export const idKonfeti = (id: string, n = 10): string[] => Array.from({ length: n }, (_, i) => `${id}${i}`);

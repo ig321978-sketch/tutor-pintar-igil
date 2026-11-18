@@ -1,151 +1,170 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { OWL, W, deret, emo, idBenda, idDeret, isiSisi, judul, kartu, kerangka, labelSisi, penunjuk, spek, teks, ubahTimbang } from "./k2b6A-gambar";
-import { bersih, hapus, idKartu, idPilihan, idx, k, pilihKata, redamkan, sorotkan, tambah, ubah } from "./k2b6A-bantu";
+import { E, W, WL, batang, bola, bulat, emo, garis, judul, kantong, kartu, kerucut, kotak, lapangan, panah, raket, teks, tokoh, troli } from "./k2b6A-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k2b6A-bantu";
 
-export const NAMA_METODE_ID = ["Banding Berat", "Satuan Tak Baku Berat", "Lebih Berat Lebih Ringan"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/*
+ * Cerita orisinal IGIL "Peralatan Lomba Pak Anton" (Kelas 2 Bab 6 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k2b6a.md. Bagian ini: pembuka (tiga kertas lipat pelatih), Bar Model (Model Batang), dan terapannya.
+ */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Bar Model", "Dot Balance", "Heavy First"] as const;
+export const NAMA_METODE_ID = ["Model Batang", "Neraca Titik", "Berat di Dasar"] as const;
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara punya cara lain untuk belajar berat. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu bernama Banding Berat, Satuan Tak Baku Berat, dan satu lagi, Lebih Berat Lebih Ringan.";
-const SUARA_O3 = "Semua metode ini menjawab satu pertanyaan. Bagaimana cara tahu benda mana yang lebih berat?";
-const SUARA_O4 = "Kita memakai benda di layar. Kamu cukup mengetuk, melihat dengan teliti, dan memeriksa ujung timbangan.";
-const SUARA_O5 = "Berat bisa dibandingkan dan juga diukur. Siap? Ayo kita mulai dengan metode pertama.";
-const BD_O = deret(["apel", "pisang", "bola_tenis"], 100, 1.2);
+const BIRU_BATANG = "#93C5FD";
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Di dasar troli, Nia menemukan tiga kertas lipat milik pelatih zaman dulu, berisi cara menimbang.";
+const SUARA_O2 = "Pak Anton tersenyum. Itu cara pelatih memilih peralatan supaya lomba selalu adil!";
+const SUARA_O3 = "Tiga cara itu: Bar Model, Dot Balance, dan Heavy First.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Model Batang, Neraca Titik, dan Berat di Dasar.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk berat",
-  sumber: "Metode luar: pembuka",
+  judul: "Tiga kertas lipat pelatih",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah(idx(SUARA_O1, "negara"), emo("gl", 150, 110, "\u{1F30D}", 50)), tambah(idx(SUARA_O1, "tiga"), ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11))),
+    k(
+      SUARA_O1,
+      tambah(0, judul("Kertas Tua Pelatih"), ...lapangan("lp", 134)),
+      tambah("troli,", ...troli("tr", 40, 150)),
+      tambah("Nia", ...tokoh("ni", 120, 184, "Nia")),
+      tambah("tiga", teks("n3", 222, 50, "3 kertas", 10, W.ungu)),
+      tambah("kertas", ...[0, 1, 2].flatMap((i) => kartu(`c${i}`, 160 + i * 42, 62, 36, 30, W.krem, ["kertas"], 8))),
+      ubah("lipat", ...[0, 1, 2].map((i) => ({ id: `c${i}-k`, warna: "#E7D3A8" }))),
+      tambah("menimbang.", emo("nr", 60, 120, "\u{2696}", 26)),
+    ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      tambah(idx(SUARA_O2, "Banding"), ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah(idx(SUARA_O2, "Satuan"), ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "Lebih"), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      tambah("Anton", ...tokoh("pa", 252, 184, "Pak Anton")),
+      ubah("tersenyum.", { id: "pa", isi: E.senyum }),
+      sorotkan("cara", "c0-k", "c1-k", "c2-k"),
+      tambah("peralatan", ...kerucut("kc", 60, 150, 14), ...kantong("kp", 160, 160, 18, 12)),
+      tambah("adil!", emo("ok", 200, 128, E.benar, 22)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah(idx(SUARA_O3, "satu"), emo("i1", 60, 84, "⚖️", 34), emo("i2", 150, 84, "❓", 34), emo("i3", 240, 84, "\u{1F440}", 34)),
-      tambah(idx(SUARA_O3, "Bagaimana"), ...kartu("iq", 20, 112, 260, 52, W.emas, ["bagaimana cara tahu benda", "mana yang lebih berat?"], 10)),
+      tambah(0, judul("Tiga Cara Pelatih")),
+      tambah("Tiga", teks("n3", 250, 40, "3 cara", 10, W.ungu)),
+      tambah("Bar", teks("m0", 130, 76, "1. Bar Model", 13, W.biru), ...batang("ib", 24, 90, 8, 3, 8, BIRU_BATANG), ...batang("ic", 34, 90, 8, 2, 8, "#BFDBFE")),
+      tambah("Dot", teks("m1", 130, 126, "2. Dot Balance", 13, W.biru), garis("id1", 20, 130, 34, 0, WL.besiTua, 2.4), bulat("id2", 22, 140, 5, "#FDE68A", W.coklat), bulat("id3", 52, 142, 5, "#FDE68A", W.coklat)),
+      tambah("Heavy", teks("m2", 130, 176, "3. Heavy First", 13, W.biru), kotak("ih1", 20, 170, 36, 10, "#B45309", W.coklat, { rx: 1 }), kotak("ih2", 26, 160, 24, 10, "#D6A15E", W.coklat, { rx: 1 }), kotak("ih3", 32, 150, 12, 10, "#FEF3C7", W.coklat, { rx: 1 })),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Alat bantu hari ini")),
-      tambah(idx(SUARA_O4, "layar."), BD_O[0], BD_O[1], BD_O[2], BD_O[3], BD_O[4], BD_O[5]),
-      tambah(idx(SUARA_O4, "mengetuk,"), emo("tg", 150, 150, "\u{1F446}", 24)),
-      tambah(idx(SUARA_O4, "memeriksa"), teks("al-t", 150, 184, "ujung timbangan yang turun", 10, W.ungu)),
-    ),
-    k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Dibandingkan dan diukur")),
-      tambah(idx(SUARA_O5, "dibandingkan"), teks("kt0", 150, 74, "membandingkan berat", 14, W.ungu)),
-      tambah(idx(SUARA_O5, "diukur."), teks("kt1", 150, 104, "mengukur berat", 14, W.ungu)),
-      tambah(idx(SUARA_O5, "pertama."), emo("ow", 150, 172, OWL, 30)),
+      tambah("Model", teks("n0", 245, 76, "Model Batang", 10, W.ungu)),
+      tambah("Neraca", teks("n1", 245, 126, "Neraca Titik", 10, W.ungu)),
+      tambah("Berat", teks("n2", 245, 176, "Berat di Dasar", 10, W.ungu)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Banding Berat: konsep ------------------------------ */
-const J0 = spek(1, "timbangan", [], []);
-const Ja = spek(1, "timbangan", ["jeruk"], []);
-const J = spek(1, "timbangan", ["jeruk"], ["pisang"]);
-const SUARA_V1 = "Metode pertama bernama Banding Berat. Kita mulai dari dua benda, yaitu jeruk dan pisang.";
-const SUARA_V2 = "Langkah pertama, taruh satu benda di tiap piringan. Jeruk di kiri dan pisang di kanan.";
-const SUARA_V3 = "Langkah kedua, lihat ujung mana yang turun. Ujung jeruk turun.";
-const SUARA_V4 = "Langkah ketiga, sebut hasilnya dengan kata. Jeruk lebih berat dari pisang, dan pisang lebih ringan dari jeruk.";
-const SUARA_V5 = "Jadi Banding Berat berarti menaruh dua benda di timbangan, lalu melihat ujung yang turun.";
-const BD_V = deret(["jeruk", "pisang"], 100, 1.3, [100, 200]);
+/* ------------------------------ Bar Model: konsep ------------------------------ */
+const SUARA_C1 = "Cara pertama, Bar Model, atau Model Batang.";
+const SUARA_C2 = "Gambar satu batang untuk setiap benda. Makin berat bendanya, makin tinggi batangnya.";
+const SUARA_C3 = "Tinggi batang dibaca dengan menghitung kotak kecil di sampingnya, satu kotak untuk satu satuan.";
+const SUARA_C4 = "Batang tertinggi adalah benda yang paling berat, dan batang terpendek adalah benda yang paling ringan.";
 
-export const ADEGAN_LUAR_BANDING: AdeganStory = {
-  id: "luar-banding",
-  judul: "Banding Berat: taruh dan lihat",
-  sumber: "Metode luar: Banding Berat",
+/** Tiga batang berdiri di alas y 160 untuk kantong pasir (tinggi enam), bola (empat), dan raket (dua); satu kotak = 12. */
+const BATANG_KONSEP = [
+  { id: "b1", x: 56, n: 6 },
+  { id: "b2", x: 136, n: 4 },
+  { id: "b3", x: 216, n: 2 },
+];
+const batangKonsep = (i: number): Obj[] => batang(BATANG_KONSEP[i].id, BATANG_KONSEP[i].x, 160, 28, BATANG_KONSEP[i].n, 12, BIRU_BATANG);
+const bendaKonsep = (): Obj[][] => [kantong("kp", 56, 164, 28, 17), bola("bo", 150, 172, 9), raket("rk", 230, 170, 7)];
+
+export const ADEGAN_LUAR_BATANG: AdeganStory = {
+  id: "luar-batang",
+  judul: "Bar Model: Model Batang",
+  sumber: "Metode global: Bar Model (konsep)",
+  latar: "#EFF6FF",
+  ketukan: [
+    k(
+      SUARA_C1,
+      tambah(0, judul("Cara 1: Bar Model")),
+      tambah("Bar", ...batang("ib1", 96, 140, 30, 2, 16, "#BFDBFE"), ...batang("ib2", 134, 140, 30, 5, 16, BIRU_BATANG), ...batang("ib3", 172, 140, 30, 3, 16, "#BFDBFE")),
+      tambah("Model", garis("al", 80, 144, 140, 0, W.biru, 2.4)),
+      tambah("Batang.", teks("nm", 150, 172, "Model Batang", 12, W.ungu)),
+    ),
+    k(
+      SUARA_C2,
+      bersih(0),
+      tambah(0, judul("Satu Batang Tiap Benda"), garis("al", 30, 160, 240, 0, W.biru, 2.4)),
+      tambah("satu", teks("n1", 150, 44, "1 batang", 10, W.ungu), ...batangKonsep(0), ...bendaKonsep()[0]),
+      tambah("setiap", ...batangKonsep(1), ...bendaKonsep()[1], ...batangKonsep(2), ...bendaKonsep()[2]),
+      tambah("berat", panah("pa", 270, 150, 0, -64, W.merah, 2.6), teks("tb", 270, 70, "berat", 9, W.merah)),
+      tambah("tinggi", teks("tt", 150, 66, "makin berat, makin tinggi", 9, W.merah)),
+    ),
+    k(
+      SUARA_C3,
+      hapus(0, "n1", "pa", "tb", "tt"),
+      tambah("menghitung", teks("c6", 70, 92, "6", 10, W.ungu), teks("c4", 150, 116, "4", 10, W.ungu), teks("c2", 230, 140, "2", 10, W.ungu)),
+      tambah("kecil", ...[0, 1, 2].map((i) => garis(`sk${i}`, 36, 160 - i * 12, 8, 0, W.merah, 2))),
+      tambah("satu@2", teks("n1", 150, 44, "1 kotak = 1 satuan", 10, W.ungu)),
+    ),
+    k(
+      SUARA_C4,
+      hapus(0, "n1", "sk0", "sk1", "sk2"),
+      tambah("tertinggi", emo("mk", 70, 74, E.mahkota, 18)),
+      sorotkan("tertinggi", "b1"),
+      tambah("berat,", teks("l1", 70, 196, "paling berat", 8, W.merah)),
+      tambah("terpendek", emo("aw", 230, 128, E.awan, 18)),
+      sorotkan("terpendek", "b3"),
+      tambah("ringan.", teks("l3", 230, 196, "paling ringan", 8, W.hijau)),
+    ),
+  ],
+};
+
+/* ------------------------------ Bar Model: terapan ------------------------------ */
+const SUARA_T1 = "Dika menggambar batang untuk kantong pasir, bola basket, dan bola voli. Batang pasir tertinggi, yaitu sembilan kotak.";
+const SUARA_T2 = "Batang bola basket enam kotak, dan batang bola voli tiga kotak. Urutannya langsung terlihat.";
+const SUARA_T3 = "Cocok kalau kita ingin membandingkan banyak benda sekaligus dalam satu gambar.";
+const SUARA_T4 = "Kurang cocok kalau hanya ada dua benda dan kita ingin hasil cepat, karena harus menggambar dulu.";
+
+const bT = (id: string, x: number, n: number): Obj[] => batang(id, x, 160, 30, n, 10, BIRU_BATANG);
+
+export const ADEGAN_LUAR_BATANG_TERAPAN: AdeganStory = {
+  id: "luar-batang-terapan",
+  judul: "Bar Model: batang Dika",
+  sumber: "Metode global: Bar Model (terapan)",
   latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_V1, tambah(0, ...kepala(0)), tambah(idx(SUARA_V1, "jeruk"), BD_V[0], BD_V[1]), tambah(idx(SUARA_V1, "pisang."), BD_V[2], BD_V[3])),
     k(
-      SUARA_V2,
-      hapus(0, ...idDeret(["jeruk", "pisang"])),
-      tambah(0, kerangka(J0)),
-      tambah(idx(SUARA_V2, "Jeruk"), ...isiSisi(Ja, "L"), labelSisi(Ja, "L")),
-      ubah(idx(SUARA_V2, "Jeruk"), ...ubahTimbang(Ja, { L: true })),
-      tambah(idx(SUARA_V2, "pisang"), ...isiSisi(J, "R"), labelSisi(J, "R")),
-      ubah(idx(SUARA_V2, "pisang"), ...ubahTimbang(J, { L: true, R: true })),
-    ),
-    k(SUARA_V3, sorotkan(idx(SUARA_V3, "lihat"), "tm1-bl"), tambah(idx(SUARA_V3, "Ujung"), ...penunjuk(J))),
-    k(
-      SUARA_V4,
-      redamkan(0, "tm1-bl"),
-      tambah(idx(SUARA_V4, "Jeruk"), ...kartu("k1", 14, 164, 136, 26, W.hijauMuda, ["jeruk lebih berat"], 9)),
-      tambah(idx(SUARA_V4, "pisang", 2), ...kartu("k2", 154, 164, 132, 26, W.pink, ["pisang lebih ringan"], 9)),
+      SUARA_T1,
+      tambah(0, judul("Batang Dika"), ...lapangan("lp", 166), garis("al", 90, 160, 160, 0, W.biru, 2.4)),
+      tambah("Dika", ...tokoh("dk", 30, 184, "Dika")),
+      tambah("kantong", ...bT("bk", 100, 9), ...kantong("kp", 101, 164, 28, 14)),
+      tambah("basket,", ...bT("bb", 160, 6), ...bola("bs", 175, 172, 8, "#F97316", "#7C2D12")),
+      tambah("voli.", ...bT("bv", 220, 3), ...bola("bl", 235, 172, 8, "#FEF9C3", "#A16207")),
+      tambah("sembilan", teks("t9", 115, 54, "9 kotak", 10, W.ungu), emo("mk", 115, 40, E.mahkota, 14)),
     ),
     k(
-      SUARA_V5,
-      hapus(idx(SUARA_V5, "Jadi"), ...idKartu("k1"), ...idKartu("k2")),
-      tambah(idx(SUARA_V5, "Jadi"), ...kartu("rk", 20, 164, 260, 26, W.emas, ["taruh dua benda, lihat yang turun"], 10)),
-      sorotkan(idx(SUARA_V5, "timbangan,"), idBenda(1, "L", "jeruk", 1)),
+      SUARA_T2,
+      tambah("enam", teks("t6", 175, 84, "6 kotak", 10, W.ungu)),
+      tambah("tiga", teks("t3", 235, 114, "3 kotak", 10, W.ungu)),
+      tambah("Urutannya", teks("r1", 115, 197, "1", 9, W.merah), teks("r2", 175, 197, "2", 9, W.merah), teks("r3", 235, 197, "3", 9, W.merah)),
+      tambah("terlihat.", emo("ok", 270, 120, E.benar, 20)),
     ),
-  ],
-};
-
-/* ------------------------------ 3. Banding Berat: terapan ------------------------------ */
-const T0 = spek(1, "timbangan", [], []);
-const Ta = spek(1, "timbangan", ["mangga"], []);
-const T = spek(1, "timbangan", ["mangga"], ["apel"]);
-const SUARA_W1 = "Terapkan pada soal ini. Upe menaruh mangga di piringan kiri dan apel di piringan kanan.";
-const SUARA_W2 = "Mana yang lebih berat? Ketuk jawaban yang tepat.";
-const SUARA_W3 = "Betul! Mangga lebih berat, karena ujung mangga turun. Hebat!";
-const SUARA_W4 = "Mangga lebih berat dari apel, jadi apel lebih ringan dari mangga.";
-
-export const ADEGAN_LUAR_BANDING_TERAPAN: AdeganStory = {
-  id: "luar-banding-terapan",
-  judul: "Banding Berat: mangga Upe",
-  sumber: "Metode luar: Banding Berat",
-  latar: "#ECFCCB",
-  ketukan: [
     k(
-      SUARA_W1,
-      tambah(0, ...kepala(0), kerangka(T0)),
-      tambah(idx(SUARA_W1, "mangga"), ...isiSisi(Ta, "L")),
-      ubah(idx(SUARA_W1, "mangga"), ...ubahTimbang(Ta)),
-      tambah(idx(SUARA_W1, "apel"), ...isiSisi(T, "R")),
-      ubah(idx(SUARA_W1, "apel"), ...ubahTimbang(T)),
+      SUARA_T3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?"), garis("al", 50, 150, 200, 0, W.biru, 2.4)),
+      tambah("Cocok", emo("ok", 262, 70, E.benar, 28)),
+      tambah("banyak", ...kartu("cc", 40, 40, 170, 24, W.hijauMuda, ["banyak benda sekaligus"], 9)),
+      tambah("benda", ...[2, 5, 3, 6, 4].flatMap((n, i) => batang(`g${i}`, 62 + i * 36, 150, 26, n, 10, BIRU_BATANG))),
+      tambah("satu", teks("n1", 150, 176, "1 gambar", 10, W.ungu)),
     ),
-    k(SUARA_W2, tambah(idx(SUARA_W2, "Mana"), teks("tanya", 150, 152, "mana yang lebih berat?", 11, W.ungu)), tambah(idx(SUARA_W2, "jawaban"), ...pilihKata(160, ["mangga", "apel", "sama berat"], 11))),
-    k(SUARA_W3, sorotkan(idx(SUARA_W3, "Betul!"), "c1-k"), tambah(idx(SUARA_W3, "turun."), ...penunjuk(T))),
-    k(SUARA_W4, redamkan(0, "c1-k"), hapus(idx(SUARA_W4, "Mangga"), "tanya", ...idPilihan(3)), tambah(idx(SUARA_W4, "jadi"), ...kartu("wk", 30, 164, 240, 26, W.emas, ["apel lebih ringan dari mangga"], 10))),
-  ],
-};
-
-/* ------------------------------ 4. Ringkasan metode luar ------------------------------ */
-const SUARA_R1 = "Mari kita ringkas tiga metode dari luar. Semuanya membantu kita membandingkan dan mengukur berat.";
-const SUARA_R2 = "Metode Banding Berat, taruh dua benda di timbangan dan lihat ujung yang turun.";
-const SUARA_R3 = "Metode Satuan Tak Baku Berat, hitung satuan kecil sampai timbangan sejajar.";
-const SUARA_R4 = "Metode Lebih Berat Lebih Ringan, pakai kata untuk menceritakan perbandingan berat.";
-const SUARA_R5 = "Pilih metode yang kamu suka, lalu periksa dengan metode lain. Hasilnya harus sama.";
-
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Metode luar: ringkasan",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(SUARA_R1, tambah(0, judul("Ringkasan")), tambah(idx(SUARA_R1, "ringkas"), ...kartu("r0", 14, 34, 272, 30, W.emas, ["3 metode dari luar"], 11))),
-    k(SUARA_R2, tambah(idx(SUARA_R2, "Banding"), ...kartu("r1", 14, 72, 272, 34, WARNA_METODE[0], [NAMA_METODE_ID[0], "taruh dua benda, lihat ujung turun"], 9.2))),
-    k(SUARA_R3, tambah(idx(SUARA_R3, "Satuan"), ...kartu("r2", 14, 114, 272, 34, WARNA_METODE[1], [NAMA_METODE_ID[1], "hitung satuan sampai sejajar"], 9.2))),
-    k(SUARA_R4, tambah(idx(SUARA_R4, "Lebih"), ...kartu("r3", 14, 156, 272, 34, WARNA_METODE[2], [NAMA_METODE_ID[2], "kata untuk menceritakan berat"], 9.2))),
-    k(SUARA_R5, bersih(0), tambah(0, judul("Hasilnya harus sama"), emo("rw", 150, 100, OWL, 54)), tambah(idx(SUARA_R5, "sama."), emo("rk", 150, 160, "✅", 30))),
+    k(
+      SUARA_T4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?"), garis("al", 90, 150, 120, 0, W.biru, 2.4)),
+      tambah("Kurang", emo("xs", 262, 70, E.salah, 28)),
+      tambah("dua", teks("n2", 150, 44, "2 benda", 10, W.ungu), ...batang("h1", 116, 150, 26, 5, 10, BIRU_BATANG), ...batang("h2", 158, 150, 26, 3, 10, BIRU_BATANG)),
+      tambah("cepat,", emo("jm", 50, 100, E.jam, 26)),
+      tambah("menggambar", emo("pn", 250, 130, "\u{270F}", 24)),
+      tambah("dulu.", teks("gd", 150, 176, "harus gambar dulu", 9, W.merah)),
+    ),
   ],
 };

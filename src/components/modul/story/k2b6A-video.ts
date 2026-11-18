@@ -1,52 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_CERITA_BUAH, ADEGAN_GANTUNGAN, ADEGAN_JUNGKAT, ADEGAN_LEBIH_BERAT, ADEGAN_SAMA_BERAT } from "./k2b6A-materi-1";
-import { ADEGAN_BESAR, ADEGAN_PALING, ADEGAN_SATUAN, ADEGAN_TEBAK } from "./k2b6A-materi-2";
-import { ADEGAN_BONEKA_KELERENG, ADEGAN_BONEKA_TENIS, ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_SATU, ADEGAN_LATIHAN_TIGA } from "./k2b6A-materi-3";
-import { ADEGAN_PENUTUP } from "./k2b6A-materi-4";
-import { ADEGAN_LUAR_BANDING, ADEGAN_LUAR_BANDING_TERAPAN, ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_RINGKAS } from "./k2b6A-luar-1";
-import { ADEGAN_LUAR_LEBIH, ADEGAN_LUAR_LEBIH_TERAPAN, ADEGAN_LUAR_SATUAN, ADEGAN_LUAR_SATUAN_TERAPAN } from "./k2b6A-luar-2";
+import { ADEGAN_SALAH_BESAR, ADEGAN_TIGA_CARA, ADEGAN_TROLI_DATANG } from "./k2b6A-materi-1";
+import { ADEGAN_KIRA_BUKTI, ADEGAN_POSISI_KATA, ADEGAN_TIGA_BENDA } from "./k2b6A-materi-2";
+import { ADEGAN_DUA_HASIL, ADEGAN_RANTAI_PENUTUP, ADEGAN_SATUAN } from "./k2b6A-materi-3";
+import { ADEGAN_LUAR_BATANG, ADEGAN_LUAR_BATANG_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k2b6A-luar-1";
+import { ADEGAN_LUAR_DASAR, ADEGAN_LUAR_DASAR_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_TITIK, ADEGAN_LUAR_TITIK_TERAPAN } from "./k2b6A-luar-2";
 
-/** Kelas 2 Bab 6 Sub-Bab A (Berat): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 2 Bab 6 Sub-Bab A (berat benda), awal cerita Hari Olahraga Sekolah.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Peralatan Lomba Pak Anton" (Chacha, Dika, Nia, Bu Sari, Pak Anton).
+ * Video kedua: tiga metode global (Bar Model, Dot Balance, Heavy First), terpisah.
+ */
+export const JUDUL_K2B6A = "Peralatan Lomba Pak Anton";
+
 export const VIDEO_MATERI_K2B6A: VideoStory = {
   id: "k2b6A-materi",
-  judul: "Berat Benda",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K2B6A,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "berat", daftar: ["Membandingkan dua benda", "Mengurutkan tiga benda", "Satuan tidak baku"] }),
-    ADEGAN_CERITA_BUAH,
-    ADEGAN_JUNGKAT,
-    ADEGAN_LEBIH_BERAT,
-    ADEGAN_SAMA_BERAT,
-    ADEGAN_GANTUNGAN,
-    ADEGAN_TEBAK,
-    ADEGAN_PALING,
-    ADEGAN_BESAR,
+    adeganSapaan({ jenis: "materi", topik: "berat benda", daftar: ["Membandingkan berat dua benda", "Kata lebih berat dan lebih ringan", "Mengukur berat dengan satuan tidak baku"] }),
+    ADEGAN_TROLI_DATANG,
+    ADEGAN_SALAH_BESAR,
+    ADEGAN_TIGA_CARA,
+    ADEGAN_POSISI_KATA,
+    ADEGAN_TIGA_BENDA,
+    ADEGAN_KIRA_BUKTI,
     ADEGAN_SATUAN,
-    ADEGAN_BONEKA_TENIS,
-    ADEGAN_BONEKA_KELERENG,
-    ADEGAN_LATIHAN_SATU,
-    ADEGAN_LATIHAN_DUA,
-    ADEGAN_LATIHAN_TIGA,
-    ADEGAN_PENUTUP,
+    ADEGAN_DUA_HASIL,
+    ADEGAN_RANTAI_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K2B6A: VideoStory = {
   id: "k2b6A-luar",
-  judul: "Berat Benda: Metode dari Luar",
-  subjudul: "Tiga metode luar",
+  judul: JUDUL_K2B6A,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "berat" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "berat benda", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_BANDING,
-    ADEGAN_LUAR_BANDING_TERAPAN,
-    ADEGAN_LUAR_SATUAN,
-    ADEGAN_LUAR_SATUAN_TERAPAN,
-    ADEGAN_LUAR_LEBIH,
-    ADEGAN_LUAR_LEBIH_TERAPAN,
+    ADEGAN_LUAR_BATANG,
+    ADEGAN_LUAR_BATANG_TERAPAN,
+    ADEGAN_LUAR_TITIK,
+    ADEGAN_LUAR_TITIK_TERAPAN,
+    ADEGAN_LUAR_DASAR,
+    ADEGAN_LUAR_DASAR_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };
