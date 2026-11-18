@@ -178,6 +178,7 @@ export function kalimatKunci(l: Langkah, cara: Cara): string {
     case "venn":
       return cara === "klik" ? "Semua bentuk sudah di tempatnya. Bagian tengah memuat bentuk yang punya kedua ciri." : `Bagian tengah memuat bentuk yang punya kedua ciri. Ada ${kata(jumlahTengah(d))}.`;
     case "buru":
+      if (cara === "suara") return `Benda yang ditunjuk berbentuk ${INFO[d.isi[d.sorot]].nama}.`;
       return `Ada ${kata(jumlahSasaran(d))} benda berbentuk ${INFO[d.sasaran].nama}.`;
   }
 }

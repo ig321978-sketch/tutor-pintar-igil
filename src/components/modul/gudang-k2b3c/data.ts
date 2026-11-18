@@ -123,7 +123,7 @@ export const CONCRETE: SoalMisi[] = [
     muka("cetak", "kerucut", "datar"),
     hit("pandang", "datarSaja", ["esbatu", "dadu", "bata", "hadiah", "tisu", "eskrim", "basket"]),
   ]),
-  C(4, "suara", "Misi Gudang 4: tebakan Bu Sari", "Bu Sari memberi petunjuk dari balik rak. Sebutkan nama bangun ruangnya.", [
+  C(4, "suara", "Misi Gudang 4: petunjuk Bu Sari", "Bu Sari memberi petunjuk dari balik rak. Sebutkan nama bangun ruangnya.", [
     nam("igil", "tanya", "bola"),
     nam("tas", "tas", "balok"),
     nam("cetak", "cetak", "kerucut"),

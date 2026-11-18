@@ -127,7 +127,7 @@ function Hitung({ l, rupa, cara, diam, salah, siap }: PK & { l: LHitung }) {
       <Pernyataan judul="Sebuah bentuk" baris={[`Banyak sisi: ${n}`, "Tepinya lurus semua", "Tanda awal di sisi pertama; hitung berputar sampai kembali ke tanda"]} />
     );
   const pts = titikBentuk(l.bentuk, PUSAT_HITUNG.x, PUSAT_HITUNG.y, R_HITUNG);
-  const tanda = sisiTengah(pts, l.awal, 17);
+  const tanda = sisiTengah(pts, l.awal, rupa === "benda" ? 17 : 25);
   const berikut = (l.awal + urut.length) % n;
   const ketukSisi = (i: number) => {
     if (!interaktif || urut.length >= n) return;
@@ -307,7 +307,7 @@ function Buru({ l, rupa, cara, diam, salah, siap }: PK & { l: LBuru }) {
   const [ketemu, setKetemu] = useState<number[]>([]);
   const target = l.isi.map((k, i) => (k === l.sasaran ? i : -1)).filter((i) => i >= 0);
   const pilihBenda = (i: number) => {
-    if (!interaktif || ketemu.includes(i)) return;
+    if (!interaktif || ketemu.includes(i) || ketemu.length === target.length) return;
     if (l.isi[i] === l.sasaran) {
       const baru = [...ketemu, i];
       setKetemu(baru);
@@ -360,8 +360,8 @@ function Buru({ l, rupa, cara, diam, salah, siap }: PK & { l: LBuru }) {
               </text>
             ) : null}
             {cara === "suara" && !diam && i === l.sorot ? (
-              <text x={c.x} y={c.y - 40} textAnchor="middle" fontSize={14} fill={MERAH}>
-                {"\u{25BC}"}
+              <text x={c.x + 31} y={c.y - 14} textAnchor="middle" fontSize={14} fill={MERAH}>
+                {"\u{25C0}"}
               </text>
             ) : null}
           </g>
