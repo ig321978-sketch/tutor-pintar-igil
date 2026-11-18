@@ -340,6 +340,7 @@ import {
   TombolLanjutConcrete,
   fontAnak,
 } from "@/components/modul/elemen-kelas1";
+import { babPakaiBankAcak } from "@/lib/bank-acak";
 import { catatLatihanDinilai, catatSubBabSelesai } from "@/lib/capaian-klien";
 import { bukaTahap, catatTab, gabungJejak, selesaiSub, tempatKembali, type JejakBab, type TabJejak } from "@/lib/jejak-tahap";
 import { akunPerangkat, ambilJejakServer, kirimJejakServer, muatJejakLokal, tulisJejakLokal } from "@/lib/jejak-tahap-klien";
@@ -1084,7 +1085,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const soalSiap = PRACTICE_QUESTIONS.length > 0;
   /** Kode bab di server. Soal Ujian tidak ada di berkas ini, hanya dikirim server saat ujian dimulai. */
   const idBabServer = materi.chapter_id ?? "";
-  const bankAcak = idBabServer === "k1-mat-bab1";
+  const bankAcak = babPakaiBankAcak(idBabServer);
   const profilBelajar = useProfilBelajar();
   const poin = materi.tokens ?? POIN_BAWAAN;
   const peta = paket ? paket.emoji : adaK2B8 ? SUB_ANAK_K2B8 : adaK2B7 ? SUB_ANAK_K2B7 : adaK2B6 ? SUB_ANAK_K2B6 : adaK2B5 ? SUB_ANAK_K2B5 : adaK2B4 ? SUB_ANAK_K2B4 : adaK2B3 ? SUB_ANAK_K2B3 : adaK2B2 ? SUB_ANAK_K2B2 : adaK2B1 ? SUB_ANAK_K2B1 : adaBab8 ? SUB_ANAK_BAB8 : adaBab7 ? SUB_ANAK_BAB7 : adaBab6 ? SUB_ANAK_BAB6 : adaBab5 ? SUB_ANAK_BAB5 : adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;

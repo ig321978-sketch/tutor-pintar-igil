@@ -5,7 +5,9 @@ const root = process.cwd();
 const masterDir = path.join(root, "src", "content-master");
 const dataDir = path.join(root, "src", "data");
 const seedDir = path.join(root, "supabase", "seed");
-const kunciRahasia = new Set(["correct_index", "correctAnswer", "explanation"]);
+/** Bab yang memakai bank acak (sama dengan src/lib/bank-acak.ts). Seed 10 soal tidak boleh menimpa bank-nya. */
+const BAB_BANK_ACAK = new Set(["k1-mat-bab1", "k1-mat-bab8"]);
+const kunciRahasia =new Set(["correct_index", "correctAnswer", "explanation"]);
 
 function sqlTeks(nilai) {
   return `'${String(nilai).replaceAll("'", "''")}'`;
@@ -158,9 +160,8 @@ function sqlBab(master) {
     .map((soal) => `(${sqlTeks(soal.packageCode)}, ${sqlTeks(soal.questionId)})`)
     .join(", ");
 
-  const pengamanBank =
-    bab === "k1-mat-bab1"
-      ? `
+  const pengamanBank = BAB_BANK_ACAK.has(bab)
+    ? `
 do $$
 begin
   if exists (
@@ -170,13 +171,13 @@ begin
       and column_name = 'mode_undian'
   ) and exists (
     select 1 from public.server_chapters
-    where chapter_id = 'k1-mat-bab1' and mode_undian = 'acak'
+    where chapter_id = ${sqlTeks(bab)} and mode_undian = 'acak'
   ) then
-    raise exception 'Bank acak Kelas 1 Bab 1 sudah aktif. Jangan timpa dengan seed 10 soal. Pakai 02_kelas1_bab1_bank_keys.sql.';
+    raise exception 'Bank acak ${bab} sudah aktif. Jangan timpa dengan seed 10 soal. Pakai seed 02_*_bank_keys.sql bab ini.';
   end if;
 end $$;
 `
-      : "";
+    : "";
 
   return `-- Dihasilkan oleh npm run sync:keys. Jangan edit tangan.
 -- Sumber lokal: src/content-master (tidak di-commit, tidak di-import frontend).
