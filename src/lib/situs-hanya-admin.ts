@@ -63,6 +63,7 @@ export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
     pathname === "/komunitas" ||
     pathname.startsWith("/komunitas/") ||
     pathname === "/daftar" ||
+    pathname === "/praktikum" ||
     pathname.startsWith("/praktikum/") ||
     pathname === "/ruang-belajar" ||
     pathname.startsWith("/ruang-belajar/") ||

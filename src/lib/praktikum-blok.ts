@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "react";
+import { useMemo, useSyncExternalStore } from "react";
 
 /**
  * Catatan belajar di perangkat untuk Praktikum per blok 4 bab.
@@ -103,4 +103,21 @@ export function usePraktikumTerkirim(idBlok: string): PraktikumTerkirim | undefi
   } catch {
     return undefined;
   }
+}
+
+/** Semua Praktikum yang sudah dikirim di perangkat ini, per id. `null` selama belum terbaca. */
+export function useSemuaPraktikumTerkirim(): Readonly<Record<string, PraktikumTerkirim>> | null {
+  const mentah = useSyncExternalStore(
+    langgan,
+    () => ambilMentah(KUNCI_PRAKTIKUM) || "{}",
+    () => "",
+  );
+  return useMemo(() => {
+    if (mentah === "") return null;
+    try {
+      return JSON.parse(mentah) as Record<string, PraktikumTerkirim>;
+    } catch {
+      return {};
+    }
+  }, [mentah]);
 }

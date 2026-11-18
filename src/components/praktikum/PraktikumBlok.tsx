@@ -3,12 +3,15 @@
 import Link from "next/link";
 import { useState } from "react";
 import dataBlok from "@/data/praktikum-blok.json";
+import { babUjianSempurna } from "@/lib/capaian";
+import { useCapaian } from "@/lib/capaian-klien";
 import { useBukaSemuaKunci } from "@/lib/buka-semua-kunci";
 import {
   catatPraktikumTerkirim,
   useUjianLulus,
   usePraktikumTerkirim,
 } from "@/lib/praktikum-blok";
+import type { TugasPraktikum } from "@/lib/praktikum-pilot";
 import { ucapkanGuruModul } from "@/lib/suara-guru-modul";
 
 type Langkah = {
@@ -55,9 +58,15 @@ function hitungKata(teks: string): number {
   return teks.trim().split(/\s+/).filter(Boolean).length;
 }
 
-export default function PraktikumBlok({ blokId }: { blokId: string }) {
-  const blok = SEMUA_BLOK.find((b) => b.blok_id === blokId);
-  const lulus = useUjianLulus();
+/**
+ * `tugas` diisi untuk Praktikum yang dibuat otomatis per bab (Pilot: 1 bab lulus Ujian 100%).
+ * Tanpa `tugas`, tugas blok 4 bab dibaca dari src/data/praktikum-blok.json.
+ */
+export default function PraktikumBlok({ blokId, tugas: tugasOtomatis }: { blokId: string; tugas?: TugasPraktikum }) {
+  const blok: Blok | undefined = tugasOtomatis ?? SEMUA_BLOK.find((b) => b.blok_id === blokId);
+  const ujianLama = useUjianLulus();
+  const capaian = useCapaian();
+  const lulus = ujianLama === null || capaian === null ? null : [...babUjianSempurna(capaian, ujianLama)];
   const terkirim = usePraktikumTerkirim(blokId);
   const bukaSemua = useBukaSemuaKunci();
   const [jawabanLangkah, setJawabanLangkah] = useState<Record<string, string>>({});
@@ -90,12 +99,17 @@ export default function PraktikumBlok({ blokId }: { blokId: string }) {
     <main className="min-h-screen bg-indigo-50/40 pb-16">
       <header className="bg-gradient-to-br from-indigo-900 via-violet-900 to-indigo-950 px-4 py-8 text-white">
         <div className="mx-auto max-w-3xl">
+          <Link href="/praktikum" className="mb-3 inline-block text-xs font-black text-indigo-100 underline underline-offset-4">
+            ← Semua Praktikum
+          </Link>
           <p className="text-xs font-bold uppercase tracking-widest text-amber-300">
             {blok.subject} · Kelas {blok.grade} · {blok.phase_code.replace("_", " ")}
           </p>
           <h1 className="mt-2 text-2xl font-black md:text-3xl">{blok.title}</h1>
           <p className="mt-2 text-sm text-indigo-100">
-            Satu tugas untuk empat bab sekaligus. Terbit sekali per blok.
+            {blok.chapters.length > 1
+              ? `Satu tugas untuk ${blok.chapters.length} bab sekaligus. Terbit sekali per blok.`
+              : "Dibuat otomatis dari peta konsep semua Sub-Bab. Terbit sekali dan hanya bisa diserahkan satu kali."}
           </p>
           <span className="mt-4 inline-block rounded-full bg-amber-400 px-4 py-1.5 text-sm font-black text-indigo-950">
             ⭐ {blok.points_reward} Poin Kualifikasi
@@ -105,7 +119,7 @@ export default function PraktikumBlok({ blokId }: { blokId: string }) {
 
       <div className="mx-auto mt-6 max-w-3xl space-y-5 px-4">
         <section className="rounded-3xl border-2 border-indigo-100 bg-white p-5 shadow-sm">
-          <h2 className="text-lg font-black text-indigo-950">Syarat: lulus Ujian 100% di 4 bab</h2>
+          <h2 className="text-lg font-black text-indigo-950">Syarat: lulus Ujian 100% di {blok.chapters.length} bab</h2>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
             {blok.chapters.map((b) => {
               const sudah = babLulus.has(b.chapter_id);
@@ -153,7 +167,7 @@ export default function PraktikumBlok({ blokId }: { blokId: string }) {
             <p className="text-4xl" aria-hidden>🔒</p>
             <h2 className="mt-2 text-lg font-black text-indigo-950">Praktikum masih terkunci</h2>
             <p className="mt-1 text-sm text-indigo-900">
-              Lulus Ujian 100% di semua bab di atas, lalu halaman ini terbuka.
+              Lulus Ujian 100% di {blok.chapters.length > 1 ? "semua bab" : "bab"} di atas, lalu halaman ini terbuka.
             </p>
           </section>
         ) : (

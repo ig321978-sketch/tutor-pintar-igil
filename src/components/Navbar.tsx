@@ -9,6 +9,7 @@ import { situsHanyaAdmin } from "@/lib/situs-hanya-admin";
 
 const MENU = [
   { href: "/ruang-belajar", label: "📚 Ruang Belajar" },
+  { href: "/praktikum", label: "🧪 Praktikum" },
   { href: "/rapor", label: "📊 Rapor & Sertifikat" },
   { href: "/ranking", label: "🏆 Ranking & Beasiswa" },
   { href: "/komunitas", label: "🏫 Komunitas IGIL" },
