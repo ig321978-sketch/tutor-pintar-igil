@@ -1,137 +1,155 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { EMO, W, bendaDi, emo, judul, kartu, kotak, namaG, jumlahG, pasang, pusatBenda, teks, titikBaris, titikPetak } from "./k2b2C-gambar";
-import { bersih, hapus, hitungAksi, idx, k, redamkan, sorotkan, tambah, ubah } from "./k2b2C-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, baris, deret, emo, idDeret, judul, kartu, kertasPesanan, kotak, lantai, rak, teks, tokoh } from "./k2b2C-gambar";
+import { hapus, idx, k, sorotkan, tambah, ubah } from "./k2b2C-bantu";
 
-const ex = (isi: string, id = "ex", x = 150, y = 132, u = 16): Obj => teks(id, x, y, isi, u, W.merah);
+/*
+ * Cerita orisinal IGIL "Pesanan Besar Pak Budi" (Kelas 2 Bab 2 Sub-Bab C, cerita hitungan penjumlahan dan pengurangan), akhir cerita Toko Seragam dan Alat Tulis Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b2c.md. Bagian ini: pesanan besar, salah langkah menjumlahkan padahal "kurangnya", dan empat langkah cerita.
+ */
 
-/* ------------------------------ 1. Burung hijau dan burung merah ------------------------------ */
-export const X_BURUNG = 70;
-export const DX_BURUNG = 30;
-export const Y_BURUNG_A = 76;
-export const Y_BURUNG_B = 132;
-const ptsHijau = titikBaris(4, X_BURUNG, Y_BURUNG_A, DX_BURUNG);
-const ptsMerah = titikBaris(5, X_BURUNG, Y_BURUNG_B, DX_BURUNG);
-const SUARA_B1 = "Ada burung hijau dan burung merah di dahan. Ayo kita lihat mereka.";
-const SUARA_B2 = "Burung hijau ada empat ekor. Burung merah ada lima ekor.";
-const SUARA_B3 = "Sekarang kita pasangkan burungnya satu-satu. Hijau pertama dengan merah pertama, dan seterusnya sampai habis.";
-const SUARA_B4 = "Ada satu burung merah yang tidak punya pasangan.";
-const SUARA_B5 = "Jadi burung hijau satu kurangnya dari burung merah. Burung merah satu lebihnya dari burung hijau.";
+/* ------------------------------ 1. Pesanan besar ------------------------------ */
+const SUARA_P1 = "Pak Budi, kepala sekolah, memesan alat tulis untuk acara pembukaan koperasi besok.";
+const SUARA_P2 = "Bu Sari meminta Chacha, Dika, dan Nia menghitung kertas pesanannya.";
+const SUARA_P3 = "Kalau salah hitung, hadiah untuk anak-anak bisa tidak cukup!";
 
-export const ADEGAN_BURUNG: AdeganStory = {
-  id: "burung-dahan",
-  judul: "Burung hijau dan burung merah di dahan",
-  sumber: "Materi: lebihnya dan kurangnya",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(
-      SUARA_B1,
-      tambah(0, judul("Burung di dahan")),
-      tambah(idx(SUARA_B1, "hijau"), kotak("sa", 8, 46, 284, 40, W.hijauMuda, W.hijau, { rx: 8 }), namaG("a", 14, 70, "Hijau")),
-      tambah(idx(SUARA_B1, "merah"), kotak("sb", 8, 102, 284, 40, W.merahMuda, W.merah, { rx: 8 }), namaG("b", 14, 126, "Merah")),
-    ),
-    k(SUARA_B2, tambah(idx(SUARA_B2, "empat"), ...bendaDi("a", EMO.burung, ptsHijau, 20), jumlahG("a", 262, 72, "4")), tambah(idx(SUARA_B2, "lima"), ...bendaDi("b", EMO.burung, ptsMerah, 20), jumlahG("b", 262, 128, "5"))),
-    k(
-      SUARA_B3,
-      tambah(idx(SUARA_B3, "pasangkan"), pasang(0, X_BURUNG, Y_BURUNG_A + 4, Y_BURUNG_B - 18)),
-      tambah(idx(SUARA_B3, "burungnya"), pasang(1, X_BURUNG + DX_BURUNG, Y_BURUNG_A + 4, Y_BURUNG_B - 18)),
-      tambah(idx(SUARA_B3, "satu-satu"), pasang(2, X_BURUNG + 2 * DX_BURUNG, Y_BURUNG_A + 4, Y_BURUNG_B - 18)),
-      tambah(idx(SUARA_B3, "seterusnya"), pasang(3, X_BURUNG + 3 * DX_BURUNG, Y_BURUNG_A + 4, Y_BURUNG_B - 18)),
-    ),
-    k(SUARA_B4, sorotkan(idx(SUARA_B4, "tidak"), "eb4")),
-    k(SUARA_B5, redamkan(0, "eb4"), tambah(idx(SUARA_B5, "kurangnya"), ...kartu("kk", 20, 152, 260, 20, W.hijauMuda, ["burung hijau 1 kurangnya"], 9.4)), tambah(idx(SUARA_B5, "lebihnya"), ...kartu("kl", 20, 176, 260, 20, W.merahMuda, ["burung merah 1 lebihnya"], 9.4))),
-  ],
-};
-
-/* ------------------------------ 2. Empat kata kunci ------------------------------ */
-const POS_KUNCI = [
-  { id: "kj", x: 14, y: 34, warna: W.hijauMuda, isi: "lebihnya" },
-  { id: "kk", x: 156, y: 34, warna: W.pink, isi: "kurangnya" },
-  { id: "ks", x: 14, y: 76, warna: W.langit, isi: "selisih" },
-  { id: "kt", x: 156, y: 76, warna: W.krem, isi: "jumlah" },
-];
-const kunci = (i: number): Obj[] => kartu(POS_KUNCI[i].id, POS_KUNCI[i].x, POS_KUNCI[i].y, 130, 34, POS_KUNCI[i].warna, [POS_KUNCI[i].isi], 11);
-const SUARA_K1 = "Soal cerita punya kata kunci. Kata kunci membantu kita memilih tambah atau kurang.";
-const SUARA_K2 = "Ada empat kata kunci: lebihnya, kurangnya, selisih, dan jumlah.";
-const SUARA_K3 = "Kata jumlah berarti semua digabung. Burung hijau empat, burung merah lima. Empat ditambah lima sama dengan sembilan, jadi kita tambah.";
-const SUARA_K4 = "Kata selisih berarti beda banyaknya. Lima dikurangi empat sama dengan satu. Jadi kita kurangi.";
-const SUARA_K5 = "Kata lebihnya dan kurangnya perlu dibaca pelan-pelan. Kita lihat dulu siapa yang dicari.";
-
-export const ADEGAN_KATA_KUNCI: AdeganStory = {
-  id: "kata-kunci",
-  judul: "Empat kata kunci soal cerita",
-  sumber: "Materi: kata kunci soal cerita",
-  latar: "#FFFBEB",
-  ketukan: [
-    k(
-      SUARA_K1,
-      tambah(0, judul("Kata kunci"), emo("kc", 150, 100, "\u{1F50E}", 44)),
-      tambah(idx(SUARA_K1, "tambah"), ...kartu("tb", 30, 134, 110, 34, W.hijauMuda, ["tambah (+)"], 12)),
-      tambah(idx(SUARA_K1, "kurang"), ...kartu("kr", 160, 134, 110, 34, W.pink, ["kurang (−)"], 12)),
-    ),
-    k(SUARA_K2, bersih(0), tambah(0, judul("Empat kata kunci")), tambah(idx(SUARA_K2, "lebihnya"), ...kunci(0)), tambah(idx(SUARA_K2, "kurangnya"), ...kunci(1)), tambah(idx(SUARA_K2, "selisih"), ...kunci(2)), tambah(idx(SUARA_K2, "jumlah"), ...kunci(3))),
-    k(SUARA_K3, sorotkan(idx(SUARA_K3, "jumlah"), "kt-k"), tambah(idx(SUARA_K3, "sembilan"), ex("4 + 5 = 9")), tambah(idx(SUARA_K3, "jadi"), ...kartu("tb", 90, 152, 120, 30, W.hijauMuda, ["tambah (+)"], 12))),
-    k(SUARA_K4, redamkan(0, "kt-k"), sorotkan(idx(SUARA_K4, "selisih"), "ks-k"), ubah(idx(SUARA_K4, "Lima"), { id: "ex", isi: "5 − 4 = 1" }), hapus(idx(SUARA_K4, "Jadi"), "tb-k", "tb-t0"), tambah(idx(SUARA_K4, "Jadi"), ...kartu("kr", 90, 152, 120, 30, W.pink, ["kurang (−)"], 12))),
-    k(SUARA_K5, redamkan(0, "ks-k"), hapus(0, "ex", "kr-k", "kr-t0"), sorotkan(idx(SUARA_K5, "lebihnya"), "kj-k"), sorotkan(idx(SUARA_K5, "kurangnya"), "kk-k"), tambah(idx(SUARA_K5, "siapa"), ...kartu("sd", 40, 140, 220, 32, W.krem, ["siapa yang dicari?"], 12))),
-  ],
-};
-
-/* ------------------------------ 3. Donat Kira ------------------------------ */
-export const ptsDonatKira = titikPetak(12, 6, 70, 70, 26, 34);
-const SUARA_D1 = "Kira punya donat di atas piring. Kita hitung: satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh, sebelas, dua belas.";
-const SUARA_D2 = "Jadi donat Kira ada dua belas buah.";
-const SUARA_D3 = "Malosi punya lima donat kurangnya dari donat Kira.";
-const SUARA_D4 = "Pertanyaan pertama, berapa donat milik Malosi? Pertanyaan kedua, berapa jumlah donat mereka berdua?";
-
-export const ADEGAN_DONAT_KIRA: AdeganStory = {
-  id: "donat-kira",
-  judul: "Donat Kira dan donat Malosi",
-  sumber: "Materi: contoh soal cerita donat",
+export const ADEGAN_PESANAN_BESAR: AdeganStory = {
+  id: "pesanan-besar",
+  judul: "Pesanan besar untuk pembukaan",
+  sumber: "Materi: pesanan besar Pak Budi",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      SUARA_D1,
-      tambah(0, judul("Donat di atas piring")),
-      tambah(idx(SUARA_D1, "Kira"), namaG("a", 8, 90, "Kira")),
-      tambah(idx(SUARA_D1, "piring"), ...bendaDi("a", EMO.donat, ptsDonatKira)),
-      ...hitungAksi(SUARA_D1, "ea", pusatBenda(ptsDonatKira), { setelah: "hitung" }),
+      SUARA_P1,
+      tambah(0, judul("Pesanan besar"), lantai("lt", 150), ...rak("rk", 16, 44, 128, 84), teks("rk-n", 80, 40, "rak alat tulis", 8.4, W.coklat), ...deret("pensil", "pn", baris(4, 38, 64, 28)), ...deret("penggaris", "pg", baris(3, 52, 90, 32))),
+      tambah(idx(SUARA_P1, "Pak"), ...tokoh("bd", 262, 172, "budi")),
+      tambah(idx(SUARA_P1, "memesan"), ...kertasPesanan("ks", 190, 58, 70, 80), teks("ks-t", 225, 74, "Pesanan", 8.4, W.biru, { z: 2 })),
+      tambah(idx(SUARA_P1, "pembukaan"), emo("pt", 206, 38, E.pita, 16), teks("bp", 250, 40, "belum terpasang", 8, W.merah)),
     ),
-    k(SUARA_D2, tambah(idx(SUARA_D2, "dua"), jumlahG("a", 262, 90, "12"))),
-    k(SUARA_D3, tambah(idx(SUARA_D3, "Malosi"), ...kartu("mk", 20, 122, 260, 26, W.krem, ["Malosi: 5 kurangnya dari Kira"], 10))),
     k(
-      SUARA_D4,
-      tambah(idx(SUARA_D4, "pertama"), ...kartu("qa", 14, 160, 134, 30, W.hijauMuda, ["a. donat Malosi?"], 10)),
-      tambah(idx(SUARA_D4, "kedua"), ...kartu("qb", 152, 160, 134, 30, W.langit, ["b. jumlah donat?"], 10)),
+      SUARA_P2,
+      tambah(idx(SUARA_P2, "Sari"), ...tokoh("sr", 30, 172, "sari")),
+      tambah(idx(SUARA_P2, "Chacha"), ...tokoh("ch", 74, 172, "chacha")),
+      tambah(idx(SUARA_P2, "Dika"), ...tokoh("dk", 118, 172, "dika")),
+      tambah(idx(SUARA_P2, "Nia"), ...tokoh("ni", 162, 172, "nia")),
+      sorotkan(idx(SUARA_P2, "kertas"), "ks"),
+      tambah(idx(SUARA_P2, "menghitung"), emo("kc", 222, 150, E.kaca, 20)),
+    ),
+    k(
+      SUARA_P3,
+      hapus(0, "kc"),
+      tambah(idx(SUARA_P3, "salah"), emo("sl", 228, 110, E.salah, 22)),
+      hapus(idx(SUARA_P3, "hadiah"), ...idDeret("pensil", "pn", 4), ...idDeret("penggaris", "pg", 3)),
+      tambah(idx(SUARA_P3, "hadiah"), emo("hd0", 50, 70, E.hadiah, 22), emo("hd1", 92, 70, E.hadiah, 22)),
+      tambah(idx(SUARA_P3, "tidak"), ...kartu("tc", 20, 100, 116, 20, W.merahMuda, ["hadiah tidak cukup"], 8.4)),
+      tambah(idx(SUARA_P3, "cukup"), emo("sd", 222, 150, E.sedih, 22)),
     ),
   ],
 };
 
-/* ------------------------------ 4. Empat langkah ------------------------------ */
-const LANGKAH = ["1. Diketahui", "2. Ditanya", "3. Solusi", "4. Kesimpulan"];
-const WARNA_LANGKAH = [W.hijauMuda, W.langit, W.krem, W.pink];
-const langkah = (i: number): Obj[] => kartu(`lg${i}`, 10, 34 + i * 40, 120, 32, WARNA_LANGKAH[i], [LANGKAH[i]], 10.4);
-const SUARA_L1 = "Soal cerita kita selesaikan dengan empat langkah berurutan.";
-const SUARA_L2 = "Langkah pertama, diketahui. Langkah kedua, ditanya. Langkah ketiga, solusi. Langkah keempat, kesimpulan.";
-const SUARA_L3 = "Diketahui berarti apa yang sudah kita tahu. Kira punya dua belas donat. Donat Malosi lima kurangnya.";
-const SUARA_L4 = "Ditanya berarti apa yang harus dicari. Kita cari donat Malosi, lalu jumlah donat mereka berdua.";
-const SUARA_L5 = "Langkah solusi dan kesimpulan kita kerjakan sebentar lagi.";
+/* ------------------------------ 2. Salah langkah: langsung menjumlahkan ------------------------------ */
+const SUARA_T1 = "Pesanan pertama berbunyi, pensil ada dua belas, penggaris empat kurangnya dari pensil. Berapa penggaris?";
+const SUARA_T2 = "Chacha langsung menjumlahkan dua belas dan empat, hasilnya enam belas penggaris!";
+const SUARA_T3 = "Dika menggeleng. Kurangnya berarti lebih sedikit, jadi penggaris pasti lebih sedikit dari pensil, bukan lebih banyak.";
+
+const KALIMAT_SALAH = [
+  { id: "sm0", x: 112, isi: "12" },
+  { id: "sm1", x: 140, isi: "+" },
+  { id: "sm2", x: 168, isi: "4" },
+  { id: "sm3", x: 196, isi: "=" },
+  { id: "sm4", x: 224, isi: "16" },
+];
+
+export const ADEGAN_TERLALU_CEPAT: AdeganStory = {
+  id: "terlalu-cepat",
+  judul: "Langsung menjumlahkan",
+  sumber: "Materi: salah langkah, kata kurangnya",
+  latar: "#FEFCE8",
+  ketukan: [
+    k(
+      SUARA_T1,
+      tambah(0, judul("Pesanan pertama"), lantai("lt", 156)),
+      tambah(idx(SUARA_T1, "pensil"), ...deret("pensil", "pn", baris(12, 36, 88, 21), 15)),
+      tambah(idx(SUARA_T1, "belas"), teks("pn-n", 150, 68, "pensil: 12", 10)),
+      tambah(idx(SUARA_T1, "penggaris"), teks("pg-n", 76, 124, "penggaris: ?", 10)),
+      tambah(idx(SUARA_T1, "empat"), ...kartu("kr", 150, 108, 130, 22, W.krem, ["4 kurangnya"], 9.6)),
+      sorotkan(idx(SUARA_T1, "kurangnya"), "kr-k"),
+      tambah(idx(SUARA_T1, "Berapa"), emo("tn", 126, 128, E.tanya, 18)),
+    ),
+    k(
+      SUARA_T2,
+      tambah(idx(SUARA_T2, "Chacha"), ...tokoh("ch", 36, 176, "chacha")),
+      hapus(idx(SUARA_T2, "langsung"), "tn"),
+      tambah(idx(SUARA_T2, "belas"), teks(KALIMAT_SALAH[0].id, KALIMAT_SALAH[0].x, 172, KALIMAT_SALAH[0].isi, 16, W.biru)),
+      tambah(idx(SUARA_T2, "dan"), teks(KALIMAT_SALAH[1].id, KALIMAT_SALAH[1].x, 172, KALIMAT_SALAH[1].isi, 16, W.merah)),
+      tambah(idx(SUARA_T2, "empat"), teks(KALIMAT_SALAH[2].id, KALIMAT_SALAH[2].x, 172, KALIMAT_SALAH[2].isi, 16, W.biru)),
+      tambah(idx(SUARA_T2, "hasilnya"), teks(KALIMAT_SALAH[3].id, KALIMAT_SALAH[3].x, 172, KALIMAT_SALAH[3].isi, 16, W.merah)),
+      tambah(idx(SUARA_T2, "belas", 2), teks(KALIMAT_SALAH[4].id, KALIMAT_SALAH[4].x, 172, KALIMAT_SALAH[4].isi, 16, W.merah)),
+      ubah(idx(SUARA_T2, "penggaris"), { id: "pg-n", isi: "penggaris: 16" }),
+      tambah(idx(SUARA_T2, "penggaris"), emo("ss", 258, 150, E.seru, 20)),
+    ),
+    k(
+      SUARA_T3,
+      hapus(0, "ss"),
+      tambah(idx(SUARA_T3, "Dika"), ...tokoh("dk", 276, 176, "dika")),
+      tambah(idx(SUARA_T3, "menggeleng"), emo("x1", 250, 158, E.salah, 20)),
+      sorotkan(idx(SUARA_T3, "Kurangnya"), "kr-k"),
+      ubah(idx(SUARA_T3, "sedikit"), { id: "pg-n", isi: "penggaris: lebih sedikit", warna: W.hijau }),
+      tambah(idx(SUARA_T3, "bukan"), emo("x2", 224, 150, E.salah, 16)),
+    ),
+  ],
+};
+
+/* ------------------------------ 3. Empat langkah ------------------------------ */
+const SUARA_L1 = "Dika menulis empat langkah di kartu: diketahui, ditanya, solusi, dan kesimpulan.";
+const SUARA_L2 = "Diketahui, pensil dua belas dan penggaris empat kurangnya. Ditanya, banyak penggaris. Solusi, dua belas dikurangi empat sama dengan delapan.";
+const SUARA_L3 = "Kesimpulan, banyak penggaris adalah delapan. Kali ini jawabannya masuk akal!";
+
+const KARTU4 = [
+  { id: "l0", x: 8, y: 30, nama: "Diketahui", warna: "#DBEAFE" },
+  { id: "l1", x: 152, y: 30, nama: "Ditanya", warna: "#FEF9C3" },
+  { id: "l2", x: 8, y: 86, nama: "Solusi", warna: "#DCFCE7" },
+  { id: "l3", x: 152, y: 86, nama: "Kesimpulan", warna: "#FCE7F3" },
+];
+const kartu4 = (i: number) => {
+  const c = KARTU4[i];
+  return [kotak(`${c.id}-k`, c.x, c.y, 140, 50, c.warna, W.biru, { rx: 8, tebal: 1.6 }), teks(`${c.id}-n`, c.x + 70, c.y + 15, c.nama, 9.6, W.ungu)];
+};
+const isi4 = (i: number, isi: string, u = 8) => teks(`${KARTU4[i].id}-i`, KARTU4[i].x + 70, KARTU4[i].y + 37, isi, u, W.biru, { z: 1 });
 
 export const ADEGAN_EMPAT_LANGKAH: AdeganStory = {
   id: "empat-langkah",
-  judul: "Empat langkah menyelesaikan soal cerita",
-  sumber: "Materi: empat langkah penyelesaian",
-  latar: "#F5F3FF",
+  judul: "Empat langkah di kartu",
+  sumber: "Materi: diketahui, ditanya, solusi, kesimpulan",
+  latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_L1, tambah(0, judul("Empat langkah"), emo("nt", 150, 110, "\u{1F4DD}", 46))),
+    k(
+      SUARA_L1,
+      tambah(0, judul("Empat langkah"), lantai("lt", 150)),
+      tambah(idx(SUARA_L1, "Dika"), ...tokoh("dk", 30, 176, "dika")),
+      tambah(idx(SUARA_L1, "menulis"), emo("ct", 62, 160, E.catat, 20)),
+      tambah(idx(SUARA_L1, "empat"), teks("n4", 170, 164, "4 langkah di kartu", 11, W.ungu)),
+      tambah(idx(SUARA_L1, "diketahui"), ...kartu4(0)),
+      tambah(idx(SUARA_L1, "ditanya"), ...kartu4(1)),
+      tambah(idx(SUARA_L1, "solusi"), ...kartu4(2)),
+      tambah(idx(SUARA_L1, "kesimpulan"), ...kartu4(3)),
+    ),
     k(
       SUARA_L2,
-      hapus(0, "nt"),
-      tambah(idx(SUARA_L2, "diketahui"), ...langkah(0)),
-      tambah(idx(SUARA_L2, "ditanya"), ...langkah(1)),
-      tambah(idx(SUARA_L2, "solusi"), ...langkah(2)),
-      tambah(idx(SUARA_L2, "kesimpulan"), ...langkah(3)),
+      hapus(0, "ct"),
+      tambah(idx(SUARA_L2, "Diketahui"), isi4(0, "pensil 12, penggaris kurang 4")),
+      sorotkan(idx(SUARA_L2, "Diketahui"), "l0-k"),
+      tambah(idx(SUARA_L2, "Ditanya"), isi4(1, "banyak penggaris?")),
+      sorotkan(idx(SUARA_L2, "Ditanya"), "l1-k"),
+      tambah(idx(SUARA_L2, "Solusi"), isi4(2, "12 − 4", 12)),
+      sorotkan(idx(SUARA_L2, "Solusi"), "l2-k"),
+      ubah(idx(SUARA_L2, "delapan"), { id: "l2-i", isi: "12 − 4 = 8" }),
     ),
-    k(SUARA_L3, sorotkan(idx(SUARA_L3, "Diketahui"), "lg0-k"), tambah(idx(SUARA_L3, "dua"), ...kartu("fa", 138, 34, 154, 32, W.putih, ["Kira 12, Malosi 5 kurang"], 8.6))),
-    k(SUARA_L4, redamkan(0, "lg0-k"), sorotkan(idx(SUARA_L4, "Ditanya"), "lg1-k"), tambah(idx(SUARA_L4, "donat"), ...kartu("fb", 138, 74, 154, 32, W.putih, ["Donat Malosi? Jumlah?"], 8.6))),
-    k(SUARA_L5, redamkan(0, "lg1-k"), sorotkan(idx(SUARA_L5, "solusi"), "lg2-k"), sorotkan(idx(SUARA_L5, "kesimpulan"), "lg3-k")),
+    k(
+      SUARA_L3,
+      tambah(idx(SUARA_L3, "Kesimpulan"), isi4(3, "penggaris ada 8", 9)),
+      sorotkan(idx(SUARA_L3, "Kesimpulan"), "l3-k"),
+      tambah(idx(SUARA_L3, "delapan"), emo("ok", 240, 160, E.centang, 20)),
+      tambah(idx(SUARA_L3, "masuk"), emo("jm", 270, 164, E.jempol, 20)),
+    ),
   ],
 };

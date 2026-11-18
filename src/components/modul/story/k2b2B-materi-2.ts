@@ -1,101 +1,156 @@
 import type { AdeganStory } from "./logika-story";
-import { W, batangP, idBatang, judul, jalurBilangan, kartu, kotakPenerima, kubusP, labelN, langkah, lompat, rumus, sel, slotBatang, slotKubus, tabelKurang, tandaAkhir, tandaAwal, teks, idKotakSel, emo } from "./k2b2B-gambar";
-import { idx, ids, k, redamkan, sorotkan, tambah, ubah, urutNilai } from "./k2b2B-bantu";
+import { E, W, WK, bulat, emo, gs, isiSusun, judul, kartu, kotakPensil, lantai, nia, panah, tabelSusun, teks, tokoh } from "./k2b2B-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k2b2B-bantu";
 
-/* ------------------------------ 4. Jalur bilangan: lompat besar ------------------------------ */
-const SUARA_D1 = "Cara pertama memakai jalur bilangan. Kita mulai dari delapan belas.";
-const SUARA_D2 = "Dikurangi dua belas berarti melompat mundur sebanyak dua belas langkah.";
-const SUARA_D3 = "Lompat besar dulu. Mundur sepuluh langkah, dari delapan belas sampai ke delapan.";
-const SUARA_D4 = "Masih ada dua langkah lagi. Dari delapan mundur dua, sampai ke enam.";
-const SUARA_D5 = "Berhenti di enam. Jadi delapan belas dikurangi dua belas sama dengan enam.";
+/*
+ * Cerita orisinal IGIL "Rak Seragam Diserbu" (Kelas 2 Bab 2 Sub-Bab B), tengah cerita Toko Seragam dan Alat Tulis Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b2b.md. Bagian ini: cara bersusun dan pasangan bilangan, salah langkah (dua dikurangi delapan dibalik), dan memeriksa dengan penjumlahan.
+ */
 
-export const ADEGAN_MUNDUR_BESAR: AdeganStory = {
-  id: "mundur-besar",
-  judul: "Jalur bilangan: mundur sepuluh lalu dua",
-  sumber: "Materi: cara pertama, jalur bilangan",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(SUARA_D1, tambah(0, judul("Cara 1: jalur bilangan"), ...jalurBilangan(), rumus("18 − 12 = ?", 160)), tambah(idx(SUARA_D1, "mulai"), tandaAwal(18))),
-    k(SUARA_D2, tambah(idx(SUARA_D2, "mundur"), ...kartu("kl", 60, 116, 180, 22, W.langit, ["mundur 12 langkah"], 10))),
-    k(SUARA_D3, tambah(idx(SUARA_D3, "Mundur"), lompat(0, 18, 8), langkah(0, 18, 8, "10"))),
-    k(SUARA_D4, tambah(idx(SUARA_D4, "mundur"), lompat(1, 8, 6, W.hijau), langkah(1, 8, 6, "2")), tambah(idx(SUARA_D4, "enam."), tandaAkhir(6))),
-    k(SUARA_D5, sorotkan(idx(SUARA_D5, "Berhenti"), "gb-akhir"), ubah(idx(SUARA_D5, "Jadi"), { id: "rm", isi: "18 − 12 = 6" }), tambah(idx(SUARA_D5, "sama"), emo("ok", 262, 160, "✅", 22))),
-  ],
-};
+/* ------------------------------ 4. Bersusun dan pasangan bilangan ------------------------------ */
+const SUARA_S1 = "Dika mencoba cara bersusun. Satuan lurus dengan satuan, sembilan dikurangi empat sama dengan lima, puluhannya tetap satu.";
+const SUARA_S2 = "Nia memecah sembilan belas menjadi sepuluh dan sembilan, lalu sembilan dikurangi empat sama dengan lima.";
+const SUARA_S3 = "Sepuluh ditambah lima sama dengan lima belas. Tiga cara, hasilnya sama!";
 
-/* ------------------------------ 5. Jalur bilangan: lompat satu-satu ------------------------------ */
-const SUARA_E1 = "Sekarang bilangan yang dikurangkan kecil, yaitu empat. Kita mulai dari lima belas.";
-const SUARA_E2 = "Lompat mundur satu-satu, empat langkah. Empat belas, tiga belas, dua belas, sebelas.";
-const SUARA_E3 = "Kita berhenti di sebelas. Hitung lompatannya: ada empat. Cocok dengan bilangan yang dikurangkan.";
-const SUARA_E4 = "Jadi lima belas dikurangi empat sama dengan sebelas.";
-const SUARA_E5 = "Cara ini enak kalau bilangan yang dikurangkan kecil. Kalau besar, lompat sepuluh dulu.";
-const POS_E2 = urutNilai(SUARA_E2, [14, 13, 12, 11], "langkah");
-
-export const ADEGAN_MUNDUR_KECIL: AdeganStory = {
-  id: "mundur-kecil",
-  judul: "Jalur bilangan: mundur satu-satu",
-  sumber: "Materi: cara pertama, lompat kecil",
-  latar: "#ECFEFF",
-  ketukan: [
-    k(SUARA_E1, tambah(0, judul("Lompat satu-satu"), ...jalurBilangan(), rumus("15 − 4 = ?", 160)), tambah(idx(SUARA_E1, "lima"), tandaAwal(15))),
-    k(SUARA_E2, ...[0, 1, 2, 3].map((q) => tambah(POS_E2[q], lompat(q, 15 - q, 14 - q)))),
-    k(SUARA_E3, tambah(idx(SUARA_E3, "berhenti"), tandaAkhir(11)), tambah(idx(SUARA_E3, "empat."), ...kartu("kl", 60, 116, 180, 22, W.langit, ["4 lompatan"], 10))),
-    k(SUARA_E4, ubah(idx(SUARA_E4, "sama"), { id: "rm", isi: "15 − 4 = 11" }), sorotkan(idx(SUARA_E4, "sebelas."), "gb-akhir")),
-    k(SUARA_E5, tambah(idx(SUARA_E5, "enak"), ...kartu("tp", 20, 172, 260, 24, W.emas, ["kecil: satu-satu; besar: 10 dulu"], 9.6))),
-  ],
-};
-
-/* ------------------------------ 6. Tabel nilai tempat: kubus dan batang ------------------------------ */
-const SUARA_F1 = "Cara kedua memakai tabel nilai tempat. Delapan belas adalah satu puluhan dan delapan satuan.";
-const SUARA_F2 = "Malosi memberikan dua belas kepada Upe. Dua belas adalah satu puluhan dan dua satuan.";
-const SUARA_F3 = "Pertama, satu batang puluhan pindah ke kotak Upe.";
-const SUARA_F4 = "Kedua, dua kubus satuan ikut pindah.";
-const SUARA_F5 = "Yang tersisa di Malosi hanya enam kubus, jadi enam satuan.";
-const SUARA_F6 = "Delapan belas dikurangi dua belas sama dengan enam.";
-
-export const ADEGAN_PAPAN_AMBIL: AdeganStory = {
-  id: "papan-ambil",
-  judul: "Cara kedua: batang dan kubus",
-  sumber: "Materi: cara kedua, tabel nilai tempat",
+export const ADEGAN_SUSUN_PASANGAN: AdeganStory = {
+  id: "susun-pasangan",
+  judul: "Bersusun dan pasangan bilangan",
+  sumber: "Materi: bersusun dan pasangan",
   latar: "#FEFCE8",
   ketukan: [
-    k(SUARA_F1, tambah(0, judul("Cara 2: nilai tempat")), tambah(idx(SUARA_F1, "Delapan"), ...batangP("a", 0), ...kubusP("a", 0, 7), labelN("a", 236, 54, "18", 22))),
-    k(SUARA_F2, tambah(idx(SUARA_F2, "kepada"), ...kotakPenerima("Upe"), rumus("18 − 12 = ?", 176)), sorotkan(idx(SUARA_F2, "satu"), ...idBatang("a", 0)), redamkan(idx(SUARA_F2, "dan", 1), ...idBatang("a", 0))),
-    k(SUARA_F3, sorotkan(idx(SUARA_F3, "batang"), ...idBatang("a", 0)), ubah(idx(SUARA_F3, "pindah"), { id: "bpa0", x: slotBatang.x, y: slotBatang.y }, { id: "bqa0", x: slotBatang.x, y: slotBatang.y }), redamkan(idx(SUARA_F3, "ke"), ...idBatang("a", 0))),
-    k(SUARA_F4, sorotkan(idx(SUARA_F4, "dua"), "bsa6", "bsa7"), ubah(idx(SUARA_F4, "pindah"), { id: "bsa6", x: slotKubus(0, true).x, y: slotKubus(0, true).y }, { id: "bsa7", x: slotKubus(1, true).x, y: slotKubus(1, true).y }), redamkan(idx(SUARA_F4, "pindah"), "bsa6", "bsa7")),
-    k(SUARA_F5, sorotkan(idx(SUARA_F5, "tersisa"), ...ids("bsa", 0, 5)), ubah(idx(SUARA_F5, "jadi"), { id: "n-a", isi: "6" })),
-    k(SUARA_F6, redamkan(0, ...ids("bsa", 0, 5)), ubah(idx(SUARA_F6, "sama"), { id: "rm", isi: "18 − 12 = 6" }), tambah(idx(SUARA_F6, "enam."), emo("ok", 262, 176, "✅", 22))),
+    k(
+      SUARA_S1,
+      tambah(0, judul("Cara bersusun")),
+      tambah("Dika", ...tokoh("dk", 30, 184, E.dika, "Dika")),
+      tambah("bersusun.", ...tabelSusun("tb", 90, 34, [["1", "9"], ["", "4"], ["", ""]])),
+      sorotkan("Satuan", "tb-hs", "tb-r0s", "tb-r1s"),
+      tambah("sembilan", ...kartu("kd", 196, 54, 88, 22, W.krem, ["9"], 10)),
+      ubah("dikurangi", { id: "kd-t0", isi: "9 −" }),
+      ubah("empat", { id: "kd-t0", isi: "9 − 4" }),
+      ubah("sama", { id: "kd-t0", isi: "9 − 4 =" }),
+      ubah("lima,", { id: "kd-t0", isi: "9 − 4 = 5" }),
+      tambah("lima,", isiSusun("tb", 90, 34, 2, "s", "5", 46, 20, W.merah)),
+      tambah("tetap", isiSusun("tb", 90, 34, 2, "p", "1", 46, 20, W.merah)),
+      sorotkan(16, "tb-r2p"),
+    ),
+    k(
+      SUARA_S2,
+      bersih(0),
+      tambah(0, judul("Pasangan bilangan")),
+      tambah(0, ...nia("ni0", 270, 184)),
+      tambah("belas", bulat("t19", 150, 50, 16, W.krem, W.biru, { tebal: 1.8 }), teks("t19t", 150, 56, "19", 15, W.biru, { z: 1 })),
+      tambah(5, gs("pl", 142, 64, 100, 92, W.biru, 1.6), gs("pr", 158, 64, 200, 92, W.biru, 1.6), bulat("t10", 100, 108, 15, WK.puluhan, W.biru, { tebal: 1.8 }), teks("t10t", 100, 114, "10", 14, W.biru, { z: 1 })),
+      tambah(7, bulat("t9", 200, 108, 15, WK.satuan, W.biru, { tebal: 1.8 }), teks("t9t", 200, 113, "9", 15, W.biru, { z: 1 })),
+      tambah(9, teks("eq", 150, 165, "9", 20, W.merah)),
+      ubah("dikurangi", { id: "eq", isi: "9 −" }),
+      ubah("empat", { id: "eq", isi: "9 − 4" }),
+      ubah("sama", { id: "eq", isi: "9 − 4 =" }),
+      ubah("lima.", { id: "eq", isi: "9 − 4 = 5" }),
+    ),
+    k(
+      SUARA_S3,
+      bersih(0),
+      tambah(0, judul("Tiga cara, satu hasil"), teks("ek", 150, 46, "10", 20, W.merah)),
+      ubah("ditambah", { id: "ek", isi: "10 +" }),
+      ubah("lima", { id: "ek", isi: "10 + 5" }),
+      ubah("sama", { id: "ek", isi: "10 + 5 =" }),
+      ubah("belas.", { id: "ek", isi: "10 + 5 = 15" }),
+      tambah("Tiga", ...kartu("c1", 14, 68, 92, 22, WK.puluhan, ["mundur"], 9.6), ...kartu("c2", 104, 68, 92, 22, WK.satuan, ["bersusun"], 9.6), ...kartu("c3", 194, 68, 92, 22, W.hijauMuda, ["pasangan"], 9.6)),
+      tambah("cara,", bulat("hs", 150, 140, 19, W.krem, W.biru, { tebal: 2 }), teks("hst", 150, 147, "15", 18, W.merah, { z: 1 })),
+      tambah("cara,", panah("a1", 60, 92, 138, 124, W.merah), panah("a2", 150, 92, 150, 118, W.merah), panah("a3", 240, 92, 162, 124, W.merah)),
+      tambah("hasilnya", ...kartu("n3", 100, 166, 100, 22, W.krem, ["3 cara"], 9.6)),
+      sorotkan("sama@2", "hs"),
+    ),
   ],
 };
 
-/* ------------------------------ 7. Tabel nilai tempat: tiga baris ------------------------------ */
-const SUARA_G1 = "Sekarang kita catat di tabel nilai tempat. Baris pertama delapan belas, yaitu satu puluhan dan delapan satuan.";
-const SUARA_G2 = "Baris kedua dua belas, yaitu satu puluhan dan dua satuan. Satuan lurus dengan satuan.";
-const SUARA_G3 = "Kurangi satuannya dulu. Delapan dikurangi dua sama dengan enam.";
-const SUARA_G4 = "Lalu kurangi puluhannya. Satu dikurangi satu sama dengan nol.";
-const SUARA_G5 = "Hasilnya nol puluhan dan enam satuan, yaitu enam.";
+/* ------------------------------ 5. Salah langkah: dua dikurangi delapan dibalik ------------------------------ */
+const SUARA_T1 = "Sekarang kotak pensil warna. Ada dua belas, dan delapan sudah terjual.";
+const SUARA_T2 = "Chacha cepat menjawab. Dua dikurangi delapan tidak bisa, jadi delapan dikurangi dua, hasilnya enam!";
+const SUARA_T3 = "Dika mengerutkan dahi. Bagaimana kalau kita periksa dengan penjumlahan?";
 
-export const ADEGAN_TABEL_KURANG: AdeganStory = {
-  id: "tabel-kurang",
-  judul: "Cara kedua: mengurangi di tabel",
-  sumber: "Materi: cara kedua, tabel nilai tempat",
+const PK = Array.from({ length: 12 }, (_, i) => i);
+const pkx = (i: number): number => 38 + (i % 6) * 45;
+const pky = (i: number): number => 62 + Math.floor(i / 6) * 34;
+
+export const ADEGAN_TERBALIK: AdeganStory = {
+  id: "terbalik",
+  judul: "Dua dikurangi delapan dibalik",
+  sumber: "Materi: salah langkah membalik",
+  latar: "#FEF2F2",
+  ketukan: [
+    k(
+      SUARA_T1,
+      tambah(0, judul("Kotak pensil warna"), lantai("tn", 150)),
+      tambah("kotak", ...PK.flatMap((i) => kotakPensil(`kp${i}`, pkx(i), pky(i)))),
+      tambah("belas,", ...kartu("k12", 20, 130, 120, 22, W.krem, ["12 kotak"], 9.6)),
+      tambah("delapan", ...kartu("k8", 160, 130, 120, 22, W.merahMuda, ["terjual 8"], 9.6)),
+      ...[0, 1, 2, 3, 4, 5, 6, 7].map((i) => ubah("terjual.", ...["", "-u", "-p0", "-p1", "-p2"].map((s) => ({ id: `kp${i}${s}`, op: 0.3 })))),
+    ),
+    k(
+      SUARA_T2,
+      bersih(0),
+      tambah(0, judul("Chacha menjawab cepat"), ...tabelSusun("tb", 90, 34, [["1", "2"], ["", "8"], ["", ""]])),
+      tambah("Chacha", ...tokoh("ch", 30, 184, E.chacha, "Chacha")),
+      sorotkan("Dua", "tb-r0s"),
+      sorotkan("delapan", "tb-r1s"),
+      tambah("tidak", emo("sl", 236, 90, E.salah, 22)),
+      tambah("jadi", panah("p1", 192, 70, 192, 92, W.merah), panah("p2", 204, 92, 204, 70, W.merah)),
+      tambah("delapan@2", teks("c8", 252, 112, "8", 18, W.merah)),
+      tambah("dua@2", teks("c2", 276, 112, "2", 18, W.merah)),
+      tambah("enam!", isiSusun("tb", 90, 34, 2, "s", "6", 46, 20, W.merah), ...kartu("jw", 170, 146, 120, 24, W.merahMuda, ["8 − 2 = 6"], 11)),
+    ),
+    k(
+      SUARA_T3,
+      hapus(0, "sl", "p1", "p2", "c8", "c2", "jw-k", "jw-t0"),
+      tambah("Dika", ...tokoh("dk", 262, 184, E.dika, "Dika")),
+      tambah("dahi.", emo("pk", 262, 150, E.pikir, 24)),
+      tambah("periksa", emo("kc", 150, 62, E.kaca, 24)),
+      tambah("penjumlahan?", ...kartu("pj", 20, 146, 120, 24, W.hijauMuda, ["periksa dengan +"], 10)),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. Periksa dengan penjumlahan ------------------------------ */
+const SUARA_C1 = "Enam ditambah delapan sama dengan empat belas, padahal kotaknya dari tadi dua belas.";
+const SUARA_C2 = "Karena empat belas bukan dua belas, jawaban enam pasti keliru.";
+const SUARA_C3 = "Nia menjelaskan, bilangan kecil tidak boleh dibalik dengan bilangan besar.";
+
+export const ADEGAN_PERIKSA_CHACHA: AdeganStory = {
+  id: "periksa-salah",
+  judul: "Periksa dengan penjumlahan",
+  sumber: "Materi: periksa jawaban enam",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_G1, tambah(0, judul("Tabel nilai tempat"), ...tabelKurang()), tambah(idx(SUARA_G1, "Baris"), sel(0, 0, "18"), sel(0, 1, "1"), sel(0, 2, "8"))),
-    k(SUARA_G2, tambah(idx(SUARA_G2, "kedua"), sel(1, 0, "− 12"), sel(1, 1, "1"), sel(1, 2, "2"))),
     k(
-      SUARA_G3,
-      sorotkan(idx(SUARA_G3, "satuannya"), idKotakSel(0, 2), idKotakSel(1, 2)),
-      tambah(idx(SUARA_G3, "Delapan"), teks("m1", 150, 158, "8 − 2 = 6", 12, W.merah)),
-      tambah(idx(SUARA_G3, "enam."), sel(2, 0, "hasil"), sel(2, 2, "6")),
+      SUARA_C1,
+      tambah(0, judul("Periksa dengan tambah"), teks("e1", 150, 66, "6", 22, W.merah)),
+      ubah("ditambah", { id: "e1", isi: "6 +" }),
+      ubah("delapan", { id: "e1", isi: "6 + 8" }),
+      ubah("sama", { id: "e1", isi: "6 + 8 =" }),
+      ubah("belas,", { id: "e1", isi: "6 + 8 = 14" }),
+      tambah("kotaknya", ...kartu("kk", 110, 100, 80, 22, W.krem, ["kotak awal"], 9)),
+      tambah("dua", teks("k12", 150, 152, "12", 30, W.biru)),
+      sorotkan("belas@2", "kk-k"),
     ),
     k(
-      SUARA_G4,
-      redamkan(0, idKotakSel(0, 2), idKotakSel(1, 2)),
-      sorotkan(idx(SUARA_G4, "puluhannya."), idKotakSel(0, 1), idKotakSel(1, 1)),
-      tambah(idx(SUARA_G4, "Satu"), teks("m2", 150, 174, "1 − 1 = 0", 12, W.merah)),
-      tambah(idx(SUARA_G4, "nol."), sel(2, 1, "0")),
+      SUARA_C2,
+      hapus(0, "kk-k", "kk-t0"),
+      tambah("Karena", ...tokoh("bs", 30, 184, E.sari, "Bu Sari")),
+      tambah("empat", teks("e2", 150, 108, "14", 22, W.merah)),
+      ubah("bukan", { id: "e2", isi: "14 ≠" }),
+      ubah("dua", { id: "e2", isi: "14 ≠ 12" }),
+      tambah("enam", teks("e6", 252, 66, "6", 26, W.biru), emo("x6", 252, 100, E.salah, 22)),
+      sorotkan("keliru.", "e1"),
     ),
-    k(SUARA_G5, redamkan(0, idKotakSel(0, 1), idKotakSel(1, 1)), tambah(idx(SUARA_G5, "Hasilnya"), rumus("18 − 12 = 6", 196, 14))),
+    k(
+      SUARA_C3,
+      hapus(0, "e1", "e2", "x6", "e6", "k12", "bs", "bs-n"),
+      tambah("Nia", ...nia("ni", 30, 184)),
+      tambah("kecil", ...kartu("kc", 24, 52, 100, 32, WK.puluhan, ["kecil", "2"], 10)),
+      tambah("tidak", emo("sl", 150, 100, E.salah, 24)),
+      tambah("dibalik", emo("tk", 150, 66, E.tukar, 24)),
+      tambah("besar.", ...kartu("bg", 176, 52, 100, 32, WK.satuan, ["besar", "8"], 10)),
+    ),
   ],
 };

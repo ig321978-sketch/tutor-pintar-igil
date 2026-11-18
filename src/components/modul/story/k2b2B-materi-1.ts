@@ -1,84 +1,150 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { OWL, W, emo, garis, jambuBaris, judul, kartu, rumus, teks, xJ } from "./k2b2B-gambar";
-import { bersih, hapus, ids, idx, k, redamkan, sorotkan, tambah, urutBilangan } from "./k2b2B-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, buRina, buSari, dasi, emo, gs, idRak, jalurBilangan, jam, judul, kartu, kartuStok, lantai, mejaKasir, nia, panah, papanGabus, penggaris, rak, teks, tokoh, topiMP, xBaris } from "./k2b2B-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah, urutNilai } from "./k2b2B-bantu";
 
-/* ------------------------------ 1. Jambu Malosi dan Kira ------------------------------ */
-const labelM = (): Obj => teks("lm", 192, 78, "Malosi: 12", 9, W.biru, { anchor: "start" });
-const labelK = (): Obj => teks("lk", 22, 136, "Kira: 18", 9, W.biru, { anchor: "start" });
-const barisM = (): Obj[] => jambuBaris("m", 0, 11, 74, W.jambuM);
-const barisK = (): Obj[] => jambuBaris("k", 0, 17, 114, W.jambuK);
+/*
+ * Cerita orisinal IGIL "Rak Seragam Diserbu" (Kelas 2 Bab 2 Sub-Bab B, pengurangan sampai dua puluh), tengah cerita Toko Seragam dan Alat Tulis Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b2b.md. Bagian ini: rak diserbu, selisih dengan memasangkan, dan mengurangi dengan mundur.
+ */
 
-const SUARA_A1 = "Hari ini Malosi dan Kira memetik jambu air. Malosi mendapat dua belas jambu.";
-const SUARA_A2 = "Kira juga memetik jambu air. Kira mendapat delapan belas jambu.";
-const SUARA_A3 = "Jambu Kira lebih banyak. Tetapi berapa selisihnya?";
-const SUARA_A4 = "Selisih adalah beda banyaknya dua baris jambu. Kita cari dengan memasangkan jambu satu-satu.";
+/* ------------------------------ 1. Rak diserbu ------------------------------ */
+const SUARA_R1 = "Hari kedua sekolah, anak-anak berebut membeli topi dan dasi di koperasi.";
+const SUARA_R2 = "Bu Rina ikut mengantre membeli baju olahraga.";
+const SUARA_R3 = "Bu Sari berpesan, kartu stok harus cocok dengan isi rak sebelum tutup. Kalau tidak, ada anak yang membayar barang yang sudah habis!";
 
-export const ADEGAN_SELISIH: AdeganStory = {
-  id: "selisih-jambu",
-  judul: "Selisih jambu air Malosi dan Kira",
-  sumber: "Materi: selisih dua baris jambu",
+const ID_RAK1 = idRak("rk");
+const ANAK_X = [44, 84, 124, 164];
+const TOPI5 = [0, 1, 2, 3, 4];
+
+export const ADEGAN_RAK_DISERBU: AdeganStory = {
+  id: "rak-diserbu",
+  judul: "Rak seragam diserbu",
+  sumber: "Materi: rak diserbu pembeli",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_A1, tambah(0, judul("Selisih jambu air")), tambah(idx(SUARA_A1, "mendapat"), ...barisM(), labelM())),
-    k(SUARA_A2, tambah(idx(SUARA_A2, "mendapat"), ...barisK(), labelK())),
-    k(SUARA_A3, sorotkan(idx(SUARA_A3, "lebih"), ...ids("jk", 0, 17)), redamkan(idx(SUARA_A3, "Tetapi"), ...ids("jk", 0, 17)), tambah(idx(SUARA_A3, "selisihnya?"), emo("q", 244, 140, "❓", 22))),
-    k(SUARA_A4, tambah(idx(SUARA_A4, "Selisih"), ...kartu("ks", 40, 152, 220, 24, W.emas, ["selisih: beda banyaknya"], 10)), tambah(idx(SUARA_A4, "memasangkan"), ...kartu("kp", 40, 180, 220, 20, W.hijauMuda, ["pasangkan satu-satu"], 9.6))),
+    k(
+      SUARA_R1,
+      tambah(0, judul("Rak Seragam Diserbu"), lantai("tn", 150), ...rak("rk", 10, 36, 150, 108)),
+      tambah("anak-anak", ...ANAK_X.map((x, i) => emo(`an${i}`, x, 178, E.anak, 24))),
+      tambah("topi", ...TOPI5.flatMap((i) => topiMP(`tp${i}`, 28 + i * 28, 62))),
+      tambah("dasi", ...TOPI5.map((i) => dasi(`ds${i}`, 28 + i * 28, 92))),
+      tambah("koperasi.", ...mejaKasir("mj", 190, 112, 84), ...kartu("kp", 196, 30, 88, 20, W.krem, ["Koperasi"], 9)),
+    ),
+    k(
+      SUARA_R2,
+      tambah("Bu", ...buRina("br", 270, 184)),
+      ubah("mengantre", { id: "br", x: 240 }, { id: "br-p", x: 248 }, { id: "br-q", x: 238 }, { id: "br-n", x: 240 }),
+      tambah("baju", ...[0, 1, 2].map((i) => emo(`bj${i}`, 40 + i * 45, 136, E.baju, 20))),
+      tambah("olahraga.", ...kartu("bo", 196, 56, 88, 20, W.hijauMuda, ["baju olahraga"], 8.4)),
+    ),
+    k(
+      SUARA_R3,
+      hapus(0, "kp-k", "kp-t0", "bo-k", "bo-t0"),
+      tambah("Bu", ...buSari("bs", 30, 176)),
+      tambah("kartu", papanGabus("pg", 186, 34, 104, 56), ...[0, 1, 2].flatMap((i) => kartuStok(`ks${i}`, 192 + i * 32, 42, 28, 40, ["stok"], 7.6))),
+      sorotkan("rak", ...ID_RAK1),
+      tambah("tutup.", ...jam("jm", 162, 20, 11)),
+      tambah("tidak,", emo("sl", 146, 160, E.salah, 20)),
+      tambah("habis!", emo("sd", 210, 176, E.sedih, 24)),
+    ),
   ],
 };
 
-/* ------------------------------ 2. Memasangkan jambu satu-satu ------------------------------ */
-const SUARA_B1 = "Sekarang kita pasangkan jambunya. Malosi punya dua belas, Kira punya delapan belas.";
-const SUARA_B2 = "Kita pasangkan satu-satu: satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh, sebelas, dua belas.";
-const SUARA_B3 = "Semua jambu Malosi sudah punya pasangan. Jambu Kira yang tersisa menyala.";
-const SUARA_B4 = "Ada enam jambu yang tidak punya pasangan. Jadi selisihnya adalah enam.";
-const SUARA_B5 = "Selisih dicari dengan pengurangan. Delapan belas dikurangi dua belas sama dengan enam.";
-const POS_B2 = urutBilangan(SUARA_B2, 1, 12, "satu-satu:");
+/* ------------------------------ 2. Selisih dengan memasangkan ------------------------------ */
+const SUARA_P1 = "Dika memasangkan topi dan dasi satu-satu. Topinya tujuh belas, dasinya dua belas.";
+const SUARA_P2 = "Ada lima topi yang tidak berpasangan. Itulah selisih topi dan dasi.";
+const SUARA_P3 = "Tujuh belas dikurangi dua belas sama dengan lima. Selisih berarti beda banyaknya!";
 
-export const ADEGAN_PASANGKAN: AdeganStory = {
-  id: "pasangkan-jambu",
-  judul: "Memasangkan jambu satu-satu",
-  sumber: "Materi: memasangkan untuk mencari selisih",
-  latar: "#FDF2F8",
+const px = (i: number): number => xBaris(150, 17, i, 16);
+const TOPI17 = Array.from({ length: 17 }, (_, i) => i);
+const DASI12 = Array.from({ length: 12 }, (_, i) => i);
+const SISA5 = [12, 13, 14, 15, 16];
+
+export const ADEGAN_PASANG: AdeganStory = {
+  id: "pasang",
+  judul: "Memasangkan topi dan dasi",
+  sumber: "Materi: selisih dengan memasangkan",
+  latar: "#EFF6FF",
   ketukan: [
-    k(SUARA_B1, tambah(0, judul("Pasangkan satu-satu")), tambah(idx(SUARA_B1, "Malosi"), ...barisM(), labelM()), tambah(idx(SUARA_B1, "Kira"), ...barisK(), labelK())),
     k(
-      SUARA_B2,
-      ...Array.from({ length: 12 }, (_, q) => tambah(POS_B2[q], garis(`ps${q}`, xJ(q), 79, 0, 30, W.biru, 1.2), teks(`jn${q}`, xJ(q), 62, String(q + 1), 7.6, W.merah))),
+      SUARA_P1,
+      tambah(0, judul("Memasangkan satu-satu")),
+      tambah("Dika", ...tokoh("dk", 30, 184, E.dika, "Dika")),
+      tambah("topi", ...TOPI17.flatMap((i) => topiMP(`pt${i}`, px(i), 62))),
+      tambah("dasi", ...DASI12.map((i) => dasi(`pd${i}`, px(i), 102))),
+      tambah("satu-satu.", ...DASI12.map((i) => gs(`pl${i}`, px(i), 70, px(i), 92, W.biru, 1.2, { putus: true })), ...kartu("sp", 170, 138, 120, 24, W.krem, ["1 topi : 1 dasi"], 9.6)),
+      tambah("belas,", teks("l17", 150, 44, "17 topi", 10, W.merah)),
+      tambah("belas@2", teks("l12", 245, 106, "12 dasi", 10, W.merah)),
     ),
-    k(SUARA_B3, sorotkan(idx(SUARA_B3, "Semua"), ...ids("jm", 0, 11)), redamkan(idx(SUARA_B3, "Jambu", 2), ...ids("jm", 0, 11)), sorotkan(idx(SUARA_B3, "tersisa"), ...ids("jk", 12, 17))),
-    k(SUARA_B4, tambah(idx(SUARA_B4, "Jadi"), teks("sel", 192, 138, "selisih: 6", 11, W.merah, { anchor: "start" }))),
-    k(SUARA_B5, tambah(idx(SUARA_B5, "Delapan"), rumus("18 − 12 = 6", 182, 18))),
+    k(
+      SUARA_P2,
+      hapus(0, "sp-k", "sp-t0"),
+      tambah("Ada", ...kartu("sg", 208, 74, 82, 22, W.merahMuda, ["5 topi sisa"], 9)),
+      sorotkan("lima", ...SISA5.flatMap((i) => [`pt${i}`, `pt${i}-b`])),
+      tambah("berpasangan.", emo("tq", 246, 126, E.tanya, 22)),
+      tambah("selisih", ...kartu("sl", 150, 138, 140, 24, W.hijauMuda, ["selisih = beda banyak"], 9)),
+    ),
+    k(
+      SUARA_P3,
+      hapus(0, "sg-k", "sg-t0", "sl-k", "sl-t0", "tq", "l17", "l12"),
+      tambah(0, teks("ek", 170, 172, "17", 20, W.merah)),
+      ubah("dikurangi", { id: "ek", isi: "17 −" }),
+      ubah("dua", { id: "ek", isi: "17 − 12" }),
+      ubah("sama", { id: "ek", isi: "17 − 12 =" }),
+      ubah("lima.", { id: "ek", isi: "17 − 12 = 5" }),
+      tambah("beda", emo("lp", 262, 140, E.lampu, 24)),
+    ),
   ],
 };
 
-/* ------------------------------ 3. Arti tanda kurang dan tiga cara ------------------------------ */
-const SUARA_C1 = "Tadi kita menemukan delapan belas dikurangi dua belas sama dengan enam. Tanda kurang artinya mengurangi.";
-const SUARA_C2 = "Bilangan yang besar dikurangi bilangan yang kecil. Hasilnya lebih kecil dari bilangan besar.";
-const SUARA_C3 = "Pengurangan bisa dilakukan dengan banyak cara. Hari ini kita belajar tiga cara.";
-const SUARA_C4 = "Cara pertama memakai jalur bilangan. Cara kedua memakai tabel nilai tempat. Cara ketiga memakai pasangan bilangan.";
-const SUARA_C5 = "Setelah itu, kita memeriksa hasilnya dengan penjumlahan. Ayo kita mulai!";
+/* ------------------------------ 3. Mundur ------------------------------ */
+const SUARA_M1 = "Lalu penggaris. Ada sembilan belas penggaris, dan empat sudah terjual.";
+const SUARA_M2 = "Nia menghitung mundur empat langkah dari sembilan belas: delapan belas, tujuh belas, enam belas, lima belas.";
+const SUARA_M3 = "Sembilan belas dikurangi empat sama dengan lima belas penggaris!";
 
-export const ADEGAN_ARTI_KURANG: AdeganStory = {
-  id: "arti-kurang",
-  judul: "Tanda kurang dan tiga cara mengurangi",
-  sumber: "Materi: arti pengurangan",
-  latar: "#F0F9FF",
+const gx = (c: number): number => 30 + c * 52;
+const gy = (r: number): number => 48 + r * 20;
+const PENGGARIS19 = Array.from({ length: 19 }, (_, i) => i);
+const JX = (n: number): number => 50 + (n - 15) * 50;
+
+export const ADEGAN_MUNDUR: AdeganStory = {
+  id: "mundur",
+  judul: "Mengurangi dengan mundur",
+  sumber: "Materi: mundur di jalur bilangan",
+  latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_C1, tambah(0, judul("Tanda kurang")), tambah(idx(SUARA_C1, "delapan"), rumus("18 − 12 = 6", 74, 26)), tambah(idx(SUARA_C1, "Tanda"), emo("tk", 150, 130, "➖", 26))),
     k(
-      SUARA_C2,
-      tambah(idx(SUARA_C2, "besar"), ...kartu("ab", 20, 100, 125, 26, W.langit, ["18: bilangan besar"], 9.4)),
-      tambah(idx(SUARA_C2, "kecil"), ...kartu("ac", 155, 100, 125, 26, W.pink, ["12: bilangan kecil"], 9.4)),
-      tambah(idx(SUARA_C2, "Hasilnya"), ...kartu("ah", 20, 134, 260, 26, W.hijauMuda, ["6: hasilnya lebih kecil"], 9.6)),
+      SUARA_M1,
+      tambah(0, judul("Penggaris di rak"), lantai("tn", 150)),
+      tambah("penggaris.", ...PENGGARIS19.flatMap((i) => penggaris(`pg${i}`, gx(i % 5), gy(Math.floor(i / 5)), 40, 7))),
+      tambah("belas", ...kartu("p19", 20, 132, 120, 22, W.krem, ["19 penggaris"], 9.6)),
+      sorotkan("terjual.", ...[15, 16, 17, 18].flatMap((i) => [`pg${i}`])),
+      tambah("empat", ...kartu("t4", 160, 132, 120, 22, W.merahMuda, ["terjual 4"], 9.6)),
     ),
-    k(SUARA_C3, bersih(0), tambah(0, judul("Banyak cara")), tambah(idx(SUARA_C3, "banyak"), ...kartu("tc", 50, 50, 200, 44, W.emas, ["3 cara mengurangi"], 14)), tambah(idx(SUARA_C3, "tiga"), emo("pk", 150, 140, "\u{1F914}", 34))),
     k(
-      SUARA_C4,
-      hapus(0, "pk"),
-      tambah(idx(SUARA_C4, "pertama"), ...kartu("c1", 20, 106, 260, 26, W.hijauMuda, ["1. jalur bilangan"], 10.4)),
-      tambah(idx(SUARA_C4, "kedua"), ...kartu("c2", 20, 138, 260, 26, W.langit, ["2. tabel nilai tempat"], 10.4)),
-      tambah(idx(SUARA_C4, "ketiga"), ...kartu("c3", 20, 170, 260, 26, W.pink, ["3. pasangan bilangan"], 10.4)),
+      SUARA_M2,
+      bersih(0),
+      tambah(0, judul("Mundur empat langkah"), ...jalurBilangan("jb", 104, 15, 19, 50, 250)),
+      tambah("Nia", ...nia("ni", 30, 184)),
+      ...(() => {
+        const pos = urutNilai(SUARA_M2, [4, 19, 18, 17, 16, 15]);
+        return [
+          tambah(pos[0], ...kartu("l4", 200, 140, 90, 22, W.krem, ["4 langkah"], 9.6)),
+          sorotkan(pos[1], "jb-q19"),
+          ...[18, 17, 16, 15].flatMap((n, q) => [tambah(pos[2 + q], panah(`hp${n}`, JX(n + 1) - 4, 88, JX(n) + 4, 88, W.merah)), sorotkan(pos[2 + q], `jb-q${n}`)]),
+        ];
+      })(),
     ),
-    k(SUARA_C5, tambah(idx(SUARA_C5, "memeriksa"), emo("ck", 262, 76, "✅", 24)), tambah(idx(SUARA_C5, "Ayo"), emo("ow", 38, 76, OWL, 30))),
+    k(
+      SUARA_M3,
+      hapus(0, "l4-k", "l4-t0"),
+      tambah(0, teks("em", 150, 160, "19", 20, W.merah)),
+      ubah("dikurangi", { id: "em", isi: "19 −" }),
+      ubah("empat", { id: "em", isi: "19 − 4" }),
+      ubah("sama", { id: "em", isi: "19 − 4 =" }),
+      ubah("lima", { id: "em", isi: "19 − 4 = 5" }),
+      ubah("belas", { id: "em", isi: "19 − 4 = 15" }),
+      tambah("penggaris!", emo("ok", 262, 140, E.benar, 24)),
+    ),
   ],
 };

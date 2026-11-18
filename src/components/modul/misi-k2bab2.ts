@@ -1,88 +1,66 @@
 /**
- * Misi dan tantangan bebas Kelas 2 Bab 2 (Penjumlahan dan Pengurangan sampai 20). Murni: tanpa React, tanpa jaringan.
+ * Misi dan tantangan bebas Kelas 2 Bab 2 (Penjumlahan dan Pengurangan sampai dua puluh, tema Toko Seragam dan Alat Tulis Sekolah). Murni: tanpa React, tanpa jaringan.
  * Diuji di scripts/uji-lab-kelas2.mjs.
  *
- * Simulasi bertahap per sub-bab (paling banyak tiga alat):
- *  A: Lab Cara Hitung (tambah: garis, pasangan, bersusun) + Mesin Simpan.
- *  B: Lab Cara Hitung (+ kurang, Selisih, Periksa, Tambah sampai pas) + Mesin Urai.
- *  C (akhir): Lab Soal Cerita + Lab Cara Hitung penuh + skenario Jambu dan Burung, sekaligus pencapaian misi bab ini.
+ * Sub-Bab A memakai Simulasi Kardus Kiriman (gudang-k2b2a), Sub-Bab B Meja Stok (stok-k2b2b), Sub-Bab C (akhir bab) Meja Pesanan Besar (pembukaan-k2b2c).
+ * KERANGKA: agen tiap Sub-Bab mengganti MISI_A / MISI_B / MISI_C (empat wajib dan dua bebas).
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
-import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
+import type { DefMisi } from "./misi-simulasi";
 
-export type KeadaanCara = {
-  alat: "cara";
-  op: "tambah" | "kurang";
-  a: number;
-  b: number;
-  /** Garis bilangan sedang tampil. */
-  garis: boolean;
-  /** Bagan pasangan sedang tampil. */
-  pasangan: boolean;
-  /** Tabel bersusun sedang tampil. */
-  susun: boolean;
-  /** Pasang satu-satu (hanya pengurangan) sedang tampil. */
-  selisih: boolean;
-  /** Pemeriksaan dengan operasi lawan sedang tampil. */
-  periksa: boolean;
-  /** Garis memakai Tambah sampai pas (hanya pengurangan). */
-  pas: boolean;
-};
+import type { KeadaanGudang } from "./gudang-k2b2a/logika";
+import type { KeadaanStok } from "./stok-k2b2b/logika";
+import type { KeadaanPembukaan } from "./pembukaan-k2b2c/logika";
 
-export type KeadaanCerita = {
-  alat: "cerita";
-  jenis: "jumlah" | "selisih" | "lebihnya" | "kurangnya" | "awal" | "tiga";
-  x: number;
-  y: number;
-  z: number;
-  /** Model batang sedang tampil. */
-  batang: boolean;
-  /** Empat langkah (Diketahui, Ditanya, Solusi, Kesimpulan) sedang tampil. */
-  langkah: boolean;
-};
+export type KeadaanK2Bab2 = { alat: "kerangka" } | KeadaanGudang | KeadaanStok | KeadaanPembukaan;
 
-export type KeadaanK2Bab2 = KeadaanCara | KeadaanCerita | KeadaanSelesai;
-
-const cara = (k: KeadaanK2Bab2): k is KeadaanCara => k.alat === "cara";
-const cerita = (k: KeadaanK2Bab2): k is KeadaanCerita => k.alat === "cerita";
-const selesai = (k: KeadaanK2Bab2, id: string) => k.alat === "selesai" && k.id === id;
-
-const tambah = (k: KeadaanK2Bab2, a: number, b: number): k is KeadaanCara => cara(k) && k.op === "tambah" && k.a === a && k.b === b;
-const kurang = (k: KeadaanK2Bab2, a: number, b: number): k is KeadaanCara => cara(k) && k.op === "kurang" && k.a === a && k.b === b;
-
-/** Sub-Bab A: tiga cara menjumlahkan dan menyimpan sepuluh satuan. */
+/**
+ * Sub-Bab A (awal cerita Toko Seragam dan Alat Tulis Sekolah): Misi Kardus Kiriman, Simulasi Kardus Kiriman (gudang-k2b2a). Tiga tugas di meja (dua belas dan lima, empat belas dan enam,
+ * enam belas dan tiga; sama dengan TUGAS_SIM di gudang-k2b2a/data.ts), berbeda dari Story; diuji di scripts/uji-gudang-k2b2a.mjs.
+ */
+const gudang = (k: KeadaanK2Bab2): k is KeadaanGudang => k.alat === "gudang";
 export const MISI_A: DefMisi<KeadaanK2Bab2>[] = [
-  { id: "a-12-6", teks: "Buat 12 + 6 seperti jambu Kira. Hitung 6 lompatan maju di garis.", wajib: true, cek: (k) => tambah(k, 12, 6) && k.garis },
-  { id: "a-9-7", teks: "Buat 9 + 7. Baca bagan pasangan: 16 terdiri dari 9 dan 7.", wajib: true, cek: (k) => tambah(k, 9, 7) && k.pasangan },
-  { id: "a-18-2", teks: "Buat 18 + 2. Di bersusun, satuan 8 + 2 = 10 dan harus disimpan.", wajib: true, cek: (k) => tambah(k, 18, 2) && k.susun },
-  { id: "a-mesin", teks: "Selesaikan Mesin Simpan sampai semua misi mesin selesai.", wajib: true, cek: (k) => selesai(k, "simpan") },
-  { id: "a-20", teks: "Buat penjumlahan lain yang hasilnya tepat 20, selain 18 + 2.", wajib: false, cek: (k) => cara(k) && k.op === "tambah" && k.a + k.b === 20 && !(k.a === 18 && k.b === 2) },
-  { id: "a-susun-saja", teks: "Matikan Garis dan Pasangan, lalu hitung 13 + 7 hanya dengan bersusun.", wajib: false, cek: (k) => tambah(k, 13, 7) && !k.garis && !k.pasangan && k.susun },
+  { id: "a-gabung", teks: "Gabungkan dua kardus, lalu dengarkan jumlah semua isinya.", wajib: true, cek: (k) => gudang(k) && k.digabung.length >= 1 },
+  { id: "a-jalur", teks: "Hitung maju di jalur bilangan, mulai dari bilangan yang besar sampai berhenti di jumlahnya.", wajib: true, cek: (k) => gudang(k) && k.jalurTuntas.length >= 1 },
+  { id: "a-pasangan", teks: "Pecah bilangan yang besar menjadi pasangan, lalu jumlahkan sampai hasilnya muncul.", wajib: true, cek: (k) => gudang(k) && k.pasanganTuntas.length >= 1 },
+  { id: "a-tabel", teks: "Susun kedua bilangan di tabel puluhan dan satuan, lalu jumlahkan satuan dan puluhannya.", wajib: true, cek: (k) => gudang(k) && k.tabelTuntas.length >= 1 },
+  { id: "a-tukar", teks: "Pilih kardus yang satuannya penuh, lalu tukar sepuluh satuan menjadi satu puluhan.", wajib: false, cek: (k) => gudang(k) && k.tukarTuntas.length >= 1 },
+  {
+    id: "a-sama",
+    teks: "Hitung satu kardus dengan dua cara yang berbeda, lalu lihat hasilnya sama.",
+    wajib: false,
+    cek: (k) => gudang(k) && [0, 1, 2].some((i) => [k.jalurTuntas, k.pasanganTuntas, k.tabelTuntas].filter((d) => d.includes(i)).length >= 2),
+  },
 ];
 
-/** Sub-Bab B: mengurangi, selisih, mengurai, memeriksa. */
+/**
+ * Sub-Bab B (tengah cerita): Misi Meja Stok bagian satu, Simulasi Meja Stok (stok-k2b2b). Contoh stok di meja (delapan belas dan sebelas, enam belas dan tujuh,
+ * dua puluh dan enam, tiga belas dan tiga) berbeda dari Story; diuji di scripts/uji-stok-k2b2b.mjs.
+ */
+const stok = (k: KeadaanK2Bab2): k is KeadaanStok => k.alat === "stok";
 export const MISI_B: DefMisi<KeadaanK2Bab2>[] = [
-  { id: "b-mundur", teks: "Buat 18 − 12 dan hitung mundur di garis: 12 lompatan sampai 6.", wajib: true, cek: (k) => kurang(k, 18, 12) && k.garis && !k.pas },
-  { id: "b-selisih", teks: "Nyalakan Selisih. Buat 16 − 9: pasangkan satu-satu, sisanya selisih.", wajib: true, cek: (k) => kurang(k, 16, 9) && k.selisih },
-  { id: "b-urai", teks: "Buat 12 − 8. Di bersusun, satuan 2 tidak cukup, jadi urai satu puluhan.", wajib: true, cek: (k) => kurang(k, 12, 8) && k.susun },
-  { id: "b-periksa", teks: "Nyalakan Periksa. Buat 14 − 6 lalu cek dengan penjumlahan: 8 + 6 = 14.", wajib: true, cek: (k) => kurang(k, 14, 6) && k.periksa },
-  { id: "b-mesin", teks: "Selesaikan Mesin Urai sampai semua misi mesin selesai.", wajib: true, cek: (k) => selesai(k, "urai") },
-  { id: "b-pas", teks: "Pilih Tambah sampai pas di garis untuk 18 − 12. Hitung lompatan majunya.", wajib: false, cek: (k) => kurang(k, 18, 12) && k.garis && k.pas },
-  { id: "b-20", teks: "Buat 20 − 6. Satuan 0 tidak cukup, urai satu puluhan menjadi 14.", wajib: false, cek: (k) => kurang(k, 20, 6) && k.susun },
-  { id: "b-ingat", teks: "Ingat Sub-Bab A: buat 18 + 2 dan lihat satuannya disimpan.", wajib: false, cek: (k) => tambah(k, 18, 2) && k.susun },
+  { id: "b-pasang", teks: "Pasangkan topi dan dasi satu-satu sampai semuanya berpasangan, lalu lihat selisihnya.", wajib: true, cek: (k) => stok(k) && k.selisihDilihat },
+  { id: "b-kurang", teks: "Kurangi stok dengan mengambil barang yang terjual satu per satu, sampai kartu stok menunjukkan sisanya.", wajib: true, cek: (k) => stok(k) && k.kurangTuntas >= 1 },
+  { id: "b-buka", teks: "Pilih contoh yang barang lepasnya tidak cukup, buka satu puluhan, lalu selesaikan pengurangannya.", wajib: true, cek: (k) => stok(k) && k.bukaTuntas >= 1 },
+  { id: "b-periksa", teks: "Setelah mengurangi, periksa hasilnya dengan penjumlahan sampai kartu stok cocok.", wajib: true, cek: (k) => stok(k) && k.periksaTuntas >= 1 },
+  { id: "b-keluarga", teks: "Buka keempat kalimat dari satu keluarga bilangan: dua penjumlahan dan dua pengurangan.", wajib: false, cek: (k) => stok(k) && k.keluargaTuntas },
+  { id: "b-sepuluh", teks: "Coba Kurangi dari Sepuluh: kurangi dari sepuluh dulu, lalu tambahkan sisanya.", wajib: false, cek: (k) => stok(k) && k.sepuluhTuntas },
 ];
 
-/** Sub-Bab C (sub-bab akhir): soal cerita, sekaligus pencapaian misi bab ini. */
+/**
+ * Sub-Bab C (akhir bab, pencapaian misi bab ini): Misi Meja Pesanan, Simulasi Meja Pesanan Besar (pembukaan-k2b2c). Kertas pesanan sama dengan SLIP_SIM
+ * di pembukaan-k2b2c/data.ts (topi 5 dan dasi 8, tas 16 dan kotak pensil 9, baju 8 dan topi 5, gunting 14 dan klip 6), tiga bilangan 4, 9, 6, dan baju tinggal 6 setelah 8 diambil;
+ * diuji di scripts/uji-pembukaan-k2b2c.mjs.
+ */
+const pembukaan = (k: KeadaanK2Bab2): k is KeadaanPembukaan => k.alat === "pembukaan";
 export const MISI_C: DefMisi<KeadaanK2Bab2>[] = [
-  { id: "c-lebih", teks: "Pilih Lebihnya: Tika 12 donat, Kira 6 lebihnya. Lihat batang Kira makin panjang.", wajib: true, cek: (k) => cerita(k) && k.jenis === "lebihnya" && k.x === 12 && k.y === 6 && k.batang },
-  { id: "c-selisih", teks: "Pilih Selisih: jambu 12 dan 18. Lihat bagian batang yang tidak berpasangan.", wajib: true, cek: (k) => cerita(k) && k.jenis === "selisih" && Math.min(k.x, k.y) === 12 && Math.max(k.x, k.y) === 18 && k.batang },
-  { id: "c-kurang", teks: "Pilih Kurangnya: donat Tika 12, donat Malosi 5 kurangnya. Hasilnya berapa?", wajib: true, cek: (k) => cerita(k) && k.jenis === "kurangnya" && k.x === 12 && k.y === 5 },
-  { id: "c-awal", teks: "Pilih Bilangan awal: sisa 12, diberikan 4. Balik operasinya untuk mencari 16.", wajib: true, cek: (k) => cerita(k) && k.jenis === "awal" && k.x === 12 && k.y === 4 && k.langkah },
-  { id: "c-skenario", teks: "Selesaikan skenario Jambu dan Burung sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, "jambu-burung") },
-  { id: "c-tiga", teks: "Pilih Tiga bilangan: boneka 5, 7, dan 8. Jumlahkan dua dulu, lalu yang ketiga.", wajib: false, cek: (k) => cerita(k) && k.jenis === "tiga" && k.x === 5 && k.y === 7 && k.z === 8 },
-  { id: "c-sepuluh", teks: "Pilih Tiga bilangan yang dua pertamanya berjumlah 10, lalu tambahkan yang ketiga.", wajib: false, cek: (k) => cerita(k) && k.jenis === "tiga" && k.x + k.y === 10 && k.z >= 1 },
-  { id: "c-ingat-urai", teks: "Ingat Sub-Bab B: di Lab Cara Hitung buat 12 − 8 dan lihat bersusun.", wajib: false, cek: (k) => kurang(k, 12, 8) && k.susun },
+  { id: "c-kata", teks: "Pasangkan dua kata petunjuk yang berbeda dengan tanda tambah atau kurang yang cocok.", wajib: true, cek: (k) => pembukaan(k) && k.kataBenar.length >= 2 },
+  { id: "c-langkah", teks: "Susun empat langkah cerita berurutan: diketahui, ditanya, solusi, dan kesimpulan.", wajib: true, cek: (k) => pembukaan(k) && k.langkahTuntas >= 1 },
+  { id: "c-tiga", teks: "Jumlahkan tiga bilangan: pilih dua bilangan lebih dulu, lalu jumlahkan dengan bilangan ketiga.", wajib: true, cek: (k) => pembukaan(k) && k.tigaTuntas >= 1 },
+  { id: "c-awal", teks: "Cari bilangan awal dengan membalik langkah: pilih tanda yang cocok untuk benda yang tadi diambil.", wajib: true, cek: (k) => pembukaan(k) && k.awalTuntas >= 1 },
+  { id: "c-buat", teks: "Susun satu cerita hitungan buatanmu sendiri, lalu lihat jawabannya.", wajib: false, cek: (k) => pembukaan(k) && k.buatTuntas >= 1 },
+  { id: "c-semua", teks: "Pasangkan keempat kata petunjuk, yaitu lebihnya, kurangnya, selisih, dan jumlah, dengan tanda yang cocok.", wajib: false, cek: (k) => pembukaan(k) && k.kataBenar.length >= 4 },
 ];
 
 export const daftarMisiK2Bab2 = (sub: string): DefMisi<KeadaanK2Bab2>[] => (sub === "B" ? MISI_B : sub === "C" ? MISI_C : MISI_A);

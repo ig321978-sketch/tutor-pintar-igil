@@ -1,157 +1,152 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { EMO, W, bendaDi, emo, garisBil, jumlahG, judul, kartu, namaG, penanda, petakKosong, pusatBenda, teks, titikBaris, titikPetak, type GeoG } from "./k2b2C-gambar";
-import { bersih, hapus, hitungAksi, idx, ids, k, loncatAksi, redamkan, sorotkan, tambah, ubah } from "./k2b2C-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, baris, deret, emo, gs, judul, kalimat, kartu, lantai, panah, rak, teks, tokoh } from "./k2b2C-gambar";
+import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k2b2C-bantu";
 
-const ex = (isi: string, id = "ex", x = 150, y = 168, u = 16): Obj => teks(id, x, y, isi, u, W.merah);
+/*
+ * Cerita orisinal IGIL "Pesanan Besar Pak Budi" (Kelas 2 Bab 2 Sub-Bab C). Naskah suara dari naskah/story-naskah-k2b2c.md.
+ * Bagian ini: jumlah dan selisih, menjumlahkan tiga bilangan, dan mencari bilangan awal.
+ */
 
-/* ------------------------------ 1. Solusi donat: dua belas dikurangi lima ------------------------------ */
-const xDonat = (i: number): number => 26 + 22 * i;
-export const Y_KIRA = 70;
-export const Y_MALOSI = 130;
-const ptsKiraRow = titikBaris(12, 26, Y_KIRA, 22);
-const ptsMalosiRow = titikBaris(7, 26, Y_MALOSI, 22);
-const petak = (i: number): Obj => petakKosong(`pk${i}`, xDonat(i), Y_MALOSI);
-const SUARA_S1 = "Sekarang langkah ketiga, solusi. Kira punya dua belas donat di barisnya.";
-const SUARA_S2 = "Malosi punya lima kurangnya. Jadi di baris Malosi ada lima petak yang kosong.";
-const SUARA_S3 = "Donat Malosi kita cari dengan mengurangi. Dua belas dikurangi lima sama dengan tujuh.";
-const SUARA_S4 = "Kita periksa dengan operasi lawan. Tujuh ditambah lima sama dengan dua belas. Hasilnya cocok.";
+const MINUS = "−";
 
-export const ADEGAN_DONAT_SOLUSI: AdeganStory = {
-  id: "donat-solusi",
-  judul: "Solusi: donat Malosi",
-  sumber: "Materi: langkah solusi dengan mengurangi",
-  latar: "#FFF7ED",
+/* ------------------------------ 4. Jumlah dan selisih ------------------------------ */
+const SUARA_S1 = "Bu Sari menambah pertanyaan. Berapa jumlah pensil dan penggaris, dan berapa selisihnya?";
+const SUARA_S2 = "Jumlah berarti digabung, dua belas ditambah delapan sama dengan dua puluh.";
+const SUARA_S3 = "Selisih berarti beda banyaknya, dua belas dikurangi delapan sama dengan empat.";
+
+const KJ = kalimat("kj", 150, 164, ["12", "+", "8", "=", "20"], 20, 30);
+const KS = kalimat("ks", 150, 164, ["12", MINUS, "8", "=", "4"], 20, 30);
+
+export const ADEGAN_SELISIH_JUMLAH: AdeganStory = {
+  id: "selisih-jumlah",
+  judul: "Jumlah dan selisih",
+  sumber: "Materi: kata jumlah dan selisih",
+  latar: "#F0F9FF",
   ketukan: [
     k(
       SUARA_S1,
-      tambah(0, judul("Langkah 3: solusi")),
-      tambah(idx(SUARA_S1, "Kira"), namaG("a", 10, 46, "Kira")),
-      tambah(idx(SUARA_S1, "dua"), ...bendaDi("a", EMO.donat, ptsKiraRow, 17), jumlahG("a", 62, 48, "12")),
+      tambah(0, judul("Jumlah dan selisih"), lantai("lt", 150)),
+      tambah(idx(SUARA_S1, "Sari"), ...tokoh("sr", 30, 176, "sari")),
+      tambah(idx(SUARA_S1, "jumlah"), ...kartu("kj", 60, 32, 100, 26, W.hijauMuda, ["JUMLAH +"], 10)),
+      tambah(idx(SUARA_S1, "pensil"), emo("pe", 100, 108, E.pensil, 28)),
+      tambah(idx(SUARA_S1, "penggaris"), emo("pi", 200, 108, E.penggaris, 28)),
+      tambah(idx(SUARA_S1, "selisihnya"), ...kartu("ks", 170, 32, 100, 26, W.pink, [`SELISIH ${MINUS}`], 10)),
     ),
     k(
       SUARA_S2,
-      tambah(idx(SUARA_S2, "Malosi"), namaG("b", 10, 106, "Malosi"), jumlahG("b", 76, 108, "?")),
-      tambah(idx(SUARA_S2, "lima"), ...Array.from({ length: 12 }, (_, i) => petak(i))),
-      sorotkan(idx(SUARA_S2, "kosong"), ...ids("pk", 7, 11)),
+      sorotkan(idx(SUARA_S2, "Jumlah"), "kj-k"),
+      tambah(idx(SUARA_S2, "digabung"), panah("pa1", 100, 124, 138, 146), panah("pa2", 200, 124, 162, 146)),
+      tambah(idx(SUARA_S2, "belas"), KJ[0]),
+      tambah(idx(SUARA_S2, "ditambah"), KJ[1]),
+      tambah(idx(SUARA_S2, "delapan"), KJ[2]),
+      tambah(idx(SUARA_S2, "sama"), KJ[3]),
+      tambah(idx(SUARA_S2, "puluh"), KJ[4]),
     ),
     k(
       SUARA_S3,
-      hapus(idx(SUARA_S3, "mengurangi"), ...ids("pk", 0, 6)),
-      tambah(idx(SUARA_S3, "mengurangi"), ...bendaDi("b", EMO.donat, ptsMalosiRow, 17)),
-      tambah(idx(SUARA_S3, "Dua"), ex("12 − 5 = 7")),
-      ubah(idx(SUARA_S3, "tujuh"), { id: "eb-ln", isi: "7" }),
+      hapus(0, "pa1", "pa2", ...KJ.map((o) => o.id)),
+      sorotkan(idx(SUARA_S3, "Selisih"), "ks-k"),
+      tambah(idx(SUARA_S3, "beda"), ...kartu("bd", 95, 116, 110, 20, W.krem, ["beda banyaknya"], 8.6)),
+      tambah(idx(SUARA_S3, "belas"), KS[0]),
+      tambah(idx(SUARA_S3, "dikurangi"), KS[1]),
+      tambah(idx(SUARA_S3, "delapan"), KS[2]),
+      tambah(idx(SUARA_S3, "sama"), KS[3]),
+      tambah(idx(SUARA_S3, "empat"), KS[4]),
     ),
-    k(SUARA_S4, redamkan(0, ...ids("pk", 7, 11)), tambah(idx(SUARA_S4, "Tujuh"), ex("7 + 5 = 12", "xk", 130, 192, 14)), tambah(idx(SUARA_S4, "cocok"), emo("ok", 218, 192, "✅", 16))),
   ],
 };
 
-/* ------------------------------ 2. Jumlah donat: tujuh ditambah dua belas ------------------------------ */
-export const ptsKiraJumlah = titikPetak(12, 4, 24, 116, 24, 28);
-export const ptsMalosiJumlah = titikPetak(7, 4, 190, 116, 24, 28);
-const SUARA_J1 = "Langkah keempat, kesimpulan. Kesimpulan ditulis dengan kalimat jawaban yang diawali kata jadi. Jadi, donat Malosi ada tujuh buah.";
-const SUARA_J2 = "Sekarang pertanyaan kedua. Berapa jumlah donat Kira dan Malosi?";
-const SUARA_J3 = "Jumlah berarti digabung, jadi kita tambah. Kita mulai dari dua belas, lalu hitung maju: tiga belas, empat belas, lima belas, enam belas, tujuh belas, delapan belas, sembilan belas.";
-const SUARA_J4 = "Tujuh ditambah dua belas sama dengan sembilan belas.";
-const SUARA_J5 = "Jadi jumlah donat Kira dan Malosi adalah sembilan belas buah.";
+/* ------------------------------ 5. Tiga bilangan ------------------------------ */
+const SUARA_B1 = "Pesanan berikutnya: ada tujuh penghapus, empat rautan, dan enam pensil warna.";
+const SUARA_B2 = "Nia menjumlahkan dua bilangan dulu, tujuh ditambah empat sama dengan sebelas. Lalu sebelas ditambah enam sama dengan tujuh belas.";
+const SUARA_B3 = "Jumlah semuanya tujuh belas, dan boleh dimulai dari dua bilangan yang paling mudah!";
 
-export const ADEGAN_DONAT_JUMLAH: AdeganStory = {
-  id: "donat-jumlah",
-  judul: "Kesimpulan dan jumlah donat",
-  sumber: "Materi: kesimpulan dan jumlah",
-  latar: "#FEFCE8",
+const E1 = kalimat("e", 150, 86, ["7", "+", "4", "=", "11"], 22, 36);
+const E2 = kalimat("g", 150, 132, ["11", "+", "6", "=", "17"], 22, 36);
+
+export const ADEGAN_TIGA_BILANGAN: AdeganStory = {
+  id: "tiga-bilangan",
+  judul: "Menjumlahkan tiga bilangan",
+  sumber: "Materi: tiga bilangan",
+  latar: "#FDF4FF",
   ketukan: [
     k(
-      SUARA_J1,
-      tambah(0, judul("Langkah 4: kesimpulan")),
-      tambah(idx(SUARA_J1, "Kesimpulan", 2), ...kartu("ks", 20, 44, 260, 36, W.hijauMuda, ["Jadi, donat Malosi ada 7 buah."], 11)),
-      tambah(idx(SUARA_J1, "tujuh"), emo("ok", 150, 132, "✅", 40)),
+      SUARA_B1,
+      tambah(0, judul("Tiga rak kecil"), lantai("lt", 160)),
+      tambah(idx(SUARA_B1, "penghapus"), ...deret("hapus", "hp", baris(7, 22, 52, 17)), teks("hp-n", 222, 56, "penghapus 7", 9.6)),
+      tambah(idx(SUARA_B1, "rautan"), ...deret("rautan", "rt", baris(4, 22, 92, 17)), teks("rt-n", 222, 96, "rautan 4", 9.6)),
+      tambah(idx(SUARA_B1, "pensil"), ...deret("warna", "pw", baris(6, 22, 132, 17), 14), teks("pw-n", 222, 136, "pensil warna 6", 9.6)),
     ),
     k(
-      SUARA_J2,
-      hapus(0, "ks-k", "ks-t0", "ok"),
-      tambah(idx(SUARA_J2, "Kira"), namaG("a", 24, 84, "Kira"), ...bendaDi("a", EMO.donat, ptsKiraJumlah, 17), jumlahG("a", 96, 86, "12")),
-      tambah(idx(SUARA_J2, "Malosi"), namaG("b", 190, 84, "Malosi"), ...bendaDi("b", EMO.donat, ptsMalosiJumlah, 17), jumlahG("b", 258, 82, "7")),
+      SUARA_B2,
+      bersih(0),
+      tambah(0, judul("Dua bilangan dulu"), lantai("lt", 160)),
+      tambah(idx(SUARA_B2, "Nia"), ...tokoh("ni", 36, 176, "nia")),
+      tambah(idx(SUARA_B2, "dua"), teks("d2", 150, 44, "2 bilangan dulu", 12, W.ungu)),
+      tambah(idx(SUARA_B2, "tujuh"), E1[0]),
+      tambah(idx(SUARA_B2, "ditambah"), E1[1]),
+      tambah(idx(SUARA_B2, "empat"), E1[2]),
+      tambah(idx(SUARA_B2, "sama"), E1[3]),
+      tambah(idx(SUARA_B2, "sebelas"), E1[4]),
+      tambah(idx(SUARA_B2, "Lalu"), E2[0]),
+      tambah(idx(SUARA_B2, "ditambah", 2), E2[1]),
+      tambah(idx(SUARA_B2, "enam"), E2[2]),
+      tambah(idx(SUARA_B2, "sama", 2), E2[3]),
+      tambah(idx(SUARA_B2, "belas"), E2[4]),
     ),
-    k(SUARA_J3, ...hitungAksi(SUARA_J3, "eb", pusatBenda(ptsMalosiJumlah), { dari: 13, setelah: "maju" })),
-    k(SUARA_J4, tambah(idx(SUARA_J4, "Tujuh"), ex("7 + 12 = 19", "ex", 150, 52))),
-    k(SUARA_J5, hapus(0, "ex"), tambah(idx(SUARA_J5, "jumlah"), ...kartu("kj", 30, 28, 240, 36, W.krem, ["Jadi, jumlah donat 19 buah."], 11))),
+    k(
+      SUARA_B3,
+      sorotkan(idx(SUARA_B3, "Jumlah"), "g4"),
+      tambah(idx(SUARA_B3, "boleh"), emo("jm", 270, 160, E.jempol, 22)),
+      tambah(idx(SUARA_B3, "dimulai"), gs("bk", 78, 100, 186, 100, W.hijau, 3, { z: 2 })),
+      tambah(idx(SUARA_B3, "mudah"), ...kartu("pm", 96, 150, 130, 20, W.krem, ["mulai dari yang mudah"], 8.6)),
+    ),
   ],
 };
 
-/* ------------------------------ 3. Dapat lagi: tambah ------------------------------ */
-export const G_TAMBAH: GeoG = { x0: 18, y: 176, dx: 26, dari: 6, sampai: 16 };
-const ptsApelA = titikBaris(8, 26, 62, 26);
-const ptsApelB = titikBaris(6, 26, 90, 26);
-const SUARA_T1 = "Sekarang kita pakai kata kunci lain. Upe punya delapan apel. Upe dapat enam apel lagi.";
-const SUARA_T2 = "Dapat lagi artinya ada yang bertambah. Jadi kita pilih tambah.";
-const SUARA_T3 = "Di jalur bilangan, kita loncat maju dari delapan: satu, dua, tiga, empat, lima, enam.";
-const SUARA_T4 = "Delapan ditambah enam sama dengan empat belas. Apel Upe sekarang ada empat belas.";
+/* ------------------------------ 6. Bilangan awal ------------------------------ */
+const SUARA_A1 = "Rak penggaris tinggal sembilan setelah terjual enam, dan Pak Budi ingin tahu banyaknya mula-mula.";
+const SUARA_A2 = "Chacha bingung, tapi Dika menjelaskan. Yang tadi diambil kita kembalikan, jadi sembilan ditambah enam.";
+const SUARA_A3 = "Sembilan ditambah enam sama dengan lima belas, jadi mula-mula ada lima belas penggaris!";
 
-export const ADEGAN_TAMBAH_APEL: AdeganStory = {
-  id: "tambah-apel",
-  judul: "Dapat lagi: kita tambah",
-  sumber: "Materi: kata kunci dapat lagi",
+const LAMPAU = baris(6, 196, 70, 15);
+const KEMBALI = baris(6, 52, 94, 15);
+const KA = kalimat("kk", 150, 150, ["9", "+", "6", "=", "15"], 16, 28);
+const by = (y: number): number => Number((y + 15 * 0.35).toFixed(1));
+
+export const ADEGAN_BILANGAN_AWAL: AdeganStory = {
+  id: "bilangan-awal",
+  judul: "Mencari bilangan awal",
+  sumber: "Materi: bilangan awal dengan membalik",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_T1,
-      tambah(0, judul("Apel Upe")),
-      tambah(idx(SUARA_T1, "Upe"), namaG("a", 8, 40, "Upe punya 8 apel")),
-      tambah(idx(SUARA_T1, "delapan"), ...bendaDi("a", EMO.apel, ptsApelA)),
-      tambah(idx(SUARA_T1, "dapat"), teks("cp", 290, 94, "dapat lagi: 6", 9.4, W.merah, { anchor: "end" })),
-      tambah(idx(SUARA_T1, "enam"), ...bendaDi("b", EMO.apel, ptsApelB)),
+      SUARA_A1,
+      tambah(0, judul("Bilangan awal"), lantai("lt", 160), ...rak("rk", 40, 44, 142, 64)),
+      tambah(idx(SUARA_A1, "tinggal"), ...deret("penggaris", "pg", baris(9, 52, 72, 15), 15), teks("tg-n", 110, 40, "tinggal 9", 8.4, W.coklat)),
+      tambah(idx(SUARA_A1, "terjual"), ...deret("penggaris", "gh", LAMPAU, 15, { op: 0.4 }), teks("tj-n", 233, 52, "terjual 6", 8.4, W.merah)),
+      tambah(idx(SUARA_A1, "Pak"), ...tokoh("bd", 262, 176, "budi")),
+      tambah(idx(SUARA_A1, "mula-mula"), teks("aw", 150, 130, "mula-mula = ?", 12, W.merah)),
     ),
-    k(SUARA_T2, tambah(idx(SUARA_T2, "tambah"), ...kartu("tb", 90, 106, 120, 24, W.hijauMuda, ["tambah (+)"], 11))),
     k(
-      SUARA_T3,
-      tambah(0, ...garisBil("j", G_TAMBAH)),
-      tambah(idx(SUARA_T3, "dari"), penanda("j", G_TAMBAH, 8, W.merah)),
-      ...loncatAksi(SUARA_T3, "j", G_TAMBAH, 8, 1, 6, "delapan"),
+      SUARA_A2,
+      tambah(idx(SUARA_A2, "Chacha"), ...tokoh("ch", 36, 176, "chacha")),
+      tambah(idx(SUARA_A2, "bingung"), emo("tn", 36, 148, E.tanya, 20)),
+      tambah(idx(SUARA_A2, "Dika"), ...tokoh("dk", 90, 176, "dika")),
+      tambah(idx(SUARA_A2, "kembalikan"), panah("pb", 214, 60, 186, 60, W.hijau)),
+      ubah(idx(SUARA_A2, "kembalikan"), ...KEMBALI.map((p, i) => ({ id: `gh${i}`, x: p.x, y: by(p.y), op: 1 }))),
+      hapus(idx(SUARA_A2, "jadi"), "tn"),
+      tambah(idx(SUARA_A2, "sembilan"), KA[0]),
+      tambah(idx(SUARA_A2, "ditambah"), KA[1]),
+      tambah(idx(SUARA_A2, "enam"), KA[2]),
     ),
-    k(SUARA_T4, tambah(idx(SUARA_T4, "Delapan"), ex("8 + 6 = 14", "ex", 150, 146, 15)), tambah(idx(SUARA_T4, "empat", 1), penanda("j", G_TAMBAH, 14, W.ungu))),
-  ],
-};
-
-/* ------------------------------ 4. Dimakan: kurang ------------------------------ */
-export const G_KURANG: GeoG = { x0: 18, y: 176, dx: 26, dari: 6, sampai: 16 };
-const ptsKueA = titikBaris(8, 26, 62, 26);
-const ptsKueB = titikBaris(7, 26, 90, 26);
-const SUARA_R1 = "Sekarang Wei punya lima belas kue. Wei makan tujuh kue.";
-const SUARA_R2 = "Kue yang dimakan akan berkurang, jadi kita pilih kurang.";
-const SUARA_R3 = "Kita loncat mundur dari lima belas: satu, dua, tiga, empat, lima, enam, tujuh.";
-const SUARA_R4 = "Lima belas dikurangi tujuh sama dengan delapan. Sisa kue Wei ada delapan.";
-const SUARA_R5 = "Kita periksa dengan operasi lawan. Delapan ditambah tujuh sama dengan lima belas.";
-const SUARA_R6 = "Ingat, dapat lagi dan digabung artinya tambah. Dimakan, diberikan, dan hilang artinya kurang.";
-
-export const ADEGAN_KURANG_KUE: AdeganStory = {
-  id: "kurang-kue",
-  judul: "Dimakan: kita kurangi",
-  sumber: "Materi: kata kunci dimakan",
-  latar: "#FDF2F8",
-  ketukan: [
     k(
-      SUARA_R1,
-      tambah(0, judul("Kue Wei")),
-      tambah(idx(SUARA_R1, "Wei"), namaG("a", 8, 40, "Wei punya 15 kue")),
-      tambah(idx(SUARA_R1, "lima"), ...bendaDi("a", EMO.kue, ptsKueA), ...bendaDi("b", EMO.kue, ptsKueB)),
-      tambah(idx(SUARA_R1, "makan"), teks("cm", 290, 94, "dimakan: 7", 9.4, W.merah, { anchor: "end" })),
-      sorotkan(idx(SUARA_R1, "tujuh"), ...ids("eb", 0, 6)),
-    ),
-    k(SUARA_R2, redamkan(0, ...ids("eb", 0, 6)), tambah(idx(SUARA_R2, "kurang"), ...kartu("kr", 90, 106, 120, 24, W.pink, ["kurang (−)"], 11))),
-    k(
-      SUARA_R3,
-      tambah(0, ...garisBil("j", G_KURANG)),
-      tambah(idx(SUARA_R3, "dari"), penanda("j", G_KURANG, 15, W.merah)),
-      ...loncatAksi(SUARA_R3, "j", G_KURANG, 15, -1, 7, "belas"),
-    ),
-    k(SUARA_R4, hapus(idx(SUARA_R4, "Lima"), ...ids("eb", 0, 6), "cm"), tambah(idx(SUARA_R4, "Lima"), ex("15 − 7 = 8", "ex", 150, 146, 15)), tambah(idx(SUARA_R4, "Sisa"), penanda("j", G_KURANG, 8, W.ungu))),
-    k(SUARA_R5, ubah(idx(SUARA_R5, "Delapan"), { id: "ex", isi: "8 + 7 = 15" }), tambah(idx(SUARA_R5, "lima"), emo("ok", 250, 148, "✅", 18))),
-    k(
-      SUARA_R6,
-      bersih(0),
-      tambah(0, judul("Pilih tambah atau kurang")),
-      tambah(idx(SUARA_R6, "tambah"), ...kartu("t0", 14, 40, 130, 28, W.hijauMuda, ["tambah (+)"], 12), ...kartu("t1", 14, 76, 130, 24, W.putih, ["dapat lagi"], 10), ...kartu("t2", 14, 106, 130, 24, W.putih, ["digabung"], 10)),
-      tambah(idx(SUARA_R6, "kurang"), ...kartu("u0", 156, 40, 130, 28, W.pink, ["kurang (−)"], 12), ...kartu("u1", 156, 76, 130, 24, W.putih, ["dimakan"], 10), ...kartu("u2", 156, 106, 130, 24, W.putih, ["diberikan"], 10), ...kartu("u3", 156, 136, 130, 24, W.putih, ["hilang"], 10)),
+      SUARA_A3,
+      tambah(idx(SUARA_A3, "sama"), KA[3]),
+      tambah(idx(SUARA_A3, "belas"), KA[4]),
+      ubah(idx(SUARA_A3, "mula-mula"), { id: "aw", isi: "mula-mula = 15", warna: W.hijau }),
+      tambah(idx(SUARA_A3, "penggaris"), emo("ok", 150, 176, E.centang, 22)),
+      hapus(idx(SUARA_A3, "penggaris"), "pb"),
     ),
   ],
 };

@@ -2,100 +2,70 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import LabBertahap, { type TabLab } from "./LabBertahap";
-import SimulasiCaraHitung from "./SimulasiCaraHitung";
-import SimulasiLabCerita from "./SimulasiLabCerita";
-import SimulasiMesinSimpan from "./SimulasiMesinSimpan";
-import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K2B2 } from "./skenario-k2b2";
-import { TAMPIL_CARA_A, SEMUA_TAMPIL_CARA } from "./lab-cara-k2b2";
-import { daftarMisiK2Bab2, type KeadaanK2Bab2 } from "./misi-k2bab2";
-import { laporMisi, tampilMisi } from "./misi-simulasi";
+import { daftarMisiK2Bab2 } from "./misi-k2bab2";
+import { laporMisi } from "./misi-simulasi";
+import SimulasiKardusKiriman from "./gudang-k2b2a/SimulasiKardusKiriman";
+import { MISI_KARDUS } from "./gudang-k2b2a/data";
+import type { KeadaanGudang } from "./gudang-k2b2a/logika";
+import SimulasiMejaStok from "./stok-k2b2b/SimulasiMejaStok";
+import { MISI_STOK } from "./stok-k2b2b/data";
+import type { KeadaanStok } from "./stok-k2b2b/logika";
+import SimulasiMejaPesananBesar from "./pembukaan-k2b2c/SimulasiMejaPesananBesar";
+import { MISI_PESANAN } from "./pembukaan-k2b2c/data";
+import type { KeadaanPembukaan } from "./pembukaan-k2b2c/logika";
 
 /* ======================================================================== */
-/* Simulasi Kelas 2 Bab 2 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
-/* alat bertambah per sub-bab, dengan misi wajib dan tantangan bebas         */
-/* (misi-k2bab2.ts).                                                         */
-/*   Sub-Bab A (penjumlahan): Lab Cara Hitung (tambah) + Mesin Simpan.       */
-/*   Sub-Bab B (pengurangan): Lab Cara Hitung (+ kurang, Selisih, Periksa,   */
-/*                            Tambah sampai pas) + Mesin Urai.               */
-/*   Sub-Bab C (akhir): Lab Soal Cerita + Lab Cara Hitung penuh + skenario   */
-/*                      Jambu dan Burung.                                    */
+/* Simulasi Kelas 2 Bab 2 di dalam Materi (tahap 4 SMISCPA). Toko Seragam    */
+/* dan Alat Tulis Sekolah: Sub-Bab A Kardus Kiriman, Sub-Bab B Meja Stok,    */
+/* Sub-Bab C Meja Pesanan Besar.                                             */
+/* KERANGKA: agen Sub-Bab mengisi fungsi langkahKardusA / langkahMejaStokB / */
+/* langkahMejaPesananC (impor komponen dan data dari folder masing-masing).  */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
-const MISI = {
-  A: "Buat penjumlahan sampai 20 dengan garis, pasangan, dan bersusun, lalu simpan sepuluh satuan di Mesin Simpan. Selesaikan misi wajib di bawah, urutannya bebas.",
-  B: "Kurangkan dengan garis, selisih, dan bersusun, urai satu puluhan di Mesin Urai, lalu periksa dengan penjumlahan. Selesaikan misi wajib, lalu coba tantangan bebas.",
-  C: "Pilih jenis soal cerita, baca kata kuncinya, lihat batangnya, lalu selesaikan skenario Jambu dan Burung. Selesaikan semua misi wajib.",
-} as const;
+const tampilMisi = (sub: string) => daftarMisiK2Bab2(sub).map(({ id, teks, wajib }) => ({ id, teks, wajib }));
 
-const NAMA_SIM = {
-  A: "Lab Cara Hitung: Penjumlahan",
-  B: "Lab Cara Hitung: Pengurangan",
-  C: "Lab Soal Cerita: Pencapaian Misi",
-} as const;
+/** Sub-Bab C (akhir bab): Meja Pesanan Besar. */
+const langkahMejaPesananC = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Meja Pesanan Besar",
+  petunjuk: MAINKAN_DULU,
+  misi: MISI_PESANAN,
+  misiDaftar: tampilMisi("C"),
+  mode: "sentuh",
+  render: (a) => <SimulasiMejaPesananBesar speakGuru={a.speakGuru} onKeadaan={(k: KeadaanPembukaan) => laporMisi(daftarMisiK2Bab2("C"), k, a.capai)} />,
+});
+
+/** Sub-Bab B (tengah cerita): Meja Stok. */
+const langkahMejaStokB = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Meja Stok",
+  petunjuk: MAINKAN_DULU,
+  misi: MISI_STOK,
+  misiDaftar: tampilMisi("B"),
+  mode: "sentuh",
+  render: (a) => <SimulasiMejaStok speakGuru={a.speakGuru} onKeadaan={(k: KeadaanStok) => laporMisi(daftarMisiK2Bab2("B"), k, a.capai)} />,
+});
+
+/** Sub-Bab A (awal cerita): Kardus Kiriman. */
+const langkahKardusA = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Kardus Kiriman",
+  petunjuk: MAINKAN_DULU,
+  misi: MISI_KARDUS,
+  misiDaftar: tampilMisi("A"),
+  mode: "sentuh",
+  render: (a) => <SimulasiKardusKiriman speakGuru={a.speakGuru} onKeadaan={(k: KeadaanGudang) => laporMisi(daftarMisiK2Bab2("A"), k, a.capai)} />,
+});
 
 const langkahK2Bab2 = (sub: string): LangkahSim[] => {
-  const huruf = (["A", "B", "C"].includes(sub) ? sub : "A") as "A" | "B" | "C";
-  const daftar = daftarMisiK2Bab2(huruf);
-  return [
-    {
-      metode: "PhET",
-      sub: NAMA_SIM[huruf],
-      petunjuk: MAINKAN_DULU,
-      misi: MISI[huruf],
-      misiDaftar: tampilMisi(daftar),
-      mode: "sentuh",
-      render: (a) => {
-        const lapor = (k: KeadaanK2Bab2) => laporMisi(daftar, k, a.capai);
-        const selesai = (id: string) => lapor({ alat: "selesai", id });
-
-        const caraA: TabLab = {
-          id: "cara",
-          nama: "Lab Cara Hitung",
-          render: () => <SimulasiCaraHitung speakGuru={a.speakGuru} tampil={TAMPIL_CARA_A} ops={["tambah"]} onKeadaan={lapor} />,
-        };
-        const caraB: TabLab = {
-          id: "cara",
-          nama: "Lab Cara Hitung",
-          render: () => <SimulasiCaraHitung speakGuru={a.speakGuru} tampil={SEMUA_TAMPIL_CARA} opAwal="kurang" onKeadaan={lapor} />,
-        };
-        const caraC: TabLab = {
-          id: "cara",
-          nama: "Lab Cara Hitung",
-          render: () => <SimulasiCaraHitung speakGuru={a.speakGuru} tampil={SEMUA_TAMPIL_CARA} onKeadaan={lapor} />,
-        };
-        const simpan: TabLab = {
-          id: "simpan",
-          nama: "Mesin Simpan",
-          render: () => <SimulasiMesinSimpan speakGuru={a.speakGuru} ragam="tambah" onTuntas={() => selesai("simpan")} />,
-        };
-        const urai: TabLab = {
-          id: "urai",
-          nama: "Mesin Urai",
-          render: () => <SimulasiMesinSimpan speakGuru={a.speakGuru} ragam="kurang" onTuntas={() => selesai("urai")} />,
-        };
-        const cerita: TabLab = {
-          id: "cerita",
-          nama: "Lab Soal Cerita",
-          render: () => <SimulasiLabCerita speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const skenario: TabLab = {
-          id: "skenario",
-          nama: "Jambu dan Burung",
-          render: () => <SimulasiSkenario def={SKENARIO_K2B2} speakGuru={a.speakGuru} onTuntas={() => selesai("jambu-burung")} />,
-        };
-
-        const tab = huruf === "A" ? [caraA, simpan] : huruf === "B" ? [caraB, urai] : [cerita, caraC, skenario];
-        return <LabBertahap tab={tab} label="Alat laboratorium penjumlahan dan pengurangan" />;
-      },
-    },
-  ];
+  if (sub === "B") return [langkahMejaStokB()];
+  if (sub === "C") return [langkahMejaPesananC()];
+  return [langkahKardusA()];
 };
 
-/** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */
+/** Misi simulasi pertama sub-bab, untuk digabung ke ucapan saat tahap Simulasi dibuka. */
 export const misiAwalK2Bab2 = (sub: string): string => `Simulasi 1. Misi: ${langkahK2Bab2(sub)[0].misi ?? ""}`;
 
 export default function SimulasiK2Bab2Materi({
@@ -112,7 +82,7 @@ export default function SimulasiK2Bab2Materi({
   const huruf = ["A", "B", "C"].includes(sub) ? sub : "A";
   return (
     <SimulasiAlur
-      judulBab={`Kelas 2 Bab 2 · Sub-Bab ${huruf}`}
+      judulBab={`Bab 2 · Sub-Bab ${huruf}`}
       langkah={langkahK2Bab2(sub)}
       speakGuru={speakGuru}
       onSelesai={onSelesai}
