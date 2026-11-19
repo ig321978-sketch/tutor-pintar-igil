@@ -1,71 +1,133 @@
 import type { AdeganStory } from "./logika-story";
-import { W, bagan, emo, judul, kartu, kalimat, kotak, panah, teks } from "./k3b2B-gambar";
-import { idx, k, redamkan, sorotkan, tambah, ubah } from "./k3b2B-bantu";
+import { E, W, batangBagan, deretBotol, emo, judul, kertas, kotak, panah, rak, tanah, teks, tokoh } from "./k3b2B-gambar";
+import { bersih, k, redamkan, sorotkan, tambah, ubah } from "./k3b2B-bantu";
 
-/* ------------------------------ 4. Mencari titik-titik di tengah: tiga kurang titik-titik sama dengan satu ------------------------------ */
-const BA = bagan("ba", { y: 64, atas: "3", a: "?", b: "1", fa: 2 / 3 });
-const SUARA_A1 = "Mari kita cari titik-titik pada tiga kurang titik-titik sama dengan satu.";
-const SUARA_A2 = "Bilangan awalnya tiga. Bagian yang tersisa adalah satu.";
-const SUARA_A3 = "Bagian yang belum diketahui kita cari dengan cara mengurangkan.";
-const SUARA_A4 = "Tiga dikurangi satu sama dengan dua.";
-const SUARA_A5 = "Jadi titik-titik itu diisi dua. Tiga kurang dua sama dengan satu, jadi jawabannya benar.";
+/*
+ * Cerita orisinal IGIL "Botol Air Pak Darto" (Kelas 3 Bab 2 Sub-Bab B), video materi.
+ * Naskah suara dari naskah/story-naskah-k3b2b.md. Bagian ini: bagan bilangan awal dan bagian, periksa dengan mengurangkan lagi, dan bilangan awal yang hilang.
+ */
 
-export const ADEGAN_TENGAH_KECIL: AdeganStory = {
-  id: "tengah-kecil",
-  judul: "Mencari titik-titik di tengah",
-  sumber: "Materi: titik-titik di tengah",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(SUARA_A1, tambah(0, judul("Titik-titik di tengah")), tambah("tiga", kalimat("ks", 50, "3 − … = 1", 20))),
-    k(SUARA_A2, tambah(idx(SUARA_A2, "tiga."), ...BA.atas), tambah(idx(SUARA_A2, "satu."), ...BA.b)),
-    k(SUARA_A3, tambah("belum", ...BA.a), sorotkan("mengurangkan.", "ba_A")),
-    k(SUARA_A4, redamkan(0, "ba_A"), tambah(0, kalimat("hit", 164, "3 − 1 = 2", 24, W.merah)), ubah("dua.", { id: "ba_An", isi: "2", warna: W.biru })),
-    k(SUARA_A5, tambah("Tiga", kalimat("per", 192, "3 − 2 = 1", 16)), tambah("benar.", emo("ok", 262, 192, "✅", 22))),
-  ],
-};
+/* ------------------------------ 4. Cari bilangan yang dikurangkan ------------------------------ */
+const SUARA_C1 = "Bima menggambar bagan. Batang atas adalah bilangan awal, yaitu sembilan puluh.";
+const SUARA_C2 = "Dua batang di bawahnya adalah botol yang dibagikan, yang belum diketahui, dan botol yang tersisa, yaitu tiga puluh lima.";
+const SUARA_C3 = "Kurangkan bilangan awal dengan sisanya: sembilan puluh dikurangi tiga puluh lima sama dengan lima puluh lima.";
 
-/* ------------------------------ 5. Mencari titik-titik di depan: titik-titik kurang enam sama dengan tiga ------------------------------ */
-const BD = bagan("bd", { y: 64, atas: "?", a: "6", b: "3", fa: 2 / 3 });
-const SUARA_B1 = "Sekarang kita cari titik-titik pada titik-titik kurang enam sama dengan tiga.";
-const SUARA_B2 = "Bilangan awalnya belum diketahui. Dua bagiannya adalah enam dan tiga.";
-const SUARA_B3 = "Bilangan awal didapat dengan menambahkan kedua bagiannya.";
-const SUARA_B4 = "Tiga ditambah enam sama dengan sembilan.";
-const SUARA_B5 = "Jadi titik-titik itu diisi sembilan. Sembilan kurang enam sama dengan tiga, jadi jawabannya benar.";
+const [BA_K, BA_T] = batangBagan("ba", 90, 44, 180, 30, W.awal, "90", 16);
+const [BD_K, BD_T] = batangBagan("bd", 90, 86, 110, 30, W.bagA, "?", 16);
+const [BS_K, BS_T] = batangBagan("bs", 200, 86, 70, 30, W.bagB, "35", 16);
 
-export const ADEGAN_DEPAN_KECIL: AdeganStory = {
-  id: "depan-kecil",
-  judul: "Mencari titik-titik di depan",
-  sumber: "Materi: titik-titik di depan",
+export const ADEGAN_CARI_DIKURANGKAN: AdeganStory = {
+  id: "cari-dikurangkan",
+  judul: "Cari bilangan yang dikurangkan",
+  sumber: "Materi: bilangan yang dikurangkan",
   latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_B1, tambah(0, judul("Titik-titik di depan")), tambah("kurang", kalimat("ks", 50, "… − 6 = 3", 20))),
-    k(SUARA_B2, tambah("belum", ...BD.atas), tambah("enam", ...BD.a), tambah(idx(SUARA_B2, "tiga."), ...BD.b)),
-    k(SUARA_B3, sorotkan("menambahkan", "bd_T"), tambah("kedua", ...kartu("rm", 50, 134, 200, 22, W.emas, ["awal = bagian + bagian"], 10))),
-    k(SUARA_B4, redamkan(0, "bd_T"), tambah(0, kalimat("hit", 180, "3 + 6 = 9", 24, W.merah)), ubah("sembilan.", { id: "bd_Tn", isi: "9", warna: W.biru })),
-    k(SUARA_B5, tambah("Sembilan", kalimat("per", 198, "9 − 6 = 3", 14)), tambah("benar.", emo("ok", 262, 198, "✅", 20))),
-  ],
-};
-
-/* ------------------------------ 6. Cerita ayam dijual ------------------------------ */
-const SUARA_C1 = "Halim seorang peternak ayam. Ia punya delapan puluh ekor ayam potong di kandang.";
-const SUARA_C2 = "Sebagian ayam itu dijual ke pasar oleh Halim.";
-const SUARA_C3 = "Ayam yang tersisa di kandang ada empat puluh lima ekor.";
-const SUARA_C4 = "Dapatkah kita menentukan banyak ayam yang dijual?";
-
-export const ADEGAN_AYAM_DIJUAL: AdeganStory = {
-  id: "ayam-dijual",
-  judul: "Ayam yang dijual",
-  sumber: "Materi: ayam yang dijual",
-  latar: "#FFFBEB",
   ketukan: [
     k(
       SUARA_C1,
-      tambah(0, judul("Ayam Halim"), emo("eh", 40, 56, "\u{1F466}", 28), teks("nh", 40, 70, "Halim", 9.6)),
-      tambah("kandang.", kotak("kd", 86, 34, 108, 74, W.krem, W.coklat, { rx: 8, tebal: 2 }), emo("a1", 112, 66, "\u{1F414}", 24), emo("a2", 168, 66, "\u{1F414}", 24), emo("a3", 112, 98, "\u{1F414}", 24), emo("a4", 168, 98, "\u{1F414}", 24)),
-      tambah(idx(SUARA_C1, "delapan"), teks("jm", 140, 126, "80 ekor", 14, W.merah)),
+      tambah(0, judul("Bagan Bima"), ...tokoh("bm", 40, 184, "Bima")),
+      tambah("bagan.", kertas("kb", 70, 32, 220, 130, W.putih)),
+      tambah("Batang", BA_K),
+      tambah("awal,", teks("la", 180, 40, "bilangan awal", 8.4, W.awal)),
+      tambah("sembilan", BA_T),
     ),
-    k(SUARA_C2, tambah("dijual", panah("pj", 200, 70, 36, 0, W.biru, 2.5), teks("tj", 217, 62, "?", 18, W.merah)), tambah("pasar.", emo("ps", 262, 80, "\u{1F6D2}", 34))),
-    k(SUARA_C3, tambah("tersisa", ...kartu("sr", 80, 148, 120, 28, W.hijauMuda, ["sisa: 45 ekor"], 11)), sorotkan("empat", "sr-k")),
-    k(SUARA_C4, redamkan(0, "sr-k"), sorotkan("dijual?", "tj"), tambah("Dapatkah", emo("tn", 150, 198, "❓", 24))),
+    k(
+      SUARA_C2,
+      tambah("Dua", teks("n2", 180, 152, "2 batang", 9, W.ungu)),
+      tambah("dibagikan,", BD_K, BD_T, teks("ld", 145, 128, "dibagikan", 8.4, W.bagA)),
+      sorotkan("belum", "bd"),
+      tambah("tersisa,", BS_K, teks("ls", 235, 128, "sisa", 8.4, W.bagB)),
+      tambah("tiga", BS_T),
+    ),
+    k(
+      SUARA_C3,
+      tambah("Kurangkan", panah("pa", 80, 60, 0, 46, W.ungu, 2.4)),
+      tambah("sembilan", teks("a90", 112, 180, "90", 16, W.awal)),
+      tambah("dikurangi", teks("mn", 138, 180, "−", 16, W.biru)),
+      tambah("tiga", teks("b35", 164, 180, "35", 16, W.bagB)),
+      tambah("sama", teks("sm", 190, 180, "=", 16, W.biru)),
+      ubah("lima@3", { id: "bd-t", isi: "55" }, { id: "bd", warna: W.hijauTua }),
+      tambah("lima@3", teks("r55", 218, 180, "55", 16, W.hijauTua)),
+    ),
+  ],
+};
+
+/* ------------------------------ 5. Periksa dengan mengurangkan lagi ------------------------------ */
+const SUARA_R1 = "Jadi, botol yang dibagikan ada lima puluh lima.";
+const SUARA_R2 = "Periksa dengan mengurangkan lagi: sembilan puluh dikurangi lima puluh lima sama dengan tiga puluh lima.";
+const SUARA_R3 = "Hasilnya cocok dengan sisa botol, jadi jawabannya benar.";
+
+export const ADEGAN_PERIKSA_KURANG: AdeganStory = {
+  id: "periksa-kurang",
+  judul: "Periksa dengan mengurangkan lagi",
+  sumber: "Materi: periksa dengan mengurangkan",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_R1,
+      tambah(0, judul("Hasil Bagan"), ...tanah("tn", 150), ...tokoh("bm", 40, 184, "Bima")),
+      tambah("botol", teks("lb", 175, 60, "botol dibagikan", 9, W.bagA)),
+      tambah("dibagikan", kotak("hs", 100, 46, 150, 66, W.hijauMuda, W.hijauTua, { rx: 10, z: -1 })),
+      tambah("lima", teks("n55", 175, 98, "55", 30, W.hijauTua)),
+    ),
+    k(
+      SUARA_R2,
+      bersih(0),
+      tambah(0, judul("Periksa Hasilnya"), ...tanah("tn", 150), ...tokoh("bm", 40, 184, "Bima")),
+      tambah("mengurangkan", teks("pr", 170, 56, "periksa", 10, W.ungu)),
+      tambah("sembilan", teks("a90", 100, 104, "90", 24, W.awal)),
+      tambah("dikurangi", teks("mn", 134, 104, "−", 24, W.biru)),
+      tambah("lima", teks("b55", 168, 104, "55", 24, W.hijauTua)),
+      tambah("sama", teks("sm", 202, 104, "=", 24, W.biru)),
+      tambah("tiga", teks("c35", 236, 104, "35", 24, W.bagB)),
+    ),
+    k(
+      SUARA_R3,
+      sorotkan("cocok", "c35"),
+      tambah("sisa", ...rak("rk", 80, 150, 120, 24), ...deretBotol("bt", 90, 138, 9, 12, 12)),
+      tambah("benar.", emo("ok", 264, 112, E.benar, 26)),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. Bilangan awal yang hilang ------------------------------ */
+const SUARA_H1 = "Di rak kedua, Pak Darto membagikan empat puluh botol, dan tersisa dua puluh delapan botol.";
+const SUARA_H2 = "Banyak botol mula-mula belum diketahui. Kalimatnya titik-titik dikurangi empat puluh sama dengan dua puluh delapan.";
+const SUARA_H3 = "Kali ini bilangan awal yang belum diketahui, dan titik-titik ada di depan.";
+
+export const ADEGAN_AWAL_HILANG: AdeganStory = {
+  id: "awal-hilang",
+  judul: "Bilangan awal yang hilang",
+  sumber: "Materi: bilangan awal yang hilang",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_H1,
+      tambah(0, judul("Rak Kedua"), ...tanah("tn", 150)),
+      tambah("rak", ...rak("rk", 40, 130, 150, 18), ...deretBotol("bt", 46, 118, 12, 11, 12)),
+      tambah("Darto,", ...tokoh("pd", 250, 184, "Pak Darto")),
+      tambah("membagikan", teks("ld", 80, 54, "dibagikan", 8.4, W.bagA)),
+      tambah("empat", teks("n40", 80, 80, "40", 22, W.bagA)),
+      tambah("tersisa", teks("ls", 180, 54, "tersisa", 8.4, W.bagB)),
+      tambah("dua", teks("n28", 180, 80, "28", 22, W.bagB)),
+    ),
+    k(
+      SUARA_H2,
+      bersih(0),
+      tambah(0, judul("Kalimat Rak Kedua"), ...tanah("tn", 150), kertas("ks", 60, 40, 200, 84)),
+      tambah("belum", teks("dt", 100, 98, "…", 22, W.awal)),
+      tambah("diketahui.", teks("la", 100, 74, "awal", 8.4, W.awal)),
+      sorotkan("titik-titik", "dt"),
+      tambah("dikurangi", teks("mn", 136, 98, "−", 22, W.biru)),
+      tambah("empat", teks("a40", 172, 98, "40", 22, W.bagA)),
+      tambah("sama", teks("sm", 208, 98, "=", 22, W.biru)),
+      tambah("dua", teks("s28", 240, 98, "28", 22, W.bagB)),
+    ),
+    k(
+      SUARA_H3,
+      sorotkan("awal", "la"),
+      redamkan("belum", "dt"),
+      ubah("titik-titik", { id: "dt", warna: W.merah, u: 26 }),
+      tambah("depan.", panah("pd", 100, 150, 0, -22, W.ungu, 2.4), teks("lk", 100, 164, "di depan", 9, W.ungu)),
+    ),
   ],
 };

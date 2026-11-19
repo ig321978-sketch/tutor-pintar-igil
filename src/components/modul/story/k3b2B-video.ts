@@ -1,60 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_DUA_ANAK, ADEGAN_KALIMAT_MTK, ADEGAN_TABEL_PERMEN } from "./k3b2B-materi-1";
-import { ADEGAN_AYAM_DIJUAL, ADEGAN_DEPAN_KECIL, ADEGAN_TENGAH_KECIL } from "./k3b2B-materi-2";
-import { ADEGAN_BAGAN_AYAM, ADEGAN_PERIKSA_AYAM, ADEGAN_TABEL_AYAM } from "./k3b2B-materi-3";
-import { ADEGAN_AYAM_AWAL, ADEGAN_BAGAN_AWAL, ADEGAN_DUA_ARAH, ADEGAN_KALIMAT_AWAL } from "./k3b2B-materi-4";
-import { ADEGAN_CONTOH_DEPAN, ADEGAN_CONTOH_TENGAH, ADEGAN_KEMUNGKINAN } from "./k3b2B-materi-5";
-import { ADEGAN_CARA_LANGKAH, ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_SATU, ADEGAN_LATIHAN_TIGA, ADEGAN_PENUTUP } from "./k3b2B-materi-6";
-import { ADEGAN_LUAR_BAGAN, ADEGAN_LUAR_BAGAN_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k3b2B-luar-1";
-import { ADEGAN_LUAR_BUNGKUS, ADEGAN_LUAR_BUNGKUS_TERAPAN, ADEGAN_LUAR_KEBALIKAN, ADEGAN_LUAR_KEBALIKAN_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k3b2B-luar-2";
+import { ADEGAN_BOTOL_DIBAGI, ADEGAN_KALIMAT_KURANG, ADEGAN_POS_HUTAN } from "./k3b2B-materi-1";
+import { ADEGAN_AWAL_HILANG, ADEGAN_CARI_DIKURANGKAN, ADEGAN_PERIKSA_KURANG } from "./k3b2B-materi-2";
+import { ADEGAN_BANYAK_KEMUNGKINAN, ADEGAN_PENUTUP, ADEGAN_SALAH_KURANG } from "./k3b2B-materi-3";
+import { ADEGAN_LUAR_KELUARGA, ADEGAN_LUAR_KELUARGA_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k3b2B-luar-1";
+import { ADEGAN_LUAR_GARIS, ADEGAN_LUAR_GARIS_TERAPAN, ADEGAN_LUAR_NAIK, ADEGAN_LUAR_NAIK_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k3b2B-luar-2";
 
-/** Kelas 3 Bab 2 Sub-Bab B (Kalimat Matematika Pengurangan): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 3 Bab 2 Sub-Bab B (kalimat Matematika pengurangan), akhir cerita Perkemahan Akhir Pekan.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Botol Air Pak Darto" (Raka, Salsa, Bima, Pak Joko, Pak Darto, Kak Rina).
+ * Video kedua: tiga metode global (Fact Family, Counting Up, Number Line), terpisah.
+ */
+export const JUDUL_K3B2B = "Botol Air Pak Darto";
+
 export const VIDEO_MATERI_K3B2B: VideoStory = {
   id: "k3b2B-materi",
-  judul: "Kalimat Matematika Pengurangan",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K3B2B,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "kalimat matematika pengurangan", daftar: ["Kalimat Matematika pengurangan", "Mencari bilangan yang dikurangkan", "Mencari bilangan awal"] }),
-    ADEGAN_DUA_ANAK,
-    ADEGAN_TABEL_PERMEN,
-    ADEGAN_KALIMAT_MTK,
-    ADEGAN_TENGAH_KECIL,
-    ADEGAN_DEPAN_KECIL,
-    ADEGAN_AYAM_DIJUAL,
-    ADEGAN_TABEL_AYAM,
-    ADEGAN_BAGAN_AYAM,
-    ADEGAN_PERIKSA_AYAM,
-    ADEGAN_AYAM_AWAL,
-    ADEGAN_KALIMAT_AWAL,
-    ADEGAN_BAGAN_AWAL,
-    ADEGAN_DUA_ARAH,
-    ADEGAN_CONTOH_TENGAH,
-    ADEGAN_CONTOH_DEPAN,
-    ADEGAN_KEMUNGKINAN,
-    ADEGAN_LATIHAN_SATU,
-    ADEGAN_LATIHAN_DUA,
-    ADEGAN_LATIHAN_TIGA,
-    ADEGAN_CARA_LANGKAH,
+    adeganSapaan({ jenis: "materi", topik: "kalimat Matematika pengurangan", daftar: ["Mencari bilangan yang dikurangkan", "Mencari bilangan awal", "Memeriksa hasil dengan mengurangkan"] }),
+    ADEGAN_POS_HUTAN,
+    ADEGAN_BOTOL_DIBAGI,
+    ADEGAN_KALIMAT_KURANG,
+    ADEGAN_CARI_DIKURANGKAN,
+    ADEGAN_PERIKSA_KURANG,
+    ADEGAN_AWAL_HILANG,
+    ADEGAN_SALAH_KURANG,
+    ADEGAN_BANYAK_KEMUNGKINAN,
     ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K3B2B: VideoStory = {
   id: "k3b2B-luar",
-  judul: "Kalimat Matematika Pengurangan: Metode dari Luar",
-  subjudul: "Tiga metode luar",
+  judul: JUDUL_K3B2B,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "kalimat matematika pengurangan" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "kalimat Matematika pengurangan", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_BAGAN,
-    ADEGAN_LUAR_BAGAN_TERAPAN,
-    ADEGAN_LUAR_KEBALIKAN,
-    ADEGAN_LUAR_KEBALIKAN_TERAPAN,
-    ADEGAN_LUAR_BUNGKUS,
-    ADEGAN_LUAR_BUNGKUS_TERAPAN,
+    ADEGAN_LUAR_KELUARGA,
+    ADEGAN_LUAR_KELUARGA_TERAPAN,
+    ADEGAN_LUAR_NAIK,
+    ADEGAN_LUAR_NAIK_TERAPAN,
+    ADEGAN_LUAR_GARIS,
+    ADEGAN_LUAR_GARIS_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

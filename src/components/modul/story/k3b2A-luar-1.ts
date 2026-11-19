@@ -1,129 +1,141 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { OWL, W, emo, judul, kartu, teks, timbangan } from "./k3b2A-gambar";
-import { bersih, hapus, idPilihan, idx, k, pilihKata, redamkan, sorotkan, tambah, ubah } from "./k3b2A-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, batangBagan, busur, emo, judul, kotak, lingkaranBatu, pindah, rumput, teks, tokoh } from "./k3b2A-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k3b2A-bantu";
 
-export const NAMA_METODE_ID = ["Timbangan Seimbang", "Loncat Garis Bilangan", "Bungkus Sepuluh"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/*
+ * Cerita orisinal IGIL "Kayu untuk Api Unggun" (Kelas 3 Bab 2 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k3b2a.md. Bagian ini: pembuka (peti perlengkapan tua), Bar Model (Bagan Batang), dan terapannya.
+ */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Bar Model", "Counting On", "Balance Scale"] as const;
+export const NAMA_METODE_ID = ["Bagan Batang", "Menghitung Maju", "Timbangan Seimbang"] as const;
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara punya cara lain untuk belajar kalimat Matematika penjumlahan. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu bernama Timbangan Seimbang, Loncat Garis Bilangan, dan Bungkus Sepuluh.";
-const SUARA_O3 = "Semua metode ini menjawab satu pertanyaan. Bagaimana cara mengisi titik-titik pada kalimat penjumlahan?";
-const SUARA_O4 = "Kita memakai gambar di layar. Kamu cukup mengetuk, melihat dengan teliti, dan memilih jawaban.";
-const SUARA_O5 = "Ada yang menyeimbangkan timbangan, ada yang meloncat di garis bilangan, dan ada yang membuka bungkus. Siap? Ayo kita mulai dengan metode pertama.";
+const KUNING_KARTU = "#FEF3C7";
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Malam itu, sambil menunggu api unggun, Pak Joko membuka peti perlengkapan tua.";
+const SUARA_O2 = "Di dalamnya ada tiga alat untuk mencari bilangan yang belum diketahui.";
+const SUARA_O3 = "Tiga cara itu: Bar Model, Counting On, dan Balance Scale.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Bagan Batang, Menghitung Maju, dan Timbangan Seimbang.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk kalimat penjumlahan",
-  sumber: "Metode luar: pembuka",
+  judul: "Peti perlengkapan tua Pak Joko",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah(idx(SUARA_O1, "negara"), emo("gl", 150, 110, "\u{1F30D}", 50)), tambah(idx(SUARA_O1, "tiga", 1), ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11))),
+    k(
+      SUARA_O1,
+      tambah(0, judul("Peti Perlengkapan"), ...rumput("rt", 150)),
+      tambah("Malam", kotak("mlm", 2, 24, 296, 124, "#1E3A8A", undefined, { rx: 0, tebal: 0, z: -1, op: 0.3 }), emo("bln", 40, 44, E.bulan, 16)),
+      tambah("api", ...lingkaranBatu("lb", 70, 136, 24, 7, 9), emo("ap", 70, 134, E.api, 22)),
+      tambah("Pak", ...tokoh("pj", 150, 184, "Pak Joko")),
+      tambah("peti", kotak("pt", 196, 120, 74, 30, "#C99A63", W.coklat, { rx: 3, z: 1 }), kotak("tt", 192, 108, 82, 12, "#A16207", W.coklat, { rx: 3, z: 2 })),
+    ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      tambah(idx(SUARA_O2, "Timbangan"), ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah(idx(SUARA_O2, "Loncat"), ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "Bungkus"), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      tambah("tiga", teks("n3", 233, 90, "3 alat", 10, W.ungu)),
+      tambah("alat", ...[0, 1, 2].flatMap((i) => [kotak(`c${i}-k`, 198 + i * 26, 56, 24, 28, KUNING_KARTU, W.biru, { rx: 4 }), teks(`c${i}-t`, 210 + i * 26, 74, "alat", 6.4, W.biru)])),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah(idx(SUARA_O3, "satu"), emo("i1", 60, 84, "➕", 34), emo("i2", 150, 84, "❓", 34), emo("i3", 240, 84, "\u{1F440}", 34)),
-      tambah(idx(SUARA_O3, "Bagaimana"), ...kartu("iq", 20, 112, 260, 52, W.emas, ["bagaimana cara mengisi titik-titik", "pada kalimat penjumlahan?"], 10)),
+      tambah(0, judul("Tiga Cara Mencari Bilangan"), teks("n3", 260, 40, "3 cara", 10, W.ungu)),
+      tambah("Bar", teks("m0", 140, 66, "1. Bar Model", 11, W.biru), kotak("ib1", 22, 54, 46, 10, W.jumlah, W.biru, { rx: 2 }), kotak("ib2", 22, 66, 28, 10, W.bagian, W.biru, { rx: 2 }), kotak("ib3", 52, 66, 16, 10, W.tanya, W.biru, { rx: 2 })),
+      tambah("Counting", teks("m1", 140, 116, "2. Counting On", 11, W.biru), busur("ih1", 22, 46, 124, 14), busur("ih2", 46, 70, 124, 14), garis0("ih0", 22, 124, 48)),
+      tambah("Balance", teks("m2", 140, 166, "3. Balance Scale", 11, W.biru), kotak("it1", 20, 160, 52, 4, "#D6A15E", W.coklat, { rx: 1 }), kotak("it2", 44, 164, 4, 14, "#B7814A", W.coklat, { rx: 0 }), kotak("it3", 18, 166, 18, 4, "#CBD5E1", W.biru, { rx: 1 }), kotak("it4", 56, 166, 18, 4, "#CBD5E1", W.biru, { rx: 1 })),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Alat bantu hari ini")),
-      tambah(idx(SUARA_O4, "layar."), emo("a1", 70, 100, "⚖️", 36), emo("a2", 150, 100, "\u{1F4CF}", 36), emo("a3", 230, 100, "\u{1F4E6}", 36)),
-      tambah(idx(SUARA_O4, "mengetuk,"), emo("tg", 150, 150, "\u{1F446}", 24)),
-      tambah(idx(SUARA_O4, "memilih"), teks("al-t", 150, 184, "ketuk, lihat, lalu pilih", 10, W.ungu)),
-    ),
-    k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Seimbang, loncat, bungkus")),
-      tambah(idx(SUARA_O5, "menyeimbangkan"), teks("kt0", 150, 70, "menyeimbangkan timbangan", 13, W.ungu)),
-      tambah(idx(SUARA_O5, "meloncat"), teks("kt1", 150, 100, "meloncat di garis bilangan", 13, W.ungu)),
-      tambah(idx(SUARA_O5, "membuka"), teks("kt2", 150, 130, "membuka bungkus", 13, W.ungu)),
-      tambah(idx(SUARA_O5, "pertama."), emo("ow", 150, 182, OWL, 30)),
+      tambah("Bagan", teks("g0", 250, 66, "Bagan Batang", 9, W.ungu)),
+      tambah("Menghitung", teks("g1", 250, 116, "Menghitung Maju", 9, W.ungu)),
+      tambah("Timbangan", teks("g2", 250, 166, "Timbangan Seimbang", 9, W.ungu)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Timbangan Seimbang: konsep ------------------------------ */
-const SUARA_B1 = "Metode pertama bernama Timbangan Seimbang. Kalimat Matematika dianggap seperti timbangan.";
-const SUARA_B2 = "Sisi kiri berisi tiga puluh tambah titik-titik. Sisi kanan berisi lima puluh.";
-const SUARA_B3 = "Timbangan harus seimbang. Jadi sisi kiri harus sama dengan sisi kanan.";
-const SUARA_B4 = "Titik-titik diisi supaya kedua sisi sama. Itulah Timbangan Seimbang.";
+/** Garis datar pendek (sumbu garis bilangan kecil pada ikon). */
+function garis0(id: string, x: number, y: number, w: number) {
+  return { id, t: "garis" as const, x, y, x2: w, y2: 0, warna: W.biru, tebal: 1.6 };
+}
 
-export const ADEGAN_LUAR_TIMBANGAN: AdeganStory = {
-  id: "luar-timbangan",
-  judul: "Timbangan Seimbang: dua sisi sama",
-  sumber: "Metode luar: Timbangan Seimbang",
-  latar: "#F0FDF4",
+/* ------------------------------ Bar Model: konsep ------------------------------ */
+const SUARA_C1 = "Cara pertama, Bar Model, atau Bagan Batang.";
+const SUARA_C2 = "Batang panjang di atas adalah jumlah semuanya. Dua batang di bawahnya adalah bagian-bagiannya.";
+const SUARA_C3 = "Bagian yang belum diketahui diberi tanda tanya, lalu dicari dengan mengurangkan jumlah dengan bagian yang diketahui.";
+const SUARA_C4 = "Dengan bagan, cerita penjumlahan terlihat seperti potongan-potongan.";
+
+export const ADEGAN_LUAR_BAGAN: AdeganStory = {
+  id: "luar-bagan",
+  judul: "Bar Model: Bagan Batang",
+  sumber: "Metode global: Bar Model (konsep)",
+  latar: "#F0F9FF",
   ketukan: [
-    k(SUARA_B1, tambah(0, ...kepala(0)), tambah(idx(SUARA_B1, "timbangan."), emo("tb", 150, 120, "⚖️", 56))),
     k(
-      SUARA_B2,
-      hapus(0, "tb"),
-      tambah(idx(SUARA_B2, "Sisi"), ...timbangan("30 + ?", "50")),
-      sorotkan(idx(SUARA_B2, "kiri"), "tm-kiri-k"),
-      sorotkan(idx(SUARA_B2, "Sisi", 2), "tm-kanan-k"),
+      SUARA_C1,
+      tambah(0, judul("Cara 1: Bar Model")),
+      tambah("Bar", ...batangBagan("bt", 60, 54, 180, 26, W.jumlah, "jumlah", 11)),
+      tambah("Model,", ...batangBagan("b1", 60, 88, 110, 26, W.bagian, "bagian", 11), ...batangBagan("b2", 170, 88, 70, 26, W.tanya, "bagian", 11)),
+      tambah("Bagan", teks("nm", 150, 160, "Bagan Batang", 13, W.ungu)),
     ),
-    k(SUARA_B3, tambah(idx(SUARA_B3, "seimbang."), ...kartu("sb", 50, 176, 200, 22, W.emas, ["kiri sama dengan kanan"], 10))),
-    k(SUARA_B4, redamkan(0, "tm-kiri-k", "tm-kanan-k"), tambah(idx(SUARA_B4, "sama."), emo("sm", 272, 194, "❓", 22)), ubah(idx(SUARA_B4, "Titik-titik"), { id: "tm-kiri-k", warna: W.merahMuda })),
-  ],
-};
-
-/* ------------------------------ 3. Timbangan Seimbang: terapan ------------------------------ */
-const SUARA_C1 = "Terapkan pada soal ini. Upe menaruh dua puluh lima tambah titik-titik di sisi kiri, dan tujuh puluh di sisi kanan.";
-const SUARA_C2 = "Berapa isi titik-titik supaya timbangan seimbang? Ketuk jawaban yang tepat.";
-const SUARA_C3 = "Betul! Tujuh puluh dikurangi dua puluh lima sama dengan empat puluh lima.";
-const SUARA_C4 = "Kedua sisi sama, jadi timbangannya seimbang.";
-
-export const ADEGAN_LUAR_TIMBANGAN_TERAPAN: AdeganStory = {
-  id: "luar-timbangan-terapan",
-  judul: "Timbangan Seimbang: soal Upe",
-  sumber: "Metode luar: Timbangan Seimbang",
-  latar: "#ECFCCB",
-  ketukan: [
-    k(SUARA_C1, tambah(0, ...kepala(0)), tambah(idx(SUARA_C1, "dua"), ...timbangan("25 + ?", "70"))),
-    k(SUARA_C2, hapus(0, "tm-tiang", "tm-dasar"), tambah(idx(SUARA_C2, "jawaban"), ...pilihKata(142, ["45", "95", "55"], 16))),
+    k(
+      SUARA_C2,
+      sorotkan("Batang", "bt"),
+      tambah("Dua", teks("n2", 150, 134, "2 bagian", 10, W.ungu)),
+      sorotkan("bagian-bagiannya.", "b1", "b2"),
+    ),
     k(
       SUARA_C3,
-      sorotkan(idx(SUARA_C3, "Betul!"), "c1-k"),
-      hapus(idx(SUARA_C3, "dikurangi"), ...idPilihan(3)),
-      ubah(idx(SUARA_C3, "empat"), { id: "tm-kiri-t", isi: "25 + 45" }),
-      tambah(idx(SUARA_C3, "dikurangi"), ...kartu("kz", 70, 146, 160, 26, W.emas, ["70 − 25 = 45"], 12)),
+      hapus(0, "n2"),
+      ubah("belum", { id: "b2-t", isi: "?" }),
+      tambah("mengurangkan", teks("ku", 150, 134, "jumlah − bagian", 10, W.merah)),
+      sorotkan("jumlah", "bt"),
     ),
-    k(SUARA_C4, tambah(idx(SUARA_C4, "seimbang."), emo("ok", 150, 190, "✅", 24))),
+    k(
+      SUARA_C4,
+      hapus(0, "ku"),
+      ubah("terlihat", ...pindah(batangBagan("b1", 60, 98, 110, 26, W.bagian, "bagian", 11)), ...pindah(batangBagan("b2", 170, 98, 70, 26, W.tanya, "?", 11))),
+      tambah("potongan-potongan.", emo("pz", 262, 134, "\u{1F9E9}", 22)),
+    ),
   ],
 };
 
-/* ------------------------------ 9. Ringkasan metode luar ------------------------------ */
-const SUARA_Y1 = "Mari kita ringkas tiga metode dari luar. Semuanya membantu kita mengisi titik-titik.";
-const SUARA_Y2 = "Metode Timbangan Seimbang, kedua sisi harus sama.";
-const SUARA_Y3 = "Metode Loncat Garis Bilangan, kita meloncat dari bilangan kecil ke bilangan besar.";
-const SUARA_Y4 = "Metode Bungkus Sepuluh, kita membuka bungkus supaya mudah mengurangi.";
-const SUARA_Y5 = "Pilih metode yang kamu suka, lalu periksa dengan metode lain. Hasilnya harus sama.";
+/* ------------------------------ Bar Model: terapan ------------------------------ */
+const SUARA_T1 = "Salsa menggambar bagan untuk tali tenda: jumlah semuanya empat puluh, satu bagian dua belas.";
+const SUARA_T2 = "Ia mengurangkan empat puluh dengan dua belas dan mendapat dua puluh delapan.";
+const SUARA_T3 = "Cocok kalau ceritanya tentang bagian dan jumlah keseluruhan.";
+const SUARA_T4 = "Kurang cocok kalau bilangannya banyak sekali, karena batang sulit digambar dengan teliti.";
 
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Metode luar: ringkasan",
-  latar: "#FFF7ED",
+export const ADEGAN_LUAR_BAGAN_TERAPAN: AdeganStory = {
+  id: "luar-bagan-terapan",
+  judul: "Bar Model: bagan tali tenda",
+  sumber: "Metode global: Bar Model (terapan)",
+  latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_Y1, tambah(0, judul("Ringkasan")), tambah(idx(SUARA_Y1, "ringkas"), ...kartu("r0", 14, 34, 272, 30, W.emas, ["3 metode dari luar"], 11))),
-    k(SUARA_Y2, tambah(idx(SUARA_Y2, "Timbangan"), ...kartu("r1", 14, 72, 272, 34, WARNA_METODE[0], [NAMA_METODE_ID[0], "kedua sisi harus sama"], 9.2))),
-    k(SUARA_Y3, tambah(idx(SUARA_Y3, "Loncat"), ...kartu("r2", 14, 114, 272, 34, WARNA_METODE[1], [NAMA_METODE_ID[1], "meloncat dari kecil ke besar"], 9.2))),
-    k(SUARA_Y4, tambah(idx(SUARA_Y4, "Bungkus"), ...kartu("r3", 14, 156, 272, 34, WARNA_METODE[2], [NAMA_METODE_ID[2], "buka bungkus untuk mengurangi"], 9.2))),
-    k(SUARA_Y5, bersih(0), tambah(0, judul("Hasilnya harus sama"), emo("rw", 150, 100, OWL, 54)), tambah(idx(SUARA_Y5, "sama."), emo("rk", 150, 160, "✅", 30))),
+    k(
+      SUARA_T1,
+      tambah(0, judul("Bagan Tali Tenda"), ...rumput("rt", 150), ...tokoh("sl", 40, 184, "Salsa")),
+      tambah("bagan", emo("tl", 72, 160, "\u{1F9F5}", 16)),
+      tambah("jumlah", ...batangBagan("bt", 80, 40, 180, 26, W.jumlah, "40", 14)),
+      tambah("satu", ...batangBagan("b1", 80, 76, 54, 26, W.bagian, "12", 13), teks("n1", 107, 118, "1 bagian", 8, W.ungu)),
+    ),
+    k(
+      SUARA_T2,
+      tambah("mengurangkan", teks("ku", 200, 120, "40 − 12", 14, W.merah)),
+      tambah("mendapat", ...batangBagan("b2", 134, 76, 126, 26, W.tanya, "28", 14)),
+    ),
+    k(
+      SUARA_T3,
+      tambah("Cocok", emo("ok", 272, 150, E.benar, 24)),
+      sorotkan("bagian", "b1", "b2"),
+      sorotkan("jumlah", "bt"),
+    ),
+    k(
+      SUARA_T4,
+      hapus(0, "ok"),
+      tambah("Kurang", emo("xs", 272, 150, E.salah, 24)),
+      tambah("banyak", ...Array.from({ length: 10 }, (_, i) => kotak(`bb${i}`, 30 + i * 26, 134, 22, 8, W.bagian, W.biru, { rx: 1, tebal: 1, z: 1 }))),
+      tambah("sulit", emo("pz", 150, 170, E.pusing, 24)),
+    ),
   ],
 };

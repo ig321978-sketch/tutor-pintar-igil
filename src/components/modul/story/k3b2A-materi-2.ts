@@ -1,142 +1,115 @@
 import type { AdeganStory } from "./logika-story";
-import { W, anak, bagan, bagianEq, emo, judul, kartu } from "./k3b2A-gambar";
-import { bersih, hapus, idKartu, idx, k, sorotkan, tambah, ubah } from "./k3b2A-bantu";
+import { E, W, batangBagan, emo, garis, judul, panah, rumput, teks, tenda, tokoh, tumpukKayu } from "./k3b2A-gambar";
+import { k, sorotkan, tambah } from "./k3b2A-bantu";
 
-/* ------------------------------ 5. Halim dan Kira ------------------------------ */
-const SUARA_H1 = "Halim dan Kira mengumpulkan bintang di dunia permainan.";
-const SUARA_H2 = "Bintang Halim ada tiga puluh. Bintang Kira belum diketahui.";
-const SUARA_H3 = "Kalau digabung, jumlah semuanya lima puluh bintang.";
-const SUARA_H4 = "Kita tulis kalimatnya: tiga puluh tambah titik-titik sama dengan lima puluh.";
+/*
+ * Cerita orisinal IGIL "Kayu untuk Api Unggun" (Kelas 3 Bab 2 Sub-Bab A, kalimat Matematika penjumlahan), awal cerita Perkemahan Akhir Pekan.
+ * Naskah suara dari naskah/story-naskah-k3b2a.md. Bagian ini: salah menjumlah (Raka terburu-buru), bagan batang, dan mengurangkan jumlah dengan bagian yang diketahui.
+ */
 
-export const ADEGAN_HALIM_KIRA: AdeganStory = {
-  id: "halim-kira",
-  judul: "Bintang Halim dan Kira",
-  sumber: "Materi: bintang Halim dan Kira",
-  latar: "#FFF7ED",
+/* ------------------------------ 4. Salah menjumlah ------------------------------ */
+const SUARA_S1 = "Raka berseru, gampang, tiga puluh tambah lima puluh, delapan puluh batang! Kalau salah, aku tidur paling dekat semak!";
+const SUARA_S2 = "Salsa menggeleng. Lima puluh itu jumlah semuanya, bukan bilangan yang ditambahkan lagi.";
+const SUARA_S3 = "Kalau ditambah delapan puluh, jumlah semuanya jauh melebihi lima puluh.";
+
+export const ADEGAN_SALAH_JUMLAH: AdeganStory = {
+  id: "salah-jumlah",
+  judul: "Raka salah menjumlah",
+  sumber: "Materi: salah langkah menjumlah",
+  latar: "#FEF2F2",
   ketukan: [
     k(
-      SUARA_H1,
-      tambah(0, judul("Halim dan Kira")),
-      tambah(idx(SUARA_H1, "Halim"), ...anak("halim", 56, 70)),
-      tambah(idx(SUARA_H1, "Kira"), ...anak("kira", 244, 70)),
-      tambah(idx(SUARA_H1, "permainan."), emo("gm", 150, 90, "\u{1F3AE}", 40)),
+      SUARA_S1,
+      tambah(0, judul("Raka Terburu-buru"), ...rumput("rt", 150)),
+      tambah("Raka", ...tokoh("rk", 40, 184, "Raka")),
+      tambah("berseru,", emo("sr", 72, 160, E.seru, 16)),
+      tambah("tiga", teks("e30", 92, 64, "30", 20, W.hijauTua)),
+      tambah("tambah", teks("e+", 122, 62, "+", 20, W.biru)),
+      tambah("lima", teks("e50", 152, 64, "50", 20, W.jumlah)),
+      tambah("delapan", teks("e=", 182, 62, "=", 20, W.biru), teks("e80", 212, 64, "80", 20, W.merah)),
+      tambah("semak!", emo("sm", 266, 142, E.ranting, 24), ...tenda("tk", 236, 150, 30, 24, "#FCA5A5")),
     ),
     k(
-      SUARA_H2,
-      tambah(idx(SUARA_H2, "tiga"), ...kartu("kh", 14, 128, 84, 26, W.hijauMuda, ["30 bintang"], 10)),
-      tambah(idx(SUARA_H2, "belum"), ...kartu("kk", 202, 128, 86, 26, W.merahMuda, ["belum diketahui"], 8.8)),
+      SUARA_S2,
+      tambah("Salsa", ...tokoh("sl", 84, 184, "Salsa")),
+      tambah("menggeleng.", emo("gl", 112, 160, E.salah, 14)),
+      sorotkan("Lima", "e50"),
+      tambah("jumlah", teks("jm", 152, 92, "jumlah semuanya", 9, W.jumlah)),
     ),
     k(
-      SUARA_H3,
-      tambah(idx(SUARA_H3, "digabung,"), emo("pl", 150, 160, "➕", 28)),
-      tambah(idx(SUARA_H3, "lima"), ...kartu("jg", 90, 168, 120, 28, W.emas, ["jumlah 50"], 12)),
-    ),
-    k(
-      SUARA_H4,
-      bersih(0),
-      tambah(0, judul("Kalimat Matematikanya")),
-      tambah(idx(SUARA_H4, "tiga"), bagianEq("eq", 0, "30", 80)),
-      tambah(idx(SUARA_H4, "tambah"), bagianEq("eq", 1, "+", 80, 24, W.emas)),
-      tambah(idx(SUARA_H4, "titik-titik"), bagianEq("eq", 2, "…", 80, 24, W.merahMuda)),
-      tambah(idx(SUARA_H4, "sama"), bagianEq("eq", 3, "=", 80, 24, W.emas)),
-      tambah(idx(SUARA_H4, "lima"), bagianEq("eq", 4, "50", 80)),
-      tambah(idx(SUARA_H4, "lima"), emo("st", 150, 158, "⭐", 44)),
+      SUARA_S3,
+      tambah("Kalau", garis("cr", 200, 72, 26, -18, W.merah, 3, { z: 5 })),
+      tambah("delapan", ...batangBagan("b80", 40, 106, 160, 16, W.tanya, "80", 11)),
+      tambah("jumlah", ...batangBagan("b50", 40, 128, 100, 16, W.jumlah, "50", 11)),
+      tambah("melebihi", garis("lm", 140, 102, 0, 48, W.merah, 2.4, { putus: true })),
     ),
   ],
 };
 
-/* ------------------------------ 6. Bagan jumlah ------------------------------ */
-const SUARA_G1 = "Kita gambar bagan. Batang atas untuk jumlah semuanya.";
-const SUARA_G2 = "Dua batang di bawahnya untuk dua bagian. Satu bagian milik Halim.";
-const SUARA_G3 = "Bagian Kira belum diketahui, jadi diberi tanda tanya.";
-const SUARA_G4 = "Jumlahnya lima puluh dan satu bagiannya tiga puluh. Berapa bagian Kira?";
-const BG = bagan(36, "50", "30", "?", 0.6);
-const bg = (p: string) => BG.filter((o) => o.id.startsWith(p));
+/* ------------------------------ 5. Bagan batang ------------------------------ */
+const SUARA_B1 = "Bima menggambar bagan di tanah dengan ranting. Batang atas adalah jumlah semuanya, yaitu lima puluh.";
+const SUARA_B2 = "Dua batang di bawahnya adalah bagian-bagiannya: tiga puluh dan satu bagian yang belum diketahui.";
+const SUARA_B3 = "Bagian yang belum diketahui didapat dengan mengurangkan jumlah semuanya dengan bagian yang diketahui.";
 
 export const ADEGAN_BAGAN: AdeganStory = {
-  id: "bagan-jumlah",
-  judul: "Bagan jumlah dan bagian",
-  sumber: "Materi: bagan jumlah",
+  id: "bagan",
+  judul: "Bagan batang di tanah",
+  sumber: "Materi: bagan jumlah dan bagian",
   latar: "#F0F9FF",
   ketukan: [
-    k(SUARA_G1, tambah(0, judul("Bagan jumlah")), tambah(idx(SUARA_G1, "bagan."), emo("bgm", 150, 150, "\u{1F4CA}", 40)), tambah(idx(SUARA_G1, "jumlah"), bg("bg-a"))),
     k(
-      SUARA_G2,
-      hapus(0, "bgm"),
-      tambah(idx(SUARA_G2, "bawahnya"), bg("bg-b"), bg("bg-c")),
-      tambah(idx(SUARA_G2, "Halim."), ...kartu("lh", 30, 118, 140, 22, W.hijauMuda, ["bagian Halim: 30"], 9.6)),
+      SUARA_B1,
+      tambah(0, judul("Bagan di Tanah"), ...rumput("rt", 150)),
+      tambah("Bima", ...tokoh("bm", 40, 184, "Bima")),
+      tambah("ranting.", emo("rn", 70, 160, E.ranting, 16)),
+      tambah("Batang", ...batangBagan("bt", 80, 40, 180, 26, W.jumlah, "50", 14)),
+      tambah("jumlah", teks("lj", 170, 82, "jumlah semuanya", 9, W.jumlah)),
     ),
-    k(SUARA_G3, tambah(idx(SUARA_G3, "Kira"), ...kartu("lk", 176, 118, 94, 22, W.merahMuda, ["bagian Kira"], 9.6)), sorotkan(idx(SUARA_G3, "tanda"), "bg-c-k")),
-    k(SUARA_G4, tambah(idx(SUARA_G4, "Berapa"), emo("tq", 150, 176, "❓", 34))),
+    k(
+      SUARA_B2,
+      tambah("Dua", teks("n2", 40, 106, "2 batang", 8, W.ungu)),
+      tambah("tiga", ...batangBagan("b30", 80, 94, 108, 26, W.bagian, "30", 14)),
+      tambah("satu", ...batangBagan("bq", 188, 94, 72, 26, W.tanya, "?", 14), teks("n1", 224, 136, "1 bagian", 8, W.ungu)),
+    ),
+    k(
+      SUARA_B3,
+      tambah("didapat", panah("pa", 224, 68, 0, 24, W.merah, 2.4)),
+      tambah("mengurangkan", teks("ku", 210, 164, "50 − 30", 14, W.merah)),
+      sorotkan("diketahui.", "b30", "bt"),
+    ),
   ],
 };
 
-/* ------------------------------ 7. Jumlah dikurangi bagian ------------------------------ */
-const SUARA_D1 = "Untuk mencari bagian Kira, kurangi jumlah semuanya dengan bagian Halim.";
-const SUARA_D2 = "Kita hitung lima puluh dikurangi tiga puluh.";
-const SUARA_D3 = "Lima puluh dikurangi tiga puluh sama dengan dua puluh.";
-const SUARA_D4 = "Jadi, bintang Kira ada dua puluh.";
+/* ------------------------------ 6. Mengurangkan ------------------------------ */
+const SUARA_R1 = "Lima puluh dikurangi tiga puluh sama dengan dua puluh.";
+const SUARA_R2 = "Jadi, mereka harus mengumpulkan dua puluh batang kayu lagi.";
+const SUARA_R3 = "Raka memeriksanya dengan menjumlahkan: tiga puluh tambah dua puluh sama dengan lima puluh. Cocok!";
 
-export const ADEGAN_JUMLAH_DIKURANGI: AdeganStory = {
-  id: "jumlah-dikurangi",
-  judul: "Jumlah dikurangi bagian",
-  sumber: "Materi: jumlah dikurangi bagian",
-  latar: "#ECFDF5",
+export const ADEGAN_KURANG: AdeganStory = {
+  id: "kurang",
+  judul: "Kurangi jumlah dengan bagian",
+  sumber: "Materi: mengurangkan dan memeriksa",
+  latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_D1,
-      tambah(0, judul("Jumlah dikurangi bagian"), BG_SEMUA()),
-      tambah(idx(SUARA_D1, "kurangi"), emo("mn", 150, 136, "➖", 24)),
-      tambah(idx(SUARA_D1, "semuanya"), ...kartu("jd", 30, 156, 240, 28, W.emas, ["jumlah dikurangi bagian"], 11)),
+      SUARA_R1,
+      tambah(0, judul("Kurangi Jumlah"), ...rumput("rt", 150)),
+      tambah("Lima", teks("a50", 62, 70, "50", 28, W.jumlah)),
+      tambah("dikurangi", teks("mn", 108, 68, "−", 26, W.biru)),
+      tambah("tiga", teks("a30", 152, 70, "30", 28, W.hijauTua)),
+      tambah("sama", teks("sm", 194, 68, "=", 26, W.biru)),
+      tambah("dua", teks("a20", 238, 70, "20", 28, W.merah)),
     ),
     k(
-      SUARA_D2,
-      hapus(0, "mn", ...idKartu("jd")),
-      tambah(idx(SUARA_D2, "Lima"), bagianEq("eb", 0, "50", 140)),
-      tambah(idx(SUARA_D2, "dikurangi"), bagianEq("eb", 1, "−", 140, 24, W.emas)),
-      tambah(idx(SUARA_D2, "tiga"), bagianEq("eb", 2, "30", 140)),
-      tambah(idx(SUARA_D2, "puluh.", 2), bagianEq("eb", 3, "=", 140, 24, W.emas), bagianEq("eb", 4, "?", 140, 24, W.merahMuda)),
+      SUARA_R2,
+      tambah("mereka", ...tokoh("rk", 36, 184, "Raka"), ...tokoh("sl", 78, 184, "Salsa"), ...tokoh("bm", 120, 184, "Bima")),
+      tambah("mengumpulkan", ...tumpukKayu("ky", 196, 146, 20, 5, 12, 5)),
+      sorotkan("lagi.", "a20"),
     ),
-    k(SUARA_D3, ubah(idx(SUARA_D3, "dua"), { id: "eb4-t", isi: "20" }, { id: "bg-c-t", isi: "20" }), sorotkan(idx(SUARA_D3, "dua"), "eb4-k")),
-    k(SUARA_D4, tambah(idx(SUARA_D4, "Kira"), ...kartu("hs", 40, 170, 220, 26, W.hijauMuda, ["Kira punya 20 bintang"], 11)), tambah(idx(SUARA_D4, "dua"), emo("ra", 270, 188, "\u{1F389}", 20))),
-  ],
-};
-function BG_SEMUA() {
-  return bagan(30, "50", "30", "?", 0.6);
-}
-
-/* ------------------------------ 8. Memeriksa hasil ------------------------------ */
-const SUARA_P1 = "Kita periksa hasilnya dengan menjumlahkan lagi.";
-const SUARA_P2 = "Tiga puluh tambah dua puluh sama dengan lima puluh.";
-const SUARA_P3 = "Hasilnya sama dengan jumlah semula, jadi jawabannya benar.";
-const SUARA_P4 = "Penjumlahan dan pengurangan saling membantu. Yang satu memeriksa yang lain.";
-
-export const ADEGAN_PERIKSA: AdeganStory = {
-  id: "periksa",
-  judul: "Memeriksa dengan menjumlahkan",
-  sumber: "Materi: memeriksa hasil",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(SUARA_P1, bersih(0), tambah(0, judul("Periksa hasilnya")), tambah(idx(SUARA_P1, "periksa"), emo("lp", 150, 130, "\u{1F50E}", 46))),
     k(
-      SUARA_P2,
-      hapus(0, "lp"),
-      tambah(idx(SUARA_P2, "Tiga"), bagianEq("ep", 0, "30", 80)),
-      tambah(idx(SUARA_P2, "tambah"), bagianEq("ep", 1, "+", 80, 24, W.emas)),
-      tambah(idx(SUARA_P2, "dua"), bagianEq("ep", 2, "20", 80)),
-      tambah(idx(SUARA_P2, "sama"), bagianEq("ep", 3, "=", 80, 24, W.emas)),
-      tambah(idx(SUARA_P2, "lima"), bagianEq("ep", 4, "50", 80)),
-    ),
-    k(SUARA_P3, sorotkan(idx(SUARA_P3, "sama"), "ep4-k"), tambah(idx(SUARA_P3, "benar."), emo("ok", 150, 150, "✅", 46))),
-    k(
-      SUARA_P4,
-      hapus(0, "ok"),
-      tambah(idx(SUARA_P4, "Penjumlahan"), ...kartu("p1", 14, 120, 130, 32, W.hijauMuda, ["30 + 20 = 50"], 12)),
-      tambah(idx(SUARA_P4, "pengurangan"), ...kartu("p2", 156, 120, 130, 32, W.langit, ["50 − 20 = 30"], 12)),
-      tambah(idx(SUARA_P4, "saling"), emo("sl", 150, 178, "\u{1F501}", 28)),
+      SUARA_R3,
+      tambah("Raka", teks("p1", 100, 112, "30 + 20 = 50", 18, W.hijauTua)),
+      tambah("Cocok!", emo("ok", 168, 116, E.benar, 22), emo("jp", 224, 116, E.jempol, 20)),
     ),
   ],
 };
-
-
-

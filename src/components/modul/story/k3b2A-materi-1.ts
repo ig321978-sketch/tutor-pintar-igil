@@ -1,126 +1,121 @@
 import type { AdeganStory } from "./logika-story";
-import { W, anak, bagianEq, deretBintang, emo, eq, idDeret, judul, kartu, kotak, teks } from "./k3b2A-gambar";
-import { bersih, hapus, idKartu, idx, k, sorotkan, tambah } from "./k3b2A-bantu";
+import { E, W, emo, idLingkaran, judul, kartu, kotak, lingkaranBatu, panah, papanTanda, pinus, rumput, teks, tenda, tokoh, tumpukKayu } from "./k3b2A-gambar";
+import { hapus, k, sorotkan, tambah } from "./k3b2A-bantu";
 
-/* ------------------------------ 2. Bintang Halim ------------------------------ */
-const SUARA_B1 = "Halim suka bermain di dunia permainan. Ia mengumpulkan bintang di sana.";
-const SUARA_B2 = "Sebagian bintang sudah ada di tas permainannya. Banyaknya belum Halim ingat.";
-const SUARA_B3 = "Hari ini Halim mendapat lima bintang lagi.";
-const SUARA_B4 = "Sekarang semua bintang Halim ada tujuh belas.";
+/*
+ * Cerita orisinal IGIL "Kayu untuk Api Unggun" (Kelas 3 Bab 2 Sub-Bab A, kalimat Matematika penjumlahan), awal cerita Perkemahan Akhir Pekan.
+ * Naskah suara dari naskah/story-naskah-k3b2a.md. Bagian ini: lapangan kemah, tumpukan kayu, dan kalimat dengan titik-titik.
+ */
 
-export const ADEGAN_CERITA_BINTANG: AdeganStory = {
-  id: "cerita-bintang",
-  judul: "Bintang Halim",
-  sumber: "Materi: bintang Halim",
-  latar: "#FFF7ED",
+/* ------------------------------ 1. Lapangan kemah ------------------------------ */
+const SUARA_L1 = "Akhir pekan itu Raka, Salsa, dan Bima berkemah bersama Pak Joko di lapangan di bawah pohon pinus.";
+const SUARA_L2 = "Kak Rina, pemandu berpeluit, menyambut mereka dan menunjuk tempat api unggun.";
+const SUARA_L3 = "Malam nanti api unggun akan menyala, tetapi kayunya masih harus dikumpulkan.";
+
+export const ADEGAN_LAPANGAN_KEMAH: AdeganStory = {
+  id: "lapangan-kemah",
+  judul: "Lapangan kemah",
+  sumber: "Materi: lapangan kemah",
+  latar: "#ECFCCB",
   ketukan: [
     k(
-      SUARA_B1,
-      tambah(0, judul("Bintang Halim")),
-      tambah(idx(SUARA_B1, "Halim"), ...anak("halim", 40, 80)),
-      tambah(idx(SUARA_B1, "permainan."), emo("gm", 130, 84, "\u{1F3AE}", 40)),
-      tambah(idx(SUARA_B1, "bintang"), ...deretBintang("bs", 6, 186, 150, 18, 6, 15)),
+      SUARA_L1,
+      tambah(0, judul("Lapangan Kemah"), ...rumput("rt", 150)),
+      tambah("Raka,", ...tokoh("rk", 30, 184, "Raka")),
+      tambah("Salsa,", ...tokoh("sl", 72, 184, "Salsa")),
+      tambah("Bima", ...tokoh("bm", 114, 184, "Bima")),
+      tambah("Pak", ...tokoh("pj", 160, 184, "Pak Joko")),
+      tambah("lapangan", ...tenda("td1", 98, 150, 42, 34), ...tenda("td2", 148, 150, 42, 34, "#60A5FA")),
+      tambah("pinus.", ...pinus("pn1", 26, 150, 34, 70), ...pinus("pn2", 280, 150, 34, 70)),
     ),
     k(
-      SUARA_B2,
-      hapus(0, "gm", ...idDeret("bs", 1, 6)),
-      tambah(idx(SUARA_B2, "tas"), kotak("tas-k", 90, 56, 120, 56, W.krem, W.biru, { rx: 10 }), teks("tas-t", 150, 130, "tas permainan", 9.4)),
-      tambah(idx(SUARA_B2, "sudah"), ...deretBintang("ts", 6, 106, 80, 18, 6, 15)),
-      tambah(idx(SUARA_B2, "belum"), emo("tn", 250, 90, "❓", 36)),
+      SUARA_L2,
+      tambah("Rina,", ...tokoh("rn", 258, 184, "Kak Rina")),
+      tambah("berpeluit,", emo("pl", 232, 166, "\u{1F4E3}", 14)),
+      tambah("menunjuk", panah("pa", 246, 150, -22, -10, W.merah, 2.6)),
+      tambah("api", ...lingkaranBatu("lb", 214, 136, 22, 7, 9)),
+      sorotkan("unggun.", ...idLingkaran("lb", 9)),
     ),
     k(
-      SUARA_B3,
-      hapus(0, "tn"),
-      tambah(idx(SUARA_B3, "lima"), ...deretBintang("bn", 5, 224, 76, 18, 3, 15)),
-      tambah(idx(SUARA_B3, "lagi."), ...kartu("dp", 218, 118, 72, 22, W.emas, ["dapat 5 lagi"], 9)),
+      SUARA_L3,
+      tambah("Malam", kotak("mlm", 2, 24, 296, 124, "#1E3A8A", undefined, { rx: 0, tebal: 0, z: -1, op: 0.3 })),
+      tambah("nanti", emo("bt1", 60, 44, E.bintang, 14), emo("bt2", 236, 40, E.bintang, 14), emo("bln", 150, 44, E.bulan, 16)),
+      tambah("menyala,", emo("ap", 214, 134, E.api, 22, { op: 0.4 })),
+      tambah("dikumpulkan.", emo("rg", 176, 132, E.ranting, 18), emo("tq", 176, 112, E.tanya, 16)),
     ),
-    k(SUARA_B4, tambah(idx(SUARA_B4, "semua"), ...kartu("jm", 60, 154, 180, 30, W.hijauMuda, ["jumlah semuanya 17"], 11)), tambah(idx(SUARA_B4, "tujuh"), emo("ra", 262, 176, "\u{1F389}", 24))),
   ],
 };
 
-/* ------------------------------ 3. Bilangan belum diketahui ------------------------------ */
-const SUARA_T1 = "Banyak bintang di tas belum kita ketahui. Kita menulisnya dengan titik-titik.";
-const SUARA_T2 = "Bintang baru ada lima. Jumlah semuanya tujuh belas.";
-const SUARA_T3 = "Inilah kalimat Matematikanya. Titik-titik tambah lima sama dengan tujuh belas.";
-const SUARA_T4 = "Tugas kita mengisi titik-titik dengan bilangan yang tepat.";
+/* ------------------------------ 2. Tumpukan kayu ------------------------------ */
+const SUARA_T1 = "Api unggun yang besar membutuhkan lima puluh batang kayu.";
+const SUARA_T2 = "Di tumpukan sudah ada tiga puluh batang.";
+const SUARA_T3 = "Berapa batang lagi yang harus dikumpulkan?";
 
-export const ADEGAN_TITIK: AdeganStory = {
-  id: "titik-titik",
-  judul: "Bilangan yang belum diketahui",
-  sumber: "Materi: bilangan belum diketahui",
-  latar: "#FEFCE8",
+export const ADEGAN_TUMPUKAN_KAYU: AdeganStory = {
+  id: "tumpukan-kayu",
+  judul: "Tumpukan kayu dan papan jumlah",
+  sumber: "Materi: tumpukan kayu dan papan jumlah",
+  latar: "#FEF3C7",
   ketukan: [
     k(
       SUARA_T1,
-      bersih(0),
-      tambah(0, judul("Belum diketahui")),
-      tambah(idx(SUARA_T1, "tas"), emo("tsk", 60, 96, "\u{1F392}", 42)),
-      tambah(idx(SUARA_T1, "belum"), ...kartu("bd", 110, 60, 170, 30, W.merahMuda, ["belum diketahui"], 11)),
-      tambah(idx(SUARA_T1, "titik-titik."), teks("tt", 150, 160, "…", 60, W.merah)),
+      tambah(0, judul("Api Unggun Butuh Kayu"), ...rumput("rt", 150)),
+      tambah("Api", ...lingkaranBatu("lb", 100, 132, 34, 11, 11)),
+      tambah("membutuhkan", emo("ap", 100, 134, E.api, 24, { op: 0.4 })),
+      tambah("lima", ...papanTanda("pn", 186, 36, 96, 34, ["50 batang"], 12)),
+      tambah("kayu.", emo("ry", 234, 100, E.ranting, 18)),
     ),
     k(
       SUARA_T2,
-      bersih(0),
-      tambah(0, judul("Kita tulis kalimatnya")),
-      tambah(0, bagianEq("eq", 0, "…", 70, 24, W.merahMuda)),
-      tambah(idx(SUARA_T2, "baru"), bagianEq("eq", 1, "+", 70, 24, W.emas)),
-      tambah(idx(SUARA_T2, "lima."), bagianEq("eq", 2, "5")),
-      tambah(idx(SUARA_T2, "Jumlah"), bagianEq("eq", 3, "=", 70, 24, W.emas)),
-      tambah(idx(SUARA_T2, "belas."), bagianEq("eq", 4, "17")),
+      tambah("tumpukan", ...tumpukKayu("ty", 196, 146, 30, 6, 12, 5)),
+      tambah("tiga", teks("n30", 234, 114, "30", 14, W.hijauTua)),
+      sorotkan("batang.", "ty0", "ty5"),
     ),
     k(
       SUARA_T3,
-      tambah(idx(SUARA_T3, "kalimat"), ...kartu("kl", 40, 112, 220, 30, W.emas, ["kalimat Matematika"], 12)),
-      sorotkan(idx(SUARA_T3, "Titik-titik"), "eq0-k"),
-      sorotkan(idx(SUARA_T3, "tambah"), "eq1-k"),
-      sorotkan(idx(SUARA_T3, "lima"), "eq2-k"),
-      sorotkan(idx(SUARA_T3, "sama"), "eq3-k"),
-      sorotkan(idx(SUARA_T3, "belas."), "eq4-k"),
-    ),
-    k(
-      SUARA_T4,
-      hapus(0, ...idKartu("kl")),
-      tambah(idx(SUARA_T4, "mengisi"), emo("pn", 70, 166, "✏️", 34)),
-      tambah(idx(SUARA_T4, "tepat."), ...kartu("tg", 110, 148, 160, 32, W.hijauMuda, ["isi titik-titik"], 12)),
+      hapus(0, "ry"),
+      tambah("Berapa", teks("tq1", 100, 108, "?", 40, W.merah)),
+      tambah("lagi", kotak("ks", 196, 84, 82, 20, "#FEF9C3", W.merah, { putus: true, z: 0 })),
+      tambah("dikumpulkan?", teks("kr", 237, 98, "kurang?", 9, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 4. Nama kalimat Matematika ------------------------------ */
-const SUARA_N1 = "Bentuk seperti ini disebut kalimat Matematika.";
-const SUARA_N2 = "Ada bilangan yang belum diketahui. Ada juga bilangan yang sudah diketahui.";
-const SUARA_N3 = "Ada tanda tambah dan tanda sama dengan.";
-const SUARA_N4 = "Tugas kita mengisi titik-titik supaya kalimatnya benar.";
+/* ------------------------------ 3. Kalimat dengan titik-titik ------------------------------ */
+const SUARA_K1 = "Salsa menulis ceritanya dengan titik-titik: tiga puluh tambah titik-titik sama dengan lima puluh.";
+const SUARA_K2 = "Titik-titik adalah bilangan yang belum diketahui.";
+const SUARA_K3 = "Bentuk penjumlahan yang memuat titik-titik disebut kalimat Matematika.";
 
-export const ADEGAN_NAMA_KALIMAT: AdeganStory = {
-  id: "nama-kalimat",
-  judul: "Kalimat Matematika dan bagiannya",
-  sumber: "Materi: kalimat Matematika",
-  latar: "#F5F3FF",
+export const ADEGAN_KALIMAT: AdeganStory = {
+  id: "kalimat",
+  judul: "Kalimat dengan titik-titik",
+  sumber: "Materi: kalimat dengan titik-titik",
+  latar: "#FDF2F8",
   ketukan: [
     k(
-      SUARA_N1,
-      bersih(0),
-      tambah(0, judul("Kalimat Matematika")),
-      tambah(idx(SUARA_N1, "Bentuk"), eq("eq", ["…", "+", "5", "=", "17"], 64)),
-      tambah(idx(SUARA_N1, "kalimat"), ...kartu("kn", 30, 154, 240, 30, W.emas, ["kalimat Matematika"], 12)),
+      SUARA_K1,
+      tambah(0, judul("Kalimat dengan Titik-Titik"), ...rumput("rt", 150)),
+      tambah("Salsa", ...tokoh("sl", 40, 184, "Salsa")),
+      tambah("menulis", emo("ps", 70, 160, E.pensil, 16)),
+      tambah("ceritanya", kotak("kl", 60, 48, 200, 56, W.putih, W.biru, { rx: 6, z: -1 })),
+      tambah("tiga", teks("a30", 96, 88, "30", 26, W.hijauTua)),
+      tambah("tambah", teks("tmb", 136, 86, "+", 24, W.biru)),
+      tambah("titik-titik@2", teks("tt", 182, 86, "…", 26, W.merah)),
+      tambah("sama", teks("sm", 216, 86, "=", 24, W.biru)),
+      tambah("lima", teks("a50", 245, 88, "50", 26, W.jumlah)),
     ),
     k(
-      SUARA_N2,
-      tambah(idx(SUARA_N2, "belum"), ...kartu("l0", 4, 96, 94, 22, W.merahMuda, ["belum diketahui"], 8.6)),
-      tambah(idx(SUARA_N2, "sudah"), ...kartu("l2", 105, 96, 90, 22, W.hijauMuda, ["diketahui"], 8.6), ...kartu("l4", 206, 96, 88, 22, W.hijauMuda, ["diketahui"], 8.6)),
+      SUARA_K2,
+      sorotkan("Titik-titik", "tt"),
+      tambah("bilangan", teks("bd", 182, 124, "belum diketahui", 9, W.merah)),
+      tambah("diketahui.", panah("pb", 182, 118, 0, -16, W.merah, 2.4)),
     ),
     k(
-      SUARA_N3,
-      tambah(idx(SUARA_N3, "tambah"), ...kartu("l1", 58, 124, 80, 22, W.krem, ["tanda tambah"], 8.6)),
-      tambah(idx(SUARA_N3, "sama"), ...kartu("l3", 150, 124, 104, 22, W.krem, ["tanda sama dengan"], 8.6)),
-    ),
-    k(
-      SUARA_N4,
-      hapus(0, ...idKartu("l0"), ...idKartu("l1"), ...idKartu("l2"), ...idKartu("l3"), ...idKartu("l4"), ...idKartu("kn")),
-      sorotkan(idx(SUARA_N4, "titik-titik"), "eq0-k"),
-      tambah(idx(SUARA_N4, "mengisi"), emo("bk", 150, 128, "\u{1F914}", 40)),
-      tambah(idx(SUARA_N4, "benar."), ...kartu("kb", 60, 156, 180, 28, W.hijauMuda, ["kalimatnya benar"], 11)),
+      SUARA_K3,
+      hapus(0, "bd", "pb"),
+      tambah("penjumlahan", ...kartu("lb", 70, 118, 160, 26, W.krem, ["kalimat Matematika"], 10)),
+      tambah("memuat", panah("pk", 150, 114, 0, -10, W.merah, 2.4)),
+      tambah("Matematika.", emo("ok", 250, 132, E.benar, 20)),
     ),
   ],
 };

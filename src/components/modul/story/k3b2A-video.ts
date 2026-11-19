@@ -1,54 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_CERITA_BINTANG, ADEGAN_NAMA_KALIMAT, ADEGAN_TITIK } from "./k3b2A-materi-1";
-import { ADEGAN_BAGAN, ADEGAN_HALIM_KIRA, ADEGAN_JUMLAH_DIKURANGI, ADEGAN_PERIKSA } from "./k3b2A-materi-2";
-import { ADEGAN_CONTOH_36, ADEGAN_CONTOH_8, ADEGAN_CONTOH_23, ADEGAN_CONTOH_DEPAN, ADEGAN_KEMUNGKINAN } from "./k3b2A-materi-3";
-import { ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_SATU, ADEGAN_LATIHAN_TIGA } from "./k3b2A-materi-4";
-import { ADEGAN_PENUTUP } from "./k3b2A-materi-5";
-import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_TIMBANGAN, ADEGAN_LUAR_TIMBANGAN_TERAPAN } from "./k3b2A-luar-1";
-import { ADEGAN_LUAR_BUNGKUS, ADEGAN_LUAR_BUNGKUS_TERAPAN, ADEGAN_LUAR_LONCAT, ADEGAN_LUAR_LONCAT_TERAPAN } from "./k3b2A-luar-2";
+import { ADEGAN_KALIMAT, ADEGAN_LAPANGAN_KEMAH, ADEGAN_TUMPUKAN_KAYU } from "./k3b2A-materi-1";
+import { ADEGAN_BAGAN, ADEGAN_KURANG, ADEGAN_SALAH_JUMLAH } from "./k3b2A-materi-2";
+import { ADEGAN_BANYAK_KEMUNGKINAN, ADEGAN_PENUTUP, ADEGAN_TITIK_DEPAN } from "./k3b2A-materi-3";
+import { ADEGAN_LUAR_BAGAN, ADEGAN_LUAR_BAGAN_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k3b2A-luar-1";
+import { ADEGAN_LUAR_MAJU, ADEGAN_LUAR_MAJU_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_TIMBANG, ADEGAN_LUAR_TIMBANG_TERAPAN } from "./k3b2A-luar-2";
 
-/** Kelas 3 Bab 2 Sub-Bab A (Kalimat Matematika Penjumlahan): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 3 Bab 2 Sub-Bab A (kalimat Matematika penjumlahan), awal cerita Perkemahan Akhir Pekan.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Kayu untuk Api Unggun" (Raka, Salsa, Bima, Pak Joko, Kak Rina).
+ * Video kedua: tiga metode global (Bar Model, Counting On, Balance Scale), terpisah.
+ */
+export const JUDUL_K3B2A = "Kayu untuk Api Unggun";
+
 export const VIDEO_MATERI_K3B2A: VideoStory = {
   id: "k3b2A-materi",
-  judul: "Kalimat Matematika Penjumlahan",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K3B2A,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "kalimat Matematika penjumlahan", daftar: ["Menulis kalimat dari cerita", "Mengisi titik-titik", "Memeriksa dan kemungkinan"] }),
-    ADEGAN_CERITA_BINTANG,
-    ADEGAN_TITIK,
-    ADEGAN_NAMA_KALIMAT,
-    ADEGAN_HALIM_KIRA,
+    adeganSapaan({ jenis: "materi", topik: "kalimat Matematika penjumlahan", daftar: ["Bilangan yang belum diketahui", "Mencari dengan mengurangkan", "Memeriksa hasil dengan menjumlahkan"] }),
+    ADEGAN_LAPANGAN_KEMAH,
+    ADEGAN_TUMPUKAN_KAYU,
+    ADEGAN_KALIMAT,
+    ADEGAN_SALAH_JUMLAH,
     ADEGAN_BAGAN,
-    ADEGAN_JUMLAH_DIKURANGI,
-    ADEGAN_PERIKSA,
-    ADEGAN_CONTOH_8,
-    ADEGAN_CONTOH_23,
-    ADEGAN_CONTOH_DEPAN,
-    ADEGAN_CONTOH_36,
-    ADEGAN_KEMUNGKINAN,
-    ADEGAN_LATIHAN_SATU,
-    ADEGAN_LATIHAN_DUA,
-    ADEGAN_LATIHAN_TIGA,
+    ADEGAN_KURANG,
+    ADEGAN_TITIK_DEPAN,
+    ADEGAN_BANYAK_KEMUNGKINAN,
     ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K3B2A: VideoStory = {
   id: "k3b2A-luar",
-  judul: "Kalimat Matematika Penjumlahan: Metode dari Luar",
-  subjudul: "Tiga metode luar",
+  judul: JUDUL_K3B2A,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "kalimat Matematika penjumlahan" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "kalimat Matematika penjumlahan", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_TIMBANGAN,
-    ADEGAN_LUAR_TIMBANGAN_TERAPAN,
-    ADEGAN_LUAR_LONCAT,
-    ADEGAN_LUAR_LONCAT_TERAPAN,
-    ADEGAN_LUAR_BUNGKUS,
-    ADEGAN_LUAR_BUNGKUS_TERAPAN,
+    ADEGAN_LUAR_BAGAN,
+    ADEGAN_LUAR_BAGAN_TERAPAN,
+    ADEGAN_LUAR_MAJU,
+    ADEGAN_LUAR_MAJU_TERAPAN,
+    ADEGAN_LUAR_TIMBANG,
+    ADEGAN_LUAR_TIMBANG_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };
