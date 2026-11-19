@@ -4,27 +4,31 @@ import React, { useMemo, useState } from "react";
 import { CSS_LEMARI, TOMBOL_UTAMA } from "../lemari-k1b1a/ui";
 
 /**
- * Infografis berbentuk tabel dengan label di bawah tiap baris (Kelas 2 Bab 6 dan seterusnya): tabel data Story dengan tiga kolom; tiap baris satu kejadian.
- * Label milik baris itu diletakkan di bawah barisnya dalam urutan acak, jadi anak melihat tabel dan labelnya sekaligus dan tidak tersesat walau halamannya panjang.
- * Satu baris penuh dan beberapa kotak lain terisi sejak awal sebagai contoh (Label Contoh). Label `s` = ucapan guru (tanpa digit) bila tulisan layar memuat angka.
+ * Infografis berbentuk satu tabel (Kelas 2 Bab 6 dan seterusnya): header tiga kolom, tiap baris satu kejadian dari Story.
+ * Label milik sebuah baris diletakkan TEPAT DI BAWAH barisnya, dalam kolom yang sama dengan tabel tetapi di posisi kolom yang diacak
+ * (label tidak berada di bawah kotak jawabannya sendiri bila ada dua label atau lebih). Anak melihat tabel dan label sekaligus.
+ * Setelah satu baris lengkap, baris label di bawahnya hilang dan tabel memendek. Satu baris penuh dan beberapa kotak lain terisi sejak awal
+ * sebagai contoh (Label Contoh). Label `s` = ucapan guru (tanpa digit) bila tulisan layar memuat angka.
  */
 export type Isian = { t: string; s?: string };
 export type BarisInfo = { ikon: string; nama: string; isi: readonly [Isian, Isian, Isian]; contoh: readonly number[] };
 export type TemaInfo = { bingkai: string; latar: string; aksen: string; teduh: string; ikon: string; judul: string };
 
-const PESAN_AWAL = "Ketuk label di bawah baris, lalu ketuk kotak yang cocok.";
+const PESAN_AWAL = "Label ada di bawah tiap baris. Ketuk label, lalu ketuk kotak yang cocok.";
 
-/** Urutan acak yang tetap (benih per baris), dan dijamin berbeda dari urutan kolom bila labelnya lebih dari satu. */
-export function acakLabel(kolom: readonly number[], benih: number): number[] {
-  const a = [...kolom];
-  let s = benih * 9301 + 49297;
-  for (let i = a.length - 1; i > 0; i -= 1) {
-    s = (s * 9301 + 49297) % 233280;
-    const j = Math.floor((s / 233280) * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  if (a.length > 1 && a.every((v, i) => v === kolom[i])) a.push(a.shift() as number);
-  return a;
+/**
+ * Letak tiap label di bawah barisnya: `kolomKosong` = kolom yang harus diisi, dan hasilnya memetakan kolom itu ke posisi (kolom tabel) label-nya.
+ * Posisi memakai kolom kosong yang sama tetapi digeser, jadi label tidak berada di bawah kolomnya sendiri bila ada dua kolom kosong atau lebih.
+ */
+export function letakLabel(kolomKosong: readonly number[], benih: number): Record<number, number> {
+  const n = kolomKosong.length;
+  const peta: Record<number, number> = {};
+  if (n === 0) return peta;
+  const geser = n > 1 ? 1 + (benih % (n - 1)) : 0;
+  kolomKosong.forEach((c, i) => {
+    peta[c] = kolomKosong[(i + geser) % n];
+  });
+  return peta;
 }
 
 export default function InfografisKartu({
@@ -51,7 +55,7 @@ export default function InfografisKartu({
   const [goyang, setGoyang] = useState<string | null>(null);
   const [pesan, setPesan] = useState<{ b: number; t: string } | null>(null);
 
-  const urutLabel = useMemo(() => baris.map((r, b) => acakLabel([0, 1, 2].filter((c) => !r.contoh.includes(c)), b + 3)), [baris]);
+  const letak = useMemo(() => baris.map((r, b) => letakLabel([0, 1, 2].filter((c) => !r.contoh.includes(c)), b + 1)), [baris]);
   const terisi = (b: number, c: number) => baris[b].contoh.includes(c) || (isi[b] ?? []).includes(c);
   const lengkap = (b: number) => [0, 1, 2].every((c) => terisi(b, c));
   const semua = baris.every((_, b) => lengkap(b));
@@ -81,14 +85,10 @@ export default function InfografisKartu({
       const tersisa = baris.some((_, bb) => [0, 1, 2].some((x) => !(bb === b && x === c) && !terisi(bb, x)));
       const baris1 = `Baris lengkap! ${baris[b].nama}: ${suara(baris[b].isi[0])}, ${suara(baris[b].isi[1])}, ${suara(baris[b].isi[2])}.`;
       ucap(b, masihAda ? "Pas!" : tersisa ? baris1 : `${baris1} ${pesanSelesai}`);
-    } else if (pilih.b !== b) {
-      setGoyang(`${b}-${c}`);
-      window.setTimeout(() => setGoyang(null), 480);
-      ucap(b, `Belum pas. Label itu milik baris ${baris[pilih.b].nama}, bukan baris ${baris[b].nama}.`);
     } else {
       setGoyang(`${b}-${c}`);
       window.setTimeout(() => setGoyang(null), 480);
-      ucap(b, `Belum pas. Kolomnya keliru. Label ini cocok di kolom ${kolom[pilih.c]}.`);
+      ucap(b, pilih.b !== b ? `Belum pas. Label itu milik baris ${baris[pilih.b].nama}, bukan baris ${baris[b].nama}.` : `Belum pas. Kolomnya keliru. Label ini cocok di kolom ${kolom[pilih.c]}.`);
     }
   };
 
@@ -100,7 +100,7 @@ export default function InfografisKartu({
         <button type="button" onClick={() => speakGuru(suaraAwal)} className="shrink-0 rounded-full border-2 border-[#1C01A5] bg-white px-2 py-1 text-sm" aria-label="Dengar petunjuk">
           {"\u{1F50A}"}
         </button>
-        <p className="text-sm font-bold leading-snug text-[#1C01A5]">Label tiap baris ada di bawah barisnya. Kotak bertanda contoh sudah terisi.</p>
+        <p className="text-sm font-bold leading-snug text-[#1C01A5]">Label tiap baris ada tepat di bawah barisnya. Kotak bertanda contoh sudah terisi.</p>
       </div>
 
       <div className="mx-auto w-full max-w-xl rounded-2xl border-[6px] p-2" style={{ borderColor: tema.bingkai, background: tema.latar }}>
@@ -117,10 +117,13 @@ export default function InfografisKartu({
         </div>
 
         {baris.map((r, b) => {
-          const sisa = urutLabel[b].filter((c) => !terisi(b, c));
           const selesai = lengkap(b);
+          const labelDi = (s: number): number | null => {
+            const c = [0, 1, 2].find((x) => letak[b][x] === s && !terisi(b, x));
+            return c === undefined ? null : c;
+          };
           return (
-            <div key={r.nama} className="mt-1.5 rounded-xl border-2 bg-white/60 p-1" style={{ borderColor: tema.aksen }}>
+            <div key={r.nama} className="mt-1 border-t-2 pt-1" style={{ borderColor: tema.aksen }}>
               <div className="grid items-stretch gap-1" style={{ gridTemplateColumns: KOL }}>
                 <span className="flex flex-col items-center justify-center text-center text-[8.5px] font-black leading-tight text-[#1C01A5] [overflow-wrap:break-word]">
                   <span className="text-xl" aria-hidden="true">
@@ -151,19 +154,25 @@ export default function InfografisKartu({
                 })}
               </div>
               {selesai ? null : (
-                <div className="mt-1 flex flex-wrap items-center justify-center gap-1.5 rounded-lg border-2 border-dashed bg-white/80 p-1.5" style={{ borderColor: tema.aksen }} role="group" aria-label={`Label baris ${r.nama}`}>
-                  {sisa.map((c) => (
-                    <button
-                      key={c}
-                      type="button"
-                      onClick={() => ketukLabel(b, c)}
-                      aria-pressed={pilih?.b === b && pilih.c === c}
-                      className={`rounded-md border-[3px] bg-white px-2 py-1 text-xs font-black text-[#1C01A5] sm:text-sm ${pilih?.b === b && pilih.c === c ? "outline outline-4 outline-[#1C01A5]" : ""}`}
-                      style={{ borderColor: tema.aksen }}
-                    >
-                      {r.isi[c].t}
-                    </button>
-                  ))}
+                <div className="mt-1 grid items-stretch gap-1" style={{ gridTemplateColumns: KOL }} role="group" aria-label={`Label baris ${r.nama}`}>
+                  <span />
+                  {[0, 1, 2].map((s) => {
+                    const c = labelDi(s);
+                    if (c === null) return <span key={s} />;
+                    const aktif = pilih?.b === b && pilih.c === c;
+                    return (
+                      <button
+                        key={s}
+                        type="button"
+                        onClick={() => ketukLabel(b, c)}
+                        aria-pressed={aktif}
+                        className={`min-h-[40px] w-full min-w-0 rounded-md border-[3px] bg-[#FEF9C3] px-1 text-center text-[10px] font-black leading-tight text-[#1C01A5] [overflow-wrap:break-word] sm:text-xs ${aktif ? "outline outline-4 outline-[#1C01A5]" : ""}`}
+                        style={{ borderColor: tema.aksen }}
+                      >
+                        {r.isi[c].t}
+                      </button>
+                    );
+                  })}
                 </div>
               )}
               <p role="status" aria-live="polite" className="min-h-[1.1rem] text-center text-xs font-black text-[#1C01A5]">
