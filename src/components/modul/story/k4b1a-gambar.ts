@@ -222,7 +222,7 @@ export function tokoh(id: string, x: number, y0: number, nama: NamaTokoh, u = 30
     out.push(kotak(`${id}-pp`, x + 11, bulatkan(y + 1), 10, 8, "#8B5A2B", "#451A03", { rx: 1, tebal: 0.9, z: 2 }));
   }
   if (nama === "Pak Laode") out.push(poligon(`${id}-cp`, [[bulatkan(x - 11), bulatkan(y - u * 0.62)], [x, bulatkan(y - u * 0.98)], [bulatkan(x + 11), bulatkan(y - u * 0.62)]], "#D4A55A", "#92400E", { z: 2 }));
-  out.push(teks(`${id}-n`, x, bulatkan(y + (nama === "Pak Hendro" || nama === "Pak Laode" ? 18 : 15)), nama, nama === "Pak Laode" ? 6.4 : 8.4, W.ungu, { z: 3 }));
+  out.push(teks(`${id}-n`, x, bulatkan(y + 4 + (nama === "Pak Hendro" || nama === "Pak Laode" ? 18 : 15)), nama, nama === "Pak Laode" ? 6.4 : 8.4, W.ungu, { z: 3 }));
   return out;
 }
 export const idTokoh = (id: string, nama: NamaTokoh): string[] => [

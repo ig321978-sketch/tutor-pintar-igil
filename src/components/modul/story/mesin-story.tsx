@@ -101,7 +101,7 @@ export function Panggung({ adegan, k, t }: { adegan: AdeganStory; k: number; t: 
       {objs.map((o) => (
         <Benda key={o.id} o={o} />
       ))}
-      <text x={296} y={205} textAnchor="end" fontSize={6.5} fontWeight={700} fill={BIRU} opacity={0.55}>
+      <text x={282} y={203} textAnchor="end" fontSize={6.2} fontWeight={700} fill={BIRU} opacity={0.55}>
         {adegan.sumber}
       </text>
     </g>

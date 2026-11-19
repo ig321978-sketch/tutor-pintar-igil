@@ -5,7 +5,7 @@
   "grade": 4,
   "subjectLabel": "MATEMATIKA - KELAS 4 SD",
   "title": "BAB 1: BILANGAN CACAH SAMPAI 10.000",
-  "silabusElemen": "🌈 Fase B • Elemen Bilangan: Membaca–Menulis, Nilai Tempat, Banding–Urut, Komposisi–Dekomposisi sampai 10.000, serta Penjumlahan–Pengurangan sampai 1.000, Perkalian–Pembagian sampai 100, serta Faktor dan Kelipatan (Kelas 4 SD/MI)",
+  "silabusElemen": "🌈 Fase B • Elemen Bilangan: Membaca dan Menulis, Tempat Angka, Membandingkan dan Mengurutkan, Menyusun dan Menguraikan, Tambah dan Kurang, Kali dan Bagi, Faktor dan Kelipatan (SD/MI)",
   "suaraPerangkatSaja": true,
   "suaraLaju": 0.7,
   "suaraNada": 1,
@@ -19,48 +19,47 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Membaca dan Menulis Bilangan)",
       "fullTitle": "Sub-Bab A: Membaca dan Menulis Bilangan Cacah sampai 10.000",
-      "targetDescription": "Siswa membaca dan menulis bilangan cacah empat angka sampai 10.000, termasuk bilangan dengan nol (7.003, 1.025, 6.570), memakai papan ribuan–satuan, serta memahami 10 dus = 1 peti (1.000). Siswa memakai cara Balok Dienes Empat Tingkat, Papan Nilai Tempat, Nol Penjaga Tempat. Siswa memakai cara Balok Dienes Empat Tingkat, Papan Nilai Tempat, Nol Penjaga Tempat.",
+      "targetDescription": "Di loket tiket Penginapan Pulau Karang Indah, kita membaca dan menulis bilangan cacah empat angka sampai sepuluh ribu, termasuk bilangan yang memuat nol, memakai papan ribuan, ratusan, puluhan, dan satuan.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#16A34A",
       "secondaryText": "#14532D",
       "silabus": {
-        "teksSuara": "Kita belajar membaca dan menulis bilangan cacah sampai sepuluh ribu. Helen melihat harga minuman enam ribu tujuh ratus lima puluh rupiah di minimarket, jarak rumah tiga ribu dua ratus delapan puluh enam meter, dan tinggi Gunung Semeru tiga ribu enam ratus tujuh puluh enam meter. Kita memakai kartu angka dan papan ribuan, ratusan, puluhan, satuan. Nol tidak dibaca, tetapi menjaga tempat saat menulis. Kita memakai cara: Balok Dienes Empat Tingkat, Papan Nilai Tempat, Nol Penjaga Tempat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan. Setiap digit punya nilai menurut tempatnya. Nol tidak dibaca keras, tetapi menjaga tempat digit. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa membaca, menulis, membandingkan, dan mengurutkan bilangan cacah sampai 10.000. Pada sub-bab ini fokus membaca dan menulis.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab A hlm. 4–11)."
+        "teksSuara": "Kita belajar membaca dan menulis bilangan sampai sepuluh ribu di loket tiket Bu Maya. Kita memakai papan empat kotak: ribuan, ratusan, puluhan, dan satuan. Angka nol menjaga tempat yang kosong, dan nol tidak dibaca. Kita membaca dari kiri, mulai dari ribuan. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa membaca dan menulis bilangan cacah sampai 10.000.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Dienes Blocks",
-          "namaId": "Balok Dienes Empat Tingkat",
-          "asal": "Zoltan Dienes",
-          "ringkas": "Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan.",
+          "nama": "Digit Cards",
+          "namaId": "Kartu Angka",
+          "asal": "IGIL",
+          "ringkas": "Setiap angka punya kartu dan tempat.",
           "tahap": [
             "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Chunk and Read",
+          "namaId": "Baca Per Bagian",
+          "asal": "IGIL",
+          "ringkas": "Baca dari kiri, bagian demi bagian.",
+          "tahap": [
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Place-Value Chart",
-          "namaId": "Papan Nilai Tempat",
-          "asal": "Van de Walle",
-          "ringkas": "Setiap digit punya nilai menurut tempatnya.",
+          "nama": "Zero Check",
+          "namaId": "Periksa Nol",
+          "asal": "IGIL",
+          "ringkas": "Isi tempat kosong dengan nol.",
           "tahap": [
-            "Mind",
-            "Abstract",
-            "Infografis"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Zero as Placeholder",
-          "namaId": "Nol Penjaga Tempat",
-          "asal": "Place-value pedagogy",
-          "ringkas": "Nol tidak dibaca keras, tetapi menjaga tempat digit.",
-          "tahap": [
-            "Story",
+            "Picture",
             "Abstract"
           ]
         }
@@ -768,24 +767,24 @@
     },
     "B": {
       "id": "B",
-      "codeTitle": "Sub-Bab B (Nilai Tempat)",
-      "fullTitle": "Sub-Bab B: Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai 10.000",
-      "targetDescription": "Siswa menentukan tempat dan nilai setiap angka pada bilangan empat angka (pada 2.150, angka 2 bernilai 2.000), menyusun dan mengurai bilangan, serta mengisi tabel digit ribuan–satuan. Siswa memakai cara Nilai Tempat, Tukar Sepuluh, Bentuk Uraian. Siswa memakai cara Nilai Tempat, Tukar Sepuluh, Bentuk Uraian.",
+      "codeTitle": "Sub-Bab B (Tempat Angka)",
+      "fullTitle": "Sub-Bab B: Menentukan dan Menggunakan Tempat Angka pada Bilangan Cacah sampai 10.000",
+      "targetDescription": "Di gudang handuk Pak Laode, kita menentukan tempat setiap angka pada bilangan empat angka dan banyaknya yang diwakilinya, serta menyusun dan menguraikan bilangan dengan bagan tempat angka.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
       "silabus": {
-        "teksSuara": "Kita belajar nilai tempat. Empat kardus: ribuan, ratusan, puluhan, satuan. Pada 2.150, angka 2 bernilai dua ribu, angka 1 bernilai seratus, angka 5 bernilai lima puluh, angka 0 bernilai nol di satuan. Kita mengurai bilangan dan mengisi tabel digit. Kita memakai cara: Nilai Tempat, Tukar Sepuluh, Bentuk Uraian. Nilai digit = digit × nilai tempatnya. Sepuluh benda sama dengan satu bungkus; begitu seterusnya ke atas. Tulis bilangan sebagai jumlah nilai tempat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menentukan nilai tempat bilangan cacah sampai 10.000.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab B)."
+        "teksSuara": "Kita belajar tempat angka di gudang handuk Pak Laode. Ada peti, kotak, ikat, dan lembar, yaitu ribuan, ratusan, puluhan, dan satuan. Angka yang sama berarti lain bila tempatnya berbeda. Kita memakai balok cacah, bagan tempat, dan tukar tempat. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menentukan tempat angka pada bilangan cacah sampai 10.000.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Place Value",
-          "namaId": "Nilai Tempat",
-          "asal": "Van de Walle",
-          "ringkas": "Nilai digit = digit × nilai tempatnya.",
+          "nama": "Base-Ten Blocks",
+          "namaId": "Balok Cacah",
+          "asal": "IGIL",
+          "ringkas": "Satu tempat berharga sepuluh kali tempat di kanannya.",
           "tahap": [
             "Story",
             "Concrete",
@@ -794,10 +793,10 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Dienes Trade",
-          "namaId": "Tukar Sepuluh",
-          "asal": "Dienes",
-          "ringkas": "Sepuluh benda sama dengan satu bungkus; begitu seterusnya ke atas.",
+          "nama": "Place Chart",
+          "namaId": "Bagan Tempat",
+          "asal": "IGIL",
+          "ringkas": "Tulis tiap angka pada kolomnya.",
           "tahap": [
             "Concrete",
             "Picture"
@@ -805,12 +804,12 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Expanded Form",
-          "namaId": "Bentuk Uraian",
-          "asal": "Van de Walle",
-          "ringkas": "Tulis bilangan sebagai jumlah nilai tempat.",
+          "nama": "Digit Swap",
+          "namaId": "Tukar Tempat",
+          "asal": "IGIL",
+          "ringkas": "Angka sama, tempat beda, bilangan beda.",
           "tahap": [
-            "Mind",
+            "Picture",
             "Abstract"
           ]
         }
@@ -1520,22 +1519,22 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Membandingkan dan Mengurutkan)",
       "fullTitle": "Sub-Bab C: Membandingkan dan Mengurutkan Bilangan Cacah sampai 10.000",
-      "targetDescription": "Siswa membandingkan dua bilangan empat angka mulai dari ribuan, menulis < > =, dan mengurutkan bilangan (contoh tinggi gunung 2.460, 3.676, 3.726). Siswa memakai cara Banding dari Kiri, Urutan Garis Bilangan, Mengurutkan Himpunan. Siswa memakai cara Banding dari Kiri, Urutan Garis Bilangan, Mengurutkan Himpunan.",
+      "targetDescription": "Di dermaga Kak Tiara, kita membandingkan dua bilangan empat angka mulai dari tempat paling kiri, memakai tanda kurang dari, lebih dari, dan sama dengan, lalu mengurutkan beberapa bilangan.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
       "silabus": {
-        "teksSuara": "Kita membandingkan harga manggis tujuh ribu lima ratus dan bengkoang delapan ribu tujuh ratus lima puluh. Bandingkan ribuan dulu. Bila sama, lanjut ratusan, puluhan, satuan. Kita mengurutkan tinggi gunung dari terkecil. Kita memakai cara: Banding dari Kiri, Urutan Garis Bilangan, Mengurutkan Himpunan. Bandingkan dari nilai tempat terbesar. Lebih kanan berarti lebih besar. Urut naik atau turun dengan membandingkan berpasangan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "teksSuara": "Kita belajar membandingkan dan mengurutkan bilangan di dermaga Kak Tiara. Kita mulai dari tempat paling kiri, yaitu ribuan. Bila angkanya sama, kita pindah ke tempat di sebelah kanannya. Kita memakai tanda kurang dari, lebih dari, dan sama dengan. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
         "cp": "Siswa membandingkan dan mengurutkan bilangan cacah sampai 10.000.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab C)."
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Compare Leftmost",
+          "nama": "Left-to-Right Compare",
           "namaId": "Banding dari Kiri",
-          "asal": "Van de Walle",
-          "ringkas": "Bandingkan dari nilai tempat terbesar.",
+          "asal": "IGIL",
+          "ringkas": "Mulai dari tempat paling kiri.",
           "tahap": [
             "Story",
             "Concrete",
@@ -1544,23 +1543,23 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Number Line Order",
-          "namaId": "Urutan Garis Bilangan",
-          "asal": "Number line",
-          "ringkas": "Lebih kanan berarti lebih besar.",
+          "nama": "Number Line",
+          "namaId": "Garis Bilangan",
+          "asal": "IGIL",
+          "ringkas": "Makin ke kanan, makin besar.",
           "tahap": [
-            "Picture",
-            "Mind"
+            "Concrete",
+            "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Ordering Sets",
-          "namaId": "Mengurutkan Himpunan",
-          "asal": "Number sense",
-          "ringkas": "Urut naik atau turun dengan membandingkan berpasangan.",
+          "nama": "Card Sort",
+          "namaId": "Urut Kartu",
+          "asal": "IGIL",
+          "ringkas": "Geser kartu sampai berurutan.",
           "tahap": [
-            "Infografis",
+            "Picture",
             "Abstract"
           ]
         }
@@ -2268,50 +2267,50 @@
     },
     "D": {
       "id": "D",
-      "codeTitle": "Sub-Bab D (Komposisi dan Dekomposisi)",
-      "fullTitle": "Sub-Bab D: Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000",
-      "targetDescription": "Siswa menyusun bilangan empat angka dari nilai tempat (komposisi) dan mengurai bilangan menjadi nilai tempat (dekomposisi), termasuk contoh uang Helen Rp7.300 dan Rp10.000. Siswa memakai cara Komposisi Bilangan, Dekomposisi Bilangan, Pengelompokan Fleksibel. Siswa memakai cara Komposisi Bilangan, Dekomposisi Bilangan, Pengelompokan Fleksibel.",
+      "codeTitle": "Sub-Bab D (Menyusun dan Menguraikan)",
+      "fullTitle": "Sub-Bab D: Menyusun dan Menguraikan Bilangan Cacah sampai 10.000",
+      "targetDescription": "Di kios kelapa Pak Darwis, kita menyusun bilangan dari ribuan, ratusan, puluhan, dan satuan, serta menguraikan bilangan empat angka dengan lebih dari satu cara.",
       "secondaryBg": "#FCE7F3",
       "secondaryBorder": "#DB2777",
       "secondaryText": "#9D174D",
       "silabus": {
-        "teksSuara": "Kita belajar komposisi dan dekomposisi bilangan sampai sepuluh ribu. Menyusun 6 ribuan + 3 ratusan + 4 puluhan + 8 satuan menjadi 6.348, lalu mengurai 6.849 menjadi 6.000 + 800 + 40 + 9. Nol tetap menjaga tempat seperti pada 6.035. Kita memakai cara: Komposisi Bilangan, Dekomposisi Bilangan, Pengelompokan Fleksibel. Susun bilangan dari bagian nilai tempat. Urai bilangan menjadi bagian yang lebih kecil. Satu ratusan bisa jadi sepuluh puluhan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menyusun dan mengurai bilangan cacah sampai 10.000 menurut nilai tempat.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab D)."
+        "teksSuara": "Kita belajar menyusun dan menguraikan bilangan di kios kelapa Pak Darwis. Menyusun berarti menggabungkan bagian menjadi satu bilangan. Menguraikan berarti memecah bilangan menjadi ribuan, ratusan, puluhan, dan satuan. Satu bilangan bisa diuraikan dengan lebih dari satu cara. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menyusun dan menguraikan bilangan cacah sampai 10.000.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Composition",
-          "namaId": "Komposisi Bilangan",
-          "asal": "Van de Walle",
-          "ringkas": "Susun bilangan dari bagian nilai tempat.",
+          "nama": "Break Apart",
+          "namaId": "Pecah Bilangan",
+          "asal": "IGIL",
+          "ringkas": "Pecah menjadi ribuan, ratusan, puluhan, satuan.",
           "tahap": [
             "Story",
-            "Concrete"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Decomposition",
-          "namaId": "Dekomposisi Bilangan",
-          "asal": "Van de Walle",
-          "ringkas": "Urai bilangan menjadi bagian yang lebih kecil.",
-          "tahap": [
-            "Mind",
-            "Picture",
+            "Concrete",
             "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Flexible Grouping",
-          "namaId": "Pengelompokan Fleksibel",
-          "asal": "Base-ten flexibility",
-          "ringkas": "Satu ratusan bisa jadi sepuluh puluhan.",
+          "nama": "Build Up",
+          "namaId": "Susun Bilangan",
+          "asal": "IGIL",
+          "ringkas": "Gabungkan bagian menjadi satu bilangan.",
           "tahap": [
-            "Infografis",
-            "Concrete"
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Part-Part-Whole",
+          "namaId": "Bagan Bagian Utuh",
+          "asal": "IGIL",
+          "ringkas": "Dua bagian membentuk satu utuh.",
+          "tahap": [
+            "Picture",
+            "Abstract"
           ]
         }
       ],
@@ -3020,22 +3019,22 @@
       "id": "E",
       "codeTitle": "Sub-Bab E (Penjumlahan sampai 1.000)",
       "fullTitle": "Sub-Bab E: Penjumlahan Bilangan Cacah sampai 1.000",
-      "targetDescription": "Siswa menjumlahkan bilangan sampai 1.000 dengan cara susun panjang dan pendek, tanpa dan dengan menyimpan, termasuk tiga bilangan dan soal cerita buku. Siswa memakai cara Penjumlahan Bersusun, Menyimpan, Menghitung Maju. Siswa memakai cara Penjumlahan Bersusun, Menyimpan, Menghitung Maju.",
+      "targetDescription": "Di meja resepsi Bu Rina, kita menjumlahkan bilangan sampai seribu secara bersusun, tanpa dan dengan menyimpan, termasuk tiga bilangan, serta memeriksa hasilnya.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#16A34A",
       "secondaryText": "#14532D",
       "silabus": {
-        "teksSuara": "Kita belajar penjumlahan sampai seribu. Pohon jeruk Pak Toni 131 ditambah 321 sama dengan 452. Jeruk pedagang 189 ditambah 245 perlu menyimpan menjadi 434. Kita juga menjumlahkan tiga bilangan seperti 124 + 411 + 363 = 898. Kita memakai cara: Penjumlahan Bersusun, Menyimpan, Menghitung Maju. Jumlahkan dari satuan, simpan jika perlu. Sepuluh satuan menjadi satu puluhan. Mulai dari bilangan lebih besar lalu maju. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menjumlahkan bilangan cacah sampai 1.000 dengan dan tanpa menyimpan.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab E)."
+        "teksSuara": "Kita belajar menjumlahkan bilangan sampai seribu di meja resepsi Bu Rina. Kita menulis bilangan ke bawah dan menjumlahkan dari satuan. Bila hasilnya sepuluh atau lebih, kita menyimpan. Kita memakai susun ke bawah, tambah per tempat, dan genapkan dulu. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menjumlahkan bilangan cacah sampai 1.000.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Standard Addition",
-          "namaId": "Penjumlahan Bersusun",
-          "asal": "Elementary algorithms",
-          "ringkas": "Jumlahkan dari satuan, simpan jika perlu.",
+          "nama": "Column Add",
+          "namaId": "Susun ke Bawah",
+          "asal": "IGIL",
+          "ringkas": "Jumlahkan dari satuan, simpan bila perlu.",
           "tahap": [
             "Story",
             "Concrete",
@@ -3044,24 +3043,24 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Regrouping",
-          "namaId": "Menyimpan",
-          "asal": "Base-ten regrouping",
-          "ringkas": "Sepuluh satuan menjadi satu puluhan.",
+          "nama": "Place Add",
+          "namaId": "Tambah Per Tempat",
+          "asal": "IGIL",
+          "ringkas": "Jumlahkan tiap tempat lalu gabungkan.",
           "tahap": [
-            "Picture",
-            "Mind"
+            "Concrete",
+            "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Counting On",
-          "namaId": "Menghitung Maju",
-          "asal": "Singapore / counting on",
-          "ringkas": "Mulai dari bilangan lebih besar lalu maju.",
+          "nama": "Round and Adjust",
+          "namaId": "Genapkan Dulu",
+          "asal": "IGIL",
+          "ringkas": "Bulatkan, lalu sesuaikan hasilnya.",
           "tahap": [
-            "Concrete",
-            "Infografis"
+            "Picture",
+            "Abstract"
           ]
         }
       ],
@@ -3770,22 +3769,22 @@
       "id": "F",
       "codeTitle": "Sub-Bab F (Pengurangan sampai 1.000)",
       "fullTitle": "Sub-Bab F: Pengurangan Bilangan Cacah sampai 1.000",
-      "targetDescription": "Siswa mengurangi bilangan sampai 1.000 dengan cara susun panjang dan pendek, tanpa dan dengan mengambil (satu atau dua kali), serta memeriksa dengan penjumlahan. Siswa memakai cara Pengurangan Bersusun, Meminjam, Menghitung Naik. Siswa memakai cara Pengurangan Bersusun, Meminjam, Menghitung Naik.",
+      "targetDescription": "Di papan sisa Pak Usman, kita mengurangkan bilangan sampai seribu secara bersusun, tanpa dan dengan mengambil dari tempat di kirinya, serta memeriksa hasil dengan penjumlahan.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
       "silabus": {
-        "teksSuara": "Kita belajar pengurangan sampai seribu. Buku 265 dikurangi 132 sisa 133 tanpa mengambil. Lalu 241 dikurangi 129 perlu mengambil menjadi 112. Ada juga dua kali mengambil seperti 253 dikurangi 176 sisa 77. Periksa: hasil ditambah pengurang kembali ke bilangan awal. Kita memakai cara: Pengurangan Bersusun, Meminjam, Menghitung Naik. Kurangi dari satuan, pinjam jika perlu. Satu puluhan dibuka menjadi sepuluh satuan. Hitung naik dari yang dikurangi sampai bilangan awal. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa mengurangi bilangan cacah sampai 1.000 dengan dan tanpa mengambil.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab F)."
+        "teksSuara": "Kita belajar mengurangkan bilangan sampai seribu di papan sisa Pak Usman. Kita menulis bilangan ke bawah dan mengurangkan dari satuan. Bila angka atas lebih kecil, kita mengambil satu dari tempat di kirinya. Kita memeriksa dengan penjumlahan. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa mengurangkan bilangan cacah sampai 1.000.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Standard Subtraction",
-          "namaId": "Pengurangan Bersusun",
-          "asal": "Elementary algorithms",
-          "ringkas": "Kurangi dari satuan, pinjam jika perlu.",
+          "nama": "Column Subtract",
+          "namaId": "Susun dan Pinjam",
+          "asal": "IGIL",
+          "ringkas": "Ambil dari tempat di kiri bila kurang.",
           "tahap": [
             "Story",
             "Concrete",
@@ -3794,24 +3793,24 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Borrowing",
-          "namaId": "Meminjam",
-          "asal": "Base-ten regrouping",
-          "ringkas": "Satu puluhan dibuka menjadi sepuluh satuan.",
+          "nama": "Count Up",
+          "namaId": "Hitung Maju",
+          "asal": "IGIL",
+          "ringkas": "Hitung maju dari bilangan kecil.",
           "tahap": [
-            "Picture",
-            "Mind"
+            "Concrete",
+            "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Counting Up",
-          "namaId": "Menghitung Naik",
-          "asal": "Counting up",
-          "ringkas": "Hitung naik dari yang dikurangi sampai bilangan awal.",
+          "nama": "Add Check",
+          "namaId": "Periksa dengan Tambah",
+          "asal": "IGIL",
+          "ringkas": "Hasil ditambah pengurang sama dengan bilangan awal.",
           "tahap": [
-            "Concrete",
-            "Infografis"
+            "Picture",
+            "Abstract"
           ]
         }
       ],
@@ -4519,48 +4518,49 @@
     "G": {
       "id": "G",
       "codeTitle": "Sub-Bab G (Perkalian sampai 100)",
-      "fullTitle": "Sub-Bab G: Perkalian Bilangan Cacah Sampai 100",
-      "targetDescription": "Siswa memahami perkalian sampai 100 sebagai penjumlahan berulang, memakai cara panjang (urai puluhan+satuan) dan cara bersusun pendek dengan atau tanpa menyimpan, serta menyelesaikan soal cerita (donat 12×4, kelereng 14×5, pensil 12×8). Siswa memakai cara Kelompok Sama Banyak, Model Susunan, Kefasihan Tabel Kali. Siswa memakai cara Kelompok Sama Banyak, Model Susunan, Kefasihan Tabel Kali.",
+      "fullTitle": "Sub-Bab G: Perkalian Bilangan Cacah sampai 100",
+      "targetDescription": "Di baris perahu Bu Marni, kita memahami perkalian sebagai penjumlahan berulang, mengurai puluhan dan satuan, dan mengalikan secara bersusun dengan hasil sampai seratus.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
       "silabus": {
-        "teksSuara": "Kita belajar perkalian sampai seratus. Dua belas kotak donat berisi empat donat sama dengan empat puluh delapan. Kita memakai cara: Kelompok Sama Banyak, Model Susunan, Kefasihan Tabel Kali. Perkalian adalah penjumlahan berulang kelompok sama. Baris × kolom menunjukkan hasil kali. Latihan fakta kali sampai 100. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa melakukan operasi hitung bilangan cacah. Pada sub-bab ini fokus perkalian sampai 100.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab G)."
+        "teksSuara": "Kita belajar perkalian di baris perahu Bu Marni. Perkalian adalah penjumlahan yang berulang. Kita bisa mengurai bilangan menjadi puluhan dan satuan, lalu mengalikan keduanya. Kita juga bisa mengalikan bersusun dan menyimpan. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa melakukan perkalian bilangan cacah dengan hasil sampai 100.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Equal Groups",
-          "namaId": "Kelompok Sama Banyak",
-          "asal": "Multiplication pedagogy",
-          "ringkas": "Perkalian adalah penjumlahan berulang kelompok sama.",
+          "nama": "Repeated Addition",
+          "namaId": "Tambah Berulang",
+          "asal": "IGIL",
+          "ringkas": "Perkalian adalah tambah berulang.",
           "tahap": [
             "Story",
-            "Concrete"
+            "Concrete",
+            "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Array Model",
-          "namaId": "Model Susunan",
-          "asal": "Van de Walle",
-          "ringkas": "Baris × kolom menunjukkan hasil kali.",
+          "nama": "Split and Multiply",
+          "namaId": "Urai Lalu Kali",
+          "asal": "IGIL",
+          "ringkas": "Kalikan puluhan dan satuan terpisah.",
+          "tahap": [
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Column Multiply",
+          "namaId": "Kali Susun",
+          "asal": "IGIL",
+          "ringkas": "Kalikan satuan dulu, simpan bila perlu.",
           "tahap": [
             "Picture",
-            "Mind"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Times Table Fluency",
-          "namaId": "Kefasihan Tabel Kali",
-          "asal": "Basic facts",
-          "ringkas": "Latihan fakta kali sampai 100.",
-          "tahap": [
-            "Abstract",
-            "Infografis"
+            "Abstract"
           ]
         }
       ],
@@ -5268,48 +5268,49 @@
     "H": {
       "id": "H",
       "codeTitle": "Sub-Bab H (Pembagian sampai 100)",
-      "fullTitle": "Sub-Bab H: Pembagian Bilangan Cacah Sampai 100",
-      "targetDescription": "Siswa membagi bilangan cacah sampai 100 secara sama banyak (permen 48 : 4), memakai pembagian bersusun dari puluhan ke satuan, mengenali sisa 0, dan menyelesaikan soal cerita. Siswa memakai cara Bagi Rata, Bagi Ukur, Kebalikan Kali. Siswa memakai cara Bagi Rata, Bagi Ukur, Kebalikan Kali.",
+      "fullTitle": "Sub-Bab H: Pembagian Bilangan Cacah sampai 100",
+      "targetDescription": "Di papan jatah Bu Ratna, kita membagi bilangan sampai seratus secara sama banyak, memakai pembagian bersusun dari puluhan ke satuan, mengenali sisa, dan memeriksa dengan perkalian.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
       "silabus": {
-        "teksSuara": "Kita belajar pembagian sampai seratus. Empat puluh delapan permen dibagi empat anak. Kita memakai pembagian bersusun dari puluhan. Kita memakai cara: Bagi Rata, Bagi Ukur, Kebalikan Kali. Pembagian membagi benda ke kelompok sama banyak. Berapa kelompok terbentuk jika tiap kelompok berisi n. Pembagian dan perkalian saling berkebalikan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa melakukan operasi hitung bilangan cacah. Pada sub-bab ini fokus pembagian sampai 100.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab H)."
+        "teksSuara": "Kita belajar pembagian di papan jatah Bu Ratna. Membagi berarti menaruh sama banyak pada tiap tempat. Kita membagi bersusun dari puluhan ke satuan. Bila ada sisa, sisanya harus lebih kecil daripada pembagi. Kita memeriksa dengan perkalian. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa melakukan pembagian bilangan cacah sampai 100.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Fair Share",
+          "nama": "Equal Sharing",
           "namaId": "Bagi Rata",
-          "asal": "Division pedagogy",
-          "ringkas": "Pembagian membagi benda ke kelompok sama banyak.",
+          "asal": "IGIL",
+          "ringkas": "Bagikan bergiliran sampai habis.",
           "tahap": [
             "Story",
-            "Concrete"
+            "Concrete",
+            "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Measurement Division",
-          "namaId": "Bagi Ukur",
-          "asal": "Van de Walle",
-          "ringkas": "Berapa kelompok terbentuk jika tiap kelompok berisi n.",
+          "nama": "Repeated Subtraction",
+          "namaId": "Kurang Berulang",
+          "asal": "IGIL",
+          "ringkas": "Kurangi pembagi berkali-kali.",
+          "tahap": [
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Long Division",
+          "namaId": "Bagi Susun",
+          "asal": "IGIL",
+          "ringkas": "Bagi dari puluhan, turunkan satuan.",
           "tahap": [
             "Picture",
-            "Mind"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Inverse of Multiply",
-          "namaId": "Kebalikan Kali",
-          "asal": "Fact family",
-          "ringkas": "Pembagian dan perkalian saling berkebalikan.",
-          "tahap": [
-            "Abstract",
-            "Infografis"
+            "Abstract"
           ]
         }
       ],
@@ -6018,47 +6019,47 @@
       "id": "I",
       "codeTitle": "Sub-Bab I (Faktor dan Kelipatan)",
       "fullTitle": "Sub-Bab I: Faktor dan Kelipatan",
-      "targetDescription": "Siswa menentukan faktor (pembagi habis) bilangan seperti 12, 20, 24, 48, memahami mengapa bilangan tertentu bukan faktor, serta menentukan kelipatan (hasil kali berulang) seperti kelipatan 2, 3, 5, dan 6. Siswa memakai cara Pasangan Faktor, Kelipatan Lompat Hitung, Keterbagian. Siswa memakai cara Pasangan Faktor, Kelipatan Lompat Hitung, Keterbagian.",
+      "targetDescription": "Di papan jadwal Kak Yoga, kita menentukan faktor suatu bilangan sebagai pembagi yang habis, memahami mengapa bilangan tertentu bukan faktor, dan menentukan kelipatan.",
       "secondaryBg": "#FCE7F3",
       "secondaryBorder": "#DB2777",
       "secondaryText": "#9D174D",
       "silabus": {
-        "teksSuara": "Kita belajar faktor dan kelipatan. Faktor dua belas adalah satu, dua, tiga, empat, enam, dan dua belas. Kelipatan dua adalah dua, empat, enam, delapan, dan seterusnya. Kita memakai cara: Pasangan Faktor, Kelipatan Lompat Hitung, Keterbagian. Faktor datang berpasangan hasil kali bilangan itu. Kelipatan = hasil lompat tetap. Faktor membagi habis bilangan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa memahami faktor dan kelipatan bilangan cacah.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab I)."
+        "teksSuara": "Kita belajar faktor dan kelipatan di papan jadwal Kak Yoga. Faktor adalah bilangan yang membagi habis sebuah bilangan, tanpa sisa. Kelipatan didapat dengan menambah bilangan itu berulang. Kita memakai pasangan faktor, daftar kelipatan, dan cek bagi habis. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menentukan faktor dan kelipatan suatu bilangan cacah.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
           "nama": "Factor Pairs",
           "namaId": "Pasangan Faktor",
-          "asal": "Array model",
-          "ringkas": "Faktor datang berpasangan hasil kali bilangan itu.",
+          "asal": "IGIL",
+          "ringkas": "Cari dua bilangan yang dikalikan jadi bilangan itu.",
           "tahap": [
             "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Multiples List",
+          "namaId": "Daftar Kelipatan",
+          "asal": "IGIL",
+          "ringkas": "Tulis hasil kali berurutan.",
+          "tahap": [
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Skip Counting Multiples",
-          "namaId": "Kelipatan Lompat Hitung",
-          "asal": "Van de Walle",
-          "ringkas": "Kelipatan = hasil lompat tetap.",
+          "nama": "Divisibility Check",
+          "namaId": "Cek Bagi Habis",
+          "asal": "IGIL",
+          "ringkas": "Bagi, lalu lihat apakah ada sisa.",
           "tahap": [
-            "Mind",
-            "Abstract"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Divisibility",
-          "namaId": "Keterbagian",
-          "asal": "Number sense",
-          "ringkas": "Faktor membagi habis bilangan.",
-          "tahap": [
-            "Infografis",
+            "Picture",
             "Abstract"
           ]
         }

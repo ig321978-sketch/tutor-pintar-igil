@@ -187,7 +187,7 @@ export function tokoh(id: string, x: number, y0: number, nama: NamaTokoh, u = 30
     out.push(bulat(`${id}-pl`, x + 5, bulatkan(y + 4), 2.4, "#DC2626", "#7F1D1D", { tebal: 0.8, z: 2 }));
   }
   if (nama === "Bu Maya") out.push(kotak(`${id}-kr`, bulatkan(x - u * 0.45), bulatkan(y - u * 0.8), bulatkan(u * 0.9), 6, "#E7D3A8", "#92400E", { rx: 3, tebal: 1, z: 2 }));
-  out.push(teks(`${id}-n`, x, bulatkan(y + (nama === "Pak Hendro" || nama === "Bu Rina" || nama === "Pak Usman" ? 18 : nama === "Bu Maya" ? 9 : 15)), nama, nama === "Bu Maya" ? 6.4 : 8.4, W.ungu, { z: 3 }));
+  out.push(teks(`${id}-n`, x, bulatkan(y + 4 + (nama === "Pak Hendro" || nama === "Bu Rina" || nama === "Pak Usman" ? 18 : nama === "Bu Maya" ? 9 : 15)), nama, nama === "Bu Maya" ? 6.4 : 8.4, W.ungu, { z: 3 }));
   return out;
 }
 export const idTokoh = (id: string, nama: NamaTokoh): string[] => [

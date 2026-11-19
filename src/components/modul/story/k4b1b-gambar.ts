@@ -251,7 +251,7 @@ export function tokoh(id: string, x: number, y0: number, nama: NamaTokoh, u = 30
     out.push(kotak(`${id}-tp`, bulatkan(x - 14), bulatkan(y - u * 0.78), 28, 5, "#E5C07B", "#92400E", { rx: 2, tebal: 1, z: 2 }));
     out.push(kotak(`${id}-pd`, x + 12, bulatkan(y + 1), 12, 13, "#BAE6FD", "#0369A1", { rx: 1, tebal: 1, z: 2 }));
   }
-  out.push(teks(`${id}-n`, x, bulatkan(y + (nama === "Satria" || nama === "Laras" || nama === "Genta" ? 15 : 18)), nama, 8.2, W.ungu, { z: 3 }));
+  out.push(teks(`${id}-n`, x, bulatkan(y + 4 + (nama === "Satria" || nama === "Laras" || nama === "Genta" ? 15 : 18)), nama, 8.2, W.ungu, { z: 3 }));
   return out;
 }
 export const idTokoh = (id: string, nama: NamaTokoh): string[] => [

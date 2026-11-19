@@ -206,7 +206,7 @@ export function tokoh(id: string, x: number, y0: number, nama: NamaTokoh, u = 30
     out.push(bulat(`${id}-pl`, x - 8, bulatkan(y + 8), 2.2, "#F59E0B", "#92400E", { tebal: 0.8, z: 2 }));
     out.push(kotak(`${id}-ts`, x - 19, bulatkan(y + 3), 8, 11, "#A16207", "#451A03", { rx: 1, tebal: 0.9, z: 2 }));
   }
-  out.push(teks(`${id}-n`, x, bulatkan(y + (nama === "Pak Hendro" || nama === "Pak Darwis" || nama === "Bu Rina" ? 15 : 15)), nama, 8.4, W.ungu, { z: 3 }));
+  out.push(teks(`${id}-n`, x, bulatkan(y + 4 + (nama === "Pak Hendro" || nama === "Pak Darwis" || nama === "Bu Rina" ? 15 : 15)), nama, 8.4, W.ungu, { z: 3 }));
   return out;
 }
 export const idTokoh = (id: string, nama: NamaTokoh): string[] => [
