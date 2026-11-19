@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import PageShell from "@/components/PageShell";
@@ -48,7 +49,6 @@ export default function LoginClient() {
         (next.startsWith("/rapor") ||
           next.startsWith("/ranking") ||
           next.startsWith("/dasbor") ||
-          next.startsWith("/daftar") ||
           next.startsWith("/simulasi") ||
           next.startsWith("/admin") ||
           next.startsWith("/studio-kreator"))
@@ -69,7 +69,7 @@ export default function LoginClient() {
   return (
     <PageShell
       judul="Masuk"
-      subjudul="Masuk dengan akun admin. Setelah masuk, Anda dapat membuka website dan Studio Kreator."
+      subjudul="Masuk dengan email dan kata sandi orang tua atau admin. Belum punya akun? Buat di halaman Pendaftaran Anak."
     >
       <form
         onSubmit={(e) => void kirim(e)}
@@ -111,6 +111,12 @@ export default function LoginClient() {
         >
           {memuat ? "Memeriksa..." : "Masuk"}
         </button>
+        <p className="text-center text-sm font-semibold text-slate-600">
+          Belum punya akun?{" "}
+          <Link href="/daftar" className="font-black text-[#1C01A5] underline underline-offset-2">
+            Buat akun &amp; daftarkan anak
+          </Link>
+        </p>
       </form>
     </PageShell>
   );

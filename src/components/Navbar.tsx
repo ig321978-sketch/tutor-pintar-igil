@@ -12,15 +12,13 @@ const MENU = [
   { href: "/praktikum", label: "🧪 Praktikum" },
   { href: "/rapor", label: "📊 Rapor & Sertifikat" },
   { href: "/langganan", label: "🎟️ Langganan" },
+  { href: "/daftar", label: "📝 Pendaftaran Anak" },
   { href: "/ranking", label: "🏆 Ranking & Beasiswa" },
   { href: "/komunitas", label: "🏫 Komunitas IGIL" },
 ] as const;
 
 /** Menu lain masih tahap tinjau: hanya tampil untuk admin sampai data nyata tersambung. */
-const MENU_TINJAU = [
-  { href: "/dasbor", label: "🏠 Dasbor & Info" },
-  { href: "/daftar", label: "📝 Pendaftaran Anak" },
-] as const;
+const MENU_TINJAU = [{ href: "/dasbor", label: "🏠 Dasbor & Info" }] as const;
 
 function tautanAktif(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);

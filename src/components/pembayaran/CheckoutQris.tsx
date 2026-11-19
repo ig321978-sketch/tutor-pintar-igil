@@ -210,9 +210,26 @@ export default function CheckoutQris() {
 
       {siap === "memuat" ? <p className="text-sm font-bold">Memeriksa akun…</p> : null}
       {siap === "tamu" ? (
-        <Link href="/login?next=%2Flangganan" className="inline-flex rounded-full bg-amber-400 px-5 py-3 text-sm font-black text-indigo-950">
-          MASUK DULU
-        </Link>
+        <div className="space-y-3" data-testid="checkout-tamu">
+          <p className="text-sm font-semibold leading-relaxed text-slate-700">
+            Calon pelanggan baru: buat akun orang tua dulu, daftarkan profil anak, lalu kembali ke halaman ini untuk
+            menampilkan QRIS. Yang sudah punya akun cukup masuk.
+          </p>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <Link
+              href="/daftar"
+              className="inline-flex items-center justify-center rounded-full bg-amber-400 px-5 py-3 text-sm font-black text-indigo-950"
+            >
+              BUAT AKUN &amp; DAFTAR ANAK
+            </Link>
+            <Link
+              href="/login?next=%2Flangganan"
+              className="inline-flex items-center justify-center rounded-full border-2 border-indigo-900 bg-white px-5 py-3 text-sm font-black text-indigo-950"
+            >
+              SUDAH PUNYA AKUN? MASUK
+            </Link>
+          </div>
+        </div>
       ) : null}
       {siap === "kosong" ? (
         <Link href="/daftar" className="inline-flex rounded-full bg-amber-400 px-5 py-3 text-sm font-black text-indigo-950">
