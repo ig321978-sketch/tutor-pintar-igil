@@ -8,6 +8,7 @@ import * as K2B4 from "../src/components/modul/misi-k2bab4.ts";
 import * as K2B5 from "../src/components/modul/misi-k2bab5.ts";
 import * as K2B6 from "../src/components/modul/misi-k2bab6.ts";
 import * as K2B7 from "../src/components/modul/misi-k2bab7.ts";
+import * as K2B8 from "../src/components/modul/misi-k2bab8.ts";
 
 let gagal = 0;
 let lulus = 0;
@@ -321,6 +322,51 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
     cek(M0.misiBaru(dB7, { ...awalB7, salah: 9, mode: "kartu", pos: 99, garisIndeks: 2, bandingIndeks: 3, urutIndeks: 1, urutKetuk: [0, 1], kartuIndeks: 2, kartuPuluhan: 3 }, new Set()).length === 0, "k2bab7 B: percobaan keliru dan geseran tidak dihitung sebagai misi");
   }
   void K2B7;
+}
+
+/* --------------------------- Kelas 2 Bab 8: misi (Pentas Seni Sekolah) --------------------------- */
+// Rincian misi tiap Sub-Bab diuji di scripts/uji-turus-k2b8a.mjs dan uji-gambar-k2b8b.mjs; di sini hanya struktur bersama.
+{
+  // KERANGKA: agen Sub-Bab mengganti komentar BAGIAN-nya dengan ujinya (keadaan awal tidak memenuhi misi; ujiStruktur untuk sub-bab itu).
+  // BAGIAN A (Meja Catat: lampu 7, kursi lipat 5, kabel 3, mikrofon 5; warna kostum sembilan jawaban; rincian di scripts/uji-turus-k2b8a.mjs)
+  // Keadaan awal ditulis langsung (logika.ts folder memakai impor tanpa ekstensi).
+  {
+    const awalA8 = { alat: "catat", mode: "pilah", letak: Array(20).fill(-1), pilih: -1, pilahSelesai: false, jenis: 0, turus: [0, 0, 0, 0], turusBenar: [], tabel: [0, 0, 0, 0], tabelBenar: false, bacaMax: -1, bacaLebih: -1, bacaBenar: false, banding: [], samaTemu: false, dataKe: 0, dataGaris: [0, 0, 0], dataSelesai: false, salah: 0 };
+    ujiStruktur("k2bab8", K2B8.daftarMisiK2Bab8, ["A"], { A: awalA8 });
+    const dA8 = K2B8.daftarMisiK2Bab8("A");
+    cek(dA8 === K2B8.MISI_A && dA8.filter((m) => m.wajib).length === 4 && dA8.filter((m) => !m.wajib).length === 2 && dA8.every((m) => m.id.startsWith("a-")), "k2bab8 A: empat wajib, dua bebas, id berawalan a-");
+    cek(dA8.every((m) => !/\d/.test(m.teks) && !/(buku|teman|kelompok|kelas|skor|nilai|soal|tebak|kunci|latihan)/i.test(m.teks)), "k2bab8 A: teks misi tanpa digit dan kata terlarang");
+    cek(dA8.every((m) => !m.cek({ alat: "kerangka" })), "k2bab8 A: alat lain tidak memenuhi misi");
+    const baruA8 = (o) => M0.misiBaru(dA8, { ...awalA8, ...o }, new Set());
+    sama(baruA8({ pilahSelesai: true }), ["a-pilah"], "k2bab8 A: tumpukan terpilah semua memenuhi a-pilah");
+    sama(baruA8({ turusBenar: [0, 2] }), ["a-turus"], "k2bab8 A: dua turus tepat memenuhi a-turus");
+    sama(baruA8({ turusBenar: [1] }), [], "k2bab8 A: satu turus tepat belum memenuhi a-turus");
+    sama(baruA8({ tabelBenar: true }), ["a-tabel"], "k2bab8 A: tabel benar memenuhi a-tabel");
+    sama(baruA8({ bacaBenar: true }), ["a-baca"], "k2bab8 A: bacaan benar memenuhi a-baca");
+    sama(baruA8({ dataSelesai: true }), ["a-data"], "k2bab8 A: data selesai dicatat memenuhi tantangan bebas");
+    sama(baruA8({ samaTemu: true }), ["a-sama"], "k2bab8 A: dua jenis sama banyak memenuhi tantangan bebas");
+    cek(M0.misiBaru(dA8, { ...awalA8, salah: 9, mode: "turus", jenis: 2, pilih: 3, turus: [4, 1, 2, 0], tabel: [7, 5, 3, 5], bacaMax: 0, bacaLebih: 3, banding: [0, 1], dataKe: 4, dataGaris: [2, 1, 1] }, new Set()).length === 0, "k2bab8 A: percobaan keliru dan isian yang belum diperiksa tidak dihitung sebagai misi");
+  }
+  // BAGIAN B (Papan Layar: tempel lambang pada tabel camilan, balon, kursi; judul dan keterangan; banding dua baris; jumlah baris; rincian di scripts/uji-gambar-k2b8b.mjs)
+  // Keadaan awal ditulis langsung (logika.ts folder memakai impor tanpa ekstensi).
+  {
+    const awalB8 = { alat: "layar", mode: "tempel", tempelIndeks: 0, tempel: [0, 0, 0], lambang: "bintang", lambangGanti: false, tempelBenar: [], judulIndeks: 0, judulPilih: null, ketPilih: null, judulBenar: [], bandingIndeks: 0, bandingKata: null, bandingSelisih: 0, bandingBenar: [], jumlahIndeks: 0, jumlahPilih: 0, jumlahBenar: [], salah: 0 };
+    ujiStruktur("k2bab8", K2B8.daftarMisiK2Bab8, ["B"], { B: awalB8 });
+    const dB8 = K2B8.daftarMisiK2Bab8("B");
+    cek(dB8 === K2B8.MISI_B && dB8.filter((m) => m.wajib).length === 4 && dB8.filter((m) => !m.wajib).length === 2 && dB8.every((m) => m.id.startsWith("b-")), "k2bab8 B: empat wajib, dua bebas, id berawalan b-");
+    cek(dB8.every((m) => !/\d/.test(m.teks) && !/(buku|teman|kelompok|kelas|skor|nilai|soal|tebak|kunci|latihan)/i.test(m.teks)), "k2bab8 B: teks misi tanpa digit dan kata terlarang");
+    cek(dB8.every((m) => !m.cek({ alat: "kerangka" })), "k2bab8 B: alat lain tidak memenuhi misi");
+    const baruB8 = (o) => M0.misiBaru(dB8, { ...awalB8, ...o }, new Set());
+    sama(baruB8({ tempelBenar: [0] }), ["b-tempel"], "k2bab8 B: tabel tempel sesuai memenuhi b-tempel");
+    sama(baruB8({ judulBenar: [1] }), ["b-judul"], "k2bab8 B: judul dan keterangan tepat memenuhi b-judul");
+    sama(baruB8({ bandingBenar: [0] }), ["b-banding"], "k2bab8 B: kata dan lebihnya tepat memenuhi b-banding");
+    sama(baruB8({ jumlahBenar: [2] }), ["b-jumlah"], "k2bab8 B: jumlah tepat memenuhi b-jumlah");
+    sama(baruB8({ lambangGanti: true }), ["b-ganti"], "k2bab8 B: lambang diganti memenuhi tantangan bebas");
+    sama(baruB8({ tempelBenar: [0, 1] }), ["b-tempel"], "k2bab8 B: dua tabel belum memenuhi tantangan lengkap");
+    sama(baruB8({ tempelBenar: [0, 1, 2] }), ["b-tempel", "b-lengkap"], "k2bab8 B: tiga tabel memenuhi tantangan lengkap");
+    cek(M0.misiBaru(dB8, { ...awalB8, salah: 9, mode: "jumlah", tempel: [3, 4, 5], tempelIndeks: 2, judulIndeks: 1, judulPilih: 1, ketPilih: 2, bandingIndeks: 2, bandingKata: "sama", bandingSelisih: 4, jumlahIndeks: 1, jumlahPilih: 12 }, new Set()).length === 0, "k2bab8 B: percobaan keliru dan isian yang belum diperiksa tidak dihitung sebagai misi");
+  }
+  void K2B8;
 }
 
 console.log(gagal === 0 ? `SEMUA LULUS (${lulus} cek)` : `GAGAL ${gagal} dari ${lulus + gagal}`);

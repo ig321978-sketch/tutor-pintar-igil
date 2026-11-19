@@ -1,132 +1,147 @@
-import type { AdeganStory } from "./logika-story";
-import { BUAH, BUNGA, KUE, W, diagram, judul, kartu, teks, turus } from "./k2b8B-gambar";
-import { bersih, hapus, hitungAksi, idx, k, redamkan, sorotkan, tambah } from "./k2b8B-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, barisBintang, emo, idBaris, judul, kartu, konfeti, kursi, kotak, mikrofon, panah, panggungDepan, papanLayar, spanduk, teks, tokoh, garis } from "./k2b8B-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k2b8B-bantu";
+import { diagramLengkap } from "./k2b8B-materi-2";
+import { WARNA_SEL } from "./k2b8B-materi-1";
 
-/* ------------------------------ 11. Diagram gambar bunga ------------------------------ */
-export const DG = diagram("bg", BUNGA, "Rangkaian Bunga Wei", "bunga");
-const SUARA_B1 = "Wei sedang merangkai bunga. Ada mawar, lili, tulip, dan aster di dalam rangkaian.";
-const SUARA_B2 = "Kita hitung banyak tiap jenis bunga dengan teliti. Satu hati mewakili satu bunga.";
-const SUARA_B3 = "Mawar ada tujuh, jadi tujuh hati merah. Lili ada empat, jadi empat hati ungu.";
-const SUARA_B4 = "Tulip ada lima, jadi lima hati jingga. Aster ada empat, jadi empat hati biru.";
-const SUARA_B5 = "Mudah melihat yang paling banyak. Mawar paling banyak, karena barisnya paling panjang.";
-const NAMA_AT = ["mawar,", "lili,", "tulip,", "aster"];
+/*
+ * Cerita orisinal IGIL "Bintang Bu Maya" (Kelas 2 Bab 8 Sub-Bab B), akhir cerita Pentas Seni Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b8b.md. Bagian ini: jumlah dua baris dan semua baris, presentasi data, dan penutup (taruhan, tirai terbuka, spanduk).
+ */
 
-export const ADEGAN_DIAGRAM_BUNGA: AdeganStory = {
-  id: "diagram-bunga",
-  judul: "Diagram gambar bunga",
-  sumber: "Materi: membuat diagram gambar",
-  latar: "#FDF2F8",
+/* ------------------------------ 7. Jumlah ------------------------------ */
+const SUARA_G1 = "Bu Maya bertanya, berapa jumlah selendang hijau dan biru?";
+const SUARA_G2 = "Gabungkan dua baris: tiga ditambah lima sama dengan delapan.";
+const SUARA_G3 = "Semua selendang: tujuh ditambah lima ditambah tiga ditambah lima sama dengan dua puluh. Diagram membantu kita menjawab banyak pertanyaan.";
+
+export const ADEGAN_JUMLAH: AdeganStory = {
+  id: "jumlah",
+  judul: "Jumlah dua baris dan semua baris",
+  sumber: "Materi: jumlah dua jenis dan semua jenis",
+  latar: "#F0F9FF",
   ketukan: [
     k(
-      SUARA_B1,
-      tambah(0, judul("Rangkaian bunga")),
-      ...BUNGA.flatMap((d, c) => [tambah(NAMA_AT[c], teks(`bh${c}`, 40 + c * 73, 100, d.g, 34, d.warna), teks(`bm${c}`, 40 + c * 73, 126, d.nama, 10))]),
+      SUARA_G1,
+      bersih(0),
+      tambah(0, judul("Berapa Jumlahnya?"), ...panggungDepan("dn"), ...diagramLengkap({ jumlah: true })),
+      tambah("Maya", ...tokoh("bm", 40, 175, "Bu Maya", 22)),
+      tambah("berapa", emo("tz", 76, 150, E.tanya, 20)),
+      sorotkan("hijau", "nm2", "b20", "b21", "b22"),
+      sorotkan("biru?", "nm3"),
     ),
-    k(SUARA_B2, bersih(0), tambah(0, ...DG.dasar), tambah("jenis", ...DG.idLabel.map((_, c) => DG.label(c)))),
-    k(SUARA_B3, tambah(idx(SUARA_B3, "tujuh", 2), ...DG.gambar(0), DG.angka(0)), tambah(idx(SUARA_B3, "empat", 2), ...DG.gambar(1), DG.angka(1))),
-    k(SUARA_B4, tambah(idx(SUARA_B4, "lima", 2), ...DG.gambar(2), DG.angka(2)), tambah(idx(SUARA_B4, "empat", 2), ...DG.gambar(3), DG.angka(3))),
-    k(SUARA_B5, sorotkan("Mawar", ...DG.idGambar(0))),
-  ],
-};
-
-/* ------------------------------ 12. Sama banyak, lebihnya, kurangnya ------------------------------ */
-const SUARA_S1 = "Lihat baris lili dan baris aster.";
-const SUARA_S2 = "Lili ada empat hati. Aster ada empat hati. Lili dan aster sama banyak.";
-const SUARA_S3 = "Kalau dua baris sama panjang, berarti jumlahnya sama banyak.";
-const SUARA_S4 = "Sekarang tulip dan lili. Tulip lebih banyak satu dari lili. Lili lebih sedikit satu dari tulip.";
-const SUARA_S5 = "Sekarang mawar dan aster. Mawar lebih banyak tiga dari aster. Aster kurang tiga dari mawar.";
-
-export const ADEGAN_SAMA_BANYAK: AdeganStory = {
-  id: "sama-banyak",
-  judul: "Sama banyak, lebihnya, kurangnya",
-  sumber: "Materi: sama banyak dan selisih",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(SUARA_S1, tambah(0, ...DG.semua, ...BUNGA.map((_, c) => DG.angka(c)))),
-    k(SUARA_S2, sorotkan("Lili", ...DG.idGambar(1)), redamkan("Aster", ...DG.idGambar(1)), sorotkan("Aster", ...DG.idGambar(3)), sorotkan("sama", ...DG.idGambar(1))),
-    k(SUARA_S3, redamkan(0, ...DG.idGambar(1), ...DG.idGambar(3)), tambah("Kalau", ...kartu("sb", 30, 156, 240, 22, W.emas, ["sama panjang = sama banyak"], 10))),
-    k(SUARA_S4, hapus(0, "sb-k", "sb-t0"), sorotkan("tulip", "bgg2_4"), tambah("lebih", ...kartu("sl", 200, 30, 96, 22, W.emas, ["selisih: 1"], 10))),
-    k(SUARA_S5, redamkan(0, "bgg2_4"), hapus(0, "sl-k", "sl-t0"), sorotkan("mawar", "bgg0_4", "bgg0_5", "bgg0_6"), tambah("lebih", ...kartu("sm", 200, 30, 96, 22, W.emas, ["selisih: 3"], 10))),
-  ],
-};
-
-/* ------------------------------ 13. Dari turus ke gambar ------------------------------ */
-const JERUK = [BUAH[1]];
-const TJ = turus("tj", JERUK, "Dari turus ke gambar", { y0: 62 });
-const TD = diagram("tg", JERUK, "", "buah", { y0: 128, ketY: 184 });
-const SUARA_G1 = "Data yang sama bisa disajikan dengan turus, dan dengan gambar. Kita lihat jeruk.";
-const SUARA_G2 = "Jeruk ada enam. Pada turus, setiap jeruk diberi goresan. Satu, dua, tiga, empat, lima, enam.";
-const SUARA_G3 = "Empat garis tegak dan satu garis miring jadi satu ikat lima. Garis keenam berdiri sendiri.";
-const SUARA_G4 = "Sekarang kita buat dengan bintang. Satu bintang untuk satu jeruk. Satu, dua, tiga, empat, lima, enam bintang jingga.";
-const SUARA_G5 = "Satu ikat lima dan satu garis sama dengan enam bintang. Banyaknya sama.";
-const SUARA_G6 = "Turus dan diagram gambar memuat data yang sama. Hanya bentuk penyajiannya yang berbeda.";
-
-export const ADEGAN_TURUS_KE_GAMBAR: AdeganStory = {
-  id: "turus-ke-gambar",
-  judul: "Dari turus ke diagram gambar",
-  sumber: "Materi: turus dan diagram gambar",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(SUARA_G1, tambah(0, TJ.jd), tambah("jeruk.", TJ.label(0))),
-    k(SUARA_G2, ...hitungAksi(SUARA_G2, TJ.goresan(0), { setelah: "Jeruk" }), tambah(idx(SUARA_G2, "enam", 2), TJ.angka(0))),
-    k(SUARA_G3, sorotkan("Empat", "tjs0_0", "tjs0_1", "tjs0_2", "tjs0_3"), sorotkan("miring", "tjs0_4"), redamkan("ikat", "tjs0_0", "tjs0_1", "tjs0_2", "tjs0_3", "tjs0_4"), sorotkan("keenam", "tjs0_5")),
-    k(SUARA_G4, redamkan(0, "tjs0_5"), tambah(idx(SUARA_G4, "jeruk"), TD.label(0)), ...hitungAksi(SUARA_G4, TD.gambar(0), { setelah: "jeruk." }), tambah(idx(SUARA_G4, "enam"), TD.angka(0), TD.ket)),
     k(
-      SUARA_G5,
-      sorotkan("Satu", "tjs0_0", "tjs0_1", "tjs0_2", "tjs0_3", "tjs0_4", "tjs0_5"),
-      tambah("sama", teks("ik", 262, 100, "5 + 1 = 6", 12, W.coklat)),
-      sorotkan("enam", ...TD.idGambar(0)),
+      SUARA_G2,
+      hapus(0, "tz"),
+      tambah("dua", teks("d2", 150, 152, "2 baris", 8, W.ungu, { z: 2 })),
+      tambah("Gabungkan", panah("pa", 150, 124, 0, 20, W.ungu, 2.4)),
+      tambah("tiga", ...barisBintang("gh", 96, 158, 3, WARNA_SEL[2])),
+      tambah("lima", ...barisBintang("gb", 141, 158, 5, WARNA_SEL[3])),
+      tambah("delapan.", teks("pj", 244, 162, "3 + 5 = 8", 12, W.ungu, { z: 2 })),
     ),
-    k(SUARA_G6, redamkan(0, "tjs0_0", "tjs0_1", "tjs0_2", "tjs0_3", "tjs0_4", "tjs0_5", ...TD.idGambar(0)), tambah("Turus", ...kartu("tk", 100, 154, 190, 20, W.hijauMuda, ["data sama, bentuk berbeda"], 9))),
-  ],
-};
-
-/* ------------------------------ 14. Kira mencatat kue dengan turus ------------------------------ */
-const KT = turus("kt", KUE, "Kue Kesukaan");
-const SUARA_K1 = "Kira mencatat kue kesukaan. Jawaban yang muncul di layar dicatat dengan turus.";
-const SUARA_K2 = "Cucur ada enam. Satu, dua, tiga, empat, lima, enam. Goresan kelima miring.";
-const SUARA_K3 = "Onde-onde ada lima. Satu, dua, tiga, empat, lima.";
-const SUARA_K4 = "Lemper ada tiga. Satu, dua, tiga.";
-const SUARA_K5 = "Kue talam ada tujuh. Satu, dua, tiga, empat, lima, enam, tujuh. Satu ikat lima, dan dua garis lagi.";
-
-export const ADEGAN_DATA_KUE: AdeganStory = {
-  id: "data-kue",
-  judul: "Kira mencatat kue kesukaan",
-  sumber: "Materi: mencatat data dengan turus",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(SUARA_K1, tambah(0, KT.jd), tambah("turus.", KT.label(0), KT.label(1), KT.label(2), KT.label(3))),
-    k(SUARA_K2, ...hitungAksi(SUARA_K2, KT.goresan(0), { setelah: "Cucur" }), tambah(idx(SUARA_K2, "enam", 2), KT.angka(0)), sorotkan("miring.", "kts0_4")),
-    k(SUARA_K3, redamkan(0, "kts0_4"), ...hitungAksi(SUARA_K3, KT.goresan(1), { setelah: "Onde-onde" }), tambah(idx(SUARA_K3, "lima", 2), KT.angka(1))),
-    k(SUARA_K4, ...hitungAksi(SUARA_K4, KT.goresan(2), { setelah: "Lemper" }), tambah(idx(SUARA_K4, "tiga", 2), KT.angka(2))),
-    k(SUARA_K5, ...hitungAksi(SUARA_K5, KT.goresan(3), { setelah: "talam" }), tambah(idx(SUARA_K5, "tujuh", 2), KT.angka(3)), sorotkan("ikat", "kts3_4")),
-  ],
-};
-
-/* ------------------------------ 15. Diagram gambar kue ------------------------------ */
-const DK = diagram("dk", KUE, "Kue Kesukaan", "anak");
-const SUARA_C1 = "Sekarang turus kue kita ubah menjadi diagram gambar. Satu lingkaran untuk satu anak.";
-const SUARA_C2 = "Cucur ada enam, jadi enam lingkaran. Onde-onde ada lima, jadi lima lingkaran.";
-const SUARA_C3 = "Lemper ada tiga, jadi tiga lingkaran. Kue talam ada tujuh, jadi tujuh lingkaran.";
-const SUARA_C4 = "Sekarang kita baca diagramnya. Talam paling banyak, tujuh anak. Lemper paling sedikit, tiga anak.";
-const SUARA_C5 = "Cucur lebih banyak satu dari onde-onde. Talam lebih banyak empat dari lemper.";
-
-export const ADEGAN_DIAGRAM_KUE: AdeganStory = {
-  id: "diagram-kue",
-  judul: "Diagram gambar kue kesukaan",
-  sumber: "Materi: diagram gambar dari turus",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(SUARA_C1, tambah(0, ...DK.dasar)),
     k(
-      SUARA_C2,
-      tambah("Cucur", DK.label(0)),
-      tambah(idx(SUARA_C2, "enam", 2), ...DK.gambar(0), DK.angka(0)),
-      tambah(idx(SUARA_C2, "Onde-onde"), DK.label(1)),
-      tambah(idx(SUARA_C2, "lima", 2), ...DK.gambar(1), DK.angka(1)),
+      SUARA_G3,
+      hapus(0, "pa", ...idBaris("gh", 3), ...idBaris("gb", 5), "pj", "d2"),
+      tambah("tujuh", teks("eq", 150, 162, "7", 12, W.ungu, { z: 2 })),
+      ubah("lima", { id: "eq", isi: "7 + 5" }),
+      ubah("tiga", { id: "eq", isi: "7 + 5 + 3" }),
+      ubah("lima@2", { id: "eq", isi: "7 + 5 + 3 + 5" }),
+      ubah("dua", { id: "eq", isi: "7 + 5 + 3 + 5 = 20" }),
+      tambah("puluh.", teks("tt", 262, 112, "20", 20, W.hijau, { z: 2 })),
+      tambah("pertanyaan.", emo("lp", 262, 140, E.lampu, 20)),
     ),
-    k(SUARA_C3, tambah("Lemper", DK.label(2)), tambah(idx(SUARA_C3, "tiga", 2), ...DK.gambar(2), DK.angka(2)), tambah("talam", DK.label(3)), tambah(idx(SUARA_C3, "tujuh", 2), ...DK.gambar(3), DK.angka(3))),
-    k(SUARA_C4, sorotkan("Talam", ...DK.idGambar(3)), redamkan("Lemper", ...DK.idGambar(3)), sorotkan("Lemper", ...DK.idGambar(2))),
-    k(SUARA_C5, redamkan(0, ...DK.idGambar(2)), sorotkan("Cucur", "dkg0_5"), sorotkan("Talam", "dkg3_3", "dkg3_4", "dkg3_5", "dkg3_6")),
+  ],
+};
+
+/* ------------------------------ 8. Presentasi ------------------------------ */
+const SUARA_H1 = "Hari pentas tiba, dan Bu Sari meminta Chacha menyajikan data di depan penonton.";
+const SUARA_H2 = "Chacha menyebut judul, selendang yang paling banyak dan paling sedikit, lalu lebihnya dan kurangnya.";
+const SUARA_H3 = "Suaranya jelas dan percaya diri. Penonton bertepuk tangan!";
+
+const KURSI_X = [24, 76, 128, 180, 232];
+const kursiBaris = (): Obj[] => KURSI_X.flatMap((x, i) => kursi(`ks${i}`, x, 128));
+const idKursiBaris = (): string[] => KURSI_X.flatMap((_, i) => [`ks${i}`, `ks${i}-s`]);
+const papanMini = (): Obj[] => [
+  ...papanLayar("pl", 70, 34, 160, 62, 1, 4),
+  ...[7, 5, 3, 5].flatMap((n, i) => barisBintang(`m${i}`, 84, 44 + i * 14, n, WARNA_SEL[i], 3.6, 9)),
+];
+
+export const ADEGAN_PRESENTASI: AdeganStory = {
+  id: "presentasi",
+  judul: "Chacha menyajikan data",
+  sumber: "Materi: menyajikan dan mempresentasikan data",
+  latar: "#FFF1F2",
+  ketukan: [
+    k(
+      SUARA_H1,
+      bersih(0),
+      tambah(0, judul("Hari Pentas"), ...panggungDepan("dn"), ...papanMini()),
+      tambah("Sari", ...tokoh("bs", 246, 172, "Bu Sari")),
+      tambah("Chacha", ...tokoh("ch", 110, 172, "Chacha")),
+      tambah("menyajikan", ...mikrofon("mk", 150, 170, 30)),
+      tambah("penonton.", ...kursiBaris(), emo("p0", 40, 120, E.senyum, 16), emo("p1", 144, 120, E.senyum, 16), emo("p2", 248, 120, E.senyum, 16)),
+    ),
+    k(
+      SUARA_H2,
+      hapus(0, ...idKursiBaris(), "p0", "p1", "p2"),
+      tambah("judul,", ...kartu("c0", 14, 106, 56, 18, W.krem, ["judul"], 8)),
+      tambah("banyak", ...kartu("c1", 74, 106, 72, 18, W.hijauMuda, ["paling banyak"], 8)),
+      tambah("sedikit,", ...kartu("c2", 150, 106, 72, 18, W.merahMuda, ["paling sedikit"], 8)),
+      tambah("lebihnya", ...kartu("c3", 226, 106, 62, 18, W.lavender, ["lebih, kurang"], 8)),
+    ),
+    k(
+      SUARA_H3,
+      hapus(0, "c0-k", "c0-t0", "c1-k", "c1-t0", "c2-k", "c2-t0", "c3-k", "c3-t0"),
+      tambah("jelas", emo("kl", 180, 140, E.kilau, 18)),
+      tambah("Penonton", ...kursiBaris(), emo("p0", 40, 120, E.senyum, 16), emo("p1", 144, 120, E.senyum, 16), emo("p2", 248, 120, E.senyum, 16)),
+      tambah("bertepuk", emo("t0", 72, 112, E.tepuk, 18), emo("t1", 176, 112, E.tepuk, 18), emo("t2", 280, 112, E.tepuk, 18)),
+      tambah("tangan!", emo("sr", 210, 140, E.sorak, 20)),
+    ),
+  ],
+};
+
+/* ------------------------------ 9. Penutup ------------------------------ */
+const SUARA_N1 = "Chacha menepati taruhannya dan menyapu seluruh panggung sambil bersenandung.";
+const SUARA_N2 = "Tirai merah terbuka lebar, dan Pentas Seni Sekolah pun dimulai. Penonton bersorak!";
+const SUARA_N3 = "Menurutmu, data apa di sekitarmu yang bisa dibuat diagram gambar? Terima kasih, Chacha, Dika, Nia, Bu Sari, dan Bu Maya!";
+
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Taruhan, tirai terbuka, dan spanduk",
+  sumber: "Materi: penutup dan perayaan pentas",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_N1,
+      bersih(0),
+      tambah(0, judul("Taruhan Chacha"), ...panggungDepan("dn")),
+      tambah("Chacha", ...tokoh("ch", 150, 172, "Chacha")),
+      tambah("menepati", emo("ok", 190, 140, E.benar, 20)),
+      tambah("menyapu", emo("sp", 106, 166, E.sapu, 26), emo("db", 74, 168, E.debu, 18)),
+      tambah("seluruh", garis("jl", 30, 160, 240, 0, W.coklat, 1.4, { z: 1, op: 0.6 })),
+      tambah("bersenandung.", emo("n1", 200, 112, E.not, 20), emo("n2", 230, 100, E.not, 16)),
+    ),
+    k(
+      SUARA_N2,
+      bersih(0),
+      tambah(0, ...panggungDepan("dn"), kotak("tk2", 14, 12, 136, 156, W.tirai, W.tiraiTua, { rx: 3, tebal: 1.4, z: 0 }), kotak("tr2", 150, 12, 136, 156, W.tirai, W.tiraiTua, { rx: 3, tebal: 1.4, z: 0 })),
+      tambah("Tirai", garis("lt", 82, 14, 0, 150, W.tiraiTua, 1.2, { z: 1 }), garis("lr", 218, 14, 0, 150, W.tiraiTua, 1.2, { z: 1 })),
+      ubah("terbuka", { id: "tk2", w: 36 }, { id: "tr2", x: 250, w: 36 }, { id: "lt", x: 30 }, { id: "lr", x: 266 }),
+      tambah("lebar,", emo("lp", 150, 60, E.lampu, 22), kotak("pt", 90, 112, 120, 40, "#FEF3C7", "#F59E0B", { rx: 6, tebal: 1.2, z: 1, op: 0.6 })),
+      tambah("dimulai.", emo("b1", 60, 80, E.balon, 24), emo("b2", 240, 80, E.balon, 24)),
+      tambah("bersorak!", emo("t0", 110, 140, E.tepuk, 22), emo("t1", 190, 140, E.tepuk, 22), emo("sr", 150, 100, E.sorak, 24)),
+    ),
+    k(
+      SUARA_N3,
+      bersih(0),
+      tambah(0, ...panggungDepan("dn")),
+      tambah("Menurutmu,", ...spanduk("sp", 30, 22, 240, "PENTAS SENI MERIAH", 12)),
+      tambah("data", emo("pk", 150, 84, E.pikir, 24)),
+      tambah("gambar?", teks("qq", 150, 112, "diagram gambar?", 10, W.hijau, { z: 2 })),
+      tambah("Chacha,", ...tokoh("ch", 40, 172, "Chacha")),
+      tambah("Dika,", ...tokoh("dk", 94, 172, "Dika")),
+      tambah("Nia,", ...tokoh("ni", 148, 172, "Nia")),
+      tambah("Sari,", ...tokoh("bs", 202, 172, "Bu Sari")),
+      tambah("Maya!", ...tokoh("bm", 262, 172, "Bu Maya"), emo("lb", 262, 138, E.lambai, 20), ...konfeti("kf", 56, 10), emo("b1", 36, 90, E.balon, 22), emo("b2", 266, 90, E.balon, 22)),
+    ),
   ],
 };

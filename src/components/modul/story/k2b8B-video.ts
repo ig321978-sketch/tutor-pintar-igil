@@ -1,59 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_BACA_BARIS, ADEGAN_BAGIAN, ADEGAN_BUAH_CAMPUR, ADEGAN_DIAGRAM_BUAH, ADEGAN_SATU_BINTANG } from "./k2b8B-materi-1";
-import { ADEGAN_GAMBAR_LAIN, ADEGAN_JUMLAH_BUAH, ADEGAN_LEBIHNYA, ADEGAN_PALING, ADEGAN_SAMA_UKURAN } from "./k2b8B-materi-2";
-import { ADEGAN_DATA_KUE, ADEGAN_DIAGRAM_BUNGA, ADEGAN_DIAGRAM_KUE, ADEGAN_SAMA_BANYAK, ADEGAN_TURUS_KE_GAMBAR } from "./k2b8B-materi-3";
-import { ADEGAN_BERLARI, ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_SATU, ADEGAN_LATIHAN_TIGA, ADEGAN_PARSEL, ADEGAN_PENUTUP, ADEGAN_PERMAINAN } from "./k2b8B-materi-4";
-import { ADEGAN_LUAR_GAMBAR, ADEGAN_LUAR_GAMBAR_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k2b8B-luar-1";
-import { ADEGAN_LUAR_BANDING, ADEGAN_LUAR_BANDING_TERAPAN, ADEGAN_LUAR_KUNCI, ADEGAN_LUAR_KUNCI_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k2b8B-luar-2";
+import { ADEGAN_PAPAN_LAYAR, ADEGAN_SATU_BINTANG, ADEGAN_SALAH_GAMBAR } from "./k2b8B-materi-1";
+import { ADEGAN_SAMA_UKURAN, ADEGAN_BACA_DIAGRAM, ADEGAN_BANDINGKAN } from "./k2b8B-materi-2";
+import { ADEGAN_JUMLAH, ADEGAN_PRESENTASI, ADEGAN_PENUTUP } from "./k2b8B-materi-3";
+import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_TEMPEL, ADEGAN_LUAR_TEMPEL_TERAPAN } from "./k2b8B-luar-1";
+import { ADEGAN_LUAR_BANDING, ADEGAN_LUAR_BANDING_TERAPAN, ADEGAN_LUAR_DETEKTIF, ADEGAN_LUAR_DETEKTIF_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k2b8B-luar-2";
 
-/** Kelas 2 Bab 8 Sub-Bab B (Diagram Gambar): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 2 Bab 8 Sub-Bab B (diagram gambar), akhir cerita Pentas Seni Sekolah.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Bintang Bu Maya" (Chacha, Dika, Nia, Bu Sari, Bu Maya).
+ * Video kedua: tiga metode global (Sticky Note Graph, Row Comparing, Graph Detective), terpisah.
+ */
+export const JUDUL_K2B8B = "Bintang Bu Maya";
+
 export const VIDEO_MATERI_K2B8B: VideoStory = {
   id: "k2b8B-materi",
-  judul: "Diagram Gambar",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K2B8B,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "diagram gambar", daftar: ["Membaca diagram gambar", "Membandingkan data diagram", "Membuat diagram gambar"] }),
-    ADEGAN_BUAH_CAMPUR,
+    adeganSapaan({ jenis: "materi", topik: "diagram gambar", daftar: ["Membuat diagram gambar", "Membaca diagram gambar", "Menyajikan data"] }),
+    ADEGAN_PAPAN_LAYAR,
     ADEGAN_SATU_BINTANG,
-    ADEGAN_DIAGRAM_BUAH,
-    ADEGAN_BAGIAN,
-    ADEGAN_BACA_BARIS,
-    ADEGAN_GAMBAR_LAIN,
+    ADEGAN_SALAH_GAMBAR,
     ADEGAN_SAMA_UKURAN,
-    ADEGAN_PALING,
-    ADEGAN_LEBIHNYA,
-    ADEGAN_JUMLAH_BUAH,
-    ADEGAN_DIAGRAM_BUNGA,
-    ADEGAN_SAMA_BANYAK,
-    ADEGAN_TURUS_KE_GAMBAR,
-    ADEGAN_DATA_KUE,
-    ADEGAN_DIAGRAM_KUE,
-    ADEGAN_PERMAINAN,
-    ADEGAN_BERLARI,
-    ADEGAN_PARSEL,
-    ADEGAN_LATIHAN_SATU,
-    ADEGAN_LATIHAN_DUA,
-    ADEGAN_LATIHAN_TIGA,
+    ADEGAN_BACA_DIAGRAM,
+    ADEGAN_BANDINGKAN,
+    ADEGAN_JUMLAH,
+    ADEGAN_PRESENTASI,
     ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K2B8B: VideoStory = {
   id: "k2b8B-luar",
-  judul: "Diagram Gambar: Metode dari Luar",
-  subjudul: "Tiga metode luar",
+  judul: JUDUL_K2B8B,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "diagram gambar" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "diagram gambar", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_GAMBAR,
-    ADEGAN_LUAR_GAMBAR_TERAPAN,
-    ADEGAN_LUAR_KUNCI,
-    ADEGAN_LUAR_KUNCI_TERAPAN,
+    ADEGAN_LUAR_TEMPEL,
+    ADEGAN_LUAR_TEMPEL_TERAPAN,
     ADEGAN_LUAR_BANDING,
     ADEGAN_LUAR_BANDING_TERAPAN,
+    ADEGAN_LUAR_DETEKTIF,
+    ADEGAN_LUAR_DETEKTIF_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

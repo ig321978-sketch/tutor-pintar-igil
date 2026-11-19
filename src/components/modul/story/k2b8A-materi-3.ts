@@ -1,98 +1,164 @@
-import type { AdeganStory } from "./logika-story";
-import { HEWAN, W, buatDt, emo, judul, teks } from "./k2b8A-gambar";
-import { hapus, idx, k, redamkan, sorotkan, tambah, ubah } from "./k2b8A-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, emo, garis, jepit, judul, kartu, kotak, lampu, lantai, papanLayar, rangka, tabel, teks, tirai, tokoh, turus } from "./k2b8A-gambar";
+import { bersih, hapus, k, tambah, ubah } from "./k2b8A-bantu";
+import { barisTurus } from "./k2b8A-materi-2";
 
-const DH = buatDt(HEWAN);
-const SEMUA_BANYAK = HEWAN.map((_, r) => DH.banyak(r));
+/*
+ * Cerita orisinal IGIL "Alat Musik Pak Hendra" (Kelas 2 Bab 8 Sub-Bab A, diagram turus), awal cerita Pentas Seni Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b8a.md. Bagian ini: membaca diagram turus, mengumpulkan data sendiri, dan penutup (jembatan ke Sub-Bab B).
+ */
 
-/* ------------------------------ 8. Diagram turus hewan ternak ------------------------------ */
-const SUARA_H1 = "Halim membuat turus untuk setiap hewan. Ayam ada sepuluh, yaitu dua ikat lima.";
-const SUARA_H2 = "Kambing ada delapan, yaitu satu ikat lima dan tiga garis.";
-const SUARA_H3 = "Sapi ada enam, yaitu satu ikat lima dan satu garis.";
-const SUARA_H4 = "Bebek ada sebelas, yaitu dua ikat lima dan satu garis.";
-const SUARA_H5 = "Banyaknya ditaruh di kolom banyak: sepuluh, delapan, enam, dan sebelas.";
+/* ------------------------------ 7. Membaca diagram turus ------------------------------ */
+const SUARA_R1 = "Turus yang paling panjang menunjukkan alat musik paling banyak, yaitu angklung.";
+const SUARA_R2 = "Gendang dan rebana sama panjang, jadi sama banyak, yaitu empat.";
+const SUARA_R3 = "Angklung sembilan dan seruling enam. Angklung tiga lebihnya dari seruling, dan seruling tiga kurangnya dari angklung.";
 
-export const ADEGAN_TURUS_HEWAN: AdeganStory = {
-  id: "turus-hewan",
-  judul: "Diagram turus hewan ternak",
-  sumber: "Materi: diagram turus hewan",
-  latar: "#FFF7ED",
+/** Tabel turus lengkap alat musik (angklung 9, seruling 6, gendang 4, rebana 4) beserta kepala, judul tabel, dan angka banyaknya. */
+const TABEL_LENGKAP: Obj[] = [
+  ...tabel("tb", 15, 44, [80, 120, 70], 20, 22, 4),
+  teks("hn", 55, 58, "Nama", 9, W.biru),
+  teks("ht", 155, 58, "Turus", 9, W.biru),
+  teks("hb", 250, 58, "Banyaknya", 9, W.biru),
+  teks("jj", 150, 38, "Alat Musik Pentas", 10, W.merah),
+  ...barisTurus("r0", 0, "Angklung", 9),
+  ...barisTurus("r1", 1, "Seruling", 6),
+  ...barisTurus("r2", 2, "Gendang", 4),
+  ...barisTurus("r3", 3, "Rebana", 4),
+  ...[9, 6, 4, 4].map((n, r) => teks(`rb${r}`, 250, 79 + 22 * r, String(n), 11, W.merah)),
+];
+const sorotBaris = (id: string, r: number): Obj => kotak(id, 17, 64 + 22 * r + 1, 266, 20, undefined, W.hijau, { rx: 3, tebal: 2.6, z: 5 });
+
+export const ADEGAN_BACA_DIAGRAM: AdeganStory = {
+  id: "baca-diagram",
+  judul: "Membaca diagram turus",
+  sumber: "Materi: membaca paling banyak, sama, lebih, kurang",
+  latar: "#ECFDF5",
   ketukan: [
     k(
-      SUARA_H1,
-      tambah(0, judul("Turus hewan ternak"), ...DH.kepala()),
-      tambah(idx(SUARA_H1, "setiap"), ...HEWAN.flatMap((_, r) => DH.kerangkaBaris(r))),
-      tambah(idx(SUARA_H1, "dua"), ...DH.ikat(0, 0)),
-      tambah(idx(SUARA_H1, "lima."), ...DH.ikat(0, 1)),
+      SUARA_R1,
+      tambah(0, judul("Baca Diagram Turus"), ...TABEL_LENGKAP),
+      tambah("panjang", sorotBaris("hl", 0)),
+      tambah("banyak,", teks("pb", 150, 166, "paling banyak", 10, W.hijau)),
+      tambah("angklung.", emo("st", 8, 75, E.bintang, 14)),
     ),
-    k(SUARA_H2, tambah(idx(SUARA_H2, "satu"), ...DH.ikat(1, 0)), tambah(idx(SUARA_H2, "tiga"), ...DH.turus(1, 5, 8))),
-    k(SUARA_H3, tambah(idx(SUARA_H3, "satu"), ...DH.ikat(2, 0)), tambah(idx(SUARA_H3, "garis."), DH.garisKe(2, 5))),
-    k(SUARA_H4, tambah(idx(SUARA_H4, "dua"), ...DH.ikat(3, 0)), tambah(idx(SUARA_H4, "lima"), ...DH.ikat(3, 1)), tambah(idx(SUARA_H4, "garis."), DH.garisKe(3, 10))),
     k(
-      SUARA_H5,
-      tambah(idx(SUARA_H5, "sepuluh,"), SEMUA_BANYAK[0]),
-      tambah(idx(SUARA_H5, "delapan,"), SEMUA_BANYAK[1]),
-      tambah(idx(SUARA_H5, "enam,"), SEMUA_BANYAK[2]),
-      tambah(idx(SUARA_H5, "sebelas."), SEMUA_BANYAK[3]),
+      SUARA_R2,
+      hapus(0, "hl", "st", "pb"),
+      tambah("Gendang", sorotBaris("h2", 2)),
+      tambah("rebana", sorotBaris("h3", 3)),
+      tambah("sama", garis("br", 291, 119, 0, 22, W.merah, 2, { z: 5 }), teks("eq", 296, 134, "=", 14, W.merah)),
+      tambah("banyak,", teks("pb", 150, 166, "sama banyak", 10, W.hijau)),
+      tambah("empat.", emo("ok", 8, 130, E.benar, 14)),
+    ),
+    k(
+      SUARA_R3,
+      bersih(0),
+      tambah(0, judul("Lebih dan Kurang"), teks("la", 46, 82, "Angklung", 9, W.biru), ...turus("ta", 84, 66, 9, W.biru, 26, 8, 2.6)),
+      tambah("sembilan", teks("n9", 176, 82, "9", 12, W.merah)),
+      tambah("seruling", teks("ls", 46, 122, "Seruling", 9, W.biru), ...turus("ts", 84, 106, 6, W.biru, 26, 8, 2.6)),
+      tambah("enam.", teks("n6", 176, 122, "6", 12, W.merah)),
+      tambah("tiga", teks("l3", 136, 56, "3 lebih", 10, W.merah)),
+      ubah("tiga", ...["ta-g6", "ta-g7", "ta-g8"].map((id) => ({ id, warna: W.merah, tebal: 3.6 }))),
+      tambah("lebihnya", garis("gd", 124, 58, 0, 84, W.hijau, 1.4, { putus: true, z: 4 })),
+      tambah("tiga@2", ...[6, 7, 8].map((i) => garis(`gh${i}`, 84 + 36 + (i - 5) * 8, 106, 0, 26, W.merah, 2.4, { putus: true, op: 0.4, z: 2 }))),
+      tambah("kurangnya", teks("k3", 136, 146, "3 kurang", 10, W.ungu)),
     ),
   ],
 };
 
-/* ------------------------------ 9. Membaca: paling banyak dan paling sedikit ------------------------------ */
-const SUARA_B1 = "Sekarang kita membaca diagram turus. Lihat baris yang paling panjang dan baris yang paling pendek.";
-const SUARA_B2 = "Turus bebek paling panjang, jadi bebek paling banyak. Banyak bebek ada sebelas.";
-const SUARA_B3 = "Sekarang baris yang paling pendek. Turus sapi paling pendek, jadi sapi paling sedikit.";
-const SUARA_B4 = "Kita periksa dengan kolom banyak. Bebek sebelas paling banyak, sapi enam paling sedikit.";
+/* ------------------------------ 8. Mengumpulkan data sendiri ------------------------------ */
+const SUARA_M1 = "Nia bertanya kepada dua belas anak: penampilan apa yang paling ingin kalian tonton?";
+const SUARA_M2 = "Setiap anak menjawab satu kali, dan Nia langsung menulis satu garis di baris yang tepat dengan tertib.";
+const SUARA_M3 = "Hasilnya tari lima, musik empat, drama tiga. Tari paling banyak dipilih.";
 
-export const ADEGAN_BACA_PALING: AdeganStory = {
-  id: "baca-paling",
-  judul: "Membaca: paling banyak dan paling sedikit",
-  sumber: "Materi: membaca diagram turus",
-  latar: "#F0F9FF",
+/** Dua belas anak kecil: enam di kiri (x 28-80) dan enam di kanan (x 220-272). */
+const ANAK: Obj[] = Array.from({ length: 12 }, (_, i) => {
+  const kiri = i < 6;
+  const j = i % 6;
+  return emo(`kd${i}`, (kiri ? 28 : 220) + (j % 3) * 26, 100 + Math.floor(j / 3) * 26, E.anak, 20);
+});
+
+export const ADEGAN_DATA_SENDIRI: AdeganStory = {
+  id: "data-sendiri",
+  judul: "Mengumpulkan data sendiri",
+  sumber: "Materi: mengumpulkan data dengan turus",
+  latar: "#FDF4FF",
   ketukan: [
-    k(SUARA_B1, tambah(0, judul("Membaca diagram turus"), ...DH.lengkap()), sorotkan(idx(SUARA_B1, "panjang"), ...DH.sorot(3)), sorotkan(idx(SUARA_B1, "pendek."), ...DH.sorot(2))),
-    k(SUARA_B2, redamkan(0, ...DH.sorot(2)), tambah(idx(SUARA_B2, "paling"), emo("mk", 266, 30, "\u{1F451}", 18))),
-    k(SUARA_B3, hapus(0, "mk"), redamkan(0, ...DH.sorot(3)), sorotkan(idx(SUARA_B3, "sapi"), ...DH.sorot(2))),
     k(
-      SUARA_B4,
-      redamkan(0, ...DH.sorot(2)),
-      tambah(idx(SUARA_B4, "kolom"), ...SEMUA_BANYAK),
-      sorotkan(idx(SUARA_B4, "Bebek"), ...DH.sorot(3)),
-      redamkan(idx(SUARA_B4, "sapi"), ...DH.sorot(3)),
-      sorotkan(idx(SUARA_B4, "sapi"), ...DH.sorot(2)),
+      SUARA_M1,
+      tambah(0, judul("Bertanya kepada Anak-Anak"), ...lantai("lt", 150), ...tokoh("ni", 150, 184, "Nia"), ...jepit("pj", 172, 138, 22, 26)),
+      tambah("dua", teks("n12", 150, 40, "12 anak", 11, W.ungu), ...ANAK),
+      tambah("penampilan", ...kartu("bt", 14, 66, 52, 20, W.pink, ["tari"], 9), ...kartu("bu", 124, 66, 52, 20, W.krem, ["musik"], 9), ...kartu("bd", 234, 66, 52, 20, W.hijauMuda, ["drama"], 9)),
+    ),
+    k(
+      SUARA_M2,
+      bersih(0),
+      tambah(
+        0,
+        judul("Satu Jawaban, Satu Garis"),
+        ...tokoh("ni", 40, 184, "Nia"),
+        kotak("bd", 84, 30, 208, 100, "#FFFFFF", W.biru, { rx: 6, tebal: 1.6, z: -1 }),
+        garis("bs1", 84, 68, 208, 0, W.biru, 1, { z: -0.5 }),
+        garis("bs2", 84, 100, 208, 0, W.biru, 1, { z: -0.5 }),
+        teks("a0", 112, 52, "Tari", 10, W.ungu),
+        teks("a1", 112, 84, "Musik", 10, W.ungu),
+        teks("a2", 112, 116, "Drama", 10, W.ungu),
+      ),
+      tambah("menjawab", emo("kd", 40, 128, E.anak, 22), emo("bb", 40, 102, "\u{1F4AC}", 18)),
+      tambah("satu", teks("n1", 190, 152, "1 anak = 1 garis", 10, W.merah)),
+      tambah("menulis", ...turus("u0", 140, 43, 5, W.biru, 18, 6, 2)),
+      tambah("garis", ...turus("u1", 140, 75, 4, W.biru, 18, 6, 2)),
+      tambah("tertib.", ...turus("u2", 140, 107, 3, W.biru, 18, 6, 2)),
+    ),
+    k(
+      SUARA_M3,
+      hapus(0, "n1", "kd", "bb"),
+      tambah(0, teks("nj", 190, 152, "jumlah 12 anak", 10, W.ungu)),
+      tambah("lima,", teks("a5", 262, 52, "5", 13, W.merah)),
+      tambah("empat,", teks("a4", 262, 84, "4", 13, W.merah)),
+      tambah("tiga.", teks("a3", 262, 116, "3", 13, W.merah)),
+      tambah("paling", kotak("hl", 86, 32, 204, 34, undefined, W.hijau, { rx: 4, tebal: 2.6, z: 5 })),
+      tambah("dipilih.", emo("jr", 232, 52, E.juara, 18)),
     ),
   ],
 };
 
-/* ------------------------------ 10. Lebihnya dan kurangnya ------------------------------ */
-const SUARA_L1 = "Bebek ada sebelas dan ayam ada sepuluh. Turus bebek lebih panjang satu garis daripada turus ayam.";
-const SUARA_L2 = "Jadi banyak bebek satu lebihnya dari banyak ayam.";
-const SUARA_L3 = "Sebaliknya, banyak ayam satu kurangnya dari banyak bebek.";
-const SUARA_L4 = "Sekarang bandingkan kambing dan sapi. Banyak kambing dua lebihnya dari banyak sapi.";
-const SUARA_L5 = "Beda banyak antara dua jenis disebut selisih. Selisihnya dua, karena kambing delapan dan sapi enam.";
-const cap = (isi: string) => teks("cp", 150, 198, isi, 10.5, W.merah);
+/* ------------------------------ 9. Penutup: Chacha berkokok, Bu Maya datang ------------------------------ */
+const SUARA_N1 = "Chacha menepati taruhannya. Ia memakai kostum ayam, lalu berkokok keras di atas panggung!";
+const SUARA_N2 = "Bu Maya datang membawa papan layar kosong dan bertanya, bisakah data ini dibuat lebih bergambar?";
+const SUARA_N3 = "Menurutmu, selain turus, data bisa ditulis dengan cara apa lagi? Terima kasih, Chacha, Dika, Nia, Bu Sari, dan Pak Hendra!";
 
-export const ADEGAN_LEBIH_KURANG: AdeganStory = {
-  id: "lebih-kurang",
-  judul: "Lebihnya dan kurangnya",
-  sumber: "Materi: lebihnya dan kurangnya",
-  latar: "#FDF2F8",
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Penutup dan jembatan",
+  sumber: "Materi: penutup dan jembatan ke Sub-Bab B",
+  latar: "#FEF2F2",
   ketukan: [
     k(
-      SUARA_L1,
-      tambah(0, judul("Lebihnya dan kurangnya"), ...DH.lengkap(), ...SEMUA_BANYAK),
-      sorotkan(idx(SUARA_L1, "Bebek"), ...DH.sorot(3)),
-      sorotkan(idx(SUARA_L1, "ayam"), ...DH.sorot(0)),
+      SUARA_N1,
+      tambah(0, { ...judul("Chacha Berkokok"), y: 36 }, ...lantai("lt", 150), ...tirai("tr", 150), rangka("rg"), ...lampu("l1", 70), ...lampu("l2", 230), ...tokoh("ch", 150, 184, "Chacha")),
+      ubah("kostum", { id: "ch", isi: E.ayam }),
+      tambah("berkokok", teks("kk", 218, 70, "kukuruyuk!", 11, W.merah), emo("n1", 96, 84, E.nada, 20), emo("n2", 112, 62, E.nada, 16)),
+      tambah("panggung!", ...lampu("l3", 150, 8, true)),
     ),
-    k(SUARA_L2, tambah(idx(SUARA_L2, "lebihnya"), cap("11 - 10 = 1"))),
-    k(SUARA_L3, ubah(idx(SUARA_L3, "kurangnya"), { id: "cp", isi: "ayam kurang 1 dari bebek" })),
     k(
-      SUARA_L4,
-      redamkan(0, ...DH.sorot(3), ...DH.sorot(0)),
-      sorotkan(idx(SUARA_L4, "kambing"), ...DH.sorot(1)),
-      sorotkan(idx(SUARA_L4, "sapi."), ...DH.sorot(2)),
-      ubah(idx(SUARA_L4, "lebihnya"), { id: "cp", isi: "8 - 6 = 2" }),
+      SUARA_N2,
+      tambah("Maya", ...tokoh("bm", 262, 184, "Bu Maya")),
+      tambah("papan", ...papanLayar("pl", 186, 40, 100, 70, 5, 4)),
+      tambah("bertanya,", emo("tq", 176, 124, E.tanya, 24)),
+      tambah("bergambar?", emo("st", 236, 86, E.bintang, 18)),
     ),
-    k(SUARA_L5, tambah(idx(SUARA_L5, "Beda"), emo("lp", 30, 32, "\u{1F50E}", 18)), ubah(idx(SUARA_L5, "Selisihnya"), { id: "cp", isi: "selisih 2" })),
+    k(
+      SUARA_N3,
+      bersih(0),
+      tambah(0, judul("Terima Kasih"), ...lantai("lt", 150), ...tirai("tr", 150)),
+      tambah("selain", ...turus("tq", 116, 48, 6, W.biru, 18, 5, 2)),
+      tambah("cara", emo("qq", 190, 66, E.tanya, 26)),
+      tambah("Chacha,", ...tokoh("ch", 40, 184, "Chacha"), emo("lb0", 40, 130, E.lambai, 18)),
+      tambah("Dika,", ...tokoh("dk", 95, 184, "Dika"), emo("lb1", 95, 130, E.lambai, 18)),
+      tambah("Nia,", ...tokoh("ni", 150, 184, "Nia"), emo("lb2", 150, 130, E.lambai, 18)),
+      tambah("Sari,", ...tokoh("bs", 205, 184, "Bu Sari"), emo("lb3", 205, 130, E.lambai, 18)),
+      tambah("Hendra!", ...tokoh("ph", 258, 184, "Pak Hendra"), emo("lb4", 258, 130, E.lambai, 18)),
+    ),
   ],
 };

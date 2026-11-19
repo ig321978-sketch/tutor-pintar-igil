@@ -2,95 +2,47 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import LabBertahap, { type TabLab } from "./LabBertahap";
-import SimulasiLabTurus from "./SimulasiLabTurus";
-import SimulasiMesinCatat from "./SimulasiMesinCatat";
-import SimulasiLabBaca from "./SimulasiLabBaca";
-import SimulasiLabGambar from "./SimulasiLabGambar";
-import SimulasiMesinSusun from "./SimulasiMesinSusun";
-import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K2B8B } from "./skenario-k2b8";
-import { daftarMisiK2Bab8, type KeadaanK2Bab8 } from "./misi-k2bab8";
-import { laporMisi, tampilMisi } from "./misi-simulasi";
+import { daftarMisiK2Bab8 } from "./misi-k2bab8";
+import { laporMisi as laporMisiCatat, laporMisi as laporMisiLayar } from "./misi-simulasi";
+import SimulasiMejaCatat from "./turus-k2b8a/SimulasiMejaCatat";
+import { MISI_CATAT_TEKS } from "./turus-k2b8a/data-peta";
+import type { KeadaanCatat } from "./turus-k2b8a/logika";
+import SimulasiPapanLayar from "./gambar-k2b8b/SimulasiPapanLayar";
+import { MISI_LAYAR_TEKS } from "./gambar-k2b8b/data-sim";
+import type { KeadaanLayar } from "./gambar-k2b8b/logika";
 
 /* ======================================================================== */
-/* Simulasi Kelas 2 Bab 8 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
-/* alat bertambah per sub-bab, dengan misi wajib dan tantangan bebas         */
-/* (misi-k2bab8.ts).                                                         */
-/*   Sub-Bab A (diagram turus): Lab Turus + Mesin Catat Turus + Lab Baca      */
-/*                             Turus.                                         */
-/*   Sub-Bab B (diagram gambar, akhir): Lab Diagram Gambar + Mesin Susun      */
-/*                             Diagram + skenario Survei Kira (pencapaian      */
-/*                             misi bab ini).                                  */
+/* Simulasi Kelas 2 Bab 8 di dalam Materi (tahap 4 SMISCPA). Pentas Seni:    */
+/* Sub-Bab A Meja Catat, Sub-Bab B Papan Layar.                              */
+/* KERANGKA: agen Sub-Bab mengisi fungsi langkahMejaCatatA /                 */
+/* langkahPapanLayarB (impor dari folder miliknya; render sekarang null).    */
 /* ======================================================================== */
 
-const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
+/** Sub-Bab B (akhir bab): Papan Layar. */
+const langkahPapanLayarB = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Papan Layar",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_LAYAR_TEKS,
+  misiDaftar: daftarMisiK2Bab8("B").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiPapanLayar speakGuru={a.speakGuru} onKeadaan={(k: KeadaanLayar) => laporMisiLayar(daftarMisiK2Bab8("B"), k, a.capai)} />,
+});
 
-type Huruf = "A" | "B";
-
-const MISI: Record<Huruf, string> = {
-  A: "Buat turus di Lab Turus sampai satu kelompok lima dan dua kelompok lima, buat data buah kesukaan, selesaikan Mesin Catat Turus, lalu bandingkan bebek dengan ayam dan cari yang paling banyak di Lab Baca Turus. Selesaikan misi wajib di bawah, urutannya bebas.",
-  B: "Ganti lambang di Lab Diagram Gambar, buat data warna kesukaan, nyalakan turus dan gambar bersamaan, susun diagram di Mesin Susun Diagram, lalu selesaikan skenario Survei Kira. Selesaikan semua misi wajib.",
-};
-
-const NAMA_SIM: Record<Huruf, string> = {
-  A: "Lab Turus, Mesin Catat, dan Lab Baca",
-  B: "Diagram Gambar: Pencapaian Misi",
-};
-
-const hurufSub = (sub: string): Huruf => (sub === "B" ? "B" : "A");
+/** Sub-Bab A (awal cerita): Meja Catat. */
+const langkahMejaCatatA = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Meja Catat",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_CATAT_TEKS,
+  misiDaftar: daftarMisiK2Bab8("A").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiMejaCatat speakGuru={a.speakGuru} onKeadaan={(k: KeadaanCatat) => laporMisiCatat(daftarMisiK2Bab8("A"), k, a.capai)} />,
+});
 
 const langkahK2Bab8 = (sub: string): LangkahSim[] => {
-  const huruf = hurufSub(sub);
-  const daftar = daftarMisiK2Bab8(huruf);
-  return [
-    {
-      metode: "PhET",
-      sub: NAMA_SIM[huruf],
-      petunjuk: MAINKAN_DULU,
-      misi: MISI[huruf],
-      misiDaftar: tampilMisi(daftar),
-      mode: "sentuh",
-      render: (a) => {
-        const lapor = (k: KeadaanK2Bab8) => laporMisi(daftar, k, a.capai);
-        const selesai = (id: string) => lapor({ alat: "selesai", id });
-
-        const labTurus: TabLab = {
-          id: "turus",
-          nama: "Lab Turus",
-          render: () => <SimulasiLabTurus speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const catat: TabLab = {
-          id: "mesin-catat",
-          nama: "Mesin Catat Turus",
-          render: () => <SimulasiMesinCatat speakGuru={a.speakGuru} onTuntas={() => selesai("mesin-catat")} />,
-        };
-        const baca: TabLab = {
-          id: "baca",
-          nama: "Lab Baca Turus",
-          render: () => <SimulasiLabBaca speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const labGambar: TabLab = {
-          id: "gambar",
-          nama: "Lab Diagram Gambar",
-          render: () => <SimulasiLabGambar speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const susun: TabLab = {
-          id: "susun-diagram",
-          nama: "Mesin Susun Diagram",
-          render: () => <SimulasiMesinSusun speakGuru={a.speakGuru} onTuntas={() => selesai("susun-diagram")} />,
-        };
-        const survei: TabLab = {
-          id: "survei-kira",
-          nama: "Survei Kira",
-          render: () => <SimulasiSkenario def={SKENARIO_K2B8B} speakGuru={a.speakGuru} onTuntas={() => selesai("survei-kira")} />,
-        };
-
-        const tab = huruf === "A" ? [labTurus, catat, baca] : [labGambar, susun, survei];
-        return <LabBertahap tab={tab} label="Alat laboratorium diagram" />;
-      },
-    },
-  ];
+  if (sub === "B") return [langkahPapanLayarB()];
+  return [langkahMejaCatatA()];
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */
@@ -107,10 +59,10 @@ export default function SimulasiK2Bab8Materi({
   onSelesai: () => void;
   teksAkhir: string;
 }) {
-  const huruf = hurufSub(sub);
+  const huruf = ["A", "B"].includes(sub) ? sub : "A";
   return (
     <SimulasiAlur
-      judulBab={`Kelas 2 Bab 8 · Sub-Bab ${huruf}`}
+      judulBab={`Bab 8 · Sub-Bab ${huruf}`}
       langkah={langkahK2Bab8(sub)}
       speakGuru={speakGuru}
       onSelesai={onSelesai}

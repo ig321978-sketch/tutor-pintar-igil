@@ -1,163 +1,137 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { BINTANG, BUAH, EMO_BUAH, OWL, W, diagram, emo, judul, kartu, teks } from "./k2b8B-gambar";
-import { bersih, hapus, hitungAksi, idx, k, redamkan, sorotHitung, sorotkan, tambah } from "./k2b8B-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, bintang, barisBintang, emo, judul, kartu, kursi, loket, panah, panggungDepan, papanLayar, selendang, teks, tokoh, garis, kotak } from "./k2b8B-gambar";
+import { bersih, hapus, k, sorotkan, tambah } from "./k2b8B-bantu";
 
-/* ------------------------------ 1. Buah yang tercampur ------------------------------ */
-const POSISI: [number, number][] = [[40, 60], [210, 118], [120, 138], [250, 66], [70, 112], [180, 56], [258, 140], [34, 148], [150, 90], [100, 58], [220, 88], [64, 86], [140, 120], [200, 142], [24, 100]];
-const BENDA: Obj[] = BUAH.flatMap((d, c) => Array.from({ length: d.n }, () => EMO_BUAH[c])).map((e, i) => emo(`bc${i}`, POSISI[i][0], POSISI[i][1], e, 22));
-const idKat = (c: number): string[] => {
-  const awal = BUAH.slice(0, c).reduce((t, d) => t + d.n, 0);
-  return Array.from({ length: BUAH[c].n }, (_, i) => `bc${awal + i}`);
-};
-/** Perubahan letak: buah jenis c berjajar rapi pada baris c. */
-const ke = (c: number) => idKat(c).map((id, j) => ({ id, x: 100 + j * 28, y: 62 + c * 30 }));
-const SUARA_T1 = "Kira sedang mencatat buah kesukaan. Lihat, ada banyak buah di layar.";
-const SUARA_T2 = "Buahnya masih tercampur. Ada anggur, jeruk, apel, dan pisang di mana-mana.";
-const SUARA_T3 = "Sulit melihat buah mana yang paling banyak, kalau semuanya masih tercampur.";
-const SUARA_T4 = "Supaya mudah, kita pilah dulu. Anggur ke anggur, jeruk ke jeruk, apel ke apel, pisang ke pisang.";
-const SUARA_T5 = "Sekarang buahnya rapi, dan mudah dihitung. Anggur dua, jeruk enam, apel empat, pisang tiga.";
-const SUARA_T6 = "Data yang rapi seperti ini bisa kita sajikan dengan diagram gambar. Ayo kita lihat caranya.";
+/*
+ * Cerita orisinal IGIL "Bintang Bu Maya" (Kelas 2 Bab 8 Sub-Bab B, diagram gambar), akhir cerita Pentas Seni Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b8b.md. Bagian ini: papan layar (masalah), satu bintang satu selendang, salah gambar (taruhan Chacha).
+ */
 
-export const ADEGAN_BUAH_CAMPUR: AdeganStory = {
-  id: "buah-campur",
-  judul: "Data buah yang tercampur",
-  sumber: "Materi: data buah tercampur",
-  latar: "#FEF2F2",
+/** Tinggi tengah empat baris pada papan layar (papan di (18, 48), 264 x 112). */
+export const RY = [70, 95, 120, 145];
+export const WARNA_SEL = [W.selMerah, W.selKuning, W.selHijau, W.selBiru];
+export const NAMA_SEL = ["Merah", "Kuning", "Hijau", "Biru"];
+/** Nama jenis di kolom kiri dengan selendang kecil berwarna untuk baris ke-i. */
+export const namaBaris = (i: number, ys: number[] = RY) => [teks(`nm${i}`, 38, ys[i] + 3, NAMA_SEL[i], 9, W.biru, { z: 2 }), ...selendang(`sd${i}`, 62, ys[i] - 3.5, WARNA_SEL[i])];
+export const jumlahBaris = (i: number, n: number, ys: number[] = RY) => teks(`jm${i}`, 222, ys[i] + 4, String(n), 12, W.biru, { z: 2 });
+
+/* ------------------------------ 1. Papan layar ------------------------------ */
+const SUARA_A1 = "Besok Pentas Seni Sekolah dibuka! Bu Maya, penjaga loket, memasang papan layar besar di depan panggung.";
+const SUARA_A2 = "Bu Sari ingin data selendang penari dipajang, supaya penonton langsung paham.";
+const SUARA_A3 = "Diagram turus sulit dibaca penonton. Bu Maya mengusulkan diagram gambar.";
+
+export const ADEGAN_PAPAN_LAYAR: AdeganStory = {
+  id: "papan-layar",
+  judul: "Papan layar di depan panggung",
+  sumber: "Materi: papan layar dan diagram gambar",
+  latar: "#FFF1F2",
   ketukan: [
-    k(SUARA_T1, tambah(0, judul("Buah kesukaan")), tambah("Lihat,", ...BENDA)),
-    k(SUARA_T2, tambah("tercampur.", ...kartu("tc", 40, 168, 220, 24, W.krem, ["data masih tercampur"], 9.6))),
-    k(SUARA_T3, hapus(0, "tc-k", "tc-t0"), tambah("Sulit", emo("tq", 150, 186, "❓", 22))),
     k(
-      SUARA_T4,
-      hapus(0, "tq"),
-      { at: idx(SUARA_T4, "Anggur"), ubah: ke(0) },
-      tambah(idx(SUARA_T4, "Anggur"), teks("nm0", 8, 66, "anggur", 8.6, W.biru, { anchor: "start" })),
-      { at: idx(SUARA_T4, "jeruk"), ubah: ke(1) },
-      tambah(idx(SUARA_T4, "jeruk"), teks("nm1", 8, 96, "jeruk", 8.6, W.biru, { anchor: "start" })),
-      { at: idx(SUARA_T4, "apel"), ubah: ke(2) },
-      tambah(idx(SUARA_T4, "apel"), teks("nm2", 8, 126, "apel", 8.6, W.biru, { anchor: "start" })),
-      { at: idx(SUARA_T4, "pisang"), ubah: ke(3) },
-      tambah(idx(SUARA_T4, "pisang"), teks("nm3", 8, 156, "pisang", 8.6, W.biru, { anchor: "start" })),
+      SUARA_A1,
+      bersih(0),
+      tambah(0, judul("Depan Panggung"), ...panggungDepan("dn")),
+      tambah("Pentas", ...loket("lk", 24, 36)),
+      tambah("Maya,", ...tokoh("bm", 112, 172, "Bu Maya")),
+      tambah("papan", ...papanLayar("pl", 140, 36, 132, 66, 6, 4)),
+      tambah("panggung.", ...[0, 1, 2, 3, 4].flatMap((i) => kursi(`ks${i}`, 24 + i * 52, 126))),
     ),
     k(
-      SUARA_T5,
-      tambah(idx(SUARA_T5, "dua"), teks("bn0", 272, 66, "2", 12, W.merah)),
-      tambah(idx(SUARA_T5, "enam"), teks("bn1", 272, 96, "6", 12, W.merah)),
-      tambah(idx(SUARA_T5, "empat"), teks("bn2", 272, 126, "4", 12, W.merah)),
-      tambah(idx(SUARA_T5, "tiga"), teks("bn3", 272, 156, "3", 12, W.merah)),
+      SUARA_A2,
+      tambah("Sari", ...tokoh("bs", 246, 172, "Bu Sari")),
+      tambah("selendang", ...selendang("s0", 150, 46, W.selMerah), ...selendang("s1", 176, 46, W.selKuning), ...selendang("s2", 202, 46, W.selHijau), ...selendang("s3", 228, 46, W.selBiru)),
+      tambah("penonton,", emo("p1", 40, 124, E.senyum, 16), emo("p2", 92, 124, E.senyum, 16)),
+      tambah("paham.", emo("ok", 206, 84, E.benar, 20)),
     ),
-    k(SUARA_T6, tambah("diagram", ...kartu("dg", 30, 176, 240, 20, W.hijauMuda, ["rapi, siap jadi diagram gambar"], 9))),
+    k(
+      SUARA_A3,
+      tambah("Diagram", ...kartu("tt", 148, 112, 66, 22, W.krem, ["turus ???"], 8)),
+      tambah("sulit", emo("tz", 232, 124, E.tanya, 20)),
+      tambah("Maya", emo("lp", 112, 120, E.lampu, 20)),
+      tambah("mengusulkan", ...kartu("gb", 24, 98, 58, 18, W.hijauMuda, ["gambar!"], 8)),
+      tambah("gambar.", bintang("b0", 160, 64, 7, W.selMerah), bintang("b1", 178, 64, 7, W.selMerah), bintang("b2", 196, 64, 7, W.selMerah)),
+    ),
   ],
 };
 
-/* ------------------------------ 2. Satu bintang untuk satu buah ------------------------------ */
-/** Baris pasangan: n buah (gambar benda) sama dengan n bintang berwarna. Id `fe{r}{i}`, `bt{r}{i}`, tanda `sm{r}`. */
-const baris = (r: number, n: number, e: string, warna: string): Obj[] => [
-  ...Array.from({ length: n }, (_, i) => emo(`fe${r}${i}`, 60 + i * 30, 66 + r * 40, e, 26)),
-  teks(`sm${r}`, 150, 62 + r * 40, "=", 16, W.merah),
-  ...Array.from({ length: n }, (_, i) => teks(`bt${r}${i}`, 200 + i * 28, 70 + r * 40, BINTANG, 22, warna)),
-];
-const SUARA_G1 = "Di diagram gambar, satu gambar mewakili satu benda. Kita pakai bintang untuk menandai buah.";
-const SUARA_G2 = "Satu buah apel ditandai satu bintang merah. Satu buah jeruk ditandai satu bintang jingga.";
-const SUARA_G3 = "Dua buah anggur ditandai dua bintang biru. Jumlah bintang sama dengan jumlah buah.";
-const SUARA_G4 = "Satu bintang tidak boleh mewakili dua buah. Satu bintang hanya untuk satu buah.";
-const SUARA_G5 = "Ingat aturannya. Satu gambar sama dengan satu benda, dan semua gambar harus sama.";
+/* ------------------------------ 2. Satu bintang ------------------------------ */
+const SUARA_B1 = "Satu bintang mewakili satu selendang. Selendang merah ada tujuh, jadi tujuh bintang merah.";
+const SUARA_B2 = "Kuning ada lima, hijau tiga, dan biru lima. Tiap jenis punya bintang berwarna sendiri.";
+const SUARA_B3 = "Nama jenis ditulis di kolom kiri, lalu bintangnya berjajar ke kanan tanpa celah.";
 
 export const ADEGAN_SATU_BINTANG: AdeganStory = {
   id: "satu-bintang",
-  judul: "Satu bintang untuk satu buah",
-  sumber: "Materi: satu gambar satu benda",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(SUARA_G1, tambah(0, judul("Satu bintang, satu buah")), tambah("bintang", emo("ow", 150, 130, OWL, 40))),
-    k(SUARA_G2, hapus(0, "ow"), tambah("apel", ...baris(0, 1, "\u{1F34E}", W.merah)), tambah("jeruk", ...baris(1, 1, "\u{1F34A}", W.jingga))),
-    k(SUARA_G3, tambah("Dua", ...baris(2, 2, "\u{1F347}", W.biruGambar)), tambah("Jumlah", emo("ow", 262, 150, OWL, 30))),
-    k(
-      SUARA_G4,
-      bersih(0),
-      tambah(0, judul("Jangan begini")),
-      tambah("Satu", emo("ax", 70, 96, "\u{1F34E}", 30), emo("ay", 106, 96, "\u{1F34E}", 30), teks("sx", 150, 92, "=", 16, W.merah), teks("bx", 200, 98, BINTANG, 30, W.merah)),
-      tambah("tidak", emo("sl", 150, 156, "❌", 28)),
-    ),
-    k(SUARA_G5, bersih(0), tambah(0, judul("Aturannya")), tambah("Ingat", ...kartu("ak", 40, 60, 220, 44, W.emas, ["1 gambar = 1 benda"], 14)), tambah("Satu", emo("jb", 100, 160, "\u{1F34E}", 30), teks("bb", 200, 166, BINTANG, 30, W.merah))),
-  ],
-};
-
-/* ------------------------------ 3. Diagram gambar buah ------------------------------ */
-export const DB = diagram("db", BUAH, "Buah Kesukaan", "buah");
-const SUARA_D1 = "Ini diagram gambar buah kesukaan. Gambarnya berjajar ke samping, satu baris untuk satu jenis buah.";
-const SUARA_D2 = "Baris pertama anggur. Satu, dua. Anggur ada dua bintang biru.";
-const SUARA_D3 = "Baris kedua jeruk. Satu, dua, tiga, empat, lima, enam. Jeruk ada enam bintang jingga.";
-const SUARA_D4 = "Baris ketiga apel, ada empat bintang merah. Baris keempat pisang, ada tiga bintang hijau.";
-const SUARA_D5 = "Lihat, semua bintang sama bentuk dan sama besar. Jaraknya juga sama, jadi mudah dihitung.";
-
-export const ADEGAN_DIAGRAM_BUAH: AdeganStory = {
-  id: "diagram-buah",
-  judul: "Diagram gambar buah kesukaan",
-  sumber: "Materi: diagram gambar mendatar",
-  latar: "#F0F9FF",
-  ketukan: [
-    k(SUARA_D1, tambah(0, ...DB.dasar)),
-    k(SUARA_D2, tambah("anggur.", DB.label(0)), ...hitungAksi(SUARA_D2, DB.gambar(0), { setelah: "anggur." }), tambah(idx(SUARA_D2, "dua", 2), DB.angka(0))),
-    k(SUARA_D3, tambah("jeruk.", DB.label(1)), ...hitungAksi(SUARA_D3, DB.gambar(1), { setelah: "jeruk." }), tambah(idx(SUARA_D3, "enam", 2), DB.angka(1))),
-    k(
-      SUARA_D4,
-      tambah(idx(SUARA_D4, "apel"), DB.label(2)),
-      tambah(idx(SUARA_D4, "empat"), ...DB.gambar(2), DB.angka(2)),
-      tambah(idx(SUARA_D4, "pisang"), DB.label(3)),
-      tambah(idx(SUARA_D4, "tiga"), ...DB.gambar(3), DB.angka(3)),
-    ),
-    k(SUARA_D5, sorotkan("Lihat,", ...DB.idSemua), redamkan("mudah", ...DB.idSemua)),
-  ],
-};
-
-/* ------------------------------ 4. Bagian-bagian diagram ------------------------------ */
-const SUARA_B1 = "Setiap diagram gambar punya bagian-bagian. Ayo kita kenali satu per satu.";
-const SUARA_B2 = "Bagian pertama adalah judul. Judul diagram ini Buah Kesukaan.";
-const SUARA_B3 = "Bagian kedua adalah nama baris. Namanya anggur, jeruk, apel, dan pisang.";
-const SUARA_B4 = "Bagian ketiga adalah gambar. Satu gambar mewakili satu buah.";
-const SUARA_B5 = "Bagian keempat adalah angka di ujung baris. Angka itu menunjukkan banyaknya gambar.";
-const SUARA_B6 = "Bagian kelima adalah keterangan di bawah diagram. Bunyinya, satu bintang sama dengan satu buah.";
-
-export const ADEGAN_BAGIAN: AdeganStory = {
-  id: "bagian-diagram",
-  judul: "Bagian-bagian diagram gambar",
-  sumber: "Materi: bagian diagram gambar",
+  judul: "Satu bintang, satu selendang",
+  sumber: "Materi: satu gambar mewakili satu benda",
   latar: "#FFFBEB",
   ketukan: [
-    k(SUARA_B1, tambah(0, ...DB.semua, ...BUAH.map((_, c) => DB.angka(c)))),
-    k(SUARA_B2, sorotkan("judul.", "dbjd")),
-    k(SUARA_B3, redamkan(0, "dbjd"), sorotkan("baris.", ...DB.idLabel)),
-    k(SUARA_B4, redamkan(0, ...DB.idLabel), sorotkan("gambar.", ...DB.idSemua)),
-    k(SUARA_B5, redamkan(0, ...DB.idSemua), sorotkan("angka", ...DB.idAngka)),
-    k(SUARA_B6, redamkan(0, ...DB.idAngka), sorotkan("keterangan", "dbk")),
+    k(
+      SUARA_B1,
+      bersih(0),
+      tambah(0, judul("Satu Bintang, Satu Selendang"), ...panggungDepan("dn"), ...papanLayar("pl", 18, 48, 264, 112, 1, 4)),
+      tambah("Satu", ...kartu("lg", 64, 31, 172, 15, W.krem, ["1 bintang = 1 selendang"], 8.5)),
+      tambah("Selendang@2", ...namaBaris(0)),
+      tambah("tujuh,", ...barisBintang("bm", 96, RY[0], 7, WARNA_SEL[0])),
+      tambah("jadi", jumlahBaris(0, 7)),
+    ),
+    k(
+      SUARA_B2,
+      tambah("Kuning", ...namaBaris(1)),
+      tambah("lima,", ...barisBintang("bk", 96, RY[1], 5, WARNA_SEL[1]), jumlahBaris(1, 5)),
+      tambah("hijau", ...namaBaris(2)),
+      tambah("tiga,", ...barisBintang("bh", 96, RY[2], 3, WARNA_SEL[2]), jumlahBaris(2, 3)),
+      tambah("biru", ...namaBaris(3)),
+      tambah("lima@2", ...barisBintang("bb", 96, RY[3], 5, WARNA_SEL[3]), jumlahBaris(3, 5)),
+      tambah("sendiri.", emo("kl", 262, 70, E.kilau, 16)),
+    ),
+    k(
+      SUARA_B3,
+      tambah("Nama", teks("hn", 38, 60, "nama jenis", 7, W.merah, { z: 2 })),
+      tambah("kiri,", kotak("kk", 22, 64, 56, 88, W.lavender, W.ungu, { rx: 4, tebal: 1.2, z: 1, op: 0.55, putus: true })),
+      tambah("bintangnya", teks("hg", 140, 60, "gambar", 7, W.merah, { z: 2 })),
+      tambah("kanan", panah("pk", 96, 158, 150, 0, W.ungu, 2.4)),
+      tambah("celah.", emo("ok", 262, 100, E.benar, 20)),
+    ),
   ],
 };
 
-/* ------------------------------ 5. Membaca baris dari kiri ke kanan ------------------------------ */
-const PANAH: Obj = { id: "ar", t: "panah", x: 80, y: 170, x2: 140, y2: 0, warna: W.merah, tebal: 2.4 };
-const SUARA_R1 = "Sekarang kita baca diagramnya. Kita baca setiap baris dari kiri ke kanan.";
-const SUARA_R2 = "Berapa buah jeruk? Hitung bintang jingga dari kiri ke kanan. Satu, dua, tiga, empat, lima, enam. Jeruk ada enam.";
-const SUARA_R3 = "Sekarang anggur. Satu, dua. Anggur ada dua. Lalu apel. Satu, dua, tiga, empat. Apel ada empat.";
-const SUARA_R4 = "Terakhir pisang. Pisang ada tiga. Baris yang paling panjang, berarti buahnya paling banyak.";
+/* ------------------------------ 3. Salah gambar ------------------------------ */
+const SUARA_C1 = "Chacha bergegas menggambar bintang besar-besar dan kecil-kecil, biar meriah! Kalau penonton keliru membaca, aku menyapu seluruh panggung!";
+const SUARA_C2 = "Baris hijau tampak paling panjang karena bintangnya besar, padahal hanya tiga. Penonton jadi salah baca.";
+const SUARA_C3 = "Dika berkata, semua gambar harus sama bentuk dan ukurannya, dengan jarak yang sama.";
 
-export const ADEGAN_BACA_BARIS: AdeganStory = {
-  id: "baca-baris",
-  judul: "Membaca baris dari kiri ke kanan",
-  sumber: "Materi: membaca diagram gambar",
-  latar: "#F0F9FF",
+export const ADEGAN_SALAH_GAMBAR: AdeganStory = {
+  id: "salah-gambar",
+  judul: "Chacha salah menggambar bintang",
+  sumber: "Materi: gambar harus sama ukuran",
+  latar: "#FEF2F2",
   ketukan: [
-    k(SUARA_R1, tambah(0, ...DB.semua), tambah("kiri", PANAH), tambah("kanan.", teks("ard", 150, 164, "dibaca dari kiri ke kanan", 9, W.merah))),
-    k(SUARA_R2, hapus(0, "ar", "ard"), ...sorotHitung(SUARA_R2, DB.idGambar(1), { setelah: "kanan." }), tambah(idx(SUARA_R2, "enam", 2), DB.angka(1))),
     k(
-      SUARA_R3,
-      redamkan(0, ...DB.idGambar(1)),
-      ...sorotHitung(SUARA_R3, DB.idGambar(0), { setelah: "anggur." }),
-      tambah(idx(SUARA_R3, "dua", 2), DB.angka(0)),
-      redamkan(idx(SUARA_R3, "Lalu"), ...DB.idGambar(0)),
-      ...sorotHitung(SUARA_R3, DB.idGambar(2), { setelah: "apel." }),
-      tambah(idx(SUARA_R3, "empat", 2), DB.angka(2)),
+      SUARA_C1,
+      bersih(0),
+      tambah(0, judul("Bintang Besar dan Kecil"), ...panggungDepan("dn"), ...papanLayar("pl", 18, 48, 264, 112, 1, 2)),
+      tambah("Chacha", ...tokoh("ch", 40, 172, "Chacha")),
+      tambah("menggambar", ...namaBaris(0, [84, 128]), ...namaBaris(2, [84, 84, 128])),
+      tambah("besar-besar", bintang("bg0", 116, 128, 14, WARNA_SEL[2]), bintang("bg1", 154, 128, 14, WARNA_SEL[2]), bintang("bg2", 192, 128, 14, WARNA_SEL[2])),
+      tambah("kecil-kecil,", ...barisBintang("bm", 110, 84, 7, WARNA_SEL[0], 4.5, 9.5)),
+      tambah("meriah!", emo("kl", 262, 76, E.kilau, 16)),
+      tambah("penonton", emo("pn", 250, 110, E.pikir, 20)),
+      tambah("menyapu", emo("sp", 80, 172, E.sapu, 20)),
     ),
-    k(SUARA_R4, redamkan(0, ...DB.idGambar(2)), tambah(idx(SUARA_R4, "tiga"), DB.angka(3)), sorotkan("paling", ...DB.idGambar(1))),
+    k(
+      SUARA_C2,
+      sorotkan("hijau", "bg0", "bg1", "bg2"),
+      tambah("panjang", panah("pj", 96, 152, 118, 0, W.merah, 2.4)),
+      tambah("tiga.", teks("n3", 226, 131, "3", 13, W.merah, { z: 2 })),
+      tambah("salah", emo("x1", 262, 104, E.salah, 18)),
+    ),
+    k(
+      SUARA_C3,
+      tambah("Dika", ...tokoh("dk", 92, 172, "Dika")),
+      hapus("gambar", "bg0", "bg1", "bg2", "x1", "pj"),
+      tambah("gambar", ...barisBintang("bs", 116, 128, 3, WARNA_SEL[2], 6.5, 15)),
+      tambah("bentuk", teks("sm", 200, 152, "sama besar", 9, W.hijau, { z: 2 })),
+      tambah("jarak", garis("jr", 109, 143, 15, 0, W.hijau, 2.2)),
+      tambah("sama@2", emo("ok", 262, 104, E.benar, 20)),
+    ),
   ],
 };
