@@ -18,7 +18,7 @@ function teks(nilai: unknown, maks: number): string {
 }
 
 /**
- * POST /api/daftar/anak { nama, kelas, nisn, pemilik?, kode?, pin? }
+ * POST /api/daftar/anak { nama, kelas, nisn, kode?, pin? }
  * Satu permintaan: buat atau gabung rumah bila akun belum punya, pasang PIN orang tua bila rumah baru,
  * lalu daftarkan anak. Semua lewat RPC SECURITY DEFINER. NISN hanya dikirim ke RPC dan tidak disimpan.
  * Seluruh isian diperiksa dulu di sini supaya rumah tidak terbentuk setengah jadi karena salah ketik.
@@ -34,7 +34,6 @@ export async function POST(req: Request) {
   const nama = teks(body.nama, 40);
   const kelas = Number(body.kelas);
   const nisn = typeof body.nisn === "string" ? body.nisn.trim() : "";
-  const pemilik = teks(body.pemilik, 80);
   const kode = teks(body.kode, 32).toLowerCase();
   const pin = typeof body.pin === "string" ? body.pin : "";
 
@@ -66,9 +65,6 @@ export async function POST(req: Request) {
   const rumahBaru = !punyaRumah && !bergabung;
 
   if (rumahBaru) {
-    if (pemilik.length < 3) {
-      return jawab({ status: "galat", pesan: "Isi nama pemilik rekening penerima beasiswa (minimal 3 huruf)." }, 400);
-    }
     if (!/^\d{6}$/.test(pin)) {
       return jawab({ status: "galat", pesan: "PIN keamanan orang tua harus 6 angka." }, 400);
     }
@@ -80,7 +76,7 @@ export async function POST(req: Request) {
     if (skemaBelumAda(error)) return jawab({ status: "belum_siap" });
     if (error) return jawab({ status: "galat", pesan: pesanGalat(error) }, 400);
   } else if (rumahBaru) {
-    const { data, error } = await supabase.rpc("buat_rumah", { p_payout_holder_name: pemilik });
+    const { data, error } = await supabase.rpc("buat_rumah", { p_payout_holder_name: "" });
     if (skemaBelumAda(error)) return jawab({ status: "belum_siap" });
     if (error) return jawab({ status: "galat", pesan: pesanGalat(error) }, 400);
     kodeRumah = typeof data === "string" ? data : null;

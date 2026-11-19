@@ -65,7 +65,6 @@ export default function FormPendaftaran({
   const idNama = useId();
   const idKelas = useId();
   const idNisn = useId();
-  const idPemilik = useId();
   const idKode = useId();
   const idPin = useId();
   const idPinUlang = useId();
@@ -78,7 +77,6 @@ export default function FormPendaftaran({
   const [nama, setNama] = useState("");
   const [kelas, setKelas] = useState("");
   const [nisn, setNisn] = useState("");
-  const [pemilik, setPemilik] = useState("");
   const [kode, setKode] = useState("");
   const [pin, setPin] = useState("");
   const [pinUlang, setPinUlang] = useState("");
@@ -129,7 +127,7 @@ export default function FormPendaftaran({
     nama.trim().length >= 2 &&
     fase !== null &&
     nisnValid &&
-    (rumah ? true : bergabung ? kode.trim().length >= 6 : pemilik.trim().length >= 3 && pinValid);
+    (rumah ? true : bergabung ? kode.trim().length >= 6 : pinValid);
 
   const galatNisn =
     nisn.length > 0 && !nisnLengkap ? "NISN harus 10 angka. Kalau belum tahu, kosongkan dulu." : "";
@@ -144,7 +142,6 @@ export default function FormPendaftaran({
         nama: nama.trim(),
         kelas: Number(kelas),
         nisn,
-        pemilik: rumahBaru ? pemilik.trim() : undefined,
         kode: bergabung ? kode.trim() : undefined,
         pin: rumahBaru ? pin : undefined,
       },
@@ -360,31 +357,13 @@ export default function FormPendaftaran({
                   />
                   {bergabung ? (
                     <p className="mt-1 text-xs font-bold text-[#1C01A5]">
-                      Anda akan bergabung ke rumah pasangan. Nama pemilik rekening dan PIN sudah diatur di sana.
+                      Anda akan bergabung ke rumah pasangan. PIN sudah diatur di sana.
                     </p>
                   ) : null}
                 </div>
 
                 {rumahBaru ? (
                   <>
-                    <div>
-                      <label htmlFor={idPemilik} className={kelasLabel}>
-                        Nama pemilik rekening penerima beasiswa
-                      </label>
-                      <input
-                        id={idPemilik}
-                        value={pemilik}
-                        onChange={(e) => setPemilik(e.target.value)}
-                        className={kelasKotak}
-                        placeholder="Nama sesuai buku tabungan atau e-wallet"
-                        maxLength={80}
-                        aria-describedby={`${idPemilik}-info`}
-                      />
-                      <p id={`${idPemilik}-info`} className="mt-1 text-xs font-semibold text-slate-600">
-                        💳 Hanya nama. Nomor rekening diurus langsung oleh payment gateway dan tidak disimpan IGIL.
-                      </p>
-                    </div>
-
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div>
                         <label htmlFor={idPin} className={kelasLabel}>
@@ -418,7 +397,7 @@ export default function FormPendaftaran({
                       </div>
                     </div>
                     <p className="-mt-2 text-xs font-semibold text-slate-600">
-                      🔑 PIN dipakai untuk mengubah data rekening. PIN tidak disimpan utuh dan tidak bisa dibaca
+                      🔑 PIN dipakai untuk mengamankan pengaturan akun orang tua. PIN tidak disimpan utuh dan tidak bisa dibaca
                       siapa pun, jadi catat sendiri. Lima kali salah mengunci percobaan selama 15 menit.
                     </p>
                     {pin.length === 6 && pinUlang.length === 6 && pin !== pinUlang ? (
@@ -443,7 +422,7 @@ export default function FormPendaftaran({
           {!dataLengkap ? (
             <p className="text-center text-xs font-semibold text-slate-500">
               {`Lengkapi nama, kelas, NISN (bila diisi, 10 angka)${
-                rumah ? "" : bergabung ? ", dan kode undangan" : ", nama pemilik rekening, dan PIN 6 angka"
+                rumah ? "" : bergabung ? ", dan kode undangan" : ", dan PIN 6 angka"
               } agar tombol daftar bisa aktif.`}
             </p>
           ) : null}
