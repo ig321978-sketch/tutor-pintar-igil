@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 
@@ -219,6 +220,11 @@ export default function GerbangMasuk() {
             </form>
           )}
         </section>
+        <p className="text-center">
+          <Link href="/hubungi-kami" className="text-sm font-bold text-indigo-100 underline underline-offset-2">
+            Hubungi Kami
+          </Link>
+        </p>
       </div>
     </main>
   );

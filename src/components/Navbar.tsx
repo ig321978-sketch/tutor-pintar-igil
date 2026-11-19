@@ -14,6 +14,7 @@ const MENU = [
   { href: "/rapor", label: "📊 Rapor" },
   { href: "/ranking", label: "🏆 Ranking" },
   { href: "/langganan", label: "🎟️ Berlangganan" },
+  { href: "/hubungi-kami", label: "📞 Hubungi Kami" },
 ] as const;
 
 /** Menu tinjau: hanya admin. Pendaftaran anak tetap lewat Akun & Langganan. */
