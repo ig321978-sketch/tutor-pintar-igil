@@ -95,7 +95,7 @@ export default function GerbangMasuk() {
       const tujuanAdmin = next.startsWith("/admin") || next.startsWith("/studio-kreator");
       const batasAdmin =
         situsHanyaAdmin() &&
-        (next.startsWith("/rapor") || next.startsWith("/dasbor") || next.startsWith("/simulasi"));
+        (next.startsWith("/rapor") || next.startsWith("/simulasi"));
       if (!json.adalahAdmin && tujuanAdmin) {
         router.replace("/403");
       } else if (!json.adalahAdmin && batasAdmin) {

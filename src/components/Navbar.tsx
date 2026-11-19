@@ -10,6 +10,7 @@ import { hapusSesiBrowser } from "@/lib/sesi-browser";
 /** Menu utama. Berlangganan langsung ke payment (akun sudah ada). */
 const MENU = [
   { href: "/ruang-belajar", label: "📚 Ruang Belajar" },
+  { href: "/dasbor", label: "🏠 Dasbor" },
   { href: "/praktikum", label: "🧪 Praktikum" },
   { href: "/rapor", label: "📊 Rapor" },
   { href: "/ranking", label: "🏆 Ranking" },
@@ -17,10 +18,8 @@ const MENU = [
   { href: "/hubungi-kami", label: "📞 Hubungi Kami" },
 ] as const;
 
-/** Menu tinjau: hanya admin. Pendaftaran anak tetap lewat Akun & Langganan. */
-const MENU_TINJAU = [
-  { href: "/dasbor", label: "🏠 Dasbor" },
-] as const;
+/** Menu tinjau: hanya admin (kosong untuk saat ini). */
+const MENU_TINJAU = [] as const;
 
 function tautanAktif(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
