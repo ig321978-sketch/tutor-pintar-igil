@@ -45,7 +45,7 @@ const ADA_EMOJI = /[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}]/u;
 {
   const K = DK.KARTU_JADWAL;
   cek(K.length === 9, "kartu: sembilan kartu");
-  cek(K.every((k) => k.contoh.length <= 1) && K[0].contoh.join() === "masalah" && K[1].contoh.join() === "cara" && K.slice(2).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di dua kartu pertama, sisanya mandiri");
+  cek(K.every((k) => k.contoh.length <= 1) && K[0].contoh.join() === "masalah" && K.slice(1).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di kartu pertama saja, sisanya mandiri");
   const semua = K.flatMap((k) => [k.masalah, k.cara, k.hasil]);
   const label = semua.map((x) => x.label);
   cek(new Set(label).size === label.length, "kartu: label unik");
@@ -72,8 +72,7 @@ const ADA_EMOJI = /[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}]/u;
   cek(B.length === 5 && DK.KOLOM_INFO_JADWAL.length === 3, "infografis: lima kartu dan tiga kolom");
   cek(B.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: tiap kartu tiga isian, emoji sah");
   const jumlahContoh = B.map((b) => b.contoh.length);
-  cek(jumlahContoh[0] === 3 && jumlahContoh.slice(1, 4).every((n) => n === 1) && jumlahContoh[4] === 0, "infografis: kartu satu penuh contoh, kartu dua sampai empat satu contoh, kartu lima mandiri");
-  cek(B.slice(1, 4).map((b) => b.contoh[0]).join() === "0,1,2", "infografis: kotak contoh berpindah kolom");
+  cek(jumlahContoh[0] === 3 && jumlahContoh.slice(1).every((n) => n === 0), "infografis: baris satu penuh contoh, baris dua sampai lima mandiri");
   const semua = B.flatMap((b) => b.isi);
   cek(B.every((b) => new Set(b.isi.map((x) => x.t)).size === 3), "infografis: tiga label tiap kartu berbeda");
   cek(semua.every((x) => x.t.length <= 26 && x.t.split(/\s+/).length <= 5 && bersih(x.t) && bersih(x.s ?? "")), "infografis: label pendek (paling banyak lima kata) dan tanpa kata terlarang");

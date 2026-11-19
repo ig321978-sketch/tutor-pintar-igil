@@ -220,7 +220,7 @@ export default function PetaKartu({
   return (
     <div className="space-y-3">
       <style>{CSS_LEMARI}</style>
-      {intro("Tempel label sisanya. Kotak bertanda contoh sudah terisi.", suaraAwal)}
+      {intro(k.contoh.length ? "Tempel label sisanya. Kotak bertanda contoh sudah terisi." : "Tempel semua label ke kotak yang cocok.", suaraAwal)}
 
       <div className="mx-auto max-w-xl rounded-2xl border-[6px] p-3" style={{ borderColor: tema.bingkai, background: tema.latar }}>
         <div className="mb-1 flex items-center justify-between gap-2 text-xs font-black text-[#1C01A5]">

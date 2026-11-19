@@ -16,7 +16,7 @@ const kt = (judul: string, masalah: [string, string], cara: [string, string], ha
 
 export const KARTU_JADWAL: readonly KartuPeta[] = [
   kt("Membaca jam", ["Pukul berapa sekarang?", "Kita ingin tahu sekarang pukul berapa."], ["Jarum pendek, lalu panjang", "Jarum pendek menunjukkan jam, jarum panjang menunjukkan menit."], ["Pukul diketahui", "Sekarang kita tahu pukul berapa."], ["masalah"]),
-  kt("Pukul tepat", ["Kapan disebut pukul tepat?", "Kapan waktu disebut pukul tepat?"], ["Jarum panjang di angka dua belas", "Lihat jarum panjang. Bila di angka dua belas, waktunya pukul tepat."], ["Jarum pendek menunjuk jam", "Jarum pendek menunjukkan jam yang disebut."], ["cara"]),
+  kt("Pukul tepat", ["Kapan disebut pukul tepat?", "Kapan waktu disebut pukul tepat?"], ["Jarum panjang di angka dua belas", "Lihat jarum panjang. Bila di angka dua belas, waktunya pukul tepat."], ["Jarum pendek menunjuk jam", "Jarum pendek menunjukkan jam yang disebut."]),
   kt("Jam digital", ["Jam ditulis dengan angka?", "Bagaimana menulis jam dengan angka?"], ["Jam digital", "Jam digital menunjukkan waktu dengan angka, bukan jarum."], ["Dua angka jam, dua angka menit", "Dua angka pertama jam, dua angka sesudah titik menit."]),
   kt("Dua puluh empat jam", ["Pukul empat sore ditulis apa?", "Bagaimana menulis pukul empat sore di jam digital?"], ["Pakai dua puluh empat jam", "Jam digital sering memakai dua puluh empat jam."], ["Enam belas titik nol nol", "Pukul empat sore ditulis enam belas titik nol nol."]),
   kt("Bagian hari", ["Pukul enam, pagi atau sore?", "Pukul enam bisa pagi, bisa juga sore."], ["Sebut bagian harinya", "Tambahkan kata pagi, siang, sore, atau malam."], ["Pagi, siang, sore, malam", "Satu hari terdiri dari empat bagian."]),
@@ -47,9 +47,9 @@ const bi = (ikon: string, nama: string, urutan: string, kata: string, digital: s
 });
 export const BARIS_INFO_JADWAL: readonly BarisInfo[] = [
   bi("\u{1F6A9}", "Pembukaan", "Pertama", "Pukul tujuh pagi", "07.00", "nol tujuh titik nol nol", [0, 1, 2]),
-  bi("\u{1F3C3}", "Lomba lari", "Kedua", "Pukul sembilan pagi", "09.00", "nol sembilan titik nol nol", [0]),
-  bi("\u{1F35A}", "Makan siang", "Ketiga", "Pukul dua belas siang", "12.00", "dua belas titik nol nol", [1]),
-  bi("\u{1F4AA}", "Tarik tambang", "Keempat", "Pukul empat sore", "16.00", "enam belas titik nol nol", [2]),
+  bi("\u{1F3C3}", "Lomba lari", "Kedua", "Pukul sembilan pagi", "09.00", "nol sembilan titik nol nol", []),
+  bi("\u{1F35A}", "Makan siang", "Ketiga", "Pukul dua belas siang", "12.00", "dua belas titik nol nol", []),
+  bi("\u{1F4AA}", "Tarik tambang", "Keempat", "Pukul empat sore", "16.00", "enam belas titik nol nol", []),
   bi("\u{1F3C6}", "Pesta penutupan", "Kelima", "Pukul tujuh malam", "19.00", "sembilan belas titik nol nol", []),
 ];
 export const TEMA_INFO_JADWAL: TemaInfo = { bingkai: "#DC2626", latar: "#FEF2F2", aksen: "#1D4ED8", teduh: "#DBEAFE", ikon: "\u{1F3C1}", judul: "Jadwal Hari Olahraga" };

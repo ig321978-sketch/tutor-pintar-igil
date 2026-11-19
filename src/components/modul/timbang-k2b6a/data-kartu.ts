@@ -16,7 +16,7 @@ const kt = (judul: string, masalah: [string, string], cara: [string, string], ha
 
 export const KARTU_TIMBANG: readonly KartuPeta[] = [
   kt("Mengetahui berat", ["Berapa beratnya?", "Kita ingin tahu seberapa berat sebuah benda."], ["Ditimbang", "Benda ditaruh di timbangan."], ["Berat didapat", "Sekarang kita tahu beratnya."], ["masalah"]),
-  kt("Membandingkan dua benda", ["Mana yang lebih berat?", "Ada dua benda. Mana yang lebih berat?"], ["Jungkat-jungkit", "Taruh satu benda di tiap ujung papan."], ["Yang turun lebih berat", "Ujung papan yang turun memuat benda yang lebih berat."], ["cara"]),
+  kt("Membandingkan dua benda", ["Mana yang lebih berat?", "Ada dua benda. Mana yang lebih berat?"], ["Jungkat-jungkit", "Taruh satu benda di tiap ujung papan."], ["Yang turun lebih berat", "Ujung papan yang turun memuat benda yang lebih berat."]),
   kt("Besar atau berat?", ["Apakah besar sama dengan berat?", "Apakah benda yang besar pasti berat?"], ["Timbang", "Jangan menilai dari besarnya saja. Timbang dulu."], ["Besar belum tentu berat", "Balon besar itu ringan, dan batu kecil terasa berat."]),
   kt("Tiga benda atau lebih", ["Mana paling berat dan paling ringan?", "Dari banyak benda, mana yang paling berat dan paling ringan?"], ["Bandingkan satu per satu", "Bandingkan dua benda, lalu dua benda lain, sampai semuanya."], ["Paling berat, paling ringan", "Benda paling berat dan benda paling ringan sudah ketemu."]),
   kt("Mengukur dengan satuan", ["Berapa satuannya?", "Berapa satuan tidak baku yang sama beratnya dengan benda ini?"], ["Isi satuan sampai seimbang", "Taruh satuan satu per satu sampai timbangan seimbang."], ["Banyak satuan adalah hasil ukur", "Banyaknya satuan itulah hasil pengukuran."]),
@@ -42,9 +42,9 @@ export const KOLOM_INFO_TIMBANG = ["Cara menimbang", "Yang terjadi", "Katanya"] 
 const bi = (ikon: string, nama: string, a: string, b: string, c: string, contoh: number[]): BarisInfo => ({ ikon, nama, isi: [{ t: a }, { t: b }, { t: c }], contoh });
 export const BARIS_INFO_TIMBANG: readonly BarisInfo[] = [
   bi("\u{1F6A7}", "Kerucut dan kantong", "Dua tangan", "Terasa berat", "Lebih berat", [0, 1, 2]),
-  bi("\u{1F45C}", "Dua kantong", "Gantungan baju", "Satu turun", "Yang turun lebih berat", [0]),
-  bi("⚽", "Dua bola", "Jungkat-jungkit", "Papan datar", "Sama berat", [1]),
-  bi("\u{1F42F}", "Boneka harimau", "Bola tenis", "Seimbang", "Empat bola tenis", [2]),
+  bi("\u{1F45C}", "Dua kantong", "Gantungan baju", "Satu turun", "Yang turun lebih berat", []),
+  bi("⚽", "Dua bola", "Jungkat-jungkit", "Papan datar", "Sama berat", []),
+  bi("\u{1F42F}", "Boneka harimau", "Bola tenis", "Seimbang", "Empat bola tenis", []),
   bi("\u{1F96D}", "Rantai buah", "Berpasangan", "Pepaya sama dua mangga", "Empat manggis", []),
 ];
 export const TEMA_INFO_TIMBANG: TemaInfo = { bingkai: "#16A34A", latar: "#ECFDF5", aksen: "#16A34A", teduh: "#DCFCE7", ikon: "\u{1F4E3}", judul: "Papan lapangan" };
