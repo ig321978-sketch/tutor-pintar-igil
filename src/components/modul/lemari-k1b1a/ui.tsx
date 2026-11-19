@@ -24,7 +24,7 @@ export function useTempel(
   /** Aturan cocok. Bawaan: teks label sama persis dengan kunci tempat. Pohon memakai cocok per warna (kelompok). */
   cocokan: (t: Tempat, l: Label) => boolean = cocok,
 ) {
-  const label = useMemo(() => labelDari(tempat, benih), [tempat, benih]);
+  const label = useMemo(() => labelDari(tempat.filter((x) => !x.contoh), benih), [tempat, benih]);
   const [pilih, setPilih] = useState<string | null>(null);
   const [isi, setIsi] = useState<Record<string, string>>({});
   const [goyang, setGoyang] = useState<string | null>(null);
@@ -39,6 +39,10 @@ export function useTempel(
     bicara(l.teks);
   };
   const ketukTempat = (t: Tempat) => {
+    if (t.contoh) {
+      setPesan("Kotak ini sudah terisi sebagai contoh. Pakai sebagai petunjuk.");
+      return;
+    }
     if (isi[t.id]) return;
     const l = label.find((x) => x.id === pilih);
     if (!l) {
@@ -57,7 +61,7 @@ export function useTempel(
       bicara(p);
     }
   };
-  const teksDi = (t: Tempat) => label.find((l) => l.id === isi[t.id])?.teks ?? null;
+  const teksDi = (t: Tempat) => (t.contoh ? t.kunci : null) ?? label.find((l) => l.id === isi[t.id])?.teks ?? null;
   return { label, sisa, pilih, isi, goyang, pesan, selesai, ketukLabel, ketukTempat, teksDi };
 }
 
@@ -95,5 +99,14 @@ export function BakiLabel({
         </button>
       ))}
     </div>
+  );
+}
+
+/** Tanda kecil "contoh" di pojok kotak yang sudah terisi sejak awal (Label Contoh). */
+export function TagContoh() {
+  return (
+    <span className="pointer-events-none absolute -top-2 right-1 rounded-full bg-[#1C01A5] px-1.5 text-[9px] font-black leading-4 text-white" aria-hidden="true">
+      contoh
+    </span>
   );
 }

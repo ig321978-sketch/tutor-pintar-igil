@@ -6,6 +6,7 @@
 import type { Tempat } from "../lemari-k1b1a/logika";
 
 const tp = (id: string, kelompok: string, kunci: string, urutan?: number): Tempat => (urutan === undefined ? { id, kelompok, kunci } : { id, kelompok, kunci, urutan });
+const beriContoh = (d: Tempat[], ids: string[]): Tempat[] => d.map((x) => (ids.includes(x.id) ? { ...x, contoh: true } : x));
 
 /* ------------------------------ Mind-map: rak peralatan di troli ------------------------------ */
 export const PUSAT_RAK = "Berat benda";
@@ -14,7 +15,7 @@ export const KELOMPOK_RAK: Record<string, { nama: string; letak: string; ikon: s
   metode: { nama: "Penyelesaian", letak: "Rak tengah", ikon: "\u{1F4CB}", isi: "#FED7AA", garis: "#C2410C", petunjuk: "Kotak ini oranye. Taruh di kotak bernomor yang pas." },
   hasil: { nama: "Hasil", letak: "Rak atas", ikon: "\u{1F3C6}", isi: "#BBF7D0", garis: "#15803D", petunjuk: "Kotak ini hijau. Taruh di rak atas, tempat hasil." },
 };
-export const TEMPAT_RAK: Tempat[] = [
+const DASAR_RAK: Tempat[] = [
   tp("rk-m1", "masalah", "Dua tim harus membawa benda sama berat"),
   tp("rk-m2", "masalah", "Perkiraan berat bisa keliru"),
   tp("rk-m3", "masalah", "Hasil ukur berubah bila satuan berubah"),
@@ -30,9 +31,10 @@ export const TEMPAT_RAK: Tempat[] = [
   tp("rk-h3", "hasil", "Satuan lebih ringan perlu jumlah lebih banyak"),
   tp("rk-h4", "hasil", "Tiga benda: paling berat dan paling ringan"),
 ];
+export const TEMPAT_RAK: Tempat[] = beriContoh(DASAR_RAK, ["rk-m1","rk-p1","rk-p2","rk-p7","rk-h1"]);
 export const PETUNJUK_URUT_RAK = "Warnanya sudah benar. Nomor kotaknya belum pas. Langkah mana yang lebih dulu?";
 export const SUARA_RAK =
-  "Ini rak peralatan di troli. Rak bawah berisi masalah. Rak tengah punya tujuh kotak bernomor berisi langkah yang berurutan, ikuti nomornya dari satu sampai tujuh. Rak atas berisi hasil. Ketuk label, lalu ketuk kotak yang cocok.";
+  "Ini rak peralatan di troli. Rak bawah berisi masalah. Rak tengah punya tujuh kotak bernomor berisi langkah yang berurutan, ikuti nomornya dari satu sampai tujuh. Rak atas berisi hasil. Beberapa kotak sudah terisi sebagai contoh, jadi lihat dulu sebagai petunjuk. Ketuk label, lalu ketuk kotak yang cocok.";
 
 /* ------------------------------ Infografis: papan lapangan ------------------------------ */
 export const KOLOM_PAPAN = ["Cara menimbang", "Yang terjadi", "Katanya"] as const;
@@ -43,13 +45,14 @@ export const BARIS_PAPAN: { ikon: string; nama: string; cara: string; terjadi: s
   { ikon: "\u{1F42F}", nama: "Boneka harimau", cara: "bola tenis satu per satu", terjadi: "seimbang setelah empat", hasil: "sama dengan empat bola tenis" },
   { ikon: "\u{1F96D}", nama: "Rantai buah", cara: "bandingkan berpasangan", terjadi: "pepaya sama dengan dua mangga", hasil: "empat manggis sama dengan pepaya" },
 ];
-export const TEMPAT_PAPAN: Tempat[] = BARIS_PAPAN.flatMap((b, i) => [tp(`d${i}-cara`, "cara", b.cara), tp(`d${i}-terjadi`, "terjadi", b.terjadi), tp(`d${i}-hasil`, "hasil", b.hasil)]);
+const DASAR_PAPAN: Tempat[] = BARIS_PAPAN.flatMap((b, i) => [tp(`d${i}-cara`, "cara", b.cara), tp(`d${i}-terjadi`, "terjadi", b.terjadi), tp(`d${i}-hasil`, "hasil", b.hasil)]);
+export const TEMPAT_PAPAN: Tempat[] = beriContoh(DASAR_PAPAN, ["d0-cara","d0-terjadi","d0-hasil","d1-cara","d2-terjadi","d3-hasil","d4-cara"]);
 export const KELOMPOK_PAPAN: Record<string, string> = {
   cara: "Label ini cara menimbang. Tempelkan di kolom Cara menimbang.",
   terjadi: "Label ini yang terjadi pada alat timbang. Tempelkan di kolom Yang terjadi.",
   hasil: "Label ini katanya, hasil perbandingan berat. Tempelkan di kolom Katanya.",
 };
-export const SUARA_PAPAN = "Ini papan lapangan, dari cerita peralatan lomba Pak Anton. Tiap baris satu kejadian. Tempelkan cara menimbangnya, yang terjadi pada alatnya, dan katanya.";
+export const SUARA_PAPAN = "Ini papan lapangan, dari cerita peralatan lomba Pak Anton. Tiap baris satu kejadian. Tempelkan cara menimbangnya, yang terjadi pada alatnya, dan katanya. Beberapa kotak sudah terisi sebagai contoh, jadi lihat dulu sebagai petunjuk.";
 
 /* ------------------------------ Simulasi: Pos Timbang (berbeda dari Story) ------------------------------ */
 export type BendaSim = { id: string; nama: string; emoji: string; w: number; besar?: boolean };

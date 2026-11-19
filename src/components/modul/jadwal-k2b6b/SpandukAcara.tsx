@@ -2,7 +2,7 @@
 
 import React from "react";
 import type { Tempat } from "../lemari-k1b1a/logika";
-import { BakiLabel, CSS_LEMARI, TOMBOL_UTAMA, useTempel } from "../lemari-k1b1a/ui";
+import { BakiLabel, CSS_LEMARI, TagContoh, TOMBOL_UTAMA, useTempel } from "../lemari-k1b1a/ui";
 import { BARIS_SPANDUK, KELOMPOK_SPANDUK, KOLOM_SPANDUK, SUARA_SPANDUK, TEMPAT_SPANDUK } from "./data-peta";
 
 /**
@@ -32,10 +32,11 @@ export default function SpandukAcara({ speakGuru, onLanjut, teksLanjut }: { spea
         key={t.id}
         type="button"
         onClick={() => tp.ketukTempat(t)}
-        aria-label={teks ?? `Kotak kosong kolom ${NAMA_KOLOM[t.kelompok]}`}
-        className={`flex min-h-[48px] w-full items-center justify-center rounded-sm border-2 px-1 text-center text-[11px] font-black leading-tight ${teks ? "border-[#15803D] bg-[#DCFCE7] text-[#14532D] lm-muncul" : "border-dashed border-[#1D4ED8]/70 bg-white/80 text-[#1D4ED8]/60"} ${tp.goyang === t.id ? "lm-goyang" : ""}`}
+        aria-label={t.contoh ? `Contoh: ${teks}` : (teks ?? `Kotak kosong kolom ${NAMA_KOLOM[t.kelompok]}`)}
+        className={`relative flex min-h-[48px] w-full items-center justify-center rounded-sm border-2 px-1 text-center text-[11px] font-black leading-tight ${teks ? "border-[#15803D] bg-[#DCFCE7] text-[#14532D] lm-muncul" : "border-dashed border-[#1D4ED8]/70 bg-white/80 text-[#1D4ED8]/60"} ${tp.goyang === t.id ? "lm-goyang" : ""} ${t.contoh ? "!pt-3.5" : ""}`}
       >
         {teks ?? "?"}
+        {t.contoh ? <TagContoh /> : null}
       </button>
     );
   };
@@ -47,7 +48,7 @@ export default function SpandukAcara({ speakGuru, onLanjut, teksLanjut }: { spea
         <button type="button" onClick={() => speakGuru(SUARA_SPANDUK)} className="shrink-0 rounded-full border-2 border-[#1C01A5] bg-white px-2 py-1 text-sm" aria-label="Dengar petunjuk">
           {"\u{1F50A}"}
         </button>
-        <p className="text-sm font-bold leading-snug text-[#1C01A5]">Spanduk jadwal acara. Tiap baris satu kegiatan. Tempelkan urutannya, jamnya dengan kata, dan jam digitalnya.</p>
+        <p className="text-sm font-bold leading-snug text-[#1C01A5]">Spanduk jadwal acara. Tiap baris satu kegiatan. Tempelkan urutannya, jamnya dengan kata, dan jam digitalnya. Kotak bertanda contoh sudah terisi sebagai petunjuk.</p>
       </div>
 
       <div className="mx-auto w-full max-w-xl">

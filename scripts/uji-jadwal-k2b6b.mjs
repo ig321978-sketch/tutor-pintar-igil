@@ -43,6 +43,7 @@ const ADA_EMOJI = /[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}]/u;
 /* ------------------------------ Mind-map lintasan lari ------------------------------ */
 {
   const t = DP.TEMPAT_LINTASAN;
+  cek(t.filter((x) => x.contoh).length === 5 && t.filter((x) => x.contoh && x.kelompok === "metode").length === 3, "lintasan: lima kotak contoh");
   sama(["masalah", "metode", "hasil"].map((k) => t.filter((x) => x.kelompok === k).length), [3, 7, 4], "lintasan: tiga masalah, tujuh rintangan bernomor, empat hasil");
   cek(new Set(t.map((x) => x.kunci)).size === t.length && t.every((x) => x.kunci.length <= 44 && tanpaDigit(x.kunci)), "lintasan: label unik, pendek, tanpa digit");
   sama(t.filter((x) => x.kelompok === "metode").map((x) => x.urutan), [1, 2, 3, 4, 5, 6, 7], "lintasan: rintangan bernomor satu sampai tujuh");
@@ -69,6 +70,7 @@ const ADA_EMOJI = /[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}]/u;
 /* ------------------------------ Infografis spanduk acara ------------------------------ */
 {
   const t = DP.TEMPAT_SPANDUK;
+  cek(t.filter((x) => x.contoh).length === 7 && [0, 1, 2].every((c) => t[c].contoh) && t.filter((x) => !x.contoh).length === 8, "spanduk: satu baris contoh penuh dan satu sel contoh tiap baris lain");
   cek(DP.BARIS_SPANDUK.length === 5 && t.length === 15 && new Set(t.map((x) => x.kunci)).size === 15, "spanduk: lima baris dan tiga kolom, label unik");
   sama(DP.BARIS_SPANDUK.map((b) => b.nama), ["Pembukaan", "Lomba lari", "Makan siang", "Tarik tambang", "Pesta penutupan"], "spanduk: lima kegiatan dari Story");
   sama(DP.BARIS_SPANDUK.map((b) => b.digital), ["07.00", "09.00", "12.00", "16.00", "19.00"], "spanduk: jam digital");

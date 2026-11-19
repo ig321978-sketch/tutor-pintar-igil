@@ -12,8 +12,9 @@ export const kata = (n: number): string => KATA[n] ?? String(n);
 /**
  * Tempat kosong yang harus diisi label tertentu. `kelompok` dipakai untuk petunjuk saat salah tempel.
  * `urutan` (1, 2, ...) menandai langkah yang HARUS berurutan: tempat bernomor hanya cocok dengan labelnya sendiri.
+ * `contoh` menandai tempat yang sudah terisi sejak awal sebagai petunjuk (Label Contoh): tidak punya label di baki dan tidak bisa diketuk.
  */
-export type Tempat = { id: string; kunci: string; kelompok: string; urutan?: number };
+export type Tempat = { id: string; kunci: string; kelompok: string; urutan?: number; contoh?: boolean };
 /** Label yang bisa ditempel. Label kembar (teks sama) boleh, karena pemeriksaan memakai teks. */
 export type Label = { id: string; teks: string };
 

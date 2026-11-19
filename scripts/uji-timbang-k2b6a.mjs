@@ -145,6 +145,7 @@ const emojiSah = (s) => [...s].every((c) => c.codePointAt(0) <= 0x1fa95 && c.cod
 /* ------------------------------ Mind-map: rak peralatan ------------------------------ */
 {
   const T = DP.TEMPAT_RAK;
+  cek(T.filter((x) => x.contoh).length === 5 && T.filter((x) => x.contoh && x.kelompok === "masalah").length === 1 && T.filter((x) => x.contoh && x.kelompok === "metode").length === 3 && T.filter((x) => x.contoh && x.kelompok === "hasil").length === 1, "rak: lima kotak contoh (satu masalah, tiga langkah, satu hasil)");
   const per = (k) => T.filter((t) => t.kelompok === k);
   cek(per("masalah").length === 3 && per("metode").length === 7 && per("hasil").length === 4, "rak: masalah tiga, penyelesaian tujuh, hasil empat");
   sama(per("metode").map((t) => t.urutan), [1, 2, 3, 4, 5, 6, 7], "rak: penyelesaian bernomor satu sampai tujuh");
@@ -168,6 +169,7 @@ const emojiSah = (s) => [...s].every((c) => c.codePointAt(0) <= 0x1fa95 && c.cod
 /* ------------------------------ Infografis: papan lapangan ------------------------------ */
 {
   const T = DP.TEMPAT_PAPAN;
+  cek(T.filter((x) => x.contoh).length === 7 && [0, 1, 2].every((c) => T[c].contoh) && T.filter((x, i) => x.contoh && i >= 3).length === 4 && T.filter((x) => !x.contoh).length === 8, "papan: satu baris contoh penuh dan satu sel contoh tiap baris lain");
   cek(DP.BARIS_PAPAN.length === 5 && T.length === 15 && DP.KOLOM_PAPAN.length === 3, "papan: lima baris, tiga kolom, lima belas kotak");
   cek(new Set(T.map((t) => t.kunci)).size === 15 && new Set(T.map((t) => t.id)).size === 15, "papan: label unik");
   cek(T.every((t) => t.kunci.length <= 34 && tanpaDigit(t.kunci) && bersih(t.kunci)), `papan: label pendek, tanpa digit dan kata terlarang (terpanjang ${Math.max(...T.map((t) => t.kunci.length))})`);

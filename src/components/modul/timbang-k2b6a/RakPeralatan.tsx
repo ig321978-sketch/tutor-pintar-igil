@@ -2,7 +2,7 @@
 
 import React from "react";
 import { cocokKelompok, kelompokLabel, type Tempat } from "../lemari-k1b1a/logika";
-import { BakiLabel, CSS_LEMARI, TOMBOL_UTAMA, useTempel } from "../lemari-k1b1a/ui";
+import { BakiLabel, CSS_LEMARI, TagContoh, TOMBOL_UTAMA, useTempel } from "../lemari-k1b1a/ui";
 import { KELOMPOK_RAK, PETUNJUK_URUT_RAK, PUSAT_RAK, SUARA_RAK, TEMPAT_RAK } from "./data-peta";
 
 /**
@@ -33,8 +33,8 @@ export default function RakPeralatan({ speakGuru, onLanjut, teksLanjut }: { spea
         key={t.id}
         type="button"
         onClick={() => tp.ketukTempat(t)}
-        aria-label={teks ?? (t.urutan ? `Kotak kosong nomor ${t.urutan}` : `Kotak kosong ${g.nama}`)}
-        className={`relative flex min-h-[64px] w-full items-center justify-center gap-1 rounded-md border-[3px] px-1.5 py-1.5 text-center text-xs font-black leading-tight text-[#1C01A5] sm:text-sm ${teks ? "lm-muncul" : "border-dashed"} ${tp.goyang === t.id ? "lm-goyang" : ""}`}
+        aria-label={t.contoh ? `Contoh: ${teks}` : (teks ?? (t.urutan ? `Kotak kosong nomor ${t.urutan}` : `Kotak kosong ${g.nama}`))}
+        className={`relative flex min-h-[64px] w-full items-center justify-center gap-1 rounded-md border-[3px] px-1.5 py-1.5 text-center text-xs font-black leading-tight text-[#1C01A5] sm:text-sm ${teks ? "lm-muncul" : "border-dashed"} ${tp.goyang === t.id ? "lm-goyang" : ""} ${t.contoh ? "!pt-3.5" : ""}`}
         style={{ background: teks ? g.isi : "rgba(248,250,252,0.96)", borderColor: g.garis }}
       >
         {t.urutan ? (
@@ -43,6 +43,7 @@ export default function RakPeralatan({ speakGuru, onLanjut, teksLanjut }: { spea
           </span>
         ) : null}
         <span className="flex-1">{teks ?? "?"}</span>
+        {t.contoh ? <TagContoh /> : null}
       </button>
     );
   };
@@ -62,7 +63,7 @@ export default function RakPeralatan({ speakGuru, onLanjut, teksLanjut }: { spea
         <button type="button" onClick={() => speakGuru(SUARA_RAK)} className="shrink-0 rounded-full border-2 border-[#1C01A5] bg-white px-2 py-1 text-sm" aria-label="Dengar petunjuk">
           {"\u{1F50A}"}
         </button>
-        <p className="text-sm font-bold leading-snug text-[#1C01A5]">Troli peralatan tiga rak. Rak bawah berisi masalah, rak tengah punya tujuh kotak bernomor berisi langkah dari satu sampai tujuh, rak atas berisi hasil.</p>
+        <p className="text-sm font-bold leading-snug text-[#1C01A5]">Troli peralatan tiga rak. Rak bawah berisi masalah, rak tengah punya tujuh kotak bernomor berisi langkah dari satu sampai tujuh, rak atas berisi hasil. Kotak bertanda contoh sudah terisi sebagai petunjuk.</p>
       </div>
 
       <div className="mx-auto max-w-xl space-y-2 rounded-xl border-[6px] border-[#475569] bg-[#CBD5E1] p-2">

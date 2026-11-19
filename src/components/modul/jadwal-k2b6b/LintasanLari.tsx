@@ -2,7 +2,7 @@
 
 import React from "react";
 import { cocokKelompok, kelompokLabel, type Tempat } from "../lemari-k1b1a/logika";
-import { BakiLabel, CSS_LEMARI, TOMBOL_UTAMA, useTempel } from "../lemari-k1b1a/ui";
+import { BakiLabel, CSS_LEMARI, TagContoh, TOMBOL_UTAMA, useTempel } from "../lemari-k1b1a/ui";
 import { KELOMPOK_LINTASAN, PETUNJUK_URUT_LINTASAN, PUSAT_LINTASAN, SUARA_LINTASAN, TEMPAT_LINTASAN } from "./data-peta";
 
 /**
@@ -33,8 +33,8 @@ export default function LintasanLari({ speakGuru, onLanjut, teksLanjut }: { spea
         key={t.id}
         type="button"
         onClick={() => tp.ketukTempat(t)}
-        aria-label={teks ?? (t.urutan ? `Rintangan kosong nomor ${t.urutan}` : `Tempat kosong ${g.nama}`)}
-        className={`relative flex min-h-[56px] w-full items-center justify-center gap-1 rounded-md border-[3px] px-1.5 py-1 text-center text-[11px] font-black leading-tight text-[#1C01A5] sm:text-xs ${teks ? "lm-muncul" : "border-dashed"} ${tp.goyang === t.id ? "lm-goyang" : ""}`}
+        aria-label={t.contoh ? `Contoh: ${teks}` : (teks ?? (t.urutan ? `Rintangan kosong nomor ${t.urutan}` : `Tempat kosong ${g.nama}`))}
+        className={`relative flex min-h-[56px] w-full items-center justify-center gap-1 rounded-md border-[3px] px-1.5 py-1 text-center text-[11px] font-black leading-tight text-[#1C01A5] sm:text-xs ${teks ? "lm-muncul" : "border-dashed"} ${tp.goyang === t.id ? "lm-goyang" : ""} ${t.contoh ? "!pt-3.5" : ""}`}
         style={{ background: teks ? g.isi : "rgba(255,255,255,0.92)", borderColor: g.garis }}
       >
         {t.urutan ? (
@@ -43,6 +43,7 @@ export default function LintasanLari({ speakGuru, onLanjut, teksLanjut }: { spea
           </span>
         ) : null}
         <span className="flex-1">{teks ?? "?"}</span>
+        {t.contoh ? <TagContoh /> : null}
       </button>
     );
   };
@@ -62,7 +63,7 @@ export default function LintasanLari({ speakGuru, onLanjut, teksLanjut }: { spea
         <button type="button" onClick={() => speakGuru(SUARA_LINTASAN)} className="shrink-0 rounded-full border-2 border-[#1C01A5] bg-white px-2 py-1 text-sm" aria-label="Dengar petunjuk">
           {"\u{1F50A}"}
         </button>
-        <p className="text-sm font-bold leading-snug text-[#1C01A5]">Lintasan lari punya tiga lajur. Lajur satu berisi masalah, lajur dua punya tujuh rintangan bernomor, lajur tiga berisi hasil.</p>
+        <p className="text-sm font-bold leading-snug text-[#1C01A5]">Lintasan lari punya tiga lajur. Lajur satu berisi masalah, lajur dua punya tujuh rintangan bernomor, lajur tiga berisi hasil. Kotak bertanda contoh sudah terisi sebagai petunjuk.</p>
       </div>
 
       <div className="mx-auto max-w-xl space-y-2 rounded-xl border-[6px] border-[#16A34A] bg-[#BBF7D0] p-2">

@@ -2,7 +2,7 @@
 
 import React from "react";
 import type { Tempat } from "../lemari-k1b1a/logika";
-import { BakiLabel, CSS_LEMARI, TOMBOL_UTAMA, useTempel } from "../lemari-k1b1a/ui";
+import { BakiLabel, CSS_LEMARI, TagContoh, TOMBOL_UTAMA, useTempel } from "../lemari-k1b1a/ui";
 import { BARIS_PAPAN, KELOMPOK_PAPAN, KOLOM_PAPAN, SUARA_PAPAN, TEMPAT_PAPAN } from "./data-peta";
 
 /**
@@ -33,10 +33,11 @@ export default function PapanLapangan({ speakGuru, onLanjut, teksLanjut }: { spe
         key={t.id}
         type="button"
         onClick={() => tp.ketukTempat(t)}
-        aria-label={teks ?? `Kotak kosong kolom ${NAMA_KOLOM[t.kelompok]}`}
-        className={`flex min-h-[44px] w-full items-center justify-center rounded-sm border-2 px-1 text-center text-xs font-black leading-tight [overflow-wrap:anywhere] ${teks ? "border-[#15803D] bg-[#DCFCE7] text-[#1C01A5] lm-muncul" : "border-dashed border-[#64748B]/70 bg-white/85 text-[#64748B]/60"} ${tp.goyang === t.id ? "lm-goyang" : ""}`}
+        aria-label={t.contoh ? `Contoh: ${teks}` : (teks ?? `Kotak kosong kolom ${NAMA_KOLOM[t.kelompok]}`)}
+        className={`relative flex min-h-[44px] w-full items-center justify-center rounded-sm border-2 px-1 text-center text-xs font-black leading-tight [overflow-wrap:anywhere] ${teks ? "border-[#15803D] bg-[#DCFCE7] text-[#1C01A5] lm-muncul" : "border-dashed border-[#64748B]/70 bg-white/85 text-[#64748B]/60"} ${tp.goyang === t.id ? "lm-goyang" : ""} ${t.contoh ? "!pt-3.5" : ""}`}
       >
         {teks ?? "?"}
+        {t.contoh ? <TagContoh /> : null}
       </button>
     );
   };
@@ -48,7 +49,7 @@ export default function PapanLapangan({ speakGuru, onLanjut, teksLanjut }: { spe
         <button type="button" onClick={() => speakGuru(SUARA_PAPAN)} className="shrink-0 rounded-full border-2 border-[#1C01A5] bg-white px-2 py-1 text-sm" aria-label="Dengar petunjuk">
           {"\u{1F50A}"}
         </button>
-        <p className="text-sm font-bold leading-snug text-[#1C01A5]">Papan lapangan. Tiap baris satu kejadian. Tempelkan cara menimbangnya, yang terjadi pada alatnya, dan katanya.</p>
+        <p className="text-sm font-bold leading-snug text-[#1C01A5]">Papan lapangan. Tiap baris satu kejadian. Tempelkan cara menimbangnya, yang terjadi pada alatnya, dan katanya. Kotak bertanda contoh sudah terisi sebagai petunjuk.</p>
       </div>
 
       <div className="mx-auto w-full max-w-xl rounded-xl border-[6px] border-[#FFFFFF] bg-[#16A34A] p-2 shadow-[0_6px_0_rgba(20,83,45,0.35)]">
