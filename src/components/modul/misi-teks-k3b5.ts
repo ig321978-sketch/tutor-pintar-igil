@@ -1,20 +1,16 @@
 /**
- * Teks misi dan nama simulasi Kelas 3 Bab 5. Berkas kecil tanpa impor, dipisah dari SimulasiK3Bab5.tsx
- * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen laboratorium ke bundel awal.
+ * Teks misi awal Kelas 3 Bab 5 (Bengkel Sepeda Pak Hasan). Berkas kecil tanpa impor, dipisah dari SimulasiK3Bab5.tsx
+ * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen simulasi ke bundel awal.
+ * KERANGKA: agen tiap Sub-Bab mengisi barisnya sendiri dengan teks yang SAMA dengan MISI_*_TEKS di data-sim.ts folder Sub-Bab.
  */
 
 export type HurufK3B5 = "A" | "B";
 
-export const hurufK3B5 = (sub: string): HurufK3B5 => (sub === "B" ? "B" : "A");
+export const hurufK3B5 = (sub: string): HurufK3B5 => (sub === "B" ? sub : "A");
 
 export const MISI_K3B5: Record<HurufK3B5, string> = {
-  A: "Di Lab Data Kelompok, ubah banyak benda lima anak, urutkan, cari data terkecil dan terbesar, hitung jangkauan, bandingkan dua anak, dan cacah nilai ulangan dengan turus. Periksa dengan Mesin Urut, lalu selesaikan skenario Pemilihan Ketua Kelas. Selesaikan semua misi wajib, urutannya bebas.",
-  B: "Di Lab Tabel, tulis turus kelompok lima, isi tabel manik, huruf, dan nilai sampai lengkap, lalu baca tabelnya: terbanyak, tersedikit, lebih dari, dan kurang dari. Periksa dengan Mesin Tabel, lalu tuntaskan skenario Laporan Kelas. Selesaikan semua misi wajib: ini misi penutup bab.",
-};
-
-export const NAMA_SIM_K3B5: Record<HurufK3B5, string> = {
-  A: "Lab Data Kelompok, Mesin Urut, dan Pemilihan Ketua Kelas",
-  B: "Pencapaian Misi Bab: Lab Tabel, Mesin Tabel, dan Laporan Kelas",
+  A: "Urutkan kartu data, tandai data terkecil dan terbesar, hitung jangkauan, lalu hitung turus. Urutannya bebas.",
+  B: "Cacah dengan turus berlima, isi kolom banyak, urutkan baris, lalu baca tabel dan jawab. Urutannya bebas.",
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */

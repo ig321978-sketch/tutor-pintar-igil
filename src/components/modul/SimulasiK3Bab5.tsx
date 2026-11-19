@@ -2,78 +2,49 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import LabBertahap, { type TabLab } from "./LabBertahap";
-import SimulasiLabDataK3 from "./SimulasiLabDataK3";
-import SimulasiLabTabelK3 from "./SimulasiLabTabelK3";
-import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
-import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K3B5A, SKENARIO_K3B5B } from "./skenario-k3b5";
-import { MESIN_TABEL, MESIN_URUT } from "./mesin-data-k3b5";
-import type { DefSkenario } from "./skenario-umum";
-import type { DefMesin } from "./mesin-bertahap-k3b1";
-import { daftarMisiK3Bab5, ID_SKENARIO_K3B5, type KeadaanK3Bab5 } from "./misi-k3bab5";
-import { laporMisi, tampilMisi } from "./misi-simulasi";
-import { MISI_K3B5, NAMA_SIM_K3B5, hurufK3B5, misiAwalK3Bab5, type HurufK3B5 } from "./misi-teks-k3b5";
+import { MISI_K3B5, hurufK3B5, misiAwalK3Bab5 } from "./misi-teks-k3b5";
+import { daftarMisiK3Bab5 } from "./misi-k3bab5";
+import { laporMisi as laporMisiCatat } from "./misi-simulasi";
+import SimulasiMejaCatat from "./papan-k3b5a/SimulasiMejaCatat";
+import type { KeadaanCatat } from "./papan-k3b5a/logika";
+import { laporMisi as laporMisiTabel } from "./misi-simulasi";
+import SimulasiPapanTabel from "./tabel-k3b5b/SimulasiPapanTabel";
+import type { KeadaanTabel } from "./tabel-k3b5b/logika";
 
 /* ======================================================================== */
-/* Simulasi Kelas 3 Bab 5 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
-/* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k3bab5.ts. */
-/*   A Mengurutkan dan Membandingkan : Lab Data Kelompok + Mesin Urut + Pemilihan Ketua Kelas */
-/*   B Menyajikan Data dalam Tabel   : Lab Tabel + Mesin Tabel + Laporan Kelas (pencapaian bab) */
+/* Simulasi Bab 5 di dalam Materi (tahap 4 SMISCPA), tema           */
+/* Bengkel Sepeda Pak Hasan: A Meja Catat, B Papan Tabel.*/
+/* KERANGKA: agen Sub-Bab mengisi fungsi langkah-nya (impor dari folder      */
+/* miliknya; render sekarang null) dan menambah impor yang dibutuhkan.        */
 /* ======================================================================== */
 
-const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
+/** Sub-Bab A: Meja Catat. */
+const langkahMejaCatatA = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Meja Catat",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K3B5.A,
+  misiDaftar: daftarMisiK3Bab5("A").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiMejaCatat speakGuru={a.speakGuru} onKeadaan={(k: KeadaanCatat) => laporMisiCatat(daftarMisiK3Bab5("A"), k, a.capai)} />,
+});
 
-const SKENARIO: Record<HurufK3B5, DefSkenario> = { A: SKENARIO_K3B5A, B: SKENARIO_K3B5B };
-const MESIN: Record<HurufK3B5, DefMesin> = { A: MESIN_URUT, B: MESIN_TABEL };
-
-const COBA_MESIN: Record<HurufK3B5, string[]> = {
-  A: [
-    "Ketuk stasiun Jangkauan sebelum mengurutkan. Apa kata mesin?",
-    "Bandingkan data keluarga, nilai, dan kue. Apakah data pertama selalu yang terkecil?",
-    "Mengapa jangkauan dihitung dengan mengurangkan, bukan menjumlahkan?",
-  ],
-  B: [
-    "Ketuk stasiun Baca sebelum menghitung turus. Apa kata mesin?",
-    "Bandingkan tabel manik, huruf, dan nilai. Mana yang dibaca dengan lebih dari?",
-    "Mengapa nilai 7 tidak ikut saat menghitung lebih dari 7?",
-  ],
-};
+/** Sub-Bab B: Papan Tabel. */
+const langkahPapanTabelB = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Papan Tabel",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K3B5.B,
+  misiDaftar: daftarMisiK3Bab5("B").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiPapanTabel speakGuru={a.speakGuru} onKeadaan={(k: KeadaanTabel) => laporMisiTabel(daftarMisiK3Bab5("B"), k, a.capai)} />,
+});
 
 const langkahK3Bab5 = (sub: string): LangkahSim[] => {
   const huruf = hurufK3B5(sub);
-  const daftar = daftarMisiK3Bab5(huruf);
-  return [
-    {
-      metode: "PhET",
-      sub: NAMA_SIM_K3B5[huruf],
-      petunjuk: MAINKAN_DULU,
-      misi: MISI_K3B5[huruf],
-      misiDaftar: tampilMisi(daftar),
-      mode: "sentuh",
-      render: (a) => {
-        const lapor = (k: KeadaanK3Bab5) => laporMisi(daftar, k, a.capai);
-        const selesai = (id: string) => lapor({ alat: "selesai", id });
-
-        const lab: TabLab =
-          huruf === "A"
-            ? { id: "data", nama: "Lab Data Kelompok", render: () => <SimulasiLabDataK3 speakGuru={a.speakGuru} onKeadaan={lapor} /> }
-            : { id: "tabel", nama: "Lab Tabel", render: () => <SimulasiLabTabelK3 speakGuru={a.speakGuru} onKeadaan={lapor} /> };
-        const def = MESIN[huruf];
-        const mesin: TabLab = {
-          id: "mesin",
-          nama: def.judul,
-          render: () => <SimulasiMesinBertahapK3 def={def} coba={COBA_MESIN[huruf]} speakGuru={a.speakGuru} onTuntas={selesai} />,
-        };
-        const skenario: TabLab = {
-          id: "skenario",
-          nama: SKENARIO[huruf].judul,
-          render: () => <SimulasiSkenario def={SKENARIO[huruf]} speakGuru={a.speakGuru} onTuntas={() => selesai(ID_SKENARIO_K3B5[huruf])} />,
-        };
-        return <LabBertahap tab={[lab, mesin, skenario]} label="Alat laboratorium data" />;
-      },
-    },
-  ];
+  if (huruf === "A") return [langkahMejaCatatA()];
+  if (huruf === "B") return [langkahPapanTabelB()];
+  return [langkahMejaCatatA()];
 };
 
 export { misiAwalK3Bab5 };
@@ -92,7 +63,7 @@ export default function SimulasiK3Bab5Materi({
   const huruf = hurufK3B5(sub);
   return (
     <SimulasiAlur
-      judulBab={`Kelas 3 Bab 5 · Sub-Bab ${huruf}`}
+      judulBab={`Bab 5 · Sub-Bab ${huruf}`}
       langkah={langkahK3Bab5(sub)}
       speakGuru={speakGuru}
       onSelesai={onSelesai}
