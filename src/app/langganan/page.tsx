@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import CheckoutQris from "@/components/pembayaran/CheckoutQris";
 
 export const metadata: Metadata = {
-  title: "$IGIL · Berlangganan",
+  title: "$IGIL · Akun & Langganan",
   robots: { index: false, follow: false },
 };
 

@@ -139,9 +139,9 @@ export async function middleware(request: NextRequest) {
       return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
     }
     if (ruteWajibMasuk(pathname) && !sesi.user) {
-      const gerbang = new URL("/", request.url);
-      gerbang.searchParams.set("next", pathname);
-      return tanpaCache(NextResponse.redirect(gerbang));
+      const masuk = new URL("/login", request.url);
+      masuk.searchParams.set("next", pathname);
+      return tanpaCache(NextResponse.redirect(masuk));
     }
     if (
       ruteHalamanPublikSaatTerkunci(pathname) ||
@@ -167,9 +167,9 @@ export async function middleware(request: NextRequest) {
   if (ruteWajibMasuk(pathname)) {
     const sesiBelajar = await sesiAdmin(request);
     if (!sesiBelajar.user) {
-      const gerbang = new URL("/", request.url);
-      gerbang.searchParams.set("next", pathname);
-      return tanpaCache(NextResponse.redirect(gerbang));
+      const masuk = new URL("/login", request.url);
+      masuk.searchParams.set("next", pathname);
+      return tanpaCache(NextResponse.redirect(masuk));
     }
     if (!ruteAdmin(pathname) && !ruteLatihanLama(pathname)) {
       return sesiBelajar.response;
@@ -182,9 +182,9 @@ export async function middleware(request: NextRequest) {
 
   const sesi = await sesiAdmin(request);
   if (!sesi.user) {
-    const gerbang = new URL("/", request.url);
-    gerbang.searchParams.set("next", pathname);
-    return tanpaCache(NextResponse.redirect(gerbang));
+    const masuk = new URL("/login", request.url);
+    masuk.searchParams.set("next", pathname);
+    return tanpaCache(NextResponse.redirect(masuk));
   }
   if (!sesi.admin) {
     return tanpaCache(NextResponse.redirect(new URL("/403", request.url)));

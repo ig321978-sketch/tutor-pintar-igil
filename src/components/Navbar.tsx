@@ -5,18 +5,18 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useUserRole } from "@/hooks/useUserRole";
-import { hapusSesiBrowser } from "@/lib/sesi-browser";
+import { situsHanyaAdmin } from "@/lib/situs-hanya-admin";
 
-/** Menu utama. Berlangganan langsung ke payment (sudah masuk). */
+/** Menu utama dipadatkan. Masuk dan Langganan digabung di /langganan. */
 const MENU = [
   { href: "/ruang-belajar", label: "📚 Ruang Belajar" },
   { href: "/praktikum", label: "🧪 Praktikum" },
   { href: "/rapor", label: "📊 Rapor" },
   { href: "/ranking", label: "🏆 Ranking" },
-  { href: "/langganan", label: "🎟️ Berlangganan" },
+  { href: "/langganan", label: "🎟️ Akun & Langganan" },
 ] as const;
 
-/** Menu tinjau: hanya admin. */
+/** Menu tinjau: hanya admin. Pendaftaran anak tetap lewat Akun & Langganan. */
 const MENU_TINJAU = [
   { href: "/komunitas", label: "🏫 Komunitas" },
   { href: "/dasbor", label: "🏠 Dasbor" },
@@ -34,15 +34,13 @@ export default function Navbar() {
   const { user, memuat, keluar, adalahAdmin } = useUserRole();
 
   if (pathname.startsWith("/simulasi-embed")) return null;
-  if (pathname === "/" || pathname === "/login" || pathname.startsWith("/login/")) return null;
 
   const menu: readonly { href: string; label: string }[] = adalahAdmin ? [...MENU, ...MENU_TINJAU] : MENU;
 
   async function klikKeluar() {
-    hapusSesiBrowser();
     await keluar();
     setTerbuka(false);
-    router.push("/");
+    router.push(situsHanyaAdmin() ? "/langganan" : "/");
     router.refresh();
   }
 

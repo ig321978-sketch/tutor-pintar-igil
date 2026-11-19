@@ -82,8 +82,8 @@ export default function KartuAkunOrtu({
       <div>
         <h2 className="text-lg font-black text-indigo-950">{judul}</h2>
         <p className="mt-1 text-xs font-semibold leading-relaxed text-slate-600">
-          Daftar/Masuk hanya syarat masuk ke Ruang Belajar. Setelah masuk, Silabus, Materi (termasuk Simulasi),
-          dan Ranking Beasiswa bisa dibuka gratis. Berlangganan opsional untuk Latihan, Ujian, dan Praktikum.
+          Email hanya untuk masuk. Tanpa akun pun Silabus dan Materi bisa dibuka. Akun diperlukan untuk Ranking,
+          Rapor, dan berlangganan Latihan, Ujian, serta Praktikum.
         </p>
       </div>
 

@@ -29,7 +29,7 @@ export default function PenjagaSesiBrowser() {
         await fetch("/api/auth/keluar", { method: "POST", cache: "no-store" });
         hapusSesiBrowser();
         if (!batal) {
-          const tujuan = new URL("/", window.location.origin);
+          const tujuan = new URL("/login", window.location.origin);
           tujuan.searchParams.set("next", pathname);
           router.replace(tujuan.pathname + tujuan.search);
           router.refresh();
