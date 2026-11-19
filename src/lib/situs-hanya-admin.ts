@@ -55,21 +55,31 @@ export function ruteAsetIkonPublik(pathname: string): boolean {
   );
 }
 
-export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
+/** Halaman belajar/fitur yang wajib Daftar atau Masuk dulu (bukan tamu lewat). */
+export function ruteWajibMasuk(pathname: string): boolean {
   return (
-    pathname === "/" ||
+    pathname === "/ruang-belajar" ||
+    pathname.startsWith("/ruang-belajar/") ||
     pathname === "/ranking" ||
     pathname === "/rapor" ||
+    pathname.startsWith("/rapor/") ||
+    pathname === "/praktikum" ||
+    pathname.startsWith("/praktikum/") ||
     pathname === "/langganan" ||
     pathname === "/komunitas" ||
     pathname.startsWith("/komunitas/") ||
-    pathname === "/daftar" ||
-    pathname === "/praktikum" ||
-    pathname.startsWith("/praktikum/") ||
-    pathname === "/ruang-belajar" ||
-    pathname.startsWith("/ruang-belajar/") ||
     pathname === "/modul-preview" ||
-    pathname.startsWith("/modul-preview/") ||
+    pathname.startsWith("/modul-preview/")
+  );
+}
+
+export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
+  return (
+    pathname === "/" ||
+    pathname === "/daftar" ||
+    pathname === "/login" ||
+    pathname.startsWith("/login/") ||
+    ruteWajibMasuk(pathname) ||
     ruteAsetIkonPublik(pathname)
   );
 }

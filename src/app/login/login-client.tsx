@@ -4,14 +4,16 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import PageShell from "@/components/PageShell";
+import { tandaiSesiBrowser } from "@/lib/sesi-browser";
 import { situsHanyaAdmin } from "@/lib/situs-hanya-admin";
 import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 
 export default function LoginClient() {
   const router = useRouter();
   const params = useSearchParams();
-  const nextMentah = params.get("next") || "/langganan";
-  const next = nextMentah.startsWith("/") && !nextMentah.startsWith("/tutor") ? nextMentah : "/langganan";
+  const nextMentah = params.get("next") || "/ruang-belajar";
+  const next =
+    nextMentah.startsWith("/") && !nextMentah.startsWith("/tutor") ? nextMentah : "/ruang-belajar";
   const [email, setEmail] = useState("");
   const [sandi, setSandi] = useState("");
   const [pesan, setPesan] = useState("");
@@ -36,6 +38,7 @@ export default function LoginClient() {
         setPesan(json.pesan || "Email atau kata sandi tidak valid.");
         return;
       }
+      tandaiSesiBrowser();
       const tujuanAdmin =
         next.startsWith("/admin") || next.startsWith("/studio-kreator");
       if (!json.adalahAdmin && tujuanAdmin) {
@@ -66,10 +69,12 @@ export default function LoginClient() {
     }
   }
 
+  const daftar = `/daftar?next=${encodeURIComponent(next)}`;
+
   return (
     <PageShell
       judul="Masuk"
-      subjudul="Untuk orang tua, gunakan Akun & Langganan. Halaman ini tetap tersedia untuk admin dan tautan lama."
+      subjudul="Sudah punya akun? Masuk untuk lanjut ke Ruang Belajar. Daftar hanya syarat masuk, bukan berlangganan."
     >
       <form
         onSubmit={(e) => void kirim(e)}
@@ -112,9 +117,9 @@ export default function LoginClient() {
           {memuat ? "Memeriksa..." : "Masuk"}
         </button>
         <p className="text-center text-sm font-semibold text-slate-600">
-          Orang tua:{" "}
-          <Link href="/langganan" className="font-black text-[#1C01A5] underline underline-offset-2">
-            Akun &amp; Langganan
+          Belum punya akun?{" "}
+          <Link href={daftar} className="font-black text-[#1C01A5] underline underline-offset-2">
+            Daftar
           </Link>
         </p>
       </form>

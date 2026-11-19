@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Noto_Naskh_Arabic } from "next/font/google";
 import AktivasiOtakGerbang from "@/components/AktivasiOtakGerbang";
+import PenjagaSesiBrowser from "@/components/auth/PenjagaSesiBrowser";
 import BersihkanCacheKlien from "@/components/BersihkanCacheKlien";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col bg-white">
         <BersihkanCacheKlien />
+        <PenjagaSesiBrowser />
         <Navbar />
         {children}
         <AktivasiOtakGerbang />

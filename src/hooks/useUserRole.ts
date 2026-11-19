@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { adalahPeranAdmin, type PeranPengguna } from "@/lib/peran";
+import { hapusSesiBrowser } from "@/lib/sesi-browser";
 
 type ResponsSesi = {
   berhasil?: boolean;
@@ -39,6 +40,7 @@ export function useUserRole() {
   }, [muat]);
 
   const keluar = useCallback(async () => {
+    hapusSesiBrowser();
     try {
       await fetch("/api/auth/keluar", { method: "POST" });
     } catch {

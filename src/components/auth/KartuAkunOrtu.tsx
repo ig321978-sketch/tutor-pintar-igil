@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 
+import { tandaiSesiBrowser } from "@/lib/sesi-browser";
 import { kelasKotak, kelasLabel } from "@/lib/tema";
 
 const KARTU = "space-y-4 rounded-3xl border-2 border-indigo-100 bg-white p-4 shadow-sm sm:p-5";
@@ -61,6 +62,7 @@ export default function KartuAkunOrtu({
       setBuat(false);
       return;
     }
+    tandaiSesiBrowser();
     setSandi("");
     onMasuk();
   }
@@ -80,8 +82,8 @@ export default function KartuAkunOrtu({
       <div>
         <h2 className="text-lg font-black text-indigo-950">{judul}</h2>
         <p className="mt-1 text-xs font-semibold leading-relaxed text-slate-600">
-          Email hanya untuk masuk. Tanpa akun pun Silabus dan Materi bisa dibuka. Akun diperlukan untuk Ranking,
-          Rapor, dan berlangganan Latihan, Ujian, serta Praktikum.
+          Daftar/Masuk hanya syarat masuk ke Ruang Belajar. Setelah masuk, Silabus, Materi (termasuk Simulasi),
+          dan Ranking Beasiswa bisa dibuka gratis. Berlangganan opsional untuk Latihan, Ujian, dan Praktikum.
         </p>
       </div>
 

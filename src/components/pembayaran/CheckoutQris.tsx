@@ -1,10 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
-
-import KartuAkunOrtu from "@/components/auth/KartuAkunOrtu";
 import {
   LABEL_TOMBOL_LUNAS_AKHIR,
   LABEL_TOMBOL_LUNAS_AWAL,
@@ -40,6 +38,7 @@ function tanggalId(iso: string | null | undefined): string {
  * Checkout langganan 30 hari. Tombol QR baru hidup setelah dua persetujuan wali dicentang.
  */
 export default function CheckoutQris() {
+  const router = useRouter();
   const params = useSearchParams();
   const mode = modePembayaran(process.env.NEXT_PUBLIC_PAYMENT_MODE, process.env.NODE_ENV === "production");
   const [anak, setAnak] = useState<AnakProfil[]>([]);
@@ -68,6 +67,7 @@ export default function CheckoutQris() {
       const json = (await res.json()) as { status?: string; anak?: AnakProfil[] };
       if (json.status === "belum_masuk") {
         setSiap("tamu");
+        router.replace(`/?next=${encodeURIComponent("/langganan")}`);
         return;
       }
       if (json.status === "belum_ada_anak") {
@@ -86,7 +86,7 @@ export default function CheckoutQris() {
     } catch {
       setSiap("galat");
     }
-  }, [params]);
+  }, [params, router]);
 
   useEffect(() => {
     void muatProfil();
@@ -193,9 +193,9 @@ export default function CheckoutQris() {
       data-testid="checkout-qris"
       className="mx-auto w-full max-w-lg space-y-4 rounded-3xl bg-white p-5 text-indigo-950 shadow-xl sm:p-7"
     >
-      <p className="text-xs font-black uppercase tracking-wide text-amber-700">Akun &amp; Langganan</p>
+      <p className="text-xs font-black uppercase tracking-wide text-amber-700">Berlangganan</p>
       <h1 id="judul-checkout" className="text-2xl font-black">
-        Masuk, daftar, atau berlangganan
+        Lanjutkan pembayaran langganan
       </h1>
       <div className="space-y-2 rounded-2xl border border-indigo-100 bg-indigo-50/60 px-3 py-3 text-sm font-semibold leading-relaxed text-slate-700">
         <p>
@@ -216,13 +216,9 @@ export default function CheckoutQris() {
 
       {siap === "memuat" ? <p className="text-sm font-bold">Memeriksa akun…</p> : null}
       {siap === "tamu" ? (
-        <div className="space-y-3" data-testid="checkout-tamu">
-          <KartuAkunOrtu judul="Buat akun atau masuk" onMasuk={() => void muatProfil()} />
-          <p className="text-xs font-semibold leading-relaxed text-slate-600">
-            Setelah masuk, daftarkan profil anak bila belum ada, lalu lanjut QRIS di halaman ini bila ingin
-            berlangganan.
-          </p>
-        </div>
+        <p className="text-sm font-bold text-indigo-950" data-testid="checkout-tamu">
+          Mengarahkan ke gerbang Masuk…
+        </p>
       ) : null}
       {siap === "kosong" ? (
         <div className="space-y-3" data-testid="checkout-kosong">

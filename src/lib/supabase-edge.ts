@@ -2,6 +2,7 @@ import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
+import { opsiCookieSesiBrowser } from "@/lib/cookie-sesi";
 import { kredensialSupabasePublik } from "@/lib/kredensial-supabase";
 
 function kredensialPublik(): { url: string; kunci: string } | null {
@@ -37,7 +38,7 @@ export function supabaseAuthMiddleware(
           outgoing.headers.set(kunci, nilai);
         });
         cookiesToSet.forEach(({ name, value, options }) => {
-          outgoing.cookies.set(name, value, options);
+          outgoing.cookies.set(name, value, opsiCookieSesiBrowser(options));
         });
         hasil.response = outgoing;
       },

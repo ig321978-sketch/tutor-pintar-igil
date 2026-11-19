@@ -3,6 +3,7 @@ import { adalahPeranAdmin, bacaPeranPengguna } from "@/lib/peran";
 import {
   ruteApiPublikSaatTerkunci,
   ruteHalamanPublikSaatTerkunci,
+  ruteWajibMasuk,
   situsHanyaAdmin,
 } from "@/lib/situs-hanya-admin";
 import { supabaseAuthMiddleware } from "@/lib/supabase-edge";
@@ -18,8 +19,11 @@ function ruteAdmin(pathname: string): boolean {
 
 function ruteMasuk(pathname: string): boolean {
   return (
+    pathname === "/" ||
     pathname === "/login" ||
     pathname.startsWith("/login/") ||
+    pathname === "/daftar" ||
+    pathname.startsWith("/daftar/") ||
     pathname.startsWith("/api/auth/")
   );
 }
@@ -111,8 +115,15 @@ export async function middleware(request: NextRequest) {
   const kunciPublik = situsHanyaAdmin();
 
   if (kunciPublik) {
-    if (ruteMasuk(pathname)) {
+    if (ruteMasuk(pathname) && pathname.startsWith("/api/auth/")) {
       return tanpaCache(NextResponse.next());
+    }
+    if (ruteMasuk(pathname) && !pathname.startsWith("/api/")) {
+      const sesiGerbang = await sesiAdmin(request);
+      if (sesiGerbang.user && (pathname === "/" || pathname === "/login")) {
+        return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
+      }
+      return sesiGerbang.user ? sesiGerbang.response : tanpaCache(NextResponse.next());
     }
     const sesi = await sesiAdmin(request);
     if (sesi.admin) {
@@ -127,11 +138,16 @@ export async function middleware(request: NextRequest) {
     if (ruteLatihanLama(pathname)) {
       return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
     }
+    if (ruteWajibMasuk(pathname) && !sesi.user) {
+      const gerbang = new URL("/", request.url);
+      gerbang.searchParams.set("next", pathname);
+      return tanpaCache(NextResponse.redirect(gerbang));
+    }
     if (
       ruteHalamanPublikSaatTerkunci(pathname) ||
       ruteApiPublikSaatTerkunci(pathname)
     ) {
-      return tanpaCache(NextResponse.next());
+      return sesi.user ? sesi.response : tanpaCache(NextResponse.next());
     }
     return tolakPublik(request);
   }
@@ -140,15 +156,35 @@ export async function middleware(request: NextRequest) {
     return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
   }
 
+  if (ruteMasuk(pathname) && !pathname.startsWith("/api/")) {
+    const sesiGerbang = await sesiAdmin(request);
+    if (sesiGerbang.user && (pathname === "/" || pathname === "/login")) {
+      return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
+    }
+    return sesiGerbang.user ? sesiGerbang.response : tanpaCache(NextResponse.next());
+  }
+
+  if (ruteWajibMasuk(pathname)) {
+    const sesiBelajar = await sesiAdmin(request);
+    if (!sesiBelajar.user) {
+      const gerbang = new URL("/", request.url);
+      gerbang.searchParams.set("next", pathname);
+      return tanpaCache(NextResponse.redirect(gerbang));
+    }
+    if (!ruteAdmin(pathname) && !ruteLatihanLama(pathname)) {
+      return sesiBelajar.response;
+    }
+  }
+
   if (!ruteAdmin(pathname) && !ruteLatihanLama(pathname)) {
     return tanpaCache(NextResponse.next());
   }
 
   const sesi = await sesiAdmin(request);
   if (!sesi.user) {
-    const login = new URL("/login", request.url);
-    login.searchParams.set("next", pathname);
-    return tanpaCache(NextResponse.redirect(login));
+    const gerbang = new URL("/", request.url);
+    gerbang.searchParams.set("next", pathname);
+    return tanpaCache(NextResponse.redirect(gerbang));
   }
   if (!sesi.admin) {
     return tanpaCache(NextResponse.redirect(new URL("/403", request.url)));

@@ -2,6 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import type { SupabaseClient, User } from "@supabase/supabase-js";
+import { opsiCookieSesiBrowser } from "@/lib/cookie-sesi";
 import { kredensialSupabasePublik } from "@/lib/kredensial-supabase";
 import { adalahPeranAdmin, bacaPeranPengguna } from "@/lib/peran";
 
@@ -21,7 +22,7 @@ export async function supabaseAuthServer(): Promise<SupabaseClient | null> {
       setAll(cookiesToSet) {
         try {
           cookiesToSet.forEach(({ name, value, options }) => {
-            toko.set(name, value, options);
+            toko.set(name, value, opsiCookieSesiBrowser(options));
           });
         } catch {
           // Server Component tidak bisa menulis cookie; middleware yang menyegarkan sesi.

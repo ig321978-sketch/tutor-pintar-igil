@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useId, useState } from "react";
 import KartuAkunOrtu from "@/components/auth/KartuAkunOrtu";
 import { faseDariKelas, nisnCocokFase } from "@/lib/fase";
+import { tandaiSesiBrowser } from "@/lib/sesi-browser";
 import { kelasKotak, kelasLabel } from "@/lib/tema";
 import ParentConsentChecklist from "./ParentConsentChecklist";
 
@@ -55,6 +57,12 @@ const KARTU = "space-y-4 rounded-3xl border-2 border-indigo-100 bg-white p-4 sha
  * Rumah, PIN, dan anak dibuat lewat RPC SECURITY DEFINER di /api/daftar/anak.
  */
 export default function FormPendaftaran() {
+  const router = useRouter();
+  const params = useSearchParams();
+  const nextMentah = params.get("next") || "";
+  const nextSetelahAkun =
+    nextMentah.startsWith("/") && !nextMentah.startsWith("/tutor") ? nextMentah : "";
+
   const idNama = useId();
   const idKelas = useId();
   const idNisn = useId();
@@ -208,7 +216,18 @@ export default function FormPendaftaran() {
       ) : null}
 
       {tahap === "belum_masuk" ? (
-        <KartuAkunOrtu judul="Langkah 1: Akun orang tua" onMasuk={() => void muat()} />
+        <KartuAkunOrtu
+          judul={nextSetelahAkun ? "Buat akun atau masuk" : "Langkah 1: Akun orang tua"}
+          onMasuk={() => {
+            tandaiSesiBrowser();
+            if (nextSetelahAkun) {
+              router.replace(nextSetelahAkun);
+              router.refresh();
+              return;
+            }
+            void muat();
+          }}
+        />
       ) : null}
 
       {tahap === "siap" ? (
