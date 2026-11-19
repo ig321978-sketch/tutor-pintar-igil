@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useId, useState } from "react";
 import KartuAkunOrtu from "@/components/auth/KartuAkunOrtu";
-import { faseDariKelas, nisnCocokFase } from "@/lib/fase";
+import { faseDariKelas } from "@/lib/fase";
 import { kelasKotak, kelasLabel } from "@/lib/tema";
 import ParentConsentChecklist from "./ParentConsentChecklist";
 
@@ -120,7 +120,7 @@ export default function FormPendaftaran({
 
   const fase = kelas ? faseDariKelas(kelas) : null;
   const nisnLengkap = nisn.length === 10;
-  const nisnValid = fase ? nisnCocokFase(nisn, fase) : false;
+  const nisnValid = nisn.length === 0 || nisnLengkap;
 
   const bergabung = !rumah && kode.trim().length > 0;
   const rumahBaru = !rumah && !bergabung;
@@ -131,12 +131,8 @@ export default function FormPendaftaran({
     nisnValid &&
     (rumah ? true : bergabung ? kode.trim().length >= 6 : pemilik.trim().length >= 3 && pinValid);
 
-  let galatNisn = "";
-  if (nisnLengkap && fase && !nisnValid) {
-    galatNisn = "Awalan NISN tidak sesuai dengan kelas yang dipilih. Periksa lagi kelas atau NISN anak.";
-  } else if (nisnLengkap && !fase) {
-    galatNisn = "Pilih kelas anak terlebih dahulu.";
-  }
+  const galatNisn =
+    nisn.length > 0 && !nisnLengkap ? "NISN harus 10 angka. Kalau belum tahu, kosongkan dulu." : "";
 
   async function daftar() {
     if (!dataLengkap || kirim) return;
@@ -326,7 +322,7 @@ export default function FormPendaftaran({
 
             <div>
               <label htmlFor={idNisn} className={kelasLabel}>
-                NISN (10 angka)
+                NISN (10 angka, boleh dikosongkan dulu)
               </label>
               <input
                 id={idNisn}
@@ -340,7 +336,9 @@ export default function FormPendaftaran({
                 aria-invalid={galatNisn ? true : undefined}
               />
               <p id={`${idNisn}-info`} className="mt-1 text-xs font-semibold text-slate-600">
-                🔐 NISN tidak disimpan. Server hanya mengubahnya menjadi kode acak untuk mencegah akun ganda.
+                Belum tahu NISN? Kosongkan saja dan isi nanti. NISN ada di kartu pelajar atau rapor, atau tanyakan ke
+                wali kelas. 🔐 NISN tidak disimpan. Server hanya mengubahnya menjadi kode acak untuk mencegah akun
+                ganda.
               </p>
               {galatNisn ? <p className="mt-1 text-xs font-bold text-rose-600">{galatNisn}</p> : null}
             </div>
@@ -444,7 +442,7 @@ export default function FormPendaftaran({
 
           {!dataLengkap ? (
             <p className="text-center text-xs font-semibold text-slate-500">
-              {`Lengkapi nama, kelas, NISN yang sesuai${
+              {`Lengkapi nama, kelas, NISN (bila diisi, 10 angka)${
                 rumah ? "" : bergabung ? ", dan kode undangan" : ", nama pemilik rekening, dan PIN 6 angka"
               } agar tombol daftar bisa aktif.`}
             </p>

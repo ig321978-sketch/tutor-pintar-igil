@@ -10,17 +10,7 @@ export function faseDariKelas(kelas: string | number): KodePhase | null {
   return "FASE_C";
 }
 
-/** Rentang awalan NISN yang diterima per fase (Bagian 6 .cursorrules). Hanya untuk pengecekan awal di formulir. */
-export const AWALAN_NISN_PER_FASE: Record<KodePhase, readonly [number, number]> = {
-  FASE_A: [18, 20],
-  FASE_B: [16, 18],
-  FASE_C: [14, 16],
-};
-
-/** Cek format NISN dan awalannya terhadap fase kelas. Nomor tidak disimpan di mana pun. */
-export function nisnCocokFase(nisn: string, fase: KodePhase): boolean {
-  if (!/^\d{10}$/.test(nisn)) return false;
-  const awalan = Number(nisn.slice(0, 3));
-  const [bawah, atas] = AWALAN_NISN_PER_FASE[fase];
-  return awalan >= bawah && awalan <= atas;
+/** NISN opsional. Bila diisi, harus 10 angka. Awalan NISN tidak menandakan kelas, jadi tidak dicocokkan. */
+export function nisnFormatBenar(nisn: string): boolean {
+  return /^[0-9]{10}$/.test(nisn);
 }

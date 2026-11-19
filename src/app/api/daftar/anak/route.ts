@@ -1,4 +1,4 @@
-import { faseDariKelas, nisnCocokFase } from "@/lib/fase";
+import { faseDariKelas, nisnFormatBenar } from "@/lib/fase";
 import {
   adalahRespons,
   bacaBody,
@@ -43,14 +43,11 @@ export async function POST(req: Request) {
     return jawab({ status: "galat", pesan: "Kelas harus antara 1 sampai 6 SD." }, 400);
   }
   const fase = faseDariKelas(kelas);
-  if (!fase || !/^\d{10}$/.test(nisn)) {
-    return jawab({ status: "galat", pesan: "NISN harus 10 angka." }, 400);
+  if (!fase) {
+    return jawab({ status: "galat", pesan: "Kelas harus antara 1 sampai 6 SD." }, 400);
   }
-  if (!nisnCocokFase(nisn, fase)) {
-    return jawab(
-      { status: "galat", pesan: "Awalan NISN tidak sesuai dengan kelas yang dipilih. Periksa kelas atau NISN anak." },
-      400,
-    );
+  if (nisn && !nisnFormatBenar(nisn)) {
+    return jawab({ status: "galat", pesan: "NISN harus 10 angka, atau kosongkan dulu." }, 400);
   }
   if (kode && !KODE_UNDANGAN.test(kode)) {
     return jawab({ status: "galat", pesan: "Kode undangan tidak cocok. Periksa lagi kodenya." }, 400);
@@ -96,7 +93,7 @@ export async function POST(req: Request) {
   const { data: idAnak, error } = await supabase.rpc("daftar_anak", {
     p_display_name: nama,
     p_grade: kelas,
-    p_nisn: nisn,
+    p_nisn: nisn || null,
   });
   if (skemaBelumAda(error)) return jawab({ status: "belum_siap" });
   if (error) return jawab({ status: "galat", pesan: pesanGalat(error) }, 400);
