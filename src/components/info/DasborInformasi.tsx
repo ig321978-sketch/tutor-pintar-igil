@@ -5,6 +5,7 @@ import { useProfilSiswa } from "@/components/rapor/umum";
 import { faseDariKelas } from "@/lib/fase";
 import LencanaBeasiswaApresiasi from "@/components/pembayaran/LencanaBeasiswaApresiasi";
 import HowIgilWorksSection from "./HowIgilWorksSection";
+import AturanPerankingan from "./AturanPerankingan";
 import PenegasanDalamAplikasi from "./PenegasanDalamAplikasi";
 
 /**
@@ -53,6 +54,9 @@ export default function DasborInformasi() {
             →
           </span>
         </Link>
+      </div>
+      <div className="px-2">
+        <AturanPerankingan />
       </div>
       <div className="px-2">
         <PenegasanDalamAplikasi />

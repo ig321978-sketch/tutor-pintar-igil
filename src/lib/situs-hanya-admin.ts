@@ -66,8 +66,6 @@ export function ruteWajibMasuk(pathname: string): boolean {
     pathname === "/praktikum" ||
     pathname.startsWith("/praktikum/") ||
     pathname === "/langganan" ||
-    pathname === "/komunitas" ||
-    pathname.startsWith("/komunitas/") ||
     pathname === "/modul-preview" ||
     pathname.startsWith("/modul-preview/")
   );

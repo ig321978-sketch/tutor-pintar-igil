@@ -18,7 +18,6 @@ const MENU = [
 
 /** Menu tinjau: hanya admin. Pendaftaran anak tetap lewat Akun & Langganan. */
 const MENU_TINJAU = [
-  { href: "/komunitas", label: "🏫 Komunitas" },
   { href: "/dasbor", label: "🏠 Dasbor" },
 ] as const;
 
