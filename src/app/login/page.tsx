@@ -1,22 +1,15 @@
-import type { Metadata } from "next";
-import { Suspense } from "react";
-import LoginClient from "./login-client";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Masuk · $IGIL",
-  robots: { index: false, follow: false },
-};
-
-export default function LoginPage() {
-  return (
-    <Suspense
-      fallback={
-        <main className="flex-1 px-2 py-10 font-semibold text-slate-500">
-          Memuat formulir masuk...
-        </main>
-      }
-    >
-      <LoginClient />
-    </Suspense>
-  );
+/** Formulir Masuk/Daftar kini ada di halaman muka. Tautan lama dialihkan ke sana. */
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ next?: string; mode?: string }>;
+}) {
+  const { next, mode } = await searchParams;
+  const q = new URLSearchParams();
+  if (next) q.set("next", next);
+  if (mode === "daftar") q.set("mode", "daftar");
+  const s = q.toString();
+  redirect(s ? `/?${s}` : "/");
 }
