@@ -10,8 +10,8 @@ import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 export default function LoginClient() {
   const router = useRouter();
   const params = useSearchParams();
-  const nextMentah = params.get("next") || "/ruang-belajar";
-  const next = nextMentah.startsWith("/") && !nextMentah.startsWith("/tutor") ? nextMentah : "/ruang-belajar";
+  const nextMentah = params.get("next") || "/langganan";
+  const next = nextMentah.startsWith("/") && !nextMentah.startsWith("/tutor") ? nextMentah : "/langganan";
   const [email, setEmail] = useState("");
   const [sandi, setSandi] = useState("");
   const [pesan, setPesan] = useState("");
@@ -69,7 +69,7 @@ export default function LoginClient() {
   return (
     <PageShell
       judul="Masuk"
-      subjudul="Masuk dengan email dan kata sandi orang tua atau admin. Belum punya akun? Buat di halaman Pendaftaran Anak."
+      subjudul="Untuk orang tua, gunakan Akun & Langganan. Halaman ini tetap tersedia untuk admin dan tautan lama."
     >
       <form
         onSubmit={(e) => void kirim(e)}
@@ -112,9 +112,9 @@ export default function LoginClient() {
           {memuat ? "Memeriksa..." : "Masuk"}
         </button>
         <p className="text-center text-sm font-semibold text-slate-600">
-          Belum punya akun?{" "}
-          <Link href="/daftar" className="font-black text-[#1C01A5] underline underline-offset-2">
-            Buat akun &amp; daftarkan anak
+          Orang tua:{" "}
+          <Link href="/langganan" className="font-black text-[#1C01A5] underline underline-offset-2">
+            Akun &amp; Langganan
           </Link>
         </p>
       </form>

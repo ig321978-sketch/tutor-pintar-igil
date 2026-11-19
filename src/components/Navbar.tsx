@@ -7,18 +7,21 @@ import { Menu, X } from "lucide-react";
 import { useUserRole } from "@/hooks/useUserRole";
 import { situsHanyaAdmin } from "@/lib/situs-hanya-admin";
 
+/** Menu utama dipadatkan. Masuk dan Langganan digabung di /langganan. */
 const MENU = [
   { href: "/ruang-belajar", label: "📚 Ruang Belajar" },
   { href: "/praktikum", label: "🧪 Praktikum" },
-  { href: "/rapor", label: "📊 Rapor & Sertifikat" },
-  { href: "/langganan", label: "🎟️ Langganan" },
-  { href: "/daftar", label: "📝 Pendaftaran Anak" },
-  { href: "/ranking", label: "🏆 Ranking & Beasiswa" },
-  { href: "/komunitas", label: "🏫 Komunitas IGIL" },
+  { href: "/rapor", label: "📊 Rapor" },
+  { href: "/ranking", label: "🏆 Ranking" },
+  { href: "/langganan", label: "🎟️ Akun & Langganan" },
 ] as const;
 
-/** Menu lain masih tahap tinjau: hanya tampil untuk admin sampai data nyata tersambung. */
-const MENU_TINJAU = [{ href: "/dasbor", label: "🏠 Dasbor & Info" }] as const;
+/** Menu tinjau: hanya admin. Pendaftaran anak tetap lewat Akun & Langganan. */
+const MENU_TINJAU = [
+  { href: "/komunitas", label: "🏫 Komunitas" },
+  { href: "/dasbor", label: "🏠 Dasbor" },
+  { href: "/daftar", label: "📝 Pendaftaran Anak" },
+] as const;
 
 function tautanAktif(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -37,7 +40,7 @@ export default function Navbar() {
   async function klikKeluar() {
     await keluar();
     setTerbuka(false);
-    router.push(situsHanyaAdmin() ? "/login" : "/");
+    router.push(situsHanyaAdmin() ? "/langganan" : "/");
     router.refresh();
   }
 
@@ -49,7 +52,9 @@ export default function Navbar() {
           className="igil-tanpa-tepi flex min-w-0 items-center gap-1 rounded-xl px-2 py-1 text-[#1C01A5]"
           onClick={() => setTerbuka(false)}
         >
-          <span className="shrink-0 text-xl leading-none text-[#F0AB00]" aria-hidden="true">🎓</span>
+          <span className="shrink-0 text-xl leading-none text-[#F0AB00]" aria-hidden="true">
+            🎓
+          </span>
           <span className="flex min-w-0 flex-col items-start">
             <span className="text-xl font-extrabold leading-none tracking-tight">$IGIL</span>
             <span className="text-[11px] font-bold leading-tight text-[#1C01A5] sm:text-xs">
@@ -83,13 +88,6 @@ export default function Navbar() {
             >
               Keluar
             </button>
-          ) : !memuat ? (
-            <Link
-              href="/login"
-              className="igil-tombol rounded-full border-[#1C01A5] px-3 py-2 text-sm font-bold text-[#1C01A5] hover:bg-[#F0AB00]/15"
-            >
-              Masuk
-            </Link>
           ) : null}
         </div>
 
@@ -130,14 +128,6 @@ export default function Navbar() {
             >
               Keluar
             </button>
-          ) : !memuat ? (
-            <Link
-              href="/login"
-              onClick={() => setTerbuka(false)}
-              className="igil-tombol block rounded-xl border-[#1C01A5] px-3 py-2 text-sm font-bold text-[#1C01A5]"
-            >
-              Masuk
-            </Link>
           ) : null}
         </div>
       ) : null}

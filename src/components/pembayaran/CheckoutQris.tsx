@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
+import KartuAkunOrtu from "@/components/auth/KartuAkunOrtu";
 import {
   LABEL_TOMBOL_LUNAS_AKHIR,
   LABEL_TOMBOL_LUNAS_AWAL,
@@ -60,38 +61,36 @@ export default function CheckoutQris() {
     setInfoCutoff(lewatTanggalDuaLima(new Date()));
   }, []);
 
-  useEffect(() => {
-    let batal = false;
-    void (async () => {
-      try {
-        const res = await fetch("/api/belajar/profil", { cache: "no-store" });
-        const json = (await res.json()) as { status?: string; anak?: AnakProfil[] };
-        if (batal) return;
-        if (json.status === "belum_masuk") {
-          setSiap("tamu");
-          return;
-        }
-        if (json.status === "belum_ada_anak") {
-          setSiap("kosong");
-          return;
-        }
-        if (json.status !== "siap" || !json.anak?.length) {
-          setSiap("galat");
-          return;
-        }
-        setAnak(json.anak);
-        const minta = params.get("anak");
-        const pilih = json.anak.find((a) => a.id === minta)?.id ?? json.anak[0].id;
-        setIdAnak(pilih);
-        setSiap("masuk");
-      } catch {
-        if (!batal) setSiap("galat");
+  const muatProfil = useCallback(async () => {
+    setSiap("memuat");
+    try {
+      const res = await fetch("/api/belajar/profil", { cache: "no-store" });
+      const json = (await res.json()) as { status?: string; anak?: AnakProfil[] };
+      if (json.status === "belum_masuk") {
+        setSiap("tamu");
+        return;
       }
-    })();
-    return () => {
-      batal = true;
-    };
+      if (json.status === "belum_ada_anak") {
+        setSiap("kosong");
+        return;
+      }
+      if (json.status !== "siap" || !json.anak?.length) {
+        setSiap("galat");
+        return;
+      }
+      setAnak(json.anak);
+      const minta = params.get("anak");
+      const pilih = json.anak.find((a) => a.id === minta)?.id ?? json.anak[0].id;
+      setIdAnak(pilih);
+      setSiap("masuk");
+    } catch {
+      setSiap("galat");
+    }
   }, [params]);
+
+  useEffect(() => {
+    void muatProfil();
+  }, [muatProfil]);
 
   const dipilih = useMemo(() => anak.find((a) => a.id === idAnak) ?? null, [anak, idAnak]);
   const bolehTampil = akad && pdp && Boolean(idAnak) && langkah !== "memuat";
@@ -194,14 +193,20 @@ export default function CheckoutQris() {
       data-testid="checkout-qris"
       className="mx-auto w-full max-w-lg space-y-4 rounded-3xl bg-white p-5 text-indigo-950 shadow-xl sm:p-7"
     >
-      <p className="text-xs font-black uppercase tracking-wide text-amber-700">Langganan 30 hari</p>
+      <p className="text-xs font-black uppercase tracking-wide text-amber-700">Akun &amp; Langganan</p>
       <h1 id="judul-checkout" className="text-2xl font-black">
-        Akses belajar mandiri IGIL
+        Masuk, daftar, atau berlangganan
       </h1>
-      <p className="text-sm leading-relaxed text-slate-700">
-        Rp 50.000 untuk 30 hari. Ini jual-beli layanan, bukan iuran dan bukan undian. Materi dan Simulasi tetap gratis.
-        Tidak ada batas kuota siswa per sekolah.
-      </p>
+      <div className="space-y-2 rounded-2xl border border-indigo-100 bg-indigo-50/60 px-3 py-3 text-sm font-semibold leading-relaxed text-slate-700">
+        <p>
+          <span className="font-black text-indigo-950">Gratis tanpa langganan:</span> Silabus, Materi (termasuk
+          Simulasi), dan Ranking Beasiswa.
+        </p>
+        <p>
+          <span className="font-black text-indigo-950">Dengan langganan Rp 50.000 / 30 hari:</span> Latihan, Ujian,
+          Praktikum, serta seluruh fitur evaluasi. Ini jual-beli layanan, bukan iuran dan bukan undian.
+        </p>
+      </div>
       {infoCutoff ? (
         <p className="rounded-2xl border border-amber-400 bg-amber-50 px-3 py-2 text-sm font-bold leading-relaxed" data-testid="info-cutoff">
           {TEKS_INFO_CUTOFF}
@@ -211,30 +216,22 @@ export default function CheckoutQris() {
       {siap === "memuat" ? <p className="text-sm font-bold">Memeriksa akun…</p> : null}
       {siap === "tamu" ? (
         <div className="space-y-3" data-testid="checkout-tamu">
-          <p className="text-sm font-semibold leading-relaxed text-slate-700">
-            Calon pelanggan baru: buat akun orang tua dulu, daftarkan profil anak, lalu kembali ke halaman ini untuk
-            menampilkan QRIS. Yang sudah punya akun cukup masuk.
+          <KartuAkunOrtu judul="Buat akun atau masuk" onMasuk={() => void muatProfil()} />
+          <p className="text-xs font-semibold leading-relaxed text-slate-600">
+            Setelah masuk, daftarkan profil anak bila belum ada, lalu lanjut QRIS di halaman ini bila ingin
+            berlangganan.
           </p>
-          <div className="flex flex-col gap-2 sm:flex-row">
-            <Link
-              href="/daftar"
-              className="inline-flex items-center justify-center rounded-full bg-amber-400 px-5 py-3 text-sm font-black text-indigo-950"
-            >
-              BUAT AKUN &amp; DAFTAR ANAK
-            </Link>
-            <Link
-              href="/login?next=%2Flangganan"
-              className="inline-flex items-center justify-center rounded-full border-2 border-indigo-900 bg-white px-5 py-3 text-sm font-black text-indigo-950"
-            >
-              SUDAH PUNYA AKUN? MASUK
-            </Link>
-          </div>
         </div>
       ) : null}
       {siap === "kosong" ? (
-        <Link href="/daftar" className="inline-flex rounded-full bg-amber-400 px-5 py-3 text-sm font-black text-indigo-950">
-          DAFTARKAN PROFIL ANAK
-        </Link>
+        <div className="space-y-3" data-testid="checkout-kosong">
+          <p className="text-sm font-semibold leading-relaxed text-slate-700">
+            Akun sudah masuk. Daftarkan profil anak dulu sebelum berlangganan.
+          </p>
+          <Link href="/daftar" className="inline-flex rounded-full bg-amber-400 px-5 py-3 text-sm font-black text-indigo-950">
+            DAFTARKAN PROFIL ANAK
+          </Link>
+        </div>
       ) : null}
       {siap === "galat" || mode === "tertutup" ? (
         <p className="rounded-2xl bg-indigo-50 px-3 py-2 text-sm font-bold text-indigo-950">
