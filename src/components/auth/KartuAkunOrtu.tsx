@@ -57,7 +57,7 @@ export default function KartuAkunOrtu({
       return;
     }
     if (buat && res.masuk === false) {
-      setPesan(res.pesan ?? "Akun dibuat. Silakan pilih Masuk.");
+      setPesan(res.pesan ?? "Akun sudah dibuat. Pilih Sudah punya akun, lalu masuk.");
       setBuat(false);
       return;
     }

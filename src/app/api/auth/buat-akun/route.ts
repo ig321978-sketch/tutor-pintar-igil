@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { pesanGalatAuthSupabase } from "@/lib/kredensial-supabase";
 import { supabaseAuthServer } from "@/lib/supabase-auth";
+import { supabaseLayanan } from "@/lib/supabase-service";
 
 export const dynamic = "force-dynamic";
 
@@ -14,9 +15,9 @@ function balas(isi: Record<string, unknown>, status = 200) {
 
 /**
  * POST /api/auth/buat-akun { email, password }
- * Akun orang tua. Email hanya dipakai sebagai nama masuk. IGIL tidak mengirim pemberitahuan lewat email.
- * Agar orang tua langsung masuk, "Confirm email" di Supabase Auth harus dimatikan.
- * Akun baru berperan biasa (bukan admin) sehingga hanya membuka halaman publik pilot.
+ * Akun orang tua. Email hanya nama masuk. IGIL tidak mengirim surat konfirmasi.
+ * Akun dibuat lewat service role dengan email_confirm=true, lalu langsung masuk
+ * (cookie sesi), tanpa menunggu konfirmasi pengelola atau tautan email.
  */
 export async function POST(req: Request) {
   let body: { email?: unknown; password?: unknown };
@@ -39,31 +40,56 @@ export async function POST(req: Request) {
     return balas({ berhasil: false, pesan: "Supabase Auth belum terhubung di server." }, 503);
   }
 
+  const layanan = supabaseLayanan();
   try {
-    const { data, error } = await supabase.auth.signUp({ email, password });
-    if (error) {
-      const jaringan = /fetch failed|failed to fetch|enotfound|getaddrinfo/i.test(error.message ?? "");
-      const sudahAda = /already registered|already been registered/i.test(error.message ?? "");
-      return balas(
-        {
-          berhasil: false,
-          pesan: sudahAda
-            ? "Email ini sudah punya akun. Pilih Masuk."
-            : pesanGalatAuthSupabase(error),
-        },
-        jaringan ? 503 : 400,
-      );
+    if (layanan) {
+      const buat = await layanan.auth.admin.createUser({
+        email,
+        password,
+        email_confirm: true,
+      });
+      if (buat.error) {
+        const sudahAda = /already|registered|exists|duplicate/i.test(buat.error.message ?? "");
+        const jaringan = /fetch failed|failed to fetch|enotfound|getaddrinfo/i.test(buat.error.message ?? "");
+        return balas(
+          {
+            berhasil: false,
+            pesan: sudahAda
+              ? "Email ini sudah punya akun. Pilih Masuk."
+              : pesanGalatAuthSupabase(buat.error),
+          },
+          jaringan ? 503 : 400,
+        );
+      }
+    } else {
+      const { data, error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        const jaringan = /fetch failed|failed to fetch|enotfound|getaddrinfo/i.test(error.message ?? "");
+        const sudahAda = /already registered|already been registered/i.test(error.message ?? "");
+        return balas(
+          {
+            berhasil: false,
+            pesan: sudahAda
+              ? "Email ini sudah punya akun. Pilih Masuk."
+              : pesanGalatAuthSupabase(error),
+          },
+          jaringan ? 503 : 400,
+        );
+      }
+      if (data.user && data.user.identities && data.user.identities.length === 0) {
+        return balas({ berhasil: false, pesan: "Email ini sudah punya akun. Pilih Masuk." }, 400);
+      }
+      if (data.session) {
+        return balas({ berhasil: true, masuk: true });
+      }
     }
-    // Email yang sudah terdaftar dikembalikan tanpa identitas agar keberadaan akun tidak bocor.
-    if (data.user && data.user.identities && data.user.identities.length === 0) {
-      return balas({ berhasil: false, pesan: "Email ini sudah punya akun. Pilih Masuk." }, 400);
-    }
-    if (!data.session) {
+
+    const masuk = await supabase.auth.signInWithPassword({ email, password });
+    if (masuk.error || !masuk.data.session) {
       return balas({
         berhasil: true,
         masuk: false,
-        pesan:
-          "Akun dibuat, tetapi belum bisa langsung masuk karena server meminta konfirmasi email. Hubungi pengelola IGIL.",
+        pesan: "Akun sudah dibuat. Pilih Masuk, lalu isi email dan kata sandi yang sama.",
       });
     }
     return balas({ berhasil: true, masuk: true });
