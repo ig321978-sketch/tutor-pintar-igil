@@ -1,57 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_GARIS, ADEGAN_KURANG, ADEGAN_LEBIH, ADEGAN_MAJU, ADEGAN_MUNDUR } from "./k2b7B-materi-1";
-import { ADEGAN_BANDING_GARIS, ADEGAN_BANDING_PULUHAN, ADEGAN_KATA, ADEGAN_PULUHAN_SAMA, ADEGAN_TANDA } from "./k2b7B-materi-2";
-import { ADEGAN_KARTU, ADEGAN_KIRA, ADEGAN_TIGA_BILANGAN, ADEGAN_URUT_LIMA, ADEGAN_URUT_TIGA } from "./k2b7B-materi-3";
-import { ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_EMPAT, ADEGAN_LATIHAN_SATU, ADEGAN_LATIHAN_TIGA, ADEGAN_PENUTUP } from "./k2b7B-materi-4";
-import { ADEGAN_LUAR_GARIS, ADEGAN_LUAR_GARIS_TERAPAN, ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_PULUHAN, ADEGAN_LUAR_PULUHAN_TERAPAN } from "./k2b7B-luar-1";
-import { ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_TANDA, ADEGAN_LUAR_TANDA_TERAPAN } from "./k2b7B-luar-2";
+import { ADEGAN_KEPIK_MAJU, ADEGAN_KEPIK_MUNDUR, ADEGAN_PULUHAN_DULU } from "./k2b7B-materi-1";
+import { ADEGAN_KATA_TANDA, ADEGAN_PULUHAN_SAMA, ADEGAN_URUTKAN } from "./k2b7B-materi-2";
+import { ADEGAN_PENUTUP, ADEGAN_TEKA_LEBIH, ADEGAN_TEKA_MUNDUR } from "./k2b7B-materi-3";
+import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_TABEL, ADEGAN_LUAR_TABEL_TERAPAN } from "./k2b7B-luar-1";
+import { ADEGAN_LUAR_KARTU, ADEGAN_LUAR_KARTU_TERAPAN, ADEGAN_LUAR_PATOKAN, ADEGAN_LUAR_PATOKAN_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k2b7B-luar-2";
 
-/** Kelas 2 Bab 7 Sub-Bab B (Membandingkan Bilangan): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 2 Bab 7 Sub-Bab B (membandingkan dan mengurutkan bilangan), akhir cerita Bank Sampah Sekolah.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Pengumuman Bu Lia" (Chacha, Dika, Nia, Bu Sari, Bu Lia).
+ * Video kedua: tiga metode global (Hundred Chart, Benchmark Numbers, Card Sort), terpisah.
+ */
+export const JUDUL_K2B7B = "Pengumuman Bu Lia";
+
 export const VIDEO_MATERI_K2B7B: VideoStory = {
   id: "k2b7B-materi",
-  judul: "Membandingkan Bilangan",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K2B7B,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "membandingkan bilangan", daftar: ["Maju dan mundur di garis", "Membandingkan dua bilangan", "Mengurutkan bilangan"] }),
-    ADEGAN_GARIS,
-    ADEGAN_MAJU,
-    ADEGAN_MUNDUR,
-    ADEGAN_LEBIH,
-    ADEGAN_KURANG,
-    ADEGAN_BANDING_PULUHAN,
+    adeganSapaan({ jenis: "materi", topik: "membandingkan bilangan", daftar: ["Menghitung maju dan mundur", "Membandingkan dua bilangan", "Mengurutkan bilangan"] }),
+    ADEGAN_KEPIK_MAJU,
+    ADEGAN_KEPIK_MUNDUR,
+    ADEGAN_PULUHAN_DULU,
     ADEGAN_PULUHAN_SAMA,
-    ADEGAN_KATA,
-    ADEGAN_TANDA,
-    ADEGAN_BANDING_GARIS,
-    ADEGAN_TIGA_BILANGAN,
-    ADEGAN_URUT_TIGA,
-    ADEGAN_URUT_LIMA,
-    ADEGAN_KARTU,
-    ADEGAN_KIRA,
-    ADEGAN_LATIHAN_SATU,
-    ADEGAN_LATIHAN_DUA,
-    ADEGAN_LATIHAN_TIGA,
-    ADEGAN_LATIHAN_EMPAT,
+    ADEGAN_KATA_TANDA,
+    ADEGAN_URUTKAN,
+    ADEGAN_TEKA_LEBIH,
+    ADEGAN_TEKA_MUNDUR,
     ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K2B7B: VideoStory = {
   id: "k2b7B-luar",
-  judul: "Membandingkan Bilangan: Metode dari Luar",
-  subjudul: "Tiga metode luar",
+  judul: JUDUL_K2B7B,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "membandingkan bilangan" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "membandingkan bilangan", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_PULUHAN,
-    ADEGAN_LUAR_PULUHAN_TERAPAN,
-    ADEGAN_LUAR_GARIS,
-    ADEGAN_LUAR_GARIS_TERAPAN,
-    ADEGAN_LUAR_TANDA,
-    ADEGAN_LUAR_TANDA_TERAPAN,
+    ADEGAN_LUAR_TABEL,
+    ADEGAN_LUAR_TABEL_TERAPAN,
+    ADEGAN_LUAR_PATOKAN,
+    ADEGAN_LUAR_PATOKAN_TERAPAN,
+    ADEGAN_LUAR_KARTU,
+    ADEGAN_LUAR_KARTU_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

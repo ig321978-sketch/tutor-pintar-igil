@@ -1,112 +1,131 @@
-import type { AdeganStory } from "./logika-story";
-import { W, anak, emo, hitungKe, idKel, idLepas, idWadah, judul, kartu, lepasKe, lepasSemua, teks, wadahKe, type Kel } from "./k2b7A-gambar";
-import { hapus, idKartu, idx, k, redamkan, sorotkan, tambah } from "./k2b7A-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, benda, botolB, emo, gerobak, gudang, ikat, judul, lantai, lepas, panah, papanTim, pindah, pot, sapu, teks, tokoh, tong } from "./k2b7A-gambar";
+import { bersih, hapus, k, tambah, ubah } from "./k2b7A-bantu";
 
-const KUE = { warna: "#FDE68A", warnaS: "#F59E0B" };
+/*
+ * Cerita orisinal IGIL "Botol Pak Ujang" (Kelas 2 Bab 7 Sub-Bab A, bilangan sampai seratus), awal cerita Bank Sampah Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b7a.md. Bagian ini: gerobak botol, satu ikat sepuluh, dan salah langkah menghitung satu-satu.
+ */
 
-/* ------------------------------ 2. Kue cubit Upe ------------------------------ */
-const KC: Kel = { id: "kc", w: 0, s: 9, x: 90, y: 118, ...KUE };
-const KB: Kel = { id: "kb", w: 5, s: 0, x: 68, y: 82, dy: 44, ...KUE };
-const SUARA_C1 = "Hari ini Upe menata kue cubit di layar. Kue cubit itu kecil, bulat, dan manis.";
-const SUARA_C2 = "Kalau kue cubit hanya berserakan seperti ini, kita sulit menghitung semuanya. Upe ingin tahu, berapa banyak kue cubit itu?";
-const SUARA_C3 = "Upe punya cara. Setiap sepuluh kue cubit dimasukkan ke dalam satu bungkus. Satu bungkus selalu berisi sepuluh kue cubit.";
-const SUARA_C4 = "Sekarang Upe punya lima bungkus. Setiap bungkus berisi sepuluh kue cubit, jadi lebih gampang dihitung.";
-const SUARA_C5 = "Ayo menghitung puluhan. Sepuluh, dua puluh, tiga puluh, empat puluh, lima puluh. Ada lima puluh kue cubit.";
+/* ------------------------------ 1. Gerobak botol ------------------------------ */
+const SUARA_G1 = "Hari ini Bank Sampah Sekolah dibuka! Pak Ujang mendorong gerobak penuh botol bekas.";
+const SUARA_G2 = "Bu Sari berkata, tim Biru dan tim Kuning harus melapor banyak botol yang terkumpul.";
+const SUARA_G3 = "Botol diikat sepuluh-sepuluh dengan tali rafia. Satu ikat berisi sepuluh botol.";
 
-export const ADEGAN_CERITA_KUE: AdeganStory = {
-  id: "cerita-kue",
-  judul: "Kue cubit Upe",
-  sumber: "Materi: kue cubit Upe",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(SUARA_C1, tambah(0, judul("Kue cubit Upe")), tambah(idx(SUARA_C1, "Upe"), ...anak("upe", 40, 46)), tambah(idx(SUARA_C1, "kue"), ...lepasSemua(KC)), tambah(idx(SUARA_C1, "manis."), emo("kk", 240, 70, "\u{1F9C1}", 34))),
-    k(SUARA_C2, tambah(idx(SUARA_C2, "sulit"), emo("tn", 258, 126, "❓", 30)), sorotkan(idx(SUARA_C2, "berapa"), ...idLepas(KC))),
-    k(
-      SUARA_C3,
-      hapus(idx(SUARA_C3, "Setiap"), "tn", "kk", ...idLepas(KC)),
-      tambah(idx(SUARA_C3, "bungkus."), ...wadahKe(KB, 1)),
-      tambah(idx(SUARA_C3, "selalu"), ...kartu("kb1", 40, 150, 220, 28, W.emas, ["1 bungkus = 10 kue"], 11)),
-    ),
-    k(
-      SUARA_C4,
-      hapus(0, ...idKartu("kb1")),
-      tambah(idx(SUARA_C4, "lima"), ...wadahKe(KB, 2), ...wadahKe(KB, 3)),
-      tambah(idx(SUARA_C4, "bungkus."), ...wadahKe(KB, 4), ...wadahKe(KB, 5)),
-    ),
-    k(
-      SUARA_C5,
-      tambah(idx(SUARA_C5, "Sepuluh,"), hitungKe(KB, 1)),
-      tambah(idx(SUARA_C5, "dua"), hitungKe(KB, 2)),
-      tambah(idx(SUARA_C5, "tiga"), hitungKe(KB, 3)),
-      tambah(idx(SUARA_C5, "empat"), hitungKe(KB, 4)),
-      tambah(idx(SUARA_C5, "lima"), hitungKe(KB, 5)),
-      sorotkan(idx(SUARA_C5, "Ada"), ...idKel(KB)),
-    ),
-  ],
-};
+const BOTOL_GEROBAK: Obj[] = [0, 1, 2, 3, 4].flatMap((i) => botolB(`gb${i}`, 112 + i * 8, 146));
 
-/* ------------------------------ 3. Satu bungkus, satu puluhan ------------------------------ */
-const SL: Kel = { id: "sl", w: 0, s: 10, x: 86, y: 60, ...KUE };
-const SB: Kel = { id: "sb", w: 3, s: 0, x: 105, y: 56, ...KUE };
-const SUARA_B1 = "Lihat sepuluh kue cubit lepas ini. Mari kita hitung bersama: satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh.";
-const SUARA_B2 = "Sepuluh satuan sama dengan satu puluhan. Sebentar lagi, sepuluh satuan itu akan masuk ke dalam bungkus.";
-const SUARA_B3 = "Lihat, sepuluh kue cubit lepas masuk ke dalam satu bungkus. Sekarang tinggal satu bungkus berisi sepuluh.";
-const SUARA_B4 = "Satu bungkus adalah satu puluhan. Jadi satu puluhan berisi sepuluh satuan.";
-const SUARA_B5 = "Dua bungkus berarti dua puluhan, yaitu dua puluh. Tiga bungkus berarti tiga puluhan, yaitu tiga puluh.";
-const HITUNG_B = ["satu,", "dua,", "tiga,", "empat,", "lima,", "enam,", "tujuh,", "delapan,", "sembilan,", "sepuluh."];
-
-export const ADEGAN_BUNGKUS: AdeganStory = {
-  id: "bungkus",
-  judul: "Satu bungkus, satu puluhan",
-  sumber: "Materi: satu bungkus, satu puluhan",
-  latar: "#ECFEFF",
-  ketukan: [
-    k(SUARA_B1, tambah(0, judul("Satu bungkus, satu puluhan")), ...HITUNG_B.map((kata, j) => tambah(idx(SUARA_B1, kata, 1), ...lepasKe(SL, j + 1)))),
-    k(SUARA_B2, sorotkan(idx(SUARA_B2, "satuan"), ...idLepas(SL)), tambah(idx(SUARA_B2, "satu"), ...kartu("kt1", 50, 130, 200, 30, W.emas, ["10 satuan = 1 puluhan"], 12))),
-    k(SUARA_B3, hapus(idx(SUARA_B3, "sepuluh"), ...idLepas(SL)), tambah(idx(SUARA_B3, "bungkus."), ...wadahKe(SB, 1))),
-    k(SUARA_B4, hapus(0, ...idKartu("kt1")), tambah(idx(SUARA_B4, "adalah"), teks("sb-ln", 118, 106, "1 puluhan", 13, W.merah))),
-    k(
-      SUARA_B5,
-      hapus(0, "sb-ln"),
-      tambah(idx(SUARA_B5, "Dua"), ...wadahKe(SB, 2)),
-      tambah(idx(SUARA_B5, "yaitu"), teks("t2", 80, 140, "2 puluhan = 20", 12, W.merah)),
-      tambah(idx(SUARA_B5, "Tiga"), ...wadahKe(SB, 3)),
-      tambah(idx(SUARA_B5, "yaitu", 2), teks("t3", 220, 140, "3 puluhan = 30", 12, W.merah)),
-    ),
-  ],
-};
-
-/* ------------------------------ 4. Melompat sepuluh-sepuluh ------------------------------ */
-const LP: Kel = { id: "lp", w: 10, s: 0, x: 75, y: 34, dy: 46, ...KUE };
-const SUARA_L1 = "Kita menghitung puluhan dengan melompat. Satu bungkus berisi sepuluh, jadi kita mulai dari sepuluh.";
-const SUARA_L2 = "Lompat lagi! Sepuluh, dua puluh, tiga puluh, empat puluh, lima puluh.";
-const SUARA_L3 = "Teruskan melompat. Enam puluh, tujuh puluh, delapan puluh, sembilan puluh, dan seratus.";
-const SUARA_L4 = "Sepuluh puluhan sama dengan seratus. Ada sepuluh bungkus, dan semuanya berisi seratus kue cubit.";
-const SUARA_L5 = "Ingat, puluhan melompat sepuluh demi sepuluh sampai seratus. Itu cara cepat untuk menghitung banyak benda.";
-
-export const ADEGAN_LOMPAT: AdeganStory = {
-  id: "lompat",
-  judul: "Melompat sepuluh-sepuluh",
-  sumber: "Materi: puluhan sampai seratus",
+export const ADEGAN_GEROBAK_BOTOL: AdeganStory = {
+  id: "gerobak-botol",
+  judul: "Gerobak botol Pak Ujang",
+  sumber: "Materi: gerobak botol dan tim",
   latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_L1, tambah(0, judul("Melompat sepuluh-sepuluh")), tambah(idx(SUARA_L1, "Satu"), ...wadahKe(LP, 1)), tambah(idx(SUARA_L1, "sepuluh,"), hitungKe(LP, 1))),
     k(
-      SUARA_L2,
-      tambah(idx(SUARA_L2, "dua"), ...wadahKe(LP, 2), hitungKe(LP, 2)),
-      tambah(idx(SUARA_L2, "tiga"), ...wadahKe(LP, 3), hitungKe(LP, 3)),
-      tambah(idx(SUARA_L2, "empat"), ...wadahKe(LP, 4), hitungKe(LP, 4)),
-      tambah(idx(SUARA_L2, "lima"), ...wadahKe(LP, 5), hitungKe(LP, 5)),
+      SUARA_G1,
+      tambah(0, judul("Bank Sampah Dibuka"), ...lantai("lt", 140), ...gudang("gd", 12, 68, 112, 72)),
+      tambah("Sekolah", ...pot("pt", 138, 142), ...tong("t1", 164, 142, "hijau"), ...tong("t2", 190, 142, "kuning"), ...tong("t3", 216, 142, "biru")),
+      tambah("Pak", ...tokoh("pu", 82, 184, "Pak Ujang")),
+      tambah("gerobak", ...gerobak("gr", 108, 158)),
+      tambah("botol", ...BOTOL_GEROBAK),
     ),
     k(
-      SUARA_L3,
-      tambah(idx(SUARA_L3, "Enam"), ...wadahKe(LP, 6), hitungKe(LP, 6)),
-      tambah(idx(SUARA_L3, "tujuh"), ...wadahKe(LP, 7), hitungKe(LP, 7)),
-      tambah(idx(SUARA_L3, "delapan"), ...wadahKe(LP, 8), hitungKe(LP, 8)),
-      tambah(idx(SUARA_L3, "sembilan"), ...wadahKe(LP, 9), hitungKe(LP, 9)),
-      tambah(idx(SUARA_L3, "seratus."), ...wadahKe(LP, 10), hitungKe(LP, 10)),
+      SUARA_G2,
+      tambah("Sari", ...tokoh("bs", 276, 184, "Bu Sari")),
+      tambah("Biru", ...papanTim("pb", 168, 152, "Biru", "#93C5FD")),
+      tambah("Kuning", ...papanTim("pk", 218, 152, "Kuning", "#FDE047")),
+      tambah("banyak", emo("tq", 262, 120, E.tanya, 22)),
     ),
-    k(SUARA_L4, tambah(idx(SUARA_L4, "seratus."), ...kartu("lk", 50, 134, 200, 30, W.emas, ["10 puluhan = 100"], 12)), sorotkan(idx(SUARA_L4, "bungkus,"), ...idWadah(LP))),
-    k(SUARA_L5, redamkan(0, ...idWadah(LP)), hapus(0, ...idKartu("lk")), tambah(idx(SUARA_L5, "puluhan"), ...kartu("lm", 30, 134, 240, 30, W.emas, ["melompat sepuluh demi sepuluh"], 11)), tambah(idx(SUARA_L5, "cepat"), emo("lz", 150, 190, "⚡", 18))),
+    k(
+      SUARA_G3,
+      bersih(0),
+      tambah(0, judul("Satu Ikat Botol"), ...lantai("lt", 150), ...lepas("lp", 40, 70, 10)),
+      tambah("dengan", panah("pn", 104, 90, 36, 0, W.merah, 2.4)),
+      tambah("tali", ...ikat("ik", 150, 70, "botol")),
+      tambah("Satu", teks("n1", 169, 116, "1 ikat", 10, W.ungu)),
+      tambah("sepuluh@2", teks("n10", 169, 132, "10 botol", 10, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ 2. Satu ikat, dua ikat, lima ikat ------------------------------ */
+const SUARA_S1 = "Sepuluh satuan sama dengan satu puluhan. Jadi satu ikat botol adalah satu puluhan.";
+const SUARA_S2 = "Dua ikat berarti dua puluhan, yaitu dua puluh botol.";
+const SUARA_S3 = "Lima ikat berarti lima puluhan, yaitu lima puluh botol.";
+
+export const ADEGAN_SATU_IKAT: AdeganStory = {
+  id: "satu-ikat",
+  judul: "Satu ikat sama dengan satu puluhan",
+  sumber: "Materi: sepuluh satuan satu puluhan",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_S1,
+      tambah(0, judul("Satuan dan Puluhan"), ...lepas("lp", 34, 60, 10), teks("l1", 59, 108, "10 satuan", 10, W.ungu)),
+      tambah("sama", teks("sm", 112, 84, "=", 18, W.biru)),
+      tambah("puluhan.", ...ikat("ik", 134, 70, "botol"), teks("l2", 153, 108, "1 puluhan", 10, W.merah)),
+      tambah("adalah", teks("n1", 150, 150, "1 ikat = 1 puluhan", 12, W.hijau)),
+    ),
+    k(
+      SUARA_S2,
+      bersih(0),
+      tambah(0, judul("Dua Ikat"), ...ikat("a1", 94, 44, "botol"), ...ikat("a2", 142, 44, "botol")),
+      tambah("ikat", teks("t1", 150, 100, "2 ikat", 11, W.ungu)),
+      tambah("puluhan,", teks("t2", 150, 122, "2 puluhan", 11, W.merah)),
+      tambah("puluh@2", teks("t3", 150, 148, "20 botol", 13, W.hijau)),
+    ),
+    k(
+      SUARA_S3,
+      bersih(0),
+      tambah(0, judul("Lima Ikat"), ...[0, 1, 2, 3, 4].flatMap((i) => ikat(`b${i}`, 26 + i * 50, 44, "botol"))),
+      tambah("ikat", teks("t1", 150, 100, "5 ikat", 11, W.ungu)),
+      tambah("puluhan,", teks("t2", 150, 122, "5 puluhan", 11, W.merah)),
+      tambah("puluh@2", teks("t3", 150, 148, "50 botol", 13, W.hijau)),
+    ),
+  ],
+};
+
+/* ------------------------------ 3. Salah langkah: hitung satu-satu ------------------------------ */
+const SUARA_H1 = "Chacha berseru, aku hitung satu-satu saja, pasti cepat! Kalau salah, aku menyapu seluruh gudang!";
+const SUARA_H2 = "Ia berhitung sampai lupa angkanya, dan botol menggelinding ke mana-mana! Pak Ujang terpeleset.";
+const SUARA_H3 = "Dika tertawa. Ikat dulu sepuluh-sepuluh, Chacha, lalu hitung ikatnya. Tidak ada yang terlewat.";
+
+/** Sepuluh botol lepas pada letak tertentu (pusat tiap botol), id `bp{i}` dan `bp{i}-t`. */
+const botolDi = (titik: [number, number][]): Obj[] => titik.flatMap(([x, y], i) => benda(`bp${i}`, x, y, "botol"));
+const RAPI: [number, number][] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => [108 + (i % 5) * 10, 100 + Math.floor(i / 5) * 16]);
+const SEBAR: [number, number][] = [[60, 160], [96, 176], [128, 150], [150, 172], [178, 158], [206, 180], [232, 152], [250, 170], [270, 160], [40, 140]];
+
+export const ADEGAN_SALAH_HITUNG: AdeganStory = {
+  id: "salah-hitung",
+  judul: "Salah hitung satu-satu",
+  sumber: "Materi: salah langkah, hitung satu-satu",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_H1,
+      tambah(0, judul("Hitung Satu-Satu?"), ...lantai("lt", 150), ...tokoh("ch", 40, 184, "Chacha")),
+      tambah("hitung", ...botolDi(RAPI), panah("pn", 66, 168, 34, -50, W.merah, 2.2)),
+      tambah("satu-satu", teks("c1", 113, 90, "1", 9, W.ungu), teks("c2", 123, 90, "2", 9, W.ungu), teks("c3", 133, 90, "3", 9, W.ungu)),
+      tambah("cepat!", emo("ts", 62, 140, "\u{2757}", 18)),
+      tambah("menyapu", ...sapu("sp", 232, 184)),
+    ),
+    k(
+      SUARA_H2,
+      hapus(0, "c1", "c2", "c3", "pn", "ts"),
+      tambah("lupa", emo("tq", 40, 140, E.tanya, 22), emo("pz", 14, 150, E.pusing, 16)),
+      ubah("menggelinding", ...pindah(botolDi(SEBAR))),
+      tambah("Pak", ...tokoh("pu", 270, 184, "Pak Ujang")),
+      ubah("terpeleset.", { id: "pu-cp", x: 232, y: 110 }),
+      tambah("terpeleset.", emo("db", 250, 120, E.debu, 16)),
+    ),
+    k(
+      SUARA_H3,
+      bersih(0),
+      tambah(0, judul("Ikat Dulu, Baru Hitung"), ...lantai("lt", 150), ...tokoh("dk", 40, 184, "Dika")),
+      ubah("tertawa.", { id: "dk", isi: E.tertawa }),
+      tambah("Ikat", ...ikat("i1", 96, 90, "botol"), ...ikat("i2", 142, 90, "botol"), ...ikat("i3", 188, 90, "botol")),
+      tambah("sepuluh-sepuluh,", teks("a1", 115, 84, "10", 10, W.merah), teks("a2", 161, 84, "10", 10, W.merah), teks("a3", 207, 84, "10", 10, W.merah)),
+      tambah("hitung", teks("ik", 161, 130, "hitung ikatnya", 10, W.ungu)),
+      tambah("terlewat.", emo("ok", 262, 110, E.benar, 24)),
+    ),
   ],
 };

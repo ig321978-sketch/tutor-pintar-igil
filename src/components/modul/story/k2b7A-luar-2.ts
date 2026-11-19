@@ -1,159 +1,249 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { W, emo, judul, kartu, kotak, lepasKe, panah, pusatSel, tabelSeratus, teks, tumpukBil, wadahKe, idLepas, idWadah, type Kel } from "./k2b7A-gambar";
-import { bersih, hapus, idx, k, pilihKata, redamkan, sorotkan, tambah, ubah, idPilihan } from "./k2b7A-bantu";
-import { kepala } from "./k2b7A-luar-1";
+import { E, W, batangPuluh, benda, bingkai, bulat, busur, emo, garis, ikat, judul, kartu, kotakSatuan, lantai, panah, teks, tokoh } from "./k2b7A-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah } from "./k2b7A-bantu";
+import { NAMA_METODE_ID } from "./k2b7A-luar-1";
 
-/* ------------------------------ 4. Puluhan dan Satuan: konsep ------------------------------ */
-const BT: Kel = { id: "bt", w: 4, s: 5, x: 110, y: 62, bentuk: "batang", warna: "#BBF7D0", warnaS: "#FDE68A" };
-const LEGENDA: Obj[] = [
-  kotak("lg-bt", 60, 62, 9, 34, BT.warna, W.biru, { rx: 2, tebal: 1.3 }),
-  teks("lg-tb", 76, 84, "batang = 10", 11, W.ungu, { anchor: "start" }),
-  kotak("lg-kt", 170, 75, 9, 9, BT.warnaS, W.biru, { rx: 1.5, tebal: 1.2 }),
-  teks("lg-tk", 184, 84, "kotak = 1", 11, W.ungu, { anchor: "start" }),
-];
-const idLegenda = LEGENDA.map((o) => o.id);
-const SUARA_Y1 = "Metode kedua bernama Puluhan dan Satuan. Kita memakai batang untuk puluhan dan kotak kecil untuk satuan.";
-const SUARA_Y2 = "Langkah pertama, hitung batang puluhan. Ada empat batang, jadi empat puluhan.";
-const SUARA_Y3 = "Langkah kedua, hitung kotak satuan. Ada lima kotak satuan, jadi lima satuan.";
-const SUARA_Y4 = "Langkah ketiga, gabungkan. Empat puluhan lima satuan dibaca empat puluh lima.";
-const SUARA_Y5 = "Jadi Puluhan dan Satuan berarti memisahkan bilangan menjadi batang puluhan dan kotak satuan.";
+/*
+ * Cerita orisinal IGIL "Botol Pak Ujang" (Kelas 2 Bab 7 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k2b7a.md. Bagian ini: Skip Counting (Hitung Loncat), Base Ten Blocks (Balok Puluhan), dan ringkasan.
+ */
 
-export const ADEGAN_LUAR_PULUHAN: AdeganStory = {
-  id: "luar-puluhan",
-  judul: "Puluhan dan Satuan: batang dan kotak",
-  sumber: "Metode luar: Puluhan dan Satuan",
+/** Garis lompatan mendatar `${id}` dari x1 sampai x2 di tinggi y. */
+const talang = (id: string, x1: number, x2: number, y: number): Obj => garis(id, x1, y, x2 - x1, 0, W.biru, 2.4);
+/** Tanda angka: tick `${id}` dan angka `${id}-n` di bawahnya. */
+const tanda = (id: string, x: number, y: number, isi: string, u = 10, warna: string = W.ungu): Obj[] => [garis(id, x, y - 4, 0, 8, W.biru, 1.6), teks(`${id}-n`, x, y + 16, isi, u, warna)];
+
+/* ------------------------------ Skip Counting: konsep ------------------------------ */
+const SUARA_C1 = "Cara kedua, Skip Counting, atau Hitung Loncat.";
+const SUARA_C2 = "Kita menyebut bilangan sambil melompat, misalnya melompat sepuluh-sepuluh.";
+const SUARA_C3 = "Sepuluh, dua puluh, tiga puluh. Setiap lompatan menambah satu puluhan.";
+const SUARA_C4 = "Setelah puluhan habis, lanjutkan satu-satu untuk benda yang lepas.";
+
+export const ADEGAN_LUAR_LONCAT: AdeganStory = {
+  id: "luar-loncat",
+  judul: "Skip Counting: Hitung Loncat",
+  sumber: "Metode global: Skip Counting (konsep)",
+  latar: "#F5F3FF",
+  ketukan: [
+    k(
+      SUARA_C1,
+      tambah(0, judul("Cara 2: Skip Counting"), talang("gl", 30, 270, 120)),
+      tambah("Skip", busur("c0", 40, 100, 114, 30), busur("c1", 100, 160, 114, 30), busur("c2", 160, 220, 114, 30)),
+      tambah("Hitung", teks("nm", 150, 172, "Hitung Loncat", 13, W.ungu)),
+    ),
+    k(
+      SUARA_C2,
+      tambah("menyebut", emo("mb", 62, 70, "\u{1F4AC}", 22)),
+      tambah("melompat,", ...[0, 1, 2].map((i) => teks(`p${i}`, 70 + i * 60, 88, "+10", 11, W.merah))),
+      tambah("sepuluh", teks("n10", 150, 50, "10 demi 10", 11, W.ungu)),
+    ),
+    k(
+      SUARA_C3,
+      hapus(0, "mb", "p0", "p1", "p2", "n10"),
+      tambah("Sepuluh", ...tanda("s0", 100, 120, "10", 12, W.merah)),
+      tambah("dua", ...tanda("s1", 160, 120, "20", 12, W.merah)),
+      tambah("tiga", ...tanda("s2", 220, 120, "30", 12, W.merah)),
+      tambah("Setiap", ...kartu("kt", 60, 44, 180, 24, W.krem, ["1 lompatan = 1 puluhan"], 9)),
+    ),
+    k(
+      SUARA_C4,
+      hapus(0, "kt-k", "kt-t0"),
+      tambah("Setelah", ...[0, 1, 2].map((i) => busur(`k${i}`, 220 + i * 18, 238 + i * 18, 116, 8, W.hijau))),
+      tambah("satu-satu", teks("ks", 250, 76, "+1 +1 +1", 10, W.hijau)),
+      tambah("lepas.", ...benda("lb0", 252, 150, "botol"), ...benda("lb1", 266, 150, "botol"), ...benda("lb2", 280, 150, "botol")),
+    ),
+  ],
+};
+
+/* ------------------------------ Skip Counting: terapan ------------------------------ */
+const SUARA_T1 = "Nia menghitung ikat koran: sepuluh, dua puluh, tiga puluh, empat puluh, lima puluh.";
+const SUARA_T2 = "Lalu dua koran lepas: lima puluh satu, lima puluh dua. Jadi semuanya lima puluh dua.";
+const SUARA_T3 = "Cocok kalau bendanya sudah diikat sepuluh-sepuluh, karena cepat sekali.";
+const SUARA_T4 = "Kurang cocok kalau bendanya masih berserakan, karena harus diikat dulu.";
+
+const KORAN_X = [6, 52, 98, 144, 190];
+
+export const ADEGAN_LUAR_LONCAT_TERAPAN: AdeganStory = {
+  id: "luar-loncat-terapan",
+  judul: "Skip Counting: ikat koran Nia",
+  sumber: "Metode global: Skip Counting (terapan)",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_T1,
+      tambah(0, judul("Ikat Koran Nia"), ...lantai("lt", 150), ...tokoh("ni", 270, 184, "Nia"), ...KORAN_X.flatMap((x, i) => ikat(`k${i}`, x, 96, "koran"))),
+      tambah("sepuluh,", busur("b0", 12, 25, 90, 14), teks("a0", 25, 140, "10", 11, W.merah)),
+      tambah("dua", busur("b1", 25, 71, 90, 14), teks("a1", 71, 140, "20", 11, W.merah)),
+      tambah("tiga", busur("b2", 71, 117, 90, 14), teks("a2", 117, 140, "30", 11, W.merah)),
+      tambah("empat", busur("b3", 117, 163, 90, 14), teks("a3", 163, 140, "40", 11, W.merah)),
+      tambah("lima", busur("b4", 163, 209, 90, 14), teks("a4", 209, 140, "50", 11, W.merah)),
+    ),
+    k(
+      SUARA_T2,
+      tambah("Lalu", ...benda("l0", 244, 112, "koran"), ...benda("l1", 262, 112, "koran"), teks("n2", 253, 138, "2 lepas", 9, W.ungu)),
+      tambah("satu", teks("u1", 244, 100, "51", 10, W.hijau)),
+      tambah("dua@2", teks("u2", 262, 100, "52", 10, W.hijau)),
+      tambah("semuanya", ...kartu("sm", 90, 154, 120, 26, W.hijauMuda, ["semuanya 52"], 10)),
+    ),
+    k(
+      SUARA_T3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?"), ...[0, 1, 2].flatMap((i) => ikat(`g${i}`, 40 + i * 50, 90, "koran"))),
+      tambah("Cocok", emo("ok", 262, 70, E.benar, 28)),
+      tambah("diikat", ...kartu("cc", 50, 34, 200, 24, W.hijauMuda, ["sudah diikat"], 10)),
+      tambah("sepuluh-sepuluh,", teks("n10", 150, 140, "10 demi 10", 11, W.ungu)),
+      tambah("cepat", emo("jm", 150, 172, E.jempol, 22)),
+    ),
+    k(
+      SUARA_T4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?")),
+      tambah("Kurang", emo("xs", 262, 70, E.salah, 28)),
+      tambah("berserakan,", ...[[60, 100], [110, 130], [150, 96], [190, 134], [80, 160], [230, 110], [130, 170], [210, 168]].flatMap(([x, y], i) => benda(`bs${i}`, x, y, "koran"))),
+      tambah("diikat", ...ikat("ik", 112, 44, "koran")),
+      tambah("dulu.", teks("gd", 150, 194, "harus diikat dulu", 10, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Base Ten Blocks: konsep ------------------------------ */
+const SUARA_B1 = "Cara ketiga, Base Ten Blocks, atau Balok Puluhan.";
+const SUARA_B2 = "Satu batang panjang mewakili satu puluhan, dan satu kotak kecil mewakili satu satuan.";
+const SUARA_B3 = "Sepuluh kotak kecil boleh ditukar dengan satu batang panjang.";
+const SUARA_B4 = "Dengan begitu bilangan besar bisa digambar dengan sedikit balok.";
+
+export const ADEGAN_LUAR_BALOK: AdeganStory = {
+  id: "luar-balok",
+  judul: "Base Ten Blocks: Balok Puluhan",
+  sumber: "Metode global: Base Ten Blocks (konsep)",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_B1,
+      tambah(0, judul("Cara 3: Base Ten Blocks")),
+      tambah("Base", ...batangPuluh("b1", 100, 150, 14, 8), ...batangPuluh("b2", 124, 150, 14, 8)),
+      tambah("Balok", ...[0, 1, 2].map((i) => kotakSatuan(`q${i}`, 156 + i * 14, 150, 12)), teks("nm", 150, 180, "Balok Puluhan", 13, W.ungu)),
+    ),
+    k(
+      SUARA_B2,
+      bersih(0),
+      tambah(0, judul("Batang dan Kotak"), ...batangPuluh("p1", 70, 154, 20, 8), kotakSatuan("q1", 200, 154, 20)),
+      tambah("batang", teks("l1", 80, 40, "1 batang", 10, W.ungu), teks("l2", 80, 172, "1 puluhan", 11, W.merah)),
+      tambah("kotak", teks("l3", 210, 114, "1 kotak", 10, W.ungu), teks("l4", 210, 172, "1 satuan", 11, W.hijau)),
+    ),
+    k(
+      SUARA_B3,
+      bersih(0),
+      tambah(0, judul("Ditukar Sepuluh"), ...[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => kotakSatuan(`q${i}`, 28 + i * 11, 100, 10))),
+      tambah("kotak", teks("n10", 85, 60, "10 kotak", 11, W.ungu)),
+      tambah("ditukar", panah("pn", 140, 90, 54, 0, W.merah, 2.6)),
+      tambah("satu", ...batangPuluh("bt", 222, 150, 14, 8), teks("n1", 229, 176, "1 batang", 10, W.ungu)),
+    ),
+    k(
+      SUARA_B4,
+      bersih(0),
+      tambah(0, judul("Sedikit Balok")),
+      tambah("bilangan", teks("bs", 150, 44, "bilangan besar", 12, W.ungu)),
+      tambah("digambar", ...[0, 1, 2, 3, 4, 5, 6].flatMap((i) => batangPuluh(`d${i}`, 44 + i * 26, 160, 18, 8))),
+      tambah("sedikit", ...[0, 1, 2, 3].map((i) => kotakSatuan(`e${i}`, 100 + i * 16, 184, 12)), emo("ok", 262, 80, E.jempol, 22)),
+    ),
+  ],
+};
+
+/* ------------------------------ Base Ten Blocks: terapan ------------------------------ */
+const SUARA_R1 = "Dika menggambar dua puluh enam: dua batang dan enam kotak kecil.";
+const SUARA_R2 = "Ia menambah empat kotak lagi. Sepuluh kotak kecil ditukar satu batang, jadi ada tiga batang.";
+const SUARA_R3 = "Cocok kalau kita ingin melihat puluhan dan satuan dengan jelas.";
+const SUARA_R4 = "Kurang cocok kalau bendanya sangat banyak, karena gambarnya jadi panjang.";
+
+const satuanDi = (id: string, n: number, x: number, yb: number): Obj[] => Array.from({ length: n }, (_, i) => kotakSatuan(`${id}${i}`, x + (i % 5) * 12, yb - Math.floor(i / 5) * 12, 10));
+
+export const ADEGAN_LUAR_BALOK_TERAPAN: AdeganStory = {
+  id: "luar-balok-terapan",
+  judul: "Base Ten Blocks: gambar Dika",
+  sumber: "Metode global: Base Ten Blocks (terapan)",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_R1,
+      tambah(0, judul("Gambar Dika"), ...tokoh("dk", 30, 184, "Dika")),
+      tambah("dua", teks("n26", 150, 44, "26", 18, W.ungu)),
+      tambah("batang", ...batangPuluh("m1", 90, 150, 18, 8), ...batangPuluh("m2", 114, 150, 18, 8), teks("nb", 111, 168, "2 batang", 9, W.merah)),
+      tambah("enam@2", ...satuanDi("s", 6, 160, 150), teks("nk", 184, 168, "6 kotak", 9, W.hijau)),
+    ),
+    k(
+      SUARA_R2,
+      tambah("menambah", ...satuanDi("s", 10, 160, 150).slice(6)),
+      tambah("empat", teks("n4", 236, 100, "+4", 12, W.merah)),
+      tambah("Sepuluh", teks("n10", 236, 116, "10 kotak", 10, W.ungu)),
+      hapus("ditukar", ...satuanDi("s", 10, 160, 150).map((o) => o.id), "nk"),
+      tambah("ditukar", ...batangPuluh("m3", 160, 150, 18, 8), teks("n1", 169, 168, "1 batang", 9, W.ungu)),
+      tambah("tiga", teks("n3", 111, 184, "3 batang", 11, W.hijau)),
+    ),
+    k(
+      SUARA_R3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?"), ...batangPuluh("c1", 80, 150, 16, 8), ...batangPuluh("c2", 102, 150, 16, 8), ...satuanDi("cs", 4, 140, 150)),
+      tambah("Cocok", emo("ok", 262, 70, E.benar, 28)),
+      tambah("puluhan", teks("tp", 100, 172, "puluhan", 10, W.merah)),
+      tambah("satuan", teks("ts", 164, 172, "satuan", 10, W.hijau)),
+      tambah("jelas.", ...kartu("cc", 50, 34, 200, 24, W.hijauMuda, ["terlihat jelas"], 10)),
+    ),
+    k(
+      SUARA_R4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?")),
+      tambah("Kurang", emo("xs", 262, 70, E.salah, 28)),
+      tambah("sangat", ...[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].flatMap((i) => batangPuluh(`w${i}`, 14 + i * 24, 120, 16, 4))),
+      tambah("gambarnya", ...[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].flatMap((i) => batangPuluh(`x${i}`, 14 + i * 24, 178, 16, 4))),
+      tambah("panjang.", teks("pj", 150, 194, "gambarnya panjang", 10, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_G1 = "Kita sudah melihat tiga cara. Mana yang pas? Itu tergantung bendanya.";
+const SUARA_G2 = "Benda tidak terlalu banyak dan ingin cepat, pakai Bingkai Sepuluh. Benda sudah diikat, pakai Hitung Loncat.";
+const SUARA_G3 = "Ingin melihat puluhan dan satuan dengan jelas, pakai Balok Puluhan. Apa pun caranya, hitunglah sepuluh-sepuluh.";
+const SUARA_G4 = "Menurutmu, untuk menghitung seratus tutup botol, kamu pilih cara yang mana?";
+
+export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
+  id: "luar-ringkas",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan: tiga cara metode global",
   latar: "#EFF6FF",
   ketukan: [
-    k(SUARA_Y1, tambah(0, ...kepala(1)), tambah(idx(SUARA_Y1, "batang"), LEGENDA[0], LEGENDA[1]), tambah(idx(SUARA_Y1, "kotak"), LEGENDA[2], LEGENDA[3])),
     k(
-      SUARA_Y2,
-      hapus(0, ...idLegenda),
-      tambah(idx(SUARA_Y2, "empat"), ...wadahKe(BT, 1), ...wadahKe(BT, 2)),
-      tambah(idx(SUARA_Y2, "batang,", 2), ...wadahKe(BT, 3)),
-      tambah(idx(SUARA_Y2, "puluhan.", 2), ...wadahKe(BT, 4)),
+      SUARA_G1,
+      tambah(0, judul("Tiga Cara Menghitung")),
+      tambah("tiga", teks("t3", 250, 40, "3 cara", 10, W.ungu)),
+      tambah("Mana", ...[0, 1, 2].flatMap((i) => kartu(`r${i}`, 20, 52 + i * 44, 206, 34, [W.krem, W.langit, W.pink][i], [`${i + 1}. ${NAMA_METODE_ID[i]}`], 12))),
+      tambah("tergantung", emo("tq", 276, 100, E.tanya, 22)),
     ),
     k(
-      SUARA_Y3,
-      tambah(idx(SUARA_Y3, "lima"), ...[1, 2, 3].flatMap((j) => lepasKe(BT, j))),
-      tambah(idx(SUARA_Y3, "lima", 2), ...[4, 5].flatMap((j) => lepasKe(BT, j))),
-    ),
-    k(SUARA_Y4, tambah(idx(SUARA_Y4, "Empat"), ...kartu("uk", 20, 146, 170, 30, W.emas, ["4 puluhan 5 satuan"], 11)), tambah(idx(SUARA_Y4, "dibaca"), teks("uj", 240, 172, "45", 30, W.merah))),
-    k(SUARA_Y5, sorotkan(idx(SUARA_Y5, "batang"), ...idWadah(BT)), sorotkan(idx(SUARA_Y5, "kotak"), ...idLepas(BT)), tambah(idx(SUARA_Y5, "memisahkan"), emo("pz", 262, 80, "\u{1F9E9}", 26))),
-  ],
-};
-
-/* ------------------------------ 5. Puluhan dan Satuan: terapan ------------------------------ */
-const BU: Kel = { id: "bu", w: 7, s: 4, x: 105, y: 54, bentuk: "batang", warna: "#BBF7D0", warnaS: "#FDE68A" };
-const SUARA_P1 = "Terapkan pada soal ini. Wei punya tujuh batang puluhan dan empat kotak satuan.";
-const SUARA_P2 = "Berapa banyak semuanya? Ketuk jawaban yang tepat.";
-const SUARA_P3 = "Betul! Tujuh puluhan dan empat satuan, yaitu tujuh puluh empat.";
-const SUARA_P4 = "Awas, jangan menukar. Tujuh puluh empat berbeda dari empat puluh tujuh.";
-
-export const ADEGAN_LUAR_PULUHAN_TERAPAN: AdeganStory = {
-  id: "luar-puluhan-terapan",
-  judul: "Puluhan dan Satuan: batang Wei",
-  sumber: "Metode luar: Puluhan dan Satuan",
-  latar: "#DBEAFE",
-  ketukan: [
-    k(
-      SUARA_P1,
-      tambah(0, ...kepala(1)),
-      tambah(idx(SUARA_P1, "tujuh"), ...[1, 2, 3, 4].flatMap((q) => wadahKe(BU, q))),
-      tambah(idx(SUARA_P1, "batang"), ...[5, 6, 7].flatMap((q) => wadahKe(BU, q))),
-      tambah(idx(SUARA_P1, "empat"), ...lepasKe(BU, 1), ...lepasKe(BU, 2)),
-      tambah(idx(SUARA_P1, "satuan."), ...lepasKe(BU, 3), ...lepasKe(BU, 4)),
-    ),
-    k(SUARA_P2, tambah(idx(SUARA_P2, "Berapa"), teks("tanya", 150, 128, "berapa banyak?", 12, W.ungu)), tambah(idx(SUARA_P2, "jawaban"), ...pilihKata(140, ["74", "47", "11"], 16))),
-    k(SUARA_P3, sorotkan(idx(SUARA_P3, "Betul!"), "c1-k")),
-    k(
-      SUARA_P4,
-      redamkan(0, "c1-k"),
-      hapus(idx(SUARA_P4, "Awas,"), "tanya", ...idPilihan(3)),
-      tambah(idx(SUARA_P4, "Tujuh"), ...tumpukBil("bl1", 14, 120, 74, W.hijauMuda, 128), teks("bl1-ok", 126, 130, "✅", 14)),
-      tambah(idx(SUARA_P4, "empat", 2), ...tumpukBil("bl2", 158, 120, 47, W.merahMuda, 128), teks("bl2-x", 270, 130, "❌", 14)),
-    ),
-  ],
-};
-
-/* ------------------------------ 6. Tabel Seratus: konsep ------------------------------ */
-const GRID = tabelSeratus(1, 10, 28);
-const baris1 = (dari: number, sampai: number): string[] => Array.from({ length: sampai - dari + 1 }, (_, q) => `th-1-${dari + q}-k`);
-/** Panah menurun (satu baris) di sisi kanan dalam sel (r, c), dari sel itu ke sel di bawahnya. */
-const panahTurun = (r: number, c: number, rAwal: number, yAtas: number): Obj => {
-  const p = pusatSel(r, c, rAwal, yAtas);
-  return panah("th-p", p.x + 9, p.y, 0, 17, W.merah, 2);
-};
-/** Panah ke kanan (satu kotak) di dasar sel (r, c), dari sel itu ke sel di sebelah kanannya. */
-const panahKanan = (r: number, c: number, rAwal: number, yAtas: number): Obj => {
-  const p = pusatSel(r, c, rAwal, yAtas);
-  return panah("th-p", p.x + 6, p.y + 6, 21, 0, W.merah, 2);
-};
-const SUARA_X1 = "Metode ketiga bernama Tabel Seratus. Tabel ini memuat bilangan satu sampai seratus, dalam sepuluh baris.";
-const SUARA_X2 = "Setiap baris berisi sepuluh bilangan. Baris pertama dari satu sampai sepuluh.";
-const SUARA_X3 = "Mulai dari tiga puluh empat. Turun satu baris, bilangannya bertambah sepuluh, jadi empat puluh empat.";
-const SUARA_X4 = "Sekarang dari tiga puluh empat, geser satu kotak ke kanan. Bilangannya bertambah satu, jadi tiga puluh lima.";
-const SUARA_X5 = "Jadi turun satu baris tambah sepuluh, dan geser satu kotak ke kanan tambah satu.";
-
-export const ADEGAN_LUAR_TABEL: AdeganStory = {
-  id: "luar-tabel",
-  judul: "Tabel Seratus: pola di tabel",
-  sumber: "Metode luar: Tabel Seratus",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(SUARA_X1, tambah(0, judul("Tabel Seratus")), tambah(idx(SUARA_X1, "memuat"), ...GRID)),
-    k(SUARA_X2, sorotkan(idx(SUARA_X2, "satu"), ...baris1(1, 1)), sorotkan(idx(SUARA_X2, "sepuluh.", 2), ...baris1(2, 10))),
-    k(
-      SUARA_X3,
-      redamkan(0, ...baris1(1, 10)),
-      sorotkan(idx(SUARA_X3, "tiga"), "th-4-4-k"),
-      tambah(idx(SUARA_X3, "Turun"), panahTurun(4, 4, 1, 28)),
-      sorotkan(idx(SUARA_X3, "empat", 2), "th-5-4-k"),
+      SUARA_G2,
+      sorotkan("Benda", "r0-k"),
+      tambah("Bingkai", ...bingkai("ia", 240, 62, 10, 5), emo("ok", 262, 100, E.jempol, 16)),
+      redamkan("diikat,", "r0-k"),
+      sorotkan("diikat,", "r1-k"),
+      tambah("diikat,", ...ikat("sd", 238, 104, "koran")),
     ),
     k(
-      SUARA_X4,
-      hapus(0, "th-p"),
-      redamkan(0, "th-5-4-k"),
-      tambah(idx(SUARA_X4, "geser"), panahKanan(4, 4, 1, 28)),
-      sorotkan(idx(SUARA_X4, "tiga", 2), "th-4-5-k"),
+      SUARA_G3,
+      redamkan(0, "r1-k"),
+      sorotkan("Balok", "r2-k"),
+      tambah("jelas,", ...batangPuluh("sk", 244, 176, 8, 2.8), kotakSatuan("sl", 258, 176, 7)),
+      tambah("sepuluh-sepuluh.", teks("n10", 150, 192, "hitung 10 demi 10", 10, W.hijau)),
     ),
     k(
-      SUARA_X5,
+      SUARA_G4,
       bersih(0),
-      tambah(0, judul("Dua pola di tabel")),
-      tambah(idx(SUARA_X5, "turun"), ...kartu("pt", 14, 50, 272, 44, W.hijauMuda, ["turun satu baris", "tambah sepuluh"], 11), emo("pe1", 40, 82, "⬇️", 20)),
-      tambah(idx(SUARA_X5, "geser"), ...kartu("pk", 14, 112, 272, 44, W.langit, ["ke kanan satu kotak", "tambah satu"], 11), emo("pe2", 40, 144, "➡️", 20)),
+      tambah(0, judul("Pilih Cara yang Pas")),
+      tambah("seratus", teks("n100", 150, 52, "100 tutup botol", 14, W.ungu)),
+      tambah("tutup", ...[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => bulat(`tu${i}`, 40 + i * 24, 88, 8, "#F87171", "#7F1D1D", { tebal: 1.2, z: 2 }))),
+      tambah("pilih", ...[0, 1, 2].flatMap((i) => kartu(`p${i}`, 24 + i * 90, 124, 84, 38, [W.krem, W.langit, W.pink][i], [NAMA_METODE_ID[i]], 9))),
+      tambah("mana?", emo("tq", 150, 192, E.tanya, 24)),
     ),
   ],
 };
 
-/* ------------------------------ 7. Tabel Seratus: terapan ------------------------------ */
-const SEBAGIAN: Obj[] = tabelSeratus(3, 5, 28).map((o) => (o.id === "th-4-7" ? { ...o, isi: "?" } : o.id === "th-4-7-k" ? { ...o, warna: W.emas } : o));
-const SUARA_Z1 = "Terapkan pada soal ini. Upe mulai dari dua puluh tujuh. Ia turun satu baris.";
-const SUARA_Z2 = "Bilangan di kotak tanda tanya berapa? Ketuk jawaban yang tepat.";
-const SUARA_Z3 = "Betul! Turun satu baris, bilangannya bertambah sepuluh. Dua puluh tujuh menjadi tiga puluh tujuh.";
-const SUARA_Z4 = "Sekarang geser satu kotak ke kanan dari tiga puluh tujuh. Bilangannya bertambah satu, jadi tiga puluh delapan.";
-
-export const ADEGAN_LUAR_TABEL_TERAPAN: AdeganStory = {
-  id: "luar-tabel-terapan",
-  judul: "Tabel Seratus: langkah Upe",
-  sumber: "Metode luar: Tabel Seratus",
-  latar: "#FCE7F3",
-  ketukan: [
-    k(
-      SUARA_Z1,
-      tambah(0, judul("Tabel Seratus")),
-      tambah(idx(SUARA_Z1, "Terapkan"), ...SEBAGIAN),
-      sorotkan(idx(SUARA_Z1, "dua"), "th-3-7-k"),
-      tambah(idx(SUARA_Z1, "turun"), panahTurun(3, 7, 3, 28)),
-    ),
-    k(SUARA_Z2, tambah(idx(SUARA_Z2, "Bilangan"), teks("tanya", 150, 108, "bilangan di tanda tanya?", 12, W.ungu)), tambah(idx(SUARA_Z2, "jawaban"), ...pilihKata(120, ["27", "37", "47"], 16))),
-    k(SUARA_Z3, sorotkan(idx(SUARA_Z3, "Betul!"), "c2-k"), ubah(idx(SUARA_Z3, "menjadi"), { id: "th-4-7", isi: "37" }, { id: "th-4-7-k", warna: W.hijauMuda })),
-    k(
-      SUARA_Z4,
-      redamkan(0, "c2-k", "th-3-7-k"),
-      hapus(idx(SUARA_Z4, "Sekarang"), "th-p", "tanya", ...idPilihan(3)),
-      tambah(idx(SUARA_Z4, "geser"), panahKanan(4, 7, 3, 28)),
-      sorotkan(idx(SUARA_Z4, "jadi"), "th-4-8-k"),
-    ),
-  ],
-};

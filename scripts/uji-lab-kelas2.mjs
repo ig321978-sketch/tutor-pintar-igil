@@ -7,6 +7,7 @@ import * as K2B3 from "../src/components/modul/misi-k2bab3.ts";
 import * as K2B4 from "../src/components/modul/misi-k2bab4.ts";
 import * as K2B5 from "../src/components/modul/misi-k2bab5.ts";
 import * as K2B6 from "../src/components/modul/misi-k2bab6.ts";
+import * as K2B7 from "../src/components/modul/misi-k2bab7.ts";
 
 let gagal = 0;
 let lulus = 0;
@@ -275,6 +276,51 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   sama(baruB6({ jamPernah: [3], sudahSama: [1], hariBenar: ["a", "b", "c", "d"], lamaBenar: [0], selBenar: [2] }), ["b-jarum", "b-samakan", "b-hari", "b-lama", "b-selisih", "b-semua"], "k2bab6 B: semua wajib dan bebas");
   cek(M0.misiBaru(dB6, { ...awalB6, salah: 9, hariPilih: "Istirahat", selKotak: 5, mode: "selisih", h24: 15, jamSama: 3, samaIndeks: 2, lamaIndeks: 7, selIndeks: 1 }, new Set()).length === 0, "k2bab6 B: percobaan keliru dan geseran tidak dihitung sebagai misi");
   void K2B6;
+}
+
+/* --------------------------- Kelas 2 Bab 7: misi (Bank Sampah Sekolah) --------------------------- */
+// Rincian misi tiap Sub-Bab diuji di scripts/uji-ikat-k2b7a.mjs dan uji-papan-k2b7b.mjs; di sini hanya struktur bersama.
+{
+  // KERANGKA: agen Sub-Bab mengganti komentar BAGIAN-nya dengan ujinya (keadaan awal tidak memenuhi misi; ujiStruktur untuk sub-bab itu).
+  // BAGIAN A (Gudang Ikat: kardus, tutup botol, kaus bekas; rincian di scripts/uji-ikat-k2b7a.mjs)
+  // Keadaan awal ditulis langsung (logika.ts folder memakai impor tanpa ekstensi).
+  {
+    const awalA7 = { alat: "ikat", mode: "ikat", jenis: 0, diikat: [0, 0, 0], selesaiIkat: [], papanP: 0, papanS: 0, papanBenar: [], tulisP: -1, tulisS: -1, tulisBenar: [], terbalik: false, kira: [-1, -1, -1], kiraDekat: [], kiraTuntas: [], salah: 0 };
+    ujiStruktur("k2bab7", K2B7.daftarMisiK2Bab7, ["A"], { A: awalA7 });
+    const dA7 = K2B7.daftarMisiK2Bab7("A");
+    cek(dA7 === K2B7.MISI_A && dA7.filter((m) => m.wajib).length === 4 && dA7.filter((m) => !m.wajib).length === 2 && dA7.every((m) => m.id.startsWith("a-")), "k2bab7 A: empat wajib, dua bebas, id berawalan a-");
+    cek(dA7.every((m) => !/\d/.test(m.teks) && !/(buku|teman|kelompok|kelas|skor|nilai|soal|tebak|kunci|latihan)/i.test(m.teks)), "k2bab7 A: teks misi tanpa digit dan kata terlarang");
+    cek(dA7.every((m) => !m.cek({ alat: "kerangka" })), "k2bab7 A: alat lain tidak memenuhi misi");
+    const baruA7 = (o) => M0.misiBaru(dA7, { ...awalA7, ...o }, new Set());
+    sama(baruA7({ selesaiIkat: [0] }), ["a-ikat"], "k2bab7 A: satu tumpukan selesai diikat memenuhi a-ikat");
+    sama(baruA7({ papanBenar: [1] }), ["a-papan"], "k2bab7 A: papan benar memenuhi a-papan");
+    sama(baruA7({ tulisBenar: [2] }), ["a-tulis"], "k2bab7 A: tulisan benar memenuhi a-tulis");
+    sama(baruA7({ kiraTuntas: [0], kiraDekat: [0] }), ["a-kira"], "k2bab7 A: perkiraan terbukti memenuhi a-kira");
+    sama(baruA7({ selesaiIkat: [0, 1, 2] }), ["a-ikat", "a-semua"], "k2bab7 A: tiga tumpukan selesai memenuhi tantangan bebas");
+    sama(baruA7({ selesaiIkat: [0, 1] }), ["a-ikat"], "k2bab7 A: dua tumpukan belum memenuhi tantangan bebas");
+    sama(baruA7({ terbalik: true }), ["a-tukar"], "k2bab7 A: angka tertukar memenuhi tantangan bebas");
+    cek(M0.misiBaru(dA7, { ...awalA7, salah: 9, mode: "papan", jenis: 2, papanP: 4, papanS: 3, tulisP: 3, tulisS: 4, diikat: [1, 2, 3], kira: [30, -1, -1] }, new Set()).length === 0, "k2bab7 A: percobaan keliru dan geseran tidak dihitung sebagai misi");
+  }
+  // BAGIAN B (Papan Pengumuman: katak di tali, dua bilangan dengan kata, kartu bilangan, kartu angka; rincian di scripts/uji-papan-k2b7b.mjs)
+  // Keadaan awal ditulis langsung (logika.ts folder memakai impor tanpa ekstensi).
+  {
+    const awalB7 = { alat: "papan", mode: "garis", garisIndeks: 0, pos: 15, garisBenar: [], mundurBenar: false, bandingIndeks: 0, bandingBenar: [], tandaSama: false, urutIndeks: 0, urutKetuk: [], urutBenar: [], kartuIndeks: 0, kartuPuluhan: null, kartuBenar: [], salah: 0 };
+    ujiStruktur("k2bab7", K2B7.daftarMisiK2Bab7, ["B"], { B: awalB7 });
+    const dB7 = K2B7.daftarMisiK2Bab7("B");
+    cek(dB7 === K2B7.MISI_B && dB7.filter((m) => m.wajib).length === 4 && dB7.filter((m) => !m.wajib).length === 2 && dB7.every((m) => m.id.startsWith("b-")), "k2bab7 B: empat wajib, dua bebas, id berawalan b-");
+    cek(dB7.every((m) => !/\d/.test(m.teks) && !/(buku|teman|kelompok|kelas|skor|nilai|soal|tebak|kunci|latihan)/i.test(m.teks)), "k2bab7 B: teks misi tanpa digit dan kata terlarang");
+    cek(dB7.every((m) => !m.cek({ alat: "kerangka" })), "k2bab7 B: alat lain tidak memenuhi misi");
+    const baruB7 = (o) => M0.misiBaru(dB7, { ...awalB7, ...o }, new Set());
+    sama(baruB7({ garisBenar: [0] }), ["b-garis"], "k2bab7 B: katak tepat di tali memenuhi b-garis");
+    sama(baruB7({ bandingBenar: [1] }), ["b-banding"], "k2bab7 B: kata tepat untuk dua bilangan memenuhi b-banding");
+    sama(baruB7({ urutBenar: [0] }), ["b-urut"], "k2bab7 B: kartu bilangan berurutan memenuhi b-urut");
+    sama(baruB7({ kartuBenar: [0] }), ["b-kartu"], "k2bab7 B: kartu angka tepat memenuhi b-kartu");
+    sama(baruB7({ tandaSama: true }), ["b-sama"], "k2bab7 B: pasangan sama besar memenuhi tantangan bebas");
+    sama(baruB7({ mundurBenar: true }), ["b-mundur"], "k2bab7 B: katak mundur tepat memenuhi tantangan bebas");
+    sama(baruB7({ garisBenar: [1], bandingBenar: [0], urutBenar: [2], kartuBenar: [1], tandaSama: true, mundurBenar: true }), ["b-garis", "b-banding", "b-urut", "b-kartu", "b-sama", "b-mundur"], "k2bab7 B: semua wajib dan bebas");
+    cek(M0.misiBaru(dB7, { ...awalB7, salah: 9, mode: "kartu", pos: 99, garisIndeks: 2, bandingIndeks: 3, urutIndeks: 1, urutKetuk: [0, 1], kartuIndeks: 2, kartuPuluhan: 3 }, new Set()).length === 0, "k2bab7 B: percobaan keliru dan geseran tidak dihitung sebagai misi");
+  }
+  void K2B7;
 }
 
 console.log(gagal === 0 ? `SEMUA LULUS (${lulus} cek)` : `GAGAL ${gagal} dari ${lulus + gagal}`);

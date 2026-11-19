@@ -129,6 +129,8 @@ const FRASA_DASAR: ReadonlyArray<readonly [string, string]> = [
   ["frequency table", "fri kuen si tei bel"],
   ["skip counting", "skip kaun ting"],
   ["benchmark numbers", "benci mark nam bers"],
+  ["hundred chart", "han dred cart"],
+  ["card sort", "kard sort"],
   ["base-ten blocks", "beis ten bloks"],
   ["base ten blocks", "beis ten bloks"],
   ["place value chart", "pleis velyu cart"],

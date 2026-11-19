@@ -1,163 +1,140 @@
 import type { AdeganStory } from "./logika-story";
-import { W, judul, judulUrutan, kartuUrut, kumpulan, kotak, teks, pindahUrut, penandaUrut, tempat, tempatUrut } from "./k2b7B-gambar";
-import { idx, k, sorotkan, tambah, ubah } from "./k2b7B-bantu";
+import { E, W, dinding, emo, judul, karung, kartu, kepik, konfeti, panah, panggung, papanUmum, pindahKepik, spanduk, tali, teks, tokoh } from "./k2b7B-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k2b7B-bantu";
 
-/* ------------------------------ 11. Tiga bilangan: puluhan paling banyak dan paling sedikit ------------------------------ */
-const T3 = [0, 1, 2].map((i) => tempat(i, 3, 46, 62));
-const SUARA_V1 = "Sekarang ada tiga bilangan: tujuh puluh enam, delapan puluh tiga, dan lima puluh tujuh.";
-const SUARA_V2 = "Tujuh puluh enam punya tujuh puluhan dan enam satuan. Delapan puluh tiga punya delapan puluhan dan tiga satuan. Lima puluh tujuh punya lima puluhan dan tujuh satuan.";
-const SUARA_V3 = "Delapan puluh tiga punya puluhan paling banyak. Jadi delapan puluh tiga paling besar.";
-const SUARA_V4 = "Lima puluh tujuh punya puluhan paling sedikit. Jadi lima puluh tujuh paling kecil.";
+/*
+ * Cerita orisinal IGIL "Pengumuman Bu Lia" (Kelas 2 Bab 7 Sub-Bab B), akhir cerita Bank Sampah Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b7b.md. Bagian ini: dua teka-teki (maju dan berpikir mundur) dan penutup (pengumuman, taruhan, spanduk).
+ */
 
-export const ADEGAN_TIGA_BILANGAN: AdeganStory = {
-  id: "tiga-bilangan",
-  judul: "Tiga bilangan: paling besar dan paling kecil",
-  sumber: "Materi: tiga bilangan",
+/* ------------------------------ 7. Teka-teki lebih ------------------------------ */
+const SUARA_L1 = "Nia membuat teka-teki. Aku dua lebihnya dari tujuh puluh sembilan.";
+const SUARA_L2 = "Maju dua langkah dari tujuh puluh sembilan: delapan puluh, delapan puluh satu.";
+const SUARA_L3 = "Jadi aku delapan puluh satu. Chacha bertepuk tangan!";
+
+export const ADEGAN_TEKA_LEBIH: AdeganStory = {
+  id: "teka-teki-lebih",
+  judul: "Teka-teki dua lebihnya",
+  sumber: "Materi: teka-teki lebihnya",
+  latar: "#FDF4FF",
+  ketukan: [
+    k(
+      SUARA_L1,
+      bersih(0),
+      tambah(0, judul("Teka-teki Nia"), ...dinding("dn")),
+      tambah("Nia", ...tokoh("ni", 40, 168, "Nia")),
+      tambah("Aku", ...kartu("gb", 84, 40, 206, 26, W.lavender, ["Aku: 2 lebihnya dari 79"], 11)),
+      tambah("tujuh", ...tali("tl", 112, 76, 82)),
+      tambah("sembilan.", kepik("kp", 112, 79, 76, 82)),
+      sorotkan("sembilan.", "tlp79"),
+    ),
+    k(
+      SUARA_L2,
+      tambah("Maju", panah("pm", 108, 92, 84, 0, W.merah, 2.4)),
+      tambah("dua", teks("lg", 150, 84, "2 langkah", 10, W.merah)),
+      ubah("delapan", ...pindahKepik("kp", 80, 76, 82)),
+      sorotkan("delapan", "tlp80"),
+      ubah("delapan@2", ...pindahKepik("kp", 81, 76, 82)),
+      sorotkan("delapan@2", "tlp81"),
+    ),
+    k(
+      SUARA_L3,
+      hapus(0, "lg", "pm"),
+      ubah(0, { id: "tlp79", sorot: false }, { id: "tlp80", sorot: false }),
+      ubah("Jadi", { id: "gb-t0", isi: "Aku = 81" }, { id: "gb-k", warna: W.hijauMuda }),
+      tambah("Chacha", ...tokoh("ch", 100, 168, "Chacha")),
+      tambah("bertepuk", emo("tp", 190, 84, E.tepuk, 20)),
+      tambah("tangan!", emo("sr", 222, 84, E.sorak, 20)),
+    ),
+  ],
+};
+
+/* ------------------------------ 8. Teka-teki mundur ------------------------------ */
+const SUARA_B1 = "Teka-teki Dika: setelah maju tiga langkah, bilanganku enam puluh dua.";
+const SUARA_B2 = "Kita mundur dulu dari enam puluh dua: enam puluh satu, enam puluh, lima puluh sembilan.";
+const SUARA_B3 = "Jadi aku mulai dari lima puluh sembilan. Berpikir terbalik itu seru!";
+
+export const ADEGAN_TEKA_MUNDUR: AdeganStory = {
+  id: "teka-teki-mundur",
+  judul: "Teka-teki berpikir mundur",
+  sumber: "Materi: teka-teki mundur",
+  latar: "#F0FDFA",
+  ketukan: [
+    k(
+      SUARA_B1,
+      bersih(0),
+      tambah(0, judul("Teka-teki Dika"), ...dinding("dn"), ...tali("tl", 112, 58, 64)),
+      tambah("Dika:", ...tokoh("dk", 40, 168, "Dika")),
+      tambah("maju", panah("pm", 40, 92, 120, 0, W.merah, 2.4), teks("tq", 28, 86, "?", 12, W.merah)),
+      tambah("tiga", teks("lg", 100, 82, "3 langkah", 10, W.merah)),
+      tambah("dua.", kepik("kp", 112, 62, 58, 64)),
+      sorotkan("dua.", "tlp62"),
+    ),
+    k(
+      SUARA_B2,
+      hapus(0, "lg", "pm", "tq"),
+      tambah("mundur", panah("pb", 192, 92, -126, 0, W.hijau, 2.4)),
+      ubah("satu,", ...pindahKepik("kp", 61, 58, 64)),
+      sorotkan("satu,", "tlp61"),
+      ubah("puluh@3", ...pindahKepik("kp", 60, 58, 64)),
+      sorotkan("puluh@3", "tlp60"),
+      ubah("sembilan.", ...pindahKepik("kp", 59, 58, 64)),
+      sorotkan("sembilan.", "tlp59"),
+    ),
+    k(
+      SUARA_B3,
+      ubah(0, { id: "tlp62", sorot: false }, { id: "tlp61", sorot: false }, { id: "tlp60", sorot: false }),
+      tambah("Jadi", ...kartu("gb", 84, 40, 206, 26, W.hijauMuda, ["Aku mulai dari 59"], 11)),
+      ubah("Berpikir", ...pindahKepik("kp", 62, 58, 64)),
+      tambah("terbalik", panah("pc", 66, 92, 126, 0, W.biru, 2.4), emo("pk", 150, 150, E.pikir, 22)),
+      tambah("seru!", emo("sr", 190, 150, E.sorak, 22)),
+    ),
+  ],
+};
+
+/* ------------------------------ 9. Penutup ------------------------------ */
+const SUARA_N1 = "Bu Lia mengumumkan, tim Kuning paling banyak, lalu tim Hijau, dan tim Biru.";
+const SUARA_N2 = "Chacha menepati taruhannya, memikul karung sampai topinya menutupi mata, dan semua tertawa.";
+const SUARA_N3 = "Spanduk SEKOLAH BERSIH dipasang! Menurutmu, benda apa lagi yang bisa kita kumpulkan dan bandingkan? Terima kasih, Chacha, Dika, Nia, Bu Sari, dan Bu Lia!";
+
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Pengumuman dan spanduk Sekolah Bersih",
+  sumber: "Materi: pengumuman dan penutup",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      SUARA_V1,
-      tambah(0, judul("Tiga bilangan")),
-      tambah(idx(SUARA_V1, "enam"), kartuUrut(1, 76, T3[0])),
-      tambah(idx(SUARA_V1, "tiga", 2), kartuUrut(2, 83, T3[1])),
-      tambah(idx(SUARA_V1, "tujuh", 2), kartuUrut(3, 57, T3[2])),
+      SUARA_N1,
+      bersih(0),
+      tambah(0, judul("Pengumuman Bu Lia"), ...dinding("dn"), ...papanUmum("pu", 40, 34, 220, 100)),
+      tambah("Lia", ...tokoh("bl", 272, 168, "Bu Lia")),
+      tambah("Kuning", ...kartu("r0", 52, 44, 196, 24, W.kuningTim, ["1. Tim Kuning: 74"], 11), emo("pi", 30, 62, E.piala, 20)),
+      tambah("Hijau,", ...kartu("r1", 52, 72, 196, 24, W.hijauTim, ["2. Tim Hijau: 58"], 11)),
+      tambah("Biru.", ...kartu("r2", 52, 100, 196, 24, W.biruTim, ["3. Tim Biru: 47"], 11)),
     ),
     k(
-      SUARA_V2,
-      tambah(idx(SUARA_V2, "punya", 1), kartuUrut(1, 76, T3[0], true)),
-      tambah(idx(SUARA_V2, "punya", 2), kartuUrut(2, 83, T3[1], true)),
-      tambah(idx(SUARA_V2, "punya", 3), kartuUrut(3, 57, T3[2], true)),
-    ),
-    k(SUARA_V3, sorotkan(idx(SUARA_V3, "banyak"), "ur2-k"), tambah(idx(SUARA_V3, "besar"), penandaUrut(2, T3[1], "paling besar", 126, 11))),
-    k(SUARA_V4, ubah(0, { id: "ur2-k", sorot: false }), sorotkan(idx(SUARA_V4, "sedikit"), "ur3-k"), tambah(idx(SUARA_V4, "kecil"), penandaUrut(3, T3[2], "paling kecil", 126, 11))),
-  ],
-};
-
-/* ------------------------------ 12. Urutkan tiga bilangan dari yang paling kecil ------------------------------ */
-const BANK3 = [0, 1, 2].map((i) => tempat(i, 3, 40, 44));
-const SLOT3 = [0, 1, 2].map((i) => tempat(i, 3, 118, 44));
-const SUARA_W1 = "Sekarang kita urutkan tiga bilangan dari yang paling kecil.";
-const SUARA_W2 = "Yang paling kecil adalah lima puluh tujuh, jadi dia yang pertama.";
-const SUARA_W3 = "Berikutnya tujuh puluh enam, yang kedua.";
-const SUARA_W4 = "Terakhir delapan puluh tiga, yang ketiga dan paling besar.";
-const SUARA_W5 = "Urutannya dari yang paling kecil: lima puluh tujuh, tujuh puluh enam, delapan puluh tiga.";
-
-export const ADEGAN_URUT_TIGA: AdeganStory = {
-  id: "urut-tiga",
-  judul: "Mengurutkan tiga bilangan",
-  sumber: "Materi: mengurutkan tiga bilangan",
-  latar: "#F0F9FF",
-  ketukan: [
-    k(
-      SUARA_W1,
-      tambah(0, judul("Mengurutkan")),
-      tambah(idx(SUARA_W1, "tiga"), kartuUrut(1, 76, BANK3[0]), kartuUrut(2, 83, BANK3[1]), kartuUrut(3, 57, BANK3[2])),
-      tambah(idx(SUARA_W1, "kecil"), SLOT3.flatMap((t, i) => tempatUrut(i + 1, t, 178))),
-    ),
-    k(SUARA_W2, ubah(idx(SUARA_W2, "jadi"), ...pindahUrut(3, SLOT3[0]))),
-    k(SUARA_W3, ubah(idx(SUARA_W3, "yang"), ...pindahUrut(1, SLOT3[1]))),
-    k(SUARA_W4, ubah(idx(SUARA_W4, "yang"), ...pindahUrut(2, SLOT3[2]))),
-    k(SUARA_W5, tambah(idx(SUARA_W5, "Urutannya"), judulUrutan("dari paling kecil")), sorotkan(idx(SUARA_W5, "tujuh"), "ur3-k"), sorotkan(idx(SUARA_W5, "enam"), "ur1-k"), sorotkan(idx(SUARA_W5, "tiga"), "ur2-k")),
-  ],
-};
-
-/* ------------------------------ 13. Urutkan lima bilangan ------------------------------ */
-const BANK5 = [0, 1, 2, 3, 4].map((i) => tempat(i, 5, 34, 40));
-const SLOT5 = [0, 1, 2, 3, 4].map((i) => tempat(i, 5, 108, 40));
-const SUARA_X1 = "Ini lima bilangan: enam puluh lima, tujuh puluh satu, lima puluh enam, tujuh puluh sembilan, dan enam puluh.";
-const SUARA_X2 = "Lihat puluhannya. Lima puluh enam punya puluhan paling sedikit, jadi dia yang paling kecil.";
-const SUARA_X3 = "Berikutnya enam puluh dan enam puluh lima. Puluhannya sama, jadi lihat satuannya. Nol lebih kecil dari lima.";
-const SUARA_X4 = "Lalu tujuh puluh satu dan tujuh puluh sembilan. Satu lebih kecil dari sembilan.";
-const SUARA_X5 = "Urutannya dari yang paling kecil: lima puluh enam, enam puluh, enam puluh lima, tujuh puluh satu, tujuh puluh sembilan.";
-
-export const ADEGAN_URUT_LIMA: AdeganStory = {
-  id: "urut-lima",
-  judul: "Mengurutkan lima bilangan",
-  sumber: "Materi: mengurutkan lima bilangan",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      SUARA_X1,
-      tambah(0, judul("Lima bilangan")),
-      tambah(idx(SUARA_X1, "lima", 2), kartuUrut(1, 65, BANK5[0])),
-      tambah(idx(SUARA_X1, "satu"), kartuUrut(2, 71, BANK5[1])),
-      tambah(idx(SUARA_X1, "enam", 2), kartuUrut(3, 56, BANK5[2])),
-      tambah(idx(SUARA_X1, "sembilan"), kartuUrut(4, 79, BANK5[3])),
-      tambah(idx(SUARA_X1, "enam", 3), kartuUrut(5, 60, BANK5[4])),
-      tambah(idx(SUARA_X1, "dan"), SLOT5.flatMap((t, i) => tempatUrut(i + 1, t, 166))),
-    ),
-    k(SUARA_X2, sorotkan(idx(SUARA_X2, "Lima"), "ur3-k"), ubah(idx(SUARA_X2, "jadi"), { id: "ur3-k", sorot: false }, ...pindahUrut(3, SLOT5[0]))),
-    k(SUARA_X3, ubah(idx(SUARA_X3, "enam"), ...pindahUrut(5, SLOT5[1])), ubah(idx(SUARA_X3, "enam", 2), ...pindahUrut(1, SLOT5[2]))),
-    k(SUARA_X4, ubah(idx(SUARA_X4, "satu"), ...pindahUrut(2, SLOT5[3])), ubah(idx(SUARA_X4, "sembilan"), ...pindahUrut(4, SLOT5[4]))),
-    k(SUARA_X5, tambah(idx(SUARA_X5, "Urutannya"), judulUrutan("dari paling kecil", 100)), tambah(idx(SUARA_X5, "enam"), penandaUrut(3, SLOT5[0], "terkecil", 184, 8.6)), tambah(idx(SUARA_X5, "sembilan"), penandaUrut(4, SLOT5[4], "terbesar", 184, 8.6))),
-  ],
-};
-
-/* ------------------------------ 14. Dua kartu angka: bilangan terbesar dan terkecil ------------------------------ */
-const SUARA_Y1 = "Igil punya dua kartu angka, yaitu tiga dan tujuh.";
-const SUARA_Y2 = "Kartu itu kita susun menjadi bilangan dengan dua angka. Ada dua cara: tiga puluh tujuh atau tujuh puluh tiga.";
-const SUARA_Y3 = "Bilangan yang terbesar punya puluhan yang besar. Kartu tujuh kita taruh di puluhan, jadi tujuh puluh tiga paling besar.";
-const SUARA_Y4 = "Bilangan yang terkecil punya puluhan yang kecil. Kartu tiga kita taruh di puluhan, jadi tiga puluh tujuh paling kecil.";
-
-const kartuKd = (id: string, x: number, angka: string) => [kotak(`${id}-k`, x, 34, 40, 44, W.emas, W.biru, { rx: 8, z: 1 }), teks(`${id}-n`, x + 20, 34 + 22 + 10.5, angka, 30, W.merah, { z: 2 })];
-const hasilKd = (id: "kec" | "bes", x: number, n: number) => [kotak(`kd-${id}-k`, x, 100, 80, 44, W.langit, W.biru, { rx: 8, z: 1 }), teks(`kd-${id}-n`, x + 40, 100 + 22 + 10.5, String(n), 30, W.merah, { z: 2 })];
-
-export const ADEGAN_KARTU: AdeganStory = {
-  id: "dua-kartu",
-  judul: "Dua kartu angka",
-  sumber: "Materi: bilangan terbesar dan terkecil",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(SUARA_Y1, tambah(0, judul("Dua kartu angka")), tambah(idx(SUARA_Y1, "tiga"), kartuKd("kd1", 90, "3")), tambah(idx(SUARA_Y1, "tujuh"), kartuKd("kd2", 170, "7"))),
-    k(SUARA_Y2, tambah(idx(SUARA_Y2, "tujuh"), hasilKd("kec", 50, 37)), tambah(idx(SUARA_Y2, "tiga", 2), hasilKd("bes", 170, 73))),
-    k(
-      SUARA_Y3,
-      sorotkan(idx(SUARA_Y3, "terbesar"), "kd-bes-k"),
-      tambah(idx(SUARA_Y3, "terbesar"), teks("kd-bes-l", 210, 160, "terbesar", 11, W.hijau, { z: 2 })),
-      tambah(idx(SUARA_Y3, "jadi"), teks("kd-bes-c", 210, 176, "7 puluhan 3 satuan", 8.6, W.biru, { z: 2 })),
+      SUARA_N2,
+      bersih(0),
+      tambah(0, judul("Taruhan Chacha"), ...dinding("dn")),
+      tambah("menepati", ...tokoh("ch", 110, 168, "Chacha")),
+      tambah("memikul", ...karung("kg", 94, 126, 6)),
+      tambah("topinya", emo("tp", 110, 158, E.topi, 22)),
+      tambah("menutupi", emo("tz", 110, 98, E.tanya, 18)),
+      tambah("tertawa.", ...tokoh("dk", 190, 168, "Dika"), ...tokoh("ni", 240, 168, "Nia"), emo("t1", 190, 132, E.tertawa, 20), emo("t2", 240, 132, E.tertawa, 20)),
     ),
     k(
-      SUARA_Y4,
-      ubah(0, { id: "kd-bes-k", sorot: false }),
-      sorotkan(idx(SUARA_Y4, "terkecil"), "kd-kec-k"),
-      tambah(idx(SUARA_Y4, "terkecil"), teks("kd-kec-l", 90, 160, "terkecil", 11, W.hijau, { z: 2 })),
-      tambah(idx(SUARA_Y4, "jadi"), teks("kd-kec-c", 90, 176, "3 puluhan 7 satuan", 8.6, W.biru, { z: 2 })),
-    ),
-  ],
-};
-
-/* ------------------------------ 15. Teka-teki Kira: mundur dari lima puluh lima ------------------------------ */
-const GX_KIRA = 100;
-const Y_KIRA = 72;
-const SUARA_Z1 = "Kira memilih satu bilangan. Kira bilang, kalau bilanganku ditambah empat puluhan dan tiga satuan, hasilnya lima puluh lima.";
-const SUARA_Z2 = "Kita mundur dulu. Lima puluh lima adalah lima puluhan dan lima satuan.";
-const SUARA_Z3 = "Kita kurangi empat puluhan. Dari lima puluhan, tinggal satu puluhan.";
-const SUARA_Z4 = "Kita kurangi tiga satuan. Dari lima satuan, tinggal dua satuan. Jadi bilangan Kira adalah dua belas.";
-const CORET = { op: 0.25, warna: W.abu };
-
-export const ADEGAN_KIRA: AdeganStory = {
-  id: "teka-teki-kira",
-  judul: "Teka-teki Kira",
-  sumber: "Materi: teka-teki mundur",
-  latar: "#F5F3FF",
-  ketukan: [
-    k(
-      SUARA_Z1,
-      tambah(0, judul("Teka-teki Kira")),
-      tambah(idx(SUARA_Z1, "hasilnya"), teks("kr-q", 150, 42, "? + 43 = 55", 13, W.merah)),
-      tambah(idx(SUARA_Z1, "satuan,"), teks("kr-c1", 150, 56, "tambah 4 puluhan 3 satuan", 8.6, W.biru)),
-    ),
-    k(SUARA_Z2, tambah(idx(SUARA_Z2, "adalah"), kumpulan("kr", 55, GX_KIRA, Y_KIRA), teks("kr-c", 150, Y_KIRA + 82, "5 puluhan 5 satuan", 8.6, W.biru))),
-    k(
-      SUARA_Z3,
-      ubah(idx(SUARA_Z3, "empat"), ...["kr-p1", "kr-p2", "kr-p3", "kr-p4"].map((id) => ({ id, ...CORET }))),
-      ubah(idx(SUARA_Z3, "tinggal"), { id: "kr-n", isi: "15" }, { id: "kr-c", isi: "1 puluhan 5 satuan" }),
-    ),
-    k(
-      SUARA_Z4,
-      ubah(idx(SUARA_Z4, "tiga"), ...["kr-s1", "kr-s2", "kr-s3"].map((id) => ({ id, ...CORET }))),
-      ubah(idx(SUARA_Z4, "tinggal"), { id: "kr-n", isi: "12" }, { id: "kr-c", isi: "1 puluhan 2 satuan" }),
-      tambah(idx(SUARA_Z4, "adalah"), teks("kr-a", 150, 184, "Bilangan Kira: 12", 13, W.hijau)),
+      SUARA_N3,
+      bersih(0),
+      tambah(0, ...panggung("pg")),
+      tambah("Spanduk", ...spanduk("sp", 40, 30, 220, "SEKOLAH BERSIH", 13)),
+      tambah("dipasang!", ...konfeti("kf", 56, 10)),
+      tambah("benda", emo("b1", 90, 112, E.botol, 24), emo("b2", 130, 112, E.kaleng, 24), emo("b3", 170, 112, E.koran, 24), emo("b4", 210, 112, E.kardus, 24)),
+      tambah("kumpulkan", teks("qq", 150, 138, "dikumpulkan dan dibandingkan?", 9, W.hijau)),
+      tambah("kumpulkan", ...tokoh("ch", 40, 172, "Chacha")),
+      tambah("bandingkan?", ...tokoh("dk", 94, 172, "Dika")),
+      tambah("Terima", ...tokoh("ni", 148, 172, "Nia")),
+      tambah("kasih,", ...tokoh("bs", 202, 172, "Bu Sari")),
+      tambah("Chacha,", ...tokoh("bl", 262, 172, "Bu Lia"), emo("lb", 262, 138, E.lambai, 20)),
     ),
   ],
 };

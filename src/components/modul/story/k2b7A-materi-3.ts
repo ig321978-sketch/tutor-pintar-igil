@@ -1,137 +1,139 @@
-import type { AdeganStory } from "./logika-story";
-import { W, anak, angkaNT, barisBil, emo, judul, kartu, kartuTebak, kotak, lepasKe, papanNT, teks, tumpukBil, wadahKe, type Kel } from "./k2b7A-gambar";
-import { bersih, hapus, idx, k, redamkan, sorotkan, tambah } from "./k2b7A-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, benda, emo, gudang, ikat, judul, kartu, kotak, lantai, lepas, panah, papanTim, sapu, teks, tokoh, tong } from "./k2b7A-gambar";
+import { bersih, hapus, k, tambah, ubah } from "./k2b7A-bantu";
 
-/* ------------------------------ 9. Membaca nama bilangan ------------------------------ */
-const SUARA_B1 = "Sekarang kita belajar membaca nama bilangan. Kita mulai dari nama puluhan yang bulat.";
-const SUARA_B2 = "Dua puluh, tiga puluh, empat puluh, dan lima puluh. Lambang dan namanya harus cocok.";
-const SUARA_B3 = "Lanjutkan lagi. Enam puluh, tujuh puluh, delapan puluh, dan sembilan puluh.";
-const SUARA_B4 = "Sesudah nama puluhan, kita sebut satuannya. Misalnya enam puluh dua, delapan puluh tujuh, dan tiga puluh lima.";
-const SUARA_B5 = "Hati-hati, dua puluh enam dan enam puluh dua adalah dua bilangan yang berbeda.";
-const WARNA_BIL = [W.krem, W.hijauMuda, W.langit, W.pink];
+/*
+ * Cerita orisinal IGIL "Botol Pak Ujang" (Kelas 2 Bab 7 Sub-Bab A), awal cerita Bank Sampah Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b7a.md. Bagian ini: salah langkah menulis terbalik, kira-kira lalu buktikan, dan jembatan ke Sub-Bab B.
+ */
 
-export const ADEGAN_BACA_TULIS: AdeganStory = {
-  id: "baca-tulis",
-  judul: "Membaca dan menulis bilangan",
-  sumber: "Materi: membaca nama bilangan",
-  latar: "#FFFBEB",
+/* ------------------------------ 7. Salah langkah: menulis terbalik ------------------------------ */
+const SUARA_T1 = "Chacha menulis laporan tim Kuning: angka delapan dulu, lalu angka tiga.";
+const SUARA_T2 = "Pak Ujang membaca, delapan puluh tiga botol? Tim Kuning bersorak, padahal botolnya hanya tiga puluh delapan!";
+const SUARA_T3 = "Dika berkata, baca dan tulis puluhan dulu. Tiga puluh delapan ditulis tiga, lalu delapan.";
+
+const KUNING_IKAT: Obj[] = [...[0, 1, 2].flatMap((i) => ikat(`ik${i}`, 118 + i * 44, 42, "botol")), ...lepas("lp", 126, 76, 8)];
+
+export const ADEGAN_TULIS_TERBALIK: AdeganStory = {
+  id: "tulis-terbalik",
+  judul: "Laporan yang tertulis terbalik",
+  sumber: "Materi: salah langkah, angka tertukar",
+  latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_B1, tambah(0, judul("Membaca nama bilangan")), tambah(idx(SUARA_B1, "membaca"), emo("bc", 150, 100, "\u{1F522}", 56)), tambah(idx(SUARA_B1, "puluhan"), ...kartu("bn", 50, 140, 200, 30, W.emas, ["nama puluhan yang bulat"], 11))),
     k(
-      SUARA_B2,
-      bersih(0),
-      tambah(0, judul("Nama puluhan")),
-      tambah(idx(SUARA_B2, "Dua"), ...barisBil("bl1", 30, 20, WARNA_BIL[0])),
-      tambah(idx(SUARA_B2, "tiga"), ...barisBil("bl2", 66, 30, WARNA_BIL[1])),
-      tambah(idx(SUARA_B2, "empat"), ...barisBil("bl3", 102, 40, WARNA_BIL[2])),
-      tambah(idx(SUARA_B2, "lima"), ...barisBil("bl4", 138, 50, WARNA_BIL[3])),
+      SUARA_T1,
+      tambah(0, judul("Laporan Tim Kuning"), ...tokoh("ch", 40, 184, "Chacha"), kotak("kt", 18, 34, 90, 62, "#FFFFFF", W.coklat, { rx: 4, tebal: 2.4 })),
+      tambah("angka", teks("w", 63, 82, "8", 38, W.biru)),
+      ubah("tiga.", { id: "w", isi: "83" }),
+      tambah("delapan", teks("t8", 63, 52, "8 dulu", 9, W.merah)),
+      tambah("tiga.", teks("t3", 63, 108, "lalu 3", 9, W.merah)),
     ),
     k(
-      SUARA_B3,
-      bersih(0),
-      tambah(0, judul("Nama puluhan")),
-      tambah(idx(SUARA_B3, "Enam"), ...barisBil("bl1", 30, 60, WARNA_BIL[0])),
-      tambah(idx(SUARA_B3, "tujuh"), ...barisBil("bl2", 66, 70, WARNA_BIL[1])),
-      tambah(idx(SUARA_B3, "delapan"), ...barisBil("bl3", 102, 80, WARNA_BIL[2])),
-      tambah(idx(SUARA_B3, "sembilan"), ...barisBil("bl4", 138, 90, WARNA_BIL[3])),
+      SUARA_T2,
+      hapus(0, "t8", "t3"),
+      tambah("Pak", ...tokoh("pu", 264, 184, "Pak Ujang")),
+      tambah("membaca,", ...kartu("bb", 176, 126, 112, 26, W.krem, ["83 botol?"], 10)),
+      tambah("bersorak,", emo("s1", 140, 150, E.sorak, 24), emo("s2", 170, 176, E.sorak, 20)),
+      tambah("padahal", ...KUNING_IKAT),
+      tambah("hanya", teks("n38", 180, 118, "hanya 38", 10, W.merah)),
     ),
     k(
-      SUARA_B4,
-      bersih(0),
-      tambah(0, judul("Puluhan lalu satuan")),
-      tambah(idx(SUARA_B4, "dua,"), ...barisBil("bl1", 30, 62, WARNA_BIL[0])),
-      tambah(idx(SUARA_B4, "tujuh,"), ...barisBil("bl2", 66, 87, WARNA_BIL[1])),
-      tambah(idx(SUARA_B4, "lima."), ...barisBil("bl3", 102, 35, WARNA_BIL[2])),
-    ),
-    k(
-      SUARA_B5,
-      bersih(0),
-      tambah(0, judul("Jangan tertukar")),
-      tambah(idx(SUARA_B5, "dua"), ...tumpukBil("bl1", 14, 56, 26, W.krem, 128)),
-      tambah(idx(SUARA_B5, "enam", 2), ...tumpukBil("bl2", 158, 56, 62, W.pink, 128)),
-      tambah(idx(SUARA_B5, "berbeda."), teks("bb", 150, 140, "dua bilangan yang berbeda", 12, W.ungu)),
+      SUARA_T3,
+      hapus(0, "bb-k", "bb-t0", "s1", "s2", "pu", "pu-n", "pu-cp", "pu-rm", "pu-sg", "n38"),
+      tambah("Dika", ...tokoh("dk", 264, 184, "Dika")),
+      ubah("Tiga", { id: "w", isi: "38" }),
+      tambah("puluhan", teks("p3", 63, 52, "puluhan 3", 9, W.merah)),
+      tambah("delapan", teks("p8", 63, 110, "satuan 8", 9, W.merah)),
+      tambah("ditulis", emo("ok", 100, 120, E.benar, 22)),
     ),
   ],
 };
 
-/* ------------------------------ 10. Angka tertukar ------------------------------ */
-const PG: Kel = { id: "pg", w: 2, s: 6, x: 105, y: 96, warna: W.krem, warnaS: W.emas, emoji: "⭐" };
-const SUARA_G1 = "Perhatikan bintang di layar. Ada dua bungkus dan enam bintang lepas.";
-const SUARA_G2 = "Itu dua puluhan dan enam satuan. Jadi bilangannya dua puluh enam.";
-const SUARA_G3 = "Kalau angkanya tertukar, bilangannya jadi enam puluh dua. Itu bukan banyak bintang di layar.";
-const SUARA_G4 = "Jadi angka puluhan ada di sebelah kiri, dan angka satuan ada di sebelah kanan. Angka dua di kiri, angka enam di kanan.";
+/* ------------------------------ 8. Kira-kira lalu buktikan ------------------------------ */
+const SUARA_K1 = "Sekarang ada setumpuk kaleng. Nia mengira-ngira, ada kira-kira empat puluh kaleng.";
+const SUARA_K2 = "Keliru boleh. Ayo kita buktikan: ikat setiap sepuluh kaleng.";
+const SUARA_K3 = "Ada empat ikat dan enam kaleng lepas, yaitu empat puluh enam. Perkiraan Nia dekat sekali!";
 
-export const ADEGAN_TERTUKAR: AdeganStory = {
-  id: "tertukar",
-  judul: "Hati-hati, angka tertukar",
-  sumber: "Materi: angka puluhan dan satuan tertukar",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(
-      SUARA_G1,
-      tambah(0, judul("Hati-hati, angka tertukar")),
-      tambah(idx(SUARA_G1, "dua"), ...wadahKe(PG, 1), ...wadahKe(PG, 2)),
-      tambah(idx(SUARA_G1, "enam"), ...[1, 2, 3, 4, 5, 6].flatMap((j) => lepasKe(PG, j))),
-    ),
-    k(
-      SUARA_G2,
-      tambah(idx(SUARA_G2, "dua"), ...barisBil("bl1", 138, 26, W.hijauMuda), teks("bl1-ok", 270, 159, "✅", 14)),
-      sorotkan(idx(SUARA_G2, "Itu"), "pg-w1", "pg-w2"),
-    ),
-    k(
-      SUARA_G3,
-      redamkan(0, "pg-w1", "pg-w2"),
-      tambah(idx(SUARA_G3, "tertukar,"), ...barisBil("bl2", 170, 62, W.merahMuda), teks("bl2-x", 270, 191, "❌", 14)),
-      sorotkan(idx(SUARA_G3, "bukan"), "bl2-k"),
-    ),
-    k(
-      SUARA_G4,
-      hapus(0, "bl1-k", "bl1-a", "bl1-b", "bl1-ok", "bl2-k", "bl2-a", "bl2-b", "bl2-x"),
-      tambah(idx(SUARA_G4, "puluhan"), ...papanNT(28)),
-      tambah(idx(SUARA_G4, "dua", 1), angkaNT("p", 2, 28)),
-      tambah(idx(SUARA_G4, "enam"), angkaNT("s", 6, 28)),
-    ),
-  ],
+/** Setumpuk kaleng piramida (lima, empat, tiga, dua, satu) dengan titik tengah alas di (cx, yb). */
+const tumpukKaleng = (cx: number, yb: number): Obj[] => {
+  const out: Obj[] = [];
+  let n = 0;
+  for (let baris = 0; baris < 5; baris += 1) {
+    const isi = 5 - baris;
+    for (let i = 0; i < isi; i += 1) out.push(...benda(`tk${n++}`, cx + (i - (isi - 1) / 2) * 11, yb - baris * 12 - 6, "kaleng"));
+  }
+  return out;
 };
 
-/* ------------------------------ 11. Memperkirakan banyak ikan ------------------------------ */
-const IKAN = [
-  [112, 64, "\u{1F420}"],
-  [150, 52, "\u{1F41F}"],
-  [188, 70, "\u{1F420}"],
-  [124, 96, "\u{1F41F}"],
-  [168, 100, "\u{1F420}"],
-  [138, 124, "\u{1F420}"],
-  [186, 128, "\u{1F41F}"],
-] as const;
-const idIkan = IKAN.map((_, q) => `if${q + 1}`);
-const SUARA_K1 = "Sekarang Kira dan Malosi melihat banyak ikan hias di kolam. Ikannya terlalu banyak untuk dihitung satu per satu.";
-const SUARA_K2 = "Karena terlalu banyak, mereka menebak dulu. Menebak berarti memperkirakan banyaknya.";
-const SUARA_K3 = "Kira menebak, kira-kira ada lima puluh ikan di kolam itu.";
-const SUARA_K4 = "Malosi menebak lebih banyak, yaitu enam puluh ikan.";
-const SUARA_K5 = "Menebak boleh keliru. Menebak melatih kita memperkirakan banyak benda sebelum menghitung.";
-
-export const ADEGAN_PERKIRAAN: AdeganStory = {
-  id: "perkiraan",
-  judul: "Menebak banyak ikan",
-  sumber: "Materi: memperkirakan banyak benda",
-  latar: "#ECFEFF",
+export const ADEGAN_KIRA_KIRA: AdeganStory = {
+  id: "kira-kira",
+  judul: "Kira-kira lalu buktikan",
+  sumber: "Materi: kira-kira, buktikan dengan ikat",
+  latar: "#EFF6FF",
   ketukan: [
     k(
       SUARA_K1,
-      tambah(0, judul("Menebak banyak ikan")),
-      tambah(idx(SUARA_K1, "Kira"), ...anak("kira", 40, 66)),
-      tambah(idx(SUARA_K1, "Malosi"), ...anak("malosi", 260, 66)),
-      tambah(idx(SUARA_K1, "kolam."), kotak("kolam", 90, 36, 120, 108, "#BAE6FD", W.biru, { rx: 14 }), ...IKAN.map(([x, y, e], q) => emo(`if${q + 1}`, x, y, e, 18))),
+      tambah(0, judul("Setumpuk Kaleng"), ...lantai("lt", 150), ...tong("tb", 220, 152, "biru")),
+      tambah("setumpuk", ...tumpukKaleng(130, 152)),
+      tambah("Nia", ...tokoh("ni", 40, 184, "Nia")),
+      tambah("mengira-ngira,", emo("pk", 62, 124, E.pikir, 20), ...kartu("kr", 24, 62, 80, 30, W.krem, ["kira-kira", "40"], 9)),
     ),
-    k(SUARA_K2, tambah(idx(SUARA_K2, "menebak"), emo("pk-t", 150, 172, "\u{1F914}", 28)), tambah(idx(SUARA_K2, "memperkirakan"), teks("pk-l", 150, 195, "memperkirakan", 11, W.ungu))),
-    k(SUARA_K3, hapus(0, "pk-t", "pk-l"), tambah(idx(SUARA_K3, "menebak,"), ...kartuTebak(1, 8, "Kira", 50, 128))),
-    k(SUARA_K4, tambah(idx(SUARA_K4, "menebak"), ...kartuTebak(2, 212, "Malosi", 60, 128))),
     k(
-      SUARA_K5,
-      hapus(0, "kolam", ...idIkan),
-      tambah(idx(SUARA_K5, "boleh"), ...kartu("kr", 40, 40, 220, 34, W.emas, ["menebak boleh keliru"], 12)),
-      tambah(idx(SUARA_K5, "melatih"), emo("bl", 150, 108, "\u{1F4A1}", 34)),
+      SUARA_K2,
+      bersih(0),
+      tambah(0, judul("Buktikan: Ikat Sepuluh"), ...lantai("lt", 150), ...tokoh("ni", 40, 184, "Nia")),
+      tambah("buktikan:", ...lepas("lp", 180, 72, 10, "kaleng")),
+      tambah("setiap", ...ikat("i1", 100, 72, "kaleng")),
+      tambah("sepuluh", teks("s10", 119, 112, "10 kaleng", 10, W.ungu), emo("ok", 262, 120, E.jempol, 20)),
+    ),
+    k(
+      SUARA_K3,
+      bersih(0),
+      tambah(0, judul("Empat Ikat, Enam Lepas"), ...lantai("lt", 150)),
+      tambah("empat", ...[0, 1, 2, 3].flatMap((i) => ikat(`k${i}`, 16 + i * 44, 56, "kaleng")), teks("e1", 90, 104, "4 ikat", 10, W.ungu)),
+      tambah("enam", ...lepas("lp", 204, 50, 6, "kaleng"), teks("e2", 229, 104, "6 lepas", 10, W.ungu)),
+      tambah("empat@2", teks("e3", 150, 142, "40 + 6 = 46", 15, W.hijau)),
+      tambah("dekat", ...kartu("kr", 100, 152, 100, 26, W.krem, ["kira-kira 40"], 9), panah("pn", 150, 150, 0, -2, W.merah, 2)),
+      tambah("sekali!", emo("bt", 262, 140, E.bintang, 24)),
+    ),
+  ],
+};
+
+/* ------------------------------ 9. Menyapu dan jembatan ke Sub-Bab B ------------------------------ */
+const SUARA_P1 = "Chacha menepati taruhannya dan menyapu seluruh gudang sambil bersenandung.";
+const SUARA_P2 = "Bu Lia datang membawa papan pengumuman dan bertanya, tim mana yang mengumpulkan lebih banyak?";
+const SUARA_P3 = "Menurutmu, bagaimana cara membandingkan dua bilangan? Terima kasih, Chacha, Dika, Nia, Bu Sari, dan Pak Ujang!";
+
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Menyapu dan Bu Lia datang",
+  sumber: "Materi: menyapu gudang, jembatan ke Sub-Bab B",
+  latar: "#FDF4FF",
+  ketukan: [
+    k(
+      SUARA_P1,
+      tambah(0, judul("Menepati Taruhan"), ...lantai("lt", 140), ...gudang("gd", 150, 70, 110, 70)),
+      tambah("Chacha", ...tokoh("ch", 60, 184, "Chacha")),
+      tambah("menyapu", ...sapu("sp", 90, 190), emo("db", 116, 172, E.debu, 18)),
+      tambah("bersenandung.", emo("n1", 36, 130, E.nada, 18), emo("n2", 84, 120, E.nada, 14)),
+    ),
+    k(
+      SUARA_P2,
+      tambah("Bu", ...tokoh("bl", 278, 132, "Bu Lia", 22)),
+      tambah("papan", ...papanTim("pn", 214, 30, "Pengumuman", "#FFFFFF", 70)),
+      tambah("bertanya,", emo("tq", 270, 104, E.tanya, 22)),
+      tambah("banyak?", ...papanTim("tm", 96, 36, "tim mana?", "#FDE68A", 60)),
+    ),
+    k(
+      SUARA_P3,
+      bersih(0),
+      tambah(0, judul("Terima Kasih!"), ...lantai("lt", 150)),
+      tambah("Menurutmu,", teks("q2", 150, 50, "2 bilangan?", 13, W.ungu), emo("tq", 150, 84, E.tanya, 26)),
+      tambah("Menurutmu,", ...tokoh("ch", 30, 184, "Chacha")),
+      tambah("Chacha,", ...tokoh("dk", 90, 184, "Dika")),
+      tambah("Dika,", ...tokoh("ni", 150, 184, "Nia")),
+      tambah("Nia,", ...tokoh("bs", 210, 184, "Bu Sari")),
+      tambah("Bu", ...tokoh("pu", 270, 184, "Pak Ujang"), emo("lb", 150, 132, E.lambai, 24)),
     ),
   ],
 };

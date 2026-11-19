@@ -1,119 +1,146 @@
 import type { AdeganStory } from "./logika-story";
-import { KUPU, LEBAH, OWL, bayangan, gx, hasilLompat, judul, labelPenanda, lompatan, penanda, petunjukArah, sumbu, sumbuSatuan } from "./k2b7B-gambar";
-import { hapus, idx, k, redamkan, sorotkan, tambah, ubah } from "./k2b7B-bantu";
+import { E, W, dinding, emo, ikatan, jepit, judul, karung, kartu, kepik, panah, papanTim, pindahKepik, tali, teks, tokoh, xTali } from "./k2b7B-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k2b7B-bantu";
 
-const [PK_KIRI, PK_KANAN] = petunjukArah();
+/*
+ * Cerita orisinal IGIL "Pengumuman Bu Lia" (Kelas 2 Bab 7 Sub-Bab B, membandingkan dan mengurutkan bilangan), akhir cerita Bank Sampah Sekolah.
+ * Naskah suara dari naskah/story-naskah-k2b7b.md. Bagian ini: kepik maju, kepik mundur (salah langkah), puluhan dulu (taruhan).
+ */
 
-/* ------------------------------ 2. Garis bilangan: kanan lebih besar, kiri lebih kecil ------------------------------ */
-const S_G = sumbuSatuan(55);
-const SUARA_G1 = "Lihat garis bilangan di layar. Garis ini berisi bilangan dari lima puluh lima sampai enam puluh satu.";
-const SUARA_G2 = "Bilangan di sebelah kanan lebih besar. Bilangan di sebelah kiri lebih kecil.";
-const SUARA_G3 = "Kupu-kupu hinggap di antara lima puluh tujuh dan lima puluh sembilan.";
-const SUARA_G4 = "Jadi kupu-kupu ada di bilangan lima puluh delapan.";
+/* ------------------------------ 1. Kepik maju ------------------------------ */
+const SUARA_K1 = "Esok harinya, Bu Lia memasang garis angka. Kepik di antara empat puluh delapan dan lima puluh.";
+const SUARA_K2 = "Kepik di empat puluh sembilan. Ia maju dua langkah: lima puluh, lima puluh satu.";
+const SUARA_K3 = "Dua lebihnya dari empat puluh sembilan adalah lima puluh satu. Lebih berarti maju!";
 
-export const ADEGAN_GARIS: AdeganStory = {
-  id: "garis-bilangan",
-  judul: "Garis bilangan",
-  sumber: "Materi: garis bilangan",
-  latar: "#F0F9FF",
+export const ADEGAN_KEPIK_MAJU: AdeganStory = {
+  id: "kepik-maju",
+  judul: "Kepik maju di garis angka",
+  sumber: "Materi: kepik maju dua langkah",
+  latar: "#F8FAFC",
   ketukan: [
-    k(SUARA_G1, tambah(0, judul("Garis bilangan")), tambah(idx(SUARA_G1, "garis"), sumbu(S_G))),
-    k(SUARA_G2, tambah(idx(SUARA_G2, "kanan"), PK_KANAN), tambah(idx(SUARA_G2, "kiri"), PK_KIRI)),
-    k(SUARA_G3, tambah(idx(SUARA_G3, "Kupu-kupu"), penanda(S_G, 58, KUPU)), sorotkan(idx(SUARA_G3, "tujuh"), "gb-t57"), sorotkan(idx(SUARA_G3, "sembilan"), "gb-t59")),
-    k(SUARA_G4, redamkan(0, "gb-t57", "gb-t59"), sorotkan(idx(SUARA_G4, "delapan"), "gb-t58"), tambah(idx(SUARA_G4, "delapan"), labelPenanda("Kupu-kupu di 58"))),
-  ],
-};
-
-/* ------------------------------ 3. Maju: dua lebihnya ------------------------------ */
-const SUARA_M1 = "Sekarang kupu-kupu mau terbang. Ia akan maju dua langkah ke kanan.";
-const SUARA_M2 = "Satu langkah ke kanan, sampai di lima puluh sembilan.";
-const SUARA_M3 = "Satu langkah lagi, sampai di enam puluh.";
-const SUARA_M4 = "Kupu-kupu maju dua langkah. Dua lebihnya dari lima puluh delapan adalah enam puluh.";
-
-export const ADEGAN_MAJU: AdeganStory = {
-  id: "maju",
-  judul: "Maju: lebihnya",
-  sumber: "Materi: maju dan lebihnya",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(SUARA_M1, tambah(0, judul("Maju ke kanan")), tambah(0, sumbu(S_G)), tambah(idx(SUARA_M1, "kupu-kupu"), penanda(S_G, 58, KUPU), labelPenanda("Kupu-kupu di 58"))),
-    k(SUARA_M2, tambah(0, bayangan(S_G, 58, KUPU)), ubah(idx(SUARA_M2, "sampai"), { id: "gb-m", x: gx(S_G, 59) }, { id: "gb-mt", isi: "Kupu-kupu di 59" }), tambah(idx(SUARA_M2, "sampai"), lompatan(S_G, 58, 59))),
-    k(SUARA_M3, ubah(idx(SUARA_M3, "sampai"), { id: "gb-m", x: gx(S_G, 60) }, { id: "gb-mt", isi: "Kupu-kupu di 60" }), tambah(idx(SUARA_M3, "sampai"), lompatan(S_G, 58, 60))),
-    k(SUARA_M4, sorotkan(idx(SUARA_M4, "maju"), "gb-op"), tambah(idx(SUARA_M4, "adalah"), hasilLompat(58, 60)), sorotkan(idx(SUARA_M4, "adalah"), "gb-t60")),
-  ],
-};
-
-/* ------------------------------ 4. Mundur: kurangnya ------------------------------ */
-const S_D = sumbuSatuan(70);
-const SUARA_D1 = "Sekarang kita lihat lebah. Lebah hinggap di bilangan tujuh puluh lima.";
-const SUARA_D2 = "Lebah akan mundur tiga langkah, ke arah kiri.";
-const SUARA_D3 = "Satu langkah ke kiri, tujuh puluh empat. Dua langkah, tujuh puluh tiga. Tiga langkah, tujuh puluh dua.";
-const SUARA_D4 = "Lebah mundur tiga langkah. Tiga kurangnya dari tujuh puluh lima adalah tujuh puluh dua.";
-
-export const ADEGAN_MUNDUR: AdeganStory = {
-  id: "mundur",
-  judul: "Mundur: kurangnya",
-  sumber: "Materi: mundur dan kurangnya",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(SUARA_D1, tambah(0, judul("Mundur ke kiri")), tambah(0, sumbu(S_D)), tambah(idx(SUARA_D1, "Lebah"), penanda(S_D, 75, LEBAH)), tambah(idx(SUARA_D1, "lima"), labelPenanda("Lebah di 75"))),
-    k(SUARA_D2, tambah(idx(SUARA_D2, "kiri"), PK_KIRI), sorotkan(idx(SUARA_D2, "mundur"), "gb-t75")),
     k(
-      SUARA_D3,
-      hapus(0, "gb-kiri"),
-      tambah(0, bayangan(S_D, 75, LEBAH)),
-      ubah(idx(SUARA_D3, "empat"), { id: "gb-m", x: gx(S_D, 74) }, { id: "gb-mt", isi: "Lebah di 74" }),
-      ubah(idx(SUARA_D3, "tiga"), { id: "gb-m", x: gx(S_D, 73) }, { id: "gb-mt", isi: "Lebah di 73" }),
-      ubah(idx(SUARA_D3, "dua", 2), { id: "gb-m", x: gx(S_D, 72) }, { id: "gb-mt", isi: "Lebah di 72" }),
-      tambah(idx(SUARA_D3, "dua", 2), lompatan(S_D, 75, 72)),
+      SUARA_K1,
+      bersih(0),
+      tambah(0, judul("Garis Angka Bu Lia"), ...dinding("dn")),
+      tambah("Lia,", ...tokoh("bl", 40, 168, "Bu Lia")),
+      tambah("garis", ...tali("tl", 104, 46, 52, [46, 47, 48, 50, 51, 52])),
+      tambah("Kepik", kepik("kp", 104, 49, 46, 52)),
+      tambah("antara", teks("an", xTali(49, 46, 52), 128, "?", 12, W.merah)),
+      sorotkan("delapan", "tlp48"),
+      sorotkan("lima", "tlp50"),
     ),
-    k(SUARA_D4, sorotkan(idx(SUARA_D4, "mundur"), "gb-op"), tambah(idx(SUARA_D4, "adalah"), hasilLompat(75, 72)), sorotkan(idx(SUARA_D4, "adalah"), "gb-t72")),
+    k(
+      SUARA_K2,
+      hapus(0, "an"),
+      ubah(0, { id: "tlp48", sorot: false }, { id: "tlp50", sorot: false }),
+      tambah("sembilan", ...jepit("tl", 104, 49, 46, 52, W.merah)),
+      tambah("dua", teks("lg", 150, 74, "2 langkah", 11, W.merah)),
+      tambah("maju", panah("pm", xTali(49, 46, 52), 88, 84, 0, W.merah, 2.4)),
+      ubah("lima", ...pindahKepik("kp", 50, 46, 52)),
+      sorotkan("lima", "tlp50"),
+      ubah("lima@2", ...pindahKepik("kp", 51, 46, 52)),
+      sorotkan("lima@2", "tlp51"),
+    ),
+    k(
+      SUARA_K3,
+      ubah(0, { id: "tlp50", sorot: false }, { id: "tlp51", sorot: false }),
+      hapus(0, "lg"),
+      tambah("Dua", ...kartu("hs", 84, 148, 206, 24, W.krem, ["2 lebihnya dari 49: 51"], 11)),
+      sorotkan("empat", "tlp49"),
+      sorotkan("satu.", "tlp51"),
+      tambah("lebih@2", teks("mj", 190, 188, "lebih = maju", 11, W.hijau)),
+      ubah("maju!", { id: "pm", warna: W.hijau }),
+    ),
   ],
 };
 
-/* ------------------------------ 5. Teka-teki Igil: dua lebihnya dari tujuh puluh enam ------------------------------ */
-const S_L = sumbuSatuan(74);
-const SUARA_L1 = "Igil punya teka-teki. Igil berdiri di bilangan tujuh puluh enam.";
-const SUARA_L2 = "Igil bilang, aku dua lebihnya dari tujuh puluh enam. Dua lebihnya berarti maju dua langkah.";
-const SUARA_L3 = "Satu langkah ke kanan, tujuh puluh tujuh. Dua langkah, tujuh puluh delapan.";
-const SUARA_L4 = "Jadi dua lebihnya dari tujuh puluh enam adalah tujuh puluh delapan.";
+/* ------------------------------ 2. Kepik mundur ------------------------------ */
+const SUARA_M1 = "Sekarang kepik di delapan puluh dua. Chacha menyuruhnya mundur tiga langkah.";
+const SUARA_M2 = "Chacha menyebut delapan puluh dua, delapan puluh satu, delapan puluh. Berhenti di delapan puluh!";
+const SUARA_M3 = "Dika menggeleng. Awalnya tidak dihitung: delapan puluh satu, delapan puluh, tujuh puluh sembilan. Kurang berarti mundur!";
 
-export const ADEGAN_LEBIH: AdeganStory = {
-  id: "teka-teki-lebih",
-  judul: "Teka-teki: dua lebihnya",
-  sumber: "Materi: teka-teki lebihnya",
+export const ADEGAN_KEPIK_MUNDUR: AdeganStory = {
+  id: "kepik-mundur",
+  judul: "Chacha salah menghitung mundur",
+  sumber: "Materi: kepik mundur tiga langkah",
   latar: "#FEFCE8",
   ketukan: [
-    k(SUARA_L1, tambah(0, judul("Teka-teki Igil")), tambah(0, sumbu(S_L)), tambah(idx(SUARA_L1, "Igil", 2), penanda(S_L, 76, OWL)), tambah(idx(SUARA_L1, "enam"), labelPenanda("Igil di 76"))),
-    k(SUARA_L2, sorotkan(idx(SUARA_L2, "enam"), "gb-t76"), tambah(idx(SUARA_L2, "maju"), PK_KANAN)),
     k(
-      SUARA_L3,
-      hapus(0, "gb-kanan"),
-      tambah(0, bayangan(S_L, 76, OWL)),
-      ubah(idx(SUARA_L3, "tujuh", 2), { id: "gb-m", x: gx(S_L, 77) }, { id: "gb-mt", isi: "Igil di 77" }),
-      ubah(idx(SUARA_L3, "delapan"), { id: "gb-m", x: gx(S_L, 78) }, { id: "gb-mt", isi: "Igil di 78" }),
-      tambah(idx(SUARA_L3, "delapan"), lompatan(S_L, 76, 78)),
+      SUARA_M1,
+      bersih(0),
+      tambah(0, judul("Kepik Mundur"), ...dinding("dn"), ...tali("tl", 104, 78, 84)),
+      tambah("kepik", kepik("kp", 104, 82, 78, 84)),
+      sorotkan("delapan", "tlp82"),
+      tambah("Chacha", ...tokoh("ch", 40, 170, "Chacha")),
+      tambah("mundur", panah("pm", xTali(82, 78, 84), 86, -126, 0, W.merah, 2.4)),
+      tambah("tiga", teks("lg", 129, 76, "3 langkah", 11, W.merah)),
     ),
-    k(SUARA_L4, tambah(idx(SUARA_L4, "adalah"), hasilLompat(76, 78)), sorotkan(idx(SUARA_L4, "adalah"), "gb-t78")),
+    k(
+      SUARA_M2,
+      hapus(0, "lg", "pm"),
+      sorotkan("dua,", "tlp82"),
+      ubah("satu,", ...pindahKepik("kp", 81, 78, 84)),
+      sorotkan("satu,", "tlp81"),
+      ubah("puluh@3", ...pindahKepik("kp", 80, 78, 84)),
+      sorotkan("puluh@3", "tlp80"),
+      tambah("Berhenti", emo("tz", xTali(80, 78, 84), 62, E.tanya, 20), teks("hn", 190, 160, "berhenti di 80?", 10, W.merah)),
+    ),
+    k(
+      SUARA_M3,
+      hapus(0, "tz", "hn"),
+      ubah(0, { id: "tlp82", sorot: false }, { id: "tlp81", sorot: false }, { id: "tlp80", sorot: false }, ...pindahKepik("kp", 82, 78, 84)),
+      tambah("Dika", ...tokoh("dk", 92, 170, "Dika")),
+      tambah("menggeleng", emo("x1", xTali(80, 78, 84), 62, E.salah, 20)),
+      ubah("satu,", ...pindahKepik("kp", 81, 78, 84)),
+      ubah("puluh@2", ...pindahKepik("kp", 80, 78, 84)),
+      ubah("sembilan.", ...pindahKepik("kp", 79, 78, 84)),
+      sorotkan("sembilan.", "tlp79"),
+      tambah("sembilan.", emo("ok", xTali(79, 78, 84), 62, E.benar, 20), panah("pb", xTali(82, 78, 84), 86, -126, 0, W.hijau, 2.4)),
+      tambah("Kurang", ...kartu("hs", 84, 148, 206, 24, W.krem, ["3 kurangnya dari 82: 79"], 11)),
+      hapus("mundur!", "x1"),
+    ),
   ],
 };
 
-/* ------------------------------ 6. Teka-teki Igil: satu kurangnya dari enam puluh tujuh ------------------------------ */
-const S_K = sumbuSatuan(63);
-const SUARA_R1 = "Sekarang teka-teki kedua. Igil berdiri di bilangan enam puluh tujuh.";
-const SUARA_R2 = "Satu kurangnya berarti mundur satu langkah ke kiri.";
-const SUARA_R3 = "Satu langkah ke kiri, sampai di enam puluh enam.";
-const SUARA_R4 = "Jadi satu kurangnya dari enam puluh tujuh adalah enam puluh enam.";
+/* ------------------------------ 3. Puluhan dulu ------------------------------ */
+const SUARA_P1 = "Tim Biru mengumpulkan empat puluh tujuh botol, dan tim Kuning tujuh puluh empat.";
+const SUARA_P2 = "Chacha berseru, Biru lebih banyak, satuannya tujuh! Kalau salah, aku memikul semua karung!";
+const SUARA_P3 = "Dika berkata, lihat puluhannya dulu. Tujuh puluhan lebih banyak dari empat puluhan, jadi Kuning lebih banyak.";
 
-export const ADEGAN_KURANG: AdeganStory = {
-  id: "teka-teki-kurang",
-  judul: "Teka-teki: satu kurangnya",
-  sumber: "Materi: teka-teki kurangnya",
-  latar: "#FDF2F8",
+export const ADEGAN_PULUHAN_DULU: AdeganStory = {
+  id: "puluhan-dulu",
+  judul: "Puluhan dulu, satuan kemudian",
+  sumber: "Materi: lihat puluhan dulu",
+  latar: "#F0F9FF",
   ketukan: [
-    k(SUARA_R1, tambah(0, judul("Teka-teki kedua")), tambah(0, sumbu(S_K)), tambah(idx(SUARA_R1, "Igil"), penanda(S_K, 67, OWL)), tambah(idx(SUARA_R1, "tujuh"), labelPenanda("Igil di 67"))),
-    k(SUARA_R2, sorotkan(idx(SUARA_R2, "mundur"), "gb-t67"), tambah(idx(SUARA_R2, "kiri"), PK_KIRI)),
-    k(SUARA_R3, hapus(0, "gb-kiri"), tambah(0, bayangan(S_K, 67, OWL)), ubah(idx(SUARA_R3, "sampai"), { id: "gb-m", x: gx(S_K, 66) }, { id: "gb-mt", isi: "Igil di 66" }), tambah(idx(SUARA_R3, "sampai"), lompatan(S_K, 67, 66))),
-    k(SUARA_R4, tambah(idx(SUARA_R4, "adalah"), hasilLompat(67, 66)), sorotkan(idx(SUARA_R4, "adalah"), "gb-t66")),
+    k(
+      SUARA_P1,
+      bersih(0),
+      tambah(0, judul("Tim Biru dan Tim Kuning"), ...dinding("dn")),
+      tambah("Biru", ...papanTim("pb", 24, 36, 100, "Tim Biru", 47, W.biruTim)),
+      tambah("tujuh", ...ikatan("ib", 28, 84, 4, 7, 10)),
+      tambah("Kuning", ...papanTim("pk", 176, 36, 100, "Tim Kuning", 74, W.kuningTim)),
+      tambah("tujuh@2", ...ikatan("ik", 180, 84, 7, 4, 10)),
+    ),
+    k(
+      SUARA_P2,
+      tambah("Chacha", ...tokoh("ch", 150, 150, "Chacha")),
+      tambah("berseru", emo("sr", 178, 130, E.seru, 18)),
+      sorotkan("Biru", "pb-k"),
+      tambah("satuannya", teks("sa", 86, 120, "satuan: 7", 9, W.merah), panah("pa", 88, 108, -6, -28, W.merah, 2)),
+      tambah("tujuh!", emo("pq", 120, 130, E.tanya, 16)),
+      tambah("karung!", ...karung("kg", 232, 180, 6)),
+    ),
+    k(
+      SUARA_P3,
+      hapus(0, "sr", "sa", "pa", "pq"),
+      ubah(0, { id: "pb-k", sorot: false }),
+      tambah("Dika", ...tokoh("dk", 70, 150, "Dika")),
+      tambah("Tujuh", teks("t7", 232, 120, "7 puluhan", 9, W.merah)),
+      sorotkan("Tujuh", "pk-k"),
+      tambah("empat", teks("t4", 74, 120, "4 puluhan", 9, W.biru)),
+      sorotkan("empat", "pb-k"),
+      tambah("Kuning", emo("ok", 150, 70, E.benar, 20)),
+    ),
   ],
 };
