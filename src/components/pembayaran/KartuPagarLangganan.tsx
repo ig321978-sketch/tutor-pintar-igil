@@ -20,15 +20,17 @@ export function KartuPagarLangganan({
   const masuk = `/login?next=${encodeURIComponent(kembali)}`;
   const sasaran = anak.find((a) => a.id === anakDipilih) ?? anak.find((a) => !a.aktif) ?? anak[0];
   const menunggu = alasan === "nonaktif" && sasaran?.menunggu === true;
-  let judul = "Praktikum terbuka setelah langganan aktif";
+  let judul = "Praktikum terkunci sampai langganan aktif";
   let isi =
-    "Latihan, Ujian, dan Praktikum terbuka setelah langganan 30 hari aktif. Materi dan Simulasi tetap gratis. Tidak ada batas kuota siswa.";
+    "Praktikum hanya untuk siswa berlangganan. Setelah langganan aktif, Praktikum tiap bab terbuka bila Ujian bab itu sudah lulus 100%. Materi dan Simulasi tetap gratis.";
   if (alasan === "belum_masuk") {
     judul = "Praktikum terbuka setelah kamu masuk";
-    isi = "Masuk ke akun orang tua dulu. Setelah langganan 30 hari aktif, Praktikum bisa dikerjakan.";
+    isi =
+      "Masuk ke akun orang tua dulu. Praktikum hanya untuk siswa berlangganan yang sudah lulus Ujian 100%.";
   } else if (alasan === "belum_ada_anak") {
     judul = "Praktikum terbuka setelah profil anak dibuat";
-    isi = "Daftarkan profil anak dulu, lalu aktifkan langganan 30 hari untuk membuka Praktikum.";
+    isi =
+      "Daftarkan profil anak, aktifkan langganan, lalu luluskan Ujian 100% agar Praktikum terbuka.";
   } else if (alasan === "pilih_anak") {
     judul = "Pilih anak yang langganannya aktif";
     isi = "Setiap anak punya masa aktif sendiri. Pilih anak yang sudah berlangganan, atau bayar untuk anak yang belum.";

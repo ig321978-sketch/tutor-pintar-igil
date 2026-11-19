@@ -33,8 +33,8 @@ export default function DaftarPraktikum({ bab }: { bab: readonly BabPraktikum[] 
           <p className="text-xs font-bold uppercase tracking-widest text-amber-300">Matematika · Pilot Project</p>
           <h1 className="mt-2 text-2xl font-black md:text-3xl">🧪 Praktikum</h1>
           <p className="mt-2 text-sm text-indigo-100">
-            Praktikum menyatukan semua yang sudah kamu pelajari dalam satu tugas. Isinya dibuat otomatis saat
-            kamu lulus Ujian 100%.
+            Praktikum bukan tab di dalam modul bab. Area ini khusus siswa berlangganan yang sudah lulus Ujian
+            100%. Isinya dibuat otomatis saat syarat itu terpenuhi.
           </p>
           <span className="mt-4 inline-block rounded-full bg-amber-400 px-4 py-1.5 text-sm font-black text-indigo-950">
             ⭐ 50 Poin Kualifikasi per Praktikum
@@ -44,15 +44,19 @@ export default function DaftarPraktikum({ bab }: { bab: readonly BabPraktikum[] 
 
       <div className="mx-auto mt-6 max-w-3xl space-y-5 px-4">
         <section className="rounded-3xl border-2 border-amber-400 bg-white p-5 shadow-sm">
-          <h2 className="text-base font-black text-indigo-950">Kapan Praktikum terbuka?</h2>
+          <h2 className="text-base font-black text-indigo-950">Dua syarat wajib</h2>
           <ul className="mt-2 space-y-1.5 text-sm text-indigo-950">
             <li>
-              <span className="font-black">Aturan penuh:</span> setelah lulus Ujian 100% di {SYARAT_BAB_KONSEP} bab
-              (satu blok).
+              <span className="font-black">1. Langganan aktif.</span> Tanpa langganan, halaman Praktikum tetap
+              terkunci.
             </li>
             <li>
-              <span className="font-black">Masa uji coba (Pilot):</span> karena modul yang siap baru Matematika,
-              Praktikum sudah terbuka setelah kamu lulus Ujian 100% di {SYARAT_BAB_LULUS} bab.
+              <span className="font-black">2. Lulus Ujian 100%.</span> Pilot: Praktikum bab terbuka setelah Ujian
+              bab itu lulus 100%. Aturan penuh blok: setelah lulus Ujian 100% di {SYARAT_BAB_KONSEP} bab.
+            </li>
+            <li>
+              <span className="font-black">Masa uji coba:</span> saat ini Praktikum bab terbit setelah lulus Ujian
+              100% di {SYARAT_BAB_LULUS} bab.
             </li>
           </ul>
         </section>

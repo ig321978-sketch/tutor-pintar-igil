@@ -203,8 +203,9 @@ export default function CheckoutQris() {
           Simulasi), dan Ranking Beasiswa.
         </p>
         <p>
-          <span className="font-black text-indigo-950">Dengan langganan Rp 50.000 / 30 hari:</span> Latihan, Ujian,
-          Praktikum, serta seluruh fitur evaluasi. Ini jual-beli layanan, bukan iuran dan bukan undian.
+          <span className="font-black text-indigo-950">Dengan langganan Rp 50.000 / 30 hari:</span> Latihan dan Ujian
+          terbuka. Praktikum baru terbuka setelah Ujian lulus 100%. Ini jual-beli layanan, bukan iuran dan bukan
+          undian.
         </p>
       </div>
       {infoCutoff ? (
