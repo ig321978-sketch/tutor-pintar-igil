@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
+import FormPendaftaran from "@/components/info/FormPendaftaran";
 import {
   LABEL_TOMBOL_LUNAS_AKHIR,
   LABEL_TOMBOL_LUNAS_AWAL,
@@ -192,7 +193,7 @@ export default function CheckoutQris() {
       aria-modal="true"
       aria-labelledby="judul-checkout"
       data-testid="checkout-qris"
-      className="mx-auto w-full max-w-lg space-y-4 rounded-3xl bg-white p-5 text-indigo-950 shadow-xl sm:p-7"
+      className={`mx-auto w-full ${siap === "kosong" ? "max-w-2xl" : "max-w-lg"} space-y-4 rounded-3xl bg-white p-5 text-indigo-950 shadow-xl sm:p-7`}
     >
       <p className="text-xs font-black uppercase tracking-wide text-amber-700">Berlangganan</p>
       <h1 id="judul-checkout" className="text-2xl font-black">
@@ -224,11 +225,9 @@ export default function CheckoutQris() {
       {siap === "kosong" ? (
         <div className="space-y-3" data-testid="checkout-kosong">
           <p className="text-sm font-semibold leading-relaxed text-slate-700">
-            Akun sudah masuk. Daftarkan profil anak dulu sebelum berlangganan.
+            Akun sudah masuk. Daftarkan profil anak di bawah ini, lalu lanjut ke pembayaran.
           </p>
-          <Link href="/daftar" className="inline-flex rounded-full bg-amber-400 px-5 py-3 text-sm font-black text-indigo-950">
-            DAFTARKAN PROFIL ANAK
-          </Link>
+          <FormPendaftaran tertanam onAnakTerdaftar={() => void muatProfil()} />
         </div>
       ) : null}
       {siap === "galat" || mode === "tertutup" ? (
@@ -345,6 +344,15 @@ export default function CheckoutQris() {
       ) : null}
 
       {pesan ? <p className="text-sm font-bold text-rose-800">{pesan}</p> : null}
+
+      {siap === "masuk" && langkah === "form" ? (
+        <details className="rounded-2xl border border-indigo-100 bg-indigo-50/40 p-3" data-testid="tambah-anak">
+          <summary className="cursor-pointer text-sm font-black">Daftarkan anak lain</summary>
+          <div className="mt-3">
+            <FormPendaftaran tertanam onAnakTerdaftar={() => void muatProfil()} />
+          </div>
+        </details>
+      ) : null}
     </section>
   );
 }

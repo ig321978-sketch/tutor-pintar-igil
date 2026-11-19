@@ -54,7 +54,14 @@ const KARTU = "space-y-4 rounded-3xl border-2 border-indigo-100 bg-white p-4 sha
  * lalu profil anak (nama panggilan, kelas, NISN). NISN dikirim sekali ke server dan tidak disimpan.
  * Rumah, PIN, dan anak dibuat lewat RPC SECURITY DEFINER di /api/daftar/anak.
  */
-export default function FormPendaftaran() {
+export default function FormPendaftaran({
+  tertanam = false,
+  onAnakTerdaftar,
+}: {
+  /** true bila dipakai di dalam halaman Berlangganan (tanpa kepala halaman sendiri). */
+  tertanam?: boolean;
+  onAnakTerdaftar?: () => void;
+} = {}) {
   const idNama = useId();
   const idKelas = useId();
   const idNisn = useId();
@@ -162,6 +169,7 @@ export default function FormPendaftaran() {
       setSetuju(false);
       setPutaranPersetujuan((n) => n + 1);
       void muat();
+      onAnakTerdaftar?.();
       return;
     }
     if (res.status === "belum_masuk") {
@@ -178,7 +186,8 @@ export default function FormPendaftaran() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-6 px-2 py-6">
+    <div className={`mx-auto w-full max-w-2xl space-y-6 ${tertanam ? "" : "px-2 py-6"}`}>
+      {tertanam ? null : (
       <header className="rounded-3xl bg-gradient-to-br from-indigo-900 via-violet-900 to-indigo-950 p-5 text-white shadow-lg">
         <span className="inline-block rounded-full bg-amber-400 px-3 py-1 text-[11px] font-black uppercase tracking-wider text-indigo-950">
           Pendaftaran Anak
@@ -188,6 +197,7 @@ export default function FormPendaftaran() {
           Diisi oleh orang tua atau wali. IGIL tidak meminta Kartu Keluarga, NIK, atau foto rapor.
         </p>
       </header>
+      )}
 
       {tahap === "memuat" ? (
         <p role="status" className="text-center text-sm font-bold text-indigo-950">

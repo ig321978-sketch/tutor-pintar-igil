@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
-import FormPendaftaran from "@/components/info/FormPendaftaran";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "$IGIL · Pendaftaran Anak",
-  robots: { index: false, follow: false },
-};
-
+/** Pendaftaran Anak sudah digabung ke halaman Berlangganan. */
 export default function HalamanDaftar() {
-  return <FormPendaftaran />;
+  redirect("/langganan");
 }

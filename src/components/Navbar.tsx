@@ -20,7 +20,6 @@ const MENU = [
 const MENU_TINJAU = [
   { href: "/komunitas", label: "🏫 Komunitas" },
   { href: "/dasbor", label: "🏠 Dasbor" },
-  { href: "/daftar", label: "📝 Pendaftaran Anak" },
 ] as const;
 
 function tautanAktif(pathname: string, href: string): boolean {

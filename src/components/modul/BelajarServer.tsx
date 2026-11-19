@@ -179,7 +179,7 @@ export function PanelProfilBelajar({ profil, kembaliKe }: { profil: ProfilBelaja
           👧 Akun ini belum punya profil anak. Profil anak diperlukan agar jawaban bisa dinilai dan poin tercatat.
         </span>
         <Link
-          href="/daftar"
+          href="/langganan"
           className="rounded-full border-2 border-[#FFE566] bg-[#1C01A5] px-5 py-2 text-xs font-black text-[#FFE566] md:text-sm"
         >
           DAFTARKAN ANAK ➡️

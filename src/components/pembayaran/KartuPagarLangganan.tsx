@@ -56,7 +56,7 @@ export function KartuPagarLangganan({
           </Link>
         ) : null}
         {alasan === "belum_ada_anak" ? (
-          <Link href="/daftar" className={tombol}>
+          <Link href="/langganan" className={tombol}>
             DAFTARKAN PROFIL ANAK
           </Link>
         ) : null}

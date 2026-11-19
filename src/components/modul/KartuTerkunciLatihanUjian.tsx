@@ -51,7 +51,7 @@ export function KartuTerkunciLatihanUjian({
     judul = `${tab} terbuka setelah profil anak dibuat`;
     isi = `Akunmu sudah masuk, tetapi belum ada profil anak. Daftarkan profil anak dulu, lalu selesaikan semua Sub-Bab di tab Materi.`;
     aksi = (
-      <Link href="/daftar" className={tombol}>
+      <Link href="/langganan" className={tombol}>
         DAFTARKAN PROFIL ANAK
       </Link>
     );
