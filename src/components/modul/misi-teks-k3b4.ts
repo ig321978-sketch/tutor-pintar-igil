@@ -1,6 +1,7 @@
 /**
- * Teks misi dan nama simulasi Kelas 3 Bab 4. Berkas kecil tanpa impor, dipisah dari SimulasiK3Bab4.tsx
- * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen laboratorium ke bundel awal.
+ * Teks misi awal Kelas 3 Bab 4 (Festival Layang-layang Kampung). Berkas kecil tanpa impor, dipisah dari SimulasiK3Bab4.tsx
+ * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen simulasi ke bundel awal.
+ * KERANGKA: agen tiap Sub-Bab mengisi barisnya sendiri dengan teks yang SAMA dengan MISI_*_TEKS di data-sim.ts folder Sub-Bab.
  */
 
 export type HurufK3B4 = "A" | "B" | "C";
@@ -8,15 +9,9 @@ export type HurufK3B4 = "A" | "B" | "C";
 export const hurufK3B4 = (sub: string): HurufK3B4 => (sub === "B" || sub === "C" ? sub : "A");
 
 export const MISI_K3B4: Record<HurufK3B4, string> = {
-  A: "Di Lab Ruas Garis, perpanjang sinar garis dan garis, hubungkan dua titik dengan ruas garis dan kurva, ukur ruas garis dari angka 0 dalam cm dan mm, dan tandai sisi bangun datar. Periksa dengan Mesin Ruas Garis, lalu selesaikan skenario Peta Alfa. Selesaikan semua misi wajib, urutannya bebas.",
-  B: "Di Lab Sudut, putar kaki sudut, bandingkan dengan pojok kertas lipat, baca dan gambar sudut dengan busur derajat, kenali jenis sudut, dan ukur sudut dengan irisan. Periksa dengan Mesin Sudut, lalu selesaikan skenario Pintu Meutia. Selesaikan semua misi wajib.",
-  C: "Di Lab Dua Garis, putar dan geser garis untuk menemukan garis tegak lurus, sejajar, dan bukan keduanya, lalu kenali ciri bangun datar dan rakit bangun dari batang. Periksa dengan Mesin Garis, lalu tuntaskan skenario Pagar Taman. Selesaikan semua misi wajib: ini misi penutup bab.",
-};
-
-export const NAMA_SIM_K3B4: Record<HurufK3B4, string> = {
-  A: "Lab Ruas Garis, Mesin Ruas Garis, dan Peta Alfa",
-  B: "Lab Sudut, Mesin Sudut, dan Pintu Meutia",
-  C: "Pencapaian Misi Bab: Dua Garis, Bangun Datar, Mesin Garis, dan Pagar Taman",
+  A: "Kenali jenis garis, ukur bilah dari nol, ubah ukuran, lalu beri huruf dan hitung sisi. Urutannya bebas.",
+  B: "Putar kaki sudut, pasang busur dari nol, baca derajatnya, pilih jenis sudut, lalu cari pasangan satu putaran.",
+  C: "Putar tali sampai tegak lurus, geser tali sampai sejajar, tandai pasangan tali, lalu rakit bangun dari batang. Urutannya bebas.",
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */
