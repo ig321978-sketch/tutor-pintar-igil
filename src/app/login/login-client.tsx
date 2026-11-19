@@ -11,8 +11,12 @@ import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 export default function LoginClient() {
   const router = useRouter();
   const params = useSearchParams();
-  const nextMentah = params.get("next") || "/langganan";
-  const next = nextMentah.startsWith("/") && !nextMentah.startsWith("/tutor") ? nextMentah : "/langganan";
+  const nextMentah = params.get("next") || "/ruang-belajar";
+  const next =
+    nextMentah.startsWith("/") && !nextMentah.startsWith("//") && !nextMentah.startsWith("/tutor")
+      ? nextMentah
+      : "/ruang-belajar";
+  const daftar = params.get("mode") === "daftar";
   const [email, setEmail] = useState("");
   const [sandi, setSandi] = useState("");
   const [pesan, setPesan] = useState("");
@@ -23,7 +27,7 @@ export default function LoginClient() {
     setPesan("");
     setMemuat(true);
     try {
-      const res = await fetch("/api/auth/masuk", {
+      const res = await fetch(daftar ? "/api/auth/buat-akun" : "/api/auth/masuk", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email.trim(), password: sandi }),
@@ -32,9 +36,16 @@ export default function LoginClient() {
         berhasil?: boolean;
         pesan?: string;
         adalahAdmin?: boolean;
+        masuk?: boolean;
       };
       if (!res.ok || !json.berhasil) {
-        setPesan(json.pesan || "Email atau kata sandi tidak valid.");
+        setPesan(
+          json.pesan || (daftar ? "Pendaftaran belum berhasil. Coba lagi." : "Email atau kata sandi tidak valid."),
+        );
+        return;
+      }
+      if (daftar && json.masuk === false) {
+        setPesan(json.pesan || "Akun sudah dibuat. Silakan Masuk.");
         return;
       }
       tandaiSesiBrowser();
@@ -49,7 +60,6 @@ export default function LoginClient() {
         !json.adalahAdmin &&
         situsHanyaAdmin() &&
         (next.startsWith("/rapor") ||
-          next.startsWith("/ranking") ||
           next.startsWith("/dasbor") ||
           next.startsWith("/simulasi") ||
           next.startsWith("/admin") ||
@@ -70,8 +80,12 @@ export default function LoginClient() {
 
   return (
     <PageShell
-      judul="Masuk"
-      subjudul="Untuk orang tua, gunakan Akun & Langganan. Halaman ini tetap tersedia untuk admin dan tautan lama."
+      judul={daftar ? "Daftar" : "Masuk"}
+      subjudul={
+        daftar
+          ? "Buat akun untuk masuk ke Ruang Belajar. Daftar bukan berlangganan dan gratis."
+          : "Masuk untuk lanjut ke Ruang Belajar. Capaian belajar Anda tetap tersimpan."
+      }
     >
       <form
         onSubmit={(e) => void kirim(e)}
@@ -90,11 +104,11 @@ export default function LoginClient() {
           />
         </label>
         <label className="block">
-          <span className={kelasLabel}>Kata sandi</span>
+          <span className={kelasLabel}>Kata sandi{daftar ? " (minimal 8 karakter)" : ""}</span>
           <input
             type="password"
             required
-            autoComplete="current-password"
+            autoComplete={daftar ? "new-password" : "current-password"}
             value={sandi}
             onChange={(e) => setSandi(e.target.value)}
             className={kelasKotak}
@@ -111,12 +125,15 @@ export default function LoginClient() {
           disabled={memuat}
           className={`${kelasTombolUtama} w-full rounded-full px-4 py-3 text-sm font-bold`}
         >
-          {memuat ? "Memeriksa..." : "Masuk"}
+          {memuat ? "Memproses..." : daftar ? "Daftar dan Masuk" : "Masuk"}
         </button>
         <p className="text-center text-sm font-semibold text-slate-600">
-          Orang tua:{" "}
-          <Link href="/langganan" className="font-black text-[#1C01A5] underline underline-offset-2">
-            Akun &amp; Langganan
+          {daftar ? "Sudah punya akun? " : "Belum punya akun? "}
+          <Link
+            href={`/login?next=${encodeURIComponent(next)}${daftar ? "" : "&mode=daftar"}`}
+            className="font-black text-[#1C01A5] underline underline-offset-2"
+          >
+            {daftar ? "Masuk" : "Daftar"}
           </Link>
         </p>
       </form>

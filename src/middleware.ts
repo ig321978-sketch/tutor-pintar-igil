@@ -120,7 +120,7 @@ export async function middleware(request: NextRequest) {
     }
     if (ruteMasuk(pathname) && !pathname.startsWith("/api/")) {
       const sesiGerbang = await sesiAdmin(request);
-      if (sesiGerbang.user && (pathname === "/" || pathname === "/login")) {
+      if (sesiGerbang.user && pathname === "/login") {
         return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
       }
       return sesiGerbang.user ? sesiGerbang.response : tanpaCache(NextResponse.next());
@@ -139,7 +139,7 @@ export async function middleware(request: NextRequest) {
       return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
     }
     if (ruteWajibMasuk(pathname) && !sesi.user) {
-      const masuk = new URL("/login", request.url);
+      const masuk = new URL("/", request.url);
       masuk.searchParams.set("next", pathname);
       return tanpaCache(NextResponse.redirect(masuk));
     }
@@ -158,7 +158,7 @@ export async function middleware(request: NextRequest) {
 
   if (ruteMasuk(pathname) && !pathname.startsWith("/api/")) {
     const sesiGerbang = await sesiAdmin(request);
-    if (sesiGerbang.user && (pathname === "/" || pathname === "/login")) {
+    if (sesiGerbang.user && pathname === "/login") {
       return tanpaCache(NextResponse.redirect(new URL("/ruang-belajar", request.url)));
     }
     return sesiGerbang.user ? sesiGerbang.response : tanpaCache(NextResponse.next());
@@ -167,7 +167,7 @@ export async function middleware(request: NextRequest) {
   if (ruteWajibMasuk(pathname)) {
     const sesiBelajar = await sesiAdmin(request);
     if (!sesiBelajar.user) {
-      const masuk = new URL("/login", request.url);
+      const masuk = new URL("/", request.url);
       masuk.searchParams.set("next", pathname);
       return tanpaCache(NextResponse.redirect(masuk));
     }
@@ -182,7 +182,7 @@ export async function middleware(request: NextRequest) {
 
   const sesi = await sesiAdmin(request);
   if (!sesi.user) {
-    const masuk = new URL("/login", request.url);
+    const masuk = new URL("/", request.url);
     masuk.searchParams.set("next", pathname);
     return tanpaCache(NextResponse.redirect(masuk));
   }
