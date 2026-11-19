@@ -1,297 +1,123 @@
 import type { AdeganStory } from "./logika-story";
-import { W, angka, bagianKe, barisTabel, emo, garis, judul, kartu, kotak, panah, papan, susunBagian, teks, URAI_CONTOH, URAI_LATIHAN, URAI_LETAK, URAI_NOL, rb, angkaDari } from "./k4b1d-gambar";
-import { bersih, idx, k, sorotkan, tambah, ubah } from "./k4b1d-bantu";
+import { E, W, emo, judul, kotakTempat, panah, pasir, pohon, teks, tokoh, wadah } from "./k4b1d-gambar";
+import { k, sorotkan, tambah, ubah } from "./k4b1d-bantu";
 
-/* ------------------------------ 5. Dekomposisi: Ayo Mengamati (Buku Siswa hlm. 26; Panduan Guru hlm. 47) ------------------------------ */
-const SUARA_D1 = "Sekarang dekomposisi bilangan cacah sampai sepuluh ribu. Coba amati: kalian sudah mengenal nilai tempat. Misalkan bilangan enam ribu tujuh ratus delapan puluh sembilan.";
-const SUARA_D2 = "Sembilan menempati nilai tempat satuan, delapan menempati puluhan, tujuh menempati ratusan, dan enam menempati ribuan. Perhatikan garis dari tiap angka yang menunjukkannya.";
-const SUARA_D3 = "Ingat kembali nilai tempat serta nilai angka pada tiap nilai tempat, misalnya enam di tempat ribuan bernilai enam ribu. Coba kamu cari contoh bilangan empat angka yang lain.";
-const SUARA_D4 = "Diberikan bilangan enam ribu delapan ratus empat puluh sembilan. Tabelnya: ribuan enam, ratusan delapan, puluhan empat, satuan sembilan.";
+/*
+ * Cerita orisinal IGIL "Kios Kelapa Pak Darwis" (Kelas 4 Bab 1 Sub-Bab D), Penginapan Pulau Karang Indah.
+ * Naskah suara dari naskah/story-naskah-k4b1d.md. Bagian ini: papan tempat angka, uraian yang benar, dan Satria memanjat pohon kelapa.
+ */
 
-/** Letak angka 6.789: kotak angka (kiri ke kanan: ribuan sampai satuan) dan baris label (satuan paling atas), seperti garis penunjuk di buku. */
-const KOTAK_DIGIT = URAI_LETAK.map((d, i) => [kotak(`dg${i}-k`, 30 + i * 20, 50, 20, 22, W.putih, W.biru, { rx: 0, tebal: 1.2 }), teks(`dg${i}-t`, 40 + i * 20, 65.5, String(d), 11, W.biru)]);
-const NAMA_TEMPAT_KECIL = ["ribuan", "ratusan", "puluhan", "satuan"];
-const BARIS_LETAK = [90, 112, 134, 156];
+/* ------------------------------ 4. Papan empat kotak ------------------------------ */
+const SUARA_B1 = "Genta menunjuk papan empat kotak, ribuan, ratusan, puluhan, dan satuan.";
+const SUARA_B2 = "Angka tujuh ada di puluhan, jadi artinya tujuh puluh, bukan tujuh.";
+const SUARA_B3 = "Satuannya nol, jadi tidak ada butir yang berdiri sendiri.";
+const T1 = kotakTempat("t1", 16, 64, 60, 70, "ribuan");
+const T2 = kotakTempat("t2", 88, 64, 60, 70, "ratusan");
+const T3 = kotakTempat("t3", 160, 64, 60, 70, "puluhan");
+const T4 = kotakTempat("t4", 232, 64, 60, 70, "satuan");
 
-export const ADEGAN_DEKOMPOSISI_AMATI: AdeganStory = {
-  id: "dekomposisi-amati",
-  judul: "Dekomposisi: mari mengamati",
-  sumber: "Materi: dekomposisi, mengamati nilai tempat",
-  latar: "#F0FDF4",
-  kutipan: [
-    "Dekomposisi bilangan cacah sampai 10.000",
-    "Ayo Mengamati",
-    "Kalian sudah mengenal nilai tempat dari suatu bilangan.",
-    "Misalkan bilangan 6.789.",
-    "9 menempati nilai tempat satuan",
-    "8 menempati nilai tempat puluhan",
-    "7 menempati nilai tempat ratusan",
-    "6 menempati nilai tempat ribuan",
-    "Guru dapat memberikan contoh bilangan 4 angka dan mengingatkan kembali nilai tempat serta nilai dari angka pada setiap nilai tempat.",
-    "Misalnya 6 menempati tempat ribuan maka nilainya 6.000.",
-    "Guru dapat memberikan contoh yang lebih banyak terkait bilangan cacah 4 angka.",
-    "Diberikan bilangan 6.849.",
-    "Untuk melihat nilai tempat dari setiap angka pada bilangan 6.849 sebagai berikut.",
-  ],
-  ketukan: [
-    k(
-      SUARA_D1,
-      tambah(0, judul("Dekomposisi bilangan cacah"), teks("sb", 150, 36, "sampai 10.000", 9.4, W.coklat)),
-      tambah(idx(SUARA_D1, "nilai"), teks("dc", 230, 69, "nilai tempat", 8.6, W.coklat)),
-      tambah(idx(SUARA_D1, "Misalkan"), ...KOTAK_DIGIT.flat()),
-      tambah(idx(SUARA_D1, "sembilan"), teks("dl", 230, 40, "bilangan 6.789", 9.6, W.merah)),
-    ),
-    k(
-      SUARA_D2,
-      ...[3, 2, 1, 0].map((c, r) =>
-        tambah(
-          idx(SUARA_D2, ["Sembilan", "delapan", "tujuh", "enam"][r]),
-          garis(`dv${c}`, 40 + c * 20, 72, 0, BARIS_LETAK[r] - 72, W.biru, 1.4),
-          garis(`dh${c}`, 40 + c * 20, BARIS_LETAK[r], 140 - (40 + c * 20), 0, W.biru, 1.4),
-          ...kartu(`dk${c}`, 140, BARIS_LETAK[r] - 9, 150, 18, W.langit, [`${URAI_LETAK[c]} menempati nilai tempat ${NAMA_TEMPAT_KECIL[c]}`], 7.2),
-        ),
-      ),
-    ),
-    k(
-      SUARA_D3,
-      bersih(0),
-      tambah(0, judul("Ingat nilai tempat")),
-      tambah(idx(SUARA_D3, "misalnya"), ...kartu("gk", 14, 40, 272, 40, W.hijauMuda, ["angka 6 di tempat ribuan", "nilainya 6.000"], 9.6)),
-      tambah(idx(SUARA_D3, "Coba"), ...kartu("gl", 14, 100, 272, 40, W.krem, ["coba cari bilangan 4 angka", "yang lain"], 9.6)),
-    ),
-    k(
-      SUARA_D4,
-      bersih(0),
-      tambah(0, judul("Tabel nilai tempat")),
-      tambah(idx(SUARA_D4, "sembilan"), teks("db", 150, 40, "6.849", 14, W.merah)),
-      tambah(idx(SUARA_D4, "Tabelnya:"), ...papan("dt", 30, 52, 60)),
-      tambah(idx(SUARA_D4, "enam", 2), angka("dt", 30, 52, 60, 0, URAI_CONTOH[0])),
-      tambah(idx(SUARA_D4, "delapan", 2), angka("dt", 30, 52, 60, 1, URAI_CONTOH[1])),
-      tambah(idx(SUARA_D4, "empat", 2), angka("dt", 30, 52, 60, 2, URAI_CONTOH[2])),
-      tambah(idx(SUARA_D4, "sembilan", 2), angka("dt", 30, 52, 60, 3, URAI_CONTOH[3])),
-    ),
-  ],
-};
-
-/* ------------------------------ 6. Dekomposisi: uraian 6.849 (Buku Siswa hlm. 26) ------------------------------ */
-const SUARA_U1 = "Berdasarkan tabel, angka enam di ribuan bernilai enam ribu, dan angka delapan di ratusan bernilai delapan ratus.";
-const SUARA_U2 = "Angka empat di puluhan bernilai empat puluh, dan angka sembilan di satuan bernilai sembilan.";
-const SUARA_U3 = "Jadi enam ribu delapan ratus empat puluh sembilan sama dengan enam ribuan ditambah delapan ratusan ditambah empat puluhan ditambah sembilan satuan.";
-const SUARA_U4 = "Bentuk kedua: enam ribu ditambah delapan ratus ditambah empat puluh ditambah sembilan.";
-const SUARA_U5 = "Itulah dekomposisi bilangan: mengurai bilangan menjadi nilai tempat tiap angkanya. Arahnya kebalikan dari komposisi, yang menyusun.";
-
-const SB_U = susunBagian("ub", 60, ["6 ribuan", "8 ratusan", "4 puluhan", "9 satuan"]);
-
-export const ADEGAN_DEKOMPOSISI_URAIAN: AdeganStory = {
-  id: "dekomposisi-uraian",
-  judul: "Dekomposisi: uraian 6.849",
-  sumber: "Materi: uraian bilangan 6.849",
-  latar: "#FFF7ED",
-  kutipan: [
-    "Berdasarkan penjelasan di atas, diperoleh bahwa",
-    "Angka 6 menempati tempat ribuan, nilainya 6.000",
-    "Angka 8 menempati tempat ratusan, nilainya 800",
-    "Angka 4 menempati tempat puluhan, nilainya 40",
-    "Angka 9 menempati tempat satuan, nilainya 9",
-    "6.849 = 6 ribuan + 8 ratusan +4 puluhan + 9 satuan",
-    "6.849 = 6.000 + 800+ 40 + 9",
-  ],
-  ketukan: [
-    k(
-      SUARA_U1,
-      tambah(0, judul("Nilai tiap angka pada 6.849"), ...papan("uu", 30, 34, 60, URAI_CONTOH)),
-      tambah(idx(SUARA_U1, "enam"), panah("u0", 60, 74, 0, 10, W.merah, 2)),
-      tambah(idx(SUARA_U1, "ribu"), teks("w0", 60, 100, "6.000", 10, W.merah)),
-      tambah(idx(SUARA_U1, "delapan"), panah("u1", 120, 74, 0, 10, W.merah, 2)),
-      tambah(idx(SUARA_U1, "ratus"), teks("w1", 120, 100, "800", 10, W.merah)),
-    ),
-    k(
-      SUARA_U2,
-      tambah(idx(SUARA_U2, "empat"), panah("u2", 180, 74, 0, 10, W.merah, 2)),
-      tambah(idx(SUARA_U2, "puluh"), teks("w2", 180, 100, "40", 10, W.merah)),
-      tambah(idx(SUARA_U2, "sembilan"), panah("u3", 240, 74, 0, 10, W.merah, 2)),
-      tambah(idx(SUARA_U2, "sembilan", 2), teks("w3", 240, 100, "9", 10, W.merah)),
-    ),
-    k(
-      SUARA_U3,
-      bersih(0),
-      tambah(0, judul("Uraian dalam ribuan, ratusan, ...")),
-      tambah(idx(SUARA_U3, "Jadi"), teks("ue", 150, 42, "6.849 =", 18, W.hijau)),
-      tambah(idx(SUARA_U3, "ribuan"), bagianKe(SB_U, "ub", 0)),
-      tambah(idx(SUARA_U3, "ratusan"), bagianKe(SB_U, "ub", 1)),
-      tambah(idx(SUARA_U3, "puluhan"), bagianKe(SB_U, "ub", 2)),
-      tambah(idx(SUARA_U3, "satuan."), bagianKe(SB_U, "ub", 3)),
-    ),
-    k(
-      SUARA_U4,
-      tambah(idx(SUARA_U4, "enam"), teks("uf", 150, 128, "6.849 = 6.000 + 800 + 40 + 9", 11.6, W.biru)),
-      sorotkan(idx(SUARA_U4, "sembilan"), "uf"),
-    ),
-    k(
-      SUARA_U5,
-      bersih(0),
-      tambah(0, judul("Urai dan susun")),
-      tambah(0, teks("ka", 150, 48, "6.348", 20, W.hijau), teks("kb", 150, 160, "6.000 + 300 + 40 + 8", 13, W.biru)),
-      tambah(idx(SUARA_U5, "mengurai"), panah("kd", 110, 66, 0, 66, W.merah, 2.4), teks("kdt", 62, 104, "dekomposisi: urai", 8.6, W.merah)),
-      tambah(idx(SUARA_U5, "komposisi,"), panah("ks", 190, 132, 0, -66, W.hijau, 2.4), teks("kst", 245, 104, "komposisi: susun", 8.6, W.hijau)),
-    ),
-  ],
-};
-
-/* ------------------------------ 7. Dekomposisi dengan nol: 6.035 (Buku Siswa hlm. 27; Panduan Guru hlm. 45) ------------------------------ */
-const SUARA_Z1 = "Sekarang, bagaimana halnya dengan dekomposisi dari bilangan enam ribu tiga puluh lima?";
-const SUARA_Z2 = "Tabelnya: ribuan enam, ratusan nol, puluhan tiga, satuan lima. Tempat ratusan berisi nol, artinya tidak ada ratusan.";
-const SUARA_Z3 = "Dalam bentuk panjang: enam ribuan ditambah nol ratusan ditambah tiga puluhan ditambah lima satuan, sama dengan enam ribu tiga puluh lima.";
-const SUARA_Z4 = "Bentuk kedua: enam ribu ditambah nol nol nol ditambah tiga puluh ditambah lima.";
-const SUARA_Z5 = "Ada aturan penulisannya: ratusan nol ditulis tiga nol, puluhan nol ditulis dua nol, dan satuan nol ditulis satu nol.";
-const SUARA_Z6 = "Ingat: tiga nol itu hanya cara menulis. Nilainya tetap nol, jadi enam ribu ditambah nol ditambah tiga puluh ditambah lima tetap sama dengan enam ribu tiga puluh lima.";
-
-const SB_Z = susunBagian("zb", 76, ["6 ribuan", "0 ratusan", "3 puluhan", "5 satuan"]);
-
-export const ADEGAN_DEKOMPOSISI_NOL: AdeganStory = {
-  id: "dekomposisi-nol",
-  judul: "Dekomposisi dengan nol: 6.035",
-  sumber: "Materi: dekomposisi dengan nol",
+export const ADEGAN_BAGAN: AdeganStory = {
+  id: "bagan",
+  judul: "Papan empat kotak tempat angka",
+  sumber: "Materi: papan tempat angka",
   latar: "#EFF6FF",
-  kutipan: [
-    "Bagaimana halnya dengan dekomposisi dari bilangan 6.035?",
-    "6 Ribuan",
-    "0 Ratusan",
-    "3 Puluhan",
-    "5 Satuan",
-    "Bilangan 6.035, dapat dinyatkan dalam bentuk berikut.",
-    "6.035 = 6 ribuan + 0 ratusan + 3 puluhan + 5 satuan",
-    "= 6.000 + 000 + 30 + 5",
-    "Angka pada nilai tempat ratusan sama dengan 0 dekomposisinya ditulis 000",
-    "Angka pada nilai tempat puluhan sama dengan 0 dekomposisinya ditulis 00,",
-    "Angka pada nilai tempat satuan sama dengan 0 dekomposisinya ditulis 0",
-  ],
-  ketukan: [
-    k(
-      SUARA_Z1,
-      tambah(0, judul("Dekomposisi dengan nol")),
-      tambah("bagaimana", teks("zq", 236, 110, "?", 56, W.merah)),
-      tambah(idx(SUARA_Z1, "lima?"), teks("zb0", 100, 110, "6.035", 36, W.biru)),
-    ),
-    k(
-      SUARA_Z2,
-      bersih(0),
-      tambah(0, judul("Tabel 6.035"), ...papan("zn", 30, 40, 60)),
-      tambah(idx(SUARA_Z2, "enam"), angka("zn", 30, 40, 60, 0, URAI_NOL[0])),
-      tambah(idx(SUARA_Z2, "nol"), angka("zn", 30, 40, 60, 1, URAI_NOL[1])),
-      tambah(idx(SUARA_Z2, "tiga"), angka("zn", 30, 40, 60, 2, URAI_NOL[2])),
-      tambah(idx(SUARA_Z2, "lima"), angka("zn", 30, 40, 60, 3, URAI_NOL[3])),
-      ubah(idx(SUARA_Z2, "nol", 2), { id: "zn-d1", warna: W.merahMuda }),
-      tambah(idx(SUARA_Z2, "artinya"), ...kartu("zk", 40, 108, 220, 30, W.krem, ["0 ratusan: tidak ada ratusan"], 9.4)),
-    ),
-    k(
-      SUARA_Z3,
-      bersih(0),
-      tambah(0, judul("Bentuk panjang")),
-      tambah(idx(SUARA_Z3, "ribuan"), bagianKe(SB_Z, "zb", 0)),
-      tambah(idx(SUARA_Z3, "ratusan"), bagianKe(SB_Z, "zb", 1)),
-      tambah(idx(SUARA_Z3, "puluhan"), bagianKe(SB_Z, "zb", 2)),
-      tambah(idx(SUARA_Z3, "satuan,"), bagianKe(SB_Z, "zb", 3)),
-      tambah(idx(SUARA_Z3, "sama"), teks("zh", 150, 128, "= 6.035", 22, W.hijau)),
-    ),
-    k(
-      SUARA_Z4,
-      tambah(idx(SUARA_Z4, "enam"), teks("zg", 150, 172, "6.000 + 000 + 30 + 5", 13, W.biru)),
-      sorotkan(idx(SUARA_Z4, "nol"), "zg"),
-    ),
-    k(
-      SUARA_Z5,
-      bersih(0),
-      tambah(0, judul("Aturan penulisan nol")),
-      tambah("ratusan", ...kartu("zr", 30, 40, 240, 30, W.hijauMuda, ["ratusan 0 ditulis 000"], 10)),
-      tambah("puluhan", ...kartu("zp", 30, 82, 240, 30, W.krem, ["puluhan 0 ditulis 00"], 10)),
-      tambah("satuan", ...kartu("zs", 30, 124, 240, 30, W.pink, ["satuan 0 ditulis 0"], 10)),
-    ),
-    k(
-      SUARA_Z6,
-      bersih(0),
-      tambah(0, judul("Ingat: nol tetap nol")),
-      tambah("tiga", ...kartu("zc", 20, 38, 260, 32, W.merahMuda, ["000 hanya cara menulis", "nilainya tetap nol"], 9.4)),
-      tambah("enam", teks("zi", 150, 120, "6.000 + 0 + 30 + 5 = 6.035", 12.5, W.biru)),
-      tambah("sama", emo("zj", 150, 170, "✅", 26)),
-    ),
-  ],
-};
-
-/* ------------------------------ 8. Dekomposisi: Ayo Berlatih nomor 1 (Buku Siswa hlm. 27-28; Panduan Guru hlm. 47) ------------------------------ */
-const SUARA_B1 = "Sekarang berlatih: isilah titik-titik dengan benar. Bilangan pertama, enam ribu empat ratus delapan puluh dua, sudah diisi sebagai contoh.";
-const SUARA_B2 = "Tujuh ribu dua puluh. Tujuh ribuan, nol ratusan, dua puluhan, nol satuan.";
-const SUARA_B3 = "Dua ribu satu. Dua ribuan, nol ratusan, nol puluhan, satu satuan.";
-const SUARA_B4 = "Tujuh ribu. Tujuh ribuan, sedangkan ratusan, puluhan, dan satuan semuanya nol.";
-const SUARA_B5 = "Sembilan ribu sembilan ratus sembilan puluh sembilan. Semua tempat berisi sembilan, jadi sembilan ribuan, sembilan ratusan, sembilan puluhan, dan sembilan satuan.";
-const SUARA_B6 = "Periksa dengan menjumlahkan nilai tiap tempat. Sembilan ribu ditambah sembilan ratus ditambah sembilan puluh ditambah sembilan sama dengan sembilan ribu sembilan ratus sembilan puluh sembilan.";
-
-const KOL_TABEL = [60, 45, 45, 45, 45];
-const PUSAT_KOL = [60, 112.5, 157.5, 202.5, 247.5];
-const BARIS_Y = (i: number) => 48 + i * 18;
-/** Baris tabel nomor 1 ke-`i` hanya dengan bilangan di kolom pertama. */
-const labelBaris = (i: number) => barisTabel(`tr${i}`, 30, BARIS_Y(i), KOL_TABEL, [rb(angkaDari(URAI_LATIHAN[i])), "", "", "", ""], 18, 9);
-/** Angka kolom ke-`c` (0 = ribuan) pada baris ke-`i`. */
-const selBaris = (i: number, c: number) => teks(`tr${i}-t${c + 1}`, PUSAT_KOL[c + 1], BARIS_Y(i) + 12.3, String(URAI_LATIHAN[i][c]), 9, W.hijau);
-const KEPALA = () => barisTabel("th", 30, 30, KOL_TABEL, ["Bilangan", "Ribuan", "Ratusan", "Puluhan", "Satuan"], 18, 7.4, true);
-
-export const ADEGAN_BERLATIH_SATU: AdeganStory = {
-  id: "berlatih-satu",
-  judul: "Dekomposisi: latihan mengisi titik-titik",
-  sumber: "Materi: latihan dekomposisi",
-  latar: "#F0FDF4",
-  kutipan: [
-    "Ayo Berlatih",
-    "Salin dan jawablah soal berikut pada buku tulis kalian.",
-    "1. Isilah titik-titik berikut dengan benar.",
-    "6.482",
-    "7.020",
-    "2.001",
-    "7.000",
-    "9.999",
-    "1. Isilah titik-titik dibawah ini.",
-  ],
   ketukan: [
     k(
       SUARA_B1,
-      tambah(0, judul("Latihan: isi titik-titik"), ...KEPALA()),
-      tambah(idx(SUARA_B1, "Bilangan"), ...labelBaris(0)),
-      tambah(idx(SUARA_B1, "contoh"), ...[0, 1, 2, 3].map((c) => selBaris(0, c))),
+      tambah(0, judul("Papan Tempat Angka"), ...tokoh("gn", 40, 184, "Genta")),
+      tambah("menunjuk", panah("pa", 62, 156, 50, -20, W.merah, 2)),
+      tambah("papan", T1[0], T2[0], T3[0], T4[0]),
+      tambah("empat", teks("k4", 262, 44, "4 kotak", 10, W.merah)),
+      tambah("ribuan,", T1[1]),
+      tambah("ratusan,", T2[1]),
+      tambah("puluhan,", T3[1]),
+      tambah("satuan.", T4[1]),
     ),
     k(
       SUARA_B2,
-      tambah(0, ...labelBaris(1)),
-      tambah(idx(SUARA_B2, "ribuan,"), selBaris(1, 0)),
-      tambah(idx(SUARA_B2, "ratusan,"), selBaris(1, 1)),
-      tambah(idx(SUARA_B2, "puluhan,"), selBaris(1, 2)),
-      tambah(idx(SUARA_B2, "satuan."), selBaris(1, 3)),
+      tambah("tujuh", teks("d1", 46, 108, "5", 30, W.biru), teks("d2", 118, 108, "2", 30, W.biru), teks("d3", 190, 108, "7", 30, W.biru), teks("d4", 262, 108, "0", 30, W.biru)),
+      sorotkan("puluhan,", "t3-k"),
+      tambah("jadi", teks("h1", 46, 126, "5.000", 9, W.coklat), teks("h2", 118, 126, "200", 9, W.coklat), teks("h4", 262, 126, "0", 9, W.coklat)),
+      tambah("puluh,", teks("h3", 190, 126, "70", 9, W.merah)),
+      tambah("bukan", emo("xs", 212, 84, E.salah, 14)),
     ),
     k(
       SUARA_B3,
-      tambah(0, ...labelBaris(2)),
-      tambah(idx(SUARA_B3, "ribuan,"), selBaris(2, 0)),
-      tambah(idx(SUARA_B3, "ratusan,"), selBaris(2, 1)),
-      tambah(idx(SUARA_B3, "puluhan,"), selBaris(2, 2)),
-      tambah(idx(SUARA_B3, "satuan."), selBaris(2, 3)),
+      sorotkan("Satuannya", "t4-k"),
+      tambah("tidak", emo("xk", 276, 160, E.salah, 16)),
+      tambah("butir", emo("kb", 250, 162, E.kelapa, 22)),
+    ),
+  ],
+};
+
+/* ------------------------------ 5. Uraian yang benar ------------------------------ */
+const SUARA_N1 = "Penguraian yang benar adalah lima ribu ditambah dua ratus ditambah tujuh puluh.";
+const SUARA_N2 = "Kalau ketiganya digabung, hasilnya lima ribu dua ratus tujuh puluh.";
+const SUARA_N3 = "Nol di satuan tidak perlu ditulis dalam penjumlahan.";
+
+export const ADEGAN_BENAR: AdeganStory = {
+  id: "benar",
+  judul: "Uraian yang benar",
+  sumber: "Materi: uraian yang benar",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_N1,
+      tambah(0, judul("Uraian yang Benar")),
+      tambah("benar", emo("ok", 36, 76, E.benar, 22)),
+      tambah("lima", teks("ur", 160, 76, "5.000", 20, W.hijauTua), ...wadah("b1", 34, 96, 70, 52), teks("l1", 69, 126, "5.000", 15, W.biru, { z: 4 })),
+      ubah("dua", { id: "ur", isi: "5.000 + 200" }),
+      tambah("dua", ...wadah("b2", 120, 104, 58, 44), teks("l2", 149, 131, "200", 15, W.biru, { z: 4 })),
+      ubah("tujuh", { id: "ur", isi: "5.000 + 200 + 70" }),
+      tambah("tujuh", ...wadah("b3", 194, 112, 44, 36), teks("l3", 216, 134, "70", 14, W.biru, { z: 4 })),
     ),
     k(
-      SUARA_B4,
-      tambah(0, ...labelBaris(3)),
-      tambah(idx(SUARA_B4, "ribuan,"), selBaris(3, 0)),
-      tambah(idx(SUARA_B4, "semuanya"), selBaris(3, 1), selBaris(3, 2), selBaris(3, 3)),
+      SUARA_N2,
+      sorotkan("digabung,", "b1-k", "b2-k", "b3-k"),
+      ubah("hasilnya", { id: "ur", isi: "5.000 + 200 + 70 = 5.270", u: 16 }),
+      tambah("lima", teks("hs", 150, 176, "5.270", 26, W.merah)),
     ),
     k(
-      SUARA_B5,
-      tambah(0, ...labelBaris(4)),
-      tambah(idx(SUARA_B5, "ribuan,"), selBaris(4, 0)),
-      tambah(idx(SUARA_B5, "ratusan,"), selBaris(4, 1)),
-      tambah(idx(SUARA_B5, "puluhan,"), selBaris(4, 2)),
-      tambah(idx(SUARA_B5, "satuan."), selBaris(4, 3)),
+      SUARA_N3,
+      tambah("Nol", ...wadah("b4", 250, 112, 34, 36), teks("z0", 267, 134, "0", 14, W.biru, { z: 4 }), teks("n4", 267, 162, "satuan", 8.4, W.ungu)),
+      ubah("tidak", { id: "b4-k", op: 0.3 }, { id: "b4-h", op: 0.3 }, { id: "z0", op: 0.5 }),
+      tambah("ditulis", emo("xz", 292, 118, E.salah, 14)),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. Satria memanjat ------------------------------ */
+const SUARA_M1 = "Satria menghela napas dan mulai memanjat pohon kelapa itu.";
+const SUARA_M2 = "Pak Hendro berseru dari bawah, hati-hati, jangan terlalu tinggi!";
+const SUARA_M3 = "Satria turun lagi dengan wajah merah, membawa satu kelapa sebagai tanda bukti.";
+
+export const ADEGAN_PANJAT: AdeganStory = {
+  id: "panjat",
+  judul: "Satria memanjat pohon kelapa",
+  sumber: "Materi: memanjat pohon",
+  latar: "#FEF2F2",
+  ketukan: [
+    k(
+      SUARA_M1,
+      tambah(0, judul("Satria Memanjat"), ...pasir("ps", 150)),
+      tambah("Satria", emo("sat", 150, 168, E.satria, 26), teks("sn", 150, 186, "Satria", 8.4, W.ungu)),
+      tambah("napas", teks("hh", 118, 140, "huh...", 9, W.coklat)),
+      tambah("pohon", pohon("pk", 200, 150, 90)),
+      ubah("memanjat", { id: "sat", x: 200, y: 120 }, { id: "sn", x: 200, y: 136 }),
     ),
     k(
-      SUARA_B6,
-      tambah(idx(SUARA_B6, "Sembilan"), teks("bq", 150, 168, "9.000 + 900 + 90 + 9 = 9.999", 12, W.biru)),
-      tambah(idx(SUARA_B6, "sama"), emo("br", 270, 170, "✅", 22)),
+      SUARA_M2,
+      tambah("Pak", ...tokoh("ph", 60, 184, "Pak Hendro")),
+      tambah("berseru", emo("tg", 92, 150, E.tangan, 20)),
+      tambah("hati-hati,", teks("ht", 90, 112, "hati-hati!", 11, W.merah)),
+    ),
+    k(
+      SUARA_M3,
+      ubah("turun", { id: "sat", x: 150, y: 170 }, { id: "sn", x: 150, y: 186 }),
+      ubah("wajah", { id: "sat", isi: E.malu }),
+      tambah("membawa", emo("kl2", 168, 166, E.kelapa, 16)),
+      tambah("satu", teks("s1", 236, 138, "1 kelapa", 11, W.merah)),
+      tambah("bukti.", ...wadah("kc", 226, 148, 34, 24), emo("kj", 243, 162, E.kelapa, 14, { z: 4 })),
     ),
   ],
 };

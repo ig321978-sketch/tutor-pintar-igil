@@ -1,9 +1,12 @@
 import type { Obj } from "./logika-story";
 
 /**
- * Gambar khusus Story Kelas 4 Bab 1 Sub-Bab F (Pengurangan Bilangan Cacah sampai 1.000): tabel nilai tempat, balok ratusan-puluhan-satuan,
- * garis lompatan (hitung naik), batang sisa untuk soal cerita, dan kartu. Berkas ini TIDAK dipakai bab lain. Semua fungsi mengembalikan data benda (Obj).
- * Balok bernama `id-r{n}` (ratusan), `id-p{n}` (puluhan), `id-s{n}` (satuan) supaya uji bisa menghitung ulang banyak benda dari gambar.
+ * Gambar khusus Story Kelas 4 Bab 1 Sub-Bab F "Papan Sisa Pak Usman" (pengurangan bersusun sampai seribu), cerita Penginapan Pulau Karang Indah.
+ * Berkas ini TIDAK dipakai bab atau sub-bab lain.
+ *
+ * Rupa: dermaga kayu di tepi laut, perahu, koper, sandal dalam ember berbusa, papan susun tiga tempat angka (ratusan, puluhan, satuan), garis lompatan, kartu bilangan.
+ * Tokoh: Satria (kaus biru), Laras (berkacamata, berkepang satu, berkertas saku), Genta (berpeci), Pak Hendro (topi pantai, berpeluit, bertas kain),
+ * Pak Usman (petugas dermaga berseragam putih, berpeluit, berpapan jepit), Bu Marni (bercaping lebar). Tanpa ZWJ, emoji paling tinggi U+1FA95.
  */
 
 export const W = {
@@ -12,208 +15,212 @@ export const W = {
   merah: "#DC2626",
   hijau: "#16A34A",
   putih: "#FFFFFF",
-  hitam: "#1F2937",
   abu: "#CBD5E1",
   ungu: "#7C3AED",
   coklat: "#92400E",
   krem: "#FEF9C3",
   langit: "#DBEAFE",
-  jingga: "#FDBA74",
-  merahMuda: "#FECACA",
   hijauMuda: "#DCFCE7",
-  pink: "#FBCFE8",
-  lavender: "#EDE9FE",
-  oranye: "#FBA919",
-  biruMuda: "#2B8FD0",
+  merahMuda: "#FECACA",
+  laut: "#BAE6FD",
+  kayu: "#C99A63",
+  kayuTua: "#6B4423",
+  /** Papan tulis: hijau tua, kapur krem dan merah muda. */
+  papan: "#14532D",
+  kapur: "#FEF9C3",
+  kapurMerah: "#FCA5A5",
+  pasir: "#FDE68A",
 };
 
+export const E = {
+  satria: "\u{1F466}",
+  laras: "\u{1F467}",
+  genta: "\u{1F9D2}",
+  pak: "\u{1F468}",
+  bu: "\u{1F469}",
+  senyum: "\u{1F60A}",
+  cemberut: "\u{1F620}",
+  mendesah: "\u{1F625}",
+  pikir: "\u{1F914}",
+  tanya: "\u{2753}",
+  benar: "\u{2705}",
+  salah: "\u{274C}",
+  lambai: "\u{1F44B}",
+  catat: "\u{1F4DD}",
+  tangan: "\u{270B}",
+  gelengan: "\u{1F645}",
+  perahu: "\u{26F5}",
+  perahuKecil: "\u{1F6F6}",
+  sandal: "\u{1F461}",
+  koper: "\u{1F9F3}",
+  mata: "\u{1F440}",
+  ulang: "\u{1F501}",
+  lampu: "\u{1F4A1}",
+  pohon: "\u{1F334}",
+  jempol: "\u{1F44D}",
+} as const;
+
 type Opsi = Partial<Obj>;
+const bulatkan = (n: number): number => Math.round(n * 10) / 10;
 
 export const teks = (id: string, x: number, y: number, isi: string, u = 10, warna: string = W.biru, o: Opsi = {}): Obj => ({ id, t: "teks", x, y, isi, u, warna, ...o });
-export const kotak = (id: string, x: number, y: number, w: number, h: number, warna: string, garis: string | undefined = W.biru, o: Opsi = {}): Obj => ({ id, t: "kotak", x, y, w, h, warna, garis, rx: 3, tebal: 1.5, ...o });
-export const bulat = (id: string, x: number, y: number, r: number, warna: string, garis: string | undefined = W.biru, o: Opsi = {}): Obj => ({ id, t: "bulat", x, y, r, warna, garis, tebal: 1.5, ...o });
+export const kotak = (id: string, x: number, y: number, w: number, h: number, warna: string | undefined, garis: string | undefined = W.biru, o: Opsi = {}): Obj => ({ id, t: "kotak", x, y, w, h, warna, garis, rx: 3, tebal: 1.5, ...o });
+export const bulat = (id: string, x: number, y: number, r: number, warna: string | undefined, garis: string | undefined = W.biru, o: Opsi = {}): Obj => ({ id, t: "bulat", x, y, r, warna, garis, tebal: 1.5, ...o });
 export const garis = (id: string, x: number, y: number, x2: number, y2: number, warna: string = W.biru, tebal = 2, o: Opsi = {}): Obj => ({ id, t: "garis", x, y, x2, y2, warna, tebal, ...o });
 export const panah = (id: string, x: number, y: number, x2: number, y2: number, warna: string = W.biru, tebal = 2, o: Opsi = {}): Obj => ({ id, t: "panah", x, y, x2, y2, warna, tebal, ...o });
 export const emo = (id: string, x: number, y: number, e: string, u = 22, o: Opsi = {}): Obj => ({ id, t: "teks", x, y, isi: e, u, warna: W.biru, ...o });
-
+/** Bentuk tertutup dari titik-titik absolut. */
+export const poligon = (id: string, titik: [number, number][], warna: string | undefined, garisW: string | undefined = W.biru, o: Opsi = {}): Obj => {
+  const [x0, y0] = titik[0];
+  const d = `M0 0 ${titik
+    .slice(1)
+    .map(([a, b]) => `L${bulatkan(a - x0)} ${bulatkan(b - y0)}`)
+    .join(" ")} Z`;
+  return { id, t: "jalur", x: x0, y: y0, d, warna, garis: garisW, tebal: 1.6, ...o };
+};
 /** Judul adegan di tengah atas. */
 export const judul = (isi: string, warna: string = W.ungu): Obj => teks("jud", 150, 18, isi, 11, warna);
 
-/** Kartu berwarna dengan satu sampai tiga baris teks, pojok kiri-atas (x, y). */
-export function kartu(id: string, x: number, y: number, w: number, h: number, warna: string, baris: string[], u = 8.6, o: Opsi = {}): Obj[] {
+/** Kartu berwarna dengan satu sampai tiga baris teks, pojok kiri-atas (x, y): `${id}-k`, `${id}-t{i}`. */
+export function kartu(id: string, x: number, y: number, w: number, h: number, warna: string, baris: string[], u = 9, o: Opsi = {}): Obj[] {
   const mulai = y + h / 2 - ((baris.length - 1) * (u + 3)) / 2 + u * 0.35;
   return [kotak(`${id}-k`, x, y, w, h, warna, W.biru, { rx: 8, ...o }), ...baris.map((b, i) => teks(`${id}-t${i}`, x + w / 2, mulai + i * (u + 3), b, u, W.biru, o))];
 }
-
-/** Satu baris tabel umum: id sel `${id}-s{kolom}` (kotak) dan `${id}-t{kolom}` (teks). */
-export function barisTabel(id: string, x: number, y: number, kolW: number[], isi: string[], tinggi = 16, u = 8, kepala = false, o: Opsi = {}): Obj[] {
-  const out: Obj[] = [];
-  let px = x;
-  isi.forEach((sel, c) => {
-    out.push(kotak(`${id}-s${c}`, px, y, kolW[c], tinggi, kepala ? W.krem : W.putih, W.biru, { rx: 0, tebal: 1, ...o }));
-    if (sel) out.push(teks(`${id}-t${c}`, px + kolW[c] / 2, y + tinggi / 2 + u * 0.35, sel, u, kepala || c === 0 ? W.biru : W.hijau, o));
-    px += kolW[c];
-  });
-  return out;
+/** Kartu bilangan `${id}-k` bertuliskan `${id}-t0`: kotak putih 46 x 36, angka besar. Pojok kiri-atas (x, y). */
+export function kartuBil(id: string, x: number, y: number, n: number | string, warna = "#FFFFFF", w = 46, h = 36, u = 18): Obj[] {
+  return kartu(id, x, y, w, h, warna, [String(n)], u, { z: 2 });
 }
 
-/* ------------------------------ Data dari Buku Siswa dan Panduan Guru ------------------------------ */
+/* ------------------------------ Dermaga, laut, ember ------------------------------ */
+/** Laut `${id}` setinggi `tinggi` mulai y, dua gelombang `${id}-g1`, `${id}-g2`. */
+export function laut(id: string, y = 120, tinggi = 196 - y): Obj[] {
+  return [kotak(id, 2, y, 296, tinggi, W.laut, undefined, { rx: 0, tebal: 0, z: -3 }), garis(`${id}-g1`, 8, y + 14, 90, 0, "#7DD3FC", 1.6, { z: -2, putus: true }), garis(`${id}-g2`, 150, y + Math.min(30, tinggi - 8), 120, 0, "#7DD3FC", 1.6, { z: -2, putus: true })];
+}
+/** Pasir `${id}` dari tinggi y sampai bawah kanvas. */
+export const pasir = (id: string, y = 104): Obj => kotak(id, 2, y, 296, 196 - y, W.pasir, undefined, { rx: 0, tebal: 0, z: -4 });
+/** Papan tulis hijau tua berbingkai kayu: bingkai `${id}`, papan `${id}-p`. Pojok kiri-atas (x, y). */
+export function papanTulis(id: string, x: number, y: number, w: number, h: number): Obj[] {
+  return [kotak(id, x, y, w, h, "#8B5A2B", "#451A03", { rx: 4, tebal: 1.6, z: -1 }), kotak(`${id}-p`, x + 5, y + 5, w - 10, h - 10, W.papan, "#052E16", { rx: 2, tebal: 1, z: 0 })];
+}
+/** Dermaga kayu `${id}` (lantai papan) dengan tiang `${id}-t1`, `${id}-t2`. Pojok kiri-atas (x, y), lebar w. */
+export function dermaga(id: string, x: number, y: number, w = 150): Obj[] {
+  return [kotak(id, x, y, w, 10, W.kayu, W.kayuTua, { rx: 1, tebal: 1.2, z: 0 }), kotak(`${id}-t1`, x + 8, y + 10, 6, 26, W.kayuTua, undefined, { rx: 1, tebal: 0, z: -1 }), kotak(`${id}-t2`, x + w - 14, y + 10, 6, 26, W.kayuTua, undefined, { rx: 1, tebal: 0, z: -1 })];
+}
+/** Ember `${id}` berisi busa: badan `${id}`, busa `${id}-b1`, `${id}-b2`, `${id}-b3`. Pojok kiri-atas (x, y). */
+export function ember(id: string, x: number, y: number): Obj[] {
+  return [
+    kotak(id, x, y, 34, 24, "#60A5FA", "#1E3A8A", { rx: 4, tebal: 1.4, z: 1 }),
+    bulat(`${id}-b1`, x + 8, y - 1, 5, "#FFFFFF", "#93C5FD", { tebal: 1, z: 2 }),
+    bulat(`${id}-b2`, x + 18, y - 4, 6, "#FFFFFF", "#93C5FD", { tebal: 1, z: 2 }),
+    bulat(`${id}-b3`, x + 27, y - 1, 5, "#FFFFFF", "#93C5FD", { tebal: 1, z: 2 }),
+  ];
+}
+export const idEmber = (id: string): string[] => [id, `${id}-b1`, `${id}-b2`, `${id}-b3`];
 
-/** Ayo Mengamati hlm. 34: 265 buku dikurangi 132 buku yang dipinjam, sisa 133 (tanpa mengambil). */
-export const AMATI = { buku: 265, pinjam: 132, sisa: 133 } as const;
-/** hlm. 35: satu kali mengambil. */
-export const SATU_KALI = { a: 241, b: 129, hasil: 112 } as const;
-/** hlm. 36: dua kali mengambil (susun panjang). */
-export const DUA_KALI = { a: 253, b: 176, hasil: 77 } as const;
-/** hlm. 36: susun pendek dengan mengambil. */
-export const PENDEK = { a: 241, b: 175, hasil: 66 } as const;
-/** Stimulus Panduan Guru hlm. 55: 27 dikurangi 19. Hasil 8 adalah hitungan mandiri video (guru tidak menjawabnya di buku). */
-export const STIMULUS = { a: 27, b: 19, hasil: 8, jawabanSiswa: 12 } as const;
-/** Ayo Berlatih 1 a sampai d (hlm. 37; kunci Panduan Guru hlm. 56): [bilangan pertama, pengurang, hasil kunci]. */
-export const LATIHAN_1: readonly (readonly [number, number, number])[] = [
-  [633, 211, 422],
-  [879, 436, 443],
-  [522, 148, 374],
-  [367, 289, 78],
-];
-/** Ayo Berlatih 2 a sampai d (hlm. 37-38; kunci Panduan Guru hlm. 57). */
-export const LATIHAN_2: readonly (readonly [number, number, number])[] = [
-  [573, 268, 305],
-  [422, 146, 276],
-  [623, 292, 331],
-  [344, 279, 65],
-];
-/** Ayo Berlatih 3 a sampai e (hlm. 38; kunci Panduan Guru hlm. 57). */
-export const LATIHAN_3: readonly (readonly [number, number, number])[] = [
-  [455, 328, 127],
-  [832, 622, 210],
-  [712, 89, 623],
-  [600, 235, 365],
-  [505, 77, 428],
-];
-/** Ayo Berlatih 4 (hlm. 38; kunci Panduan Guru hlm. 58): soal a sampai e dan jawaban yang ditarik. Soal c: 398 dikurangi 291 dikurangi 66. */
-export const LATIHAN_4 = {
-  soal: ["689 − 233", "912 − 67", "398 − 291 − 66", "720 − 89", "300 − 34"],
-  jawabanKolom: [845, 266, 456, 41, 631],
-  garis: [456, 845, 41, 631, 266],
-} as const;
-/** Ayo Berlatih 5 a sampai d (hlm. 39; kunci Panduan Guru hlm. 58-59): [total, bagian diambil, sisa kunci]. */
-export const CERITA: readonly (readonly [number, number, number])[] = [
-  [333, 129, 204],
-  [765, 179, 586],
-  [427, 218, 209],
-  [128, 79, 49],
-];
-
-/* ------------------------------ Tabel nilai tempat ------------------------------ */
-
-export const WARNA_KOLOM = [W.langit, W.hijauMuda, W.merahMuda] as const;
+/* ------------------------------ Papan susun tiga tempat angka ------------------------------ */
+const WARNA_KOLOM = [W.langit, W.hijauMuda, W.merahMuda] as const;
 const NAMA_KOLOM = ["Ratusan", "Puluhan", "Satuan"] as const;
-
-/** Baris kepala tabel nilai tempat: sel `${id}-s{kolom}`, teks `${id}-t{kolom}`. Pojok kiri-atas (x, y). */
-export function kepalaNT(id: string, x: number, y: number, cw = 44, rh = 15, u = 7.4, o: Opsi = {}): Obj[] {
-  return NAMA_KOLOM.flatMap((n, c) => [kotak(`${id}-s${c}`, x + c * cw, y, cw, rh, W.abu, W.biru, { rx: 0, tebal: 1, ...o }), teks(`${id}-t${c}`, x + c * cw + cw / 2, y + rh / 2 + u * 0.35, n, u, W.biru, o)]);
-}
-
-/** Satu baris angka tabel nilai tempat (tiga sel berwarna per kolom). Isi kosong tetap menggambar selnya. */
-export function barisNT(id: string, x: number, y: number, isi: readonly string[], cw = 44, rh = 18, u = 10, warnaTeks: string = W.biru, o: Opsi = {}): Obj[] {
-  return isi.flatMap((s, c) => [kotak(`${id}-s${c}`, x + c * cw, y, cw, rh, WARNA_KOLOM[c], W.biru, { rx: 0, tebal: 1, ...o }), ...(s ? [teks(`${id}-t${c}`, x + c * cw + cw / 2, y + rh / 2 + u * 0.35, s, u, warnaTeks, o)] : [])]);
-}
-
-/** Angka kecil penanda mengambil di atas kolom (merah). Teks `${id}-m{kolom}`; kolom kosong dilewati. */
-export function tandaAmbil(id: string, x: number, y: number, isi: readonly string[], cw = 44, u = 9, o: Opsi = {}): Obj[] {
-  return isi.flatMap((s, c) => (s ? [teks(`${id}-m${c}`, x + c * cw + cw / 2, y, s, u, W.merah, o)] : []));
-}
-
-/** Tabel nilai tempat utuh: kepala `${id}h`, baris `${id}r{i}`. Garis pengurangan dengan tanda minus di kanan baris kedua. Pojok kiri-atas (x, y). */
-export function tabelNT(id: string, x: number, y: number, baris: readonly (readonly string[])[], cw = 44, rh = 18, u = 10, o: Opsi = {}): Obj[] {
-  const out = kepalaNT(`${id}h`, x, y, cw, 15, 7.4, o);
-  baris.forEach((b, i) => out.push(...barisNT(`${id}r${i}`, x, y + 15 + i * rh, b, cw, rh, u, i === baris.length - 1 && baris.length >= 3 ? W.hijau : W.biru, o)));
-  if (baris.length >= 3) out.push(teks(`${id}-min`, x + 3 * cw + 7, y + 15 + 2 * rh - 2, "−", 12, W.biru, o));
-  return out;
-}
-
 /** Digit [ratusan, puluhan, satuan] bilangan sampai 999. */
 export const digit3 = (n: number): [number, number, number] => [Math.floor(n / 100), Math.floor(n / 10) % 10, n % 10];
 
 /**
- * Angka penanda mengambil gaya kunci Panduan Guru hlm. 57: nilai efektif tiap kolom setelah mengambil (sisa setelah dipinjam, atau tambah sepuluh), kosong bila kolom tidak berubah.
- * Contoh 573 − 268: ["", "6", "13"]; 422 − 146: ["3", "11", "12"].
+ * Papan susun: kepala tiga tempat angka (kotak `${id}-hk{c}`, teks `${id}-ht{c}`), baris atas (kotak `${id}-ka{c}`, teks `${id}-ta{c}`),
+ * baris bawah (kotak `${id}-kb{c}`, teks `${id}-tb{c}`), tanda kurang `${id}-mn`, garis `${id}-gs`, baris hasil (kotak `${id}-kh{c}`, teks `${id}-th{c}`).
+ * Isi kosong tetap menggambar kotaknya tanpa teks. Pojok kiri-atas (x, y); lebar tiap tempat `cw`, tinggi tiap baris `rh`.
  */
-export function tandaPendek(a: number, b: number): string[] {
-  const asal = digit3(a);
-  const bd = digit3(b);
-  const e = [...asal];
-  for (let i = 2; i >= 1; i -= 1) {
-    if (e[i] < bd[i]) {
-      e[i] += 10;
-      e[i - 1] -= 1;
-    }
-  }
-  return e.map((v, i) => (v !== asal[i] ? String(v) : ""));
-}
-
-/** Satu sel hasil yang diisi kemudian: teks `${id}-t${kolom}` pada baris `barisNT(id, x, y, ..., cw, rh, u)`. */
-export const isiSel = (id: string, x: number, y: number, kolom: number, isi: string, cw = 44, rh = 18, u = 10, warna: string = W.hijau, o: Opsi = {}): Obj => teks(`${id}-t${kolom}`, x + kolom * cw + cw / 2, y + rh / 2 + u * 0.35, isi, u, warna, o);
-
-/**
- * Tabel susun pendek satu soal pengurangan: kepala `${id}h`, baris `${id}r0` (bilangan pertama), `${id}r1` (pengurang), `${id}r2` (hasil, kosong dulu), tanda minus `${id}-min`.
- * `tanda(kolom)` penanda mengambil (teks `${id}m-m{kolom}`), `hasil(kolom)` isi sel hasil, `persamaan(y)` kalimat penuh. Pojok kiri-atas tabel (x, y); penanda di atasnya.
- */
-export function soalNT(id: string, a: number, b: number, x = 84, y = 50) {
-  const da = digit3(a).map(String);
-  const db = digit3(b).map(String);
-  const dh = digit3(a - b).map(String);
-  const dasar = [...kepalaNT(`${id}h`, x, y, 44, 15, 7.4), ...barisNT(`${id}r0`, x, y + 15, da, 44, 22, 12), ...barisNT(`${id}r1`, x, y + 37, db, 44, 22, 12), ...barisNT(`${id}r2`, x, y + 59, ["", "", ""], 44, 22, 12), teks(`${id}-min`, x + 3 * 44 + 9, y + 55, "−", 16, W.biru)];
-  const tanda = tandaAmbil(`${id}m`, x, y - 5, tandaPendek(a, b), 44, 11);
-  return {
-    dasar,
-    tanda: (c: number) => tanda.filter((o) => o.id === `${id}m-m${c}`),
-    hasil: (c: number) => isiSel(`${id}r2`, x, y + 59, c, dh[c], 44, 22, 12),
-    persamaan: (yy = 160) => teks(`${id}-eq`, 150, yy, `${a} − ${b} = ${a - b}`, 13, W.hijau),
-  };
-}
-
-/* ------------------------------ Balok nilai tempat ------------------------------ */
-
-/**
- * Balok: `rat` ratusan (kotak 20), `pul` puluhan (batang 5 kali 20), `sat` satuan (kotak 5), diskalakan `s`. Pojok kiri-atas (x, y).
- * Ratusan di x, puluhan di x + 56 s, satuan di x + 124 s (lima per baris). Id `${id}-r{i}`, `${id}-p{i}`, `${id}-s{i}`.
- */
-export function blok(id: string, x: number, y: number, rat: number, pul: number, sat: number, s = 1, o: Opsi = {}): Obj[] {
+export function papanSusun(id: string, x: number, y: number, atas: readonly string[], bawah: readonly string[], hasil: readonly string[] = ["", "", ""], cw = 44, rh = 22, u = 13, o: Opsi = {}): Obj[] {
   const out: Obj[] = [];
-  for (let i = 0; i < rat; i += 1) out.push(kotak(`${id}-r${i}`, x + i * 24 * s, y, 20 * s, 20 * s, W.langit, W.biru, { rx: 1, tebal: 1.2, ...o }));
-  for (let i = 0; i < pul; i += 1) out.push(kotak(`${id}-p${i}`, x + 56 * s + i * 7 * s, y, 5 * s, 20 * s, W.hijauMuda, W.hijau, { rx: 1, tebal: 1, ...o }));
-  for (let i = 0; i < sat; i += 1) out.push(kotak(`${id}-s${i}`, x + 124 * s + (i % 5) * 7 * s, y + Math.floor(i / 5) * 7 * s, 5 * s, 5 * s, W.merahMuda, W.merah, { rx: 1, tebal: 1, ...o }));
+  const baris = (kode: string, isi: readonly string[], yy: number, warnaTeks: string) =>
+    isi.forEach((s, c) => {
+      out.push(kotak(`${id}-k${kode}${c}`, x + c * cw, yy, cw, rh, WARNA_KOLOM[c], W.biru, { rx: 0, tebal: 1, ...o }));
+      if (s) out.push(teks(`${id}-t${kode}${c}`, x + c * cw + cw / 2, yy + rh / 2 + u * 0.35, s, u, warnaTeks, o));
+    });
+  NAMA_KOLOM.forEach((n, c) => {
+    out.push(kotak(`${id}-hk${c}`, x + c * cw, y, cw, 15, W.abu, W.biru, { rx: 0, tebal: 1, ...o }));
+    out.push(teks(`${id}-ht${c}`, x + c * cw + cw / 2, y + 10.5, n, 7.4, W.biru, o));
+  });
+  baris("a", atas, y + 15, W.biru);
+  baris("b", bawah, y + 15 + rh, W.biru);
+  out.push(teks(`${id}-mn`, x - 10, y + 15 + 2 * rh - 4, "−", 16, W.biru, o));
+  out.push(garis(`${id}-gs`, x - 2, y + 15 + 2 * rh + 1, 3 * cw + 4, 0, W.biru, 2.2, o));
+  baris("h", hasil, y + 15 + 2 * rh + 2, W.hijau);
   return out;
 }
+/** Teks isi sel baris 0 (atas), 1 (bawah), atau 2 (hasil) tempat ke-`c` pada papan `id` yang pojok kiri-atasnya (x, y), dengan id `idSel`. */
+export const isiSel = (id: string, x: number, y: number, baris: 0 | 1 | 2, c: number, isi: string, u = 13, warna: string = W.biru, cw = 44, rh = 22): Obj => {
+  const [cx, cy] = tengahSel(x, y, baris, c, cw, rh);
+  return teks(idSel(id, (["a", "b", "h"] as const)[baris], c), cx, Math.round((cy + u * 0.35) * 10) / 10, isi, u, warna, { z: 1 });
+};
+/** Teks angka sel baris atas (a), bawah (b), atau hasil (h) tempat ke-`c` (0 ratusan, 1 puluhan, 2 satuan) pada papan `id`. */
+export const idSel = (id: string, baris: "a" | "b" | "h", c: number): string => `${id}-t${baris}${c}`;
+/** Titik tengah sel (x, y) untuk menaruh teks tambahan: baris 0 atas, 1 bawah, 2 hasil. */
+export const tengahSel = (x: number, y: number, baris: number, c: number, cw = 44, rh = 22): [number, number] => [x + c * cw + cw / 2, y + 15 + baris * rh + (baris === 2 ? 2 : 0) + rh / 2];
 
-/** Id balok ratusan, puluhan, atau satuan nomor `dari` sampai `sampai` (tidak termasuk). */
-export const idBlok = (id: string, jenis: "r" | "p" | "s", dari: number, sampai: number): string[] => Array.from({ length: Math.max(0, sampai - dari) }, (_, i) => `${id}-${jenis}${dari + i}`);
-
-/* ------------------------------ Garis lompatan (hitung naik) ------------------------------ */
-
+/* ------------------------------ Garis lompatan ------------------------------ */
 /**
  * Garis lompatan tidak berskala: titik `stops` berjarak sama pada garis dari (x, y) sepanjang `panjang`; panah lompat di atas garis dengan label selisih.
- * Id: `${id}-g` (garis), `${id}-k{i}` (tanda), `${id}-n{i}` (angka titik di bawah), `${id}-a{i}` (panah), `${id}-j{i}` (label lompat "+selisih").
+ * Id: `${id}-g` (garis), `${id}-k{i}` (tanda), `${id}-n{i}` (angka titik di bawah), `${id}-a{i}` (panah), `${id}-j{i}` (label lompat).
  */
 export function garisLompat(id: string, x: number, y: number, panjang: number, stops: readonly number[], warna: string = W.merah, o: Opsi = {}): Obj[] {
   const langkah = panjang / (stops.length - 1);
   const out: Obj[] = [garis(`${id}-g`, x, y, panjang, 0, W.biru, 2, o)];
   stops.forEach((v, i) => {
-    out.push(garis(`${id}-k${i}`, x + i * langkah, y - 4, 0, 8, W.biru, 2, o), teks(`${id}-n${i}`, x + i * langkah, y + 17, String(v), 9.4, W.biru, o));
+    out.push(garis(`${id}-k${i}`, bulatkan(x + i * langkah), y - 4, 0, 8, W.biru, 2, o), teks(`${id}-n${i}`, bulatkan(x + i * langkah), y + 17, String(v), 9.4, W.biru, o));
     if (i > 0) {
-      out.push(panah(`${id}-a${i - 1}`, x + (i - 1) * langkah + 2, y - 6, langkah - 4, 0, warna, 2, o));
-      out.push(teks(`${id}-j${i - 1}`, x + (i - 0.5) * langkah, y - 12, `+${v - stops[i - 1]}`, 9.4, warna, o));
+      out.push(panah(`${id}-a${i - 1}`, bulatkan(x + (i - 1) * langkah + 2), y - 6, bulatkan(langkah - 4), 0, warna, 2, o));
+      out.push(teks(`${id}-j${i - 1}`, bulatkan(x + (i - 0.5) * langkah), y - 12, `+${v - stops[i - 1]}`, 9.4, warna, o));
     }
   });
   return out;
 }
 
-/* ------------------------------ Batang sisa (soal cerita) ------------------------------ */
+/* ------------------------------ Tokoh ------------------------------ */
+export type NamaTokoh = "Satria" | "Laras" | "Genta" | "Pak Hendro" | "Pak Usman" | "Bu Marni";
 
-/** Batang sepanjang `w` mewakili `total`; bagian kiri `bagian` (diambil) berwarna merah muda, sisanya hijau muda. Id `${id}-p` (bagian), `${id}-s` (sisa), `${id}-t` (rangka). */
-export function batangSisa(id: string, x: number, y: number, w: number, h: number, total: number, bagian: number, o: Opsi = {}): Obj[] {
-  const lb = (w * bagian) / total;
-  return [kotak(`${id}-p`, x, y, lb, h, W.merahMuda, W.biru, { rx: 0, tebal: 1.4, ...o }), kotak(`${id}-s`, x + lb, y, w - lb, h, W.hijauMuda, W.biru, { rx: 0, tebal: 1.4, ...o }), kotak(`${id}-t`, x, y, w, h, "none", W.biru, { rx: 0, tebal: 2, ...o })];
+/**
+ * Tokoh berdiri: wajah `${id}`, nama `${id}-n`. Satria berkaus biru `${id}-bj`; Laras berkacamata `${id}-k1` `${id}-k2`, berkepang satu `${id}-kp`, memegang kertas saku `${id}-kc`;
+ * Genta berpeci `${id}-pc` dan berkaus hijau `${id}-bj`; Pak Hendro berkaus jingga `${id}-bj`, bertopi pantai `${id}-tp`, berpeluit `${id}-pl`, bertas kain `${id}-ts`;
+ * Pak Usman berseragam putih `${id}-bj`, berpeluit `${id}-pl`, berpapan jepit `${id}-pk`; Bu Marni bercaping lebar `${id}-cp`. Tanpa ZWJ.
+ */
+export function tokoh(id: string, x: number, y0: number, nama: NamaTokoh, u = 30): Obj[] {
+  /* Baris tokoh standar (184) dinaikkan 10 supaya nama tokoh tidak menimpa keterangan sumber di pojok kanan bawah. */
+  const y = y0 === 184 ? 174 : y0;
+  const wajah = nama === "Satria" ? E.satria : nama === "Laras" ? E.laras : nama === "Genta" ? E.genta : nama === "Bu Marni" ? E.bu : E.pak;
+  const out: Obj[] = [emo(id, x, y, wajah, u, { z: 1 })];
+  const baju = (warna: string, garisW: string, tinggi = 9): Obj => kotak(`${id}-bj`, x - 11, bulatkan(y + 2), 22, tinggi, warna, garisW, { rx: 3, tebal: 1.2, z: 0 });
+  if (nama === "Satria") out.push(baju("#2563EB", "#1E3A8A"));
+  if (nama === "Genta") {
+    out.push(baju("#16A34A", "#14532D"));
+    out.push(kotak(`${id}-pc`, x - 8, bulatkan(y - u * 0.8), 16, 6, "#111827", "#030712", { rx: 2, tebal: 1, z: 2 }));
+  }
+  if (nama === "Laras") {
+    out.push(bulat(`${id}-k1`, x - 5, bulatkan(y - u * 0.28), 3.4, undefined, "#1F2937", { tebal: 1, z: 2 }));
+    out.push(bulat(`${id}-k2`, x + 5, bulatkan(y - u * 0.28), 3.4, undefined, "#1F2937", { tebal: 1, z: 2 }));
+    out.push(bulat(`${id}-kp`, x + 13, bulatkan(y - u * 0.15), 2.8, "#292524", "#0C0A09", { tebal: 0.8, z: 2 }));
+    out.push(kotak(`${id}-kc`, x + 12, bulatkan(y + 1), 9, 12, W.putih, "#94A3B8", { rx: 1, tebal: 0.9, z: 2 }));
+  }
+  if (nama === "Pak Hendro") {
+    out.push(baju("#F97316", "#9A3412", 12));
+    out.push(kotak(`${id}-tp`, x - 13, bulatkan(y - u * 0.78), 26, 5, "#FDE68A", "#B45309", { rx: 2, tebal: 1, z: 2 }));
+    out.push(kotak(`${id}-pl`, x - 3, bulatkan(y + 3), 6, 4, "#E5E7EB", "#6B7280", { rx: 1, tebal: 0.8, z: 2 }));
+    out.push(kotak(`${id}-ts`, x - 19, bulatkan(y + 3), 8, 11, "#A16207", "#451A03", { rx: 1, tebal: 0.9, z: 2 }));
+  }
+  if (nama === "Pak Usman") {
+    out.push(baju("#F8FAFC", "#64748B", 12));
+    out.push(kotak(`${id}-pl`, x - 3, bulatkan(y + 3), 6, 4, "#FACC15", "#A16207", { rx: 1, tebal: 0.8, z: 2 }));
+    out.push(kotak(`${id}-pk`, x + 11, bulatkan(y + 1), 10, 8, "#FEF3C7", "#92400E", { rx: 1, tebal: 0.9, z: 2 }));
+  }
+  if (nama === "Bu Marni") out.push(poligon(`${id}-cp`, [[x - 17, bulatkan(y - u * 0.62)], [x, bulatkan(y - u * 1.0)], [x + 17, bulatkan(y - u * 0.62)]], "#F5D68A", "#92400E", { tebal: 1.1, z: 2 }));
+  out.push(teks(`${id}-n`, x, bulatkan(y + (nama === "Pak Hendro" || nama === "Pak Usman" ? 18 : 15)), nama, 8.4, W.ungu, { z: 3 }));
+  return out;
 }
+export const idTokoh = (id: string, nama: NamaTokoh): string[] => [
+  id,
+  `${id}-n`,
+  ...(nama === "Satria" ? [`${id}-bj`] : []),
+  ...(nama === "Genta" ? [`${id}-bj`, `${id}-pc`] : []),
+  ...(nama === "Laras" ? [`${id}-k1`, `${id}-k2`, `${id}-kp`, `${id}-kc`] : []),
+  ...(nama === "Pak Hendro" ? [`${id}-bj`, `${id}-tp`, `${id}-pl`, `${id}-ts`] : []),
+  ...(nama === "Pak Usman" ? [`${id}-bj`, `${id}-pl`, `${id}-pk`] : []),
+  ...(nama === "Bu Marni" ? [`${id}-cp`] : []),
+];

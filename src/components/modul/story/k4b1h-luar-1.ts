@@ -1,254 +1,155 @@
-import type { AdeganStory } from "./logika-story";
-import { ANAK, W, benda, bulat, emo, judul, kaleng, kartu, kotak, teks, wadah } from "./k4b1h-gambar";
-import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1h-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, bulat, emo, kartu, kotak, lorong, papanJatah, teks, tokoh, judul } from "./k4b1h-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b1h-bantu";
 
-export const NAMA_METODE = ["Fair Share", "Measurement Division", "Inverse of Multiply", "Repeated Subtraction"];
-export const NAMA_METODE_ID = ["Bagi Rata", "Bagi Ukur", "Kebalikan Kali", "Pengurangan Berulang"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
-const IKON_METODE = ["🍬", "📏", "🔁", "➖"];
+/*
+ * Cerita orisinal IGIL "Papan Jatah Bu Ratna" (Kelas 4 Bab 1 Sub-Bab H), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b1h.md. Bagian ini: pembuka (lemari papan jatah), Equal Sharing (Bagi Rata), dan terapannya.
+ */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Equal Sharing", "Repeated Subtraction", "Long Division"] as const;
+export const NAMA_METODE_ID = ["Bagi Rata", "Kurang Berulang", "Bagi Susun"] as const;
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana membagi empat puluh delapan permen kepada empat anak? Guru di berbagai negara punya cara berbeda. Di video ini kita lihat empat metode dari luar, memakai soal pembagian yang sama.";
-const SUARA_O2 = "Empat metode itu: Fair Share, Measurement Division, Inverse of Multiply, dan Repeated Subtraction.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Bagi Rata, Bagi Ukur, Kebalikan Kali, dan Pengurangan Berulang. Metode keempat cocok sekali dengan soal pembagian bilangan cacah.";
-const SUARA_O4 = "Semuanya menjawab pertanyaan yang sama dengan cara berbeda: berapa tiap anak, atau berapa kotak, ketika benda dibagi sama banyak.";
+const KUNING_KARTU = "#FEF3C7";
+const BIRU_MUDA = "#BFDBFE";
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Malam itu, di lorong kamar, Bu Ratna membuka lemari yang penuh papan jatah dan kartu.";
+const SUARA_O2 = "Di dalamnya ada tiga cara untuk membagi bilangan, supaya semua kamar mendapat bagian yang adil.";
+const SUARA_O3 = "Tiga cara itu: Equal Sharing, Repeated Subtraction, dan Long Division.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Bagi Rata, Kurang Berulang, dan Bagi Susun.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk pembagian sampai 100",
-  sumber: "Metode luar: pembuka",
+  judul: "Lemari papan jatah Bu Ratna",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
       SUARA_O1,
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("empat", ...kaleng("kl", 18, 66, 46, 54), teks("klt", 41, 100, "48", 15, W.putih)),
-      tambah("anak?", ...ANAK.map((_, i) => emo(`ka${i}`, 112 + i * 40, 98, "🧒", 24)), teks("kq", 262, 104, "?", 40, W.merah)),
-      tambah("berbagai", emo("gl", 40, 168, "🌍", 30)),
-      tambah("empat@2", ...kartu("pk4", 76, 144, 200, 34, W.emas, ["4 metode dari luar"], 9.6)),
+      tambah(0, judul("Malam di Lorong"), ...lorong("lr", 150), ...tokoh("br", 60, 184, "Bu Ratna")),
+      tambah("lemari", kotak("lm", 196, 96, 86, 54, "#C99A63", W.kayuTua, { rx: 3, z: 1 }), kotak("lm-d", 237, 98, 2, 50, W.kayuTua, undefined, { rx: 0, tebal: 0, z: 2 })),
+      tambah("papan", ...kartu("pn", 202, 104, 32, 38, KUNING_KARTU, ["papan"], 7)),
+      tambah("kartu.", ...kartu("kr", 242, 104, 32, 38, BIRU_MUDA, ["kartu"], 7)),
     ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Empat metode")),
-      ...NAMA_METODE.map((m, i) => tambah(idx(SUARA_O2, ["Fair", "Measurement", "Inverse", "Repeated"][i]), ...kartu(`m${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
+      tambah("tiga", teks("n3", 200, 70, "3 cara", 12, W.ungu)),
+      tambah("cara", ...[0, 1, 2].flatMap((i) => [kotak(`c${i}-k`, 20 + i * 30, 50, 26, 30, KUNING_KARTU, W.biru, { rx: 4 }), teks(`c${i}-t`, 33 + i * 30, 69, "cara", 6.4, W.biru)])),
+      tambah("adil.", teks("ad", 150, 118, "bagian yang adil", 9, W.hijauTua), emo("ok", 60, 120, E.benar, 20)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Nama dalam bahasa Indonesia")),
-      ...NAMA_METODE_ID.map((m, i) => tambah(idx(SUARA_O3, ["Rata", "Ukur", "Kebalikan", "Pengurangan"][i]), ...kartu(`n${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
-      tambah("keempat", emo("n4", 268, 148, "⭐", 20)),
+      tambah(0, judul("Tiga Cara"), ...papanJatah("pt", 8, 28, 284, 124), teks("n3", 150, 50, "3 cara", 11, W.ungu)),
+      tambah("Equal", teks("m0", 150, 76, "1. Equal Sharing", 11, W.biru)),
+      tambah("Repeated", teks("m1", 150, 102, "2. Repeated Subtraction", 11, W.biru)),
+      tambah("Long", teks("m2", 150, 128, "3. Long Division", 11, W.biru)),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Satu pertanyaan, empat cara")),
-      tambah("Semuanya", ...IKON_METODE.map((e, i) => emo(`i${i}`, 45 + i * 70, 82, e, 30))),
-      tambah("berapa", teks("i0t", 45, 108, "tiap anak", 8.2, W.biru), teks("i1t", 115, 108, "banyak kotak", 8.2, W.biru)),
-      tambah("benda", teks("i2t", 185, 108, "cek dengan kali", 8.2, W.biru), teks("i3t", 255, 108, "hitung kurang", 8.2, W.biru)),
-      tambah("sama@2", ...kartu("iq", 30, 130, 240, 34, W.emas, ["benda dibagi sama banyak"], 9.6)),
+      tambah("Bagi", teks("g0", 150, 88, "Bagi Rata", 9, W.ungu)),
+      tambah("Kurang", teks("g1", 150, 114, "Kurang Berulang", 9, W.ungu)),
+      tambah("Bagi@2", teks("g2", 150, 140, "Bagi Susun", 9, W.ungu)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Fair Share: konsep ------------------------------ */
-const SUARA_P1 = "Metode pertama, Fair Share, atau Bagi Rata. Yang diketahui banyak benda dan banyak kelompok, yang dicari isi tiap kelompok.";
-const SUARA_P2 = "Bagikan satu per satu secara bergantian ke tiap wadah, seperti membagi kartu. Contoh: sepuluh kelereng untuk lima orang.";
-const SUARA_P3 = "Putaran kedua: tiap wadah kembali mendapat satu. Sepuluh kelereng habis, dan setiap wadah berisi dua.";
-const SUARA_P4 = "Aturannya: semua benda harus terbagi, dan tiap wadah harus sama banyak. Kalau ada sisa, benda itu tidak habis dibagi rata.";
+/* ------------------------------ Equal Sharing: konsep ------------------------------ */
+const SUARA_R1 = "Cara pertama, Equal Sharing, atau Bagi Rata.";
+const SUARA_R2 = "Benda dibagikan satu per satu ke tiap wadah, bergiliran, sampai habis.";
+const SUARA_R3 = "Banyaknya benda di satu wadah adalah hasil bagi.";
+const SUARA_R4 = "Kalau ada benda yang tersisa dan tidak cukup untuk satu putaran, itulah sisanya.";
+const WX = [50, 125, 200];
+const WY = 104;
+/** Tempat benda ke-`i` (0 sampai 11) setelah dibagi: wadah `i mod 3`, kolom putaran `i div 3`. */
+const tempat = (i: number): { x: number; y: number } => ({ x: WX[i % 3] + 10 + Math.floor(i / 3) * 12, y: WY + 18 });
+const awalBenda = (i: number): Obj => bulat(`it${i}`, 40 + i * 18, 48, 4.5, i % 2 === 0 ? "#FDBA74" : "#93C5FD", "#7C2D12", { tebal: 0.9, z: 4 });
+const putaran = (r: number) => [0, 1, 2].map((j) => ({ id: `it${r * 3 + j}`, ...tempat(r * 3 + j) }));
 
-const WD5 = [0, 1, 2, 3, 4];
-const wadahLima = () => WD5.flatMap((i) => wadah(`b${i}`, 8 + i * 58, 96, 52, 46, `orang ${i + 1}`, 8));
-const isiLima = (dari: number, sampai: number) => WD5.flatMap((i) => benda(`d${i}`, 22 + 8 + i * 58 - 8, 108, 2, 2, 24, 7, W.biruMuda).slice(dari, sampai));
-
-export const ADEGAN_LUAR_BAGI_RATA: AdeganStory = {
-  id: "luar-bagi-rata",
-  judul: "Fair Share: isi tiap kelompok dari bagian bergantian",
-  sumber: "Metode luar: Fair Share",
+export const ADEGAN_LUAR_RATA: AdeganStory = {
+  id: "luar-rata",
+  judul: "Equal Sharing: Bagi Rata",
+  sumber: "Metode global: Equal Sharing (konsep)",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_P1,
-      tambah(0, judul("Fair Share")),
-      tambah("Metode", kepala(0)),
-      tambah("benda", ...benda("kp", 105, 66, 10, 10, 10, 4, W.biruMuda), teks("kpt", 150, 86, "10 kelereng", 8.6, W.coklat)),
-      tambah("kelompok,", ...wadahLima()),
-      tambah("dicari", ...kartu("kq", 40, 164, 220, 28, W.emas, ["dicari: isi tiap wadah"], 9.6)),
-    ),
-    k(
-      SUARA_P2,
-      hapus(0, "kq-k", "kq-t0"),
-      tambah("satu", ...isiLima(0, 1)),
-      sorotkan("kartu,", "kpt"),
-      tambah("sepuluh", ...kartu("kq", 40, 164, 220, 28, W.krem, ["putaran 1: tiap wadah mendapat 1"], 9)),
-    ),
-    k(
-      SUARA_P3,
-      hapus(0, "kq-k", "kq-t0"),
-      tambah("kembali", ...isiLima(1, 2)),
-      tambah("habis,", ...kartu("kq", 40, 164, 220, 28, W.emas, ["10 : 5 = 2"], 11)),
-    ),
-    k(
-      SUARA_P4,
-      bersih(0),
-      tambah(0, judul("Dua aturan Fair Share")),
-      tambah("semua", ...kartu("at1", 12, 36, 276, 40, W.hijauMuda, ["1. semua benda harus terbagi"], 9.6)),
-      tambah("tiap", ...kartu("at2", 12, 88, 276, 40, W.langit, ["2. tiap wadah sama banyak"], 9.6)),
-      tambah("sisa,", ...kartu("at3", 12, 140, 276, 44, W.merahMuda, ["ada sisa: tidak habis dibagi rata"], 9.2)),
-    ),
-  ],
-};
-
-/* ------------------------------ 3. Fair Share: penerapan (permen Pak Wicak, soal a dan e) ------------------------------ */
-const SUARA_Q1 = "Terapkan pada permen Pak Wicak: empat puluh delapan permen untuk empat anak. Bagikan bergiliran, setiap putaran memberi satu permen kepada tiap anak.";
-const SUARA_Q2 = "Setelah dua belas putaran permen habis. Setiap anak mendapat dua belas permen, jadi empat puluh delapan dibagi empat sama dengan dua belas.";
-const SUARA_Q3 = "Soal pertama: tiga puluh enam permen untuk dua anak. Bagi bergiliran sampai habis, tiap anak mendapat delapan belas. Tini menerima delapan belas.";
-const SUARA_Q4 = "Soal berikutnya: lima puluh lima gantungan kunci untuk lima orang. Setiap orang mendapat sebelas, jadi Asep mendapat sebelas.";
-
-const WD4 = [0, 1, 2, 3];
-const NAMA5 = ["Azizah", "Karel", "Slamet", "Asep", "Helen"];
-
-export const ADEGAN_LUAR_BAGI_RATA_TERAPAN: AdeganStory = {
-  id: "luar-bagi-rata-terapan",
-  judul: "Fair Share pada soal: 48 permen, Tini, dan Asep",
-  sumber: "Metode luar: Fair Share, 48 permen",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(
-      SUARA_Q1,
-      tambah(0, judul("Fair Share: 48 permen")),
-      tambah("Terapkan", kepala(0)),
-      tambah("empat@2", ...WD4.flatMap((i) => wadah(`a${i}`, 8 + i * 73, 60, 66, 74, ANAK[i], 8))),
-      tambah("satu", ...WD4.flatMap((i) => benda(`a${i}`, 19 + i * 73, 74, 1, 4, 14, 4.4, W.oranye))),
-      tambah("anak.", teks("qe", 150, 178, "48 permen, 4 anak, bergiliran", 9, W.coklat)),
-    ),
-    k(
-      SUARA_Q2,
-      tambah("habis.", ...WD4.flatMap((i) => benda(`a${i}`, 19 + i * 73, 74, 12, 4, 14, 4.4, W.oranye).slice(1))),
-      ubah("Setiap", { id: "qe", isi: "tiap anak: 12 permen" }),
-      tambah("dibagi", ...kartu("qk", 60, 160, 180, 30, W.emas, ["48 : 4 = 12"], 11)),
-      hapus("dibagi", "qe"),
-    ),
-    k(
-      SUARA_Q3,
-      bersih(0),
-      tambah(0, judul("Soal a: 36 permen")),
-      tambah("Soal", ...kaleng("ka", 16, 62, 44, 52), teks("kat", 38, 94, "36", 15, W.putih)),
-      tambah("dua", ...kartu("ta", 84, 46, 96, 60, W.hijauMuda, ["Tono", "?"], 11)),
-      tambah("dua", ...kartu("ti", 190, 46, 96, 60, W.pink, ["Tini", "?"], 11)),
-      ubah("delapan", { id: "ta-t1", isi: "18" }, { id: "ti-t1", isi: "18" }),
-      tambah("Bagi", ...kartu("qa", 60, 140, 180, 34, W.emas, ["36 : 2 = 18"], 11)),
-      sorotkan("Tini", "ti-k"),
-    ),
-    k(
-      SUARA_Q4,
-      bersih(0),
-      tambah(0, judul("Soal e: 55 gantungan")),
-      tambah("gantungan", ...NAMA5.flatMap((n, i) => kartu(`ge${i}`, 6 + i * 58, 50, 54, 56, [W.hijauMuda, W.langit, W.krem, W.pink, W.lavender][i], [n, "?"], 8.4))),
-      tambah("Setiap", teks("qf", 150, 140, "55 : 5 = ?", 20, W.biru)),
-      ubah("sebelas", { id: "qf", isi: "55 : 5 = 11" }, ...NAMA5.map((_, i) => ({ id: `ge${i}-t1`, isi: "11" }))),
-      sorotkan("Asep", "ge3-k"),
-    ),
-  ],
-};
-
-/* ------------------------------ 4. Measurement Division: konsep ------------------------------ */
-const SUARA_R1 = "Metode kedua, Measurement Division, atau Bagi Ukur. Kebalikan dari Bagi Rata: yang diketahui isi tiap kelompok, yang dicari banyak kelompok.";
-const SUARA_R2 = "Ukur seperti mengambil takaran. Ambil lima kelereng sebagai satu kantong, lalu ambil lima lagi.";
-const SUARA_R3 = "Sepuluh kelereng, tiap kantong lima, jadi dua kantong. Kalau tiap kantong tiga, ada tiga kantong dan sisa satu, belum habis.";
-const SUARA_R4 = "Hasilnya sama dengan membagi: sepuluh dibagi lima sama dengan dua. Bedanya, dua di sini berarti dua kantong, bukan isi tiap kantong.";
-
-const baris10 = (id: string, y: number) => Array.from({ length: 10 }, (_, i) => bulat(`${id}-o${i}`, 24 + i * 26, y, 8, W.biruMuda, W.coklat, { tebal: 1 }));
-/** Sembilan kelereng dalam tiga kantong tiga-tiga (jarak antarkantong 84) ditambah satu kelereng sisa di ujung kanan. */
-const barisTiga = (id: string, y: number) => Array.from({ length: 10 }, (_, i) => bulat(`${id}-o${i}`, i < 9 ? 24 + Math.floor(i / 3) * 84 + (i % 3) * 26 : 276, y, 8, i < 9 ? W.biruMuda : W.merah, W.coklat, { tebal: 1 }));
-const kantong = (id: string, x: number, y: number, w: number) => kotak(id, x, y, w, 32, W.langit, W.hijau, { rx: 8, z: -1 });
-
-export const ADEGAN_LUAR_BAGI_UKUR: AdeganStory = {
-  id: "luar-bagi-ukur",
-  judul: "Measurement Division: berapa kelompok yang terbentuk",
-  sumber: "Metode luar: Measurement Division",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
       SUARA_R1,
-      tambah(0, judul("Measurement Division")),
-      tambah("Metode", kepala(1)),
-      tambah("kelompok,", ...baris10("kl", 100), teks("klt", 150, 140, "10 kelereng", 9, W.coklat)),
-      tambah("banyak", ...kartu("kq", 20, 154, 260, 36, W.emas, ["diketahui: isi tiap kantong 5", "dicari: banyak kantong"], 9)),
+      tambah(0, judul("Cara 1: Equal Sharing"), ...papanJatah("pt", 8, 28, 284, 124)),
+      tambah("Equal", teks("nm", 150, 60, "Equal Sharing", 16, W.merah)),
+      tambah("Bagi", teks("ni", 150, 84, "Bagi Rata", 12, W.biru)),
+      tambah("Rata.", ...WX.map((x, i) => kotak(`w${i}`, x, WY, 56, 30, "#E0F2FE", W.biru, { rx: 4, z: 1 }))),
     ),
     k(
       SUARA_R2,
-      hapus(0, "kq-k", "kq-t0", "kq-t1"),
-      tambah("Ambil", kantong("kg1", 12, 84, 124)),
-      tambah("lagi.", kantong("kg2", 144, 84, 124)),
-      tambah("satu", teks("kn1", 74, 134, "kantong 1", 8.6, W.hijau)),
-      tambah("lagi.", teks("kn2", 206, 134, "kantong 2", 8.6, W.hijau)),
+      hapus("Benda", "nm", "ni"),
+      tambah("Benda", ...Array.from({ length: 12 }, (_, i) => awalBenda(i))),
+      tambah("satu", teks("s1", 150, 78, "1 per 1", 10, W.merah)),
+      { at: "satu", ubah: putaran(0) },
+      { at: "satu@2", ubah: putaran(1) },
+      { at: "tiap", ubah: putaran(2) },
+      { at: "bergiliran,", ubah: putaran(3) },
+      tambah("habis.", teks("hb", 150, 150, "habis", 10, W.hijauTua)),
     ),
     k(
       SUARA_R3,
-      bersih(0),
-      tambah(0, judul("Tiap kantong 5, lalu tiap kantong 3")),
-      tambah(0, kepala(1)),
-      tambah("Sepuluh", ...baris10("ku", 76), kantong("ku1", 12, 60, 124), kantong("ku2", 144, 60, 124), teks("kut", 150, 112, "tiap kantong 5: 2 kantong", 8.6, W.hijau)),
-      tambah("tiga@2", ...barisTiga("kv", 150), ...[0, 1, 2].map((g) => kantong(`kv${g + 1}`, 12 + g * 84, 134, 76)), teks("kvt", 150, 192, "tiap kantong 3: 3 kantong, sisa 1", 8.6, W.merah)),
+      hapus("Banyaknya", "hb"),
+      sorotkan("satu", "w1", "it1", "it4", "it7", "it10"),
+      tambah("wadah", teks("b4", 153, 148, "4", 16, W.hijauTua)),
+      tambah("hasil", teks("hs", 222, 148, "hasil bagi", 10, W.merah)),
     ),
     k(
       SUARA_R4,
-      bersih(0),
-      tambah(0, judul("Ukur: dua kantong")),
-      tambah(0, kepala(1)),
-      tambah("Hasilnya", ...kartu("hu", 40, 62, 220, 40, W.emas, ["10 : 5 = 2"], 14)),
-      tambah("Bedanya,", ...kartu("hv", 12, 116, 134, 50, W.hijauMuda, ["Bagi Rata:", "2 = isi tiap wadah"], 8.8)),
-      tambah("kantong,", ...kartu("hw", 154, 116, 134, 50, W.langit, ["Bagi Ukur:", "2 = banyak kantong"], 8.8)),
+      tambah("tersisa", bulat("it12", 262, 118, 4.5, "#FDBA74", "#7C2D12", { tebal: 0.9, z: 4 }), bulat("it13", 270, 118, 4.5, "#93C5FD", "#7C2D12", { tebal: 0.9, z: 4 })),
+      tambah("putaran,", teks("pt1", 110, 174, "1 putaran", 10, W.coklat)),
+      tambah("itulah", teks("sr", 266, 148, "sisa", 10, W.merah)),
+      ubah("sisanya.", { id: "it12", warna: "#FCA5A5" }, { id: "it13", warna: "#FCA5A5" }),
     ),
   ],
 };
 
-/* ------------------------------ 5. Measurement Division: penerapan (soal c dan d) ------------------------------ */
-const SUARA_S1 = "Soal c: delapan puluh satu kue, tiap kotak berisi tiga kue. Yang dicari bukan isi kotak, melainkan banyak kotak.";
-const SUARA_S2 = "Ukur tiga kue demi tiga kue. Setiap petak di batang ini satu kotak berisi tiga kue, sampai delapan puluh satu habis.";
-const SUARA_S3 = "Petak dihitung, ada dua puluh tujuh. Jadi dua puluh tujuh kotak, dan ini cocok dengan hitungan perkalian.";
-const SUARA_S4 = "Soal d: sembilan puluh enam telur, tiap kotak delapan telur. Batangnya punya dua belas petak, jadi dua belas kotak, dan itu benar.";
+/* ------------------------------ Equal Sharing: terapan ------------------------------ */
+const SUARA_T1 = "Genta membagikan dua puluh empat kartu ke enam kotak secara bergiliran.";
+const SUARA_T2 = "Tiap kotak mendapat empat kartu, dan tidak ada sisa.";
+const SUARA_T3 = "Cocok untuk benda yang bisa dilihat dan dipegang.";
+const SUARA_T4 = "Kurang cocok kalau bilangannya sangat besar, karena membagi satu per satu terlalu lama.";
+const KX = (i: number): number => 22 + i * 44;
+/** Empat kartu kecil dalam kotak `i`: dua baris dua kolom. */
+const kartuIsi = (i: number): Obj[] => [0, 1, 2, 3].map((j) => kotak(`kk${i}${j}`, KX(i) + 5 + (j % 2) * 15, 86 + Math.floor(j / 2) * 13, 12, 10, i % 2 === 0 ? "#FEF3C7" : "#BFDBFE", W.coklat, { rx: 1.5, tebal: 0.9, z: 3 }));
+const RAMAI: Obj[] = Array.from({ length: 36 }, (_, i) => bulat(`rm${i}`, 30 + (i % 14) * 18, 54 + Math.floor(i / 14) * 16, 3.6, i % 2 === 0 ? "#FDBA74" : "#93C5FD", "#7C2D12", { tebal: 0.8, z: 4 }));
 
-export const ADEGAN_LUAR_BAGI_UKUR_TERAPAN: AdeganStory = {
-  id: "luar-bagi-ukur-terapan",
-  judul: "Measurement Division pada soal buku c dan d",
-  sumber: "Metode luar: Measurement Division",
-  latar: "#F0F9FF",
+export const ADEGAN_LUAR_RATA_TERAPAN: AdeganStory = {
+  id: "luar-rata-terapan",
+  judul: "Bagi Rata: kapan cocok",
+  sumber: "Metode global: Equal Sharing (terapan)",
+  latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_S1,
-      tambah(0, judul("Bagi Ukur: soal c")),
-      tambah("Soal", kepala(1)),
-      tambah("delapan", teks("sa", 150, 80, "81 kue", 16, W.coklat)),
-      tambah("tiga", ...kartu("sb", 30, 96, 240, 32, W.hijauMuda, ["tiap kotak berisi 3 kue"], 9.6)),
-      tambah("banyak", ...kartu("sc", 30, 142, 240, 34, W.emas, ["dicari: banyak kotak"], 9.6)),
+      SUARA_T1,
+      tambah(0, judul("Genta Membagi Kartu"), ...papanJatah("pt", 8, 28, 284, 124), ...tokoh("ge", 40, 184, "Genta")),
+      tambah("dua", teks("n24", 150, 54, "24 kartu", 12, W.merah)),
+      tambah("enam", teks("n6", 240, 54, "6 kotak", 12, W.merah)),
+      tambah("kotak", ...[0, 1, 2, 3, 4, 5].map((i) => kotak(`kt${i}`, KX(i), 80, 36, 34, "#E0F2FE", W.biru, { rx: 4, z: 1 }))),
     ),
     k(
-      SUARA_S2,
+      SUARA_T2,
+      tambah("mendapat", ...[0, 1, 2, 3, 4, 5].flatMap((i) => kartuIsi(i))),
+      tambah("empat", teks("n4", 150, 132, "4 kartu tiap kotak", 10, W.hijauTua)),
+      tambah("sisa.", emo("ok", 262, 148, E.benar, 20), teks("ns", 215, 150, "tanpa sisa", 9, W.hijauTua)),
+    ),
+    k(
+      SUARA_T3,
+      tambah("Cocok", emo("ma", 120, 168, E.mata, 20)),
+      tambah("dilihat", emo("tg", 170, 168, E.tangan, 20)),
+      tambah("dipegang.", teks("ny", 230, 172, "benda nyata", 9, W.coklat)),
+    ),
+    k(
+      SUARA_T4,
       bersih(0),
-      tambah(0, judul("Satu petak = satu kotak = 3 kue")),
-      tambah(0, kepala(1)),
-      tambah("Ukur", ...Array.from({ length: 27 }, (_, i) => kotak(`sp-c${i}`, 15 + i * 10, 84, 10, 30, i % 2 === 0 ? W.langit : W.hijauMuda, W.biru, { rx: 0, tebal: 1 }))),
-      tambah("sampai", teks("sp3", 150, 134, "27 petak, tiap petak 3 kue", 9, W.biru), teks("sp8", 150, 158, "27 × 3 = 81 kue", 11, W.coklat)),
-    ),
-    k(
-      SUARA_S3,
-      sorotkan(0, "sp-c0", "sp-c26"),
-      tambah("tujuh.", ...kartu("sq", 60, 164, 180, 30, W.emas, ["27 kotak"], 12)),
-    ),
-    k(
-      SUARA_S4,
-      bersih(0),
-      tambah(0, judul("Bagi Ukur: soal d")),
-      tambah(0, kepala(1)),
-      tambah("Soal", teks("ta", 150, 76, "96 telur, tiap kotak 8", 11, W.coklat)),
-      tambah("Batangnya", ...Array.from({ length: 12 }, (_, i) => kotak(`tp-c${i}`, 15 + i * 22.5, 92, 22.5, 30, i % 2 === 0 ? W.langit : W.hijauMuda, W.biru, { rx: 0, tebal: 1 })), ...Array.from({ length: 12 }, (_, i) => teks(`tp-t${i}`, 15 + i * 22.5 + 11.25, 112, "8", 9, W.biru))),
-      tambah("dua@2", ...kartu("tq", 40, 140, 220, 46, W.emas, ["12 petak = 12 kotak", "12 × 8 = 96"], 10)),
+      tambah(0, judul("Kalau Sangat Banyak"), ...papanJatah("pt", 8, 28, 284, 124), ...tokoh("ge", 40, 184, "Genta")),
+      tambah("bilangannya", ...RAMAI),
+      tambah("satu", teks("s1", 150, 118, "1 per 1", 10, W.coklat)),
+      tambah("terlalu", teks("tl", 150, 140, "terlalu lama", 12, W.merah), emo("xs", 262, 148, E.salah, 20)),
     ),
   ],
 };

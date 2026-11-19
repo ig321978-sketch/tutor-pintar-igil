@@ -1,202 +1,120 @@
 import type { AdeganStory } from "./logika-story";
-import { KUNCI_LATIHAN, LATIHAN, W, barisTabel, bersusun, emo, judul, kartu, panah, teks } from "./k4b1h-gambar";
-import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1h-bantu";
+import { E, W, angkaSus, bersusunDasar, busa, ember, emo, garisSus, judul, kotak, lorong, pintu, sikat, teks, tokoh } from "./k4b1h-gambar";
+import { hapus, k, sorotkan, tambah, ubah } from "./k4b1h-bantu";
 
-/** Id semua benda sebuah kartu: kotak dan baris teksnya (`jumlah` baris). */
-const idKartu = (id: string, jumlah = 2): string[] => [`${id}-k`, ...Array.from({ length: jumlah }, (_, i) => `${id}-t${i}`)];
+/*
+ * Cerita orisinal IGIL "Papan Jatah Bu Ratna" (Kelas 4 Bab 1 Sub-Bab H), cerita Penginapan Pulau Karang Indah.
+ * Naskah suara dari naskah/story-naskah-k4b1h.md. Bagian ini: membagi bergiliran, pembagian bersusun, menyikat lantai.
+ */
 
-/* ------------------------------ 5. Pembagian bersusun: bentuk dan nama (Buku Siswa hlm. 45-46) ------------------------------ */
-const SUARA_E1 = "Sekarang kita kenalan dengan pembagian bersusun. Empat puluh delapan permen akan dibagikan kepada empat anak, dan dituliskan dalam bentuk susun.";
-const SUARA_E2 = "Tiga bagian punya nama. Yang dibagi adalah empat puluh delapan, pembagi adalah empat, dan hasil bagi ditulis di atas garis, sebagai jawabannya.";
-const SUARA_E3 = "Aturannya: pembagian bersusun dilakukan dari nilai tempat yang terbesar, yaitu dari puluhan ke satuan. Pada empat puluh delapan, puluhannya empat dan satuannya delapan.";
+/* ------------------------------ 4. Membagi bergiliran ------------------------------ */
+const SUARA_G1 = "Genta membagikan tamu satu per satu bergiliran, empat kamar sekali putaran.";
+const SUARA_G2 = "Tiap putaran memakai empat tamu, jadi lima puluh enam tamu habis dalam empat belas putaran.";
+const SUARA_G3 = "Tiap kamar mendapat empat belas tamu.";
+const PX = [100, 138, 176, 214];
 
-const E = bersusun("es", 40, 66, 4, 48);
-
-export const ADEGAN_SUSUN_ISTILAH: AdeganStory = {
-  id: "susun-istilah",
-  judul: "Pembagian bersusun: bentuk dan nama tiap bagian",
-  sumber: "Materi: pembagian bersusun",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Pembagian dengan cara pembagian bersusun",
-    "Ayo kita dapat menyelesaikan permasalahan tersebut dengan menggunakan pembagian bersusun.!",
-    "48 buah permen akan dibagikan kepada 4 anak dituliskan dalam bentuk",
-    "Hasil bagi",
-    "Yang dibagi",
-    "Pembagi",
-    "Operasi pembagian bersusun terhadap suatu bilangan, dilakukan dari nilai tempat yang terbesar (puluhan ke satuan).",
-  ],
-  ketukan: [
-    k(
-      SUARA_E1,
-      tambah(0, judul("Pembagian bersusun")),
-      tambah("Empat", ...kartu("ep", 150, 40, 140, 36, W.hijauMuda, ["48 permen, 4 anak"], 9.6)),
-      tambah("dituliskan", ...E.kerangka, teks("eh", 112, 62, "...", 13, W.merah)),
-      tambah("susun.", teks("ek", 220, 120, "48 : 4", 18, W.biru)),
-    ),
-    k(
-      SUARA_E2,
-      hapus(0, "ek", ...idKartu("ep", 1)),
-      tambah("Yang", ...kartu("e1", 160, 92, 124, 28, W.langit, ["yang dibagi: 48"], 9), panah("e1p", 160, 104, -60, -28, W.biru, 1.6)),
-      sorotkan("Yang", "es-n1", "es-n2"),
-      tambah("pembagi", ...kartu("e2", 160, 138, 124, 28, W.hijauMuda, ["pembagi: 4"], 9), panah("e2p", 160, 152, -108, -64, W.hijau, 1.6)),
-      sorotkan("pembagi", "es-p"),
-      tambah("hasil", ...kartu("e3", 160, 40, 124, 28, W.pink, ["hasil bagi: di atas"], 9), panah("e3p", 160, 54, -34, 8, W.merah, 1.6)),
-    ),
-    k(
-      SUARA_E3,
-      bersih(0),
-      tambah(0, judul("Dari puluhan ke satuan")),
-      tambah("dilakukan", ...E.kerangka),
-      tambah("puluhan", ...kartu("e4", 150, 44, 140, 40, W.langit, ["4 puluhan", "(40)"], 9.4)),
-      sorotkan("puluhan", "es-n1"),
-      tambah("satuan.", ...kartu("e5", 150, 100, 140, 40, W.krem, ["8 satuan", "(8)"], 9.4)),
-      sorotkan("satuannya", "es-n2"),
-    ),
-  ],
-};
-
-/* ------------------------------ 6. Langkah pembagian bersusun 48 : 4 (Buku Siswa hlm. 46) ------------------------------ */
-const SUARA_F1 = "Langkah satu: empat dibagi empat sama dengan satu. Letakkan satu pada hasil bagi, di atas angka empat.";
-const SUARA_F2 = "Langkah dua: satu kali empat sama dengan empat. Letakkan empat di bawah yang dibagi, lalu kurangkan, empat dikurangi empat hasilnya nol. Turunkan delapan ke satuan.";
-const SUARA_F3 = "Langkah tiga: delapan dibagi empat sama dengan dua. Letakkan dua pada hasil bagi. Dua kali empat sama dengan delapan, kurangkan, delapan dikurangi delapan hasilnya nol, itu sisa pembagian.";
-const SUARA_F4 = "Karena sisa pembagiannya nol, masing-masing anak mendapat dua belas permen. Itu sama dengan isi tiap wadah pada kegiatan tadi, empat wadah, tiap wadah dua belas.";
-
-const F = bersusun("bl", 20, 50, 4, 48);
-
-export const ADEGAN_SUSUN_LANGKAH: AdeganStory = {
-  id: "susun-langkah",
-  judul: "Tiga langkah pembagian bersusun 48 dibagi 4",
-  sumber: "Materi: langkah pembagian bersusun",
-  latar: "#FFF7ED",
-  kutipan: [
-    "4 : 4 = 1.",
-    "1 × 4 = 4.",
-    "Kurangkan 4 dengan 4 hasilnya 0.",
-    "Turunkan 8 pada nilai tempat satuan",
-    "8 : 4 = 2. Letakkan 2 pada",
-    "Kemudian 2 × 4 = 8. Letakkan 8 di bawah",
-    "(sisa pembagian)",
-    "Karena sisa pembagiannya adalah 0, jadi masing-masing anak mendapatkan 12 buah permen",
-  ],
-  ketukan: [
-    k(
-      SUARA_F1,
-      tambah(0, judul("Langkah 1: bagi puluhan")),
-      tambah(0, ...F.kerangka),
-      tambah("empat", ...kartu("sc", 112, 34, 176, 38, W.langit, ["langkah 1:", "4 : 4 = 1"], 9.6)),
-      tambah("Letakkan", ...F.tahap[0]),
-      sorotkan("empat", "bl-n1"),
-    ),
-    k(
-      SUARA_F2,
-      ubah(0, { id: "jud", isi: "Langkah 2: kali, kurang, turunkan" }),
-      tambah("satu", ...kartu("sd", 112, 78, 176, 44, W.hijauMuda, ["langkah 2: 1 × 4 = 4", "4 − 4 = 0, turunkan 8"], 9)),
-      tambah("Letakkan", ...F.tahap[1]),
-      tambah("Turunkan", ...F.tahap[2]),
-    ),
-    k(
-      SUARA_F3,
-      ubah(0, { id: "jud", isi: "Langkah 3: bagi satuan" }),
-      tambah("delapan", ...kartu("se", 112, 128, 176, 44, W.krem, ["langkah 3: 8 : 4 = 2", "2 × 4 = 8; 8 − 8 = 0"], 9)),
-      tambah("Letakkan", ...F.tahap[3]),
-      tambah("kurangkan,", ...F.tahap[4]),
-      tambah("sisa", ...F.tahap[5]),
-    ),
-    k(
-      SUARA_F4,
-      hapus(0, ...idKartu("sc"), ...idKartu("sd"), ...idKartu("se")),
-      ubah(0, { id: "jud", isi: "Hasil: 12 permen tiap anak" }),
-      tambah("Karena", ...kartu("sh", 112, 52, 176, 40, W.emas, ["sisa 0, tiap anak", "12 permen"], 10)),
-      tambah("Itu", ...kartu("si", 112, 104, 176, 46, W.hijauMuda, ["wadah tadi:", "4 wadah, tiap wadah 12"], 9.2)),
-      sorotkan("dua", "bl-q1", "bl-q2"),
-    ),
-  ],
-};
-
-/* ------------------------------ 7. Ayo Berlatih nomor 1 (Buku Siswa hlm. 47; Panduan Guru hlm. 67) ------------------------------ */
-const SUARA_G1 = "Sekarang giliran kamu berlatih, hitung dengan pembagian bersusun. Soal a sampai e adalah dua puluh empat dibagi dua, sembilan puluh enam dibagi tiga, sembilan puluh enam dibagi enam, tujuh puluh dua dibagi tiga, dan tujuh puluh lima dibagi lima.";
-const SUARA_G2 = "Soal a lewat bersusun: dua dibagi dua satu, empat dibagi dua dua. Hasilnya dua belas, dan itu benar.";
-const SUARA_G3 = "Soal b dengan cara yang sama: sembilan dibagi tiga tiga, enam dibagi tiga dua. Hasilnya tiga puluh dua, dan itu juga benar.";
-const SUARA_G4 = "Soal c berbeda: sembilan dibagi enam satu, sisa tiga. Turunkan enam menjadi tiga puluh enam, lalu tiga puluh enam dibagi enam enam. Hasilnya enam belas.";
-const SUARA_G5 = "Menurunkan sisa puluhan seperti ini perlu kamu perhatikan baik-baik, karena nanti sering dipakai. Soal d, tujuh puluh dua dibagi tiga, hasilnya dua puluh empat. Soal e, tujuh puluh lima dibagi lima, hasilnya lima belas.";
-const SUARA_G6 = "Mari kita periksa hasilnya: dua belas, tiga puluh dua, enam belas, dua puluh empat, dan lima belas. Semuanya cocok, karena hasil dikali pembagi kembali ke bilangan awal.";
-
-const SOAL = LATIHAN.map(([n, p]) => `${n} : ${p}`);
-const HURUF = ["a", "b", "c", "d", "e"];
-const KOL_G = [34, 100, 70, 80];
-const GA = bersusun("ga", 24, 44, 2, 24);
-const GB = bersusun("gb", 24, 44, 3, 96);
-const GC = bersusun("gc", 24, 44, 6, 96);
-const GD = bersusun("gd", 24, 68, 3, 72);
-const GE = bersusun("ge", 170, 68, 5, 75);
-
-/** Tahap bersusun muncul bertahap pada kata-kata pemicu `at` (satu pemicu per kelompok tahap). */
-const bertahap = (s: ReturnType<typeof bersusun>, kelompok: number[][], at: (number | string)[]) => kelompok.map((idxs, i) => tambah(at[i], ...idxs.flatMap((j) => s.tahap[j])));
-
-export const ADEGAN_BERLATIH_SATU: AdeganStory = {
-  id: "berlatih-satu",
-  judul: "Latihan pembagian bersusun: soal a sampai e",
-  sumber: "Materi: latihan pembagian bersusun",
-  latar: "#F0FDF4",
-  kutipan: [
-    "Ayo Berlatih",
-    "Kerjakan soal berikut pada buku tulis kalian.",
-    "Dengan menggunakan pembagian bersusun hitunglah",
-    "a. 24 : 2 = 12",
-    "b. 96 : 3 = 32",
-    "c. 96 : 6 = 16",
-    "d. 72 : 3 = 24",
-    "e. 75 : 5 = 15",
-  ],
+export const ADEGAN_BAGI_RATA: AdeganStory = {
+  id: "bagi-rata",
+  judul: "Membagi tamu bergiliran",
+  sumber: "Materi: membagi bergiliran",
+  latar: "#ECFDF5",
   ketukan: [
     k(
       SUARA_G1,
-      tambah(0, judul("Latihan bersusun")),
-      tambah(0, ...barisTabel("gh", 8, 30, KOL_G, ["", "soal", "hasil", ""], 20, 8.4, true)),
-      ...SOAL.map((s, i) => tambah([idx(SUARA_G1, "dua"), idx(SUARA_G1, "sembilan", 1), idx(SUARA_G1, "sembilan", 2), idx(SUARA_G1, "tujuh", 1), idx(SUARA_G1, "tujuh", 2)][i], ...barisTabel(`gr${i}`, 8, 50 + i * 22, KOL_G, [HURUF[i], s, "...", ""], 22, 10))),
+      tambah(0, judul("Membagi Bergiliran"), ...lorong("lr", 150), ...tokoh("ge", 40, 184, "Genta"), ...PX.flatMap((x, i) => pintu(`p${i}`, x, 96, i + 1, 30, 52))),
+      tambah("satu", teks("s1", 62, 104, "1 tamu, 1 kamar", 8, W.merah)),
+      tambah("bergiliran,", ...PX.map((x, i) => ({ id: `g${i}`, t: "bulat" as const, x: x + 15, y: 142, r: 3, warna: i % 2 === 0 ? "#FDBA74" : "#93C5FD", garis: "#7C2D12", tebal: 0.7, z: 4 }))),
+      tambah("putaran.", teks("pt", 150, 82, "1 putaran = 4 tamu", 9, W.coklat)),
     ),
     k(
       SUARA_G2,
-      bersih(0),
-      tambah(0, judul("Soal a: 24 : 2")),
-      tambah(0, ...GA.kerangka),
-      ...bertahap(GA, [[0, 1], [2], [3, 4, 5]], [idx(SUARA_G2, "satu"), idx(SUARA_G2, "empat"), idx(SUARA_G2, "dua", 4)]),
-      tambah("Hasilnya", ...kartu("ga9", 150, 60, 138, 40, W.emas, ["24 : 2 = 12", "hasil: 12"], 10)),
+      hapus("memakai", "pt"),
+      tambah("memakai", teks("e4", 150, 82, "4 tamu per putaran", 9, W.coklat)),
+      tambah("lima", teks("t56", 44, 60, "56 tamu", 10, W.merah)),
+      tambah("dalam", ...Array.from({ length: 14 }, (_, i) => [kotak(`ct${i}`, 24 + i * 18, 28, 16, 12, "#FEF3C7", W.coklat, { rx: 2, tebal: 1 }), teks(`cn${i}`, 32 + i * 18, 37, String(i + 1), 6.4, W.biru)]).flat()),
+      sorotkan("putaran.@2", "ct13", "cn13"),
     ),
     k(
       SUARA_G3,
-      bersih(0),
-      tambah(0, judul("Soal b: 96 : 3")),
-      tambah(0, ...GB.kerangka),
-      ...bertahap(GB, [[0, 1], [2], [3, 4, 5]], [idx(SUARA_G3, "tiga", 2), idx(SUARA_G3, "enam"), idx(SUARA_G3, "dua")]),
-      tambah("Hasilnya", ...kartu("gb9", 150, 60, 138, 40, W.emas, ["96 : 3 = 32", "hasil: 32"], 10)),
-    ),
-    k(
-      SUARA_G4,
-      bersih(0),
-      tambah(0, judul("Soal c: sisa puluhan diturunkan")),
-      tambah(0, ...GC.kerangka),
-      ...bertahap(GC, [[0, 1], [2], [3, 4, 5]], [idx(SUARA_G4, "satu"), "Turunkan", idx(SUARA_G4, "enam", 6)]),
-      tambah("tiga@2", ...kartu("gc8", 150, 44, 138, 40, W.krem, ["9 : 6 = 1, sisa 3", "36 : 6 = 6"], 9.4)),
-      tambah("Hasilnya", ...kartu("gc9", 150, 100, 138, 40, W.emas, ["96 : 6 = 16", "hasil: 16"], 10)),
-    ),
-    k(
-      SUARA_G5,
-      bersih(0),
-      tambah(0, judul("Soal d dan e: sisa diturunkan")),
-      tambah("perhatikan", ...kartu("gx", 12, 28, 276, 26, W.krem, ["sisa puluhan diturunkan dulu"], 8.6)),
-      tambah("Soal", ...GD.kerangka, ...GD.tahap.flat(), ...kartu("gd9", 20, 164, 100, 26, W.emas, ["d: 72 : 3 = 24"], 9)),
-      tambah("Soal@2", ...GE.kerangka, ...GE.tahap.flat(), ...kartu("ge9", 168, 164, 100, 26, W.emas, ["e: 75 : 5 = 15"], 9)),
-    ),
-    k(
-      SUARA_G6,
-      bersih(0),
-      tambah(0, judul("Periksa: hasil dikali pembagi")),
-      tambah(0, ...barisTabel("kh", 12, 30, [34, 76, 56, 110], ["", "soal", "hasil", "cek kali"], 20, 8.4, true)),
-      ...LATIHAN.map(([n, p], i) => tambah([idx(SUARA_G6, "belas", 1), idx(SUARA_G6, "dua", 2), idx(SUARA_G6, "belas", 2), idx(SUARA_G6, "empat"), idx(SUARA_G6, "belas", 3)][i], ...barisTabel(`kr${i}`, 12, 50 + i * 22, [34, 76, 56, 110], [HURUF[i], `${n} : ${p}`, String(KUNCI_LATIHAN[i]), `${KUNCI_LATIHAN[i]} × ${p} = ${n}`], 22, 9.6))),
-      tambah("Semuanya", emo("kc", 150, 190, "✅", 16)),
+      hapus("kamar", "e4"),
+      tambah("kamar", ...[0, 1].map((i) => teks(`m${i}`, PX[i] + 15, 90, "14", 12, W.hijauTua))),
+      tambah("empat", ...[2, 3].map((i) => teks(`m${i}`, PX[i] + 15, 90, "14", 12, W.hijauTua))),
+      sorotkan("tamu.", "p0", "p1", "p2", "p3"),
     ),
   ],
 };
 
+/* ------------------------------ 5. Pembagian bersusun ------------------------------ */
+const SUARA_B1 = "Laras membagi bersusun dari puluhan, lima dibagi empat sama dengan satu sisa satu.";
+const SUARA_B2 = "Sisa satu puluhan menjadi sepuluh satuan, lalu angka enam diturunkan menjadi enam belas.";
+const SUARA_B3 = "Enam belas dibagi empat sama dengan empat, jadi hasilnya satu empat, yaitu empat belas.";
+const BX = 70;
+const BY = 96;
+
+export const ADEGAN_BERSUSUN: AdeganStory = {
+  id: "bersusun",
+  judul: "Pembagian bersusun",
+  sumber: "Materi: pembagian bersusun",
+  latar: "#F5F3FF",
+  ketukan: [
+    k(
+      SUARA_B1,
+      tambah(0, judul("Membagi Bersusun"), ...bersusunDasar("bs", BX, BY, "56", "4"), ...tokoh("lr", 240, 184, "Laras")),
+      tambah("puluhan,", teks("hp", 68, 62, "puluhan", 8, W.ungu), teks("hs", 102, 62, "satuan", 8, W.ungu)),
+      sorotkan("lima", "bs-d0"),
+      tambah("empat", angkaSus("pr", BX, BY, 0, 1, "4"), garisSus("gl1", BX, BY, 0, 0, 1)),
+      tambah("satu", angkaSus("q1", BX, BY, 0, -1, "1", W.merah)),
+      tambah("sisa", angkaSus("sr", BX, BY, 0, 2, "1", W.merah)),
+    ),
+    k(
+      SUARA_B2,
+      tambah("puluhan", teks("sp", 205, 70, "1 puluhan = 10 satuan", 9, W.coklat)),
+      sorotkan("sepuluh", "sr"),
+      tambah("diturunkan", angkaSus("tn", BX, BY, 1, 2, "6", W.merah)),
+      tambah("belas.", teks("n16", 205, 100, "16", 20, W.merah)),
+    ),
+    k(
+      SUARA_B3,
+      tambah("empat", angkaSus("q2", BX, BY, 1, -1, "4", W.merah)),
+      tambah("empat@2", angkaSus("a1", BX, BY, 0, 3, "1"), angkaSus("a2", BX, BY, 1, 3, "6"), garisSus("gl2", BX, BY, 0, 1, 3), angkaSus("sr2", BX, BY, 1, 4, "0", W.hijau)),
+      sorotkan("hasilnya", "q1", "q2"),
+      tambah("belas.@2", teks("h14", 205, 130, "14", 22, W.hijauTua)),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. Menyikat lantai ------------------------------ */
+const SUARA_T1 = "Satria sadar angka enam tadi terlupa, lalu mengambil sikat.";
+const SUARA_T2 = "Ia menyikat lantai kamar pertama dengan semangat yang cepat habis.";
+const SUARA_T3 = "Pak Hendro tertawa dan membantunya membilas lantai.";
+
+export const ADEGAN_SIKAT: AdeganStory = {
+  id: "sikat",
+  judul: "Satria menyikat lantai",
+  sumber: "Materi: menyikat lantai",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_T1,
+      tambah(0, judul("Sikat Lantai"), ...lorong("lr", 130), ...tokoh("sa", 80, 184, "Satria")),
+      tambah("enam", teks("n6", 150, 64, "6", 36, W.merah)),
+      tambah("terlupa,", emo("lp", 192, 60, E.tanya, 24)),
+      tambah("sikat.", ...sikat("sk", 130, 168)),
+    ),
+    k(
+      SUARA_T2,
+      tambah("lantai", ...busa("bu", 110, 164, 6)),
+      tambah("pertama", ...pintu("pt", 230, 84, 1, 34, 46)),
+      ubah("cepat", { id: "sa", isi: E.cemberut }),
+      ubah("habis.", { id: "sa", isi: E.lelah }),
+    ),
+    k(
+      SUARA_T3,
+      tambah("Hendro", ...tokoh("ph", 232, 184, "Pak Hendro")),
+      tambah("tertawa", emo("tw", 262, 146, E.tawa, 18)),
+      tambah("membilas", ...ember("em", 196, 152)),
+      hapus("lantai.", ...[0, 1, 2, 3, 4, 5].map((i) => `bu${i}`)),
+      tambah("lantai.", teks("bs", 150, 100, "bersih!", 12, W.hijauTua)),
+    ),
+  ],
+};

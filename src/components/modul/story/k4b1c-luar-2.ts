@@ -1,224 +1,260 @@
-import type { AdeganStory } from "./logika-story";
-import { W, batangBil, emo, fmt, judul, kartu, kotak, panah, teks, zoomRatusan } from "./k4b1c-gambar";
-import { bersih, hapus, idx, k, tambah, ubah } from "./k4b1c-bantu";
-import { kepala } from "./k4b1c-luar-1";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, bulat, emo, garis, garisBil, judul, kartu, kartuBil, kotak, panah, papanDermaga, teks, tokoh, xTanda } from "./k4b1c-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k4b1c-bantu";
 
-/** Kartu bilangan untuk himpunan: pojok kiri-atas (x, y), lebar 62, tinggi 30. Id `${id}-k`, `${id}-t0`. */
-const kartuBil = (id: string, x: number, y: number, n: number, warna: string = W.krem) => kartu(id, x, y, 62, 30, warna, [fmt(n)], 10.4);
-/** Mencoret kartu himpunan: kotak dan teks dibuat pudar. */
-const coret = (at: string | number, id: string) => ubah(at, { id: `${id}-k`, op: 0.3 }, { id: `${id}-t0`, op: 0.3 });
-const WARNA4 = [W.hijauMuda, W.krem, W.pink, W.langit];
+/*
+ * Cerita orisinal IGIL "Papan Dermaga Kak Tiara" (K4 Bab 1 Sub-Bab C), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b1c.md. Bagian ini: Number Line (Garis Bilangan), Card Sort (Urut Kartu), terapannya, dan ringkasan.
+ */
 
-/* ------------------------------ 6. Ordering Sets: konsep (himpunan tinggi gunung: 3.676, 2.460, 3.726) ------------------------------ */
-const SUARA_H1 = "Metode ketiga, Ordering Sets, atau Mengurutkan Himpunan. Himpunan adalah kumpulan bilangan yang ingin diurutkan, ditulis di dalam kurung kurawal.";
-const SUARA_H2 = "Cara kerjanya: cari bilangan terkecil dalam himpunan, pindahkan ke deret hasil, lalu coret dari himpunan.";
-const SUARA_H3 = "Ulangi dengan sisa himpunan sampai habis. Setiap putaran membandingkan bilangan secara berpasangan, lalu mengambil satu bilangan.";
-const SUARA_H4 = "Urutan hasilnya naik, dari terkecil ke terbesar. Ingin urutan turun? Ambil yang terbesar pada tiap putaran.";
+/** Papan besar sebagai latar tulisan: pojok kiri-atas (8, 28), lebar 284, tinggi 112. */
+const papan = (): Obj[] => papanDermaga("pd", 8, 28, 284, 112);
+const GX = (i: number): number => xTanda(30, 240, i);
+/** Titik data pada garis bilangan di tanda ke-`i` (garis pada tinggi 108). */
+const titik = (id: string, i: number, warna = "#FACC15"): Obj => bulat(id, GX(i), 108, 6, warna, W.tinta, { tebal: 1.4, z: 4 });
 
-const SET_GUNUNG = [3676, 2460, 3726] as const;
-const XS = [34, 118, 202] as const;
+/* ------------------------------ Number Line: konsep ------------------------------ */
+const SUARA_G1 = "Cara kedua, Number Line, atau Garis Bilangan.";
+const SUARA_G2 = "Kita menaruh bilangan pada sebuah garis lurus, dari kecil di kiri sampai besar di kanan.";
+const SUARA_G3 = "Bilangan yang lebih ke kanan selalu lebih besar daripada bilangan di sebelah kirinya.";
+const SUARA_G4 = "Jarak antar bilangan juga memperlihatkan seberapa jauh perbedaannya.";
 
-export const ADEGAN_LUAR_HIMPUNAN: AdeganStory = {
-  id: "luar-himpunan",
-  judul: "Ordering Sets: pilih yang terkecil, satu per satu",
-  sumber: "Metode luar: Ordering Sets",
-  latar: "#FFFBEB",
+export const ADEGAN_LUAR_GARIS: AdeganStory = {
+  id: "luar-garis",
+  judul: "Number Line: Garis Bilangan",
+  sumber: "Metode global: Number Line (konsep)",
+  latar: "#F0FDFA",
   ketukan: [
     k(
-      SUARA_H1,
-      tambah(0, judul("Metode 3 dari 4")),
-      tambah("ketiga,", ...kepala(2)),
-      tambah("kumpulan", teks("hkb1", 20, 98, "{", 34, W.coklat), teks("hkb2", 282, 98, "}", 34, W.coklat), ...SET_GUNUNG.flatMap((n, i) => kartuBil(`hks${i}`, XS[i], 66, n, WARNA4[i]))),
-      tambah("kurawal.", teks("hkc", 150, 124, "himpunan: tiga bilangan", 9.6, W.coklat)),
+      SUARA_G1,
+      tambah(0, judul("Cara 2: Number Line"), ...papan()),
+      tambah("Number", teks("nm", 150, 62, "Number Line", 15, W.tinta)),
+      tambah("Garis", teks("ni", 150, 88, "Garis Bilangan", 12, W.merah)),
+      tambah("Bilangan.", ...garisBil("gl", 30, 118, 240)),
     ),
     k(
-      SUARA_H2,
-      hapus(0, "hkc"),
-      tambah("terkecil", teks("hkd", 236, 128, "terkecil: 2.460", 10, W.merah)),
-      tambah("pindahkan", panah("hka", 149, 98, -84, 42, W.hijau, 2), ...kartuBil("hkh0", 34, 140, 2460, W.hijauMuda)),
-      coret("coret", "hks1"),
-    ),
-    k(
-      SUARA_H3,
-      hapus(0, "hkd", "hka"),
-      tambah("Ulangi", teks("hke", 150, 124, "sisa: bandingkan 3.676 dan 3.726", 9, W.merah)),
-      tambah("mengambil", ...kartuBil("hkh1", 118, 140, 3676, W.hijauMuda)),
-      coret("mengambil", "hks0"),
-    ),
-    k(
-      SUARA_H4,
-      hapus(0, "hke"),
-      tambah("Urutan", ...kartuBil("hkh2", 202, 140, 3726, W.hijauMuda)),
-      coret("Urutan", "hks2"),
-      tambah("turun?", ...kartu("hkf", 40, 178, 220, 22, W.emas, ["turun: ambil yang terbesar"], 8.8)),
-    ),
-  ],
-};
-
-/* ------------------------------ 7. Ordering Sets: penerapan pada himpunan soal latihan ------------------------------ */
-const SUARA_Q1 = "Himpunan dari soal latihan: tujuh ribu lima ratus tujuh puluh, lima ribu dua ratus empat puluh, tiga ribu empat puluh satu, dan sembilan ribu sembilan ratus empat puluh satu.";
-const SUARA_Q2 = "Putaran pertama: yang terkecil adalah tiga ribu empat puluh satu, karena ribuannya tiga. Pindahkan ke hasil, lalu coret.";
-const SUARA_Q3 = "Putaran kedua dan ketiga: dari sisanya yang terkecil lima ribu dua ratus empat puluh, lalu tujuh ribu lima ratus tujuh puluh. Keduanya dipindahkan dan dicoret.";
-const SUARA_Q4 = "Tinggal satu, sembilan ribu sembilan ratus empat puluh satu, masuk paling akhir. Hasil urutannya sama dengan hasil tadi.";
-
-const SOAL = [7570, 5240, 3041, 9941] as const;
-const X4 = [8, 80, 152, 224] as const;
-
-export const ADEGAN_LUAR_HIMPUNAN_TERAPAN: AdeganStory = {
-  id: "luar-himpunan-terapan",
-  judul: "Ordering Sets pada himpunan soal latihan",
-  sumber: "Metode luar: Ordering Sets",
-  latar: "#FEF9C3",
-  ketukan: [
-    k(
-      SUARA_Q1,
-      tambah(0, judul("Himpunan empat bilangan")),
-      tambah(0, ...kepala(2)),
-      ...SOAL.map((n, i) => tambah([idx(SUARA_Q1, "puluh", 1), idx(SUARA_Q1, "puluh", 2), idx(SUARA_Q1, "satu", 1), idx(SUARA_Q1, "satu", 2)][i], ...kartuBil(`hts${i}`, X4[i], 66, n, WARNA4[i]))),
-    ),
-    k(
-      SUARA_Q2,
-      tambah("Pindahkan", panah("hta", 183, 98, -144, 42, W.hijau, 2), ...kartuBil("hth0", 8, 140, 3041, W.hijauMuda)),
-      coret("coret.", "hts2"),
-    ),
-    k(
-      SUARA_Q3,
-      hapus(0, "hta"),
-      tambah("lima", ...kartuBil("hth1", 80, 140, 5240, W.hijauMuda)),
-      coret("lima", "hts1"),
-      tambah("lalu", ...kartuBil("hth2", 152, 140, 7570, W.hijauMuda)),
-      coret("lalu", "hts0"),
-    ),
-    k(
-      SUARA_Q4,
-      tambah("masuk", ...kartuBil("hth3", 224, 140, 9941, W.hijauMuda)),
-      coret("masuk", "hts3"),
-      tambah("Hasil", teks("htr", 150, 190, "3.041 < 5.240 < 7.570 < 9.941", 11, W.merah)),
-    ),
-  ],
-};
-
-/* ------------------------------ 8. Bar Model Compare: konsep ------------------------------ */
-const SUARA_B1 = "Metode keempat, Bar Model Compare, atau Banding Batang. Setiap bilangan digambar sebagai batang, dan panjang batang sebanding dengan nilainya.";
-const SUARA_B2 = "Satu blok biru mewakili seribu. Delapan ribu tujuh ratus lima puluh berarti delapan blok penuh, dan sisa tujuh ratus lima puluh digambar sebagai potongan kuning yang kurang dari satu blok.";
-const SUARA_B3 = "Bandingkan panjang kedua batang. Batang yang lebih panjang berarti bilangan yang lebih besar. Hitung dulu blok penuhnya, yaitu angka ribuan.";
-const SUARA_B4 = "Bila blok penuh sama banyak, bandingkan potongan sisanya. Bila selisihnya tipis, perbesar sisa itu menjadi sepuluh petak ratusan.";
-
-export const ADEGAN_LUAR_BATANG: AdeganStory = {
-  id: "luar-batang",
-  judul: "Bar Model Compare: bilangan menjadi panjang batang",
-  sumber: "Metode luar: Bar Model Compare",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      SUARA_B1,
-      tambah(0, judul("Metode 4 dari 4")),
-      tambah("keempat,", ...kepala(3)),
-      tambah("batang,", ...batangBil("bk", 14, 76, 8750), teks("bkl", 14, 70, "8.750", 9, W.hijau, { anchor: "start" })),
-      tambah("sebanding", teks("bkn", 150, 130, "panjang batang sebanding nilai", 9.6, W.merah)),
-    ),
-    k(
-      SUARA_B2,
-      hapus(0, "bkn"),
-      tambah("Satu", kotak("bkg", 14, 120, 28, 14, W.biruMuda, W.putih, { rx: 0 }), teks("bkgt", 50, 131, "1 blok = 1.000", 9, W.biru, { anchor: "start" })),
-      tambah("penuh,", teks("bkp", 126, 100, "8 blok penuh", 8.8, W.biruMuda)),
-      tambah("sisa", teks("bks", 248, 100, "sisa 750", 8.8, W.coklat)),
-    ),
-    k(
-      SUARA_B3,
-      hapus(0, "bkg", "bkgt", "bkp", "bks"),
-      tambah("kedua", ...batangBil("bj", 14, 116, 7500), teks("bjl", 14, 110, "7.500", 9, W.hijau, { anchor: "start" })),
-      tambah("lebih", teks("bjk", 150, 162, "lebih panjang, lebih besar", 10.4, W.merah)),
-      tambah("ribuan.", teks("bjm", 150, 182, "ribuan = blok penuh: 8 dan 7", 9, W.hijau)),
-    ),
-    k(
-      SUARA_B4,
+      SUARA_G2,
       bersih(0),
-      tambah(0, judul("Metode 4 dari 4")),
-      tambah(0, ...kepala(3)),
-      tambah("sama", ...batangBil("bt", 14, 76, 3000), teks("btl", 14, 70, "3 blok penuh sama", 9, W.hijau, { anchor: "start" })),
-      tambah("sisanya.", teks("bts", 150, 108, "bandingkan sisa", 9.6, W.merah)),
-      tambah("petak", ...zoomRatusan("bz", 100, 130, 0), teks("bzt", 150, 160, "1 blok = 10 petak ratusan", 9.6, W.coklat)),
+      tambah(0, judul("Garis Bilangan"), ...papan(), ...garisBil("gl", 30, 108, 240)),
+      tambah("bilangan", titik("t1", 2)),
+      tambah("garis", titik("t2", 5), titik("t3", 8)),
+      tambah("kecil", teks("kc", 54, 130, "kecil", 9, W.tinta)),
+      tambah("besar", teks("bs", 246, 130, "besar", 9, W.tinta)),
+    ),
+    k(
+      SUARA_G3,
+      tambah("kanan", panah("pn", 50, 84, 200, 0, W.merah, 2.6)),
+      sorotkan("besar", "t3"),
+      tambah("daripada", teks("lb", 222, 90, "lebih besar", 8, W.merah)),
+      sorotkan("kirinya.", "t1"),
+    ),
+    k(
+      SUARA_G4,
+      hapus("Jarak", "pn", "lb", "kc", "bs"),
+      tambah("Jarak", garis("j1", GX(2), 90, GX(5) - GX(2), 0, W.ungu, 2), teks("jk", 114, 82, "jarak", 9, W.ungu)),
+      tambah("jauh", garis("j2", GX(5), 90, GX(8) - GX(5), 0, W.hijau, 2), teks("jj", 186, 82, "jauh", 9, W.hijau)),
+      tambah("perbedaannya.", teks("sl", 150, 132, "selisih terlihat", 10, W.tinta)),
     ),
   ],
 };
 
-/* ------------------------------ 9. Bar Model Compare: penerapan ------------------------------ */
-const SUARA_R1 = "Delapan ribu tujuh ratus lima puluh: delapan blok penuh dan sisa. Tujuh ribu lima ratus: tujuh blok penuh dan sisa. Batang pertama lebih panjang, jadi yang pertama lebih besar.";
-const SUARA_R2 = "Tiga ribu enam ratus tujuh puluh enam dan tiga ribu tujuh ratus dua puluh enam: tiga blok penuh sama banyak, dan batangnya hampir sama panjang. Selisihnya tipis, jadi sisanya diperbesar.";
-const SUARA_R3 = "Pada kaca pembesar, sisa yang pertama mengisi enam petak ratusan, dan sisa yang kedua tujuh petak. Tujuh lebih dari enam, jadi yang kedua lebih besar.";
-const SUARA_R4 = "Empat batang soal latihan disusun dari terpendek: tiga ribu empat puluh satu, lima ribu dua ratus empat puluh, tujuh ribu lima ratus tujuh puluh, lalu sembilan ribu sembilan ratus empat puluh satu.";
+/* ------------------------------ Number Line: terapan ------------------------------ */
+const SUARA_T1 = "Genta menandai tiga bilangan pengunjung pada sebuah garis panjang di dermaga.";
+const SUARA_T2 = "Bilangan paling kanan terlihat jelas sebagai yang terbesar.";
+const SUARA_T3 = "Cocok untuk melihat urutan sekaligus jarak antar bilangan.";
+const SUARA_T4 = "Kurang cocok kalau bilangannya sangat besar dan jauh, karena garisnya harus sangat panjang.";
 
-export const ADEGAN_LUAR_BATANG_TERAPAN: AdeganStory = {
-  id: "luar-batang-terapan",
-  judul: "Bar Model Compare pada bilangan latihan",
-  sumber: "Metode luar: Bar Model Compare",
-  latar: "#FCE7F3",
+export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
+  id: "luar-garis-terapan",
+  judul: "Garis Bilangan: kapan cocok",
+  sumber: "Metode global: Number Line (terapan)",
+  latar: "#F0FDFA",
   ketukan: [
     k(
-      SUARA_R1,
-      tambah(0, judul("8.750 dan 7.500")),
-      tambah(0, ...kepala(3)),
-      tambah("Delapan", ...batangBil("ra", 14, 76, 8750), teks("ral", 14, 70, "8.750", 9, W.hijau, { anchor: "start" })),
-      tambah(idx(SUARA_R1, "tujuh", 2), ...batangBil("rb", 14, 122, 7500), teks("rbl", 14, 116, "7.500", 9, W.hijau, { anchor: "start" })),
-      tambah("jadi", teks("rr", 150, 168, "8.750 > 7.500", 16, W.merah)),
+      SUARA_T1,
+      tambah(0, judul("Garis Genta"), ...papan(), ...tokoh("gt", 40, 184, "Genta")),
+      tambah("tiga", teks("n3", 150, 50, "3 bilangan", 11, W.tinta)),
+      tambah("garis", ...garisBil("gl", 30, 108, 240)),
+      tambah("dermaga.", titik("t1", 2), titik("t2", 5), titik("t3", 8), teks("v1", GX(2), 90, "3.200", 9, W.tinta), teks("v2", GX(5), 90, "3.500", 9, W.tinta), teks("v3", GX(8), 90, "3.800", 9, W.tinta)),
     ),
     k(
-      SUARA_R2,
+      SUARA_T2,
+      sorotkan("kanan", "t3", "v3"),
+      tambah("jelas", emo("mt", 262, 60, E.mata, 20)),
+      tambah("terbesar.", teks("tb", GX(8), 130, "terbesar", 9, W.merah)),
+    ),
+    k(
+      SUARA_T3,
+      tambah("Cocok", emo("ok", 262, 60, E.benar, 20)),
+      tambah("urutan", teks("ur", 78, 130, "urutan", 9, W.tinta)),
+      tambah("jarak", garis("j1", GX(2), 76, GX(8) - GX(2), 0, W.ungu, 2)),
+      tambah("bilangan.", teks("jr", 150, 66, "jarak antar bilangan", 9, W.ungu)),
+      hapus("bilangan.", "mt", "tb"),
+    ),
+    k(
+      SUARA_T4,
       bersih(0),
-      tambah(0, judul("3.676 dan 3.726")),
-      tambah(0, ...kepala(3)),
-      tambah(idx(SUARA_R2, "enam", 2), ...batangBil("sa", 14, 70, 3676), teks("sal", 14, 64, "3.676", 9, W.hijau, { anchor: "start" })),
-      tambah(idx(SUARA_R2, "enam", 3), ...batangBil("sb", 14, 106, 3726), teks("sbl", 14, 100, "3.726", 9, W.hijau, { anchor: "start" })),
-      tambah("tipis,", teks("st", 150, 152, "selisih tipis", 11, W.merah)),
-    ),
-    k(
-      SUARA_R3,
-      hapus(0, "st"),
-      tambah("pembesar,", ...zoomRatusan("za", 100, 128, 0, 14), teks("zal", 14, 139, "3.676", 9, W.hijau, { anchor: "start" }), ...zoomRatusan("zb", 100, 158, 0, 14), teks("zbl", 14, 169, "3.726", 9, W.hijau, { anchor: "start" })),
-      ...Array.from({ length: 6 }, (_, i) => ubah(idx(SUARA_R3, "enam"), { id: `za-z${i}`, warna: W.arsir })),
-      ...Array.from({ length: 7 }, (_, i) => ubah(idx(SUARA_R3, "tujuh", 1), { id: `zb-z${i}`, warna: W.arsir })),
-      tambah("jadi", teks("zr", 150, 192, "6 < 7, jadi 3.676 < 3.726", 10.4, W.merah)),
-    ),
-    k(
-      SUARA_R4,
-      bersih(0),
-      tambah(0, judul("Empat batang urut naik")),
-      tambah(0, ...kepala(3)),
-      ...([3041, 5240, 7570, 9941] as const).map((n, i) => tambah(idx(SUARA_R4, i === 3 ? "satu" : "puluh", i === 3 ? 2 : i + 1), ...batangBil(`rd${i}`, 14, 74 + i * 30, n, 12), teks(`rd${i}-l`, 14, 70 + i * 30, fmt(n), 8.4, W.hijau, { anchor: "start" }))),
+      tambah(0, judul("Bilangan Sangat Besar"), ...papan(), ...tokoh("gt", 40, 184, "Genta")),
+      tambah("kalau", teks("e1", 40, 100, "1.000", 11, W.tinta), teks("e2", 260, 100, "9.900", 11, W.tinta)),
+      tambah("jauh,", ...Array.from({ length: 11 }, (_, i) => garis(`pk${i}`, 24 + i * 25.2, 112, 0, 10, W.biru, 1.2)), garis("pg", 24, 117, 252, 0, W.biru, 2)),
+      tambah("panjang.", teks("tp", 150, 70, "garis terlalu panjang", 11, W.merah), emo("xs", 262, 52, E.salah, 20)),
     ),
   ],
 };
 
-/* ------------------------------ 10. Ringkasan empat metode ------------------------------ */
-const SUARA_Y1 = "Ringkasan empat metode. Banding dari Kiri membaca angka dari kiri. Urutan Garis Bilangan menaruh titik, makin ke kanan makin besar.";
-const SUARA_Y2 = "Mengurutkan Himpunan memilih yang terkecil satu per satu. Banding Batang menggambar panjang, lalu memperbesar sisa bila hampir sama.";
-const SUARA_Y3 = "Apa pun metodenya, hasilnya sama, dan pegangannya tetap nilai tempat: bandingkan ribuan dulu. Pilih cara yang paling cocok bagi kalian.";
+/* ------------------------------ Card Sort: konsep ------------------------------ */
+const SUARA_C1 = "Cara ketiga, Card Sort, atau Urut Kartu.";
+const SUARA_C2 = "Setiap bilangan kita tulis pada satu kartu.";
+const SUARA_C3 = "Lalu kartu-kartu itu digeser sampai terurut dari terkecil ke terbesar, atau sebaliknya.";
+const SUARA_C4 = "Kalau ada yang salah tempat, cukup geser kartunya.";
+/** Posisi kiri tiga kartu. */
+const XK = [24, 114, 204];
+const geser = (n: number, tempat: number) => [
+  { id: `c${n}-k`, x: XK[tempat] },
+  { id: `c${n}-t0`, x: XK[tempat] + 35 },
+];
+const tigaKartu = (urut: [number, number, number]): Obj[] => urut.flatMap((n, i) => kartuBil(`c${n}`, XK[i], 56, n, "#FFFFFF", 70, 40, 16));
+
+export const ADEGAN_LUAR_KARTU: AdeganStory = {
+  id: "luar-kartu",
+  judul: "Card Sort: Urut Kartu",
+  sumber: "Metode global: Card Sort (konsep)",
+  latar: "#FDF4FF",
+  ketukan: [
+    k(
+      SUARA_C1,
+      tambah(0, judul("Cara 3: Card Sort"), ...papan()),
+      tambah("Card", teks("nm", 150, 62, "Card Sort", 15, W.tinta)),
+      tambah("Urut", teks("ni", 150, 88, "Urut Kartu", 12, W.merah)),
+      tambah("Kartu.", emo("kd", 150, 126, E.kartu, 28)),
+    ),
+    k(
+      SUARA_C2,
+      bersih(0),
+      tambah(0, judul("Satu Kartu"), ...papan()),
+      tambah("tulis", emo("ct", 60, 70, E.catat, 24)),
+      tambah("satu", teks("s1", 150, 52, "1 bilangan = 1 kartu", 11, W.tinta)),
+      tambah("kartu.", ...kartuBil("kc", 115, 72, 5210, "#FFFFFF", 70, 40, 16)),
+    ),
+    k(
+      SUARA_C3,
+      bersih(0),
+      tambah(0, judul("Menggeser Kartu"), ...papan()),
+      tambah("kartu-kartu", ...tigaKartu([6140, 2870, 4360])),
+      ubah("digeser", ...geser(2870, 0), ...geser(6140, 1)),
+      ubah("terurut", ...geser(4360, 1), ...geser(6140, 2)),
+      tambah("terkecil", teks("kc", 36, 112, "kecil", 9, W.ungu), panah("na", 24, 122, 250, 0, W.hijau, 2.4)),
+      tambah("terbesar,", teks("bs", 262, 112, "besar", 9, W.ungu)),
+      tambah("sebaliknya.", panah("rv", 274, 136, -248, 0, W.ungu, 2.4, { op: 0.35 })),
+    ),
+    k(
+      SUARA_C4,
+      bersih(0),
+      tambah(0, judul("Geser yang Salah"), ...papan(), ...tigaKartu([2870, 6140, 4360])),
+      ubah("salah", { id: "c6140-k", warna: "#FECACA" }),
+      ubah("cukup", ...geser(4360, 1), ...geser(6140, 2)),
+      ubah("geser", { id: "c6140-k", warna: "#BBF7D0" }),
+      tambah("kartunya.", emo("ok", 150, 126, E.benar, 24)),
+    ),
+  ],
+};
+
+/* ------------------------------ Card Sort: terapan ------------------------------ */
+const SUARA_K1 = "Satria menyusun empat kartu pengunjung pantai di atas meja.";
+const SUARA_K2 = "Ia menggesernya sampai urut, dan kini susunannya rapi.";
+const SUARA_K3 = "Cocok untuk mengurutkan banyak bilangan sekaligus.";
+const SUARA_K4 = "Kurang cocok kalau tidak ada kartu, karena kita harus menuliskannya dulu.";
+const XE = [14, 84, 154, 224];
+const geserE = (n: number, tempat: number) => [
+  { id: `e${n}-k`, x: XE[tempat] },
+  { id: `e${n}-t0`, x: XE[tempat] + 30 },
+];
+const empatKartu = (urut: number[]): Obj[] => urut.flatMap((n, i) => kartuBil(`e${n}`, XE[i], 60, n, "#FFFFFF", 60, 38, 14));
+/** Delapan kartu bilangan terurut kecil (banyak bilangan sekaligus). */
+const DELAPAN = Array.from({ length: 8 }, (_, i) => kartu(`dk${i}`, 20 + i * 34, 62, 30, 28, "#FFFFFF", [String(i + 1)], 11, { z: 2 })).flat();
+
+export const ADEGAN_LUAR_KARTU_TERAPAN: AdeganStory = {
+  id: "luar-kartu-terapan",
+  judul: "Urut Kartu: kapan cocok",
+  sumber: "Metode global: Card Sort (terapan)",
+  latar: "#FDF4FF",
+  ketukan: [
+    k(
+      SUARA_K1,
+      tambah(0, judul("Kartu Satria"), ...papan(), ...tokoh("st", 40, 184, "Satria")),
+      tambah("empat", teks("n4", 150, 50, "4 kartu", 12, W.tinta)),
+      tambah("kartu", ...empatKartu([7350, 5020, 8100, 6480])),
+      tambah("meja.", kotak("mj", 10, 108, 280, 8, "#D6A25C", "#6B4423", { rx: 2, z: 1 })),
+    ),
+    k(
+      SUARA_K2,
+      ubah("menggesernya", ...geserE(5020, 0), ...geserE(7350, 1)),
+      ubah("urut,", ...geserE(6480, 1), ...geserE(7350, 2), ...geserE(8100, 3)),
+      tambah("kini", teks("ur", 150, 128, "urut dari kecil ke besar", 10, W.tinta)),
+      tambah("rapi.", emo("ok", 262, 52, E.benar, 20)),
+    ),
+    k(
+      SUARA_K3,
+      bersih(0),
+      tambah(0, judul("Banyak Bilangan"), ...papan(), ...tokoh("st", 40, 184, "Satria")),
+      tambah("Cocok", emo("ok", 262, 52, E.benar, 20)),
+      tambah("banyak", ...DELAPAN),
+      tambah("sekaligus.", teks("sk", 150, 118, "diurutkan sekaligus", 11, W.tinta)),
+    ),
+    k(
+      SUARA_K4,
+      bersih(0),
+      tambah(0, judul("Tanpa Kartu"), ...papan(), ...tokoh("st", 40, 184, "Satria")),
+      tambah("tidak", emo("xs", 262, 52, E.salah, 20), kotak("kz", 100, 60, 100, 40, undefined, W.merah, { rx: 6, putus: true, z: 2 })),
+      tambah("kartu,", teks("tk", 150, 85, "tidak ada kartu", 10, W.merah)),
+      tambah("menuliskannya", emo("ct", 150, 124, E.catat, 22)),
+      tambah("dulu.", teks("td", 150, 136, "ditulis dulu", 9, W.tinta)),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita lihat bersama Kak Tiara. Mana yang pas tergantung keadaan.";
+const SUARA_R2 = "Ingin membandingkan dua bilangan, pakai Banding dari Kiri. Ingin melihat jarak, pakai Garis Bilangan.";
+const SUARA_R3 = "Ingin mengurutkan banyak bilangan, pakai Urut Kartu. Apa pun caranya, mulailah dari tempat paling kiri.";
+const SUARA_R4 = "Menurutmu, untuk mengurutkan lima bilangan pengunjung, cara mana yang paling pas?";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan: empat cara, satu hasil",
-  sumber: "Metode luar: ringkasan",
-  latar: "#F5F3FF",
+  judul: "Ringkasan tiga cara",
+  sumber: "Metode global: ringkasan",
+  latar: "#FFF7ED",
   ketukan: [
     k(
-      SUARA_Y1,
-      tambah(0, judul("Ringkasan empat metode")),
-      tambah("Kiri", ...kartu("rt1", 12, 34, 276, 34, W.hijauMuda, ["1. Banding dari Kiri", "8.750 > 7.500"], 9)),
-      tambah("Garis", ...kartu("rt2", 12, 76, 276, 34, W.langit, ["2. Urutan Garis Bilangan", "kanan = lebih besar"], 9)),
+      SUARA_R1,
+      tambah(0, judul("Tiga Cara, Pilih yang Pas"), ...kartu("r0", 20, 38, 156, 30, "#BFDBFE", ["Banding dari Kiri"], 11), ...kartu("r1", 20, 78, 156, 30, "#FDE68A", ["Garis Bilangan"], 11), ...kartu("r2", 20, 118, 156, 30, "#BBF7D0", ["Urut Kartu"], 11)),
+      tambah("Tiga", emo("e0", 196, 60, E.penggaris, 20), emo("e1", 196, 100, E.kartu, 20), emo("e2", 196, 140, E.catat, 20), teks("n3", 250, 90, "3 cara", 11, W.ungu)),
+      tambah("Tiara.", ...tokoh("kt", 250, 184, "Kak Tiara")),
+      tambah("pas", emo("tq", 250, 128, E.tanya, 20)),
     ),
     k(
-      SUARA_Y2,
-      tambah("Himpunan", ...kartu("rt3", 12, 118, 276, 34, W.krem, ["3. Mengurutkan Himpunan", "3.041, 5.240, 7.570, 9.941"], 9)),
-      tambah("Batang", ...kartu("rt4", 12, 160, 276, 34, W.pink, ["4. Banding Batang", "3.676 < 3.726"], 9)),
+      SUARA_R2,
+      tambah("dua", teks("n2", 250, 60, "2 bilangan", 9, W.ungu)),
+      sorotkan("Banding", "r0-k"),
+      tambah("Kiri.", emo("ok", 226, 58, E.benar, 20)),
+      redamkan("melihat", "r0-k"),
+      sorotkan("Garis", "r1-k"),
     ),
     k(
-      SUARA_Y3,
-      bersih(0),
-      tambah(0, judul("Satu pegangan: nilai tempat")),
-      tambah("hasilnya", emo("rk", 150, 76, "🎯", 40)),
-      tambah("ribuan", ...kartu("rk1", 40, 100, 220, 34, W.emas, ["ribuan dulu, lalu ke kanan"], 10)),
-      tambah("Pilih", ...kartu("rk2", 40, 144, 220, 34, W.hijauMuda, ["pilih cara yang cocok"], 10)),
+      SUARA_R3,
+      hapus("Ingin", "n2", "tq"),
+      redamkan("mengurutkan", "r1-k"),
+      sorotkan("Urut", "r2-k"),
+      tambah("Kartu.", emo("ok3", 226, 138, E.benar, 20)),
+      tambah("kiri.", emo("mt", 262, 58, E.mata, 20)),
+    ),
+    k(
+      SUARA_R4,
+      hapus("Menurutmu,", "n3", "ok", "ok3", "mt"),
+      redamkan("Menurutmu,", "r2-k"),
+      tambah("Menurutmu,", teks("tq2", 250, 96, "?", 36, W.merah)),
+      tambah("lima", teks("n5", 250, 128, "5 bilangan", 9, W.ungu)),
+      tambah("pas?", emo("pl", 250, 150, E.pikir, 24)),
     ),
   ],
 };

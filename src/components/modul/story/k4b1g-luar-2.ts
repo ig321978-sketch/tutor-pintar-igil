@@ -1,195 +1,236 @@
 import type { AdeganStory } from "./logika-story";
-import { W, barisTabel, batang, emo, judul, kartu, sisi, susunHasil, susunSimpan, susunSoal, teks } from "./k4b1g-gambar";
-import { IKON_METODE, NAMA_METODE, WARNA_METODE, kepala } from "./k4b1g-luar-1";
-import { bersih, hapus, idx, k, sebar, sorotkan, tambah } from "./k4b1g-bantu";
+import { E, W, dermaga, emo, judul, kartu, laut, panah, papanSusun, teks, tokoh } from "./k4b1g-gambar";
+import { bersih, hapus, k, pudarkan, redamkan, sorotkan, tambah } from "./k4b1g-bantu";
 
-/* ------------------------------ 6. Times Table Fluency: konsep ------------------------------ */
-const SUARA_C1 = "Metode ketiga, Times Table Fluency, atau Kefasihan Tabel Kali. Murid menghafal fakta kali dasar sampai lancar. Contohnya tabel kali tujuh, bagian pertama.";
-const SUARA_C2 = "Bagian kedua tabel kali tujuh. Dua fakta akan kita pakai: empat kali tujuh sama dengan dua puluh delapan, dan delapan kali tujuh sama dengan lima puluh enam.";
-const SUARA_C3 = "Hafal fakta kali membuat langkah satuan dan puluhan pada cara bersusun terasa cepat. Kita tidak berhenti menghitung satu per satu.";
+/*
+ * Cerita orisinal IGIL "Baris Perahu Bu Marni" (Kelas 4 Bab 1 Sub-Bab G), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b1g.md. Bagian ini: Split and Multiply (Urai Lalu Kali) dan terapannya, Column Multiply (Kali Susun) dan terapannya, dan ringkasan.
+ */
 
-/** Satu baris tabel kali tujuh: n kali tujuh. Kolom kiri n = 1 sampai 5, kolom kanan n = 6 sampai 10. */
-const baris = (n: number) => teks(`tk${n}`, n <= 5 ? 75 : 225, 84 + ((n - 1) % 5) * 20, `${n} × 7 = ${n * 7}`, 10.5, W.biru);
+/* ------------------------------ Split and Multiply: konsep ------------------------------ */
+const SUARA_U1 = "Cara kedua, Split and Multiply, atau Urai Lalu Kali.";
+const SUARA_U2 = "Bilangan dua angka diurai menjadi puluhan dan satuan.";
+const SUARA_U3 = "Puluhan dan satuannya dikalikan terpisah, lalu hasilnya dijumlahkan.";
+const SUARA_U4 = "Cara ini memakai fakta perkalian yang sudah kita hafal.";
 
-export const ADEGAN_LUAR_FAKTA: AdeganStory = {
-  id: "luar-fakta",
-  judul: "Times Table Fluency: fakta kali lancar",
-  sumber: "Metode luar: Times Table Fluency",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(
-      SUARA_C1,
-      tambah(0, kepala(2)),
-      tambah("Contohnya", teks("tkj", 150, 66, "tabel kali tujuh", 10, W.coklat)),
-      ...[1, 2, 3, 4, 5].map((n, i) => tambah(sebar(SUARA_C1, 5, idx(SUARA_C1, "Contohnya"))[i], baris(n))),
-    ),
-    k(
-      SUARA_C2,
-      ...[6, 7, 8, 9, 10].map((n, i) => tambah(sebar(SUARA_C2, 5, 0)[i], baris(n))),
-      sorotkan(idx(SUARA_C2, "empat"), "tk4"),
-      sorotkan(idx(SUARA_C2, "delapan", 2), "tk8"),
-    ),
-    k(
-      SUARA_C3,
-      tambah("Hafal", ...kartu("tkk", 20, 172, 260, 26, W.emas, ["fakta hafal: langkah cepat, tanpa hitung ulang"], 8.8)),
-    ),
-  ],
-};
-
-/* ------------------------------ 7. Times Table Fluency: penerapan ------------------------------ */
-const SUARA_D1 = "Terapan: empat puluh delapan kali tujuh. Satuan: delapan kali tujuh adalah fakta, lima puluh enam. Tulis enam, simpan lima.";
-const SUARA_D2 = "Puluhan: empat kali tujuh adalah fakta, dua puluh delapan. Tambah lima yang disimpan, hasilnya tiga puluh tiga. Tiga ditulis di puluhan, tiga lagi di ratusan.";
-const SUARA_D3 = "Hasilnya tiga ratus tiga puluh enam, Karena faktanya lancar, dua langkah itu berjalan cepat.";
-
-const TF = susunSoal("tf", 70, 88, 48, 7);
-const TFH = susunHasil("tf", 70, 88, "336");
-
-export const ADEGAN_LUAR_FAKTA_TERAPAN: AdeganStory = {
-  id: "luar-fakta-terapan",
-  judul: "Times Table Fluency: empat puluh delapan kali tujuh",
-  sumber: "Metode luar: Times Table Fluency, terapan",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(
-      SUARA_D1,
-      tambah(0, kepala(2)),
-      tambah(0, sisi("tfn", 130, 68, "contoh: 48 × 7", 9.4, W.coklat)),
-      tambah(idx(SUARA_D1, "empat"), TF[0], TF[1]),
-      tambah(idx(SUARA_D1, "tujuh"), TF[3], TF[2], TF[4]),
-      tambah("Satuan:", ...kartu("tff1", 128, 92, 156, 26, W.langit, ["fakta: 8 × 7 = 56"], 9.6)),
-      tambah("Tulis", TFH[2]),
-      tambah("simpan", susunSimpan("tf", 70, 88, "5")),
-    ),
-    k(
-      SUARA_D2,
-      tambah("Puluhan:", ...kartu("tff2", 128, 124, 156, 26, W.hijauMuda, ["fakta: 4 × 7 = 28"], 9.6)),
-      tambah("Tambah", sisi("tf3", 130, 170, "28 + 5 = 33", 11, W.merah)),
-      tambah(idx(SUARA_D2, "ditulis"), TFH[1]),
-      tambah("ratusan.", TFH[0]),
-    ),
-    k(
-      SUARA_D3,
-      sorotkan("Hasilnya", "tf-h0", "tf-h1", "tf-h2"),
-      tambah("Karena", ...kartu("tfk", 14, 160, 106, 28, W.emas, ["48 × 7 = 336"], 10)),
-      tambah("lancar,", emo("tfe", 262, 188, "✅", 22)),
-    ),
-  ],
-};
-
-/* ------------------------------ 8. Doubling: konsep ------------------------------ */
-const SUARA_E1 = "Metode keempat, Doubling, atau Penggandaan. Menggandakan berarti menambah bilangan dengan dirinya sendiri, sama dengan mengalikan dua. Gandakan dua kali untuk kali empat, tiga kali untuk kali delapan.";
-const SUARA_E2 = "Contoh donat: dua belas dikali empat. Gandakan dua belas menjadi dua puluh empat, lalu gandakan lagi menjadi empat puluh delapan.";
-const SUARA_E3 = "Jadi dua belas kali empat sama dengan menggandakan dua kali. Hasilnya empat puluh delapan, sama dengan hasil penjumlahan berulang tadi.";
-
-const SKALA = 2.8;
-/** Batang bernilai di (14, y) dengan angkanya di dalam batang. Id batang `${id}`, angka `${id}t`. */
-const bar = (id: string, y: number, nilai: number, warna: string) => [batang(id, 14, y, nilai, SKALA, 18, warna), teks(`${id}t`, 14 + (nilai * SKALA) / 2, y + 13, String(nilai), 10, W.biru)];
-
-export const ADEGAN_LUAR_GANDA: AdeganStory = {
-  id: "luar-ganda",
-  judul: "Doubling: menggandakan bilangan",
-  sumber: "Metode luar: Doubling",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      SUARA_E1,
-      tambah(0, kepala(3)),
-      tambah(idx(SUARA_E1, "dua"), ...kartu("dc1", 14, 62, 272, 30, W.hijauMuda, ["× 2: gandakan 1 kali"], 9.6)),
-      tambah(idx(SUARA_E1, "empat"), ...kartu("dc2", 14, 102, 272, 30, W.langit, ["× 4: gandakan 2 kali"], 9.6)),
-      tambah(idx(SUARA_E1, "delapan"), ...kartu("dc3", 14, 142, 272, 30, W.krem, ["× 8: gandakan 3 kali"], 9.6)),
-    ),
-    k(
-      SUARA_E2,
-      bersih(0),
-      tambah(0, kepala(3)),
-      tambah("dua", ...bar("dd0", 64, 12, W.hijauMuda)),
-      tambah("puluh", ...bar("dd1", 90, 24, W.langit), sisi("dg1", 87, 103, "12 × 2 = 24", 9.4, W.coklat)),
-      tambah(idx(SUARA_E2, "puluh", 2), ...bar("dd2", 116, 48, W.krem), sisi("dg2", 154, 129, "24 × 2 = 48", 9.4, W.coklat)),
-    ),
-    k(
-      SUARA_E3,
-      tambah("Jadi", ...kartu("de", 60, 148, 180, 40, W.emas, ["12 × 4 = 48", "kali 4 = gandakan 2 kali"], 9.6)),
-      sorotkan("Hasilnya", "dd2"),
-    ),
-  ],
-};
-
-/* ------------------------------ 9. Doubling: penerapan ------------------------------ */
-const SUARA_F1 = "Terapan: delapan pak pensil, tiap pak dua belas batang. Delapan sama dengan dua kali dua kali dua, jadi gandakan tiga kali, mulai dari dua belas.";
-const SUARA_F2 = "Gandakan pertama: dua belas menjadi dua puluh empat. Gandakan kedua: dua puluh empat menjadi empat puluh delapan.";
-const SUARA_F3 = "Gandakan ketiga: empat puluh delapan menjadi sembilan puluh enam. Jadi dua belas kali delapan sama dengan sembilan puluh enam pensil.";
-const SUARA_F4 = "Cara serupa pada kucing Azizah: dua puluh satu kali empat. Dua puluh satu menjadi empat puluh dua, lalu delapan puluh empat kaki.";
-
-export const ADEGAN_LUAR_GANDA_TERAPAN: AdeganStory = {
-  id: "luar-ganda-terapan",
-  judul: "Doubling: pensil dan kaki kucing",
-  sumber: "Metode luar: Doubling, penerapan",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      SUARA_F1,
-      tambah(0, kepala(3)),
-      tambah("dua", ...bar("fp0", 62, 12, W.hijauMuda)),
-      tambah(idx(SUARA_F1, "delapan", 2), teks("fpn", 150, 182, "8 pak = 2 × 2 × 2: gandakan 3 kali", 9.4, W.biru)),
-    ),
-    k(
-      SUARA_F2,
-      tambah("pertama:", ...bar("fp1", 88, 24, W.langit), sisi("fg1", 87, 101, "12 × 2 = 24", 9.4, W.coklat)),
-      tambah("kedua:", ...bar("fp2", 114, 48, W.krem), sisi("fg2", 154, 127, "24 × 2 = 48", 9.4, W.coklat)),
-    ),
-    k(
-      SUARA_F3,
-      hapus("Gandakan", "fpn"),
-      tambah("Gandakan", ...bar("fp3", 140, 96, W.pink)),
-      tambah("Jadi", ...kartu("fpk", 70, 168, 160, 28, W.emas, ["12 × 8 = 96 pensil"], 10)),
-    ),
-    k(
-      SUARA_F4,
-      bersih(0),
-      tambah(0, kepala(3)),
-      tambah("Cara", ...bar("fk0", 64, 21, W.hijauMuda)),
-      tambah(idx(SUARA_F4, "dua", 3), ...bar("fk1", 90, 42, W.langit), sisi("fh1", 138, 103, "21 × 2 = 42", 9.4, W.coklat)),
-      tambah(idx(SUARA_F4, "puluh", 4), ...bar("fk2", 116, 84, W.krem), sisi("fh2", 14, 150, "42 × 2 = 84", 9.4, W.coklat)),
-      tambah("kaki", ...kartu("fkk", 70, 164, 160, 28, W.emas, ["21 × 4 = 84 kaki"], 10)),
-    ),
-  ],
-};
-
-/* ------------------------------ 10. Ringkasan metode luar ------------------------------ */
-const SUARA_Z1 = "Ringkasnya, empat metode: Equal Groups menambah kelompok sama banyak, Array Model membaca baris dan kolom, Times Table Fluency memakai fakta hafalan, dan Doubling menggandakan bilangan.";
-const SUARA_Z2 = "Angka yang dipakai: dua belas kotak donat, empat belas baju berkancing, delapan pak pensil, dan empat puluh delapan kali tujuh.";
-const SUARA_Z3 = "Memilih metode: untuk menjumlahkan kelompok, pakai Equal Groups. Untuk membaca baris dan kolom, pakai Array Model. Untuk bilangan yang dikali dua, empat, atau delapan, gandakan. Fakta kali yang hafal membantu semuanya.";
-
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan empat metode luar",
-  sumber: "Ringkasan metode luar",
+export const ADEGAN_LUAR_URAI: AdeganStory = {
+  id: "luar-urai",
+  judul: "Split and Multiply: Urai Lalu Kali",
+  sumber: "Metode global: Split and Multiply (konsep)",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_Z1,
-      tambah(0, judul("Ringkasan empat metode")),
-      ...["menambah kelompok sama", "baca baris dan kolom", "pakai fakta hafalan", "menggandakan bilangan"].map((t, i) => tambah(["Equal", "Array", "Times", "Doubling"][i], ...kartu(`r${i}`, 12, 32 + i * 38, 276, 30, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${t}`], 8.8))),
+      SUARA_U1,
+      tambah(0, judul("Cara 2: Split and Multiply"), ...laut("lt", 150)),
+      tambah("Split", emo("jr", 150, 104, "\u{2702}", 36)),
+      tambah("Urai", teks("nm", 150, 140, "Urai Lalu Kali", 13, W.ungu)),
     ),
     k(
-      SUARA_Z2,
-      bersih(0),
-      tambah(0, judul("Angka yang dipakai")),
-      tambah("Angka", ...barisTabel("rt0", 14, 34, [110, 162], ["metode", "angka soal"], 24, 8.4, true)),
-      tambah("kotak", ...barisTabel("rt1", 14, 58, [110, 162], ["Equal Groups", "12 × 4, 12 × 3, 21 × 4"], 24, 8.2)),
-      tambah("empat", ...barisTabel("rt2", 14, 82, [110, 162], ["Array Model", "12 × 4, 14 × 7"], 24, 8.2)),
-      tambah("dan", ...barisTabel("rt3", 14, 106, [110, 162], ["Times Table Fluency", "48 × 7"], 24, 8.2)),
-      tambah("pensil,", ...barisTabel("rt4", 14, 130, [110, 162], ["Doubling", "12 × 4, 12 × 8, 21 × 4"], 24, 8.2)),
+      SUARA_U2,
+      hapus(0, "jr", "nm"),
+      tambah("angka", teks("a37", 150, 56, "37", 24, W.biru), teks("n2", 262, 56, "2 angka", 9, W.ungu)),
+      tambah("diurai", panah("ar1", 140, 66, -28, 22, W.ungu, 2), panah("ar2", 160, 66, 28, 22, W.ungu, 2), teks("a30", 110, 104, "30", 18, W.biru), teks("a7", 190, 104, "7", 18, W.biru)),
+      tambah("puluhan", teks("lp", 110, 126, "puluhan", 9, W.ungu)),
+      tambah("satuan.", teks("ls", 190, 126, "satuan", 9, W.ungu)),
     ),
     k(
-      SUARA_Z3,
+      SUARA_U3,
+      tambah("Puluhan", teks("p1", 110, 148, "30 × 2 = 60", 11, W.biru)),
+      tambah("satuannya", teks("p2", 190, 148, "7 × 2 = 14", 11, W.biru)),
+      tambah("hasilnya", teks("tt", 150, 168, "jumlahkan", 9, W.ungu)),
+      tambah("dijumlahkan.", teks("p3", 150, 186, "60 + 14 = 74", 13, W.merah)),
+    ),
+    k(
+      SUARA_U4,
       bersih(0),
-      tambah(0, judul("Memilih metode")),
-      tambah("menjumlahkan", ...kartu("p1", 14, 32, 272, 28, W.hijauMuda, ["kelompok sama: Equal Groups"], 9)),
-      tambah("membaca", ...kartu("p2", 14, 66, 272, 28, W.langit, ["baris dan kolom: Array Model"], 9)),
-      tambah("bilangan", ...kartu("p3", 14, 100, 272, 28, W.pink, ["kali 2, 4, atau 8: gandakan"], 9)),
-      tambah("Fakta", ...kartu("p4", 14, 134, 272, 28, W.krem, ["fakta kali hafal: membantu semuanya"], 9)),
-      tambah("hafal", emo("p5", 150, 188, IKON_METODE[2], 22)),
+      tambah(0, judul("Fakta Hafalan")),
+      tambah("fakta", ...kartu("kf", 60, 50, 180, 70, "#FEF3C7", ["3 × 2 = 6", "7 × 2 = 14"], 12)),
+      tambah("perkalian", emo("lp", 262, 86, E.lampu, 24)),
+      tambah("hafal.", emo("ok", 150, 150, E.benar, 24), teks("hf", 150, 178, "sudah hafal", 11, W.hijauTua)),
+    ),
+  ],
+};
+
+/* ------------------------------ Split and Multiply: terapan ------------------------------ */
+const SUARA_T1 = "Laras mengalikan empat belas dengan empat penumpang per kursi.";
+const SUARA_T2 = "Sepuluh kali empat empat puluh, empat kali empat enam belas, jadi lima puluh enam.";
+const SUARA_T3 = "Cocok untuk bilangan dua angka yang tidak terlalu besar.";
+const SUARA_T4 = "Kurang cocok kalau kita lupa menjumlahkan kedua hasilnya, karena hasilnya akan kurang.";
+
+export const ADEGAN_LUAR_URAI_TERAPAN: AdeganStory = {
+  id: "luar-urai-terapan",
+  judul: "Split and Multiply: terapan",
+  sumber: "Metode global: Split and Multiply (terapan)",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_T1,
+      tambah(0, judul("Kursi Perahu"), ...laut("lt", 120), ...dermaga("dm", 166), ...tokoh("la", 30, 184, "Laras")),
+      tambah("empat", teks("t1", 150, 60, "14 × 4", 24, W.biru)),
+      tambah("penumpang", teks("t2", 150, 96, "4 per kursi", 11, W.ungu)),
+      tambah("kursi.", emo("kr", 230, 98, E.layar, 18)),
+    ),
+    k(
+      SUARA_T2,
+      hapus(0, "t2", "kr"),
+      tambah(0, teks("u1", 110, 100, "10 × 4 = 40", 11, W.biru)),
+      tambah("belas,", teks("u2", 200, 100, "4 × 4 = 16", 11, W.biru)),
+      tambah("jadi", teks("u3", 150, 140, "40 + 16 = 56", 13, W.merah)),
+    ),
+    k(
+      SUARA_T3,
+      hapus(0, "u1", "u2", "u3"),
+      tambah("Cocok", emo("ok", 262, 126, E.benar, 20)),
+      tambah("dua", teks("d2", 150, 96, "2 angka", 16, W.biru)),
+      tambah("besar.", teks("dk", 150, 134, "tidak terlalu besar", 10, W.hijauTua)),
+    ),
+    k(
+      SUARA_T4,
+      hapus(0, "ok", "d2", "dk"),
+      tambah("Kurang", emo("xs", 262, 126, E.salah, 20)),
+      tambah("lupa", teks("l40", 110, 100, "40", 20, W.biru), teks("lpl", 150, 100, "+", 20, W.ungu), teks("l16", 190, 100, "16", 20, W.biru)),
+      pudarkan("hasilnya,", "l16", "lpl"),
+      tambah("kurang@2", teks("kr2", 150, 140, "hanya 40, kurang", 12, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Column Multiply: konsep ------------------------------ */
+const SUARA_K1 = "Cara ketiga, Column Multiply, atau Kali Susun.";
+const SUARA_K2 = "Bilangan ditulis ke bawah, lalu kita mengalikan satuan dulu.";
+const SUARA_K3 = "Kalau hasilnya sepuluh atau lebih, kita menulis satuannya dan menyimpan puluhannya.";
+const SUARA_K4 = "Simpanan itu ditambahkan pada hasil perkalian puluhan.";
+
+export const ADEGAN_LUAR_KALI: AdeganStory = {
+  id: "luar-kali",
+  judul: "Column Multiply: Kali Susun",
+  sumber: "Metode global: Column Multiply (konsep)",
+  latar: "#EFF6FF",
+  ketukan: [
+    k(
+      SUARA_K1,
+      tambah(0, judul("Cara 3: Column Multiply"), ...laut("lt", 150)),
+      tambah("Column", emo("jr", 150, 104, "\u{2716}", 36)),
+      tambah("Kali", teks("nm", 150, 140, "Kali Susun", 13, W.ungu)),
+    ),
+    k(
+      SUARA_K2,
+      hapus(0, "jr", "nm"),
+      tambah(0, ...papanSusun("ks", 100, 34, 26, 3)),
+      sorotkan("satuan", "ks-a0", "ks-b"),
+      tambah("dulu.", teks("sn", 250, 70, "satuan dulu", 9, W.ungu)),
+    ),
+    k(
+      SUARA_K3,
+      tambah(0, teks("f18", 250, 92, "6 × 3 = 18", 10, W.biru)),
+      tambah("sepuluh", teks("t10", 250, 56, "10 atau lebih", 9, W.ungu)),
+      tambah("menulis", teks("kw", 152, 102, "8", 18, W.merah)),
+      tambah("menyimpan", teks("ky", 130, 40, "1", 10, W.ungu)),
+    ),
+    k(
+      SUARA_K4,
+      sorotkan(0, "ky"),
+      tambah("ditambahkan", teks("f2", 250, 128, "2 × 3 + 1 = 7", 10, W.biru)),
+      tambah("puluhan.", teks("kz", 130, 102, "7", 18, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Column Multiply: terapan ------------------------------ */
+const SUARA_R1 = "Satria mengalikan lima belas dengan enam.";
+const SUARA_R2 = "Lima kali enam tiga puluh, tulis nol dan simpan tiga, lalu satu kali enam ditambah tiga sama dengan sembilan.";
+const SUARA_R3 = "Cocok untuk perkalian bilangan dua angka dengan satu angka, secara cepat dan rapi.";
+const SUARA_R4 = "Kurang cocok kalau lupa menyimpan, karena hasilnya bisa keliru.";
+
+export const ADEGAN_LUAR_KALI_TERAPAN: AdeganStory = {
+  id: "luar-kali-terapan",
+  judul: "Column Multiply: terapan",
+  sumber: "Metode global: Column Multiply (terapan)",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_R1,
+      tambah(0, judul("Kali Susun"), ...dermaga("dm", 166), ...tokoh("sa", 30, 184, "Satria")),
+      tambah("lima", ...papanSusun("rs", 100, 34, 15, 6)),
+      tambah("belas", teks("t15", 250, 50, "15 × 6", 14, W.biru)),
+      tambah("enam.", teks("hs", 250, 92, "hasil = ?", 10, W.tanya)),
+    ),
+    k(
+      SUARA_R2,
+      hapus(0, "t15", "hs"),
+      tambah(0, teks("m1", 250, 56, "5 × 6 = 30", 10, W.biru)),
+      tambah("tulis", teks("r0", 152, 102, "0", 18, W.merah)),
+      tambah("simpan", teks("cy", 130, 40, "3", 10, W.ungu)),
+      tambah("satu", teks("m2", 250, 96, "1 × 6 + 3 = 9", 10, W.biru)),
+      tambah("sembilan.", teks("r1", 130, 102, "9", 18, W.merah)),
+    ),
+    k(
+      SUARA_R3,
+      bersih(0),
+      tambah(0, judul("Cocok Untuk")),
+      tambah("Cocok", emo("ok", 262, 126, E.benar, 20)),
+      tambah("dua", teks("d2", 100, 80, "2 angka", 14, W.biru), teks("kx", 150, 80, "×", 22, W.merah)),
+      tambah("satu", teks("d1", 200, 80, "1 angka", 14, W.biru)),
+      tambah("cepat", emo("kl", 90, 140, E.kilat, 24)),
+      tambah("rapi.", emo("rp", 210, 140, E.catat, 24)),
+    ),
+    k(
+      SUARA_R4,
+      bersih(0),
+      tambah(0, judul("Lupa Menyimpan"), ...papanSusun("rk", 100, 34, 15, 6)),
+      tambah("lupa", teks("w0", 152, 102, "0", 18, W.merah), teks("w6", 130, 102, "6", 18, W.merah)),
+      tambah("menyimpan,", teks("tn", 250, 70, "simpanan 3 hilang", 9, W.ungu)),
+      tambah("keliru.", emo("xs", 250, 112, E.salah, 22), teks("kb", 250, 140, "60 salah", 12, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_S1 = "Tiga cara sudah kita lihat bersama Bu Marni. Mana yang pas tergantung keadaan.";
+const SUARA_S2 = "Ingin paham maknanya, pakai Tambah Berulang. Ingin memakai fakta yang hafal, pakai Urai Lalu Kali.";
+const SUARA_S3 = "Ingin cara yang cepat dan rapi, pakai Kali Susun. Apa pun caranya, periksa dengan cara lain.";
+const SUARA_S4 = "Menurutmu, untuk mengalikan tiga belas dengan tiga, cara mana yang paling pas?";
+const KARTU_RINGKAS = ["#FEF3C7", "#DCFCE7", "#DBEAFE"];
+const NAMA_RINGKAS: [string, string][] = [["Tambah", "Berulang"], ["Urai", "Lalu Kali"], ["Kali", "Susun"]];
+const RK = [0, 1, 2].flatMap((i) => kartu(`r${i}`, 18 + i * 94, 60, 88, 50, KARTU_RINGKAS[i], NAMA_RINGKAS[i], 9));
+const RK_KECIL = [0, 1, 2].flatMap((i) => kartu(`r${i}`, 18 + i * 94, 146, 88, 40, KARTU_RINGKAS[i], NAMA_RINGKAS[i], 9));
+
+export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
+  id: "luar-ringkas",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan: tiga cara mengalikan",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_S1,
+      tambah(0, judul("Tiga Cara"), teks("n3", 150, 40, "3 cara", 12, W.ungu)),
+      tambah("lihat", ...RK),
+      tambah("Mana", emo("tq", 150, 150, E.tanya, 30)),
+    ),
+    k(
+      SUARA_S2,
+      hapus(0, "tq"),
+      tambah("maknanya,", emo("mk", 62, 134, E.lampu, 20)),
+      sorotkan("Tambah", "r0-k"),
+      redamkan("memakai", "r0-k"),
+      tambah("hafal,", emo("hf", 156, 134, E.jempol, 20)),
+      sorotkan("Urai", "r1-k"),
+    ),
+    k(
+      SUARA_S3,
+      redamkan(0, "r1-k"),
+      tambah("cepat", emo("cp", 250, 134, E.kilat, 20)),
+      sorotkan("Kali", "r2-k"),
+      tambah("periksa", emo("ls", 62, 168, E.lupa, 20)),
+      tambah("lain.", emo("ok", 150, 168, E.benar, 20)),
+    ),
+    k(
+      SUARA_S4,
+      bersih(0),
+      tambah(0, judul("Cara Mana?"), ...RK_KECIL),
+      tambah("mengalikan", emo("ly", 262, 70, E.layar, 22)),
+      tambah("tiga", teks("q13", 150, 50, "13 × 3", 20, W.biru)),
+      tambah("pas?", emo("qs", 150, 112, E.tanya, 28)),
     ),
   ],
 };

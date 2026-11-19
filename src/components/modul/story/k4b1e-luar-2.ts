@@ -1,227 +1,232 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { NAMA_METODE, WARNA_METODE, kepala } from "./k4b1e-luar-1";
-import { W, barisTabel, bulat, emo, garis, garisLompat, jalur, judul, kartu, panah, teks } from "./k4b1e-gambar";
-import { bersih, idx, k, sorotkan, tambah } from "./k4b1e-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, emo, garis, judul, kartu, kotak, panah, teks, tokoh } from "./k4b1e-gambar";
+import { bersih, hapus, k, sorotkan, redamkan, tambah, ubah } from "./k4b1e-bantu";
 
-const lastIdx = (s: string): number => s.split(/\s+/).filter(Boolean).length - 1;
-/** Ambil benda berdasarkan id dari hasil gambar. */
-const ambil = (objs: Obj[], ...ids: string[]): Obj[] => objs.filter((o) => ids.includes(o.id));
+/*
+ * Cerita orisinal IGIL "Meja Resepsi Bu Rina" (Kelas 4 Bab 1 Sub-Bab E), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b1e.md. Bagian ini: Place Add (Tambah Per Tempat), Round and Adjust (Genapkan Dulu), terapannya, dan ringkasan.
+ */
 
-/* ------------------------------ 6. Counting On: konsep ------------------------------ */
-const SUARA_C1 = "Metode ketiga, Counting On, atau Menghitung Maju. Mulai dari bilangan yang lebih besar, lalu maju sebanyak bilangan yang lebih kecil, puluhan lebih dulu, baru satuan.";
-const SUARA_C2 = "Langkahnya: pilih bilangan terbesar sebagai awal, pecah bilangan lain menjadi puluhan dan satuan, lalu lompat puluhan dahulu, kemudian satuan.";
-const SUARA_C3 = "Metode ini cocok untuk menjumlahkan di dalam kepala, terutama bila salah satu bilangan kecil. Untuk tiga bilangan, maju satu bilangan demi satu bilangan.";
+const KUNING_KARTU = "#FEF3C7";
+const KERTAS = (id = "ks") => kotak(id, 30, 30, 240, 132, W.kertas, W.coklat, { rx: 6, tebal: 1.6, z: -1 });
 
-export const ADEGAN_LUAR_MAJU: AdeganStory = {
-  id: "luar-maju",
-  judul: "Counting On: mulai dari yang besar, lalu maju",
-  sumber: "Metode luar: Counting On",
-  latar: "#FEF9C3",
-  ketukan: [
-    k(
-      SUARA_C1,
-      tambah(0, judul("Counting On")),
-      tambah("Metode", kepala(2)),
-      tambah("Mulai", garis("cg", 30, 118, 240, 0, W.hitam, 1.6), bulat("c0", 60, 118, 5, W.merah), teks("c0t", 60, 138, "mulai: bilangan besar", 8, W.merah)),
-      tambah("maju", jalur("cj0", 60, 114, "M0 0 Q45 -30 90 0", "none", W.hijau, { tebal: 1.8, gambar: true }), bulat("c1", 150, 118, 5, W.biru), teks("cj0t", 105, 84, "puluhan", 8.6, W.hijau)),
-      tambah("satuan.", jalur("cj1", 150, 114, "M0 0 Q35 -24 70 0", "none", W.hijau, { tebal: 1.8, gambar: true }), bulat("c2", 220, 118, 5, W.biru), teks("cj1t", 185, 90, "satuan", 8.6, W.hijau)),
-    ),
-    k(
-      SUARA_C2,
-      bersih(0),
-      tambah(0, judul("Langkah Counting On")),
-      tambah(0, kepala(2)),
-      tambah("pilih", ...kartu("cs1", 14, 62, 272, 28, W.hijauMuda, ["1. pilih bilangan terbesar sebagai awal"], 9)),
-      tambah("pecah", ...kartu("cs2", 14, 98, 272, 28, W.langit, ["2. pecah yang lain: puluhan dan satuan"], 9)),
-      tambah("lompat", ...kartu("cs3", 14, 134, 272, 28, W.pink, ["3. lompat puluhan dahulu, lalu satuan"], 9)),
-    ),
-    k(
-      SUARA_C3,
-      bersih(0),
-      tambah(0, judul("Kapan cocok?")),
-      tambah("cocok", ...kartu("cc1", 14, 40, 272, 44, W.hijauMuda, ["cocok untuk hitung di kepala,", "terutama bila satu bilangan kecil"], 9)),
-      tambah("tiga", ...kartu("cc2", 14, 100, 272, 44, W.krem, ["tiga bilangan: maju satu bilangan", "demi satu bilangan"], 9)),
-      tambah("kepala,", emo("cc3", 150, 180, "🧠", 20)),
-    ),
-  ],
-};
+/* ------------------------------ Place Add: konsep ------------------------------ */
+const SUARA_P1 = "Cara kedua, Place Add, atau Tambah Per Tempat.";
+const SUARA_P2 = "Kita menjumlahkan ratusan dengan ratusan, puluhan dengan puluhan, dan satuan dengan satuan.";
+const SUARA_P3 = "Lalu semua hasil sementara dijumlahkan menjadi hasil akhir.";
+const SUARA_P4 = "Cara ini menunjukkan isi tiap tempat secara jelas, jadi lebih mudah diikuti.";
 
-/* ------------------------------ 7. Counting On: penerapan dengan angka buku ------------------------------ */
-const SUARA_V1 = "Soal pertama: empat ratus dua puluh sembilan ditambah sembilan belas. Mulai dari empat ratus dua puluh sembilan, maju sepuluh jadi empat ratus tiga puluh sembilan.";
-const SUARA_V2 = "Lalu maju sembilan lagi, sampai empat ratus empat puluh delapan. Jadi empat ratus dua puluh sembilan ditambah sembilan belas sama dengan empat ratus empat puluh delapan.";
-const SUARA_V3 = "Soal kedua: tiga puluh sembilan ditambah delapan ratus dua puluh satu. Mulai dari yang lebih besar, delapan ratus dua puluh satu. Maju tiga puluh jadi delapan ratus lima puluh satu, lalu maju sembilan jadi delapan ratus enam puluh.";
-const SUARA_V4 = "Soal ketiga: delapan ratus dua puluh satu ditambah sembilan puluh delapan. Maju sembilan puluh jadi sembilan ratus sebelas, lalu maju delapan jadi sembilan ratus sembilan belas.";
-
-const GL1 = garisLompat("m1", 40, 118, [{ v: 429, lompat: "+10" }, { v: 439, lompat: "+9" }, { v: 448 }], 11);
-const GL3 = garisLompat("m3", 30, 118, [{ v: 821, lompat: "+30" }, { v: 851, lompat: "+9" }, { v: 860 }], 6);
-const GL4 = garisLompat("m4", 30, 118, [{ v: 821, lompat: "+90" }, { v: 911, lompat: "+8" }, { v: 919 }], 2.4);
-
-export const ADEGAN_LUAR_MAJU_TERAPAN: AdeganStory = {
-  id: "luar-maju-terapan",
-  judul: "Counting On pada tiga contoh",
-  sumber: "Metode luar: Counting On (contoh)",
-  latar: "#FEF9C3",
-  ketukan: [
-    k(
-      SUARA_V1,
-      tambah(0, judul("Menghitung Maju: contoh pertama")),
-      tambah("Soal", kepala(2), teks("m1l", 150, 68, "429 + 19", 9.6, W.hitam)),
-      tambah("Mulai", ...ambil(GL1, "m1-g", "m1-k0", "m1-v0")),
-      tambah("maju", ...ambil(GL1, "m1-j0", "m1-l0", "m1-k1", "m1-v1")),
-    ),
-    k(
-      SUARA_V2,
-      tambah("Lalu", ...ambil(GL1, "m1-j1", "m1-l1", "m1-k2", "m1-v2")),
-      tambah("Jadi", ...kartu("m1h", 40, 156, 220, 28, W.emas, ["429 + 19 = 448"], 10.4)),
-      sorotkan("sama", "m1-v2"),
-    ),
-    k(
-      SUARA_V3,
-      bersih(0),
-      tambah(0, judul("Menghitung Maju: contoh kedua")),
-      tambah(0, kepala(2)),
-      tambah("yang", ...ambil(GL3, "m3-g", "m3-k0", "m3-v0")),
-      tambah(idx(SUARA_V3, "Maju"), ...ambil(GL3, "m3-j0", "m3-l0", "m3-k1", "m3-v1")),
-      tambah(idx(SUARA_V3, "maju", 2), ...ambil(GL3, "m3-j1", "m3-l1", "m3-k2", "m3-v2")),
-      tambah(lastIdx(SUARA_V3), ...kartu("m3h", 40, 156, 220, 28, W.emas, ["39 + 821 = 860"], 10.4)),
-    ),
-    k(
-      SUARA_V4,
-      bersih(0),
-      tambah(0, judul("Menghitung Maju: contoh ketiga")),
-      tambah(0, kepala(2)),
-      tambah("delapan", ...ambil(GL4, "m4-g", "m4-k0", "m4-v0")),
-      tambah(idx(SUARA_V4, "Maju"), ...ambil(GL4, "m4-j0", "m4-l0", "m4-k1", "m4-v1")),
-      tambah(idx(SUARA_V4, "maju", 2), ...ambil(GL4, "m4-j1", "m4-l1", "m4-k2", "m4-v2")),
-      tambah(lastIdx(SUARA_V4), ...kartu("m4h", 40, 156, 220, 28, W.emas, ["821 + 98 = 919"], 10.4)),
-    ),
-  ],
-};
-
-/* ------------------------------ 8. Partial Sums: konsep ------------------------------ */
-const SUARA_P1 = "Metode keempat, Partial Sums, atau Jumlah Sebagian. Jumlahkan tiap nilai tempat secara terpisah, tulis tiap hasilnya sebagai jumlah sebagian, lalu jumlahkan semua jumlah sebagian itu.";
-const SUARA_P2 = "Bedanya dengan susun pendek: tidak ada angka yang disimpan, jadi boleh mulai dari ratusan. Hasil tiap kolom ditulis utuh, bahkan bila sepuluh atau lebih.";
-const SUARA_P3 = "Dibandingkan susun panjang tadi, Jumlah Sebagian tidak menguraikan tiap bilangan dulu. Keunggulannya: tidak perlu mengingat simpanan, dan setiap baris mudah diperiksa.";
-
-export const ADEGAN_LUAR_SEBAGIAN: AdeganStory = {
-  id: "luar-sebagian",
-  judul: "Partial Sums: jumlah tiap nilai tempat terpisah",
-  sumber: "Metode luar: Partial Sums",
-  latar: "#FDF2F8",
+export const ADEGAN_LUAR_TAMBAH: AdeganStory = {
+  id: "luar-tambah",
+  judul: "Place Add: Tambah Per Tempat",
+  sumber: "Metode global: Place Add",
+  latar: "#FDF4FF",
   ketukan: [
     k(
       SUARA_P1,
-      tambah(0, judul("Partial Sums")),
-      tambah("Metode", kepala(3)),
-      tambah("Jumlahkan", ...kartu("pa1", 10, 60, 138, 26, W.merahMuda, ["ratusan + ratusan"], 8.8), ...kartu("pa2", 10, 92, 138, 26, W.hijauMuda, ["puluhan + puluhan"], 8.8), ...kartu("pa3", 10, 124, 138, 26, W.langit, ["satuan + satuan"], 8.8)),
-      tambah("sebagai", panah("pp1", 150, 73, 18, 0, W.hitam, 1.6), panah("pp2", 150, 105, 18, 0, W.hitam, 1.6), panah("pp3", 150, 137, 18, 0, W.hitam, 1.6), ...kartu("pb1", 172, 60, 118, 26, W.krem, ["jumlah sebagian 1"], 8.4), ...kartu("pb2", 172, 92, 118, 26, W.krem, ["jumlah sebagian 2"], 8.4), ...kartu("pb3", 172, 124, 118, 26, W.krem, ["jumlah sebagian 3"], 8.4)),
-      tambah("lalu", ...kartu("pt", 40, 162, 220, 28, W.emas, ["jumlahkan semua sebagian"], 9.6)),
+      tambah(0, judul("Cara Kedua"), teks("nm", 150, 52, "Place Add", 17, W.ungu)),
+      tambah("Tambah", teks("ni", 150, 76, "Tambah Per Tempat", 12, W.biru)),
+      tambah("Tempat.", ...[0, 1, 2].map((i) => kotak(`pt${i}`, 90 + i * 40, 100, 34, 34, [W.ratusan, W.puluhan, W.satuan][i], W.biru, { rx: 6, z: 2 })), ...["R", "P", "S"].map((h, i) => teks(`ph${i}`, 107 + i * 40, 122, h, 14, W.biru, { z: 3 }))),
     ),
     k(
       SUARA_P2,
       bersih(0),
-      tambah(0, judul("Beda dengan susun pendek")),
-      tambah(0, kepala(3)),
-      tambah("tidak", ...kartu("pd1", 14, 62, 272, 32, W.hijauMuda, ["tanpa simpan: boleh mulai dari ratusan"], 9)),
-      tambah("Hasil", ...kartu("pd2", 14, 104, 272, 32, W.langit, ["hasil kolom ditulis utuh,", "boleh 10 atau lebih"], 8.6)),
+      tambah(0, judul("Tiap Tempat Sendiri"), KERTAS()),
+      tambah("ratusan", ...kartu("r", 40, 50, 66, 48, W.ratusan, ["ratusan", "+ ratusan"], 9, { z: 2 })),
+      tambah("puluhan", ...kartu("p", 117, 50, 66, 48, W.puluhan, ["puluhan", "+ puluhan"], 9, { z: 2 })),
+      tambah("satuan", ...kartu("s", 194, 50, 66, 48, W.satuan, ["satuan", "+ satuan"], 9, { z: 2 })),
     ),
     k(
       SUARA_P3,
-      bersih(0),
-      tambah(0, judul("Dibanding susun panjang")),
-      tambah(0, kepala(3)),
-      tambah("Dibandingkan", ...kartu("pe1", 14, 62, 272, 36, W.krem, ["susun panjang: uraikan tiap bilangan dulu", "Jumlah Sebagian: langsung jumlah kolom"], 8.6)),
-      tambah("Keunggulannya:", ...kartu("pe2", 14, 110, 272, 36, W.hijauMuda, ["tanpa mengingat simpanan,", "setiap baris mudah diperiksa"], 8.8)),
+      tambah("semua", teks("h1", 73, 124, "600", 14, W.biru, { z: 4 }), teks("h2", 150, 124, "70", 14, W.biru, { z: 4 }), teks("h3", 227, 124, "9", 14, W.biru, { z: 4 })),
+      tambah("dijumlahkan", garis("gb", 60, 134, 180, 0, W.biru, 2, { z: 4 })),
+      tambah("akhir.", teks("ha", 150, 154, "679", 20, W.hijauTua, { z: 4 })),
+    ),
+    k(
+      SUARA_P4,
+      tambah("menunjukkan", emo("mt", 262, 124, E.mata, 18)),
+      sorotkan("tiap", "r-k", "p-k", "s-k"),
+      tambah("jelas,", teks("jl", 150, 176, "isi tiap tempat jelas", 10, W.hijauTua, { z: 4 })),
+      tambah("diikuti.", emo("ok", 262, 154, E.benar, 18)),
     ),
   ],
 };
 
-/* ------------------------------ 9. Partial Sums: penerapan dengan angka buku ------------------------------ */
-const SUARA_Q1 = "Soal pertama: tiga ratus tiga puluh tiga ditambah lima ratus sembilan belas. Ratusan: tiga ratus ditambah lima ratus jadi delapan ratus. Puluhan: tiga puluh ditambah sepuluh jadi empat puluh. Satuan: tiga ditambah sembilan jadi dua belas.";
-const SUARA_Q2 = "Jumlahkan semua jumlah sebagian: delapan ratus ditambah empat puluh ditambah dua belas sama dengan delapan ratus lima puluh dua. Hasilnya tepat.";
-const SUARA_Q3 = "Satu lagi: lima ratus tujuh puluh enam ditambah seratus empat puluh delapan. Ratusan jadi enam ratus, puluhan jadi seratus sepuluh, satuan jadi empat belas.";
-const SUARA_Q4 = "Jumlahnya: enam ratus ditambah seratus sepuluh ditambah empat belas sama dengan tujuh ratus dua puluh empat.";
+/* ------------------------------ Place Add: terapan ------------------------------ */
+const SUARA_Q1 = "Genta menjumlahkan lima ratus empat puluh dan dua ratus tiga puluh lima.";
+const SUARA_Q2 = "Ratusan tujuh ratus, puluhan tujuh puluh, satuan lima, jadi tujuh ratus tujuh puluh lima.";
+const SUARA_Q3 = "Cocok untuk anak yang masih bingung dengan simpanan.";
+const SUARA_Q4 = "Kurang cocok kalau waktunya singkat, karena langkahnya lebih panjang daripada bersusun.";
 
-const tabelSebagian = (p: string, baris: string[]): Obj[][] => baris.map((isi, i) => barisTabel(`${p}${i}`, 14, 90 + i * 20, [64, 212], isi.split("|"), 20, 8.8));
-const QA = tabelSebagian("qa", ["ratusan|300 + 500 = 800", "puluhan|30 + 10 = 40", "satuan|3 + 9 = 12", "jumlah|800 + 40 + 12 = 852"]);
-const QC = tabelSebagian("qc", ["ratusan|500 + 100 = 600", "puluhan|70 + 40 = 110", "satuan|6 + 8 = 14", "jumlah|600 + 110 + 14 = 724"]);
-
-export const ADEGAN_LUAR_SEBAGIAN_TERAPAN: AdeganStory = {
-  id: "luar-sebagian-terapan",
-  judul: "Partial Sums pada dua contoh",
-  sumber: "Metode luar: Partial Sums (contoh)",
-  latar: "#FDF2F8",
+export const ADEGAN_LUAR_TAMBAH_TERAPAN: AdeganStory = {
+  id: "luar-tambah-terapan",
+  judul: "Place Add: Genta menjumlahkan",
+  sumber: "Metode global: Place Add terapan",
+  latar: "#F0FDFA",
   ketukan: [
     k(
       SUARA_Q1,
-      tambah(0, judul("Jumlah Sebagian: contoh pertama")),
-      tambah(0, kepala(3)),
-      tambah("Soal", teks("qal", 150, 66, "333 + 519", 10, W.hitam), ...barisTabel("qh", 14, 70, [64, 212], ["tempat", "jumlah sebagian"], 20, 8.8, true)),
-      tambah("Ratusan:", ...QA[0]),
-      tambah("Puluhan:", ...QA[1]),
-      tambah("Satuan:", ...QA[2]),
+      tambah(0, judul("Genta Menjumlahkan"), KERTAS(), ...tokoh("gn", 36, 184, "Genta")),
+      tambah("empat", teks("b1", 150, 76, "540", 26, W.biru, { z: 4 })),
+      tambah("lima.", teks("pq", 150, 100, "+", 16, W.biru, { z: 4 }), teks("b2", 150, 130, "235", 26, W.biru, { z: 4 })),
     ),
     k(
       SUARA_Q2,
-      tambah("delapan", ...QA[3]),
-      sorotkan("delapan", "qa3-t1"),
-      tambah(lastIdx(SUARA_Q2), emo("qav", 268, 168, "✅", 16)),
+      bersih(0),
+      tambah(0, judul("Per Tempat"), KERTAS()),
+      tambah("Ratusan", ...kartu("r", 40, 50, 66, 48, W.ratusan, ["ratusan", "700"], 10, { z: 2 })),
+      tambah("puluhan", ...kartu("p", 117, 50, 66, 48, W.puluhan, ["puluhan", "70"], 10, { z: 2 })),
+      tambah("satuan", ...kartu("s", 194, 50, 66, 48, W.satuan, ["satuan", "5"], 10, { z: 2 })),
+      tambah("jadi", teks("hs", 150, 140, "775", 24, W.hijauTua, { z: 4 }), garis("gb", 60, 112, 180, 0, W.biru, 2, { z: 4 })),
     ),
     k(
       SUARA_Q3,
-      bersih(0),
-      tambah(0, judul("Jumlah Sebagian: contoh kedua")),
-      tambah(0, kepala(3)),
-      tambah("Satu", teks("qcl", 150, 66, "576 + 148", 10, W.hitam), ...barisTabel("qh", 14, 70, [64, 212], ["tempat", "jumlah sebagian"], 20, 8.8, true)),
-      tambah("Ratusan", ...QC[0]),
-      tambah("puluhan", ...QC[1]),
-      tambah("satuan", ...QC[2]),
+      tambah("Cocok", emo("ok", 262, 142, E.benar, 20)),
+      tambah("anak", ...tokoh("gn", 36, 184, "Genta")),
+      tambah("bingung", emo("bg", 62, 146, E.pikir, 16)),
+      tambah("simpanan.", teks("ts", 150, 170, "tanpa simpanan", 10, W.hijauTua, { z: 4 })),
     ),
     k(
       SUARA_Q4,
-      tambah("Jumlahnya:", ...QC[3]),
-      sorotkan("Jumlahnya:", "qc3-t1"),
-      tambah(lastIdx(SUARA_Q4), emo("qcv", 268, 168, "✅", 16)),
+      hapus("Kurang", "ok", "ts", "bg"),
+      tambah("kurang", emo("xs", 262, 142, E.salah, 20)),
+      tambah("singkat,", emo("jm", 262, 176, "\u{23F0}", 18)),
+      tambah("panjang", kotak("bp", 60, 160, 140, 8, W.ratusan, W.biru, { rx: 2, z: 3 }), teks("tp", 130, 176, "per tempat: panjang", 8, W.biru, { z: 4 })),
+      tambah("bersusun.", kotak("bs", 60, 150, 80, 8, W.satuan, W.biru, { rx: 2, z: 3 }), teks("tb", 100, 148, "bersusun", 8, W.biru, { z: 4 })),
     ),
   ],
 };
 
-/* ------------------------------ 10. Ringkasan ------------------------------ */
-const SUARA_Z1 = "Ringkasan empat metode: Standard Addition menjumlahkan kolom demi kolom, Regrouping menukar sepuluh menjadi satu di kolom kiri, Counting On melompat di garis bilangan, Partial Sums menjumlahkan tiap nilai tempat terpisah.";
-const SUARA_Z2 = "Angka yang dipakai tiap metode: tiga perpustakaan dan satu soal dengan simpan, dua keranjang jeruk, beberapa soal latihan, serta soal lain.";
-const SUARA_Z3 = "Memilih metode: untuk kolom rapi pakai Standard Addition, untuk memahami tukar pakai Regrouping, untuk hitung di kepala pakai Counting On, dan untuk menguraikan pakai Partial Sums. Hasil semuanya sama.";
+/* ------------------------------ Round and Adjust: konsep ------------------------------ */
+const SUARA_G1 = "Cara ketiga, Round and Adjust, atau Genapkan Dulu.";
+const SUARA_G2 = "Salah satu bilangan dibulatkan ke puluhan atau ratusan yang mudah, lalu dijumlahkan.";
+const SUARA_G3 = "Setelah itu hasilnya disesuaikan dengan mengurangi kelebihan yang tadi ditambahkan.";
+const SUARA_G4 = "Cara ini cepat untuk bilangan yang hampir bulat.";
+
+export const ADEGAN_LUAR_GENAP: AdeganStory = {
+  id: "luar-genap",
+  judul: "Round and Adjust: Genapkan Dulu",
+  sumber: "Metode global: Round and Adjust",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_G1,
+      tambah(0, judul("Cara Ketiga"), teks("nm", 150, 52, "Round and Adjust", 17, W.ungu)),
+      tambah("Genapkan", teks("ni", 150, 76, "Genapkan Dulu", 12, W.biru)),
+      tambah("Dulu.", ...kartu("cn", 104, 98, 92, 40, KUNING_KARTU, ["198 jadi 200"], 12), emo("ul", 150, 168, E.ulang, 20)),
+    ),
+    k(
+      SUARA_G2,
+      bersih(0),
+      tambah(0, judul("Dibulatkan Dulu"), KERTAS()),
+      tambah("satu", teks("n1", 80, 54, "1 bilangan", 10, W.merah, { z: 4 })),
+      tambah("dibulatkan", teks("b1", 80, 90, "198", 26, W.biru, { z: 4 }), panah("pb", 112, 84, 46, 0, W.merah, 2, { z: 4 })),
+      tambah("puluhan", teks("b2", 190, 90, "200", 26, W.hijauTua, { z: 4 })),
+      tambah("mudah,", emo("ok", 262, 84, E.benar, 18)),
+      tambah("dijumlahkan.", teks("pj", 150, 132, "+ bilangan lain", 11, W.biru, { z: 4 })),
+    ),
+    k(
+      SUARA_G3,
+      tambah("disesuaikan", teks("ds", 165, 126, "hasil disesuaikan", 11, W.biru, { z: 4 })),
+      hapus("disesuaikan", "pj"),
+      tambah("mengurangi", teks("kr", 80, 126, "− 2", 22, W.merah, { z: 4 })),
+      tambah("kelebihan", teks("kl", 80, 148, "kelebihan", 9, W.merah, { z: 4 })),
+      tambah("ditambahkan.", emo("pl", 262, 126, E.ulang, 18)),
+    ),
+    k(
+      SUARA_G4,
+      hapus("Cara", "ds", "pl"),
+      tambah("cepat", emo("kc", 150, 126, "\u{26A1}", 26), teks("cp", 150, 150, "cepat", 11, W.hijauTua, { z: 4 })),
+      tambah("hampir", teks("hb", 150, 172, "hampir bulat", 11, W.biru, { z: 4 })),
+      sorotkan("bulat.", "b1", "b2"),
+    ),
+  ],
+};
+
+/* ------------------------------ Round and Adjust: terapan ------------------------------ */
+const SUARA_H1 = "Satria menjumlahkan seratus dua puluh tiga dan sembilan puluh sembilan.";
+const SUARA_H2 = "Ia memakai seratus dulu, hasilnya dua ratus dua puluh tiga, lalu dikurangi satu menjadi dua ratus dua puluh dua.";
+const SUARA_H3 = "Cocok untuk bilangan yang hampir bulat, seperti sembilan puluh sembilan.";
+const SUARA_H4 = "Kurang cocok untuk bilangan yang jauh dari bulat, karena penyesuaiannya jadi rumit.";
+
+export const ADEGAN_LUAR_GENAP_TERAPAN: AdeganStory = {
+  id: "luar-genap-terapan",
+  judul: "Round and Adjust: Satria menjumlahkan",
+  sumber: "Metode global: Round and Adjust terapan",
+  latar: "#FEF2F2",
+  ketukan: [
+    k(
+      SUARA_H1,
+      tambah(0, judul("Satria Menjumlahkan"), KERTAS(), ...tokoh("sa", 36, 184, "Satria")),
+      tambah("tiga", teks("b1", 150, 76, "123", 26, W.biru, { z: 4 })),
+      tambah("sembilan@2", teks("pq", 150, 100, "+", 16, W.biru, { z: 4 }), teks("b2", 150, 130, "99", 26, W.biru, { z: 4 })),
+    ),
+    k(
+      SUARA_H2,
+      tambah("seratus", teks("b3", 232, 130, "100", 18, W.hijauTua, { z: 4 })),
+      tambah("dulu,", teks("e1", 232, 76, "123 + 100", 11, W.biru, { z: 4 })),
+      tambah("tiga,", teks("e2", 232, 92, "= 223", 11, W.hijauTua, { z: 4 })),
+      tambah("satu", teks("e3", 232, 112, "− 1", 14, W.merah, { z: 4 })),
+      tambah("dua@3", teks("e4", 150, 156, "222", 20, W.hijauTua, { z: 4 })),
+    ),
+    k(
+      SUARA_H3,
+      hapus("Cocok", "b3", "e1", "e2", "e3"),
+      tambah("Cocok", emo("ok", 262, 84, E.benar, 20)),
+      tambah("hampir", teks("hb", 262, 110, "hampir bulat", 8, W.hijauTua, { z: 4 })),
+      sorotkan("sembilan", "b2"),
+    ),
+    k(
+      SUARA_H4,
+      hapus("Kurang", "ok", "hb"),
+      tambah("Kurang", emo("xs", 262, 84, E.salah, 20)),
+      tambah("jauh", teks("jb", 262, 110, "137: jauh", 8, W.merah, { z: 4 })),
+      tambah("rumit.", teks("rm", 262, 136, "rumit", 10, W.merah, { z: 4 })),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita lihat bersama Bu Rina. Mana yang pas tergantung keadaan.";
+const SUARA_R2 = "Ingin cara yang rapi, pakai Susun ke Bawah. Ingin paham isi tiap tempat, pakai Tambah Per Tempat.";
+const SUARA_R3 = "Ingin menghitung cepat dalam kepala, pakai Genapkan Dulu. Apa pun caranya, periksa hasilnya.";
+const SUARA_R4 = "Menurutmu, untuk menjumlahkan dua ratus tiga puluh dan sembilan puluh sembilan, cara mana yang paling pas?";
+const CARA = ["Susun ke Bawah", "Tambah Per Tempat", "Genapkan Dulu"];
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode luar",
-  sumber: "Ringkasan metode luar",
-  latar: "#F0FDF4",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan metode global",
+  latar: "#F5F3FF",
   ketukan: [
     k(
-      SUARA_Z1,
-      tambah(0, judul("Ringkasan empat metode")),
-      ...["kolom demi kolom", "tukar 10 jadi 1", "lompat di garis", "jumlah per tempat"].map((t, i) => tambah(["Standard", "Regrouping", "Counting", "Partial"][i], ...kartu(`r${i}`, 12, 32 + i * 38, 276, 30, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${t}`], 8.8))),
+      SUARA_R1,
+      tambah(0, judul("Tiga Cara"), teks("n3", 260, 40, "3 cara", 10, W.ungu), ...CARA.flatMap((c, i) => kartu(`r${i}`, 30, 50 + i * 40, 150, 32, KUNING_KARTU, [c], 11, { z: 2 }))),
+      tambah("Rina.", ...tokoh("br", 236, 120, "Bu Rina")),
+      tambah("pas", emo("tq", 200, 80, E.tanya, 18)),
     ),
     k(
-      SUARA_Z2,
-      bersih(0),
-      tambah(0, judul("Angka yang dipakai")),
-      tambah("Angka", ...barisTabel("rt0", 14, 32, [92, 188], ["metode", "angka yang dipakai"], 24, 8.4, true)),
-      tambah("tiga", ...barisTabel("rt1", 14, 56, [92, 188], ["Standard Addition", "124 + 411 + 363; 277 + 146"], 24, 8.2)),
-      tambah("dua", ...barisTabel("rt2", 14, 80, [92, 188], ["Regrouping", "189 + 245"], 24, 8.2)),
-      tambah("latihan", ...barisTabel("rt3", 14, 104, [92, 188], ["Counting On", "429 + 19; 39 + 821; 821 + 98"], 24, 8.2)),
-      tambah("serta", ...barisTabel("rt4", 14, 128, [92, 188], ["Partial Sums", "333 + 519; 576 + 148"], 24, 8.2)),
+      SUARA_R2,
+      sorotkan("Susun", "r0-k"),
+      hapus("tiap", "tq"),
+      sorotkan("Tambah", "r1-k"),
+      ubah("Tambah", { id: "r0-k", sorot: false }),
+      tambah("Ingin@2", emo("ok1", 200, 80, E.benar, 18)),
     ),
     k(
-      SUARA_Z3,
-      bersih(0),
-      tambah(0, judul("Memilih metode")),
-      tambah("kolom", ...kartu("p1", 14, 32, 272, 28, W.hijauMuda, ["kolom rapi: Standard Addition"], 9)),
-      tambah("memahami", ...kartu("p2", 14, 66, 272, 28, W.langit, ["paham tukar: Regrouping"], 9)),
-      tambah("hitung", ...kartu("p3", 14, 100, 272, 28, W.krem, ["hitung di kepala: Counting On"], 9)),
-      tambah("menguraikan", ...kartu("p4", 14, 134, 272, 28, W.pink, ["menguraikan: Partial Sums"], 9)),
-      tambah("Hasil", emo("p5", 150, 188, "✅", 22)),
+      SUARA_R3,
+      redamkan("cepat", "r1-k"),
+      sorotkan("Genapkan", "r2-k"),
+      hapus("Apa", "ok1"),
+      tambah("periksa", emo("ok2", 200, 110, E.mata, 18), emo("ok3", 200, 140, E.benar, 18)),
+    ),
+    k(
+      SUARA_R4,
+      redamkan("Menurutmu,", "r2-k"),
+      hapus("Menurutmu,", "n3", "ok2", "ok3"),
+      tambah("dua", teks("qs", 100, 182, "230 + 99 = ?", 16, W.biru, { z: 4 })),
+      tambah("sembilan", emo("tq2", 200, 80, E.tanya, 22)),
+      tambah("pas?", emo("pk", 200, 104, E.pikir, 18)),
     ),
   ],
 };
-

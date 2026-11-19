@@ -1,63 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_BERAS, ADEGAN_BERLATIH_FAKTOR_1, ADEGAN_BERLATIH_FAKTOR_2, ADEGAN_BUKAN_FAKTOR, ADEGAN_FAKTOR_12, ADEGAN_PEMBUKA_I } from "./k4b1i-materi-1";
-import {
-  ADEGAN_BERLATIH_KELIPATAN,
-  ADEGAN_KELIPATAN_KAREL,
-  ADEGAN_MENCOBA_SLAMET,
-  ADEGAN_MISKONSEPSI,
-  ADEGAN_UK_CERITA,
-  ADEGAN_UK_FAKTOR_KELIPATAN,
-  ADEGAN_UK_HITUNG,
-  ADEGAN_UK_NILAI_TEMPAT,
-} from "./k4b1i-materi-2";
-import { ADEGAN_PENGAYAAN_1, ADEGAN_PENGAYAAN_2 } from "./k4b1i-materi-3";
-import { ADEGAN_LUAR_FP, ADEGAN_LUAR_FP_TERAPAN, ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_SK, ADEGAN_LUAR_SK_TERAPAN } from "./k4b1i-luar-1";
-import { ADEGAN_LUAR_DV, ADEGAN_LUAR_DV_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_SV, ADEGAN_LUAR_SV_TERAPAN } from "./k4b1i-luar-2";
+import { ADEGAN_FAKTOR, ADEGAN_PANTAI, ADEGAN_SALAH_FAKTOR } from "./k4b1i-materi-1";
+import { ADEGAN_BUKAN, ADEGAN_LENTERA, ADEGAN_PASANGAN } from "./k4b1i-materi-2";
+import { ADEGAN_CARA, ADEGAN_JADWAL, ADEGAN_PENUTUP } from "./k4b1i-materi-3";
+import { ADEGAN_LUAR_PASANGAN, ADEGAN_LUAR_PASANGAN_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k4b1i-luar-1";
+import { ADEGAN_LUAR_CEK, ADEGAN_LUAR_CEK_TERAPAN, ADEGAN_LUAR_DAFTAR, ADEGAN_LUAR_DAFTAR_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k4b1i-luar-2";
 
-/** Kelas 4 Bab 1 Sub-Bab I (Faktor dan Kelipatan), penutup bab: video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 4 Bab 1 Sub-Bab I (faktor dan kelipatan), akhir cerita Penginapan Pulau Karang Indah.
+ * Video materi (sekitar tiga menit): cerita orisinal IGIL "Papan Jadwal Kak Yoga" (Satria, Laras, Genta, Pak Hendro, Kak Yoga, Bu Maya).
+ * Video kedua: tiga metode global (Factor Pairs, Multiples List, Divisibility Check), terpisah.
+ */
+export const JUDUL_K4B1I = "Papan Jadwal Kak Yoga";
+
 export const VIDEO_MATERI_K4B1I: VideoStory = {
   id: "k4b1i-materi",
-  judul: "Faktor dan Kelipatan",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K4B1I,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "faktor dan kelipatan", daftar: ["Tabel pembagian","Penjumlahan berulang","Perkalian bilangan asli"] }),
-    ADEGAN_PEMBUKA_I,
-    ADEGAN_FAKTOR_12,
-    ADEGAN_BUKAN_FAKTOR,
-    ADEGAN_BERLATIH_FAKTOR_1,
-    ADEGAN_BERLATIH_FAKTOR_2,
-    ADEGAN_BERAS,
-    ADEGAN_KELIPATAN_KAREL,
-    ADEGAN_MENCOBA_SLAMET,
-    ADEGAN_BERLATIH_KELIPATAN,
-    ADEGAN_MISKONSEPSI,
-    ADEGAN_UK_NILAI_TEMPAT,
-    ADEGAN_UK_HITUNG,
-    ADEGAN_UK_FAKTOR_KELIPATAN,
-    ADEGAN_UK_CERITA,
-    ADEGAN_PENGAYAAN_1,
-    ADEGAN_PENGAYAAN_2,
+    adeganSapaan({ jenis: "materi", topik: "faktor dan kelipatan", daftar: ["Faktor suatu bilangan", "Pasangan faktor", "Kelipatan"] }),
+    ADEGAN_PANTAI,
+    ADEGAN_FAKTOR,
+    ADEGAN_SALAH_FAKTOR,
+    ADEGAN_PASANGAN,
+    ADEGAN_BUKAN,
+    ADEGAN_LENTERA,
+    ADEGAN_JADWAL,
+    ADEGAN_CARA,
+    ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K4B1I: VideoStory = {
   id: "k4b1i-luar",
-  judul: "Faktor dan Kelipatan: Metode dari Luar",
-  subjudul: "Empat metode luar",
+  judul: JUDUL_K4B1I,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "faktor dan kelipatan" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "faktor dan kelipatan", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_FP,
-    ADEGAN_LUAR_FP_TERAPAN,
-    ADEGAN_LUAR_SK,
-    ADEGAN_LUAR_SK_TERAPAN,
-    ADEGAN_LUAR_DV,
-    ADEGAN_LUAR_DV_TERAPAN,
-    ADEGAN_LUAR_SV,
-    ADEGAN_LUAR_SV_TERAPAN,
+    ADEGAN_LUAR_PASANGAN,
+    ADEGAN_LUAR_PASANGAN_TERAPAN,
+    ADEGAN_LUAR_DAFTAR,
+    ADEGAN_LUAR_DAFTAR_TERAPAN,
+    ADEGAN_LUAR_CEK,
+    ADEGAN_LUAR_CEK_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

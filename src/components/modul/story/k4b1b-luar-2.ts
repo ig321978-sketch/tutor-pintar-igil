@@ -1,147 +1,239 @@
-import type { AdeganStory } from "./logika-story";
-import { W, emo, judul, kartu, panah, teks } from "./k4b1b-gambar";
-import { bersih, hapus, idx, k, sorotkan, tambah } from "./k4b1b-bantu";
-import { NAMA_METODE, NAMA_METODE_ID } from "./k4b1b-luar-1";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, angkaSel, emo, judul, kartu, kepalaSel, kotak, lantai, panah, papan4, selKosong, tandaiSel, teks, tokoh } from "./k4b1b-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah } from "./k4b1b-bantu";
 
-const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
-const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
+/*
+ * Cerita orisinal IGIL "Gudang Handuk Pak Laode" (Kelas 4 Bab 1 Sub-Bab B), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b1b.md. Bagian ini: Place Chart (Bagan Tempat) dan terapannya, Digit Swap (Tukar Tempat) dan terapannya, dan ringkasan.
+ */
 
-/* ------------------------------ 1. Expanded Form: konsep ------------------------------ */
-const SUARA_U1 = "Metode ketiga, Expanded Form, atau Bentuk Uraian. Bilangan ditulis sebagai jumlah dari nilai tiap tempat.";
-const SUARA_U2 = "Langkah satu: tulis nilai tiap angka menurut tempatnya. Langkah dua: hubungkan nilai-nilai itu dengan tanda tambah. Nilai nol boleh tidak ditulis.";
-const SUARA_U3 = "Contoh kecil: tiga puluh dua ditulis tiga puluh ditambah dua. Bentuk ini memperlihatkan bahwa angka tiga ada di puluhan, bukan sekadar tiga.";
-const SUARA_U4 = "Bentuk uraian dan tabel nilai tempat saling melengkapi: dari tabel kita menulis penjumlahannya, dan dari penjumlahan kita mengisi tabel.";
+const sel = (id: string, x: number, y: number, cw: number, ch = 30) => [0, 1, 2, 3].map((c) => selKosong(id, x, y + 14, cw, c, ch));
+const kep = (id: string, x: number, y: number, cw: number, dari: number, sampai: number): Obj[] => [dari, sampai].length ? Array.from({ length: sampai - dari + 1 }, (_, i) => kepalaSel(id, x, y, cw, dari + i)).flat() : [];
 
-export const ADEGAN_LUAR_URAIAN: AdeganStory = {
-  id: "luar-uraian",
-  judul: "Expanded Form: bilangan sebagai jumlah nilai",
-  sumber: "Metode luar: Expanded Form",
-  latar: "#FEFCE8",
+/* ------------------------------ Place Chart: konsep ------------------------------ */
+const SUARA_B1 = "Cara kedua, Place Chart, atau Bagan Tempat.";
+const SUARA_B2 = "Kita menggambar bagan dengan kolom ribuan, ratusan, puluhan, dan satuan.";
+const SUARA_B3 = "Setiap angka ditulis pada kolomnya, dan kolom kosong diisi nol.";
+const SUARA_B4 = "Dari bagan, kita membaca banyaknya tiap angka, yaitu angka dikali tempatnya.";
+const BX = 30;
+const BW = 60;
+const BY = 44;
+
+export const ADEGAN_LUAR_BAGAN: AdeganStory = {
+  id: "luar-bagan",
+  judul: "Place Chart: Bagan Tempat",
+  sumber: "Metode global: Place Chart (konsep)",
+  latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_U1,
-      tambah(0, judul("Expanded Form")),
-      tambah("ketiga,", kepala(2)),
-      tambah("Bilangan", ...kartu("b1", 60, 58, 180, 30, W.putih, ["sebuah bilangan"], 9.6)),
-      tambah("jumlah", panah("bp", 150, 92, 0, 14, W.ungu, 2), ...kartu("b2", 14, 110, 272, 36, W.emas, ["jumlah dari nilai tiap tempat"], 9.6)),
+      SUARA_B1,
+      tambah(0, judul("Cara 2: Place Chart"), ...lantai("hl", 150)),
+      tambah("Place", ...sel("bg", BX, BY, BW, 34)),
+      tambah("Bagan", teks("nm", 150, 140, "Bagan Tempat", 13, W.ungu)),
     ),
     k(
-      SUARA_U2,
-      bersih(0),
-      tambah(0, judul("Dua langkah menguraikan")),
-      tambah(0, kepala(2)),
-      tambah(idx(SUARA_U2, "satu:"), ...kartu("l1", 14, 60, 272, 30, W.hijauMuda, ["1. tulis nilai tiap angka menurut tempatnya"], 8.8)),
-      tambah(idx(SUARA_U2, "dua:"), ...kartu("l2", 14, 100, 272, 30, W.langit, ["2. hubungkan nilai-nilainya dengan tanda +"], 8.8)),
-      tambah("nol", ...kartu("l3", 14, 140, 272, 30, W.pink, ["nilai nol boleh tidak ditulis"], 8.8)),
+      SUARA_B2,
+      tambah("menggambar", teks("kk", 150, 32, "4 kolom", 9, W.merah)),
+      tambah("ribuan,", ...kep("bg", BX, BY, BW, 0, 0)),
+      tambah("ratusan,", ...kep("bg", BX, BY, BW, 1, 1)),
+      tambah("puluhan,", ...kep("bg", BX, BY, BW, 2, 2)),
+      tambah("satuan.", ...kep("bg", BX, BY, BW, 3, 3)),
     ),
     k(
-      SUARA_U3,
-      bersih(0),
-      tambah(0, judul("Contoh kecil")),
-      tambah(0, kepala(2)),
-      tambah("Contoh", ...kartu("cv", 80, 60, 140, 24, W.emas, ["contoh kecil"], 9)),
-      tambah("ditulis", teks("ek", 150, 116, "30 + 2 = 32", 24, W.merah)),
-      tambah("puluhan,", teks("ep", 150, 156, "angka 3 di puluhan bernilai 30", 9.6, W.hijau)),
+      SUARA_B3,
+      hapus(0, "kk", "nm"),
+      tambah("angka", angkaSel("bg", BX, BY, BW, 0, 4, { ch: 34, u: 20 })),
+      tambah("ditulis", angkaSel("bg", BX, BY, BW, 2, 3, { ch: 34, u: 20 }), angkaSel("bg", BX, BY, BW, 3, 5, { ch: 34, u: 20 })),
+      tambah("kosong", tandaiSel("bz", BX, BY, BW, 1, 34, W.merah)),
+      tambah("nol.", angkaSel("bg", BX, BY, BW, 1, 0, { ch: 34, u: 20 }), teks("kz", 150, 130, "kosong = 0", 11, W.merah)),
     ),
     k(
-      SUARA_U4,
-      bersih(0),
-      tambah(0, judul("Tabel dan bentuk uraian")),
-      tambah(0, kepala(2)),
-      tambah("tabel", ...kartu("ta", 14, 70, 110, 44, W.hijauMuda, ["tabel nilai", "tempat"], 9.4)),
-      tambah("uraian", ...kartu("ur", 176, 70, 110, 44, W.krem, ["bentuk", "uraian"], 9.4)),
-      tambah("menulis", panah("a1", 128, 82, 44, 0, W.ungu, 2)),
-      tambah("mengisi", panah("a2", 172, 104, -44, 0, W.ungu, 2)),
+      SUARA_B4,
+      hapus(0, "bz", "kz"),
+      tambah("banyaknya", ...["4.000", "0", "30", "5"].map((t, c) => teks(`pr${c}`, BX + c * BW + BW / 2, 112, t, 11, W.hijauTua))),
+      tambah("dikali", teks("rm", 150, 134, "angka × tempatnya", 11, W.ungu)),
+      tambah("tempatnya", emo("ok", 150, 160, E.benar, 20)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Expanded Form: penerapan ------------------------------ */
-const SUARA_UT1 = "Uraikan dua ribu seratus lima puluh: dua ribu ditambah seratus ditambah lima puluh. Nolnya tidak perlu ditulis, dan jumlahnya kembali dua ribu seratus lima puluh.";
-const SUARA_UT2 = "Uraikan tujuh ribu tiga ratus lima puluh: tujuh ribu ditambah tiga ratus ditambah lima puluh. Uraikan sembilan ribu lima ratus: sembilan ribu ditambah lima ratus.";
-const SUARA_UT3 = "Uraikan tujuh ribu delapan ratus dua belas, bilangan latihan tadi: tujuh ribu ditambah delapan ratus ditambah sepuluh ditambah dua.";
-const SUARA_UT4 = "Uraikan enam ribu seratus sembilan puluh dua dari tabel tadi: enam ribu ditambah seratus ditambah sembilan puluh ditambah dua.";
+/* ------------------------------ Place Chart: terapan ------------------------------ */
+const SUARA_Q1 = "Laras menaruh lima, nol, tujuh, dan dua pada bagan tempat.";
+const SUARA_Q2 = "Angka tujuh di kolom puluhan berarti tujuh puluh, bukan tujuh.";
+const SUARA_Q3 = "Cocok untuk bilangan besar, karena bagan tidak pernah kehabisan ruang.";
+const SUARA_Q4 = "Kurang cocok kalau kita tidak punya kertas, karena bagannya harus digambar lebih dulu.";
 
-export const ADEGAN_LUAR_URAIAN_TERAPAN: AdeganStory = {
-  id: "luar-uraian-terapan",
-  judul: "Expanded Form pada angka-angka kita",
-  sumber: "Metode luar: Expanded Form (penerapan)",
-  latar: "#FEFCE8",
+export const ADEGAN_LUAR_BAGAN_TERAPAN: AdeganStory = {
+  id: "luar-bagan-terapan",
+  judul: "Place Chart: terapan",
+  sumber: "Metode global: Place Chart (terapan)",
+  latar: "#FFFBEB",
   ketukan: [
     k(
-      SUARA_UT1,
-      tambah(0, kepala(2)),
-      tambah("Uraikan", teks("bl", 150, 70, "2.150", 18, W.merah)),
-      tambah("ditambah", teks("q1", 150, 106, "2.000 + 100 + 50 = 2.150", 13, W.hijau)),
-      tambah("Nolnya", ...kartu("nt", 40, 130, 220, 30, W.pink, ["angka 0 di satuan tidak ditulis"], 9)),
+      SUARA_Q1,
+      tambah(0, judul("Bagan Laras"), ...tokoh("la", 268, 184, "Laras")),
+      tambah("bagan", ...papan4("lq", 30, 40, 60, ["", "", "", ""])),
+      tambah("lima,", angkaSel("lq", 30, 40, 60, 0, 5)),
+      tambah("nol,", angkaSel("lq", 30, 40, 60, 1, 0)),
+      tambah("tujuh,", angkaSel("lq", 30, 40, 60, 2, 7)),
+      tambah("dua", angkaSel("lq", 30, 40, 60, 3, 2)),
     ),
     k(
-      SUARA_UT2,
-      hapus(0, "bl", "q1", "nt-k", "nt-t0"),
-      tambah(idx(SUARA_UT2, "Uraikan"), teks("q2", 150, 90, "7.000 + 300 + 50 = 7.350", 13, W.hijau)),
-      tambah(idx(SUARA_UT2, "Uraikan", 2), teks("q3", 150, 130, "9.000 + 500 = 9.500", 13, W.hijau)),
+      SUARA_Q2,
+      tambah("puluhan", tandaiSel("lt", 30, 40, 60, 2)),
+      tambah("berarti", teks("a1", 150, 126, "7 = 70", 14, W.hijauTua)),
+      tambah("bukan", teks("a2", 150, 150, "bukan 7", 11, W.merah), emo("xs", 206, 148, E.salah, 16)),
     ),
     k(
-      SUARA_UT3,
-      hapus(0, "q2", "q3"),
-      tambah("Uraikan", teks("q4", 150, 100, "7.000 + 800 + 10 + 2 = 7.812", 12, W.hijau)),
-      tambah("latihan", ...kartu("jb", 40, 130, 220, 30, W.emas, ["bilangan dari latihan tadi"], 9)),
+      SUARA_Q3,
+      hapus(0, "a1", "a2", "xs", "lt"),
+      tambah("Cocok", emo("ok", 150, 126, E.benar, 22)),
+      tambah("besar", teks("bs", 150, 152, "9.999", 18, W.merah)),
+      tambah("ruang", kotak("rg", 26, 34, 248, 82, undefined, W.hijau, { tebal: 2.4, rx: 6, putus: true, z: 6 })),
     ),
     k(
-      SUARA_UT4,
-      hapus(0, "q4", "jb-k", "jb-t0"),
-      tambah("Uraikan", teks("q5", 150, 100, "6.000 + 100 + 90 + 2 = 6.192", 12, W.hijau)),
-      tambah("tabel", ...kartu("kn", 40, 130, 220, 30, W.emas, ["bilangan dari tabel tadi"], 9)),
+      SUARA_Q4,
+      hapus(0, "ok", "bs", "rg"),
+      tambah("Kurang", emo("xs2", 220, 134, E.salah, 22)),
+      tambah("kertas", emo("kr", 150, 140, E.kertas, 32)),
+      tambah("digambar", emo("pn", 104, 134, E.pensil, 22), teks("gd", 150, 170, "gambar dulu", 11, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Ringkasan ------------------------------ */
-const SUARA_R1 = "Ringkasan empat metode, dengan angka yang dipakai. Nilai Tempat memakai dua ribu seratus lima puluh serta empat bilangan latihan tadi. Tukar Sepuluh memakai dua ribu seratus lima puluh dan sembilan ribu lima ratus.";
-const SUARA_R2 = "Bentuk Uraian memakai tujuh ribu tiga ratus lima puluh, sembilan ribu lima ratus, tujuh ribu delapan ratus dua belas, dan enam ribu seratus sembilan puluh dua.";
-const SUARA_R3 = "Cakram Nilai Tempat memakai dua ribu seratus lima puluh, tujuh ribu tiga ratus lima puluh, sembilan ribu lima ratus, serta dua bilangan latihan tadi.";
-const SUARA_R4 = "Keempat metode menjawab pertanyaan yang sama, dengan jawaban yang sama: nilai sebuah angka ditentukan oleh tempatnya. Pelajaran kita sendiri memakai kardus, kartu, dan tabel nilai tempat.";
+/* ------------------------------ Digit Swap: konsep ------------------------------ */
+const SUARA_W1 = "Cara ketiga, Digit Swap, atau Tukar Tempat.";
+const SUARA_W2 = "Kita menukar dua angka pada sebuah bilangan, lalu membandingkan dua bilangannya.";
+const SUARA_W3 = "Angka yang sama akan berarti lain bila tempatnya berbeda.";
+const SUARA_W4 = "Cara ini membuktikan bahwa tempat angka sama pentingnya dengan angkanya.";
+const KX = [60, 110, 160, 210];
 
-/** Isi ringkasan: nama metode dan angka buku yang dipakainya. */
-export const ANGKA_METODE: readonly (readonly [string, string])[] = [
-  ["Nilai Tempat", "2.150; 8.463, 4.675, 6.789, 1.236"],
-  ["Tukar Sepuluh (10 : 1)", "2.150, 9.500"],
-  ["Bentuk Uraian", "2.150, 7.350, 9.500, 7.812, 6.192"],
-  ["Cakram Nilai Tempat", "2.150, 7.350, 9.500, 8.463, 4.675"],
-];
-const kartuRingkas = (i: number) => kartu(`rt${i + 1}`, 14, 30 + i * 42, 272, 36, WARNA_METODE[i], [ANGKA_METODE[i][0], ANGKA_METODE[i][1]], 8.4);
+export const ADEGAN_LUAR_TUKAR: AdeganStory = {
+  id: "luar-tukar",
+  judul: "Digit Swap: Tukar Tempat",
+  sumber: "Metode global: Digit Swap (konsep)",
+  latar: "#F0F9FF",
+  ketukan: [
+    k(
+      SUARA_W1,
+      tambah(0, judul("Cara 3: Digit Swap"), ...lantai("hl", 150)),
+      tambah("Digit", emo("jr", 150, 104, "\u{1F501}", 36)),
+      tambah("Tukar", teks("nm", 150, 140, "Tukar Tempat", 13, W.ungu)),
+    ),
+    k(
+      SUARA_W2,
+      hapus(0, "jr", "nm"),
+      tambah("menukar", ...[4, 1, 6, 2].flatMap((a, i) => kartu(`ka${i}`, KX[i] - 20, 50, 40, 36, "#FDE68A", [String(a)], 16))),
+      tambah("dua", teks("d2", 270, 44, "2 angka", 9, W.merah), panah("sw1", 117, 94, 36, 0, W.ungu, 2, { z: 6 }), panah("sw2", 153, 100, -36, 0, W.ungu, 2, { z: 6 })),
+      tambah("bilangan,", teks("o1", 90, 128, "4.162", 14, W.biru)),
+      tambah("bilangannya", teks("o2", 210, 128, "4.612", 14, W.merah)),
+    ),
+    k(
+      SUARA_W3,
+      tambah("Angka", teks("e1", 90, 150, "6 = 60", 12, W.hijauTua)),
+      tambah("berarti", teks("e2", 210, 150, "6 = 600", 12, W.hijauTua)),
+      sorotkan("tempatnya", "ka1-k", "ka2-k"),
+    ),
+    k(
+      SUARA_W4,
+      bersih(0),
+      tambah(0, judul("Sama Pentingnya")),
+      tambah("tempat", ...kartu("pt", 30, 70, 100, 46, "#BFDBFE", ["tempat"], 12)),
+      tambah("sama", teks("sm", 150, 98, "=", 22, W.merah)),
+      tambah("angkanya.", ...kartu("pa", 170, 70, 100, 46, "#BBF7D0", ["angka"], 12), emo("bt", 150, 150, E.bintang, 22)),
+    ),
+  ],
+};
+
+/* ------------------------------ Digit Swap: terapan ------------------------------ */
+const SUARA_X1 = "Satria menukar angka tiga dan dua pada bilangan dua ribu tiga ratus empat.";
+const SUARA_X2 = "Hasilnya tiga ribu dua ratus empat, dan angka tiga kini berarti tiga ribu.";
+const SUARA_X3 = "Cocok untuk menghapus salah paham bahwa angka selalu berarti sama.";
+const SUARA_X4 = "Kurang cocok untuk menghitung jumlah, karena cara ini hanya menunjukkan perbedaan tempat.";
+
+export const ADEGAN_LUAR_TUKAR_TERAPAN: AdeganStory = {
+  id: "luar-tukar-terapan",
+  judul: "Digit Swap: terapan",
+  sumber: "Metode global: Digit Swap (terapan)",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_X1,
+      tambah(0, judul("Satria Menukar"), ...tokoh("sa", 40, 184, "Satria")),
+      tambah("angka", ...papan4("ta", 50, 36, 50, [2, 3, 0, 4])),
+      tambah("tiga", tandaiSel("tx0", 50, 36, 50, 0, 30, W.merah), tandaiSel("tx1", 50, 36, 50, 1, 30, W.merah)),
+      tambah("bilangan", teks("o1", 276, 68, "2.304", 10, W.biru)),
+    ),
+    k(
+      SUARA_X2,
+      tambah("Hasilnya", ...papan4("tb", 50, 100, 50, [3, 2, 0, 4])),
+      tambah("ribu", teks("o2", 276, 132, "3.204", 10, W.merah)),
+      tambah("kini", tandaiSel("ty", 50, 100, 50, 0, 30, W.hijau)),
+      tambah("berarti", teks("e2", 150, 168, "3 = 3.000", 12, W.hijauTua)),
+    ),
+    k(
+      SUARA_X3,
+      hapus(0, "e2"),
+      tambah("Cocok", emo("ok", 250, 160, E.benar, 20)),
+      tambah("salah", teks("s3", 150, 168, "3 = 3?", 12, W.merah), emo("xs", 196, 166, E.salah, 16)),
+      tambah("selalu", teks("sl", 150, 186, "tidak selalu sama", 9, W.hijauTua)),
+    ),
+    k(
+      SUARA_X4,
+      hapus(0, "ok", "s3", "xs", "sl"),
+      tambah("Kurang", emo("xs3", 250, 160, E.salah, 20)),
+      tambah("menghitung", teks("jm", 150, 168, "2.304 + 3.204 = ?", 11, W.merah)),
+      tambah("perbedaan", teks("tp", 150, 186, "hanya beda tempat", 9, W.hijauTua)),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_S1 = "Tiga cara sudah kita lihat bersama Pak Laode. Mana yang pas tergantung keadaan.";
+const SUARA_S2 = "Ingin melihat banyaknya, pakai Balok Cacah. Ingin mencatat dengan rapi, pakai Bagan Tempat.";
+const SUARA_S3 = "Ingin membuktikan pentingnya tempat, pakai Tukar Tempat. Apa pun caranya, sebut tempat tiap angka.";
+const SUARA_S4 = "Menurutmu, untuk membaca angka tujuh pada bilangan lima ribu tujuh puluh dua, cara mana yang paling pas?";
+const KARTU_RINGKAS = ["#FEF3C7", "#DCFCE7", "#DBEAFE"];
+const NAMA_RINGKAS: [string, string][] = [["Balok", "Cacah"], ["Bagan", "Tempat"], ["Tukar", "Tempat"]];
+const RK = [0, 1, 2].flatMap((i) => kartu(`r${i}`, 18 + i * 94, 60, 88, 50, KARTU_RINGKAS[i], NAMA_RINGKAS[i], 9));
+const RK_KECIL = [0, 1, 2].flatMap((i) => kartu(`r${i}`, 18 + i * 94, 146, 88, 40, KARTU_RINGKAS[i], NAMA_RINGKAS[i], 9));
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode dan angka yang dipakai",
-  sumber: "Ringkasan empat metode luar",
-  latar: "#F5F3FF",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan: tiga cara memahami tempat angka",
+  latar: "#FFF7ED",
   ketukan: [
     k(
-      SUARA_R1,
-      tambah(0, judul("Ringkasan empat metode")),
-      tambah(idx(SUARA_R1, "Nilai"), ...kartuRingkas(0)),
-      tambah(idx(SUARA_R1, "Tukar"), ...kartuRingkas(1)),
+      SUARA_S1,
+      tambah(0, judul("Tiga Cara"), teks("n3", 150, 40, "3 cara", 12, W.ungu)),
+      tambah("lihat", ...RK),
+      tambah("Mana", emo("tq", 150, 150, E.tanya, 30)),
     ),
     k(
-      SUARA_R2,
-      tambah("Bentuk", ...kartuRingkas(2)),
-      sorotkan("Bentuk", "rt3-k"),
+      SUARA_S2,
+      hapus(0, "tq"),
+      sorotkan("Balok", "r0-k"),
+      tambah("melihat", emo("my", 62, 134, E.mata, 20)),
+      redamkan("Bagan", "r0-k"),
+      sorotkan("Bagan", "r1-k"),
+      tambah("rapi,", emo("rp", 156, 134, E.benar, 20)),
     ),
     k(
-      SUARA_R3,
-      tambah("Cakram", ...kartuRingkas(3)),
+      SUARA_S3,
+      redamkan(0, "r1-k"),
+      sorotkan("Tukar", "r2-k"),
+      tambah("sebut", emo("gb", 250, 134, E.gelembung, 20)),
+      tambah("angka.", emo("ok", 150, 168, E.benar, 20)),
     ),
     k(
-      SUARA_R4,
+      SUARA_S4,
       bersih(0),
-      tambah(0, judul("Satu jawaban, empat cara")),
-      tambah("Keempat", ...kartu("jw", 20, 34, 260, 50, W.emas, ["nilai sebuah angka", "ditentukan oleh tempatnya"], 10)),
-      tambah("metode", emo("e1", 45, 126, "🔢", 26), teks("e1t", 45, 148, "Nilai Tempat", 7.8, W.biru)),
-      tambah("metode", emo("e2", 112, 126, "🧱", 26), teks("e2t", 112, 148, "Tukar Sepuluh", 7.8, W.biru)),
-      tambah("metode", emo("e3", 188, 126, "➕", 26), teks("e3t", 188, 148, "Bentuk Uraian", 7.8, W.biru)),
-      tambah("metode", emo("e4", 258, 126, "🔵", 26), teks("e4t", 258, 148, "Cakram", 7.8, W.biru)),
-      tambah("Pelajaran", ...kartu("bk", 30, 162, 240, 28, W.krem, ["pelajaran: kardus, kartu, tabel nilai"], 8.6)),
+      tambah(0, judul("Cara Mana?"), ...RK_KECIL),
+      tambah("angka", ...papan4("rp", 40, 34, 55, [5, 0, 7, 2])),
+      tambah("tujuh", tandaiSel("rt", 40, 34, 55, 2)),
+      tambah("ribu", teks("rb", 150, 120, "5.072", 14, W.merah)),
+      tambah("pas?", emo("qs", 266, 120, E.tanya, 26)),
     ),
   ],
 };

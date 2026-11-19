@@ -1,49 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_BUKU_TIGA, ADEGAN_SIMPAN_PANJANG, ADEGAN_SIMPAN_PENDEK, ADEGAN_TONI_PANJANG, ADEGAN_TONI_PENDEK } from "./k4b1e-materi-1";
-import { ADEGAN_BERLATIH_DUA_DUA, ADEGAN_BERLATIH_DUA_SATU, ADEGAN_BERLATIH_LIMA, ADEGAN_BERLATIH_SATU, ADEGAN_BERLATIH_TIGA_EMPAT, ADEGAN_MISKONSEPSI, ADEGAN_PANDUAN_AMATI } from "./k4b1e-materi-2";
-import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_SIMPAN, ADEGAN_LUAR_SIMPAN_TERAPAN, ADEGAN_LUAR_STANDAR, ADEGAN_LUAR_STANDAR_TERAPAN } from "./k4b1e-luar-1";
-import { ADEGAN_LUAR_MAJU, ADEGAN_LUAR_MAJU_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_SEBAGIAN, ADEGAN_LUAR_SEBAGIAN_TERAPAN } from "./k4b1e-luar-2";
+import { ADEGAN_DAFTAR, ADEGAN_RESEPSI, ADEGAN_SALAH_SIMPAN } from "./k4b1e-materi-1";
+import { ADEGAN_HASIL, ADEGAN_PULUHAN, ADEGAN_SIMPAN } from "./k4b1e-materi-2";
+import { ADEGAN_PENUTUP, ADEGAN_PERIKSA, ADEGAN_TIGA } from "./k4b1e-materi-3";
+import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_SUSUN, ADEGAN_LUAR_SUSUN_TERAPAN } from "./k4b1e-luar-1";
+import { ADEGAN_LUAR_GENAP, ADEGAN_LUAR_GENAP_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_TAMBAH, ADEGAN_LUAR_TAMBAH_TERAPAN } from "./k4b1e-luar-2";
 
-/** Kelas 4 Bab 1 Sub-Bab E (Penjumlahan Bilangan Cacah sampai 1.000): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 4 Bab 1 Sub-Bab E (penjumlahan bilangan sampai seribu), lanjutan cerita Penginapan Pulau Karang Indah.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Meja Resepsi Bu Rina" (Satria, Laras, Genta, Pak Hendro, Bu Rina).
+ * Video kedua: tiga metode global (Column Add, Place Add, Round and Adjust), terpisah.
+ */
+export const JUDUL_K4B1E = "Meja Resepsi Bu Rina";
+
 export const VIDEO_MATERI_K4B1E: VideoStory = {
   id: "k4b1e-materi",
-  judul: "Penjumlahan Bilangan Cacah sampai 1.000",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K4B1E,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "penjumlahan bilangan cacah", daftar: ["Susun panjang","Susun pendek","Menyimpan"] }),
-    ADEGAN_TONI_PANJANG,
-    ADEGAN_TONI_PENDEK,
-    ADEGAN_BUKU_TIGA,
-    ADEGAN_SIMPAN_PANJANG,
-    ADEGAN_SIMPAN_PENDEK,
-    ADEGAN_PANDUAN_AMATI,
-    ADEGAN_BERLATIH_SATU,
-    ADEGAN_BERLATIH_DUA_SATU,
-    ADEGAN_BERLATIH_DUA_DUA,
-    ADEGAN_BERLATIH_TIGA_EMPAT,
-    ADEGAN_BERLATIH_LIMA,
-    ADEGAN_MISKONSEPSI,
+    adeganSapaan({ jenis: "materi", topik: "menjumlahkan bilangan sampai seribu", daftar: ["Penjumlahan bersusun", "Menyimpan", "Memeriksa hasil"] }),
+    ADEGAN_RESEPSI,
+    ADEGAN_DAFTAR,
+    ADEGAN_SALAH_SIMPAN,
+    ADEGAN_SIMPAN,
+    ADEGAN_PULUHAN,
+    ADEGAN_HASIL,
+    ADEGAN_PERIKSA,
+    ADEGAN_TIGA,
+    ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K4B1E: VideoStory = {
   id: "k4b1e-luar",
-  judul: "Penjumlahan sampai 1.000: Metode dari Luar",
-  subjudul: "Empat metode luar",
+  judul: JUDUL_K4B1E,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "penjumlahan bilangan cacah" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "menjumlahkan bilangan sampai seribu", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_STANDAR,
-    ADEGAN_LUAR_STANDAR_TERAPAN,
-    ADEGAN_LUAR_SIMPAN,
-    ADEGAN_LUAR_SIMPAN_TERAPAN,
-    ADEGAN_LUAR_MAJU,
-    ADEGAN_LUAR_MAJU_TERAPAN,
-    ADEGAN_LUAR_SEBAGIAN,
-    ADEGAN_LUAR_SEBAGIAN_TERAPAN,
+    ADEGAN_LUAR_SUSUN,
+    ADEGAN_LUAR_SUSUN_TERAPAN,
+    ADEGAN_LUAR_TAMBAH,
+    ADEGAN_LUAR_TAMBAH_TERAPAN,
+    ADEGAN_LUAR_GENAP,
+    ADEGAN_LUAR_GENAP_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

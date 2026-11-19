@@ -1,10 +1,7 @@
-// Uji mesin skenario umum: Kelas 1 (Bab 1, 2, 3, 4, 6, 7), Kelas 2, Kelas 3 Bab 1 sampai 5, dan Kelas 4 Bab 1.
+// Uji mesin skenario umum: Kelas 1 (Bab 1, 2, 3, 4, 6, 7), Kelas 2, dan Kelas 3 Bab 1 sampai 5.
 // Jalankan: node --no-warnings scripts/uji-skenario-umum.mjs
 import { awalSk, adeganSk, langkahSk, opsiHitung, semuaKetuk, ceritaSk } from "../src/components/modul/skenario-umum.ts";
 import { SKENARIO_BAB1, SKENARIO_BAB2, SKENARIO_BAB3, SKENARIO_BAB4, SKENARIO_BAB6, SKENARIO_BAB7 } from "../src/components/modul/skenario-kelas1.ts";
-import { SKENARIO_K4B1A, SKENARIO_K4B1B, SKENARIO_K4B1C, SKENARIO_K4B1D } from "../src/components/modul/skenario-k4b1-bilangan.ts";
-import { SKENARIO_K4B1E, SKENARIO_K4B1F } from "../src/components/modul/skenario-k4b1-hitung.ts";
-import { SKENARIO_K4B1G, SKENARIO_K4B1H, SKENARIO_K4B1I } from "../src/components/modul/skenario-k4b1-bagi.ts";
 import { SKENARIO_K4B2A, SKENARIO_K4B2B, SKENARIO_K4B2C } from "../src/components/modul/skenario-k4b2-biasa.ts";
 import { SKENARIO_K4B2D, SKENARIO_K4B2E } from "../src/components/modul/skenario-k4b2-desimal.ts";
 import { SKENARIO_K4B3A, SKENARIO_K4B3B } from "../src/components/modul/skenario-k4b3.ts";
@@ -42,15 +39,6 @@ const SEMUA = [
   ["Bab 4", SKENARIO_BAB4, 10],
   ["Bab 6", SKENARIO_BAB6, 20],
   ["Bab 7", SKENARIO_BAB7, 20],
-  ["K4 Bab 1A", SKENARIO_K4B1A, 10000],
-  ["K4 Bab 1B", SKENARIO_K4B1B, 10000],
-  ["K4 Bab 1C", SKENARIO_K4B1C, 10000],
-  ["K4 Bab 1D", SKENARIO_K4B1D, 10000],
-  ["K4 Bab 1E", SKENARIO_K4B1E, 1000],
-  ["K4 Bab 1F", SKENARIO_K4B1F, 1000],
-  ["K4 Bab 1G", SKENARIO_K4B1G, 1000],
-  ["K4 Bab 1H", SKENARIO_K4B1H, 1000],
-  ["K4 Bab 1I", SKENARIO_K4B1I, 10000],
   ["K4 Bab 2A", SKENARIO_K4B2A, 12],
   ["K4 Bab 2B", SKENARIO_K4B2B, 12],
   ["K4 Bab 2C", SKENARIO_K4B2C, 24],

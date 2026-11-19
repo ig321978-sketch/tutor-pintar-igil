@@ -1,234 +1,123 @@
 import type { AdeganStory } from "./logika-story";
-import { CERITA, W, barisTabel, benda, bersusun, emo, judul, kaleng, kartu, teks } from "./k4b1h-gambar";
-import { bersih, idx, k, sorotkan, tambah, ubah } from "./k4b1h-bantu";
+import { E, W, angkaSus, bulat, emo, garis, garisSus, judul, kotak, lorong, panah, pintu, poligon, teks, tokoh } from "./k4b1h-gambar";
+import { hapus, k, sorotkan, tambah, ubah } from "./k4b1h-bantu";
 
-/* ------------------------------ 8. Soal cerita a, b, e: dibagi sama banyak (Buku Siswa hlm. 47; Panduan Guru hlm. 67-69) ------------------------------ */
-const SUARA_H1 = "Soal cerita a: Ayah mendapat satu kaleng berisi tiga puluh enam butir permen, dibagi sama banyak kepada Tono dan Tini. Tiga puluh enam dibagi dua hasilnya delapan belas, jadi Tini menerima delapan belas permen.";
-const SUARA_H2 = "Soal b: Pak Bejo memanen enam puluh empat buah alpukat, dibagi sama rata kepada tiga tetangga dan juga untuk dirinya. Jadi pembaginya empat, bukan tiga.";
-const SUARA_H3 = "Enam puluh empat dibagi empat hasilnya enam belas. Tiap tetangga menerima enam belas alpukat. Hati-hati, jangan lupa menghitung Pak Bejo sendiri.";
-const SUARA_H4 = "Soal e: Putu membeli lima puluh lima gantungan kunci, dibagikan sama banyak kepada Azizah, Karel, Slamet, Asep, dan Helen. Lima puluh lima dibagi lima hasilnya sebelas, jadi Asep mendapat sebelas.";
-const SUARA_H5 = "Ketiga soal ini sama dengan permen Pak Wicak: satu jumlah besar dibagi sama banyak kepada beberapa orang, dan jawabannya cocok dengan hitungan kita.";
+/*
+ * Cerita orisinal IGIL "Papan Jatah Bu Ratna" (Kelas 4 Bab 1 Sub-Bab H), cerita Penginapan Pulau Karang Indah.
+ * Naskah suara dari naskah/story-naskah-k4b1h.md. Bagian ini: memeriksa dengan perkalian, sisa pembagian, penutup (jembatan ke Sub-Bab I).
+ */
 
-const [C_A, C_B, , , C_E] = CERITA;
-const H3 = bersusun("cb", 20, 44, C_B[1], C_B[0]);
-const NAMA_E = ["Azizah", "Karel", "Slamet", "Asep", "Helen"];
+/* ------------------------------ 7. Memeriksa dengan perkalian ------------------------------ */
+const SUARA_P1 = "Genta memeriksa dengan perkalian, empat belas kali empat.";
+const SUARA_P2 = "Empat kali empat enam belas, tulis enam dan simpan satu, lalu satu kali empat ditambah satu sama dengan lima.";
+const SUARA_P3 = "Hasilnya lima puluh enam, sama dengan jumlah tamu, jadi pembagiannya benar.";
+const MX = 88;
+const MY = 84;
 
-export const ADEGAN_CERITA_BAGI: AdeganStory = {
-  id: "cerita-bagi",
-  judul: "Soal cerita a, b, dan e: dibagi sama banyak",
-  sumber: "Materi: soal cerita pembagian",
-  latar: "#FFF7ED",
-  kutipan: [
-    "Kerjakan soal cerita berikut:",
-    "Ayah mendapat hadiah satu kaleng permen yang berisi 36 butir permen.",
-    "Berapa permen yang diterima Tini?",
-    "Jadi, Tini memperoleh 18 permen",
-    "Pak Bejo memanen 64 buah alpukat.",
-    "Pak Bejo membagi sama rata hasil panennya kepada 3 tetangganya dan juga untuk dirinya.",
-    "jumlah tetangga Pak Bejo dan dirinya = 4 keluarga.",
-    "Jumlah masing-masing tetangga Pak Bejo menerima 16 buah alpukat",
-    "Putu membeli 55 gantungan kunci khas Bali.",
-    "kepada Azizah, Karel, Slamet, Asep, dan Helen dengan sama banyak.",
-    "Berapa Asep mendapatkan gantungan kunci dari Putu?",
-    "jadi, Asep menerima gantungan kunci dari Putu sebanyak 11 gantungan kunci.",
-  ],
+export const ADEGAN_PERIKSA: AdeganStory = {
+  id: "periksa",
+  judul: "Memeriksa dengan perkalian",
+  sumber: "Materi: memeriksa hasil",
+  latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_H1,
-      tambah(0, judul("Soal cerita a")),
-      tambah("Ayah", ...kaleng("ka", 16, 56, 44, 52), teks("kat", 38, 88, "36", 15, W.putih)),
-      tambah("Tono", ...kartu("ta", 84, 40, 96, 52, W.hijauMuda, ["Tono", "?"], 10)),
-      tambah("Tini", ...kartu("ti", 190, 40, 96, 52, W.pink, ["Tini", "?"], 10)),
-      tambah("dua", teks("kh", 150, 140, "36 : 2 = ?", 20, W.biru)),
-      ubah("delapan", { id: "kh", isi: "36 : 2 = 18" }),
-      ubah("delapan", { id: "ta-t1", isi: "18" }, { id: "ti-t1", isi: "18" }),
-      sorotkan("Tini", "ti-k"),
+      SUARA_P1,
+      tambah(0, judul("Memeriksa dengan Perkalian"), ...tokoh("ge", 240, 184, "Genta")),
+      tambah("memeriksa", emo("ma", 60, 70, E.mata, 22)),
+      tambah("belas", angkaSus("m1", MX, MY, 0, 0, "1"), angkaSus("m2", MX, MY, 1, 0, "4"), teks("k14", 205, 60, "14 × 4", 12, W.coklat)),
+      tambah("kali", teks("kx", MX - 9, MY + 15, "×", 14)),
+      tambah("empat@2", angkaSus("m3", MX, MY, 1, 1, "4"), garisSus("gp", MX, MY, 0, 1, 1)),
     ),
     k(
-      SUARA_H2,
-      bersih(0),
-      tambah(0, judul("Soal cerita b")),
-      tambah("Pak", emo("al", 40, 66, "🥑", 30), teks("alt", 40, 86, "64 buah", 9, W.coklat)),
-      tambah("tiga", ...[0, 1, 2].map((i) => emo(`tg${i}`, 100 + i * 52, 70, "🏠", 26)), ...[0, 1, 2].map((i) => teks(`tgt${i}`, 100 + i * 52, 88, `tetangga ${i + 1}`, 7.4, W.biru))),
-      tambah("dirinya.", emo("pb", 262, 70, "👨", 26), teks("pbt", 262, 88, "Pak Bejo", 7.6, W.biru)),
-      tambah("empat@2", ...kartu("pc", 20, 108, 260, 40, W.emas, ["3 tetangga + Pak Bejo = 4 bagian"], 9.6)),
-      tambah("bukan", ...kartu("pd", 20, 158, 260, 32, W.merahMuda, ["pembagi 4, bukan 3"], 9.6)),
+      SUARA_P2,
+      tambah("belas,", teks("c1", 205, 80, "4 × 4 = 16", 10, W.coklat)),
+      tambah("enam@2", angkaSus("r2", MX, MY, 1, 2, "6", W.merah)),
+      tambah("simpan", angkaSus("cy", MX, MY, 0, -1, "1", W.merah, 9)),
+      tambah("satu@2", teks("c2", 205, 100, "1 × 4 + 1 = 5", 10, W.coklat)),
+      tambah("lima.", angkaSus("r1", MX, MY, 0, 2, "5", W.merah)),
     ),
     k(
-      SUARA_H3,
-      bersih(0),
-      tambah(0, judul("Soal b: 64 : 4")),
-      tambah(0, ...H3.kerangka),
-      tambah("hasilnya", ...H3.tahap.flat()),
-      tambah("hasilnya", ...kartu("pe", 120, 40, 168, 40, W.emas, ["64 : 4 = 16", "hasil: 16"], 10)),
-      tambah("Tiap", ...kartu("pf", 120, 94, 168, 36, W.hijauMuda, ["tiap tetangga: 16 alpukat"], 9)),
-      tambah("Hati-hati,", ...kartu("pg", 120, 144, 168, 36, W.merahMuda, ["awas: jangan lupa Pak Bejo"], 9)),
-    ),
-    k(
-      SUARA_H4,
-      bersih(0),
-      tambah(0, judul("Soal cerita e")),
-      tambah("Putu", emo("gk", 34, 160, "🔑", 26), teks("gkt", 34, 182, "55 buah", 8.6, W.coklat)),
-      ...NAMA_E.map((n, i) => tambah(idx(SUARA_H4, n), ...kartu(`ge${i}`, 6 + i * 58, 36, 54, 52, [W.hijauMuda, W.langit, W.krem, W.pink, W.lavender][i], [n, "?"], 8.4))),
-      tambah("dibagi", teks("gq", 160, 130, "55 : 5 = ?", 20, W.biru)),
-      ubah("sebelas", { id: "gq", isi: "55 : 5 = 11" }),
-      ubah("sebelas", ...NAMA_E.map((_, i) => ({ id: `ge${i}-t1`, isi: "11" }))),
-      sorotkan("Asep", "ge3-k"),
-    ),
-    k(
-      SUARA_H5,
-      bersih(0),
-      tambah(0, judul("Tiga soal, satu ide")),
-      tambah("Ketiga", ...barisTabel("sh", 20, 36, [40, 130, 70], ["soal", "dibagi", "hasil"], 22, 8.8, true)),
-      ...[C_A, C_B, C_E].map(([n, p, h], i) => tambah([idx(SUARA_H5, "ini"), idx(SUARA_H5, "jumlah"), idx(SUARA_H5, "jawabannya")][i], ...barisTabel(`sr${i}`, 20, 58 + i * 24, [40, 130, 70], [["a", "b", "e"][i], `${n} : ${p}`, String(h)], 24, 10))),
-      tambah("cocok", emo("sc", 150, 170, "✅", 22)),
+      SUARA_P3,
+      sorotkan("lima", "r1", "r2"),
+      tambah("tamu,", teks("t56", 190, 160, "56 tamu", 9, W.coklat), teks("h56", 205, 136, "56", 22, W.hijauTua)),
+      tambah("benar.", emo("ok", 266, 120, E.benar, 24)),
     ),
   ],
 };
 
-/* ------------------------------ 9. Soal cerita c dan d: banyak kotak (Buku Siswa hlm. 47; Panduan Guru hlm. 68) ------------------------------ */
-const SUARA_I1 = "Soal c dan d berbeda jenis. Ibu punya delapan puluh satu kue, tiap kotak berisi tiga kue. Yang ditanya bukan isi tiap kotak, melainkan banyak kotak yang harus disiapkan.";
-const SUARA_I2 = "Delapan puluh satu dibagi tiga: delapan dibagi tiga dua, sisa dua. Turunkan satu menjadi dua puluh satu, dua puluh satu dibagi tiga tujuh. Hasilnya dua puluh tujuh kotak.";
-const SUARA_I3 = "Soal d: peternak mendapat sembilan puluh enam butir telur, tiap kotak memuat delapan telur. Sembilan dibagi delapan satu, sisa satu. Turunkan enam menjadi enam belas, enam belas dibagi delapan dua. Hasilnya dua belas kotak.";
-const SUARA_I4 = "Pembagi adalah isi tiap kotak, jadi hasil bagi menyatakan banyak kotak. Jawabannya dua puluh tujuh kotak dan dua belas kotak. Cek: dua puluh tujuh dikali tiga hasilnya delapan puluh satu, dua belas dikali delapan hasilnya sembilan puluh enam.";
+/* ------------------------------ 8. Sisa pembagian ------------------------------ */
+const SUARA_Q1 = "Bu Ratna bertanya, bagaimana kalau tamunya lima puluh sembilan?";
+const SUARA_Q2 = "Laras membagi, hasilnya empat belas sisa tiga, karena tiga tamu tidak cukup untuk empat kamar.";
+const SUARA_Q3 = "Sisanya selalu lebih kecil daripada pembagi, dan kali ini ditempatkan di aula.";
+const SISA_X = [236, 244, 252];
 
-const [, , C_C, C_D] = CERITA;
-const IC = bersusun("ck", 20, 44, C_C[1], C_C[0]);
-const ID = bersusun("cd", 20, 44, C_D[1], C_D[0]);
-
-export const ADEGAN_CERITA_KOTAK: AdeganStory = {
-  id: "cerita-kotak",
-  judul: "Soal cerita c dan d: berapa kotak yang diperlukan",
-  sumber: "Materi: soal cerita banyak kotak",
-  latar: "#F0F9FF",
-  kutipan: [
-    "Ibu mempunyai sebanyak 81 kue yang akan diletakkan pada kotak kue.",
-    "Setiap kotak kue berisi 3 kue.",
-    "Berapa kotak yang harus disiapkan ibu ?",
-    "jadi, kotak yang harus disiapkan ibu untuk meletakkan kue adalah 27 kotak.",
-    "Peternak ayam petelur hari ini mendapatkan 96 butir telur.",
-    "masing-masing kotak telur memuat 8 telur.",
-    "Berapakah jumlah kotak telur yang diperlukan?",
-    "jadi, jumlah kotak telur yang diperlukan adalah 12 kotak",
-  ],
+export const ADEGAN_SISA: AdeganStory = {
+  id: "sisa",
+  judul: "Kalau tamunya bersisa",
+  sumber: "Materi: sisa pembagian",
+  latar: "#FEFCE8",
   ketukan: [
     k(
-      SUARA_I1,
-      tambah(0, judul("Soal cerita c")),
-      tambah("Ibu", ...benda("ku", 22, 46, 81, 9, 7.4, 2.8, W.jingga), teks("kut", 54, 128, "81 kue", 9.6, W.coklat)),
-      tambah("tiap", ...kartu("ib", 120, 40, 168, 36, W.hijauMuda, ["tiap kotak berisi 3 kue"], 9)),
-      tambah("banyak", ...kartu("ic", 120, 90, 168, 40, W.emas, ["berapa kotak yang", "harus disiapkan?"], 9.6)),
-      tambah("kotak@3", emo("id", 204, 164, "📦", 30)),
+      SUARA_Q1,
+      tambah(0, judul("Bagaimana Kalau Bersisa?"), ...tokoh("br", 50, 184, "Bu Ratna")),
+      tambah("bertanya,", emo("tq", 92, 150, E.tanya, 20)),
+      tambah("lima", teks("n59", 170, 66, "59 tamu", 16, W.merah)),
+      tambah("sembilan?", teks("bg", 170, 100, "59 : 4 = ?", 18, W.biru)),
     ),
     k(
-      SUARA_I2,
-      bersih(0),
-      tambah(0, judul("Soal c: 81 : 3")),
-      tambah(0, ...IC.kerangka),
-      tambah("delapan@2", ...IC.tahap[0], ...IC.tahap[1]),
-      tambah("Turunkan", ...IC.tahap[2], ...kartu("i1", 120, 40, 168, 30, W.krem, ["8 : 3 = 2, sisa 2"], 9.4)),
-      tambah("tujuh", ...IC.tahap[3], ...IC.tahap[4], ...IC.tahap[5], ...kartu("i2", 120, 80, 168, 30, W.langit, ["21 : 3 = 7"], 9.4)),
-      tambah("Hasilnya", ...kartu("i3", 120, 120, 168, 40, W.emas, ["81 : 3 = 27", "27 kotak"], 10)),
+      SUARA_Q2,
+      tambah("membagi,", ...tokoh("lr", 140, 184, "Laras")),
+      ubah("belas", { id: "bg", isi: "59 : 4 = 14 sisa 3", u: 13 }),
+      tambah("tiga,", ...SISA_X.map((x, i) => bulat(`s${i}`, x, 128, 3, "#FDBA74", "#7C2D12", { tebal: 0.7, z: 4 }))),
+      tambah("tamu", teks("t3", 270, 112, "3 tamu", 9, W.coklat)),
+      tambah("kamar.", teks("k4", 190, 128, "4 kamar", 9, W.coklat)),
     ),
     k(
-      SUARA_I3,
-      bersih(0),
-      tambah(0, judul("Soal d: 96 : 8")),
-      tambah(0, ...ID.kerangka),
-      tambah("peternak", ...kartu("j0", 120, 34, 168, 30, W.hijauMuda, ["96 telur, tiap kotak 8"], 9)),
-      tambah("Sembilan@2", ...ID.tahap[0], ...ID.tahap[1], ...kartu("j1", 120, 72, 168, 28, W.krem, ["9 : 8 = 1, sisa 1"], 9.4)),
-      tambah("Turunkan", ...ID.tahap[2]),
-      tambah(idx(SUARA_I3, "dua", 1), ...ID.tahap[3], ...ID.tahap[4], ...ID.tahap[5], ...kartu("j2", 120, 108, 168, 28, W.langit, ["16 : 8 = 2"], 9.4)),
-      tambah("Hasilnya", ...kartu("j3", 120, 144, 168, 40, W.emas, ["96 : 8 = 12", "12 kotak"], 10)),
-    ),
-    k(
-      SUARA_I4,
-      bersih(0),
-      tambah(0, judul("Pembagi: isi tiap kotak")),
-      tambah("Pembagi", ...kartu("l1", 12, 34, 276, 34, W.langit, ["pembagi = isi tiap kotak", "hasil bagi = banyak kotak"], 9)),
-      tambah("Jawabannya", ...kartu("l2", 12, 80, 276, 34, W.hijauMuda, ["jawaban: 27 kotak dan 12 kotak"], 9.4)),
-      tambah("Cek:", ...kartu("l3", 12, 126, 134, 40, W.krem, ["cek c:", "27 × 3 = 81"], 9.6)),
-      tambah("dua@4", ...kartu("l4", 154, 126, 134, 40, W.krem, ["cek d:", "12 × 8 = 96"], 9.6)),
-      tambah("sembilan", emo("lc", 150, 188, "✅", 16)),
+      SUARA_Q3,
+      hapus("lebih", "k4", "t3"),
+      tambah("lebih", teks("sk", 170, 128, "sisa 3 < pembagi 4", 9, W.hijauTua)),
+      sorotkan("pembagi,", "s0", "s1", "s2"),
+      tambah("ditempatkan", panah("pa", 244, 136, 12, 14, W.merah, 2)),
+      tambah("aula.", kotak("al", 238, 152, 40, 16, "#FFFFFF", W.biru, { rx: 3 }), teks("at", 258, 164, "AULA", 10, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 10. Miskonsepsi, diferensiasi, dan catatan kunci (Panduan Guru hlm. 69) ------------------------------ */
-const SUARA_J1 = "Hati-hati, kesalahan yang sering terjadi: membagikan benda tidak sama rata. Karena itu, di kegiatan wadah, tiap wadah harus sama banyak.";
-const SUARA_J2 = "Kedua, pada bilangan yang memuat angka nol, kamu bisa lupa membagi nol di posisi puluhan. Gunakan teknik porogapet, dan teliti pada soal yang memuat angka nol.";
-const SUARA_J3 = "Ketiga, istilah hasil bagi dan sisa bagi sering terbalik. Hasil bagi adalah jawaban di atas garis, sisa bagi adalah angka terakhir di bawah.";
-const SUARA_J4 = "Untuk yang sudah cepat, coba pembagian yang tidak habis dibagi, lalu tentukan hasil bagi dan sisa bagi. Contohnya tujuh puluh lima dibagi enam, hasil bagi dua belas, sisa tiga.";
-const SUARA_J5 = "Kalau kamu masih merasa sulit, lakukan latihan berulang, minta penjelasan secara personal, dan mulai dari bilangan yang termudah, yaitu pembagian di bawah lima puluh.";
-const SUARA_J6 = "Sekarang periksa semua hasil tadi: kesepuluh jawaban sudah benar kalau dikali kembali. Jadi kamu siap mengerjakan soal pembagian, termasuk yang bersisa.";
+/* ------------------------------ 9. Penutup: jembatan ke Sub-Bab I ------------------------------ */
+const SUARA_N1 = "Semua kamar sudah terisi rata, dan Bu Ratna berterima kasih.";
+const SUARA_N2 = "Kak Yoga, pemandu pantai, datang membawa payung dan jadwal perahu yang masih berantakan.";
+const SUARA_N3 = "Menurutmu, bagaimana cara menata payung dalam baris sama banyak? Terima kasih, Satria, Laras, Genta, Pak Hendro, dan Bu Ratna!";
+const PX = [100, 138, 176, 214];
+/** Payung kecil `${id}` bertitik tengah (x, y): kanopi `${id}` dan gagang `${id}-g`. */
+const payung = (id: string, x: number, y: number, warna: string) => [poligon(id, [[x - 9, y], [x, y - 10], [x + 9, y]], warna, "#9F1239", { z: 3 }), garis(`${id}-g`, x, y, 0, 12, "#7C2D12", 1.2, { z: 3 })];
 
-const MK = bersusun("mk", 20, 44, 6, 75);
-
-export const ADEGAN_MISKONSEPSI: AdeganStory = {
-  id: "miskonsepsi",
-  judul: "Kesalahan umum, pengayaan, dan pemeriksaan",
-  sumber: "Materi: kesalahan umum dan pengayaan",
-  latar: "#FDF2F8",
-  kutipan: [
-    "Miskonsepsi yang sering terjadi dalam operasi pembagian",
-    "Peserta didik tidak membagikan benda sama rata.",
-    "Peserta lupa tidak membagi angka 0 yang terletak di posisi puluhan.",
-    "Istilah hasil bagi dan sisa bagi. Peserta didik sering terbalik menyebutkan.",
-    "Diferensiasi",
-    "berilah peserta didik masalah pembagian yang tidak habis dibagi.",
-    "Arahkan peserta didik untuk menentukan hasil bagi dan sisa bagi.",
-    "guru memberikan latihan secara berulang atau mengulangi penjelasan secara personal.",
-    "dimulai dari dibawah 50.",
-  ],
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Semua kamar terisi, ke Sub-Bab berikutnya",
+  sumber: "Materi: penutup dan lanjutan",
+  latar: "#FFF1F2",
   ketukan: [
     k(
-      SUARA_J1,
-      tambah(0, judul("Kesalahan 1: tidak sama rata")),
-      tambah("kesalahan", ...kartu("m1", 12, 36, 276, 40, W.merahMuda, ["benda dibagikan tidak sama rata"], 9.6), emo("m1e", 270, 56, "⚠", 20)),
-      tambah("kegiatan", ...kartu("m2", 12, 90, 276, 40, W.hijauMuda, ["kegiatan wadah: tiap wadah sama banyak"], 9.2)),
-      tambah("wadah", ...[0, 1, 2].map((i) => emo(`mw${i}`, 70 + i * 80, 164, "📦", 28))),
+      SUARA_N1,
+      tambah(0, judul("Semua Kamar Terisi"), ...lorong("lr", 150), ...PX.flatMap((x, i) => pintu(`p${i}`, x, 96, i + 1, 30, 52))),
+      tambah("terisi", ...PX.map((x, i) => emo(`w${i}`, x + 15, 90, E.lambai, 16))),
+      tambah("Ratna", ...tokoh("br", 40, 184, "Bu Ratna")),
+      tambah("kasih.", emo("sn", 66, 150, E.senyum, 18)),
     ),
     k(
-      SUARA_J2,
-      bersih(0),
-      tambah(0, judul("Kesalahan 2: angka nol")),
-      tambah("Kedua,", ...kartu("n1", 12, 36, 276, 40, W.merahMuda, ["lupa membagi 0 di posisi puluhan"], 9.4)),
-      tambah("teknik", ...kartu("n2", 12, 88, 276, 34, W.krem, ["teknik porogapet"], 9.6)),
-      tambah("teliti", ...kartu("n3", 12, 134, 276, 44, W.langit, ["teliti pada soal dengan angka 0", "jangan lewatkan puluhan"], 9)),
+      SUARA_N2,
+      tambah("Yoga,", ...tokoh("ky", 268, 170, "Kak Yoga", 24)),
+      tambah("payung", ...payung("py1", 258, 130, "#F43F5E"), ...payung("py2", 276, 130, "#38BDF8"), ...payung("py3", 267, 118, "#FACC15")),
+      tambah("jadwal", kotak("jg", 232, 96, 22, 14, "#FEF3C7", W.coklat, { rx: 2 }), teks("jt", 243, 106, "jadwal", 6.4, W.biru)),
+      tambah("berantakan.", teks("bt", 262, 84, "berantakan", 8, W.merah)),
     ),
     k(
-      SUARA_J3,
-      bersih(0),
-      tambah(0, judul("Kesalahan 3: hasil bagi dan sisa")),
-      tambah("Ketiga,", ...kartu("o1", 12, 36, 276, 40, W.merahMuda, ["istilah sering terbalik"], 9.6)),
-      tambah("Hasil@2", ...kartu("o2", 12, 90, 134, 46, W.hijauMuda, ["hasil bagi:", "jawaban di atas garis"], 8.8)),
-      tambah("sisa@2", ...kartu("o3", 154, 90, 134, 46, W.pink, ["sisa bagi:", "angka terakhir di bawah"], 8.8)),
-    ),
-    k(
-      SUARA_J4,
-      bersih(0),
-      tambah(0, judul("Pengayaan: tidak habis dibagi")),
-      tambah(0, ...MK.kerangka),
-      tambah("Untuk", ...kartu("p0", 120, 34, 168, 30, W.krem, ["contoh pengayaan"], 9)),
-      tambah("tujuh", ...MK.tahap[0], ...MK.tahap[1], ...MK.tahap[2], ...kartu("p1", 120, 72, 168, 30, W.langit, ["75 : 6"], 10)),
-      tambah("hasil@2", ...MK.tahap[3], ...MK.tahap[4]),
-      tambah("sisa@2", ...MK.tahap[5], ...kartu("p2", 120, 112, 168, 44, W.emas, ["hasil bagi 12, sisa 3", "6 × 12 + 3 = 75"], 9.6)),
-    ),
-    k(
-      SUARA_J5,
-      bersih(0),
-      tambah(0, judul("Kalau masih sulit")),
-      tambah("latihan", ...kartu("q1", 12, 36, 276, 34, W.hijauMuda, ["latihan berulang"], 9.6)),
-      tambah("penjelasan", ...kartu("q2", 12, 80, 276, 34, W.langit, ["penjelasan secara personal"], 9.6)),
-      tambah("mulai", ...kartu("q3", 12, 124, 276, 40, W.krem, ["mulai dari yang termudah:", "pembagian di bawah 50"], 9.2)),
-    ),
-    k(
-      SUARA_J6,
-      bersih(0),
-      tambah(0, judul("Periksa semua jawaban")),
-      tambah("Sekarang", ...kartu("r1", 12, 36, 276, 44, W.hijauMuda, ["10 jawaban diperiksa:", "semua benar (5 + 5 = 10)"], 9.6)),
-      tambah("kesepuluh", ...kartu("r2", 12, 92, 276, 40, W.krem, ["dikali kembali: cocok semua"], 9.6)),
-      tambah("bersisa.", ...kartu("r3", 12, 144, 276, 40, W.pink, ["contoh bersisa: 75 dibagi 6"], 9.6)),
+      SUARA_N3,
+      hapus("menata", "bt", "jt", "jg"),
+      tambah("menata", emo("tq", 224, 78, E.tanya, 26)),
+      tambah("baris", teks("bb", 150, 60, "baris sama banyak", 10, W.hijauTua)),
+      tambah("Terima", ...tokoh("sa", 100, 184, "Satria"), ...tokoh("lr2", 140, 184, "Laras"), ...tokoh("ge", 180, 184, "Genta"), ...tokoh("ph", 224, 184, "Pak Hendro")),
+      tambah("kasih,", ...[100, 140, 180, 224, 268].map((x, i) => emo(`wl${i}`, x + 14, 148, E.lambai, 14))),
     ),
   ],
 };
