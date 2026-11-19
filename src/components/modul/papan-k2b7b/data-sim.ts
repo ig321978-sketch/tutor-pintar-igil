@@ -4,7 +4,7 @@
  * Diuji: scripts/uji-papan-k2b7b.mjs.
  */
 export const MISI_PAPAN_TEKS =
-  "Misi Papan Pengumuman: geser katak di tali sampai tepat di bilangan yang diminta, bandingkan dua bilangan dengan kata yang tepat, urutkan kartu bilangan, lalu susun kartu angka menjadi bilangan terbesar. Urutannya bebas.";
+  "Geser katak di tali, bandingkan dua bilangan, urutkan kartu, lalu susun kartu angka. Urutannya bebas.";
 
 /** Tugas katak di tali: bilangan awal, arah, banyak langkah, dan bilangan pertama dan terakhir yang digambar. */
 export const GARIS_TUGAS: readonly { mulai: number; arah: "maju" | "mundur"; langkah: number; dari: number; sampai: number }[] = [

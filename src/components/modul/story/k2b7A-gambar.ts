@@ -280,7 +280,7 @@ export function tokoh(id: string, x: number, y0: number, nama: NamaTokoh, u = 30
     out.push(kotak(`${id}-kr`, x - 16, bulatkan(y - u * 0.98), 32, bulatkan(u * 1.08), "#FDE047", "#A16207", { rx: 14, tebal: 1.2, z: 0 }));
     out.push(kotak(`${id}-pp`, x + 9, bulatkan(y - 4), 14, 11, "#FFFFFF", W.coklat, { rx: 1.5, tebal: 1.3, z: 2 }));
   }
-  out.push(teks(`${id}-n`, x, bulatkan(y + 15), nama, 8.4, W.ungu, { z: 3 }));
+  out.push(teks(`${id}-n`, x, bulatkan(y + (nama === "Bu Sari" ? 19 : 15)), nama, 8.4, W.ungu, { z: 3 }));
   return out;
 }
 export const idTokoh = (id: string, nama: NamaTokoh): string[] => [

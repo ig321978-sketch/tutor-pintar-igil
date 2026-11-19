@@ -14,4 +14,4 @@ export const BENDA_SIM: readonly BendaSim[] = [
 /** Perkiraan dianggap dekat bila selisihnya dengan banyak benda sebenarnya paling banyak sepuluh. */
 export const BATAS_DEKAT = 10;
 export const MISI_IKAT_TEKS =
-  "Misi Gudang Ikat: ikat benda sepuluh-sepuluh, taruh puluhan dan satuan di papan, tulis bilangannya, lalu buat perkiraan dan buktikan dengan mengikat. Urutannya bebas.";
+  "Ikat benda sepuluh-sepuluh, isi papan puluhan dan satuan, tulis bilangannya, lalu buat perkiraan. Urutannya bebas.";
