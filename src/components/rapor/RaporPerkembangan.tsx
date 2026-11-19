@@ -112,12 +112,28 @@ const TEKS_TREN: Record<Tren, string> = {
   belum: "Belum Ujian",
 };
 
-function Bagian({ nomor, judul, sub, children }: { nomor: number; judul: string; sub: string; children: React.ReactNode }) {
+function Bagian({ judul, sub, children, lipat = false }: { judul: string; sub: string; children: React.ReactNode; lipat?: boolean }) {
+  const kepala = (
+    <>
+      <h2 className="text-lg font-black leading-snug text-indigo-950">{judul}</h2>
+      <p className="mt-0.5 text-sm font-semibold leading-snug text-slate-600">{sub}</p>
+    </>
+  );
+  if (lipat) {
+    return (
+      <details className="group break-inside-avoid rounded-3xl border-2 border-indigo-100 bg-white p-4 shadow-sm sm:p-5">
+        <summary className="flex cursor-pointer list-none items-start justify-between gap-3">
+          <span className="min-w-0 flex-1">{kepala}</span>
+          <span className="tanpa-cetak shrink-0 rounded-full bg-indigo-100 px-3 py-1 text-xs font-black text-indigo-950 group-open:hidden">Buka</span>
+          <span className="tanpa-cetak hidden shrink-0 rounded-full bg-amber-400 px-3 py-1 text-xs font-black text-indigo-950 group-open:inline">Tutup</span>
+        </summary>
+        <div className="mt-3">{children}</div>
+      </details>
+    );
+  }
   return (
     <section className="break-inside-avoid rounded-3xl border-2 border-indigo-100 bg-white p-4 shadow-sm sm:p-5">
-      <p className="text-[11px] font-black uppercase tracking-wider text-amber-600">Bagian {nomor}</p>
-      <h2 className="text-lg font-black leading-snug text-indigo-950">{judul}</h2>
-      <p className="mt-0.5 text-xs font-semibold leading-snug text-slate-600">{sub}</p>
+      {kepala}
       <div className="mt-3">{children}</div>
     </section>
   );
@@ -269,9 +285,35 @@ export default function RaporPerkembangan({
             <span className="rounded-full bg-white/15 px-3 py-1 text-sm font-bold">Lencana pertama menunggu di bab pertamamu</span>
           )}
         </div>
-        <p className="mt-3 text-xs font-semibold leading-snug text-indigo-100">
-          Bukan sekadar angka: rapor ini menunjukkan apa yang sudah dikuasai Ananda, bagaimana ia bernalar, dan apa yang perlu didampingi bulan depan.
-        </p>
+      </section>
+
+      {/* Ringkasan: yang paling penting dulu */}
+      <section className="space-y-3 rounded-3xl border-2 border-amber-400 bg-amber-50 p-4 sm:p-5" aria-label="Ringkasan" data-testid="ringkasan-rapor">
+        <h2 className="text-lg font-black text-indigo-950">Ringkasan</h2>
+        <div className="grid grid-cols-3 gap-2 text-center">
+          <div className="rounded-2xl bg-white p-3 ring-1 ring-amber-200">
+            <p className="text-2xl font-black text-indigo-950">{babLulus}<span className="text-base text-slate-500">/{daftar.length}</span></p>
+            <p className="text-xs font-bold text-slate-600">Bab tuntas</p>
+          </div>
+          <div className="rounded-2xl bg-white p-3 ring-1 ring-amber-200">
+            <p className="text-2xl font-black text-indigo-950">{ditempuh.length - babLulus}</p>
+            <p className="text-xs font-bold text-slate-600">Sedang dipelajari</p>
+          </div>
+          <div className="rounded-2xl bg-white p-3 ring-1 ring-amber-200">
+            <p className="text-2xl font-black text-indigo-950">{aktivitas.percobaanTotal}</p>
+            <p className="text-xs font-bold text-slate-600">Latihan dan Ujian</p>
+          </div>
+        </div>
+        <div>
+          <div className="h-3 overflow-hidden rounded-full bg-white ring-1 ring-amber-200">
+            <div className="h-full rounded-full bg-[#1C01A5]" style={{ width: `${persenKelas}%` }} />
+          </div>
+          <p className="mt-1 text-xs font-bold text-slate-600">Kelas {kelas}: {persenKelas}% bab sudah tuntas</p>
+        </div>
+        <div className="rounded-2xl border-2 border-[#1C01A5] bg-white p-3">
+          <p className="text-xs font-black uppercase tracking-wider text-[#1C01A5]">🏡 Langkah berikutnya</p>
+          <p className="mt-1 text-base font-bold leading-snug text-indigo-950">{panduanRumah(keadaan, kelas)}</p>
+        </div>
       </section>
 
       <div className="tanpa-cetak flex flex-wrap items-center gap-2">
@@ -292,7 +334,10 @@ export default function RaporPerkembangan({
         </select>
         <button
           type="button"
-          onClick={() => window.print()}
+          onClick={() => {
+            document.querySelectorAll("#rapor-perkembangan details").forEach((d) => ((d as HTMLDetailsElement).open = true));
+            window.print();
+          }}
           className="ml-auto flex min-h-[44px] items-center gap-2 rounded-2xl border-amber-400 bg-amber-400 px-4 text-sm font-black text-indigo-950 shadow-md hover:bg-amber-300"
         >
           <span aria-hidden="true">🖨️</span> Cetak / Simpan PDF
@@ -300,7 +345,7 @@ export default function RaporPerkembangan({
       </div>
 
       {/* 1. Peta ketuntasan dan eksplorasi */}
-      <Bagian nomor={1} judul="🗺️ Peta Ketuntasan Silabus & Eksplorasi" sub="Status setiap bab Kurikulum Merdeka dan jejak 7 tahap SMISCPA (Story sampai Abstract) di setiap Sub-Bab.">
+      <Bagian judul="🗺️ Daftar Bab: sudah sampai mana?" sub="Status setiap bab di kelas ini. Hijau berarti sudah tuntas.">
         <ul className="grid gap-1.5 sm:grid-cols-2">
           {daftar.map((d) => (
             <li key={d.bab.kode} className="flex items-center gap-2 rounded-2xl border border-indigo-100 px-3 py-2">
@@ -352,9 +397,9 @@ export default function RaporPerkembangan({
 
       {/* 2. Telemetri */}
       <Bagian
-        nomor={2}
-        judul="⏱️ Telemetri Latihan & Ujian Kualifikasi"
-        sub={`Berapa kali Ananda berlatih dan menguji diri pada bank soal acak, berapa lama tiap soal dikerjakan (di bawah ${DETIK_CEPAT} detik terlalu cepat, di atas ${Math.round(DETIK_LAMBAT / 60)} menit belum lancar), dan kartu yang perlu diulang.`}
+        lipat
+        judul="⏱️ Riwayat Latihan dan Ujian"
+        sub={`Berapa kali berlatih, berapa lama tiap soal dikerjakan (di bawah ${DETIK_CEPAT} detik terlalu cepat, di atas ${Math.round(DETIK_LAMBAT / 60)} menit belum lancar), dan bagian yang perlu diulang.`}
       >
         {ditempuh.length === 0 ? (
           <p className="text-sm font-semibold text-slate-600">Belum ada Latihan atau Ujian di kelas ini.</p>
@@ -390,7 +435,7 @@ export default function RaporPerkembangan({
       </Bagian>
 
       {/* 3. Praktikum */}
-      <Bagian nomor={3} judul="🧪 Rincian 4 Parameter Praktikum" sub="Kualitas logika dinilai satu kali saat Praktikum diserahkan. Nilainya disembunyikan sampai pengumuman akhir bulan.">
+      <Bagian lipat judul="🧪 Penilaian Praktikum" sub="Dinilai satu kali saat Praktikum diserahkan. Nilainya baru dibuka saat pengumuman akhir bulan.">
         <ul className="grid gap-2 sm:grid-cols-2">
           {PARAMETER_PRAKTIKUM.map((p) => (
             <li key={p.kode} className="rounded-2xl bg-indigo-50/60 p-3">
@@ -430,7 +475,7 @@ export default function RaporPerkembangan({
       </Bagian>
 
       {/* 4. Evaluasi suara */}
-      <Bagian nomor={4} judul="🎙️ Kartu Bukti Evaluasi Suara AI" sub="Khusus nominator Live Test: rekaman asli Ananda menjelaskan 'bagaimana' dan 'mengapa', beserta catatan analisis Blind AI.">
+      <Bagian lipat judul="🎙️ Rekaman Live Test" sub="Hanya untuk calon penerima beasiswa: rekaman suara anak menjelaskan caranya berpikir.">
         <div className="rounded-2xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 p-4 text-center">
           <p className="text-3xl" aria-hidden="true">
             🔒
@@ -440,42 +485,6 @@ export default function RaporPerkembangan({
             Kartu ini terisi bila Ananda terpilih sebagai nominator beasiswa. Orang tua dapat memutar ulang rekaman suaranya dan membaca skor serta
             ulasan logika lisan yang dinilai AI tanpa campur tangan staf pengawas.
           </p>
-        </div>
-      </Bagian>
-
-      {/* 5. Misi bulan depan */}
-      <Bagian nomor={5} judul="🚀 Rekomendasi Misi Bulan Depan & Lencana" sub={`Posisi kesiapan Ananda di Fase ${faseKelas(kelas)} dan satu saran pendampingan di rumah.`}>
-        <div className="rounded-2xl bg-indigo-50/60 p-3">
-          <div className="flex items-center justify-between text-sm font-black text-indigo-950">
-            <span>
-              Kesiapan Kelas {kelas} · Fase {faseKelas(kelas)}
-            </span>
-            <span>
-              {babLulus} dari {daftar.length} bab ({persenKelas}%)
-            </span>
-          </div>
-          <div className="mt-1.5 h-2.5 overflow-hidden rounded-full bg-indigo-100">
-            <div className="h-full rounded-full bg-amber-400" style={{ width: `${persenKelas}%` }} />
-          </div>
-        </div>
-        {lencana.length > 0 ? (
-          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-            {lencana.map((l) => (
-              <li key={l.kode} className="flex items-start gap-2 rounded-2xl border-2 border-amber-300 bg-amber-50 p-3">
-                <span className="text-2xl" aria-hidden="true">
-                  {l.ikon}
-                </span>
-                <span>
-                  <span className="block text-sm font-black text-indigo-950">{l.nama}</span>
-                  <span className="block text-xs font-semibold text-slate-600">{l.alasan}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-        <div className="mt-3 rounded-2xl border-2 border-[#1C01A5] bg-white p-3">
-          <p className="text-xs font-black uppercase tracking-wider text-[#1C01A5]">🏡 Panduan Pendampingan Rumah</p>
-          <p className="mt-1 text-sm font-bold leading-snug text-indigo-950">{panduanRumah(keadaan, kelas)}</p>
         </div>
       </Bagian>
 

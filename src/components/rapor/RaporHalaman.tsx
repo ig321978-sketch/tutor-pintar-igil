@@ -37,6 +37,13 @@ import RaporPerkembangan from "./RaporPerkembangan";
 
 const rapor = data.raporPage;
 
+/** Teks halaman Rapor yang dipersingkat agar mudah dipahami orang tua. */
+const TAB_RAPOR = [
+  { id: "rapor-perkembangan", label: "📈 Perkembangan", description: "Sudah sampai mana, dan apa yang perlu diulang." },
+  { id: "rapor-ketuntasan", label: "📋 Bab dan Poin", description: "Bab yang dipelajari dan Poin Kualifikasi bulan ini." },
+  { id: "sertifikat-kelulusan", label: "🎓 Sertifikat", description: "Sertifikat kelulusan, siap dicetak." },
+] as const;
+
 /** Judul bab dari kurikulum: JUDUL_MTK_<kelas>_BAB<nomor> menjadi kode "mtk-<kelas>-bab<nomor>". Bab baru ikut otomatis. */
 const JUDUL_BAB: Record<string, string> = Object.fromEntries(
   Object.entries(KURIKULUM).flatMap(([nama, nilai]) => {
@@ -543,12 +550,12 @@ export default function RaporHalaman() {
   return (
     <main className="flex-1 bg-white text-slate-700">
       <div className="mx-auto w-full max-w-4xl space-y-4 px-2 py-4 sm:py-8">
-        <KepalaHalaman ikon="📊" lencana={rapor.header.badge} judul={rapor.header.title} subjudul={rapor.header.subtitle} />
+        <KepalaHalaman ikon="📊" lencana="Rapor" judul="Rapor Belajar" subjudul="Lihat perkembangan belajar anak, poin bulan ini, dan sertifikat kelulusan." />
         <LencanaBeasiswaApresiasi />
 
         {siap ? <CatatanData adaCatatan={adaCatatan} /> : null}
 
-        <SubTabBar tabs={rapor.subTabs} aktif={tab} onPilih={setTab} />
+        <SubTabBar tabs={TAB_RAPOR} aktif={tab} onPilih={setTab} />
 
         {!siap ? (
           <div className="space-y-3" role="status" aria-label="Membaca catatan belajarmu">
