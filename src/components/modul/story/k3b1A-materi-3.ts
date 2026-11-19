@@ -1,124 +1,148 @@
-import type { AdeganStory } from "./logika-story";
-import { W, anak, angkaPv, bilPv, blokPv, emo, idKataPv, jumlahPv, judul, kartu, kartuAngka, kataPv, kerangkaPv, nilaiPv } from "./k3b1A-gambar";
-import { bersih, hapus, idx, k, redamkan, sorotkan, tambah } from "./k3b1A-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, angkaTempat, emo, garis, judul, kartu, kotak, lantai, panah, papanTempat, teks, toples, tokoh } from "./k3b1A-gambar";
+import { bersih, k, tambah, ubah } from "./k3b1A-bantu";
 
-/* ------------------------------ 8. Membaca seratus enam puluh ------------------------------ */
-const SUARA_A1 = "Kita taruh bilangan seratus enam puluh di papan. Ratusan satu, puluhan enam, satuan nol.";
-const SUARA_A2 = "Baca dari kiri. Ratusan satu dibaca seratus.";
-const SUARA_A3 = "Sekarang puluhan. Puluhan enam dibaca enam puluh.";
-const SUARA_A4 = "Satuan nol tidak dibaca. Nol berarti tidak ada kotak kecil.";
-const SUARA_A5 = "Jadi bilangan ini dibaca seratus enam puluh. Satuan yang nol tidak ikut dibaca.";
-const SUARA_A6 = "Lengkapnya, seratus ditambah enam puluh sama dengan seratus enam puluh.";
+/*
+ * Cerita orisinal IGIL "Toples Permen Pak Joko" (Kelas 3 Bab 1 Sub-Bab A, bilangan tiga angka), awal cerita Toko Kelontong Pak Joko.
+ * Naskah suara dari naskah/story-naskah-k3b1a.md. Bagian ini: menulis dari kata, daftar stok, dan penutup (jembatan ke Sub-Bab B).
+ */
 
-export const ADEGAN_BACA_160: AdeganStory = {
-  id: "baca-160",
-  judul: "Membaca bilangan seratus enam puluh",
-  sumber: "Materi: membaca 160",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(
-      SUARA_A1,
-      tambah(0, ...kerangkaPv()),
-      tambah(idx(SUARA_A1, "seratus"), bilPv(160)),
-      tambah(idx(SUARA_A1, "Ratusan"), ...blokPv(0, 1), angkaPv(0, 1)),
-      tambah(idx(SUARA_A1, "puluhan,"), ...blokPv(1, 6), angkaPv(1, 6)),
-      tambah(idx(SUARA_A1, "nol."), angkaPv(2, 0)),
-    ),
-    k(SUARA_A2, sorotkan(idx(SUARA_A2, "Ratusan"), "pv-hk0"), tambah(idx(SUARA_A2, "seratus."), nilaiPv(0, 100))),
-    k(SUARA_A3, redamkan(0, "pv-hk0"), sorotkan(idx(SUARA_A3, "Puluhan"), "pv-hk1"), tambah(idx(SUARA_A3, "puluh."), nilaiPv(1, 60))),
-    k(SUARA_A4, redamkan(0, "pv-hk1"), sorotkan(idx(SUARA_A4, "Satuan"), "pv-hk2"), tambah(idx(SUARA_A4, "Nol"), nilaiPv(2, 0))),
-    k(SUARA_A5, redamkan(0, "pv-hk2"), tambah(idx(SUARA_A5, "seratus"), ...kataPv("seratus enam puluh"))),
-    k(SUARA_A6, hapus(0, ...idKataPv), tambah(idx(SUARA_A6, "seratus"), ...jumlahPv("100 + 60 = 160"))),
-  ],
-};
+/* ------------------------------ 7. Tulis dari kata ------------------------------ */
+const SUARA_T1 = "Sekarang Salsa menulis dari kata. Empat ratus lima, katanya.";
+const SUARA_T2 = "Empat di ratusan, tidak ada puluhan, lima di satuan. Ia menulis empat ratus lima, bukan empat puluh lima.";
+const SUARA_T3 = "Kalau nol terlupa, bilangannya menjadi jauh lebih kecil.";
 
-/* ------------------------------ 9. Jarak ke sekolah: enam ratus tujuh puluh satu ------------------------------ */
-const SUARA_B1 = "Wei berjalan kaki ke sekolah. Jarak ke sekolah adalah enam ratus tujuh puluh satu meter.";
-const SUARA_B2 = "Kita taruh bilangan itu di papan. Ratusan enam, puluhan tujuh, satuan satu.";
-const SUARA_B3 = "Ratusan enam dibaca enam ratus. Puluhan tujuh dibaca tujuh puluh.";
-const SUARA_B4 = "Satuan satu dibaca satu. Lalu kita gabungkan ketiganya.";
-const SUARA_B5 = "Jadi bilangan ini dibaca enam ratus tujuh puluh satu.";
-const SUARA_B6 = "Kita periksa dengan penjumlahan. Enam ratus ditambah tujuh puluh ditambah satu sama dengan enam ratus tujuh puluh satu.";
-
-export const ADEGAN_BACA_671: AdeganStory = {
-  id: "baca-671",
-  judul: "Jarak ke sekolah Wei",
-  sumber: "Materi: membaca 671",
-  latar: "#FFFBEB",
-  ketukan: [
-    k(SUARA_B1, tambah(0, judul("Jalan ke sekolah")), tambah(idx(SUARA_B1, "Wei"), ...anak("wei", 50, 84)), tambah(idx(SUARA_B1, "enam"), ...kartu("jr", 110, 72, 160, 36, W.emas, ["671 meter"], 13))),
-    k(
-      SUARA_B2,
-      bersih(0),
-      tambah(0, ...kerangkaPv()),
-      tambah(idx(SUARA_B2, "bilangan"), bilPv(671)),
-      tambah(idx(SUARA_B2, "Ratusan"), ...blokPv(0, 6), angkaPv(0, 6)),
-      tambah(idx(SUARA_B2, "puluhan"), ...blokPv(1, 7), angkaPv(1, 7)),
-      tambah(idx(SUARA_B2, "satuan"), ...blokPv(2, 1), angkaPv(2, 1)),
-    ),
-    k(
-      SUARA_B3,
-      sorotkan(idx(SUARA_B3, "Ratusan"), "pv-hk0"),
-      tambah(idx(SUARA_B3, "ratus."), nilaiPv(0, 600)),
-      redamkan(idx(SUARA_B3, "Puluhan"), "pv-hk0"),
-      sorotkan(idx(SUARA_B3, "Puluhan"), "pv-hk1"),
-      tambah(idx(SUARA_B3, "puluh."), nilaiPv(1, 70)),
-    ),
-    k(SUARA_B4, redamkan(0, "pv-hk1"), sorotkan(idx(SUARA_B4, "Satuan"), "pv-hk2"), tambah(idx(SUARA_B4, "dibaca"), nilaiPv(2, 1))),
-    k(SUARA_B5, redamkan(0, "pv-hk2"), tambah(idx(SUARA_B5, "enam"), ...kataPv("enam ratus tujuh puluh satu"))),
-    k(SUARA_B6, hapus(0, ...idKataPv), tambah(idx(SUARA_B6, "Enam"), ...jumlahPv("600 + 70 + 1 = 671"))),
-  ],
-};
-
-/* ------------------------------ 10. Papan petunjuk: tujuh ratus lima puluh sembilan ------------------------------ */
-const SUARA_C1 = "Di jalan ada papan petunjuk menuju taman. Di papan itu tertulis tujuh ratus lima puluh sembilan meter.";
-const SUARA_C2 = "Kira menyusun kartu angka tujuh, lima, dan sembilan dari kiri ke kanan.";
-const SUARA_C3 = "Kartu tujuh di tempat ratusan, kartu lima di tempat puluhan, dan kartu sembilan di tempat satuan.";
-const SUARA_C4 = "Tujuh ratusan dibaca tujuh ratus. Lima puluhan dibaca lima puluh. Sembilan satuan dibaca sembilan.";
-const SUARA_C5 = "Jadi bilangan ini dibaca tujuh ratus lima puluh sembilan.";
-const SUARA_C6 = "Kita periksa dengan penjumlahan. Tujuh ratus ditambah lima puluh ditambah sembilan sama dengan tujuh ratus lima puluh sembilan.";
-const KARTU_ANGKA = (i: number, d: string, warna: string) => kartuAngka(`ka${i}`, 62 + i * 70, 70, d, warna, 52, 52, 28);
-
-export const ADEGAN_BACA_759: AdeganStory = {
-  id: "baca-759",
-  judul: "Papan petunjuk 759",
-  sumber: "Materi: membaca 759",
+export const ADEGAN_TULIS_DARI_KATA: AdeganStory = {
+  id: "tulis-dari-kata",
+  judul: "Menulis dari kata",
+  sumber: "Materi: menulis dari kata bilangan",
   latar: "#FDF2F8",
   ketukan: [
     k(
-      SUARA_C1,
-      tambah(0, judul("Papan petunjuk")),
-      tambah(idx(SUARA_C1, "papan"), emo("pp", 150, 62, "\u{1F68F}", 28)),
-      tambah(idx(SUARA_C1, "tertulis"), ...kartu("pt", 70, 92, 160, 36, W.emas, ["759 meter"], 13)),
+      SUARA_T1,
+      tambah(0, judul("Menulis dari Kata"), ...lantai("lt", 150)),
+      tambah("Salsa", ...tokoh("sl", 40, 184, "Salsa")),
+      tambah("menulis", emo("ps", 70, 160, E.pensil, 16)),
+      tambah("Empat", ...kartu("kw", 90, 50, 110, 30, W.krem, ["empat ratus lima"], 9)),
+      tambah("katanya.", kotak("kc", 200, 62, 84, 60, W.putih, W.biru, { rx: 3, z: 1 }), teks("n405", 242, 102, "405", 24, W.merah, { z: 2 })),
     ),
     k(
-      SUARA_C2,
+      SUARA_T2,
       bersih(0),
-      tambah(0, judul("Susun kartu angka")),
-      tambah(idx(SUARA_C2, "tujuh,"), ...KARTU_ANGKA(0, "7", W.hijauMuda)),
-      tambah(idx(SUARA_C2, "lima,"), ...KARTU_ANGKA(1, "5", W.langit)),
-      tambah(idx(SUARA_C2, "sembilan"), ...KARTU_ANGKA(2, "9", W.merahMuda)),
+      tambah(0, judul("Tiga Tempat: Ratusan, Puluhan, Satuan"), ...papanTempat("tp", 30, 40, 180, 80)),
+      tambah("Empat", angkaTempat("tp", 30, 180, 106, 0, "4", 26)),
+      tambah("puluhan,", angkaTempat("tp", 30, 180, 106, 1, "0", 26)),
+      tambah("lima", angkaTempat("tp", 30, 180, 106, 2, "5", 26)),
+      tambah("menulis", teks("n405", 258, 84, "405", 22, W.hijauTua)),
+      tambah("bukan", teks("n45", 258, 120, "45", 18, W.merah), garis("cr", 242, 128, 32, -16, W.merah, 2.6, { z: 5 })),
     ),
     k(
-      SUARA_C3,
+      SUARA_T3,
       bersih(0),
-      tambah(0, ...kerangkaPv()),
-      tambah(idx(SUARA_C3, "ratusan,"), bilPv(759), angkaPv(0, 7)),
-      tambah(idx(SUARA_C3, "puluhan,"), angkaPv(1, 5)),
-      tambah(idx(SUARA_C3, "satuan."), angkaPv(2, 9)),
+      tambah(0, judul("Nol Terlupa")),
+      tambah("Kalau", kotak("br1", 70, 50, 50, 100, W.hijau, W.hijauTua, { rx: 3 }), teks("l1", 95, 170, "405", 14, W.hijauTua)),
+      tambah("terlupa,", kotak("br2", 180, 138, 50, 12, W.merah, "#7F1D1D", { rx: 3 }), teks("l2", 205, 170, "45", 14, W.merah), emo("xs", 205, 126, E.salah, 16)),
+      tambah("jauh", panah("pn", 124, 60, 52, 66, W.merah, 3)),
+      tambah("kecil.", teks("jl", 150, 40, "jauh lebih kecil", 10, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ 8. Daftar stok ------------------------------ */
+const SUARA_D1 = "Bima menghitung permen cokelat: sembilan toples, nol bungkus, nol butir. Bilangannya sembilan ratus.";
+const SUARA_D2 = "Daftar stok pun selesai: enam ratus tiga puluh empat, tujuh ratus tiga, empat ratus lima, dan sembilan ratus, semuanya dibaca dari kiri.";
+const SUARA_D3 = "Pak Joko tersenyum karena daftarnya jelas dan tidak ada yang tertukar.";
+
+const COKELAT = "#C08457";
+const DX = 84;
+const DW = 200;
+const DY = 30;
+const DH = 106;
+const toplesCokelat = (n: number): Obj[] => Array.from({ length: n }, (_, i) => toples(`tc${i}`, DX + 8 + (i % 3) * 14, DY + 22 + Math.floor(i / 3) * 24, 13, 17, 0, COKELAT)).flat();
+
+/** Baris daftar stok: nama permen dan bilangannya, tinggi y. */
+const baris = (id: string, y: number, nama: string, n: string): Obj[] => [teks(`${id}n`, 100, y, nama, 10, W.biru), teks(`${id}b`, 188, y, n, 16, W.merah)];
+
+export const ADEGAN_DAFTAR_STOK: AdeganStory = {
+  id: "daftar-stok",
+  judul: "Daftar stok selesai",
+  sumber: "Materi: daftar stok empat bilangan",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_D1,
+      tambah(0, judul("Permen Cokelat"), ...lantai("lt", 150), ...tokoh("bm", 40, 184, "Bima")),
+      tambah("cokelat:", ...papanTempat("dp", DX, DY, DW, DH)),
+      tambah("sembilan", ...toplesCokelat(9), angkaTempat("dp", DX, DW, DY + DH - 6, 0, "9", 18)),
+      tambah("nol", angkaTempat("dp", DX, DW, DY + DH - 6, 1, "0", 18)),
+      tambah("nol@2", angkaTempat("dp", DX, DW, DY + DH - 6, 2, "0", 18)),
+      tambah("Bilangannya", teks("n900", 232, 168, "900", 20, W.merah)),
     ),
     k(
-      SUARA_C4,
-      sorotkan(idx(SUARA_C4, "Tujuh"), "pv-hk0"),
-      tambah(idx(SUARA_C4, "ratus."), nilaiPv(0, 700)),
-      redamkan(idx(SUARA_C4, "Lima"), "pv-hk0"),
-      sorotkan(idx(SUARA_C4, "Lima"), "pv-hk1"),
-      tambah(idx(SUARA_C4, "puluh."), nilaiPv(1, 50)),
-      redamkan(idx(SUARA_C4, "Sembilan"), "pv-hk1"),
-      sorotkan(idx(SUARA_C4, "Sembilan"), "pv-hk2"),
-      tambah(idx(SUARA_C4, "sembilan", 2), nilaiPv(2, 9)),
+      SUARA_D2,
+      bersih(0),
+      tambah(0, judul("Daftar Stok Toko")),
+      tambah("Daftar", kotak("kt", 40, 28, 220, 164, W.putih, W.biru, { rx: 4, z: -1 }), teks("jd", 150, 46, "DAFTAR STOK", 10, W.merah)),
+      tambah("enam", ...baris("d0", 74, "jeruk", "634")),
+      tambah("tujuh", ...baris("d1", 106, "mint", "703")),
+      tambah("empat@2", ...baris("d2", 138, "stroberi", "405")),
+      tambah("sembilan", ...baris("d3", 170, "cokelat", "900")),
+      tambah("kiri.", panah("pk", 52, 188, 40, 0, W.merah, 2.6)),
     ),
-    k(SUARA_C5, redamkan(0, "pv-hk2"), tambah(idx(SUARA_C5, "tujuh"), ...kataPv("tujuh ratus lima puluh sembilan"))),
-    k(SUARA_C6, hapus(0, ...idKataPv), tambah(idx(SUARA_C6, "Tujuh"), ...jumlahPv("700 + 50 + 9 = 759"))),
+    k(
+      SUARA_D3,
+      bersih(0),
+      tambah(0, judul("Daftar yang Jelas"), ...lantai("lt", 150)),
+      tambah("Pak", ...tokoh("pj", 60, 184, "Pak Joko")),
+      ubah("tersenyum", { id: "pj", isi: E.senyum }),
+      tambah("daftarnya", kotak("kt", 150, 40, 110, 100, W.putih, W.biru, { rx: 3 }), ...[0, 1, 2, 3].map((i) => garis(`ln${i}`, 160, 62 + i * 20, 70, 0, W.abu, 2))),
+      tambah("jelas", ...[0, 1, 2, 3].map((i) => emo(`ck${i}`, 246, 66 + i * 20, E.benar, 12))),
+      tambah("tertukar.", teks("tk", 205, 150, "tidak tertukar", 9, W.hijauTua)),
+    ),
+  ],
+};
+
+/* ------------------------------ 9. Penutup ------------------------------ */
+const SUARA_N1 = "Raka menepati taruhannya dan menyapu gudang sampai bersih sambil menggerutu lucu.";
+const SUARA_N2 = "Besok Bu Wati dari percetakan akan datang membawa kartu angka untuk label harga.";
+const SUARA_N3 = "Menurutmu, bilangan lima ratus tiga puluh dan lima ratus tiga sama atau berbeda? Terima kasih, Raka, Salsa, Bima, Pak Joko, dan Kak Dewi!";
+
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Penutup dan jembatan ke kartu harga",
+  sumber: "Materi: penutup dan jembatan",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_N1,
+      tambah(0, judul("Raka Menyapu Gudang"), ...lantai("lt", 150)),
+      tambah("Raka", ...tokoh("rk", 100, 184, "Raka")),
+      tambah("menyapu", emo("sp", 140, 168, E.sapu, 30), emo("db1", 176, 164, E.debu, 18), emo("db2", 196, 150, E.debu, 14)),
+      tambah("bersih", emo("ok", 240, 120, E.benar, 24), teks("br", 240, 148, "bersih", 10, W.hijauTua)),
+      tambah("menggerutu", emo("gr", 100, 118, E.gerutu, 20)),
+    ),
+    k(
+      SUARA_N2,
+      bersih(0),
+      tambah(0, judul("Besok: Bu Wati"), ...lantai("lt", 150), kotak("pt", 190, 36, 90, 114, "#E7C58F", W.coklat, { rx: 3, z: 0 }), garis("pg", 235, 36, 0, 114, W.coklat, 1.6, { z: 1 })),
+      tambah("Wati", ...tokoh("bw", 212, 130, "Bu Wati")),
+      tambah("percetakan", teks("pc", 235, 28, "PERCETAKAN", 8, W.ungu)),
+      tambah("membawa", kotak("kb", 244, 108, 30, 22, "#D6A15E", W.coklat, { rx: 2, z: 3 })),
+      tambah("angka", ...[0, 1, 2].map((i) => [kotak(`ka${i}`, 40 + i * 44, 76, 34, 44, W.krem, W.biru, { rx: 4 }), teks(`kn${i}`, 57 + i * 44, 106, ["5", "3", "0"][i], 20, [W.rts, W.pls, W.sat][i])]).flat()),
+      tambah("harga.", kotak("lh", 80, 140, 56, 20, W.merahMuda, W.merah, { rx: 5 }), teks("lt1", 108, 154, "HARGA", 9, W.merah)),
+    ),
+    k(
+      SUARA_N3,
+      bersih(0),
+      tambah(0, judul("Sama atau Berbeda?")),
+      tambah("bilangan", ...kartu("c1", 36, 36, 80, 44, W.krem, ["530"], 20)),
+      tambah("dan", ...kartu("c2", 184, 36, 80, 44, W.krem, ["503"], 20)),
+      tambah("berbeda?", emo("tq", 150, 70, E.tanya, 28)),
+      tambah("Raka,", ...tokoh("rk", 30, 184, "Raka"), emo("l1", 30, 124, E.lambai, 14)),
+      tambah("Salsa,", ...tokoh("sl", 90, 184, "Salsa"), emo("l2", 90, 124, E.lambai, 14)),
+      tambah("Bima,", ...tokoh("bm", 150, 184, "Bima"), emo("l3", 150, 124, E.lambai, 14)),
+      tambah("Joko,", ...tokoh("pj", 210, 184, "Pak Joko"), emo("l4", 210, 124, E.lambai, 14)),
+      tambah("Dewi!", ...tokoh("dw", 268, 184, "Kak Dewi"), emo("l5", 268, 124, E.lambai, 14)),
+    ),
   ],
 };

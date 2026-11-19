@@ -1,155 +1,150 @@
 import type { AdeganStory } from "./logika-story";
-import { EMO, MIN, W, anak, buatSusun, emo, judul, kartu, teks } from "./k3b1E-gambar";
-import { bersih, idx, k, redamkan, sorotkan, tambah, ubah } from "./k3b1E-bantu";
+import {
+  E,
+  W,
+  barisBungkus,
+  barisKardus,
+  catatan,
+  emo,
+  garis,
+  idKartu,
+  judul,
+  kaleng,
+  kapur,
+  kardusKosong,
+  kartu,
+  kotak,
+  panah,
+  papanKapur,
+  rakKayu,
+  teks,
+  tokoh,
+  tokoLatar,
+  troli,
+} from "./k3b1E-gambar";
+import { bersih, hapus, k, tambah, ubah } from "./k3b1E-bantu";
 
-const cap = (isi: string) => teks("cp", 150, 198, isi, 10.5, W.merah);
-const baris = (id: string, y: number, isi: string, u = 14, warna: string = W.biru) => teks(id, 150, y, isi, u, warna);
+/*
+ * Cerita orisinal IGIL "Sisa Stok Pak Anto" (Kelas 3 Bab 1 Sub-Bab E).
+ * Naskah suara dari naskah/story-naskah-k3b1e.md. Bagian ini: cerita pengurangan (kaleng susu di gudang), hasil nol, dan penutup (jembatan ke Sub-Bab F).
+ */
 
-/* ------------------------------ 10. Susun panjang: menguraikan ------------------------------ */
-const SUARA_Y1 = "Ada cara lain yang disebut susun panjang. Susun panjang menguraikan bilangan menjadi puluhan dan satuan.";
-const SUARA_Y2 = "Empat puluh lima diurai menjadi empat puluh ditambah lima.";
-const SUARA_Y3 = "Sembilan belas diurai menjadi sepuluh ditambah sembilan.";
-const SUARA_Y4 = "Lima lebih kecil dari sembilan, jadi empat puluh diurai lagi menjadi tiga puluh ditambah sepuluh.";
-const SUARA_Y5 = "Sekarang empat puluh lima menjadi tiga puluh, sepuluh, dan lima. Sepuluh dan lima dijadikan satu, yaitu lima belas.";
+const KALENG_ATAS = (n: number) => Array.from({ length: n }, (_, i) => kaleng(`kl${i}`, 20 + i * 13, 52)).flat();
 
-export const ADEGAN_URAI: AdeganStory = {
-  id: "urai",
-  judul: "Susun panjang: menguraikan bilangan",
-  sumber: "Materi: susun panjang",
-  latar: "#FFF1F2",
-  ketukan: [
-    k(SUARA_Y1, tambah(0, judul("Susun panjang")), tambah(idx(SUARA_Y1, "susun"), ...kartu("y0", 50, 32, 200, 26, W.emas, [`45 ${MIN} 19`], 13))),
-    k(SUARA_Y2, tambah(idx(SUARA_Y2, "diurai"), baris("u1", 86, "45 = 40 + 5"))),
-    k(SUARA_Y3, tambah(idx(SUARA_Y3, "diurai"), baris("u2", 112, "19 = 10 + 9"))),
-    k(SUARA_Y4, tambah(idx(SUARA_Y4, "lagi"), baris("u3", 138, "40 = 30 + 10", 14, W.merah))),
-    k(SUARA_Y5, tambah(idx(SUARA_Y5, "menjadi"), baris("u4", 164, "45 = 30 + 10 + 5")), tambah(idx(SUARA_Y5, "yaitu"), baris("u5", 190, "10 + 5 = 15", 14, W.merah))),
-  ],
-};
+/* ------------------------------ 7. Cerita pengurangan ------------------------------ */
+const SUARA_G1 = "Di gudang ada sembilan puluh kaleng susu, dikirim lima puluh empat ke toko cabang. Berapa sisanya?";
+const SUARA_G2 = "Nol dikurangi empat tidak bisa, jadi pinjam satu puluhan. Sepuluh dikurangi empat sama dengan enam.";
+const SUARA_G3 = "Puluhan tinggal delapan dikurangi lima sama dengan tiga. Sisa tiga puluh enam kaleng.";
 
-/* ------------------------------ 11. Susun panjang: menghitung ------------------------------ */
-const SUARA_H1 = "Kurangkan satuannya dahulu. Lima belas dikurangi sembilan sama dengan enam.";
-const SUARA_H2 = "Kurangkan puluhannya. Tiga puluh dikurangi sepuluh sama dengan dua puluh.";
-const SUARA_H3 = "Gabungkan kedua hasilnya. Dua puluh ditambah enam sama dengan dua puluh enam.";
-const SUARA_H4 = "Hasil susun panjang sama dengan hasil susun pendek, yaitu dua puluh enam.";
-const SUARA_H5 = "Susun pendek lebih ringkas, dan susun panjang lebih jelas. Kamu boleh memilih cara yang kamu suka.";
-
-export const ADEGAN_HITUNG_PANJANG: AdeganStory = {
-  id: "hitung-panjang",
-  judul: "Susun panjang: mengurangkan",
-  sumber: "Materi: susun panjang",
+export const ADEGAN_SOAL_CERITA_KURANG: AdeganStory = {
+  id: "soal-cerita-kurang",
+  judul: "Kaleng susu di gudang",
+  sumber: "Materi: cerita pengurangan",
   latar: "#F0F9FF",
-  ketukan: [
-    k(SUARA_H1, tambah(0, judul("Susun panjang: kurangkan"), baris("rf1", 40, "45 = 30 + 10 + 5", 11, W.ungu), baris("rf2", 58, "19 = 10 + 9", 11, W.ungu)), tambah(idx(SUARA_H1, "Lima"), baris("q1", 92, `15 ${MIN} 9 = 6`, 14, W.merah))),
-    k(SUARA_H2, tambah(idx(SUARA_H2, "Tiga"), baris("q2", 120, `30 ${MIN} 10 = 20`, 14, W.merah))),
-    k(SUARA_H3, tambah(idx(SUARA_H3, "Dua"), baris("q3", 148, "20 + 6 = 26", 14, W.merah))),
-    k(SUARA_H4, tambah(idx(SUARA_H4, "panjang"), ...kartu("hp1", 14, 160, 134, 28, W.hijauMuda, ["susun panjang: 26"], 9)), tambah(idx(SUARA_H4, "pendek,"), ...kartu("hp2", 152, 160, 134, 28, W.langit, ["susun pendek: 26"], 9))),
-    k(SUARA_H5, tambah(idx(SUARA_H5, "Susun"), emo("hk", 270, 40, "✅", 22)), tambah(idx(SUARA_H5, "memilih"), cap(`45 ${MIN} 19 = 26`))),
-  ],
-};
-
-/* ------------------------------ 12. Periksa dengan penjumlahan ------------------------------ */
-const SJ = buatSusun(26, 19, { op: "+" });
-const SUARA_P1 = "Pengurangan dan penjumlahan saling berkaitan. Karena empat puluh lima dikurangi sembilan belas sama dengan dua puluh enam, maka dua puluh enam ditambah sembilan belas sama dengan empat puluh lima.";
-const SUARA_P2 = "Kita periksa dengan susun. Satuan: enam ditambah sembilan sama dengan lima belas, catat lima dan simpan satu puluhan.";
-const SUARA_P3 = "Puluhan: dua ditambah satu, lalu ditambah simpanan satu, sama dengan empat.";
-const SUARA_P4 = "Hasilnya empat puluh lima, sama dengan bilangan semula. Jadi pekerjaan kita benar.";
-const SUARA_P5 = "Jika hasilnya tidak sama, berarti ada langkah yang keliru. Kita periksa lagi dari satuan.";
-
-export const ADEGAN_PERIKSA: AdeganStory = {
-  id: "periksa",
-  judul: "Periksa dengan penjumlahan",
-  sumber: "Materi: memeriksa hasil",
-  latar: "#F7FEE7",
-  ketukan: [
-    k(SUARA_P1, tambah(0, judul("Saling berkaitan")), tambah(idx(SUARA_P1, "dikurangi"), baris("pc1", 70, `45 ${MIN} 19 = 26`, 15)), tambah(idx(SUARA_P1, "maka"), emo("pa", 150, 98, "\u{1F501}", 22), baris("pc2", 140, "26 + 19 = 45", 15, W.merah))),
-    k(
-      SUARA_P2,
-      bersih(0),
-      tambah(0, judul("Periksa dengan susun")),
-      tambah(idx(SUARA_P2, "susun"), ...SJ.kerangka(), ...SJ.atas(), ...SJ.bawah()),
-      tambah(idx(SUARA_P2, "simpan"), SJ.puluhBaru()),
-      tambah(idx(SUARA_P2, "belas,"), teks("pq", 215, 90, "6 + 9 = 15", 12, W.merah)),
-      tambah(idx(SUARA_P2, "lima", 2), SJ.hasil0()),
-    ),
-    k(SUARA_P3, sorotkan(idx(SUARA_P3, "Puluhan:"), "sg-a1", "sg-b1", "sg-p1"), tambah(idx(SUARA_P3, "empat."), SJ.hasil1())),
-    k(SUARA_P4, redamkan(0, "sg-a1", "sg-b1", "sg-p1"), tambah(idx(SUARA_P4, "Jadi"), cap("26 + 19 = 45"))),
-    k(SUARA_P5, tambah(idx(SUARA_P5, "keliru."), emo("cr", 200, 80, "\u{1F50D}", 30))),
-  ],
-};
-
-/* ------------------------------ 13. Bunga Halim: satuan atas nol ------------------------------ */
-const SN = buatSusun(80, 46);
-const SUARA_N1 = "Halim punya delapan puluh bunga mawar di kebun. Empat puluh enam bunga ia berikan kepada Igil.";
-const SUARA_N2 = "Kita susun delapan puluh di atas empat puluh enam. Satuan atas nol, dan nol lebih kecil dari enam.";
-const SUARA_N3 = "Kita ambil satu puluhan dari delapan puluhan. Delapan puluhan tinggal tujuh puluhan.";
-const SUARA_N4 = "Satu puluhan menjadi sepuluh satuan. Sepuluh satuan ditambah nol satuan sama dengan sepuluh satuan.";
-const SUARA_N5 = "Satuan: sepuluh dikurangi enam sama dengan empat. Puluhan: tujuh dikurangi empat sama dengan tiga.";
-const SUARA_N6 = "Sisa bunga Halim tiga puluh empat. Periksa: tiga puluh empat ditambah empat puluh enam sama dengan delapan puluh.";
-
-export const ADEGAN_NOL: AdeganStory = {
-  id: "nol",
-  judul: "Bunga Halim: satuan atas nol",
-  sumber: "Materi: contoh satuan atas nol",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      SUARA_N1,
-      tambah(0, judul("Bunga Halim")),
-      tambah(idx(SUARA_N1, "Halim"), ...anak("halim", 40, 80)),
-      tambah(idx(SUARA_N1, "mawar"), emo("mw", 150, 100, EMO.mawar, 44)),
-      tambah(idx(SUARA_N1, "puluh"), ...kartu("na", 10, 150, 90, 30, W.hijauMuda, ["80 bunga"], 11)),
-      tambah(idx(SUARA_N1, "enam"), ...kartu("nb", 105, 150, 100, 30, W.merahMuda, ["diberikan 46"], 11)),
-      tambah(idx(SUARA_N1, "Igil."), ...anak("igil", 260, 80)),
-    ),
-    k(
-      SUARA_N2,
-      bersih(0),
-      tambah(0, judul("Bunga Halim")),
-      tambah(idx(SUARA_N2, "Kita"), ...SN.kerangka()),
-      tambah(idx(SUARA_N2, "puluh"), ...SN.atas()),
-      tambah(idx(SUARA_N2, "enam"), ...SN.bawah()),
-      sorotkan(idx(SUARA_N2, "Satuan"), "sg-a0", "sg-b0"),
-    ),
-    k(SUARA_N3, redamkan(0, "sg-a0", "sg-b0"), tambah(idx(SUARA_N3, "ambil"), SN.coret()[0]), tambah(idx(SUARA_N3, "tinggal"), SN.puluhBaru())),
-    k(SUARA_N4, tambah(idx(SUARA_N4, "sepuluh"), SN.coret()[1], SN.satuBaru()), tambah(idx(SUARA_N4, "sama"), cap(`10 + 0 = 10`))),
-    k(SUARA_N5, ubah(idx(SUARA_N5, "sepuluh"), { id: "cp", isi: `10 ${MIN} 6 = 4` }), tambah(idx(SUARA_N5, "empat."), SN.hasil0()), tambah(idx(SUARA_N5, "tiga."), SN.hasil1())),
-    k(SUARA_N6, ubah(idx(SUARA_N6, "Periksa:"), { id: "cp", isi: "34 + 46 = 80" }), sorotkan(idx(SUARA_N6, "Sisa"), "sg-r1", "sg-r0")),
-  ],
-};
-
-/* ------------------------------ 14. Balon Igil: memilih cara ------------------------------ */
-const SC = buatSusun(74, 38);
-const SUARA_G1 = "Igil punya tujuh puluh empat balon. Tiga puluh delapan balon pecah ditiup angin.";
-const SUARA_G2 = "Cara pertama, susun pendek. Empat kurang dari delapan, jadi kita ambil satu puluhan. Empat belas dikurangi delapan sama dengan enam.";
-const SUARA_G3 = "Puluhan: enam dikurangi tiga sama dengan tiga. Jadi hasilnya tiga puluh enam.";
-const SUARA_G4 = "Cara kedua, susun panjang. Tujuh puluh empat sama dengan enam puluh ditambah empat belas, dan tiga puluh delapan sama dengan tiga puluh ditambah delapan.";
-const SUARA_G5 = "Empat belas dikurangi delapan sama dengan enam, dan enam puluh dikurangi tiga puluh sama dengan tiga puluh. Tiga puluh ditambah enam sama dengan tiga puluh enam.";
-const SUARA_G6 = "Kedua cara hasilnya sama. Pilih cara yang paling kamu mengerti.";
-
-export const ADEGAN_PILIH_CARA: AdeganStory = {
-  id: "pilih-cara",
-  judul: "Balon Igil: dua cara",
-  sumber: "Materi: memilih cara mengurangkan",
-  latar: "#FFFBEB",
   ketukan: [
     k(
       SUARA_G1,
-      tambah(0, judul("Balon Igil")),
-      tambah(idx(SUARA_G1, "Igil"), ...anak("igil", 40, 80)),
-      tambah(idx(SUARA_G1, "balon."), emo("bl", 150, 100, EMO.balon, 44)),
-      tambah(idx(SUARA_G1, "empat"), ...kartu("ga", 10, 150, 90, 30, W.hijauMuda, ["74 balon"], 11)),
-      tambah(idx(SUARA_G1, "delapan"), ...kartu("gb", 105, 150, 100, 30, W.merahMuda, ["pecah 38"], 11)),
+      bersih(0),
+      tambah(0, judul("Gudang Toko"), ...tokoLatar("tk"), ...rakKayu("rk", 14, 36, 130, 100, 3), ...tokoh("pa", 40, 172, "Pak Anto")),
+      tambah("sembilan", ...KALENG_ATAS(9), ...kartu("ga", 154, 38, 70, 26, W.kuning, ["Ada 90"], 12)),
+      tambah("dikirim", ...troli("tr", 168, 112, 60, 20), ...kartu("kr", 228, 38, 66, 26, W.merahMuda, ["Kirim 54"], 11)),
+      tambah("toko", emo("cb", 270, 130, "\u{1F3EA}", 22), panah("pc", 232, 122, 24, 0, W.merah, 2.2)),
+      tambah("Berapa", emo("tz", 200, 100, E.tanya, 20)),
     ),
     k(
       SUARA_G2,
       bersih(0),
-      tambah(0, judul("Cara pertama: susun pendek"), ...SC.kerangka(), ...SC.atas(), ...SC.bawah()),
-      tambah(idx(SUARA_G2, "ambil"), ...SC.coret(), SC.puluhBaru(), SC.satuBaru()),
-      tambah(idx(SUARA_G2, "enam."), SC.hasil0()),
+      tambah(0, judul("Pinjam Satu Puluhan"), ...tokoLatar("tk"), ...papanKapur("pk", 14, 34, 150, 120), kapur("sn-a", 112, 76, "90", 26, { anchor: "end" }), kapur("sn-m", 70, 106, "-", 26), kapur("sn-b", 112, 106, "54", 26, { anchor: "end" }), garis("sn-g", 58, 113, 64, 0, "#F8FAFC", 1.8, { z: 3 })),
+      tambah("empat", ...kartu("ka", 176, 44, 118, 28, W.merahMuda, ["0 - 4 = ?"], 13)),
+      tambah("pinjam", ...kartu("kb", 176, 82, 118, 28, W.kuning, ["pinjam 1 puluhan"], 11), emo("x1", 276, 58, E.salah, 14)),
+      tambah("Sepuluh", ...kartu("kc", 176, 120, 118, 28, W.hijauMuda, ["10 - 4 = 6"], 13)),
+      tambah("enam.", kapur("hs", 112, 138, "6", 26, { anchor: "end" })),
     ),
-    k(SUARA_G3, tambah(idx(SUARA_G3, "tiga", 2), SC.hasil1()), tambah(idx(SUARA_G3, "Jadi"), cap(`74 ${MIN} 38 = 36`))),
-    k(SUARA_G4, bersih(0), tambah(0, judul("Cara kedua: susun panjang")), tambah(idx(SUARA_G4, "Tujuh"), baris("ur1", 60, "74 = 60 + 14")), tambah(idx(SUARA_G4, "delapan", 2), baris("ur2", 92, "38 = 30 + 8"))),
-    k(SUARA_G5, tambah(idx(SUARA_G5, "Empat"), baris("ur3", 124, `14 ${MIN} 8 = 6`, 13, W.merah)), tambah(idx(SUARA_G5, "enam", 2), baris("ur4", 148, `60 ${MIN} 30 = 30`, 13, W.merah)), tambah(idx(SUARA_G5, "ditambah"), baris("ur5", 172, "30 + 6 = 36", 13, W.merah))),
-    k(SUARA_G6, tambah(idx(SUARA_G6, "sama."), emo("gk", 150, 196, "✅", 22))),
+    k(
+      SUARA_G3,
+      hapus("Puluhan", ...idKartu("ka"), ...idKartu("kb"), "x1"),
+      tambah("delapan", ...kartu("kd", 176, 44, 118, 28, W.kuning, ["8 - 5 = 3"], 13)),
+      ubah("Sisa", { id: "hs", isi: "36" }),
+      tambah("kaleng.", ...kartu("ke", 176, 86, 118, 28, W.krem, ["36 kaleng"], 12), emo("ok", 262, 150, E.benar, 20)),
+    ),
+  ],
+};
+
+/* ------------------------------ 8. Hasil nol ------------------------------ */
+const SUARA_H1 = "Rak mi hampir kosong. Ada dua puluh empat bungkus, terjual dua puluh empat.";
+const SUARA_H2 = "Dua puluh empat dikurangi dua puluh empat hasilnya nol.";
+const SUARA_H3 = "Pak Anto pun mencatat sisa stok dan mengirim mi baru.";
+
+export const ADEGAN_KURANG_SAMA: AdeganStory = {
+  id: "kurang-sama",
+  judul: "Rak mi habis terjual",
+  sumber: "Materi: pengurangan dengan hasil nol",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_H1,
+      bersih(0),
+      tambah(0, judul("Rak Hampir Kosong"), ...tokoLatar("tk"), ...tokoh("pa", 40, 172, "Pak Anto")),
+      tambah("hampir", ...rakKayu("rk", 100, 36, 190, 108, 3)),
+      tambah("dua", ...barisKardus("kd", 108, 53, 2, 24), ...barisBungkus("bg", 108, 97, 4, 13), kotak("ad-k", 10, 40, 80, 46, W.kuning, W.biru, { rx: 8 }), teks("ad-t0", 50, 54, "Ada", 9), teks("ad-t1", 50, 79, "24", 20)),
+      tambah("terjual", kotak("tj-k", 10, 92, 80, 46, W.merahMuda, W.biru, { rx: 8 }), teks("tj-t0", 50, 106, "Terjual", 9)),
+      tambah("empat@2", teks("tj-t1", 50, 131, "24", 20), emo("kg", 78, 124, E.kaget, 14)),
+    ),
+    k(
+      SUARA_H2,
+      bersih(0),
+      tambah(0, judul("Hasilnya Nol"), ...tokoLatar("tk"), ...papanKapur("pk", 30, 38, 240, 100), kapur("e1", 82, 100, "24", 28)),
+      tambah("dikurangi", kapur("e2", 124, 100, "-", 28)),
+      tambah("dua@2", kapur("e3", 166, 100, "24", 28)),
+      tambah("hasilnya", kapur("e4", 208, 100, "=", 28)),
+      tambah("nol.", kapur("e5", 240, 100, "0", 32, { warna: "#FDE047" }), emo("kl", 262, 130, E.kilau, 18)),
+    ),
+    k(
+      SUARA_H3,
+      bersih(0),
+      tambah(0, judul("Sisa Stok Dicatat"), ...tokoLatar("tk"), ...tokoh("pa", 40, 172, "Pak Anto"), ...rakKayu("rk", 100, 36, 190, 108, 3)),
+      tambah("mencatat", ...catatan("ct", 56, 146, 36, 22, 2)),
+      tambah("stok", kapur("ko", 195, 96, "0", 34, { warna: W.merah, z: 4 }), teks("kt", 195, 112, "kosong", 9, W.coklat, { z: 4 })),
+      tambah("mengirim", ...troli("tr", 124, 154, 44, 12), emo("kb", 146, 154, E.kardus, 16)),
+      tambah("baru.", emo("kl", 226, 150, E.kilau, 20)),
+    ),
+  ],
+};
+
+/* ------------------------------ 9. Penutup ------------------------------ */
+const SUARA_I1 = "Raka menepati taruhannya dan menata kardus kosong sampai rapi.";
+const SUARA_I2 = "Bu Mirna, penjual telur, datang membawa keranjang.";
+const SUARA_I3 = "Menurutmu, bagaimana cara cepat memeriksa hasil pengurangan? Terima kasih, Raka, Salsa, Bima, Pak Joko, dan Pak Anto!";
+
+const TUMPUKAN = ["kt0", "kt1", "kt2", "kt3", "kt4", "kt5"];
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Raka menata kardus, Bu Mirna datang",
+  sumber: "Materi: penutup dan jembatan ke Sub-Bab F",
+  latar: "#FEFCE8",
+  ketukan: [
+    k(
+      SUARA_I1,
+      bersih(0),
+      tambah(0, judul("Taruhan Raka"), ...tokoLatar("tk"), ...tokoh("rk", 34, 172, "Raka"), emo("lh", 60, 150, E.lelah, 16)),
+      tambah("menata", ...kardusKosong("kt0", 100, 150), ...kardusKosong("kt1", 126, 150), ...kardusKosong("kt2", 152, 150)),
+      tambah("kosong", ...kardusKosong("kt3", 113, 130), ...kardusKosong("kt4", 139, 130)),
+      tambah("rapi.", ...kardusKosong("kt5", 126, 110), emo("kl", 138, 98, E.kilau, 18)),
+    ),
+    k(
+      SUARA_I2,
+      tambah(0, kotak("pt", 214, 46, 80, 122, "#BFDBFE", W.coklat, { rx: 3, tebal: 2, z: -1 }), teks("pb", 254, 64, "BUKA", 9, W.coklat, { z: 0 })),
+      tambah("telur,", ...tokoh("bm", 268, 172, "Bu Mirna")),
+      tambah("membawa", emo("tl", 242, 150, E.telur, 16)),
+      tambah("keranjang.", emo("lb", 254, 90, E.lambai, 22)),
+    ),
+    k(
+      SUARA_I3,
+      hapus(0, ...TUMPUKAN.flatMap((t) => [t, `${t}-c`]), "kl", "lh"),
+      tambah("Salsa,", ...tokoh("sl", 80, 172, "Salsa")),
+      tambah("Bima,", ...tokoh("bi", 126, 172, "Bima")),
+      tambah("Joko,", ...tokoh("pj", 172, 172, "Pak Joko")),
+      tambah("Anto!", ...tokoh("pa", 218, 172, "Pak Anto"), emo("lm", 150, 140, E.lambai, 22)),
+    ),
   ],
 };

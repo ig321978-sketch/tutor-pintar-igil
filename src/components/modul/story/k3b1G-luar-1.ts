@@ -1,129 +1,172 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { OWL, W, bagian, bagikan, emo, hbAtas, hbBawah, idPilihan, jumlahBagian, judul, kartu, pilihKata, teks, tumpukan } from "./k3b1G-gambar";
-import { bersih, hapus, idx, k, redamkan, sorotkan, tambah, ubah } from "./k3b1G-bantu";
+import { E, W, bulat, emo, judul, kartu, keranjang, kotak, spanduk, teks, tokoLatar, tokoh, tumpukan, idBingkisan, bingkisan, warnaKado } from "./k3b1G-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k3b1G-bantu";
 
-export const NAMA_METODE_ID = ["Bagi Rata", "Kurang Berulang", "Keluarga Fakta"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/*
+ * Cerita orisinal IGIL "Pesta Hari Jadi Toko" (Kelas 3 Bab 1 Sub-Bab G), video metode global.
+ * Naskah suara dari naskah/story-naskah-k3b1g.md. Bagian ini: pembuka (tiga lembar catatan lama), Fair Share (Bagi Rata), dan terapannya.
+ */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Fair Share", "Repeated Subtraction", "Fact Family"] as const;
+export const NAMA_METODE_ID = ["Bagi Rata", "Kurang Berulang", "Keluarga Fakta"] as const;
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara punya cara lain untuk belajar pembagian. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu bernama Bagi Rata, Kurang Berulang, dan Keluarga Fakta.";
-const SUARA_O3 = "Semua metode ini menjawab satu pertanyaan. Bagaimana cara membagi sebuah bilangan dengan mudah dan benar?";
-const SUARA_O4 = "Kita memakai gambar di layar. Kamu cukup mengetuk, melihat dengan teliti, dan memilih jawaban.";
-const SUARA_O5 = "Ada yang membagi bergiliran, ada yang mengurangi berulang, dan ada yang memakai pasangan kali dan bagi. Siap? Ayo kita mulai dengan metode pertama.";
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Di bawah spanduk, Salsa menemukan tiga lembar catatan lama tentang cara membagi barang.";
+const SUARA_O2 = "Nenek Ijah berkata, itu tiga cara yang dipakai penjaga toko supaya pembagian adil. Cara-cara itu masih dipakai sampai sekarang.";
+const SUARA_O3 = "Tiga cara itu: Fair Share, Repeated Subtraction, dan Fact Family.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Bagi Rata, Kurang Berulang, dan Keluarga Fakta.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk pembagian",
-  sumber: "Metode luar: pembuka",
+  judul: "Tiga lembar catatan lama",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah(idx(SUARA_O1, "negara"), emo("gl", 150, 110, "\u{1F30D}", 50)), tambah(idx(SUARA_O1, "tiga"), ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11))),
+    k(
+      SUARA_O1,
+      bersih(0),
+      tambah(0, judul("Catatan Lama"), ...tokoLatar("tk")),
+      tambah("spanduk,", ...spanduk("sp", 15, 36, 270, "OBRAL HARI JADI TOKO MERIAH", 11)),
+      tambah("Salsa", ...tokoh("sl", 40, 176, "Salsa", 28)),
+      tambah("tiga", teks("n3", 150, 124, "3 catatan", 11, W.ungu)),
+      tambah("lembar", ...[0, 1, 2].flatMap((i) => kartu(`c${i}`, 86 + i * 58, 68, 50, 36, W.krem, ["catatan"], 7))),
+      tambah("lama", emo("kc", 242, 150, E.kaca, 24)),
+    ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      tambah(idx(SUARA_O2, "Rata,"), ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah(idx(SUARA_O2, "Kurang"), ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "Keluarga"), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      tambah("Nenek", ...tokoh("nn", 262, 176, "Nenek Ijah", 28)),
+      ubah("tiga", { id: "n3", isi: "3 cara" }),
+      tambah("penjaga", emo("pn", 190, 150, E.pria, 24)),
+      tambah("adil.", emo("ad", 150, 150, "\u{2696}", 24)),
+      tambah("sekarang.", emo("kl", 120, 150, E.kilau, 22)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah(idx(SUARA_O3, "satu"), emo("i1", 60, 84, "\u{1F36A}", 34), emo("i2", 150, 84, "❓", 34), emo("i3", 240, 84, "\u{1F440}", 34)),
-      tambah(idx(SUARA_O3, "Bagaimana"), ...kartu("iq", 20, 112, 260, 52, W.emas, ["bagaimana cara membagi", "bilangan dengan mudah?"], 10)),
+      tambah(0, judul("Tiga Cara Tadi"), ...tokoLatar("tk")),
+      tambah("Tiga", teks("n3", 252, 52, "3 cara", 10, W.ungu)),
+      tambah("Fair", teks("m0", 140, 82, "1. Fair Share", 13, W.biru), emo("i0", 262, 82, E.keranjang, 22)),
+      tambah("Repeated", teks("m1", 140, 120, "2. Repeated Subtraction", 13, W.biru), emo("i1", 262, 120, "\u{2796}", 22)),
+      tambah("Fact", teks("m2", 140, 158, "3. Fact Family", 13, W.biru), emo("i2", 262, 158, "\u{1F46A}", 22)),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Alat bantu hari ini")),
-      tambah(idx(SUARA_O4, "layar."), emo("a1", 70, 100, "\u{1F4E6}", 36), emo("a2", 150, 100, "\u{1F522}", 36), emo("a3", 230, 100, "\u{1F34E}", 36)),
-      tambah(idx(SUARA_O4, "mengetuk,"), emo("tg", 150, 150, "\u{1F446}", 24)),
-      tambah(idx(SUARA_O4, "memilih"), teks("al-t", 150, 184, "ketuk, lihat, lalu pilih", 10, W.ungu)),
-    ),
-    k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Bagi, kurang, dan kali")),
-      tambah(idx(SUARA_O5, "membagi"), teks("kt0", 150, 70, "membagi bergiliran", 14, W.ungu)),
-      tambah(idx(SUARA_O5, "mengurangi"), teks("kt1", 150, 100, "mengurangi berulang", 14, W.ungu)),
-      tambah(idx(SUARA_O5, "memakai"), teks("kt2", 150, 130, "kali dan bagi berpasangan", 14, W.ungu)),
-      tambah(idx(SUARA_O5, "pertama."), emo("ow", 150, 182, OWL, 30)),
+      tambah("Bagi", teks("q0", 140, 96, "Bagi Rata", 10, W.ungu)),
+      tambah("Kurang", teks("q1", 140, 134, "Kurang Berulang", 10, W.ungu)),
+      tambah("Keluarga", teks("q2", 140, 172, "Keluarga Fakta", 10, W.ungu)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Bagi Rata: konsep ------------------------------ */
-const SUARA_R1 = "Metode pertama bernama Bagi Rata. Bagikan benda satu per satu supaya semua bagian sama.";
-const SUARA_R2 = "Kita punya enam belas apel untuk Malosi, Kira, Upe, dan Wei.";
-const SUARA_R3 = "Putaran pertama, tiap anak kebagian satu apel. Putaran kedua, tiap anak kebagian satu lagi.";
-const SUARA_R4 = "Setelah empat putaran, apel habis. Setiap anak mendapat empat apel.";
-const SUARA_R5 = "Enam belas dibagi empat sama dengan empat. Itulah metode Bagi Rata, bagikan bergiliran sampai habis.";
-const TRAY16 = { y0: 68, perBaris: 16, dx: 17 };
+/* ------------------------------ Gambar bersama ------------------------------ */
+const KX = [60, 130, 200];
+const keranjangTiga = (): Obj[] => KX.flatMap((x, i) => keranjang(`kr${i}`, x, 122, 40, 24));
+/** Bingkisan ke-j di keranjang ke-i (tiga keranjang), bingkisan nomor n = j * 3 + i. */
+const kadoTiga = (i: number, j: number): Obj[] => bingkisan(`g${i}${j}`, KX[i] + 5 + (j % 3) * 10.5, 124 + Math.floor(j / 3) * 10.5, 8.5, warnaKado(j * 3 + i), { z: 2 });
+const idPile = (dari: number, sampai: number): string[] => Array.from({ length: sampai - dari + 1 }, (_, q) => idBingkisan(`bk${dari + q}`)).flat();
 
-export const ADEGAN_LUAR_BAGI: AdeganStory = {
-  id: "luar-bagi",
-  judul: "Bagi Rata: bagikan bergiliran",
-  sumber: "Metode luar: Bagi Rata",
-  latar: "#F0FDF4",
+/* ------------------------------ Fair Share: konsep ------------------------------ */
+const SUARA_P1 = "Cara pertama, Fair Share, atau Bagi Rata.";
+const SUARA_P2 = "Barang dibagikan satu-satu ke tiap bagian secara bergiliran.";
+const SUARA_P3 = "Teruskan sampai semua barang habis. Jangan lupa menghitung isi tiap bagian di akhir.";
+const SUARA_P4 = "Banyak barang di tiap bagian adalah hasil bagi.";
+
+export const ADEGAN_LUAR_RATA: AdeganStory = {
+  id: "luar-rata",
+  judul: "Fair Share: Bagi Rata",
+  sumber: "Metode global: Fair Share (konsep)",
+  latar: "#FEFCE8",
   ketukan: [
-    k(SUARA_R1, tambah(0, ...kepala(0)), tambah(idx(SUARA_R1, "benda"), ...tumpukan("apel", 16, 1, 16, TRAY16))),
-    k(SUARA_R2, tambah(idx(SUARA_R2, "Malosi,"), ...bagian(["Malosi", "Kira", "Upe", "Wei"]))),
-    k(SUARA_R3, ubah(idx(SUARA_R3, "pertama,"), bagikan("apel", 4, 1, 4)), ubah(idx(SUARA_R3, "kedua,"), bagikan("apel", 4, 5, 8))),
     k(
-      SUARA_R4,
-      ubah(idx(SUARA_R4, "Setelah"), bagikan("apel", 4, 9, 16)),
-      tambah(idx(SUARA_R4, "empat", 2), ...[0, 1, 2, 3].map((g) => jumlahBagian(g, 4, 4))),
+      SUARA_P1,
+      bersih(0),
+      tambah(0, judul("Cara Pertama"), ...tokoLatar("tk")),
+      tambah("Fair", ...kartu("nm", 50, 44, 200, 28, W.krem, ["Fair Share"], 13)),
+      tambah("Bagi", teks("nid", 150, 104, "Bagi Rata", 13, W.ungu)),
+      tambah("Rata.", emo("ic", 150, 156, E.keranjang, 34)),
     ),
-    k(SUARA_R5, tambah(0, hbAtas("16 : 4 = 4"))),
+    k(
+      SUARA_P2,
+      bersih(0),
+      tambah(0, judul("Bagi Satu-Satu"), ...tokoLatar("tk"), ...tumpukan("bk", 126, 44, 3, 9, 11, 13), ...keranjangTiga()),
+      tambah("satu-satu", teks("s1", 150, 108, "1 untuk tiap bagian", 9, W.coklat)),
+      hapus("tiap", ...idPile(0, 2)),
+      tambah("tiap", ...kadoTiga(0, 0), ...kadoTiga(1, 0), ...kadoTiga(2, 0)),
+      hapus("bergiliran.", ...idPile(3, 5)),
+      tambah("bergiliran.", ...kadoTiga(0, 1), ...kadoTiga(1, 1), ...kadoTiga(2, 1)),
+    ),
+    k(
+      SUARA_P3,
+      hapus(0, "s1"),
+      hapus("habis.", ...idPile(6, 8)),
+      tambah("habis.", ...kadoTiga(0, 2), ...kadoTiga(1, 2), ...kadoTiga(2, 2)),
+      tambah("isi", ...KX.map((x, i) => teks(`h${i}`, x + 20, 116, "3", 12, W.merah))),
+      tambah("akhir.", emo("ok", 262, 100, E.benar, 22)),
+    ),
+    k(
+      SUARA_P4,
+      hapus(0, "ok"),
+      tambah("bagian", ...kartu("hb", 100, 44, 100, 22, W.hijauMuda, ["hasil bagi"], 11)),
+      sorotkan("hasil", "kr1"),
+      tambah("hasil", emo("pn", 150, 88, E.tangan, 22)),
+      tambah("bagi.", emo("kl", 262, 100, E.kilau, 22)),
+    ),
   ],
 };
 
-/* ------------------------------ 3. Bagi Rata: terapan ------------------------------ */
-const SUARA_T1 = "Terapkan pada soal ini. Halim punya dua puluh bunga untuk dibagi sama banyak ke empat anak.";
-const SUARA_T2 = "Berapa bunga yang didapat tiap anak? Ketuk jawaban yang tepat.";
-const SUARA_T3 = "Betul! Dua puluh dibagi empat sama dengan lima.";
-const SUARA_T4 = "Jadi tiap anak mendapat lima bunga. Dengan bagi rata, semua bagian sama banyak.";
+/* ------------------------------ Fair Share: terapan ------------------------------ */
+const KUE_X = (q: number): number => 104 + (q % 6) * 13;
+const KUE_Y = (q: number): number => 52 + Math.floor(q / 6) * 13;
+const WARNA_KUE = ["#F59E0B", "#EC4899", "#A855F7", "#22C55E"];
+const kue = (id: string, cx: number, cy: number, i: number, r = 5): Obj => bulat(id, cx, cy, r, WARNA_KUE[i % 4], W.biru, { tebal: 0.9, z: 2 });
+const PX = [40, 120, 200];
+const piringTiga = (): Obj[] => PX.map((x, i) => kotak(`pg${i}`, x, 132, 60, 14, W.putih, W.biru, { rx: 7, tebal: 1.6, z: 1 }));
+const idKueSemua = (): string[] => Array.from({ length: 18 }, (_, q) => `ku${q}`);
 
-export const ADEGAN_LUAR_BAGI_TERAPAN: AdeganStory = {
-  id: "luar-bagi-terapan",
-  judul: "Bagi Rata: bunga Halim",
-  sumber: "Metode luar: Bagi Rata",
-  latar: "#ECFCCB",
+const SUARA_T1 = "Bima membagi delapan belas kue ke tiga piring, satu-satu bergiliran.";
+const SUARA_T2 = "Setiap piring akhirnya berisi enam kue. Semua piring sama banyak, jadi pembagiannya adil.";
+const SUARA_T3 = "Cocok kalau barangnya nyata dan bisa dibagikan langsung.";
+const SUARA_T4 = "Kurang cocok untuk bilangan besar, karena membagi satu-satu terlalu lama.";
+
+export const ADEGAN_LUAR_RATA_TERAPAN: AdeganStory = {
+  id: "luar-rata-terapan",
+  judul: "Bima membagi kue ke piring",
+  sumber: "Metode global: Fair Share (terapan)",
+  latar: "#FFF7ED",
   ketukan: [
     k(
       SUARA_T1,
-      tambah(0, ...kepala(0)),
-      tambah(idx(SUARA_T1, "dua"), ...tumpukan("bunga", 20, 1, 20, { y0: 62, dy: 20, perBaris: 10, dx: 26 })),
-      tambah(idx(SUARA_T1, "empat"), ...kartu("so", 50, 96, 200, 26, W.emas, ["20 bunga, 4 anak"], 11)),
+      bersih(0),
+      tambah(0, judul("Kue untuk Piring"), ...tokoLatar("tk")),
+      tambah("Bima", ...tokoh("bm", 36, 178, "Bima", 26)),
+      tambah("delapan", teks("n18", 150, 46, "18 kue", 10, W.merah), ...Array.from({ length: 18 }, (_, q) => kue(`ku${q}`, KUE_X(q), KUE_Y(q), q))),
+      tambah("tiga", ...piringTiga(), teks("n3", 150, 106, "3 piring", 10, W.coklat)),
+      tambah("satu-satu", teks("s1", 150, 118, "1 per piring", 9, W.ungu)),
     ),
-    k(SUARA_T2, tambah(idx(SUARA_T2, "Berapa"), teks("tanya", 150, 142, "20 : 4 = ?", 12, W.ungu)), tambah(idx(SUARA_T2, "jawaban"), ...pilihKata(150, ["4", "5", "6"], 16))),
-    k(SUARA_T3, sorotkan(idx(SUARA_T3, "Betul!"), "c2-k"), tambah(idx(SUARA_T3, "Dua"), hbBawah("20 : 4 = 5"))),
-    k(SUARA_T4, redamkan(0, "c2-k"), hapus(0, "tanya", ...idPilihan(3)), tambah(idx(SUARA_T4, "tiap"), emo("ok", 150, 150, "✅", 30))),
-  ],
-};
-
-/* ------------------------------ 9. Ringkasan metode luar ------------------------------ */
-const SUARA_Y1 = "Mari kita ringkas tiga metode dari luar. Semuanya membantu kita membagi.";
-const SUARA_Y2 = "Metode Bagi Rata, bagikan benda bergiliran sampai habis.";
-const SUARA_Y3 = "Metode Kurang Berulang, kurangi terus sampai nol.";
-const SUARA_Y4 = "Metode Keluarga Fakta, periksa hasil bagi dengan kali.";
-const SUARA_Y5 = "Pilih metode yang kamu suka, lalu periksa dengan metode lain. Hasilnya harus sama.";
-
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Metode luar: ringkasan",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(SUARA_Y1, tambah(0, judul("Ringkasan")), tambah(idx(SUARA_Y1, "ringkas"), ...kartu("r0", 14, 34, 272, 30, W.emas, ["3 metode dari luar"], 11))),
-    k(SUARA_Y2, tambah(idx(SUARA_Y2, "Bagi"), ...kartu("r1", 14, 72, 272, 34, WARNA_METODE[0], [NAMA_METODE_ID[0], "bagikan bergiliran sampai habis"], 9.2))),
-    k(SUARA_Y3, tambah(idx(SUARA_Y3, "Kurang"), ...kartu("r2", 14, 114, 272, 34, WARNA_METODE[1], [NAMA_METODE_ID[1], "kurangi terus sampai nol"], 9.2))),
-    k(SUARA_Y4, tambah(idx(SUARA_Y4, "Keluarga"), ...kartu("r3", 14, 156, 272, 34, WARNA_METODE[2], [NAMA_METODE_ID[2], "periksa hasil bagi dengan kali"], 9.2))),
-    k(SUARA_Y5, bersih(0), tambah(0, judul("Hasilnya harus sama"), emo("rw", 150, 100, OWL, 54)), tambah(idx(SUARA_Y5, "sama."), emo("rk", 150, 160, "✅", 30))),
+    k(
+      SUARA_T2,
+      hapus(0, ...idKueSemua(), "s1"),
+      tambah("berisi", ...PX.flatMap((x, i) => Array.from({ length: 6 }, (_, j) => kue(`kp${i}${j}`, x + 7 + j * 9.2, 126, i * 6 + j, 4)))),
+      tambah("enam", ...PX.map((x, i) => teks(`t6${i}`, x + 30, 160, "6", 14, W.merah))),
+      tambah("adil.", emo("ad", 262, 120, "\u{2696}", 26)),
+    ),
+    k(
+      SUARA_T3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?"), ...tokoLatar("tk"), ...kartu("cc", 90, 44, 120, 24, W.hijauMuda, ["Cocok"], 12)),
+      tambah("barangnya", ...tumpukan("bk", 120, 84, 4, 8, 14, 17)),
+      tambah("nyata", emo("ny", 70, 110, E.hadiah, 28)),
+      tambah("dibagikan", emo("tg", 234, 108, E.tangan, 26)),
+      tambah("langsung.", emo("ok", 150, 168, E.benar, 28)),
+    ),
+    k(
+      SUARA_T4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?"), ...tokoLatar("tk"), ...kartu("kc", 80, 44, 140, 24, W.merahMuda, ["Kurang cocok"], 12)),
+      tambah("bilangan", teks("bs", 150, 100, "96 kue", 20, W.merah)),
+      tambah("satu-satu", teks("s1", 150, 130, "1, 1, 1, 1, 1 ...", 12, W.ungu)),
+      tambah("terlalu", emo("jm", 100, 168, "\u{23F3}", 28)),
+      tambah("lama.", emo("x1", 200, 168, E.salah, 26)),
+    ),
   ],
 };

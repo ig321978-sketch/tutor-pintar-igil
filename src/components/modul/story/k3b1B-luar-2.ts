@@ -1,161 +1,261 @@
-import type { Aksi, AdeganStory } from "./logika-story";
-import { OWL, W, emo, judul, kartu, kartuAngka, papan, pilihan, teks, uraian } from "./k3b1B-gambar";
-import { hapus, idx, k, redamkan, sorotkan, tambah, ubah } from "./k3b1B-bantu";
-import { NAMA_METODE_ID, kepala } from "./k3b1B-luar-1";
+import type { AdeganStory } from "./logika-story";
+import { E, W, WARNA_TULIS, angka, emo, judul, kartu, kartuAngka, kartuCocok, kartuKurang, kartuLepas, kotak, kotakTempat, labelHarga, panah, teks, tokoDepan, tokoh } from "./k3b1B-gambar";
+import { bersih, hapus, k, tambah } from "./k3b1B-bantu";
 
-/* ------------------------------ 4. Kartu Angka Montessori: konsep ------------------------------ */
-const KM = papan("km", "219", { y0: 112, h: 46, u: 30 });
-const WARNA_KARTU = [W.hijauMuda, W.langit, W.merahMuda, W.krem, W.pink, W.lavender, W.hijauMuda, W.langit, W.merahMuda, W.krem];
-const kd = (i: number) => kartuAngka(`kd${i}`, 10 + i * 28, 54, String(i), WARNA_KARTU[i], 24, 26, 14);
-/** Pindahkan kartu `i` ke dalam kotak tempat `c`. */
-const masuk = (at: string | number, i: number, c: number): Aksi => ({
-  at,
-  ubah: [
-    { id: `kd${i}-k`, x: KM.xPusat(c) - 12, y: 122 },
-    { id: `kd${i}-t`, x: KM.xPusat(c), y: 122 + 13 + 14 * 0.35 },
-  ],
-});
-const SEMUA_KD = Array.from({ length: 10 }, (_, i) => [`kd${i}-k`, `kd${i}-t`]).flat();
-const SUARA_M1 = "Metode kedua bernama Kartu Angka Montessori. Kita memakai kartu angka dan tiga kotak.";
-const SUARA_M2 = "Ada sepuluh kartu angka, dari nol sampai sembilan. Tiap kotak boleh diisi satu kartu.";
-const SUARA_M3 = "Malosi mengambil satu kartu untuk tiap kotak. Untuk ratusan terambil kartu dua.";
-const SUARA_M4 = "Untuk puluhan terambil kartu satu. Untuk satuan terambil kartu sembilan.";
-const SUARA_M5 = "Kartu dua di ratusan bernilai dua ratus. Kartu satu di puluhan bernilai sepuluh. Kartu sembilan di satuan bernilai sembilan.";
-const SUARA_M6 = "Bilangan yang terbentuk adalah dua ratus sembilan belas.";
+/*
+ * Cerita orisinal IGIL "Kartu Harga Bu Wati" (Kelas 3 Bab 1 Sub-Bab B), video metode global.
+ * Naskah suara dari naskah/story-naskah-k3b1b.md. Bagian ini: Montessori Cards (Kartu Angka Montessori), Expanded Form (Bentuk Uraian), terapannya, dan ringkasan.
+ */
+
+/** Satu kartu bertumpuk gaya Montessori: kotak berwarna `${id}` dengan tulisan di kiri `${id}-t`. */
+const tumpukan = (id: string, x: number, y: number, w: number, isi: string, warna: string, u = 16) => [
+  kotak(id, x, y, w, 40, warna, W.biru, { rx: 4, tebal: 1.6, z: 2 }),
+  teks(`${id}-t`, x + 22, y + 26, isi, u, W.putih, { z: 3 }),
+];
+
+/* ------------------------------ Montessori Cards: konsep ------------------------------ */
+const SUARA_K1 = "Cara kedua, Montessori Cards, atau Kartu Angka Montessori.";
+const SUARA_K2 = "Kartu seratus ditumpuk menutup kartu sepuluh, dan kartu sepuluh menutup kartu satu.";
+const SUARA_K3 = "Pada bilangan, kartu angka menempel pada kartu tempatnya.";
+const SUARA_K4 = "Dengan menumpuk, kita melihat bilangan tersusun dari tiga bagian.";
 
 export const ADEGAN_LUAR_KARTU: AdeganStory = {
   id: "luar-kartu",
-  judul: "Kartu Angka Montessori: kartu dan tiga kotak",
-  sumber: "Metode luar: Kartu Angka Montessori",
-  latar: "#EFF6FF",
+  judul: "Montessori Cards: Kartu Angka Montessori",
+  sumber: "Metode global: Montessori Cards (konsep)",
+  latar: "#FFFBEB",
   ketukan: [
-    k(SUARA_M1, tambah("kedua", ...kepala(1)), tambah("tiga", ...KM.dasar)),
-    k(SUARA_M2, tambah("sepuluh", ...Array.from({ length: 10 }, (_, i) => kd(i)).flat(), teks("bk", 150, 98, "10 kartu: 0 sampai 9", 9.4, W.coklat))),
-    k(SUARA_M3, sorotkan("ratusan", "kd2-k"), masuk(idx(SUARA_M3, "terambil"), 2, 0)),
-    k(SUARA_M4, redamkan(0, "kd2-k"), sorotkan(idx(SUARA_M4, "satu"), "kd1-k"), masuk(idx(SUARA_M4, "terambil", 1), 1, 1), masuk(idx(SUARA_M4, "terambil", 2), 9, 2)),
     k(
-      SUARA_M5,
-      hapus(0, ...SEMUA_KD, "bk"),
-      tambah(0, KM.digit(0), KM.digit(1), KM.digit(2)),
-      tambah(idx(SUARA_M5, "ratus"), KM.nilai(0)),
-      tambah(idx(SUARA_M5, "sepuluh"), KM.nilai(1)),
-      tambah(idx(SUARA_M5, "sembilan", 2), KM.nilai(2)),
+      SUARA_K1,
+      bersih(0),
+      tambah(0, judul("Cara Kedua"), ...tokoDepan("dn")),
+      tambah("kedua,", ...kartu("nm", 50, 44, 200, 28, W.krem, ["Montessori Cards"], 13)),
+      tambah("Montessori", teks("nid", 150, 100, "Kartu Angka Montessori", 11, W.ungu, { z: 2 })),
+      tambah("Kartu", ...kartuAngka("c0", 90, 118, "100", "r", 34, 34, 11), ...kartuAngka("c1", 132, 118, "10", "p", 34, 34, 12)),
+      tambah("Montessori@2", ...kartuAngka("c2", 174, 118, "1", "s", 34, 34, 14)),
     ),
-    k(SUARA_M6, tambah("terbentuk", KM.utuh(196, 20))),
+    k(
+      SUARA_K2,
+      bersih(0),
+      tambah(0, judul("Kartu Bertumpuk"), ...tokoDepan("dn")),
+      tambah("seratus", ...tumpukan("t0", 40, 52, 120, "100", W.kr)),
+      tambah("menutup", ...tumpukan("t1", 100, 62, 100, "10", W.kp, 16)),
+      tambah("sepuluh,", panah("pa", 150, 108, 0, 12, W.ungu, 2.4)),
+      tambah("menutup@2", ...tumpukan("t2", 160, 72, 76, "1", W.ks, 16)),
+      tambah("satu.", emo("ok", 262, 108, E.benar, 20)),
+    ),
+    k(
+      SUARA_K3,
+      bersih(0),
+      tambah(0, judul("Kartu Menempel"), ...tokoDepan("dn")),
+      tambah("bilangan,", ...kotakTempat("p0", 40, 118, 72, 22, "Ratusan", "r", 9), ...kotakTempat("p1", 114, 118, 72, 22, "Puluhan", "p", 9), ...kotakTempat("p2", 188, 118, 72, 22, "Satuan", "s", 9)),
+      tambah("kartu", ...kartuLepas("a0", 58, 54, "3", 36, 48, 30), ...kartuLepas("a1", 132, 54, "4", 36, 48, 30), ...kartuLepas("a2", 206, 54, "6", 36, 48, 30)),
+      tambah("menempel", panah("q0", 76, 104, 0, 12, W.kr, 2.2), panah("q1", 150, 104, 0, 12, W.kp, 2.2), panah("q2", 224, 104, 0, 12, W.ks, 2.2)),
+      tambah("tempatnya.", emo("ok", 150, 166, E.benar, 22)),
+    ),
+    k(
+      SUARA_K4,
+      bersih(0),
+      tambah(0, judul("Tiga Bagian"), ...tokoDepan("dn")),
+      tambah("menumpuk,", ...labelHarga("lb", 100, 52, 100, 40, "346", 26)),
+      tambah("bilangan", ...kotakTempat("p0", 40, 112, 72, 22, "Ratusan", "r", 9), ...kotakTempat("p1", 114, 112, 72, 22, "Puluhan", "p", 9), ...kotakTempat("p2", 188, 112, 72, 22, "Satuan", "s", 9)),
+      tambah("tiga", teks("n3", 150, 152, "3 bagian", 12, W.ungu, { z: 3 })),
+      tambah("bagian.", emo("ok", 218, 150, E.benar, 20)),
+    ),
   ],
 };
 
-/* ------------------------------ 5. Kartu Angka Montessori: terapan ------------------------------ */
-const KT = papan("kt", "407", { y0: 72, h: 44, u: 28 });
-const KARTU_T = [
-  { id: "ka0", isi: "4", warna: W.hijauMuda },
-  { id: "ka1", isi: "0", warna: W.langit },
-  { id: "ka2", isi: "7", warna: W.merahMuda },
-];
-const ka = (i: number) => kartuAngka(KARTU_T[i].id, KT.xPusat(i) - 24, 77, KARTU_T[i].isi, KARTU_T[i].warna, 48, 34, 20);
-const SUARA_P1 = "Terapkan Kartu Angka Montessori. Kita ambil kartu empat dari ratusan, kartu nol dari puluhan, dan kartu tujuh dari satuan.";
-const SUARA_P2 = "Bilangan apa yang terbentuk? Ketuk jawabannya. Empat ratus tujuh, empat ratus tujuh puluh, atau empat puluh tujuh?";
-const SUARA_P3 = "Betul! Kartu nol tetap dipasang di puluhan, jadi bilangannya empat ratus tujuh.";
+/* ------------------------------ Montessori Cards: terapan ------------------------------ */
+const SUARA_P1 = "Bima menumpuk kartu tujuh ratus, lima puluh, dan tiga menjadi satu kartu tujuh ratus lima puluh tiga.";
+const SUARA_P2 = "Lalu ia melepasnya lagi, dan tiga kartu muncul kembali.";
+const SUARA_P3 = "Cocok untuk belajar menyusun dan memisahkan bilangan dengan tangan.";
+const SUARA_P4 = "Kurang cocok kalau tidak ada kartu, karena harus menggambar atau menulis.";
 
 export const ADEGAN_LUAR_KARTU_TERAPAN: AdeganStory = {
   id: "luar-kartu-terapan",
-  judul: "Kartu Angka Montessori: kartu empat, nol, tujuh",
-  sumber: "Metode luar: Kartu Angka Montessori, terapan",
-  latar: "#EFF6FF",
+  judul: "Montessori Cards dipakai pada 753",
+  sumber: "Metode global: Montessori Cards (terapan)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
       SUARA_P1,
-      tambah("Terapkan", ...kepala(1)),
-      tambah("Kita", ...KT.dasar),
-      tambah(idx(SUARA_P1, "empat"), ...ka(0)),
-      tambah(idx(SUARA_P1, "nol"), ...ka(1)),
-      tambah(idx(SUARA_P1, "tujuh"), ...ka(2)),
+      bersih(0),
+      tambah(0, judul("Kartu Ditumpuk"), ...tokoDepan("dn"), ...tokoh("bm", 262, 172, "Bima")),
+      tambah("ratus,", ...kartuAngka("c0", 24, 60, "700", "r", 44, 36, 13)),
+      tambah("puluh,", ...kartuAngka("c1", 76, 60, "50", "p", 36, 36, 13)),
+      tambah("tiga", ...kartuAngka("c2", 120, 60, "3", "s", 28, 36, 13)),
+      tambah("satu", panah("pn", 160, 78, 28, 0, W.ungu, 2.6), teks("s1", 218, 56, "1 kartu", 10, W.ungu, { z: 2 })),
+      tambah("tiga@2", ...labelHarga("lb", 200, 66, 76, 36, "753", 22)),
     ),
-    k(SUARA_P2, tambah("Bilangan", ...pilihan(136, ["407", "470", "47"]))),
+    k(
+      SUARA_P2,
+      hapus(0, "lb", "lb-t", "pn", "s1"),
+      tambah("melepasnya", emo("tg", 232, 88, "\u{270B}", 22)),
+      tambah("tiga", teks("n3", 250, 60, "3 kartu", 10, W.ungu, { z: 2 })),
+      tambah("kembali.", emo("ok", 218, 128, E.benar, 20)),
+    ),
     k(
       SUARA_P3,
-      sorotkan("Betul!", "c1-k"),
-      hapus("Kartu", "ka0-k", "ka0-t", "ka1-k", "ka1-t", "ka2-k", "ka2-t"),
-      tambah("Kartu", KT.digit(0), KT.digit(1), KT.digit(2)),
-      tambah("bilangannya", KT.utuh(128, 16)),
+      bersih(0),
+      tambah(0, judul("Cocok Dipakai"), ...tokoDepan("dn")),
+      tambah("Cocok", ...kartuCocok("cc", 56, ["Cocok untuk menyusun", "dan memisahkan bilangan"])),
+      tambah("menyusun", emo("tg", 90, 132, "\u{270B}", 26), ...kartuAngka("a0", 120, 112, "3", "r", 24, 30, 13)),
+      tambah("memisahkan", ...kartuAngka("a1", 154, 112, "4", "p", 24, 30, 13), ...kartuAngka("a2", 188, 112, "6", "s", 24, 30, 13)),
+      tambah("tangan.", emo("ok2", 240, 134, E.benar, 22)),
+    ),
+    k(
+      SUARA_P4,
+      hapus(0, "tg", "a0", "a0-t", "a1", "a1-t", "a2", "a2-t", "ok2"),
+      tambah("Kurang", ...kartuKurang("kc", 100, ["Kurang cocok bila", "tidak ada kartu"])),
+      tambah("kartu,", emo("no", 60, 162, E.salah, 22)),
+      tambah("menggambar", emo("pe", 140, 164, "\u{270F}\u{FE0F}", 22)),
+      tambah("menulis.", emo("ct", 214, 164, E.catat, 22)),
     ),
   ],
 };
 
-/* ------------------------------ 6. Bentuk Uraian: konsep ------------------------------ */
-const UR = papan("ur", "345", { y0: 72, h: 40, u: 26, nilaiY: 128 });
-const SUARA_R1 = "Metode ketiga bernama Bentuk Uraian. Bilangan dituliskan sebagai jumlah nilai tiap tempatnya.";
-const SUARA_R2 = "Lihat bilangan tiga ratus empat puluh lima.";
-const SUARA_R3 = "Tiga di ratusan bernilai tiga ratus. Empat di puluhan bernilai empat puluh. Lima di satuan bernilai lima.";
-const SUARA_R4 = "Sekarang kita tambahkan. Tiga ratus tambah empat puluh tambah lima sama dengan tiga ratus empat puluh lima.";
-const SUARA_R5 = "Itulah bentuk uraian. Bilangan sama dengan jumlah nilai dari tiap tempat.";
+/* ------------------------------ Expanded Form: konsep ------------------------------ */
+const SUARA_U1 = "Cara ketiga, Expanded Form, atau Bentuk Uraian.";
+const SUARA_U2 = "Bilangan ditulis sebagai jumlah ratusan, puluhan, dan satuannya.";
+const SUARA_U3 = "Bentuk uraian bilangan delapan ratus tiga puluh enam adalah delapan ratus ditambah tiga puluh ditambah enam.";
+const SUARA_U4 = "Nol tetap dituliskan bila tempatnya kosong.";
 
 export const ADEGAN_LUAR_URAIAN: AdeganStory = {
   id: "luar-uraian",
-  judul: "Bentuk Uraian: jumlah nilai tiap tempat",
-  sumber: "Metode luar: Bentuk Uraian",
-  latar: "#FDF2F8",
+  judul: "Expanded Form: Bentuk Uraian",
+  sumber: "Metode global: Expanded Form (konsep)",
+  latar: "#F5F3FF",
   ketukan: [
-    k(SUARA_R1, tambah("ketiga", ...kepala(2)), tambah("Bilangan", ...UR.dasar)),
-    k(SUARA_R2, tambah("tiga", UR.digit(0)), tambah("empat", UR.digit(1)), tambah("lima.", UR.digit(2))),
     k(
-      SUARA_R3,
-      sorotkan(idx(SUARA_R3, "Tiga"), "ur_d0"),
-      tambah(idx(SUARA_R3, "ratus"), UR.nilai(0)),
-      redamkan(idx(SUARA_R3, "Empat"), "ur_d0"),
-      sorotkan(idx(SUARA_R3, "Empat"), "ur_d1"),
-      tambah(idx(SUARA_R3, "puluh"), UR.nilai(1)),
-      redamkan(idx(SUARA_R3, "Lima"), "ur_d1"),
-      sorotkan(idx(SUARA_R3, "Lima"), "ur_d2"),
-      tambah(idx(SUARA_R3, "lima", 2), UR.nilai(2)),
+      SUARA_U1,
+      bersih(0),
+      tambah(0, judul("Cara Ketiga"), ...tokoDepan("dn")),
+      tambah("ketiga,", ...kartu("nm", 50, 44, 200, 28, W.krem, ["Expanded Form"], 13)),
+      tambah("Expanded", teks("nid", 150, 104, "Bentuk Uraian", 12, W.ungu, { z: 2 })),
+      tambah("Bentuk", emo("ic", 150, 152, E.catat, 34)),
+      tambah("Uraian.", emo("kl", 210, 150, E.kilau, 20)),
     ),
-    k(SUARA_R4, redamkan(0, "ur_d2"), tambah(idx(SUARA_R4, "tambah"), uraian("ur", 160, "300 + 40 + 5 = 345", 15))),
-    k(SUARA_R5, tambah("Itulah", ...kartu("bu", 50, 172, 200, 24, W.emas, ["bentuk uraian"], 11))),
+    k(
+      SUARA_U2,
+      bersih(0),
+      tambah(0, judul("Jumlah Tiga Bagian"), ...tokoDepan("dn"), ...labelHarga("lb", 100, 44, 100, 36, "246", 22)),
+      tambah("jumlah", teks("p1", 116, 118, "+", 16, W.biru, { z: 3 }), teks("p2", 186, 118, "+", 16, W.biru, { z: 3 })),
+      tambah("ratusan,", ...kotakTempat("p0", 40, 100, 66, 30, "Ratusan", "r", 9)),
+      tambah("puluhan,", ...kotakTempat("p1b", 124, 100, 66, 30, "Puluhan", "p", 9)),
+      tambah("satuannya.", ...kotakTempat("p2b", 208, 100, 66, 30, "Satuan", "s", 9)),
+    ),
+    k(
+      SUARA_U3,
+      bersih(0),
+      tambah(0, judul("Menguraikan Bilangan"), ...tokoDepan("dn")),
+      tambah("bilangan", ...labelHarga("lb", 100, 44, 100, 40, "836", 26)),
+      tambah(10, teks("e0", 56, 128, "800", 16, WARNA_TULIS.r, { z: 3 })),
+      tambah(13, teks("p1", 92, 128, "+", 16, W.biru, { z: 3 }), teks("e1", 124, 128, "30", 16, WARNA_TULIS.p, { z: 3 })),
+      tambah("enam.", teks("p2", 158, 128, "+", 16, W.biru, { z: 3 }), teks("e2", 184, 128, "6", 16, WARNA_TULIS.s, { z: 3 })),
+    ),
+    k(
+      SUARA_U4,
+      bersih(0),
+      tambah(0, judul("Nol Tetap Ditulis"), ...tokoDepan("dn"), ...labelHarga("lb", 100, 44, 100, 36, "705", 22)),
+      tambah("Nol", angka("z", 150, 116, "0", "p", 40)),
+      tambah("dituliskan", teks("e0", 56, 150, "700", 14, WARNA_TULIS.r, { z: 3 }), teks("p1", 92, 150, "+", 14, W.biru, { z: 3 }), teks("e1", 116, 150, "0", 14, WARNA_TULIS.p, { z: 3 }), teks("p2", 140, 150, "+", 14, W.biru, { z: 3 }), teks("e2", 164, 150, "5", 14, WARNA_TULIS.s, { z: 3 })),
+      tambah("kosong.", kotak("ks", 130, 92, 40, 32, W.krem, W.merah, { rx: 4, tebal: 2, putus: true, z: 1 })),
+    ),
   ],
 };
 
-/* ------------------------------ 7. Bentuk Uraian: terapan ------------------------------ */
-const UT = papan("ut", "528", { y0: 70, h: 40, u: 26, nilaiY: 124 });
-const SUARA_W1 = "Terapkan Bentuk Uraian pada bilangan lima ratus dua puluh delapan.";
-const SUARA_W2 = "Nilai lima ratus dan dua puluh sudah ada. Berapa nilai yang kurang? Ketuk jawabannya. Delapan, delapan puluh, atau delapan ratus?";
-const SUARA_W3 = "Betul! Angka delapan ada di satuan, jadi nilainya delapan.";
-const SUARA_W4 = "Jadi lima ratus tambah dua puluh tambah delapan sama dengan lima ratus dua puluh delapan.";
+/* ------------------------------ Expanded Form: terapan ------------------------------ */
+const SUARA_V1 = "Salsa menguraikan sembilan ratus lima: sembilan ratus ditambah nol ditambah lima.";
+const SUARA_V2 = "Lalu ia menjumlahkan lagi dan kembali ke sembilan ratus lima.";
+const SUARA_V3 = "Cocok untuk memeriksa apakah sebuah bilangan sudah disusun benar.";
+const SUARA_V4 = "Kurang cocok untuk membaca bilangan cepat, karena menulisnya panjang.";
 
 export const ADEGAN_LUAR_URAIAN_TERAPAN: AdeganStory = {
   id: "luar-uraian-terapan",
-  judul: "Bentuk Uraian: bilangan lima ratus dua puluh delapan",
-  sumber: "Metode luar: Bentuk Uraian, terapan",
-  latar: "#FDF2F8",
+  judul: "Expanded Form dipakai pada 905",
+  sumber: "Metode global: Expanded Form (terapan)",
+  latar: "#EEF2FF",
   ketukan: [
     k(
-      SUARA_W1,
-      tambah("Terapkan", ...kepala(2)),
-      tambah("pada", ...UT.dasar),
-      tambah("lima", UT.digit(0), UT.nilai(0)),
-      tambah("dua", UT.digit(1), UT.nilai(1)),
-      tambah("delapan.", UT.digit(2), uraian("ut", 144, "500 + 20 + ?", 13)),
+      SUARA_V1,
+      bersih(0),
+      tambah(0, judul("Menguraikan 905"), ...tokoDepan("dn"), ...tokoh("sl", 44, 172, "Salsa")),
+      tambah("lima:", ...labelHarga("lb", 100, 44, 100, 40, "905", 26)),
+      tambah("ratus@2", teks("e0", 80, 128, "900", 16, WARNA_TULIS.r, { z: 3 })),
+      tambah("nol", teks("p1", 116, 128, "+", 16, W.biru, { z: 3 }), teks("e1", 140, 128, "0", 16, WARNA_TULIS.p, { z: 3 })),
+      tambah("lima@2", teks("p2", 168, 128, "+", 16, W.biru, { z: 3 }), teks("e2", 192, 128, "5", 16, WARNA_TULIS.s, { z: 3 })),
     ),
-    k(SUARA_W2, tambah("Berapa", ...pilihan(154, ["8", "80", "800"]))),
-    k(SUARA_W3, sorotkan("Betul!", "c1-k"), tambah("nilainya", UT.nilai(2)), ubah("nilainya", { id: "ut_u", isi: "500 + 20 + 8 = 528" })),
-    k(SUARA_W4, redamkan(0, "c1-k"), tambah("Jadi", emo("ok", 262, 62, "✅", 22))),
+    k(
+      SUARA_V2,
+      bersih(0),
+      tambah(0, judul("Dijumlahkan Lagi"), ...tokoDepan("dn"), ...tokoh("sl", 44, 172, "Salsa")),
+      tambah("menjumlahkan", teks("e0", 80, 70, "900", 16, WARNA_TULIS.r, { z: 3 }), teks("p1", 116, 70, "+", 16, W.biru, { z: 3 }), teks("e1", 140, 70, "0", 16, WARNA_TULIS.p, { z: 3 }), teks("p2", 168, 70, "+", 16, W.biru, { z: 3 }), teks("e2", 192, 70, "5", 16, WARNA_TULIS.s, { z: 3 })),
+      tambah("kembali", panah("pn", 150, 84, 0, 16, W.ungu, 2.6)),
+      tambah("lima.", ...labelHarga("lb", 100, 104, 100, 40, "905", 26), emo("ok", 222, 126, E.benar, 20)),
+    ),
+    k(
+      SUARA_V3,
+      bersih(0),
+      tambah(0, judul("Cocok Dipakai"), ...tokoDepan("dn")),
+      tambah("Cocok", ...kartuCocok("cc", 56, ["Cocok untuk memeriksa", "susunan bilangan"])),
+      tambah("memeriksa", emo("kc", 150, 140, E.kaca, 28)),
+      tambah("benar.", emo("ok2", 210, 140, E.benar, 24)),
+    ),
+    k(
+      SUARA_V4,
+      tambah("Kurang", ...kartuKurang("kc", 100, ["Kurang cocok untuk", "membaca cepat"])),
+      tambah("cepat,", emo("cp", 80, 164, "\u{23E9}", 22)),
+      tambah("panjang.", teks("pj", 196, 160, "900 + 0 + 5", 12, W.biru, { z: 2 })),
+    ),
   ],
 };
 
-/* ------------------------------ 8. Ringkasan ------------------------------ */
-const SUARA_Y1 = "Mari kita ingat tiga metode dari luar tadi.";
-const SUARA_Y2 = "Nilai Tempat. Nilai sebuah angka bergantung pada tempatnya.";
-const SUARA_Y3 = "Kartu Angka Montessori. Ambil satu kartu untuk tiap kotak, lalu susun bilangannya.";
-const SUARA_Y4 = "Bentuk Uraian. Bilangan sama dengan jumlah nilai tiap tempat. Sampai jumpa!";
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita lihat. Mana yang pas tergantung kebutuhan.";
+const SUARA_R2 = "Ingin tahu jumlah satu angka, pakai Tempat Angka. Ingin menyusun dengan tangan, pakai Kartu Angka Montessori.";
+const SUARA_R3 = "Ingin memeriksa susunan bilangan, pakai Bentuk Uraian. Apa pun caranya, tempat menentukan jumlah.";
+const SUARA_R4 = "Menurutmu, untuk membuat label harga tiga angka, cara mana yang kamu pilih?";
+const BARIS_Y = [46, 82, 118];
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Metode luar: ringkasan",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan: memilih cara yang pas",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_Y1, tambah(0, judul("Ringkasan"), emo("ow", 150, 110, OWL, 50))),
-    k(SUARA_Y2, hapus(0, "ow"), tambah("Nilai", ...kartu("r0", 14, 40, 272, 44, W.hijauMuda, [`1. ${NAMA_METODE_ID[0]}`, "nilai bergantung tempat"], 10))),
-    k(SUARA_Y3, tambah("Kartu", ...kartu("r1", 14, 94, 272, 44, W.langit, [`2. ${NAMA_METODE_ID[1]}`, "satu kartu tiap kotak"], 10))),
-    k(SUARA_Y4, tambah("Bentuk", ...kartu("r2", 14, 148, 272, 44, W.pink, [`3. ${NAMA_METODE_ID[2]}`, "jumlah nilai tiap tempat"], 10))),
+    k(
+      SUARA_R1,
+      bersih(0),
+      tambah(0, judul("Tiga Cara"), ...tokoDepan("dn")),
+      tambah("Tiga", teks("n3", 252, 52, "3 cara", 10, W.ungu, { z: 2 })),
+      tambah("sudah", teks("r0", 120, 70, "1. Tempat Angka", 13, W.biru, { z: 2 }), teks("r1", 120, 110, "2. Kartu Angka Montessori", 13, W.biru, { z: 2 }), teks("r2", 120, 150, "3. Bentuk Uraian", 13, W.biru, { z: 2 })),
+      tambah("Mana", emo("tz", 262, 112, E.tanya, 26)),
+      tambah("kebutuhan.", emo("kl", 262, 150, E.kilau, 20)),
+    ),
+    k(
+      SUARA_R2,
+      bersih(0),
+      tambah(0, judul("Pilih yang Pas"), ...tokoDepan("dn")),
+      tambah("jumlah", ...kartu("a0", 14, BARIS_Y[0], 122, 30, W.krem, ["jumlah 1 angka"], 9, { z: 1 })),
+      tambah("Tempat", ...kartu("b0", 148, BARIS_Y[0], 138, 30, W.hijauMuda, ["Tempat Angka"], 10, { z: 1 })),
+      tambah("menyusun", ...kartu("a1", 14, BARIS_Y[1], 122, 30, W.krem, ["menyusun dengan tangan"], 7.6, { z: 1 })),
+      tambah("Kartu", ...kartu("b1", 148, BARIS_Y[1], 138, 30, W.hijauMuda, ["Kartu Angka Montessori"], 8.6, { z: 1 })),
+    ),
+    k(
+      SUARA_R3,
+      tambah("memeriksa", ...kartu("a2", 14, BARIS_Y[2], 122, 30, W.krem, ["memeriksa susunan"], 9, { z: 1 })),
+      tambah("Bentuk", ...kartu("b2", 148, BARIS_Y[2], 138, 30, W.hijauMuda, ["Bentuk Uraian"], 10, { z: 1 })),
+      tambah("tempat", ...kartu("sm", 40, 160, 220, 26, W.lavender, ["tempat menentukan jumlah"], 9.5, { z: 1 })),
+      tambah("jumlah.", emo("kl", 276, 174, E.kilau, 20)),
+    ),
+    k(
+      SUARA_R4,
+      bersih(0),
+      tambah(0, judul("Pilihanmu"), ...tokoDepan("dn")),
+      tambah("label", ...labelHarga("lb", 100, 44, 100, 40, "_ _ _", 22)),
+      tambah("tiga", teks("n3", 150, 100, "3 angka", 10, W.ungu, { z: 2 })),
+      tambah("cara", ...kotakTempat("o0", 22, 122, 80, 28, "Tempat Angka", "r", 8.4), ...kotakTempat("o1", 110, 122, 80, 28, "Kartu Montessori", "p", 7.6), ...kotakTempat("o2", 198, 122, 80, 28, "Bentuk Uraian", "s", 8.4)),
+      tambah("pilih?", emo("qq", 150, 168, E.tanya, 28)),
+    ),
   ],
 };

@@ -1,113 +1,150 @@
-import type { AdeganStory } from "./logika-story";
-import { W, emo, idTitikKolom, istilah, judul, kartu, namaIstilah, ringkasKb, teks, titik } from "./k3b1G-gambar";
-import { hapus, idx, k, langkah, redamkan, sorotkan, tambah } from "./k3b1G-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, emo, judul, kartu, konfeti, kotak, manik, spanduk, teks, tokoLatar, tokoh, tumpukan } from "./k3b1G-gambar";
+import { bersih, hapus, k, tambah, ubah } from "./k3b1G-bantu";
 
-/* ------------------------------ 8. Nama tiap bilangan ------------------------------ */
-const IST = istilah(15, 3, 5);
-const SUARA_N1 = "Mari kita kenali nama tiap bilangan dalam pembagian. Ini pembagian lima belas dibagi tiga sama dengan lima.";
-const SUARA_N2 = "Lima belas adalah bilangan yang dibagi, yaitu seluruh benda yang akan dibagikan.";
-const SUARA_N3 = "Tiga adalah pembagi, yaitu banyak bagian yang menerima benda itu.";
-const SUARA_N4 = "Lima adalah hasil bagi, yaitu banyak benda yang diterima tiap bagian.";
-const SUARA_N5 = "Ingat, hasil bagi dikali pembagi sama dengan bilangan yang dibagi. Lima kali tiga sama dengan lima belas.";
-const SUARA_N6 = "Sekarang kita bisa menyebut tiap bilangan dengan nama yang tepat.";
+/*
+ * Cerita orisinal IGIL "Pesta Hari Jadi Toko" (Kelas 3 Bab 1 Sub-Bab G), akhir cerita Toko Kelontong Pak Joko.
+ * Naskah suara dari naskah/story-naskah-k3b1g.md. Bagian ini: cerita manik Nenek Ijah, periksa dengan kali, dan penutup (taruhan, spanduk, perayaan).
+ */
 
-export const ADEGAN_NAMA_BILANGAN: AdeganStory = {
-  id: "nama-bilangan",
-  judul: "Nama tiap bilangan dalam pembagian",
-  sumber: "Materi: bilangan dalam pembagian",
-  latar: "#EFF6FF",
+/* ------------------------------ 7. Cerita bagi ------------------------------ */
+const mulaiManik = (q: number): [number, number] => [116 + (q % 5) * 17, 64 + Math.floor(q / 5) * 11];
+const manikMangkuk = (): Obj[] => Array.from({ length: 15 }, (_, q) => manik(`mb${q}`, mulaiManik(q)[0], mulaiManik(q)[1], q));
+const idManikMangkuk = (): string[] => Array.from({ length: 15 }, (_, q) => `mb${q}`);
+const PLAT_X = [66, 126, 186];
+const piring = (): Obj[] => PLAT_X.map((x, i) => kotak(`pl${i}`, x, 138, 54, 14, W.putih, W.biru, { rx: 7, tebal: 1.6, z: 1 }));
+const manikPiring = (): Obj[] => PLAT_X.flatMap((x, i) => Array.from({ length: 5 }, (_, j) => manik(`pb${i}${j}`, x + 8 + j * 9.5, 144, i * 5 + j, 3.8)));
+
+const SUARA_G1 = "Nenek Ijah membawa lima belas manik-manik gelang untuk dibagi sama banyak ke tiga cucunya.";
+const SUARA_G2 = "Lima belas dibagi tiga. Tiga kali berapa sama dengan lima belas? Tiga kali lima.";
+const SUARA_G3 = "Tiap cucu mendapat lima manik-manik.";
+
+export const ADEGAN_CERITA_BAGI: AdeganStory = {
+  id: "soal-cerita-bagi",
+  judul: "Manik-manik Nenek Ijah",
+  sumber: "Materi: cerita pembagian",
+  latar: "#FFF1F2",
+  ketukan: [
+    k(
+      SUARA_G1,
+      bersih(0),
+      tambah(0, judul("Manik Nenek Ijah"), ...tokoLatar("tk")),
+      tambah("Nenek", ...tokoh("nn", 36, 182, "Nenek Ijah", 26, "Nenek Ijah", 7)),
+      tambah("lima", kotak("bw", 100, 56, 100, 40, W.kayu, W.coklat, { rx: 8, tebal: 2, z: 1 }), teks("n15", 150, 48, "15 manik", 10, W.merah)),
+      tambah("manik-manik", ...manikMangkuk()),
+      tambah("tiga", ...piring(), teks("n3", 150, 112, "3 cucu", 10, W.coklat)),
+      tambah("cucunya.", ...PLAT_X.map((x, i) => emo(`cc${i}`, x + 27, 134, E.senyum, 20))),
+    ),
+    k(
+      SUARA_G2,
+      tambah(2, teks("kb", 244, 76, "15 : 3", 16, W.ungu)),
+      ubah(6, { id: "kb", isi: "3 × ? = 15" }),
+      tambah(6, emo("tz", 270, 100, E.tanya, 20)),
+      ubah(13, { id: "kb", isi: "3 × 5 = 15" }),
+    ),
+    k(
+      SUARA_G3,
+      hapus(0, "kb", "tz", ...idManikMangkuk()),
+      tambah("mendapat", ...manikPiring()),
+      tambah("lima", ...PLAT_X.map((x, i) => teks(`t5${i}`, x + 46, 128, "5", 14, W.merah))),
+      tambah("manik-manik.", teks("ka", 244, 70, "15 : 3 = 5", 14, W.ungu), teks("kc", 244, 90, "3 × 5 = 15", 14, W.ungu), emo("ok", 262, 112, E.benar, 20)),
+    ),
+  ],
+};
+
+/* ------------------------------ 8. Periksa dengan kali ------------------------------ */
+const SUARA_H1 = "Raka membagi tiga puluh enam permen untuk sembilan anak. Sembilan kali berapa sama dengan tiga puluh enam?";
+const SUARA_H2 = "Sembilan kali empat sama dengan tiga puluh enam, jadi tiap anak mendapat empat permen.";
+const SUARA_H3 = "Ia memeriksa dengan perkalian dan hasilnya cocok. Raka tersenyum bangga.";
+
+export const ADEGAN_PERIKSA_KALI: AdeganStory = {
+  id: "periksa-kali",
+  judul: "Raka memeriksa dengan perkalian",
+  sumber: "Materi: periksa pembagian dengan perkalian",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_H1,
+      bersih(0),
+      tambah(0, judul("Permen untuk Anak"), ...tokoLatar("tk")),
+      tambah("Raka", ...tokoh("rk", 36, 176, "Raka", 26, "Raka", 7)),
+      tambah("tiga", teks("n36", 150, 60, "36 permen", 14, W.merah), emo("pm", 68, 170, E.permen, 22)),
+      tambah("sembilan", teks("n9", 150, 84, "9 anak", 11, W.coklat), ...Array.from({ length: 9 }, (_, i) => emo(`an${i}`, 24 + i * 31, 120, E.senyum, 16))),
+      tambah("berapa", teks("kl", 150, 154, "9 × ? = 36", 18, W.ungu)),
+    ),
+    k(
+      SUARA_H2,
+      ubah(2, { id: "kl", isi: "9 × 4" }),
+      ubah(3, { id: "kl", isi: "9 × 4 =" }),
+      ubah(7, { id: "kl", isi: "9 × 4 = 36" }),
+      tambah(12, teks("t4", 150, 100, "tiap anak 4 permen", 10, W.hijau)),
+    ),
+    k(
+      SUARA_H3,
+      bersih(0),
+      tambah(0, judul("Periksa dengan Kali"), ...tokoLatar("tk")),
+      tambah("memeriksa", ...kartu("pa", 40, 48, 220, 24, W.hijauMuda, ["36 : 9 = 4"], 14)),
+      tambah("perkalian", ...kartu("pb", 40, 82, 220, 24, W.biruMuda, ["9 × 4 = 36"], 14)),
+      tambah("cocok.", emo("o1", 276, 66, E.benar, 20), emo("o2", 276, 100, E.benar, 20)),
+      tambah("Raka", ...tokoh("rk", 150, 176, "Raka", 28)),
+      tambah("tersenyum", emo("tw", 196, 150, E.tertawa, 24)),
+      tambah("bangga.", emo("sr", 104, 150, E.sorak, 26)),
+    ),
+  ],
+};
+
+/* ------------------------------ 9. Penutup ------------------------------ */
+const SUARA_N1 = "Raka menepati taruhannya dan membungkus ulang semua bingkisan, lalu pesta toko pun dimulai!";
+const SUARA_N2 = "Pak Joko menggantung spanduk besar. Kak Dewi, Bu Wati, Pak Dodi, Bu Tuti, Pak Anto, dan Bu Mirna bertepuk tangan.";
+const SUARA_N3 = "Menurutmu, bilangan apa lagi di toko yang bisa dibaca, dijumlah, dikurang, dikali, dan dibagi? Terima kasih, Raka, Salsa, Bima, Pak Joko, dan Nenek Ijah!";
+const TAMU_X = [34, 80, 126, 172, 218, 264];
+
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Taruhan Raka dan pesta toko",
+  sumber: "Materi: penutup dan perayaan pesta toko",
+  latar: "#FFFBEB",
   ketukan: [
     k(
       SUARA_N1,
-      tambah(0, judul("Nama tiap bilangan")),
-      tambah(idx(SUARA_N1, "lima", 1), IST[0]),
-      tambah(idx(SUARA_N1, "dibagi"), IST[1]),
-      tambah(idx(SUARA_N1, "tiga"), IST[2]),
-      tambah(idx(SUARA_N1, "sama"), IST[3]),
-      tambah(idx(SUARA_N1, "lima", 2), IST[4]),
+      bersih(0),
+      tambah(0, judul("Taruhan Raka"), ...tokoLatar("tk")),
+      tambah("Raka", ...tokoh("rk", 150, 176, "Raka", 30)),
+      tambah("menepati", emo("ok", 192, 146, E.benar, 20)),
+      tambah("membungkus", emo("gl", 104, 170, E.gulung, 28)),
+      tambah("bingkisan,", ...tumpukan("bk", 70, 112, 6, 6, 16, 24)),
+      tambah("pesta", emo("b1", 30, 90, E.balon, 28), emo("b2", 270, 90, E.balon, 28)),
+      tambah("dimulai!", ...konfeti("kf", 52, 10), emo("sr", 150, 80, E.sorak, 26)),
     ),
-    k(SUARA_N2, sorotkan(idx(SUARA_N2, "Lima"), "ist-a"), tambah(idx(SUARA_N2, "bilangan"), namaIstilah("a", "yang dibagi"))),
-    k(SUARA_N3, redamkan(0, "ist-a"), sorotkan(idx(SUARA_N3, "Tiga"), "ist-b"), tambah(idx(SUARA_N3, "pembagi,"), namaIstilah("b", "pembagi"))),
-    k(SUARA_N4, redamkan(0, "ist-b"), sorotkan(idx(SUARA_N4, "Lima"), "ist-c"), tambah(idx(SUARA_N4, "hasil"), namaIstilah("c", "hasil bagi"))),
-    k(SUARA_N5, redamkan(0, "ist-c"), tambah(idx(SUARA_N5, "Lima", 1), teks("pr", 150, 138, "5 × 3 = 15", 13, W.ungu))),
-    k(SUARA_N6, tambah(idx(SUARA_N6, "menyebut"), ...kartu("kn", 30, 158, 240, 30, W.emas, ["dibagi, pembagi, hasil bagi"], 11))),
-  ],
-};
-
-/* ------------------------------ 9. Titik, kali, dan bagi ------------------------------ */
-const SUARA_T1 = "Lima belas titik ini tersusun dalam tiga baris.";
-const SUARA_T2 = "Setiap baris berisi lima titik, dan semuanya ada lima belas.";
-const SUARA_T3 = "Titik itu kita bagi sama banyak ke tiga baris. Lima belas dibagi tiga sama dengan lima.";
-const SUARA_T4 = "Sekarang hitung dengan kali. Lima kali tiga sama dengan lima belas.";
-const SUARA_T5 = "Kalau titik itu dibagi ke lima kolom, tiap kolom berisi tiga titik. Lima belas dibagi lima sama dengan tiga.";
-const SUARA_T6 = "Jadi perkalian dan pembagian selalu berkaitan erat.";
-
-export const ADEGAN_TITIK_KALI_BAGI: AdeganStory = {
-  id: "titik-kali-bagi",
-  judul: "Titik, kali, dan bagi",
-  sumber: "Materi: hubungan kali dan bagi",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(SUARA_T1, tambah(0, judul("Titik tersusun rapi")), tambah(idx(SUARA_T1, "titik"), ...titik(3, 5)), tambah(idx(SUARA_T1, "baris."), teks("ar-b", 38, 78, "3 baris", 10, W.ungu))),
-    k(SUARA_T2, tambah(idx(SUARA_T2, "lima", 1), teks("ar-k", 150, 126, "tiap baris 5", 10, W.ungu))),
-    k(SUARA_T3, tambah(idx(SUARA_T3, "Lima", 1), teks("hb", 150, 150, "15 : 3 = 5", 12, W.merah))),
-    k(SUARA_T4, tambah(idx(SUARA_T4, "Lima"), teks("pr", 150, 168, "5 × 3 = 15", 12, W.ungu))),
-    k(SUARA_T5, sorotkan(idx(SUARA_T5, "kolom,"), ...idTitikKolom(3, 0)), tambah(idx(SUARA_T5, "Lima", 1), teks("hb2", 150, 186, "15 : 5 = 3", 12, W.merah))),
-    k(SUARA_T6, redamkan(0, ...idTitikKolom(3, 0)), tambah(idx(SUARA_T6, "berkaitan"), emo("lk", 262, 168, "\u{1F517}", 24))),
-  ],
-};
-
-/* ------------------------------ 10. Kali dan bagi berpasangan ------------------------------ */
-const SUARA_F1 = "Tiga bilangan itu, yaitu tiga, lima, dan lima belas, saling berkaitan.";
-const SUARA_F2 = "Pertama, tiga kali lima sama dengan lima belas.";
-const SUARA_F3 = "Kedua, lima kali tiga sama dengan lima belas.";
-const SUARA_F4 = "Ketiga, lima belas dibagi tiga sama dengan lima.";
-const SUARA_F5 = "Keempat, lima belas dibagi lima sama dengan tiga.";
-const SUARA_F6 = "Empat kalimat itu memakai tiga bilangan yang sama. Kali dan bagi berpasangan.";
-
-const kalimat = (i: number, isi: string, warna: string) => kartu(`kf${i}`, 40, 66 + (i - 1) * 32, 220, 28, warna, [isi], 14);
-
-export const ADEGAN_KALI_DAN_BAGI: AdeganStory = {
-  id: "kali-dan-bagi",
-  judul: "Kali dan bagi berpasangan",
-  sumber: "Materi: kali dan bagi berpasangan",
-  latar: "#F5F3FF",
-  ketukan: [
     k(
-      SUARA_F1,
-      tambah(0, judul("Kali dan bagi berpasangan")),
-      tambah(idx(SUARA_F1, "tiga", 2), teks("kfn-1", 80, 50, "3", 20, W.biru)),
-      tambah(idx(SUARA_F1, "lima,"), teks("kfn-2", 150, 50, "5", 20, W.biru)),
-      tambah(idx(SUARA_F1, "lima", 2), teks("kfn-3", 220, 50, "15", 20, W.biru)),
+      SUARA_N2,
+      bersih(0),
+      tambah(0, ...tokoLatar("tk")),
+      tambah("Joko", ...tokoh("pj", 207, 176, "Pak Joko", 24, "Pak Joko", 6.5)),
+      tambah("spanduk", ...spanduk("sp", 15, 22, 270, "OBRAL HARI JADI TOKO MERIAH", 11)),
+      tambah("Dewi,", ...tokoh("t0", TAMU_X[0], 122, "Kak Dewi", 20, "Dewi", 6)),
+      tambah("Wati,", ...tokoh("t1", TAMU_X[1], 122, "Bu Wati", 20, "Wati", 6)),
+      tambah("Dodi,", ...tokoh("t2", TAMU_X[2], 122, "Pak Dodi", 20, "Dodi", 6)),
+      tambah("Tuti,", ...tokoh("t3", TAMU_X[3], 122, "Bu Tuti", 20, "Tuti", 6)),
+      tambah("Anto,", ...tokoh("t4", TAMU_X[4], 122, "Pak Anto", 20, "Anto", 6)),
+      tambah("Mirna", ...tokoh("t5", TAMU_X[5], 122, "Bu Mirna", 20, "Mirna", 6)),
+      tambah("tangan.", emo("tp0", 80, 92, E.tepuk, 20), emo("tp1", 150, 92, E.tepuk, 20), emo("tp2", 220, 92, E.tepuk, 20)),
     ),
-    k(SUARA_F2, tambah(idx(SUARA_F2, "tiga"), ...kalimat(1, "3 × 5 = 15", W.hijauMuda))),
-    k(SUARA_F3, tambah(idx(SUARA_F3, "lima"), ...kalimat(2, "5 × 3 = 15", W.hijauMuda))),
-    k(SUARA_F4, tambah(idx(SUARA_F4, "lima"), ...kalimat(3, "15 : 3 = 5", W.pink))),
-    k(SUARA_F5, tambah(idx(SUARA_F5, "lima", 2), ...kalimat(4, "15 : 5 = 3", W.pink))),
-    k(SUARA_F6, sorotkan(idx(SUARA_F6, "Empat"), "kf1-k", "kf2-k", "kf3-k", "kf4-k")),
+    k(
+      SUARA_N3,
+      hapus(0, "tp0", "tp1", "tp2"),
+      tambah(0, emo("pk", 150, 100, E.pikir, 24)),
+      tambah("dibaca,", teks("o0", 50, 78, "123", 16, W.biru)),
+      tambah("dijumlah,", teks("o1", 100, 78, "+", 18, W.merah)),
+      tambah("dikurang,", teks("o2", 150, 78, "-", 18, W.hijau)),
+      tambah("dikali,", teks("o3", 200, 78, "×", 18, W.ungu)),
+      tambah("dibagi?", teks("o4", 250, 78, ":", 18, W.oranye)),
+      tambah("Raka,", ...tokoh("rk", 36, 176, "Raka", 24, "Raka", 6.5)),
+      tambah("Salsa,", ...tokoh("sl", 93, 176, "Salsa", 24, "Salsa", 6.5)),
+      tambah("Bima,", ...tokoh("bm", 150, 176, "Bima", 24, "Bima", 6.5)),
+      tambah("Nenek", ...tokoh("nn", 264, 176, "Nenek Ijah", 24, "Nenek Ijah", 6.5)),
+      tambah("Ijah!", ...konfeti("kf", 52, 10), emo("b1", 20, 96, E.balon, 22), emo("b2", 282, 96, E.balon, 22), emo("lb", 207, 146, E.lambai, 18)),
+    ),
   ],
 };
 
-/* ------------------------------ 11. Contoh bilangan lebih besar ------------------------------ */
-const KB = { y0: 80, dy: 14 };
-const SUARA_D1 = "Sekarang kita coba bilangan yang lebih besar. Berapa dua puluh delapan dibagi tujuh?";
-const SUARA_D2 = "Kita kurangi tujuh berulang kali. Dua puluh delapan dikurangi tujuh sama dengan dua puluh satu.";
-const SUARA_D3 = "Dua puluh satu dikurangi tujuh sama dengan empat belas. Empat belas dikurangi tujuh sama dengan tujuh.";
-const SUARA_D4 = "Tujuh dikurangi tujuh sama dengan nol. Kita mengurangi tujuh sebanyak empat kali.";
-const SUARA_D5 = "Jadi dua puluh delapan dibagi tujuh sama dengan empat.";
-const SUARA_D6 = "Periksa dengan kali. Empat kali tujuh sama dengan dua puluh delapan.";
-
-export const ADEGAN_CONTOH_DUA_DELAPAN: AdeganStory = {
-  id: "contoh-dua-delapan",
-  judul: "Contoh bilangan yang lebih besar",
-  sumber: "Materi: pembagian bilangan besar",
-  latar: "#ECFDF5",
-  ketukan: [
-    k(SUARA_D1, tambah(0, judul("Bilangan lebih besar")), tambah(idx(SUARA_D1, "Berapa"), teks("tq", 150, 54, "28 : 7 = ?", 20, W.ungu))),
-    k(SUARA_D2, ...langkah(idx(SUARA_D2, "Dua", 1), 1, 28, 7, undefined, KB)),
-    k(SUARA_D3, ...langkah(idx(SUARA_D3, "empat"), 2, 28, 7, undefined, KB), ...langkah(idx(SUARA_D3, "tujuh.", 3), 3, 28, 7, undefined, KB)),
-    k(SUARA_D4, ...langkah(idx(SUARA_D4, "nol."), 4, 28, 7, undefined, KB), tambah(idx(SUARA_D4, "empat"), ringkasKb(7, 4, 140))),
-    k(SUARA_D5, hapus(0, "tq"), tambah(0, teks("hb", 150, 160, "28 : 7 = 4", 12, W.merah))),
-    k(SUARA_D6, tambah(idx(SUARA_D6, "Empat"), teks("pr", 150, 180, "4 × 7 = 28", 12, W.ungu))),
-  ],
-};

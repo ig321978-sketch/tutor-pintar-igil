@@ -1,134 +1,142 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { OWL, W, emo, judul, kartu, susun, teks } from "./k3b1D-gambar";
-import { E, bersih, e, hapus, idPilihan, idx, k, pilihKata, redamkan, sorotkan, tambah } from "./k3b1D-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, bulat, emo, garis, judul, kapur, kartu, kotak, lantaiToko, meja, papanKapur, susunTeks, teks, tokoh } from "./k3b1D-gambar";
+import { bersih, k, sorotkan, tambah, ubah } from "./k3b1D-bantu";
 
-export const NAMA_METODE_ID = ["Penjumlahan Bersusun", "Pasangan Bilangan", "Menghitung Maju"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/*
+ * Cerita orisinal IGIL "Pesanan Bu Tuti" (Kelas 3 Bab 1 Sub-Bab D), video metode global.
+ * Naskah suara dari naskah/story-naskah-k3b1d.md. Bagian ini: pembuka (tiga lembar catatan hitung lama), Standard Addition (Penjumlahan Bersusun), terapannya, dan penolong "cocok / kurang cocok".
+ */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Standard Addition", "Number Bond", "Counting On"] as const;
+export const NAMA_METODE_ID = ["Penjumlahan Bersusun", "Pasangan Bilangan", "Menghitung Maju"] as const;
 
-const cap = (isi: string) => teks("cp", 150, 198, isi, 10.5, W.merah);
+const KUNING_KARTU = "#FEF3C7";
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara punya cara lain untuk belajar penjumlahan. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu bernama Penjumlahan Bersusun, Pasangan Bilangan, dan Menghitung Maju.";
-const SUARA_O3 = "Semua metode ini menjawab satu pertanyaan. Bagaimana cara menjumlahkan dengan cepat dan tepat?";
-const SUARA_O4 = "Kita memakai gambar di layar. Kamu cukup mengetuk, melihat dengan teliti, dan memilih jawaban.";
-const SUARA_O5 = "Ada yang menjumlahkan dari satuan, ada yang memecah bilangan, dan ada yang maju selangkah demi selangkah. Siap? Ayo kita mulai dengan metode pertama.";
+/**
+ * Ketukan "cocok" (tanda benar) atau "kurang cocok" (tanda salah): satu kartu dua baris. `atKata` memicu catatan kecil di bawah kartu.
+ * Dipakai ketiga metode global.
+ */
+export const ketukanCocok = (suara: string, cocok: boolean, judulTeks: string, baris: [string, string], catatan: string, atKata: string) =>
+  k(
+    suara,
+    bersih(0),
+    tambah(0, judul(judulTeks, cocok ? W.hijauTua : W.merah), emo("tn", 150, 72, cocok ? E.benar : E.salah, 34), ...kartu("cc", 60, 92, 180, 58, cocok ? W.hijauMuda : W.merahMuda, baris, 11)),
+    tambah(atKata, teks("hn", 150, 178, catatan, 9, W.ungu)),
+  );
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Di bawah meja pesanan, Salsa menemukan tiga lembar catatan hitung lama milik pedagang kue.";
+const SUARA_O2 = "Bu Tuti berkata, itu tiga cara menjumlah yang dipakai pedagang agar cepat dan tidak salah.";
+const SUARA_O3 = "Tiga cara itu: Standard Addition, Number Bond, dan Counting On.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Penjumlahan Bersusun, Pasangan Bilangan, dan Menghitung Maju.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk penjumlahan",
-  sumber: "Metode luar: pembuka",
+  judul: "Tiga lembar catatan hitung lama",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah(idx(SUARA_O1, "negara"), emo("gl", 150, 110, "\u{1F30D}", 50)), tambah(idx(SUARA_O1, "tiga"), ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11))),
+    k(
+      SUARA_O1,
+      tambah(0, judul("Lembar Catatan Lama"), ...lantaiToko("lt", 150)),
+      tambah("meja", ...meja("mj", 80, 60, 140, 40)),
+      tambah("Salsa", ...tokoh("sl", 44, 184, "Salsa")),
+      tambah("tiga", teks("n3", 150, 46, "3 lembar", 10, W.ungu)),
+      tambah("lembar", ...[0, 1, 2].flatMap((i) => kartu(`c${i}`, 112 + i * 30, 122, 26, 32, KUNING_KARTU, ["catatan"], 5))),
+    ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      tambah(idx(SUARA_O2, "Penjumlahan"), ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah(idx(SUARA_O2, "Pasangan"), ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "Menghitung"), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      tambah("Tuti", ...tokoh("bt", 256, 184, "Bu Tuti")),
+      ubah("tiga", { id: "n3", isi: "3 cara" }),
+      sorotkan("cara", "c0-k", "c1-k", "c2-k"),
+      tambah("cepat", emo("ok", 226, 124, E.benar, 22)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah(idx(SUARA_O3, "satu"), emo("i1", 60, 84, "➕", 34), emo("i2", 150, 84, "❓", 34), emo("i3", 240, 84, "\u{1F440}", 34)),
-      tambah(idx(SUARA_O3, "Bagaimana"), ...kartu("iq", 20, 112, 260, 52, W.emas, ["bagaimana cara menjumlahkan", "dengan cepat dan tepat?"], 10)),
+      tambah(0, judul("Tiga Cara Menjumlah"), teks("n3", 262, 40, "3 cara", 10, W.ungu)),
+      tambah("Standard", teks("m0", 150, 66, "1. Standard Addition", 12, W.biru), garis("ma1", 24, 58, 28, 0, W.biru, 2), garis("ma2", 24, 66, 28, 0, W.biru, 2), garis("ma3", 24, 74, 28, 0, W.merah, 2)),
+      tambah("Number", teks("m1", 150, 116, "2. Number Bond", 12, W.biru), bulat("mb0", 38, 100, 6, W.krem, W.biru), garis("mb1", 38, 106, -10, 14, W.biru, 1.4), garis("mb2", 38, 106, 10, 14, W.biru, 1.4), bulat("mb3", 28, 124, 4, W.pink, W.biru), bulat("mb4", 48, 124, 4, W.pink, W.biru)),
+      tambah("Counting", teks("m2", 150, 166, "3. Counting On", 12, W.biru), garis("mc1", 22, 170, 36, 0, W.biru, 1.6), bulat("mc2", 22, 170, 2.5, W.merah, W.merah), bulat("mc3", 40, 170, 2.5, W.merah, W.merah), bulat("mc4", 58, 170, 2.5, W.merah, W.merah)),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Alat bantu hari ini")),
-      tambah(idx(SUARA_O4, "layar."), emo("a1", 70, 100, "\u{1F4E6}", 36), emo("a2", 150, 100, "\u{1F522}", 36), emo("a3", 230, 100, "\u{1F4CF}", 36)),
-      tambah(idx(SUARA_O4, "mengetuk,"), emo("tg", 150, 150, "\u{1F446}", 24)),
-      tambah(idx(SUARA_O4, "memilih"), teks("al-t", 150, 184, "ketuk, lihat, lalu pilih", 10, W.ungu)),
+      tambah("Penjumlahan", teks("g0", 235, 80, "Penjumlahan Bersusun", 9, W.ungu)),
+      tambah("Pasangan", teks("g1", 235, 130, "Pasangan Bilangan", 9, W.ungu)),
+      tambah("Menghitung", teks("g2", 235, 180, "Menghitung Maju", 9, W.ungu)),
+    ),
+  ],
+};
+
+/* ------------------------------ Standard Addition: konsep ------------------------------ */
+const SUARA_C1 = "Cara pertama, Standard Addition, atau Penjumlahan Bersusun.";
+const SUARA_C2 = "Bilangan ditulis bersusun, puluhan lurus dengan puluhan dan satuan lurus dengan satuan.";
+const SUARA_C3 = "Jumlahkan dari satuan. Kalau lebih dari sembilan, simpan satu puluhan.";
+const SUARA_C4 = "Lalu jumlahkan puluhan beserta simpanannya.";
+
+export const ADEGAN_LUAR_SUSUN: AdeganStory = {
+  id: "luar-susun",
+  judul: "Standard Addition: Penjumlahan Bersusun",
+  sumber: "Metode global: Standard Addition",
+  latar: "#ECFDF5",
+  ketukan: [
+    k(
+      SUARA_C1,
+      tambah(0, judul("Penjumlahan Bersusun"), papanKapur("pk", 30, 28, 240, 150)),
+      tambah("Standard", kapur("nm", 150, 46, "Standard Addition", 11, { warna: W.emas })),
+      tambah("Penjumlahan", ...susunTeks("ls", 42, 31, 170, 76)),
     ),
     k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Dari satuan, pasangan, dan maju")),
-      tambah(idx(SUARA_O5, "satuan,"), teks("kt0", 150, 70, "dari satuan", 14, W.ungu)),
-      tambah(idx(SUARA_O5, "memecah"), teks("kt1", 150, 100, "memecah bilangan", 14, W.ungu)),
-      tambah(idx(SUARA_O5, "maju"), teks("kt2", 150, 130, "maju selangkah", 14, W.ungu)),
-      tambah(idx(SUARA_O5, "pertama."), emo("ow", 150, 182, OWL, 30)),
+      SUARA_C2,
+      sorotkan("bersusun,", "ls-a", "ls-b"),
+      tambah("puluhan", kotak("kc-t", 149, 60, 11, 76, "#60A5FA", undefined, { op: 0.35, z: 1, rx: 2, tebal: 0 }), teks("kp", 160, 160, "puluhan", 8, "#93C5FD", { anchor: "end", z: 3 })),
+      tambah("satuan", kotak("kc-s", 160, 60, 11, 76, "#FBBF24", undefined, { op: 0.35, z: 1, rx: 2, tebal: 0 }), teks("ks", 162, 160, "satuan", 8, "#FCD34D", { anchor: "start", z: 3 })),
     ),
-  ],
-};
-
-/* ------------------------------ 2. Penjumlahan Bersusun: konsep ------------------------------ */
-const A1 = susun(35, 48, 14);
-const SUARA_B1 = "Metode pertama bernama Penjumlahan Bersusun. Bilangan disusun ke bawah, lalu dijumlahkan dari kolom satuan.";
-const SUARA_B2 = `Susun ${e(35)} dan ${e(48)} ke bawah. Satuan di bawah satuan, puluhan di bawah puluhan.`;
-const SUARA_B3 = `Mulai dari satuan. ${E(5)} ditambah ${e(8)} sama dengan ${e(13)}. Tulis ${e(3)}, simpan ${e(1)}.`;
-const SUARA_B4 = `Lalu puluhan. ${E(1)} ditambah ${e(3)} ditambah ${e(4)} sama dengan ${e(8)}.`;
-const SUARA_B5 = `Jadi ${e(35)} ditambah ${e(48)} sama dengan ${e(83)}. Metode ini selalu mulai dari satuan, dan menyimpan jika perlu.`;
-
-export const ADEGAN_LUAR_BERSUSUN: AdeganStory = {
-  id: "luar-bersusun",
-  judul: "Penjumlahan Bersusun: mulai dari satuan",
-  sumber: "Metode luar: Penjumlahan Bersusun",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(SUARA_B1, tambah(0, ...kepala(0)), tambah(idx(SUARA_B1, "Bilangan"), emo("bs", 150, 112, "\u{1F4CB}", 44))),
-    k(SUARA_B2, hapus(0, "bs"), tambah(0, ...A1.kepala()), tambah(idx(SUARA_B2, "Susun"), ...A1.atas()), tambah(idx(SUARA_B2, "dan"), ...A1.bawah())),
-    k(SUARA_B3, tambah(idx(SUARA_B3, "Mulai"), A1.sorS()), tambah(idx(SUARA_B3, "Lima"), A1.eqS()), tambah(idx(SUARA_B3, "Tulis"), A1.hSatuan()), tambah(idx(SUARA_B3, "simpan"), A1.sim())),
-    k(SUARA_B4, hapus(0, "ls-sor"), tambah(idx(SUARA_B4, "puluhan"), A1.sorT()), tambah(idx(SUARA_B4, "Satu"), A1.eqP()), tambah(idx(SUARA_B4, "delapan."), A1.hPuluhan())),
-    k(SUARA_B5, hapus(0, "ls-sor"), tambah(idx(SUARA_B5, "sama"), cap("35 + 48 = 83"))),
-  ],
-};
-
-/* ------------------------------ 3. Penjumlahan Bersusun: terapan ------------------------------ */
-const A2 = susun(26, 38, 14);
-const SUARA_R1 = `Terapkan pada soal ini. Kira menjumlahkan ${e(26)} dan ${e(38)} dengan penjumlahan bersusun.`;
-const SUARA_R2 = "Berapa jumlahnya? Ketuk jawaban yang tepat.";
-const SUARA_R3 = `Betul! Jumlahnya adalah ${e(64)}. Kita periksa langkahnya.`;
-const SUARA_R4 = `Satuan: ${e(6)} ditambah ${e(8)} sama dengan ${e(14)}. Puluhan: ${e(1)} ditambah ${e(2)} ditambah ${e(3)} sama dengan ${e(6)}.`;
-
-export const ADEGAN_LUAR_BERSUSUN_TERAPAN: AdeganStory = {
-  id: "luar-bersusun-terapan",
-  judul: "Penjumlahan Bersusun: soal Kira",
-  sumber: "Metode luar: Penjumlahan Bersusun",
-  latar: "#ECFCCB",
-  ketukan: [
-    k(SUARA_R1, tambah(0, ...kepala(0), ...A2.kepala()), tambah(idx(SUARA_R1, "Kira"), ...A2.atas()), tambah(idx(SUARA_R1, "dan"), ...A2.bawah())),
-    k(SUARA_R2, tambah(idx(SUARA_R2, "Berapa"), teks("tanya", 150, 156, "berapa jumlahnya?", 12, W.ungu)), tambah(idx(SUARA_R2, "jawaban"), ...pilihKata(162, ["54", "64", "74"], 16))),
-    k(SUARA_R3, sorotkan(idx(SUARA_R3, "Betul!"), "c2-k"), tambah(idx(SUARA_R3, "Jumlahnya"), cap("26 + 38 = 64"))),
     k(
-      SUARA_R4,
-      redamkan(0, "c2-k"),
-      hapus(0, "tanya", ...idPilihan(3)),
-      tambah(idx(SUARA_R4, "Satuan:"), A2.sorS()),
-      tambah(idx(SUARA_R4, "Enam"), A2.eqS()),
-      tambah(idx(SUARA_R4, "empat", 1), A2.hSatuan(), A2.sim()),
-      hapus(idx(SUARA_R4, "Puluhan:"), "ls-sor"),
-      tambah(idx(SUARA_R4, "Puluhan:"), A2.sorT()),
-      tambah(idx(SUARA_R4, "Satu"), A2.eqP()),
-      tambah(idx(SUARA_R4, "enam", 2), A2.hPuluhan()),
+      SUARA_C3,
+      ubah("satuan.", { id: "kc-s", op: 0.8 }),
+      tambah("Kalau", kapur("n9", 235, 90, "lebih dari 9", 10)),
+      tambah("simpan", kapur("sm", 235, 116, "simpan 1", 11, { warna: W.emas })),
+    ),
+    k(
+      SUARA_C4,
+      ubah("Lalu", { id: "kc-s", op: 0.35 }),
+      ubah("puluhan", { id: "kc-t", op: 0.8 }),
+      tambah("simpanannya.", teks("sim", 160, 60, "1", 11, W.merah, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 9. Ringkasan metode luar ------------------------------ */
-const SUARA_Y1 = "Mari kita ringkas tiga metode dari luar. Semuanya membantu kita menjumlahkan dengan tepat.";
-const SUARA_Y2 = "Metode Penjumlahan Bersusun, mulai dari satuan dan simpan jika perlu.";
-const SUARA_Y3 = "Metode Pasangan Bilangan, memecah bilangan supaya mudah dijumlah.";
-const SUARA_Y4 = "Metode Menghitung Maju, mulai dari bilangan besar lalu maju selangkah demi selangkah.";
-const SUARA_Y5 = "Pilih metode yang kamu suka, lalu periksa dengan metode lain. Hasilnya harus sama.";
+/* ------------------------------ Standard Addition: terapan ------------------------------ */
+const SUARA_T1 = "Raka menjumlah empat puluh tujuh dan tiga puluh enam. Tujuh ditambah enam tiga belas, simpan satu.";
+const SUARA_T2 = "Empat ditambah tiga ditambah satu delapan. Jumlahnya delapan puluh tiga.";
+const SUARA_T3 = "Cocok untuk bilangan dua angka yang tidak mudah dihitung di kepala.";
+const SUARA_T4 = "Kurang cocok untuk bilangan kecil yang bisa dihitung langsung.";
 
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Metode luar: ringkasan",
-  latar: "#FFF7ED",
+export const ADEGAN_LUAR_SUSUN_TERAPAN: AdeganStory = {
+  id: "luar-susun-terapan",
+  judul: "Penjumlahan Bersusun dalam pemakaian",
+  sumber: "Metode global: Standard Addition, terapan",
+  latar: "#ECFDF5",
   ketukan: [
-    k(SUARA_Y1, tambah(0, judul("Ringkasan")), tambah(idx(SUARA_Y1, "ringkas"), ...kartu("r0", 14, 34, 272, 30, W.emas, ["3 metode dari luar"], 11))),
-    k(SUARA_Y2, tambah(idx(SUARA_Y2, "Penjumlahan"), ...kartu("r1", 14, 72, 272, 34, WARNA_METODE[0], [NAMA_METODE_ID[0], "mulai dari satuan, simpan jika perlu"], 9.2))),
-    k(SUARA_Y3, tambah(idx(SUARA_Y3, "Pasangan"), ...kartu("r2", 14, 114, 272, 34, WARNA_METODE[1], [NAMA_METODE_ID[1], "pecah bilangan agar mudah dijumlah"], 9.2))),
-    k(SUARA_Y4, tambah(idx(SUARA_Y4, "Menghitung"), ...kartu("r3", 14, 156, 272, 34, WARNA_METODE[2], [NAMA_METODE_ID[2], "mulai dari yang besar, lalu maju"], 9.2))),
-    k(SUARA_Y5, bersih(0), tambah(0, judul("Hasilnya harus sama"), emo("rw", 150, 100, OWL, 54)), tambah(idx(SUARA_Y5, "sama."), emo("rk", 150, 160, "✅", 30))),
+    k(
+      SUARA_T1,
+      tambah(0, judul("Raka Menjumlah"), papanKapur("pk", 80, 28, 200, 150), ...tokoh("rk", 40, 184, "Raka")),
+      tambah("empat", ...susunTeks("ls", 47, 36, 190, 70)),
+      tambah("tujuh@2", kapur("eq", 245, 84, "7", 11)),
+      ubah("enam@2", { id: "eq", isi: "7 + 6" }),
+      ubah("belas,", { id: "eq", isi: "7 + 6 = 13" }),
+      tambah("simpan", kapur("sm", 245, 112, "simpan 1", 11, { warna: W.emas })),
+    ),
+    k(
+      SUARA_T2,
+      tambah("Empat", kapur("e4", 245, 140, "4", 11)),
+      ubah("tiga", { id: "e4", isi: "4 + 3" }),
+      ubah("satu", { id: "e4", isi: "4 + 3 + 1" }),
+      ubah("delapan.", { id: "e4", isi: "4 + 3 + 1 = 8" }),
+      tambah("Jumlahnya", kapur("ls-h", 190, 124, "83", 18, { anchor: "end" })),
+    ),
+    ketukanCocok(SUARA_T3, true, "Cocok", ["2 angka", "sulit dihitung di kepala"], "bersusun lebih aman", "tidak"),
+    ketukanCocok(SUARA_T4, false, "Kurang cocok", ["bilangan kecil", "langsung bisa dihitung"], "cukup dihitung di kepala", "dihitung"),
   ],
 };

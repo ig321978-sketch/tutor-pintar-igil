@@ -1,128 +1,234 @@
-import type { AdeganStory } from "./logika-story";
-import { OWL, W, emo, garisLompat, judul, kartu, latarSusunan, namaBaris, namaKolom, barisSusunan, rumus, teks } from "./k3b1F-gambar";
-import { bersih, hapus, idPilihan, idx, k, pilihKata, redamkan, sorotkan, tambah } from "./k3b1F-bantu";
-import { NAMA_METODE_ID, WARNA_METODE, kepala } from "./k3b1F-luar-1";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, benda, busur, emo, garisBilangan, judul, kartu, lantai, rakKayu, tanda, teks, tokoh } from "./k3b1F-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k3b1F-bantu";
 
-/* ------------------------------ 4. Susunan Baris Kolom: konsep ------------------------------ */
-const SUARA_S1 = "Metode kedua bernama Susunan Baris Kolom. Benda disusun rapi dalam baris dan kolom.";
-const SUARA_S2 = "Lihat susunan bunga ini. Ada tiga baris, dan tiap baris berisi empat bunga.";
-const SUARA_S3 = "Banyak baris dikali banyak kolom sama dengan jumlah benda. Jadi tiga kali empat sama dengan dua belas.";
-const SUARA_S4 = "Setiap baris berisi empat bunga. Empat tambah empat tambah empat sama dengan dua belas.";
-const SUARA_S5 = "Itulah metode Susunan Baris Kolom. Baris dikali kolom sama dengan jumlah semuanya.";
+/*
+ * Cerita orisinal IGIL "Telur Bu Mirna" (Kelas 3 Bab 1 Sub-Bab F), video metode global.
+ * Naskah suara dari naskah/story-naskah-k3b1f.md. Bagian ini: terapan Array, Skip Counting (Lompat Hitung) beserta terapannya, dan ringkasan.
+ */
 
-export const ADEGAN_LUAR_SUSUNAN: AdeganStory = {
-  id: "luar-susunan",
-  judul: "Susunan Baris Kolom: baris dikali kolom",
-  sumber: "Metode luar: Susunan Baris Kolom",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(SUARA_S1, tambah(0, ...kepala(1)), tambah(idx(SUARA_S1, "disusun"), emo("tp", 150, 112, "\u{1F33C}", 44))),
-    k(
-      SUARA_S2,
-      hapus(0, "tp"),
-      tambah(idx(SUARA_S2, "Lihat"), latarSusunan(3, 4)),
-      tambah(idx(SUARA_S2, "susunan"), ...barisSusunan(0, 3, 4, "bunga")),
-      tambah(idx(SUARA_S2, "tiga"), ...barisSusunan(1, 3, 4, "bunga")),
-      tambah(idx(SUARA_S2, "baris"), ...barisSusunan(2, 3, 4, "bunga")),
-      tambah(idx(SUARA_S2, "berisi"), namaBaris(3, 4)),
-    ),
-    k(SUARA_S3, tambah(idx(SUARA_S3, "kolom"), namaKolom(3, 4)), tambah(idx(SUARA_S3, "Jadi"), rumus("eq", 188, "3 × 4 = 12"))),
-    k(SUARA_S4, tambah(idx(SUARA_S4, "sama"), rumus("ps", 166, "4 + 4 + 4 = 12", 12, W.ungu))),
-    k(SUARA_S5, hapus(0, "ps"), tambah(idx(SUARA_S5, "Itulah"), ...kartu("sk", 30, 152, 240, 24, W.emas, ["Susunan Baris Kolom: baris × kolom"], 10))),
-  ],
-};
+/** Garis bilangan nol sampai lima belas: titik v ada di x = 30 + 16 v, pada tinggi 120. */
+const xl = (v: number): number => 30 + v * 16;
 
-/* ------------------------------ 5. Susunan Baris Kolom: terapan ------------------------------ */
-const SUARA_T1 = "Terapkan pada soal ini. Wei menyusun mobil mainan dalam tiga baris. Tiap baris berisi enam mobil.";
-const SUARA_T2 = "Berapa mobil semuanya? Ketuk jawaban yang tepat.";
-const SUARA_T3 = "Betul! Tiga kali enam sama dengan delapan belas.";
-const SUARA_T4 = "Dengan Susunan Baris Kolom, tiga baris dan enam kolom, hasilnya delapan belas mobil.";
+/* ------------------------------ Array: terapan ------------------------------ */
+const SUARA_A1 = "Bima menata kaleng di rak: empat baris, tiap baris lima kaleng. Semuanya dua puluh.";
+const SUARA_A2 = "Ia memutar susunan menjadi lima baris, tiap baris empat kaleng. Tetap dua puluh.";
+const SUARA_A3 = "Cocok kalau barang bisa dijajarkan rapi seperti rak atau kursi.";
+const SUARA_A4 = "Kurang cocok kalau barang berserakan atau tidak bisa dijajarkan.";
+
+/** Dua puluh kaleng pada rak empat tingkat: baris r (0-3), kolom c (0-4); id `kr{r}_{c}`. */
+const RAK_Y = [57, 89, 121, 153] as const;
+const kalengRak = (r: number, c: number): Obj[] => benda(`kr${r}_${c}`, 100 + c * 25, RAK_Y[r], "kaleng", 6);
+const SEMUA_RAK = [0, 1, 2, 3].flatMap((r) => [0, 1, 2, 3, 4].flatMap((c) => kalengRak(r, c)));
+
+/** Dua puluh kaleng tanpa rak: empat baris lima kolom (awal), lalu lima baris empat kolom (diputar). Id `kn0`..`kn19`. */
+const SK = 20;
+const posEmpatLima = (i: number): [number, number] => [150 + ((i % 5) - 2) * SK, 95 + (Math.floor(i / 5) - 1.5) * SK];
+const posLimaEmpat = (i: number): [number, number] => [150 + ((i % 4) - 1.5) * SK, 95 + (Math.floor(i / 4) - 2) * SK];
+const knEmpatLima = (): Obj[] => Array.from({ length: 20 }, (_, i) => benda(`kn${i}`, posEmpatLima(i)[0], posEmpatLima(i)[1], "kaleng", 6.4)).flat();
+const knLimaEmpat = (): Obj[] => Array.from({ length: 20 }, (_, i) => benda(`kn${i}`, posLimaEmpat(i)[0], posLimaEmpat(i)[1], "kaleng", 6.4)).flat();
+
+const BERSERAKAN: [number, number, number][] = [
+  [70, 82, 20],
+  [118, 120, -35],
+  [176, 78, 50],
+  [222, 118, -15],
+  [96, 150, 70],
+  [150, 98, -60],
+  [206, 150, 30],
+  [58, 118, -80],
+  [248, 84, 10],
+];
 
 export const ADEGAN_LUAR_SUSUNAN_TERAPAN: AdeganStory = {
   id: "luar-susunan-terapan",
-  judul: "Susunan Baris Kolom: mobil Wei",
-  sumber: "Metode luar: Susunan Baris Kolom",
-  latar: "#DBEAFE",
+  judul: "Array: kaleng Bima",
+  sumber: "Metode global: Array (terapan)",
+  latar: "#ECFEFF",
   ketukan: [
     k(
-      SUARA_T1,
-      tambah(0, ...kepala(1), latarSusunan(3, 6)),
-      tambah(idx(SUARA_T1, "menyusun"), ...barisSusunan(0, 3, 6, "mobil")),
-      tambah(idx(SUARA_T1, "tiga"), ...barisSusunan(1, 3, 6, "mobil")),
-      tambah(idx(SUARA_T1, "baris."), ...barisSusunan(2, 3, 6, "mobil")),
-      tambah(idx(SUARA_T1, "berisi"), namaBaris(3, 6)),
+      SUARA_A1,
+      tambah(0, judul("Kaleng di Rak"), ...lantai("lt", 164), ...tokoh("bm", 40, 184, "Bima")),
+      tambah("rak:", ...rakKayu("rk", 80, 34, 140, 128, 4)),
+      tambah("baris,", teks("n4", 262, 100, "4 baris", 9, W.merah)),
+      tambah("lima", teks("n5", 150, 28, "5 kaleng", 9, W.hijau)),
+      tambah("kaleng@2", ...SEMUA_RAK),
+      tambah("dua", teks("t20", 262, 140, "20", 20, W.merah)),
     ),
-    k(SUARA_T2, tambah(idx(SUARA_T2, "Berapa"), teks("tanya", 150, 152, "berapa semuanya?", 12, W.ungu)), tambah(idx(SUARA_T2, "jawaban"), ...pilihKata(158, ["18", "21", "24"], 16))),
-    k(SUARA_T3, sorotkan(idx(SUARA_T3, "Betul!"), "c1-k"), tambah(idx(SUARA_T3, "Tiga"), rumus("eq", 198, "3 × 6 = 18", 11))),
-    k(SUARA_T4, redamkan(0, "c1-k"), hapus(0, "tanya", ...idPilihan(3)), tambah(idx(SUARA_T4, "kolom,"), namaKolom(3, 6)), tambah(idx(SUARA_T4, "hasilnya"), rumus("eq", 176, "3 × 6 = 18"))),
+    k(
+      SUARA_A2,
+      bersih(0),
+      tambah(0, judul("Rak Diputar"), ...lantai("lt", 164), ...tokoh("bm", 40, 184, "Bima"), ...knEmpatLima()),
+      tambah("susunan", emo("pt", 250, 150, E.putar, 24)),
+      ubah("menjadi", ...knLimaEmpat().map((o) => ({ id: o.id, x: o.x, y: o.y }))),
+      tambah("lima", teks("m5", 232, 95, "5 baris", 10, W.merah)),
+      tambah("empat", teks("m4", 68, 95, "4 kaleng", 10, W.hijau)),
+      tambah("dua", teks("m20", 150, 160, "20", 18, W.merah)),
+    ),
+    k(
+      SUARA_A3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?"), ...lantai("lt", 150)),
+      tambah("Cocok", emo("ok", 262, 56, E.benar, 28)),
+      tambah("barang", ...kartu("cc", 50, 34, 200, 24, W.hijauMuda, ["barang bisa dijajarkan"], 9)),
+      tambah("rapi", ...[0, 1, 2, 3].flatMap((i) => [emo(`ks${i}`, 90 + i * 40, 90, "\u{1FA91}", 24), emo(`kt${i}`, 90 + i * 40, 124, "\u{1FA91}", 24)])),
+    ),
+    k(
+      SUARA_A4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?"), ...lantai("lt", 150)),
+      tambah("Kurang", emo("xs", 262, 56, E.salah, 28)),
+      tambah("barang", ...BERSERAKAN.flatMap(([x, y, r], i) => benda(`bs${i}`, x, y, "kaleng", 6).map((o) => ({ ...o, rot: r })))),
+      tambah("tidak", teks("bd", 150, 168, "tidak bisa dijajarkan", 11, W.merah), emo("pz", 262, 164, E.pusing, 22)),
+    ),
   ],
 };
 
-/* ------------------------------ 6. Lompat Hitung: konsep ------------------------------ */
-const GL1 = garisLompat(2, 5, 120);
-const SUARA_L1 = "Metode ketiga bernama Lompat Hitung. Kita melompat di garis bilangan, dua langkah demi dua langkah.";
-const SUARA_L2 = "Mulai dari nol. Lompatan pertama sebesar dua, mendarat di dua.";
-const SUARA_L3 = "Lompat lagi sebesar dua, mendarat di empat. Lompat lagi, mendarat di enam.";
-const SUARA_L4 = "Hitungannya dua, empat, enam, delapan, sepuluh. Setelah lima lompatan, kita mendarat di sepuluh.";
-const SUARA_L5 = "Jadi lima kali dua sama dengan sepuluh. Itulah metode Lompat Hitung, cocok untuk kali dua.";
+/* ------------------------------ Skip Counting: konsep ------------------------------ */
+const SUARA_L1 = "Cara ketiga, Skip Counting, atau Lompat Hitung.";
+const SUARA_L2 = "Kita menghitung dengan melompat, misalnya lima, sepuluh, lima belas.";
+const SUARA_L3 = "Tiap lompatan menambah bilangan yang sama besar.";
+const SUARA_L4 = "Banyak lompatan sama dengan pengali, dan bilangan terakhir adalah hasilnya.";
 
 export const ADEGAN_LUAR_LOMPAT: AdeganStory = {
   id: "luar-lompat",
-  judul: "Lompat Hitung: kali dua",
-  sumber: "Metode luar: Lompat Hitung",
-  latar: "#FDF2F8",
+  judul: "Skip Counting: Lompat Hitung",
+  sumber: "Metode global: Skip Counting (konsep)",
+  latar: "#FFFBEB",
   ketukan: [
-    k(SUARA_L1, tambah(0, ...kepala(2)), tambah(idx(SUARA_L1, "melompat"), emo("fg", 150, 102, "\u{1F438}", 46))),
-    k(SUARA_L2, hapus(0, "fg"), tambah(idx(SUARA_L2, "Mulai"), ...GL1.kerangka()), tambah(idx(SUARA_L2, "Lompatan"), ...GL1.lompat(1)), tambah(idx(SUARA_L2, "mendarat"), ...GL1.tanda(1))),
-    k(SUARA_L3, tambah(idx(SUARA_L3, "Lompat"), ...GL1.lompat(2)), tambah(idx(SUARA_L3, "empat."), ...GL1.tanda(2)), tambah(idx(SUARA_L3, "lagi", 2), ...GL1.lompat(3)), tambah(idx(SUARA_L3, "enam."), ...GL1.tanda(3))),
-    k(SUARA_L4, tambah(idx(SUARA_L4, "delapan,"), ...GL1.lompat(4), ...GL1.tanda(4)), tambah(idx(SUARA_L4, "sepuluh."), ...GL1.lompat(5), ...GL1.tanda(5))),
-    k(SUARA_L5, tambah(idx(SUARA_L5, "Jadi"), rumus("eq", 176, "5 × 2 = 10"))),
+    k(
+      SUARA_L1,
+      tambah(0, judul("Cara 3: Skip Counting"), garisBilangan("gb", 30, 270, 120), ...tanda("t0", xl(0), 120, "0", 10, W.biru)),
+      tambah("Skip", emo("kt", xl(0), 104, "\u{1F438}", 22)),
+      tambah("Lompat", teks("nm", 150, 160, "Lompat Hitung", 13, W.ungu)),
+    ),
+    k(
+      SUARA_L2,
+      tambah("melompat", teks("jl", 150, 70, "lompat +5", 11, W.hijau)),
+      tambah("lima,", busur("b1", xl(0), xl(5), 118, 28), ...tanda("t5", xl(5), 120, "5")),
+      tambah("sepuluh,", busur("b2", xl(5), xl(10), 118, 28), ...tanda("t10", xl(10), 120, "10")),
+      tambah("belas.", busur("b3", xl(10), xl(15), 118, 28), ...tanda("t15", xl(15), 120, "15")),
+    ),
+    k(
+      SUARA_L3,
+      hapus(0, "jl"),
+      tambah("menambah", teks("q1", 70, 100, "+5", 11, W.hijau), teks("q2", 150, 100, "+5", 11, W.hijau), teks("q3", 230, 100, "+5", 11, W.hijau)),
+      tambah("sama", teks("sb", 150, 76, "sama besar", 11, W.hijau)),
+      tambah("besar.", emo("ok", 150, 52, E.benar, 20)),
+    ),
+    k(
+      SUARA_L4,
+      hapus(0, "ok"),
+      tambah("pengali,", teks("bl", 150, 52, "3 lompatan", 11, W.merah)),
+      sorotkan("terakhir", "t15", "t15-n"),
+      tambah("hasilnya.", teks("hs", 150, 182, "3 × 5 = 15", 18, W.merah)),
+    ),
   ],
 };
 
-/* ------------------------------ 7. Lompat Hitung: terapan ------------------------------ */
-const GL2 = garisLompat(5, 6, 120);
-const SUARA_P1 = "Terapkan pada soal ini. Kira melompat sebesar lima, sebanyak enam lompatan, mulai dari nol.";
-const SUARA_P2 = "Di mana Kira mendarat? Ketuk jawaban yang tepat.";
-const SUARA_P3 = "Betul! Enam lompatan sebesar lima mendarat di tiga puluh.";
-const SUARA_P4 = "Jadi enam kali lima sama dengan tiga puluh, sama seperti hasil tadi.";
+/* ------------------------------ Skip Counting: terapan ------------------------------ */
+const SUARA_P1 = "Raka melompat tiga-tiga: tiga, enam, sembilan, dua belas, lima belas.";
+const SUARA_P2 = "Lima lompatan sebesar tiga, jadi lima belas.";
+const SUARA_P3 = "Cocok untuk mengingat perkalian dengan bilangan kecil.";
+const SUARA_P4 = "Kurang cocok untuk bilangan besar, karena lompatannya terlalu banyak.";
 
 export const ADEGAN_LUAR_LOMPAT_TERAPAN: AdeganStory = {
   id: "luar-lompat-terapan",
-  judul: "Lompat Hitung: lompatan Kira",
-  sumber: "Metode luar: Lompat Hitung",
-  latar: "#FCE7F3",
+  judul: "Skip Counting: lompat tiga-tiga Raka",
+  sumber: "Metode global: Skip Counting (terapan)",
+  latar: "#F7FEE7",
   ketukan: [
     k(
       SUARA_P1,
-      tambah(0, ...kepala(2)),
-      tambah(idx(SUARA_P1, "Kira"), ...GL2.kerangka()),
-      tambah(idx(SUARA_P1, "sebesar"), ...[1, 2, 3].flatMap((q) => [...GL2.lompat(q), ...GL2.tanda(q)])),
-      tambah(idx(SUARA_P1, "enam"), ...[4, 5].flatMap((q) => [...GL2.lompat(q), ...GL2.tanda(q)]), ...GL2.lompat(6)),
+      tambah(0, judul("Lompat Tiga-Tiga"), garisBilangan("gb", 30, 270, 120), ...tanda("t0", xl(0), 120, "0", 10, W.biru)),
+      tambah("Raka", ...tokoh("rk", 40, 184, "Raka")),
+      tambah("tiga@2", busur("b1", xl(0), xl(3), 118, 20), ...tanda("t3", xl(3), 120, "3")),
+      tambah("enam,", busur("b2", xl(3), xl(6), 118, 20), ...tanda("t6", xl(6), 120, "6")),
+      tambah("sembilan,", busur("b3", xl(6), xl(9), 118, 20), ...tanda("t9", xl(9), 120, "9")),
+      tambah("dua", busur("b4", xl(9), xl(12), 118, 20), ...tanda("t12", xl(12), 120, "12")),
+      tambah("lima", busur("b5", xl(12), xl(15), 118, 20), ...tanda("t15", xl(15), 120, "15")),
     ),
-    k(SUARA_P2, tambah(idx(SUARA_P2, "Di"), teks("tanya", 150, 156, "mendarat di mana?", 12, W.ungu)), tambah(idx(SUARA_P2, "jawaban"), ...pilihKata(162, ["25", "30", "35"], 16))),
-    k(SUARA_P3, sorotkan(idx(SUARA_P3, "Betul!"), "c2-k"), tambah(idx(SUARA_P3, "tiga"), ...GL2.tanda(6))),
-    k(SUARA_P4, redamkan(0, "c2-k"), hapus(0, "tanya", ...idPilihan(3)), tambah(idx(SUARA_P4, "Jadi"), rumus("eq", 176, "6 × 5 = 30"))),
+    k(
+      SUARA_P2,
+      tambah("Lima", teks("l5", 150, 52, "5 lompatan", 11, W.merah)),
+      tambah("sebesar", ...[0, 1, 2, 3, 4].map((i) => teks(`p${i}`, xl(1.5 + i * 3), 100, "+3", 10, W.hijau))),
+      tambah("tiga,", teks("pg", 150, 76, "tiap lompatan 3", 9, W.hijau)),
+      tambah("belas.", teks("hs", 182, 168, "5 × 3 = 15", 18, W.merah)),
+    ),
+    k(
+      SUARA_P3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?"), ...lantai("lt", 150), ...tokoh("rk", 40, 184, "Raka")),
+      tambah("Cocok", emo("ok", 262, 56, E.benar, 28)),
+      tambah("perkalian", ...[3, 6, 9, 12, 15].flatMap((v, i) => kartu(`kr${i}`, 36 + i * 50, 70, 40, 34, W.krem, [String(v)], 15))),
+      tambah("kecil.", teks("kc", 150, 128, "bilangan kecil", 11, W.hijau)),
+    ),
+    k(
+      SUARA_P4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?"), ...lantai("lt", 150), garisBilangan("gb", 14, 286, 120)),
+      tambah("Kurang", emo("xs", 262, 56, E.salah, 28)),
+      tambah("besar,", teks("bs", 150, 70, "bilangan besar: 96", 11, W.merah)),
+      tambah("lompatannya", ...Array.from({ length: 12 }, (_, i) => busur(`bj${i}`, 14 + i * 22.6, 14 + (i + 1) * 22.6, 118, 10))),
+      tambah("terlalu", emo("pz", 150, 172, E.pusing, 24)),
+      tambah("banyak.", teks("tb", 150, 148, "terlalu banyak lompatan", 10, W.merah)),
+    ),
   ],
 };
 
-/* ------------------------------ 8. Ringkasan metode luar ------------------------------ */
-const SUARA_Y1 = "Mari kita ringkas tiga metode dari luar. Semuanya membantu kita menghitung benda yang sama banyak.";
-const SUARA_Y2 = "Metode Kelompok Sama, menjumlahkan isi tiap kelompok berulang kali.";
-const SUARA_Y3 = "Metode Susunan Baris Kolom, benda disusun dalam baris dan kolom, lalu baris dikali kolom.";
-const SUARA_Y4 = "Metode Lompat Hitung, melompat di garis bilangan dengan langkah yang sama.";
-const SUARA_Y5 = "Pilih metode yang kamu suka, lalu periksa dengan metode lain. Hasilnya harus sama.";
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita lihat. Mana yang pas tergantung barangnya.";
+const SUARA_R2 = "Barang dikemas dalam kotak, pakai Isi Sama. Barang bisa dijajarkan, pakai Susunan Baris Kolom.";
+const SUARA_R3 = "Ingin menghafal, pakai Lompat Hitung. Apa pun caranya, isi tiap bagian harus sama dan hasilnya selalu tepat.";
+const SUARA_R4 = "Menurutmu, untuk menghitung botol di rak, cara mana yang paling cepat?";
+
+const RING_BOTOL: Obj[] = [0, 1, 2].flatMap((r) => Array.from({ length: 7 }, (_, c) => benda(`rb${r}_${c}`, 86 + c * 20, 64 + r * 33, "botol", 4.4)).flat());
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Metode luar: ringkasan",
-  latar: "#FFF7ED",
+  judul: "Ringkasan tiga cara menghitung",
+  sumber: "Metode global: ringkasan",
+  latar: "#FDF4FF",
   ketukan: [
-    k(SUARA_Y1, tambah(0, judul("Ringkasan")), tambah(idx(SUARA_Y1, "ringkas"), ...kartu("r0", 14, 34, 272, 30, W.emas, ["3 metode dari luar"], 11))),
-    k(SUARA_Y2, tambah(idx(SUARA_Y2, "Kelompok"), ...kartu("r1", 14, 72, 272, 34, WARNA_METODE[0], [NAMA_METODE_ID[0], "jumlah berulang isi tiap kelompok"], 9.2))),
-    k(SUARA_Y3, tambah(idx(SUARA_Y3, "Susunan"), ...kartu("r2", 14, 114, 272, 34, WARNA_METODE[1], [NAMA_METODE_ID[1], "baris dikali kolom"], 9.2))),
-    k(SUARA_Y4, tambah(idx(SUARA_Y4, "Lompat"), ...kartu("r3", 14, 156, 272, 34, WARNA_METODE[2], [NAMA_METODE_ID[2], "lompat dengan langkah sama"], 9.2))),
-    k(SUARA_Y5, bersih(0), tambah(0, judul("Hasilnya harus sama"), emo("rw", 150, 100, OWL, 54)), tambah(idx(SUARA_Y5, "sama."), emo("rk", 150, 160, "✅", 30))),
+    k(
+      SUARA_R1,
+      tambah(0, judul("Tiga Cara, Pilih yang Pas")),
+      tambah("Tiga", teks("n3", 250, 40, "3 cara", 10, W.ungu)),
+      tambah("cara", ...kartu("r0", 14, 54, 88, 40, W.langit, ["Isi Sama"], 9.4), ...kartu("r1", 106, 54, 88, 40, W.hijauMuda, ["Susunan", "Baris Kolom"], 9.4), ...kartu("r2", 198, 54, 88, 40, W.pink, ["Lompat", "Hitung"], 9.4)),
+      tambah("Mana", emo("tq", 150, 136, E.tanya, 36)),
+    ),
+    k(
+      SUARA_R2,
+      sorotkan("Isi", "r0-k"),
+      tambah("Isi", ...[0, 1, 2].flatMap((i) => kotakIsi2(`ri${i}`, 24 + i * 22))),
+      sorotkan("Susunan", "r1-k"),
+      ubah("Susunan", { id: "r0-k", sorot: false }),
+      tambah("Susunan", ...[0, 1, 2, 3, 4, 5].flatMap((i) => benda(`rs${i}`, 126 + (i % 3) * 16, 116 + Math.floor(i / 3) * 16, "kaleng", 5))),
+    ),
+    k(
+      SUARA_R3,
+      sorotkan("Lompat", "r2-k"),
+      ubah("Lompat", { id: "r1-k", sorot: false }),
+      tambah("Lompat", garisBilangan("rg", 206, 278, 120), busur("rj1", 206, 230, 118, 14), busur("rj2", 230, 254, 118, 14), busur("rj3", 254, 278, 118, 14)),
+      tambah("sama", teks("sm", 150, 176, "isi tiap bagian sama", 10, W.hijau)),
+      tambah("tepat.", emo("ok", 262, 176, E.benar, 22)),
+    ),
+    k(
+      SUARA_R4,
+      bersih(0),
+      tambah(0, judul("Mana yang Paling Cepat?"), ...rakKayu("rk", 60, 40, 180, 100, 3)),
+      tambah("botol", ...RING_BOTOL),
+      tambah("cara", ...kartu("p0", 14, 150, 88, 36, W.langit, ["Isi Sama"], 9), ...kartu("p1", 106, 150, 88, 36, W.hijauMuda, ["Susunan Baris", "Kolom"], 8.4), ...kartu("p2", 198, 150, 88, 36, W.pink, ["Lompat Hitung"], 9)),
+      tambah("cepat?", emo("tg", 150, 34, E.pikir, 26)),
+    ),
   ],
 };
+
+/** Kotak kecil berisi dua titik telur untuk ikon ringkasan: `${id}` dan `${id}-e0`, `${id}-e1`. */
+function kotakIsi2(id: string, x: number): Obj[] {
+  return [
+    { id, t: "kotak", x, y: 112, w: 18, h: 13, warna: "#E9C98E", garis: "#A97B3F", rx: 3, tebal: 1.2, z: 1 },
+    { id: `${id}-e0`, t: "bulat", x: x + 5.5, y: 118.5, r: 3, warna: "#D9A066", garis: "#8A4B1F", tebal: 0.8, z: 3 },
+    { id: `${id}-e1`, t: "bulat", x: x + 12.5, y: 118.5, r: 3, warna: "#D9A066", garis: "#8A4B1F", tebal: 0.8, z: 3 },
+  ];
+}

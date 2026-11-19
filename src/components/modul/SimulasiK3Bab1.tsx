@@ -2,156 +2,125 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import LabBertahap, { type TabLab } from "./LabBertahap";
-import SimulasiLabTempatK3 from "./SimulasiLabTempatK3";
-import SimulasiLabUrutK3 from "./SimulasiLabUrutK3";
-import SimulasiLabSusunK3 from "./SimulasiLabSusunK3";
-import SimulasiLabKelompokK3 from "./SimulasiLabKelompokK3";
-import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
-import SimulasiSkenario from "./SimulasiSkenario";
-import {
-  SKENARIO_K3B1A,
-  SKENARIO_K3B1B,
-  SKENARIO_K3B1C,
-  SKENARIO_K3B1D,
-  SKENARIO_K3B1E,
-  SKENARIO_K3B1F,
-  SKENARIO_K3B1G,
-} from "./skenario-k3b1";
-import { MESIN_BACA, MESIN_BAGI, MESIN_KALI, MESIN_KURANG, MESIN_NILAI, MESIN_TAMBAH } from "./mesin-data-k3b1";
-import type { DefSkenario } from "./skenario-umum";
-import type { DefMesin } from "./mesin-bertahap-k3b1";
-import { daftarMisiK3Bab1, ID_SKENARIO_K3B1, type KeadaanK3Bab1 } from "./misi-k3bab1";
-import { laporMisi, tampilMisi } from "./misi-simulasi";
-import { MISI_K3B1, NAMA_SIM_K3B1, hurufK3B1, misiAwalK3Bab1, type HurufK3B1 } from "./misi-teks-k3b1";
+import { laporMisi as laporMisiUrut } from "./misi-simulasi";
+import SimulasiPapanUrut from "./urut-k3b1c/SimulasiPapanUrut";
+import type { KeadaanUrutan } from "./urut-k3b1c/logika";
+import { MISI_K3B1, hurufK3B1, misiAwalK3Bab1 } from "./misi-teks-k3b1";
+import { laporMisi as laporMisiStok } from "./misi-simulasi";
+import { laporMisi as laporMisiSisa } from "./misi-simulasi";
+import SimulasiRakStok from "./tempat-k3b1a/SimulasiRakStok";
+import type { KeadaanStok } from "./tempat-k3b1a/logika";
+import { daftarMisiK3Bab1 } from "./misi-k3bab1";
+import { laporMisi as laporMisiKotak } from "./misi-simulasi";
+import SimulasiRakKotak from "./kali-k3b1f/SimulasiRakKotak";
+import type { KeadaanIsi } from "./kali-k3b1f/logika";
+import { laporMisi as laporMisiLabel } from "./misi-simulasi";
+import SimulasiMejaLabel from "./kartu-k3b1b/SimulasiMejaLabel";
+import type { KeadaanLabel } from "./kartu-k3b1b/logika";
+import { laporMisi as laporMisiPesanan } from "./misi-simulasi";
+import SimulasiMejaPesanan from "./tambah-k3b1d/SimulasiMejaPesanan";
+import type { KeadaanPesanan } from "./tambah-k3b1d/logika";
+import SimulasiRakSisa from "./kurang-k3b1e/SimulasiRakSisa";
+import type { KeadaanSisa } from "./kurang-k3b1e/logika";
+import { laporMisi as laporMisiBagi } from "./misi-simulasi";
+import SimulasiMejaBingkisan from "./bagi-k3b1g/SimulasiMejaBingkisan";
+import type { KeadaanBagi } from "./bagi-k3b1g/logika";
 
 /* ======================================================================== */
-/* Simulasi Kelas 3 Bab 1 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
-/* tiap sub-bab satu laboratorium bertahap (paling banyak tiga alat), alat   */
-/* yang sama dipakai ulang dengan misi berbeda (misi-k3bab1.ts).             */
-/*   A Bilangan dan Lambang   : Papan Tempat + Mesin Baca-Tulis + Tongkat Alfa */
-/*   B Nilai Tempat           : Papan Tempat (Nilai) + Mesin Angka dan Nilai + Tiga Kaleng */
-/*   C Membandingkan          : Papan Tempat (Banding) + Lab Urut + Jarak ke Sekolah */
-/*   D Penjumlahan sampai 100 : Lab Susun Tambah + Mesin + Alun-Alun         */
-/*   E Pengurangan sampai 100 : Lab Susun Kurang + Mesin + Toko Pak Bandi    */
-/*   F Perkalian sampai 100   : Lab Kelompok Kali + Mesin + Kebun Melati     */
-/*   G Pembagian (akhir)      : Lab Kelompok Kali dan Bagi + Mesin + Pencapaian Bab */
+/* Simulasi Kelas 3 Bab 1 di dalam Materi (tahap 4 SMISCPA), tema Toko       */
+/* Kelontong Pak Joko: A Rak Stok, B Meja Label, C Papan Urut, D Meja        */
+/* Pesanan, E Rak Sisa, F Rak Kotak, G Meja Bingkisan.                       */
+/* KERANGKA: agen Sub-Bab mengisi fungsi langkah-nya (impor dari folder      */
+/* miliknya; render sekarang null) dan menambah impor yang dibutuhkan.        */
 /* ======================================================================== */
 
-const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
+/** Sub-Bab A: Rak Stok. */
+const langkahRakStokA = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Rak Stok",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K3B1.A,
+  misiDaftar: daftarMisiK3Bab1("A").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiRakStok speakGuru={a.speakGuru} onKeadaan={(k: KeadaanStok) => laporMisiStok(daftarMisiK3Bab1("A"), k, a.capai)} />,
+});
 
-const SKENARIO: Record<HurufK3B1, DefSkenario> = {
-  A: SKENARIO_K3B1A,
-  B: SKENARIO_K3B1B,
-  C: SKENARIO_K3B1C,
-  D: SKENARIO_K3B1D,
-  E: SKENARIO_K3B1E,
-  F: SKENARIO_K3B1F,
-  G: SKENARIO_K3B1G,
-};
+/** Sub-Bab B: Meja Label. */
+const langkahMejaLabelB = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Meja Label",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K3B1.B,
+  misiDaftar: daftarMisiK3Bab1("B").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiMejaLabel speakGuru={a.speakGuru} onKeadaan={(k: KeadaanLabel) => laporMisiLabel(daftarMisiK3Bab1("B"), k, a.capai)} />,
+});
 
-const MESIN: Partial<Record<HurufK3B1, DefMesin>> = { A: MESIN_BACA, B: MESIN_NILAI, D: MESIN_TAMBAH, E: MESIN_KURANG, F: MESIN_KALI, G: MESIN_BAGI };
+/** Sub-Bab C: Papan Urut. */
+const langkahPapanUrutC = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Papan Urut",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K3B1.C,
+  misiDaftar: daftarMisiK3Bab1("C").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiPapanUrut speakGuru={a.speakGuru} onKeadaan={(k: KeadaanUrutan) => laporMisiUrut(daftarMisiK3Bab1("C"), k, a.capai)} />,
+});
 
-const COBA_MESIN: Record<"A" | "B" | "D" | "E" | "F" | "G", string[]> = {
-  A: [
-    "Ketuk stasiun Tulis sebelum membaca papan. Apa kata mesin?",
-    "Pada bilangan yang punya nol, mengapa nol tetap ditulis walau tidak dibaca?",
-    "Bandingkan 160 dan 703. Tempat mana yang kosong pada tiap bilangan?",
-  ],
-  B: [
-    "Ketuk stasiun Urai sebelum melihat nilainya. Apa kata mesin?",
-    "Pada 602, berapa nilai angka 6? Mengapa bukan 6?",
-    "Bandingkan nilai angka 5 pada 251 dan pada 805. Apa yang berbeda?",
-  ],
-  D: [
-    "Ketuk stasiun Puluhan sebelum menjumlahkan satuan. Apa kata mesin?",
-    "Pada kasus yang menyimpan, mengapa puluhan bertambah satu?",
-    "Bandingkan 23 + 16 dan 48 + 16. Apa yang berbeda pada langkah satuan?",
-  ],
-  E: [
-    "Ketuk stasiun Puluhan sebelum mengurangi satuan. Apa kata mesin?",
-    "Pada kasus yang mengambil, mengapa puluhan atas berkurang satu?",
-    "Bandingkan 25 − 12 dan 45 − 19. Apa yang berbeda pada langkah satuan?",
-  ],
-  F: [
-    "Ketuk stasiun Kali sebelum menambah berulang. Apa kata mesin?",
-    "Pada 5 × 2 dan 2 × 5, apa yang sama dan apa yang berbeda?",
-    "Mengapa penjumlahan berulang menjadi jalan pintas dengan perkalian?",
-  ],
-  G: [
-    "Ketuk stasiun Bagi sebelum mengurangi berulang. Apa kata mesin?",
-    "Pada 5 : 1 dan 28 : 7, bagaimana kamu memeriksa hasilnya dengan kali?",
-    "Apakah ada kasus yang tidak habis dibagi? Bagaimana mesin menyebutnya?",
-  ],
-};
+/** Sub-Bab D: Meja Pesanan. */
+const langkahMejaPesananD = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Meja Pesanan",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K3B1.D,
+  misiDaftar: daftarMisiK3Bab1("D").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiMejaPesanan speakGuru={a.speakGuru} onKeadaan={(k: KeadaanPesanan) => laporMisiPesanan(daftarMisiK3Bab1("D"), k, a.capai)} />,
+});
+
+/** Sub-Bab E: Rak Sisa. */
+const langkahRakSisaE = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Rak Sisa",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K3B1.E,
+  misiDaftar: daftarMisiK3Bab1("E").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiRakSisa speakGuru={a.speakGuru} onKeadaan={(k: KeadaanSisa) => laporMisiSisa(daftarMisiK3Bab1("E"), k, a.capai)} />,
+});
+
+/** Sub-Bab F: Rak Kotak. */
+const langkahRakKotakF = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Rak Kotak",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K3B1.F,
+  misiDaftar: daftarMisiK3Bab1("F").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiRakKotak speakGuru={a.speakGuru} onKeadaan={(k: KeadaanIsi) => laporMisiKotak(daftarMisiK3Bab1("F"), k, a.capai)} />,
+});
+
+/** Sub-Bab G: Meja Bingkisan. */
+const langkahMejaBingkisanG = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Meja Bingkisan",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K3B1.G,
+  misiDaftar: daftarMisiK3Bab1("G").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiMejaBingkisan speakGuru={a.speakGuru} onKeadaan={(k: KeadaanBagi) => laporMisiBagi(daftarMisiK3Bab1("G"), k, a.capai)} />,
+});
 
 const langkahK3Bab1 = (sub: string): LangkahSim[] => {
   const huruf = hurufK3B1(sub);
-  const daftar = daftarMisiK3Bab1(huruf);
-  return [
-    {
-      metode: "PhET",
-      sub: NAMA_SIM_K3B1[huruf],
-      petunjuk: MAINKAN_DULU,
-      misi: MISI_K3B1[huruf],
-      misiDaftar: tampilMisi(daftar),
-      mode: "sentuh",
-      render: (a) => {
-        const lapor = (k: KeadaanK3Bab1) => laporMisi(daftar, k, a.capai);
-        const selesai = (id: string) => lapor({ alat: "selesai", id });
-
-        const tempat = (mode: "A" | "B" | "C"): TabLab => ({
-          id: "tempat",
-          nama: "Lab Papan Tempat",
-          render: () => <SimulasiLabTempatK3 mode={mode} speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        });
-        const urut: TabLab = {
-          id: "urut",
-          nama: "Lab Urut",
-          render: () => <SimulasiLabUrutK3 speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        };
-        const susun = (mode: "tambah" | "kurang"): TabLab => ({
-          id: "susun",
-          nama: mode === "tambah" ? "Lab Susun Tambah" : "Lab Susun Kurang",
-          render: () => <SimulasiLabSusunK3 mode={mode} speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        });
-        const kelompok = (s: "F" | "G"): TabLab => ({
-          id: "kelompok",
-          nama: s === "F" ? "Lab Kelompok Kali" : "Lab Kelompok Kali dan Bagi",
-          render: () => <SimulasiLabKelompokK3 sub={s} speakGuru={a.speakGuru} onKeadaan={lapor} />,
-        });
-        const mesin = (h: "A" | "B" | "D" | "E" | "F" | "G"): TabLab => {
-          const def = MESIN[h] as DefMesin;
-          return {
-            id: "mesin",
-            nama: def.judul,
-            render: () => <SimulasiMesinBertahapK3 def={def} coba={COBA_MESIN[h]} speakGuru={a.speakGuru} onTuntas={selesai} />,
-          };
-        };
-        const skenario: TabLab = {
-          id: "skenario",
-          nama: SKENARIO[huruf].judul,
-          render: () => <SimulasiSkenario def={SKENARIO[huruf]} speakGuru={a.speakGuru} onTuntas={() => selesai(ID_SKENARIO_K3B1[huruf])} />,
-        };
-
-        const tab: TabLab[] =
-          huruf === "A"
-            ? [tempat("A"), mesin("A"), skenario]
-            : huruf === "B"
-              ? [tempat("B"), mesin("B"), skenario]
-              : huruf === "C"
-                ? [tempat("C"), urut, skenario]
-                : huruf === "D"
-                  ? [susun("tambah"), mesin("D"), skenario]
-                  : huruf === "E"
-                    ? [susun("kurang"), mesin("E"), skenario]
-                    : huruf === "F"
-                      ? [kelompok("F"), mesin("F"), skenario]
-                      : [kelompok("G"), mesin("G"), skenario];
-        return <LabBertahap tab={tab} label="Alat laboratorium bilangan" />;
-      },
-    },
-  ];
+  if (huruf === "A") return [langkahRakStokA()];
+  if (huruf === "B") return [langkahMejaLabelB()];
+  if (huruf === "C") return [langkahPapanUrutC()];
+  if (huruf === "D") return [langkahMejaPesananD()];
+  if (huruf === "E") return [langkahRakSisaE()];
+  if (huruf === "F") return [langkahRakKotakF()];
+  if (huruf === "G") return [langkahMejaBingkisanG()];
+  return [langkahRakStokA()];
 };
 
 export { misiAwalK3Bab1 };
@@ -170,7 +139,7 @@ export default function SimulasiK3Bab1Materi({
   const huruf = hurufK3B1(sub);
   return (
     <SimulasiAlur
-      judulBab={`Kelas 3 Bab 1 · Sub-Bab ${huruf}`}
+      judulBab={`Bab 1 · Sub-Bab ${huruf}`}
       langkah={langkahK3Bab1(sub)}
       speakGuru={speakGuru}
       onSelesai={onSelesai}

@@ -1,93 +1,145 @@
-import type { AdeganStory } from "./logika-story";
-import { OWL, W, anak, emo, judul, kartu, kelompokSemua, rumus, teks } from "./k3b1F-gambar";
-import { hapus, idKartu, idx, k, tambah } from "./k3b1F-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { E, W, busur, emo, garisBilangan, judul, kartu, kotak, kotakIsi, lantai, papan, rakKayu, tanda, teks, tokoh } from "./k3b1F-gambar";
+import { bersih, k, sorotkan, tambah, ubah } from "./k3b1F-bantu";
 
-/* ------------------------------ 9. Empat langkah mengalikan ------------------------------ */
-const SUARA_L1 = "Ada empat langkah untuk menyelesaikan soal perkalian. Mari kita ingat satu per satu.";
-const SUARA_L2 = "Langkah pertama, cari tahu ada berapa banyak kelompok. Hitung piring, kotak, atau vasnya.";
-const SUARA_L3 = "Langkah kedua, cari tahu berapa isi tiap kelompok. Hitung benda di dalam satu kelompok saja.";
-const SUARA_L4 = "Langkah ketiga, tulis perkaliannya atau jumlah berulangnya. Pilih yang paling mudah bagimu.";
-const SUARA_L5 = "Langkah keempat, hitung hasilnya, lalu sebutkan jawabannya dengan satuan.";
-const LANGKAH = ["1. cari banyak kelompok", "2. cari isi tiap kelompok", "3. tulis perkalian atau jumlah berulang", "4. hitung hasil dan beri satuan"];
-const WARNA_L = [W.hijauMuda, W.langit, W.pink, W.krem];
-const KARTU_L = (i: number) => kartu(`ln${i}`, 14, 34 + i * 40, 272, 32, WARNA_L[i], [LANGKAH[i]], 10);
+/*
+ * Cerita orisinal IGIL "Telur Bu Mirna" (Kelas 3 Bab 1 Sub-Bab F, perkalian sampai seratus), Toko Kelontong Pak Joko.
+ * Naskah suara dari naskah/story-naskah-k3b1f.md. Bagian ini: lompat hitung, cerita enam kotak pensil, dan penutup (jembatan ke Sub-Bab G).
+ */
 
-export const ADEGAN_EMPAT_LANGKAH: AdeganStory = {
-  id: "empat-langkah",
-  judul: "Empat langkah mengalikan",
-  sumber: "Materi: cara mengalikan",
-  latar: "#FFFBEB",
-  ketukan: [
-    k(SUARA_L1, tambah(0, judul("Empat langkah mengalikan")), tambah(idx(SUARA_L1, "empat"), emo("lm", 150, 110, "\u{1F9E9}", 48))),
-    k(SUARA_L2, hapus(0, "lm"), tambah(idx(SUARA_L2, "pertama,"), ...KARTU_L(0))),
-    k(SUARA_L3, tambah(idx(SUARA_L3, "kedua,"), ...KARTU_L(1))),
-    k(SUARA_L4, tambah(idx(SUARA_L4, "ketiga,"), ...KARTU_L(2))),
-    k(SUARA_L5, tambah(idx(SUARA_L5, "keempat,"), ...KARTU_L(3))),
-  ],
-};
+/* ------------------------------ 7. Lompat hitung ------------------------------ */
+const SUARA_L1 = "Salsa menghitung kali dua dengan lompatan: dua, empat, enam, delapan, sepuluh.";
+const SUARA_L2 = "Tiap lompatan menambah banyak yang sama. Lima lompatan sebesar dua berarti sepuluh.";
+const SUARA_L3 = "Lompat hitung membantu mengingat perkalian dengan cepat.";
 
-/* ------------------------------ 10. Apel Halim: empat kali tujuh ------------------------------ */
-const SUARA_A1 = "Halim menata apel di atas piring. Ada empat piring, dan tiap piring berisi tujuh apel.";
-const SUARA_A2 = "Jumlahkan apelnya. Tujuh tambah tujuh sama dengan empat belas.";
-const SUARA_A3 = "Tambah piring ketiga. Tujuh tambah tujuh tambah tujuh sama dengan dua puluh satu.";
-const SUARA_A4 = "Tambah piring keempat. Tujuh tambah tujuh tambah tujuh tambah tujuh sama dengan dua puluh delapan.";
-const SUARA_A5 = "Dengan perkalian, empat kali tujuh sama dengan dua puluh delapan. Jadi apel Halim ada dua puluh delapan. Perkalian membuat hitungan jadi lebih singkat.";
-const PS7 = (n: number) => rumus("ps", 150, `${Array.from({ length: n }, () => "7").join(" + ")} = ${7 * n}`, 11, W.ungu);
+/** Garis bilangan nol sampai sepuluh: titik v ada di x = 30 + 24 v, pada tinggi 120. */
+const xv = (v: number): number => 30 + v * 24;
 
-export const ADEGAN_APEL_HALIM: AdeganStory = {
-  id: "apel-halim",
-  judul: "Apel Halim: empat kali tujuh",
-  sumber: "Materi: empat kali tujuh",
-  latar: "#FEF2F2",
-  ketukan: [
-    k(SUARA_A1, tambah(0, judul("Apel Halim")), tambah(idx(SUARA_A1, "Halim"), ...anak("halim", 30, 150)), tambah(idx(SUARA_A1, "empat"), ...kelompokSemua(4, 7, "apel"))),
-    k(SUARA_A2, tambah(idx(SUARA_A2, "sama"), PS7(2))),
-    k(SUARA_A3, tambah(idx(SUARA_A3, "sama"), PS7(3))),
-    k(SUARA_A4, tambah(idx(SUARA_A4, "sama"), PS7(4))),
-    k(SUARA_A5, tambah(idx(SUARA_A5, "Dengan"), rumus("eq", 178, "4 × 7 = 28")), tambah(idx(SUARA_A5, "Jadi"), emo("ok", 250, 178, "✅", 24))),
-  ],
-};
-
-/* ------------------------------ 11. Soal cerita: kelereng Igil ------------------------------ */
-const SUARA_S1 = "Sekarang soal cerita. Igil memasukkan empat kelereng ke setiap kotak. Ada lima kotak. Kita pakai empat langkah tadi.";
-const SUARA_S2 = "Langkah pertama, banyak kelompoknya lima. Langkah kedua, isi tiap kelompoknya empat.";
-const SUARA_S3 = "Langkah ketiga, tulis perkaliannya. Lima kali empat sama dengan dua puluh.";
-const SUARA_S4 = "Langkah keempat, jawabannya dengan satuan. Semuanya ada dua puluh kelereng.";
-const SUARA_S5 = "Jadi, Igil punya dua puluh kelereng di dalam lima kotak itu.";
-
-export const ADEGAN_SOAL_IGIL: AdeganStory = {
-  id: "soal-igil",
-  judul: "Soal cerita: kelereng Igil",
-  sumber: "Materi: soal cerita",
+export const ADEGAN_LOMPAT_HITUNG: AdeganStory = {
+  id: "lompat-hitung",
+  judul: "Lompat hitung kali dua",
+  sumber: "Materi: lompat hitung pada garis bilangan",
   latar: "#F0F9FF",
   ketukan: [
-    k(SUARA_S1, tambah(0, judul("Soal cerita")), tambah(idx(SUARA_S1, "Igil"), ...anak("igil", 30, 150)), tambah(idx(SUARA_S1, "Ada"), ...kelompokSemua(5, 4, "kelereng"))),
     k(
-      SUARA_S2,
-      tambah(idx(SUARA_S2, "pertama,"), ...kartu("sk", 14, 114, 136, 24, W.langit, ["banyak kelompok: 5"], 9)),
-      tambah(idx(SUARA_S2, "kedua,"), ...kartu("si", 154, 114, 136, 24, W.pink, ["isi tiap kelompok: 4"], 9)),
+      SUARA_L1,
+      tambah(0, judul("Lompat Dua-Dua"), garisBilangan("gb", 30, 270, 120), ...tanda("t0", xv(0), 120, "0", 10, W.biru), ...tokoh("sl", 40, 184, "Salsa")),
+      tambah("kali", teks("kl", 150, 52, "kali 2", 12, W.ungu)),
+      tambah("dua@2", busur("b1", xv(0), xv(2), 118, 22), ...tanda("t2", xv(2), 120, "2")),
+      tambah("empat,", busur("b2", xv(2), xv(4), 118, 22), ...tanda("t4", xv(4), 120, "4")),
+      tambah("enam,", busur("b3", xv(4), xv(6), 118, 22), ...tanda("t6", xv(6), 120, "6")),
+      tambah("delapan,", busur("b4", xv(6), xv(8), 118, 22), ...tanda("t8", xv(8), 120, "8")),
+      tambah("sepuluh.", busur("b5", xv(8), xv(10), 118, 22), ...tanda("t10", xv(10), 120, "10")),
     ),
-    k(SUARA_S3, tambah(idx(SUARA_S3, "Lima"), rumus("eq", 160, "5 × 4 = 20"))),
-    k(SUARA_S4, tambah(idx(SUARA_S4, "Semuanya"), teks("jw", 190, 186, "Jawab: 20 kelereng", 12, W.hijau))),
-    k(SUARA_S5, hapus(0, ...idKartu("sk"), ...idKartu("si")), tambah(idx(SUARA_S5, "Jadi,"), emo("ok", 150, 126, "✅", 26))),
+    k(
+      SUARA_L2,
+      tambah("menambah", ...[0, 1, 2, 3, 4].map((i) => teks(`p${i}`, xv(2 * i + 1), 100, "+2", 9, W.hijau))),
+      tambah("Lima", teks("n5", 150, 74, "5 lompatan", 11, W.merah)),
+      tambah("dua", teks("n2", 150, 88, "tiap lompatan 2", 8.4, W.hijau)),
+      tambah("sepuluh.", teks("hs", 170, 160, "5 × 2 = 10", 18, W.merah)),
+    ),
+    k(
+      SUARA_L3,
+      bersih(0),
+      tambah(0, judul("Kali Dua dengan Cepat"), ...tokoh("sl", 40, 184, "Salsa")),
+      tambah("membantu", emo("lm", 40, 130, E.lampu, 22)),
+      tambah("mengingat", ...[2, 4, 6, 8, 10].flatMap((v, i) => kartu(`kr${i}`, 36 + i * 50, 66, 40, 34, W.krem, [String(v)], 16))),
+      tambah("cepat.", emo("kt", 258, 130, E.kilat, 26)),
+      ubah("cepat.", { id: "sl", isi: E.senyum }),
+    ),
   ],
 };
 
-/* ------------------------------ 12. Soal cerita: bintang Malosi ------------------------------ */
-const SUARA_Q1 = "Malosi menata bintang pada tiga kotak. Tiap kotak berisi enam bintang. Berapa bintang semuanya?";
-const SUARA_Q2 = "Banyak kelompoknya tiga, isi tiap kelompoknya enam. Kalimat perkaliannya tiga kali enam.";
-const SUARA_Q3 = "Enam tambah enam tambah enam sama dengan delapan belas. Jadi tiga kali enam sama dengan delapan belas.";
-const SUARA_Q4 = "Jadi, bintang Malosi semuanya ada delapan belas. Jangan lupa menyebut satuannya, yaitu bintang.";
+/* ------------------------------ 8. Cerita enam kotak pensil ------------------------------ */
+const SUARA_C1 = "Di toko ada enam kotak pensil, tiap kotak berisi sepuluh pensil. Berapa pensilnya?";
+const SUARA_C2 = "Enam kali sepuluh: sepuluh, dua puluh, tiga puluh, empat puluh, lima puluh, enam puluh.";
+const SUARA_C3 = "Pensilnya ada enam puluh buah, tidak lebih dari seratus.";
 
-export const ADEGAN_SOAL_MALOSI: AdeganStory = {
-  id: "soal-malosi",
-  judul: "Soal cerita: bintang Malosi",
-  sumber: "Materi: soal cerita",
+/** Enam kotak pensil di rak: tiga kolom, dua baris. Tiap kotak sepuluh pensil. Id `kp0`..`kp5`. */
+const POSISI_KP: [number, number][] = [
+  [13, 70],
+  [107, 70],
+  [201, 70],
+  [13, 115],
+  [107, 115],
+  [201, 115],
+];
+const kp = (i: number): Obj[] => kotakIsi(`kp${i}`, POSISI_KP[i][0], POSISI_KP[i][1], 10, 10, 8, "pensil", "#FDE68A");
+const ID_KP = [0, 1, 2, 3, 4, 5].map((i) => `kp${i}`);
+const SEMUA_KP = [0, 1, 2, 3, 4, 5].flatMap(kp);
+
+export const ADEGAN_CERITA_KALI: AdeganStory = {
+  id: "cerita-kali",
+  judul: "Enam kotak pensil di rak",
+  sumber: "Materi: cerita perkalian",
   latar: "#FFFBEB",
   ketukan: [
-    k(SUARA_Q1, tambah(0, judul("Soal cerita lagi")), tambah(idx(SUARA_Q1, "Malosi"), ...anak("malosi", 30, 134)), tambah(idx(SUARA_Q1, "tiga"), ...kelompokSemua(3, 6, "bintang"))),
-    k(SUARA_Q2, tambah(idx(SUARA_Q2, "perkaliannya"), rumus("eq", 120, "3 × 6"))),
-    k(SUARA_Q3, tambah(idx(SUARA_Q3, "sama"), rumus("ps", 100, "6 + 6 + 6 = 18", 12, W.ungu)), tambah(idx(SUARA_Q3, "tiga"), rumus("eq", 120, "3 × 6 = 18"))),
-    k(SUARA_Q4, tambah(idx(SUARA_Q4, "Jadi,"), ...kartu("jb", 70, 142, 200, 26, W.emas, ["Jawab: 18 bintang"], 11)), tambah(idx(SUARA_Q4, "semuanya"), emo("ow", 262, 100, OWL, 26))),
+    k(
+      SUARA_C1,
+      tambah(0, judul("Rak Pensil"), ...rakKayu("rp", 6, 44, 288, 90, 2)),
+      tambah("enam", teks("n6", 150, 36, "6 kotak", 10, W.ungu)),
+      tambah("kotak", ...SEMUA_KP),
+      tambah("sepuluh", teks("n10", 150, 152, "10 pensil", 11, W.merah)),
+      tambah("Berapa", ...tokoh("pj", 270, 184, "Pak Joko"), emo("tq", 270, 140, E.tanya, 20)),
+    ),
+    k(
+      SUARA_C2,
+      ubah("sepuluh:", { id: "n10", isi: "6 × 10", u: 13 }),
+      tambah("sepuluh@2", teks("c0", 56, 66, "10", 11, W.merah)),
+      tambah("dua", teks("c1", 150, 66, "20", 11, W.merah)),
+      tambah("tiga", teks("c2", 244, 66, "30", 11, W.merah)),
+      tambah("empat", teks("c3", 56, 111, "40", 11, W.merah)),
+      tambah("lima", teks("c4", 150, 111, "50", 11, W.merah)),
+      tambah("enam@2", teks("c5", 244, 111, "60", 11, W.merah)),
+    ),
+    k(
+      SUARA_C3,
+      sorotkan("enam", ...ID_KP),
+      ubah("enam", { id: "n10", isi: "60 pensil", u: 15, warna: W.hijau }),
+      tambah("tidak", teks("bt", 150, 174, "tidak lebih dari 100", 10, W.ungu)),
+      tambah("seratus.", emo("ok", 222, 172, E.benar, 18)),
+    ),
+  ],
+};
+
+/* ------------------------------ 9. Penutup: jembatan ke Sub-Bab G ------------------------------ */
+const SUARA_N1 = "Raka menepati taruhannya dan mengelap semua rak sampai mengilap.";
+const SUARA_N2 = "Pak Joko mengumumkan, besok hari jadi toko! Semua pelanggan akan mendapat bingkisan.";
+const SUARA_N3 = "Menurutmu, kalau dua puluh telur dibagi ke empat kotak, tiap kotak berisi berapa? Terima kasih, Raka, Salsa, Bima, Pak Joko, dan Bu Mirna!";
+
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Rak mengilap dan kabar hari jadi toko",
+  sumber: "Materi: penutup dan jembatan ke Sub-Bab G",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_N1,
+      tambah(0, judul("Taruhan Ditepati"), ...lantai("lt", 164), ...rakKayu("rk", 110, 40, 150, 112, 3)),
+      tambah("Raka", ...tokoh("rk", 50, 184, "Raka")),
+      tambah("mengelap", emo("lp", 88, 128, E.lap, 24)),
+      tambah("mengilap.", emo("k1", 140, 72, E.kilau, 20), emo("k2", 200, 112, E.kilau, 20), emo("k3", 240, 76, E.kilau, 18)),
+    ),
+    k(
+      SUARA_N2,
+      bersih(0),
+      tambah(0, judul("Pengumuman Toko"), ...lantai("lt", 164), kotak("pt", 110, 44, 90, 120, "#B7814A", "#6B4423", { rx: 3, tebal: 2, z: 0 })),
+      tambah("Pak", ...tokoh("pj", 60, 184, "Pak Joko")),
+      tambah("besok", ...papan("pg", 118, 60, 74, 36, "HARI JADI TOKO", "#FEF9C3", 7)),
+      tambah("pelanggan", emo("pl", 240, 150, E.senyum, 26)),
+      tambah("bingkisan.", emo("g1", 232, 100, "\u{1F381}", 26), emo("g2", 262, 110, "\u{1F381}", 22)),
+    ),
+    k(
+      SUARA_N3,
+      bersih(0),
+      tambah(0, judul("Sampai Jumpa!"), ...lantai("lt", 164)),
+      tambah("dua", teks("t20", 150, 52, "20 telur", 16, W.merah)),
+      tambah("empat", ...[0, 1, 2, 3].map((i) => kotak(`eb${i}`, 22 + i * 68, 70, 52, 30, W.krem, W.coklat, { rx: 4, tebal: 1.6 })), teks("n4", 150, 124, "4 kotak", 10, W.ungu)),
+      tambah("berapa?", ...[0, 1, 2, 3].map((i) => teks(`q${i}`, 48 + i * 68, 91, "?", 18, W.merah))),
+      tambah("Raka,", ...tokoh("rk", 34, 184, "Raka")),
+      tambah("Bima,", ...tokoh("sl", 92, 184, "Salsa"), ...tokoh("bm", 150, 184, "Bima")),
+      tambah("Pak", ...tokoh("pj", 208, 184, "Pak Joko")),
+      tambah("Bu", ...tokoh("bu", 266, 184, "Bu Mirna")),
+    ),
   ],
 };

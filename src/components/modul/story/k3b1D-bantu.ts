@@ -1,5 +1,4 @@
-import type { Aksi, KetukanStory, Obj } from "./logika-story";
-import { W, kartuAngka } from "./k3b1D-gambar";
+import { posisiKata, type Aksi, type KetukanStory, type Obj } from "./logika-story";
 
 /** Penyingkat penulisan naskah Story Sub-Bab D Bab 1 Kelas 3 (khusus sub-bab ini). */
 type At = string | number | undefined;
@@ -9,51 +8,21 @@ export const tambah = (at: At, ...objs: (Obj | Obj[])[]): Aksi => ({ at, tambah:
 export const ubah = (at: At, ...u: Ubah[]): Aksi => ({ at, ubah: u });
 export const hapus = (at: At, ...ids: string[]): Aksi => ({ at, hapus: ids });
 export const bersih = (at: At = 0): Aksi => ({ at, bersih: true });
-export const k = (suara: string, ...aksi: Aksi[]): KetukanStory => ({ suara, aksi });
+/**
+ * Waktu gambar berhenti saat suara selesai, dan perkiraan detik per kata bisa lebih lambat dari suara sebenarnya.
+ * Pemicu di ujung kalimat lalu tidak pernah tercapai dan bendanya tidak tampil. Maka tiap pemicu dimajukan sebanding
+ * (pemicu pertama tetap, urutan tetap) supaya semua benda sudah tampil sebelum suara selesai.
+ */
+const SKALA_PEMICU = 0.75;
+const majukan = (suara: string, a: Aksi): Aksi => {
+  const p = posisiKata(suara, a.at);
+  return a.at === undefined || p <= 0 ? a : { ...a, at: Math.floor(p * SKALA_PEMICU) };
+};
+export const k = (suara: string, ...aksi: Aksi[]): KetukanStory => ({ suara, aksi: aksi.map((a) => majukan(suara, a)) });
 export const sorotkan = (at: At, ...ids: string[]): Aksi => ({ at, ubah: ids.map((id) => ({ id, sorot: true })) });
 export const redamkan = (at: At, ...ids: string[]): Aksi => ({ at, ubah: ids.map((id) => ({ id, sorot: false })) });
+/** Mengabu-abukan benda (kurang tampak). */
+export const pudarkan = (at: At, ...ids: string[]): Aksi => ({ at, ubah: ids.map((id) => ({ id, op: 0.25 })) });
 
-const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
-
-/** Nomor kata (mulai 0) ke-`n` yang persis sama dengan `kata`. Galat bila tidak ada, supaya salah ketik pemicu ketahuan. */
-export const idx = (suara: string, kata: string, n = 1): number => {
-  const kata2 = suara.split(/\s+/).filter(Boolean);
-  let c = 0;
-  for (let i = 0; i < kata2.length; i += 1) {
-    if (norm(kata2[i]) === norm(kata)) {
-      c += 1;
-      if (c === n) return i;
-    }
-  }
-  throw new Error(`pemicu "${kata}" ke-${n} tidak ada dalam: ${suara}`);
-};
-
-const SATU = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"];
-/** Bilangan 0 sampai 100 dieja dengan kata (suara tanpa digit). */
-export const e = (n: number): string => {
-  if (n < 10) return SATU[n];
-  if (n === 10) return "sepuluh";
-  if (n === 11) return "sebelas";
-  if (n < 20) return `${SATU[n - 10]} belas`;
-  if (n === 100) return "seratus";
-  const p = Math.floor(n / 10);
-  const s = n % 10;
-  return s === 0 ? `${SATU[p]} puluh` : `${SATU[p]} puluh ${SATU[s]}`;
-};
-
-/** Sama dengan `e` tetapi huruf pertama kapital (awal kalimat). */
-export const E = (n: number): string => e(n).charAt(0).toUpperCase() + e(n).slice(1);
-
-/** Pilihan kartu (id c1..cn), pojok kiri-atas di tinggi `y`, lebar kartu menyesuaikan jumlah; `u` = ukuran huruf. Untuk lambang (angka) atau kata pendek. */
-export const pilihKata = (y: number, isi: string[], u = 13): ReturnType<typeof kartuAngka> => {
-  const n = isi.length;
-  const w = n === 2 ? 120 : 88;
-  const jarak = n === 2 ? 20 : 6;
-  const x0 = (300 - (n * w + (n - 1) * jarak)) / 2;
-  return isi.flatMap((t, i) => kartuAngka(`c${i + 1}`, x0 + i * (w + jarak), y, t, [W.hijauMuda, W.pink, W.langit][i], w, 30, u));
-};
-
-/** Id semua benda kartu pilihan (c1..cn) untuk dihapus. */
-export const idPilihan = (n: number): string[] => Array.from({ length: n }, (_, i) => [`c${i + 1}-k`, `c${i + 1}-t`]).flat();
-/** Id kartu dari `kartu(id, ...)` dengan `b` baris teks. */
-export const idKartu = (id: string, b = 1): string[] => [`${id}-k`, ...Array.from({ length: b }, (_, i) => `${id}-t${i}`)];
+/** Id berurutan `${s}${dari}` sampai `${s}${sampai}`. */
+export const ids = (s: string, dari: number, sampai: number): string[] => Array.from({ length: sampai - dari + 1 }, (_, q) => `${s}${dari + q}`);

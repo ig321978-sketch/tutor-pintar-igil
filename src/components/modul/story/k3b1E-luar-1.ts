@@ -1,125 +1,150 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { EMO, MIN, OWL, W, buatSusun, emo, judul, kartu, teks } from "./k3b1E-gambar";
-import { bersih, hapus, idPilihan, idx, k, pilihKata, redamkan, sorotkan, tambah, ubah } from "./k3b1E-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, bulat, emo, garis, judul, kapur, kartu, kotak, panah, papanKapur, teks, tokoh, tokoLatar } from "./k3b1E-gambar";
+import { bersih, k, tambah, ubah } from "./k3b1E-bantu";
 
-export const NAMA_METODE_ID = ["Pengurangan Bersusun", "Menghitung Naik", "Meminjam"];
-export const WARNA_METODE = [W.hijauMuda, W.langit, W.pink];
+/*
+ * Cerita orisinal IGIL "Sisa Stok Pak Anto" (Kelas 3 Bab 1 Sub-Bab E), video metode global.
+ * Naskah suara dari naskah/story-naskah-k3b1e.md. Bagian ini: pembuka (tiga catatan lama di laci kasir), Standard Subtraction (Pengurangan Bersusun), dan terapannya.
+ */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number): Obj[] => kartu("hd", 6, 4, 288, 22, WARNA_METODE[i], [`Metode ${i + 1}: ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Standard Subtraction", "Counting Up", "Regrouping"] as const;
+export const NAMA_METODE_ID = ["Pengurangan Bersusun", "Menghitung Naik", "Pinjam Puluhan"] as const;
 
-const cap = (isi: string) => teks("cp", 150, 198, isi, 10.5, W.merah);
+/** Susunan angka kecil di papan kapur kiri (papan "pk" di (14, 34, 150, 120)): bilangan atas dan bawah sejajar kanan pada x=112. */
+const susunKecil = (id: string, atas: string, bawah: string) => [
+  kapur(`${id}-a`, 112, 76, atas, 26, { anchor: "end" }),
+  kapur(`${id}-m`, 70, 106, "-", 26),
+  kapur(`${id}-b`, 112, 106, bawah, 26, { anchor: "end" }),
+  garis(`${id}-g`, 58, 113, 64, 0, "#F8FAFC", 1.8, { z: 3 }),
+];
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara punya cara lain untuk belajar pengurangan. Di video ini kita lihat tiga metode dari luar.";
-const SUARA_O2 = "Tiga metode itu bernama Pengurangan Bersusun, Menghitung Naik, dan Meminjam.";
-const SUARA_O3 = "Semua metode ini menjawab satu pertanyaan. Bagaimana cara mengurangkan dengan mudah dan tepat?";
-const SUARA_O4 = "Kita memakai gambar di layar. Kamu cukup mengetuk, melihat dengan teliti, dan memilih jawaban.";
-const SUARA_O5 = "Ada yang mulai dari satuan, ada yang naik dari bilangan kecil, dan ada yang membuka satu puluhan. Siap? Ayo kita mulai dengan metode pertama.";
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Di laci kasir, Bima menemukan tiga catatan lama tentang cara menghitung sisa barang.";
+const SUARA_O2 = "Pak Anto tersenyum. Itu tiga cara pedagang menghitung sisa dagangan dengan tepat.";
+const SUARA_O3 = "Tiga cara itu: Standard Subtraction, Counting Up, dan Regrouping.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Pengurangan Bersusun, Menghitung Naik, dan Pinjam Puluhan.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Tiga metode dari luar untuk pengurangan",
-  sumber: "Metode luar: pembuka",
+  judul: "Tiga catatan lama di laci kasir",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_O1, tambah(0, judul("Tiga metode dari luar")), tambah(idx(SUARA_O1, "negara"), emo("gl", 150, 110, "\u{1F30D}", 50)), tambah(idx(SUARA_O1, "tiga"), ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11))),
+    k(
+      SUARA_O1,
+      bersih(0),
+      tambah(0, judul("Laci Kasir"), ...tokoLatar("tk"), kotak("mj", 14, 96, 160, 40, W.kayu, W.coklat, { rx: 3, tebal: 2, z: 0 })),
+      tambah("kasir,", kotak("ms", 24, 68, 50, 28, "#94A3B8", W.tinta, { rx: 3, tebal: 1.6, z: 1 }), teks("mt", 49, 86, "KASIR", 7, W.putih, { z: 2 }), kotak("lc", 84, 106, 70, 22, "#E7C98A", W.coklat, { rx: 3, tebal: 1.6, z: 1 }), bulat("lh", 119, 117, 3, W.coklat, W.biru, { z: 2 })),
+      tambah("Bima", ...tokoh("bm", 230, 172, "Bima")),
+      tambah("tiga", teks("n3", 240, 50, "3 catatan", 10, W.ungu, { z: 2 }), ...[0, 1, 2].flatMap((i) => kartu(`c${i}`, 188 + i * 36, 60, 32, 40, W.krem, ["catatan"], 6))),
+      ...[0, 1, 2].map((i) => ubah("lama", { id: `c${i}-k`, warna: W.kuning })),
+    ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Tiga metode")),
-      tambah(idx(SUARA_O2, "Pengurangan"), ...kartu("m0", 20, 40, 260, 38, WARNA_METODE[0], [`1. ${NAMA_METODE_ID[0]}`], 11)),
-      tambah(idx(SUARA_O2, "Menghitung"), ...kartu("m1", 20, 88, 260, 38, WARNA_METODE[1], [`2. ${NAMA_METODE_ID[1]}`], 11)),
-      tambah(idx(SUARA_O2, "Meminjam."), ...kartu("m2", 20, 136, 260, 38, WARNA_METODE[2], [`3. ${NAMA_METODE_ID[2]}`], 11)),
+      tambah("tersenyum.", ...tokoh("pa", 40, 172, "Pak Anto"), emo("sy", 66, 150, E.senyum, 16)),
+      tambah("tiga", teks("t3", 100, 64, "3 cara", 10, W.ungu, { z: 2 })),
+      tambah("pedagang", emo("kd", 100, 160, E.kardus, 20)),
+      tambah("tepat.", emo("ok", 140, 160, E.benar, 20)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu pertanyaan")),
-      tambah(idx(SUARA_O3, "satu"), emo("i1", 60, 84, "➖", 34), emo("i2", 150, 84, "❓", 34), emo("i3", 240, 84, "\u{1F440}", 34)),
-      tambah(idx(SUARA_O3, "Bagaimana"), ...kartu("iq", 20, 112, 260, 52, W.emas, ["bagaimana cara mengurangkan", "dengan mudah dan tepat?"], 10)),
+      tambah(0, judul("Tiga Cara Tadi"), ...tokoLatar("tk"), teks("n3", 252, 44, "3 cara", 10, W.ungu, { z: 2 })),
+      tambah("Standard", teks("m0", 20, 62, "1. Standard Subtraction", 13, W.biru, { anchor: "start", z: 2 }), emo("i0", 270, 64, E.catat, 22)),
+      tambah("Counting", teks("m1", 20, 108, "2. Counting Up", 13, W.biru, { anchor: "start", z: 2 }), emo("i1", 270, 110, "\u{1F4C8}", 22)),
+      tambah("Regrouping.", teks("m2", 20, 154, "3. Regrouping", 13, W.biru, { anchor: "start", z: 2 }), emo("i2", 270, 156, E.kardus, 22)),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Alat bantu hari ini")),
-      tambah(idx(SUARA_O4, "layar."), emo("a1", 70, 100, "\u{1F4E6}", 36), emo("a2", 150, 100, "\u{1F522}", 36), emo("a3", 230, 100, "\u{1F4CF}", 36)),
-      tambah(idx(SUARA_O4, "mengetuk,"), emo("tg", 150, 150, "\u{1F446}", 24)),
-      tambah(idx(SUARA_O4, "memilih"), teks("al-t", 150, 184, "ketuk, lihat, lalu pilih", 10, W.ungu)),
-    ),
-    k(
-      SUARA_O5,
-      bersih(0),
-      tambah(0, judul("Susun, naik, dan buka")),
-      tambah(idx(SUARA_O5, "mulai"), teks("kt0", 150, 70, "mulai dari satuan", 14, W.ungu)),
-      tambah(idx(SUARA_O5, "naik"), teks("kt1", 150, 100, "naik dari bilangan kecil", 14, W.ungu)),
-      tambah(idx(SUARA_O5, "membuka"), teks("kt2", 150, 130, "membuka satu puluhan", 14, W.ungu)),
-      tambah(idx(SUARA_O5, "pertama."), emo("ow", 150, 182, OWL, 30)),
+      tambah("Pengurangan", teks("q0", 20, 78, "Pengurangan Bersusun", 10, W.ungu, { anchor: "start", z: 2 })),
+      tambah("Menghitung", teks("q1", 20, 124, "Menghitung Naik", 10, W.ungu, { anchor: "start", z: 2 })),
+      tambah("Pinjam", teks("q2", 20, 170, "Pinjam Puluhan", 10, W.ungu, { anchor: "start", z: 2 })),
     ),
   ],
 };
 
-/* ------------------------------ 2. Pengurangan Bersusun: konsep ------------------------------ */
-const SB = buatSusun(73, 28);
-const SUARA_B1 = "Metode pertama bernama Pengurangan Bersusun. Bilangan disusun ke bawah, puluhan lurus dengan puluhan dan satuan lurus dengan satuan.";
-const SUARA_B2 = "Kita mulai dari satuan. Tiga kurang dari delapan, jadi kita ambil satu puluhan dari tujuh puluhan.";
-const SUARA_B3 = "Tiga belas dikurangi delapan sama dengan lima.";
-const SUARA_B4 = "Lanjut ke puluhan. Enam dikurangi dua sama dengan empat.";
-const SUARA_B5 = "Itulah Pengurangan Bersusun. Mulai dari satuan, ambil satu puluhan jika perlu, lalu kurangkan puluhan.";
+/* ------------------------------ Standard Subtraction: konsep ------------------------------ */
+const SUARA_C1 = "Cara pertama, Standard Subtraction, atau Pengurangan Bersusun.";
+const SUARA_C2 = "Bilangan ditulis bersusun, puluhan lurus dengan puluhan dan satuan lurus dengan satuan.";
+const SUARA_C3 = "Kurangi dari satuan, lalu puluhan.";
+const SUARA_C4 = "Hasilnya adalah sisa.";
 
 export const ADEGAN_LUAR_SUSUN: AdeganStory = {
   id: "luar-susun",
-  judul: "Pengurangan Bersusun: mulai dari satuan",
-  sumber: "Metode luar: Pengurangan Bersusun",
-  latar: "#F0FDF4",
+  judul: "Standard Subtraction: Pengurangan Bersusun",
+  sumber: "Metode global: Standard Subtraction (konsep)",
+  latar: "#FEFCE8",
   ketukan: [
-    k(SUARA_B1, tambah(0, ...kepala(0)), tambah(idx(SUARA_B1, "Bilangan"), ...SB.kerangka()), tambah(idx(SUARA_B1, "disusun"), ...SB.atas()), tambah(idx(SUARA_B1, "bawah,"), ...SB.bawah())),
-    k(SUARA_B2, sorotkan(idx(SUARA_B2, "satuan."), "sg-a0", "sg-b0"), tambah(idx(SUARA_B2, "ambil"), ...SB.coret(), SB.puluhBaru(), SB.satuBaru())),
-    k(SUARA_B3, redamkan(0, "sg-a0", "sg-b0"), tambah(idx(SUARA_B3, "lima."), SB.hasil0())),
-    k(SUARA_B4, sorotkan(idx(SUARA_B4, "puluhan."), "sg-a1", "sg-b1"), tambah(idx(SUARA_B4, "empat."), SB.hasil1())),
-    k(SUARA_B5, redamkan(0, "sg-a1", "sg-b1"), tambah(idx(SUARA_B5, "Mulai"), ...kartu("rk", 30, 156, 240, 28, W.emas, ["mulai dari satuan, ambil jika perlu"], 9.5)), tambah(idx(SUARA_B5, "kurangkan"), cap(`73 ${MIN} 28 = 45`))),
+    k(
+      SUARA_C1,
+      bersih(0),
+      tambah(0, judul("Cara Pertama"), ...tokoLatar("tk")),
+      tambah("Standard", ...kartu("nm", 50, 42, 200, 30, W.krem, ["Standard Subtraction"], 13)),
+      tambah("Pengurangan", teks("nid", 150, 108, "Pengurangan Bersusun", 12, W.ungu, { z: 2 })),
+      tambah("Bersusun.", emo("ic", 150, 154, E.catat, 34)),
+    ),
+    k(
+      SUARA_C2,
+      bersih(0),
+      tambah(0, judul("Susun ke Bawah"), ...tokoLatar("tk"), ...papanKapur("pk", 14, 34, 150, 120)),
+      tambah("bersusun,", ...susunKecil("sn", "47", "23")),
+      tambah("puluhan", kotak("cp", 82, 56, 16, 62, "#FACC15", undefined, { op: 0.3, putus: true, z: 2 }), ...kartu("kp", 176, 50, 118, 30, W.kuning, ["puluhan lurus"], 12)),
+      tambah("satuan", kotak("cs", 98, 56, 15, 62, "#F97316", undefined, { op: 0.3, putus: true, z: 2 }), ...kartu("ks", 176, 100, 118, 30, W.hijauMuda, ["satuan lurus"], 12)),
+    ),
+    k(
+      SUARA_C3,
+      tambah("satuan,", bulat("n1", 105, 44, 8, W.merah, W.merahTua, { z: 4 }), teks("n1t", 105, 47.5, "1", 10, W.putih, { z: 5 })),
+      tambah("puluhan.", bulat("n2", 86, 44, 8, W.hijau, W.hijauTua, { z: 4 }), teks("n2t", 86, 47.5, "2", 10, W.putih, { z: 5 }), panah("pn", 97, 44, -3, 0, W.kapur, 1.6)),
+    ),
+    k(
+      SUARA_C4,
+      tambah(0, kapur("hs", 112, 142, "24", 26, { anchor: "end", warna: "#FDE047" })),
+      tambah("sisa.", emo("ok", 230, 150, E.benar, 24)),
+    ),
   ],
 };
 
-/* ------------------------------ 3. Pengurangan Bersusun: terapan ------------------------------ */
-const ST = buatSusun(56, 29);
-const SUARA_R1 = "Terapkan pada soal ini. Igil punya lima puluh enam balon, dan dua puluh sembilan balon pecah.";
-const SUARA_R2 = "Berapa sisa balon Igil? Ketuk jawaban yang tepat.";
-const SUARA_R3 = "Betul! Enam kurang dari sembilan, jadi kita ambil satu puluhan. Enam belas dikurangi sembilan sama dengan tujuh, dan empat dikurangi dua sama dengan dua.";
-const SUARA_R4 = "Dengan Pengurangan Bersusun, kita selalu mulai dari satuan. Sisa balon Igil dua puluh tujuh.";
+/* ------------------------------ Standard Subtraction: terapan ------------------------------ */
+const SUARA_T1 = "Raka mengurangi delapan puluh sembilan dengan lima puluh tiga. Sembilan dikurangi tiga enam; delapan dikurangi lima tiga.";
+const SUARA_T2 = "Sisanya tiga puluh enam.";
+const SUARA_T3 = "Cocok kalau tiap angka atas lebih besar atau sama dengan angka bawahnya.";
+const SUARA_T4 = "Kurang cocok kalau ada angka atas yang lebih kecil, karena harus meminjam.";
 
 export const ADEGAN_LUAR_SUSUN_TERAPAN: AdeganStory = {
   id: "luar-susun-terapan",
-  judul: "Pengurangan Bersusun: balon Igil",
-  sumber: "Metode luar: Pengurangan Bersusun",
-  latar: "#ECFCCB",
-  ketukan: [
-    k(SUARA_R1, tambah(0, ...kepala(0)), tambah(idx(SUARA_R1, "Terapkan"), ...ST.kerangka()), tambah(idx(SUARA_R1, "enam"), ...ST.atas()), tambah(idx(SUARA_R1, "balon,"), emo("bl", 225, 108, EMO.balon, 34)), tambah(idx(SUARA_R1, "sembilan"), ...ST.bawah())),
-    k(SUARA_R2, tambah(idx(SUARA_R2, "Berapa"), teks("tanya", 205, 64, `berapa 56 ${MIN} 29?`, 12, W.ungu)), tambah(idx(SUARA_R2, "jawaban"), ...pilihKata(150, ["37", "27", "35"], 16))),
-    k(SUARA_R3, sorotkan(idx(SUARA_R3, "Betul!"), "c2-k"), tambah(idx(SUARA_R3, "ambil"), ...ST.coret(), ST.puluhBaru(), ST.satuBaru()), tambah(idx(SUARA_R3, "tujuh,"), ST.hasil0()), tambah(idx(SUARA_R3, "dua", 2), ST.hasil1())),
-    k(SUARA_R4, redamkan(0, "c2-k"), hapus(0, "tanya", ...idPilihan(3)), tambah(idx(SUARA_R4, "Sisa"), cap(`56 ${MIN} 29 = 27`))),
-  ],
-};
-
-/* ------------------------------ 9. Ringkasan metode luar ------------------------------ */
-const SUARA_Y1 = "Mari kita ringkas tiga metode dari luar. Semuanya membantu kita mengurangkan dengan tepat.";
-const SUARA_Y2 = "Metode Pengurangan Bersusun, mulai dari satuan dan ambil satu puluhan jika perlu.";
-const SUARA_Y3 = "Metode Menghitung Naik, naik dari bilangan yang dikurangi sampai bilangan semula.";
-const SUARA_Y4 = "Metode Meminjam, membuka satu puluhan menjadi sepuluh satuan.";
-const SUARA_Y5 = "Pilih metode yang kamu suka, lalu periksa dengan metode lain. Hasilnya harus sama.";
-
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan tiga metode dari luar",
-  sumber: "Metode luar: ringkasan",
+  judul: "Raka mengurangi delapan puluh sembilan dengan lima puluh tiga",
+  sumber: "Metode global: Standard Subtraction (terapan)",
   latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_Y1, tambah(0, judul("Ringkasan")), tambah(idx(SUARA_Y1, "ringkas"), ...kartu("r0", 14, 34, 272, 30, W.emas, ["3 metode dari luar"], 11))),
-    k(SUARA_Y2, tambah(idx(SUARA_Y2, "Pengurangan"), ...kartu("r1", 14, 72, 272, 34, WARNA_METODE[0], [NAMA_METODE_ID[0], "mulai dari satuan, ambil jika perlu"], 9.2))),
-    k(SUARA_Y3, tambah(idx(SUARA_Y3, "Menghitung"), ...kartu("r2", 14, 114, 272, 34, WARNA_METODE[1], [NAMA_METODE_ID[1], "naik sampai bilangan semula"], 9.2))),
-    k(SUARA_Y4, tambah(idx(SUARA_Y4, "Meminjam,"), ...kartu("r3", 14, 156, 272, 34, WARNA_METODE[2], [NAMA_METODE_ID[2], "buka puluhan jadi 10 satuan"], 9.2))),
-    k(SUARA_Y5, bersih(0), tambah(0, judul("Hasilnya harus sama"), emo("rw", 150, 100, OWL, 54)), tambah(idx(SUARA_Y5, "sama."), emo("rk", 150, 160, "✅", 30))),
+    k(
+      SUARA_T1,
+      bersih(0),
+      tambah(0, judul("Raka Mengurangi"), ...tokoLatar("tk"), ...papanKapur("pk", 14, 34, 150, 120), ...tokoh("rk", 246, 172, "Raka")),
+      tambah("delapan", kapur("sn-a", 112, 76, "89", 26, { anchor: "end" })),
+      tambah("lima", kapur("sn-m", 70, 106, "-", 26), kapur("sn-b", 112, 106, "53", 26, { anchor: "end" }), garis("sn-g", 58, 113, 64, 0, "#F8FAFC", 1.8, { z: 3 })),
+      tambah("Sembilan", ...kartu("k1", 176, 50, 118, 28, W.kuning, ["9 - 3 = 6"], 13)),
+      tambah("delapan@2", ...kartu("k2", 176, 90, 118, 28, W.hijauMuda, ["8 - 5 = 3"], 13)),
+    ),
+    k(
+      SUARA_T2,
+      tambah(0, emo("tz", 206, 140, E.tanya, 20)),
+      tambah("enam.", kapur("hs", 112, 142, "36", 26, { anchor: "end", warna: "#FDE047" }), emo("ok", 262, 140, E.benar, 20)),
+    ),
+    k(
+      SUARA_T3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?"), ...tokoLatar("tk"), ...kartu("cc", 80, 38, 140, 26, W.hijauMuda, ["Cocok"], 13)),
+      tambah("tiap", ...papanKapur("pk", 70, 72, 160, 90), kapur("sn-a", 170, 108, "89", 26, { anchor: "end" }), kapur("sn-b", 170, 138, "53", 26, { anchor: "end" })),
+      tambah("lebih", emo("c1", 138, 84, E.benar, 16), emo("c2", 158, 84, E.benar, 16)),
+      tambah("bawahnya.", emo("sy", 262, 130, E.senyum, 24)),
+    ),
+    k(
+      SUARA_T4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?"), ...tokoLatar("tk"), ...kartu("kc", 70, 38, 160, 26, W.merahMuda, ["Kurang cocok"], 13)),
+      tambah("angka", ...papanKapur("pk", 70, 72, 160, 90), kapur("sn-a", 170, 108, "71", 26, { anchor: "end" }), kapur("sn-b", 170, 138, "28", 26, { anchor: "end" })),
+      tambah("kecil,", emo("x1", 160, 84, E.salah, 18)),
+      tambah("meminjam.", panah("pj", 244, 110, 0, -26, W.merah, 2.4), ...kartu("kj", 216, 120, 78, 24, W.krem, ["pinjam"], 10)),
+    ),
   ],
 };
-
-void ubah;

@@ -1,139 +1,119 @@
 import type { AdeganStory } from "./logika-story";
-import { W, barisNT, blok, judul, kartu, kepalaNT, kotak, nilaiTokoh, panah, susun, teks, tokoh } from "./k3b1D-gambar";
-import { E, bersih, e, hapus, idx, k, redamkan, sorotkan, tambah } from "./k3b1D-bantu";
+import { E, W, emo, judul, kapur, kotak, kotakKue, lantaiToko, meja, papanKapur, susunTeks, teks, tokoh } from "./k3b1D-gambar";
+import { k, sorotkan, tambah, ubah, hapus } from "./k3b1D-bantu";
 
-const cap = (isi: string) => teks("cp", 150, 198, isi, 10.5, W.merah);
+/*
+ * Cerita orisinal IGIL "Pesanan Bu Tuti" (Kelas 3 Bab 1 Sub-Bab D, penjumlahan sampai 100), Toko Kelontong Pak Joko.
+ * Naskah suara dari naskah/story-naskah-k3b1d.md. Bagian ini: pesanan kue di meja toko, susun pendek, dan susun panjang.
+ */
 
-/* ------------------------------ 2. Kelereng Malosi dan Kira ------------------------------ */
-const SUARA_A1 = `Malosi dan Kira bermain kelereng. Malosi punya ${e(23)} kelereng, dan Kira punya ${e(16)} kelereng.`;
-const SUARA_A2 = `Berapa jumlah semua kelereng mereka? Kita jumlahkan, yaitu ${e(23)} ditambah ${e(16)}.`;
-const SUARA_A3 = "Menjumlahkan berarti menggabungkan kelereng Malosi dengan kelereng Kira. Hasilnya adalah jumlah semua kelereng.";
-const SUARA_A4 = "Untuk menjumlahkan bilangan yang besar, kita memakai susun pendek. Mari kita pelajari langkah demi langkah.";
+/* ------------------------------ 1. Pesanan kue ------------------------------ */
+const SUARA_P1 = "Bu Tuti, panitia arisan, memesan kue untuk balai warga.";
+const SUARA_P2 = "Pak Joko menyiapkan dua kotak: dua puluh tiga kue lapis dan empat belas kue nagasari.";
+const SUARA_P3 = "Berapa jumlah kue semuanya? Raka, Salsa, dan Bima menghitungnya dengan susun.";
 
-export const ADEGAN_CERITA_KELERENG: AdeganStory = {
-  id: "cerita-kelereng",
-  judul: "Kelereng Malosi dan Kira",
-  sumber: "Materi: kelereng Malosi dan Kira",
+export const ADEGAN_PESANAN_KUE: AdeganStory = {
+  id: "pesanan-kue",
+  judul: "Pesanan kue Bu Tuti",
+  sumber: "Materi: pesanan kue di meja toko",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      SUARA_A1,
-      tambah(0, judul("Kelereng Malosi dan Kira")),
-      tambah(idx(SUARA_A1, "Malosi", 1), ...tokoh("malosi", 0)),
-      tambah(idx(SUARA_A1, "Kira", 1), ...tokoh("kira", 1)),
-      tambah(idx(SUARA_A1, "dua"), nilaiTokoh("malosi", 0, 23)),
-      tambah(idx(SUARA_A1, "enam"), nilaiTokoh("kira", 1, 16)),
+      SUARA_P1,
+      tambah(0, judul("Pesanan Kue"), ...lantaiToko("lt", 150), ...meja("mj", 76, 112, 148)),
+      tambah("Tuti,", ...tokoh("bt", 44, 184, "Bu Tuti")),
+      tambah("arisan,", emo("ct", 44, 128, E.catat, 16)),
+      tambah("memesan", emo("kq", 118, 108, E.kueLapis, 16)),
+      tambah("balai", teks("bw", 150, 42, "balai warga", 9, W.ungu)),
     ),
-    k(SUARA_A2, tambah(idx(SUARA_A2, "Berapa"), teks("soal", 150, 82, "23 + 16 = ?", 18, W.ungu))),
     k(
-      SUARA_A3,
-      tambah(idx(SUARA_A3, "menggabungkan"), panah("pa1", 74, 118, 28, -24, W.merah, 2), panah("pa2", 226, 118, -28, -24, W.merah, 2)),
-      tambah(idx(SUARA_A3, "Hasilnya"), teks("pj", 150, 150, "jumlah semua kelereng", 11, W.ungu)),
+      SUARA_P2,
+      hapus("kotak:", "kq"),
+      tambah("Joko", ...tokoh("pj", 256, 184, "Pak Joko")),
+      tambah("dua", teks("n2", 150, 58, "2 kotak", 10, W.ungu)),
+      tambah("lapis", ...kotakKue("k1", 90, 84, 56, 28, E.kueLapis, 6, 3), teks("c1", 118, 72, "23", 11, W.merah)),
+      tambah("nagasari.", ...kotakKue("k2", 154, 84, 56, 28, E.nagasari, 6, 3), teks("c2", 182, 72, "14", 11, W.merah)),
     ),
-    k(SUARA_A4, hapus(0, "pj"), tambah(idx(SUARA_A4, "susun"), ...kartu("sp", 50, 150, 200, 32, W.emas, ["susun pendek"], 13))),
+    k(
+      SUARA_P3,
+      ubah("Berapa", { id: "n2", isi: "jumlah semua?" }),
+      tambah("Raka,", ...tokoh("rk", 108, 184, "Raka")),
+      tambah("Salsa,", ...tokoh("sl", 150, 184, "Salsa")),
+      tambah("Bima", ...tokoh("bm", 192, 184, "Bima")),
+      tambah("susun.", teks("sn", 150, 140, "susun", 9, W.hijau)),
+    ),
   ],
 };
 
-/* ------------------------------ 3. Puluhan dan satuan ------------------------------ */
-const SUARA_N1 = "Setiap bilangan dua angka punya puluhan dan satuan. Satu batang mewakili satu puluhan, dan satu kotak kecil mewakili satu satuan.";
-const SUARA_N2 = `Bilangan ${e(23)} punya ${e(2)} puluhan dan ${e(3)} satuan.`;
-const SUARA_N3 = `Bilangan ${e(16)} punya ${e(1)} puluhan dan ${e(6)} satuan.`;
-const SUARA_N4 = `Sekarang kita masukkan ke tabel nilai tempat. ${E(23)} terdiri atas ${e(2)} puluhan dan ${e(3)} satuan. ${E(16)} terdiri atas ${e(1)} puluhan dan ${e(6)} satuan.`;
-const SUARA_N5 = "Angka puluhan menunjukkan banyak batang, dan angka satuan menunjukkan banyak kotak kecil.";
-const BA = blok("a", 60, 56, 23);
-const BB = blok("b", 190, 56, 16);
-
-export const ADEGAN_NILAI_TEMPAT: AdeganStory = {
-  id: "nilai-tempat",
-  judul: "Puluhan dan satuan",
-  sumber: "Materi: puluhan dan satuan",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(
-      SUARA_N1,
-      tambah(0, judul("Puluhan dan satuan")),
-      tambah(idx(SUARA_N1, "batang"), kotak("dm-p", 70, 56, 12, 46, "#60A5FA", W.biru, { rx: 2 }), teks("dm-pl", 76, 122, "satu puluhan", 9, W.biru)),
-      tambah(idx(SUARA_N1, "kotak"), kotak("dm-s", 216, 92, 10, 10, "#F87171", W.biru, { rx: 2 }), teks("dm-sl", 221, 122, "satu satuan", 9, W.biru)),
-    ),
-    k(
-      SUARA_N2,
-      bersih(0),
-      tambah(0, judul("Bilangan dua puluh tiga")),
-      tambah(idx(SUARA_N2, "puluhan"), ...BA.batang()),
-      tambah(idx(SUARA_N2, "satuan"), ...BA.satuan(), BA.label(), BA.ket()),
-    ),
-    k(SUARA_N3, tambah(idx(SUARA_N3, "puluhan"), ...BB.batang()), tambah(idx(SUARA_N3, "satuan"), ...BB.satuan(), BB.label(), BB.ket())),
-    k(
-      SUARA_N4,
-      bersih(0),
-      tambah(0, judul("Tabel nilai tempat")),
-      tambah(idx(SUARA_N4, "tabel"), ...kepalaNT()),
-      tambah(idx(SUARA_N4, "terdiri", 1) - 3, ...barisNT("a", 88, 23)),
-      tambah(idx(SUARA_N4, "terdiri", 2) - 2, ...barisNT("b", 136, 16)),
-    ),
-    k(SUARA_N5, sorotkan(idx(SUARA_N5, "puluhan"), "nt-a-t", "nt-b-t"), redamkan(idx(SUARA_N5, "satuan"), "nt-a-t", "nt-b-t"), sorotkan(idx(SUARA_N5, "satuan"), "nt-a-s", "nt-b-s"), tambah(idx(SUARA_N5, "kotak"), cap("angka = banyak blok"))),
-  ],
-};
-
-/* ------------------------------ 4. Susun pendek tanpa menyimpan ------------------------------ */
-const S1 = susun(23, 16);
-const SUARA_P1 = "Mari kita susun bilangan itu ke bawah. Puluhan lurus dengan puluhan, satuan lurus dengan satuan.";
-const SUARA_P2 = `Kita mulai dari satuan. ${E(3)} ditambah ${e(6)} sama dengan ${e(9)}.`;
-const SUARA_P3 = `Lalu puluhan. ${E(2)} ditambah ${e(1)} sama dengan ${e(3)}.`;
-const SUARA_P4 = `Jadi, ${e(23)} ditambah ${e(16)} sama dengan ${e(39)}.`;
-const SUARA_P5 = "Tidak ada satuan yang berjumlah sepuluh atau lebih, jadi tidak ada yang perlu disimpan. Inilah penjumlahan tanpa menyimpan.";
+/* ------------------------------ 2. Susun pendek ------------------------------ */
+const SUARA_S1 = "Tulis bilangan bersusun ke bawah. Puluhan lurus dengan puluhan, satuan lurus dengan satuan.";
+const SUARA_S2 = "Jumlahkan satuan dulu: tiga ditambah empat sama dengan tujuh.";
+const SUARA_S3 = "Lalu puluhan: dua ditambah satu sama dengan tiga. Jumlahnya tiga puluh tujuh.";
 
 export const ADEGAN_SUSUN_PENDEK: AdeganStory = {
   id: "susun-pendek",
-  judul: "Susun pendek tanpa menyimpan",
+  judul: "Susun pendek",
   sumber: "Materi: susun pendek",
-  latar: "#ECFEFF",
+  latar: "#ECFDF5",
   ketukan: [
-    k(SUARA_P1, tambah(0, judul("Susun pendek"), ...S1.kepala()), tambah(idx(SUARA_P1, "bilangan"), ...S1.atas()), tambah(idx(SUARA_P1, "Puluhan"), ...S1.bawah())),
-    k(SUARA_P2, tambah(idx(SUARA_P2, "satuan"), S1.sorS()), tambah(idx(SUARA_P2, "Tiga"), S1.eqS()), tambah(idx(SUARA_P2, "sembilan"), S1.hSatuan())),
-    k(SUARA_P3, hapus(0, "ls-sor"), tambah(idx(SUARA_P3, "puluhan"), S1.sorT()), tambah(idx(SUARA_P3, "Dua"), S1.eqP()), tambah(idx(SUARA_P3, "tiga"), S1.hPuluhan())),
-    k(SUARA_P4, hapus(0, "ls-sor"), tambah(idx(SUARA_P4, "Jadi"), cap("23 + 16 = 39"))),
-    k(SUARA_P5, tambah(idx(SUARA_P5, "Inilah"), ...kartu("tp", 168, 38, 124, 34, W.emas, ["tanpa menyimpan"], 10))),
+    k(
+      SUARA_S1,
+      tambah(0, judul("Susun Pendek"), papanKapur("pk", 30, 28, 240, 150)),
+      tambah("bersusun", ...susunTeks("ls", 23, 14, 170, 70)),
+      tambah("Puluhan", kotak("kc-t", 149, 56, 11, 76, "#60A5FA", undefined, { op: 0.35, z: 1, rx: 2, tebal: 0 }), teks("kp", 160, 48, "puluhan", 8, "#93C5FD", { anchor: "end", z: 3 })),
+      tambah("satuan", kotak("kc-s", 160, 56, 11, 76, "#FBBF24", undefined, { op: 0.35, z: 1, rx: 2, tebal: 0 }), teks("ks", 162, 48, "satuan", 8, "#FCD34D", { anchor: "start", z: 3 })),
+    ),
+    k(
+      SUARA_S2,
+      ubah("satuan", { id: "kc-s", op: 0.8 }),
+      tambah("tiga", kapur("eq-s", 235, 82, "3", 11)),
+      ubah("empat", { id: "eq-s", isi: "3 + 4" }),
+      ubah("sama", { id: "eq-s", isi: "3 + 4 = 7" }),
+      tambah("tujuh.", kapur("ls-h-s", 170, 122, "7", 18, { anchor: "end" })),
+    ),
+    k(
+      SUARA_S3,
+      ubah("puluhan:", { id: "kc-t", op: 0.8 }),
+      tambah("dua", kapur("eq-p", 235, 130, "2", 11)),
+      ubah("satu", { id: "eq-p", isi: "2 + 1" }),
+      ubah("tiga.", { id: "eq-p", isi: "2 + 1 = 3" }),
+      tambah("tiga.", kapur("ls-h-t", 160, 122, "3", 18, { anchor: "end" })),
+      tambah("tujuh", teks("ha", 150, 164, "37 kue", 14, W.emas, { z: 3 })),
+    ),
   ],
 };
 
-/* ------------------------------ 5. Periksa dengan blok ------------------------------ */
-const PA = blok("a", 24, 34, 23);
-const PB = blok("b", 176, 34, 16);
-const PH = blok("h", 100, 116, 39);
-const idS = (g: string, n: number) => Array.from({ length: n }, (_, i) => `bk-${g}-s${i + 1}`);
-const idP = (g: string, n: number) => Array.from({ length: n }, (_, i) => `bk-${g}-p${i + 1}`);
-const SUARA_B1 = `Kita periksa dengan blok. Ini blok bilangan ${e(23)} dan blok bilangan ${e(16)}.`;
-const SUARA_B2 = `Gabungkan satuannya. ${E(3)} satuan dan ${e(6)} satuan menjadi ${e(9)} satuan.`;
-const SUARA_B3 = `Gabungkan puluhannya. ${E(2)} puluhan dan ${e(1)} puluhan menjadi ${e(3)} puluhan.`;
-const SUARA_B4 = `Semuanya ada ${e(3)} puluhan dan ${e(9)} satuan, yaitu ${e(39)}. Hasilnya sama dengan hasil susun pendek.`;
+/* ------------------------------ 3. Susun panjang ------------------------------ */
+const SUARA_N1 = "Salsa memakai susun panjang. Dua puluh tiga jadi dua puluh dan tiga, empat belas jadi sepuluh dan empat.";
+const SUARA_N2 = "Puluhan: dua puluh ditambah sepuluh jadi tiga puluh. Satuan: tiga ditambah empat jadi tujuh.";
+const SUARA_N3 = "Tiga puluh ditambah tujuh menjadi tiga puluh tujuh, sama dengan susun pendek.";
 
-export const ADEGAN_PERIKSA_BLOK: AdeganStory = {
-  id: "periksa-blok",
-  judul: "Periksa dengan blok",
-  sumber: "Materi: periksa dengan blok",
-  latar: "#FEFCE8",
+export const ADEGAN_SUSUN_PANJANG: AdeganStory = {
+  id: "susun-panjang",
+  judul: "Susun panjang",
+  sumber: "Materi: susun panjang",
+  latar: "#FFFBEB",
   ketukan: [
     k(
-      SUARA_B1,
-      tambah(0, judul("Periksa dengan blok")),
-      tambah(idx(SUARA_B1, "Ini"), ...PA.batang(), ...PA.satuan(), PA.label()),
-      tambah(idx(SUARA_B1, "bilangan", 2), ...PB.batang(), ...PB.satuan(), PB.label()),
+      SUARA_N1,
+      tambah(0, judul("Susun Panjang"), ...tokoh("sl", 44, 184, "Salsa")),
+      tambah("susun", kotak("kc", 100, 30, 180, 150, W.putih, W.coklat, { rx: 6, tebal: 2, z: 0 })),
+      tambah("Dua", teks("u1", 190, 60, "23 = 20 + 3", 13, W.biru, { z: 2 })),
+      tambah("empat", teks("u2", 190, 84, "14 = 10 + 4", 13, W.biru, { z: 2 })),
     ),
     k(
-      SUARA_B2,
-      sorotkan(idx(SUARA_B2, "Tiga"), ...idS("a", 3)),
-      sorotkan(idx(SUARA_B2, "enam"), ...idS("b", 6)),
-      redamkan(idx(SUARA_B2, "menjadi"), ...idS("a", 3), ...idS("b", 6)),
-      tambah(idx(SUARA_B2, "menjadi"), ...PH.satuan()),
+      SUARA_N2,
+      sorotkan("Puluhan:", "u1"),
+      tambah("dua", teks("t1", 190, 114, "20 + 10 = 30", 13, W.hijauTua, { z: 2 })),
+      sorotkan("Satuan:", "u2"),
+      tambah("tiga@2", teks("t2", 190, 138, "3 + 4 = 7", 13, W.merah, { z: 2 })),
     ),
     k(
-      SUARA_B3,
-      sorotkan(idx(SUARA_B3, "Dua"), ...idP("a", 2)),
-      sorotkan(idx(SUARA_B3, "satu"), ...idP("b", 1)),
-      redamkan(idx(SUARA_B3, "menjadi"), ...idP("a", 2), ...idP("b", 1)),
-      tambah(idx(SUARA_B3, "menjadi"), ...PH.batang()),
+      SUARA_N3,
+      tambah(0, teks("t3", 190, 160, "30 + 7", 13, W.ungu, { z: 2 })),
+      ubah("menjadi", { id: "t3", isi: "30 + 7 = 37" }),
+      tambah("sama", emo("ok", 262, 160, E.benar, 16)),
+      tambah("susun", teks("sp", 190, 176, "= susun pendek", 8, W.ungu, { z: 2 })),
     ),
-    k(SUARA_B4, tambah(idx(SUARA_B4, "yaitu"), PH.label()), tambah(idx(SUARA_B4, "Hasilnya"), cap("23 + 16 = 39"))),
   ],
 };

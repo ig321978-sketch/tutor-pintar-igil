@@ -1,47 +1,44 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_APEL, ADEGAN_BALOK, ADEGAN_CERITA_JERUK, ADEGAN_SUSUN_PENDEK } from "./k3b1E-materi-1";
-import { ADEGAN_AMBIL_PULUHAN, ADEGAN_ATURAN, ADEGAN_KELERENG, ADEGAN_SATUAN_KURANG } from "./k3b1E-materi-2";
-import { ADEGAN_HITUNG_PANJANG, ADEGAN_NOL, ADEGAN_PERIKSA, ADEGAN_PILIH_CARA, ADEGAN_URAI } from "./k3b1E-materi-3";
-import { ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_SATU, ADEGAN_LATIHAN_TIGA, ADEGAN_PENUTUP } from "./k3b1E-materi-4";
-import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_SUSUN, ADEGAN_LUAR_SUSUN_TERAPAN } from "./k3b1E-luar-1";
-import { ADEGAN_LUAR_NAIK, ADEGAN_LUAR_NAIK_TERAPAN, ADEGAN_LUAR_PINJAM, ADEGAN_LUAR_PINJAM_TERAPAN } from "./k3b1E-luar-2";
+import { ADEGAN_RAK_MI, ADEGAN_SUSUN_KURANG, ADEGAN_SUSUN_PANJANG_KURANG } from "./k3b1E-materi-1";
+import { ADEGAN_SALAH_BALIK, ADEGAN_PINJAM_PULUHAN, ADEGAN_PERIKSA_TAMBAH } from "./k3b1E-materi-2";
+import { ADEGAN_SOAL_CERITA_KURANG, ADEGAN_KURANG_SAMA, ADEGAN_PENUTUP } from "./k3b1E-materi-3";
+import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_SUSUN, ADEGAN_LUAR_SUSUN_TERAPAN } from "./k3b1E-luar-1";
+import { ADEGAN_LUAR_NAIK, ADEGAN_LUAR_NAIK_TERAPAN, ADEGAN_LUAR_PINJAM, ADEGAN_LUAR_PINJAM_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k3b1E-luar-2";
 
-/** Kelas 3 Bab 1 Sub-Bab E (Pengurangan sampai 100): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 3 Bab 1 Sub-Bab E (pengurangan sampai seratus).
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Sisa Stok Pak Anto" (Raka, Salsa, Bima, Pak Joko, Pak Anto, Bu Mirna).
+ * Video kedua: tiga metode global (Standard Subtraction, Counting Up, Regrouping), terpisah.
+ */
+export const JUDUL_K3B1E = "Sisa Stok Pak Anto";
+
 export const VIDEO_MATERI_K3B1E: VideoStory = {
   id: "k3b1E-materi",
-  judul: "Pengurangan sampai Seratus",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K3B1E,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "pengurangan sampai seratus", daftar: ["Pengurangan susun pendek", "Mengambil satu puluhan", "Pengurangan susun panjang"] }),
-    ADEGAN_CERITA_JERUK,
-    ADEGAN_BALOK,
-    ADEGAN_SUSUN_PENDEK,
-    ADEGAN_APEL,
-    ADEGAN_KELERENG,
-    ADEGAN_SATUAN_KURANG,
-    ADEGAN_AMBIL_PULUHAN,
-    ADEGAN_ATURAN,
-    ADEGAN_URAI,
-    ADEGAN_HITUNG_PANJANG,
-    ADEGAN_PERIKSA,
-    ADEGAN_NOL,
-    ADEGAN_PILIH_CARA,
-    ADEGAN_LATIHAN_SATU,
-    ADEGAN_LATIHAN_DUA,
-    ADEGAN_LATIHAN_TIGA,
+    adeganSapaan({ jenis: "materi", topik: "pengurangan sampai seratus", daftar: ["Mengurang dengan susun pendek dan susun panjang", "Meminjam satu puluhan", "Memeriksa dengan penjumlahan"] }),
+    ADEGAN_RAK_MI,
+    ADEGAN_SUSUN_KURANG,
+    ADEGAN_SUSUN_PANJANG_KURANG,
+    ADEGAN_SALAH_BALIK,
+    ADEGAN_PINJAM_PULUHAN,
+    ADEGAN_PERIKSA_TAMBAH,
+    ADEGAN_SOAL_CERITA_KURANG,
+    ADEGAN_KURANG_SAMA,
     ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K3B1E: VideoStory = {
   id: "k3b1E-luar",
-  judul: "Pengurangan sampai Seratus: Metode dari Luar",
-  subjudul: "Tiga metode luar",
+  judul: JUDUL_K3B1E,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "pengurangan sampai seratus" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "pengurangan sampai seratus", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_SUSUN,
     ADEGAN_LUAR_SUSUN_TERAPAN,

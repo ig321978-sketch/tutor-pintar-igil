@@ -1,131 +1,240 @@
 import type { AdeganStory } from "./logika-story";
-import { EMO, MIN, W, buatBlok, buatGaris, buatSusun, emo, kartu, teks } from "./k3b1E-gambar";
-import { hapus, idPilihan, idx, k, pilihKata, redamkan, sorotkan, tambah, ubah } from "./k3b1E-bantu";
-import { kepala } from "./k3b1E-luar-1";
+import { E, W, barisButir, batang, bulat, emo, garis, judul, kapur, kartu, panah, papanKapur, teks, tokoh, tokoLatar } from "./k3b1E-gambar";
+import { bersih, k, sorotkan, tambah } from "./k3b1E-bantu";
 
-const cap = (isi: string) => teks("cp", 150, 198, isi, 10.5, W.merah);
+/*
+ * Cerita orisinal IGIL "Sisa Stok Pak Anto" (Kelas 3 Bab 1 Sub-Bab E), video metode global.
+ * Naskah suara dari naskah/story-naskah-k3b1e.md. Bagian ini: Counting Up (Menghitung Naik), Regrouping (Pinjam Puluhan), terapannya, dan ringkasan.
+ */
 
-/* ------------------------------ 4. Menghitung Naik: konsep ------------------------------ */
-const GN = buatGaris([47, 50, 60, 62]);
-const SUARA_N1 = "Metode kedua bernama Menghitung Naik. Kita naik dari bilangan yang dikurangi sampai ke bilangan semula.";
-const SUARA_N2 = "Mulai dari empat puluh tujuh. Naik tiga supaya sampai lima puluh.";
-const SUARA_N3 = "Dari lima puluh, naik sepuluh sampai enam puluh. Lalu naik dua sampai enam puluh dua.";
-const SUARA_N4 = "Jumlahkan semua lompatan. Tiga ditambah sepuluh ditambah dua sama dengan lima belas.";
-const SUARA_N5 = "Jadi enam puluh dua dikurangi empat puluh tujuh sama dengan lima belas. Naik dulu, lalu jumlahkan lompatannya.";
+/** Garis bilangan `${id}` dari x0 sampai x1 pada tinggi y, dengan tanda ujung `${id}-a` dan `${id}-b`. */
+const garisBil = (id: string, x0: number, x1: number, y: number) => [
+  garis(id, x0, y, x1 - x0, 0, W.biru, 2.4, { z: 2 }),
+  garis(`${id}-a`, x0, y - 6, 0, 12, W.biru, 2, { z: 2 }),
+  garis(`${id}-b`, x1, y - 6, 0, 12, W.biru, 2, { z: 2 }),
+];
+
+/* ------------------------------ Counting Up: konsep ------------------------------ */
+const SUARA_C1 = "Cara kedua, Counting Up, atau Menghitung Naik.";
+const SUARA_C2 = "Mulai dari bilangan yang dikurangi, naik sampai bilangan besar.";
+const SUARA_C3 = "Jumlah semua langkah naik itulah selisihnya.";
+const SUARA_C4 = "Cara ini sering lebih cepat kalau kedua bilangan berdekatan.";
 
 export const ADEGAN_LUAR_NAIK: AdeganStory = {
   id: "luar-naik",
-  judul: "Menghitung Naik: naik dari yang dikurangi",
-  sumber: "Metode luar: Menghitung Naik",
-  latar: "#EFF6FF",
+  judul: "Counting Up: Menghitung Naik",
+  sumber: "Metode global: Counting Up (konsep)",
+  latar: "#F0F9FF",
   ketukan: [
-    k(SUARA_N1, tambah(0, ...kepala(1)), tambah(idx(SUARA_N1, "kedua"), cap(`62 ${MIN} 47`)), tambah(idx(SUARA_N1, "dikurangi"), ...GN.dasar(), ...GN.titik(0)), tambah(idx(SUARA_N1, "semula."), ...GN.titik(3))),
-    k(SUARA_N2, tambah(idx(SUARA_N2, "Naik"), ...GN.lompat(0)), tambah(idx(SUARA_N2, "lima"), ...GN.titik(1))),
-    k(SUARA_N3, tambah(idx(SUARA_N3, "naik", 1), ...GN.lompat(1)), tambah(idx(SUARA_N3, "enam"), ...GN.titik(2)), tambah(idx(SUARA_N3, "naik", 2), ...GN.lompat(2))),
-    k(SUARA_N4, sorotkan(idx(SUARA_N4, "semua"), "nl-h0", "nl-h1", "nl-h2"), ubah(idx(SUARA_N4, "sama"), { id: "cp", isi: "3 + 10 + 2 = 15" })),
-    k(SUARA_N5, redamkan(0, "nl-h0", "nl-h1", "nl-h2"), ubah(idx(SUARA_N5, "sama"), { id: "cp", isi: `62 ${MIN} 47 = 15` })),
+    k(
+      SUARA_C1,
+      bersih(0),
+      tambah(0, judul("Cara Kedua"), ...tokoLatar("tk")),
+      tambah("Counting", ...kartu("nm", 50, 42, 200, 30, W.krem, ["Counting Up"], 13)),
+      tambah("Menghitung", teks("nid", 150, 108, "Menghitung Naik", 12, W.ungu, { z: 2 })),
+      tambah("Naik.", emo("ic", 150, 154, "\u{1F4C8}", 34)),
+    ),
+    k(
+      SUARA_C2,
+      bersih(0),
+      tambah(0, judul("Naik dari Bilangan Kecil"), ...tokoLatar("tk")),
+      tambah("bilangan", ...garisBil("gl", 30, 270, 120)),
+      tambah("dikurangi,", bulat("t1", 30, 120, 6, W.merah, W.merahTua, { z: 3 }), teks("tk1", 30, 144, "kecil", 9, W.merahTua, { z: 3 })),
+      tambah("sampai", panah("p1", 36, 100, 228, 0, W.ungu, 2.6)),
+      tambah("besar.", bulat("t2", 270, 120, 6, W.hijau, W.hijauTua, { z: 3 }), teks("tk2", 270, 144, "besar", 9, W.hijauTua, { z: 3 })),
+    ),
+    k(
+      SUARA_C3,
+      tambah("langkah", ...[0, 1, 2].map((i) => garis(`hp${i}`, 30 + i * 80, 104, 0, -12, W.ungu, 2, { z: 3 })), teks("h1", 70, 84, "langkah", 8, W.ungu, { z: 3 }), teks("h2", 150, 84, "langkah", 8, W.ungu, { z: 3 }), teks("h3", 230, 84, "langkah", 8, W.ungu, { z: 3 })),
+      tambah("itulah", ...kartu("kj", 70, 156, 160, 24, W.kuning, ["jumlah = selisih"], 11)),
+      tambah("selisihnya.", emo("kl", 258, 166, E.kilau, 18)),
+    ),
+    k(
+      SUARA_C4,
+      bersih(0),
+      tambah(0, judul("Cepat bila Berdekatan"), ...tokoLatar("tk")),
+      tambah("cepat", emo("kt", 150, 70, "\u{26A1}", 30)),
+      tambah("kedua", ...garisBil("gd", 100, 200, 128), bulat("d1", 100, 128, 5, W.merah, W.merahTua, { z: 3 })),
+      tambah("berdekatan.", bulat("d2", 200, 128, 5, W.hijau, W.hijauTua, { z: 3 }), teks("dk", 150, 156, "dekat", 10, W.ungu, { z: 3 })),
+    ),
   ],
 };
 
-/* ------------------------------ 5. Menghitung Naik: terapan ------------------------------ */
-const GT = buatGaris([56, 60, 80, 81]);
-const SUARA_U1 = "Terapkan pada soal ini. Kira punya delapan puluh satu apel dan memberikan lima puluh enam apel.";
-const SUARA_U2 = "Berapa selisih kedua bilangan itu? Ketuk jawaban yang tepat.";
-const SUARA_U3 = "Betul! Dari lima puluh enam naik empat, naik dua puluh, lalu naik satu. Empat ditambah dua puluh ditambah satu sama dengan dua puluh lima.";
-const SUARA_U4 = "Dengan Menghitung Naik, kita tidak perlu mengambil satu puluhan. Kita hanya naik dan menjumlahkan lompatan.";
+/* ------------------------------ Counting Up: terapan ------------------------------ */
+const SUARA_T1 = "Salsa menghitung delapan puluh dua dikurangi tujuh puluh enam. Dari tujuh puluh enam naik empat ke delapan puluh, lalu dua ke delapan puluh dua.";
+const SUARA_T2 = "Empat ditambah dua sama dengan enam. Selisihnya enam.";
+const SUARA_T3 = "Cocok kalau kedua bilangan berdekatan.";
+const SUARA_T4 = "Kurang cocok kalau selisihnya besar, karena langkah naik terlalu panjang.";
 
 export const ADEGAN_LUAR_NAIK_TERAPAN: AdeganStory = {
   id: "luar-naik-terapan",
-  judul: "Menghitung Naik: apel Kira",
-  sumber: "Metode luar: Menghitung Naik",
-  latar: "#E0F2FE",
+  judul: "Salsa menghitung naik dari tujuh puluh enam",
+  sumber: "Metode global: Counting Up (terapan)",
+  latar: "#F0FDF4",
   ketukan: [
-    k(SUARA_U1, tambah(0, ...kepala(1)), tambah(idx(SUARA_U1, "satu"), ...GT.dasar(), ...GT.titik(3)), tambah(idx(SUARA_U1, "lima"), ...GT.titik(0), cap(`81 ${MIN} 56 = ?`))),
-    k(SUARA_U2, tambah(idx(SUARA_U2, "Berapa"), teks("tanya", 150, 62, `berapa 81 ${MIN} 56?`, 12, W.ungu)), tambah(idx(SUARA_U2, "jawaban"), ...pilihKata(150, ["35", "24", "25"], 16))),
     k(
-      SUARA_U3,
-      sorotkan(idx(SUARA_U3, "Betul!"), "c3-k"),
-      tambah(idx(SUARA_U3, "empat,"), ...GT.lompat(0), ...GT.titik(1)),
-      tambah(idx(SUARA_U3, "dua"), ...GT.lompat(1), ...GT.titik(2)),
-      tambah(idx(SUARA_U3, "satu."), ...GT.lompat(2)),
-      ubah(idx(SUARA_U3, "sama"), { id: "cp", isi: "4 + 20 + 1 = 25" }),
+      SUARA_T1,
+      bersih(0),
+      tambah(0, judul("Salsa Menghitung Naik"), ...tokoLatar("tk"), ...tokoh("sl", 38, 172, "Salsa")),
+      tambah("delapan", ...kartu("sk", 90, 38, 120, 26, W.kuning, ["82 - 76"], 13)),
+      tambah("naik", ...garisBil("gl", 30, 270, 124), teks("l76", 30, 146, "76", 12, W.biru, { z: 3 })),
+      tambah("empat", panah("a1", 32, 108, 156, 0, "#2563EB", 2.6), teks("p4", 110, 98, "+4", 12, "#2563EB", { z: 3 }), teks("l80", 190, 146, "80", 12, W.biru, { z: 3 })),
+      tambah("dua@2", panah("a2", 192, 108, 76, 0, W.merah, 2.6), teks("p2", 232, 98, "+2", 12, W.merah, { z: 3 }), teks("l82", 270, 146, "82", 12, W.merahTua, { z: 3 })),
     ),
-    k(SUARA_U4, redamkan(0, "c3-k"), hapus(0, "tanya", ...idPilihan(3)), ubah(idx(SUARA_U4, "naik"), { id: "cp", isi: `81 ${MIN} 56 = 25` })),
+    k(
+      SUARA_T2,
+      tambah("ditambah", ...kartu("ju", 70, 160, 130, 24, W.hijauMuda, ["4 + 2 = 6"], 12)),
+      tambah("sama", emo("ok", 216, 172, E.benar, 20)),
+      tambah("Selisihnya", ...kartu("sl2", 100, 66, 100, 20, W.kuning, ["selisih 6"], 11)),
+    ),
+    k(
+      SUARA_T3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?"), ...tokoLatar("tk"), ...kartu("cc", 80, 38, 140, 26, W.hijauMuda, ["Cocok"], 13)),
+      tambah("bilangan", ...garisBil("gd", 100, 200, 112), bulat("d1", 100, 112, 5, W.merah, W.merahTua, { z: 3 })),
+      tambah("berdekatan.", bulat("d2", 200, 112, 5, W.hijau, W.hijauTua, { z: 3 }), emo("sy", 150, 150, E.senyum, 26)),
+    ),
+    k(
+      SUARA_T4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?"), ...tokoLatar("tk"), ...kartu("kc", 70, 38, 160, 26, W.merahMuda, ["Kurang cocok"], 13)),
+      tambah("besar,", ...garisBil("gj", 20, 280, 116), teks("m12", 20, 138, "12", 11, W.biru, { z: 3 }), teks("m91", 280, 138, "91", 11, W.biru, { z: 3 })),
+      tambah("langkah", ...Array.from({ length: 9 }, (_, i) => garis(`hp${i}`, 36 + i * 28, 104, 0, -10, W.ungu, 1.8, { z: 3 }))),
+      tambah("panjang.", emo("lh", 150, 168, E.lelah, 26)),
+    ),
   ],
 };
 
-/* ------------------------------ 6. Meminjam: konsep ------------------------------ */
-const SP = buatSusun(52, 27);
-const BP = buatBlok("a", 122, 44, 5);
-const SUARA_P1 = "Metode ketiga bernama Meminjam. Meminjam berarti membuka satu puluhan menjadi sepuluh satuan.";
-const SUARA_P2 = "Lima puluh dua punya lima puluhan dan dua satuan. Dua satuan kurang untuk dikurangi tujuh.";
-const SUARA_P3 = "Buka satu batang. Satu batang menjadi sepuluh kotak kecil, jadi satuan menjadi dua belas.";
-const SUARA_P4 = "Dua belas dikurangi tujuh sama dengan lima, dan empat dikurangi dua sama dengan dua. Sisanya dua puluh lima.";
-const SUARA_P5 = "Itulah Meminjam. Buka puluhan menjadi sepuluh satuan, lalu kurangkan seperti biasa.";
+/* ------------------------------ Regrouping: konsep ------------------------------ */
+const SUARA_P1 = "Cara ketiga, Regrouping, atau Pinjam Puluhan.";
+const SUARA_P2 = "Kalau satuan atas terlalu kecil, buka satu puluhan menjadi sepuluh satuan.";
+const SUARA_P3 = "Puluhan berkurang satu, satuan bertambah sepuluh.";
+const SUARA_P4 = "Setelah itu pengurangan bisa dilanjutkan seperti biasa.";
 
 export const ADEGAN_LUAR_PINJAM: AdeganStory = {
   id: "luar-pinjam",
-  judul: "Meminjam: buka satu puluhan",
-  sumber: "Metode luar: Meminjam",
-  latar: "#FDF2F8",
+  judul: "Regrouping: Pinjam Puluhan",
+  sumber: "Metode global: Regrouping (konsep)",
+  latar: "#FFF7ED",
   ketukan: [
-    k(SUARA_P1, tambah(0, ...kepala(2)), tambah(idx(SUARA_P1, "Metode"), ...SP.kerangka(), ...SP.atas(), ...SP.bawah()), tambah(idx(SUARA_P1, "sepuluh"), ...kartu("pk", 122, 100, 172, 26, W.emas, ["1 puluhan = 10 satuan"], 9))),
-    k(SUARA_P2, tambah(idx(SUARA_P2, "puluhan"), ...BP.batangObj(1, 5)), tambah(idx(SUARA_P2, "satuan."), ...BP.kecilObj(1, 2), BP.label(52)), sorotkan(idx(SUARA_P2, "Dua", 2), "sg-a0", "sg-b0")),
+    k(
+      SUARA_P1,
+      bersih(0),
+      tambah(0, judul("Cara Ketiga"), ...tokoLatar("tk")),
+      tambah("Regrouping,", ...kartu("nm", 50, 42, 200, 30, W.krem, ["Regrouping"], 13)),
+      tambah("Pinjam", teks("nid", 150, 108, "Pinjam Puluhan", 12, W.ungu, { z: 2 })),
+      tambah("Puluhan.", emo("ic", 150, 154, E.kardus, 34)),
+    ),
+    k(
+      SUARA_P2,
+      bersih(0),
+      tambah(0, judul("Satu Puluhan Dibuka"), ...tokoLatar("tk")),
+      tambah("kecil,", ...kartu("sk", 16, 40, 110, 24, W.merahMuda, ["satuan atas kecil"], 9)),
+      tambah("satu", ...batang("bt", 62, 78, 40), teks("lb1", 66, 128, "1 puluhan", 9, W.biru, { z: 3 })),
+      tambah("menjadi", panah("pb", 100, 96, 50, 0, W.merah, 2.6)),
+      tambah("satuan@2", ...barisButir("bu", 156, 90, 10, 13), teks("lb2", 222, 128, "10 satuan", 9, W.biru, { z: 3 })),
+    ),
     k(
       SUARA_P3,
-      redamkan(0, "sg-a0", "sg-b0"),
-      sorotkan(idx(SUARA_P3, "Buka"), ...BP.idBatang(5, 5)),
-      hapus(idx(SUARA_P3, "sepuluh"), ...BP.idBatang(5, 5), BP.idLabel),
-      tambah(idx(SUARA_P3, "kecil,"), ...BP.kecilObj(3, 12)),
-      tambah(idx(SUARA_P3, "dua"), ...SP.coret(), SP.puluhBaru(), SP.satuBaru()),
-      tambah(idx(SUARA_P3, "belas."), BP.label(52)),
+      tambah("satu,", ...kartu("mn", 40, 148, 100, 24, W.krem, ["puluhan -1"], 11)),
+      tambah("bertambah", ...kartu("pl", 160, 148, 110, 24, W.hijauMuda, ["satuan +10"], 11)),
     ),
     k(
       SUARA_P4,
-      ubah(idx(SUARA_P4, "tujuh"), ...BP.idKecil(1, 7).map((id) => ({ id, op: 0.2 })), ...BP.idBatang(1, 2).map((id) => ({ id, op: 0.2 })), { id: BP.idLabel, isi: "25" }),
-      tambah(idx(SUARA_P4, "lima,"), SP.hasil0()),
-      tambah(idx(SUARA_P4, "dua", 3), SP.hasil1()),
+      tambah("pengurangan", panah("pk", 150, 70, 0, 14, W.hijau, 2.4)),
+      tambah("seperti", emo("ok", 150, 54, E.benar, 20), emo("sy", 270, 150, E.senyum, 22)),
     ),
-    k(SUARA_P5, tambah(idx(SUARA_P5, "Buka"), ...kartu("pr", 14, 156, 272, 28, W.emas, ["buka puluhan jadi sepuluh satuan"], 9.5)), tambah(idx(SUARA_P5, "kurangkan"), cap(`52 ${MIN} 27 = 25`))),
   ],
 };
 
-/* ------------------------------ 7. Meminjam: terapan ------------------------------ */
-const SQ = buatSusun(61, 35);
-const BQ = buatBlok("a", 122, 44, 6);
-const SUARA_V1 = "Terapkan pada soal ini. Upe punya enam puluh satu kelereng dan memberikan tiga puluh lima kelereng.";
-const SUARA_V2 = "Berapa sisa kelereng Upe? Ketuk jawaban yang tepat.";
-const SUARA_V3 = "Betul! Buka satu batang, jadi satuan menjadi sebelas. Sebelas dikurangi lima sama dengan enam, dan lima dikurangi tiga sama dengan dua.";
-const SUARA_V4 = "Dengan Meminjam, satu batang menjadi sepuluh kotak kecil. Sisa kelereng Upe dua puluh enam.";
+/* ------------------------------ Regrouping: terapan ------------------------------ */
+const SUARA_Q1 = "Bima mengurangi enam puluh dua dengan tiga puluh delapan. Dua tidak cukup dikurangi delapan.";
+const SUARA_Q2 = "Ia meminjam: enam puluh jadi lima puluh, dua jadi dua belas. Hasilnya dua puluh empat.";
+const SUARA_Q3 = "Cocok kalau satuan atas lebih kecil dari satuan bawah.";
+const SUARA_Q4 = "Kurang cocok kalau tidak perlu meminjam, karena langkahnya jadi lebih banyak.";
 
 export const ADEGAN_LUAR_PINJAM_TERAPAN: AdeganStory = {
   id: "luar-pinjam-terapan",
-  judul: "Meminjam: kelereng Upe",
-  sumber: "Metode luar: Meminjam",
-  latar: "#FCE7F3",
+  judul: "Bima mengurangi enam puluh dua dengan tiga puluh delapan",
+  sumber: "Metode global: Regrouping (terapan)",
+  latar: "#FEFCE8",
   ketukan: [
     k(
-      SUARA_V1,
-      tambah(0, ...kepala(2)),
-      tambah(idx(SUARA_V1, "Terapkan"), ...SQ.kerangka()),
-      tambah(idx(SUARA_V1, "satu"), ...SQ.atas()),
-      tambah(idx(SUARA_V1, "kelereng"), ...BQ.batangObj(1, 6), ...BQ.kecilObj(1, 1), BQ.label(61)),
-      tambah(idx(SUARA_V1, "lima"), ...SQ.bawah()),
+      SUARA_Q1,
+      bersih(0),
+      tambah(0, judul("Bima Mengurangi"), ...tokoLatar("tk"), ...papanKapur("pk", 14, 34, 150, 120), ...tokoh("bm", 246, 172, "Bima")),
+      tambah("enam", kapur("sn-a", 112, 76, "62", 26, { anchor: "end" })),
+      tambah("tiga", kapur("sn-m", 70, 106, "-", 26), kapur("sn-b", 112, 106, "38", 26, { anchor: "end" }), garis("sn-g", 58, 113, 64, 0, "#F8FAFC", 1.8, { z: 3 })),
+      tambah("dua@2", ...kartu("k1", 176, 50, 118, 28, W.kuning, ["2 kurang dari 8"], 11)),
+      tambah("cukup", emo("x1", 262, 100, E.salah, 22)),
     ),
-    k(SUARA_V2, tambah(idx(SUARA_V2, "Berapa"), teks("tanya", 205, 118, `berapa 61 ${MIN} 35?`, 12, W.ungu)), tambah(idx(SUARA_V2, "jawaban"), ...pilihKata(150, ["26", "36", "34"], 16))),
     k(
-      SUARA_V3,
-      sorotkan(idx(SUARA_V3, "Betul!"), "c1-k"),
-      hapus(idx(SUARA_V3, "Buka"), "pb-a-p-6", BQ.idLabel),
-      tambah(idx(SUARA_V3, "jadi"), ...SQ.coret(), SQ.puluhBaru(), SQ.satuBaru()),
-      tambah(idx(SUARA_V3, "sebelas."), ...BQ.kecilObj(2, 11)),
-      ubah(idx(SUARA_V3, "dikurangi", 2), ...BQ.idKecil(1, 5).map((id) => ({ id, op: 0.2 })), ...BQ.idBatang(1, 3).map((id) => ({ id, op: 0.2 }))),
-      tambah(idx(SUARA_V3, "enam,"), SQ.hasil0()),
-      tambah(idx(SUARA_V3, "dua."), SQ.hasil1(), BQ.label(26)),
+      SUARA_Q2,
+      tambah("lima", ...kartu("k2", 176, 90, 118, 28, W.hijauMuda, ["60 jadi 50"], 12)),
+      tambah("jadi@2", ...kartu("k3", 176, 124, 118, 28, W.hijauMuda, ["2 jadi 12"], 12)),
+      tambah("Hasilnya", kapur("hs", 112, 142, "24", 26, { anchor: "end", warna: "#FDE047" }), emo("ok", 262, 150, E.benar, 20)),
     ),
-    k(SUARA_V4, redamkan(0, "c1-k"), hapus(0, "tanya", ...idPilihan(3)), tambah(idx(SUARA_V4, "sepuluh"), ...kartu("pt", 122, 104, 172, 26, W.emas, ["1 batang = 10 kotak"], 9)), tambah(idx(SUARA_V4, "Sisa"), cap(`61 ${MIN} 35 = 26`))),
+    k(
+      SUARA_Q3,
+      bersih(0),
+      tambah(0, judul("Kapan Cocok?"), ...tokoLatar("tk"), ...kartu("cc", 80, 38, 140, 26, W.hijauMuda, ["Cocok"], 13)),
+      tambah("satuan", ...kartu("ca", 40, 84, 100, 40, W.krem, ["satuan atas", "kecil"], 10)),
+      tambah("lebih", teks("lk", 150, 108, "<", 24, W.merahTua, { z: 3 })),
+      tambah("bawah.", ...kartu("cb", 160, 84, 100, 40, W.krem, ["satuan bawah", "besar"], 10), emo("sy", 150, 150, E.senyum, 26)),
+    ),
+    k(
+      SUARA_Q4,
+      bersih(0),
+      tambah(0, judul("Kapan Kurang Cocok?"), ...tokoLatar("tk"), ...kartu("kc", 70, 38, 160, 26, W.merahMuda, ["Kurang cocok"], 13)),
+      tambah("tidak", ...kartu("ct", 60, 84, 180, 30, W.krem, ["tidak perlu meminjam"], 11)),
+      tambah("langkahnya", ...[0, 1, 2, 3].map((i) => bulat(`sl${i}`, 90 + i * 40, 140, 7, W.oranye, W.coklat, { z: 3 }))),
+      tambah("banyak.", emo("lh", 150, 176, E.lelah, 24)),
+    ),
   ],
 };
 
-void EMO;
-void emo;
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita lihat. Mana yang pas tergantung bilangannya.";
+const SUARA_R2 = "Biasa saja, pakai Pengurangan Bersusun. Dua bilangan berdekatan, pakai Menghitung Naik.";
+const SUARA_R3 = "Satuan atas terlalu kecil, pakai Pinjam Puluhan. Apa pun caranya, periksa dengan penjumlahan.";
+const SUARA_R4 = "Menurutmu, untuk mengurangi seratus dengan sembilan puluh sembilan, cara mana yang paling cepat?";
+
+export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
+  id: "luar-ringkas",
+  judul: "Ringkasan tiga cara mengurangi",
+  sumber: "Ringkasan: tiga cara mengurangi",
+  latar: "#FEF9C3",
+  ketukan: [
+    k(
+      SUARA_R1,
+      bersih(0),
+      tambah(0, judul("Tiga Cara"), ...tokoLatar("tk"), teks("n3", 252, 44, "3 cara", 10, W.ungu, { z: 2 })),
+      tambah("sudah", ...kartu("r0", 14, 70, 88, 50, W.kuning, ["Pengurangan", "Bersusun"], 8.6)),
+      tambah("Mana", ...kartu("r1", 106, 70, 88, 50, W.hijauMuda, ["Menghitung", "Naik"], 8.6)),
+      tambah("bilangannya.", ...kartu("r2", 198, 70, 88, 50, W.merahMuda, ["Pinjam", "Puluhan"], 8.6)),
+    ),
+    k(
+      SUARA_R2,
+      sorotkan("Pengurangan", "r0-k"),
+      tambah("Pengurangan", teks("ls0", 58, 140, "biasa saja", 9, W.coklat, { z: 3 })),
+      tambah("Dua", teks("ls1", 150, 140, "2 bilangan dekat", 9, W.coklat, { z: 3 })),
+      sorotkan("Menghitung", "r1-k"),
+    ),
+    k(
+      SUARA_R3,
+      tambah("kecil,", teks("ls2", 242, 140, "satuan atas kecil", 8, W.coklat, { z: 3 })),
+      sorotkan("Pinjam", "r2-k"),
+      tambah("periksa", ...kartu("pr", 70, 152, 160, 24, W.putih, ["periksa dengan tambah"], 10)),
+      tambah("penjumlahan.", emo("ok", 252, 166, E.benar, 20)),
+    ),
+    k(
+      SUARA_R4,
+      bersih(0),
+      tambah(0, judul("Mana Paling Cepat?"), ...tokoLatar("tk")),
+      tambah("seratus", ...kartu("s1", 40, 54, 100, 40, W.kuning, ["100"], 22)),
+      tambah("sembilan", ...kartu("s2", 160, 54, 100, 40, W.hijauMuda, ["99"], 22), teks("mn", 150, 80, "-", 22, W.biru, { z: 3 })),
+      tambah("mana", emo("q0", 70, 130, E.tanya, 22), emo("q1", 150, 130, E.tanya, 22), emo("q2", 230, 130, E.tanya, 22)),
+      tambah("cepat?", emo("pk", 150, 168, E.pikir, 30)),
+    ),
+  ],
+};

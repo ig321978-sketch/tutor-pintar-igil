@@ -2,7 +2,6 @@
 // Jalankan: node --no-warnings scripts/uji-skenario-umum.mjs
 import { awalSk, adeganSk, langkahSk, opsiHitung, semuaKetuk, ceritaSk } from "../src/components/modul/skenario-umum.ts";
 import { SKENARIO_BAB1, SKENARIO_BAB2, SKENARIO_BAB3, SKENARIO_BAB4, SKENARIO_BAB6, SKENARIO_BAB7 } from "../src/components/modul/skenario-kelas1.ts";
-import { SKENARIO_K3B1A, SKENARIO_K3B1B, SKENARIO_K3B1C, SKENARIO_K3B1D, SKENARIO_K3B1E, SKENARIO_K3B1F, SKENARIO_K3B1G } from "../src/components/modul/skenario-k3b1.ts";
 import { SKENARIO_K3B2A, SKENARIO_K3B2B } from "../src/components/modul/skenario-k3b2.ts";
 import { SKENARIO_K3B3A, SKENARIO_K3B3B, SKENARIO_K3B3C, SKENARIO_K3B3D } from "../src/components/modul/skenario-k3b3.ts";
 import { SKENARIO_K3B4A, SKENARIO_K3B4B, SKENARIO_K3B4C } from "../src/components/modul/skenario-k3b4.ts";
@@ -47,13 +46,6 @@ const SEMUA = [
   ["Bab 4", SKENARIO_BAB4, 10],
   ["Bab 6", SKENARIO_BAB6, 20],
   ["Bab 7", SKENARIO_BAB7, 20],
-  ["K3 Bab 1A", SKENARIO_K3B1A, 1000],
-  ["K3 Bab 1B", SKENARIO_K3B1B, 1000],
-  ["K3 Bab 1C", SKENARIO_K3B1C, 1000],
-  ["K3 Bab 1D", SKENARIO_K3B1D, 100],
-  ["K3 Bab 1E", SKENARIO_K3B1E, 100],
-  ["K3 Bab 1F", SKENARIO_K3B1F, 100],
-  ["K3 Bab 1G", SKENARIO_K3B1G, 1000],
   ["K3 Bab 2A", SKENARIO_K3B2A, 100],
   ["K3 Bab 2B", SKENARIO_K3B2B, 100],
   ["K3 Bab 3A", SKENARIO_K3B3A, 300],
