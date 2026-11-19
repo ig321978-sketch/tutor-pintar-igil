@@ -3,6 +3,12 @@ export function situsHanyaAdmin(): boolean {
   return true;
 }
 
+/**
+ * Saklar portal Masuk/Daftar. false = dinonaktifkan sementara: semua halaman belajar terbuka tanpa
+ * formulir (mode tamu). Ubah ke true untuk menyalakan lagi gerbang Daftar/Masuk.
+ */
+export const PORTAL_MASUK_AKTIF = false;
+
 export const KELAS_PILOT_SD = ["1 SD", "2 SD", "3 SD", "4 SD", "5 SD", "6 SD"] as const;
 export const KELAS_TERBUKA_PUBLIK = "1 SD";
 export const MAPEL_TERBUKA_PUBLIK = "Matematika";
@@ -55,8 +61,8 @@ export function ruteAsetIkonPublik(pathname: string): boolean {
   );
 }
 
-/** Halaman belajar/fitur yang wajib Daftar atau Masuk dulu (bukan tamu lewat). */
-export function ruteWajibMasuk(pathname: string): boolean {
+/** Halaman belajar dan fitur akun. Wajib Masuk hanya bila portal Masuk aktif. */
+function ruteHalamanBelajar(pathname: string): boolean {
   return (
     pathname === "/ruang-belajar" ||
     pathname.startsWith("/ruang-belajar/") ||
@@ -72,6 +78,11 @@ export function ruteWajibMasuk(pathname: string): boolean {
   );
 }
 
+/** Halaman yang wajib Daftar atau Masuk dulu (bukan tamu lewat). Kosong saat portal dinonaktifkan. */
+export function ruteWajibMasuk(pathname: string): boolean {
+  return PORTAL_MASUK_AKTIF && ruteHalamanBelajar(pathname);
+}
+
 export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
   return (
     pathname === "/" ||
@@ -79,7 +90,7 @@ export function ruteHalamanPublikSaatTerkunci(pathname: string): boolean {
     pathname === "/hubungi-kami" ||
     pathname === "/login" ||
     pathname.startsWith("/login/") ||
-    ruteWajibMasuk(pathname) ||
+    ruteHalamanBelajar(pathname) ||
     ruteAsetIkonPublik(pathname)
   );
 }

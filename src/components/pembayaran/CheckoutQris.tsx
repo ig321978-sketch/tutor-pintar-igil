@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import FormPendaftaran from "@/components/info/FormPendaftaran";
+import { PORTAL_MASUK_AKTIF } from "@/lib/situs-hanya-admin";
 import {
   LABEL_TOMBOL_LUNAS_AKHIR,
   LABEL_TOMBOL_LUNAS_AWAL,
@@ -69,7 +70,7 @@ export default function CheckoutQris() {
       const json = (await res.json()) as { status?: string; anak?: AnakProfil[] };
       if (json.status === "belum_masuk") {
         setSiap("tamu");
-        router.replace(`/?next=${encodeURIComponent("/langganan")}`);
+        if (PORTAL_MASUK_AKTIF) router.replace(`/?next=${encodeURIComponent("/langganan")}`);
         return;
       }
       if (json.status === "belum_ada_anak") {
@@ -219,7 +220,9 @@ export default function CheckoutQris() {
       {siap === "memuat" ? <p className="text-sm font-bold">Memeriksa akun…</p> : null}
       {siap === "tamu" ? (
         <p className="text-sm font-bold text-indigo-950" data-testid="checkout-tamu">
-          Mengarahkan ke layar Masuk…
+          {PORTAL_MASUK_AKTIF
+            ? "Mengarahkan ke layar Masuk…"
+            : "Berlangganan memerlukan akun. Portal Masuk sedang dinonaktifkan sementara."}
         </p>
       ) : null}
       {siap === "kosong" ? (

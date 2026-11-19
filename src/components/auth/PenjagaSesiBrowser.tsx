@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 import { adaSesiBrowser, hapusSesiBrowser } from "@/lib/sesi-browser";
+import { PORTAL_MASUK_AKTIF } from "@/lib/situs-hanya-admin";
 
 const BEBAS = new Set(["/", "/login", "/daftar", "/situs-ditutup", "/403"]);
 
@@ -16,6 +17,7 @@ export default function PenjagaSesiBrowser() {
   const router = useRouter();
 
   useEffect(() => {
+    if (!PORTAL_MASUK_AKTIF) return;
     if (BEBAS.has(pathname) || pathname.startsWith("/login") || pathname.startsWith("/daftar")) {
       return;
     }
