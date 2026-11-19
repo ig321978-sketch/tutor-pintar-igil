@@ -8,34 +8,6 @@ import type { Tempat } from "../lemari-k1b1a/logika";
 const tp = (id: string, kelompok: string, kunci: string, urutan?: number): Tempat => (urutan === undefined ? { id, kelompok, kunci } : { id, kelompok, kunci, urutan });
 const beriContoh = (d: Tempat[], ids: string[]): Tempat[] => d.map((x) => (ids.includes(x.id) ? { ...x, contoh: true } : x));
 
-/* ------------------------------ Mind-map: rak peralatan di troli ------------------------------ */
-export const PUSAT_RAK = "Berat benda";
-export const KELOMPOK_RAK: Record<string, { nama: string; letak: string; ikon: string; isi: string; garis: string; petunjuk: string }> = {
-  masalah: { nama: "Masalah", letak: "Rak bawah", ikon: "\u{1F6A7}", isi: "#FDE68A", garis: "#A16207", petunjuk: "Kotak ini kuning. Taruh di rak bawah, tempat masalah." },
-  metode: { nama: "Penyelesaian", letak: "Rak tengah", ikon: "\u{1F4CB}", isi: "#FED7AA", garis: "#C2410C", petunjuk: "Kotak ini oranye. Taruh di kotak bernomor yang pas." },
-  hasil: { nama: "Hasil", letak: "Rak atas", ikon: "\u{1F3C6}", isi: "#BBF7D0", garis: "#15803D", petunjuk: "Kotak ini hijau. Taruh di rak atas, tempat hasil." },
-};
-const DASAR_RAK: Tempat[] = [
-  tp("rk-m1", "masalah", "Dua tim harus membawa benda sama berat"),
-  tp("rk-m2", "masalah", "Perkiraan berat bisa keliru"),
-  tp("rk-m3", "masalah", "Hasil ukur berubah bila satuan berubah"),
-  tp("rk-p1", "metode", "Kira-kira dulu, lalu timbang untuk bukti", 1),
-  tp("rk-p2", "metode", "Bandingkan dengan tangan, gantungan, papan", 2),
-  tp("rk-p3", "metode", "Yang turun lebih berat, yang naik lebih ringan", 3),
-  tp("rk-p4", "metode", "Pakai satu jenis satuan tidak baku", 4),
-  tp("rk-p5", "metode", "Model Batang: tinggi batang menunjukkan berat", 5),
-  tp("rk-p6", "metode", "Neraca Titik: hitung titik tiap piringan", 6),
-  tp("rk-p7", "metode", "Berat di Dasar: yang paling berat paling bawah", 7),
-  tp("rk-h1", "hasil", "Lebih berat, lebih ringan, atau sama berat"),
-  tp("rk-h2", "hasil", "Besar belum tentu berat"),
-  tp("rk-h3", "hasil", "Satuan lebih ringan perlu jumlah lebih banyak"),
-  tp("rk-h4", "hasil", "Tiga benda: paling berat dan paling ringan"),
-];
-export const TEMPAT_RAK: Tempat[] = beriContoh(DASAR_RAK, ["rk-m1","rk-p1","rk-p2","rk-p7","rk-h1"]);
-export const PETUNJUK_URUT_RAK = "Warnanya sudah benar. Nomor kotaknya belum pas. Langkah mana yang lebih dulu?";
-export const SUARA_RAK =
-  "Ini rak peralatan di troli. Rak bawah berisi masalah. Rak tengah punya tujuh kotak bernomor berisi langkah yang berurutan, ikuti nomornya dari satu sampai tujuh. Rak atas berisi hasil. Beberapa kotak sudah terisi sebagai contoh, jadi lihat dulu sebagai petunjuk. Ketuk label, lalu ketuk kotak yang cocok.";
-
 /* ------------------------------ Infografis: papan lapangan ------------------------------ */
 export const KOLOM_PAPAN = ["Cara menimbang", "Yang terjadi", "Katanya"] as const;
 export const BARIS_PAPAN: { ikon: string; nama: string; cara: string; terjadi: string; hasil: string }[] = [

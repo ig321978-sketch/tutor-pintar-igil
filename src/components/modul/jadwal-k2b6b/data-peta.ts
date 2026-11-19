@@ -11,34 +11,6 @@ export { MISI_JADWAL_TEKS } from "./data-sim";
 const tp = (id: string, kelompok: string, kunci: string, urutan?: number): Tempat => (urutan === undefined ? { id, kelompok, kunci } : { id, kelompok, kunci, urutan });
 const beriContoh = (d: Tempat[], ids: string[]): Tempat[] => d.map((x) => (ids.includes(x.id) ? { ...x, contoh: true } : x));
 
-/* ------------------------------ Mind-map: lintasan lari tiga lajur ------------------------------ */
-export const PUSAT_LINTASAN = "Waktu dan jam: kegiatan tepat waktu";
-export const KELOMPOK_LINTASAN: Record<string, { nama: string; letak: string; ikon: string; isi: string; garis: string; petunjuk: string }> = {
-  masalah: { nama: "Masalah", letak: "Lajur satu", ikon: "\u{1F6A7}", isi: "#FDE68A", garis: "#A16207", petunjuk: "Label ini kuning. Taruh di lajur satu, tempat masalah." },
-  metode: { nama: "Penyelesaian", letak: "Lajur dua", ikon: "\u{1F4CB}", isi: "#BFDBFE", garis: "#1D4ED8", petunjuk: "Label ini biru. Taruh di rintangan bernomor yang pas." },
-  hasil: { nama: "Hasil", letak: "Lajur tiga", ikon: "\u{1F3C6}", isi: "#BBF7D0", garis: "#15803D", petunjuk: "Label ini hijau. Taruh di lajur tiga, tempat hasil." },
-};
-const DASAR_LINTASAN: Tempat[] = [
-  tp("ll-m1", "masalah", "Kegiatan harus mulai tepat waktu"),
-  tp("ll-m2", "masalah", "Jarum jam salah dibaca"),
-  tp("ll-m3", "masalah", "Kegiatan bisa bertabrakan"),
-  tp("ll-p1", "metode", "Jarum pendek jam, jarum panjang menit", 1),
-  tp("ll-p2", "metode", "Jarum panjang di dua belas: pukul tepat", 2),
-  tp("ll-p3", "metode", "Jam digital: dua angka jam, dua angka menit", 3),
-  tp("ll-p4", "metode", "Sebut pagi, siang, sore, atau malam", 4),
-  tp("ll-p5", "metode", "Garis Waktu Hari: urutkan kegiatan", 5),
-  tp("ll-p6", "metode", "Jalur Jam: hitung kotak jam", 6),
-  tp("ll-p7", "metode", "Batang Lama Kegiatan: banding batang", 7),
-  tp("ll-h1", "hasil", "Waktu lebih awal lebih dulu"),
-  tp("ll-h2", "hasil", "Pukul enam bisa pagi atau sore"),
-  tp("ll-h3", "hasil", "Lama kegiatan dari selisih jam"),
-  tp("ll-h4", "hasil", "Batang lebih panjang berarti lebih lama"),
-];
-export const TEMPAT_LINTASAN: Tempat[] = beriContoh(DASAR_LINTASAN, ["ll-m1","ll-p1","ll-p2","ll-p7","ll-h1"]);
-export const PETUNJUK_URUT_LINTASAN = "Warnanya sudah benar. Nomor rintangannya belum pas. Langkah mana yang lebih dulu?";
-export const SUARA_LINTASAN =
-  "Ini lintasan lari dengan tiga lajur. Lajur satu berisi masalah. Lajur dua berisi tujuh rintangan penyelesaian yang berurutan, ikuti nomornya dari satu sampai tujuh. Lajur tiga berisi hasil. Beberapa kotak sudah terisi sebagai contoh, jadi lihat dulu sebagai petunjuk. Ketuk label, lalu ketuk tempat yang cocok.";
-
 /* ------------------------------ Infografis: spanduk acara ------------------------------ */
 export const KOLOM_SPANDUK = ["Urutan acara", "Ditulis dengan kata", "Jam digital"] as const;
 export const BARIS_SPANDUK: { ikon: string; nama: string; urutan: string; kata: string; digital: string }[] = [

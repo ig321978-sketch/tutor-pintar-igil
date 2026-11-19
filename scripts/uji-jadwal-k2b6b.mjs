@@ -14,6 +14,7 @@ register(
   import.meta.url,
 );
 const DP = await import("../src/components/modul/jadwal-k2b6b/data-peta.ts");
+const DK = await import("../src/components/modul/jadwal-k2b6b/data-kartu.ts");
 const LC = await import("../src/components/modul/jadwal-k2b6b/logika-cpa.ts");
 const D = await import("../src/components/modul/jadwal-k2b6b/data.ts");
 const DS = await import("../src/components/modul/jadwal-k2b6b/data-sim.ts");
@@ -40,31 +41,29 @@ const bersih = (t) => !TERLARANG.test(t) && !/buku|kelompok|bernilai|tebak/i.tes
 const emojiSah = (s) => [...s].every((c) => c.codePointAt(0) <= 0x1fa95 && c.codePointAt(0) !== 0x200d && c.codePointAt(0) !== 0x1f6de);
 const ADA_EMOJI = /[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}]/u;
 
-/* ------------------------------ Mind-map lintasan lari ------------------------------ */
+/* ------------------------------ Mind-map: lintasan lari (sembilan kartu geser) ------------------------------ */
 {
-  const t = DP.TEMPAT_LINTASAN;
-  cek(t.filter((x) => x.contoh).length === 5 && t.filter((x) => x.contoh && x.kelompok === "metode").length === 3, "lintasan: lima kotak contoh");
-  sama(["masalah", "metode", "hasil"].map((k) => t.filter((x) => x.kelompok === k).length), [3, 7, 4], "lintasan: tiga masalah, tujuh rintangan bernomor, empat hasil");
-  cek(new Set(t.map((x) => x.kunci)).size === t.length && t.every((x) => x.kunci.length <= 44 && tanpaDigit(x.kunci)), "lintasan: label unik, pendek, tanpa digit");
-  sama(t.filter((x) => x.kelompok === "metode").map((x) => x.urutan), [1, 2, 3, 4, 5, 6, 7], "lintasan: rintangan bernomor satu sampai tujuh");
-  const gab = t.filter((x) => x.kelompok === "metode").map((x) => x.kunci).join(" | ").toLowerCase();
-  for (const k of ["jarum pendek jam", "jarum panjang menit", "dua belas", "pukul tepat", "jam digital", "pagi, siang, sore", "garis waktu hari", "jalur jam", "batang lama kegiatan", "urutkan"]) cek(gab.includes(k), `lintasan: langkah memuat "${k}"`);
-  const hasil = t.filter((x) => x.kelompok === "hasil").map((x) => x.kunci).join(" | ").toLowerCase();
-  for (const k of ["lebih awal lebih dulu", "pukul enam bisa pagi atau sore", "selisih jam", "lebih panjang berarti lebih lama"]) cek(hasil.includes(k), `lintasan: hasil memuat "${k}"`);
-  const masalah = t.filter((x) => x.kelompok === "masalah").map((x) => x.kunci).join(" | ").toLowerCase();
-  cek(/tepat waktu/.test(masalah) && /salah dibaca/.test(masalah) && /bertabrakan/.test(masalah), "lintasan: masalah tepat waktu, jarum salah dibaca, bertabrakan");
-  cek(t.every((x) => !/\b(chacha|dika|nia|bu sari|bu ratna|lapangan|peluit|lomba|senam|tarik tambang)\b/i.test(x.kunci)), "lintasan: label hanya poin pelajaran");
-  cek(t.every((x) => bersih(x.kunci)), "lintasan: label tanpa kata terlarang");
-  cek(tanpaDigit(DP.SUARA_LINTASAN + DP.PETUNJUK_URUT_LINTASAN) && bersih(DP.SUARA_LINTASAN) && DP.PUSAT_LINTASAN.length > 5 && tanpaDigit(DP.PUSAT_LINTASAN), "lintasan: suara dan pusat tanpa digit");
-  cek(Object.values(DP.KELOMPOK_LINTASAN).every((g) => bersih(g.petunjuk) && tanpaDigit(g.petunjuk) && emojiSah(g.ikon)), "lintasan: petunjuk kelompok bersih");
-  const lb = LL.labelDari(t, 97);
-  let ok = true;
-  for (const x of t)
-    for (const l of lb) {
-      const harus = x.urutan !== undefined ? l.teks === x.kunci : t.find((y) => y.kunci === l.teks).kelompok === x.kelompok;
-      if (LL.cocokKelompok(t, x, l) !== harus) ok = false;
-    }
-  cek(ok, "lintasan: pencocokan kelompok, rintangan bernomor hanya menerima labelnya sendiri");
+  const K = DK.KARTU_JADWAL;
+  cek(K.length === 9, "kartu: sembilan kartu");
+  cek(K.every((k) => k.contoh.length <= 1) && K[0].contoh.join() === "masalah" && K[1].contoh.join() === "cara" && K.slice(2).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di dua kartu pertama, sisanya mandiri");
+  const semua = K.flatMap((k) => [k.masalah, k.cara, k.hasil]);
+  const label = semua.map((x) => x.label);
+  cek(new Set(label).size === label.length, "kartu: label unik");
+  cek(semua.every((x) => x.label.length >= 5 && x.label.length <= 36), `kartu: label pendek (terpanjang ${Math.max(...label.map((l) => l.length))} huruf)`);
+  cek(K.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((l) => l.split(/\s+/).length <= 6)), "kartu: label paling banyak enam kata");
+  cek(semua.every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti) && bersih(x.label) && bersih(x.arti) && x.arti.length > 10), "kartu: label dan arti tanpa digit dan kata terlarang");
+  cek(K.every((k) => tanpaDigit(k.judul) && bersih(k.judul) && k.judul.length > 5), "kartu: judul bersih");
+  cek(K.every((k) => /\?$/.test(k.masalah.label) || k.masalah.label.length > 0), "kartu: masalah terisi");
+  const cara = K.map((k) => k.cara.label).join(" | ").toLowerCase();
+  for (const m of ["Garis Waktu Hari","Jalur Jam","Batang Lama Kegiatan","jarum pendek","angka dua belas","Jam digital"]) cek(cara.includes(m.toLowerCase()), `kartu: cara memuat ${m}`);
+  const gab = K.map((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label, k.masalah.arti, k.cara.arti, k.hasil.arti].join(" ")).join(" ").toLowerCase();
+  for (const s of ["pukul berapa","pukul tepat","jam digital","dua puluh empat jam","pagi, siang, sore, malam","lebih lama","lebih sebentar","kotak"]) cek(gab.includes(s), `kartu: memuat poin "${s}"`);
+  cek(!new RegExp("\\b(chacha|dika|nia|bu sari|bu ratna|lapangan|peluit|lomba|senam|tarik tambang)\\b", "i").test(gab), "kartu: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
+  cek(tanpaDigit(DK.SUARA_KARTU_JADWAL + DK.SELESAI_KARTU_JADWAL) && bersih(DK.SUARA_KARTU_JADWAL + DK.SELESAI_KARTU_JADWAL), "kartu: suara dan pesan selesai tanpa digit dan kata terlarang");
+  cek(emojiSah(DK.TEMA_KARTU_JADWAL.ikon) && DK.TEMA_KARTU_JADWAL.judul.length > 5, "kartu: tema sah");
+  const RG = DK.RINGKASAN_JADWAL;
+  cek(RG.ikon.length === DK.KARTU_JADWAL.length && new Set(RG.ikon).size === RG.ikon.length && [...RG.ikon, RG.pusat].every((e) => emojiSah(e) && !/[A-Za-z0-9]/.test(e)), "peta radial: satu gambar unik per kartu, gambar sah tanpa huruf");
+  cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
 }
 
 /* ------------------------------ Infografis spanduk acara ------------------------------ */

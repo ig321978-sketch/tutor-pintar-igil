@@ -15,6 +15,7 @@ register(
 );
 const L = await import("../src/components/modul/timbang-k2b6a/logika.ts");
 const DP = await import("../src/components/modul/timbang-k2b6a/data-peta.ts");
+const DK = await import("../src/components/modul/timbang-k2b6a/data-kartu.ts");
 const LC = await import("../src/components/modul/timbang-k2b6a/logika-cpa.ts");
 const D = await import("../src/components/modul/timbang-k2b6a/data.ts");
 const K = await import("../src/components/modul/timbang-k2b6a/periksa.ts");
@@ -142,28 +143,29 @@ const emojiSah = (s) => [...s].every((c) => c.codePointAt(0) <= 0x1fa95 && c.cod
   sama(S.misiBaru(MK.MISI_A, z, new Set()), ["a-banding", "a-besar", "a-satuan", "a-susun"], "misi: alur lengkap memenuhi empat misi wajib");
 }
 
-/* ------------------------------ Mind-map: rak peralatan ------------------------------ */
+/* ------------------------------ Mind-map: troli peralatan (sembilan kartu geser) ------------------------------ */
 {
-  const T = DP.TEMPAT_RAK;
-  cek(T.filter((x) => x.contoh).length === 5 && T.filter((x) => x.contoh && x.kelompok === "masalah").length === 1 && T.filter((x) => x.contoh && x.kelompok === "metode").length === 3 && T.filter((x) => x.contoh && x.kelompok === "hasil").length === 1, "rak: lima kotak contoh (satu masalah, tiga langkah, satu hasil)");
-  const per = (k) => T.filter((t) => t.kelompok === k);
-  cek(per("masalah").length === 3 && per("metode").length === 7 && per("hasil").length === 4, "rak: masalah tiga, penyelesaian tujuh, hasil empat");
-  sama(per("metode").map((t) => t.urutan), [1, 2, 3, 4, 5, 6, 7], "rak: penyelesaian bernomor satu sampai tujuh");
-  cek(per("masalah").every((t) => t.urutan === undefined) && per("hasil").every((t) => t.urutan === undefined), "rak: masalah dan hasil tidak bernomor");
-  cek(new Set(T.map((t) => t.kunci)).size === T.length && new Set(T.map((t) => t.id)).size === T.length, "rak: label unik");
-  cek(T.every((t) => t.kunci.length <= 46 && tanpaDigit(t.kunci) && bersih(t.kunci)), `rak: label ringkas, tanpa digit dan kata terlarang (terpanjang ${Math.max(...T.map((t) => t.kunci.length))})`);
-  const metode = per("metode").map((t) => t.kunci).join(" | ");
-  for (const m of ["Model Batang", "Neraca Titik", "Berat di Dasar", "satuan", "timbang", "turun", "tangan"]) cek(metode.includes(m), `rak: penyelesaian memuat ${m}`);
-  const semuaTeks = T.map((t) => t.kunci).join(" ");
-  for (const s of ["Chacha", "Dika", "Nia", "Bu Sari", "Pak Anton", "kerucut", "kantong", "troli", "boneka", "pepaya"]) cek(!semuaTeks.includes(s), `rak: hanya poin pelajaran (${s})`);
-  cek(Object.keys(DP.KELOMPOK_RAK).join() === "masalah,metode,hasil" && DP.PUSAT_RAK.length > 5, "rak: kelompok dan pusat");
-  const label = LL.labelDari(T, 59);
-  cek(label.length === 14 && T.every((t) => LL.cocokKelompok(T, t, label.find((l) => l.teks === t.kunci))), "rak: tiap label cocok dengan tempatnya");
-  const p5 = T.find((t) => t.urutan === 5);
-  const p6label = label.find((l) => l.teks === T.find((t) => t.urutan === 6).kunci);
-  cek(!LL.cocokKelompok(T, p5, p6label), "rak: kotak bernomor menolak label bernomor lain");
-  cek(!LL.cocokKelompok(T, per("masalah")[0], label.find((l) => l.teks === per("hasil")[0].kunci)), "rak: label hasil ditolak di masalah");
-  cek(tanpaDigit(DP.SUARA_RAK) && bersih(DP.SUARA_RAK) && tanpaDigit(DP.PETUNJUK_URUT_RAK), "rak: suara tanpa digit");
+  const K = DK.KARTU_TIMBANG;
+  cek(K.length === 9, "kartu: sembilan kartu");
+  cek(K.every((k) => k.contoh.length <= 1) && K[0].contoh.join() === "masalah" && K[1].contoh.join() === "cara" && K.slice(2).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di dua kartu pertama, sisanya mandiri");
+  const semua = K.flatMap((k) => [k.masalah, k.cara, k.hasil]);
+  const label = semua.map((x) => x.label);
+  cek(new Set(label).size === label.length, "kartu: label unik");
+  cek(semua.every((x) => x.label.length >= 5 && x.label.length <= 36), `kartu: label pendek (terpanjang ${Math.max(...label.map((l) => l.length))} huruf)`);
+  cek(K.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((l) => l.split(/\s+/).length <= 6)), "kartu: label paling banyak enam kata");
+  cek(semua.every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti) && bersih(x.label) && bersih(x.arti) && x.arti.length > 10), "kartu: label dan arti tanpa digit dan kata terlarang");
+  cek(K.every((k) => tanpaDigit(k.judul) && bersih(k.judul) && k.judul.length > 5), "kartu: judul bersih");
+  cek(K.every((k) => /\?$/.test(k.masalah.label) || k.masalah.label.length > 0), "kartu: masalah terisi");
+  const cara = K.map((k) => k.cara.label).join(" | ");
+  for (const m of ["Model Batang","Neraca Titik","Berat di Dasar","Jungkat-jungkit","Timbang"]) cek(cara.toLowerCase().includes(m.toLowerCase()), `kartu: cara memuat ${m}`);
+  const gab = K.map((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label, k.masalah.arti, k.cara.arti, k.hasil.arti].join(" ")).join(" ").toLowerCase();
+  for (const s of ["berapa beratnya","lebih berat","besar belum tentu berat","paling berat","satuan","seimbang","hitungan banyak","selisih"]) cek(gab.includes(s), `kartu: memuat poin "${s}"`);
+  cek(!new RegExp("\\b(chacha|dika|nia|bu sari|pak anton|kerucut|kantong|troli|boneka|harimau|pepaya)\\b", "i").test(gab), "kartu: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
+  cek(tanpaDigit(DK.SUARA_KARTU_TIMBANG + DK.SELESAI_KARTU_TIMBANG) && bersih(DK.SUARA_KARTU_TIMBANG + DK.SELESAI_KARTU_TIMBANG), "kartu: suara dan pesan selesai tanpa digit dan kata terlarang");
+  cek(emojiSah(DK.TEMA_KARTU_TIMBANG.ikon) && DK.TEMA_KARTU_TIMBANG.judul.length > 5, "kartu: tema sah");
+  const RG = DK.RINGKASAN_TIMBANG;
+  cek(RG.ikon.length === DK.KARTU_TIMBANG.length && new Set(RG.ikon).size === RG.ikon.length && [...RG.ikon, RG.pusat].every((e) => emojiSah(e) && !/[A-Za-z0-9]/.test(e)), "peta radial: satu gambar unik per kartu, gambar sah tanpa huruf");
+  cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
 }
 
 /* ------------------------------ Infografis: papan lapangan ------------------------------ */
@@ -390,7 +392,8 @@ const benda = (l) => {
   cek(/BATAS_SALAH|JawabSuaraTimbang/.test(ui("JawabTimbang.tsx")) && /Ini jawaban yang benar/.test(ui("JawabTimbang.tsx")) && /Ini jawaban yang benar/.test(langkah), "pesan Ini jawaban yang benar dipakai");
   const tahap = ui("TahapTimbang.tsx");
   cek(/poinPenting/.test(tahap) && /POIN_PENTING/.test(tahap) && /teksAkhir/.test(tahap) && /umum/.test(tahap) && /rupa/.test(tahap) && /soal/.test(tahap) && /pita/.test(tahap), "TahapTimbang: props umum, rupa, soal, pita, teksAkhir, poinPenting");
-  for (const f of ["RakPeralatan.tsx", "PapanLapangan.tsx"]) cek(/useTempel/.test(ui(f)) && /BakiLabel/.test(ui(f)) && /onLanjut/.test(ui(f)) && /teksLanjut/.test(ui(f)), `${f}: tempel label dengan baki`);
+  cek(/PetaKartu/.test(ui("RakPeralatan.tsx")) && /onLanjut/.test(ui("RakPeralatan.tsx")) && /teksLanjut/.test(ui("RakPeralatan.tsx")), "RakPeralatan.tsx: kartu geser lewat PetaKartu");
+  for (const f of ["PapanLapangan.tsx"]) cek(/useTempel/.test(ui(f)) && /BakiLabel/.test(ui(f)) && /onLanjut/.test(ui(f)) && /teksLanjut/.test(ui(f)), `${f}: tempel label dengan baki`);
   for (const f of ["RakPeralatan.tsx", "PapanLapangan.tsx", "SimulasiPosTimbang.tsx", "LangkahTimbang.tsx", "TahapTimbang.tsx", "JawabTimbang.tsx"]) {
     const s = ui(f);
     const teksLayar = [...s.matchAll(/>\s*([^<>{}\n]{6,})\s*</g)].map((m) => m[1]).concat([...s.matchAll(/"([^"\n]{12,})"/g)].map((m) => m[1]));
