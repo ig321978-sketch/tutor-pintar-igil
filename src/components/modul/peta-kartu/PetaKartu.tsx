@@ -247,6 +247,9 @@ export default function PetaKartu({
           {kotak("hasil")}
         </div>
 
+        <p role="status" aria-live="polite" className="mt-2 mb-1 min-h-[2.5rem] text-center text-sm font-black text-[#1C01A5]">
+          {semua ? pesanSelesai : pesan}
+        </p>
         <div className="mt-3 flex min-h-[52px] flex-wrap items-center justify-center gap-2 rounded-xl border-[3px] border-dashed p-2" style={{ borderColor: tema.garisLatar }} role="group" aria-label="Label yang belum ditempel">
           {sisa.length === 0 ? (
             <span className="text-sm font-black text-[#15803D]">Semua label di kartu ini sudah menempel.</span>
@@ -265,9 +268,6 @@ export default function PetaKartu({
             ))
           )}
         </div>
-        <p role="status" aria-live="polite" className="mt-2 min-h-[2.5rem] text-center text-sm font-black text-[#1C01A5]">
-          {semua ? pesanSelesai : pesan}
-        </p>
         <div className="mt-1 flex justify-between gap-2">
           <button type="button" onClick={() => pindah(-1)} className="rounded-lg border-2 border-[#1C01A5] bg-white px-3 py-1.5 text-sm font-black text-[#1C01A5]">
             {"⬅️"} Kartu sebelumnya

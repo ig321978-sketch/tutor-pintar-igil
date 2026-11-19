@@ -66,17 +66,25 @@ const ADA_EMOJI = /[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}]/u;
   cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
 }
 
-/* ------------------------------ Infografis spanduk acara ------------------------------ */
+/* ------------------------------ Infografis: spanduk acara (lima kartu kejadian + poster) ------------------------------ */
 {
-  const t = DP.TEMPAT_SPANDUK;
-  cek(t.filter((x) => x.contoh).length === 7 && [0, 1, 2].every((c) => t[c].contoh) && t.filter((x) => !x.contoh).length === 8, "spanduk: satu baris contoh penuh dan satu sel contoh tiap baris lain");
-  cek(DP.BARIS_SPANDUK.length === 5 && t.length === 15 && new Set(t.map((x) => x.kunci)).size === 15, "spanduk: lima baris dan tiga kolom, label unik");
-  sama(DP.BARIS_SPANDUK.map((b) => b.nama), ["Pembukaan", "Lomba lari", "Makan siang", "Tarik tambang", "Pesta penutupan"], "spanduk: lima kegiatan dari Story");
-  sama(DP.BARIS_SPANDUK.map((b) => b.digital), ["07.00", "09.00", "12.00", "16.00", "19.00"], "spanduk: jam digital");
-  cek(DP.BARIS_SPANDUK.every((b) => b.kata === LC.kataPukul(Number(b.digital.slice(0, 2)))), "spanduk: kata pukul sesuai jam digital (dihitung dari jam dua puluh empat)");
-  cek(t.filter((x) => x.kelompok !== "digital").every((x) => x.kunci.length <= 30 && tanpaDigit(x.kunci)), "spanduk: label kata dan urutan pendek tanpa digit");
-  cek(Object.values(DP.KELOMPOK_SPANDUK).every((p) => bersih(p) && tanpaDigit(p)) && tanpaDigit(DP.SUARA_SPANDUK) && bersih(DP.SUARA_SPANDUK), "spanduk: petunjuk dan suara bersih tanpa digit");
-  cek(DP.KOLOM_SPANDUK.length === 3 && DP.BARIS_SPANDUK.every((b) => emojiSah(b.ikon)), "spanduk: tiga kolom, emoji sah");
+  const B = DK.BARIS_INFO_JADWAL;
+  cek(B.length === 5 && DK.KOLOM_INFO_JADWAL.length === 3, "infografis: lima kartu dan tiga kolom");
+  cek(B.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: tiap kartu tiga isian, emoji sah");
+  const jumlahContoh = B.map((b) => b.contoh.length);
+  cek(jumlahContoh[0] === 3 && jumlahContoh.slice(1, 4).every((n) => n === 1) && jumlahContoh[4] === 0, "infografis: kartu satu penuh contoh, kartu dua sampai empat satu contoh, kartu lima mandiri");
+  cek(B.slice(1, 4).map((b) => b.contoh[0]).join() === "0,1,2", "infografis: kotak contoh berpindah kolom");
+  const semua = B.flatMap((b) => b.isi);
+  cek(B.every((b) => new Set(b.isi.map((x) => x.t)).size === 3), "infografis: tiga label tiap kartu berbeda");
+  cek(semua.every((x) => x.t.length <= 26 && x.t.split(/\s+/).length <= 5 && bersih(x.t) && bersih(x.s ?? "")), "infografis: label pendek (paling banyak lima kata) dan tanpa kata terlarang");
+  cek(semua.every((x) => tanpaDigit(x.s ?? x.t)), "infografis: ucapan label tanpa digit");
+  const gab = B.map((b) => [b.nama, ...b.isi.map((x) => x.t)].join(" ")).join(" ").toLowerCase();
+  for (const s of ["pembukaan","lomba lari","makan siang","tarik tambang","pesta penutupan","pukul tujuh pagi","pukul empat sore","pukul tujuh malam"]) cek(gab.includes(s), `infografis: memuat "${s}"`);
+  cek(!new RegExp("\\b(chacha|dika|nia|bu sari|bu ratna)\\b", "i").test(gab), "infografis: tanpa nama tokoh");
+  cek(tanpaDigit(DK.SUARA_INFO_JADWAL + DK.SELESAI_INFO_JADWAL) && bersih(DK.SUARA_INFO_JADWAL + DK.SELESAI_INFO_JADWAL) && emojiSah(DK.TEMA_INFO_JADWAL.ikon), "infografis: suara dan tema bersih");
+  cek(B.map((b) => b.isi[2].t).join() === "07.00,09.00,12.00,16.00,19.00", "infografis: jam digital berurutan");
+  cek(B.every((b) => b.isi[1].t.toLowerCase() === LC.kataPukul(Number(b.isi[2].t.slice(0, 2))).toLowerCase()), "infografis: jam dengan kata sesuai jam digital");
+  cek(B.map((b) => b.isi[0].t).join() === "Pertama,Kedua,Ketiga,Keempat,Kelima", "infografis: urutan acara ejaan baku");
 }
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */

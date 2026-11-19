@@ -4,6 +4,7 @@
  * Label tanpa digit; arti diucapkan guru saat label atau kotak diketuk.
  */
 import type { KartuPeta, RingkasanPeta, TemaPeta } from "../peta-kartu/PetaKartu";
+import type { BarisInfo, TemaInfo } from "../peta-kartu/InfografisKartu";
 
 const kt = (judul: string, masalah: [string, string], cara: [string, string], hasil: [string, string], contoh: KartuPeta["contoh"] = []): KartuPeta => ({
   judul,
@@ -35,3 +36,22 @@ export const RINGKASAN_JADWAL: RingkasanPeta = {
 export const SUARA_KARTU_JADWAL =
   "Ini lintasan lari. Ada sembilan kartu. Tiap kartu punya tiga kotak: masalah, cara, dan hasil. Kotak bertanda contoh sudah terisi, jadi lihat dulu sebagai petunjuk. Ketuk label, lalu ketuk kotak yang cocok.";
 export const SELESAI_KARTU_JADWAL = "Semua kartu lengkap! Dari masalah, lewat cara, sampai hasil.";
+
+/* ------------------------------ Infografis: spanduk acara (lima kartu kegiatan + poster) ------------------------------ */
+export const KOLOM_INFO_JADWAL = ["Urutan acara", "Ditulis dengan kata", "Jam digital"] as const;
+const bi = (ikon: string, nama: string, urutan: string, kata: string, digital: string, ucapDigital: string, contoh: number[]): BarisInfo => ({
+  ikon,
+  nama,
+  isi: [{ t: urutan }, { t: kata }, { t: digital, s: ucapDigital }],
+  contoh,
+});
+export const BARIS_INFO_JADWAL: readonly BarisInfo[] = [
+  bi("\u{1F6A9}", "Pembukaan", "Pertama", "Pukul tujuh pagi", "07.00", "nol tujuh titik nol nol", [0, 1, 2]),
+  bi("\u{1F3C3}", "Lomba lari", "Kedua", "Pukul sembilan pagi", "09.00", "nol sembilan titik nol nol", [0]),
+  bi("\u{1F35A}", "Makan siang", "Ketiga", "Pukul dua belas siang", "12.00", "dua belas titik nol nol", [1]),
+  bi("\u{1F4AA}", "Tarik tambang", "Keempat", "Pukul empat sore", "16.00", "enam belas titik nol nol", [2]),
+  bi("\u{1F3C6}", "Pesta penutupan", "Kelima", "Pukul tujuh malam", "19.00", "sembilan belas titik nol nol", []),
+];
+export const TEMA_INFO_JADWAL: TemaInfo = { bingkai: "#DC2626", latar: "#FEF2F2", aksen: "#1D4ED8", teduh: "#DBEAFE", ikon: "\u{1F3C1}", judul: "Jadwal Hari Olahraga" };
+export const SUARA_INFO_JADWAL = "Ini jadwal Hari Olahraga. Ada lima kartu, satu kartu satu kegiatan. Isi urutannya, jamnya dengan kata, dan jam digitalnya. Kotak bertanda contoh sudah terisi. Ketuk label, lalu ketuk kotak yang cocok.";
+export const SELESAI_INFO_JADWAL = "Jadwal lengkap! Urutan acara, jam dengan kata, dan jam digital berjalan bersama supaya semua lomba tepat waktu.";

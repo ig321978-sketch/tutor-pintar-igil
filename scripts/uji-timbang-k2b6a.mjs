@@ -168,19 +168,22 @@ const emojiSah = (s) => [...s].every((c) => c.codePointAt(0) <= 0x1fa95 && c.cod
   cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
 }
 
-/* ------------------------------ Infografis: papan lapangan ------------------------------ */
+/* ------------------------------ Infografis: papan lapangan (lima kartu kejadian + poster) ------------------------------ */
 {
-  const T = DP.TEMPAT_PAPAN;
-  cek(T.filter((x) => x.contoh).length === 7 && [0, 1, 2].every((c) => T[c].contoh) && T.filter((x, i) => x.contoh && i >= 3).length === 4 && T.filter((x) => !x.contoh).length === 8, "papan: satu baris contoh penuh dan satu sel contoh tiap baris lain");
-  cek(DP.BARIS_PAPAN.length === 5 && T.length === 15 && DP.KOLOM_PAPAN.length === 3, "papan: lima baris, tiga kolom, lima belas kotak");
-  cek(new Set(T.map((t) => t.kunci)).size === 15 && new Set(T.map((t) => t.id)).size === 15, "papan: label unik");
-  cek(T.every((t) => t.kunci.length <= 34 && tanpaDigit(t.kunci) && bersih(t.kunci)), `papan: label pendek, tanpa digit dan kata terlarang (terpanjang ${Math.max(...T.map((t) => t.kunci.length))})`);
-  const baris = DP.BARIS_PAPAN.map((b) => b.nama).join(" ");
-  for (const s of ["Kerucut", "kantong", "Dua bola", "Boneka harimau", "Rantai buah"]) cek(baris.includes(s), `papan: baris ${s} dari data Story`);
-  cek(DP.BARIS_PAPAN.every((b) => emojiSah(b.ikon)), "papan: emoji sah");
-  cek(Object.keys(DP.KELOMPOK_PAPAN).join() === "cara,terjadi,hasil" && T.every((t) => DP.KELOMPOK_PAPAN[t.kelompok]), "papan: petunjuk tiap kolom");
-  cek(DP.BARIS_PAPAN.some((b) => b.hasil === "sama berat") && DP.BARIS_PAPAN.some((b) => /lebih berat/.test(b.hasil)), "papan: hasil memakai kata berat");
-  cek(tanpaDigit(DP.SUARA_PAPAN) && bersih(DP.SUARA_PAPAN), "papan: suara tanpa digit");
+  const B = DK.BARIS_INFO_TIMBANG;
+  cek(B.length === 5 && DK.KOLOM_INFO_TIMBANG.length === 3, "infografis: lima kartu dan tiga kolom");
+  cek(B.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: tiap kartu tiga isian, emoji sah");
+  const jumlahContoh = B.map((b) => b.contoh.length);
+  cek(jumlahContoh[0] === 3 && jumlahContoh.slice(1, 4).every((n) => n === 1) && jumlahContoh[4] === 0, "infografis: kartu satu penuh contoh, kartu dua sampai empat satu contoh, kartu lima mandiri");
+  cek(B.slice(1, 4).map((b) => b.contoh[0]).join() === "0,1,2", "infografis: kotak contoh berpindah kolom");
+  const semua = B.flatMap((b) => b.isi);
+  cek(B.every((b) => new Set(b.isi.map((x) => x.t)).size === 3), "infografis: tiga label tiap kartu berbeda");
+  cek(semua.every((x) => x.t.length <= 26 && x.t.split(/\s+/).length <= 5 && bersih(x.t) && bersih(x.s ?? "")), "infografis: label pendek (paling banyak lima kata) dan tanpa kata terlarang");
+  cek(semua.every((x) => tanpaDigit(x.s ?? x.t)), "infografis: ucapan label tanpa digit");
+  const gab = B.map((b) => [b.nama, ...b.isi.map((x) => x.t)].join(" ")).join(" ").toLowerCase();
+  for (const s of ["kerucut","dua kantong","dua bola","boneka harimau","rantai buah","dua tangan","gantungan baju","jungkat-jungkit","sama berat","yang turun lebih berat","empat bola tenis"]) cek(gab.includes(s), `infografis: memuat "${s}"`);
+  cek(!new RegExp("\\b(chacha|dika|nia|bu sari|pak anton)\\b", "i").test(gab), "infografis: tanpa nama tokoh");
+  cek(tanpaDigit(DK.SUARA_INFO_TIMBANG + DK.SELESAI_INFO_TIMBANG) && bersih(DK.SUARA_INFO_TIMBANG + DK.SELESAI_INFO_TIMBANG) && emojiSah(DK.TEMA_INFO_TIMBANG.ikon), "infografis: suara dan tema bersih");
 }
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */
@@ -393,7 +396,7 @@ const benda = (l) => {
   const tahap = ui("TahapTimbang.tsx");
   cek(/poinPenting/.test(tahap) && /POIN_PENTING/.test(tahap) && /teksAkhir/.test(tahap) && /umum/.test(tahap) && /rupa/.test(tahap) && /soal/.test(tahap) && /pita/.test(tahap), "TahapTimbang: props umum, rupa, soal, pita, teksAkhir, poinPenting");
   cek(/PetaKartu/.test(ui("RakPeralatan.tsx")) && /onLanjut/.test(ui("RakPeralatan.tsx")) && /teksLanjut/.test(ui("RakPeralatan.tsx")), "RakPeralatan.tsx: kartu geser lewat PetaKartu");
-  for (const f of ["PapanLapangan.tsx"]) cek(/useTempel/.test(ui(f)) && /BakiLabel/.test(ui(f)) && /onLanjut/.test(ui(f)) && /teksLanjut/.test(ui(f)), `${f}: tempel label dengan baki`);
+  cek(/InfografisKartu/.test(ui("PapanLapangan.tsx")) && /onLanjut/.test(ui("PapanLapangan.tsx")) && /teksLanjut/.test(ui("PapanLapangan.tsx")), "PapanLapangan.tsx: kartu geser lewat InfografisKartu");
   for (const f of ["RakPeralatan.tsx", "PapanLapangan.tsx", "SimulasiPosTimbang.tsx", "LangkahTimbang.tsx", "TahapTimbang.tsx", "JawabTimbang.tsx"]) {
     const s = ui(f);
     const teksLayar = [...s.matchAll(/>\s*([^<>{}\n]{6,})\s*</g)].map((m) => m[1]).concat([...s.matchAll(/"([^"\n]{12,})"/g)].map((m) => m[1]));

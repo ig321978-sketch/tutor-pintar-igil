@@ -4,6 +4,7 @@
  * Label tanpa digit; arti diucapkan guru saat label atau kotak diketuk.
  */
 import type { KartuPeta, RingkasanPeta, TemaPeta } from "../peta-kartu/PetaKartu";
+import type { BarisInfo, TemaInfo } from "../peta-kartu/InfografisKartu";
 
 const kt = (judul: string, masalah: [string, string], cara: [string, string], hasil: [string, string], contoh: KartuPeta["contoh"] = []): KartuPeta => ({
   judul,
@@ -35,3 +36,17 @@ export const RINGKASAN_TIMBANG: RingkasanPeta = {
 export const SUARA_KARTU_TIMBANG =
   "Ini troli peralatan. Ada sembilan kartu. Tiap kartu punya tiga kotak: masalah, cara, dan hasil. Kotak bertanda contoh sudah terisi, jadi lihat dulu sebagai petunjuk. Ketuk label, lalu ketuk kotak yang cocok.";
 export const SELESAI_KARTU_TIMBANG = "Semua kartu lengkap! Dari masalah, lewat cara, sampai hasil.";
+
+/* ------------------------------ Infografis: papan lapangan (lima kartu kejadian + poster) ------------------------------ */
+export const KOLOM_INFO_TIMBANG = ["Cara menimbang", "Yang terjadi", "Katanya"] as const;
+const bi = (ikon: string, nama: string, a: string, b: string, c: string, contoh: number[]): BarisInfo => ({ ikon, nama, isi: [{ t: a }, { t: b }, { t: c }], contoh });
+export const BARIS_INFO_TIMBANG: readonly BarisInfo[] = [
+  bi("\u{1F6A7}", "Kerucut dan kantong", "Dua tangan", "Terasa berat", "Lebih berat", [0, 1, 2]),
+  bi("\u{1F45C}", "Dua kantong", "Gantungan baju", "Satu turun", "Yang turun lebih berat", [0]),
+  bi("⚽", "Dua bola", "Jungkat-jungkit", "Papan datar", "Sama berat", [1]),
+  bi("\u{1F42F}", "Boneka harimau", "Bola tenis", "Seimbang", "Empat bola tenis", [2]),
+  bi("\u{1F96D}", "Rantai buah", "Berpasangan", "Pepaya sama dua mangga", "Empat manggis", []),
+];
+export const TEMA_INFO_TIMBANG: TemaInfo = { bingkai: "#16A34A", latar: "#ECFDF5", aksen: "#16A34A", teduh: "#DCFCE7", ikon: "\u{1F4E3}", judul: "Papan lapangan" };
+export const SUARA_INFO_TIMBANG = "Ini papan lapangan. Ada lima kartu, satu kartu satu kejadian dari cerita. Isi cara menimbang, yang terjadi, dan katanya. Kotak bertanda contoh sudah terisi. Ketuk label, lalu ketuk kotak yang cocok.";
+export const SELESAI_INFO_TIMBANG = "Papan lapangan lengkap! Yang turun lebih berat, papan datar berarti sama berat, dan satuan dihitung banyaknya.";
