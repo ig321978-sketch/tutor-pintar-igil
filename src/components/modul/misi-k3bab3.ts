@@ -1,99 +1,64 @@
 /**
- * Misi dan tantangan bebas Kelas 3 Bab 3 (Pengukuran Panjang dan Berat). Murni: tanpa React, tanpa jaringan.
+ * Misi dan tantangan bebas Kelas 3 Bab 3 (Pengukuran Panjang dan Berat, tema Kebun Binatang Mini). Murni: tanpa React, tanpa jaringan.
  * Diuji di scripts/uji-lab-k3b3.mjs.
  *
- * Simulasi bertahap per sub-bab (tiga alat). Lab Timbangan Kodok memuat dua tampilan (Bandul dan Ubah Berat):
- *  A Pengukuran Panjang      : Lab Penggaris + Mesin Ukur + skenario Posyandu Alfa.
- *  B Hubungan Satuan Panjang : Lab Meteran + Mesin Ubah Panjang + skenario Pita Meutia.
- *  C Pengukuran Berat        : Lab Timbangan + Mesin Timbang + skenario Bahan Kue Meutia.
- *  D Hubungan Satuan Berat   : Lab Timbangan Kodok + Mesin Ubah Berat + skenario Pasar Meutia (pencapaian bab).
+ * Tiap Sub-Bab satu simulasi sendiri (folder Sub-Bab): A Meja Ukur, B Bengkel Pita, C Gudang Timbang, D Meja Bandul.
+ * KERANGKA: agen tiap Sub-Bab mengganti MISI_X (kosong) dan menyesuaikan tipe keadaannya di union KeadaanK3Bab3.
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
-import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
-import type { KeadaanPenggaris } from "./lab-penggaris-k3b3";
-import type { KeadaanMet } from "./lab-meteran-k3b3";
-import type { KeadaanTimbang } from "./lab-timbang-k3b3";
-import type { KeadaanKodok, KeadaanUbah } from "./lab-kodok-k3b3";
+import type { DefMisi } from "./misi-simulasi";
 
-export type KeadaanK3Bab3 = KeadaanPenggaris | KeadaanMet | KeadaanTimbang | KeadaanKodok | KeadaanUbah | KeadaanSelesai;
+import type { KeadaanUkur } from "./ukur-k3b3a/logika";
+import type { KeadaanPita } from "./pita-k3b3b/logika";
+import type { KeadaanTimbang } from "./timbang-k3b3c/logika";
+import type { KeadaanBandul } from "./bandul-k3b3d/logika";
 
-const penggaris = (k: KeadaanK3Bab3): k is KeadaanPenggaris => k.alat === "penggaris";
-const meteran = (k: KeadaanK3Bab3): k is KeadaanMet => k.alat === "meteran";
-const timbang = (k: KeadaanK3Bab3): k is KeadaanTimbang => k.alat === "timbang";
-const kodok = (k: KeadaanK3Bab3): k is KeadaanKodok => k.alat === "kodok";
-const ubah = (k: KeadaanK3Bab3): k is KeadaanUbah => k.alat === "ubahberat";
-const selesai = (k: KeadaanK3Bab3, id: string) => k.alat === "selesai" && k.id === id;
+export type KeadaanK3Bab3 = { alat: "kerangka" } | KeadaanUkur | KeadaanPita | KeadaanTimbang | KeadaanBandul;
 
-/** Id yang dilaporkan skenario dan mesin saat tuntas (dipakai misi di bawah dan pembungkus React). */
-export const ID_SKENARIO_K3B3 = { A: "posyandu-alfa", B: "pita-meutia", C: "bahan-kue", D: "pasar-meutia" } as const;
-export const ID_MESIN_K3B3 = { A: "mesin-ukur", B: "mesin-ubah-panjang", C: "mesin-timbang", D: "mesin-ubah-berat" } as const;
-
-/** Banyak susunan bandul seimbang berbeda untuk benda yang paling banyak dicatat. */
-export const susunanTerbanyak = (pernah: readonly string[]): number => {
-  const hitung: Record<string, number> = {};
-  for (const p of pernah) {
-    const benda = p.split("|")[0];
-    hitung[benda] = (hitung[benda] ?? 0) + 1;
-  }
-  return Math.max(0, ...Object.values(hitung));
-};
-
-/** Sub-Bab A: mengukur panjang dengan penggaris dan meteran. */
+/** Sub-Bab A: Meja Ukur. Empat misi wajib dan dua tantangan bebas, id berawalan a-, tanpa skor. Diuji di scripts/uji-ukur-k3b3a.mjs. */
+const ukur = (k: KeadaanK3Bab3): k is KeadaanUkur => k.alat === "ukur";
 export const MISI_A: DefMisi<KeadaanK3Bab3>[] = [
-  { id: "a-nol", teks: "Ukur pensil dengan penggaris: geser sampai ujung kirinya tepat di angka 0, lalu tekan Baca panjang.", wajib: true, cek: (k) => penggaris(k) && k.pernah.includes("penggaris:pensil") },
-  { id: "a-salah", teks: "Tekan Baca panjang saat benda belum di angka 0, dan lihat mengapa bacaannya keliru.", wajib: true, cek: (k) => penggaris(k) && k.pernahSalah },
-  { id: "a-meteran", teks: "Ganti ke Meteran, pilih benda yang lebih panjang dari 30 cm, geser ke angka 0, lalu baca panjangnya.", wajib: true, cek: (k) => penggaris(k) && k.pernah.some((p) => p.startsWith("meteran:")) },
-  { id: "a-tiga", teks: "Ukur tiga benda berbeda dengan alat yang tepat, masing-masing dimulai dari angka 0.", wajib: true, cek: (k) => penggaris(k) && k.pernah.length >= 3 },
-  { id: "a-mesin", teks: "Selesaikan Mesin Ukur sampai semua benda diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K3B3.A) },
-  { id: "a-skenario", teks: "Selesaikan skenario Posyandu Alfa sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K3B3.A) },
-  { id: "a-30", teks: "Ukur buku tulis 30 cm dengan penggaris. Panjangnya pas sampai ujung penggaris.", wajib: false, cek: (k) => penggaris(k) && k.pernah.includes("penggaris:buku") },
-  { id: "a-terlalu", teks: "Pasang benda yang lebih panjang dari 30 cm di penggaris, dan lihat lab menolaknya.", wajib: false, cek: (k) => penggaris(k) && k.pernahTerlalu },
-  { id: "a-lima", teks: "Ukur lima benda berbeda dengan alat yang tepat.", wajib: false, cek: (k) => penggaris(k) && k.pernah.length >= 5 },
+  { id: "a-geser", teks: "Geser benda sampai ujung kirinya tepat di angka nol, baca panjangnya, lalu tekan Periksa.", wajib: true, cek: (k) => ukur(k) && k.geserBenar.length >= 1 },
+  { id: "a-baca", teks: "Tulis hasil ukur dengan satuan yang tepat, lalu tekan Periksa.", wajib: true, cek: (k) => ukur(k) && k.bacaBenar.length >= 1 },
+  { id: "a-alat", teks: "Pilih penggaris atau meteran yang tepat untuk satu benda, lalu tekan Periksa.", wajib: true, cek: (k) => ukur(k) && k.alatBenar.length >= 1 },
+  { id: "a-selisih", teks: "Cari selisih panjang dua batang dengan mengurangkan, lalu tekan Periksa.", wajib: true, cek: (k) => ukur(k) && k.selisihBenar.length >= 1 },
+  { id: "a-tolak", teks: "Coba baca panjang saat ujung benda belum di angka nol, dan lihat alat menolak.", wajib: false, cek: (k) => ukur(k) && k.tolak },
+  { id: "a-tiga", teks: "Ukur tiga benda berbeda dengan menggesernya ke angka nol sampai semuanya tepat.", wajib: false, cek: (k) => ukur(k) && k.geserBenar.length >= 3 },
 ];
 
-/** Sub-Bab B: hubungan meter dan sentimeter, menyambung dan memotong. */
+/** Sub-Bab B: Bengkel Pita. Empat misi wajib dan dua tantangan bebas, id berawalan b-, tanpa skor. Diuji di scripts/uji-pita-k3b3b.mjs. */
+const pita = (k: KeadaanK3Bab3): k is KeadaanPita => k.alat === "pita";
 export const MISI_B: DefMisi<KeadaanK3Bab3>[] = [
-  { id: "b-117", teks: "Rakit pita 1 m 17 cm (tinggi Azizah). Nyalakan Meter dan cm serta Sentimeter, dan lihat 117 cm.", wajib: true, cek: (k) => meteran(k) && k.mode === "satu" && k.a === 117 && k.meterCm && k.senti },
-  { id: "b-bagi", teks: "Rakit pita 400 cm, nyalakan Ubah satuan, dan lihat 400 cm dibagi 100 sama dengan 4 m.", wajib: true, cek: (k) => meteran(k) && k.mode === "satu" && k.a === 400 && k.ubah },
-  { id: "b-tukar", teks: "Tambah sentimeter sampai 100 cm, dan lihat 100 cm ditukar 1 meter.", wajib: true, cek: (k) => meteran(k) && k.tukarPM },
-  { id: "b-sambung", teks: "Sambung pita 4 m 37 cm dengan pita 7 m 43 cm. Nyalakan Langkah hitung: hasilnya 11 m 80 cm.", wajib: true, cek: (k) => meteran(k) && k.mode === "dua" && k.op === "sambung" && k.a === 437 && k.b === 743 && k.langkah },
-  { id: "b-kurang", teks: "Potong kain 75 m 80 cm dengan 38 m 45 cm. Nyalakan Langkah hitung: sisanya 37 m 35 cm.", wajib: true, cek: (k) => meteran(k) && k.mode === "dua" && k.op === "potong" && k.a === 7580 && k.b === 3845 && k.langkah },
-  { id: "b-mesin", teks: "Selesaikan Mesin Ubah Panjang sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K3B3.B) },
-  { id: "b-skenario", teks: "Selesaikan skenario Pita Meutia sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K3B3.B) },
-  { id: "b-simpan", teks: "Sambung dua pita yang sentimeternya berjumlah lebih dari 100, dan lihat 100 cm ditukar 1 m.", wajib: false, cek: (k) => meteran(k) && k.simpan && k.langkah },
-  { id: "b-pinjam", teks: "Potong pita yang sentimeternya kurang, dan lihat meminjam 1 m yang sama dengan 100 cm.", wajib: false, cek: (k) => meteran(k) && k.pinjam && k.langkah },
-  { id: "b-seribu", teks: "Rakit pita 10 m dan lihat 1.000 cm dengan Sentimeter menyala.", wajib: false, cek: (k) => meteran(k) && k.mode === "satu" && k.a === 1000 && k.senti },
+  { id: "b-tukar", teks: "Tukar potongan pita sepuluh-ke-satu sampai paling sedikit potongan, lalu tekan Periksa.", wajib: true, cek: (k) => pita(k) && k.tukarBenar.length >= 1 },
+  { id: "b-ubah", teks: "Ubah satu ukuran dari meter ke sentimeter atau sebaliknya, lalu tekan Periksa.", wajib: true, cek: (k) => pita(k) && k.ubahBenar.length >= 1 },
+  { id: "b-gabung", teks: "Tulis satu ukuran sentimeter dengan meter dan sentimeter bersama, lalu tekan Periksa.", wajib: true, cek: (k) => pita(k) && k.gabungBenar.length >= 1 },
+  { id: "b-sambung", teks: "Sambung atau potong pita dengan menghitung meter dan sentimeter sendiri-sendiri, lalu tekan Periksa.", wajib: true, cek: (k) => pita(k) && k.sambungBenar.length >= 1 },
+  { id: "b-banding", teks: "Pilih pita yang paling panjang untuk dua kumpulan pita, lalu tekan Periksa.", wajib: false, cek: (k) => pita(k) && k.bandingBenar.length >= 2 },
+  { id: "b-lengkap", teks: "Ubah tiga ukuran berbeda sampai semuanya tepat.", wajib: false, cek: (k) => pita(k) && k.ubahBenar.length >= 3 },
 ];
 
-/** Sub-Bab C: pengukuran berat dengan timbangan digital dan timbangan duduk. */
+/** Sub-Bab C: Gudang Timbang. Empat misi wajib dan dua tantangan bebas, id berawalan c-, tanpa skor. Diuji di scripts/uji-timbang-k3b3c.mjs. */
+const timbang = (k: KeadaanK3Bab3): k is KeadaanTimbang => k.alat === "timbang";
 export const MISI_C: DefMisi<KeadaanK3Bab3>[] = [
-  { id: "c-nol", teks: "Atur timbangan ke angka 0 sebelum menimbang.", wajib: true, cek: (k) => timbang(k) && k.dinol },
-  { id: "c-telur", teks: "Timbang telur dengan timbangan digital, mulai dari nol, lalu tekan Baca berat.", wajib: true, cek: (k) => timbang(k) && k.pernah.includes("digital:telur") },
-  { id: "c-jarum", teks: "Timbang semangka dengan timbangan duduk, mulai dari nol, dan baca angka yang ditunjuk jarum.", wajib: true, cek: (k) => timbang(k) && k.pernah.includes("duduk:semangka") },
-  { id: "c-salah", teks: "Tekan Baca berat saat timbangan belum di angka 0, dan lihat mengapa hasilnya keliru.", wajib: true, cek: (k) => timbang(k) && k.pernahSalah },
-  { id: "c-tiga", teks: "Timbang tiga benda berbeda dengan benar, masing-masing dimulai dari angka 0.", wajib: true, cek: (k) => timbang(k) && k.pernah.length >= 3 },
-  { id: "c-mesin", teks: "Selesaikan Mesin Timbang sampai semua benda diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K3B3.C) },
-  { id: "c-skenario", teks: "Selesaikan skenario Bahan Kue Meutia sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K3B3.C) },
-  { id: "c-seribu", teks: "Timbang gula dengan timbangan digital. Layar menunjukkan 1.000 g.", wajib: false, cek: (k) => timbang(k) && k.pernah.includes("digital:gula") },
-  { id: "c-selisih", teks: "Timbang stroberi 100 g dan stroberi dua kotak 500 g dengan timbangan digital, lalu hitung selisihnya.", wajib: false, cek: (k) => timbang(k) && k.pernah.includes("digital:stroberi") && k.pernah.includes("digital:stroberi2") },
-  { id: "c-diantara", teks: "Timbang tepung dengan timbangan duduk dan lihat jarum berhenti di antara dua angka.", wajib: false, cek: (k) => timbang(k) && k.pernahDiantara },
+  { id: "c-nol", teks: "Setel jarum timbangan duduk dan layar timbangan digital sampai tepat di nol.", wajib: true, cek: (k) => timbang(k) && k.nolJarum && k.nolLayar },
+  { id: "c-baca", teks: "Letakkan benda di timbangan, baca beratnya, lalu pilih ukuran dengan satuan yang tepat.", wajib: true, cek: (k) => timbang(k) && k.bacaBenar.length >= 1 },
+  { id: "c-pilih", teks: "Pilih jenis timbangan dan satuan yang tepat untuk satu benda, lalu tekan Periksa.", wajib: true, cek: (k) => timbang(k) && k.pilihBenar.length >= 1 },
+  { id: "c-selisih", teks: "Cari selisih dua berat dengan mengurangkan yang besar dengan yang kecil, lalu tekan Periksa.", wajib: true, cek: (k) => timbang(k) && k.selisihBenar.length >= 1 },
+  { id: "c-tolak", teks: "Coba menimbang saat jarum atau layar belum di nol, dan lihat alat menolak.", wajib: false, cek: (k) => timbang(k) && k.menolak >= 1 },
+  { id: "c-dua", teks: "Timbang satu benda ringan dengan gram dan satu benda berat dengan kilogram.", wajib: false, cek: (k) => timbang(k) && k.ringanBenar && k.beratBenar },
 ];
 
-/** Sub-Bab D: hubungan kilogram, ons, dan gram (pencapaian misi bab). */
+/** Sub-Bab D: Meja Bandul. Empat misi wajib dan dua tantangan bebas, id berawalan d-, tanpa skor. Diuji di scripts/uji-bandul-k3b3d.mjs. */
+const bandul = (k: KeadaanK3Bab3): k is KeadaanBandul => k.alat === "bandul";
 export const MISI_D: DefMisi<KeadaanK3Bab3>[] = [
-  { id: "d-750", teks: "Seimbangkan tepung 750 g dengan bandul. Jumlah berat bandul harus tepat 750 g.", wajib: true, cek: (k) => kodok(k) && k.benda === "tepung" && k.seimbang },
-  { id: "d-dua", teks: "Seimbangkan satu benda yang sama dengan dua susunan bandul yang berbeda.", wajib: true, cek: (k) => kodok(k) && susunanTerbanyak(k.pernah) >= 2 },
-  { id: "d-kg", teks: "Di Ubah Berat, buat 1.000 g dan nyalakan Gram dan Ons: 1 kg = 10 ons = 1.000 g.", wajib: true, cek: (k) => ubah(k) && k.total === 1000 && k.gram && k.ons },
-  { id: "d-1753", teks: "Buat 1.753 g dan nyalakan Kilogram dan gram: 1.753 g = 1 kg 753 g.", wajib: true, cek: (k) => ubah(k) && k.total === 1753 && k.kgg },
-  { id: "d-4150", teks: "Buat 4 kg 150 g dan nyalakan Gram: 4 kg 150 g = 4.150 g.", wajib: true, cek: (k) => ubah(k) && k.total === 4150 && k.gram },
-  { id: "d-mesin", teks: "Selesaikan Mesin Ubah Berat sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K3B3.D) },
-  { id: "d-skenario", teks: "Selesaikan skenario Pasar Meutia sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K3B3.D) },
-  { id: "d-tiga", teks: "Seimbangkan satu benda yang sama dengan tiga susunan bandul yang berbeda.", wajib: false, cek: (k) => kodok(k) && susunanTerbanyak(k.pernah) >= 3 },
-  { id: "d-mangga", teks: "Buat 8.000 g dan nyalakan Kilogram dan gram: 8.000 g = 8 kg (mangga Meutia).", wajib: false, cek: (k) => ubah(k) && k.total === 8000 && k.kgg },
-  { id: "d-lima", teks: "Seimbangkan jeruk 2.000 g dengan tepat lima bandul.", wajib: false, cek: (k) => kodok(k) && k.benda === "jeruk" && k.seimbang && k.jumlah.reduce((s, n) => s + n, 0) === 5 },
+  { id: "d-rakit", teks: "Pasang bandul sampai timbangan seimbang dengan berat benda, lalu tekan Periksa.", wajib: true, cek: (k) => bandul(k) && k.rakitBenar.length >= 1 },
+  { id: "d-kgg", teks: "Ubah kilogram ke gram dengan dikalikan seribu, lalu tekan Periksa.", wajib: true, cek: (k) => bandul(k) && k.kggBenar.length >= 1 },
+  { id: "d-gkg", teks: "Ubah gram ke kilogram dan gram dengan mengambil tiap seribu gram, lalu tekan Periksa.", wajib: true, cek: (k) => bandul(k) && k.gkgBenar.length >= 1 },
+  { id: "d-jumlah", teks: "Jumlahkan dua berat dengan mengubahnya ke gram dulu, lalu tekan Periksa.", wajib: true, cek: (k) => bandul(k) && k.jumlahBenar.length >= 1 },
+  { id: "d-kurang", teks: "Kurangkan dua berat sampai hasilnya tepat, lalu tekan Periksa.", wajib: false, cek: (k) => bandul(k) && k.kurangBenar.length >= 1 },
+  { id: "d-lengkap", teks: "Rakit bandul untuk tiga benda sampai semuanya seimbang.", wajib: false, cek: (k) => bandul(k) && k.rakitBenar.length >= 3 },
 ];
 
-export type HurufMisiK3B3 = "A" | "B" | "C" | "D";
-
-export const daftarMisiK3Bab3 = (huruf: HurufMisiK3B3): DefMisi<KeadaanK3Bab3>[] => (huruf === "B" ? MISI_B : huruf === "C" ? MISI_C : huruf === "D" ? MISI_D : MISI_A);
+export const daftarMisiK3Bab3 = (sub: string): DefMisi<KeadaanK3Bab3>[] =>
+  sub === "B" ? MISI_B : sub === "C" ? MISI_C : sub === "D" ? MISI_D : MISI_A;
