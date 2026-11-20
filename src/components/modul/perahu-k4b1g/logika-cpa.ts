@@ -192,7 +192,14 @@ export function teksKunciKlik(l: Langkah): string | null {
 /* ------------------------------ Kalimat ------------------------------ */
 const sebut = (rupa: Rupa): string => (rupa === "lambang" ? "kartu" : rupa === "benda" ? "dermaga" : "kertas kotak");
 
+/** Awal tiap kalimat berhuruf kapital (kata bilangan dieja huruf kecil di tengah teks). */
+const kapKal = (t: string): string => t.replace(/(^|[.?!]\s+)([a-z])/g, (_m, a: string, b: string) => a + b.toUpperCase());
+
 export function kalimatKunci(l: Langkah, cara: Cara): string {
+  return kapKal(kalimatKunciMentah(l, cara));
+}
+
+function kalimatKunciMentah(l: Langkah, cara: Cara): string {
   const d = dasarDari(l);
   const g = bagian(d.a, d.b);
   switch (d.tipe) {
@@ -219,6 +226,10 @@ export function kalimatKunci(l: Langkah, cara: Cara): string {
 
 /** Instruksi satu tugas (suara dan judul), tanpa digit. */
 export function instruksi(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): string {
+  return kapKal(instruksiMentah(l, rupa, cara, metode));
+}
+
+function instruksiMentah(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): string {
   if (l.tipe === "salah") return `${l.tokoh} sudah menjawab. Apakah jawabannya benar? Pilih alasan yang tepat, lalu jawab sendiri.`;
   const g = sebut(rupa);
   const aw = AWALAN[metode];
