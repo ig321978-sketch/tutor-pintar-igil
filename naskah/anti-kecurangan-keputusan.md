@@ -1,8 +1,8 @@
 # Keputusan anti-kecurangan IGIL (20 Nov 2026)
 
 Keputusan pemilik (Kapten Iwan) setelah brainstorm. Dokumen ini mengunci kebijakan.
-Pelaksanaan teknis mengikuti urutan di bagian 3. Aturan ringkas ada di
-`.cursor/rules/delapan-pintu-anti-kecurangan.mdc`.
+**Spesifikasi kerja lengkap (siap Desktop):** `naskah/anti-kecurangan-spesifikasi.md`.  
+Aturan ringkas: `.cursor/rules/delapan-pintu-anti-kecurangan.mdc`.
 
 ## 1. Lima keputusan terkunci
 

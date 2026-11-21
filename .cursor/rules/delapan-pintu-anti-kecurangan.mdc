@@ -7,7 +7,8 @@ alwaysApply: false
 # Delapan pintu pertahanan anti-kecurangan
 
 Skema: `supabase/migrations/01_igil_eight_gates_schema.sql` dan `02_parent_pin_in_app.sql`. Tidak ada tabel vektor wajah, kolom gambar, NIK, KK, atau nomor rekening di tabel IGIL.
-Keputusan pemilik (20 Nov 2026) ada di `naskah/anti-kecurangan-keputusan.md`.
+Keputusan pemilik (20 Nov 2026): `naskah/anti-kecurangan-keputusan.md`.  
+Spesifikasi kerja (alur, centang, kode 60 dtk, RPC): `naskah/anti-kecurangan-spesifikasi.md`.
 
 Seluruh alur verifikasi **100% In-App** (akun login):
 
