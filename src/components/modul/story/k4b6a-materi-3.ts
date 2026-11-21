@@ -1,335 +1,140 @@
 import type { AdeganStory } from "./logika-story";
-import { W, barisId, barisPikto, emo, judul, jumlahBaris, kartu, kunciPikto, rangkaPikto, teks, type Pikto } from "./k4b6a-gambar";
-import { bersih, idx, k, redamkan, sorotkan, tambah } from "./k4b6a-bantu";
+import { E, W, barisPapan, bulat, emo, idBarisPapan, judul, kertasPetak, kotak, papanData, penggaris, tanah, teks, tokoh, deret } from "./k4b6a-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah } from "./k4b6a-bantu";
 
-/* ------------------------------ 9. Ayo Berlatih nomor 1: piktogram kelereng (Buku Siswa hlm. 185; Panduan Guru hlm. 222) ------------------------------ */
-/** Kelereng menurut Buku Siswa hlm. 185: Azizah 5, Karel 6, Putu 2, Slamet 8, Asep 5, Helen 4. Jumlah 30. */
-export const NAMA_KELERENG = ["Azizah", "Karel", "Putu", "Slamet", "Asep", "Helen"];
-export const KELERENG = [5, 6, 2, 8, 5, 4];
-export const PKL: Pikto = {
-  id: "kl",
-  x: 40,
-  y: 26,
-  lw: 70,
-  aw: 140,
-  rh: 23,
-  hh: 18,
-  ik: 13,
-  st: 16,
-  ikon: { jenis: "bulat", warna: "#38BDF8" },
-  label: NAMA_KELERENG,
-  kepala: ["Nama", "Banyak Kelereng"],
-};
-const SUARA_L1 = "Sekarang kita berlatih. Latihan satu: data banyak kelereng yang dimiliki Slamet dan teman-temannya disajikan dalam tabel. Buatlah piktogram dengan gambar bulat yang menyatakan satu kelereng.";
-const SUARA_L2 = "Datanya: Azizah lima, Karel enam, Putu dua, Slamet delapan, Asep lima, dan Helen empat.";
-const SUARA_L3 = "Jawabannya memakai titik bulat untuk satu kelereng. Azizah lima titik, Karel enam, Putu dua, Slamet delapan, Asep lima, dan Helen empat titik.";
-const SUARA_L4 = "Cocokkan dengan tabel: jumlah titik tiap baris sama dengan angkanya. Paling banyak Slamet, paling sedikit Putu. Jumlah semua kelereng: lima, enam, dua, delapan, lima, empat, sama dengan tiga puluh.";
+/*
+ * Cerita orisinal IGIL "Piktogram Jajanan Bu Rini" (Kelas 4 Bab 6 Sub-Bab A, piktogram skala satu dan lebih dari satu), awal cerita Bazar Kuliner Sekolah.
+ * Naskah suara dari naskah/story-naskah-k4b6a.md. Bagian ini: membandingkan (paling banyak, paling sedikit, selisih), keterangan lain (satu ikon sama dengan sepuluh porsi), dan kedatangan Pak Dodi (jembatan ke Sub-Bab B).
+ */
 
-export const ADEGAN_BERLATIH_1: AdeganStory = {
-  id: "berlatih-satu",
-  judul: "Latihan 1: piktogram kelereng",
-  sumber: "Materi: piktogram kelereng",
-  latar: "#EFF6FF",
-  kutipan: [
-    "Ayo Berlatih",
-    "Jawablah pertanyaan berikut dengan benar dan salinlah jawaban kalian pada",
-    "buku tulis.",
-    "1. Perhatikan data banyak kelereng yang dimiliki Slamet dan teman-temannya!",
-    "Azizah",
-    "Karel",
-    "Putu",
-    "Slamet",
-    "Asep",
-    "Helen",
-    "Buatlah piktogram dengan menggunakan gambar",
-    "yang menyatakan",
-    "1 kelereng!",
-    "Buatlah piktogram dengan menggunakan gambar • yang menyatakan 1",
-    "kelereng!",
-    "Jawab:",
-    "Azizah • • • • •",
-    "Slamet • • • • • • • •",
+const BARIS: [string, string, number][] = [
+  ["risoles", E.risoles, 6],
+  ["pisang", E.pisang, 4],
+  ["lemper", E.lemper, 3],
+  ["cincau", E.cincau, 5],
+];
+const papanEmpat = () => BARIS.flatMap(([n, e, j], i) => barisPapan(`r${i + 1}`, 52 + i * 20, n, e, j, 146, 16, 13));
+
+/* ------------------------------ 7. Membandingkan ------------------------------ */
+const SUARA_D1 = "Genta menunjuk risoles yang ikonnya paling banyak, jadi itu jajanan paling laris.";
+const SUARA_D2 = "Lemper ikonnya paling sedikit, sehingga paling sedikit terjual.";
+const SUARA_D3 = "Selisih risoles dan lemper tiga ikon, yaitu lima belas porsi.";
+
+export const ADEGAN_BANDING: AdeganStory = {
+  id: "banding",
+  judul: "Paling banyak dan paling sedikit",
+  sumber: "Materi: membandingkan",
+  latar: "#FEF9C3",
+  ketukan: [
+    k(
+      SUARA_D1,
+      tambah(0, judul("Paling Banyak"), ...tanah("tn", 150), ...papanData("pp", 86, 28, 204, 112)),
+      tambah("Genta", ...tokoh("ge", 40, 184, "Genta")),
+      tambah("risoles", ...papanEmpat()),
+      sorotkan("ikonnya", "r10", "r11", "r12", "r13", "r14", "r15"),
+      tambah("paling", teks("mx", 262, 56, "terbanyak", 8, W.sorot, { z: 3 })),
+      tambah("laris.", emo("pl", 262, 76, E.bintang, 16, { z: 3 })),
+    ),
+    k(
+      SUARA_D2,
+      sorotkan("Lemper", "r30", "r31", "r32"),
+      redamkan("Lemper", "r10", "r11", "r12", "r13", "r14", "r15"),
+      hapus("paling", "mx", "pl"),
+      tambah("sedikit,", teks("mn", 262, 96, "paling sedikit", 7.6, W.sorot, { z: 3 })),
+      tambah("terjual.", emo("tj", 262, 112, E.salah, 14, { z: 3 })),
+    ),
+    k(
+      SUARA_D3,
+      hapus(0, "mn", "tj"),
+      sorotkan("Selisih", "r10", "r11", "r12", "r13", "r14", "r15"),
+      tambah("tiga", teks("s1", 190, 154, "6 − 3 = 3 ikon", 10, W.merah)),
+      tambah("yaitu", teks("s2", 190, 170, "3 × 5 = 15 porsi", 10, W.merah)),
+    ),
   ],
+};
+
+/* ------------------------------ 8. Keterangan lain ------------------------------ */
+const SUARA_L1 = "Bu Rini berkata, kalau datanya besar, satu ikon bisa mewakili sepuluh porsi supaya papan tidak terlalu panjang.";
+const SUARA_L2 = "Kalau satu ikon hanya mewakili satu porsi, kita perlu tiga puluh ikon hanya untuk risoles.";
+const SUARA_L3 = "Karena itu keterangan harus dibaca lebih dulu sebelum kita menghitung ikonnya.";
+const TITIK = Array.from({ length: 30 }, (_, i) => `dt${i}`);
+
+export const ADEGAN_KETERANGAN_LAIN: AdeganStory = {
+  id: "keterangan-lain",
+  judul: "Keterangan yang lain",
+  sumber: "Materi: keterangan lain",
+  latar: "#FEF9C3",
   ketukan: [
     k(
       SUARA_L1,
-      tambah(0, judul("Latihan 1")),
-      tambah("Sekarang", ...kartu("q1", 20, 34, 260, 40, W.krem, ["Data banyak kelereng Slamet", "dan teman-temannya"], 9.2)),
-      tambah("Buatlah", ...kartu("q2", 20, 86, 260, 40, W.hijauMuda, ["Buat piktogram dari data itu"], 9.4)),
-      tambah("bulat", emo("q3", 90, 160, "🔵", 36)),
-      tambah("satu@2", teks("q4", 190, 166, "= 1 kelereng", 11, W.merah)),
+      tambah(0, judul("Keterangan Lain"), ...tanah("tn", 150), ...papanData("pp", 86, 28, 204, 112)),
+      tambah("Bu", ...tokoh("br", 40, 184, "Bu Rini")),
+      tambah("besar,", teks("db", 188, 52, "data besar", 9, W.sorot, { z: 3 })),
+      tambah("sepuluh", teks("kt", 188, 72, "1 ikon = 10 porsi", 10, W.krem, { z: 3 })),
+      tambah("porsi", ...barisPapan("rs", 100, "risoles", E.risoles, 3, 150, 22, 16)),
+      tambah("panjang.", teks("pj", 188, 126, "papan jadi pendek", 8.4, W.sorot, { z: 3 })),
     ),
     k(
       SUARA_L2,
-      bersih(0),
-      tambah(0, judul("Data kelereng")),
-      tambah("Datanya:", rangkaPikto({ ...PKL, kepala: ["Nama", "Banyak Kelereng"] })),
-      ...NAMA_KELERENG.map((n, i) => tambah(idx(SUARA_L2, ["lima", "enam", "dua", "delapan", "lima", "empat"][i], i === 4 ? 2 : 1), teks(`dt${i}`, PKL.x + PKL.lw + PKL.aw / 2, PKL.y + PKL.hh + i * PKL.rh + PKL.rh / 2 + 3.6, String(KELERENG[i]), 10, W.merah))),
+      hapus(0, "db", "kt", "pj", ...idBarisPapan("rs", 3)),
+      tambah("satu", teks("k1", 188, 50, "1 ikon = 1 porsi", 10, W.krem, { z: 3 })),
+      tambah("hanya", teks("r1", 120, 74, "risoles", 8, W.kapur, { z: 3 })),
+      tambah("tiga", ...TITIK.map((id, i) => bulat(id, 142 + (i % 15) * 9, 70 + Math.floor(i / 15) * 12, 3, "#FCD34D", "#B45309", { tebal: 0.8, z: 3 }))),
+      tambah("ikon", teks("k30", 188, 116, "30 ikon", 10, W.sorot, { z: 3 })),
     ),
     k(
       SUARA_L3,
       bersih(0),
-      tambah(0, judul("Jawaban: piktogram kelereng")),
-      tambah("Jawabannya", rangkaPikto({ ...PKL, kepala: ["Nama", "Banyak Kelereng"] })),
-      ...NAMA_KELERENG.map((n, i) => tambah(idx(SUARA_L3, n, 1), ...barisPikto(PKL, i, KELERENG[i]))),
-    ),
-    k(
-      SUARA_L4,
-      ...KELERENG.map((n, i) => tambah(idx(SUARA_L4, ["lima", "enam", "dua", "delapan", "lima", "empat"][i], i === 4 ? 2 : 1), jumlahBaris(PKL, i, n))),
-      sorotkan("Slamet,", ...barisId(PKL, 3, 8)),
-      redamkan("Putu.", ...barisId(PKL, 3, 8)),
-      sorotkan("Putu.", ...barisId(PKL, 2, 2)),
-      tambah("sama@2", teks("lj", 150, 195, "5 + 6 + 2 + 8 + 5 + 4 = 30", 10.4, W.merah)),
+      tambah(0, judul("Baca Keterangan Dulu"), ...tanah("tn", 150), ...papanData("pp", 86, 28, 204, 112), ...tokoh("lr", 40, 184, "Laras")),
+      tambah("keterangan", kotak("ket", 100, 40, 176, 26, W.krem, W.coklat, { rx: 3, tebal: 1.6, z: 4 }), teks("ket1", 188, 58, "1 ikon = ?", 10, W.merah, { z: 5 })),
+      tambah("dibaca", emo("mt", 262, 100, E.mata, 20, { z: 3 }), teks("l1", 160, 100, "1. baca keterangan", 8.6, W.kapur, { z: 3 })),
+      tambah("menghitung", teks("l2", 160, 122, "2. hitung ikon", 8.6, W.kapur, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 10. Ayo Berlatih nomor 2: buku yang dipinjam (Buku Siswa hlm. 185; Panduan Guru hlm. 222) ------------------------------ */
-/** Banyak kotak tiap hari menurut gambar Buku Siswa hlm. 185 (satu kotak menyatakan 1 buku); kunci Panduan Guru: Selasa 6, Kamis 3, Jumat 12, Sabtu 14, jumlah 56. */
-export const HARI = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-export const BUKU = [12, 6, 9, 3, 12, 14];
-export const PBUKU: Pikto = {
-  id: "bk",
-  x: 10,
-  y: 28,
-  lw: 54,
-  aw: 218,
-  rh: 22,
-  hh: 16,
-  ik: 12,
-  st: 15,
-  ikon: { jenis: "kotak", warna: "#E8735F" },
-  label: HARI,
-  kepala: ["Hari", "Banyak Bacaan"],
-};
-const SUARA_M1 = "Latihan dua. Bacaan yang dipinjam dari perpustakaan sekolah setiap harinya disajikan dalam piktogram. Setiap kotak menyatakan satu bacaan. Mari kita hitung kotak pada tiap hari.";
-const SUARA_M2 = "Hasil hitungan kotak: Senin dua belas bacaan, Selasa enam, Rabu sembilan, Kamis tiga, Jumat dua belas, dan Sabtu empat belas.";
-const SUARA_M3 = "Pertanyaan a: hari paling banyak dipinjam adalah Sabtu. Pertanyaan b: hari Selasa dipinjam enam bacaan. Pertanyaan c: hari paling sedikit adalah Kamis.";
-const SUARA_M4 = "Pertanyaan d: hari dengan empat belas bacaan adalah Sabtu. Pertanyaan e: bacaan pada hari Kamis dan Jumat, tiga ditambah dua belas, sama dengan lima belas bacaan.";
-const SUARA_M5 = "Pertanyaan f: jumlah total selama seminggu. Jawabannya lima puluh enam bacaan. Buktinya, dua belas, enam, sembilan, tiga, dua belas, dan empat belas juga berjumlah lima puluh enam. Benar sekali.";
+/* ------------------------------ 9. Penutup: Pak Dodi dan kertas berpetak ------------------------------ */
+const SUARA_N1 = "Pak Dodi, panitia bazar, datang membawa kertas berpetak dan penggaris panjang.";
+const SUARA_N2 = "Ia ingin data jajanan itu digambar menjadi batang yang berdiri tegak, supaya lebih mudah dibandingkan.";
+const SUARA_N3 = "Menurutmu, apa bedanya batang dengan deretan ikon? Terima kasih, Satria, Laras, Genta, Pak Hendro, dan Bu Rini!";
+const TINGGI = [60, 40, 30, 50];
+const batang = (id: string, i: number) => kotak(id, 142 + i * 22, 130 - TINGGI[i], 16, TINGGI[i], ["#F87171", "#FBBF24", "#34D399", "#60A5FA"][i], W.biru, { rx: 1, tebal: 1.2, z: 3 });
 
-export const ADEGAN_BERLATIH_2: AdeganStory = {
-  id: "berlatih-dua",
-  judul: "Latihan 2: bacaan yang dipinjam",
-  sumber: "Materi: bacaan yang dipinjam",
-  latar: "#FFF7ED",
-  kutipan: [
-    "2. Banyaknya buku yang dipinjam dari perpustakaan sekolah setiap harinya",
-    "disajikan pada piktogram berikut.",
-    "menyatakan 1 buku",
-    "a. Hari apakah buku yang paling banyak dipinjam siswa?",
-    "b. Pada hari Selasa, berapa buku yang dipinjam siswa?",
-    "c. Hari apakah buku yang paling sedikit dipinjam siswa?",
-    "d. Pada hari apakah buku yang dipinjam siswa sebanyak 14?",
-    "e. Berapa banyak buku yang dipinjam siswa pada hari Kamis dan Jumat?",
-    "f. Berapa jumlah total buku yang dipinjam siswa selama satu minggu?",
-    "Berdasarkan penyajian piktogram maka diperoleh:",
-    "a. Hari apakah buku yang paling banyak dipinjam siswa? Sabtu",
-    "b. Pada hari Selasa, berapa buku yang dipinjam siswa? 6 Buku",
-    "c. Hari apakah buku yang paling sedikit dipinjam siswa? Kamis",
-    "d. Pada hari apakah buku yang dipinjam siswa sebanyak 14? Sabtu",
-    "buku + 12 buku = 15 buku",
-    "56",
-  ],
-  ketukan: [
-    k(SUARA_M1, tambah(0, judul("Bacaan dipinjam per hari")), tambah("Latihan", rangkaPikto(PBUKU)), tambah("kotak", ...kunciPikto(PBUKU, 6, { jenis: "kotak", warna: "#E8735F" }, "menyatakan 1 bacaan"))),
-    k(
-      SUARA_M2,
-      ...HARI.map((h, i) => tambah(h, ...barisPikto(PBUKU, i, BUKU[i]), jumlahBaris(PBUKU, i, BUKU[i]))),
-    ),
-    k(
-      SUARA_M3,
-      bersih(0),
-      tambah(0, judul("Pertanyaan a, b, dan c")),
-      tambah(idx(SUARA_M3, "Pertanyaan", 1), ...kartu("a1", 14, 34, 272, 34, W.hijauMuda, ["a. paling banyak: Sabtu (14 kotak)"], 9)),
-      tambah(idx(SUARA_M3, "Pertanyaan", 2), ...kartu("a2", 14, 76, 272, 34, W.langit, ["b. hari Selasa: 6 bacaan"], 9)),
-      tambah(idx(SUARA_M3, "Pertanyaan", 3), ...kartu("a3", 14, 118, 272, 34, W.krem, ["c. paling sedikit: Kamis (3 kotak)"], 9)),
-      tambah("Kamis.", emo("a4", 150, 184, "📚", 24)),
-    ),
-    k(
-      SUARA_M4,
-      bersih(0),
-      tambah(0, judul("Pertanyaan d dan e")),
-      tambah(idx(SUARA_M4, "Pertanyaan", 1), ...kartu("d1", 14, 34, 272, 34, W.hijauMuda, ["d. 14 bacaan: hari Sabtu"], 9)),
-      tambah(idx(SUARA_M4, "Pertanyaan", 2), ...kartu("d2", 14, 76, 272, 34, W.langit, ["e. Kamis dan Jumat"], 9)),
-      tambah("tiga", teks("d3", 150, 140, "3 + 12 = 15", 13, W.merah)),
-      tambah("lima", teks("d4", 150, 164, "15 bacaan", 11, W.hijau)),
-    ),
-    k(
-      SUARA_M5,
-      bersih(0),
-      tambah(0, judul("Pertanyaan f: jumlah seminggu")),
-      tambah("Jawabannya", ...kartu("f1", 40, 32, 220, 30, W.krem, ["jawaban: 56 bacaan"], 10)),
-      tambah("Buktinya,", teks("f2", 150, 100, "12 + 6 + 9 + 3 + 12 + 14", 11, W.biru)),
-      tambah("juga", teks("f3", 150, 124, "= 56", 13, W.merah)),
-      tambah("Benar", emo("f4", 150, 168, "✅", 26)),
-    ),
-  ],
-};
-
-/* ------------------------------ 11. Ayo Berpikir: siswa tiap kelas dengan skala 4 (Buku Siswa hlm. 186; Panduan Guru hlm. 223) ------------------------------ */
-/** Gambar siswa tiap kelas menurut Buku Siswa hlm. 186 (satu gambar menyatakan 4 siswa): I 6, II 6, III 7, IV 8, V 5, VI 7. Jumlah 39 gambar, 156 siswa. */
-export const GAMBAR_KELAS = [6, 6, 7, 8, 5, 7];
-export const NAMA_KELAS = ["I", "II", "III", "IV", "V", "VI"];
-export const PS: Pikto = {
-  id: "ks",
-  x: 16,
-  y: 28,
-  lw: 40,
-  aw: 170,
-  rh: 22,
-  hh: 16,
-  ik: 16,
-  st: 20,
-  ikon: { jenis: "emoji", e: "👤" },
-  label: NAMA_KELAS,
-  kepala: ["Kelas", "Banyak Siswa"],
-};
-const SUARA_N1 = "Berpikir dulu. Banyak siswa tiap kelas disajikan dalam piktogram, dari kelas satu, dua, tiga, empat, lima, sampai enam. Perhatikan keterangannya: satu gambar siswa menyatakan empat siswa, bukan satu.";
-const SUARA_N2 = "Pertanyaan a dan b. Kelas yang siswanya paling sedikit adalah kelas lima, karena hanya lima gambar. Paling banyak adalah kelas empat, dengan delapan gambar.";
-const SUARA_N3 = "Pertanyaan c: banyak siswa kelas empat. Ada delapan gambar, satu gambar menyatakan empat siswa, jadi delapan kali empat sama dengan tiga puluh dua siswa.";
-const SUARA_N4 = "Pertanyaan d: kelas dengan dua puluh empat siswa. Enam gambar kali empat sama dengan dua puluh empat, jadi kelas satu dan kelas dua, karena keduanya punya enam gambar.";
-const SUARA_N5 = "Pertanyaan e: seluruh siswa. Jumlah gambarnya tiga puluh sembilan, dan tiga puluh sembilan kali empat sama dengan seratus lima puluh enam siswa. Kita cek, hitungan baris demi baris juga sama.";
-
-export const ADEGAN_BERPIKIR: AdeganStory = {
-  id: "ayo-berpikir",
-  judul: "Berpikir: siswa tiap kelas",
-  sumber: "Materi: skala pada piktogram",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Ayo Berpikir",
-    "Salinlah jawaban kalian pada buku tulis.",
-    "Diberikan data siswa untuk masing-masing kelas disajikan dalam piktogram",
-    "berikut.",
-    "menyatakan 4 siswa",
-    "a. Kelas berapakah yang siswanya paling sedikit?",
-    "b. Kelas berapakah yang siswanya paling banyak?",
-    "c. Berapa banyak siswa kelas IV?",
-    "d. Kelas berapakah yang siswanya 24 siswa?",
-    "e. Berapa banyak semua siswa seluruh kelas?",
-    "a. Kelas berapakah yang siswanya paling sedikit? kelas V",
-    "b. Kelas berapakah yang siswanya paling banyak? kelas IV",
-    "terdapat 8 gambar siswa, satu gambar siswa",
-    "menyatakan 4 siswa sehingga banyak siswa kelas IV adalah 8 x 4 = 32 siswa",
-    "kelas I dan kelas II, karena",
-    "terdapat 6 gambar siswa sehingga 6 x 4 = 24 siswa",
-    "39 x 4 = 156 siswa",
-  ],
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Pak Dodi membawa kertas",
+  sumber: "Materi: jembatan ke diagram batang",
+  latar: "#FEF9C3",
   ketukan: [
     k(
       SUARA_N1,
-      tambah(0, judul("Berpikir: skala empat")),
-      tambah("siswa", rangkaPikto(PS)),
-      ...GAMBAR_KELAS.map((n, i) => tambah(idx(SUARA_N1, ["satu", "dua", "tiga", "empat", "lima", "enam"][i], 1), ...barisPikto(PS, i, n))),
-      tambah("keterangannya:", ...kunciPikto(PS, 6, { jenis: "emoji", e: "👤" }, "menyatakan 4 siswa")),
+      tambah(0, judul("Pak Dodi Datang"), ...tanah("tn", 150)),
+      tambah("Dodi,", ...tokoh("pd", 60, 184, "Pak Dodi")),
+      tambah("panitia", emo("mg", 264, 60, E.megafon, 20), teks("pt", 264, 78, "panitia", 8.4, W.coklat)),
+      tambah("kertas", ...kertasPetak("kp", 130, 36, 100, 80)),
+      tambah("penggaris", ...penggaris("pg", 130, 124, 100)),
     ),
     k(
       SUARA_N2,
-      sorotkan("lima,", ...barisId(PS, 4, 5)),
-      tambah("hanya", jumlahBaris(PS, 4, 5)),
-      redamkan(idx(SUARA_N2, "Paling", 2), ...barisId(PS, 4, 5)),
-      sorotkan("empat,", ...barisId(PS, 3, 8)),
-      tambah("delapan", jumlahBaris(PS, 3, 8)),
+      hapus(0, "mg", "pt"),
+      tambah("data", teks("dj", 264, 56, "data jajanan", 8.4, W.coklat)),
+      tambah("digambar", ...[0, 1, 2, 3].map((i) => batang(`bt${i}`, i))),
+      sorotkan("tegak,", "bt0"),
+      tambah("tegak,", teks("tg", 264, 82, "tegak", 10, W.merah)),
+      tambah("dibandingkan.", emo("ok", 264, 108, E.benar, 20)),
     ),
     k(
       SUARA_N3,
-      redamkan(0, ...barisId(PS, 3, 8)),
-      sorotkan("kelas", ...barisId(PS, 3, 8)),
-      tambah("kali", teks("n3", 266, PS.y + PS.hh + 3 * PS.rh + PS.rh / 2 + 3.4, "8×4=32", 9.4, W.merah)),
-    ),
-    k(
-      SUARA_N4,
-      redamkan(0, ...barisId(PS, 3, 8)),
-      sorotkan("kelas", ...barisId(PS, 0, 6), ...barisId(PS, 1, 6)),
-      tambah("Enam", jumlahBaris(PS, 0, 6), jumlahBaris(PS, 1, 6)),
-      tambah("kali", teks("n40", 266, PS.y + PS.hh + PS.rh / 2 + 3.4, "6×4=24", 9.4, W.merah), teks("n41", 266, PS.y + PS.hh + PS.rh + PS.rh / 2 + 3.4, "6×4=24", 9.4, W.merah)),
-    ),
-    k(
-      SUARA_N5,
       bersih(0),
-      tambah(0, judul("Pertanyaan e: seluruh siswa")),
-      tambah("Jumlah", ...kartu("e1", 20, 34, 260, 30, W.hijauMuda, ["6+6+7+8+5+7 = 39 gambar"], 9.6)),
-      tambah("kali", ...kartu("e2", 20, 72, 260, 30, W.langit, ["39 × 4 = 156 siswa"], 10)),
-      tambah("cek", ...kartu("e3", 20, 110, 260, 30, W.krem, ["dicek ulang: 156 siswa (benar)"], 9.6)),
-      tambah("baris", ...kartu("e4", 20, 148, 260, 40, W.pink, ["24+24+28+32+20+28", "= 156 siswa juga"], 9.2)),
+      tambah(0, judul("Terima Kasih"), ...tanah("tn", 150)),
+      tambah("bedanya", teks("tq", 150, 60, "?", 26, W.merah)),
+      tambah("batang", ...[0, 1, 2].map((i) => kotak(`bb${i}`, 196 + i * 20, 118 - [40, 26, 32][i], 14, [40, 26, 32][i], ["#F87171", "#FBBF24", "#34D399"][i], W.biru, { rx: 1, tebal: 1.2, z: 3 })), teks("bn", 226, 132, "batang", 8.4, W.coklat)),
+      tambah("deretan", ...deret("dd", 50, 108, E.risoles, 4, 20, 16), teks("dn", 90, 132, "deretan ikon", 8.4, W.coklat)),
+      tambah("Satria,", ...tokoh("sa", 28, 184, "Satria")),
+      tambah("Laras,", ...tokoh("lr", 74, 184, "Laras")),
+      tambah("Genta,", ...tokoh("ge", 120, 184, "Genta")),
+      tambah("Hendro,", ...tokoh("ph", 166, 184, "Pak Hendro")),
+      tambah("Rini!", ...tokoh("br", 212, 184, "Bu Rini"), ...tokoh("pd", 258, 184, "Pak Dodi"), emo("lb", 150, 150, E.lambai, 18)),
     ),
   ],
 };
-
-/* ------------------------------ 12. Penutup subbab: miskonsepsi, diferensiasi, refleksi, catatan buku ------------------------------ */
-const SUARA_T1 = "Hati-hati, ada kesalahan yang sering terjadi. Piktogram disebut juga diagram gambar. Ada anak yang mengira piktogram bukan diagram gambar. Padahal keduanya adalah satu hal yang sama.";
-const SUARA_T2 = "Tantangan untuk kalian: belajar lewat proyek, yaitu membuat piktogram sebagai hasil karya kelompok. Dalam kelompok, teman yang sudah paham boleh membantu temannya. Bila waktu terbatas, kita cukup berdiskusi.";
-const SUARA_T3 = "Renungkan: adakah bagian yang masih dirasa sulit? Bila ada, diskusikan dengan teman, minta bantuan guru, dan perbanyak latihan. Kalian sudah bisa menentukan data paling banyak dan paling sedikit.";
-const SUARA_T4 = "Ingat juga, skala tidak selalu satu. Pada kegiatan bunga, satu gambar menyatakan satu bunga. Tetapi pada siswa tiap kelas, satu gambar menyatakan empat siswa.";
-const SUARA_T5 = "Ringkasan subbab A: piktogram memakai gambar untuk menyatakan banyak data. Baca keterangan, hitung gambar, lalu tentukan paling banyak, paling sedikit, dan jumlahnya.";
-
-export const ADEGAN_PENUTUP: AdeganStory = {
-  id: "penutup-subbab",
-  judul: "Hati-hati, tantangan, dan renungan",
-  sumber: "Materi: hati-hati, tantangan, renungan",
-  latar: "#FFF7ED",
-  kutipan: [
-    "Miskonsepsi",
-    "Piktogram disebut juga diagram gambar. Miskonsepsi yang biasa terjadi",
-    "adalah piktogram bukan diagram gambar",
-    "Diferensiasi",
-    "Model pembelajaran",
-    "yang disarankan untuk sub bab piktogram adalah Project Based Learning,",
-    "yang mengutamakan pada produk hasil karya peserta didik bersama",
-    "guru dapat menerapkan metode diskusi dengan melibatkan peserta didik dalam menyajikan data dalam bentuk",
-    "Refleksi",
-    "Adakah bagian yang masih",
-    "dirasa sulit?",
-    "diskusikanlah dengan teman kalian",
-    "Perbanyaklah",
-    "mengerjakan latihan soal.",
-    "Kalian juga telah dapat menentukan data paling banyak dan paling sedikit",
-  ],
-  ketukan: [
-    k(
-      SUARA_T1,
-      tambah(0, judul("Hati-hati")),
-      tambah("Piktogram", ...kartu("x1", 14, 34, 120, 36, W.pink, ["piktogram"], 10.4)),
-      tambah("diagram", ...kartu("x2", 166, 34, 120, 36, W.hijauMuda, ["diagram gambar"], 10)),
-      tambah("mengira", teks("x3", 150, 58, "≠", 20, W.merah)),
-      tambah("Padahal", ...kartu("x4", 30, 100, 240, 36, W.krem, ["piktogram = diagram gambar"], 10.4)),
-      tambah("sama.", emo("x5", 150, 172, "✅", 26)),
-    ),
-    k(
-      SUARA_T2,
-      bersih(0),
-      tambah(0, judul("Tantangan")),
-      tambah("proyek", ...kartu("y1", 14, 34, 272, 40, W.hijauMuda, ["Belajar lewat proyek", "hasil karya kelompok"], 9)),
-      tambah("membantu", ...kartu("y2", 14, 84, 272, 30, W.langit, ["teman yang paham boleh membantu"], 8.8)),
-      tambah("diskusi", ...kartu("y3", 14, 124, 272, 30, W.krem, ["bila waktu terbatas: berdiskusi"], 8.8)),
-    ),
-    k(
-      SUARA_T3,
-      bersih(0),
-      tambah(0, judul("Renungkan")),
-      tambah("adakah", ...kartu("r1", 14, 34, 272, 30, W.hijauMuda, ["adakah bagian yang masih sulit?"], 9)),
-      tambah("diskusikan", ...kartu("r2", 14, 72, 272, 30, W.langit, ["diskusikan dengan teman"], 9)),
-      tambah("guru,", ...kartu("r3", 14, 110, 272, 30, W.krem, ["minta bantuan guru"], 9)),
-      tambah("perbanyak", ...kartu("r4", 14, 148, 272, 30, W.pink, ["perbanyak latihan"], 9)),
-    ),
-    k(
-      SUARA_T4,
-      bersih(0),
-      tambah(0, judul("Ingat juga: skala")),
-      tambah("skala", ...kartu("c1", 14, 34, 272, 34, W.hijauMuda, ["skala tidak selalu satu"], 9)),
-      tambah("bunga,", ...kartu("c2", 14, 76, 272, 44, W.krem, ["bunga: satu gambar = 1 bunga"], 8.6)),
-      tambah("empat", ...kartu("c3", 14, 130, 272, 44, W.pink, ["siswa tiap kelas: satu gambar = 4 siswa"], 8.6)),
-    ),
-    k(
-      SUARA_T5,
-      bersih(0),
-      tambah(0, judul("Ringkasan subbab A")),
-      tambah("memakai", ...kartu("z1", 14, 34, 272, 28, W.hijauMuda, ["gambar menyatakan banyak data"], 9)),
-      tambah("keterangan,", ...kartu("z2", 14, 68, 272, 28, W.langit, ["1. baca keterangan"], 9)),
-      tambah("hitung", ...kartu("z3", 14, 102, 272, 28, W.krem, ["2. hitung gambar"], 9)),
-      tambah("tentukan", ...kartu("z4", 14, 136, 272, 28, W.pink, ["3. paling banyak, paling sedikit, jumlah"], 8.4)),
-      tambah("jumlahnya.", emo("z5", 150, 190, "🌟", 22)),
-    ),
-  ],
-};
-

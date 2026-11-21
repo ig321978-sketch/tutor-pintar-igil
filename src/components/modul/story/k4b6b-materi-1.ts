@@ -1,272 +1,139 @@
 import type { AdeganStory } from "./logika-story";
-import { W, diagramTegak, emo, garis, judul, kartu, kotak, panah, teks } from "./k4b6b-gambar";
-import { bersih, k, sorotkan, tambah, ubah } from "./k4b6b-bantu";
+import { E, TEGAK_RINI, W, WB, batangTegak, bulat, emo, garis, judul, kotak, lantai, meja, panah, papanData, satuanSumbu, skalaTegak, sumbuTegak, teks, tokoh, ujungTegak } from "./k4b6b-gambar";
+import { k, sorotkan, tambah, ubah } from "./k4b6b-bantu";
 
-/* ------------------------------ 1. Pembuka Sub-Bab B (Buku Siswa hlm. 187; Panduan Guru hlm. 223–224) ------------------------------ */
-export const ADEGAN_PEMBUKA_B: AdeganStory = {
-  id: "pembuka-b",
-  judul: "Pembuka Sub-Bab B: Diagram Batang",
-  sumber: "Buku Siswa hlm. 187; Panduan Guru hlm. 223–224",
-  latar: "#F0F9FF",
-  kutipan: [
-    "Menyajikan data selain menggunakan diagram gambar, dapat pula disajikan dalam diagram batang.",
-    "menyajikan, menganalisis dan menginterpretasi data dalam diagram batang (skala satu satuan) dengan tepat dan benar",
-    "Benda-benda yang dapat dihitung di lingkungan siswa",
-    "Diagram batang adalah diagram dengan menggunakan persegipanjang untuk menunjukkan banyak dari setiap kategori.",
-    "Diagram batang dapat disajikan dalam bentuk mendatar atau tegak.",
-    "Diagram batang baik digunakan untuk menyajikan dan membandingkan data tiap kategori.",
-    "Apakah diagram batang?",
-    "Sebutkan jenis bentuk diagram batang!",
-    "Bagaimana menyajikan diagram batang?",
-    "Bagaimana menganalisis dan mengintepretasikan diagram batang?",
-    "Guru dapat memberikan contoh data yang lain dari lingkungan sekitar siswa",
-  ],
-  ketukan: [
-    k(
-      "Sub-Bab B, Diagram Batang. Menyajikan data selain memakai diagram gambar, dapat pula memakai diagram batang. Setelah belajar, peserta didik mampu menyajikan, menganalisis, dan menafsirkan data dalam diagram batang dengan skala satu satuan.",
-      tambah(0, judul("Sub-Bab B: Diagram Batang")),
-      tambah("gambar,", ...kartu("pb1", 20, 36, 110, 44, W.krem, ["Diagram gambar", "(piktogram)"], 9.2)),
-      tambah("batang@2", panah("pa", 134, 58, 32, 0, W.merah, 2.2), ...kartu("pb2", 170, 36, 110, 44, W.hijauMuda, ["Diagram batang", "persegi panjang"], 9.2)),
-      tambah("menyajikan@2", ...kartu("pb3", 14, 100, 272, 28, W.langit, ["menyajikan  •  menganalisis  •  menafsirkan"], 9.2)),
-      tambah("satuan.", ...kartu("pb4", 60, 142, 180, 30, W.pink, ["skala satu satuan"], 10)),
-    ),
-    k(
-      "Sarana yang dibutuhkan: benda-benda yang dapat dihitung di lingkungan siswa, misalnya jam dinding, papan tulis, meja guru, dan lemari. Kegiatan sekolah juga boleh disajikan.",
-      bersih(0),
-      tambah(0, judul("Sarana: benda yang dapat dihitung")),
-      tambah("jam", emo("s1", 55, 78, "🕒", 32), teks("s1t", 55, 100, "jam dinding", 8.4, W.biru)),
-      tambah("papan", emo("s2", 125, 78, "📋", 32), teks("s2t", 125, 100, "papan tulis", 8.4, W.biru)),
-      tambah("meja", emo("s3", 195, 78, "🪑", 32), teks("s3t", 195, 100, "meja guru", 8.4, W.biru)),
-      tambah("lemari.", emo("s4", 255, 78, "🗄", 32), teks("s4t", 255, 100, "lemari", 8.4, W.biru)),
-      tambah("Kegiatan", ...kartu("sk", 40, 130, 220, 34, W.krem, ["kegiatan sekolah juga boleh"], 9.4)),
-    ),
-    k(
-      "Apersepsi: diagram batang memakai persegi panjang untuk menunjukkan banyak tiap kategori. Bentuknya mendatar atau tegak. Diagram batang baik untuk menyajikan dan membandingkan data tiap kategori.",
-      bersih(0),
-      tambah(0, judul("Apersepsi")),
-      tambah("persegi", kotak("ap1", 40, 66, 22, 70, W.batang, W.biru, { rx: 0 }), kotak("ap2", 72, 90, 22, 46, W.batang, W.biru, { rx: 0 }), kotak("ap3", 104, 106, 22, 30, W.batang, W.biru, { rx: 0 }), garis("apx", 34, 136, 100, 0, W.hitam, 1.4)),
-      tambah("mendatar", kotak("ap4", 176, 66, 90, 16, W.batangJingga, W.biru, { rx: 0 }), kotak("ap5", 176, 92, 60, 16, W.batangJingga, W.biru, { rx: 0 }), kotak("ap6", 176, 118, 40, 16, W.batangJingga, W.biru, { rx: 0 }), garis("apy", 176, 62, 0, 78, W.hitam, 1.4)),
-      tambah("tegak.", teks("ap7", 84, 156, "tegak", 10, W.biru), teks("ap8", 220, 156, "mendatar", 10, W.biru)),
-      tambah("membandingkan", ...kartu("ap9", 50, 168, 200, 24, W.hijauMuda, ["bandingkan data tiap kategori"], 8.8)),
-    ),
-    k(
-      "Empat pertanyaan pemantik: apakah diagram batang itu, apa saja bentuknya, bagaimana menyajikannya, dan bagaimana menganalisis serta menafsirkannya? Guru juga boleh memberi contoh data lain dari lingkungan siswa.",
-      bersih(0),
-      tambah(0, judul("Pertanyaan pemantik")),
-      tambah("apakah", ...kartu("q1", 14, 32, 272, 26, W.langit, ["1. Apakah diagram batang?"], 9.2)),
-      tambah("bentuknya,", ...kartu("q2", 14, 66, 272, 26, W.krem, ["2. Sebutkan jenis bentuknya!"], 9.2)),
-      tambah("menyajikannya,", ...kartu("q3", 14, 100, 272, 26, W.hijauMuda, ["3. Bagaimana menyajikannya?"], 9.2)),
-      tambah("menganalisis", ...kartu("q4", 14, 134, 272, 26, W.pink, ["4. Bagaimana menganalisis dan menafsirkan?"], 8.6)),
-      tambah("contoh", teks("q5", 150, 180, "contoh data lain dari lingkungan siswa", 8.6, W.coklat)),
-    ),
-  ],
-};
+/*
+ * Cerita orisinal IGIL "Diagram Batang Pak Dodi" (Kelas 4 Bab 6 Sub-Bab B), akhir cerita Bazar Kuliner Sekolah.
+ * Naskah suara dari naskah/story-naskah-k4b6b.md. Bagian ini: kertas berpetak Pak Dodi, sumbu dan batang, dan tingkatan sumbu lima.
+ */
 
-/* ------------------------------ 2. Aktivitas 3: penyajian diagram batang tegak (Buku Siswa hlm. 187–188; Panduan Guru hlm. 225) ------------------------------ */
-export const ADEGAN_AKTIVITAS_3: AdeganStory = {
-  id: "aktivitas-3",
-  judul: "Kegiatan: penyajian diagram batang tegak",
-  sumber: "Materi: diagram batang tegak",
+/* ------------------------------ 1. Kertas berpetak ------------------------------ */
+const SUARA_K1 = "Pak Dodi, panitia bazar, membentangkan kertas berpetak di meja dan menggambar dua garis lurus.";
+const SUARA_K2 = "Satria, Laras, dan Genta membantu memindahkan data jajanan Bu Rini ke kertas itu.";
+const SUARA_K3 = "Pak Dodi berkata, data yang sama bisa digambar sebagai batang agar mudah dibandingkan.";
+
+const PETAK = [
+  ...[95, 120, 145, 170, 195].map((x, i) => garis(`pv${i}`, x, 44, 0, 64, W.abu, 0.8, { z: 2 })),
+  ...[60, 76, 92].map((y, i) => garis(`ph${i}`, 70, y, 150, 0, W.abu, 0.8, { z: 2 })),
+];
+const MINI = [36, 24, 18, 30];
+
+export const ADEGAN_KERTAS: AdeganStory = {
+  id: "kertas",
+  judul: "Pak Dodi dan kertas berpetak",
+  sumber: "Materi: kertas berpetak di meja bazar",
   latar: "#FFF7ED",
-  kutipan: [
-    "Aktivitas 3. Penyajian Diagram Batang Tegak",
-    "Alat tulis yang dibawa",
-    "Keluarkanlah alat tulis (benda) dalam tas sekolah yang dibawa oleh setiap anggota kelompok",
-    "Catatlah semua benda dan tulis juga jumlahnya",
-    "Buatlah garis tegak (sumbu tegak) yang tegak lurus dengan garis mendatar (sumbu datar)",
-    "dengan garis tegak sebagai banyak alat tulis dan garis mendatar sebagai nama alat tulis",
-    "Buatlah batang-batang persegi panjang sesuai banyak alat tulis dalam tas sekolah.",
-    "Hasil akhir pada Langkah 4 kegiatan Aktivitas 3 disebut diagram batang, yaitu diagram yang menggunakan persegi panjang untuk memberikan informasi jumlah kategori/item.",
-    "Diagram batang adalah diagram dengan menggunakan persegi panjang untuk menunjukkan banyak dari setiap kategori",
-    "Guru memandu dalam membuat kelompok heterogen",
-    "Bagian-bagian diagram antara lain: sumbu tegak, sumbu datar.",
-    "Guru dapat pula meminta satu kelompok untuk mempresentasikan hasil kerja kelompok",
-  ],
   ketukan: [
     k(
-      "Sekarang kita membuat diagram batang tegak. Siapkan alat tulis yang kalian bawa. Bentuklah kelompok, tiga sampai empat anak, lalu setiap anak mengeluarkan alat tulis dari tas sekolah.",
-      tambah(0, judul("Kegiatan: batang tegak")),
-      tambah("kelompok", emo("an1", 60, 70, "🧑", 28), emo("an2", 105, 70, "🧑", 28), emo("an3", 150, 70, "🧑", 28), emo("an4", 195, 70, "🧑", 28)),
-      tambah("empat", teks("an5", 128, 96, "kelompok 3 sampai 4 anak", 9, W.biru)),
-      tambah("mengeluarkan", emo("an6", 245, 70, "🎒", 30), emo("an7", 245, 110, "✏", 26)),
-      tambah("sekolah", ...kartu("an8", 40, 126, 220, 34, W.krem, ["keluarkan alat tulis dari tas"], 9.4)),
+      SUARA_K1,
+      tambah(0, judul("Pak Dodi dan Kertas Petak"), ...lantai("lt", 150), ...meja("mj", 14, 232)),
+      tambah("Dodi", ...tokoh("pr", 262, 184, "Pak Dodi")),
+      tambah("kertas", kotak("kt", 70, 44, 150, 64, W.putih, W.biru, { rx: 2, z: 1 }), ...PETAK),
+      tambah("dua", teks("n2", 150, 38, "2 garis", 10, W.merah)),
+      tambah("garis", garis("sy", 90, 50, 0, 52, W.merah, 2.2, { z: 4 }), garis("sx", 90, 102, 124, 0, W.merah, 2.2, { z: 4 })),
     ),
     k(
-      "Langkah berikutnya: catat semua benda dan tulis juga jumlahnya. Data dari kelompok inilah yang nanti kita gambar menjadi diagram batang.",
-      bersih(0),
-      tambah(0, judul("Catat benda dan jumlahnya")),
-      tambah("catat", ...kartu("ct1", 40, 40, 100, 24, W.krem, ["nama alat tulis"], 8.8), ...kartu("ct2", 150, 40, 110, 24, W.krem, ["banyaknya"], 8.8)),
-      tambah("benda", ...kartu("ct3", 40, 72, 100, 24, W.putih, ["..."], 9), ...kartu("ct4", 150, 72, 110, 24, W.putih, ["..."], 9)),
-      tambah("jumlahnya.", ...kartu("ct5", 40, 104, 100, 24, W.putih, ["..."], 9), ...kartu("ct6", 150, 104, 110, 24, W.putih, ["..."], 9)),
-      tambah("gambar", ...kartu("ct7", 40, 146, 220, 28, W.hijauMuda, ["data ini yang akan digambar"], 9.2)),
+      SUARA_K2,
+      tambah("Satria", ...tokoh("sa", 36, 184, "Satria")),
+      tambah("Laras", ...tokoh("la", 84, 184, "Laras")),
+      tambah("Genta", ...tokoh("ge", 132, 184, "Genta")),
+      tambah("data", teks("dt", 266, 60, "data Bu Rini", 8, W.coklat)),
+      tambah("kertas", bulat("d0", 105, 94, 4, WB[0]), bulat("d1", 135, 94, 4, WB[1]), bulat("d2", 165, 94, 4, WB[2]), bulat("d3", 195, 94, 4, WB[3])),
     ),
     k(
-      "Buat garis tegak, disebut sumbu tegak, yang tegak lurus dengan garis mendatar, disebut sumbu datar. Sumbu tegak menunjukkan banyak alat tulis, dengan skala. Sumbu datar menunjukkan nama alat tulis.",
-      bersih(0),
-      tambah(0, judul("Sumbu tegak dan sumbu datar")),
-      tambah("tegak,", panah("sx", 70, 160, 0, -118, W.hitam, 2), teks("sxt", 8, 44, "Sumbu Tegak", 8, W.merah, { anchor: "start" })),
-      tambah("mendatar,", panah("sy", 70, 160, 200, 0, W.hitam, 2), teks("syt", 170, 176, "Sumbu Datar", 8, W.merah)),
-      tambah("menunjukkan", teks("sx2", 8, 58, "banyak alat tulis", 7.2, W.biru, { anchor: "start" }), teks("sx3", 8, 68, "(dalam skala)", 7.2, W.biru, { anchor: "start" })),
-      tambah("nama", teks("sy2", 170, 188, "nama alat tulis", 7.6, W.biru)),
-      tambah("tulis@2", kotak("sa", 84, 70, 170, 80, W.krem, W.coklat, { putus: true, rx: 4, op: 0.8, z: -1 }), teks("sat", 169, 106, "tempat menggambar", 8.6, W.coklat), teks("sat2", 169, 118, "batang persegi panjang", 8.6, W.coklat)),
-    ),
-    k(
-      "Terakhir, buat batang persegi panjang sesuai banyak alat tulis. Hasil akhirnya kita sebut diagram batang: diagram yang memakai persegi panjang untuk menunjukkan banyak tiap kategori. Coba satu kelompok menjelaskan hasilnya di depan kelas.",
-      bersih(0),
-      tambah(0, judul("Hasil: diagram batang")),
-      tambah("Terakhir,", kotak("hb1", 60, 70, 28, 80, W.batang, W.biru, { rx: 0 }), kotak("hb2", 110, 100, 28, 50, W.batang, W.biru, { rx: 0 }), kotak("hb3", 160, 120, 28, 30, W.batang, W.biru, { rx: 0 }), garis("hbx", 46, 150, 160, 0, W.hitam, 1.6), garis("hby", 46, 52, 0, 98, W.hitam, 1.6)),
-      tambah("diagram", ...kartu("hb4", 214, 66, 78, 52, W.hijauMuda, ["Diagram", "batang"], 9.2)),
-      tambah("persegi@2", ...kartu("hb5", 214, 126, 78, 36, W.krem, ["persegi", "panjang"], 8.4)),
-      tambah("menjelaskan", teks("hb6", 150, 184, "satu kelompok mempresentasikan hasilnya", 8.4, W.coklat)),
+      SUARA_K3,
+      tambah("data", emo("ok", 266, 84, E.kilau, 18)),
+      ubah("digambar", { id: "d0", op: 0 }, { id: "d1", op: 0 }, { id: "d2", op: 0 }, { id: "d3", op: 0 }),
+      tambah(
+        "digambar",
+        ...MINI.map((h, i) => kotak(`m${i}`, 100 + i * 30, 102 - h, 16, h, WB[i], W.biru, { rx: 1, tebal: 1.2, z: 5 })),
+      ),
+      ubah("batang", { id: "n2", isi: "batang" }),
+      sorotkan("dibandingkan", "m0", "m1", "m2", "m3"),
     ),
   ],
 };
 
-/* ------------------------------ 3. Ayo Mengamati: diagram batang ekstrakurikuler (Buku Siswa hlm. 188–189; Panduan Guru hlm. 225–226) ------------------------------ */
-const EKS = diagramTegak(
-  "ek",
-  38,
-  44,
-  232,
-  100,
-  [
-    { nama: "Sepak Bola", nilai: 9 },
-    { nama: "Tari", nilai: 1 },
-    { nama: "Menyanyi", nilai: 5 },
-    { nama: "Catur", nilai: 2 },
-    { nama: "Basket", nilai: 6 },
-  ],
-  10,
-  1,
-  { judulNilai: "Banyak Siswa", judulNama: "Ekstrakurikuler", ukuranNama: 6.6 },
-);
-export const ADEGAN_MENGAMATI: AdeganStory = {
-  id: "ayo-mengamati",
-  judul: "Mengamati diagram batang ekstrakurikuler",
-  sumber: "Materi: diagram batang tegak",
-  latar: "#F0FDF4",
-  kutipan: [
-    "Perhatikan diagram batang untuk data banyaknya siswa yang mengikuti ekstrakurikuler.",
-    "berapa banyak siswa yang mengikuti catur?",
-    "banyaknya siswa yang mengikuti catur ada 2 siswa Bu.",
-    "Ekstrakurikuler apa yang paling disukai anak-anak?",
-    "yang paling banyak diikuti siswa adalah sepak bola",
-    "persegi panjang yang paling tinggi dengan banyak siswa 9",
-    "Berdasarkan penyajian Langkah 4 Aktivitas 3, jawablah pertanyaan berikut:",
-    "Alat tulis apakah yang paling banyak?",
-    "Alat tulis apakah yang paling sedikit?",
-    "Berapa jumlah keseluruhan alat tulis yang terdapat dalam tas sekolah kelompok kalian?",
-    "Berapa buku tulis yang kelompok kalian bawa?",
-    "Guru dapat mengulang percakapan yang ada dengan salah satu peserta didik.",
-  ],
+/* ------------------------------ 2. Sumbu dan batang ------------------------------ */
+const SUARA_S1 = "Laras menjelaskan bahwa diagram batang memakai batang persegi panjang untuk menyatakan banyak tiap jenis.";
+const SUARA_S2 = "Garis yang tegak disebut sumbu tegak, dan garis yang mendatar disebut sumbu mendatar.";
+const SUARA_S3 = "Satu sumbu memuat nama jenis, dan sumbu lainnya memuat angka yang diukur.";
+
+const BATANG = batangTegak("dg", TEGAK_RINI);
+const BAR = BATANG.filter((o) => o.id.includes("-b"));
+const NAMA = BATANG.filter((o) => o.id.includes("-n"));
+
+export const ADEGAN_SUMBU: AdeganStory = {
+  id: "sumbu",
+  judul: "Sumbu dan batang",
+  sumber: "Materi: sumbu tegak dan sumbu mendatar",
+  latar: "#F5F3FF",
   ketukan: [
     k(
-      "Sekarang perhatikan diagram batang untuk data banyaknya siswa yang mengikuti ekstrakurikuler. Sumbu tegak menunjukkan banyak siswa dari nol sampai sepuluh, sumbu datar menunjukkan nama ekstrakurikuler.",
-      tambah(0, judul("Mengamati")),
-      tambah("diagram", ...EKS.sumbu),
-      tambah("nama", ...EKS.nama),
-      sorotkan("tegak", "ek-jv"),
+      SUARA_S1,
+      tambah(0, judul("Laras dan Diagram Batang"), ...lantai("lt", 150), papanData()),
+      tambah("Laras", ...tokoh("la", 36, 184, "Laras")),
+      tambah("diagram", ...sumbuTegak("dg", TEGAK_RINI)),
+      tambah("persegi", ...BAR),
+      tambah("jenis", ...NAMA),
     ),
     k(
-      "Sepak bola sembilan siswa, tari satu siswa, menyanyi lima siswa, catur dua siswa, dan basket enam siswa. Tiap batang diberi angka supaya mudah dibaca.",
-      tambah("Sepak", ...EKS.batang[0]),
-      tambah("tari", ...EKS.batang[1]),
-      tambah("menyanyi", ...EKS.batang[2]),
-      tambah("catur", ...EKS.batang[3]),
-      tambah("basket", ...EKS.batang[4]),
+      SUARA_S2,
+      sorotkan("tegak", "dg-sy"),
+      tambah("tegak", teks("l1", 274, 64, "sumbu tegak", 7.5, W.merah)),
+      sorotkan("mendatar", "dg-sd"),
+      tambah("mendatar", teks("l2", 150, 160, "sumbu mendatar", 8, W.merah)),
     ),
     k(
-      "Sekarang coba jawab: berapa banyak siswa yang mengikuti catur? Jawabannya, batang catur menunjukkan dua siswa.",
-      ubah("coba", { id: "ek-jv", sorot: false }),
-      sorotkan("catur", "ek-b3"),
-      tambah("Jawabannya,", ...kartu("pc", 14, 174, 272, 22, W.krem, ["catur: 2 siswa"], 9.6)),
-    ),
-    k(
-      "Ekstrakurikuler apa yang paling disukai? Yang paling banyak diikuti adalah sepak bola, karena persegi panjangnya paling tinggi, dengan sembilan siswa. Tari paling sedikit, hanya satu siswa.",
-      ubah(0, { id: "ek-b3", sorot: false }),
-      sorotkan("sepak", "ek-b0"),
-      ubah("tinggi,", { id: "pc-t0", isi: "paling banyak: sepak bola, 9 siswa" }, { id: "pc-k", warna: W.hijauMuda }),
-      ubah("Tari", { id: "ek-b0", sorot: false }),
-      sorotkan("Tari", "ek-b1"),
-      ubah("sedikit,", { id: "pc-t0", isi: "paling sedikit: tari, 1 siswa" }, { id: "pc-k", warna: W.merahMuda }),
-    ),
-    k(
-      "Sekarang coba kerjakan untuk data alat tulis kelompokmu: alat tulis apa yang paling banyak, yang paling sedikit, berapa jumlah keseluruhannya, dan berapa pensil yang dibawa?",
-      bersih(0),
-      tambah(0, judul("Coba sendiri")),
-      tambah("paling", ...kartu("ym1", 14, 30, 272, 22, W.langit, ["a. alat tulis paling banyak?"], 8.8)),
-      tambah("sedikit,", ...kartu("ym2", 14, 58, 272, 22, W.krem, ["b. alat tulis paling sedikit?"], 8.8)),
-      tambah("keseluruhannya,", ...kartu("ym3", 14, 86, 272, 22, W.hijauMuda, ["c. jumlah keseluruhan alat tulis?"], 8.8)),
-      tambah("pensil", ...kartu("ym4", 14, 114, 272, 22, W.pink, ["d. berapa pensil?"], 8.8)),
-    ),
-    k(
-      "Contoh dari data ekstrakurikuler tadi, jumlah seluruhnya: sembilan tambah satu tambah lima tambah dua tambah enam sama dengan dua puluh tiga siswa.",
-      bersih(0),
-      tambah(0, judul("Jumlah keseluruhan")),
-      tambah("sembilan", teks("ym5", 150, 80, "9 + 1 + 5 + 2 + 6 = 23", 18, W.hitam)),
-      tambah("tiga", teks("ym6", 150, 112, "23 siswa", 14, W.hijau)),
-      tambah("Contoh", teks("ym7", 150, 150, "contoh dari data ekstrakurikuler", 9, W.coklat)),
+      SUARA_S3,
+      tambah("Satu", teks("l3", 274, 92, "1 sumbu", 8, W.hijauTua)),
+      sorotkan("nama", ...NAMA.map((o) => o.id)),
+      tambah("angka", ...skalaTegak("dg", TEGAK_RINI), satuanSumbu()),
     ),
   ],
 };
 
-/* ------------------------------ 4. Aktivitas 4: diagram batang mendatar (Buku Siswa hlm. 190–191; Panduan Guru hlm. 226) ------------------------------ */
-export const ADEGAN_AKTIVITAS_4: AdeganStory = {
-  id: "aktivitas-4",
-  judul: "Kegiatan: penyajian diagram batang mendatar",
-  sumber: "Materi: diagram batang mendatar",
-  latar: "#FDF2F8",
-  kutipan: [
-    "Aktivitas 4. Penyajian Diagram Batang Mendatar",
-    "Bunga di halaman sekolah",
-    "perhatikanlah warna-warna bunga yang terdapat di halaman sekolah",
-    "Catatlah semua data dan tulis juga jumlahnya",
-    "dengan garis tegak sebagai warna bunga dan garis mendatar sebagai jumlah bunga",
-    "Buatlah batang-batang persegi panjang mendatar sesuai banyak warna bunga.",
-    "Warna bunga apakah yang paling banyak?",
-    "Warna bunga apakah yang paling sedikit?",
-    "Berapa jumlah keseluruhan bunga yang terdapat di halaman sekolah",
-    "Hasil akhir pada langkah 4 kegiatan aktivitas 3 di sebut diagram batang mendatar.",
-    "Membaca diagram batang bentuk tegak dengan memperhatikan tinggi persegi panjang",
-    "Membaca diagram batang bentuk mendatar dengan memperhatikan lebar persegi panjang",
-    "jika di sekolah tidak terdapat bunga, maka guru dapat menggantinya dengan benda lain",
-    "Guru dapat menjelaskan pula perbedaan batang persegi panjang pada diagram batang tegak dan diagram batang mendatar.",
-  ],
+/* ------------------------------ 3. Tingkatan sumbu lima ------------------------------ */
+const SUARA_T1 = "Genta membagi sumbu angka dengan tingkatan lima: nol, lima, sepuluh, lima belas, dan seterusnya.";
+const SUARA_T2 = "Batang risoles dibuat tinggi sampai garis tiga puluh, enam tingkat dari bawah.";
+const SUARA_T3 = "Batang lemper hanya sampai garis lima belas, jadi lebih pendek dari batang risoles.";
+
+const SKALA = skalaTegak("dg", TEGAK_RINI);
+const GRID = SKALA.filter((o) => /-g\d$/.test(o.id));
+const TIK = (n: number) => SKALA.filter((o) => o.id === `dg-a${n}`);
+const [XR, YR] = ujungTegak(TEGAK_RINI, 0);
+const [, YL] = ujungTegak(TEGAK_RINI, 2);
+
+export const ADEGAN_SKALA: AdeganStory = {
+  id: "skala",
+  judul: "Tingkatan sumbu lima",
+  sumber: "Materi: sumbu bertingkat lima",
+  latar: "#ECFEFF",
   ketukan: [
     k(
-      "Kegiatan berikutnya, membuat diagram batang mendatar. Kelompok tetap sama, lalu kita belajar di luar kelas. Siapkan bunga di kebun sekolah atau depan kelas. Jika tidak ada bunga, boleh memakai benda lain.",
-      tambah(0, judul("Kegiatan: batang mendatar")),
-      tambah("bunga", emo("bn1", 50, 74, "🌹", 30), emo("bn2", 100, 74, "🌼", 30), emo("bn3", 150, 74, "🌷", 30), emo("bn4", 200, 74, "🌻", 30), emo("bn5", 250, 74, "🌸", 30)),
-      tambah("luar", ...kartu("bn6", 40, 104, 220, 30, W.hijauMuda, ["belajar di luar kelas"], 9.6)),
-      tambah("kebun", teks("bn7", 150, 156, "bunga di kebun atau depan kelas", 8.8, W.biru)),
-      tambah("benda", teks("bn8", 150, 176, "tidak ada bunga: pakai benda lain", 8.2, W.coklat)),
+      SUARA_T1,
+      tambah(0, judul("Genta Membagi Sumbu"), ...lantai("lt", 150), papanData(), ...sumbuTegak("dg", TEGAK_RINI), satuanSumbu()),
+      tambah("Genta", ...tokoh("ge", 36, 184, "Genta")),
+      tambah("tingkatan", ...GRID),
+      tambah(7, ...TIK(0)),
+      tambah(8, ...TIK(1)),
+      tambah(9, ...TIK(2)),
+      tambah(10, ...TIK(3)),
+      tambah(13, ...TIK(4), ...TIK(5), ...TIK(6)),
     ),
     k(
-      "Perhatikan warna-warna bunga, lalu catat semua data dan jumlahnya. Buat garis tegak sebagai warna bunga dan garis mendatar sebagai jumlah bunga, lalu buat batang persegi panjang mendatar.",
-      bersih(0),
-      tambah(0, judul("Sumbu tegak: warna, sumbu datar: jumlah")),
-      tambah("warna-warna", ...kartu("lb1", 14, 30, 272, 22, W.krem, ["perhatikan warna bunga, catat jumlahnya"], 8.6)),
-      tambah("garis@1", panah("lbx", 90, 160, 0, -92, W.hitam, 2), teks("lbxt", 14, 100, "warna", 8, W.merah, { anchor: "start" }), teks("lbxt2", 14, 111, "bunga", 8, W.merah, { anchor: "start" })),
-      tambah("garis@2", panah("lby", 90, 160, 190, 0, W.hitam, 2), teks("lbyt", 190, 176, "jumlah bunga", 8, W.merah)),
-      tambah("batang", kotak("lbk", 100, 84, 170, 62, W.krem, W.coklat, { putus: true, rx: 4, z: -1 }), teks("lbk1", 185, 112, "batang persegi panjang", 8.4, W.coklat), teks("lbk2", 185, 124, "mendatar", 8.4, W.coklat)),
+      SUARA_T2,
+      tambah(1, ...batangTegak("dg", TEGAK_RINI, [0])),
+      tambah("garis", garis("gb", 44, YR, 190, 0, W.merah, 1.6, { putus: true, z: 4 })),
+      tambah("tiga", teks("l30", 274, 70, "30 = 3 puluh", 7, W.merah)),
+      tambah("enam", teks("l6", 274, 84, "6 tingkat", 8, W.hijauTua)),
     ),
     k(
-      "Lalu jawab: warna bunga apa yang paling banyak, apa yang paling sedikit, dan berapa jumlah keseluruhan bunga? Gunakan cara membaca yang sama seperti pada diagram tegak.",
-      bersih(0),
-      tambah(0, judul("Pertanyaan kegiatan")),
-      tambah("paling@1", ...kartu("lq1", 14, 40, 272, 28, W.hijauMuda, ["a. warna bunga paling banyak?"], 9.2)),
-      tambah("sedikit,", ...kartu("lq2", 14, 80, 272, 28, W.merahMuda, ["b. warna bunga paling sedikit?"], 9.2)),
-      tambah("keseluruhan", ...kartu("lq3", 14, 120, 272, 28, W.langit, ["c. jumlah keseluruhan bunga?"], 9.2)),
-      tambah("Gunakan", teks("lq4", 150, 172, "caranya sama dengan diagram tegak", 8.8, W.coklat)),
-    ),
-    k(
-      "Hasil akhirnya disebut diagram batang mendatar. Pada diagram tegak, kita membaca dengan memperhatikan tinggi persegi panjang. Pada diagram mendatar, kita memperhatikan lebar persegi panjang. Ingat perbedaannya ya.",
-      bersih(0),
-      tambah(0, judul("Tegak: tinggi. Mendatar: lebar.")),
-      tambah("tegak,", kotak("tg1", 36, 56, 24, 80, W.batang, W.biru, { rx: 0 }), kotak("tg2", 70, 86, 24, 50, W.batang, W.biru, { rx: 0 }), garis("tgx", 28, 136, 80, 0, W.hitam, 1.4)),
-      tambah("tinggi", panah("tgp", 120, 136, 0, -80, W.merah, 2), teks("tgt", 66, 156, "tegak: lihat tinggi", 9, W.biru)),
-      tambah("mendatar@2", kotak("md1", 170, 62, 100, 22, W.batangJingga, W.biru, { rx: 0 }), kotak("md2", 170, 94, 60, 22, W.batangJingga, W.biru, { rx: 0 }), garis("mdy", 170, 56, 0, 70, W.hitam, 1.4)),
-      tambah("lebar", panah("mdp", 170, 134, 100, 0, W.merah, 2), teks("mdt", 220, 156, "mendatar: lihat lebar", 9, W.biru)),
+      SUARA_T3,
+      tambah(1, ...batangTegak("dg", TEGAK_RINI, [2])),
+      tambah("lima", garis("gc", 44, YL, 190, 0, W.hijauTua, 1.6, { putus: true, z: 4 }), teks("l15", 274, 98, "15 porsi", 8, W.hijauTua)),
+      sorotkan("pendek", "dg-b2"),
+      tambah("risoles", panah("ar", XR + 22, YR - 6, 0, YL - YR - 6, W.ungu, 1.6, { z: 6 })),
     ),
   ],
 };

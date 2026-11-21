@@ -1,250 +1,145 @@
 import type { AdeganStory } from "./logika-story";
-import { W, barisPikto, emo, judul, jumlahBaris, kartu, kunciPikto, panah, rangkaPikto, teks, turus } from "./k4b6a-gambar";
-import { bersih, hapus, idx, k, redamkan, sebar, sorotkan, tambah, ubah } from "./k4b6a-bantu";
-import { KAREL, PW, WARNA } from "./k4b6a-materi-2";
+import { E, W, deret, emo, judul, kotak, papanData, tanah, teks, tenda, lampuBohlam, tokoh } from "./k4b6a-gambar";
+import { bersih, hapus, k, tambah } from "./k4b6a-bantu";
 
-export const NAMA_METODE = ["Pictograph Key", "Categorical Tally", "Read then Compare", "Scale Multiply"];
-const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
-const IKON_METODE = ["🔑", "📝", "🔎", "🧮"];
+/*
+ * Cerita orisinal IGIL "Piktogram Jajanan Bu Rini" (Kelas 4 Bab 6 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b6a.md. Bagian ini: pembuka (catatan jualan yang menumpuk), Count the Icons (Hitung Ikon), dan terapannya.
+ */
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana cara menyajikan dan membaca data dengan gambar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari pelajaran tadi.";
-const SUARA_O2 = "Empat metode itu: Pictograph Key, Categorical Tally, Read then Compare, dan Scale Multiply.";
-const SUARA_O3 = "Semuanya menjawab pertanyaan yang sama, tetapi caranya berbeda: membaca keterangan, menghitung dengan turus, membaca lalu membandingkan, dan mengalikan dengan skala.";
-const SUARA_O4 = "Angkanya dari pelajaran tadi: warna kesukaan siswa, mainan Karel, bacaan yang dipinjam di perpustakaan, dan jumlah siswa tiap kelas.";
+export const NAMA_METODE = ["Count the Icons", "Table to Picture", "Rank and Compare"] as const;
+export const NAMA_METODE_ID = ["Hitung Ikon", "Tabel ke Gambar", "Urutkan dan Banding"] as const;
+
+export const KP = { merah: "#FCA5A5", biru: "#BAE6FD", kapur: "#FEF9C3", hijau: "#86EFAC" };
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Siang itu, di tenda Bu Rini, tumpukan catatan hasil jualan menunggu dirapikan menjadi gambar.";
+const SUARA_O2 = "Ada tiga cara supaya data jajanan mudah dibaca, tanpa salah hitung dan tanpa salah banding.";
+const SUARA_O3 = "Tiga cara itu: Count the Icons, Table to Picture, dan Rank and Compare.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Hitung Ikon, Tabel ke Gambar, dan Urutkan dan Banding.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk piktogram",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Catatan jualan Bu Rini",
+  sumber: "Metode global: pembuka",
+  latar: "#FEF9C3",
   ketukan: [
     k(
       SUARA_O1,
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("menyajikan", emo("pg1", 54, 92, "🔵", 36), emo("pg2", 100, 92, "🔵", 36), emo("pg3", 146, 92, "🔵", 36)),
-      tambah("berbagai", emo("gl", 235, 92, "🌍", 50)),
-      tambah("angka", teks("pa", 150, 150, "angka-angka dari pelajaran tadi", 9.6, W.biru), teks("pc", 150, 168, "warna, mainan, bacaan, siswa", 9, W.coklat)),
+      tambah(0, judul("Siang di Tenda Bu Rini"), ...tanah("tn", 150)),
+      tambah("tenda", ...tenda("td", 172, 40, 116, 80), ...lampuBohlam("lp", 178, 282, 58, 7)),
+      tambah("Bu", ...tokoh("br", 60, 184, "Bu Rini")),
+      tambah("tumpukan", kotak("c1", 100, 134, 46, 8, W.putih, W.coklat, { rx: 1, tebal: 1.2, z: 1 }), kotak("c2", 104, 126, 46, 8, W.krem, W.coklat, { rx: 1, tebal: 1.2, z: 2 }), kotak("c3", 98, 118, 46, 8, W.putih, W.coklat, { rx: 1, tebal: 1.2, z: 3 })),
+      tambah("catatan", teks("ct", 122, 110, "catatan jualan", 8, W.coklat)),
+      tambah("dirapikan", emo("rp", 214, 150, E.catat, 18)),
     ),
     k(
       SUARA_O2,
       bersih(0),
-      tambah(0, judul("Empat metode")),
-      ...NAMA_METODE.map((m, i) => tambah(["Pictograph", "Categorical", "Read", "Scale"].map((x) => idx(SUARA_O2, x))[i], ...kartu(`m${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
+      tambah(0, judul("Tiga Cara"), ...tanah("tn", 150), teks("n3", 260, 40, "3 cara", 10, W.merah)),
+      tambah("cara", ...[0, 1, 2].flatMap((i) => [kotak(`c${i}-k`, 20 + i * 92, 56, 80, 36, "#FDE68A", W.coklat, { rx: 4 }), teks(`c${i}-t`, 60 + i * 92, 79, "cara", 9, W.coklat)])),
+      tambah("mudah", emo("ok", 150, 126, E.benar, 22)),
+      tambah("salah", emo("x1", 60, 126, E.salah, 18), emo("x2", 240, 126, E.salah, 18)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Satu pertanyaan, empat cara")),
-      tambah("keterangan,", emo("i1", 45, 80, IKON_METODE[0], 34), teks("i1t", 45, 112, "keterangan", 8.4, W.biru)),
-      tambah("turus,", emo("i2", 112, 80, IKON_METODE[1], 34), teks("i2t", 112, 112, "turus", 8.4, W.biru)),
-      tambah("membandingkan,", emo("i3", 188, 80, IKON_METODE[2], 34), teks("i3t", 188, 112, "banding", 8.4, W.biru)),
-      tambah("skala.", emo("i4", 255, 80, IKON_METODE[3], 34), teks("i4t", 255, 112, "skala", 8.4, W.biru)),
+      tambah(0, judul("Tiga Cara"), teks("n3", 260, 40, "3 cara", 10, W.merah)),
+      tambah("Count", teks("m0", 112, 70, "1. Count the Icons", 10, W.hijauTua), emo("i0", 30, 72, E.bakso, 16)),
+      tambah("Table", teks("m1", 112, 120, "2. Table to Picture", 10, W.hijauTua), emo("i1", 30, 122, E.catat, 16)),
+      tambah("Rank", teks("m2", 112, 170, "3. Rank and Compare", 10, W.hijauTua), emo("i2", 30, 172, E.bintang, 16)),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Angka dari pelajaran tadi")),
-      tambah("warna", ...kartu("a1", 14, 34, 272, 30, W.hijauMuda, ["warna kesukaan: 4, 2, 1, 5 siswa"], 9)),
-      tambah("Karel,", ...kartu("a2", 14, 72, 272, 30, W.langit, ["mainan Karel: 6, 4, 3, 1, 9"], 9)),
-      tambah("perpustakaan,", ...kartu("a3", 14, 110, 272, 30, W.krem, ["bacaan dipinjam: 12, 6, 9, 3, 12, 14"], 9)),
-      tambah("kelas.", ...kartu("a4", 14, 148, 272, 30, W.pink, ["gambar siswa tiap kelas: 6, 6, 7, 8, 5, 7"], 8.6)),
+      tambah("Nama", kotak("bk", 196, 52, 100, 130, "#14532D", W.putih, { rx: 6, tebal: 1, z: -1 })),
+      tambah("Hitung", teks("g0", 246, 70, "Hitung Ikon", 9, W.sorot)),
+      tambah("Tabel", teks("g1", 246, 120, "Tabel ke Gambar", 8.4, W.sorot)),
+      tambah("Urutkan", teks("g2", 246, 170, "Urutkan dan Banding", 7.6, W.sorot)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Pictograph Key: konsep ------------------------------ */
-const SUARA_K1 = "Metode pertama, Pictograph Key, atau Keterangan Piktogram. Sebelum membaca gambar, baca dulu keterangannya: satu gambar menyatakan berapa? Keterangan itu seperti legenda pada peta.";
-const SUARA_K2 = "Gambar yang sama bisa berarti satu, dua, atau lima. Tanpa keterangan, banyaknya gambar belum punya arti.";
-const SUARA_K3 = "Tiga langkahnya: temukan baris keterangan, catat nilai satu gambar, baru hitung gambarnya.";
-const SUARA_K4 = "Keterangan biasanya berada di baris terakhir tabel, misalnya menyatakan satu siswa, atau menyatakan satu bacaan.";
-const tigaOrang = (id: string, y: number) => [0, 1, 2].map((j) => emo(`${id}${j}`, 36 + j * 22, y, "👤", 18));
+/* ------------------------------ Count the Icons: konsep ------------------------------ */
+const SUARA_H1 = "Cara pertama, Count the Icons, atau Hitung Ikon.";
+const SUARA_H2 = "Kita membaca keterangan lebih dulu, lalu menghitung ikon pada setiap baris.";
+const SUARA_H3 = "Banyak ikon dikalikan dengan banyak yang diwakili satu ikon, dan hasilnya adalah banyak data.";
+const SUARA_H4 = "Satuan harus ikut ditulis, misalnya porsi, supaya angkanya punya arti.";
 
-export const ADEGAN_LUAR_PK: AdeganStory = {
-  id: "luar-kunci",
-  judul: "Pictograph Key: baca keterangannya dulu",
-  sumber: "Metode luar: Pictograph Key",
-  latar: "#F0FDF4",
+export const ADEGAN_LUAR_HITUNG: AdeganStory = {
+  id: "luar-hitung",
+  judul: "Count the Icons: Hitung Ikon",
+  sumber: "Metode global: Count the Icons (konsep)",
+  latar: "#FEF9C3",
   ketukan: [
     k(
-      SUARA_K1,
-      tambah(0, judul("Pictograph Key")),
-      tambah("Keterangan", ...kartu("pk", 40, 34, 220, 30, W.hijauMuda, ["Keterangan Piktogram"], 10.6)),
-      tambah("baca", emo("pk1", 70, 108, "👤", 34), teks("pk1t", 120, 114, "= berapa?", 12, W.merah)),
-      tambah("legenda", emo("pk2", 235, 108, "🔑", 34)),
-      tambah("peta.", teks("pk3", 150, 168, "keterangan = penuntun pembaca", 9.4, W.coklat)),
+      SUARA_H1,
+      tambah(0, judul("Cara 1: Count the Icons"), ...papanData("pt", 8, 28, 284, 132)),
+      tambah("Count", teks("nm", 150, 62, "Count the Icons", 13, KP.merah, { z: 3 })),
+      tambah("Hitung", teks("ni", 150, 82, "Hitung Ikon", 10, KP.kapur, { z: 3 })),
+      tambah("Ikon.", emo("ik", 150, 128, E.bakso, 24, { z: 3 })),
     ),
     k(
-      SUARA_K2,
-      bersih(0),
-      tambah(0, judul("Gambar sama, arti berbeda")),
-      tambah("satu,", ...tigaOrang("r1", 55), teks("r1t", 190, 60, "skala 1: 3 siswa", 9.6, W.biru)),
-      tambah("dua,", ...tigaOrang("r2", 95), teks("r2t", 190, 100, "skala 2: 6 siswa", 9.6, W.biru)),
-      tambah("lima.", ...tigaOrang("r3", 135), teks("r3t", 190, 140, "skala 5: 15 siswa", 9.6, W.biru)),
-      tambah("Tanpa", teks("r4", 150, 186, "tanpa keterangan, jumlah tak jelas", 9.4, W.merah)),
+      SUARA_H2,
+      hapus(0, "nm", "ni", "ik"),
+      tambah("keterangan", kotak("kt", 100, 44, 100, 22, W.krem, W.coklat, { rx: 3, tebal: 1.4, z: 3 }), teks("kt1", 150, 59, "1 ikon = ?", 9, W.merah, { z: 4 })),
+      tambah("menghitung", ...deret("d", 70, 110, E.risoles, 5, 24, 16)),
+      tambah("baris.", teks("br", 235, 110, "tiap baris", 8.4, KP.kapur, { z: 3 })),
     ),
     k(
-      SUARA_K3,
-      bersih(0),
-      tambah(0, judul("Tiga langkah")),
-      tambah("temukan", ...kartu("l1", 14, 34, 272, 34, W.hijauMuda, ["1. temukan baris keterangan"], 9.4)),
-      tambah("catat", ...kartu("l2", 14, 78, 272, 34, W.langit, ["2. catat nilai satu gambar"], 9.4)),
-      tambah("hitung", ...kartu("l3", 14, 122, 272, 34, W.krem, ["3. hitung gambarnya"], 9.4)),
+      SUARA_H3,
+      hapus(0, "kt", "kt1", "br"),
+      tambah("Banyak", teks("e1", 150, 60, "banyak ikon", 10, KP.biru, { z: 3 })),
+      tambah("dikalikan", teks("e2", 150, 76, "×", 12, KP.merah, { z: 3 })),
+      tambah("diwakili", teks("e3", 150, 92, "keterangan", 10, KP.biru, { z: 3 })),
+      tambah("hasilnya", teks("e4", 150, 146, "= banyak data", 10, KP.kapur, { z: 3 })),
     ),
     k(
-      SUARA_K4,
-      bersih(0),
-      tambah(0, judul("Keterangan di tabel")),
-      tambah("baris", ...kartu("b1", 14, 36, 272, 26, W.abu, ["baris terakhir tabel"], 9)),
-      tambah("siswa,", emo("b2", 80, 100, "👤", 26), teks("b2t", 170, 106, "menyatakan 1 siswa", 10, W.biru)),
-      tambah(idx(SUARA_K4, "bacaan", 1), emo("b3", 80, 150, "📘", 26), teks("b3t", 170, 156, "menyatakan 1 bacaan", 10, W.biru)),
+      SUARA_H4,
+      hapus(0, "e1", "e2", "e3", "e4", ...[0, 1, 2, 3, 4].map((i) => `d${i}`)),
+      tambah("Satuan", teks("s1", 150, 60, "30 porsi", 14, KP.kapur, { z: 3 })),
+      tambah("ditulis,", kotak("sb", 150, 66, 54, 18, undefined, KP.merah, { rx: 3, tebal: 1.6, putus: true, z: 3 })),
+      tambah("angkanya", teks("s2", 150, 128, "angka tanpa satuan: apa artinya?", 8.4, KP.merah, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 3. Pictograph Key: penerapan pada warna kesukaan (Buku Siswa hlm. 183) ------------------------------ */
-const SUARA_KT1 = "Terapkan pada warna kesukaan siswa tadi. Langkah pertama, baca keterangannya: satu gambar menyatakan satu siswa.";
-const SUARA_KT2 = "Langkah kedua, hitung gambar. Ungu empat, kuning dua, hitam satu, merah lima. Jumlahnya empat ditambah dua ditambah satu ditambah lima, sama dengan dua belas siswa.";
-const SUARA_KT3 = "Sekarang ganti keterangannya. Andaikan satu gambar menyatakan dua siswa. Gambarnya sama, tetapi ungu kini delapan siswa dan merah sepuluh siswa.";
-const SUARA_KT4 = "Gambar tidak berubah, tetapi artinya berubah: dua belas siswa menjadi dua puluh empat siswa. Itulah sebabnya keterangan dibaca lebih dulu.";
+/* ------------------------------ Count the Icons: terapan ------------------------------ */
+const SUARA_T1 = "Laras membaca papan es teh Bu Rini, dengan keterangan satu ikon sama dengan sepuluh gelas.";
+const SUARA_T2 = "Ada tujuh ikon, jadi tujuh kali sepuluh sama dengan tujuh puluh gelas.";
+const SUARA_T3 = "Cocok untuk membaca piktogram yang sudah jadi, karena langkahnya pendek dan jelas.";
+const SUARA_T4 = "Kurang cocok kalau data tidak habis dibagi keterangan, karena ikonnya harus dipotong.";
 
-export const ADEGAN_LUAR_PK_TERAPAN: AdeganStory = {
-  id: "luar-kunci-terapan",
-  judul: "Pictograph Key pada warna kesukaan siswa",
-  sumber: "Metode luar: Pictograph Key",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(
-      SUARA_KT1,
-      tambah(0, judul("Keterangan: 1 gambar = 1 siswa")),
-      tambah("warna", rangkaPikto(PW)),
-      tambah("baca", ...kunciPikto(PW, 4, { jenis: "emoji", e: "👤" }, "menyatakan 1 siswa")),
-      sorotkan("keterangannya:", "wk-kk"),
-      tambah("satu@2", ...[0, 1, 2, 3].flatMap((i) => barisPikto(PW, i, WARNA[i]))),
-    ),
-    k(
-      SUARA_KT2,
-      redamkan(0, "wk-kk"),
-      tambah("Ungu", jumlahBaris(PW, 0, 4)),
-      tambah("kuning", jumlahBaris(PW, 1, 2)),
-      tambah("hitam", jumlahBaris(PW, 2, 1)),
-      tambah("merah", jumlahBaris(PW, 3, 5)),
-      tambah("Jumlahnya", teks("kj", 150, 192, "4 + 2 + 1 + 5 = 12 siswa", 11, W.merah)),
-    ),
-    k(
-      SUARA_KT3,
-      hapus(0, "kj"),
-      ubah("Andaikan", { id: "wk-kt", isi: "menyatakan 2 siswa", warna: W.merah }),
-      ubah("tetapi", { id: "wk-n1", isi: "4", warna: W.hijau }, { id: "wk-n2", isi: "2", warna: W.hijau }),
-      ubah("ungu", { id: "wk-n0", isi: "8", warna: W.hijau }),
-      ubah("merah", { id: "wk-n3", isi: "10", warna: W.hijau }),
-    ),
-    k(
-      SUARA_KT4,
-      bersih(0),
-      tambah(0, judul("Gambar sama, arti berbeda")),
-      tambah("Gambar", ...kartu("kz1", 14, 36, 272, 36, W.hijauMuda, ["1 gambar = 1 siswa: 12 siswa"], 9.4)),
-      tambah("menjadi", ...kartu("kz2", 14, 82, 272, 36, W.merahMuda, ["1 gambar = 2 siswa: 24 siswa"], 9.4)),
-      tambah("keterangan", ...kartu("kz3", 40, 134, 220, 36, W.emas, ["baca keterangannya dulu"], 10)),
-    ),
-  ],
-};
-
-/* ------------------------------ 4. Categorical Tally: konsep ------------------------------ */
-const SUARA_T1 = "Metode kedua, Categorical Tally, atau Turus Kategori. Bila data masih berupa daftar, hitung dengan turus: setiap data yang muncul dicoret satu garis.";
-const SUARA_T2 = "Empat garis berjajar, garis kelima menyilang, jadi satu kelompok berisi lima. Kelompok lima mudah dihitung dengan cepat.";
-const SUARA_T3 = "Contoh: dua kelompok lima dan tiga garis lagi berarti lima, lima, tiga, jumlahnya tiga belas.";
-const SUARA_T4 = "Setelah turus selesai, tiap kategori diubah menjadi gambar sebanyak turusnya, dan jadilah piktogram.";
-
-export const ADEGAN_LUAR_TURUS: AdeganStory = {
-  id: "luar-turus",
-  judul: "Categorical Tally: turus kelompok lima",
-  sumber: "Metode luar: Categorical Tally",
-  latar: "#EFF6FF",
+export const ADEGAN_LUAR_HITUNG_TERAPAN: AdeganStory = {
+  id: "luar-hitung-terapan",
+  judul: "Hitung Ikon: kapan cocok",
+  sumber: "Metode global: Count the Icons (terapan)",
+  latar: "#FEF9C3",
   ketukan: [
     k(
       SUARA_T1,
-      tambah(0, judul("Categorical Tally")),
-      tambah("Turus", ...kartu("tt", 40, 34, 220, 30, W.langit, ["Turus Kategori"], 10.6)),
-      tambah("daftar,", ...kartu("td", 30, 80, 240, 30, W.krem, ["daftar data mentah"], 9)),
-      tambah("setiap", ...turus("t1", 130, 126, 3)),
-      tambah("garis.", teks("tg", 150, 176, "1 data = 1 garis", 10, W.merah)),
+      tambah(0, judul("Papan Es Teh"), ...papanData("pt", 8, 28, 284, 124), ...tokoh("lr", 40, 184, "Laras")),
+      tambah("papan", teks("et", 150, 54, "es teh", 11, KP.kapur, { z: 3 })),
+      tambah("keterangan", kotak("kt", 170, 40, 112, 22, W.krem, W.coklat, { rx: 3, tebal: 1.4, z: 3 }), teks("kt1", 226, 55, "1 ikon = 10 gelas", 8.4, W.merah, { z: 4 })),
     ),
     k(
       SUARA_T2,
-      bersih(0),
-      tambah(0, judul("Kelompok lima")),
-      ...turus("a", 134, 70, 5).map((o, i) => tambah(["Empat", "garis", "berjajar,", "garis@2", "menyilang,"][i] ?? 0, o)),
-      tambah("kelompok", teks("tk", 150, 118, "5 garis = 1 kelompok", 10.4, W.biru)),
-      tambah("mudah", teks("tm", 150, 150, "mudah dihitung cepat", 9.6, W.coklat)),
+      tambah("tujuh", ...deret("g", 40, 100, E.cincau, 7, 28, 18)),
+      tambah("kali", teks("h1", 150, 128, "7 × 10", 11, KP.biru, { z: 3 })),
+      tambah("tujuh@2", teks("h2", 230, 128, "= 70 gelas", 11, KP.kapur, { z: 3 })),
     ),
     k(
       SUARA_T3,
-      bersih(0),
-      tambah(0, judul("Contoh: tiga belas")),
-      ...turus("b", 100, 60, 13).map((o) => tambah(idx(SUARA_T3, "Contoh"), o)),
-      tambah(idx(SUARA_T3, "lima", 2), teks("tb1", 106, 100, "5", 12, W.biru)),
-      tambah(idx(SUARA_T3, "lima", 3), teks("tb2", 129, 100, "5", 12, W.biru)),
-      tambah(idx(SUARA_T3, "tiga", 2), teks("tb3", 150, 100, "3", 12, W.biru)),
-      tambah("jumlahnya", teks("tb4", 150, 150, "5 + 5 + 3 = 13", 12, W.merah)),
+      hapus(0, "h1", "h2"),
+      tambah("Cocok", emo("ok", 270, 56, E.benar, 22, { z: 3 })),
+      tambah("sudah", teks("jd", 150, 128, "piktogram sudah jadi", 9, KP.kapur, { z: 3 })),
+      tambah("pendek", teks("pd", 150, 144, "langkah pendek", 8.4, KP.biru, { z: 3 })),
     ),
     k(
       SUARA_T4,
-      bersih(0),
-      tambah(0, judul("Dari turus ke piktogram")),
-      ...turus("c", 110, 50, 13).map((o) => tambah(0, o)),
-      tambah("diubah", panah("ca", 150, 96, 0, 40, W.biru, 2)),
-      ...Array.from({ length: 13 }, (_, j) => tambah(sebar(SUARA_T4, 13, idx(SUARA_T4, "gambar"))[j], emo(`cg${j}`, 24 + j * 20, 160, "🔵", 14))),
-      tambah("piktogram.", teks("ct", 150, 196, "13 gambar", 10, W.merah)),
+      hapus(0, "ok", "jd", "pd", "et", "kt", "kt1", ...[0, 1, 2, 3, 4, 5, 6].map((i) => `g${i}`)),
+      tambah("Kurang", emo("xs", 270, 56, E.salah, 22, { z: 3 })),
+      tambah("habis", teks("hb", 150, 70, "15 : 10 = ?", 14, KP.merah, { z: 3 })),
+      tambah("dipotong.", teks("pt2", 150, 120, "ikon harus dipotong", 9, KP.kapur, { z: 3 })),
     ),
   ],
 };
-
-/* ------------------------------ 5. Categorical Tally: penerapan pada mainan Karel (Buku Siswa hlm. 181) ------------------------------ */
-const SUARA_TT1 = "Terapkan pada mainan Karel. Daftar yang ia sebut: enam mobil, empat robot, tiga pesawat, satu puzzle, dan sembilan kelereng. Kita turuskan satu per satu.";
-const SUARA_TT2 = "Mobil: satu kelompok lima dan satu garis, jadi enam. Kelereng: satu kelompok lima dan empat garis, jadi sembilan.";
-const SUARA_TT3 = "Jumlah turus seluruhnya: enam, empat, tiga, satu, dan sembilan. Hasilnya dua puluh tiga, sama dengan hitungan tadi.";
-const SUARA_TT4 = "Dari turus ini, piktogram tinggal menggambar satu gambar untuk setiap garis. Kelereng sembilan turus menjadi sembilan gambar.";
-const NAMA_KAREL = ["Mobil", "Robot", "Pesawat", "Puzzle", "Kelereng"];
-const yBaris = (i: number) => 38 + i * 28;
-const turusKarel = (i: number) => turus(`tk${i}`, 84, yBaris(i), KAREL[i]);
-
-export const ADEGAN_LUAR_TURUS_TERAPAN: AdeganStory = {
-  id: "luar-turus-terapan",
-  judul: "Categorical Tally pada mainan Karel",
-  sumber: "Metode luar: Categorical Tally",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      SUARA_TT1,
-      tambah(0, judul("Turus mainan Karel")),
-      ...NAMA_KAREL.map((n, i) => tambah(idx(SUARA_TT1, ["mobil", "robot", "pesawat", "puzzle", "kelereng"][i]), teks(`tn${i}`, 14, yBaris(i) + 11, n, 8.6, W.biru, { anchor: "start" }), ...turusKarel(i))),
-    ),
-    k(
-      SUARA_TT2,
-      tambah("Mobil:", teks("tc0", 190, yBaris(0) + 11, "= 6", 10, W.merah, { anchor: "start" })),
-      sorotkan("Mobil:", ...turusKarel(0).map((o) => o.id)),
-      redamkan("Kelereng:", ...turusKarel(0).map((o) => o.id)),
-      tambah("Kelereng:", teks("tc4", 190, yBaris(4) + 11, "= 9", 10, W.merah, { anchor: "start" })),
-      sorotkan("Kelereng:", ...turusKarel(4).map((o) => o.id)),
-    ),
-    k(
-      SUARA_TT3,
-      redamkan(0, ...turusKarel(4).map((o) => o.id)),
-      tambah(idx(SUARA_TT3, "empat"), teks("tc1", 190, yBaris(1) + 11, "= 4", 10, W.merah, { anchor: "start" })),
-      tambah(idx(SUARA_TT3, "tiga"), teks("tc2", 190, yBaris(2) + 11, "= 3", 10, W.merah, { anchor: "start" })),
-      tambah(idx(SUARA_TT3, "satu"), teks("tc3", 190, yBaris(3) + 11, "= 1", 10, W.merah, { anchor: "start" })),
-      tambah("Hasilnya", teks("tj", 150, 192, "6 + 4 + 3 + 1 + 9 = 23", 11, W.merah)),
-    ),
-    k(
-      SUARA_TT4,
-      bersih(0),
-      tambah(0, judul("Dari turus ke piktogram")),
-      ...turus("u", 130, 40, 9).map((o) => tambah("turus", o)),
-      tambah("menggambar", panah("ua", 150, 70, 0, 40, W.biru, 2)),
-      ...Array.from({ length: 9 }, (_, j) => tambah(sebar(SUARA_TT4, 9, idx(SUARA_TT4, "menggambar"))[j], emo(`ug${j}`, 36 + j * 28, 130, "🔵", 20))),
-      tambah("sembilan@2", teks("ut", 150, 176, "9 turus = 9 gambar", 11, W.merah)),
-    ),
-  ],
-};
-

@@ -1,17 +1,15 @@
 import type { MateriBab, PaketBab } from "@/components/IgilModulePlayer";
 import materi from "@/data/kelas4-bab6.json";
-import { PETA_PIKIRAN_K4B6A, PETA_PIKIRAN_K4B6B } from "./kit-k4b6";
-import { VideoK4B6A } from "./video-k4b6a";
-import { VideoK4B6B } from "./video-k4b6b";
-import { AbstractK4B6A, ConcreteK4B6A, InfografisK4B6AKomponen, PictureK4B6A } from "./SubBabK4B6A";
-import { AbstractK4B6B, ConcreteK4B6B, InfografisK4B6BKomponen, PictureK4B6B } from "./SubBabK4B6B";
 
+/**
+ * Paket Matematika Kelas 4 Bab 6 (Piktogram dan Diagram Batang): hanya data JSON dan ikon Sub-Bab. Komponen tiap tahap
+ * (Mind-map, Infografis, Concrete, Pictorial, Abstract) dipasang sebagai cabang `mtk-4-bab6` di IgilModulePlayer.tsx
+ * (cerita "Bazar Kuliner Sekolah"), dan Story di registri-cerita-baru.ts. Dimuat malas.
+ */
 const paket: PaketBab = {
   materi: materi as unknown as MateriBab,
-  sub: {
-    A: { Cerita: VideoK4B6A, peta: PETA_PIKIRAN_K4B6A, Infografis: InfografisK4B6AKomponen, Concrete: ConcreteK4B6A, Picture: PictureK4B6A, Abstract: AbstractK4B6A, uraianPeta: true },
-    B: { Cerita: VideoK4B6B, peta: PETA_PIKIRAN_K4B6B, Infografis: InfografisK4B6BKomponen, Concrete: ConcreteK4B6B, Picture: PictureK4B6B, Abstract: AbstractK4B6B, uraianPeta: true },
-  },
+  sub: {},
   emoji: { A: { emoji: "🖼️" }, B: { emoji: "📊" } },
 };
+
 export default paket;

@@ -1,53 +1,46 @@
 /**
- * Misi dan tantangan bebas Kelas 4 Bab 6 (Piktogram dan Diagram Batang). Murni: tanpa React, tanpa jaringan.
+ * Misi dan tantangan bebas Kelas 4 Bab 6 (Piktogram dan Diagram Batang, tema Bazar Kuliner Sekolah). Murni: tanpa React, tanpa jaringan.
  * Diuji di scripts/uji-lab-k4b6.mjs.
  *
- * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
- *  A Piktogram : Lab Piktogram (Turus, Susun, Baca)     + Mesin Piktogram + Turus Kelas Karel
- *  B Batang    : Lab Batang (Bangun, Label, Banding)    + Mesin Batang    + Pameran Data Azizah (pencapaian bab)
+ * Tiap Sub-Bab satu simulasi sendiri (folder Sub-Bab).
+ * KERANGKA: agen tiap Sub-Bab mengganti MISI_X (kosong) dan menyesuaikan tipe keadaannya di union KeadaanK4Bab6.
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
-import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
-import type { KeadaanPiktoK4B6A } from "./lab-piktogram-k4b6a";
-import type { KeadaanBatangK4B6B } from "./lab-batang-k4b6b";
+import type { DefMisi } from "./misi-simulasi";
 
-export type KeadaanK4Bab6 = KeadaanPiktoK4B6A | KeadaanBatangK4B6B | KeadaanSelesai;
-export type HurufMisiK4B6 = "A" | "B";
+import type { KeadaanJajanan } from "./jajanan-k4b6a/logika";
+import type { KeadaanBazar } from "./bazar-k4b6b/logika";
 
-const selesai = (k: KeadaanK4Bab6, id: string) => k.alat === "selesai" && k.id === id;
-/** Riwayat alat tertentu memuat semua id. */
-const pernah = (k: KeadaanK4Bab6, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
+export type KeadaanK4Bab6 = { alat: "kerangka" } | KeadaanJajanan | KeadaanBazar;
 
-/** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K4B6 = { A: "turus-karel", B: "pameran-azizah" } as const;
-export const ID_MESIN_K4B6 = { A: "mesin-piktogram", B: "mesin-batang" } as const;
-
+/** Sub-Bab A: Piktogram Jajanan. Empat misi wajib dan dua tantangan bebas, id berawalan a-, tanpa skor. Diuji di scripts/uji-jajanan-k4b6a.mjs. */
+const jajanan = (k: KeadaanK4Bab6): k is KeadaanJajanan => k.alat === "jajanan";
 export const MISI_A: DefMisi<KeadaanK4Bab6>[] = [
-  { id: "a-turus", teks: "Di Turus, catat semua mainan Karel dengan turus tanpa salah, lalu periksa.", wajib: true, cek: (k) => pernah(k, "piktogram", "turus:mainan") },
-  { id: "a-warna", teks: "Di Susun, buat piktogram warna kesukaan dengan keterangan 1 simbol = 1 siswa.", wajib: true, cek: (k) => pernah(k, "piktogram", "susun:warna:1") },
-  { id: "a-kelas", teks: "Di Susun, buat piktogram siswa per kelas dengan keterangan 1 simbol = 4 siswa.", wajib: true, cek: (k) => pernah(k, "piktogram", "susun:kelas:4") },
-  { id: "a-nilai", teks: "Di Baca, tentukan kelas yang siswanya paling banyak dan berapa siswanya.", wajib: true, cek: (k) => pernah(k, "piktogram", "baca:kelas:terbanyak", "baca:kelas:nilai") },
-  { id: "a-selisih", teks: "Di Baca, hitung selisih siswa kelas terbanyak dan tersedikit.", wajib: true, cek: (k) => pernah(k, "piktogram", "baca:kelas:selisih") },
-  { id: "a-mesin", teks: "Selesaikan Mesin Piktogram sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B6.A) },
-  { id: "a-skenario", teks: "Selesaikan skenario Turus Kelas Karel sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B6.A) },
-  { id: "a-lupa", teks: "Di Baca, coba pilih banyak simbolnya saja tanpa skala. Baca penjelasan lab.", wajib: false, cek: (k) => pernah(k, "piktogram", "lupa-skala") },
-  { id: "a-utuh", teks: "Di Susun, coba buku dipinjam dengan 1 simbol = 4 buku, lalu buat piktogramnya dengan 1 simbol = 2 buku.", wajib: false, cek: (k) => pernah(k, "piktogram", "tak-utuh", "susun:buku:2") },
-  { id: "a-total", teks: "Di Baca, hitung banyak siswa semuanya pada piktogram warna kesukaan.", wajib: false, cek: (k) => pernah(k, "piktogram", "baca:warna:total") },
+  { id: "a-gambar", teks: "Pilih keterangan yang tepat dan tambah ikon sesuai tabel, lalu tekan Periksa.", wajib: true, cek: (k) => jajanan(k) && k.gambarBenar.length >= 1 },
+  { id: "a-baca", teks: "Baca piktogram dan pilih banyak data satu baris, lalu tekan Periksa.", wajib: true, cek: (k) => jajanan(k) && k.bacaBenar.length >= 1 },
+  { id: "a-banding", teks: "Tandai baris paling banyak dan paling sedikit, lalu tekan Periksa.", wajib: true, cek: (k) => jajanan(k) && k.bandingBenar.length >= 1 },
+  { id: "a-jumlah", teks: "Masukkan semua baris, pilih jumlah seluruhnya, lalu tekan Periksa.", wajib: true, cek: (k) => jajanan(k) && k.jumlahBenar.length >= 1 },
+  { id: "a-tolak", teks: "Pilih keterangan yang tidak habis membagi data, dan lihat alat menolak.", wajib: false, cek: (k) => jajanan(k) && k.tolak },
+  { id: "a-dua", teks: "Gambar dua tabel menjadi piktogram dengan benar tanpa terhenti.", wajib: false, cek: (k) => jajanan(k) && k.gambarBenar.length >= 2 },
 ];
 
+/** Sub-Bab B: Batang Bazar. Empat misi wajib dan dua tantangan bebas, id berawalan b-, tanpa skor. Diuji di scripts/uji-bazar-k4b6b.mjs. */
+const bazar = (k: KeadaanK4Bab6): k is KeadaanBazar => k.alat === "bazar";
 export const MISI_B: DefMisi<KeadaanK4Bab6>[] = [
-  { id: "b-transport", teks: "Di Bangun, buat diagram batang alat transportasi dengan langkah sumbu 1, lalu periksa.", wajib: true, cek: (k) => pernah(k, "batang", "bangun:transport:1") },
-  { id: "b-kelas", teks: "Di Bangun, buat diagram batang siswa per kelas dengan langkah sumbu 4, lalu periksa.", wajib: true, cek: (k) => pernah(k, "batang", "bangun:kelas:4") },
-  { id: "b-label", teks: "Di Label, lengkapi judul dan kedua label sumbu diagram alat transportasi yang tegak.", wajib: true, cek: (k) => pernah(k, "batang", "label:transport:tegak") },
-  { id: "b-mendatar", teks: "Di Label, ubah diagram buku dipinjam menjadi mendatar dan pasang labelnya dengan benar.", wajib: true, cek: (k) => pernah(k, "batang", "label:buku:mendatar") },
-  { id: "b-selisih", teks: "Di Banding, pilih batang Rabu dan Sabtu, lalu hitung selisih buku yang dipinjam.", wajib: true, cek: (k) => pernah(k, "batang", "banding:buku:selisih:rab-sab") },
-  { id: "b-mesin", teks: "Selesaikan Mesin Batang sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B6.B) },
-  { id: "b-skenario", teks: "Selesaikan skenario Pameran Data Azizah sampai adegan akhir. Ini misi penutup bab.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B6.B) },
-  { id: "b-lupa", teks: "Di Banding, coba pilih banyak garisnya saja tanpa langkah sumbu. Baca penjelasan lab.", wajib: false, cek: (k) => pernah(k, "batang", "lupa-skala") },
-  { id: "b-total", teks: "Di Banding, hitung banyak siswa semuanya pada diagram alat transportasi.", wajib: false, cek: (k) => pernah(k, "batang", "banding:transport:jumlah") },
-  { id: "b-terkecil", teks: "Di Bangun, buat diagram buku dipinjam dengan langkah sumbu terkecil yang memuat semua batang.", wajib: false, cek: (k) => pernah(k, "batang", "bangun:buku:2") },
+  { id: "b-buat", teks: "Naikkan batang sampai ujungnya tepat pada garis data, lalu tekan Periksa.", wajib: true, cek: (k) => bazar(k) && k.buatBenar.length >= 1 },
+  { id: "b-telusur", teks: "Telusuri ujung batang ke sumbu dan pilih banyaknya, lalu tekan Periksa.", wajib: true, cek: (k) => bazar(k) && k.bacaBenar.length >= 1 },
+  { id: "b-banding", teks: "Adu dua batang dan pilih selisihnya, lalu tekan Periksa.", wajib: true, cek: (k) => bazar(k) && k.bandingBenar.length >= 1 },
+  { id: "b-arah", teks: "Putar diagram dan pilih jenis dengan batang paling panjang, lalu tekan Periksa.", wajib: true, cek: (k) => bazar(k) && k.putarBenar.length >= 1 },
+  { id: "b-tolak", teks: "Naikkan sebuah batang melewati garis paling atas, dan lihat alat menolak.", wajib: false, cek: (k) => bazar(k) && k.tolakBuat },
+  { id: "b-dua", teks: "Bangun dua diagram batang dengan benar tanpa terhenti.", wajib: false, cek: (k) => bazar(k) && k.buatBenar.length >= 2 },
 ];
 
-const DAFTAR: Record<HurufMisiK4B6, DefMisi<KeadaanK4Bab6>[]> = { A: MISI_A, B: MISI_B };
-export const daftarMisiK4Bab6 = (huruf: string): DefMisi<KeadaanK4Bab6>[] => DAFTAR[huruf as HurufMisiK4B6] ?? MISI_A;
+export const daftarMisiK4Bab6 = (sub: string): DefMisi<KeadaanK4Bab6>[] => {
+  switch (sub) {
+    case "B":
+      return MISI_B;
+    default:
+      return MISI_A;
+  }
+};

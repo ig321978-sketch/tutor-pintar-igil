@@ -5,7 +5,7 @@
   "grade": 4,
   "subjectLabel": "MATEMATIKA - KELAS 4 SD",
   "title": "BAB 6: PIKTOGRAM DAN DIAGRAM BATANG",
-  "silabusElemen": "🌈 Fase B • Elemen Data dan Ketidakpastian: Piktogram serta Diagram Batang (Kelas 4 SD/MI)",
+  "silabusElemen": "🌈 Fase B • Elemen Data dan Peluang: Piktogram dan Diagram Batang (SD/MI)",
   "suaraPerangkatSaja": true,
   "suaraLaju": 0.7,
   "suaraNada": 1,
@@ -19,34 +19,34 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Piktogram)",
       "fullTitle": "Sub-Bab A: Piktogram",
-      "targetDescription": "Siswa menyajikan dan menafsirkan data dalam piktogram (diagram gambar), termasuk skala 1 dan skala lebih dari 1, menentukan paling banyak/sedikit serta jumlah keseluruhan sesuai Buku Siswa Kelas IV Bab 6. Siswa memakai cara Kunci Piktogram, Turus Kategori, Baca Lalu Banding. Siswa memakai cara Kunci Piktogram, Turus Kategori, Baca Lalu Banding.",
+      "targetDescription": "Di bazar kuliner sekolah, kita membaca dan menyajikan data jajanan dalam piktogram dengan satu ikon mewakili satu atau beberapa data, lalu mencari yang paling banyak, yang paling sedikit, selisih, dan jumlahnya.",
       "secondaryBg": "#FFEDD5",
       "secondaryBorder": "#EA580C",
       "secondaryText": "#7C2D12",
       "silabus": {
-        "teksSuara": "Kita belajar piktogram. Piktogram adalah diagram yang memakai gambar untuk menyatakan banyak tiap kategori. Kadang satu gambar berarti satu benda, kadang satu gambar berarti beberapa. Kita baca dengan menghitung gambar lalu mengalikan skala. Kita memakai cara: Kunci Piktogram, Turus Kategori, Baca Lalu Banding. Satu gambar bisa mewakili lebih dari satu benda. Hitung frekuensi tiap kategori dengan turus. Bandingkan tinggi/banyak simbol antar kategori. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menampilkan dan menafsirkan data dalam bentuk diagram gambar (piktogram).",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 6 Sub-Bab A)."
+        "teksSuara": "Kita belajar piktogram di bazar kuliner sekolah. Piktogram adalah diagram yang memakai ikon, yaitu gambar kecil, untuk menyatakan banyak data. Keterangan di pojok piktogram memberi tahu berapa banyak yang diwakili satu ikon. Kita membaca dengan menghitung ikon lalu mengalikannya dengan keterangan. Kita memakai hitung ikon, tabel ke gambar, dan urutkan dan banding. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa membaca dan menyajikan data dalam piktogram, serta menentukan data paling banyak, paling sedikit, selisih, dan jumlah.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Analisis Data dan Peluang."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Pictograph Key",
-          "namaId": "Kunci Piktogram",
-          "asal": "Data literacy",
-          "ringkas": "Satu gambar bisa mewakili lebih dari satu benda.",
+          "nama": "Count the Icons",
+          "namaId": "Hitung Ikon",
+          "asal": "IGIL",
+          "ringkas": "Baca keterangan, lalu kalikan banyak ikon dengan banyak yang diwakili satu ikon.",
           "tahap": [
             "Story",
-            "Infografis",
+            "Concrete",
             "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Categorical Tally",
-          "namaId": "Turus Kategori",
-          "asal": "Tally marks",
-          "ringkas": "Hitung frekuensi tiap kategori dengan turus.",
+          "nama": "Table to Picture",
+          "namaId": "Tabel ke Gambar",
+          "asal": "IGIL",
+          "ringkas": "Ubah tabel data menjadi deretan ikon dengan membagi banyak data dengan keterangan.",
           "tahap": [
             "Concrete",
             "Picture"
@@ -54,12 +54,12 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Read then Compare",
-          "namaId": "Baca Lalu Banding",
-          "asal": "Graph reading",
-          "ringkas": "Bandingkan tinggi/banyak simbol antar kategori.",
+          "nama": "Rank and Compare",
+          "namaId": "Urutkan dan Banding",
+          "asal": "IGIL",
+          "ringkas": "Urutkan jenis dari ikon terbanyak, lalu cari yang paling banyak, paling sedikit, dan selisihnya.",
           "tahap": [
-            "Mind",
+            "Picture",
             "Abstract"
           ]
         }
@@ -769,47 +769,47 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Diagram Batang)",
       "fullTitle": "Sub-Bab B: Diagram Batang",
-      "targetDescription": "Siswa menyajikan dan menafsirkan data dalam diagram batang tegak maupun mendatar, membaca sumbu, membandingkan tinggi/panjang batang, serta menentukan paling banyak/sedikit dan jumlah sesuai Buku Siswa Kelas IV Bab 6. Siswa memakai cara Skala Batang, Label Sumbu, Banding Batang. Siswa memakai cara Skala Batang, Label Sumbu, Banding Batang.",
+      "targetDescription": "Di bazar kuliner sekolah, kita membaca dan menggambar diagram batang tegak dan mendatar, membaca sumbu dan tingkatannya, membandingkan batang, serta mencari selisih dan jumlah data.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
       "silabus": {
-        "teksSuara": "Kita belajar diagram batang. Diagram batang memakai batang persegi panjang untuk menunjukkan banyak tiap kategori. Ada yang tegak dan ada yang mendatar. Sumbu membantu kita membaca nilai. Kita memakai cara: Skala Batang, Label Sumbu, Banding Batang. Baca nilai dari tinggi batang dan skala sumbu. Sumbu harus bertuliskan apa yang diukur. Batang lebih tinggi = nilai lebih besar. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menampilkan dan menafsirkan data dalam bentuk diagram batang.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 6 Sub-Bab B)."
+        "teksSuara": "Kita belajar diagram batang di bazar kuliner sekolah. Diagram batang memakai batang persegi panjang untuk menyatakan banyak tiap jenis. Batang bisa tegak atau mendatar. Sumbu angka bertingkat, dan ujung batang dibaca pada angka sumbu. Batang yang lebih tinggi atau lebih panjang menyatakan data yang lebih banyak. Kita memakai telusuri garis, adu batang, dan putar diagram. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa membaca dan menyajikan data dalam diagram batang tegak dan mendatar, serta membandingkan batang untuk menentukan selisih dan jumlah.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Analisis Data dan Peluang."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Bar Scale",
-          "namaId": "Skala Batang",
-          "asal": "Bar graph pedagogy",
-          "ringkas": "Baca nilai dari tinggi batang dan skala sumbu.",
+          "nama": "Follow the Line",
+          "namaId": "Telusuri Garis",
+          "asal": "IGIL",
+          "ringkas": "Tarik garis dari ujung batang ke sumbu angka, lalu baca angkanya.",
           "tahap": [
             "Story",
-            "Picture",
+            "Concrete",
             "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Axis Labels",
-          "namaId": "Label Sumbu",
-          "asal": "Data display",
-          "ringkas": "Sumbu harus bertuliskan apa yang diukur.",
+          "nama": "Bar Duel",
+          "namaId": "Adu Batang",
+          "asal": "IGIL",
+          "ringkas": "Adu dua batang pada sumbu yang sama, lalu cari yang lebih banyak dan selisihnya.",
           "tahap": [
-            "Mind",
-            "Infografis"
+            "Concrete",
+            "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Compare Bars",
-          "namaId": "Banding Batang",
-          "asal": "Comparative reading",
-          "ringkas": "Batang lebih tinggi = nilai lebih besar.",
+          "nama": "Flip the Chart",
+          "namaId": "Putar Diagram",
+          "asal": "IGIL",
+          "ringkas": "Putar diagram tegak menjadi mendatar atau sebaliknya tanpa mengubah datanya.",
           "tahap": [
-            "Concrete",
+            "Picture",
             "Abstract"
           ]
         }

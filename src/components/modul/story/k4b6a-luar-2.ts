@@ -1,242 +1,233 @@
 import type { AdeganStory } from "./logika-story";
-import { W, barisId, barisPikto, emo, judul, jumlahBaris, kartu, kotak, kunciPikto, panah, rangkaPikto, teks } from "./k4b6a-gambar";
-import { bersih, hapus, idx, k, redamkan, sorotkan, tambah, warnai } from "./k4b6a-bantu";
-import { KELAS, PK } from "./k4b6a-materi-2";
-import { BUKU, GAMBAR_KELAS, HARI, PS } from "./k4b6a-materi-3";
-import { NAMA_METODE } from "./k4b6a-luar-1";
+import { E, W, deret, emo, garis, judul, kotak, papanData, tanah, teks, tokoh } from "./k4b6a-gambar";
+import { KP } from "./k4b6a-luar-1";
+import { bersih, hapus, k, redamkan, sorotkan, tambah } from "./k4b6a-bantu";
 
-/* ------------------------------ 6. Read then Compare: konsep ------------------------------ */
-const SUARA_B1 = "Metode ketiga, Read then Compare, atau Baca Lalu Banding. Pertama baca nilai setiap baris, jangan langsung membandingkan. Di sini: papan tulis dua, jam dinding satu, lemari satu, hiasan dinding delapan.";
-const SUARA_B2 = "Kedua, bandingkan angka-angkanya. Yang terbesar adalah delapan, yaitu hiasan dinding. Yang terkecil adalah satu, yaitu jam dinding dan lemari.";
-const SUARA_B3 = "Ketiga, jawab pertanyaannya. Bila dua baris sama kecilnya, sebutkan keduanya, jangan hanya satu.";
-const SUARA_B4 = "Urutannya penting: baca, banding, lalu jawab. Jangan melompat ke jawaban sebelum semua baris dibaca.";
+/*
+ * Cerita orisinal IGIL "Piktogram Jajanan Bu Rini" (Kelas 4 Bab 6 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b6a.md. Bagian ini: Table to Picture (Tabel ke Gambar), Rank and Compare (Urutkan dan Banding), terapannya, dan ringkasan.
+ */
 
-export const ADEGAN_LUAR_BACA: AdeganStory = {
-  id: "luar-baca",
-  judul: "Read then Compare: baca dulu, lalu banding",
-  sumber: "Metode luar: Read then Compare",
-  latar: "#FEFCE8",
+const idDeret = (id: string, n: number): string[] => Array.from({ length: n }, (_, i) => `${id}${i}`);
+
+/* ------------------------------ Table to Picture: konsep ------------------------------ */
+const SUARA_B1 = "Cara kedua, Table to Picture, atau Tabel ke Gambar.";
+const SUARA_B2 = "Kita mulai dari tabel data, lalu memilih keterangan yang membuat ikon tidak terlalu banyak.";
+const SUARA_B3 = "Banyak data dibagi dengan keterangan, dan hasilnya adalah banyak ikon yang digambar.";
+const SUARA_B4 = "Setiap jenis data mendapat satu baris, dan ikonnya digambar berderet dengan jarak sama.";
+
+export const ADEGAN_LUAR_TABEL: AdeganStory = {
+  id: "luar-tabel",
+  judul: "Table to Picture: Tabel ke Gambar",
+  sumber: "Metode global: Table to Picture (konsep)",
+  latar: "#FEF9C3",
   ketukan: [
     k(
       SUARA_B1,
-      tambah(0, judul("Read then Compare")),
-      tambah(0, rangkaPikto(PK)),
-      tambah("papan", ...barisPikto(PK, 0, KELAS[0]), jumlahBaris(PK, 0, KELAS[0])),
-      tambah("jam", ...barisPikto(PK, 1, KELAS[1]), jumlahBaris(PK, 1, KELAS[1])),
-      tambah("lemari", ...barisPikto(PK, 2, KELAS[2]), jumlahBaris(PK, 2, KELAS[2])),
-      tambah("hiasan", ...barisPikto(PK, 3, KELAS[3]), jumlahBaris(PK, 3, KELAS[3])),
-      tambah("Pertama", ...kartu("bc1", 22, 160, 256, 28, W.hijauMuda, ["1. baca nilai tiap baris"], 9.2)),
+      tambah(0, judul("Cara 2: Table to Picture"), ...papanData("pt", 8, 28, 284, 132)),
+      tambah("Table", teks("nm", 150, 62, "Table to Picture", 13, KP.merah, { z: 3 })),
+      tambah("Tabel", teks("ni", 150, 82, "Tabel ke Gambar", 10, KP.kapur, { z: 3 })),
+      tambah("Gambar.", emo("ik", 150, 128, E.catat, 24, { z: 3 })),
     ),
     k(
       SUARA_B2,
-      hapus(0, "bc1-k", "bc1-t0"),
-      sorotkan("terbesar", ...barisId(PK, 3, 8)),
-      redamkan("terkecil", ...barisId(PK, 3, 8)),
-      sorotkan("terkecil", ...barisId(PK, 1, 1), ...barisId(PK, 2, 1)),
-      tambah("Kedua,", ...kartu("bc2", 22, 160, 256, 28, W.langit, ["2. banding: terbesar 8, terkecil 1"], 9.2)),
+      hapus(0, "nm", "ni", "ik"),
+      tambah("tabel", kotak("tb", 30, 44, 110, 70, undefined, KP.kapur, { rx: 2, tebal: 1.4, z: 3 }), teks("tb1", 85, 62, "tabel data", 9, KP.kapur, { z: 3 })),
+      tambah("keterangan", teks("kt", 220, 62, "1 ikon = ?", 10, KP.merah, { z: 3 })),
+      tambah("terlalu", teks("tl", 220, 90, "ikon jangan terlalu banyak", 7.4, KP.biru, { z: 3 })),
     ),
     k(
       SUARA_B3,
-      hapus(0, "bc2-k", "bc2-t0"),
-      redamkan(0, ...barisId(PK, 1, 1), ...barisId(PK, 2, 1)),
-      tambah("Ketiga,", ...kartu("bc3", 22, 160, 256, 28, W.krem, ["3. jawab: jam dinding dan lemari"], 9.2)),
-      sorotkan("sama", ...barisId(PK, 1, 1), ...barisId(PK, 2, 1)),
+      hapus(0, "tb", "tb1", "kt", "tl"),
+      tambah("Banyak", teks("e1", 150, 60, "banyak data", 10, KP.biru, { z: 3 })),
+      tambah("dibagi", teks("e2", 150, 78, "÷ keterangan", 11, KP.merah, { z: 3 })),
+      tambah("hasilnya", teks("e3", 150, 100, "= banyak ikon", 10, KP.kapur, { z: 3 })),
+      tambah("digambar.", ...deret("d", 90, 138, E.pisang, 4, 24, 16)),
     ),
     k(
       SUARA_B4,
-      bersih(0),
-      tambah(0, judul("Baca, banding, jawab")),
-      tambah("baca,", ...kartu("bs1", 20, 40, 260, 30, W.hijauMuda, ["1. baca"], 10)),
-      tambah("banding,", panah("ba1", 150, 72, 0, 16, W.biru, 2), ...kartu("bs2", 20, 90, 260, 30, W.langit, ["2. banding"], 10)),
-      tambah("jawab.", panah("ba2", 150, 122, 0, 16, W.biru, 2), ...kartu("bs3", 20, 140, 260, 30, W.krem, ["3. jawab"], 10)),
-      tambah("melompat", emo("bs4", 150, 192, "🚫", 22)),
+      hapus(0, "e1", "e2", "e3", ...idDeret("d", 4)),
+      tambah("jenis", teks("jb", 225, 42, "1 jenis = 1 baris", 8, KP.merah, { z: 3 }), teks("j1", 40, 62, "risoles", 8, KP.kapur, { z: 3 }), teks("j2", 40, 92, "lemper", 8, KP.kapur, { z: 3 }), teks("j3", 40, 122, "pisang", 8, KP.kapur, { z: 3 })),
+      tambah("baris,", ...deret("a", 90, 62, E.risoles, 4, 24, 16), ...deret("b", 90, 92, E.lemper, 2, 24, 16), ...deret("c", 90, 122, E.pisang, 3, 24, 16)),
+      tambah("jarak", garis("jr", 90, 140, 24, 0, KP.merah, 2, { z: 3 }), teks("js", 102, 152, "jarak sama", 8, KP.merah, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 7. Read then Compare: penerapan pada buku yang dipinjam (Buku Siswa hlm. 185) ------------------------------ */
-const SUARA_BT1 = "Terapkan pada bacaan yang dipinjam dari perpustakaan. Langkah baca: Senin dua belas, Selasa enam, Rabu sembilan, Kamis tiga, Jumat dua belas, dan Sabtu empat belas.";
-const SUARA_BT2 = "Langkah banding: yang terbesar empat belas, yaitu hari Sabtu. Yang terkecil tiga, yaitu hari Kamis.";
-const SUARA_BT3 = "Perhatikan, Senin dan Jumat sama-sama dua belas. Bila ditanya hari yang sama banyak, jawabannya dua hari itu.";
-const SUARA_BT4 = "Selisih terbanyak dan tersedikit, hitungan kita sendiri: empat belas dikurangi tiga, sama dengan sebelas bacaan.";
-const SUARA_BT5 = "Jawaban ini sama dengan hitungan tadi: Sabtu paling banyak, Kamis paling sedikit, dan bacaan pada hari Kamis dan Jumat adalah tiga ditambah dua belas, sama dengan lima belas bacaan.";
-const yBar = (i: number) => 32 + i * 24;
-const barBuku = (i: number) => [
-  teks(`bl${i}`, 14, yBar(i) + 11, HARI[i], 8.6, W.biru, { anchor: "start" }),
-  kotak(`bb${i}`, 64, yBar(i), BUKU[i] * 13, 15, W.jingga, W.biru, { rx: 2, tebal: 1 }),
-  teks(`bv${i}`, 64 + BUKU[i] * 13 + 5, yBar(i) + 11.4, String(BUKU[i]), 9.6, W.merah, { anchor: "start" }),
-];
+/* ------------------------------ Table to Picture: terapan ------------------------------ */
+const SUARA_X1 = "Genta mendapat tabel: bakso empat puluh porsi, soto tiga puluh, dan mie dua puluh, dengan satu ikon sama dengan sepuluh porsi.";
+const SUARA_X2 = "Empat puluh dibagi sepuluh sama dengan empat, jadi bakso digambar dengan empat ikon.";
+const SUARA_X3 = "Cocok untuk menyajikan tabel menjadi gambar, karena data besar menjadi deretan ikon yang ringkas.";
+const SUARA_X4 = "Kurang cocok kalau keterangannya terlalu kecil, karena ikonnya jadi terlalu banyak.";
 
-export const ADEGAN_LUAR_BACA_TERAPAN: AdeganStory = {
-  id: "luar-baca-terapan",
-  judul: "Read then Compare pada bacaan yang dipinjam",
-  sumber: "Metode luar: Read then Compare",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(SUARA_BT1, tambah(0, judul("Langkah baca")), ...HARI.map((h, i) => tambah(h, ...barBuku(i)))),
-    k(
-      SUARA_BT2,
-      warnai("terbesar", W.hijau, "bb5"),
-      warnai("terkecil", W.merah, "bb3"),
-      tambah("Langkah", ...kartu("bt1", 20, 180, 260, 18, W.krem, ["terbesar: Sabtu 14; terkecil: Kamis 3"], 8.4)),
-    ),
-    k(
-      SUARA_BT3,
-      warnai(0, W.jingga, "bb5", "bb3"),
-      warnai("Senin", W.langit, "bb0", "bb4"),
-      sorotkan("Jumat", "bb0", "bb4"),
-    ),
-    k(
-      SUARA_BT4,
-      redamkan(0, "bb0", "bb4"),
-      sorotkan("empat", "bb5"),
-      sorotkan("tiga,", "bb3"),
-      tambah("sama", teks("bt2", 150, 176, "14 − 3 = 11 bacaan", 11, W.merah)),
-    ),
-    k(
-      SUARA_BT5,
-      bersih(0),
-      tambah(0, judul("Cocok dengan hitungan tadi")),
-      tambah("Sabtu", ...kartu("bk1", 20, 36, 260, 30, W.hijauMuda, ["paling banyak: Sabtu"], 9.6)),
-      tambah("Kamis", ...kartu("bk2", 20, 76, 260, 30, W.langit, ["paling sedikit: Kamis"], 9.6)),
-      tambah("tiga", ...kartu("bk3", 20, 116, 260, 30, W.krem, ["3 + 12 = 15 bacaan"], 10.4)),
-      tambah("lima", emo("bk4", 150, 184, "✅", 26)),
-    ),
-  ],
-};
-
-/* ------------------------------ 8. Scale Multiply: konsep ------------------------------ */
-const SUARA_S1 = "Metode keempat, Scale Multiply, atau Kali Skala. Bila satu gambar menyatakan lebih dari satu, jumlah data sama dengan banyak gambar dikali nilai satu gambar.";
-const SUARA_S2 = "Contoh kecil: tiga gambar, setiap gambar menyatakan dua. Tiga kali dua sama dengan enam.";
-const SUARA_S3 = "Urutannya: hitung gambar, ambil nilai skala dari keterangan, lalu kalikan.";
-const SUARA_S4 = "Untuk jumlah semuanya ada jalan pintas: jumlahkan dulu semua gambar, lalu kalikan sekali dengan skala. Misalnya dua, tiga, dan satu gambar dengan skala dua.";
-
-export const ADEGAN_LUAR_SKALA: AdeganStory = {
-  id: "luar-skala",
-  judul: "Scale Multiply: gambar dikali skala",
-  sumber: "Metode luar: Scale Multiply",
-  latar: "#FDF2F8",
+export const ADEGAN_LUAR_TABEL_TERAPAN: AdeganStory = {
+  id: "luar-tabel-terapan",
+  judul: "Tabel ke Gambar: kapan cocok",
+  sumber: "Metode global: Table to Picture (terapan)",
+  latar: "#FEF9C3",
   ketukan: [
     k(
-      SUARA_S1,
-      tambah(0, judul("Scale Multiply")),
-      tambah("Kali", ...kartu("sm", 40, 34, 220, 30, W.pink, ["Kali Skala"], 10.6)),
-      tambah("lebih", ...kartu("sm1", 14, 80, 272, 34, W.krem, ["jumlah data = banyak gambar × nilai satu gambar"], 8.6)),
-      tambah(idx(SUARA_S1, "gambar", 3), emo("sm2", 90, 156, "👤", 30), teks("sm3", 150, 162, "= nilai", 11, W.merah)),
+      SUARA_X1,
+      tambah(0, judul("Tabel Genta"), ...papanData("pt", 8, 28, 284, 124), ...tokoh("ge", 40, 184, "Genta")),
+      tambah("bakso", teks("t1", 80, 62, "bakso: 40 porsi", 9, KP.kapur, { z: 3 })),
+      tambah("soto", teks("t2", 80, 82, "soto: 30 porsi", 9, KP.kapur, { z: 3 })),
+      tambah("mie", teks("t3", 80, 102, "mie: 20 porsi", 9, KP.kapur, { z: 3 })),
+      tambah("ikon", kotak("kt", 160, 54, 120, 22, W.krem, W.coklat, { rx: 3, tebal: 1.4, z: 3 }), teks("kt1", 220, 69, "1 ikon = 10 porsi", 8.4, W.merah, { z: 4 })),
     ),
     k(
-      SUARA_S2,
-      bersih(0),
-      tambah(0, judul("Contoh kecil")),
-      tambah("tiga", emo("sa0", 70, 80, "👤", 30), emo("sa1", 120, 80, "👤", 30), emo("sa2", 170, 80, "👤", 30)),
-      tambah("setiap", teks("sb0", 70, 104, "2", 12, W.merah), teks("sb1", 120, 104, "2", 12, W.merah), teks("sb2", 170, 104, "2", 12, W.merah)),
-      tambah("Tiga@2", teks("sc", 150, 150, "3 × 2 = 6", 15, W.biru)),
+      SUARA_X2,
+      hapus(0, "t2", "t3"),
+      tambah("Empat", teks("dv", 220, 100, "40 : 10 = 4", 11, KP.biru, { z: 3 })),
+      tambah("bakso", ...deret("bk", 40, 128, E.bakso, 4, 26, 18)),
+      tambah("ikon.", teks("i4", 190, 128, "4 ikon", 10, KP.kapur, { z: 3 })),
     ),
     k(
-      SUARA_S3,
-      bersih(0),
-      tambah(0, judul("Tiga langkah")),
-      tambah("hitung", ...kartu("sl1", 14, 36, 272, 34, W.hijauMuda, ["1. hitung gambar"], 9.4)),
-      tambah("ambil", ...kartu("sl2", 14, 80, 272, 34, W.langit, ["2. ambil nilai skala"], 9.4)),
-      tambah("kalikan.", ...kartu("sl3", 14, 124, 272, 34, W.krem, ["3. kalikan"], 9.4)),
+      SUARA_X3,
+      hapus(0, "dv", "i4", "kt", "kt1", "t1", ...idDeret("bk", 4)),
+      tambah("Cocok", emo("ok", 270, 56, E.benar, 22, { z: 3 })),
+      tambah("besar", teks("bs", 150, 60, "data besar", 10, KP.biru, { z: 3 })),
+      tambah("ringkas.", ...deret("rg", 80, 110, E.bakso, 4, 26, 18), teks("rk", 150, 140, "ringkas", 9, KP.kapur, { z: 3 })),
     ),
     k(
-      SUARA_S4,
-      bersih(0),
-      tambah(0, judul("Jalan pintas")),
-      tambah("jumlahkan", ...kartu("sj1", 20, 34, 260, 30, W.hijauMuda, ["2 + 3 + 1 = 6 gambar"], 10)),
-      tambah("kalikan", ...kartu("sj2", 20, 74, 260, 30, W.langit, ["6 × 2 = 12"], 10.4)),
-      tambah("Misalnya", ...kartu("sj3", 20, 114, 260, 40, W.krem, ["4 + 6 + 2 = 12", "cek: hasilnya sama"], 9.2)),
+      SUARA_X4,
+      hapus(0, "ok", "bs", "rk", ...idDeret("rg", 4)),
+      tambah("Kurang", emo("xs", 270, 56, E.salah, 22, { z: 3 })),
+      tambah("kecil,", teks("kc", 150, 62, "1 ikon = 1 porsi", 10, KP.merah, { z: 3 })),
+      tambah("banyak.", ...Array.from({ length: 24 }, (_, i) => kotak(`ky${i}`, 30 + (i % 12) * 21, 84 + Math.floor(i / 12) * 22, 14, 14, "#FCD34D", W.coklat, { rx: 7, tebal: 0.8, z: 3 })), teks("kb", 150, 144, "ikonnya terlalu banyak", 8.4, KP.kapur, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 9. Scale Multiply: penerapan pada siswa tiap kelas (Buku Siswa hlm. 186) ------------------------------ */
-const SUARA_ST1 = "Terapkan pada siswa tiap kelas tadi. Keterangannya: satu gambar menyatakan empat siswa. Jadi tiap gambar bernilai empat. Gambar tiap kelas tampak seperti ini.";
-const SUARA_ST2 = "Kelas empat punya delapan gambar. Delapan kali empat sama dengan tiga puluh dua siswa.";
-const SUARA_ST3 = "Kelas satu dan kelas dua masing-masing enam gambar. Enam kali empat sama dengan dua puluh empat siswa tiap kelas.";
-const SUARA_ST4 = "Jumlah semua siswa dihitung dua cara. Tiga puluh sembilan gambar kali empat, dan penjumlahan tiap kelas, keduanya sama dengan seratus lima puluh enam.";
-const yK = (i: number) => PS.y + PS.hh + i * PS.rh + PS.rh / 2 + 3.4;
+/* ------------------------------ Rank and Compare: konsep ------------------------------ */
+const SUARA_U1 = "Cara ketiga, Rank and Compare, atau Urutkan dan Banding.";
+const SUARA_U2 = "Kita menyusun jenis data dari ikon yang paling banyak sampai yang paling sedikit.";
+const SUARA_U3 = "Dengan urutan itu, yang paling banyak dan yang paling sedikit langsung tampak.";
+const SUARA_U4 = "Selisih dua jenis dicari dengan mengurangkan ikonnya, lalu mengalikannya dengan keterangan.";
 
-export const ADEGAN_LUAR_SKALA_TERAPAN: AdeganStory = {
-  id: "luar-skala-terapan",
-  judul: "Scale Multiply pada siswa tiap kelas",
-  sumber: "Metode luar: Scale Multiply",
-  latar: "#FDF2F8",
+export const ADEGAN_LUAR_URUT: AdeganStory = {
+  id: "luar-urut",
+  judul: "Rank and Compare: Banding",
+  sumber: "Metode global: Rank and Compare (konsep)",
+  latar: "#FEF9C3",
   ketukan: [
     k(
-      SUARA_ST1,
-      tambah("Terapkan", rangkaPikto(PS)),
-      tambah("Keterangannya:", ...kunciPikto(PS, 6, { jenis: "emoji", e: "👤" }, "menyatakan 4 siswa")),
-      ...GAMBAR_KELAS.map((n, i) => tambah(idx(SUARA_ST1, "tiap", 2) + i, ...barisPikto(PS, i, n))),
+      SUARA_U1,
+      tambah(0, judul("Cara 3: Rank and Compare"), ...papanData("pt", 8, 28, 284, 132)),
+      tambah("Rank", teks("nm", 150, 62, "Rank and Compare", 13, KP.merah, { z: 3 })),
+      tambah("Urutkan", teks("ni", 150, 82, "Urutkan dan Banding", 10, KP.kapur, { z: 3 })),
+      tambah("Banding.", emo("ik", 150, 128, E.bintang, 24, { z: 3 })),
     ),
     k(
-      SUARA_ST2,
-      sorotkan("Kelas", ...barisId(PS, 3, 8)),
-      tambah("delapan@2", jumlahBaris(PS, 3, 8)),
-      tambah("kali", teks("st3", 266, yK(3), "8×4=32", 9.4, W.merah)),
+      SUARA_U2,
+      hapus(0, "nm", "ni", "ik"),
+      tambah("menyusun", teks("a1", 50, 62, "A", 10, KP.kapur, { z: 3 }), ...deret("u1", 80, 62, E.risoles, 5, 22, 15)),
+      tambah("banyak", teks("a2", 50, 90, "B", 10, KP.kapur, { z: 3 }), ...deret("u2", 80, 90, E.pisang, 3, 22, 15)),
+      tambah("sedikit.", teks("a3", 50, 118, "C", 10, KP.kapur, { z: 3 }), ...deret("u3", 80, 118, E.lemper, 1, 22, 15)),
     ),
     k(
-      SUARA_ST3,
-      redamkan(0, ...barisId(PS, 3, 8)),
-      sorotkan("Kelas", ...barisId(PS, 0, 6), ...barisId(PS, 1, 6)),
-      tambah("enam", jumlahBaris(PS, 0, 6), jumlahBaris(PS, 1, 6)),
-      tambah("kali", teks("st0", 266, yK(0), "6×4=24", 9.4, W.merah), teks("st1", 266, yK(1), "6×4=24", 9.4, W.merah)),
+      SUARA_U3,
+      tambah("urutan", teks("ur", 230, 62, "urut", 9, KP.biru, { z: 3 })),
+      sorotkan("banyak", "u10", "u11", "u12", "u13", "u14"),
+      sorotkan("sedikit", "u30"),
+      tambah("tampak.", emo("ok", 262, 118, E.benar, 20, { z: 3 })),
     ),
     k(
-      SUARA_ST4,
-      bersih(0),
-      tambah(0, judul("Dua cara, hasil sama")),
-      tambah("Tiga", ...kartu("sz1", 20, 34, 260, 34, W.hijauMuda, ["39 gambar × 4 = 156 siswa"], 10)),
-      tambah("penjumlahan", ...kartu("sz2", 20, 78, 260, 44, W.langit, ["24 + 24 + 28 + 32 + 20 + 28", "= 156 siswa"], 9.2)),
-      tambah("seratus", ...kartu("sz3", 40, 134, 220, 34, W.emas, ["cocok dengan hitungan tadi"], 9.6)),
+      SUARA_U4,
+      hapus(0, "ur", "ok", "a1", "a2", "a3", ...idDeret("u1", 5), ...idDeret("u2", 3), ...idDeret("u3", 1)),
+      tambah("Selisih", teks("s1", 150, 62, "selisih 2 jenis: ikon banyak − ikon sedikit", 8, KP.biru, { z: 3 })),
+      tambah("mengurangkan", teks("s2", 150, 90, "= selisih ikon", 10, KP.kapur, { z: 3 })),
+      tambah("mengalikannya", teks("s3", 150, 118, "× keterangan", 10, KP.merah, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 10. Ringkasan metode luar ------------------------------ */
-const SUARA_R1 = "Ringkasannya: Pictograph Key membaca keterangan lebih dulu. Categorical Tally menghitung data mentah dengan turus. Read then Compare membaca lalu membandingkan. Scale Multiply mengalikan gambar dengan skala.";
-const SUARA_R2 = "Kapan dipakai? Keterangan dan kali skala saat gambar punya skala, turus saat data masih berupa daftar, dan baca lalu banding saat ditanya paling banyak atau paling sedikit.";
-const SUARA_R4 = "Cobalah memakai keempatnya pada data kelompok kalian sendiri, misalnya alat tulis dalam tas atau warna bunga di taman. Satu data, empat cara, satu jawaban.";
-const SUARA_R3 = "Apa pun metodenya, hasil harus cocok dengan hitungan tadi: dua puluh tiga mainan, lima puluh enam bacaan, dan seratus lima puluh enam siswa.";
-const RINGKAS = ["baca keterangan dulu", "turus untuk data mentah", "baca, banding, jawab", "gambar × skala"];
+/* ------------------------------ Rank and Compare: terapan ------------------------------ */
+const SUARA_Y1 = "Satria mengurutkan bakso, soto, dan mie dari ikon yang paling banyak.";
+const SUARA_Y2 = "Bakso empat ikon dan mie dua ikon, selisihnya dua ikon, yaitu dua puluh porsi.";
+const SUARA_Y3 = "Cocok untuk mencari yang paling laris dan selisihnya, karena urutannya sudah jelas.";
+const SUARA_Y4 = "Kurang cocok kalau dua piktogram memakai keterangan berbeda, karena ikonnya tidak bisa dibandingkan langsung.";
+
+export const ADEGAN_LUAR_URUT_TERAPAN: AdeganStory = {
+  id: "luar-urut-terapan",
+  judul: "Urutkan dan Banding: kapan cocok",
+  sumber: "Metode global: Rank and Compare (terapan)",
+  latar: "#FEF9C3",
+  ketukan: [
+    k(
+      SUARA_Y1,
+      tambah(0, judul("Satria Mengurutkan"), ...papanData("pt", 8, 28, 284, 124), ...tokoh("sa", 40, 184, "Satria")),
+      tambah("bakso,", teks("n1", 70, 62, "bakso", 8, KP.kapur, { z: 3 })),
+      tambah("soto,", teks("n2", 70, 86, "soto", 8, KP.kapur, { z: 3 })),
+      tambah("mie", teks("n3", 70, 110, "mie", 8, KP.kapur, { z: 3 })),
+      tambah("ikon", ...deret("y1", 110, 62, E.bakso, 4, 22, 15), ...deret("y2", 110, 86, E.soto, 3, 22, 15), ...deret("y3", 110, 110, E.mie, 2, 22, 15)),
+    ),
+    k(
+      SUARA_Y2,
+      sorotkan("Bakso", "y10", "y11", "y12", "y13"),
+      sorotkan("mie", "y30", "y31"),
+      tambah("selisihnya", teks("d1", 150, 134, "4 − 2 = 2 ikon", 10, KP.biru, { z: 3 })),
+      tambah("yaitu", teks("d2", 240, 134, "2 × 10 = 20", 10, KP.kapur, { z: 3 })),
+    ),
+    k(
+      SUARA_Y3,
+      hapus(0, "d1", "d2"),
+      redamkan(0, "y10", "y11", "y12", "y13", "y30", "y31"),
+      tambah("Cocok", emo("ok", 270, 56, E.benar, 22, { z: 3 })),
+      tambah("laris", teks("lr", 230, 86, "paling laris", 8.4, KP.merah, { z: 3 })),
+      tambah("jelas.", teks("jl", 150, 144, "urutan jelas", 9, KP.kapur, { z: 3 })),
+    ),
+    k(
+      SUARA_Y4,
+      hapus(0, "ok", "lr", "jl", "y10", "y11", "y12", "y13", "y20", "y21", "y22", "y30", "y31", "n1", "n2", "n3"),
+      tambah("Kurang", emo("xs", 270, 56, E.salah, 22, { z: 3 })),
+      tambah("keterangan", teks("k1", 100, 62, "1 ikon = 10", 9, KP.biru, { z: 3 }), teks("k2", 100, 98, "1 ikon = 5", 9, KP.merah, { z: 3 }), teks("k3", 150, 144, "2 piktogram", 9, KP.kapur, { z: 3 })),
+      tambah("langsung.", ...deret("z1", 160, 62, E.bakso, 3, 22, 15), ...deret("z2", 160, 98, E.soto, 3, 22, 15)),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita pelajari bersama Bu Rini. Mana yang pas tergantung keadaan.";
+const SUARA_R2 = "Ingin membaca piktogram yang sudah jadi, pakai Hitung Ikon. Ingin menggambar dari tabel, pakai Tabel ke Gambar.";
+const SUARA_R3 = "Ingin mencari yang paling laris dan selisihnya, pakai Urutkan dan Banding. Apa pun caranya, baca keterangan lebih dulu.";
+const SUARA_R4 = "Menurutmu, untuk membandingkan dua papan dengan keterangan berbeda, cara mana yang paling pas?";
+const KARTU = ["Hitung Ikon", "Tabel ke Gambar", "Urutkan dan Banding"];
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode dari luar",
-  sumber: "Ringkasan metode luar",
-  latar: "#FFF7ED",
+  judul: "Memilih cara yang pas",
+  sumber: "Metode global: ringkasan",
+  latar: "#FEF9C3",
   ketukan: [
     k(
       SUARA_R1,
-      tambah(0, judul("Ringkasan empat metode")),
-      ...NAMA_METODE.map((m, i) => tambah(["Pictograph", "Categorical", "Read", "Scale"].map((x) => idx(SUARA_R1, x))[i], ...kartu(`rg${i}`, 12, 32 + i * 40, 276, 32, [W.hijauMuda, W.langit, W.krem, W.pink][i], [`${m}: ${RINGKAS[i]}`], 8.6))),
+      tambah(0, judul("Tiga Cara"), ...tanah("tn", 150), teks("n3", 262, 44, "3 cara", 10, W.merah)),
+      tambah("Tiga", ...KARTU.flatMap((n, i) => [kotak(`r${i}-k`, 8 + i * 98, 60, 88, 40, "#14532D", W.putih, { rx: 6, tebal: 1.4 }), teks(`r${i}-t`, 52 + i * 98, 84, n, i === 2 ? 7 : 8.4, W.sorot, { z: 2 })])),
+      tambah("Bu", ...tokoh("br", 150, 184, "Bu Rini")),
     ),
     k(
       SUARA_R2,
-      bersih(0),
-      tambah(0, judul("Kapan dipakai?")),
-      tambah("Keterangan", ...kartu("kp0", 14, 34, 272, 34, W.hijauMuda, ["gambar punya skala: keterangan, kali skala"], 8.2)),
-      tambah("turus", ...kartu("kp1", 14, 76, 272, 34, W.langit, ["data masih daftar: turus"], 8.6)),
-      tambah("baca", ...kartu("kp2", 14, 118, 272, 34, W.krem, ["paling banyak, paling sedikit: baca lalu banding"], 8.2)),
+      sorotkan("Hitung", "r0-k"),
+      tambah("Hitung", emo("ok1", 52, 118, E.benar, 20)),
+      redamkan("Tabel", "r0-k"),
+      sorotkan("Tabel", "r1-k"),
+      tambah("Tabel", emo("ok2", 150, 118, E.benar, 20)),
     ),
     k(
       SUARA_R3,
-      bersih(0),
-      tambah(0, judul("Cocok dengan hitungan tadi")),
-      tambah("mainan,", ...kartu("cb0", 14, 34, 272, 30, W.hijauMuda, ["mainan Karel: 23"], 9.6)),
-      tambah("bacaan,", ...kartu("cb1", 14, 72, 272, 30, W.langit, ["bacaan dipinjam seminggu: 56"], 9.6)),
-      tambah("siswa.", ...kartu("cb2", 14, 110, 272, 30, W.krem, ["siswa seluruh kelas: 156"], 9.6)),
-      tambah(idx(SUARA_R3, "seratus"), emo("cb3", 150, 180, "✅", 26)),
+      redamkan(0, "r1-k"),
+      hapus(0, "ok1", "ok2"),
+      sorotkan("Urutkan", "r2-k"),
+      tambah("Urutkan", emo("ok3", 248, 118, E.benar, 20)),
+      tambah("baca", teks("ps", 150, 138, "baca keterangan lebih dulu", 8.4, W.hijauTua)),
     ),
     k(
       SUARA_R4,
       bersih(0),
-      tambah(0, judul("Coba sendiri")),
-      tambah("data", emo("cs1", 70, 84, "🎒", 40), emo("cs2", 150, 84, "🌸", 40), emo("cs3", 230, 84, "🧮", 40)),
-      tambah("alat", teks("cs1t", 70, 112, "alat tulis", 8.6, W.biru)),
-      tambah("warna", teks("cs2t", 150, 112, "warna bunga", 8.6, W.biru)),
-      tambah("Satu", ...kartu("cs4", 30, 136, 240, 34, W.emas, ["satu data, empat cara, satu jawaban"], 9.2)),
+      tambah(0, judul("Pilih Cara yang Pas"), ...tanah("tn", 150), ...tokoh("br", 150, 184, "Bu Rini")),
+      tambah("dua", ...deret("p1", 60, 80, E.bakso, 3, 20, 16), teks("t1", 80, 100, "1 ikon = 10", 8.4, W.coklat)),
+      tambah("keterangan", ...deret("p2", 190, 80, E.soto, 3, 20, 16), teks("t2", 210, 100, "1 ikon = 5", 8.4, W.coklat), teks("t3", 150, 128, "2 papan", 9, W.coklat)),
+      tambah("pas?", teks("tq", 150, 60, "?", 26, W.merah), emo("i1", 252, 150, E.catat, 16), emo("i2", 272, 150, E.bintang, 16)),
     ),
   ],
 };

@@ -1,411 +1,132 @@
 import type { AdeganStory } from "./logika-story";
-import { W, diagramMendatar, diagramTegak, emo, judul, kartu, piktogram, tabel, teks } from "./k4b6b-gambar";
-import { bersih, k, sorotkan, tambah, ubah } from "./k4b6b-bantu";
+import { DATAR_RINI, E, TEGAK_RINI, W, batangTegak, diagramDatar, diagramTegak, emo, garis, idDiagramDatar, idDiagramTegak, judul, kotak, lantai, panah, papan, papanData, satuanSumbu, skalaTegak, sumbuTegak, tenda, teks, tokoh, ujungTegak, WB, type DataBatang, type OpsiTegak } from "./k4b6b-gambar";
+import { hapus, k, sorotkan, tambah } from "./k4b6b-bantu";
 
-/* ------------------------------ 9. Uji Kompetensi nomor 2: transportasi ke sekolah (Buku Siswa hlm. 192–193; Panduan Guru hlm. 229, 230) ------------------------------ */
-const TRANSPOR: [string, number][] = [
-  ["Mobil", 3],
-  ["Sepeda Motor", 14],
-  ["Becak/lainnya", 5],
-  ["Jalan kaki", 8],
+/*
+ * Cerita orisinal IGIL "Diagram Batang Pak Dodi" (Kelas 4 Bab 6 Sub-Bab B), akhir cerita Bazar Kuliner Sekolah.
+ * Naskah suara dari naskah/story-naskah-k4b6b.md. Bagian ini: membandingkan batang (tertinggi, terpendek, selisih, jumlah), diagram diputar menjadi mendatar, dan penutup di papan besar.
+ */
+
+const DASAR = (judulAdegan: string) => [judul(judulAdegan), ...lantai("lt", 150), papanData(), ...diagramTegak("dg", TEGAK_RINI), satuanSumbu()];
+const [, Y_R] = ujungTegak(TEGAK_RINI, 0);
+
+/* ------------------------------ 7. Membandingkan ------------------------------ */
+const SUARA_B1 = "Genta membandingkan semua batang, dan risoles adalah yang tertinggi.";
+const SUARA_B2 = "Lemper batang yang terpendek, dan selisihnya dengan risoles lima belas porsi.";
+const SUARA_B3 = "Jumlah keempat batang, yaitu tiga puluh, dua puluh, lima belas, dan dua puluh lima, ialah sembilan puluh porsi.";
+
+export const ADEGAN_BANDING: AdeganStory = {
+  id: "banding",
+  judul: "Membandingkan batang",
+  sumber: "Materi: tertinggi, terpendek, selisih, dan jumlah",
+  latar: "#FEFCE8",
+  ketukan: [
+    k(
+      SUARA_B1,
+      tambah(0, ...DASAR("Genta Membandingkan")),
+      tambah(0, ...tokoh("ge", 36, 184, "Genta")),
+      sorotkan("risoles", "dg-b0", "dg-n0"),
+      tambah("tertinggi", teks("lh", 274, 64, "tertinggi", 8, W.merah), emo("tj", 274, 84, E.jempol, 18)),
+    ),
+    k(
+      SUARA_B2,
+      sorotkan("Lemper", "dg-b2", "dg-n2"),
+      tambah("terpendek", teks("lp", 274, 106, "terpendek", 8, W.hijauTua)),
+      tambah("selisihnya", garis("gb", 44, Y_R, 190, 0, W.merah, 1.6, { putus: true, z: 4 }), panah("br", 170, Y_R + 2, 0, 32, W.ungu, 2, { z: 6 })),
+      tambah("risoles", teks("ls", 274, 124, "30 - 15 = 15", 7.5, W.ungu)),
+    ),
+    k(
+      SUARA_B3,
+      hapus(0, "lh", "tj", "lp", "gb", "br", "ls"),
+      tambah("tiga", teks("c0", 70, 52, "3 puluh", 7.5, W.biru)),
+      tambah("dua", teks("c1", 120, 76, "2 puluh", 7.5, W.biru)),
+      tambah("lima", teks("c2", 170, 88, "15", 8, W.biru)),
+      tambah("dua@2", teks("c3", 220, 64, "2 puluh 5", 7, W.biru)),
+      tambah("sembilan", teks("jm0", 274, 76, "jumlah", 8, W.merah), teks("jm1", 274, 90, "9 puluh", 8, W.merah), teks("jm2", 274, 104, "= 90 porsi", 8, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ 8. Diagram mendatar ------------------------------ */
+const SUARA_M1 = "Pak Dodi memutar kertas itu, sehingga batang-batangnya kini terbaring mendatar.";
+const SUARA_M2 = "Sekarang panjang batang yang dibaca, dan angkanya ada di sumbu yang mendatar.";
+const SUARA_M3 = "Dibaca tegak atau mendatar, batang tetap menyatakan banyak yang sama.";
+const MINI = [36, 24, 18, 30];
+
+export const ADEGAN_MENDATAR: AdeganStory = {
+  id: "mendatar",
+  judul: "Diagram diputar mendatar",
+  sumber: "Materi: batang tegak diputar menjadi mendatar",
+  latar: "#F5F3FF",
+  ketukan: [
+    k(
+      SUARA_M1,
+      tambah(0, ...DASAR("Pak Dodi Memutar Kertas"), ...tokoh("pr", 262, 184, "Pak Dodi")),
+      tambah("memutar", emo("pt", 274, 64, E.putar, 22)),
+      hapus("terbaring", ...idDiagramTegak("dg", 6, 4), "su"),
+      tambah("terbaring", ...diagramDatar("dd", DATAR_RINI), teks("sx", 246, 138, "porsi", 8, W.merah, { anchor: "start" })),
+    ),
+    k(
+      SUARA_M2,
+      tambah("panjang", teks("lk", 274, 84, "panjang", 8, W.merah)),
+      sorotkan("dibaca", "dd-b0", "dd-n0"),
+      tambah("dibaca", panah("pj", 86, 58, 146, 0, W.merah, 2, { z: 6 })),
+      sorotkan("angkanya", ...Array.from({ length: 7 }, (_, i) => `dd-a${i}`)),
+      tambah("mendatar", teks("lm", 274, 102, "angka: bawah", 7.5, W.hijauTua)),
+    ),
+    k(
+      SUARA_M3,
+      hapus(0, "lk", "lm", "pt"),
+      tambah("tegak", ...MINI.map((h, i) => kotak(`mb${i}`, 252 + i * 12, 128 - h, 9, h, WB[i], W.biru, { rx: 1, tebal: 1.2, z: 5 })), teks("mt", 270, 86, "tegak", 8, W.biru)),
+      tambah("batang", teks("sm", 274, 66, "banyak sama", 7.5, W.hijauTua)),
+      sorotkan("sama", "mb0", "mb1", "mb2", "mb3", "dd-b0", "dd-b1", "dd-b2", "dd-b3"),
+    ),
+  ],
+};
+void idDiagramDatar;
+
+/* ------------------------------ 9. Penutup di papan besar ------------------------------ */
+const SUARA_P1 = "Diagram batang selesai dan dipajang di papan besar di tengah bazar.";
+const SUARA_P2 = "Pak Hendro berkata, dengan batang, kita bisa membandingkan banyak data dalam satu pandangan.";
+const SUARA_P3 = "Menurutmu, data apa lagi di bazar ini yang bisa kita gambar? Terima kasih, Satria, Laras, Genta, Pak Hendro, Bu Rini, dan Pak Dodi!";
+
+const PEN_DATA: DataBatang[] = [
+  { nama: "Risoles", banyak: 30 },
+  { nama: "Pisang", banyak: 20 },
+  { nama: "Lemper", banyak: 15 },
+  { nama: "Cincau", banyak: 25 },
 ];
-const TP = piktogram("tp", 18, 44, TRANSPOR, "🧑", 12.5, 21);
-export const ADEGAN_UK_2: AdeganStory = {
-  id: "uk-2",
-  judul: "Uji 2: alat transportasi siswa kelas IV",
-  sumber: "Materi: membaca piktogram",
-  latar: "#F0FDF4",
-  kutipan: [
-    "Diberikan piktogram untuk data transportasi yang digunakan siswa kelas IV ke sekolah.",
-    "menyatakan 1 siswa",
-    "Alat transportasi apakah yang paling banyak digunakan siswa untuk berangkat ke sekolah?",
-    "Berapa siswa yang berangkat ke sekolah menggunakan becak/ kendaraan lain?",
-    "Alat transportasi apakah yang paling sedikit digunakan siswa untuk berangkat ke sekolah?",
-    "Berapa siswa yang menggunakan alat transportasi mobil dan jalan kaki untuk berangkat ke sekolah?",
-    "Berapa jumlah siswa kelas IV?",
-    "sepeda motor",
-    "Siswa yang berangkat ke sekolah menggunakan becak adalah 5 siswa",
-    "3 + 8 = 11 siswa",
-    "3 + 14 + 5 + 8 = 30 siswa",
-  ],
-  ketukan: [
-    k(
-      "Uji dua: piktogram alat transportasi siswa kelas empat. Satu gambar menyatakan satu siswa. Mobil tiga, sepeda motor empat belas, becak atau kendaraan lain lima, jalan kaki delapan.",
-      tambah(0, judul("Uji 2"), teks("tp9", 150, 150, "satu gambar menyatakan 1 siswa", 8.4, W.coklat)),
-      tambah("Mobil", TP[0]),
-      tambah("sepeda", TP[1]),
-      tambah("becak", TP[2]),
-      tambah("jalan", TP[3]),
-    ),
-    k(
-      "Jawaban a sampai c: paling banyak sepeda motor, yang naik becak lima siswa, dan paling sedikit mobil.",
-      tambah("Jawaban", ...kartu("kc", 14, 160, 272, 22, W.hijauMuda, ["a. sepeda motor"], 9.2)),
-      sorotkan("sepeda", "tp-p1-0", "tp-p1-13"),
-      ubah("becak", { id: "kc-t0", isi: "b. becak: 5 siswa" }, { id: "kc-k", warna: W.krem }),
-      ubah("paling@2", { id: "kc-t0", isi: "c. paling sedikit: mobil" }, { id: "kc-k", warna: W.merahMuda }),
-    ),
-    k(
-      "Jawaban d: mobil dan jalan kaki, tiga tambah delapan sama dengan sebelas siswa. Jawaban e: tiga tambah empat belas tambah lima tambah delapan sama dengan tiga puluh siswa. Jumlah ini sama dengan seluruh siswa kelas empat.",
-      ubah("Jawaban", { id: "kc-t0", isi: "d. 3 + 8 = 11 siswa" }, { id: "kc-k", warna: W.langit }),
-      ubah("tiga@2", { id: "kc-t0", isi: "e. 3 + 14 + 5 + 8 = 30 siswa" }, { id: "kc-k", warna: W.pink }),
-      tambah("Jumlah", teks("kc9", 150, 196, "jumlah sama dengan seluruh siswa", 7.8, W.coklat)),
-    ),
-  ],
-};
+const PEN: OpsiTegak = { x0: 96, yb: 128, tinggi: 72, n: 6, tingkat: 5, data: PEN_DATA, lebar: 24, jarak: 34 };
 
-/* ------------------------------ 10. Uji Kompetensi nomor 3: lomba PORSENI (Buku Siswa hlm. 193–194; Panduan Guru hlm. 229–231) ------------------------------ */
-const PORSENI = diagramMendatar(
-  "pr",
-  58,
-  34,
-  210,
-  108,
-  [
-    { nama: "Menyanyi", nilai: 8 },
-    { nama: "Renang", nilai: 2 },
-    { nama: "Bulu Tangkis", nilai: 5 },
-    { nama: "Puisi", nilai: 7 },
-    { nama: "Lari", nilai: 3 },
-    { nama: "Catur", nilai: 5 },
-  ],
-  9,
-  1,
-  { judulNama: "Lomba", judulNilai: "Banyak Siswa", ukuranNama: 6.8 },
-);
-export const ADEGAN_UK_3: AdeganStory = {
-  id: "uk-3",
-  judul: "Uji 3: lomba PORSENI tingkat kabupaten",
-  sumber: "Materi: membaca diagram batang",
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Papan besar di tengah bazar",
+  sumber: "Materi: diagram batang dipajang di bazar",
   latar: "#FFF7ED",
-  kutipan: [
-    "Diberikan diagram batang untuk data siswa yang mengikuti lomba PORSENI tingkat kabupaten.",
-    "Lomba apakah yang paling banyak diikuti siswa?",
-    "Lomba apakah yang diikuti 3 siswa kelas IV?",
-    "Berapa banyak siswa yang mengikuti lomba catur dan renang?",
-    "Lomba apakah yang paling sedikit diikuti siswa?",
-    "Berapa banyak siswa yang mengikuti lomba puisi?",
-    "Lomba yang paling banyak diikuti siswa adalah menyanyi",
-    "Lomba yang diikuti 3 siswa kelas IV adalah lari",
-    "5 + 2 = 7 siswa",
-    "Lomba yang paling sedikit diikuti siswa adalah renang",
-    "banyak siswa yang mengikuti lomba puisi adalah 7 siswa",
-  ],
   ketukan: [
     k(
-      "Uji tiga: diagram batang mendatar lomba PORSENI tingkat kabupaten. Menyanyi delapan, renang dua, bulu tangkis lima, puisi tujuh, lari tiga, dan catur lima.",
-      tambah(0, judul("Uji 3")),
-      tambah("diagram", ...PORSENI.sumbu, ...PORSENI.nama),
-      tambah("Menyanyi", ...PORSENI.batang[0]),
-      tambah("renang", ...PORSENI.batang[1]),
-      tambah("bulu", ...PORSENI.batang[2]),
-      tambah("puisi", ...PORSENI.batang[3]),
-      tambah("lari", ...PORSENI.batang[4]),
-      tambah("catur", ...PORSENI.batang[5]),
+      SUARA_P1,
+      tambah(0, judul("Papan Besar di Bazar"), ...lantai("lt", 150), papan("pb", 72, 34, 160, 114), ...sumbuTegak("pd", PEN), ...skalaTegak("pd", PEN), teks("su2", 98, 43, "porsi", 8, W.merah, { anchor: "start" })),
+      tambah("selesai", ...batangTegak("pd", PEN)),
+      tambah("dipajang", emo("kl", 150, 28, E.kilau, 12)),
+      tambah("bazar", ...tenda("td1", 8, 60, 56), ...tenda("td2", 236, 60, 56)),
     ),
     k(
-      "Jawaban a sampai c: paling banyak menyanyi, yang diikuti tiga siswa adalah lari, dan catur dengan renang lima tambah dua sama dengan tujuh siswa.",
-      tambah("Jawaban", ...kartu("pc", 14, 174, 272, 22, W.hijauMuda, ["a. menyanyi, paling banyak"], 9.2)),
-      sorotkan("menyanyi,", "pr-b0"),
-      ubah("lari,", { id: "pr-b0", sorot: false }, { id: "pc-t0", isi: "b. lari, 3 siswa" }, { id: "pc-k", warna: W.krem }),
-      sorotkan("lari,", "pr-b4"),
-      ubah("catur", { id: "pr-b4", sorot: false }, { id: "pc-t0", isi: "c. 5 + 2 = 7 siswa" }, { id: "pc-k", warna: W.langit }),
-      sorotkan("catur", "pr-b5", "pr-b1"),
+      SUARA_P2,
+      tambah("Hendro", ...tokoh("ph", 168, 184, "Pak Hendro")),
+      sorotkan("membandingkan", "pd-b0", "pd-b1", "pd-b2", "pd-b3"),
+      tambah("satu", teks("l1", 274, 128, "1 pandangan", 8, W.merah)),
     ),
     k(
-      "Jawaban d dan e: paling sedikit renang, dan lomba puisi diikuti tujuh siswa. Semua jawabannya benar. Catur dan bulu tangkis sama panjang, masing-masing lima.",
-      ubah(0, { id: "pr-b5", sorot: false }, { id: "pr-b1", sorot: false }),
-      ubah("Jawaban", { id: "pc-t0", isi: "d. renang, paling sedikit" }, { id: "pc-k", warna: W.merahMuda }),
-      sorotkan("renang,", "pr-b1"),
-      ubah("puisi", { id: "pr-b1", sorot: false }, { id: "pc-t0", isi: "e. puisi, 7 siswa" }, { id: "pc-k", warna: W.pink }),
-      sorotkan("puisi", "pr-b3"),
-      ubah("sama", { id: "pr-b3", sorot: false }),
-      sorotkan("sama", "pr-b2", "pr-b5"),
+      SUARA_P3,
+      tambah("Menurutmu", emo("tn", 28, 128, E.tanya, 20)),
+      tambah("Satria", ...tokoh("sa", 24, 184, "Satria")),
+      tambah("Laras", ...tokoh("la", 72, 184, "Laras")),
+      tambah("Genta", ...tokoh("ge", 120, 184, "Genta")),
+      tambah("Rini", ...tokoh("br", 216, 184, "Bu Rini")),
+      tambah("Dodi", ...tokoh("pr", 264, 184, "Pak Dodi"), emo("kf", 150, 160, E.konfeti, 18)),
     ),
   ],
 };
-
-/* ------------------------------ 11. Soal pengayaan nomor 1 dan 2 (Panduan Guru hlm. 232, 235–236) ------------------------------ */
-const SEKOLAH = diagramTegak(
-  "sp",
-  38,
-  42,
-  232,
-  100,
-  [
-    { nama: "Kelas 1", nilai: 57 },
-    { nama: "Kelas 2", nilai: 54 },
-    { nama: "Kelas 3", nilai: 58 },
-    { nama: "Kelas 4", nilai: 56 },
-    { nama: "Kelas 5", nilai: 62 },
-    { nama: "Kelas 6", nilai: 59 },
-  ],
-  70,
-  10,
-  { judulNilai: "Data Siswa SD Permata", ukuranNama: 6.4 },
-);
-const SUKU = diagramTegak(
-  "sk",
-  50,
-  44,
-  200,
-  100,
-  [
-    { nama: "Jawa", nilai: 10 },
-    { nama: "Melayu", nilai: 7 },
-    { nama: "Minang", nilai: 7 },
-  ],
-  12,
-  2,
-  { judulNilai: "Banyak Siswa", judulNama: "Suku Bangsa", ukuranNama: 7 },
-);
-export const ADEGAN_PENGAYAAN_12: AdeganStory = {
-  id: "pengayaan-12",
-  judul: "Tantangan 1 dan 2: siswa SD Permata dan suku bangsa",
-  sumber: "Materi: membaca dan menghitung data",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Soal-soal Pengayaan",
-    "Diagram batang berikut menunjukan banyak siswa di SD Permata.",
-    "Apabila jumlah seluruh siswa di SD Permata adalah 346 siswa.",
-    "Banyak siswa kelas 2 SD Permata",
-    "Kelas dengan jumlah siswa paling sedikit",
-    "Kelas dengan jumlah siswa paling banyak",
-    "365 – (57 + 58 + 56 + 62 + 59) = 54 siswa",
-    "Kelas 2, yaitu 54 siswa",
-    "Kelas 5, yaitu 62 siswa",
-    "Data suku bangsa siswa kelas 4 SD Bina Pendidikan sebagai berikut:",
-    "gambarkan diagram batang dan tentukan berapa banyak siswa kelas 4 SD Bina Pendidikan!",
-    "10 + 7 + 7 = 24 siswa",
-  ],
-  ketukan: [
-    k(
-      "Tantangan satu: siswa SD Permata. Kelas satu lima puluh tujuh, kelas tiga lima puluh delapan, kelas empat lima puluh enam, kelas lima enam puluh dua, kelas enam lima puluh sembilan. Kelas dua tidak ada batangnya.",
-      tambah(0, judul("Tantangan 1: SD Permata")),
-      tambah("satu", ...SEKOLAH.sumbu, ...SEKOLAH.nama),
-      tambah("tujuh,", ...SEKOLAH.batang[0]),
-      tambah("delapan,", ...SEKOLAH.batang[2]),
-      tambah("enam,", ...SEKOLAH.batang[3]),
-      tambah("dua,", ...SEKOLAH.batang[4]),
-      tambah("sembilan.", ...SEKOLAH.batang[5]),
-      tambah("batangnya.", teks("sp-q", SEKOLAH.nama[1].x ?? 0, 130, "?", 14, W.merah)),
-    ),
-    k(
-      "Seluruh siswa tiga ratus empat puluh enam. Lima kelas yang tampak berjumlah dua ratus sembilan puluh dua. Sisanya kelas dua: tiga ratus empat puluh enam kurang dua ratus sembilan puluh dua sama dengan lima puluh empat.",
-      tambah("Seluruh", ...kartu("sc", 14, 158, 272, 22, W.krem, ["jumlah seluruh siswa: 346"], 9.2)),
-      ubah("Lima", { id: "sc-t0", isi: "57 + 58 + 56 + 62 + 59 = 292" }, { id: "sc-k", warna: W.langit }),
-      ubah("Sisanya", { id: "sc-t0", isi: "346 − 292 = 54 siswa" }, { id: "sc-k", warna: W.hijauMuda }),
-      { at: "Sisanya", hapus: ["sp-q"] },
-      tambah("Sisanya", ...SEKOLAH.batang[1]),
-    ),
-    k(
-      "Pertanyaan b dan c: paling sedikit kelas dua, paling banyak kelas lima. Cek sekali lagi: lima puluh empat ditambah dua ratus sembilan puluh dua sama dengan tiga ratus empat puluh enam.",
-      sorotkan("kelas", "sp-b1"),
-      ubah("paling@2", { id: "sp-b1", sorot: false }, { id: "sc-t0", isi: "b. kelas 2 (54)  c. kelas 5 (62)" }, { id: "sc-k", warna: W.pink }),
-      sorotkan("lima,", "sp-b4"),
-      tambah("Cek", teks("sc9", 150, 190, "cek: 54 + 292 = 346", 8, W.merah)),
-    ),
-    k(
-      "Tantangan dua: data suku bangsa dua puluh empat siswa kelas empat. Dihitung dengan turus: Jawa sepuluh, Melayu tujuh, Minang tujuh.",
-      bersih(0),
-      tambah(0, judul("Tantangan 2: suku bangsa")),
-      tambah("Tantangan", ...tabel("tk", 40, 40, [70, 110, 40], [["Suku", "Turus", "Jumlah"]], 20, 8.4, W.krem)),
-      tambah("Jawa", ...tabel("tj", 40, 60, [70, 110, 40], [["Jawa", "||||| |||||", "10"]], 22, 9)),
-      tambah("Melayu", ...tabel("tm", 40, 82, [70, 110, 40], [["Melayu", "||||| ||", "7"]], 22, 9)),
-      tambah("Minang", ...tabel("tn", 40, 104, [70, 110, 40], [["Minang", "||||| ||", "7"]], 22, 9)),
-    ),
-    k(
-      "Diagram batangnya: Jawa tinggi sepuluh, Melayu dan Minang masing-masing tujuh. Banyak siswa kelas empat sepuluh tambah tujuh tambah tujuh sama dengan dua puluh empat siswa.",
-      bersih(0),
-      tambah(0, judul("Diagram batang suku bangsa")),
-      tambah("Diagram", ...SUKU.sumbu, ...SUKU.nama),
-      tambah("Jawa", ...SUKU.batang[0]),
-      tambah("Melayu", ...SUKU.batang[1]),
-      tambah("Minang", ...SUKU.batang[2]),
-      tambah("sepuluh@2", teks("sk9", 150, 192, "10 + 7 + 7 = 24 siswa", 12, W.hijau)),
-    ),
-  ],
-};
-
-/* ------------------------------ 12. Soal pengayaan nomor 3, 4, dan 5 (Panduan Guru hlm. 232–237) ------------------------------ */
-const BUKU = diagramTegak(
-  "pb",
-  38,
-  42,
-  232,
-  100,
-  [
-    { nama: "Hari 1", nilai: 12 },
-    { nama: "Hari 2", nilai: 9 },
-    { nama: "Hari 3", nilai: 17 },
-    { nama: "Hari 4", nilai: 15 },
-    { nama: "Hari 5", nilai: 11 },
-    { nama: "Hari 6", nilai: 9 },
-    { nama: "Hari 7", nilai: 13 },
-  ],
-  18,
-  2,
-  { judulNilai: "Peminjaman Komik Perpustakaan Daerah", ukuranNama: 6.2 },
-);
-const BUNGA_TANGKAI = piktogram(
-  "bt",
-  14,
-  44,
-  [
-    ["Melati: 20", 4],
-    ["Mawar: 25", 5],
-    ["Anggrek: 30", 6],
-    ["Sepatu: 15", 3],
-    ["Bougenville: 10", 2],
-  ],
-  "✋",
-  14,
-  22,
-  76,
-);
-const BULAN = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
-const PANEN = [65, 105, 55, 70, 65, 45, 95, 80, 70, 75, 75, 70];
-const APEL = diagramTegak(
-  "ap",
-  36,
-  40,
-  248,
-  100,
-  BULAN.map((nama, i) => ({ nama, nilai: PANEN[i] })),
-  120,
-  20,
-  { judulNilai: "Hasil Panen Apel (kg)", ukuranNama: 6 },
-);
-export const ADEGAN_PENGAYAAN_345: AdeganStory = {
-  id: "pengayaan-345",
-  judul: "Tantangan 3, 4, dan 5: komik, tangkai bunga, dan panen apel",
-  sumber: "Materi: membaca dan menghitung data",
-  latar: "#F0F9FF",
-  kutipan: [
-    "Diagram berikut menunjukkan data peminjaman buku di Perpustakaan Daerah.",
-    "Jumlah hari yang didata banyak peminjamnya",
-    "Jumlah buku yang dipinjam dalam 5 hari pertama",
-    "Hari dengan peminjaman buku terbanyak",
-    "12 + 9 + 17 + 15 + 11 = 64 buku",
-    "Hari ke-3",
-    ": Mewakili 5 tangkai bunga",
-    ": Mewakili 10 tangkai bunga",
-    "lengkapi tabel berikut",
-    "Bunga Melati 20",
-    "Perhatikan diagram gambar berikut",
-    "Data Hasil Panen Apel",
-    ": Mewakili 15 kg",
-    ": Mewakili 10 kg",
-    "tentukan hasil panen dalam setiap bulan dan buatlah diagram batang berdasarkan data tersebut",
-    "Januari 65 kg",
-    "Februari 105 kg",
-  ],
-  ketukan: [
-    k(
-      "Tantangan tiga: peminjaman komik tujuh hari. Dua belas, sembilan, tujuh belas, lima belas, sebelas, sembilan, dan tiga belas komik. Jumlah hari yang didata ada tujuh.",
-      tambah(0, judul("Tantangan 3: peminjaman komik")),
-      tambah("Tantangan", ...BUKU.sumbu, ...BUKU.nama),
-      tambah(6, ...BUKU.batang[0]),
-      tambah(8, ...BUKU.batang[1]),
-      tambah(9, ...BUKU.batang[2]),
-      tambah(11, ...BUKU.batang[3]),
-      tambah(13, ...BUKU.batang[4]),
-      tambah(14, ...BUKU.batang[5]),
-      tambah(16, ...BUKU.batang[6]),
-    ),
-    k(
-      "Lima hari pertama: dua belas tambah sembilan tambah tujuh belas tambah lima belas tambah sebelas sama dengan enam puluh empat komik. Hari terbanyak adalah hari ketiga, tujuh belas komik.",
-      tambah("Lima", ...kartu("pq", 14, 174, 272, 22, W.hijauMuda, ["12 + 9 + 17 + 15 + 11 = 64 komik"], 9.2)),
-      sorotkan("terbanyak", "pb-b2"),
-      ubah("ketiga,", { id: "pq-t0", isi: "hari terbanyak: hari ke-3, 17 komik" }, { id: "pq-k", warna: W.krem }),
-    ),
-    k(
-      "Tantangan empat: satu tangan mewakili lima tangkai bunga. Melati dua puluh empat tangan, mawar lima tangan, anggrek enam, sepatu tiga, dan bougenville dua tangan.",
-      bersih(0),
-      tambah(0, judul("Tantangan 4: tangkai bunga"), teks("bt9", 150, 178, "1 tangan = 5 tangkai, 2 tangan = 10 tangkai", 8.6, W.coklat)),
-      tambah("Melati", BUNGA_TANGKAI[0]),
-      tambah("mawar", BUNGA_TANGKAI[1]),
-      tambah("anggrek", BUNGA_TANGKAI[2]),
-      tambah("sepatu", BUNGA_TANGKAI[3]),
-      tambah("bougenville", BUNGA_TANGKAI[4]),
-    ),
-    k(
-      "Tantangan lima: apel besar mewakili lima belas kilogram, apel kecil sepuluh. Januari tiga apel besar dan dua apel kecil: tiga kali lima belas tambah dua kali sepuluh sama dengan enam puluh lima kilogram.",
-      bersih(0),
-      tambah(0, judul("Tantangan 5: panen apel")),
-      tambah("besar", ...kartu("ar", 14, 34, 130, 30, W.merahMuda, ["🍎🍎 = 15 kg"], 11)),
-      tambah("kecil", ...kartu("as", 156, 34, 130, 30, W.krem, ["🍎 = 10 kg"], 11)),
-      tambah("Januari", ...kartu("aj", 14, 78, 272, 34, W.langit, ["Januari: 3 besar, 2 kecil"], 9.6)),
-      tambah("tiga@2", teks("ah", 150, 146, "3 × 15 + 2 × 10 = 65", 15, W.hitam)),
-    ),
-    k(
-      "Diagram batangnya memuat dua belas bulan. Tertinggi Februari seratus lima kilogram, terendah Juni empat puluh lima. Semua hasil panen cocok dengan gambar apel, dan jumlah setahun delapan ratus tujuh puluh kilogram.",
-      bersih(0),
-      tambah(0, judul("Diagram batang panen apel")),
-      tambah("Diagram", ...APEL.sumbu, ...APEL.nama),
-      tambah("batangnya", ...APEL.batang.flat()),
-      sorotkan("Februari", "ap-b1"),
-      sorotkan("Juni", "ap-b5"),
-      tambah("jumlah", ...kartu("at", 14, 174, 272, 22, W.hijauMuda, ["jumlah setahun: 870 kg"], 9.2)),
-    ),
-  ],
-};
-
-/* ------------------------------ 13. Refleksi, remedial, pengayaan, dan interaksi dengan orang tua (Buku Siswa hlm. 194; Panduan Guru hlm. 231, 238) ------------------------------ */
-export const ADEGAN_PENUTUP_B: AdeganStory = {
-  id: "penutup-b",
-  judul: "Refleksi, remedial, pengayaan, dan interaksi dengan orang tua",
-  sumber: "Buku Siswa hlm. 194; Panduan Guru hlm. 231, 238",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Dalam bab ini, kalian sudah mempelajari piktogram dan diagram batang.",
-    "Kalian juga telah dapat menentukan data paling banyak dan paling sedikit",
-    "Jika masih ada bagian sulit, diskusikanlah dengan teman kalian.",
-    "Perbanyaklah mengerjakan latihan soal.",
-    "Manfaat lain apa yang kalian dapatkan setelah mempelajari bab ini?",
-    "guru dapat memperhatikan peserta didik yang pemahaman materi masih kurang sehingga dilakukan remedial",
-    "dilanjutkan dengan pengayaan",
-    "mempermudah dalam membaca data yang disajikan dalam piktogram atau diagram batang",
-    "Remedial yang dapat dilakukan dengan memberikan contoh yang lain.",
-    "Contoh lain dapat diperoleh melalui tugas rumah berupa data yang ada di sekitar rumah masing-masing peserta didik.",
-    "piktogram dengan satu gambar menyatakan lebih dari satu",
-    "menggunakan data dengan skala puluhan",
-    "Interaksi dengan Orang Tua",
-    "meminta orang tua peserta didik untuk mengumpulkan data tentang sesuatu yang terdapat di sekitar rumah",
-    "data tanaman di halaman rumah, data furnitune dalam rumah, data alat elektronik dalam rumah atau data ruangan dalam rumah",
-    "menganalisis dan menginterpretasikan hasil penyajian data baik piktogram ataupun diagram batang",
-  ],
-  ketukan: [
-    k(
-      "Refleksi: kalian sudah belajar piktogram dan diagram batang, dan dapat menentukan data paling banyak dan paling sedikit. Bagian yang sulit didiskusikan dengan teman, guru, atau orang tua. Perbanyak latihan soal.",
-      tambah(0, judul("Refleksi")),
-      tambah("piktogram", ...kartu("rf1", 14, 32, 272, 28, W.langit, ["piktogram dan diagram batang"], 9.4)),
-      tambah("paling@1", ...kartu("rf2", 14, 68, 272, 28, W.hijauMuda, ["paling banyak dan paling sedikit"], 9.4)),
-      tambah("sulit", ...kartu("rf3", 14, 104, 272, 28, W.krem, ["sulit: diskusi, tanya guru"], 9.4)),
-      tambah("latihan", ...kartu("rf4", 14, 140, 272, 28, W.pink, ["perbanyak latihan soal"], 9.4)),
-    ),
-    k(
-      "Dari hasil Uji Kompetensi, guru melihat siapa yang masih kurang paham untuk remedial dengan contoh lain dan tugas data di rumah. Yang sudah paham lanjut ke pengayaan.",
-      bersih(0),
-      tambah(0, judul("Remedial dan pengayaan")),
-      tambah("kurang", ...kartu("rm1", 14, 34, 130, 70, W.merahMuda, ["remedial", "contoh lain,", "data di rumah"], 9)),
-      tambah("paham@2", ...kartu("rm2", 156, 34, 130, 70, W.hijauMuda, ["pengayaan", "lanjut dengan", "soal tantangan"], 9)),
-    ),
-    k(
-      "Arah pengayaan: piktogram dengan satu gambar menyatakan lebih dari satu, dan diagram batang dengan data berskala puluhan. Itulah yang dilatih lewat soal pengayaan tadi.",
-      bersih(0),
-      tambah(0, judul("Arah pengayaan")),
-      tambah("piktogram", ...kartu("pn1", 14, 40, 272, 40, W.krem, ["piktogram: 1 gambar lebih dari 1"], 9.6)),
-      tambah("diagram", ...kartu("pn2", 14, 96, 272, 40, W.langit, ["diagram batang: skala puluhan"], 9.6)),
-    ),
-    k(
-      "Interaksi dengan orang tua: orang tua mengumpulkan data di sekitar rumah, seperti tanaman, furnitur, alat elektronik, atau ruangan, lalu menganalisis dan menafsirkan bersama anak. Manfaatnya, membaca data jadi lebih mudah.",
-      bersih(0),
-      tambah(0, judul("Bersama orang tua")),
-      tambah("tanaman,", emo("or1", 50, 76, "🌱", 30), teks("or1t", 50, 98, "tanaman", 8, W.biru)),
-      tambah("furnitur,", emo("or2", 120, 76, "🛋", 30), teks("or2t", 120, 98, "furnitur", 8, W.biru)),
-      tambah("elektronik,", emo("or3", 190, 76, "📺", 30), teks("or3t", 190, 98, "elektronik", 8, W.biru)),
-      tambah("ruangan,", emo("or4", 255, 76, "🚪", 30), teks("or4t", 255, 98, "ruangan", 8, W.biru)),
-      tambah("Manfaatnya,", ...kartu("or5", 40, 130, 220, 32, W.hijauMuda, ["membaca data jadi mudah"], 9.6)),
-    ),
-  ],
-};
+void diagramTegak;
+void batangTegak;

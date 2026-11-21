@@ -1,291 +1,115 @@
 import type { AdeganStory } from "./logika-story";
-import { W, diagramMendatar, diagramTegak, emo, judul, kartu, piktogram, tabel, teks } from "./k4b6b-gambar";
-import { bersih, k, sorotkan, tambah, ubah } from "./k4b6b-bantu";
+import { E, TEGAK_RINI, W, diagramTegak, emo, garis, judul, kotak, lantai, panah, papanData, satuanSumbu, teks, tokoh, ujungTegak } from "./k4b6b-gambar";
+import { k, sorotkan, tambah } from "./k4b6b-bantu";
 
-/* ------------------------------ 5. Ayo Berlatih nomor 1: lomba kelas IV (Buku Siswa hlm. 191; Panduan Guru hlm. 226) ------------------------------ */
-const LOMBA = diagramTegak(
-  "lm",
-  38,
-  42,
-  232,
-  100,
-  [
-    { nama: "Matematika", nilai: 15 },
-    { nama: "IPA", nilai: 6 },
-    { nama: "B. Inggris", nilai: 11 },
-    { nama: "Puisi", nilai: 3 },
-    { nama: "Peng. Umum", nilai: 6 },
+/*
+ * Cerita orisinal IGIL "Diagram Batang Pak Dodi" (Kelas 4 Bab 6 Sub-Bab B), akhir cerita Bazar Kuliner Sekolah.
+ * Naskah suara dari naskah/story-naskah-k4b6b.md. Bagian ini: cara membaca batang, salah langkah Satria (lupa tingkat lima), dan pemeriksaan Laras.
+ */
+
+const SERU = "\u{2757}";
+const TELUNJUK = "\u{1F449}";
+const DASAR = (judulAdegan: string) => [judul(judulAdegan), ...lantai("lt", 150), papanData(), ...diagramTegak("dg", TEGAK_RINI), satuanSumbu()];
+const [, Y_ES] = ujungTegak(TEGAK_RINI, 3);
+const [, Y_PG] = ujungTegak(TEGAK_RINI, 1);
+
+/* ------------------------------ 4. Membaca batang ------------------------------ */
+const SUARA_B1 = "Cara membaca, geser mata dari ujung batang lurus ke sumbu angka.";
+const SUARA_B2 = "Batang es cincau berhenti tepat di garis dua puluh lima, jadi terjual dua puluh lima porsi.";
+const SUARA_B3 = "Sumbu harus diberi judul dan satuan, supaya orang tahu angka itu menyatakan porsi.";
+
+export const ADEGAN_BACA_BATANG: AdeganStory = {
+  id: "baca-batang",
+  judul: "Cara membaca batang",
+  sumber: "Materi: membaca batang pada sumbu",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_B1,
+      tambah(0, ...DASAR("Membaca Batang")),
+      tambah(0, ...tokoh("la", 36, 184, "Laras")),
+      tambah("mata", emo("em", 274, 60, E.mata, 20)),
+      sorotkan("ujung", "dg-b3"),
+      tambah("sumbu", panah("pa", 202, Y_ES, -154, 0, W.merah, 2, { z: 6 })),
+    ),
+    k(
+      SUARA_B2,
+      sorotkan("cincau", "dg-b3", "dg-n3"),
+      tambah("dua", teks("l25a", 274, 70, "2 puluh 5", 8, W.merah)),
+      tambah("jadi", teks("l25b", 274, 82, "= 25 porsi", 8, W.hijauTua)),
+    ),
+    k(
+      SUARA_B3,
+      tambah("judul", teks("lj", 274, 100, "judul sumbu", 7.5, W.coklat)),
+      sorotkan("satuan", "su"),
+      tambah("porsi", teks("lp", 274, 114, "satuan: porsi", 7, W.coklat)),
+    ),
   ],
-  16,
-  2,
-  { judulNilai: "Banyak Siswa", judulNama: "Lomba", ukuranNama: 6.2 },
-);
-export const ADEGAN_BERLATIH_1: AdeganStory = {
-  id: "berlatih-1",
-  judul: "Latihan 1: siswa kelas IV yang mengikuti lomba",
-  sumber: "Materi: membaca diagram batang",
+};
+
+/* ------------------------------ 5. Salah langkah: lupa tingkat ------------------------------ */
+const SUARA_S1 = "Satria memandang batang pisang goreng yang berhenti di garis keempat dari bawah.";
+const SUARA_S2 = "Ia berseru, empat tingkat berarti empat porsi, tidak mungkin salah!";
+const SUARA_S3 = "Kalau aku salah, aku melipat semua taplak meja bazar, katanya sambil mengangkat tumpukan kain.";
+
+export const ADEGAN_SALAH_SKALA: AdeganStory = {
+  id: "salah-skala",
+  judul: "Satria membaca terburu-buru",
+  sumber: "Materi: salah langkah membaca tingkat",
+  latar: "#FFF1F2",
+  ketukan: [
+    k(
+      SUARA_S1,
+      tambah(0, ...DASAR("Satria Membaca Batang")),
+      tambah(0, ...tokoh("sa", 36, 184, "Satria")),
+      sorotkan("pisang", "dg-b1", "dg-n1"),
+      tambah("garis", garis("gb", 44, Y_PG, 190, 0, W.merah, 1.6, { putus: true, z: 4 }), teks("l4", 274, 66, "garis ke 4", 8, W.merah)),
+    ),
+    k(
+      SUARA_S2,
+      tambah("berseru", emo("sr", 36, 148, SERU, 14)),
+      tambah("empat", teks("b4", 274, 84, "4 porsi?", 8, W.merah)),
+      tambah("mungkin", emo("tk", 274, 108, E.tanya, 18)),
+    ),
+    k(
+      SUARA_S3,
+      tambah("salah", teks("tr", 274, 124, "taruhan", 8, W.merah)),
+      tambah("taplak", kotak("tp0", 254, 150, 40, 5, "#FCA5A5", W.merah, { rx: 1, z: 3 }), kotak("tp1", 254, 145, 40, 5, "#93C5FD", W.biru, { rx: 1, z: 3 })),
+      tambah("tumpukan", kotak("tp2", 254, 140, 40, 5, "#FDE047", W.coklat, { rx: 1, z: 3 }), emo("kn", 274, 136, E.kain, 14)),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. Periksa: tiap tingkat lima porsi ------------------------------ */
+const SUARA_P1 = "Laras menunjuk angka di sumbu tepat di sebelah garis keempat itu.";
+const SUARA_P2 = "Angkanya dua puluh, karena tiap tingkat mewakili lima porsi, bukan satu porsi.";
+const SUARA_P3 = "Satria melipat taplak sampai terlilit kain dari kepala sampai kaki, dan semua orang tertawa.";
+
+export const ADEGAN_PERIKSA_SKALA: AdeganStory = {
+  id: "periksa-skala",
+  judul: "Laras memeriksa angka",
+  sumber: "Materi: tiap tingkat lima porsi",
   latar: "#F0F9FF",
-  kutipan: [
-    "Kerjakan soal berikut dengan cermat dan salin jawaban pada buku kalian.",
-    "Banyaknya siswa kelas IV yang mengikuti lomba disajikan diagram batang berikut.",
-    "Lomba apakah yang paling banyak diikuti siswa kelas IV?",
-    "Lomba apakah yang diikuti 3 siswa kelas IV?",
-    "Berapa banyak siswa yang mengikuti lomba IPA dan Pengetahuan Umum?",
-    "Lomba apakah yang paling sedikit diikuti siswa kelas IV?",
-    "Berapa banyak siswa yang mengikuti lomba matematika?",
-    "6 siswa + 6 siswa = 12 siswa",
-    "15 Siswa",
-  ],
   ketukan: [
     k(
-      "Latihan satu. Banyaknya siswa kelas empat yang mengikuti lomba disajikan dalam diagram batang. Sumbu tegak banyak siswa, skalanya naik dua-dua dari nol sampai enam belas. Sumbu datar nama lomba.",
-      tambah(0, judul("Latihan 1")),
-      tambah("diagram", ...LOMBA.sumbu),
-      tambah("nama", ...LOMBA.nama),
-      sorotkan("skalanya", "lm-y2", "lm-y4", "lm-y6", "lm-y8"),
+      SUARA_P1,
+      tambah(0, ...DASAR("Laras Memeriksa Angka")),
+      tambah(0, ...tokoh("la", 36, 184, "Laras")),
+      sorotkan("angka", "dg-a4"),
+      tambah("tepat", emo("pj", 16, 82, TELUNJUK, 13)),
+      tambah("garis", garis("gb", 44, Y_PG, 190, 0, W.merah, 1.6, { putus: true, z: 4 })),
     ),
     k(
-      "Matematika lima belas siswa, IPA enam, Bahasa Inggris sebelas, puisi tiga, dan Pengetahuan Umum enam. Perhatikan: lima belas ada di antara garis empat belas dan enam belas, tiga ada di antara dua dan empat.",
-      ubah(0, { id: "lm-y2", sorot: false }, { id: "lm-y4", sorot: false }, { id: "lm-y6", sorot: false }, { id: "lm-y8", sorot: false }),
-      tambah("Matematika", ...LOMBA.batang[0]),
-      tambah("IPA", ...LOMBA.batang[1]),
-      tambah("Inggris", ...LOMBA.batang[2]),
-      tambah("puisi", ...LOMBA.batang[3]),
-      tambah("Pengetahuan", ...LOMBA.batang[4]),
+      SUARA_P2,
+      tambah("dua", teks("l20", 274, 70, "20 = 2 puluh", 7, W.hijauTua)),
+      tambah("lima", teks("l5", 274, 84, "tiap garis 5", 7.5, W.hijauTua)),
+      tambah("satu", teks("l1", 274, 98, "bukan 1 porsi", 7, W.merah)),
     ),
     k(
-      "Pertanyaan a: lomba yang paling banyak diikuti adalah matematika, batangnya paling tinggi. Pertanyaan b: yang diikuti tiga siswa adalah puisi.",
-      sorotkan("matematika,", "lm-b0"),
-      tambah("matematika,", ...kartu("lc", 14, 174, 272, 22, W.hijauMuda, ["a. Matematika, 15 siswa"], 9.2)),
-      ubah("Pertanyaan@2", { id: "lm-b0", sorot: false }),
-      sorotkan("puisi.", "lm-b3"),
-      ubah("puisi.", { id: "lc-t0", isi: "b. Puisi, 3 siswa" }, { id: "lc-k", warna: W.krem }),
-    ),
-    k(
-      "Pertanyaan c: lomba IPA dan Pengetahuan Umum, enam siswa tambah enam siswa sama dengan dua belas siswa. Pertanyaan d: yang paling sedikit adalah puisi. Pertanyaan e: lomba matematika diikuti lima belas siswa.",
-      ubah(0, { id: "lm-b3", sorot: false }),
-      sorotkan("IPA", "lm-b1", "lm-b4"),
-      ubah("enam", { id: "lc-t0", isi: "c. 6 + 6 = 12 siswa" }, { id: "lc-k", warna: W.langit }),
-      ubah("sedikit", { id: "lm-b1", sorot: false }, { id: "lm-b4", sorot: false }),
-      ubah("sedikit", { id: "lc-t0", isi: "d. Puisi, paling sedikit" }, { id: "lc-k", warna: W.merahMuda }),
-      ubah("lima", { id: "lc-t0", isi: "e. Matematika, 15 siswa" }, { id: "lc-k", warna: W.pink }),
-    ),
-    k(
-      "Perhatikan, semua jawabannya sudah benar. Puisi adalah jawaban b dan d sekaligus, karena puisi diikuti tiga siswa, paling sedikit di antara lima lomba.",
-      bersih(0),
-      tambah(0, judul("Semua jawaban benar")),
-      tambah("Perhatikan", ...kartu("cg1", 14, 34, 272, 28, W.hijauMuda, ["a. Matematika   b. Puisi"], 9.4)),
-      tambah("benar", ...kartu("cg2", 14, 70, 272, 28, W.hijauMuda, ["c. 6 + 6 = 12 siswa   d. Puisi"], 9.4)),
-      tambah("Puisi", ...kartu("cg3", 14, 106, 272, 28, W.krem, ["e. 15 siswa"], 9.4)),
-      tambah("sedikit", teks("cg4", 150, 160, "puisi: 3 siswa, paling sedikit", 9.6, W.coklat)),
-    ),
-  ],
-};
-
-/* ------------------------------ 6. Ayo Berlatih nomor 2: bunga di taman bermain (Buku Siswa hlm. 192; Panduan Guru hlm. 227) ------------------------------ */
-const BUNGA = diagramMendatar(
-  "bg",
-  56,
-  36,
-  210,
-  120,
-  [
-    { nama: "anggrek", nilai: 7 },
-    { nama: "melati", nilai: 8 },
-    { nama: "matahari", nilai: 3 },
-    { nama: "sepatu", nilai: 4 },
-    { nama: "kertas", nilai: 9 },
-    { nama: "mawar", nilai: 5 },
-  ],
-  10,
-  1,
-  { judulNama: "Bunga", judulNilai: "Banyaknya Bunga", ukuranNama: 6.8 },
-);
-export const ADEGAN_BERLATIH_2: AdeganStory = {
-  id: "berlatih-2",
-  judul: "Latihan 2: bunga di taman bermain sekolah",
-  sumber: "Materi: diagram batang mendatar",
-  latar: "#FDF2F8",
-  kutipan: [
-    "Di taman bermain sekolah terdapat beberapa jenis bunga antara lain",
-    "bunga mawar",
-    "9 bunga kertas, 4 bunga sepatu, 3 bunga matahari, 8 bunga melati dan 7 bunga anggrek.",
-    "Sajikanlah dalam diagram batang mendatar!",
-    "Bunga apakah yang paling banyak yang terdapat di taman bermain sekolah?",
-    "Bunga apakah yang berjumlah 8 ?",
-    "Berapa banyak bunga kertas dan bunga anggrek?",
-    "Bunga apakah yang paling sedikit terdapat di taman bermain sekolah?",
-    "Berapa banyak bunga mawar di taman bermain sekolah?",
-    "9 + 7 = 16 bunga",
-    "Bunga Matahari",
-  ],
-  ketukan: [
-    k(
-      "Latihan dua. Di taman bermain sekolah ada lima bunga mawar, sembilan bunga kertas, empat bunga sepatu, tiga bunga matahari, delapan bunga melati, dan tujuh bunga anggrek. Pertama, sajikan data ini dalam diagram batang mendatar.",
-      tambah(0, judul("Latihan 2")),
-      tambah("mawar,", ...tabel("dt", 14, 36, [66, 28, 66, 28, 66, 28], [["mawar", "5", "kertas", "9", "sepatu", "4"], ["matahari", "3", "melati", "8", "anggrek", "7"]], 18, 8.4, W.krem)),
-      tambah("mendatar.", ...kartu("dt9", 40, 90, 220, 30, W.hijauMuda, ["sajikan dalam diagram batang mendatar"], 9)),
-    ),
-    k(
-      "Sumbu tegak berisi nama bunga, sumbu datar berisi banyaknya bunga. Panjang tiap batang sesuai banyaknya: anggrek tujuh, melati delapan, matahari tiga, sepatu empat, kertas sembilan, dan mawar lima.",
-      bersih(0),
-      tambah(0, judul("Diagram batang mendatar")),
-      tambah("Sumbu", ...BUNGA.sumbu),
-      tambah("tegak", ...BUNGA.nama),
-      tambah("anggrek", ...BUNGA.batang[0]),
-      tambah("melati,", ...BUNGA.batang[1]),
-      tambah("matahari", ...BUNGA.batang[2]),
-      tambah("sepatu,", ...BUNGA.batang[3]),
-      tambah("kertas", ...BUNGA.batang[4]),
-      tambah("mawar", ...BUNGA.batang[5]),
-    ),
-    k(
-      "Pertanyaan b: bunga paling banyak adalah bunga kertas, batangnya paling lebar, sembilan. Pertanyaan c: bunga berjumlah delapan adalah melati.",
-      sorotkan("kertas,", "bg-b4"),
-      tambah("kertas,", ...kartu("bc", 14, 178, 272, 20, W.hijauMuda, ["b. bunga kertas, 9"], 9)),
-      ubah("Pertanyaan@2", { id: "bg-b4", sorot: false }),
-      sorotkan("melati.", "bg-b1"),
-      ubah("melati.", { id: "bc-t0", isi: "c. bunga melati, 8" }, { id: "bc-k", warna: W.krem }),
-    ),
-    k(
-      "Pertanyaan d: bunga kertas dan bunga anggrek, sembilan tambah tujuh sama dengan enam belas bunga. Pertanyaan e: paling sedikit bunga matahari. Pertanyaan f: bunga mawar ada lima.",
-      ubah(0, { id: "bg-b1", sorot: false }),
-      sorotkan("kertas", "bg-b4", "bg-b0"),
-      ubah("enam", { id: "bc-t0", isi: "d. 9 + 7 = 16 bunga" }, { id: "bc-k", warna: W.langit }),
-      ubah("paling", { id: "bg-b4", sorot: false }, { id: "bg-b0", sorot: false }),
-      sorotkan("matahari.", "bg-b2"),
-      ubah("matahari.", { id: "bc-t0", isi: "e. bunga matahari, 3" }, { id: "bc-k", warna: W.merahMuda }),
-      ubah("mawar", { id: "bg-b2", sorot: false }),
-      ubah("mawar", { id: "bc-t0", isi: "f. bunga mawar, 5" }, { id: "bc-k", warna: W.pink }),
-    ),
-    k(
-      "Sebagai tambahan, jumlah seluruh bunga: lima tambah sembilan tambah empat tambah tiga tambah delapan tambah tujuh sama dengan tiga puluh enam bunga.",
-      bersih(0),
-      tambah(0, judul("Jumlah seluruh bunga")),
-      tambah("tambahan", ...kartu("bb6", 14, 34, 272, 28, W.hijauMuda, ["tambahan: jumlah semua bunga"], 9.6)),
-      tambah("jumlah", teks("bb7", 150, 108, "5 + 9 + 4 + 3 + 8 + 7 = 36", 17, W.hitam)),
-      tambah("tiga@2", teks("bb8", 150, 140, "36 bunga", 14, W.hijau)),
-    ),
-  ],
-};
-
-/* ------------------------------ 7. Panduan Guru: diferensiasi dan penilaian (Panduan Guru hlm. 227–231) ------------------------------ */
-export const ADEGAN_GURU_B: AdeganStory = {
-  id: "panduan-guru-b",
-  judul: "Panduan Guru: diferensiasi, kunci jawaban, dan rubrik penilaian",
-  sumber: "Panduan Guru hlm. 227–231",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Model pembelajaran yang disarankan untuk sub bab diagram batang adalah Project Based Learning",
-    "yang mengutamakan pada produk hasil karya peserta didik bersama kelompoknya",
-    "Pembentukan kelompok dapat berdasarkan pada karakteristik atau keberagaman peserta didik",
-    "ditentukan ketua kelompok adalah peserta didik dengan tingkat kemampuan tinggi dengan anggota kelompok tingkat kemampuan sedang atau kurang",
-    "semua anggota kelompok dapat bekerja sama untuk menyelesaikan tugas/ proyek yang diberikan oleh guru",
-    "guru dapat menerapkan metode diskusi dengan melibatkan peserta didik dalam menyajikan data dalam bentuk diagram batang",
-    "A. Kunci Jawaban",
-    "Tabel 6.2 Pedoman Penilaian Hasil Belajar",
-    "Rubrik Penilaian Pengetahun (kognitif )",
-  ],
-  ketukan: [
-    k(
-      "Diferensiasi. Karakter peserta didik berbeda-beda, hanya guru yang memahaminya. Model yang disarankan untuk diagram batang adalah Project Based Learning, yang mengutamakan produk hasil karya peserta didik bersama kelompoknya.",
-      tambah(0, judul("Diferensiasi")),
-      tambah("Karakter", ...kartu("gb1", 14, 34, 272, 28, W.langit, ["karakter tiap kelas berbeda"], 9.4)),
-      tambah("Project", ...kartu("gb2", 14, 74, 272, 34, W.hijauMuda, ["Project Based Learning", "produk karya kelompok"], 9.2)),
-      tambah("hasil", emo("gb3", 150, 142, "📊", 30)),
-    ),
-    k(
-      "Kelompok dibentuk menurut karakter atau keberagaman peserta didik. Ketua kelompok berkemampuan tinggi, anggotanya sedang atau kurang. Bila tidak ada yang berkemampuan tinggi, semua bekerja sama. Bila model ini tidak memungkinkan, pakai metode diskusi.",
-      bersih(0),
-      tambah(0, judul("Pembentukan kelompok")),
-      tambah("Ketua", ...kartu("gb4", 14, 34, 272, 28, W.hijauMuda, ["ketua: kemampuan tinggi"], 9.4)),
-      tambah("anggotanya", ...kartu("gb5", 14, 70, 272, 28, W.krem, ["anggota: sedang atau kurang"], 9.4)),
-      tambah("semua", ...kartu("gb6", 14, 106, 272, 28, W.langit, ["tidak ada yang tinggi: bekerja sama"], 9.4)),
-      tambah("diskusi.", ...kartu("gb7", 14, 142, 272, 28, W.pink, ["jika perlu: metode diskusi"], 9.4)),
-    ),
-    k(
-      "Penilaian memuat Kunci Jawaban dan Rubrik Penilaian Pengetahuan pada Tabel enam titik dua. Tiap butir diberi bobot skor maksimum dan tiga tingkat kriteria: tidak menjawab, menjawab kurang tepat, dan menjawab benar.",
-      bersih(0),
-      tambah(0, judul("Penilaian")),
-      tambah("Kunci", ...kartu("gb8", 14, 34, 130, 30, W.hijauMuda, ["Kunci Jawaban"], 9.4)),
-      tambah("Rubrik", ...kartu("gb9", 156, 34, 130, 30, W.krem, ["Rubrik Tabel 6.2"], 9.4)),
-      tambah("tidak", ...kartu("gb10", 14, 84, 86, 34, W.merahMuda, ["tidak", "menjawab"], 8.6)),
-      tambah("kurang", ...kartu("gb11", 107, 84, 86, 34, W.krem, ["kurang", "tepat"], 8.6)),
-      tambah("benar.", ...kartu("gb12", 200, 84, 86, 34, W.hijauMuda, ["jawaban", "benar"], 8.6)),
-    ),
-    k(
-      "Bobotnya: nomor satu dua puluh ditambah dua puluh, nomor dua dan tiga masing-masing lima butir berbobot enam. Jumlahnya tepat seratus. Catatan guru: rubrik nomor satu tidak punya baris skor untuk diagram mendatar.",
-      bersih(0),
-      tambah(0, judul("Bobot skor Tabel 6.2")),
-      tambah("nomor", ...kartu("gb13", 14, 32, 272, 24, W.langit, ["no. 1: 20 + 20 = 40"], 9.2)),
-      tambah("tiga", ...kartu("gb14", 14, 62, 272, 24, W.langit, ["no. 2: 5 × 6 = 30"], 9.2)),
-      tambah("enam", ...kartu("gb15", 14, 92, 272, 24, W.langit, ["no. 3: 5 × 6 = 30"], 9.2)),
-      tambah("seratus.", teks("gb16", 150, 140, "40 + 30 + 30 = 100", 15, W.hijau)),
-      tambah("mendatar", ...kartu("gb17", 40, 156, 220, 30, W.merahMuda, ["no. 1 mendatar: tanpa baris rubrik"], 8.6)),
-    ),
-  ],
-};
-
-/* ------------------------------ 8. Uji Kompetensi nomor 1: benda di atas meja guru (Buku Siswa hlm. 192; Panduan Guru hlm. 228–229) ------------------------------ */
-const MEJA = [
-  { nama: "Komik", nilai: 4 },
-  { nama: "Taplak Meja", nilai: 1 },
-  { nama: "Spidol", nilai: 3 },
-  { nama: "Penghapus", nilai: 1 },
-  { nama: "Pulpen", nilai: 2 },
-];
-const UP = piktogram("up", 40, 50, MEJA.map((d) => [d.nama, d.nilai] as [string, number]), "📘", 13, 24);
-const UM = diagramMendatar("um", 70, 40, 190, 110, MEJA, 4, 1, { judulNama: "Benda", judulNilai: "Banyak", ukuranNama: 6.8 });
-const UT = diagramTegak("ut", 38, 44, 232, 100, MEJA, 4, 1, { judulNilai: "Banyak", judulNama: "Benda", ukuranNama: 6.4 });
-export const ADEGAN_UK_1: AdeganStory = {
-  id: "uk-1",
-  judul: "Uji 1: benda di atas meja guru",
-  sumber: "Materi: piktogram dan diagram batang",
-  latar: "#FFF7ED",
-  kutipan: [
-    "Uji Kompetensi",
-    "Diberikan data benda yang terdapat di atas meja guru dalam kelas IV.",
-    "Sajikan data benda yang terdapat di atas meja guru kelas IV dalam piktogram!",
-    "diagram batang bentuk mendatar!",
-    "diagram batang bentuk tegak!",
-    "Diagram batang bentuk mendatar",
-    "Diagram batang bentuk tegak",
-    "Peserta didik tidak menjawab sama sekali",
-  ],
-  ketukan: [
-    k(
-      "Uji satu. Data benda di atas meja guru kelas empat: komik empat, taplak meja satu, spidol tiga, penghapus satu, dan pulpen dua. Sajikan data ini dalam tiga cara: piktogram, diagram batang mendatar, dan diagram batang tegak.",
-      tambah(0, judul("Uji 1")),
-      tambah("komik", ...tabel("mj", 20, 40, [64, 52, 52, 56, 56], [["Komik", "Taplak meja", "Spidol", "Penghapus", "Pulpen"], ["4", "1", "3", "1", "2"]], 22, 7.2, W.langit)),
-      tambah("tiga@2", ...kartu("mj1", 14, 100, 272, 22, W.krem, ["a. piktogram"], 9)),
-      tambah("diagram", ...kartu("mj2", 14, 128, 272, 22, W.hijauMuda, ["b. diagram batang mendatar"], 9)),
-      tambah("tegak.", ...kartu("mj3", 14, 156, 272, 22, W.pink, ["c. diagram batang tegak"], 9)),
-    ),
-    k(
-      "Jawaban a, piktogram: satu gambar menyatakan satu benda. Komik empat gambar, taplak meja satu, spidol tiga, penghapus satu, dan pulpen dua gambar.",
-      bersih(0),
-      tambah(0, judul("a. Piktogram")),
-      ...UP.map((baris, i) => tambah(["Komik", "taplak", "spidol", "penghapus", "pulpen"][i], baris)),
-      tambah("gambar@3", teks("up9", 150, 172, "1 gambar = 1 benda", 9, W.coklat)),
-    ),
-    k(
-      "Jawaban b, diagram batang mendatar: nama benda di sumbu tegak, banyaknya di sumbu datar dari nol sampai empat. Panjang batang komik empat, spidol tiga, pulpen dua, taplak meja dan penghapus masing-masing satu.",
-      bersih(0),
-      tambah(0, judul("b. Diagram batang mendatar")),
-      tambah("nama", ...UM.sumbu, ...UM.nama),
-      tambah("komik", ...UM.batang[0]),
-      tambah("spidol", ...UM.batang[2]),
-      tambah("pulpen", ...UM.batang[4]),
-      tambah("taplak", ...UM.batang[1]),
-      tambah("penghapus", ...UM.batang[3]),
-    ),
-    k(
-      "Jawaban c, diagram batang tegak: tinggi batang sama dengan banyaknya benda. Karena datanya bilangan bulat, cukup pakai skala satu-satu dari nol sampai empat.",
-      bersih(0),
-      tambah(0, judul("c. Diagram batang tegak")),
-      tambah("tinggi", ...UT.sumbu, ...UT.nama),
-      tambah("batang", ...UT.batang.flat()),
-      tambah("Karena", teks("ut9", 150, 192, "data bulat: skala 1 cukup", 8, W.coklat)),
+      SUARA_P3,
+      tambah("Satria", ...tokoh("sa", 84, 184, "Satria")),
+      tambah("terlilit", kotak("kl", 70, 152, 28, 30, "#FCA5A5", W.merah, { rx: 6, z: 5, op: 0.85 })),
+      tambah("tertawa", emo("tw1", 140, 168, E.tertawa, 22), emo("tw2", 190, 168, E.tertawa, 22)),
     ),
   ],
 };
