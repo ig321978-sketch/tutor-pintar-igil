@@ -1,227 +1,155 @@
 import type { AdeganStory } from "./logika-story";
-import { W, emo, judul, kartu, pangkat, pohon, simpul, tangga, teks, type Pohon } from "./k5b2e-gambar";
-import { bersih, k, tambah } from "./k5b2e-bantu";
-import { POHON_196, POHON_270_A, POHON_270_B } from "./k5b2e-materi-2";
+import { E, PAPAN_100, PAPAN_50, PRIMA_100, PRIMA_50, W, bilanganPapan, bingkaiPapan, cincinPapan, emo, idBilanganPapan, judul, kartu, kelipatanDari, kotak, lantai, panah, teks, tokoh, bulat } from "./k5b2e-gambar";
+import { bersih, hapus, k, pudarkan, tambah, ubah } from "./k5b2e-bantu";
 
-/** Pohon 60 dua bentuk (contoh konsep Factor Tree): enam kali sepuluh, dan bentuk tangga. Ujung primanya sama: 2, 2, 3, 5. */
-export const POHON_60_A: Pohon = { n: 60, a: { n: 6, a: { n: 2 }, b: { n: 3 } }, b: { n: 10, a: { n: 2 }, b: { n: 5 } } };
-export const POHON_60_B: Pohon = tangga(60, [2, 2, 3, 5]);
-/** Pohon 300 bentuk lain (tiga puluh kali sepuluh): ujung primanya sama dengan pohon buku. */
-export const POHON_300_B: Pohon = { n: 300, a: { n: 30, a: { n: 5 }, b: { n: 6, a: { n: 2 }, b: { n: 3 } } }, b: { n: 10, a: { n: 2 }, b: { n: 5 } } };
-export const POHON_72 = tangga(72, [2, 2, 2, 3, 3]);
-export const POHON_150 = tangga(150, [2, 3, 5, 5]);
+/*
+ * Cerita orisinal IGIL "Papan Bilangan Kak Lintang" (Kelas 5 Bab 2 Sub-Bab E), akhir cerita Pasar Kuliner Malam.
+ * Video kedua: tiga metode global (Sieve It, Factor Tree, Divide Down), terpisah dari video materi.
+ * Naskah suara dari naskah/story-naskah-k5b2e.md. Bagian ini: pembuka di papan Kak Lintang dan Sieve It (konsep dan terapan Citra).
+ */
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
+/** Nama tiga metode global (Inggris) dan nama Indonesianya; dipakai juga oleh uji Story. */
+export const NAMA_METODE = ["Sieve It", "Factor Tree", "Divide Down"];
+export const NAMA_METODE_ID = ["Saring", "Pohon Faktor", "Bagi Berulang"];
+const X_KARTU = [8, 107, 206];
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_PEMBUKA1 = "Di papan Kak Lintang, bilangan prima menunggu ditemukan, dan KPK serta FPB menunggu dihitung.";
+const SUARA_PEMBUKA2 = "Ada tiga cara supaya bilangan prima dan faktorisasinya tidak keliru.";
+const SUARA_PEMBUKA3 = "Tiga cara itu: Sieve It, Factor Tree, dan Divide Down.";
+const SUARA_PEMBUKA4 = "Nama dalam bahasa Indonesia: Saring, Pohon Faktor, dan Bagi Berulang.";
+
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk KPK dan FPB dengan faktor prima",
-  sumber: "Metode luar: pembuka",
+  judul: "Papan Kak Lintang menunggu",
+  sumber: "Metode global: pembuka di pasar malam",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana menentukan KPK dan FPB dengan faktor prima? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar.",
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("menentukan", ...kartu("pq", 20, 40, 260, 36, W.krem, ["KPK dan FPB dengan faktor prima"], 10)),
-      tambah("Guru", emo("pg", 150, 128, "🌍", 44)),
-      tambah("empat", teks("pe", 150, 170, "4 metode", 14, W.biru)),
+      SUARA_PEMBUKA1,
+      tambah(0, judul("Menunggu di Papan"), ...lantai("lt", 156)),
+      tambah("papan", kotak("pb", 14, 40, 150, 100, W.papan, W.kayuTua, { rx: 4, tebal: 2.4 }), teks("pb-t", 89, 104, "?", 44, W.ungu)),
+      tambah("Lintang", ...tokoh("kl", 258, 184, "Kak Lintang")),
+      tambah("prima", ...kartu("q1", 184, 44, 100, 26, "#DCFCE7", ["prima ?"], 10)),
+      tambah("KPK", ...kartu("q2", 184, 76, 100, 26, "#DBEAFE", ["KPK ?"], 10)),
+      tambah("FPB", ...kartu("q3", 184, 108, 100, 26, "#FEF9C3", ["FPB ?"], 10)),
     ),
     k(
-      "Empat metode itu: Factor Tree, Prime Exponent Rules, LCM-GCF Bridge, dan Prime Venn Diagram.",
+      SUARA_PEMBUKA2,
       bersih(0),
-      tambah(0, judul("Empat metode")),
-      tambah("Factor", ...kartu("m1", 20, 32, 260, 30, W.hijauMuda, ["1. Factor Tree"], 9.6)),
-      tambah("Prime@1", ...kartu("m2", 20, 72, 260, 30, W.langit, ["2. Prime Exponent Rules"], 9.6)),
-      tambah("LCM-GCF", ...kartu("m3", 20, 112, 260, 30, W.krem, ["3. LCM-GCF Bridge"], 9.6)),
-      tambah("Prime@2", ...kartu("m4", 20, 152, 260, 30, W.pink, ["4. Prime Venn Diagram"], 9.6)),
+      tambah(0, judul("Tiga Cara"), ...lantai("lt", 156), ...tokoh("kl", 150, 184, "Kak Lintang")),
+      tambah("tiga", ...X_KARTU.flatMap((x, i) => kartu(`c${i + 1}`, x, 40, 86, 64, "#E5E7EB", ["?"], 20))),
+      tambah("keliru", teks("tc", 150, 128, "3 cara", 13, W.ungu), emo("ms", 150, 142, E.kilau, 14)),
     ),
     k(
-      "Keempatnya bertumpu pada satu gagasan: setiap bilangan punya susunan bilangan prima yang unik, seperti sidik jari.",
-      bersih(0),
-      tambah(0, judul("Satu gagasan yang sama")),
-      tambah("setiap", teks("g1", 150, 66, "72 = 2 × 2 × 2 × 3 × 3", 17, W.biru)),
-      tambah("unik,", teks("g2", 150, 108, "150 = 2 × 3 × 5 × 5", 17, W.hijau)),
-      tambah("sidik", emo("g3", 150, 160, "🔍", 36)),
+      SUARA_PEMBUKA3,
+      ubah("Sieve", { id: "c1-t0", isi: NAMA_METODE[0], u: 9 }, { id: "c1-k", warna: "#DCFCE7" }),
+      ubah("Factor", { id: "c2-t0", isi: NAMA_METODE[1], u: 9 }, { id: "c2-k", warna: "#DBEAFE" }),
+      ubah("Divide", { id: "c3-t0", isi: NAMA_METODE[2], u: 9 }, { id: "c3-k", warna: "#FEF9C3" }),
     ),
     k(
-      "Angkanya begini: tujuh puluh dua dan seratus lima puluh, seratus sembilan puluh enam, tiga ratus, dua ratus tujuh puluh, serta soal Uji satu dan tantangan.",
-      bersih(0),
-      tambah(0, judul("Angka yang kita pakai")),
-      tambah("tujuh", ...kartu("a1", 20, 32, 260, 30, W.langit, ["72 dan 150"], 9.6)),
-      tambah("seratus@2", ...kartu("a2", 20, 72, 260, 30, W.hijauMuda, ["196, 300, dan 270"], 9.6)),
-      tambah("Uji", ...kartu("a3", 20, 112, 260, 30, W.krem, ["Uji 1: 45 dan 135, 96 dan 120"], 9.6)),
-      tambah("tantangan.", ...kartu("a4", 20, 152, 260, 30, W.pink, ["tantangan: 36 dan 108"], 9.6)),
+      SUARA_PEMBUKA4,
+      hapus("Nama", "tc", "ms"),
+      tambah("Saring", teks("c1-i", 51, 90, NAMA_METODE_ID[0], 8.4, W.coklat)),
+      tambah("Pohon", teks("c2-i", 150, 90, NAMA_METODE_ID[1], 8.4, W.coklat)),
+      tambah("Bagi", teks("c3-i", 249, 90, NAMA_METODE_ID[2], 8.4, W.coklat)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Factor Tree: konsep ------------------------------ */
-const f60a = pohon("f60a", POHON_60_A, 150, 44, 56, 34, 9, 9, 0.5);
-const f60b = pohon("f60b", POHON_60_A, 75, 48, 28, 30, 8, 8.4, 0.5);
-const f60c = pohon("f60c", POHON_60_B, 225, 48, 26, 30, 8, 8.4, 0.7);
+/* ------------------------------ Sieve It: konsep ------------------------------ */
+const SUARA_SARING1 = "Cara pertama, Sieve It, atau Saring.";
+const SUARA_SARING2 = "Kita menulis bilangan satu sampai seratus, lalu menghapus satu.";
+const SUARA_SARING3 = "Kita mengambil bilangan prima berikutnya, lalu menghapus semua kelipatannya yang lebih besar.";
+const SUARA_SARING4 = "Kita mengulang sampai tidak ada yang bisa dihapus, dan sisanya adalah bilangan prima.";
 
-export const ADEGAN_LUAR_FT: AdeganStory = {
-  id: "luar-ft",
-  judul: "Factor Tree: pohon faktor",
-  sumber: "Metode luar: Factor Tree",
+const KELIPATAN_2 = kelipatanDari(2, 100);
+const KELIPATAN_357 = [...new Set([3, 5, 7].flatMap((p) => kelipatanDari(p, 100)))].filter((n) => n % 2 !== 0).sort((a, b) => a - b);
+export const ADEGAN_LUAR_SARING: AdeganStory = {
+  id: "luar-saring",
+  judul: "Cara pertama: saring",
+  sumber: "Metode global: Sieve It, konsep",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Metode pertama, Factor Tree atau pohon faktor, memecah bilangan menjadi dua faktor, lalu memecah faktor yang belum prima, sampai semua ujungnya prima.",
-      tambah(0, judul("Factor Tree"), ...f60a.tingkat[0]),
-      tambah(7, ...f60a.tingkat[1]),
-      tambah(12, ...f60a.tingkat[2]),
-      tambah("ujungnya", teks("f60e", 150, 166, "60 = 2 × 3 × 2 × 5", 12, W.hijau)),
+      SUARA_SARING1,
+      tambah(0, judul("Sieve It"), ...lantai("lt", 156), ...tokoh("kl", 262, 184, "Kak Lintang")),
+      tambah("pertama", emo("tg", 40, 74, E.mata, 26), teks("n1", 40, 96, "cara 1", 9, W.coklat)),
+      tambah("Sieve", ...kartu("m", 70, 44, 190, 64, "#DBEAFE", [NAMA_METODE[0], NAMA_METODE_ID[0]], 12)),
+      tambah("Saring", emo("sa", 150, 130, E.kilau, 16)),
     ),
     k(
-      "Aturannya: boleh mulai dari pasangan faktor mana saja, asalkan terus dipecah sampai prima. Bentuk pohon boleh berbeda, tetapi ujung primanya selalu sama.",
+      SUARA_SARING2,
       bersih(0),
-      tambah(0, judul("Bentuk berbeda, ujung sama"), teks("fa", 75, 32, "bentuk A", 8.6, W.biru), teks("fb", 225, 32, "bentuk B", 8.6, W.biru)),
-      tambah("Aturannya", ...f60b.semua),
-      tambah("Bentuk", ...f60c.semua),
-      tambah("selalu", teks("f60f", 150, 176, "ujung prima sama: 2, 2, 3, 5", 11, W.hijau)),
+      tambah(0, judul("Tulis Satu Sampai Seratus"), ...lantai("lt", 156)),
+      tambah("bilangan", bingkaiPapan("pp", 100, PAPAN_100), ...bilanganPapan("pp", 100, PAPAN_100), ...tokoh("kl", 256, 140, "Kak Lintang")),
+      tambah("seratus", teks("lb", 256, 70, "1 - 100", 9, W.biru)),
+      pudarkan("menghapus", "pp-n1"),
     ),
     k(
-      "Kelebihannya: bergambar, mudah diperiksa, dan hasilnya unik, hanya ada satu susunan prima untuk tiap bilangan. Kekurangannya: kurang praktis untuk bilangan yang sangat besar.",
-      bersih(0),
-      tambah(0, judul("Kelebihan dan kekurangan")),
-      tambah("Kelebihannya:", ...kartu("kl", 14, 40, 130, 60, W.hijauMuda, ["bergambar,", "mudah diperiksa,", "hasilnya unik"], 9), emo("kle", 79, 126, "👍", 26)),
-      tambah("Kekurangannya:", ...kartu("kk", 156, 40, 130, 60, W.merahMuda, ["kurang praktis", "untuk bilangan", "sangat besar"], 9), emo("kke", 221, 126, "🤔", 26)),
+      SUARA_SARING3,
+      tambah("mengambil", cincinPapan("pp", 2, PAPAN_100)),
+      tambah("berikutnya", teks("lp", 256, 86, "prima: 2", 10, W.hijauTua)),
+      pudarkan("kelipatannya", ...idBilanganPapan("pp", KELIPATAN_2)),
+      tambah("besar", teks("lc", 256, 100, "hapus 4, 6, 8", 8.4, W.merah)),
     ),
     k(
-      "Cara mengecek: kalikan semua ujung prima, hasilnya harus kembali ke bilangan semula, yaitu enam puluh.",
-      bersih(0),
-      tambah(0, judul("Cek hasil")),
-      tambah("kalikan", teks("c1", 150, 70, "2 × 2 × 3 × 5 = 60", 20, W.hijau)),
-      tambah("kembali", ...kartu("c2", 60, 100, 180, 36, W.krem, ["kembali ke 60"], 11)),
-      tambah("enam", emo("c3", 150, 170, "✅", 30)),
+      SUARA_SARING4,
+      tambah("mengulang", cincinPapan("pp", 3, PAPAN_100), cincinPapan("pp", 5, PAPAN_100), cincinPapan("pp", 7, PAPAN_100)),
+      pudarkan("mengulang", ...idBilanganPapan("pp", KELIPATAN_357)),
+      tambah("sisanya", ...PRIMA_100.filter((n) => n > 7).map((n) => cincinPapan("pp", n, PAPAN_100))),
+      tambah("prima", teks("sp", 256, 86, "sisa: 25", 9, W.hijauTua)),
+      hapus("sisanya", "lp", "lc"),
     ),
   ],
 };
 
-/* ------------------------------ 3. Factor Tree: penerapan ------------------------------ */
-const g196 = pohon("g196", POHON_196, 150, 44, 30, 30, 8.5, 8.4, 0.7);
-const g300 = pohon("g300", POHON_300_B, 150, 44, 62, 34, 8.5, 8.4, 0.55);
-const g270a = pohon("g270a", POHON_270_A, 75, 44, 24, 26, 7.5, 7.6, 0.7);
-const g270b = pohon("g270b", POHON_270_B, 225, 44, 36, 26, 7.5, 7.6, 0.62);
-const g72 = pohon("g72", POHON_72, 75, 44, 22, 26, 7.5, 7.6, 0.75);
-const g150 = pohon("g150", POHON_150, 225, 44, 22, 26, 7.5, 7.6, 0.75);
+/* ------------------------------ Sieve It: terapan Citra ------------------------------ */
+const SUARA_SARINGT1 = "Citra menyaring papan sampai lima puluh: yang tersisa dua, tiga, lima, tujuh, sebelas, sampai empat puluh tujuh.";
+const SUARA_SARINGT2 = "Semua bilangan lain terhapus karena punya faktor lebih dari dua.";
+const SUARA_SARINGT3 = "Cocok untuk mencari banyak bilangan prima sekaligus, karena semuanya terlihat di papan.";
+const SUARA_SARINGT4 = "Kurang cocok untuk memeriksa satu bilangan besar, karena papan harus ditulis sampai bilangan itu.";
 
-export const ADEGAN_LUAR_FT_TERAPAN: AdeganStory = {
-  id: "luar-ft-terapan",
-  judul: "Factor Tree pada 196, 300, 270, 72, dan 150",
-  sumber: "Metode luar: Factor Tree",
-  latar: "#F0FDF4",
+const BUKAN_PRIMA_50 = Array.from({ length: 50 }, (_, i) => i + 1).filter((n) => !PRIMA_50.includes(n));
+export const ADEGAN_LUAR_SARING_TERAPAN: AdeganStory = {
+  id: "luar-saring-terapan",
+  judul: "Citra menyaring papan lima puluh",
+  sumber: "Metode global: Sieve It, terapan Citra",
+  latar: "#FFF7ED",
   ketukan: [
     k(
-      "Contoh pertama: seratus sembilan puluh enam menjadi dua kali sembilan puluh delapan, lalu dua kali empat puluh sembilan, lalu tujuh kali tujuh. Ujungnya dua, dua, tujuh, tujuh.",
-      tambah(0, judul("Factor Tree: 196"), ...g196.tingkat[0]),
-      tambah(6, ...g196.tingkat[1]),
-      tambah(12, ...g196.tingkat[2]),
-      tambah(18, ...g196.tingkat[3]),
-      tambah("Ujungnya", teks("t196", 150, 180, "196 = 2 × 2 × 7 × 7", 11, W.hijau)),
+      SUARA_SARINGT1,
+      tambah(0, judul("Citra Menyaring Papan"), ...lantai("lt", 166)),
+      tambah("Citra", ...tokoh("ci", 262, 150, "Citra")),
+      tambah("papan", bingkaiPapan("pp", 50, PAPAN_50), ...bilanganPapan("pp", 50, PAPAN_50, 10)),
+      pudarkan("tersisa", ...idBilanganPapan("pp", BUKAN_PRIMA_50)),
+      tambah("dua,", cincinPapan("pp", 2, PAPAN_50, W.hijauMuda, 8.4)),
+      tambah("tiga,", cincinPapan("pp", 3, PAPAN_50, W.hijauMuda, 8.4)),
+      tambah(10, cincinPapan("pp", 5, PAPAN_50, W.hijauMuda, 8.4)),
+      tambah("tujuh,", cincinPapan("pp", 7, PAPAN_50, W.hijauMuda, 8.4)),
+      tambah("sebelas,", ...PRIMA_50.filter((n) => n >= 11).map((n) => cincinPapan("pp", n, PAPAN_50, W.hijauMuda, 8.4))),
     ),
     k(
-      "Tiga ratus bisa dipecah menjadi tiga puluh kali sepuluh. Tiga puluh menjadi lima kali enam, enam menjadi dua kali tiga, sepuluh menjadi dua kali lima. Ujungnya tetap dua, dua, tiga, lima, lima.",
-      bersih(0),
-      tambah(0, judul("Factor Tree: 300 bentuk lain"), ...simpul(g300.semua, "g300", "")),
-      tambah(4, ...simpul(g300.semua, "g300", "a", "b")),
-      tambah(11, ...simpul(g300.semua, "g300", "aa", "ab")),
-      tambah(16, ...simpul(g300.semua, "g300", "aba", "abb")),
-      tambah(21, ...simpul(g300.semua, "g300", "ba", "bb")),
-      tambah("Ujungnya", teks("t300", 150, 190, "300 = 2 × 2 × 3 × 5 × 5", 11, W.hijau)),
+      SUARA_SARINGT2,
+      tambah("terhapus", teks("th", 262, 68, "terhapus", 9, W.merah)),
+      tambah("faktor", ...kartu("c1", 14, 138, 100, 24, "#FEE2E2", ["21 = 3 × 7"], 10)),
+      tambah("lebih", ...kartu("c2", 124, 138, 100, 24, "#FEE2E2", ["49 = 7 × 7"], 10)),
+      tambah("dua", teks("kt", 118, 178, "lebih dari 2 faktor", 10, W.merah)),
     ),
     k(
-      "Dua ratus tujuh puluh bisa dua kali seratus tiga puluh lima, atau dua puluh tujuh kali sepuluh. Bentuk pohonnya berbeda, ujungnya sama: dua, tiga, tiga, tiga, lima.",
-      bersih(0),
-      tambah(0, judul("Factor Tree: 270"), teks("la", 75, 32, "dua kali 135", 8.6, W.biru), teks("lb", 225, 32, "27 kali 10", 8.6, W.biru)),
-      tambah("Dua", ...g270a.semua),
-      tambah("atau", ...g270b.semua),
-      tambah("ujungnya", teks("t270", 150, 188, "270 = 2 × 3 × 3 × 3 × 5", 10, W.hijau)),
+      SUARA_SARINGT3,
+      tambah("Cocok", emo("ok", 262, 52, E.benar, 18), teks("lb", 262, 86, "cocok", 12, W.hijauTua)),
+      tambah("banyak", teks("bn", 262, 100, "15 prima", 10, W.hijauTua)),
+      ubah("semuanya", ...PRIMA_50.map((n) => ({ id: `pp-r${n}`, warna: W.emas }))),
     ),
     k(
-      "Pohon tujuh puluh dua berujung dua, dua, dua, tiga, tiga. Pohon seratus lima puluh berujung dua, tiga, lima, lima. Kedua pohon ini siap dipakai untuk KPK dan FPB.",
+      SUARA_SARINGT4,
       bersih(0),
-      tambah(0, judul("Siap untuk KPK dan FPB")),
-      tambah("tujuh", ...g72.semua, teks("t72", 75, 176, "72 = 2 × 2 × 2 × 3 × 3", 8.6, W.biru)),
-      tambah("seratus", ...g150.semua, teks("t150", 225, 176, "150 = 2 × 3 × 5 × 5", 8.6, W.hijau)),
+      tambah(0, judul("Satu Bilangan Besar"), ...lantai("lt", 156), ...tokoh("ci", 262, 184, "Citra")),
+      tambah("Kurang", emo("x1", 150, 56, E.salah, 22), teks("kc", 150, 78, "kurang cocok", 12, W.merah)),
+      tambah("besar", ...kartu("bb", 14, 92, 110, 30, "#FEF9C3", ["bilangan besar?"], 10)),
+      tambah("papan", ...[0, 1, 2, 3, 4].map((i) => kotak(`bx${i}`, 20 + i * 30, 138, 26, 18, W.papan, W.kayuTua, { rx: 2, tebal: 1.4 })), teks("bt", 190, 151, "...", 14, W.biru)),
+      tambah("sampai", panah("pn", 140, 108, 100, 0, W.merah, 2), bulat("bq", 252, 108, 16, "#FEE2E2", W.merah), teks("bq-t", 252, 113, "?", 16, W.merah)),
     ),
   ],
 };
-
-/* ------------------------------ 4. Prime Exponent Rules: konsep ------------------------------ */
-export const ADEGAN_LUAR_PER: AdeganStory = {
-  id: "luar-per",
-  judul: "Prime Exponent Rules: pangkat prima",
-  sumber: "Metode luar: Prime Exponent Rules",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      "Metode kedua, Prime Exponent Rules, menulis faktorisasi prima dengan pangkat. Dua kali dua kali dua ditulis dua pangkat tiga, dan tiga kali tiga ditulis tiga pangkat dua.",
-      tambah(0, judul("Prime Exponent Rules")),
-      tambah("Dua@2", teks("p1", 110, 74, "2 × 2 × 2 =", 15, W.biru), ...pangkat("pa", 200, 74, [[2, 3]], 15, W.merah)),
-      tambah("tiga@2", teks("p2", 110, 124, "3 × 3 =", 15, W.biru), ...pangkat("pb", 190, 124, [[3, 2]], 15, W.merah)),
-    ),
-    k(
-      "Setelah ditulis dengan pangkat, KPK mengambil pangkat terbesar tiap bilangan prima dari kedua bilangan, dan prima yang hanya muncul sekali tetap diambil.",
-      bersih(0),
-      tambah(0, judul("Aturan KPK")),
-      tambah("KPK", ...kartu("ka", 20, 40, 260, 40, W.hijauMuda, ["KPK: ambil pangkat TERBESAR", "tiap bilangan prima"], 10)),
-      tambah("prima@2", ...kartu("kb", 20, 96, 260, 40, W.krem, ["prima yang hanya muncul", "sekali tetap diambil"], 10)),
-    ),
-    k(
-      "FPB mengambil pangkat terkecil, tetapi hanya untuk prima yang ada di kedua bilangan. Prima yang tidak muncul di salah satu bilangan dianggap berpangkat nol, jadi tidak ikut.",
-      bersih(0),
-      tambah(0, judul("Aturan FPB")),
-      tambah("FPB", ...kartu("fa", 20, 40, 260, 40, W.merahMuda, ["FPB: ambil pangkat TERKECIL", "hanya prima di kedua bilangan"], 10)),
-      tambah("nol,", ...kartu("fb", 20, 96, 260, 40, W.krem, ["prima yang tidak ada", "dianggap berpangkat 0"], 10)),
-    ),
-    k(
-      "Kelebihannya: aturannya jelas dan cepat untuk bilangan besar. Kekurangannya: harus paham pangkat dan teliti membandingkan pangkat.",
-      bersih(0),
-      tambah(0, judul("Kelebihan dan kekurangan")),
-      tambah("Kelebihannya:", ...kartu("kl", 14, 40, 130, 54, W.hijauMuda, ["jelas dan cepat", "untuk bilangan besar"], 9), emo("kle", 79, 124, "👍", 26)),
-      tambah("Kekurangannya:", ...kartu("kk", 156, 40, 130, 54, W.merahMuda, ["harus paham pangkat", "dan teliti"], 9), emo("kke", 221, 124, "🤔", 26)),
-    ),
-  ],
-};
-
-/* ------------------------------ 5. Prime Exponent Rules: penerapan ------------------------------ */
-export const ADEGAN_LUAR_PER_TERAPAN: AdeganStory = {
-  id: "luar-per-terapan",
-  judul: "Prime Exponent Rules pada 72 dan 150, 45 dan 135",
-  sumber: "Metode luar: Prime Exponent Rules",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      "Tujuh puluh dua sama dengan dua pangkat tiga kali tiga pangkat dua. Seratus lima puluh sama dengan dua kali tiga kali lima pangkat dua.",
-      tambah(0, judul("72 dan 150 dengan pangkat")),
-      tambah("Tujuh", teks("l1", 138, 66, "72 =", 14, W.biru), ...pangkat("x1", 192, 66, [[2, 3], [3, 2]], 14, W.biru)),
-      tambah("Seratus", teks("l2", 138, 116, "150 =", 14, W.hijau), ...pangkat("x2", 195, 116, [[2, 1], [3, 1], [5, 2]], 14, W.hijau)),
-    ),
-    k(
-      "KPK: dua pangkat tiga, tiga pangkat dua, lima pangkat dua, yaitu delapan kali sembilan kali dua puluh lima, sama dengan seribu delapan ratus.",
-      bersih(0),
-      tambah(0, judul("KPK: pangkat terbesar")),
-      tambah("KPK", teks("k0", 50, 66, "KPK =", 13, W.biru), ...pangkat("k1", 160, 66, [[2, 3], [3, 2], [5, 2]], 13, W.hijau)),
-      tambah("delapan", teks("k2", 150, 118, "= 8 × 9 × 25 = 1.800", 15, W.hijau)),
-    ),
-    k(
-      "FPB: dua pangkat satu dan tiga pangkat satu, dua kali tiga sama dengan enam. Lima tidak ikut, karena tidak ada di tujuh puluh dua.",
-      bersih(0),
-      tambah(0, judul("FPB: pangkat terkecil")),
-      tambah("FPB", teks("f0", 50, 66, "FPB =", 13, W.biru), ...pangkat("f1", 130, 66, [[2, 1], [3, 1]], 13, W.merah)),
-      tambah("tiga@2", teks("f2", 150, 106, "= 2 × 3 = 6", 15, W.merah)),
-      tambah("Lima", ...kartu("f3", 40, 128, 220, 36, W.krem, ["5 tidak ikut: tidak ada di 72"], 10)),
-    ),
-    k(
-      "Cara sama untuk empat puluh lima dan seratus tiga puluh lima: tiga pangkat dua kali lima, dan tiga pangkat tiga kali lima. FPB-nya empat puluh lima, KPK-nya seratus tiga puluh lima.",
-      bersih(0),
-      tambah(0, judul("Uji 1a")),
-      tambah("Empat", teks("u1", 90, 56, "45 =", 13, W.biru), ...pangkat("u2", 160, 56, [[3, 2], [5, 1]], 13, W.biru)),
-      tambah("seratus", teks("u3", 90, 90, "135 =", 13, W.biru), ...pangkat("u4", 160, 90, [[3, 3], [5, 1]], 13, W.biru)),
-      tambah("FPB-nya", teks("u5", 150, 130, "FPB = 3² × 5 = 9 × 5 = 45", 13, W.merah)),
-      tambah("KPK-nya", teks("u6", 150, 164, "KPK = 3³ × 5 = 27 × 5 = 135", 13, W.hijau)),
-    ),
-  ],
-};
-

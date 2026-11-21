@@ -5,7 +5,7 @@
   "grade": 5,
   "subjectLabel": "MATEMATIKA - KELAS 5 SD",
   "title": "BAB 2: KPK DAN FPB",
-  "silabusElemen": "🌈 Fase C • Elemen Bilangan: Kelipatan, KPK, Faktor, FPB, serta Faktorisasi Prima (Kelas 5 SD/MI)",
+  "silabusElemen": "🌈 Fase C • Elemen Bilangan: Kelipatan, Kelipatan Persekutuan dan KPK, Faktor, Faktor Persekutuan dan FPB, serta Faktor Prima (SD/MI)",
   "suaraPerangkatSaja": true,
   "suaraLaju": 0.7,
   "suaraNada": 1,
@@ -19,50 +19,48 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Kelipatan)",
       "fullTitle": "Sub-Bab A: Kelipatan",
-      "targetDescription": "Siswa memahami kelipatan sebagai hasil lompat hitung bilangan sama besar, memeriksa habis dibagi, dan memakai tabel seratus sesuai Buku Siswa Kelas V Bab 2 Sub-Bab A.",
+      "targetDescription": "Di Pasar Kuliner Malam, kita menulis jadwal lonceng sebagai kelipatan: hasil kali bilangan bulat dengan bilangan itu, nol bukan kelipatan, tabel bilangan, dan pemeriksaan dengan pembagian.",
       "secondaryBg": "#FFEDD5",
       "secondaryBorder": "#EA580C",
       "secondaryText": "#7C2D12",
       "silabus": {
-        "teksSuara": "Kita belajar kelipatan. Bayangkan melompat di garis bilangan dengan jarak sama: 3, 6, 9, 12. Itu kelipatan tiga. Kita cek juga apakah suatu bilangan habis dibagi, dan menandai di tabel seratus. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menentukan kelipatan suatu bilangan dan memeriksa keterbagian.",
-        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2 Sub-Bab A)."
+        "teksSuara": "Kita belajar kelipatan di Pasar Kuliner Malam. Lonceng berbunyi tiap empat menit: empat, delapan, dua belas. Itu kelipatan empat, hasil bilangan bulat dikali empat. Nol bukan kelipatan. Kita memakai lompat hitung, warnai tabel, dan cek kali. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menentukan kelipatan suatu bilangan dan memeriksa apakah suatu bilangan kelipatan bilangan lain.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase C, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
           "nama": "Skip Counting",
           "namaId": "Lompat Hitung",
-          "asal": "Number sense / Singapore",
-          "ringkas": "Kelipatan didapat dengan melompat jarak sama di garis bilangan atau hitungan.",
+          "asal": "IGIL",
+          "ringkas": "Lompat dengan jarak sama; tiap pendaratan adalah satu kelipatan.",
           "tahap": [
             "Story",
-            "Mind",
-            "Concrete"
+            "Concrete",
+            "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Hundred Chart",
-          "namaId": "Tabel Seratus",
-          "asal": "Elementary number sense",
-          "ringkas": "Tandai kelipatan pada tabel 1–100 untuk melihat pola.",
+          "nama": "Grid Marking",
+          "namaId": "Warnai Tabel",
+          "asal": "IGIL",
+          "ringkas": "Warnai kelipatan pada tabel bilangan sampai seratus agar semuanya terlihat.",
           "tahap": [
-            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Times Check",
+          "namaId": "Cek Kali",
+          "asal": "IGIL",
+          "ringkas": "Bilangan adalah kelipatan bila sama dengan bilangan bulat dikali bilangan itu; bagi dan lihat sisanya.",
+          "tahap": [
             "Picture",
-            "Infografis"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Divisibility Check",
-          "namaId": "Cek Habis Dibagi",
-          "asal": "Number theory intro",
-          "ringkas": "Bilangan A kelipatan B jika A habis dibagi B (sisa 0).",
-          "tahap": [
-            "Story",
-            "Abstract",
-            "Concrete"
+            "Abstract"
           ]
         }
       ],
@@ -769,51 +767,50 @@
     },
     "B": {
       "id": "B",
-      "codeTitle": "Sub-Bab B (Kelipatan Persekutuan)",
+      "codeTitle": "Sub-Bab B (Kelipatan Persekutuan dan KPK)",
       "fullTitle": "Sub-Bab B: Kelipatan Persekutuan dan KPK",
-      "targetDescription": "Siswa menentukan kelipatan persekutuan dan KPK dari dua bilangan dengan daftar bersama dan pengantar faktor prima sesuai Buku Siswa Kelas V Bab 2 Sub-Bab B.",
+      "targetDescription": "Di gerobak Pak Tarno, dua lonceng berbunyi bergantian; kita mencari kelipatan persekutuan, KPK, jadwal yang bertemu lagi, dan KPK tiga bilangan.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
       "silabus": {
-        "teksSuara": "Kita mencari bilangan yang menjadi kelipatan dua bilangan sekaligus. Itu kelipatan persekutuan. Yang terkecil disebut KPK. Buat dua daftar, cari irisan, ambil yang terkecil. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menentukan kelipatan persekutuan dan KPK dua bilangan.",
-        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2 Sub-Bab B)."
+        "teksSuara": "Kita mencari kapan dua lonceng berbunyi bersamaan. Bilangan yang muncul di dua daftar kelipatan disebut kelipatan persekutuan. Yang paling kecil disebut KPK. Kita memakai daftar keduanya, cari yang sama, dan bertemu lagi. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menentukan kelipatan persekutuan dan KPK dua atau tiga bilangan serta memakainya pada jadwal berulang.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase C, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Common Multiples List",
-          "namaId": "Daftar Kelipatan Bersama",
-          "asal": "Singapore / US textbooks",
-          "ringkas": "Buat dua daftar kelipatan, cari bilangan yang muncul di keduanya.",
+          "nama": "List Both",
+          "namaId": "Daftar Keduanya",
+          "asal": "IGIL",
+          "ringkas": "Tulis daftar kelipatan kedua bilangan berdampingan dan cukup panjang.",
           "tahap": [
             "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Spot the Match",
+          "namaId": "Cari yang Sama",
+          "asal": "IGIL",
+          "ringkas": "Tandai bilangan yang ada di kedua daftar, lalu ambil yang terkecil sebagai KPK.",
+          "tahap": [
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "LCM Concept",
-          "namaId": "KPK dari Irisan",
-          "asal": "Number sense",
-          "ringkas": "KPK adalah kelipatan persekutuan yang terkecil positif.",
+          "nama": "Meet Again",
+          "namaId": "Bertemu Lagi",
+          "asal": "IGIL",
+          "ringkas": "KPK adalah jarak waktu antara dua pertemuan: hari ini bersama, berikutnya sesudah KPK.",
           "tahap": [
-            "Story",
-            "Mind",
+            "Picture",
             "Abstract"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Prime Factor Preview",
-          "namaId": "KPK dari Faktor Prima",
-          "asal": "Prime factorization intro",
-          "ringkas": "Nanti KPK juga bisa dari faktor prima; hari ini kuasai daftar dulu.",
-          "tahap": [
-            "Story",
-            "Infografis"
           ]
         }
       ],
@@ -1522,22 +1519,22 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Faktor)",
       "fullTitle": "Sub-Bab C: Faktor",
-      "targetDescription": "Siswa menentukan faktor suatu bilangan dengan pasangan faktor, diagram faktor, dan model susunan persegi panjang sesuai Buku Siswa Kelas V Bab 2 Sub-Bab C.",
+      "targetDescription": "Di baki Bu Wati, kita menata klepon ke piring sama banyak tanpa sisa untuk menemukan faktor, pasangan faktor, dan daftar semua faktor.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#16A34A",
       "secondaryText": "#14532D",
       "silabus": {
-        "teksSuara": "Kita belajar faktor. Faktor adalah bilangan yang membagi habis. Cari berpasangan: 1 dengan n, 2 dengan hasil baginya, sampai pasangan bertemu. Susunan persegi panjang juga menunjukkan faktor. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menentukan faktor suatu bilangan.",
-        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2 Sub-Bab C)."
+        "teksSuara": "Kita menata klepon ke piring dengan isi sama banyak, tanpa sisa. Bilangan cacah yang membagi tanpa sisa disebut faktor. Faktor selalu berpasangan, dan satu serta bilangan itu sendiri selalu faktor. Kita memakai potong dan hitung, pasangkan, dan cek bagi. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menentukan semua faktor suatu bilangan cacah.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase C, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Factor Pairs",
-          "namaId": "Pasangan Faktor",
-          "asal": "Array / area model",
-          "ringkas": "Faktor datang berpasangan yang hasil kalinya bilangan itu.",
+          "nama": "Cut and Count",
+          "namaId": "Potong dan Hitung",
+          "asal": "IGIL",
+          "ringkas": "Potong pita petak menjadi bagian sama panjang tanpa sisa; panjang bagian dan banyak potongan adalah faktor.",
           "tahap": [
             "Story",
             "Concrete",
@@ -1546,26 +1543,24 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Factor Rainbow",
-          "namaId": "Diagram Faktor",
-          "asal": "Visual organizers",
-          "ringkas": "Gambar pelangi pasangan faktor dari kecil ke besar.",
+          "nama": "Pair Up",
+          "namaId": "Pasangkan",
+          "asal": "IGIL",
+          "ringkas": "Cari pasangan faktor yang hasil kalinya bilangan itu, sampai bertemu di tengah.",
           "tahap": [
-            "Story",
-            "Picture",
-            "Infografis"
+            "Concrete",
+            "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Array Model",
-          "namaId": "Model Susunan Persegi Panjang",
-          "asal": "Area model",
-          "ringkas": "Baris×kolom yang membentuk n menunjukkan faktor.",
+          "nama": "Divide Check",
+          "namaId": "Cek Bagi",
+          "asal": "IGIL",
+          "ringkas": "Bagi dengan bilangan percobaan; bila sisanya nol, bilangan itu faktor.",
           "tahap": [
-            "Story",
-            "Mind",
-            "Concrete"
+            "Picture",
+            "Abstract"
           ]
         }
       ],
@@ -2272,51 +2267,50 @@
     },
     "D": {
       "id": "D",
-      "codeTitle": "Sub-Bab D (Faktor Persekutuan)",
+      "codeTitle": "Sub-Bab D (Faktor Persekutuan dan FPB)",
       "fullTitle": "Sub-Bab D: Faktor Persekutuan dan FPB",
-      "targetDescription": "Siswa menentukan faktor persekutuan dan FPB dua bilangan dengan daftar faktor bersama serta pengantar ide selisih sesuai Buku Siswa Kelas V Bab 2 Sub-Bab D.",
+      "targetDescription": "Di meja Pak Joko, kita mengisi kotak bingkisan sama rata sebanyak-banyaknya untuk menemukan faktor persekutuan dan FPB, dengan bantuan papan congklak.",
       "secondaryBg": "#FCE7F3",
       "secondaryBorder": "#DB2777",
       "secondaryText": "#9D174D",
       "silabus": {
-        "teksSuara": "Kita mencari faktor yang sama dari dua bilangan. Irisannya disebut faktor persekutuan. Yang terbesar adalah FPB. Buat dua daftar faktor, cari irisan, ambil yang terbesar. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menentukan faktor persekutuan dan FPB dua bilangan.",
-        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2 Sub-Bab D)."
+        "teksSuara": "Kita mengisi kotak bingkisan dengan klepon dan onde-onde yang sama banyak. Faktor yang sama pada dua bilangan disebut faktor persekutuan, dan yang paling besar disebut FPB. Kita memakai dua daftar, bagi sama rata, dan terbesar yang sama. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menentukan faktor persekutuan dan FPB dua atau tiga bilangan serta memakainya untuk membagi benda sama rata.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase C, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Common Factors List",
-          "namaId": "Daftar Faktor Persekutuan",
-          "asal": "Singapore / US",
-          "ringkas": "Irisan dua daftar faktor = faktor persekutuan.",
+          "nama": "Two Lists",
+          "namaId": "Dua Daftar",
+          "asal": "IGIL",
+          "ringkas": "Tulis faktor kedua bilangan, lalu lingkari yang sama.",
           "tahap": [
             "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Share Equally",
+          "namaId": "Bagi Sama Rata",
+          "asal": "IGIL",
+          "ringkas": "Bagi benda ke wadah sebanyak-banyaknya dengan isi tiap jenis sama dan tanpa sisa.",
+          "tahap": [
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "GCF Concept",
-          "namaId": "FPB dari Irisan",
-          "asal": "Number sense",
-          "ringkas": "FPB adalah faktor persekutuan terbesar.",
+          "nama": "Biggest Match",
+          "namaId": "Terbesar yang Sama",
+          "asal": "IGIL",
+          "ringkas": "Periksa faktor dari yang besar; faktor pertama yang membagi keduanya adalah FPB.",
           "tahap": [
-            "Story",
-            "Mind",
+            "Picture",
             "Abstract"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Euclid Preview",
-          "namaId": "Ide Selisih / Sisa",
-          "asal": "Euclidean algorithm intro",
-          "ringkas": "FPB terkait sisa pembagian; hari ini kuasai daftar dulu.",
-          "tahap": [
-            "Story",
-            "Infografis"
           ]
         }
       ],
@@ -3024,50 +3018,48 @@
     "E": {
       "id": "E",
       "codeTitle": "Sub-Bab E (Faktor Prima)",
-      "fullTitle": "Sub-Bab E: Menentukan KPK dan FPB dengan Faktor Prima",
-      "targetDescription": "Siswa menentukan KPK dan FPB dengan faktorisasi prima, pohon faktor, dan jembatan hubungan KPK–FPB sesuai Buku Siswa Kelas V Bab 2 Sub-Bab E.",
+      "fullTitle": "Sub-Bab E: Menentukan KPK dan FPB dengan Menggunakan Faktor Prima",
+      "targetDescription": "Di papan Kak Lintang, kita mengenal bilangan prima dan saringan Eratosthenes, membuat pohon faktor, lalu menentukan KPK dan FPB dengan faktorisasi prima dan pembagian berulang.",
       "secondaryBg": "#EDE9FE",
       "secondaryBorder": "#7C3AED",
       "secondaryText": "#5B21B6",
       "silabus": {
-        "teksSuara": "Kita memecah bilangan jadi faktor prima dengan pohon faktor. FPB memakai pangkat terkecil yang sama. KPK memakai pangkat terbesar tiap prima. Ini jalan pintas dari daftar panjang. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menentukan KPK dan FPB dengan faktor prima.",
-        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2 Sub-Bab E)."
+        "teksSuara": "Kita mengenal bilangan prima: hanya bisa dibagi satu dan dirinya sendiri, dan satu bukan prima. Pohon faktor memecah bilangan menjadi hasil kali bilangan prima. Dari faktorisasi prima kita menentukan KPK dan FPB, dan pembagian berulang adalah cara lain. Kita memakai saring, pohon faktor, dan bagi berulang. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menentukan bilangan prima dan faktorisasi prima serta KPK dan FPB dengan faktorisasi prima dan pembagian berulang.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase C, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Factor Tree",
-          "namaId": "Pohon Faktor",
-          "asal": "Prime factorization",
-          "ringkas": "Urai bilangan sampai semua daunnya bilangan prima.",
+          "nama": "Sieve It",
+          "namaId": "Saring",
+          "asal": "IGIL",
+          "ringkas": "Hapus satu, lalu hapus kelipatan tiap bilangan prima; yang tersisa bilangan prima.",
           "tahap": [
             "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Factor Tree",
+          "namaId": "Pohon Faktor",
+          "asal": "IGIL",
+          "ringkas": "Pecah bilangan menjadi dua faktor sampai semua ujungnya prima; tulis hasil kali berulang.",
+          "tahap": [
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Prime Exponent Rules",
-          "namaId": "Ide Ayakan Prima",
-          "asal": "LCM/GCF algorithms",
-          "ringkas": "FPB: pangkat min. KPK: pangkat max tiap prima.",
+          "nama": "Divide Down",
+          "namaId": "Bagi Berulang",
+          "asal": "IGIL",
+          "ringkas": "Bagi dengan bilangan prima sampai semuanya satu; hasil kali pembagi memberi KPK, pembagi bersama memberi FPB.",
           "tahap": [
-            "Story",
-            "Mind",
-            "Abstract"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "LCM-GCF Bridge",
-          "namaId": "Jembatan KPK dan FPB",
-          "asal": "Number relations",
-          "ringkas": "Untuk dua bilangan, FPB×KPK = hasil kali keduanya (cek berguna).",
-          "tahap": [
-            "Story",
-            "Infografis",
+            "Picture",
             "Abstract"
           ]
         }

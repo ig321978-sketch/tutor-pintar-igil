@@ -2,92 +2,99 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import LabBertahap, { type TabLab } from "./LabBertahap";
-import SimulasiLabKelipatanK5B2 from "./SimulasiLabKelipatanK5B2";
-import SimulasiLabJalurK5B2 from "./SimulasiLabJalurK5B2";
-import SimulasiLabFaktorK5B2 from "./SimulasiLabFaktorK5B2";
-import SimulasiLabBersamaK5B2 from "./SimulasiLabBersamaK5B2";
-import SimulasiLabPrimaK5B2 from "./SimulasiLabPrimaK5B2";
-import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
-import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K5B2A, SKENARIO_K5B2B, SKENARIO_K5B2C, SKENARIO_K5B2D, SKENARIO_K5B2E } from "./skenario-k5b2";
-import { MESIN_KELIPATAN, MESIN_KPK, MESIN_FAKTOR, MESIN_FPB, MESIN_PRIMA } from "./mesin-data-k5b2";
-import { ejaK5B1 } from "./eja-k5b1";
-import type { DefSkenario } from "./skenario-umum";
-import type { DefMesin } from "./mesin-bertahap-k3b1";
-import { daftarMisiK5Bab2, ID_SKENARIO_K5B2, type KeadaanK5Bab2 } from "./misi-k5bab2";
-import { laporMisi, tampilMisi } from "./misi-simulasi";
-import { MISI_K5B2, NAMA_SIM_K5B2, hurufK5B2, misiAwalK5Bab2, type HurufK5B2 } from "./misi-teks-k5b2";
+import { MISI_K5B2, hurufK5B2, misiAwalK5Bab2 } from "./misi-teks-k5b2";
+import { daftarMisiK5Bab2 } from "./misi-k5bab2";
+import { laporMisi as laporMisiLonceng } from "./misi-simulasi";
+import SimulasiLompatLonceng from "./lonceng-k5b2a/SimulasiLompatLonceng";
+import type { KeadaanLonceng } from "./lonceng-k5b2a/logika";
+import { laporMisi as laporMisiJadwal } from "./misi-simulasi";
+import SimulasiDuaLonceng from "./jadwal-k5b2b/SimulasiDuaLonceng";
+import type { KeadaanJadwal } from "./jadwal-k5b2b/logika";
+import { laporMisi as laporMisiPiring } from "./misi-simulasi";
+import SimulasiTataPiring from "./piring-k5b2c/SimulasiTataPiring";
+import type { KeadaanPiring } from "./piring-k5b2c/logika";
+import { laporMisi as laporMisiKotak } from "./misi-simulasi";
+import SimulasiIsiKotak from "./kotak-k5b2d/SimulasiIsiKotak";
+import type { KeadaanKotak } from "./kotak-k5b2d/logika";
+import { laporMisi as laporMisiPapan } from "./misi-simulasi";
+import SimulasiPohonPapan from "./papan-k5b2e/SimulasiPohonPapan";
+import type { KeadaanPapan } from "./papan-k5b2e/logika";
 
 /* ======================================================================== */
-/* Simulasi Kelas 5 Bab 2 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
-/* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k5bab2.ts. */
-/*   A Kelipatan : Lab Lompat Kelipatan + Mesin Kelipatan + Tepuk Kelipatan Nisa */
-/*   B KPK       : Lab Dua Jalur + Mesin KPK + Jadwal Renang Yohana            */
-/*   C Faktor    : Lab Susunan Faktor + Mesin Faktor + Potong Petak Lukas      */
-/*   D FPB       : Lab Faktor Bersama + Mesin FPB + Vas Mawar Amelia           */
-/*   E Faktor prima : Lab Pohon Prima + Mesin Prima + Kebun Sekolah Nisa (pencapaian bab) */
+/* Simulasi Kelas 5 Bab 2 di dalam Materi (tahap 4 SMISCPA), tema           */
+/* Pasar Kuliner Malam: A Lompat Lonceng, B Dua Lonceng, C Tata Piring,     */
+/* D Isi Kotak, E Pohon Papan.                                               */
+/* KERANGKA: agen Sub-Bab mengisi fungsi langkah-nya (impor dari folder      */
+/* miliknya; render sekarang null) dan menambah impor yang dibutuhkan.        */
 /* ======================================================================== */
 
-const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
+type Void = void;
+const _tipe: [KeadaanLonceng?, KeadaanJadwal?, KeadaanPiring?, KeadaanKotak?, KeadaanPapan?, Void?] = [];
+void _tipe;
 
-const SKENARIO: Record<HurufK5B2, DefSkenario> = { A: SKENARIO_K5B2A, B: SKENARIO_K5B2B, C: SKENARIO_K5B2C, D: SKENARIO_K5B2D, E: SKENARIO_K5B2E };
-const MESIN: Record<HurufK5B2, DefMesin> = { A: MESIN_KELIPATAN, B: MESIN_KPK, C: MESIN_FAKTOR, D: MESIN_FPB, E: MESIN_PRIMA };
+/** Sub-Bab A: Lompat Lonceng. */
+const langkahLompatLoncengA = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Lompat Lonceng",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K5B2.A,
+  misiDaftar: daftarMisiK5Bab2("A").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiLompatLonceng speakGuru={a.speakGuru} onKeadaan={(k: KeadaanLonceng) => laporMisiLonceng(daftarMisiK5Bab2("A"), k, a.capai)} />,
+});
 
-const COBA_MESIN: Record<HurufK5B2, string[]> = {
-  A: ["Ketuk stasiun Cek sebelum Lompat. Apa kata mesin?", "Mengapa sisa harus nol agar bilangan menjadi kelipatan?", "Apa yang sama pada semua pendaratan lompatan berjarak tiga?"],
-  B: ["Ketuk stasiun KPK sebelum Jalur. Apa kata mesin?", "Mengapa KPK harus yang terkecil di antara kelipatan persekutuan?", "Mengapa jumlah dua bilangan bukan KPK?"],
-  C: ["Ketuk stasiun Cek sebelum Susun. Apa kata mesin?", "Mengapa satu dan bilangan itu sendiri selalu faktor?", "Mengapa faktor selalu berpasangan?"],
-  D: ["Ketuk stasiun Jembatan sebelum Daftar. Apa kata mesin?", "Mengapa FPB harus yang terbesar di antara faktor persekutuan?", "Mengapa FPB dikali KPK sama dengan hasil kali dua bilangan?"],
-  E: ["Ketuk stasiun Hasil sebelum Prima. Apa kata mesin?", "Mengapa pohon faktor harus berhenti di bilangan prima?", "Mengapa KPK mengambil jumlah terbanyak, bukan paling sedikit?"],
-};
+/** Sub-Bab B: Dua Lonceng. */
+const langkahDuaLoncengB = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Dua Lonceng",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K5B2.B,
+  misiDaftar: daftarMisiK5Bab2("B").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiDuaLonceng speakGuru={a.speakGuru} onKeadaan={(k: KeadaanJadwal) => laporMisiJadwal(daftarMisiK5Bab2("B"), k, a.capai)} />,
+});
 
-const LAB: Record<HurufK5B2, { id: string; nama: string }> = {
-  A: { id: "kelipatan", nama: "Lab Lompat Kelipatan" },
-  B: { id: "jalur", nama: "Lab Dua Jalur" },
-  C: { id: "faktor", nama: "Lab Susunan Faktor" },
-  D: { id: "bersama", nama: "Lab Faktor Bersama" },
-  E: { id: "prima", nama: "Lab Pohon Prima" },
-};
+/** Sub-Bab C: Tata Piring. */
+const langkahTataPiringC = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Tata Piring",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K5B2.C,
+  misiDaftar: daftarMisiK5Bab2("C").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiTataPiring speakGuru={a.speakGuru} onKeadaan={(k: KeadaanPiring) => laporMisiPiring(daftarMisiK5Bab2("C"), k, a.capai)} />,
+});
 
-function LabSub({ huruf, speakGuru, lapor }: { huruf: HurufK5B2; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab2) => void }) {
-  if (huruf === "B") return <SimulasiLabJalurK5B2 speakGuru={speakGuru} onKeadaan={lapor} />;
-  if (huruf === "C") return <SimulasiLabFaktorK5B2 speakGuru={speakGuru} onKeadaan={lapor} />;
-  if (huruf === "D") return <SimulasiLabBersamaK5B2 speakGuru={speakGuru} onKeadaan={lapor} />;
-  if (huruf === "E") return <SimulasiLabPrimaK5B2 speakGuru={speakGuru} onKeadaan={lapor} />;
-  return <SimulasiLabKelipatanK5B2 speakGuru={speakGuru} onKeadaan={lapor} />;
-}
+/** Sub-Bab D: Isi Kotak. */
+const langkahIsiKotakD = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Isi Kotak",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K5B2.D,
+  misiDaftar: daftarMisiK5Bab2("D").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiIsiKotak speakGuru={a.speakGuru} onKeadaan={(k: KeadaanKotak) => laporMisiKotak(daftarMisiK5Bab2("D"), k, a.capai)} />,
+});
+
+/** Sub-Bab E: Pohon Papan. */
+const langkahPohonPapanE = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Pohon Papan",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K5B2.E,
+  misiDaftar: daftarMisiK5Bab2("E").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiPohonPapan speakGuru={a.speakGuru} onKeadaan={(k: KeadaanPapan) => laporMisiPapan(daftarMisiK5Bab2("E"), k, a.capai)} />,
+});
 
 const langkahK5Bab2 = (sub: string): LangkahSim[] => {
   const huruf = hurufK5B2(sub);
-  const daftar = daftarMisiK5Bab2(huruf);
-  return [
-    {
-      metode: "PhET",
-      sub: NAMA_SIM_K5B2[huruf],
-      petunjuk: MAINKAN_DULU,
-      misi: MISI_K5B2[huruf],
-      misiDaftar: tampilMisi(daftar),
-      mode: "sentuh",
-      render: (a) => {
-        const lapor = (k: KeadaanK5Bab2) => laporMisi(daftar, k, a.capai);
-        const selesai = (id: string) => lapor({ alat: "selesai", id });
-        const lab: TabLab = { ...LAB[huruf], render: () => <LabSub huruf={huruf} speakGuru={a.speakGuru} lapor={lapor} /> };
-        const def = MESIN[huruf];
-        const mesin: TabLab = {
-          id: "mesin",
-          nama: def.judul,
-          render: () => <SimulasiMesinBertahapK3 def={def} coba={COBA_MESIN[huruf]} speakGuru={a.speakGuru} onTuntas={selesai} eja={ejaK5B1} />,
-        };
-        const skenario: TabLab = {
-          id: "skenario",
-          nama: SKENARIO[huruf].judul,
-          render: () => <SimulasiSkenario def={SKENARIO[huruf]} speakGuru={a.speakGuru} onTuntas={() => selesai(ID_SKENARIO_K5B2[huruf])} />,
-        };
-        return <LabBertahap tab={[lab, mesin, skenario]} label="Alat laboratorium bilangan" />;
-      },
-    },
-  ];
+  if (huruf === "A") return [langkahLompatLoncengA()];
+  if (huruf === "B") return [langkahDuaLoncengB()];
+  if (huruf === "C") return [langkahTataPiringC()];
+  if (huruf === "D") return [langkahIsiKotakD()];
+  if (huruf === "E") return [langkahPohonPapanE()];
+  return [langkahLompatLoncengA()];
 };
 
 export { misiAwalK5Bab2 };
@@ -106,7 +113,7 @@ export default function SimulasiK5Bab2Materi({
   const huruf = hurufK5B2(sub);
   return (
     <SimulasiAlur
-      judulBab={`Kelas 5 Bab 2 · Sub-Bab ${huruf}`}
+      judulBab={`Bab 2 · Sub-Bab ${huruf}`}
       langkah={langkahK5Bab2(sub)}
       speakGuru={speakGuru}
       onSelesai={onSelesai}

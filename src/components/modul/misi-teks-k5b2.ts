@@ -1,6 +1,7 @@
 /**
- * Teks misi dan nama simulasi Kelas 5 Bab 2. Berkas kecil tanpa impor, dipisah dari SimulasiK5Bab2.tsx
- * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen laboratorium ke bundel awal.
+ * Teks misi awal Kelas 5 Bab 2 (KPK dan FPB, Pasar Kuliner Malam). Berkas kecil tanpa impor, dipisah dari SimulasiK5Bab2.tsx
+ * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen simulasi ke bundel awal.
+ * KERANGKA: agen tiap Sub-Bab mengisi barisnya sendiri dengan teks yang SAMA dengan MISI_*_TEKS di data-sim.ts folder Sub-Bab.
  */
 
 export type HurufK5B2 = "A" | "B" | "C" | "D" | "E";
@@ -9,19 +10,11 @@ const HURUF: HurufK5B2[] = ["A", "B", "C", "D", "E"];
 export const hurufK5B2 = (sub: string): HurufK5B2 => (HURUF.includes(sub as HurufK5B2) ? (sub as HurufK5B2) : "A");
 
 export const MISI_K5B2: Record<HurufK5B2, string> = {
-  A: "Di Lab Lompat Kelipatan, melompatlah dengan jarak sama di garis bilangan, warnai kelipatan di tabel seratus, dan periksa dengan sisa pembagian apakah suatu bilangan kelipatan. Periksa dengan Mesin Kelipatan, lalu selesaikan skenario Tepuk Kelipatan Nisa. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
-  B: "Di Lab Dua Jalur, lompatkan dua pelompat berjarak berbeda dan cari bilangan yang didarati keduanya, tandai bilangan yang ada di dua daftar kelipatan lalu pilih yang terkecil, dan tentukan kapan dua jadwal bertemu lagi. Periksa dengan Mesin KPK, lalu selesaikan skenario Jadwal Renang Yohana. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
-  C: "Di Lab Susunan Faktor, susun titik dalam baris yang sama banyak dan simpan susunan yang tidak bersisa, cari pasangan faktor sampai bertemu di tengah, dan tandai semua faktor sebuah bilangan. Periksa dengan Mesin Faktor, lalu selesaikan skenario Potong Petak Lukas. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
-  D: "Di Lab Faktor Bersama, tandai faktor yang ada di dua daftar faktor lalu pilih yang terbesar, bagi benda rata ke kelompok sebanyak mungkin tanpa sisa, dan periksa jembatan antara FPB, KPK, dan hasil kali dua bilangan. Periksa dengan Mesin FPB, lalu selesaikan skenario Vas Mawar Amelia. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
-  E: "Di Lab Pohon Prima, periksa apakah sebuah bilangan prima lewat faktornya, pecah bilangan dengan pohon faktor sampai semua daun prima, dan cari KPK serta FPB dari faktor prima. Periksa dengan Mesin Prima, lalu selesaikan skenario Kebun Sekolah Nisa. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
-};
-
-export const NAMA_SIM_K5B2: Record<HurufK5B2, string> = {
-  A: "Lab Lompat Kelipatan, Mesin Kelipatan, dan Tepuk Kelipatan Nisa",
-  B: "Lab Dua Jalur, Mesin KPK, dan Jadwal Renang Yohana",
-  C: "Lab Susunan Faktor, Mesin Faktor, dan Potong Petak Lukas",
-  D: "Lab Faktor Bersama, Mesin FPB, dan Vas Mawar Amelia",
-  E: "Lab Pohon Prima, Mesin Prima, dan Kebun Sekolah Nisa",
+  A: "Lompat dengan jarak yang sama, warnai kelipatan pada tabel bilangan, periksa dengan pembagian, dan atur pengali pada alat Kali. Urutannya bebas.",
+  B: "Lingkari bilangan yang sama di dua daftar, atur KPK, majukan jadwal sampai dua lonceng bersama, dan pilih KPK tiga bilangan. Urutannya bebas.",
+  C: "Tata klepon ke piring tanpa sisa, pasangkan faktor, periksa sisa pembagian, dan pilih semua faktor. Urutannya bebas.",
+  D: "Tandai lubang congklak yang berisi dua biji, isi kotak sebanyak-banyaknya, dan pilih FPB. Urutannya bebas.",
+  E: "Saring bilangan prima di tabel, pecah bilangan menjadi pohon faktor, pasangkan prima untuk KPK dan FPB, dan bagi berulang dengan prima. Urutannya bebas.",
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */

@@ -1,237 +1,241 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { W, busur, emo, garisLompat, kartu, kelipatan, kisiAngka, kotak, panah, pendaratan, pusatSel, teks, judul } from "./k5b2a-gambar";
-import { bersih, k, sebar, sorotkan, tambah, ubah, warnaiSel } from "./k5b2a-bantu";
+import { E, W, bulat, busur, emo, garis, idKisi, idSel, judul, kelipatanSel, kisiMini, kotak, tabelBil, tanah, teks, tokoh } from "./k5b2a-gambar";
+import { bersih, hapus, idx, k, tambah, ubah, warnai } from "./k5b2a-bantu";
 
-/** Garis lompat kelipatan 3 (konsep): titik 0 di x = 15, satu satuan 9 piksel, sampai 30. */
-export const GL3 = { x0: 15, y: 100, satuan: 9, maks: 30, langkah: 3 };
-/** Garis lompat kelipatan 6 (Ayo Berlatih nomor 2): titik 0 di x = 10, satu satuan 7 piksel, sampai 40. */
-export const GL6 = { x0: 10, y: 100, satuan: 7, maks: 40, langkah: 6 };
-/** Garis lompat kelipatan 8 (Ayo Berlatih nomor 3): garis kedua di bawah garis kelipatan 6. */
-export const GL8 = { x0: 10, y: 160, satuan: 7, maks: 40, langkah: 8 };
-/** Tabel seratus untuk metode luar: 10 kolom, 10 baris. */
-export const HC = { x: 20, y: 30, cw: 22, ch: 16, kolom: 10, baris: 10 };
-const tabelHC = (id: string) => kisiAngka(id, HC.x, HC.y, HC.cw, HC.ch, HC.kolom, HC.baris, [], W.karang, 7.6);
-/** Panah pendek antarpusat sel tabel seratus. */
-const langkahHC = (id: string, a: number, b: number, warna: string = W.merah): Obj => {
-  const [ax, ay] = pusatSel(HC.x, HC.y, HC.cw, HC.ch, HC.kolom, a);
-  const [bx, by] = pusatSel(HC.x, HC.y, HC.cw, HC.ch, HC.kolom, b);
-  const sx = ax + (bx - ax) * 0.2;
-  const sy = ay + (by - ay) * 0.2;
-  const ex = ax + (bx - ax) * 0.8;
-  const ey = ay + (by - ay) * 0.8;
-  return panah(id, Number(sx.toFixed(2)), Number(sy.toFixed(2)), Number((ex - sx).toFixed(2)), Number((ey - sy).toFixed(2)), warna, 1.6);
-};
+/*
+ * Cerita orisinal IGIL "Lonceng Bu Marni" (Kelas 5 Bab 2 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k5b2a.md. Bagian ini: pembuka (jadwal lonceng yang harus ditulis tanpa terlewat), Skip Counting (Lompat Hitung) dan terapannya,
+ * Grid Marking (Warnai Tabel) dan terapannya.
+ */
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
+export const NAMA_METODE = ["Skip Counting", "Grid Marking", "Times Check"] as const;
+export const NAMA_METODE_ID = ["Lompat Hitung", "Warnai Tabel", "Cek Kali"] as const;
+
+export const KP = { merah: "#FCA5A5", biru: "#BAE6FD", kapur: "#FEF9C3", hijau: "#86EFAC" };
+export const BAGI = "\u{2797}";
+
+/** Kartu judul cara: papan gelap `pt`, nama Inggris `nm`, nama Indonesia `ni`, ikon `ik`. */
+export const kartuCara = (suara: string, nomor: string, inggris: string, indonesia: string, ikon: string) => [
+  tambah(0, judul(`Cara ${nomor}: ${inggris}`), kotak("pt", 8, 32, 284, 120, "#1E293B", "#0F172A", { rx: 6, tebal: 1.4, z: -1 })),
+  tambah(idx(suara, inggris.split(" ")[0]), teks("nm", 150, 74, inggris, 14, KP.merah, { z: 3 })),
+  tambah(idx(suara, indonesia.split(" ")[0]), teks("ni", 150, 96, indonesia, 10, KP.kapur, { z: 3 })),
+  tambah(idx(suara, indonesia.split(" ")[1]), emo("ik", 150, 134, ikon, 24, { z: 3 })),
+];
+
+/** Garis lompat: garis dasar `${id}-g`, titik pendaratan `${id}-p{i}` (titik pertama putih: belum melompat), dan busur `${id}-b{i}` di antara titik berurutan. */
+const dasarGL = (id: string, xs: number[], y: number): Obj[] => [
+  garis(`${id}-g`, xs[0] - 14, y, xs[xs.length - 1] - xs[0] + 28, 0, W.coklat, 2.2),
+  ...xs.map((x, i) => bulat(`${id}-p${i}`, x, y, i === 0 ? 4.5 : 4, i === 0 ? W.putih : W.merah, W.merah, { tebal: 1.8, z: 2 })),
+];
+const busurGL = (id: string, xs: number[], y: number): Obj[] => xs.slice(0, -1).map((x, i) => busur(`${id}-b${i}`, x, xs[i + 1], y - 4, W.hijauTua, 24));
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Malam itu, lonceng Bu Marni berbunyi, dan daftar jadwalnya harus ditulis tanpa ada yang terlewat.";
+const SUARA_O2 = "Ada tiga cara supaya daftar kelipatan tidak keliru dan tidak ada yang tertinggal.";
+const SUARA_O3 = "Tiga cara itu: Skip Counting, Grid Marking, dan Times Check.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Lompat Hitung, Warnai Tabel, dan Cek Kali.";
+
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk menentukan kelipatan",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Jadwal Bu Marni",
+  sumber: "Metode global: pembuka",
+  latar: W.malam,
   ketukan: [
     k(
-      "Bagaimana kita menentukan kelipatan sebuah bilangan? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari tabel dan permainan tadi.",
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("bilangan?", ...kartu("kp", 40, 40, 90, 44, W.krem, ["3, 6, 9, ..."], 11)),
-      tambah("berbagai", emo("gl", 195, 96, "🌍", 46)),
-      tambah("angka", teks("pa", 150, 146, "tabel 1 sampai 100, kelipatan 7 dan 9", 9.4, W.biru), teks("pb", 150, 164, "kelipatan 6 dan 8", 9.4, W.biru)),
+      SUARA_O1,
+      tambah(0, judul("Jadwal Bu Marni"), ...tanah("tn", 150)),
+      tambah("lonceng", emo("lc", 258, 100, E.lonceng, 34), kotak("tg", 256, 108, 5, 42, W.coklat, W.papan, { rx: 1, z: 0 })),
+      tambah("Bu", ...tokoh("bu", 60, 184, "Bu Marni")),
+      tambah("berbunyi,", teks("dg", 258, 62, "ding", 11, W.merah), emo("nd", 226, 80, E.nada, 18)),
+      tambah("jadwalnya", kotak("pj", 80, 34, 120, 34, W.kapur, W.coklat, { rx: 3, tebal: 1.6, z: 1 }), teks("pjt", 140, 56, "JADWAL: ? ? ?", 11, W.coklat, { z: 3 })),
     ),
     k(
-      "Empat metode itu: Skip Counting, Hundred Chart, Divisibility Check, dan Last Digit Pattern.",
+      SUARA_O2,
       bersih(0),
-      tambah(0, judul("Empat metode")),
-      tambah("Skip", ...kartu("m1", 12, 34, 276, 30, W.hijauMuda, ["1. Skip Counting"], 9.6)),
-      tambah("Hundred", ...kartu("m2", 12, 72, 276, 30, W.langit, ["2. Hundred Chart"], 9.6)),
-      tambah("Divisibility", ...kartu("m3", 12, 110, 276, 30, W.krem, ["3. Divisibility Check"], 9.6)),
-      tambah("Last", ...kartu("m4", 12, 148, 276, 30, W.pink, ["4. Last Digit Pattern"], 9.6)),
+      tambah(0, judul("Tiga Cara"), ...tanah("tn", 150)),
+      tambah("tiga", teks("n3", 262, 44, "3 cara", 10, W.merah)),
+      tambah("cara", ...[0, 1, 2].flatMap((i) => [kotak(`c${i}-k`, 20 + i * 92, 56, 80, 36, W.jingga, W.coklat, { rx: 4 }), teks(`c${i}-t`, 60 + i * 92, 79, "cara", 9, W.coklat)])),
+      tambah("tidak", emo("x1", 60, 128, E.salah, 18), emo("x2", 240, 128, E.salah, 18)),
+      tambah("tertinggal.", emo("ok", 150, 128, E.benar, 22)),
     ),
     k(
-      "Semuanya menjawab pertanyaan yang sama: bilangan ini kelipatan berapa saja? Caranya berbeda: melompat, mewarnai tabel, memeriksa angka, atau melihat angka satuan.",
-      bersih(0),
-      tambah(0, judul("Satu pertanyaan, empat cara")),
-      tambah("melompat,", emo("i1", 45, 80, "🦘", 34), teks("i1t", 45, 112, "melompat", 8.6, W.biru)),
-      tambah("mewarnai", emo("i2", 112, 80, "🎨", 34), teks("i2t", 112, 112, "mewarnai", 8.6, W.biru)),
-      tambah("memeriksa", emo("i3", 188, 80, "🔍", 34), teks("i3t", 188, 112, "memeriksa", 8.6, W.biru)),
-      tambah("satuan.", emo("i4", 255, 80, "🔢", 34), teks("i4t", 255, 112, "satuan", 8.6, W.biru)),
+      SUARA_O3,
+      tambah("Skip", teks("m0", 120, 118, "1. Skip Counting", 10, W.hijauTua), emo("i0", 40, 118, E.jejak, 16)),
+      tambah("Grid", teks("m1", 120, 138, "2. Grid Marking", 10, W.hijauTua), emo("i1", 40, 138, E.warna, 16)),
+      tambah("Times", teks("m2", 120, 158, "3. Times Check", 10, W.hijauTua), emo("i2", 40, 158, BAGI, 16)),
     ),
     k(
-      "Angkanya dari latihan tadi: kelipatan tiga sampai lima puluh, kelipatan tujuh dan sembilan sampai seratus, serta kelipatan enam dan delapan.",
-      bersih(0),
-      tambah(0, judul("Angka dari latihan tadi")),
-      tambah("tiga", ...kartu("a1", 14, 34, 272, 30, W.hijauMuda, ["kelipatan 3 sampai 50"], 9.6)),
-      tambah("tujuh", ...kartu("a2", 14, 72, 272, 30, W.langit, ["kelipatan 7 dan 9 sampai 100"], 9.6)),
-      tambah("enam", ...kartu("a3", 14, 110, 272, 30, W.pink, ["kelipatan 6 dan 8"], 9.6)),
+      SUARA_O4,
+      hapus(0, "x1", "x2", "ok"),
+      tambah("Nama", kotak("bk", 190, 100, 104, 70, "#14532D", W.putih, { rx: 6, tebal: 1, z: -1 })),
+      tambah("Lompat", teks("g0", 242, 118, "Lompat Hitung", 8.4, W.sorot)),
+      tambah("Warnai", teks("g1", 242, 138, "Warnai Tabel", 8.4, W.sorot)),
+      tambah("Cek", teks("g2", 242, 158, "Cek Kali", 9, W.sorot)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Skip Counting: konsep ------------------------------ */
-const garis3 = () => garisLompat("sk", GL3.x0, GL3.y, GL3.satuan, GL3.maks, GL3.langkah, 8.6);
-const lompat3 = (i: number) => busur("sk", GL3.x0, GL3.y, GL3.satuan, GL3.langkah, i);
-const darat3 = (i: number) => pendaratan("sk", GL3.x0, GL3.y, GL3.satuan, GL3.langkah, i);
+/* ------------------------------ Skip Counting: konsep ------------------------------ */
+const SUARA_L1 = "Cara pertama, Skip Counting, atau Lompat Hitung.";
+const SUARA_L2 = "Kita melompat dengan jarak yang sama, dan tiap pendaratan adalah satu kelipatan.";
+const SUARA_L3 = "Lompatan pertama mendarat di bilangan itu sendiri, lalu tiap lompatan menambah bilangan yang sama.";
+const SUARA_L4 = "Nol tidak termasuk, karena kita belum melompat sama sekali.";
+const XL = [40, 100, 160, 220];
 
 export const ADEGAN_LUAR_LOMPAT: AdeganStory = {
   id: "luar-lompat",
-  judul: "Skip Counting: lompat hitung dari nol",
-  sumber: "Metode luar: Skip Counting",
-  latar: "#F0FDF4",
+  judul: "Skip Counting: Lompat",
+  sumber: "Metode global: Skip Counting (konsep)",
+  latar: W.malam,
   ketukan: [
+    k(SUARA_L1, ...kartuCara(SUARA_L1, "1", "Skip Counting", "Lompat Hitung", E.jejak)),
     k(
-      "Metode pertama, Skip Counting, atau lompat hitung. Mulai dari nol, lalu melompat dengan langkah yang sama panjang. Tiap titik pendaratan adalah kelipatan.",
-      tambah(0, judul("Skip Counting")),
-      tambah("Mulai", ...garis3()),
-      tambah("melompat", lompat3(1)),
-      tambah("sama", lompat3(2)),
-      tambah("pendaratan", darat3(1), darat3(2)),
-    ),
-    k(
-      "Langkahnya tiga. Tentukan bilangan yang dilompati, misalnya tiga. Mulai dari nol, lompat tiga kali berturut-turut. Tulis tiap titik pendaratan: tiga, enam, sembilan, dan seterusnya.",
+      SUARA_L2,
       bersih(0),
-      tambah(0, judul("Tiga langkah")),
-      tambah("Tentukan", ...kartu("l1", 14, 34, 272, 32, W.hijauMuda, ["1. tentukan langkah, misalnya 3"], 9.4)),
-      tambah("Mulai", ...kartu("l2", 14, 76, 272, 32, W.langit, ["2. mulai dari 0, lompat berulang"], 9.4)),
-      tambah("Tulis", ...kartu("l3", 14, 118, 272, 32, W.krem, ["3. tulis tiap titik pendaratan"], 9.4)),
+      tambah(0, judul("Jarak yang Sama"), ...tanah("tn", 150), ...dasarGL("gl", XL, 110)),
+      tambah("melompat", ...busurGL("gl", XL, 110)),
+      tambah("jarak", teks("js", 130, 60, "jarak sama", 11, W.hijauTua)),
+      tambah("pendaratan", ...[1, 2, 3].map((i) => emo(`bl${i}`, XL[i], 98, E.lonceng, 18, { z: 3 }))),
+      tambah("kelipatan.", teks("kp", 130, 142, "pendaratan = kelipatan", 10, W.merah)),
     ),
     k(
-      "Tiga lompatan dari nol mendarat di tiga, enam, sembilan: itulah bilangan kelipatan tiga seperti di tepuk bilangan.",
-      bersih(0),
-      tambah(0, judul("Lompat 3 dari 0")),
-      tambah(0, ...garis3()),
-      tambah("tiga@2", lompat3(1), darat3(1)),
-      tambah("enam", lompat3(2), darat3(2)),
-      tambah("sembilan", lompat3(3), darat3(3)),
-      tambah("itulah", teks("kl", 150, 56, "kelipatan 3", 10, W.merah)),
+      SUARA_L3,
+      hapus(0, "kp"),
+      tambah("pertama", teks("e1", XL[1], 134, "4", 12, W.merah)),
+      tambah("menambah", teks("e2", XL[2], 134, "8", 12, W.merah), teks("e3", XL[3], 134, "12", 12, W.merah)),
+      tambah("sama.", ...[0, 1, 2].map((i) => teks(`a${i}`, (XL[i] + XL[i + 1]) / 2, 78, "+4", 10, W.hijauTua))),
     ),
     k(
-      "Pendaratan ke berapa menunjukkan berapa kali tiga. Pendaratan keempat adalah dua belas, sebab empat kali tiga.",
-      ...[1, 2, 3].map((i) => tambah("Pendaratan", teks(`or${i}`, GL3.x0 + i * GL3.langkah * GL3.satuan, 74, String(i), 8.6, W.hijau))),
-      tambah("keempat", lompat3(4), darat3(4), teks("or4", GL3.x0 + 4 * GL3.langkah * GL3.satuan, 74, "4", 8.6, W.hijau)),
-      tambah("sebab", teks("eq", 150, 160, "4 × 3 = 12", 12, W.merah)),
-    ),
-    k(
-      "Nol tidak dihitung sebagai kelipatan, sebab nol hanya titik mulai.",
-      ubah("Nol", { id: "sk-l0", warna: W.merah }),
-      sorotkan("Nol", "sk-l0"),
-      tambah("titik", teks("nl", 150, 186, "nol = titik mulai, bukan kelipatan", 9.6, W.merah)),
+      SUARA_L4,
+      tambah("Nol", teks("z0", XL[0], 134, "0", 12, W.merah), emo("zx", XL[0], 98, E.salah, 18)),
+      tambah("belum", teks("bm", 130, 156, "belum melompat", 9, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Skip Counting: penerapan pada Ayo Berlatih nomor 2 dan 3 ------------------------------ */
-const garis6 = () => garisLompat("sg", GL6.x0, GL6.y, GL6.satuan, GL6.maks, GL6.langkah, 8.6);
-const garis8 = () => garisLompat("sh", GL8.x0, GL8.y, GL8.satuan, GL8.maks, GL8.langkah, 8.6);
+/* ------------------------------ Skip Counting: terapan ------------------------------ */
+const SUARA_M1 = "Bima melompat dengan jarak empat: empat, delapan, dua belas, enam belas, dua puluh.";
+const SUARA_M2 = "Bima berhenti saat jadwal Bu Marni sudah cukup panjang.";
+const SUARA_M3 = "Cocok untuk daftar yang pendek dan berurutan, karena tinggal menambah bilangan yang sama.";
+const SUARA_M4 = "Kurang cocok untuk bilangan yang jauh, karena kita harus melompat dari awal.";
+const XM = [24, 74, 124, 174, 224, 274];
 
 export const ADEGAN_LUAR_LOMPAT_TERAPAN: AdeganStory = {
   id: "luar-lompat-terapan",
-  judul: "Skip Counting pada Latihan 2 dan 3",
-  sumber: "Metode luar: Skip Counting",
-  latar: "#F0FDF4",
+  judul: "Lompat: kapan cocok",
+  sumber: "Metode global: Skip Counting (terapan)",
+  latar: W.malam,
   ketukan: [
     k(
-      "Terapkan pada Latihan dua: lima bilangan kelipatan enam. Mulai dari nol, lompat enam, berkali-kali.",
-      tambah(0, judul("Kelipatan 6: lompat 6")),
-      tambah("Mulai", ...garis6()),
-      tambah("lompat", teks("lb", 150, 60, "paling sedikit 5 bilangan", 10, W.merah)),
+      SUARA_M1,
+      tambah(0, judul("Lompat Jarak Empat"), ...tanah("tn", 150), ...dasarGL("gm", XM, 104)),
+      tambah("Bima", ...tokoh("bm", 40, 184, "Bima")),
+      tambah("jarak", ...busurGL("gm", XM, 104)),
+      tambah(idx(SUARA_M1, "empat", 1), teks("jr", 150, 56, "jarak 4", 11, W.merah)),
+      tambah(idx(SUARA_M1, "empat", 2), teks("v1", XM[1], 130, "4", 12, W.merah)),
+      tambah("delapan", teks("v2", XM[2], 130, "8", 12, W.merah)),
+      tambah(idx(SUARA_M1, "dua", 1), teks("v3", XM[3], 130, "12", 12, W.merah)),
+      tambah("enam", teks("v4", XM[4], 130, "16", 12, W.merah)),
+      tambah(idx(SUARA_M1, "dua", 2), teks("v5", XM[5], 130, "20", 12, W.merah)),
     ),
     k(
-      "Mendarat di enam, dua belas, delapan belas, dua puluh empat, tiga puluh: lima pendaratan, lima bilangan kelipatan enam.",
-      ...[1, 2, 3, 4, 5].map((i, j) => tambah([2, 4, 6, 9, 11][j], busur("sg", GL6.x0, GL6.y, GL6.satuan, GL6.langkah, i), pendaratan("sg", GL6.x0, GL6.y, GL6.satuan, GL6.langkah, i))),
+      SUARA_M2,
+      tambah("berhenti", emo("st", XM[5], 84, E.henti, 24)),
+      tambah("jadwal", teks("jb", 150, 80, "jadwal Bu Marni", 9.5, W.coklat)),
+      tambah("cukup", teks("cp", 150, 156, "cukup panjang", 10, W.hijauTua)),
     ),
     k(
-      "Latihan tiga: kelipatan delapan. Lompat delapan: delapan, enam belas, dua puluh empat, tiga puluh dua, empat puluh.",
-      tambah("delapan.", ...garis8()),
-      ...[1, 2, 3, 4, 5].map((i, j) => tambah([6, 8, 11, 14, 16][j], busur("sh", GL8.x0, GL8.y, GL8.satuan, GL8.langkah, i, W.hijau), pendaratan("sh", GL8.x0, GL8.y, GL8.satuan, GL8.langkah, i, W.hijau))),
+      SUARA_M3,
+      hapus(0, "st", "jb", "cp", "jr"),
+      tambah("Cocok", emo("ok", 262, 156, E.benar, 22)),
+      tambah("pendek", teks("dp", 150, 60, "daftar pendek dan berurutan", 10, W.hijauTua)),
+      tambah("menambah", teks("mb", 150, 156, "tinggal tambah 4", 10, W.hijauTua)),
     ),
     k(
-      "Hitung lompatannya: lima kali enam adalah tiga puluh, dan lima kali delapan adalah empat puluh. Pendaratan terakhir cocok dengan perkalian.",
-      tambah("enam", teks("q6", 258, 60, "5 × 6 = 30", 9.6, W.merah)),
-      tambah("delapan", teks("q8", 258, 142, "5 × 8 = 40", 9.6, W.hijau)),
+      SUARA_M4,
+      hapus(0, "ok", "dp", "mb"),
+      tambah("Kurang", emo("xs", 262, 156, E.salah, 22)),
+      tambah("jauh,", teks("jh", 150, 60, "bilangan jauh: 96?", 10, W.merah)),
+      tambah("awal.", teks("aw", 150, 156, "melompat dari 0 lagi", 10, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 4. Hundred Chart: konsep ------------------------------ */
-const SUARA_H2 = "Warnai bilangan kelipatan yang dicari. Warna yang membentuk pola menunjukkan keteraturan kelipatan.";
+/* ------------------------------ Grid Marking: konsep ------------------------------ */
+const SUARA_T1 = "Cara kedua, Grid Marking, atau Warnai Tabel.";
+const SUARA_T2 = "Kita menulis bilangan satu sampai seratus dalam tabel, lalu mewarnai tiap kelipatan.";
+const SUARA_T3 = "Kotak berwarna menunjukkan semua kelipatan sekaligus, sehingga tidak ada yang tertinggal.";
+const SUARA_T4 = "Kita juga bisa melihat bilangan mana yang jatuh di luar warna.";
 
-export const ADEGAN_LUAR_SERATUS: AdeganStory = {
-  id: "luar-seratus",
-  judul: "Hundred Chart: tabel seratus berwarna",
-  sumber: "Metode luar: Hundred Chart",
-  latar: "#EFF6FF",
+export const ADEGAN_LUAR_TABEL: AdeganStory = {
+  id: "luar-tabel",
+  judul: "Grid Marking: Tabel",
+  sumber: "Metode global: Grid Marking (konsep)",
+  latar: W.malam,
   ketukan: [
+    k(SUARA_T1, ...kartuCara(SUARA_T1, "2", "Grid Marking", "Warnai Tabel", E.warna)),
     k(
-      "Metode kedua, Hundred Chart, atau tabel seratus. Tuliskan bilangan satu sampai seratus dalam sepuluh baris dan sepuluh kolom.",
-      tambah(0, judul("Hundred Chart")),
-      tambah("Tuliskan", tabelHC("hc")),
-      tambah("sepuluh@1", teks("sz", 270, 60, "10 × 10", 9.6, W.biru)),
-    ),
-    k(
-      SUARA_H2,
-      ...warnaiSel("hc", W.karang, kelipatan(5, 100), sebar(SUARA_H2, 20, 1)),
-      tambah("dicari.", teks("lb1", 270, 100, "kelipatan", 7.6, W.biru), teks("lb2", 270, 114, "5", 14, W.merah)),
-    ),
-    k(
-      "Contoh kelipatan lima: semuanya jatuh di dua kolom tegak, kolom lima dan kolom sepuluh. Polanya lurus, jadi mudah dikenali.",
-      tambah("kolom@1", kotak("kc5", HC.x + 4 * HC.cw, HC.y, HC.cw, HC.ch * 10, "none", W.merah, { rx: 0, tebal: 2 }), teks("kt5", HC.x + 4.5 * HC.cw, 198, "kolom 5", 7.6, W.merah)),
-      tambah("sepuluh", kotak("kc10", HC.x + 9 * HC.cw, HC.y, HC.cw, HC.ch * 10, "none", W.merah, { rx: 0, tebal: 2 }), teks("kt10", HC.x + 9.5 * HC.cw, 198, "kolom 10", 7.6, W.merah)),
-    ),
-    k(
-      "Langkahnya: buat tabel, warnai tiap bilangan kelipatan, lalu amati polanya, baik kolom, diagonal, maupun lompatan.",
+      SUARA_T2,
       bersih(0),
-      tambah(0, judul("Tiga langkah")),
-      tambah("buat", ...kartu("h1", 14, 34, 272, 32, W.hijauMuda, ["1. buat tabel 1 sampai 100"], 9.6)),
-      tambah("warnai", ...kartu("h2", 14, 76, 272, 32, W.langit, ["2. warnai tiap kelipatan"], 9.6)),
-      tambah("amati", ...kartu("h3", 14, 118, 272, 32, W.krem, ["3. amati polanya"], 9.6)),
-      tambah("lompatan.", emo("pl", 150, 184, "🎨", 28)),
+      tambah(0, judul("Satu sampai Seratus")),
+      tambah("menulis", ...kisiMini("km", 40, 30)),
+      tambah("seratus", teks("lb", 150, 172, "1 sampai 100", 11, W.coklat)),
+      warnai("mewarnai", W.jingga, ...idKisi("km", 5, 10)),
+    ),
+    k(
+      SUARA_T3,
+      warnai("berwarna", W.jingga, ...idKisi("km", ...kelipatanSel(5, 100))),
+      ubah("semua", { id: "lb", isi: "kelipatan 5 berwarna" }),
+      tambah("tertinggal.", emo("ok", 262, 172, E.benar, 20)),
+    ),
+    k(
+      SUARA_T4,
+      ubah("melihat", { id: "km-m14", garis: W.merah, tebal: 2.6, warna: "#E0F2FE" }),
+      tambah("luar", teks("lw", 150, 192, "14 di luar warna", 10, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 5. Hundred Chart: penerapan pada kelipatan 7 dan 9 ------------------------------ */
-const SUARA_HT1 = "Terapkan pada kelipatan tujuh. Warnai tujuh, empat belas, dan seterusnya sampai sembilan puluh delapan: empat belas bilangan.";
-const SUARA_HT3 = "Sekarang kelipatan sembilan. Warnai sembilan sampai sembilan puluh sembilan: sebelas bilangan.";
-const SUARA_HT4 = "Kelipatan sembilan membentuk garis miring, tiap baris bergeser satu kotak ke kiri. Tabel ini juga memuat sembilan puluh dan sembilan puluh sembilan, dua bilangan terakhir.";
-const SEMBILAN = kelipatan(9, 100);
+/* ------------------------------ Grid Marking: terapan ------------------------------ */
+const SUARA_U1 = "Citra mewarnai kelipatan tujuh pada tabel: tujuh, empat belas, dua puluh satu, dua puluh delapan.";
+const SUARA_U2 = "Ia terus sampai sembilan puluh delapan, dan tidak ada kelipatan yang terlewat.";
+const SUARA_U3 = "Cocok untuk daftar panjang sampai seratus, karena semua kelipatan terlihat bersama.";
+const SUARA_U4 = "Kurang cocok untuk bilangan yang lebih besar dari tabel, karena tabelnya tidak cukup.";
 
-export const ADEGAN_LUAR_SERATUS_TERAPAN: AdeganStory = {
-  id: "luar-seratus-terapan",
-  judul: "Hundred Chart pada kelipatan 7 dan 9",
-  sumber: "Metode luar: Hundred Chart",
-  latar: "#EFF6FF",
+export const ADEGAN_LUAR_TABEL_TERAPAN: AdeganStory = {
+  id: "luar-tabel-terapan",
+  judul: "Warnai: kapan cocok",
+  sumber: "Metode global: Grid Marking (terapan)",
+  latar: W.malam,
   ketukan: [
     k(
-      SUARA_HT1,
-      tambah(0, judul("Kelipatan 7 pada tabel")),
-      tambah(0, tabelHC("h7")),
-      tambah(0, teks("lb1", 270, 80, "kelipatan", 7.6, W.biru), teks("lb2", 270, 94, "7", 14, W.merah)),
-      ...warnaiSel("h7", W.karang, kelipatan(7, 100), sebar(SUARA_HT1, 14, 5)),
+      SUARA_U1,
+      tambah(0, judul("Kelipatan Tujuh"), ...tanah("tn", 150)),
+      tambah("Citra", ...tokoh("ct", 40, 184, "Citra")),
+      tambah("mewarnai", kotak("pn", 12, 22, 276, 116, "#A16207", W.papan, { rx: 5, tebal: 2, z: -1 })),
+      tambah("tabel:", ...tabelBil("tb", 50)),
+      warnai(idx(SUARA_U1, "tujuh", 2), W.jingga, ...idSel("tb", 7)),
+      warnai(idx(SUARA_U1, "empat"), W.jingga, ...idSel("tb", 14)),
+      warnai(idx(SUARA_U1, "dua", 1), W.jingga, ...idSel("tb", 21)),
+      warnai(idx(SUARA_U1, "dua", 2), W.jingga, ...idSel("tb", 28)),
     ),
     k(
-      "Polanya zig-zag, tidak membentuk kolom lurus, seperti langkah kuda pada papan catur.",
-      tambah("zig-zag,", ...[[7, 14], [14, 21], [35, 42], [56, 63], [77, 84], [84, 91]].map(([a, b], i) => langkahHC(`ar${i}`, a, b))),
-      tambah("kuda", emo("kd", 270, 150, "🐴", 22)),
+      SUARA_U2,
+      warnai("terus", W.jingga, ...idSel("tb", 35, 42, 49)),
+      tambah("sembilan", teks("sp", 190, 154, "terus sampai 98", 10, W.merah)),
+      tambah("terlewat.", emo("ok", 262, 154, E.benar, 18)),
     ),
     k(
-      SUARA_HT3,
-      bersih(0),
-      tambah(0, judul("Kelipatan 9 pada tabel")),
-      tambah(0, tabelHC("h9")),
-      tambah(0, teks("lb1", 270, 80, "kelipatan", 7.6, W.biru), teks("lb2", 270, 94, "9", 14, W.merah)),
-      ...warnaiSel("h9", W.karang, SEMBILAN, sebar(SUARA_HT3, 11, 2)),
+      SUARA_U3,
+      hapus(0, "ok"),
+      tambah("Cocok", emo("ok2", 262, 154, E.benar, 22)),
+      ubah("seratus,", { id: "sp", isi: "daftar sampai 100", warna: W.hijauTua }),
     ),
     k(
-      SUARA_HT4,
-      ...SEMBILAN.slice(0, 8).map((n, i) => tambah(sebar(SUARA_HT4, 8, 1)[i], langkahHC(`da${i}`, n, SEMBILAN[i + 1]))),
-      ...warnaiSel("h9", W.hijau, [90, 99], [17, 21]),
-    ),
-    k(
-      "Hitung warnanya: tujuh punya empat belas bilangan, sembilan punya sebelas. Makin besar bilangannya, makin sedikit kelipatannya sampai seratus.",
-      bersih(0),
-      tambah(0, judul("Banyak kelipatan sampai 100")),
-      tambah("tujuh", teks("bl7", 40, 74, "7", 14, W.biru), kotak("br7", 60, 54, 14 * 12, 30, W.karang, W.biru, { rx: 4 }), teks("bt7", 60 + 7 * 12, 74, "14 bilangan", 9.6, W.biru)),
-      tambah("sembilan", teks("bl9", 40, 124, "9", 14, W.biru), kotak("br9", 60, 104, 11 * 12, 30, W.hijau, W.biru, { rx: 4 }), teks("bt9", 60 + 5.5 * 12, 124, "11 bilangan", 9.6, W.putih)),
-      tambah("sedikit", teks("ms", 150, 170, "makin besar bilangan, makin sedikit", 9.6, W.merah)),
+      SUARA_U4,
+      hapus(0, "ok2"),
+      tambah("Kurang", emo("xs", 262, 154, E.salah, 22)),
+      ubah("tabel,", { id: "sp", isi: "tabel habis di 50", warna: W.merah }),
     ),
   ],
 };
-

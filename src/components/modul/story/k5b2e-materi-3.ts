@@ -1,257 +1,137 @@
 import type { AdeganStory } from "./logika-story";
-import { W, emo, judul, kartu, tabel, teks } from "./k5b2e-gambar";
-import { bersih, k, tambah } from "./k5b2e-bantu";
+import { E, W, barisTabel, chip, emo, garis, judul, kartu, kerangkaTabel, kotak, lampuGantung, lantai, teks, tokoh } from "./k5b2e-gambar";
+import { hapus, k, sorotkan, tambah, ubah, warnai } from "./k5b2e-bantu";
 
-/* ------------------------------ 9. Miskonsepsi, diferensiasi, dan Refleksi 8 sampai 9 (Panduan Guru hlm. 83 sampai 84) ------------------------------ */
-export const ADEGAN_MISKONSEPSI: AdeganStory = {
-  id: "miskonsepsi",
-  judul: "Hati-hati: tiga kesalahan yang sering terjadi",
-  sumber: "Materi: kesalahan yang sering terjadi",
-  latar: "#FEF2F2",
-  kutipan: [
-    "Kesalahan yang mungkin dilakukan peserta didik saat menentukan KPK dan FPB menggunakan faktorisasi prima adalah sebagai berikut.",
-    "Mencari KPK hanya dengan mengalikan faktor prima yang sama, tidak mengalikan faktor prima yang lainnya.",
-    "KPK = 2 × 2 × 3 × 3 = 36",
-    "padahal seharusnya KPK = 2 × 2 × 3 × 3 × 3 = 108.",
-    "Menentukan KPK dengan mengalikan semua faktor prima di kedua bilangan yang akan dicari KPK-nya.",
-    "KPK = 2 × 2 × 2 × 2 × 3 × 3 × 3 = 3.888",
-    "Saat menentukan FPB, bilangan prima yang berpasangan dituliskan semuanya.",
-    "FPB = 2 × 2 × 2 × 2 × 3 × 3 × 3 × 3 = 1.296",
-    "seharusnya bilangan prima yang memiliki pasangan cukup dituliskan sekali saja sehingga jawaban yang tepat adalah FPB = 2 × 2 × 3 × 3 = 36.",
-    "Bagi peserta didik yang kecepatan belajarnya tinggi (advanced), minta mereka mengerjakan latihan tanpa bantuan.",
-    "Aku dapat menyebutkan bilangan prima.",
-    "Aku dapat membuat faktorisasi prima suatu bilangan.",
-    "menjawab pertanyaan releksi nomor 8 dan 9 pada tabel releksi di buku siswa.",
-  ],
+/*
+ * Cerita orisinal IGIL "Papan Bilangan Kak Lintang" (Kelas 5 Bab 2 Sub-Bab E), akhir cerita Pasar Kuliner Malam.
+ * Naskah suara dari naskah/story-naskah-k5b2e.md. Bagian ini: KPK dan FPB dari faktorisasi 12 dan 18, pembagian berulang, dan perayaan akhir bab.
+ */
+
+/* ------------------------------ 7. KPK dan FPB dari faktorisasi ------------------------------ */
+const SUARA_KPK1 = "Bima menyatukan dua faktorisasi itu, dan bilangan prima yang berpasangan ditulis sekali saja.";
+const SUARA_KPK2 = "KPK dari dua belas dan delapan belas: dua kali dua kali tiga kali tiga, yaitu tiga puluh enam.";
+const SUARA_KPK3 = "FPB adalah hasil kali prima yang berpasangan, yaitu dua kali tiga, jadi enam.";
+
+const X_CHIP = [100, 130, 160, 190];
+const FA = [2, 2, 3];
+const FB = [2, 3, 3];
+export const ADEGAN_KPK_FPB: AdeganStory = {
+  id: "kpk-fpb",
+  judul: "Bima menyatukan faktorisasi",
+  sumber: "Materi: KPK dan FPB dari faktorisasi prima",
+  latar: "#FDF4FF",
   ketukan: [
     k(
-      "Hati-hati, kesalahan pertama: KPK dicari hanya dari faktor prima yang sama. Untuk tiga puluh enam dan seratus delapan hasilnya tiga puluh enam, padahal KPK-nya seratus delapan.",
-      tambah(0, judul("Hati-hati 1: KPK")),
-      tambah("tiga@1", teks("m36", 150, 42, "36 = 2 × 2 × 3 × 3", 12, W.biru), teks("m108", 150, 62, "108 = 2 × 2 × 3 × 3 × 3", 12, W.biru)),
-      tambah("hasilnya", ...kartu("w1", 20, 82, 260, 34, W.merahMuda, ["salah: KPK = 2 × 2 × 3 × 3 = 36"], 10)),
-      tambah("padahal", ...kartu("b1", 20, 128, 260, 34, W.hijauMuda, ["benar: KPK = 2 × 2 × 3 × 3 × 3 = 108"], 10)),
+      SUARA_KPK1,
+      tambah(0, judul("Faktorisasi Dipasangkan"), ...lantai("lt", 160), ...tokoh("bi", 266, 184, "Bima")),
+      tambah("faktorisasi", teks("l12", 20, 54, "12 =", 12, W.biru, { anchor: "start" }), ...FA.flatMap((v, i) => chip(`a${i}`, X_CHIP[i], 50, v)), teks("l18", 20, 88, "18 =", 12, W.biru, { anchor: "start" }), ...FB.flatMap((v, i) => chip(`b${i}`, X_CHIP[i], 84, v))),
+      tambah("berpasangan", garis("pg1", 100, 61, 0, 12, W.oranye, 2.6), garis("pg2", 160, 61, -30, 12, W.oranye, 2.6)),
+      ubah("berpasangan", ...["a0", "b0", "a2", "b1"].map((id) => ({ id, warna: W.hijauMuda }))),
+      tambah("sekali", teks("sk", 236, 56, "ditulis sekali", 9, W.hijauTua)),
     ),
     k(
-      "Hati-hati, kesalahan kedua: mengalikan semua faktor prima kedua bilangan, hasilnya tiga ribu delapan ratus delapan puluh delapan. Seharusnya pasangan ditulis sekali, jadi seratus delapan. Hitung semua faktor tiga: ada lima, dua dari tiga puluh enam dan tiga dari seratus delapan.",
-      bersih(0),
-      tambah(0, judul("Hati-hati 2: KPK")),
-      tambah("hasilnya", ...kartu("w2", 14, 34, 272, 40, W.merahMuda, ["salah: semua faktor dikalikan", "2 × 2 × 2 × 2 × 3 × 3 × 3 × 3 × 3 = 3.888"], 9)),
-      tambah("Seharusnya", ...kartu("b2", 14, 86, 272, 34, W.hijauMuda, ["benar: pasangan sekali, KPK = 108"], 9.6)),
-      tambah("Hitung", ...kartu("c2", 14, 132, 272, 44, W.krem, ["ada lima faktor 3 seluruhnya:", "dua dari 36, tiga dari 108"], 9)),
+      SUARA_KPK2,
+      tambah("KPK", teks("lk", 20, 126, "KPK =", 12, W.merahTua, { anchor: "start" })),
+      ...[7, 9, 11, 13].map((at, i) => tambah(at, ...chip(`k${i}`, X_CHIP[i], 122, [2, 2, 3, 3][i], W.emas))),
+      tambah("yaitu", teks("hk", 238, 126, "= 36", 14, W.merah)),
     ),
     k(
-      "Hati-hati, kesalahan ketiga: pada FPB, semua bilangan prima yang berpasangan ditulis, hasilnya seribu dua ratus sembilan puluh enam. Seharusnya cukup sekali, jadi FPB tiga puluh enam.",
-      bersih(0),
-      tambah(0, judul("Hati-hati 3: FPB")),
-      tambah("semua", ...kartu("w3", 14, 40, 272, 40, W.merahMuda, ["salah: pasangan ditulis semuanya", "2 × 2 × 2 × 2 × 3 × 3 × 3 × 3 = 1.296"], 9.4)),
-      tambah("Seharusnya", ...kartu("b3", 14, 96, 272, 40, W.hijauMuda, ["benar: pasangan cukup sekali", "FPB = 2 × 2 × 3 × 3 = 36"], 9.4)),
-    ),
-    k(
-      "Tantangan: kamu yang sudah cepat, coba kerjakan latihan tanpa bantuan, dan minta didampingi kalau masih kesulitan. Renungan: bisakah kamu menyebutkan bilangan prima, dan membuat faktorisasi prima?",
-      bersih(0),
-      tambah(0, judul("Tantangan dan renungan")),
-      tambah("Tantangan", emo("d1", 40, 70, "🚀", 28), ...kartu("d2", 70, 40, 216, 44, W.langit, ["coba kerjakan tanpa bantuan", "masih sulit? minta didampingi"], 8.8)),
-      tambah("Renungan", ...kartu("r8", 14, 100, 272, 32, W.hijauMuda, ["Bisakah aku menyebut bilangan prima?"], 9)),
-      tambah("membuat", ...kartu("r9", 14, 142, 272, 32, W.krem, ["Bisakah aku membuat faktorisasi prima?"], 9)),
+      SUARA_KPK3,
+      tambah("FPB", teks("lf", 20, 160, "FPB =", 12, W.merahTua, { anchor: "start" })),
+      sorotkan("berpasangan", "a0", "b0", "a2", "b1"),
+      tambah(8, ...chip("f0", 100, 156, 2, W.emas)),
+      tambah(10, ...chip("f1", 130, 156, 3, W.emas)),
+      tambah("enam", teks("hf", 176, 160, "= 6", 14, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 10. Uji Kompetensi 1 (Buku Siswa hlm. 61, Panduan Guru hlm. 87 sampai 88) ------------------------------ */
-export const UK1 = [
-  { a: 45, b: 135, fpb: 45, kpk: 135 },
-  { a: 96, b: 120, fpb: 24, kpk: 480 },
-  { a: 24, b: 36, c: 60, fpb: 12, kpk: 360 },
-  { a: 80, b: 120, c: 160, fpb: 40, kpk: 480 },
+/* ------------------------------ 8. Pembagian berulang ------------------------------ */
+const SUARA_ULANG1 = "Kak Lintang menunjukkan cara lain: pembagian berulang dengan bilangan prima.";
+const SUARA_ULANG2 = "Dua belas dan delapan belas dibagi dua, lalu dibagi tiga, sampai semuanya menjadi satu.";
+const SUARA_ULANG3 = "Semua pembagi dikali menjadi KPK, dan pembagi yang membagi keduanya menjadi FPB.";
+
+/** Tabel pembagian berulang 12 dan 18: kolom pembagi di x 40, bilangan di x 86 dan 130, baris di y 68, 88, 108, 128. */
+const Y_BARIS = [68, 88, 108, 128];
+const BARIS = [
+  { p: 2, v: [6, 9] },
+  { p: 2, v: [3, 9] },
+  { p: 3, v: [1, 3] },
+  { p: 3, v: [1, 1] },
 ];
-
-export const ADEGAN_UK_1: AdeganStory = {
-  id: "uk-1",
-  judul: "Uji 1: KPK dan FPB empat kelompok bilangan",
-  sumber: "Materi: Uji 1 KPK dan FPB",
-  latar: "#F0F9FF",
-  kutipan: [
-    "Tentukan KPK dan FPB dari pasangan bilangan berikut.",
-    "a. 45 dan 135",
-    "b. 96 dan 120",
-    "c. 24, 36, dan 60",
-    "d. 80, 120, dan 160",
-    "FPB = 3 × 3 × 5 = 45",
-    "KPK = 3 × 3 × 3 × 5 = 135",
-    "FPB = 2 × 2 × 2 × 3 = 24",
-    "KPK = 2 × 2 × 2 × 2 × 2 × 3 × 5 = 480",
-    "FPB = 2 × 2 × 3 = 12",
-    "KPK = 2 × 2 × 3 × 2 × 3 × 5 = 360",
-    "FPB = 2 × 2 × 2 × 5 = 40",
-    "KPK = 2 × 2 × 2 × 2 × 2 × 3 × 5 = 480",
-  ],
+const objBaris = (i: number) => barisTabel(`r${i}`, 40, Y_BARIS[i], BARIS[i].p, BARIS[i].v);
+export const ADEGAN_BERULANG: AdeganStory = {
+  id: "berulang",
+  judul: "Kak Lintang membagi berulang",
+  sumber: "Materi: pembagian berulang dengan prima",
+  latar: "#FFF7ED",
   ketukan: [
     k(
-      "Uji satu a: empat puluh lima dan seratus tiga puluh lima. Empat puluh lima adalah tiga, tiga, lima. Seratus tiga puluh lima adalah tiga, tiga, tiga, lima. FPB-nya empat puluh lima, KPK-nya seratus tiga puluh lima.",
-      tambah(0, judul("Uji 1a")),
-      tambah("Empat@2", teks("a1", 150, 52, "45 = 3 × 3 × 5", 13, W.biru)),
-      tambah("Seratus@2", teks("a2", 150, 78, "135 = 3 × 3 × 3 × 5", 13, W.biru)),
-      tambah("FPB-nya", teks("a3", 150, 118, "FPB = 3 × 3 × 5 = 45", 13, W.merah)),
-      tambah("KPK-nya", teks("a4", 150, 148, "KPK = 3 × 3 × 3 × 5 = 135", 13, W.hijau)),
+      SUARA_ULANG1,
+      tambah(0, judul("Pembagian Berulang"), ...lantai("lt", 160)),
+      tambah("Lintang", ...tokoh("kl", 268, 168, "Kak Lintang")),
+      tambah("cara", ...kartu("cl", 176, 40, 112, 26, "#FEF9C3", ["cara lain"], 10)),
+      tambah("pembagian", ...kerangkaTabel("kt", 40, 40, 140, 150), teks("hp", 40, 44, "pembagi", 9, W.oranye), teks("h0", 86, 44, "12", 11, W.biru), teks("h1", 130, 44, "18", 11, W.biru)),
+      tambah("prima", teks("pt", 232, 84, "pembagi prima", 9, W.hijauTua)),
     ),
     k(
-      "Satu b: sembilan puluh enam dan seratus dua puluh. Faktor yang berpasangan adalah dua, dua, dua, dan tiga, jadi FPB-nya dua puluh empat. KPK-nya empat ratus delapan puluh.",
-      bersih(0),
-      tambah(0, judul("Uji 1b")),
-      tambah("Satu", teks("b1", 150, 52, "96 = 2 × 2 × 2 × 2 × 2 × 3", 12, W.biru), teks("b2", 150, 74, "120 = 2 × 2 × 2 × 3 × 5", 12, W.biru)),
-      tambah("FPB-nya", teks("b3", 150, 118, "FPB = 2 × 2 × 2 × 3 = 24", 13, W.merah)),
-      tambah("KPK-nya", teks("b4", 150, 148, "KPK = 2 × 2 × 2 × 2 × 2 × 3 × 5 = 480", 11, W.hijau)),
+      SUARA_ULANG2,
+      tambah(6, ...objBaris(0), ...objBaris(1)),
+      tambah(9, ...objBaris(2), ...objBaris(3)),
+      warnai("satu", W.hijauTua, "r3-c0", "r3-c1"),
+      tambah("satu", emo("ok", 182, 130, E.benar, 18)),
     ),
     k(
-      "Satu c: dua puluh empat, tiga puluh enam, dan enam puluh. Pembagi yang membagi habis ketiganya adalah dua, dua, dan tiga, jadi FPB-nya dua belas. KPK-nya tiga ratus enam puluh.",
-      bersih(0),
-      tambah(0, judul("Uji 1c")),
-      tambah("Satu", teks("c1", 150, 46, "24 = 2 × 2 × 2 × 3", 12, W.biru), teks("c2", 150, 66, "36 = 2 × 2 × 3 × 3", 12, W.biru), teks("c3", 150, 86, "60 = 2 × 2 × 3 × 5", 12, W.biru)),
-      tambah("FPB-nya", teks("c4", 150, 124, "FPB = 2 × 2 × 3 = 12", 13, W.merah)),
-      tambah("KPK-nya", teks("c5", 150, 152, "KPK = 2 × 2 × 3 × 2 × 3 × 5 = 360", 11.5, W.hijau)),
-    ),
-    k(
-      "Satu d: delapan puluh, seratus dua puluh, dan seratus enam puluh. FPB-nya empat puluh, KPK-nya empat ratus delapan puluh. Keempat bagian sudah kita periksa, dan semuanya benar.",
-      bersih(0),
-      tambah(0, judul("Uji 1d")),
-      tambah("Satu", teks("d1", 150, 46, "80 = 2 × 2 × 2 × 2 × 5", 12, W.biru), teks("d2", 150, 66, "120 = 2 × 2 × 2 × 3 × 5", 12, W.biru), teks("d3", 150, 86, "160 = 2 × 2 × 2 × 2 × 2 × 5", 12, W.biru)),
-      tambah("FPB-nya", teks("d4", 150, 124, "FPB = 2 × 2 × 2 × 5 = 40", 13, W.merah)),
-      tambah("KPK-nya", teks("d5", 150, 152, "KPK = 2 × 2 × 2 × 2 × 2 × 3 × 5 = 480", 11, W.hijau)),
-      tambah("Keempat", emo("d6", 150, 186, "✅", 20)),
+      SUARA_ULANG3,
+      hapus(0, "cl-k", "cl-t0", "pt"),
+      tambah("dikali", teks("e1", 226, 62, "2 × 2 × 3 × 3", 10, W.biru)),
+      tambah("KPK", teks("e2", 226, 78, "KPK = 36", 12, W.merah)),
+      tambah("yang", kotak("s1", 20, 56, 128, 16, "#FDE047", undefined, { op: 0.35, rx: 3, tebal: 0, z: 0 })),
+      tambah("keduanya", kotak("s3", 20, 96, 128, 16, "#FDE047", undefined, { op: 0.35, rx: 3, tebal: 0, z: 0 })),
+      tambah("FPB", teks("f1", 226, 96, "2 × 3", 10, W.biru), teks("f2", 226, 112, "FPB = 6", 12, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 11. Uji Kompetensi 2 sampai 4 (Buku Siswa hlm. 61 sampai 62, Panduan Guru hlm. 88 sampai 89) ------------------------------ */
-export const ADEGAN_UK_2: AdeganStory = {
-  id: "uk-2",
-  judul: "Uji 2 sampai 4: kelompok belajar, lampu, kalender",
-  sumber: "Materi: Uji 2 sampai 4",
-  latar: "#FFFBEB",
-  kutipan: [
-    "Kelas V SD Mutiara Indah terdiri atas 12 siswa perempuan dan 18 siswa laki-laki.",
-    "Banyaknya siswa perempuan dan laki-laki di setiap kelompok harus sama.",
-    "Paling banyak, ada berapa kelompok yang dapat dibentuk?",
-    "Jadi, paling banyak dapat dibentuk 6 kelompok dengan anggota terdiri atas 3 orang siswa laki-laki dan 2 orang siswa perempuan.",
-    "menyala merah setiap 15 detik, 24 detik, dan 36 detik sekali.",
-    "menyala merah secara bersamaan pada pukul 15:30.",
-    "KPK dari 15, 24, dan 36 adalah",
-    "360 detik atau setelah 6 menit (1 menit = 60 detik).",
-    "pukul 15.30 + 6 menit, yaitu pukul 15.41.",
-    "Pahing terjadi setiap 5 hari sekali.",
-    "Pernyataan salah: Pasaran berulang setiap 5 hari sekali.",
-    "maka Pon selanjutnya bertepatan dengan hari Jumat.",
-    "Tanggal 24 Agustus berjarak 5 hari dari tanggal 19 Agustus.",
-    "Satu pasaran dalam kalender Bali dan Jawa adalah 5 hari.",
-    "Sabtu Kliwon selanjutnya jatuh pada tanggal 1 Oktober 2022.",
-  ],
-  ketukan: [
-    k(
-      "Uji dua, kelompok belajar: dua belas siswa perempuan dan delapan belas siswa laki-laki. FPB-nya enam, jadi paling banyak enam kelompok, masing-masing tiga laki-laki dan dua perempuan.",
-      tambah(0, judul("Uji 2")),
-      tambah("dua@2", ...kartu("g1", 14, 34, 130, 40, W.merahMuda, ["12 siswa perempuan", "18 siswa laki-laki"], 9)),
-      tambah("FPB-nya", ...kartu("g2", 156, 34, 130, 40, W.krem, ["FPB 12 dan 18", "adalah 6"], 9)),
-      tambah("enam@2", ...kartu("g3", 14, 90, 272, 34, W.hijauMuda, ["paling banyak 6 kelompok"], 10)),
-      tambah("tiga@1", teks("g4", 150, 150, "tiap kelompok: 3 laki-laki + 2 perempuan", 10, W.hijau)),
-    ),
-    k(
-      "Uji tiga, lampu lalu lintas menyala merah setiap lima belas, dua puluh empat, dan tiga puluh enam detik. KPK-nya tiga ratus enam puluh detik, yaitu enam menit.",
-      bersih(0),
-      tambah(0, judul("Uji 3: lampu merah")),
-      tambah("Uji", emo("l1", 60, 64, "🚦", 30), emo("l2", 150, 64, "🚦", 30), emo("l3", 240, 64, "🚦", 30)),
-      tambah("lima", teks("lt1", 60, 98, "setiap 15 detik", 9, W.biru), teks("lt2", 150, 98, "setiap 24 detik", 9, W.biru), teks("lt3", 240, 98, "setiap 36 detik", 9, W.biru)),
-      tambah("KPK-nya", teks("lk", 150, 138, "KPK 15, 24, 36 = 360 detik", 12, W.hijau)),
-      tambah("enam@3", teks("lm", 150, 164, "360 detik = 6 menit", 12, W.merah)),
-    ),
-    k(
-      "Mulai pukul lima belas tiga puluh, lampu bersamaan lagi enam menit kemudian. Jadi lampu menyala bersamaan pukul lima belas tiga puluh enam.",
-      bersih(0),
-      tambah(0, judul("Uji 3: pukul berapa?")),
-      tambah("Mulai", teks("p1", 150, 60, "mulai 15.30", 14, W.biru)),
-      tambah("bersamaan", teks("p2", 150, 100, "15.30 + 6 menit = 15.36", 14, W.hijau)),
-      tambah("Jadi", teks("p3", 150, 142, "bersamaan lagi pukul 15.36", 11, W.merah), emo("p4", 150, 178, "✅", 22)),
-    ),
-    k(
-      "Uji empat, pasaran lima hari. Pahing pada Selasa, lima hari kemudian Minggu, benar. Pon pada Minggu, lima hari kemudian Jumat, bukan Kamis, salah. Pahing tanggal sembilan belas, lalu dua puluh empat, benar.",
-      bersih(0),
-      tambah(0, judul("Uji 4a: benar atau salah")),
-      tambah("Pahing", ...kartu("q1", 14, 34, 272, 36, W.hijauMuda, ["i. Pahing Selasa, 5 hari lagi Minggu: Benar"], 9)),
-      tambah("Pon", ...kartu("q2", 14, 80, 272, 36, W.merahMuda, ["ii. Pon Minggu, 5 hari lagi Jumat: Salah"], 9)),
-      tambah("tanggal", ...kartu("q3", 14, 126, 272, 36, W.hijauMuda, ["iii. Pahing 19 Agustus, lalu 24 Agustus: Benar"], 9)),
-    ),
-    k(
-      "Bagian b: Sabtu Kliwon berulang setiap tiga puluh lima hari, KPK dari tujuh dan lima. Dua puluh tujuh Agustus ditambah tiga puluh lima hari jatuh pada satu Oktober.",
-      bersih(0),
-      tambah(0, judul("Uji 4b: Sabtu Kliwon")),
-      tambah("Sabtu", teks("s1", 150, 56, "KPK 7 dan 5 = 35", 14, W.hijau)),
-      tambah("Dua", teks("s2", 150, 100, "27 Agustus + 35 hari", 14, W.biru)),
-      tambah("satu", teks("s3", 150, 142, "= 1 Oktober 2022", 14, W.merah), emo("s4", 150, 180, "📅", 22)),
-    ),
-  ],
-};
+/* ------------------------------ 9. Perayaan akhir bab ------------------------------ */
+const SUARA_PENUTUP1 = "Malam itu Pasar Kuliner Malam penuh lampu, dengan lonceng, klepon, kotak bingkisan, dan papan bilangan.";
+const SUARA_PENUTUP2 = "Bu Marni, Pak Tarno, Bu Wati, Pak Joko, dan Kak Lintang bertepuk tangan bersama Pak Arif.";
+const SUARA_PENUTUP3 = "Menurutmu, bilangan prima apa yang paling kamu sukai? Terima kasih, Bima, Citra, Fajar, Pak Arif, dan Kak Lintang!";
 
-/* ------------------------------ 12. Rubrik, remedial, pengayaan, orang tua (Panduan Guru hlm. 90 sampai 96) ------------------------------ */
-export const ADEGAN_PENUTUP_E: AdeganStory = {
-  id: "penutup-e",
-  judul: "Rubrik, remedial, pengayaan, interaksi dengan orang tua, dan sumber bacaan",
-  sumber: "Panduan Guru hlm. 90–96",
-  latar: "#F0FDF4",
-  kutipan: [
-    "Tabel 2.5 Rubrik Penilaian Uji Kompetensi",
-    "Remedial diberikan jika peserta didik belum mencapai kriteria minimum",
-    "Bimbingan individu",
-    "Bimbingan kelompok",
-    "Pembelajaran ulang menggunakan metode dan media yang berbeda",
-    "Pada saat tes ulang, tingkat kesulitan soal dapat diturunkan.",
-    "Kegiatan pengayaan dapat diberikan soal-soal AKM",
-    "Pada hari Minggu, Dania membuat kue nastar dan kue kacang.",
-    "Hasilnya 60 buah kue nastar dan 72 kue kacang.",
-    "Paket kue tidak cukup untuk dibagikan kepada seluruh teman Dania.",
-    "bus jurusan 3A datang setiap 20 menit sekali, bus jurusan 2B setiap 15 menit sekali dan bus jurusan 1D setiap 30 menit sekali.",
-    "KPK dari 15 menit, 20 menit, dan 30 menit adalah 60 menit atau 1 jam.",
-    "paling banyak, ada berapa siswa di setiap baris?",
-    "Paduan suara yang terbentuk terdiri atas 5 baris, yaitu 3 baris siswa perempuan dan 2 baris siswa laki-laki.",
-    "orang tua dapat dilibatkan dalam membuat papan congklak yang terbuat dari kardus bekas dan gelas air mineral bekas.",
-    "Game interaktif menentukan KPK dan FPB.",
-    "Game ini berbasis Geogebra",
-  ],
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Perayaan Pasar Kuliner Malam",
+  sumber: "Materi: perayaan akhir bab",
+  latar: "#FFF1F2",
   ketukan: [
     k(
-      "Rubrik Uji Kompetensi: tiap butir skor tertingginya empat. Nomor satu dinilai dari banyaknya soal benar beserta caranya, nomor dua sampai empat dari konsep, kerunutan cara, dan jawaban akhir.",
-      tambah(0, judul("Rubrik Uji Kompetensi")),
-      tambah("Rubrik", ...tabel("rb", 30, 34, [60, 150], [["Nomor", "Skor tertinggi"], ["1", "4: semua benar dan runtut"], ["2", "4: konsep, cara, jawaban"], ["3", "4: konsep, cara, jawaban"], ["4", "4: konsep, cara, jawaban"]], 22, 8.6)),
+      SUARA_PENUTUP1,
+      tambah(0, judul("Pasar Kuliner Malam"), ...lantai("lt", 156)),
+      tambah("lampu", ...lampuGantung("lg", 36, 8)),
+      tambah("lonceng", emo("e1", 50, 82, E.lonceng, 26), teks("l1", 50, 99, "lonceng", 9, W.hijauTua)),
+      tambah("klepon", emo("e2", 110, 82, E.klepon, 26), teks("l2", 110, 99, "klepon", 9, W.hijauTua)),
+      tambah("kotak", emo("e3", 170, 82, E.kotak, 26), teks("l3", 170, 99, "kotak", 9, W.hijauTua)),
+      tambah("papan", kotak("e4", 218, 62, 66, 26, W.papan, W.kayuTua, { rx: 3, tebal: 2 }), teks("e4-t", 251, 79, "1 - 100", 10, W.biru), teks("l4", 251, 99, "papan", 9, W.hijauTua)),
     ),
     k(
-      "Remedial bagi yang belum tuntas: bimbingan individu, bimbingan kelompok, atau pembelajaran ulang dengan metode dan media berbeda. Pada tes ulang, tingkat kesulitan soal dapat diturunkan.",
-      bersih(0),
-      tambah(0, judul("Panduan remedial")),
-      tambah("individu,", ...kartu("m1", 20, 34, 260, 32, W.langit, ["1. bimbingan individu"], 9.6)),
-      tambah("kelompok,", ...kartu("m2", 20, 76, 260, 32, W.hijauMuda, ["2. bimbingan kelompok"], 9.6)),
-      tambah("pembelajaran", ...kartu("m3", 20, 118, 260, 32, W.krem, ["3. ulang dengan metode dan media berbeda"], 9.6)),
-      tambah("tes", teks("m4", 150, 176, "soal tes ulang boleh lebih mudah", 9.6, W.hijau)),
+      SUARA_PENUTUP2,
+      tambah("Marni", ...tokoh("bm", 30, 184, "Bu Marni")),
+      tambah("Tarno", ...tokoh("pt", 86, 184, "Pak Tarno")),
+      tambah("Wati", ...tokoh("bw", 142, 184, "Bu Wati")),
+      tambah("Joko", ...tokoh("pj", 198, 184, "Pak Joko")),
+      tambah("Lintang", ...tokoh("kl", 254, 184, "Kak Lintang")),
+      tambah("tangan", emo("tp1", 70, 150, E.tangan, 16), emo("tp2", 226, 150, E.tangan, 16)),
+      tambah("Arif", ...tokoh("pa", 150, 128, "Pak Arif")),
     ),
     k(
-      "Pengayaan memakai soal AKM. Berbagi kue: enam puluh nastar dan tujuh puluh dua kue kacang, FPB-nya dua belas. Jadi dua belas paket berisi lima nastar dan enam kacang. Untuk dua puluh siswa kurang delapan paket.",
-      bersih(0),
-      tambah(0, judul("Pengayaan 1: berbagi kue")),
-      tambah("nastar", teks("n1", 150, 52, "60 nastar dan 72 kue kacang", 12, W.biru)),
-      tambah("FPB-nya", teks("n2", 150, 80, "FPB 60 dan 72 = 12 paket", 12, W.hijau)),
-      tambah("lima", teks("n3", 150, 108, "tiap paket: 5 nastar + 6 kacang", 11, W.coklat)),
-      tambah("kurang", teks("n4", 150, 140, "20 siswa: kurang 20 − 12 = 8 paket", 11, W.merah)),
-    ),
-    k(
-      "Angkutan umum: bus tiap lima belas, dua puluh, dan tiga puluh menit, KPK-nya enam puluh menit, jadi bersamaan lagi pukul sebelas dua puluh. Paduan suara: FPB dua puluh empat dan tiga puluh enam adalah dua belas, jadi lima baris.",
-      bersih(0),
-      tambah(0, judul("Pengayaan 2 dan 3")),
-      tambah("Angkutan", ...kartu("o1", 14, 32, 272, 56, W.langit, ["bus tiap 15, 20, 30 menit", "KPK = 60 menit = 1 jam", "10.20 + 1 jam = 11.20"], 9.4)),
-      tambah("Paduan", ...kartu("o2", 14, 100, 272, 56, W.krem, ["24 laki-laki dan 36 perempuan", "FPB = 12 siswa per baris", "2 baris laki-laki + 3 baris perempuan = 5 baris"], 9.2)),
-    ),
-    k(
-      "Interaksi dengan orang tua: membuat papan congklak dari kardus dan gelas bekas, lalu bermain congklak FPB bersama. Sumber bacaan guru juga memuat game interaktif KPK dan FPB berbasis Geogebra.",
-      bersih(0),
-      tambah(0, judul("Orang tua dan sumber bacaan")),
-      tambah("congklak", emo("x1", 60, 80, "🏠", 36), ...kartu("x2", 100, 52, 186, 56, W.hijauMuda, ["papan congklak dari kardus", "dan gelas bekas, main", "congklak FPB bersama"], 9)),
-      tambah("game", emo("x3", 60, 150, "🎮", 36), ...kartu("x4", 100, 128, 186, 44, W.pink, ["game interaktif KPK dan FPB", "berbasis Geogebra"], 9)),
+      SUARA_PENUTUP3,
+      hapus(0, "e1", "e2", "e3", "e4", "e4-t", "l1", "l2", "l3", "l4"),
+      tambah("sukai", ...kartu("qs", 60, 46, 190, 26, "#FEF9C3", ["bilangan prima kesukaanmu?"], 10), teks("qm", 272, 76, "?", 30, W.ungu)),
+      tambah("Terima", emo("e5", 268, 128, E.konfeti, 24), emo("e6", 24, 64, E.balon, 22)),
+      tambah("Bima", ...tokoh("bi", 40, 128, "Bima")),
+      tambah("Citra", ...tokoh("ci", 95, 128, "Citra")),
+      tambah("Fajar", ...tokoh("fa", 205, 128, "Fajar")),
+      sorotkan("Lintang", "kl-sp"),
     ),
   ],
 };

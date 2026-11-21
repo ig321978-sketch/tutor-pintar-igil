@@ -1,227 +1,247 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { W, emo, judul, kartu, teks, venn } from "./k5b2e-gambar";
-import { bersih, k, tambah, ubah } from "./k5b2e-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, barisTabel, emo, judul, kartu, kerangkaTabel, kotak, lantai, simpul, tali, teks, tokoh } from "./k5b2e-gambar";
+import { NAMA_METODE, NAMA_METODE_ID } from "./k5b2e-luar-1";
+import { bersih, hapus, k, sorotkan, tambah, warnai } from "./k5b2e-bantu";
 
-/* ------------------------------ 6. LCM-GCF Bridge: konsep ------------------------------ */
-export const ADEGAN_LUAR_LGB: AdeganStory = {
-  id: "luar-lgb",
-  judul: "LCM-GCF Bridge: jembatan KPK dan FPB",
-  sumber: "Metode luar: LCM-GCF Bridge",
-  latar: "#FFFBEB",
+/*
+ * Cerita orisinal IGIL "Papan Bilangan Kak Lintang" (Kelas 5 Bab 2 Sub-Bab E), akhir cerita Pasar Kuliner Malam.
+ * Video kedua: tiga metode global (Sieve It, Factor Tree, Divide Down), terpisah dari video materi.
+ * Naskah suara dari naskah/story-naskah-k5b2e.md. Bagian ini: Factor Tree (konsep dan terapan Bima), Divide Down (konsep dan terapan Fajar), dan ringkasan.
+ */
+
+/* ------------------------------ Factor Tree: konsep ------------------------------ */
+const SUARA_POHON1 = "Cara kedua, Factor Tree, atau Pohon Faktor.";
+const SUARA_POHON2 = "Kita memecah bilangan menjadi dua faktor, lalu memecah lagi sampai semua ujungnya prima.";
+const SUARA_POHON3 = "Bilangan prima yang ada di ujung adalah faktorisasi prima, dan hasil kalinya adalah bilangan semula.";
+const SUARA_POHON4 = "Bentuk pohonnya boleh berbeda, tetapi daun primanya selalu sama.";
+
+export const ADEGAN_LUAR_POHON: AdeganStory = {
+  id: "luar-pohon",
+  judul: "Cara kedua: pohon faktor",
+  sumber: "Metode global: Factor Tree, konsep",
+  latar: "#F0FDF4",
   ketukan: [
     k(
-      "Metode ketiga, LCM-GCF Bridge, jembatan KPK dan FPB. Untuk dua bilangan, hasil kali KPK dan FPB sama dengan hasil kali kedua bilangan itu.",
-      tambah(0, judul("LCM-GCF Bridge")),
-      tambah("Metode", teks("b1", 150, 66, "KPK × FPB = a × b", 20, W.hijau)),
-      tambah("Untuk", emo("b2", 150, 130, "🌉", 44)),
-      tambah("kedua", teks("b3", 150, 176, "a dan b: dua bilangan", 10, W.biru)),
+      SUARA_POHON1,
+      tambah(0, judul("Factor Tree"), ...lantai("lt", 156), ...tokoh("kl", 262, 184, "Kak Lintang")),
+      tambah("kedua", emo("tg", 40, 74, E.pohon, 26), teks("n1", 40, 96, "cara 2", 9, W.coklat)),
+      tambah("Factor", ...kartu("m", 70, 44, 190, 64, "#DCFCE7", [NAMA_METODE[1], NAMA_METODE_ID[1]], 12)),
+      tambah("Pohon", emo("sa", 150, 130, E.kilau, 16)),
     ),
     k(
-      "Contoh dari apersepsi: delapan belas dan dua puluh empat punya FPB enam dan KPK tujuh puluh dua. Enam kali tujuh puluh dua sama dengan empat ratus tiga puluh dua, sama dengan delapan belas kali dua puluh empat.",
+      SUARA_POHON2,
       bersih(0),
-      tambah(0, judul("Contoh: 18 dan 24")),
-      tambah("Contoh", teks("c0", 150, 46, "FPB = 6 dan KPK = 72", 12, W.biru)),
-      tambah("Enam@2", teks("c1", 150, 88, "6 × 72 = 432", 18, W.hijau)),
-      tambah("delapan@2", teks("c2", 150, 130, "18 × 24 = 432", 18, W.hijau)),
-      tambah(36, emo("c3", 150, 176, "✅", 24)),
+      tambah(0, judul("Memecah Sampai Prima"), ...lantai("lt", 156), ...tokoh("kl", 262, 184, "Kak Lintang")),
+      tambah("bilangan", ...simpul("r", 150, 44, 20, false)),
+      tambah("dua", tali("ta", 150, 44, 118, 80), tali("tb", 150, 44, 182, 80), ...simpul("a", 118, 80, 2, true), ...simpul("b", 182, 80, 10, false)),
+      tambah("lagi", tali("tc", 182, 80, 160, 116), tali("td", 182, 80, 204, 116), ...simpul("c", 160, 116, 2, true), ...simpul("d", 204, 116, 5, true)),
+      sorotkan("prima", "a", "c", "d"),
     ),
     k(
-      "Jadi kalau FPB sudah ada, KPK dicari dengan membagi hasil kali kedua bilangan dengan FPB. Begitu pula FPB dapat dicari dari KPK.",
-      bersih(0),
-      tambah(0, judul("Jembatan dua arah")),
-      tambah("KPK", teks("d1", 150, 70, "KPK = (a × b) ÷ FPB", 17, W.hijau)),
-      tambah("Begitu", teks("d2", 150, 124, "FPB = (a × b) ÷ KPK", 17, W.merah)),
+      SUARA_POHON3,
+      sorotkan("ujung", "a", "c", "d"),
+      tambah("faktorisasi", teks("rm", 150, 152, "2 × 2 × 5", 12, W.merahTua)),
+      tambah("hasil", teks("rn", 150, 168, "= 20", 12, W.merah)),
+      sorotkan("semula", "r"),
     ),
     k(
-      "Peringatan: jembatan ini hanya berlaku untuk dua bilangan. Untuk dua puluh empat, tiga puluh enam, dan enam puluh, FPB kali KPK tidak sama dengan hasil kali ketiganya.",
+      SUARA_POHON4,
       bersih(0),
-      tambah(0, judul("Hanya untuk dua bilangan")),
-      tambah("Peringatan:", emo("w0", 150, 62, "⚠", 28)),
-      tambah("dua@2", teks("w1", 150, 100, "FPB × KPK = 12 × 360 = 4.320", 13, W.biru)),
-      tambah("hasil", teks("w2", 150, 128, "24 × 36 × 60 = 51.840", 13, W.biru)),
-      tambah("tidak", teks("w3", 150, 160, "4.320 ≠ 51.840", 15, W.merah)),
+      tambah(0, judul("Bentuk Boleh Berbeda"), ...lantai("lt", 156), ...tokoh("kl", 262, 184, "Kak Lintang")),
+      tambah("pohonnya", ...simpul("ar", 75, 44, 20, false), tali("ata", 75, 44, 50, 80), tali("atb", 75, 44, 100, 80), ...simpul("aa", 50, 80, 2, true), ...simpul("ab", 100, 80, 10, false), tali("atc", 100, 80, 85, 116), tali("atd", 100, 80, 115, 116), ...simpul("ac", 85, 116, 2, true), ...simpul("ad", 115, 116, 5, true)),
+      tambah("berbeda,", ...simpul("br", 225, 44, 20, false), tali("bta", 225, 44, 200, 80), tali("btb", 225, 44, 250, 80), ...simpul("ba", 200, 80, 4, false), ...simpul("bb", 250, 80, 5, true), tali("btc", 200, 80, 185, 116), tali("btd", 200, 80, 215, 116), ...simpul("bc", 185, 116, 2, true), ...simpul("bd", 215, 116, 2, true)),
+      sorotkan("daun", "aa", "ac", "ad", "bb", "bc", "bd"),
+      tambah("sama", teks("ds", 150, 150, "daun: 2, 2, 5", 11, W.hijauTua)),
     ),
   ],
 };
 
-/* ------------------------------ 7. LCM-GCF Bridge: penerapan ------------------------------ */
-export const ADEGAN_LUAR_LGB_TERAPAN: AdeganStory = {
-  id: "luar-lgb-terapan",
-  judul: "LCM-GCF Bridge pada 72 dan 150, 45 dan 135, 96 dan 120, 36 dan 108",
-  sumber: "Metode luar: LCM-GCF Bridge",
-  latar: "#FFFBEB",
-  ketukan: [
-    k(
-      "Tujuh puluh dua dan seratus lima puluh punya FPB enam. Hasil kali kedua bilangan sepuluh ribu delapan ratus, dibagi enam, hasilnya KPK seribu delapan ratus.",
-      tambah(0, judul("Jembatan: 72 dan 150")),
-      tambah("FPB", teks("e0", 150, 50, "FPB = 6", 13, W.merah)),
-      tambah("Hasil", teks("e1", 150, 94, "72 × 150 = 10.800", 17, W.biru)),
-      tambah("dibagi", teks("e2", 150, 138, "10.800 ÷ 6 = 1.800", 17, W.hijau)),
-      tambah("KPK", teks("e3", 150, 176, "KPK = 1.800", 13, W.hijau)),
-    ),
-    k(
-      "Empat puluh lima dan seratus tiga puluh lima punya FPB empat puluh lima. Hasil kalinya enam ribu tujuh puluh lima, dibagi empat puluh lima, hasilnya KPK seratus tiga puluh lima.",
-      bersih(0),
-      tambah(0, judul("Jembatan: 45 dan 135")),
-      tambah("FPB", teks("f0", 150, 50, "FPB = 45", 13, W.merah)),
-      tambah("Hasil", teks("f1", 150, 94, "45 × 135 = 6.075", 17, W.biru)),
-      tambah("dibagi", teks("f2", 150, 138, "6.075 ÷ 45 = 135", 17, W.hijau)),
-      tambah("KPK", teks("f3", 150, 176, "KPK = 135", 13, W.hijau)),
-    ),
-    k(
-      "Sembilan puluh enam dan seratus dua puluh punya FPB dua puluh empat. Hasil kalinya sebelas ribu lima ratus dua puluh, dibagi dua puluh empat, hasilnya KPK empat ratus delapan puluh.",
-      bersih(0),
-      tambah(0, judul("Jembatan: 96 dan 120")),
-      tambah("FPB", teks("g0", 150, 50, "FPB = 24", 13, W.merah)),
-      tambah("Hasil", teks("g1", 150, 94, "96 × 120 = 11.520", 17, W.biru)),
-      tambah("dibagi", teks("g2", 150, 138, "11.520 ÷ 24 = 480", 17, W.hijau)),
-      tambah("KPK", teks("g3", 150, 176, "KPK = 480", 13, W.hijau)),
-    ),
-    k(
-      "Tiga puluh enam dan seratus delapan punya FPB tiga puluh enam. Hasil kalinya tiga ribu delapan ratus delapan puluh delapan, dibagi tiga puluh enam, KPK seratus delapan. Cocok dengan hitungan tadi.",
-      bersih(0),
-      tambah(0, judul("Jembatan: 36 dan 108")),
-      tambah("FPB", teks("h0", 150, 50, "FPB = 36", 13, W.merah)),
-      tambah("Hasil", teks("h1", 150, 94, "36 × 108 = 3.888", 17, W.biru)),
-      tambah("dibagi", teks("h2", 150, 138, "3.888 ÷ 36 = 108", 17, W.hijau)),
-      tambah("Cocok", teks("h3", 150, 176, "KPK = 108", 13, W.hijau), emo("h4", 240, 176, "✅", 22)),
-    ),
-  ],
-};
+/* ------------------------------ Factor Tree: terapan Bima ------------------------------ */
+const SUARA_POHONT1 = "Bima membuat pohon faktor dua puluh empat: dua belas dan dua, lalu dua belas menjadi dua dan enam.";
+const SUARA_POHONT2 = "Daunnya dua, dua, dua, tiga, jadi faktorisasinya dua kali dua kali dua kali tiga.";
+const SUARA_POHONT3 = "Cocok untuk bilangan besar, karena kita memecah satu langkah pada satu waktu.";
+const SUARA_POHONT4 = "Kurang cocok kalau kita ingin cepat untuk bilangan kecil, karena menggambar pohonnya lebih lama.";
 
-/* ------------------------------ 8. Prime Venn Diagram: konsep ------------------------------ */
-export const VENN = { xa: 118, xb: 182, y: 100, r: 50 };
-/** Kolom isi diagram: faktor hanya di kiri ("l"), di irisan ("t"), dan hanya di kanan ("r"). Id `${id}-l0`, `${id}-t0`, `${id}-r0`, dan seterusnya. */
-const isi = (id: string, jenis: "l" | "t" | "r", daftar: number[], tata: [number, number][], warna: string = W.biru): Obj[] => daftar.map((n, i) => teks(`${id}-${jenis}${i}`, tata[i][0], tata[i][1], String(n), 12, warna));
-
-export const ADEGAN_LUAR_PV: AdeganStory = {
-  id: "luar-pv",
-  judul: "Prime Venn Diagram: faktor prima di dua lingkaran",
-  sumber: "Metode luar: Prime Venn Diagram",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      "Metode keempat, Prime Venn Diagram, menaruh faktor prima dua bilangan dalam dua lingkaran yang beririsan. Prima yang sama masuk irisan, prima yang tidak sama tinggal di sisi masing-masing.",
-      tambah(0, judul("Prime Venn Diagram")),
-      tambah(12, ...venn("v", VENN.xa, VENN.xb, VENN.y, VENN.r)),
-      tambah(14, teks("va", 96, 44, "bilangan A", 9, W.biru), teks("vb", 204, 44, "bilangan B", 9, W.coklat)),
-      tambah(17, teks("vt", 150, 104, "sama", 9, W.merah)),
-      tambah(23, teks("vl", 90, 104, "hanya A", 9, W.biru), teks("vr", 212, 104, "hanya B", 9, W.coklat)),
-    ),
-    k(
-      "FPB adalah hasil kali isi irisan saja, karena itulah faktor persekutuan terbesar.",
-      ubah("irisan", { id: "vt", sorot: true }),
-      tambah("FPB", ...kartu("kf", 10, 160, 134, 34, W.merahMuda, ["FPB = hasil kali", "isi irisan saja"], 8.4)),
-    ),
-    k(
-      "KPK adalah hasil kali semua isi diagram, dan isi irisan hanya dihitung sekali.",
-      ubah("KPK", { id: "vt", sorot: false }),
-      tambah("KPK", ...kartu("kk", 156, 160, 134, 34, W.hijauMuda, ["KPK = hasil kali semua", "isi (irisan sekali)"], 8.4)),
-      ubah("irisan", { id: "va", warna: W.hijau }, { id: "vb", warna: W.hijau }),
-    ),
-    k(
-      "Kelebihannya: FPB dan KPK terlihat sekaligus, dan pasangan prima sulit terlewat. Kekurangannya: butuh gambar, dan untuk tiga bilangan diagramnya lebih rumit.",
-      bersih(0),
-      tambah(0, judul("Kelebihan dan kekurangan")),
-      tambah("Kelebihannya:", ...kartu("kl", 14, 40, 130, 60, W.hijauMuda, ["FPB dan KPK", "terlihat sekaligus,", "pasangan sulit terlewat"], 8.6), emo("kle", 79, 126, "👍", 26)),
-      tambah("Kekurangannya:", ...kartu("kj", 156, 40, 130, 60, W.merahMuda, ["butuh gambar,", "untuk tiga bilangan", "lebih rumit"], 8.6), emo("kke", 221, 126, "🤔", 26)),
-    ),
-  ],
-};
-
-/* ------------------------------ 9. Prime Venn Diagram: penerapan ------------------------------ */
-/** Isi diagram untuk uji: tiap pasangan bilangan, faktor kiri saja, irisan, dan kanan saja. */
-export const VENN_DATA = {
-  v1: { a: 72, b: 150, l: [2, 2, 3], t: [2, 3], r: [5, 5] },
-  v2: { a: 36, b: 108, l: [] as number[], t: [2, 2, 3, 3], r: [3] },
-  v3: { a: 50, b: 105, l: [2, 5], t: [5], r: [3, 7] },
-};
-const KIRI3: [number, number][] = [[84, 104], [102, 104], [120, 104]];
-const TENGAH2: [number, number][] = [[150, 92], [150, 114]];
-const TENGAH4: [number, number][] = [[142, 92], [158, 92], [142, 114], [158, 114]];
-const KANAN2: [number, number][] = [[192, 104], [210, 104]];
-
-export const ADEGAN_LUAR_PV_TERAPAN: AdeganStory = {
-  id: "luar-pv-terapan",
-  judul: "Prime Venn Diagram pada 72 dan 150, 36 dan 108, 50 dan 105",
-  sumber: "Metode luar: Prime Venn Diagram",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      "Tujuh puluh dua dan seratus lima puluh. Di irisan ada dua dan tiga. Di sisi kiri tersisa dua, dua, tiga, dan di sisi kanan lima, lima.",
-      tambah(0, judul("Venn: 72 dan 150"), ...venn("v1", VENN.xa, VENN.xb, VENN.y, VENN.r), teks("v1-A", 96, 44, "72", 11, W.biru), teks("v1-B", 204, 44, "150", 11, W.coklat)),
-      tambah(10, teks("v1-t0", TENGAH2[0][0], TENGAH2[0][1], "2", 12, W.merah)),
-      tambah(12, teks("v1-t1", TENGAH2[1][0], TENGAH2[1][1], "3", 12, W.merah)),
-      tambah(17, teks("v1-l0", KIRI3[0][0], KIRI3[0][1], "2", 12, W.biru)),
-      tambah(18, teks("v1-l1", KIRI3[1][0], KIRI3[1][1], "2", 12, W.biru)),
-      tambah(19, teks("v1-l2", KIRI3[2][0], KIRI3[2][1], "3", 12, W.biru)),
-      tambah(24, teks("v1-r0", KANAN2[0][0], KANAN2[0][1], "5", 12, W.coklat)),
-      tambah(25, teks("v1-r1", KANAN2[1][0], KANAN2[1][1], "5", 12, W.coklat)),
-    ),
-    k(
-      "FPB: kalikan isi irisan, dua kali tiga sama dengan enam. KPK: kalikan semuanya, dua, tiga, dua, dua, tiga, lima, lima, yaitu seribu delapan ratus.",
-      tambah("FPB:", teks("v1-fpb", 150, 172, "FPB = 2 × 3 = 6", 10, W.merah)),
-      tambah("KPK:", teks("v1-kpk", 150, 190, "KPK = 2 × 3 × 2 × 2 × 3 × 5 × 5 = 1.800", 8.8, W.hijau)),
-    ),
-    k(
-      "Tantangan: tiga puluh enam dan seratus delapan. Irisan berisi dua, dua, tiga, tiga, dan sisi kanan hanya tersisa satu tiga. FPB tiga puluh enam, KPK seratus delapan.",
-      bersih(0),
-      tambah(0, judul("Venn: 36 dan 108"), ...venn("v2", VENN.xa, VENN.xb, VENN.y, VENN.r), teks("v2-A", 96, 44, "36", 11, W.biru), teks("v2-B", 204, 44, "108", 11, W.coklat), teks("v2-kosong", 90, 104, "kosong", 8.6, W.abu)),
-      tambah("Irisan", ...isi("v2", "t", VENN_DATA.v2.t, TENGAH4, W.merah)),
-      tambah("kanan", ...isi("v2", "r", VENN_DATA.v2.r, [[200, 104]], W.coklat)),
-      tambah("FPB", teks("v2-fpb", 150, 172, "FPB = 2 × 2 × 3 × 3 = 36", 10, W.merah)),
-      tambah("KPK", teks("v2-kpk", 150, 190, "KPK = 2 × 2 × 3 × 3 × 3 = 108", 9.6, W.hijau)),
-    ),
-    k(
-      "Lima puluh dan seratus lima: irisan hanya lima. Sisi kiri tersisa dua dan lima, sisi kanan tiga dan tujuh. FPB lima, KPK seribu lima puluh.",
-      bersih(0),
-      tambah(0, judul("Venn: 50 dan 105"), ...venn("v3", VENN.xa, VENN.xb, VENN.y, VENN.r), teks("v3-A", 96, 44, "50", 11, W.biru), teks("v3-B", 204, 44, "105", 11, W.coklat)),
-      tambah("irisan", ...isi("v3", "t", VENN_DATA.v3.t, [[150, 104]], W.merah)),
-      tambah("kiri", ...isi("v3", "l", VENN_DATA.v3.l, [[96, 104], [114, 104]], W.biru)),
-      tambah("kanan", ...isi("v3", "r", VENN_DATA.v3.r, KANAN2, W.coklat)),
-      tambah("FPB", teks("v3-fpb", 150, 172, "FPB = 5", 10, W.merah)),
-      tambah("KPK", teks("v3-kpk", 150, 190, "KPK = 5 × 2 × 5 × 3 × 7 = 1.050", 9.6, W.hijau)),
-    ),
-  ],
-};
-
-/* ------------------------------ 10. Ringkasan ------------------------------ */
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan empat metode luar",
-  sumber: "Ringkasan metode luar",
+export const ADEGAN_LUAR_POHON_TERAPAN: AdeganStory = {
+  id: "luar-pohon-terapan",
+  judul: "Bima membuat pohon faktor",
+  sumber: "Metode global: Factor Tree, terapan Bima",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Ringkasannya: Factor Tree memecah bilangan sampai prima, Prime Exponent Rules menulis prima dengan pangkat, LCM-GCF Bridge menghubungkan KPK dan FPB, dan Prime Venn Diagram menampilkan keduanya sekaligus.",
-      tambah(0, judul("Ringkasan empat metode")),
-      tambah("Factor", ...kartu("r1", 14, 32, 272, 34, W.hijauMuda, ["Factor Tree: pecah sampai prima"], 9.2)),
-      tambah("Prime@1", ...kartu("r2", 14, 74, 272, 34, W.langit, ["Prime Exponent Rules: prima dengan pangkat"], 9.2)),
-      tambah("LCM-GCF", ...kartu("r3", 14, 116, 272, 34, W.krem, ["LCM-GCF Bridge: KPK dan FPB terhubung"], 9.2)),
-      tambah("Prime@2", ...kartu("r4", 14, 158, 272, 34, W.pink, ["Prime Venn Diagram: keduanya sekaligus"], 9.2)),
+      SUARA_POHONT1,
+      tambah(0, judul("Pohon Faktor 24"), ...lantai("lt", 164), ...tokoh("bi", 262, 184, "Bima")),
+      tambah("pohon", ...simpul("r", 150, 38, 24, false)),
+      tambah(7, tali("t1", 150, 38, 112, 74), ...simpul("u", 112, 74, 12, false)),
+      tambah(10, tali("t2", 150, 38, 188, 74), ...simpul("v", 188, 74, 2, true)),
+      tambah(15, tali("t3", 112, 74, 86, 110), ...simpul("w", 86, 110, 2, true)),
+      tambah(17, tali("t4", 112, 74, 138, 110), ...simpul("x", 138, 110, 6, false)),
     ),
     k(
-      "Semuanya memakai gagasan yang sama: faktorisasi prima, pasangan prima ditulis sekali, dan prima yang tidak berpasangan tetap ikut di KPK.",
-      bersih(0),
-      tambah(0, judul("Gagasan yang sama")),
-      tambah("faktorisasi", ...kartu("s1", 20, 36, 260, 34, W.langit, ["1. faktorisasi prima"], 10)),
-      tambah("pasangan", ...kartu("s2", 20, 82, 260, 34, W.hijauMuda, ["2. pasangan prima ditulis sekali"], 10)),
-      tambah("tidak", ...kartu("s3", 20, 128, 260, 34, W.krem, ["3. prima tanpa pasangan ikut di KPK"], 10)),
+      SUARA_POHONT2,
+      tambah(1, tali("t5", 138, 110, 112, 146), ...simpul("y", 112, 146, 2, true)),
+      tambah(4, tali("t6", 138, 110, 164, 146), ...simpul("z", 164, 146, 3, true)),
+      tambah(6, teks("rm", 236, 96, "24 =", 9, W.merahTua)),
+      ...[
+        [7, "24 = 2"],
+        [9, "24 = 2 × 2"],
+        [11, "24 = 2 × 2 × 2"],
+        [13, "24 = 2 × 2 × 2 × 3"],
+      ].map(([at, isi]) => ({ at: at as number, ubah: [{ id: "rm", isi: isi as string }] })),
     ),
     k(
-      "Pilih sesuai soal: bilangan besar cocok dengan pangkat, bila FPB sudah diketahui pakai jembatan, dan untuk memahami konsep, diagram Venn paling jelas.",
-      bersih(0),
-      tambah(0, judul("Memilih metode")),
-      tambah("besar", emo("t1", 40, 66, "🔢", 26), ...kartu("t2", 70, 44, 216, 36, W.langit, ["bilangan besar: pangkat"], 9.6)),
-      tambah("jembatan,", emo("t3", 40, 116, "🌉", 26), ...kartu("t4", 70, 94, 216, 36, W.krem, ["FPB sudah ada: jembatan"], 9.6)),
-      tambah("Venn", emo("t5", 40, 166, "⭕", 26), ...kartu("t6", 70, 144, 216, 36, W.pink, ["memahami konsep: diagram Venn"], 9.6)),
+      SUARA_POHONT3,
+      tambah("Cocok", emo("ok", 262, 50, E.benar, 20), teks("lb", 262, 74, "cocok", 12, W.hijauTua)),
+      sorotkan("langkah", "r", "u", "x"),
+      tambah("waktu", emo("jm", 262, 118, E.jam, 22)),
     ),
     k(
-      "Apa pun metodenya, cek hasilnya: KPK harus habis dibagi kedua bilangan, dan kedua bilangan harus habis dibagi FPB.",
+      SUARA_POHONT4,
       bersih(0),
-      tambah(0, judul("Cek hasil: 72 dan 150")),
-      tambah("KPK", teks("z1", 150, 56, "1.800 ÷ 72 = 25", 15, W.hijau), teks("z2", 150, 86, "1.800 ÷ 150 = 12", 15, W.hijau)),
-      tambah("kedua@2", teks("z3", 150, 126, "72 ÷ 6 = 12", 15, W.merah), teks("z4", 150, 156, "150 ÷ 6 = 25", 15, W.merah)),
+      tambah(0, judul("Bilangan Kecil"), ...lantai("lt", 164), ...tokoh("bi", 262, 184, "Bima")),
+      tambah("Kurang", emo("x1", 150, 44, E.salah, 20), teks("kc", 150, 66, "kurang cocok", 12, W.merah)),
+      tambah("bilangan", ...kartu("kk", 14, 82, 110, 40, "#FEF9C3", ["bilangan kecil", "6 = 2 × 3"], 10)),
+      tambah("menggambar", ...simpul("s0", 190, 96, 6, false), tali("s1t", 190, 96, 170, 130), tali("s2t", 190, 96, 210, 130), ...simpul("s1", 170, 130, 2, true), ...simpul("s2", 210, 130, 3, true)),
+      tambah("lama", emo("jm", 66, 146, E.jam, 20), teks("ll", 66, 160, "lebih lama", 10, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Divide Down: konsep ------------------------------ */
+const SUARA_BAGI1 = "Cara ketiga, Divide Down, atau Bagi Berulang.";
+const SUARA_BAGI2 = "Kita menulis dua bilangan berdampingan, lalu membaginya dengan bilangan prima terkecil yang bisa.";
+const SUARA_BAGI3 = "Kalau hanya satu bilangan yang habis, bilangan satunya ditulis ulang apa adanya.";
+const SUARA_BAGI4 = "Kita berhenti ketika semuanya sudah menjadi satu.";
+
+/** Kerangka tabel pembagian dengan dua kolom bilangan: pembagi di x 40, bilangan di x 86 dan 130, baris di y 68, 88, 108, 128. */
+const tabelDua = (a: number, b: number) => [...kerangkaTabel("kt", 40, 40, 140, 150), teks("hp", 40, 44, "pembagi", 9, W.oranye), teks("h0", 86, 44, String(a), 11, W.biru), teks("h1", 130, 44, String(b), 11, W.biru)];
+export const ADEGAN_LUAR_BAGI: AdeganStory = {
+  id: "luar-bagi",
+  judul: "Cara ketiga: bagi berulang",
+  sumber: "Metode global: Divide Down, konsep",
+  latar: "#FEFCE8",
+  ketukan: [
+    k(
+      SUARA_BAGI1,
+      tambah(0, judul("Divide Down"), ...lantai("lt", 156), ...tokoh("kl", 262, 184, "Kak Lintang")),
+      tambah("ketiga", emo("tg", 40, 74, "\u{2797}", 26), teks("n1", 40, 96, "cara 3", 9, W.coklat)),
+      tambah("Divide", ...kartu("m", 70, 44, 190, 64, "#FEF9C3", [NAMA_METODE[2], NAMA_METODE_ID[2]], 12)),
+      tambah("Bagi", emo("sa", 150, 130, E.kilau, 16)),
+    ),
+    k(
+      SUARA_BAGI2,
+      bersih(0),
+      tambah(0, judul("Dua Bilangan Berdampingan"), ...lantai("lt", 160), ...tokoh("kl", 262, 184, "Kak Lintang")),
+      tambah("bilangan", ...tabelDua(20, 28)),
+      tambah("membaginya", ...barisTabel("r0", 40, 68, 2, [10, 14])),
+      tambah("prima", teks("pt", 226, 84, "prima terkecil", 9, W.hijauTua)),
+      sorotkan("terkecil", "r0-p"),
+    ),
+    k(
+      SUARA_BAGI3,
+      bersih(0),
+      tambah(0, judul("Yang Tidak Habis Ditulis"), ...lantai("lt", 160), ...tokoh("kl", 262, 184, "Kak Lintang"), ...tabelDua(10, 15)),
+      tambah("habis,", ...barisTabel("r0", 40, 68, 2, [5, 15])),
+      sorotkan("ditulis", "r0-c1", "h1"),
+      tambah("adanya", teks("ad", 226, 84, "15 tetap 15", 9, W.merah)),
+    ),
+    k(
+      SUARA_BAGI4,
+      tambah("berhenti", ...barisTabel("r1", 40, 88, 3, [5, 5])),
+      tambah("ketika", ...barisTabel("r2", 40, 108, 5, [1, 1])),
+      warnai("satu", W.hijauTua, "r2-c0", "r2-c1"),
+      tambah("satu", emo("ok", 182, 110, E.benar, 18)),
+    ),
+  ],
+};
+
+/* ------------------------------ Divide Down: terapan Fajar ------------------------------ */
+const SUARA_BAGIT1 = "Fajar membagi tiga puluh dan empat puluh lima dengan prima: dua, tiga, tiga, lalu lima.";
+const SUARA_BAGIT2 = "Hasil kali semua pembaginya adalah KPK, yaitu sembilan puluh.";
+const SUARA_BAGIT3 = "Cocok untuk KPK dua atau tiga bilangan sekaligus, karena langkahnya rapi dalam satu tabel.";
+const SUARA_BAGIT4 = "Kurang cocok kalau kita lupa menulis ulang bilangan yang tidak habis dibagi.";
+
+export const ADEGAN_LUAR_BAGI_TERAPAN: AdeganStory = {
+  id: "luar-bagi-terapan",
+  judul: "Fajar membagi dengan prima",
+  sumber: "Metode global: Divide Down, terapan Fajar",
+  latar: "#FFF7ED",
+  ketukan: [
+    k(
+      SUARA_BAGIT1,
+      tambah(0, judul("Fajar Membagi dengan Prima"), ...lantai("lt", 160), ...tokoh("fa", 262, 184, "Fajar")),
+      tambah("membagi", ...kerangkaTabel("kt", 40, 40, 140, 150), teks("hp", 40, 44, "pembagi", 9, W.oranye)),
+      tambah("puluh", teks("h0", 86, 44, "30", 11, W.biru)),
+      tambah("lima", teks("h1", 130, 44, "45", 11, W.biru)),
+      tambah(10, ...barisTabel("r0", 40, 68, 2, [15, 45])),
+      tambah(11, ...barisTabel("r1", 40, 88, 3, [5, 15])),
+      tambah(12, ...barisTabel("r2", 40, 108, 3, [5, 5])),
+      tambah(14, ...barisTabel("r3", 40, 128, 5, [1, 1])),
+    ),
+    k(
+      SUARA_BAGIT2,
+      tambah("kali", teks("e1", 226, 62, "2 × 3 × 3 × 5", 10, W.biru)),
+      tambah("KPK", teks("e2", 226, 78, "KPK", 11, W.merah)),
+      tambah("sembilan", teks("e3", 226, 98, "= 90", 14, W.merah)),
+    ),
+    k(
+      SUARA_BAGIT3,
+      bersih(0),
+      tambah(0, judul("Tiga Bilangan Sekaligus"), ...lantai("lt", 160), ...tokoh("fa", 262, 184, "Fajar")),
+      tambah("KPK", ...kerangkaTabel("kt", 30, 40, 140, 170), teks("hp", 30, 44, "pembagi", 9, W.oranye)),
+      tambah("tiga", teks("h0", 76, 44, "6", 11, W.biru), teks("h1", 120, 44, "10", 11, W.biru), teks("h2", 164, 44, "15", 11, W.biru)),
+      tambah("langkahnya", ...barisTabel("r0", 30, 68, 2, [3, 5, 15]), ...barisTabel("r1", 30, 88, 3, [1, 5, 5]), ...barisTabel("r2", 30, 108, 5, [1, 1, 1])),
+      tambah("rapi", emo("ok", 232, 100, E.benar, 22), teks("rp", 232, 122, "rapi", 11, W.hijauTua)),
+    ),
+    k(
+      SUARA_BAGIT4,
+      bersih(0),
+      tambah(0, judul("Lupa Menulis Ulang"), ...lantai("lt", 160), ...tokoh("fa", 262, 184, "Fajar")),
+      tambah("Kurang", emo("x1", 232, 56, E.salah, 22), teks("kc", 232, 78, "kurang cocok", 10, W.merah)),
+      tambah("lupa", ...kerangkaTabel("kt", 40, 40, 140, 150), teks("hp", 40, 44, "pembagi", 9, W.oranye), teks("h0", 86, 44, "30", 11, W.biru), teks("h1", 130, 44, "45", 11, W.biru), teks("r0-p", 40, 68, "2", 11, W.oranye), teks("r0-c0", 86, 68, "15", 11, W.biru)),
+      tambah("ulang", kotak("hl", 116, 56, 28, 16, "#FEE2E2", W.merah, { rx: 3, tebal: 1.4, putus: true }), teks("hl-t", 130, 68, "?", 11, W.merah)),
+      tambah("tidak", teks("ms", 232, 100, "45 hilang", 10, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_RINGKAS1 = "Tiga cara sudah kita pelajari bersama Kak Lintang, dan masing-masing punya saat yang tepat.";
+const SUARA_RINGKAS2 = "Mencari prima, pakai Saring. Memecah bilangan, pakai Pohon Faktor. KPK dan FPB banyak bilangan, pakai Bagi Berulang.";
+const SUARA_RINGKAS3 = "Apa pun caranya, bilangan satu bukan prima dan semua pembagi harus prima.";
+const SUARA_RINGKAS4 = "Menurutmu, untuk faktorisasi prima dari tujuh puluh dua, cara mana yang paling cepat?";
+
+export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
+  id: "luar-ringkas",
+  judul: "Tiga cara dan saatnya",
+  sumber: "Ringkasan metode global: tiga cara",
+  latar: "#F5F3FF",
+  ketukan: [
+    k(
+      SUARA_RINGKAS1,
+      tambah(0, judul("Tiga Cara Bersama"), ...lantai("lt", 156)),
+      tambah("Tiga", ...[0, 1, 2].flatMap((i) => kartu(`c${i + 1}`, [8, 107, 206][i], 44, 86, 40, ["#DBEAFE", "#DCFCE7", "#FEF9C3"][i], [NAMA_METODE[i], NAMA_METODE_ID[i]], 8.4))),
+      tambah("Lintang", ...tokoh("kl", 150, 184, "Kak Lintang")),
+      tambah("saat", teks("n1", 51, 38, "1", 10, W.coklat), teks("n2", 150, 38, "2", 10, W.coklat), teks("n3", 249, 38, "3", 10, W.coklat)),
+    ),
+    k(
+      SUARA_RINGKAS2,
+      tambah("Mencari", teks("g1", 150, 106, "mencari prima: Saring", 10, W.biru)),
+      tambah("Memecah", teks("g2", 150, 122, "memecah: Pohon Faktor", 10, W.biru)),
+      tambah("KPK", teks("g3", 150, 138, "KPK dan FPB: Bagi Berulang", 10, W.biru)),
+    ),
+    k(
+      SUARA_RINGKAS3,
+      hapus(0, "g1", "g2", "g3"),
+      tambah("satu", ...kartu("w1", 14, 100, 128, 28, "#FEE2E2", ["1 bukan prima"], 10), emo("x1", 40, 150, E.salah, 20)),
+      tambah("pembagi", ...kartu("w2", 158, 100, 128, 28, "#DCFCE7", ["pembagi = prima"], 10), emo("x2", 260, 150, E.benar, 20)),
+    ),
+    k(
+      SUARA_RINGKAS4,
+      hapus(0, "w1-k", "w1-t0", "w2-k", "w2-t0", "x1", "x2"),
+      tambah("faktorisasi", teks("q", 150, 122, "72 = ?", 22, W.ungu)),
+      sorotkan("cara", "c1-k", "c2-k", "c3-k"),
+      tambah("cepat", emo("pk", 150, 144, E.pikir, 20)),
     ),
   ],
 };

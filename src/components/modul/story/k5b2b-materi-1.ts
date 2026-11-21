@@ -1,206 +1,130 @@
 import type { AdeganStory } from "./logika-story";
-import { W, deretAngka, emo, idSel, judul, kartu, kelipatan, panah, teks, tulisKelipatan } from "./k5b2b-gambar";
-import { bersih, hapus, k, tambah, warnai } from "./k5b2b-bantu";
+import { DERET, E, W, cincin, deret, emo, garis, gerobak, judul, kartu, labelDeret, lantai, papan, teks, tokoh, type OpsiDeret } from "./k5b2b-gambar";
+import { hapus, k, sorotkan, tambah } from "./k5b2b-bantu";
 
-const SATU_SAMPAI_12 = Array.from({ length: 12 }, (_, i) => i + 1);
+/*
+ * Cerita orisinal IGIL "Dua Lonceng Pak Tarno" (Kelas 5 Bab 2 Sub-Bab B), Pasar Kuliner Malam.
+ * Naskah suara dari naskah/story-naskah-k5b2b.md. Bagian ini: Pak Tarno dan lonceng bakso, dua daftar kelipatan, dan kelipatan persekutuan.
+ */
 
-/* ------------------------------ 1. Pembuka Subbab B: pengalaman belajar (Panduan Guru hlm. 52) ------------------------------ */
-export const ADEGAN_PEMBUKA: AdeganStory = {
-  id: "pembuka-b",
-  judul: "Subbab B: Kelipatan Persekutuan",
-  sumber: "Panduan Guru hlm. 52; Buku Siswa hlm. 38",
-  latar: "#EFF6FF",
-  kutipan: [
-    "B. Kelipatan Persekutuan",
-    "Setelah mempelajari bagian B ini, peserta didik diharapkan dapat",
-    "menentukan kelipatan persekutuan dua bilangan atau lebih,",
-    "menentukan kelipatan persekutuan terkecil dua bilangan atau lebih,",
-    "menyelesaikan masalah yang berkaitan dengan KPK, dan",
-    "membuat kesimpulan dari permasalahan yang berkaitan dengan KPK dan",
-  ],
-  ketukan: [
-    k(
-      "Subbab B, Kelipatan Persekutuan. Di subbab A kita sudah mengenal kelipatan sebuah bilangan. Sekarang dua bilangan kita pertemukan, untuk mencari kelipatan yang sama.",
-      tambah(0, judul("B. Kelipatan Persekutuan")),
-      tambah("dua", teks("ka", 150, 62, tulisKelipatan(2, 6), 9.6, W.hijau), teks("kb", 150, 88, tulisKelipatan(3, 6), 9.6, W.merah)),
-      tambah("sama.", ...kartu("kc", 70, 116, 160, 36, W.krem, ["yang sama: 6, 12, 18, ..."], 9.6)),
-    ),
-    k(
-      "Menurut panduan guru, setelah mempelajari bagian ini peserta didik diharapkan dapat menentukan kelipatan persekutuan dua bilangan atau lebih, dan menentukan kelipatan persekutuan terkecil dua bilangan atau lebih.",
-      bersih(0),
-      tambah(0, judul("Pengalaman belajar")),
-      tambah("menentukan", ...kartu("g1", 24, 44, 252, 42, W.hijauMuda, ["menentukan kelipatan persekutuan", "dua bilangan atau lebih"], 9.4)),
-      tambah("menentukan@2", ...kartu("g2", 24, 106, 252, 42, W.langit, ["menentukan kelipatan persekutuan terkecil", "dua bilangan atau lebih"], 9.4)),
-    ),
-    k(
-      "Lalu menyelesaikan masalah yang berkaitan dengan KPK, dan membuat kesimpulan dari permasalahan yang berkaitan dengan KPK dan FPB.",
-      bersih(0),
-      tambah(0, judul("Dua hal lagi")),
-      tambah("menyelesaikan", ...kartu("g3", 24, 44, 252, 42, W.krem, ["menyelesaikan masalah", "yang berkaitan dengan KPK"], 9.4)),
-      tambah("kesimpulan", ...kartu("g4", 24, 106, 252, 42, W.pink, ["membuat kesimpulan tentang", "permasalahan KPK dan FPB"], 9.4)),
-    ),
-    k(
-      "Jadi ada empat hal yang akan kita capai: kelipatan persekutuan, KPK, masalah sehari-hari dengan KPK, dan kesimpulannya. Kita mulai dari sebuah permainan tepuk bilangan.",
-      bersih(0),
-      tambah(0, judul("Empat tujuan, mulai dari permainan")),
-      tambah("kelipatan", teks("t1", 75, 70, "1", 24, W.hijau), teks("t1b", 75, 92, "kelipatan persekutuan", 7.6, W.hitam)),
-      tambah("KPK,", teks("t2", 225, 70, "2", 24, W.biru), teks("t2b", 225, 92, "KPK", 8.6, W.hitam)),
-      tambah("masalah", teks("t3", 75, 130, "3", 24, W.merah), teks("t3b", 75, 152, "masalah dengan KPK", 8.2, W.hitam)),
-      tambah("kesimpulannya.", teks("t4", 225, 130, "4", 24, W.ungu), teks("t4b", 225, 152, "kesimpulan", 8.6, W.hitam)),
-      tambah("permainan", emo("tp", 150, 192, "👏", 20)),
-    ),
-  ],
-};
+/** Deret lebih rapat supaya sembilan kotak muat pada lebar kanvas. */
+export const DERET_RAPAT: OpsiDeret = { ...DERET, cw: 28, gap: 3 };
+export const X_DERET = 14;
+export const Y_A = 56;
+export const Y_B = 104;
+const A_AWAL = [4, 8, 12, 16, 20, 24];
+const B_AWAL = [6, 12, 18, 24, 30];
 
-/* ------------------------------ 2. Sarana, apersepsi, dan pemanasan (Panduan Guru hlm. 52 dan 53) ------------------------------ */
-export const ADEGAN_PERSIAPAN: AdeganStory = {
-  id: "persiapan-b",
-  judul: "Sarana, apersepsi, dan pemanasan",
-  sumber: "Panduan Guru hlm. 52–53",
+/* ------------------------------ 1. Dua lonceng ------------------------------ */
+const SUARA_D1 = "Pak Tarno datang mendorong gerobak bakso, dan lonceng kecilnya berbunyi tiap enam menit.";
+const SUARA_D2 = "Kalau lonceng bakso dan lonceng Bu Marni berbunyi bersamaan, pengunjung mendapat es teh gratis.";
+const SUARA_D3 = "Pak Tarno meminta bantuan mencari menit pertama saat keduanya berbunyi bersama.";
+
+export const ADEGAN_DUA_LONCENG: AdeganStory = {
+  id: "dua-lonceng",
+  judul: "Pak Tarno dan lonceng bakso",
+  sumber: "Materi: dua lonceng berbunyi bersama",
   latar: "#FFFBEB",
-  kutipan: [
-    "Kebutuhan Sarana Prasarana dan Media Pembelajaran",
-    "Alat tulis",
-    "Lembar fotokopi atau print out kalender Agustus dan September 2022",
-    "sesuai jumlah siswa atau kelompok.",
-    "Awali materi ini dengan mengingatkan peserta didik pada materi sebelumnya,",
-    "yaitu tentang kelipatan bilangan.",
-    "Tunjuk beberapa peserta didik secara",
-    "acak, kemudian minta peserta didik tersebut untuk menyebutkan beberapa",
-    "Penguasaan perkalian",
-    "merupakan materi prasyarat yang penting",
-    "lakukan permainan tepuk bilangan kelipatan secara klasikal.",
-    "seluruh peserta didik bertepuk tangan sekali.",
-    "menyelesaikan masalah yang berkaitan dengan jadwal latihan",
-  ],
   ketukan: [
     k(
-      "Sarana yang dibutuhkan sederhana: alat tulis, serta lembar fotokopi atau print out kalender Agustus dan September, sesuai jumlah siswa atau kelompok.",
-      tambah(0, judul("Sarana dan media")),
-      tambah("alat", emo("sa", 75, 70, "📝", 30), ...kartu("sa2", 25, 90, 100, 32, W.langit, ["alat tulis"], 9.4)),
-      tambah("kalender", emo("sb", 225, 70, "📅", 30), ...kartu("sb2", 160, 90, 130, 32, W.krem, ["kalender Agustus", "dan September"], 8.6)),
-      tambah("kelompok.", teks("sc", 150, 156, "sesuai jumlah siswa atau kelompok", 9.4, W.hijau)),
+      SUARA_D1,
+      tambah(0, judul("Dua Lonceng Pak Tarno"), ...lantai("lt", 150)),
+      tambah("Tarno", ...tokoh("pt", 262, 184, "Pak Tarno")),
+      tambah("gerobak", ...gerobak("gr", 128, 98)),
+      tambah("lonceng", emo("lc", 224, 82, E.lonceng, 18)),
+      tambah("enam", teks("e6", 66, 74, "tiap 6 menit", 11, W.merah, { z: 3 })),
     ),
     k(
-      "Kalender itu dipakai untuk belajar penerapan KPK. Harapannya, peserta didik memakai benda nyata dulu, baru kemudian diajak memahami konsep KPK.",
-      bersih(0),
-      tambah(0, judul("Benda nyata dulu")),
-      tambah("Kalender", ...kartu("bn1", 20, 60, 110, 52, W.krem, ["kalender", "benda nyata"], 9.4)),
-      tambah("baru", panah("bn", 134, 86, 28, 0, W.biru, 2.2)),
-      tambah("konsep", ...kartu("bn2", 170, 60, 110, 52, W.hijauMuda, ["konsep", "KPK"], 9.4)),
-      tambah("nyata", emo("bnk", 75, 150, "📅", 28)),
+      SUARA_D2,
+      tambah("Marni", emo("lm", 40, 84, E.lonceng, 20), teks("lmn", 40, 100, "Bu Marni", 8.4, W.hijauTua, { z: 3 })),
+      tambah("bersamaan", garis("sb", 56, 84, 152, 0, W.merah, 1.5, { putus: true, z: 4 }), teks("bs", 132, 76, "bersama!", 9, W.merah, { z: 3 })),
+      tambah("es", emo("et", 118, 52, E.esteh, 26)),
+      tambah("gratis", teks("gt", 190, 54, "gratis", 11, W.hijau, { z: 3 })),
     ),
     k(
-      "Apersepsi. Awali dengan mengingatkan materi sebelumnya, yaitu kelipatan bilangan. Guru menunjuk beberapa peserta didik secara acak untuk menyebutkan beberapa kelipatan dari suatu bilangan.",
-      bersih(0),
-      tambah(0, judul("Apersepsi")),
-      tambah("Awali", ...kartu("ap1", 24, 40, 252, 36, W.langit, ["ingat materi sebelumnya:", "kelipatan bilangan"], 9)),
-      tambah("menunjuk", emo("ap2", 60, 124, "🙋", 28), ...kartu("ap3", 100, 96, 176, 44, W.hijauMuda, ["sebutkan kelipatan", "suatu bilangan"], 9)),
-      tambah("acak", teks("ap4", 150, 172, "dipilih secara acak", 9.4, W.merah)),
-    ),
-    k(
-      "Penguasaan perkalian adalah materi prasyarat yang penting agar peserta didik dapat mengikuti pembelajaran. Karena itu apersepsi juga bisa berupa hafalan perkalian.",
-      bersih(0),
-      tambah(0, judul("Perkalian itu penting")),
-      tambah("Penguasaan", ...kartu("pk1", 40, 44, 220, 38, W.krem, ["penguasaan perkalian"], 10.4)),
-      tambah("prasyarat", teks("pk2", 150, 108, "prasyarat penting", 11, W.merah)),
-      tambah("hafalan", teks("pk3", 150, 150, "3 × 4 = 12", 17, W.hitam)),
-    ),
-    k(
-      "Pemanasan. Guru mengajak permainan tepuk bilangan kelipatan secara klasikal. Guru menyebut sebuah bilangan, dan saat guru menyebut kelipatan yang sesuai, seluruh peserta didik bertepuk tangan sekali.",
-      bersih(0),
-      tambah(0, judul("Pemanasan")),
-      tambah("Guru", emo("pm1", 60, 84, "🧑", 30), ...kartu("pm2", 100, 56, 176, 38, W.langit, ["guru menyebut bilangan"], 9)),
-      tambah("kelipatan@2", ...kartu("pm3", 100, 108, 176, 38, W.hijauMuda, ["kelipatan yang sesuai"], 9)),
-      tambah("bertepuk", emo("pm4", 150, 182, "👏", 28)),
-    ),
-    k(
-      "Guru juga menyampaikan manfaatnya, salah satunya untuk menyelesaikan masalah jadwal latihan renang seperti pada halaman kover bab.",
-      bersih(0),
-      tambah(0, judul("Manfaat belajar kali ini")),
-      tambah("jadwal", ...kartu("mf1", 30, 50, 240, 40, W.hijauMuda, ["masalah jadwal latihan renang"], 9.6)),
-      tambah("renang", emo("mf2", 150, 140, "🏊", 40)),
-      tambah("kover", teks("mf3", 150, 190, "seperti di halaman kover bab", 8.8, W.coklat)),
+      SUARA_D3,
+      hapus(0, "et", "gt"),
+      tambah("bantuan", emo("tn", 262, 134, E.tanya, 22)),
+      tambah("menit", teks("mq", 150, 50, "menit ke berapa?", 11, W.merah, { z: 3 })),
+      sorotkan("keduanya", "lm", "lc"),
     ),
   ],
 };
 
-/* ------------------------------ 3. Eksplorasi 2.2A: Tepuk Bilangan 2 dan 3 (Buku Siswa hlm. 38 dan 39; Panduan Guru hlm. 53 sampai 55) ------------------------------ */
-export const ADEGAN_TEPUK: AdeganStory = {
-  id: "tepuk-2-3",
-  judul: "Ayo Bermain: Tepuk Bilangan 2 dan 3",
-  sumber: "Materi: tepuk bilangan kelipatan",
-  latar: "#F0FDF4",
-  kutipan: [
-    "Eksplorasi 2.2A",
-    "Ayo Bermain",
-    "Namun, kali ini",
-    "aturannya kita tambah, ya.",
-    "Buat kelompok besar.",
-    "Semua siswa boleh duduk di kursi masing-masing.",
-    "Sebutkan bilangan secara berurutan mulai dari 1.",
-    "kalian harus bertepuk tangan tanpa",
-    "kalian harus bilang",
-    "dengan lantang.",
-    "Bagaimana jika kita mendapatkan",
-    "giliran menyebutkan bilangan",
-    "kelipatan 2 dan juga kelipatan 3?",
-    "bertepuk tangan dan mengatakan",
-    "secara bersamaan.",
-    "Apakah ada teman kalian yang terlewat",
-    "Kapan kalian harus bertepuk tangan dan",
-    "Hal penting yang harus dipahami peserta didik",
-    "kelipatan bersama dari dua bilangan atau lebih.",
-  ],
+/* ------------------------------ 2. Dua daftar ------------------------------ */
+const SUARA_L1 = "Bima menulis dua daftar: kelipatan empat milik Bu Marni, dan kelipatan enam milik Pak Tarno.";
+const SUARA_L2 = "Kelipatan empat: empat, delapan, dua belas, enam belas, dua puluh, dua puluh empat.";
+const SUARA_L3 = "Kelipatan enam: enam, dua belas, delapan belas, dua puluh empat, tiga puluh.";
+
+const BARIS_A = deret("da", X_DERET, Y_A, A_AWAL, W.jingga);
+const BARIS_B = deret("db", X_DERET, Y_B, B_AWAL, W.tosca);
+const potong = (objs: ReturnType<typeof deret>, i: number) => objs.slice(2 * i, 2 * i + 2);
+
+export const ADEGAN_DUA_DAFTAR: AdeganStory = {
+  id: "dua-daftar",
+  judul: "Bima menulis dua daftar",
+  sumber: "Materi: daftar kelipatan empat dan enam",
+  latar: "#EFF6FF",
   ketukan: [
     k(
-      "Ayo bermain! Kita bermain Tepuk Bilangan Kelipatan lagi, dengan aturan tambahan. Buat kelompok besar, dan semuanya boleh duduk di kursi masing-masing.",
-      tambah(0, judul("Ayo Bermain")),
-      tambah("Bilangan", emo("e1", 75, 96, "👏", 40)),
-      tambah("tambahan.", ...kartu("e2", 130, 62, 150, 44, W.krem, ["aturan ditambah"], 10.4)),
-      tambah("kelompok", emo("e3", 150, 170, "👥", 34)),
+      SUARA_L1,
+      tambah(0, judul("Bima Menulis Dua Daftar"), ...lantai("lt", 150), papan("dp", 10, 28, 280, 114), ...tokoh("bi", 36, 184, "Bima")),
+      tambah("dua", teks("n2", 262, 44, "2 daftar", 9, W.ungu, { z: 3 })),
+      tambah("empat", labelDeret("la", X_DERET, Y_A, "Kelipatan 4 (Bu Marni)")),
+      tambah("enam", labelDeret("lb", X_DERET, Y_B, "Kelipatan 6 (Pak Tarno)")),
     ),
     k(
-      "Sebagai contoh, kita bermain Tepuk Bilangan dua dan tiga. Sebutkan bilangan secara berurutan mulai dari satu.",
-      bersih(0),
-      tambah(0, judul("Tepuk Bilangan 2 dan 3")),
-      tambah("berurutan", ...deretAngka("ra", 18, 66, 22, 22, SATU_SAMPAI_12)),
-      tambah("satu.", teks("e4", 150, 130, "1, 2, 3, 4, 5, 6, ...", 13, W.hitam)),
+      SUARA_L2,
+      tambah("empat@2", ...potong(BARIS_A, 0)),
+      tambah("delapan", ...potong(BARIS_A, 1)),
+      tambah("belas", ...potong(BARIS_A, 2)),
+      tambah("belas@2", ...potong(BARIS_A, 3)),
+      tambah("puluh", ...potong(BARIS_A, 4)),
+      tambah("puluh@2", ...potong(BARIS_A, 5)),
     ),
     k(
-      "Saat giliranmu menyebut kelipatan dua, misalnya dua, empat, enam, kamu bertepuk tangan tanpa menyebutkan bilangannya.",
-      hapus(0, "e4"),
-      tambah(0, teks("la", 150, 56, "kelipatan 2: tepuk tangan", 9.6, W.hijau)),
-      warnai("tepuk", W.hijauPita, ...idSel("ra", 1, kelipatan(2, 6))),
-      tambah("tepuk", teks("e5", 150, 118, "2, 4, 6, ...", 13, W.hijau)),
-    ),
-    k(
-      "Saat giliranmu menyebut kelipatan tiga, misalnya tiga, enam, sembilan, kamu harus berkata Hore dengan lantang.",
-      hapus(0, "e5"),
-      tambah(0, teks("lb", 150, 150, "kelipatan 3: bilang Hore!", 9.6, W.merah)),
-      tambah("tiga,", ...deretAngka("rb", 18, 158, 22, 22, SATU_SAMPAI_12, kelipatan(3, 4), W.jingga)),
-      tambah("Hore", teks("e6", 150, 132, "3, 6, 9, ...", 13, W.merah)),
-    ),
-    k(
-      "Bagaimana kalau giliranmu menyebut kelipatan dua dan juga kelipatan tiga, misalnya enam, dua belas, delapan belas? Kita harus bertepuk tangan dan berkata Hore bersamaan.",
-      warnai("enam,", W.merahPita, "ra-5", "ra-11", "rb-5", "rb-11"),
-      tambah("bersamaan.", teks("e7", 150, 196, "6, 12, 18, ...: tepuk dan Hore sekaligus!", 8.6, W.merah)),
-    ),
-    k(
-      "Bagaimana perasaanmu bermain Tepuk Bilangan Kelipatan dua dan tiga? Apakah ada teman yang terlewat sehingga tidak bertepuk tangan dan mengucapkan Hore?",
-      bersih(0),
-      tambah(0, judul("Bagaimana perasaanmu?")),
-      tambah("perasaan", emo("r1", 80, 90, "🤔", 40)),
-      tambah("terlewat", emo("r2", 220, 90, "😅", 40)),
-      tambah("Hore", ...kartu("r3", 40, 124, 220, 40, W.krem, ["ada yang terlewat bertepuk", "atau lupa berkata Hore?"], 9)),
-    ),
-    k(
-      "Sekarang coba pikirkan: kapan kamu harus bertepuk tangan dan berkata Hore pada saat yang bersamaan? Jawabannya mengarah ke satu hal penting: ada bilangan yang menjadi kelipatan bersama dari dua bilangan atau lebih.",
-      bersih(0),
-      tambah(0, judul("Pertanyaan pemantik")),
-      tambah("Kapan", ...kartu("pt1", 24, 40, 252, 44, W.langit, ["kapan bertepuk dan Hore", "pada saat bersamaan?"], 9.6)),
-      tambah("Jawabannya", ...kartu("pt2", 24, 102, 252, 54, W.hijauMuda, ["ada bilangan yang menjadi", "kelipatan bersama dari", "dua bilangan atau lebih"], 9.6)),
+      SUARA_L3,
+      tambah("enam@2", ...potong(BARIS_B, 0)),
+      tambah("belas", ...potong(BARIS_B, 1)),
+      tambah("belas@2", ...potong(BARIS_B, 2)),
+      tambah("empat", ...potong(BARIS_B, 3)),
+      tambah("puluh@2", ...potong(BARIS_B, 4)),
     ),
   ],
 };
 
+/* ------------------------------ 3. Kelipatan persekutuan ------------------------------ */
+const SUARA_P1 = "Citra melingkari bilangan yang muncul di kedua daftar: dua belas dan dua puluh empat.";
+const SUARA_P2 = "Bilangan kelipatan yang sama itu disebut kelipatan persekutuan.";
+const SUARA_P3 = "Kalau daftarnya diteruskan, tiga puluh enam juga ikut terlingkari.";
+
+const PA = deret("pa", X_DERET, Y_A, [4, 8, 12, 16, 20, 24, 28, 32, 36], W.jingga, DERET_RAPAT);
+const PB = deret("pb", X_DERET, Y_B, [6, 12, 18, 24, 30, 36], W.tosca, DERET_RAPAT);
+const lingkar = (id: string, y: number, i: number) => cincin(id, X_DERET, y, i, DERET_RAPAT);
+
+export const ADEGAN_PERSEKUTUAN: AdeganStory = {
+  id: "persekutuan",
+  judul: "Citra melingkari yang sama",
+  sumber: "Materi: kelipatan persekutuan",
+  latar: "#FDF2F8",
+  ketukan: [
+    k(
+      SUARA_P1,
+      tambah(0, judul("Citra Melingkari yang Sama"), ...lantai("lt", 150), papan("dp", 10, 28, 280, 114), ...tokoh("ci", 36, 184, "Citra")),
+      tambah(0, labelDeret("la", X_DERET, Y_A, "Kelipatan 4"), labelDeret("lb", X_DERET, Y_B, "Kelipatan 6"), ...PA.slice(0, 12), ...PB.slice(0, 10)),
+      tambah("belas", lingkar("r12a", Y_A, 2), lingkar("r12b", Y_B, 1)),
+      tambah("puluh", lingkar("r24a", Y_A, 5), lingkar("r24b", Y_B, 3)),
+    ),
+    k(
+      SUARA_P2,
+      sorotkan("sama", "r12a", "r12b", "r24a", "r24b"),
+      tambah("persekutuan", ...kartu("kp", 60, 123, 180, 17, W.hijauMuda, ["kelipatan persekutuan"], 9, { z: 2 })),
+    ),
+    k(
+      SUARA_P3,
+      tambah("diteruskan", ...PA.slice(12, 18)),
+      tambah("puluh", ...PB.slice(10, 12)),
+      tambah("enam", lingkar("r36a", Y_A, 8), lingkar("r36b", Y_B, 5)),
+    ),
+  ],
+};

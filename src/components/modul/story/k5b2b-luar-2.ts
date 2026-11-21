@@ -1,205 +1,249 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { W, bulat, emo, garis, garisHari, judul, kartu, teks } from "./k5b2b-gambar";
-import { bersih, k, sorotkan, tambah } from "./k5b2b-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, JALUR, W, cincin, deret, emo, judul, kartu, labelDeret, lantai, loncengJalur, panah, papan, penanda, sumbu, teks, tokoh, xJalur } from "./k5b2b-gambar";
+import { DERET_RAPAT } from "./k5b2b-materi-1";
+import { bersih, hapus, k, pudarkan, redamkan, sorotkan, tambah } from "./k5b2b-bantu";
 
-/* ------------------------------ 6. Prime Factor Preview: konsep (pratinjau ringan) ------------------------------ */
-export const ADEGAN_LUAR_PRIMA: AdeganStory = {
-  id: "luar-prima",
-  judul: "Prime Factor Preview: KPK dari faktor prima",
-  sumber: "Metode luar: Prime Factor Preview",
-  latar: "#FFFBEB",
-  ketukan: [
-    k(
-      "Metode ketiga, Prime Factor Preview, pratinjau KPK dari faktor prima. Ini baru pengintip, bagian lengkapnya dipelajari nanti. Idenya, tiap bilangan dipecah menjadi perkalian bilangan yang tidak bisa dipecah lagi.",
-      tambah(0, judul("Prime Factor Preview")),
-      tambah("pengintip,", emo("pe", 150, 76, "👀", 34)),
-      tambah("dipecah", teks("a1", 90, 138, "6 = 2 × 3", 16, W.hitam), teks("a2", 214, 138, "8 = 2 × 2 × 2", 14, W.hitam)),
-    ),
-    k(
-      "Bilangan seperti dua, tiga, dan lima tidak bisa dipecah lagi. Namanya bilangan prima. Ia seperti batu bata pembangun bilangan yang lain.",
-      bersih(0),
-      tambah(0, judul("Bilangan prima: batu bata")),
-      tambah("dua,", ...kartu("b2", 22, 54, 70, 56, W.hijauMuda, ["2"], 22)),
-      tambah("tiga,", ...kartu("b3", 115, 54, 70, 56, W.langit, ["3"], 22)),
-      tambah("lima", ...kartu("b5", 208, 54, 70, 56, W.krem, ["5"], 22)),
-      tambah("batu", emo("bt", 150, 150, "🧱", 34)),
-    ),
-    k(
-      "Enam sama dengan dua kali tiga. Delapan sama dengan dua kali dua kali dua. Untuk KPK, ambil tiap bilangan prima sebanyak kemunculan terbanyaknya.",
-      bersih(0),
-      tambah(0, judul("Pecah, lalu ambil terbanyak")),
-      tambah("Enam", teks("c1", 150, 62, "6 = 2 × 3", 18, W.hitam)),
-      tambah("Delapan", teks("c2", 150, 94, "8 = 2 × 2 × 2", 18, W.hitam)),
-      tambah("ambil", ...kartu("c3", 30, 118, 240, 44, W.krem, ["ambil tiap bilangan prima", "sebanyak muncul terbanyak"], 9.6)),
-    ),
-    k(
-      "Dua muncul tiga kali di delapan, tiga muncul sekali di enam. Jadi KPK enam dan delapan adalah dua kali dua kali dua kali tiga, yaitu dua puluh empat.",
-      bersih(0),
-      tambah(0, judul("Hasil: KPK 6 dan 8")),
-      tambah("Dua", teks("d1", 150, 58, "2 muncul 3 kali di 8", 11, W.hijau), teks("d2", 150, 80, "3 muncul 1 kali di 6", 11, W.coklat)),
-      tambah("Jadi", teks("d3", 150, 128, "2 × 2 × 2 × 3 = 24", 18, W.hitam)),
-      tambah("empat.", teks("d4", 150, 168, "KPK 6 dan 8 = 24", 16, W.biru)),
-    ),
-  ],
-};
+/*
+ * Cerita orisinal IGIL "Dua Lonceng Pak Tarno" (Kelas 5 Bab 2 Sub-Bab B), video metode global.
+ * Naskah suara dari naskah/story-naskah-k5b2b.md. Bagian ini: Spot the Match (Cari yang Sama), Meet Again (Bertemu Lagi), terapannya, dan ringkasan.
+ */
 
-/* ------------------------------ 7. Prime Factor Preview: penerapan (3, 4, dan 5; angka buku) ------------------------------ */
-export const ADEGAN_LUAR_PRIMA_TERAPAN: AdeganStory = {
-  id: "luar-prima-terapan",
-  judul: "Faktor prima: contoh angka",
-  sumber: "Metode luar: Prime Factor Preview",
-  latar: "#FFFBEB",
-  ketukan: [
-    k(
-      "Terapkan pada tiga, empat, dan lima. Tiga dan lima sudah prima, sedangkan empat sama dengan dua kali dua.",
-      tambah(0, judul("KPK 3, 4, dan 5")),
-      tambah("tiga", teks("e3", 60, 90, "3", 26, W.hijau)),
-      tambah("empat", teks("e4", 150, 90, "4 = 2 × 2", 17, W.hitam)),
-      tambah("lima", teks("e5", 240, 90, "5", 26, W.coklat)),
-    ),
-    k(
-      "Ambil dua sebanyak dua kali dari empat, lalu ambil tiga, dan ambil lima. Kalikan semuanya.",
-      tambah("Ambil", ...kartu("f1", 20, 120, 56, 40, W.hijauMuda, ["2", "2"], 10)),
-      tambah("tiga,", ...kartu("f2", 90, 120, 56, 40, W.langit, ["3"], 14)),
-      tambah("lima.", ...kartu("f3", 160, 120, 56, 40, W.krem, ["5"], 14)),
-      tambah("Kalikan", teks("f4", 258, 146, "× semua", 10, W.merah)),
-    ),
-    k(
-      "Hasilnya enam puluh, sama dengan KPK tiga, empat, dan lima dari cara daftar tadi. Kita tidak perlu menulis daftar yang panjang.",
-      bersih(0),
-      tambah(0, judul("Hasil: enam puluh")),
-      tambah("Hasilnya", teks("g1", 150, 66, "2 × 2 × 3 × 5 = 60", 20, W.hitam)),
-      tambah("KPK", teks("g2", 150, 112, "KPK 3, 4, dan 5 = 60", 18, W.biru)),
-      tambah("daftar", ...kartu("g3", 50, 130, 200, 40, W.hijauMuda, ["tanpa daftar panjang"], 10.4)),
-    ),
-    k(
-      "Dengan cara yang sama untuk empat dan lima: dua kali dua kali lima menjadi dua puluh, sesuai contoh tadi. Ini baru pratinjau ringan, cara lengkapnya dibahas nanti.",
-      bersih(0),
-      tambah(0, judul("Empat dan lima juga")),
-      tambah("kali@2", teks("h1", 150, 70, "2 × 2 × 5 = 20", 20, W.hitam)),
-      tambah("tadi.", teks("h2", 150, 112, "KPK 4 dan 5 = 20", 18, W.biru)),
-      tambah("pratinjau", emo("h3", 150, 162, "👀", 30)),
-    ),
-  ],
-};
+const RENANG = "\u{1F3CA}";
 
-/* ------------------------------ 8. Meeting Cycle: konsep (garis hari) ------------------------------ */
-const X0 = 24;
-const LANGKAH = 21;
-const xHari = (d: number): number => X0 + d * LANGKAH;
-const titikHari = (pre: string, hari: number[], y: number, warna: string): Obj[] => hari.map((d) => bulat(`${pre}${d}`, xHari(d), y, 5, warna, W.biru, { tebal: 1.2 }));
+/* ------------------------------ Spot the Match: konsep ------------------------------ */
+const SUARA_S1 = "Cara kedua, Spot the Match, atau Cari yang Sama.";
+const SUARA_S2 = "Kita menandai bilangan yang muncul di kedua daftar, lalu memilih yang paling kecil.";
+const SUARA_S3 = "Bilangan yang ditandai adalah kelipatan persekutuan, dan yang terkecil adalah KPK.";
+const SUARA_S4 = "Kita berhenti di tanda pertama, tidak perlu memeriksa daftar yang lebih panjang.";
 
-export const ADEGAN_LUAR_SIKLUS: AdeganStory = {
-  id: "luar-siklus",
-  judul: "Meeting Cycle: siklus bertemu",
-  sumber: "Metode luar: Meeting Cycle",
+const SA = deret("sa", 14, 56, [3, 6, 9, 12, 15, 18, 21, 24], W.jingga, DERET_RAPAT);
+const SB = deret("sb", 14, 96, [4, 8, 12, 16, 20, 24, 28, 32], W.tosca, DERET_RAPAT);
+const lingkar = (id: string, y: number, i: number) => cincin(id, 14, y, i, DERET_RAPAT);
+/** Semua id kotak dan angka mulai indeks `dari` pada deret yang dibuat deret(id, ..., n). */
+const idDari = (id: string, dari: number, sampai: number): string[] => Array.from({ length: sampai - dari }, (_, q) => [`${id}-c${dari + q}`, `${id}-t${dari + q}`]).flat();
+
+export const ADEGAN_LUAR_SAMA: AdeganStory = {
+  id: "luar-sama",
+  judul: "Spot the Match: Cari yang Sama",
+  sumber: "Metode global: Spot the Match (konsep)",
   latar: "#F0F9FF",
   ketukan: [
     k(
-      "Metode keempat, Meeting Cycle, siklus bertemu. Dua jadwal yang berulang akan bertemu lagi setelah sejumlah hari yang sama dengan KPK-nya. Mulai dari Nisa yang berlatih tiap tiga hari.",
-      tambah(0, judul("Meeting Cycle")),
-      tambah("jadwal", ...garisHari("gh", X0, 100, 12, LANGKAH)),
-      tambah("Nisa", teks("ln", 150, 62, "Nisa: tiap 3 hari", 10, W.hijau), ...titikHari("gn", [3, 6, 9, 12], 84, W.hijauPita)),
+      SUARA_S1,
+      tambah(0, judul("Cara 2: Spot the Match"), ...lantai("lt", 150)),
+      tambah("Spot", emo("pg", 110, 112, E.cari, 40)),
+      tambah("Cari", teks("nm", 150, 140, "Cari yang Sama", 13, W.ungu, { z: 3 }), emo("kl", 190, 104, E.kilau, 28)),
     ),
     k(
-      "Yohana berlatih tiap empat hari, jadi pada hari keempat, kedelapan, dan kedua belas.",
-      tambah("Yohana", teks("ly", 150, 156, "Yohana: tiap 4 hari", 10, W.coklat), ...titikHari("gy", [4, 8, 12], 132, W.jingga)),
+      SUARA_S2,
+      hapus(0, "pg", "nm", "kl"),
+      tambah(0, papan("dp", 10, 28, 280, 114), labelDeret("la", 14, 56, "Kelipatan bilangan pertama"), labelDeret("lb", 14, 96, "Kelipatan bilangan kedua"), ...SA, ...SB),
+      tambah("menandai", lingkar("r12a", 56, 3), lingkar("r12b", 96, 2), lingkar("r24a", 56, 7), lingkar("r24b", 96, 5)),
+      tambah("kecil", teks("pl", 150, 130, "pilih yang terkecil", 10, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Hari pertama yang ditempati keduanya adalah hari kedua belas. Itulah satu siklus, dan panjang siklus sama dengan KPK tiga dan empat.",
-      tambah("kedua@2", garis("gv", xHari(12), 80, 0, 54, W.merah, 2, { putus: true })),
-      sorotkan("siklus,", "gn12", "gy12"),
-      tambah("KPK", teks("gk", 150, 182, "KPK 3 dan 4 = 12", 14, W.biru)),
+      SUARA_S3,
+      hapus(0, "pl"),
+      tambah("kelipatan", teks("kpl", 222, 130, "kelipatan persekutuan", 9, W.hijauTua, { z: 3 })),
+      sorotkan("terkecil", "r12a", "r12b"),
+      tambah("KPK", teks("kk", 90, 130, "KPK", 12, W.merah, { z: 3 })),
     ),
     k(
-      "Setelah itu pola berulang: hari dua puluh empat, tiga puluh enam, dan seterusnya, selalu kelipatan dua belas.",
-      tambah("pola", teks("gt", 150, 196, "bertemu lagi: hari 12, 24, 36, ...", 9.6, W.merah)),
+      SUARA_S4,
+      tambah("berhenti", emo("st", 262, 80, E.stop, 26)),
+      pudarkan("pertama", ...idDari("sa", 4, 8), ...idDari("sb", 3, 8), "r24a", "r24b"),
+      tambah("panjang", teks("bh", 150, 140, "berhenti di sini", 10, W.merah, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 9. Meeting Cycle: penerapan (tiga jadwal buku) ------------------------------ */
-export const ADEGAN_LUAR_SIKLUS_TERAPAN: AdeganStory = {
-  id: "luar-siklus-terapan",
-  judul: "Siklus bertemu: tiga jadwal",
-  sumber: "Metode luar: Meeting Cycle",
+/* ------------------------------ Spot the Match: terapan ------------------------------ */
+const SUARA_T1 = "Citra menandai dua puluh di kedua daftar kelipatan empat dan lima.";
+const SUARA_T2 = "Tidak ada tanda yang lebih kecil, jadi KPK empat dan lima adalah dua puluh.";
+const SUARA_T3 = "Cocok untuk mencari KPK dua bilangan, karena tanda pertama langsung menjadi jawabannya.";
+const SUARA_T4 = "Kurang cocok kalau bilangannya lebih dari dua, karena kita harus menandai tiga daftar.";
+
+const XA = deret("xa", 14, 56, [4, 8, 12, 16, 20, 24], W.jingga, DERET_RAPAT);
+const XB = deret("xb", 14, 96, [5, 10, 15, 20, 25, 30], W.tosca, DERET_RAPAT);
+const XC = deret("xc", 14, 124, [6, 12, 18, 24, 30, 36], W.krem, DERET_RAPAT);
+
+export const ADEGAN_LUAR_SAMA_TERAPAN: AdeganStory = {
+  id: "luar-sama-terapan",
+  judul: "Spot the Match: terapan",
+  sumber: "Metode global: Spot the Match (terapan)",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_T1,
+      tambah(0, judul("Citra Menandai Dua Puluh"), ...lantai("lt", 150), papan("dp", 10, 28, 280, 114), ...tokoh("ci", 36, 184, "Citra")),
+      tambah(0, labelDeret("la", 14, 56, "Kelipatan 4"), labelDeret("lb", 14, 96, "Kelipatan 5"), ...XA, ...XB),
+      tambah("puluh", cincin("r20a", 14, 56, 4, DERET_RAPAT), cincin("r20b", 14, 96, 3, DERET_RAPAT)),
+    ),
+    k(
+      SUARA_T2,
+      tambah("tanda", teks("tt", 232, 128, "tak ada yang lebih kecil", 9, W.merah, { z: 3 })),
+      sorotkan("KPK", "r20a", "r20b"),
+      tambah("dua", teks("kk", 232, 40, "KPK 4 dan 5 = 20", 11, W.merah, { z: 3 })),
+      tambah("puluh", emo("ok", 262, 80, E.benar, 22)),
+    ),
+    k(
+      SUARA_T3,
+      hapus(0, "tt"),
+      tambah("Cocok", emo("jp", 262, 104, E.jempol, 22)),
+      tambah("dua", teks("n2", 250, 66, "2 bilangan", 10, W.ungu, { z: 3 })),
+      tambah("langsung", emo("kl", 232, 142, E.kilau, 18)),
+    ),
+    k(
+      SUARA_T4,
+      hapus(0, "jp", "n2", "ok", "kk", "kl"),
+      tambah("Kurang", emo("xs", 262, 104, E.salah, 22)),
+      tambah("dua", teks("n2b", 232, 40, "lebih dari 2", 10, W.merah, { z: 3 })),
+      tambah("tiga", labelDeret("lc", 14, 124, "Kelipatan 6"), ...XC),
+      tambah("daftar", teks("n3", 250, 66, "3 daftar", 10, W.ungu, { z: 3 })),
+    ),
+  ],
+};
+
+/* ------------------------------ Meet Again: konsep ------------------------------ */
+const SUARA_U1 = "Cara ketiga, Meet Again, atau Bertemu Lagi.";
+const SUARA_U2 = "Kita menganggap KPK sebagai jarak waktu antara dua kali bertemu.";
+const SUARA_U3 = "Kalau hari ini bertemu, pertemuan berikutnya datang sesudah sejumlah hari sebanyak KPK.";
+const SUARA_U4 = "Pertemuan sesudahnya datang lagi dengan jarak yang sama.";
+
+const lebar12 = xJalur(JALUR, 12) - xJalur(JALUR, 0);
+
+export const ADEGAN_LUAR_ULANG: AdeganStory = {
+  id: "luar-ulang",
+  judul: "Meet Again: Bertemu Lagi",
+  sumber: "Metode global: Meet Again (konsep)",
   latar: "#F0F9FF",
   ketukan: [
     k(
-      "Nisa dan Yohana berlatih tiap tiga dan empat hari, jadi siklusnya dua belas hari. Mulai tanggal tiga Agustus, mereka bertemu lagi tanggal lima belas Agustus.",
-      tambah(0, judul("Nisa dan Yohana")),
-      tambah("siklusnya", teks("a1", 150, 60, "KPK 3 dan 4 = 12", 14, W.biru)),
-      tambah("tanggal", teks("a2", 150, 100, "3 + 12 = 15", 22, W.hitam)),
-      tambah("lima", ...kartu("a3", 60, 120, 180, 44, W.hijauMuda, ["3 Agustus + 12 hari", "= 15 Agustus"], 10.4)),
+      SUARA_U1,
+      tambah(0, judul("Cara 3: Meet Again"), ...lantai("lt", 150)),
+      tambah("Meet", emo("pg", 110, 112, E.ulang, 40)),
+      tambah("Bertemu", teks("nm", 150, 140, "Bertemu Lagi", 13, W.ungu, { z: 3 }), emo("kl", 190, 104, E.kilau, 28)),
     ),
     k(
-      "Asep dan Lukas berlatih tiap tiga dan lima hari, siklusnya lima belas hari. Mulai tanggal dua puluh Agustus, dua puluh ditambah lima belas sama dengan tiga puluh lima.",
-      bersih(0),
-      tambah(0, judul("Asep dan Lukas")),
-      tambah("siklusnya", teks("b1", 150, 64, "KPK 3 dan 5 = 15", 14, W.biru)),
-      tambah("dua", teks("b2", 150, 112, "20 + 15 = 35", 22, W.hitam)),
+      SUARA_U2,
+      hapus(0, "pg", "nm", "kl"),
+      tambah(0, papan("dp", 10, 28, 280, 114), sumbu("jl", JALUR), ...penanda("t0", JALUR, 0, W.merah)),
+      tambah("waktu", loncengJalur("b0", JALUR, 0), loncengJalur("b12", JALUR, 12), ...penanda("t12", JALUR, 12, W.merah)),
+      tambah("jarak", panah("jr", xJalur(JALUR, 0) + 4, 86, lebar12 - 8, 0, W.merah, 2.4, { z: 4 }), teks("jk", 62, 76, "jarak = KPK", 10, W.merah, { z: 3 })),
+      tambah("dua", teks("n2", 240, 48, "2 kali bertemu", 9, W.ungu, { z: 3 })),
     ),
     k(
-      "Agustus hanya sampai tanggal tiga puluh satu. Tiga puluh lima dikurangi tiga puluh satu sama dengan empat, jadi mereka bertemu tanggal empat September.",
-      tambah("Agustus", teks("b3", 150, 144, "Agustus berakhir di tanggal 31", 10.4, W.merah)),
-      tambah("dikurangi", teks("b4", 150, 168, "35 - 31 = 4", 18, W.biru)),
-      tambah("September.", teks("b5", 150, 190, "4 September", 14, W.hijau)),
+      SUARA_U3,
+      tambah("hari", teks("hi", 36, 138, "hari ini", 10, W.hijauTua, { z: 3 })),
+      tambah("berikutnya", teks("bk", 104, 138, "berikutnya", 10, W.hijauTua, { z: 3 })),
+      sorotkan("KPK", "jr"),
     ),
     k(
-      "Dinda dan Amelia berlatih tiap lima dan dua hari, siklusnya sepuluh hari. Mulai empat belas Juli, mereka bertemu lagi tanggal dua puluh empat Juli.",
-      bersih(0),
-      tambah(0, judul("Dinda dan Amelia")),
-      tambah("siklusnya", teks("c1", 150, 64, "KPK 2 dan 5 = 10", 14, W.biru)),
-      tambah("Mulai", teks("c2", 150, 112, "14 + 10 = 24", 22, W.hitam)),
-      tambah("Juli@2", ...kartu("c3", 60, 130, 180, 44, W.hijauMuda, ["14 Juli + 10 hari", "= 24 Juli"], 10.4)),
-    ),
-    k(
-      "Tiga jadwal, tiga siklus: dua belas, lima belas, dan sepuluh hari. Masing-masing adalah KPK dari dua jarak hari latihan.",
-      bersih(0),
-      tambah(0, judul("Tiga jadwal, tiga siklus")),
-      tambah("dua", ...kartu("t1", 20, 40, 260, 30, W.hijauMuda, ["3 dan 4 hari: siklus 12 hari"], 9.6)),
-      tambah("lima", ...kartu("t2", 20, 82, 260, 30, W.langit, ["3 dan 5 hari: siklus 15 hari"], 9.6)),
-      tambah("sepuluh", ...kartu("t3", 20, 124, 260, 30, W.krem, ["5 dan 2 hari: siklus 10 hari"], 9.6)),
-      tambah("KPK", teks("t4", 150, 180, "siklus = KPK", 12, W.merah)),
+      SUARA_U4,
+      tambah("datang", loncengJalur("b24", JALUR, 24), ...penanda("t24", JALUR, 24, W.merah)),
+      tambah("jarak", panah("jr2", xJalur(JALUR, 12) + 4, 86, lebar12 - 8, 0, W.merah, 2.4, { z: 4 })),
+      tambah("sama", loncengJalur("b36", JALUR, 36), ...penanda("t36", JALUR, 36, W.merah), panah("jr3", xJalur(JALUR, 24) + 4, 86, lebar12 - 8, 0, W.merah, 2.4, { z: 4 })),
     ),
   ],
 };
 
-/* ------------------------------ 10. Ringkasan ------------------------------ */
+/* ------------------------------ Meet Again: terapan ------------------------------ */
+const SUARA_E1 = "Fajar berenang tiap tiga hari, dan Citra berenang tiap empat hari.";
+const SUARA_E2 = "Bima mencari KPK tiga dan empat, hasilnya dua belas.";
+const SUARA_E3 = "Cocok untuk jadwal yang berulang, karena kita langsung tahu kapan mereka bertemu lagi.";
+const SUARA_E4 = "Kurang cocok untuk daftar kelipatan saja, karena tidak ada kegiatan yang terjadi berulang.";
+
+const EA = deret("ea", 14, 56, [3, 6, 9, 12, 15, 18], W.jingga);
+const EB = deret("eb", 14, 104, [4, 8, 12, 16, 20, 24], W.tosca);
+
+export const ADEGAN_LUAR_ULANG_TERAPAN: AdeganStory = {
+  id: "luar-ulang-terapan",
+  judul: "Jadwal Fajar dan Citra",
+  sumber: "Metode global: Meet Again (terapan)",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_E1,
+      tambah(0, judul("Jadwal Fajar dan Citra"), ...lantai("lt", 150)),
+      tambah("Fajar", ...tokoh("fa", 60, 184, "Fajar"), emo("sw1", 60, 90, RENANG, 26)),
+      tambah("tiga", teks("f3", 60, 122, "tiap 3 hari", 11, W.merah, { z: 3 })),
+      tambah("Citra", ...tokoh("ci", 200, 184, "Citra"), emo("sw2", 200, 90, RENANG, 26)),
+      tambah("empat", teks("c4", 200, 122, "tiap 4 hari", 11, W.merah, { z: 3 })),
+    ),
+    k(
+      SUARA_E2,
+      bersih(0),
+      tambah(0, judul("Bima Mencari KPK"), ...lantai("lt", 150), papan("dp", 10, 28, 280, 114), ...tokoh("bi", 36, 184, "Bima")),
+      tambah("tiga", labelDeret("la", 14, 56, "Kelipatan 3"), ...EA),
+      tambah("empat", labelDeret("lb", 14, 104, "Kelipatan 4"), ...EB),
+      tambah("hasilnya", teks("kk", 244, 130, "KPK 3 dan 4 = 12", 11, W.merah, { z: 3 })),
+      tambah("belas", cincin("r12a", 14, 56, 3), cincin("r12b", 14, 104, 2)),
+    ),
+    k(
+      SUARA_E3,
+      tambah("Cocok", emo("jp", 262, 80, E.jempol, 22)),
+      tambah("berulang", emo("ul", 262, 52, E.ulang, 20)),
+      tambah("kapan", teks("kp", 250, 108, "bertemu lagi", 9, W.hijauTua, { z: 3 })),
+    ),
+    k(
+      SUARA_E4,
+      hapus(0, "jp", "ul", "kp"),
+      tambah("Kurang", emo("xs", 262, 80, E.salah, 22)),
+      tambah("saja", teks("sj", 250, 52, "daftar saja", 10, W.merah, { z: 3 })),
+      tambah("kegiatan", teks("kg", 250, 108, "tanpa kegiatan", 9, W.merah, { z: 3 })),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita pelajari bersama Pak Tarno, dan masing-masing punya saat yang tepat.";
+const SUARA_R2 = "Bilangan kecil, pakai Daftar Keduanya. Mencari yang terkecil, pakai Cari yang Sama. Jadwal berulang, pakai Bertemu Lagi.";
+const SUARA_R3 = "Apa pun caranya, KPK harus habis dibagi oleh kedua bilangan semula.";
+const SUARA_R4 = "Menurutmu, untuk bilangan lima dan tujuh, cara mana yang paling cepat?";
+
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode mencari KPK",
-  sumber: "Ringkasan metode luar",
-  latar: "#FFF7ED",
+  judul: "Tiga cara Pak Tarno",
+  sumber: "Ringkasan metode global",
+  latar: "#F5F3FF",
   ketukan: [
     k(
-      "Ringkasan empat metode mencari KPK. Satu, daftar kelipatan bersama: tulis, lalu cocokkan. Dua, irisan: KPK adalah anggota terkecil irisan.",
-      tambah(0, judul("Ringkasan")),
-      tambah("Satu,", ...kartu("r1", 14, 34, 272, 38, W.hijauMuda, ["1. Common Multiples List", "tulis daftar lalu cocokkan"], 9)),
-      tambah("Dua,", ...kartu("r2", 14, 82, 272, 38, W.langit, ["2. LCM Concept", "KPK = anggota terkecil irisan"], 9)),
+      SUARA_R1,
+      tambah(0, judul("Tiga Cara Pak Tarno"), ...lantai("lt", 150)),
+      tambah("Tarno", ...tokoh("pt", 262, 184, "Pak Tarno")),
+      tambah("Tiga", teks("n3", 262, 50, "3 cara", 10, W.ungu, { z: 3 })),
+      tambah("pelajari", ...kartu("r0", 20, 42, 160, 30, W.jingga, ["List Both"], 11), emo("i0", 196, 57, E.memo, 18)),
+      tambah("masing", ...kartu("r1", 20, 80, 160, 30, W.tosca, ["Spot the Match"], 11), emo("i1", 196, 95, E.cari, 18)),
+      tambah("tepat", ...kartu("r2", 20, 118, 160, 30, W.krem, ["Meet Again"], 11), emo("i2", 196, 133, E.ulang, 18)),
     ),
     k(
-      "Tiga, faktor prima: ambil tiap bilangan prima sebanyak kemunculan terbanyak. Empat, siklus bertemu: panjang siklus sama dengan KPK.",
-      tambah("Tiga,", ...kartu("r3", 14, 130, 272, 38, W.krem, ["3. Prime Factor Preview", "ambil prima sebanyak terbanyak"], 9)),
-      tambah("Empat,", ...kartu("r4", 14, 176, 272, 22, W.pink, ["4. Meeting Cycle: siklus = KPK"], 8.6)),
+      SUARA_R2,
+      sorotkan("Daftar", "r0-k"),
+      tambah("kecil", teks("u0", 252, 64, "bilangan kecil", 9, W.hijauTua, { z: 3 })),
+      redamkan("Cari", "r0-k"),
+      sorotkan("Cari", "r1-k"),
+      tambah("terkecil", teks("u1", 252, 98, "mencari terkecil", 9, W.hijauTua, { z: 3 })),
+      redamkan("Bertemu", "r1-k"),
+      sorotkan("Bertemu", "r2-k"),
+      tambah("berulang", teks("u2", 252, 136, "jadwal berulang", 9, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Semua metode memberi jawaban yang sama. Empat dan lima menjadi dua puluh, enam dan delapan menjadi dua puluh empat, tiga, empat, dan lima menjadi enam puluh.",
+      SUARA_R3,
       bersih(0),
-      tambah(0, judul("Jawabannya selalu sama")),
-      tambah("Empat", teks("s1", 150, 62, "KPK 4 dan 5 = 20", 18, W.biru)),
-      tambah("enam", teks("s2", 150, 104, "KPK 6 dan 8 = 24", 18, W.biru)),
-      tambah("tiga,", teks("s3", 150, 146, "KPK 3, 4, dan 5 = 60", 18, W.biru)),
+      tambah(0, judul("KPK Habis Dibagi"), ...lantai("lt", 150)),
+      tambah("KPK", ...kartu("k12", 120, 40, 60, 30, W.hijauMuda, ["12"], 16)),
+      tambah("habis", teks("b4", 60, 100, "12 : 4 = 3", 12, W.biru, { z: 3 }), teks("b6", 240, 100, "12 : 6 = 2", 12, W.biru, { z: 3 })),
+      tambah("kedua", teks("sd", 150, 130, "habis tanpa sisa", 11, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Pilih metode yang pas: daftar untuk bilangan kecil, irisan untuk melihat gambaran, faktor prima untuk bilangan besar, siklus untuk soal jadwal. Video materi dan metode luar saling melengkapi.",
+      SUARA_R4,
       bersih(0),
-      tambah(0, judul("Pilih yang pas")),
-      tambah("daftar", ...kartu("u1", 14, 34, 128, 40, W.hijauMuda, ["daftar:", "bilangan kecil"], 9)),
-      tambah("irisan", ...kartu("u2", 158, 34, 128, 40, W.langit, ["irisan:", "melihat gambaran"], 9)),
-      tambah("faktor", ...kartu("u3", 14, 90, 128, 40, W.krem, ["faktor prima:", "bilangan besar"], 9)),
-      tambah("siklus", ...kartu("u4", 158, 90, 128, 40, W.pink, ["siklus:", "soal jadwal"], 9)),
-      tambah("melengkapi.", emo("u5", 150, 170, "🧩", 28)),
+      tambah(0, judul("Lima dan Tujuh"), ...lantai("lt", 150), ...tokoh("pt", 262, 184, "Pak Tarno")),
+      tambah("lima", ...kartu("q5", 70, 54, 60, 44, W.jingga, ["5"], 22)),
+      tambah("tujuh", ...kartu("q7", 170, 54, 60, 44, W.tosca, ["7"], 22)),
+      tambah("cara", emo("tn", 150, 136, E.tanya, 30)),
+      tambah("cepat", teks("cp", 150, 116, "cara mana?", 11, W.merah, { z: 3 })),
     ),
   ],
 };
+

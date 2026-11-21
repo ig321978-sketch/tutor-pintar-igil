@@ -1,300 +1,122 @@
-import type { AdeganStory, Aksi } from "./logika-story";
-import { W, emo, garis, kartu, kotak, panah, teks, judul } from "./k5b2a-gambar";
-import { bersih, k, redamkan, sebar, sorotkan, tambah, ubah } from "./k5b2a-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, busur, deret, emo, garis, judul, kotak, lampion, stan, tanah, teks, tokoh } from "./k5b2a-gambar";
+import { bersih, hapus, idx, k, tambah } from "./k5b2a-bantu";
 
-/* ------------------------------ 1. Pembuka bab: tujuan (Buku Siswa hlm. 29; Panduan Guru hlm. 43) ------------------------------ */
-const TOPIK = ["kelipatan", "kelipatan persekutuan", "KPK", "faktor", "faktor persekutuan", "FPB", "aplikasi KPK dan FPB", "bilangan prima"];
-const WARNA_TOPIK = [W.hijauMuda, W.langit, W.krem, W.pink, W.jingga, W.hijauMuda, W.langit, W.krem];
-const chipTopik = (i: number) => kartu(`tp${i}`, 8 + (i % 2) * 146, 36 + Math.floor(i / 2) * 38, 138, 28, WARNA_TOPIK[i], [TOPIK[i]], 9);
-const GRUP = [
-  "2.1–2.3 kelipatan, persekutuan, KPK",
-  "2.4–2.6 faktor, persekutuan, FPB",
-  "2.7–2.10 prima, faktor prima, KPK dan FPB",
-  "2.11–2.13 masalah, kesimpulan, evaluasi",
-];
-const WARNA_GRUP = [W.hijauMuda, W.langit, W.krem, W.pink];
+/*
+ * Cerita orisinal IGIL "Lonceng Bu Marni" (Kelas 5 Bab 2 Sub-Bab A, kelipatan), awal cerita Pasar Kuliner Malam.
+ * Naskah suara dari naskah/story-naskah-k5b2a.md. Bagian ini: tiba di pasar, lonceng Bu Marni berbunyi teratur (kelipatan empat), dan asal kelipatan (bilangan bulat dikali empat, nol bukan kelipatan).
+ */
 
-const SUARA_P1 =
-  "Selamat datang di bab dua, KPK dan FPB. Pada bab ini kalian akan belajar tentang kelipatan, kelipatan persekutuan, kelipatan persekutuan terkecil, faktor, faktor persekutuan, faktor persekutuan terbesar, aplikasi, dan juga bilangan prima.";
+/* ------------------------------ 1. Pasar ------------------------------ */
+const SUARA_S1 = "Pak Arif mengajak Bima, Citra, dan Fajar ke Pasar Kuliner Malam ketika lampu mulai menyala.";
+const SUARA_S2 = "Di dekat stan wedang jahe, Bu Marni berdiri di samping lonceng besar.";
+const SUARA_S3 = "Lonceng itu berbunyi teratur, dan Bu Marni meminta bantuan menuliskan jadwalnya.";
 
-export const ADEGAN_PEMBUKA: AdeganStory = {
-  id: "pembuka-bab",
-  judul: "Pembuka Bab 2: tujuan pembelajaran",
-  sumber: "Buku Siswa hlm. 29; Panduan Guru hlm. 43–44",
-  latar: "#FFF7ED",
-  kutipan: [
-    "Pada bab ini kalian akan diajak untuk belajar tentang kelipatan,",
-    "faktor persekutuan terbesar (FPB), aplikasi dari KPK dan FPB, dan juga bilangan prima.",
-    "Setelah mempelajari bab ini, peserta didik diharapkan dapat",
-    "2.1 menentukan kelipatan bilangan,",
-    "2.2 menentukan kelipatan persekutuan dua bilangan atau lebih,",
-    "2.4 menentukan faktor suatu bilangan,",
-    "2.11 menyelesaikan masalah yang berkaitan dengan KPK dan FPB,",
-    "Pada bab ini, materi dikemas berbasis aktivitas, termasuk melibatkan beberapa permainan.",
-  ],
+export const ADEGAN_PASAR: AdeganStory = {
+  id: "pasar",
+  judul: "Pasar Kuliner Malam",
+  sumber: "Materi: tiba di pasar malam",
+  latar: W.malam,
   ketukan: [
     k(
-      SUARA_P1,
-      tambah(0, judul("Bab 2: KPK dan FPB")),
-      tambah("kelipatan@1", chipTopik(0)),
-      tambah("kelipatan@2", chipTopik(1)),
-      tambah("terkecil,", chipTopik(2)),
-      tambah("faktor@1", chipTopik(3)),
-      tambah("faktor@2", chipTopik(4)),
-      tambah("terbesar,", chipTopik(5)),
-      tambah("aplikasi,", chipTopik(6)),
-      tambah("prima.", chipTopik(7)),
+      SUARA_S1,
+      tambah(0, judul("Pasar Kuliner Malam"), ...tanah("tn", 150)),
+      tambah("Arif", ...tokoh("pa", 34, 184, "Pak Arif")),
+      tambah("Bima,", ...tokoh("bm", 90, 184, "Bima")),
+      tambah("Citra,", ...tokoh("ct", 146, 184, "Citra")),
+      tambah("Fajar", ...tokoh("fj", 202, 184, "Fajar")),
+      tambah("lampu", ...lampion("lp", [40, 110, 180, 250], 52, 22)),
+      tambah("menyala.", teks("mn", 150, 96, "lampu menyala", 9, W.coklat)),
     ),
     k(
-      "Buku panduan guru merinci tiga belas tujuan dalam empat kelompok. Pertama, kelipatan, kelipatan persekutuan, dan KPK. Kedua, faktor, faktor persekutuan, dan FPB. Ketiga, bilangan prima, faktor prima, serta KPK dan FPB dengan bilangan prima. Keempat, masalah, kesimpulan, dan evaluasi.",
+      SUARA_S2,
       bersih(0),
-      tambah(0, judul("Tiga belas tujuan (Panduan Guru)")),
-      tambah("Pertama,", ...kartu("g0", 14, 32, 272, 30, WARNA_GRUP[0], [GRUP[0]], 8.8)),
-      tambah("Kedua,", ...kartu("g1", 14, 70, 272, 30, WARNA_GRUP[1], [GRUP[1]], 8.8)),
-      tambah("Ketiga,", ...kartu("g2", 14, 108, 272, 30, WARNA_GRUP[2], [GRUP[2]], 8.8)),
-      tambah("Keempat,", ...kartu("g3", 14, 146, 272, 30, WARNA_GRUP[3], [GRUP[3]], 8.8)),
+      tambah(0, judul("Stan Wedang Jahe"), ...tanah("tn", 150)),
+      tambah("stan", ...stan("sw", 24, 66, 120, 76), teks("swt", 84, 112, "WEDANG JAHE", 10, W.coklat, { z: 3 }), emo("wd", 84, 136, E.wedang, 18, { z: 3 })),
+      tambah("Bu", ...tokoh("bu", 190, 184, "Bu Marni")),
+      tambah("lonceng", kotak("lt", 252, 76, 5, 70, W.coklat, W.papan, { rx: 1, z: 0 }), emo("lc", 254, 78, E.lonceng, 30, { z: 2 })),
+      tambah("besar.", teks("lb", 250, 162, "lonceng besar", 8.4, W.coklat)),
     ),
     k(
-      "Di subbab A kita hanya mengerjakan tujuan pertama, yaitu menentukan kelipatan bilangan. Tujuan yang lain menunggu giliran di subbab berikutnya.",
-      sorotkan("hanya", "g0-k"),
-      ubah("lain", { id: "g1-k", op: 0.35 }, { id: "g1-t0", op: 0.35 }, { id: "g2-k", op: 0.35 }, { id: "g2-t0", op: 0.35 }, { id: "g3-k", op: 0.35 }, { id: "g3-t0", op: 0.35 }),
-    ),
-    k(
-      "Panduan guru juga menjelaskan, bab ini dikemas berbasis aktivitas dan permainan, supaya peserta didik belajar dengan nyaman dan senang.",
-      bersih(0),
-      tambah(0, judul("Belajar lewat permainan")),
-      tambah("aktivitas", emo("dd", 70, 100, "🎲", 40)),
-      tambah("permainan,", emo("ts", 150, 100, "👏", 40)),
-      tambah("nyaman", emo("sn", 230, 100, "😊", 40)),
-      tambah("senang.", ...kartu("gm", 50, 130, 200, 34, W.emas, ["kelipatan lewat tepuk"], 10)),
+      SUARA_S3,
+      tambah("berbunyi", teks("d1", 222, 60, "ding", 11, W.merah), emo("nd", 282, 56, E.nada, 20)),
+      tambah("teratur,", teks("d2", 282, 36, "ding", 9, W.merah)),
+      tambah("meminta", emo("mt", 160, 150, E.bicara, 18)),
+      tambah("jadwalnya.", kotak("pj", 22, 30, 108, 26, W.kapur, W.coklat, { rx: 3, tebal: 1.6, z: 1 }), teks("pjt", 76, 48, "JADWAL: ?", 11, W.coklat, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 2. Peta konsep, kata kunci, dan skema (Buku Siswa hlm. 30; Panduan Guru hlm. 44 dan 46) ------------------------------ */
-export const KOLOM_PETA = [8, 104, 200];
-const peta = (id: string, kol: number, y: number, h: number, warna: string, baris: string[]) => kartu(id, KOLOM_PETA[kol], y, 92, h, warna, baris, 8);
-const KATA_KUNCI = ["kelipatan", "kelipatan persekutuan", "KPK", "faktor", "faktor persekutuan", "FPB", "bilangan prima", "saringan Eratosthenes"];
-const chipKunci = (i: number) => kartu(`kk${i}`, 8 + (i % 2) * 146, 36 + Math.floor(i / 2) * 38, 138, 28, WARNA_TOPIK[i], [KATA_KUNCI[i]], 9);
-/** Waktu tiap subbab (jam pelajaran) menurut Tabel 2.1 Panduan Guru hlm. 46. */
-export const JP_SUBBAB = [
-  { h: "A", nama: ["Kelipatan"], jp: 2, w: W.hijauMuda },
-  { h: "B", nama: ["Kelipatan Persekutuan"], jp: 6, w: W.langit },
-  { h: "C", nama: ["Faktor"], jp: 2, w: W.krem },
-  { h: "D", nama: ["Faktor Persekutuan"], jp: 6, w: W.pink },
-  { h: "E", nama: ["KPK dan FPB", "dengan faktor prima"], jp: 8, w: W.jingga },
-];
-export const SKALA_JP = 18;
-const SUARA_KUNCI = "Kata kunci bab ini ada delapan: kelipatan, kelipatan persekutuan, KPK, faktor, faktor persekutuan, FPB, bilangan prima, dan saringan Eratosthenes.";
-const barJP = (i: number) => {
-  const s = JP_SUBBAB[i];
-  const y = 30 + i * 32;
-  const w = s.jp * SKALA_JP;
-  return [
-    teks(`sh${i}`, 30, y + 16, s.h, 11, W.biru),
-    kotak(`sb${i}`, 52, y, w, 22, s.w, W.biru, { rx: 4 }),
-    teks(`sj${i}`, 52 + w / 2, y + 15, `${s.jp} JP`, 8.6, W.biru),
-    ...s.nama.map((n, j) => teks(`sn${i}-${j}`, 52 + w + 5, y + (s.nama.length === 1 ? 15 : 10 + j * 10), n, 7.6, W.biru, { anchor: "start" as const })),
-  ];
-};
+/* ------------------------------ 2. Kelipatan empat ------------------------------ */
+const SUARA_K1 = "Lonceng pertama berbunyi pada menit keempat, lalu terus berbunyi dengan jarak yang sama.";
+const SUARA_K2 = "Bima menulis: empat, delapan, dua belas, enam belas, dan seterusnya.";
+const SUARA_K3 = "Bilangan-bilangan itu disebut kelipatan empat.";
+const XS_GARIS = [40, 100, 160, 220, 280];
+const MENIT = [0, 4, 8, 12, 16];
 
-export const ADEGAN_PETA: AdeganStory = {
-  id: "peta-konsep",
-  judul: "Peta konsep, kata kunci, dan skema lima subbab",
-  sumber: "Buku Siswa hlm. 30; Panduan Guru hlm. 44, 46",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Peta Konsep",
-    "Kata Kunci",
-    "Kelipatan, kelipatan persekutuan, kelipatan persekutuan terkecil (KPK), faktor, faktor persekutuan, faktor persekutuan terbesar (FPB),",
-    "Peserta didik SD kelas V pada dasarnya masih menyukai kegiatan yang melibatkan permainan.",
-    "Tabel 2.1 Skema Pembelajaran Bab 2",
-    "A. Kelipatan",
-    "Menentukan kelipatan bilangan.",
-  ],
+export const ADEGAN_KELIPATAN: AdeganStory = {
+  id: "kelipatan",
+  judul: "Kelipatan Empat",
+  sumber: "Materi: kelipatan empat",
+  latar: W.malam,
   ketukan: [
     k(
-      "Peta konsep bab ini bercabang tiga dari KPK dan FPB, yaitu kelipatan, faktor, dan bilangan prima.",
-      tambah(0, judul("Peta konsep Bab 2")),
-      tambah("Peta", ...kartu("pr", 90, 28, 120, 24, W.emas, ["KPK dan FPB"], 9.6)),
-      tambah("kelipatan,", ...peta("pa", 0, 62, 24, W.hijauMuda, ["Kelipatan"]), garis("ca", 150, 52, -96, 10, W.biru, 1.4)),
-      tambah("faktor,", ...peta("pb", 1, 62, 24, W.langit, ["Faktor"]), garis("cb", 150, 52, 0, 10, W.biru, 1.4)),
-      tambah("prima.", ...peta("pc", 2, 62, 24, W.pink, ["Bilangan Prima"]), garis("cc", 150, 52, 96, 10, W.biru, 1.4)),
+      SUARA_K1,
+      tambah(0, judul("Kelipatan Empat"), ...tanah("tn", 150), garis("gl", 24, 112, 262, 0, W.coklat, 2.4), teks("m0", XS_GARIS[0], 132, "0", 11, W.coklat), teks("mn", 150, 148, "menit", 9, W.coklat)),
+      tambah("pertama", emo("b1", XS_GARIS[1], 106, E.lonceng, 20), teks("m1", XS_GARIS[1], 132, "4", 11, W.merah)),
+      tambah("terus", ...[2, 3, 4].flatMap((i) => [emo(`b${i}`, XS_GARIS[i], 106, E.lonceng, 20), teks(`m${i}`, XS_GARIS[i], 132, String(MENIT[i]), 11, W.merah)])),
+      tambah("jarak", ...[0, 1, 2, 3].map((i) => busur(`bs${i}`, XS_GARIS[i], XS_GARIS[i + 1], 98, W.hijauTua, 22))),
+      tambah("sama.", teks("sm", 150, 56, "jarak yang sama", 11, W.hijauTua)),
     ),
     k(
-      "Cabang kelipatan berlanjut ke kelipatan persekutuan, lalu kelipatan persekutuan terkecil atau KPK, dan berakhir di aplikasi KPK.",
-      sorotkan(0, "pa-k"),
-      tambah("persekutuan@1", ...peta("pa2", 0, 92, 28, W.hijauMuda, ["Kelipatan", "Persekutuan"])),
-      tambah("terkecil", ...peta("pa3", 0, 124, 24, W.hijauMuda, ["KPK"])),
-      tambah("aplikasi", ...peta("pa4", 0, 152, 24, W.hijauMuda, ["Aplikasi KPK"])),
-    ),
-    k(
-      "Cabang faktor berlanjut ke faktor persekutuan, lalu faktor persekutuan terbesar atau FPB, dan berakhir di aplikasi FPB.",
-      redamkan(0, "pa-k"),
-      sorotkan(0, "pb-k"),
-      tambah("persekutuan@1", ...peta("pb2", 1, 92, 28, W.langit, ["Faktor", "Persekutuan"])),
-      tambah("terbesar", ...peta("pb3", 1, 124, 24, W.langit, ["FPB"])),
-      tambah("aplikasi", ...peta("pb4", 1, 152, 24, W.langit, ["Aplikasi FPB"])),
-    ),
-    k(
-      "Cabang bilangan prima berlanjut ke faktorisasi prima, lalu menentukan KPK dan FPB dengan faktorisasi prima.",
-      redamkan(0, "pb-k"),
-      sorotkan(0, "pc-k"),
-      tambah("faktorisasi@1", ...peta("pc2", 2, 92, 28, W.pink, ["Faktorisasi", "Prima"])),
-      tambah("menentukan", ...peta("pc3", 2, 124, 28, W.pink, ["KPK dan FPB dengan", "faktorisasi prima"])),
-    ),
-    k(
-      SUARA_KUNCI,
+      SUARA_K2,
       bersih(0),
-      tambah(0, judul("Kata kunci")),
-      ...KATA_KUNCI.map((_, i) => tambah(sebar(SUARA_KUNCI, 8, 5)[i], chipKunci(i))),
+      tambah(0, judul("Daftar Kelipatan"), ...tanah("tn", 150), ...tokoh("bm", 40, 184, "Bima")),
+      tambah(idx(SUARA_K2, "empat"), ...deret("kp", [4], 80, 70, 44, 34, 24, W.putih, 13)),
+      tambah(idx(SUARA_K2, "delapan"), ...deret("kq", [8], 124, 70, 44, 34, 24, W.putih, 13)),
+      tambah(idx(SUARA_K2, "dua"), ...deret("kr", [12], 168, 70, 44, 34, 24, W.putih, 13)),
+      tambah(idx(SUARA_K2, "enam"), ...deret("ks", [16], 212, 70, 44, 34, 24, W.putih, 13)),
+      tambah("seterusnya.", teks("dt", 262, 88, "…", 16, W.coklat)),
     ),
     k(
-      "Skema pembelajaran di panduan guru membagi waktu: subbab A dua jam pelajaran, B enam, C dua, D enam, dan E delapan, jadi dua puluh empat jam pelajaran.",
-      bersih(0),
-      tambah(0, judul("Skema waktu (JP)")),
-      tambah(9, barJP(0)),
-      tambah(13, barJP(1)),
-      tambah(15, barJP(2)),
-      tambah(17, barJP(3)),
-      tambah(20, barJP(4)),
-      tambah(21, teks("tot", 150, 196, "Total 24 JP", 9.6, W.merah)),
+      SUARA_K3,
+      tambah("disebut", kotak("br", 80, 102, 166, 5, W.merah, undefined, { rx: 2, z: 1 }), teks("kl", 163, 128, "kelipatan 4", 13, W.merah)),
+      tambah("empat.", emo("bt", 254, 124, E.lampu, 20)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Latihan Renang (Buku Siswa hlm. 31; Panduan Guru hlm. 48) ------------------------------ */
-export const ADEGAN_RENANG: AdeganStory = {
-  id: "latihan-renang",
-  judul: "Latihan Renang: cerita pembuka bab",
-  sumber: "Materi: cerita latihan renang",
-  latar: "#E0F2FE",
-  kutipan: [
-    "Nisa dan Yohana latihan berenang di tempat yang sama.",
-    "Nisa berlatih",
-    "Hari ini, tanggal 3 Agustus, Nisa dan Yohana latihan renang bersama-sama.",
-    "Kapan mereka akan latihan renang bersama kembali?",
-    "Masalah terkait jadwal latihan renang Nisa dan Yohana dapat kita selesaikan dengan menggunakan KPK.",
-    "Perkenalkan bab ini dengan menyimak cerita tentang jadwal latihan renang",
-  ],
+/* ------------------------------ 3. Asal kelipatan (bilangan bulat kali empat) ------------------------------ */
+const SUARA_L1 = "Citra menunjukkan asalnya: satu kali empat, dua kali empat, tiga kali empat, empat kali empat.";
+const SUARA_L2 = "Nol kali empat memang nol, tetapi nol bukan kelipatan empat.";
+const SUARA_L3 = "Jadi daftar kelipatan mulai dari empat, lalu bertambah empat terus-menerus.";
+const BARIS_KALI = ["1 × 4 = 4", "2 × 4 = 8", "3 × 4 = 12", "4 × 4 = 16"];
+
+export const ADEGAN_KALI: AdeganStory = {
+  id: "kali",
+  judul: "Asal Kelipatan",
+  sumber: "Materi: bilangan bulat kali empat",
+  latar: W.malam,
   ketukan: [
     k(
-      "Kita mulai dengan cerita Latihan Renang. Nisa dan Yohana berlatih berenang di tempat yang sama.",
-      tambah(0, judul("Latihan Renang")),
-      tambah("Nisa", emo("sn", 90, 92, "🏊", 42), teks("snt", 90, 122, "Nisa", 10, W.biru)),
-      tambah("Yohana", emo("sy", 210, 92, "🏊", 42), teks("syt", 210, 122, "Yohana", 10, W.merah)),
-      tambah("tempat", teks("tmp", 150, 168, "di tempat yang sama", 10, W.hijau)),
+      SUARA_L1,
+      tambah(0, judul("Asal Kelipatan"), ...tanah("tn", 150), ...tokoh("ct", 60, 184, "Citra")),
+      tambah(idx(SUARA_L1, "satu"), teks("r1", 190, 52, BARIS_KALI[0], 13, W.biru)),
+      tambah(idx(SUARA_L1, "dua"), teks("r2", 190, 74, BARIS_KALI[1], 13, W.biru)),
+      tambah(idx(SUARA_L1, "tiga"), teks("r3", 190, 96, BARIS_KALI[2], 13, W.biru)),
+      tambah(idx(SUARA_L1, "kali", 4), teks("r4", 190, 118, BARIS_KALI[3], 13, W.biru)),
     ),
     k(
-      "Nisa berlatih setiap tiga hari sekali, dan Yohana berlatih setiap empat hari sekali.",
-      bersih(0),
-      tambah(0, judul("Jadwal latihan")),
-      tambah("tiga", ...kartu("jn", 14, 60, 128, 64, W.langit, ["Nisa", "3 hari sekali"], 10)),
-      tambah("empat", ...kartu("jy", 158, 60, 128, 64, W.merahMuda, ["Yohana", "4 hari sekali"], 10)),
+      SUARA_L2,
+      tambah("Nol", teks("r0", 190, 32, "0 × 4 = 0", 13, W.merah)),
+      tambah("bukan", emo("x0", 252, 32, E.salah, 18), teks("bk", 80, 78, "bukan kelipatan", 9.5, W.merah)),
     ),
     k(
-      "Hari ini, tanggal tiga Agustus, Nisa dan Yohana berlatih bersama-sama.",
-      bersih(0),
-      tambah(0, judul("Hari ini")),
-      tambah("Hari", emo("kal", 150, 84, "📅", 44)),
-      tambah("tiga", ...kartu("tg", 80, 104, 140, 30, W.emas, ["3 Agustus"], 11)),
-      tambah("bersama-sama.", ...kartu("bs", 30, 146, 240, 30, W.hijauMuda, ["Nisa dan Yohana latihan bersama"], 9.4)),
-    ),
-    k(
-      "Pertanyaannya, kapan mereka akan latihan renang bersama kembali? Coba kalian tebak dulu, jangan buru-buru menjawab.",
-      bersih(0),
-      tambah(0, judul("Pertanyaan")),
-      tambah("Pertanyaannya,", teks("tn", 150, 112, "?", 70, W.merah)),
-      tambah("kapan", ...kartu("kp", 30, 140, 240, 34, W.krem, ["Kapan latihan bersama lagi?"], 10)),
-    ),
-    k(
-      "Masalah jadwal seperti ini nanti bisa diselesaikan dengan KPK. Tapi sebelum itu, kita belajar kelipatan dulu, jadi jawabannya kita tunggu nanti.",
-      bersih(0),
-      tambah(0, judul("Jawabannya menunggu")),
-      tambah("jadwal", ...kartu("w1", 8, 70, 84, 40, W.langit, ["jadwal", "renang"], 9)),
-      tambah("KPK.", panah("pw1", 94, 90, 18, 0, W.biru, 2), ...kartu("w2", 116, 70, 68, 40, W.emas, ["KPK"], 11)),
-      tambah("kelipatan", panah("pw2", 186, 90, 18, 0, W.biru, 2), ...kartu("w3", 208, 70, 84, 40, W.hijauMuda, ["belajar", "kelipatan dulu"], 8.4)),
+      SUARA_L3,
+      hapus(0, "r0", "x0", "bk"),
+      tambah("mulai", teks("md", 76, 100, "mulai dari 4", 9.5, W.hijauTua)),
+      tambah("bertambah", ...[63, 85, 107].map((y, i) => teks(`ta${i}`, 258, y, "+4", 11, W.hijauTua))),
+      tambah("terus", emo("ul", 270, 134, E.ulang, 18)),
     ),
   ],
 };
-
-/* ------------------------------ 4. Ayo Mengingat Kembali (Buku Siswa hlm. 32; Panduan Guru hlm. 48) ------------------------------ */
-const SOAL_INGAT = ["1. kelipatan 2", "2. kelipatan 4", "3. kelipatan 6", "4. faktor dari 6", "5. faktor dari 10"];
-const SUARA_I1 = "Sebelum mulai, ayo mengingat kembali. Di kelas sebelumnya kalian sudah belajar tentang kelipatan dan faktor. Ada lima pertanyaan.";
-/** Label baris angka di kiri. Id `${id}-l`. */
-export const labelBaris = (id: string, y: number, label: string) => teks(`${id}-l`, 8, y + 16, label, 9, W.biru, { anchor: "start" as const });
-/** Satu kotak angka dalam baris. Id `${id}-b{i}` (kotak) dan `${id}-a{i}` (angka). */
-export const selAngka = (id: string, y: number, i: number, a: number, warna: string = W.krem) => [kotak(`${id}-b${i}`, 88 + i * 42, y, 36, 24, warna, W.biru, { rx: 5 }), teks(`${id}-a${i}`, 106 + i * 42, y + 16, String(a), 10, W.biru)];
-/** Satu baris kotak angka yang muncul satu demi satu mengikuti kata dalam kalimat `suara`. */
-const rentetan = (id: string, y: number, label: string, angka: number[], warna: string, suara: string, dari: number): Aksi[] => {
-  const pos = sebar(suara, angka.length, dari);
-  return angka.map((a, i) => tambah(pos[i], ...(i === 0 ? [labelBaris(id, y, label)] : []), ...selAngka(id, y, i, a, warna)));
-};
-const SUARA_I2 = "Kelipatan dua adalah dua, empat, enam, delapan, sepuluh. Kelipatan empat adalah empat, delapan, dua belas, enam belas, dua puluh.";
-const SUARA_I3 = "Nomor tiga: kelipatan enam adalah enam, dua belas, delapan belas, dua puluh empat, tiga puluh.";
-const SUARA_I4 = "Faktor dari enam adalah satu, dua, tiga, dan enam, karena satu kali enam dan dua kali tiga sama dengan enam.";
-const SUARA_I5 = "Faktor dari sepuluh adalah satu, dua, lima, dan sepuluh, karena satu kali sepuluh dan dua kali lima sama dengan sepuluh.";
-
-export const ADEGAN_INGAT: AdeganStory = {
-  id: "mengingat-kembali",
-  judul: "Ayo Mengingat Kembali: kelipatan dan faktor kelas sebelumnya",
-  sumber: "Buku Siswa hlm. 32; Panduan Guru hlm. 48",
-  latar: "#FFF1F2",
-  kutipan: [
-    "Ayo Mengingat Kembali",
-    "Di kelas sebelumnya, kalian sudah belajar tentang kelipatan dan faktor.",
-    "1. Sebutkan bilangan kelipatan 2.",
-    "2. Sebutkan bilangan kelipatan 4.",
-    "3. Sebutkan bilangan kelipatan 6.",
-    "4. Tuliskan semua faktor dari 6.",
-    "5. Tuliskan semua faktor dari 10.",
-    "Mintalah peserta didik untuk mencoba mengerjakan bagian Ayo Mengingat Kembali.",
-  ],
-  ketukan: [
-    k(
-      SUARA_I1,
-      tambah(0, judul("Ayo Mengingat Kembali")),
-      ...SOAL_INGAT.map((s, i) => tambah(sebar(SUARA_I1, 5, 10)[i], ...kartu(`si${i}`, 40, 30 + i * 31, 220, 24, i < 3 ? W.hijauMuda : W.langit, [s], 9.4))),
-    ),
-    k(
-      SUARA_I2,
-      bersih(0),
-      tambah(0, judul("Kelipatan 2 dan kelipatan 4")),
-      ...rentetan("k2", 52, "Kelipatan 2:", [2, 4, 6, 8, 10], W.krem, SUARA_I2, 3),
-      ...rentetan("k4", 112, "Kelipatan 4:", [4, 8, 12, 16, 20], W.langit, SUARA_I2, 13),
-    ),
-    k(
-      SUARA_I3,
-      bersih(0),
-      tambah(0, judul("Kelipatan 6")),
-      ...rentetan("k6", 82, "Kelipatan 6:", [6, 12, 18, 24, 30], W.pink, SUARA_I3, 5),
-    ),
-    k(
-      SUARA_I4,
-      bersih(0),
-      tambah(0, judul("Faktor dari 6")),
-      tambah("satu,", ...kartu("f6a", 20, 40, 120, 32, W.krem, ["1 × 6 = 6"], 10.4)),
-      tambah("kali@2", ...kartu("f6b", 160, 40, 120, 32, W.krem, ["2 × 3 = 6"], 10.4)),
-      ...[1, 2, 3, 6].map((a, i) => tambah(sebar(SUARA_I4, 4, 4)[i], ...kartu(`fa${i}`, 20 + i * 66, 100, 54, 34, W.hijauMuda, [String(a)], 12))),
-      tambah("enam.", teks("fs", 150, 164, "faktor dari 6", 10, W.ungu)),
-    ),
-    k(
-      SUARA_I5,
-      bersih(0),
-      tambah(0, judul("Faktor dari 10")),
-      tambah("satu,", ...kartu("g10a", 20, 40, 120, 32, W.krem, ["1 × 10 = 10"], 10.4)),
-      tambah("kali@2", ...kartu("g10b", 160, 40, 120, 32, W.krem, ["2 × 5 = 10"], 10.4)),
-      ...[1, 2, 5, 10].map((a, i) => tambah(sebar(SUARA_I5, 4, 4)[i], ...kartu(`fb${i}`, 20 + i * 66, 100, 54, 34, W.pink, [String(a)], 12))),
-      tambah("sepuluh.", teks("fs2", 150, 164, "faktor dari 10", 10, W.ungu)),
-    ),
-    k(
-      "Buku tidak memberi kunci untuk lima pertanyaan ini, jadi jawaban tadi adalah hitungan mandiri kita.",
-      bersih(0),
-      tambah(0, judul("Tentang kunci")),
-      tambah("tidak", emo("kc", 150, 90, "🧮", 44)),
-      tambah("kunci", ...kartu("kn", 40, 112, 220, 28, W.merahMuda, ["buku: tanpa kunci"], 9.6)),
-      tambah("hitungan", ...kartu("hm", 40, 148, 220, 28, W.hijauMuda, ["jawaban: hitungan mandiri"], 9.6)),
-    ),
-  ],
-};
-

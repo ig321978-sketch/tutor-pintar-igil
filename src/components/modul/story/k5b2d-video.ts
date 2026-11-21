@@ -1,48 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_ATURAN, ADEGAN_MENYIMAK } from "./k5b2d-materi-1";
-import { ADEGAN_EKS_A_AB, ADEGAN_EKS_A_C, ADEGAN_EKS_B_MASALAH, ADEGAN_FAKTOR_PERSEKUTUAN } from "./k5b2d-materi-2";
-import { ADEGAN_BERLATIH_1, ADEGAN_BERLATIH_2, ADEGAN_EKS_B_HASIL, ADEGAN_PENUTUP } from "./k5b2d-materi-3";
-import { ADEGAN_LUAR_DAFTAR, ADEGAN_LUAR_DAFTAR_TERAPAN, ADEGAN_LUAR_GCF, ADEGAN_LUAR_GCF_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k5b2d-luar-1";
-import { ADEGAN_LUAR_EUCLID, ADEGAN_LUAR_EUCLID_TERAPAN, ADEGAN_LUAR_PAKET, ADEGAN_LUAR_PAKET_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k5b2d-luar-2";
+import { ADEGAN_DAFTAR, ADEGAN_KOTAK, ADEGAN_CONGKLAK } from "./k5b2d-materi-1";
+import { ADEGAN_FPB, ADEGAN_PERIKSA, ADEGAN_SALAH_DUA } from "./k5b2d-materi-2";
+import { ADEGAN_BAGI, ADEGAN_DELAPAN_DUA_PULUH, ADEGAN_PENUTUP } from "./k5b2d-materi-3";
+import { ADEGAN_LUAR_DAFTAR, ADEGAN_LUAR_DAFTAR_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k5b2d-luar-1";
+import { ADEGAN_LUAR_BAGI, ADEGAN_LUAR_BAGI_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_TERBESAR, ADEGAN_LUAR_TERBESAR_TERAPAN } from "./k5b2d-luar-2";
 
-/** Kelas 5 Bab 2 Sub-Bab D (faktor persekutuan dan FPB): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 5 Bab 2 Sub-Bab D (faktor persekutuan dan FPB), Pasar Kuliner Malam.
+ * Video materi (sekitar tiga menit): cerita orisinal IGIL "Kotak Bingkisan Pak Joko" (Bima, Citra, Fajar, Pak Arif, dan Pak Joko; Kak Lintang datang di akhir).
+ * Video kedua: tiga metode global (Two Lists, Share Equally, Biggest Match), terpisah.
+ */
+export const JUDUL_K5B2D = "Kotak Bingkisan Pak Joko";
+
 export const VIDEO_MATERI_K5B2D: VideoStory = {
   id: "k5b2d-materi",
-  judul: "Faktor Persekutuan dan FPB",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K5B2D,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "faktor yang sama dari dua bilangan", daftar: ["Faktor persekutuan", "Menentukan FPB", "Membagi benda sama rata"] }),
-    ADEGAN_MENYIMAK,
-    ADEGAN_ATURAN,
-    ADEGAN_FAKTOR_PERSEKUTUAN,
-    ADEGAN_EKS_A_AB,
-    ADEGAN_EKS_A_C,
-    ADEGAN_EKS_B_MASALAH,
-    ADEGAN_EKS_B_HASIL,
-    ADEGAN_BERLATIH_1,
-    ADEGAN_BERLATIH_2,
+    adeganSapaan({ jenis: "materi", topik: "FPB", daftar: ["Faktor persekutuan", "Yang terbesar", "Bagi sama rata"] }),
+    ADEGAN_KOTAK,
+    ADEGAN_DAFTAR,
+    ADEGAN_CONGKLAK,
+    ADEGAN_SALAH_DUA,
+    ADEGAN_PERIKSA,
+    ADEGAN_FPB,
+    ADEGAN_BAGI,
+    ADEGAN_DELAPAN_DUA_PULUH,
     ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K5B2D: VideoStory = {
   id: "k5b2d-luar",
-  judul: "Faktor Persekutuan dan FPB: Metode dari Luar",
-  subjudul: "Empat metode luar",
+  judul: JUDUL_K5B2D,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "faktor yang sama dari dua bilangan" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "FPB", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_DAFTAR,
     ADEGAN_LUAR_DAFTAR_TERAPAN,
-    ADEGAN_LUAR_GCF,
-    ADEGAN_LUAR_GCF_TERAPAN,
-    ADEGAN_LUAR_EUCLID,
-    ADEGAN_LUAR_EUCLID_TERAPAN,
-    ADEGAN_LUAR_PAKET,
-    ADEGAN_LUAR_PAKET_TERAPAN,
+    ADEGAN_LUAR_BAGI,
+    ADEGAN_LUAR_BAGI_TERAPAN,
+    ADEGAN_LUAR_TERBESAR,
+    ADEGAN_LUAR_TERBESAR_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

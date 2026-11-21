@@ -1,290 +1,143 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { W, judul, kartu, kotak, pohon, tabel, tangga, teks, type Pohon } from "./k5b2e-gambar";
-import { bersih, hapus, k, tambah, ubah } from "./k5b2e-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, PAPAN_100, PRIMA_100, W, bilanganPapan, bingkaiPapan, cincinPapan, emo, garis, judul, kartu, kelipatanDari, kotak, lantai, simpul, idBilanganPapan, tali, teks, tokoh } from "./k5b2e-gambar";
+import { bersih, k, pudarkan, sorotkan, tambah, ubah } from "./k5b2e-bantu";
 
-/* ------------------------------ 5. Pohon faktor 196, 300, 270, dan kunci 260 (Buku Siswa hlm. 56, Panduan Guru hlm. 79 sampai 81) ------------------------------ */
-export const POHON_196 = tangga(196, [2, 2, 7, 7]);
-export const POHON_300 = tangga(300, [2, 2, 3, 5, 5]);
-/** Pohon 270 bentuk tangga dan bentuk lain (27 dan 10): Buku Siswa hlm. 56 membolehkan bentuk berbeda asalkan kaidahnya benar. */
-export const POHON_270_A = tangga(270, [2, 3, 3, 3, 5]);
-export const POHON_270_B: Pohon = { n: 270, a: { n: 27, a: { n: 3 }, b: { n: 9, a: { n: 3 }, b: { n: 3 } } }, b: { n: 10, a: { n: 2 }, b: { n: 5 } } };
-/** Kunci Panduan Guru hlm. 81 untuk 260: angka 3 di bawah 130 salah, seharusnya 2 (130 = 2 x 65). */
-export const POHON_260_BUKU: Pohon = { n: 260, a: { n: 2 }, b: { n: 130, a: { n: 3 }, b: { n: 65, a: { n: 5 }, b: { n: 13 } } } };
-export const POHON_260_BENAR: Pohon = tangga(260, [2, 2, 5, 13]);
+/*
+ * Cerita orisinal IGIL "Papan Bilangan Kak Lintang" (Kelas 5 Bab 2 Sub-Bab E), akhir cerita Pasar Kuliner Malam.
+ * Naskah suara dari naskah/story-naskah-k5b2e.md. Bagian ini: Citra menjelaskan kenapa satu bukan prima, Bima menyaring papan satu sampai seratus (25 prima), dan Citra membuat pohon faktor 12 dan 18.
+ */
 
-const p196 = pohon("p196", POHON_196, 150, 40, 30, 30, 8.5, 8.4, 0.7);
-const p300 = pohon("p300", POHON_300, 150, 40, 30, 30, 8.5, 8.4, 0.7);
-const p270a = pohon("p270a", POHON_270_A, 75, 40, 24, 26, 7.5, 7.6, 0.7);
-const p270b = pohon("p270b", POHON_270_B, 225, 40, 36, 26, 7.5, 7.6, 0.62);
-const p260 = pohon("p260", POHON_260_BENAR, 150, 40, 30, 30, 8.5, 8.4, 0.7);
+/* ------------------------------ 4. Satu bukan prima ------------------------------ */
+const SUARA_PERIKSA1 = "Citra menjelaskan: satu hanya punya satu faktor, padahal bilangan prima harus punya dua faktor.";
+const SUARA_PERIKSA2 = "Karena itu, satu bukan bilangan prima, dan dua adalah bilangan prima yang terkecil.";
+const SUARA_PERIKSA3 = "Fajar mencoret papan sampai spidolnya menempel di hidung, dan semua orang tertawa.";
 
+export const ADEGAN_PERIKSA: AdeganStory = {
+  id: "periksa",
+  judul: "Satu hanya punya satu faktor",
+  sumber: "Materi: satu bukan bilangan prima",
+  latar: "#F0F9FF",
+  ketukan: [
+    k(
+      SUARA_PERIKSA1,
+      tambah(0, judul("Satu Hanya Punya Satu"), ...lantai("lt", 156)),
+      tambah("Citra", ...tokoh("ci", 40, 184, "Citra")),
+      tambah("satu", ...kartu("k1", 90, 44, 120, 40, "#DBEAFE", ["bilangan 1", "faktor: 1 saja"], 10)),
+      tambah("dua", ...kartu("k2", 90, 98, 120, 40, "#DCFCE7", ["bilangan prima", "faktor: ada 2"], 10)),
+    ),
+    k(
+      SUARA_PERIKSA2,
+      tambah("bukan", emo("x1", 242, 66, E.salah, 24)),
+      ubah("bukan", { id: "k1-k", warna: "#FEE2E2" }),
+      tambah("dua", emo("o2", 242, 120, E.benar, 24)),
+      tambah("terkecil", ...kartu("tk", 196, 140, 98, 24, "#FEF9C3", ["prima terkecil: 2"], 9)),
+    ),
+    k(
+      SUARA_PERIKSA3,
+      bersih(0),
+      tambah(0, judul("Fajar Mencoret Papan"), ...lantai("lt", 156), ...tokoh("fa", 150, 184, "Fajar", 34)),
+      tambah("papan", kotak("mp", 60, 36, 180, 84, W.papan, W.kayuTua, { rx: 4, tebal: 2.4 }), teks("mt", 150, 62, "1 2 3 4 5", 12, W.biru)),
+      tambah("mencoret", garis("c1", 72, 48, 70, 60, W.merah, 3), garis("c2", 142, 108, 90, -50, "#111827", 3)),
+      tambah("hidung", garis("c3", 150, 150, 0, -22, "#111827", 3), kotak("spd", 146, 146, 8, 12, "#111827", "#030712", { rx: 1, z: 2 })),
+      tambah("tertawa", emo("t1", 40, 100, E.tertawa, 26), emo("t2", 262, 100, E.tertawa, 26), emo("t3", 262, 150, E.tertawa, 22)),
+    ),
+  ],
+};
+
+/* ------------------------------ 5. Saringan Eratosthenes ------------------------------ */
+const SUARA_SARING1 = "Bima memakai saringan Eratosthenes: hapus satu, ambil dua lalu hapus semua kelipatannya.";
+const SUARA_SARING2 = "Lalu ambil tiga, lima, dan tujuh, dan hapus semua kelipatannya juga.";
+const SUARA_SARING3 = "Bilangan yang tersisa adalah bilangan prima, dan jumlahnya dua puluh lima sampai seratus.";
+
+const KELIPATAN_2 = kelipatanDari(2, 100);
+/** Kelipatan 3, 5, dan 7 yang belum terhapus oleh kelipatan 2. */
+const KELIPATAN_357 = [...new Set([3, 5, 7].flatMap((p) => kelipatanDari(p, 100)))].filter((n) => n % 2 !== 0).sort((a, b) => a - b);
+export const ADEGAN_SARING: AdeganStory = {
+  id: "saring",
+  judul: "Bima menyaring bilangan prima",
+  sumber: "Materi: saringan Eratosthenes sampai seratus",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_SARING1,
+      tambah(0, judul("Saringan Eratosthenes"), ...lantai("lt", 156), bingkaiPapan("pp", 100, PAPAN_100), ...bilanganPapan("pp", 100, PAPAN_100)),
+      tambah("Bima", ...tokoh("bi", 256, 140, "Bima")),
+      pudarkan("hapus", "pp-n1"),
+      tambah("ambil", cincinPapan("pp", 2, PAPAN_100)),
+      pudarkan("kelipatannya", ...idBilanganPapan("pp", KELIPATAN_2)),
+    ),
+    k(
+      SUARA_SARING2,
+      tambah("tiga", cincinPapan("pp", 3, PAPAN_100)),
+      tambah(3, cincinPapan("pp", 5, PAPAN_100)),
+      tambah("tujuh", cincinPapan("pp", 7, PAPAN_100)),
+      pudarkan("kelipatannya", ...idBilanganPapan("pp", KELIPATAN_357)),
+    ),
+    k(
+      SUARA_SARING3,
+      tambah("tersisa", ...PRIMA_100.filter((n) => n > 7).map((n) => cincinPapan("pp", n, PAPAN_100))),
+      tambah("jumlahnya", teks("jm", 256, 90, "25", 22, W.merah), teks("jt", 256, 104, "prima", 10, W.hijauTua)),
+      tambah("seratus", teks("js", 256, 66, "1 - 100", 9, W.biru)),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. Pohon faktor 12 dan 18 ------------------------------ */
+const SUARA_POHON1 = "Citra membuat pohon faktor dua belas: dua belas patah menjadi dua dan enam, lalu enam menjadi dua dan tiga.";
+const SUARA_POHON2 = "Daun pohonnya semua prima, jadi dua belas sama dengan dua kali dua kali tiga.";
+const SUARA_POHON3 = "Untuk delapan belas, daunnya dua, tiga, tiga: dua kali tiga kali tiga.";
+
+/** Posisi simpul pohon: akar, anak kiri dan kanan, lalu anak dari simpul kanan. */
+const P = { r: [150, 48], a: [118, 86], b: [182, 86], c: [160, 124], d: [204, 124] } as const;
+const pohonDua = (id: string, akar: number, kanan: number, daunKiri: number, daunC: number, daunD: number) => ({
+  akar: simpul(`${id}r`, P.r[0], P.r[1], akar, false),
+  a: simpul(`${id}a`, P.a[0], P.a[1], daunKiri, true),
+  b: simpul(`${id}b`, P.b[0], P.b[1], kanan, false),
+  c: simpul(`${id}c`, P.c[0], P.c[1], daunC, true),
+  d: simpul(`${id}d`, P.d[0], P.d[1], daunD, true),
+  ta: tali(`${id}ta`, P.r[0], P.r[1], P.a[0], P.a[1]),
+  tb: tali(`${id}tb`, P.r[0], P.r[1], P.b[0], P.b[1]),
+  tc: tali(`${id}tc`, P.b[0], P.b[1], P.c[0], P.c[1]),
+  td: tali(`${id}td`, P.b[0], P.b[1], P.d[0], P.d[1]),
+});
+const P12 = pohonDua("p", 12, 6, 2, 2, 3);
+const P18 = pohonDua("q", 18, 9, 2, 3, 3);
 export const ADEGAN_POHON: AdeganStory = {
   id: "pohon",
-  judul: "Pohon faktor 196, 300, 270, dan 260",
-  sumber: "Materi: pohon faktor",
+  judul: "Citra membuat pohon faktor",
+  sumber: "Materi: pohon faktor 12 dan 18",
   latar: "#F0FDF4",
-  kutipan: [
-    "Faktorisasi prima dari 196 adalah 2 x 2 x 7 x 7",
-    "Faktorisasi prima dari 300 adalah 2 x 2 x 3 x 5 x 5",
-    "Coba pikirkan cara membuat pohon faktor tersebut.",
-    "Selanjutnya, bagaimana bentuk pohon faktor dari 270?",
-    "Kalian boleh membuat bentuk pohon faktor yang berbeda",
-    "asalkan tetap memenuhi kaidah cara pembuatan pohon faktor yang benar.",
-    "Faktorisasi prima dari 260 adalah 2 × 2 × 5 × 13",
-    "Soal Tambahan",
-    "Kunci Jawaban Soal Tambahan",
-  ],
   ketukan: [
     k(
-      "Pohon faktor seratus sembilan puluh enam: dibagi dua menjadi dua dan sembilan puluh delapan, lalu dibagi dua lagi menjadi dua dan empat puluh sembilan.",
-      tambah(0, judul("Pohon faktor 196"), ...p196.tingkat[0]),
-      tambah("dibagi", ...p196.tingkat[1]),
-      tambah("lagi", ...p196.tingkat[2]),
+      SUARA_POHON1,
+      tambah(0, judul("Pohon Faktor 12"), ...lantai("lt", 156)),
+      tambah("Citra", ...tokoh("ci", 40, 184, "Citra")),
+      tambah("pohon", ...P12.akar),
+      tambah(8, P12.ta, P12.tb),
+      tambah(10, ...P12.a),
+      tambah(12, ...P12.b),
+      tambah(14, P12.tc, P12.td),
+      tambah(16, ...P12.c),
+      tambah(18, ...P12.d),
     ),
     k(
-      "Empat puluh sembilan sama dengan tujuh kali tujuh. Semua ujungnya prima, jadi faktorisasi prima seratus sembilan puluh enam adalah dua kali dua kali tujuh kali tujuh.",
-      tambah(0, ...p196.tingkat[3]),
-      tambah("jadi", teks("h196", 150, 176, "196 = 2 × 2 × 7 × 7", 11, W.hijau)),
+      SUARA_POHON2,
+      sorotkan("Daun", "pa", "pc", "pd"),
+      tambah("jadi", teks("rm", 150, 154, "12 =", 12, W.merahTua)),
+      ubah(9, { id: "rm", isi: "12 = 2" }),
+      ubah(11, { id: "rm", isi: "12 = 2 × 2" }),
+      ubah(13, { id: "rm", isi: "12 = 2 × 2 × 3" }),
     ),
     k(
-      "Pohon faktor tiga ratus: tiga ratus dibagi dua, seratus lima puluh dibagi dua, tujuh puluh lima dibagi tiga, dan dua puluh lima menjadi lima kali lima. Jadi faktorisasi primanya dua, dua, tiga, lima, lima.",
+      SUARA_POHON3,
       bersih(0),
-      tambah(0, judul("Pohon faktor 300"), ...p300.tingkat[0]),
-      tambah(6, ...p300.tingkat[1]),
-      tambah(11, ...p300.tingkat[2]),
-      tambah(16, ...p300.tingkat[3]),
-      tambah(22, ...p300.tingkat[4]),
-      tambah("Jadi", teks("h300", 150, 192, "300 = 2 × 2 × 3 × 5 × 5", 10, W.hijau)),
-    ),
-    k(
-      "Sekarang berdiskusi: bagaimana pohon faktor dua ratus tujuh puluh? Bentuk pohon boleh berbeda asalkan kaidahnya benar. Pada hitungan kita, ujung akhirnya selalu dua, tiga, tiga, tiga, dan lima.",
-      bersih(0),
-      tambah(0, judul("Diskusi: 270"), ...p270a.semua),
-      tambah("berbeda", ...p270b.semua),
-      tambah("selalu", teks("h270", 150, 188, "270 = 2 × 3 × 3 × 3 × 5", 10, W.hijau)),
-    ),
-    k(
-      "Sekarang pohon faktor dua ratus enam puluh. Dibagi dua menjadi dua dan seratus tiga puluh, lalu dibagi dua lagi menjadi dua dan enam puluh lima. Enam puluh lima menjadi lima kali tiga belas, jadi faktorisasinya dua, dua, lima, tiga belas.",
-      bersih(0),
-      tambah(0, judul("Pohon faktor 260"), ...p260.tingkat[0]),
-      tambah("Dibagi", ...p260.tingkat[1]),
-      tambah("lagi", ...p260.tingkat[2]),
-      tambah("kali", ...p260.tingkat[3]),
-      tambah("jadi", teks("h260", 150, 176, "260 = 2 × 2 × 5 × 13", 11, W.hijau)),
-    ),
-  ],
-};
-
-/* ------------------------------ 6. KPK dan FPB dengan faktorisasi prima (Buku Siswa hlm. 56 sampai 57, Panduan Guru hlm. 81) ------------------------------ */
-const kolX = (i: number): number => 46 + i * 36;
-/** Kotak faktor prima kecil di kolom i (pusat x, atas y). */
-const chip = (id: string, i: number, y: number, n: number, warna: string): Obj[] => [kotak(`${id}-k`, kolX(i) - 14, y, 28, 22, warna, W.biru, { rx: 5 }), teks(`${id}-t`, kolX(i), y + 15.5, String(n), 11, W.biru)];
-export const FAKTOR_72 = [2, 2, 2, 3, 3];
-export const FAKTOR_150 = [2, 3, 5, 5];
-/** Kolom tiap faktor pada gambar: faktor 72 di kolom 0 sampai 4, faktor 150 di kolom 0, 3, 5, 6 (faktor yang sama sejajar). */
-export const KOLOM_150 = [0, 3, 5, 6];
-
-export const ADEGAN_KPK_FPB_PRIMA: AdeganStory = {
-  id: "kpk-fpb-prima",
-  judul: "KPK dan FPB dari faktorisasi prima: 72 dan 150",
-  sumber: "Materi: KPK dan FPB dari faktor prima",
-  latar: "#FFFBEB",
-  kutipan: [
-    "Ayo, kita tentukan KPK dan PFB dari bilangan 72 dan 96 dengan menggunakan faktorisasi prima.",
-    "Menuliskan faktorisasi prima dari 72 dan 150.",
-    "72 = 2 x 2 x 2 x 3 x 3",
-    "150 = 2 x 3 x 5 x 5",
-    "Kita tuliskan bilangan prima yang memiliki pasangan cukup sekali saja, kemudian tuliskan semua bilangan prima yang tidak memiliki pasangan.",
-    "Hasil perkalian semua bilangan tersebut merupakan KPK dari 72 dan 150.",
-    "KPK dari 72 dan 150 adalah 2 x 3 x 2 x 2 x 3 x 5 x 5 = 1.800",
-    "FPB merupakan hasil kali bilangan tersebut.",
-    "FPB dari 72 dan 150 adalah 2 x 3 = 6",
-    "Untuk bilangan-bilangan dengan hasil faktorisasi prima tidak memiliki bilangan prima yang berpasangan, maka FPB-nya adalah 1.",
-    "FPB dari bilangan 15 dan 28 adalah 1",
-    "15 = 3 x 5",
-    "28 = 2 x 2 x 7",
-  ],
-  ketukan: [
-    k(
-      "Sekarang KPK dan FPB dengan faktorisasi prima, contohnya tujuh puluh dua dan seratus lima puluh. Tujuh puluh dua adalah dua, dua, dua, tiga, tiga. Seratus lima puluh adalah dua, tiga, lima, lima.",
-      tambah(0, judul("KPK dan FPB dari faktor prima")),
-      tambah("Tujuh@2", teks("e72", 150, 70, "72 = 2 × 2 × 2 × 3 × 3", 17, W.biru)),
-      tambah("Seratus@2", teks("e150", 150, 118, "150 = 2 × 3 × 5 × 5", 17, W.hijau)),
-    ),
-    k(
-      "Supaya pasangannya mudah terlihat, kita sejajarkan bilangan prima yang sama di kolom yang sama. Dua dengan dua, tiga dengan tiga.",
-      bersih(0),
-      tambah(0, judul("Sejajarkan faktor yang sama")),
-      tambah("sejajarkan", ...kartu("n1", 20, 40, 260, 40, W.hijauMuda, ["faktor prima yang sama", "ditaruh di satu kolom"], 9.4)),
-      tambah("Dua", ...kartu("n2", 20, 100, 260, 40, W.krem, ["pasangannya jadi", "mudah terlihat"], 9.4)),
-    ),
-    k(
-      "Untuk KPK, bilangan prima yang berpasangan ditulis sekali saja, lalu semua yang tidak berpasangan. Dua, tiga, lalu dua, dua, tiga, lima, lima. Hasil kalinya seribu delapan ratus.",
-      bersih(0),
-      tambah(0, judul("KPK: pasangan sekali"), teks("l72", 12, 59, "72", 9, W.biru), teks("l150", 12, 91, "150", 9, W.biru)),
-      ...FAKTOR_72.map((n, i) => tambah(0, chip(`u${i}`, i, 44, n, i === 0 || i === 3 ? W.emas : W.langit))),
-      ...FAKTOR_150.map((n, i) => tambah(0, chip(`v${i}`, KOLOM_150[i], 76, n, i === 0 || i === 1 ? W.emas : W.jingga))),
-      tambah("berpasangan", teks("pk", 150, 126, "pasangan (kuning) ditulis sekali", 8.6, W.coklat)),
-      tambah("Hasil", teks("kpk", 150, 160, "KPK = 2 × 3 × 2 × 2 × 3 × 5 × 5 = 1.800", 10.5, W.hijau)),
-    ),
-    k(
-      "Untuk FPB, cukup kalikan bilangan prima yang berpasangan, yaitu dua dan tiga. Hasilnya enam.",
-      ubah(0, ...[1, 2, 4].map((i) => ({ id: `u${i}-k`, warna: W.abu })), ...[2, 3].map((i) => ({ id: `v${i}-k`, warna: W.abu }))),
-      tambah("Hasilnya", teks("fpb", 150, 188, "FPB = 2 × 3 = 6", 12, W.merah)),
-    ),
-    k(
-      "Jika tidak ada bilangan prima yang berpasangan, FPB-nya satu. Contohnya lima belas dan dua puluh delapan: tiga kali lima, dan dua kali dua kali tujuh, tidak berpasangan.",
-      bersih(0),
-      tambah(0, judul("Tanpa pasangan: FPB = 1")),
-      tambah("lima@1", teks("t15", 150, 66, "15 = 3 × 5", 17, W.biru)),
-      tambah("dua@2", teks("t28", 150, 108, "28 = 2 × 2 × 7", 17, W.hijau)),
-      tambah("berpasangan@2", ...kartu("t1", 80, 132, 140, 40, W.krem, ["tidak ada pasangan", "FPB 15 dan 28 = 1"], 9.4)),
-    ),
-  ],
-};
-
-/* ------------------------------ 7. Pembagian berulang (Buku Siswa hlm. 58 sampai 59, Panduan Guru hlm. 82 sampai 83) ------------------------------ */
-/** Tabel pembagian berulang untuk 72 dan 150 yang benar: pembagi, bilangan kiri, bilangan kanan sebelum dibagi. Buku Siswa hlm. 58 melewatkan baris 5 | 1 5. */
-export const BARIS_BERULANG: [string, string, string][] = [
-  ["2", "72", "150"],
-  ["2", "36", "75"],
-  ["2", "18", "75"],
-  ["3", "9", "75"],
-  ["3", "3", "25"],
-  ["5", "1", "25"],
-  ["5", "1", "5"],
-  ["", "1", "1"],
-];
-
-export const ADEGAN_BERULANG: AdeganStory = {
-  id: "berulang",
-  judul: "Pembagian berulang untuk KPK dan FPB 72 dan 150",
-  sumber: "Materi: pembagian berulang",
-  latar: "#FFF7ED",
-  kutipan: [
-    "4. Menentukan KPK dan FPB Menggunakan Pembagian Berulang",
-    "Bagian ini hanya sebagai referensi tambahan bagi peserta didik.",
-    "Materi ini hanya bagian dari teknik, bukan konseptual",
-    "Jika tidak habis dibagi dengan suatu bilangan, maka tuliskan bilangan yang sama di baris selanjutnya.",
-    "Jika baris terakhir hasilnya semua sudah 1, artinya langkah sudah selesai.",
-    "KPK dari 72 dan 150 adalah hasil perkalian semua pembagi prima pada pembagian berulang tersebut.",
-    "KPK dari 72 dan 150 adalah 2 x 2 x 2 x 3 x 3 x 5 x 5 = 1.800",
-    "FPB dari 75 dan 150 adalah hasil kali bilangan prima yang dapat membagi habis 75 dan 150.",
-    "FPB dari 75 dan 150 adalah 2 x 3 = 6",
-  ],
-  ketukan: [
-    k(
-      "Cara keempat adalah pembagian berulang. Ini hanya referensi tambahan, karena tekniknya, bukan konsepnya. Kuasai dulu cara biasa dan faktorisasi prima.",
-      tambah(0, judul("Pembagian berulang")),
-      tambah("referensi", ...kartu("g1", 20, 40, 260, 40, W.krem, ["referensi tambahan", "(teknik, bukan konsep)"], 9.4)),
-      tambah("Kuasai", ...kartu("g2", 20, 100, 260, 40, W.hijauMuda, ["kuasai dulu cara biasa", "dan faktorisasi prima"], 9.4)),
-    ),
-    k(
-      "Tulis dua bilangan, tujuh puluh dua dan seratus lima puluh. Bagi dengan bilangan prima yang dapat membagi, dan bilangan yang tidak habis dibagi ditulis lagi di baris berikutnya, seperti tujuh puluh lima.",
-      bersih(0),
-      tambah(0, judul("Tulis, bagi, ulangi")),
-      tambah("Tulis", ...tabel("br", 55, 28, [70, 60, 60], [["Pembagi prima", "72", "150"], ...BARIS_BERULANG.slice(0, 4).map((b) => [...b])], 15, 8.6)),
-      tambah("bilangan@3", ...tabel("bs", 55, 28 + 5 * 15, [70, 60, 60], BARIS_BERULANG.slice(4, 6).map((b) => [...b]), 15, 8.6, W.putih)),
-    ),
-    k(
-      "Perhatikan baris terakhir yang berisi satu dan lima. Dua puluh lima dibagi lima adalah lima, bukan satu, jadi masih ada satu pembagi lima lagi sampai semuanya satu.",
-      tambah("terakhir", ...tabel("bt", 55, 28 + 7 * 15, [70, 60, 60], BARIS_BERULANG.slice(6).map((b) => [...b]), 15, 8.6, W.putih)),
-      ubah("terakhir", { id: "bt-s00", warna: W.emas }, { id: "bt-s01", warna: W.emas }, { id: "bt-s02", warna: W.emas }),
-      tambah("Dua", teks("cat", 150, 186, "masih ada pembagi 5 lagi", 9, W.merah)),
-    ),
-    k(
-      "KPK adalah hasil kali semua pembagi prima, yaitu seribu delapan ratus. FPB adalah hasil kali pembagi yang membagi habis kedua bilangan: dua dan tiga, hasilnya enam.",
-      hapus(0, "cat"),
-      ubah("tiga", { id: "br-s10", warna: W.emas }, { id: "br-s40", warna: W.emas }),
-      tambah("KPK", teks("kp", 150, 178, "KPK = 2 × 2 × 2 × 3 × 3 × 5 × 5 = 1.800", 9.6, W.hijau)),
-      tambah("hasilnya", teks("fp", 150, 194, "FPB = 2 × 3 = 6", 9.6, W.merah)),
-    ),
-    k(
-      "Kita cek: enam habis membagi kedua bilangan. Tujuh puluh dua dibagi enam sama dengan dua belas, seratus lima puluh dibagi enam sama dengan dua puluh lima, jadi FPB-nya enam.",
-      bersih(0),
-      tambah(0, judul("Periksa FPB-nya")),
-      tambah("Tujuh", ...kartu("s1", 20, 44, 260, 40, W.langit, ["72 ÷ 6 = 12", "150 ÷ 6 = 25"], 9.4)),
-      tambah("jadi", ...kartu("s2", 20, 104, 260, 40, W.hijauMuda, ["jadi FPB dari", "72 dan 150 adalah 6"], 9.4)),
-    ),
-  ],
-};
-
-/* ------------------------------ 8. Ayo Berlatih dan soal tambahan (Buku Siswa hlm. 59, Panduan Guru hlm. 82 dan 84 sampai 86) ------------------------------ */
-export const ADEGAN_LATIHAN: AdeganStory = {
-  id: "latihan",
-  judul: "Latihan faktorisasi prima, KPK, dan FPB",
-  sumber: "Materi: latihan faktorisasi prima",
-  latar: "#F0F9FF",
-  kutipan: [
-    "Tentukan faktorisasi prima dari bilangan-bilangan berikut dengan menggunakan pohon faktor.",
-    "Tentukan KPK dan FPB dari bilangan-bilangan berikut dengan menggunakan cara faktorisasi prima dan cara pembagian berulang.",
-    "a. 42, 60",
-    "b. 27, 81",
-    "c. 6, 10, 15",
-    "d. 7, 18, 33",
-    "e. 30, 64, 86",
-    "Faktorisasi prima dari 60 adalah 2 × 2 × 3 × 5",
-    "Faktorisasi prima dari 96 adalah 2 × 2 × 2 × 2 × 2 × 3",
-    "FPB = 2 × 3 = 6",
-    "KPK = 2 × 2 × 3 × 5 × 7 = 420",
-    "FPB = 3 × 3 × 3 = 27",
-    "KPK = 3 × 3 × 3 × 3 = 81",
-    "FPB = 1 (karena tidak ada pembagi prima yang sama di ketiga bilangan)",
-    "KPK = 2 × 3 × 5 = 30.",
-    "KPK = 2 × 3 × 3 × 7 × 11 = 1.386",
-    "KPK = 2 × 3 × 5 × 2 × 2 × 2 × 2 × 2 × 43 = 41.280",
-    "Tentukan KPK dan FPB pasangan bilangan berikut dengan menggunakan faktorisasi prima.",
-    "FPB = 2 × 2 × 3 × 3 = 36",
-    "KPK = 2 × 2 × 3 × 3 × 3 = 108",
-    "KPK = 5 × 2 × 3 × 5 × 7 = 1.050",
-    "KPK = 2 × 3 × 2 × 2 × 5 × 2 × 2 = 1.080",
-  ],
-  ketukan: [
-    k(
-      "Latihan satu, pohon faktor. Enam puluh menjadi dua, dua, tiga, lima. Sembilan puluh enam menjadi lima faktor dua dan satu faktor tiga.",
-      tambah(0, judul("Latihan 1")),
-      tambah("Enam", teks("a60", 150, 76, "60 = 2 × 2 × 3 × 5", 15, W.biru)),
-      tambah("Sembilan", teks("a96", 150, 130, "96 = 2 × 2 × 2 × 2 × 2 × 3", 15, W.hijau)),
-    ),
-    k(
-      "Latihan dua a, empat puluh dua dan enam puluh: FPB enam, KPK empat ratus dua puluh. Latihan dua b, dua puluh tujuh dan delapan puluh satu: FPB dua puluh tujuh, KPK delapan puluh satu.",
-      bersih(0),
-      tambah(0, judul("Latihan 2a dan 2b")),
-      tambah(2, ...kartu("b1", 14, 34, 272, 58, W.langit, ["42 dan 60", "FPB = 2 × 3 = 6", "KPK = 2 × 2 × 3 × 5 × 7 = 420"], 9.4)),
-      tambah(18, ...kartu("b2", 14, 104, 272, 58, W.hijauMuda, ["27 dan 81", "FPB = 3 × 3 × 3 = 27", "KPK = 3 × 3 × 3 × 3 = 81"], 9.4)),
-    ),
-    k(
-      "Latihan dua c, enam, sepuluh, dan lima belas: FPB satu, KPK tiga puluh. Latihan dua d, tujuh, delapan belas, tiga puluh tiga: FPB satu, KPK seribu tiga ratus delapan puluh enam.",
-      bersih(0),
-      tambah(0, judul("Latihan 2c dan 2d")),
-      tambah(2, ...kartu("c1", 14, 34, 272, 58, W.krem, ["6, 10, 15", "FPB = 1", "KPK = 2 × 3 × 5 = 30"], 9.4)),
-      tambah(20, ...kartu("c2", 14, 104, 272, 58, W.pink, ["7, 18, 33", "FPB = 1", "KPK = 2 × 3 × 3 × 7 × 11 = 1.386"], 9.4)),
-    ),
-    k(
-      "Latihan dua e, tiga puluh, enam puluh empat, dan delapan puluh enam: FPB dua, KPK empat puluh satu ribu dua ratus delapan puluh.",
-      bersih(0),
-      tambah(0, judul("Latihan 2e")),
-      tambah("tiga@1", teks("d30", 150, 52, "30 = 2 × 3 × 5", 12, W.biru)),
-      tambah("enam", teks("d64", 150, 78, "64 = 2 × 2 × 2 × 2 × 2 × 2", 12, W.biru)),
-      tambah("delapan", teks("d86", 150, 104, "86 = 2 × 43", 12, W.biru)),
-      tambah("FPB", teks("dfp", 150, 140, "FPB = 2", 13, W.merah)),
-      tambah("KPK", teks("dkp", 150, 172, "KPK = 2 × 2 × 2 × 2 × 2 × 2 × 3 × 5 × 43 = 41.280", 8.6, W.hijau)),
-    ),
-    k(
-      "Tantangan: tiga puluh enam dan seratus delapan, FPB tiga puluh enam, KPK seratus delapan. Lima puluh dan seratus lima, FPB lima, KPK seribu lima puluh.",
-      bersih(0),
-      tambah(0, judul("Tantangan 1 dan 2")),
-      tambah("tiga@1", ...kartu("e1", 14, 34, 272, 58, W.langit, ["36 dan 108", "FPB = 2 × 2 × 3 × 3 = 36", "KPK = 2 × 2 × 3 × 3 × 3 = 108"], 9.4)),
-      tambah("Lima", ...kartu("e2", 14, 104, 272, 58, W.hijauMuda, ["50 dan 105", "FPB = 5", "KPK = 5 × 2 × 3 × 5 × 7 = 1.050"], 9.4)),
-    ),
-    k(
-      "Tantangan ketiga, dua puluh empat, tiga puluh, dan lima puluh empat: FPB enam, KPK seribu delapan puluh. Kita cek: seribu delapan puluh dibagi tiga puluh sama dengan tiga puluh enam, habis dibagi.",
-      bersih(0),
-      tambah(0, judul("Tantangan 3: 24, 30, 54")),
-      tambah("Tantangan", teks("f1", 150, 44, "24 = 2 × 2 × 2 × 3", 10, W.biru), teks("f2", 150, 60, "30 = 2 × 3 × 5", 10, W.biru), teks("f3", 150, 76, "54 = 2 × 3 × 3 × 3", 10, W.biru)),
-      tambah("FPB", teks("f4", 150, 98, "FPB = 2 × 3 = 6", 10, W.merah)),
-      tambah("KPK", teks("f5", 150, 118, "KPK = 2 × 2 × 2 × 3 × 3 × 3 × 5 = 1.080", 10, W.hijau)),
-      tambah("Kita", teks("f6", 150, 150, "1.080 ÷ 30 = 36", 12, W.merah), teks("f7", 150, 170, "habis dibagi, jadi KPK-nya cocok", 9.6, W.coklat)),
+      tambah(0, judul("Pohon Faktor 18"), ...lantai("lt", 156)),
+      tambah(1, ...tokoh("ci", 40, 184, "Citra"), ...P18.akar),
+      tambah(3, P18.ta, P18.tb, ...P18.a, ...P18.b),
+      tambah(5, P18.tc, P18.td, ...P18.c, ...P18.d),
+      tambah(7, teks("rm", 150, 154, "18 = 2", 12, W.merahTua)),
+      ubah(9, { id: "rm", isi: "18 = 2 × 3" }),
+      ubah(11, { id: "rm", isi: "18 = 2 × 3 × 3" }),
     ),
   ],
 };

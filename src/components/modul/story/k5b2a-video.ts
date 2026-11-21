@@ -1,46 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_ATURAN, ADEGAN_LANJUT } from "./k5b2a-materi-2";
-import { ADEGAN_RENANG } from "./k5b2a-materi-1";
-import { ADEGAN_ENAM_DELAPAN, ADEGAN_PENUTUP, ADEGAN_SEMBILAN, ADEGAN_TABEL, ADEGAN_TUJUH } from "./k5b2a-materi-3";
-import { ADEGAN_LUAR_LOMPAT, ADEGAN_LUAR_LOMPAT_TERAPAN, ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_SERATUS, ADEGAN_LUAR_SERATUS_TERAPAN } from "./k5b2a-luar-1";
-import { ADEGAN_LUAR_CEK, ADEGAN_LUAR_CEK_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_SATUAN, ADEGAN_LUAR_SATUAN_TERAPAN } from "./k5b2a-luar-2";
+import { ADEGAN_KALI, ADEGAN_KELIPATAN, ADEGAN_PASAR } from "./k5b2a-materi-1";
+import { ADEGAN_PERIKSA, ADEGAN_TABEL, ADEGAN_TEPUK } from "./k5b2a-materi-2";
+import { ADEGAN_ENAM, ADEGAN_PENUTUP, ADEGAN_SERATUS } from "./k5b2a-materi-3";
+import { ADEGAN_LUAR_LOMPAT, ADEGAN_LUAR_LOMPAT_TERAPAN, ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_TABEL, ADEGAN_LUAR_TABEL_TERAPAN } from "./k5b2a-luar-1";
+import { ADEGAN_LUAR_KALI, ADEGAN_LUAR_KALI_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k5b2a-luar-2";
 
-/** Kelas 5 Bab 2 Sub-Bab A (kelipatan), termasuk pembuka bab: video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 5 Bab 2 Sub-Bab A (kelipatan), awal cerita Pasar Kuliner Malam.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Lonceng Bu Marni" (Bima, Citra, Fajar, Pak Arif, Bu Marni, Pak Tarno).
+ * Video kedua: tiga metode global (Skip Counting, Grid Marking, Times Check), terpisah.
+ */
+export const JUDUL_K5B2A = "Lonceng Bu Marni";
+
 export const VIDEO_MATERI_K5B2A: VideoStory = {
   id: "k5b2a-materi",
-  judul: "Kelipatan",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K5B2A,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "kelipatan sebuah bilangan", daftar: ["Arti kelipatan", "Menulis deret kelipatan", "Pola warna di tabel seratus"] }),
-    ADEGAN_RENANG,
-    ADEGAN_ATURAN,
-    ADEGAN_LANJUT,
+    adeganSapaan({ jenis: "materi", topik: "kelipatan", daftar: ["Kelipatan", "Bilangan kali", "Tabel bilangan"] }),
+    ADEGAN_PASAR,
+    ADEGAN_KELIPATAN,
+    ADEGAN_KALI,
+    ADEGAN_TEPUK,
+    ADEGAN_PERIKSA,
     ADEGAN_TABEL,
-    ADEGAN_TUJUH,
-    ADEGAN_SEMBILAN,
-    ADEGAN_ENAM_DELAPAN,
+    ADEGAN_ENAM,
+    ADEGAN_SERATUS,
     ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K5B2A: VideoStory = {
   id: "k5b2a-luar",
-  judul: "Kelipatan: Metode dari Luar",
-  subjudul: "Empat metode luar",
+  judul: JUDUL_K5B2A,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "kelipatan sebuah bilangan" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "kelipatan", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_LOMPAT,
     ADEGAN_LUAR_LOMPAT_TERAPAN,
-    ADEGAN_LUAR_SERATUS,
-    ADEGAN_LUAR_SERATUS_TERAPAN,
-    ADEGAN_LUAR_CEK,
-    ADEGAN_LUAR_CEK_TERAPAN,
-    ADEGAN_LUAR_SATUAN,
-    ADEGAN_LUAR_SATUAN_TERAPAN,
+    ADEGAN_LUAR_TABEL,
+    ADEGAN_LUAR_TABEL_TERAPAN,
+    ADEGAN_LUAR_KALI,
+    ADEGAN_LUAR_KALI_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

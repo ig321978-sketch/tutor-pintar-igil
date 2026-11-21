@@ -1,247 +1,127 @@
 import type { AdeganStory } from "./logika-story";
-import { W, deretAngka, emo, idSel, judul, kartu, kelipatan, tabelAngka, teks, tulisKelipatan } from "./k5b2b-gambar";
-import { bersih, hapus, k, sorotkan, tambah, warnai } from "./k5b2b-bantu";
+import { E, JALUR, W, cincin, deret, emo, idKartu, judul, kartu, labelDeret, lantai, loncengJalur, panah, papan, penanda, sumbu, teks, tokoh } from "./k5b2b-gambar";
+import { DERET_RAPAT, X_DERET, Y_A, Y_B } from "./k5b2b-materi-1";
+import { bersih, hapus, k, sorotkan, tambah } from "./k5b2b-bantu";
 
-const dari1Sampai = (n: number) => Array.from({ length: n }, (_, i) => i + 1);
-const KELIPATAN_2_SD_50 = dari1Sampai(50).filter((n) => n % 2 === 0);
-const KELIPATAN_3_SD_50 = dari1Sampai(50).filter((n) => n % 3 === 0);
-const KELIPATAN_6_SD_50 = dari1Sampai(50).filter((n) => n % 6 === 0);
+/*
+ * Cerita orisinal IGIL "Dua Lonceng Pak Tarno" (Kelas 5 Bab 2 Sub-Bab B), Pasar Kuliner Malam.
+ * Naskah suara dari naskah/story-naskah-k5b2b.md. Bagian ini: salah langkah Fajar (empat kali enam), memeriksa daftar, dan KPK.
+ */
 
-/* ------------------------------ 4. Tabel bilangan 1 sampai 50 (Buku Siswa hlm. 39; Panduan Guru hlm. 54 dan 55) ------------------------------ */
-export const ADEGAN_TABEL: AdeganStory = {
-  id: "tabel-50",
-  judul: "Tabel bilangan: kelipatan 2 dan 3",
-  sumber: "Materi: tabel kelipatan 2 dan 3",
-  latar: "#FFF7ED",
-  kutipan: [
-    "Salin tabel berikut di buku tugasmu, kemudian temukan lagi",
-    "bilangan kelipatan 2 dan 3 pada tabel tersebut.",
-    "Warnai bilangan",
-    "yang merupakan kelipatan 2 dan 3, ya.",
-    "mewarnai bilangan kelipatan 2 dan 3 hasil dari menghafal saat bermain tepuk",
-    "ada juga yang mungkin menandai kelipatan 2 terlebih dahulu,",
-    "Terima dan apresiasi semua pendapat peserta didik.",
-    "arahkan mereka agar tidak terjadi miskonsepsi.",
-  ],
+/* ------------------------------ 4. Salah langkah Fajar ------------------------------ */
+const SUARA_S1 = "Gampang, kata Fajar, empat kali enam sama dengan dua puluh empat, jadi dua puluh empat menitnya.";
+const SUARA_S2 = "Kalau aku salah, aku makan bakso dengan sambal satu sendok penuh, katanya sambil tersenyum lebar.";
+const SUARA_S3 = "Pak Tarno langsung mengambil sendok besar dari gerobaknya, dan semua orang menahan tawa.";
+
+export const ADEGAN_SALAH_KALI: AdeganStory = {
+  id: "salah-kali",
+  judul: "Fajar menjawab dengan yakin",
+  sumber: "Materi: salah langkah hasil kali bukan KPK",
+  latar: "#FEF2F2",
   ketukan: [
     k(
-      "Setelah bermain, salin tabel bilangan satu sampai lima puluh di kertasmu. Lalu temukan lagi bilangan kelipatan dua dan tiga pada tabel itu.",
-      tambah(0, judul("Tabel bilangan 1 sampai 50")),
-      tambah("tabel", ...tabelAngka("tb", 20, 32, 26, 24, 10, 1, 50)),
-      tambah("kelipatan", teks("pn", 150, 176, "temukan kelipatan 2 dan 3", 10, W.merah)),
+      SUARA_S1,
+      tambah(0, judul("Fajar Salah Menghitung"), ...lantai("lt", 150)),
+      tambah("Fajar", ...tokoh("fa", 60, 184, "Fajar")),
+      tambah("empat", teks("kl", 150, 66, "4 x 6", 18, W.biru, { z: 3 })),
+      tambah("sama", teks("hs", 150, 92, "= 24", 18, W.merah, { z: 3 })),
+      tambah("menitnya", ...kartu("mt", 100, 106, 100, 26, W.merahMuda, ["24 menit"], 12)),
     ),
     k(
-      "Kelipatan dua kita warnai hijau: dua, empat, enam, dan seterusnya sampai lima puluh. Ada dua puluh lima bilangan.",
-      hapus(0, "pn"),
-      warnai("hijau:", W.hijauPita, ...idSel("tb", 1, KELIPATAN_2_SD_50)),
-      tambah("hijau:", teks("l2", 150, 176, "kelipatan 2: hijau", 10, W.hijau)),
-      tambah("Ada", teks("c2", 150, 192, "ada 25 bilangan", 9.4, W.hitam)),
+      SUARA_S2,
+      hapus(0, "kl", "hs", ...idKartu("mt", 1)),
+      tambah("bakso", emo("bk", 118, 70, E.bakso, 30)),
+      tambah("sambal", emo("sm", 160, 70, E.sambal, 30), teks("smt", 160, 98, "sambal", 9, W.merah, { z: 3 })),
+      tambah("satu", emo("sd", 202, 70, E.sendok, 30), teks("sdt", 202, 98, "1 sendok", 9, W.biru, { z: 3 })),
+      tambah("tersenyum", emo("sy", 96, 166, E.senyum, 20)),
     ),
     k(
-      "Kelipatan tiga kita warnai jingga: tiga, enam, sembilan, dan seterusnya sampai empat puluh delapan. Ada enam belas bilangan.",
-      warnai("jingga:", W.jingga, ...idSel("tb", 1, KELIPATAN_3_SD_50)),
-      hapus(0, "l2", "c2"),
-      tambah("jingga:", teks("l3", 150, 176, "kelipatan 3: jingga", 10, W.coklat)),
-      tambah("Ada", teks("c3", 150, 192, "ada 16 bilangan", 9.4, W.hitam)),
-    ),
-    k(
-      "Bilangan yang terwarnai dua kali adalah kelipatan dua sekaligus kelipatan tiga: enam, dua belas, delapan belas, dua puluh empat, tiga puluh, tiga puluh enam, empat puluh dua, dan empat puluh delapan. Ada delapan bilangan.",
-      hapus(0, "l3", "c3"),
-      warnai("enam,", W.merahPita, ...idSel("tb", 1, KELIPATAN_6_SD_50)),
-      sorotkan("enam,", ...idSel("tb", 1, KELIPATAN_6_SD_50)),
-      tambah("Ada@2", teks("c6", 150, 176, "6, 12, 18, 24, 30, 36, 42, 48", 10.4, W.merah), teks("c7", 150, 192, "ada 8 bilangan", 9.4, W.hitam)),
-    ),
-    k(
-      "Ada tiga cara untuk menemukannya. Pertama, langsung mewarnai berdasarkan hafalan saat bermain. Kedua, menandai kelipatan dua dahulu, lalu memilih yang kelipatan tiga. Ketiga, menandai dua dan tiga sekaligus, lalu mencari yang ditandai dua kali.",
-      bersih(0),
-      tambah(0, judul("Tiga cara menemukannya")),
-      tambah("Pertama,", ...kartu("c1", 20, 38, 260, 36, W.hijauMuda, ["1 langsung mewarnai dari hafalan", "saat bermain tepuk bilangan"], 8.8)),
-      tambah("Kedua,", ...kartu("c2", 20, 84, 260, 36, W.langit, ["2 tandai kelipatan 2 dahulu,", "lalu pilih yang kelipatan 3"], 8.8)),
-      tambah("Ketiga,", ...kartu("c3", 20, 130, 260, 36, W.krem, ["3 tandai 2 dan 3 sekaligus,", "cari yang ditandai dua kali"], 8.8)),
-    ),
-    k(
-      "Semua pendapat kalian kami hargai. Kalau ada yang masih keliru, guru akan membantu meluruskan supaya tidak salah konsep.",
-      bersih(0),
-      tambah(0, judul("Terima semua pendapat")),
-      tambah("hargai.", emo("ap", 150, 92, "🌟", 44)),
-      tambah("keliru,", ...kartu("kl", 40, 126, 220, 42, W.pink, ["yang keliru diarahkan", "agar tidak salah konsep"], 9.4)),
+      SUARA_S3,
+      hapus(0, "bk", "sm", "smt", "sd", "sdt"),
+      tambah("Tarno", ...tokoh("pt", 262, 184, "Pak Tarno")),
+      tambah("sendok", emo("sb", 214, 118, E.sendok, 44)),
+      tambah("menahan", ...tokoh("bi", 118, 184, "Bima"), ...tokoh("ci", 176, 184, "Citra")),
+      tambah("tawa", emo("tw1", 118, 140, E.tertawa, 18), emo("tw2", 176, 140, E.tertawa, 18)),
     ),
   ],
 };
 
-/* ------------------------------ 5. Kelipatan persekutuan dan KPK (Buku Siswa hlm. 39 dan 40; Panduan Guru hlm. 55) ------------------------------ */
-export const ADEGAN_DEFINISI: AdeganStory = {
-  id: "definisi-kpk",
-  judul: "Kelipatan persekutuan dan KPK",
-  sumber: "Materi: kelipatan persekutuan dan KPK",
+/* ------------------------------ 5. Memeriksa daftar ------------------------------ */
+const SUARA_C1 = "Bima menunjuk dua belas: bilangan itu muncul di kedua daftar dan lebih kecil dari dua puluh empat.";
+const SUARA_C2 = "Dua puluh empat memang kelipatan persekutuan, tetapi bukan yang terkecil.";
+const SUARA_C3 = "Fajar menelan sambalnya dengan wajah merah, lalu minum es teh tiga gelas.";
+
+const CA = deret("ca", X_DERET, Y_A, [4, 8, 12, 16, 20, 24], W.jingga, DERET_RAPAT);
+const CB = deret("cb", X_DERET, Y_B, [6, 12, 18, 24, 30], W.tosca, DERET_RAPAT);
+const ring = (id: string, y: number, i: number) => cincin(id, X_DERET, y, i, DERET_RAPAT);
+
+export const ADEGAN_PERIKSA: AdeganStory = {
+  id: "periksa",
+  judul: "Bima memeriksa daftar",
+  sumber: "Materi: yang terkecil di kedua daftar",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_C1,
+      tambah(0, judul("Bima Memeriksa Daftar"), ...lantai("lt", 150), papan("dp", 10, 28, 280, 114), ...tokoh("bi", 36, 184, "Bima")),
+      tambah(0, labelDeret("la", X_DERET, Y_A, "Kelipatan 4"), labelDeret("lb", X_DERET, Y_B, "Kelipatan 6"), ...CA, ...CB),
+      tambah("belas", ring("r12a", Y_A, 2), ring("r12b", Y_B, 1)),
+      tambah("kecil", teks("bd", 250, 40, "12 < 24", 12, W.merah, { z: 3 })),
+      tambah("puluh", ring("r24a", Y_A, 5), ring("r24b", Y_B, 3)),
+    ),
+    k(
+      SUARA_C2,
+      sorotkan("persekutuan", "r24a", "r24b"),
+      tambah("bukan", emo("x24", 183, 46, E.salah, 14)),
+      tambah("terkecil", teks("tk", 238, 112, "bukan yang terkecil", 9, W.merah, { z: 3 })),
+    ),
+    k(
+      SUARA_C3,
+      bersih(0),
+      tambah(0, judul("Wajah Merah Fajar"), ...lantai("lt", 150), ...tokoh("fa", 60, 184, "Fajar")),
+      tambah("menelan", emo("sm", 100, 70, E.sambal, 30)),
+      tambah("wajah", teks("pd", 60, 128, "pedas!", 11, W.merah, { z: 3 })),
+      tambah("minum", emo("g1", 150, 100, E.esteh, 26)),
+      tambah("teh", emo("g2", 190, 100, E.esteh, 26)),
+      tambah("tiga", emo("g3", 230, 100, E.esteh, 26), teks("g3t", 190, 70, "3 gelas", 11, W.biru, { z: 3 })),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. KPK ------------------------------ */
+const SUARA_K1 = "Dari semua kelipatan persekutuan, yang paling kecil disebut kelipatan persekutuan terkecil, atau KPK.";
+const SUARA_K2 = "KPK dari empat dan enam adalah dua belas.";
+const SUARA_K3 = "Jadi kedua lonceng berbunyi bersama pada menit kedua belas, lalu dua puluh empat, lalu tiga puluh enam.";
+
+export const ADEGAN_KPK: AdeganStory = {
+  id: "kpk",
+  judul: "KPK adalah yang terkecil",
+  sumber: "Materi: KPK kelipatan persekutuan terkecil",
   latar: "#EFF6FF",
-  kutipan: [
-    "Pada tabel sebelumnya, kalian menemukan bilangan-bilangan",
-    "yang merupakan kelipatan 2 dan juga kelipatan 3.",
-    "Dalam Matematika, bilangan kelipatan yang sama itu disebut",
-    "kelipatan persekutuan.",
-    "Dari semua bilangan kelipatan persekutuan, bilangan",
-    "kelipatan yang paling kecil disebut kelipatan persekutuan terkecil",
-    "Berapa kelipatan persekutuan terkecil dari 2 dan 3?",
-    "Penguatan konsep dituliskan di papan tulis.",
-    "Bilangan 2 dan 3 memiliki kelipatan yang sama, yaitu 6, 12, 18,",
-    "KPK dari 2 dan 3 adalah 6.",
-  ],
   ketukan: [
     k(
-      "Pada tabel tadi kita menemukan bilangan yang merupakan kelipatan dua dan juga kelipatan tiga. Contohnya enam, dua belas, dan delapan belas.",
-      tambah(0, judul("Kelipatan 2 dan kelipatan 3")),
-      tambah("kelipatan", teks("ka", 150, 54, tulisKelipatan(2, 10), 8.6, W.hijau), teks("kb", 150, 78, tulisKelipatan(3, 7), 8.6, W.coklat)),
-      tambah("Contohnya", teks("kc", 150, 120, "6, 12, 18, ...", 16, W.merah)),
+      SUARA_K1,
+      tambah(0, judul("KPK, yang Terkecil"), ...lantai("lt", 150), papan("dp", 10, 28, 280, 114)),
+      tambah("persekutuan", teks("kpl", 150, 48, "kelipatan persekutuan", 10, W.hijauTua, { z: 3 }), ...kartu("c12", 40, 60, 60, 36, W.hijauMuda, ["12"], 16), ...kartu("c24", 120, 60, 60, 36, W.hijauMuda, ["24"], 16), ...kartu("c36", 200, 60, 60, 36, W.hijauMuda, ["36"], 16)),
+      sorotkan("kecil", "c12-k"),
+      tambah("KPK", teks("kpk", 70, 116, "KPK", 16, W.merah, { z: 3 })),
     ),
     k(
-      "Dalam matematika, bilangan kelipatan yang sama itu disebut kelipatan persekutuan.",
-      tambah("disebut", ...kartu("kp", 40, 138, 220, 44, W.krem, ["kelipatan yang sama", "disebut kelipatan persekutuan"], 9.6)),
-    ),
-    k(
-      "Jadi enam, dua belas, dan delapan belas adalah kelipatan persekutuan dari dua dan tiga. Perhatikan papan tulis, bilangan yang sama kita beri tanda.",
+      SUARA_K2,
       bersih(0),
-      tambah(0, judul("Papan tulis: yang sama ditandai")),
-      tambah("Jadi", teks("pa", 150, 54, "kelipatan 2: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, ...", 8, W.hijau), teks("pb", 150, 78, "kelipatan 3: 3, 6, 9, 12, 15, 18, 21, ...", 8, W.coklat)),
-      tambah("tanda.", teks("pc", 150, 118, "yang sama: 6, 12, 18, ...", 12, W.merah), ...kartu("pd", 40, 134, 220, 40, W.hijauMuda, ["6, 12, 18 = kelipatan persekutuan", "dari 2 dan 3"], 9.4)),
+      tambah(0, judul("KPK Empat dan Enam"), ...lantai("lt", 150), papan("dp", 10, 28, 280, 114)),
+      tambah("empat", ...kartu("k4", 50, 44, 60, 30, W.jingga, ["4"], 16)),
+      tambah("enam", ...kartu("k6", 190, 44, 60, 30, W.tosca, ["6"], 16)),
+      tambah("adalah", panah("a4", 80, 76, 50, 30, W.merah, 2.2, { z: 4 }), panah("a6", 220, 76, -50, 30, W.merah, 2.2, { z: 4 }), teks("kl", 50, 124, "KPK", 14, W.merah, { z: 3 })),
+      tambah("belas", ...kartu("k12", 110, 108, 80, 30, W.hijauMuda, ["12"], 18)),
     ),
     k(
-      "Dari semua kelipatan persekutuan, kelipatan yang paling kecil disebut kelipatan persekutuan terkecil, disingkat KPK.",
+      SUARA_K3,
       bersih(0),
-      tambah(0, judul("Kelipatan persekutuan terkecil")),
-      tambah("semua", teks("sm", 150, 64, "6, 12, 18, 24, ...", 15, W.hitam)),
-      tambah("paling", teks("sm2", 150, 98, "yang paling kecil: 6", 12, W.merah)),
-      tambah("KPK.", ...kartu("kk", 60, 122, 180, 44, W.langit, ["KPK", "kelipatan persekutuan terkecil"], 9.6)),
-    ),
-    k(
-      "Berapa kelipatan persekutuan terkecil dari dua dan tiga? Kelipatan persekutuannya enam, dua belas, delapan belas. Yang paling kecil adalah enam, jadi KPK dari dua dan tiga adalah enam.",
-      bersih(0),
-      tambah(0, judul("KPK dari 2 dan 3")),
-      tambah("Berapa", teks("q1", 150, 60, "kelipatan 2: 2, 4, 6, 8, ...", 10, W.hijau), teks("q2", 150, 82, "kelipatan 3: 3, 6, 9, ...", 10, W.coklat)),
-      tambah("paling", teks("q3", 150, 118, "yang sama pertama: 6", 12, W.merah)),
-      tambah("KPK", teks("q4", 150, 160, "KPK 2 dan 3 = 6", 20, W.biru)),
-    ),
-  ],
-};
-
-/* ------------------------------ 6. Cara menentukan KPK: 4 dan 5 (Buku Siswa hlm. 40) ------------------------------ */
-const K4 = kelipatan(4, 11);
-const K5 = kelipatan(5, 9);
-export const ADEGAN_CARA_KPK: AdeganStory = {
-  id: "cara-kpk-4-5",
-  judul: "Cara menentukan KPK dari 4 dan 5",
-  sumber: "Materi: cara mencari KPK 4 dan 5",
-  latar: "#FEFCE8",
-  kutipan: [
-    "Bagaimana cara menentukan KPK dari dua bilangan atau lebih?",
-    "Sebagai contoh kita akan mencari KPK dari 4 dan 5.",
-    "Tuliskan bilangan kelipatan 4 dan kelipatan 5.",
-    "Bandingkan bilangan-bilangan kelipatan 4 dan kelipatan 5",
-    "kemudian tandai bilangan yang sama.",
-    "Bilangan-bilangan yang sama tersebut adalah bilangan",
-    "persekutuan dari 4 dan 5. KPK adalah bilangan persekutuan",
-    "yang paling kecil sehingga bilangan persekutuan terkecil (KPK)",
-    "dari 4 dan 5 adalah 20.",
-  ],
-  ketukan: [
-    k(
-      "Bagaimana cara menentukan KPK dari dua bilangan atau lebih? Sebagai contoh, kita akan mencari KPK dari empat dan lima.",
-      tambah(0, judul("KPK dari 4 dan 5")),
-      tambah("dua", teks("q1", 150, 70, "KPK dari 4 dan 5 = ?", 20, W.merah)),
-      tambah("empat", teks("q2", 80, 150, "4", 34, W.hijau), teks("q3", 220, 150, "5", 34, W.coklat)),
-    ),
-    k(
-      "Langkah pertama, tuliskan bilangan kelipatan empat dan kelipatan lima.",
-      bersih(0),
-      tambah(0, judul("Langkah 1: tulis kelipatan")),
-      tambah("empat", teks("lk4", 150, 44, "kelipatan 4", 9, W.hijau), ...deretAngka("ka", 18, 50, 24, 22, K4)),
-      tambah("lima.", teks("lk5", 150, 100, "kelipatan 5", 9, W.coklat), ...deretAngka("kb", 18, 106, 24, 22, K5)),
-    ),
-    k(
-      "Langkah kedua, bandingkan kedua daftar itu, lalu tandai bilangan yang sama. Ternyata dua puluh dan empat puluh ada di kedua daftar.",
-      tambah(0, judul("Langkah 2: tandai yang sama")),
-      warnai("tandai", W.emas, "ka-4", "ka-9", "kb-3", "kb-7"),
-      tambah("Ternyata", teks("sm", 150, 156, "yang sama: 20 dan 40", 12, W.merah)),
-    ),
-    k(
-      "Bilangan yang sama itu adalah bilangan persekutuan dari empat dan lima. KPK adalah bilangan persekutuan yang paling kecil.",
-      sorotkan("paling", "ka-4", "kb-3"),
-      warnai("paling", W.merahPita, "ka-4", "kb-3"),
-      tambah("paling", teks("sm2", 150, 178, "paling kecil: 20", 11, W.biru)),
-    ),
-    k(
-      "Jadi kelipatan persekutuan terkecil dari empat dan lima adalah dua puluh.",
-      hapus(0, "sm", "sm2"),
-      tambah("Jadi", teks("hs", 150, 160, "KPK 4 dan 5 = 20", 20, W.biru)),
-    ),
-  ],
-};
-
-/* ------------------------------ 7. Eksplorasi 2.2B: Latihan Renang Nisa dan Yohana (Buku Siswa hlm. 41; Panduan Guru hlm. 56) ------------------------------ */
-export const ADEGAN_RENANG: AdeganStory = {
-  id: "renang-nisa-yohana",
-  judul: "Latihan Renang Nisa dan Yohana",
-  sumber: "Materi: latihan renang Nisa dan Yohana",
-  latar: "#F0F9FF",
-  kutipan: [
-    "Eksplorasi 2.2B",
-    "Latihan Renang",
-    "Nisa dan Yohana latihan renang di tempat",
-    "yang sama. Nisa berlatih setiap 3 hari",
-    "sekali dan Yohana berlatih setiap 4 hari",
-    "Hari ini, tanggal 3 Agustus, Nisa dan",
-    "Yohana berlatih renang bersama-sama.",
-    "Kapan mereka akan berlatih renang bersama",
-    "Yohana menggunakan cara berikut untuk mencari tahu kapan",
-    "waktu paling dekat mereka akan berlatih bersama lagi.",
-    "Jadi, waktu paling dekat bagi Yohana dan Nisa untuk berlatih",
-    "3 Agustus + 12 hari, yaitu tanggal 15 Agustus.",
-    "Sebelum memulai kegiatan ini, sampaikan kepada peserta didik tentang",
-    "manfaat belajar KPK, contohnya menyelesaikan masalah terkait jadwal latihan",
-    "Menyiapkan fotokopi atau print out kalender Agustus dan September 2022.",
-  ],
-  ketukan: [
-    k(
-      "Latihan Renang. Nisa dan Yohana latihan renang di tempat yang sama. Nisa berlatih setiap tiga hari sekali, dan Yohana setiap empat hari sekali.",
-      tambah(0, judul("Latihan Renang")),
-      tambah("Nisa", emo("n1", 70, 78, "🏊", 36), ...kartu("n2", 20, 96, 100, 40, W.hijauMuda, ["Nisa", "tiap 3 hari"], 9.6)),
-      tambah("Yohana", emo("y1", 230, 78, "🏊", 36), ...kartu("y2", 180, 96, 100, 40, W.langit, ["Yohana", "tiap 4 hari"], 9.6)),
-    ),
-    k(
-      "Hari ini, tanggal tiga Agustus, Nisa dan Yohana berlatih renang bersama. Kapan mereka akan berlatih bersama kembali?",
-      bersih(0),
-      tambah(0, judul("Hari ini: 3 Agustus")),
-      tambah("tanggal", ...kartu("hr", 60, 44, 180, 44, W.krem, ["3 Agustus", "berlatih bersama"], 10.4)),
-      tambah("Kapan", teks("kp", 150, 132, "bersama lagi kapan?", 15, W.merah)),
-      tambah("kembali?", emo("kq", 150, 178, "❓", 28)),
-    ),
-    k(
-      "Yohana memakai cara berikut untuk mencari tahu kapan waktu paling dekat mereka berlatih bersama lagi. Ia menulis kelipatan tiga dan kelipatan empat.",
-      bersih(0),
-      tambah(0, judul("Cara Yohana: tulis kelipatan")),
-      tambah("kelipatan", teks("y3", 150, 62, tulisKelipatan(3, 9), 8, W.coklat)),
-      tambah("empat.", teks("y4", 150, 92, tulisKelipatan(4, 9), 8, W.hijau)),
-    ),
-    k(
-      "Bilangan yang sama pertama kali adalah dua belas. Artinya, setelah dua belas hari, Nisa dan Yohana bertemu lagi di tempat latihan.",
-      tambah("dua@2", teks("yb", 150, 130, "yang sama pertama: 12", 13, W.merah)),
-      tambah("bertemu", emo("yc", 150, 176, "🤝", 28)),
-    ),
-    k(
-      "Jadi waktu paling dekat bagi Yohana dan Nisa untuk berlatih bersama lagi adalah tanggal tiga Agustus ditambah dua belas hari, yaitu tanggal lima belas Agustus.",
-      bersih(0),
-      tambah(0, judul("Bersama lagi: 15 Agustus")),
-      tambah("tanggal", teks("h1", 150, 62, "3 Agustus + 12 hari", 14, W.hitam)),
-      tambah("tiga", teks("h2", 150, 92, "3 + 12 = 15", 17, W.biru)),
-      tambah("lima", ...kartu("h3", 60, 112, 180, 44, W.hijauMuda, ["15 Agustus", "berlatih bersama lagi"], 10.4)),
-    ),
-    k(
-      "Sebelum lanjut, ingat manfaat belajar KPK: menyelesaikan masalah jadwal. Lalu kerjakan bersama kelompokmu, dengan kalender Agustus dan September di tangan.",
-      bersih(0),
-      tambah(0, judul("Sebelum lanjut")),
-      tambah("manfaat", ...kartu("g1", 24, 40, 252, 34, W.krem, ["ingat manfaat belajar KPK"], 9.4)),
-      tambah("kelompok", ...kartu("g2", 24, 84, 252, 34, W.langit, ["kerja bersama kelompok"], 9.4)),
-      tambah("kalender", ...kartu("g3", 24, 128, 252, 40, W.hijauMuda, ["kalender Agustus dan September", "satu set tiap kelompok"], 9.4)),
+      tambah(0, judul("Bersama Tiap Dua Belas"), ...lantai("lt", 150), papan("dp", 10, 28, 280, 114), sumbu("jl", JALUR), ...penanda("t0", JALUR, 0)),
+      tambah("belas", loncengJalur("b12", JALUR, 12), ...penanda("t12", JALUR, 12, W.merah)),
+      tambah("empat", loncengJalur("b24", JALUR, 24), ...penanda("t24", JALUR, 24, W.merah)),
+      tambah("enam", loncengJalur("b36", JALUR, 36), ...penanda("t36", JALUR, 36, W.merah)),
     ),
   ],
 };

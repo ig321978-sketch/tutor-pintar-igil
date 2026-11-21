@@ -1,273 +1,127 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { W, emo, kartu, kelipatan, kisiAngka, panah, pusatSel, teks, judul } from "./k5b2a-gambar";
-import { bersih, hapus, k, sebar, sorotkan, tambah, warnaiSel } from "./k5b2a-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, deret, emo, gerobak, idDeret, judul, panah, tanah, teks, tokoh } from "./k5b2a-gambar";
+import { bersih, hapus, idx, k, tambah } from "./k5b2a-bantu";
 
-/** Tabel 1 sampai 50 (Buku Siswa hlm. 35): 10 kolom, 5 baris. */
-export const T50 = { x: 20, y: 38, cw: 26, ch: 22, kolom: 10, baris: 5 };
-/** Tabel 1 sampai 100 (Buku Siswa hlm. 36 dan 37): 10 kolom, 10 baris. */
-export const T100 = { x: 20, y: 30, cw: 22, ch: 16, kolom: 10, baris: 10 };
-const kisi50 = (id: string) => kisiAngka(id, T50.x, T50.y, T50.cw, T50.ch, T50.kolom, T50.baris, [], W.karang, 8.6);
-const kisi100 = (id: string) => kisiAngka(id, T100.x, T100.y, T100.cw, T100.ch, T100.kolom, T100.baris, [], W.karang, 7.6);
-/** Panah pendek dari pusat sel a ke pusat sel b pada tabel 100 (dipendekkan agar tidak menutup angka). */
-const lompatSel = (id: string, a: number, b: number, warna: string = W.merah): Obj => {
-  const [ax, ay] = pusatSel(T100.x, T100.y, T100.cw, T100.ch, T100.kolom, a);
-  const [bx, by] = pusatSel(T100.x, T100.y, T100.cw, T100.ch, T100.kolom, b);
-  const sx = ax + (bx - ax) * 0.2;
-  const sy = ay + (by - ay) * 0.2;
-  const ex = ax + (bx - ax) * 0.8;
-  const ey = ay + (by - ay) * 0.8;
-  return panah(id, Number(sx.toFixed(2)), Number(sy.toFixed(2)), Number((ex - sx).toFixed(2)), Number((ey - sy).toFixed(2)), warna, 1.6);
-};
-/* ------------------------------ 8. Tabel 1 sampai 50 dan arti kelipatan 3 (Buku Siswa hlm. 35; Panduan Guru hlm. 50) ------------------------------ */
-const SUARA_K2 = "Warnai tiga, enam, sembilan, dua belas, lima belas, dan seterusnya sampai empat puluh delapan. Ada enam belas bilangan kelipatan tiga di tabel ini.";
-const POS_K2 = [1, 2, 3, 5, 7, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 13];
+/*
+ * Cerita orisinal IGIL "Lonceng Bu Marni" (Kelas 5 Bab 2 Sub-Bab A), awal cerita Pasar Kuliner Malam.
+ * Naskah suara dari naskah/story-naskah-k5b2a.md. Bagian ini: kelipatan enam (tambah enam terus), kelipatan tujuh, delapan, sembilan, kelipatan sembilan dan tujuh sampai seratus,
+ * dan jembatan ke Sub-Bab B (lonceng enam menit gerobak bakso Pak Tarno).
+ */
 
-export const ADEGAN_TABEL: AdeganStory = {
-  id: "tabel-tiga",
-  judul: "Tabel 1 sampai 50 dan arti bilangan kelipatan 3",
-  sumber: "Materi: tabel 1 sampai 50 dan kelipatan 3",
-  latar: "#FFF7ED",
-  kutipan: [
-    "Salin tabel berikut di buku tugasmu, lalu warnai semua bilangan kelipatan 3 di tabel tersebut.",
-    "Bilangan kelipatan 3 adalah bilangan bulat yang dikalikan dengan 3.",
-    "Contohnya: 1 x 3, 2 x 3, 3 x 3, 4 x 3, dan seterusnya.",
-    "0 yang diperoleh dari 0 x 3 bukan merupakan bilangan kelipatan 3.",
-    "Selanjutnya, ajak peserta didik untuk menemukan bilangan kelipatan 3 pada tabel yang disediakan di buku siswa.",
-    "Minta peserta didik untuk menyalin tabel tersebut, kemudian menandai bilangan-bilangan yang merupakan bilangan kelipatan 3.",
-    "Jika masih tersedia waktu, kegiatan dapat dilanjutkan untuk mengerjakan soal pada bagian Ayo Berlatih.",
-  ],
-  ketukan: [
-    k(
-      "Setelah bermain, kita salin tabel satu sampai lima puluh di kertas tugas, lalu warnai semua bilangan kelipatan tiga.",
-      tambah(0, judul("Tabel 1 sampai 50")),
-      tambah("salin", kisi50("tb")),
-      tambah("warnai", teks("lb", 150, 172, "warnai kelipatan 3", 10, W.merah)),
-    ),
-    k(
-      SUARA_K2,
-      hapus(0, "lb"),
-      ...warnaiSel("tb", W.karang, kelipatan(3, 50), POS_K2),
-      tambah(15, teks("jm", 150, 172, "ada 16 bilangan kelipatan 3", 10, W.merah)),
-    ),
-    k(
-      "Bilangan kelipatan tiga adalah bilangan bulat yang dikalikan dengan tiga. Contohnya satu kali tiga, dua kali tiga, tiga kali tiga, empat kali tiga, dan seterusnya.",
-      bersih(0),
-      tambah(0, judul("Kelipatan 3: bilangan bulat × 3")),
-      tambah(5, ...kartu("rl", 20, 136, 260, 34, W.emas, ["kelipatan 3 = bilangan bulat × 3"], 10)),
-      tambah(11, ...kartu("e1", 20, 36, 125, 34, W.krem, ["1 × 3 = 3"], 10.4)),
-      tambah(14, ...kartu("e2", 155, 36, 125, 34, W.krem, ["2 × 3 = 6"], 10.4)),
-      tambah(17, ...kartu("e3", 20, 82, 125, 34, W.krem, ["3 × 3 = 9"], 10.4)),
-      tambah(20, ...kartu("e4", 155, 82, 125, 34, W.krem, ["4 × 3 = 12"], 10.4)),
-    ),
-    k(
-      "Ingat, nol yang diperoleh dari nol kali tiga bukan merupakan bilangan kelipatan tiga. Nol hanya titik mulai, jadi kelipatan tiga yang pertama adalah tiga.",
-      bersih(0),
-      tambah(0, judul("Nol bukan kelipatan")),
-      tambah("nol@2", ...kartu("nl", 60, 50, 180, 40, W.krem, ["0 × 3 = 0"], 12)),
-      tambah("bukan", emo("nx", 150, 124, "❌", 34), ...kartu("nb", 60, 140, 180, 34, W.merahMuda, ["0 bukan kelipatan 3"], 10)),
-    ),
-    k(
-      "Sekarang salin tabelnya dan tandai kelipatan tiga sendiri. Kalau masih ada waktu, kita lanjut berlatih.",
-      bersih(0),
-      tambah(0, judul("Lanjut berlatih")),
-      tambah("salin", emo("pn", 150, 84, "✏", 44)),
-      tambah("tabel", ...kartu("sl", 40, 104, 220, 32, W.hijauMuda, ["salin tabel, tandai kelipatan 3"], 9.6)),
-      tambah("berlatih.", ...kartu("br", 40, 146, 220, 32, W.emas, ["Ayo berlatih"], 11)),
-    ),
-  ],
-};
+/* ------------------------------ 7. Kelipatan enam dan cara yang sama ------------------------------ */
+const SUARA_E1 = "Bima menulis daftar lain: kelipatan enam, yaitu enam, dua belas, delapan belas, dua puluh empat.";
+const SUARA_E2 = "Tiap bilangan baru didapat dengan menambah enam pada bilangan sebelumnya.";
+const SUARA_E3 = "Cara ini berlaku untuk kelipatan tujuh, delapan, sembilan, dan bilangan apa saja.";
+const XE = [50, 106, 162, 218];
 
-/* ------------------------------ 9. Ayo Berlatih nomor 1: kelipatan 7 (Buku Siswa hlm. 35 dan 36; Panduan Guru hlm. 51) ------------------------------ */
-const SUARA_B2 = "Kelipatan tujuh: tujuh, empat belas, dua puluh satu, dua puluh delapan, tiga puluh lima, empat puluh dua, empat puluh sembilan.";
-const SUARA_B3 = "Lanjutkan: lima puluh enam, enam puluh tiga, tujuh puluh, tujuh puluh tujuh, delapan puluh empat, sembilan puluh satu, dan sembilan puluh delapan. Jadi ada empat belas kelipatan tujuh sampai seratus.";
-
-export const ADEGAN_TUJUH: AdeganStory = {
-  id: "berlatih-tujuh",
-  judul: "Latihan 1: kelipatan 7 pada tabel 1 sampai 100",
-  sumber: "Materi: Latihan 1, kelipatan 7",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Ayo Berlatih",
-    "1. Salin tabel berikut di buku tugas kalian, kemudian coba lingkarilah bilangan kelipatan yang sesuai dengan bilangan yang diminta.",
-    "Bilangan Kelipatan 7",
-    "Saat membahas bilangan kelipatan 7 dan 9 di kelas, arahkan peserta didik untuk memperhatikan tabel mereka.",
-    "Tanyakan kepada peserta didik tentang hal-hal apa saja yang dapat diamati dari tabel tersebut.",
-    "bilangan-bilangan kelipatan 7 seperti perpindahan kuda pada permainan catur, dll.",
-  ],
-  ketukan: [
-    k(
-      "Latihan satu: salin tabel satu sampai seratus, lalu lingkari bilangan kelipatan yang diminta, yaitu kelipatan tujuh dan kelipatan sembilan.",
-      tambah(0, judul("Latihan 1: tabel 1 sampai 100")),
-      tambah("salin", kisi100("g7")),
-      tambah("tujuh", teks("lb1", 270, 80, "kelipatan", 7.6, W.biru), teks("lb2", 270, 94, "7", 14, W.merah)),
-      tambah("sembilan.", teks("lb3", 270, 112, "dan", 7.6, W.biru), teks("lb4", 270, 128, "9", 14, W.merah)),
-    ),
-    k(
-      SUARA_B2,
-      hapus(0, "lb3", "lb4"),
-      ...warnaiSel("g7", W.karang, [7, 14, 21, 28, 35, 42, 49], [2, 4, 7, 10, 13, 16, 19]),
-    ),
-    k(
-      SUARA_B3,
-      ...warnaiSel("g7", W.karang, [56, 63, 70, 77, 84, 91, 98], [3, 6, 8, 11, 14, 17, 21]),
-      tambah(25, teks("jm", 270, 150, "14 bilangan", 7.6, W.merah)),
-    ),
-    k(
-      "Perhatikan, kelipatan tujuh seperti perpindahan kuda pada permainan catur: turun satu baris, geser tiga kotak ke kiri. Coba kalian cari sendiri pola lain di tabelnya.",
-      tambah("kuda", ...[[7, 14], [14, 21], [35, 42], [56, 63], [77, 84], [84, 91]].map(([a, b], i) => lompatSel(`ar${i}`, a, b))),
-      tambah("kuda", emo("kd", 270, 190, "🐴", 22)),
-      sorotkan("kuda", "g7-c7"),
-    ),
-  ],
-};
-
-/* ------------------------------ 10. Ayo Berlatih nomor 1: kelipatan 9 (Buku Siswa hlm. 37; Panduan Guru hlm. 51) ------------------------------ */
-const SUARA_S1 = "Sekarang kelipatan sembilan: sembilan, delapan belas, dua puluh tujuh, tiga puluh enam, empat puluh lima, lima puluh empat, enam puluh tiga, tujuh puluh dua, dan delapan puluh satu.";
-const SUARA_S2 =
-  "Warnanya berhenti di delapan puluh satu, padahal tabel belum selesai. Sembilan puluh dan sembilan puluh sembilan juga kelipatan sembilan, sebab sembilan kali sepuluh adalah sembilan puluh dan sembilan kali sebelas adalah sembilan puluh sembilan.";
-const SUARA_S4 = "Perhatikan: kelipatan sembilan membentuk formasi diagonal. Tiap turun satu baris, bilangannya bergeser satu kotak ke kiri. Pola ini membantu kita memeriksa jawaban dengan cepat.";
-export const KUNCI_9_BUKU = [9, 18, 27, 36, 45, 54, 63, 72, 81];
-
-export const ADEGAN_SEMBILAN: AdeganStory = {
-  id: "berlatih-sembilan",
-  judul: "Latihan 1: kelipatan 9 pada tabel 1 sampai 100",
-  sumber: "Materi: Latihan 1, kelipatan 9",
-  latar: "#FEF2F2",
-  kutipan: [
-    "Bilangan Kelipatan 9",
-    "Saat membahas bilangan kelipatan 7 dan 9 di kelas, arahkan peserta didik untuk memperhatikan tabel mereka.",
-    "bilangan-bilangan kelipatan 9 membentuk formasi diagonal,",
-    "Coba gali kemungkinan-kemungkinan dan kreativitas lain yang mungkin muncul dari peserta didik.",
-    "Beberapa hal atau kemungkinan yang ditemukan oleh peserta didik adalah",
-  ],
-  ketukan: [
-    k(
-      SUARA_S1,
-      tambah(0, judul("Bilangan Kelipatan 9")),
-      tambah(0, kisi100("g9")),
-      tambah(0, teks("lb1", 270, 80, "kelipatan", 7.6, W.biru), teks("lb2", 270, 94, "9", 14, W.merah)),
-      ...warnaiSel("g9", W.karang, KUNCI_9_BUKU, [3, 5, 8, 11, 14, 17, 20, 23, 27]),
-    ),
-    k(
-      SUARA_S2,
-      sorotkan("berhenti", "g9-c81"),
-      ...warnaiSel("g9", W.hijau, [90, 99], [11, 15]),
-      tambah(25, teks("q1", 272, 120, "9 × 10 = 90", 8, W.hijau)),
-      tambah(32, teks("q2", 272, 136, "9 × 11 = 99", 8, W.hijau)),
-    ),
-    k(
-      "Jadi ada sebelas bilangan kelipatan sembilan sampai seratus. Hitung ya, jangan sampai ada yang terlewat.",
-      tambah("sebelas", teks("jm", 272, 160, "11 bilangan", 8, W.merah)),
-      tambah("terlewat.", teks("ct", 272, 176, "jangan terlewat", 7.6, W.ungu)),
-    ),
-    k(
-      SUARA_S4,
-      ...[0, 1, 2, 3, 4, 5, 6, 7].map((i) => tambah(sebar(SUARA_S4, 8, 4)[i], lompatSel(`da${i}`, KUNCI_9_BUKU[i], KUNCI_9_BUKU[i + 1]))),
-    ),
-  ],
-};
-
-/* ------------------------------ 11. Ayo Berlatih nomor 2 dan 3: kelipatan 6 dan 8 (Buku Siswa hlm. 37; Panduan Guru hlm. 51) ------------------------------ */
-const SUARA_E1 = "Latihan dua: tuliskan paling sedikit lima bilangan kelipatan enam. Kita tulis enam, dua belas, delapan belas, dua puluh empat, dan tiga puluh. Setiap kelipatan didapat dengan menambah enam lagi.";
-const SUARA_E2 =
-  "Boleh juga dimulai dari dua belas: dua belas, delapan belas, dua puluh empat, tiga puluh, tiga puluh enam, empat puluh dua, empat puluh delapan. Ingat, tidak harus mulai dari bilangan yang paling kecil.";
-const SUARA_E3 = "Latihan tiga: paling sedikit lima bilangan kelipatan delapan. Kita tulis delapan, enam belas, dua puluh empat, tiga puluh dua, dan empat puluh. Sekarang kita menambah delapan terus-menerus.";
-const SUARA_E4 = "Boleh dilanjutkan: delapan, enam belas, dua puluh empat, tiga puluh dua, empat puluh, empat puluh delapan, lima puluh enam. Jadi cocok dengan hitungan kita.";
-const kotakAngka = (id: string, i: number, n: number, y: number, warna: string, w: number, jarak: number, x0: number): Obj[] => [
-  { id: `${id}-b${i}`, t: "kotak", x: x0 + i * jarak, y, w, h: 36, warna, garis: W.biru, rx: 7, tebal: 1.5 },
-  teks(`${id}-a${i}`, x0 + i * jarak + w / 2, y + 23, String(n), 12, W.biru),
-];
-const deret = (id: string, y: number, angka: number[], warna: string, posisi: number[], w = 48, jarak = 56, x0 = 14) => angka.map((n, i) => tambah(posisi[i], ...kotakAngka(id, i, n, y, warna, w, jarak, x0)));
-
-export const ADEGAN_ENAM_DELAPAN: AdeganStory = {
-  id: "berlatih-enam-delapan",
-  judul: "Latihan 2 dan 3: kelipatan 6 dan kelipatan 8",
-  sumber: "Materi: Latihan 2 dan 3, kelipatan 6 dan 8",
-  latar: "#ECFEFF",
-  kutipan: [
-    "2. Coba kalian tuliskan minimal 5 bilangan kelipatan 6.",
-    "3. Coba kalian tuliskan minimal 5 bilangan kelipatan 8.",
-    "Bilangan kelipatan 6",
-    "Bilangan kelipatan 8",
-    "Catatan: untuk nomor 2",
-    "bilangan yang paling",
-  ],
+export const ADEGAN_ENAM: AdeganStory = {
+  id: "enam",
+  judul: "Kelipatan Enam",
+  sumber: "Materi: kelipatan enam dan lainnya",
+  latar: W.malam,
   ketukan: [
     k(
       SUARA_E1,
-      tambah(0, judul("Latihan 2: kelipatan 6")),
-      ...deret("e6", 76, [6, 12, 18, 24, 30], W.pink, [11, 13, 15, 18, 21]),
-      tambah("tulis", teks("lb", 150, 150, "paling sedikit 5 bilangan", 10, W.merah)),
+      tambah(0, judul("Kelipatan Enam"), ...tanah("tn", 150), ...tokoh("bm", 40, 184, "Bima")),
+      tambah("kelipatan", teks("kl6", 150, 52, "kelipatan 6", 12, W.merah)),
+      tambah(idx(SUARA_E1, "enam", 2), ...deret("en0", [6], XE[0], 70, 0, 40, 26, W.putih, 14)),
+      tambah(idx(SUARA_E1, "dua", 1), ...deret("en1", [12], XE[1], 70, 0, 40, 26, W.putih, 14)),
+      tambah("delapan", ...deret("en2", [18], XE[2], 70, 0, 40, 26, W.putih, 14)),
+      tambah(idx(SUARA_E1, "dua", 2), ...deret("en3", [24], XE[3], 70, 0, 40, 26, W.putih, 14)),
     ),
     k(
       SUARA_E2,
-      bersih(0),
-      tambah(0, judul("Jawaban lain: kelipatan 6")),
-      ...deret("kc", 54, [12, 18, 24, 30, 36, 42, 48], W.krem, [3, 6, 9, 11, 14, 17, 20], 34, 40, 10),
-      tambah("Ingat,", ...kartu("ct", 14, 112, 272, 44, W.hijauMuda, ["tidak harus mulai dari", "bilangan yang paling kecil"], 9.6)),
+      tambah("didapat", ...[0, 1, 2].map((i) => panah(`ap${i}`, XE[i] + 41, 106, 13, 0, W.hijauTua, 2))),
+      tambah("menambah", ...[0, 1, 2].map((i) => teks(`ta${i}`, XE[i] + 48, 124, "+6", 11, W.hijauTua))),
+      tambah("sebelumnya.", emo("lp", 150, 144, E.lampu, 20)),
     ),
     k(
       SUARA_E3,
-      bersih(0),
-      tambah(0, judul("Latihan 3: kelipatan 8")),
-      ...deret("e8", 76, [8, 16, 24, 32, 40], W.langit, [10, 12, 15, 18, 21]),
-      tambah("tulis", teks("lb", 150, 150, "paling sedikit 5 bilangan", 10, W.merah)),
-    ),
-    k(
-      SUARA_E4,
-      bersih(0),
-      tambah(0, judul("Dilanjutkan: kelipatan 8")),
-      ...deret("k8", 54, [8, 16, 24, 32, 40, 48, 56], W.krem, [3, 5, 8, 11, 13, 16, 19], 34, 40, 10),
-      tambah("cocok", ...kartu("ck", 40, 120, 220, 34, W.hijauMuda, ["cocok dengan hitungan kita"], 9.6)),
+      hapus(0, "kl6", ...[0, 1, 2, 3].flatMap((i) => idDeret(`en${i}`, 1)), ...[0, 1, 2].flatMap((i) => [`ap${i}`, `ta${i}`]), "lp"),
+      tambah("tujuh", teks("r7", 160, 56, "kelipatan 7: 7, 14, 21", 11, W.biru)),
+      tambah(idx(SUARA_E3, "delapan"), teks("r8", 160, 80, "kelipatan 8: 8, 16, 24", 11, W.biru)),
+      tambah("sembilan", teks("r9", 160, 104, "kelipatan 9: 9, 18, 27", 11, W.biru)),
+      tambah("saja.", emo("ok", 262, 130, E.benar, 22)),
     ),
   ],
 };
 
-/* ------------------------------ 12. Penutup: renungan, kesimpulan, dan pesan guru (Panduan Guru hlm. 50 dan 51; Buku Siswa hlm. 60) ------------------------------ */
-export const ADEGAN_PENUTUP: AdeganStory = {
-  id: "penutup-guru",
-  judul: "Penutup: renungan, kesimpulan, dan pesan guru",
-  sumber: "Materi: renungan dan kesimpulan",
-  latar: "#FDF4FF",
-  kutipan: [
-    "Aku dapat menentukan kelipatan suatu bilangan.",
-    "Berilah tanda centang",
-    "Tutup pembelajaran dengan meminta siswa melakukan releksi atas materi yang sudah mereka pelajari dengan menjawab pertanyaan releksi nomor 1 pada tabel releksi di buku siswa.",
-    "Permainan dilakukan selama 1 jam pelajaran.",
-    "Harapannya, peserta didik dapat menyebutkan kesimpulan tentang kelipatan suatu bilangan.",
-  ],
+/* ------------------------------ 8. Sampai seratus ------------------------------ */
+const SUARA_R1 = "Pak Arif menantang: sampai seratus, kelipatan sembilan ada berapa?";
+const SUARA_R2 = "Bima mendaftar dari sembilan sampai sembilan puluh sembilan, dan hasilnya sebelas bilangan.";
+const SUARA_R3 = "Kelipatan tujuh berhenti di sembilan puluh delapan, karena empat belas kali tujuh.";
+const SEMBILAN_1 = [9, 18, 27, 36, 45, 54];
+const SEMBILAN_2 = [63, 72, 81, 90, 99];
+
+export const ADEGAN_SERATUS: AdeganStory = {
+  id: "seratus",
+  judul: "Sampai Seratus",
+  sumber: "Materi: kelipatan sampai seratus",
+  latar: W.malam,
   ketukan: [
     k(
-      "Sekarang waktunya merenung. Apakah kalian sudah dapat menentukan kelipatan suatu bilangan? Coba jelaskan dengan kata-katamu sendiri.",
-      tambah(0, judul("Renungan")),
-      tambah("kalian", ...kartu("rf", 14, 36, 272, 50, W.langit, ["Apakah aku dapat menentukan", "kelipatan suatu bilangan?"], 10)),
-      tambah("Coba", ...kartu("td", 40, 106, 220, 34, W.hijauMuda, ["jelaskan dengan kata-katamu"], 10)),
-      tambah("sendiri.", emo("cg", 150, 170, "💭", 28)),
+      SUARA_R1,
+      tambah(0, judul("Sampai Seratus"), ...tanah("tn", 150)),
+      tambah("Pak", ...tokoh("pa", 40, 184, "Pak Arif")),
+      tambah("seratus,", teks("sr1", 180, 64, "1 sampai 100", 17, W.biru)),
+      tambah("sembilan", teks("sr2", 180, 100, "kelipatan 9: ?", 17, W.merah)),
+      tambah("berapa?", emo("pk", 262, 138, E.pikir, 24)),
     ),
     k(
-      "Kesimpulan kita: kelipatan suatu bilangan diperoleh dengan mengalikannya dengan bilangan bulat satu, dua, tiga, dan seterusnya, atau menambahkannya secara bertahap. Nol tidak dihitung.",
-      bersih(0),
-      tambah(0, judul("Kesimpulan")),
-      tambah("mengalikannya", ...kartu("s1", 14, 34, 272, 36, W.hijauMuda, ["dikali 1, 2, 3, dan seterusnya"], 9.8)),
-      tambah("menambahkannya", ...kartu("s2", 14, 80, 272, 36, W.langit, ["ditambah bertahap: 3, 6, 9, ..."], 9.8)),
-      tambah("Nol", ...kartu("s3", 14, 126, 272, 36, W.merahMuda, ["nol tidak dihitung"], 9.8)),
+      SUARA_R2,
+      hapus(0, "sr1", "sr2", "pk"),
+      tambah("Bima", ...tokoh("bm", 110, 184, "Bima")),
+      tambah("mendaftar", ...deret("s1", SEMBILAN_1, 20, 36, 45, 40, 26, W.putih, 12)),
+      tambah(idx(SUARA_R2, "puluh"), ...deret("s2", SEMBILAN_2, 20, 72, 45, 40, 26, W.jingga, 12)),
+      tambah("sebelas", teks("sb", 150, 124, "11 bilangan", 14, W.hijauTua)),
     ),
     k(
-      "Hari ini kita sudah melakukan tepuk bilangan kelipatan tiga, tabel satu sampai lima puluh, tabel satu sampai seratus untuk tujuh dan sembilan, serta kelipatan enam dan delapan.",
-      bersih(0),
-      tambah(0, judul("Rangkuman kegiatan")),
-      tambah("tepuk", ...kartu("r1", 14, 34, 130, 40, W.krem, ["tepuk", "kelipatan 3"], 9.6)),
-      tambah("tabel@1", ...kartu("r2", 156, 34, 130, 40, W.langit, ["tabel", "1 sampai 50"], 9.6)),
-      tambah("seratus", ...kartu("r3", 14, 86, 130, 40, W.pink, ["tabel 1 sampai 100", "kelipatan 7 dan 9"], 9)),
-      tambah("enam", ...kartu("r4", 156, 86, 130, 40, W.hijauMuda, ["kelipatan 6", "dan 8"], 9.6)),
+      SUARA_R3,
+      hapus(0, ...idDeret("s1", 6), ...idDeret("s2", 5), "sb"),
+      tambah("Kelipatan", teks("bq1", 190, 50, "kelipatan 7 sampai 100", 11, W.biru)),
+      tambah("berhenti", teks("bq2", 190, 92, "98", 34, W.merah)),
+      tambah("empat", teks("bq3", 190, 126, "14 × 7 = 98", 16, W.hijauTua)),
+    ),
+  ],
+};
+
+/* ------------------------------ 9. Jembatan ke Sub-Bab B: lonceng Pak Tarno ------------------------------ */
+const SUARA_N1 = "Tiba-tiba terdengar lonceng lain dari gerobak bakso milik Pak Tarno, berbunyi tiap enam menit.";
+const SUARA_N2 = "Ia ingin tahu kapan loncengnya berbunyi bersamaan dengan lonceng Bu Marni.";
+const SUARA_N3 = "Menurutmu, pada menit berapa dua lonceng itu berbunyi bersama? Terima kasih, Bima, Citra, Fajar, Pak Arif, dan Bu Marni!";
+
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Lonceng Pak Tarno",
+  sumber: "Materi: lonceng gerobak bakso",
+  latar: W.malam,
+  ketukan: [
+    k(
+      SUARA_N1,
+      tambah(0, judul("Lonceng Pak Tarno"), ...tanah("tn", 150)),
+      tambah("lonceng", emo("lc", 266, 100, E.lonceng, 30, { z: 2 })),
+      tambah("gerobak", ...gerobak("gr", 130, 96, 110), emo("bk", 185, 92, E.bakso, 22, { z: 2 })),
+      tambah("Tarno,", ...tokoh("pt", 90, 184, "Pak Tarno")),
+      tambah("enam", teks("t6", 266, 62, "tiap 6 menit", 9.5, W.merah)),
     ),
     k(
-      "Hati-hati, dua kesalahan yang sering terjadi: berhenti terlalu cepat saat menulis kelipatan sembilan, padahal masih ada sembilan puluh dan sembilan puluh sembilan, dan bingung saat bermain tepuk karena aturannya belum disepakati. Tantangan: tulis kelipatan delapan sampai delapan puluh.",
+      SUARA_N2,
+      tambah("ingin", emo("tq", 150, 56, E.pikir, 26)),
+      tambah("Bu", ...tokoh("bu", 30, 184, "Bu Marni"), emo("lc2", 30, 132, E.lonceng, 26)),
+      tambah("Marni.", teks("b4", 34, 104, "tiap 4 menit", 8.4, W.hijauTua)),
+    ),
+    k(
+      SUARA_N3,
       bersih(0),
-      tambah(0, judul("Hati-hati dan Tantangan")),
-      tambah("berhenti", ...kartu("n1", 14, 34, 272, 50, W.merahMuda, ["kelipatan 9 berlanjut", "sampai 90 dan 99"], 9.6)),
-      tambah("bingung", ...kartu("n2", 14, 94, 272, 50, W.emas, ["sepakati aturan tepuk", "sebelum mulai bermain"], 9.6)),
-      tambah("Tantangan:", ...kartu("n3", 14, 154, 272, 36, W.hijauMuda, ["Tantangan: kelipatan 8 sampai 80"], 9.6)),
+      tambah(0, judul("Lonceng Pak Tarno"), ...tanah("tn", 150)),
+      tambah("Menurutmu,", emo("l1", 112, 84, E.lonceng, 30), emo("l2", 188, 84, E.lonceng, 30)),
+      tambah("dua", teks("d2", 150, 112, "2 lonceng", 12, W.hijauTua)),
+      tambah("bersama?", teks("bq", 150, 56, "?", 30, W.merah)),
+      tambah("Terima", ...tokoh("bm", 30, 184, "Bima")),
+      tambah("Citra,", ...tokoh("ct", 90, 184, "Citra")),
+      tambah("Fajar,", ...tokoh("fj", 150, 184, "Fajar")),
+      tambah("Arif,", ...tokoh("pa", 210, 184, "Pak Arif")),
+      tambah("Marni!", ...tokoh("bu", 270, 184, "Bu Marni")),
     ),
   ],
 };

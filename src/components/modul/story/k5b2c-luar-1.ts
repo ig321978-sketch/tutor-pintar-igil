@@ -1,173 +1,152 @@
 import type { AdeganStory } from "./logika-story";
-import { W, WARNA_PASANGAN, deret, emo, faktor, judul, kartu, kurungDeret, sebar, teks } from "./k5b2c-gambar";
-import { bersih, k, sorotkan, tambah } from "./k5b2c-bantu";
+import { E, W, baki, deretKlepon, emo, garis, judul, kartu, lantai, pita, teks, tokoh } from "./k5b2c-gambar";
+import { bersih, k, sorotkan, tambah, ubah } from "./k5b2c-bantu";
 
-/** Baris pasangan kali: a x b = n di tengah kanvas pada tinggi y. */
-const pas = (id: string, y: number, a: number, b: number, n: number, warna: string, u = 15) => teks(id, 150, y, `${a} × ${b} = ${n}`, u, warna);
+/*
+ * Cerita orisinal IGIL "Klepon Bu Wati" (Kelas 5 Bab 2 Sub-Bab C), video metode global.
+ * Naskah suara dari naskah/story-naskah-k5b2c.md. Bagian ini: pembuka (baki menunggu ditata), Cut and Count (Potong dan Hitung), dan terapannya.
+ */
 
-const xs6 = sebar(6, 40, 260);
-const xs5 = sebar(5, 40, 260);
-const c12 = deret("f12", xs6, 76, 15, faktor(12));
-const k12 = kurungDeret("f12", xs6, 76, 15, 6);
-const c5 = deret("g12", xs5, 76, 15, [1, 2, 3, 6, 12]);
-const k5 = kurungDeret("g12", xs5, 76, 15, 5);
+export const NAMA_METODE = ["Cut and Count", "Pair Up", "Divide Check"] as const;
+export const NAMA_METODE_ID = ["Potong dan Hitung", "Pasangkan", "Cek Bagi"] as const;
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Di baki Bu Wati, klepon menunggu ditata, dan semua faktornya harus ditemukan.";
+const SUARA_O2 = "Ada tiga cara supaya daftar faktor tidak ada yang tertinggal.";
+const SUARA_O3 = "Tiga cara itu: Cut and Count, Pair Up, dan Divide Check.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Potong dan Hitung, Pasangkan, dan Cek Bagi.";
+
+const WARNA_CARA = [W.daun, W.langit, W.pink];
+
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk mencari faktor",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Baki menunggu ditata",
+  sumber: "Metode global: pembuka",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Bagaimana cara menemukan semua faktor sebuah bilangan? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar.",
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("Bagaimana", teks("pq", 150, 80, "faktor dari 36 = ?", 20, W.merah)),
-      tambah("berbeda.", emo("gl", 150, 140, "🌍", 36)),
-      tambah("empat", teks("m4", 150, 176, "4 metode", 12, W.biru)),
+      SUARA_O1,
+      tambah(0, judul("Baki menunggu ditata"), ...lantai("lt", 150), baki("bk", 84, 70, 124, 52)),
+      tambah("Wati", ...tokoh("bw", 40, 184, "Bu Wati")),
+      tambah("klepon", ...deretKlepon("kl", 101, 88, 12, 6, 17, 18)),
+      tambah("faktornya", teks("fq", 146, 58, "faktor = ?", 12, W.merah, { z: 3 })),
+      tambah("ditemukan", emo("cr", 250, 110, E.cari, 26, { z: 3 })),
     ),
     k(
-      "Empat metode itu: Factor Pairs, Factor Rainbow, Array Model, dan Trial Division Ladder.",
+      SUARA_O2,
       bersih(0),
-      tambah(0, judul("Empat metode")),
-      tambah("Pairs,", ...kartu("m1", 20, 32, 260, 30, W.hijauMuda, ["1. Factor Pairs"], 9.4)),
-      tambah("Rainbow,", ...kartu("m2", 20, 70, 260, 30, W.langit, ["2. Factor Rainbow"], 9.4)),
-      tambah("Array", ...kartu("m3", 20, 108, 260, 30, W.krem, ["3. Array Model"], 9.4)),
-      tambah("Trial", ...kartu("m4", 20, 146, 260, 30, W.pink, ["4. Trial Division Ladder"], 9.4)),
+      tambah(0, judul("Tiga cara"), ...lantai("lt", 150)),
+      tambah("tiga", teks("n3", 150, 38, "3 cara", 13, W.merah, { z: 3 })),
+      tambah("cara", ...[0, 1, 2].flatMap((i) => kartu(`q${i}`, 10 + i * 96, 56, 88, 50, WARNA_CARA[i], "?", 22))),
+      tambah("daftar", teks("dl", 150, 126, "daftar faktor", 11, W.coklat, { z: 3 })),
+      tambah("tertinggal", emo("ok", 150, 152, E.benar, 26, { z: 3 })),
     ),
     k(
-      "Semua metode berangkat dari gagasan yang sama: faktor adalah bilangan yang membagi habis sebuah bilangan, dan faktor selalu berpasangan. Bedanya, tiap metode menampilkannya dengan cara sendiri.",
-      bersih(0),
-      tambah(0, judul("Satu gagasan yang sama")),
-      tambah("membagi", ...kartu("g1", 30, 40, 240, 40, W.hijauMuda, ["faktor membagi habis bilangan"], 10)),
-      tambah("berpasangan.", ...kartu("g2", 30, 92, 240, 40, W.langit, ["faktor selalu berpasangan"], 10)),
-      tambah("sendiri.", teks("g3", 150, 164, "cara menampilkannya berbeda-beda", 10, W.merah)),
+      SUARA_O3,
+      ubah("Cut", { id: "q0-t", isi: "Cut and Count", u: 9, y: 84 }),
+      ubah("Pair", { id: "q1-t", isi: "Pair Up", u: 9, y: 84 }),
+      ubah("Divide", { id: "q2-t", isi: "Divide Check", u: 9, y: 84 }),
     ),
     k(
-      "Angka yang kita pakai: dua belas dan delapan belas dari kegiatan memotong pita, serta dua puluh empat, tiga puluh enam, lima puluh empat, tujuh puluh dua, dan sembilan puluh enam dari latihan.",
-      bersih(0),
-      tambah(0, judul("Angka yang kita pakai")),
-      tambah("dua", ...kartu("a1", 14, 36, 272, 44, W.hijauMuda, ["Memotong pita: 12", "Memotong pita: 18"], 9.4)),
-      tambah("serta", ...kartu("a2", 14, 94, 272, 36, W.pink, ["Latihan: 24, 36, 54, 72, 96"], 9.4)),
+      SUARA_O4,
+      tambah("Potong", teks("i0", 54, 98, "Potong dan Hitung", 8.4, W.coklat, { z: 3 })),
+      tambah("Pasangkan", teks("i1", 150, 98, "Pasangkan", 8.4, W.coklat, { z: 3 })),
+      tambah("Cek", teks("i2", 246, 98, "Cek Bagi", 8.4, W.coklat, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 2. Factor Pairs: konsep ------------------------------ */
-export const ADEGAN_LUAR_PASANGAN: AdeganStory = {
-  id: "luar-pasangan",
-  judul: "Factor Pairs: pasangan faktor",
-  sumber: "Metode luar: Factor Pairs",
-  latar: "#F0FDF4",
+/* ------------------------------ Cut and Count: konsep ------------------------------ */
+const SUARA_P1 = "Cara pertama, Cut and Count, atau Potong dan Hitung.";
+const SUARA_P2 = "Kita memotong sebuah pita petak menjadi bagian yang sama panjang, tanpa sisa.";
+const SUARA_P3 = "Panjang tiap bagian adalah satu faktor, dan banyak potongan adalah pasangannya, jadi keduanya harus dicatat.";
+const SUARA_P4 = "Kita mencoba panjang satu, dua, tiga, dan seterusnya, sampai semua potongan dicoba.";
+
+export const ADEGAN_LUAR_POTONG: AdeganStory = {
+  id: "luar-potong",
+  judul: "Cut and Count: Potong",
+  sumber: "Metode global: Cut and Count (konsep)",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Metode pertama, Factor Pairs, artinya pasangan faktor. Tulis semua pasangan bilangan yang hasil kalinya sama dengan bilangan itu.",
-      tambah(0, judul("Factor Pairs")),
-      tambah("pasangan", teks("ab", 150, 84, "a × b = n", 26, W.biru)),
-      tambah("hasil", ...kartu("fp", 30, 108, 240, 40, W.hijauMuda, ["hasil kali sama dengan", "bilangan itu"], 10)),
+      SUARA_P1,
+      tambah(0, judul("Cara 1"), ...lantai("lt", 150), emo("gt", 150, 138, E.gunting, 36, { z: 3 })),
+      tambah("Cut", teks("m1", 150, 60, "Cut and Count", 14, W.merah, { z: 3 })),
+      tambah("Potong", teks("m2", 150, 84, "Potong dan Hitung", 11, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Mulai dari satu dan bilangan itu sendiri. Untuk dua belas: satu kali dua belas sama dengan dua belas. Itu pasangan pertama.",
+      SUARA_P2,
       bersih(0),
-      tambah(0, judul("Faktor dari 12")),
-      tambah("Untuk", teks("u1", 150, 60, "faktor dari 12", 14, W.ungu)),
-      tambah("kali", teks("u2", 150, 104, "1 × 12 = 12", 24, W.oranye)),
-      tambah("pasangan", teks("u3", 150, 140, "pasangan pertama: 1 dan 12", 11, W.hitam)),
+      tambah(0, judul("Pita petak"), ...lantai("lt", 150)),
+      tambah("pita", ...pita("pt", 30, 70, 12, 20, 0)),
+      tambah("bagian", garis("c0", 110, 62, 0, 30, W.merah, 2, { putus: true, z: 4 }), garis("c1", 190, 62, 0, 30, W.merah, 2, { putus: true, z: 4 })),
+      tambah("tanpa", teks("ts", 150, 126, "tanpa sisa", 12, W.merah, { z: 3 }), emo("ok", 232, 124, E.benar, 20, { z: 3 })),
     ),
     k(
-      "Lanjut: dua kali enam sama dengan dua belas, dan tiga kali empat juga dua belas. Berikutnya empat kali tiga, yang hanya mengulang pasangan tadi, jadi kita berhenti.",
+      SUARA_P3,
       bersih(0),
-      tambah(0, judul("Pasangan faktor dari 12")),
-      tambah(0, pas("p1", 56, 1, 12, 12, WARNA_PASANGAN[0])),
-      tambah(1, pas("p2", 84, 2, 6, 12, WARNA_PASANGAN[1])),
-      tambah(9, pas("p3", 112, 3, 4, 12, WARNA_PASANGAN[2])),
-      tambah(16, pas("p4", 140, 4, 3, 12, W.coklat), teks("p4n", 150, 160, "hanya mengulang pasangan tadi", 9.6, W.coklat)),
-      tambah(26, teks("p5", 150, 186, "berhenti", 12, W.merah)),
+      tambah(0, judul("Faktor dan pasangannya"), ...lantai("lt", 150), ...pita("pt", 30, 60, 12, 20, 4)),
+      tambah("faktor", teks("l1", 150, 100, "1 faktor: panjang 4 petak", 11, W.biru, { z: 3 })),
+      tambah("pasangannya", teks("l2", 150, 122, "pasangan: 3 potong", 11, W.hijauTua, { z: 3 })),
+      tambah("dicatat", emo("cc", 150, 150, E.catat, 24, { z: 3 })),
     ),
     k(
-      "Dari pasangan-pasangan itu kita peroleh semua faktornya: satu, dua, tiga, empat, enam, dan dua belas. Cara ini rapi dan mudah diperiksa, sebab tiap pasangan harus kembali ke bilangan semula.",
+      SUARA_P4,
       bersih(0),
-      tambah(0, judul("Hasil Factor Pairs")),
-      tambah("faktornya", teks("fl", 150, 80, "faktor 12: 1, 2, 3, 4, 6, 12", 14, W.hijau)),
-      tambah("diperiksa,", ...kartu("ck", 30, 110, 240, 40, W.krem, ["periksa: tiap pasangan", "dikali kembali 12"], 10)),
+      tambah(0, judul("Coba panjang berurutan"), ...lantai("lt", 150)),
+      tambah("satu", teks("la", 22, 55, "1", 11, W.merah, { z: 3 }), ...pita("ra", 44, 44, 12, 18, 1)),
+      tambah("dua", teks("lb", 22, 95, "2", 11, W.merah, { z: 3 }), ...pita("rb", 44, 84, 12, 18, 2)),
+      tambah("tiga", teks("lc", 22, 135, "3", 11, W.merah, { z: 3 }), ...pita("rc", 44, 124, 12, 18, 3)),
+      tambah("dicoba", emo("ok", 272, 90, E.benar, 24, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 3. Factor Pairs: penerapan ------------------------------ */
-export const ADEGAN_LUAR_PASANGAN_TERAPAN: AdeganStory = {
-  id: "luar-pasangan-terapan",
-  judul: "Factor Pairs pada angka latihan",
-  sumber: "Metode luar: Factor Pairs",
-  latar: "#ECFDF5",
-  ketukan: [
-    k(
-      "Terapkan pada tiga puluh enam, salah satu bilangan Latihan. Pasangannya: satu kali tiga puluh enam, dua kali delapan belas, tiga kali dua belas, dan empat kali sembilan.",
-      tambah(0, judul("Faktor dari 36")),
-      tambah(5, teks("nb", 150, 36, "Latihan: 36", 9, W.coklat)),
-      tambah(10, pas("q1", 60, 1, 36, 36, WARNA_PASANGAN[0])),
-      tambah(15, pas("q2", 88, 2, 18, 36, WARNA_PASANGAN[1])),
-      tambah(19, pas("q3", 116, 3, 12, 36, WARNA_PASANGAN[2])),
-      tambah(24, pas("q4", 144, 4, 9, 36, WARNA_PASANGAN[3])),
-    ),
-    k(
-      "Lalu enam kali enam sama dengan tiga puluh enam. Pasangannya sama, jadi enam ditulis sekali. Faktornya ada sembilan.",
-      tambah("Lalu", pas("q5", 172, 6, 6, 36, WARNA_PASANGAN[4])),
-      sorotkan("sekali.", "q5"),
-      tambah("Faktornya", teks("ql", 150, 192, "faktor 36: 1, 2, 3, 4, 6, 9, 12, 18, 36", 10, W.hijau)),
-    ),
-    k(
-      "Sekarang lima puluh empat, bilangan Latihan yang berikutnya: satu kali lima puluh empat, dua kali dua puluh tujuh, tiga kali delapan belas, dan enam kali sembilan.",
-      bersih(0),
-      tambah(0, judul("Faktor dari 54")),
-      tambah(4, teks("nb", 150, 36, "Latihan: 54", 9, W.coklat)),
-      tambah(8, pas("r1", 60, 1, 54, 54, WARNA_PASANGAN[0])),
-      tambah(13, pas("r2", 88, 2, 27, 54, WARNA_PASANGAN[1])),
-      tambah(18, pas("r3", 116, 3, 18, 54, WARNA_PASANGAN[2])),
-      tambah(23, pas("r4", 144, 6, 9, 54, WARNA_PASANGAN[3])),
-    ),
-    k(
-      "Faktornya: satu, dua, tiga, enam, sembilan, delapan belas, dua puluh tujuh, dan lima puluh empat. Angka empat tidak ada dalam satu pun pasangan, jadi empat bukan faktor.",
-      tambah(0, teks("rl", 150, 172, "faktor 54: 1, 2, 3, 6, 9, 18, 27, 54", 11, W.hijau)),
-      tambah(15, teks("r5", 150, 192, "4 tidak muncul, bukan faktor", 10, W.merah)),
-    ),
-  ],
-};
+/* ------------------------------ Cut and Count: terapan ------------------------------ */
+const SUARA_T1 = "Bima memotong pita dua belas petak menjadi bagian dua petak, dan hasilnya enam potong.";
+const SUARA_T2 = "Bagian tiga petak menghasilkan empat potong, dan bagian lima petak menyisakan dua petak.";
+const SUARA_T3 = "Cocok untuk melihat faktor lewat gambar, karena sisanya langsung kelihatan.";
+const SUARA_T4 = "Kurang cocok untuk bilangan besar, karena pitanya terlalu panjang.";
 
-/* ------------------------------ 4. Factor Rainbow: konsep ------------------------------ */
-export const ADEGAN_LUAR_PELANGI: AdeganStory = {
-  id: "luar-pelangi",
-  judul: "Factor Rainbow: diagram pelangi faktor",
-  sumber: "Metode luar: Factor Rainbow",
-  latar: "#EFF6FF",
+export const ADEGAN_LUAR_POTONG_TERAPAN: AdeganStory = {
+  id: "luar-potong-terapan",
+  judul: "Potong: kapan cocok",
+  sumber: "Metode global: Cut and Count (terapan)",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Metode kedua, Factor Rainbow, atau diagram pelangi faktor. Tulis faktor berurutan dari yang terkecil dalam satu baris.",
-      tambah(0, judul("Factor Rainbow")),
-      tambah("Tulis", c12),
-      tambah("terkecil", teks("tk", 150, 124, "urut dari yang terkecil", 10, W.coklat)),
+      SUARA_T1,
+      tambah(0, judul("Potong: kapan cocok"), ...lantai("lt", 150), ...tokoh("bm", 40, 184, "Bima")),
+      tambah("pita", ...pita("pt", 60, 64, 12, 18, 0)),
+      tambah("belas", teks("n12", 168, 52, "12 petak", 11, W.merah, { z: 3 })),
+      tambah("bagian", ...[0, 1, 2, 3, 4].map((i) => garis(`ct${i}`, 60 + (i + 1) * 36, 60, 0, 22, W.merah, 1.6, { putus: true, z: 4 }))),
+      tambah("dua@2", teks("g2", 168, 100, "2 petak", 11, W.biru, { z: 3 })),
+      tambah("enam", teks("p6", 168, 122, "6 potong", 11, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Lalu hubungkan pasangan faktor dengan busur. Pasangan terluar menghubungkan satu dengan bilangan itu sendiri, lalu pasangan berikutnya makin ke dalam.",
-      tambah("busur.", emo("pg", 150, 184, "🌈", 26)),
-      tambah(7, k12[0]),
-      tambah(15, k12[1]),
-      tambah(17, k12[2]),
-    ),
-    k(
-      "Bentuknya seperti pelangi. Kalau semua faktor sudah terhubung dan tidak ada yang sendirian, berarti daftarnya lengkap.",
-      sorotkan("pelangi.", "f12-k0", "f12-k1", "f12-k2"),
-      tambah("terhubung", ...kartu("pl1", 30, 128, 240, 32, W.hijauMuda, ["semua terhubung = lengkap"], 10)),
-    ),
-    k(
-      "Cara ini berguna untuk memeriksa. Misalkan seseorang menulis satu, dua, tiga, enam, dan dua belas. Faktor tiga tidak punya pasangan, jadi ada faktor yang terlewat.",
+      SUARA_T2,
       bersih(0),
-      tambah(0, judul("Memeriksa dengan pelangi", W.merah)),
-      tambah(8, c5),
-      tambah(14, k5[0], k5[1]),
-      tambah(16, teks("tq", xs5[2], 122, "tanpa pasangan", 9, W.merah)),
-      sorotkan(16, "g12-b2"),
-      tambah(22, teks("tl", 150, 170, "terlewat: 4", 13, W.merah)),
+      tambah(0, judul("Potong: kapan cocok"), ...lantai("lt", 150)),
+      tambah("tiga", ...pita("ra", 44, 44, 12, 18, 3)),
+      tambah("empat", teks("t3", 150, 36, "3 petak: 4 potong", 10, W.biru, { z: 3 })),
+      tambah("lima", ...pita("rb", 44, 104, 12, 18, 5)),
+      tambah("dua", teks("t5", 150, 96, "5 petak: sisa 2", 10, W.merah, { z: 3 })),
+    ),
+    k(
+      SUARA_T3,
+      bersih(0),
+      tambah(0, judul("Cocok: sisa terlihat"), ...lantai("lt", 150), emo("ok", 266, 100, E.benar, 28, { z: 3 })),
+      tambah("gambar", ...pita("rc", 44, 80, 12, 18, 5)),
+      sorotkan("sisanya", "rc10", "rc11"),
+      tambah("kelihatan", teks("ls", 150, 126, "sisa langsung terlihat", 11, W.merah, { z: 3 })),
+    ),
+    k(
+      SUARA_T4,
+      bersih(0),
+      tambah(0, judul("Pita terlalu panjang"), ...lantai("lt", 150), emo("xx", 266, 40, E.salah, 28, { z: 3 })),
+      tambah("besar", teks("bb", 150, 44, "bilangan besar", 12, W.merah, { z: 3 })),
+      tambah("pitanya", ...pita("rd", 20, 68, 24, 11.5, 0), ...pita("re", 20, 88, 24, 11.5, 0)),
+      tambah("panjang", teks("pj", 150, 126, "pita sangat panjang", 11, W.coklat, { z: 3 })),
     ),
   ],
 };

@@ -1,271 +1,121 @@
 import type { AdeganStory } from "./logika-story";
-import { W, barisSel, emo, irisan, judul, kartu, papan, teks, warnaiLubang } from "./k5b2d-gambar";
-import { bersih, k, tambah, ubah } from "./k5b2d-bantu";
+import { E, W, bulat, emo, judul, kardus, kartu, kartuFaktor, lantai, panah, teks, tokoh } from "./k5b2d-gambar";
+import { bersih, hapus, k, sorotkan, pudarkan, tambah, ubah, warnai } from "./k5b2d-bantu";
 
-/* ------------------------------ 5. Faktor persekutuan dan FPB dari dua belas dan delapan belas (Buku Siswa hlm. 48; Panduan Guru hlm. 69) ------------------------------ */
-export const ADEGAN_FAKTOR_PERSEKUTUAN: AdeganStory = {
-  id: "faktor-persekutuan",
-  judul: "Faktor persekutuan dan FPB dari 12 dan 18",
-  sumber: "Materi: faktor persekutuan dan FPB",
-  latar: "#EFF6FF",
-  kutipan: [
-    "Faktor dari 12 adalah 1, 2, 3, 4, 6, dan 12.",
-    "Faktor dari 18 adalah 1, 2, 3, 6, dan 18.",
-    "Dapat kita cermati bahwa ternyata 12 dan 18 memiliki faktor",
-    "yang sama, yaitu 1, 2, 3, dan 6.",
-    "Dalam matematika, faktor-faktor yang sama",
-    "antara bilangan 12 dan 18 disebut faktor",
-    "persekutuan dari 12 dan 18.",
-    "Dari bilangan 1, 2, 3, dan 6, 6 adalah yang paling besar",
-    "persekutuan terbesar (FPB) dari 12 dan 18.",
-    "Faktor persekutuan sama dengan faktor yang sama.",
-  ],
-  ketukan: [
-    k(
-      "Dari permainan tadi, faktor dua belas adalah satu, dua, tiga, empat, enam, dan dua belas.",
-      tambah(0, judul("Faktor dari 12")),
-      tambah("Dari", teks("l12", 24, 63, "12", 12, W.hijau)),
-      tambah("faktor", ...barisSel("f12", 44, 48, 34, 24, [1, 2, 3, 4, 6, 12], W.hijauMuda, 10)),
-      tambah("adalah", teks("l12b", 150, 120, "faktor dari 12 ada 6 bilangan", 10.4, W.hitam)),
-    ),
-    k(
-      "Faktor delapan belas adalah satu, dua, tiga, enam, sembilan, dan delapan belas. Jangan lupa sembilan, sebab sembilan kali dua sama dengan delapan belas.",
-      bersih(0),
-      tambah(0, judul("Faktor dari 18")),
-      tambah("Faktor", teks("l18", 24, 63, "18", 12, W.merah), ...barisSel("g18", 44, 48, 34, 24, [1, 2, 3, 6, 9, 18], W.merahMuda, 10)),
-      ubah("Jangan", { id: "g18-4", warna: W.emas }),
-      tambah("kali", teks("sk", 150, 110, "9 × 2 = 18", 16, W.hijau)),
-    ),
-    k(
-      "Dapat kita cermati bahwa dua belas dan delapan belas memiliki faktor yang sama, yaitu satu, dua, tiga, dan enam. Itulah irisan dua daftar.",
-      bersih(0),
-      tambah(0, judul("Faktor yang sama")),
-      tambah("Dapat", teks("va", 78, 50, "faktor 12", 9.4, W.hijau), teks("vb", 182, 50, "faktor 18", 9.4, W.merah)),
-      tambah("cermati", ...irisan("v", 100, 160, 104, 46, [4, 12], [], [9, 18])),
-      tambah("yaitu", ...irisan("v", 100, 160, 104, 46, [], [1, 2, 3, 6], []).filter((o) => o.id.startsWith("v-m"))),
-      tambah("irisan", teks("vc", 150, 172, "irisan: 1, 2, 3, 6", 10.4, W.coklat)),
-    ),
-    k(
-      "Dalam matematika, faktor yang sama antara dua belas dan delapan belas disebut faktor persekutuan. Singkatnya, faktor persekutuan sama dengan faktor yang sama.",
-      bersih(0),
-      tambah(0, judul("Faktor persekutuan")),
-      tambah("matematika,", ...kartu("fp", 20, 44, 260, 44, W.hijauMuda, ["faktor persekutuan 12 dan 18:", "1, 2, 3, 6"], 9.6)),
-      tambah("Singkatnya,", ...kartu("fy", 20, 104, 260, 44, W.krem, ["faktor persekutuan", "sama dengan faktor yang sama"], 9.6)),
-    ),
-    k(
-      "Dari satu, dua, tiga, dan enam, yang paling besar adalah enam. Karena itu enam adalah faktor persekutuan terbesar, disingkat FPB, dari dua belas dan delapan belas.",
-      bersih(0),
-      tambah(0, judul("FPB dari 12 dan 18")),
-      tambah("Dari", ...barisSel("cm", 54, 52, 48, 28, [1, 2, 3, 6], [W.hijauMuda, W.hijauMuda, W.hijauMuda, W.emas], 12)),
-      tambah("besar", teks("pb", 150, 108, "yang paling besar: 6", 11, W.coklat)),
-      tambah("FPB,", teks("pf", 150, 150, "FPB dari 12 dan 18 adalah 6", 12, W.hijau), teks("pg", 150, 172, "faktor persekutuan terbesar", 9.6, W.biru)),
-    ),
-  ],
-};
+/*
+ * Cerita orisinal IGIL "Kotak Bingkisan Pak Joko" (Kelas 5 Bab 2 Sub-Bab D), Pasar Kuliner Malam.
+ * Naskah suara dari naskah/story-naskah-k5b2d.md. Bagian ini: salah langkah Fajar (berhenti di faktor persekutuan dua), Citra memeriksa, dan arti FPB.
+ */
 
-/* ------------------------------ 6. Eksplorasi 2.4A soal a dan b (Buku Siswa hlm. 49 dan 50; Panduan Guru hlm. 70 dan 71) ------------------------------ */
-export const ADEGAN_EKS_A_AB: AdeganStory = {
-  id: "eks-24a-ab",
-  judul: "Bermain congklak: soal a dan b",
-  sumber: "Materi: bermain congklak, dua pasangan",
-  latar: "#FFF7ED",
-  kutipan: [
-    "Eksplorasi 2.4A",
-    "Ayo Bermain Congklak",
-    "Bermainlah secara berpasangan.",
-    "Gunakan aturan permainan congklak seperti pada bagian Ayo",
-    "Temukan FPB dari pasangan bilangan berikut dengan",
-    "menggunakan bantuan permainan congklak.",
-    "a. 6 dan 12",
-    "warnai lubang congklak",
-    "yang berisi 2 biji congklak.",
-    "Faktor persekutuan 6 dan 12 adalah 1, 2, 3, 6",
-    "FPB dari 6 dan 12 adalah 6",
-    "b. 8 dan 20",
-    "1, 2, 4 4 1, 2, 4 4",
-  ],
-  ketukan: [
-    k(
-      "Sekarang kita bermain congklak lagi. Bermainlah berpasangan dengan aturan tadi, lalu temukan FPB tiap pasangan bilangan dengan papan congklak.",
-      tambah(0, judul("Bermain congklak")),
-      tambah("Bermainlah", ...kartu("e1", 20, 42, 260, 30, W.hijauMuda, ["bermain berpasangan"], 9.6)),
-      tambah("aturan", ...kartu("e2", 20, 82, 260, 30, W.krem, ["aturan seperti tadi"], 9.6)),
-      tambah("temukan", ...kartu("e3", 20, 122, 260, 36, W.pink, ["cari FPB tiap pasangan", "dengan papan congklak"], 9.6)),
-    ),
-    k(
-      "Soal a: enam dan dua belas. Pemain satu menaruh biji di faktor enam, yaitu satu, dua, tiga, dan enam. Pemain dua menaruh biji di faktor dua belas.",
-      bersih(0),
-      tambah(0, judul("a. 6 dan 12")),
-      tambah("Soal", ...papan("pp", 28, 52)),
-      ubah("faktor", ...warnaiLubang("pp", [1, 2, 3, 6], [])),
-      tambah("yaitu", teks("qa", 218, 78, "faktor 6:", 10, W.hijau), teks("qb", 218, 96, "1, 2, 3, 6", 10, W.hitam)),
-      tambah("faktor@2", teks("qc", 218, 124, "faktor 12:", 10, W.merah), teks("qd", 218, 142, "1, 2, 3, 4, 6, 12", 9.4, W.hitam)),
-      ubah("belas@2", ...warnaiLubang("pp", [1, 2, 3, 6], [1, 2, 3, 4, 6, 12])),
-    ),
-    k(
-      "Lubang berisi dua biji adalah satu, dua, tiga, dan enam, itulah faktor persekutuannya. Jadi FPB enam dan dua belas adalah enam.",
-      bersih(0),
-      tambah(0, judul("Hasil a")),
-      tambah("Lubang", ...papan("pp", 28, 52, [1, 2, 3, 6], [1, 2, 3, 4, 6, 12])),
-      tambah("Jadi", ...kartu("ha", 148, 48, 142, 44, W.krem, ["faktor persekutuan:", "1, 2, 3, 6"], 9.6)),
-      tambah("adalah@2", teks("hb", 150, 150, "FPB dari 6 dan 12 adalah 6", 12, W.hijau)),
-    ),
-    k(
-      "Soal b: delapan dan dua puluh. Faktor delapan adalah satu, dua, empat, dan delapan. Faktor dua puluh adalah satu, dua, empat, lima, sepuluh, dan dua puluh.",
-      bersih(0),
-      tambah(0, judul("b. 8 dan 20")),
-      tambah("Soal", ...papan("pp", 28, 52)),
-      ubah("Faktor", ...warnaiLubang("pp", [1, 2, 4, 8], [])),
-      tambah("adalah", teks("ra", 218, 78, "faktor 8:", 10, W.hijau), teks("rb", 218, 96, "1, 2, 4, 8", 10, W.hitam)),
-      ubah("Faktor@2", ...warnaiLubang("pp", [1, 2, 4, 8], [1, 2, 4, 5, 10, 20])),
-      tambah("adalah@2", teks("rc", 218, 124, "faktor 20:", 10, W.merah), teks("rd", 218, 142, "1, 2, 4, 5, 10, 20", 9, W.hitam)),
-    ),
-    k(
-      "Lubang berisi dua biji adalah satu, dua, dan empat, itulah faktor persekutuannya. Jadi FPB delapan dan dua puluh adalah empat.",
-      bersih(0),
-      tambah(0, judul("Hasil b")),
-      tambah("Lubang", ...papan("pp", 28, 52, [1, 2, 4, 8], [1, 2, 4, 5, 10, 20])),
-      tambah("Jadi", ...kartu("hc", 148, 48, 142, 44, W.krem, ["faktor persekutuan:", "1, 2, 4"], 9.6)),
-      tambah("adalah@2", teks("hd", 150, 146, "FPB dari 8 dan 20 adalah 4", 12, W.hijau)),
-    ),
-  ],
-};
+/* ------------------------------ 4. Salah langkah Fajar ------------------------------ */
+const SUARA_SALAH1 = "Fajar menunjuk lubang bernomor dua dan berseru bahwa dua kotak sudah cukup.";
+const SUARA_SALAH2 = "Ia berhenti di faktor persekutuan pertama yang ia temukan setelah satu.";
+const SUARA_SALAH3 = "Kalau aku salah, aku melipat semua kotak sendirian, katanya sambil menggulung lengan baju.";
 
-/* ------------------------------ 7. Eksplorasi 2.4A soal c, peran guru, dan soal tambahan (Buku Siswa hlm. 50; Panduan Guru hlm. 70 sampai 72) ------------------------------ */
-export const ADEGAN_EKS_A_C: AdeganStory = {
-  id: "eks-24a-c",
-  judul: "Bermain congklak: soal c dan tantangan",
-  sumber: "Materi: pasangan lain dan tantangan",
-  latar: "#FEFCE8",
-  kutipan: [
-    "c. 12 dan 28",
-    "Faktor persekutuan 12 dan 28 adalah",
-    "FPB dari 12 dan 28 adalah",
-    "Guru berperan sebagai pengamat dan fasilitator.",
-    "Jika ada kelompok yang melakukan kesalahan atau tidak mengikuti aturan,",
-    "tidak perlu untuk diingatkan.",
-    "Bagi peserta didik yang tidak memahami instruksi, ulangi lagi aturan permainan",
-    "minta mereka untuk menuliskan terlebih dahulu faktor bilangan yang akan dimainkan",
-    "Soal Tambahan",
-    "temukan faktor persekutuan dan faktor persekutuan terbesar dari pasangan bilangan",
-    "1. 18 dan 24",
-    "2. 14 dan 28",
-    "3. 15 dan 20",
-    "4. 13 dan 26",
-    "5. 20 dan 28",
-    "Berikan kesempatan kepada kelompok untuk presentasi.",
-    "Akan lebih baik jika ada hasil yang berbeda sehingga peserta didik dapat mengamati perbedaannya.",
-  ],
-  ketukan: [
-    k(
-      "Soal c: dua belas dan dua puluh delapan. Faktor dua belas: satu, dua, tiga, empat, enam, dua belas. Faktor dua puluh delapan: satu, dua, empat, tujuh, empat belas, dua puluh delapan.",
-      tambah(0, judul("c. 12 dan 28")),
-      tambah("Soal", ...papan("pp", 28, 52)),
-      ubah("Faktor", ...warnaiLubang("pp", [1, 2, 3, 4, 6, 12], [])),
-      ubah("Faktor@2", ...warnaiLubang("pp", [1, 2, 3, 4, 6, 12], [1, 2, 4, 7, 14, 28])),
-      tambah("tiga,", teks("sa", 218, 78, "faktor 12:", 10, W.hijau), teks("sb", 218, 96, "1, 2, 3, 4, 6, 12", 9.4, W.hitam)),
-      tambah("tujuh,", teks("sc", 218, 124, "faktor 28:", 10, W.merah), teks("sd", 218, 142, "1, 2, 4, 7, 14, 28", 9, W.hitam)),
-    ),
-    k(
-      "Lubang berisi dua biji adalah satu, dua, dan empat, itulah faktor persekutuannya. Jadi FPB dua belas dan dua puluh delapan adalah empat.",
-      bersih(0),
-      tambah(0, judul("Hasil c")),
-      tambah("Lubang", ...papan("pp", 28, 52, [1, 2, 3, 4, 6, 12], [1, 2, 4, 7, 14, 28])),
-      tambah("Jadi", ...kartu("hc", 148, 48, 142, 44, W.krem, ["faktor persekutuan:", "1, 2, 4"], 9.6)),
-      tambah("adalah@2", teks("hd", 150, 150, "FPB dari 12 dan 28 adalah 4", 12, W.hijau)),
-    ),
-    k(
-      "Tips bermain: amati dulu permainan temanmu. Bila ada yang keliru, jangan terburu-buru, cek bersama. Bila aturan belum jelas, ulangi aturan; bila faktor belum jelas, tulis dulu faktornya.",
-      bersih(0),
-      tambah(0, judul("Tips bermain berpasangan")),
-      tambah("amati", ...kartu("g1", 20, 40, 260, 30, W.hijauMuda, ["amati permainan temanmu"], 9.6)),
-      tambah("keliru,", ...kartu("g2", 20, 80, 260, 30, W.krem, ["ada yang keliru: cek bersama"], 9.6)),
-      tambah("aturan", ...kartu("g3", 20, 120, 260, 30, W.langit, ["belum paham aturan: ulangi aturan"], 9.6)),
-      tambah("faktor", ...kartu("g4", 20, 160, 260, 30, W.pink, ["belum paham faktor: tulis dulu faktornya"], 9)),
-    ),
-    k(
-      "Sekarang coba lima pasangan ini: delapan belas dan dua puluh empat, empat belas dan dua puluh delapan, lima belas dan dua puluh, tiga belas dan dua puluh enam, serta dua puluh dan dua puluh delapan.",
-      bersih(0),
-      tambah(0, judul("Tantangan: lima pasangan")),
-      tambah("delapan", teks("t1", 70, 52, "1. 18 dan 24", 11, W.hitam)),
-      tambah("empat@2", teks("t2", 70, 76, "2. 14 dan 28", 11, W.hitam)),
-      tambah("lima@2", teks("t3", 70, 100, "3. 15 dan 20", 11, W.hitam)),
-      tambah("tiga", teks("t4", 70, 124, "4. 13 dan 26", 11, W.hitam)),
-      tambah("serta", teks("t5", 70, 148, "5. 20 dan 28", 11, W.hitam)),
-    ),
-    k(
-      "Hasilnya, FPB tiap pasang berturut-turut enam, empat belas, lima, tiga belas, dan empat.",
-      tambah("enam,", teks("u1", 210, 52, "FPB 6", 11, W.hijau)),
-      tambah("empat", teks("u2", 210, 76, "FPB 14", 11, W.hijau)),
-      tambah("lima,", teks("u3", 210, 100, "FPB 5", 11, W.hijau)),
-      tambah("tiga", teks("u4", 210, 124, "FPB 13", 11, W.hijau)),
-      tambah("empat@2", teks("u5", 210, 148, "FPB 4", 11, W.hijau)),
-    ),
-  ],
-};
+const CHIP_FP = [1, 2, 3, 6];
 
-/* ------------------------------ 8. Eksplorasi 2.4B: masalah bunga mawar (Buku Siswa hlm. 51; Panduan Guru hlm. 72 dan 73) ------------------------------ */
-export const ADEGAN_EKS_B_MASALAH: AdeganStory = {
-  id: "eks-24b-masalah",
-  judul: "Membantu Nisa mengatur mawar",
-  sumber: "Materi: membantu Nisa mengatur mawar",
+export const ADEGAN_SALAH_DUA: AdeganStory = {
+  id: "salah-dua",
+  judul: "Fajar berhenti di dua",
+  sumber: "Materi: salah langkah, berhenti di faktor kedua",
   latar: "#FFF1F2",
-  kutipan: [
-    "Eksplorasi 2.4B",
-    "Ayo Membantu",
-    "Pagi ini ibunya Nisa membeli bunga mawar merah dan mawar putih.",
-    "Beliau membeli 24 tangkai mawar merah dan 18 tangkai bunga",
-    "mawar putih.",
-    "Selanjutnya, beliau meminta Nisa untuk mengatur",
-    "bunga-bunga tersebut pada vas bunga.",
-    "banyaknya setiap jenis bunga di setiap vas harus sama",
-    "sebanyak-banyaknya ke dalam",
-    "vas yang memungkinkan.",
-    "Paling banyak, aku butuh berapa vas, ya?",
-    "Ada berapa mawar setiap vasnya?",
-    "Tabel 2.2 Banyaknya Bunga dan Vas yang Diperlukan",
-    "Banyaknya bunga mawar merah di setiap vas 1 2 3 4 6 8 12 24",
-    "Vas yang diperlukan 24 12 8 6 4 3 2 1",
-    "Banyaknya bunga mawar putih di setiap vas 1 2 3 6 9 18",
-    "Vas yang diperlukan 18 9 6 3 2 1",
-    "Menyampaikan tujuan dari kegiatan pada bagian ini mengamati tentang",
-    "aplikasi FPB untuk menyelesaikan masalah",
-  ],
   ketukan: [
     k(
-      "Mari membantu Nisa. Pagi ini ibunya Nisa membeli dua puluh empat tangkai mawar merah dan delapan belas tangkai mawar putih.",
-      tambah(0, judul("Membantu Nisa")),
-      tambah("ibunya", emo("w1", 80, 90, "🌹", 40)),
-      tambah("merah", ...kartu("mr", 130, 56, 150, 34, W.merahMuda, ["24 tangkai mawar merah"], 9.4)),
-      tambah("putih.", ...kartu("mp", 130, 104, 150, 34, W.putih, ["18 tangkai mawar putih"], 9.4)),
+      SUARA_SALAH1,
+      tambah(0, judul("Fajar Berseru"), ...lantai("lt", 150)),
+      tambah("Fajar", ...tokoh("fa", 50, 184, "Fajar")),
+      tambah("lubang", bulat("lb", 170, 80, 26, "#5B3A1A", "#3B2410", { tebal: 2, z: 0 }), teks("l2", 170, 88, "2", 22, W.krem, { z: 3 }), bulat("lm", 161, 98, 4.5, "#DC2626", "#7F1D1D", { tebal: 1, z: 4 }), bulat("lp", 179, 98, 4.5, "#F8FAFC", "#475569", { tebal: 1, z: 4 })),
+      tambah("kotak", ...kardus("b1", 226, 154, 30, 20), ...kardus("b2", 262, 154, 30, 20), teks("dk", 260, 192, "2 kotak", 9, W.coklat)),
     ),
     k(
-      "Ibu meminta Nisa mengatur bunga pada vas. Pesannya: tiap jenis bunga di setiap vas harus sama banyak, dan bunga dimasukkan sebanyak-banyaknya ke vas yang memungkinkan.",
+      SUARA_SALAH2,
+      tambah("faktor", teks("fl", 145, 113, "faktor persekutuan", 8.5, W.biru)),
+      tambah("persekutuan", ...CHIP_FP.flatMap((f, i) => kartuFaktor(`c${f}`, 100 + i * 30, 118, f, W.krem))),
+      sorotkan("pertama", "c2-k"),
+      tambah("berhenti", emo("tg", 141, 148, E.tangan, 16)),
+      pudarkan("satu", "c1-k", "c1-t"),
+    ),
+    k(
+      SUARA_SALAH3,
+      tambah("salah", ...kartu("bl", 204, 28, 90, 38, "#FFFFFF", ["aku lipat", "semua kotak!"], 8.5)),
+      ubah("melipat", { id: "bl-k", warna: "#FEE2E2" }),
+      tambah("menggulung", emo("ot", 96, 168, "\u{1F4AA}", 18)),
+    ),
+  ],
+};
+
+/* ------------------------------ 5. Citra memeriksa ------------------------------ */
+const SUARA_PERIKSA1 = "Citra menunjuk lubang lain yang juga berisi dua biji, yaitu tiga dan enam.";
+const SUARA_PERIKSA2 = "Pesan Pak Joko meminta kotak sebanyak-banyaknya, jadi pilihlah yang paling besar, yaitu enam.";
+const SUARA_PERIKSA3 = "Fajar melipat kotak sampai tumpukannya menjulang, dan Pak Arif memotretnya sambil tertawa.";
+
+const IDS_KARTU = (f: number): string[] => [`c${f}-k`, `c${f}-t0`];
+
+export const ADEGAN_PERIKSA: AdeganStory = {
+  id: "periksa",
+  judul: "Citra memeriksa lubang lain",
+  sumber: "Materi: lubang lain dan pilihan terbesar",
+  latar: "#F0F9FF",
+  ketukan: [
+    k(
+      SUARA_PERIKSA1,
+      tambah(0, judul("Citra Menunjuk Lubang"), ...lantai("lt", 150)),
+      tambah("Citra", ...tokoh("ci", 44, 184, "Citra")),
+      tambah("lubang", teks("lb", 190, 54, "lubang berisi 2 biji", 9.5, W.coklat), ...CHIP_FP.flatMap((f, i) => kartu(`c${f}`, 96 + i * 44, 68, 36, 30, W.krem, [String(f)], 16))),
+      sorotkan("tiga", ...IDS_KARTU(3)),
+      sorotkan("enam", ...IDS_KARTU(6)),
+    ),
+    k(
+      SUARA_PERIKSA2,
+      tambah("Joko", ...tokoh("pj", 262, 184, "Pak Joko")),
+      tambah("sebanyak-banyaknya", teks("sb", 120, 126, "kotak sebanyak-banyaknya", 9, W.coklat)),
+      tambah("besar", panah("pn", 246, 118, 0, -18, W.merah, 2.4, { z: 4 }), teks("tb", 246, 134, "paling besar", 9.5, W.merah)),
+      warnai("enam", W.emas, "c6-k"),
+    ),
+    k(
+      SUARA_PERIKSA3,
       bersih(0),
-      tambah(0, judul("Pesan ibu")),
-      tambah("vas.", emo("vs", 150, 76, "🏺", 36)),
-      tambah("sama", ...kartu("p1", 20, 100, 260, 30, W.krem, ["tiap jenis bunga sama banyak di tiap vas"], 8.8)),
-      tambah("sebanyak-banyaknya", ...kartu("p2", 20, 140, 260, 30, W.hijauMuda, ["bunga masuk sebanyak-banyaknya"], 9.4)),
+      tambah(0, judul("Tumpukan Menjulang"), ...lantai("lt", 150)),
+      tambah("Fajar", ...tokoh("fa", 60, 184, "Fajar")),
+      tambah("kotak", ...kardus("s1", 120, 134, 48, 14), ...kardus("s2", 123, 120, 44, 14), ...kardus("s3", 119, 106, 46, 14)),
+      tambah("menjulang", ...kardus("s4", 122, 92, 42, 14), ...kardus("s5", 124, 78, 40, 14), ...kardus("s6", 121, 64, 44, 14)),
+      tambah("Arif", ...tokoh("pa", 240, 184, "Pak Arif")),
+      tambah("memotretnya", emo("km", 214, 160, E.kamera, 18), teks("kl", 200, 62, "klik!", 11, W.merah)),
+      tambah("tertawa", emo("tw", 262, 146, E.tertawa, 18)),
+    ),
+  ],
+};
+
+/* ------------------------------ 6. FPB ------------------------------ */
+const SUARA_FPB1 = "Faktor yang sama pada dua bilangan disebut faktor persekutuan.";
+const SUARA_FPB2 = "Dari semua faktor persekutuan, yang paling besar disebut faktor persekutuan terbesar, atau FPB.";
+const SUARA_FPB3 = "FPB dari dua puluh empat dan delapan belas adalah enam, jadi kotaknya ada enam.";
+
+export const ADEGAN_FPB: AdeganStory = {
+  id: "fpb",
+  judul: "Faktor persekutuan dan FPB",
+  sumber: "Materi: faktor persekutuan dan FPB",
+  latar: "#FAF5FF",
+  ketukan: [
+    k(
+      SUARA_FPB1,
+      tambah(0, judul("Faktor Persekutuan"), bulat("cl", 112, 104, 56, "#BFDBFE", W.biru, { op: 0.6, z: 0 }), bulat("cr", 188, 104, 56, "#FDE68A", W.coklat, { op: 0.6, z: 0 }), teks("t24", 80, 42, "faktor 24", 9), teks("t18", 220, 42, "faktor 18", 9)),
+      tambah("bilangan", ...[[4, 80, 80], [8, 106, 80], [12, 80, 112], [24, 106, 112], [9, 198, 96], [18, 226, 96]].map(([n, x, y]) => teks(`n${n}`, x, y, String(n), 12, W.biru, { z: 2 }))),
+      tambah("sama", ...[[1, 141, 80], [2, 159, 80], [3, 141, 112], [6, 159, 112]].map(([n, x, y]) => teks(`n${n}`, x, y, String(n), 12, W.merah, { z: 2 }))),
+      tambah("persekutuan", teks("fl", 150, 176, "faktor persekutuan", 10, W.ungu)),
     ),
     k(
-      "Nisa bertanya: paling banyak aku butuh berapa vas, dan ada berapa mawar di setiap vasnya? Tujuannya, kita memakai FPB untuk menyelesaikan masalah.",
-      bersih(0),
-      tambah(0, judul("Pertanyaan Nisa")),
-      tambah("paling", ...kartu("q1", 20, 44, 260, 36, W.pink, ["paling banyak butuh berapa vas?"], 9.6)),
-      tambah("ada", ...kartu("q2", 20, 92, 260, 36, W.langit, ["ada berapa mawar di setiap vas?"], 9.6)),
-      tambah("Tujuannya,", teks("q3", 150, 160, "tujuan: pakai FPB untuk masalah", 10, W.hijau)),
+      SUARA_FPB2,
+      hapus("terbesar", "fl"),
+      tambah("besar", bulat("rg", 159, 112, 11, undefined, W.emas, { tebal: 3, z: 4 })),
+      ubah("terbesar", { id: "n6", u: 16 }),
+      tambah("terbesar", teks("fb", 150, 176, "FPB: yang terbesar", 10.5, W.merah)),
     ),
     k(
-      "Tabel mawar merah. Bunga di tiap vas: satu, dua, tiga, empat, enam, delapan, dua belas, dan dua puluh empat. Vas yang diperlukan: dua puluh empat, dua belas, delapan, enam, empat, tiga, dua, dan satu.",
-      bersih(0),
-      tambah(0, judul("Tabel mawar merah")),
-      tambah("Bunga", teks("tl1", 26, 66, "per vas", 7.4, W.hitam), ...barisSel("m1", 52, 50, 30, 22, [1, 2, 3, 4, 6, 8, 12, 24], W.merahMuda, 9)),
-      tambah("vas@2", teks("tl2", 26, 88, "vas", 7.4, W.hitam), ...barisSel("m2", 52, 72, 30, 22, [24, 12, 8, 6, 4, 3, 2, 1], W.putih, 9)),
-    ),
-    k(
-      "Untuk mawar putih: bunga di tiap vas satu, dua, tiga, enam, sembilan, dan delapan belas. Vas yang diperlukan: delapan belas, sembilan, enam, tiga, dua, dan satu.",
-      tambah("Untuk", teks("tl3", 26, 140, "per vas", 7.4, W.hitam), ...barisSel("p1", 52, 124, 30, 22, [1, 2, 3, 6, 9, 18], W.hijauMuda, 9)),
-      tambah("vas@2", teks("tl4", 26, 162, "vas", 7.4, W.hitam), ...barisSel("p2", 52, 146, 30, 22, [18, 9, 6, 3, 2, 1], W.putih, 9)),
+      SUARA_FPB3,
+      hapus("FPB", "fb"),
+      tambah("enam", teks("fk", 150, 196, "FPB 6, jadi 6 kotak", 10, W.merah)),
+      tambah("kotaknya", ...Array.from({ length: 6 }, (_, i) => kardus(`q${i + 1}`, 78 + i * 24, 164, 20, 16)).flat()),
     ),
   ],
 };
