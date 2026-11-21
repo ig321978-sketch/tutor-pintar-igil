@@ -259,7 +259,7 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
           for (const n of bilanganSuara(kt.suara)) cek(terlihat.has(n), `${v.id}/${a.id}#${i + 1}: bilangan ${n} yang diucapkan tampak sebagai angka`);
         });
   const semuaSuara = M_VIDEO.adegan.map((a) => a.ketukan.map((kt) => kt.suara).join(" ")).join(" ");
-  for (const n of [0, 3, 4, 6, 400, 3000, 3406, 5080]) cek(bilanganSuara(semuaSuara).includes(n), `video materi mengucapkan bilangan ${n}`);
+  for (const n of [0, 3, 4, 6, 400, 3000, 3406, 5080, 1000, 1025]) cek(bilanganSuara(semuaSuara).includes(n), `video materi mengucapkan bilangan ${n}`);
   const semuaLuar = U.adegan.map((a) => a.ketukan.map((kt) => kt.suara).join(" ")).join(" ");
   for (const n of [0, 3, 4, 5080, 3406]) cek(bilanganSuara(semuaLuar).includes(n), `video global mengucapkan bilangan ${n}`);
   for (const kata of ["Pak Hendro", "Satria", "Laras", "Genta", "Bu Maya", "Pak Laode", "Penginapan Pulau Karang Indah", "tiket", "papan", "ribuan", "ratusan", "puluhan", "satuan", "nol"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
@@ -341,9 +341,9 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   cek(["pk-d0", "pk-d1", "pk-d2", "pk-d3"].map((id) => isiTeks(akhirAdegan(kd, 1), id)).join("") === "5080", "kedua: papan diisi 5, 0, 8, 0");
   cek(isiTeks(akhirAdegan(kd), "tu") === "5.080" && ada(akhirAdegan(kd), "ge", "pn") && ketemu(akhirAdegan(kd), "pk-b0").sorot === true, "kedua: Genta menulis 5.080");
   const ul = adegan(M_VIDEO, "ulang");
-  cek(isiTeks(akhirAdegan(ul, 0), "bn") === "5.080" && ada(akhirAdegan(ul, 0), "bm", "sa"), "ulang: Satria membaca lagi nomor 5.080");
-  cek(["b5", "b8", "b0"].map((id) => isiTeks(akhirAdegan(ul, 1), id)).join("|") === "5.000|80|0" && ketemu(akhirAdegan(ul, 1), "b0").op === 0.3, "ulang: nol tidak dibaca");
-  cek(isiTeks(akhirAdegan(ul), "n1") === "3.406" && isiTeks(akhirAdegan(ul), "n2") === "5.080" && ada(akhirAdegan(ul), "tp", "b1", "b2", "mf"), "ulang: papan pengumuman berisi dua nomor dan Bu Maya bertepuk tangan");
+  cek(isiTeks(akhirAdegan(ul, 0), "bn") === "1.025" && ada(akhirAdegan(ul, 0), "bm", "sa"), "ulang: Satria membaca tiket ketiga 1.025");
+  cek(["d1", "b5", "b0", "b8"].map((id) => isiTeks(akhirAdegan(ul, 1), id)).join("|") === "1|1.000|0|25" && ketemu(akhirAdegan(ul, 1), "b0").op === 0.3, "ulang: seribu (bukan satu ribu), nol ratusan tidak dibaca");
+  cek(isiTeks(akhirAdegan(ul), "n1") === "3.406" && isiTeks(akhirAdegan(ul), "n2") === "5.080" && isiTeks(akhirAdegan(ul), "n3") === "1.025" && ada(akhirAdegan(ul), "tp", "b1", "b2", "b3", "mf"), "ulang: papan pengumuman berisi tiga nomor dan Bu Maya bertepuk tangan");
   const pt = adegan(M_VIDEO, "penutup");
   cek(ada(akhirAdegan(pt, 0), "pl", "pl-cp", "gd", "gd-a", "hd0", "hd2", "hm3", "hm5", "hq") && isiTeks(akhirAdegan(pt, 0), "gt") === "GUDANG", "penutup: Pak Laode di gudang dengan tumpukan handuk dan tanda tanya");
   sama(["pk-d0", "pk-d1", "pk-d2", "pk-d3"].map((id) => isiTeks(akhirAdegan(pt, 1), id)), ["6", "1", "8", "5"], "penutup: tiap angka punya tempat");

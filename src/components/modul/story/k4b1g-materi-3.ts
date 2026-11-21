@@ -1,10 +1,10 @@
 import type { AdeganStory } from "./logika-story";
 import { E, W, deretPerahu, dermaga, emo, judul, laut, papanJatah, papanSusun, teks, tokoh } from "./k4b1g-gambar";
-import { k, sorotkan, tambah } from "./k4b1g-bantu";
+import { bersih, k, sorotkan, tambah } from "./k4b1g-bantu";
 
 /*
  * Cerita orisinal IGIL "Baris Perahu Bu Marni" (Kelas 4 Bab 1 Sub-Bab G), cerita Penginapan Pulau Karang Indah.
- * Naskah suara dari naskah/story-naskah-k4b1g.md. Bagian ini: perkalian bersusun pendek, sebelas penumpang tiap perahu, dan penutup yang menjembatani ke Sub-Bab H.
+ * Naskah suara dari naskah/story-naskah-k4b1g.md. Bagian ini: perkalian bersusun pendek, contoh susun tanpa simpanan, dan penutup yang menjembatani ke Sub-Bab H.
  */
 
 /* ------------------------------ 7. Bersusun ------------------------------ */
@@ -41,37 +41,39 @@ export const ADEGAN_BERSUSUN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 8. Perbandingan ------------------------------ */
-const SUARA_P1 = "Genta bertanya, bagaimana kalau tiap perahu hanya memuat sebelas penumpang?";
-const SUARA_P2 = "Laras menghitung, sebelas kali lima sama dengan lima puluh lima.";
-const SUARA_P3 = "Dengan cara urai, sepuluh kali lima ditambah satu kali lima, hasilnya sama.";
-const LAB11 = [0, 1, 2, 3, 4].map((i) => teks(`r${i + 1}-l`, 70 + 50 * i, 134, "11", 10, W.biru, { z: 3 }));
+/* ------------------------------ 8. Bersusun tanpa simpanan ------------------------------ */
+const SUARA_P1 = "Genta bertanya, bagaimana kalau hanya empat perahu, dan tiap perahu memuat dua belas penumpang?";
+const SUARA_P2 = "Laras menyusunnya ke bawah, dua kali empat delapan, lalu satu kali empat empat.";
+const SUARA_P3 = "Delapan muat di satuan, jadi tidak ada yang disimpan, dan hasilnya empat puluh delapan.";
+const LAB12 = [0, 1, 2, 3].map((i) => teks(`r${i + 1}-l`, 70 + 50 * i, 134, "12", 10, W.biru, { z: 3 }));
 
-export const ADEGAN_PERBANDINGAN: AdeganStory = {
-  id: "perbandingan",
-  judul: "Sebelas penumpang tiap perahu",
-  sumber: "Materi: bilangan lain",
+export const ADEGAN_TANPA_SIMPAN: AdeganStory = {
+  id: "tanpa-simpan",
+  judul: "Bersusun tanpa simpanan",
+  sumber: "Materi: susun tanpa simpanan",
   latar: "#FDF4FF",
   ketukan: [
     k(
       SUARA_P1,
       tambah(0, judul("Bagaimana Kalau?"), ...laut("lt", 96), ...dermaga("dm", 166), ...tokoh("ge", 30, 184, "Genta")),
-      tambah("tiap", ...deretPerahu("r", 5, 70, 50, 112, 0.95), teks("n5", 262, 60, "5 perahu", 9, W.ungu)),
-      tambah("sebelas", ...LAB11),
+      tambah("hanya", ...deretPerahu("r", 4, 70, 50, 112, 0.95), teks("n4", 262, 60, "4 perahu", 9, W.ungu)),
+      tambah("tiap", ...LAB12),
       tambah("penumpang?", emo("qs", 262, 86, E.tanya, 22)),
     ),
     k(
       SUARA_P2,
-      tambah("Laras", ...tokoh("la", 262, 184, "Laras")),
-      tambah("sebelas", teks("e1", 130, 56, "11 × 5", 20, W.biru)),
-      tambah("lima@3", teks("e2", 205, 56, "= 55", 20, W.merah)),
+      bersih(0),
+      tambah(0, judul("Susun Tanpa Simpanan"), ...dermaga("dm", 166), ...tokoh("la", 262, 184, "Laras")),
+      tambah("menyusunnya", ...papanSusun("ps", 100, 34, 12, 4)),
+      tambah("dua", teks("m1", 250, 56, "2 × 4 = 8", 12, W.biru), teks("r0", 152, 102, "8", 18, W.merah)),
+      tambah("lalu", teks("m2", 250, 96, "1 × 4 = 4", 12, W.biru), teks("r1", 130, 102, "4", 18, W.merah)),
     ),
     k(
       SUARA_P3,
-      tambah("urai,", teks("u1", 100, 84, "10 × 5", 13, W.biru)),
-      tambah("ditambah", teks("pl", 150, 84, "+", 14, W.ungu)),
-      tambah("satu", teks("u2", 200, 84, "1 × 5", 13, W.biru)),
-      tambah("sama.", emo("ok", 262, 112, E.benar, 20)),
+      sorotkan(0, "r1", "r0"),
+      tambah("tidak", teks("tp", 252, 74, "tanpa simpanan", 11, W.ungu)),
+      tambah("hasilnya", teks("h48", 245, 134, "48", 26, W.merah)),
+      tambah("delapan.@2", emo("ok", 280, 118, E.benar, 20)),
     ),
   ],
 };

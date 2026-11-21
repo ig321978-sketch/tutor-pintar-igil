@@ -253,7 +253,7 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   const sapa = adegan(M_VIDEO, "sapaan");
   cek(/pembagian sampai seratus/.test(sapa.ketukan[0].suara) && ["Membagi sama banyak", "Pembagian bersusun", "Memeriksa dengan perkalian"].every((d) => teksAdegan(sapa).includes(d)), "sapaan materi: topik dan tiga hal");
   cek(/Metode global/.test(adegan(U, "sapaan").sumber), "sapaan global berlabel Metode global");
-  cek(M_VIDEO.adegan.slice(1).every((a) => a.ketukan.length === 3) && U.adegan.slice(1).every((a) => a.ketukan.length === 4), "3 ketukan tiap adegan materi, 4 ketukan tiap adegan global");
+  cek(M_VIDEO.adegan.slice(1).every((a) => a.ketukan.length === (a.id === "bagi-rata" ? 5 : 3)) && U.adegan.slice(1).every((a) => a.ketukan.length === 4), "3 ketukan tiap adegan materi (bagi-rata 5, memuat contoh 48 permen), 4 ketukan tiap adegan global");
   // Naskah tetap: kalimat suara sama dengan berkas naskah.
   const naskah = readFileSync(new URL("../naskah/story-naskah-k4b1h.md", import.meta.url), "utf8");
   const dalamNaskah = (s) => naskah.replace(/\s+/g, " ").includes(s.replace(/\s+/g, " "));
@@ -303,7 +303,17 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   const br = adegan(M_VIDEO, "bagi-rata");
   cek(ada(akhirAdegan(br, 0), "ge", "g0", "g3", "p0", "p3") && isiTeks(akhirAdegan(br, 0), "s1") === "1 tamu, 1 kamar" && isiTeks(akhirAdegan(br, 0), "pt") === "1 putaran = 4 tamu", "bagi rata: satu tamu satu kamar, satu putaran empat tamu");
   cek(urut(14, "ct").every((id) => ketemu(akhirAdegan(br, 1), id)) && urut(14, "cn").map((id) => isiTeks(akhirAdegan(br, 1), id)).join() === Array.from({ length: 14 }, (_, i) => String(i + 1)).join() && isiTeks(akhirAdegan(br, 1), "e4") === "4 tamu per putaran" && isiTeks(akhirAdegan(br, 1), "t56") === "56 tamu" && ketemu(akhirAdegan(br, 1), "ct13").sorot === true, "bagi rata: penghitung putaran 1 sampai 14");
-  cek(["m0", "m1", "m2", "m3"].every((id) => isiTeks(akhirAdegan(br), id) === "14") && tidakAda(akhirAdegan(br), "e4"), "bagi rata: tiap kamar bertanda 14");
+  cek(["m0", "m1", "m2", "m3"].every((id) => isiTeks(akhirAdegan(br, 2), id) === "14") && tidakAda(akhirAdegan(br, 2), "e4"), "bagi rata: tiap kamar bertanda 14");
+  // Contoh pembagian 48 permen ke 2, 3, 4, 6, 8 wadah (semua habis, sisa nol): hasil bagi dihitung dari data, batang sebanyak hasil bagi.
+  {
+    const wd = [2, 3, 4, 6, 8];
+    cek(wd.every((d) => 48 % d === 0), "bagi rata 48 permen: semua pembagi menghabiskan, sisa nol");
+    cek(isiTeks(akhirAdegan(br, 3), "p48") === "48 permen" && wd.every((d, i) => isiTeks(akhirAdegan(br, 3), `w${i}`) === `${d} wadah` && ketemu(akhirAdegan(br, 3), `b${i}`)) && /sisa 0/.test(isiTeks(akhirAdegan(br, 3), "hb48")), "bagi rata 48 permen: lima wadah 2, 3, 4, 6, 8 dan semuanya habis");
+    cek(wd.every((d, i) => isiTeks(akhirAdegan(br, 4), `h${i}`) === String(48 / d) && Math.abs(ketemu(akhirAdegan(br, 4), `r${i}`).h - (48 / d) * 1.6) < 0.01) && ketemu(akhirAdegan(br, 4), "hb48"), "bagi rata 48 permen: hasil bagi 24, 16, 12, 8, 6 dan batang menurun mengikuti hasil bagi, tulisan habis tetap terbaca");
+    { const kt = br.ketukan[4]; const nk = L.kataDari(kt.suara).length; const pos = kt.aksi.filter((ak) => [].concat(ak.tambah ?? []).some((o) => /^r\d$/.test(o.id))).map((ak) => L.posisiKata(kt.suara, ak.at)); cek(pos.length === 5 && Math.max(...pos) <= nk * 0.6 && nk >= 18, `bagi rata 48 permen: batang muncul sebelum ketukan selesai (kata ke ${pos.join(",")} dari ${nk})`); cek(!kt.aksi.some((ak) => ak.hapus && [].concat(ak.hapus).includes("hb48")), "bagi rata 48 permen: tulisan habis tidak dihapus cepat"); }
+    const s48 = br.ketukan[3].suara + " " + br.ketukan[4].suara;
+    cek(/empat puluh delapan/.test(s48) && /makin banyak wadah, makin sedikit permen/i.test(s48), "bagi rata 48 permen: kalimat ejaan dan kesimpulan makin banyak wadah makin sedikit");
+  }
   const bs = adegan(M_VIDEO, "bersusun");
   cek(["q1", "pr", "sr"].map((id) => isiTeks(akhirAdegan(bs, 0), id)).join() === "1,4,1" && isiTeks(akhirAdegan(bs, 0), "hp") === "puluhan" && isiTeks(akhirAdegan(bs, 0), "hs") === "satuan", "bersusun: 5 dibagi 4 satu sisa satu");
   cek(isiTeks(akhirAdegan(bs, 1), "tn") === "6" && isiTeks(akhirAdegan(bs, 1), "sp") === "1 puluhan = 10 satuan" && isiTeks(akhirAdegan(bs, 1), "n16") === "16", "bersusun: angka enam turun menjadi enam belas");

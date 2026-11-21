@@ -226,9 +226,9 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   const sC = D.CONCRETE[0].langkah[0].langkah;
   cek(sC.tokoh === "Satria" && sC.dasar.tipe === "banding" && LC.bedaPertama(sC.dasar.a, sC.dasar.b) < 3 && sC.dasar.a % 10 > sC.dasar.b % 10 && sC.jawabTokoh === ">" && LC.teksKunciKlik(sC) === "<" && !sC.betul, "Cari kesalahan Concrete: Satria membandingkan dari satuan dan salah (seed alur)");
   const sP = D.PICTORIAL[0].langkah[0].langkah;
-  cek(sP.tokoh === "Genta" && sP.dasar.tipe === "banding" && LC.angkaTempat(sP.dasar.a)[0] === LC.angkaTempat(sP.dasar.b)[0] && LC.bedaPertama(sP.dasar.a, sP.dasar.b) === 1 && sP.jawabTokoh === LC.teksKunciKlik(sP) && sP.betul === true, "Cari kesalahan Pictorial: Genta bilang ribuan sama jadi lihat ratusan, benar (seed alur)");
+  cek(sP.tokoh === "Genta" && sP.dasar.tipe === "banding" && sP.dasar.a === sP.dasar.b && sP.jawabTokoh === "=" && sP.jawabTokoh === LC.teksKunciKlik(sP) && sP.betul === true, "Cari kesalahan Pictorial: Genta bilang dua bilangan persis sama bertanda sama dengan, benar (4.352 = 4.352 di buku)");
   const sA = D.ABSTRACT[0].langkah[0].langkah;
-  cek(sA.tokoh === "Satria" && sA.dasar.tipe === "banding" && sA.dasar.a % 10 > sA.dasar.b % 10 && sA.jawabTokoh === ">" && LC.teksKunciKlik(sA) === "<" && !sA.betul, "Cari kesalahan Abstract: Satria membandingkan dari satuan dan salah");
+  cek(sA.tokoh === "Satria" && sA.dasar.tipe === "banding" && sA.dasar.a === sA.dasar.b && sA.jawabTokoh === "<" && LC.teksKunciKlik(sA) === "=" && !sA.betul, "Cari kesalahan Abstract: dua bilangan persis sama, Satria memilih kurang dari dan salah (jawaban benar sama dengan)");
   // Posisi alasan benar (rumus di LangkahDermaga): tidak selalu tombol pertama.
   {
     const posisiAlasan = (x) => Array.from(`${x.tokoh}${x.kataTokoh}${x.alasan[x.benar]}`).reduce((t, c) => t + c.charCodeAt(0), 0) % 3;
@@ -249,7 +249,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
         cek(typeof d.benda === "string" && d.benda.length >= 3, `${tag}: benda bernama`);
         if (rupa === "benda") cek(!!DG_EMOJI[d.benda] && emojiSah(DG_EMOJI[d.benda]), `${tag}: Concrete memakai benda beremoji (${d.benda})`);
         if (d.tipe === "banding" || d.tipe === "kiri") {
-          cek(d.a >= 1000 && d.a <= 9999 && d.b >= 1000 && d.b <= 9999 && d.a !== d.b && ![d.a, d.b].some((n) => CERITA.includes(n)), `${tag}: dua bilangan empat angka berbeda dan berbeda dari Story`);
+          cek(d.a >= 1000 && d.a <= 9999 && d.b >= 1000 && d.b <= 9999 && (d.a !== d.b || d.tipe === "banding") && ![d.a, d.b].some((n) => CERITA.includes(n)), `${tag}: dua bilangan empat angka berbeda dan berbeda dari Story`);
           cek(s.cara !== "kanvas" || LC.bedaPertama(d.a, d.b) >= 0, `${tag}: bilangan berbeda`);
         }
         if (d.tipe === "garis") {
@@ -297,7 +297,8 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   cek(pg.length === 3 && new Set(pg).size === 3 && pg.includes("6.700") && pg[0] !== "6.700" && pg.includes("6.300"), `pilihan klik garis: tiga bilangan, benar bukan yang pertama, bilangan lain pada garis jadi pengecoh (${pg.join("/")})`);
   const pu = LC.pilihanKlik(kt([3482, 3248, 3824], "naik"));
   cek(pu.length === 3 && new Set(pu).size === 3 && pu.includes("3.248, 3.482, 3.824") && pu[0] !== "3.248, 3.482, 3.824" && pu.includes("3.824, 3.482, 3.248"), `pilihan klik kartu: tiga urutan, benar bukan yang pertama, memuat urutan terbalik (${pu.join("/")})`);
-  sama([LC.pilihanSuara(bd(6274, 6247), "suara"), LC.pilihanSuara(gr(6300, 6700), "suara"), LC.pilihanSuara(kt([1, 2, 3], "naik", "kecil"), "suara")], [["kurang dari", "lebih dari"], ["kanan", "kiri"], ["terbesar", "terkecil"]], "pilihan suara: dua kata, benar bukan yang pertama");
+  sama([LC.pilihanSuara(bd(6274, 6247), "suara"), LC.pilihanSuara(gr(6300, 6700), "suara"), LC.pilihanSuara(kt([1, 2, 3], "naik", "kecil"), "suara")], [["kurang dari", "lebih dari", "sama dengan"], ["kanan", "kiri"], ["terbesar", "terkecil"]], "pilihan suara: banding tiga kata, lainnya dua kata, benar bukan yang pertama");
+  sama([LC.pilihanSuara(bd(6247, 6274), "suara"), LC.pilihanSuara(bd(7318, 7318), "suara")], [["lebih dari", "kurang dari", "sama dengan"], ["lebih dari", "sama dengan", "kurang dari"]], "pilihan suara banding: kurang dari dan sama dengan, benar bukan yang pertama");
   sama(LC.pilihanSuara(kr(5481, 5438), "suara").length, 3, "pilihan suara kiri: tiga nama tempat");
   cek(LC.pilihanSuara(kr(5481, 5438), "suara")[0] !== "puluhan" && LC.pilihanSuara(kr(5481, 5438), "suara").includes("puluhan"), "pilihan suara kiri: benar bukan yang pertama");
 
@@ -329,7 +330,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
         if (s.cara === "suara" && kunci !== null) {
           const pil = LC.pilihanSuara(l, "suara");
           const benar = LC.teksKunciPilihan(kunci);
-          cek(pil.includes(benar) && pil.length === (d.tipe === "kiri" ? 3 : 2) && new Set(pil).size === pil.length && tanpaDigit(pil.join(" ")), `${tag}: pilihan cadangan suara memuat jawaban benar (${pil.join("/")})`);
+          cek(pil.includes(benar) && pil.length === (d.tipe === "kiri" || d.tipe === "banding" ? 3 : 2) && new Set(pil).size === pil.length && tanpaDigit(pil.join(" ")), `${tag}: pilihan cadangan suara memuat jawaban benar (${pil.join("/")})`);
           cek(pil[0] !== benar, `${tag}: jawaban suara bukan pilihan pertama`);
           cek(K.cocokUcapan(benar, kunci).cocok, `${tag}: ucapan jawaban benar dikenali (${benar})`);
           for (const lain of pil.filter((p) => p !== benar)) cek(!K.cocokUcapan(lain, kunci).cocok, `${tag}: ucapan ${lain} bukan jawaban benar`);
@@ -350,14 +351,19 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   sama(kv("Abstract"), [2, 1, 7, 3], "angka kanvas Abstract");
   const kl = (nm) => TAHAP[nm][1].filter((s) => s.cara === "klik").flatMap((s) => s.langkah.map((l) => LC.teksKunciKlik(l.langkah)));
   sama(kl("Concrete"), ["<", "puluhan", "6.700", "3.264, 3.426, 3.846"], "jawaban klik Concrete");
-  sama(kl("Pictorial"), [">", "ratusan", "2.400", "6.051, 6.105, 6.150, 6.510"], "jawaban klik Pictorial");
-  sama(kl("Abstract"), ["<", "satuan", "8.800", "8.091, 8.109, 8.910"], "jawaban klik Abstract");
+  sama(kl("Pictorial"), ["=", "ratusan", "2.400", "6.051, 6.105, 6.150, 6.510"], "jawaban klik Pictorial");
+  sama(kl("Abstract"), ["=", "satuan", "8.800", "8.091, 8.109, 8.910"], "jawaban klik Abstract");
   const su = (nm) => TAHAP[nm][1].filter((s) => s.cara === "suara").flatMap((s) => s.langkah.map((l) => nama(LC.kunciJawab(l.langkah, "suara"))));
-  sama(su("Concrete"), ["lebih dari", "ratusan", "kanan", "terkecil"], "jawaban suara Concrete");
-  sama(su("Pictorial"), ["kurang dari", "ribuan", "kiri", "terbesar"], "jawaban suara Pictorial");
+  sama(su("Concrete"), ["sama dengan", "ratusan", "kanan", "terkecil"], "jawaban suara Concrete");
+  sama(su("Pictorial"), ["lebih dari", "ribuan", "kiri", "terbesar"], "jawaban suara Pictorial");
   sama(su("Abstract"), ["kurang dari", "puluhan", "kanan", "terkecil"], "jawaban suara Abstract");
+  // Dua bilangan persis sama (tanda sama dengan, seperti 4.352 = 4.352 di buku): ada di tiap tahap.
+  for (const [namaT, [, soal]] of Object.entries(TAHAP)) {
+    const sama2 = soal.flatMap((s) => s.langkah.map((l) => ({ d: LC.dasarDari(l.langkah), cara: s.cara }))).filter((x) => x.d.tipe === "banding" && x.d.a === x.d.b);
+    cek(sama2.length >= 1 && sama2.every((x) => x.cara !== "kanvas" && LC.tandaDari(x.d.a, x.d.b) === "="), `${namaT}: ada tugas dua bilangan persis sama (tanda sama dengan), bukan di kanvas`);
+  }
   const semuaKata = Object.keys(TAHAP).flatMap((nm) => su(nm));
-  for (const w of ["kurang dari", "lebih dari", "ribuan", "ratusan", "puluhan", "kiri", "kanan", "terkecil", "terbesar"]) cek(semuaKata.includes(w), `tugas suara: kata ${w} muncul`);
+  for (const w of ["kurang dari", "lebih dari", "sama dengan", "ribuan", "ratusan", "puluhan", "kiri", "kanan", "terkecil", "terbesar"]) cek(semuaKata.includes(w), `tugas suara: kata ${w} muncul`);
   // Data CPA berbeda dari data Simulasi.
   const dataSim = new Set([...DS.TARGET_BANDING.flatMap((t) => [t.a, t.b]), ...DS.TARGET_URUT.flatMap((t) => t.data), ...DS.TARGET_GARIS.map((t) => t.nilai)]);
   const dataCpa = Object.values(TAHAP).flatMap(([, soal]) => soal.flatMap((s) => s.langkah.flatMap((l) => { const d = LC.dasarDari(l.langkah); return d.tipe === "kartu" ? d.data : d.tipe === "garis" ? [d.a, d.b] : [d.a, d.b]; })));
@@ -365,7 +371,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   // Poin penting dan penutup.
   cek(D.POIN_PENTING.length >= 6 && D.POIN_PENTING.every((p) => p.length > 20 && bersih(p)) && D.POIN_PENTING_SUARA.every((p) => tanpaDigit(p) && !/[=<>+−]/.test(p)), "poin penting: banyak, bersih, suara tanpa digit dan tanda");
   const poin = D.POIN_PENTING.join(" ").toLowerCase();
-  for (const m of ["dari kiri", "ribuan", "ratusan", "angka berbeda", "kurang dari", "lebih dari", "sama dengan", "garis bilangan", "kanan", "naik", "turun", "banding dari kiri", "urut kartu"]) cek(poin.includes(m), `poin penting memuat ${m}`);
+  for (const m of ["dari kiri", "ribuan", "ratusan", "angka berbeda", "kurang dari", "lebih dari", "sama dengan", "persis sama", "garis bilangan", "kanan", "naik", "turun", "banding dari kiri", "urut kartu"]) cek(poin.includes(m), `poin penting memuat ${m}`);
   cek(tanpaDigit(D.PENUTUP_C) && bersih(D.PENUTUP_C) && /Pak Darwis/.test(D.PENUTUP_C) && /kelapa/.test(D.PENUTUP_C) && D.PENUTUP_C.endsWith("?"), "penutup C: jembatan ke Sub-Bab D tanpa digit");
   cek(Object.values(D.TEMA_DERMAGA).every((t) => emojiSah(t.ikon) && t.nama.length >= 7 && t.cara.length > 20 && tanpaDigit(t.cara) && bersih(t.cara)), "tema tiga tahap sah");
   cek(D.TEMA_DERMAGA.pictorial.cara.includes("polos") && D.TEMA_DERMAGA.abstract.cara.includes("kartu"), "tema: Pictorial polos, Abstract kartu");

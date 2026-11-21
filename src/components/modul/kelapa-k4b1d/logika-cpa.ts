@@ -78,7 +78,28 @@ export type LSusun = { tipe: "susun"; benda: string; n: number };
 export type LBagan = { tipe: "bagan"; benda: string; utuh: number; bagian: number; satuan: 1000 | 100; klaim?: number };
 /** Lebih dari satu cara: `n` = `a` + bagian lain. Klik: pilih uraian dua bagian; kanvas: ribuan pada bagian lain; suara: apakah `a` + klaim sama dengan `n`. */
 export type LLain = { tipe: "lain"; benda: string; n: number; a: number; klaim: number };
-export type LangkahDasar = LUrai | LSusun | LBagan | LLain;
+/** Pecahan uang Rp 100, 500, 1.000, dan 2.000 (lembar atau keping), dan banyak tiap pecahan pada satu uraian uang. */
+export type Pecahan = 2000 | 1000 | 500 | 100;
+export const URUT_PECAHAN: readonly Pecahan[] = [2000, 1000, 500, 100];
+export type IsiUang = Record<Pecahan, number>;
+/** Uang yang ada di kotak kios: tujuh lembar Rp 2.000, lima keping Rp 1.000, dua keping Rp 500, dan empat keping Rp 100. */
+export const STOK_UANG: IsiUang = { 2000: 7, 1000: 5, 500: 2, 100: 4 };
+export const jumlahUang = (u: IsiUang): number => URUT_PECAHAN.reduce((t, p) => t + u[p] * p, 0);
+export const jenisUang = (p: Pecahan): string => (p === 2000 ? "lembar" : "keping");
+/** Uraian uang dalam tulisan: "3 lembar 2.000 + 1 keping 1.000 + 3 keping 100" (pecahan yang banyaknya nol tidak ditulis; `tanya` ditulis "?"). */
+export const teksUang = (u: IsiUang, tanya?: Pecahan): string =>
+  URUT_PECAHAN.filter((p) => u[p] > 0 || p === tanya)
+    .map((p) => `${p === tanya ? "?" : u[p]} ${jenisUang(p)} ${rb(p)}`)
+    .join(" + ");
+/** Uraian uang dalam kata tanpa digit: "tiga lembar uang dua ribu, satu keping uang seribu, dan tiga keping uang seratus". */
+export function kataUang(u: IsiUang): string {
+  const bagian = URUT_PECAHAN.filter((p) => u[p] > 0).map((p) => `${kataBil(u[p])} ${jenisUang(p)} uang ${kataBil(p)}`);
+  return bagian.length < 2 ? bagian.join("") : `${bagian.slice(0, -1).join(", ")}, dan ${bagian[bagian.length - 1]}`;
+}
+/** Uang: uraikan `n` rupiah dengan pecahan uang yang ada. `isi` = satu uraian yang benar (jumlahnya `n`, tidak melebihi stok).
+ * Klik: pilih uraian yang jumlahnya `n`; kanvas: banyak lembar atau keping pecahan `tanya` pada `isi`; suara: apakah uraian `klaim` jumlahnya `n`. */
+export type LUang = { tipe: "uang"; benda: string; n: number; isi: IsiUang; tanya: Pecahan; klaim?: IsiUang };
+export type LangkahDasar = LUrai | LSusun | LBagan | LLain | LUang;
 /** Cari kesalahan: tokoh sudah menjawab dari `dasar`. Anak menilai benar atau salah, memilih alasan, lalu menjawab sendiri. */
 export type LangkahSalah = {
   tipe: "salah";
@@ -128,6 +149,10 @@ export function kunciJawab(l: Langkah, cara: Cara): Kunci | null {
       return nama(l.bagian + l.klaim === l.utuh ? "sama" : "berbeda");
     case "lain":
       return cara === "klik" ? nama(teksDua(l.n, l.a)) : cara === "kanvas" ? angka(Math.floor((l.n - l.a) / 1000)) : nama(l.a + l.klaim === l.n ? "sama" : "berbeda");
+    case "uang":
+      if (cara === "klik") return nama(teksUang(l.isi));
+      if (cara === "kanvas") return angka(l.isi[l.tanya]);
+      return nama(jumlahUang(l.klaim ?? l.isi) === l.n ? "sama" : "berbeda");
   }
 }
 
@@ -192,7 +217,19 @@ export function lainKeliru(l: LLain): string[] {
   const calon = [`${rb(l.a)} + ${rb(sisa + 100)}`, `${rb(l.a)} + ${rb(sisa - 1000)}`, `${rb(l.a)} + ${rb(sisa + 1000)}`, `${rb(l.a + 1000)} + ${rb(sisa)}`];
   return unik(calon.filter((c) => !/-/.test(c) && c !== teksDua(l.n, l.a)));
 }
-const kelirunya = (d: LangkahDasar): string[] => (d.tipe === "urai" ? uraiKeliru(d.n) : d.tipe === "susun" ? susunKeliru(d.n) : d.tipe === "bagan" ? baganKeliru(d) : lainKeliru(d));
+/** Uraian uang yang keliru: satu pecahan bergeser satu lembar atau keping (tidak melebihi stok), jumlahnya tidak sama dengan `n`. Selalu dari pecahan terkecil ke terbesar supaya tetap. */
+export function uangKeliru(l: LUang): string[] {
+  const hasil: string[] = [];
+  for (const p of [...URUT_PECAHAN].reverse())
+    for (const d of [1, -1]) {
+      const v = l.isi[p] + d;
+      if (v < 0 || v > STOK_UANG[p]) continue;
+      const u = { ...l.isi, [p]: v };
+      if (jumlahUang(u) !== l.n) hasil.push(teksUang(u));
+    }
+  return unik(hasil).filter((x) => x !== teksUang(l.isi));
+}
+const kelirunya = (d: LangkahDasar): string[] => (d.tipe === "urai" ? uraiKeliru(d.n) : d.tipe === "susun" ? susunKeliru(d.n) : d.tipe === "bagan" ? baganKeliru(d) : d.tipe === "uang" ? uangKeliru(d) : lainKeliru(d));
 const benihDasar = (d: LangkahDasar): number => (d.tipe === "bagan" ? d.utuh + d.bagian : d.n);
 
 /** Tiga pilihan untuk tugas klik: jawaban benar tidak pernah di tombol pertama, dan jawaban tokoh yang keliru (Cari kesalahan) selalu ikut. */
@@ -252,6 +289,15 @@ export function kalimatKunci(l: Langkah, cara: Cara): string {
         ? `Kedua bagian jika dijumlahkan sama dengan ${kataBil(d.utuh)}, jadi sama dengan bilangan utuh.`
         : `Kedua bagian jika dijumlahkan menjadi ${kataBil(d.bagian + d.klaim)}, berbeda dari bilangan utuh, jadi ada yang keliru.`;
     }
+    case "uang": {
+      if (cara === "klik") return `Jumlah uang dihitung dari banyaknya tiap pecahan: ${kataUang(d.isi)} jumlahnya ${kataBil(d.n)} rupiah, sama dengan uang yang dibayar.`;
+      if (cara === "kanvas") {
+        const lain = jumlahUang(d.isi) - d.isi[d.tanya] * d.tanya;
+        return `Pecahan lain jumlahnya ${kataBil(lain)} rupiah, sisanya ${kataBil(d.n - lain)} rupiah, jadi ada ${kataBil(d.isi[d.tanya])} ${jenisUang(d.tanya)} uang ${kataBil(d.tanya)}.`;
+      }
+      const j = jumlahUang(d.klaim ?? d.isi);
+      return j === d.n ? `Jumlah uraian itu ${kataBil(j)} rupiah, sama dengan uang yang dibayar.` : `Jumlah uraian itu ${kataBil(j)} rupiah, berbeda dari ${kataBil(d.n)} rupiah, jadi uraiannya keliru.`;
+    }
     case "lain": {
       if (cara === "klik") return `${kapital(kataBil(d.a))} ditambah ${kataBil(d.n - d.a)} sama dengan ${kataBil(d.n)}, jadi itu cara lain yang benar.`;
       if (cara === "kanvas") return `Bagian yang hilang adalah ${kataBil(d.n - d.a)}, jadi ribuannya ${kataBil(Math.floor((d.n - d.a) / 1000))}.`;
@@ -283,6 +329,10 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): s
       return l.klaim === undefined
         ? `${aw}: ${g} ini adalah bagan bagian utuh. Bagian yang lain berapa ${namaSatuan(l.satuan)}? ${akhir}`
         : `${aw}: ${g} ini adalah bagan bagian utuh. Apakah kedua bagian jika dijumlahkan sama dengan bilangan utuh? Ucapkan satu kata: sama atau berbeda.`;
+    case "uang":
+      if (cara === "klik") return `${aw}: lihat uang yang ada pada ${g} ini. Satu jumlah uang bisa diuraikan dengan pecahan yang berbeda. Pilih uraian yang jumlahnya sama dengan uang yang dibayar.`;
+      if (cara === "kanvas") return `${aw}: lihat uang pada ${g} ini. Uang yang dibayar sudah diuraikan, tetapi satu pecahan belum terisi. Berapa ${jenisUang(l.tanya)} uang ${kataBil(l.tanya)}? ${akhir}`;
+      return `${aw}: lihat uraian uang pada ${g} ini. Apakah jumlahnya sama dengan uang yang dibayar? Ucapkan satu kata: sama atau berbeda.`;
     case "lain":
       if (cara === "klik") return `${aw}: lihat bilangan pada ${g} ini. Satu bilangan bisa diuraikan dengan lebih dari satu cara. Pilih uraian dua bagian yang sama dengan bilangan itu.`;
       if (cara === "kanvas") return `${aw}: lihat bilangan pada ${g} ini. Bilangan itu sama dengan satu bagian ditambah bagian yang ribuannya hilang. Ribuan pada bagian yang hilang berapa? ${akhir}`;
@@ -302,6 +352,8 @@ export function kalimatTanya(l: Langkah, cara: Cara): string {
       if (cara === "klik") return "Berapa bagian yang lain?";
       if (cara === "kanvas" || d.klaim === undefined) return `Bagian yang lain berapa ${namaSatuan(d.satuan)}?`;
       return "Sama atau berbeda dengan bilangan utuh?";
+    case "uang":
+      return cara === "klik" ? "Uraian mana yang jumlahnya sama?" : cara === "kanvas" ? `Berapa ${jenisUang(d.tanya)} uang ${kataBil(d.tanya)}?` : "Sama atau berbeda dengan uang yang dibayar?";
     case "lain":
       return cara === "klik" ? "Uraian mana yang sama dengan bilangan itu?" : cara === "kanvas" ? "Berapa ribuan pada bagian yang hilang?" : "Sama atau berbeda dengan bilangan di atas?";
   }
@@ -326,6 +378,12 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
       return cara === "suara" && l.klaim !== undefined
         ? "Jumlahkan kedua bagian, lalu bandingkan dengan bilangan utuh. Bila jumlahnya persis sama ucapkan sama, bila tidak ucapkan berbeda."
         : "Bagian yang lain didapat dengan mengurangkan bilangan utuh dengan bagian yang sudah diketahui, bukan menjumlahkan.";
+    case "uang":
+      return cara === "klik"
+        ? "Banyaknya tiap pecahan dikali harga pecahannya, lalu semuanya dijumlahkan. Pilih uraian yang jumlahnya persis sama dengan uang yang dibayar."
+        : cara === "kanvas"
+          ? "Jumlahkan dulu pecahan yang sudah ada, kurangkan dari uang yang dibayar, lalu bagi sisanya dengan harga satu lembar atau keping yang ditanyakan."
+          : "Hitung jumlah semua pecahan pada uraian, lalu bandingkan dengan uang yang dibayar. Bila persis sama ucapkan sama, bila tidak ucapkan berbeda.";
     case "lain":
       return cara === "klik"
         ? "Dua bagian yang benar jika dijumlahkan persis sama dengan bilangan itu. Jumlahkan tiap pilihan, lalu pilih yang tepat."
@@ -349,6 +407,12 @@ export function barisKartu(l: LangkahDasar, cara?: Cara): string[] {
         `bagian: ${rb(l.bagian)}`,
         cara === "suara" && l.klaim !== undefined ? `bagian lain: ${rb(l.klaim)}` : cara === "klik" ? "bagian lain: ?" : `bagian lain berapa ${namaSatuan(l.satuan)}: ?`,
         ...(cara === "suara" && l.klaim !== undefined ? ["jumlahnya: sama atau berbeda?"] : []),
+      ];
+    case "uang":
+      return [
+        `uang yang dibayar: Rp ${rb(l.n)}`,
+        cara === "klik" ? `uang yang ada: ${teksUang(STOK_UANG)}` : cara === "kanvas" ? `uraian: ${teksUang(l.isi, l.tanya)}` : `uraian: ${teksUang(l.klaim ?? l.isi)}`,
+        cara === "klik" ? "uraian yang jumlahnya sama: ?" : cara === "kanvas" ? `banyak ${jenisUang(l.tanya)} ${rb(l.tanya)}: ?` : "jumlahnya: sama atau berbeda?",
       ];
     case "lain":
       return [

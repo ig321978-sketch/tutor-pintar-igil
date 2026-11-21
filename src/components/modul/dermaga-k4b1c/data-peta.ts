@@ -9,7 +9,7 @@ export type LangkahDermaga = { judul: string; arti: string };
 export const LANGKAH_DERMAGA: readonly LangkahDermaga[] = [
   { judul: "Banding dari Kiri", arti: "Langkah satu. Banding dari Kiri: bandingkan dua bilangan mulai dari tempat paling kiri, yaitu ribuan. Angka yang lebih besar menunjukkan bilangan yang lebih besar." },
   { judul: "Sama? Lanjut ke kanan", arti: "Langkah dua. Kalau angkanya sama, pindah ke tempat di kanannya: ratusan, lalu puluhan, lalu satuan. Berhenti di tempat pertama yang angkanya berbeda." },
-  { judul: "Tanda < > dan =", arti: "Langkah tiga. Tulis hasilnya dengan tanda. Kurang dari untuk bilangan yang lebih kecil, lebih dari untuk yang lebih besar, dan sama dengan kalau semua tempat sama. Mulut tanda menghadap bilangan yang lebih besar." },
+  { judul: "Tanda < > dan =", arti: "Langkah tiga. Tulis hasilnya dengan tanda. Kurang dari untuk bilangan yang lebih kecil, lebih dari untuk yang lebih besar. Kalau ribuan, ratusan, puluhan, dan satuan semuanya sama, kedua bilangan persis sama, jadi tandanya sama dengan. Mulut tanda menghadap bilangan yang lebih besar." },
   { judul: "Garis Bilangan", arti: "Langkah empat. Garis Bilangan: taruh bilangan pada garis, yang kecil di kiri dan yang besar di kanan. Dari garis kita bisa melihat urutannya sekaligus." },
   { judul: "Urut Kartu: kecil ke besar", arti: "Langkah lima. Urut Kartu: tulis tiap bilangan pada satu kartu, lalu geser kartunya sampai urut dari terkecil ke terbesar. Kalau dibalik, urutannya dari terbesar ke terkecil." },
 ];

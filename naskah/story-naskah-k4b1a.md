@@ -44,11 +44,11 @@ Sapaan (bersama): topik "membaca dan menulis bilangan sampai sepuluh ribu"; daft
    - "Laras mengisi papan, lima di ribuan, nol di ratusan, delapan di puluhan, nol di satuan."
    - "Genta menulis lima ribu delapan puluh sebagai angka lima, nol, delapan, nol."
    Visual: papan empat kotak berisi 5, 0, 8, 0; tiket 🎟 kedua 5.080; Genta menulis di papan pengumuman.
-8. `ulang`
-   - "Bu Maya meminta Satria membaca nomor itu sekali lagi."
-   - "Kali ini Satria membaca dari ribuan, dan nol tidak ia baca."
-   - "Bu Maya bertepuk tangan, karena kedua nomor sudah benar dan siap diumumkan."
-   Visual: Satria menunjuk 5.080 dari kiri ke kanan; Bu Maya bertepuk tangan; papan pengumuman berisi 3.406 dan 5.080 dengan bintang kecil.
+8. `ulang` (tiket ketiga: bilangan dengan ribuan satu dibaca "seribu", bukan "satu ribu"; sesuai buku 1.025 dibaca seribu dua puluh lima)
+   - "Bu Maya menunjukkan tiket ketiga, yaitu seribu dua puluh lima, dan meminta Satria membacanya."
+   - "Angka satu di ribuan dibaca seribu, bukan satu ribu. Ratusannya nol, jadi dilewati, lalu dua puluh lima."
+   - "Bu Maya bertepuk tangan, karena ketiga nomor sudah benar dan siap diumumkan."
+   Visual: tiket 1.025 besar; angka 1 di ribuan menjadi 1.000 ("seribu"), nol ratusan redup, lalu 25; papan pengumuman berisi 3.406, 5.080, dan 1.025 dengan centang.
 9. `penutup` (jembatan ke Sub-Bab B)
    - "Pak Laode, penjaga gudang, datang dan bilang handuk tamu menumpuk tanpa hitungan."
    - "Tiap angka pada sebuah bilangan ternyata punya tempat dan harga berbeda."

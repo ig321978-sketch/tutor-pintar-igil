@@ -6,8 +6,8 @@ import { PENUMPANG_PERAHU, PETUNJUK1_INFO_PERAHU, PETUNJUK2_INFO_PERAHU, SELESAI
 
 /**
  * Infografis Kelas 4 Bab 1 Sub-Bab G (dirancang sendiri, dua kartu, tiap kartu satu layar tanpa gulir): data dari Story.
- * Kartu 1 = papan penumpang Bu Marni: tiga lajur perahu (12 x 5, 11 x 5, 14 x 4); titik penumpang digambar sebanyak datanya (sepuluh pertama biru, sisanya oranye),
- * perkalian dan jumlah penumpang kosong sampai diketuk. Kartu 2 = kartu kali susun 12 x 5 di kiri, lima langkahnya (kosong sampai diketuk) di kanan. Digital saja.
+ * Kartu 1 = papan penumpang Bu Marni: tiga lajur perahu (12 x 5, 12 x 4, 14 x 4); titik penumpang digambar sebanyak datanya (sepuluh pertama biru, sisanya oranye),
+ * perkalian dan jumlah penumpang kosong sampai diketuk. Kartu 2 = kartu kali susun 12 x 5 di kiri, enam langkahnya (kosong sampai diketuk, termasuk susun tanpa simpanan 12 x 4) di kanan. Digital saja.
  */
 function Lajur({ b }: { b: BarisPenumpang }) {
   const slot = 280 / b.perahu;
@@ -15,7 +15,7 @@ function Lajur({ b }: { b: BarisPenumpang }) {
   const lebarTitik = Math.min(slot - 12, kolom * 8);
   const jarak = lebarTitik / kolom;
   return (
-    <svg viewBox="0 0 280 44" className="h-auto w-full" role="img" aria-label={`${b.perahu} perahu, tiap perahu ${b.isi} penumpang`} data-perahu={b.perahu} data-isi={b.isi}>
+    <svg viewBox="0 0 280 44" className="mx-auto h-auto w-full max-w-[200px]" role="img" aria-label={`${b.perahu} perahu, tiap perahu ${b.isi} penumpang`} data-perahu={b.perahu} data-isi={b.isi}>
       {Array.from({ length: b.perahu }, (_, p) => {
         const x0 = p * slot;
         const mulai = x0 + (slot - lebarTitik) / 2;
@@ -56,7 +56,7 @@ export default function DaftarPerahuK4B1({ speakGuru, onLanjut, teksLanjut }: { 
         type="button"
         onClick={() => ketuk(kunci, suara)}
         aria-label={t ? aria : `Isi kosong: ${aria.split(":")[0]}`}
-        className={`flex min-h-[40px] w-full items-center justify-center rounded-lg border-[3px] px-1 text-center font-black ${t ? "lm-muncul border-[#15803D] bg-[#ECFDF5] text-sm text-[#1C01A5]" : "border-dashed border-[#B45309] bg-white/80 text-lg text-[#B45309]"}`}
+        className={`flex min-h-[34px] w-full items-center justify-center rounded-lg border-[3px] px-1 text-center font-black ${t ? "lm-muncul border-[#15803D] bg-[#ECFDF5] text-sm text-[#1C01A5]" : "border-dashed border-[#B45309] bg-white/80 text-lg text-[#B45309]"}`}
       >
         {t ? isi : "?"}
       </button>
@@ -94,20 +94,20 @@ export default function DaftarPerahuK4B1({ speakGuru, onLanjut, teksLanjut }: { 
         </div>
       ) : (
         <div className="mx-auto w-full max-w-xl rounded-2xl border-[6px] border-[#7C2D12] bg-[#FFEDD5] p-2 shadow-[0_5px_0_rgba(124,45,18,0.4)]" data-uji="kartu-susun">
-          <div className="grid grid-cols-[5.2rem_1fr] gap-2">
-            <div className="flex flex-col items-end justify-center rounded-lg bg-white p-2 font-black leading-tight text-[#0C4A6E]" role="img" aria-label="12 dikali 5 disusun ke bawah, hasil 60, simpanan 1">
+          <div className="grid grid-cols-[4.4rem_1fr] gap-2">
+            <div className="flex flex-col items-end justify-center rounded-lg bg-white p-1 font-black leading-tight text-[#0C4A6E]" role="img" aria-label="12 dikali 5 disusun ke bawah, hasil 60, simpanan 1">
               <span className="self-start text-sm text-[#EA580C]">1</span>
-              <span className="text-3xl tracking-widest">12</span>
-              <span className="flex w-full justify-between text-3xl">
+              <span className="text-2xl tracking-widest">12</span>
+              <span className="flex w-full justify-between text-2xl">
                 <span>×</span>
                 <span>5</span>
               </span>
               <span className="my-1 h-1 w-full rounded bg-[#0C4A6E]" />
-              <span className="text-3xl text-[#15803D]">60</span>
+              <span className="text-2xl text-[#15803D]">60</span>
             </div>
             <div className="space-y-1">
               {SUSUN_PERAHU.map((s) => (
-                <div key={s.kunci} className="grid grid-cols-[1fr_7.4rem] items-center gap-1.5">
+                <div key={s.kunci} className="grid grid-cols-[1fr_6.2rem] items-center gap-1.5">
                   <p className="text-xs font-black leading-tight text-[#7C2D12]">{s.caption}</p>
                   {kotak(`s-${s.kunci}`, s.suara, s.isi, `${s.caption}: ${s.isi}`)}
                 </div>

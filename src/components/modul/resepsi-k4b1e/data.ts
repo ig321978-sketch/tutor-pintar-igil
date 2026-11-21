@@ -4,6 +4,8 @@
  * kecuali seed Cari kesalahan dari alur (Satria lupa menyimpan; Laras menulis tiga simpan satu). Concrete memakai balok cacah berwarna dan benda penginapan beremoji di meja resepsi,
  * Pictorial memakai balok cacah polos dengan bagan tempat angka di kertas petak, Abstract memakai bilangan bersusun pada kartu di lembar tamu resepsi.
  * Jawaban beragam: memilih jumlah atau tulisan simpanan, menulis satu angka di kanvas, dan mengucapkan satu kata (satuan, puluhan, ditambah, dikurangi) atau bilangan.
+ * Selaras acuan resmi (Bab 1 E): Place Add = cara susun panjang (uraikan tiap bilangan, jumlahkan per tempat, uraikan lagi bagian yang sepuluh atau lebih, lalu gabungkan); jumlah dan simpan = cara susun pendek.
+ * Tugas Place Add berjawaban klik menanyakan bentuk panjang jumlah: Concrete tanpa menyimpan, Pictorial satu kali menyimpan, Abstract dua kali menyimpan.
  * Jawaban benar dihitung dari data. Angka jawaban Tulis di kanvas per tahap: Concrete 7, 8, 6, 3; Pictorial 5, 9, 7, 3; Abstract 4, 7, 5, 1 (tidak kembar dalam satu tahap).
  * Diuji: scripts/uji-resepsi-k4b1e.mjs.
  */
@@ -96,7 +98,7 @@ export const PICTORIAL: SoalMisi[] = [
       "Laras benar: empat belas satuan ditulis empat di satuan dan satu disimpan ke puluhan.",
       true,
     ),
-    tempat("koper", 462, 315, "ratusan"),
+    tempat("koper", 247, 136, "ratusan"),
     salah(
       genap("koper", 517, 398, 400),
       "Satria",
@@ -174,12 +176,13 @@ export const ABSTRACT: SoalMisi[] = [
 ];
 
 export const POIN_PENTING = [
-  "Menjumlahkan bersusun: tulis bilangan ke bawah, satuan di bawah satuan, puluhan di bawah puluhan, dan ratusan di bawah ratusan.",
+  "Menjumlahkan bersusun pendek: tulis bilangan ke bawah, satuan di bawah satuan, puluhan di bawah puluhan, dan ratusan di bawah ratusan.",
   "Jumlahkan dari kanan, mulai dari satuan, lalu puluhan, lalu ratusan.",
-  "Bila jumlah satu tempat sepuluh atau lebih, tulis sisanya dan simpan satu ke tempat di kirinya.",
+  "Bila jumlah satu tempat sepuluh atau lebih, tulis sisanya dan simpan satu ke tempat di kirinya. Bisa satu kali menyimpan, bisa dua kali, seperti 189 + 245.",
   "Sepuluh satuan berubah menjadi satu puluhan, dan sepuluh puluhan berubah menjadi satu ratusan.",
   "Simpanan ikut dijumlahkan di tempat berikutnya, jadi jangan sampai terlupa.",
-  "Tambah Per Tempat: jumlahkan ratusan, puluhan, dan satuan sendiri-sendiri, lalu gabungkan hasilnya.",
+  "Tambah Per Tempat atau susun panjang: uraikan tiap bilangan, 189 = 100 + 80 + 9, lalu jumlahkan ratusan, puluhan, dan satuan sendiri-sendiri.",
+  "Pada susun panjang, bagian yang sepuluh atau lebih diuraikan lagi: 14 = 10 + 4 dan 120 = 100 + 20, lalu digabung per tempat sampai 300 + 120 + 14 menjadi 434.",
   "Genapkan Dulu: bulatkan satu bilangan, jumlahkan, lalu sesuaikan dengan kelebihan atau kekurangannya.",
   "Periksa hasil dengan pembulatan: jumlah dua bilangan harus dekat dengan jumlah bilangan bulatnya.",
 ];

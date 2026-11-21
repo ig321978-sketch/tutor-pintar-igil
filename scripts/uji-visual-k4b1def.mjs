@@ -99,7 +99,7 @@ function berkasKomponen(nama, b) {
 {
   const W = DD.LEBAR_GAMBAR_KELAPA;
   const H = DD.TINGGI_GAMBAR_KELAPA;
-  umum("D", DD.LANGKAH_KELAPA, DD.bungkusJudul, DD.MAKS_HURUF_BARIS_KELAPA, DD.SEL_KARTU1_KELAPA, DD.ATURAN_KELAPA, 10, 4);
+  umum("D", DD.LANGKAH_KELAPA, DD.bungkusJudul, DD.MAKS_HURUF_BARIS_KELAPA, DD.SEL_KARTU1_KELAPA, DD.ATURAN_KELAPA, 10, 5);
   const { peta, info } = berkasKomponen("D", BERKAS.D);
   cek(DD.PIN_KELAPA.length === DD.LANGKAH_KELAPA.length, "D: satu label per langkah");
   cek(DD.PIN_KELAPA.every((p) => dalam(p, W, H) && p.tip[0] >= 0 && p.tip[0] <= W && p.tip[1] >= 0 && p.tip[1] <= H), "D: label dan ujung panah di dalam gambar");
@@ -119,8 +119,8 @@ function berkasKomponen(nama, b) {
   const salah = DD.SEL_KARTU1_KELAPA.find((s) => s.kunci === "salah");
   const jum = (t) => t.split(" + ").map((x) => Number(x.replace(/\./g, ""))).reduce((a, b) => a + b, 0);
   cek(jum(lain.isi) === 5270 && jum(salah.isi) === 5207, "D: cara lain berjumlah 5.270, uraian keliru Satria 5.207");
-  sama(DD.ATURAN_KELAPA.map((a) => a.kunci), ["urai", "susun", "bagan", "periksa"], "D: empat aturan kartu acuan");
-  cek(DD.ATURAN_KELAPA[0].isi === "5.270 = 5.000 + 200 + 70" && DD.ATURAN_KELAPA[2].isi === "5.270 − 4.000 = 1.270" && DD.ATURAN_KELAPA[3].isi === "4.000 + 1.270 = 5.270", "D: aturan sesuai Story");
+  sama(DD.ATURAN_KELAPA.map((a) => a.kunci), ["urai", "susun", "bagan", "periksa", "uang"], "D: lima aturan kartu acuan (empat dari 5.270, uang 7.300)");
+  cek(DD.ATURAN_KELAPA[0].isi === "5.270 = 5.000 + 200 + 70" && DD.ATURAN_KELAPA[2].isi === "5.270 − 4.000 = 1.270" && DD.ATURAN_KELAPA[3].isi === "4.000 + 1.270 = 5.270" && DD.ATURAN_KELAPA[4].isi === "7.300 = 6.000 + 1.000 + 300", "D: aturan sesuai Story");
   cek(DD.ATURAN_KELAPA.every((a) => emojiSah(a.ikon)), "D: ikon aturan sah");
   const sem = DD.LANGKAH_KELAPA.map((l) => `${l.judul} ${l.arti}`).join(" ").toLowerCase();
   for (const s of ["menguraikan", "tempat angka", "harga", "nol", "menyusun", "bagan bagian utuh", "banyak cara", "mengurangkan", "jumlahkan kembali", "ribuan", "ratusan", "puluhan", "satuan"]) cek(sem.includes(s), `D Mind-map: memuat "${s}"`);
@@ -130,7 +130,7 @@ function berkasKomponen(nama, b) {
 {
   const W = DE.LEBAR_GAMBAR_RESEPSI;
   const H = DE.TINGGI_GAMBAR_RESEPSI;
-  umum("E", DE.LANGKAH_RESEPSI, DE.bungkusJudul, DE.MAKS_HURUF_BARIS_RESEPSI, DE.SEL_KARTU1_RESEPSI, DE.SEL_KARTU2_RESEPSI, 12, 5);
+  umum("E", DE.LANGKAH_RESEPSI, DE.bungkusJudul, DE.MAKS_HURUF_BARIS_RESEPSI, DE.SEL_KARTU1_RESEPSI, DE.SEL_KARTU2_RESEPSI, 13, 5);
   const { peta, info } = berkasKomponen("E", BERKAS.E);
   const n = DE.JUMLAH_KOPER_RESEPSI;
   cek(n === DE.LANGKAH_RESEPSI.length && DE.WARNA_KOPER.length >= n, "E: satu koper per langkah");
@@ -156,7 +156,10 @@ function berkasKomponen(nama, b) {
   cek(/\{Array\.from\(\{ length: 10 \}/.test(info), "E: gambar sepuluh satuan sebanyak sepuluh");
   cek(/245 \+ 378/.test(peta) && /500 \+ 110 \+ 13/.test(peta) && /5 \+ 8 = 13/.test(peta) && /378 → 400/.test(peta) && /623/.test(peta), "E: gambar koper memuat angka Story");
   const sem = DE.LANGKAH_RESEPSI.map((l) => `${l.judul} ${l.arti}`).join(" ").toLowerCase();
-  for (const s of ["tulis ke bawah", "kanan", "simpan", "tambah per tempat", "genapkan", "periksa", "satuan", "puluhan", "ratusan"]) cek(sem.includes(s), `E Mind-map: memuat "${s}"`);
+  for (const s of ["tulis ke bawah", "kanan", "simpan", "tambah per tempat", "genapkan", "periksa", "satuan", "puluhan", "ratusan", "susun pendek", "susun panjang", "uraikan", "diuraikan lagi", "satu kali menyimpan", "dua kali"]) cek(sem.includes(s), `E Mind-map: memuat "${s}"`);
+  cek(/600 \+ 20 \+ 3/.test(peta), "E: gambar koper susun panjang memuat 500 + 110 + 13 lalu 600 + 20 + 3");
+  const fp = DE.SEL_KARTU1_RESEPSI.find((x) => x.kunci === "f-panjang");
+  cek(fp && fp.isi === "500 + 110 + 13 = 623" && DE.TAMU_JUMLAH === 200 + 300 + 40 + 70 + 5 + 8 && /f-panjang/.test(info) && /Susun panjang/.test(info), "E: Infografis kartu 1 memuat baris Susun panjang (500 + 110 + 13 = 623)");
 }
 
 /* ------------------------------ F: Papan Sisa ------------------------------ */
@@ -187,9 +190,9 @@ function berkasKomponen(nama, b) {
   cek(DF.LOMPAT_SISA.reduce((a, b) => a + b, 0) === 337, "F: jumlah lompatan sama dengan selisih 337");
   cek(DF.SEL_KARTU1_SISA.find((s) => s.kunci === "b-salah").isi.startsWith("463"), "F: hasil keliru Satria 463");
   cek(/\{Array\.from|data-lompat=\{3\}/.test(info) && /\[0, 1, 2\]\.map/.test(info), "F: garis lompat menggambar tiga busur");
-  cek(/612/.test(peta) && /275/.test(peta) && /2 → 12/.test(peta) && /463/.test(peta) && /337 \+ 275/.test(peta), "F: gambar kartu memuat angka Story");
+  cek(/200\+60\+5/.test(peta) && /100\+30\+3/.test(peta) && /612/.test(peta) && /275/.test(peta) && /2 → 12/.test(peta) && /463/.test(peta) && /337 \+ 275/.test(peta), "F: gambar kartu memuat angka Story");
   const sem = DF.LANGKAH_SISA.map((l) => `${l.judul} ${l.arti}`).join(" ").toLowerCase();
-  for (const s of ["susun sejajar", "satuan", "kanan", "ambil", "sepuluh", "dibalik", "hitung maju", "lompatan", "menambah", "bilangan awal"]) cek(sem.includes(s), `F Mind-map: memuat "${s}"`);
+  for (const s of ["susun sejajar", "susun panjang", "susun pendek", "satuan", "kanan", "ambil", "sepuluh", "dibalik", "hitung maju", "lompatan", "menambah", "bilangan awal"]) cek(sem.includes(s), `F Mind-map: memuat "${s}"`);
 }
 
 /* ------------------------------ Kata tidak terpotong dan perkiraan tinggi ------------------------------ */

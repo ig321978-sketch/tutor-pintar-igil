@@ -1,7 +1,7 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
 import { ADEGAN_CATATAN, ADEGAN_DERMAGA, ADEGAN_SALAH_KANAN } from "./k4b1c-materi-1";
-import { ADEGAN_KALAH, ADEGAN_KIRI, ADEGAN_PULUHAN } from "./k4b1c-materi-2";
+import { ADEGAN_KALAH, ADEGAN_KIRI, ADEGAN_PULUHAN, ADEGAN_SAMA } from "./k4b1c-materi-2";
 import { ADEGAN_PENUTUP, ADEGAN_SELATAN, ADEGAN_URUT } from "./k4b1c-materi-3";
 import { ADEGAN_LUAR_KIRI, ADEGAN_LUAR_KIRI_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k4b1c-luar-1";
 import { ADEGAN_LUAR_GARIS, ADEGAN_LUAR_GARIS_TERAPAN, ADEGAN_LUAR_KARTU, ADEGAN_LUAR_KARTU_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k4b1c-luar-2";
@@ -19,13 +19,14 @@ export const VIDEO_MATERI_K4B1C: VideoStory = {
   subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "membandingkan dan mengurutkan bilangan", daftar: ["Membandingkan dari kiri", "Tanda lebih kecil dan lebih besar", "Mengurutkan"] }),
+    adeganSapaan({ jenis: "materi", topik: "membandingkan dan mengurutkan bilangan", daftar: ["Membandingkan dari kiri", "Tanda lebih kecil, lebih besar, dan sama dengan", "Mengurutkan"] }),
     ADEGAN_DERMAGA,
     ADEGAN_CATATAN,
     ADEGAN_SALAH_KANAN,
     ADEGAN_KIRI,
     ADEGAN_PULUHAN,
     ADEGAN_KALAH,
+    ADEGAN_SAMA,
     ADEGAN_SELATAN,
     ADEGAN_URUT,
     ADEGAN_PENUTUP,

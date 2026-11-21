@@ -3,7 +3,7 @@
 Lanjutan cerita bab "Penginapan Pulau Karang Indah" (lihat `naskah/alur-cerita-k4b1.md`). Tamu G: Bu Marni (pemilik perahu wisata, 👩 bercaping lebar).
 Suara tanpa digit; bilangan yang diucapkan harus tampak sebagai angka di layar pada ketukan yang sama. Naskah TETAP (sesuaikan sedikit hanya bila uji menuntut; laporkan).
 
-Data Story G (jangan dijadikan jawaban CPA): lima perahu, tiap perahu 12 penumpang, 12 x 5 = 60; urai 10 x 5 = 50 dan 2 x 5 = 10, jumlah 60; susun pendek 2 x 5 = 10 tulis 0 simpan 1, 1 x 5 = 5 + 1 = 6; salah Satria 52 (10 x 5 + 2); contoh dengan menyimpan 14 x 4 = 56 hanya di metode global.
+Data Story G (jangan dijadikan jawaban CPA): lima perahu, tiap perahu 12 penumpang, 12 x 5 = 60; urai 10 x 5 = 50 dan 2 x 5 = 10, jumlah 60; susun pendek 2 x 5 = 10 tulis 0 simpan 1, 1 x 5 = 5 + 1 = 6; salah Satria 52 (10 x 5 + 2); contoh dengan menyimpan 14 x 4 = 56 hanya di metode global; contoh tanpa simpanan (buku: 12 x 4 = 48) di adegan `tanpa-simpan`.
 
 ## Video materi (300 sampai 400 kata termasuk sapaan, 9 adegan, 3 ketukan; tanpa latihan)
 
@@ -44,11 +44,11 @@ Sapaan (bersama): topik "perkalian sampai seratus"; daftar: "penjumlahan berulan
    - "Dua kali lima sepuluh, ditulis nol dan satu disimpan, lalu satu kali lima ditambah satu simpanan sama dengan enam."
    - "Hasilnya enam nol, yaitu enam puluh."
    Visual: 12 di atas dan 5 di bawah dengan garis; 2 x 5 = 10 tulis 0 simpan 1; 1 x 5 + 1 = 6; hasil 60.
-8. `perbandingan`
-   - "Genta bertanya, bagaimana kalau tiap perahu hanya memuat sebelas penumpang?"
-   - "Laras menghitung, sebelas kali lima sama dengan lima puluh lima."
-   - "Dengan cara urai, sepuluh kali lima ditambah satu kali lima, hasilnya sama."
-   Visual: 11 x 5 diuraikan 10 x 5 = 50 dan 1 x 5 = 5; 50 + 5 = 55; lima perahu masing-masing bertanda 11.
+8. `tanpa-simpan` (contoh buku: bersusun tanpa menyimpan)
+   - "Genta bertanya, bagaimana kalau hanya empat perahu, dan tiap perahu memuat dua belas penumpang?"
+   - "Laras menyusunnya ke bawah, dua kali empat delapan, lalu satu kali empat empat."
+   - "Delapan muat di satuan, jadi tidak ada yang disimpan, dan hasilnya empat puluh delapan."
+   Visual: empat perahu berlabel 12; papan susun 12 x 4 dengan 2 x 4 = 8 dan 1 x 4 = 4; hasil 48 bertanda "tanpa simpanan".
 9. `penutup` (jembatan ke Sub-Bab H)
    - "Semua perahu sudah penuh, dan Bu Marni berterima kasih pada ketiga anak."
    - "Tiba-tiba Bu Ratna, pengatur kamar, datang membawa daftar tamu yang harus dibagi ke kamar."
@@ -87,7 +87,7 @@ Metode: Repeated Addition (Tambah Berulang), Split and Multiply (Urai Lalu Kali)
 - `luar-kali` (konsep Column Multiply):
   - "Cara ketiga, Column Multiply, atau Kali Susun."
   - "Bilangan ditulis ke bawah, lalu kita mengalikan satuan dulu."
-  - "Kalau hasilnya sepuluh atau lebih, kita menulis satuannya dan menyimpan puluhannya."
+  - "Kalau hasilnya sepuluh atau lebih, kita menulis satuannya dan menyimpan puluhannya. Kalau kurang dari sepuluh, langsung ditulis tanpa menyimpan."
   - "Simpanan itu ditambahkan pada hasil perkalian puluhan."
 - `luar-kali-terapan`:
   - "Satria mengalikan lima belas dengan enam."

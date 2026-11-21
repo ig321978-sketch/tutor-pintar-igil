@@ -2,7 +2,7 @@ import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
 import { ADEGAN_PERAHU, ADEGAN_SALAH_PULUH, ADEGAN_SUSUN } from "./k4b1g-materi-1";
 import { ADEGAN_DAYUNG, ADEGAN_ULANG, ADEGAN_URAI } from "./k4b1g-materi-2";
-import { ADEGAN_BERSUSUN, ADEGAN_PENUTUP, ADEGAN_PERBANDINGAN } from "./k4b1g-materi-3";
+import { ADEGAN_BERSUSUN, ADEGAN_PENUTUP, ADEGAN_TANPA_SIMPAN } from "./k4b1g-materi-3";
 import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_ULANG, ADEGAN_LUAR_ULANG_TERAPAN } from "./k4b1g-luar-1";
 import { ADEGAN_LUAR_KALI, ADEGAN_LUAR_KALI_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_URAI, ADEGAN_LUAR_URAI_TERAPAN } from "./k4b1g-luar-2";
 
@@ -27,7 +27,7 @@ export const VIDEO_MATERI_K4B1G: VideoStory = {
     ADEGAN_ULANG,
     ADEGAN_DAYUNG,
     ADEGAN_BERSUSUN,
-    ADEGAN_PERBANDINGAN,
+    ADEGAN_TANPA_SIMPAN,
     ADEGAN_PENUTUP,
   ],
 };

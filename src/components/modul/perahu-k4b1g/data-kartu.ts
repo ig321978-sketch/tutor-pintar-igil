@@ -1,16 +1,16 @@
 /**
  * Data Mind-map dan Infografis Kelas 4 Bab 1 Sub-Bab G "Baris Perahu Bu Marni" (dirancang ulang, tanpa komponen kartu bersama).
- * Mind-map: "Rute Perahu", lima perahu berjalan zig-zag di air; tiap perahu membawa gambar satu langkah (jumlahkan berulang, urai, kali tiap bagian, susun satuan dulu, simpanan, periksa)
+ * Mind-map: "Rute Perahu", lima perahu berjalan zig-zag di air; tiap perahu membawa gambar satu langkah (jumlahkan berulang, urai, kali tiap bagian, susun dengan dan tanpa simpanan, periksa)
  * dan satu label kosong yang diketuk: judul langkah muncul dan dibacakan Guru.
- * Infografis: dua kartu dari angka Story. Kartu 1 = papan penumpang (12 x 5 = 60 dan 11 x 5 = 55 dari materi, 14 x 4 = 56 dari metode global), titik penumpang digambar sebanyak datanya;
- * kartu 2 = kartu kali susun 12 x 5 (satuan dulu, tulis dan simpan, puluhan ditambah simpanan, hasil 60, dan salah Satria 10 x 5 + 2 = 52). Digital saja.
+ * Infografis: dua kartu dari angka Story. Kartu 1 = papan penumpang (12 x 5 = 60 dan 12 x 4 = 48 dari materi, 14 x 4 = 56 dari metode global), titik penumpang digambar sebanyak datanya;
+ * kartu 2 = kartu kali susun 12 x 5 (satuan dulu, tulis dan simpan, puluhan ditambah simpanan, hasil 60, dan salah Satria 10 x 5 + 2 = 52) dengan satu baris tambahan susun tanpa simpanan 12 x 4 = 48. Digital saja.
  * Suara tanpa digit (eja lewat eja-k4b1.ts). Diuji: scripts/uji-visual-k4b1ghi.mjs.
  */
 import { kataBilK4B1 } from "../eja-k4b1";
 
 export type LangkahPeta = { judul: string; arti: string };
 
-/** Enam langkah Mind-map: Repeated Addition, Split and Multiply, dan Column Multiply (dengan simpanan), ditutup periksa dengan cara lain. Arti dibacakan Guru (tanpa digit). */
+/** Lima langkah Mind-map: Repeated Addition, Split and Multiply, dan Column Multiply (dengan simpanan dan tanpa simpanan), ditutup periksa dengan cara lain. Arti dibacakan Guru (tanpa digit). */
 export const LANGKAH_PERAHU: LangkahPeta[] = [
   {
     judul: "Jumlahkan berulang",
@@ -25,8 +25,8 @@ export const LANGKAH_PERAHU: LangkahPeta[] = [
     arti: "Langkah tiga. Kalikan tiap bagian dengan lima. Sepuluh kali lima sama dengan lima puluh, dua kali lima sama dengan sepuluh. Jumlahkan keduanya, hasilnya enam puluh.",
   },
   {
-    judul: "Susun, satuan dulu",
-    arti: "Langkah empat. Tulis bilangan ke bawah, lalu kalikan satuan lebih dulu. Dua kali lima sama dengan sepuluh. Tulis nol, simpan satu. Lalu satu kali lima sama dengan lima, ditambah simpanan satu sama dengan enam. Hasilnya enam puluh.",
+    judul: "Susun, simpan atau tidak",
+    arti: "Langkah empat. Tulis bilangan ke bawah, lalu kalikan satuan lebih dulu. Dua kali lima sama dengan sepuluh. Tulis nol, simpan satu. Lalu satu kali lima sama dengan lima, ditambah simpanan satu sama dengan enam. Hasilnya enam puluh. Kalau hasil kali satuan kurang dari sepuluh, seperti dua belas kali empat, tidak ada yang disimpan: tulis delapan, simpan nol, hasilnya empat puluh delapan.",
   },
   {
     judul: "Periksa cara lain",
@@ -53,10 +53,10 @@ const baris = (kunci: string, nama: string, isi: number, perahu: number): BarisP
     { label: "Jumlah", isi: `${isi * perahu}`, suara: `Jumlah penumpang seluruhnya ${kata(isi * perahu)}.` },
   ],
 });
-/** Tiga baris dari Story: perahu penuh (12 x 5), perahu sebelas penumpang (11 x 5), dan contoh metode global (14 x 4). */
+/** Tiga baris dari Story: perahu penuh (12 x 5), empat perahu tanpa simpanan (12 x 4), dan contoh metode global (14 x 4). */
 export const PENUMPANG_PERAHU: BarisPenumpang[] = [
   baris("penuh", "12 penumpang tiap perahu, 5 perahu", 12, 5),
-  baris("sebelas", "11 penumpang tiap perahu, 5 perahu", 11, 5),
+  baris("tanpa", "12 penumpang tiap perahu, 4 perahu", 12, 4),
   baris("global", "14 penumpang tiap perahu, 4 perahu", 14, 4),
 ];
 export const JUDUL_PAPAN_PERAHU = "Papan penumpang";
@@ -68,10 +68,11 @@ export type LangkahSusun = { kunci: string; caption: string; isi: string; suara:
 /** Kali susun dua belas kali lima dari Story G, ditutup salah Satria (satuan terlewat). */
 export const SUSUN_PERAHU: LangkahSusun[] = [
   { kunci: "satuan", caption: "Satuan dikali dulu", isi: "2 × 5 = 10", suara: "Satuan dikali dulu. Dua kali lima sama dengan sepuluh." },
-  { kunci: "simpan", caption: "Satuan ditulis, puluhan disimpan", isi: "tulis 0, simpan 1", suara: "Tulis nol, simpan satu." },
-  { kunci: "puluhan", caption: "Puluhan dikali, tambah simpanan", isi: "1 × 5 + 1 = 6", suara: "Satu kali lima sama dengan lima, ditambah satu simpanan sama dengan enam." },
+  { kunci: "simpan", caption: "Tulis satuan, simpan puluhan", isi: "tulis 0, simpan 1", suara: "Tulis nol, simpan satu." },
+  { kunci: "puluhan", caption: "Puluhan dikali, tambah simpan", isi: "1 × 5 + 1 = 6", suara: "Satu kali lima sama dengan lima, ditambah satu simpanan sama dengan enam." },
   { kunci: "hasil", caption: "Hasil akhir", isi: "60", suara: "Hasil akhirnya enam puluh penumpang." },
   { kunci: "salah", caption: "Satuan terlewat jadi", isi: "10 × 5 + 2 = 52, keliru", suara: "Kalau satuan dua tidak ikut dikali lima, hasilnya lima puluh dua. Itu keliru, karena seharusnya enam puluh." },
+  { kunci: "tanpa", caption: "Tanpa simpanan, 12 × 4", isi: "2 × 4 = 8, simpan 0", suara: "Dua belas kali empat. Dua kali empat sama dengan delapan, kurang dari sepuluh, jadi tulis delapan dan simpan nol. Satu kali empat sama dengan empat. Hasilnya empat puluh delapan." },
 ];
 export const PETUNJUK2_INFO_PERAHU = "Ketuk tanda tanya di kanan untuk melihat tiap langkah susun.";
 export const SELESAI2_INFO_PERAHU = "Kartu kali susun lengkap! Satuan dulu, simpan, lalu puluhan.";

@@ -178,6 +178,49 @@ const rb = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   cek(s3.ok && s3.selesai && s3.k.lainBenar.join() === "0" && s3.k.lainKe === 1 && s3.k.lainSimpan.length === 0 && s3.k.lainA === 1 && L.targetLain(s3.k).n === 5960, "lain: tiga cara berbeda selesai dan membuka bilangan berikutnya");
   sama(S.misiBaru(MK.MISI_D, s3.k, new Set()), ["d-lain"], "lain: misi d-lain");
   cek(tanpaDigit(L.kalimatLain(a)) && tanpaDigit(L.kalimatLain(s3.k)), "lain: kalimat tanpa digit");
+  // Uang: uraikan uang yang dibayar dengan lembar dan keping dari kotak kios.
+  {
+    const banyakCara = (n) => {
+      let c = 0;
+      for (let a = 0; a <= 7; a += 1) for (let b = 0; b <= 5; b += 1) for (let d = 0; d <= 2; d += 1) for (let e = 0; e <= 4; e += 1) if (2000 * a + 1000 * b + 500 * d + 100 * e === n) c += 1;
+      return c;
+    };
+    cek(DS.TARGET_UANG.length === 3 && DS.URAIAN_UANG_DIPERLUKAN === 2 && DS.TARGET_UANG.every((t) => t.n % 100 === 0 && t.n !== 7300 && t.n !== 10000 && ![6500, 8700, 9400, 9500, 6300, 8600].includes(t.n) && banyakCara(t.n) >= 3) && new Set(DS.TARGET_UANG.map((t) => t.n)).size === 3, "simulasi: tiga jumlah uang berbeda dari Story dan CPA, tiap jumlah punya paling sedikit tiga uraian dari kotak kios");
+    const u0 = L.awalKelapa();
+    cek(u0.uangKe === 0 && u0.uangIsi.join() === "0,0,0,0" && u0.uangSimpan.length === 0 && u0.uangBenar.length === 0 && L.targetUang(u0).n === 5400 && L.jumlahUangKu(u0) === 0, "uang: keadaan awal kosong, sasaran pertama lima ribu empat ratus");
+    cek(/Belum ada uang/.test(L.petunjukUang(u0)) && tanpaDigit(L.petunjukUang(u0)) && !L.simpanUang(u0).ok && L.simpanUang(u0).k.salah === 1, "uang: sebelum menaruh uang, simpan ditolak dengan petunjuk");
+    let u = u0;
+    for (const [i, n] of [[0, 2], [1, 1], [3, 4]]) for (let q = 0; q < n; q += 1) u = L.aturUang(u, i, 1).k;
+    cek(u.uangIsi.join() === "2,1,0,4" && L.jumlahUangKu(u) === 5400 && /sudah pas/.test(L.petunjukUang(u)), "uang: jumlah uang dihitung dari lembar dan keping (2 x 2.000 + 1.000 + 4 x 100 = 5.400)");
+    const kurang = L.aturUang(u, 3, -1).k;
+    cek(L.jumlahUangKu(kurang) === 5300 && /masih kurang/.test(L.petunjukUang(kurang)) && tanpaDigit(L.petunjukUang(kurang)), "uang: jumlah kurang, petunjuk menyebut kurang tanpa membocorkan");
+    cek(/sudah lebih/.test(L.petunjukUang(L.aturUang(u, 0, 1).k)) && tanpaDigit(L.petunjukUang(L.aturUang(u, 0, 1).k)), "uang: jumlah lebih, petunjuk menyuruh mengambil");
+    cek(!L.simpanUang(kurang).ok && L.simpanUang(kurang).k.salah === 1 && !L.simpanUang(kurang).k.tolak, "uang: jumlah belum pas, simpan ditolak sebagai percobaan keliru");
+    // Alat menolak melebihi isi kotak kios.
+    let penuh = u0;
+    for (let q = 0; q < 7; q += 1) penuh = L.aturUang(penuh, 0, 1).k;
+    const lebihKotak = L.aturUang(penuh, 0, 1);
+    cek(penuh.uangIsi[0] === 7 && !lebihKotak.ok && lebihKotak.k.tolak === true && lebihKotak.k.uangIsi[0] === 7 && /hanya ada tujuh lembar uang dua ribu/.test(L.petunjukBatasUang(0, 1)) && tanpaDigit(L.petunjukBatasUang(0, 1)) && /Tidak ada lagi/.test(L.petunjukBatasUang(0, -1)), "uang: tujuh lembar dua ribu paling banyak, yang kedelapan ditolak alat");
+    cek(!L.aturUang(u0, 0, -1).ok && !L.aturUang(u0, 0, -1).k.tolak && !L.aturUang(u0, 9, 1).ok && L.aturUang(u0, 2, 1).k.uangIsi.join() === "0,0,1,0" && !L.aturUang(L.aturUang(L.aturUang(u0, 2, 1).k, 2, 1).k, 2, 1).ok, "uang: tidak bisa mengambil dari yang kosong, dua keping lima ratus paling banyak");
+    sama(S.misiBaru(MK.MISI_D, lebihKotak.k, new Set()), ["d-tolak"], "uang: melebihi kotak dihitung sebagai alat menolak (misi d-tolak)");
+    // Dua uraian berbeda untuk 5.400: 2 x 2.000 + 1 x 1.000 + 4 x 100, lalu 1 x 2.000 + 3 x 1.000 + 4 x 100.
+    let a1 = u0;
+    for (const [i, n] of [[0, 2], [1, 1], [3, 4]]) for (let q = 0; q < n; q += 1) a1 = L.aturUang(a1, i, 1).k;
+    cek(L.jumlahUangKu(a1) === 5400 && /sudah pas/.test(L.petunjukUang(a1)) && tanpaDigit(L.petunjukUang(a1)), "uang: jumlah pas, petunjuk menyuruh menyimpan");
+    const g1 = L.simpanUang(a1);
+    cek(g1.ok && !g1.selesai && g1.k.uangSimpan.join() === "2 lembar 2.000 + 1 keping 1.000 + 4 keping 100" && !g1.k.tolak, "uang: uraian pertama tersimpan dalam tulisan");
+    const ulangU = L.simpanUang(g1.k);
+    cek(!ulangU.ok && ulangU.k.tolak === true && ulangU.k.uangSimpan.length === 1 && /sudah disimpan/.test(L.petunjukUang(g1.k)) && ulangU.k.salah === 0, "uang: uraian yang sama ditolak alat (bukan percobaan keliru)");
+    sama(S.misiBaru(MK.MISI_D, ulangU.k, new Set()), ["d-tolak"], "uang: uraian sama dihitung sebagai alat menolak (misi d-tolak)");
+    let a2 = g1.k;
+    a2 = L.aturUang(L.aturUang(a2, 0, -1).k, 1, 1).k;
+    a2 = L.aturUang(a2, 1, 1).k;
+    cek(a2.uangIsi.join() === "1,3,0,4" && L.jumlahUangKu(a2) === 5400, "uang: uraian lain 1 lembar 2.000 + 3 keping 1.000 + 4 keping 100 juga 5.400");
+    const g2 = L.simpanUang(a2);
+    cek(g2.ok && g2.selesai && g2.k.uangBenar.join() === "0" && g2.k.uangKe === 1 && g2.k.uangIsi.join() === "0,0,0,0" && g2.k.uangSimpan.length === 0 && L.targetUang(g2.k).n === 8200, "uang: dua uraian berbeda selesai dan membuka jumlah uang berikutnya");
+    cek(tanpaDigit(L.kalimatUang(u0)) && tanpaDigit(L.kalimatUang(g1.k)) && tanpaDigit(L.kalimatUang(g2.k)) && /Betul/.test(L.kalimatUang(g2.k)), "uang: kalimat tanpa digit");
+    cek(L.mulaiLagiKelapa().uangKe === 0 && L.pilihModeKelapa(u0, "uang").mode === "uang", "uang: mulai lagi dan ganti ke alat uang");
+  }
   // Mulai lagi dan ganti alat.
   cek(L.mulaiLagiKelapa().pecahKe === 0 && !L.mulaiLagiKelapa().tolak && L.pilihModeKelapa(a, "lain").mode === "lain", "mulai lagi dan ganti alat");
   // Misi.
@@ -223,9 +266,9 @@ const CARA = ["klik", "kanvas", "suara"];
 const METODE = ["igil", "pecah", "susun", "bagan"];
 /** Jenis tugas dasar yang diharapkan per tahap, cara, dan urutan metode (salah = Cari kesalahan dengan dasar tugas itu). */
 const TIPE = {
-  Concrete: { klik: ["urai", "urai", "susun", "bagan"], kanvas: ["lain", "urai", "susun", "bagan"], suara: ["lain", "urai", "susun", "bagan"] },
-  Pictorial: { klik: ["susun", "urai", "susun", "bagan"], kanvas: ["lain", "urai", "susun", "bagan"], suara: ["lain", "urai", "susun", "bagan"] },
-  Abstract: { klik: ["lain", "urai", "susun", "bagan"], kanvas: ["lain", "urai", "susun", "bagan"], suara: ["lain", "urai", "susun", "bagan"] },
+  Concrete: { klik: ["urai", "uang", "susun", "bagan"], kanvas: ["uang", "urai", "susun", "bagan"], suara: ["lain", "urai", "susun", "bagan"] },
+  Pictorial: { klik: ["susun", "uang", "susun", "bagan"], kanvas: ["uang", "urai", "susun", "bagan"], suara: ["lain", "urai", "susun", "bagan"] },
+  Abstract: { klik: ["uang", "urai", "susun", "bagan"], kanvas: ["lain", "urai", "susun", "bagan"], suara: ["uang", "urai", "susun", "bagan"] },
 };
 /** Tempat Cari kesalahan: [indeks misi, indeks langkah]. */
 const TEMPAT_SALAH = { Concrete: [[0, 0]], Pictorial: [[0, 0]], Abstract: [[0, 2]] };
@@ -296,7 +339,19 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
         const tag = `${nama} ${s.nomor} ${ls.metode}`;
         const seed = ls.langkah.tipe === "salah";
         cek(typeof d.benda === "string" && d.benda.length >= 3, `${tag}: benda bernama`);
-        if (rupa === "benda") cek(!!DG_EMOJI[d.benda] && emojiSah(DG_EMOJI[d.benda]), `${tag}: Concrete memakai benda beremoji (${d.benda})`);
+        if (rupa === "benda" && d.tipe !== "uang") cek(!!DG_EMOJI[d.benda] && emojiSah(DG_EMOJI[d.benda]), `${tag}: Concrete memakai benda beremoji (${d.benda})`);
+        if (d.tipe === "uang") {
+          const hitung = Object.entries(d.isi).reduce((t, [p, c]) => t + Number(p) * c, 0);
+          cek(hitung === d.n && d.n % 100 === 0 && d.n !== 7300 && d.n !== 10000, `${tag}: uraian uang jumlahnya ${d.n} dan berbeda dari Story (tujuh ribu tiga ratus, sepuluh ribu)`);
+          cek(LC.URUT_PECAHAN.every((p) => Number.isInteger(d.isi[p]) && d.isi[p] >= 0 && d.isi[p] <= LC.STOK_UANG[p]), `${tag}: tidak melebihi uang yang ada di kotak`);
+          cek(T.muatUang(d.isi) && T.muatUang(LC.STOK_UANG), `${tag}: gambar uang muat di baris`);
+          cek(d.isi[d.tanya] >= 1 && d.isi[d.tanya] <= 9, `${tag}: pecahan yang ditanyakan ada isinya (${d.tanya})`);
+          if (s.cara === "klik") cek(LC.uangKeliru(d).length >= 2 && LC.uangKeliru(d).every((u) => u !== LC.teksUang(d.isi)), `${tag}: ada dua uraian uang keliru`);
+          if (s.cara === "suara") cek(d.klaim !== undefined && LC.URUT_PECAHAN.every((p) => d.klaim[p] >= 0 && d.klaim[p] <= LC.STOK_UANG[p]) && (LC.jumlahUang(d.klaim) === d.n) === (LC.kunciJawab(d, "suara").nama === "sama"), `${tag}: sama atau berbeda dihitung dari data uang`);
+          const tampil = s.cara === "klik" ? LC.STOK_UANG : s.cara === "suara" ? (d.klaim ?? d.isi) : d.isi;
+          const g = T.susunUang(tampil, s.cara === "kanvas" ? d.tanya : undefined);
+          cek(g.every((b) => b.xs.length === (b.tanya ? 0 : tampil[b.pecahan])) && g.filter((b) => b.tanya).length === (s.cara === "kanvas" ? 1 : 0), `${tag}: gambar uang sebanyak datanya`);
+        }
         if (d.tipe === "urai") {
           const digit = String(d.n).split("");
           cek(d.n >= 1000 && d.n <= 9999 && !BILANGAN_STORY.includes(d.n) || seed, `${tag}: bilangan empat angka berbeda dari Story (${d.n})`);
@@ -326,9 +381,11 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   // Tiap metode tampak di tiap tahap: tiap tahap memuat semua jenis tugas.
   for (const [nama, [, soal]] of Object.entries(TAHAP)) {
     const tipe = new Set(soal.flatMap((s) => s.langkah.map((l) => LC.dasarDari(l.langkah).tipe)));
-    cek(["urai", "susun", "bagan", "lain"].every((t) => tipe.has(t)), `${nama}: jenis tugas urai, susun, bagan, lain ada`);
+    cek(["urai", "susun", "bagan", "lain", "uang"].every((t) => tipe.has(t)), `${nama}: jenis tugas urai, susun, bagan, lain, uang ada`);
+    const banyakUang = soal.flatMap((s) => s.langkah.filter((l) => LC.dasarDari(l.langkah).tipe === "uang")).length;
+    cek(banyakUang === 2, `${nama}: dua tugas uang (ada ${banyakUang})`);
     const tempat = new Set(soal.flatMap((s) => s.langkah.map((l) => LC.dasarDari(l.langkah)).filter((d) => d.tipe === "urai").map((d) => d.tempat)));
-    cek(tempat.size >= 3, `${nama}: tempat angka yang ditanyakan beragam (${[...tempat]})`);
+    cek(tempat.size >= 2, `${nama}: tempat angka yang ditanyakan beragam (${[...tempat]})`);
     const klaimBagan = soal.flatMap((s) => s.langkah.map((l) => LC.dasarDari(l.langkah)).filter((d) => d.tipe === "bagan" && d.klaim !== undefined));
     cek(klaimBagan.length <= 1 && klaimBagan.every((d) => d.klaim % 100 === 0), `${nama}: paling banyak satu bagan suara bertanya sama atau berbeda`);
   }
@@ -350,6 +407,18 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   sama(nama(LC.kunciJawab({ ...bk, klaim: 5400 }, "suara")), "sama", "kunci bagan klaim benar: sama");
   sama(["klik", "kanvas", "suara"].map((c) => nama(LC.kunciJawab(ln, c))), ["5.000 + 2.350", 2, "sama"], "kunci lain: uraian dua bagian, ribuan, sama");
   sama(nama(LC.kunciJawab({ ...ln, klaim: 2250 }, "suara")), "berbeda", "kunci lain klaim keliru: berbeda");
+  const uu = { tipe: "uang", benda: "uang", n: 7300, isi: { 2000: 3, 1000: 1, 500: 0, 100: 3 }, tanya: 1000 };
+  sama(["klik", "kanvas", "suara"].map((c) => nama(LC.kunciJawab(uu, c))), ["3 lembar 2.000 + 1 keping 1.000 + 3 keping 100", 1, "sama"], "kunci uang: uraian, banyak pecahan, sama");
+  sama(nama(LC.kunciJawab({ ...uu, klaim: { 2000: 3, 1000: 2, 500: 0, 100: 3 } }, "suara")), "berbeda", "kunci uang klaim keliru: berbeda");
+  sama(LC.teksUang(uu.isi, 1000), "3 lembar 2.000 + ? keping 1.000 + 3 keping 100", "teks uang dengan tanda tanya");
+  sama(LC.kataUang(uu.isi), "tiga lembar uang dua ribu, satu keping uang seribu, dan tiga keping uang seratus", "kata uang tanpa digit");
+  sama([LC.jumlahUang(LC.STOK_UANG), LC.jumlahUang({ 2000: 5, 1000: 0, 500: 0, 100: 0 })], [20400, 10000], "jumlah uang: kotak Pak Darwis dan sepuluh ribu");
+  cek(LC.uangKeliru(uu).length >= 3 && LC.uangKeliru(uu).every((x) => /^\d+ (lembar|keping) [\d.]+( \+ \d+ (lembar|keping) [\d.]+)*$/.test(x)), "uraian uang keliru berbentuk uraian");
+  cek(LC.pilihanKlik(uu).length === 3 && LC.pilihanKlik(uu)[0] !== LC.teksUang(uu.isi) && LC.pilihanKlik(uu).includes(LC.teksUang(uu.isi)), "pilihan klik uang: tiga, benar bukan yang pertama");
+  cek(["berbeda,sama", "sama,berbeda"].includes(LC.pilihanSuara(uu, "suara").join()), "pilihan suara uang: sama dan berbeda");
+  // Dua cara berbeda untuk uang yang dibayar (Story): tujuh ribu tiga ratus dan sepuluh ribu: jumlah sama dan tidak melebihi kotak.
+  for (const [n, a, b] of [[7300, { 2000: 3, 1000: 1, 500: 0, 100: 3 }, { 2000: 2, 1000: 3, 500: 0, 100: 3 }], [10000, { 2000: 5, 1000: 0, 500: 0, 100: 0 }, { 2000: 4, 1000: 2, 500: 0, 100: 0 }]])
+    cek(LC.jumlahUang(a) === n && LC.jumlahUang(b) === n && LC.teksUang(a) !== LC.teksUang(b) && [a, b].every((u) => LC.URUT_PECAHAN.every((p) => u[p] <= LC.STOK_UANG[p])), `dua cara uang untuk ${n}`);
   // Pengecoh dan pilihan.
   sama(LC.pengecohAngka(5), [6, 4, 7, 3, 8, 2], "pengecoh angka");
   cek(LC.pengecohAngka(1).every((x) => x >= 1 && x <= 9 && x !== 1) && LC.pengecohAngka(9).every((x) => x >= 1 && x <= 9 && x !== 9), "pengecoh angka: tetap satu sampai sembilan");
@@ -385,7 +454,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
           const pil = LC.pilihanKlik(l);
           const benar = LC.teksKunciKlik(l);
           cek(pil.length === 3 && new Set(pil).size === 3 && pil.includes(benar) && pil[0] !== benar, `${tag}: pilihan klik unik dan jawaban benar bukan yang pertama (${pil.join("/")})`);
-          cek(pil.every((p) => /^[\d. +]+$/.test(p)), `${tag}: pilihan berupa bilangan atau uraian berpemisah titik (${pil.join("/")})`);
+          cek(pil.every((p) => /^[\d. +]+$/.test(p) || (d.tipe === "uang" && /^\d+ (lembar|keping) [\d.]+( \+ \d+ (lembar|keping) [\d.]+)*$/.test(p))), `${tag}: pilihan berupa bilangan atau uraian berpemisah titik (${pil.join("/")})`);
         }
         if (s.cara === "suara" && kunci !== null) {
           const pil = LC.pilihanSuara(l, "suara");

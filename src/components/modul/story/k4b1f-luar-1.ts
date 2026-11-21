@@ -59,9 +59,9 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 
 /* ------------------------------ Column Subtract: konsep ------------------------------ */
 const SUARA_S1 = "Cara pertama, Column Subtract, atau Susun dan Pinjam.";
-const SUARA_S2 = "Bilangan ditulis ke bawah, dan kita mengurangkan dari satuan ke arah kiri.";
+const SUARA_S2 = "Susun pendek menulis bilangan ke bawah, susun panjang menguraikannya dulu, dan keduanya mengurangkan dari satuan ke arah kiri.";
 const SUARA_S3 = "Kalau angka di atas lebih kecil, kita mengambil satu dari tempat di kirinya.";
-const SUARA_S4 = "Satu yang diambil menjadi sepuluh di tempat kanan, lalu pengurangan dilanjutkan.";
+const SUARA_S4 = "Satu yang diambil menjadi sepuluh di tempat kanan, itu satu kali mengambil, lalu pengurangan dilanjutkan.";
 const A2 = idSel("ps", "a", 2);
 const A1 = idSel("ps", "a", 1);
 
@@ -82,7 +82,8 @@ export const ADEGAN_LUAR_SUSUN: AdeganStory = {
       SUARA_S2,
       bersih(0),
       tambah(0, judul("Dari Satuan ke Kiri"), ...papanTulis("pt", 8, 28, 284, 124)),
-      tambah("ditulis", ...papanSusun("ps", PX, PY, ["7", "4", "6"], ["3", "1", "2"])),
+      tambah("pendek", ...papanSusun("ps", PX, PY, ["7", "4", "6"], ["3", "1", "2"]), teks("jp", 254, 66, "pendek", 9, W.kapur)),
+      tambah("menguraikannya", teks("jq", 254, 94, "panjang", 9, W.kapur), teks("jr", 254, 108, "diuraikan", 8, W.kapurMerah)),
       tambah("satuan", teks("ls", 186, 142, "satuan", 8, W.kapur)),
       tambah("kiri.", panah("ar", 180, 138, -80, 0, W.kapurMerah, 2.4), teks("lk", 98, 142, "kiri", 8, W.kapur)),
     ),
@@ -99,6 +100,7 @@ export const ADEGAN_LUAR_SUSUN: AdeganStory = {
       ubah("Satu", { id: A1, isi: "2", warna: W.merah }),
       ubah("menjadi", { id: A2, isi: "12", warna: W.merah }),
       tambah("sepuluh", teks("p10", 254, 96, "+10", 12, W.kapurMerah)),
+      tambah("kali", teks("k1", 254, 126, "1 kali ambil", 8.4, W.kapurMerah)),
       tambah("lalu", isiSel("ps", PX, PY, 2, 2, "5", 13, W.hijau)),
       tambah("dilanjutkan.", emo("lj", 150, 136, E.perahuKecil, 14)),
     ),

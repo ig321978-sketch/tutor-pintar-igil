@@ -82,6 +82,7 @@ export const PERIKSA_JATAH: KotakPeriksa[] = [
   { kunci: "sama", caption: "Hasilnya harus sama dengan", isi: "56, jumlah tamu", suara: "Hasilnya harus sama dengan yang dibagi, yaitu lima puluh enam tamu." },
   { kunci: "sisa", caption: "Sisa dari 59 : 4 adalah", isi: "3 tamu", suara: "Lima puluh sembilan dibagi empat, hasilnya empat belas sisa tiga tamu." },
   { kunci: "kecil", caption: "Sisa harus lebih kecil dari", isi: "pembagi, yaitu 4", suara: "Sisa harus lebih kecil daripada pembagi, yaitu empat." },
+  { kunci: "wadah", caption: "48 permen ke 2, 3, 4, 6, 8 wadah", isi: "24, 16, 12, 8, 6", suara: "Empat puluh delapan permen dibagi ke dua, tiga, empat, enam, atau delapan wadah, semuanya habis. Tiap wadah mendapat dua puluh empat, enam belas, dua belas, delapan, dan enam. Makin banyak wadah, makin sedikit permen di tiap wadah." },
   { kunci: "salah", caption: "Angka 6 lupa diturunkan jadi", isi: "11, keliru", suara: "Kalau angka enam lupa diturunkan, hasilnya hanya sebelas. Itu keliru, karena seharusnya empat belas." },
 ];
 export const PETUNJUK2_INFO_JATAH = "Ketuk tanda tanya untuk melihat isi tiap kertas.";

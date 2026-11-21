@@ -50,6 +50,15 @@ export const URUT_TEMPAT: Tempat[] = ["satuan", "puluhan", "ratusan"];
 export const angkaDi = (n: number, t: Tempat): number => (t === "satuan" ? n % 10 : t === "puluhan" ? Math.floor(n / 10) % 10 : Math.floor(n / 100));
 const digitAsc = (n: number): number[] => [angkaDi(n, "satuan"), angkaDi(n, "puluhan"), angkaDi(n, "ratusan")];
 export const hasilKurang = (a: number, b: number): number => a - b;
+/** Uraian bilangan ke ratusan, puluhan, satuan (hanya bagian yang bukan nol): 265 menjadi "200 + 60 + 5". */
+export const uraian = (n: number): string => [angkaDi(n, "ratusan") * 100, angkaDi(n, "puluhan") * 10, angkaDi(n, "satuan")].filter((v) => v > 0).join(" + ");
+/** Uraian dalam kata (tanpa digit): "dua ratus ditambah enam puluh ditambah lima". */
+export const uraianKata = (n: number): string => [angkaDi(n, "ratusan") * 100, angkaDi(n, "puluhan") * 10, angkaDi(n, "satuan")].filter((v) => v > 0).map(kataBil).join(" ditambah ");
+/** Banyak kali mengambil dalam kata: "tanpa mengambil", "satu kali mengambil", "dua kali mengambil". */
+export const kataAmbil = (a: number, b: number): string => {
+  const m = tempatAmbil(a, b).filter(Boolean).length;
+  return m === 0 ? "tanpa mengambil" : m === 1 ? "satu kali mengambil" : "dua kali mengambil";
+};
 /** Tempat yang harus mengambil dari tempat di kirinya (dari satuan ke kiri, memperhitungkan angka yang sudah diambil): indeks 0 satuan sampai 2 ratusan. */
 export function tempatAmbil(a: number, b: number): boolean[] {
   const da = digitAsc(a);
@@ -109,7 +118,7 @@ export const lompatPertama = (b: number): number => (b % 10 === 0 ? 0 : 10 - (b 
 
 /* ------------------------------ Jenis tugas ------------------------------ */
 /** Column Subtract: a dikurangi b bersusun; `tempat` = tempat angka hasil yang ditanyakan pada tugas kanvas. */
-export type LSusun = { tipe: "susun"; benda: string; a: number; b: number; tempat: Tempat };
+export type LSusun = { tipe: "susun"; benda: string; a: number; b: number; tempat: Tempat; /** Susun panjang: kedua bilangan ditampilkan terurai (265 = 200 + 60 + 5) dan dikurangkan tiap tempat. Tanpa tanda: susun pendek. */ panjang?: boolean };
 /** Tempat angka yang harus mengambil: yang pertama (klik dan suara) atau banyaknya (kanvas). */
 export type LAmbil = { tipe: "ambil"; benda: string; a: number; b: number };
 /** Count Up: hitung maju dari b sampai a; selisih (klik dan suara) atau lompatan pertama (kanvas). */
@@ -271,6 +280,8 @@ export function kalimatKunci(l: Langkah, cara: Cara): string {
       const sisa = d.a - d.b;
       if (cara === "kanvas") return `Dikurangkan dari satuan ke kiri, hasilnya ${kataBil(sisa)}, dan angka di tempat ${d.tempat} adalah ${kataBil(n)}.`;
       const m = banyakAmbil(d.a, d.b);
+      if (d.panjang)
+        return `Susun panjang: ${kataBil(d.a)} menjadi ${uraianKata(d.a)}, dan ${kataBil(d.b)} menjadi ${uraianKata(d.b)}. Dikurangkan tiap tempat, hasilnya ${kataBil(sisa)}, ${kataAmbil(d.a, d.b)}.`;
       return `${kapital(kataBil(d.a))} dikurangi ${kataBil(d.b)} sama dengan ${kataBil(sisa)}${m === 0 ? ", tanpa mengambil" : m === 1 ? ", dengan satu kali mengambil" : ", dengan dua kali mengambil"}.`;
     }
     case "ambil": {
@@ -300,6 +311,10 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): s
   const akhir = cara === "klik" ? "Pilih jawabannya." : cara === "kanvas" ? "Tulis satu angka di kanvas." : "Ucapkan jawabannya.";
   switch (l.tipe) {
     case "susun":
+      if (l.panjang)
+        return cara === "kanvas"
+          ? `${aw}: susun panjang pada ${g} ini menguraikan kedua bilangan. Kurangkan tiap tempat dari satuan ke kiri, dan ambil dari tempat di kiri bila perlu. Berapa angka di tempat ${l.tempat} hasilnya? ${akhir}`
+          : `${aw}: susun panjang pada ${g} ini menguraikan kedua bilangan. Kurangkan tiap tempat dari satuan ke kiri, dan ambil dari tempat di kiri bila perlu. Berapa hasilnya? ${akhir}`;
       return cara === "kanvas"
         ? `${aw}: lihat pengurangan pada ${g} ini. Kurangkan dari satuan ke kiri, dan ambil dari tempat di kiri bila perlu. Berapa angka di tempat ${l.tempat} hasilnya? ${akhir}`
         : `${aw}: lihat pengurangan pada ${g} ini. Kurangkan dari satuan ke kiri, dan ambil dari tempat di kiri bila perlu. Berapa hasilnya? ${akhir}`;
@@ -341,6 +356,7 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
   }
   switch (l.tipe) {
     case "susun":
+      if (l.panjang) return "Uraikan tiap bilangan menjadi ratusan, puluhan, dan satuan, lalu kurangkan tiap tempat dari satuan ke kiri. Kalau satuan atas lebih kecil, ambil satu puluhan dan tambahkan sepuluh ke satuan.";
       return cara === "kanvas"
         ? "Kurangkan dari satuan ke arah kiri. Kalau angka di atas lebih kecil, ambil satu dari tempat di kirinya, lalu coret dan tulis angka barunya."
         : "Jangan membalik angka. Kalau angka di atas lebih kecil, ambil satu dari tempat di kirinya, dan tempat yang diambil tinggal satu lebih kecil.";
@@ -380,6 +396,10 @@ export function barisSusun(l: LangkahDasar): string[] {
   const lebar = (n: number): string => String(n).padStart(4, " ");
   if (l.tipe === "cek") return [` ${lebar(l.klaim)}`, `+${lebar(l.b)}`, "-----"];
   if (l.tipe === "maju") return [];
+  if (l.tipe === "susun" && l.panjang) {
+    const u = [`  ${l.a} = ${uraian(l.a)}`, `− ${l.b} = ${uraian(l.b)}`];
+    return [...u, "-".repeat(Math.max(...u.map((x) => x.length)))];
+  }
   return [` ${lebar(l.a)}`, `−${lebar(l.b)}`, "-----"];
 }
 export const judulKartu = (rupa: Rupa, teks: string): string => (rupa === "lambang" ? kapital(teks) : teks);

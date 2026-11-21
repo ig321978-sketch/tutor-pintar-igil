@@ -116,3 +116,45 @@ export const ADEGAN_KALAH: AdeganStory = {
     ),
   ],
 };
+
+/* ------------------------------ 6b. Bilangan yang persis sama ------------------------------ */
+const SUARA_M1 = "Kak Tiara membuka catatan minggu lalu, dan Pantai Timur juga empat ribu tiga ratus delapan puluh lima orang.";
+const SUARA_M2 = "Ribuan, ratusan, puluhan, dan satuan semuanya sama, jadi tidak ada yang lebih besar.";
+const SUARA_M3 = "Bilangan yang persis sama kita tulis dengan tanda sama dengan.";
+
+export const ADEGAN_SAMA: AdeganStory = {
+  id: "sama",
+  judul: "Dua bilangan yang persis sama",
+  sumber: "Materi: tanda sama dengan",
+  latar: "#F0FDF4",
+  ketukan: [
+    k(
+      SUARA_M1,
+      tambah(0, judul("Sama Persis"), ...tokoh("kt", 40, 184, "Kak Tiara")),
+      tambah("catatan", ...judulTempat("ht", 100, 38), ...tempatAngka("p1", 100, 44, 4385), teks("lb", 52, 66, "LALU", 11.5, W.tinta)),
+      tambah("Timur", ...tempatAngka("p2", 100, 92, 4385), teks("lt", 52, 114, "INI", 11.5, W.tinta)),
+      tambah("orang.", teks("bt", 268, 76, "4.385", 12, W.merah)),
+    ),
+    k(
+      SUARA_M2,
+      tambah(0, teks("e0", 115, 90, "=", 12, W.hijau)),
+      ubah(0, { id: "p1-k0", warna: HIJAU_TEMPAT }, { id: "p2-k0", warna: HIJAU_TEMPAT }),
+      tambah("ratusan,", teks("e1", 149, 90, "=", 12, W.hijau)),
+      ubah("ratusan,", { id: "p1-k1", warna: HIJAU_TEMPAT }, { id: "p2-k1", warna: HIJAU_TEMPAT }),
+      tambah("puluhan,", teks("e2", 183, 90, "=", 12, W.hijau)),
+      ubah("puluhan,", { id: "p1-k2", warna: HIJAU_TEMPAT }, { id: "p2-k2", warna: HIJAU_TEMPAT }),
+      tambah("satuan", teks("e3", 217, 90, "=", 12, W.hijau)),
+      ubah("satuan", { id: "p1-k3", warna: HIJAU_TEMPAT }, { id: "p2-k3", warna: HIJAU_TEMPAT }),
+      tambah("tidak", teks("tb", 190, 142, "tidak ada yang lebih besar", 11, W.merah)),
+    ),
+    k(
+      SUARA_M3,
+      bersih(0),
+      tambah(0, judul("Tanda Sama Dengan"), ...papanDermaga("pd", 20, 40, 260, 110), teks("pB", 70, 70, "LALU", 11.5, W.tinta), teks("pT", 230, 70, "INI", 11.5, W.tinta)),
+      tambah("bilangan", teks("nb", 70, 102, "4.385", 22, W.biru)),
+      tambah("persis", teks("nt", 230, 102, "4.385", 22, W.biru)),
+      tambah("tanda", teks("tg", 150, 106, "=", 30, W.hijau)),
+      tambah("sama@2", teks("kd", 150, 134, "sama dengan", 11.5, W.hijau)),
+    ),
+  ],
+};

@@ -1,8 +1,8 @@
 /**
  * Data Mind-map dan Infografis Kelas 4 Bab 1 Sub-Bab E "Meja Resepsi Bu Rina" (dirancang ulang per Sub-Bab, tanpa komponen kartu bersama).
- * Mind-map: TUMPUKAN KOPER tamu di meja resepsi (bel dan koper di papan meja); enam koper, tiap koper membawa gambar kecil satu langkah (245 + 378 tersusun, panah dari kanan, 5 + 8 = 13 simpan 1,
- * 500 + 110 + 13, 378 jadi 400, 245 + 378 = 623) dan satu pelat nama kosong di tutupnya. Pelat diketuk: judul langkah muncul dan dibacakan Guru.
- * Infografis: dua kartu dari angka Story. Kartu 1 = lembar daftar tamu Bu Rina (jumlah, tulis, dan simpan tiap tempat; jumlah tamu, tiga bilangan, hasil keliru Satria).
+ * Mind-map: TUMPUKAN KOPER tamu di meja resepsi (bel dan koper di papan meja); enam koper, tiap koper membawa gambar kecil satu langkah (245 + 378 tersusun, panah dari kanan, 5 + 8 = 13 simpan 1 (susun pendek),
+ * susun panjang 500 + 110 + 13 lalu 600 + 20 + 3, 378 jadi 400, 245 + 378 = 623) dan satu pelat nama kosong di tutupnya. Pelat diketuk: judul langkah muncul dan dibacakan Guru.
+ * Infografis: dua kartu dari angka Story. Kartu 1 = lembar daftar tamu Bu Rina (jumlah, tulis, dan simpan tiap tempat; jumlah tamu, susun panjang, tiga bilangan, hasil keliru Satria).
  * Kartu 2 = kartu acuan: aturan sepuluh jadi satu dan tangga Genapkan Dulu (378 jadi 400, 245 + 400, dikurangi 22). Digital saja. Suara tanpa digit lewat ejaK4B1. Diuji: scripts/uji-visual-k4b1def.mjs.
  */
 import { ejaK4B1 } from "../eja-k4b1";
@@ -24,10 +24,10 @@ export function bungkusJudul(judul: string, maks: number): string[] {
 export type LangkahPeta = { judul: string; arti: string };
 /** Enam langkah Mind-map (urutan sama dengan koper dari atas ke bawah). Arti dibacakan Guru (diejakan, tanpa digit). */
 export const LANGKAH_RESEPSI: LangkahPeta[] = [
-  { judul: "Tulis ke bawah", arti: "Langkah satu. Tulis kedua bilangan ke bawah, satuan di bawah satuan, puluhan di bawah puluhan, ratusan di bawah ratusan. Beri garis di bawahnya." },
+  { judul: "Tulis ke bawah", arti: "Langkah satu, cara susun pendek. Tulis kedua bilangan ke bawah, satuan di bawah satuan, puluhan di bawah puluhan, ratusan di bawah ratusan. Beri garis di bawahnya." },
   { judul: "Mulai dari kanan", arti: "Langkah dua. Mulai menjumlahkan dari kanan, yaitu dari satuan, lalu puluhan, lalu ratusan." },
-  { judul: "Tulis sisa, simpan satu", arti: "Langkah tiga. Kalau jumlah satu tempat sepuluh atau lebih, tulis sisanya dan simpan satu ke tempat di kirinya. Simpanan itu ikut dijumlahkan." },
-  { judul: "Tambah per tempat", arti: "Langkah empat. Cara lain, jumlahkan per tempat dulu: ratusan dengan ratusan, puluhan dengan puluhan, satuan dengan satuan. Lalu gabungkan semua hasil sementara." },
+  { judul: "Tulis sisa, simpan satu", arti: "Langkah tiga. Kalau jumlah satu tempat sepuluh atau lebih, tulis sisanya dan simpan satu ke tempat di kirinya. Simpanan itu ikut dijumlahkan. Bisa satu kali menyimpan, bisa dua kali." },
+  { judul: "Susun panjang", arti: "Langkah empat. Cara lain adalah susun panjang, disebut juga Tambah Per Tempat. Uraikan tiap bilangan menjadi ratusan, puluhan, dan satuan. Jumlahkan ratusan dengan ratusan, puluhan dengan puluhan, satuan dengan satuan. Bagian yang sepuluh atau lebih diuraikan lagi, lalu semua hasil digabung per tempat." },
   { judul: "Genapkan dulu", arti: "Langkah lima. Kalau ada bilangan yang hampir bulat, bulatkan dulu, jumlahkan, lalu kurangi kelebihannya." },
   { judul: "Periksa hasilnya", arti: "Langkah enam. Periksa hasilnya dengan cara lain. Kedua cara harus memberi jumlah yang sama." },
 ];
@@ -60,6 +60,8 @@ export const TAMU_SORE = 113;
 export const TAMU_JUMLAH = TAMU_PAGI + TAMU_SIANG;
 export const TAMU_SEMUA = TAMU_JUMLAH + TAMU_SORE;
 export const TAMU_KELIRU = 513;
+/** Susun panjang: jumlah tiap tempat sebelum diuraikan lagi (245 + 378: 200 + 300, 40 + 70, 5 + 8), dihitung dari tamu pagi dan siang. */
+const jumlahPerTempat = [2, 1, 0].map((k) => (Math.floor(TAMU_PAGI / 10 ** k) % 10 + (Math.floor(TAMU_SIANG / 10 ** k) % 10)) * 10 ** k);
 
 export type SelResepsi = { kunci: string; isi: string; suara: string; aria: string };
 const digitDari = (n: number): number[] => String(n).padStart(3, "0").split("").map(Number);
@@ -82,7 +84,7 @@ export const BARIS_TEMPAT_RESEPSI = (() => {
   return hasil;
 })();
 
-/** Sembilan kotak tabel (3 tempat x jumlah, tulis, simpan) dan tiga kotak bawah (jumlah, tiga bilangan, hasil keliru). */
+/** Sembilan kotak tabel (3 tempat x jumlah, tulis, simpan) dan empat kotak bawah (jumlah, susun panjang, tiga bilangan, hasil keliru). */
 export const SEL_KARTU1_RESEPSI: SelResepsi[] = [
   ...BARIS_TEMPAT_RESEPSI.flatMap((b, i): SelResepsi[] => [
     {
@@ -105,6 +107,12 @@ export const SEL_KARTU1_RESEPSI: SelResepsi[] = [
     },
   ]),
   { kunci: "f-jumlah", isi: `${TAMU_PAGI} + ${TAMU_SIANG} = ${TAMU_JUMLAH}`, suara: ejaK4B1(`Tamu pagi dan siang: ${TAMU_PAGI} + ${TAMU_SIANG} = ${TAMU_JUMLAH} tamu.`), aria: `Jumlah pagi dan siang: ${TAMU_JUMLAH}` },
+  {
+    kunci: "f-panjang",
+    isi: `${jumlahPerTempat.join(" + ")} = ${TAMU_JUMLAH}`,
+    suara: ejaK4B1(`Susun panjang: ${TAMU_PAGI} = 200 + 40 + 5 dan ${TAMU_SIANG} = 300 + 70 + 8. Jumlah tiap tempat ${jumlahPerTempat.join(" + ")}. Diuraikan lagi dan digabung per tempat, jadi 600 + 20 + 3 = ${TAMU_JUMLAH}.`),
+    aria: `Susun panjang: ${jumlahPerTempat.join(" + ")} = ${TAMU_JUMLAH}`,
+  },
   { kunci: "f-tiga", isi: `${TAMU_JUMLAH} + ${TAMU_SORE} = ${TAMU_SEMUA}`, suara: ejaK4B1(`Tamu sore ikut dijumlahkan: ${TAMU_PAGI} + ${TAMU_SIANG} + ${TAMU_SORE} = ${TAMU_SEMUA} tamu.`), aria: `Tiga bilangan: ${TAMU_SEMUA}` },
   { kunci: "f-salah", isi: `${TAMU_KELIRU} (keliru)`, suara: ejaK4B1(`Hasil ${TAMU_KELIRU} keliru, karena tidak ada yang disimpan. Hasil yang benar ${TAMU_JUMLAH} lebih besar ${TAMU_JUMLAH - TAMU_KELIRU}.`), aria: `Hasil keliru: ${TAMU_KELIRU}` },
 ];
@@ -120,7 +128,7 @@ export const SEL_KARTU2_RESEPSI: SelResepsi[] = [
 ];
 export const LABEL_TANGGA_RESEPSI = ["Genapkan", "Jumlahkan", "Kurangi kelebihan", "Cocok dengan susun"] as const;
 export const JUDUL_INFO1_RESEPSI = "Daftar tamu Bu Rina";
-export const PETUNJUK1_INFO_RESEPSI = "Ketuk tanda tanya untuk melihat hitungan tiap tempat dan jumlah tamu.";
+export const PETUNJUK1_INFO_RESEPSI = "Ketuk tanda tanya untuk membuka hitungannya.";
 export const PETUNJUK2_INFO_RESEPSI = "Kartu acuan. Ketuk tanda tanya untuk melihat aturan simpan dan empat langkah Genapkan Dulu.";
 export const SELESAI1_INFO_RESEPSI = "Daftar lengkap! Dari kanan, tulis sisa, dan simpan satu.";
 export const SELESAI2_INFO_RESEPSI = "Kartu lengkap! Genapkan, jumlahkan, kurangi kelebihan, dan cocokkan.";

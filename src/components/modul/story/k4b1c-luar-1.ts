@@ -1,5 +1,5 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { E, W, dermaga, emo, garis, judul, judulTempat, kartu, kotak, laut, panah, papanDermaga, teks, tempatAngka, tokoh } from "./k4b1c-gambar";
+import { E, NAMA_TEMPAT, W, WARNA_TEMPAT, dermaga, emo, garis, judul, kartu, kotak, laut, panah, papanDermaga, teks, tokoh } from "./k4b1c-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k4b1c-bantu";
 
 /*
@@ -60,11 +60,24 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   ],
 };
 
+/**
+ * Empat kotak tempat angka lebar 40 berjarak 46 (kolom kiri papan, berakhir di x 200) dan judul tempat ukuran 11 di atasnya: kotak `${id}-k${i}`, angka `${id}-d${i}`, judul `ht-h${i}`.
+ * Sisi kanan papan (x 208 sampai 286) dipakai untuk tanda dan label supaya tidak menimpa kotak.
+ */
+const XT = (i: number): number => 22 + i * 46 + 20;
+function tempatLebar(id: string, y: number, n: number): Obj[] {
+  const sn = String(n).padStart(4, "0");
+  return [
+    ...NAMA_TEMPAT.map((nama, i) => teks(`ht-h${i}`, XT(i), 50, nama, 11, W.ungu, { z: 3 })),
+    ...[0, 1, 2, 3].flatMap((i) => [kotak(`${id}-k${i}`, 22 + i * 46, y, 40, 34, WARNA_TEMPAT[i], W.biru, { rx: 5, z: 2 }), teks(`${id}-d${i}`, XT(i), y + 25, sn[i], 20, W.biru, { z: 3 })]),
+  ];
+}
+
 /* ------------------------------ Left-to-Right Compare: konsep ------------------------------ */
 const SUARA_L1 = "Cara pertama, Left-to-Right Compare, atau Banding dari Kiri.";
 const SUARA_L2 = "Kita mulai dari tempat paling kiri, yaitu ribuan.";
 const SUARA_L3 = "Kalau angkanya sama, kita pindah ke tempat di kanannya, sampai ketemu angka yang berbeda.";
-const SUARA_L4 = "Angka berbeda pertama itulah yang menentukan bilangan mana yang lebih besar.";
+const SUARA_L4 = "Angka berbeda pertama itulah yang menentukan bilangan mana yang lebih besar, dan kalau semua tempat sama, kedua bilangan sama dengan.";
 
 export const ADEGAN_LUAR_KIRI: AdeganStory = {
   id: "luar-kiri",
@@ -83,24 +96,25 @@ export const ADEGAN_LUAR_KIRI: AdeganStory = {
       SUARA_L2,
       bersih(0),
       tambah(0, judul("Mulai dari Kiri"), ...papan()),
-      tambah("tempat", ...judulTempat("ht", 82, 56), ...tempatAngka("pp", 82, 62, 7218)),
+      tambah("tempat", ...tempatLebar("pp", 56, 7218)),
       sorotkan("kiri,", "pp-k0"),
-      tambah("kiri,", panah("ak", 97, 124, 0, -22, W.merah, 2.6)),
-      tambah("ribuan.", teks("rr", 97, 136, "ribuan", 9, W.merah)),
+      tambah("kiri,", panah("ak", XT(0), 118, 0, -22, W.merah, 2.6)),
+      tambah("ribuan.", teks("rr", XT(0), 130, "ribuan", 11, W.merah)),
     ),
     k(
       SUARA_L3,
-      tambah("sama,", emo("ok", 262, 62, E.benar, 20)),
-      ubah("pindah", { id: "ak", x: 131 }, { id: "rr", x: 131, isi: "ratusan" }, { id: "pp-k0", warna: HIJAU_TEMPAT }),
+      tambah("sama,", emo("ok", 246, 66, E.benar, 20)),
+      ubah("pindah", { id: "ak", x: XT(1) }, { id: "rr", x: XT(1), isi: "ratusan" }, { id: "pp-k0", warna: HIJAU_TEMPAT }),
       sorotkan("kanannya,", "pp-k1"),
-      tambah("berbeda.", emo("xs", 262, 104, E.salah, 20)),
+      tambah("berbeda.", emo("xs", 246, 100, E.salah, 20)),
     ),
     k(
       SUARA_L4,
       ubah("pertama", { id: "pp-k2", warna: "#FECACA" }),
-      tambah("menentukan", teks("mn", 238, 84, "menentukan", 9, W.merah)),
-      tambah("lebih", teks("bs", 238, 118, "yang lebih besar", 8, W.ungu)),
-      ubah("besar.", { id: "ak", x: 165 }, { id: "rr", x: 165, isi: "puluhan" }),
+      tambah("menentukan", teks("mn", 247, 78, "menentukan", 11, W.merah)),
+      tambah("lebih", teks("bs", 247, 116, "lebih besar", 11, W.ungu)),
+      ubah("besar,", { id: "ak", x: XT(2) }, { id: "rr", x: XT(2), isi: "puluhan" }),
+      tambah("dengan.", teks("sd", 247, 130, "semua sama =", 11, W.hijau)),
     ),
   ],
 };

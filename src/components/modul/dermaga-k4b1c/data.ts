@@ -2,7 +2,8 @@
  * Isi tahap Concrete, Pictorial, dan Abstract K4 Bab 1 Sub-Bab C "Papan Dermaga Kak Tiara" (membandingkan dan mengurutkan bilangan sampai sepuluh ribu: dari kiri, tanda kurang dari dan lebih dari,
  * garis bilangan, urutan kartu), cerita Penginapan Pulau Karang Indah. Misi lanjutan "Misi Dermaga" (nomor misi berlanjut dari Simulasi). Data berbeda dari Story (Barat 4.358, Timur 4.385, Selatan 4.538).
  * Concrete memakai benda pulau wisata beremoji di papan dermaga kayu, Pictorial memakai diagram polos (bagan tempat angka, garis bilangan, kartu bilangan) di peta laut, Abstract memakai kartu kata dan angka di daftar Kak Tiara.
- * Jawaban beragam: memilih tanda, tempat angka, bilangan, atau urutan, menulis satu angka di kanvas, dan mengucapkan satu kata (kurang dari, lebih dari, ribuan, kiri, terkecil, dan sebagainya).
+ * Jawaban beragam: memilih tanda, tempat angka, bilangan, atau urutan, menulis satu angka di kanvas, dan mengucapkan satu kata (kurang dari, sama dengan, lebih dari, ribuan, kiri, terkecil, dan sebagainya).
+ * Dua bilangan yang persis sama (tanda sama dengan): Concrete 5.620 dan 5.620 (suara), Pictorial 6.410 dan 6.410 (Cari kesalahan, Genta benar), Abstract 3.607 dan 3.607 (Cari kesalahan, Satria keliru); sesuai bahan resmi (4.352 = 4.352).
  * Jawaban benar dihitung dari data. Angka jawaban Tulis di kanvas per tahap: Concrete 3, 8, 5, 2; Pictorial 4, 7, 6, 3; Abstract 2, 1, 7, 3 (tidak kembar dalam satu tahap).
  * Diuji: scripts/uji-dermaga-k4b1c.mjs.
  */
@@ -69,7 +70,7 @@ export const CONCRETE: SoalMisi[] = [
     kartu("payung", [9120, 9012, 9210], "naik", "besar", "ratusan"),
   ]),
   C(4, "suara", "Misi Dermaga 4: panggilan Pak Hendro", "Pak Hendro memanggil dari ujung dermaga sambil meniup peluit. Jawab dengan suaramu.", [
-    banding("kerang", 8450, 8405),
+    banding("kerang", 5620, 5620),
     kiri("payung", 6208, 6908),
     garis("perahu", 3000, 100, 3700, 3200, "besar"),
     kartu("kelapa", [4017, 4170, 4071], "naik", "kecil", "ratusan"),
@@ -81,17 +82,17 @@ const Pi = satuMisi("diagram");
 export const PICTORIAL: SoalMisi[] = [
   Pi(5, "klik", "Misi Dermaga 5: peta laut", "Genta menyalin bilangan pengunjung ke peta laut. Periksa gambarnya.", [
     salah(
-      banding("catatan", 5730, 5418),
+      banding("catatan", 6410, 6410),
       "Genta",
-      "Ribuannya sama, jadi aku lihat ratusannya. Ratusan bilangan pertama lebih besar, jadi bilangan pertama lebih dari bilangan kedua.",
-      ">",
+      "Ribuan, ratusan, puluhan, dan satuan sama semua, dari kiri sampai kanan. Jadi kedua bilangan sama besar, dan tandanya sama dengan.",
+      "=",
       [
-        "Genta benar: kalau ribuan sama, lihat ratusan, dan ratusan yang lebih besar berarti bilangannya lebih besar.",
-        "Genta keliru: kalau ribuan sama, kedua bilangan pasti sama.",
-        "Genta keliru: kalau ribuan sama, harus melihat satuan lebih dulu.",
+        "Genta benar: kalau semua tempat angkanya sama, kedua bilangan sama besar, jadi tandanya sama dengan.",
+        "Genta keliru: dua bilangan selalu ada yang lebih besar, jadi tandanya lebih dari.",
+        "Genta keliru: bilangan yang angkanya sama semua tidak boleh diberi tanda.",
       ],
       0,
-      "Ribuan sama, jadi lihat ratusan. Ratusan yang lebih besar berarti bilangan yang lebih besar, jadi jawaban Genta benar.",
+      "Semua tempat angkanya sama dari ribuan sampai satuan, jadi kedua bilangan sama besar. Tandanya sama dengan, jadi jawaban Genta benar.",
       true,
     ),
     kiri("catatan", 4812, 4912),
@@ -105,7 +106,7 @@ export const PICTORIAL: SoalMisi[] = [
     kartu("catatan", [2736, 2763, 2376], "naik", "kecil", "ratusan"),
   ]),
   Pi(7, "suara", "Misi Dermaga 7: lapor ke Kak Tiara", "Genta melaporkan hasil peta kepada Kak Tiara. Sebutkan jawabanmu.", [
-    banding("catatan", 9031, 9301),
+    banding("catatan", 9301, 9031),
     kiri("catatan", 1478, 2478),
     garis("catatan", 5000, 100, 5400, 5900, "besar"),
     kartu("catatan", [7240, 7420, 7024], "turun", "besar", "ratusan"),
@@ -117,17 +118,17 @@ const A = satuMisi("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(8, "klik", "Misi Dermaga 8: daftar Kak Tiara", "Daftar Kak Tiara hanya berisi kata dan angka.", [
     salah(
-      banding("catatan", 8126, 8162),
+      banding("catatan", 3607, 3607),
       "Satria",
-      "Aku lihat satuannya dulu. Enam lebih dari dua, jadi bilangan pertama lebih dari bilangan kedua.",
-      ">",
+      "Angka-angkanya sama semua, jadi aku pilih kurang dari, karena bilangan pertama dibaca lebih dulu.",
+      "<",
       [
-        "Satria benar, satuan adalah tempat yang paling menentukan.",
-        "Satria keliru, bilangan yang satuannya lebih besar selalu lebih kecil.",
-        "Satria keliru: tempat yang menentukan adalah tempat paling kiri yang angkanya berbeda, bukan satuan.",
+        "Satria benar, bilangan yang dibaca lebih dulu selalu lebih kecil.",
+        "Satria keliru: kalau semua tempat angkanya sama dari kiri sampai kanan, kedua bilangan sama besar, jadi tandanya sama dengan.",
+        "Satria keliru, bilangan yang sama persis harus diberi tanda lebih dari.",
       ],
-      2,
-      "Tempat yang menentukan adalah tempat paling kiri yang angkanya berbeda, bukan satuan. Di sini puluhan sudah berbeda lebih dulu dari satuan.",
+      1,
+      "Ribuan, ratusan, puluhan, dan satuan semuanya sama, jadi kedua bilangan persis sama. Urutan dibaca tidak membuat bilangan lebih kecil; tandanya sama dengan.",
     ),
     kiri("catatan", 9246, 9249),
     garis("catatan", 8000, 100, 8300, 8800, "besar"),
@@ -151,6 +152,7 @@ export const ABSTRACT: SoalMisi[] = [
 const POIN: [string, string][] = [
   ["Bilangan empat angka dibandingkan dari tempat paling kiri: ribuan dulu, lalu ratusan, puluhan, dan satuan.", "Bilangan empat angka dibandingkan dari tempat paling kiri: ribuan dulu, lalu ratusan, puluhan, dan satuan."],
   ["Kalau satu tempat angkanya sama, lanjut ke tempat di kanannya sampai ketemu angka yang berbeda.", "Kalau satu tempat angkanya sama, lanjut ke tempat di kanannya sampai ketemu angka yang berbeda."],
+  ["Kalau ribuan, ratusan, puluhan, dan satuan semuanya sama, kedua bilangan persis sama, misalnya 4.352 = 4.352, dan tandanya sama dengan.", "Kalau ribuan, ratusan, puluhan, dan satuan semuanya sama, kedua bilangan persis sama, misalnya empat ribu tiga ratus lima puluh dua sama dengan empat ribu tiga ratus lima puluh dua, dan tandanya sama dengan."],
   ["Angka berbeda pertama dari kiri menentukan bilangan mana yang lebih besar.", "Angka berbeda pertama dari kiri menentukan bilangan mana yang lebih besar."],
   ["Tanda < dibaca kurang dari, tanda > dibaca lebih dari, dan tanda = dibaca sama dengan. Mulut tanda menghadap bilangan yang lebih besar.", "Tanda kurang dari, tanda lebih dari, dan tanda sama dengan punya lambang sendiri. Mulut tanda menghadap bilangan yang lebih besar."],
   ["Pada garis bilangan, bilangan yang lebih ke kanan lebih besar dan bilangan yang lebih ke kiri lebih kecil.", "Pada garis bilangan, bilangan yang lebih ke kanan lebih besar dan bilangan yang lebih ke kiri lebih kecil."],

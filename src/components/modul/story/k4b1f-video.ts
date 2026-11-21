@@ -1,6 +1,6 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_DERMAGA_PULANG, ADEGAN_CATATAN, ADEGAN_SALAH_BALIK } from "./k4b1f-materi-1";
+import { ADEGAN_DERMAGA_PULANG, ADEGAN_PANJANG, ADEGAN_CATATAN, ADEGAN_SALAH_BALIK } from "./k4b1f-materi-1";
 import { ADEGAN_AMBIL, ADEGAN_HASIL, ADEGAN_RATUSAN } from "./k4b1f-materi-2";
 import { ADEGAN_CUCI, ADEGAN_PENUTUP, ADEGAN_PERIKSA } from "./k4b1f-materi-3";
 import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_SUSUN, ADEGAN_LUAR_SUSUN_TERAPAN } from "./k4b1f-luar-1";
@@ -19,8 +19,9 @@ export const VIDEO_MATERI_K4B1F: VideoStory = {
   subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "mengurangkan bilangan sampai seribu", daftar: ["Pengurangan bersusun", "Mengambil dari tempat di kiri", "Memeriksa dengan penjumlahan"] }),
+    adeganSapaan({ jenis: "materi", topik: "mengurangkan bilangan sampai seribu", daftar: ["Susun panjang dan susun pendek", "Mengambil dari tempat di kiri", "Memeriksa dengan penjumlahan"] }),
     ADEGAN_DERMAGA_PULANG,
+    ADEGAN_PANJANG,
     ADEGAN_CATATAN,
     ADEGAN_SALAH_BALIK,
     ADEGAN_AMBIL,

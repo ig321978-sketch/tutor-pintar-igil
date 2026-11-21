@@ -4,7 +4,7 @@
  * kecuali seed Cari kesalahan dari alur (nol hilang saat menulis; 6.070 dibaca enam ribu tujuh puluh). Concrete memakai benda pulau wisata beremoji di loket beratap rumbia (tiket, papan empat kotak),
  * Pictorial memakai diagram polos (kartu bilangan, bagan tempat angka) di kertas denah pulau, Abstract memakai kartu kata dan angka di daftar tiket bercap.
  * Jawaban beragam: memilih tulisan atau bacaan bilangan, menulis satu angka di kanvas, dan mengucapkan satu kata (nama tempat) atau bilangan pendek. Jawaban benar dihitung dari data.
- * Angka jawaban Tulis di kanvas per tahap: Concrete 8, 2, 3, 1; Pictorial 5, 4, 2, 3; Abstract 9, 3, 4, 2 (tidak kembar dalam satu tahap).
+ * Angka jawaban Tulis di kanvas per tahap: Concrete 8, 2, 3, 1; Pictorial 5, 4, 2, 3; Abstract 9, 3, 4, 2 (tugas memuat bilangan seribuan dan seratusan: 1.208, 1.370, 2.105, 1.805, 6.103) (tidak kembar dalam satu tahap).
  * Diuji: scripts/uji-tiket-k4b1a.mjs.
  */
 import type { Cara, Langkah, LangkahSalah, LangkahSoal, LBaca, LBagian, LKartu, LNamaTempat, LNol, LTempat, LTulis, Rupa, SoalMisi, Tempat } from "./logika-cpa";
@@ -63,13 +63,13 @@ export const CONCRETE: SoalMisi[] = [
       "Tempat ratusan tidak disebut, tetapi harus diisi nol supaya angka lain tidak bergeser. Tulisan bilangan ribuan punya empat angka.",
     ),
     kartu(8039),
-    bagian(2904),
+    bagian(1208),
     nol(7308),
   ]),
   C(3, "kanvas", "Misi Tiket 3: papan harga", "Laras mencatat nomor di papan harga loket. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [
     tempat(6859, "ratusan"),
     kartu(5032),
-    bagian(9401),
+    bagian(1370),
     nol(4607),
   ]),
   C(4, "suara", "Misi Tiket 4: panggilan Pak Hendro", "Pak Hendro memanggil dari dermaga. Jawab dengan suaramu.", [
@@ -98,7 +98,7 @@ export const PICTORIAL: SoalMisi[] = [
       "Jawaban Genta benar: nol tidak dibaca, tetapi tempatnya tetap dihitung.",
       true,
     ),
-    kartu(9061),
+    kartu(2105),
     bagian(7360),
     nol(5807),
   ]),
@@ -135,7 +135,7 @@ export const ABSTRACT: SoalMisi[] = [
     ),
     kartu(1805),
     bagian(5049),
-    nol(6203),
+    nol(6103),
   ]),
   A(9, "kanvas", "Misi Tiket 9: tulis di daftar", "Laras meminta kamu menulis jawaban di kanvas.", [
     tempat(7934, "ratusan"),
@@ -154,7 +154,8 @@ export const ABSTRACT: SoalMisi[] = [
 export const POIN_PENTING = [
   "Bilangan empat angka punya empat tempat, yaitu ribuan, ratusan, puluhan, dan satuan.",
   "Bilangan dibaca dari kiri, dimulai dari ribuan. Contoh: 3.406 dibaca tiga ribu empat ratus enam.",
-  "Angka nol tidak dibaca, tetapi nol menjaga tempat supaya angka lain tidak bergeser.",
+  "Angka nol tidak dibaca, tetapi nol menjaga tempat supaya angka lain tidak bergeser. Contoh: 7.003 dibaca tujuh ribu tiga.",
+  "Angka satu di ribuan dibaca seribu, bukan satu ribu, dan angka satu di ratusan dibaca seratus. Contoh: 1.025 dibaca seribu dua puluh lima, dan 2.145 dibaca dua ribu seratus empat puluh lima.",
   "Menulis bilangan dari ucapan: taruh tiap angka di tempatnya, lalu isi tempat yang kosong dengan nol. Contoh: lima ribu delapan puluh ditulis 5.080.",
   "Periksa tulisanmu: hitung banyak angkanya, lalu bacalah sekali lagi.",
   "Kartu Angka, Baca Per Bagian, dan Periksa Nol membantu membaca dan menulis bilangan tanpa angka yang hilang.",

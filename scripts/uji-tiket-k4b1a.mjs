@@ -88,9 +88,9 @@ const CERITA = [3406, 5080, 346, 7025, 6185, 725, 7250];
   const hs = L.hapusSusun(pen.k);
   cek(hs.ok && hs.k.susun.join() === "7,2,0," && hs.k.susunSel === 3, "susun: hapus mengosongkan kotak terakhir");
   const dua = L.periksaSusun({ ...benarS.k, susun: [3, 1, 5, 0] });
-  cek(dua.ok && dua.k.susunBenar.join() === "0,1" && L.targetSusun(dua.k) === 6700, "susun: bilangan kedua benar");
+  cek(dua.ok && dua.k.susunBenar.join() === "0,1" && L.targetSusun(dua.k) === 1040, "susun: bilangan kedua benar");
   sama(S.misiBaru(MK.MISI_A, dua.k, new Set()), ["a-susun", "a-dua"], "susun: dua bilangan memenuhi a-susun dan a-dua");
-  cek(L.periksaSusun({ ...dua.k, susun: [6, 7, 0, 0] }).ok, "susun: bilangan ketiga dengan dua nol");
+  cek(L.periksaSusun({ ...dua.k, susun: [1, 0, 4, 0] }).ok, "susun: bilangan ketiga seribuan dengan dua nol");
   // Baca.
   for (let i = 0; i < 3; i += 1) {
     const k = { ...a, bacaKe: i };
@@ -270,9 +270,17 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
 
 /* ------------------------------ Poin penting dan tema ------------------------------ */
 {
-  cek(D.POIN_PENTING.length === 6 && D.POIN_PENTING.every((p) => bersih(p) && p.length > 20), "poin penting: enam poin bersih");
-  cek(D.POIN_PENTING_SUARA.length === 6 && D.POIN_PENTING_SUARA.every(tanpaDigit), "poin penting: suara tanpa digit");
+  cek(D.POIN_PENTING.length === 7 && D.POIN_PENTING.every((p) => bersih(p) && p.length > 20), "poin penting: tujuh poin bersih");
+  cek(D.POIN_PENTING_SUARA.length === 7 && D.POIN_PENTING_SUARA.every(tanpaDigit), "poin penting: suara tanpa digit");
   cek(D.POIN_PENTING_SUARA[1].includes("tiga ribu empat ratus enam") && /ribuan/.test(D.POIN_PENTING[0]) && /nol/.test(D.POIN_PENTING[2]), "poin penting: memuat empat tempat, membaca dari kiri, dan nol");
+  cek(D.POIN_PENTING_SUARA.some((p) => p.includes("seribu dua puluh lima") && p.includes("dua ribu seratus empat puluh lima") && p.includes("bukan satu ribu")) && D.POIN_PENTING_SUARA.some((p) => p.includes("tujuh ribu tiga")), "poin penting: seribu bukan satu ribu, seratus, dan nol di tengah (sesuai buku)");
+  // Bilangan seribuan dan seratusan dibaca seribu dan seratus (bukan satu ribu atau satu ratus), di data, kunci, dan suara.
+  for (const [n, k] of [[1025, "seribu dua puluh lima"], [1000, "seribu"], [2145, "dua ribu seratus empat puluh lima"], [1208, "seribu dua ratus delapan"], [7003, "tujuh ribu tiga"], [6570, "enam ribu lima ratus tujuh puluh"], [10000, "sepuluh ribu"]]) cek(LC.kataBil(n) === k, `kata bilangan ${n} = ${k}`);
+  cek(LC.ucapkan("1.025") === "seribu dua puluh lima" && LC.ucapkan("1.000") === "seribu" && LC.ucapkan("Rp7.350,00") === "7350 rupiah".replace("7350", "tujuh ribu tiga ratus lima puluh"), "ucapan bilangan 1.xxx dan rupiah");
+  const semuaTugas = [...D.CONCRETE, ...D.PICTORIAL, ...D.ABSTRACT].flatMap((m) => m.langkah);
+  const adaSeribuan = (re) => semuaTugas.filter((t) => re.test(String(t.langkah.angka ?? t.langkah.dasar?.angka ?? ""))).length;
+  cek(adaSeribuan(/^1\d{3}$/) >= 3 && adaSeribuan(/^\d1\d\d$/) >= 2, "tugas CPA memuat bilangan seribuan dan seratusan");
+  for (const t of semuaTugas) cek(!/satu ribu|satu ratus/.test(t.suara + " " + t.judul), "tanpa satu ribu dan satu ratus di instruksi");
   cek(/Pak Laode/.test(D.PENUTUP_A) && /handuk/.test(D.PENUTUP_A) && tanpaDigit(D.PENUTUP_A) && bersih(D.PENUTUP_A), "jembatan ke Sub-Bab B: Pak Laode dan handuk");
   for (const r of ["concrete", "pictorial", "abstract"]) cek(emojiSah(D.TEMA_TIKET[r].ikon) && D.TEMA_TIKET[r].nama.length > 5 && bersih(D.TEMA_TIKET[r].cara), `tema ${r} sah`);
   cek(D.CONCRETE_TIKET === D.CONCRETE && D.PICTORIAL_TIKET === D.PICTORIAL && D.ABSTRACT_TIKET === D.ABSTRACT, "nama ekspor untuk pemasang");

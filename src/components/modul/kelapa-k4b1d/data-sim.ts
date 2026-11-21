@@ -35,6 +35,11 @@ export const TARGET_LAIN: readonly TargetLain[] = [
   { benda: "nanas", n: 5960 },
   { benda: "semangka", n: 9130 },
 ];
+/** Uang: uang yang dibayar (kelipatan seratus); anak mengatur lembar Rp 2.000 dan keping Rp 1.000, 500, 100 dari kotak kios sampai jumlahnya pas, lalu menyimpan dua uraian berbeda. Data berbeda dari Story (7.300 dan 10.000) dan dari tugas CPA. */
+export type TargetUang = { n: number };
+export const TARGET_UANG: readonly TargetUang[] = [{ n: 5400 }, { n: 8200 }, { n: 9600 }];
+/** Banyak uraian uang berbeda yang harus disimpan untuk satu jumlah uang. */
+export const URAIAN_UANG_DIPERLUKAN = 2;
 /** Banyak cara berbeda yang harus disimpan untuk satu bilangan. */
 export const CARA_DIPERLUKAN = 3;
 /** Banyak keranjang paling banyak di satu tempat. */

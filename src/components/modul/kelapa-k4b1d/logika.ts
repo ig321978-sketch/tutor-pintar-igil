@@ -6,10 +6,10 @@
  * dan Lain (simpan tiga cara berbeda menguraikan satu bilangan menjadi dua bagian; alat menolak cara yang sama). Data ada di data-sim.ts.
  * Tipe KeadaanKelapa (alat: "kelapa") dipakai misi-k4bab1.ts dan HARUS tetap diekspor.
  */
-import { CARA_DIPERLUKAN, MAKS_KERANJANG, TARGET_BAGAN, TARGET_LAIN, TARGET_PECAH, TARGET_SUSUN } from "./data-sim";
-import { HARGA, URUT_TEMPAT, baganKeliru, kataBil, rb, susunKeliru } from "./logika-cpa";
+import { CARA_DIPERLUKAN, MAKS_KERANJANG, TARGET_BAGAN, TARGET_LAIN, TARGET_PECAH, TARGET_SUSUN, TARGET_UANG, URAIAN_UANG_DIPERLUKAN } from "./data-sim";
+import { HARGA, STOK_UANG, URUT_PECAHAN, URUT_TEMPAT, baganKeliru, jenisUang, kataBil, rb, susunKeliru, teksUang, type IsiUang } from "./logika-cpa";
 
-export type ModeKelapa = "pecah" | "susun" | "bagan" | "lain";
+export type ModeKelapa = "pecah" | "susun" | "bagan" | "lain" | "uang";
 
 export type KeadaanKelapa = {
   alat: "kelapa";
@@ -32,6 +32,11 @@ export type KeadaanKelapa = {
   lainA: number;
   lainSimpan: number[];
   lainBenar: number[];
+  /** Uang: sasaran ke berapa, banyak lembar atau keping tiap pecahan (Rp 2.000, 1.000, 500, 100), uraian yang sudah disimpan, sasaran yang sudah benar. */
+  uangKe: number;
+  uangIsi: number[];
+  uangSimpan: string[];
+  uangBenar: number[];
   /** Pernah mencoba langkah yang ditolak alat (sepuluh keranjang di satu tempat, atau cara yang sama). */
   tolak: boolean;
   /** Banyak percobaan Periksa yang keliru (hanya untuk petunjuk, bukan skor). */
@@ -55,6 +60,10 @@ export const awalKelapa = (): KeadaanKelapa => ({
   lainA: 1,
   lainSimpan: [],
   lainBenar: [],
+  uangKe: 0,
+  uangIsi: [0, 0, 0, 0],
+  uangSimpan: [],
+  uangBenar: [],
   tolak: false,
   salah: 0,
 });
@@ -198,4 +207,47 @@ export function petunjukLain(k: KeadaanKelapa): string {
 export function kalimatLain(k: KeadaanKelapa): string {
   if (k.lainBenar.length > 0 && k.lainSimpan.length === 0) return "Betul! Tiga cara sudah tersimpan. Ada bilangan berikutnya.";
   return k.lainSimpan.length === 0 ? "Ubah ribuan bagian pertama, lalu simpan cara. Cari tiga cara yang berbeda." : `Sudah ${kata(k.lainSimpan.length)} cara tersimpan. Cari cara lain yang berbeda.`;
+}
+
+/* ------------------------------ Uang: uraikan uang dengan lembar dan keping ------------------------------ */
+export const targetUang = (k: KeadaanKelapa) => TARGET_UANG[k.uangKe % TARGET_UANG.length];
+export const isiUangDari = (isi: number[]): IsiUang => ({ 2000: isi[0], 1000: isi[1], 500: isi[2], 100: isi[3] });
+/** Jumlah uang di meja: banyak tiap pecahan dikali harga pecahannya. */
+export const jumlahUangKu = (k: KeadaanKelapa): number => k.uangIsi.reduce((t, c, i) => t + c * URUT_PECAHAN[i], 0);
+/** Tambah (+1) atau ambil (-1) satu lembar atau keping pecahan ke-`i` (0 = Rp 2.000, 3 = Rp 100). Paling banyak sebanyak uang di kotak kios; yang melebihi ditolak alat. */
+export function aturUang(k: KeadaanKelapa, i: number, d: -1 | 1): { k: KeadaanKelapa; ok: boolean } {
+  if (i < 0 || i >= 4) return { k, ok: false };
+  const v = k.uangIsi[i] + d;
+  if (v < 0 || v > STOK_UANG[URUT_PECAHAN[i]]) return { k: d > 0 ? { ...k, tolak: true } : k, ok: false };
+  const isi = [...k.uangIsi];
+  isi[i] = v;
+  return { k: { ...k, uangIsi: isi }, ok: true };
+}
+export const petunjukBatasUang = (i: number, d: -1 | 1): string => {
+  const p = URUT_PECAHAN[i];
+  return d > 0 ? `Alat menolak. Di kotak kios hanya ada ${kata(STOK_UANG[p])} ${jenisUang(p)} uang ${kata(p)}.` : "Tidak ada lagi yang bisa diambil dari pecahan itu.";
+};
+/** Simpan uraian sekarang. Jumlah harus pas dengan uang yang dibayar; uraian yang sama dengan yang sudah disimpan ditolak alat. Setelah dua uraian berbeda, sasaran selesai. */
+export function simpanUang(k: KeadaanKelapa): { k: KeadaanKelapa; ok: boolean; selesai: boolean } {
+  if (jumlahUangKu(k) !== targetUang(k).n) return { k: { ...k, salah: k.salah + 1 }, ok: false, selesai: false };
+  const teks = teksUang(isiUangDari(k.uangIsi));
+  if (k.uangSimpan.includes(teks)) return { k: { ...k, tolak: true }, ok: false, selesai: false };
+  const simpan = [...k.uangSimpan, teks];
+  if (simpan.length >= URAIAN_UANG_DIPERLUKAN) {
+    return { k: { ...k, uangBenar: tambahBenar(k.uangBenar, k.uangKe), uangKe: k.uangKe + 1, uangIsi: [0, 0, 0, 0], uangSimpan: [] }, ok: true, selesai: true };
+  }
+  return { k: { ...k, uangSimpan: simpan }, ok: true, selesai: false };
+}
+export function petunjukUang(k: KeadaanKelapa): string {
+  const j = jumlahUangKu(k);
+  const n = targetUang(k).n;
+  if (j === 0) return "Belum ada uang di meja. Tekan tambah pada lembar atau keping sampai jumlahnya sama dengan uang yang dibayar.";
+  if (j < n) return "Jumlah uang masih kurang dari uang yang dibayar. Tambah lembar atau keping.";
+  if (j > n) return "Jumlah uang sudah lebih dari uang yang dibayar. Ambil satu lembar atau keping.";
+  if (k.uangSimpan.includes(teksUang(isiUangDari(k.uangIsi)))) return "Alat menolak. Uraian itu sudah disimpan. Ubah lembar atau keping, lalu simpan uraian yang berbeda.";
+  return "Jumlah uang sudah pas. Tekan Simpan uraian.";
+}
+export function kalimatUang(k: KeadaanKelapa): string {
+  if (k.uangBenar.length > 0 && k.uangSimpan.length === 0 && jumlahUangKu(k) === 0) return "Betul! Dua uraian berbeda sudah tersimpan. Ada uang berikutnya.";
+  return k.uangSimpan.length === 0 ? "Atur lembar dan keping sampai jumlahnya pas, lalu simpan uraian. Cari dua uraian yang berbeda." : `Sudah ${kata(k.uangSimpan.length)} uraian tersimpan. Cari uraian lain yang berbeda.`;
 }

@@ -3,11 +3,13 @@
 Lanjutan cerita bab "Penginapan Pulau Karang Indah" (lihat `naskah/alur-cerita-k4b1.md`). Tamu E: Bu Rina (petugas resepsi, 👩 berseragam hijau).
 Suara tanpa digit; bilangan yang diucapkan harus tampak sebagai angka di layar pada ketukan yang sama. Naskah TETAP (sesuaikan sedikit hanya bila uji menuntut; laporkan).
 
-Data Story E (jangan dijadikan jawaban CPA): tamu pagi 245, siang 378, jumlah 623; satuan 5 + 8 = 13 tulis 3 simpan 1; puluhan 4 + 7 + 1 = 12 tulis 2 simpan 1; ratusan 2 + 3 + 1 = 6; salah Satria 513 (tanpa menyimpan); genapkan 378 menjadi 400 lalu kurangi 22.
+Data Story E (jangan dijadikan jawaban CPA): tamu pagi 245, siang 378, jumlah 623; satuan 5 + 8 = 13 tulis 3 simpan 1; puluhan 4 + 7 + 1 = 12 tulis 2 simpan 1; ratusan 2 + 3 + 1 = 6; salah Satria 513 (tanpa menyimpan); susun panjang 245 = 200 + 40 + 5, 378 = 300 + 70 + 8, jumlah per tempat 500 + 110 + 13, diuraikan lagi 500 + (100 + 10) + (10 + 3), digabung 600 + 20 + 3 = 623; genapkan 378 menjadi 400 lalu kurangi 22.
+
+Selaras buku Bab 1 E: cara susun panjang (uraikan, jumlahkan per tempat, uraikan lagi 14 = 10 + 4 dan 120 = 100 + 20, gabungkan) dan cara susun pendek (bersusun ke bawah, tanpa menyimpan 131 + 321, menyimpan dua kali 189 + 245). Materi memakai dua simpanan (245 + 378) pada kedua cara; Metode Global memakai satu kali menyimpan (326 + 259 pendek, 417 + 265 panjang), dua kali menyimpan (189 + 245 pendek), dan tanpa menyimpan (131 + 321 panjang).
 
 ## Video materi (300 sampai 400 kata termasuk sapaan, 9 adegan, 3 ketukan; tanpa latihan)
 
-Sapaan (bersama): topik "menjumlahkan bilangan sampai seribu"; daftar: "penjumlahan bersusun", "menyimpan", "memeriksa hasil".
+Sapaan (bersama): topik "menjumlahkan bilangan sampai seribu"; daftar: "susun panjang dan pendek", "menyimpan", "memeriksa hasil".
 
 1. `resepsi`
    - "Di ruang depan penginapan, Bu Rina duduk di meja resepsi dengan daftar tamu yang panjang."
@@ -17,8 +19,8 @@ Sapaan (bersama): topik "menjumlahkan bilangan sampai seribu"; daftar: "penjumla
 2. `daftar`
    - "Tamu pagi dua ratus empat puluh lima orang, dan tamu siang tiga ratus tujuh puluh delapan orang."
    - "Laras menulis keduanya bersusun ke bawah, satuan di bawah satuan."
-   - "Mereka menjumlahkan dari kanan, mulai dari satuan."
-   Visual: dua bilangan 245 dan 378 tersusun ke bawah dengan garis tambah di antaranya; ketiga kolom berlabel ratusan, puluhan, satuan; panah mulai dari satuan.
+   - "Mereka menjumlahkan dari kanan, mulai dari satuan, itulah cara susun pendek."
+   Visual: dua bilangan 245 dan 378 tersusun ke bawah dengan garis tambah di antaranya; ketiga kolom berlabel ratusan, puluhan, satuan; panah mulai dari satuan; label susun pendek.
 3. `salah-simpan` (salah langkah, taruhan, momen lucu)
    - "Satria menjumlahkan lima dan delapan, hasilnya tiga belas, lalu ia menulis tiga belas di bawah satuan."
    - "Ia terus menjumlahkan tiap kolom tanpa menyimpan, dan hasilnya lima ratus tiga belas."
@@ -34,11 +36,11 @@ Sapaan (bersama): topik "menjumlahkan bilangan sampai seribu"; daftar: "penjumla
    - "Dua ditulis di puluhan, dan satu disimpan ke ratusan."
    - "Di ratusan, dua ditambah tiga ditambah satu simpanan sama dengan enam."
    Visual: kolom puluhan 4 + 7 + 1 = 12 dengan 2 turun dan 1 naik; kolom ratusan 2 + 3 + 1 = 6; hasil 623 tertulis.
-6. `hasil`
-   - "Hasilnya enam ratus dua puluh tiga tamu."
-   - "Kalau tidak menyimpan, hasilnya hanya lima ratus tiga belas, kurang seratus sepuluh."
-   - "Satria menghela napas dan mulai mengangkat koper-koper itu."
-   Visual: 623 besar berwarna hijau di samping 513 berwarna merah dicoret; selisih 110; Satria memanggul koper bertumpuk.
+6. `panjang` (cara susun panjang dari buku)
+   - "Laras menunjukkan cara susun panjang, dua ratus empat puluh lima diuraikan menjadi dua ratus, empat puluh, dan lima."
+   - "Ratusan dengan ratusan, puluhan dengan puluhan, satuan dengan satuan, hasilnya lima ratus, seratus sepuluh, dan tiga belas."
+   - "Seratus sepuluh dan tiga belas diuraikan lagi, lalu digabung per tempat, hasilnya enam ratus dua puluh tiga, dan Satria mulai mengangkat koper-koper itu."
+   Visual: kertas dengan 245 = 200 + 40 + 5 dan 378 = 300 + 70 + 8; garis gabungan (200 + 300) + (40 + 70) + (5 + 8) lalu 500 + 110 + 13; diuraikan lagi 500 + (100 + 10) + (10 + 3), digabung 600 + 20 + 3 = 623; Satria dan tumpukan koper.
 7. `periksa`
    - "Laras mengajak memeriksa hasil dengan pembulatan, tiga ratus tujuh puluh delapan hampir empat ratus."
    - "Dua ratus empat puluh lima ditambah empat ratus sama dengan enam ratus empat puluh lima."
@@ -68,21 +70,21 @@ Metode: Column Add (Susun ke Bawah), Place Add (Tambah Per Tempat), Round and Ad
   - "Cara pertama, Column Add, atau Susun ke Bawah."
   - "Bilangan ditulis ke bawah, satuan di bawah satuan, puluhan di bawah puluhan."
   - "Kita menjumlahkan dari kanan, dan menyimpan bila hasilnya sepuluh atau lebih."
-  - "Simpanan itu dibawa ke tempat di kirinya dan ikut dijumlahkan."
+  - "Simpanan itu dibawa ke tempat di kirinya dan ikut dijumlahkan, bisa sekali, bisa dua kali."
 - `luar-susun-terapan`:
   - "Laras menjumlahkan tiga ratus dua puluh enam dan dua ratus lima puluh sembilan."
-  - "Enam ditambah sembilan lima belas, ia menulis lima dan menyimpan satu."
+  - "Enam ditambah sembilan lima belas, ia menulis lima dan menyimpan satu, hanya satu kali menyimpan."
   - "Cocok untuk bilangan besar, karena langkahnya rapi dan bisa diperiksa."
   - "Kurang cocok kalau kita lupa menyimpan, karena hasilnya bisa meleset."
-- `luar-tambah` (konsep Place Add):
+- `luar-tambah` (konsep Place Add, susun panjang):
   - "Cara kedua, Place Add, atau Tambah Per Tempat."
-  - "Kita menjumlahkan ratusan dengan ratusan, puluhan dengan puluhan, dan satuan dengan satuan."
-  - "Lalu semua hasil sementara dijumlahkan menjadi hasil akhir."
-  - "Cara ini menunjukkan isi tiap tempat secara jelas, jadi lebih mudah diikuti."
+  - "Tiap bilangan diuraikan menjadi ratusan, puluhan, dan satuan, lalu tiap tempat dijumlahkan sendiri."
+  - "Hasil tiap tempat digabung, jadi empat ratus, lima puluh, dan dua, hasil akhirnya empat ratus lima puluh dua."
+  - "Kalau satu tempat berjumlah sepuluh atau lebih, diuraikan lagi, empat belas menjadi sepuluh dan empat."
 - `luar-tambah-terapan`:
-  - "Genta menjumlahkan lima ratus empat puluh dan dua ratus tiga puluh lima."
-  - "Ratusan tujuh ratus, puluhan tujuh puluh, satuan lima, jadi tujuh ratus tujuh puluh lima."
-  - "Cocok untuk anak yang masih bingung dengan simpanan."
+  - "Genta menjumlahkan empat ratus tujuh belas dan dua ratus enam puluh lima."
+  - "Ratusan enam ratus, puluhan tujuh puluh, satuan dua belas, yaitu sepuluh dan dua, jadi enam ratus delapan puluh dua."
+  - "Cocok untuk anak yang masih bingung dengan simpanan, karena tiap tempat terlihat jelas."
   - "Kurang cocok kalau waktunya singkat, karena langkahnya lebih panjang daripada bersusun."
 - `luar-genap` (konsep Round and Adjust):
   - "Cara ketiga, Round and Adjust, atau Genapkan Dulu."

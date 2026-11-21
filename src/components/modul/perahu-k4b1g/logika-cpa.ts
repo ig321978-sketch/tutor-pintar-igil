@@ -50,6 +50,8 @@ export const bagian = (a: number, b: number) => {
   const p = u * b;
   return { t, u, puluhan: t * 10 * b, satuan: p, simpan: Math.floor(p / 10), tulis: p % 10, hasil: a * b };
 };
+/** Apakah kali susun a x b memakai simpanan (hasil kali satuan sepuluh atau lebih)? Acuan kurikulum memuat dua jenis: tanpa menyimpan (12 x 4) dan dengan menyimpan (14 x 5). */
+export const adaSimpanan = (a: number, b: number): boolean => bagian(a, b).simpan > 0;
 /** Penjumlahan berulang: `a` dijumlahkan `b` kali, misalnya "17 + 17 + 17". */
 export const teksUlang = (a: number, b: number): string => Array.from({ length: b }, () => String(a)).join(" + ");
 export const teksSusun = (a: number, b: number): string => {
@@ -113,7 +115,7 @@ export function kunciJawab(l: Langkah, cara: Cara): Kunci | null {
     case "urai":
       return cara === "klik" ? nama(`${g.puluhan} + ${g.satuan}`) : cara === "kanvas" ? angka(g.satuan) : angka(g.puluhan);
     case "susun":
-      return cara === "klik" ? nama(teksSusun(l.a, l.b)) : cara === "kanvas" ? angka(g.simpan) : l.kata ? nama("simpan") : angka(Math.floor(g.hasil / 10));
+      return cara === "klik" ? nama(teksSusun(l.a, l.b)) : cara === "kanvas" ? angka(g.simpan > 0 ? g.simpan : g.tulis) : l.kata ? nama("simpan") : angka(Math.floor(g.hasil / 10));
   }
 }
 
@@ -142,7 +144,7 @@ export function pengecoh(l: Langkah, cara: Cara, awal?: number): number[] {
   if (d.tipe === "kali") khas = cara === "kanvas" ? [Math.floor(g.hasil / 10) + 1, g.simpan] : [g.t * 10 * d.b + g.u, d.a + d.b, g.hasil + 10];
   else if (d.tipe === "tambah") khas = cara === "kanvas" ? [d.b + 1, d.b - 1] : [d.a + d.b, 3 * d.a];
   else if (d.tipe === "urai") khas = cara === "kanvas" ? [g.u, g.satuan + 1] : [g.t * d.b, g.puluhan + 10];
-  else khas = cara === "kanvas" ? [g.tulis, g.simpan + 1] : [g.t * d.b, Math.floor(g.hasil / 10) - 1];
+  else khas = cara === "kanvas" ? (g.simpan > 0 ? [g.tulis, g.simpan + 1] : [g.t, g.tulis + 1]) : [g.t * d.b, Math.floor(g.hasil / 10) - 1];
   const calon = [awal ?? -1, ...khas, n + 1, n - 1, n + 2, n - 2, n + 10];
   const hasil: number[] = [];
   for (const c of calon) if (Number.isInteger(c) && c >= 0 && c <= 999 && c !== n && !hasil.includes(c)) hasil.push(c);
@@ -214,6 +216,12 @@ function kalimatKunciMentah(l: Langkah, cara: Cara): string {
           ? `${kataBil(g.u)} kali ${kataBil(d.b)} sama dengan ${kataBil(g.satuan)}.`
           : `${kataBil(g.t * 10)} kali ${kataBil(d.b)} sama dengan ${kataBil(g.puluhan)}.`;
     case "susun":
+      if (g.simpan === 0)
+        return cara === "klik"
+          ? `${kataBil(g.u)} kali ${kataBil(d.b)} sama dengan ${kataBil(g.satuan)}, hanya satu angka, jadi tulis ${kataBil(g.tulis)} dan simpan nol.`
+          : cara === "kanvas"
+            ? `Hasil kali satuan ${kataBil(g.satuan)}, hanya satu angka, jadi seluruhnya ditulis di bawah satuan.`
+            : `Tidak ada simpanan, jadi puluhan ${kataBil(g.t)} kali ${kataBil(d.b)} sama dengan ${kataBil(Math.floor(g.hasil / 10))}.`;
       return cara === "klik"
         ? `${kataBil(g.u)} kali ${kataBil(d.b)} sama dengan ${kataBil(g.satuan)}, jadi tulis ${kataBil(g.tulis)} dan simpan ${kataBil(g.simpan)}.`
         : cara === "kanvas"
@@ -255,7 +263,9 @@ function instruksiMentah(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): st
       return cara === "klik"
         ? `${aw}: ${kataBil(l.a)} kali ${kataBil(l.b)} ditulis ke bawah. Satuan dikalikan dulu. Mana cara menulis dan menyimpannya? ${akhir}`
         : cara === "kanvas"
-          ? `${aw}: ${kataBil(l.a)} kali ${kataBil(l.b)} ditulis ke bawah. Satuan dikalikan dulu. Berapa angka yang disimpan? ${akhir}`
+          ? adaSimpanan(l.a, l.b)
+            ? `${aw}: ${kataBil(l.a)} kali ${kataBil(l.b)} ditulis ke bawah. Satuan dikalikan dulu. Berapa angka yang disimpan? ${akhir}`
+            : `${aw}: ${kataBil(l.a)} kali ${kataBil(l.b)} ditulis ke bawah. Satuan dikalikan dulu. Berapa angka yang ditulis di bawah satuan? ${akhir}`
           : l.kata
             ? `${aw}: ${kataBil(l.a)} kali ${kataBil(l.b)} ditulis ke bawah. Hasil kali satuan lebih dari sembilan. Angka puluhannya ditulis atau disimpan? Ucapkan satu kata.`
             : `${aw}: ${kataBil(l.a)} kali ${kataBil(l.b)} ditulis ke bawah. Berapa angka puluhan hasil akhirnya? ${akhir}`;
@@ -273,7 +283,7 @@ export function kalimatTanya(l: Langkah, cara: Cara): string {
     case "urai":
       return cara === "klik" ? "Mana hasil kali kedua bagiannya?" : cara === "kanvas" ? "Berapa hasil kali satuan?" : "Berapa hasil kali puluhan?";
     case "susun":
-      return cara === "klik" ? "Mana cara menulis dan menyimpannya?" : cara === "kanvas" ? "Berapa angka yang disimpan?" : d.kata ? "Ditulis atau disimpan?" : "Berapa angka puluhan hasil akhir?";
+      return cara === "klik" ? "Mana cara menulis dan menyimpannya?" : cara === "kanvas" ? (adaSimpanan(d.a, d.b) ? "Berapa angka yang disimpan?" : "Berapa angka yang ditulis di satuan?") : d.kata ? "Ditulis atau disimpan?" : "Berapa angka puluhan hasil akhir?";
   }
 }
 
@@ -301,6 +311,12 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
           ? "Kalikan angka satuan dengan pengali. Jangan memakai angka puluhannya."
           : "Kalikan puluhan dengan pengali, lalu beri nol di belakang karena yang dikalikan adalah puluhan.";
     case "susun":
+      if (!adaSimpanan(l.a, l.b))
+        return cara === "klik"
+          ? "Hasil kali satuan hanya satu angka, jadi seluruhnya ditulis di bawah satuan dan tidak ada yang disimpan."
+          : cara === "kanvas"
+            ? "Kalikan satuan dulu. Hasilnya hanya satu angka, dan angka itulah yang ditulis di bawah satuan."
+            : "Kalikan puluhan dengan pengali. Tidak ada simpanan, jadi hasil kali itu langsung menjadi angka puluhan hasil akhir.";
       return cara === "klik"
         ? "Hasil kali satuan terdiri dari dua angka. Angka satuan ditulis di bawah, angka puluhannya disimpan di atas kolom puluhan."
         : cara === "kanvas"
@@ -323,7 +339,7 @@ export function barisKartu(l: LangkahDasar, cara?: Cara): string[] {
     case "urai":
       return [`perkalian: ${l.a} × ${l.b}`, `uraian: ${l.a} = ${g.t * 10} + ${g.u}`, cara === "klik" ? "hasil: ? + ?" : cara === "kanvas" ? "hasil kali satuan: ?" : "hasil kali puluhan: ?"];
     case "susun":
-      return [`perkalian: ${l.a} × ${l.b}`, `satuan: ${g.u} × ${l.b}`, cara === "klik" ? "tulis ?, simpan ?" : cara === "kanvas" ? "angka yang disimpan: ?" : l.kata ? "angka puluhan: ditulis atau disimpan?" : "angka puluhan hasil akhir: ?"];
+      return [`perkalian: ${l.a} × ${l.b}`, `satuan: ${g.u} × ${l.b}`, cara === "klik" ? "tulis ?, simpan ?" : cara === "kanvas" ? (adaSimpanan(l.a, l.b) ? "angka yang disimpan: ?" : "angka yang ditulis di satuan: ?") : l.kata ? "angka puluhan: ditulis atau disimpan?" : "angka puluhan hasil akhir: ?"];
   }
 }
 export const judulKartu = (rupa: Rupa, teks: string): string => (rupa === "lambang" ? kapital(teks) : teks);

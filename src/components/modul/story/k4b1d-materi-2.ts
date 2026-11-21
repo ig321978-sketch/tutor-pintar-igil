@@ -10,7 +10,7 @@ import { k, sorotkan, tambah, ubah } from "./k4b1d-bantu";
 /* ------------------------------ 4. Papan empat kotak ------------------------------ */
 const SUARA_B1 = "Genta menunjuk papan empat kotak, ribuan, ratusan, puluhan, dan satuan.";
 const SUARA_B2 = "Angka tujuh ada di puluhan, jadi artinya tujuh puluh, bukan tujuh.";
-const SUARA_B3 = "Satuannya nol, jadi tidak ada butir yang berdiri sendiri.";
+const SUARA_B3 = "Satuannya nol, jadi bilangan itu terbaca lima ribuan, dua ratusan, tujuh puluhan, dan nol satuan.";
 const T1 = kotakTempat("t1", 16, 64, 60, 70, "ribuan");
 const T2 = kotakTempat("t2", 88, 64, 60, 70, "ratusan");
 const T3 = kotakTempat("t3", 160, 64, 60, 70, "puluhan");
@@ -25,7 +25,7 @@ export const ADEGAN_BAGAN: AdeganStory = {
     k(
       SUARA_B1,
       tambah(0, judul("Papan Tempat Angka"), ...tokoh("gn", 40, 184, "Genta")),
-      tambah("menunjuk", panah("pa", 62, 156, 50, -20, W.merah, 2)),
+      tambah("menunjuk", panah("pa", 62, 156, 30, -16, W.merah, 2)),
       tambah("papan", T1[0], T2[0], T3[0], T4[0]),
       tambah("empat", teks("k4", 262, 44, "4 kotak", 10, W.merah)),
       tambah("ribuan,", T1[1]),
@@ -44,8 +44,11 @@ export const ADEGAN_BAGAN: AdeganStory = {
     k(
       SUARA_B3,
       sorotkan("Satuannya", "t4-k"),
-      tambah("tidak", emo("xk", 276, 160, E.salah, 16)),
-      tambah("butir", emo("kb", 250, 162, E.kelapa, 22)),
+      tambah("lima", teks("rd", 190, 148, "5 ribuan", 10.8, W.ungu)),
+      ubah("dua", { id: "rd", isi: "5 ribuan + 2 ratusan" }),
+      tambah("tujuh", teks("rd2", 190, 161, "+ 7 puluhan", 10.8, W.ungu)),
+      ubah("dan", { id: "rd2", isi: "+ 7 puluhan + 0 satuan" }),
+      tambah("satuan.", emo("xk", 288, 184, E.salah, 14), emo("kb", 270, 186, E.kelapa, 20)),
     ),
   ],
 };

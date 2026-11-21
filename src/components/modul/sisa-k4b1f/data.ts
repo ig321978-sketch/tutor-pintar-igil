@@ -2,7 +2,9 @@
  * Isi tahap Concrete, Pictorial, dan Abstract Kelas 4 Bab 1 Sub-Bab F "Papan Sisa Pak Usman" (pengurangan bersusun sampai seribu: dari satuan ke kiri, mengambil, hitung maju, periksa dengan tambah),
  * cerita Penginapan Pulau Karang Indah. Misi lanjutan "Misi Sisa" (nomor misi berlanjut dari Simulasi). Data berbeda dari Story (612 dikurangi 275, 430 dikurangi 158, 750 sampai 840, 520 dikurangi 345).
  * Concrete memakai balok cacah dan benda pulau wisata beremoji di papan dermaga kayu, Pictorial memakai balok polos, garis bilangan polos, dan kartu bilangan di kertas petak,
- * Abstract memakai kartu kata, angka, dan hitung susun tertulis di daftar jaga dermaga. Jawaban beragam: memilih bilangan atau nama tempat angka, menulis satu angka di kanvas,
+ * Abstract memakai kartu kata, angka, dan hitung susun tertulis di daftar jaga dermaga.
+ * Selaras buku (cara susun panjang): tugas "susun" kedua misi Klik dan Kanvas memakai susun panjang (kedua bilangan terurai, mis. 758 = 700 + 50 + 8, dikurangkan tiap tempat),
+ * Klik tanpa mengambil dan Kanvas dua kali mengambil; tugas susun pendek: Suara satu kali mengambil dan Cari kesalahan Satria (tanpa mengambil ada di Story). Bilangan contoh buku (265, 132, 133) hanya di Story. Jawaban beragam: memilih bilangan atau nama tempat angka, menulis satu angka di kanvas,
  * dan mengucapkan bilangan pendek atau satu kata (satuan, puluhan, ratusan, sama, berbeda). Jawaban benar dihitung dari data.
  * Angka jawaban Tulis di kanvas per tahap: Concrete 2, 7, 4, 5; Pictorial 1, 7, 3, 4; Abstract 1, 3, 5, 4 (tidak kembar dalam satu tahap).
  * Diuji: scripts/uji-sisa-k4b1f.mjs.
@@ -13,6 +15,8 @@ import { URUT_METODE, instruksi, ucapkan } from "./logika-cpa";
 export { MISI_SISA_TEKS } from "./data-sim";
 
 const susun = (benda: string, a: number, b: number, tempat: Tempat = "puluhan"): LSusun => ({ tipe: "susun", benda, a, b, tempat });
+/** Susun panjang: kedua bilangan terurai (ratusan + puluhan + satuan) dan dikurangkan tiap tempat. */
+const panjang = (benda: string, a: number, b: number, tempat: Tempat = "puluhan"): LSusun => ({ tipe: "susun", benda, a, b, tempat, panjang: true });
 const ambil = (benda: string, a: number, b: number): LAmbil => ({ tipe: "ambil", benda, a, b });
 const maju = (benda: string, a: number, b: number): LMaju => ({ tipe: "maju", benda, a, b });
 const cek = (benda: string, a: number, b: number, klaim: number, tempat: Tempat = "ratusan"): LCek => ({ tipe: "cek", benda, a, b, klaim, tempat });
@@ -47,10 +51,10 @@ const C = satuMisi("benda");
 export const CONCRETE: SoalMisi[] = [
   C(2, "klik", "Misi Sisa 2: dermaga sore", "Pak Usman menata balok cacah di papan dermaga kayu. Periksa gambarnya.", [
     salah(
-      susun("sandal", 421, 156),
+      susun("sandal", 423, 186),
       "Satria",
-      "Aku mengurangkan tiap tempat dengan menaruh angka besar di atas angka kecil, jadi hasilnya tiga ratus tiga puluh lima.",
-      "335",
+      "Aku mengurangkan tiap tempat dengan menaruh angka besar di atas angka kecil, jadi hasilnya tiga ratus enam puluh tiga.",
+      "363",
       [
         "Satria keliru: kalau angka di atas lebih kecil, ia harus mengambil satu dari tempat di kirinya, bukan membalik angka.",
         "Satria benar, mengurangkan angka besar dengan angka kecil di tiap tempat selalu boleh.",
@@ -59,19 +63,19 @@ export const CONCRETE: SoalMisi[] = [
       0,
       "Angka di atas yang lebih kecil tidak boleh dibalik. Ambil satu dari tempat di kirinya, lalu kurangkan dari satuan ke kiri.",
     ),
-    susun("koper", 835, 267),
+    panjang("koper", 758, 324),
     maju("kelapa", 372, 348),
-    cek("kerang", 640, 265, 385),
+    cek("kerang", 640, 255, 385),
   ]),
   C(3, "kanvas", "Misi Sisa 3: papan sisa", "Laras mencatat sisa barang di papan sisa. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [
     ambil("lentera", 534, 279),
-    susun("keranjang", 786, 349, "satuan"),
+    panjang("keranjang", 843, 376, "satuan"),
     maju("nanas", 523, 496),
     cek("semangka", 912, 368, 534, "ratusan"),
   ]),
   C(4, "suara", "Misi Sisa 4: panggilan Pak Hendro", "Pak Hendro memanggil dari ujung dermaga. Jawab dengan suaramu.", [
     ambil("sandal", 532, 271),
-    susun("koper", 654, 289),
+    susun("koper", 647, 218),
     maju("kelapa", 815, 767),
     cek("kerang", 730, 285, 455),
   ]),
@@ -95,19 +99,19 @@ export const PICTORIAL: SoalMisi[] = [
       "Menjumlahkan hasil dengan bilangan yang dikurangkan memang cara memeriksa pengurangan, jadi jawaban Genta benar.",
       true,
     ),
-    susun("hitungan", 842, 375),
+    panjang("hitungan", 978, 536),
     maju("hitungan", 704, 679),
     cek("hitungan", 915, 478, 447),
   ]),
   Pi(6, "kanvas", "Misi Sisa 6: kapur Laras", "Laras menggambar hitungan yang lebih besar. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [
     ambil("hitungan", 462, 137),
-    susun("hitungan", 953, 478, "puluhan"),
+    panjang("hitungan", 953, 478, "puluhan"),
     maju("hitungan", 905, 887),
     cek("hitungan", 861, 392, 479, "ratusan"),
   ]),
   Pi(7, "suara", "Misi Sisa 7: lapor ke Pak Usman", "Genta melaporkan hitungannya kepada Pak Usman. Sebutkan jawabanmu.", [
     ambil("hitungan", 823, 559),
-    susun("hitungan", 731, 486),
+    susun("hitungan", 574, 318),
     maju("hitungan", 864, 837),
     cek("hitungan", 815, 367, 448),
   ]),
@@ -130,26 +134,26 @@ export const ABSTRACT: SoalMisi[] = [
       0,
       "Tempat yang diambil tinggal satu lebih kecil. Coret angkanya dan tulis angka baru sebelum mengurangkan puluhan.",
     ),
-    susun("hitungan", 724, 489),
+    panjang("hitungan", 897, 514),
     maju("hitungan", 802, 756),
     cek("hitungan", 934, 567, 377, "puluhan"),
   ]),
   A(9, "kanvas", "Misi Sisa 9: tulis di daftar", "Satria meminta kamu menulis jawaban di kanvas.", [
     ambil("hitungan", 745, 382),
-    susun("hitungan", 832, 457, "ratusan"),
+    panjang("hitungan", 832, 457, "ratusan"),
     maju("hitungan", 701, 685),
     cek("hitungan", 718, 259, 469, "ratusan"),
   ]),
   A(10, "suara", "Misi Sisa 10: daftar akhir", "Daftar akhir hitungan untuk Pak Usman. Ucapkan jawabannya.", [
     ambil("hitungan", 642, 371),
-    susun("hitungan", 812, 547),
+    susun("hitungan", 726, 418, "satuan"),
     maju("hitungan", 941, 896),
     cek("hitungan", 873, 496, 377),
   ]),
 ];
 
 export const POIN_PENTING = [
-  "Pengurangan bersusun ditulis ke bawah, dan dikurangkan dari satuan ke arah kiri.",
+  "Susun panjang menguraikan bilangan, misalnya 265 = 200 + 60 + 5 dan 132 = 100 + 30 + 2, lalu mengurangkan tiap tempat. Susun pendek menulis bilangan ke bawah dan mengurangkan dari satuan ke kiri, hasilnya sama.",
   "Kalau angka di atas lebih kecil, ambil satu dari tempat di kirinya, dan satu itu menjadi sepuluh di tempat kanan.",
   "Tempat yang diambil tinggal satu lebih kecil, jadi coret angkanya dan tulis angka barunya.",
   "Contoh: 612 − 275 = 337, dengan mengambil di satuan dan di puluhan.",

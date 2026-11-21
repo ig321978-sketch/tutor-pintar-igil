@@ -1,6 +1,6 @@
 /**
  * Isi tahap Concrete, Pictorial, dan Abstract Kelas 4 Bab 1 Sub-Bab H "Papan Jatah Bu Ratna" (pembagian sampai seratus: bagi rata, kurang berulang, bagi susun, sisa),
- * cerita Penginapan Pulau Karang Indah. Misi lanjutan "Misi Jatah" (nomor misi berlanjut dari Simulasi). Data berbeda dari Story (56 : 4, 59 : 4, 24 : 6, 36 : 6, 84 : 7),
+ * cerita Penginapan Pulau Karang Indah. Misi lanjutan "Misi Jatah" (nomor misi berlanjut dari Simulasi). Data berbeda dari Story (56 : 4, 59 : 4, 24 : 6, 36 : 6, 84 : 7) kecuali contoh 48 permen ke 2, 3, 4, 5, 6, 8 wadah yang sengaja ikut di tiap tahap (habis, kecuali ke 5 wadah bersisa),
  * kecuali seed Cari kesalahan dari alur. Concrete memakai benda pulau wisata beremoji di papan jatah berpintu, Pictorial memakai diagram polos (titik, bagan batang, garis loncat, bagan bersusun),
  * Abstract memakai kartu kata dan angka di daftar jatah kamar. Jawaban beragam: memilih bilangan, menulis satu angka di kanvas, dan mengucapkan satu kata (habis, sisa) atau bilangan pendek.
  * Jawaban benar dihitung dari data. Angka jawaban Tulis di kanvas per tahap: Concrete 6, 3, 8, 2; Pictorial 9, 1, 5, 2; Abstract 8, 5, 3, 4 (tidak kembar dalam satu tahap).
@@ -46,7 +46,7 @@ const satuMisi =
 const C = satuMisi("benda");
 export const CONCRETE: SoalMisi[] = [
   C(2, "klik", "Misi Jatah 2: papan jatah lorong", "Bu Ratna menata benda di papan jatah lorong penginapan. Periksa gambarnya.", [
-    bagi("koper", 48, 4, "hasil"),
+    bagi("permen", 48, 4, "hasil"),
     salah(
       rata("kelapa", 30, 4, "sisa"),
       "Genta",
@@ -72,7 +72,7 @@ export const CONCRETE: SoalMisi[] = [
   ]),
   C(4, "suara", "Misi Jatah 4: panggilan Pak Hendro", "Pak Hendro memanggil dari ujung lorong. Jawab dengan suaramu.", [
     bagi("kelapa", 54, 3, "hasil"),
-    rata("koper", 33, 3, "habis"),
+    rata("permen", 48, 6, "habis"),
     kurang("nanas", 47, 9, "sisa"),
     susun("kerang", 60, 4, "hasil"),
   ]),
@@ -82,7 +82,7 @@ export const CONCRETE: SoalMisi[] = [
 const Pi = satuMisi("diagram");
 export const PICTORIAL: SoalMisi[] = [
   Pi(5, "klik", "Misi Jatah 5: kertas jatah", "Laras menyalin jatah ke kertas biru berpetak. Periksa gambarnya.", [
-    bagi("jatah", 64, 4, "hasil"),
+    bagi("jatah", 48, 2, "hasil"),
     rata("jatah", 45, 5, "tiap"),
     kurang("jatah", 63, 9, "kali"),
     salah(
@@ -100,14 +100,14 @@ export const PICTORIAL: SoalMisi[] = [
     ),
   ]),
   Pi(6, "kanvas", "Misi Jatah 6: kapur Genta", "Genta menggambar jatah yang lebih besar. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [
-    bagi("jatah", 72, 8, "hasil"),
+    bagi("jatah", 48, 8, "hasil"),
     rata("jatah", 41, 4, "sisa"),
     kurang("jatah", 30, 6, "kali"),
     susun("jatah", 92, 4, "q1"),
   ]),
   Pi(7, "suara", "Misi Jatah 7: lapor ke Pak Hendro", "Laras melaporkan jatahnya kepada Pak Hendro. Sebutkan jawabanmu.", [
     bagi("jatah", 98, 7, "hasil"),
-    rata("jatah", 53, 6, "habis"),
+    rata("jatah", 48, 5, "habis"),
     kurang("jatah", 54, 9, "kali"),
     susun("jatah", 85, 5, "gabung"),
   ]),
@@ -117,7 +117,7 @@ export const PICTORIAL: SoalMisi[] = [
 const A = satuMisi("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(8, "klik", "Misi Jatah 8: daftar jatah", "Daftar jatah kamar hanya berisi kata dan angka.", [
-    bagi("daftar", 65, 5, "hasil"),
+    bagi("daftar", 48, 3, "hasil"),
     rata("daftar", 49, 7, "tiap"),
     salah(
       kurang("daftar", 42, 6, "kali"),
@@ -142,7 +142,7 @@ export const ABSTRACT: SoalMisi[] = [
   ]),
   A(10, "suara", "Misi Jatah 10: daftar akhir", "Daftar akhir jatah untuk Bu Ratna. Ucapkan jawabannya.", [
     bagi("daftar", 90, 6, "hasil"),
-    rata("daftar", 72, 9, "habis"),
+    rata("daftar", 48, 8, "habis"),
     kurang("daftar", 38, 7, "sisa"),
     susun("daftar", 72, 6, "hasil"),
   ]),
@@ -153,7 +153,8 @@ export const POIN_PENTING = [
   "Bagi Rata: bagikan satu per satu bergiliran, banyak benda di satu wadah adalah hasil bagi.",
   "Kurang Berulang: kurangi dengan pembagi berkali-kali, banyaknya pengurangan adalah hasil bagi.",
   "Bagi Susun: bagi dari puluhan ke satuan, turunkan angka satuan, lalu bagi lagi.",
-  "Sisa pembagian selalu lebih kecil daripada pembagi.",
+  "Makin banyak wadah, makin sedikit benda di tiap wadah: 48 benda ke 2, 3, 4, 6, 8 wadah habis terbagi, tiap wadah mendapat 24, 16, 12, 8, 6.",
+  "Sisa pembagian selalu lebih kecil daripada pembagi, misalnya 59 : 4 = 14 sisa 3.",
   "Periksa dengan perkalian: hasil bagi × pembagi + sisa harus sama dengan bilangan awal.",
 ];
 /** Poin penting untuk suara (tanpa digit): angka menjadi kata dan lambang dibaca lengkap. */

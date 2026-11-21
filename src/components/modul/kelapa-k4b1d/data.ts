@@ -3,11 +3,12 @@
  * awal cerita dari Sub-Bab C ke Sub-Bab E di Penginapan Pulau Karang Indah. Misi lanjutan "Misi Kios" (nomor misi berlanjut dari Simulasi). Data berbeda dari Story (lima ribu dua ratus tujuh puluh,
  * enam ribu empat ratus tiga, tiga ribu tujuh ratus lima), kecuali seed Cari kesalahan dari alur (6.304 dan 3.908). Concrete memakai keranjang dan butir beremoji di rak kios (satu baris tiap tempat angka),
  * Pictorial memakai balok cacah polos, bagan tempat angka, dan bagan bagian utuh polos di papan harga, Abstract memakai kartu kata dan angka di nota Pak Darwis.
+ * Tugas uang (enam dari 36, dua per tahap): uraikan uang dengan lembar Rp 2.000 dan keping Rp 1.000, 500, 100 yang ada di kotak kios (pilih uraian, tulis banyak lembar atau keping, sama atau berbeda); Concrete memakai uang berwarna, Pictorial diagram polos, Abstract kartu tulisan.
  * Jawaban beragam: memilih uraian atau bilangan, menulis satu angka di kanvas, dan mengucapkan satu kata (ribuan, ratusan, puluhan, satuan, sama, berbeda) atau bilangan pendek.
  * Jawaban benar dihitung dari data. Angka jawaban Tulis di kanvas per tahap: Concrete 3, 8, 2, 4; Pictorial 5, 7, 2, 6; Abstract 5, 7, 2, 1 (tidak kembar dalam satu tahap).
  * Diuji: scripts/uji-kelapa-k4b1d.mjs.
  */
-import type { Cara, Langkah, LangkahSalah, LangkahSoal, LBagan, LLain, LSusun, LUrai, Rupa, SoalMisi, Tempat } from "./logika-cpa";
+import type { Cara, IsiUang, Langkah, LangkahSalah, LangkahSoal, LBagan, LLain, LSusun, LUang, LUrai, Pecahan, Rupa, SoalMisi, Tempat } from "./logika-cpa";
 import { URUT_METODE, instruksi, ucapkan } from "./logika-cpa";
 
 export { MISI_KELAPA_TEKS } from "./data-sim";
@@ -16,6 +17,9 @@ const urai = (benda: string, n: number, tempat: Tempat): LUrai => ({ tipe: "urai
 const susun = (benda: string, n: number): LSusun => ({ tipe: "susun", benda, n });
 const bagan = (benda: string, utuh: number, bagian: number, satuan: 1000 | 100, klaim?: number): LBagan => ({ tipe: "bagan", benda, utuh, bagian, satuan, ...(klaim === undefined ? {} : { klaim }) });
 const lain = (benda: string, n: number, a: number, klaim: number): LLain => ({ tipe: "lain", benda, n, a, klaim });
+/** Bilangan banyak lembar Rp 2.000, keping Rp 1.000, Rp 500, dan Rp 100 (berurut). */
+const isiU = (a: number, b: number, c: number, d: number): IsiUang => ({ 2000: a, 1000: b, 500: c, 100: d });
+const uang = (n: number, isi: IsiUang, tanya: Pecahan, klaim?: IsiUang): LUang => ({ tipe: "uang", benda: "uang", n, isi, tanya, ...(klaim === undefined ? {} : { klaim }) });
 const salah = (dasar: LUrai | LSusun | LBagan | LLain, tokoh: string, kataTokoh: string, jawabTokoh: string, alasan: [string, string, string], benar: number, keliru: string, betul = false): LangkahSalah => ({
   tipe: "salah",
   dasar,
@@ -59,12 +63,12 @@ export const CONCRETE: SoalMisi[] = [
       1,
       "Angka tiga ada di tempat ratusan, jadi bagiannya tiga ratus, bukan tiga puluh. Periksa tempat tiap angka dari kiri.",
     ),
-    urai("nanas", 8152, "puluhan"),
+    uang(6500, isiU(2, 2, 1, 0), 1000),
     susun("semangka", 7040),
     bagan("kelapa", 8600, 3000, 1000),
   ]),
   C(3, "kanvas", "Misi Kios 3: papan harga", "Pak Darwis menulis jumlah keranjang di papan harga. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [
-    lain("kelapa", 9240, 6000, 3240),
+    uang(8700, isiU(3, 2, 1, 2), 2000),
     urai("apel", 5836, "ratusan"),
     susun("kerang", 3005),
     bagan("nanas", 8000, 4000, 1000),
@@ -95,12 +99,12 @@ export const PICTORIAL: SoalMisi[] = [
       "Jawaban Laras benar. Tempat puluhan tidak punya bagian, jadi diisi nol dan hasilnya tiga ribu sembilan ratus delapan.",
       true,
     ),
-    urai("bilangan", 2743, "ratusan"),
+    uang(9400, isiU(4, 1, 0, 4), 100),
     susun("bilangan", 6020),
     bagan("bilangan", 7500, 2000, 1000),
   ]),
   Pi(6, "kanvas", "Misi Kios 6: kapur Laras", "Laras menggambar bagan yang lebih besar. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [
-    lain("bilangan", 7460, 2000, 5460),
+    uang(9500, isiU(2, 5, 1, 0), 1000),
     urai("bilangan", 6274, "puluhan"),
     susun("bilangan", 9300),
     bagan("bilangan", 7000, 1000, 1000),
@@ -117,7 +121,7 @@ export const PICTORIAL: SoalMisi[] = [
 const A = satuMisi("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(8, "klik", "Misi Kios 8: nota kios", "Nota Pak Darwis hanya berisi kata dan angka.", [
-    lain("bilangan", 8370, 6000, 2370),
+    uang(6300, isiU(1, 3, 2, 3), 500),
     urai("bilangan", 9461, "ratusan"),
     salah(
       susun("bilangan", 2057),
@@ -141,7 +145,7 @@ export const ABSTRACT: SoalMisi[] = [
     bagan("bilangan", 8000, 7000, 1000),
   ]),
   A(10, "suara", "Misi Kios 10: nota akhir", "Nota akhir untuk Pak Darwis. Ucapkan jawabannya.", [
-    lain("bilangan", 4760, 3000, 1760),
+    uang(8600, isiU(3, 2, 1, 1), 2000, isiU(3, 3, 1, 0)),
     urai("bilangan", 8532, "puluhan"),
     susun("bilangan", 6058),
     bagan("bilangan", 9600, 5000, 1000, 4700),
@@ -154,6 +158,7 @@ export const POIN_PENTING = [
   "Tiap angka ditulis dengan harga tempatnya, misalnya 4.607 = 4.000 + 600 + 7.",
   "Tempat yang angkanya nol tidak ditulis saat menguraikan, tetapi harus diisi nol saat menyusun.",
   "Bilangan yang sama dapat diuraikan dengan lebih dari satu cara, misalnya 4.607 = 3.000 + 1.607.",
+  "Uang juga dapat diuraikan dengan lembar dan keping: 7.300 rupiah = 3 lembar 2.000 + 1 keping 1.000 + 3 keping 100, dan caranya bisa lebih dari satu.",
   "Bagan Bagian Utuh: utuh = bagian + bagian, jadi bagian yang hilang dicari dengan mengurangkan.",
   "Pecah Bilangan, Susun Bilangan, dan Bagan Bagian Utuh membantu memeriksa bilangan tanpa ada bagian yang tertinggal.",
 ];
@@ -165,8 +170,8 @@ export const PENUTUP_D =
   "Pak Darwis menutup kiosnya dengan senang. Besok Bu Rina, petugas meja resepsi, datang membawa daftar tamu pagi dan siang. Menurutmu, bagaimana cara menjumlahkan dua bilangan besar supaya tidak ada yang tertinggal?";
 
 export const TEMA_KELAPA = {
-  concrete: { ikon: "\u{1F965}", nama: "Concrete", cara: "Kios kelapa: keranjang dan butir beremoji di rak bambu, satu baris untuk tiap tempat angka" },
-  pictorial: { ikon: "\u{1F4CA}", nama: "Pictorial", cara: "Papan harga polos: balok cacah, bagan tempat angka, dan bagan bagian utuh tanpa gambar benda" },
+  concrete: { ikon: "\u{1F965}", nama: "Concrete", cara: "Kios kelapa: keranjang dan butir beremoji di rak bambu, satu baris untuk tiap tempat angka, dan uang lembar dan keping berwarna di kotak kios" },
+  pictorial: { ikon: "\u{1F4CA}", nama: "Pictorial", cara: "Papan harga polos: balok cacah, bagan tempat angka, bagan bagian utuh, dan diagram uang tanpa gambar benda" },
   abstract: { ikon: "\u{1F4DD}", nama: "Abstract", cara: "Nota Pak Darwis: kartu kata dan angka di kertas nota bergaris, pilih, tulis, dan ucapkan" },
 } as const;
 

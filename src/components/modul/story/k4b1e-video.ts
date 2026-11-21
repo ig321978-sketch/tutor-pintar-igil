@@ -1,7 +1,7 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
 import { ADEGAN_DAFTAR, ADEGAN_RESEPSI, ADEGAN_SALAH_SIMPAN } from "./k4b1e-materi-1";
-import { ADEGAN_HASIL, ADEGAN_PULUHAN, ADEGAN_SIMPAN } from "./k4b1e-materi-2";
+import { ADEGAN_PANJANG, ADEGAN_PULUHAN, ADEGAN_SIMPAN } from "./k4b1e-materi-2";
 import { ADEGAN_PENUTUP, ADEGAN_PERIKSA, ADEGAN_TIGA } from "./k4b1e-materi-3";
 import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_SUSUN, ADEGAN_LUAR_SUSUN_TERAPAN } from "./k4b1e-luar-1";
 import { ADEGAN_LUAR_GENAP, ADEGAN_LUAR_GENAP_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_TAMBAH, ADEGAN_LUAR_TAMBAH_TERAPAN } from "./k4b1e-luar-2";
@@ -19,13 +19,13 @@ export const VIDEO_MATERI_K4B1E: VideoStory = {
   subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "menjumlahkan bilangan sampai seribu", daftar: ["Penjumlahan bersusun", "Menyimpan", "Memeriksa hasil"] }),
+    adeganSapaan({ jenis: "materi", topik: "menjumlahkan bilangan sampai seribu", daftar: ["Susun panjang dan pendek", "Menyimpan", "Memeriksa hasil"] }),
     ADEGAN_RESEPSI,
     ADEGAN_DAFTAR,
     ADEGAN_SALAH_SIMPAN,
     ADEGAN_SIMPAN,
     ADEGAN_PULUHAN,
-    ADEGAN_HASIL,
+    ADEGAN_PANJANG,
     ADEGAN_PERIKSA,
     ADEGAN_TIGA,
     ADEGAN_PENUTUP,

@@ -16,6 +16,7 @@ const SVG = "mx-auto block w-full max-w-[420px] touch-none select-none rounded-2
 /** Emoji benda pulau wisata untuk tahap Concrete (maksimal U+1FA95, tanpa ZWJ). Satu emoji untuk satu benda. */
 export const EMOJI_BENDA: Record<string, string> = {
   koper: "\u{1F9F3}",
+  permen: "\u{1F36C}",
   kelapa: "\u{1F965}",
   nanas: "\u{1F34D}",
   semangka: "\u{1F349}",
@@ -99,7 +100,7 @@ export function Kumpulan({ n, d, benda, rupa, judul, kamar = "kamar" }: { n: num
           </g>
         );
       })}
-      <text x={290} y={32} textAnchor="end" fontSize={10} fontWeight={900} fill={UNGU}>
+      <text x={279} y={33} textAnchor="end" fontSize={10} fontWeight={900} fill={UNGU}>
         {n} {rupa === "benda" ? benda : "titik"}
       </text>
       <PintuKamar d={d} y={24 + tinggiKolam + 12} rupa={rupa} />

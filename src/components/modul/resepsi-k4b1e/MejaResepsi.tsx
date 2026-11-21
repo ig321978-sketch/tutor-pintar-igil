@@ -7,7 +7,7 @@ import { JUDUL_PETA_RESEPSI, LANGKAH_RESEPSI, LEBAR_GAMBAR_RESEPSI, MAKS_HURUF_B
 
 /**
  * Mind-map Kelas 4 Bab 1 Sub-Bab E "Meja Resepsi Bu Rina" (dirancang sendiri, bukan kartu geser): TUMPUKAN KOPER tamu di meja resepsi (bel dan koper di papan meja).
- * Enam koper bertumpuk; tiap koper membawa gambar kecil satu langkah di panel kirinya (245 + 378 tersusun, panah dari kanan, 5 + 8 = 13 simpan 1, 500 + 110 + 13, 378 jadi 400, 245 + 378 = 623)
+ * Enam koper bertumpuk; tiap koper membawa gambar kecil satu langkah di panel kirinya (245 + 378 tersusun, panah dari kanan, 5 + 8 = 13 simpan 1, susun panjang 500 + 110 + 13 lalu 600 + 20 + 3, 378 jadi 400, 245 + 378 = 623)
  * dan satu pelat nama kosong di sisi kanannya. Anak mengetuk pelat: judul langkah muncul dan dibacakan Guru. Lanjut setelah semua terbuka. Satu layar tanpa gulir (gambar 300 x 358).
  */
 const F = UKURAN_FONT_RESEPSI;
@@ -54,9 +54,14 @@ function GambarLangkah({ k }: { k: number }) {
     );
   if (k === 3)
     return (
-      <text x={70} y={22} textAnchor="middle" fontSize={13} {...t}>
-        500 + 110 + 13
-      </text>
+      <g>
+        <text x={70} y={14} textAnchor="middle" fontSize={12} {...t}>
+          500 + 110 + 13
+        </text>
+        <text x={70} y={29} textAnchor="middle" fontSize={12} {...t} fill="#15803D">
+          = 600 + 20 + 3
+        </text>
+      </g>
     );
   if (k === 4)
     return (

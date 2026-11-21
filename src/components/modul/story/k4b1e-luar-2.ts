@@ -12,9 +12,9 @@ const KERTAS = (id = "ks") => kotak(id, 30, 30, 240, 132, W.kertas, W.coklat, { 
 
 /* ------------------------------ Place Add: konsep ------------------------------ */
 const SUARA_P1 = "Cara kedua, Place Add, atau Tambah Per Tempat.";
-const SUARA_P2 = "Kita menjumlahkan ratusan dengan ratusan, puluhan dengan puluhan, dan satuan dengan satuan.";
-const SUARA_P3 = "Lalu semua hasil sementara dijumlahkan menjadi hasil akhir.";
-const SUARA_P4 = "Cara ini menunjukkan isi tiap tempat secara jelas, jadi lebih mudah diikuti.";
+const SUARA_P2 = "Tiap bilangan diuraikan menjadi ratusan, puluhan, dan satuan, lalu tiap tempat dijumlahkan sendiri.";
+const SUARA_P3 = "Hasil tiap tempat digabung, jadi empat ratus, lima puluh, dan dua, hasil akhirnya empat ratus lima puluh dua.";
+const SUARA_P4 = "Kalau satu tempat berjumlah sepuluh atau lebih, diuraikan lagi, empat belas menjadi sepuluh dan empat.";
 
 export const ADEGAN_LUAR_TAMBAH: AdeganStory = {
   id: "luar-tambah",
@@ -31,31 +31,34 @@ export const ADEGAN_LUAR_TAMBAH: AdeganStory = {
     k(
       SUARA_P2,
       bersih(0),
-      tambah(0, judul("Tiap Tempat Sendiri"), KERTAS()),
-      tambah("ratusan", ...kartu("r", 40, 50, 66, 48, W.ratusan, ["ratusan", "+ ratusan"], 9, { z: 2 })),
-      tambah("puluhan", ...kartu("p", 117, 50, 66, 48, W.puluhan, ["puluhan", "+ puluhan"], 9, { z: 2 })),
-      tambah("satuan", ...kartu("s", 194, 50, 66, 48, W.satuan, ["satuan", "+ satuan"], 9, { z: 2 })),
+      tambah(0, judul("Uraikan Dulu"), KERTAS()),
+      tambah("diuraikan", teks("u1", 150, 46, "131 = 100 + 30 + 1", 11, W.biru, { z: 4 }), teks("u2", 150, 62, "321 = 300 + 20 + 1", 11, W.biru, { z: 4 })),
+      tambah("ratusan", ...kartu("r", 40, 72, 66, 42, W.ratusan, ["ratusan", "100 + 300"], 11, { z: 2 })),
+      tambah("puluhan", ...kartu("p", 117, 72, 66, 42, W.puluhan, ["puluhan", "30 + 20"], 11, { z: 2 })),
+      tambah("satuan", ...kartu("s", 194, 72, 66, 42, W.satuan, ["satuan", "1 + 1"], 11, { z: 2 })),
     ),
     k(
       SUARA_P3,
-      tambah("semua", teks("h1", 73, 124, "600", 14, W.biru, { z: 4 }), teks("h2", 150, 124, "70", 14, W.biru, { z: 4 }), teks("h3", 227, 124, "9", 14, W.biru, { z: 4 })),
-      tambah("dijumlahkan", garis("gb", 60, 134, 180, 0, W.biru, 2, { z: 4 })),
-      tambah("akhir.", teks("ha", 150, 154, "679", 20, W.hijauTua, { z: 4 })),
+      tambah("jadi", teks("h1", 73, 132, "400", 14, W.biru, { z: 4 })),
+      tambah("lima", teks("h2", 150, 132, "50", 14, W.biru, { z: 4 })),
+      tambah("dan", teks("h3", 227, 132, "2", 14, W.biru, { z: 4 })),
+      tambah("akhirnya", garis("gb", 60, 138, 180, 0, W.biru, 2, { z: 4 }), teks("ha", 150, 156, "452", 20, W.hijauTua, { z: 4 })),
     ),
     k(
       SUARA_P4,
-      tambah("menunjukkan", emo("mt", 262, 124, E.mata, 18)),
-      sorotkan("tiap", "r-k", "p-k", "s-k"),
-      tambah("jelas,", teks("jl", 150, 176, "isi tiap tempat jelas", 10, W.hijauTua, { z: 4 })),
-      tambah("diikuti.", emo("ok", 262, 154, E.benar, 18)),
+      hapus("Kalau", "u1", "u2"),
+      tambah("sepuluh", teks("c0", 150, 46, "10 atau lebih", 11, W.merah, { z: 4 })),
+      tambah("diuraikan", teks("c1", 150, 62, "14 = 10 + 4", 12, W.merah, { z: 4 })),
+      tambah("empat@2", emo("ok", 262, 62, E.benar, 18)),
+      sorotkan("lagi", "s-k"),
     ),
   ],
 };
 
 /* ------------------------------ Place Add: terapan ------------------------------ */
-const SUARA_Q1 = "Genta menjumlahkan lima ratus empat puluh dan dua ratus tiga puluh lima.";
-const SUARA_Q2 = "Ratusan tujuh ratus, puluhan tujuh puluh, satuan lima, jadi tujuh ratus tujuh puluh lima.";
-const SUARA_Q3 = "Cocok untuk anak yang masih bingung dengan simpanan.";
+const SUARA_Q1 = "Genta menjumlahkan empat ratus tujuh belas dan dua ratus enam puluh lima.";
+const SUARA_Q2 = "Ratusan enam ratus, puluhan tujuh puluh, satuan dua belas, yaitu sepuluh dan dua, jadi enam ratus delapan puluh dua.";
+const SUARA_Q3 = "Cocok untuk anak yang masih bingung dengan simpanan, karena tiap tempat terlihat jelas.";
 const SUARA_Q4 = "Kurang cocok kalau waktunya singkat, karena langkahnya lebih panjang daripada bersusun.";
 
 export const ADEGAN_LUAR_TAMBAH_TERAPAN: AdeganStory = {
@@ -67,24 +70,24 @@ export const ADEGAN_LUAR_TAMBAH_TERAPAN: AdeganStory = {
     k(
       SUARA_Q1,
       tambah(0, judul("Genta Menjumlahkan"), KERTAS(), ...tokoh("gn", 36, 184, "Genta")),
-      tambah("empat", teks("b1", 150, 76, "540", 26, W.biru, { z: 4 })),
-      tambah("lima.", teks("pq", 150, 100, "+", 16, W.biru, { z: 4 }), teks("b2", 150, 130, "235", 26, W.biru, { z: 4 })),
+      tambah("empat", teks("b1", 150, 76, "417", 26, W.biru, { z: 4 })),
+      tambah("lima.", teks("pq", 150, 100, "+", 16, W.biru, { z: 4 }), teks("b2", 150, 130, "265", 26, W.biru, { z: 4 })),
     ),
     k(
       SUARA_Q2,
       bersih(0),
       tambah(0, judul("Per Tempat"), KERTAS()),
-      tambah("Ratusan", ...kartu("r", 40, 50, 66, 48, W.ratusan, ["ratusan", "700"], 10, { z: 2 })),
-      tambah("puluhan", ...kartu("p", 117, 50, 66, 48, W.puluhan, ["puluhan", "70"], 10, { z: 2 })),
-      tambah("satuan", ...kartu("s", 194, 50, 66, 48, W.satuan, ["satuan", "5"], 10, { z: 2 })),
-      tambah("jadi", teks("hs", 150, 140, "775", 24, W.hijauTua, { z: 4 }), garis("gb", 60, 112, 180, 0, W.biru, 2, { z: 4 })),
+      tambah("Ratusan", ...kartu("r", 40, 44, 66, 54, W.ratusan, ["ratusan", "600"], 11, { z: 2 })),
+      tambah("puluhan", ...kartu("p", 117, 44, 66, 54, W.puluhan, ["puluhan", "70"], 11, { z: 2 })),
+      tambah("satuan", ...kartu("s", 194, 44, 66, 54, W.satuan, ["satuan", "12", "= 10 + 2"], 11, { z: 2 })),
+      tambah("jadi", teks("hs", 150, 146, "682", 24, W.hijauTua, { z: 4 }), garis("gb", 60, 116, 180, 0, W.biru, 2, { z: 4 })),
     ),
     k(
       SUARA_Q3,
       tambah("Cocok", emo("ok", 262, 142, E.benar, 20)),
       tambah("anak", ...tokoh("gn", 36, 184, "Genta")),
       tambah("bingung", emo("bg", 62, 146, E.pikir, 16)),
-      tambah("simpanan.", teks("ts", 150, 170, "tanpa simpanan", 10, W.hijauTua, { z: 4 })),
+      tambah("jelas.", teks("ts", 150, 170, "tiap tempat jelas", 10, W.hijauTua, { z: 4 })),
     ),
     k(
       SUARA_Q4,

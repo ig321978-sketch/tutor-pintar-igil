@@ -66,7 +66,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 const SUARA_C1 = "Cara pertama, Column Add, atau Susun ke Bawah.";
 const SUARA_C2 = "Bilangan ditulis ke bawah, satuan di bawah satuan, puluhan di bawah puluhan.";
 const SUARA_C3 = "Kita menjumlahkan dari kanan, dan menyimpan bila hasilnya sepuluh atau lebih.";
-const SUARA_C4 = "Simpanan itu dibawa ke tempat di kirinya dan ikut dijumlahkan.";
+const SUARA_C4 = "Simpanan itu dibawa ke tempat di kirinya dan ikut dijumlahkan, bisa sekali, bisa dua kali.";
 
 export const ADEGAN_LUAR_SUSUN: AdeganStory = {
   id: "luar-susun",
@@ -78,14 +78,14 @@ export const ADEGAN_LUAR_SUSUN: AdeganStory = {
       SUARA_C1,
       tambah(0, judul("Cara Pertama"), teks("nm", 150, 52, "Column Add", 17, W.ungu)),
       tambah("Susun", teks("ni", 150, 76, "Susun ke Bawah", 12, W.biru)),
-      tambah("Bawah.", ...kartu("cn", 104, 96, 92, 56, KUNING_KARTU, ["364", "+ 158"], 14), emo("pk", 150, 176, E.catat, 18)),
+      tambah("Bawah.", ...kartu("cn", 104, 96, 92, 56, KUNING_KARTU, ["189", "+ 245"], 14), emo("pk", 150, 176, E.catat, 18)),
     ),
     k(
       SUARA_C2,
       bersih(0),
       tambah(0, judul("Ditulis ke Bawah"), kotak("ks", 30, 30, 240, 132, W.kertas, W.coklat, { rx: 6, tebal: 1.6, z: -1 })),
-      tambah("Bilangan", angka("a1", XL, YA, 364)),
-      tambah("bawah,", angka("a2", XL, YB, 158), teks("pl", XL - 66, YB, "+", 16, W.biru, { z: 4 }), garisTambah("gt", XL - 64, XL + 4, YG)),
+      tambah("Bilangan", angka("a1", XL, YA, 189)),
+      tambah("bawah,", angka("a2", XL, YB, 245), teks("pl", XL - 66, YB, "+", 16, W.biru, { z: 4 }), garisTambah("gt", XL - 64, XL + 4, YG)),
       tambah("satuan", sorotKolom("s0", XL, 0, 56, 100, W.satuan)),
       tambah("puluhan", sorotKolom("s1", XL, 1, 56, 100, W.puluhan)),
     ),
@@ -101,14 +101,15 @@ export const ADEGAN_LUAR_SUSUN: AdeganStory = {
       tambah("dibawa", panah("sb", 158, 62, -12, 0, W.merah, 2, { z: 4 })),
       ubah("kirinya", { id: "s1", warna: "#93C5FD" }),
       tambah("ikut", teks("ik", 236, 134, "ikut ditambah", 9, W.hijauTua, { z: 4 })),
-      tambah("dijumlahkan.", emo("ok", 236, 160, E.benar, 18)),
+      tambah("dijumlahkan", emo("ok", 236, 160, E.benar, 18)),
+      tambah("dua", teks("dk", 236, 80, "2 kali simpan", 11, W.merah, { z: 4 }), teks("sm2", pusatKolom(XL, 2), 66, "1", 11, W.merah, { z: 5 })),
     ),
   ],
 };
 
 /* ------------------------------ Column Add: terapan ------------------------------ */
 const SUARA_T1 = "Laras menjumlahkan tiga ratus dua puluh enam dan dua ratus lima puluh sembilan.";
-const SUARA_T2 = "Enam ditambah sembilan lima belas, ia menulis lima dan menyimpan satu.";
+const SUARA_T2 = "Enam ditambah sembilan lima belas, ia menulis lima dan menyimpan satu, hanya satu kali menyimpan.";
 const SUARA_T3 = "Cocok untuk bilangan besar, karena langkahnya rapi dan bisa diperiksa.";
 const SUARA_T4 = "Kurang cocok kalau kita lupa menyimpan, karena hasilnya bisa meleset.";
 
@@ -129,10 +130,12 @@ export const ADEGAN_LUAR_SUSUN_TERAPAN: AdeganStory = {
       tambah("Enam", sorotKolom("s0", XL, 0, 56, 100, W.satuan)),
       tambah("sembilan", teks("eq", 236, YA, "6 + 9 = 15", 10, W.biru, { z: 4 })),
       tambah("menulis", angka("h5", XL, YH, 5, 22, W.hijauTua)),
-      tambah("satu.", teks("sm", pusatKolom(XL, 1), 66, "1", 11, W.merah, { z: 5 })),
+      tambah("satu,", teks("sm", pusatKolom(XL, 1), 66, "1", 11, W.merah, { z: 5 })),
+      tambah("kali", teks("sk", 236, 108, "1 kali simpan", 11, W.merah, { z: 4 })),
     ),
     k(
       SUARA_T3,
+      hapus("Cocok", "sk"),
       tambah("Cocok", emo("ok", 236, 130, E.benar, 20)),
       tambah("besar,", teks("cb", 236, 112, "bilangan besar", 9, W.hijauTua, { z: 4 })),
       tambah("rapi", teks("rp", 236, 150, "rapi", 10, W.hijauTua, { z: 4 })),

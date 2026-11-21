@@ -4,7 +4,9 @@
  * kecuali ruang jawaban yang sempit. Concrete memakai perahu dan benda pulau beremoji di dermaga kayu, Pictorial memakai perahu dan kotak polos di kertas kotak biru muda,
  * Abstract memakai kartu kata dan angka di lembar jadwal perahu. Jawaban beragam: memilih hasil, penjumlahan berulang, uraian, atau cara menulis dan menyimpan, menulis satu angka di kanvas,
  * dan mengucapkan bilangan pendek atau satu kata (simpan). Jawaban benar dihitung dari data.
- * Angka jawaban Tulis di kanvas per tahap: Concrete 9, 6, 8, 1; Pictorial 7, 3, 6, 2; Abstract 8, 7, 3, 4 (tidak kembar dalam satu tahap; ruang jawaban satu angka sempit, jadi sebagian sama dengan angka Story antartahap).
+ * Kali susun dicampur sesuai acuan kurikulum: tanpa menyimpan (hasil kali satuan kurang dari sepuluh: Concrete 11 x 3 di kanvas, Pictorial 33 x 2 di suara, Abstract 31 x 3 di klik) dan dengan menyimpan (selebihnya).
+ * Pada susun tanpa simpanan, jawaban kanvas adalah angka satuan yang ditulis (bukan simpanan nol, karena kanvas satu angka 1 sampai 9).
+ * Angka jawaban Tulis di kanvas per tahap: Concrete 9, 6, 8, 3; Pictorial 7, 3, 6, 2; Abstract 8, 7, 3, 4 (tidak kembar dalam satu tahap; ruang jawaban satu angka sempit, jadi sebagian sama dengan angka Story antartahap).
  * Diuji: scripts/uji-perahu-k4b1g.mjs.
  */
 import type { Cara, Langkah, LangkahSalah, LangkahSoal, LKali, LSusun, LTambah, LUrai, Rupa, SoalMisi } from "./logika-cpa";
@@ -67,7 +69,7 @@ export const CONCRETE: SoalMisi[] = [
     kali("nanas", 23, 4),
     tambah("semangka", 16, 6),
     urai("koper", 22, 4),
-    susun("lentera", 19, 2),
+    susun("lentera", 11, 3),
   ]),
   C(4, "suara", "Misi Perahu 4: panggilan Pak Hendro", "Pak Hendro memanggil dari ujung dermaga. Jawab dengan suaramu.", [
     kali("perahu", 18, 4),
@@ -109,7 +111,7 @@ export const PICTORIAL: SoalMisi[] = [
     kali("baris I", 34, 2),
     tambah("baris J", 24, 3),
     urai("baris K", 27, 2),
-    susun("baris L", 24, 4, true),
+    susun("baris L", 33, 2),
   ]),
 ];
 
@@ -132,7 +134,7 @@ export const ABSTRACT: SoalMisi[] = [
       2,
       "Satuan juga dikalikan. Tujuh kali dua empat belas, jadi enam puluh ditambah empat belas, bukan enam puluh ditambah tujuh.",
     ),
-    susun("kartu empat", 28, 3),
+    susun("kartu empat", 31, 3),
   ]),
   A(9, "kanvas", "Misi Perahu 9: tulis di lembar", "Genta meminta kamu menulis jawaban di kanvas.", [
     kali("kartu lima", 44, 2),
@@ -153,7 +155,7 @@ export const POIN_PENTING = [
   "Cara urai: uraikan bilangan menjadi puluhan dan satuan, kalikan keduanya, lalu jumlahkan hasilnya.",
   "Jangan lupa mengalikan bagian satuan. Bilangan 15 × 3 bukan 10 × 3 ditambah 5.",
   "Kali susun: kalikan satuan dulu, tulis angka satuannya, dan simpan angka puluhannya.",
-  "Simpanan ditambahkan pada hasil kali puluhan.",
+  "Simpanan ditambahkan pada hasil kali puluhan. Kalau hasil kali satuan kurang dari 10, tidak ada simpanan, misalnya 12 × 4 hasilnya 48.",
   "Hasil perkalian dua angka dengan satu angka bisa diperiksa dengan cara lain.",
   "Tambah Berulang, Urai Lalu Kali, dan Kali Susun membantu mengalikan dengan teliti.",
   "Berikutnya, tamu dibagi rata ke kamar. Itu pembagian, kebalikan dari perkalian.",

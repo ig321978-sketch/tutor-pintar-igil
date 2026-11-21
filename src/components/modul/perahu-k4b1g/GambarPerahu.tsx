@@ -162,6 +162,13 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
     case "urai":
       return <PapanUrai a={d.a} b={d.b} rupa={rupa} tanya={cara === "klik" ? "hasil: ? + ?" : cara === "kanvas" ? "hasil kali satuan = ?" : "hasil kali puluhan = ?"} />;
     case "susun":
-      return <PapanSusunSvg a={d.a} b={d.b} rupa={rupa} tanya={cara === "klik" ? "tulis ?, simpan ?" : cara === "kanvas" ? "angka yang disimpan = ?" : d.kata ? "puluhan: ditulis atau disimpan?" : "angka puluhan hasil = ?"} />;
+      if (rupa === "benda")
+        return (
+          <div className="space-y-1.5">
+            <DeretPerahu a={d.a} b={d.b} rupa={rupa} benda={d.benda} tanya={`${d.b} perahu, tiap perahu ${d.a}`} />
+            <PapanSusunSvg a={d.a} b={d.b} rupa={rupa} tanya={cara === "klik" ? "tulis ?, simpan ?" : cara === "kanvas" ? (bagian(d.a, d.b).simpan > 0 ? "angka yang disimpan = ?" : "angka satuan yang ditulis = ?") : d.kata ? "puluhan: ditulis atau disimpan?" : "angka puluhan hasil = ?"} />
+          </div>
+        );
+      return <PapanSusunSvg a={d.a} b={d.b} rupa={rupa} tanya={cara === "klik" ? "tulis ?, simpan ?" : cara === "kanvas" ? (bagian(d.a, d.b).simpan > 0 ? "angka yang disimpan = ?" : "angka satuan yang ditulis = ?") : d.kata ? "puluhan: ditulis atau disimpan?" : "angka puluhan hasil = ?"} />;
   }
 }

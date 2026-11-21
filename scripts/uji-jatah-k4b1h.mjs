@@ -346,8 +346,16 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   }
   const kv = (nama) => TAHAP[nama][1].filter((s) => s.cara === "kanvas").flatMap((s) => s.langkah.map((l) => LC.kunciJawab(l.langkah, "kanvas").n));
   sama(kv("Concrete"), [6, 3, 8, 2], "angka kanvas Concrete");
-  sama(kv("Pictorial"), [9, 1, 5, 2], "angka kanvas Pictorial");
+  sama(kv("Pictorial"), [6, 1, 5, 2], "angka kanvas Pictorial");
   sama(kv("Abstract"), [8, 5, 3, 4], "angka kanvas Abstract");
+  // Contoh pembagian 48 permen ke 2, 3, 4, 6, 8 wadah (semua habis) dan ke 5 wadah (bersisa): ikut di tiap tahap, jawaban dihitung dari data.
+  const d48 = Object.fromEntries(Object.entries(TAHAP).map(([nm, [, soal]]) => [nm, soal.flatMap((s) => s.langkah.map((l) => LC.dasarDari(l.langkah))).filter((d) => d.n === 48)]));
+  for (const nm of Object.keys(TAHAP)) cek(d48[nm].length >= 2 && new Set(d48[nm].map((d) => d.d)).size === d48[nm].length, `${nm}: contoh 48 permen dengan pembagi berbeda ada (${d48[nm].map((d) => d.d).join(",")})`);
+  const semua48 = Object.values(d48).flat();
+  for (const dv of [2, 3, 4, 6, 8]) cek(semua48.some((d) => d.d === dv), `contoh 48 permen: pembagi ${dv} muncul`);
+  cek(semua48.some((d) => d.d === 5 && LC.sisaBagi(d) === 3 && LC.kunciJawab(d, "suara")?.nama === "sisa") && semua48.some((d) => d.tanya === "habis" && LC.sisaBagi(d) === 0 && LC.kunciJawab(d, "suara")?.nama === "habis"), "contoh 48 permen: ada yang habis (sisa nol) dan ke 5 wadah bersisa 3 (kata sisa)");
+  cek(semua48.every((d) => LC.hasilBagi(d) * d.d + LC.sisaBagi(d) === 48 && LC.sisaBagi(d) < d.d), "contoh 48 permen: hasil bagi x pembagi + sisa = 48 dan sisa lebih kecil dari pembagi");
+  cek(/48 benda ke 2, 3, 4, 6, 8 wadah/.test(D.POIN_PENTING.join(" ")) && /sisa 3/.test(D.POIN_PENTING.join(" ")), "poin penting: 48 benda ke beberapa wadah dan contoh bersisa");
   const suaraJenis = Object.values(TAHAP).flatMap(([, soal]) => soal[2].langkah.map((l) => LC.kunciJawab(l.langkah, "suara").jenis));
   cek(suaraJenis.includes("nama") && suaraJenis.includes("angka"), "tugas suara: kata dan bilangan");
   const kataSuara = Object.values(TAHAP).flatMap(([, soal]) => soal[2].langkah.flatMap((l) => (LC.kunciJawab(l.langkah, "suara").jenis === "nama" ? [LC.kunciJawab(l.langkah, "suara").nama] : [])));

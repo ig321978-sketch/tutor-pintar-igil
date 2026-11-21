@@ -40,11 +40,13 @@ import { MISI_RESEPSI_TEKS } from "./data-sim";
  * dan Genap (bulatkan dulu, lalu pilih ditambah atau dikurangi; alat menolak menyesuaikan sebelum membulatkan).
  */
 const MODE: { id: ModeResepsi; nama: string; ikon: string }[] = [
-  { id: "susun", nama: "Susun", ikon: "\u{1F4DD}" },
-  { id: "tukar", nama: "Tukar", ikon: "\u{1F9E9}" },
+  { id: "susun", nama: "Susun pendek", ikon: "\u{1F4DD}" },
+  { id: "tukar", nama: "Susun panjang", ikon: "\u{1F9E9}" },
   { id: "genap", nama: "Genap", ikon: "\u{1F501}" },
 ];
 const KOLOM_URUT = [2, 1, 0] as const;
+/** Uraian bilangan menurut tempat: 267 menjadi "200 + 60 + 7". */
+const uraian = (n: number): string => KOLOM_URUT.map((i) => (Math.floor(n / 10 ** i) % 10) * 10 ** i).filter((v) => v > 0).join(" + ");
 const kotakBalok = "block h-3.5 w-3.5 rounded-[3px] border-2 border-[#BE185D] bg-[#FBCFE8]";
 const batangBalok = "block h-5 w-1.5 rounded-[2px] border-2 border-[#0369A1] bg-[#BAE6FD]";
 const butirBalok = "block h-2.5 w-2.5 rounded-full border-2 border-[#A16207] bg-[#FEF08A]";
@@ -80,7 +82,7 @@ export default function SimulasiMejaResepsi({ speakGuru, onKeadaan }: { speakGur
   const ganti = (m: ModeResepsi) => {
     ubah(
       pilihModeResepsi(k, m),
-      m === "susun" ? "Jumlahkan bersusun, mulai dari kolom satuan." : m === "tukar" ? "Tukar sepuluh balok menjadi satu balok di kirinya." : "Bulatkan dulu, lalu pilih ditambah atau dikurangi.",
+      m === "susun" ? "Susun pendek: jumlahkan bersusun, mulai dari kolom satuan." : m === "tukar" ? "Susun panjang: tukar sepuluh balok menjadi satu balok di kirinya." : "Bulatkan dulu, lalu pilih ditambah atau dikurangi.",
     );
   };
 
@@ -207,7 +209,7 @@ export default function SimulasiMejaResepsi({ speakGuru, onKeadaan }: { speakGur
 
         {k.mode === "tukar" ? (
           <div className="space-y-2">
-            <p className="text-center text-xs font-black text-[#14532D]">Balok dari dua bilangan digabung. Tukar sepuluh balok menjadi satu balok di kirinya.</p>
+            <p className="text-center text-xs font-black text-[#14532D]">Susun panjang: balok tiap tempat dijumlahkan sendiri. Tukar sepuluh balok menjadi satu balok di kirinya.</p>
             <div className="mx-auto grid max-w-[360px] grid-cols-3 gap-2" role="group" aria-label="Balok tiap tempat">
               {KOLOM_URUT.map((i) => (
                 <div key={i} className="min-h-[96px] rounded-xl border-4 border-[#86EFAC] bg-white p-1.5 text-center">
@@ -222,7 +224,9 @@ export default function SimulasiMejaResepsi({ speakGuru, onKeadaan }: { speakGur
               ))}
             </div>
             <p className="text-center text-xs font-black text-[#14532D]/80">
-              {tt.a} + {tt.b}
+              {tt.a} = {uraian(tt.a)}
+              <br />
+              {tt.b} = {uraian(tt.b)}
             </p>
             <div className="flex flex-wrap justify-center gap-2">
               <button type="button" className={tombol} onClick={() => tukarKu(0)}>

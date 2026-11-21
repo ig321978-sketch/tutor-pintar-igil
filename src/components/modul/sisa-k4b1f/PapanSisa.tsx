@@ -18,13 +18,16 @@ function GambarKartu({ i }: { i: number }) {
   if (i === 0)
     return (
       <g>
-        <text x={54} y={25} textAnchor="middle" fontSize={15} {...t}>
-          612
+        <text x={58} y={19} textAnchor="middle" fontSize={12} {...t}>
+          200+60+5
         </text>
-        <text x={54} y={44} textAnchor="middle" fontSize={15} {...t}>
-          − 275
+        <text x={58} y={33} textAnchor="middle" fontSize={12} {...t}>
+          100+30+2
         </text>
-        <line x1={22} y1={29} x2={86} y2={29} stroke="#1F2937" strokeWidth={1.5} />
+        <line x1={14} y1={37} x2={90} y2={37} stroke="#1F2937" strokeWidth={1.5} />
+        <text x={54} y={51} textAnchor="middle" fontSize={12} fontWeight={900} fill="#15803D">
+          =100+30+3
+        </text>
       </g>
     );
   if (i === 1)

@@ -1,10 +1,10 @@
 import type { AdeganStory } from "./logika-story";
-import { E, W, XK, Y, angka, bulat, dua, emo, garis, judul, kertas, kotak, panah, pusatKolom, sorotKolom, teks, tokoh, tumpukKoper } from "./k4b1e-gambar";
-import { hapus, k, sorotkan, tambah } from "./k4b1e-bantu";
+import { E, W, XK, Y, angka, bulat, dua, emo, judul, kertas, kotak, panah, pusatKolom, sorotKolom, teks, tokoh, tumpukKoper } from "./k4b1e-gambar";
+import { hapus, k, tambah } from "./k4b1e-bantu";
 
 /*
  * Cerita orisinal IGIL "Meja Resepsi Bu Rina" (Kelas 4 Bab 1 Sub-Bab E), video materi.
- * Naskah suara dari naskah/story-naskah-k4b1e.md. Bagian ini: menyimpan satuan ke puluhan, puluhan dan ratusan, hasil enam ratus dua puluh tiga.
+ * Naskah suara dari naskah/story-naskah-k4b1e.md. Bagian ini: menyimpan satuan ke puluhan, puluhan dan ratusan, susun panjang (uraian lalu gabung per tempat) sampai enam ratus dua puluh tiga.
  */
 
 /** Sepuluh kerikil `${id}0`..`${id}9` dalam dua baris lima, pojok kiri-atas (x, y). */
@@ -81,35 +81,35 @@ export const ADEGAN_PULUHAN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 6. Hasil ------------------------------ */
-const SUARA_H1 = "Hasilnya enam ratus dua puluh tiga tamu.";
-const SUARA_H2 = "Kalau tidak menyimpan, hasilnya hanya lima ratus tiga belas, kurang seratus sepuluh.";
-const SUARA_H3 = "Satria menghela napas dan mulai mengangkat koper-koper itu.";
+/* ------------------------------ 6. Susun panjang ------------------------------ */
+const SUARA_L1 = "Laras menunjukkan cara susun panjang, dua ratus empat puluh lima diuraikan menjadi dua ratus, empat puluh, dan lima.";
+const SUARA_L2 = "Ratusan dengan ratusan, puluhan dengan puluhan, satuan dengan satuan, hasilnya lima ratus, seratus sepuluh, dan tiga belas.";
+const SUARA_L3 = "Seratus sepuluh dan tiga belas diuraikan lagi, lalu digabung per tempat, hasilnya enam ratus dua puluh tiga, dan Satria mulai mengangkat koper-koper itu.";
 
-export const ADEGAN_HASIL: AdeganStory = {
-  id: "hasil",
-  judul: "Hasil jumlah tamu",
-  sumber: "Materi: hasil jumlah",
+export const ADEGAN_PANJANG: AdeganStory = {
+  id: "panjang",
+  judul: "Susun panjang: diuraikan",
+  sumber: "Materi: susun panjang",
   latar: "#ECFDF5",
   ketukan: [
     k(
-      SUARA_H1,
-      tambah(0, judul("Hasil Jumlah Tamu"), kotak("kh", 24, 50, 112, 74, "#DCFCE7", W.hijauTua, { rx: 8, z: 1 }), ...tokoh("br", 36, 184, "Bu Rina")),
-      tambah("enam", teks("n623", 80, 102, "623", 30, W.hijauTua, { z: 4 })),
-      tambah("tamu", teks("tm", 80, 62, "tamu", 10, W.biru, { z: 4 }), emo("ok", 118, 70, E.benar, 16)),
+      SUARA_L1,
+      tambah(0, judul("Susun Panjang"), kertas(118), ...tokoh("lr", 36, 184, "Laras")),
+      tambah("diuraikan", teks("u1", 30, 44, "245 = 200 + 40 + 5", 11, W.biru, { anchor: "start", z: 4 })),
+      tambah("lima.", teks("u2", 30, 62, "378 = 300 + 70 + 8", 11, W.biru, { anchor: "start", z: 4 })),
     ),
     k(
-      SUARA_H2,
-      tambah("tidak", kotak("ks2", 164, 50, 112, 74, "#FEE2E2", W.merah, { rx: 8, z: 1 })),
-      tambah("lima", teks("n513", 220, 102, "513", 30, W.merah, { z: 4 }), garis("cr", 190, 106, 60, -20, W.merah, 3, { z: 5 })),
-      tambah("kurang", teks("sl", 150, 150, "kurang 110", 12, W.merah, { z: 4 })),
-      tambah("sepuluh", emo("xs", 258, 70, E.salah, 16)),
+      SUARA_L2,
+      tambah("Ratusan", teks("g1", 30, 80, "= (200 + 300) + (40 + 70) + (5 + 8)", 11, W.biru, { anchor: "start", z: 4 })),
+      tambah("hasilnya", teks("g2", 30, 98, "= 500 + 110 + 13", 12, W.merah, { anchor: "start", z: 4 })),
     ),
     k(
-      SUARA_H3,
-      tambah("menghela", emo("np", 70, 150, E.napas, 16)),
-      sorotkan("mulai", "n513"),
-      tambah("koper-koper", ...tumpukKoper("kt", 214, 176, 9)),
+      SUARA_L3,
+      tambah("diuraikan", teks("g3", 30, 116, "= 500 + (100 + 10) + (10 + 3)", 11, W.biru, { anchor: "start", z: 4 })),
+      tambah("digabung", teks("g4", 30, 134, "= 600 + 20 + 3", 12, W.hijauTua, { anchor: "start", z: 4 })),
+      tambah("enam", teks("g5", 170, 134, "= 623", 16, W.hijauTua, { anchor: "start", z: 5 })),
+      tambah("Satria", ...tokoh("sa", 76, 184, "Satria")),
+      tambah("koper-koper", ...tumpukKoper("kt", 236, 178, 9)),
     ),
   ],
 };

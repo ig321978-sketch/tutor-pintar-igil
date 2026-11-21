@@ -5,7 +5,7 @@ Suara tanpa digit; bilangan yang diucapkan harus tampak sebagai angka di layar p
 
 Data Story H (jangan dijadikan jawaban CPA): 56 tamu ke 4 kamar sama banyak = 14 tiap kamar; bersusun 5 : 4 = 1 sisa 1, turun 6 jadi 16, 16 : 4 = 4; salah Satria 11 (lupa menurunkan angka satuan); periksa 14 x 4 = 56; kurang berulang 56 − 4 empat belas kali.
 
-## Video materi (300 sampai 400 kata termasuk sapaan, 9 adegan, 3 ketukan; tanpa latihan)
+## Video materi (300 sampai 400 kata termasuk sapaan, 9 adegan, 3 ketukan; adegan bagi-rata 5 ketukan; tanpa latihan)
 
 Sapaan (bersama): topik "pembagian sampai seratus"; daftar: "membagi sama banyak", "pembagian bersusun", "memeriksa dengan perkalian".
 
@@ -28,7 +28,9 @@ Sapaan (bersama): topik "pembagian sampai seratus"; daftar: "membagi sama banyak
    - "Genta membagikan tamu satu per satu bergiliran, empat kamar sekali putaran."
    - "Tiap putaran memakai empat tamu, jadi lima puluh enam tamu habis dalam empat belas putaran."
    - "Tiap kamar mendapat empat belas tamu."
-   Visual: tamu kecil bergiliran masuk ke empat pintu; penghitung putaran 1 sampai 14; tiap kamar bertanda 14.
+   - "Bu Ratna lalu membagi empat puluh delapan permen ke dua, tiga, empat, enam, atau delapan wadah, dan semuanya habis."
+   - "Tiap wadah mendapat dua puluh empat, enam belas, dua belas, delapan, dan enam permen, jadi makin banyak wadah, makin sedikit permen di tiap wadah."
+   Visual: tamu kecil bergiliran masuk ke empat pintu; penghitung putaran 1 sampai 14; tiap kamar bertanda 14. Lalu layar dibersihkan: tulisan 48 permen, lima wadah bertanda 2, 3, 4, 6, 8 wadah (semuanya habis, sisa 0), lalu batang permen tiap wadah makin pendek dengan angka 24, 16, 12, 8, 6 (contoh buku, sisa selalu nol).
 5. `bersusun`
    - "Laras membagi bersusun dari puluhan, lima dibagi empat sama dengan satu sisa satu."
    - "Sisa satu puluhan menjadi sepuluh satuan, lalu angka enam diturunkan menjadi enam belas."

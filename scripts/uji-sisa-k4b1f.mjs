@@ -46,7 +46,7 @@ const tanpaDigit = (t) => !/\d/.test(t);
 const emojiSah = (s) => [...s].every((c) => c.codePointAt(0) <= 0x1fa95 && c.codePointAt(0) !== 0x200d && c.codePointAt(0) !== 0x1f6de);
 const adaEmoji = (s) => /\p{Extended_Pictographic}/u.test(s);
 /** Bilangan Story F (612, 275, 337, 463, 430, 158, 750, 840, 520, 345, 175): jangan dijadikan data CPA atau Simulasi. */
-const CERITA = [612, 275, 337, 463, 430, 158, 750, 840, 520, 345, 175, 800];
+const CERITA = [612, 275, 337, 463, 430, 158, 750, 840, 520, 345, 175, 800, 265, 132, 133];
 const dig = (n) => [Math.floor(n / 100), Math.floor(n / 10) % 10, n % 10];
 const angkaDi = (n, t) => dig(n)[t === "ratusan" ? 0 : t === "puluhan" ? 1 : 2];
 
@@ -286,6 +286,36 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
     }
   }
   cek(nomor === 11, "nomor misi berlanjut sampai sepuluh");
+  // Selaras buku: cara susun panjang (uraian ratusan + puluhan + satuan, kurangkan tiap tempat) dan susun pendek tanpa, satu kali, dan dua kali mengambil.
+  {
+    sama([LC.uraian(265), LC.uraian(132), LC.uraian(758), LC.uraian(430), LC.uraianKata(265), LC.uraianKata(132)], ["200 + 60 + 5", "100 + 30 + 2", "700 + 50 + 8", "400 + 30", "dua ratus ditambah enam puluh ditambah lima", "seratus ditambah tiga puluh ditambah dua"], "uraian bilangan (contoh buku 265 dan 132)");
+    sama([LC.kataAmbil(265, 132), LC.kataAmbil(241, 129), LC.kataAmbil(253, 176)], ["tanpa mengambil", "satu kali mengambil", "dua kali mengambil"], "kata banyak mengambil (tanpa, satu kali, dua kali; contoh buku)");
+    const contoh = { tipe: "susun", benda: "x", a: 265, b: 132, tempat: "satuan", panjang: true };
+    sama(LC.barisSusun(contoh), ["  265 = 200 + 60 + 5", "− 132 = 100 + 30 + 2", "--------------------"], "hitung susun tertulis panjang: kedua bilangan terurai");
+    sama(["klik", "kanvas", "suara"].map((c) => LC.kunciJawab(contoh, c).n), [133, 3, 133], "kunci susun panjang: hasil dan angka satuan (hitung tiap tempat)");
+    for (const c of ["klik", "kanvas", "suara"]) {
+      const t = [LC.kalimatKunci(contoh, c), LC.instruksi(contoh, "lambang", c, "susun"), LC.instruksi(contoh, "benda", c, "susun"), LC.petunjukSalah(contoh, c, 1)];
+      cek(t.every((x) => tanpaDigit(x) && bersih(x)) && /susun panjang/i.test(t[1]) && /susun panjang/i.test(t[2]), `susun panjang ${c}: kalimat tanpa digit dan menyebut susun panjang`);
+    }
+    cek(/dua ratus ditambah enam puluh ditambah lima/.test(LC.kalimatKunci(contoh, "klik")) && /tanpa mengambil/.test(LC.kalimatKunci(contoh, "klik")), "kunci susun panjang menyebut uraian dan tanpa mengambil");
+    sama(LC.barisKartu(contoh, "klik"), LC.barisKartu({ ...contoh, panjang: undefined }, "klik"), "kartu kata susun panjang sama dengan susun pendek (uraian ada di hitung tertulis)");
+    for (const [nama, [, soal]] of Object.entries(TAHAP)) {
+      const p = soal.flatMap((s) => s.langkah.map((l) => [s.cara, l.langkah])).filter(([, l]) => l.tipe === "susun" && l.panjang);
+      sama(p.map(([c]) => c), ["klik", "kanvas"], `${nama}: dua tugas susun panjang (Klik dan Kanvas)`);
+      sama(p.map(([, l]) => LC.banyakAmbil(l.a, l.b)), [0, 2], `${nama}: susun panjang tanpa mengambil (Klik) dan dua kali mengambil (Kanvas)`);
+      cek(p.every(([, l]) => l.a - l.b > 0 && ![l.a, l.b, l.a - l.b].some((n) => CERITA.includes(n)) && LC.uraian(l.a).split(" + ").length === 3 && LC.uraian(l.b).split(" + ").length === 3), `${nama}: susun panjang memakai tiga bagian dan bukan bilangan contoh Story`);
+      const pendek = soal.flatMap((s) => s.langkah.map((l) => l.langkah)).filter((l) => LC.dasarDari(l).tipe === "susun" && !LC.dasarDari(l).panjang);
+      cek(pendek.length >= 1 && LC.banyakAmbil(LC.dasarDari(pendek.at(-1)).a, LC.dasarDari(pendek.at(-1)).b) === 1, `${nama}: tugas susun pendek tetap ada, tugas Suara satu kali mengambil`);
+    }
+    // Abstract: baris hitung tertulis (monospace text-sm, 0,6 em per karakter) harus muat di dalam kartu 344 px (kartu dalam sekitar 344 - 2x6 border - 2x8 padding - 2x16 pre = 284).
+    for (const s of TAHAP.Abstract[1]) for (const ls of s.langkah) {
+      const l = LC.dasarDari(ls.langkah);
+      if (l.tipe === "susun" && l.panjang) cek(Math.max(...LC.barisSusun(l).map((x) => x.length)) * 14 * 0.6 <= 176, `Abstract ${s.nomor}: baris hitung tertulis panjang muat kartu (${Math.max(...LC.barisSusun(l).map((x) => x.length))} karakter)`);
+    }
+    const gu = readFileSync(new URL("GambarSisa.tsx", folderUrl), "utf8");
+    cek(/data-uraian="susun-panjang"/.test(gu) && /uraian\(d\.a\)/.test(gu) && /uraian\(d\.b\)/.test(gu) && /data-uraian="susun-panjang" className="[^"]*text-sm/.test(gu), "gambar Concrete dan Pictorial: uraian susun panjang di HTML (text-sm, bukan teks gambar kecil)");
+    cek(D.POIN_PENTING.some((q) => /Susun panjang/.test(q) && /Susun pendek/.test(q) && /265 = 200 \+ 60 \+ 5/.test(q)), "poin penting memuat susun panjang dan susun pendek (contoh buku)");
+  }
   // Seed Cari kesalahan dari alur: Satria membalik per tempat (salah), Genta periksa dengan menambah (benar), Satria lupa mencoret (variasi salah).
   const sC = D.CONCRETE[0].langkah[0].langkah;
   cek(sC.tokoh === "Satria" && sC.dasar.tipe === "susun" && sC.jawabTokoh === String(LC.hasilTukar(sC.dasar.a, sC.dasar.b)) && LC.teksKunciKlik(sC) === String(sC.dasar.a - sC.dasar.b) && !sC.betul, "Cari kesalahan Concrete: Satria membalik tiap tempat angka (seed alur)");

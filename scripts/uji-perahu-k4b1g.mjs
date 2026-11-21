@@ -45,8 +45,8 @@ const tanpaDigit = (t) => !/\d/.test(t);
 const emojiSah = (s) => [...s].every((c) => c.codePointAt(0) <= 0x1fa95 && c.codePointAt(0) !== 0x200d && c.codePointAt(0) !== 0x1f6de);
 const adaEmoji = (s) => /\p{Extended_Pictographic}/u.test(s);
 /** Data Story G (jangan dijadikan data Simulasi atau CPA): pasangan faktor dan hasil yang dipakai cerita. */
-const PASANGAN_CERITA = ["12x5", "14x4", "15x6", "11x5", "24x2", "13x3", "10x3"];
-const HASIL_CERITA = [52, 55, 56, 60, 90];
+const PASANGAN_CERITA = ["12x5", "14x4", "15x6", "12x4", "24x2", "13x3", "10x3"];
+const HASIL_CERITA = [52, 48, 56, 60, 90];
 
 /* ------------------------------ Kata bilangan dan bagian perkalian ------------------------------ */
 {
@@ -64,7 +64,7 @@ const HASIL_CERITA = [52, 55, 56, 60, 90];
   const semua = [...DS.TARGET_ULANG, ...DS.TARGET_URAI, ...DS.TARGET_SUSUN];
   cek(semua.every((t) => t.a >= 11 && t.a <= 49 && t.b >= 2 && t.b <= 9 && t.a * t.b <= 99 && !PASANGAN_CERITA.includes(`${t.a}x${t.b}`) && !HASIL_CERITA.includes(t.a * t.b)), "simulasi: dua angka kali satu angka, hasil sampai sembilan puluh sembilan, berbeda dari Story");
   cek(DS.TARGET_ULANG.length === 3 && DS.TARGET_URAI.length === 3 && DS.TARGET_SUSUN.length === 3, "simulasi: tiga sasaran tiap alat");
-  cek(DS.TARGET_SUSUN.every((t) => t.a % 10 * t.b >= 10), "simulasi: tiap sasaran susun memakai simpanan");
+  cek(DS.TARGET_SUSUN.filter((t) => t.a % 10 * t.b >= 10).length === 2 && DS.TARGET_SUSUN.filter((t) => t.a % 10 * t.b < 10).length === 1, "simulasi: dua sasaran susun dengan simpanan dan satu tanpa simpanan (sesuai acuan)");
   cek(DS.TARGET_URAI.every((t) => t.a % 10 !== 0 && t.a % 10 * t.b > 0), "simulasi: tiap sasaran urai punya satuan");
   cek(tanpaDigit(DS.MISI_PERAHU_TEKS) && bersih(DS.MISI_PERAHU_TEKS) && DS.MISI_PERAHU_TEKS === MT.MISI_K4B1.G && D.MISI_PERAHU_TEKS === DS.MISI_PERAHU_TEKS && DS.MISI_PERAHU_TEKS.length >= 10 && DS.MISI_PERAHU_TEKS.length <= 120, "simulasi: teks misi tanpa digit dan kata terlarang, sama dengan misi-teks-k4b1");
 
@@ -186,7 +186,13 @@ const HASIL_CERITA = [52, 55, 56, 60, 90];
         cek(d.a >= 11 && d.a <= 49 && d.b >= 2 && d.b <= 9 && g.hasil <= 99 && !PASANGAN_CERITA.includes(`${d.a}x${d.b}`) && !HASIL_CERITA.includes(g.hasil), `${tag}: dua angka kali satu angka, hasil sampai sembilan puluh sembilan, berbeda dari Story (${d.a} x ${d.b})`);
         if (d.tipe === "tambah" && s.cara === "klik") cek(d.b >= 2 && d.b <= 5, `${tag}: penjumlahan berulang klik paling banyak lima suku (${d.b})`);
         if (d.tipe === "tambah" && s.cara === "suara") cek(d.b >= 3, `${tag}: suara dua suku pertama bukan seluruh penjumlahan (${d.b})`);
-        if (d.tipe === "susun") cek(g.satuan >= 10 && g.simpan >= 1, `${tag}: susun memakai simpanan (${g.satuan})`);
+        if (d.tipe === "susun") cek(g.simpan === Math.floor(g.satuan / 10) && LC.adaSimpanan(d.a, d.b) === (g.satuan >= 10), `${tag}: simpanan susun sesuai hasil kali satuan (${g.satuan})`);
+        if (d.tipe === "susun" && g.satuan < 10) {
+          cek(g.simpan === 0 && g.tulis === g.satuan && g.tulis >= 1 && !d.kata, `${tag}: susun tanpa simpanan, angka satuan satu angka bukan nol, bukan soal kata`);
+          if (s.cara === "klik") cek(LC.teksKunciKlik(l) === `tulis ${g.tulis}, simpan 0` && LC.petunjukSalah(l, "klik", "x").includes("tidak ada yang disimpan"), `${tag}: klik tanpa simpanan memakai simpan nol`);
+          if (s.cara === "kanvas") cek(LC.kunciJawab(l, "kanvas").n === g.tulis && /ditulis di bawah satuan/.test(ls.suara) && !/disimpan/.test(ls.suara) && /ditulis di satuan/.test(LC.kalimatTanya(l, "kanvas")) && LC.barisKartu(d, "kanvas").some((b) => /ditulis di satuan/.test(b)), `${tag}: kanvas tanpa simpanan meminta angka yang ditulis`);
+          if (s.cara === "suara") cek(LC.kunciJawab(l, "suara").n === Math.floor(g.hasil / 10) && /Tidak ada simpanan/.test(LC.kalimatKunci(l, "suara")), `${tag}: suara tanpa simpanan meminta angka puluhan hasil`);
+        }
         if (d.tipe === "urai" && s.cara === "kanvas") cek(g.satuan >= 1 && g.satuan <= 9, `${tag}: hasil kali satuan satu angka (${g.satuan})`);
         if (d.tipe === "urai") cek(g.u >= 1, `${tag}: urai punya satuan`);
         if (d.tipe === "susun" && d.kata) cek(s.cara === "suara", `${tag}: jawaban kata hanya pada suara`);
@@ -250,11 +256,15 @@ const HASIL_CERITA = [52, 55, 56, 60, 90];
   cek(adaBetul === 1, "Cari kesalahan: tepat satu tokoh yang menyatakan hal benar");
   cek(new Set(posisiBenar).size >= 2, `Cari kesalahan: alasan benar tidak selalu di tempat yang sama (${posisiBenar})`);
   const kv = (nama) => TAHAP[nama][1].filter((s) => s.cara === "kanvas").flatMap((s) => s.langkah.map((l) => LC.kunciJawab(l.langkah, "kanvas").n));
-  sama(kv("Concrete"), [9, 6, 8, 1], "angka kanvas Concrete");
+  sama(kv("Concrete"), [9, 6, 8, 3], "angka kanvas Concrete");
   sama(kv("Pictorial"), [7, 3, 6, 2], "angka kanvas Pictorial");
   sama(kv("Abstract"), [8, 7, 3, 4], "angka kanvas Abstract");
   // Tugas suara bervariasi: kata dan bilangan.
   const kunciSuara = Object.values(TAHAP).flatMap(([, soal]) => soal[2].langkah.map((l) => LC.kunciJawab(l.langkah, "suara")));
+  for (const [namaT, [, soal]] of Object.entries(TAHAP)) {
+    const susunT = soal.flatMap((m) => m.langkah.map((l) => LC.dasarDari(l.langkah))).filter((d) => d.tipe === "susun");
+    cek(susunT.some((d) => LC.adaSimpanan(d.a, d.b)) && susunT.some((d) => !LC.adaSimpanan(d.a, d.b)), `${namaT}: kali susun campur tanpa dan dengan simpanan (12 x 4 tanpa, 14 x 5 dengan)`);
+  }
   cek(kunciSuara.some((k) => k.jenis === "nama") && kunciSuara.some((k) => k.jenis === "angka"), "tugas suara: kata dan bilangan");
   cek(kunciSuara.filter((k) => k.jenis === "nama").every((k) => k.nama === "simpan"), "tugas suara: kata jawaban adalah simpan");
   // Jenis jawaban klik beragam: hasil, penjumlahan berulang, uraian, cara menulis dan menyimpan.

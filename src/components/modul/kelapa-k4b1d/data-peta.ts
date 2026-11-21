@@ -3,7 +3,7 @@
  * Mind-map: gambar KIOS KELAPA (atap rumbia, papan panen 5.270, empat keranjang berisi 5, 2, 7, 0, pohon kelapa, bagan bagian utuh) dengan enam label kosong yang menempel pada bagian gambarnya
  * lewat tanda panah; diketuk, judul langkah muncul dan dibacakan Guru. Isi = LANGKAH rangkuman semua metode Sub-Bab D (Pecah Bilangan, Susun Bilangan, Bagan Bagian Utuh) dan isi materi (komposisi, dekomposisi, nol).
  * Infografis: dua kartu dari benda dan angka Story. Kartu 1 = papan keranjang (angka dan harga tiap tempat dari 5.270, cara lain 4.000 + 1.270, uraian keliru Satria 5.000 + 200 + 7).
- * Kartu 2 = kartu acuan empat aturan (menguraikan, menyusun, bagan, memeriksa). Digital saja. Suara tanpa digit lewat ejaK4B1. Diuji: scripts/uji-visual-k4b1def.mjs.
+ * Kartu 2 = kartu acuan lima aturan (menguraikan, menyusun, bagan, memeriksa, uang 7.300 dengan lembar dan keping). Digital saja. Suara tanpa digit lewat ejaK4B1. Diuji: scripts/uji-visual-k4b1def.mjs.
  */
 import { ejaK4B1 } from "../eja-k4b1";
 
@@ -29,7 +29,7 @@ export const LANGKAH_KELAPA: LangkahPeta[] = [
   { judul: "Harga angka ikut tempatnya", arti: "Langkah dua. Angka tujuh di tempat puluhan berarti tujuh puluh, bukan tujuh. Harga satu angka mengikuti tempatnya." },
   { judul: "Tempat kosong diisi nol", arti: "Langkah tiga. Tempat tanpa bagian diisi nol saat menyusun. Saat menguraikan, bagian nol tidak perlu ditulis." },
   { judul: "Susun: gabung semua bagian", arti: "Langkah empat. Menyusun bilangan berarti menggabungkan semua bagian, dari ribuan sampai satuan, menjadi satu bilangan utuh." },
-  { judul: "Bagan: banyak cara", arti: "Langkah lima. Di bagan bagian utuh, bilangan utuh ada di kotak besar dan dua bagian di kotak kecil. Bagian yang hilang dicari dengan mengurangkan, dan satu bilangan boleh diuraikan dengan banyak cara." },
+  { judul: "Bagan: banyak cara", arti: "Langkah lima. Di bagan bagian utuh, bilangan utuh ada di kotak besar dan dua bagian di kotak kecil. Bagian yang hilang dicari dengan mengurangkan, dan satu bilangan boleh diuraikan dengan banyak cara. Uang pun boleh diuraikan dengan lembar dan keping, juga dengan banyak cara." },
   { judul: "Periksa: jumlahkan lagi", arti: "Langkah enam. Jumlahkan kembali semua bagian. Hasilnya harus sama dengan bilangan semula." },
 ];
 
@@ -76,15 +76,16 @@ export const SEL_KARTU1_KELAPA: SelKelapa[] = [
 ];
 
 export type AturanKelapa = { kunci: string; nama: string; ikon: string; isi: string; suara: string };
-/** Kartu 2: empat aturan, semuanya dihitung dari 5.270 (Story). */
+/** Kartu 2: lima aturan dari Story: empat dihitung dari 5.270 dan satu dari uang pembayaran 7.300. */
 export const ATURAN_KELAPA: AturanKelapa[] = [
   { kunci: "urai", nama: "Menguraikan", ikon: "\u{2702}", isi: "5.270 = 5.000 + 200 + 70", suara: ejaK4B1("Menguraikan: 5.270 = 5.000 + 200 + 70. Bagian nol tidak ditulis.") },
   { kunci: "susun", nama: "Menyusun", ikon: "\u{1F9E9}", isi: "5.000 + 200 + 70 = 5.270", suara: ejaK4B1("Menyusun: 5.000 + 200 + 70 = 5.270. Semua bagian digabung, tempat kosong diisi nol.") },
   { kunci: "bagan", nama: "Bagan bagian utuh", ikon: "\u{1F4CA}", isi: "5.270 − 4.000 = 1.270", suara: ejaK4B1("Bagan bagian utuh: bagian yang hilang dicari dengan mengurangkan. 5.270 − 4.000 = 1.270.") },
   { kunci: "periksa", nama: "Memeriksa", ikon: "\u{2705}", isi: "4.000 + 1.270 = 5.270", suara: ejaK4B1("Memeriksa: jumlahkan kembali. 4.000 + 1.270 = 5.270, sama dengan bilangan semula.") },
+  { kunci: "uang", nama: "Uang", ikon: "\u{1F4B0}", isi: "7.300 = 6.000 + 1.000 + 300", suara: ejaK4B1("Uang: 7.300 rupiah bisa 3 lembar 2.000, 1 keping 1.000, dan 3 keping 100. Ada cara lain, 2 lembar 2.000, 3 keping 1.000, dan 3 keping 100, hasilnya sama.") },
 ];
 export const JUDUL_INFO1_KELAPA = "Papan panen Pak Darwis";
 export const PETUNJUK1_INFO_KELAPA = "Papan keranjang. Ketuk tanda tanya untuk melihat angka dan harga tiap tempat, cara lain, dan uraian yang keliru.";
-export const PETUNJUK2_INFO_KELAPA = "Kartu aturan. Ketuk tanda tanya untuk melihat empat aturan menyusun dan menguraikan bilangan.";
+export const PETUNJUK2_INFO_KELAPA = "Kartu aturan. Ketuk tanda tanya untuk melihat lima aturan menyusun dan menguraikan bilangan, juga uang.";
 export const SELESAI1_INFO_KELAPA = "Papan lengkap! Harga angka mengikuti tempatnya.";
 export const SELESAI2_INFO_KELAPA = "Kartu aturan lengkap! Uraikan, susun, cari bagian, lalu periksa.";

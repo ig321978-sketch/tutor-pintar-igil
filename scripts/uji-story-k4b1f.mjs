@@ -225,7 +225,7 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   }
   cek(M_VIDEO.subjudul === "Metode Kurikulum" && U.subjudul === "Metode Global" && M_VIDEO.judul === "Papan Sisa Pak Usman" && U.judul === M_VIDEO.judul && V.JUDUL_K4B1F === M_VIDEO.judul, "judul dan subjudul");
   cek(M_VIDEO.id === "k4b1f-materi" && U.id === "k4b1f-luar" && M_VIDEO.jenis === "materi" && U.jenis === "metode-luar", "id dan jenis video");
-  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,dermaga-pulang,catatan,salah-balik,ambil,ratusan,hasil,periksa,cuci,penutup", "urutan adegan materi");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,dermaga-pulang,panjang,catatan,salah-balik,ambil,ratusan,hasil,periksa,cuci,penutup", "urutan adegan materi");
   cek(U.adegan.map((a) => a.id).join() === "sapaan,luar-pembuka,luar-susun,luar-susun-terapan,luar-maju,luar-maju-terapan,luar-periksa,luar-periksa-terapan,luar-ringkas", "urutan adegan metode global");
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 52) && U.adegan.every((a) => /Metode global|Ringkasan|ringkasan/i.test(a.sumber) && a.sumber.length <= 52), "label sumber");
   const TERLARANG = /(kelas|buku|teman|kelompok|mengelompokkan|skor|nilai|soal|tebak|kunci|latihan)/i;
@@ -242,7 +242,7 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
           for (const n of bilanganSuara(kt.suara)) cek(terlihat.has(n), `${v.id}/${a.id}#${i + 1}: bilangan ${n} yang diucapkan tampak sebagai angka`);
         });
   const semuaSuara = M_VIDEO.adegan.map((a) => a.ketukan.map((kt) => kt.suara).join(" ")).join(" ");
-  for (const n of [0, 1, 2, 3, 5, 7, 10, 12, 337, 463, 612, 275]) cek(bilanganSuara(semuaSuara).includes(n), `video materi mengucapkan bilangan ${n}`);
+  for (const n of [0, 1, 2, 3, 5, 7, 10, 12, 337, 463, 612, 275, 265, 132, 133, 200, 60, 100, 30]) cek(bilanganSuara(semuaSuara).includes(n), `video materi mengucapkan bilangan ${n}`);
   const semuaLuar = U.adegan.map((a) => a.ketukan.map((kt) => kt.suara).join(" ")).join(" ");
   for (const n of [2, 3, 40, 50, 90, 158, 175, 345, 430, 520, 750, 800, 840]) cek(bilanganSuara(semuaLuar).includes(n), `video global mengucapkan bilangan ${n}`);
   for (const kata of ["Satria", "Laras", "Genta", "Pak Hendro", "Pak Usman", "Bu Marni", "tamu", "mengambil", "satuan", "puluhan", "ratusan", "dikurangi", "penjumlahan", "sandal", "dermaga"])
@@ -253,7 +253,7 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   cek(km >= 300 && km <= 400, `materi 300 sampai 400 kata (${km})`);
   cek(kataVideo(U) / 120 > 3, `durasi video global lebih dari tiga menit (${(kataVideo(U) / 120).toFixed(2)} menit, ${kataVideo(U)} kata)`);
   const sapa = adegan(M_VIDEO, "sapaan");
-  cek(/mengurangkan bilangan sampai seribu/.test(sapa.ketukan[0].suara) && ["Pengurangan bersusun", "Mengambil dari tempat di kiri", "Memeriksa dengan penjumlahan"].every((d) => teksAdegan(sapa).includes(d)), "sapaan materi: topik dan tiga hal");
+  cek(/mengurangkan bilangan sampai seribu/.test(sapa.ketukan[0].suara) && ["Susun panjang dan susun pendek", "Mengambil dari tempat di kiri", "Memeriksa dengan penjumlahan"].every((d) => teksAdegan(sapa).includes(d)), "sapaan materi: topik dan tiga hal");
   cek(/Metode global/.test(adegan(U, "sapaan").sumber), "sapaan global berlabel Metode global");
   cek(M_VIDEO.adegan.slice(1).every((a) => a.ketukan.length === 3) && U.adegan.slice(1).every((a) => a.ketukan.length === 4), "3 ketukan tiap adegan materi, 4 ketukan tiap adegan global");
   // Naskah tetap: kalimat suara sama dengan berkas naskah.
@@ -296,6 +296,16 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   cek(ada(akhirAdegan(dm, 0), "lt", "ps", "dm", "pr", "kp1", "kp2", "kp3", "pg"), "dermaga: laut, dermaga, perahu, koper, tamu pulang");
   cek(ada(akhirAdegan(dm, 1), "pu", "pu-bj", "pu-pl", "pu-pk", "ct") && isiTeks(akhirAdegan(dm, 1), "pu-n") === "Pak Usman" && ketemu(akhirAdegan(dm, 1), "kp1").sorot === true, "dermaga: Pak Usman berseragam putih berpeluit mencatat tamu naik perahu");
   cek(ada(akhirAdegan(dm), "tq", "sa", "sa-bj", "la", "la-kc", "ge", "ge-pc", "ph", "ph-tp", "ph-pl", "ph-ts") && ["sa-n", "la-n", "ge-n", "ph-n"].map((id) => isiTeks(akhirAdegan(dm), id)).join() === "Satria,Laras,Genta,Pak Hendro", "dermaga: empat tokoh berlengkap di samping Pak Usman");
+  const pj = adegan(M_VIDEO, "panjang");
+  cek(ada(akhirAdegan(pj, 0), "gd", "la") && Array.from({ length: 5 }, (_, i) => `kl${i}`).every((id) => ketemu(akhirAdegan(pj, 0), id)) && isiTeks(akhirAdegan(pj, 0), "n1") === "265 kelapa" && isiTeks(akhirAdegan(pj, 0), "n2") === "132 terjual", "panjang: 265 kelapa di gudang, 132 terjual (contoh buku)");
+  {
+    const o = akhirAdegan(pj, 1);
+    cek(isiTeks(o, "u1") === "265 = 200 + 60 + 5" && isiTeks(o, "u2") === "132 = 100 + 30 + 2" && ada(o, "mn", "gs") && 200 + 60 + 5 === 265 && 100 + 30 + 2 === 132, "susun panjang: kedua bilangan diuraikan (hitungan benar)");
+    const o3 = akhirAdegan(pj, 2);
+    cek(tidakAda(o3, "u1", "u2", "u3", "u4", "gs", "mn") && baris(o3, "a") === "265" && baris(o3, "b") === "132" && baris(o3, "h") === "133" && 265 - 132 === 133 && 100 + 30 + 3 === 133 && isiTeks(o3, "tn") === "tanpa ambil", "susun pendek: 265 dikurangi 132 sama dengan 133 (hitungan benar)");
+    cek([2, 6, 5].every((a, i) => a >= [1, 3, 2][i]), "susun pendek 265 dikurangi 132: tiap angka atas tidak lebih kecil, memang tanpa mengambil");
+    cek(isiTeks(L.keadaanStory(pj, 2, 9999), "tn") === "tanpa ambil" && /susun panjang/i.test(pj.ketukan[1].suara) && /susun pendek/i.test(pj.ketukan[2].suara), "panjang: suara menyebut susun panjang dan susun pendek");
+  }
   const ct = adegan(M_VIDEO, "catatan");
   cek(baris(akhirAdegan(ct, 0), "a") === "612" && isiTeks(akhirAdegan(ct, 0), "n1") === "612" && isiTeks(akhirAdegan(ct, 0), "m1") === "menginap" && ada(akhirAdegan(ct, 0), "la", "la-k1", "la-kp"), "catatan: enam ratus dua belas menginap pada papan susun");
   cek(baris(akhirAdegan(ct, 1), "a") === "612" && baris(akhirAdegan(ct, 1), "b") === "275" && isiTeks(akhirAdegan(ct, 1), "n2") === "275" && isiTeks(akhirAdegan(ct, 1), "m2") === "pulang", "catatan: dua ratus tujuh puluh lima pulang di baris bawah");
@@ -349,6 +359,8 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   cek(baris(akhirAdegan(su, 1), "a") === "746" && baris(akhirAdegan(su, 1), "b") === "312" && ada(akhirAdegan(su, 1), "ar") && isiTeks(akhirAdegan(su, 1), "ls") === "satuan" && isiTeks(akhirAdegan(su, 1), "lk") === "kiri", "Column Subtract konsep: ditulis ke bawah, dikurangkan dari satuan ke kiri");
   cek(baris(akhirAdegan(su, 2), "a") === "532" && baris(akhirAdegan(su, 2), "b") === "117" && isiTeks(akhirAdegan(su, 2), "am") === "ambil 1" && isiTeks(akhirAdegan(su, 2), "lt") === "2 < 7" && ketemu(akhirAdegan(su, 2), "ps-ta2").sorot === true, "Column Subtract konsep: angka atas lebih kecil, ambil satu dari kiri");
   cek(baris(akhirAdegan(su, 3), "a") === "5212" && isiTeks(akhirAdegan(su, 3), "p10") === "+10" && sel(akhirAdegan(su, 3), "h", 2) === "5" && 12 - 7 === 5, "Column Subtract konsep: satu menjadi sepuluh di kanan, dua belas dikurangi tujuh");
+  cek(isiTeks(akhirAdegan(su, 1), "jp") === "pendek" && isiTeks(akhirAdegan(su, 1), "jq") === "panjang" && isiTeks(akhirAdegan(su, 1), "jr") === "diuraikan" && /susun pendek/i.test(su.ketukan[1].suara) && /susun panjang/i.test(su.ketukan[1].suara), "Column Subtract konsep: susun pendek dan susun panjang disebut dan diberi label");
+  cek(isiTeks(akhirAdegan(su, 3), "k1") === "1 kali ambil" && /satu kali mengambil/.test(su.ketukan[3].suara) && 532 - 117 === 415, "Column Subtract konsep: 532 dikurangi 117 adalah satu kali mengambil");
   const st = adegan(U, "luar-susun-terapan");
   cek(baris(akhirAdegan(st, 0), "a") === "430" && baris(akhirAdegan(st, 0), "b") === "158" && isiTeks(akhirAdegan(st, 0), "n1") === "430" && isiTeks(akhirAdegan(st, 0), "n2") === "158" && ada(akhirAdegan(st, 0), "la"), "Column Subtract terapan: Laras mengurangkan 430 dan 158");
   {

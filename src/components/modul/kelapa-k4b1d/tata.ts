@@ -3,7 +3,7 @@
  * Gambar harus sungguh sebanyak datanya: rak keranjang (Concrete) menaruh tepat satu gambar benda untuk tiap angka di tiap tempat,
  * balok cacah polos (Pictorial) menggambar tepat satu balok untuk tiap angka, dan rak bagan menaruh tepat ribuan dan ratusan sesuai bilangannya.
  */
-import { HARGA, URUT_TEMPAT, angkaDi, type Tempat } from "./logika-cpa";
+import { HARGA, URUT_PECAHAN, URUT_TEMPAT, angkaDi, type IsiUang, type Pecahan, type Tempat } from "./logika-cpa";
 
 /** Lebar kanvas gambar (viewBox 300 x 200). */
 export const LEBAR = 300;
@@ -78,3 +78,31 @@ export function susunBalok(n: number): KolomBalok[] {
     return { tempat: t, jumlah, x0, lebar: LEBAR_KOLOM - 4, balok };
   });
 }
+
+/* ------------------------------ Uang (Concrete dan Pictorial) ------------------------------ */
+export const X0_UANG = 74;
+/** Lembar uang Rp 2.000 berupa persegi panjang (lebar 26) dan keping berupa lingkaran (garis tengah 18). */
+export const LEBAR_LEMBAR = 26;
+export const TINGGI_LEMBAR = 15;
+export const R_KEPING = 9;
+export type BarisUang = { pecahan: Pecahan; jenis: "lembar" | "keping"; jumlah: number; tanya: boolean; y: number; tinggi: number; xs: number[] };
+
+/** Empat baris uang (Rp 2.000, 1.000, 500, 100): tepat satu gambar lembar atau keping untuk tiap banyaknya. Baris `tanya` kosong (tanda tanya). */
+export function susunUang(isi: IsiUang, tanya?: Pecahan): BarisUang[] {
+  return URUT_PECAHAN.map((p, i) => {
+    const jumlah = p === tanya ? 0 : isi[p];
+    const lembar = p === 2000;
+    const jarak = lembar ? 28 : 22;
+    return {
+      pecahan: p,
+      jenis: lembar ? "lembar" : "keping",
+      jumlah,
+      tanya: p === tanya,
+      y: 24 + i * 43,
+      tinggi: 39,
+      xs: Array.from({ length: jumlah }, (_, j) => X0_UANG + j * jarak),
+    };
+  });
+}
+/** Apakah semua gambar uang muat di baris (batas kanan 288)? */
+export const muatUang = (isi: IsiUang): boolean => susunUang(isi).every((b) => b.xs.length === 0 || b.xs[b.xs.length - 1] + (b.jenis === "lembar" ? LEBAR_LEMBAR : 2 * R_KEPING) <= 288);

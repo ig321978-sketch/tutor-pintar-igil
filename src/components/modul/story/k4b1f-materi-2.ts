@@ -16,7 +16,7 @@ const B1 = idSel("ps", "b", 1);
 
 /* ------------------------------ 4. Mengambil satu puluhan ------------------------------ */
 const SUARA_A1 = "Genta menggeleng, di satuan dua tidak cukup untuk dikurangi lima.";
-const SUARA_A2 = "Kita mengambil satu puluhan, lalu satuan menjadi dua belas.";
+const SUARA_A2 = "Kita mengambil satu puluhan sebagai mengambil pertama, lalu satuan menjadi dua belas.";
 const SUARA_A3 = "Dua belas dikurangi lima sama dengan tujuh.";
 
 export const ADEGAN_AMBIL: AdeganStory = {
@@ -52,7 +52,7 @@ export const ADEGAN_AMBIL: AdeganStory = {
 
 /* ------------------------------ 5. Mengambil satu ratusan ------------------------------ */
 const SUARA_R1 = "Di puluhan, nol tidak cukup untuk dikurangi tujuh.";
-const SUARA_R2 = "Kita mengambil satu ratusan, sehingga puluhan menjadi sepuluh.";
+const SUARA_R2 = "Kita mengambil satu ratusan sebagai mengambil kedua, sehingga puluhan menjadi sepuluh.";
 const SUARA_R3 = "Sepuluh dikurangi tujuh sama dengan tiga, dan ratusan tinggal lima dikurangi dua sama dengan tiga.";
 
 export const ADEGAN_RATUSAN: AdeganStory = {
@@ -89,7 +89,7 @@ export const ADEGAN_RATUSAN: AdeganStory = {
 
 /* ------------------------------ 6. Hasil ------------------------------ */
 const SUARA_H1 = "Hasilnya tiga ratus tiga puluh tujuh tamu masih menginap.";
-const SUARA_H2 = "Hasil Satria, empat ratus enam puluh tiga, ternyata lebih besar daripada yang seharusnya.";
+const SUARA_H2 = "Hasil Satria, empat ratus enam puluh tiga, ternyata terlalu besar.";
 const SUARA_H3 = "Satria mendesah dan mengambil ember sandal.";
 const SANDAL = Array.from({ length: 6 }, (_, i) => emo(`sd${i}`, 196 + (i % 3) * 14, i < 3 ? 138 : 152, E.sandal, 12));
 

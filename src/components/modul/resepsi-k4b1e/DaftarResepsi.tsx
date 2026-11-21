@@ -20,7 +20,7 @@ import {
 /**
  * Infografis Kelas 4 Bab 1 Sub-Bab E "Meja Resepsi Bu Rina" (dirancang sendiri, dua kartu, tiap kartu satu layar tanpa gulir): data dari Story.
  * Kartu 1 = lembar daftar tamu bergaris dengan tiga tempat dari kanan (satuan, puluhan, ratusan): jumlah, ditulis, dan disimpan masing-masing (245 + 378);
- * lalu jumlah pagi dan siang, tiga bilangan dengan tamu sore, dan hasil keliru Satria. Semua isi kosong (?) sampai diketuk.
+ * lalu jumlah pagi dan siang, susun panjang (uraian lalu gabung per tempat), tiga bilangan dengan tamu sore, dan hasil keliru Satria. Semua isi kosong (?) sampai diketuk.
  * Kartu 2 = kartu acuan: gambar sepuluh satuan jadi satu puluhan dengan aturannya, dan tangga Genapkan Dulu empat anak tangga. Digital saja.
  */
 const sel = (daftar: SelResepsi[], kunci: string): SelResepsi => daftar.find((s) => s.kunci === kunci) as SelResepsi;
@@ -49,7 +49,7 @@ export default function DaftarResepsiK4B1({ speakGuru, onLanjut, teksLanjut }: {
         onClick={() => ketuk(s.kunci, s.suara)}
         aria-label={t ? s.aria : `Isi kosong: ${s.aria.split(":")[0]}`}
         data-sel={s.kunci}
-        className={`flex min-h-[40px] w-full min-w-0 items-center justify-center rounded-md border-[3px] px-1 text-center text-xs font-black leading-tight ${t ? `lm-muncul ${merah ? "border-[#B91C1C] bg-[#FEE2E2] text-[#7F1D1D]" : "border-[#15803D] bg-[#ECFDF5] text-[#1C01A5]"}` : "border-dashed border-[#B45309] bg-white/80 text-lg text-[#B45309]"}`}
+        className={`flex min-h-[32px] w-full min-w-0 items-center justify-center rounded-md border-[3px] px-1 text-center text-xs font-black leading-tight ${t ? `lm-muncul ${merah ? "border-[#B91C1C] bg-[#FEE2E2] text-[#7F1D1D]" : "border-[#15803D] bg-[#ECFDF5] text-[#1C01A5]"}` : "border-dashed border-[#B45309] bg-white/80 text-lg text-[#B45309]"}`}
       >
         {t ? s.isi : "?"}
       </button>
@@ -79,7 +79,7 @@ export default function DaftarResepsiK4B1({ speakGuru, onLanjut, teksLanjut }: {
             <span className="text-center text-[11px]">disimpan</span>
             {BARIS_TEMPAT_RESEPSI.map((b, i) => (
               <React.Fragment key={b.nama}>
-                <span className={`${garis} flex h-full min-h-[40px] items-center text-[#14532D]`}>
+                <span className={`${garis} flex h-full min-h-[32px] items-center text-[#14532D]`}>
                   {b.nama}
                 </span>
                 {kotak(sel(SEL_KARTU1_RESEPSI, `t-${i}-jum`))}
@@ -91,6 +91,7 @@ export default function DaftarResepsiK4B1({ speakGuru, onLanjut, teksLanjut }: {
           <div className="mt-1.5 space-y-1 border-t-2 border-dashed border-[#93C5FD] pt-1.5">
             {[
               ["f-jumlah", "Pagi dan siang"],
+              ["f-panjang", "Susun panjang"],
               ["f-tiga", "Dengan tamu sore"],
               ["f-salah", "Hasil Satria"],
             ].map(([k, label]) => (

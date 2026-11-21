@@ -25,7 +25,10 @@ export function bungkusJudul(judul: string, maks: number): string[] {
 export type LangkahPeta = { judul: string; arti: string };
 /** Enam langkah Mind-map (baris atas kiri ke kanan, lalu baris bawah). Arti dibacakan Guru (diejakan, tanpa digit). */
 export const LANGKAH_SISA: LangkahPeta[] = [
-  { judul: "Susun sejajar", arti: "Langkah satu. Tulis bilangan awal di atas dan bilangan yang pergi di bawahnya, satuan di bawah satuan, lalu beri garis." },
+  {
+    judul: "Panjang atau pendek",
+    arti: "Langkah satu. Susun sejajar: tulis bilangan awal di atas dan bilangan yang pergi di bawahnya, satuan di bawah satuan, lalu beri garis. Cara susun panjang menguraikan kedua bilangan menjadi ratusan, puluhan, dan satuan, lalu mengurangkan tiap tempat. Cara susun pendek langsung mengurangkan dari satuan. Hasil keduanya sama.",
+  },
   { judul: "Mulai dari satuan", arti: "Langkah dua. Mulai mengurangkan dari satuan, lalu puluhan, lalu ratusan, bergerak dari kanan ke kiri." },
   { judul: "Ambil dari kiri", arti: "Langkah tiga. Kalau angka di atas lebih kecil, ambil satu dari tempat di kirinya. Satu yang diambil menjadi sepuluh di tempat kanan. Coret angka yang diambil." },
   { judul: "Jangan dibalik", arti: "Langkah empat. Jangan membalik angka di tiap tempat. Angka atas tetap di atas, dan kekurangannya ditutup dengan mengambil. Kalau dibalik, hasilnya meleset." },
@@ -110,7 +113,7 @@ export const SEL_KARTU1_SISA: SelSisa[] = [
       aria: `Hasil di ${t.nama}: ${t.selisih}`,
     },
   ]),
-  { kunci: "b-sisa", isi: rb(SISA_TAMU), suara: ejaK4B1(`Tamu yang masih menginap ada ${SISA_TAMU}.`), aria: `Sisa tamu: ${SISA_TAMU}` },
+  { kunci: "b-sisa", isi: rb(SISA_TAMU), suara: ejaK4B1(`Tamu yang masih menginap ada ${SISA_TAMU}. Pengurangan ini dua kali mengambil, satu di satuan dan satu di puluhan, dan hasilnya sama dengan cara susun panjang.`), aria: `Sisa tamu: ${SISA_TAMU}` },
   { kunci: "b-cek", isi: rb(MENGINAP_SISA), suara: ejaK4B1(`${SISA_TAMU} + ${PULANG_SISA} = ${MENGINAP_SISA}, sama dengan bilangan awal. Jadi pengurangannya benar.`), aria: `Cek tambah: ${MENGINAP_SISA}` },
   { kunci: "b-salah", isi: `${SISA_KELIRU} (keliru)`, suara: ejaK4B1(`Hasil ${SISA_KELIRU} keliru, karena Satria membalik angka di tiap tempat. Hasil yang benar ${SISA_TAMU}.`), aria: `Hasil keliru: ${SISA_KELIRU}` },
 ];

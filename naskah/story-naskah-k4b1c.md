@@ -3,13 +3,13 @@
 Lanjutan cerita bab "Penginapan Pulau Karang Indah" (lihat `naskah/alur-cerita-k4b1.md`). Tamu C: Kak Tiara (pemandu wisata, 👩 bertopi pandan, papan dermaga).
 Suara tanpa digit; bilangan yang diucapkan harus tampak sebagai angka di layar pada ketukan yang sama. Naskah TETAP (sesuaikan sedikit hanya bila uji menuntut; laporkan).
 
-Catatan agen kode: satu kalimat materi diperpanjang agar sampai lima kata (syarat uji Story): adegan `salah-kanan` ketukan 2 semula "Laras menggeleng pelan." kini "Laras menggeleng pelan sambil memegang kertas sakunya." Naskah global tidak berubah (383 kata, sekitar 3,2 menit); materi 342 kata termasuk sapaan.
+Catatan agen kode: satu kalimat materi diperpanjang agar sampai lima kata (syarat uji Story): adegan `salah-kanan` ketukan 2 semula "Laras menggeleng pelan." kini "Laras menggeleng pelan sambil memegang kertas sakunya." Selaras buku: adegan `sama` ditambah di Materi (tanda sama dengan, 4.385 dan 4.385) dan satu kalimat di Global `luar-kiri`; materi 385 kata termasuk sapaan, global 392 kata (sekitar 3,3 menit).
 
 Data Story C (jangan dijadikan jawaban CPA): pengunjung Pantai Barat 4.358, Pantai Timur 4.385, Pantai Selatan 4.538; 4.358 < 4.385 < 4.538; salah Satria membandingkan dari satuan (8 lebih besar dari 5, jadi Barat lebih banyak).
 
-## Video materi (300 sampai 400 kata termasuk sapaan, 9 adegan, 3 ketukan; tanpa latihan)
+## Video materi (300 sampai 400 kata termasuk sapaan, 10 adegan, 3 ketukan; tanpa latihan)
 
-Sapaan (bersama): topik "membandingkan dan mengurutkan bilangan"; daftar: "membandingkan dari kiri", "tanda lebih kecil dan lebih besar", "mengurutkan".
+Sapaan (bersama): topik "membandingkan dan mengurutkan bilangan"; daftar: "membandingkan dari kiri", "tanda lebih kecil, lebih besar, dan sama dengan", "mengurutkan".
 
 1. `dermaga`
    - "Pagi berikutnya Kak Tiara menunggu di dermaga kayu sambil membawa papan besar."
@@ -41,17 +41,22 @@ Sapaan (bersama): topik "membandingkan dan mengurutkan bilangan"; daftar: "memba
    - "Ia mengambil dayung dan berangkat sendirian sambil mengeluh."
    - "Kak Tiara tertawa dan melambai dari dermaga."
    Visual: Satria mendayung perahu kecil sendirian sambil cemberut; Kak Tiara melambai; di papan tertulis TIMUR lebih banyak.
-7. `selatan`
+7. `sama` (bilangan yang persis sama; ditambah agar selaras dengan buku, 4.352 = 4.352)
+   - "Kak Tiara membuka catatan minggu lalu, dan Pantai Timur juga empat ribu tiga ratus delapan puluh lima orang."
+   - "Ribuan, ratusan, puluhan, dan satuan semuanya sama, jadi tidak ada yang lebih besar."
+   - "Bilangan yang persis sama kita tulis dengan tanda sama dengan."
+   Visual: dua baris kotak tempat angka (LALU dan INI) berisi 4.385; kolom ribuan sampai satuan berubah hijau satu per satu dengan tanda = di antaranya; lalu papan: 4.385 = 4.385, tertulis sama dengan.
+8. `selatan`
    - "Pantai Selatan dikunjungi empat ribu lima ratus tiga puluh delapan orang."
    - "Ribuannya sama, tetapi ratusan lima lebih besar daripada tiga."
    - "Jadi Pantai Selatan paling ramai di antara ketiganya."
    Visual: tiga bilangan 4.358, 4.385, 4.538 di papan; kolom ratusan menyala untuk 5 vs 3; mahkota kecil di atas SELATAN.
-8. `urut`
+9. `urut`
    - "Genta menyusun ketiga bilangan dari yang terkecil ke yang terbesar."
    - "Urutannya empat ribu tiga ratus lima puluh delapan, empat ribu tiga ratus delapan puluh lima, lalu empat ribu lima ratus tiga puluh delapan."
    - "Dari yang terbesar ke terkecil, urutannya dibalik."
    Visual: tiga kartu bilangan bergeser menjadi urut 4.358, 4.385, 4.538 dengan panah kecil ke besar; panah sebaliknya redup di bawahnya.
-9. `penutup` (jembatan ke Sub-Bab D)
+10. `penutup` (jembatan ke Sub-Bab D)
    - "Satria kembali ke dermaga dengan napas terengah-engah, dan semua tertawa."
    - "Pak Darwis, penjual kelapa, datang membawa hasil panen yang sangat banyak."
    - "Menurutmu, bagaimana cara membagi ribuan kelapa ke dalam keranjang? Terima kasih, Satria, Laras, Genta, Pak Hendro, dan Kak Tiara!"
@@ -70,7 +75,7 @@ Metode: Left-to-Right Compare (Banding dari Kiri), Number Line (Garis Bilangan),
   - "Cara pertama, Left-to-Right Compare, atau Banding dari Kiri."
   - "Kita mulai dari tempat paling kiri, yaitu ribuan."
   - "Kalau angkanya sama, kita pindah ke tempat di kanannya, sampai ketemu angka yang berbeda."
-  - "Angka berbeda pertama itulah yang menentukan bilangan mana yang lebih besar."
+  - "Angka berbeda pertama itulah yang menentukan bilangan mana yang lebih besar, dan kalau semua tempat sama, kedua bilangan sama dengan."
 - `luar-kiri-terapan`:
   - "Laras membandingkan enam ribu tujuh ratus dengan enam ribu tujuh puluh."
   - "Ribuan sama dan ratusan berbeda, tujuh lebih besar daripada nol, jadi pemenangnya enam ribu tujuh ratus."

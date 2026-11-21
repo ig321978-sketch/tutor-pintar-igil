@@ -150,9 +150,9 @@ export const PapanInfo = ({ children }: { children: React.ReactNode }) => (
 );
 
 const JUDUL_KARTU: Record<LangkahDasar["tipe"], string> = {
-  jumlah: "menjumlahkan bersusun",
-  simpan: "menyimpan",
-  tempat: "tambah per tempat",
+  jumlah: "susun pendek",
+  simpan: "susun pendek, menyimpan",
+  tempat: "susun panjang",
   genap: "genapkan dulu",
 };
 
@@ -161,8 +161,8 @@ export const barisBalokTugas = (d: LangkahDasar): Baris[] => [
   { nama: "pertama", n: d.a },
   { nama: "kedua", n: d.b },
 ];
-/** Zona yang disorot pada gambar: tempat yang dijumlahkan (Place Add) atau satuan (menyimpan); -1 bila tidak ada. */
-export const sorotTugas = (d: LangkahDasar): number => (d.tipe === "tempat" ? indeksTempat(d.tempat) : d.tipe === "simpan" ? 0 : -1);
+/** Zona yang disorot pada gambar: tempat yang dijumlahkan (Place Add, kecuali bila yang ditanya bentuk jumlah seluruh tempat) atau satuan (menyimpan); -1 bila tidak ada. */
+export const sorotTugas = (d: LangkahDasar, cara?: Cara): number => (d.tipe === "tempat" ? (cara === "klik" ? -1 : indeksTempat(d.tempat)) : d.tipe === "simpan" ? 0 : -1);
 
 /* ------------------------------ Tampilan satu tugas ------------------------------ */
 export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: Cara }) {
@@ -174,6 +174,6 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
       </PapanInfo>
     );
   const judul = rupa === "benda" ? `${JUDUL_KARTU[d.tipe]}: ${d.benda}` : JUDUL_KARTU[d.tipe];
-  return <PanelBalok rupa={rupa} benda={d.benda} baris={barisBalokTugas(d)} sorot={sorotTugas(d)} judul={judul} hasil={d.tipe === "genap" ? "jumlah" : "hasil"} />;
+  return <PanelBalok rupa={rupa} benda={d.benda} baris={barisBalokTugas(d)} sorot={sorotTugas(d, cara)} judul={judul} hasil={d.tipe === "genap" ? "jumlah" : "hasil"} />;
 }
 

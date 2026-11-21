@@ -6,10 +6,10 @@
 import type { Tempat } from "./logika-cpa";
 
 /** Susun: Bu Maya mengucapkan sebuah bilangan; anak mengisi empat kotak (ribuan sampai satuan) dengan kartu angka. */
-export const TARGET_SUSUN: readonly number[] = [7208, 3150, 6700];
+export const TARGET_SUSUN: readonly number[] = [7208, 3150, 1040];
 
 /** Baca: tiket bernomor; anak memilih cara membacanya. */
-export const TARGET_BACA: readonly number[] = [2406, 9030, 5200];
+export const TARGET_BACA: readonly number[] = [2406, 9030, 2150];
 
 /** Nol: Bu Maya mengucapkan bilangan, papan sudah terisi sebagian (kotak kosong = nol yang hilang); anak mengisi kotak kosong. */
 export type TargetNol = { angka: number; awal: (number | null)[] };

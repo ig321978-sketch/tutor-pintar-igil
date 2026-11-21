@@ -283,6 +283,19 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
     const dasar = soal.flatMap((s) => s.langkah.map((l) => LC.dasarDari(l.langkah)));
     cek(TIPE.every((t) => dasar.some((d) => d.tipe === t)), `${nama}: jenis tugas jumlah, simpan, tempat, genap ada`);
     cek(["satuan", "puluhan", "ratusan"].filter((t) => dasar.some((d) => d.tipe === "tempat" && d.tempat === t)).length >= 2, `${nama}: tugas tempat memakai sedikitnya dua tempat berbeda`);
+    // Selaras buku: susun pendek menyimpan satu kali dan dua kali ada di tiap tahap; susun panjang (Place Add klik) tanpa, satu, dan dua kali menyimpan menurut tahap.
+    const pendek = dasar.filter((d) => d.tipe === "jumlah" || d.tipe === "simpan").map((d) => LC.banyakSimpan(d.a, d.b));
+    cek(pendek.includes(1) && pendek.includes(2), `${nama}: susun pendek memuat satu kali dan dua kali menyimpan (${pendek.join(",")})`);
+    const panjangKlik = soal.filter((s) => s.cara === "klik").flatMap((s) => s.langkah.map((l) => l.langkah)).filter((l) => l.tipe === "tempat")[0];
+    cek(!!panjangKlik && LC.banyakSimpan(panjangKlik.a, panjangKlik.b) === { Concrete: 0, Pictorial: 1, Abstract: 2 }[nama], `${nama}: tugas susun panjang (klik) menyimpan ${{ Concrete: "nol", Pictorial: "satu", Abstract: "dua" }[nama]} kali`);
+    {
+      const pk = LC.pilihanKlik(panjangKlik);
+      cek(pk.filter((q) => eval(q) === panjangKlik.a + panjangKlik.b).length === 1 && pk[0] !== LC.teksKunciKlik(panjangKlik), `${nama}: tugas susun panjang hanya satu pilihan bernilai sama dengan jumlah, benar bukan tombol pertama (${pk.join(" / ")})`);
+    }
+    const klikKunci = panjangKlik ? LC.kunciJawab(panjangKlik, "klik") : null;
+    cek(klikKunci?.jenis === "nama" && /^\d+( \+ \d+){1,2}$/.test(klikKunci.nama) && klikKunci.nama === LC.uraikan(panjangKlik.a + panjangKlik.b) && eval(klikKunci.nama) === panjangKlik.a + panjangKlik.b, `${nama}: jawaban susun panjang berupa uraian jumlah yang dihitung dari data (${klikKunci?.nama})`);
+    const penjelasan = panjangKlik ? LC.kalimatKunci(panjangKlik, "klik") : "";
+    cek(/Dijumlahkan tempat demi tempat/.test(penjelasan) && tanpaDigit(penjelasan) && (LC.banyakSimpan(panjangKlik.a, panjangKlik.b) === 0 ? !/diuraikan menjadi/.test(penjelasan) : /diuraikan menjadi sepuluh|diuraikan menjadi seratus/.test(penjelasan)), `${nama}: penjelasan susun panjang menyebut uraian ulang (${penjelasan.slice(0, 60)})`);
     cek(dasar.some((d) => d.tipe === "genap" && d.b < d.bulat) && dasar.some((d) => d.tipe === "genap" && d.b > d.bulat) || nama !== "Abstract", `${nama}: pembulatan ke atas dan ke bawah (Abstract)`);
   }
   cek(new Set([...D.CONCRETE, ...D.PICTORIAL, ...D.ABSTRACT].flatMap((s) => s.langkah.map((l) => LC.dasarDari(l.langkah)).filter((d) => d.tipe === "genap").map((d) => (d.b < d.bulat ? "atas" : "bawah")))).size === 2, "tugas genap: dibulatkan ke atas dan ke bawah ada");
@@ -297,8 +310,20 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   sama(["klik", "kanvas", "suara"].map((c) => nama(LC.kunciJawab(J, c))), [452, 4, 452], "kunci jumlah: jumlah, angka ratusan, jumlah");
   sama(["klik", "kanvas", "suara"].map((c) => nama(LC.kunciJawab(Sm, c))), ["tulis 2, simpan 1", 15, 2], "kunci simpan: tulisan, puluhan ditambah simpanan, angka satuan");
   const T1 = { tipe: "tempat", benda: "x", a: 462, b: 315, tempat: "ratusan" };
-  sama(["klik", "kanvas"].map((c) => nama(LC.kunciJawab(T1, c))), [700, 7], "kunci tempat ratusan: hasil, jumlah angka");
-  sama(["klik", "kanvas", "suara"].map((c) => nama(LC.kunciJawab({ tipe: "tempat", benda: "x", a: 371, b: 262, tempat: "puluhan" }, c))), [130, 13, "puluhan"], "kunci tempat puluhan: hasil, jumlah angka, tempat yang menyimpan");
+  sama(["klik", "kanvas"].map((c) => nama(LC.kunciJawab(T1, c))), ["700 + 70 + 7", 7], "kunci tempat: bentuk panjang jumlah (susun panjang), jumlah angka");
+  sama(["klik", "kanvas", "suara"].map((c) => nama(LC.kunciJawab({ tipe: "tempat", benda: "x", a: 371, b: 262, tempat: "puluhan" }, c))), ["600 + 30 + 3", 13, "puluhan"], "kunci tempat puluhan: bentuk panjang, jumlah angka, tempat yang menyimpan");
+  // Susun panjang menurut buku: 189 = 100 + 80 + 9; 189 + 245 menyimpan dua kali; 131 + 321 tanpa menyimpan.
+  sama([LC.uraikan(189), LC.uraikan(245), LC.uraikan(305), LC.uraikan(131)], ["100 + 80 + 9", "200 + 40 + 5", "300 + 5", "100 + 30 + 1"], "uraikan: tiap bilangan menurut tempat, nol dilewati");
+  sama([LC.jumlahPerTempat(189, 245), LC.jumlahPerTempat(131, 321), LC.jumlahPerTempat(245, 378)], [[300, 120, 14], [400, 50, 2], [500, 110, 13]], "jumlah per tempat: 189 + 245 menjadi 300 + 120 + 14");
+  sama([LC.bentukGabung(189, 245), LC.bentukJumlah(189, 245), LC.bentukJumlah(131, 321), LC.banyakSimpan(189, 245), LC.banyakSimpan(131, 321), 189 + 245], ["300 + 120 + 14", "400 + 30 + 4", "400 + 50 + 2", 2, 0, 434], "contoh buku: 189 + 245 = 434 (dua kali menyimpan) dan 131 + 321 = 452 (tanpa menyimpan)");
+  for (const [a, b] of [[189, 245], [131, 321], [524, 263], [247, 136], [384, 157]]) {
+    const [x, y] = LC.bentukKeliru(a, b);
+    const benar = LC.bentukJumlah(a, b);
+    cek(x !== y && x !== benar && y !== benar && eval(x) !== a + b && eval(y) !== a + b, `bentuk keliru ${a} + ${b}: dua bentuk berbeda dari jawaban benar (${x} / ${y})`);
+    const pil = LC.pilihanKlik({ tipe: "tempat", benda: "x", a, b, tempat: "ratusan" });
+    cek(pil.filter((q) => eval(q) === a + b).length === 1, `pilihan klik tempat ${a} + ${b}: hanya jawaban benar yang bernilai sama dengan jumlah (${pil.join(" / ")})`);
+    cek(pil.length === 3 && new Set(pil).size === 3 && pil.includes(benar) && pil[0] !== benar, `pilihan klik tempat ${a} + ${b}: tiga bentuk unik, benar bukan yang pertama (${pil.join(" / ")})`);
+  }
   const G1 = { tipe: "genap", benda: "x", a: 437, b: 298, bulat: 300 };
   const G2 = { tipe: "genap", benda: "x", a: 254, b: 301, bulat: 300 };
   sama(["klik", "kanvas", "suara"].map((c) => nama(LC.kunciJawab(G1, c))), [735, 2, "dikurangi"], "kunci genap ke atas: jumlah, selisih, dikurangi");
@@ -357,6 +382,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
           const baris = LC.barisKartu(d, s.cara);
           const kolom = LC.kolomTeks(d);
           cek(Array.isArray(baris) && baris.length >= 1 && baris.every((b) => typeof b === "string" && b.length > 3), `${tag}: kartu kata ada`);
+          if (d.tipe === "tempat") cek(baris.length === 3 && baris[0] === `${d.a} = ${LC.uraikan(d.a)}` && baris[1] === `${d.b} = ${LC.uraikan(d.b)}`, `${tag}: kartu susun panjang memuat uraian kedua bilangan`);
           cek(baris.every((b) => !adaEmoji(b)) && kolom.length === 3 && kolom[0].trim() === String(d.a) && kolom[1].replace("+", "").trim() === String(d.b), `${tag}: kartu lambang tanpa emoji dan bilangan bersusun rata kanan`);
         }
       }

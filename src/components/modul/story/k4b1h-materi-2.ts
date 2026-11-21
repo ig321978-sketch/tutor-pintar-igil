@@ -1,6 +1,6 @@
-import type { AdeganStory } from "./logika-story";
+import type { AdeganStory, Obj } from "./logika-story";
 import { E, W, angkaSus, bersusunDasar, busa, ember, emo, garisSus, judul, kotak, lorong, pintu, sikat, teks, tokoh } from "./k4b1h-gambar";
-import { hapus, k, sorotkan, tambah, ubah } from "./k4b1h-bantu";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b1h-bantu";
 
 /*
  * Cerita orisinal IGIL "Papan Jatah Bu Ratna" (Kelas 4 Bab 1 Sub-Bab H), cerita Penginapan Pulau Karang Indah.
@@ -11,7 +11,16 @@ import { hapus, k, sorotkan, tambah, ubah } from "./k4b1h-bantu";
 const SUARA_G1 = "Genta membagikan tamu satu per satu bergiliran, empat kamar sekali putaran.";
 const SUARA_G2 = "Tiap putaran memakai empat tamu, jadi lima puluh enam tamu habis dalam empat belas putaran.";
 const SUARA_G3 = "Tiap kamar mendapat empat belas tamu.";
+const SUARA_G4 = "Bu Ratna lalu membagi empat puluh delapan permen ke dua, tiga, empat, enam, atau delapan wadah, dan semuanya habis.";
+const SUARA_G5 = "Tiap wadah mendapat dua puluh empat, enam belas, dua belas, delapan, dan enam permen, jadi makin banyak wadah, makin sedikit permen di tiap wadah.";
 const PX = [100, 138, 176, 214];
+/** Contoh pembagian 48 permen ke beberapa wadah (semua habis): banyak wadah, kolom gambar, dan hasil bagi tiap wadah. */
+const WD = [2, 3, 4, 6, 8];
+const WXK = [34, 92, 150, 208, 266];
+const HASIL48 = WD.map((d) => 48 / d);
+const wadah = (i: number): Obj[] => [kotak(`b${i}`, WXK[i] - 19, 108, 38, 50, "#E0F2FE", W.biru, { rx: 3, z: 1 }), teks(`w${i}`, WXK[i], 172, `${WD[i]} wadah`, 11, W.coklat)];
+/** Batang permen tiap wadah (dua satuan tinggi per permen) dan angka hasil bagi di atasnya. */
+const batang = (i: number): Obj[] => [kotak(`r${i}`, WXK[i] - 14, 158 - HASIL48[i] * 1.6, 28, HASIL48[i] * 1.6, "#FDBA74", "#7C2D12", { rx: 2, tebal: 1, z: 2 }), teks(`h${i}`, WXK[i], 102, String(HASIL48[i]), 14, W.hijauTua)];
 
 export const ADEGAN_BAGI_RATA: AdeganStory = {
   id: "bagi-rata",
@@ -40,6 +49,27 @@ export const ADEGAN_BAGI_RATA: AdeganStory = {
       tambah("kamar", ...[0, 1].map((i) => teks(`m${i}`, PX[i] + 15, 90, "14", 12, W.hijauTua))),
       tambah("empat", ...[2, 3].map((i) => teks(`m${i}`, PX[i] + 15, 90, "14", 12, W.hijauTua))),
       sorotkan("tamu.", "p0", "p1", "p2", "p3"),
+    ),
+    k(
+      SUARA_G4,
+      bersih(0),
+      tambah(0, judul("Permen ke Banyak Wadah")),
+      tambah("permen", teks("p48", 150, 40, "48 permen", 15, W.merah)),
+      tambah("dua,", wadah(0)),
+      tambah("tiga,", wadah(1)),
+      tambah("empat@2", wadah(2)),
+      tambah("enam,", wadah(3)),
+      tambah("delapan@2", wadah(4)),
+      tambah("habis.", teks("hb48", 150, 192, "semuanya habis, sisa 0", 11, W.hijauTua)),
+    ),
+    k(
+      SUARA_G5,
+      tambah("sedikit", teks("ms", 150, 70, "makin banyak wadah, makin sedikit", 11, W.coklat)),
+      tambah("empat", batang(0)),
+      tambah("belas", batang(1)),
+      tambah("belas@2", batang(2)),
+      tambah("delapan", batang(3)),
+      tambah("enam@2", batang(4)),
     ),
   ],
 };

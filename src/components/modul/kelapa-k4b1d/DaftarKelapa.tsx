@@ -7,7 +7,7 @@ import { ATURAN_KELAPA, BILANGAN_KELAPA, JUDUL_INFO1_KELAPA, PETUNJUK1_INFO_KELA
 /**
  * Infografis Kelas 4 Bab 1 Sub-Bab D "Kios Kelapa Pak Darwis" (dirancang sendiri, dua kartu, tiap kartu satu layar tanpa gulir): data dari Story.
  * Kartu 1 = papan panen 5.270 dengan empat keranjang (ribuan, ratusan, puluhan, satuan): angka dan harga tiap tempat, lalu cara lain 4.000 + 1.270 dan uraian keliru Satria; semua isi kosong (?) sampai diketuk.
- * Kartu 2 = kartu acuan empat aturan (menguraikan, menyusun, bagan bagian utuh, memeriksa). Tombol BERIKUTNYA hanya setelah semua kotak kartu 1 terbuka. Digital saja.
+ * Kartu 2 = kartu acuan lima aturan (menguraikan, menyusun, bagan bagian utuh, memeriksa, uang dengan lembar dan keping). Tombol BERIKUTNYA hanya setelah semua kotak kartu 1 terbuka. Digital saja.
  */
 const Keranjang = ({ kosong }: { kosong: boolean }) => (
   <svg viewBox="0 0 56 40" className="h-[34px] w-[48px]" aria-hidden="true">
@@ -88,9 +88,9 @@ export default function DaftarKelapaK4B1({ speakGuru, onLanjut, teksLanjut }: { 
         </div>
       ) : (
         <div className="mx-auto w-full max-w-xl rounded-2xl border-[6px] border-[#166534] bg-[#F0FDF4] p-2 shadow-[0_5px_0_rgba(22,101,52,0.4)]" data-uji="kartu-aturan">
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             {ATURAN_KELAPA.map((a) => (
-              <div key={a.kunci} className="grid grid-cols-[6.4rem_minmax(0,1fr)] items-center gap-1.5 rounded-lg bg-white/80 p-1">
+              <div key={a.kunci} className="grid grid-cols-[6.4rem_minmax(0,1fr)] items-center gap-1.5 rounded-lg bg-white/80 p-0.5">
                 <span className="flex items-center gap-1 text-[12px] font-black leading-tight text-[#14532D]">
                   <span aria-hidden="true" className="text-lg">
                     {a.ikon}

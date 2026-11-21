@@ -49,7 +49,7 @@ export const ADEGAN_PERIKSA: AdeganStory = {
 };
 
 /* ------------------------------ 8. Mencuci sandal ------------------------------ */
-const SUARA_M1 = "Satria mencuci sandal-sandal itu sambil bersenandung kecil.";
+const SUARA_M1 = "Satria mencuci sandal-sandal itu sambil bersenandung.";
 const SUARA_M2 = "Genta membantu menjemurnya di tali dekat dermaga.";
 const SUARA_M3 = "Pak Usman meniup peluit tanda pekerjaan selesai.";
 const BUSA = [

@@ -6,7 +6,7 @@ import { LANGKAH_PERAHU, PETUNJUK_PETA_PERAHU, SELESAI_PETA_PERAHU } from "./dat
 
 /**
  * Mind-map Kelas 4 Bab 1 Sub-Bab G "Baris Perahu Bu Marni" (dirancang sendiri): Rute Perahu, lima perahu berjalan zig-zag di air (kiri, kanan, kiri, ...).
- * Tiap perahu membawa gambar satu langkah (lima perahu berpenumpang 12, uraian 10 dan 2, 50 + 10, susunan ke bawah dengan simpanan, lompatan penjumlahan berulang) dan satu label kosong di sampingnya.
+ * Tiap perahu membawa gambar satu langkah (lima perahu berpenumpang 12, uraian 10 dan 2, 50 + 10, dua susunan (12 x 5 simpan 1 dan 12 x 4 simpan 0), lompatan penjumlahan berulang) dan satu label kosong di sampingnya.
  * Anak mengetuk label kosong, judul langkah muncul dan dibacakan Guru; lanjut setelah semua terbuka. Gambar SVG dirender 104 px (sama dengan lebar viewBox, skala 1). Satu layar tanpa gulir.
  */
 function Gambar({ n }: { n: number }) {
@@ -58,27 +58,14 @@ function Gambar({ n }: { n: number }) {
     );
   if (n === 3)
     return (
-      <svg {...g} aria-label="Susunan ke bawah: 12 dikali 5, satuan dulu, tulis 0 simpan 1">
-        <text x={30} y={14} textAnchor="end" fontSize={14} fontWeight={900} fill="#0C4A6E" letterSpacing={3}>
-          12
+      <svg {...g} aria-label="Susun: 12 dikali 5 simpan 1, 12 dikali 4 simpan 0">
+        <rect x={2} y={4} width={100} height={22} rx={6} fill="#FFEDD5" stroke="#EA580C" strokeWidth={1.5} />
+        <text x={52} y={20} textAnchor="middle" fontSize={11} fontWeight={900} fill="#9A3412">
+          12 × 5: simpan 1
         </text>
-        <text x={8} y={30} fontSize={14} fontWeight={900} fill="#0C4A6E">
-          ×
-        </text>
-        <text x={30} y={30} textAnchor="end" fontSize={14} fontWeight={900} fill="#0C4A6E">
-          5
-        </text>
-        <path d="M6,34 h26" stroke="#0C4A6E" strokeWidth={2} />
-        <text x={30} y={50} textAnchor="end" fontSize={14} fontWeight={900} fill="#EA580C">
-          0
-        </text>
-        <rect x={42} y={6} width={58} height={20} rx={6} fill="#FFEDD5" stroke="#EA580C" strokeWidth={1.5} />
-        <text x={71} y={20} textAnchor="middle" fontSize={12} fontWeight={900} fill="#9A3412">
-          simpan 1
-        </text>
-        <rect x={42} y={32} width={58} height={20} rx={6} fill="#DBEAFE" stroke="#0369A1" strokeWidth={1.5} />
-        <text x={71} y={46} textAnchor="middle" fontSize={12} fontWeight={900} fill="#0C4A6E">
-          tulis 0
+        <rect x={2} y={30} width={100} height={22} rx={6} fill="#ECFDF5" stroke="#15803D" strokeWidth={1.5} />
+        <text x={52} y={46} textAnchor="middle" fontSize={11} fontWeight={900} fill="#166534">
+          12 × 4: simpan 0
         </text>
       </svg>
     );

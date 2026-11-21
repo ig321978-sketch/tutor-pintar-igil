@@ -186,6 +186,8 @@ export function pilihanSuara(l: Langkah, cara: Cara): string[] {
     const lain = NAMA_TEMPAT.filter((t) => t !== k.nama).slice(-2);
     return sisipkan(k.nama, [...lain], k.nama.length);
   }
+  /* Membandingkan dua bilangan: tiga kata (kurang dari, sama dengan, lebih dari), jawaban benar tidak di tempat pertama. */
+  if (d.tipe === "banding") return k.nama === "kurang dari" ? ["lebih dari", "kurang dari", "sama dengan"] : k.nama === "lebih dari" ? ["kurang dari", "lebih dari", "sama dengan"] : ["lebih dari", "sama dengan", "kurang dari"];
   const pasangan = k.nama === "kurang dari" ? "lebih dari" : k.nama === "lebih dari" ? "kurang dari" : k.nama === "sama dengan" ? "lebih dari" : k.nama === "kiri" ? "kanan" : k.nama === "kanan" ? "kiri" : k.nama === "terkecil" ? "terbesar" : "terkecil";
   return [pasangan, k.nama];
 }
@@ -209,7 +211,7 @@ export function kalimatKunci(l: Langkah, cara: Cara): string {
   switch (d.tipe) {
     case "banding": {
       const i = bedaPertama(d.a, d.b);
-      if (i < 0) return "Semua tempat sama dari kiri sampai kanan, jadi kedua bilangan sama dengan.";
+      if (i < 0) return "Ribuan, ratusan, puluhan, dan satuan semuanya sama, jadi kedua bilangan sama besar dan tandanya sama dengan.";
       const x = angkaTempat(d.a)[i];
       const y = angkaTempat(d.b)[i];
       const dasar = `Dari kiri, angka berbeda pertama ada di tempat ${NAMA_TEMPAT[i]}: ${kataBil(x)} dan ${kataBil(y)}.`;
@@ -249,7 +251,7 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): s
         ? `${aw}: lihat dua bilangan pada ${g} ini. Bandingkan dari tempat paling kiri. Pilih tanda yang tepat untuk bilangan pertama dan bilangan kedua.`
         : cara === "kanvas"
           ? `${aw}: lihat dua bilangan pada ${g} ini. Bandingkan dari kiri. Angka berbeda pertama ada di tempat ke berapa dari kiri? Tulis satu angka di kanvas.`
-          : `${aw}: lihat dua bilangan pada ${g} ini. Apakah bilangan pertama kurang dari atau lebih dari bilangan kedua? Ucapkan jawabannya.`;
+          : `${aw}: lihat dua bilangan pada ${g} ini. Apakah bilangan pertama kurang dari, sama dengan, atau lebih dari bilangan kedua? Ucapkan jawabannya.`;
     case "kiri":
       return cara === "kanvas"
         ? `${aw}: lihat dua bilangan pada ${g} ini. Mulai dari tempat paling kiri. Angka berbeda pertama pada bilangan yang lebih besar adalah angka berapa? Tulis satu angka di kanvas.`
@@ -274,7 +276,7 @@ export function kalimatTanya(l: Langkah, cara: Cara): string {
   const d = dasarDari(l);
   switch (d.tipe) {
     case "banding":
-      return cara === "klik" ? "Tanda mana yang tepat?" : cara === "kanvas" ? "Angka berbeda pertama di tempat ke berapa dari kiri?" : "Kurang dari atau lebih dari?";
+      return cara === "klik" ? "Tanda mana yang tepat?" : cara === "kanvas" ? "Angka berbeda pertama di tempat ke berapa dari kiri?" : "Kurang dari, sama dengan, atau lebih dari?";
     case "kiri":
       return cara === "kanvas" ? "Angka berbeda pertama pada bilangan yang lebih besar adalah berapa?" : "Angka berbeda pertama ada di tempat apa?";
     case "garis":
@@ -293,10 +295,10 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
   switch (l.tipe) {
     case "banding":
       return cara === "klik"
-        ? "Bandingkan dari tempat paling kiri, bukan dari kanan. Cari angka berbeda pertama, lalu lihat bilangan mana yang angkanya lebih besar di tempat itu."
+        ? "Bandingkan dari tempat paling kiri, bukan dari kanan. Cari angka berbeda pertama, lalu lihat bilangan mana yang angkanya lebih besar di tempat itu. Bila semua tempat angkanya sama, kedua bilangan sama besar."
         : cara === "kanvas"
           ? "Tempat paling kiri adalah tempat pertama. Hitung dari kiri sampai ketemu angka yang berbeda: ribuan, ratusan, puluhan, satuan."
-          : "Cari angka berbeda pertama dari kiri. Bila angka bilangan pertama lebih kecil di tempat itu, bilangan pertama kurang dari bilangan kedua. Bila lebih besar, lebih dari.";
+          : "Cari angka berbeda pertama dari kiri. Bila angka bilangan pertama lebih kecil di tempat itu, bilangan pertama kurang dari bilangan kedua. Bila lebih besar, lebih dari. Bila tidak ada angka yang berbeda, sama dengan.";
     case "kiri":
       return cara === "kanvas"
         ? "Cari dulu tempat angka berbeda pertama dari kiri, lalu baca angka di tempat itu pada bilangan yang lebih besar."
@@ -321,7 +323,7 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
 export function barisKartu(l: LangkahDasar, cara?: Cara): string[] {
   switch (l.tipe) {
     case "banding":
-      return [`bilangan pertama: ${rb(l.a)}`, `bilangan kedua: ${rb(l.b)}`, cara === "klik" ? "tanda yang tepat: ?" : cara === "kanvas" ? "angka berbeda pertama di tempat ke: ?" : "pertama dibanding kedua: kurang dari atau lebih dari?"];
+      return [`bilangan pertama: ${rb(l.a)}`, `bilangan kedua: ${rb(l.b)}`, cara === "klik" ? "tanda yang tepat: ?" : cara === "kanvas" ? "angka berbeda pertama di tempat ke: ?" : "pertama dibanding kedua: kurang dari, sama dengan, atau lebih dari?"];
     case "kiri":
       return [`bilangan pertama: ${rb(l.a)}`, `bilangan kedua: ${rb(l.b)}`, cara === "kanvas" ? "angka berbeda pertama pada bilangan yang lebih besar: ?" : "angka berbeda pertama di tempat: ?"];
     case "garis":

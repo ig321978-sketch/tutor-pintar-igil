@@ -19,11 +19,11 @@ export const TARGET_URAI: readonly Kali[] = [
   { a: 23, b: 4 },
 ];
 
-/** Susun: kalikan satuan dulu (tulis dan simpan), lalu puluhan ditambah simpanan. */
+/** Susun: kalikan satuan dulu (tulis dan simpan), lalu puluhan ditambah simpanan. Dua sasaran dengan simpanan (28 x 3, 19 x 4) dan satu tanpa simpanan (21 x 4, simpan nol). */
 export const TARGET_SUSUN: readonly Kali[] = [
   { a: 28, b: 3 },
   { a: 19, b: 4 },
-  { a: 36, b: 2 },
+  { a: 21, b: 4 },
 ];
 
 export const MISI_PERAHU_TEKS = "Tambah perahu sampai penumpang cukup, uraikan bilangan lalu kalikan, dan hitung bersusun. Urutannya bebas.";

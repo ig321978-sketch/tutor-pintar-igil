@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { HARGA, URUT_TEMPAT, angkaDi, barisKartu, dasarDari, namaSatuan, rb, teksUrai, type Cara, type Langkah, type LangkahDasar, type Rupa, type Tempat } from "./logika-cpa";
-import { FS_RIBU, FS_RATUS, isiDari, susunBagan, susunBalok, susunRak } from "./tata";
+import { HARGA, STOK_UANG, URUT_TEMPAT, angkaDi, barisKartu, dasarDari, namaSatuan, rb, teksUrai, type Cara, type Langkah, type LangkahDasar, type LUang, type Pecahan, type Rupa, type Tempat } from "./logika-cpa";
+import { FS_RIBU, FS_RATUS, LEBAR_LEMBAR, R_KEPING, TINGGI_LEMBAR, isiDari, susunBagan, susunBalok, susunRak, susunUang } from "./tata";
 
 /**
  * Gambar tahap Concrete, Pictorial, dan Abstract Kelas 4 Bab 1 Sub-Bab D (menyusun dan menguraikan bilangan):
@@ -173,6 +173,63 @@ export function BaganUtuh({ utuh, bagian, lain, judul }: { utuh: string; bagian:
   );
 }
 
+/* ------------------------------ Uang Pak Darwis (Concrete berwarna, Pictorial polos) ------------------------------ */
+/** Warna uang tahap Concrete: lembar Rp 2.000 abu-abu biru, keping Rp 1.000 kuning emas, Rp 500 perak, Rp 100 perunggu. */
+const WARNA_UANG: Record<Pecahan, { isi: string; garis: string }> = {
+  2000: { isi: "#93A8C4", garis: "#334155" },
+  1000: { isi: "#FACC15", garis: "#A16207" },
+  500: { isi: "#E5E7EB", garis: "#6B7280" },
+  100: { isi: "#D97706", garis: "#78350F" },
+};
+/**
+ * Uang di kotak kios: empat baris (Rp 2.000, 1.000, 500, 100), tiap baris berisi sebanyak banyaknya lembar atau keping (satu gambar tiap lembar atau keping).
+ * `berwarna` true (Concrete): lembar dan keping berwarna seperti uang sungguhan; false (Pictorial): diagram polos, hanya bentuk dengan garis biru (persegi panjang = lembar, lingkaran = keping).
+ * Baris `tanya` kosong dengan tanda tanya. Tanpa emoji.
+ */
+export function Uang({ isi, tanya, judul, berwarna }: { isi: LUang["isi"]; tanya?: Pecahan; judul: string; berwarna: boolean }) {
+  const baris = susunUang(isi, tanya);
+  return (
+    <Gambar label={`${berwarna ? "Uang di kotak kios" : "Diagram uang"}: ${judul}`} judul={judul}>
+      <rect x={8} y={20} width={284} height={178} rx={6} fill={berwarna ? "#FDE68A" : "#F8FAFC"} stroke={berwarna ? "#7C4A1E" : JINGGA} strokeWidth={2.4} />
+      {baris.map((b) => (
+        <g key={b.pecahan} data-pecahan={b.pecahan} data-jumlah={b.jumlah} data-tanya={b.tanya ? "ya" : "tidak"}>
+          <rect x={12} y={b.y} width={276} height={b.tinggi} rx={3} fill={berwarna ? "#FEF3C7" : "#FFFFFF"} stroke={berwarna ? "#B7814A" : "#94A3B8"} strokeWidth={1.2} />
+          <text x={18} y={b.y + 16} fontSize={9} fontWeight={900} fill={berwarna ? "#7C2D12" : JINGGA}>
+            {b.jenis}
+          </text>
+          <text x={18} y={b.y + 31} fontSize={11} fontWeight={900} fill={berwarna ? "#9A3412" : BIRU}>
+            {rb(b.pecahan)}
+          </text>
+          {b.tanya ? (
+            <>
+              <rect x={74} y={b.y + 5} width={150} height={b.tinggi - 10} rx={4} fill="#FFFFFF" stroke="#DC2626" strokeWidth={1.6} strokeDasharray="5 3" />
+              <text x={149} y={b.y + b.tinggi / 2 + 7} textAnchor="middle" fontSize={20} fontWeight={900} fill="#DC2626">
+                ?
+              </text>
+            </>
+          ) : null}
+          {b.xs.map((x, j) =>
+            b.jenis === "lembar" ? (
+              <rect key={j} data-uang={b.pecahan} x={x} y={b.y + (b.tinggi - TINGGI_LEMBAR) / 2} width={LEBAR_LEMBAR} height={TINGGI_LEMBAR} rx={2} fill={berwarna ? WARNA_UANG[b.pecahan].isi : "#FFFFFF"} stroke={berwarna ? WARNA_UANG[b.pecahan].garis : BIRU} strokeWidth={berwarna ? 1.4 : 1.8} />
+            ) : (
+              <circle key={j} data-uang={b.pecahan} cx={x + R_KEPING} cy={b.y + b.tinggi / 2} r={R_KEPING} fill={berwarna ? WARNA_UANG[b.pecahan].isi : "#FFFFFF"} stroke={berwarna ? WARNA_UANG[b.pecahan].garis : BIRU} strokeWidth={berwarna ? 1.4 : 1.8} />
+            ),
+          )}
+        </g>
+      ))}
+    </Gambar>
+  );
+}
+
+/** Gambar satu tugas uang menurut caranya: Klik = semua uang yang ada di kotak; Kanvas = uraian dengan satu pecahan belum terisi; Suara = uraian yang diperiksa. */
+function GambarUang({ d, rupa, cara }: { d: LUang; rupa: Rupa; cara: Cara }) {
+  const judul = `bayar Rp ${rb(d.n)}`;
+  const berwarna = rupa === "benda";
+  if (cara === "klik") return <Uang isi={STOK_UANG} judul={`${judul}: uang yang ada`} berwarna={berwarna} />;
+  if (cara === "kanvas") return <Uang isi={d.isi} tanya={d.tanya} judul={`${judul}: satu pecahan kosong`} berwarna={berwarna} />;
+  return <Uang isi={d.klaim ?? d.isi} judul={`${judul}: uraian ini`} berwarna={berwarna} />;
+}
+
 /* ------------------------------ Kartu kata (Abstract) ------------------------------ */
 export function KartuKata({ judul, baris }: { judul?: string; baris: string[] }) {
   return (
@@ -197,6 +254,7 @@ const JUDUL_KARTU: Record<LangkahDasar["tipe"], string> = {
   susun: "susun bilangan",
   bagan: "bagan bagian utuh",
   lain: "lebih dari satu cara",
+  uang: "uraikan uang",
 };
 
 /* ------------------------------ Tampilan satu tugas ------------------------------ */
@@ -227,6 +285,8 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
       ) : (
         <BaganUtuh utuh={rb(d.utuh)} bagian={rb(d.bagian)} lain={cara === "suara" && d.klaim !== undefined ? rb(d.klaim) : "?"} judul={`bagan: ${namaSatuan(d.satuan)}`} />
       );
+    case "uang":
+      return <GambarUang d={d} rupa={rupa} cara={cara} />;
     case "lain": {
       const judulLain = cara === "klik" ? `bilangan: ${rb(d.n)}` : cara === "kanvas" ? `${rb(d.n)} = ${rb(d.a)} + ?` : `${rb(d.n)} = ${rb(d.a)} + ${rb(d.klaim)}`;
       return rupa === "benda" ? (

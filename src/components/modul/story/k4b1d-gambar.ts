@@ -218,3 +218,17 @@ export const idTokoh = (id: string, nama: NamaTokoh): string[] => [
   ...(nama === "Genta" ? [`${id}-pc`] : []),
   ...(nama === "Pak Hendro" ? [`${id}-tp`, `${id}-pl`, `${id}-ts`] : []),
 ];
+
+/* ------------------------------ Uang (adegan uang pembayaran) ------------------------------ */
+/** Warna uang: lembar Rp 2.000 abu-abu biru, keping Rp 1.000 emas, Rp 500 perak, Rp 100 perunggu. Satu bentuk untuk satu lembar atau keping. */
+const WARNA_UANG = {
+  lembar: ["#93A8C4", "#334155"],
+  seribu: ["#FACC15", "#A16207"],
+  limaratus: ["#E5E7EB", "#6B7280"],
+  seratus: ["#D97706", "#78350F"],
+} as const;
+export type JenisKeping = "seribu" | "limaratus" | "seratus";
+/** Selembar uang Rp 2.000 (persegi panjang 30 x 15), pojok kiri-atas (x, y). */
+export const lembarUang = (id: string, x: number, y: number): Obj => kotak(id, x, y, 30, 15, WARNA_UANG.lembar[0], WARNA_UANG.lembar[1], { rx: 2, tebal: 1.4, z: 3 });
+/** Sekeping uang (lingkaran), pusat (x, y). */
+export const kepingUang = (id: string, x: number, y: number, jenis: JenisKeping, r = 9): Obj => bulat(id, x, y, r, WARNA_UANG[jenis][0], WARNA_UANG[jenis][1], { tebal: 1.4, z: 3 });

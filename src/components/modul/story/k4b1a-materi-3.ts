@@ -45,10 +45,10 @@ export const ADEGAN_KEDUA: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 8. Membaca ulang ------------------------------ */
-const SUARA_U1 = "Bu Maya meminta Satria membaca nomor itu sekali lagi.";
-const SUARA_U2 = "Kali ini Satria membaca dari ribuan, dan nol tidak ia baca.";
-const SUARA_U3 = "Bu Maya bertepuk tangan, karena kedua nomor sudah benar dan siap diumumkan.";
+/* ------------------------------ 8. Membaca ulang (tiket ketiga: seribu dua puluh lima) ------------------------------ */
+const SUARA_U1 = "Bu Maya menunjukkan tiket ketiga, yaitu seribu dua puluh lima, dan meminta Satria membacanya.";
+const SUARA_U2 = "Angka satu di ribuan dibaca seribu, bukan satu ribu. Ratusannya nol, jadi dilewati, lalu dua puluh lima.";
+const SUARA_U3 = "Bu Maya bertepuk tangan, karena ketiga nomor sudah benar dan siap diumumkan.";
 
 export const ADEGAN_ULANG: AdeganStory = {
   id: "ulang",
@@ -60,22 +60,24 @@ export const ADEGAN_ULANG: AdeganStory = {
       SUARA_U1,
       tambah(0, judul("Membaca Sekali Lagi"), ...tokoh("bm", 40, 184, "Bu Maya")),
       tambah("Satria", ...tokoh("sa", 76, 184, "Satria")),
-      tambah("nomor", teks("bn", 190, 72, "5.080", 34, W.biru)),
-      tambah("sekali", emo("ul", 150, 160, E.ulang, 18)),
+      tambah("ketiga,", teks("bn", 190, 72, "1.025", 34, W.biru)),
+      tambah("membacanya.", emo("ul", 150, 160, E.ulang, 18)),
     ),
     k(
       SUARA_U2,
-      tambah("membaca", panah("ar", 140, 92, 100, 0, W.merah, 3)),
-      tambah("ribuan,", teks("b5", 160, 120, "5.000", 14, W.hijauTua)),
-      tambah("nol", teks("b8", 215, 120, "80", 14, W.hijauTua), teks("b0", 262, 120, "0", 14, W.merah)),
-      ubah("tidak", { id: "b0", op: 0.3 }),
+      tambah("Angka", teks("d1", 112, 120, "1", 14, W.merah)),
+      tambah("dibaca", panah("ar", 140, 92, 100, 0, W.merah, 3)),
+      tambah("seribu,", teks("b5", 160, 120, "1.000", 14, W.hijauTua)),
+      tambah("Ratusannya", teks("b0", 212, 120, "0", 14, W.merah)),
+      ubah("jadi", { id: "b0", op: 0.3 }),
+      tambah("puluh", teks("b8", 262, 120, "25", 14, W.hijauTua)),
     ),
     k(
       SUARA_U3,
-      hapus(0, "bn", "b5", "b8", "b0", "ar", "ul"),
+      hapus(0, "bn", "b5", "b8", "b0", "d1", "ar", "ul"),
       tambah("bertepuk", emo("tp", 108, 160, E.tepuk, 18)),
-      tambah("kedua", ...papanPengumuman("pn", 150, 34, 140, 84, "PENGUMUMAN"), teks("n1", 190, 80, "3.406", 14, W.biru), teks("n2", 252, 80, "5.080", 14, W.biru)),
-      tambah("benar", emo("b1", 190, 100, E.benar, 16), emo("b2", 252, 100, E.benar, 16)),
+      tambah("ketiga", ...papanPengumuman("pn", 150, 34, 140, 84, "PENGUMUMAN"), teks("n1", 176, 80, "3.406", 11, W.biru), teks("n2", 220, 80, "5.080", 11, W.biru), teks("n3", 264, 80, "1.025", 11, W.biru)),
+      tambah("benar", emo("b1", 176, 100, E.benar, 14), emo("b2", 220, 100, E.benar, 14), emo("b3", 264, 100, E.benar, 14)),
       tambah("diumumkan.", emo("mf", 220, 150, E.megafon, 20)),
     ),
   ],

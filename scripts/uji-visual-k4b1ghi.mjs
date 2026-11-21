@@ -88,6 +88,7 @@ function ujiTeks(nama, D, kunciSuara) {
 {
   const L = G.LANGKAH_PERAHU;
   cek(L.length === 5, "G: lima langkah Mind-map");
+  cek(/tidak ada yang disimpan/.test(L[3].arti) && /dua belas kali empat/.test(L[3].arti) && /simpan nol/.test(L[3].arti) && /empat puluh delapan/.test(L[3].arti) && L.every((x, i) => new RegExp(`^Langkah ${["satu", "dua", "tiga", "empat", "lima"][i]}\\.`).test(x.arti)), "G: langkah empat memuat susun tanpa simpanan (dua belas kali empat), nomor langkah berurut");
   cek(new Set(L.map((x) => x.judul)).size === L.length && L.every((x) => tanpaDigit(x.judul) && x.judul.length >= 10 && x.judul.length <= 40), "G: judul langkah unik, tanpa digit, pendek");
   cek(L.every((x) => tanpaDigit(x.arti) && x.arti.length > 40), "G: arti dibacakan tanpa digit");
   const gab = L.map((x) => `${x.judul} ${x.arti}`).join(" ").toLowerCase();
@@ -95,13 +96,13 @@ function ujiTeks(nama, D, kunciSuara) {
   cek(!/\b(satria|laras|genta|pak hendro|bu marni)\b/i.test(L.map((x) => x.judul).join(" ")), "G: judul langkah tanpa nama tokoh");
   // Infografis kartu 1: angka Story.
   const P = G.PENUMPANG_PERAHU;
-  sama(P.map((b) => [b.isi, b.perahu]), [[12, 5], [11, 5], [14, 4]], "G: data penumpang dari Story (12 x 5, 11 x 5, 14 x 4)");
+  sama(P.map((b) => [b.isi, b.perahu]), [[12, 5], [12, 4], [14, 4]], "G: data penumpang dari Story (12 x 5, 12 x 4, 14 x 4)");
   cek(P.every((b) => b.sel[0].isi === `${b.isi} × ${b.perahu}` && b.sel[1].isi === `${b.isi * b.perahu}` && b.sel.length === 2), "G: perkalian dan jumlah dihitung dari data");
-  sama(P.map((b) => b.sel[1].isi), ["60", "55", "56"], "G: jumlah penumpang 60, 55, 56");
+  sama(P.map((b) => b.sel[1].isi), ["60", "48", "56"], "G: jumlah penumpang 60, 48, 56");
   // Kartu 2: kali susun 12 x 5.
   const S = G.SUSUN_PERAHU;
   const bag = { t: Math.floor(12 / 10), u: 12 % 10 };
-  cek(S.length === 5 && bag.u * 5 === 10 && bag.t * 5 + Math.floor((bag.u * 5) / 10) === 6 && 12 * 5 === 60 && 10 * 5 + 2 === 52, "G: hitungan kali susun benar (2 x 5 = 10, simpan 1, 1 x 5 + 1 = 6, 60, salah 52)");
+  cek(S.length === 6 && S[5].kunci === "tanpa" && 2 * 4 < 10 && 2 * 4 === 8 && 1 * 4 === 4 && 12 * 4 === 48 && S[5].isi === "2 × 4 = 8, simpan 0" && S[5].caption.includes("12 × 4") && bag.u * 5 === 10 && bag.t * 5 + Math.floor((bag.u * 5) / 10) === 6 && 12 * 5 === 60 && 10 * 5 + 2 === 52, "G: hitungan kali susun benar (2 x 5 = 10, simpan 1, 1 x 5 + 1 = 6, 60, salah 52)");
   const isi = S.map((x) => x.isi).join(" | ");
   for (const s of ["2 × 5 = 10", "tulis 0, simpan 1", "1 × 5 + 1 = 6", "60", "10 × 5 + 2 = 52"]) cek(isi.includes(s), `G: kartu susun memuat ${s}`);
   ujiTeks("G", G, (D) => [...D.LANGKAH_PERAHU.map((x) => x.arti), D.PETUNJUK_PETA_PERAHU, D.SELESAI_PETA_PERAHU, D.PETUNJUK1_INFO_PERAHU, D.SELESAI1_INFO_PERAHU, D.PETUNJUK2_INFO_PERAHU, D.SELESAI2_INFO_PERAHU, ...P.flatMap((b) => b.sel.map((x) => x.suara)), ...S.map((x) => x.suara)]);
@@ -128,7 +129,8 @@ function ujiTeks(nama, D, kunciSuara) {
   sama(B.map((b) => [b.dibagi, b.pembagi, b.hasil, b.sisa]), [[56, 4, 14, 0], [59, 4, 14, 3], [24, 6, 4, 0]], "H: data lorong dari Story (56 : 4, 59 : 4, 24 : 6)");
   cek(B.every((b) => b.hasil * b.pembagi + b.sisa === b.dibagi && b.sisa < b.pembagi && b.sel[0].isi === `${b.hasil}` && (b.sisa === 0 ? b.sel[1].isi.startsWith("0") : b.sel[1].isi.startsWith(`${b.sisa}`))), "H: hasil bagi dikali pembagi ditambah sisa sama dengan yang dibagi; sisa lebih kecil dari pembagi");
   const P = H.PERIKSA_JATAH;
-  cek(P.length === 5 && P.map((x) => x.isi).join("|").includes("14 × 4 = 56") && P[2].isi.startsWith("3") && P[3].isi.includes("4") && P[4].isi.startsWith("11"), "H: kartu periksa memuat 14 x 4 = 56, sisa 3, pembagi 4, salah 11");
+  cek(P.length === 6 && P.map((x) => x.isi).join("|").includes("14 × 4 = 56") && P[2].isi.startsWith("3") && P[3].isi.includes("4") && P[5].isi.startsWith("11"), "H: kartu periksa memuat 14 x 4 = 56, sisa 3, pembagi 4, salah 11");
+  { const w = P.find((x) => x.kunci === "wadah"); cek(!!w && w.isi === [2, 3, 4, 6, 8].map((d) => 48 / d).join(", ") && [2, 3, 4, 6, 8].every((d) => 48 % d === 0) && /makin banyak wadah, makin sedikit/i.test(w.suara) && w.caption.includes("2, 3, 4, 6, 8"), "H: kartu periksa memuat 48 permen ke 2, 3, 4, 6, 8 wadah (24, 16, 12, 8, 6), hasil dihitung dari data"); }
   ujiTeks("H", H, (D) => [...D.LANGKAH_JATAH.map((x) => x.arti), D.PETUNJUK_PETA_JATAH, D.SELESAI_PETA_JATAH, D.PETUNJUK1_INFO_JATAH, D.SELESAI1_INFO_JATAH, D.PETUNJUK2_INFO_JATAH, D.SELESAI2_INFO_JATAH, ...B.flatMap((b) => b.sel.map((x) => x.suara)), ...P.map((x) => x.suara)]);
   const { sm, si } = ujiKomponen("jatah-k4b1h", "PapanJatah.tsx", "DaftarJatah.tsx", ["PapanJatahK4B1", "DaftarJatahK4B1"], L.length);
   cek(/KAPUR_JATAH\[i\]/.test(sm) && /bg-\[#14532D\]/.test(sm) && /bg-\[#FEF08A\]/.test(sm), "H: papan tulis hijau dengan kertas tempel kuning");

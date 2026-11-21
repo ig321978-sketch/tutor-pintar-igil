@@ -98,7 +98,7 @@ export const ADEGAN_LUAR_URAI_TERAPAN: AdeganStory = {
 /* ------------------------------ Column Multiply: konsep ------------------------------ */
 const SUARA_K1 = "Cara ketiga, Column Multiply, atau Kali Susun.";
 const SUARA_K2 = "Bilangan ditulis ke bawah, lalu kita mengalikan satuan dulu.";
-const SUARA_K3 = "Kalau hasilnya sepuluh atau lebih, kita menulis satuannya dan menyimpan puluhannya.";
+const SUARA_K3 = "Kalau hasilnya sepuluh atau lebih, kita menulis satuannya dan menyimpan puluhannya. Kalau kurang dari sepuluh, langsung ditulis tanpa menyimpan.";
 const SUARA_K4 = "Simpanan itu ditambahkan pada hasil perkalian puluhan.";
 
 export const ADEGAN_LUAR_KALI: AdeganStory = {
@@ -126,6 +126,7 @@ export const ADEGAN_LUAR_KALI: AdeganStory = {
       tambah("sepuluh", teks("t10", 250, 56, "10 atau lebih", 9, W.ungu)),
       tambah("menulis", teks("kw", 152, 102, "8", 18, W.merah)),
       tambah("menyimpan", teks("ky", 130, 40, "1", 10, W.ungu)),
+      tambah("tanpa", teks("ts", 250, 112, "tanpa simpan", 11, W.merah)),
     ),
     k(
       SUARA_K4,

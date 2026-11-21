@@ -1,6 +1,6 @@
 import type { AdeganStory } from "./logika-story";
-import { E, W, dermaga, emo, ember, idSel, isiSel, judul, laut, panah, papanSusun, pasir, teks, tokoh } from "./k4b1f-gambar";
-import { bersih, k, sorotkan, tambah } from "./k4b1f-bantu";
+import { E, W, dermaga, emo, ember, garis, idSel, isiSel, judul, kotak, laut, panah, papanSusun, pasir, teks, tokoh } from "./k4b1f-gambar";
+import { bersih, hapus, k, sorotkan, tambah } from "./k4b1f-bantu";
 
 /*
  * Cerita orisinal IGIL "Papan Sisa Pak Usman" (Kelas 4 Bab 1 Sub-Bab F, pengurangan bersusun sampai seribu), cerita Penginapan Pulau Karang Indah.
@@ -39,6 +39,45 @@ export const ADEGAN_DERMAGA_PULANG: AdeganStory = {
       tambah("bantuan", ...tokoh("la", 62, 184, "Laras")),
       tambah("ketiga", ...tokoh("ge", 100, 184, "Genta")),
       tambah("anak.", ...tokoh("ph", 148, 184, "Pak Hendro")),
+    ),
+  ],
+};
+
+/* ------------------------------ 1b. Pemanasan: susun panjang dan susun pendek tanpa mengambil ------------------------------ */
+const SUARA_G1 = "Pemanasan dulu: Laras menghitung kelapa muda di gudang, ada dua ratus enam puluh lima, dan seratus tiga puluh dua terjual.";
+const SUARA_G2 = "Susun panjang: dua ratus enam puluh lima diuraikan menjadi dua ratus, enam puluh, dan lima. Seratus tiga puluh dua menjadi seratus, tiga puluh, dan dua.";
+const SUARA_G3 = "Dikurangkan tiap tempat, sisanya seratus ditambah tiga puluh ditambah tiga, yaitu seratus tiga puluh tiga, dan susun pendek juga tanpa mengambil.";
+const GX = 76;
+const GY = 44;
+
+export const ADEGAN_PANJANG: AdeganStory = {
+  id: "panjang",
+  judul: "Susun panjang dan susun pendek",
+  sumber: "Materi: susun panjang dan pendek",
+  latar: "#FEF9C3",
+  ketukan: [
+    k(
+      SUARA_G1,
+      tambah(0, judul("Kelapa Muda di Gudang"), kotak("gd", 40, 34, 220, 70, W.krem, W.coklat, { rx: 6 }), ...tokoh("la", 40, 184, "Laras")),
+      tambah("kelapa", ...[0, 1, 2, 3, 4].map((i) => emo(`kl${i}`, 70 + i * 40, 74, E.kelapa, 22))),
+      tambah("ada", teks("n1", 150, 128, "265 kelapa", 15, W.biru)),
+      tambah("terjual.", teks("n2", 150, 150, "132 terjual", 15, W.merah)),
+    ),
+    k(
+      SUARA_G2,
+      bersih(0),
+      tambah(0, judul("Susun Panjang"), ...tokoh("la", 40, 184, "Laras")),
+      tambah("diuraikan", teks("u1", 150, 62, "265 = 200 + 60 + 5", 15, W.biru)),
+      tambah("Seratus", teks("u2", 150, 92, "132 = 100 + 30 + 2", 15, W.biru)),
+      tambah("dua.", teks("mn", 36, 92, "−", 16, W.merah), garis("gs", 44, 102, 212, 0, W.biru, 2.2)),
+    ),
+    k(
+      SUARA_G3,
+      tambah("seratus", teks("u3", 150, 124, "100 + 30 + 3", 15, W.hijau)),
+      tambah("yaitu", teks("u4", 150, 148, "= 133", 18, W.hijau)),
+      hapus("susun", "u1", "u2", "u3", "u4", "gs", "mn"),
+      tambah("pendek", ...papanSusun("ps", GX, GY, ["2", "6", "5"], ["1", "3", "2"], ["1", "3", "3"])),
+      tambah("tanpa", teks("tn", 254, 96, "tanpa ambil", 9, W.ungu)),
     ),
   ],
 };

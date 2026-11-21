@@ -66,7 +66,7 @@ const naik = PANTAI.map((p) => p.jumlah);
 const turun = [...naik].reverse();
 export const URUT_NAIK: SelInfo = { id: "g-naik", tampil: naik.map(titik).join(", "), suara: `Dari terkecil ke terbesar: ${naik.map(kataBilK4B1).join(", ")}.` };
 export const URUT_TURUN: SelInfo = { id: "g-turun", tampil: turun.map(titik).join(", "), suara: `Dari terbesar ke terkecil: ${turun.map(kataBilK4B1).join(", ")}.` };
-export const ACUAN_GARIS = "Kecil di kiri, besar di kanan. Mulut tanda menghadap bilangan yang lebih besar.";
+export const ACUAN_GARIS = "Kecil di kiri, besar di kanan. Mulut tanda menghadap yang lebih besar. Bilangan persis sama: tanda =.";
 
 export const JUDUL_KARTU1_DERMAGA = "Panggung pantai Kak Tiara";
 export const JUDUL_KARTU2_DERMAGA = "Garis bilangan dermaga";

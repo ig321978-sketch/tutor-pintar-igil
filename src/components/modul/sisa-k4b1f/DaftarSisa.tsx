@@ -80,7 +80,7 @@ export default function DaftarSisaK4B1({ speakGuru, onLanjut, teksLanjut }: { sp
         onClick={() => ketuk(s.kunci, s.suara)}
         aria-label={t ? s.aria : `Isi kosong: ${s.aria.split(":")[0]}`}
         data-sel={s.kunci}
-        className={`flex min-h-[44px] w-full min-w-0 items-center justify-center rounded-lg border-[3px] px-1 text-center text-xs font-black leading-tight ${t ? `lm-muncul ${merah ? "border-[#B91C1C] bg-[#FEE2E2] text-[#7F1D1D]" : "border-[#0F766E] bg-[#F0FDFA] text-[#1C01A5]"}` : "border-dashed border-[#B45309] bg-white/80 text-lg text-[#B45309]"}`}
+        className={`flex min-h-[34px] w-full min-w-0 items-center justify-center rounded-lg border-[3px] px-1 text-center text-xs font-black leading-tight ${t ? `lm-muncul ${merah ? "border-[#B91C1C] bg-[#FEE2E2] text-[#7F1D1D]" : "border-[#0F766E] bg-[#F0FDFA] text-[#1C01A5]"}` : "border-dashed border-[#B45309] bg-white/80 text-lg text-[#B45309]"}`}
       >
         {t ? s.isi : "?"}
       </button>
@@ -88,7 +88,7 @@ export default function DaftarSisaK4B1({ speakGuru, onLanjut, teksLanjut }: { sp
   };
 
   return (
-    <div className="space-y-2.5" data-uji="info-sisa">
+    <div className="space-y-2" data-uji="info-sisa">
       <style>{CSS_LEMARI}</style>
       <div className="flex items-start gap-2 rounded-2xl border-4 border-[#1C01A5] bg-[#FFF7CC] p-2">
         <button type="button" onClick={() => speakGuru(petunjuk)} className="shrink-0 rounded-full border-2 border-[#1C01A5] bg-white px-2 py-1 text-sm" aria-label="Dengar petunjuk">
@@ -141,7 +141,9 @@ export default function DaftarSisaK4B1({ speakGuru, onLanjut, teksLanjut }: { sp
           <p className="mb-0.5 text-center text-sm font-black text-[#0C4A6E]">
             Hitung maju dari {TITIK_LOMPAT_SISA[0]} sampai {TITIK_LOMPAT_SISA[3]}
           </p>
-          <GarisLompat />
+          <div className="mx-auto w-full max-w-[300px]">
+            <GarisLompat />
+          </div>
           <div className="mt-1 space-y-1">
             {LOMPAT_SISA.map((_, i) => (
               <div key={NAMA_LOMPAT_SISA[i]} className="grid grid-cols-[1.6rem_6rem_minmax(0,1fr)] items-center gap-1.5 rounded-lg bg-white/80 p-1">

@@ -4,16 +4,20 @@ import React, { useEffect, useRef, useState } from "react";
 import { CSS_LEMARI } from "../lemari-k1b1a/ui";
 import {
   aturRibu,
+  aturUang,
   awalKelapa,
   bilanganSusun,
   caraLain,
   cekBagan,
   hurufBesar,
+  isiUangDari,
   jumlahIsi,
+  jumlahUangKu,
   kalimatBagan,
   kalimatLain,
   kalimatPecah,
   kalimatSusun,
+  kalimatUang,
   kata,
   kurangKeranjang,
   maksRibu,
@@ -21,10 +25,12 @@ import {
   periksaBagan,
   periksaPecah,
   periksaSusun,
+  petunjukBatasUang,
   petunjukBagan,
   petunjukLain,
   petunjukPecah,
   petunjukSusun,
+  petunjukUang,
   petunjukTolak,
   pilihanBagan,
   pilihanSusun,
@@ -32,29 +38,33 @@ import {
   pilihModeKelapa,
   pilihSusun,
   simpanCara,
+  simpanUang,
   sisaBagianKu,
   tambahKeranjang,
   targetBagan,
   targetLain,
   targetPecah,
   targetSusun,
+  targetUang,
   type KeadaanKelapa,
   type ModeKelapa,
 } from "./logika";
-import { CARA_DIPERLUKAN, MISI_KELAPA_TEKS } from "./data-sim";
-import { rb, URUT_TEMPAT } from "./logika-cpa";
-import { BaganUtuh, Rak } from "./GambarKelapa";
+import { CARA_DIPERLUKAN, MISI_KELAPA_TEKS, URAIAN_UANG_DIPERLUKAN } from "./data-sim";
+import { URUT_PECAHAN, jenisUang, rb, STOK_UANG, URUT_TEMPAT } from "./logika-cpa";
+import { BaganUtuh, Rak, Uang } from "./GambarKelapa";
 
 /**
- * Simulasi Kelas 4 Bab 1 Sub-Bab D: Kios Kelapa (Misi Kios). Data sasaran berbeda dari Story. Eksplorasi bebas tanpa skor, empat alat:
+ * Simulasi Kelas 4 Bab 1 Sub-Bab D: Kios Kelapa (Misi Kios). Data sasaran berbeda dari Story. Eksplorasi bebas tanpa skor, lima alat:
  * Pecah (isi keranjang tiap tempat sampai jumlahnya sama dengan bilangan; alat menolak sepuluh keranjang di satu tempat), Susun (pilih bilangan yang tersusun dari keranjang, tempat kosong diisi nol),
- * Bagan (cari bagian yang hilang, Cek Bagan, lalu Periksa), dan Lain (simpan tiga cara berbeda menguraikan satu bilangan; alat menolak cara yang sama).
+ * Bagan (cari bagian yang hilang, Cek Bagan, lalu Periksa), Lain (simpan tiga cara berbeda menguraikan satu bilangan; alat menolak cara yang sama),
+ * dan Uang (uraikan uang yang dibayar dengan lembar Rp 2.000 dan keping Rp 1.000, 500, 100 di kotak kios sampai jumlahnya pas; simpan dua uraian berbeda; alat menolak melebihi isi kotak dan uraian yang sama).
  */
 const MODE: { id: ModeKelapa; nama: string; ikon: string }[] = [
   { id: "pecah", nama: "Pecah", ikon: "\u{1F528}" },
   { id: "susun", nama: "Susun", ikon: "\u{1F9F1}" },
   { id: "bagan", nama: "Bagan", ikon: "\u{1F4CA}" },
   { id: "lain", nama: "Cara lain", ikon: "\u{1F500}" },
+  { id: "uang", nama: "Uang", ikon: "\u{1F4B0}" },
 ];
 const NAMA_KOLOM = ["ribuan", "ratusan", "puluhan", "satuan"];
 
@@ -97,7 +107,9 @@ export default function SimulasiKiosKelapa({ speakGuru, onKeadaan }: { speakGuru
           ? "Lihat keranjang di tiap tempat, lalu pilih bilangan yang tersusun."
           : m === "bagan"
             ? "Pilih bagian yang lain, lalu tekan Cek Bagan."
-            : "Ubah ribuan bagian pertama, lalu simpan tiga cara yang berbeda.",
+            : m === "lain"
+              ? "Ubah ribuan bagian pertama, lalu simpan tiga cara yang berbeda."
+              : "Atur lembar dan keping uang sampai jumlahnya sama dengan uang yang dibayar, lalu simpan dua uraian yang berbeda.",
     );
   };
 
@@ -166,11 +178,30 @@ export default function SimulasiKiosKelapa({ speakGuru, onKeadaan }: { speakGuru
     if (r.selesai) return ubah(r.k, `Betul! Tiga cara berbeda sudah tersimpan untuk ${kata(targetLain(k).n)}.`);
     ubah(r.k, `Cara itu tersimpan. Sudah ${kata(r.k.lainSimpan.length)} cara.`);
   };
+  /* ------------------------------ Uang ------------------------------ */
+  const aturUangKu = (i: number, d: -1 | 1) => {
+    const r = aturUang(k, i, d);
+    if (!r.ok) {
+      ubah(r.k);
+      return salah(petunjukBatasUang(i, d));
+    }
+    ubah(r.k);
+  };
+  const simpanUangKu = () => {
+    const r = simpanUang(k);
+    if (!r.ok) {
+      ubah(r.k);
+      return salah(petunjukUang(k));
+    }
+    if (r.selesai) return ubah(r.k, `Betul! Dua uraian berbeda sudah tersimpan untuk ${kata(targetUang(k).n)} rupiah.`);
+    ubah(r.k, `Uraian itu tersimpan. Sudah ${kata(r.k.uangSimpan.length)} uraian.`);
+  };
 
   const tp = targetPecah(k);
   const ts = targetSusun(k);
   const tb = targetBagan(k);
   const tl = targetLain(k);
+  const tu = targetUang(k);
   const pilS = pilihanSusun(k);
   const pilB = pilihanBagan(k);
 
@@ -295,6 +326,45 @@ export default function SimulasiKiosKelapa({ speakGuru, onKeadaan }: { speakGuru
             </div>
           </div>
         ) : null}
+
+        {k.mode === "uang" ? (
+          <div className="space-y-2">
+            <Uang isi={isiUangDari(k.uangIsi)} judul={`bayar Rp ${rb(tu.n)}: uang di meja`} berwarna />
+            <div className="mx-auto max-w-[420px] space-y-1" role="group" aria-label="Lembar dan keping uang">
+              {URUT_PECAHAN.map((p, i) => (
+                <div key={p} className="flex items-center gap-2 rounded-xl border-2 border-[#FDBA74] bg-white px-2 py-0.5">
+                  <p className="min-w-0 flex-1 text-sm font-black leading-tight text-[#9A3412]">
+                    {jenisUang(p)} {rb(p)}
+                  </p>
+                  <p className="w-16 text-center text-xl font-black text-[#1C01A5]">
+                    {k.uangIsi[i]}
+                    <span className="text-[11px] text-[#9A3412]">/{STOK_UANG[p]}</span>
+                  </p>
+                  <button type="button" className={`${tombol} w-12 px-0`} onClick={() => aturUangKu(i, -1)} aria-label={`Ambil satu ${jenisUang(p)} uang ${rb(p)}`}>
+                    {"➖"}
+                  </button>
+                  <button type="button" className={`${tombol} w-12 px-0`} onClick={() => aturUangKu(i, 1)} aria-label={`Tambah satu ${jenisUang(p)} uang ${rb(p)}`}>
+                    {"➕"}
+                  </button>
+                </div>
+              ))}
+            </div>
+            <p className="text-center text-sm font-black text-[#7C2D12]">
+              Jumlah uang sekarang: Rp {rb(jumlahUangKu(k))} dari Rp {rb(tu.n)}
+            </p>
+            <div className="mx-auto max-w-[420px] rounded-xl border-2 border-dashed border-[#C2410C] bg-white px-2 py-1 text-center text-sm font-black text-[#7C2D12]" aria-label="Uraian yang sudah disimpan">
+              {k.uangSimpan.length === 0 ? "Belum ada uraian tersimpan" : k.uangSimpan.join("  |  ")}
+              <span className="block text-[11px]">
+                {k.uangSimpan.length} dari {URAIAN_UANG_DIPERLUKAN} uraian
+              </span>
+            </div>
+            <div className="flex justify-center">
+              <button type="button" className={tombol} onClick={simpanUangKu}>
+                {"\u{1F4BE}"} Simpan uraian
+              </button>
+            </div>
+          </div>
+        ) : null}
       </div>
 
       <div className="flex flex-wrap justify-center gap-2">
@@ -310,7 +380,7 @@ export default function SimulasiKiosKelapa({ speakGuru, onKeadaan }: { speakGuru
         </button>
       </div>
       <p role="status" aria-live="polite" className="min-h-[1.5rem] rounded-xl bg-white/85 px-2 text-center text-sm font-black text-[#1C01A5]">
-        {hurufBesar(catatan || (k.mode === "pecah" ? kalimatPecah(k) : k.mode === "susun" ? kalimatSusun(k) : k.mode === "bagan" ? kalimatBagan(k) : kalimatLain(k)))}
+        {hurufBesar(catatan || (k.mode === "pecah" ? kalimatPecah(k) : k.mode === "susun" ? kalimatSusun(k) : k.mode === "bagan" ? kalimatBagan(k) : k.mode === "uang" ? kalimatUang(k) : kalimatLain(k)))}
       </p>
     </div>
   );

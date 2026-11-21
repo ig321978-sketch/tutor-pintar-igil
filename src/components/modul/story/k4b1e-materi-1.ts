@@ -46,7 +46,7 @@ export const ADEGAN_RESEPSI: AdeganStory = {
 /* ------------------------------ 2. Daftar tamu ------------------------------ */
 const SUARA_D1 = "Tamu pagi dua ratus empat puluh lima orang, dan tamu siang tiga ratus tujuh puluh delapan orang.";
 const SUARA_D2 = "Laras menulis keduanya bersusun ke bawah, satuan di bawah satuan.";
-const SUARA_D3 = "Mereka menjumlahkan dari kanan, mulai dari satuan.";
+const SUARA_D3 = "Mereka menjumlahkan dari kanan, mulai dari satuan, itulah cara susun pendek.";
 
 export const ADEGAN_DAFTAR: AdeganStory = {
   id: "daftar",
@@ -75,6 +75,7 @@ export const ADEGAN_DAFTAR: AdeganStory = {
       tambah("kanan,", panah("pk", 200, 38, -62, 0, W.merah, 2, { z: 4 })),
       tambah("satuan", teks("lgR", 204, 74, "R ratusan", 8, W.biru, { anchor: "start", z: 4 }), teks("lgP", 204, 86, "P puluhan", 8, W.biru, { anchor: "start", z: 4 }), teks("lgS", 204, 98, "S satuan", 8, W.merah, { anchor: "start", z: 4 })),
       sorotkan("satuan", "s0"),
+      tambah("pendek.", teks("sp", 232, 130, "susun pendek", 11, W.ungu, { z: 4 })),
     ),
   ],
 };

@@ -189,7 +189,7 @@ export function petunjukSusun(k: KeadaanPerahu): string {
   if (!k.sudahSatuan) return "Satuan belum dikalikan. Tekan Kalikan satuan dulu, baru tulis dan simpan angkanya.";
   const t = targetSusun(k);
   const g = bagian(t.a, t.b);
-  if (k.tulis !== g.tulis || k.simpan !== g.simpan) return "Hasil kali satuan terdiri dari dua angka. Angka satuannya ditulis, angka puluhannya disimpan.";
+  if (k.tulis !== g.tulis || k.simpan !== g.simpan) return g.simpan === 0 ? "Hasil kali satuan hanya satu angka. Tulis semuanya di bawah satuan, dan simpanannya nol." : "Hasil kali satuan terdiri dari dua angka. Angka satuannya ditulis, angka puluhannya disimpan.";
   if (k.susunPilih < 0) return "Pilih satu hasil akhir dulu.";
   return "Kalikan puluhan dengan pengali, lalu tambahkan simpanannya.";
 }

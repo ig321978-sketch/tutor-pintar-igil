@@ -68,6 +68,21 @@ export const bulatRatusan = (n: number): number => Math.round(n / 100) * 100;
 const unit = (a: number, b: number): number => jumlahAngka(a, b, 0);
 export const tulisSimpan = (a: number, b: number): string => `tulis ${unit(a, b) - 10}, simpan 1`;
 export const hasilTempat = (a: number, b: number, t: Tempat): number => jumlahAngka(a, b, indeksTempat(t)) * 10 ** indeksTempat(t);
+/** Uraian bilangan menurut tempat (cara susun panjang): 245 menjadi "200 + 40 + 5"; tempat berangka nol dilewati. */
+export const uraikan = (n: number): string => [2, 1, 0].map((k) => angkaDi(n, k) * 10 ** k).filter((v) => v > 0).join(" + ");
+/** Jumlah tiap tempat sebelum diuraikan lagi dan disimpan: 245 + 378 menjadi [500, 110, 13] (ratusan, puluhan, satuan). */
+export const jumlahPerTempat = (a: number, b: number): number[] => [2, 1, 0].map((k) => jumlahAngka(a, b, k) * 10 ** k);
+/** Bentuk gabungan per tempat sebelum menyimpan: "500 + 110 + 13". */
+export const bentukGabung = (a: number, b: number): string => jumlahPerTempat(a, b).join(" + ");
+/** Bentuk panjang jumlah sesudah menyimpan (jawaban susun panjang): 245 + 378 = 623 menjadi "600 + 20 + 3". */
+export const bentukJumlah = (a: number, b: number): string => uraikan(a + b);
+/** Dua bentuk keliru untuk susun panjang: digit tanpa tempatnya, atau tempat bergeser (ada pula cadangan bergeser satu). Nilainya tidak pernah sama dengan jumlah, jadi hanya satu pilihan yang benar. */
+export function bentukKeliru(a: number, b: number): [string, string] {
+  const t = a + b;
+  const d = [2, 1, 0].map((k) => angkaDi(t, k));
+  const calon = [d.join(" + "), `${d[0] * 10} + ${d[1] * 10} + ${d[2]}`, `${d[0] * 100} + ${d[1] * 10} + ${d[2] + 1}`].filter((x, i, arr) => x !== bentukJumlah(a, b) && arr.indexOf(x) === i);
+  return [calon[0], calon[1]];
+}
 /** Tempat yang langsung menghasilkan sepuluh atau lebih (satuan atau puluhan; data dipilih agar hanya satu). */
 export const tempatSimpan = (a: number, b: number): Tempat | null => (NAMA_TEMPAT.slice(0, 2).filter((_, k) => jumlahAngka(a, b, k) >= 10)[0] as Tempat | undefined) ?? null;
 
@@ -130,6 +145,7 @@ export function sahDasar(l: LangkahDasar, cara?: Cara): boolean {
     case "tempat": {
       const s = jumlahAngka(l.a, l.b, indeksTempat(l.tempat));
       if (cara === "suara") return [0, 1, 2].filter((k) => jumlahAngka(l.a, l.b, k) >= 10).length === 1 && tempatSimpan(l.a, l.b) === l.tempat;
+      if (cara === "klik") return [2, 1, 0].every((k) => angkaDi(l.a + l.b, k) > 0);
       return cara === "kanvas" ? s >= 2 && s <= 9 : s >= 2;
     }
     case "genap":
@@ -145,7 +161,7 @@ const nama = (s: string): Kunci => ({ jenis: "nama", nama: s });
 /**
  * Angka hasil hitung tugas menurut caranya (null bila jawabannya berupa tulisan atau kata):
  * jumlah: klik dan suara = jumlah, kanvas = angka ratusan pada jumlah; simpan: kanvas = jumlah puluhan ditambah simpanan, suara = angka satuan yang ditulis;
- * tempat: klik = hasil menjumlahkan tempat itu, kanvas = jumlah angkanya; genap: klik = jumlah, kanvas = selisih dengan bulatnya.
+ * tempat: kanvas = jumlah angka di tempat itu (klik = bentuk panjang jumlah, berupa tulisan; suara = nama tempat yang menyimpan); genap: klik = jumlah, kanvas = selisih dengan bulatnya.
  */
 export function angkaTugas(l: LangkahDasar, cara?: Cara): number | null {
   switch (l.tipe) {
@@ -154,7 +170,7 @@ export function angkaTugas(l: LangkahDasar, cara?: Cara): number | null {
     case "simpan":
       return cara === "kanvas" ? jumlahAngka(l.a, l.b, 1) + 1 : cara === "suara" ? unit(l.a, l.b) - 10 : null;
     case "tempat":
-      return cara === "kanvas" ? jumlahAngka(l.a, l.b, indeksTempat(l.tempat)) : cara === "klik" ? hasilTempat(l.a, l.b, l.tempat) : null;
+      return cara === "kanvas" ? jumlahAngka(l.a, l.b, indeksTempat(l.tempat)) : null;
     case "genap":
       return cara === "kanvas" ? selisihBulat(l) : cara === "suara" ? null : jumlahDari(l);
   }
@@ -167,7 +183,7 @@ export function kunciJawab(l: Langkah, cara: Cara): Kunci | null {
     case "simpan":
       return cara === "klik" ? nama(tulisSimpan(l.a, l.b)) : angka(angkaTugas(l, cara) ?? 0);
     case "tempat":
-      return cara === "suara" ? nama(tempatSimpan(l.a, l.b) ?? "satuan") : angka(angkaTugas(l, cara) ?? 0);
+      return cara === "suara" ? nama(tempatSimpan(l.a, l.b) ?? "satuan") : cara === "klik" ? nama(bentukJumlah(l.a, l.b)) : angka(angkaTugas(l, cara) ?? 0);
     case "genap":
       return cara === "suara" ? nama(arahSesuai(l)) : angka(angkaTugas(l, cara) ?? 0);
     default:
@@ -197,8 +213,7 @@ export function pengecoh(l: Langkah, cara: Cara, awal?: number): number[] {
       khas = [n + 1, n - 1, n + 2, 1];
       break;
     case "tempat": {
-      const k = indeksTempat(d.tempat);
-      khas = cara === "kanvas" ? [n + 1, n - 1] : [n * 10 <= 999 ? n * 10 : Math.floor(n / 10), jumlahAngka(d.a, d.b, k), n + 10 ** k, n - 10 ** k];
+      khas = [n + 1, n - 1];
       break;
     }
     case "genap":
@@ -225,6 +240,7 @@ export function pilihanKlik(l: Langkah): string[] {
   if (!k) return [];
   const d = dasarDari(l);
   if (k.jenis === "nama") {
+    if (d.tipe === "tempat") return sisipkan(k.nama, [...bentukKeliru(d.a, d.b)], d.a + d.b);
     if (d.tipe !== "simpan") return [];
     const u = unit(d.a, d.b);
     return sisipkan(k.nama, [`tulis ${u}, simpan 0`, `tulis ${u - 10}, simpan 0`], u + d.a);
@@ -259,6 +275,16 @@ export function kalimatKunci(l: Langkah, cara: Cara): string {
   return kapital(kalimatKunciMentah(l, cara));
 }
 
+/** Penjelasan susun panjang (tanpa digit): jumlah tiap tempat, uraian ulang satuan atau puluhan yang sepuluh atau lebih, lalu jumlahnya. */
+function keteranganPanjang(a: number, b: number): string {
+  const [r, p, s] = jumlahPerTempat(a, b);
+  const urai: string[] = [];
+  if (s >= 10) urai.push(`satuan ${kataBil(s)} diuraikan menjadi sepuluh${s > 10 ? ` dan ${kataBil(s - 10)}` : ""}`);
+  if (p >= 100) urai.push(`puluhan ${kataBil(p)} diuraikan menjadi seratus${p > 100 ? ` dan ${kataBil(p - 100)}` : ""}`);
+  const lanjut = urai.length > 0 ? ` Lalu ${urai.join(", dan ")}, kemudian digabung lagi per tempat.` : "";
+  return `Dijumlahkan tempat demi tempat: ratusan ${kataBil(r)}, puluhan ${kataBil(p)}, satuan ${kataBil(s)}.${lanjut} Jumlahnya ${kataBil(a + b)}.`;
+}
+
 function kalimatKunciMentah(l: Langkah, cara: Cara): string {
   const d = dasarDari(l);
   const k = kunciJawab(d, cara);
@@ -276,7 +302,7 @@ function kalimatKunciMentah(l: Langkah, cara: Cara): string {
     case "tempat": {
       const t = d.tempat;
       if (cara === "suara") return `Jumlah angka di tempat ${k?.jenis === "nama" ? k.nama : t} sepuluh atau lebih, jadi tempat itulah yang menghasilkan simpanan.`;
-      return cara === "kanvas" ? `Angka di tempat ${t} dijumlahkan: ${kataBil(angkaDi(d.a, indeksTempat(t)))} ditambah ${kataBil(angkaDi(d.b, indeksTempat(t)))} sama dengan ${kataBil(n)}.` : `Menjumlahkan ${t} dengan ${t} menghasilkan ${kataBil(n)}.`;
+      return cara === "kanvas" ? `Angka di tempat ${t} dijumlahkan: ${kataBil(angkaDi(d.a, indeksTempat(t)))} ditambah ${kataBil(angkaDi(d.b, indeksTempat(t)))} sama dengan ${kataBil(n)}.` : keteranganPanjang(d.a, d.b);
     }
     case "genap":
       return cara === "kanvas"
@@ -297,7 +323,7 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): s
     case "jumlah":
       return cara === "kanvas"
         ? `${aw}: lihat dua bilangan pada ${g} ini. Susun ke bawah dan jumlahkan dari satuan. Berapa angka di tempat ratusan pada jumlahnya? ${akhir}`
-        : `${aw}: lihat dua bilangan pada ${g} ini. Susun ke bawah, jumlahkan dari satuan, dan simpan bila perlu. Berapa jumlahnya? ${akhir}`;
+        : `${aw}: lihat dua bilangan pada ${g} ini. Cara susun pendek: susun ke bawah, jumlahkan dari satuan, dan simpan bila perlu. Berapa jumlahnya? ${akhir}`;
     case "simpan":
       if (cara === "klik") return `${aw}: lihat dua bilangan pada ${g} ini. Jumlahkan satuannya. Bagaimana menulis hasil satuan dan simpanannya? ${akhir}`;
       return cara === "kanvas"
@@ -307,7 +333,7 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): s
       if (cara === "suara") return `${aw}: lihat dua bilangan pada ${g} ini. Jumlahkan tempat demi tempat. Di tempat mana hasilnya sepuluh atau lebih sehingga ada yang disimpan? Ucapkan nama tempatnya.`;
       return cara === "kanvas"
         ? `${aw}: lihat dua bilangan pada ${g} ini. Jumlahkan angka di tempat ${l.tempat} dari kedua bilangan. Berapa jumlah angkanya? ${akhir}`
-        : `${aw}: lihat dua bilangan pada ${g} ini. Jumlahkan ${l.tempat} dengan ${l.tempat}. Berapa hasilnya? ${akhir}`;
+        : `${aw}: lihat dua bilangan pada ${g} ini. Cara susun panjang: uraikan tiap bilangan, jumlahkan tempat demi tempat, lalu uraikan lagi bila ada yang sepuluh atau lebih. Mana bentuk jumlahnya? ${akhir}`;
     case "genap":
       if (cara === "klik") return `${aw}: salah satu bilangan pada ${g} ini hampir bulat. Bulatkan dulu, jumlahkan, lalu sesuaikan hasilnya. Berapa jumlah yang sebenarnya? ${akhir}`;
       return cara === "kanvas"
@@ -325,7 +351,7 @@ export function kalimatTanya(l: Langkah, cara: Cara): string {
     case "simpan":
       return cara === "klik" ? "Bagaimana menulis hasil satuan dan simpanannya?" : cara === "kanvas" ? "Berapa jumlah puluhan ditambah simpanan?" : "Angka berapa yang ditulis di satuan?";
     case "tempat":
-      return cara === "suara" ? "Tempat mana yang menyimpan?" : cara === "kanvas" ? `Berapa jumlah angka di tempat ${d.tempat}?` : `Berapa hasil menjumlahkan ${d.tempat} dengan ${d.tempat}?`;
+      return cara === "suara" ? "Tempat mana yang menyimpan?" : cara === "kanvas" ? `Berapa jumlah angka di tempat ${d.tempat}?` : "Mana bentuk jumlahnya?";
     case "genap":
       return cara === "klik" ? "Berapa jumlah yang sebenarnya?" : cara === "kanvas" ? "Berapa selisih dengan bilangan bulatnya?" : "Ditambah atau dikurangi?";
   }
@@ -353,7 +379,7 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
         ? "Jumlahkan angka tiap tempat. Tempat yang jumlahnya sepuluh atau lebih adalah tempat yang menyimpan."
         : cara === "kanvas"
           ? `Jumlahkan hanya angka di tempat ${l.tempat}, bukan seluruh bilangannya.`
-          : `Jumlahkan angka di tempat ${l.tempat}, lalu pikirkan berapa banyaknya bila angka itu ada di tempat ${l.tempat}.`;
+          : "Uraikan tiap bilangan menurut tempatnya, jumlahkan tempat yang sama, lalu uraikan lagi bagian yang sepuluh atau lebih. Ratusan berarti kelipatan seratus, puluhan kelipatan sepuluh.";
     case "genap":
       return cara === "klik"
         ? "Bulatkan bilangan yang hampir bulat, jumlahkan, lalu sesuaikan: bila dibulatkan ke atas, kurangi kelebihannya; bila ke bawah, tambahkan kekurangannya."
@@ -378,7 +404,7 @@ export function barisKartu(l: LangkahDasar, cara?: Cara): string[] {
     case "simpan":
       return [cara === "klik" ? "satuan: tulis dan simpan: ?" : cara === "kanvas" ? "puluhan + simpanan: ?" : "angka satuan yang ditulis: ?"];
     case "tempat":
-      return [cara === "suara" ? "tempat yang menyimpan: ?" : cara === "kanvas" ? `jumlah angka di tempat ${l.tempat}: ?` : `${l.tempat} + ${l.tempat}: ?`];
+      return [`${l.a} = ${uraikan(l.a)}`, `${l.b} = ${uraikan(l.b)}`, cara === "suara" ? "tempat yang menyimpan: ?" : cara === "kanvas" ? `jumlah angka di tempat ${l.tempat}: ?` : "bentuk jumlahnya: ?"];
     case "genap":
       return [`bilangan hampir bulat: ${l.b}`, cara === "klik" ? "jumlah sebenarnya: ?" : cara === "kanvas" ? "selisih dengan bilangan bulat: ?" : "disesuaikan: ditambah atau dikurangi?"];
   }

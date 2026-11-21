@@ -3,9 +3,9 @@
 Lanjutan cerita bab "Penginapan Pulau Karang Indah" (lihat `naskah/alur-cerita-k4b1.md`). Tamu D: Pak Darwis (penjual kelapa, 👨 berkaus oranye).
 Suara tanpa digit; bilangan yang diucapkan harus tampak sebagai angka di layar pada ketukan yang sama. Naskah TETAP (sesuaikan sedikit hanya bila uji menuntut; laporkan).
 
-Data Story D (jangan dijadikan jawaban CPA): panen kelapa 5.270 = 5.000 + 200 + 70; cara lain 4.000 + 1.270; keranjang besar 1.000, sedang 100, kecil 10, butir 1; salah Satria 5.000 + 200 + 7.
+Data Story D (jangan dijadikan jawaban CPA): panen kelapa 5.270 = 5.000 + 200 + 70; cara lain 4.000 + 1.270; keranjang besar 1.000, sedang 100, kecil 10, butir 1; salah Satria 5.000 + 200 + 7; uang pembayaran 7.300 (buku: dua cara) dan 10.000 dengan pecahan Rp 100, 500, 1.000, 2.000 (jangan dijadikan jawaban CPA; CPA memakai jumlah uang lain).
 
-## Video materi (300 sampai 400 kata termasuk sapaan, 9 adegan, 3 ketukan; tanpa latihan)
+## Video materi (300 sampai 400 kata termasuk sapaan, 9 adegan; 3 ketukan tiap adegan kecuali `uang` 4 ketukan; tanpa latihan)
 
 Sapaan (bersama): topik "menyusun dan menguraikan bilangan"; daftar: "menyusun bilangan", "menguraikan bilangan", "lebih dari satu cara".
 
@@ -27,8 +27,8 @@ Sapaan (bersama): topik "menyusun dan menguraikan bilangan"; daftar: "menyusun b
 4. `bagan`
    - "Genta menunjuk papan empat kotak, ribuan, ratusan, puluhan, dan satuan."
    - "Angka tujuh ada di puluhan, jadi artinya tujuh puluh, bukan tujuh."
-   - "Satuannya nol, jadi tidak ada butir yang berdiri sendiri."
-   Visual: papan empat kotak berisi 5, 2, 7, 0 dengan harga 5.000, 200, 70, 0; kotak puluhan berkedip; angka 7 salah dicoret.
+   - "Satuannya nol, jadi bilangan itu terbaca lima ribuan, dua ratusan, tujuh puluhan, dan nol satuan."
+   Visual: papan empat kotak berisi 5, 2, 7, 0 dengan harga 5.000, 200, 70, 0; kotak puluhan berkedip; angka 7 salah dicoret; tulisan 5 ribuan + 2 ratusan + 7 puluhan + 0 satuan tumbuh mengikuti kalimat (bentuk buku: ribuan + ratusan + puluhan + satuan).
 5. `benar`
    - "Penguraian yang benar adalah lima ribu ditambah dua ratus ditambah tujuh puluh."
    - "Kalau ketiganya digabung, hasilnya lima ribu dua ratus tujuh puluh."
@@ -44,11 +44,12 @@ Sapaan (bersama): topik "menyusun dan menguraikan bilangan"; daftar: "menyusun b
    - "Laras menjawab, bisa empat ribu ditambah seribu dua ratus tujuh puluh."
    - "Bilangan yang sama dapat diuraikan dengan lebih dari satu cara."
    Visual: dua susunan di papan: 5.000 + 200 + 70 dan 4.000 + 1.270; garis sama dengan menghubungkan keduanya ke 5.270; Laras menunjuk dengan pensil.
-8. `susun`
-   - "Genta menyusun balik, tiga ribu ditambah dua ribu dua ratus tujuh puluh."
-   - "Ia menggabungkannya dan mendapat lima ribu dua ratus tujuh puluh."
-   - "Menyusun dan menguraikan adalah dua arah dari bilangan yang sama."
-   Visual: dua keranjang 3.000 dan 2.270 bergabung menjadi satu keranjang besar bertuliskan 5.270; panah dua arah antara susun dan urai.
+8. `uang` (soal pecahan uang buku: menguraikan Rp 7.300 dan Rp 10.000 dengan lembar dan keping, lebih dari satu cara; 4 ketukan)
+   - "Pembeli membayar kelapa tujuh ribu tiga ratus rupiah, dengan uang pecahan seratus, lima ratus, seribu, dan dua ribu."
+   - "Laras menguraikannya, tiga lembar dua ribu, satu keping seribu, dan tiga keping seratus."
+   - "Genta mencoba cara lain, dua lembar dua ribu, tiga keping seribu, dan tiga keping seratus."
+   - "Sepuluh ribu rupiah juga begitu, misalnya lima lembar dua ribu, atau empat lembar dua ribu dan dua keping seribu."
+   Visual: papan Rp 7.300, empat pecahan berwarna (lembar 2.000 abu-abu biru, keping 1.000 emas, 500 perak, 100 perunggu); uraian pertama 3 lembar + 1 keping + 3 keping (6.000 + 1.000 + 300 = 7.300), uraian kedua 2 lembar + 3 keping + 3 keping (4.000 + 3.000 + 300 = 7.300); layar baru Rp 10.000 dengan 5 lembar, dan 4 lembar + 2 keping 1.000, centang hijau.
 9. `penutup` (jembatan ke Sub-Bab E)
    - "Kelapa sudah rapi dalam keranjang, dan Pak Darwis berterima kasih."
    - "Bu Rina, petugas resepsi, datang membawa daftar tamu pagi dan siang yang harus dijumlahkan."

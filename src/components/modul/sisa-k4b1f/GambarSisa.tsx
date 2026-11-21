@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { barisKartu, barisSusun, dasarDari, judulKartu, type Cara, type Langkah, type LangkahDasar, type Rupa } from "./logika-cpa";
+import { barisKartu, barisSusun, dasarDari, judulKartu, uraian, type Cara, type Langkah, type LangkahDasar, type Rupa } from "./logika-cpa";
 import { hitungBalok, susunBalok } from "./balok";
 
 /**
@@ -183,7 +183,7 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
       <PapanInfo>
         <KartuKata judul={judulKartu(rupa, JUDUL_KARTU[d.tipe])} baris={barisKartu(d, cara)} />
         {susunTulis.length > 0 ? (
-          <pre data-susun="tertulis" aria-label="Hitung susun tertulis" className="mx-auto w-fit rounded-md bg-white/90 px-4 py-1 text-lg font-black leading-tight text-[#134E4A]">
+          <pre data-susun="tertulis" aria-label="Hitung susun tertulis" className={`mx-auto w-fit max-w-full rounded-md bg-white/90 py-1 font-black leading-tight text-[#134E4A] ${d.tipe === "susun" && d.panjang ? "px-2 text-sm" : "px-4 text-lg"}`}>
             {susunTulis.join("\n")}
           </pre>
         ) : null}
@@ -196,13 +196,21 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
     case "susun":
     case "ambil":
       return (
-        <Gambar label={`Balok cacah: ${d.a} dikurangi ${d.b}`} judul={`${sebut} ada dan ${sebut} yang dikurangkan`} rupa={rupa}>
+        <>
+          {d.tipe === "susun" && d.panjang ? (
+            <p data-uraian="susun-panjang" className="mx-auto mb-1 w-full max-w-[420px] rounded-lg bg-white/90 px-2 py-1 text-center text-sm font-black leading-snug text-[#7C2D12]">
+              <span className="block">{`${d.a} = ${uraian(d.a)}`}</span>
+              <span className="block">{`${d.b} = ${uraian(d.b)}`}</span>
+            </p>
+          ) : null}
+          <Gambar label={`Balok cacah: ${d.a} dikurangi ${d.b}`} judul={`${sebut} ada dan ${sebut} yang dikurangkan`} rupa={rupa}>
           <PapanBaris nama={rupa === "benda" ? "ada" : "bilangan awal"} n={d.a} y={52} rupa={rupa} emoji={emoji} />
           <PapanBaris nama={rupa === "benda" ? "dikurangkan" : "dikurangkan"} n={d.b} y={102} rupa={rupa} emoji={emoji} />
           <text x={150} y={150} textAnchor="middle" fontSize={10} fontWeight={900} fill="#B45309">
-            kurangkan dari satuan ke arah kiri
+            {d.tipe === "susun" && d.panjang ? "kurangkan tiap tempat, dari satuan ke kiri" : "kurangkan dari satuan ke arah kiri"}
           </text>
         </Gambar>
+        </>
       );
     case "maju":
       return (

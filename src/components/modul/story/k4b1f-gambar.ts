@@ -58,6 +58,7 @@ export const E = {
   lampu: "\u{1F4A1}",
   pohon: "\u{1F334}",
   jempol: "\u{1F44D}",
+  kelapa: "\u{1F965}",
 } as const;
 
 type Opsi = Partial<Obj>;

@@ -7,7 +7,7 @@ import { KAMAR_JATAH, PERIKSA_JATAH, PETUNJUK1_INFO_JATAH, PETUNJUK2_INFO_JATAH,
 /**
  * Infografis Kelas 4 Bab 1 Sub-Bab H (dirancang sendiri, dua kartu, tiap kartu satu layar tanpa gulir): data dari Story.
  * Kartu 1 = lorong kamar Bu Ratna: tiga lajur pintu (56 : 4, 59 : 4 dengan aula untuk sisa, 24 : 6); titik tamu tiap pintu digambar sebanyak hasil bagi, titik sisa di aula;
- * hasil bagi dan sisa kosong sampai diketuk. Kartu 2 = lima kertas pengumuman periksa dan sisa (kosong sampai diketuk). Digital saja.
+ * hasil bagi dan sisa kosong sampai diketuk. Kartu 2 = enam kertas pengumuman periksa, sisa, dan 48 permen ke beberapa wadah (kosong sampai diketuk). Digital saja.
  */
 function Lorong({ b }: { b: BarisKamar }) {
   const n = b.pembagi + (b.sisa > 0 ? 1 : 0);
@@ -15,7 +15,7 @@ function Lorong({ b }: { b: BarisKamar }) {
   const kolom = Math.ceil(b.hasil / 2);
   const jarak = Math.min(8, (slot - 12) / kolom);
   return (
-    <svg viewBox="0 0 280 46" className="h-auto w-full" role="img" aria-label={`${b.pembagi} ${b.wadah}, tiap ${b.wadah} ${b.hasil}${b.sisa > 0 ? `, sisa ${b.sisa} di aula` : ""}`} data-wadah={b.pembagi} data-hasil={b.hasil} data-sisa={b.sisa}>
+    <svg viewBox="0 0 280 46" className="mx-auto h-auto w-full max-w-[250px]" role="img" aria-label={`${b.pembagi} ${b.wadah}, tiap ${b.wadah} ${b.hasil}${b.sisa > 0 ? `, sisa ${b.sisa} di aula` : ""}`} data-wadah={b.pembagi} data-hasil={b.hasil} data-sisa={b.sisa}>
       {Array.from({ length: n }, (_, p) => {
         const aula = p === b.pembagi;
         const x0 = p * slot + 3;
@@ -79,7 +79,7 @@ export default function DaftarJatahK4B1({ speakGuru, onLanjut, teksLanjut }: { s
 
       {kartu === 1 ? (
         <div className="mx-auto w-full max-w-xl rounded-2xl border-[6px] border-[#B45309] bg-[#FEF3C7] p-2 shadow-[0_5px_0_rgba(180,83,9,0.4)]" data-uji="lorong-kamar">
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             {KAMAR_JATAH.map((b) => (
               <div key={b.kunci} className="rounded-lg border-2 border-[#FDE68A] bg-white p-1">
                 <p className="text-center text-xs font-black leading-none text-[#78350F]">{b.nama}</p>
@@ -99,8 +99,8 @@ export default function DaftarJatahK4B1({ speakGuru, onLanjut, teksLanjut }: { s
       ) : (
         <div className="mx-auto w-full max-w-xl rounded-2xl border-[6px] border-[#14532D] bg-[#DCFCE7] p-2 shadow-[0_5px_0_rgba(20,83,45,0.4)]" data-uji="kartu-periksa">
           <div className="grid grid-cols-2 gap-2">
-            {PERIKSA_JATAH.map((p, i) => (
-              <div key={p.kunci} className={`space-y-1 rounded-lg border-2 border-[#86EFAC] bg-white p-1.5 ${i === PERIKSA_JATAH.length - 1 ? "col-span-2" : ""}`}>
+            {PERIKSA_JATAH.map((p) => (
+              <div key={p.kunci} className="space-y-1 rounded-lg border-2 border-[#86EFAC] bg-white p-1.5">
                 <p className="min-h-[2rem] text-center text-xs font-black leading-tight text-[#14532D]">{p.caption}</p>
                 {kotak(`p-${p.kunci}`, p.suara, p.isi, `${p.caption}: ${p.isi}`)}
               </div>

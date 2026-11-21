@@ -243,7 +243,7 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   }
   cek(M_VIDEO.subjudul === "Metode Kurikulum" && U.subjudul === "Metode Global" && M_VIDEO.judul === "Papan Dermaga Kak Tiara" && U.judul === M_VIDEO.judul && V.JUDUL_K4B1C === M_VIDEO.judul, "judul dan subjudul");
   cek(M_VIDEO.id === "k4b1c-materi" && U.id === "k4b1c-luar" && M_VIDEO.jenis === "materi" && U.jenis === "metode-luar", "id dan jenis video");
-  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,dermaga,catatan,salah-kanan,kiri,puluhan,kalah,selatan,urut,penutup", "urutan adegan materi");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,dermaga,catatan,salah-kanan,kiri,puluhan,kalah,sama,selatan,urut,penutup", "urutan adegan materi");
   cek(U.adegan.map((a) => a.id).join() === "sapaan,luar-pembuka,luar-kiri,luar-kiri-terapan,luar-garis,luar-garis-terapan,luar-kartu,luar-kartu-terapan,luar-ringkas", "urutan adegan metode global");
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 52) && U.adegan.every((a) => /Metode global|Ringkasan|ringkasan/i.test(a.sumber) && a.sumber.length <= 52), "label sumber");
   const TERLARANG = /(kelas|buku|teman|kelompok|mengelompokkan|skor|nilai|soal|tebak|kunci|latihan|ditemani)/i;
@@ -272,7 +272,7 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   cek(km >= 300 && km <= 400, `materi 300 sampai 400 kata (${km})`);
   cek(kataVideo(U) / 120 > 3, `durasi video global lebih dari tiga menit (${(kataVideo(U) / 120).toFixed(1)} menit)`);
   const sapa = adegan(M_VIDEO, "sapaan");
-  cek(/membandingkan dan mengurutkan bilangan/.test(sapa.ketukan[0].suara) && ["Membandingkan dari kiri", "Tanda lebih kecil dan lebih besar", "Mengurutkan"].every((d) => teksAdegan(sapa).includes(d)), "sapaan materi: topik dan tiga hal");
+  cek(/membandingkan dan mengurutkan bilangan/.test(sapa.ketukan[0].suara) && ["Membandingkan dari kiri", "Tanda lebih kecil, lebih besar, dan sama dengan", "Mengurutkan"].every((d) => teksAdegan(sapa).includes(d)), "sapaan materi: topik dan tiga hal");
   cek(/Metode global/.test(adegan(U, "sapaan").sumber), "sapaan global berlabel Metode global");
   cek(M_VIDEO.adegan.slice(1).every((a) => a.ketukan.length === 3) && U.adegan.slice(1).every((a) => a.ketukan.length === 4), "3 ketukan tiap adegan materi, 4 ketukan tiap adegan global");
   // Naskah tetap: kalimat suara sama dengan berkas naskah.
@@ -337,6 +337,27 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   cek(ada(akhirAdegan(kh, 0), "lt", "dk", "st", "st-bj", "dh", "kt", "pd", "pd-p") && isiTeks(akhirAdegan(kh, 0), "pt") === "TIMUR" && isiTeks(akhirAdegan(kh, 0), "pb") === "lebih banyak", "kalah: Satria menepuk dahi, papan tertulis TIMUR lebih banyak");
   cek(ada(akhirAdegan(kh, 1), "pr", "sp", "dy2", "cm", "pd") && tidakAda(akhirAdegan(kh, 1), "st", "st-bj", "dh") && ketemu(akhirAdegan(kh, 1), "sp").x > 200, "kalah: Satria mendayung perahu sendirian sambil cemberut");
   cek(ada(akhirAdegan(kh), "sn", "lm", "kt") && ketemu(akhirAdegan(kh), "pd-p").sorot === true, "kalah: Kak Tiara tertawa dan melambai");
+  const sm = adegan(M_VIDEO, "sama");
+  cek(isiTeks(akhirAdegan(sm, 0), "bt") === "4.385" && ["p1-d0", "p1-d1", "p1-d2", "p1-d3", "p2-d0", "p2-d1", "p2-d2", "p2-d3"].every((id) => ada(akhirAdegan(sm, 0), id)) && ["p1", "p2"].every((p) => [0, 1, 2, 3].map((i) => isiTeks(akhirAdegan(sm, 0), `${p}-d${i}`)).join("") === "4385"), "sama: dua baris tempat angka bertulis 4.385 dan 4.385 (persis sama)");
+  cek([0, 1, 2, 3].every((i) => isiTeks(akhirAdegan(sm, 1), `e${i}`) === "=" && ketemu(akhirAdegan(sm, 1), `p1-k${i}`).warna === "#86EFAC" && ketemu(akhirAdegan(sm, 1), `p2-k${i}`).warna === "#86EFAC"), "sama: keempat tempat angka sama, tanda sama dengan hijau di tiap tempat");
+  cek(isiTeks(akhirAdegan(sm, 2), "nb") === "4.385" && isiTeks(akhirAdegan(sm, 2), "nt") === "4.385" && isiTeks(akhirAdegan(sm, 2), "tg") === "=" && isiTeks(akhirAdegan(sm, 2), "kd") === "sama dengan", "sama: papan 4.385 = 4.385 bertulis sama dengan");
+  const lkk = adegan(U, "luar-kiri");
+  {
+    // Semua teks luar-kiri (ketukan 1-4) di dalam papan (x 14 sampai 286, y 34 sampai 134), ukuran >= 11 (>= 10 px efektif), tidak menimpa kotak tempat angka.
+    for (let q = 0; q < 4; q += 1) {
+      const ob = akhirAdegan(lkk, q);
+      const kotakTempat = ob.filter((o) => o.t === "kotak" && /^pp-kd$/.test(o.id)).map((o) => [o.x, o.y, o.x + o.w, o.y + o.h]);
+      for (const o of ob.filter((x) => x.t === "teks" && !/^[🀀-🿿]|^[✂✅❌]$/u.test(x.isi ?? "") && /^(nm|ni|ht-hd|rr|mn|bs|sd)$/.test(x.id))) {
+        const [x1, y1, x2, y2] = kotakTeks(o);
+        cek(x1 >= 14 && x2 <= 286 && y1 >= 34 && y2 <= 134, `luar-kiri #${q + 1}: teks "${o.isi}" di dalam papan`);
+        if (o.id !== "nm" && o.id !== "ni") cek((o.u ?? 10) >= 11, `luar-kiri #${q + 1}: teks "${o.isi}" ukuran >= 11`);
+        if (!/^ht-h/.test(o.id)) cek(kotakTempat.every(([a1, b1, a2, b2]) => !(Math.min(x2, a2) - Math.max(x1, a1) > 0 && Math.min(y2, b2) - Math.max(y1, b1) > 0)), `luar-kiri #${q + 1}: teks "${o.isi}" tidak menimpa kotak tempat angka`);
+      }
+    }
+    const ss = akhirAdegan(sm, 1);
+    cek(["tb"].every((id) => ketemu(ss, id).u >= 11) && ["lb", "lt"].every((id) => ketemu(akhirAdegan(sm, 0), id).u >= 11.5) && ["pB", "pT", "kd"].every((id) => ketemu(akhirAdegan(sm, 2), id).u >= 11.5), "sama: teks gambar cukup besar (>= 10 px di lebar 344 px)");
+  }
+  cek(isiTeks(akhirAdegan(lkk, 3), "sd") === "semua sama =" && /kedua bilangan sama dengan/.test(lkk.ketukan[3].suara), "Left-to-Right Compare konsep: semua tempat sama berarti kedua bilangan sama dengan");
   const sl = adegan(M_VIDEO, "selatan");
   {
     const o = akhirAdegan(sl);
@@ -365,9 +386,9 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   sama(["g0", "g1", "g2"].map((id) => isiTeks(akhirAdegan(op, 3), id)), ["Banding dari Kiri", "Garis Bilangan", "Urut Kartu"], "global pembuka: tiga nama bahasa Indonesia");
   const lk = adegan(U, "luar-kiri");
   cek(isiTeks(akhirAdegan(lk, 0), "nm") === "Left-to-Right Compare" && isiTeks(akhirAdegan(lk, 0), "ni") === "Banding dari Kiri" && ada(akhirAdegan(lk, 0), "ak"), "Left-to-Right Compare konsep: judul dan panah ke kanan");
-  cek(isiTeks(akhirAdegan(lk, 1), "rr") === "ribuan" && ketemu(akhirAdegan(lk, 1), "pp-k0").sorot === true && ketemu(akhirAdegan(lk, 1), "ak").x === 97, "Left-to-Right Compare konsep: mulai dari ribuan paling kiri");
+  cek(isiTeks(akhirAdegan(lk, 1), "rr") === "ribuan" && ketemu(akhirAdegan(lk, 1), "pp-k0").sorot === true && ketemu(akhirAdegan(lk, 1), "ak").x === 42, "Left-to-Right Compare konsep: mulai dari ribuan paling kiri");
   cek(isiTeks(akhirAdegan(lk, 2), "rr") === "ratusan" && ada(akhirAdegan(lk, 2), "ok", "xs") && ketemu(akhirAdegan(lk, 2), "pp-k0").warna === "#86EFAC", "Left-to-Right Compare konsep: kalau sama pindah ke kanan");
-  cek(isiTeks(akhirAdegan(lk, 3), "rr") === "puluhan" && ketemu(akhirAdegan(lk, 3), "pp-k2").warna === "#FECACA" && isiTeks(akhirAdegan(lk, 3), "bs") === "yang lebih besar", "Left-to-Right Compare konsep: angka berbeda pertama menentukan");
+  cek(isiTeks(akhirAdegan(lk, 3), "rr") === "puluhan" && ketemu(akhirAdegan(lk, 3), "pp-k2").warna === "#FECACA" && isiTeks(akhirAdegan(lk, 3), "bs") === "lebih besar", "Left-to-Right Compare konsep: angka berbeda pertama menentukan");
   const lt = adegan(U, "luar-kiri-terapan");
   cek(isiTeks(akhirAdegan(lt, 0), "a1") === "6.700" && isiTeks(akhirAdegan(lt, 0), "b1") === "6.070" && ada(akhirAdegan(lt, 0), "lr"), "Left-to-Right Compare terapan: Laras membandingkan 6.700 dan 6.070");
   cek(isiTeks(akhirAdegan(lt, 1), "d7") === "7" && isiTeks(akhirAdegan(lt, 1), "d0") === "0" && ketemu(akhirAdegan(lt, 1), "a1").warna === "#16A34A" && ada(akhirAdegan(lt, 1), "mk"), "Left-to-Right Compare terapan: tujuh lebih besar daripada nol, pemenang 6.700");
