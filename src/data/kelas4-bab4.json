@@ -5,7 +5,7 @@
   "grade": 4,
   "subjectLabel": "MATEMATIKA - KELAS 4 SD",
   "title": "BAB 4: PENGUKURAN LUAS DAN VOLUME",
-  "silabusElemen": "🌈 Fase B • Elemen Pengukuran: Luas (satuan baku & tidak baku, cm², m²) dan Volume (ml, liter, cm³, m³) (Kelas 4 SD/MI)",
+  "silabusElemen": "🌈 Fase B • Elemen Pengukuran: Luas (satuan baku dan tidak baku, cm², m²) dan Volume (ml, liter, cm³) (SD/MI)",
   "suaraPerangkatSaja": true,
   "suaraLaju": 0.7,
   "suaraNada": 1,
@@ -19,48 +19,48 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Pengukuran Luas)",
       "fullTitle": "Sub-Bab A: Pengukuran Luas",
-      "targetDescription": "Siswa mengukur dan menduga luas dengan satuan tidak baku (uang kertas, origami, buku) dan satuan baku (cm², m²), menghitung persegi satuan, serta mengonversi 1 m² = 10.000 cm² sesuai Buku Siswa Kelas IV Bab 4. Siswa memakai cara Luas sebagai Menutupi, Luas Susunan, Tak Baku ke Baku. Siswa memakai cara Luas sebagai Menutupi, Luas Susunan, Tak Baku ke Baku.",
+      "targetDescription": "Di Kolam Renang Tirta Ceria bersama Bu Sinta, kita menutup lantai dengan ubin, menghitung luas dari baris kali kolom, dan mengubah meter persegi menjadi sentimeter persegi.",
       "secondaryBg": "#FFEDD5",
       "secondaryBorder": "#EA580C",
       "secondaryText": "#7C2D12",
       "silabus": {
-        "teksSuara": "Kita belajar pengukuran luas. Helen menutup meja dengan uang kertas tanpa celah. Itu satuan tidak baku. Lalu kita pakai persegi satu sentimeter dan satu meter sebagai satuan baku. Satu meter persegi sama dengan sepuluh ribu sentimeter persegi. Kita memakai cara: Luas sebagai Menutupi, Luas Susunan, Tak Baku ke Baku. Luas = banyak satuan persegi yang menutupi daerah. Panjang × lebar untuk persegi panjang. Mulai satuan tak baku, lalu cm²/m². Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa mengukur dan menduga luas dengan satuan baku dan tidak baku.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 4 Sub-Bab A)."
+        "teksSuara": "Kita belajar luas di Kolam Renang Tirta Ceria bersama Bu Sinta. Luas adalah banyaknya persegi satuan yang menutupi lantai. Kita menghitung baris kali kolom, bukan menambah. Satu meter persegi sama dengan sepuluh ribu sentimeter persegi. Kita memakai tutup lantai, baris dan kolom, dan tangga satuan. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa mengukur dan menghitung luas dengan satuan tidak baku dan satuan baku, serta mengubah meter persegi menjadi sentimeter persegi.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Pengukuran."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Area as Covering",
-          "namaId": "Luas sebagai Menutupi",
-          "asal": "Van de Walle",
-          "ringkas": "Luas = banyak satuan persegi yang menutupi daerah.",
+          "nama": "Cover the Floor",
+          "namaId": "Tutup Lantai",
+          "asal": "IGIL",
+          "ringkas": "Tutup lantai dengan persegi satuan, lalu hitung yang menutupinya.",
           "tahap": [
             "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Rows and Columns",
+          "namaId": "Baris dan Kolom",
+          "asal": "IGIL",
+          "ringkas": "Luas persegi panjang adalah baris kali kolom.",
+          "tahap": [
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Array Area",
-          "namaId": "Luas Susunan",
-          "asal": "Array model",
-          "ringkas": "Panjang × lebar untuk persegi panjang.",
+          "nama": "Unit Square Ladder",
+          "namaId": "Tangga Satuan",
+          "asal": "IGIL",
+          "ringkas": "Naik dari satuan tidak baku ke sentimeter persegi dan meter persegi.",
           "tahap": [
-            "Mind",
+            "Picture",
             "Abstract"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Nonstandard then Standard",
-          "namaId": "Tak Baku ke Baku",
-          "asal": "Measurement progression",
-          "ringkas": "Mulai satuan tak baku, lalu cm²/m².",
-          "tahap": [
-            "Infografis",
-            "Concrete"
           ]
         }
       ],
@@ -769,48 +769,48 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Pengukuran Volume)",
       "fullTitle": "Sub-Bab B: Pengukuran Volume",
-      "targetDescription": "Siswa mengukur dan menduga volume dengan satuan tidak baku (gelas, botol sabun) dan satuan baku (ml, liter, cm³, m³), mengonversi 1 l = 1.000 ml dan 1 cm³ = 1 ml, serta menghitung kubus satuan sesuai Buku Siswa Kelas IV Bab 4. Siswa memakai cara Volume sebagai Mengisi, Model Lapisan, Ide Pemindahan Air. Siswa memakai cara Volume sebagai Mengisi, Model Lapisan, Ide Pemindahan Air.",
+      "targetDescription": "Di rak ember Pak Anto, kita mengisi dan menuang air dengan gelas, menghubungkan liter dengan mililiter, dan menghitung volume dari lapisan kubus satuan.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
       "silabus": {
-        "teksSuara": "Kita belajar pengukuran volume. Botol sabun A sama dengan empat botol B, atau sepuluh botol C. Lalu satuan baku: mililiter, liter, sentimeter kubik, dan meter kubik. Satu liter sama dengan seribu mililiter. Satu cm kubik sama dengan satu mililiter. Kita memakai cara: Volume sebagai Mengisi, Model Lapisan, Ide Pemindahan Air. Volume = banyak satuan kubus yang mengisi ruang. Volume = luas alas × tinggi. Benda yang dicelup menaikkan muka air. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa mengukur dan menduga volume dengan satuan baku dan tidak baku.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 4 Sub-Bab B)."
+        "teksSuara": "Kita belajar volume di rak ember Pak Anto. Volume adalah banyaknya air atau kubus satuan yang mengisi ruang. Satu liter sama dengan seribu mililiter. Satu sentimeter kubik sama dengan satu mililiter. Volume balok adalah luas lapisan kali tinggi. Kita memakai isi dan tuang, susun lapisan, dan tangga liter. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa mengukur dan menghitung volume dengan satuan tidak baku dan satuan baku, serta mengubah liter menjadi mililiter.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Pengukuran."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Volume as Filling",
-          "namaId": "Volume sebagai Mengisi",
-          "asal": "Van de Walle",
-          "ringkas": "Volume = banyak satuan kubus yang mengisi ruang.",
+          "nama": "Fill and Pour",
+          "namaId": "Isi dan Tuang",
+          "asal": "IGIL",
+          "ringkas": "Isi dan tuang air dengan gelas takar, lalu hitung banyaknya gelas.",
           "tahap": [
             "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Layer Cubes",
+          "namaId": "Susun Lapisan",
+          "asal": "IGIL",
+          "ringkas": "Volume adalah banyak kubus satu lapisan kali banyak lapisan.",
+          "tahap": [
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Layer Model",
-          "namaId": "Model Lapisan",
-          "asal": "3D arrays",
-          "ringkas": "Volume = luas alas × tinggi.",
+          "nama": "Liter Ladder",
+          "namaId": "Tangga Liter",
+          "asal": "IGIL",
+          "ringkas": "Naik dari gelas ke mililiter dan liter; satu liter seribu mililiter.",
           "tahap": [
-            "Mind",
+            "Picture",
             "Abstract"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Displacement Idea",
-          "namaId": "Ide Pemindahan Air",
-          "asal": "Informal volume",
-          "ringkas": "Benda yang dicelup menaikkan muka air.",
-          "tahap": [
-            "Infografis",
-            "Concrete"
           ]
         }
       ],

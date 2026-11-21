@@ -1,202 +1,150 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { W, daftar, emo, judul, kartu, kotak, kubusDi, teks } from "./k4b4b-gambar";
-import { bersih, k, tambah } from "./k4b4b-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, WL, airEmber, ember, emo, garis, gelas, gelasUkur, idEmber, idKartu, judul, kartu, kotak, lantai, panah, rak, teks, tokoh } from "./k4b4b-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b4b-bantu";
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
+/*
+ * Cerita orisinal IGIL "Ember Pak Anto" (Kelas 4 Bab 4 Sub-Bab B), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b4b.md. Bagian ini: pembuka (kotak gelas takar Pak Anto), Fill and Pour (Isi dan Tuang), dan terapannya.
+ */
+
+export const NAMA_METODE = ["Fill and Pour", "Layer Cubes", "Liter Ladder"] as const;
+export const NAMA_METODE_ID = ["Isi dan Tuang", "Susun Lapisan", "Tangga Liter"] as const;
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Sore itu, di dekat rak ember, Pak Anto membuka kotak yang berisi gelas takar bertanda.";
+const SUARA_O2 = "Di dalamnya ada tiga cara supaya volume mudah diukur, tanpa salah takar, baik untuk air maupun untuk kubus kecil.";
+const SUARA_O3 = "Tiga cara itu: Fill and Pour, Layer Cubes, dan Liter Ladder.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Isi dan Tuang, Susun Lapisan, dan Tangga Liter.";
+
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk mengukur volume",
-  sumber: "Metode luar: pembuka",
+  judul: "Kotak gelas takar Pak Anto",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana belajar mengukur volume dengan benar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai bangun dan angka yang sudah kita pelajari.",
+      SUARA_O1,
+      tambah(0, judul("Sore di Dekat Rak Ember"), ...lantai("lt", 150)),
+      tambah("rak", ...rak("rk", 20, 112, 120), ...ember("e1", 30, 74, 34, 38, 0.6), ...ember("e2", 76, 74, 34, 38, 0.3)),
+      tambah("Anto", ...tokoh("pa", 262, 184, "Pak Anto")),
+      tambah("kotak", kotak("kp", 170, 112, 56, 26, "#C99A63", W.coklat, { rx: 3, z: 1 }), kotak("kt", 166, 104, 64, 10, "#A16207", W.coklat, { rx: 3, z: 2 })),
+      tambah("gelas", ...[0, 1, 2].map((i) => gelas(`gk${i}`, 176 + i * 16, 90, 12))),
+    ),
+    k(
+      SUARA_O2,
+      hapus(0, "kp", "kt", "gk0", "gk1", "gk2"),
+      tambah("tiga", teks("n3", 236, 138, "3 cara", 11, W.ungu)),
+      tambah("volume", ...kartu("cp", 170, 84, 100, 30, W.krem, ["volume"], 10)),
+      tambah("salah", emo("ok", 150, 80, E.benar, 20)),
+      tambah("air", emo("tt", 190, 126, E.tetes, 20)),
+      tambah("kubus", { id: "ku", t: "kotak", x: 230, y: 120, w: 14, h: 14, warna: WL.kubus, garis: W.biru, rx: 1, tebal: 1, z: 2 }),
+    ),
+    k(
+      SUARA_O3,
       bersih(0),
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("berbagai", emo("gl", 150, 100, "🌍", 56)),
-      tambah("empat", ...kartu("pa", 30, 128, 240, 34, W.krem, ["mengukur volume dengan benar"], 9.4)),
+      tambah(0, judul("Tiga Cara"), teks("n3", 260, 40, "3 cara", 10, W.ungu)),
+      tambah("Fill", teks("m0", 118, 70, "1. Fill and Pour", 10, W.biru), emo("i0", 28, 72, E.gelas, 16)),
+      tambah("Layer", teks("m1", 118, 120, "2. Layer Cubes", 10, W.biru), emo("i1", 28, 122, E.dadu, 16)),
+      tambah("Liter", teks("m2", 118, 170, "3. Liter Ladder", 10, W.biru), emo("i2", 28, 172, E.tangga, 16)),
     ),
     k(
-      "Empat metode itu: Volume as Filling, Layer Model, Displacement Idea, dan Benchmark Referents.",
-      ...daftar("pm", "Empat metode", [
-        { at: "Filling,", t: "1. Volume as Filling", w: W.hijauMuda, u: 9.6 },
-        { at: "Layer", t: "2. Layer Model", w: W.langit, u: 9.6 },
-        { at: "Displacement", t: "3. Displacement Idea", w: W.krem, u: 9.6 },
-        { at: "Benchmark", t: "4. Benchmark Referents", w: W.pink, u: 9.6 },
-      ]),
-    ),
-    k(
-      "Masing-masing menjawab satu pertanyaan: berapa satuan yang mengisi benda, berapa lapisan kubusnya, berapa air yang terdesak, dan benda sehari-hari mana yang bisa jadi patokan?",
-      ...daftar("pq", "Empat pertanyaan", [
-        { at: "satuan", t: "berapa satuan yang mengisi benda?", w: W.hijauMuda, u: 9 },
-        { at: "lapisan", t: "berapa lapisan kubusnya?", w: W.langit, u: 9.4 },
-        { at: "terdesak,", t: "berapa air yang terdesak?", w: W.krem, u: 9.4 },
-        { at: "patokan?", t: "benda mana yang jadi patokan?", w: W.pink, u: 9.4 },
-      ]),
+      SUARA_O4,
+      tambah("Isi", teks("g0", 244, 70, "Isi dan Tuang", 8, W.ungu), garis("l0", 178, 74, 30, 0, W.ungu, 1)),
+      tambah("Susun", teks("g1", 244, 120, "Susun Lapisan", 8, W.ungu), garis("l1", 178, 124, 30, 0, W.ungu, 1)),
+      tambah("Tangga", teks("g2", 244, 170, "Tangga Liter", 8, W.ungu), garis("l2", 178, 174, 30, 0, W.ungu, 1)),
     ),
   ],
 };
 
-/** Wadah berisi satuan-satuan kecil (kotak) untuk gambar metode mengisi: kolom x baris. Id `${id}-w` dan `${id}-s{n}`. */
-function wadahIsi(id: string, x: number, y: number, kolom: number, baris: number, sisi: number, warna: string): Obj[] {
-  const out: Obj[] = [kotak(`${id}-w`, x, y, kolom * sisi + 8, baris * sisi + 8, W.putih, W.biru, { rx: 4 })];
-  for (let r = 0; r < baris; r += 1) for (let c = 0; c < kolom; c += 1) out.push(kotak(`${id}-s${r * kolom + c}`, x + 4 + c * sisi, y + 4 + r * sisi, sisi, sisi, warna, W.biru, { rx: 1, tebal: 0.8 }));
-  return out;
-}
+/* ------------------------------ Fill and Pour: konsep ------------------------------ */
+const SUARA_C1 = "Cara pertama, Fill and Pour, atau Isi dan Tuang.";
+const SUARA_C2 = "Kita mengisi satu wadah dengan air, lalu menuangnya ke gelas ukur bertanda.";
+const SUARA_C3 = "Garis tanda pada gelas ukur menunjukkan volume air dalam mililiter.";
+const SUARA_C4 = "Pastikan mata sejajar dengan permukaan air supaya pembacaan tidak meleset, dan letakkan gelas ukur di tempat yang datar.";
 
-/* ------------------------------ 2. Volume as Filling: konsep ------------------------------ */
-export const ADEGAN_LUAR_VF: AdeganStory = {
-  id: "luar-vf",
-  judul: "Volume as Filling (Volume sebagai Mengisi)",
-  sumber: "Metode luar: Volume as Filling",
-  latar: "#F0FDF4",
+export const ADEGAN_LUAR_ISI: AdeganStory = {
+  id: "luar-isi",
+  judul: "Fill and Pour: Isi dan Tuang",
+  sumber: "Metode global: Fill and Pour (konsep)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
-      "Metode pertama, Volume as Filling atau Volume sebagai Mengisi. Volume adalah banyak satuan yang mengisi ruang sampai penuh, tanpa celah.",
-      bersih(0),
-      tambah(0, judul("Volume as Filling")),
-      tambah("Volume@2", ...wadahIsi("vf", 24, 44, 4, 4, 20, "#BBF7D0")),
-      tambah("Volume@2", teks("vfn", 74, 150, "wadah penuh satuan", 8.4, W.coklat)),
-      tambah("tanpa", ...kartu("vf1", 130, 56, 158, 34, W.hijauMuda, ["Volume sebagai Mengisi"], 8.8)),
-      tambah("celah", ...kartu("vf2", 130, 100, 158, 34, W.krem, ["tanpa celah"], 9.6)),
+      SUARA_C1,
+      tambah(0, judul("Cara 1: Fill and Pour"), ...lantai("lt", 150)),
+      tambah("Fill", emo("gl", 110, 112, E.gelas, 40)),
+      tambah("atau", teks("nm", 150, 140, "Isi dan Tuang", 13, W.ungu)),
+      tambah("Tuang", emo("tt", 190, 104, E.tetes, 28)),
     ),
     k(
-      "Satuannya harus sama ukuran dan sama jenis. Hitung berapa satuan yang dibutuhkan sampai wadah penuh. Bilangan itulah volumenya.",
-      ...daftar("vg", "Aturan mengisi", [
-        { at: "sama", t: "satuan sama ukuran dan jenis", w: W.hijauMuda, u: 9 },
-        { at: "Hitung", t: "hitung satuan sampai penuh", w: W.krem, u: 9.4 },
-        { at: "Bilangan", t: "bilangan itu = volume", w: W.pink, u: 9.6 },
-      ]),
+      SUARA_C2,
+      hapus(0, "gl", "tt", "nm"),
+      tambah("satu", teks("w1", 85, 52, "1 wadah", 11, W.coklat)),
+      tambah("wadah", ...ember("e", 60, 64, 50, 54, 0.9)),
+      tambah("menuangnya", panah("ap", 114, 92, 44, 0, W.ungu, 2.4)),
+      tambah("gelas", ...gelasUkur("gu", 170, 60, 26, 70, 0)),
+      ubah("bertanda", { id: "gu-a", ...airEmber(60, 70, 0.5) }),
     ),
     k(
-      "Satuan berbeda memberi bilangan berbeda. Wadah yang sama bisa empat satuan besar, atau sepuluh satuan kecil, tetapi volumenya tetap sama.",
-      bersih(0),
-      tambah(0, judul("Satuan beda, bilangan beda")),
-      tambah("empat", ...kartu("vh1", 12, 44, 276, 36, W.hijauMuda, ["4 satuan besar"], 11)),
-      tambah("sepuluh", ...kartu("vh2", 12, 92, 276, 36, W.langit, ["10 satuan kecil"], 11)),
-      tambah("tetap", ...kartu("vh3", 12, 140, 276, 36, W.krem, ["wadah sama, volume sama"], 10.4)),
+      SUARA_C3,
+      sorotkan("tanda", "gu-s0", "gu-s1", "gu-s2"),
+      tambah("volume", teks("va", 240, 70, "volume air", 11, W.hijauTua)),
+      ubah("air", { id: "gu-a", ...airEmber(60, 70, 0.75) }),
+      tambah("mililiter", teks("ml", 240, 110, "mililiter", 11, W.biru)),
+    ),
+    k(
+      SUARA_C4,
+      tambah("mata", emo("ey", 146, 104, E.mata, 24)),
+      tambah("sejajar", garis("sj", 130, 79, 62, 0, W.merah, 1.6, { putus: true, z: 5 })),
+      sorotkan("permukaan", "gu-a"),
+      tambah("datar", garis("dt", 160, 134, 60, 0, W.coklat, 3)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Volume as Filling: penerapan ------------------------------ */
-export const ADEGAN_LUAR_VF_TERAPAN: AdeganStory = {
-  id: "luar-vf-terapan",
-  judul: "Volume as Filling pada botol dan kubus",
-  sumber: "Metode luar: Volume as Filling terapan",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(
-      "Terapkan pada botol sabun. Botol A diisi botol B sampai penuh, empat kali. Jadi volume botol A adalah empat satuan botol B.",
-      bersih(0),
-      tambah(0, judul("Botol A diisi botol B")),
-      tambah("sabun", emo("ta", 46, 108, "🧴", 56)),
-      tambah("empat", ...[0, 1, 2, 3].map((i) => emo(`tb${i}`, 118 + i * 40, 98, "🧴", 30))),
-      tambah("satuan", ...kartu("tk", 40, 138, 220, 32, W.krem, ["A = 4 satuan botol B"], 10.4)),
-    ),
-    k(
-      "Diisi botol C: sepuluh kali. Jadi volume botol A adalah sepuluh satuan botol C. Satuannya berbeda, maka bilangannya berbeda.",
-      bersih(0),
-      tambah(0, judul("Botol A diisi botol C")),
-      tambah("Diisi", emo("tc", 46, 108, "🧴", 56)),
-      tambah("sepuluh", ...[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => emo(`td${i}`, 112 + (i % 5) * 36, 78 + Math.floor(i / 5) * 36, "🧴", 22))),
-      tambah("Jadi", ...kartu("te", 40, 138, 220, 32, W.krem, ["A = 10 satuan botol C"], 10.4)),
-    ),
-    k(
-      "Hand sanitizer: satu botol besar mengisi delapan botol kecil, jadi volumenya delapan satuan. Kubus: bangun dua tersusun dari sembilan kubus satuan, jadi sembilan sentimeter kubik.",
-      bersih(0),
-      tambah(0, judul("Satuan botol dan kubus")),
-      tambah("Hand", ...kartu("tf", 8, 40, 136, 30, W.krem, ["1 botol = 8 satuan"], 9.4)),
-      tambah("Hand", emo("tg", 76, 112, "🧴", 40)),
-      tambah("Kubus:", ...kubusDi("th", "ii", 220, 128, 12)),
-      tambah("sembilan@2", ...kartu("ti", 156, 40, 136, 30, W.hijauMuda, ["9 kubus = 9 cm³"], 9.4)),
-    ),
-    k(
-      "Dengan kubus satuan, satuannya baku. Bangun A sembilan kubus, bangun D delapan belas kubus, jadi volume D dua kali volume A.",
-      bersih(0),
-      tambah(0, judul("Kubus satuan: satuan baku")),
-      tambah("Bangun", ...kubusDi("tj", "A", 76, 108, 16), teks("tjt", 76, 124, "A: 9 cm³", 10, W.biru)),
-      tambah("delapan", ...kubusDi("tl", "D", 214, 108, 16), teks("tlt", 214, 124, "D: 18 cm³", 10, W.biru)),
-      tambah("dua@1", ...kartu("tm", 50, 144, 200, 32, W.pink, ["18 = 2 × 9"], 11)),
-    ),
-  ],
-};
+/* ------------------------------ Fill and Pour: terapan ------------------------------ */
+const SUARA_P1 = "Laras menuang air dari ember kecil ke gelas ukur sampai garis tiga ratus mililiter.";
+const SUARA_P2 = "Ia mencatat volumenya beserta satuannya, yaitu mililiter, dan hasilnya sama untuk semua orang yang membaca.";
+const SUARA_P3 = "Cocok untuk wadah yang tidak berbentuk kotak, karena kita hanya perlu menuang.";
+const SUARA_P4 = "Kurang cocok untuk wadah sangat besar, karena gelas ukurnya terlalu kecil.";
 
-/* ------------------------------ 4. Layer Model: konsep ------------------------------ */
-export const ADEGAN_LUAR_LM: AdeganStory = {
-  id: "luar-lm",
-  judul: "Layer Model (Model Lapisan)",
-  sumber: "Metode luar: Layer Model",
-  latar: "#EFF6FF",
+export const ADEGAN_LUAR_ISI_TERAPAN: AdeganStory = {
+  id: "luar-isi-terapan",
+  judul: "Fill and Pour: terapan",
+  sumber: "Metode global: Fill and Pour (terapan)",
+  latar: "#FFFBEB",
   ketukan: [
     k(
-      "Metode kedua, Layer Model atau Model Lapisan. Bangun kubus dibagi menjadi lapisan datar. Hitung kubus pada satu lapisan, lalu jumlahkan semua lapisan.",
-      bersih(0),
-      tambah(0, judul("Layer Model")),
-      tambah("Bangun", ...kubusDi("ma", "D", 76, 118, 18, true)),
-      tambah("datar.", ...kartu("mb", 140, 44, 148, 30, W.langit, ["Model Lapisan"], 9.6)),
-      tambah("satu", ...kartu("mc", 140, 84, 148, 30, W.krem, ["hitung satu lapisan"], 9)),
-      tambah("jumlahkan", ...kartu("md", 140, 124, 148, 30, W.hijauMuda, ["jumlahkan lapisan"], 9)),
+      SUARA_P1,
+      tambah(0, judul("Laras Menuang Air"), ...lantai("lt", 150), ...tokoh("la", 36, 184, "Laras")),
+      tambah("ember", ...ember("e", 80, 76, 40, 44, 0.7)),
+      tambah("gelas", ...gelasUkur("gu", 190, 70, 24, 58, 0.2)),
+      tambah("garis", teks("t3", 232, 60, "300 ml", 13, W.merah)),
+      sorotkan("tiga", "gu-s1"),
+      ubah("tiga", { id: "gu-a", ...airEmber(70, 58, 0.55) }),
     ),
     k(
-      "Jika lapisannya sama, kalikan: kubus tiap lapisan kali banyak lapisan. Alas panjang kali lebar memberi kubus tiap lapisan, tinggi memberi banyak lapisan.",
-      ...daftar("me", "Lapisan sama: kalikan", [
-        { at: "kubus", t: "kubus tiap lapisan × banyak lapisan", w: W.hijauMuda, u: 8.6 },
-        { at: "Alas", t: "alas: panjang × lebar", w: W.krem, u: 9.6 },
-        { at: "tinggi", t: "tinggi: banyak lapisan", w: W.langit, u: 9.6 },
-      ]),
+      SUARA_P2,
+      tambah("mencatat", ...kartu("ct", 14, 36, 110, 30, W.krem, ["300 ml"], 14)),
+      tambah("satuannya", teks("st", 60, 134, "satuan: ml", 9, W.hijauTua)),
+      tambah("hasilnya", emo("ok", 150, 70, E.benar, 22)),
+      tambah("semua", emo("ey", 250, 110, E.mata, 24)),
     ),
     k(
-      "Jika lapisannya tidak sama, jumlahkan tiap lapisan. Boleh dihitung dari bawah ke atas, atau dari atas ke bawah, hasilnya sama.",
-      ...daftar("mf", "Lapisan tak sama: jumlahkan", [
-        { at: "jumlahkan", t: "lapisan 1 + lapisan 2 + lapisan 3", w: W.krem, u: 9 },
-        { at: "bawah", t: "dari bawah ke atas", w: W.hijauMuda, u: 9.6 },
-        { at: "atas@2", t: "atau dari atas ke bawah: sama", w: W.langit, u: 9.4 },
-      ]),
-    ),
-  ],
-};
-
-/* ------------------------------ 5. Layer Model: penerapan ------------------------------ */
-export const ADEGAN_LUAR_LM_TERAPAN: AdeganStory = {
-  id: "luar-lm-terapan",
-  judul: "Layer Model pada bangun kubus",
-  sumber: "Metode luar: Layer Model terapan",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      "Bangun B: tiap lapisan empat kubus, ada dua lapisan, jadi empat kali dua sama dengan delapan sentimeter kubik.",
-      bersih(0),
-      tambah(0, judul("Bangun B: dua lapisan")),
-      tambah("Bangun", ...kubusDi("na", "B", 76, 112, 28, true)),
-      tambah("tiap", ...kartu("nb", 150, 40, 138, 30, W.krem, ["tiap lapisan: 4 kubus"], 9)),
-      tambah("dua", ...kartu("nc", 150, 80, 138, 30, W.langit, ["2 lapisan"], 9.6)),
-      tambah("jadi", ...kartu("nd", 150, 120, 138, 34, W.hijauMuda, ["4 × 2 = 8 cm³"], 11)),
+      SUARA_P3,
+      hapus(0, ...idKartu("ct", 1), "st", "ok", "ey"),
+      tambah("Cocok", emo("jp", 262, 140, E.jempol, 22)),
+      tambah("wadah", teks("wb", 100, 50, "wadah bulat", 11, W.coklat)),
+      tambah("kotak", emo("bk", 150, 56, "\u{1F4E6}", 22)),
+      tambah("menuang", panah("pp", 124, 100, 50, 0, W.ungu, 2.4)),
     ),
     k(
-      "Bangun C: tiap lapisan enam kubus, dua lapisan, jadi dua belas. Bangun D: sembilan kubus tiap lapisan, dua lapisan, jadi delapan belas sentimeter kubik.",
-      bersih(0),
-      tambah(0, judul("Bangun C dan D")),
-      tambah("Bangun", ...kubusDi("ne", "C", 70, 100, 18, true)),
-      tambah("sembilan", ...kubusDi("nf", "D", 220, 100, 18, true)),
-      tambah("jadi", ...kartu("ng", 8, 124, 136, 34, W.krem, ["C: 6 × 2 = 12"], 10.4)),
-      tambah("jadi@2", ...kartu("nh", 156, 124, 136, 34, W.hijauMuda, ["D: 9 × 2 = 18"], 10.4)),
-    ),
-    k(
-      "Bangun satu tidak seragam: lapisan bawah dua belas kubus, lalu enam, lalu enam. Jumlahnya dua puluh empat sentimeter kubik.",
-      bersih(0),
-      tambah(0, judul("Bangun (i): lapisan beda")),
-      tambah("Bangun", ...kubusDi("ni", "i", 150, 104, 12, true)),
-      tambah("bawah", ...kartu("nj", 30, 124, 240, 34, W.krem, ["12 + 6 + 6 = 24 cm³"], 11)),
-    ),
-    k(
-      "Bangun e: alasnya empat kali tiga sama dengan dua belas kubus, ditambah lapisan atas dua kubus, jadi empat belas sentimeter kubik.",
-      bersih(0),
-      tambah(0, judul("Bangun e: alas + atas")),
-      tambah("Bangun", ...kubusDi("nk", "e", 76, 114, 16, true)),
-      tambah("alasnya", ...kartu("nl", 150, 44, 138, 30, W.krem, ["alas: 4 × 3 = 12"], 9.4)),
-      tambah("lapisan", ...kartu("nm", 150, 84, 138, 30, W.langit, ["lapisan atas: 2"], 9.4)),
-      tambah("jadi", ...kartu("nn", 150, 124, 138, 34, W.hijauMuda, ["12 + 2 = 14 cm³"], 10.4)),
+      SUARA_P4,
+      hapus(0, "jp", "wb", "bk", "pp"),
+      tambah("Kurang", emo("xs", 262, 140, E.salah, 22)),
+      hapus("wadah", ...idEmber("e")),
+      tambah("wadah", ...ember("eg", 50, 50, 90, 90, 0.8)),
+      tambah("besar", teks("wg", 95, 44, "wadah besar", 11, W.merah)),
+      tambah("kecil", teks("gk", 202, 142, "kecil", 11, W.merah)),
     ),
   ],
 };

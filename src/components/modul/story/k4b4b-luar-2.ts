@@ -1,198 +1,232 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { W, daftar, emo, judul, kartu, kotak, kubusDi, teks } from "./k4b4b-gambar";
-import { bersih, k, tambah, ubah } from "./k4b4b-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, W, WL, bulat, emo, idKartu, idLapisan, judul, kartu, kotak, kubus, lantai, lapisanKubus, panah, tangga, teks, tokoh } from "./k4b4b-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k4b4b-bantu";
 
-/** Gelas ukur: tinggi 100 piksel, 1 mililiter air = 0,5 piksel. Air `${id}-a`, kaca `${id}-g`, tulisan tinggi air `${id}-l`. (x, y) pojok kiri-atas kaca. */
-export const SKALA_GELAS = 0.5;
-function gelas(id: string, x: number, y: number, level: number): Obj[] {
-  return [
-    kotak(`${id}-a`, x, y + 100 - level * SKALA_GELAS, 56, level * SKALA_GELAS, "#93C5FD", undefined, { rx: 0, tebal: 0 }),
-    kotak(`${id}-g`, x, y, 56, 100, "none", W.biru, { rx: 3, tebal: 1.6, z: 2 }),
-    teks(`${id}-l`, x + 28, y + 118, `${level} ml`, 9.6, W.biru),
-  ];
-}
-const naikkan = (at: string | number, id: string, x: number, y: number, level: number) =>
-  ubah(at, { id: `${id}-a`, y: y + 100 - level * SKALA_GELAS, h: level * SKALA_GELAS }, { id: `${id}-l`, isi: `${level} ml` });
+/*
+ * Cerita orisinal IGIL "Ember Pak Anto" (Kelas 4 Bab 4 Sub-Bab B), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b4b.md. Bagian ini: Layer Cubes (Susun Lapisan), Liter Ladder (Tangga Liter), terapannya, dan ringkasan.
+ */
 
-/* ------------------------------ 6. Displacement Idea: konsep ------------------------------ */
-export const ADEGAN_LUAR_DI: AdeganStory = {
-  id: "luar-di",
-  judul: "Displacement Idea (Ide Pemindahan Air)",
-  sumber: "Metode luar: Displacement Idea",
-  latar: "#ECFEFF",
-  ketukan: [
-    k(
-      "Metode ketiga, Displacement Idea atau Ide Pemindahan Air. Benda padat yang dimasukkan ke dalam air mendesak air sebanyak volume benda itu.",
-      bersih(0),
-      tambah(0, judul("Displacement Idea")),
-      tambah("Benda", ...gelas("dg", 30, 44, 100)),
-      tambah("dimasukkan", emo("dd", 58, 34, "🎲", 22)),
-      tambah("Pemindahan", ...kartu("d1", 120, 52, 168, 32, W.langit, ["Ide Pemindahan Air"], 9.6)),
-      tambah("mendesak", ...kartu("d2", 120, 96, 168, 40, W.krem, ["air terdesak =", "volume benda"], 9)),
-    ),
-    k(
-      "Karena satu sentimeter kubik sama dengan satu mililiter, kenaikan air dalam mililiter sama dengan volume benda dalam sentimeter kubik.",
-      ...daftar("de", "Satuan yang cocok", [
-        { at: "satu", t: "1 cm³ = 1 ml", w: W.hijauMuda, u: 11 },
-        { at: "kenaikan", t: "air naik 1 ml = benda 1 cm³", w: W.krem, u: 9.4 },
-      ]),
-    ),
-    k(
-      "Cara ini cocok untuk benda pejal seperti dadu mainan Helen. Ukur air sebelum dan sesudah, lalu kurangkan.",
-      bersih(0),
-      tambah(0, judul("Benda pejal: ukur airnya")),
-      tambah("dadu", emo("df", 150, 76, "🎲", 40)),
-      tambah("sebelum", ...kartu("dg1", 12, 100, 132, 30, W.langit, ["air sebelum"], 9.6)),
-      tambah("sesudah", ...kartu("dg2", 156, 100, 132, 30, W.hijauMuda, ["air sesudah"], 9.6)),
-      tambah("kurangkan.", ...kartu("dg3", 30, 144, 240, 32, W.krem, ["sesudah − sebelum = volume"], 9.6)),
-    ),
-  ],
-};
+/* ------------------------------ Layer Cubes: konsep ------------------------------ */
+const SUARA_Y1 = "Cara kedua, Layer Cubes, atau Susun Lapisan.";
+const SUARA_Y2 = "Kita menyusun kubus satuan menjadi satu lapisan datar, lalu menumpuk lapisan itu ke atas.";
+const SUARA_Y3 = "Banyak kubus tiap lapisan dikalikan dengan banyak lapisan adalah volumenya.";
+const SUARA_Y4 = "Satuannya sentimeter kubik, karena kubus kecilnya bersisi satu sentimeter.";
 
-/* ------------------------------ 7. Displacement Idea: penerapan ------------------------------ */
-const SOAL_DI = [
-  { id: "A", lama: 100, naik: 9, baru: 109, s: 14 },
-  { id: "D", lama: 100, naik: 18, baru: 118, s: 12 },
-  { id: "i", lama: 100, naik: 24, baru: 124, s: 8 },
-];
-const kataDI = [
-  "Misalkan gelas ukur berisi seratus mililiter air. Bangun A, sembilan kubus satuan, dicelupkan. Air naik sembilan mililiter menjadi seratus sembilan mililiter.",
-  "Bangun D, delapan belas kubus, dicelupkan: air naik delapan belas mililiter, menjadi seratus delapan belas mililiter. Selisihnya seratus delapan belas kurang seratus sama dengan delapan belas.",
-  "Bangun satu, dua puluh empat kubus: air naik dua puluh empat mililiter, menjadi seratus dua puluh empat mililiter.",
-];
-const ketukanDI = (i: number) => {
-  const q = SOAL_DI[i];
-  return k(
-    kataDI[i],
-    bersih(0),
-    tambah(0, judul(`Bangun ${q.id === "i" ? "(i)" : q.id}: air naik`)),
-    tambah(["Misalkan", "Bangun", "Bangun"][i], ...gelas("gx", 24, 44, q.lama)),
-    tambah(["dicelupkan.", "dicelupkan:", "kubus:"][i], ...kubusDi("gb", q.id, 168, 104, q.s)),
-    tambah(["dicelupkan.", "dicelupkan:", "kubus:"][i], ...kartu("gc", 100, 112, 188, 26, W.krem, [`volume ${q.naik} cm³`], 9.6)),
-    naikkan(["naik", "naik", "naik"][i], "gx", 24, 44, q.baru),
-    tambah(["naik", "naik", "naik"][i], ...kartu("gd", 100, 146, 188, 28, W.hijauMuda, [`naik ${q.naik} ml`], 10)),
-  );
-};
-export const ADEGAN_LUAR_DI_TERAPAN: AdeganStory = {
-  id: "luar-di-terapan",
-  judul: "Displacement Idea pada bangun kubus",
-  sumber: "Metode luar: Displacement Idea terapan",
-  latar: "#ECFEFF",
-  ketukan: [
-    ketukanDI(0),
-    ketukanDI(1),
-    ketukanDI(2),
-    k(
-      "Dari kenaikan air kita membaca volume benda. Dua puluh empat mililiter berarti dua puluh empat sentimeter kubik, cocok dengan hitungan kubus tadi.",
-      ...daftar("gf", "Kenaikan air = volume", [
-        { at: "membaca", t: "A: 109 − 100 = 9 cm³", w: W.krem, u: 10.4 },
-        { at: "Dua", t: "D: 118 − 100 = 18 cm³", w: W.hijauMuda, u: 10.4 },
-        { at: "dua@2", t: "(i): 124 − 100 = 24 cm³", w: W.langit, u: 10.4 },
-        { at: "cocok", t: "cocok dengan hitungan kubus ✔", w: W.pink, u: 9.4 },
-      ]),
-    ),
-  ],
-};
-
-/* ------------------------------ 8. Benchmark Referents: konsep ------------------------------ */
-export const ADEGAN_LUAR_BR: AdeganStory = {
-  id: "luar-br",
-  judul: "Benchmark Referents (Patokan Benda Sehari-hari)",
-  sumber: "Metode luar: Benchmark Referents",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(
-      "Metode keempat, Benchmark Referents atau Patokan Benda Sehari-hari. Hafalkan satu benda yang volumenya sudah diketahui, lalu bandingkan benda lain dengannya.",
-      bersih(0),
-      tambah(0, judul("Benchmark Referents")),
-      tambah("Patokan", ...kartu("b1", 12, 40, 276, 30, W.pink, ["Patokan Benda Sehari-hari"], 9.6)),
-      tambah("Hafalkan", emo("b2", 70, 112, "🍼", 40), teks("b2t", 70, 132, "patokan: 1 l", 10, W.biru)),
-      tambah("bandingkan", emo("b3", 230, 112, "🥛", 40), teks("b3t", 230, 132, "mirip patokan?", 10, W.coklat)),
-    ),
-    k(
-      "Beberapa patokan: satu sendok lima mililiter, secangkir kopi dua ratus empat puluh mililiter, botol minuman tiga ratus tiga puluh mililiter, dan botol air mineral satu liter.",
-      bersih(0),
-      tambah(0, judul("Patokan benda sehari-hari")),
-      tambah("sendok", emo("c1", 40, 100, "🥄", 34), teks("c1t", 40, 122, "5 ml", 10, W.biru)),
-      tambah("secangkir", emo("c2", 112, 100, "☕", 34), teks("c2t", 112, 122, "240 ml", 10, W.biru)),
-      tambah("minuman", emo("c3", 188, 100, "🥤", 34), teks("c3t", 188, 122, "330 ml", 10, W.biru)),
-      tambah("mineral", emo("c4", 260, 100, "🍼", 34), teks("c4t", 260, 122, "1 l", 10, W.biru)),
-    ),
-    k(
-      "Patokan membantu menaksir sebelum mengukur, dan memeriksa apakah hasil hitungan masuk akal.",
-      ...daftar("c", "Gunanya patokan", [
-        { at: "menaksir", t: "menaksir sebelum mengukur", w: W.hijauMuda, u: 9.6 },
-        { at: "memeriksa", t: "memeriksa hasil: masuk akal?", w: W.krem, u: 9.4 },
-      ]),
-    ),
-  ],
-};
-
-/* ------------------------------ 9. Benchmark Referents: penerapan ------------------------------ */
-export const ADEGAN_LUAR_BR_TERAPAN: AdeganStory = {
-  id: "luar-br-terapan",
-  judul: "Benchmark Referents pada ember dan susu",
-  sumber: "Metode luar: Benchmark Referents terapan",
-  latar: "#FFF7ED",
-  ketukan: [
-    k(
-      "Ember menampung sepuluh liter, sama dengan sepuluh botol air mineral. Tong air seratus lima puluh liter sama dengan lima belas ember.",
-      bersih(0),
-      tambah(0, judul("Ember dan tong")),
-      tambah("Ember", ...kartu("e1", 12, 40, 276, 32, W.krem, ["ember 10 l = 10 botol × 1 l"], 10)),
-      tambah("Tong", ...kartu("e2", 12, 84, 276, 32, W.hijauMuda, ["tong 150 l ÷ 10 = 15 ember"], 10)),
-      tambah("lima@2", emo("e3", 150, 160, "🛢", 30)),
-    ),
-    k(
-      "Kotak susu seribu mililiter sama dengan satu botol air mineral. Empat botol jus berjumlah seribu dua puluh empat mililiter, sedikit di atas satu liter, jadi satu botol jus sekitar seperempat liter.",
-      bersih(0),
-      tambah(0, judul("Susu dan jus")),
-      tambah("Kotak", ...kartu("f1", 12, 40, 276, 30, W.krem, ["susu 1.000 ml = 1 l"], 10.4)),
-      tambah("Empat", ...kartu("f2", 12, 80, 276, 30, W.langit, ["4 × 256 = 1.024 ml"], 10.4)),
-      tambah("sedikit", ...kartu("f3", 12, 120, 276, 30, W.hijauMuda, ["sedikit di atas 1 l"], 10)),
-      tambah("seperempat", ...kartu("f4", 12, 160, 276, 30, W.pink, ["1 botol jus ≈ ¼ l"], 10)),
-    ),
-    k(
-      "Soal tangki: dibulatkan, dua ribu dua ratus kurang seribu kira-kira seribu dua ratus liter. Hasil seribu dua ratus empat puluh sembilan liter dekat dengan itu, jadi masuk akal.",
-      bersih(0),
-      tambah(0, judul("Taksir hasil tangki")),
-      tambah("dibulatkan,", ...kartu("g1", 12, 44, 276, 34, W.krem, ["2.200 − 1.000 ≈ 1.200 l"], 11)),
-      tambah("Hasil", ...kartu("g2", 12, 94, 276, 34, W.hijauMuda, ["hasil 1.249 l 675 ml"], 11)),
-      tambah("masuk", teks("g3", 150, 156, "dekat taksiran: masuk akal ✔", 10, W.hijau)),
-    ),
-  ],
-};
-
-/* ------------------------------ 10. Ringkasan ------------------------------ */
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan empat metode dan satuan baku",
-  sumber: "Ringkasan metode luar Sub-Bab B",
+export const ADEGAN_LUAR_LAPISAN: AdeganStory = {
+  id: "luar-lapisan",
+  judul: "Layer Cubes: Susun Lapisan",
+  sumber: "Metode global: Layer Cubes (konsep)",
   latar: "#F0F9FF",
   ketukan: [
     k(
-      "Ringkasan: empat metode untuk volume. Volume as Filling menghitung satuan pengisi, Layer Model menghitung lapisan, Displacement Idea membaca kenaikan air, dan Benchmark Referents memakai patokan benda sehari-hari.",
-      ...daftar("r", "Empat metode", [
-        { at: "Filling", t: "Volume as Filling: hitung satuan", w: W.hijauMuda, u: 9 },
-        { at: "Layer", t: "Layer Model: hitung lapisan", w: W.langit, u: 9.4 },
-        { at: "Displacement", t: "Displacement Idea: air naik", w: W.krem, u: 9.4 },
-        { at: "Benchmark", t: "Benchmark Referents: patokan", w: W.pink, u: 9.2 },
-      ]),
+      SUARA_Y1,
+      tambah(0, judul("Cara 2: Layer Cubes"), ...lantai("lt", 150)),
+      tambah("Layer", emo("dd", 110, 112, E.dadu, 40)),
+      tambah("Susun", teks("nm", 150, 140, "Susun Lapisan", 13, W.ungu)),
+      tambah("Lapisan", ...lapisanKubus("L", 170, 88, 3, 2, 14)),
     ),
     k(
-      "Semuanya menjaga satu hal: satuan harus sama dan mengisi penuh. Metodenya berbeda, tetapi volume benda tetap sama.",
-      bersih(0),
-      tambah(0, judul("Satu aturan bersama")),
-      tambah("Semuanya", ...kartu("s1", 20, 46, 260, 36, W.krem, ["satuan sama dan mengisi penuh"], 10)),
-      tambah("Metodenya", ...kartu("s2", 20, 98, 260, 36, W.hijauMuda, ["metode beda, volume tetap sama"], 10)),
+      SUARA_Y2,
+      hapus(0, "dd", "nm", ...idLapisan("L", 3, 2)),
+      tambah("kubus", kubus("ku", 40, 96, 18)),
+      tambah("satu@2", ...lapisanKubus("A", 100, 100, 3, 2, 16), teks("s1", 124, 88, "1 lapisan", 11, W.coklat)),
+      tambah("menumpuk", ...lapisanKubus("B", 108, 91, 3, 2, 16)),
+      tambah("atas", panah("up", 250, 120, 0, -50, W.hijauTua, 2.6)),
     ),
     k(
-      "Pakailah metode luar sebagai alat bantu, tetapi tetap pegang istilah dan satuan baku: mililiter, liter, sentimeter kubik, dan meter kubik.",
+      SUARA_Y3,
+      sorotkan("kubus", ...idLapisan("A", 3, 2)),
+      tambah("dikalikan", teks("kl", 200, 106, "×", 20, W.merah)),
+      sorotkan("banyak@2", ...idLapisan("B", 3, 2)),
+      tambah("volumenya", teks("vl", 224, 130, "= volume", 12, W.hijauTua)),
+    ),
+    k(
+      SUARA_Y4,
+      tambah("kubik", teks("cm", 60, 60, "cm³", 18, W.biru)),
+      tambah("bersisi", { id: "bs", t: "garis", x: 40, y: 126, x2: 18, y2: 0, warna: W.merah, tebal: 2.4 }),
+      tambah("satu@2", teks("sc", 49, 140, "1 cm", 11, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Layer Cubes: terapan ------------------------------ */
+const SUARA_Z1 = "Genta menyusun lapisan berisi dua kali tiga kubus, dengan tiga lapisan.";
+const SUARA_Z2 = "Ia mengalikan enam dengan tiga dan mendapat delapan belas sentimeter kubik, yang juga sama dengan delapan belas mililiter.";
+const SUARA_Z3 = "Cocok untuk wadah berbentuk kotak, karena lapisannya rata.";
+const SUARA_Z4 = "Kurang cocok untuk benda bulat, karena kubus tidak bisa menutupnya rapi.";
+
+export const ADEGAN_LUAR_LAPISAN_TERAPAN: AdeganStory = {
+  id: "luar-lapisan-terapan",
+  judul: "Layer Cubes: terapan",
+  sumber: "Metode global: Layer Cubes (terapan)",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_Z1,
+      tambah(0, judul("Genta Menyusun Lapisan"), ...lantai("lt", 150), ...tokoh("ge", 36, 184, "Genta")),
+      tambah("lapisan", ...lapisanKubus("A", 110, 100, 3, 2, 16)),
+      tambah("dua", teks("t23", 66, 110, "2 × 3", 14, W.biru)),
+      tambah("tiga@2", ...lapisanKubus("B", 118, 91, 3, 2, 16), ...lapisanKubus("C", 126, 82, 3, 2, 16), teks("l3", 230, 100, "3 lapisan", 12, W.coklat)),
+    ),
+    k(
+      SUARA_Z2,
+      tambah("enam", teks("hk", 150, 56, "6 × 3", 14, W.biru)),
+      ubah("delapan", { id: "hk", isi: "6 × 3 = 18 cm³", warna: W.merah }),
+      tambah("juga", teks("hm", 150, 72, "= 18 ml", 12, W.hijauTua)),
+      tambah("mililiter", emo("ok", 250, 60, E.benar, 22)),
+    ),
+    k(
+      SUARA_Z3,
+      hapus(0, "hk", "hm", "ok", "l3"),
+      tambah("Cocok", emo("jp", 262, 140, E.jempol, 22)),
+      tambah("kotak", kotak("wk", 190, 60, 70, 50, undefined, W.coklat, { rx: 2, tebal: 2, z: 1 })),
+      tambah("lapisannya", { id: "lr1", t: "garis", x: 192, y: 85, x2: 66, y2: 0, warna: W.biru, tebal: 1.4 }),
+      tambah("rata", emo("ok", 150, 60, E.benar, 22)),
+    ),
+    k(
+      SUARA_Z4,
+      hapus(0, "jp", "wk", "lr1", "ok"),
+      tambah("Kurang", emo("xs", 262, 140, E.salah, 22)),
+      tambah("bulat", bulat("bw", 230, 86, 28, WL.air, WL.airGaris, { tebal: 2, z: 1 })),
+      tambah("kubus", kubus("k1", 208, 60, 16), kubus("k2", 224, 60, 16), kubus("k3", 240, 60, 16)),
+      tambah("rapi", teks("cl", 230, 134, "ada celah", 11, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Liter Ladder: konsep ------------------------------ */
+const SUARA_L1 = "Cara ketiga, Liter Ladder, atau Tangga Liter.";
+const SUARA_L2 = "Kita menyusun satuan volume dari mililiter sampai liter seperti anak tangga.";
+const SUARA_L3 = "Satu liter sama dengan seribu mililiter, dan satu sentimeter kubik sama dengan satu mililiter.";
+const SUARA_L4 = "Naik tangga berarti membagi seribu, dan turun tangga berarti mengalikan seribu.";
+
+export const ADEGAN_LUAR_TANGGA: AdeganStory = {
+  id: "luar-tangga",
+  judul: "Liter Ladder: Tangga Liter",
+  sumber: "Metode global: Liter Ladder (konsep)",
+  latar: "#ECFEFF",
+  ketukan: [
+    k(
+      SUARA_L1,
+      tambah(0, judul("Cara 3: Liter Ladder"), ...lantai("lt", 150)),
+      tambah("Liter", emo("tg", 110, 112, E.tangga, 40)),
+      tambah("Tangga", teks("nm", 150, 140, "Tangga Liter", 13, W.ungu)),
+    ),
+    k(
+      SUARA_L2,
+      hapus(0, "tg", "nm"),
+      tambah("satuan", tangga("st", 50, 64)),
+      tambah("mililiter", kotak("bm", 160, 86, 70, 26, W.hijauMuda, W.hijauTua, { rx: 4, z: 1 }), teks("tm", 195, 103, "mililiter", 12, W.hijauTua, { z: 3 })),
+      tambah("liter@2", kotak("bl", 60, 36, 70, 26, W.langit, W.biru, { rx: 4, z: 1 }), teks("tl", 95, 53, "liter", 13, W.biru, { z: 3 })),
+      tambah("tangga", emo("st2", 110, 94, E.tangga, 22)),
+    ),
+    k(
+      SUARA_L3,
       bersih(0),
-      tambah(0, judul("Kembali ke satuan baku")),
-      tambah("Pakailah", emo("rk", 150, 80, "📖", 44)),
-      tambah("satuan", ...kartu("rk1", 20, 100, 260, 32, W.langit, ["satuan baku volume"], 9.6)),
-      tambah("mililiter,", ...kartu("rk2", 20, 142, 260, 32, W.krem, ["ml · l · cm³ · m³"], 11)),
+      tambah(0, judul("Dua Kesamaan"), ...lantai("lt", 150)),
+      tambah("seribu", ...kartu("c1", 40, 44, 220, 32, W.krem, ["1 l = 1.000 ml"], 14)),
+      tambah("sentimeter", ...kartu("c2", 40, 92, 220, 32, W.hijauMuda, ["1 cm³ = 1 ml"], 14)),
+      tambah("mililiter@2", emo("ok", 270, 112, E.benar, 22)),
+    ),
+    k(
+      SUARA_L4,
+      hapus(0, ...idKartu("c1", 1), ...idKartu("c2", 1), "ok"),
+      tambah("Naik", { id: "up", t: "panah", x: 70, y: 120, x2: 0, y2: -60, warna: W.hijauTua, tebal: 3.2 }),
+      tambah("membagi", teks("dv", 70, 40, "÷ 1.000", 13, W.hijauTua)),
+      tambah("turun", { id: "dn", t: "panah", x: 230, y: 60, x2: 0, y2: 60, warna: W.merah, tebal: 3.2 }),
+      tambah("mengalikan", teks("kl", 230, 138, "× 1.000", 13, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Liter Ladder: terapan ------------------------------ */
+const SUARA_T1 = "Satria mengubah tiga liter menjadi mililiter dengan menuruni tangga.";
+const SUARA_T2 = "Tiga dikali seribu sama dengan tiga ribu mililiter, dan satuan mililiter ditulis di belakang bilangan itu.";
+const SUARA_T3 = "Cocok untuk mengganti satuan volume dengan cepat dan tepat, asalkan kita ingat arah tangganya.";
+const SUARA_T4 = "Kurang cocok kalau kita lupa bilangan seribu, karena hasilnya meleset jauh.";
+
+export const ADEGAN_LUAR_TANGGA_TERAPAN: AdeganStory = {
+  id: "luar-tangga-terapan",
+  judul: "Liter Ladder: terapan",
+  sumber: "Metode global: Liter Ladder (terapan)",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_T1,
+      tambah(0, judul("Satria Menuruni Tangga"), ...lantai("lt", 150), ...tokoh("sa", 36, 184, "Satria")),
+      tambah("tiga", tangga("st", 70, 60), teks("a3", 100, 52, "3 l", 14, W.biru)),
+      tambah("mililiter", teks("q", 210, 102, "? ml", 14, W.merah)),
+      tambah("menuruni", { id: "dn", t: "panah", x: 165, y: 62, x2: 0, y2: 40, warna: W.merah, tebal: 3 }),
+    ),
+    k(
+      SUARA_T2,
+      tambah("dikali", teks("hk", 150, 84, "3 × 1.000", 13, W.biru)),
+      ubah("ribu", { id: "q", isi: "3.000 ml", warna: W.hijauTua }),
+      tambah("satuan", emo("ok", 230, 72, E.benar, 22)),
+      tambah("ditulis", { id: "ul", t: "garis", x: 190, y: 108, x2: 46, y2: 0, warna: W.hijauTua, tebal: 2.5 }),
+    ),
+    k(
+      SUARA_T3,
+      hapus(0, "hk", "ok", "ul"),
+      tambah("Cocok", emo("jp", 262, 140, E.jempol, 22)),
+      tambah("cepat", emo("ce", 150, 130, "\u{26A1}", 22)),
+      tambah("tepat", emo("tp", 190, 130, E.benar, 22)),
+      tambah("arah", teks("ah", 100, 96, "turun / naik", 10, W.ungu)),
+    ),
+    k(
+      SUARA_T4,
+      hapus(0, "jp", "ce", "tp", "ah", "dn"),
+      tambah("Kurang", emo("xs", 262, 140, E.salah, 22)),
+      tambah("lupa", teks("lp", 150, 84, "lupa 1.000", 13, W.merah)),
+      ubah("hasilnya", { id: "q", isi: "300 ml", warna: W.merah }),
+      tambah("jauh", emo("bm", 250, 100, E.tabrak, 22)),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita pelajari bersama Pak Anto. Mana yang pas tergantung keadaan.";
+const SUARA_R2 = "Ingin mengukur air langsung, pakai Isi dan Tuang. Ingin menghitung kubus, pakai Susun Lapisan.";
+const SUARA_R3 = "Ingin mengganti satuan, pakai Tangga Liter. Apa pun caranya, tulis satuan di belakang bilangannya.";
+const SUARA_R4 = "Menurutmu, untuk mengukur air di kolam besar, cara mana yang paling pas?";
+
+export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
+  id: "luar-ringkas",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan metode global",
+  latar: "#F5F3FF",
+  ketukan: [
+    k(
+      SUARA_R1,
+      tambah(0, judul("Tiga Cara Pak Anto"), ...lantai("lt", 150), teks("n3", 260, 40, "3 cara", 10, W.ungu)),
+      tambah("pelajari", ...kartu("r0", 20, 48, 130, 28, W.langit, ["Isi dan Tuang"], 11), ...kartu("r1", 20, 84, 130, 28, W.hijauMuda, ["Susun Lapisan"], 11), ...kartu("r2", 20, 120, 130, 28, W.krem, ["Tangga Liter"], 11)),
+      tambah("Anto", ...tokoh("pa", 252, 184, "Pak Anto")),
+      tambah("pas", emo("tn", 230, 100, E.tanya, 28)),
+    ),
+    k(
+      SUARA_R2,
+      sorotkan("Isi", "r0-k"),
+      tambah("Isi", emo("e1", 200, 62, E.gelas, 22)),
+      redamkan("Susun", "r0-k"),
+      sorotkan("Susun", "r1-k"),
+      tambah("kubus", emo("e2", 200, 98, E.dadu, 22)),
+    ),
+    k(
+      SUARA_R3,
+      hapus(0, "tn"),
+      redamkan("Tangga", "r1-k"),
+      sorotkan("Tangga", "r2-k"),
+      tambah("pakai", emo("e3", 200, 134, E.tangga, 22)),
+      tambah("tulis", teks("sn", 236, 70, "24 cm³", 13, W.hijauTua)),
+      tambah("belakang", teks("sn2", 236, 90, "5 ml", 13, W.hijauTua)),
+    ),
+    k(
+      SUARA_R4,
+      hapus(0, "sn", "sn2", "e1", "e2", "e3"),
+      tambah("kolam", kotak("kl", 170, 70, 110, 50, WL.air, WL.airGaris, { rx: 6, tebal: 2, z: -1 })),
+      sorotkan("cara", "r0-k", "r1-k", "r2-k"),
+      tambah("pas", teks("qq", 225, 58, "cara mana?", 12, W.merah)),
     ),
   ],
 };

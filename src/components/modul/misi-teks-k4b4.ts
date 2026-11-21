@@ -1,6 +1,7 @@
 /**
- * Teks misi dan nama simulasi Kelas 4 Bab 4. Berkas kecil tanpa impor, dipisah dari SimulasiK4Bab4.tsx
- * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen laboratorium ke bundel awal.
+ * Teks misi awal Kelas 4 Bab 4 (Kolam Renang Tirta Ceria). Berkas kecil tanpa impor, dipisah dari SimulasiK4Bab4.tsx
+ * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen simulasi ke bundel awal.
+ * KERANGKA: agen tiap Sub-Bab mengisi barisnya sendiri dengan teks yang SAMA dengan MISI_*_TEKS di data-sim.ts folder Sub-Bab.
  */
 
 export type HurufK4B4 = "A" | "B";
@@ -9,13 +10,8 @@ const HURUF: HurufK4B4[] = ["A", "B"];
 export const hurufK4B4 = (sub: string): HurufK4B4 => (HURUF.includes(sub as HurufK4B4) ? (sub as HurufK4B4) : "A");
 
 export const MISI_K4B4: Record<HurufK4B4, string> = {
-  A: "Di Lab Luas, tutup meja tanpa celah dengan uang kertas dan origami, arsir bangun di kertas berpetak, dan ubah meter persegi menjadi sentimeter persegi. Periksa dengan Mesin Luas, lalu selesaikan skenario Meja Lipat Helen. Selesaikan semua misi wajib, urutannya bebas.",
-  B: "Di Lab Volume, isi botol dari takaran kecil, susun kubus satuan lapis demi lapis, dan takar air sampai satu liter. Periksa dengan Mesin Volume, lalu tuntaskan skenario Dapur Helen. Selesaikan semua misi wajib: ini misi penutup bab.",
-};
-
-export const NAMA_SIM_K4B4: Record<HurufK4B4, string> = {
-  A: "Lab Luas, Mesin Luas, dan Meja Lipat Helen",
-  B: "Pencapaian Misi Bab: Lab Volume, Mesin Volume, dan Dapur Helen",
+  A: "Tutup lantai dengan ubin, hitung luas dari baris dan kolom, ubah meter persegi ke sentimeter persegi, lalu pilih satuan yang tepat. Urutannya bebas.",
+  B: "Tuang gelas takar ke ember, susun lapisan kubus, dan turuni atau naiki tangga liter. Urutannya bebas.",
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */

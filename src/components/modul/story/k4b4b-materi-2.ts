@@ -1,275 +1,119 @@
 import type { AdeganStory } from "./logika-story";
-import { W, emo, judul, kartu, kubusDi, teks } from "./k4b4b-gambar";
-import { bersih, k, tambah } from "./k4b4b-bantu";
+import { E, W, WL, airEmber, deretGelas, ember, emo, gelasUkur, idEmber, judul, kartu, kotak, lantai, panah, rak, teks, tokoh, bulat } from "./k4b4b-gambar";
+import { bersih, hapus, k, tambah, ubah } from "./k4b4b-bantu";
 
-/* ------------------------------ 6. Ayo Berlatih: jumlah dan konversi (Buku Siswa hlm. 132; Panduan Guru hlm. 158-159) ------------------------------ */
-export const ADEGAN_BERLATIH_KONVERSI: AdeganStory = {
-  id: "berlatih-konversi",
-  judul: "Latihan: jumlah volume dan konversi",
-  sumber: "Materi: jumlah dan konversi volume",
-  latar: "#FEFCE8",
-  kutipan: [
-    "Pada gambar di atas, sebutkan volume dari ketiga kotak susu tersebut?",
-    "Jumlahkan volume ketiga kotak susu tersebut dalam satuan mililiter?",
-    "250 ml + 200 ml + 1.000 ml = 1.450 ml",
-    "Konversikan volume berikut ke dalam liter dan mililiter",
-    "75.000 ml",
-    "9.485 ml",
-    "23.456 ml",
-    "75.000 ml = 75 x 1.000 ml",
-    "9 l 485 ml",
-    "23 l 456 ml",
-  ],
+/*
+ * Cerita orisinal IGIL "Ember Pak Anto" (Kelas 4 Bab 4 Sub-Bab B, volume), akhir cerita Kolam Renang Tirta Ceria.
+ * Naskah suara dari naskah/story-naskah-k4b4b.md. Bagian ini: salah langkah Satria (satu liter seratus mililiter), pemeriksaan dengan empat gelas, dan taruhan mengepel.
+ */
+
+/* ------------------------------ 4. Salah langkah Satria ------------------------------ */
+const SUARA_S1 = "Genta mengisi ember dua liter, lalu Pak Anto bertanya, berapa mililiter isinya?";
+const SUARA_S2 = "Satria berseru, satu liter itu seratus mililiter, jadi dua ratus mililiter!";
+const SUARA_S3 = "Kalau aku salah, aku mengepel semua rak ember, katanya sambil menepuk dada.";
+
+export const ADEGAN_SALAH_SERATUS: AdeganStory = {
+  id: "salah-seratus",
+  judul: "Satria menyebut seratus mililiter",
+  sumber: "Materi: salah langkah dan taruhan",
+  latar: "#FFF7ED",
   ketukan: [
     k(
-      "Latihan satu: tiga kotak susu bertuliskan dua ratus mililiter, dua ratus lima puluh mililiter, dan seribu mililiter. Jumlahkan dalam mililiter.",
-      bersih(0),
-      tambah(0, judul("Tiga kotak susu")),
-      tambah("dua", emo("s1", 60, 100, "🥛", 36), teks("s1t", 60, 124, "200 ml", 10, W.biru)),
-      tambah("dua@2", emo("s2", 150, 100, "🥛", 36), teks("s2t", 150, 124, "250 ml", 10, W.biru)),
-      tambah("seribu", emo("s3", 240, 100, "🥛", 36), teks("s3t", 240, 124, "1.000 ml", 10, W.biru)),
-      tambah("Jumlahkan", ...kartu("s4", 40, 148, 220, 30, W.krem, ["jumlahkan dalam mililiter"], 9.4)),
+      SUARA_S1,
+      tambah(0, judul("Dua Liter Air"), ...lantai("lt", 150), ...tokoh("ge", 36, 184, "Genta")),
+      tambah("ember", ...ember("e", 118, 76, 50, 54, 0)),
+      ubah("dua", { id: "e-a", ...airEmber(76, 54, 1) }),
+      tambah("dua", teks("l2", 143, 66, "2 l", 14, W.biru)),
+      tambah("Anto", ...tokoh("pa", 262, 184, "Pak Anto")),
+      tambah("bertanya", emo("q", 232, 110, E.tanya, 24)),
+      tambah("mililiter", teks("qm", 143, 146, "? ml", 13, W.merah)),
     ),
     k(
-      "Dua ratus lima puluh ditambah dua ratus ditambah seribu sama dengan seribu empat ratus lima puluh mililiter, yaitu satu liter empat ratus lima puluh mililiter.",
-      bersih(0),
-      tambah(0, judul("Jumlah tiga kotak")),
-      tambah("Dua", ...kartu("t1", 12, 40, 276, 34, W.krem, ["250 + 200 + 1.000 = 1.450 ml"], 11)),
-      tambah("seribu", ...kartu("t2", 12, 90, 276, 34, W.hijauMuda, ["1.450 ml = 1.000 ml + 450 ml"], 10.4)),
-      tambah("satu", ...kartu("t3", 12, 140, 276, 34, W.langit, ["= 1 l 450 ml"], 11)),
+      SUARA_S2,
+      tambah("Satria", ...tokoh("sa", 84, 184, "Satria")),
+      tambah("berseru", emo("sr", 84, 136, E.seru, 22)),
+      ubah("satu", { id: "e", sorot: true }),
+      tambah("seratus", teks("sx", 232, 66, "1 l = 100 ml", 11, W.merah)),
+      ubah("dua", { id: "qm", isi: "200 ml" }),
     ),
     k(
-      "Latihan dua: ubah ke liter dan mililiter. Tujuh puluh lima ribu menjadi tujuh puluh lima liter. Sembilan ribu empat ratus delapan puluh lima menjadi sembilan liter empat ratus delapan puluh lima mililiter.",
-      bersih(0),
-      tambah(0, judul("Latihan 2: konversi")),
-      tambah("Tujuh", ...kartu("u1", 12, 40, 276, 34, W.krem, ["75.000 ml = 75 × 1.000 ml = 75 l"], 10.4)),
-      tambah("Sembilan", ...kartu("u2", 12, 84, 276, 34, W.hijauMuda, ["9.485 ml = 9.000 ml + 485 ml"], 10.4)),
-      tambah("menjadi@2", ...kartu("u3", 12, 128, 276, 34, W.langit, ["9.485 ml = 9 l 485 ml"], 10.4)),
-    ),
-    k(
-      "Dua puluh tiga ribu empat ratus lima puluh enam mililiter menjadi dua puluh tiga liter empat ratus lima puluh enam mililiter. Ribuannya menjadi liter, sisanya tetap mililiter.",
-      bersih(0),
-      tambah(0, judul("Latihan 2c")),
-      tambah("Dua", ...kartu("v1", 12, 40, 276, 34, W.krem, ["23.456 ml = 23.000 ml + 456 ml"], 10.4)),
-      tambah("Ribuannya", ...kartu("v2", 12, 90, 276, 34, W.hijauMuda, ["= 23 × 1.000 ml + 456 ml"], 10.4)),
-      tambah("sisanya", ...kartu("v3", 12, 140, 276, 34, W.langit, ["= 23 l 456 ml"], 11)),
+      SUARA_S3,
+      tambah("salah", teks("tr", 232, 84, "taruhan : mengepel", 9, W.coklat)),
+      tambah("mengepel", emo("sp", 216, 128, E.sapu, 26)),
+      ubah("rak", { id: "e", sorot: false }),
+      tambah("menepuk", emo("tp", 118, 138, "\u{270A}", 24)),
     ),
   ],
 };
 
-/* ------------------------------ 7. Ayo Berlatih: tangki dan penjual susu (Buku Siswa hlm. 132; Panduan Guru hlm. 159) ------------------------------ */
-export const ADEGAN_BERLATIH_HITUNG: AdeganStory = {
-  id: "berlatih-hitung",
-  judul: "Latihan: tangki air dan penjual susu",
-  sumber: "Materi: hitungan liter dan mililiter",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Sebuah tangki air berisi 2.225 liter air.",
-    "Pada siang hari 975 liter 325",
-    "air dipompa keluar dari tangki. Berapa banyak air yang tersisa di tangki?",
-    "2.225 l – 975 l = 1.250 l",
-    "Jadi, volume air yang tersisa di tangka adalah 1.249 l 675 ml.",
-    "Tips: Guru harus menyediakan cara yang lain, misalkan mengonversi liter ke mililiter terlebih dahulu.",
-    "Seorang tukang susu menjual 55 liter 575",
-    "40 liter 480",
-    "60 liter 825",
-    "Kumpulkan yang memiliki satuan sama:",
-    "Jadi, jumlah susu yang dijual oleh tukang susu adalah 156 l 880 ml.",
-  ],
-  ketukan: [
-    k(
-      "Latihan tiga: tangki berisi dua ribu dua ratus dua puluh lima liter air. Dipompa keluar sembilan ratus tujuh puluh lima liter tiga ratus dua puluh lima mililiter. Berapa sisanya?",
-      bersih(0),
-      tambah(0, judul("Latihan 3: tangki air")),
-      tambah("dua", ...kartu("w1", 12, 40, 276, 34, W.langit, ["tangki berisi 2.225 l"], 10.4)),
-      tambah("sembilan", ...kartu("w2", 12, 90, 276, 34, W.merahMuda, ["dipompa keluar 975 l 325 ml"], 10.4)),
-      tambah("sisanya?", ...kartu("w3", 12, 140, 276, 34, W.krem, ["sisa air = ?"], 11)),
-    ),
-    k(
-      "Dua ribu dua ratus dua puluh lima kurang sembilan ratus tujuh puluh lima sama dengan seribu dua ratus lima puluh liter. Lalu dikurangi tiga ratus dua puluh lima mililiter.",
-      bersih(0),
-      tambah(0, judul("Kurangi liter dulu")),
-      tambah("Dua", ...kartu("x1", 12, 40, 276, 34, W.krem, ["2.225 − 975 = 1.250 l"], 11)),
-      tambah("Lalu", ...kartu("x2", 12, 90, 276, 34, W.merahMuda, ["1.250 l − 325 ml"], 11)),
-    ),
-    k(
-      "Pinjam satu liter: seribu dua ratus empat puluh sembilan liter dan seribu mililiter. Seribu kurang tiga ratus dua puluh lima sama dengan enam ratus tujuh puluh lima mililiter.",
-      bersih(0),
-      tambah(0, judul("Pinjam satu liter")),
-      tambah("Pinjam", ...kartu("y1", 12, 36, 276, 30, W.krem, ["1.250 l = 1.249 l + 1.000 ml"], 10)),
-      tambah("Seribu@2", ...kartu("y2", 12, 74, 276, 30, W.merahMuda, ["1.000 − 325 = 675 ml"], 10.4)),
-      tambah("enam", ...kartu("y3", 12, 112, 276, 34, W.hijauMuda, ["sisa: 1.249 l 675 ml"], 11)),
-    ),
-    k(
-      "Latihan empat: tukang susu menjual lima puluh lima liter lima ratus tujuh puluh lima mililiter, empat puluh liter empat ratus delapan puluh mililiter, dan enam puluh liter delapan ratus dua puluh lima mililiter.",
-      bersih(0),
-      tambah(0, judul("Latihan 4: tukang susu")),
-      tambah("lima", ...kartu("q1", 12, 46, 276, 30, W.krem, ["hari 1: 55 l 575 ml"], 10)),
-      tambah("empat@2", ...kartu("q2", 12, 84, 276, 30, W.hijauMuda, ["hari 2: 40 l 480 ml"], 10)),
-      tambah("enam", ...kartu("q3", 12, 122, 276, 30, W.langit, ["hari 3: 60 l 825 ml"], 10)),
-    ),
-    k(
-      "Kumpulkan satuan yang sama. Liter: lima puluh lima tambah empat puluh tambah enam puluh sama dengan seratus lima puluh lima. Mililiter berjumlah seribu delapan ratus delapan puluh. Totalnya seratus lima puluh enam liter delapan ratus delapan puluh mililiter.",
-      bersih(0),
-      tambah(0, judul("Kumpulkan yang sama")),
-      tambah("Liter:", ...kartu("r1", 12, 36, 276, 28, W.krem, ["55 + 40 + 60 = 155 l"], 10.4)),
-      tambah("Mililiter", ...kartu("r2", 12, 72, 276, 28, W.hijauMuda, ["575 + 480 + 825 = 1.880 ml"], 10.4)),
-      tambah("Mililiter@2", ...kartu("r3", 12, 108, 276, 28, W.langit, ["1.880 ml = 1 l 880 ml"], 10.4)),
-      tambah("Totalnya", ...kartu("r4", 12, 144, 276, 34, W.pink, ["total 156 l 880 ml"], 11.6)),
-    ),
-  ],
-};
+/* ------------------------------ 5. Pemeriksaan dengan empat gelas ------------------------------ */
+const SUARA_P1 = "Laras menuang satu liter ke dalam gelas ukur kecil sebanyak empat kali berturut-turut.";
+const SUARA_P2 = "Setiap gelas berisi dua ratus lima puluh mililiter, dan empat gelas sama dengan seribu mililiter.";
+const SUARA_P3 = "Jadi satu liter sama dengan seribu mililiter, dan dua liter sama dengan dua ribu mililiter.";
 
-/* ------------------------------ 8. Aktivitas 4: kubus satuan (Buku Siswa hlm. 132-134; Panduan Guru hlm. 160) ------------------------------ */
-export const ADEGAN_AKTIVITAS_4: AdeganStory = {
-  id: "aktivitas-4",
-  judul: "Percobaan: volume dengan kubus satuan",
-  sumber: "Materi: volume dengan kubus satuan",
+export const ADEGAN_PERIKSA: AdeganStory = {
+  id: "periksa",
+  judul: "Laras memeriksa dengan gelas",
+  sumber: "Materi: satu liter seribu mililiter",
   latar: "#F0FDF4",
-  kutipan: [
-    "Aktivitas 4 : Konsep Volume dengan Kubus Satuan",
-    "Kardus",
-    "Kubus satuan",
-    "Letakkan kubus satuan ke dalam kardus.",
-    "Selanjutnya, Susunlah kubus satuan agar menjadi berbagai bangun.",
-    "Apakah hasil menyusun bangun dengan kubus satuan berbeda?",
-    "Dadu merupakan benda pejal.",
-    "Tidak cocok Pak.",
-    "Kita biasanya menggunakan mililiter dan liter untuk benda cair.",
-    "maka volume kardus adalah banyaknya kubus satuan yang mengisi penuh kardus tersebut.",
-  ],
   ketukan: [
     k(
-      "Percobaan kedua, kubus satuan. Kelompok memasukkan kubus ke dalam kardus sampai penuh, lalu menyusunnya menjadi berbagai bangun. Apakah susunannya berbeda?",
-      bersih(0),
-      tambah(0, judul("Percobaan: kubus satuan")),
-      tambah("kardus", emo("k1", 60, 100, "📦", 48)),
-      tambah("kubus", ...kubusDi("k2", "d", 205, 100, 12)),
-      tambah("Apakah", ...kartu("k3", 30, 134, 240, 36, W.krem, ["kubus dalam kardus penuh", "disusun jadi berbagai bangun"], 8.6)),
+      SUARA_P1,
+      tambah(0, judul("Satu Liter ke Gelas"), ...lantai("lt", 150), ...tokoh("la", 36, 184, "Laras")),
+      tambah("satu", kotak("bt", 74, 78, 34, 50, W.langit, WL.airGaris, { rx: 6, tebal: 2, z: 1 }), kotak("ba", 76, 100, 30, 26, WL.air, undefined, { rx: 0, tebal: 0, z: 2 }), teks("bi", 91, 94, "1 l", 12, W.biru, { z: 3 })),
+      tambah("gelas", ...gelasUkur("gu", 190, 70, 24, 58, 0)),
+      tambah("empat", teks("k4", 140, 56, "4 kali", 13, W.merah)),
+      tambah("kali", panah("ap", 112, 100, 56, 0, W.ungu, 2.4)),
     ),
     k(
-      "Bentuk boleh berbeda, banyak kubus bisa sama. Contohnya dua bangun yang sama-sama empat kubus satuan.",
-      bersih(0),
-      tambah(0, judul("Bentuk beda, kubus sama")),
-      tambah("Bentuk", ...kubusDi("k4", "a", 80, 100, 16)),
-      tambah("Contohnya", ...kubusDi("k5", "c", 220, 100, 16)),
-      tambah("empat", teks("k4t", 80, 128, "4 kubus", 10, W.biru), teks("k5t", 220, 128, "4 kubus", 10, W.biru)),
-      tambah("empat", ...kartu("k6", 50, 146, 200, 30, W.hijauMuda, ["bentuk beda, volume sama"], 9.4)),
+      SUARA_P2,
+      tambah("dua", teks("t250", 202, 60, "250 ml", 12, W.coklat)),
+      tambah("empat", ...deretGelas("g4", 120, 112, 4, 16, 12)),
+      ubah("sama", { id: "gu-a", ...airEmber(70, 58, 0.9) }),
+      tambah("seribu", teks("sm", 150, 140, "4 × 250 = 1.000 ml", 10, W.hijauTua)),
     ),
     k(
-      "Helen punya mainan dadu, benda pejal. Mililiter dan liter tidak cocok untuk dadu, karena biasanya dipakai untuk benda cair. Maka dipakai kubus satuan.",
+      SUARA_P3,
       bersih(0),
-      tambah(0, judul("Dadu: benda pejal")),
-      tambah("dadu,", emo("k7", 150, 84, "🎲", 44)),
-      tambah("tidak", ...kartu("k8", 30, 108, 240, 30, W.merahMuda, ["ml dan l: untuk benda cair"], 9.4)),
-      tambah("Maka", ...kartu("k9", 30, 148, 240, 30, W.hijauMuda, ["benda pejal: kubus satuan"], 9.4)),
+      tambah(0, judul("Satu Liter dan Dua Liter"), ...lantai("lt", 150), ...tokoh("la", 36, 184, "Laras")),
+      tambah("seribu", ...kartu("k1", 50, 56, 200, 30, W.krem, ["1 l = 1.000 ml"], 12)),
+      tambah("dua", emo("tt", 150, 94, E.tetes, 20)),
+      tambah("ribu", ...kartu("k2", 50, 100, 200, 30, W.hijauMuda, ["2 l = 2.000 ml"], 12)),
     ),
   ],
 };
 
-/* ------------------------------ 9. Sentimeter kubik dan meter kubik (Buku Siswa hlm. 134-135; Panduan Guru hlm. 160, 162) ------------------------------ */
-export const ADEGAN_CM3_M3: AdeganStory = {
-  id: "cm3-m3",
-  judul: "Sentimeter kubik dan meter kubik",
-  sumber: "Materi: sentimeter kubik dan meter kubik",
-  latar: "#EFF6FF",
-  kutipan: [
-    "Volume kubus satuan di atas adalah 1 cm³.",
-    "Kita menggunakan cm³ untuk wadah kecil.",
-    "Kalian dapat membacanya sebagai sentimeter kubik.",
-    "Bagaimana jika benda atau wadahnya besar?",
-    "Volume kubus satuan di atas adalah 1 m³.",
-    "Kita menggunakan m³ untuk wadah besar.",
-    "Kita membacanya sebagai meter kubik.",
-    "Kita sudah belajar satuan volume meliputi mililiter, liter, sentimeter kubik, dan",
-    "1 cm³ = 1 mℓ",
-    "1 m³ = 1.000 liter",
-    "satuan baku panjang misalkan km, hm, dam, m, dm, cm, mm.",
-    "km3, hm3, dam3, m3, dm3, cm3, mm3",
-    "m3 ke cm3 dikalikan 100, seharusnya dikalikan 1003",
-  ],
-  ketukan: [
-    k(
-      "Kubus rusuk satu sentimeter bervolume satu sentimeter kubik, untuk wadah kecil. Kubus rusuk satu meter bervolume satu meter kubik, untuk wadah besar seperti bak mandi.",
-      bersih(0),
-      tambah(0, judul("cm³ dan m³")),
-      tambah("sentimeter", ...kubusDi("c1", "satu", 70, 100, 22)),
-      tambah("sentimeter", teks("c1t", 70, 128, "rusuk 1 cm", 9, W.biru), teks("c1v", 70, 142, "volume 1 cm³", 9.6, W.hijau)),
-      tambah("meter@3", emo("c2", 210, 98, "🛁", 44)),
-      tambah("meter@3", teks("c2t", 210, 128, "rusuk 1 m", 9, W.biru), teks("c2v", 210, 142, "volume 1 m³", 9.6, W.hijau)),
-    ),
-    k(
-      "Kini ada empat satuan volume: mililiter, liter, sentimeter kubik, dan meter kubik. Satu sentimeter kubik sama dengan satu mililiter, dan satu meter kubik sama dengan seribu liter.",
-      bersih(0),
-      tambah(0, judul("Empat satuan volume")),
-      tambah("mililiter,", ...kartu("d1", 12, 36, 132, 28, W.hijauMuda, ["mililiter (ml)"], 9)),
-      tambah("liter@2", ...kartu("d2", 156, 36, 132, 28, W.langit, ["liter (l)"], 9)),
-      tambah("sentimeter", ...kartu("d3", 12, 72, 132, 28, W.krem, ["sentimeter kubik"], 9)),
-      tambah("meter@2", ...kartu("d4", 156, 72, 132, 28, W.pink, ["meter kubik"], 9)),
-      tambah("Satu@2", ...kartu("d5", 12, 112, 276, 30, W.krem, ["1 cm³ = 1 ml"], 11)),
-      tambah("seribu", ...kartu("d6", 12, 150, 276, 30, W.krem, ["1 m³ = 1.000 l"], 11)),
-    ),
-    k(
-      "Perhatikan deret satuan panjang dari kilometer sampai milimeter. Jika dipangkatkan tiga, ia menjadi satuan volume. Liter juga dikaitkan dengan satuan pangkat tiga itu.",
-      bersih(0),
-      tambah(0, judul("Satuan panjang → volume")),
-      tambah("dari", ...kartu("e1", 12, 40, 276, 30, W.langit, ["km  hm  dam  m  dm  cm  mm"], 10.4)),
-      tambah("dipangkatkan", ...kartu("e2", 12, 90, 276, 30, W.hijauMuda, ["km³  hm³  dam³  m³  dm³  cm³  mm³"], 9.6)),
-      tambah("Liter", teks("e3", 150, 142, "satuan panjang dipangkatkan tiga", 9, W.coklat)),
-    ),
-    k(
-      "Hati-hati, kesalahan yang sering terjadi: satu meter seratus sentimeter, lalu mengira satu meter kubik seratus sentimeter kubik. Yang benar seratus kali seratus kali seratus, yaitu satu juta sentimeter kubik.",
-      bersih(0),
-      tambah(0, judul("Hati-hati: konversi satuan")),
-      tambah("satu", ...kartu("f1", 12, 36, 276, 30, W.langit, ["1 m = 100 cm"], 10.4)),
-      tambah("mengira", ...kartu("f2", 12, 74, 276, 30, W.merahMuda, ["1 m³ bukan 100 cm³"], 10.4)),
-      tambah("benar", ...kartu("f3", 12, 112, 276, 30, W.hijauMuda, ["100 × 100 × 100 = 1.000.000"], 10.4)),
-      tambah("juta", ...kartu("f4", 12, 150, 276, 30, W.krem, ["1 m³ = 1.000.000 cm³"], 10.4)),
-    ),
-  ],
-};
+/* ------------------------------ 6. Mengepel ------------------------------ */
+const SUARA_M1 = "Satria menepati taruhannya dan mulai mengepel lantai di depan rak ember.";
+const SUARA_M2 = "Ia menyenggol ember kosong sehingga menggelinding, dan semua orang tertawa.";
+const SUARA_M3 = "Laras mencatat, satu liter sama dengan seribu mililiter, bukan seratus.";
 
-/* ------------------------------ 10. Menghitung kubus satuan: Ayo Mencoba dan Ayo Berlatih 1 (Buku Siswa hlm. 135-136; Panduan Guru hlm. 161) ------------------------------ */
-const BARIS_ABCD = ["A", "B", "C", "D"];
-const PUSAT_ABCD = [44, 110, 176, 250];
-export const ADEGAN_KUBUS_MENCOBA: AdeganStory = {
-  id: "kubus-mencoba",
-  judul: "Menghitung kubus satuan",
-  sumber: "Materi: menghitung kubus satuan",
+export const ADEGAN_MENGEPEL: AdeganStory = {
+  id: "mengepel",
+  judul: "Satria mengepel lantai",
+  sumber: "Materi: Satria menepati taruhan",
   latar: "#FFFBEB",
-  kutipan: [
-    "Tentukan volume bangun berikut dengan cermat.",
-    "Volume bangun (i) adalah 24 cm³",
-    "adalah 9 cm³",
-    "Tentukan volume dari gambar A, B, C, D dengan menggunakan satuan volume.",
-    "Volume bangun A adalah 9 cm3",
-    "Volume bangun B adalah 8 cm3",
-    "Volume bangun C adalah 12 cm3",
-    "Volume bangun D adalah 18 cm3",
-    "Apakah ada bangun yang memiliki volume yang sama?",
-    "Tidak ada bangun yang memiliki volume sama.",
-  ],
   ketukan: [
     k(
-      "Ayo mencoba: tentukan volume bangun satu. Lapisan bawah dua belas kubus, lalu dua lapisan masing-masing enam kubus. Dua belas ditambah enam ditambah enam sama dengan dua puluh empat sentimeter kubik.",
-      bersih(0),
-      tambah(0, judul("Bangun (i)")),
-      tambah("Lapisan", ...kubusDi("g1", "i", 150, 104, 11, true)),
-      tambah("Dua@2", ...kartu("g2", 30, 134, 240, 34, W.krem, ["12 + 6 + 6 = 24 cm³"], 11)),
+      SUARA_M1,
+      tambah(0, judul("Satria Mengepel"), ...lantai("lt", 150), ...tokoh("sa", 60, 184, "Satria")),
+      tambah("mengepel", emo("sp", 100, 138, E.sapu, 26)),
+      tambah("lantai", ...[0, 1, 2].map((i) => bulat(`bb${i}`, 130 + i * 16, 142, 4, WL.air, WL.airGaris, { tebal: 1, z: 2 }))),
+      tambah("rak", ...rak("rk", 170, 100, 110)),
+      tambah("ember", ...ember("e1", 182, 62, 34, 38, 0.5), ...ember("e2", 228, 62, 34, 38, 0.8)),
     ),
     k(
-      "Bangun dua tersusun dari tiga kubus di atas, dua kubus di tengah, dan empat kubus di bawah. Jadi volumenya sembilan sentimeter kubik.",
-      bersih(0),
-      tambah(0, judul("Bangun (ii)")),
-      tambah("tiga", ...kubusDi("h1", "ii", 150, 118, 16, true)),
-      tambah("Jadi", ...kartu("h2", 30, 140, 240, 34, W.krem, ["3 + 2 + 4 = 9 cm³"], 11)),
+      SUARA_M2,
+      tambah("menyenggol", emo("hit", 200, 52, E.tabrak, 22)),
+      hapus("kosong", ...idEmber("e2")),
+      tambah("menggelinding", ...ember("e3", 140, 112, 34, 38, 0), panah("ro", 226, 130, -60, 0, W.ungu, 2.2, { z: 4 })),
+      tambah("tertawa", ...tokoh("la", 190, 184, "Laras"), emo("tw1", 100, 126, E.tawa, 22), emo("tw2", 190, 140, E.tawa, 22)),
     ),
     k(
-      "Latihan: volume bangun A sembilan, B delapan, C dua belas, dan D delapan belas sentimeter kubik. Tidak ada dua bangun yang volumenya sama.",
-      bersih(0),
-      tambah(0, judul("Bangun A, B, C, D")),
-      ...BARIS_ABCD.map((h, i) => tambah(["sembilan", "delapan", "dua", "delapan@2"][i], ...kubusDi(`m${h}`, h, PUSAT_ABCD[i], 100, 9), teks(`m${h}t`, PUSAT_ABCD[i], 120, `${h}: ${["9", "8", "12", "18"][i]} cm³`, 9.2, W.biru))),
-      tambah("Tidak", ...kartu("mk", 30, 140, 240, 30, W.hijauMuda, ["9, 8, 12, 18: semuanya berbeda"], 9.4)),
+      SUARA_M3,
+      tambah("mencatat", emo("cat", 232, 108, E.catat, 22)),
+      tambah("seribu", ...kartu("ct", 30, 40, 160, 30, W.krem, ["1 l = 1.000 ml"], 11)),
+      tambah("bukan", emo("xs", 232, 58, E.salah, 22), teks("sr", 232, 78, "100 ml", 12, W.merah)),
     ),
   ],
 };

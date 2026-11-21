@@ -1,53 +1,46 @@
 /**
- * Misi dan tantangan bebas Kelas 4 Bab 4 (Pengukuran Luas dan Volume). Murni: tanpa React, tanpa jaringan.
+ * Misi dan tantangan bebas Kelas 4 Bab 4 (Pengukuran Luas dan Volume, tema Kolam Renang Tirta Ceria). Murni: tanpa React, tanpa jaringan.
  * Diuji di scripts/uji-lab-k4b4.mjs.
  *
- * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
- *  A Luas   : Lab Luas (Tutup, Kisi, Ubah)       + Mesin Luas   + Meja Lipat Helen
- *  B Volume : Lab Volume (Tuang, Kubus, Takar)   + Mesin Volume + Dapur Helen (pencapaian bab)
+ * Tiap Sub-Bab satu simulasi sendiri (folder Sub-Bab).
+ * KERANGKA: agen tiap Sub-Bab mengganti MISI_X (kosong) dan menyesuaikan tipe keadaannya di union KeadaanK4Bab4.
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
-import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
-import type { KeadaanLuasK4B4A } from "./lab-luas-k4b4a";
-import type { KeadaanVolumeK4B4B } from "./lab-volume-k4b4b";
+import type { DefMisi } from "./misi-simulasi";
 
-export type KeadaanK4Bab4 = KeadaanLuasK4B4A | KeadaanVolumeK4B4B | KeadaanSelesai;
-export type HurufMisiK4B4 = "A" | "B";
+import type { KeadaanUbin } from "./ubin-k4b4a/logika";
+import type { KeadaanEmber } from "./ember-k4b4b/logika";
 
-const selesai = (k: KeadaanK4Bab4, id: string) => k.alat === "selesai" && k.id === id;
-/** Riwayat alat tertentu memuat semua id. */
-const pernah = (k: KeadaanK4Bab4, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
+export type KeadaanK4Bab4 = { alat: "kerangka" } | KeadaanUbin | KeadaanEmber;
 
-/** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K4B4 = { A: "meja-helen", B: "dapur-helen" } as const;
-export const ID_MESIN_K4B4 = { A: "mesin-luas", B: "mesin-volume" } as const;
-
+/** Sub-Bab A: Lantai Ubin. Empat misi wajib dan dua tantangan bebas, id berawalan a-, tanpa skor. Diuji di scripts/uji-ubin-k4b4a.mjs. */
+const ubin = (k: KeadaanK4Bab4): k is KeadaanUbin => k.alat === "ubin";
 export const MISI_A: DefMisi<KeadaanK4Bab4>[] = [
-  { id: "a-uang", teks: "Di Tutup, pilih uang kertas dan tutup meja tanpa celah, lalu periksa.", wajib: true, cek: (k) => pernah(k, "luas", "tutup:uang") },
-  { id: "a-origami", teks: "Di Tutup, tutup meja yang sama dengan origami. Bandingkan banyaknya.", wajib: true, cek: (k) => pernah(k, "luas", "tutup:origami") },
-  { id: "a-tiga-belas", teks: "Di Kisi, arsir satu bangun seluas tiga belas cm² lalu periksa.", wajib: true, cek: (k) => pernah(k, "luas", "kisi:13") },
-  { id: "a-pp", teks: "Di Kisi, arsir persegi panjang tiga baris, tiap baris empat persegi, lalu periksa.", wajib: true, cek: (k) => pernah(k, "luas", "pp:3x4") },
-  { id: "a-ubah", teks: "Di Ubah, ubah dua m² menjadi cm².", wajib: true, cek: (k) => pernah(k, "luas", "ubah:m2:2") },
-  { id: "a-mesin", teks: "Selesaikan Mesin Luas sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B4.A) },
-  { id: "a-skenario", teks: "Selesaikan skenario Meja Lipat Helen sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B4.A) },
-  { id: "a-tumpuk", teks: "Di Tutup, coba taruh ubin yang bertumpuk. Baca penjelasan lab.", wajib: false, cek: (k) => pernah(k, "luas", "tumpuk") },
-  { id: "a-sama-luas", teks: "Di Kisi, buat dua bangun berbeda bentuk yang sama-sama tiga belas cm².", wajib: false, cek: (k) => pernah(k, "luas", "kisi:13:beda") },
-  { id: "a-balik", teks: "Di Ubah, ubah balik tiga puluh ribu cm² menjadi m².", wajib: false, cek: (k) => pernah(k, "luas", "ubah:cm2:3") },
+  { id: "a-tutup", teks: "Tutup lantai dengan ubin sampai pas dengan lantai sasaran, lalu tekan Periksa.", wajib: true, cek: (k) => ubin(k) && k.tutupBenar.length >= 1 },
+  { id: "a-baris", teks: "Hitung luas lantai dari baris kali kolom dan satuannya, lalu tekan Periksa.", wajib: true, cek: (k) => ubin(k) && k.barisBenar.length >= 1 },
+  { id: "a-tangga", teks: "Ubah meter persegi ke sentimeter persegi pada tangga satuan, lalu tekan Periksa.", wajib: true, cek: (k) => ubin(k) && k.tanggaBenar.length >= 1 },
+  { id: "a-satuan", teks: "Pilih satuan luas yang tepat untuk benda yang diukur, lalu tekan Periksa.", wajib: true, cek: (k) => ubin(k) && k.satuanBenar.length >= 1 },
+  { id: "a-tolak", teks: "Tekan Periksa pada lantai yang masih kosong, dan lihat alat menolak.", wajib: false, cek: (k) => ubin(k) && k.tolak },
+  { id: "a-dua", teks: "Tutup dua lantai dengan benar tanpa terhenti.", wajib: false, cek: (k) => ubin(k) && k.tutupBenar.length >= 2 },
 ];
 
+/** Sub-Bab B: Bak Ember. Empat misi wajib dan dua tantangan bebas, id berawalan b-, tanpa skor. Diuji di scripts/uji-ember-k4b4b.mjs. */
+const ember = (k: KeadaanK4Bab4): k is KeadaanEmber => k.alat === "ember";
 export const MISI_B: DefMisi<KeadaanK4Bab4>[] = [
-  { id: "b-empat", teks: "Di Tuang, isi botol A sampai penuh dari botol B. Berapa botol B?", wajib: true, cek: (k) => pernah(k, "volume", "penuh:b") },
-  { id: "b-sepuluh", teks: "Di Tuang, isi botol A sampai penuh dari botol C.", wajib: true, cek: (k) => pernah(k, "volume", "penuh:c") },
-  { id: "b-dua-puluh-empat", teks: "Di Kubus, susun bangun dua lapisan yang berisi dua puluh empat kubus satuan, lalu hitung.", wajib: true, cek: (k) => pernah(k, "volume", "vol:24:lapis:2") },
-  { id: "b-sembilan", teks: "Di Kubus, susun satu lapisan berisi sembilan kubus satuan, lalu hitung.", wajib: true, cek: (k) => pernah(k, "volume", "vol:9:lapis:1") },
-  { id: "b-liter", teks: "Di Takar, isi gelas takar tepat seribu ml air. Berapa liter?", wajib: true, cek: (k) => pernah(k, "volume", "liter") },
-  { id: "b-mesin", teks: "Selesaikan Mesin Volume sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B4.B) },
-  { id: "b-skenario", teks: "Selesaikan skenario Dapur Helen sampai adegan akhir. Ini misi penutup bab.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B4.B) },
-  { id: "b-celup", teks: "Di Takar, celupkan balok ke air. Berapa ml muka air naik?", wajib: false, cek: (k) => pernah(k, "volume", "celup") },
-  { id: "b-tumpah", teks: "Tuang terus sampai tumpah. Baca penjelasan lab.", wajib: false, cek: (k) => pernah(k, "volume", "tumpah") },
-  { id: "b-sanitizer", teks: "Di Tuang, isi botol besar sanitizer dari botol kecil sampai penuh.", wajib: false, cek: (k) => pernah(k, "volume", "penuh:sanitizer") },
+  { id: "b-tuang", teks: "Tuang gelas takar ke ember sampai tepat di garis sasaran, lalu tekan Periksa.", wajib: true, cek: (k) => ember(k) && k.tuangBenar.length >= 1 },
+  { id: "b-susun", teks: "Susun lapisan kubus sampai volumenya sama dengan sasaran, lalu tekan Periksa.", wajib: true, cek: (k) => ember(k) && k.susunBenar.length >= 1 },
+  { id: "b-turun", teks: "Turuni tangga dari liter ke mililiter dan pilih hasilnya, lalu tekan Periksa.", wajib: true, cek: (k) => ember(k) && k.tanggaBenar.some((i) => i % 2 === 0) },
+  { id: "b-naik", teks: "Naiki tangga dari mililiter ke liter dan pilih hasilnya, lalu tekan Periksa.", wajib: true, cek: (k) => ember(k) && k.tanggaBenar.some((i) => i % 2 === 1) },
+  { id: "b-tolak", teks: "Coba menuang sampai ember meluap, dan lihat alat menolak.", wajib: false, cek: (k) => ember(k) && k.tolak },
+  { id: "b-dua", teks: "Isi dua ember sasaran dengan tepat.", wajib: false, cek: (k) => ember(k) && k.tuangBenar.length >= 2 },
 ];
 
-const DAFTAR: Record<HurufMisiK4B4, DefMisi<KeadaanK4Bab4>[]> = { A: MISI_A, B: MISI_B };
-export const daftarMisiK4Bab4 = (huruf: string): DefMisi<KeadaanK4Bab4>[] => DAFTAR[huruf as HurufMisiK4B4] ?? MISI_A;
+export const daftarMisiK4Bab4 = (sub: string): DefMisi<KeadaanK4Bab4>[] => {
+  switch (sub) {
+    case "B":
+      return MISI_B;
+    default:
+      return MISI_A;
+  }
+};
