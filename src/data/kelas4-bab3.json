@@ -5,7 +5,7 @@
   "grade": 4,
   "subjectLabel": "MATEMATIKA - KELAS 4 SD",
   "title": "BAB 3: POLA GAMBAR DAN POLA BILANGAN",
-  "silabusElemen": "🌈 Fase B • Elemen Aljabar: Pola Gambar (membesar–mengecil) dan Pola Bilangan (membesar–mengecil) (Kelas 4 SD/MI)",
+  "silabusElemen": "🌈 Fase B • Elemen Aljabar: Pola Gambar dan Pola Bilangan, Membesar dan Mengecil (SD/MI)",
   "suaraPerangkatSaja": true,
   "suaraLaju": 0.7,
   "suaraNada": 1,
@@ -18,49 +18,49 @@
     "A": {
       "id": "A",
       "codeTitle": "Sub-Bab A (Pola Gambar)",
-      "fullTitle": "Sub-Bab A: Pola Gambar",
-      "targetDescription": "Siswa menemukan dan membuat pola gambar membesar (mis. jeruk 2,4,6,… beda +2 hingga kumpulan ke-7 = 14) dan mengecil (mis. permen 9,7,5,… beda −2 hingga kumpulan ke-5 = 1) memakai tabel selisih. Siswa memakai cara Pola Berulang, Pola Bertambah, Struktur Visual. Siswa memakai cara Pola Berulang, Pola Bertambah, Struktur Visual.",
+      "fullTitle": "Sub-Bab A: Pola Gambar Membesar dan Mengecil",
+      "targetDescription": "Di lapangan Kampung Senandung bersama Bu Ratri, kita menemukan pola gambar deret angklung yang membesar dan mengecil, memeriksa selisih tetap dengan tabel selisih, dan melanjutkan deret berikutnya.",
       "secondaryBg": "#FFEDD5",
       "secondaryBorder": "#EA580C",
       "secondaryText": "#7C2D12",
       "silabus": {
-        "teksSuara": "Kita belajar pola gambar. Jeruk disusun 2, 4, 6, lalu ditambah 2 terus sampai kumpulan ketujuh berisi 14. Permen disusun 9, 7, 5, dikurangi 2 sampai tersisa 1. Pola bisa membesar atau mengecil. Kita memakai cara: Pola Berulang, Pola Bertambah, Struktur Visual. Unit pola berulang menentukan suku berikutnya. Tiap langkah menambah dengan aturan tetap. Lihat kelompok bentuk, bukan hanya warna. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menemukan dan membuat pola gambar membesar dan mengecil.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 3 Sub-Bab A)."
+        "teksSuara": "Kita belajar pola gambar di lapangan Kampung Senandung bersama Bu Ratri. Deret angklung bisa bertambah atau berkurang dengan selisih yang selalu sama. Bertambah berarti pola membesar, berkurang berarti pola mengecil. Kita memakai gambar berikutnya, tabel selisih, dan susun per lima. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menemukan, melanjutkan, dan membuat pola gambar membesar dan mengecil.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Aljabar."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Repeating Pattern",
-          "namaId": "Pola Berulang",
-          "asal": "Pattern pedagogy",
-          "ringkas": "Unit pola berulang menentukan suku berikutnya.",
+          "nama": "Draw the Next",
+          "namaId": "Gambar Berikutnya",
+          "asal": "IGIL",
+          "ringkas": "Gambar deret berikutnya dengan perubahan yang sama.",
           "tahap": [
             "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Difference Table",
+          "namaId": "Tabel Selisih",
+          "asal": "IGIL",
+          "ringkas": "Tulis selisih antar deret, harus selalu sama.",
+          "tahap": [
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Growing Pattern",
-          "namaId": "Pola Bertambah",
-          "asal": "Van de Walle",
-          "ringkas": "Tiap langkah menambah dengan aturan tetap.",
+          "nama": "Group by Five",
+          "namaId": "Susun Per Lima",
+          "asal": "IGIL",
+          "ringkas": "Susun per lima agar jumlah cepat terbaca.",
           "tahap": [
-            "Mind",
+            "Picture",
             "Abstract"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Visual Structure",
-          "namaId": "Struktur Visual",
-          "asal": "Gestalt patterning",
-          "ringkas": "Lihat kelompok bentuk, bukan hanya warna.",
-          "tahap": [
-            "Infografis",
-            "Picture"
           ]
         }
       ],
@@ -768,23 +768,23 @@
     "B": {
       "id": "B",
       "codeTitle": "Sub-Bab B (Pola Bilangan)",
-      "fullTitle": "Sub-Bab B: Pola Bilangan",
-      "targetDescription": "Siswa menemukan dan membuat pola bilangan membesar (3,5,7…; 1,4,7…; telur +8) dan mengecil (23,18,13…; 32,28…; produksi TV −6) dengan mengamati selisih tetap, serta menyelesaikan cerita rak buku, kursi, dan panen. Siswa memakai cara Barisan Aritmetika Sederhana, Mesin Fungsi, Tabel Nilai. Siswa memakai cara Barisan Aritmetika Sederhana, Mesin Fungsi, Tabel Nilai.",
+      "fullTitle": "Sub-Bab B: Pola Bilangan Membesar dan Mengecil",
+      "targetDescription": "Di barisan kursi Pak Gunawan, kita menemukan beda tetap pada pola bilangan membesar dan mengecil, melanjutkan bilangan berikutnya, dan mencari bilangan pada urutan tertentu.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
       "silabus": {
-        "teksSuara": "Kita belajar pola bilangan. Tiga, lima, tujuh, sembilan, sebelas, bedanya plus dua. Satu, empat, tujuh, sepuluh, bedanya plus tiga. Dua puluh tiga, delapan belas, tiga belas, delapan, bedanya minus lima. Pola bilangan bisa membesar atau mengecil. Kita memakai cara: Barisan Aritmetika Sederhana, Mesin Fungsi, Tabel Nilai. Beda tetap antar suku. Aturan mengubah masukan jadi keluaran. Catat suku ke-n dan nilainya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menemukan dan membuat pola bilangan membesar dan mengecil.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 3 Sub-Bab B)."
+        "teksSuara": "Kita belajar pola bilangan di barisan kursi Pak Gunawan. Bilangan disusun dengan beda yang selalu sama. Beda tambah berarti pola membesar, beda kurang berarti pola mengecil. Untuk urutan tertentu, kita menambah beda sebanyak lompatan. Kita memakai rantai loncat, mesin aturan, dan tabel urutan. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menemukan beda, melanjutkan, dan menentukan bilangan pada urutan tertentu dalam pola bilangan membesar dan mengecil.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Aljabar."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Arithmetic Sequence",
-          "namaId": "Barisan Aritmetika Sederhana",
-          "asal": "Number patterns",
-          "ringkas": "Beda tetap antar suku.",
+          "nama": "Jump Chain",
+          "namaId": "Rantai Loncat",
+          "asal": "IGIL",
+          "ringkas": "Loncat dari bilangan ke bilangan dengan beda sama.",
           "tahap": [
             "Story",
             "Concrete",
@@ -793,23 +793,23 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Function Machine",
-          "namaId": "Mesin Fungsi",
-          "asal": "Input-output pedagogy",
-          "ringkas": "Aturan mengubah masukan jadi keluaran.",
+          "nama": "Rule Machine",
+          "namaId": "Mesin Aturan",
+          "asal": "IGIL",
+          "ringkas": "Satu aturan dipakai terus pada tiap bilangan.",
           "tahap": [
-            "Picture",
-            "Mind"
+            "Concrete",
+            "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Table of Values",
-          "namaId": "Tabel Nilai",
-          "asal": "Pattern tables",
-          "ringkas": "Catat suku ke-n dan nilainya.",
+          "nama": "Position Table",
+          "namaId": "Tabel Urutan",
+          "asal": "IGIL",
+          "ringkas": "Catat urutan dan bilangannya.",
           "tahap": [
-            "Infografis",
+            "Picture",
             "Abstract"
           ]
         }

@@ -1,55 +1,46 @@
 /**
- * Misi dan tantangan bebas Kelas 4 Bab 3 (Pola Gambar dan Pola Bilangan). Murni: tanpa React, tanpa jaringan.
+ * Misi dan tantangan bebas Kelas 4 Bab 3 (Pola Gambar dan Pola Bilangan, tema Orkestra Angklung Kampung Senandung). Murni: tanpa React, tanpa jaringan.
  * Diuji di scripts/uji-lab-k4b3.mjs.
  *
- * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
- *  A Pola gambar   : Lab Pola Gambar (Lanjut, Tabel, Buat)      + Mesin Pola Gambar   + Jeruk dan Permen Dina
- *  B Pola bilangan : Lab Pola Bilangan (Selisih, Aturan, Tabel) + Mesin Pola Bilangan + Pameran Pola Kelas 4 (pencapaian bab)
+ * Tiap Sub-Bab satu simulasi sendiri (folder Sub-Bab).
+ * KERANGKA: agen tiap Sub-Bab mengganti MISI_X (kosong) dan menyesuaikan tipe keadaannya di union KeadaanK4Bab3.
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
-import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
-import type { KeadaanPolaGambarK4B3A } from "./lab-pola-gambar-k4b3a";
-import type { KeadaanPolaBilanganK4B3B } from "./lab-pola-bilangan-k4b3b";
+import type { DefMisi } from "./misi-simulasi";
 
-export type KeadaanK4Bab3 = KeadaanPolaGambarK4B3A | KeadaanPolaBilanganK4B3B | KeadaanSelesai;
-export type HurufMisiK4B3 = "A" | "B";
+import type { KeadaanAngklung } from "./angklung-k4b3a/logika";
+import type { KeadaanKursi } from "./kursi-k4b3b/logika";
 
-const selesai = (k: KeadaanK4Bab3, id: string) => k.alat === "selesai" && k.id === id;
-/** Riwayat alat tertentu memuat semua id. */
-const pernah = (k: KeadaanK4Bab3, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
-/** Riwayat alat tertentu memuat id berawalan tertentu. */
-const pernahAwalan = (k: KeadaanK4Bab3, alat: string, awalan: string) => k.alat === alat && "pernah" in k && k.pernah.some((p) => p.startsWith(awalan));
+export type KeadaanK4Bab3 = { alat: "kerangka" } | KeadaanAngklung | KeadaanKursi;
 
-/** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K4B3 = { A: "jeruk-permen", B: "pameran-pola" } as const;
-export const ID_MESIN_K4B3 = { A: "mesin-pola-gambar", B: "mesin-pola-bilangan" } as const;
-
+/** Sub-Bab A: Panggung Deret. Empat misi wajib dan dua tantangan bebas, id berawalan a-, tanpa skor. Diuji di scripts/uji-angklung-k4b3a.mjs. */
+const angklung = (k: KeadaanK4Bab3): k is KeadaanAngklung => k.alat === "angklung";
 export const MISI_A: DefMisi<KeadaanK4Bab3>[] = [
-  { id: "a-jeruk", teks: "Di Lanjut, pilih jeruk 2, 4, 6 dan susun titik kumpulan berikutnya.", wajib: true, cek: (k) => pernah(k, "pola-gambar", "lanjut:jeruk") },
-  { id: "a-permen", teks: "Di Lanjut, pilih permen 9, 7, 5 dan susun titik kumpulan berikutnya.", wajib: true, cek: (k) => pernah(k, "pola-gambar", "lanjut:permen") },
-  { id: "a-tabel-jeruk", teks: "Di Tabel, isi tabel selisih jeruk sampai kumpulan ke-7. Berapa jeruknya?", wajib: true, cek: (k) => pernah(k, "pola-gambar", "tabel:jeruk:7") },
-  { id: "a-tabel-permen", teks: "Di Tabel, isi tabel selisih permen sampai kumpulan ke-5.", wajib: true, cek: (k) => pernah(k, "pola-gambar", "tabel:permen:5") },
-  { id: "a-buat", teks: "Di Buat, buat pola membesar dengan selisih +3, lalu buat satu pola mengecil.", wajib: true, cek: (k) => pernah(k, "pola-gambar", "buat:membesar:3") && pernahAwalan(k, "pola-gambar", "buat:mengecil:") },
-  { id: "a-mesin", teks: "Selesaikan Mesin Pola Gambar sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B3.A) },
-  { id: "a-skenario", teks: "Selesaikan skenario Jeruk dan Permen Dina sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B3.A) },
-  { id: "a-tetap", teks: "Di Buat, atur selisih 0 lalu periksa. Apakah polanya membesar atau mengecil?", wajib: false, cek: (k) => pernah(k, "pola-gambar", "buat:tetap") },
-  { id: "a-habis", teks: "Di Tabel, lanjutkan permen setelah kumpulan berisi 1. Baca penjelasan lab.", wajib: false, cek: (k) => pernah(k, "pola-gambar", "habis:permen") },
-  { id: "a-bintang", teks: "Di Lanjut, pilih bintang 12, 9, 6 dan susun kumpulan berikutnya.", wajib: false, cek: (k) => pernah(k, "pola-gambar", "lanjut:bintang") },
+  { id: "a-tata", teks: "Tata deret keempat sesuai pola tiga deret di rak, lalu tekan Periksa.", wajib: true, cek: (k) => angklung(k) && k.tataBenar.length >= 1 },
+  { id: "a-jenis", teks: "Pilih jenis pola dari tiga deret, membesar atau mengecil, lalu tekan Periksa.", wajib: true, cek: (k) => angklung(k) && k.jenisBenar.length >= 1 },
+  { id: "a-tabel", teks: "Atur selisih pada tabel selisih sampai sesuai tiga deret, lalu tekan Periksa.", wajib: true, cek: (k) => angklung(k) && k.tabelBenar.length >= 1 },
+  { id: "a-lima", teks: "Susun angklung per lima sesuai permintaan Bu Ratri, lalu tekan Periksa.", wajib: true, cek: (k) => angklung(k) && k.limaBenar.length >= 1 },
+  { id: "a-tolak", teks: "Tekan Periksa pada rak yang deret keempatnya masih kosong, dan lihat alat menolak.", wajib: false, cek: (k) => angklung(k) && k.tolak },
+  { id: "a-dua", teks: "Tata dua rak dengan benar tanpa terhenti.", wajib: false, cek: (k) => angklung(k) && k.tataBenar.length >= 2 },
 ];
 
+/** Sub-Bab B: Papan Kursi. Empat misi wajib dan dua tantangan bebas, id berawalan b-, tanpa skor. Diuji di scripts/uji-kursi-k4b3b.mjs. */
+const kursi = (k: KeadaanK4Bab3): k is KeadaanKursi => k.alat === "kursi";
 export const MISI_B: DefMisi<KeadaanK4Bab3>[] = [
-  { id: "b-tiga", teks: "Di Selisih, ketuk semua pasangan 1, 4, 7, 10 lalu tetapkan bedanya.", wajib: true, cek: (k) => pernah(k, "pola-bilangan", "beda:tiga") },
-  { id: "b-lima", teks: "Di Selisih, temukan beda pola mengecil 23, 18, 13, 8.", wajib: true, cek: (k) => pernah(k, "pola-bilangan", "beda:lima") },
-  { id: "b-tanda", teks: "Coba tetapkan beda dengan tanda terbalik (tambah untuk pola mengecil). Baca penjelasan lab.", wajib: true, cek: (k) => pernah(k, "pola-bilangan", "tanda-salah") },
-  { id: "b-telur", teks: "Di Aturan, pilih telur peternak, pasang aturan yang cocok, dan jalankan sampai hari ke-5.", wajib: true, cek: (k) => pernah(k, "pola-bilangan", "aturan:telur:5") },
-  { id: "b-rak", teks: "Di Tabel, isi tabel nilai rak buku sampai rak ke-5.", wajib: true, cek: (k) => pernah(k, "pola-bilangan", "nilai:rak:5") },
-  { id: "b-mesin", teks: "Selesaikan Mesin Pola Bilangan sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B3.B) },
-  { id: "b-skenario", teks: "Selesaikan skenario Pameran Pola Kelas 4 sampai adegan akhir. Ini misi penutup bab.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B3.B) },
-  { id: "b-tv", teks: "Di Aturan, jalankan produksi TV sampai bulan ke-6 (Juni).", wajib: false, cek: (k) => pernah(k, "pola-bilangan", "aturan:tv:6") },
-  { id: "b-kursi", teks: "Di Tabel, isi tabel nilai kursi gedung sampai baris ke-5.", wajib: false, cek: (k) => pernah(k, "pola-bilangan", "nilai:kursi:5") },
-  { id: "b-dua-belas", teks: "Di Selisih, temukan beda pola 7, 19, 31, 43.", wajib: false, cek: (k) => pernah(k, "pola-bilangan", "beda:dua-belas") },
+  { id: "b-rantai", teks: "Tarik rantai loncat tambah sampai baris sasaran, lalu tekan Periksa.", wajib: true, cek: (k) => kursi(k) && k.rantaiBenar.some((i) => i % 2 === 0) },
+  { id: "b-turun", teks: "Tarik rantai loncat kurang pada pola yang mengecil sampai baris sasaran, lalu tekan Periksa.", wajib: true, cek: (k) => kursi(k) && k.rantaiBenar.some((i) => i % 2 === 1) },
+  { id: "b-mesin", teks: "Atur aturan mesin sampai cocok dengan bilangan masuk dan keluar, lalu tekan Periksa.", wajib: true, cek: (k) => kursi(k) && k.mesinBenar.length >= 1 },
+  { id: "b-tabel", teks: "Atur banyak lompatan pada tabel urutan dan pilih bilangannya, lalu tekan Periksa.", wajib: true, cek: (k) => kursi(k) && k.tabelBenar.length >= 1 },
+  { id: "b-tolak", teks: "Coba mengurangi kursi sampai kurang dari nol, dan lihat alat menolak.", wajib: false, cek: (k) => kursi(k) && k.tolak },
+  { id: "b-dua", teks: "Cari bilangan pada dua tabel urutan dengan benar tanpa terhenti.", wajib: false, cek: (k) => kursi(k) && k.tabelBenar.length >= 2 },
 ];
 
-const DAFTAR: Record<HurufMisiK4B3, DefMisi<KeadaanK4Bab3>[]> = { A: MISI_A, B: MISI_B };
-export const daftarMisiK4Bab3 = (huruf: string): DefMisi<KeadaanK4Bab3>[] => DAFTAR[huruf as HurufMisiK4B3] ?? MISI_A;
+export const daftarMisiK4Bab3 = (sub: string): DefMisi<KeadaanK4Bab3>[] => {
+  switch (sub) {
+    case "B":
+      return MISI_B;
+    default:
+      return MISI_A;
+  }
+};

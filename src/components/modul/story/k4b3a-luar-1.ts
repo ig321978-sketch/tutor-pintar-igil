@@ -1,254 +1,147 @@
 import type { AdeganStory } from "./logika-story";
-import { PERMEN_TABEL, W, barisTabel, benda, emo, judul, kartu, kotak, panah, teks } from "./k4b3a-gambar";
-import { bersih, idx, k, sebar, sorotkan, tambah } from "./k4b3a-bantu";
+import { E, K, W, deret, emo, judul, kotak, lantaiPanggung, papanTulis, teks, tokoh } from "./k4b3a-gambar";
+import { bersih, hapus, k, sorotkan, tambah } from "./k4b3a-bantu";
 
-export const NAMA_METODE = ["Repeating Pattern", "Growing Pattern", "Visual Structure", "Draw the Next Term"];
-export const NAMA_METODE_ID = ["Pola Berulang", "Pola Bertambah", "Struktur Visual", "Gambar Suku Berikutnya"];
-const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
-const IKON_METODE = ["🔁", "➕", "🧩", "✏"];
+/*
+ * Cerita orisinal IGIL "Deret Angklung Bu Ratri" (Kelas 4 Bab 3 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b3a.md. Bagian ini: pembuka (peti angklung), Draw the Next (Gambar Berikutnya), dan terapannya.
+ */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Draw the Next", "Difference Table", "Group by Five"] as const;
+export const NAMA_METODE_ID = ["Gambar Berikutnya", "Tabel Selisih", "Susun Per Lima"] as const;
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana kita melihat pola pada gambar yang berubah? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai contoh jeruk, kelereng, semangka, dan bola.";
-const SUARA_O2 = "Empat metode itu: Repeating Pattern, Growing Pattern, Visual Structure, dan Draw the Next Term.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Pola Berulang, Pola Bertambah, Struktur Visual, dan Gambar Suku Berikutnya.";
-const SUARA_O4 = "Semuanya menjawab satu pertanyaan: bagaimana kumpulan berikutnya? Dengan mengulang satuan, menambah selisih tetap, melihat bagian bentuk, dan menggambar lalu memeriksa.";
+const SORE = "#7C2D12";
+/** Judul adegan sore berwarna krem supaya terbaca di latar gelap. */
+const judulSore = (isi: string) => judul(isi, W.krem);
+/** Deret angklung berwarna kapur (papan tulis): `${id}-c{i}`. */
+const deretKapur = (id: string, x0: number, y: number, n: number, dx = 22, h = 20, warna: string = K.kapur) => deret(id, x0, y, n, dx, h, warna);
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Sore itu, di tepi panggung, Bu Ratri membuka peti angklung yang berisi susunan bernada beraturan.";
+const SUARA_O2 = "Di dalamnya ada tiga cara supaya pola gambar mudah dilanjutkan, tanpa salah hitung.";
+const SUARA_O3 = "Tiga cara itu: Draw the Next, Difference Table, dan Group by Five.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Gambar Berikutnya, Tabel Selisih, dan Susun Per Lima.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk membaca pola gambar",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Peti angklung Bu Ratri",
+  sumber: "Metode global: pembuka",
+  latar: SORE,
   ketukan: [
     k(
       SUARA_O1,
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("gambar", ...benda("po1", 40, 62, 1, 1, 12, 5, W.emas), ...benda("po2", 80, 62, 3, 3, 12, 5, W.hijau), ...benda("po3", 130, 62, 5, 5, 12, 5, W.biruMuda)),
-      tambah("berbagai", emo("gl", 235, 80, "🌍", 40)),
-      tambah("empat", ...kartu("pk4", 60, 130, 180, 28, W.emas, ["4 metode dari luar"], 9.4)),
+      tambah(0, judulSore("Sore di Tepi Panggung"), ...lantaiPanggung("tr", 150), emo("bl", 262, 44, E.bulan, 26)),
+      tambah("Bu", ...tokoh("br", 60, 184, "Bu Ratri", 30, W.krem)),
+      tambah("peti", kotak("pt", 170, 124, 84, 26, "#C99A63", W.kayuTua, { rx: 3, z: 1 }), kotak("tt", 166, 114, 92, 10, "#A16207", W.kayuTua, { rx: 3, z: 2 })),
+      tambah("susunan", ...deret("pe", 186, 114, 4, 20, 16)),
+      tambah("beraturan.", teks("tr2", 212, 84, "teratur", 8, W.krem)),
     ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Empat metode")),
-      ...NAMA_METODE.map((m, i) => tambah(["Repeating", "Growing", "Visual", "Draw"][i], ...kartu(`m${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
+      tambah("tiga", teks("n3", 110, 66, "3 cara", 12, W.krem)),
+      tambah("cara", ...[0, 1, 2].flatMap((i) => [kotak(`c${i}-k`, 90 + i * 34, 74, 28, 24, "#FDE68A", W.bambuTua, { rx: 4 }), teks(`c${i}-t`, 104 + i * 34, 90, "cara", 6.4, W.coklat)])),
+      tambah("mudah", emo("ok", 262, 100, E.benar, 20)),
+      tambah("salah", emo("xs", 236, 100, E.salah, 18)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Nama dalam bahasa Indonesia")),
-      ...NAMA_METODE_ID.map((m, i) => tambah(idx(SUARA_O3, ["Berulang", "Bertambah", "Struktur", "Gambar"][i]), ...kartu(`n${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
+      tambah(0, judulSore("Tiga Cara"), teks("n3", 260, 40, "3 cara", 10, W.krem)),
+      tambah("Draw", teks("m0", 112, 70, "1. Draw the Next", 10, W.krem), emo("i0", 30, 72, "\u{1F3A8}", 16)),
+      tambah("Difference", teks("m1", 112, 120, "2. Difference Table", 10, W.krem), emo("i1", 30, 122, "\u{1F4CB}", 16)),
+      tambah("Group", teks("m2", 112, 170, "3. Group by Five", 10, W.krem), emo("i2", 30, 172, "\u{270B}", 16)),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Satu pertanyaan, empat cara")),
-      tambah("mengulang", emo("i1", 45, 82, IKON_METODE[0], 32), teks("i1t", 45, 112, "mengulang", 8.4, W.biru)),
-      tambah("menambah", emo("i2", 112, 82, IKON_METODE[1], 32), teks("i2t", 112, 112, "menambah", 8.4, W.biru)),
-      tambah("melihat", emo("i3", 188, 82, IKON_METODE[2], 32), teks("i3t", 188, 112, "melihat", 8.4, W.biru)),
-      tambah("menggambar", emo("i4", 258, 82, IKON_METODE[3], 32), teks("i4t", 258, 112, "menggambar", 8.4, W.biru)),
-      tambah("berikutnya?", ...kartu("iq", 40, 136, 220, 30, W.emas, ["bagaimana kumpulan berikutnya?"], 9.6)),
+      tambah("Nama", kotak("bk", 196, 52, 100, 130, "#9A3412", W.krem, { rx: 6, tebal: 1, z: -1 })),
+      tambah("Gambar", teks("g0", 246, 70, "Gambar Berikutnya", 8.6, K.kapurMerah)),
+      tambah("Tabel", teks("g1", 246, 120, "Tabel Selisih", 9, K.kapurMerah)),
+      tambah("Susun", teks("g2", 250, 170, "Susun Per Lima", 9, K.kapurMerah), teks("g5", 210, 170, "5", 9, K.kapurMerah)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Repeating Pattern: konsep ------------------------------ */
-const SUARA_R1 = "Metode pertama, Repeating Pattern, atau Pola Berulang. Sebuah pola punya satuan yang berulang, misalnya tambah dua. Mengulang satuan itu membentuk kumpulan berikutnya.";
-const SUARA_R2 = "Langkah pertama: temukan satuan yang berulang. Bandingkan dua kumpulan yang berdampingan dan lihat apa yang berubah. Satuannya bisa penambahan benda, bisa juga pengurangan benda.";
-const SUARA_R3 = "Langkah kedua: ulangi satuan itu. Dari kumpulan terakhir, tambahkan satu satuan untuk kumpulan berikutnya, lalu satu satuan lagi untuk kumpulan sesudahnya.";
-const SUARA_R4 = "Banyaknya pengulangan menentukan hasilnya. Untuk sampai ke kumpulan kelima dari kumpulan pertama, satuan itu diulang empat kali.";
+/* ------------------------------ Draw the Next: konsep ------------------------------ */
+const SUARA_C1 = "Cara pertama, Draw the Next, atau Gambar Berikutnya.";
+const SUARA_C2 = "Kita memandang gambar yang ada, mencari apa yang berubah dari satu deret ke deret berikutnya.";
+const SUARA_C3 = "Lalu kita menggambar deret selanjutnya dengan perubahan yang sama persis.";
+const SUARA_C4 = "Dengan cara ini, kita langsung melihat polanya bertambah atau berkurang.";
 
-/** Kotak satuan berisi dua benda dan label. */
-const satuan = (id: string, x: number, label: string, warna: string) => [kotak(`${id}-k`, x, 74, 40, 40, W.putih, warna, { rx: 4, putus: true }), ...benda(id, x + 20, 86, 2, 1, 16, 5.5, warna, W.coklat), teks(`${id}-t`, x + 20, 128, label, 8.4, warna)];
-
-export const ADEGAN_LUAR_ULANG: AdeganStory = {
-  id: "luar-ulang",
-  judul: "Repeating Pattern: satuan yang berulang",
-  sumber: "Metode luar: Repeating Pattern",
-  latar: "#F0FDF4",
+export const ADEGAN_LUAR_GAMBAR: AdeganStory = {
+  id: "luar-gambar",
+  judul: "Draw the Next: Gambar Berikutnya",
+  sumber: "Metode global: Draw the Next (konsep)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
-      SUARA_R1,
-      tambah(0, judul("Repeating Pattern")),
-      tambah("pertama,", kepala(0)),
-      tambah("satuan", ...satuan("sa", 20, "satuan", W.hijau)),
-      tambah("Mengulang", ...satuan("sb", 80, "ulang 1", W.biruMuda), ...satuan("sc", 130, "ulang 2", W.biruMuda), ...satuan("sd", 180, "ulang 3", W.biruMuda)),
-      tambah("berikutnya.", teks("se", 150, 160, "satuan yang sama diulang", 9.4, W.coklat)),
+      SUARA_C1,
+      tambah(0, judul("Cara 1: Draw the Next"), ...papanTulis("pt", 8, 28, 284, 132)),
+      tambah("Draw", teks("nm", 150, 50, "Draw the Next", 13, K.kapurMerah)),
+      tambah("Gambar", teks("ni", 150, 66, "Gambar Berikutnya", 10, K.kapur), ...deretKapur("g1", 90, 100, 3)),
     ),
     k(
-      SUARA_R2,
-      bersih(0),
-      tambah(0, judul("Langkah 1: temukan satuannya")),
-      tambah("dua", ...benda("ra", 40, 70, 3, 3, 14, 5, W.hijau), teks("rat", 54, 100, "kumpulan A", 8.4, W.biru), ...benda("rb", 200, 70, 5, 5, 14, 5, W.hijau), teks("rbt", 228, 100, "kumpulan B", 8.4, W.biru)),
-      tambah("berubah.", panah("rp", 110, 72, 70, 0, W.merah, 2), teks("rq", 145, 62, "apa yang berubah?", 8.4, W.merah)),
-      tambah("penambahan", ...kartu("rc1", 14, 120, 130, 34, W.hijauMuda, ["penambahan benda"], 9)),
-      tambah("pengurangan", ...kartu("rc2", 156, 120, 130, 34, W.merahMuda, ["pengurangan benda"], 9)),
+      SUARA_C2,
+      tambah("memandang", emo("ey", 272, 46, E.mata, 18)),
+      tambah("berubah", ...deretKapur("g2", 90, 126, 5)),
+      tambah("satu", teks("l1", 50, 94, "deret 1", 8, K.kapur)),
+      tambah("deret@2", teks("l2", 50, 120, "deret 2", 8, K.kapur)),
+      sorotkan("berikutnya.", "g2-c3", "g2-c4"),
     ),
     k(
-      SUARA_R3,
-      bersih(0),
-      tambah(0, judul("Langkah 2: ulangi satuannya")),
-      tambah("terakhir,", ...kartu("rd1", 10, 44, 80, 36, W.krem, ["kumpulan", "terakhir"], 8.2)),
-      tambah("tambahkan", panah("rd2", 92, 62, 20, 0, W.hijau, 2), ...kartu("rd3", 114, 44, 80, 36, W.hijauMuda, ["kumpulan", "berikutnya"], 8.2)),
-      tambah(idx(SUARA_R3, "lagi"), panah("rd4", 196, 62, 20, 0, W.hijau, 2), ...kartu("rd5", 218, 44, 72, 36, W.langit, ["kumpulan", "sesudahnya"], 8.2)),
-      tambah("satuan@2", teks("rd6", 102, 100, "+ satuan", 9, W.hijau), teks("rd7", 206, 100, "+ satuan", 9, W.hijau)),
+      SUARA_C3,
+      tambah("menggambar", ...deretKapur("g3", 90, 152, 7, 22, 20, K.kapurBiru), teks("l3", 50, 146, "deret 3", 8, K.kapur)),
+      tambah("perubahan", teks("pb", 245, 90, "perubahan sama", 8, K.kapurMerah)),
+      sorotkan("persis.", "g3-c5", "g3-c6"),
     ),
     k(
-      SUARA_R4,
-      bersih(0),
-      tambah(0, judul("Banyak pengulangan")),
-      tambah(idx(SUARA_R4, "kumpulan", 2), ...kartu("rf1", 10, 50, 44, 30, W.krem, ["kum. 1"], 8)),
-      ...[0, 1, 2, 3].map((i) => tambah(sebar(SUARA_R4, 4, idx(SUARA_R4, "satuan"))[i], ...kartu(`rg${i}`, 60 + i * 50, 50, 44, 30, W.hijauMuda, [`ulang ${i + 1}`], 8))),
-      tambah("kali.", ...kartu("rh", 40, 108, 220, 34, W.emas, ["kum. 5 = kum. 1 + 4 ulangan"], 9)),
+      SUARA_C4,
+      tambah("langsung", emo("ek", 270, 120, E.lampu, 18)),
+      tambah("bertambah", teks("bt", 258, 134, "bertambah", 8, K.kapurBiru)),
+      tambah("berkurang.", teks("bg", 258, 152, "atau berkurang", 7.4, K.kapurMerah)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Repeating Pattern: penerapan pada jeruk dan permen (Buku Siswa hlm. 89–93) ------------------------------ */
-const SUARA_A1 = "Terapkan pada jeruk. Kumpulan pertama dua jeruk. Satuan yang berulang adalah tambah dua jeruk.";
-const SUARA_A2 = "Kumpulan ketujuh memuat tujuh satuan dua jeruk. Tujuh satuan dua jeruk menjadi empat belas jeruk, sama dengan tabel jeruk.";
-const SUARA_A3 = "Pola mengecil juga berulang. Permen: sembilan, tujuh, lima. Satuan yang berulang adalah kurang dua permen.";
-const SUARA_A4 = "Ulangi kurang dua dari lima: tiga, lalu satu. Kumpulan kelima berisi satu permen, sama dengan tabel permen.";
+/* ------------------------------ Draw the Next: terapan ------------------------------ */
+const SUARA_D1 = "Laras menggambar deret keempat setelah deret dua, empat, dan enam angklung.";
+const SUARA_D2 = "Ia menambahkan dua angklung baru dan hasilnya delapan angklung.";
+const SUARA_D3 = "Cocok untuk pola yang masih pendek, karena gambarnya mudah diperiksa mata.";
+const SUARA_D4 = "Kurang cocok untuk deret yang sangat jauh, karena menggambar banyak benda memakan waktu.";
 
-const X_PERMEN = [30, 90, 150, 210, 266] as const;
-
-export const ADEGAN_LUAR_ULANG_TERAPAN: AdeganStory = {
-  id: "luar-ulang-terapan",
-  judul: "Repeating Pattern pada jeruk dan permen",
-  sumber: "Metode luar: Repeating Pattern",
-  latar: "#ECFDF5",
+export const ADEGAN_LUAR_GAMBAR_TERAPAN: AdeganStory = {
+  id: "luar-gambar-terapan",
+  judul: "Gambar Berikutnya: kapan cocok",
+  sumber: "Metode global: Draw the Next (terapan)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
-      SUARA_A1,
-      tambah(0, judul("Jeruk: satuan tambah dua")),
-      tambah("pertama", kotak("ja1", 30, 56, 50, 50, W.putih, W.biru, { putus: true }), ...benda("jx1", 55, 70, 2, 1, 18, 6, W.oranye, W.coklat), teks("ja1t", 55, 122, "kumpulan 1: 2", 8.2, W.biru)),
-      tambah("satuan", kotak("ja2", 150, 56, 50, 50, W.putih, W.hijau, { putus: true }), ...benda("jx2", 175, 70, 2, 1, 18, 6, W.oranye, W.coklat), teks("ja2t", 175, 122, "satuan: +2", 8.2, W.hijau)),
-      tambah("tambah", panah("ja3", 90, 80, 50, 0, W.hijau, 2)),
+      SUARA_D1,
+      tambah(0, judul("Deret Keempat Laras"), ...papanTulis("pt", 8, 28, 284, 132), ...tokoh("lr", 40, 184, "Laras")),
+      tambah("keempat", kotak("gk", 86, 122, 164, 22, undefined, K.kapurMerah, { rx: 4, tebal: 1.4, putus: true, z: 2 }), teks("gq", 168, 140, "?", 16, K.kapurMerah)),
+      tambah("dua,", ...deretKapur("g1", 90, 62, 2), teks("t1", 250, 58, "2", 12, K.kapur)),
+      tambah("empat,", ...deretKapur("g2", 90, 88, 4), teks("t2", 250, 84, "4", 12, K.kapur)),
+      tambah("enam", ...deretKapur("g3", 90, 114, 6), teks("t3", 250, 110, "6", 12, K.kapur)),
     ),
     k(
-      SUARA_A2,
-      bersih(0),
-      tambah(0, judul("Kumpulan ke tujuh")),
-      tambah("tujuh", ...Array.from({ length: 7 }, (_, i) => benda(`jy${i}`, 32 + i * 36, 66, 2, 1, 14, 5, W.oranye, W.coklat)).flat()),
-      tambah("satuan", teks("jz1", 150, 112, "7 satuan, tiap satuan 2 jeruk", 9, W.coklat)),
-      tambah("menjadi", teks("jz2", 150, 140, "7 × 2 = 14", 13, W.hijau)),
-      tambah("tabel", ...kartu("jz3", 40, 156, 220, 28, W.krem, ["sama dengan tabel jeruk: 14"], 8.8)),
+      SUARA_D2,
+      hapus(0, "gk", "gq"),
+      tambah("menambahkan", teks("pd", 272, 122, "+2", 12, K.kapurMerah)),
+      tambah("angklung", ...deretKapur("g4", 90, 140, 8, 22, 20, K.kapurBiru)),
+      sorotkan("baru", "g4-c6", "g4-c7"),
+      tambah("delapan", teks("n8", 270, 138, "8", 12, K.kapurMerah)),
     ),
     k(
-      SUARA_A3,
-      bersih(0),
-      tambah(0, judul("Permen: satuan kurang dua")),
-      ...[0, 1, 2].map((i) => tambah(["sembilan,", "tujuh,", "lima."][i], ...benda(`pa${i}`, X_PERMEN[i] - 9, 70, PERMEN_TABEL[i], 3, 9, 3.6, W.merahTua, W.coklat), teks(`pb${i}`, X_PERMEN[i], 122, String(PERMEN_TABEL[i]), 11, W.biru), teks(`pc${i}`, X_PERMEN[i], 136, `kumpulan ${i + 1}`, 7.6, W.coklat))),
-      tambah("kurang", teks("pd1", 60, 56, "−2", 10, W.merah), teks("pd2", 120, 56, "−2", 10, W.merah)),
+      SUARA_D3,
+      tambah("Cocok", emo("ok", 100, 172, E.benar, 20)),
+      tambah("pendek,", teks("pp", 170, 170, "pola pendek", 10, W.hijauTua)),
+      tambah("mata.", emo("my", 232, 172, E.mata, 20)),
     ),
     k(
-      SUARA_A4,
-      tambah("tiga,", teks("pd3", 180, 56, "−2", 10, W.merah), ...benda("pa3", X_PERMEN[3] - 9, 70, 3, 3, 9, 3.6, W.merahTua, W.coklat), teks("pb3", X_PERMEN[3], 122, "3", 11, W.biru), teks("pc3", X_PERMEN[3], 136, "kumpulan 4", 7.6, W.coklat)),
-      tambah("satu.", teks("pd4", 238, 56, "−2", 10, W.merah), ...benda("pa4", X_PERMEN[4] - 9, 70, 1, 3, 9, 3.6, W.merahTua, W.coklat), teks("pb4", X_PERMEN[4], 122, "1", 11, W.biru), teks("pc4", X_PERMEN[4], 136, "kumpulan 5", 7.6, W.coklat)),
-      tambah("sama", ...kartu("pe", 50, 154, 200, 28, W.emas, ["kumpulan 5: 1 permen, cocok dengan tabel"], 8.2)),
-    ),
-  ],
-};
-
-/* ------------------------------ 4. Growing Pattern: konsep ------------------------------ */
-const SUARA_G1 = "Metode kedua, Growing Pattern, atau Pola Bertambah. Pola yang tumbuh punya aturan: tiap langkah menambah jumlah yang sama. Van de Walle menekankan hubungan antara nomor kumpulan dan banyak benda.";
-const SUARA_G2 = "Buat tabel dua kolom: nomor kumpulan dan banyak benda. Tambahkan kolom selisih untuk melihat berapa yang bertambah dari satu kumpulan ke kumpulan berikutnya.";
-const SUARA_G3 = "Bila selisihnya selalu sama, polanya tumbuh teratur. Bila selisihnya berubah-ubah, aturannya harus dicari lagi.";
-const SUARA_G4 = "Dengan aturan itu, kumpulan berikutnya bisa ditebak tanpa menggambar: banyak benda sebelumnya ditambah selisih tetap.";
-
-const STAR = [1, 3, 5];
-
-export const ADEGAN_LUAR_TUMBUH: AdeganStory = {
-  id: "luar-tumbuh",
-  judul: "Growing Pattern: aturan tumbuh dan tabel selisih",
-  sumber: "Metode luar: Growing Pattern",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      SUARA_G1,
-      tambah(0, judul("Growing Pattern")),
-      tambah("kedua,", kepala(1)),
-      tambah("aturan:", ...kartu("ga", 14, 60, 272, 34, W.hijauMuda, ["tiap langkah menambah jumlah yang sama"], 9)),
-      tambah("Van", ...kartu("gb", 14, 104, 272, 44, W.krem, ["hubungan: nomor kumpulan", "dan banyak benda"], 9)),
-      tambah("hubungan", emo("gc", 150, 184, "🔗", 24)),
-    ),
-    k(
-      SUARA_G2,
-      bersih(0),
-      tambah(0, judul("Tabel nomor dan banyak benda")),
-      tambah("tabel", ...barisTabel("gt0", 30, 34, [70, 70], ["kumpulan", "banyak"], 20, 8.6, true)),
-      ...STAR.map((n, i) => tambah(["kolom:", "nomor", "banyak"][i], ...barisTabel(`gt${i + 1}`, 30, 54 + i * 20, [70, 70], [String(i + 1), String(n)], 20, 9))),
-      tambah("selisih", ...barisTabel("gs0", 170, 34, [60], ["selisih"], 20, 8.6, true), ...barisTabel("gs1", 170, 54, [60], ["–"], 20, 9), ...barisTabel("gs2", 170, 74, [60], ["2"], 20, 9), ...barisTabel("gs3", 170, 94, [60], ["2"], 20, 9)),
-      tambah("bertambah", teks("gq", 150, 138, "contoh: 1, 3, 5 bertambah 2", 9, W.coklat)),
-    ),
-    k(
-      SUARA_G3,
-      bersih(0),
-      tambah(0, judul("Selisih sama atau berubah?")),
-      tambah("sama,", ...kartu("gx1", 10, 34, 134, 64, W.hijauMuda, ["1, 3, 5", "selisih: 2 dan 2", "teratur"], 8.8)),
-      tambah("berubah-ubah,", ...kartu("gx2", 156, 34, 134, 64, W.merahMuda, ["1, 2, 4 (contoh lain)", "selisih: 1 dan 2", "cari aturan lagi"], 8.4)),
-      tambah("dicari", emo("gx3", 150, 130, "🔍", 28)),
-    ),
-    k(
-      SUARA_G4,
-      bersih(0),
-      tambah(0, judul("Menebak tanpa menggambar")),
-      tambah("tanpa", ...kartu("gy1", 14, 34, 272, 40, W.krem, ["berikutnya = sebelumnya + selisih"], 9.4)),
-      tambah("sebelumnya", teks("gy2", 150, 108, "5 + 2 = 7", 14, W.hijau)),
-      tambah("tetap.", teks("gy3", 150, 138, "kumpulan ke-4 dari 1, 3, 5 adalah 7", 8.8, W.coklat)),
-    ),
-  ],
-};
-
-/* ------------------------------ 5. Growing Pattern: penerapan pada kelereng (Buku Siswa hlm. 87–88 dan 91) ------------------------------ */
-const SUARA_H1 = "Terapkan pada kelompok empat kegiatan kelereng: dua, lima, delapan kelereng. Buat tabel nomor kumpulan, banyak benda, dan selisih.";
-const SUARA_H2 = "Selisihnya tiga dan tiga, selalu sama. Jadi aturannya: tiap kumpulan bertambah tiga kelereng.";
-const SUARA_H3 = "Kumpulan keempat adalah delapan ditambah tiga, yaitu sebelas. Kumpulan kelima sebelas ditambah tiga, yaitu empat belas.";
-const SUARA_H4 = "Pola mengecil memakai aturan yang sama dengan tanda kurang. Kelompok tiga kegiatan mengecil: tujuh, lima, tiga. Selisihnya kurang dua, jadi kumpulan keempat satu.";
-
-const KOL_H = [70, 70, 70];
-const hasil = (id: string, y: number, isi: string[]) => barisTabel(id, 60, y, KOL_H, isi, 18, 8.8);
-
-export const ADEGAN_LUAR_TUMBUH_TERAPAN: AdeganStory = {
-  id: "luar-tumbuh-terapan",
-  judul: "Growing Pattern pada kelereng kelompok empat",
-  sumber: "Metode luar: Growing Pattern",
-  latar: "#F5F3FF",
-  ketukan: [
-    k(
-      SUARA_H1,
-      tambah(0, judul("Kelompok empat: 2, 5, 8")),
-      tambah("kelompok", ...barisTabel("hh", 60, 30, KOL_H, ["kumpulan", "banyak", "selisih"], 18, 8.2, true)),
-      tambah("dua,", ...hasil("h1", 48, ["1", "2", "–"])),
-      tambah("lima,", ...hasil("h2", 66, ["2", "5", "3"])),
-      tambah("delapan", ...hasil("h3", 84, ["3", "8", "3"])),
-    ),
-    k(
-      SUARA_H2,
-      sorotkan("tiga", "h2-s2", "h3-s2"),
-      tambah("Selisihnya", ...kartu("hr", 40, 114, 220, 36, W.emas, ["aturan: tiap kumpulan", "bertambah 3 kelereng"], 8.8)),
-      tambah("selalu", teks("hq", 150, 168, "selisih 3 dan 3: selalu sama", 9, W.hijau)),
-    ),
-    k(
-      SUARA_H3,
-      bersih(0),
-      tambah(0, judul("Kumpulan ke-4 dan ke-5")),
-      tambah(0, ...barisTabel("hh", 60, 30, KOL_H, ["kumpulan", "banyak", "selisih"], 18, 8.2, true)),
-      tambah(0, ...hasil("h1", 48, ["1", "2", "–"]), ...hasil("h2", 66, ["2", "5", "3"]), ...hasil("h3", 84, ["3", "8", "3"])),
-      tambah("keempat", ...hasil("h4", 102, ["4", "11", "3"]), teks("hp1", 150, 156, "8 + 3 = 11", 11, W.hijau)),
-      tambah("kelima", ...hasil("h5", 120, ["5", "14", "3"]), teks("hp2", 150, 174, "11 + 3 = 14", 11, W.hijau)),
-    ),
-    k(
-      SUARA_H4,
-      bersih(0),
-      tambah(0, judul("Pola mengecil: 7, 5, 3")),
-      tambah("mengecil", ...barisTabel("hm", 60, 30, KOL_H, ["kumpulan", "banyak", "selisih"], 18, 8.2, true)),
-      tambah("tujuh,", ...hasil("m1", 48, ["1", "7", "–"])),
-      tambah("lima,", ...hasil("m2", 66, ["2", "5", "−2"])),
-      tambah(idx(SUARA_H4, "tiga", 2), ...hasil("m3", 84, ["3", "3", "−2"])),
-      tambah("keempat", ...hasil("m4", 102, ["4", "1", "−2"]), teks("mp", 150, 150, "3 − 2 = 1", 12, W.hijau)),
+      SUARA_D4,
+      hapus(0, "ok", "pp", "my"),
+      tambah(0, emo("xs", 100, 172, E.salah, 20)),
+      tambah("sangat", teks("dj", 170, 170, "deret 50", 10, W.merah)),
+      tambah("waktu.", emo("kr", 232, 172, E.keringat, 20)),
     ),
   ],
 };
