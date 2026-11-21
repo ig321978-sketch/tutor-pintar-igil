@@ -42,7 +42,13 @@ export const teksUrut = (d: readonly number[], q: number, arah: Arah): string =>
 
 /* ------------------------------ Jenis tugas (semua pecahan berpenyebut sama `q`, tinggal pembilang) ------------------------------ */
 /** Metode IGIL: dua pecahan berpenyebut sama dibandingkan lewat pembilang (klik: tanda, kanvas: pembilang yang lebih besar, suara: kurang dari, lebih dari, atau sama dengan). */
-export type LBanding = { tipe: "banding"; benda: string; q: number; a: number; b: number };
+export type LBanding = { tipe: "banding"; benda: string; q: number; a: number; b: number; cerita?: CeritaBanding };
+/** Soal cerita seperti di buku (mis. dua tongkat tiga per enam meter dan dua per enam meter): pemilik pecahan pertama dan kedua, kata kerja sebelum pecahan, satuan, dan sifat yang dibandingkan. */
+export type CeritaBanding = { a: string; b: string; kerja: string; satuan: string; sifat: string };
+/** Kalimat cerita dengan pecahan ditulis "3/6" (untuk layar). */
+export const teksCerita = (l: LBanding): string[] => (l.cerita ? [`${l.cerita.a} ${l.cerita.kerja} ${pec(l.a, l.q)} ${l.cerita.satuan}.`, `${l.cerita.b} ${l.cerita.kerja} ${pec(l.b, l.q)} ${l.cerita.satuan}.`] : []);
+/** Kalimat cerita untuk suara (pecahan dieja). */
+export const suaraCerita = (l: LBanding): string => (l.cerita ? `${l.cerita.a} ${l.cerita.kerja} ${sebutPec(l.a, l.q)} ${l.cerita.satuan}, dan ${l.cerita.b} ${l.cerita.kerja} ${sebutPec(l.b, l.q)} ${l.cerita.satuan}.` : "");
 /** Compare Numerators: hanya pembilang yang dibandingkan (klik: pecahan yang lebih besar atau kecil, kanvas: selisih pembilang, suara: kata pembilang). */
 export type LPembilang = { tipe: "pembilang"; benda: string; q: number; a: number; b: number; cari: Ujung };
 /** Fraction Bars: dua batang sama panjang, bagian berarsir sebanyak pembilang (klik: pecahan batang atas, kanvas: bagian berarsir batang bawah, suara: batang yang lebih banyak arsirannya, atas atau bawah). */
@@ -201,6 +207,7 @@ export function kalimatKunci(l: Langkah, cara: Cara): string {
     case "banding": {
       if (d.a === d.b) return `Penyebutnya sama dan pembilangnya sama, jadi kedua pecahan sama besar. ${kapital(sebutPec(d.a, d.q))} sama dengan ${sebutPec(d.b, d.q)}.`;
       const dasar = `Penyebutnya sama, jadi bagiannya sama besar. Pembilang ${kata(d.a)} ${d.a < d.b ? "lebih kecil" : "lebih besar"} daripada pembilang ${kata(d.b)}.`;
+      if (d.cerita && cara === "suara") return `${dasar} Jadi ${d.cerita.sifat} ${d.cerita.a} ${NAMA_TANDA[tandaDari(d.a, d.b)]} ${d.cerita.sifat} ${d.cerita.b}.`;
       return cara === "kanvas" ? `Penyebutnya sama, jadi yang dibandingkan adalah pembilang. Pembilang yang lebih besar adalah ${kata(n)}.` : `${dasar} Jadi pecahan pertama ${NAMA_TANDA[tandaDari(d.a, d.b)]} pecahan kedua.`;
     }
     case "pembilang": {
@@ -236,6 +243,8 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): s
   const aw = AWALAN[metode];
   switch (l.tipe) {
     case "banding":
+      if (l.cerita && cara === "kanvas") return `${aw}: ${suaraCerita(l)} Penyebutnya sama. Berapa pembilang pecahan yang lebih besar? Tulis satu angka di kanvas.`;
+      if (l.cerita && cara === "suara") return `${aw}: ${suaraCerita(l)} Apakah ${l.cerita.sifat} ${l.cerita.a} kurang dari, lebih dari, atau sama dengan ${l.cerita.sifat} ${l.cerita.b}? Ucapkan jawabannya.`;
       return cara === "klik"
         ? `${aw}: lihat dua pecahan pada ${g} ini. Penyebutnya sama. Bandingkan pembilangnya, lalu pilih tanda yang tepat untuk pecahan pertama dan pecahan kedua.`
         : cara === "kanvas"
@@ -319,6 +328,7 @@ export const arahCariSalah = (tokoh: string): string => `Pikirkan lagi apa yang 
 export function barisKartu(l: LangkahDasar, cara?: Cara): string[] {
   switch (l.tipe) {
     case "banding":
+      if (l.cerita && cara !== "klik") return [...teksCerita(l), cara === "kanvas" ? "pembilang pecahan yang lebih besar: ?" : `${l.cerita.sifat} ${l.cerita.a} dibanding ${l.cerita.sifat} ${l.cerita.b}: kurang dari, lebih dari, atau sama dengan?`];
       return [`pecahan pertama: ${pec(l.a, l.q)}`, `pecahan kedua: ${pec(l.b, l.q)}`, cara === "klik" ? "tanda yang tepat: ?" : cara === "kanvas" ? "pembilang pecahan yang lebih besar: ?" : "pertama dibanding kedua: kurang dari, lebih dari, atau sama dengan?"];
     case "pembilang":
       return [`pecahan pertama: ${pec(l.a, l.q)}`, `pecahan kedua: ${pec(l.b, l.q)}`, cara === "klik" ? `pecahan yang lebih ${l.cari === "besar" ? "besar" : "kecil"}: ?` : cara === "kanvas" ? "selisih kedua pembilang: ?" : "yang dibandingkan: pembilang atau penyebut?"];

@@ -78,10 +78,18 @@ export const ADEGAN_BANDINGKAN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 6. Mengaduk ------------------------------ */
-const SUARA_M1 = "Satria menepati taruhannya dan mengaduk malam di dekat tungku.";
-const SUARA_M2 = "Uap panas membuat wajah Satria memerah, dan semua orang tertawa.";
-const SUARA_M3 = "Laras mencatat di kertas sakunya, pembilang satu, penyebut makin besar, bagian makin kecil.";
+/* ------------------------------ 6. Mengaduk dan menimbang ------------------------------ */
+const SUARA_M1 = "Satria menepati taruhannya dan mengaduk malam di dekat tungku sampai wajahnya memerah.";
+const SUARA_M2 = "Bu Wulan menimbang malam satu per dua kilogram dan pewarna satu per empat kilogram, dan malam lebih berat.";
+const SUARA_M3 = "Laras mencatat di kertas sakunya, pembilang satu, penyebut makin besar, bagian makin kecil, berat makin ringan.";
+/** Satu bahan ditimbang: batang satu kilogram dibagi n bagian sama besar, satu bagian berarsir; pecahan dan "kg" di kanan. Pojok kiri-atas batang (34, y). */
+const bahan = (id: string, y: number, n: number, nama: string, emoji: string) => [
+  ...bagianKain(id, 34, y, 200, 26, n, [0]),
+  emo(`${id}-e`, 18, y + 20, emoji, 16),
+  teks(`${id}-nm`, 34, y - 4, nama, 12, W.coklat, { anchor: "start" }),
+  ...pecahan(`${id}-f`, 256, y + 12, n, 12),
+  teks(`${id}-kg`, 282, y + 22, "kg", 12, W.coklat),
+];
 
 export const ADEGAN_MENGADUK: AdeganStory = {
   id: "mengaduk",
@@ -93,23 +101,29 @@ export const ADEGAN_MENGADUK: AdeganStory = {
       SUARA_M1,
       tambah(0, judul("Satria Mengaduk"), ...tanah("tn", 150), ...tokoh("sa", 100, 184, "Satria")),
       tambah("mengaduk", ...panciMalam("pm", 150, 114), bulat("ad", 130, 130, 3, W.emas, W.coklat)),
-      tambah("malam", teks("tm", 167, 104, "malam", 9, W.coklat)),
-      tambah("tungku.", emo("ap", 167, 156, E.api, 14)),
+      tambah("malam", teks("tm", 167, 104, "malam", 11, W.coklat), emo("up", 167, 88, E.uap, 22)),
+      tambah("tungku", emo("ap", 167, 156, E.api, 14)),
+      tambah("memerah.", emo("ke", 128, 140, E.keringat, 18)),
     ),
     k(
       SUARA_M2,
-      tambah("Uap", emo("up", 167, 88, E.uap, 22)),
-      tambah("memerah", emo("ke", 128, 140, E.keringat, 18)),
-      tambah("semua", ...tokoh("lr", 210, 184, "Laras"), ...tokoh("bw", 256, 184, "Bu Wulan")),
-      tambah("tertawa.", emo("t1", 210, 142, E.tertawa, 16), emo("t2", 256, 142, E.tertawa, 16)),
+      bersih(0),
+      tambah(0, judul("Malam dan Pewarna"), ...tanah("tn", 150), ...tokoh("bw", 40, 184, "Bu Wulan")),
+      tambah("malam", ...bahan("bm", 52, 2, "malam", E.lilin)),
+      tambah("pewarna", ...bahan("bp", 100, 4, "pewarna", E.cat)),
+      tambah("berat.", teks("bt", 190, 146, "malam lebih berat", 12, W.merah)),
+      sorotkan("berat.", "bm-c0"),
     ),
     k(
       SUARA_M3,
-      tambah("Laras", emo("cc", 232, 142, E.catat, 16)),
-      tambah("kertas", ...kartu("cat", 160, 34, 130, 66, "#FFFBEB", [], 8)),
-      tambah("pembilang", teks("c0", 225, 54, "pembilang: 1", 8, W.biru)),
-      tambah("penyebut", teks("c1", 225, 68, "penyebut makin besar", 8, W.biru)),
-      tambah("bagian", teks("c2", 225, 82, "bagian makin kecil", 8, W.biru)),
+      bersih(0),
+      tambah(0, judul("Catatan Laras"), ...tanah("tn", 150), ...tokoh("lr", 60, 184, "Laras")),
+      tambah("Laras", emo("cc", 100, 156, E.catat, 16)),
+      tambah("kertas", ...kartu("cat", 140, 36, 150, 80, "#FFFBEB", [], 8)),
+      tambah("pembilang", teks("c0", 215, 56, "pembilang: 1", 11, W.biru)),
+      tambah("penyebut", teks("c1", 215, 72, "penyebut makin besar", 11, W.biru)),
+      tambah("bagian", teks("c2", 215, 88, "bagian makin kecil", 11, W.biru)),
+      tambah("berat", teks("c3", 215, 104, "berat makin ringan", 11, W.biru)),
     ),
   ],
 };

@@ -41,8 +41,8 @@ function GambarAturan({ kunci }: { kunci: string }) {
   if (kunci === "kecil")
     return (
       <span className="flex flex-col items-center gap-1">
-        <Mini n={4} />
-        <Mini n={8} />
+        <Mini n={5} />
+        <Mini n={10} />
       </span>
     );
   if (kunci === "garis")

@@ -65,6 +65,8 @@ export const E = {
   uap: "\u{1F4A8}",
   senja: "\u{1F307}",
   bicara: "\u{1F4AC}",
+  lilin: "\u{1F9C8}",
+  cat: "\u{1F3A8}",
 } as const;
 
 type Opsi = Partial<Obj>;
@@ -156,6 +158,21 @@ export function bagianKain(id: string, x: number, y: number, w: number, h: numbe
     kotak(id, x, y, w, h, W.kain, W.ungu, { rx: 2, tebal: 2, z: 1 }),
     ...Array.from({ length: n }, (_, i) => kotak(`${id}-c${i}`, bulatkan(x + i * lebar), y, lebar, h, arsir.includes(i) ? W.arsir : W.kain, W.ungu, { rx: 0, tebal: 1.2, z: 2 })),
   ];
+}
+/**
+ * Taplak bundar terbagi n bagian sama besar (sektor sama besar dari titik pusat): bagian `${id}-c{i}` (mulai nol, searah jarum jam dari atas; berarsir ungu muda bila nomornya ada di `arsir`).
+ * Pusat (cx, cy), jari-jari r. Tiap bagian berupa poligon tertutup (lengkung didekati garis pendek).
+ */
+export function lingkaranBagian(id: string, cx: number, cy: number, r: number, n: number, arsir: number[] = [0]): Obj[] {
+  const langkah = Math.max(4, Math.ceil(48 / n));
+  return Array.from({ length: n }, (_, i) => {
+    const titik: [number, number][] = [[cx, cy]];
+    for (let q = 0; q <= langkah; q += 1) {
+      const sudut = -Math.PI / 2 + ((i + q / langkah) * 2 * Math.PI) / n;
+      titik.push([bulatkan(cx + r * Math.cos(sudut)), bulatkan(cy + r * Math.sin(sudut))]);
+    }
+    return poligon(`${id}-c${i}`, titik, arsir.includes(i) ? W.arsir : W.kain, W.ungu, { tebal: 1.2, z: 2 });
+  });
 }
 export const idBagianKain = (id: string, n: number): string[] => [id, ...Array.from({ length: n }, (_, i) => `${id}-c${i}`)];
 

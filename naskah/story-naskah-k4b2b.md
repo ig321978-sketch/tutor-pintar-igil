@@ -5,7 +5,7 @@ Suara tanpa digit; pecahan diucapkan "tiga per delapan" dan tampil sebagai pecah
 
 Catatan agen kode: naskah global diperpanjang dengan beberapa kata pada ketukan yang sudah ada (tetap 4 ketukan per adegan) supaya video lebih dari 3 menit menurut uji (lihat laporan angka kata di akhir tugas). Naskah materi tidak berubah selain yang tertulis di bawah.
 
-Data Story B (jangan dijadikan jawaban CPA): bak biru tiga per delapan, bak merah enam per delapan; urutan dua per delapan, lima per delapan, tujuh per delapan; salah Satria: tiga per delapan dan enam per delapan sama besar karena sama-sama penyebut delapan.
+Data Story B (jangan dijadikan jawaban CPA): bak biru tiga per delapan, bak merah enam per delapan; urutan dua per delapan, lima per delapan, tujuh per delapan; salah Satria: tiga per delapan dan enam per delapan sama besar karena sama-sama penyebut delapan; soal cerita tongkat pengaduk tiga per enam meter dan dua per enam meter (selaras buku, penyebut enam); contoh singkat satu per tiga kurang dari dua per tiga dan dua per sepuluh lebih dari satu per sepuluh (penyebut tiga dan sepuluh).
 
 ## Video materi (300 sampai 400 kata termasuk sapaan, 9 adegan, 3 ketukan tiap adegan; tanpa latihan)
 
@@ -34,13 +34,13 @@ Sapaan (bersama): topik "membandingkan pecahan berpenyebut sama"; daftar: "penye
 5. `banding`
    - "Genta menunjuk bagian terisi pada kedua bak dan bertanya, mana yang lebih banyak?"
    - "Karena penyebutnya sama, bagiannya sama besar, jadi kita cukup membandingkan pembilangnya."
-   - "Enam lebih besar dari tiga, sehingga enam per delapan lebih banyak dari tiga per delapan."
-   Visual: dua bak berdampingan dengan bagian terisi dihitung satu per satu; tanda lebih besar di antara dua pecahan; pembilang dilingkari.
-6. `mengaduk`
-   - "Satria menepati taruhannya dan mulai mengaduk bak-bak itu satu per satu."
-   - "Tongkat pengaduk terlalu panjang sehingga ia nyaris tercebur ke dalam bak biru."
+   - "Enam lebih besar dari tiga, sehingga enam per delapan lebih banyak dari tiga per delapan. Begitu pula satu per tiga kurang dari dua per tiga, dan dua per sepuluh lebih dari satu per sepuluh."
+   Visual: dua bak berdampingan dengan bagian terisi dihitung satu per satu; tanda lebih besar di antara dua pecahan; pembilang dilingkari; dua contoh singkat penyebut tiga dan sepuluh (selaras buku) di bawahnya.
+6. `mengaduk` (soal cerita panjang seperti di buku: dua tongkat, tiga per enam meter dan dua per enam meter)
+   - "Satria menepati taruhannya, dan Pak Joyo memberinya dua tongkat pengaduk, tiga per enam meter dan dua per enam meter."
+   - "Tiga lebih besar dari dua, jadi tongkat tiga per enam meter lebih panjang, dan Satria memilihnya, tetapi nyaris tercebur ke bak biru."
    - "Pak Joyo tertawa, dan Laras buru-buru menarik ujung baju Satria."
-   Visual: Satria mengaduk bak dengan tongkat panjang, hampir jatuh; Laras menarik bajunya; percikan biru.
+   Visual: dua tongkat mendatar sebanding tiga banding dua dengan pecahan bertingkat dan kata meter; tanda tiga lebih besar dari dua, tongkat yang lebih panjang disorot; Satria mengangkat tongkat dan nyaris tercebur ke bak biru; Pak Joyo tertawa, Laras menarik baju Satria.
 7. `urut`
    - "Pak Joyo membawa tiga bak lagi, berisi dua per delapan, lima per delapan, dan tujuh per delapan."
    - "Genta berkata, penyebutnya sama, jadi kita lihat pembilangnya saja: dua, lima, tujuh."

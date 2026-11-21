@@ -22,8 +22,8 @@ Sapaan (bersama): topik "pecahan dengan pembilang satu"; daftar: "satu bagian da
 3. `lipat-empat`
    - "Laras melipat kain itu sekali lagi sehingga menjadi empat bagian sama besar."
    - "Satu bagian saja kita arsir, jadi pecahannya satu per empat."
-   - "Penyebutnya empat, karena seluruh kain terbagi menjadi empat bagian."
-   Visual: kain terlipat empat, satu bagian diarsir; pecahan satu per empat; empat kotak berderet.
+   - "Penyebutnya empat, karena seluruh kain terbagi menjadi empat bagian. Taplak bundar yang dipotong empat juga begitu."
+   Visual: kain terlipat empat, satu bagian diarsir; pecahan satu per empat; empat kotak berderet; taplak bundar kecil dibagi empat sektor sama besar, satu berarsir (selaras buku: pizza dibagi empat bagian sama).
 4. `salah-delapan` (salah langkah, taruhan, momen lucu)
    - "Genta melipat kain menjadi delapan bagian dan menulis satu per delapan."
    - "Satria berseru, delapan lebih besar dari empat, jadi satu per delapan pasti lebih besar!"
@@ -34,11 +34,11 @@ Sapaan (bersama): topik "pecahan dengan pembilang satu"; daftar: "satu bagian da
    - "Potongan satu per delapan ternyata lebih pendek, karena kain dibagi menjadi bagian yang lebih banyak."
    - "Makin banyak bagian, makin kecil setiap bagiannya, jadi satu per empat lebih besar."
    Visual: dua pita kain berdampingan, panjang satu per empat dan satu per delapan dengan tanda lebih besar; Satria menggaruk kepala.
-6. `mengaduk`
-   - "Satria menepati taruhannya dan mengaduk malam di dekat tungku."
-   - "Uap panas membuat wajah Satria memerah, dan semua orang tertawa."
-   - "Laras mencatat di kertas sakunya, pembilang satu, penyebut makin besar, bagian makin kecil."
-   Visual: Satria mengaduk panci malam dengan dahi berkeringat; Laras mencatat; Bu Wulan tersenyum.
+6. `mengaduk` (taruhan ditepati, lalu pecahan berpembilang satu dalam berat, selaras buku: bawang putih satu per dua kilogram dan gula satu per empat kilogram)
+   - "Satria menepati taruhannya dan mengaduk malam di dekat tungku sampai wajahnya memerah."
+   - "Bu Wulan menimbang malam satu per dua kilogram dan pewarna satu per empat kilogram, dan malam lebih berat."
+   - "Laras mencatat di kertas sakunya, pembilang satu, penyebut makin besar, bagian makin kecil, berat makin ringan."
+   Visual: Satria mengaduk panci malam dengan uap dan keringat; lalu dua batang satu kilogram sama panjang (malam dibagi dua, pewarna dibagi empat, satu bagian berarsir, pecahan dan kg di kanan) dengan tulisan "malam lebih berat"; lalu kertas saku Laras berisi empat catatan.
 7. `garis`
    - "Bu Wulan membentangkan tali dari nol sampai satu di halaman."
    - "Genta menjepit tanda satu per dua di tengah, lalu satu per empat, lalu satu per delapan makin dekat ke nol."
@@ -46,9 +46,9 @@ Sapaan (bersama): topik "pecahan dengan pembilang satu"; daftar: "satu bagian da
    Visual: garis pecahan dari nol sampai satu dengan jepitan kain bertanda satu per dua, satu per empat, satu per delapan; Genta menjepit.
 8. `urut`
    - "Bu Wulan meminta mereka mengurutkan potongan dari yang terkecil."
-   - "Satria menyusun satu per delapan, satu per empat, lalu satu per dua."
-   - "Bu Wulan bertepuk tangan, karena urutannya sudah benar."
-   Visual: tiga potongan kain berurutan dari pendek ke panjang dengan pecahannya; Satria menyusun; Bu Wulan bertepuk tangan.
+   - "Satria menyusun satu per sepuluh, satu per lima, lalu satu per dua."
+   - "Bu Wulan bertepuk tangan. Laras menambahkan, satu per tiga belas kurang dari satu per sebelas, karena bagiannya lebih banyak."
+   Visual: tiga potongan kain berurutan dari pendek ke panjang (sepersepuluh, seperlima, setengah) dengan pecahannya; Satria menyusun; Bu Wulan bertepuk tangan; Laras menunjuk dua batang kecil dibagi tiga belas dan sebelas bagian sama besar (penyebut dari buku: 1/11 dan 1/13).
 9. `penutup` (jembatan ke Sub-Bab B)
    - "Pak Joyo, tukang pewarna, datang membawa bak-bak warna yang isinya berbeda-beda."
    - "Pecahan satu bagian tadi ternyata hanya awal cerita."

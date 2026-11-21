@@ -326,7 +326,14 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
     cek(isiTeks(o, "ha-p") === "6" && isiTeks(o, "hg") === ">" && isiTeks(o, "hb-p") === "3" && isiTeks(o, "ha-q") === "8" && isiTeks(o, "hb-q") === "8" && ada(o, "mk"), "banding: enam per delapan lebih dari tiga per delapan");
   }
   const mg = adegan(M_VIDEO, "mengaduk");
-  cek(isiTeks(akhirAdegan(mg, 0), "sp") === "1 per 1" && ada(akhirAdegan(mg, 0), "st", "tk") && ketemu(akhirAdegan(mg, 1), "tk").y2 === -100 && ada(akhirAdegan(mg, 1), "ky", "pc1", "pc2", "pc3") && ada(akhirAdegan(mg, 2), "pj", "tw", "lr", "pn") && ketemu(akhirAdegan(mg, 2), "st-bj").sorot === true, "mengaduk: Satria mengaduk, hampir tercebur, Laras menarik bajunya");
+  cek(ada(akhirAdegan(mg, 0), "st", "pj", "ta", "tb", "fa-p", "fa-q", "fc-p", "fc-q") && isiTeks(akhirAdegan(mg, 0), "fa-p") === "3" && isiTeks(akhirAdegan(mg, 0), "fa-q") === "6" && isiTeks(akhirAdegan(mg, 0), "fc-p") === "2" && isiTeks(akhirAdegan(mg, 0), "fc-q") === "6", "mengaduk: dua tongkat pengaduk tiga per enam meter dan dua per enam meter");
+  cek(ketemu(akhirAdegan(mg, 0), "ta").w / ketemu(akhirAdegan(mg, 0), "tb").w === 3 / 2 && ketemu(akhirAdegan(mg, 1), "ta").sorot === true && isiTeks(akhirAdegan(mg, 1), "gb") === "3 > 2", "mengaduk: panjang tongkat sebanding tiga banding dua, yang lebih panjang disorot");
+  cek(ada(akhirAdegan(mg, 1), "tk", "ky", "pc1", "pc2", "pc3", "bb") && ada(akhirAdegan(mg, 2), "st", "pj", "tw", "lr", "pn") && tidakAda(akhirAdegan(mg, 2), "ta", "tb") && ketemu(akhirAdegan(mg, 2), "st-bj").sorot === true, "mengaduk: Satria memilih tongkat, hampir tercebur, Laras menarik bajunya");
+  {
+    const bd = adegan(M_VIDEO, "banding");
+    cek(isiTeks(akhirAdegan(bd, 2), "c3") === "1/3 < 2/3" && isiTeks(akhirAdegan(bd, 2), "c10") === "2/10 > 1/10", "banding: contoh penyebut tiga dan sepuluh seperti di buku");
+    cek(/satu per tiga kurang dari dua per tiga/.test(bd.ketukan[2].suara) && /dua per sepuluh lebih dari satu per sepuluh/.test(bd.ketukan[2].suara), "banding: suara menyebut penyebut tiga dan sepuluh");
+  }
   const ur = adegan(M_VIDEO, "urut");
   {
     const o = akhirAdegan(ur, 0);

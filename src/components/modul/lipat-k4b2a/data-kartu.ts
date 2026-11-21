@@ -2,6 +2,7 @@
  * Data Mind-map dan Infografis Kelas 4 Bab 2 Sub-Bab A "Kain Lipat Bu Wulan" (dirancang sendiri, tanpa komponen kartu bersama).
  * Mind-map "Tali Jemuran Bu Wulan": tiga kain putih di tali jemuran (lipat dua, empat, delapan, satu bagian diarsir ungu) dan garis pecahan di bawahnya.
  * Lima label kosong menempel pada bagian gambar yang cocok; diketuk, judul langkah muncul dan dibacakan Guru.
+ * Kartu 2 baris "penyebut besar" menampilkan batang lima dan sepuluh bagian (penyebut dari buku, ada di Story adegan urut) dan aturan berat (kilogram).
  * Infografis dua kartu dari Story: kartu 1 = tumpukan pita (tiga pita dari kain lipat dua, empat, delapan dan dua kotak banding), kartu 2 = kartu aturan Bu Wulan (pembilang, penyebut, penyebut besar bagian kecil, garis pecahan, tanda banding).
  * Suara tanpa digit: bilangan dan pecahan dieja lewat eja-k4b2.ts. Diuji: scripts/uji-visual-k4b2ab.mjs.
  */
@@ -13,7 +14,7 @@ export type LangkahPeta = { judul: string; arti: string };
 export const LANGKAH_LIPAT: LangkahPeta[] = [
   { judul: "Lipat sama besar", arti: "Langkah satu. Lipat kain menjadi bagian yang sama besar. Lalu arsir satu bagian." },
   { judul: "Pembilang dan penyebut", arti: "Langkah dua. Tulis satu bagian itu sebagai pecahan. Angka atas, pembilang, adalah bagian yang diarsir. Angka bawah, penyebut, adalah seluruh bagian." },
-  { judul: "Makin banyak, makin kecil", arti: "Langkah tiga. Bandingkan lewat pita. Penyebut lebih besar berarti bagian lebih banyak, jadi tiap bagian lebih kecil." },
+  { judul: "Makin banyak, makin kecil", arti: "Langkah tiga. Bandingkan lewat pita. Penyebut lebih besar berarti bagian lebih banyak, jadi tiap bagian lebih kecil. Berat juga begitu: satu per dua kilogram lebih berat daripada satu per empat kilogram." },
   { judul: "Taruh di garis", arti: "Langkah empat. Taruh tiap pecahan pada garis dari nol sampai satu. Makin ke kiri, makin kecil pecahannya." },
   { judul: "Urutkan dari kecil", arti: "Langkah lima. Susun pecahan dari yang terkecil di kiri sampai yang terbesar di kanan." },
 ];
@@ -46,7 +47,7 @@ export type AturanLipat = { kunci: string; sebut: string; isi: string; suara: st
 export const ATURAN_LIPAT: readonly AturanLipat[] = [
   { kunci: "pembilang", sebut: "angka atas", isi: "Pembilang: bagian yang diarsir", suara: "Angka atas disebut pembilang. Pembilang adalah banyak bagian yang diarsir." },
   { kunci: "penyebut", sebut: "angka bawah", isi: "Penyebut: seluruh bagian", suara: "Angka bawah disebut penyebut. Penyebut adalah banyak seluruh bagian sama besar." },
-  { kunci: "kecil", sebut: "penyebut besar", isi: "Bagian makin kecil", suara: "Penyebut lebih besar berarti bagian lebih banyak, jadi tiap bagian makin kecil." },
+  { kunci: "kecil", sebut: "penyebut besar", isi: "Makin kecil, makin ringan", suara: "Penyebut lebih besar berarti bagian lebih banyak, jadi tiap bagian makin kecil. Pada berat, satu per lima kilogram lebih berat daripada satu per sepuluh kilogram." },
   { kunci: "garis", sebut: "garis pecahan", isi: "Ke kiri makin kecil", suara: "Pada garis pecahan, makin ke kiri makin kecil pecahannya." },
   { kunci: "tanda", sebut: "tanda banding", isi: "Sisi terbuka ke yang besar", suara: "Sisi tanda banding yang terbuka selalu menghadap pecahan yang lebih besar, ujung runcingnya ke yang lebih kecil." },
 ];

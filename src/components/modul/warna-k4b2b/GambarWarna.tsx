@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { barisKartu, dasarDari, type Cara, type Langkah, type LangkahDasar, type LBanding, type LBatang, type LGaris, type LPembilang, type Rupa } from "./logika-cpa";
+import { barisKartu, dasarDari, teksCerita, type Cara, type Langkah, type LangkahDasar, type LBanding, type LBatang, type LGaris, type LPembilang, type Rupa } from "./logika-cpa";
 import { potongBatang, xTanda } from "./geometri";
 
 /**
@@ -94,8 +94,8 @@ function PapanBanding({ l, rupa }: { l: LBanding; rupa: Rupa }) {
               </text>
             ) : null}
             <Batang p={n} q={l.q} x0={50} y={y + 8} lebar={176} tinggi={34} rupa={rupa} warna={WARNA_ISI(rupa, r === 0)} />
-            <text x={138} y={y + 62} textAnchor="middle" fontSize={8.6} fontWeight={900} fill={g.tinta}>
-              {r === 0 ? "pecahan pertama" : "pecahan kedua"}
+            <text x={138} y={y + 62} textAnchor="middle" fontSize={13.5} fontWeight={900} fill={g.tinta}>
+              {l.cerita ? (r === 0 ? l.cerita.a : l.cerita.b) : r === 0 ? "pecahan pertama" : "pecahan kedua"}
             </text>
             <PecSvg x={264} y={y + 26} p={n} q={l.q} u={17} warna={UNGU} warnaP={MERAH} />
           </g>
@@ -271,8 +271,28 @@ export function TeksPecahan({ teks }: { teks: string }) {
 }
 
 /* ------------------------------ Tampilan satu tugas ------------------------------ */
+/** Soal cerita seperti di buku, ditulis di atas gambar (HTML, huruf terbaca): dua kalimat dengan pecahan bertingkat. */
+function CeritaTeks({ l }: { l: LBanding }) {
+  return (
+    <div className="mx-auto mb-1 w-full max-w-[420px] rounded-xl border-2 border-[#C2410C] bg-[#FFF7ED] px-2 py-1 text-left" data-uji="cerita-pecahan">
+      {teksCerita(l).map((t) => (
+        <p key={t} className="text-sm font-bold leading-snug text-[#451A03]">
+          <TeksPecahan teks={t} />
+        </p>
+      ))}
+    </div>
+  );
+}
+
 export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: Cara }) {
   const d = dasarDari(l);
+  if (rupa !== "lambang" && d.tipe === "banding" && d.cerita && cara !== "klik")
+    return (
+      <div>
+        <CeritaTeks l={d} />
+        <PapanBanding l={d} rupa={rupa} />
+      </div>
+    );
   if (rupa === "lambang")
     return (
       <PapanInfo>

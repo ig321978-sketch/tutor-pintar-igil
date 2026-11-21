@@ -31,6 +31,8 @@ export const kataPec = (n: number): string => `satu per ${kataBil(n)}`;
 export type Tanda = ">" | "<" | "=";
 /** Tanda yang tepat antara 1/a dan 1/b: penyebut lebih kecil berarti pecahan lebih besar. */
 export const tandaBanding = (a: number, b: number): Tanda => (a === b ? "=" : a < b ? ">" : "<");
+/** Bahan yang lebih berat pada tugas berat: pecahan kilogram berpenyebut lebih kecil berarti lebih berat. */
+export const beratLebih = (l: { a: number; b: number }): "malam" | "pewarna" => (l.a < l.b ? "malam" : "pewarna");
 /** Urutan dari yang terkecil: penyebut terbesar lebih dulu. */
 export const urutTerkecil = (dens: readonly number[]): number[] => [...dens].sort((x, y) => y - x);
 export const teksUrut = (dens: readonly number[]): string => dens.map(pec).join(" < ");
@@ -41,6 +43,24 @@ export type Potongan = { x: number; w: number; arsir: boolean };
 export function potongBagian(n: number, x0: number, lebar: number, arsir: readonly number[]): Potongan[] {
   const w = lebar / n;
   return Array.from({ length: n }, (_, i) => ({ x: x0 + i * w, w, arsir: arsir.includes(i) }));
+}
+export type Sektor = { d: string; tx: number; ty: number };
+const bulat1 = (x: number): number => Math.round(x * 100) / 100;
+/** Lingkaran berpusat (cx, cy) berjari-jari r dibagi n sektor sama besar mulai dari atas searah jarum jam: jalur gambar dan titik tengah tiap sektor (untuk hiasan). */
+export function sektorLingkaran(n: number, cx: number, cy: number, r: number): Sektor[] {
+  const titik = (i: number, rr: number): [number, number] => {
+    const a = -Math.PI / 2 + (i * 2 * Math.PI) / n;
+    return [bulat1(cx + rr * Math.cos(a)), bulat1(cy + rr * Math.sin(a))];
+  };
+  return Array.from({ length: n }, (_, i) => {
+    const [x1, y1] = titik(i, r);
+    const [x2, y2] = titik(i + 1, r);
+    const [tx, ty] = (() => {
+      const a = -Math.PI / 2 + ((i + 0.5) * 2 * Math.PI) / n;
+      return [bulat1(cx + r * 0.62 * Math.cos(a)), bulat1(cy + r * 0.62 * Math.sin(a))] as [number, number];
+    })();
+    return { d: `M${cx} ${cy} L${x1} ${y1} A${r} ${r} 0 0 1 ${x2} ${y2} Z`, tx, ty };
+  });
 }
 /** Posisi n + 1 tanda pada garis dari nol (x0) sampai satu (x0 + lebar), jaraknya sama. */
 export function tandaGaris(n: number, x0: number, lebar: number): number[] {
@@ -54,9 +74,11 @@ export const garisLipat = (n: number, x0: number, lebar: number): number[] => ta
 /* ------------------------------ Jenis tugas ------------------------------ */
 export type Istilah = "pembilang" | "penyebut";
 /** Metode IGIL: kain dibagi n bagian sama besar dan satu bagian diarsir. klik = pecahan, kanvas = banyak bagian, suara = nama angka atas atau bawah. */
-export type LArsir = { tipe: "arsir"; n: number; istilah: Istilah };
+export type LArsir = { tipe: "arsir"; n: number; istilah: Istilah; bentuk?: "lingkaran" };
 /** Unit Fraction Strip: dua pita 1/a (atas) dan 1/b (bawah). klik = tanda, kanvas = penyebut pecahan yang lebih besar, suara = atas atau bawah yang lebih besar. */
 export type LPita = { tipe: "pita"; a: number; b: number };
+/** Unit Fraction Strip dalam konteks berat: dua batang satu kilogram, malam (atas) 1/a kg dan pewarna (bawah) 1/b kg. klik = bahan yang lebih berat, kanvas = penyebut pecahan yang lebih berat, suara = bahan yang lebih berat. */
+export type LBerat = { tipe: "berat"; a: number; b: number };
 /** Fold the Paper: kertas pertama dilipat p bagian, kertas kedua q bagian. klik = pecahan satu bagian kertas kedua, kanvas = banyak garis lipatan kertas kedua, suara = bagian kertas kedua besar atau kecil. */
 export type LLipat = { tipe: "lipat"; p: number; q: number };
 /** Fraction Number Line: tiga pecahan pada garis dari nol sampai satu; klik = urutan dari yang terkecil. */
@@ -65,7 +87,7 @@ export type LGarisUrut = { tipe: "garisUrut"; urut: [number, number, number] };
 export type LGarisBagi = { tipe: "garisBagi"; n: number };
 /** Fraction Number Line: titik di 1/a; suara = pecahan 1/b letaknya di kiri atau kanan titik itu. */
 export type LGarisSisi = { tipe: "garisSisi"; a: number; b: number };
-export type LangkahDasar = LArsir | LPita | LLipat | LGarisUrut | LGarisBagi | LGarisSisi;
+export type LangkahDasar = LArsir | LPita | LBerat | LLipat | LGarisUrut | LGarisBagi | LGarisSisi;
 /** Cari kesalahan: tokoh sudah menjawab dari `dasar`. Anak menilai benar atau salah, memilih alasan, lalu menjawab sendiri. `jawabTokoh` adalah teks pilihan klik tokoh. */
 export type LangkahSalah = {
   tipe: "salah";
@@ -108,6 +130,8 @@ export function kunciJawab(l: Langkah, cara: Cara): Kunci | null {
       return cara === "klik" ? nama(pec(l.n)) : cara === "kanvas" ? angka(l.n) : nama(l.istilah);
     case "pita":
       return cara === "klik" ? nama(tandaBanding(l.a, l.b)) : cara === "kanvas" ? angka(Math.min(l.a, l.b)) : nama(l.a < l.b ? "atas" : "bawah");
+    case "berat":
+      return cara === "kanvas" ? angka(Math.min(l.a, l.b)) : nama(beratLebih(l));
     case "lipat":
       return cara === "klik" ? nama(pec(l.q)) : cara === "kanvas" ? angka(l.q - 1) : nama(l.q < l.p ? "besar" : "kecil");
     case "garisUrut":
@@ -148,6 +172,10 @@ export function pilihanKlik(l: Langkah): string[] {
       const lain = unik<string>([">", "<", "="], [k.nama]);
       return sisipkan(k.nama, lain, d.a);
     }
+    case "berat": {
+      const lain = unik<string>(["malam", "pewarna", "sama berat"], [k.nama]);
+      return sisipkan(k.nama, lain, d.a);
+    }
     case "lipat": {
       const lain = unik([pec(d.p), pec(d.q + 1), pec(d.q - 1)], [k.nama]).slice(0, 2);
       return sisipkan(k.nama, lain, d.p);
@@ -167,8 +195,8 @@ export function pilihanSuara(l: Langkah, cara: Cara): string[] {
   if (!k) return [];
   const d = dasarDari(l);
   if (k.jenis === "angka") return [];
-  const geser = d.tipe === "arsir" ? d.n : d.tipe === "pita" ? d.a + d.b : d.tipe === "lipat" ? d.p + d.q : d.tipe === "garisSisi" ? d.a + d.b : 1;
-  const semua: string[] = d.tipe === "arsir" ? ["pembilang", "penyebut", "per"] : d.tipe === "pita" ? ["atas", "bawah", "sama"] : d.tipe === "lipat" ? ["besar", "kecil", "sama"] : ["kiri", "kanan", "tengah"];
+  const geser = d.tipe === "arsir" ? d.n : d.tipe === "pita" || d.tipe === "berat" ? d.a + d.b : d.tipe === "lipat" ? d.p + d.q : d.tipe === "garisSisi" ? d.a + d.b : 1;
+  const semua: string[] = d.tipe === "arsir" ? ["pembilang", "penyebut", "per"] : d.tipe === "pita" ? ["atas", "bawah", "sama"] : d.tipe === "berat" ? ["malam", "pewarna", "sama"] : d.tipe === "lipat" ? ["besar", "kecil", "sama"] : ["kiri", "kanan", "tengah"];
   return sisipkan(k.nama, unik(semua, [k.nama]), geser);
 }
 export const teksKunciPilihan = (k: Kunci): string => (k.jenis === "nama" ? k.nama : kataBil(k.n));
@@ -201,6 +229,12 @@ export function kalimatKunci(l: Langkah, cara: Cara): string {
         : cara === "kanvas"
           ? `Pecahan yang lebih besar adalah ${pec(Math.min(d.a, d.b))}, jadi penyebutnya ${Math.min(d.a, d.b)}.`
           : `Pecahan ${d.a < d.b ? "atas" : "bawah"} yang lebih besar, karena penyebutnya lebih kecil sehingga tiap bagiannya lebih besar.`;
+    case "berat": {
+      const [k, p] = d.a < d.b ? ["malam", d.a] : ["pewarna", d.b];
+      return cara === "kanvas"
+        ? `Yang lebih berat adalah ${k}, ${pec(p)} kg, jadi penyebutnya ${p}.`
+        : `Yang lebih berat adalah ${k}, ${pec(p)} kg, karena penyebutnya lebih kecil sehingga tiap bagian satu kilogram lebih besar.`;
+    }
     case "lipat":
       return cara === "klik"
         ? `Bagian kedua terbagi menjadi ${d.q} bagian sama besar, jadi satu bagian ditulis ${pec(d.q)}.`
@@ -231,8 +265,14 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): s
       return cara === "klik"
         ? `${aw}: lihat ${g} ini. Dua pecahan dibandingkan, yang atas dan yang bawah. Tanda apa yang tepat di antara keduanya? Pilih jawabannya.`
         : cara === "kanvas"
-          ? `${aw}: lihat ${g} ini. Dua pecahan dibandingkan. Tulis penyebut pecahan yang lebih besar. Tulis satu angka di kanvas.`
+          ? `${aw}: lihat ${g} ini. Dua pecahan dibandingkan. Cari pecahan yang lebih besar, lalu tulis penyebutnya. Tulis satu angka di kanvas.`
           : `${aw}: lihat ${g} ini. Pecahan mana yang lebih besar, yang atas atau yang bawah? Ucapkan satu kata.`;
+    case "berat":
+      return cara === "klik"
+        ? `${aw}: lihat ${g} ini. Malam dan pewarna ditimbang, dan satu batang penuh beratnya satu kilogram. Mana yang lebih berat? Pilih jawabannya.`
+        : cara === "kanvas"
+          ? `${aw}: lihat ${g} ini. Malam dan pewarna ditimbang, dan satu batang penuh beratnya satu kilogram. Cari bahan yang lebih berat, lalu tulis penyebut pecahannya. Tulis satu angka di kanvas.`
+          : `${aw}: lihat ${g} ini. Malam dan pewarna ditimbang, dan satu batang penuh beratnya satu kilogram. Mana yang lebih berat, malam atau pewarna? Ucapkan satu kata.`;
     case "lipat":
       return cara === "klik"
         ? `${aw}: lihat ${g} ini. ${kapital(ob)} pertama dan kedua dibagi menjadi bagian sama besar, dan satu bagian diambil dari tiap ${ob}. Pecahan apa yang menyatakan satu bagian ${ob} kedua? Pilih jawabannya.`
@@ -255,7 +295,9 @@ export function kalimatTanya(l: Langkah, cara: Cara): string {
     case "arsir":
       return cara === "klik" ? "Pecahan mana yang menyatakan satu bagian itu?" : cara === "kanvas" ? "Berapa banyak bagian sama besar seluruhnya?" : "Apa nama angka yang ditandai?";
     case "pita":
-      return cara === "klik" ? "Tanda mana yang tepat?" : cara === "kanvas" ? "Berapa penyebut pecahan yang lebih besar?" : "Pecahan mana yang lebih besar?";
+      return cara === "klik" ? "Tanda mana yang tepat?" : cara === "kanvas" ? "Pecahan yang lebih besar berpenyebut berapa?" : "Pecahan mana yang lebih besar?";
+    case "berat":
+      return cara === "klik" ? "Mana yang lebih berat?" : cara === "kanvas" ? "Bahan yang lebih berat berpenyebut berapa?" : "Malam atau pewarna yang lebih berat?";
     case "lipat":
       return cara === "klik" ? "Pecahan mana yang menyatakan satu bagian kedua?" : cara === "kanvas" ? "Ada berapa garis lipatan pada yang kedua?" : "Satu bagian kedua lebih besar atau lebih kecil?";
     case "garisUrut":
@@ -288,6 +330,12 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
         : cara === "kanvas"
           ? "Cari pecahan yang tiap bagiannya lebih besar, lalu tulis penyebutnya."
           : "Bandingkan besar satu bagian pecahan atas dan pecahan bawah, lalu ucapkan satu kata.";
+    case "berat":
+      return cara === "klik"
+        ? "Lihat penyebut kedua pecahan kilogram dan ingat: bagian yang lebih banyak membuat tiap bagian lebih ringan."
+        : cara === "kanvas"
+          ? "Cari bahan yang bagiannya lebih besar dari satu kilogram, lalu tulis penyebutnya."
+          : "Bandingkan besar satu bagian malam dan satu bagian pewarna, lalu ucapkan nama bahan yang lebih berat.";
     case "lipat":
       return cara === "klik"
         ? "Hitung semua bagian sama besar pada yang kedua, lalu tulis satu bagian dari seluruh bagian itu."
@@ -314,7 +362,9 @@ export function barisKartu(l: LangkahDasar, cara?: Cara): string[] {
           ? [`pecahan: ${pec(l.n)}`, "penyebutnya: ?"]
           : [`pecahan: ${pec(l.n)}`, `angka di ${l.istilah === "penyebut" ? "bawah" : "atas"} garis pecahan: ?`];
     case "pita":
-      return [`pecahan atas: ${pec(l.a)}`, `pecahan bawah: ${pec(l.b)}`, cara === "klik" ? "tanda: ?" : cara === "kanvas" ? "penyebut yang lebih besar: ?" : "yang lebih besar: ?"];
+      return [`pecahan atas: ${pec(l.a)}`, `pecahan bawah: ${pec(l.b)}`, cara === "klik" ? "tanda: ?" : cara === "kanvas" ? "pecahan yang lebih besar: 1/?" : "yang lebih besar: ?"];
+    case "berat":
+      return [`malam: ${pec(l.a)} kg`, `pewarna: ${pec(l.b)} kg`, cara === "kanvas" ? "pecahan yang lebih berat: 1/? kg" : "yang lebih berat: ?"];
     case "lipat":
       return cara === "klik"
         ? [`pembagian pertama: ${l.p} bagian sama besar`, `pembagian kedua: ${l.q} bagian sama besar`, "satu bagian kedua: ?"]

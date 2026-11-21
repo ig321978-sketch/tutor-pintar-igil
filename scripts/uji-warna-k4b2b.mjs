@@ -48,8 +48,9 @@ const emojiSah = (s) => [...s].every((c) => c.codePointAt(0) <= 0x1fa95 && c.cod
 const adaEmoji = (s) => /\p{Extended_Pictographic}/u.test(s);
 const urutNaik = (d) => [...d].sort((a, b) => a - b);
 /** Pecahan Story B (3/8, 6/8; 2/8, 5/8, 7/8; 5/7 dan 2/7; 1/8, 4/8, 7/8): data CPA dan Simulasi tidak boleh sama persis. Penyebut delapan tidak dipakai sama sekali. */
-const STORY = [{ q: 8, s: [3, 6] }, { q: 8, s: [2, 5, 7] }, { q: 7, s: [2, 5] }, { q: 8, s: [1, 4, 7] }];
-const samaStory = (q, angka) => STORY.some((x) => x.q === q && JSON.stringify(urutNaik(angka)) === JSON.stringify(x.s));
+const STORY = [{ q: 8, s: [3, 6] }, { q: 8, s: [2, 5, 7] }, { q: 7, s: [2, 5] }, { q: 8, s: [1, 4, 7] }, { q: 6, s: [2, 3] }, { q: 10, s: [1, 2] }];
+/** Penyebut tiga hanya punya satu pasangan pembilang (satu dan dua), yang juga contoh singkat di Story: dikecualikan (konteks CPA berbeda: pewarna liter). */
+const samaStory = (q, angka) => q !== 3 && STORY.some((x) => x.q === q && JSON.stringify(urutNaik(angka)) === JSON.stringify(x.s));
 
 /* ------------------------------ Kata, pecahan, dan tampilan ------------------------------ */
 {
@@ -298,7 +299,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
         const tag = `${nama} ${s.nomor} ${ls.metode}`;
         cek(typeof d.benda === "string" && d.benda.length >= 3, `${tag}: benda bernama`);
         if (rupa === "benda") cek(!!DG_EMOJI[d.benda] && emojiSah(DG_EMOJI[d.benda]), `${tag}: Concrete memakai benda beremoji (${d.benda})`);
-        cek(d.q >= 4 && d.q <= 9 && d.q !== 8, `${tag}: penyebut empat sampai sembilan, bukan delapan milik Story (${d.q})`);
+        cek([3, 4, 5, 6, 7, 9, 10, 13].includes(d.q) && (d.q <= 10 || rupa === "lambang"), `${tag}: penyebut seperti di buku (tiga sampai sepuluh, tiga belas hanya di kartu kata), bukan delapan milik Story (${d.q})`);
         if (d.tipe === "banding" || d.tipe === "pembilang" || d.tipe === "batang") {
           cek(Number.isInteger(d.a) && Number.isInteger(d.b) && d.a >= 1 && d.a < d.q && d.b >= 1 && d.b < d.q, `${tag}: dua pembilang di antara satu dan penyebut`);
           cek(!samaStory(d.q, [d.a, d.b]), `${tag}: berbeda dari Story`);
@@ -313,6 +314,33 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   }
   cek(new Set([...D.CONCRETE, ...D.PICTORIAL, ...D.ABSTRACT].flatMap((s) => s.langkah.map((l) => LC.dasarDari(l.langkah)).filter((d) => d.tipe === "garis").map((d) => d.arah))).size === 2, "tugas garis: naik dan turun ada");
   cek([...D.CONCRETE, ...D.PICTORIAL, ...D.ABSTRACT].flatMap((s) => s.langkah.map((l) => LC.dasarDari(l.langkah)).filter((d) => d.tipe === "pembilang").map((d) => d.cari)).length === 9 && new Set([...D.CONCRETE, ...D.PICTORIAL, ...D.ABSTRACT].flatMap((s) => s.langkah.map((l) => LC.dasarDari(l.langkah)).filter((d) => d.tipe === "pembilang").map((d) => d.cari))).size === 2, "tugas pembilang: pecahan lebih besar dan lebih kecil ada");
+}
+
+/* ------------------------------ Soal cerita dan penyebut seperti di buku ------------------------------ */
+{
+  const semua = [...D.CONCRETE, ...D.PICTORIAL, ...D.ABSTRACT];
+  const dasar = semua.flatMap((s) => s.langkah.map((l) => ({ d: LC.dasarDari(l.langkah), s, l })));
+  const qSemua = new Set(dasar.map((x) => x.d.q));
+  cek([3, 4, 5, 6, 7, 9, 10, 13].every((q) => qSemua.has(q)), `CPA memuat penyebut buku tiga, empat, lima, enam, tujuh, sembilan, sepuluh, tiga belas (${[...qSemua].sort((a, b) => a - b).join()})`);
+  const cerita = dasar.filter((x) => x.d.tipe === "banding" && x.d.cerita);
+  cek(cerita.length === 3 && ["Concrete", "Pictorial", "Abstract"].every((n) => D[n.toUpperCase()].some((s) => s.langkah.some((l) => LC.dasarDari(l.langkah).cerita))), "soal cerita panjang seperti di buku: satu di tiap tahap, dua jenis jawaban (kanvas dan suara)");
+  cek(cerita.every((x) => x.s.cara !== "klik" && x.l.langkah.tipe !== "salah" && x.d.cerita.a !== x.d.cerita.b && ["meter", "liter"].includes(x.d.cerita.satuan)), "soal cerita: bukan Cari kesalahan, dua pemilik berbeda, satuan meter atau liter");
+  for (const x of cerita) {
+    const tag = `cerita ${x.s.nomor}`;
+    const kal = LC.suaraCerita(x.d);
+    cek(tanpaDigit(kal) && bersih(kal) && kal.includes(LC.sebutPec(x.d.a, x.d.q)) && kal.includes(LC.sebutPec(x.d.b, x.d.q)) && kal.includes(x.d.cerita.satuan), `${tag}: suara cerita memuat kedua pecahan dan satuan, tanpa digit`);
+    cek(LC.teksCerita(x.d).length === 2 && LC.teksCerita(x.d)[0].includes(LC.pec(x.d.a, x.d.q)) && LC.teksCerita(x.d)[1].includes(LC.pec(x.d.b, x.d.q)), `${tag}: layar menulis kedua pecahan`);
+    cek(x.l.judul.includes(kal), `${tag}: instruksi memuat cerita`);
+    cek(x.d.a !== x.d.b && LC.kunciJawab(x.d, x.s.cara) !== null, `${tag}: dua pecahan berbeda dan jawaban ada`);
+    if (x.s.cara === "suara") cek(x.l.judul.includes(`${x.d.cerita.sifat} ${x.d.cerita.a}`) && x.l.judul.includes(`${x.d.cerita.sifat} ${x.d.cerita.b}`) && /kurang dari, lebih dari, atau sama dengan/.test(x.l.judul), `${tag}: pertanyaan suara membandingkan pemilik`);
+    if (x.s.cara === "kanvas") cek(/Tulis satu angka di kanvas/.test(x.l.judul) && LC.kunciJawab(x.d, "kanvas").n === Math.max(x.d.a, x.d.b), `${tag}: kanvas = pembilang yang lebih besar`);
+    const kt = LC.barisKartu(x.d, x.s.cara);
+    cek(kt.length === 3 && kt[0].includes(x.d.cerita.a) && kt[1].includes(x.d.cerita.b) && kt.every((b) => !/\p{Extended_Pictographic}/u.test(b)), `${tag}: kartu kata memuat cerita tanpa emoji`);
+  }
+  // Tanpa gambar di Abstract: cerita Abstract tidak menyebut gambar.
+  const abs = D.ABSTRACT.flatMap((s) => s.langkah).filter((l) => LC.dasarDari(l.langkah).cerita);
+  cek(abs.length === 1 && abs.every((l) => !/gambar/i.test(l.judul)), "soal cerita Abstract tidak menyebut gambar");
+  cek(/CeritaTeks/.test(readFileSync(new URL("GambarWarna.tsx", folderUrl), "utf8")) && /data-uji="cerita-pecahan"/.test(readFileSync(new URL("GambarWarna.tsx", folderUrl), "utf8")), "gambar: soal cerita ditulis di atas gambar (HTML)");
 }
 
 /* ------------------------------ Tugas dihitung dari data ------------------------------ */
@@ -397,8 +425,8 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   sama(kv("Pictorial"), [8, 3, 2, 5], "angka kanvas Pictorial");
   sama(kv("Abstract"), [4, 5, 3, 6], "angka kanvas Abstract");
   const kl = (nm) => TAHAP[nm][1].filter((s) => s.cara === "klik").flatMap((s) => s.langkah.map((l) => LC.teksKunciKlik(l.langkah)));
-  sama(kl("Concrete"), ["<", "4/6", "3/7", "1/5, 3/5, 4/5"], "jawaban klik Concrete");
-  sama(kl("Pictorial"), [">", "2/9", "2/6", "1/7, 3/7, 6/7"], "jawaban klik Pictorial");
+  sama(kl("Concrete"), ["<", "4/10", "3/7", "1/5, 3/5, 4/5"], "jawaban klik Concrete");
+  sama(kl("Pictorial"), [">", "2/9", "2/10", "1/7, 3/7, 6/7"], "jawaban klik Pictorial");
   sama(kl("Abstract"), ["<", "7/9", "2/5", "2/6, 4/6, 5/6"], "jawaban klik Abstract");
   const su = (nm) => TAHAP[nm][1].filter((s) => s.cara === "suara").flatMap((s) => s.langkah.map((l) => nama(LC.kunciJawab(l.langkah, "suara"))));
   sama(su("Concrete"), ["kurang dari", "pembilang", "atas", "terbesar"], "jawaban suara Concrete");

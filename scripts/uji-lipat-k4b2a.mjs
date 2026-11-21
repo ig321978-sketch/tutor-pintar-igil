@@ -221,7 +221,7 @@ const TAHAP = [
         if (rupa === "lambang") cek(!/gambar|petak|kisi|diarsir|pita atas|kertas|kain/i.test(q.suara), `${nama} misi ${s.nomor} ${q.metode}: tahap Abstract tanpa menyebut gambar, petak, kisi, atau benda`);
         // Jenis dan jawaban sesuai metode.
         if (q.metode === "igil" && l.tipe !== "salah") cek(l.tipe === "arsir", `${nama} misi ${s.nomor}: IGIL membaca pecahan dari bagian`);
-        if (q.metode === "pita") cek(d.tipe === "pita", `${nama} misi ${s.nomor}: Unit Fraction Strip membandingkan dua pita`);
+        if (q.metode === "pita") cek(d.tipe === "pita" || d.tipe === "berat", `${nama} misi ${s.nomor}: Unit Fraction Strip membandingkan dua pita atau dua berat`);
         if (q.metode === "lipat") cek(d.tipe === "lipat", `${nama} misi ${s.nomor}: Fold the Paper melipat kertas`);
         if (q.metode === "garis") cek(["garisUrut", "garisBagi", "garisSisi"].includes(d.tipe), `${nama} misi ${s.nomor}: Fraction Number Line memakai garis`);
         // Data berbeda dari Story pada tugas yang bukan seed Cari kesalahan.
@@ -235,7 +235,8 @@ const TAHAP = [
           if (s.cara === "klik") sama(kunci, { jenis: "nama", nama: `1/${d.n}` }, `${nama} arsir ${d.n}: pecahan klik`);
           if (s.cara === "kanvas") sama(kunci, { jenis: "angka", n: d.n }, `${nama} arsir ${d.n}: penyebut kanvas`);
           if (s.cara === "suara") cek(kunci.nama === d.istilah && ["pembilang", "penyebut"].includes(d.istilah), `${nama} arsir ${d.n}: istilah suara`);
-          cek(d.n >= 3 && d.n <= 9, `${nama} arsir: penyebut tiga sampai sembilan`);
+          cek(d.n >= 3 && d.n <= 13 && (s.cara !== "kanvas" || d.n <= 9), `${nama} arsir: penyebut tiga sampai tiga belas (kanvas paling banyak sembilan)`);
+          if (d.bentuk) cek(d.bentuk === "lingkaran" && d.n <= 9, `${nama} arsir ${d.n}: bentuk lingkaran dengan paling banyak sembilan sektor`);
         }
         if (d.tipe === "pita") {
           const besar = Math.min(d.a, d.b);
@@ -244,11 +245,22 @@ const TAHAP = [
           if (s.cara === "suara") sama(kunci.nama, d.a < d.b ? "atas" : "bawah", `${nama} pita ${d.a},${d.b}: atas atau bawah`);
           cek(d.a !== d.b, `${nama} pita: dua pecahan berbeda`);
         }
+        if (d.tipe === "berat") {
+          // Buku: bawang putih satu per dua kilogram dan gula satu per empat kilogram, mana yang lebih berat. Penyebut lebih kecil berarti lebih berat.
+          const lebih = d.a < d.b ? "malam" : "pewarna";
+          if (s.cara === "klik") sama(kunci, { jenis: "nama", nama: lebih }, `${nama} berat ${d.a},${d.b}: bahan lebih berat (klik)`);
+          if (s.cara === "kanvas") sama(kunci, { jenis: "angka", n: Math.min(d.a, d.b) }, `${nama} berat ${d.a},${d.b}: penyebut pecahan yang lebih berat`);
+          if (s.cara === "suara") sama(kunci, { jenis: "nama", nama: lebih }, `${nama} berat ${d.a},${d.b}: bahan lebih berat (suara)`);
+          cek(d.a !== d.b && d.a >= 2 && d.b >= 2 && d.a <= 13 && d.b <= 13 && LC.beratLebih(d) === lebih, `${nama} berat: dua pecahan kilogram berbeda`);
+          cek(!(d.a === 2 && d.b === 4) && !(d.a === 4 && d.b === 2), `${nama} berat ${d.a},${d.b}: bukan data Story (satu per dua dengan satu per empat kilogram)`);
+          cek(/kilogram/.test(LC.instruksi(l, rupa, s.cara, "pita")) && /kg/.test(LC.barisKartu(d, s.cara).join(" ")), `${nama} berat: kilogram di instruksi dan kg di kartu`);
+          cek(LC.ucapkan(LC.kalimatKunci(l, s.cara)).includes("kilogram") && tanpaDigit(LC.ucapkan(LC.kalimatKunci(l, s.cara))), `${nama} berat: kalimat pembenaran diucapkan dengan kilogram tanpa digit`);
+        }
         if (d.tipe === "lipat") {
           if (s.cara === "klik") sama(kunci.nama, `1/${d.q}`, `${nama} lipat ${d.p},${d.q}: pecahan klik`);
           if (s.cara === "kanvas") sama(kunci.n, d.q - 1, `${nama} lipat ${d.p},${d.q}: garis lipatan`);
           if (s.cara === "suara") sama(kunci.nama, d.q < d.p ? "besar" : "kecil", `${nama} lipat ${d.p},${d.q}: besar atau kecil`);
-          cek(d.p !== d.q && d.p >= 3 && d.q >= 3 && d.q <= 9, `${nama} lipat: dua pembagian berbeda`);
+          cek(d.p !== d.q && d.p >= 3 && d.q >= 3 && d.q <= 10 && (s.cara !== "kanvas" || d.q <= 10), `${nama} lipat: dua pembagian berbeda (paling banyak sepuluh bagian)`);
         }
         if (d.tipe === "garisUrut") {
           sama(kunci.nama, LC.teksUrut(LC.urutTerkecil(d.urut)), `${nama} garis urut: urutan klik`);
@@ -374,6 +386,42 @@ const TAHAP = [
   const sa = readFileSync(new URL("../src/components/modul/SimulasiK4Bab2.tsx", import.meta.url), "utf8");
   cek(/misiDaftar: daftarMisiLipat\("A"\)/.test(sa) && /SimulasiMejaLipat/.test(sa) && /laporMisiLipat\(daftarMisiLipat\("A"\), k, a\.capai\)/.test(sa), "SimulasiK4Bab2: Sub-Bab A memakai misiDaftar dan laporMisi");
   cek(MT.misiAwalK4Bab2("A").includes(DS.MISI_LIPAT_TEKS), "misi awal Sub-Bab A memuat teks misi");
+}
+
+/* ------------------------------ Selaras buku: penyebut 5, 10, 11, 13, konteks berat, lingkaran ------------------------------ */
+{
+  const semua = [["Concrete", D.CONCRETE], ["Pictorial", D.PICTORIAL], ["Abstract", D.ABSTRACT]];
+  const penyebut = new Set();
+  for (const [nama, soal] of semua) {
+    const jenis = soal.flatMap((m) => m.langkah.map((q) => LC.dasarDari(q.langkah)));
+    cek(jenis.filter((d) => d.tipe === "berat").length === 1, `${nama}: tepat satu tugas pecahan kilogram (konteks berat)`);
+    for (const d of jenis) {
+      if (d.tipe === "arsir" || d.tipe === "garisBagi") penyebut.add(d.n);
+      if (d.tipe === "pita" || d.tipe === "berat" || d.tipe === "garisSisi") [d.a, d.b].forEach((n) => penyebut.add(n));
+      if (d.tipe === "lipat") [d.p, d.q].forEach((n) => penyebut.add(n));
+      if (d.tipe === "garisUrut") d.urut.forEach((n) => penyebut.add(n));
+    }
+  }
+  for (const n of [2, 5, 10, 11, 13]) cek(penyebut.has(n), `CPA memuat penyebut ${n} (daftar buku: 2, 3, 4, 5, 8, 10, 11, 13)`);
+  cek([...penyebut].every((n) => n >= 2 && n <= 13), "penyebut CPA antara dua dan tiga belas");
+  const lingkaran = [D.CONCRETE, D.PICTORIAL].flatMap((soal) => soal.flatMap((m) => m.langkah.map((q) => q.langkah))).filter((l) => l.tipe === "arsir" && l.bentuk === "lingkaran");
+  cek(lingkaran.length === 2 && D.ABSTRACT.every((m) => m.langkah.every((q) => !(q.langkah.tipe === "arsir" && q.langkah.bentuk))), "dua tugas lingkaran (Concrete dan Pictorial), tidak ada di Abstract");
+  // Geometri sektor lingkaran: sama besar, bersambung, menutup satu lingkaran penuh.
+  for (const n of [2, 3, 4, 5, 7, 9]) {
+    const sek = LC.sektorLingkaran(n, 150, 86, 52);
+    cek(sek.length === n && sek.every((x) => /^M150 86 L[-\d. ]+ A52 52 0 0 1 [-\d. ]+ Z$/.test(x.d)), `sektor ${n}: jalur dari pusat, dua jari-jari, satu busur`);
+    const sudut = sek.map((x) => { const m = x.d.match(/L([-\d.]+) ([-\d.]+) A52 52 0 0 1 ([-\d.]+) ([-\d.]+)/).slice(1).map(Number); return [Math.atan2(m[1] - 86, m[0] - 150), Math.atan2(m[3] - 86, m[2] - 150)]; });
+    const lebar = sudut.map(([a, b]) => ((b - a) + 4 * Math.PI) % (2 * Math.PI));
+    cek(lebar.every((v) => Math.abs(v - (2 * Math.PI) / n) < 0.01), `sektor ${n}: tiap sektor sama besar (${(360 / n).toFixed(1)} derajat)`);
+    cek(sek.every((x, i) => i === 0 || /A/.test(x.d)) && sek.every((x) => Number.isFinite(x.tx) && Number.isFinite(x.ty)), `sektor ${n}: titik tengah terhitung`);
+  }
+  const gambar = readFileSync(new URL("GambarLipat.tsx", folder), "utf8");
+  cek(/LingkaranBagian/.test(gambar) && /sektorLingkaran\(n, cx, cy, r\)/.test(gambar) && /case "berat"/.test(gambar) && /satu batang penuh = 1 kg/.test(gambar) && /data-bahan=/.test(gambar), "gambar: lingkaran dari sektor yang diuji dan dua batang satu kilogram untuk berat");
+  cek(K.cocokUcapan("malam", { jenis: "nama", nama: "malam" }).cocok && K.cocokUcapan("pewarna", { jenis: "nama", nama: "pewarna" }).cocok && !K.cocokUcapan("malam", { jenis: "nama", nama: "pewarna" }).cocok, "pengenal ucapan: malam dan pewarna");
+  // Infografis: batang lima dan sepuluh bagian untuk penyebut besar, aturan berat.
+  const kartu = readFileSync(new URL("data-kartu.ts", folder), "utf8");
+  const info = readFileSync(new URL("DaftarLipat.tsx", folder), "utf8");
+  cek(/<Mini n=\{5\} \/>/.test(info) && /<Mini n=\{10\} \/>/.test(info) && /kilogram lebih berat daripada satu per sepuluh kilogram/.test(kartu) && /lebih berat daripada satu per empat kilogram/.test(kartu), "Infografis dan Mind-map memuat penyebut lima dan sepuluh serta aturan berat dalam kilogram");
 }
 
 console.log(`Uji Meja Lipat Kelas 4 Bab 2 A: ${lulus} lulus, ${gagal} gagal`);

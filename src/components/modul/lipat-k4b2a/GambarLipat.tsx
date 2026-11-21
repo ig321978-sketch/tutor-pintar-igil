@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { barisKartu, dasarDari, garisLipat, kataPec, letakPecahan, potongBagian, tandaGaris, urutTerkecil, type Cara, type Langkah, type LangkahDasar, type Rupa } from "./logika-cpa";
+import { barisKartu, dasarDari, garisLipat, kataPec, letakPecahan, potongBagian, tandaGaris, urutTerkecil, sektorLingkaran, type Cara, type Langkah, type LangkahDasar, type Rupa } from "./logika-cpa";
 
 /**
  * Gambar tahap Concrete, Pictorial, dan Abstract Kelas 4 Bab 2 Sub-Bab A (pecahan berpembilang satu, membandingkan, garis pecahan):
@@ -76,6 +76,30 @@ export function BarisBagian({ x0, y, lebar, h, n, arsir, rupa, lipat = false, bu
   );
 }
 
+/**
+ * Taplak atau lingkaran kertas terbagi n bagian sama besar (sektor sama besar dari titik pusat, mulai dari atas searah jarum jam); bagian pertama berarsir.
+ * Sektor dihitung dari sudut (lingkaranBagian), jadi gambar sungguh sebanyak datanya. Concrete memberi bunga beremoji pada bagian berarsir.
+ */
+export function LingkaranBagian({ cx, cy, r, n, rupa }: { cx: number; cy: number; r: number; n: number; rupa: Rupa }) {
+  const w = warnaLipat(rupa);
+  const bagian = sektorLingkaran(n, cx, cy, r);
+  return (
+    <g>
+      <circle cx={cx} cy={cy} r={r} fill={w.isi} stroke={w.garis} strokeWidth={2.2} />
+      {bagian.map((b, i) => (
+        <g key={i} data-bagian={i === 0 ? "arsir" : "polos"}>
+          <path d={b.d} fill={i === 0 ? w.arsir : w.isi} stroke={w.garis} strokeWidth={1.4} strokeLinejoin="round" />
+          {rupa === "benda" && i === 0 ? (
+            <text x={b.tx} y={b.ty + Math.min(r * 0.12, 6)} textAnchor="middle" fontSize={Math.min(r * 0.42, 22)} aria-hidden="true">
+              {EMOJI_SANGGAR.bunga}
+            </text>
+          ) : null}
+        </g>
+      ))}
+    </g>
+  );
+}
+
 /** Garis dari nol sampai satu. Concrete = tali jemuran cokelat; Pictorial = garis polos. `tanda`: bagian sama panjang (null = hanya nol dan satu). */
 export function GarisBil({ x0, lebar, y, rupa, tanda }: { x0: number; lebar: number; y: number; rupa: Rupa; tanda: number | null }) {
   const w = warnaLipat(rupa);
@@ -128,6 +152,7 @@ export const PapanInfo = ({ children }: { children: React.ReactNode }) => (
 const JUDUL_KARTU: Record<LangkahDasar["tipe"], string> = {
   arsir: "pecahan dari bagian",
   pita: "membandingkan pecahan",
+  berat: "membandingkan berat",
   lipat: "membagi sama besar",
   garisUrut: "urutan pecahan",
   garisBagi: "penyebut pada garis",
@@ -148,9 +173,19 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
   switch (d.tipe) {
     case "arsir":
       return (
-        <Gambar rupa={rupa} label="Satu bagian berarsir dari bagian-bagian sama besar" judul={benda ? "kain dilipat bagian sama besar" : "bagian sama besar"}>
-          {benda ? <rect x={22} y={126} width={256} height={8} rx={2} fill="#B7814A" stroke="#6B4423" strokeWidth={1.2} /> : null}
-          <BarisBagian x0={30} y={62} lebar={240} h={64} n={d.n} arsir={[0]} rupa={rupa} />
+        <Gambar
+          rupa={rupa}
+          label={d.bentuk === "lingkaran" ? "Satu bagian berarsir dari lingkaran yang dibagi sama besar" : "Satu bagian berarsir dari bagian-bagian sama besar"}
+          judul={d.bentuk === "lingkaran" ? (benda ? "taplak bundar bagian sama besar" : "lingkaran bagian sama besar") : benda ? "kain dilipat bagian sama besar" : "bagian sama besar"}
+        >
+          {d.bentuk === "lingkaran" ? (
+            <LingkaranBagian cx={150} cy={86} r={52} n={d.n} rupa={rupa} />
+          ) : (
+            <>
+              {benda ? <rect x={22} y={126} width={256} height={8} rx={2} fill="#B7814A" stroke="#6B4423" strokeWidth={1.2} /> : null}
+              <BarisBagian x0={30} y={62} lebar={240} h={64} n={d.n} arsir={[0]} rupa={rupa} />
+            </>
+          )}
           {cara === "suara" ? (
             <PecahanBersusun x={150} cy={160} bawah={d.n} u={17} warna={w.angka} sorot={d.istilah === "penyebut" ? "bawah" : "atas"} />
           ) : (
@@ -173,6 +208,34 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
           <line x1={letakPecahan(d.b, x0, lebar)} y1={40} x2={letakPecahan(d.b, x0, lebar)} y2={150} stroke="#2563EB" strokeWidth={1.6} strokeDasharray="4 3" />
           <text x={150} y={176} textAnchor="middle" fontSize={11} fontWeight={900} fill={w.garis}>
             bagian berarsir kedua pita dibandingkan
+          </text>
+        </Gambar>
+      );
+    }
+    case "berat": {
+      const x0 = 74;
+      const lebar = 190;
+      const bahan = [
+        { nama: "malam", n: d.a, y: 50, emoji: "\u{1F9C8}" },
+        { nama: "pewarna", n: d.b, y: 110, emoji: "\u{1F3A8}" },
+      ];
+      return (
+        <Gambar rupa={rupa} label="Dua batang satu kilogram, malam dan pewarna, masing-masing dibagi bagian sama besar dengan satu bagian berarsir" judul={benda ? "malam dan pewarna ditimbang" : "dua bahan ditimbang"}>
+          {bahan.map((b) => (
+            <g key={b.nama} data-bahan={b.nama}>
+              <text x={x0} y={b.y - 5} fontSize={10} fontWeight={900} fill={w.garis}>
+                {benda ? `${b.emoji} ` : ""}
+                {b.nama}
+              </text>
+              <PecahanBersusun x={38} cy={b.y + 18} bawah={b.n} warna={w.angka} />
+              <text x={56} y={b.y + 29} fontSize={10} fontWeight={900} fill={w.angka}>
+                kg
+              </text>
+              <BarisBagian x0={x0} y={b.y} lebar={lebar} h={36} n={b.n} arsir={[0]} rupa={rupa} bunga={false} />
+            </g>
+          ))}
+          <text x={150} y={176} textAnchor="middle" fontSize={10} fontWeight={900} fill={w.garis}>
+            satu batang penuh = 1 kg
           </text>
         </Gambar>
       );

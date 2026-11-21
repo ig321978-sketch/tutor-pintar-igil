@@ -1,5 +1,5 @@
 import type { AdeganStory } from "./logika-story";
-import { E, W, emo, garisBil, jepitan, judul, kotak, panah, pecahan, tanah, teks, tokoh } from "./k4b2a-gambar";
+import { E, W, bagianKain, emo, garisBil, jepitan, judul, kotak, panah, pecahan, tanah, teks, tokoh } from "./k4b2a-gambar";
 import { bersih, hapus, k, sorotkan, tambah } from "./k4b2a-bantu";
 
 /*
@@ -45,8 +45,8 @@ export const ADEGAN_GARIS: AdeganStory = {
 
 /* ------------------------------ 8. Urutkan potongan ------------------------------ */
 const SUARA_U1 = "Bu Wulan meminta mereka mengurutkan potongan dari yang terkecil.";
-const SUARA_U2 = "Satria menyusun satu per delapan, satu per empat, lalu satu per dua.";
-const SUARA_U3 = "Bu Wulan bertepuk tangan, karena urutannya sudah benar.";
+const SUARA_U2 = "Satria menyusun satu per sepuluh, satu per lima, lalu satu per dua.";
+const SUARA_U3 = "Bu Wulan bertepuk tangan. Laras menambahkan, satu per tiga belas kurang dari satu per sebelas, karena bagiannya lebih banyak.";
 const potongan = (id: string, y: number, w: number) => kotak(id, 40, y, w, 18, W.arsir, W.ungu, { rx: 2, tebal: 1.4, z: 2 });
 
 export const ADEGAN_URUT: AdeganStory = {
@@ -57,23 +57,25 @@ export const ADEGAN_URUT: AdeganStory = {
   ketukan: [
     k(
       SUARA_U1,
-      tambah(0, judul("Urutkan Potongan"), ...tanah("tn", 150), ...tokoh("bw", 250, 184, "Bu Wulan")),
-      tambah("potongan", potongan("pA", 50, 60), potongan("pB", 76, 120), potongan("pC", 102, 30)),
-      tambah("terkecil.", teks("tl", 226, 60, "mulai dari", 9, W.coklat), teks("tl2", 226, 72, "yang terkecil", 9, W.coklat)),
+      tambah(0, judul("Urutkan Potongan"), ...tanah("tn", 150), ...tokoh("bw", 250, 168, "Bu Wulan")),
+      tambah("potongan", potongan("pA", 80, 48), potongan("pB", 112, 120), potongan("pC", 48, 24)),
+      tambah("terkecil.", teks("tl", 226, 70, "mulai dari", 11, W.coklat), teks("tl2", 226, 86, "yang terkecil", 11, W.coklat)),
     ),
     k(
       SUARA_U2,
       hapus(0, "pA", "pB", "pC", "tl", "tl2"),
-      tambah(0, ...tokoh("sa", 160, 184, "Satria")),
-      tambah("delapan,", potongan("s8", 50, 30), ...pecahan("u8", 26, 56, 8, 10)),
-      tambah("empat,", potongan("s4", 76, 60), ...pecahan("u4", 26, 82, 4, 10)),
-      tambah("dua.", potongan("s2", 102, 120), ...pecahan("u2", 26, 108, 2, 10)),
+      tambah(0, ...tokoh("sa", 170, 168, "Satria")),
+      tambah("sepuluh,", potongan("s10", 48, 24), ...pecahan("u10", 22, 57, 10, 12)),
+      tambah("lima,", potongan("s5", 80, 48), ...pecahan("u5", 22, 89, 5, 12)),
+      tambah("dua.", potongan("s2", 112, 120), ...pecahan("u2", 22, 121, 2, 12)),
     ),
     k(
       SUARA_U3,
-      tambah("bertepuk", emo("tp", 226, 142, E.tepuk, 20)),
-      tambah("urutannya", teks("ut", 232, 60, "terkecil ke terbesar", 9, W.unguTua)),
-      tambah("benar.", emo("ok", 232, 100, E.benar, 24)),
+      tambah("bertepuk", emo("tp", 226, 136, E.tepuk, 20)),
+      tambah("Laras", ...tokoh("lr", 210, 168, "Laras")),
+      tambah("tiga", ...bagianKain("b13", 130, 52, 156, 16, 13, [0]), ...pecahan("p13", 112, 56, 13, 12)),
+      tambah("sebelas,", ...bagianKain("b11", 130, 84, 154, 16, 11, [0]), ...pecahan("p11", 112, 92, 11, 12)),
+      tambah("banyak.", teks("bn", 232, 112, "13 bagian lebih sempit", 11, W.unguTua)),
     ),
   ],
 };

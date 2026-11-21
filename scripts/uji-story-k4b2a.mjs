@@ -174,14 +174,21 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   const bilanganSuara = (s0) => {
     const t = s0.toLowerCase().split(/[^a-z]+/).filter(Boolean);
     const out = [];
-    for (const w of t) {
+    for (let q = 0; q < t.length; q += 1) {
+      const w = t[q];
       if (w === "nol") out.push(0);
-      else if (SATUAN[w]) out.push(SATUAN[w]);
+      else if (w === "sepuluh") out.push(10);
+      else if (w === "sebelas") out.push(11);
+      else if (SATUAN[w] && t[q + 1] === "belas") {
+        out.push(SATUAN[w] + 10);
+        q += 1;
+      } else if (SATUAN[w]) out.push(SATUAN[w]);
     }
     return out;
   };
   sama(bilanganSuara("Satu bagian dari dua bagian sama besar kita tulis satu per dua."), [1, 2, 1, 2], "pembaca bilangan suara (pecahan)");
   sama(bilanganSuara("Kedua satuan dan pertama."), [], "pembaca bilangan suara (bukan bilangan)");
+  sama(bilanganSuara("satu per tiga belas kurang dari satu per sebelas dan satu per sepuluh"), [1, 13, 1, 11, 1, 10], "pembaca bilangan suara (belas, sebelas, sepuluh)");
 
   const materi = JSON.stringify(M_VIDEO.adegan.map(teksAdegan));
   const luar = JSON.stringify(U.adegan.map(teksAdegan));
@@ -265,10 +272,38 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
         const objs = L.keadaanStory(a, i, 9999);
         for (const o of objs.filter((q) => /-a$/.test(q.id) && /^f|^pc$|^p[a-z]$|^u\d|^l\d/.test(q.id.replace(/-a$/, "")) && q.t === "teks" && q.isi === "1")) {
           const dasar = o.id.replace(/-a$/, "");
-          cek(ada(objs, `${dasar}-g`, `${dasar}-b`) && /^\d$/.test(isiTeks(objs, `${dasar}-b`)) && ketemu(objs, `${dasar}-b`).x === o.x && ketemu(objs, `${dasar}-b`).y > o.y, `${v.id}/${a.id}#${i + 1}: pecahan ${dasar} bersusun: garis dan penyebut di bawah pembilang`);
+          cek(ada(objs, `${dasar}-g`, `${dasar}-b`) && /^\d{1,2}$/.test(isiTeks(objs, `${dasar}-b`)) && ketemu(objs, `${dasar}-b`).x === o.x && ketemu(objs, `${dasar}-b`).y > o.y, `${v.id}/${a.id}#${i + 1}: pecahan ${dasar} bersusun: garis dan penyebut di bawah pembilang`);
         }
         for (const o of objs.filter((q) => q.t === "teks" && /^\d[\d.]*$/.test(q.isi ?? "") && (q.isi ?? "").length >= 4)) cek(false, `${v.id}/${a.id}#${i + 1}: bilangan ${o.isi} terlalu panjang`);
       }
+
+  /* Adegan yang diubah untuk selaras buku (mengaduk, urut, lipat-empat): teks isi paling kecil 11 di viewBox 300 (efektif >= 10 px pada skala render 0,93),
+     tanpa tumpang tindih antar teks, emoji, wajah tokoh, label nama, dan keterangan sumber. */
+  for (const id of ["mengaduk", "urut", "lipat-empat"]) {
+    const a = adegan(M_VIDEO, id);
+    a.ketukan.forEach((_, i) => {
+      const objs = L.keadaanStory(a, i, 9999);
+      const adaEmoji = (o) => /^[\u{1F000}-\u{1FFFF}]|^[✂✅❌]$/u.test(o.isi ?? "");
+      const teksObj = objs.filter((o) => o.t === "teks" && (o.op ?? 1) > 0 && o.isi);
+      for (const o of teksObj.filter((q) => !adaEmoji(q) && !/-n$/.test(q.id))) cek((o.u ?? 10) >= 11, `${id}#${i + 1}: teks "${o.isi}" (${o.id}) ukuran ${o.u ?? 10} paling kecil 11`);
+      const kotakDari = (o) => {
+        if (adaEmoji(o)) {
+          const u = o.u ?? 10;
+          return [(o.x ?? 0) - u * 0.55, (o.y ?? 0) - u * 0.85, (o.x ?? 0) + u * 0.55, (o.y ?? 0) + u * 0.15];
+        }
+        return kotakTeks(o);
+      };
+      const sumber = [282 - a.sumber.length * 3.6, 198, 282, 204];
+      const semua = [...teksObj.map((o) => ({ id: o.id, k: kotakDari(o) })), { id: "sumber", k: sumber }];
+      const milikSama = (p, q) => { const d = (x) => x.replace(/-n$/, ""); return d(p) === d(q); };
+      for (let p = 0; p < semua.length; p += 1) for (let q = p + 1; q < semua.length; q += 1) {
+        if (milikSama(semua[p].id, semua[q].id)) continue;
+        const lx = Math.min(semua[p].k[2], semua[q].k[2]) - Math.max(semua[p].k[0], semua[q].k[0]);
+        const ly = Math.min(semua[p].k[3], semua[q].k[3]) - Math.max(semua[p].k[1], semua[q].k[1]);
+        cek(!(lx > 0.5 && ly > 0.5), `${id}#${i + 1}: ${semua[p].id} dan ${semua[q].id} bertumpuk (${lx.toFixed(0)}x${ly.toFixed(0)})`);
+      }
+    });
+  }
 
   /* Isi tiap adegan materi. */
   const sg = adegan(M_VIDEO, "sanggar");
@@ -289,6 +324,14 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   kainBenar(akhirAdegan(le, 1), "kn", 4, [0], 240, "lipat empat satu bagian berarsir");
   sama([isiTeks(akhirAdegan(le, 1), "pc-a"), isiTeks(akhirAdegan(le, 1), "pc-b")], ["1", "4"], "lipat empat: pecahan satu per empat bersusun");
   cek(isiTeks(akhirAdegan(le), "sl") === "seluruh kain" && ketemu(akhirAdegan(le), "pc-b").sorot === true && [0, 1, 2, 3].every((q) => ketemu(akhirAdegan(le), `kn-c${q}`).sorot === true), "lipat empat: penyebut empat karena seluruh kain empat bagian");
+  {
+    // Buku (pizza dibagi empat bagian sama): taplak bundar empat sektor sama besar, satu berarsir.
+    const o = akhirAdegan(le);
+    const sektor = [0, 1, 2, 3].map((q) => ketemu(o, `tb-c${q}`));
+    cek(sektor.every((q) => q && q.t === "jalur") && sektor.filter((q) => q.warna === ARSIR).length === 1 && sektor[0].warna === ARSIR, "lipat empat: taplak bundar empat sektor, satu berarsir");
+    const luas = sektor.map((q) => { const t = titikJalur(q); let a = 0; for (let i = 0; i < t.length; i += 1) { const [x1, y1] = t[i]; const [x2, y2] = t[(i + 1) % t.length]; a += x1 * y2 - x2 * y1; } return Math.abs(a / 2); });
+    cek(luas.every((v) => Math.abs(v - luas[0]) < luas[0] * 0.01), `lipat empat: keempat sektor taplak sama luas (${luas.map((v) => v.toFixed(1)).join(", ")})`);
+  }
   const sd = adegan(M_VIDEO, "salah-delapan");
   kainBenar(akhirAdegan(sd, 0), "kn", 8, [0], 240, "salah delapan");
   sama([isiTeks(akhirAdegan(sd, 0), "pc-a"), isiTeks(akhirAdegan(sd, 0), "pc-b"), isiTeks(akhirAdegan(sd, 0), "n8")], ["1", "8", "8 bagian"], "salah delapan: Genta menulis satu per delapan");
@@ -304,9 +347,17 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   cek(isiTeks(akhirAdegan(bd, 1), "lp") === "lebih pendek" && [1, 2, 3, 4, 5, 6, 7].every((q) => ketemu(akhirAdegan(bd, 1), `k8-c${q}`).sorot === true), "bandingkan: lebih pendek karena bagian lebih banyak");
   cek(isiTeks(akhirAdegan(bd), "bs") === "1/4 > 1/8" && isiTeks(akhirAdegan(bd), "tk") === "makin banyak, makin kecil" && ada(akhirAdegan(bd), "sa", "pk") && tidakAda(akhirAdegan(bd), "lp", "n2"), "bandingkan: makin banyak bagian makin kecil, satu per empat lebih besar");
   const mg = adegan(M_VIDEO, "mengaduk");
-  cek(ada(akhirAdegan(mg, 0), "sa", "pm", "pm-m", "pm-t", "ad", "ap") && isiTeks(akhirAdegan(mg, 0), "tm") === "malam", "mengaduk: Satria mengaduk malam di dekat tungku");
-  cek(ada(akhirAdegan(mg, 1), "up", "ke", "lr", "bw", "t1", "t2"), "mengaduk: uap membuat wajah Satria memerah dan semua tertawa");
-  cek(ada(akhirAdegan(mg), "cat-k", "cc") && ["c0", "c1", "c2"].map((id) => isiTeks(akhirAdegan(mg), id)).join("|") === "pembilang: 1|penyebut makin besar|bagian makin kecil", "mengaduk: Laras mencatat pembilang satu, penyebut makin besar, bagian makin kecil");
+  cek(ada(akhirAdegan(mg, 0), "sa", "pm", "pm-m", "pm-t", "ad", "ap", "up", "ke") && isiTeks(akhirAdegan(mg, 0), "tm") === "malam", "mengaduk: Satria mengaduk malam di dekat tungku sampai wajahnya memerah");
+  {
+    // Buku: pecahan berpembilang satu dalam konteks berat (satu per dua kilogram dengan satu per empat kilogram).
+    const o = akhirAdegan(mg, 1);
+    kainBenar(o, "bm", 2, [0], 200, "batang malam satu kilogram dibagi dua");
+    kainBenar(o, "bp", 4, [0], 200, "batang pewarna satu kilogram dibagi empat");
+    cek(ketemu(o, "bm").w === ketemu(o, "bp").w && ketemu(o, "bm").x === ketemu(o, "bp").x, "mengaduk: dua batang satu kilogram sama panjang");
+    sama([isiTeks(o, "bm-f-a"), isiTeks(o, "bm-f-b"), isiTeks(o, "bp-f-a"), isiTeks(o, "bp-f-b"), isiTeks(o, "bm-kg"), isiTeks(o, "bp-kg")], ["1", "2", "1", "4", "kg", "kg"], "mengaduk: malam satu per dua kg dan pewarna satu per empat kg");
+    cek(isiTeks(o, "bt") === "malam lebih berat" && ada(o, "bw") && tidakAda(o, "pm", "sa"), "mengaduk: Bu Wulan menimbang, malam lebih berat");
+  }
+  cek(ada(akhirAdegan(mg), "cat-k", "cc", "lr") && ["c0", "c1", "c2", "c3"].map((id) => isiTeks(akhirAdegan(mg), id)).join("|") === "pembilang: 1|penyebut makin besar|bagian makin kecil|berat makin ringan", "mengaduk: Laras mencatat pembilang satu, penyebut makin besar, bagian makin kecil, berat makin ringan");
   const gr = adegan(M_VIDEO, "garis");
   cek(ada(akhirAdegan(gr, 0), "gb-l", "gb-t0", "gb-t1", "bw") && isiTeks(akhirAdegan(gr, 0), "gb-n0") === "0" && isiTeks(akhirAdegan(gr, 0), "gb-n1") === "1" && tidakAda(akhirAdegan(gr, 0), "gb-t2"), "garis: tali dari nol sampai satu");
   {
@@ -324,11 +375,19 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   {
     const o = akhirAdegan(ur, 1);
     const w = (id) => ketemu(o, id).w;
-    cek(w("s8") * 2 === w("s4") && w("s4") * 2 === w("s2") && ketemu(o, "s8").y < ketemu(o, "s4").y && ketemu(o, "s4").y < ketemu(o, "s2").y, "urut: potongan 1/8, 1/4, 1/2 berurutan dari pendek ke panjang dengan lebar 1 : 2 : 4");
-    sama(["u8-b", "u4-b", "u2-b"].map((id) => isiTeks(o, id)), ["8", "4", "2"], "urut: pecahan satu per delapan, satu per empat, satu per dua");
+    cek(w("s10") * 5 === w("s2") * 1 + 0 && w("s5") * 5 === w("s2") * 2 && w("s5") === 2 * w("s10") && ketemu(o, "s10").y < ketemu(o, "s5").y && ketemu(o, "s5").y < ketemu(o, "s2").y, "urut: potongan 1/10, 1/5, 1/2 berurutan dari pendek ke panjang dengan lebar 1 : 2 : 5");
+    sama(["u10-b", "u5-b", "u2-b"].map((id) => isiTeks(o, id)), ["10", "5", "2"], "urut: pecahan satu per sepuluh, satu per lima, satu per dua (penyebut dari buku)");
     cek(ada(o, "sa") && tidakAda(o, "pA", "pB", "pC"), "urut: Satria menyusun");
   }
-  cek(ada(akhirAdegan(ur), "tp", "ok", "bw") && isiTeks(akhirAdegan(ur), "ut") === "terkecil ke terbesar", "urut: Bu Wulan bertepuk tangan karena urutan benar");
+  {
+    // Buku: perbandingan 1/11 dan 1/13; kedua batang digambar sungguh dengan 11 dan 13 bagian sama besar.
+    const o = akhirAdegan(ur);
+    cek(ada(o, "tp", "bw", "lr", "b13", "b11") && isiTeks(o, "bn") === "13 bagian lebih sempit", "urut: Bu Wulan bertepuk tangan, Laras membandingkan sebelas dan tiga belas bagian");
+    kainBenar(o, "b13", 13, [0], 156, "batang tiga belas bagian");
+    kainBenar(o, "b11", 11, [0], 154, "batang sebelas bagian");
+    sama(["p13-b", "p11-b"].map((id) => isiTeks(o, id)), ["13", "11"], "urut: pecahan satu per tiga belas dan satu per sebelas");
+    cek(bagian(o, "b13")[0].w < bagian(o, "b11")[0].w, "urut: bagian batang tiga belas lebih sempit daripada batang sebelas");
+  }
   const pt = adegan(M_VIDEO, "penutup");
   cek(ada(akhirAdegan(pt, 0), "pj", "pj-ap" === "x" ? "" : "pj-bj", "pj-pc", "b1", "b1-w", "b2", "b2-w", "b3", "b3-w"), "penutup: Pak Joyo berapron cokelat dengan tiga bak warna");
   {

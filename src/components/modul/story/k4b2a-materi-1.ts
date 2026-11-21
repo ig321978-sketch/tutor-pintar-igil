@@ -1,5 +1,5 @@
 import type { AdeganStory } from "./logika-story";
-import { E, W, bagianKain, canting, emo, judul, kainGantung, kotak, pecahan, panah, papanNama, tanah, taliJemuran, teks, tokoh } from "./k4b2a-gambar";
+import { E, W, bagianKain, canting, emo, judul, kainGantung, kotak, lingkaranBagian, pecahan, panah, papanNama, tanah, taliJemuran, teks, tokoh } from "./k4b2a-gambar";
 import { k, redamkan, sorotkan, tambah, ubah } from "./k4b2a-bantu";
 
 /*
@@ -83,7 +83,7 @@ export const ADEGAN_LIPAT_DUA: AdeganStory = {
 /* ------------------------------ 3. Lipat empat ------------------------------ */
 const SUARA_E1 = "Laras melipat kain itu sekali lagi sehingga menjadi empat bagian sama besar.";
 const SUARA_E2 = "Satu bagian saja kita arsir, jadi pecahannya satu per empat.";
-const SUARA_E3 = "Penyebutnya empat, karena seluruh kain terbagi menjadi empat bagian.";
+const SUARA_E3 = "Penyebutnya empat, karena seluruh kain terbagi menjadi empat bagian. Taplak bundar yang dipotong empat juga begitu.";
 
 export const ADEGAN_LIPAT_EMPAT: AdeganStory = {
   id: "lipat-empat",
@@ -96,7 +96,7 @@ export const ADEGAN_LIPAT_EMPAT: AdeganStory = {
       tambah(0, judul("Lipat Empat"), ...tanah("tn", 150), ...tokoh("lr", 40, 184, "Laras")),
       tambah("kain", ...bagianKain("kn", 30, 56, 240, 60, 2, [])),
       tambah("sekali", emo("ul", 250, 140, E.ulang, 18)),
-      tambah("empat", ...bagianKain("kn", 30, 56, 240, 60, 4, []), teks("n4", 150, 42, "4 bagian", 11, W.merah)),
+      tambah("empat", ...bagianKain("kn", 30, 56, 240, 60, 4, []), teks("n4", 150, 38, "4 bagian", 12, W.merah)),
     ),
     k(
       SUARA_E2,
@@ -106,9 +106,10 @@ export const ADEGAN_LIPAT_EMPAT: AdeganStory = {
     k(
       SUARA_E3,
       sorotkan("Penyebutnya", "pc-b"),
-      tambah("seluruh", teks("sl", 150, 51, "seluruh kain", 9, W.coklat)),
+      tambah("seluruh", teks("sl", 150, 53, "seluruh kain", 11, W.coklat)),
       sorotkan("terbagi", "kn-c0", "kn-c1", "kn-c2", "kn-c3"),
       tambah("empat@2", kotak("br", 30, 122, 240, 5, W.emas, W.coklat, { rx: 2, tebal: 1, z: 3 })),
+      tambah("bundar", ...lingkaranBagian("tb", 240, 152, 24, 4, [0])),
     ),
   ],
 };

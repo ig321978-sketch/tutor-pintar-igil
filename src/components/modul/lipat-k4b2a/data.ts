@@ -7,13 +7,14 @@
  * Angka jawaban Tulis di kanvas per tahap: Concrete 7, 5, 8, 6; Pictorial 3, 4, 6, 9; Abstract 6, 7, 4, 5 (tidak kembar dalam satu tahap).
  * Diuji: scripts/uji-lipat-k4b2a.mjs.
  */
-import type { Cara, Istilah, Langkah, LangkahSalah, LangkahSoal, LArsir, LGarisBagi, LGarisSisi, LGarisUrut, LLipat, LPita, Rupa, SoalMisi } from "./logika-cpa";
+import type { Cara, Istilah, Langkah, LangkahSalah, LangkahSoal, LArsir, LBerat, LGarisBagi, LGarisSisi, LGarisUrut, LLipat, LPita, Rupa, SoalMisi } from "./logika-cpa";
 import { URUT_METODE, instruksi, ucapkan } from "./logika-cpa";
 
 export { MISI_LIPAT_TEKS } from "./data-sim";
 
-const arsir = (n: number, istilah: Istilah = "penyebut"): LArsir => ({ tipe: "arsir", n, istilah });
+const arsir = (n: number, istilah: Istilah = "penyebut", bentuk?: "lingkaran"): LArsir => ({ tipe: "arsir", n, istilah, ...(bentuk ? { bentuk } : {}) });
 const pita = (a: number, b: number): LPita => ({ tipe: "pita", a, b });
+const berat = (a: number, b: number): LBerat => ({ tipe: "berat", a, b });
 const lipat = (p: number, q: number): LLipat => ({ tipe: "lipat", p, q });
 const garisUrut = (urut: [number, number, number]): LGarisUrut => ({ tipe: "garisUrut", urut });
 const garisBagi = (n: number): LGarisBagi => ({ tipe: "garisBagi", n });
@@ -62,11 +63,11 @@ export const CONCRETE: SoalMisi[] = [
       1,
       "Penyebut yang lebih besar berarti seluruhnya dibagi menjadi lebih banyak bagian, sehingga tiap bagian lebih kecil.",
     ),
-    lipat(3, 7),
+    lipat(4, 10),
     garisUrut([3, 6, 9]),
   ]),
-  C(3, "kanvas", "Misi Lipat 3: papan sanggar", "Laras mencatat bagian kain di papan sanggar. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [arsir(7), pita(5, 8), lipat(3, 9), garisBagi(6)]),
-  C(4, "suara", "Misi Lipat 4: panggilan Pak Hendro", "Pak Hendro memanggil dari halaman sanggar. Jawab dengan suaramu.", [arsir(9, "penyebut"), pita(3, 7), lipat(8, 5), garisSisi(3, 5)]),
+  C(3, "kanvas", "Misi Lipat 3: papan sanggar", "Laras mencatat bagian kain dan bahan di papan sanggar. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [arsir(7, "penyebut", "lingkaran"), berat(5, 8), lipat(3, 9), garisBagi(6)]),
+  C(4, "suara", "Misi Lipat 4: panggilan Pak Hendro", "Pak Hendro memanggil dari halaman sanggar. Jawab dengan suaramu.", [arsir(10, "penyebut"), pita(3, 7), lipat(8, 5), garisSisi(3, 5)]),
 ];
 
 /* ------------------------------ Pictorial: kertas pola dengan pita, kertas lipat, dan garis polos ------------------------------ */
@@ -74,7 +75,7 @@ const Pi = satuMisi("diagram");
 export const PICTORIAL: SoalMisi[] = [
   Pi(5, "klik", "Misi Lipat 5: kertas pola", "Genta menyalin lipatan kain ke kertas pola. Periksa gambarnya.", [
     arsir(5),
-    pita(9, 6),
+    pita(11, 13),
     salah(
       lipat(4, 6),
       "Genta",
@@ -91,8 +92,8 @@ export const PICTORIAL: SoalMisi[] = [
     ),
     garisUrut([7, 3, 5]),
   ]),
-  Pi(6, "kanvas", "Misi Lipat 6: bagan Laras", "Laras menggambar bagan bagian kain. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [arsir(3), pita(6, 4), lipat(5, 7), garisBagi(9)]),
-  Pi(7, "suara", "Misi Lipat 7: lapor ke Pak Hendro", "Genta melaporkan bagannya kepada Pak Hendro. Sebutkan jawabanmu.", [arsir(4, "pembilang"), pita(3, 6), lipat(5, 9), garisSisi(6, 4)]),
+  Pi(6, "kanvas", "Misi Lipat 6: bagan Laras", "Laras menggambar bagan bagian kain. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [arsir(3, "penyebut", "lingkaran"), berat(6, 4), lipat(5, 7), garisBagi(9)]),
+  Pi(7, "suara", "Misi Lipat 7: lapor ke Pak Hendro", "Genta melaporkan bagannya kepada Pak Hendro. Sebutkan jawabanmu.", [arsir(4, "pembilang"), pita(3, 6), lipat(5, 9), garisSisi(10, 5)]),
 ];
 
 /* ------------------------------ Abstract: daftar Bu Wulan dengan kartu kata dan angka ------------------------------ */
@@ -114,10 +115,10 @@ export const ABSTRACT: SoalMisi[] = [
       "Penyebut yang lebih besar berarti seluruhnya dibagi menjadi lebih banyak bagian, sehingga tiap bagian lebih kecil.",
     ),
     lipat(4, 5),
-    garisUrut([4, 9, 6]),
+    garisUrut([10, 5, 2]),
   ]),
   A(9, "kanvas", "Misi Lipat 9: tulis di daftar", "Laras meminta kamu menulis jawaban di kanvas.", [arsir(6), pita(9, 7), lipat(7, 5), garisBagi(5)]),
-  A(10, "suara", "Misi Lipat 10: daftar akhir", "Daftar akhir pecahan untuk Bu Wulan. Ucapkan jawabannya.", [arsir(7, "penyebut"), pita(9, 6), lipat(3, 7), garisSisi(7, 4)]),
+  A(10, "suara", "Misi Lipat 10: daftar akhir", "Daftar akhir pecahan untuk Bu Wulan. Ucapkan jawabannya.", [arsir(7, "penyebut"), berat(13, 11), lipat(3, 7), garisSisi(7, 4)]),
 ];
 
 export const POIN_PENTING = [

@@ -57,6 +57,13 @@ export const ATURAN_WARNA: readonly AturanWarna[] = [
   { kunci: "tanda", sebut: "tanda banding", isi: "Sisi terbuka ke yang besar", suara: "Sisi tanda banding yang terbuka selalu menghadap pecahan yang lebih besar, ujung runcingnya ke yang lebih kecil." },
   { kunci: "garis", sebut: "garis pecahan", isi: "Kanan lebih besar", suara: "Pada garis pecahan, makin ke kanan makin besar pecahannya." },
 ];
+/** Tiga contoh seperti di buku (penyebut enam lewat tongkat, tiga, dan sepuluh): dua pecahan berpenyebut sama dan tandanya. `satuan` ikut dibaca bila ada. */
+export type ContohWarna = { kunci: string; sebut: string; a: { p: number; q: number }; b: { p: number; q: number }; tanda: "<" | ">"; satuan?: string; suara: string };
+export const CONTOH_WARNA: readonly ContohWarna[] = [
+  { kunci: "tongkat", sebut: "dua tongkat", a: { p: 3, q: 6 }, b: { p: 2, q: 6 }, tanda: ">", satuan: "m", suara: ejaK4B2("Tongkat 3/6 meter lebih panjang dari tongkat 2/6 meter. Penyebutnya sama, jadi banding pembilang: 3 lebih besar dari 2.") },
+  { kunci: "tiga", sebut: "penyebut tiga", a: { p: 1, q: 3 }, b: { p: 2, q: 3 }, tanda: "<", suara: ejaK4B2("1/3 < 2/3. Penyebutnya sama, jadi banding pembilang: 1 lebih kecil dari 2.") },
+  { kunci: "sepuluh", sebut: "penyebut sepuluh", a: { p: 2, q: 10 }, b: { p: 1, q: 10 }, tanda: ">", suara: ejaK4B2("2/10 > 1/10. Penyebutnya sama, jadi banding pembilang: 2 lebih besar dari 1.") },
+];
 export const JUDUL_INFO_ATURAN_WARNA = "Kartu Aturan Pak Joyo";
-export const PETUNJUK2_INFO_WARNA = "Ketuk tanda tanya untuk melihat aturan Pak Joyo.";
-export const SELESAI2_INFO_WARNA = "Kartu lengkap! Lihat penyebut, banding pembilang, lalu pilih tanda.";
+export const PETUNJUK2_INFO_WARNA = "Ketuk tanda tanya untuk melihat aturan dan tiga contoh Pak Joyo.";
+export const SELESAI2_INFO_WARNA = "Kartu lengkap! Penyebut enam, tiga, atau sepuluh sama saja: lihat penyebut, banding pembilang, lalu pilih tanda.";

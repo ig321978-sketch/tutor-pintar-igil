@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { CSS_LEMARI, TOMBOL_UTAMA } from "../lemari-k1b1a/ui";
 import { Pec } from "../lipat-k4b2a/Pec";
 import { TangkiBak } from "./TangkiBak";
-import { ATURAN_WARNA, BAK_PASANG, BAK_URUT, LAPIS_BAK, PETUNJUK1_INFO_WARNA, PETUNJUK2_INFO_WARNA, SELESAI1_INFO_WARNA, SELESAI2_INFO_WARNA, SUARA_TANDA_PASANG, SUARA_URUT, suaraBak } from "./data-kartu";
+import { ATURAN_WARNA, BAK_PASANG, CONTOH_WARNA, BAK_URUT, LAPIS_BAK, PETUNJUK1_INFO_WARNA, PETUNJUK2_INFO_WARNA, SELESAI1_INFO_WARNA, SELESAI2_INFO_WARNA, SUARA_TANDA_PASANG, SUARA_URUT, suaraBak } from "./data-kartu";
 
 /**
  * Infografis Kelas 4 Bab 2 Sub-Bab B (dirancang sendiri, dua kartu, tiap kartu satu layar tanpa gulir): data dari Story.
@@ -41,7 +41,8 @@ export default function DaftarWarnaK4B2({ speakGuru, onLanjut, teksLanjut }: { s
   const buka1 = buka.filter((k) => k.startsWith("b-") || k.startsWith("u-") || k === "tanda" || k === "urutan").length;
   const buka2 = buka.filter((k) => k.startsWith("a-")).length;
   const selesai1 = buka1 === total1;
-  const selesai2 = buka2 === ATURAN_WARNA.length;
+  const total2 = ATURAN_WARNA.length + CONTOH_WARNA.length;
+  const selesai2 = buka2 === total2;
   const ketuk = (kunci: string, suara: string) => {
     speakGuru(suara);
     if (!buka.includes(kunci)) setBuka((b) => [...b, kunci]);
@@ -128,11 +129,33 @@ export default function DaftarWarnaK4B2({ speakGuru, onLanjut, teksLanjut }: { s
             </div>
             {aturanKotak("garis")}
           </div>
+          <div className="mt-1 rounded-lg bg-white p-1" data-uji="contoh-warna">
+            <p className="text-center text-xs font-black leading-none text-[#7C2D12]">tiga contoh Pak Joyo</p>
+            <div className="mt-1 grid grid-cols-3 gap-1.5">
+              {CONTOH_WARNA.map((c) => (
+                <div key={c.kunci}>
+                  <p className="text-center text-[11px] font-black leading-none text-[#7C2D12]">{c.sebut}</p>
+                  {kotak(
+                    `a-c-${c.kunci}`,
+                    c.suara,
+                    <span className="inline-flex items-center justify-center gap-0.5">
+                      <Pec p={c.a.p} q={c.a.q} />
+                      <span aria-hidden="true" className="text-base">{c.tanda}</span>
+                      <Pec p={c.b.p} q={c.b.q} />
+                      {c.satuan ? <span className="text-[11px]">{c.satuan}</span> : null}
+                    </span>,
+                    `${c.sebut}: ${c.a.p} per ${c.a.q} ${c.tanda === "<" ? "kurang dari" : "lebih dari"} ${c.b.p} per ${c.b.q}`,
+                    "min-h-[40px]",
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       )}
 
       <p role="status" aria-live="polite" className="min-h-[1.25rem] text-center text-sm font-black text-[#1C01A5]">
-        {kartu === 1 ? (selesai1 ? SELESAI1_INFO_WARNA : `Sudah dibuka ${buka1} dari ${total1} kotak.`) : selesai2 ? SELESAI2_INFO_WARNA : `Sudah dibuka ${buka2} dari ${ATURAN_WARNA.length} kotak.`}
+        {kartu === 1 ? (selesai1 ? SELESAI1_INFO_WARNA : `Sudah dibuka ${buka1} dari ${total1} kotak.`) : selesai2 ? SELESAI2_INFO_WARNA : `Sudah dibuka ${buka2} dari ${total2} kotak.`}
       </p>
       <div className="flex items-center justify-center gap-2">
         {kartu === 2 ? (

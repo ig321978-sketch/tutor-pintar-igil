@@ -1,6 +1,6 @@
 /**
  * Pengenal ucapan Kelas 4 Bab 2 Sub-Bab A (tanpa React, diuji di Node: scripts/uji-lipat-k4b2a.mjs).
- * Kata jawaban (pembilang, penyebut, atas, bawah, besar, kecil, kiri, kanan) dikenali dengan ragam ucapan. Bilangan 0 sampai 9 dikenali dari kata atau dari angka yang ditulis mesin pengenal ("5").
+ * Kata jawaban (pembilang, penyebut, atas, bawah, besar, kecil, kiri, kanan, malam, pewarna) dikenali dengan ragam ucapan. Bilangan 0 sampai 9 dikenali dari kata atau dari angka yang ditulis mesin pengenal ("5").
  * Kata yang didahului "tidak" atau "bukan" tidak dihitung.
  */
 import type { Kunci } from "./logika-cpa";
@@ -23,6 +23,8 @@ export const POLA_KATA: [string, RegExp][] = [
   ["kecil", /\b(kecil|kecil)\b/],
   ["kiri", /\b(kiri|kiry)\b/],
   ["kanan", /\b(kanan|kenan)\b/],
+  ["malam", /\b(malam|ma lam)\b/],
+  ["pewarna", /\b(pewarna|pe warna|perwarna)\b/],
   ["sama", /\bsama\b/],
   ["tengah", /\btengah\b/],
   ["per", /\bper\b/],

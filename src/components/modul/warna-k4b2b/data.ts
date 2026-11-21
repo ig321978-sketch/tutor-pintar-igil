@@ -1,17 +1,21 @@
 /**
  * Isi tahap Concrete, Pictorial, dan Abstract K4 Bab 2 Sub-Bab B "Bak Warna Pak Joyo" (membandingkan dan mengurutkan pecahan berpenyebut sama: pembilang, batang, garis pecahan),
- * cerita Sanggar Batik Kampung Mekar. Misi lanjutan "Misi Warna" (nomor misi berlanjut dari Simulasi). Data berbeda dari Story (bak biru 3/8, bak merah 6/8; 2/8, 5/8, 7/8; 5/7 dan 2/7; 1/8, 4/8, 7/8).
+ * cerita Sanggar Batik Kampung Mekar. Misi lanjutan "Misi Warna" (nomor misi berlanjut dari Simulasi). Data berbeda dari Story (bak biru 3/8, bak merah 6/8; 2/8, 5/8, 7/8; 5/7 dan 2/7; 1/8, 4/8, 7/8; tongkat 3/6 dan 2/6; contoh 1/3, 2/3 dan 2/10, 1/10).
  * Concrete memakai benda sanggar beremoji (kaus, rok, pita, baju, palet) dengan bak pewarna berpetak, Pictorial memakai diagram polos (batang, kartu pecahan, garis pecahan) di kertas hitung,
  * Abstract memakai kartu kata dan angka di daftar Pak Joyo. Jawaban beragam: memilih tanda, pecahan, atau urutan, menulis satu angka di kanvas, dan mengucapkan satu kata.
+ * Penyebut seperti di buku (3, 4, 5, 6, 7, 9, 10, dan 13 hanya di kartu kata); tiga soal cerita panjang seperti tongkat di buku (satuan meter atau liter, kanvas dan suara, satu per tahap).
  * Jawaban benar dihitung dari data. Angka jawaban Tulis di kanvas per tahap: Concrete 5, 6, 3, 4; Pictorial 8, 3, 2, 5; Abstract 4, 5, 3, 6 (tidak kembar dalam satu tahap).
  * Diuji: scripts/uji-warna-k4b2b.mjs.
  */
-import type { Arah, Cara, Langkah, LangkahSalah, LangkahSoal, LBanding, LBatang, LGaris, LPembilang, Rupa, SoalMisi, Ujung } from "./logika-cpa";
+import type { Arah, Cara, CeritaBanding, Langkah, LangkahSalah, LangkahSoal, LBanding, LBatang, LGaris, LPembilang, Rupa, SoalMisi, Ujung } from "./logika-cpa";
 import { URUT_METODE, instruksi, ucapkan } from "./logika-cpa";
 
 export { MISI_WARNA_TEKS } from "./data-sim";
 
-const banding = (benda: string, q: number, a: number, b: number): LBanding => ({ tipe: "banding", benda, q, a, b });
+const banding = (benda: string, q: number, a: number, b: number, cerita?: CeritaBanding): LBanding => ({ tipe: "banding", benda, q, a, b, ...(cerita ? { cerita } : {}) });
+const TONGKAT = (a: string, b: string): CeritaBanding => ({ a, b, kerja: "punya tongkat sepanjang", satuan: "meter", sifat: "panjang tongkat" });
+const PITA = (a: string, b: string): CeritaBanding => ({ a, b, kerja: "punya pita sepanjang", satuan: "meter", sifat: "panjang pita" });
+const PEWARNA = (a: string, b: string): CeritaBanding => ({ a, b, kerja: "menuang pewarna sebanyak", satuan: "liter", sifat: "banyak pewarna" });
 const pembilang = (benda: string, q: number, a: number, b: number, cari: Ujung): LPembilang => ({ tipe: "pembilang", benda, q, a, b, cari });
 const batang = (benda: string, q: number, a: number, b: number): LBatang => ({ tipe: "batang", benda, q, a, b });
 const garis = (benda: string, q: number, data: number[], arah: Arah, tandai: number): LGaris => ({ tipe: "garis", benda, q, data, arah, tandai });
@@ -58,12 +62,12 @@ export const CONCRETE: SoalMisi[] = [
       1,
       "Penyebut yang sama hanya memberi tahu ukuran tiap bagian. Banyak bagian yang diambil dilihat dari pembilang.",
     ),
-    pembilang("pita", 6, 1, 4, "besar"),
+    pembilang("kimono", 10, 1, 4, "besar"),
     batang("rok", 7, 3, 5),
     garis("baju", 5, [3, 1, 4], "naik", 0),
   ]),
   C(3, "kanvas", "Misi Warna 3: catatan Laras", "Laras mencatat takaran pewarna pada kain. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [
-    banding("kaus", 6, 5, 2),
+    banding("pita", 6, 5, 2, PITA("Satria", "Laras")),
     pembilang("pita", 9, 2, 8, "kecil"),
     batang("rok", 4, 1, 3),
     garis("baju", 6, [4, 1, 5], "naik", 0),
@@ -95,7 +99,7 @@ export const PICTORIAL: SoalMisi[] = [
       true,
     ),
     pembilang("kertas", 9, 2, 7, "kecil"),
-    batang("kertas", 6, 2, 4),
+    batang("kertas", 10, 2, 4),
     garis("kertas", 7, [6, 1, 3], "naik", 0),
   ]),
   Pi(6, "kanvas", "Misi Warna 6: batang Genta", "Genta menggambar batang dan garis yang lebih rapi. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [
@@ -105,7 +109,7 @@ export const PICTORIAL: SoalMisi[] = [
     garis("kertas", 9, [3, 8, 5], "naik", 2),
   ]),
   Pi(7, "suara", "Misi Warna 7: lapor ke Pak Joyo", "Genta melaporkan hasil kertas hitung kepada Pak Joyo. Sebutkan jawabanmu.", [
-    banding("kertas", 4, 1, 3),
+    banding("kertas", 3, 1, 2, PEWARNA("Genta", "Satria")),
     pembilang("kertas", 5, 2, 4, "besar"),
     batang("kertas", 9, 3, 7),
     garis("kertas", 6, [1, 5, 3], "naik", 0),
@@ -117,7 +121,7 @@ const A = satuMisi("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(8, "klik", "Misi Warna 8: daftar Pak Joyo", "Daftar Pak Joyo hanya berisi kata dan angka.", [
     salah(
-      banding("catatan", 7, 1, 6),
+      banding("catatan", 13, 11, 12),
       "Satria",
       "Aku tidak perlu melihat pembilang. Penyebutnya sama, jadi pecahan itu pasti sama besar.",
       "=",
@@ -134,7 +138,7 @@ export const ABSTRACT: SoalMisi[] = [
     garis("catatan", 6, [5, 2, 4], "naik", 0),
   ]),
   A(9, "kanvas", "Misi Warna 9: tulis di daftar", "Satria meminta kamu menulis jawaban di kanvas.", [
-    banding("catatan", 5, 4, 1),
+    banding("catatan", 10, 4, 1, TONGKAT("Satria", "Laras")),
     pembilang("catatan", 9, 3, 8, "kecil"),
     batang("catatan", 7, 5, 3),
     garis("catatan", 9, [6, 2, 5], "naik", 0),
