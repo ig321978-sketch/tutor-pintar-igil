@@ -1,49 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_AKTIVITAS_6, ADEGAN_BERPIKIR, ADEGAN_KOMPOSISI_GURU } from "./k4b5b-materi-1";
-import { ADEGAN_AKTIVITAS_7, ADEGAN_BERLATIH_1, ADEGAN_BERLATIH_2, ADEGAN_MENGAMATI_DEK } from "./k4b5b-materi-2";
-import { ADEGAN_PENGAYAAN, ADEGAN_UK_1, ADEGAN_UK_2, ADEGAN_UK_3 } from "./k4b5b-materi-3";
-import { ADEGAN_LUAR_CS, ADEGAN_LUAR_CS_TERAPAN, ADEGAN_LUAR_DS, ADEGAN_LUAR_DS_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k4b5b-luar-1";
-import { ADEGAN_LUAR_CR, ADEGAN_LUAR_CR_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_TG, ADEGAN_LUAR_TG_TERAPAN } from "./k4b5b-luar-2";
+import { ADEGAN_KOTAK, ADEGAN_MENGURAIKAN, ADEGAN_MENYUSUN } from "./k4b5b-materi-1";
+import { ADEGAN_HITUNG_SEGITIGA, ADEGAN_MENYAPU, ADEGAN_SALAH_SEGIENAM } from "./k4b5b-materi-2";
+import { ADEGAN_BANYAK_CARA, ADEGAN_PENUTUP, ADEGAN_TANGRAM } from "./k4b5b-materi-3";
+import { ADEGAN_LUAR_PASANG, ADEGAN_LUAR_PASANG_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k4b5b-luar-1";
+import { ADEGAN_LUAR_BAGI, ADEGAN_LUAR_BAGI_TERAPAN, ADEGAN_LUAR_MOSAIK, ADEGAN_LUAR_MOSAIK_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k4b5b-luar-2";
 
-/** Kelas 4 Bab 5 Sub-Bab B (Komposisi dan Dekomposisi), penutup bab: video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 4 Bab 5 Sub-Bab B (menyusun dan menguraikan bangun datar), akhir cerita Toko Keramik Bu Dewi.
+ * Video materi (sekitar tiga menit): cerita orisinal IGIL "Mosaik Pak Rudi" (Satria, Laras, Genta, Pak Hendro, Pak Rudi, dan Bu Dewi di penutup).
+ * Video kedua: tiga metode global (Fit the Pieces, Cut Into Triangles, Many Ways Mosaic), terpisah.
+ */
+export const JUDUL_K4B5B = "Mosaik Pak Rudi";
+
 export const VIDEO_MATERI_K4B5B: VideoStory = {
   id: "k4b5b-materi",
-  judul: "Komposisi dan Dekomposisi",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K4B5B,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "komposisi dan dekomposisi bangun datar", daftar: ["Menyusun bangun","Mengurai bangun","Banyak cara menyusun"] }),
-    ADEGAN_AKTIVITAS_6,
-    ADEGAN_BERPIKIR,
-    ADEGAN_KOMPOSISI_GURU,
-    ADEGAN_MENGAMATI_DEK,
-    ADEGAN_AKTIVITAS_7,
-    ADEGAN_BERLATIH_1,
-    ADEGAN_BERLATIH_2,
-    ADEGAN_UK_1,
-    ADEGAN_UK_2,
-    ADEGAN_UK_3,
-    ADEGAN_PENGAYAAN,
+    adeganSapaan({ jenis: "materi", topik: "menyusun dan menguraikan bangun datar", daftar: ["Menyusun", "Menguraikan", "Banyak cara"] }),
+    ADEGAN_KOTAK,
+    ADEGAN_MENYUSUN,
+    ADEGAN_MENGURAIKAN,
+    ADEGAN_SALAH_SEGIENAM,
+    ADEGAN_HITUNG_SEGITIGA,
+    ADEGAN_MENYAPU,
+    ADEGAN_BANYAK_CARA,
+    ADEGAN_TANGRAM,
+    ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K4B5B: VideoStory = {
   id: "k4b5b-luar",
-  judul: "Komposisi dan Dekomposisi: Metode dari Luar",
-  subjudul: "Empat metode luar",
+  judul: JUDUL_K4B5B,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "komposisi dan dekomposisi bangun datar" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "menyusun dan menguraikan bangun datar", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_CS,
-    ADEGAN_LUAR_CS_TERAPAN,
-    ADEGAN_LUAR_DS,
-    ADEGAN_LUAR_DS_TERAPAN,
-    ADEGAN_LUAR_TG,
-    ADEGAN_LUAR_TG_TERAPAN,
-    ADEGAN_LUAR_CR,
-    ADEGAN_LUAR_CR_TERAPAN,
+    ADEGAN_LUAR_PASANG,
+    ADEGAN_LUAR_PASANG_TERAPAN,
+    ADEGAN_LUAR_BAGI,
+    ADEGAN_LUAR_BAGI_TERAPAN,
+    ADEGAN_LUAR_MOSAIK,
+    ADEGAN_LUAR_MOSAIK_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

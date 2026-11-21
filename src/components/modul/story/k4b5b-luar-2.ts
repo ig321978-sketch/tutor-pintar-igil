@@ -1,215 +1,274 @@
 import type { AdeganStory } from "./logika-story";
-import { PERAHU } from "./k4b5b-data";
-import { POTONG_SEGITIGA, POTONG_TRAPESIUM, SEGITIGA_A, TANGRAM, W, garis, judul, kartu, keping, poli, skala, tangram, teks } from "./k4b5b-gambar";
-import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah } from "./k4b5b-bantu";
+import { E, G, W, emo, garis, garisKeSudut, idIrisan, idKartu, irisan, judul, kartu, kotak, lantai, meja, poli, teks, titikBeraturan, titikPusat, tokoh, type Tt } from "./k4b5b-gambar";
+import { hapus, k, pudarkan, redamkan, sorotkan, tambah } from "./k4b5b-bantu";
 
-/* ------------------------------ 6. Tangram: konsep ------------------------------ */
-const TG = 8;
-const TG_TL: Record<number, [number, number]> = { 1: [10, 40], 2: [84, 40], 7: [124, 40], 4: [166, 40], 5: [206, 40], 6: [248, 40], 3: [272, 40] };
-const tgAsal = (no: number): [number, number] => {
-  const p = TANGRAM[no - 1].pts;
-  return [TG_TL[no][0] - Math.min(...p.map((q) => q[0])) * TG, TG_TL[no][1] - Math.min(...p.map((q) => q[1])) * TG];
-};
-const tujuh = () => [1, 2, 3, 4, 5, 6, 7].map((n) => tangram("tt", n, ...tgAsal(n), TG));
-export const ADEGAN_LUAR_TG: AdeganStory = {
-  id: "luar-tg",
-  judul: "Tangram: tujuh keping",
-  sumber: "Metode luar: Tangram",
-  latar: "#FFFBEB",
-  ketukan: [
-    k(
-      "Metode ketiga, Tangram. Tujuh keping: dua segitiga besar, satu segitiga sedang, dua segitiga kecil, satu persegi, dan satu jajargenjang.",
-      tambah(0, judul("Tangram")),
-      tambah("Tujuh", ...tujuh()),
-      tambah("besar,", ...kartu("tg1", 8, 120, 150, 36, W.langit, ["5 segitiga:", "2 besar, 1 sedang, 2 kecil"], 7)),
-      tambah("persegi,", ...kartu("tg2", 166, 120, 58, 36, W.hijauMuda, ["1", "persegi"], 7.4)),
-      tambah("jajargenjang.", ...kartu("tg3", 230, 120, 62, 36, W.pink, ["1", "jajargenjang"], 7)),
-    ),
-    k(
-      "Aturan main: pakai semua tujuh keping, boleh diputar atau dibalik, dan tidak boleh bertumpuk. Satu set yang sama dapat membentuk banyak siluet.",
-      bersih(0),
-      tambah(0, judul("Aturan main tangram")),
-      tambah("pakai", ...kartu("ta1", 14, 34, 272, 28, W.hijauMuda, ["pakai semua 7 keping"], 9.2)),
-      tambah("diputar", ...kartu("ta2", 14, 70, 272, 28, W.langit, ["boleh diputar atau dibalik"], 9.2)),
-      tambah("bertumpuk.", ...kartu("ta3", 14, 106, 272, 28, W.krem, ["tidak boleh bertumpuk"], 9.2)),
-      tambah("siluet.", ...kartu("ta4", 14, 148, 272, 28, W.pink, ["1 set, banyak siluet"], 9.2)),
-    ),
-    k(
-      "Hitung keping menurut jenisnya: dua tambah satu tambah dua sama dengan lima segitiga. Lima tambah satu tambah satu sama dengan tujuh keping.",
-      bersih(0),
-      tambah(0, judul("Hitung keping tangram")),
-      tambah("segitiga.", ...kartu("tc1", 40, 50, 220, 34, W.langit, ["2 + 1 + 2 = 5 segitiga"], 10.4)),
-      tambah("Lima@2", ...kartu("tc2", 40, 110, 220, 34, W.krem, ["5 + 1 + 1 = 7 keping"], 10.4)),
-    ),
-    k(
-      "Dengan tujuh keping yang sama, kita bisa membuat persegi dan perahu layar. Siluetnya berbeda, kepingnya sama.",
-      bersih(0),
-      tambah(0, judul("Satu set, banyak siluet")),
-      tambah("persegi", ...[1, 2, 3, 4, 5, 6, 7].map((n) => tangram("ts", n, 30, 50, 8)), teks("tst", 62, 130, "persegi", 8.6, W.biru)),
-      tambah("perahu", ...PERAHU.map((p, i) => keping(`tsp${i}`, 150, 50, p, 0.5)), teks("tsq", 200, 142, "perahu layar", 8.6, W.biru)),
-      tambah("sama@2", teks("tsr", 150, 182, "7 keping yang sama", 9, W.coklat)),
-    ),
-  ],
-};
+/*
+ * Cerita orisinal IGIL "Mosaik Pak Rudi" (Kelas 4 Bab 5 Sub-Bab B), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b5b.md. Bagian ini: Cut Into Triangles (Bagi Jadi Segitiga), Many Ways Mosaic (Mosaik Banyak Cara), terapannya, dan ringkasan.
+ */
 
-/* ------------------------------ 7. Tangram: penerapan pada perahu layar ------------------------------ */
-const PS = 0.68;
-const GESER: [number, number][] = [[-6, 6], [-4, -6], [-2, 16], [8, 14], [6, 8], [14, 0], [6, -8]];
-export const ADEGAN_LUAR_TG_TERAPAN: AdeganStory = {
-  id: "luar-tg-terapan",
-  judul: "Tangram diterapkan pada perahu layar",
-  sumber: "Metode luar: Tangram pada perahu layar",
-  latar: "#FFFBEB",
-  ketukan: [
-    k(
-      "Perahu layar pada Latihan satu adalah siluet tangram. Pisahkan kepingnya satu per satu.",
-      tambah(0, judul("Perahu layar dari tangram")),
-      tambah("Perahu", ...PERAHU.map((p, i) => keping(`tp-p${i}`, 8, 44, p, PS))),
-      ...PERAHU.map((_, i) => ubah("Pisahkan", { id: `tp-p${i}`, x: 8 + GESER[i][0], y: 44 + GESER[i][1] })),
-      tambah("siluet", ...kartu("tp1", 156, 56, 134, 36, W.krem, ["siluet tangram", "7 keping"], 8.6)),
-    ),
-    k(
-      "Lima segitiga: layar biru, badan merah, layar hijau tua, ujung jingga, dan lambung merah muda.",
-      tambah("biru,", ...kartu("tp2", 156, 100, 134, 26, W.langit, ["5 segitiga"], 9.2)),
-      sorotkan("biru,", "tp-p1"),
-      sorotkan("merah,", "tp-p0"),
-      sorotkan("hijau", "tp-p6"),
-      sorotkan("jingga,", "tp-p5"),
-      sorotkan("muda.", "tp-p3"),
-    ),
-    k(
-      "Ditambah satu persegi hijau dan satu jajargenjang oranye. Lima tambah satu tambah satu sama dengan tujuh keping, tepat seperti set tangram.",
-      redamkan(0, "tp-p1", "tp-p0", "tp-p6", "tp-p5", "tp-p3"),
-      sorotkan("persegi", "tp-p4"),
-      sorotkan("jajargenjang", "tp-p2"),
-      tambah("Lima", ...kartu("tp3", 156, 136, 134, 28, W.hijauMuda, ["5 + 1 + 1 = 7 keping"], 9)),
-      redamkan("Lima", "tp-p4", "tp-p2"),
-      tambah("tangram.", teks("tp4", 223, 184, "sama dengan set tangram", 7.8, W.coklat)),
-    ),
-    k(
-      "Perahu dan persegi tadi sama-sama tujuh keping. Jumlah keping tidak berubah, hanya susunannya.",
-      hapus(0, "tp2-k", "tp2-t0", "tp3-k", "tp3-t0", "tp4"),
-      tambah("sama-sama", ...kartu("tp5", 156, 100, 134, 28, W.hijauMuda, ["7 keping tetap 7"], 9)),
-    ),
-  ],
-};
+const SEGITIGA_E = "\u{1F53A}";
 
-/* ------------------------------ 8. Cut and Rearrange: konsep ------------------------------ */
-const CS = 14;
-const JAJAR: [number, number][] = [[2, 0], [8, 0], [6, 4], [0, 4]];
-export const ADEGAN_LUAR_CR: AdeganStory = {
-  id: "luar-cr",
-  judul: "Cut and Rearrange (Potong dan Susun Ulang)",
-  sumber: "Metode luar: Cut and Rearrange",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      "Metode keempat, Cut and Rearrange atau Potong dan Susun Ulang. Potong satu bangun menjadi beberapa potongan, lalu susun ulang menjadi bangun lain.",
-      tambah(0, judul("Cut and Rearrange")),
-      tambah("satu", poli("cr-p", 14, 56, skala(JAJAR, CS), "#FBCFE8", W.coklat, { tebal: 1.4 })),
-      tambah("satu", ...kartu("cr1", 150, 44, 140, 26, W.langit, ["1 bangun"], 9)),
-      tambah("beberapa", garis("cr-g", 42, 56, 0, 56, W.merah, 2, { putus: true })),
-      tambah("potongan,", poli("cr-t", 14, 56, skala(POTONG_SEGITIGA, CS), "#93C5FD", W.coklat, { tebal: 1.4 }), poli("cr-z", 14, 56, skala(POTONG_TRAPESIUM, CS), "#FBCFE8", W.coklat, { tebal: 1.4 })),
-      hapus("potongan,", "cr-p"),
-      tambah("potongan,", ...kartu("cr2", 150, 82, 140, 26, W.krem, ["dipotong jadi 2"], 9)),
-      tambah("lain.", ...kartu("cr3", 150, 120, 140, 26, W.hijauMuda, ["disusun jadi bangun lain"], 8.4)),
-    ),
-    k(
-      "Contoh: jajargenjang dipotong tegak menjadi segitiga dan trapesium. Geser segitiga ke ujung lain, jadilah persegi panjang.",
-      hapus(0, "cr1-k", "cr1-t0", "cr2-k", "cr2-t0", "cr3-k", "cr3-t0"),
-      tambah("dipotong", ...kartu("cr4", 150, 44, 140, 26, W.krem, ["potong tegak: 2 bagian"], 8.4)),
-      ubah("Geser", { id: "cr-t", x: 98 }),
-      hapus("Geser", "cr-g"),
-      tambah("Geser", ...kartu("cr5", 150, 82, 140, 26, W.langit, ["segitiga digeser"], 9)),
-      tambah("persegi", ...kartu("cr6", 150, 120, 140, 26, W.hijauMuda, ["jadi persegi panjang"], 8.6)),
-      ubah("persegi", { id: "cr-z", warna: "#BBF7D0" }, { id: "cr-t", warna: "#86EFAC" }),
-    ),
-    k(
-      "Aturan: jumlah potongan tidak berubah, hanya letaknya yang berpindah, dan tidak ada bagian yang hilang atau bertambah.",
-      hapus(0, "cr4-k", "cr4-t0", "cr5-k", "cr5-t0", "cr6-k", "cr6-t0"),
-      tambah("jumlah", ...kartu("cr7", 150, 44, 140, 26, W.krem, ["jumlah potongan tetap 2"], 8.4)),
-      tambah("letaknya", ...kartu("cr8", 150, 82, 140, 26, W.langit, ["hanya letak berpindah"], 8.6)),
-      tambah("hilang", ...kartu("cr9", 150, 120, 140, 26, W.hijauMuda, ["tidak ada yang hilang"], 8.6)),
-    ),
-    k(
-      "Cara ini membantu memahami hubungan antarbangun: jajargenjang dan persegi panjang dapat saling berubah, tanpa ada bagian yang dibuang.",
-      hapus(0, "cr7-k", "cr7-t0", "cr8-k", "cr8-t0", "cr9-k", "cr9-t0", "cr-t", "cr-z"),
-      tambah("jajargenjang", poli("cx1", 20, 80, skala(JAJAR, 8), "#FBCFE8", W.coklat, { tebal: 1.4 }), teks("cx1t", 52, 130, "jajargenjang", 8, W.biru)),
-      tambah("saling", { id: "cxa", t: "panah", x: 100, y: 96, x2: 34, y2: 0, warna: W.merah, tebal: 2.2 }),
-      tambah("persegi", poli("cx2", 170, 80, skala([[2, 0], [8, 0], [8, 4], [2, 4]], 8), "#BBF7D0", W.coklat, { tebal: 1.4 }), teks("cx2t", 200, 130, "persegi panjang", 8, W.biru)),
-      tambah("dibuang.", teks("cx3", 150, 170, "tidak ada bagian yang dibuang", 8.6, W.coklat)),
-    ),
-  ],
-};
+/* ------------------------------ Cut Into Triangles: konsep ------------------------------ */
+const SUARA_Y1 = "Cara kedua, Cut Into Triangles, atau Bagi Jadi Segitiga.";
+const SUARA_Y2 = "Kita menarik garis dari satu titik ke sudut-sudut sebuah bangun, sehingga bangun terbagi menjadi segitiga.";
+const SUARA_Y3 = "Dari titik tengah, banyak segitiga sama dengan banyak sisi bangun beraturan itu.";
+const SUARA_Y4 = "Dari satu sudut, segiempat terbagi menjadi dua segitiga.";
+const PUSAT_ENAM: Tt = [150, 86];
+const ENAM: Tt[] = titikBeraturan(PUSAT_ENAM[0], PUSAT_ENAM[1], 30, 6, 0);
+const SEGIEMPAT: Tt[] = [[112, 70], [196, 64], [204, 108], [118, 110]];
 
-/* ------------------------------ 9. Cut and Rearrange: penerapan pada dua segitiga besar ------------------------------ */
-const DS7 = 7;
-export const ADEGAN_LUAR_CR_TERAPAN: AdeganStory = {
-  id: "luar-cr-terapan",
-  judul: "Cut and Rearrange diterapkan pada dua segitiga besar",
-  sumber: "Metode luar: Cut and Rearrange pada tangram",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      "Terapkan pada keping satu dan dua tangram, dua segitiga besar yang sama. Potongan ini dapat disusun ulang dengan beberapa cara.",
-      tambah(0, judul("Dua segitiga besar yang sama")),
-      tambah("satu", poli("ca-a", 40, 70, skala(SEGITIGA_A, DS7), "#FAA61A", W.putih), teks("ca-at", 68, 116, "keping 1", 8, W.biru)),
-      tambah("dua", poli("ca-b", 190, 70, skala(SEGITIGA_A, DS7), "#40AD49", W.putih), teks("ca-bt", 218, 116, "keping 2", 8, W.biru)),
-      tambah("sama", ...kartu("ca-c", 60, 140, 180, 28, W.krem, ["bentuk dan ukuran sama"], 9)),
-    ),
-    k(
-      "Cara satu: sisi miring dirapatkan, jadilah persegi. Cara dua: sisi tegak dirapatkan, jadilah segitiga besar seperti pada kegiatan menyusun tangram tadi.",
-      bersih(0),
-      tambah(0, judul("Dua cara menyusun")),
-      tambah("satu", poli("c1a", 50, 84, skala(SEGITIGA_A, DS7), "#FAA61A", W.putih), poli("c1b", 50, 84, skala([[0, 0], [8, 0], [4, -4]], DS7), "#40AD49", W.putih), teks("c1t", 78, 134, "cara 1: persegi", 8, W.biru)),
-      tambah("dua", poli("c2a", 170, 56, skala(SEGITIGA_A, DS7), "#FAA61A", W.putih), poli("c2b", 170, 56, skala([[0, 0], [4, 4], [0, 8]], DS7), "#40AD49", W.putih), teks("c2t", 198, 134, "cara 2: segitiga besar", 8, W.biru)),
-    ),
-    k(
-      "Cara tiga: sisi tegak dirapatkan lagi, tetapi satu keping diputar setengah putaran, jadilah jajargenjang. Dua keping tetap dua keping, hanya bangunnya yang berbeda.",
-      tambah("tiga:", poli("c3a", 100, 150, skala(SEGITIGA_A, 5), "#FAA61A", W.putih), poli("c3b", 100, 150, skala([[8, 0], [12, 4], [4, 4]], 5), "#40AD49", W.putih), teks("c3t", 130, 186, "cara 3: jajargenjang", 8, W.biru)),
-      tambah("Dua", teks("c4", 240, 160, "2 keping,", 8.6, W.coklat), teks("c5", 240, 172, "3 bangun", 8.6, W.coklat)),
-    ),
-    k(
-      "Jumlah keping tetap dua, tetapi jumlah sisi bangun jadinya berubah: persegi empat sisi, segitiga besar tiga sisi, jajargenjang empat sisi.",
-      bersih(0),
-      tambah(0, judul("Keping tetap, sisi berubah")),
-      tambah("persegi", poli("d1a", 24, 84, skala(SEGITIGA_A, 5), "#FAA61A", W.putih), poli("d1b", 24, 84, skala([[0, 0], [8, 0], [4, -4]], 5), "#40AD49", W.putih), teks("d1t", 44, 124, "persegi: 4 sisi", 7.8, W.biru)),
-      tambah("segitiga", poli("d2a", 120, 64, skala(SEGITIGA_A, 5), "#FAA61A", W.putih), poli("d2b", 120, 64, skala([[0, 0], [4, 4], [0, 8]], 5), "#40AD49", W.putih), teks("d2t", 140, 124, "segitiga: 3 sisi", 7.8, W.biru)),
-      tambah("jajargenjang", poli("d3a", 208, 74, skala(SEGITIGA_A, 5), "#FAA61A", W.putih), poli("d3b", 208, 74, skala([[8, 0], [12, 4], [4, 4]], 5), "#40AD49", W.putih), teks("d3t", 238, 124, "jajargenjang: 4 sisi", 7.8, W.biru)),
-      tambah("tetap", teks("d4", 150, 168, "selalu 2 keping", 9, W.coklat)),
-    ),
-  ],
-};
-
-/* ------------------------------ 10. Ringkasan metode luar ------------------------------ */
-export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
-  id: "luar-ringkas",
-  judul: "Ringkasan empat metode dari luar",
-  sumber: "Ringkasan metode luar",
+export const ADEGAN_LUAR_BAGI: AdeganStory = {
+  id: "luar-bagi",
+  judul: "Cut Into Triangles: Bagi Jadi Segitiga",
+  sumber: "Metode global: Cut Into Triangles (konsep)",
   latar: "#F0F9FF",
   ketukan: [
     k(
-      "Ringkasan: Compose Shapes menggabungkan, Decompose Shapes mengurai, Tangram memakai tujuh keping, dan Cut and Rearrange memotong lalu menyusun ulang.",
-      tambah(0, judul("Ringkasan empat metode")),
-      tambah("Compose", ...kartu("r1", 12, 34, 276, 30, W.hijauMuda, ["Compose Shapes: menggabungkan"], 9)),
-      tambah("Decompose", ...kartu("r2", 12, 72, 276, 30, W.langit, ["Decompose Shapes: mengurai"], 9)),
-      tambah("Tangram", ...kartu("r3", 12, 110, 276, 30, W.krem, ["Tangram: tujuh keping"], 9)),
-      tambah("Cut", ...kartu("r4", 12, 148, 276, 30, W.pink, ["Cut and Rearrange: potong, susun ulang"], 8.6)),
+      SUARA_Y1,
+      tambah(0, judul("Cara 2: Cut Into Triangles"), ...lantai("lt", 150)),
+      tambah("Cut", emo("gt", 110, 112, E.gunting, 40)),
+      tambah("Bagi", teks("nm", 150, 140, "Bagi Jadi Segitiga", 13, W.ungu)),
+      tambah("Segitiga", emo("sg", 190, 104, SEGITIGA_E, 28)),
     ),
     k(
-      "Angka yang kita pakai tadi: tujuh keping tangram, sepuluh keping motif paving, dan lima segitiga pada perahu layar.",
-      bersih(0),
-      tambah(0, judul("Angka yang dipakai")),
-      tambah("tujuh", ...kartu("an1", 20, 44, 260, 34, W.krem, ["7 keping tangram"], 10)),
-      tambah("sepuluh", ...kartu("an2", 20, 90, 260, 34, W.langit, ["10 keping motif paving"], 10)),
-      tambah("lima", ...kartu("an3", 20, 136, 260, 34, W.hijauMuda, ["5 segitiga pada perahu layar"], 10)),
+      SUARA_Y2,
+      hapus(0, "gt", "nm", "sg"),
+      tambah(0, poli("hx", ENAM, G.hijau)),
+      tambah("satu", teks("n1", 72, 64, "1 titik", 11, W.merah)),
+      tambah("titik", titikPusat("ct", PUSAT_ENAM)),
+      tambah("sudut-sudut", ...garisKeSudut("g", PUSAT_ENAM, ENAM)),
+      hapus("terbagi", "hx"),
+      tambah("terbagi", ...irisan("t", PUSAT_ENAM, ENAM)),
     ),
     k(
-      "Ingat intinya: komposisi menyusun beberapa bangun menjadi satu, dan dekomposisi mengurai satu bangun menjadi beberapa.",
-      bersih(0),
-      tambah(0, judul("Inti materi")),
-      tambah("komposisi", ...kartu("in1", 20, 50, 260, 44, W.hijauMuda, ["komposisi", "menyusun beberapa jadi satu"], 9.6)),
-      tambah("dekomposisi", ...kartu("in2", 20, 110, 260, 44, W.pink, ["dekomposisi", "mengurai satu jadi beberapa"], 9.6)),
+      SUARA_Y3,
+      tambah("segitiga", ...kartu("kc", 10, 96, 100, 26, W.krem, ["segitiga = sisi"], 10)),
+      sorotkan("sisi", ...idIrisan("t", 6)),
+    ),
+    k(
+      SUARA_Y4,
+      hapus(0, ...idIrisan("t", 6), ...idIrisan("g", 6), "ct", "n1", ...idKartu("kc", 1)),
+      tambah("satu", teks("n1", 70, 64, "1 sudut", 11, W.merah), titikPusat("vp", SEGIEMPAT[0], 3)),
+      tambah("segiempat", poli("qd", SEGIEMPAT, G.biru)),
+      tambah("terbagi", garis("dg", SEGIEMPAT[0][0], SEGIEMPAT[0][1], SEGIEMPAT[2][0] - SEGIEMPAT[0][0], SEGIEMPAT[2][1] - SEGIEMPAT[0][1], W.merah, 2, { z: 6 })),
+      hapus("menjadi", "qd"),
+      tambah("menjadi", poli("q0", [SEGIEMPAT[0], SEGIEMPAT[1], SEGIEMPAT[2]], G.kuning), poli("q1", [SEGIEMPAT[0], SEGIEMPAT[2], SEGIEMPAT[3]], G.hijau)),
+      tambah("dua", teks("n2", 232, 50, "2 segitiga", 11, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Cut Into Triangles: terapan ------------------------------ */
+const SUARA_B1 = "Genta membelah keramik segilima beraturan dari titik tengahnya.";
+const SUARA_B2 = "Segilima punya lima sisi, sehingga ia mendapat lima segitiga yang sama besar.";
+const SUARA_B3 = "Cocok untuk memahami bangun rumit, karena segitiga adalah bagian yang paling sederhana.";
+const SUARA_B4 = "Kurang cocok kalau titiknya tidak tepat di tengah, karena segitiganya jadi tidak sama besar.";
+const PUSAT_LIMA: Tt = [150, 84];
+export const SEGILIMA: Tt[] = titikBeraturan(PUSAT_LIMA[0], PUSAT_LIMA[1], 34, 5, -90);
+const TITIK_MELESET: Tt = [170, 92];
+
+export const ADEGAN_LUAR_BAGI_TERAPAN: AdeganStory = {
+  id: "luar-bagi-terapan",
+  judul: "Cut Into Triangles: terapan",
+  sumber: "Metode global: Cut Into Triangles (terapan)",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_B1,
+      tambah(0, judul("Genta Membelah Segilima"), ...lantai("lt", 150), ...meja("mj", 14, 232)),
+      tambah("Genta", ...tokoh("ge", 36, 184, "Genta")),
+      tambah("segilima", poli("pn", SEGILIMA, G.pink)),
+      tambah("titik", titikPusat("ct", PUSAT_LIMA)),
+      tambah("tengahnya", ...garisKeSudut("g", PUSAT_LIMA, SEGILIMA)),
+    ),
+    k(
+      SUARA_B2,
+      tambah("lima@2", teks("a5", 72, 64, "5 sisi", 11, W.merah)),
+      hapus("lima@3", "pn"),
+      tambah("lima@3", ...irisan("t", PUSAT_LIMA, SEGILIMA)),
+      tambah("segitiga", teks("b5", 228, 64, "5 segitiga", 11, W.merah)),
+    ),
+    k(
+      SUARA_B3,
+      tambah("Cocok", emo("jp", 262, 140, E.jempol, 22)),
+      sorotkan("segitiga", "t-0"),
+      tambah("sederhana", teks("sd", 150, 134, "bagian paling sederhana", 9, W.hijauTua)),
+    ),
+    k(
+      SUARA_B4,
+      hapus(0, "jp", ...idIrisan("t", 5), ...idIrisan("g", 5), "ct", "a5", "b5", "sd"),
+      tambah("Kurang", emo("xs", 262, 140, E.salah, 22)),
+      tambah("titiknya", titikPusat("cp", TITIK_MELESET)),
+      tambah("tengah", ...irisan("u", TITIK_MELESET, SEGILIMA, [G.biru, G.hijau, G.kuning, G.ungu, G.oranye])),
+      tambah("besar", teks("nb", 150, 134, "tidak sama besar", 9, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Many Ways Mosaic: konsep ------------------------------ */
+const SUARA_M1 = "Cara ketiga, Many Ways Mosaic, atau Mosaik Banyak Cara.";
+const SUARA_M2 = "Kita mencari sebanyak mungkin susunan dari keping yang sama, lalu memilih yang paling indah.";
+const SUARA_M3 = "Satu bangun bisa disusun dari bagian yang berbeda-beda, dan hasilnya tetap sama besar.";
+const SUARA_M4 = "Mencoba banyak susunan melatih mata kita melihat hubungan antar bangun.";
+const KS = 20;
+const YB = 112;
+const PUSAT_KIRI: Tt = [80, 90];
+const PUSAT_KANAN: Tt = [220, 90];
+const HEX_KIRI: Tt[] = titikBeraturan(PUSAT_KIRI[0], PUSAT_KIRI[1], 24, 6, 0);
+const HEX_KANAN: Tt[] = titikBeraturan(PUSAT_KANAN[0], PUSAT_KANAN[1], 24, 6, 0);
+const BELAH_ID = ["a0", "a1", "b0", "b1", "c0", "c1"];
+
+export const ADEGAN_LUAR_MOSAIK: AdeganStory = {
+  id: "luar-mosaik",
+  judul: "Many Ways Mosaic: Mosaik Banyak Cara",
+  sumber: "Metode global: Many Ways Mosaic (konsep)",
+  latar: "#F0F9FF",
+  ketukan: [
+    k(
+      SUARA_M1,
+      tambah(0, judul("Cara 3: Many Ways Mosaic"), ...lantai("lt", 150)),
+      tambah("Many", emo("pl", 110, 112, E.palet, 40)),
+      tambah("Mosaik", teks("nm", 150, 140, "Mosaik Banyak Cara", 13, W.ungu)),
+      tambah("Banyak", emo("kl", 190, 104, E.kilau, 28)),
+    ),
+    k(
+      SUARA_M2,
+      hapus(0, "pl", "nm", "kl"),
+      tambah(0, ...meja("mj", 14, 260)),
+      tambah("mencari", poli("a0", [[40, YB], [40 + KS, YB], [40, YB - KS]], G.biru), poli("a1", [[40 + KS, YB - KS], [40 + KS, YB], [40, YB - KS]], G.kuning)),
+      tambah("sebanyak", poli("b0", [[120, YB], [120 + KS, YB], [120 + KS, YB - KS]], G.biru), poli("b1", [[120 + KS, YB], [120 + 2 * KS, YB - KS], [120 + KS, YB - KS]], G.kuning)),
+      tambah("susunan", poli("c0", [[220, YB], [220 + KS, YB], [220 + KS, YB - KS]], G.biru), poli("c1", [[220 + KS, YB], [220 + 2 * KS, YB], [220 + KS, YB - KS]], G.kuning)),
+      tambah("sama,", teks("ks", 150, 54, "keping yang sama", 10, W.hijauTua)),
+      sorotkan("memilih", "b0", "b1"),
+      tambah("indah", emo("ht", 140, 88, E.hati, 22)),
+    ),
+    k(
+      SUARA_M3,
+      hapus(0, ...BELAH_ID, "ks", "ht"),
+      tambah("Satu", teks("n1", 150, 44, "1 bangun", 11, W.merah)),
+      tambah("disusun", poli("hx", HEX_KIRI, undefined), ...irisan("h", PUSAT_KIRI, HEX_KIRI)),
+      tambah(
+        "berbeda-beda",
+        poli("r0", [PUSAT_KANAN, HEX_KANAN[0], HEX_KANAN[1], HEX_KANAN[2]], G.biru),
+        poli("r1", [PUSAT_KANAN, HEX_KANAN[2], HEX_KANAN[3], HEX_KANAN[4]], G.hijau),
+        poli("r2", [PUSAT_KANAN, HEX_KANAN[4], HEX_KANAN[5], HEX_KANAN[0]], G.pink),
+      ),
+      tambah("sama", teks("eq", 150, 98, "=", 20, W.merah)),
+    ),
+    k(
+      SUARA_M4,
+      hapus(0, "hx", ...idIrisan("h", 6), "r0", "r1", "r2", "n1", "eq"),
+      tambah("Mencoba", emo("pz", 66, 86, E.puzzle, 26), emo("ps", 234, 86, E.palet, 26)),
+      tambah("mata", emo("my", 150, 92, E.mata, 40)),
+      tambah("hubungan", teks("hb", 150, 134, "hubungan antar bangun", 9, W.hijauTua)),
+    ),
+  ],
+};
+
+/* ------------------------------ Many Ways Mosaic: terapan ------------------------------ */
+const SUARA_Z1 = "Satria menyusun persegi dari dua segitiga, lalu dari empat segitiga yang lebih kecil.";
+const SUARA_Z2 = "Kedua susunan itu berbeda, tetapi sama-sama membentuk persegi yang utuh.";
+const SUARA_Z3 = "Cocok untuk membuat pola lantai dan dinding, karena pilihan susunannya banyak.";
+const SUARA_Z4 = "Kurang cocok kalau kita berhenti pada satu cara saja, karena kita melewatkan susunan lain.";
+const KIRI: Tt[] = [[78, 68], [122, 68], [122, 112], [78, 112]];
+const PK: Tt = [192, 90];
+const KANAN: Tt[] = [[170, 68], [214, 68], [214, 112], [170, 112]];
+const PAL = [[G.biru, G.kuning], [G.hijau, G.pink], [G.ungu, G.oranye]] as const;
+/** Pola lantai: `n` ubin persegi (dua segitiga tiap ubin) berderet, ubin ke-i berid `pl-i-a` dan `pl-i-b`. */
+const polaLantai = (n: number, x: number, y: number, s: number): ReturnType<typeof poli>[] =>
+  Array.from({ length: n }, (_, i) => {
+    const a = x + i * s;
+    const [wa, wb] = PAL[i % PAL.length];
+    return i % 2 === 0
+      ? [poli(`pl-${i}-a`, [[a, y], [a + s, y], [a + s, y + s]], wa), poli(`pl-${i}-b`, [[a, y], [a + s, y + s], [a, y + s]], wb)]
+      : [poli(`pl-${i}-a`, [[a, y], [a + s, y], [a, y + s]], wa), poli(`pl-${i}-b`, [[a + s, y], [a + s, y + s], [a, y + s]], wb)];
+  }).flat();
+const idPola = (n: number): string[] => Array.from({ length: n }, (_, i) => [`pl-${i}-a`, `pl-${i}-b`]).flat();
+
+export const ADEGAN_LUAR_MOSAIK_TERAPAN: AdeganStory = {
+  id: "luar-mosaik-terapan",
+  judul: "Many Ways Mosaic: terapan",
+  sumber: "Metode global: Many Ways Mosaic (terapan)",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_Z1,
+      tambah(0, judul("Satria Menyusun Persegi"), ...lantai("lt", 150), ...meja("mj", 14, 260)),
+      tambah("Satria", ...tokoh("sa", 36, 184, "Satria")),
+      tambah("dua", poli("d0", [KIRI[0], KIRI[1], KIRI[2]], G.biru), poli("d1", [KIRI[0], KIRI[2], KIRI[3]], G.kuning), teks("n2", 100, 56, "2 segitiga", 11, W.merah)),
+      tambah(
+        "empat",
+        poli("e0", [KANAN[0], KANAN[1], PK], G.hijau),
+        poli("e1", [KANAN[1], KANAN[2], PK], G.pink),
+        poli("e2", [KANAN[2], KANAN[3], PK], G.ungu),
+        poli("e3", [KANAN[3], KANAN[0], PK], G.oranye),
+        teks("n4", 192, 56, "4 segitiga", 11, W.merah),
+      ),
+    ),
+    k(
+      SUARA_Z2,
+      sorotkan("berbeda", "d0", "d1"),
+      tambah("membentuk", poli("o1", KIRI, undefined, W.ungu, { tebal: 2.6, z: 5 }), poli("o2", KANAN, undefined, W.ungu, { tebal: 2.6, z: 5 })),
+      tambah("utuh", emo("ok", 146, 92, E.benar, 22), teks("sp", 150, 134, "sama-sama persegi", 9, W.hijauTua)),
+    ),
+    k(
+      SUARA_Z3,
+      tambah("Cocok", emo("jp", 262, 140, E.jempol, 22)),
+      tambah("pola", ...polaLantai(9, 70, 156, 20)),
+      tambah("banyak", emo("kl", 262, 100, E.kilau, 22)),
+    ),
+    k(
+      SUARA_Z4,
+      hapus(0, "jp", "kl", "ok", "sp", ...idPola(9)),
+      tambah("Kurang", emo("xs", 262, 140, E.salah, 22)),
+      tambah("satu", teks("n1", 150, 134, "1 cara saja", 10, W.merah)),
+      pudarkan("melewatkan", "e0", "e1", "e2", "e3", "n4", "o2"),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita pelajari bersama Pak Rudi. Mana yang pas tergantung keadaan.";
+const SUARA_R2 = "Ingin membuat bangun baru, pakai Pasang Keping. Ingin membagi bangun rumit, pakai Bagi Jadi Segitiga.";
+const SUARA_R3 = "Ingin mencari pola yang indah, pakai Mosaik Banyak Cara. Apa pun caranya, periksa bahwa tidak ada celah.";
+const SUARA_R4 = "Menurutmu, untuk menghias dinding yang luas, cara mana yang paling pas?";
+
+export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
+  id: "luar-ringkas",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan metode global",
+  latar: "#F5F3FF",
+  ketukan: [
+    k(
+      SUARA_R1,
+      tambah(0, judul("Tiga Cara Pak Rudi"), ...lantai("lt", 150), teks("n3", 260, 40, "3 cara", 10, W.ungu)),
+      tambah("pelajari", ...kartu("r0", 20, 48, 130, 28, G.biru, ["Pasang Keping"], 11), ...kartu("r1", 20, 84, 130, 28, G.hijau, ["Bagi Jadi Segitiga"], 11), ...kartu("r2", 20, 120, 130, 28, W.krem, ["Mosaik Banyak Cara"], 11)),
+      tambah("Rudi", ...tokoh("pr", 252, 184, "Pak Rudi")),
+      tambah("pas", emo("tn", 230, 100, E.tanya, 28)),
+    ),
+    k(
+      SUARA_R2,
+      sorotkan("Pasang", "r0-k"),
+      tambah("Pasang", emo("e1", 200, 62, E.puzzle, 22)),
+      redamkan("Bagi", "r0-k"),
+      sorotkan("Bagi", "r1-k"),
+      tambah("membagi", emo("e2", 200, 98, E.gunting, 22)),
+    ),
+    k(
+      SUARA_R3,
+      hapus(0, "tn"),
+      redamkan("Mosaik", "r1-k"),
+      sorotkan("Mosaik", "r2-k"),
+      tambah("pakai", emo("e3", 200, 134, E.palet, 22)),
+      tambah("celah", teks("tc", 252, 76, "tanpa celah", 11, W.hijauTua), emo("ok", 252, 106, E.benar, 22)),
+    ),
+    k(
+      SUARA_R4,
+      hapus(0, "tc", "ok", "e1", "e2", "e3", "n3"),
+      tambah("dinding", kotak("dn", 172, 56, 110, 60, "#E0F2FE", W.coklat, { rx: 2, tebal: 2.4, z: -1 })),
+      sorotkan("cara", "r0-k", "r1-k", "r2-k"),
+      tambah("pas", teks("qq", 227, 44, "cara mana?", 12, W.merah)),
     ),
   ],
 };

@@ -1,6 +1,7 @@
 /**
- * Teks misi dan nama simulasi Kelas 4 Bab 5. Berkas kecil tanpa impor, dipisah dari SimulasiK4Bab5.tsx
- * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen laboratorium ke bundel awal.
+ * Teks misi awal Kelas 4 Bab 5 (Toko Keramik Bu Dewi). Berkas kecil tanpa impor, dipisah dari SimulasiK4Bab5.tsx
+ * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen simulasi ke bundel awal.
+ * KERANGKA: agen tiap Sub-Bab mengisi barisnya sendiri dengan teks yang SAMA dengan MISI_*_TEKS di data-sim.ts folder Sub-Bab.
  */
 
 export type HurufK4B5 = "A" | "B";
@@ -9,13 +10,8 @@ const HURUF: HurufK4B5[] = ["A", "B"];
 export const hurufK4B5 = (sub: string): HurufK4B5 => (HURUF.includes(sub as HurufK4B5) ? (sub as HurufK4B5) : "A");
 
 export const MISI_K4B5: Record<HurufK4B5, string> = {
-  A: "Di Lab Ciri, kenali segi banyak, bentuk segitiga siku-siku, persegi, dan trapesium di papan paku, lalu pilah segitiga menurut sudutnya. Periksa dengan Mesin Ciri, lalu selesaikan skenario Papan Paku Helen. Selesaikan semua misi wajib, urutannya bebas.",
-  B: "Di Lab Susun, susun keping segitiga menjadi persegi, jajargenjang, dan trapesium, urai segienam menjadi segitiga, dan tutup siluet tangram. Periksa dengan Mesin Susun-Urai, lalu tuntaskan skenario Bengkel Kertas Helen. Selesaikan semua misi wajib: ini misi penutup bab.",
-};
-
-export const NAMA_SIM_K4B5: Record<HurufK4B5, string> = {
-  A: "Lab Ciri, Mesin Ciri, dan Papan Paku Helen",
-  B: "Pencapaian Misi Bab: Lab Susun, Mesin Susun-Urai, dan Bengkel Kertas Helen",
+  A: "Pilah keramik menurut banyak sisinya, periksa ciri segiempat, telusuri pohon keluarga bentuk, lalu golongkan segitiga. Urutannya bebas.",
+  B: "Pasang dua keping sama besar menjadi bangun baru, tarik garis dari titik tengah, dan belah bangun dari satu sudut. Urutannya bebas.",
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */

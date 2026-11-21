@@ -1,214 +1,121 @@
-import type { AdeganStory, Obj } from "./logika-story";
-import { PAVING, PERAHU, type Titik } from "./k4b5b-data";
-import { W, idDari, judul, kartu, keping, panah, poli, rumahAdat, skala, tabel, teks } from "./k4b5b-gambar";
-import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b5b-bantu";
+import type { AdeganStory } from "./logika-story";
+import { E, G, W, emo, garisKeSudut, idIrisan, irisan, judul, kartu, kotak, lantai, meja, papanNama, poli, serpih, tanda, teks, titikBeraturan, titikPusat, tokoh, type Tt } from "./k4b5b-gambar";
+import { hapus, k, sorotkan, tambah, ubah } from "./k4b5b-bantu";
 
-/* ------------------------------ 6. Dekomposisi: ayo mengamati (Buku Siswa hlm. 170; Panduan Guru hlm. 198–200) ------------------------------ */
-export const ADEGAN_MENGAMATI_DEK: AdeganStory = {
-  id: "mengamati-dekomposisi",
-  judul: "Dekomposisi: ayo mengamati rumah adat",
-  sumber: "Materi: mengurai bangun datar",
+/*
+ * Cerita orisinal IGIL "Mosaik Pak Rudi" (Kelas 4 Bab 5 Sub-Bab B), akhir cerita Toko Keramik Bu Dewi.
+ * Naskah suara dari naskah/story-naskah-k4b5b.md. Bagian ini: salah langkah Satria (segienam beraturan dibelah dari tengah menjadi lima segitiga),
+ * Laras menarik enam garis dari titik tengah dan mendapat enam segitiga sama sisi, dan Satria menyapu toko (taruhan).
+ */
+
+const PUSAT: Tt = [150, 86];
+export const SEGIENAM: Tt[] = titikBeraturan(PUSAT[0], PUSAT[1], 30, 6, 0);
+
+/* ------------------------------ 4. Salah segienam ------------------------------ */
+const SUARA_S1 = "Pak Rudi menunjukkan keramik segienam beraturan dan meminta anak-anak membaginya menjadi segitiga.";
+const SUARA_S2 = "Satria berseru, dibelah dari tengah jadinya lima segitiga!";
+const SUARA_S3 = "Kalau aku salah, aku menyapu seluruh toko, katanya sambil mengangkat sapu.";
+
+export const ADEGAN_SALAH_SEGIENAM: AdeganStory = {
+  id: "salah-segienam",
+  judul: "Satria bilang lima segitiga",
+  sumber: "Materi: salah langkah dan taruhan",
   latar: "#FFFBEB",
-  kutipan: [
-    "2. Dekomposisi Bangun Datar",
-    "Indonesia memiliki banyak suku dan kebudayaan yang beragam.",
-    "Salah satu kebudayaan tersebut yaitu rumah adat.",
-    "Utari sedang mengamati rumah adat masyarakat jawa.",
-    "Apakah kalian bisa menunjukkan bentuk-bentuk bangun datar pada rumah adat Jawa?",
-    "Bisa Bapak.",
-    "menyajikan, menganalisis dan mengurai (dekomposisi) bangun datar menjadi beberapa bangun datar",
-    "dan menentukan cara mengurai yang mungkin suatu bangun datar yang diberikan/diketahui",
-    "Mengurai bangun datar berarti mengurai satu bangun datar sehingga menjadi beberapa bangun datar.",
-    "bangun-bangun lainnya (pot bunga, gambar orang menari, roket, rumah, jembatan, dan sebagainya)",
-  ],
   ketukan: [
     k(
-      "Dekomposisi bangun datar. Ayo mengamati: Indonesia memiliki banyak suku dan kebudayaan, salah satunya rumah adat. Utari mengamati rumah adat masyarakat Jawa.",
-      tambah(0, judul("Dekomposisi Bangun Datar")),
-      tambah("suku", ...rumahAdat("ra", 102, 40, 2.4)),
-      tambah("rumah@2", teks("ras", 150, 188, "rumah adat Jawa", 9.6, W.coklat)),
+      SUARA_S1,
+      tambah(0, judul("Satria Salah Hitung"), ...lantai("lt", 150), ...meja("mj", 14, 232)),
+      tambah("Rudi", ...tokoh("pr", 262, 184, "Pak Rudi")),
+      tambah("segienam", poli("hx", SEGIENAM, G.hijau)),
+      tambah("segitiga", emo("q", 150, 48, E.tanya, 20)),
     ),
     k(
-      "Bapak bertanya: bisakah kalian menunjukkan bentuk bangun datar pada rumah adat Jawa? Murid menjawab: bisa, Bapak.",
-      ubah(0, { id: "ra-ap", x: 112 }, { id: "ra-ab", x: 112 }, { id: "ra-dn", x: 112 }, { id: "ra-pt", x: 112 }),
-      tambah("bertanya:", ...kartu("pt1", 6, 56, 96, 52, W.langit, ["Apakah kalian bisa", "menunjukkan bentuk", "bangun datar?"], 7.4)),
-      tambah("Murid", ...kartu("pt2", 220, 96, 72, 30, W.hijauMuda, ["Bisa Bapak."], 8.6)),
+      SUARA_S2,
+      tambah("Satria", ...tokoh("sa", 36, 184, "Satria")),
+      tambah("berseru", emo("sr", 112, 50, E.seru, 20)),
+      tambah("tengah", titikPusat("ct", PUSAT)),
+      tambah("lima", teks("n5", 62, 76, "5 segitiga?", 12, W.merah)),
     ),
     k(
-      "Tujuan kita: menyajikan, menganalisis, dan mengurai bangun datar menjadi beberapa bangun datar, serta menentukan cara mengurai yang mungkin.",
-      bersih(0),
-      tambah(0, judul("Tujuan dekomposisi")),
-      tambah("menyajikan,", ...kartu("td1", 30, 36, 240, 28, W.langit, ["menyajikan dan menganalisis"], 9.6)),
-      tambah("mengurai", ...kartu("td2", 30, 74, 240, 28, W.krem, ["mengurai bangun jadi beberapa bangun"], 9)),
-      tambah("menentukan", ...kartu("td3", 30, 112, 240, 28, W.hijauMuda, ["menentukan cara mengurai yang mungkin"], 8.8)),
-    ),
-    k(
-      "Mengurai berarti membagi satu bangun datar menjadi beberapa bangun datar. Bangunnya bisa pot bunga, orang menari, roket, rumah, atau jembatan.",
-      bersih(0),
-      tambah(0, judul("Mengurai: satu jadi beberapa")),
-      tambah("Mengurai", poli("rr1", 30, 36, skala([[0, 4], [4, 4], [4, 8], [0, 8]], 14), "#FFF200", W.coklat, { tebal: 1.2 }), poli("rr2", 30, 36, skala([[0, 4], [4, 4], [2, 0]], 14), "#FAA61A", W.coklat, { tebal: 1.2 })),
-      tambah("membagi", panah("rra", 100, 92, 40, 0, W.merah, 2.4)),
-      tambah("beberapa", poli("rs1", 170, 44, skala([[0, 4], [4, 4], [4, 8], [0, 8]], 14), "#FFF200", W.coklat, { tebal: 1.2 }), poli("rs2", 170, 34, skala([[0, 4], [4, 4], [2, 0]], 14), "#FAA61A", W.coklat, { tebal: 1.2 })),
-      tambah("beberapa", teks("rt1", 58, 170, "1 bangun", 9.4, W.biru), teks("rt2", 198, 170, "2 bangun", 9.4, W.biru)),
-      tambah("jembatan.", teks("rt3", 150, 188, "pot bunga, orang menari, roket, rumah, jembatan", 7.4, W.coklat)),
+      SUARA_S3,
+      tambah("salah", teks("tr", 62, 102, "taruhan : menyapu toko", 8, W.merah)),
+      tambah("sapu", emo("sp", 68, 170, E.sapu, 22)),
     ),
   ],
 };
 
-/* ------------------------------ 7. Aktivitas 7: dekomposisi bangun datar (Buku Siswa hlm. 170–172; Panduan Guru hlm. 200) ------------------------------ */
-const TB = tabel("tb", 20, 36, [96, 92, 72], [["Bentuk Bangun Datar", "Nama", "Banyaknya"], ["", "Trapesium", "2"], ["", "...", "..."], ["", "...", "..."], ["", "...", "..."], ["", "...", "..."]], 24, 7.8);
-export const ADEGAN_AKTIVITAS_7: AdeganStory = {
-  id: "aktivitas-7",
-  judul: "Kegiatan mengurai rumah adat",
-  sumber: "Materi: mengurai rumah adat",
-  latar: "#F0FDFA",
-  kutipan: [
-    "Aktivitas 7. Dekomposisi Bangun Datar",
-    "penggaris",
-    "Buatlah kelompok dengan anggota 3-4 orang.",
-    "Perhatikan rumah adat masyarakat jawa dengan atap “KAMPUNG”.",
-    "Carilah jenis bangun datar yang ada pada gambar rumah tersebut dan catatlah pada buku tulis kalian seperti pada tabel berikut.",
-    "Bentuk Bangun Datar Nama Banyaknya",
-    "Trapesium",
-    "Diskusi bersama anggota kelompok, ada berapa jenis bangun datar yang kalian peroleh? Sebutkan.",
-    "Presentasikan hasilnya di depan kelas dengan percaya diri.",
-    "dapatkah kalian menyimpulkan apakah dekomposisi bangun datar itu?",
-    "Guru memberi kesempatan setiap kelompok untuk mempresentasikan hasil diskusi kelompok.",
-    "Guru bersama peserta didik merumuskan kesimpulan.",
-  ],
+/* ------------------------------ 5. Hitung segitiga ------------------------------ */
+const SUARA_H1 = "Laras menarik garis dari titik tengah ke setiap sudut segienam itu.";
+const SUARA_H2 = "Segienam punya enam sudut, jadi garis yang ditarik ada enam, dan segitiganya juga ada enam.";
+const SUARA_H3 = "Semua segitiganya sama sisi dan sama besar, bukan lima seperti kata Satria.";
+const GARIS_KE_SUDUT = garisKeSudut("g", PUSAT, SEGIENAM);
+
+export const ADEGAN_HITUNG_SEGITIGA: AdeganStory = {
+  id: "hitung-segitiga",
+  judul: "Laras menghitung segitiga",
+  sumber: "Materi: segienam dibelah dari titik tengah",
+  latar: "#F0FDF4",
   ketukan: [
     k(
-      "Kegiatan kedua, mengurai bangun datar. Alat: alat tulis dan penggaris. Kelompok tiga sampai empat orang memperhatikan rumah adat Jawa dengan atap Kampung.",
-      tambah(0, judul("Mengurai rumah adat")),
-      tambah("Alat:", ...kartu("b71", 10, 40, 100, 26, W.krem, ["alat tulis"], 8.6)),
-      tambah("penggaris.", ...kartu("b72", 10, 74, 100, 26, W.langit, ["penggaris"], 8.6)),
-      tambah("orang", ...kartu("b73", 10, 108, 100, 26, W.pink, ["3 sampai 4 orang"], 8.6)),
-      tambah("atap", ...rumahAdat("ak", 176, 38, 2.2)),
-      tambah("Kampung.", teks("akt", 220, 170, "atap Kampung", 9, W.coklat), teks("akl", 220, 186, "(ada juga Joglo dan Limasan)", 6.6, W.coklat)),
+      SUARA_H1,
+      tambah(0, judul("Laras Menghitung Segitiga"), ...lantai("lt", 150), ...meja("mj", 14, 232), poli("hx", SEGIENAM, G.hijau)),
+      tambah("Laras", ...tokoh("la", 36, 184, "Laras")),
+      tambah("tengah", titikPusat("ct", PUSAT)),
+      tambah("setiap", ...GARIS_KE_SUDUT.slice(0, 3)),
+      tambah("sudut", ...GARIS_KE_SUDUT.slice(3)),
     ),
     k(
-      "Carilah jenis bangun datar pada gambar rumah itu, lalu catat di tabel: bentuk bangun datar, nama, dan banyaknya.",
-      bersih(0),
-      tambah(0, judul("Catat bangun datar pada rumah")),
-      tambah("tabel:", ...TB),
-      tambah("Carilah", poli("tbm", 46, 66, skala([[8, 0], [34, 0], [42, 14], [0, 14]], 1), "#3B9AE0", W.biru, { tebal: 0.8 })),
+      SUARA_H2,
+      tambah("enam@2", teks("a6", 72, 64, "6 sudut", 11, W.merah)),
+      tambah("enam@3", teks("b6", 72, 92, "6 garis", 11, W.merah)),
+      hapus("segitiganya", "hx"),
+      tambah("segitiganya", ...irisan("t", PUSAT, SEGIENAM)),
+      tambah("enam@4", teks("c6", 228, 64, "6 segitiga", 11, W.merah)),
     ),
     k(
-      "Contoh baris pertama: trapesium, banyaknya dua. Pada gambar atap Kampung tampak segitiga di puncak, trapesium di atap bawah, dan persegi panjang pada dinding dan pintu.",
-      hapus(0, ...idDari(TB), "tbm"),
-      tambah("Contoh", ...rumahAdat("ak", 16, 40, 2.3)),
-      tambah("trapesium,", ...kartu("cb1", 112, 44, 176, 26, W.krem, ["contoh: trapesium 2"], 8.6)),
-      tambah("segitiga", ...kartu("cb2", 112, 80, 176, 26, W.langit, ["puncak atap: segitiga"], 8.6)),
-      tambah("trapesium@2", ...kartu("cb3", 112, 116, 176, 26, W.hijauMuda, ["atap bawah: trapesium"], 8.6)),
-      tambah("persegi", ...kartu("cb4", 112, 152, 176, 26, W.pink, ["dinding dan pintu: persegi panjang"], 7.8)),
-    ),
-    k(
-      "Lalu diskusikan ada berapa jenis bangun datar yang diperoleh, presentasikan hasilnya di depan kelas dengan percaya diri, dan simpulkan apakah dekomposisi itu. Kesimpulannya kita rumuskan bersama.",
-      bersih(0),
-      tambah(0, judul("Diskusi, presentasi, kesimpulan")),
-      tambah("diskusikan", ...kartu("s41", 14, 36, 272, 30, W.langit, ["4. diskusi: ada berapa jenis bangun?"], 9)),
-      tambah("presentasikan", ...kartu("s42", 14, 76, 272, 30, W.krem, ["5. presentasikan dengan percaya diri"], 9)),
-      tambah("simpulkan", ...kartu("s43", 14, 116, 272, 30, W.hijauMuda, ["6. simpulkan: apa dekomposisi itu?"], 9)),
-      tambah("bersama.", teks("s44", 150, 172, "kita rumuskan kesimpulan bersama", 8.4, W.coklat)),
+      SUARA_H3,
+      sorotkan("Semua", ...idIrisan("t", 6)),
+      tambah("sisi", tanda("tk0", PUSAT, SEGIENAM[0]), tanda("tk1", SEGIENAM[0], SEGIENAM[1]), tanda("tk2", SEGIENAM[1], PUSAT)),
+      tambah("bukan", teks("n5", 70, 40, "bukan 5", 12, W.merah), emo("x5", 112, 40, E.salah, 18)),
+      tambah("Satria", ...tokoh("sa", 84, 184, "Satria")),
     ),
   ],
 };
 
-/* ------------------------------ 8. Ayo Berlatih 1: perahu layar (Buku Siswa hlm. 172–173; Panduan Guru hlm. 200–201) ------------------------------ */
-const SP = 0.68;
-const perahu = (x: number, y: number): Obj[] => PERAHU.map((p, i) => keping(`ph-p${i}`, x, y, p, SP));
-const MINI: Record<string, Titik[]> = {
-  segitiga: [[0, 14], [16, 14], [0, 0]],
-  jajargenjang: [[4, 0], [20, 0], [16, 12], [0, 12]],
-  persegi: [[0, 0], [14, 0], [14, 14], [0, 14]],
-};
-const WARNA_MINI: Record<string, string> = { segitiga: "#0066B3", jajargenjang: "#FAA61A", persegi: "#40AD49" };
-const baris = (nama: string, r: number): Obj[] => [poli(`tl-m${r}`, 214, 34 + 22 * r + 4, MINI[nama], WARNA_MINI[nama], W.putih, { tebal: 0.6 })];
-export const ADEGAN_BERLATIH_1: AdeganStory = {
-  id: "berlatih-1",
-  judul: "Latihan 1: perahu layar",
-  sumber: "Materi: perahu layar",
-  latar: "#EFF6FF",
-  kutipan: [
-    "Kerjakan soal berikut pada buku tulis kalian.",
-    "Lakukan dekomposisi berbagai macam bangun datar yang ada pada",
-    "No Nama Bangun Datar Gambar Banyaknya",
-    "Guru meminta kepada seluruh peserta didik mengerjakan Latihan 3 sebagai berikut.",
-    "Coba uraikan (dekomposisi) berbagai macam bangun datar yang ada pada",
-    "Jajargenjang",
-    "Persegi",
-  ],
-  ketukan: [
-    k(
-      "Latihan satu: lakukan dekomposisi berbagai bangun datar pada gambar perahu layar. Isi tabel: nomor, nama bangun datar, gambar, dan banyaknya.",
-      tambah(0, judul("Latihan 1")),
-      tambah("perahu", ...perahu(8, 44)),
-      tambah("tabel:", ...tabel("tl", 148, 34, [52, 46, 46], [["Nama", "Gambar", "Banyaknya"], ["Segitiga", "", "..."], ["Jajargenjang", "", "..."], ["Persegi", "", "..."]], 22, 6.8)),
-    ),
-    k(
-      "Hasilnya: segitiga sebanyak lima, jajargenjang satu, dan persegi satu. Jadi perahu ini tersusun dari tiga jenis bangun.",
-      ...["segitiga", "jajargenjang", "persegi"].flatMap((n, i) => baris(n, i + 1).map((o) => ({ at: "segitiga", tambah: o }))),
-      ubah("lima,", { id: "tl-t12", isi: "5", warna: W.merah }),
-      ubah("jajargenjang", { id: "tl-t22", isi: "1", warna: W.merah }),
-      ubah("persegi", { id: "tl-t32", isi: "1", warna: W.merah }),
-      tambah("jenis", teks("tlc", 220, 140, "3 jenis bangun", 6.8, W.coklat)),
-    ),
-    k(
-      "Kita cek dengan menghitung gambar: lima segitiga, satu jajargenjang, dan satu persegi. Lima tambah satu tambah satu sama dengan tujuh keping, sama seperti tangram.",
-      hapus(0, "tlc"),
-      sorotkan("segitiga", ...[0, 1, 5, 6, 3].map((i) => `ph-p${i}`)),
-      sorotkan("jajargenjang", "ph-p2"),
-      sorotkan("persegi.", "ph-p4"),
-      tambah("tambah", ...kartu("tlj", 148, 130, 144, 26, W.krem, ["5 + 1 + 1 = 7 keping"], 9.4)),
-      tambah("tangram.", teks("tlk", 220, 172, "sama dengan keping tangram", 7.6, W.coklat)),
-    ),
-  ],
-};
+/* ------------------------------ 6. Menyapu ------------------------------ */
+const SUARA_Y1 = "Satria menepati taruhannya dan mulai menyapu seluruh toko yang penuh serpihan keramik.";
+const SUARA_Y2 = "Ia menyapu sambil bersenandung, sampai sapunya menyenggol kotak keping dan semuanya berhamburan.";
+const SUARA_Y3 = "Genta mencatat, banyak segitiga hasil belahan dari titik tengah sama dengan banyak sisinya.";
+const MINI: Tt[] = titikBeraturan(236, 56, 16, 6, 0);
 
-/* ------------------------------ 9. Ayo Berlatih 2: motif paving (Buku Siswa hlm. 173; Panduan Guru hlm. 201–202) ------------------------------ */
-const SV = 1.15;
-const JENIS_PAVING = ["segitiga", "trapesium", "jajargenjang", "trapesium", "persegi panjang", "segitiga", "persegi", "segitiga", "trapesium", "segitiga"];
-const WARNA_JENIS: Record<string, string> = { segitiga: "#0066B3", trapesium: "#FAA61A", jajargenjang: "#ED008C", persegi: "#FFF200", "persegi panjang": "#8B5CF6" };
-export const ADEGAN_BERLATIH_2: AdeganStory = {
-  id: "berlatih-2",
-  judul: "Latihan 2: motif paving",
-  sumber: "Materi: motif paving",
-  latar: "#F7FEE7",
-  kutipan: [
-    "Lakukan dekomposisi berbagai macam bangun datar yang ada pada",
-    "Setelah kalian mengamati gambar di atas, apa saja bangun datar yang",
-    "menyusun motif paving di atas?",
-    "Lingkari setiap bangun berikut yang menyusun motif paving pada gambar",
-  ],
+export const ADEGAN_MENYAPU: AdeganStory = {
+  id: "menyapu",
+  judul: "Satria menyapu toko",
+  sumber: "Materi: taruhan menyapu seluruh toko",
+  latar: "#FFF7ED",
   ketukan: [
     k(
-      "Latihan dua: lakukan dekomposisi bangun datar pada gambar motif paving. Lingkari setiap bangun, dari sebelas pilihan, yang menyusun motif paving.",
-      tambah(0, judul("Latihan 2: motif paving")),
-      tambah("paving.", ...PAVING.map((p, i) => keping(`pv-p${i}`, 10, 40, p, SV))),
-      tambah("sebelas", ...kartu("pv1", 196, 50, 92, 40, W.krem, ["11 pilihan bangun", "untuk dilingkari"], 7.6)),
+      SUARA_Y1,
+      tambah(0, judul("Satria Menyapu Toko"), ...lantai("lt", 150), ...meja("mj", 190, 100), kotak("kp", 212, 92, 56, 20, "#C99A63", W.coklat, { rx: 3, z: 1 }), kotak("kt", 208, 86, 64, 8, "#A16207", W.coklat, { rx: 3, z: 2 })),
+      tambah("Satria", ...tokoh("sa", 60, 184, "Satria")),
+      tambah("menyapu", emo("sp", 92, 172, E.sapu, 24)),
+      tambah("toko", ...papanNama("pp", 100, 28, 100)),
+      tambah("serpihan", ...serpih("fl", 108, 154, 3, 26, { z: -1, tebal: 1.6 }, 1.8)),
     ),
     k(
-      "Perhatikan gambar dengan teliti, jangan hanya menebak. Hitungan kita: motif tersusun dari sepuluh keping.",
-      tambah("hanya", ...kartu("pv2", 196, 100, 92, 40, W.langit, ["hitung dengan", "teliti"], 7.6)),
-      ...PAVING.map((_, i) => ubah(i < 5 ? "sepuluh" : "keping.", { id: `pv-p${i}`, warna: WARNA_JENIS[JENIS_PAVING[i]] })),
-      tambah("sepuluh", ...kartu("pv3", 196, 148, 92, 28, W.hijauMuda, ["10 keping"], 9.6)),
+      SUARA_Y2,
+      tambah("bersenandung", emo("ms", 96, 140, E.musik, 18)),
+      hapus("menyenggol", "kt"),
+      ubah("menyenggol", { id: "kp", rot: 20, x: 226, y: 88 }),
+      tambah("menyenggol", emo("tb", 214, 80, E.tabrak, 22)),
+      tambah("berhamburan", ...serpih("fb", 196, 154, 4, 24, { z: -1, tebal: 1.6 }, 1.6)),
     ),
     k(
-      "Sepuluh keping itu: empat segitiga siku-siku, tiga trapesium, satu jajargenjang, satu persegi, dan satu persegi panjang. Empat tambah tiga tambah satu tambah satu tambah satu sama dengan sepuluh.",
-      hapus(0, "pv1-k", "pv1-t0", "pv1-t1", "pv2-k", "pv2-t0", "pv2-t1", "pv3-k", "pv3-t0"),
-      tambah("segitiga", ...kartu("lg1", 186, 36, 104, 20, "#BFDBFE", ["4 segitiga siku-siku"], 7.2)),
-      tambah("trapesium,", ...kartu("lg2", 186, 60, 104, 20, "#FED7AA", ["3 trapesium"], 7.8)),
-      tambah("jajargenjang,", ...kartu("lg3", 186, 84, 104, 20, W.pink, ["1 jajargenjang"], 7.8)),
-      tambah("persegi,", ...kartu("lg4", 186, 108, 104, 20, "#FEF08A", ["1 persegi"], 7.8)),
-      tambah("persegi@2", ...kartu("lg5", 186, 132, 104, 20, "#DDD6FE", ["1 persegi panjang"], 7.8)),
-      tambah("Empat@2", ...kartu("lg6", 186, 158, 104, 26, W.hijauMuda, ["4 + 3 + 1 + 1 + 1 = 10"], 7.8)),
-    ),
-    k(
-      "Jadi menurut jenisnya yang menyusun motif: persegi, persegi panjang, segitiga siku-siku, trapesium, dan jajargenjang. Lingkaran, segienam, segitiga sama sisi, dan belah ketupat bukan. Ini hasil hitungan kita.",
-      hapus(0, "lg1-k", "lg1-t0", "lg2-k", "lg2-t0", "lg3-k", "lg3-t0", "lg4-k", "lg4-t0", "lg5-k", "lg5-t0", "lg6-k", "lg6-t0"),
-      tambah("persegi,", ...kartu("pl", 180, 34, 112, 82, W.hijauMuda, ["✔ persegi", "✔ persegi panjang", "✔ segitiga siku-siku", "✔ trapesium", "✔ jajargenjang"], 7.4)),
-      tambah("Lingkaran,", ...kartu("pm", 180, 124, 112, 56, W.merahMuda, ["✖ lingkaran, segienam", "✖ segitiga sama sisi", "✖ belah ketupat"], 7.4)),
-      tambah("Ini", teks("pn", 100, 188, "hasil hitungan kita", 7.6, W.coklat)),
+      SUARA_Y3,
+      tambah("Genta", ...tokoh("ge", 150, 184, "Genta")),
+      tambah("mencatat", emo("ct", 178, 168, E.catat, 20)),
+      tambah("segitiga", ...kartu("kc", 90, 50, 112, 26, W.krem, ["segitiga = sisi"], 10)),
+      tambah("belahan", ...irisan("mh", [236, 56], MINI)),
     ),
   ],
 };

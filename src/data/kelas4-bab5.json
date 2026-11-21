@@ -5,7 +5,7 @@
   "grade": 4,
   "subjectLabel": "MATEMATIKA - KELAS 4 SD",
   "title": "BAB 5: BANGUN DATAR",
-  "silabusElemen": "🌈 Fase B • Elemen Geometri: Ciri-Ciri Bangun Datar serta Komposisi dan Dekomposisi (Kelas 4 SD/MI)",
+  "silabusElemen": "🌈 Fase B • Elemen Geometri: Ciri-Ciri Bangun Datar serta Komposisi dan Dekomposisi (SD/MI)",
   "suaraPerangkatSaja": true,
   "suaraLaju": 0.7,
   "suaraNada": 1,
@@ -19,34 +19,34 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Ciri-Ciri Bangun Datar)",
       "fullTitle": "Sub-Bab A: Ciri-Ciri Bangun Datar",
-      "targetDescription": "Siswa mengenal segi banyak, membedakan beraturan/tak beraturan, mengelompokkan segitiga (sisi & sudut), serta menyebutkan ciri segiempat (persegi, persegi panjang, jajargenjang, belah ketupat, layang-layang, trapesium) sesuai Buku Siswa Kelas IV Bab 5. Siswa memakai cara van Hiele Visual–Analisis, Pilah Ciri, Papan Paku. Siswa memakai cara van Hiele Visual–Analisis, Pilah Ciri, Papan Paku.",
+      "targetDescription": "Di Toko Keramik Bu Dewi, kita memilah keramik menjadi segi banyak beraturan dan tidak beraturan, menggolongkan segitiga menurut sisi dan sudut, dan menyebut ciri segiempat.",
       "secondaryBg": "#FFEDD5",
       "secondaryBorder": "#EA580C",
       "secondaryText": "#7C2D12",
       "silabus": {
-        "teksSuara": "Kita belajar ciri-ciri bangun datar. Segi banyak adalah kurva tertutup paling sedikit tiga ruas garis. Ada yang beraturan dan tak beraturan. Segitiga dikelompokkan menurut sisi dan sudut. Segiempat punya banyak keluarga: persegi, persegi panjang, dan lainnya. Kita memakai cara: van Hiele Visual–Analisis, Pilah Ciri, Papan Paku. Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Kelompokkan menurut sisi, sudut, atau sejajar. Bentuk karet di paku untuk menguji ciri. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menjelaskan ciri-ciri bangun datar segi banyak, segitiga, dan segiempat.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 5 Sub-Bab A)."
+        "teksSuara": "Kita belajar ciri bangun datar di Toko Keramik Bu Dewi. Segi banyak adalah bangun tertutup dari paling sedikit tiga ruas garis lurus. Ada yang beraturan dan ada yang tidak beraturan. Segitiga digolongkan menurut sisi dan sudutnya. Segiempat punya banyak keluarga, dari persegi sampai trapesium. Kita memakai pilah keramik, sisi dan sudut, dan pohon keluarga bentuk. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menyebutkan ciri segi banyak, segitiga, dan segiempat berdasarkan sisi dan sudutnya.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Geometri."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "van Hiele Level 0-1",
-          "namaId": "van Hiele Visual–Analisis",
-          "asal": "van Hiele",
-          "ringkas": "Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
+          "nama": "Sort the Tiles",
+          "namaId": "Pilah Keramik",
+          "asal": "IGIL",
+          "ringkas": "Pisahkan keramik menjadi golongan menurut satu ciri yang sama.",
           "tahap": [
             "Story",
-            "Mind",
+            "Concrete",
             "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Attribute Sort",
-          "namaId": "Pilah Ciri",
-          "asal": "Attribute blocks",
-          "ringkas": "Kelompokkan menurut sisi, sudut, atau sejajar.",
+          "nama": "Sides and Corners",
+          "namaId": "Sisi dan Sudut",
+          "asal": "IGIL",
+          "ringkas": "Periksa sisi yang sama panjang, sisi sejajar, dan sudut siku-siku.",
           "tahap": [
             "Concrete",
             "Picture"
@@ -54,13 +54,13 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Geoboard",
-          "namaId": "Papan Paku",
-          "asal": "Gattegno geoboard",
-          "ringkas": "Bentuk karet di paku untuk menguji ciri.",
+          "nama": "Shape Family Tree",
+          "namaId": "Pohon Keluarga Bentuk",
+          "asal": "IGIL",
+          "ringkas": "Susun bagan dari bangun umum sampai bangun khusus.",
           "tahap": [
-            "Infografis",
-            "Concrete"
+            "Picture",
+            "Abstract"
           ]
         }
       ],
@@ -767,50 +767,50 @@
     },
     "B": {
       "id": "B",
-      "codeTitle": "Sub-Bab B (Komposisi dan Dekomposisi)",
-      "fullTitle": "Sub-Bab B: Komposisi dan Dekomposisi Bangun Datar",
-      "targetDescription": "Siswa menyusun (komposisi) dan menguraikan (dekomposisi) bangun datar dengan banyak cara, misalnya persegi ↔ 2 segitiga, segienam → 6 segitiga, serta konteks peta/tangram sesuai Buku Siswa Kelas IV Bab 5. Siswa memakai cara Susun Bangun, Urai Bangun, Tangram. Siswa memakai cara Susun Bangun, Urai Bangun, Tangram.",
+      "codeTitle": "Sub-Bab B (Menyusun dan Menguraikan)",
+      "fullTitle": "Sub-Bab B: Menyusun dan Menguraikan Bangun Datar",
+      "targetDescription": "Di meja kerja Pak Rudi, kita menyusun keping menjadi bangun baru, menguraikan bangun menjadi segitiga, dan mencari banyak cara menyusun mosaik dan tangram.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
       "silabus": {
-        "teksSuara": "Kita belajar komposisi dan dekomposisi bangun datar. Menyusun bagian menjadi utuh disebut komposisi. Mengurai utuh menjadi bagian disebut dekomposisi. Satu bangun bisa disusun atau diurai dengan banyak cara. Kita memakai cara: Susun Bangun, Urai Bangun, Tangram. Gabungkan bangun sederhana jadi bangun baru. Pecah bangun kompleks jadi bagian dikenal. Tujuh keping menyusun banyak siluet. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa melakukan komposisi dan dekomposisi bangun datar.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 5 Sub-Bab B)."
+        "teksSuara": "Kita belajar menyusun dan menguraikan bangun datar di meja kerja Pak Rudi. Menyusun bagian menjadi bangun utuh disebut komposisi. Menguraikan bangun utuh menjadi bagian disebut dekomposisi. Satu bangun bisa disusun atau diurai dengan banyak cara. Kita memakai pasang keping, bagi jadi segitiga, dan mosaik banyak cara. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menyusun dan menguraikan bangun datar dengan lebih dari satu cara.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Geometri."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Compose Shapes",
-          "namaId": "Susun Bangun",
-          "asal": "Tangram / composition",
-          "ringkas": "Gabungkan bangun sederhana jadi bangun baru.",
+          "nama": "Fit the Pieces",
+          "namaId": "Pasang Keping",
+          "asal": "IGIL",
+          "ringkas": "Pertemukan sisi sama panjang dari dua keping untuk membuat bangun baru.",
           "tahap": [
             "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Cut Into Triangles",
+          "namaId": "Bagi Jadi Segitiga",
+          "asal": "IGIL",
+          "ringkas": "Tarik garis dari titik tengah atau satu sudut sampai bangun terbagi menjadi segitiga.",
+          "tahap": [
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Decompose Shapes",
-          "namaId": "Urai Bangun",
-          "asal": "Spatial reasoning",
-          "ringkas": "Pecah bangun kompleks jadi bagian dikenal.",
+          "nama": "Many Ways Mosaic",
+          "namaId": "Mosaik Banyak Cara",
+          "asal": "IGIL",
+          "ringkas": "Cari banyak susunan dari keping yang sama.",
           "tahap": [
-            "Mind",
+            "Picture",
             "Abstract"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Tangram",
-          "namaId": "Tangram",
-          "asal": "Chinese puzzle pedagogy",
-          "ringkas": "Tujuh keping menyusun banyak siluet.",
-          "tahap": [
-            "Infografis",
-            "Concrete"
           ]
         }
       ],
