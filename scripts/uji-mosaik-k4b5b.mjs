@@ -198,41 +198,53 @@ const cembung = (p) => {
   cek(B.every((m) => !m.cek({ alat: "kerangka" })) && B.every((m) => !m.cek({ alat: "etalase" })), "misi B: alat lain tidak memenuhi misi");
 }
 
-/* ------------------------------ Mind-map: tangga mosaik (pola label kosong) ------------------------------ */
+/* ------------------------------ Mind-map: meja kerja Pak Rudi (rancangan bebas) ------------------------------ */
 {
   const P = DP.LANGKAH_MOSAIK;
-  cek(P.length === 4, "mind-map: empat label kosong");
-  cek(new Set(P.map((x) => x.judul)).size === 4 && P.every((x) => x.judul.length >= 10 && x.judul.length <= 36 && x.judul.split(/\s+/).every((w) => w.length <= 12)), "mind-map: judul langkah unik, pendek, tiap kata paling banyak dua belas huruf (muat di 344 px)");
-  cek(P.every((x) => tanpaDigit(x.judul) && tanpaDigit(x.arti) && bersih(x.judul) && bersih(x.arti) && x.arti.length > 30 && /^Langkah (satu|dua|tiga|empat)\./.test(x.arti)), "mind-map: judul dan arti tanpa digit dan kata terlarang, arti diawali nomor langkah");
+  cek(P.length === 3, "mind-map: tiga label kosong sesuai tiga metode");
+  cek(new Set(P.map((x) => x.judul)).size === P.length && P.every((x) => x.judul.length >= 10 && x.judul.length <= 36 && x.judul.split(/\s+/).every((w) => w.length <= 12)), "mind-map: judul langkah unik, pendek, tiap kata paling banyak dua belas huruf (muat di 344 px)");
+  cek(P.every((x) => tanpaDigit(x.judul) && tanpaDigit(x.arti) && bersih(x.judul) && bersih(x.arti) && x.arti.length > 30 && /^Langkah (satu|dua|tiga)\./.test(x.arti)), "mind-map: judul dan arti tanpa digit dan kata terlarang, arti diawali nomor langkah");
   cek(P.every((x) => emojiSah(x.ikon) && adaEmoji(x.ikon) && !/[A-Za-z0-9]/.test(x.ikon)), "mind-map: ikon sah (emoji lama tanpa huruf)");
   const gab = P.map((x) => `${x.judul} ${x.arti}`).join(" ").toLowerCase();
-  for (const s of ["pasang", "titik tengah", "satu sudut", "banyak cara", "segitiga", "banyak sisi", "celah"]) cek(gab.includes(s), `mind-map: memuat "${s}"`);
+  for (const s of ["pasang", "titik tengah", "satu sudut", "banyak cara", "segitiga", "celah"]) cek(gab.includes(s), `mind-map: memuat "${s}"`);
   cek(!/\b(satria|laras|genta|pak hendro|bu dewi|pak rudi|pameran)\b/.test(gab), "mind-map: hanya langkah pelajaran (tanpa tokoh)");
   cek(tanpaDigit(DP.PETUNJUK_PETA + DP.SELESAI_PETA + DP.JUDUL_PETA) && bersih(DP.PETUNJUK_PETA + DP.SELESAI_PETA + DP.JUDUL_PETA) && emojiSah(DP.IKON_JUDUL_PETA), "mind-map: petunjuk dan pesan bersih");
+  // Mosaik di meja digambar dari koordinat sungguhan.
+  const M = DP.MEJA;
+  cek(LC.susunanSah({ keping: M.keping, hasil: LC.SUSUNAN.persegi.hasil, sisi: "" }) && LC.namaBangun(LC.SUSUNAN.persegi.hasil) === "persegi", "meja: dua keping menyusun persegi (dihitung dari koordinat)");
+  cek(M.segienam.length === 6 && LC.namaBangun(M.segienam) === "segienam beraturan" && DP.BELAHAN_SEGIENAM.length === 6 && LC.belahanSah(M.segienam, DP.BELAHAN_SEGIENAM) && LC.semuaSamaBesar(DP.BELAHAN_SEGIENAM), "meja: segienam beraturan dibelah dari titik tengah menjadi enam segitiga sama besar");
+  cek(DP.BELAHAN_SEGIENAM.every((t) => [0, 1, 2].every((i) => Math.abs(LC.panjangSisi(t)[i] - LC.panjangSisi(t)[0]) < 1e-9)), "meja: keenam segitiga belahan sama sisi");
+  cek(M.deret.length === 3 && M.deret.every((t) => LC.banyakSisi(t) === 3) && LC.namaBangun(DP.HASIL_DERET) === "trapesium" && Math.abs(M.deret.reduce((x, t) => x + LC.luasBidang(t), 0) - LC.luasBidang(DP.HASIL_DERET)) < 1e-9 && LC.semuaSamaBesar(M.deret), "meja: tiga segitiga sama besar menyusun trapesium (luas jumlah sama)");
   const pt = readFileSync(new URL("PetaMosaik.tsx", folderUrl), "utf8");
-  cek(/peta-label\/PetaLabel/.test(pt) && /rupa="tangga"/.test(pt) && /LANGKAH_MOSAIK/.test(pt) && /speakGuru/.test(pt) && /onLanjut/.test(pt) && /teksLanjut/.test(pt) && /export default function PetaMosaikK4B5/.test(pt) && /export \{ PetaMosaikK4B5 \}/.test(pt), "PetaMosaik: pembungkus tipis peta-label/PetaLabel rupa tangga, ekspor PetaMosaikK4B5");
+  cek(!/peta-label\/PetaLabel/.test(pt) && /LANGKAH_MOSAIK/.test(pt) && /MEJA\.keping/.test(pt) && /BELAHAN_SEGIENAM/.test(pt) && /MEJA\.deret/.test(pt) && /speakGuru/.test(pt) && /onLanjut/.test(pt) && /teksLanjut/.test(pt) && /export default function PetaMosaikK4B5/.test(pt) && /export \{ PetaMosaikK4B5 \}/.test(pt), "PetaMosaik: komponen sendiri (bukan PetaLabel), meja dengan keping, segienam, dan deret segitiga dari koordinat, ekspor PetaMosaikK4B5");
+  cek(/selesai \? \(/.test(pt) && /onClick=\{onLanjut\}/.test(pt) && /LANGKAH_MOSAIK\.map/.test(pt) && (pt.match(/data-langkah=/g) ?? []).length === 1 && /absolute/.test(pt), "PetaMosaik: label menempel pada gambar, tombol lanjut hanya setelah semua terbuka");
 }
 
-/* ------------------------------ Infografis: tabel belahan (data bersambung dari Sub-Bab A) dan kartu acuan ------------------------------ */
+/* ------------------------------ Infografis: papan potong dan susunan banyak cara (rancangan bebas) ------------------------------ */
 {
-  cek(DI.BARIS_DATA.length === 4 && DI.KOLOM_INFO.length === 3 && new Set(DI.KOLOM_INFO).size === 3 && DI.KOLOM_INFO.every((k) => bersih(k) && tanpaDigit(k) && k.length <= 8), "infografis: empat baris, tiga kolom, judul kolom pendek dan bersih");
-  sama(DI.BARIS_DATA.map((b) => b.banyak), [2, 2, 3, 6], "infografis: banyak segitiga persegi 2, jajargenjang 2, trapesium 3, segienam beraturan 6");
-  for (const b of DI.BARIS_DATA) {
+  cek(DI.BARIS_DATA.length === 4, "infografis: empat keramik pada papan potong");
+  sama(DI.BARIS_DATA.map((b) => b.banyak), [2, 2, 3, 6], "infografis: banyak segitiga persegi 2, jajargenjang 2, trapesium 3, segienam beraturan 6 (bersambung dari Sub-Bab A)");
+  for (const [i, b] of DI.BARIS_DATA.entries()) {
+    const k = DI.KERAMIK_INFO[i];
     cek(b.banyakTeks === `${b.banyak} segitiga` && b.nama.split(/\s+/).every((w) => w.length <= 12) && b.cara.length <= 12, `infografis ${b.nama}: label pendek`);
+    cek(LC.belahanSah(k.bidang, k.bagian) && k.bagian.every((t) => LC.banyakSisi(t) === 3) && LC.namaBangun(k.bidang).toLowerCase() === k.nama.toLowerCase(), `infografis ${b.nama}: belahan sah dan nama dihitung dari koordinat`);
     for (const s of [b.suaraNama, b.suaraCara, b.suaraBanyak]) cek(tanpaDigit(s) && bersih(s) && /^[A-Z]/.test(s) && !/\s[.,!?;:]/.test(s) && s.length > 6, `infografis ${b.nama}: suara tanpa digit dan kata terlarang (${s.slice(0, 40)})`);
   }
-  cek(/enam segitiga/.test(DI.BARIS_DATA[3].suaraBanyak) && /tiga segitiga/.test(DI.BARIS_DATA[2].suaraBanyak), "infografis: suara mengeja banyak segitiga");
-  cek(DI.GRID_INFO.includes("grid-cols"), "infografis: grid tiga kolom");
-  const R = DI.KARTU_ACUAN;
-  cek(R.length === 4 && R.every((r) => emojiSah(r.ikon) && adaEmoji(r.ikon) && tanpaDigit(r.suara) && bersih(r.suara) && /^[A-Z]/.test(r.suara)), "kartu acuan: empat baris, suara tanpa digit");
-  const gabR = R.map((r) => r.teks).join(" | ");
-  for (const s of ["dari tengah: segitiga = sisi", "2 segitiga = persegi"]) cek(gabR.includes(s), `kartu acuan: memuat ${s}`);
-  cek(/titik tengah/.test(R[0].suara) && /banyak sisi/.test(R[0].suara) && /persegi/.test(R[2].suara), "kartu acuan: suara mengeja isi");
+  cek(DI.KERAMIK_INFO[3].bagian.length === LC.banyakSisi(DI.KERAMIK_INFO[3].bidang) && /sama sisi/.test(DI.BARIS_DATA[3].suaraBanyak) && !/sama sisi/.test(DI.BARIS_DATA[0].suaraBanyak) && /enam segitiga/.test(DI.BARIS_DATA[3].suaraBanyak) && /tiga segitiga/.test(DI.BARIS_DATA[2].suaraBanyak), "infografis: segienam beraturan enam segitiga sama sisi, trapesium tiga segitiga (suara mengeja)");
+  const sg = DI.SEGITIGA_INFO;
+  cek(LC.banyakSisi(sg.bidang) === 3 && LC.namaBangun(sg.bidang) === "segitiga" && LC.panjangSisi(sg.bidang).every((x) => Math.abs(x - 4) < 1e-9) && tanpaDigit(sg.suara) && bersih(sg.suara) && /sederhana/.test(sg.suara) && sg.teks.length <= 24, "infografis: segitiga sama sisi sebagai bagian paling sederhana");
+  const S2 = DI.SUSUNAN_SAMA;
+  sama(S2.map((x) => x.nama), ["persegi", "segitiga", "jajargenjang"], "kartu 2: dua keping yang sama disusun menjadi persegi, segitiga, dan jajargenjang (dihitung dari koordinat)");
+  for (const [i, x] of S2.entries()) {
+    cek(x.keping.every((t) => LC.banyakSisi(t) === 3) && Math.abs(LC.luasBidang(x.keping[0]) - LC.luasBidang(x.keping[1])) < 1e-9 && LC.susunanSah({ keping: x.keping, hasil: x.hasil, sisi: "" }), `kartu 2 susunan ${i + 1}: dua keping sama besar, luas jumlah sama dengan hasil`);
+    cek(tanpaDigit(x.suara) && bersih(x.suara) && /^[A-Z]/.test(x.suara) && !/\s[.,!?;:]/.test(x.suara) && x.suara.includes(x.nama), `kartu 2 susunan ${i + 1}: suara tanpa digit memuat nama bangun`);
+  }
+  cek(S2.every((x) => x.keping[0] === S2[0].keping[0]), "kartu 2: keping pertama sama untuk ketiga susunan");
   const gabP = DI.PETUNJUK_INFO_1 + DI.PETUNJUK_INFO_2 + DI.SELESAI_INFO_1 + DI.PESAN_INFO_2;
   cek(tanpaDigit(gabP) && bersih(gabP), "infografis: petunjuk dan pesan tanpa digit dan kata terlarang");
   const inf = readFileSync(new URL("InfoMosaik.tsx", folderUrl), "utf8");
-  cek(/peta-label\/InfoKartu/.test(inf) && /BARIS_DATA/.test(inf) && /KARTU_ACUAN/.test(inf) && /BangunSvg/.test(inf) && /kartu2=\{kartu2\}/.test(inf) && /speakGuru/.test(inf) && /onLanjut/.test(inf) && /teksLanjut/.test(inf) && /export default function InfoMosaikK4B5/.test(inf) && /export \{ InfoMosaikK4B5 \}/.test(inf), "InfoMosaik: pembungkus tipis peta-label/InfoKartu dua kartu, gambar kolom Keramik, ekspor InfoMosaikK4B5");
-  cek((inf.match(/aria: /g) ?? []).length === 3, "InfoMosaik: tiga sel tiap baris (keramik, dibelah, segitiga)");
+  cek(!/peta-label\/InfoKartu/.test(inf) && /BangunSvg/.test(inf) && /KERAMIK_INFO/.test(inf) && /SUSUNAN_SAMA/.test(inf) && /SEGITIGA_INFO/.test(inf) && /speakGuru/.test(inf) && /onLanjut/.test(inf) && /teksLanjut/.test(inf) && /export default function InfoMosaikK4B5/.test(inf) && /export \{ InfoMosaikK4B5 \}/.test(inf), "InfoMosaik: komponen sendiri (bukan InfoKartu), papan potong dan susunan dari koordinat, ekspor InfoMosaikK4B5");
+  cek(/kartu === 1 && selesai1/.test(inf) && /kartu === 2 && selesai2/.test(inf) && /grid-cols-2/.test(inf), "InfoMosaik: dua kartu, tombol hanya setelah semua isi terbuka, papan potong dua kolom (muat di 344 px)");
 }
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */

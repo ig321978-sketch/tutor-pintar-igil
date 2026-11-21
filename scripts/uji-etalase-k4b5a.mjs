@@ -282,20 +282,20 @@ const dekat = (a, b) => Math.abs(a - b) < 1e-6;
 
 /* ------------------------------ Mind-map dan Infografis ------------------------------ */
 {
-  cek(DK.LANGKAH_ETALASE.length === 4, "mind-map: empat label kosong");
+  cek(DK.LANGKAH_ETALASE.length === 5, "mind-map: lima label kosong sesuai isi (banyak label mengikuti isi, tidak dikunci empat)");
   const arti = DK.LANGKAH_ETALASE.map((l) => l.arti).join(" ");
   const judulSemua = DK.LANGKAH_ETALASE.map((l) => l.judul).join(" | ");
   cek([...DK.LANGKAH_ETALASE.map((l) => l.judul), ...DK.LANGKAH_ETALASE.map((l) => l.arti), DK.PETUNJUK_PETA_ETALASE, DK.SELESAI_PETA_ETALASE, DK.JUDUL_PETA_ETALASE].every((t) => tanpaDigit(t) && bersih(t) && !BUKAN_A.test(t)), "mind-map: tanpa digit, kata terlarang, dan istilah Sub-Bab B");
   cek(DK.LANGKAH_ETALASE.every((l) => l.judul.length <= 26 && KATA_PENDEK(l.judul)), "mind-map: judul langkah pendek, tiap kata paling banyak dua belas huruf (muat di 344 px)");
-  cek(DK.LANGKAH_ETALASE.every((l, i) => l.arti.startsWith(`Langkah ${["satu", "dua", "tiga", "empat"][i]}.`)), "mind-map: arti dibacakan berurut dari langkah satu sampai empat");
+  cek(DK.LANGKAH_ETALASE.every((l, i) => l.arti.startsWith(`Langkah ${["satu", "dua", "tiga", "empat", "lima"][i]}.`)), "mind-map: arti dibacakan berurut dari langkah satu sampai lima");
   for (const m of ["segi banyak", "beraturan", "bersisi tiga", "segitiga", "segiempat", "segilima", "sejajar", "siku-siku", "penggaris", "penyiku", "pohon keluarga", "ciri"]) cek((arti + judulSemua).toLowerCase().includes(m), `mind-map: memuat ${m}`);
   cek(judulSemua.includes("Kenali") && judulSemua.includes("Pilah") && judulSemua.includes("sisi dan sudut") && judulSemua.includes("pohon keluarga"), "mind-map: langkah mengenali, Pilah Keramik, Sisi dan Sudut, dan Pohon Keluarga Bentuk");
   const TEMA_IKON = [0x1f537, 0x1f53a, 0x1f4d0, 0x1f333, 0x1f3fa, 0x1f4cf, 0x1f9f1, 0x1f6aa];
-  cek(DK.LANGKAH_ETALASE.every((l) => emojiSah(l.ikon)) && new Set(DK.LANGKAH_ETALASE.map((l) => l.ikon)).size === 4 && emojiSah(DK.IKON_JUDUL_PETA_ETALASE), "mind-map: empat ikon berbeda, emoji sah");
+  cek(DK.LANGKAH_ETALASE.every((l) => emojiSah(l.ikon)) && new Set(DK.LANGKAH_ETALASE.map((l) => l.ikon)).size === DK.LANGKAH_ETALASE.length && emojiSah(DK.IKON_JUDUL_PETA_ETALASE), "mind-map: ikon tiap label berbeda, emoji sah");
   cek(DK.LANGKAH_ETALASE.every((l) => TEMA_IKON.includes(l.ikon.codePointAt(0))) && TEMA_IKON.includes(DK.IKON_JUDUL_PETA_ETALASE.codePointAt(0)), "mind-map: ikon hanya benda tema keramik dan bangun");
 
   /* Infografis: data keramik bersambung ke Sub-Bab B. */
-  sama(DK.KERAMIK_INFO.map((k) => [k.nama, DK.sisiInfo(k), DK.sejajarInfo(k)]), [["Persegi", 4, 2], ["Jajargenjang", 4, 2], ["Trapesium", 4, 1], ["Segienam beraturan", 6, 3]], "infografis: kontrak data (nama, sisi, pasang sisi sejajar) dihitung dari koordinat");
+  sama(DK.KERAMIK_INFO.map((k) => [k.nama, DK.sisiInfo(k), DK.sejajarInfo(k)]), [["Persegi", 4, 2], ["Jajargenjang", 4, 2], ["Trapesium", 4, 1], ["Segienam beraturan", 6, 3], ["Segitiga sama sisi", 3, 0]], "infografis: kontrak data (nama, sisi, pasang sisi sejajar) dihitung dari koordinat");
   cek(DK.KERAMIK_INFO.every((k) => G.KATALOG.some((b) => b.kunci === k.bangun)), "infografis: tiap baris menunjuk bangun katalog");
   sama(DK.KOLOM_INFO_ETALASE, ["Keramik", "Nama", "Sisi", "Sisi sejajar"], "infografis: judul kolom tampil");
   cek(DK.KERAMIK_INFO.every((k) => k.nama.split(/\s+/).length <= 3 && KATA_PENDEK(k.nama) && k.nama.length <= 18), "infografis: nama keramik pendek");
@@ -306,11 +306,13 @@ const dekat = (a, b) => Math.abs(a - b) < 1e-6;
     }
   for (const k of DK.KERAMIK_INFO) {
     cek(DK.suaraSel(k, 2) === `Sisinya ada ${LC.kataBil(DK.sisiInfo(k))}.`, `infografis ${k.kunci}: suara banyak sisi dieja`);
-    cek(DK.suaraSel(k, 3) === (DK.sejajarInfo(k) === 1 ? "Ada sepasang sisi yang sejajar." : `Ada ${LC.kataBil(DK.sejajarInfo(k))} pasang sisi yang sejajar.`), `infografis ${k.kunci}: suara sisi sejajar dieja`);
+    cek(DK.suaraSel(k, 3) === (DK.sejajarInfo(k) === 0 ? "Tidak ada sisi yang sejajar." : DK.sejajarInfo(k) === 1 ? "Ada sepasang sisi yang sejajar." : `Ada ${LC.kataBil(DK.sejajarInfo(k))} pasang sisi yang sejajar.`), `infografis ${k.kunci}: suara sisi sejajar dieja`);
   }
   cek([DK.PETUNJUK1_INFO_ETALASE, DK.PETUNJUK2_INFO_ETALASE, DK.SELESAI1_INFO_ETALASE, DK.PESAN2_INFO_ETALASE].every((t) => tanpaDigit(t) && bersih(t) && !BUKAN_A.test(t)), "infografis: petunjuk dan pesan tanpa digit dan istilah Sub-Bab B");
   const a = DK.ACUAN_ETALASE;
-  cek(a.contoh === "persegi" && a.kalimat.length === 3 && a.kalimat.every((x) => tanpaDigit(x.suara) && bersih(x.suara) && !BUKAN_A.test(x.suara)), "infografis: kartu acuan persegi dan dua kalimat lain, suara tanpa digit");
+  cek(a.contoh === "persegi" && a.kalimat.length === 5 && a.kalimat.every((x) => tanpaDigit(x.suara) && bersih(x.suara) && !BUKAN_A.test(x.suara)), "infografis: kartu acuan persegi, segiempat lain, dan segitiga, suara tanpa digit");
+  cek(/Segitiga sama sisi/.test(a.kalimat[3].teks) && G.semuaSisiSama(G.bangun("segitiga-sama-sisi").titik) && /Segitiga siku-siku/.test(a.kalimat[4].teks) && G.banyakSiku(G.bangun("segitiga-siku").titik) === 1, "infografis: acuan segitiga sama sisi dan siku-siku cocok dengan koordinat");
+  cek(DK.KERAMIK_INFO.length <= 6, "infografis: paling banyak enam baris supaya satu layar tanpa gulir");
   cek(a.kalimat[0].teks === "Persegi: 4 sisi sama panjang, 4 sudut siku-siku" && G.semuaSisiSama(G.bangun("persegi").titik) && G.banyakSiku(G.bangun("persegi").titik) === 4, "infografis: acuan persegi cocok dengan koordinat");
   cek(/tidak siku-siku/.test(a.kalimat[1].teks) && G.banyakSiku(G.bangun("jajargenjang").titik) === 0, "infografis: acuan jajargenjang sudutnya tidak siku-siku cocok dengan koordinat");
   cek(/4 sisi sama panjang/.test(a.kalimat[2].teks) && G.semuaSisiSama(G.bangun("belah-ketupat").titik), "infografis: acuan belah ketupat cocok dengan koordinat");
@@ -565,16 +567,23 @@ const TAHAP = [
   const sim = readFileSync(new URL("SimulasiEtalaseKeramik.tsx", folder), "utf8");
   cek(/setCatatan\(ucap \?\? ""\)/.test(sim) && /Keramik/.test(sim) && /grid grid-cols-2 gap-2/.test(sim) && !/flex-wrap/.test(sim), "simulasi: pesan lama dikosongkan, empat alat dalam grid dua kali dua, bangun digambar dari koordinat");
   const mm = readFileSync(new URL("PetaEtalase.tsx", folder), "utf8");
-  cek(/export default function PetaEtalase/.test(mm) && /export \{ PetaEtalase \}/.test(mm) && /PetaLabel/.test(mm) && /rupa="rak"/.test(mm) && !/PetaKartu/.test(mm), "Mind-map: pembungkus tipis PetaLabel (rupa rak) dengan ekspor default dan bernama");
+  cek(/export default function PetaEtalase/.test(mm) && /export \{ PetaEtalase \}/.test(mm) && /speakGuru, onLanjut, teksLanjut/.test(mm) && !/PetaLabel|PetaKartu/.test(mm), "Mind-map: rancangan sendiri (bukan PetaLabel) dengan ekspor default dan bernama dan props speakGuru, onLanjut, teksLanjut");
+  cek(/<Keramik/.test(mm) && /BENTUK\[i\]/.test(mm) && /RAK/.test(mm) && /LANGKAH_ETALASE\.length/.test(mm) && !/flex-wrap/.test(mm) && /etalase-kaca/.test(mm), "Mind-map: etalase kaca berisi keramik SVG dari koordinat, label sebanyak langkah, tanpa flex-wrap");
+  const pm = /const BENTUK = \[([^\]]+)\]/.exec(mm);
+  const bentukMm = pm ? pm[1].split(",").map((x) => x.trim().replace(/"/g, "")) : [];
+  cek(bentukMm.length === DK.LANGKAH_ETALASE.length && bentukMm.every((b) => G.KATALOG.some((x) => x.kunci === b)) && new Set(bentukMm).size === bentukMm.length, "Mind-map: satu keramik katalog berbeda untuk tiap label");
   const dl = readFileSync(new URL("InfoEtalase.tsx", folder), "utf8");
-  cek(/export default function InfoEtalase/.test(dl) && /export \{ InfoEtalase \}/.test(dl) && /InfoKartu/.test(dl) && !/InfografisKartu/.test(dl) && !/flex-wrap/.test(dl) && /grid-cols-\[/.test(dl), "Infografis: pembungkus tipis InfoKartu dengan ekspor default dan bernama, kisi tetap");
+  cek(/export default function InfoEtalase/.test(dl) && /export \{ InfoEtalase \}/.test(dl) && /speakGuru, onLanjut, teksLanjut/.test(dl) && !/InfoKartu|InfografisKartu/.test(dl) && !/flex-wrap/.test(dl), "Infografis: rancangan sendiri (bukan InfoKartu) dengan ekspor default dan bernama dan props speakGuru, onLanjut, teksLanjut, tanpa flex-wrap");
+  cek(/lembar-katalog/.test(dl) && /kartuBangun/.test(dl) && /KERAMIK_INFO\.map\(kartuBangun\)/.test(dl) && /<Keramik/.test(dl) && /sisiInfo\(k\)/.test(dl) && /sejajarInfo\(k\)/.test(dl) && /selesai/.test(dl) && /kartu === 1 && selesai/.test(dl), "Infografis: lembar katalog berisi kartu bangun dari koordinat, nama dan angka tertutup, BERIKUTNYA hanya setelah semua terbuka");
+  const pohonSrc = /const POHON[^=]*= \[([\s\S]*?)\n\];/.exec(dl);
+  const kunciPohon = pohonSrc ? [...pohonSrc[1].matchAll(/b: "([^"]+)"/g)].map((m) => m[1]) : [];
+  cek(kunciPohon.length === 7 && kunciPohon.every((b) => G.KATALOG.some((x) => x.kunci === b)) && /CABANG/.test(dl) && /SEGITIGA/.test(dl) && /ACUAN_ETALASE/.test(dl), "Infografis kartu 2: pohon keluarga segiempat dan jenis segitiga dari bangun katalog");
   const th = readFileSync(new URL("TahapEtalase.tsx", folder), "utf8");
   cek(/export default function TahapEtalase/.test(th) && /poinPenting/.test(th) && /PENUTUP_A/.test(th), "Tahap: ekspor default dan Poin Penting dengan jembatan");
   cek(!/flex-wrap/.test(th), "tahap tanpa flex-wrap (kemajuan berupa kisi tetap)");
   const sa2 = readFileSync(new URL("../SimulasiK4Bab5.tsx", folder), "utf8");
   cek(/misiDaftar: daftarMisiEtalase\("A"\)/.test(sa2) && /SimulasiEtalaseKeramik/.test(sa2) && /laporMisiEtalase\(daftarMisiEtalase\("A"\), k, a\.capai\)/.test(sa2), "SimulasiK4Bab5: Sub-Bab A memakai misiDaftar dan laporMisi");
   cek(MT.misiAwalK4Bab5("A").includes(DS.MISI_ETALASE_TEKS), "misi awal Sub-Bab A memuat teks misi");
-  cek(readFileSync(new URL("../peta-label/PetaLabel.tsx", folder), "utf8").includes('"rak"') && readFileSync(new URL("../peta-label/InfoKartu.tsx", folder), "utf8").includes("kartu2"), "komponen bersama PetaLabel dan InfoKartu tersedia");
 }
 
 console.log(`Uji Etalase Keramik Kelas 4 Bab 5 A: ${lulus} lulus, ${gagal} gagal`);
