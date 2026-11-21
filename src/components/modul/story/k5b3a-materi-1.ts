@@ -1,204 +1,146 @@
 import type { AdeganStory } from "./logika-story";
-import { W, batang, emo, garis, kartu, pai, panah, teks, judul } from "./k5b3a-gambar";
-import { bersih, k, redamkan, sorotkan, tambah, ubah, warnai } from "./k5b3a-bantu";
+import { E, W, barPec, bulat, campur, emo, judul, kantong, kotak, panah, pecahan, tanah, teks, timbangan, tokoh } from "./k5b3a-gambar";
+import { bersih, hapus, idx, k, tambah, warnai } from "./k5b3a-bantu";
 
-/* ------------------------------ 1. Pembuka bab: tujuan (Buku Siswa hlm. 63; Panduan Guru hlm. 97) ------------------------------ */
-const TUJUAN = ["1.1 mengurutkan bilangan pecahan", "1.2 membandingkan bilangan pecahan", "1.3 menentukan penjumlahan bilangan pecahan", "1.4 menentukan pengurangan bilangan pecahan"];
-const WARNA_TUJUAN = [W.hijauMuda, W.langit, W.krem, W.pink];
+/*
+ * Cerita orisinal IGIL "Tiga Kantong Tepung Bu Ratna" (Kelas 5 Bab 3 Sub-Bab A, membandingkan dan mengurutkan pecahan), awal cerita Toko Roti Keliling.
+ * Naskah suara dari naskah/story-naskah-k5b3a.md. Bagian ini: tiba di toko roti keliling, tiga kantong tepung berpecahan campuran, dan salah langkah Fajar (menunjuk pecahan yang tampak besar).
+ */
 
-export const ADEGAN_PEMBUKA: AdeganStory = {
-  id: "pembuka-bab",
-  judul: "Pembuka Bab 3: tujuan pembelajaran",
-  sumber: "Buku Siswa hlm. 63; Panduan Guru hlm. 97",
-  latar: "#FFF7ED",
-  kutipan: [
-    "Setelah mempelajari bab ini, diharapkan kalian dapat mengurutkan,",
-    "membandingkan, serta melakukan operasi hitung penjumlahan",
-    "dan pengurangan bilangan pecahan.",
-    "Setelah mempelajari bab ini, peserta didik diharapkan dapat",
-    "1.1 mengurutkan bilangan pecahan,",
-    "1.2 membandingkan bilangan pecahan,",
-    "1.3 menentukan penjumlahan bilangan pecahan, dan",
-    "1.4 menentukan pengurangan bilangan pecahan.",
-    "Bab ini diawali dengan mengajak peserta didik mengingat kembali materi",
-  ],
+/* ------------------------------ 1. Toko roti keliling ------------------------------ */
+const SUARA_S1 = "Pak Arif mengajak Bima, Citra, dan Fajar ke Toko Roti Keliling di pojok taman.";
+const SUARA_S2 = "Bu Ratna bercelemek merah muda dan menata tiga kantong tepung di atas timbangan.";
+const SUARA_S3 = "Beliau ingin mengurutkan kantong dari yang paling berat.";
+
+export const ADEGAN_TOKO: AdeganStory = {
+  id: "toko",
+  judul: "Toko Roti Keliling",
+  sumber: "Materi: tiba di toko roti",
+  latar: W.taman,
   ketukan: [
     k(
-      "Selamat datang di bab tiga, Bilangan Pecahan. Setelah mempelajari bab ini, kalian diharapkan dapat mengurutkan, membandingkan, serta melakukan operasi hitung penjumlahan dan pengurangan bilangan pecahan.",
-      tambah(0, judul("Bab 3: Bilangan Pecahan")),
-      tambah("tiga,", emo("kue", 150, 84, "🍰", 44)),
-      tambah("mengurutkan,", ...kartu("a1", 20, 116, 126, 30, W.hijauMuda, ["mengurutkan"], 9)),
-      tambah("membandingkan,", ...kartu("a2", 154, 116, 126, 30, W.langit, ["membandingkan"], 9)),
-      tambah("penjumlahan", ...kartu("a3", 20, 156, 126, 30, W.krem, ["penjumlahan"], 9)),
-      tambah("pengurangan", ...kartu("a4", 154, 156, 126, 30, W.pink, ["pengurangan"], 9)),
+      SUARA_S1,
+      tambah(0, judul("Toko Roti Keliling"), ...tanah("tn", 150)),
+      tambah("Arif", ...tokoh("pa", 34, 184, "Pak Arif")),
+      tambah("Bima,", ...tokoh("bm", 90, 184, "Bima")),
+      tambah("Citra,", ...tokoh("ct", 146, 184, "Citra")),
+      tambah("Fajar", ...tokoh("fj", 202, 184, "Fajar")),
+      tambah(
+        "Toko",
+        kotak("mb-at", 168, 56, 124, 14, W.pink, W.pinkTua, { rx: 2, tebal: 1.4, z: 2 }),
+        kotak("mb-bd", 172, 70, 116, 58, W.putih, W.pinkTua, { rx: 3, tebal: 1.6, z: 0 }),
+        kotak("mb-jd", 182, 80, 46, 26, W.langit, W.coklat, { rx: 2, tebal: 1.2, z: 1 }),
+        teks("mb-tk", 230, 49, "TOKO ROTI KELILING", 8.4, W.pinkTua, { z: 3 }),
+        emo("mb-rt", 258, 110, E.roti, 24, { z: 2 }),
+        bulat("mb-r1", 200, 130, 9, "#475569", "#0F172A", { tebal: 1.4, z: 1 }),
+        bulat("mb-r2", 262, 130, 9, "#475569", "#0F172A", { tebal: 1.4, z: 1 }),
+      ),
+      tambah("taman.", emo("ph", 36, 108, E.pohon, 38), teks("tm", 36, 134, "taman", 9, W.hijauTua)),
     ),
     k(
-      "Buku panduan guru merinci empat tujuan. Satu, mengurutkan. Dua, membandingkan. Tiga, menentukan penjumlahan. Empat, menentukan pengurangan.",
+      SUARA_S2,
       bersih(0),
-      tambah(0, judul("Empat tujuan (Panduan Guru)")),
-      tambah("Satu,", ...kartu("t0", 14, 32, 272, 30, WARNA_TUJUAN[0], [TUJUAN[0]], 8.8)),
-      tambah("Dua,", ...kartu("t1", 14, 70, 272, 30, WARNA_TUJUAN[1], [TUJUAN[1]], 8.8)),
-      tambah("Tiga,", ...kartu("t2", 14, 108, 272, 30, WARNA_TUJUAN[2], [TUJUAN[2]], 8.8)),
-      tambah("Empat,@2", ...kartu("t3", 14, 146, 272, 30, WARNA_TUJUAN[3], [TUJUAN[3]], 8.8)),
+      tambah(0, judul("Meja Timbangan"), ...tanah("tn", 150)),
+      tambah("Bu", ...tokoh("bu", 252, 184, "Bu Ratna")),
+      tambah("menata", kotak("mj", 30, 118, 190, 8, W.coklat, W.papan, { rx: 2, z: 0 }), kotak("kk1", 40, 126, 6, 24, W.coklat, W.papan, { rx: 1, z: 0 }), kotak("kk2", 204, 126, 6, 24, W.coklat, W.papan, { rx: 1, z: 0 })),
+      tambah("tiga", teks("t3", 125, 40, "3 kantong tepung", 10, W.pinkTua)),
+      tambah(
+        "kantong",
+        ...kantong("ka", 81, 98),
+        ...kantong("kb", 169, 94),
+        ...kantong("kc", 48, 118),
+        ...timbangan("tb", 125, 78),
+      ),
+      tambah("timbangan.", teks("tbl", 125, 138, "timbangan", 9, W.coklat)),
     ),
     k(
-      "Hari ini kita mengerjakan dua tujuan pertama, yaitu mengurutkan dan membandingkan bilangan pecahan. Penjumlahan dan pengurangan menunggu di subbab berikutnya.",
-      sorotkan("mengerjakan", "t0-k", "t1-k"),
-      ubah("Penjumlahan", { id: "t2-k", op: 0.35 }, { id: "t2-t0", op: 0.35 }, { id: "t3-k", op: 0.35 }, { id: "t3-t0", op: 0.35 }),
-    ),
-    k(
-      "Bab ini dibuka dengan mengingat kembali pecahan dari kelas empat, lalu belajar dari makanan yang kita kenal, seperti jajanan pasar dan wingko babat.",
-      bersih(0),
-      tambah(0, judul("Belajar dari makanan")),
-      tambah("kelas", emo("bk", 60, 92, "📚", 38), teks("bkt", 60, 114, "kelas IV", 8.6, W.biru)),
-      tambah("jajanan", emo("jj", 150, 92, "🍡", 38), teks("jjt", 150, 114, "jajanan pasar", 8.6, W.biru)),
-      tambah("wingko", emo("wk", 240, 92, "🍪", 38), teks("wkt", 240, 114, "wingko babat", 8.6, W.biru)),
+      SUARA_S3,
+      tambah("ingin", emo("tq", 252, 134, E.pikir, 22)),
+      tambah("mengurutkan", teks("ur", 125, 150, "urutkan: yang paling berat", 9.5, W.merah)),
+      tambah("paling", panah("pa1", 100, 66, 50, 0, W.merah, 2.4)),
+      tambah("berat.", emo("kt", 210, 96, E.kuat, 22)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Peta konsep, kata kunci, dan skema (Buku Siswa hlm. 64; Panduan Guru hlm. 98 sampai 101) ------------------------------ */
-const KATA_KUNCI = ["urutan", "perbandingan", "penjumlahan", "pengurangan", "pecahan"];
-const WARNA_KUNCI = [W.krem, W.langit, W.hijauMuda, W.pink, W.jingga];
-const chipKunci = (i: number) => kartu(`ch${i}`, 12 + (i % 3) * 96, 40 + Math.floor(i / 3) * 46, 90, 32, WARNA_KUNCI[i], [KATA_KUNCI[i]], 8.6);
-const LANGKAH = ["1. ingat materi kelas IV", "2. pengertian pecahan", "3. pecahan biasa dan campuran", "4. banding dan urutkan"];
-const SUBBAB = [
-  { h: "A", baris: ["A. Membandingkan", "dan Mengurutkan", "Pecahan"], w: W.hijauMuda },
-  { h: "B", baris: ["B. Penjumlahan", "Bilangan", "Pecahan"], w: W.langit },
-  { h: "C", baris: ["C. Pengurangan", "Bilangan", "Pecahan"], w: W.krem },
-];
+/* ------------------------------ 2. Pecahan campuran ------------------------------ */
+const SUARA_C1 = "Berat kantong pertama dua bulat tiga per empat kilogram, kantong kedua tiga bulat satu per dua, dan kantong ketiga satu bulat tujuh per delapan.";
+const SUARA_C2 = "Bentuk ini disebut pecahan campuran, karena terdiri atas bilangan bulat dan pecahan biasa.";
+const SUARA_C3 = "Pecahan biasa hanya punya pembilang di atas dan penyebut di bawah, seperti tiga per empat.";
 
-export const ADEGAN_PETA: AdeganStory = {
-  id: "peta-konsep",
-  judul: "Peta konsep, kata kunci, dan skema tiga subbab",
-  sumber: "Buku Siswa hlm. 64; Panduan Guru hlm. 98–101",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Peta Konsep",
-    "Kata Kunci",
-    "Urutan, perbandingan, penjumlahan, pengurangan, pecahan.",
-    "Bab ini bertujuan untuk mengenalkan peserta didik pada bilangan pecahan.",
-    "Bab ini diawali dengan mengajak peserta didik mengingat kembali materi",
-    "Pada Subbab A, peserta didik diajak untuk membandingkan dan",
-    "mengurutkan bilangan pecahan.",
-    "Waktu merupakan saran rentang jam pelajaran.",
-    "Problem Based Learning",
-    "Tanya jawab",
-  ],
+export const ADEGAN_CAMPURAN: AdeganStory = {
+  id: "campuran",
+  judul: "Pecahan Campuran",
+  sumber: "Materi: pecahan campuran dan biasa",
+  latar: W.taman,
   ketukan: [
     k(
-      "Ini peta konsep bab tiga. Di tengah ada pecahan. Cabangnya mengurutkan, membandingkan, dan operasi bilangan. Operasi bilangan bercabang lagi menjadi menjumlahkan dan mengurangkan.",
-      tambah(0, judul("Peta Konsep")),
-      tambah("tengah", ...kartu("pu", 12, 88, 72, 30, W.emas, ["Pecahan"], 9.6)),
-      tambah("mengurutkan,", garis("ga", 84, 103, 28, -57, W.biru, 1.6, { gambar: true }), ...kartu("ca", 112, 34, 104, 24, W.hijauMuda, ["Mengurutkan"], 8.6)),
-      tambah("membandingkan,", garis("gb", 84, 103, 28, -9, W.biru, 1.6, { gambar: true }), ...kartu("cb", 112, 82, 104, 24, W.langit, ["Membandingkan"], 8.6)),
-      tambah("operasi", garis("gc", 84, 103, 28, 39, W.biru, 1.6, { gambar: true }), ...kartu("cc", 112, 130, 104, 24, W.krem, ["Operasi Bilangan"], 8.6)),
-      tambah("menjumlahkan", garis("gd", 216, 142, 10, -9, W.biru, 1.6, { gambar: true }), ...kartu("cd", 226, 120, 68, 22, W.pink, ["Menjumlahkan"], 7.4)),
-      tambah("mengurangkan.", garis("ge", 216, 142, 10, 21, W.biru, 1.6, { gambar: true }), ...kartu("ce", 226, 152, 68, 22, W.jingga, ["Mengurangkan"], 7.4)),
+      SUARA_C1,
+      tambah(0, judul("Tiga Kantong Tepung"), ...tanah("tn", 150)),
+      tambah("pertama", ...kantong("ka", 54, 118)),
+      tambah(idx(SUARA_C1, "empat"), ...campur("ca", 54, 148, 2, 3, 4, 13)),
+      tambah("kedua", ...kantong("kb", 150, 118)),
+      tambah(idx(SUARA_C1, "dua", 2), ...campur("cb", 150, 148, 3, 1, 2, 13)),
+      tambah("ketiga", ...kantong("kc", 246, 118)),
+      tambah("delapan.", ...campur("cc", 246, 148, 1, 7, 8, 13)),
+      tambah("kilogram,", teks("kg", 150, 192, "berat dalam kilogram", 9, W.coklat)),
     ),
     k(
-      "Kata kuncinya lima: urutan, perbandingan, penjumlahan, pengurangan, dan pecahan.",
+      SUARA_C2,
       bersih(0),
-      tambah(0, judul("Kata Kunci")),
-      tambah("urutan,", chipKunci(0)),
-      tambah("perbandingan,", chipKunci(1)),
-      tambah("penjumlahan,", chipKunci(2)),
-      tambah("pengurangan,", chipKunci(3)),
-      tambah("pecahan.", chipKunci(4)),
+      tambah(0, judul("Pecahan Campuran"), ...tanah("tn", 150)),
+      tambah("campuran,", ...campur("z", 150, 80, 2, 3, 4, 26, W.merah)),
+      tambah("bilangan", teks("tw", 100, 138, "bilangan bulat", 9.5, W.hijauTua), panah("p1", 112, 128, 22, -26, W.hijauTua, 2)),
+      tambah(idx(SUARA_C2, "pecahan", 2), teks("tf", 204, 138, "pecahan biasa", 9.5, W.coklat), panah("p2", 192, 128, -20, -30, W.coklat, 2)),
     ),
     k(
-      "Panduan guru menjelaskan bahwa bab ini mengenalkan bilangan pecahan. Urutannya: mengingat kembali materi kelas sebelumnya, memahami pengertian pecahan, membedakan pecahan biasa dan campuran, lalu membandingkan dan mengurutkan.",
+      SUARA_C3,
       bersih(0),
-      tambah(0, judul("Alur bab menurut Panduan Guru")),
-      tambah("mengingat", ...kartu("lk0", 30, 32, 240, 28, W.hijauMuda, [LANGKAH[0]], 8.8)),
-      tambah("memahami", ...kartu("lk1", 30, 70, 240, 28, W.langit, [LANGKAH[1]], 8.8), panah("pl0", 150, 60, 0, 10, W.biru, 1.6)),
-      tambah("membedakan", ...kartu("lk2", 30, 108, 240, 28, W.krem, [LANGKAH[2]], 8.8), panah("pl1", 150, 98, 0, 10, W.biru, 1.6)),
-      tambah("membandingkan", ...kartu("lk3", 30, 146, 240, 28, W.pink, [LANGKAH[3]], 8.8), panah("pl2", 150, 136, 0, 10, W.biru, 1.6)),
-    ),
-    k(
-      "Bab ini terdiri atas tiga subbab, tiap subbab disarankan empat jam pelajaran. Subbab A membandingkan dan mengurutkan pecahan. Subbab B penjumlahan. Subbab C pengurangan.",
-      bersih(0),
-      tambah(0, judul("Skema Pembelajaran")),
-      tambah("tiga", ...SUBBAB.flatMap((s, i) => kartu(`sk${i}`, 10 + i * 96, 40, 92, 54, s.w, s.baris, 8))),
-      tambah("empat", ...SUBBAB.map((_, i) => teks(`jp${i}`, 56 + i * 96, 114, "4 JP", 11, W.merah)), teks("cat", 150, 150, "JP = jam pelajaran (saran)", 8.8, W.ungu)),
-      sorotkan("membandingkan", "sk0-k"),
-      ...[
-        { at: "penjumlahan.", dari: "sk0-k", ke: "sk1-k" },
-        { at: "pengurangan.", dari: "sk1-k", ke: "sk2-k" },
-      ].flatMap((g) => [redamkan(g.at, g.dari), sorotkan(g.at, g.ke)]),
-    ),
-    k(
-      "Metode yang disarankan di subbab A adalah Problem Based Learning, eksplorasi, dan tanya jawab. Sekarang kita masuk ke subbab A.",
-      bersih(0),
-      tambah(0, judul("Subbab A")),
-      tambah("Sekarang", ...kartu("ja", 20, 140, 260, 38, W.hijauMuda, ["A. Membandingkan dan", "Mengurutkan Pecahan"], 9.4)),
-      tambah("Problem", ...kartu("m1", 14, 36, 272, 26, W.krem, ["Problem Based Learning"], 9)),
-      tambah("eksplorasi,", ...kartu("m2", 14, 70, 272, 26, W.langit, ["Eksplorasi"], 9)),
-      tambah("tanya", ...kartu("m3", 14, 104, 272, 26, W.pink, ["Tanya jawab"], 9)),
+      tambah(0, judul("Pecahan Biasa"), ...tanah("tn", 150), ...pecahan("bs", 100, 82, 3, 4, 26)),
+      tambah("pembilang", teks("pb", 202, 62, "pembilang", 10, W.merah), panah("a1", 160, 62, -42, 12, W.merah, 2)),
+      tambah("penyebut", teks("ps", 202, 104, "penyebut", 10, W.coklat), panah("a2", 160, 102, -42, -6, W.coklat, 2)),
+      tambah("tiga", ...barPec("br", 60, 126, 160, 16, 4, 3)),
+      tambah("empat.", teks("bt", 140, 158, "3 dari 4 bagian sama besar", 9.5, W.hijauTua)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Ayo Menyimak: Jajanan Pasar (Buku Siswa hlm. 64 dan 65) ------------------------------ */
-export const ADEGAN_MENYIMAK: AdeganStory = {
-  id: "ayo-menyimak",
-  judul: "Menyimak cerita: Jajanan Pasar",
-  sumber: "Materi: cerita jajanan pasar",
-  latar: "#FFFBEB",
-  kutipan: [
-    "Indonesia merupakan negara yang kaya dengan makanan khas,",
-    "salah satunya jajanan pasar.",
-    "yang berbahan tepung, jagung, ketan, beras, dan lain-lain.",
-    "untuk menjamu tamu",
-    "Pernahkah kalian diminta Ibu untuk mengantar atau",
-    "membagikan jajanan pasar ke saudara atau tetangga?",
-    "bagiankah yang akan kalian bagikan?",
-    "empat potong makanan dan kalian makan dua potong di antaranya,",
-    "bagaimana kalian akan menuliskannya dalam kalimat matematika?",
-    "memotong roti dalam sebuah piring menjadi tiga",
-    "bagian sama besar, berapa bagian yang kalian dapatkan?",
-    "Pada bab ini, kalian akan belajar terkait materi pecahan.",
-    "materi ini dengan baik.",
-  ],
+/* ------------------------------ 3. Salah langkah Fajar ------------------------------ */
+const SUARA_F1 = "Fajar langsung menunjuk kantong ketiga, karena tujuh per delapan tampak paling besar.";
+const SUARA_F2 = "Kalau aku salah, aku mengaduk adonan seember penuh sendirian, katanya sambil menepuk dada.";
+const SUARA_F3 = "Bima tersenyum dan meminta Fajar menengok bilangan bulatnya lebih dulu.";
+
+export const ADEGAN_SALAH: AdeganStory = {
+  id: "salah",
+  judul: "Fajar Menunjuk",
+  sumber: "Materi: salah langkah Fajar",
+  latar: W.taman,
   ketukan: [
     k(
-      "Mari kita menyimak cerita tentang Jajanan Pasar. Indonesia kaya makanan khas, salah satunya jajanan pasar, yang berbahan tepung, jagung, ketan, beras, dan lain-lain. Biasanya dipakai Ibu untuk menjamu tamu.",
-      tambah(0, judul("Menyimak: Jajanan Pasar")),
-      tambah("Jajanan", emo("e1", 60, 70, "🍡", 34)),
-      tambah("makanan", emo("e2", 150, 70, "🥮", 34)),
-      tambah("salah", emo("e3", 240, 70, "🍘", 34)),
-      tambah("tepung,", ...kartu("b0", 10, 112, 66, 26, W.krem, ["tepung"], 8.6)),
-      tambah("jagung,", ...kartu("b1", 82, 112, 66, 26, W.hijauMuda, ["jagung"], 8.6)),
-      tambah("ketan,", ...kartu("b2", 154, 112, 66, 26, W.pink, ["ketan"], 8.6)),
-      tambah("beras,", ...kartu("b3", 226, 112, 64, 26, W.langit, ["beras"], 8.6)),
-      tambah("Ibu", emo("ib", 150, 170, "🍵", 26), teks("ibt", 150, 188, "menjamu tamu", 8.6, W.coklat)),
+      SUARA_F1,
+      tambah(0, judul("Fajar Menunjuk"), ...tanah("tn", 150)),
+      tambah("Fajar", ...tokoh("fj", 40, 184, "Fajar")),
+      tambah("menunjuk", emo("tj", 68, 140, E.tunjuk, 22)),
+      tambah("kantong", ...kantong("ka", 100, 128), ...kantong("kb", 150, 128), ...kantong("kc", 200, 128), ...campur("ca", 100, 152, 2, 3, 4, 13), ...campur("cb", 150, 152, 3, 1, 2, 13)),
+      tambah("ketiga,", kotak("hl", 178, 78, 44, 76, undefined, W.merah, { rx: 6, tebal: 2.2, putus: true, z: 3 })),
+      tambah("tujuh", ...campur("cc", 200, 152, 1, 7, 8, 13, W.merah)),
+      tambah("besar.", teks("bs", 150, 74, "paling besar?", 11, W.merah)),
     ),
     k(
-      "Coba bayangkan, Ibu sering meminta kalian mengantar jajanan pasar ke saudara atau tetangga. Dari semua makanan yang ada, berapa bagiankah yang akan kalian bagikan?",
-      bersih(0),
-      tambah(0, judul("Membagikan jajanan")),
-      tambah("Ibu", emo("r1", 44, 90, "🏠", 34)),
-      tambah("mengantar", panah("pa", 70, 88, 34, 0, W.biru, 2, { gambar: true }), emo("r2", 150, 90, "📦", 34)),
-      tambah("tetangga.", panah("pb", 176, 88, 34, 0, W.biru, 2, { gambar: true }), emo("r3", 256, 90, "🏡", 34)),
-      tambah("berapa", teks("tn", 150, 160, "berapa bagian?", 14, W.merah)),
+      SUARA_F2,
+      tambah("salah,", kotak("bb", 40, 30, 220, 30, W.putih, W.pinkTua, { rx: 8, tebal: 1.6, z: 0 }), teks("bbt", 150, 50, "Kalau salah, aku aduk adonan!", 10, W.merah, { z: 3 })),
+      tambah("adonan", kotak("em", 240, 100, 46, 30, W.abu, W.coklat, { rx: 6, tebal: 1.6, z: 1 }), teks("emt", 263, 120, "adonan", 9, W.coklat, { z: 3 })),
+      tambah("seember", teks("sm", 263, 142, "seember", 9, W.coklat)),
+      tambah("menepuk", emo("dd", 40, 138, E.kuat, 22)),
     ),
     k(
-      "Sekarang soal pertama. Di dalam kardus ada empat potong makanan, dan kalian makan dua potong di antaranya. Bagaimana menuliskannya dalam kalimat matematika? Pikirkan dulu sebelum menjawab.",
-      bersih(0),
-      tambah(0, judul("Soal pertama")),
-      tambah("kardus", ...batang("kd", 60, 60, 180, 36, 4, 0, W.karang)),
-      tambah("empat", teks("k4", 150, 112, "4 potong makanan", 10, W.biru)),
-      warnai("dua", W.karang, "kd-c0", "kd-c1"),
-      tambah("dua", teks("k2", 150, 132, "2 dimakan", 10, W.merah)),
-      tambah("Bagaimana", ...kartu("km", 40, 148, 220, 32, W.krem, ["kalimat matematikanya?"], 9.6)),
-    ),
-    k(
-      "Sekarang soal kedua. Sebuah roti di piring dipotong menjadi tiga bagian sama besar. Berapa bagian yang kalian dapatkan? Kalian pasti bisa menjawabnya kalau menguasai pecahan dengan baik.",
-      bersih(0),
-      tambah(0, judul("Soal kedua")),
-      tambah("tiga", ...pai("ro", 150, 86, 44, 3, 0)),
-      tambah("Berapa", teks("tq", 150, 150, "berapa bagian?", 12, W.merah)),
-      tambah("menguasai", emo("tg", 150, 184, "🎯", 24), teks("tgt", 214, 184, "belajar pecahan", 8.6, W.hijau)),
+      SUARA_F3,
+      hapus(0, "bb", "bbt", "em", "emt", "sm", "dd", "tj", "bs"),
+      tambah("Bima", ...tokoh("bm", 262, 184, "Bima")),
+      tambah("meminta", emo("bc", 236, 150, E.bicara, 18)),
+      warnai("bilangan", W.merah, "ca-w", "cb-w", "cc-w"),
+      tambah("lebih", teks("ld", 150, 62, "lihat bulatnya dulu", 10, W.merah)),
     ),
   ],
 };
+

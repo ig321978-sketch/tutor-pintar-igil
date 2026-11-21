@@ -5,7 +5,7 @@
   "grade": 5,
   "subjectLabel": "MATEMATIKA - KELAS 5 SD",
   "title": "BAB 3: BILANGAN PECAHAN",
-  "silabusElemen": "🌈 Fase C • Elemen Bilangan: Membandingkan, Mengurutkan, Penjumlahan, dan Pengurangan Pecahan (Kelas 5 SD/MI)",
+  "silabusElemen": "🌈 Fase C • Elemen Bilangan: Membandingkan dan Mengurutkan Pecahan, Penjumlahan dan Pengurangan Pecahan (SD/MI)",
   "suaraPerangkatSaja": true,
   "suaraLaju": 0.7,
   "suaraNada": 1,
@@ -19,50 +19,47 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Banding Pecahan)",
       "fullTitle": "Sub-Bab A: Membandingkan dan Mengurutkan Pecahan",
-      "targetDescription": "Siswa membandingkan dan mengurutkan pecahan biasa serta campuran dengan garis bilangan, pecahan senilai, dan mengubah campuran ke biasa sesuai Buku Siswa Kelas V Bab 3 Sub-Bab A.",
+      "targetDescription": "Di Toko Roti Keliling, kita membandingkan dan mengurutkan tiga kantong tepung: pecahan biasa dan campuran, mengubah campuran menjadi biasa, garis bilangan, dan menyamakan penyebut dengan KPK.",
       "secondaryBg": "#FFEDD5",
       "secondaryBorder": "#EA580C",
       "secondaryText": "#7C2D12",
       "silabus": {
-        "teksSuara": "Kita belajar membandingkan pecahan. Letakkan pecahan di garis bilangan: yang lebih kanan lebih besar. Samakan bentuk dengan pecahan senilai, dan ubah campuran menjadi biasa dulu. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa membandingkan dan mengurutkan bilangan pecahan dengan garis bilangan dan penyebut/pembilang yang tepat.",
-        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 3: Bilangan Pecahan, Sub-Bab A hlm. 68–75)."
+        "teksSuara": "Kita belajar membandingkan dan mengurutkan pecahan di Toko Roti Keliling. Pecahan campuran terdiri atas bilangan bulat dan pecahan biasa. Kita memakai garis bilangan, penyebut sama, dan campuran ke biasa. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa membandingkan dan mengurutkan pecahan biasa dan campuran.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase C, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Number Line Fractions",
-          "namaId": "Pecahan di Garis Bilangan",
-          "asal": "NCTM / pengukuran relatif",
-          "ringkas": "Bandingkan pecahan dengan melihat posisi di garis; yang lebih kanan lebih besar.",
+          "nama": "Number Line",
+          "namaId": "Garis Bilangan",
+          "asal": "IGIL",
+          "ringkas": "Pecahan yang lebih ke kanan lebih besar; garis bilangan menunjukkan urutannya.",
           "tahap": [
             "Story",
-            "Mind",
-            "Picture",
+            "Concrete",
             "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Equivalent Fractions",
-          "namaId": "Pecahan Senilai",
-          "asal": "Singapore Math",
-          "ringkas": "Pecahan senilai menunjuk bagian sama meski tulisannya beda; dipakai untuk menyamakan penyebut.",
+          "nama": "Common Denominator",
+          "namaId": "Penyebut Sama",
+          "asal": "IGIL",
+          "ringkas": "Samakan penyebut dengan KPK, lalu bandingkan pembilangnya.",
           "tahap": [
-            "Story",
-            "Infografis",
-            "Concrete"
+            "Concrete",
+            "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
           "nama": "Mixed to Improper",
           "namaId": "Campuran ke Biasa",
-          "asal": "Common core fraction progression",
-          "ringkas": "Ubah campuran ke biasa: (bulat × penyebut) + pembilang, lalu bandingkan.",
+          "asal": "IGIL",
+          "ringkas": "Ubah pecahan campuran menjadi pecahan biasa: bilangan bulat dikali penyebut, tambah pembilang.",
           "tahap": [
-            "Story",
-            "Mind",
+            "Picture",
             "Abstract"
           ]
         }
@@ -739,32 +736,32 @@
         "poin": [
           {
             "nama": "Garis bilangan",
-            "isi": "Posisi di garis menentukan mana yang lebih besar.",
+            "isi": "Makin ke kanan makin besar, makin ke kiri makin kecil.",
             "suara": "Kanan lebih besar."
           },
           {
             "nama": "Campuran ke biasa",
-            "isi": "Ubah campuran sebelum membandingkan.",
-            "suara": "(bulat×q)+p."
+            "isi": "Bilangan bulat dikali penyebut, tambah pembilang; penyebut tetap.",
+            "suara": "Ubah ke biasa."
           },
           {
-            "nama": "Senilai",
-            "isi": "Samakan penyebut tanpa mengubah nilai.",
-            "suara": "Pecahan senilai."
+            "nama": "Penyebut sama",
+            "isi": "Samakan penyebut dengan KPK, lalu bandingkan pembilang.",
+            "suara": "KPK dulu."
           },
           {
-            "nama": "Aturan cepat",
-            "isi": "Pembilang sama: lihat penyebut. Penyebut sama: lihat pembilang.",
-            "suara": "Aturan cepat."
+            "nama": "Bulat dulu",
+            "isi": "Pada campuran, bandingkan bilangan bulatnya lebih dulu.",
+            "suara": "Bulat dulu."
           }
         ],
-        "suara": "Ingat garis bilangan, campuran ke biasa, dan pecahan senilai.",
-        "caraMenyebutkan": "Kenali bentuk ubah campuran pilih strategi beri tanda/urut",
-        "rumah": "Ayo Mencoba: terapkan Pecahan di Garis Bilangan pada satu soal di rumah.",
+        "suara": "Ingat garis bilangan, campuran ke biasa, penyebut sama, dan bandingkan bilangan bulat dulu.",
+        "caraMenyebutkan": "Kenali bentuk ubah campuran samakan penyebut bandingkan pembilang urutkan",
+        "rumah": "Ayo Mencoba: urutkan tiga pecahan campuran dari tiga bahan masakan di rumah, lalu ceritakan caramu.",
         "refleksi": [
-          "Bagaimana Pecahan di Garis Bilangan membantumu?",
-          "Kapan memakai Pecahan Senilai?",
-          "Apa bedanya dengan hanya menghafal rumus?"
+          "Kapan garis bilangan paling membantumu?",
+          "Kapan kamu memakai penyebut sama?",
+          "Mengapa bilangan bulat dibandingkan lebih dulu pada pecahan campuran?"
         ]
       }
     },
@@ -772,22 +769,22 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Jumlah Pecahan)",
       "fullTitle": "Sub-Bab B: Penjumlahan Bilangan Pecahan",
-      "targetDescription": "Siswa menjumlahkan pecahan dengan penyebut sama maupun berbeda dengan menyamakan penyebut memakai KPK, serta memakai model arsir daerah sesuai Buku Siswa Kelas V Bab 3 Sub-Bab B.",
+      "targetDescription": "Di gerobak Pak Seno, kita menjumlahkan potongan roti dan bahan kue: penyebut sama, pecahan campuran dengan dua cara, penyebut berbeda dengan KPK, dan hasil yang disederhanakan.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
       "silabus": {
-        "teksSuara": "Kita belajar menjumlahkan pecahan. Jika penyebut sama, jumlahkan pembilang. Jika beda, samakan penyebut dengan KPK dulu. Boleh juga mengarsir daerah untuk melihat hasilnya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menjumlahkan bilangan pecahan dengan penyebut sama atau berbeda.",
-        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 3 Sub-Bab B)."
+        "teksSuara": "Kita menjumlahkan pecahan di gerobak Pak Seno. Kalau penyebut sama, jumlahkan pembilangnya dan penyebut tetap. Kalau penyebut berbeda, samakan dulu dengan KPK. Kita memakai jumlahkan pembilang, samakan penyebut, dan bulat lalu pecahan. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menjumlahkan pecahan berpenyebut sama dan berbeda, termasuk pecahan campuran.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase C, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Like Denominators",
-          "namaId": "Jumlah Penyebut Sama",
-          "asal": "Fraction operations",
-          "ringkas": "Penyebut sama: jumlahkan pembilang, penyebut tetap.",
+          "nama": "Add the Tops",
+          "namaId": "Jumlahkan Pembilang",
+          "asal": "IGIL",
+          "ringkas": "Bila penyebut sama, jumlahkan pembilang dan penyebut tetap.",
           "tahap": [
             "Story",
             "Concrete",
@@ -796,26 +793,24 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Common Denominator via LCM",
-          "namaId": "Samakan Penyebut dengan KPK",
-          "asal": "Singapore / US textbooks",
-          "ringkas": "Penyebut beda: cari KPK, buat pecahan senilai, baru jumlahkan.",
+          "nama": "Match the Bottoms",
+          "namaId": "Samakan Penyebut",
+          "asal": "IGIL",
+          "ringkas": "Cari KPK penyebut, ubah pecahan, lalu jumlahkan pembilang.",
           "tahap": [
-            "Story",
-            "Mind",
+            "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Area Model",
-          "namaId": "Model Arsir Daerah",
-          "asal": "Visual fraction models",
-          "ringkas": "Arsir bagian pada bangun untuk melihat penjumlahan pecahan.",
+          "nama": "Whole Then Part",
+          "namaId": "Bulat Lalu Pecahan",
+          "asal": "IGIL",
+          "ringkas": "Pada campuran, jumlahkan bilangan bulat dan pecahan sendiri-sendiri, lalu gabungkan.",
           "tahap": [
-            "Story",
-            "Infografis",
-            "Concrete"
+            "Picture",
+            "Abstract"
           ]
         }
       ],
@@ -1492,31 +1487,31 @@
           {
             "nama": "Penyebut sama",
             "isi": "Jumlahkan pembilang; penyebut tetap.",
-            "suara": "p+p atas q."
+            "suara": "Pembilang dijumlahkan."
           },
           {
             "nama": "KPK",
-            "isi": "Penyebut beda: samakan dengan KPK dulu.",
+            "isi": "Penyebut berbeda: samakan dengan KPK dulu.",
             "suara": "KPK dulu."
           },
           {
-            "nama": "Arsir",
-            "isi": "Model daerah membantu melihat hasil.",
-            "suara": "Lihat dulu."
+            "nama": "Dua cara campuran",
+            "isi": "Ubah ke biasa, atau pisahkan bilangan bulat dan pecahan.",
+            "suara": "Dua cara."
           },
           {
-            "nama": "Jangan",
-            "isi": "Jangan menjumlahkan penyebut.",
-            "suara": "Bukan q+q."
+            "nama": "Sederhanakan",
+            "isi": "Hasil yang lebih dari satu diubah menjadi campuran.",
+            "suara": "Sederhanakan hasil."
           }
         ],
-        "suara": "Penyebut sama langsung jumlah; beda pakai KPK; cek dengan arsir.",
-        "caraMenyebutkan": "Cek penyebut KPK jika beda jumlahkan pembilang sederhanakan",
-        "rumah": "Ayo Mencoba: terapkan Jumlah Penyebut Sama pada satu soal di rumah.",
+        "suara": "Penyebut sama langsung jumlahkan pembilang; berbeda pakai KPK; sederhanakan hasilnya.",
+        "caraMenyebutkan": "Cek penyebut samakan dengan KPK jumlahkan pembilang sederhanakan",
+        "rumah": "Ayo Mencoba: jumlahkan dua potongan kue di rumah dengan satu cara, lalu ceritakan caramu.",
         "refleksi": [
-          "Bagaimana Jumlah Penyebut Sama membantumu?",
-          "Kapan memakai Samakan Penyebut dengan KPK?",
-          "Apa bedanya dengan hanya menghafal rumus?"
+          "Kapan penyebut harus disamakan dulu?",
+          "Cara mana yang kamu pilih untuk pecahan campuran?",
+          "Mengapa penyebut tidak ikut dijumlahkan?"
         ]
       }
     },
@@ -1524,22 +1519,22 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Kurang Pecahan)",
       "fullTitle": "Sub-Bab C: Pengurangan Bilangan Pecahan",
-      "targetDescription": "Siswa mengurangkan pecahan dengan penyebut sama maupun berbeda memakai KPK dan model sisa daerah sesuai Buku Siswa Kelas V Bab 3 Sub-Bab C.",
+      "targetDescription": "Di dapur Bu Nani, kita mengurangkan pesanan dari sisa adonan: penyebut sama, pecahan campuran dengan dua cara, penyebut berbeda dengan KPK, dan hasil yang disederhanakan.",
       "secondaryBg": "#FCE7F3",
       "secondaryBorder": "#DB2777",
       "secondaryText": "#9D174D",
       "silabus": {
-        "teksSuara": "Kita belajar mengurangkan pecahan. Ide sama dengan penjumlahan: samakan penyebut dulu. Lalu kurangkan pembilang. Model sisa daerah membantu melihat berapa yang tersisa. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa mengurangkan bilangan pecahan dengan penyebut sama atau berbeda.",
-        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 3 Sub-Bab C)."
+        "teksSuara": "Kita mengurangkan pecahan di dapur Bu Nani. Kalau penyebut sama, kurangkan pembilangnya dan penyebut tetap. Kalau penyebut berbeda, samakan dulu dengan KPK. Kita memakai kurangi pembilang, samakan lalu kurangi, dan pisah bulat dan pecahan. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa mengurangkan pecahan berpenyebut sama dan berbeda, termasuk pecahan campuran.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase C, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Like Denominator Subtract",
-          "namaId": "Kurang Penyebut Sama",
-          "asal": "Fraction operations",
-          "ringkas": "Penyebut sama: kurangkan pembilang, penyebut tetap.",
+          "nama": "Take Away the Tops",
+          "namaId": "Kurangi Pembilang",
+          "asal": "IGIL",
+          "ringkas": "Bila penyebut sama, kurangkan pembilang dan penyebut tetap.",
           "tahap": [
             "Story",
             "Concrete",
@@ -1548,26 +1543,24 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Common Denominator Subtract",
-          "namaId": "Kurang dengan KPK",
-          "asal": "Singapore / US textbooks",
-          "ringkas": "Penyebut beda: samakan dengan KPK, lalu kurangkan pembilang.",
+          "nama": "Match and Take Away",
+          "namaId": "Samakan Lalu Kurangi",
+          "asal": "IGIL",
+          "ringkas": "Cari KPK penyebut, ubah pecahan, lalu kurangkan pembilang.",
           "tahap": [
-            "Story",
-            "Mind",
+            "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Residual Area Model",
-          "namaId": "Model Sisa Daerah",
-          "asal": "Visual fraction models",
-          "ringkas": "Arsir semua lalu hapus bagian yang dikurangi; sisanya hasil.",
+          "nama": "Split Whole and Part",
+          "namaId": "Pisah Bulat dan Pecahan",
+          "asal": "IGIL",
+          "ringkas": "Pada campuran, kurangkan bilangan bulat dan pecahan sendiri-sendiri, lalu gabungkan.",
           "tahap": [
-            "Story",
-            "Infografis",
-            "Concrete"
+            "Picture",
+            "Abstract"
           ]
         }
       ],
@@ -2244,31 +2237,31 @@
           {
             "nama": "Penyebut sama",
             "isi": "Kurangkan pembilang; penyebut tetap.",
-            "suara": "p−p atas q."
+            "suara": "Pembilang dikurangi."
           },
           {
             "nama": "KPK",
-            "isi": "Beda penyebut: samakan dulu.",
+            "isi": "Penyebut berbeda: samakan dengan KPK dulu.",
             "suara": "KPK dulu."
           },
           {
-            "nama": "Sisa daerah",
-            "isi": "Arsir lalu hapus bagian yang dikurangi.",
-            "suara": "Lihat sisa."
+            "nama": "Dua cara campuran",
+            "isi": "Ubah ke biasa, atau pisahkan bilangan bulat dan pecahan.",
+            "suara": "Dua cara."
           },
           {
-            "nama": "Jangan",
-            "isi": "Jangan mengurangkan penyebut.",
-            "suara": "Bukan q−q."
+            "nama": "Periksa",
+            "isi": "Hasil ditambah yang dikurangkan harus sama dengan bilangan awal.",
+            "suara": "Periksa hasil."
           }
         ],
-        "suara": "Kurangi pembilang setelah penyebut sama; cek dengan model sisa.",
-        "caraMenyebutkan": "Cek penyebut KPK jika beda kurangi pembilang sederhanakan",
-        "rumah": "Ayo Mencoba: terapkan Kurang Penyebut Sama pada satu soal di rumah.",
+        "suara": "Penyebut sama langsung kurangkan pembilang; berbeda pakai KPK; periksa dengan penjumlahan.",
+        "caraMenyebutkan": "Cek penyebut samakan dengan KPK kurangkan pembilang sederhanakan periksa",
+        "rumah": "Ayo Mencoba: kurangkan satu potong kue dari sisa kue di rumah, lalu ceritakan caramu.",
         "refleksi": [
-          "Bagaimana Kurang Penyebut Sama membantumu?",
-          "Kapan memakai Kurang dengan KPK?",
-          "Apa bedanya dengan hanya menghafal rumus?"
+          "Kapan penyebut harus disamakan dulu?",
+          "Cara mana yang kamu pilih untuk pecahan campuran?",
+          "Bagaimana kamu memeriksa hasil pengurangan?"
         ]
       }
     }

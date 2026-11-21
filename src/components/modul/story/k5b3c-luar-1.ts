@@ -1,214 +1,151 @@
 import type { AdeganStory } from "./logika-story";
-import { W, apel, emo, judul, kartu, rumus, sel, silang, teks } from "./k5b3c-gambar";
-import { LUKAS, YOHANA } from "./k5b3c-materi-1";
-import { bersih, k, tambah } from "./k5b3c-bantu";
+import { E, W, bar, emo, isikan, judul, kotak, lantai, pec, silang, tanda, teks, tokoh } from "./k5b3c-gambar";
+import { bersih, k, sorotkan, tambah, ubah } from "./k5b3c-bantu";
 
-/** Warna isi kotak yang diambil atau diberikan pada penerapan metode luar. */
-const ABU = W.abu;
+/*
+ * Cerita orisinal IGIL "Sisa Adonan Bu Nani" (Kelas 5 Bab 3 Sub-Bab C), video metode global.
+ * Naskah suara dari naskah/story-naskah-k5b3c.md. Bagian ini: pembuka (sisa adonan dan tiga cara), Take Away the Tops (Kurangi Pembilang), dan terapannya.
+ */
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
+export const NAMA_METODE = ["Take Away the Tops", "Match and Take Away", "Split Whole and Part"] as const;
+export const NAMA_METODE_ID = ["Kurangi Pembilang", "Samakan Lalu Kurangi", "Pisah Bulat dan Pecahan"] as const;
+
+const WARNA_CARA = [W.daun, W.langit, W.pink];
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Bu Nani punya banyak sisa adonan, dan tiap pesanan harus dikurangkan dengan teliti.";
+const SUARA_O2 = "Ada tiga cara mengurangkan pecahan, dan masing-masing cocok untuk keadaan yang berbeda.";
+const SUARA_O3 = "Tiga cara itu: Take Away the Tops, Match and Take Away, dan Split Whole and Part.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Kurangi Pembilang, Samakan Lalu Kurangi, dan Pisah Bulat dan Pecahan.";
+
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk pengurangan pecahan",
-  sumber: "Metode luar: pembuka",
+  judul: "Sisa adonan menunggu",
+  sumber: "Metode global: pembuka",
+  latar: "#FFF1F2",
+  ketukan: [
+    k(
+      SUARA_O1,
+      tambah(0, judul("Sisa adonan menunggu"), ...lantai("lt", 150)),
+      tambah("Nani", ...tokoh("bn", 40, 184, "Bu Nani")),
+      tambah("sisa", ...bar("lo", 96, 76, 6, 30, 22, 4)),
+      tambah("pesanan", teks("ps", 186, 60, "pesanan", 11, W.merah, { z: 3 })),
+      tambah("teliti", emo("cr", 258, 132, E.cari, 26, { z: 3 })),
+    ),
+    k(
+      SUARA_O2,
+      bersih(0),
+      tambah(0, judul("Tiga cara"), ...lantai("lt", 150)),
+      tambah("tiga", teks("n3", 150, 42, "3 cara", 13, W.merah, { z: 3 })),
+      tambah("cara", ...[0, 1, 2].flatMap((i) => [kotak(`q${i}-k`, 6 + i * 98, 56, 92, 50, WARNA_CARA[i], W.biru, { rx: 6, tebal: 1.4, z: 1 }), teks(`q${i}a`, 52 + i * 98, 88, "?", 22, W.biru, { z: 3 })])),
+      tambah("keadaan", teks("kd", 150, 168, "cocok untuk keadaan berbeda", 10.6, W.coklat, { z: 3 })),
+    ),
+    k(
+      SUARA_O3,
+      ubah("Take", { id: "q0a", isi: "Take Away", u: 10.4, y: 78 }),
+      ubah("Match", { id: "q1a", isi: "Match and", u: 10.4, y: 78 }),
+      ubah("Split", { id: "q2a", isi: "Split Whole", u: 10.4, y: 78 }),
+      tambah("Tops", teks("q0b", 52, 94, "the Tops", 10.4, W.biru, { z: 3 })),
+      tambah("Away@2", teks("q1b", 150, 94, "Take Away", 10.4, W.biru, { z: 3 })),
+      tambah("Part", teks("q2b", 248, 94, "and Part", 10.4, W.biru, { z: 3 })),
+    ),
+    k(
+      SUARA_O4,
+      tambah("Kurangi", teks("i0a", 52, 128, "Kurangi", 10, W.coklat, { z: 3 }), teks("i0b", 52, 142, "Pembilang", 10, W.coklat, { z: 3 })),
+      tambah("Samakan", teks("i1a", 150, 128, "Samakan Lalu", 10, W.coklat, { z: 3 }), teks("i1b", 150, 142, "Kurangi", 10, W.coklat, { z: 3 })),
+      tambah("Pisah", teks("i2a", 248, 128, "Pisah Bulat", 10, W.coklat, { z: 3 }), teks("i2b", 248, 142, "dan Pecahan", 10, W.coklat, { z: 3 })),
+    ),
+  ],
+};
+
+/* ------------------------------ Take Away the Tops: konsep ------------------------------ */
+const SUARA_P1 = "Cara pertama, Take Away the Tops, atau Kurangi Pembilang.";
+const SUARA_P2 = "Kalau penyebutnya sudah sama, kita hanya mengurangkan angka di atas.";
+const SUARA_P3 = "Angka di bawah tidak berubah, karena ukuran potongannya tetap sama.";
+const SUARA_P4 = "Hasilnya bisa disederhanakan bila pembilang dan penyebutnya punya faktor yang sama.";
+
+export const ADEGAN_LUAR_ATAS: AdeganStory = {
+  id: "luar-atas",
+  judul: "Take Away the Tops",
+  sumber: "Metode global: Take Away the Tops (konsep)",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana mengurangkan pecahan dengan tepat? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar.",
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("mengurangkan", ...rumus("pr", 150, 52, "2/3 − 1/2 = ?", 16, W.biru, {}, false)),
-      tambah("Guru", emo("pg", 150, 112, "🌍", 40)),
-      tambah("empat", ...kartu("pq", 90, 140, 120, 38, W.krem, ["4 metode"], 14)),
+      SUARA_P1,
+      tambah(0, judul("Cara 1"), ...lantai("lt", 150), emo("mn", 150, 138, "\u{2796}", 34, { z: 3 })),
+      tambah("Take", teks("m1", 150, 62, "Take Away the Tops", 14, W.merah, { z: 3 })),
+      tambah("Kurangi", teks("m2", 150, 88, "Kurangi Pembilang", 11.5, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Empat metode itu: Like Denominator Subtract, Common Denominator Subtract, Residual Area Model, dan Add-Up Check.",
+      SUARA_P2,
       bersih(0),
-      tambah(0, judul("Empat metode")),
-      tambah("Like", ...kartu("m1", 20, 32, 260, 30, W.hijauMuda, ["1. Like Denominator Subtract"], 9.6)),
-      tambah("Common", ...kartu("m2", 20, 72, 260, 30, W.langit, ["2. Common Denominator Subtract"], 9.6)),
-      tambah("Residual", ...kartu("m3", 20, 112, 260, 30, W.krem, ["3. Residual Area Model"], 9.6)),
-      tambah("Add-Up", ...kartu("m4", 20, 152, 260, 30, W.pink, ["4. Add-Up Check"], 9.6)),
+      tambah(0, judul("Angka di atas"), ...lantai("lt", 150), ...pec("a", 84, 84, 5, 9, 22), tanda("m1", 124, 86, "−", 24), ...pec("b", 164, 84, 2, 9, 22), tanda("m2", 204, 86, "=", 24), teks("qq", 244, 90, "?", 22, W.merah, { z: 3 })),
+      tambah("sama", teks("sm", 124, 128, "penyebut sama", 11, W.coklat, { z: 3 })),
+      sorotkan("mengurangkan", "ap", "bp"),
+      tambah("atas", teks("at", 150, 50, "kurangi yang di atas", 11, W.merah, { z: 3 })),
     ),
     k(
-      "Semuanya bertumpu pada satu gagasan: mengurangi berarti mengambil sebagian dari keseluruhan, dan hanya potongan yang sama besar yang boleh dikurangkan.",
+      SUARA_P3,
       bersih(0),
-      tambah(0, judul("Satu gagasan yang sama")),
-      tambah("mengurangi", ...sel("g", 40, 56, 222, 40, 6, [0, 1, 2, 3, 4, 5], W.langit), teks("gt", 150, 116, "keseluruhan: 6 potongan sama besar", 9.6, W.biru)),
-      tambah("mengambil", ...silang("g", 40, 56, 222, 40, 6, [4, 5]), teks("gu", 150, 140, "diambil: 2 potongan", 9.6, W.merah)),
-      tambah("sama", teks("gv", 150, 170, "hanya potongan sama besar yang boleh dikurangkan", 9, W.hijau)),
+      tambah(0, judul("Angka di bawah tetap"), ...lantai("lt", 150), ...bar("p", 30, 56, 9, 27, 22, 5), ...bar("q", 30, 96, 9, 27, 22, 3)),
+      tambah("bawah", teks("b9", 276, 72, "9", 14, W.merah, { z: 3 }), teks("b9b", 276, 112, "9", 14, W.merah, { z: 3 })),
+      tambah("berubah", teks("tt", 150, 140, "tidak berubah", 11, W.hijauTua, { z: 3 })),
+      tambah("ukuran", emo("ok", 150, 172, E.benar, 22, { z: 3 })),
     ),
     k(
-      "Angka yang kita pakai berasal dari kertas Yohana dan Lukas, delapan apel Asep, jarak ke sekolah, tali Komang, dan soal Uji.",
+      SUARA_P4,
       bersih(0),
-      tambah(0, judul("Angka yang kita pakai")),
-      tambah("kertas", ...kartu("a1", 20, 32, 260, 30, W.langit, ["kertas Yohana dan Lukas"], 9.6)),
-      tambah("apel", ...kartu("a2", 20, 72, 260, 30, W.hijauMuda, ["8 apel Asep"], 9.6)),
-      tambah("jarak", ...kartu("a3", 20, 112, 260, 30, W.krem, ["jarak ke sekolah dan tali Komang"], 9.6)),
-      tambah("Uji", ...kartu("a4", 20, 152, 260, 30, W.pink, ["soal Uji 3, 4, 6, dan 10"], 9.6)),
+      tambah(0, judul("Sederhanakan hasil"), ...lantai("lt", 150), ...pec("a", 90, 92, 4, 10, 24)),
+      tambah("disederhanakan", tanda("m1", 134, 94, "=", 24)),
+      tambah("pembilang", ...pec("b", 178, 92, 2, 5, 24, W.hijauTua)),
+      tambah("faktor", teks("fk", 150, 140, "bagi dengan faktor sama", 11, W.coklat, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 2. Like Denominator Subtract: konsep ------------------------------ */
-export const ADEGAN_LUAR_LDS: AdeganStory = {
-  id: "luar-lds",
-  judul: "Like Denominator Subtract: penyebut sama, kurangi pembilang",
-  sumber: "Metode luar: Like Denominator Subtract",
-  latar: "#F0FDF4",
-  ketukan: [
-    k(
-      "Metode pertama, Like Denominator Subtract, artinya mengurangi pecahan sepenyebut. Potongannya sama besar, jadi cukup mengurangi banyak potongan, yaitu pembilangnya.",
-      tambah(0, judul("Like Denominator Subtract")),
-      tambah("Metode", ...sel("lk", 40, 40, 222, 38, 5, [0, 1, 2, 3], W.langit)),
-      tambah("Potongannya", ...silang("lk", 40, 40, 222, 38, 5, [3])),
-      tambah("pembilangnya.", ...rumus("lr", 150, 128, "4/5 − 1/5 = 3/5", 22)),
-    ),
-    k(
-      "Aturannya: pembilang dikurangi pembilang, penyebut tetap. Penyebut hanya memberi nama potongan, seperti lima bagian sama besar. Yang berubah cuma banyaknya potongan.",
-      bersih(0),
-      tambah(0, judul("Penyebut tetap")),
-      tambah("pembilang", ...rumus("lr", 150, 56, "4/5 − 1/5 = 3/5", 22)),
-      tambah("tetap.", ...kartu("l1", 20, 100, 124, 40, W.langit, ["pembilang:", "4 − 1 = 3"], 9.6)),
-      tambah("Yang", ...kartu("l2", 156, 100, 124, 40, W.hijauMuda, ["penyebut tetap:", "5 bagian"], 9.6)),
-    ),
-    k(
-      "Langkahnya dua: pastikan penyebut sama, lalu kurangi pembilangnya. Kalau hasilnya bisa disederhanakan, sederhanakan.",
-      bersih(0),
-      tambah(0, judul("Dua langkah")),
-      tambah("pastikan", ...kartu("p1", 20, 34, 260, 34, W.langit, ["1. pastikan penyebut sama"], 9.6)),
-      tambah("kurangi", ...kartu("p2", 20, 78, 260, 34, W.hijauMuda, ["2. kurangi pembilangnya"], 9.6)),
-      tambah("disederhanakan,", ...kartu("p3", 20, 122, 260, 30, W.krem, ["bila bisa, sederhanakan"], 9.6), ...rumus("p3r", 150, 172, "4/8 = 1/2", 14)),
-    ),
-    k(
-      "Kelebihannya cepat dan jarang salah hitung. Kekurangannya hanya berlaku bila penyebut sudah sama; kalau berbeda, perlu metode lain.",
-      bersih(0),
-      tambah(0, judul("Kelebihan dan kekurangan")),
-      tambah("Kelebihannya", ...kartu("kl", 14, 40, 130, 54, W.hijauMuda, ["cepat dan", "jarang salah hitung"], 9), emo("kle", 79, 120, "👍", 24)),
-      tambah("Kekurangannya", ...kartu("kk", 156, 40, 130, 54, W.merahMuda, ["hanya untuk", "penyebut yang sama"], 9), emo("kke", 221, 120, "🤔", 24)),
-    ),
-  ],
-};
+/* ------------------------------ Take Away the Tops: terapan ------------------------------ */
+const SUARA_T1 = "Citra mengurangkan tiga per sepuluh dari tujuh per sepuluh, hasilnya empat per sepuluh.";
+const SUARA_T2 = "Ia menggambar sepuluh kotak, mengarsir tujuh, lalu mencoret tiga kotak.";
+const SUARA_T3 = "Cocok untuk pecahan berpenyebut sama, karena langkahnya sangat singkat.";
+const SUARA_T4 = "Kurang cocok kalau penyebutnya berbeda, karena potongannya tidak sama besar.";
 
-/* ------------------------------ 3. Like Denominator Subtract: penerapan ------------------------------ */
-export const ADEGAN_LUAR_LDS_TERAPAN: AdeganStory = {
-  id: "luar-lds-terapan",
-  judul: "Like Denominator Subtract pada contoh soal",
-  sumber: "Metode luar: Like Denominator Subtract",
-  latar: "#F0FDF4",
+export const ADEGAN_LUAR_ATAS_TERAPAN: AdeganStory = {
+  id: "luar-atas-terapan",
+  judul: "Kurangi: kapan cocok",
+  sumber: "Metode global: Take Away the Tops (terapan)",
+  latar: "#FFF7ED",
   ketukan: [
     k(
-      "Masalah Lukas: Lukas melukis dua per tiga kertas dan sudah mengerjakan satu per tiga. Penyebutnya sama, jadi dua dikurangi satu sama dengan satu, hasilnya satu per tiga.",
-      tambah(0, judul("Masalah Lukas: kertas")),
-      tambah("Masalah", ...sel("tk", 40, 44, 222, 34, 3, [0, 1], W.langit)),
-      tambah("sudah", ...silang("tk", 40, 44, 222, 34, 3, [0])),
-      tambah("Penyebutnya", ...rumus("tr", 150, 124, "2/3 − 1/3 = 1/3", 22)),
+      SUARA_T1,
+      tambah(0, judul("Kurangi: kapan cocok"), ...lantai("lt", 150), ...tokoh("ct", 40, 184, "Citra")),
+      tambah("tiga", ...pec("b", 138, 84, 3, 10, 20, W.merah)),
+      tambah("dari", tanda("m0", 118, 86, "−", 22)),
+      tambah("tujuh", ...pec("a", 96, 84, 7, 10, 20)),
+      tambah("hasilnya", tanda("m1", 168, 86, "=", 22)),
+      tambah("empat", ...pec("c", 208, 84, 4, 10, 20, W.hijauTua)),
     ),
     k(
-      "Latihan satu soal b: dua per tujuh dikurangi satu per tujuh. Dua dikurangi satu sama dengan satu, penyebut tetap tujuh. Hasilnya satu per tujuh.",
+      SUARA_T2,
       bersih(0),
-      tambah(0, judul("Latihan 1b")),
-      tambah("Latihan", ...sel("ay", 40, 44, 222, 30, 7, [0, 1], W.langit)),
-      tambah("Dua@2", ...silang("ay", 40, 44, 222, 30, 7, [0])),
-      tambah("Hasilnya", ...rumus("ar", 150, 124, "2/7 − 1/7 = 1/7", 22)),
+      tambah(0, judul("Sepuluh kotak"), ...lantai("lt", 150)),
+      tambah("sepuluh", ...bar("kt", 20, 66, 10, 26, 24, 0), teks("n10", 150, 52, "10 kotak", 11, W.biru, { z: 3 })),
+      ubah("mengarsir", ...isikan("kt", 0, 7)),
+      tambah("tujuh", teks("n7", 90, 118, "7 diarsir", 11, W.biru, { z: 3 })),
+      tambah("mencoret", ...[4, 5, 6].flatMap((i) => silang("kt", i, 20, 66, 26, 24))),
+      tambah("tiga", teks("n3", 220, 118, "3 dicoret", 11, W.merah, { z: 3 })),
     ),
     k(
-      "Uji empat: satu satu per delapan dikurangi satu per delapan. Meski campuran, penyebutnya sama. Pecahan satu per delapan habis, tinggal satu bulat.",
+      SUARA_T3,
       bersih(0),
-      tambah(0, judul("Uji 4")),
-      tambah("dikurangi", ...rumus("ur", 150, 70, "1 1/8 − 1/8 = 1", 22)),
-      tambah("Meski", ...rumus("us", 150, 124, "9/8 − 1/8 = 8/8 = 1", 18)),
-      tambah("tinggal", ...kartu("uk", 70, 158, 160, 30, W.hijauMuda, ["sisa bika Ambon: 1 bulat"], 9.6)),
+      tambah(0, judul("Cocok: penyebut sama"), ...lantai("lt", 150), emo("ok", 150, 140, E.benar, 30, { z: 3 })),
+      tambah("pecahan", ...bar("ra", 30, 56, 8, 30, 22, 5), ...bar("rb", 30, 90, 8, 30, 22, 2)),
+      tambah("langkahnya", teks("sg", 150, 124, "langkahnya singkat", 11, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Apel Lukas: enam per delapan dikurangi dua per delapan. Penyebutnya sama, jadi enam dikurangi dua sama dengan empat. Hasilnya empat per delapan, atau setengah.",
+      SUARA_T4,
       bersih(0),
-      tambah(0, judul("Apel Lukas")),
-      tambah("Apel", ...apel("ap", 80, 50, (i) => (YOHANA.includes(i) ? ABU : LUKAS.includes(i) ? W.hijau : W.putih))),
-      tambah("Penyebutnya", ...rumus("pr", 150, 128, "6/8 − 2/8 = 4/8 = 1/2", 19)),
-    ),
-  ],
-};
-
-/* ------------------------------ 4. Common Denominator Subtract: konsep ------------------------------ */
-export const ADEGAN_LUAR_CDS: AdeganStory = {
-  id: "luar-cds",
-  judul: "Common Denominator Subtract: samakan penyebut lewat KPK",
-  sumber: "Metode luar: Common Denominator Subtract",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      "Metode kedua, Common Denominator Subtract. Bila penyebut berbeda, cari penyebut persekutuan, biasanya lewat KPK, lalu ubah kedua pecahan ke penyebut itu.",
-      tambah(0, judul("Common Denominator Subtract")),
-      tambah("Bila", ...rumus("cr", 150, 52, "1/2 − 1/3", 24, W.biru, {}, false)),
-      tambah("KPK,", ...kartu("ck", 70, 100, 160, 30, W.krem, ["KPK dari 2 dan 3 = 6"], 9.6)),
-      tambah("ubah", ...rumus("cs", 150, 156, "3/6 − 2/6", 24, W.biru, {}, false)),
-    ),
-    k(
-      "Mengapa? Potongan yang ukurannya berbeda tidak bisa langsung dikurangkan, seperti mengurangi apel dengan jeruk. Setelah penyebutnya sama, potongannya sama besar.",
-      bersih(0),
-      tambah(0, judul("Mengapa disamakan?")),
-      tambah("apel", emo("ca", 90, 86, "🍎", 36), teks("cm", 150, 80, "−", 24, W.biru), emo("cj", 210, 86, "🍊", 36)),
-      tambah("langsung", emo("cx", 150, 128, "❌", 24)),
-      tambah("Setelah", ...sel("cb", 40, 146, 222, 28, 6, [0, 1, 2], W.langit), teks("cc", 150, 192, "6 potongan sama besar", 9, W.hijau)),
-    ),
-    k(
-      "Langkahnya tiga: cari KPK dari penyebut, ubah menjadi pecahan senilai, lalu kurangi pembilangnya.",
-      bersih(0),
-      tambah(0, judul("Tiga langkah")),
-      tambah("cari", ...kartu("q1", 20, 34, 260, 32, W.hijauMuda, ["1. cari KPK dari penyebut"], 9.6)),
-      tambah("ubah", ...kartu("q2", 20, 76, 260, 32, W.langit, ["2. ubah ke pecahan senilai"], 9.6)),
-      tambah("kurangi", ...kartu("q3", 20, 118, 260, 32, W.krem, ["3. kurangi pembilangnya"], 9.6)),
-    ),
-    k(
-      "Kelebihannya berlaku untuk semua pecahan. Kekurangannya perlu mencari KPK dan pecahan senilai, sehingga lebih panjang.",
-      bersih(0),
-      tambah(0, judul("Kelebihan dan kekurangan")),
-      tambah("Kelebihannya", ...kartu("kl", 14, 40, 130, 54, W.hijauMuda, ["berlaku untuk", "semua pecahan"], 9), emo("kle", 79, 120, "👍", 24)),
-      tambah("Kekurangannya", ...kartu("kk", 156, 40, 130, 54, W.merahMuda, ["perlu KPK dan", "pecahan senilai"], 9), emo("kke", 221, 120, "🤔", 24)),
-    ),
-  ],
-};
-
-/* ------------------------------ 5. Common Denominator Subtract: penerapan ------------------------------ */
-export const ADEGAN_LUAR_CDS_TERAPAN: AdeganStory = {
-  id: "luar-cds-terapan",
-  judul: "Common Denominator Subtract pada contoh soal",
-  sumber: "Metode luar: Common Denominator Subtract",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      "Masalah Yohana: dua per tiga dikurangi satu per dua. KPK dari tiga dan dua adalah enam. Dua per tiga menjadi empat per enam, satu per dua menjadi tiga per enam. Selisihnya satu per enam.",
-      tambah(0, judul("Masalah Yohana")),
-      tambah("KPK", teks("kp", 150, 48, "KPK dari 3 dan 2 = 6", 10, W.coklat)),
-      tambah("Dua@4", ...rumus("r", 150, 100, "2/3 − 1/2 = 4/6 − 3/6 = 1/6", 19)),
-    ),
-    k(
-      "Uji tiga: tiga per sepuluh dikurangi satu per delapan. KPK dari sepuluh dan delapan adalah empat puluh. Hasilnya dua belas per empat puluh dikurangi lima per empat puluh, yaitu tujuh per empat puluh.",
-      bersih(0),
-      tambah(0, judul("Uji 3")),
-      tambah("KPK", teks("kp", 150, 48, "KPK dari 10 dan 8 = 40", 10, W.coklat)),
-      tambah("Hasilnya", ...rumus("r", 150, 100, "3/10 − 1/8 = 12/40 − 5/40 = 7/40", 17)),
-    ),
-    k(
-      "Latihan satu soal d: satu per tiga dikurangi satu per lima. KPK-nya lima belas, jadi lima per lima belas dikurangi tiga per lima belas sama dengan dua per lima belas.",
-      bersih(0),
-      tambah(0, judul("Latihan 1d")),
-      tambah("KPK-nya", teks("kp", 150, 48, "KPK dari 3 dan 5 = 15", 10, W.coklat)),
-      tambah("jadi", ...rumus("r", 150, 100, "1/3 − 1/5 = 5/15 − 3/15 = 2/15", 17)),
-    ),
-    k(
-      "Pecahan campuran, tali Komang: empat setengah dikurangi dua satu per tiga. Ubah ke pecahan biasa, sembilan per dua dan tujuh per tiga, lalu samakan penyebut menjadi enam.",
-      bersih(0),
-      tambah(0, judul("Tali Komang 1")),
-      tambah("Pecahan", ...rumus("r", 150, 76, "4 1/2 − 2 1/3 = 9/2 − 7/3", 18)),
-      tambah("samakan", ...rumus("s", 150, 140, "9/2 − 7/3 = 27/6 − 14/6", 18)),
-    ),
-    k(
-      "Dua puluh tujuh per enam dikurangi empat belas per enam sama dengan tiga belas per enam, yaitu dua satu per enam meter. Komang perlu membeli dua satu per enam meter tali.",
-      bersih(0),
-      tambah(0, judul("Tali Komang 2")),
-      tambah("Dua", ...rumus("r", 150, 86, "27/6 − 14/6 = 13/6 = 2 1/6", 20)),
-      tambah("Komang", ...kartu("k", 50, 130, 200, 34, W.hijauMuda, ["tali yang dibeli: 2 1/6 m"], 9.6)),
+      tambah(0, judul("Kurang cocok: penyebut beda"), ...lantai("lt", 150), emo("xx", 266, 90, E.salah, 30, { z: 3 })),
+      tambah("berbeda", ...bar("ra", 30, 56, 4, 52, 22, 3), ...bar("rb", 30, 90, 6, 34.7, 22, 1)),
+      tambah("potongannya", teks("pb", 150, 134, "potongan tidak sama besar", 11, W.merah, { z: 3 })),
     ),
   ],
 };

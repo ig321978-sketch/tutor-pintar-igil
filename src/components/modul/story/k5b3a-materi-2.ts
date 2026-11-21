@@ -1,263 +1,135 @@
 import type { AdeganStory } from "./logika-story";
-import { W, batang, emo, garis, judul, kartu, kotak, pai, panah, tabel, teks } from "./k5b3a-gambar";
-import { bersih, k, sorotkan, tambah, ubah, warnai } from "./k5b3a-bantu";
+import { E, W, bulat, campur, emo, judul, kantong, kotak, panah, pecahan, tanah, teks, tokoh } from "./k5b3a-gambar";
+import { bersih, idx, k, tambah, ubah, warnai } from "./k5b3a-bantu";
 
-/* ------------------------------ 4. Mengingat Kembali: empat latihan (Buku Siswa hlm. 66) ------------------------------ */
-export const ADEGAN_INGAT: AdeganStory = {
-  id: "mengingat-kembali",
-  judul: "Mengingat Kembali: empat latihan",
-  sumber: "Buku Siswa hlm. 66",
-  latar: "#FDF2F8",
-  kutipan: [
-    "Pada kelas IV dan bab sebelumnya, kalian sudah mempelajari materi",
-    "tentang pecahan serta KPK dan FPB.",
-    "Tuliskan bentuk pecahan berikut.",
-    "Manakah yang merupakan pembilang dan manakah yang",
-    "merupakan penyebut?",
-    "Manakah yang lebih besar antara",
-    "Berapakah KPK dan FPB dari 4 dan 5?",
-    "Berapakah pecahan senilai dari",
-  ],
+/*
+ * Cerita orisinal IGIL "Tiga Kantong Tepung Bu Ratna" (Kelas 5 Bab 3 Sub-Bab A), awal cerita Toko Roti Keliling.
+ * Naskah suara dari naskah/story-naskah-k5b3a.md. Bagian ini: membandingkan bilangan bulat dulu, mengubah campuran menjadi biasa (bulat kali penyebut ditambah pembilang),
+ * dan menyamakan penyebut dengan KPK (empat, dua, delapan menjadi delapan).
+ */
+
+/* ------------------------------ 4. Bilangan bulat dulu ------------------------------ */
+const SUARA_B1 = "Bima membandingkan bilangan bulatnya: dua, tiga, dan satu.";
+const SUARA_B2 = "Karena satu lebih kecil dari dua, dan dua lebih kecil dari tiga, urutannya sudah terlihat.";
+const SUARA_B3 = "Kantong ketiga ternyata paling ringan, dan Fajar menepuk dahinya keras-keras.";
+
+export const ADEGAN_BULAT: AdeganStory = {
+  id: "bulat",
+  judul: "Lihat Bilangan Bulat",
+  sumber: "Materi: bilangan bulat dulu",
+  latar: W.taman,
   ketukan: [
     k(
-      "Mengingat Kembali. Di kelas empat dan bab sebelumnya kalian sudah belajar pecahan serta KPK dan FPB. Ada empat latihan untuk menghangatkan ingatan.",
-      tambah(0, judul("Mengingat Kembali")),
-      tambah("kelas", emo("bk", 150, 56, "📚", 30)),
-      tambah("latihan", ...kartu("c1", 14, 84, 130, 30, W.hijauMuda, ["1. tulis pecahan"], 8.8), ...kartu("c2", 156, 84, 130, 30, W.langit, ["2. mana lebih besar"], 8.8), ...kartu("c3", 14, 122, 130, 30, W.krem, ["3. KPK dan FPB"], 8.8), ...kartu("c4", 156, 122, 130, 30, W.pink, ["4. pecahan senilai"], 8.8)),
+      SUARA_B1,
+      tambah(
+        0,
+        judul("Lihat Bilangan Bulat"),
+        ...tanah("tn", 150),
+        ...kantong("ka", 54, 128),
+        ...kantong("kb", 150, 128),
+        ...kantong("kc", 246, 128),
+        ...campur("ca", 54, 152, 2, 3, 4, 13, W.biru, { op: 0.5 }),
+        ...campur("cb", 150, 152, 3, 1, 2, 13, W.biru, { op: 0.5 }),
+        ...campur("cc", 246, 152, 1, 7, 8, 13, W.biru, { op: 0.5 }),
+      ),
+      tambah("Bima", ...tokoh("bm", 22, 184, "Bima")),
+      tambah("dua,", bulat("w1", 54, 64, 15, W.krem, W.merah, { tebal: 2, z: 1 }), teks("o1", 54, 71, "2", 20, W.merah, { z: 3 })),
+      tambah("tiga,", bulat("w2", 150, 64, 15, W.krem, W.merah, { tebal: 2, z: 1 }), teks("o2", 150, 71, "3", 20, W.merah, { z: 3 })),
+      tambah("satu.", bulat("w3", 246, 64, 15, W.krem, W.merah, { tebal: 2, z: 1 }), teks("o3", 246, 71, "1", 20, W.merah, { z: 3 })),
     ),
     k(
-      "Latihan satu. Sebuah batang dibagi menjadi empat bagian sama besar, dua di antaranya berwarna. Pecahannya dua per empat. Pembilangnya dua, penyebutnya empat.",
-      bersih(0),
-      tambah(0, judul("Latihan 1: tulis pecahan")),
-      tambah("batang", ...batang("lt", 60, 46, 180, 34, 4, 0)),
-      warnai("berwarna.", W.karang, "lt-c0", "lt-c1"),
-      tambah("Pecahannya", teks("pf", 150, 118, "2/4", 24, W.biru)),
-      tambah("Pembilangnya", teks("pb", 80, 160, "pembilang = 2", 9.4, W.merah)),
-      tambah("penyebutnya", teks("pn", 220, 160, "penyebut = 4", 9.4, W.hijau)),
+      SUARA_B2,
+      tambah("dua,", teks("r1", 100, 36, "1 < 2", 16, W.hijauTua)),
+      tambah("tiga,", teks("r2", 200, 36, "2 < 3", 16, W.hijauTua)),
+      tambah("terlihat.", emo("ok", 280, 36, E.benar, 20)),
     ),
     k(
-      "Latihan dua. Mana yang lebih besar, satu per dua atau satu per lima? Sama-sama satu bagian, tetapi satu per dua dibagi menjadi bagian yang lebih sedikit, sehingga bagiannya lebih besar. Jadi satu per dua lebih besar.",
-      bersih(0),
-      tambah(0, judul("Latihan 2: mana lebih besar?")),
-      tambah(8, ...batang("b2", 30, 44, 180, 30, 2, 1), teks("f2", 250, 64, "1/2", 14, W.biru)),
-      tambah("lima?", ...batang("b5", 30, 90, 180, 30, 5, 1), teks("f5", 250, 110, "1/5", 14, W.biru)),
-      tambah("sedikit,", teks("sd", 150, 140, "bagian lebih sedikit = tiap bagian lebih besar", 8.2, W.ungu)),
-      tambah("Jadi", ...kartu("jw", 70, 152, 160, 32, W.emas, ["1/2 > 1/5"], 12)),
-    ),
-    k(
-      "Latihan tiga. KPK dan FPB dari empat dan lima. Kelipatan empat: empat, delapan, dua belas, enam belas, dua puluh. Kelipatan lima: lima, sepuluh, lima belas, dua puluh. KPK-nya dua puluh dan FPB-nya satu.",
-      bersih(0),
-      tambah(0, judul("Latihan 3: KPK dan FPB")),
-      tambah("Kelipatan", teks("k4", 150, 56, "Kelipatan 4: 4, 8, 12, 16, 20", 10, W.biru)),
-      tambah("Kelipatan@2", teks("k5", 150, 86, "Kelipatan 5: 5, 10, 15, 20", 10, W.biru)),
-      tambah("KPK-nya", teks("kp", 150, 128, "KPK = 20", 16, W.merah)),
-      tambah("FPB-nya", teks("fp", 150, 162, "FPB = 1", 16, W.hijau)),
-    ),
-    k(
-      "Latihan empat. Pecahan senilai tiga per empat. Kalikan pembilang dan penyebut dengan bilangan yang sama, misalnya dua. Hasilnya enam per delapan.",
-      bersih(0),
-      tambah(0, judul("Latihan 4: pecahan senilai")),
-      tambah("tiga", ...batang("s4", 20, 40, 110, 30, 4, 3), teks("t4", 75, 90, "3/4", 14, W.biru)),
-      tambah("Kalikan", ...kartu("kl", 76, 112, 148, 28, W.krem, ["× 2 atas dan bawah"], 9)),
-      tambah("enam", ...batang("s8", 170, 40, 110, 30, 8, 6), teks("t8", 225, 90, "6/8", 14, W.biru)),
-      tambah("Hasilnya", teks("sm", 150, 168, "3/4 = 6/8", 20, W.merah)),
+      SUARA_B3,
+      tambah("ketiga", kotak("hl", 224, 78, 44, 94, undefined, W.hijauTua, { rx: 6, tebal: 2.2, putus: true, z: 3 })),
+      tambah("paling", teks("rg", 246, 190, "paling ringan", 10, W.hijauTua)),
+      warnai("ringan,", W.hijauMuda, "kc-bd"),
+      tambah("Fajar", ...tokoh("fj", 100, 184, "Fajar")),
+      tambah("menepuk", emo("aj", 126, 150, E.keringat, 18), teks("ad", 100, 146, "aduh!", 10, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 5. Pengertian pecahan dan bentuknya (Buku Siswa hlm. 66 sampai 68) ------------------------------ */
-const gelas = (id: string, x: number, y: number, isi: boolean) => [kotak(`${id}-g`, x, y, 44, 80, W.putih, W.biru, { rx: 4, tebal: 2 }), kotak(`${id}-a`, x + 2, y + 40, 40, 38, W.langit, "none", { rx: 2, op: isi ? 1 : 0.0 })];
+/* ------------------------------ 5. Campuran menjadi biasa ------------------------------ */
+const SUARA_I1 = "Citra memeriksa dengan mengubah pecahan campuran menjadi pecahan biasa.";
+const SUARA_I2 = "Dua bulat tiga per empat menjadi dua kali empat ditambah tiga, yaitu sebelas per empat.";
+const SUARA_I3 = "Tiga bulat satu per dua menjadi tujuh per dua, dan satu bulat tujuh per delapan menjadi lima belas per delapan.";
 
-export const ADEGAN_PENGERTIAN: AdeganStory = {
-  id: "pengertian-pecahan",
-  judul: "Pengertian pecahan, pembilang dan penyebut, pecahan biasa dan campuran",
-  sumber: "Materi: pengertian pecahan",
-  latar: "#F0F9FF",
-  kutipan: [
-    "Pecahan merupakan bagian dari keseluruhan (part of a whole), pecahan",
-    "juga bisa diartikan sebagai bagian dari satuan (part of a unit).",
-    "Contoh bagian dari satuan",
-    "Gelas tersebut berisi 1 bagian dari 2 bagian gelas.",
-    "Contoh bagian dari keseluruhan",
-    "Dalam istilah matematika, pecahan terdiri atas pembilang dan penyebut.",
-    "Bentuk-Bentuk Pecahan",
-    "Pecahan Biasa",
-    "Pecahan Campuran",
-    "bilangan bulat dan pecahan",
-  ],
+export const ADEGAN_BIASA: AdeganStory = {
+  id: "biasa",
+  judul: "Ubah ke Pecahan Biasa",
+  sumber: "Materi: campuran menjadi biasa",
+  latar: W.taman,
   ketukan: [
     k(
-      "Kita mulai dari pengertian pecahan. Pecahan adalah bagian dari keseluruhan, dan bisa juga diartikan sebagai bagian dari satuan.",
-      tambah(0, judul("Pengertian pecahan")),
-      tambah("keseluruhan,", ...pai("pg", 62, 96, 42, 4, 1), ...kartu("w1", 124, 56, 166, 36, W.krem, ["bagian dari keseluruhan", "(part of a whole)"], 8.4)),
-      tambah("satuan.", ...kartu("w2", 124, 110, 166, 36, W.hijauMuda, ["bagian dari satuan", "(part of a unit)"], 8.4)),
+      SUARA_I1,
+      tambah(0, judul("Ubah ke Pecahan Biasa"), ...tanah("tn", 150), ...tokoh("ct", 40, 184, "Citra")),
+      tambah("campuran", ...campur("x", 100, 80, 2, 3, 4, 22), teks("xl", 100, 122, "campuran", 10, W.coklat)),
+      tambah("menjadi", panah("ar", 140, 84, 40, 0, W.merah, 3)),
+      tambah("biasa.", teks("q", 215, 94, "?", 30, W.merah), teks("ql", 215, 122, "biasa", 10, W.coklat)),
     ),
     k(
-      "Perhatikan contoh bagian dari satuan. Gelas ini berisi satu bagian dari dua bagian gelas. Satu bagian dari dua bagian ditulis satu per dua.",
+      SUARA_I2,
       bersih(0),
-      tambah(0, judul("Bagian dari satuan")),
-      tambah("Gelas", ...gelas("ge", 70, 52, false)),
-      ubah("berisi", { id: "ge-a", op: 1 }),
-      tambah("berisi", teks("gt", 205, 84, "1 bagian dari", 9.4, W.biru), teks("gu", 205, 98, "2 bagian gelas", 9.4, W.biru)),
-      tambah("ditulis", teks("gf", 205, 140, "1/2", 28, W.merah)),
+      tambah(0, judul("Ubah ke Pecahan Biasa"), ...tanah("tn", 150), ...tokoh("ct", 40, 184, "Citra"), ...campur("x", 70, 76, 2, 3, 4, 20)),
+      tambah("kali", teks("e1", 196, 50, "2 × 4 + 3", 16, W.biru)),
+      tambah("ditambah", teks("ru", 196, 80, "bulat × penyebut + pembilang", 8.4, W.coklat)),
+      ubah(idx(SUARA_I2, "sebelas"), { id: "e1", isi: "2 × 4 + 3 = 11", warna: W.merah }),
+      tambah(idx(SUARA_I2, "per", 2), ...pecahan("r", 196, 114, 11, 4, 20, W.merah)),
     ),
     k(
-      "Sekarang contoh bagian dari keseluruhan. Yohana mengambil dua gelas air putih, lalu meminum satu gelas. Satu dari dua gelas, ditulis satu per dua.",
+      SUARA_I3,
       bersih(0),
-      tambah(0, judul("Bagian dari keseluruhan")),
-      tambah("mengambil", ...gelas("ga", 70, 52, true), ...gelas("gb", 150, 52, true), teks("g2", 150, 160, "2 gelas", 10, W.biru)),
-      ubah("meminum", { id: "gb-a", op: 0 }),
-      tambah("meminum", teks("dm", 172, 46, "diminum", 8.6, W.merah)),
-      tambah("ditulis", teks("gf", 245, 100, "1/2", 28, W.merah)),
-    ),
-    k(
-      "Pecahan terdiri atas pembilang dan penyebut. Angka di atas garis pecahan adalah pembilang, angka di bawah garis adalah penyebut.",
-      bersih(0),
-      tambah(0, judul("Pembilang dan penyebut")),
-      tambah("Pecahan", teks("n1", 150, 80, "1", 34, W.biru), garis("gp", 130, 90, 40, 0, W.biru, 3), teks("n2", 150, 128, "2", 34, W.biru)),
-      tambah("pembilang@2", teks("lp", 116, 74, "pembilang", 9.6, W.merah, { anchor: "end" })),
-      tambah("penyebut@2", teks("ls", 184, 124, "penyebut", 9.6, W.hijau, { anchor: "start" })),
-    ),
-    k(
-      "Nah, ada dua bentuk pecahan. Pecahan biasa, atau murni, punya pembilang dan penyebut, misalnya satu per dua dan tiga per empat. Pecahan campuran terdiri atas bilangan bulat dan pecahan murni, misalnya dua dan satu per dua.",
-      bersih(0),
-      tambah(0, judul("Dua bentuk pecahan")),
-      tambah("biasa,", ...kartu("bb", 10, 34, 134, 40, W.hijauMuda, ["Pecahan biasa", "(murni)"], 8.8)),
-      tambah("satu", teks("e1", 77, 108, "1/2", 20, W.biru)),
-      tambah("tiga", teks("e2", 77, 144, "3/4", 20, W.biru)),
-      tambah("bulat", ...kartu("bc", 156, 34, 134, 40, W.krem, ["Pecahan campuran", "(bulat dan pecahan)"], 8.4)),
-      tambah("misalnya@2", teks("e3", 223, 124, "2 1/2", 22, W.merah)),
+      tambah(0, judul("Ubah ke Pecahan Biasa"), ...campur("m1", 76, 50, 3, 1, 2, 16), teks("n1", 76, 92, "3 × 2 + 1 = 7", 11, W.biru), panah("v1", 76, 100, 0, 12, W.merah, 2)),
+      tambah("tujuh", ...pecahan("h1", 76, 134, 7, 2, 16, W.merah)),
+      tambah(idx(SUARA_I3, "satu", 2), ...campur("m2", 222, 50, 1, 7, 8, 16)),
+      tambah(idx(SUARA_I3, "tujuh", 2), teks("n2", 222, 92, "1 × 8 + 7 = 15", 11, W.biru), panah("v2", 222, 100, 0, 12, W.merah, 2)),
+      tambah("lima", ...pecahan("h2", 222, 134, 15, 8, 16, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 6. Eksplorasi 3.1A: wingko babat (Buku Siswa hlm. 68 sampai 70) ------------------------------ */
-const kolom = [30, 120, 100];
-const baris = (id: string, r: number, isi: string[], kepala = false) => tabel(id, 24, 34 + r * 24, kolom, [isi], 24, 9, kepala ? W.krem : W.putih);
-const POTONG = [2, 3, 5, 6];
+/* ------------------------------ 6. Samakan penyebut dengan KPK ------------------------------ */
+const SUARA_K1 = "Penyebut ketiganya empat, dua, dan delapan, jadi perlu disamakan dengan KPK.";
+const SUARA_K2 = "KPK dari empat, dua, dan delapan adalah delapan.";
+const SUARA_K3 = "Hasilnya dua puluh dua per delapan, dua puluh delapan per delapan, dan lima belas per delapan.";
 
-export const ADEGAN_EKS31A: AdeganStory = {
-  id: "eks-31a-wingko",
-  judul: "Pecahan potongan wingko",
-  sumber: "Materi: pecahan potongan wingko",
-  latar: "#FFFBEB",
-  kutipan: [
-    "Wingko babat merupakan makanan khas dari Semarang.",
-    "Saat ini",
-    "wingko babat memiliki rasa yang beraneka, yaitu orisinal, cokelat,",
-    "stroberi, dan sebagainya.",
-    "Mari kalian tuliskan pecahan potongan",
-    "wingko stroberi pada tabel berikut.",
-    "Dapatkah kalian membantuku menentukan bagian yang",
-    "lebih besar atau lebih kecil dengan menggunakan konsep",
-    "Mari amati dan bandingkan gambar berikut, lalu berilah tanda <, >,",
-    "Selanjutnya, tuliskan bagian tersebut dalam bentuk pecahan.",
-  ],
+export const ADEGAN_SAMAKAN: AdeganStory = {
+  id: "samakan",
+  judul: "Samakan Penyebut",
+  sumber: "Materi: samakan penyebut dengan KPK",
+  latar: W.taman,
   ketukan: [
     k(
-      "Sekarang kita belajar dari wingko babat. Wingko babat adalah makanan khas Semarang. Kini rasanya beraneka: orisinal, cokelat, stroberi, dan lainnya.",
-      tambah(0, judul("Wingko babat")),
-      tambah("Wingko", ...pai("wg", 74, 104, 46, 1, 1, W.jingga), teks("wgt", 74, 170, "wingko babat", 9, W.coklat)),
-      tambah("orisinal,", ...kartu("r0", 150, 52, 130, 26, W.krem, ["orisinal"], 9)),
-      tambah("cokelat,", ...kartu("r1", 150, 88, 130, 26, W.jingga, ["cokelat"], 9)),
-      tambah("stroberi,", ...kartu("r2", 150, 124, 130, 26, W.pink, ["stroberi"], 9)),
+      SUARA_K1,
+      tambah(0, judul("Samakan Penyebut"), ...tanah("tn", 150)),
+      tambah("Penyebut", ...pecahan("pa", 60, 80, 11, 4, 20), ...pecahan("pb", 150, 80, 7, 2, 20), ...pecahan("pc", 240, 80, 15, 8, 20)),
+      warnai("empat,", W.merah, "pa-b"),
+      warnai("dua,", W.merah, "pb-b"),
+      warnai("delapan,", W.merah, "pc-b"),
+      tambah("KPK.", teks("kk", 150, 144, "samakan dengan KPK", 14, W.merah)),
     ),
     k(
-      "Tugas kita menuliskan pecahan potongan wingko stroberi pada tabel. Ada empat gambar wingko: dibagi dua, tiga, lima, dan enam bagian sama besar.",
+      SUARA_K2,
       bersih(0),
-      tambah(0, judul("Pecahan potongan wingko")),
-      tambah("tabel.", baris("r0", 0, ["No.", "Wingko dibagi", "Pecahan stroberi"], true)),
-      tambah("dua,", baris("r1", 1, ["1", `${POTONG[0]} bagian`, "..."])),
-      tambah("tiga,", baris("r2", 2, ["2", `${POTONG[1]} bagian`, "..."])),
-      tambah("lima,", baris("r3", 3, ["3", `${POTONG[2]} bagian`, "..."])),
-      tambah("enam", baris("r4", 4, ["4", `${POTONG[3]} bagian`, "..."])),
+      tambah(0, judul("KPK Penyebut"), ...tanah("tn", 150)),
+      tambah("empat,", teks("l1", 150, 52, "kelipatan 4: 4, 8, 12", 11, W.biru)),
+      tambah("dua,", teks("l2", 150, 80, "kelipatan 2: 2, 4, 6, 8, 10", 11, W.biru)),
+      tambah("delapan", teks("l3", 150, 108, "kelipatan 8: 8, 16", 11, W.biru)),
+      tambah("adalah", teks("kp", 150, 142, "KPK = 8", 22, W.merah)),
     ),
     k(
-      "Satu potong stroberi dari wingko yang dibagi dua adalah satu per dua. Dari tiga bagian, satu per tiga. Dari lima, satu per lima. Dari enam, satu per enam.",
-      ubah("adalah", { id: "r1-t02", isi: "1/2", warna: W.merah }),
-      ubah("tiga", { id: "r2-t02", isi: "1/3", warna: W.merah }),
-      ubah("lima,", { id: "r3-t02", isi: "1/5", warna: W.merah }),
-      ubah("enam", { id: "r4-t02", isi: "1/6", warna: W.merah }),
-    ),
-    k(
-      "Dapatkah kalian menentukan bagian yang lebih besar atau lebih kecil dengan konsep pecahan? Perhatikan, makin banyak potongan sama besar, makin kecil tiap potongannya. Jadi satu per dua jauh lebih besar daripada satu per enam.",
+      SUARA_K3,
       bersih(0),
-      tambah(0, judul("Mana lebih besar, mana lebih kecil?")),
-      tambah("Perhatikan,", ...pai("pa", 80, 92, 44, 2, 1), teks("fa", 80, 160, "1/2", 14, W.biru)),
-      tambah("kecil@2", ...pai("pb", 220, 92, 44, 6, 1), teks("fb", 220, 160, "1/6", 14, W.biru)),
-      tambah("Jadi", ...kartu("jw", 90, 172, 120, 24, W.emas, ["1/2 > 1/6"], 11)),
-    ),
-    k(
-      "Lalu bandingkan dua gambar wingko dengan tanda lebih kecil, lebih besar, atau sama dengan. Gambar kiri memperlihatkan satu per dua bagian, gambar kanan satu per tiga bagian.",
-      bersih(0),
-      tambah(0, judul("Bandingkan dua wingko")),
-      tambah("kiri", ...pai("ql", 80, 92, 42, 2, 1), teks("qa", 80, 152, "1/2", 14, W.biru)),
-      tambah("kanan", ...pai("qr", 220, 92, 42, 3, 1), teks("qb", 220, 152, "1/3", 14, W.biru)),
-      tambah("Lalu", teks("qt", 150, 96, "...", 22, W.merah)),
-    ),
-    k(
-      "Satu per dua lebih besar daripada satu per tiga, jadi tanda yang tepat adalah lebih besar.",
-      ubah("tepat", { id: "qt", isi: ">" }),
-      tambah("Satu", ...kartu("qk", 70, 168, 160, 26, W.emas, ["1/2 > 1/3"], 11.5)),
+      tambah(0, judul("Penyebut Jadi Delapan")),
+      tambah("dua", ...pecahan("a1", 60, 52, 11, 4, 16), teks("e1", 92, 57, "=", 16, W.biru), ...pecahan("b1", 126, 52, 22, 8, 16, W.merah), teks("m1", 196, 57, "× 2", 12, W.coklat)),
+      tambah(idx(SUARA_K3, "dua", 2), ...pecahan("a2", 60, 94, 7, 2, 16), teks("e2", 92, 99, "=", 16, W.biru), ...pecahan("b2", 126, 94, 28, 8, 16, W.merah), teks("m2", 196, 99, "× 4", 12, W.coklat)),
+      tambah("lima", ...pecahan("a3", 60, 136, 15, 8, 16), teks("e3", 92, 141, "=", 16, W.biru), ...pecahan("b3", 126, 136, 15, 8, 16, W.merah), teks("m3", 196, 141, "× 1", 12, W.coklat)),
     ),
   ],
 };
 
-/* ------------------------------ 7. Eksplorasi 3.1B: lompatan Yohana, mengubah campuran menjadi biasa (Buku Siswa hlm. 70 sampai 72) ------------------------------ */
-export const ADEGAN_EKS31B: AdeganStory = {
-  id: "eks-31b-lompat",
-  judul: "Lompat jauh Yohana",
-  sumber: "Materi: lompat jauh Yohana",
-  latar: "#F0FDF4",
-  kutipan: [
-    "Yohana seorang atlet lompat jauh.",
-    "untuk mempersiapkan kejuaraan.",
-    "Yohana mengurutkan hasil lompatannya dari jarak yang terjauh",
-    "sampai terdekat? Lompatan mana yang paling panjang?",
-    "Terlebih dahulu, mari kita berlatih mengubah bentuk pecahan",
-    "campuran menjadi bentuk pecahan biasa.",
-    "Mengubah ke bentuk pecahan biasa",
-  ],
-  ketukan: [
-    k(
-      "Sekarang kita ikut latihan Yohana. Yohana atlet lompat jauh dan rajin berlatih untuk kejuaraan. Tiga lompatannya: dua dan tiga per empat meter, tiga dan satu per dua meter, serta tujuh per delapan meter.",
-      tambah(0, judul("Lompat jauh Yohana")),
-      tambah("Yohana", emo("yh", 40, 66, "🤸", 34)),
-      tambah("lompatannya:", ...tabel("lm", 70, 40, [64, 118], [["Lompatan", "Jarak"]], 22, 9, W.krem)),
-      tambah("empat", ...tabel("lm1", 70, 62, [64, 118], [["1", "2 3/4 m"]], 22, 10, W.putih)),
-      tambah("dua@2", ...tabel("lm2", 70, 84, [64, 118], [["2", "3 1/2 m"]], 22, 10, W.putih)),
-      tambah("delapan", ...tabel("lm3", 70, 106, [64, 118], [["3", "7/8 m"]], 22, 10, W.putih)),
-    ),
-    k(
-      "Pertanyaannya, dapatkah kalian membantu Yohana mengurutkan lompatan dari yang terjauh sampai terdekat? Lompatan mana yang paling panjang?",
-      tambah("terjauh", ...kartu("tj", 30, 146, 90, 28, W.hijauMuda, ["terjauh"], 9.4)),
-      tambah("sampai", panah("pj", 124, 160, 52, 0, W.biru, 2, { gambar: true })),
-      tambah("terdekat?", ...kartu("td", 180, 146, 90, 28, W.pink, ["terdekat"], 9.4)),
-      tambah("paling", teks("pq", 150, 192, "mana yang paling panjang?", 9.6, W.merah)),
-    ),
-    k(
-      "Langkah pertama, menyamakan bentuk pecahan. Pecahan campuran diubah dulu menjadi pecahan biasa. Itu berlaku untuk dua dan tiga per empat, serta tiga dan satu per dua.",
-      sorotkan("campuran", "lm1-s01", "lm2-s01"),
-      tambah("diubah", teks("cb", 256, 76, "campuran", 8, W.merah, { anchor: "start" }), teks("cb2", 256, 98, "campuran", 8, W.merah, { anchor: "start" })),
-      tambah("biasa.", teks("sb", 256, 120, "biasa", 8, W.hijau, { anchor: "start" })),
-    ),
-    k(
-      "Dua dan tiga per empat: dua kali empat, lalu tambah tiga, hasilnya sebelas, tetap per empat. Jadi sebelas per empat.",
-      bersih(0),
-      tambah(0, judul("Campuran menjadi biasa")),
-      tambah(0, teks("m1", 150, 58, "2 3/4", 22, W.biru)),
-      tambah("kali", teks("m2", 150, 100, "(2 × 4) + 3 = 11", 14, W.biru)),
-      tambah("tetap", teks("m3", 150, 126, "penyebut tetap 4", 9.6, W.ungu)),
-      tambah("Jadi", teks("m4", 150, 168, "2 3/4 = 11/4", 20, W.merah)),
-    ),
-    k(
-      "Tiga dan satu per dua: tiga kali dua, lalu tambah satu, hasilnya tujuh, tetap per dua. Jadi tujuh per dua.",
-      bersih(0),
-      tambah(0, judul("Campuran menjadi biasa")),
-      tambah(0, teks("n1", 150, 58, "3 1/2", 22, W.biru)),
-      tambah("kali", teks("n2", 150, 100, "(3 × 2) + 1 = 7", 14, W.biru)),
-      tambah("tetap", teks("n3", 150, 126, "penyebut tetap 2", 9.6, W.ungu)),
-      tambah("Jadi", teks("n4", 150, 168, "3 1/2 = 7/2", 20, W.merah)),
-    ),
-  ],
-};

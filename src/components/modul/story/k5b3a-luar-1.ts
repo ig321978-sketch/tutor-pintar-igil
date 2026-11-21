@@ -1,220 +1,231 @@
 import type { AdeganStory } from "./logika-story";
-import { PITA, W, batang, emo, garis, garisBilangan, judul, kartu, kotak, pai, panah, penanda, teks } from "./k5b3a-gambar";
-import { bersih, k, tambah } from "./k5b3a-bantu";
+import { E, W, barPec, bulat, campur, emo, garis, garisBil, judul, kantong, kotak, panah, pecahan, tanah, teks, tokoh, xBil } from "./k5b3a-gambar";
+import { bersih, hapus, idx, k, tambah, ubah } from "./k5b3a-bantu";
 
-/** Garis bilangan 0 sampai 1 untuk metode garis bilangan dan patokan: titik 0 di x = 40, satu satuan 220 piksel. */
-export const G01 = { x: 40, satuan: 220, y: 100 };
-/** Garis bilangan 2 sampai 3 untuk pita Nisa: titik 2 di x = 30, satu satuan 230 piksel. */
-export const G23 = { x: 30, satuan: 230, y: 100, awal: 2 };
+/*
+ * Cerita orisinal IGIL "Tiga Kantong Tepung Bu Ratna" (Kelas 5 Bab 3 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k5b3a.md. Bagian ini: pembuka (tiga kantong yang harus diurutkan tanpa keliru), Number Line (Garis Bilangan) dan terapannya,
+ * Common Denominator (Penyebut Sama) dan terapannya.
+ */
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
+export const NAMA_METODE = ["Number Line", "Common Denominator", "Mixed to Improper"] as const;
+export const NAMA_METODE_ID = ["Garis Bilangan", "Penyebut Sama", "Campuran ke Biasa"] as const;
+
+export const KP = { merah: "#FCA5A5", biru: "#BAE6FD", kapur: "#FEF9C3", hijau: "#86EFAC" };
+
+/** Kartu judul cara: papan gelap `pt`, nama Inggris `nm`, nama Indonesia `ni`, ikon `ik`. */
+export const kartuCara = (suara: string, nomor: string, inggris: string, indonesia: string, ikon: string) => [
+  tambah(0, judul(`Cara ${nomor}: ${inggris}`), kotak("pt", 8, 32, 284, 120, "#1E293B", "#0F172A", { rx: 6, tebal: 1.4, z: -1 })),
+  tambah(idx(suara, inggris.split(" ")[0]), teks("nm", 150, 74, inggris, 14, KP.merah, { z: 3 })),
+  tambah(idx(suara, indonesia.split(" ")[0]), teks("ni", 150, 96, indonesia, 10, KP.kapur, { z: 3 })),
+  tambah(idx(suara, indonesia.split(" ")[1]), emo("ik", 150, 134, ikon, 24, { z: 3 })),
+];
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Malam itu, Bu Ratna masih menata tepung, dan tiga kantongnya harus diurutkan tanpa keliru.";
+const SUARA_O2 = "Ada tiga cara supaya pecahan bisa dibandingkan dengan tepat, bahkan ketika bentuknya berbeda-beda.";
+const SUARA_O3 = "Tiga cara itu: Number Line, Common Denominator, dan Mixed to Improper.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Garis Bilangan, Penyebut Sama, dan Campuran ke Biasa.";
+
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk membandingkan dan mengurutkan pecahan",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Kantong Bu Ratna",
+  sumber: "Metode global: pembuka",
+  latar: W.taman,
   ketukan: [
     k(
-      "Bagaimana kita membandingkan dan mengurutkan pecahan? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari lompatan Yohana dan pita Nisa.",
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("pecahan?", ...pai("pp", 62, 112, 32, 4, 1)),
-      tambah("berbagai", emo("gl", 170, 104, "🌍", 50)),
-      tambah("angka", teks("pa", 150, 176, "lompatan Yohana dan pita Nisa", 9.4, W.biru)),
+      SUARA_O1,
+      tambah(0, judul("Kantong Bu Ratna"), ...tanah("tn", 150)),
+      tambah("Bu", ...tokoh("bu", 52, 184, "Bu Ratna")),
+      tambah("tepung,", ...kantong("ka", 150, 128), ...kantong("kb", 196, 128), ...kantong("kc", 242, 128)),
+      tambah("tiga", teks("t3", 196, 50, "3 kantong", 11, W.pinkTua)),
+      tambah("keliru.", teks("kl", 196, 148, "urutan tanpa keliru", 9.5, W.merah)),
     ),
     k(
-      "Empat metode itu: Number Line Fractions, Equivalent Fractions, Mixed to Improper, dan Benchmark Half Comparison.",
+      SUARA_O2,
       bersih(0),
-      tambah(0, judul("Empat metode")),
-      tambah("Number", ...kartu("m1", 12, 34, 276, 30, W.hijauMuda, ["1. Number Line Fractions"], 9.6)),
-      tambah("Equivalent", ...kartu("m2", 12, 72, 276, 30, W.langit, ["2. Equivalent Fractions"], 9.6)),
-      tambah("Mixed", ...kartu("m3", 12, 110, 276, 30, W.krem, ["3. Mixed to Improper"], 9.6)),
-      tambah("Benchmark", ...kartu("m4", 12, 148, 276, 30, W.pink, ["4. Benchmark Half Comparison"], 9.6)),
+      tambah(0, judul("Tiga Cara"), ...tanah("tn", 150)),
+      tambah("tiga", teks("n3", 262, 44, "3 cara", 10, W.merah)),
+      tambah("cara", ...[0, 1, 2].flatMap((i) => [kotak(`c${i}-k`, 20 + i * 92, 56, 80, 36, W.jingga, W.coklat, { rx: 4 }), teks(`c${i}-t`, 60 + i * 92, 79, "cara", 9, W.coklat)])),
+      tambah("tepat,", emo("ok", 150, 112, E.benar, 22)),
+      tambah("berbeda-beda.", ...pecahan("s1", 60, 132, 3, 4, 12), ...campur("s2", 150, 132, 1, 1, 2, 12), ...pecahan("s3", 240, 132, 7, 8, 12)),
     ),
     k(
-      "Semuanya memegang satu gagasan: pecahan bisa dibandingkan kalau ditaruh pada ukuran yang sama, yaitu letak yang sama di garis, penyebut yang sama, atau patokan yang sama.",
-      bersih(0),
-      tambah(0, judul("Satu gagasan yang sama")),
-      tambah("letak", emo("i1", 52, 80, "📏", 36), teks("i1t", 52, 112, "letak sama", 9, W.biru)),
-      tambah("penyebut", emo("i2", 150, 80, "🔢", 36), teks("i2t", 150, 112, "penyebut sama", 9, W.biru)),
-      tambah("patokan", emo("i3", 248, 80, "🎯", 36), teks("i3t", 248, 112, "patokan sama", 9, W.biru)),
-      tambah("ukuran", ...kartu("ig", 50, 136, 200, 34, W.emas, ["pecahan sebanding"], 10)),
+      SUARA_O3,
+      hapus(0, "s1-a", "s1-l", "s1-b", "s2-w", "s2f-a", "s2f-l", "s2f-b", "s3-a", "s3-l", "s3-b"),
+      tambah("Number", teks("m0", 120, 118, "1. Number Line", 10, W.hijauTua), emo("i0", 40, 118, E.penggaris, 16)),
+      tambah("Common", teks("m1", 120, 138, "2. Common Denominator", 10, W.hijauTua), emo("i1", 40, 138, "\u{1F522}", 16)),
+      tambah("Mixed", teks("m2", 120, 158, "3. Mixed to Improper", 10, W.hijauTua), emo("i2", 40, 158, E.ubah, 16)),
     ),
     k(
-      "Angkanya: lompatan Yohana dua dan tiga per empat, tiga dan satu per dua, serta tujuh per delapan meter, juga pita Nisa dua dan dua per lima, dua dan satu per empat, serta dua dan satu per dua meter.",
-      bersih(0),
-      tambah(0, judul("Angka dari dua cerita")),
-      tambah("Yohana", ...kartu("a1", 14, 38, 272, 50, W.hijauMuda, ["lompatan Yohana", "2 3/4 m, 3 1/2 m, 7/8 m"], 9.6)),
-      tambah("Nisa", ...kartu("a2", 14, 104, 272, 50, W.langit, ["pita Nisa", "2 2/5 m, 2 1/4 m, 2 1/2 m"], 9.6)),
+      SUARA_O4,
+      hapus(0, "ok"),
+      tambah("Nama", kotak("bk", 190, 104, 104, 70, "#14532D", W.putih, { rx: 6, tebal: 1, z: -1 })),
+      tambah("Garis", teks("g0", 242, 122, "Garis Bilangan", 8.4, W.sorot)),
+      tambah("Penyebut", teks("g1", 242, 142, "Penyebut Sama", 8.4, W.sorot)),
+      tambah("Campuran", teks("g2", 242, 162, "Campuran ke Biasa", 8.4, W.sorot)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Number Line Fractions: konsep ------------------------------ */
-const garis01 = (id: string) => garisBilangan(id, G01.x, G01.y, G01.satuan, 1, 10);
-const titik01 = (id: string, nilai: number, label: string, warna: string = W.merah, bawah = 14) => penanda(id, G01.x, G01.y, G01.satuan, nilai, label, warna, bawah, 9);
+/* ------------------------------ Number Line: konsep ------------------------------ */
+const SUARA_L1 = "Cara pertama, Number Line, atau Garis Bilangan.";
+const SUARA_L2 = "Kita menaruh setiap pecahan pada satu garis lurus yang diberi tanda bilangan bulat.";
+const SUARA_L3 = "Pecahan yang letaknya lebih ke kanan lebih besar, dan yang lebih ke kiri lebih kecil.";
+const SUARA_L4 = "Dengan begitu kita tinggal membaca urutannya dari kiri ke kanan.";
+const GL = garisBil("gl", 30, 270, 104, 4);
 
 export const ADEGAN_LUAR_GARIS: AdeganStory = {
   id: "luar-garis",
-  judul: "Number Line Fractions: pecahan di garis bilangan",
-  sumber: "Metode luar: Number Line Fractions",
-  latar: "#F5F3FF",
+  judul: "Number Line: Garis",
+  sumber: "Metode global: Number Line (konsep)",
+  latar: W.taman,
   ketukan: [
+    k(SUARA_L1, ...kartuCara(SUARA_L1, "1", "Number Line", "Garis Bilangan", E.penggaris)),
     k(
-      "Metode pertama, Number Line Fractions, atau pecahan di garis bilangan. Gambarlah garis bilangan, tandai nol dan satu, lalu bagi sama panjang sesuai penyebut. Letak pecahan menunjukkan besarnya.",
-      tambah(0, judul("Number Line Fractions")),
-      tambah("Gambarlah", ...garis01("nl")),
-      tambah("bagi", ...[1, 2, 3].map((i) => garis(`nq${i}`, G01.x + (i * G01.satuan) / 4, G01.y - 4, 0, 8, W.biru, 1.2)), teks("nb", 150, 140, "dibagi 4 sama panjang", 9.4, W.ungu)),
-      tambah("Letak", ...titik01("nm", 3 / 4, "3/4")),
+      SUARA_L2,
+      bersih(0),
+      tambah(0, judul("Satu Garis Lurus"), ...tanah("tn", 150)),
+      tambah("garis", GL[0]),
+      tambah("tanda", ...GL.slice(1)),
+      tambah("pecahan", bulat("mk", xBil(30, 270, 4, 1.5), 104, 4.5, W.merah, W.putih, { z: 3 }), ...campur("mc", xBil(30, 270, 4, 1.5), 66, 1, 1, 2, 14, W.merah)),
     ),
     k(
-      "Langkahnya tiga. Tandai nol dan bilangan bulat yang dibutuhkan. Bagi tiap satuan sesuai penyebut. Letakkan titik pecahan, lalu bandingkan: yang lebih ke kanan lebih besar.",
-      bersih(0),
-      tambah(0, judul("Tiga langkah")),
-      tambah("Tandai", ...kartu("l1", 14, 32, 272, 30, W.hijauMuda, ["1. tandai 0 dan bilangan bulat"], 9.4)),
-      tambah("Bagi", ...kartu("l2", 14, 70, 272, 30, W.langit, ["2. bagi tiap satuan sesuai penyebut"], 9.4)),
-      tambah("Letakkan", ...kartu("l3", 14, 108, 272, 30, W.krem, ["3. letakkan titik pecahan"], 9.4)),
-      tambah("kanan", ...kartu("l4", 14, 146, 272, 30, W.pink, ["4. lebih ke kanan = lebih besar"], 9.4)),
+      SUARA_L3,
+      tambah("kanan", panah("pr", 150, 150, 100, 0, W.hijauTua, 3), emo("hk", 262, 150, E.tunjuk, 18)),
+      tambah("besar,", teks("tr", 200, 136, "makin besar", 10, W.hijauTua)),
+      tambah("kecil.", panah("pl", 130, 150, -100, 0, W.merah, 3), teks("tl", 80, 136, "makin kecil", 10, W.merah)),
     ),
     k(
-      "Contoh kecil dari Mengingat Kembali: satu per dua dan satu per lima pada garis dari nol sampai satu. Satu per lima dekat nol, satu per dua di tengah, jadi satu per dua lebih besar.",
-      bersih(0),
-      tambah(0, judul("Satu per dua atau satu per lima?")),
-      tambah(0, ...garis01("ct")),
-      tambah("dua", ...titik01("c1_2", 1 / 2, "1/2")),
-      tambah("lima", ...titik01("c1_5", 1 / 5, "1/5", W.biru)),
-      tambah("jadi", ...kartu("ck", 80, 150, 140, 30, W.emas, ["1/2 > 1/5"], 12)),
-    ),
-    k(
-      "Kelebihannya, urutan langsung terlihat dan pecahan campuran bisa ditempatkan di antara dua bilangan bulat. Kekurangannya, kalau penyebutnya besar, garis harus dibagi dengan teliti.",
-      bersih(0),
-      tambah(0, judul("Kelebihan dan kekurangan")),
-      tambah("Kelebihannya,", ...kartu("kl", 14, 40, 130, 62, W.hijauMuda, ["urutan langsung", "terlihat, campuran", "mudah ditempatkan"], 8.6), emo("kle", 79, 128, "👍", 26)),
-      tambah("Kekurangannya,", ...kartu("kk", 156, 40, 130, 62, W.merahMuda, ["penyebut besar:", "garis harus dibagi", "dengan teliti"], 8.6)),
+      SUARA_L4,
+      hapus(0, "tr", "tl", "hk"),
+      tambah("membaca", emo("mt", 150, 70, E.mata, 22), teks("bc", 150, 176, "baca dari kiri ke kanan", 10, W.coklat)),
+      ubah("kanan.", { id: "pr", warna: W.biru, tebal: 4 }),
     ),
   ],
 };
 
-/* ------------------------------ 3. Number Line Fractions: penerapan pada pita Nisa ------------------------------ */
-const garis23 = (id: string) => garisBilangan(id, G23.x, G23.y, G23.satuan, 3, 10, G23.awal);
-const titikPita = (indeks: number, bawah: number, warna: string) => {
-  const c = PITA[indeks];
-  const [bulatTanda] = penanda(`pt-m${indeks}`, G23.x, G23.y, G23.satuan, c.bulat + c.p / c.q, "", warna, bawah, 8.4, G23.awal);
-  return [bulatTanda, teks(`pt-m${indeks}-n`, G23.x + (c.bulat + c.p / c.q - G23.awal) * G23.satuan, G23.y + bawah, `${c.bulat} ${c.p}/${c.q}`, 8.4, warna)];
-};
+/* ------------------------------ Number Line: terapan ------------------------------ */
+const SUARA_M1 = "Bima menaruh satu bulat tujuh per delapan antara satu dan dua pada garis.";
+const SUARA_M2 = "Ia menaruh dua bulat tiga per empat antara dua dan tiga, dan tiga bulat satu per dua di dekat empat.";
+const SUARA_M3 = "Cocok untuk pecahan yang jaraknya jauh, karena letaknya langsung terlihat.";
+const SUARA_M4 = "Kurang cocok untuk pecahan yang sangat berdekatan, karena garisnya harus digambar sangat teliti.";
+const GM = garisBil("gm", 40, 280, 112, 4);
 
 export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
   id: "luar-garis-terapan",
-  judul: "Number Line Fractions pada pita Nisa",
-  sumber: "Metode luar: Number Line Fractions",
-  latar: "#F5F3FF",
+  judul: "Garis: kapan cocok",
+  sumber: "Metode global: Number Line (terapan)",
+  latar: W.taman,
   ketukan: [
     k(
-      "Terapkan pada pita Nisa. Karena bulatnya sama, yaitu dua, kita cukup memperbesar bagian antara dua dan tiga pada garis bilangan.",
-      tambah(0, judul("Pita Nisa pada garis bilangan")),
-      tambah("Karena", ...garis23("pt")),
-      tambah("memperbesar", teks("pz", 150, 150, "perbesar bagian dari 2 sampai 3", 9.4, W.ungu)),
+      SUARA_M1,
+      tambah(0, judul("Letak di Garis"), ...tanah("tn", 150), ...GM, ...tokoh("bm", 26, 184, "Bima")),
+      tambah("menaruh", bulat("p1", xBil(40, 280, 4, 1.875), 112, 4.5, W.biru, W.putih, { z: 3 }), garis("l1", xBil(40, 280, 4, 1.875), 96, 0, 12, W.biru, 1.2, { putus: true })),
+      tambah("tujuh", ...campur("c1", xBil(40, 280, 4, 1.875), 78, 1, 7, 8, 13, W.biru)),
     ),
     k(
-      "Dua dan satu per empat berada seperempat jalan dari dua menuju tiga, jadi letaknya dekat dengan dua.",
-      tambah("seperempat", ...titikPita(1, 14, W.merah)),
+      SUARA_M2,
+      tambah("menaruh", bulat("p2", xBil(40, 280, 4, 2.75), 112, 4.5, W.hijauTua, W.putih, { z: 3 }), garis("l2", xBil(40, 280, 4, 2.75), 70, 0, 38, W.hijauTua, 1.2, { putus: true })),
+      tambah("empat", ...campur("c2", xBil(40, 280, 4, 2.75), 52, 2, 3, 4, 13, W.hijauTua)),
+      tambah(idx(SUARA_M2, "tiga", 2), bulat("p3", xBil(40, 280, 4, 3.5), 112, 4.5, W.merah, W.putih, { z: 3 }), garis("l3", xBil(40, 280, 4, 3.5), 96, 0, 12, W.merah, 1.2, { putus: true }), ...campur("c3", xBil(40, 280, 4, 3.5), 78, 3, 1, 2, 13, W.merah)),
     ),
     k(
-      "Dua dan dua per lima lebih ke kanan, hampir di tengah. Dua dan satu per dua tepat di tengah antara dua dan tiga.",
-      tambah("lima", ...titikPita(0, 28, W.hijau)),
-      tambah("tepat", ...titikPita(2, 14, W.biru)),
+      SUARA_M3,
+      tambah("Cocok", emo("ok", 262, 150, E.benar, 22)),
+      tambah("jauh,", teks("jh", 140, 150, "jaraknya jauh: mudah dilihat", 10, W.hijauTua)),
     ),
     k(
-      "Baca dari kiri ke kanan: dua dan satu per empat, dua dan dua per lima, lalu dua dan satu per dua. Itu urutan pita Nisa dari yang terpendek.",
-      tambah(9, teks("o1", G23.x + (2.25 - 2) * G23.satuan, G23.y - 22, "1", 12, W.merah)),
-      tambah(14, teks("o2", G23.x + (2.4 - 2) * G23.satuan, G23.y - 22, "2", 12, W.hijau)),
-      tambah(20, teks("o3", G23.x + (2.5 - 2) * G23.satuan, G23.y - 22, "3", 12, W.biru)),
-      tambah("terpendek.", ...kartu("ot", 40, 166, 220, 28, W.emas, ["dari terpendek: 1, 2, 3"], 9.8)),
+      SUARA_M4,
+      hapus(0, "ok", "jh"),
+      tambah("Kurang", emo("xs", 262, 150, E.salah, 22)),
+      tambah("berdekatan,", teks("dk", 140, 150, "sangat dekat: perlu teliti", 10, W.merah)),
+      tambah("teliti.", emo("kc", 262, 60, "\u{1F50D}", 22)),
     ),
   ],
 };
 
-/* ------------------------------ 4. Equivalent Fractions: konsep ------------------------------ */
-export const ADEGAN_LUAR_SENILAI: AdeganStory = {
-  id: "luar-senilai",
-  judul: "Equivalent Fractions: pecahan senilai",
-  sumber: "Metode luar: Equivalent Fractions",
-  latar: "#F0F9FF",
+/* ------------------------------ Common Denominator: konsep ------------------------------ */
+const SUARA_T1 = "Cara kedua, Common Denominator, atau Penyebut Sama.";
+const SUARA_T2 = "Kita mencari KPK dari semua penyebut, lalu mengubah setiap pecahan ke penyebut itu.";
+const SUARA_T3 = "Kalau penyebutnya sudah sama, pecahan dengan pembilang terbesar adalah yang terbesar.";
+const SUARA_T4 = "Pecahan yang sama besar tetap menunjuk bagian yang sama, hanya tulisannya yang berganti.";
+
+export const ADEGAN_LUAR_PENYEBUT: AdeganStory = {
+  id: "luar-penyebut",
+  judul: "Common Denominator",
+  sumber: "Metode global: Common Denominator (konsep)",
+  latar: W.taman,
   ketukan: [
+    k(SUARA_T1, ...kartuCara(SUARA_T1, "2", "Common Denominator", "Penyebut Sama", "\u{1F522}")),
     k(
-      "Metode kedua, Equivalent Fractions, atau pecahan senilai. Pecahan yang tulisannya beda tetapi menunjukkan bagian yang sama. Satu per dua sama dengan dua per empat, juga empat per delapan.",
-      tambah(0, judul("Equivalent Fractions")),
-      tambah("Satu", ...batang("e2", 20, 40, 140, 26, 2, 1), teks("f2", 200, 59, "1/2", 14, W.biru)),
-      tambah("empat,", ...batang("e4", 20, 84, 140, 26, 4, 2), teks("f4", 200, 103, "2/4", 14, W.biru)),
-      tambah("delapan.", ...batang("e8", 20, 128, 140, 26, 8, 4), teks("f8", 200, 147, "4/8", 14, W.biru)),
-      tambah("juga", teks("fe", 150, 184, "1/2 = 2/4 = 4/8", 14, W.merah)),
+      SUARA_T2,
+      bersih(0),
+      tambah(0, judul("Cari KPK Penyebut"), ...tanah("tn", 150)),
+      tambah("KPK", teks("kp", 150, 48, "KPK = 12", 16, W.merah), ...pecahan("o1", 60, 100, 1, 3, 20), ...pecahan("o2", 116, 100, 1, 4, 20)),
+      tambah("mengubah", panah("ar", 146, 100, 34, 0, W.merah, 3)),
+      tambah("penyebut", ...pecahan("n1", 214, 100, 4, 12, 20, W.hijauTua), ...pecahan("n2", 268, 100, 3, 12, 20, W.hijauTua)),
+      tambah("itu.", teks("sm", 150, 156, "penyebut jadi sama", 10, W.coklat)),
     ),
     k(
-      "Aturannya: kalikan pembilang dan penyebut dengan bilangan yang sama, bukan hanya penyebutnya. Nilai pecahan tidak berubah, hanya cara menulisnya.",
+      SUARA_T3,
       bersih(0),
-      tambah(0, judul("Kalikan atas dan bawah")),
-      tambah("kalikan", teks("a1", 56, 92, "3/4", 26, W.biru), panah("ap", 96, 88, 108, 0, W.biru, 2.4, { gambar: true }), teks("a2", 244, 92, "6/8", 26, W.biru), teks("ax", 150, 74, "× 2 pada atas dan bawah", 9.4, W.merah)),
-      tambah("bukan", ...kartu("sl", 40, 116, 220, 32, W.merahMuda, ["bukan: 3/4 → 3/8 (hanya penyebut)"], 9)),
-      tambah("tidak", ...kartu("bn", 70, 158, 160, 30, W.hijauMuda, ["nilainya tetap sama"], 9.6)),
+      tambah(0, judul("Pembilang Terbesar"), ...tanah("tn", 150), ...pecahan("p1", 24, 70, 4, 12, 11), ...pecahan("p2", 24, 110, 3, 12, 11)),
+      tambah("penyebutnya", ...barPec("b1", 44, 56, 220, 22, 12, 4), ...barPec("b2", 44, 96, 220, 22, 12, 3)),
+      tambah("pembilang", teks("pb", 150, 140, "pembilang terbesar menang", 10, W.merah)),
+      tambah("terbesar.", emo("bt", 150, 40, E.bintang, 18)),
     ),
     k(
-      "Kegunaan utamanya: menyamakan penyebut. Dengan penyebut sama, dua pecahan bisa dibandingkan lewat pembilangnya saja.",
+      SUARA_T4,
       bersih(0),
-      tambah(0, judul("Menyamakan penyebut")),
-      tambah("Kegunaan", teks("b1", 150, 62, "3/4 dan 5/8", 20, W.biru)),
-      tambah(6, teks("b2", 150, 108, "6/8 dan 5/8", 20, W.biru)),
-      tambah("pembilangnya", ...kartu("b3", 80, 132, 140, 34, W.emas, ["6 lebih besar dari 5"], 9.6)),
-    ),
-    k(
-      "Kekurangannya, kita harus mencari penyebut bersama lebih dulu, misalnya dengan KPK. Kalau penyebutnya banyak, langkahnya bertambah.",
-      bersih(0),
-      tambah(0, judul("Kekurangan metode ini")),
-      tambah("Kekurangannya,", ...kartu("c1", 20, 40, 260, 34, W.merahMuda, ["cari penyebut bersama dulu"], 9.8)),
-      tambah("KPK.", ...kartu("c2", 20, 84, 260, 34, W.krem, ["misalnya dengan KPK"], 9.8)),
-      tambah("banyak,", ...kartu("c3", 20, 128, 260, 34, W.pink, ["penyebut banyak: langkah bertambah"], 9.8)),
+      tambah(0, judul("Sama Besar"), ...tanah("tn", 150), ...pecahan("e1", 24, 70, 1, 3, 11), ...pecahan("e2", 24, 110, 4, 12, 11)),
+      tambah("sama", ...barPec("c1", 44, 56, 220, 22, 3, 1), ...barPec("c2", 44, 96, 220, 22, 12, 4)),
+      tambah("bagian", teks("sb", 150, 140, "bagian yang sama, tulisan berbeda", 9.5, W.hijauTua)),
+      tambah("berganti.", emo("ub", 150, 40, E.ubah, 20)),
     ),
   ],
 };
 
-/* ------------------------------ 5. Equivalent Fractions: penerapan pada lompatan Yohana ------------------------------ */
-const bar = (id: string, y: number, pembilang: number, warna: string) => kotak(id, 30, y, pembilang * 6, 20, warna, W.biru, { rx: 4 });
+/* ------------------------------ Common Denominator: terapan ------------------------------ */
+const SUARA_U1 = "Citra mengubah tiga per empat dan lima per delapan menjadi pecahan berpenyebut delapan.";
+const SUARA_U2 = "Tiga per empat menjadi enam per delapan, dan enam lebih besar daripada lima.";
+const SUARA_U3 = "Cocok untuk membandingkan dua atau tiga pecahan yang penyebutnya berbeda.";
+const SUARA_U4 = "Kurang cocok untuk penyebut yang sangat besar, karena KPK-nya jadi sulit dicari.";
 
-export const ADEGAN_LUAR_SENILAI_TERAPAN: AdeganStory = {
-  id: "luar-senilai-terapan",
-  judul: "Equivalent Fractions pada lompatan Yohana",
-  sumber: "Metode luar: Equivalent Fractions",
-  latar: "#F0F9FF",
+export const ADEGAN_LUAR_PENYEBUT_TERAPAN: AdeganStory = {
+  id: "luar-penyebut-terapan",
+  judul: "Penyebut: kapan cocok",
+  sumber: "Metode global: Common Denominator (terapan)",
+  latar: W.taman,
   ketukan: [
     k(
-      "Terapkan pada lompatan Yohana, yang sudah berbentuk sebelas per empat, tujuh per dua, dan tujuh per delapan. Penyebutnya berbeda, KPK-nya delapan, jadi semuanya diubah ke per delapan.",
-      tambah(0, judul("Lompatan Yohana")),
-      tambah("sebelas", ...kartu("y1", 10, 40, 86, 34, W.hijauMuda, ["11/4"], 14)),
-      tambah("tujuh", ...kartu("y2", 107, 40, 86, 34, W.langit, ["7/2"], 14)),
-      tambah("tujuh@2", ...kartu("y3", 204, 40, 86, 34, W.krem, ["7/8"], 14)),
-      tambah("KPK-nya", ...kartu("yk", 70, 100, 160, 34, W.emas, ["KPK 4, 2, 8 = 8"], 11)),
+      SUARA_U1,
+      tambah(0, judul("Citra Menyamakan"), ...tanah("tn", 150), ...tokoh("ct", 40, 184, "Citra")),
+      tambah("tiga", ...pecahan("u1", 110, 70, 3, 4, 20)),
+      tambah("lima", ...pecahan("u2", 200, 70, 5, 8, 20)),
+      tambah("menjadi", panah("ua", 110, 100, 0, 16, W.merah, 2.4), panah("ub", 200, 100, 0, 16, W.merah, 2.4)),
+      tambah("delapan.", teks("pd", 255, 70, "penyebut 8", 10, W.merah)),
     ),
     k(
-      "Sebelas per empat dikali dua atas dan bawah menjadi dua puluh dua per delapan. Tujuh per dua dikali empat menjadi dua puluh delapan per delapan.",
-      bersih(0),
-      tambah(0, judul("Ubah ke per delapan")),
-      tambah("Sebelas", teks("z1", 120, 66, "11/4 = 22/8", 17, W.biru), teks("zx1", 244, 66, "× 2", 11, W.merah)),
-      tambah("Tujuh", teks("z2", 120, 112, "7/2 = 28/8", 17, W.biru), teks("zx2", 244, 112, "× 4", 11, W.merah)),
+      SUARA_U2,
+      tambah("enam", ...pecahan("w1", 110, 144, 6, 8, 20, W.hijauTua)),
+      tambah("besar", teks("bd", 155, 148, "6 > 5", 14, W.merah)),
+      tambah("lima.", ...pecahan("w2", 200, 144, 5, 8, 20, W.hijauTua)),
     ),
     k(
-      "Tujuh per delapan sudah per delapan. Sekarang bandingkan pembilangnya: tujuh, dua puluh dua, dan dua puluh delapan. Yang terbesar dua puluh delapan.",
+      SUARA_U3,
       bersih(0),
-      tambah(0, judul("Bandingkan pembilangnya")),
-      tambah(9, bar("p7", 44, 7, W.krem), teks("l7", 32 + 7 * 6, 58, "7/8", 11, W.biru, { anchor: "start" })),
-      tambah(10, bar("p22", 84, 22, W.langit), teks("l22", 34 + 22 * 6, 98, "22/8", 11, W.biru, { anchor: "start" })),
-      tambah(14, bar("p28", 124, 28, W.hijauMuda), teks("l28", 34 + 28 * 6, 138, "28/8", 11, W.biru, { anchor: "start" })),
-      tambah("terbesar", teks("tb", 150, 178, "terbesar: 28", 12, W.merah)),
+      tambah(0, judul("Kapan Cocok"), ...tanah("tn", 150)),
+      tambah("Cocok", emo("ok", 262, 80, E.benar, 24)),
+      tambah("dua", teks("d2", 140, 70, "2 atau 3 pecahan", 12, W.hijauTua)),
+      tambah("berbeda.", teks("pb", 140, 110, "penyebut berbeda", 12, W.coklat)),
     ),
     k(
-      "Jadi urutan dari terbesar: dua puluh delapan per delapan, dua puluh dua per delapan, lalu tujuh per delapan. Itu tiga dan satu per dua meter, dua dan tiga per empat meter, lalu tujuh per delapan meter.",
-      bersih(0),
-      tambah(0, judul("Urutan dari terbesar")),
-      tambah("Jadi", ...kartu("w1", 40, 38, 240, 34, W.hijauMuda, ["28/8 = 3 1/2 m"], 11), emo("wm1", 20, 62, "🥇", 22)),
-      tambah(9, ...kartu("w2", 40, 82, 240, 34, W.langit, ["22/8 = 2 3/4 m"], 11), emo("wm2", 20, 106, "🥈", 22)),
-      tambah(14, ...kartu("w3", 40, 126, 240, 34, W.krem, ["7/8 m"], 11), emo("wm3", 20, 150, "🥉", 22)),
+      SUARA_U4,
+      hapus(0, "ok"),
+      tambah("Kurang", emo("xs", 262, 80, E.salah, 24)),
+      tambah("besar,", teks("pk", 140, 150, "penyebut sangat besar", 11, W.merah)),
+      tambah("sulit", teks("ks", 140, 130, "KPK sulit dicari", 11, W.merah)),
     ),
   ],
 };

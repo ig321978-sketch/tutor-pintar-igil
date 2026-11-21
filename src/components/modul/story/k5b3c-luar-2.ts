@@ -1,205 +1,245 @@
 import type { AdeganStory } from "./logika-story";
-import { W, apel, emo, judul, kartu, rumus, sel, silang, tabel, teks } from "./k5b3c-gambar";
-import { LUKAS, YOHANA } from "./k5b3c-materi-1";
-import { bersih, k, sorotkan, tambah, warnai } from "./k5b3c-bantu";
+import { E, W, bar, campur, emo, idPec, judul, kartu, lantai, panah, pec, tanda, teks, tokoh } from "./k5b3c-gambar";
+import { bersih, k, sorotkan, tambah } from "./k5b3c-bantu";
 
-const BAR = { x: 40, y: 48, w: 222, h: 40 };
+/*
+ * Cerita orisinal IGIL "Sisa Adonan Bu Nani" (Kelas 5 Bab 3 Sub-Bab C), video metode global, lanjutan.
+ * Naskah suara dari naskah/story-naskah-k5b3c.md. Bagian ini: Match and Take Away (Samakan Lalu Kurangi), Split Whole and Part (Pisah Bulat dan Pecahan), terapannya, dan ringkasan.
+ */
 
-/* ------------------------------ 6. Residual Area Model: konsep ------------------------------ */
-export const ADEGAN_LUAR_RAM: AdeganStory = {
-  id: "luar-ram",
-  judul: "Residual Area Model: model daerah sisa",
-  sumber: "Metode luar: Residual Area Model",
-  latar: "#FFFBEB",
+/* ------------------------------ Match and Take Away: konsep ------------------------------ */
+const SUARA_M1 = "Cara kedua, Match and Take Away, atau Samakan Lalu Kurangi.";
+const SUARA_M2 = "Cari KPK dari kedua penyebut, lalu ubah tiap pecahan menjadi pecahan yang sama besar dengan penyebut itu.";
+const SUARA_M3 = "Sesudah penyebutnya sama, kurangkan pembilangnya seperti cara pertama.";
+const SUARA_M4 = "Hasilnya disederhanakan bila masih bisa.";
+
+export const ADEGAN_LUAR_SAMAKAN: AdeganStory = {
+  id: "luar-samakan",
+  judul: "Match and Take Away",
+  sumber: "Metode global: Match and Take Away (konsep)",
+  latar: "#EFF6FF",
   ketukan: [
     k(
-      "Metode ketiga, Residual Area Model, artinya model daerah sisa. Gambar keseluruhan, arsir bagian yang diambil, lalu hitung daerah yang tersisa.",
-      tambah(0, judul("Residual Area Model")),
-      tambah("Gambar", ...sel("rm", BAR.x, BAR.y, BAR.w, BAR.h, 4, [], W.langit), teks("rt", 150, 112, "keseluruhan: 4 kotak", 9.6, W.biru)),
-      warnai("arsir", W.langit, "rm-c0", "rm-c1", "rm-c2", "rm-c3"),
-      tambah("diambil,", ...silang("rm", BAR.x, BAR.y, BAR.w, BAR.h, 4, [2, 3]), teks("ru", 150, 136, "diambil: 2 kotak (dicoret)", 9.6, W.merah)),
-      sorotkan("tersisa.", "rm-c0", "rm-c1"),
-      tambah("tersisa.", teks("rv", 150, 164, "daerah sisa: 2 kotak", 9.6, W.hijau)),
+      SUARA_M1,
+      tambah(0, judul("Cara 2"), ...lantai("lt", 150), emo("rt", 150, 138, E.rantai, 34, { z: 3 })),
+      tambah("Match", teks("m1", 150, 62, "Match and Take Away", 14, W.merah, { z: 3 })),
+      tambah("Samakan", teks("m2", 150, 88, "Samakan Lalu Kurangi", 11.5, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Bagi daerah menjadi potongan sama besar sesuai penyebut bersama. Arsir sebanyak pecahan pertama, lalu coret sebanyak pecahan kedua. Kotak yang tidak tercoret itulah sisanya.",
+      SUARA_M2,
       bersih(0),
-      tambah(0, judul("Arsir, coret, hitung sisa")),
-      tambah("Bagi", ...sel("rn", BAR.x, BAR.y, BAR.w, BAR.h, 6, [], W.langit)),
-      warnai("Arsir", W.langit, "rn-c0", "rn-c1", "rn-c2", "rn-c3"),
-      tambah("coret", ...silang("rn", BAR.x, BAR.y, BAR.w, BAR.h, 6, [1, 2, 3])),
-      tambah("sisanya.", ...rumus("rr", 150, 128, "4/6 − 3/6 = 1/6", 22)),
+      tambah(0, judul("Cari KPK"), ...lantai("lt", 150), ...pec("a", 50, 80, 1, 2, 20), ...pec("b", 50, 124, 1, 3, 20, W.merah)),
+      tambah("KPK", teks("kp", 150, 46, "KPK kedua penyebut", 11, W.pinkTua, { z: 3 })),
+      tambah("ubah", panah("r1", 76, 80, 40, 0, W.biru, 2, { z: 2 }), panah("r2", 76, 124, 40, 0, W.biru, 2, { z: 2 })),
+      tambah("menjadi", ...pec("c", 160, 80, 3, 6, 20), ...pec("d", 160, 124, 2, 6, 20, W.merah)),
+      tambah("sama", teks("sb", 240, 104, "sama besar", 10.6, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Kelebihannya terlihat jelas, cocok untuk pemula dan untuk memeriksa jawaban. Kekurangannya sulit digambar bila penyebut besar, misalnya empat puluh potongan.",
+      SUARA_M3,
       bersih(0),
-      tambah(0, judul("Kelebihan dan kekurangan")),
-      tambah("Kelebihannya", ...kartu("kl", 14, 40, 130, 54, W.hijauMuda, ["terlihat jelas,", "cocok untuk pemula"], 9), emo("kle", 79, 120, "👍", 24)),
-      tambah("Kekurangannya", ...kartu("kk", 156, 40, 130, 54, W.merahMuda, ["sulit digambar", "bila penyebut besar"], 9), emo("kke", 221, 120, "🤔", 24)),
+      tambah(0, judul("Kurangi pembilang"), ...lantai("lt", 150), ...pec("a", 70, 88, 3, 6, 22), tanda("m1", 110, 90, "−", 24), ...pec("b", 150, 88, 2, 6, 22, W.merah), tanda("m2", 190, 90, "=", 24), teks("qq", 226, 94, "?", 22, W.merah, { z: 3 })),
+      tambah("sama", teks("sm", 110, 134, "penyebut sama: 6", 11, W.coklat, { z: 3 })),
+      sorotkan("pembilangnya", "ap", "bp"),
+      tambah("pertama", emo("rt", 260, 142, E.bintang, 22, { z: 3 })),
     ),
     k(
-      "Gambarnya bisa berupa kotak, batang, atau benda nyata seperti apel. Yang penting potongannya sama besar dan jumlahnya sesuai penyebut.",
+      SUARA_M4,
       bersih(0),
-      tambah(0, judul("Bentuk gambar boleh apa saja")),
-      tambah("kotak,", ...sel("sh1", 20, 44, 70, 60, 3, [0], W.langit, true), teks("s1t", 55, 124, "kotak", 9.6, W.biru)),
-      tambah("batang,", ...sel("sh2", 112, 60, 90, 24, 4, [0, 1], W.hijauMuda), teks("s2t", 157, 124, "batang", 9.6, W.biru)),
-      tambah("apel.", ...apel("sh3", 222, 56, () => W.merah, 14, 5.5), teks("s3t", 243, 124, "apel", 9.6, W.biru)),
-      tambah("Yang", teks("s4", 150, 164, "potongan harus sama besar", 10, W.merah)),
+      tambah(0, judul("Sederhanakan hasil"), ...lantai("lt", 150), ...pec("a", 86, 92, 2, 6, 24)),
+      tambah("bila", tanda("m1", 128, 94, "=", 24), ...pec("b", 170, 92, 1, 3, 24, W.hijauTua)),
+      tambah("bisa", emo("ok", 232, 96, E.benar, 28, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 7. Residual Area Model: penerapan ------------------------------ */
-export const ADEGAN_LUAR_RAM_TERAPAN: AdeganStory = {
-  id: "luar-ram-terapan",
-  judul: "Residual Area Model pada kertas Yohana dan apel Asep",
-  sumber: "Metode luar: Residual Area Model",
-  latar: "#FFFBEB",
+/* ------------------------------ Match and Take Away: terapan ------------------------------ */
+const SUARA_N1 = "Bima mengurangkan satu per tiga dari satu per dua, dengan KPK enam.";
+const SUARA_N2 = "Satu per dua menjadi tiga per enam, satu per tiga menjadi dua per enam, selisihnya satu per enam.";
+const SUARA_N3 = "Cocok untuk pecahan biasa berpenyebut berbeda.";
+const SUARA_N4 = "Kurang cocok untuk pecahan campuran yang besar, karena angkanya jadi panjang.";
+
+export const ADEGAN_LUAR_SAMAKAN_TERAPAN: AdeganStory = {
+  id: "luar-samakan-terapan",
+  judul: "Samakan: kapan cocok",
+  sumber: "Metode global: Match and Take Away (terapan)",
+  latar: "#EFF6FF",
   ketukan: [
     k(
-      "Kertas Yohana: bagi kertas menjadi enam kotak, sebab KPK dari tiga dan dua adalah enam. Arsir empat kotak untuk dua per tiga.",
-      tambah(0, judul("Kertas Yohana 1: arsir")),
-      tambah("Kertas", ...sel("yk", BAR.x, BAR.y, BAR.w, BAR.h, 6, [], W.langit)),
-      warnai("Arsir", W.langit, "yk-c0", "yk-c1", "yk-c2", "yk-c3"),
-      tambah("dua@2", ...rumus("yr", 150, 130, "2/3 = 4/6", 22)),
+      SUARA_N1,
+      tambah(0, judul("Samakan: kapan cocok"), ...lantai("lt", 150), ...tokoh("bm", 40, 184, "Bima")),
+      tambah("tiga", ...pec("b", 190, 84, 1, 3, 20, W.merah)),
+      tambah("dari", tanda("m1", 150, 86, "−", 22), ...pec("a", 110, 84, 1, 2, 20)),
+      tambah("KPK", teks("kp", 150, 128, "KPK 6", 13, W.pinkTua, { z: 3 })),
     ),
     k(
-      "Coret tiga kotak untuk satu per dua yang sudah dilukis. Tersisa satu kotak dari enam, jadi kekurangannya satu per enam.",
+      SUARA_N2,
       bersih(0),
-      tambah(0, judul("Kertas Yohana 2: coret")),
-      tambah(0, ...sel("yk", BAR.x, BAR.y, BAR.w, BAR.h, 6, [0, 1, 2, 3], W.langit)),
-      tambah("Coret", ...silang("yk", BAR.x, BAR.y, BAR.w, BAR.h, 6, [1, 2, 3])),
-      sorotkan("Tersisa", "yk-c0"),
-      tambah("jadi", ...rumus("yr", 150, 130, "4/6 − 3/6 = 1/6", 22)),
+      tambah(0, ...pec("a", 56, 50, 1, 2, 16)),
+      tambah("menjadi", tanda("e1", 96, 52, "=", 18)),
+      tambah("tiga", ...pec("b", 136, 50, 3, 6, 16, W.hijauTua)),
+      tambah("satu@2", ...pec("c", 56, 98, 1, 3, 16)),
+      tambah("menjadi@2", tanda("e2", 96, 100, "=", 18)),
+      tambah("dua@2", ...pec("d", 136, 98, 2, 6, 16, W.hijauTua)),
+      tambah("selisihnya", teks("sl", 56, 152, "selisih", 12, W.merah, { z: 3 })),
+      tambah("satu@3", ...pec("g", 136, 148, 1, 6, 16, W.pinkTua)),
     ),
     k(
-      "Apel Asep: delapan apel, enam diberikan kepada Lukas, dan dua apel diteruskan Lukas kepada Yohana. Apel Lukas yang tersisa tinggal empat dari delapan.",
+      SUARA_N3,
       bersih(0),
-      tambah(0, judul("Apel Asep: model daerah")),
-      tambah("delapan", ...apel("ap", 80, 56, () => W.putih)),
-      tambah("enam", teks("ak1", 150, 112, "hijau: ke Lukas (6)", 9, W.hijau)),
-      tambah("dua", teks("ak2", 150, 128, "abu: diteruskan ke Yohana (2)", 9, W.coklat)),
-      tambah("tinggal", teks("ak3", 150, 148, "tersisa: 4 dari 8", 10, W.hijau)),
+      tambah(0, judul("Cocok: pecahan biasa"), ...lantai("lt", 150), emo("ok", 150, 140, E.benar, 30, { z: 3 })),
+      tambah("pecahan", ...bar("ra", 40, 56, 2, 110, 22, 1), ...bar("rb", 40, 90, 3, 73.3, 22, 1)),
+      tambah("biasa", teks("bs", 150, 124, "penyebut beda", 11, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Empat dari delapan apel sama dengan setengah. Cocok dengan hitungan enam per delapan dikurangi dua per delapan, yaitu empat per delapan.",
+      SUARA_N4,
       bersih(0),
-      tambah(0, judul("Setengah daerah tersisa")),
-      tambah("Empat", ...apel("ap2", 80, 50, (i) => (YOHANA.includes(i) ? W.abu : LUKAS.includes(i) ? W.hijau : W.putih))),
-      tambah("setengah.", teks("sg", 150, 100, "setengah daerah tersisa", 10, W.hijau)),
-      tambah("Cocok", ...rumus("sr", 150, 144, "6/8 − 2/8 = 4/8 = 1/2", 19)),
+      tambah(0, judul("Kurang cocok: angka panjang"), ...lantai("lt", 150), emo("xx", 266, 160, E.salah, 28, { z: 3 })),
+      tambah("campuran", ...campur("x", 70, 94, 62, 5, 1, 2, 16), tanda("m1", 124, 64, "−", 20), ...campur("y", 156, 180, 62, 2, 1, 3, 16, W.merah)),
+      tambah("angkanya", ...pec("a", 62, 124, 33, 6, 16), tanda("m2", 104, 126, "−", 20), ...pec("b", 146, 124, 14, 6, 16, W.merah), tanda("m3", 186, 126, "=", 20), ...pec("c", 226, 124, 19, 6, 16, W.hijauTua)),
+      tambah("panjang", teks("pj", 150, 168, "angka jadi panjang", 11, W.merah, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 8. Add-Up Check: konsep ------------------------------ */
-export const ADEGAN_LUAR_AUP: AdeganStory = {
-  id: "luar-aup",
-  judul: "Add-Up Check: periksa pengurangan dengan penjumlahan balik",
-  sumber: "Metode luar: Add-Up Check",
-  latar: "#FDF2F8",
+/* ------------------------------ Split Whole and Part: konsep ------------------------------ */
+const SUARA_S1 = "Cara ketiga, Split Whole and Part, atau Pisah Bulat dan Pecahan.";
+const SUARA_S2 = "Pada pecahan campuran, kurangkan bilangan bulatnya sendiri dan pecahannya sendiri.";
+const SUARA_S3 = "Kalau penyebut pecahannya berbeda, samakan dulu pecahan itu.";
+const SUARA_S4 = "Setelah itu gabungkan hasil bilangan bulat dan hasil pecahan.";
+
+export const ADEGAN_LUAR_PISAH: AdeganStory = {
+  id: "luar-pisah",
+  judul: "Split Whole and Part",
+  sumber: "Metode global: Split Whole and Part (konsep)",
+  latar: "#F0FDF4",
   ketukan: [
     k(
-      "Metode keempat, Add-Up Check, yaitu memeriksa pengurangan dengan penjumlahan balik. Selisih ditambah pengurang harus kembali ke bilangan awal.",
-      tambah(0, judul("Add-Up Check")),
-      tambah("pengurangan", ...kartu("a1", 20, 38, 260, 34, W.langit, ["bilangan awal − pengurang = selisih"], 9.6)),
-      tambah("penjumlahan", emo("a2", 150, 104, "🔁", 26)),
-      tambah("Selisih", ...kartu("a3", 20, 120, 260, 34, W.hijauMuda, ["selisih + pengurang = bilangan awal"], 9.6)),
+      SUARA_S1,
+      tambah(0, judul("Cara 3"), ...lantai("lt", 150), emo("gt", 150, 138, E.gunting, 34, { z: 3 })),
+      tambah("Split", teks("m1", 150, 62, "Split Whole and Part", 14, W.merah, { z: 3 })),
+      tambah("Pisah", teks("m2", 150, 88, "Pisah Bulat dan Pecahan", 11.5, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Contohnya lima per enam dikurangi satu per enam sama dengan empat per enam. Periksa: empat per enam ditambah satu per enam sama dengan lima per enam. Cocok, jadi benar.",
+      SUARA_S2,
       bersih(0),
-      tambah(0, judul("Contoh pemeriksaan")),
-      tambah("Contohnya", ...rumus("c1", 150, 66, "5/6 − 1/6 = 4/6", 22)),
-      tambah("Periksa:", ...rumus("c2", 150, 124, "4/6 + 1/6 = 5/6", 22)),
-      tambah("Cocok,", emo("c3", 150, 180, "✅", 24)),
+      tambah(0, judul("Campuran dipisah"), ...lantai("lt", 150), ...campur("x", 84, 108, 90, 6, 3, 5, 20), tanda("m1", 150, 92, "−", 24), ...campur("y", 192, 216, 90, 2, 1, 5, 20, W.merah)),
+      sorotkan("bulatnya", "xb", "yb"),
+      sorotkan("pecahannya", ...idPec("x"), ...idPec("y")),
+      tambah("sendiri", teks("sd", 150, 140, "bulat sendiri, pecahan sendiri", 11, W.coklat, { z: 3 })),
     ),
     k(
-      "Bila hasil penjumlahan balik tidak sama dengan bilangan awal, ada yang salah. Kita hitung ulang, atau pernyataan soalnya memang salah.",
+      SUARA_S3,
       bersih(0),
-      tambah(0, judul("Kalau tidak cocok")),
-      tambah("Bila", ...kartu("d1", 20, 40, 260, 36, W.hijauMuda, ["sama dengan bilangan awal: benar"], 9.6), emo("d1e", 150, 98, "✅", 20)),
-      tambah("tidak", ...kartu("d2", 20, 118, 260, 36, W.merahMuda, ["tidak sama: ada yang salah"], 9.6), emo("d2e", 150, 176, "❌", 20)),
+      tambah(0, judul("Samakan pecahannya"), ...lantai("lt", 150), ...pec("a", 56, 80, 1, 2, 20), ...pec("b", 56, 124, 1, 3, 20, W.merah)),
+      tambah("samakan", panah("r1", 82, 80, 40, 0, W.biru, 2, { z: 2 }), panah("r2", 82, 124, 40, 0, W.biru, 2, { z: 2 })),
+      tambah("dulu", ...pec("c", 166, 80, 3, 6, 20), ...pec("d", 166, 124, 2, 6, 20, W.merah)),
+      tambah("itu", emo("ok", 244, 104, E.benar, 26, { z: 3 })),
     ),
     k(
-      "Kelebihannya menangkap salah hitung dan bagus untuk soal benar atau salah. Kekurangannya menambah satu langkah hitung.",
+      SUARA_S4,
       bersih(0),
-      tambah(0, judul("Kelebihan dan kekurangan")),
-      tambah("Kelebihannya", ...kartu("kl", 14, 40, 130, 54, W.hijauMuda, ["menangkap salah", "hitung"], 9), emo("kle", 79, 120, "👍", 24)),
-      tambah("Kekurangannya", ...kartu("kk", 156, 40, 130, 54, W.merahMuda, ["menambah satu", "langkah hitung"], 9), emo("kke", 221, 120, "🤔", 24)),
+      tambah(0, judul("Digabung lagi"), ...lantai("lt", 150), teks("bl", 56, 96, "3", 28, W.hijauTua, { z: 3 })),
+      tambah("gabungkan", tanda("m1", 90, 92, "+", 22), ...pec("b", 124, 90, 1, 6, 22, W.hijauTua)),
+      tambah("bilangan", tanda("m2", 160, 92, "=", 22)),
+      tambah("pecahan", ...campur("g", 200, 224, 90, 3, 1, 6, 22, W.hijauTua)),
     ),
   ],
 };
 
-/* ------------------------------ 9. Add-Up Check: penerapan ------------------------------ */
-export const ADEGAN_LUAR_AUP_TERAPAN: AdeganStory = {
-  id: "luar-aup-terapan",
-  judul: "Add-Up Check pada hasil Yohana, Asep, dan Uji",
-  sumber: "Metode luar: Add-Up Check",
-  latar: "#FDF2F8",
+/* ------------------------------ Split Whole and Part: terapan ------------------------------ */
+const SUARA_P1 = "Fajar mengurangkan satu bulat satu per empat dari tiga bulat tiga per empat.";
+const SUARA_P2 = "Bilangan bulatnya tiga dikurangi satu sama dengan dua, pecahannya tiga per empat dikurangi satu per empat sama dengan dua per empat.";
+const SUARA_P3 = "Gabungannya dua bulat dua per empat, atau dua bulat satu per dua.";
+const SUARA_P4 = "Kurang cocok untuk dua pecahan biasa tanpa bilangan bulat, karena tidak ada yang dipisahkan.";
+
+export const ADEGAN_LUAR_PISAH_TERAPAN: AdeganStory = {
+  id: "luar-pisah-terapan",
+  judul: "Pisah: kapan cocok",
+  sumber: "Metode global: Split Whole and Part (terapan)",
+  latar: "#F0FDF4",
   ketukan: [
     k(
-      "Periksa jawaban Yohana: satu per enam ditambah satu per dua. Satu per dua sama dengan tiga per enam, jadi jumlahnya empat per enam, yaitu dua per tiga. Cocok dengan kertas awal.",
-      tambah(0, judul("Periksa jawaban Yohana")),
-      tambah("Periksa", ...rumus("r", 150, 80, "1/6 + 1/2 = 1/6 + 3/6 = 4/6 = 2/3", 17)),
-      tambah("Cocok", ...kartu("k", 50, 128, 200, 34, W.hijauMuda, ["sama dengan kertas awal 2/3"], 9.6), emo("e", 150, 184, "✅", 20)),
+      SUARA_P1,
+      tambah(0, judul("Pisah: kapan cocok"), ...lantai("lt", 150), ...tokoh("fj", 40, 184, "Fajar")),
+      tambah("satu", ...campur("y", 204, 228, 88, 1, 1, 4, 20, W.merah)),
+      tambah("dari", tanda("m1", 168, 90, "−", 22)),
+      tambah("tiga", ...campur("x", 104, 128, 88, 3, 3, 4, 20)),
     ),
     k(
-      "Periksa jarak Asep: tiga satu per tiga ditambah dua satu per tiga sama dengan lima dua per tiga kilometer, sesuai jarak ke sekolah. Cocok.",
+      SUARA_P2,
       bersih(0),
-      tambah(0, judul("Periksa jarak Asep")),
-      tambah("Periksa", ...rumus("r", 150, 80, "3 1/3 + 2 1/3 = 5 2/3", 21)),
-      tambah("sesuai", ...kartu("k", 50, 128, 200, 34, W.hijauMuda, ["sama dengan jarak 5 2/3 km"], 9.6), emo("e", 150, 184, "✅", 20)),
+      tambah(0, judul("Bulat dan pecahan"), teks("a1", 40, 70, "3", 22, W.biru, { z: 3 })),
+      tambah("dikurangi", tanda("a2", 72, 66, "−", 22)),
+      tambah("satu", teks("a3", 104, 70, "1", 22, W.merah, { z: 3 })),
+      tambah("sama", tanda("a4", 136, 66, "=", 22)),
+      tambah("dua", teks("a5", 168, 70, "2", 22, W.hijauTua, { z: 3 })),
+      tambah("pecahannya", ...pec("b", 44, 130, 3, 4, 18)),
+      tambah("dikurangi@2", tanda("b2", 80, 132, "−", 22)),
+      tambah("satu@2", ...pec("c", 116, 130, 1, 4, 18, W.merah)),
+      tambah("sama@2", tanda("b4", 152, 132, "=", 22)),
+      tambah("dua@2", ...pec("d", 188, 130, 2, 4, 18, W.hijauTua)),
     ),
     k(
-      "Uji enam: enam dikurangi tiga satu per delapan tertulis tiga tujuh per delapan. Periksa: tiga tujuh per delapan ditambah tiga satu per delapan sama dengan tujuh, bukan enam. Pernyataan salah.",
+      SUARA_P3,
       bersih(0),
-      tambah(0, judul("Uji 6")),
-      tambah("Periksa:", ...rumus("r", 150, 80, "3 7/8 + 3 1/8 = 7", 22)),
-      tambah("bukan", ...kartu("k", 50, 128, 200, 34, W.merahMuda, ["hasilnya 7, bukan 6: SALAH"], 9.6), emo("e", 150, 184, "❌", 20)),
+      tambah(0, judul("Gabungannya"), ...lantai("lt", 150)),
+      tambah("empat", ...campur("g1", 70, 96, 90, 2, 2, 4, 22, W.hijauTua)),
+      tambah("atau", teks("at", 150, 96, "atau", 12, W.coklat, { z: 3 })),
+      tambah("satu", ...campur("g2", 200, 226, 90, 2, 1, 2, 22, W.hijauTua)),
     ),
     k(
-      "Uji sepuluh: dua satu per tiga dikurangi satu lima per enam tertulis satu per tiga. Periksa: satu per tiga ditambah satu lima per enam sama dengan dua satu per enam, bukan dua satu per tiga. Salah.",
+      SUARA_P4,
       bersih(0),
-      tambah(0, judul("Uji 10")),
-      tambah("Periksa:", ...rumus("r", 150, 80, "1/3 + 1 5/6 = 2/6 + 1 5/6 = 2 1/6", 17)),
-      tambah("bukan", ...kartu("k", 50, 128, 200, 34, W.merahMuda, ["hasilnya 2 1/6, bukan 2 1/3: SALAH"], 9.6), emo("e", 150, 184, "❌", 20)),
+      tambah(0, judul("Tidak ada yang dipisah"), ...lantai("lt", 150), teks("dw", 150, 48, "2 pecahan biasa", 12, W.biru, { z: 3 })),
+      tambah("pecahan", ...pec("a", 104, 96, 3, 5, 22), tanda("m1", 140, 98, "−", 24), ...pec("b", 176, 96, 1, 5, 22, W.merah)),
+      tambah("tanpa", teks("tb", 150, 140, "tanpa bilangan bulat", 11, W.coklat, { z: 3 })),
+      tambah("dipisahkan", emo("xx", 250, 96, E.salah, 28, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 10. Ringkasan ------------------------------ */
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita pelajari bersama Bu Nani, dan masing-masing punya saat yang tepat.";
+const SUARA_R2 = "Penyebut sama, pakai Kurangi Pembilang. Penyebut berbeda, pakai Samakan Lalu Kurangi. Campuran, pakai Pisah Bulat dan Pecahan.";
+const SUARA_R3 = "Apa pun caranya, ingat bahwa penyebut yang berbeda harus disamakan sebelum dikurangkan.";
+const SUARA_R4 = "Menurutmu, untuk mengurangkan dua bulat satu per tiga dari lima bulat satu per tiga, cara mana yang paling cepat?";
+
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode luar",
-  sumber: "Ringkasan metode luar",
-  latar: "#F0F9FF",
+  judul: "Tiga cara bersama Bu Nani",
+  sumber: "Ringkasan: tiga cara",
+  latar: "#FFF1F2",
   ketukan: [
     k(
-      "Ringkasnya, empat metode. Like Denominator Subtract untuk penyebut sama, Common Denominator Subtract untuk penyebut berbeda.",
-      tambah(0, judul("Ringkasan")),
-      tambah("Like", ...kartu("r1", 14, 36, 272, 44, W.hijauMuda, ["Like Denominator Subtract", "penyebut sama"], 9.6)),
-      tambah("Common", ...kartu("r2", 14, 92, 272, 44, W.langit, ["Common Denominator Subtract", "penyebut berbeda, lewat KPK"], 9.6)),
+      SUARA_R1,
+      tambah(0, judul("Tiga cara bersama Bu Nani"), ...lantai("lt", 150), ...tokoh("bn", 40, 184, "Bu Nani")),
+      tambah("Tiga", teks("n3", 170, 50, "3 cara", 13, W.merah, { z: 3 })),
+      tambah("pelajari", ...[0, 1, 2].flatMap((i) => kartu(`c${i}`, 100 + i * 64, 70, 58, 44, [W.daun, W.langit, W.pink][i], String(i + 1), 18))),
+      tambah("tepat", emo("ok", 170, 140, E.benar, 24, { z: 3 })),
     ),
     k(
-      "Residual Area Model memperlihatkan sisa lewat gambar, dan Add-Up Check memeriksa hasil dengan penjumlahan balik.",
+      SUARA_R2,
       bersih(0),
-      tambah(0, judul("Ringkasan")),
-      tambah("Residual", ...kartu("r3", 14, 36, 272, 44, W.krem, ["Residual Area Model", "sisa terlihat lewat gambar"], 9.6)),
-      tambah("Add-Up", ...kartu("r4", 14, 92, 272, 44, W.pink, ["Add-Up Check", "periksa dengan penjumlahan balik"], 9.6)),
+      tambah(0, judul("Kapan memakai tiap cara"), ...lantai("lt", 150)),
+      tambah("Kurangi", teks("v1", 150, 58, "penyebut sama: Kurangi Pembilang", 10.5, W.biru, { z: 3 })),
+      tambah("Samakan", teks("v2", 150, 98, "penyebut berbeda: Samakan Lalu Kurangi", 10.5, W.biru, { z: 3 })),
+      tambah("Pisah", teks("v3", 150, 138, "campuran: Pisah Bulat dan Pecahan", 10.5, W.biru, { z: 3 })),
     ),
     k(
-      "Hasil akhirnya: kertas Yohana satu per enam, jarak Asep tiga satu per tiga kilometer, tali Komang dua satu per enam meter, dan Uji tiga tujuh per empat puluh.",
+      SUARA_R3,
       bersih(0),
-      tambah(0, judul("Hasil akhir")),
-      tambah("kertas", ...tabel("hs", 30, 34, [150, 90], [["soal", "hasil"], ["kertas Yohana", "1/6"], ["jarak Asep", "3 1/3 km"], ["tali Komang", "2 1/6 m"], ["Uji 3", "7/40"]], 24, 8.6)),
+      tambah(0, judul("Ingat!"), ...lantai("lt", 150), ...pec("a", 90, 84, 1, 2, 22), tanda("m1", 128, 86, "−", 24), ...pec("b", 166, 84, 1, 3, 22, W.merah)),
+      sorotkan("berbeda", "aq", "bq"),
+      tambah("disamakan", teks("sd", 128, 132, "samakan dulu", 12, W.pinkTua, { z: 3 })),
+      tambah("dikurangkan", emo("rt", 240, 90, E.rantai, 28, { z: 3 })),
     ),
     k(
-      "Pilih metode sesuai soal, dan ingat: kita hanya boleh mengurangi potongan yang sama besar.",
+      SUARA_R4,
       bersih(0),
-      tambah(0, judul("Pesan penutup")),
-      tambah("Pilih", emo("pl", 150, 70, "🎯", 40)),
-      tambah("ingat:", ...kartu("pm", 30, 100, 240, 40, W.hijauMuda, ["kurangi hanya potongan", "yang sama besar"], 10)),
+      tambah(0, judul("Cara mana paling cepat?"), ...lantai("lt", 150), ...tokoh("bn", 40, 184, "Bu Nani")),
+      tambah("dua", ...campur("y", 200, 224, 88, 2, 1, 3, 22, W.merah)),
+      tambah("lima", ...campur("x", 100, 124, 88, 5, 1, 3, 22), tanda("m1", 164, 90, "−", 24)),
+      tambah("cepat", emo("tq", 262, 90, E.tanya, 28, { z: 3 })),
     ),
   ],
 };

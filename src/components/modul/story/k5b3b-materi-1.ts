@@ -1,155 +1,122 @@
 import type { AdeganStory } from "./logika-story";
-import { W, batang, emo, judul, kartu, teks } from "./k5b3b-gambar";
-import { bersih, k, tambah } from "./k5b3b-bantu";
+import { E, W, bar, emo, gerobak, judul, kotak, lantai, teks, tokoh } from "./k5b3b-gambar";
+import { bersih, k, tambah, ubah } from "./k5b3b-bantu";
 
-/* ------------------------------ 1. Pembuka Subbab B (Panduan Guru hlm. 105 dan 106; Buku Siswa hlm. 76) ------------------------------ */
-export const ADEGAN_PEMBUKA: AdeganStory = {
-  id: "pembuka-b",
-  judul: "Subbab B: Penjumlahan Bilangan Pecahan",
-  sumber: "Panduan Guru hlm. 105–106; Buku Siswa hlm. 76",
-  latar: "#EFF6FF",
-  kutipan: [
-    "B. Penjumlahan Bilangan Pecahan",
-    "Sebelum memasuki materi tentang penjumlahan bilangan pecahan, guru",
-    "diharapkan dapat menjelaskan pengalaman belajar",
-    "melakukan penjumlahan pecahan berpenyebut sama dan",
-    "melakukan penjumlahan pecahan dengan penyebut berbeda.",
-  ],
+/*
+ * Cerita orisinal IGIL "Roti Isi Pak Seno" (Kelas 5 Bab 3 Sub-Bab B, penjumlahan pecahan), lanjutan cerita Toko Roti Keliling.
+ * Naskah suara dari naskah/story-naskah-k5b3b.md. Bagian ini: gerobak dan roti dipotong delapan bagian, menjumlahkan pembilang, dan model arsir.
+ */
+
+/* ------------------------------ 1. Gerobak ------------------------------ */
+const SUARA_G1 = "Lonceng gerobak Pak Seno berbunyi, dan Pak Arif mengajak Bima, Citra, dan Fajar mendekat.";
+const SUARA_G2 = "Pak Seno bertopi koki tinggi dan membawa roti isi yang dipotong delapan bagian sama besar.";
+const SUARA_G3 = "Citra memesan satu bagian, Bima memesan dua bagian, dan Pak Seno ingin menggabungkannya.";
+
+export const ADEGAN_GEROBAK: AdeganStory = {
+  id: "gerobak",
+  judul: "Gerobak Pak Seno",
+  sumber: "Materi: gerobak roti isi",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Subbab B, Penjumlahan Bilangan Pecahan. Di subbab sebelumnya kita membandingkan dan mengurutkan pecahan. Sekarang dua pecahan kita gabungkan, kita jumlahkan.",
-      tambah(0, judul("B. Penjumlahan Pecahan")),
-      tambah("dua", ...kartu("p1", 18, 70, 82, 44, W.langit, ["pecahan"], 10)),
-      tambah("gabungkan,", teks("pl", 118, 100, "+", 22, W.merah), ...kartu("p2", 136, 70, 82, 44, W.hijauMuda, ["pecahan"], 10)),
-      tambah("jumlahkan.", teks("pq", 252, 100, "= ?", 20, W.merah), emo("pz", 150, 160, "🧩", 28)),
+      SUARA_G1,
+      tambah(0, judul("Gerobak Pak Seno"), ...lantai("lt", 150), teks("ting", 62, 70, "ting ting!", 10, W.merah, { z: 3 })),
+      tambah("gerobak", ...gerobak("gr", 20, 80)),
+      tambah("Arif", ...tokoh("pa", 140, 184, "Pak Arif")),
+      tambah("Bima", ...tokoh("bm", 182, 184, "Bima")),
+      tambah("Citra", ...tokoh("ct", 222, 184, "Citra")),
+      tambah("Fajar", ...tokoh("fj", 264, 184, "Fajar")),
     ),
     k(
-      "Sebelum mulai, guru menjelaskan pengalaman belajarnya. Setelah mempelajari bagian ini, peserta didik diharapkan dapat melakukan penjumlahan pecahan berpenyebut sama, dan penjumlahan pecahan dengan penyebut berbeda.",
+      SUARA_G2,
       bersih(0),
-      tambah(0, judul("Pengalaman belajar")),
-      tambah("sama,", ...kartu("g1", 24, 48, 252, 42, W.hijauMuda, ["penjumlahan pecahan", "berpenyebut sama"], 9.4)),
-      tambah("berbeda.", ...kartu("g2", 24, 108, 252, 42, W.pink, ["penjumlahan pecahan", "berpenyebut berbeda"], 9.4)),
+      tambah(0, judul("Roti isi Pak Seno"), ...lantai("lt", 150)),
+      tambah("Seno", ...tokoh("ps", 40, 184, "Pak Seno")),
+      tambah("roti", teks("ri", 106, 84, "roti isi", 11, W.coklat, { z: 3 })),
+      tambah("delapan", ...bar("rt", 100, 96, 8, 8, { lebar: 176, h: 22, warna: W.roti, garis: W.rotiTua })),
+      tambah("bagian", teks("d8", 200, 84, "8 bagian sama besar", 10, W.merah, { z: 3 })),
     ),
     k(
-      "Jadi subbab ini punya dua bagian. Bagian satu, penjumlahan pecahan berpenyebut sama. Bagian dua, penjumlahan pecahan berpenyebut berbeda.",
-      bersih(0),
-      tambah(0, judul("Dua bagian subbab")),
-      tambah("satu,", teks("n1", 40, 76, "1", 30, W.hijau), ...kartu("h1", 66, 52, 210, 40, W.hijauMuda, ["penyebut sama"], 10)),
-      tambah("dua@2", teks("n2", 40, 140, "2", 30, W.merah), ...kartu("h2", 66, 116, 210, 40, W.pink, ["penyebut berbeda"], 10)),
-    ),
-    k(
-      "Kegiatannya diberi nama Eksplorasi tiga titik dua A sampai tiga titik dua E. Tiga yang pertama untuk penyebut sama, dua yang terakhir untuk penyebut berbeda.",
-      bersih(0),
-      tambah(0, judul("Lima eksplorasi")),
-      tambah("tiga", ...kartu("e1", 14, 40, 84, 28, W.hijauMuda, ["Eksplorasi 3.2A"], 8.2), ...kartu("e2", 108, 40, 84, 28, W.hijauMuda, ["Eksplorasi 3.2B"], 8.2), ...kartu("e3", 202, 40, 84, 28, W.hijauMuda, ["Eksplorasi 3.2C"], 8.2)),
-      tambah("sama,", teks("ts", 150, 88, "penyebut sama", 9.4, W.hijau)),
-      tambah("terakhir", ...kartu("e4", 55, 112, 84, 28, W.pink, ["Eksplorasi 3.2D"], 8.2), ...kartu("e5", 161, 112, 84, 28, W.pink, ["Eksplorasi 3.2E"], 8.2)),
-      tambah("berbeda.", teks("tb", 150, 160, "penyebut berbeda", 9.4, W.merah)),
+      SUARA_G3,
+      tambah("Citra", ...tokoh("ct", 100, 184, "Citra")),
+      ubah("satu", { id: "rt0", warna: W.amber, garis: W.rotiTua }),
+      tambah("satu", teks("c1", 111, 132, "Citra: 1/8", 10, W.rotiTua, { z: 3 })),
+      tambah("Bima", ...tokoh("bm", 160, 184, "Bima")),
+      ubah("dua", { id: "rt1", warna: W.biruMuda, garis: W.biruGaris }, { id: "rt2", warna: W.biruMuda, garis: W.biruGaris }),
+      tambah("dua", teks("b2", 200, 132, "Bima: 2/8", 10, W.biruGaris, { z: 3 })),
+      tambah("menggabungkannya", emo("tn", 258, 112, E.tanya, 20, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 2. Persiapan: sarana, apersepsi, pemanasan, persiapan guru (Panduan Guru hlm. 105 dan 106) ------------------------------ */
-export const ADEGAN_PERSIAPAN: AdeganStory = {
-  id: "persiapan-b",
-  judul: "Sarana, apersepsi, dan pemanasan",
-  sumber: "Panduan Guru hlm. 105–106",
-  latar: "#FFFBEB",
-  kutipan: [
-    "Kebutuhan Sarana Prasarana dan Media Pembelajaran",
-    "Alat tulis",
-    "Penggaris",
-    "Kertas karton",
-    "Guru memulai materi ini dengan mengingatkan peserta didik pada materi",
-    "mengingat tentang cara menyamakan penyebut",
-    "Gunakan pertanyaan pada Ayo Mengingat Kembali dan materi",
-    "Guru mengajak peserta didik melakukan penjumlahan pada bilangan cacah",
-    "dilanjutkan dengan bilangan pecahan dengan penyebut berbeda.",
-    "Membagi peserta didik menjadi beberapa kelompok.",
-    "Berikan alat-alat yang akan digunakan oleh peserta didik",
-  ],
+/* ------------------------------ 2. Gabung pembilang ------------------------------ */
+const SUARA_B1 = "Penyebutnya sama, yaitu delapan, jadi kita cukup menjumlahkan pembilangnya.";
+const SUARA_B2 = "Satu per delapan ditambah dua per delapan sama dengan tiga per delapan.";
+const SUARA_B3 = "Penyebutnya tetap delapan, karena ukuran tiap potongan tidak berubah.";
+
+export const ADEGAN_GABUNG: AdeganStory = {
+  id: "gabung",
+  judul: "Jumlahkan pembilangnya",
+  sumber: "Materi: penyebut sama",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Kebutuhan sarana dan media pembelajaran subbab ini sederhana: alat tulis, penggaris, dan kertas karton. Kertas karton berguna untuk membuat model pecahan.",
-      tambah(0, judul("Sarana dan media")),
-      tambah("alat", emo("sa", 60, 80, "📝", 30), ...kartu("sa2", 20, 94, 80, 28, W.langit, ["alat tulis"], 9)),
-      tambah("penggaris,", emo("sb", 150, 80, "📏", 30), ...kartu("sb2", 110, 94, 80, 28, W.krem, ["penggaris"], 9)),
-      tambah("karton.", emo("sc", 240, 80, "📁", 30), ...kartu("sc2", 200, 94, 80, 28, W.hijauMuda, ["kertas karton"], 9)),
-      tambah("model", teks("sm", 150, 156, "membuat model pecahan", 9.8, W.hijau)),
+      SUARA_B1,
+      tambah(0, judul("Penyebut sama"), ...bar("g1", 30, 50, 8, 1, { lebar: 128, h: 18 }), teks("l1", 200, 63, "1/8", 14, W.rotiTua, { z: 3 })),
+      tambah("sama", ...bar("g2", 30, 82, 8, 2, { lebar: 128, h: 18, warna: W.biruMuda, garis: W.biruGaris }), teks("l2", 200, 95, "2/8", 14, W.biruGaris, { z: 3 })),
+      tambah("delapan", teks("sd", 150, 132, "penyebut sama: 8", 12, W.merah, { z: 3 })),
+      tambah("pembilangnya", teks("jp", 150, 158, "jumlahkan pembilang", 12, W.biru, { z: 3 })),
     ),
     k(
-      "Apersepsi. Guru memulai dengan mengingatkan materi sebelumnya. Peserta didik juga diajak mengingat cara menyamakan penyebut pecahan, memakai pertanyaan Ayo Mengingat Kembali.",
+      SUARA_B2,
       bersih(0),
-      tambah(0, judul("Apersepsi")),
-      tambah("mengingatkan", ...kartu("ap1", 30, 40, 240, 34, W.langit, ["ingat materi sebelumnya"], 9.4)),
-      tambah("menyamakan", ...kartu("ap2", 30, 88, 240, 34, W.hijauMuda, ["ingat cara menyamakan penyebut"], 9.4)),
-      tambah("pertanyaan", ...kartu("ap3", 30, 136, 240, 34, W.krem, ["pertanyaan Ayo Mengingat Kembali"], 9.4)),
+      tambah(0, judul("Satu bagian ditambah dua bagian"), teks("eq", 150, 58, "1/8 + 2/8 = 3/8", 17, W.biru, { z: 3 })),
+      tambah("Satu", ...bar("h1", 10, 96, 8, 1, { lebar: 84, h: 18 })),
+      tambah("ditambah", teks("pl", 101, 109, "+", 14, W.merah, { z: 3 })),
+      tambah("dua", ...bar("h2", 108, 96, 8, 2, { lebar: 84, h: 18, warna: W.biruMuda, garis: W.biruGaris })),
+      tambah("sama", teks("sm", 199, 109, "=", 14, W.merah, { z: 3 })),
+      tambah("tiga", ...bar("h3", 206, 96, 8, 3, { lebar: 84, h: 18, warna: W.hijau, garis: W.hijauTua })),
     ),
     k(
-      "Pemanasan. Guru mengajak peserta didik menjumlahkan bilangan cacah dan melakukan perkalian. Lalu penjumlahan pecahan berpenyebut sama, dilanjutkan dengan pecahan berpenyebut berbeda.",
-      bersih(0),
-      tambah(0, judul("Pemanasan")),
-      tambah("bilangan", ...kartu("pm1", 30, 38, 240, 32, W.krem, ["bilangan cacah dan perkalian"], 9.4)),
-      tambah("berpenyebut", ...kartu("pm2", 30, 82, 240, 32, W.hijauMuda, ["pecahan berpenyebut sama"], 9.4)),
-      tambah("dilanjutkan", ...kartu("pm3", 30, 126, 240, 32, W.pink, ["pecahan berpenyebut berbeda"], 9.4)),
-      tambah("dilanjutkan", teks("pa", 150, 176, "dari yang mudah ke yang sulit", 9, W.coklat)),
-    ),
-    k(
-      "Persiapan guru untuk Eksplorasi tiga titik dua. Pertama, membagi peserta didik menjadi beberapa kelompok. Kedua, memberikan alat-alat yang akan dipakai untuk eksplorasi.",
-      bersih(0),
-      tambah(0, judul("Persiapan guru")),
-      tambah("Pertama,", teks("g1", 36, 70, "1", 26, W.hijau), ...kartu("pg1", 62, 50, 214, 40, W.langit, ["bagi menjadi kelompok"], 9.4)),
-      tambah("Kedua,", teks("g2", 36, 134, "2", 26, W.merah), ...kartu("pg2", 62, 114, 214, 40, W.krem, ["bagikan alat eksplorasi"], 9.4)),
+      SUARA_B3,
+      ubah("tetap", { id: "eq", warna: W.merah }),
+      tambah("tetap", teks("tt", 150, 142, "penyebut tetap: 8", 13, W.merah, { z: 3 })),
+      tambah("ukuran", teks("uk", 150, 166, "ukuran potongan sama", 11, W.coklat, { z: 3 })),
+      ubah("berubah", ...[0, 1, 2, 3, 4, 5, 6, 7].map((i) => ({ id: `h3${i}`, sorot: true }))),
     ),
   ],
 };
 
-/* ------------------------------ 3. Masalah Lukas dan syarat penjumlahan (Buku Siswa hlm. 76) ------------------------------ */
-export const ADEGAN_MASALAH: AdeganStory = {
-  id: "masalah-lukas",
-  judul: "Masalah Lukas dan syarat penjumlahan",
-  sumber: "Materi: masalah wingko Lukas",
-  latar: "#FFF7ED",
-  kutipan: [
-    "Masalah Lukas",
-    "bagian wingko, sedangkan Komang",
-    "bagian wingko. Apabila kedua bagian wingko",
-    "tersebut digabungkan, berapakah hasilnya?",
-    "Syarat melakukan penjumlahan pecahan adalah penyebutnya harus",
-    "Jika penyebut belum sama, perlu disamakan dahulu.",
-    "Jika penyebutnya sudah sama, jumlahkan pembilangnya.",
-  ],
+/* ------------------------------ 3. Model arsir ------------------------------ */
+const SUARA_A1 = "Pak Seno menggambar roti di papan kecil dan mengarsir satu bagian untuk Citra.";
+const SUARA_A2 = "Ia mengarsir dua bagian lagi untuk Bima, sehingga tiga dari delapan bagian terarsir.";
+const SUARA_A3 = "Gambar arsir itu cocok dengan hasil hitungan tadi.";
+
+export const ADEGAN_ARSIR: AdeganStory = {
+  id: "arsir",
+  judul: "Model arsir",
+  sumber: "Materi: model arsir",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Masalah Lukas. Lukas punya satu per dua bagian wingko, sedangkan Komang punya satu per tiga bagian wingko. Kalau kedua bagian itu digabungkan, berapa hasilnya?",
-      tambah(0, judul("Masalah Lukas")),
-      tambah("Lukas", teks("lk", 75, 52, "Lukas", 10, W.biru), ...batang("wl", 25, 62, 100, 26, 2, [[0, 1, W.jingga]]), teks("fl", 75, 112, "1/2", 13, W.hitam)),
-      tambah("Komang", teks("km", 225, 52, "Komang", 10, W.biru), ...batang("wk", 175, 62, 100, 26, 3, [[0, 1, W.jingga]]), teks("fk", 225, 112, "1/3", 13, W.hitam)),
-      tambah("digabungkan,", teks("pl", 150, 80, "+", 18, W.merah), teks("gq", 150, 160, "hasilnya = ?", 14, W.merah)),
+      SUARA_A1,
+      tambah(0, judul("Model arsir"), ...lantai("lt", 150), kotak("pp", 36, 44, 228, 70, W.kapur, W.kayuTua, { rx: 5, tebal: 3, z: 0 })),
+      tambah("Seno", ...tokoh("ps", 40, 184, "Pak Seno")),
+      tambah("roti", ...bar("a", 50, 60, 8, 0, { lebar: 200, h: 36 })),
+      ubah("mengarsir", { id: "a0", warna: W.amber, garis: W.rotiTua }),
+      tambah("Citra", teks("c1", 90, 134, "Citra: 1/8", 11, W.rotiTua, { z: 3 })),
     ),
     k(
-      "Sebelum menjawab, ingat dulu satu syarat. Syarat melakukan penjumlahan pecahan adalah penyebutnya harus sama.",
-      bersih(0),
-      tambah(0, judul("Syarat penjumlahan")),
-      tambah("syarat.", ...kartu("sy", 30, 50, 240, 50, W.krem, ["penyebut harus sama"], 12, { garis: W.merah })),
-      tambah("harus", teks("sm1", 90, 140, "4/7", 18, W.hitam), teks("sm2", 150, 140, "+", 18, W.merah), teks("sm3", 210, 140, "2/7", 18, W.hitam)),
-      tambah("sama.", emo("ok", 150, 182, "✅", 20)),
+      SUARA_A2,
+      ubah("dua", { id: "a1", warna: W.biruMuda, garis: W.biruGaris }, { id: "a2", warna: W.biruMuda, garis: W.biruGaris }),
+      tambah("Bima", teks("b2", 210, 134, "Bima: 2/8", 11, W.biruGaris, { z: 3 })),
+      tambah("tiga", teks("tg", 150, 107, "3 dari 8 bagian terarsir", 10.5, W.merah, { z: 3 })),
     ),
     k(
-      "Jika penyebut belum sama, perlu disamakan dahulu. Jika penyebutnya sudah sama, jumlahkan pembilangnya.",
-      bersih(0),
-      tambah(0, judul("Dua keadaan")),
-      tambah("belum", ...kartu("b1", 20, 44, 260, 46, W.pink, ["belum sama", "samakan dahulu"], 9.8)),
-      tambah("sudah", ...kartu("b2", 20, 108, 260, 46, W.hijauMuda, ["sudah sama", "jumlahkan pembilangnya"], 9.8)),
-    ),
-    k(
-      "Penyebut satu per dua dan satu per tiga adalah dua dan tiga, belum sama. Jadi masalah wingko Lukas kita simpan dulu, dan kita mulai dari penyebut yang sudah sama.",
-      bersih(0),
-      tambah(0, judul("Wingko Lukas disimpan dulu")),
-      tambah("dua", teks("w1", 90, 80, "1/2", 20, W.hitam), teks("wp", 150, 80, "+", 20, W.merah), teks("w2", 210, 80, "1/3", 20, W.hitam)),
-      tambah("belum", teks("wb", 150, 114, "penyebut 2 dan 3", 10, W.merah)),
-      tambah("simpan", emo("sv", 70, 160, "📌", 26)),
-      tambah("mulai", ...kartu("mu", 120, 140, 160, 34, W.hijauMuda, ["mulai: penyebut sama"], 9.4)),
+      SUARA_A3,
+      tambah("hasil", teks("eq", 150, 164, "1/8 + 2/8 = 3/8", 15, W.biru, { z: 3 })),
+      tambah("cocok", emo("ok", 262, 108, E.benar, 18, { z: 3 })),
+      ubah("hitungan", { id: "a0", sorot: true }, { id: "a1", sorot: true }, { id: "a2", sorot: true }),
     ),
   ],
 };

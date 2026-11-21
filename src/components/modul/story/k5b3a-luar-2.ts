@@ -1,232 +1,148 @@
 import type { AdeganStory } from "./logika-story";
-import { W, batang, emo, garis, garisBilangan, judul, kartu, panah, penanda, tabel, teks } from "./k5b3a-gambar";
-import { bersih, k, tambah } from "./k5b3a-bantu";
-import { G01 } from "./k5b3a-luar-1";
+import { E, W, campur, emo, judul, kotak, panah, pecahan, tanah, teks, tokoh } from "./k5b3a-gambar";
+import { bersih, hapus, k, tambah, ubah } from "./k5b3a-bantu";
+import { kartuCara } from "./k5b3a-luar-1";
 
-/* ------------------------------ 6. Mixed to Improper: konsep ------------------------------ */
-export const ADEGAN_LUAR_CAMPURAN: AdeganStory = {
-  id: "luar-campuran",
-  judul: "Mixed to Improper: campuran ke biasa",
-  sumber: "Metode luar: Mixed to Improper",
-  latar: "#FFFBEB",
+/*
+ * Cerita orisinal IGIL "Tiga Kantong Tepung Bu Ratna" (Kelas 5 Bab 3 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k5b3a.md. Bagian ini: Mixed to Improper (Campuran ke Biasa), terapannya, dan ringkasan memilih cara yang pas.
+ */
+
+/* ------------------------------ Mixed to Improper: konsep ------------------------------ */
+const SUARA_V1 = "Cara ketiga, Mixed to Improper, atau Campuran ke Biasa.";
+const SUARA_V2 = "Kita mengubah pecahan campuran menjadi pecahan biasa dengan satu langkah.";
+const SUARA_V3 = "Kalikan bilangan bulat dengan penyebut, tambahkan pembilang, dan penyebutnya tetap.";
+const SUARA_V4 = "Setelah itu, pecahan campuran bisa dibandingkan seperti pecahan biasa.";
+
+export const ADEGAN_LUAR_BIASA: AdeganStory = {
+  id: "luar-biasa",
+  judul: "Mixed to Improper",
+  sumber: "Metode global: Mixed to Improper (konsep)",
+  latar: W.taman,
   ketukan: [
+    k(SUARA_V1, ...kartuCara(SUARA_V1, "3", "Mixed to Improper", "Campuran ke Biasa", E.ubah)),
     k(
-      "Metode ketiga, Mixed to Improper, atau campuran ke biasa. Ubah pecahan campuran menjadi pecahan biasa, lalu bandingkan sebagai pecahan biasa.",
-      tambah(0, judul("Mixed to Improper")),
-      tambah("Ubah", ...kartu("c1", 20, 70, 90, 44, W.hijauMuda, ["2 3/4"], 18)),
-      tambah("menjadi", panah("cp", 114, 92, 70, 0, W.biru, 2.4, { gambar: true })),
-      tambah("lalu", ...kartu("c2", 190, 70, 90, 44, W.langit, ["11/4"], 18)),
+      SUARA_V2,
+      bersih(0),
+      tambah(0, judul("Satu Langkah"), ...tanah("tn", 150)),
+      tambah("campuran", ...campur("a", 90, 80, 2, 1, 3, 24), teks("al", 90, 124, "campuran", 10, W.coklat)),
+      tambah("menjadi", panah("ar", 130, 84, 46, 0, W.merah, 3)),
+      tambah("biasa", ...pecahan("b", 218, 80, 7, 3, 24, W.merah), teks("bl", 218, 124, "biasa", 10, W.coklat)),
+      tambah("langkah.", teks("sl", 150, 158, "satu langkah", 12, W.hijauTua)),
     ),
     k(
-      "Rumusnya: bilangan bulat dikali penyebut, ditambah pembilang, dan penyebutnya tetap. Contoh dua dan tiga per empat: dua kali empat ditambah tiga adalah sebelas, jadi sebelas per empat.",
+      SUARA_V3,
       bersih(0),
-      tambah(0, judul("Rumus")),
-      tambah("Rumusnya:", ...kartu("rm", 20, 32, 260, 34, W.krem, ["bulat × penyebut + pembilang"], 10), teks("rt", 150, 86, "penyebut tetap", 9.6, W.ungu)),
-      tambah("Contoh", teks("ec", 150, 118, "2 3/4", 22, W.biru)),
-      tambah("adalah", teks("ek", 150, 146, "(2 × 4) + 3 = 11", 13, W.biru)),
-      tambah("jadi", teks("eh", 150, 178, "2 3/4 = 11/4", 18, W.merah)),
+      tambah(0, judul("Tiga Pekerjaan"), ...tanah("tn", 150)),
+      tambah("Kalikan", teks("f1", 150, 72, "2 × 3", 22, W.biru)),
+      ubah("tambahkan", { id: "f1", isi: "2 × 3 + 1" }),
+      ubah("tetap.", { id: "f1", isi: "2 × 3 + 1 = 7", warna: W.merah }),
+      tambah("penyebutnya", teks("ft", 150, 112, "penyebut tetap: 3", 12, W.hijauTua)),
     ),
     k(
-      "Gambarnya begini: dua batang utuh, masing-masing berisi empat per empat, ditambah satu batang berisi tiga per empat. Seluruhnya sebelas bagian per empat.",
+      SUARA_V4,
       bersih(0),
-      tambah(0, judul("Gambar: 11 bagian seperempat")),
-      tambah("dua", ...batang("g1", 70, 40, 160, 28, 4, 4), ...batang("g2", 70, 78, 160, 28, 4, 4), teks("gl1", 252, 58, "4/4", 12, W.biru), teks("gl2", 252, 96, "4/4", 12, W.biru)),
-      tambah("ditambah", ...batang("g3", 70, 116, 160, 28, 4, 3), teks("gl3", 252, 134, "3/4", 12, W.biru)),
-      tambah("Seluruhnya", teks("gs", 150, 176, "4 + 4 + 3 = 11 bagian", 12, W.merah)),
-    ),
-    k(
-      "Kelebihannya, hasilnya pecahan biasa yang mudah dibandingkan. Kekurangannya, pembilangnya jadi besar dan arti bagian bulatnya tidak langsung terlihat.",
-      bersih(0),
-      tambah(0, judul("Kelebihan dan kekurangan")),
-      tambah("Kelebihannya,", ...kartu("kl", 14, 40, 130, 62, W.hijauMuda, ["hasilnya pecahan", "biasa, mudah", "dibandingkan"], 8.6), emo("kle", 79, 128, "👍", 26)),
-      tambah("Kekurangannya,", ...kartu("kk", 156, 40, 130, 62, W.merahMuda, ["pembilang besar,", "arti bagian bulat", "tidak langsung terlihat"], 8.4)),
+      tambah(0, judul("Dibandingkan")),
+      tambah("campuran", ...pecahan("g1", 100, 90, 7, 3, 24, W.merah)),
+      tambah("dibandingkan", teks("gt", 150, 94, ">", 28, W.biru)),
+      tambah("biasa.", ...pecahan("g2", 200, 90, 5, 3, 24, W.hijauTua), teks("gb", 150, 146, "bandingkan pembilangnya", 11, W.hijauTua)),
     ),
   ],
 };
 
-/* ------------------------------ 7. Mixed to Improper: penerapan pada pita Nisa ------------------------------ */
-const BARIS_CAMPURAN = [
-  { id: "r1", y: 62, campuran: "2 2/5", hitung: "(2 × 5) + 2 = 12", hasil: "12/5" },
-  { id: "r2", y: 108, campuran: "2 1/4", hitung: "(2 × 4) + 1 = 9", hasil: "9/4" },
-  { id: "r3", y: 154, campuran: "2 1/2", hitung: "(2 × 2) + 1 = 5", hasil: "5/2" },
-];
-const barisCampuran = (b: (typeof BARIS_CAMPURAN)[number]) => [
-  teks(`${b.id}-m`, 46, b.y, b.campuran, 16, W.biru),
-  teks(`${b.id}-h`, 150, b.y, b.hitung, 11, W.biru),
-  teks(`${b.id}-r`, 254, b.y, b.hasil, 16, W.merah),
-];
+/* ------------------------------ Mixed to Improper: terapan ------------------------------ */
+const SUARA_W1 = "Fajar bertanya, mana yang lebih besar, tujuh per empat atau satu bulat satu per empat?";
+const SUARA_W2 = "Bima mengubah yang campuran menjadi lima per empat, lalu membandingkan pembilangnya: tujuh lebih besar dari lima.";
+const SUARA_W3 = "Cocok untuk membandingkan pecahan campuran dengan pecahan biasa, karena bentuknya jadi sama.";
+const SUARA_W4 = "Kurang cocok bila bilangan bulatnya sudah berbeda, karena membandingkan bilangan bulat jauh lebih cepat.";
 
-export const ADEGAN_LUAR_CAMPURAN_TERAPAN: AdeganStory = {
-  id: "luar-campuran-terapan",
-  judul: "Mixed to Improper pada pita Nisa",
-  sumber: "Metode luar: Mixed to Improper",
-  latar: "#FFFBEB",
+export const ADEGAN_LUAR_BIASA_TERAPAN: AdeganStory = {
+  id: "luar-biasa-terapan",
+  judul: "Biasa: kapan cocok",
+  sumber: "Metode global: Mixed to Improper (terapan)",
+  latar: W.taman,
   ketukan: [
     k(
-      "Terapkan pada pita Nisa. Dua dan dua per lima menjadi dua kali lima ditambah dua, yaitu dua belas per lima.",
-      tambah(0, judul("Pita Nisa menjadi pecahan biasa")),
-      tambah(4, teks("r1-m", 46, 62, "2 2/5", 16, W.biru)),
-      tambah("kali", teks("r1-h", 150, 62, "(2 × 5) + 2 = 12", 11, W.biru)),
-      tambah("yaitu", teks("r1-r", 254, 62, "12/5", 16, W.merah)),
+      SUARA_W1,
+      tambah(0, judul("Fajar Bertanya"), ...tanah("tn", 150), ...tokoh("fj", 40, 184, "Fajar")),
+      tambah("besar,", emo("tq", 40, 128, E.tanya, 24)),
+      tambah("tujuh", ...pecahan("h1", 120, 80, 7, 4, 22)),
+      tambah("atau", teks("at", 168, 85, "atau", 11, W.coklat)),
+      tambah("satu", ...campur("h2", 228, 80, 1, 1, 4, 22)),
     ),
     k(
-      "Dua dan satu per empat menjadi sembilan per empat. Dua dan satu per dua menjadi lima per dua.",
-      tambah(6, ...barisCampuran(BARIS_CAMPURAN[1])),
-      tambah(15, ...barisCampuran(BARIS_CAMPURAN[2])),
+      SUARA_W2,
+      tambah("Bima", ...tokoh("bm", 262, 184, "Bima")),
+      tambah("lima", ...pecahan("h3", 228, 128, 5, 4, 22, W.merah)),
+      tambah("tujuh", teks("bd", 120, 132, "7 > 5", 18, W.hijauTua)),
     ),
     k(
-      "Penyebutnya lima, empat, dan dua. KPK-nya dua puluh. Maka dua belas per lima menjadi empat puluh delapan per dua puluh, sembilan per empat menjadi empat puluh lima per dua puluh, lima per dua menjadi lima puluh per dua puluh.",
+      SUARA_W3,
       bersih(0),
-      tambah(0, judul("Samakan penyebut: 20")),
-      tambah("KPK-nya", teks("kp", 150, 48, "KPK 5, 4, 2 = 20", 12, W.ungu)),
-      tambah("Maka", teks("q1", 150, 88, "12/5 = 48/20", 17, W.biru)),
-      tambah("sembilan", teks("q2", 150, 128, "9/4 = 45/20", 17, W.biru)),
-      tambah(30, teks("q3", 150, 168, "5/2 = 50/20", 17, W.biru)),
+      tambah(0, judul("Kapan Cocok"), ...tanah("tn", 150)),
+      tambah("Cocok", emo("ok", 262, 80, E.benar, 24)),
+      tambah("campuran", teks("cl", 140, 70, "campuran lawan biasa", 12, W.hijauTua)),
+      tambah("sama.", teks("bs", 140, 110, "bentuk jadi sama", 12, W.coklat)),
     ),
     k(
-      "Bandingkan pembilangnya: empat puluh lima lebih kecil dari empat puluh delapan, yang lebih kecil dari lima puluh. Jadi pita terpendek dua dan satu per empat, lalu dua dan dua per lima, terpanjang dua dan satu per dua.",
-      bersih(0),
-      tambah(0, judul("Urutan pita dari terpendek")),
-      tambah("Bandingkan", ...kartu("ub", 90, 30, 120, 28, W.emas, ["45 < 48 < 50"], 11)),
-      tambah("terpendek", ...kartu("u1", 30, 72, 240, 30, W.hijauMuda, ["2 1/4 m (45/20)"], 10.4)),
-      tambah("lalu", ...kartu("u2", 30, 112, 240, 30, W.langit, ["2 2/5 m (48/20)"], 10.4)),
-      tambah("terpanjang", ...kartu("u3", 30, 152, 240, 30, W.krem, ["2 1/2 m (50/20)"], 10.4)),
+      SUARA_W4,
+      hapus(0, "ok", "cl", "bs"),
+      tambah("Kurang", emo("xs", 262, 80, E.salah, 24)),
+      tambah("berbeda,", ...campur("k1", 100, 82, 2, 1, 4, 18), ...campur("k2", 200, 82, 3, 1, 2, 18), teks("dn", 150, 88, "dan", 10, W.coklat)),
+      tambah("jauh", teks("bu", 150, 140, "bulat 2 dan 3: langsung terlihat", 10, W.hijauTua)),
+      tambah("cepat.", emo("kt", 150, 118, E.kuat, 20)),
     ),
   ],
 };
 
-/* ------------------------------ 8. Benchmark Half Comparison: konsep ------------------------------ */
-const garisPatokan = (id: string) => garisBilangan(id, G01.x, G01.y, G01.satuan, 1, 10);
-const titik = (id: string, nilai: number, label: string, warna: string, bawah = 14, u = 9) => penanda(id, G01.x, G01.y, G01.satuan, nilai, label, warna, bawah, u);
-const patokanTanda = (id: string) => [garis(`${id}-t`, G01.x + G01.satuan / 2, G01.y - 12, 0, 24, W.merah, 2.4), teks(`${id}-n`, G01.x + G01.satuan / 2, G01.y - 18, "patokan 1/2", 8.6, W.merah)];
-
-export const ADEGAN_LUAR_PATOKAN: AdeganStory = {
-  id: "luar-patokan",
-  judul: "Benchmark Half Comparison: patokan setengah",
-  sumber: "Metode luar: Benchmark Half Comparison",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      "Metode keempat, Benchmark Half Comparison, atau membandingkan dengan patokan setengah. Pecahan dibandingkan dulu dengan patokan nol, satu per dua, dan satu. Tanyakan: pecahan itu di sebelah mana patokan?",
-      tambah(0, judul("Benchmark Half Comparison")),
-      tambah("nol,", ...garisPatokan("pk")),
-      tambah("dua,", ...patokanTanda("pk")),
-      tambah("sebelah", teks("zl", 95, 150, "lebih kecil dari 1/2", 8.8, W.hijau), teks("zr", 205, 150, "lebih besar dari 1/2", 8.8, W.ungu)),
-    ),
-    k(
-      "Cara cepatnya: kalau pembilang kurang dari setengah penyebut, pecahan lebih kecil dari satu per dua. Kalau tepat setengah, sama dengan satu per dua. Kalau lebih, pecahan lebih besar.",
-      bersih(0),
-      tambah(0, judul("Cara cepat: 2 kali pembilang")),
-      tambah("kurang", ...kartu("h1", 14, 36, 272, 40, W.hijauMuda, ["1/5: 2 × 1 = 2, kurang dari 5", "jadi lebih kecil dari 1/2"], 8.8)),
-      tambah("tepat", ...kartu("h2", 14, 84, 272, 40, W.krem, ["3/6: 2 × 3 = 6, tepat sama dengan 6", "jadi sama dengan 1/2"], 8.8)),
-      tambah(24, ...kartu("h3", 14, 132, 272, 40, W.langit, ["7/8: 2 × 7 = 14, lebih dari 8", "jadi lebih besar dari 1/2"], 8.8)),
-    ),
-    k(
-      "Kalau dua pecahan berada di dua sisi patokan, urutannya langsung ketahuan, tanpa menyamakan penyebut. Itu kelebihannya.",
-      bersih(0),
-      tambah(0, judul("Kelebihan: dua sisi patokan")),
-      tambah(0, ...garisPatokan("kb"), ...patokanTanda("kb")),
-      tambah("sisi", ...titik("a1_5", 1 / 5, "1/5", W.biru)),
-      tambah("patokan,", ...titik("a7_8", 7 / 8, "7/8", W.hijau)),
-      tambah("kelebihannya.", ...kartu("kk", 50, 150, 200, 30, W.emas, ["1/5 < 1/2 < 7/8, tanpa KPK"], 9.4)),
-    ),
-    k(
-      "Kekurangannya, kalau kedua pecahan sama-sama kurang atau sama-sama lebih dari satu per dua, patokan ini belum cukup. Kita perlu metode lain.",
-      bersih(0),
-      tambah(0, judul("Kekurangan: satu sisi saja")),
-      tambah(0, ...garisPatokan("ks"), ...patokanTanda("ks")),
-      tambah("kedua", ...titik("sa", 0.68, "A", W.biru), ...titik("sb", 0.9, "B", W.hijau)),
-      tambah("belum", teks("sq", 150, 150, "A atau B yang lebih besar?", 9.8, W.merah)),
-      tambah("metode", ...kartu("sm", 60, 164, 180, 28, W.krem, ["perlu cara lain"], 10)),
-    ),
-  ],
-};
-
-/* ------------------------------ 9. Benchmark Half Comparison: penerapan ------------------------------ */
-export const ADEGAN_LUAR_PATOKAN_TERAPAN: AdeganStory = {
-  id: "luar-patokan-terapan",
-  judul: "Benchmark Half Comparison pada contoh angka",
-  sumber: "Metode luar: Benchmark Half Comparison",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      "Contoh pertama: satu per dua atau satu per lima? Satu per dua adalah patokannya. Satu per lima berada di kiri patokan, jadi lebih kecil. Maka satu per dua lebih besar.",
-      tambah(0, judul("1/2 atau 1/5?")),
-      tambah(0, ...garisPatokan("t1")),
-      tambah("patokannya.", ...patokanTanda("t1")),
-      tambah("lima?", ...titik("p1_5", 1 / 5, "1/5", W.biru)),
-      tambah("kiri", teks("tkl", 95, 150, "di kiri patokan", 9.4, W.biru)),
-      tambah("Maka", ...kartu("tk", 80, 164, 140, 28, W.emas, ["1/2 > 1/5"], 12)),
-    ),
-    k(
-      "Contoh kedua: tiga per enam dan dua per enam. Tiga per enam tepat setengah, sebab tiga adalah setengah dari enam. Dua per enam kurang dari setengah. Jadi tiga per enam lebih besar.",
-      bersih(0),
-      tambah(0, judul("3/6 atau 2/6?")),
-      tambah(0, ...garisPatokan("t2"), ...patokanTanda("t2")),
-      tambah(15, ...titik("p3_6", 3 / 6, "3/6", W.merah, 26)),
-      tambah(26, ...titik("p2_6", 2 / 6, "2/6", W.biru)),
-      tambah("Jadi", ...kartu("tj", 80, 164, 140, 28, W.emas, ["3/6 > 2/6"], 12)),
-    ),
-    k(
-      "Contoh ketiga, lompatan Yohana: tujuh per delapan lebih dari setengah karena tujuh lebih dari empat, tetapi masih kurang dari satu. Sebelas per empat dan tujuh per dua sudah lebih dari satu. Jadi tujuh per delapan paling kecil.",
-      bersih(0),
-      tambah(0, judul("Lompatan Yohana")),
-      tambah(0, ...garisPatokan("t3")),
-      tambah("setengah", ...patokanTanda("t3")),
-      tambah("tujuh", ...titik("p7_8", 7 / 8, "7/8", W.hijau)),
-      tambah("Sebelas", ...kartu("ty", 20, 136, 260, 30, W.langit, ["11/4 dan 7/2: lebih dari 1 (di luar garis ini)"], 8.8)),
-      tambah("Jadi", ...kartu("tz", 70, 172, 160, 24, W.emas, ["7/8 paling kecil"], 10.4)),
-    ),
-    k(
-      "Tetapi ada contoh lain: delapan per dua belas dan sebelas per dua belas. Keduanya lebih dari setengah, yaitu enam per dua belas. Patokan belum cukup, jadi bandingkan pembilangnya, delapan lebih kecil dari sebelas.",
-      bersih(0),
-      tambah(0, judul("Patokan belum cukup")),
-      tambah(0, ...garisPatokan("t4"), ...patokanTanda("t4")),
-      tambah("delapan", ...titik("p8_12", 8 / 12, "8/12", W.biru)),
-      tambah("sebelas", ...titik("p11_12", 11 / 12, "11/12", W.hijau)),
-      tambah("belum", teks("tq", 150, 150, "keduanya di kanan patokan", 9.4, W.merah)),
-      tambah("bandingkan", ...kartu("tb", 70, 164, 160, 28, W.emas, ["8 < 11, jadi 8/12 < 11/12"], 9.4)),
-    ),
-  ],
-};
-
-/* ------------------------------ 10. Ringkasan dan kunci ------------------------------ */
-const KOLOM_KUNCI = [78, 110, 92];
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita pelajari bersama Bu Ratna, dan masing-masing punya saat yang tepat.";
+const SUARA_R2 = "Pecahan berjauhan, pakai Garis Bilangan. Penyebut berbeda, pakai Penyebut Sama. Campuran lawan biasa, pakai Campuran ke Biasa.";
+const SUARA_R3 = "Apa pun caranya, ingat bahwa bilangan bulat yang lebih besar sudah menentukan pecahan campuran yang lebih besar.";
+const SUARA_R4 = "Menurutmu, untuk membandingkan lima per tiga dan satu bulat dua per tiga, cara mana yang paling cepat?";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode dan hasil akhir",
-  sumber: "Ringkasan metode luar",
-  latar: "#F0FDF4",
+  judul: "Tiga Cara, Satu Hasil",
+  sumber: "Ringkasan: tiga cara",
+  latar: W.taman,
   ketukan: [
     k(
-      "Ringkasan empat metode. Garis bilangan: lebih kanan, lebih besar. Pecahan senilai: samakan penyebut. Campuran ke biasa: bulat kali penyebut ditambah pembilang. Patokan setengah: bandingkan dengan nol, setengah, dan satu.",
-      tambah(0, judul("Ringkasan empat metode")),
-      tambah("Garis", ...kartu("s1", 12, 32, 276, 34, W.hijauMuda, ["Number Line Fractions", "lebih kanan = lebih besar"], 8.4)),
-      tambah("senilai:", ...kartu("s2", 12, 72, 276, 34, W.langit, ["Equivalent Fractions", "samakan penyebut"], 8.4)),
-      tambah("Campuran", ...kartu("s3", 12, 112, 276, 34, W.krem, ["Mixed to Improper", "bulat × penyebut + pembilang"], 8.4)),
-      tambah("Patokan", ...kartu("s4", 12, 152, 276, 34, W.pink, ["Benchmark Half Comparison", "banding dengan 0, 1/2, dan 1"], 8.4)),
+      SUARA_R1,
+      tambah(0, judul("Tiga Cara, Satu Hasil"), ...tanah("tn", 150)),
+      tambah("Tiga", teks("n3", 80, 44, "3 cara", 14, W.merah)),
+      tambah("cara", ...[0, 1, 2].flatMap((i) => [kotak(`c${i}-k`, 14 + i * 88, 60, 80, 36, W.jingga, W.coklat, { rx: 4 }), teks(`c${i}-t`, 54 + i * 88, 83, "cara", 9, W.coklat)])),
+      tambah("Bu", ...tokoh("bu", 150, 184, "Bu Ratna")),
+      tambah("tepat.", emo("ok", 262, 130, E.benar, 24)),
     ),
     k(
-      "Pilih metode sesuai soalnya. Untuk banyak pecahan sekaligus, garis bilangan. Untuk penyebut berbeda, pecahan senilai. Untuk campuran, ubah dulu. Untuk perkiraan cepat, patokan.",
+      SUARA_R2,
       bersih(0),
-      tambah(0, judul("Kapan memakai apa?")),
-      tambah("banyak", ...kartu("w1", 14, 32, 272, 30, W.hijauMuda, ["banyak pecahan: garis bilangan"], 9.2)),
-      tambah("berbeda,", ...kartu("w2", 14, 70, 272, 30, W.langit, ["penyebut berbeda: pecahan senilai"], 9.2)),
-      tambah("campuran,", ...kartu("w3", 14, 108, 272, 30, W.krem, ["ada campuran: ubah ke biasa dulu"], 9.2)),
-      tambah("perkiraan", ...kartu("w4", 14, 146, 272, 30, W.pink, ["perkiraan cepat: patokan setengah"], 9.2)),
+      tambah(0, judul("Pilih Cara yang Pas"), ...tanah("tn", 150)),
+      tambah("berjauhan,", teks("a1", 80, 70, "pecahan berjauhan", 9.5, W.coklat), emo("i1", 150, 66, E.penggaris, 18)),
+      tambah("Garis", teks("b1", 220, 70, "Garis Bilangan", 10, W.hijauTua)),
+      tambah("berbeda,", teks("a2", 80, 108, "penyebut berbeda", 9.5, W.coklat), emo("i2", 150, 104, "\u{1F522}", 18)),
+      tambah("Sama.", teks("b2", 220, 108, "Penyebut Sama", 10, W.hijauTua)),
+      tambah("lawan", teks("a3", 80, 146, "campuran lawan biasa", 9.5, W.coklat), emo("i3", 150, 142, E.ubah, 18)),
+      tambah("Biasa.", teks("b3", 220, 146, "Campuran ke Biasa", 10, W.hijauTua)),
     ),
     k(
-      "Apa pun metodenya, hasilnya harus sama. Lompatan Yohana dari terjauh: tiga dan satu per dua meter, dua dan tiga per empat meter, tujuh per delapan meter.",
+      SUARA_R3,
       bersih(0),
-      tambah(0, judul("Hasil akhir semua metode")),
-      tambah("Apa", ...tabel("kn0", 10, 44, KOLOM_KUNCI, [["Soal", "Urutan", "Arah"]], 22, 8, W.krem)),
-      tambah("Lompatan", ...tabel("kn1", 10, 66, KOLOM_KUNCI, [["Lompatan Yohana", "3 1/2 > 2 3/4 > 7/8", "jauh → dekat"]], 22, 7.6, W.putih)),
+      tambah(0, judul("Ingat Bulatnya"), ...tanah("tn", 150)),
+      tambah("bulat", ...campur("r1", 100, 80, 3, 1, 4, 22)),
+      tambah("lebih", teks("gt", 150, 86, "lebih", 11, W.coklat)),
+      tambah("campuran", ...campur("r2", 200, 80, 2, 3, 4, 22)),
+      tambah("besar.", emo("bt", 150, 140, E.bintang, 24), teks("bb", 150, 164, "bulat 3 lebih besar dari 2", 10, W.hijauTua)),
     ),
     k(
-      "Pita Nisa dari yang terpendek: dua dan satu per empat meter, dua dan dua per lima meter, dua dan satu per dua meter. Hasilnya sama untuk semua metode.",
-      tambah("Pita", ...tabel("kn2", 10, 88, KOLOM_KUNCI, [["Pita Nisa", "2 1/4 < 2 2/5 < 2 1/2", "pendek → panjang"]], 22, 7.6, W.putih)),
-      tambah("Hasilnya", emo("kc", 150, 150, "✅", 28), teks("kt", 150, 172, "hasil semua metode sama", 9.4, W.hijau)),
+      SUARA_R4,
+      bersih(0),
+      tambah(0, judul("Mana Paling Cepat?"), ...tanah("tn", 150)),
+      tambah("lima", ...pecahan("q1", 90, 80, 5, 3, 24)),
+      tambah("satu", ...campur("q2", 200, 80, 1, 2, 3, 24)),
+      tambah("cepat?", teks("qq", 150, 144, "?", 34, W.merah), emo("tq", 262, 130, E.pikir, 24)),
     ),
   ],
 };
+

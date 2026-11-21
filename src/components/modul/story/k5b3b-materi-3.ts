@@ -1,318 +1,128 @@
 import type { AdeganStory } from "./logika-story";
-import { W, batang, bulat, emo, judul, kartu, panah, teks } from "./k5b3b-gambar";
-import { bersih, k, tambah, ubah } from "./k5b3b-bantu";
+import { E, W, bar, campur, emo, judul, kartu, lantai, panah, sapu, teks, tokoh } from "./k5b3b-gambar";
+import { bersih, hapus, k, tambah } from "./k5b3b-bantu";
 
-/* ------------------------------ 8. Eksplorasi 3.2D: Masalah Lukas dan Cara Nisa (Buku Siswa hlm. 85 dan 86) ------------------------------ */
-const KX = 40;
-const KW = 150;
+/*
+ * Cerita orisinal IGIL "Roti Isi Pak Seno" (Kelas 5 Bab 3 Sub-Bab B, penjumlahan pecahan), lanjutan cerita Toko Roti Keliling.
+ * Naskah suara dari naskah/story-naskah-k5b3b.md. Bagian ini: penyebut beda disamakan dengan KPK, campuran dengan penyebut beda, dan jembatan ke Sub-Bab C (Bu Nani).
+ */
 
-export const ADEGAN_NISA: AdeganStory = {
-  id: "eks-d-nisa",
-  judul: "Penyebut berbeda: Cara Nisa",
-  sumber: "Materi: kertas, Cara Nisa",
-  latar: "#FDF2F8",
-  kutipan: [
-    "2. Penjumlahan Pecahan Berbeda Penyebut",
-    "Eksplorasi 3.2D",
-    "Masalah Lukas",
-    "Kemudian, Komang",
-    "memberi Lukas",
-    "Apabila kedua bagian",
-    "kertas tersebut digabungkan, dapatkah kamu menyebutkan",
-    "pecahan dari gabungan kertas tersebut?",
-    "Cara Nisa",
-    "Amatilah gambar berikut ini.",
-    "Kertas Lukas semula",
-    "Hal ini senilai dengan",
-    "Sehingga ketika digabungkan",
-    "Jadi, gabungan kertas tersebut adalah",
-  ],
+/* ------------------------------ 7. KPK ------------------------------ */
+const SUARA_K1 = "Bima menjelaskan bahwa penyebut yang berbeda harus disamakan lebih dulu.";
+const SUARA_K2 = "KPK dari empat dan enam adalah dua belas, sehingga tiga per dua belas ditambah dua per dua belas.";
+const SUARA_K3 = "Jumlahnya lima per dua belas, dan Fajar menyapu taman sambil bersenandung.";
+
+export const ADEGAN_KPK: AdeganStory = {
+  id: "kpk",
+  judul: "Samakan dengan KPK",
+  sumber: "Materi: penyebut berbeda",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Sekarang penyebutnya berbeda. Masalah Lukas berikutnya: Lukas punya sebagian kertas, lalu Komang memberi Lukas sebagian kertas lagi. Berapa pecahan dari gabungan kedua kertas itu?",
-      tambah(0, judul("Penyebut berbeda")),
-      tambah("Lukas", ...kartu("kl", 18, 44, 124, 40, W.langit, ["kertas Lukas", "sebagian"], 9.4)),
-      tambah("Komang", teks("kp", 150, 70, "+", 18, W.merah), ...kartu("kk", 158, 44, 124, 40, W.krem, ["kertas dari Komang", "sebagian"], 9.4)),
-      tambah("Berapa", teks("kq", 150, 130, "gabungan = ?", 15, W.merah)),
+      SUARA_K1,
+      tambah(0, judul("Penyebut berbeda"), ...lantai("lt", 150), ...bar("k1", 30, 46, 4, 1, { lebar: 120, h: 18 }), teks("k1t", 200, 59, "1/4", 14, W.rotiTua, { z: 3 })),
+      tambah("Bima", ...tokoh("bm", 40, 184, "Bima")),
+      tambah("penyebut", ...bar("k2", 30, 78, 6, 1, { lebar: 120, h: 18, warna: W.biruMuda, garis: W.biruGaris }), teks("k2t", 200, 91, "1/6", 14, W.biruGaris, { z: 3 })),
+      tambah("berbeda", teks("kb", 150, 122, "penyebut beda: 4 dan 6", 12, W.merah, { z: 3 })),
+      tambah("disamakan", teks("ks", 150, 144, "samakan dulu", 12, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Cara Nisa. Amatilah gambar. Kertas Lukas semula satu per tiga bagian: kertas dibagi tiga, satu bagian berwarna.",
+      SUARA_K2,
       bersih(0),
-      tambah(0, judul("Cara Nisa: kertas Lukas")),
-      tambah("Kertas", ...batang("ka", KX, 46, KW, 34, 3, [[0, 1, W.hijauPita]]), teks("ka-t", 250, 68, "= 1/3", 15, W.hitam)),
-      tambah("satu", teks("ka-n", KX + KW / 2, 100, "dibagi 3, diwarnai 1", 9.4, W.hijau)),
+      tambah(0, judul("KPK dari 4 dan 6")),
+      tambah("KPK", teks("kt", 150, 128, "KPK 4 dan 6 = 12", 13, W.merah, { z: 3 })),
+      tambah("tiga", ...bar("c1", 30, 50, 12, 3, { lebar: 144, h: 18 }), teks("c1t", 220, 63, "3/12", 14, W.rotiTua, { z: 3 })),
+      tambah("dua@3", ...bar("c2", 30, 82, 12, 2, { lebar: 144, h: 18, warna: W.biruMuda, garis: W.biruGaris }), teks("c2t", 220, 95, "2/12", 14, W.biruGaris, { z: 3 })),
     ),
     k(
-      "Hal ini senilai dengan dua per enam. Kertas yang sama dibagi enam, dan dua bagian berwarna.",
-      tambah("senilai", ...batang("kb", KX, 118, KW, 34, 6, [[0, 2, W.hijauPita]]), teks("kb-t", 250, 140, "= 2/6", 15, W.hitam)),
-      tambah("enam,", teks("kb-n", KX + KW / 2, 172, "dibagi 6, diwarnai 2", 9.4, W.hijau)),
-    ),
-    k(
-      "Kertas yang diberikan Komang adalah empat per enam: kertas dibagi enam, empat bagian berwarna.",
-      bersih(0),
-      tambah(0, judul("Cara Nisa: kertas Komang")),
-      tambah("empat", ...batang("kc", KX, 60, KW, 34, 6, [[0, 4, W.jingga]]), teks("kc-t", 250, 82, "= 4/6", 15, W.hitam)),
-      tambah("dibagi", teks("kc-n", KX + KW / 2, 116, "dibagi 6, diwarnai 4", 9.4, W.coklat)),
-    ),
-    k(
-      "Ketika digabungkan, dua per enam ditambah empat per enam. Bagian hijau dua dan bagian jingga empat mengisi seluruh enam bagian.",
-      bersih(0),
-      tambah(0, judul("Digabungkan")),
-      tambah("Ketika", ...batang("kd", KX, 52, KW, 34, 6, [[0, 2, W.hijauPita], [2, 6, W.jingga]]), teks("kd-t", 250, 74, "2/6 + 4/6", 11, W.hitam)),
-      tambah("dua@2", teks("kd-n", KX + KW / 2, 108, "2 bagian + 4 bagian = 6 bagian", 9.4, W.hitam)),
-    ),
-    k(
-      "Jadi gabungan kertas tersebut adalah dua per enam ditambah empat per enam sama dengan enam per enam. Enam bagian dari enam bagian berarti satu kertas utuh.",
-      bersih(0),
-      tambah(0, judul("Gabungan kertas")),
-      tambah("Jadi", teks("h1", 150, 72, "2/6 + 4/6 = 6/6", 20, W.hitam)),
-      tambah("utuh.", teks("h2", 150, 108, "6/6 = 1", 24, W.hijau)),
-      tambah("utuh.", ...batang("h3", KX, 128, KW, 34, 6, [[0, 6, W.hijauPita]])),
+      SUARA_K3,
+      hapus("Jumlahnya", "kt"),
+      tambah("lima", ...bar("c3", 30, 114, 12, 5, { lebar: 144, h: 18, warna: W.hijau, garis: W.hijauTua }), teks("c3t", 220, 127, "5/12", 14, W.hijauTua, { z: 3 })),
+      tambah("Fajar", ...tokoh("fj", 264, 184, "Fajar")),
+      tambah("menyapu", ...sapu("sp", 236, 120)),
+      tambah("bersenandung", emo("lg", 196, 160, E.lagu, 18, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 9. Cara Komang dan Cara Yohana untuk satu per tiga ditambah empat per enam (Buku Siswa hlm. 86 sampai 88) ------------------------------ */
-export const ADEGAN_KOMANG_YOHANA: AdeganStory = {
-  id: "eks-d-komang-yohana",
-  judul: "Penyebut berbeda: Cara Komang dan Yohana",
-  sumber: "Materi: kertas, Cara Komang dan Yohana",
-  latar: "#FAF5FF",
-  kutipan: [
-    "Cara Komang",
-    "Arsirlah kertas Lukas semula",
-    "Arsirlah kertas Komang yang diberikan",
-    "kepada Lukas",
-    "menjadi pecahan senilai berpenyebut 6.",
-    "Gabungkanlah",
-    "Cara Yohana",
-    "Penjumlahan Pecahan dengan Penyebut Berbeda",
-    "Mencari KPK dari 3 dan 6.",
-    "Kelipatan 3 adalah 3, 6, 9, 12, 15, 18, 21, 24, ...",
-    "Kelipatan 6 adalah 6, 12, 18, 24, ...",
-    "KPK dari 3 dan 6 adalah",
-  ],
+/* ------------------------------ 8. Campuran dengan penyebut beda ------------------------------ */
+const SUARA_C1 = "Pak Seno menantang: satu bulat satu per dua ditambah dua bulat satu per empat.";
+const SUARA_C2 = "Citra mengubahnya menjadi enam per empat ditambah sembilan per empat, yaitu lima belas per empat.";
+const SUARA_C3 = "Disederhanakan, hasilnya tiga bulat tiga per empat.";
+
+const P1 = campur("p1", 24, 44, 1, 1, 2, { lebar: 60, h: 14 });
+const P2 = campur("p2", 176, 44, 2, 1, 4, { lebar: 80, h: 14 });
+const Z = campur("zz", 30, 44, 3, 3, 4, { lebar: 80, h: 12 });
+
+export const ADEGAN_CAMPURAN: AdeganStory = {
+  id: "campuran",
+  judul: "Campuran beda penyebut",
+  sumber: "Materi: campuran",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Cara Komang memakai lingkaran kecil. Pertama, arsir kertas Lukas semula, satu per tiga: dari tiga lingkaran, satu diarsir.",
-      tambah(0, judul("Cara Komang: arsir")),
-      tambah("Pertama,", ...[0, 1, 2].map((i) => bulat(`ca-${i}`, 90 + i * 30, 70, 12, i === 0 ? W.hijauPita : W.putih)), teks("ca-t", 150, 104, "1/3", 16, W.hitam)),
+      SUARA_C1,
+      tambah(0, judul("Campuran beda penyebut"), ...lantai("lt", 150)),
+      tambah("Seno", ...tokoh("ps", 40, 184, "Pak Seno")),
+      tambah("satu", ...P1.objs, teks("p1t", 54, 92, "1 1/2", 14, W.rotiTua, { z: 3 })),
+      tambah("ditambah", teks("pl", 140, 70, "+", 18, W.merah, { z: 3 })),
+      tambah("dua", ...P2.objs, teks("p2t", 216, 108, "2 1/4", 14, W.biruGaris, { z: 3 })),
     ),
     k(
-      "Kedua, arsir kertas Komang yang diberikan kepada Lukas, empat per enam: dari enam lingkaran, empat diarsir.",
-      tambah("Kedua,", ...[0, 1, 2, 3, 4, 5].map((i) => bulat(`cb-${i}`, 90 + (i % 3) * 30, 134 + Math.floor(i / 3) * 28, 11, i < 4 ? W.jingga : W.putih)), teks("cb-t", 210, 160, "4/6", 16, W.hitam)),
-    ),
-    k(
-      "Ketiga, ubah satu per tiga menjadi pecahan senilai berpenyebut enam. Satu per tiga senilai dua per enam.",
+      SUARA_C2,
       bersih(0),
-      tambah(0, judul("Cara Komang: pecahan senilai")),
-      tambah("Ketiga,", teks("sn1", 150, 80, "1/3 = 2/6", 22, W.hitam)),
-      tambah("senilai@2", ...kartu("sn2", 40, 104, 220, 34, W.krem, ["penyebut 3 jadi penyebut 6"], 9.4)),
+      tambah(0, judul("Ubah ke pecahan biasa"), ...lantai("lt", 150)),
+      tambah("Citra", ...tokoh("ct", 40, 184, "Citra")),
+      tambah("enam", teks("e1", 150, 50, "1 1/2 = 3/2 = 6/4", 14, W.rotiTua, { z: 3 }), ...bar("v1", 20, 124, 6, 6, { lebar: 120, h: 14 })),
+      tambah("sembilan", teks("e2", 150, 76, "2 1/4 = 9/4", 14, W.biruGaris, { z: 3 }), ...bar("v2", 150, 124, 9, 9, { lebar: 135, h: 14, warna: W.biruMuda, garis: W.biruGaris })),
+      tambah("lima", teks("e3", 150, 106, "6/4 + 9/4 = 15/4", 17, W.merah, { z: 3 })),
     ),
     k(
-      "Keempat, gabungkan. Satu per tiga ditambah empat per enam sama dengan dua per enam ditambah empat per enam, sama dengan enam per enam, yaitu satu.",
+      SUARA_C3,
       bersih(0),
-      tambah(0, judul("Cara Komang: gabungkan")),
-      tambah("Keempat,", teks("gb1", 150, 70, "1/3 + 4/6", 17, W.hitam)),
-      tambah("sama@1", teks("gb2", 150, 100, "= 2/6 + 4/6", 17, W.hitam)),
-      tambah("sama@2", teks("gb3", 150, 130, "= 6/6 = 1", 20, W.hijau)),
-    ),
-    k(
-      "Cara Yohana mencari KPK dulu untuk satu per tiga ditambah empat per enam. Kelipatan tiga: tiga, enam, sembilan. Kelipatan enam: enam, dua belas, delapan belas.",
-      bersih(0),
-      tambah(0, judul("Cara Yohana: cari KPK")),
-      tambah("untuk", teks("y1", 150, 48, "1/3 + 4/6", 15, W.hitam)),
-      tambah("Kelipatan", ...kartu("y2", 20, 56, 260, 30, W.langit, ["kelipatan 3: 3, 6, 9, 12, ..."], 9.4)),
-      tambah("enam@3", ...kartu("y3", 20, 92, 260, 30, W.krem, ["kelipatan 6: 6, 12, 18, ..."], 9.4)),
-    ),
-    k(
-      "KPK dari tiga dan enam adalah enam. Enam dibagi tiga sama dengan dua, lalu dikali satu menjadi dua per enam.",
-      ubah("KPK", { id: "y2-k", warna: W.hijauMuda }, { id: "y3-k", warna: W.hijauMuda }),
-      tambah("KPK", ...kartu("y4", 90, 130, 120, 28, W.hijauMuda, ["KPK 3 dan 6 = 6"], 9.8)),
-      tambah("dibagi", teks("y5", 150, 180, "1/3 = ((6 : 3) × 1)/6 = 2/6", 9.4, W.hitam)),
-    ),
-    k(
-      "Sisanya sama: dua per enam ditambah empat per enam sama dengan enam per enam, yaitu satu. Ketiga cara memberi jawaban yang sama.",
-      bersih(0),
-      tambah(0, judul("Hasil tiga cara")),
-      tambah("Sisanya", teks("z1", 150, 66, "2/6 + 4/6 = 6/6 = 1", 18, W.hitam)),
-      tambah("Ketiga", ...kartu("z2", 20, 92, 82, 34, W.hijauMuda, ["Cara Nisa"], 9), ...kartu("z3", 109, 92, 82, 34, W.langit, ["Cara Komang"], 9), ...kartu("z4", 198, 92, 82, 34, W.krem, ["Cara Yohana"], 9)),
-      tambah("sama.", emo("z5", 150, 160, "✅", 26)),
-    ),
-    k(
-      "Wingko Lukas yang tadi disimpan kini bisa dijawab. KPK dari dua dan tiga adalah enam. Satu per dua sama dengan tiga per enam, satu per tiga sama dengan dua per enam, jadi hasilnya lima per enam. Ini hitungan kita sendiri.",
-      bersih(0),
-      tambah(0, judul("Wingko Lukas dijawab")),
-      tambah("Wingko", teks("w1", 150, 62, "1/2 + 1/3", 17, W.hitam)),
-      tambah("KPK", ...kartu("w2", 80, 74, 140, 28, W.krem, ["KPK 2 dan 3 = 6"], 9.4)),
-      tambah("Satu@1", teks("w3", 150, 128, "= 3/6 + 2/6", 17, W.hitam)),
-      tambah("hasilnya", teks("w4", 150, 160, "= 5/6", 22, W.hijau)),
+      tambah(0, judul("Disederhanakan"), ...lantai("lt", 150), ...Z.objs),
+      tambah("hasilnya", teks("f1", 200, 64, "15/4", 18, W.merah, { z: 3 })),
+      tambah("tiga", teks("f2", 200, 92, "= 3 3/4", 18, W.hijauTua, { z: 3 })),
+      tambah("empat", emo("ok", 250, 120, E.benar, 20, { z: 3 })),
+      tambah("Disederhanakan", ...tokoh("ps", 40, 184, "Pak Seno")),
     ),
   ],
 };
 
-/* ------------------------------ 10. Eksplorasi 3.2E: denah rumah, Cara Yohana dan Cara Lukas (Buku Siswa hlm. 88 sampai 90) ------------------------------ */
-export const ADEGAN_DENAH: AdeganStory = {
-  id: "eks-e-denah",
-  judul: "Jarak tiga rumah",
-  sumber: "Materi: denah tiga rumah",
-  latar: "#F0F9FF",
-  kutipan: [
-    "Eksplorasi 3.2E",
-    "Masalah Komang",
-    "Perhatikan ilustrasi denah rumah Yohana, Komang, dan Lukas",
-    "berikut ini. Rumah Komang berada di antara rumah Yohana dan",
-    "rumah Lukas.",
-    "Jarak rumah Komang ke rumah Yohana",
-    "Cara Yohana",
-    "Menjumlahkan Pecahan Campuran",
-    "ubah pecahan campuran menjadi pecahan biasa",
-    "samakan penyebut kedua pecahan tersebut",
-    "Cara Lukas",
-    "pisahkan bilangan bulat dan bilang pecahan",
-    "gabungkan bilangan bulat dengan bilangan pecahan",
-  ],
-  ketukan: [
-    k(
-      "Masalah Komang. Perhatikan denah berikut. Pada denah, rumah Komang berada di antara rumah Yohana dan rumah Lukas.",
-      tambah(0, judul("Denah tiga rumah")),
-      tambah("Yohana,", emo("r1", 50, 80, "🏠", 30), teks("r1t", 50, 104, "Yohana", 9.4, W.biru)),
-      tambah("Komang@2", emo("r2", 150, 80, "🏠", 30), teks("r2t", 150, 104, "Komang", 9.4, W.biru)),
-      tambah("Lukas.", emo("r3", 250, 80, "🏠", 30), teks("r3t", 250, 104, "Lukas", 9.4, W.biru)),
-      tambah("antara", panah("pa1", 78, 76, 44, 0, W.hitam, 1.6, { gambar: true }), panah("pa2", 178, 76, 44, 0, W.hitam, 1.6, { gambar: true })),
-    ),
-    k(
-      "Jarak rumah Komang ke rumah Yohana adalah satu satu per dua kilometer, dan ke rumah Lukas dua satu per empat kilometer. Lebar rumah Komang satu per dua ratus kilometer. Berapa jarak rumah Yohana ke rumah Lukas?",
-      tambah("satu", teks("j1", 100, 130, "1 1/2 km", 11, W.merah)),
-      tambah("Lukas", teks("j3", 200, 130, "2 1/4 km", 11, W.merah)),
-      tambah("Lebar", teks("j2", 150, 152, "lebar rumah Komang 1/200 km", 10, W.coklat)),
-      tambah("Berapa", teks("jq", 150, 182, "jarak Yohana ke Lukas = ?", 12, W.merah)),
-    ),
-    k(
-      "Cara Yohana, menjumlahkan pecahan campuran. Langkah satu, ubah pecahan campuran menjadi pecahan biasa. Satu satu per dua menjadi tiga per dua, dan dua satu per empat menjadi sembilan per empat.",
-      bersih(0),
-      tambah(0, judul("Cara Yohana: langkah 1")),
-      tambah("Langkah", ...kartu("yl", 30, 36, 240, 26, W.krem, ["ubah ke pecahan biasa"], 9.4)),
-      tambah("Satu@2", teks("y1", 150, 96, "1 1/2 = 3/2", 17, W.hitam)),
-      tambah("sembilan", teks("y2", 150, 126, "2 1/4 = 9/4", 17, W.hitam)),
-      tambah("empat@2", teks("y3", 150, 156, "1/200 tetap 1/200", 11, W.coklat)),
-    ),
-    k(
-      "Langkah dua, samakan penyebutnya menjadi dua ratus. Tiga per dua dikali seratus menjadi tiga ratus per dua ratus. Sembilan per empat dikali lima puluh menjadi empat ratus lima puluh per dua ratus.",
-      bersih(0),
-      tambah(0, judul("Cara Yohana: langkah 2")),
-      tambah("Langkah", ...kartu("y4", 30, 36, 240, 26, W.krem, ["samakan penyebut jadi 200"], 9.4)),
-      tambah("seratus", teks("y5", 150, 98, "3/2 = (3 × 100)/(2 × 100) = 300/200", 11, W.hitam)),
-      tambah("Sembilan", teks("y6", 150, 130, "9/4 = (9 × 50)/(4 × 50) = 450/200", 11, W.hitam)),
-    ),
-    k(
-      "Langkah tiga, jumlahkan semuanya. Hasilnya tujuh ratus lima puluh satu per dua ratus, atau tiga dan seratus lima puluh satu per dua ratus.",
-      bersih(0),
-      tambah(0, judul("Cara Yohana: langkah 3")),
-      tambah("Langkah", ...kartu("y7", 30, 36, 240, 26, W.krem, ["jumlahkan"], 9.4)),
-      tambah("Hasilnya", teks("y8", 150, 100, "300/200 + 450/200 + 1/200 = 751/200", 11, W.hitam)),
-      tambah("atau", teks("y9", 150, 140, "751/200 = 3 151/200", 17, W.hijau)),
-    ),
-    k(
-      "Cara Lukas, memisahkan bilangan bulat dan pecahan. Bilangan bulatnya satu tambah dua sama dengan tiga.",
-      bersih(0),
-      tambah(0, judul("Cara Lukas: bulat")),
-      tambah("Cara", teks("l1", 150, 64, "1 1/2 + 2 1/4 + 1/200", 14, W.hitam)),
-      tambah("bulatnya", ...kartu("l2", 40, 86, 220, 28, W.krem, ["bilangan bulat"], 9.4)),
-      tambah("satu", teks("l3", 150, 146, "1 + 2 = 3", 18, W.hijau)),
-    ),
-    k(
-      "Pecahannya: satu per dua, satu per empat, dan satu per dua ratus. Disamakan menjadi seratus, lima puluh, dan satu per dua ratus. Jumlahnya seratus lima puluh satu per dua ratus.",
-      bersih(0),
-      tambah(0, judul("Cara Lukas: pecahan")),
-      tambah("Pecahannya:", ...kartu("l4", 40, 34, 220, 28, W.langit, ["pecahan"], 9.4)),
-      tambah("Disamakan", teks("l5", 150, 96, "1/2 + 1/4 + 1/200", 14, W.hitam)),
-      tambah("seratus", teks("l6", 150, 124, "= 100/200 + 50/200 + 1/200", 12, W.hitam)),
-      tambah("Jumlahnya", teks("l7", 150, 154, "= 151/200", 18, W.hijau)),
-    ),
-    k(
-      "Terakhir, gabungkan bilangan bulat dan pecahan. Hasilnya sama dengan Cara Yohana. Jadi jarak rumah Yohana ke rumah Lukas adalah tiga dan seratus lima puluh satu per dua ratus kilometer.",
-      bersih(0),
-      tambah(0, judul("Jarak Yohana ke Lukas")),
-      tambah("gabungkan", teks("m1", 150, 70, "3 + 151/200 = 3 151/200", 15, W.hitam)),
-      tambah("sama", ...kartu("m2", 40, 90, 220, 28, W.hijauMuda, ["sama dengan Cara Yohana"], 9.4)),
-      tambah("Jadi", ...kartu("m3", 40, 130, 220, 38, W.emas, ["jarak = 3 151/200 km"], 11)),
-    ),
-  ],
-};
+/* ------------------------------ 9. Penutup: jembatan ke Sub-Bab C ------------------------------ */
+const SUARA_T1 = "Dari kejauhan, Bu Nani datang membawa loyang kue yang tinggal sebagian.";
+const SUARA_T2 = "Pesanan pelanggan harus diambil dari sisa adonan itu.";
+const SUARA_T3 = "Menurutmu, berapa bagian adonan yang tersisa sesudah pesanan diambil? Terima kasih, Bima, Citra, Fajar, Pak Arif, dan Pak Seno!";
 
-/* ------------------------------ 11. Akhir pembelajaran, miskonsepsi, diferensiasi, Refleksi nomor 3 (Panduan Guru hlm. 107; Buku Siswa hlm. 102 dan 103) ------------------------------ */
 export const ADEGAN_PENUTUP: AdeganStory = {
-  id: "penutup-b",
-  judul: "Hati-hati, tantangan, dan renungan",
-  sumber: "Materi: hati-hati, tantangan, renungan",
-  latar: "#FFFBEB",
-  kutipan: [
-    "Akhir Pembelajaran",
-    "untuk mempresentasikan hasil",
-    "kerjanya.",
-    "Ajak peserta didik untuk menyimpulkan hal-hal penting yang harus",
-    "diperhatikan saat melakukan penjumlahan bilangan pecahan.",
-    "Pastikan peserta didik dapat menemukan hasil penjumlahan dengan cara",
-    "yang paling mudah dan paling disukai.",
-    "Kesalahan peserta didik yang mungkin terjadi adalah menyamakan penyebut",
-    "pecahan serta melakukan penjumlahan bilangan campuran.",
-    "Bagi peserta didik dengan kecepatan belajar tinggi (advanced), minta",
-    "mereka mengerjakan latihan tanpa bantuan",
-    "Pada saat yang sama, guru dapat mendampingi peserta didik yang mengalami",
-    "yang dilakukan berkaitan dengan kemampuan peserta didik",
-    "dalam melakukan penjumlahan bilangan pecahan.",
-    "Aku dapat menentukan penjumlahan pada",
-  ],
+  id: "penutup",
+  judul: "Bu Nani datang",
+  sumber: "Materi: jembatan ke Sub-Bab C",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Mari kita tutup bagian ini. Coba jelaskan hasil kerjamu kepada temanmu, lalu simpulkan hal-hal penting yang harus diperhatikan saat menjumlahkan pecahan.",
-      tambah(0, judul("Menutup pelajaran")),
-      tambah("jelaskan", ...kartu("a1", 30, 46, 240, 40, W.langit, ["jelaskan hasil kerjamu"], 10)),
-      tambah("simpulkan", ...kartu("a2", 30, 106, 240, 40, W.hijauMuda, ["simpulkan hal penting"], 10)),
+      SUARA_T1,
+      tambah(0, judul("Bu Nani datang"), ...lantai("lt", 150), teks("ly", 150, 82, "loyang kue", 11, W.coklat, { z: 3 })),
+      tambah("Nani", ...tokoh("bn", 256, 184, "Bu Nani")),
+      tambah("loyang", ...bar("ln", 100, 92, 8, 5, { lebar: 100, h: 26, warna: W.roti, garis: W.rotiTua })),
+      tambah("tinggal", teks("ts", 150, 148, "tinggal sebagian", 11, W.merah, { z: 3 })),
     ),
     k(
-      "Pilihlah cara yang paling mudah dan paling kamu sukai. Cara Lukas, Komang, Nisa, atau Yohana boleh kamu pakai, asalkan hasilnya sama.",
-      bersih(0),
-      tambah(0, judul("Pilih cara yang paling mudah")),
-      tambah("Lukas,", ...kartu("p1", 20, 46, 126, 36, W.langit, ["Cara Lukas"], 9.4)),
-      tambah("Komang,", ...kartu("p2", 154, 46, 126, 36, W.hijauMuda, ["Cara Komang"], 9.4)),
-      tambah("Nisa,", ...kartu("p3", 20, 94, 126, 36, W.pink, ["Cara Nisa"], 9.4)),
-      tambah("Yohana", ...kartu("p4", 154, 94, 126, 36, W.krem, ["Cara Yohana"], 9.4)),
-      tambah("paling@2", emo("p5", 150, 168, "⭐", 26)),
+      SUARA_T2,
+      tambah("Pesanan", ...kartu("pn", 20, 48, 62, 28, W.kapur, "pesanan", 11)),
+      tambah("diambil", panah("pk", 84, 62, 36, 28, W.merah, 2, { z: 3 })),
+      tambah("sisa", teks("sa", 150, 168, "sisa adonan", 11, W.coklat, { z: 3 })),
     ),
     k(
-      "Hati-hati, kesalahan yang sering terjadi ada dua: lupa menyamakan penyebut, dan keliru menjumlahkan pecahan campuran. Contohnya, satu per tiga ditambah empat per enam bukan lima per sembilan, sebab penyebut tidak ikut dijumlahkan.",
-      bersih(0),
-      tambah(0, judul("Hati-hati")),
-      tambah("menyamakan", ...kartu("q1", 20, 40, 126, 36, W.merahMuda, ["menyamakan penyebut"], 9)),
-      tambah("menjumlahkan", ...kartu("q2", 154, 40, 126, 36, W.merahMuda, ["bilangan campuran"], 9)),
-      tambah("Contohnya,", teks("q3", 150, 108, "1/3 + 4/6 = 5/9 ?", 16, W.merah)),
-      tambah("tidak", teks("q4", 150, 132, "penyebut ikut dijumlahkan: salah", 9.4, W.merah), teks("q5", 150, 156, "benar: 2/6 + 4/6 = 6/6 = 1", 11, W.hijau)),
-    ),
-    k(
-      "Tantangan untukmu: carilah jumlah dua pecahan lain dengan cara yang kamu pilih, tanpa bantuan. Lalu bandingkan hasilmu dengan hasil temanmu, atau carilah contoh penjumlahan pecahan di sekitarmu.",
-      bersih(0),
-      tambah(0, judul("Tantangan")),
-      tambah("carilah", ...kartu("d1", 20, 46, 126, 56, W.hijauMuda, ["cari jumlah", "pecahan lain"], 9.4)),
-      tambah("bandingkan", ...kartu("d2", 154, 46, 126, 56, W.langit, ["bandingkan hasil", "dengan temanmu"], 9.4)),
-      tambah("sekitarmu.", emo("d3", 150, 140, "🔎", 28)),
-    ),
-    k(
-      "Renungan: apakah kamu sudah bisa menjumlahkan pecahan? Coba pikirkan dalam hati, bagian mana yang sudah kamu kuasai dan bagian mana yang masih membuatmu ragu.",
-      bersih(0),
-      tambah(0, judul("Renungan")),
-      tambah("sudah@1", ...kartu("f1", 16, 40, 268, 50, W.hijauMuda, ["bagian mana yang", "sudah kamu kuasai?"], 9.4)),
-      tambah("masih", ...kartu("f2", 16, 104, 268, 50, W.krem, ["bagian mana yang", "masih membuatmu ragu?"], 9.4)),
-      tambah("hati,", emo("f4", 150, 178, "💭", 22)),
-    ),
-    k(
-      "Itulah penjumlahan pecahan yang sudah kita pelajari. Penyebut sama, jumlahkan pembilangnya. Penyebut berbeda, samakan dulu dengan pecahan senilai. Pecahan campuran, ubah ke pecahan biasa atau pisahkan bilangan bulat dan pecahannya.",
-      bersih(0),
-      tambah(0, judul("Rangkuman penjumlahan pecahan")),
-      tambah("sama,", ...kartu("r1", 20, 36, 260, 40, W.hijauMuda, ["penyebut sama:", "jumlahkan pembilang"], 9.4)),
-      tambah("berbeda,", ...kartu("r2", 20, 84, 260, 40, W.pink, ["penyebut berbeda:", "samakan dulu"], 9.4)),
-      tambah("campuran,", ...kartu("r3", 20, 132, 260, 40, W.krem, ["pecahan campuran:", "ubah atau pisahkan"], 9.4)),
+      SUARA_T3,
+      hapus("Menurutmu", "ts", "sa"),
+      tambah("berapa", teks("br", 150, 140, "berapa bagian tersisa?", 13, W.merah, { z: 3 })),
+      tambah("tersisa", emo("tn", 256, 70, E.tanya, 22, { z: 3 })),
+      tambah("Bima", ...tokoh("bm", 30, 184, "Bima")),
+      tambah("Citra", ...tokoh("ct", 74, 184, "Citra")),
+      tambah("Fajar", ...tokoh("fj", 118, 184, "Fajar")),
+      tambah("Arif", ...tokoh("pa", 162, 184, "Pak Arif")),
+      tambah("Seno", ...tokoh("ps", 206, 184, "Pak Seno")),
     ),
   ],
 };
