@@ -80,4 +80,9 @@ export const CERITA_BARU: Record<string, ComponentType<PropsCerita>> = {
   "mtk-4-bab1-G": dynamic<PropsCerita>(() => import("@/components/modul/video-k4b1g").then((m) => m.VideoK4B1G), { ssr: false }),
   "mtk-4-bab1-H": dynamic<PropsCerita>(() => import("@/components/modul/video-k4b1h").then((m) => m.VideoK4B1H), { ssr: false }),
   "mtk-4-bab1-I": dynamic<PropsCerita>(() => import("@/components/modul/video-k4b1i").then((m) => m.VideoK4B1I), { ssr: false }),
+  "mtk-4-bab2-A": dynamic<PropsCerita>(() => import("@/components/modul/video-k4b2a").then((m) => m.VideoK4B2A), { ssr: false }),
+  "mtk-4-bab2-B": dynamic<PropsCerita>(() => import("@/components/modul/video-k4b2b").then((m) => m.VideoK4B2B), { ssr: false }),
+  "mtk-4-bab2-C": dynamic<PropsCerita>(() => import("@/components/modul/video-k4b2c").then((m) => m.VideoK4B2C), { ssr: false }),
+  "mtk-4-bab2-D": dynamic<PropsCerita>(() => import("@/components/modul/video-k4b2d").then((m) => m.VideoK4B2D), { ssr: false }),
+  "mtk-4-bab2-E": dynamic<PropsCerita>(() => import("@/components/modul/video-k4b2e").then((m) => m.VideoK4B2E), { ssr: false }),
 };

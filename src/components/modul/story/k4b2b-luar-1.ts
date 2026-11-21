@@ -1,264 +1,155 @@
-import type { AdeganStory } from "./logika-story";
-import { KUNCI_EMPAT, LATIHAN_EMPAT, W, batang, emo, judul, kartu, panah, pecahan, teks } from "./k4b2b-gambar";
-import { bersih, idx, k, sorotkan, tambah, ubah, warnai } from "./k4b2b-bantu";
+import type { AdeganStory, Obj } from "./logika-story";
+import { D, E, W, bak, bulat, emo, garis, judul, kartu, kotak, panah, papan, pecahan, tanah, teks, tokoh } from "./k4b2b-gambar";
+import { bersih, hapus, k, sorotkan, tambah } from "./k4b2b-bantu";
 
-export const NAMA_METODE = ["Same Denominator", "Compare Numerators", "Fraction Bars", "Fraction Card Sort"];
-export const NAMA_METODE_ID = ["Penyebut Sama", "Banding Pembilang", "Batang Pecahan", "Susun Kartu Pecahan"];
-const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
+/*
+ * Cerita orisinal IGIL "Bak Warna Pak Joyo" (K4 Bab 2 Sub-Bab B), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b2b.md. Bagian ini: pembuka (kaleng Pak Joyo), Compare Numerators (Banding Pembilang), dan terapannya.
+ */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Compare Numerators", "Fraction Bars", "Order on Line"] as const;
+export const NAMA_METODE_ID = ["Banding Pembilang", "Batang Pecahan", "Urut di Garis"] as const;
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana membandingkan pecahan yang penyebutnya sama? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka yang sama seperti tadi.";
-const SUARA_O2 = "Empat metode itu: Same Denominator, Compare Numerators, Fraction Bars, dan Fraction Card Sort.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Penyebut Sama, Banding Pembilang, Batang Pecahan, dan Susun Kartu Pecahan.";
-const SUARA_O4 = "Semuanya menjawab satu pertanyaan: pecahan mana yang lebih besar? Dengan memeriksa potongan sama besar, membandingkan pembilang, menyejajarkan batang, dan menyusun kartu.";
+/** Papan besar sebagai latar tulisan: papan `pd` (lebar 284) pojok kiri-atas (8, 28), tinggi 112. */
+const papanBesar = (): Obj[] => papan("pd", 8, 28, 284, 112);
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Sore itu, di dekat bak-bak warna, Pak Joyo membuka kaleng berisi cara-cara membandingkan pecahan.";
+const SUARA_O2 = "Di dalamnya ada tiga cara supaya pecahan berpenyebut sama selalu terbanding benar, tanpa keliru.";
+const SUARA_O3 = "Tiga cara itu: Compare Numerators, Fraction Bars, dan Order on Line.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Banding Pembilang, Batang Pecahan, dan Urut di Garis.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk membandingkan pecahan",
-  sumber: "Metode luar: pembuka",
+  judul: "Kaleng Pak Joyo",
+  sumber: "Metode global: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
       SUARA_O1,
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("membandingkan", ...pecahan("po1", 90, 60, 1, 3, 24), teks("po2", 150, 70, "?", 26, W.merah), ...pecahan("po3", 210, 60, 2, 3, 24)),
-      tambah("berbagai", emo("gl", 150, 140, "🌍", 34)),
-      tambah("empat", ...kartu("pk4", 60, 164, 180, 28, W.emas, ["4 metode dari luar"], 9.4)),
+      tambah(0, judul("Dekat Bak Warna"), ...tanah("tn", 120)),
+      tambah("bak-bak", ...bak("b1", 20, 44, 120, 18, 5, 3, D.biru), ...bak("b2", 20, 74, 120, 18, 4, 2, D.merah)),
+      tambah("Pak", ...tokoh("pj", 60, 184, "Pak Joyo")),
+      tambah("kaleng", kotak("kl", 110, 148, 40, 28, "#CBD5E1", W.tinta, { rx: 3, z: 2 }), garis("kt", 110, 148, 40, 0, W.tinta, 2, { z: 3 })),
+      tambah("cara-cara", ...kartu("kp", 160, 60, 60, 28, "#FEF3C7", ["pembilang"], 8), ...kartu("kb", 226, 60, 60, 28, "#DBEAFE", ["batang"], 8), ...kartu("kg", 160, 98, 60, 28, "#DCFCE7", ["garis"], 8)),
     ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Empat metode")),
-      ...NAMA_METODE.map((m, i) => tambah(["Same", "Compare", "Fraction", "Card"][i], ...kartu(`m${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
+      tambah("tiga", teks("n3", 250, 150, "3 cara", 14, W.ungu)),
+      tambah("pecahan", teks("pc", 80, 136, "pecahan penyebut sama", 8, W.tinta)),
+      tambah("benar,", emo("ok", 270, 112, E.benar, 22)),
+      tambah("keliru.", emo("xs", 236, 112, E.salah, 22)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Nama dalam bahasa Indonesia")),
-      ...NAMA_METODE_ID.map((m, i) => tambah(["Penyebut", "Banding", "Batang", "Susun"][i], ...kartu(`n${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
+      tambah(0, judul("Tiga Cara"), teks("n3", 262, 40, "3 cara", 11, W.ungu), ...papanBesar()),
+      tambah("Compare", teks("m0", 150, 66, "1. Compare Numerators", 10, W.tinta)),
+      tambah("Fraction", teks("m1", 150, 92, "2. Fraction Bars", 10, W.tinta)),
+      tambah("Order", teks("m2", 150, 118, "3. Order on Line", 10, W.tinta)),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Satu pertanyaan, empat cara")),
-      tambah("potongan", emo("i1", 45, 82, "✂", 32), teks("i1t", 45, 112, "potongan", 8.4, W.biru)),
-      tambah("pembilang,", emo("i2", 112, 82, "🔢", 32), teks("i2t", 112, 112, "pembilang", 8.4, W.biru)),
-      tambah("batang,", emo("i3", 188, 82, "📏", 32), teks("i3t", 188, 112, "batang", 8.4, W.biru)),
-      tambah("kartu.", emo("i4", 258, 82, "🃏", 32), teks("i4t", 258, 112, "kartu", 8.4, W.biru)),
-      tambah("besar?", ...kartu("iq", 40, 136, 220, 30, W.emas, ["pecahan mana yang lebih besar?"], 9.6)),
+      tambah("Banding", teks("g0", 150, 78, "Banding Pembilang", 10, W.ungu)),
+      tambah("Batang", teks("g1", 150, 104, "Batang Pecahan", 10, W.ungu)),
+      tambah("Urut", teks("g2", 150, 130, "Urut di Garis", 10, W.ungu)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Same Denominator: konsep ------------------------------ */
-const SUARA_S1 = "Metode pertama, Same Denominator, atau Penyebut Sama. Penyebut menyatakan ukuran satu potongan. Bila penyebutnya sama, semua potongan sama besar.";
-const SUARA_S2 = "Karena potongannya sama besar, yang membedakan hanya banyak potongan. Itulah tugas pembilang: menghitung berapa potongan yang diambil.";
-const SUARA_S3 = "Langkah pertama: periksa, apakah penyebutnya sama? Langkah kedua: bila sama, bandingkan banyak potongan yang diarsir. Bila tidak sama, metode ini belum dipakai di sini.";
-const SUARA_S4 = "Penyebut sama membuat perbandingan adil, seperti membandingkan dua pizza yang dipotong sama besar.";
+/* ------------------------------ Compare Numerators: konsep ------------------------------ */
+const SUARA_P1 = "Cara pertama, Compare Numerators, atau Banding Pembilang.";
+const SUARA_P2 = "Kalau penyebutnya sama, semua bagian sama besar, sehingga kita tidak perlu menghitung hal lain.";
+const SUARA_P3 = "Kita cukup melihat pembilangnya, karena pembilang menunjukkan banyaknya bagian yang diambil.";
+const SUARA_P4 = "Pembilang lebih besar berarti pecahannya lebih besar, dan pembilang lebih kecil berarti pecahannya lebih kecil.";
 
-export const ADEGAN_LUAR_PENYEBUT: AdeganStory = {
-  id: "luar-penyebut",
-  judul: "Same Denominator: potongan sama besar",
-  sumber: "Metode luar: Same Denominator",
-  latar: "#F0FDF4",
+export const ADEGAN_LUAR_PEMBILANG: AdeganStory = {
+  id: "luar-pembilang",
+  judul: "Compare Numerators: Banding Pembilang",
+  sumber: "Metode global: Compare Numerators (konsep)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
-      SUARA_S1,
-      tambah(0, judul("Same Denominator")),
-      tambah("pertama,", kepala(0)),
-      tambah("menyatakan", ...batang("pd", 40, 76, 220, 34, 6, 0)),
-      tambah(idx(SUARA_S1, "potongan", 1), teks("pd1", 150, 134, "ukuran satu potongan = 1/6", 9.4, W.biru)),
-      sorotkan("ukuran", "pd-b0"),
-      tambah(idx(SUARA_S1, "potongan", 2), teks("pd2", 150, 166, "6 potongan sama besar", 9.4, W.hijau)),
+      SUARA_P1,
+      tambah(0, judul("Cara 1: Compare Numerators"), ...papanBesar()),
+      tambah("Compare", teks("nm", 150, 64, "Compare Numerators", 14, W.tinta)),
+      tambah("Banding", teks("ni", 150, 88, "Banding Pembilang", 11, W.merah)),
+      tambah("Pembilang.", panah("ak", 50, 112, 200, 0, W.merah, 3)),
     ),
     k(
-      SUARA_S2,
+      SUARA_P2,
       bersih(0),
-      tambah(0, judul("Pembilang menghitung potongan")),
-      tambah("membedakan", ...batang("pe1", 60, 44, 180, 26, 4, 1), teks("pe1t", 28, 61, "1/4", 8.6, W.biru), ...batang("pe2", 60, 90, 180, 26, 4, 3), teks("pe2t", 28, 107, "3/4", 8.6, W.biru)),
-      tambah("pembilang:", teks("pe3", 150, 140, "yang beda: banyak potongan", 9.4, W.merah)),
-      tambah("diambil.", ...kartu("pe4", 30, 154, 240, 30, W.emas, ["pembilang = potongan yang diambil"], 9)),
+      tambah(0, judul("Penyebut Sama"), ...papanBesar(), ...bak("a1", 30, 50, 190, 24, 6, 2, D.biru)),
+      tambah("semua", ...bak("a2", 30, 90, 190, 24, 6, 5, D.merah)),
+      tambah("sama@2", teks("sb", 125, 136, "semua bagian sama besar", 9, W.hijau)),
+      tambah("menghitung", emo("xs", 262, 70, E.salah, 22), teks("tm", 262, 96, "tak perlu hitung", 7, W.merah)),
     ),
     k(
-      SUARA_S3,
+      SUARA_P3,
       bersih(0),
-      tambah(0, judul("Dua langkah")),
-      tambah("pertama:", ...kartu("pf1", 14, 34, 272, 34, W.hijauMuda, ["1. periksa: penyebutnya sama?"], 9)),
-      tambah("kedua:", ...kartu("pf2", 14, 76, 272, 34, W.langit, ["2. sama: bandingkan potongan arsir"], 9)),
-      tambah("Bila@2", ...kartu("pf3", 14, 118, 272, 34, W.merahMuda, ["tidak sama: belum dipakai di sini"], 9)),
+      tambah(0, judul("Lihat Pembilang"), ...papanBesar()),
+      tambah("pembilangnya,", ...pecahan("a", 80, 76, 2, 6, 22, W.biru), ...pecahan("b", 220, 76, 5, 6, 22, W.merah)),
+      tambah("karena", bulat("ca", 80, 69, 12, undefined, W.merah, { tebal: 2.4, z: 5 }), bulat("cb", 220, 69, 12, undefined, W.merah, { tebal: 2.4, z: 5 })),
+      tambah("menunjukkan", teks("tj", 150, 124, "banyak bagian yang diambil", 10, W.tinta)),
+      tambah("diambil.", emo("mt", 150, 52, E.mata, 20)),
     ),
     k(
-      SUARA_S4,
+      SUARA_P4,
       bersih(0),
-      tambah(0, judul("Perbandingan yang adil")),
-      tambah("dua", emo("pz1", 80, 94, "🍕", 40), emo("pz2", 220, 94, "🍕", 40)),
-      tambah("dipotong", teks("pz3", 80, 130, "pizza A", 9, W.biru), teks("pz4", 220, 130, "pizza B", 9, W.biru)),
-      tambah("sama@2", ...kartu("pz5", 40, 148, 220, 34, W.emas, ["potongan sama besar: adil"], 9.4)),
+      tambah(0, judul("Besar dan Kecil"), ...papanBesar()),
+      tambah("besar", ...pecahan("a", 80, 76, 5, 6, 20, W.merah), teks("lb", 80, 124, "lebih besar", 9, W.merah)),
+      tambah("pecahannya", teks("gt", 150, 88, ">", 22, W.tinta)),
+      tambah("kecil", ...pecahan("b", 220, 76, 2, 6, 20, W.biru)),
+      tambah("kecil@2", teks("lk", 220, 124, "lebih kecil", 9, W.biru)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Same Denominator: penerapan ------------------------------ */
-const SUARA_T1 = "Terapkan pada gambar tadi. Gambar pertama dibagi tiga, jadi potongannya sama besar. Satu per tiga mengarsir satu potongan, dua per tiga mengarsir dua potongan.";
-const SUARA_T2 = "Dua potongan lebih banyak dari satu potongan, maka satu per tiga kurang dari dua per tiga.";
-const SUARA_T3 = "Sekarang sepuluh potongan sama besar. Dua per sepuluh mengarsir dua potongan, satu per sepuluh mengarsir satu potongan.";
-const SUARA_T4 = "Dua potongan lebih banyak dari satu potongan, maka dua per sepuluh lebih dari satu per sepuluh. Hasilnya sama dengan hitungan tadi.";
+/* ------------------------------ Compare Numerators: terapan ------------------------------ */
+const SUARA_T1 = "Laras membandingkan lima per tujuh dengan dua per tujuh pada kertas sakunya.";
+const SUARA_T2 = "Penyebutnya sama, jadi ia melihat pembilangnya, yaitu lima dan dua.";
+const SUARA_T3 = "Cocok untuk perbandingan cepat di kepala, karena hanya dua bilangan yang dibandingkan.";
+const SUARA_T4 = "Kurang cocok kalau penyebutnya berbeda, karena ukuran bagiannya tidak lagi sama.";
 
-export const ADEGAN_LUAR_PENYEBUT_TERAPAN: AdeganStory = {
-  id: "luar-penyebut-terapan",
-  judul: "Same Denominator pada tiga bagian dan sepuluh bagian",
-  sumber: "Metode luar: Same Denominator",
-  latar: "#ECFDF5",
+export const ADEGAN_LUAR_PEMBILANG_TERAPAN: AdeganStory = {
+  id: "luar-pembilang-terapan",
+  judul: "Banding Pembilang: kapan cocok",
+  sumber: "Metode global: Compare Numerators (terapan)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
       SUARA_T1,
-      tambah(0, judul("Penyebut Sama pada gambar")),
-      tambah("Gambar", ...batang("ta1", 40, 50, 150, 30, 3, 0), ...batang("ta2", 40, 108, 150, 30, 3, 0)),
-      tambah("Satu", ...pecahan("ta1f", 240, 66, 1, 3, 16)),
-      warnai("satu@2", W.emas, "ta1-b0"),
-      tambah("dua", ...pecahan("ta2f", 240, 124, 2, 3, 16)),
-      warnai("dua@2", W.emas, "ta2-b0", "ta2-b1"),
+      tambah(0, judul("Laras Membandingkan"), ...papanBesar(), ...tokoh("lr", 40, 184, "Laras")),
+      tambah("lima", ...pecahan("a", 90, 76, 5, 7, 22, W.merah)),
+      tambah("dengan", teks("vs", 150, 88, "?", 24, W.merah)),
+      tambah("dua", ...pecahan("b", 210, 76, 2, 7, 22, W.biru)),
+      tambah("kertas", teks("kt", 150, 128, "di kertas saku", 9, W.ungu)),
     ),
     k(
       SUARA_T2,
-      bersih(0),
-      tambah(0, judul("Banding potongan: tiga bagian")),
-      tambah(0, ...batang("ta1", 40, 36, 150, 26, 3, 1), teks("tb1", 232, 54, "1 potongan", 8.6, W.biru)),
-      tambah(0, ...batang("ta2", 40, 76, 150, 26, 3, 2), teks("tb2", 232, 94, "2 potongan", 8.6, W.biru)),
-      tambah("maka", ...pecahan("tc1", 90, 144, 1, 3, 18)),
-      tambah("kurang", teks("tc2", 150, 152, "<", 24, W.merah)),
-      tambah("dua@2", ...pecahan("tc3", 210, 144, 2, 3, 18)),
+      hapus(0, "kt"),
+      tambah("sama,", teks("ps", 150, 128, "penyebut sama", 10, W.hijau)),
+      tambah("pembilangnya,", bulat("ca", 90, 69, 12, undefined, W.merah, { tebal: 2.4, z: 5 }), bulat("cb", 210, 69, 12, undefined, W.merah, { tebal: 2.4, z: 5 })),
+      sorotkan("lima", "a-p"),
+      sorotkan("dua.", "b-p"),
     ),
     k(
       SUARA_T3,
       bersih(0),
-      tambah(0, judul("Sepuluh potongan sama besar")),
-      tambah("sepuluh", ...batang("td1", 20, 48, 200, 28, 10, 0), ...batang("td2", 20, 104, 200, 28, 10, 0)),
-      tambah("Dua", ...pecahan("td1f", 258, 60, 2, 10, 16)),
-      warnai("dua@2", W.emas, "td1-b0", "td1-b1"),
-      tambah("satu", ...pecahan("td2f", 258, 116, 1, 10, 16)),
-      warnai("satu@2", W.emas, "td2-b0"),
+      tambah(0, judul("Cocok untuk Cepat"), ...papanBesar(), ...tokoh("lr", 40, 184, "Laras")),
+      tambah("Cocok", emo("ok", 262, 52, E.benar, 22)),
+      tambah("cepat", teks("cp", 150, 70, "cepat", 14, W.merah)),
+      tambah("dua", teks("n2", 150, 100, "2 bilangan", 12, W.tinta)),
+      tambah("dibandingkan.", emo("pk", 150, 126, E.pikir, 22)),
     ),
     k(
       SUARA_T4,
       bersih(0),
-      tambah(0, judul("Banding potongan: sepuluh bagian")),
-      tambah(0, ...batang("td1", 20, 36, 200, 26, 10, 2), teks("te1", 258, 54, "2", 10, W.biru)),
-      tambah(0, ...batang("td2", 20, 76, 200, 26, 10, 1), teks("te2", 258, 94, "1", 10, W.biru)),
-      tambah("maka", ...pecahan("tf1", 90, 144, 2, 10, 18)),
-      tambah("lebih@2", teks("tf2", 150, 152, ">", 24, W.merah)),
-      tambah("satu@2", ...pecahan("tf3", 210, 144, 1, 10, 18)),
-      tambah("Hasilnya", emo("tf4", 262, 156, "✅", 22)),
-    ),
-  ],
-};
-
-/* ------------------------------ 4. Compare Numerators: konsep ------------------------------ */
-const SUARA_N1 = "Metode kedua, Compare Numerators, atau Banding Pembilang. Aturannya ringkas: bila penyebut sama, pecahan dengan pembilang lebih besar adalah pecahan yang lebih besar.";
-const SUARA_N2 = "Karena penyebutnya sudah sama, kita cukup membandingkan dua bilangan di atas garis, seperti membandingkan bilangan cacah biasa.";
-const SUARA_N3 = "Pembilang lebih besar berarti pecahan lebih besar, pembilang lebih kecil berarti pecahan lebih kecil, dan pembilang sama berarti pecahan sama besar.";
-const SUARA_N4 = "Hati-hati: aturan ini hanya berlaku bila penyebutnya sama. Penyebut tidak ikut dibandingkan, jadi periksa dulu penyebutnya.";
-
-export const ADEGAN_LUAR_PEMBILANG: AdeganStory = {
-  id: "luar-pembilang",
-  judul: "Compare Numerators: bandingkan pembilangnya",
-  sumber: "Metode luar: Compare Numerators",
-  latar: "#F0F9FF",
-  ketukan: [
-    k(
-      SUARA_N1,
-      tambah(0, judul("Compare Numerators")),
-      tambah("kedua,", kepala(1)),
-      tambah("Aturannya", ...kartu("nr1", 20, 68, 260, 40, W.krem, ["penyebut sama", "→ banding pembilang"], 9.4)),
-      tambah("pembilang@2", ...kartu("nr2", 14, 126, 112, 44, W.hijauMuda, ["pembilang", "lebih besar"], 9.4)),
-      tambah(idx(SUARA_N1, "pecahan", 2), panah("nr4", 130, 148, 40, 0, W.merah, 2), ...kartu("nr3", 174, 126, 112, 44, W.hijauMuda, ["pecahan", "lebih besar"], 9.4)),
-    ),
-    k(
-      SUARA_N2,
-      bersih(0),
-      tambah(0, judul("Cukup lihat bilangan di atas garis")),
-      tambah(0, ...pecahan("nc1", 90, 86, 2, 5, 26), teks("nc2", 150, 96, "?", 28, W.merah), ...pecahan("nc3", 210, 86, 3, 5, 26)),
-      ubah("penyebutnya", { id: "nc1-d", op: 0.25 }, { id: "nc3-d", op: 0.25 }),
-      sorotkan("membandingkan", "nc1-n", "nc3-n"),
-      tambah("cacah", ...kartu("nc4", 40, 140, 220, 34, W.emas, ["seperti membandingkan 2 dan 3"], 9)),
-    ),
-    k(
-      SUARA_N3,
-      bersih(0),
-      tambah(0, judul("Tiga kemungkinan")),
-      tambah("besar", ...kartu("nt1", 14, 34, 272, 34, W.hijauMuda, ["pembilang besar: pecahan besar (>)"], 9)),
-      tambah(idx(SUARA_N3, "kecil", 1), ...kartu("nt2", 14, 76, 272, 34, W.merahMuda, ["pembilang kecil: pecahan kecil (<)"], 9)),
-      tambah(idx(SUARA_N3, "sama", 1), ...kartu("nt3", 14, 118, 272, 34, W.langit, ["pembilang sama: pecahan sama (=)"], 9)),
-    ),
-    k(
-      SUARA_N4,
-      bersih(0),
-      tambah(0, judul("Hati-hati")),
-      tambah("Hati-hati:", emo("nw1", 150, 62, "⚠", 32)),
-      tambah("hanya", ...kartu("nw2", 20, 80, 260, 36, W.merahMuda, ["hanya berlaku bila penyebut sama"], 9)),
-      tambah(idx(SUARA_N4, "Penyebut"), ...kartu("nw3", 20, 124, 260, 36, W.krem, ["penyebut tidak ikut dibandingkan"], 9)),
-      tambah("periksa", ...kartu("nw4", 20, 168, 260, 26, W.emas, ["periksa penyebutnya dulu"], 9)),
-    ),
-  ],
-};
-
-/* ------------------------------ 5. Compare Numerators: penerapan pada lima pasang pecahan ------------------------------ */
-const SUARA_M1 = "Terapkan pada lima pasang pecahan. Pasangan a: pembilangnya satu dan tiga. Satu kurang dari tiga, jadi satu per lima kurang dari tiga per lima.";
-const SUARA_M2 = "Pasangan b dan c. Dua kurang dari tiga, jadi dua per empat kurang dari tiga per empat. Tiga lebih dari dua, jadi tiga per delapan lebih dari dua per delapan.";
-const SUARA_M3 = "Pasangan d dan e. Lima lebih dari dua, jadi lima per sepuluh lebih dari dua per sepuluh. Sebelas kurang dari dua belas, jadi sebelas per tiga belas kurang dari dua belas per tiga belas.";
-const SUARA_M4 = "Lima pasang selesai hanya dengan membandingkan pembilang, dan hasilnya: kurang, kurang, lebih, lebih, kurang.";
-
-const HURUF = ["a", "b", "c", "d", "e"] as const;
-const yBaris = (i: number): number => 74 + i * 26;
-const baris = (i: number) => {
-  const [p, q, d] = LATIHAN_EMPAT[i];
-  return [teks(`m${i}-h`, 24, yBaris(i) + 4, `${HURUF[i]}.`, 9, W.biru), ...pecahan(`m${i}-f1`, 90, yBaris(i), p, d, 9), ...pecahan(`m${i}-f2`, 210, yBaris(i), q, d, 9)];
-};
-const tanda = (i: number) => teks(`m${i}-s`, 150, yBaris(i) + 6, KUNCI_EMPAT[i], 20, W.merah);
-const alasan = (i: number) => {
-  const [p, q] = LATIHAN_EMPAT[i];
-  return teks(`m${i}-a`, 262, yBaris(i) + 4, `${p} ${KUNCI_EMPAT[i]} ${q}`, 8.4, W.coklat);
-};
-
-export const ADEGAN_LUAR_PEMBILANG_TERAPAN: AdeganStory = {
-  id: "luar-pembilang-terapan",
-  judul: "Compare Numerators pada lima pasang pecahan",
-  sumber: "Metode luar: Compare Numerators",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      SUARA_M1,
-      tambah(0, judul("Banding pembilang: lima pasang")),
-      tambah(0, kepala(1)),
-      tambah("Pasangan", ...baris(0)),
-      tambah(idx(SUARA_M1, "satu", 2), alasan(0)),
-      tambah("jadi", tanda(0)),
-    ),
-    k(
-      SUARA_M2,
-      tambah("Pasangan", ...baris(1), ...baris(2)),
-      tambah("Dua", alasan(1)),
-      tambah("jadi", tanda(1)),
-      tambah(idx(SUARA_M2, "Tiga", 3), alasan(2)),
-      tambah("jadi@2", tanda(2)),
-    ),
-    k(
-      SUARA_M3,
-      tambah("Pasangan", ...baris(3), ...baris(4)),
-      tambah("Lima", alasan(3)),
-      tambah("jadi", tanda(3)),
-      tambah("Sebelas", alasan(4)),
-      tambah("jadi@2", tanda(4)),
-    ),
-    k(
-      SUARA_M4,
-      bersih(0),
-      tambah(0, judul("Hasil lima pasang")),
-      ...HURUF.map((h, i) => tambah(i < 2 ? idx(SUARA_M4, "kurang", i + 1) : i < 4 ? idx(SUARA_M4, "lebih", i - 1) : idx(SUARA_M4, "kurang", 3), ...kartu(`mz${i}`, 8 + i * 58, 70, 52, 44, W.langit, [`${h}.  ${KUNCI_EMPAT[i]}`], 12))),
-      tambah("selesai", emo("mz9", 150, 150, "✅", 30)),
+      tambah(0, judul("Penyebut Berbeda"), ...papanBesar(), ...tokoh("lr", 40, 184, "Laras")),
+      tambah("Kurang", emo("xs", 262, 52, E.salah, 22)),
+      tambah("penyebutnya", ...bak("c1", 60, 54, 180, 20, 4, 2, D.biru)),
+      tambah("berbeda,", ...bak("c2", 60, 90, 180, 20, 6, 3, D.merah)),
+      tambah("ukuran", teks("uk", 150, 132, "ukuran bagian beda", 9, W.merah)),
     ),
   ],
 };

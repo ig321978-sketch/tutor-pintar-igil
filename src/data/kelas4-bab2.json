@@ -5,7 +5,7 @@
   "grade": 4,
   "subjectLabel": "MATEMATIKA - KELAS 4 SD",
   "title": "BAB 2: PECAHAN",
-  "silabusElemen": "🌈 Fase B • Elemen Bilangan: Pecahan (Pembilang Satu, Penyebut Sama, Senilai, Desimal Persepuluhan–Perseratusan, dan Persen) (Kelas 4 SD/MI)",
+  "silabusElemen": "🌈 Fase B • Elemen Bilangan: Pecahan Pembilang Satu, Penyebut Sama, Pecahan yang Sama Besar, Desimal, dan Persen (SD/MI)",
   "suaraPerangkatSaja": true,
   "suaraLaju": 0.7,
   "suaraNada": 1,
@@ -19,47 +19,47 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Pecahan Pembilang Satu)",
       "fullTitle": "Sub-Bab A: Pecahan dengan Pembilang Satu",
-      "targetDescription": "Siswa menyatakan pecahan dengan pembilang satu (1/n) dari daerah arsir, membandingkan dan mengurutkan pecahan unit (1/2 > 1/4, 1/10 < 1/5), serta menyelesaikan cerita pizza dan perbandingan berat Tiara. Siswa memakai cara Pecahan Satuan, Model Daerah, Pecahan di Garis. Siswa memakai cara Pecahan Satuan, Model Daerah, Pecahan di Garis.",
+      "targetDescription": "Di sanggar batik Bu Wulan, kita menyatakan pecahan dengan pembilang satu dari kain yang dilipat sama besar, membandingkan dan mengurutkannya, serta menempatkannya pada garis pecahan.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
       "silabus": {
-        "teksSuara": "Kita belajar pecahan dengan pembilang satu. Pizza dipotong empat sama besar, tiap anak mendapat seperempat. Makin besar penyebut, makin kecil pecahan unit. Kita memakai cara: Pecahan Satuan, Model Daerah, Pecahan di Garis. Pembilang 1 berarti satu bagian dari penyebut bagian sama. Arsir satu bagian dari keseluruhan. 1/n terletak antara 0 dan 1. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "teksSuara": "Kita belajar pecahan dengan pembilang satu di sanggar batik Bu Wulan. Kain dilipat menjadi bagian sama besar, dan satu bagian kita tulis satu per sekian. Makin banyak bagian, makin kecil tiap bagiannya. Kita memakai pita pecahan, lipat kertas, dan garis pecahan. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
         "cp": "Siswa membandingkan dan mengurutkan pecahan dengan pembilang satu.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab A)."
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Unit Fraction",
-          "namaId": "Pecahan Satuan",
-          "asal": "Van de Walle",
-          "ringkas": "Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
+          "nama": "Unit Fraction Strip",
+          "namaId": "Pita Pecahan",
+          "asal": "IGIL",
+          "ringkas": "Tumpuk pita untuk melihat bagian mana lebih panjang.",
           "tahap": [
             "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Fold the Paper",
+          "namaId": "Lipat Kertas",
+          "asal": "IGIL",
+          "ringkas": "Lipat jadi bagian sama besar, arsir satu bagian.",
+          "tahap": [
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Area Model",
-          "namaId": "Model Daerah",
-          "asal": "Fraction area model",
-          "ringkas": "Arsir satu bagian dari keseluruhan.",
+          "nama": "Fraction Number Line",
+          "namaId": "Garis Pecahan",
+          "asal": "IGIL",
+          "ringkas": "Makin ke kanan, makin besar.",
           "tahap": [
-            "Infografis",
-            "Picture"
-          ]
-        },
-        {
-          "label": "METODE LUAR",
-          "nama": "Number Line Unit",
-          "namaId": "Pecahan di Garis",
-          "asal": "Number line fractions",
-          "ringkas": "1/n terletak antara 0 dan 1.",
-          "tahap": [
-            "Mind",
+            "Picture",
             "Abstract"
           ]
         }
@@ -768,23 +768,23 @@
     "B": {
       "id": "B",
       "codeTitle": "Sub-Bab B (Penyebut Sama)",
-      "fullTitle": "Sub-Bab B: Pecahan dengan Penyebut Sama",
-      "targetDescription": "Siswa membandingkan dan mengurutkan pecahan berpenyebut sama dengan melihat pembilang (1/3 < 2/3, 2/10 > 1/10), serta menyelesaikan cerita tongkat Asep 3/6 dan Azizah 2/6. Siswa memakai cara Penyebut Sama, Banding Pembilang, Batang Pecahan. Siswa memakai cara Penyebut Sama, Banding Pembilang, Batang Pecahan.",
+      "fullTitle": "Sub-Bab B: Membandingkan Pecahan Berpenyebut Sama",
+      "targetDescription": "Di bak warna Pak Joyo, kita membandingkan dan mengurutkan pecahan yang penyebutnya sama dengan melihat pembilangnya.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
       "silabus": {
-        "teksSuara": "Kita belajar pecahan dengan penyebut sama. Jika penyebut sama, bandingkan pembilangnya. Satu per tiga kurang dari dua per tiga. Kita memakai cara: Penyebut Sama, Banding Pembilang, Batang Pecahan. Banding/jumlah lebih mudah jika penyebut sama. Penyebut sama: pembilang lebih besar = pecahan lebih besar. Batang sama panjang memudahkan banding. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa membandingkan dan mengurutkan pecahan dengan penyebut sama.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab B)."
+        "teksSuara": "Kita belajar membandingkan pecahan berpenyebut sama di bak warna Pak Joyo. Bila penyebutnya sama, semua bagian sama besar, jadi kita cukup melihat pembilangnya. Pembilang lebih besar berarti pecahan lebih besar. Kita memakai banding pembilang, batang pecahan, dan urut di garis. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa membandingkan dan mengurutkan pecahan berpenyebut sama.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Same Denominator",
-          "namaId": "Penyebut Sama",
-          "asal": "Singapore Math",
-          "ringkas": "Banding/jumlah lebih mudah jika penyebut sama.",
+          "nama": "Compare Numerators",
+          "namaId": "Banding Pembilang",
+          "asal": "IGIL",
+          "ringkas": "Penyebut sama, lihat pembilangnya.",
           "tahap": [
             "Story",
             "Concrete",
@@ -793,24 +793,24 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Compare Numerators",
-          "namaId": "Banding Pembilang",
-          "asal": "Fraction comparison",
-          "ringkas": "Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
+          "nama": "Fraction Bars",
+          "namaId": "Batang Pecahan",
+          "asal": "IGIL",
+          "ringkas": "Warnai batang sebanyak pembilang.",
           "tahap": [
-            "Picture",
-            "Mind"
+            "Concrete",
+            "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Fraction Bars",
-          "namaId": "Batang Pecahan",
-          "asal": "Manipulative pedagogy",
-          "ringkas": "Batang sama panjang memudahkan banding.",
+          "nama": "Order on Line",
+          "namaId": "Urut di Garis",
+          "asal": "IGIL",
+          "ringkas": "Dari kiri ke kanan, kecil ke besar.",
           "tahap": [
-            "Infografis",
-            "Concrete"
+            "Picture",
+            "Abstract"
           ]
         }
       ],
@@ -1517,36 +1517,36 @@
     },
     "C": {
       "id": "C",
-      "codeTitle": "Sub-Bab C (Pecahan Senilai)",
-      "fullTitle": "Sub-Bab C: Pecahan Senilai",
-      "targetDescription": "Siswa mengenali pecahan senilai (2/6 = 1/3) melalui model coklat dan lipat kertas, serta menghasilkan senilai dengan mengalikan atau membagi pembilang dan penyebut dengan bilangan sama. Siswa memakai cara Pecahan Senilai, Kali dengan Bentuk Satu, Sederhanakan. Siswa memakai cara Pecahan Senilai, Kali dengan Bentuk Satu, Sederhanakan.",
+      "codeTitle": "Sub-Bab C (Pecahan yang Sama Besar)",
+      "fullTitle": "Sub-Bab C: Pecahan yang Sama Besar",
+      "targetDescription": "Di meja jahit Kak Sekar, kita mencari pecahan yang sama besar dengan model daerah dan lipat kertas, mengalikan atau membagi pembilang dan penyebut dengan bilangan yang sama, dan menyederhanakan pecahan.",
       "secondaryBg": "#FCE7F3",
       "secondaryBorder": "#DB2777",
       "secondaryText": "#9D174D",
       "silabus": {
-        "teksSuara": "Kita belajar pecahan senilai. Dua per enam sama dengan satu per tiga. Kalikan atau bagi pembilang dan penyebut dengan bilangan yang sama. Kita memakai cara: Pecahan Senilai, Kali dengan Bentuk Satu, Sederhanakan. Senilai menunjuk bagian sama dengan tulisan beda. Kali pembilang dan penyebut dengan bilangan sama. Bagi pembilang dan penyebut dengan FPB. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa mengenali pecahan senilai setelah mengamati gambar dan simbol.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab C)."
+        "teksSuara": "Kita belajar pecahan yang sama besar di meja jahit Kak Sekar. Dua pecahan bisa punya bagian berbeda tetapi sama besar. Kita mengalikan atau membagi pembilang dan penyebut dengan bilangan yang sama. Menambah angka yang sama tidak menjaga besarnya. Kita memakai cocokkan daerah, kali bentuk satu, dan bagi keduanya. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa menentukan pecahan yang sama besar dan menyederhanakan pecahan.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Equivalent Fractions",
-          "namaId": "Pecahan Senilai",
-          "asal": "Van de Walle",
-          "ringkas": "Senilai menunjuk bagian sama dengan tulisan beda.",
+          "nama": "Area Model Match",
+          "namaId": "Cocokkan Daerah",
+          "asal": "IGIL",
+          "ringkas": "Tumpuk dua gambar, lihat arsirannya.",
           "tahap": [
             "Story",
-            "Mind",
+            "Concrete",
             "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Multiply Identity",
-          "namaId": "Kali dengan Bentuk Satu",
-          "asal": "Fraction equivalence",
-          "ringkas": "Kali pembilang dan penyebut dengan bilangan sama.",
+          "nama": "Multiply by One",
+          "namaId": "Kali Bentuk Satu",
+          "asal": "IGIL",
+          "ringkas": "Kalikan pembilang dan penyebut dengan bilangan sama.",
           "tahap": [
             "Concrete",
             "Picture"
@@ -1554,12 +1554,12 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Simplify",
-          "namaId": "Sederhanakan",
-          "asal": "GCF simplification",
-          "ringkas": "Bagi pembilang dan penyebut dengan FPB.",
+          "nama": "Divide Both",
+          "namaId": "Bagi Keduanya",
+          "asal": "IGIL",
+          "ringkas": "Bagi pembilang dan penyebut dengan bilangan sama.",
           "tahap": [
-            "Infografis",
+            "Picture",
             "Abstract"
           ]
         }
@@ -2267,24 +2267,24 @@
     },
     "D": {
       "id": "D",
-      "codeTitle": "Sub-Bab D (Desimal Persepuluhan & Perseratusan)",
+      "codeTitle": "Sub-Bab D (Pecahan Desimal)",
       "fullTitle": "Sub-Bab D: Pecahan Desimal Persepuluhan dan Perseratusan",
-      "targetDescription": "Siswa mengubah pecahan biasa persepuluhan (penyebut 10) dan perseratusan (penyebut 100) menjadi pecahan desimal (0,1; 0,01; 0,25), serta membaca aturan satu/dua angka di belakang koma. Siswa memakai cara Desimal Persepuluhan Perseratusan, Kisi Desimal, Jembatan Pecahan–Desimal. Siswa memakai cara Desimal Persepuluhan Perseratusan, Kisi Desimal, Jembatan Pecahan–Desimal.",
+      "targetDescription": "Di meteran kain Pak Bagas, kita mengubah pecahan berpenyebut sepuluh dan seratus menjadi desimal dengan satu dan dua angka di belakang koma.",
       "secondaryBg": "#ECFDF5",
       "secondaryBorder": "#059669",
       "secondaryText": "#064E3B",
       "silabus": {
-        "teksSuara": "Kita belajar pecahan desimal. Satu dari sepuluh roti sama dengan nol koma satu. Satu dari seratus biskuit sama dengan nol koma nol satu. Satu angka di belakang koma berarti penyebut sepuluh. Dua angka berarti penyebut seratus. Kita memakai cara: Desimal Persepuluhan Perseratusan, Kisi Desimal, Jembatan Pecahan–Desimal. Digit setelah koma = persepuluhan dan perseratusan. Kisi 10×10 menunjukkan perseratusan. 0,3 = 3/10; 0,25 = 25/100. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa menyatakan pecahan desimal persepuluhan dan perseratusan serta mengubah pecahan biasa menjadi desimal.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab D)."
+        "teksSuara": "Kita belajar pecahan desimal di meteran kain Pak Bagas. Penyebut sepuluh memberi satu angka di belakang koma, dan penyebut seratus memberi dua angka. Tiga per sepuluh ditulis nol koma tiga. Kita memakai kisi persepuluhan, kisi perseratusan, dan jembatan desimal. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa mengubah pecahan berpenyebut 10 dan 100 menjadi desimal.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Decimal Tenths Hundredths",
-          "namaId": "Desimal Persepuluhan Perseratusan",
-          "asal": "Place-value decimals",
-          "ringkas": "Digit setelah koma = persepuluhan dan perseratusan.",
+          "nama": "Tenths Grid",
+          "namaId": "Kisi Persepuluhan",
+          "asal": "IGIL",
+          "ringkas": "Sepuluh kolom, hitung yang diwarnai.",
           "tahap": [
             "Story",
             "Concrete",
@@ -2293,23 +2293,23 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Decimal Grid",
-          "namaId": "Kisi Desimal",
-          "asal": "Base-ten grid",
-          "ringkas": "Kisi 10×10 menunjukkan perseratusan.",
+          "nama": "Hundredths Grid",
+          "namaId": "Kisi Perseratusan",
+          "asal": "IGIL",
+          "ringkas": "Seratus kotak, hitung yang diwarnai.",
           "tahap": [
-            "Picture",
-            "Infografis"
+            "Concrete",
+            "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Fraction–Decimal Link",
-          "namaId": "Jembatan Pecahan–Desimal",
-          "asal": "Van de Walle",
-          "ringkas": "0,3 = 3/10; 0,25 = 25/100.",
+          "nama": "Fraction Decimal Bridge",
+          "namaId": "Jembatan Desimal",
+          "asal": "IGIL",
+          "ringkas": "Hubungkan pecahan dan desimal.",
           "tahap": [
-            "Mind",
+            "Picture",
             "Abstract"
           ]
         }
@@ -3017,24 +3017,24 @@
     },
     "E": {
       "id": "E",
-      "codeTitle": "Sub-Bab E (Desimal Perseratusan & Persen)",
-      "fullTitle": "Sub-Bab E: Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen",
-      "targetDescription": "Siswa mengubah desimal perseratusan menjadi persen (0,75 = 75%) dengan cara biasa (via pecahan /100) maupun cara langsung (×100% / geser koma dua kali), serta mengubah balik persen ke desimal dan menyelesaikan cerita persen. Siswa memakai cara Persen sebagai Perseratusan, Kisi Seratus Persen, Jembatan Desimal–Persen. Siswa memakai cara Persen sebagai Perseratusan, Kisi Seratus Persen, Jembatan Desimal–Persen.",
+      "codeTitle": "Sub-Bab E (Desimal dan Persen)",
+      "fullTitle": "Sub-Bab E: Desimal dan Persen",
+      "targetDescription": "Di papan pameran Bu Tuti, kita mengubah desimal perseratusan menjadi persen dan sebaliknya, dengan memahami persen sebagai per seratus.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
       "silabus": {
-        "teksSuara": "Kita menghubungkan desimal perseratusan dengan persen. Nol koma tujuh lima sama dengan tujuh puluh lima per seratus sama dengan tujuh puluh lima persen. Boleh pakai cara biasa atau langsung kali seratus persen. Geser koma dua kali ke kanan. Kita memakai cara: Persen sebagai Perseratusan, Kisi Seratus Persen, Jembatan Desimal–Persen. Persen artinya per seratus. Satu kotak dari 100 = 1%. 0,25 = 25%. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa mengubah pecahan desimal perseratusan menjadi persen dan sebaliknya, serta memakai persen dalam cerita.",
-        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab E)."
+        "teksSuara": "Kita belajar desimal dan persen di papan pameran Bu Tuti. Persen berarti per seratus. Nol koma tujuh lima sama dengan tujuh puluh lima persen. Kita menggeser koma dua tempat ke kanan atau ke kiri. Kita memakai persen perseratusan, kisi seratus, dan jembatan persen. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa mengubah desimal menjadi persen dan persen menjadi desimal.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase B, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
           "nama": "Percent as Hundredths",
-          "namaId": "Persen sebagai Perseratusan",
-          "asal": "Percent pedagogy",
-          "ringkas": "Persen artinya per seratus.",
+          "namaId": "Persen Perseratusan",
+          "asal": "IGIL",
+          "ringkas": "Persen berarti per seratus.",
           "tahap": [
             "Story",
             "Concrete",
@@ -3043,23 +3043,23 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Hundred Grid Percent",
-          "namaId": "Kisi Seratus Persen",
-          "asal": "Visual percent",
-          "ringkas": "Satu kotak dari 100 = 1%.",
+          "nama": "Hundred Grid",
+          "namaId": "Kisi Seratus",
+          "asal": "IGIL",
+          "ringkas": "Seratus kotak, hitung yang diwarnai.",
           "tahap": [
-            "Picture",
-            "Infografis"
+            "Concrete",
+            "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Decimal–Percent Link",
-          "namaId": "Jembatan Desimal–Persen",
-          "asal": "Number relationships",
-          "ringkas": "0,25 = 25%.",
+          "nama": "Decimal Percent Bridge",
+          "namaId": "Jembatan Persen",
+          "asal": "IGIL",
+          "ringkas": "Geser koma dua tempat.",
           "tahap": [
-            "Mind",
+            "Picture",
             "Abstract"
           ]
         }

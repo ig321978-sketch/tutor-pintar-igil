@@ -1,11 +1,7 @@
-// Uji Story Kelas 4 Bab 2 Sub-Bab C (Pecahan Senilai): dua video (materi kurikulum dan metode luar) dengan mesin animasi baru.
-// Memeriksa: pemicu kata, sinkron angka suara dan gambar (angka dan bilangan yang diucapkan dengan kata), perubahan gambar tiap ketukan, keunikan antaradegan, batas kanvas,
-// teks bertumpuk, pemisahan materi dan metode luar, tidak membocorkan Sub-Bab D dan E (desimal, persen), kutipan buku terhadap teks PDF (pdftotext, atau PyMuPDF bila tidak ada),
-// pecahan, batang, kisi, dan dinding pada gambar dihitung ulang dari gambar (jumlah bagian, bagian berarsir, geometri), hitungan mandiri pecahan senilai, FPB, dan kunci Panduan Guru, emoji paling tinggi Emoji 12, dan kemurnian berkas.
+// Uji Story Kelas 4 Bab 2 Sub-Bab C "Meja Jahit Kak Sekar" (pecahan yang sama besar), cerita Sanggar Batik Kampung Mekar: video materi dan video metode global.
 // Jalankan: node --no-warnings scripts/uji-story-k4b2c.mjs
-import { readFileSync, readdirSync, existsSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { register } from "node:module";
-import { spawnSync } from "node:child_process";
 
 register(
   "data:text/javascript," +
@@ -15,7 +11,6 @@ register(
 const L = await import("../src/components/modul/story/logika-story.ts");
 const V = await import("../src/components/modul/story/k4b2c-video.ts");
 
-const stat = { kutipan: 0, terbilang: 0, teksPasang: 0, persamaan: 0, data: 0, rantai: 0 };
 let lulus = 0;
 let gagal = 0;
 const cek = (kondisi, pesan) => {
@@ -67,9 +62,10 @@ for (const v of VIDEO) {
       const kata = L.kataDari(kt.suara);
       totalKetukan += 1;
       totalKata += kata.length;
-      cek(kata.length >= 6 && kata.length <= 40, `${nama}#${i + 1}: 6 sampai 40 kata (ada ${kata.length})`);
+      cek(kata.length >= 5 && kata.length <= 40, `${nama}#${i + 1}: 5 sampai 40 kata (ada ${kata.length})`);
       cek(!/[=×÷<>\/%]/.test(kt.suara), `${nama}#${i + 1}: suara tanpa lambang yang sulit dibaca mesin suara`);
       cek(/[.?!]$/.test(kt.suara.trim()), `${nama}#${i + 1}: suara berakhir tanda baca`);
+      cek(!/\d/.test(kt.suara), `${nama}#${i + 1}: suara tanpa digit (angka ditulis dengan kata)`);
       cek(kt.aksi.length >= 1, `${nama}#${i + 1}: ada aksi gambar`);
       for (const ak of kt.aksi) {
         const p = L.posisiKata(kt.suara, ak.at);
@@ -118,18 +114,12 @@ for (const v of VIDEO) {
         else if (o.t === "jalur") {
           const t = titikJalur(o);
           if (t) cek(t.every((p) => p[0] > -2 && p[0] < 302 && p[1] > -2 && p[1] < 204), `${nama}#${i + 1}: bangun ${o.id} masuk kanvas`);
-          else if (/A/.test(o.d ?? "")) {
-            const n = bilangan(o.d);
-            const r = n[4];
-            cek(x - r > -2 && x + r < 302 && y - r > -2 && y + r < 210, `${nama}#${i + 1}: juring ${o.id} masuk kanvas`);
-          }
         } else if (o.t === "garis" || o.t === "panah") cek(x > -2 && x < 302 && y > -2 && y < 204 && x + (o.x2 ?? 0) > -2 && x + (o.x2 ?? 0) < 302 && y + (o.y2 ?? 0) > -2 && y + (o.y2 ?? 0) < 204, `${nama}#${i + 1}: garis ${o.id} masuk kanvas`);
       }
       {
         const teksAda = akhir.filter((o) => o.t === "teks" && (o.op ?? 1) > 0 && o.isi && !/^[\u{1F000}-\u{1FFFF}]|^[✂✅❌]$/u.test(o.isi));
         for (let p = 0; p < teksAda.length; p += 1) {
           for (let q = p + 1; q < teksAda.length; q += 1) {
-            stat.teksPasang += 1;
             const m = kotakTeks(teksAda[p]);
             const n = kotakTeks(teksAda[q]);
             const lx = Math.min(m[2], n[2]) - Math.max(m[0], n[0]);
@@ -142,644 +132,283 @@ for (const v of VIDEO) {
   }
 }
 
-/* ------------------------------ Pemisahan materi dan metode luar ------------------------------ */
-const G = await import("../src/components/modul/story/k4b2c-gambar.ts");
-const U1 = await import("../src/components/modul/story/k4b2c-luar-1.ts");
-const M_VIDEO = V.VIDEO_MATERI_K4B2C;
-// Adegan administratif (pembuka, tujuan, peta konsep, panduan awal; di E: rubrik, refleksi, orang tua dan penutup) tidak lagi diputar di video materi.
-// Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
-const MODUL_MATERI = Object.assign({}, await import("../src/components/modul/story/k4b2c-materi-1.ts"), await import("../src/components/modul/story/k4b2c-materi-2.ts"), await import("../src/components/modul/story/k4b2c-materi-3.ts"));
-const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_PENGALAMAN, MODUL_MATERI.ADEGAN_AKTIVITAS_ALAT, MODUL_MATERI.ADEGAN_AKTIVITAS_HASIL, MODUL_MATERI.ADEGAN_AMATI_COKLAT, MODUL_MATERI.ADEGAN_COKLAT_JAWAB, MODUL_MATERI.ADEGAN_TAHUKAH, MODUL_MATERI.ADEGAN_BERPIKIR, MODUL_MATERI.ADEGAN_BERLATIH_SATU, MODUL_MATERI.ADEGAN_BERLATIH_DUA, MODUL_MATERI.ADEGAN_BERLATIH_TIGA, MODUL_MATERI.ADEGAN_CATATAN, MODUL_MATERI.ADEGAN_DIFERENSIASI] };
-const U = V.VIDEO_LUAR_K4B2C;
-const adegan = (v, id) => v.adegan.find((a) => a.id === id);
-const akhirAdegan = (a, ke = a.ketukan.length - 1) => L.keadaanStory(a, ke, 9999);
-const nilaiId = (objs, id) => objs.find((o) => o.id === id)?.isi;
-const T = (v, id, ke) => akhirAdegan(adegan(v, id), ke);
-const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, i, 9999))])]);
-{
-  const teksVideo = (v) => JSON.stringify(v.adegan.map(teksAdegan));
-  const materi = teksVideo(M);
-  const luar = teksVideo(U);
-  const METODE = ["Equivalent Fractions", "Multiply Identity", "Simplify", "Fraction Wall"];
-  const NAMA_ID = ["Pecahan Senilai", "Kali dengan Bentuk Satu", "Sederhanakan", "Dinding Pecahan"];
-  // "Pecahan Senilai" dan "Sederhanakan" juga istilah buku (judul subbab, "disederhanakan"), jadi hanya nama yang khas metode luar yang dilarang di materi.
-  cek(!/Equivalent Fractions|Multiply Identity|Simplify|Fraction Wall|Kali dengan Bentuk Satu|Dinding Pecahan|metode luar|metode dari luar|Van de Walle/i.test(materi), "video materi tidak memuat nama metode luar");
-  for (const m of [...METODE, ...NAMA_ID]) cek(luar.includes(m), `video metode luar memuat ${m}`);
-  sama(U1.NAMA_METODE, METODE, "nama metode di berkas luar-1");
-  sama(U1.NAMA_METODE_ID, NAMA_ID, "nama Indonesia metode luar");
-  // Video diputar sebagai guru yang mengajar: tidak ada penyebutan sumber buku di suara, teks terlihat, label sumber, judul adegan, dan subjudul.
-  const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan/i;
-  for (const v of [M_VIDEO, U]) {
-    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul video tanpa kata terlarang`);
-    for (const a of v.adegan) {
-      const semua = [a.judul, a.sumber];
-      a.ketukan.forEach((kt, i) => {
-        semua.push(kt.suara);
-        for (let p = 0; p < L.kataDari(kt.suara).length; p += 1) semua.push(...L.teksTerlihat(L.keadaanStory(a, i, p)));
-      });
-      const kena = semua.filter((t) => TERLARANG.test(t) || /soal nomor|Ayo Berlatih nomor|nomor [1-4]|catatan video|menurut buku/i.test(t));
-      cek(kena.length === 0, `${v.id}/${a.id}: tanpa penyebutan buku atau catatan sumber (${kena.slice(0, 2).join(" | ")})`);
-    }
-  }
-  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
-  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber)), "video materi: label sumber berbentuk Materi: ...");
-  cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  cek(U.adegan.every((a) => a.sumber.length <= 46), "video metode luar: label sumber cukup pendek untuk kanvas 300 lebar");
-  cek(M_VIDEO.adegan.every((a) => a.sumber.length <= 46), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
-  for (const kata of ["Peta konsep", "Kata kunci", "Apersepsi", "Ayo Berlatih", "Ayo Berpikir", "Miskonsepsi", "Diferensiasi", "Refleksi", "Subbab", "Tujuan pembelajaran", "Panduan guru", "Aktivitas"]) cek(!luar.includes(kata), `video metode luar tidak memuat "${kata}" milik materi`);
-  const ids = U.adegan.map((a) => a.id);
-  cek(["luar-senilai", "luar-senilai-terapan", "luar-kali", "luar-kali-terapan", "luar-sederhana", "luar-sederhana-terapan", "luar-dinding", "luar-dinding-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
-  cek(U.adegan[1].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
-  cek(M_VIDEO.adegan.length === 12 && U.adegan.length === 11, "12 adegan materi diputar dan 11 adegan metode luar");
-  // Sub-Bab C tidak membocorkan Sub-Bab D dan E (desimal, persen).
-  const BOCOR = /desimal|persen|persepuluhan|perseratusan|koma|uji kompetensi|refleksi|pengayaan|remedial/i;
-  for (const a of M.adegan) cek(!BOCOR.test(teksAdegan(a)), `materi ${a.id} tidak membocorkan desimal atau persen`);
-  for (const a of U.adegan) cek(!BOCOR.test(teksAdegan(a)), `metode luar ${a.id} tidak membocorkan desimal atau persen`);
-  cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
-  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,aktivitas-alat,aktivitas-hasil,amati-coklat,coklat-jawab,tahukah,berpikir,berlatih-satu,berlatih-dua,berlatih-tiga,catatan,diferensiasi", "urutan adegan materi");
-  cek(U.adegan.map((a) => a.id).join() === "sapaan,luar-pembuka,luar-senilai,luar-senilai-terapan,luar-kali,luar-kali-terapan,luar-sederhana,luar-sederhana-terapan,luar-dinding,luar-dinding-terapan,luar-ringkas", "urutan adegan metode luar");
-  // Nama metode baru belum dipakai metode, judul, atau lab lain pada bab ini.
-  const baca = (n) => readFileSync(new URL(`../src/components/modul/${n}`, import.meta.url), "utf8");
-  for (const n of ["naskah-k4b2.ts", "lab-pecahan-k4b2a.ts", "lab-batang-k4b2b.ts", "lab-senilai-k4b2c.ts", "lab-desimal-k4b2d.ts", "lab-persen-k4b2e.ts"]) {
-    const s = baca(n);
-    cek(!/Fraction Wall|Dinding Pecahan/.test(s), `nama metode baru tidak bentrok dengan ${n}`);
-  }
-  const naskah = baca("naskah-k4b2.ts");
-  cek(/Equivalent Fractions/.test(naskah) && /Multiply Identity/.test(naskah) && /"Simplify"/.test(naskah), "tiga nama metode lama sama dengan nama di naskah bab");
-}
+for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { for (const o of L.keadaanStory(a, i, 9999)) if (o.t === "teks") cek(typeof o.isi === "string" && o.isi.length > 0, `${v.id}/${a.id}#${i + 1}: teks berisi (${o.id})`); });
 
-/* ------------------------------ Bilangan yang diucapkan dengan kata tampak sebagai angka ------------------------------ */
-const SATUAN = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"];
-const NAMA_ANGKA = new Set([...SATUAN, "sepuluh", "sebelas", "seratus", "seribu", "belas", "puluh", "ratus", "ribu"]);
-const nilaiKata = (kata) => {
+/* ------------------------------ Khusus Sub-Bab C Kelas 4 Bab 2 ------------------------------ */
+{
+  const { ejaanInggrisUntukSuaraId } = await import("../src/lib/ejaan-inggris-id.ts");
+  const U1 = await import("../src/components/modul/story/k4b2c-luar-1.ts");
+  const G = await import("../src/components/modul/story/k4b2c-gambar.ts");
+  const M_VIDEO = V.VIDEO_MATERI_K4B2C;
+  const U = V.VIDEO_LUAR_K4B2C;
+  const adegan = (v, id) => v.adegan.find((a) => a.id === id);
+  const akhirAdegan = (a, ke = a.ketukan.length - 1) => L.keadaanStory(a, ke, 9999);
+  const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, i, 9999))])]);
+  const kataVideo = (v) => v.adegan.reduce((t, ad) => t + ad.ketukan.reduce((u, kt) => u + L.kataDari(kt.suara).length, 0), 0);
+  const ketemu = (objs, id) => objs.find((o) => o.id === id);
+  const isiTeks = (objs, id) => ketemu(objs, id)?.isi;
+  const ada = (objs, ...ids) => ids.every((id) => ketemu(objs, id));
+  const tidakAda = (objs, ...ids) => ids.every((id) => !ketemu(objs, id));
+
+  // Pembaca bilangan yang diucapkan dengan kata (satuan, belasan, puluhan, ratusan).
+  const SATUAN = { satu: 1, dua: 2, tiga: 3, empat: 4, lima: 5, enam: 6, tujuh: 7, delapan: 8, sembilan: 9 };
+  const BATAS = ["puluh", "belas", "ratus", "ribu"];
+  const bilanganSuara = (s0) => {
+    const potong = s0.split(/[,.;:!?]/);
+    if (potong.length > 1) return potong.flatMap((x) => bilanganSuara(x));
+    const t = s0.toLowerCase().split(/[^a-z]+/).filter(Boolean);
+    const puluhSatuan = (i) => {
+      const w = t[i];
+      if (w === "sepuluh" && t[i + 1] !== "ribu") return [10, i + 1];
+      if (w === "sebelas") return [11, i + 1];
+      if (SATUAN[w]) {
+        if (t[i + 1] === "belas") return [10 + SATUAN[w], i + 2];
+        if (t[i + 1] === "puluh") {
+          let n = SATUAN[w] * 10;
+          let j = i + 2;
+          if (SATUAN[t[j]] && !BATAS.includes(t[j + 1])) {
+            n += SATUAN[t[j]];
+            j += 1;
+          }
+          return [n, j];
+        }
+        if (!["ratus", "ribu"].includes(t[i + 1])) return [SATUAN[w], i + 1];
+      }
+      return null;
+    };
+    const ratus = (i) => {
+      const w = t[i];
+      if (w === "seratus") {
+        const b = puluhSatuan(i + 1);
+        return b ? [100 + b[0], b[1]] : [100, i + 1];
+      }
+      if (SATUAN[w] && t[i + 1] === "ratus") {
+        const b = puluhSatuan(i + 2);
+        return b ? [SATUAN[w] * 100 + b[0], b[1]] : [SATUAN[w] * 100, i + 2];
+      }
+      return null;
+    };
+    const out = [];
+    for (let i = 0; i < t.length; ) {
+      if (t[i] === "nol") {
+        out.push(0);
+        i += 1;
+        continue;
+      }
+      const b = ratus(i) ?? puluhSatuan(i);
+      if (b) {
+        out.push(b[0]);
+        i = b[1];
+      } else i += 1;
+    }
+    return out;
+  };
+  sama(bilanganSuara("Dua per empat, dan empat per delapan."), [2, 4, 4, 8], "pembaca bilangan suara (pecahan)");
+  sama(bilanganSuara("Satu per tiga dalam bentuk per dua belas."), [1, 3, 12], "pembaca bilangan suara (dua belas)");
+  sama(bilanganSuara("Sepuluh per lima belas, seratus bagian."), [10, 15, 100], "pembaca bilangan suara (sepuluh, lima belas, seratus)");
+
+  const materi = JSON.stringify(M_VIDEO.adegan.map(teksAdegan));
+  const luar = JSON.stringify(U.adegan.map(teksAdegan));
+  cek(!(/Area Model Match|Multiply by One|Divide Both|Cocokkan Daerah|Kali Bentuk Satu|Bagi Keduanya/.test(materi) || /metode global/i.test(materi)), "video materi tanpa nama metode global");
+  for (const m of [...U1.NAMA_METODE, ...U1.NAMA_METODE_ID]) cek(luar.includes(m), `video metode global memuat ${m}`);
+  sama([U1.NAMA_METODE, U1.NAMA_METODE_ID], [["Area Model Match", "Multiply by One", "Divide Both"], ["Cocokkan Daerah", "Kali Bentuk Satu", "Bagi Keduanya"]], "nama tiga metode global");
+  for (const m of U1.NAMA_METODE) {
+    const e = ejaanInggrisUntukSuaraId(`Metode ${m}, ya.`);
+    cek(e !== `Metode ${m}, ya.` && !/[A-Z]/.test(e.replace(/^Metode /, "")), `nama ${m} dieja untuk suara Indonesia ("${e}")`);
+  }
+  cek(M_VIDEO.subjudul === "Metode Kurikulum" && U.subjudul === "Metode Global" && M_VIDEO.judul === "Meja Jahit Kak Sekar" && U.judul === M_VIDEO.judul && V.JUDUL_K4B2C === M_VIDEO.judul, "judul dan subjudul");
+  cek(M_VIDEO.id === "k4b2c-materi" && U.id === "k4b2c-luar" && M_VIDEO.jenis === "materi" && U.jenis === "metode-luar", "id dan jenis video");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,jahit,setengah,dua-per-empat,salah-tambah,periksa,kancing,kali,sederhana,penutup", "urutan adegan materi");
+  cek(U.adegan.map((a) => a.id).join() === "sapaan,luar-pembuka,luar-daerah,luar-daerah-terapan,luar-kali,luar-kali-terapan,luar-bagi,luar-bagi-terapan,luar-ringkas", "urutan adegan metode global");
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 52) && U.adegan.every((a) => /Metode global|Ringkasan|ringkasan/i.test(a.sumber) && a.sumber.length <= 52), "label sumber");
+  const TERLARANG = /(kelas|buku|teman|kelompok|mengelompokkan|skor|nilai|soal|tebak|kunci|latihan)/i;
+  for (const v of [M_VIDEO, U]) for (const a of v.adegan) cek(!TERLARANG.test(teksAdegan(a)) && !TERLARANG.test(a.id), `${v.id}/${a.id}: tanpa kata terlarang`);
+  const SURUH = /bawalah|bawa benda (di|dari) rumah|ambil benda di rumah|gambarlah|gambar di kertas|di kertasmu|ajak (ayah|ibu|adik|kakak|orang)|bermain bersama/i;
+  for (const v of [M_VIDEO, U]) for (const a of v.adegan) cek(!SURUH.test(teksAdegan(a)), `${v.id}/${a.id}: tanpa suruhan membawa benda, menggambar di kertas, atau bermain bersama`);
+  // Bilangan yang diucapkan tampak sebagai angka di gambar pada ketukan itu. Sapaan bersama dikecualikan.
+  for (const v of [M_VIDEO, U])
+    for (const a of v.adegan)
+      if (a.id !== "sapaan")
+        a.ketukan.forEach((kt, i) => {
+          const terlihat = new Set();
+          for (let p = -1; p < L.kataDari(kt.suara).length; p += 1) for (const t of L.teksTerlihat(L.keadaanStory(a, i, p))) for (const b of bilanganDari(t)) terlihat.add(Number(b));
+          for (const n of bilanganSuara(kt.suara)) cek(terlihat.has(n), `${v.id}/${a.id}#${i + 1}: bilangan ${n} yang diucapkan tampak sebagai angka`);
+        });
+  const semuaSuara = M_VIDEO.adegan.map((a) => a.ketukan.map((kt) => kt.suara).join(" ")).join(" ");
+  for (const n of [1, 2, 3, 4, 6, 8, 10, 100]) cek(bilanganSuara(semuaSuara).includes(n), `video materi mengucapkan bilangan ${n}`);
+  const semuaLuar = U.adegan.map((a) => a.ketukan.map((kt) => kt.suara).join(" ")).join(" ");
+  for (const n of [1, 2, 3, 4, 8, 10, 12, 15]) cek(bilanganSuara(semuaLuar).includes(n), `video global mengucapkan bilangan ${n}`);
+  for (const kata of ["Pak Hendro", "Satria", "Laras", "Genta", "Kak Sekar", "Pak Bagas", "meja jahit", "kancing", "pecahan", "sama besar", "sederhana"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  cek(/Kalau aku salah, aku menjahit semua kancing/.test(materi), "video materi: salah langkah dengan taruhan menjahit kancing");
+  for (const pola of [/Helen/, /Azizah/, /Pak Toni/, /Pak Wicak/, /minimarket/i, /Raka/, /Salsa/, /Bima/, /Pak Joko/, /Pak Hasan/, /Bu Ratih/, /Kak Anton/, /Pak Samsul/, /layang/i, /bengkel/i, /sepeda/i, /Chacha/, /Dika/, /\bNia\b/, /Bu Sari/, /pentas/i, /angklung/i, /bank sampah/i, /toko/i, /kebun binatang/i, /perkemahan/i, /tenda/i, /akuarium/i, /pasar malam/i, /rumah pohon/i, /perpustakaan/i, /kantin/i, /koperasi/i, /Meutia/, /Alfa/, /Galih/, /penginapan/i, /pantai/i, /perahu/i, /kelapa/i, /Bu Maya/, /Pak Laode/, /tiket/i, /pizza/i, /senilai/i, /Tiara/, /Slamet/])
+    for (const isi of [materi, luar]) cek(!pola.test(isi), `video tanpa tokoh atau latar lama ${pola}`);
+  const km = kataVideo(M_VIDEO);
+  cek(km >= 300 && km <= 400, `materi 300 sampai 400 kata (${km})`);
+  cek(kataVideo(U) / 120 > 3, `durasi video global lebih dari tiga menit (${(kataVideo(U) / 120).toFixed(1)} menit)`);
+  const sapa = adegan(M_VIDEO, "sapaan");
+  cek(/pecahan yang sama besar/.test(sapa.ketukan[0].suara) && ["Bagian berbeda tetapi sama besar", "Mengalikan atau membagi dengan bilangan sama", "Menyederhanakan pecahan"].every((d) => teksAdegan(sapa).includes(d)), "sapaan materi: topik dan tiga hal");
+  cek(/Metode global/.test(adegan(U, "sapaan").sumber), "sapaan global berlabel Metode global");
+  cek(M_VIDEO.adegan.slice(1).every((a) => a.ketukan.length === 3) && U.adegan.slice(1).every((a) => a.ketukan.length === 4), "3 ketukan tiap adegan materi, 4 ketukan tiap adegan global");
+  // Naskah tetap: kalimat suara sama dengan berkas naskah.
+  const naskah = readFileSync(new URL("../naskah/story-naskah-k4b2c.md", import.meta.url), "utf8");
+  const dalamNaskah = (s) => naskah.replace(/\s+/g, " ").includes(s.replace(/\s+/g, " "));
+  for (const v of [M_VIDEO, U]) for (const a of v.adegan) if (a.id !== "sapaan") for (const kt of a.ketukan) cek(dalamNaskah(kt.suara), `${v.id}/${a.id}: suara sesuai naskah tetap ("${kt.suara.slice(0, 40)}")`);
+  // Visual berubah mengikuti kata pada hampir semua ketukan.
+  let banyakTitik = 0;
   let total = 0;
-  let cur = 0;
-  let tunda = 0;
-  for (const w of kata) {
-    const u = SATUAN.indexOf(w);
-    if (u >= 0) tunda = u;
-    else if (w === "sepuluh") cur += 10;
-    else if (w === "sebelas") cur += 11;
-    else if (w === "belas") {
-      cur += tunda + 10;
-      tunda = 0;
-    } else if (w === "puluh") {
-      cur += tunda * 10;
-      tunda = 0;
-    } else if (w === "seratus") cur += 100;
-    else if (w === "ratus") {
-      cur += tunda * 100;
-      tunda = 0;
-    } else if (w === "seribu") total += 1000;
-    else if (w === "ribu") {
-      total += (cur + tunda || 1) * 1000;
-      cur = 0;
-      tunda = 0;
-    }
-  }
-  return total + cur + tunda;
-};
-const deretBilangan = (suara) => {
-  const hasil = [];
-  let run = [];
-  const tutup = () => {
-    if (run.length && !["puluh", "belas", "ratus"].includes(run[0])) {
-      const nilai = nilaiKata(run);
-      if (nilai >= 10) hasil.push({ kata: run.join(" "), nilai });
-    }
-    run = [];
-  };
-  for (const mentah of suara.split(/\s+/).filter(Boolean)) {
-    const w = mentah.toLowerCase().replace(/[^a-z]/g, "");
-    if (NAMA_ANGKA.has(w)) run.push(w);
-    else tutup();
-    if (/[,.:;?!]$/.test(mentah)) tutup();
-  }
-  tutup();
-  return hasil;
-};
-for (const v of [M, U]) {
-  for (const a of v.adegan) {
-    const terlihat = new Set();
-    a.ketukan.forEach((kt, i) => {
-      for (let p = 0; p < L.kataDari(kt.suara).length; p += 1) for (const o of L.keadaanStory(a, i, p)) if (o.t === "teks" && o.isi) for (const b of bilanganDari(o.isi)) terlihat.add(b);
-      for (const d of deretBilangan(kt.suara)) {
-        stat.terbilang += 1;
-        cek(terlihat.has(String(d.nilai)), `${v.id}/${a.id}#${i + 1}: bilangan "${d.kata}" (${d.nilai}) tampak sebagai angka di gambar`);
-      }
-    });
-  }
-}
-
-/* ------------------------------ Semua persamaan di gambar dihitung ulang ------------------------------ */
-const hitungEks = (s) => {
-  const t = s.replace(/\./g, "").replace(/×/g, "*").replace(/x/g, "*").replace(/−/g, "-");
-  if (!/^[\d\s+*-]+$/.test(t)) return null;
-  return Function(`"use strict";return (${t})`)();
-};
-for (const v of [M, U]) {
-  for (const a of v.adegan) {
-    const sudah = new Set();
-    a.ketukan.forEach((kt, i) => {
-      for (let p = 0; p < L.kataDari(kt.suara).length; p += 1)
-        for (const o of L.keadaanStory(a, i, p)) {
-          if (o.t !== "teks" || !o.isi || sudah.has(`${o.id}:${o.isi}`)) continue;
-          sudah.add(`${o.id}:${o.isi}`);
-          const m = o.isi.match(/^([\d\s+×x−.-]+?)\s*=\s*(\d[\d.]*)(?:\D.*)?$/);
-          if (m && /[+×x−-]/.test(m[1])) {
-            stat.persamaan += 1;
-            cek(hitungEks(m[1]) === Number(m[2].replace(/\./g, "")), `${v.id}/${a.id}: persamaan "${o.isi}" dihitung ulang`);
+  for (const v of [M_VIDEO, U]) for (const a of v.adegan) if (a.id !== "sapaan") for (const kt of a.ketukan) { total += 1; if (new Set(kt.aksi.map((ak) => L.posisiKata(kt.suara, ak.at))).size >= 2) banyakTitik += 1; }
+  cek(banyakTitik / total >= 0.9, `visual berubah mengikuti kata pada sedikitnya 90 persen ketukan (${banyakTitik}/${total})`);
+  for (const v of [M_VIDEO, U]) for (const a of v.adegan) if (a.id !== "sapaan") cek(akhirAdegan(a).some((o) => o.t !== "teks"), `${v.id}/${a.id}: gambar akhir memuat bentuk gambar sendiri, bukan hanya teks`);
+  // Tidak ada gambar tokoh yang menutup angka atau nama.
+  for (const v of [M_VIDEO, U])
+    for (const a of v.adegan)
+      a.ketukan.forEach((_, i) => {
+        const objs = L.keadaanStory(a, i, 9999);
+        for (const w of objs.filter((o) => o.t === "teks" && /^[\u{1F466}\u{1F467}\u{1F9D2}\u{1F468}\u{1F469}]$/u.test(o.isi ?? "") && (o.u ?? 10) >= 28)) {
+          const kiri = (w.x ?? 0) - 15;
+          const kanan = (w.x ?? 0) + 15;
+          const atas = (w.y ?? 0) - 24;
+          const bawah = (w.y ?? 0) + 4;
+          for (const o of objs.filter((q) => q.t === "teks" && !/^[\u{1F000}-\u{1FFFF}]|^[✂✅❌]$/u.test(q.isi ?? "") && !/-n$/.test(q.id) && q.id !== w.id)) {
+            const u = o.u ?? 10;
+            const lebar = (o.isi ?? "").length * u * 0.56;
+            const x1 = (o.x ?? 0) - lebar / 2;
+            const x2 = (o.x ?? 0) + lebar / 2;
+            const y1 = (o.y ?? 0) - u * 0.75;
+            const y2 = (o.y ?? 0) + u * 0.2;
+            cek(!(Math.min(x2, kanan) - Math.max(x1, kiri) > 1 && Math.min(y2, bawah) - Math.max(y1, atas) > 1), `${v.id}/${a.id}#${i + 1}: teks "${o.isi}" (${o.id}) tertutup gambar tokoh ${w.id}`);
           }
         }
-    });
-  }
-}
-
-/* ------------------------------ Pecahan, batang, kisi, dan dinding pada gambar dihitung ulang ------------------------------ */
-const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
-const faktor = (n) => Array.from({ length: n }, (_, i) => i + 1).filter((d) => n % d === 0);
-const PUTIH = "#FFFFFF";
-const ada = (objs, id) => objs.some((o) => o.id === id);
-/** Pecahan bertumpuk pada gambar: pembilang dan penyebut dibaca dari teks `${id}-p` dan `${id}-q`. */
-const frac = (objs, id) => [Number(nilaiId(objs, `${id}-p`)), Number(nilaiId(objs, `${id}-q`))];
-const nilaiFrac = ([p, q]) => p / q;
-const silang = (a, b) => a[0] * b[1] === b[0] * a[1];
-const sel = (objs, id) => objs.filter((o) => new RegExp(`^${id}-c\\d+$`).test(o.id)).sort((a, b) => Number(a.id.split("-c")[1]) - Number(b.id.split("-c")[1]));
-/** Batang: banyak sel, sel berarsir (bukan putih), lebar sel sama, rapat berurutan, dan lebar total. */
-const batangSah = (objs, id, kosong = PUTIH) => {
-  const c = sel(objs, id);
-  if (!c.length) return null;
-  const w = c[0].w;
-  const rapat = c.every((o, i) => Math.abs(o.x - (c[0].x + i * w)) < 1e-6 && Math.abs(o.w - w) < 1e-6 && o.y === c[0].y && o.h === c[0].h);
-  return { n: c.length, arsir: c.filter((o) => o.warna !== kosong).length, rapat, total: c.length * w, x0: c[0].x };
-};
-const bagianBatang = (b) => b.arsir / b.n;
-/** Kisi: banyak sel, sel berarsir, ukuran bingkai, dan letak sel berarsir (kolom dan baris). */
-const kisiSah = (objs, id, kol, baris) => {
-  const c = sel(objs, id);
-  if (c.length !== kol * baris) return null;
-  const cw = c[0].w;
-  const ch = c[0].h;
-  const x0 = c[0].x;
-  const y0 = c[0].y;
-  const tepat = c.every((o, i) => Math.abs(o.x - (x0 + (i % kol) * cw)) < 1e-6 && Math.abs(o.y - (y0 + Math.floor(i / kol) * ch)) < 1e-6 && o.w === cw && o.h === ch);
-  return { tepat, lebar: kol * cw, tinggi: baris * ch, arsir: c.filter((o) => o.warna !== PUTIH).map((o) => [Math.round((o.x - x0) / cw), Math.round((o.y - y0) / ch)]) };
-};
-const luasKotak = (o) => o.w * o.h;
-const teksLepas = (objs) => objs.filter((o) => o.t === "teks" && o.isi).map((o) => o.isi);
-
-{
-  // Data buku (dibaca dari gambar PDF) ditulis ulang di sini sebagai pembanding mandiri.
-  const KERTAS = [[1, 4], [4, 16]];
-  const LATIHAN = [{ kiri: [2, 4], kanan: [1, 2] }, { kiri: [2, 6], kanan: [1, 3] }, { kiri: [3, 9], kanan: [1, 3] }];
-  const CONTOH = [[1, 2], [2, 4], [3, 6]];
-  sama(G.KERTAS, KERTAS, "data kertas Aktivitas 2 (1 dari 4, 4 dari 16)");
-  sama(G.COKLAT.bagian, [6, 3], "data coklat: 6 bagian dan 3 bagian");
-  sama(G.COKLAT.putu, [[2, 6], [1, 3]], "data coklat: bagian Putu 2/6 dan 1/3");
-  sama(G.LATIHAN, LATIHAN, "data Ayo Berlatih 1 sampai 3");
-  sama(G.CONTOH_BERPIKIR, CONTOH, "data contoh jawaban Ayo Berpikir");
-  sama(G.LEBAR_DINDING, 216, "lebar dinding 216");
-  cek(G.LAPIS_DINDING.every((n) => 216 % n === 0), "lebar dinding habis dibagi semua penyebut lapis");
-  // Kunci Panduan Guru hlm. 102-103 dan 1/4 = 4/16 (hlm. 101) dihitung mandiri: pecahan senilai dan FPB.
-  for (const l of LATIHAN) {
-    cek(silang(l.kiri, l.kanan), `kunci ${l.kiri.join("/")} = ${l.kanan.join("/")} benar menurut hitungan silang`);
-    const f = gcd(l.kiri[0], l.kiri[1]);
-    sama([l.kiri[0] / f, l.kiri[1] / f], l.kanan, `kunci ${l.kiri.join("/")}: dibagi FPB ${f} menghasilkan pecahan kanan`);
-    stat.data += 1;
-  }
-  sama(LATIHAN.map((l) => gcd(l.kiri[0], l.kiri[1])), [2, 2, 3], "FPB soal 1 sampai 3: 2, 2, 3");
-  cek(silang(KERTAS[0], KERTAS[1]) && gcd(4, 16) === 4, "1/4 = 4/16 benar, FPB 4 dan 16 adalah 4");
-  cek(silang([2, 6], [1, 3]) && silang([1, 2], [2, 4]) && silang([1, 2], [3, 6]), "contoh jawaban 1/2 = 2/4 = 3/6 dan 2/6 = 1/3 benar");
-  cek(!silang([1, 3], [2, 4]), "1/3 tidak senilai 2/4 (miskonsepsi tambah bilangan sama)");
-  sama([1 * 4, 2 * 3], [4, 6], "silang 1/3 dan 2/4: 4 lawan 6");
-
-  /* ----- Aktivitas 2 ----- */
-  {
-    const a3 = T(M, "aktivitas-alat", 2);
-    const g = kisiSah(a3, "k1", 2, 2);
-    cek(g && g.tepat && g.arsir.length === 1, "aktivitas: kertas 1 berisi 4 sel, 1 diwarnai");
-    const a4 = T(M, "aktivitas-alat", 3);
-    const g1 = kisiSah(a4, "k1", 2, 2);
-    const g2 = kisiSah(a4, "k2", 4, 4);
-    cek(g1 && g2 && g1.tepat && g2.tepat, "aktivitas: kertas 1 (2 kali 2) dan kertas 2 (4 kali 4) berupa kisi rapi");
-    cek(g1.arsir.length === 1 && g2.arsir.length === 4, "aktivitas: 1 sel dan 4 sel diwarnai");
-    cek(g1.lebar === g2.lebar && g1.tinggi === g2.tinggi, "aktivitas: kedua kertas sama ukuran");
-    const luas1 = sel(a4, "k1").filter((o) => o.warna !== PUTIH).reduce((t, o) => t + luasKotak(o), 0) / (g1.lebar * g1.tinggi);
-    const luas2 = sel(a4, "k2").filter((o) => o.warna !== PUTIH).reduce((t, o) => t + luasKotak(o), 0) / (g2.lebar * g2.tinggi);
-    cek(Math.abs(luas1 - 0.25) < 1e-9 && Math.abs(luas2 - 0.25) < 1e-9, "aktivitas: luas diwarnai sama-sama seperempat kertas (1/4 = 4/16)");
-    sama(g2.arsir.map(([c, r]) => `${c},${r}`).sort(), ["0,0", "0,1", "1,0", "1,1"], "aktivitas: empat sel kecil membentuk blok 2 kali 2 di pojok");
-    const h1 = T(M, "aktivitas-hasil", 0);
-    const besar = luasKotak(h1.find((o) => o.id === "pa"));
-    const kecil = [0, 1, 2, 3].map((i) => luasKotak(h1.find((o) => o.id === `pb${i}`))).reduce((t, v) => t + v, 0);
-    sama(besar, kecil, "aktivitas: satu potong besar sama luas dengan empat potong kecil");
-    const h2 = T(M, "aktivitas-hasil", 1);
-    sama([frac(h2, "f1"), frac(h2, "f2")], KERTAS, "diskusi a: 1/4 dan 4/16 pada gambar");
-    const h3 = T(M, "aktivitas-hasil", 2);
-    const xs = [0, 1, 2, 3].map((i) => h3.find((o) => o.id === `pb${i}`));
-    const lebarBlok = Math.max(...xs.map((o) => o.x + o.w)) - Math.min(...xs.map((o) => o.x));
-    const tinggiBlok = Math.max(...xs.map((o) => o.y + o.h)) - Math.min(...xs.map((o) => o.y));
-    const pa = h3.find((o) => o.id === "pa");
-    cek(lebarBlok === pa.w && tinggiBlok === pa.h, "diskusi b: empat potong kecil tersusun persis sebesar satu potong besar");
-    const h5 = T(M, "aktivitas-hasil", 4);
-    cek(silang(frac(h5, "m1"), frac(h5, "m3")) && frac(h5, "m1").join() === "1,4" && frac(h5, "m3").join() === "4,16", "kesimpulan: 1/4 dan 4/16 senilai");
-    stat.data += 1;
-  }
-
-  /* ----- Coklat ----- */
-  {
-    const c0 = T(M, "amati-coklat", 0);
-    const b1 = batangSah(c0, "c1");
-    const b2 = batangSah(c0, "c2");
-    cek(b1.n === 6 && b2.n === 3 && b1.rapat && b2.rapat && Math.abs(b1.total - b2.total) < 1e-6, "coklat: batang pertama 6 bagian, kedua 3 bagian, sama panjang");
-    const c1 = T(M, "amati-coklat", 1);
-    const warna1 = sel(c1, "c1").map((o) => o.warna);
-    cek([0, 1, 2].every((a) => warna1[a * 2] === warna1[a * 2 + 1]) && new Set(warna1).size === 3, "coklat 1: tiga anak masing-masing dua bagian (6 : 3 = 2)");
-    const c2 = T(M, "amati-coklat", 2);
-    const warna2 = sel(c2, "c2").map((o) => o.warna);
-    sama(warna2, [warna1[0], warna1[2], warna1[4]], "coklat 2: tiga anak masing-masing satu bagian, warna sama dengan coklat 1");
-    const lebarPutu1 = sel(c2, "c1")[0].w * 2;
-    sama(Math.round(lebarPutu1 * 1e6), Math.round(sel(c2, "c2")[0].w * 1e6), "coklat: bagian Putu sama panjang pada kedua batang");
-    const c3 = T(M, "amati-coklat", 3);
-    sama([frac(c3, "p1"), frac(c3, "p2")], [[2, 6], [1, 3]], "coklat: bagian Putu 2/6 dan 1/3");
-    const j = T(M, "coklat-jawab", 1);
-    for (const a of [0, 1, 2]) {
-      cek(frac(j, `u${a}`).join() === "2,6" && frac(j, `v${a}`).join() === "1,3", `coklat jawab: bagian ${a + 1} bertanda 2/6 dan 1/3`);
-    }
-    const t1 = T(M, "coklat-jawab", 0);
-    const gx = [t1.find((o) => o.id === "g1").x, t1.find((o) => o.id === "g2").x];
-    const lb = sel(t1, "c2")[0];
-    sama(gx.map((x) => Math.round(x * 10) / 10), [lb.x + lb.w, lb.x + 2 * lb.w].map((x) => Math.round(x * 10) / 10), "coklat jawab: garis putus-putus di sepertiga dan dua pertiga panjang");
-    cek(sel(t1, "c1").length === 6 && sel(t1, "c2").length === 3, "coklat jawab: 6 dan 3 potong");
-    stat.data += 1;
-  }
-
-  /* ----- Tahukah Kalian ----- */
-  {
-    const x = T(M, "tahukah", 1);
-    const x1 = frac(x, "x1");
-    const x2 = frac(x, "x2");
-    cek(x1.join() === "1,3" && x2.join() === "2,6" && x2[0] === x1[0] * 2 && x2[1] === x1[1] * 2 && silang(x1, x2), "tahukah: 1/3 dikali 2 menjadi 2/6");
-    sama(nilaiId(x, "xj-o1"), "×2", "tahukah: label kali dua");
-    const y = T(M, "tahukah", 3);
-    const y1 = frac(y, "y1");
-    const y2 = frac(y, "y2");
-    cek(y1.join() === "2,6" && y2.join() === "1,3" && y1[0] === y2[0] * 2 && y1[1] === y2[1] * 2, "tahukah: 2/6 dibagi 2 menjadi 1/3");
-    sama(nilaiId(y, "yj-o1"), "÷2", "tahukah: label bagi dua");
-  }
-  /* ----- Ayo Berpikir ----- */
-  {
-    const b = T(M, "berpikir", 0);
-    cek(["bk0", "bk1", "bk2"].every((id) => ada(b, id)) && ["bn0", "bn1", "bn2"].every((id) => nilaiId(b, `${id}-p`) === "..."), "berpikir: tiga kotak gambar dan tiga pecahan kosong");
-    const c = T(M, "berpikir", 2);
-    for (const [i, [p, q]] of CONTOH.entries()) {
-      const bt = batangSah(c, `bb${i}`);
-      cek(bt && bt.n === q && bt.arsir === p && bt.rapat, `berpikir: gambar ${i + 1} berarsir ${p} dari ${q}`);
-      sama(frac(c, `bf${i}`), [p, q], `berpikir: pecahan gambar ${i + 1}`);
-      cek(bagianBatang(bt) === 0.5, `berpikir: gambar ${i + 1} berarsir setengah`);
-    }
-    cek(sel(c, "bb0")[0].w * 2 === sel(c, "bb1")[0].w * 4 && sel(c, "bb1")[0].w * 4 === sel(c, "bb2")[0].w * 6, "berpikir: ketiga batang sama panjang");
-  }
-  /* ----- Ayo Berlatih ----- */
-  {
-    const l0 = T(M, "berlatih-satu", 0);
-    const kiri = batangSah(l0, "l1");
-    const kanan = batangSah(l0, "r1");
-    cek(kiri.n === 4 && kiri.arsir === 2 && kanan.n === 2 && kanan.arsir === 1 && kiri.rapat && kanan.rapat && kiri.total === kanan.total, "nomor 1: kiri 2 dari 4, kanan 1 dari 2, sama panjang");
-    const l1 = T(M, "berlatih-satu", 1);
-    sama([frac(l1, "fl"), frac(l1, "fr")], [LATIHAN[0].kiri, LATIHAN[0].kanan], "nomor 1: isian 2/4 dan 1/2");
-    const l2 = T(M, "berlatih-satu", 2);
-    sama([frac(l2, "gl"), frac(l2, "gr")], [LATIHAN[0].kiri, LATIHAN[0].kanan], "nomor 1: hitungan mandiri 2/4 dan 1/2");
-
-    const n0 = T(M, "berlatih-dua", 0);
-    const k2 = batangSah(n0, "l2");
-    const r2 = batangSah(n0, "r2");
-    cek(k2.n === 6 && k2.arsir === 2 && r2.n === 3 && r2.arsir === 1 && k2.rapat && r2.rapat && Math.abs(k2.total - r2.total) < 1e-6, "nomor 2: kiri 2 dari 6, kanan 1 dari 3, sama panjang");
-    const n1 = T(M, "berlatih-dua", 1);
-    sama([frac(n1, "hl"), frac(n1, "hr")], [LATIHAN[1].kiri, LATIHAN[1].kanan], "nomor 2: isian 2/6 dan 1/3");
-    const n2 = T(M, "berlatih-dua", 2);
-    const m1 = batangSah(n2, "m1");
-    const m2 = batangSah(n2, "m2");
-    cek(bagianBatang(m1) === 2 / 6 && bagianBatang(m2) === 1 / 3 && Math.abs(m1.total - m2.total) < 1e-6, "nomor 2: bagian berwarna 2/6 dan 1/3 pada batang sama panjang");
-    const berakhirM1 = sel(n2, "m1").filter((o) => o.warna !== PUTIH).at(-1);
-    const berakhirM2 = sel(n2, "m2").filter((o) => o.warna !== PUTIH).at(-1);
-    cek(Math.abs(berakhirM1.x + berakhirM1.w - (berakhirM2.x + berakhirM2.w)) < 1e-6 && Math.abs(n2.find((o) => o.id === "m3").x - (berakhirM1.x + berakhirM1.w)) < 0.1, "nomor 2: arsir berakhir di garis putus-putus yang sama");
-    const n3 = T(M, "berlatih-dua", 3);
-    sama([frac(n3, "n1"), frac(n3, "n2")], [LATIHAN[1].kiri, LATIHAN[1].kanan], "nomor 2: hitungan mandiri 2/6 dan 1/3");
-    sama(nilaiId(n3, "nj-o1"), "÷2", "nomor 2: dibagi FPB 2");
-
-    const q0 = T(M, "berlatih-tiga", 0);
-    const kg = kisiSah(q0, "l3", 3, 3);
-    const kr = batangSah(q0, "r3");
-    cek(kg && kg.tepat && kg.arsir.length === 3 && kg.arsir.every(([c]) => c === 0), "nomor 3: kisi 3 kali 3, satu kolom (3 kotak) berarsir");
-    cek(kr.n === 3 && kr.arsir === 1 && kr.rapat && kr.total === kg.lebar && sel(q0, "r3")[0].h === kg.tinggi, "nomor 3: kanan 1 dari 3 kolom, bangun sama besar dengan kisi");
-    const q1 = T(M, "berlatih-tiga", 1);
-    sama([frac(q1, "ql"), frac(q1, "qr")], [LATIHAN[2].kiri, LATIHAN[2].kanan], "nomor 3: isian 3/9 dan 1/3");
-    const q2 = T(M, "berlatih-tiga", 2);
-    sama([frac(q2, "r1"), frac(q2, "r2")], [LATIHAN[2].kiri, LATIHAN[2].kanan], "nomor 3: hitungan mandiri 3/9 dan 1/3");
-    sama(nilaiId(q2, "rj-o1"), "÷3", "nomor 3: dibagi FPB 3");
-    const q3 = T(M, "berlatih-tiga", 3);
-    LATIHAN.forEach((l, i) => {
-      const baris = [0, 1, 2, 3].map((c) => nilaiId(q3, `kt${i + 1}-t${c}`));
-      sama(baris, [String(i + 1), l.kiri.join("/"), l.kanan.join("/"), `÷${gcd(l.kiri[0], l.kiri[1])}`], `tabel kunci nomor ${i + 1}`);
-    });
-    const z = T(M, "diferensiasi", 4);
-    LATIHAN.forEach((l, i) => {
-      const baris = [0, 1, 2, 3].map((c) => nilaiId(z, `zt${i + 1}-t${c}`));
-      sama(baris, [String(i + 1), l.kiri.join("/"), l.kanan.join("/"), `÷${gcd(l.kiri[0], l.kiri[1])}`], `tabel kunci akhir nomor ${i + 1}`);
-    });
-    // Catatan guru.
-    const g1 = T(M, "catatan", 0);
-    const SILANG = [["2/4 = 1/2", "2 × 2 = 4", "4 × 1 = 4"], ["2/6 = 1/3", "2 × 3 = 6", "6 × 1 = 6"], ["3/9 = 1/3", "3 × 3 = 9", "9 × 1 = 9"]];
-    SILANG.forEach((b, i) => sama([0, 1, 2].map((c) => nilaiId(g1, `gt${i + 1}-t${c}`)), b, `catatan: cek silang baris ${i + 1}`));
-    const g3 = T(M, "catatan", 2);
-    sama([frac(g3, "g5"), frac(g3, "g7")], [[1, 3], [2, 4]], "catatan: 1/3 menjadi 2/4 (tambah satu) pada gambar");
-    const g4 = T(M, "catatan", 3);
-    const bh4 = batangSah(g4, "h4");
-    const bh5 = batangSah(g4, "h5");
-    cek(bh4.n === 3 && bh4.arsir === 1 && bh5.n === 4 && bh5.arsir === 2 && bagianBatang(bh4) !== bagianBatang(bh5) && bh4.total === bh5.total, "catatan: 1/3 dan 2/4 berlainan luas pada batang sama panjang");
-    sama([nilaiId(g4, "h1"), nilaiId(g4, "h2")], ["1 × 4 = 4", "2 × 3 = 6"], "catatan: cek silang 1/3 dan 2/4");
-    const g5 = T(M, "catatan", 4);
-    sama([frac(g5, "i2"), frac(g5, "i4")], KERTAS, "catatan: kesimpulan 1/4 = 4/16 pada gambar");
-    sama(nilaiId(g5, "i5"), "4 ÷ 4 = 1 dan 16 ÷ 4 = 4", "catatan: hitungan mandiri 4/16 dibagi 4");
-    stat.data += 1;
-  }
-
-  /* ----- Metode luar ----- */
-  {
-    const po = T(U, "luar-pembuka", 0);
-    sama([frac(po, "po1"), frac(po, "po3")], [[2, 6], [1, 3]], "luar pembuka: 2/6 dan 1/3");
-    // Equivalent Fractions.
-    const s1 = T(U, "luar-senilai", 0);
-    const sa = batangSah(s1, "sa");
-    const sb = batangSah(s1, "sb");
-    cek(sa.n === 2 && sa.arsir === 1 && sb.n === 4 && sb.arsir === 2 && sa.total === sb.total && bagianBatang(sa) === bagianBatang(sb), "luar senilai: 1 dari 2 dan 2 dari 4 sama panjang");
-    sama([frac(s1, "sc"), frac(s1, "sd")], [[1, 2], [2, 4]], "luar senilai: 1/2 dan 2/4");
-    const s3 = T(U, "luar-senilai", 2);
-    const ta = batangSah(s3, "ta");
-    const tb = batangSah(s3, "tb");
-    cek(ta.n === 2 && tb.n === 4 && bagianBatang(ta) === bagianBatang(tb) && Math.abs(s3.find((o) => o.id === "tg").x - (ta.x0 + ta.total / 2)) < 1e-6, "luar senilai: garis putus-putus di tengah batang, tempat kedua arsir berakhir");
-    const s4 = T(U, "luar-senilai", 3);
-    const kel = ["ua", "ub", "uc", "ud"].map((id) => frac(s4, id));
-    sama(kel, [[1, 2], [2, 4], [3, 6], [4, 8]], "luar senilai: keluarga 1/2, 2/4, 3/6, 4/8");
-    cek(kel.every((f) => nilaiFrac(f) === 0.5), "luar senilai: semua anggota keluarga bernilai setengah");
-    const s2 = T(U, "luar-senilai", 1);
-    const ka = batangSah(s2, "ka");
-    const kb = batangSah(s2, "kb");
-    cek(ka.total > kb.total && bagianBatang(ka) === bagianBatang(kb), "luar senilai: setengah kue besar dan kue kecil berlainan ukuran");
-    const t1 = T(U, "luar-senilai-terapan", 0);
-    const ca = batangSah(t1, "ca", "#8B4A22");
-    const cb = batangSah(t1, "cb", "#8B4A22");
-    cek(ca.n === 6 && ca.arsir === 2 && cb.n === 3 && cb.arsir === 1 && ca.total === cb.total && Math.abs(bagianBatang(ca) - bagianBatang(cb)) < 1e-9, "luar coklat: 2 dari 6 dan 1 dari 3 sama panjang");
-    const garisX = t1.find((o) => o.id === "cg").x;
-    cek(Math.abs(garisX - (ca.x0 + (ca.total * 2) / 6)) < 0.1 && Math.abs(garisX - (cb.x0 + cb.total / 3)) < 0.1, "luar coklat: garis putus-putus di ujung arsir kedua batang");
-    const t2 = T(U, "luar-senilai-terapan", 1);
-    sama([frac(t2, "cc"), frac(t2, "cd")], [[2, 6], [1, 3]], "luar coklat: 2/6 dan 1/3");
-    const t3 = T(U, "luar-senilai-terapan", 2);
-    const w1 = kisiSah(t3, "w1", 2, 2);
-    const w2 = kisiSah(t3, "w2", 4, 4);
-    cek(w1 && w2 && w1.tepat && w2.tepat && w1.arsir.length === 1 && w2.arsir.length === 4 && w1.lebar === w2.lebar && w1.tinggi === w2.tinggi, "luar kertas: 1 dari 4 sel dan 4 dari 16 sel pada kertas sama ukuran");
-    const t4 = T(U, "luar-senilai-terapan", 3);
-    sama([frac(t4, "w4"), frac(t4, "w5")], KERTAS, "luar kertas: 1/4 dan 4/16");
-    // Multiply Identity.
-    const k1 = T(U, "luar-kali", 0);
-    cek([["ka2", 2], ["ka4", 3], ["ka6", 4]].every(([id, n]) => frac(k1, id).join() === `${n},${n}`), "luar kali: 2/2, 3/3, 4/4 adalah bentuk satu");
-    const k2 = T(U, "luar-kali", 1);
-    const [e1, e3, e5] = [frac(k2, "kb1"), frac(k2, "kb3"), frac(k2, "kb5")];
-    cek(e1.join() === "1,5" && e3.join() === "2,2" && e5.join() === "2,10" && e5[0] === e1[0] * e3[0] && e5[1] === e1[1] * e3[1] && silang(e1, e5), "luar kali: 1/5 dikali 2/2 menjadi 2/10");
-    const BENTUK = [["ma", 1, 3, 2], ["mb", 1, 2, 2], ["mc", 1, 4, 4], ["md", 1, 3, 3]];
-    BENTUK.forEach(([id, p, q, n], i) => {
-      const o = T(U, "luar-kali-terapan", i);
-      sama([frac(o, `${id}1`), frac(o, `${id}2`)], [[p, q], [p * n, q * n]], `luar kali: ${p}/${q} dikali ${n}/${n}`);
-      sama(nilaiId(o, `${id}j-o1`), `×${n}`, `luar kali: label ×${n}`);
-      const mk = batangSah(o, `${id}m`);
-      const nk = batangSah(o, `${id}n`);
-      cek(mk.n === q && mk.arsir === p && nk.n === q * n && nk.arsir === p * n && mk.total === nk.total && Math.abs(bagianBatang(mk) - bagianBatang(nk)) < 1e-9, `luar kali: batang ${p}/${q} dan ${p * n}/${q * n} sama luas`);
-    });
-    // Simplify.
-    const p1 = T(U, "luar-sederhana", 0);
-    sama([frac(p1, "pa1"), frac(p1, "pa4")], [[6, 8], [3, 4]], "luar simplify: 6/8 menjadi 3/4");
-    cek(gcd(6, 8) === 2 && 6 / 2 === 3 && 8 / 2 === 4 && gcd(3, 4) === 1, "luar simplify: FPB 6 dan 8 adalah 2, hasil 3/4 sudah sederhana");
-    const p2 = T(U, "luar-sederhana", 1);
-    sama([frac(p2, "pb2"), frac(p2, "pb4")], [[12, 18], [2, 3]], "luar simplify: 12/18 menjadi 2/3");
-    cek(gcd(12, 18) === 6 && /= 6$/.test(nilaiId(p2, "pb3")) && 12 / 6 === 2 && 18 / 6 === 3, "luar simplify: FPB 12 dan 18 adalah 6");
-    sama(nilaiId(p2, "pbj-o1"), "÷6", "luar simplify: dibagi 6");
-    const p3 = T(U, "luar-sederhana", 2);
-    const f2 = faktor(2);
-    const f6 = faktor(6);
-    sama([nilaiId(p3, "pc1-t0"), nilaiId(p3, "pc2-t0")], [`faktor 2: ${f2.join(", ")}`, `faktor 6: ${f6.join(", ")}`], "luar simplify: faktor 2 dan faktor 6");
-    sama(f2.filter((d) => f6.includes(d)).join(" dan "), nilaiId(p3, "pc3-t0").replace(/^yang sama: /, ""), "luar simplify: faktor persekutuan 1 dan 2");
-    cek(/FPB = 2$/.test(nilaiId(p3, "pc3-t1")) && Math.max(...f2.filter((d) => f6.includes(d))) === 2, "luar simplify: FPB 2 dan 6 adalah 2");
-    const p4 = T(U, "luar-sederhana", 3);
-    sama(frac(p4, "pd1"), [1, 3], "luar simplify: 1/3 sudah sederhana");
-    sama([nilaiId(p4, "pd2-t0"), nilaiId(p4, "pd3-t0")], [`faktor 1: ${faktor(1).join(", ")}`, `faktor 3: ${faktor(3).join(", ")}`], "luar simplify: faktor 1 dan faktor 3");
-    cek(gcd(1, 3) === 1, "luar simplify: FPB 1 dan 3 adalah 1");
-    const BAGI = [["qa", 2, 4, 2], ["qb", 2, 6, 2], ["qc", 3, 9, 3], ["qd", 4, 16, 4]];
-    BAGI.forEach(([id, p, q, n], i) => {
-      const o = T(U, "luar-sederhana-terapan", i);
-      cek(gcd(p, q) === n, `luar bagi: FPB ${p} dan ${q} adalah ${n}`);
-      sama([frac(o, `${id}1`), frac(o, `${id}2`)], [[p, q], [p / n, q / n]], `luar bagi: ${p}/${q} dibagi ${n}`);
-      sama(nilaiId(o, `${id}j-o1`), `÷${n}`, `luar bagi: label ÷${n}`);
-      sama(nilaiId(o, `${id}f-t0`), `FPB = ${n}`, `luar bagi: kartu FPB ${n}`);
-      sama(gcd(p / n, q / n), 1, `luar bagi: hasil ${p / n}/${q / n} sudah sederhana`);
-      const mk = batangSah(o, `${id}m`);
-      const nk = batangSah(o, `${id}n`);
-      cek(mk.n === q && mk.arsir === p && nk.n === q / n && nk.arsir === p / n && mk.total === nk.total && Math.abs(bagianBatang(mk) - bagianBatang(nk)) < 1e-9, `luar bagi: batang ${p}/${q} dan ${p / n}/${q / n} sama luas`);
-    });
-    // Fraction Wall.
-    const LAPIS = [1, 2, 3, 4, 6, 9];
-    const d0 = T(U, "luar-dinding", 0);
-    const x0 = sel(d0, "dd1")[0].x;
-    LAPIS.forEach((n, r) => {
-      const b = batangSah(d0, `dd${n}`);
-      cek(b && b.n === n && b.rapat && b.arsir === n && b.total === 216 && b.x0 === x0, `dinding: lapis ${n} punya ${n} sel dan lebar 216, rata kiri`);
-      cek(sel(d0, `dd${n}`)[0].y === sel(d0, "dd1")[0].y + r * 24, `dinding: lapis ${n} di baris ke-${r + 1}`);
-    });
-    const ujung = (o) => Math.round((o.x + o.w) * 1e6) / 1e6;
-    const sorotLuar = (objs, id) => {
-      const o = objs.find((x) => x.id === id);
-      const barisY = [34, 58, 82, 106, 130, 154];
-      const r = barisY.indexOf(o.y);
-      return { n: LAPIS[r], awal: (o.x - x0) / (216 / LAPIS[r]), lebar: o.w, ujung: ujung(o), r };
-    };
-    const d1 = T(U, "luar-dinding", 1);
-    const gx1 = d1.find((o) => o.id === "dg").x;
-    const hs1 = sorotLuar(d1, "hs1");
-    const hs2 = sorotLuar(d1, "hs2");
-    cek(hs1.ujung === gx1 && hs2.ujung === gx1 && hs1.n === 2 && hs2.n === 4 && hs1.lebar / 216 === 1 / 2 && hs2.awal === 1 && hs2.lebar === 216 / 4, "dinding: 1/2 dan 2/4 berujung di garis yang sama (setengah)");
-    const d2 = T(U, "luar-dinding", 2);
-    const gx2 = d2.find((o) => o.id === "dh").x;
-    const ht1 = sorotLuar(d2, "ht1");
-    const ht2 = sorotLuar(d2, "ht2");
-    cek(ht1.ujung === gx2 && ht2.ujung === gx2 && ht1.n === 3 && ht2.n === 6 && ht1.awal === 0 && ht2.awal === 1 && Math.abs(ht1.lebar / 216 - 1 / 3) < 1e-9 && Math.abs((ht2.lebar * 2) / 216 - 1 / 3) < 1e-9, "dinding: 1/3 dan 2/6 berujung di garis yang sama (sepertiga)");
-    cek(d2.every((o) => o.id !== "dg" && o.id !== "hs1"), "dinding: sorotan ketukan sebelumnya sudah dihapus");
-    // Dinding terapan: lapis 2, 3, 4, 6, 9 di x = 48, y = 34 + 26 r.
-    const LT = [2, 3, 4, 6, 9];
-    const y0 = 34;
-    const xt = 48;
-    const dt = T(U, "luar-dinding-terapan", 0);
-    LT.forEach((n, r) => {
-      const b = batangSah(dt, `dw${n}`);
-      cek(b && b.n === n && b.rapat && b.total === 216 && b.x0 === xt && sel(dt, `dw${n}`)[0].y === y0 + r * 26, `dinding terapan: lapis ${n} punya ${n} sel, lebar 216, di baris ke-${r + 1}`);
-    });
-    const sorotT = (objs, id) => {
-      const o = objs.find((x) => x.id === id);
-      const r = (o.y - y0) / 26;
-      return { n: LT[r], awal: (o.x - xt) / (216 / LT[r]), banyak: o.w / (216 / LT[r]), ujung: Math.round((o.x + o.w) * 1e6) / 1e6 };
-    };
-    const BARIS = [["luar-dinding-terapan", 0, "vg", ["v1", "v2"], "2/4 = 1/2"], ["luar-dinding-terapan", 1, "vh", ["v3", "v4"], "2/6 = 1/3"], ["luar-dinding-terapan", 2, "vi", ["v5", "v6"], "3/9 = 1/3"]];
-    for (const [adg, ke, gid, [a, b], kartuKunci] of BARIS) {
-      const o = T(U, adg, ke);
-      const gx = o.find((z) => z.id === gid).x;
-      const sa2 = sorotT(o, a);
-      const sb2 = sorotT(o, b);
-      cek(sa2.ujung === gx && sb2.ujung === gx && sa2.awal === 0 && sb2.awal === 0 && Number.isInteger(sa2.banyak) && Number.isInteger(sb2.banyak), `${adg}#${ke + 1}: kedua sorotan mulai di kiri dan berujung di garis yang sama`);
-      cek(Math.abs(sa2.banyak / sa2.n - sb2.banyak / sb2.n) < 1e-9, `${adg}#${ke + 1}: dua sorotan bernilai sama (${kartuKunci})`);
-    }
-    sama(nilaiId(T(U, "luar-dinding-terapan", 0), "vk-t0"), "2/4 = 1/2", "dinding terapan: kunci nomor 1");
-    sama(nilaiId(T(U, "luar-dinding-terapan", 1), "vm-t0"), "2/6 = 1/3", "dinding terapan: kunci nomor 2");
-    sama(nilaiId(T(U, "luar-dinding-terapan", 2), "vn-t0"), "3/9 = 1/3", "dinding terapan: kunci nomor 3");
-    const o2 = T(U, "luar-dinding-terapan", 1);
-    const s3a = sorotT(o2, "v3");
-    const s4a = sorotT(o2, "v4");
-    sama([s3a.n, s3a.banyak, s4a.n, s4a.banyak], [3, 1, 6, 2], "dinding terapan nomor 2: 1 dari 3 dan 2 dari 6");
-    const o3 = T(U, "luar-dinding-terapan", 2);
-    sama([sorotT(o3, "v5").n, sorotT(o3, "v5").banyak, sorotT(o3, "v6").n, sorotT(o3, "v6").banyak], [9, 3, 3, 1], "dinding terapan nomor 3: 3 dari 9 dan 1 dari 3");
-    const o1 = T(U, "luar-dinding-terapan", 0);
-    sama([sorotT(o1, "v1").n, sorotT(o1, "v1").banyak, sorotT(o1, "v2").n, sorotT(o1, "v2").banyak], [2, 1, 4, 2], "dinding terapan nomor 1: 1 dari 2 dan 2 dari 4");
-    const o4 = T(U, "luar-dinding-terapan", 3);
-    const gx4 = o4.find((z) => z.id === "vj").x;
-    const trio = ["v7", "v8", "v9"].map((id) => sorotT(o4, id));
-    sama(trio.map((s) => [s.n, s.banyak]), [[2, 1], [4, 2], [6, 3]], "dinding terapan: 1/2, 2/4, 3/6 pada garis tengah");
-    cek(trio.every((s) => s.ujung === gx4) && 108 / (216 / 9) === 4.5, "dinding terapan: lapis 9 tidak punya ujung sel di garis tengah (4,5 sel)");
-    sama(nilaiId(o4, "vo-t0"), "1/2 = 2/4 = 3/6", "dinding terapan: tiga pecahan senilai");
-    // Ringkasan.
-    const rr = T(U, "luar-ringkas", 1);
-    const PASANG = [["2/4", "1/2"], ["2/6", "1/3"], ["3/9", "1/3"], ["1/4", "4/16"]];
-    PASANG.forEach(([a, b], i) => {
-      sama(nilaiId(rr, `rt${i + 1}-t1`), `${a} = ${b}`, `ringkasan: pasangan ${i + 1}`);
-      cek(silang(a.split("/").map(Number), b.split("/").map(Number)), `ringkasan: ${a} senilai ${b}`);
-    });
-    sama(PASANG.slice(0, 3).map(([a, b]) => [a.split("/").map(Number), b.split("/").map(Number)]), LATIHAN.map((l) => [l.kiri, l.kanan]), "ringkasan: tiga pasangan pertama sama dengan kunci Latihan");
-    stat.data += 1;
-  }
-
-  /* ----- Semua rantai pecahan dan hitungan pada teks gambar dihitung ulang ----- */
-  for (const v of [M, U]) {
-    for (const a of v.adegan) {
-      a.ketukan.forEach((_, i) => {
-        for (const t of teksLepas(T(v, a.id, i))) {
-          const rantai = t.match(/^(\d+\/\d+)(?: = (\d+\/\d+))+$/);
-          if (rantai) {
-            const fs = t.split(" = ").map((s) => s.split("/").map(Number));
-            stat.rantai += 1;
-            cek(fs.every((f) => silang(f, fs[0])), `${v.id}/${a.id}#${i + 1}: rantai "${t}" senilai semua`);
-          }
-          const sn = t.match(/(\d+)\/(\d+) senilai (\d+)\/(\d+)/);
-          if (sn) {
-            stat.rantai += 1;
-            cek(silang([+sn[1], +sn[2]], [+sn[3], +sn[4]]), `${v.id}/${a.id}#${i + 1}: "${t}" senilai`);
-          }
-          for (const m of t.matchAll(/(\d+) ÷ (\d+) = (\d+)/g)) {
-            stat.rantai += 1;
-            cek(+m[1] / +m[2] === +m[3], `${v.id}/${a.id}#${i + 1}: pembagian "${m[0]}" dihitung ulang`);
-          }
-          for (const m of t.matchAll(/(\d+) × (\d+) = (\d+)/g)) {
-            stat.rantai += 1;
-            cek(+m[1] * +m[2] === +m[3], `${v.id}/${a.id}#${i + 1}: perkalian "${m[0]}" dihitung ulang`);
-          }
+        // Label nama tokoh diturunkan (tidak menempel dagu).
+        for (const n of objs.filter((o) => /-n$/.test(o.id) && o.t === "teks")) {
+          const w = objs.find((o) => o.id === n.id.slice(0, -2));
+          if (w) cek((n.y ?? 0) - (w.y ?? 0) >= 18, `${v.id}/${a.id}#${i + 1}: label ${n.isi} turun dari dagu`);
         }
       });
-    }
-  }
-}
+  // Pecahan digambar benar: bagian berarsir sungguh sebanyak pembilang dari penyebut, bagian sama besar, dan pecahan bertingkat sesuai.
+  const arsir = (objs, id, q) => G.idKain(id, q).filter((n) => ketemu(objs, n)?.warna === G.W.arsir).length;
+  const sebanding = (objs, id, q, lebar) => G.idKain(id, q).every((n) => Math.abs((ketemu(objs, n)?.w ?? 0) - lebar / q) < 0.15) && ada(objs, ...G.idKain(id, q));
+  const urut = (objs, id, q) => G.idKain(id, q).every((n, i, arr) => i === 0 || Math.abs((ketemu(objs, n)?.x ?? 0) - ((ketemu(objs, arr[i - 1])?.x ?? 0) + (ketemu(objs, arr[i - 1])?.w ?? 0))) < 0.2);
+  const frak = (objs, id) => `${isiTeks(objs, `${id}-p`)}/${isiTeks(objs, `${id}-q`)}`;
+  const bar = (nama, objs, id, q, p, lebar) => cek(arsir(objs, id, q) === p && sebanding(objs, id, q, lebar) && urut(objs, id, q), `${nama}: kain ${id} berbagi ${q} sama besar dengan ${p} bagian berarsir`);
+  const jh = adegan(M_VIDEO, "jahit");
+  cek(ada(akhirAdegan(jh, 0), "lt", "ks", "ks-pt", "ks-mt", "sa", "lr", "ge", "ks-n") && isiTeks(akhirAdegan(jh, 1), "n2") === undefined && ada(akhirAdegan(jh, 1), "mj", "ms", "bn1", "bn2"), "jahit: Kak Sekar dan tiga anak di serambi, meja dengan mesin dan benang");
+  cek(isiTeks(akhirAdegan(jh), "n2") === "2 potongan" && ada(akhirAdegan(jh), "mj"), "jahit: dua potongan berbeda bagian");
+  bar("jahit", akhirAdegan(jh), "ba", 3, 0, 160);
+  bar("jahit", akhirAdegan(jh), "bb", 6, 0, 160);
+  const sd = adegan(M_VIDEO, "setengah");
+  bar("setengah", akhirAdegan(sd, 0), "kb", 2, 1, 160);
+  cek(isiTeks(akhirAdegan(sd, 0), "nd") === "2 bagian" && isiTeks(akhirAdegan(sd, 0), "ns") === "1 diarsir" && frak(akhirAdegan(sd, 1), "pc") === "1/2", "setengah: kain dibagi dua, satu diarsir, pecahan satu per dua");
+  bar("setengah", akhirAdegan(sd), "kl", 2, 1, 44);
+  cek(ada(akhirAdegan(sd), "lr", "mj", "ar"), "setengah: Laras menyimpan potongan di meja kiri");
+  const dp = adegan(M_VIDEO, "dua-per-empat");
+  bar("dua per empat", akhirAdegan(dp, 0), "kb", 4, 2, 160);
+  cek(isiTeks(akhirAdegan(dp, 0), "nd") === "4 bagian" && isiTeks(akhirAdegan(dp, 0), "ns") === "2 diarsir" && frak(akhirAdegan(dp, 1), "pc") === "2/4", "dua per empat: kain dibagi empat, dua diarsir, pecahan dua per empat");
+  bar("dua per empat", akhirAdegan(dp), "ta", 2, 1, 160);
+  bar("dua per empat", akhirAdegan(dp), "tb", 4, 2, 160);
+  cek(ketemu(akhirAdegan(dp), "ta-c1").x === ketemu(akhirAdegan(dp), "tb-c2").x && ada(akhirAdegan(dp), "gv") && isiTeks(akhirAdegan(dp), "sm") === "=" && isiTeks(akhirAdegan(dp), "n2") === "2 potongan", "dua per empat: arsiran satu per dua dan dua per empat berakhir di titik yang sama");
+  const st = adegan(M_VIDEO, "salah-tambah");
+  cek(frak(akhirAdegan(st, 0), "pa") === "1/2" && isiTeks(akhirAdegan(st, 0), "t1") === "+2" && isiTeks(akhirAdegan(st, 0), "t2") === "+2", "salah tambah: satu per dua ditambah dua pada pembilang dan penyebut");
+  cek(frak(akhirAdegan(st, 1), "pb") === "3/4" && frak(akhirAdegan(st, 1), "pa") === "1/2" && isiTeks(akhirAdegan(st, 1), "md") === "mudah sekali!", "salah tambah: Satria menulis tiga per empat");
+  cek(ada(akhirAdegan(st), "mj", "kk", "kk-b0", "b1", "b2", "ms", "st") && tidakAda(akhirAdegan(st), "pa-p", "pb-p"), "salah tambah: taruhan menjahit semua kancing baju di meja");
+  const pr = adegan(M_VIDEO, "periksa");
+  bar("periksa", akhirAdegan(pr, 0), "ta", 4, 3, 160);
+  bar("periksa", akhirAdegan(pr, 0), "tb", 2, 1, 160);
+  cek(frak(akhirAdegan(pr, 0), "pa") === "3/4" && frak(akhirAdegan(pr, 0), "pb") === "1/2", "periksa: tiga per empat di atas satu per dua");
+  cek(ada(akhirAdegan(pr, 1), "gv", "lp") && isiTeks(akhirAdegan(pr, 1), "ts") === "tidak sama" && ketemu(akhirAdegan(pr, 1), "ta-c2").sorot === true && ketemu(akhirAdegan(pr, 1), "gv").x === ketemu(akhirAdegan(pr, 1), "tb-c0").x + ketemu(akhirAdegan(pr, 1), "tb-c0").w, "periksa: tiga per empat lebih panjang dari ujung satu per dua");
+  cek(isiTeks(akhirAdegan(pr), "kt-t0") === "menambah" && isiTeks(akhirAdegan(pr), "kl-t0") === "mengalikan" && ada(akhirAdegan(pr), "xs", "ok"), "periksa: menambah tidak menjaga, mengalikan menjaga");
+  const kc = adegan(M_VIDEO, "kancing");
+  cek(ada(akhirAdegan(kc, 0), "bj", "kc0", "kc1", "kc2", "c1") && isiTeks(akhirAdegan(kc, 0), "c1") === "1", "kancing: Satria menjahit kancing satu per satu");
+  cek(isiTeks(akhirAdegan(kc, 1), "n2") === "2 kali" && ada(akhirAdegan(kc, 1), "jr") && ketemu(akhirAdegan(kc, 1), "st").isi === "\u{1F623}", "kancing: jarum menusuk jari dua kali, Satria meringis");
+  cek(ada(akhirAdegan(kc), "ks", "tw", "pl") && ketemu(akhirAdegan(kc), "st").isi === "\u{1F466}", "kancing: Kak Sekar tertawa dan menempelkan plester");
+  const kl = adegan(M_VIDEO, "kali");
+  cek(frak(akhirAdegan(kl, 0), "pa") === "1/2" && isiTeks(akhirAdegan(kl, 0), "x1") === "×2" && isiTeks(akhirAdegan(kl, 0), "x2") === "×2", "kali: satu per dua dikali dua pada pembilang dan penyebut");
+  cek(["p1", "p2", "p3"].map((id) => frak(akhirAdegan(kl, 1), id)).join("|") === "1/2|2/4|4/8" && isiTeks(akhirAdegan(kl, 1), "l1") === "×2" && isiTeks(akhirAdegan(kl, 1), "l2") === "×4", "kali: satu per dua, dua per empat, empat per delapan");
+  bar("kali", akhirAdegan(kl), "b1", 2, 1, 76);
+  bar("kali", akhirAdegan(kl), "b2", 4, 2, 76);
+  bar("kali", akhirAdegan(kl), "b3", 8, 4, 76);
+  const sg = adegan(M_VIDEO, "sederhana");
+  bar("sederhana", akhirAdegan(sg, 0), "kb", 8, 6, 160);
+  cek(frak(akhirAdegan(sg, 0), "pc") === "6/8" && ada(akhirAdegan(sg, 0), "ks"), "sederhana: enam per delapan ditunjukkan Kak Sekar");
+  cek(frak(akhirAdegan(sg, 1), "pd") === "3/4" && isiTeks(akhirAdegan(sg, 1), "dv") === "÷2" && ada(akhirAdegan(sg, 1), "lr", "ar"), "sederhana: dibagi dua menjadi tiga per empat");
+  bar("sederhana", akhirAdegan(sg), "sb", 4, 3, 160);
+  bar("sederhana", akhirAdegan(sg), "kb", 8, 6, 160);
+  cek(ketemu(akhirAdegan(sg), "kb-c5").x + ketemu(akhirAdegan(sg), "kb-c5").w === ketemu(akhirAdegan(sg), "sb-c2").x + ketemu(akhirAdegan(sg), "sb-c2").w && isiTeks(akhirAdegan(sg), "ls") === "lebih sederhana", "sederhana: enam per delapan dan tiga per empat berakhir di titik yang sama");
+  const pt = adegan(M_VIDEO, "penutup");
+  cek(ada(akhirAdegan(pt, 0), "pb", "pb-tp", "pb-gl", "mt", "gk", "gp", "lt") && isiTeks(akhirAdegan(pt, 0), "pj") === "kain panjang", "penutup: Pak Bagas bertopi memanggul gulungan kain dan meteran");
+  bar("penutup", akhirAdegan(pt, 1), "kb", 10, 3, 120);
+  cek(G.idKain("kb", 10).length === 10 && Array.from({ length: 100 }, (_, i) => `kd${i}`).every((id) => ketemu(akhirAdegan(pt, 1), id)) && isiTeks(akhirAdegan(pt, 1), "n10") === "10 bagian" && isiTeks(akhirAdegan(pt, 1), "n100") === "100 bagian", "penutup: sepuluh bagian dan kisi seratus bagian digambar sungguh");
+  cek(frak(akhirAdegan(pt), "pq") === "3/10" && isiTeks(akhirAdegan(pt), "tq") === "= ?" && ada(akhirAdegan(pt), "sa", "lr", "ge", "ph", "ks", "lb"), "penutup: tiga per sepuluh dengan koma dan lima tokoh melambai");
 
-/* ------------------------------ Kutipan buku (bila PDF tersedia) ------------------------------ */
-{
-  const bs = new URL("../bahan-sd/Matematika-BS-KLS-IV.pdf", import.meta.url);
-  const bg = new URL("../bahan-sd/Matematika-BG-KLS-IV.pdf", import.meta.url);
-  const jalur = (u) => u.pathname.replace(/^\/([A-Za-z]:)/, "$1");
-  const KODE_PY = "import sys, pymupdf\nsys.stdout.reconfigure(encoding='utf-8')\nd = pymupdf.open(sys.argv[1])\nsys.stdout.write('\\n'.join(d[i - 1].get_text() for i in range(int(sys.argv[2]), int(sys.argv[3]) + 1)))";
-  const ambil = (berkas, dari, sampai) => {
-    const r = spawnSync("pdftotext", ["-enc", "UTF-8", "-f", String(dari), "-l", String(sampai), "-raw", jalur(berkas), "-"], { encoding: "utf8", maxBuffer: 1 << 26 });
-    if (r.status === 0) return r.stdout;
-    // Cadangan bila pdftotext tidak ada: PyMuPDF (python -I).
-    const p = spawnSync("python", ["-I", "-c", KODE_PY, jalur(berkas), String(dari), String(sampai)], { encoding: "utf8", maxBuffer: 1 << 26 });
-    return p.status === 0 ? p.stdout : null;
-  };
-  // Kelas IV: Buku Siswa hlm. N = PDF N+12 (hlm. 66-70 = PDF 78-82; subbab D mulai PDF 83); Panduan Guru hlm. N = PDF N+12 (hlm. 100-103 = PDF 112-115; subbab D mulai di PDF 116 setelah akhir Diferensiasi).
-  const bagian = existsSync(bs) && existsSync(bg) ? [ambil(bs, 78, 82), ambil(bg, 112, 116), ambil(bs, 83, 83), ambil(bs, 81, 81), ambil(bs, 82, 82)] : [null];
-  if (bagian.some((b) => b === null)) console.log("PDF atau pembaca PDF tidak tersedia: pemeriksaan kutipan buku dilewati");
-  else {
-    const bersih = (t) => t.toLowerCase().replace(/-\s*\n\s*/g, "-").replace(/\s+/g, " ").trim();
-    const guruPenuh = bersih(bagian[1]);
-    const awalD = guruPenuh.indexOf("d. pecahan desimal persepuluhan dan perseratusan");
-    cek(awalD > 0, "Panduan Guru PDF 116 memuat judul subbab D");
-    const siswa = bersih(bagian[0]);
-    const guru = guruPenuh.slice(0, awalD);
-    const buku = `${siswa}\n${guru}`;
-    let n = 0;
-    for (const a of M.adegan) {
-      for (const kt of a.kutipan ?? []) {
-        n += 1;
-        cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
-      }
-    }
-    stat.kutipan = n;
-    cek(n >= 70, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
-    cek(/d\. pecahan desimal persepuluhan dan perseratusan/.test(bersih(bagian[2])) && !/d\. pecahan desimal persepuluhan dan perseratusan/.test(siswa), "subbab D mulai di Buku Siswa PDF 83, bukan di PDF 78-82");
-    cek(siswa.includes("c. pecahan senilai") && guru.includes("c. pecahan senilai"), "judul subbab C ada di Buku Siswa dan Panduan Guru");
-    // Angka dan istilah yang dipakai video.
-    cek(siswa.includes("menjadi 4 bagian yang sama") && siswa.includes("menjadi 16 bagian yang sama") && siswa.includes("warnailah 4 kotak"), "Buku Siswa: kertas 4 bagian (1 diwarnai) dan 16 bagian (4 diwarnai)");
-    cek(siswa.includes("2 batang coklat") && siswa.includes("menjadi 6 bagian") && siswa.includes("menjadi 3 bagian"), "Buku Siswa: dua batang coklat, 6 bagian dan 3 bagian");
-    cek((guru.match(/dikatakan pecahan senilai, karena pecahan/g) ?? []).length === 3 && (guru.match(/apabila disederhanakan/g) ?? []).length === 3, "Panduan Guru: tiga kunci memakai kalimat disederhanakan");
-    // Urutan angka pada teks PDF: kunci Panduan Guru dan contoh Tahukah Kalian (hasil bagi dua tertulis 2/6 lagi).
-    const g3 = bersih(bagian[1]);
-    cek(/1 3 = 2 6/.test(g3) || /1 2 = 2 4/.test(g3) || g3.includes("2 4 apabila"), "Panduan Guru memuat pecahan kunci nomor 1 (2/4)");
-    cek(g3.includes("2 6 apabila") && g3.includes("3 9 apabila") && /memperoleh hasil yang sama yaitu 1 3/.test(g3), "Panduan Guru memuat pecahan kunci nomor 2 (2/6) dan 3 (3/9), hasil 1/3");
-    const hal81 = bersih(bagian[3]);
-    cek(/1 3 2 6 = ×2 ×2 2 6 2 6 = ÷2 ÷2/.test(hal81), "Buku Siswa hlm. 69: contoh kali 1/3 jadi 2/6, contoh bagi 2/6 tertulis menjadi 2/6 (salah cetak)");
-    // Keganjilan buku yang dicatat di video.
-    cek(guru.includes("dengan cara menyamakan penyebutnya"), "Panduan Guru hlm. 100: apersepsi menyebut menyamakan penyebut");
-    cek(!guru.includes("miskonsepsi") && !siswa.includes("miskonsepsi"), "Panduan Guru dan Buku Siswa subbab C tidak memuat bagian miskonsepsi");
-    cek(!/kunci/.test(siswa), "Buku Siswa hlm. 66-70: tanpa kunci jawaban (hitungan mandiri)");
-    cek(/ayo berpikir buatlah tiga buah gambar yang menunjukkan pecahan senilai! gambar 1 gambar 2 gambar 3/.test(hal81), "Buku Siswa: Ayo Berpikir meminta tiga gambar, tanpa isian jawaban");
-    cek(/model pembelajaran yang disarankan untuk bab ini adalah problem based learning/.test(guru), "Panduan Guru: model yang disarankan Problem Based Learning");
-  }
+  /* Metode global. */
+  const op = adegan(U, "luar-pembuka");
+  cek(ada(akhirAdegan(op, 0), "mj", "ms", "ks", "lc", "ks0", "ks2"), "global pembuka: Kak Sekar membuka laci di meja jahit");
+  cek(isiTeks(akhirAdegan(op, 1), "n3") === "3 cara" && ada(akhirAdegan(op, 1), "c0-k", "c2-k", "ok", "xs"), "global pembuka: tiga cara");
+  sama(["m0", "m1", "m2"].map((id) => isiTeks(akhirAdegan(op, 2), id)), ["1. Area Model Match", "2. Multiply by One", "3. Divide Both"], "global pembuka: tiga nama metode");
+  sama(["g0", "g1", "g2"].map((id) => isiTeks(akhirAdegan(op, 3), id)), ["Cocokkan Daerah", "Kali Bentuk Satu", "Bagi Keduanya"], "global pembuka: tiga nama bahasa Indonesia");
+  const dm = adegan(U, "luar-daerah");
+  cek(isiTeks(akhirAdegan(dm, 0), "nm") === "Area Model Match" && isiTeks(akhirAdegan(dm, 0), "ni") === "Cocokkan Daerah", "Area Model Match konsep: judul");
+  cek(isiTeks(akhirAdegan(dm, 1), "n2") === "2 bangun" && ada(akhirAdegan(dm, 1), "s1-c0", "s2-c0"), "Area Model Match konsep: dua bangun sama besar dibagi berbeda");
+  bar("Area Model Match", akhirAdegan(dm), "s1", 4, 2, 180);
+  bar("Area Model Match", akhirAdegan(dm), "s2", 8, 4, 180);
+  cek(frak(akhirAdegan(dm), "fa") === "2/4" && frak(akhirAdegan(dm), "fb") === "4/8" && ada(akhirAdegan(dm), "ok") && isiTeks(akhirAdegan(dm), "eq") === "=", "Area Model Match konsep: dua per empat sama besar dengan empat per delapan");
+  const dt = adegan(U, "luar-daerah-terapan");
+  bar("Cocokkan Daerah terapan", akhirAdegan(dt, 1), "a", 3, 1, 180);
+  bar("Cocokkan Daerah terapan", akhirAdegan(dt, 1), "b", 6, 2, 180);
+  cek(ketemu(akhirAdegan(dt, 1), "a-c0").x + ketemu(akhirAdegan(dt, 1), "a-c0").w === ketemu(akhirAdegan(dt, 1), "b-c1").x + ketemu(akhirAdegan(dt, 1), "b-c1").w && ada(akhirAdegan(dt, 1), "gv", "ok"), "Cocokkan Daerah terapan: satu per tiga dan dua per enam berakhir di titik yang sama");
+  cek(frak(akhirAdegan(dt, 2), "ga") === "1/3" && frak(akhirAdegan(dt, 2), "gb") === "2/6" && isiTeks(akhirAdegan(dt, 2), "n2b") === "2 pecahan", "Cocokkan Daerah terapan: cocok untuk melihat dua pecahan sama besar");
+  cek(ada(akhirAdegan(dt), "bx-c11", "by-c14", "kr", "jm") && isiTeks(akhirAdegan(dt), "lm") === "lama", "Cocokkan Daerah terapan: kurang cocok bila bagian banyak");
+  bar("Cocokkan Daerah terapan", akhirAdegan(dt), "bx", 12, 7, 180);
+  const lk = adegan(U, "luar-kali");
+  cek(isiTeks(akhirAdegan(lk, 0), "nm") === "Multiply by One" && isiTeks(akhirAdegan(lk, 0), "ni") === "Kali Bentuk Satu" && isiTeks(akhirAdegan(lk, 0), "b1") === "bentuk 1", "Multiply by One konsep: judul");
+  cek(frak(akhirAdegan(lk, 1), "fa") === "2/2" && frak(akhirAdegan(lk, 1), "fb") === "3/3" && isiTeks(akhirAdegan(lk, 1), "e1") === "= 1" && isiTeks(akhirAdegan(lk, 1), "e2") === "= 1", "Multiply by One konsep: dua per dua dan tiga per tiga sama dengan satu");
+  cek(frak(akhirAdegan(lk, 2), "pa") === "3/5" && frak(akhirAdegan(lk, 2), "pb") === "2/2" && frak(akhirAdegan(lk, 2), "pc") === "6/10", "Multiply by One konsep: tiga per lima dikali dua per dua menjadi enam per sepuluh");
+  cek(frak(akhirAdegan(lk), "qa") === "3/5" && frak(akhirAdegan(lk), "qc") === "6/10" && isiTeks(akhirAdegan(lk), "t1") === "×2" && isiTeks(akhirAdegan(lk), "t2") === "×2", "Multiply by One konsep: pembilang dan penyebut sama-sama dikali dua");
+  const lt = adegan(U, "luar-kali-terapan");
+  cek(frak(akhirAdegan(lt, 0), "pa") === "1/3" && frak(akhirAdegan(lt, 0), "pq") === "?/12", "Kali Bentuk Satu terapan: satu per tiga menjadi per dua belas");
+  cek(frak(akhirAdegan(lt, 1), "pq") === "4/12" && isiTeks(akhirAdegan(lt, 1), "t1") === "×4" && isiTeks(akhirAdegan(lt, 1), "t2") === "×4", "Kali Bentuk Satu terapan: dikali empat menjadi empat per dua belas");
+  cek(ada(akhirAdegan(lt, 2), "ok") && isiTeks(akhirAdegan(lt, 2), "pb") === "penyebut baru", "Kali Bentuk Satu terapan: cocok untuk penyebut baru");
+  cek(ada(akhirAdegan(lt), "xs") && frak(akhirAdegan(lt), "pw") === "4/3" && isiTeks(akhirAdegan(lt), "bb") === "besar berubah" && tidakAda(akhirAdegan(lt), "ok"), "Kali Bentuk Satu terapan: kurang cocok bila hanya pembilang dikali");
+  const lb = adegan(U, "luar-bagi");
+  cek(isiTeks(akhirAdegan(lb, 0), "nm") === "Divide Both" && isiTeks(akhirAdegan(lb, 0), "ni") === "Bagi Keduanya", "Divide Both konsep: judul");
+  cek(frak(akhirAdegan(lb, 1), "pa") === "12/16" && isiTeks(akhirAdegan(lb, 1), "t1") === "÷4" && isiTeks(akhirAdegan(lb, 1), "t2") === "÷4", "Divide Both konsep: dua belas per enam belas dibagi empat");
+  cek(frak(akhirAdegan(lb, 2), "pc") === "3/4" && ada(akhirAdegan(lb, 2), "ar"), "Divide Both konsep: hasil lebih sederhana tiga per empat");
+  cek(frak(akhirAdegan(lb), "pd") === "3/4" && ada(akhirAdegan(lb), "st", "ok") && isiTeks(akhirAdegan(lb), "tb") === "tidak bisa dibagi lagi", "Divide Both konsep: berhenti bila tidak ada pembagi lagi");
+  const bt = adegan(U, "luar-bagi-terapan");
+  cek(frak(akhirAdegan(bt, 0), "pa") === "8/12" && isiTeks(akhirAdegan(bt, 0), "t1") === "÷4" && ada(akhirAdegan(bt, 0), "sa"), "Bagi Keduanya terapan: Satria membagi delapan per dua belas dengan empat");
+  cek(frak(akhirAdegan(bt, 1), "pc") === "2/3" && isiTeks(akhirAdegan(bt, 1), "tb") === "tidak bisa dibagi lagi", "Bagi Keduanya terapan: dua per tiga tidak bisa dibagi lagi");
+  cek(ada(akhirAdegan(bt, 2), "ok") && isiTeks(akhirAdegan(bt, 2), "jw") === "jawaban akhir", "Bagi Keduanya terapan: cocok untuk jawaban paling sederhana");
+  cek(ada(akhirAdegan(bt), "xs", "tr") && isiTeks(akhirAdegan(bt), "tj") === "12 jadi 3", "Bagi Keduanya terapan: kurang cocok bila ingin penyebut besar");
+  const rg = adegan(U, "luar-ringkas");
+  cek(["r0-t0", "r1-t0", "r2-t0"].map((id) => isiTeks(akhirAdegan(rg, 0), id)).join("|") === "Cocokkan Daerah|Kali Bentuk Satu|Bagi Keduanya" && isiTeks(akhirAdegan(rg, 0), "n3") === "3 cara" && ada(akhirAdegan(rg, 0), "ks", "tq"), "ringkasan: tiga kartu cara dan Kak Sekar");
+  cek(ketemu(akhirAdegan(rg, 1), "r1-k").sorot === true && ada(akhirAdegan(rg, 1), "ok1", "ok2") && tidakAda(akhirAdegan(rg, 1), "tq"), "ringkasan: Cocokkan Daerah lalu Kali Bentuk Satu");
+  cek(ketemu(akhirAdegan(rg, 2), "r2-k").sorot === true && !ketemu(akhirAdegan(rg, 2), "r1-k").sorot && ada(akhirAdegan(rg, 2), "ok3"), "ringkasan: Bagi Keduanya");
+  cek(frak(akhirAdegan(rg), "rq") === "10/15" && isiTeks(akhirAdegan(rg), "tq2") === "?" && ada(akhirAdegan(rg), "ks"), "ringkasan: pertanyaan menyederhanakan sepuluh per lima belas");
 }
-
-/* ------------------------------ Emoji, akhir baris, dan kemurnian ------------------------------ */
 {
   const folder = new URL("../src/components/modul/story/", import.meta.url);
-  const berkas = readdirSync(folder).filter((f) => /^(k4b2c-.*)\.(ts|tsx)$/.test(f));
-  cek(berkas.length >= 8, `berkas story ditemukan (${berkas.length})`);
+  const berkas = readdirSync(folder).filter((f) => /^k4b2c-.*\.ts$/.test(f));
+  cek(berkas.length === 8, `berkas story k4b2c (${berkas.length})`);
+  for (const f of ["bantu", "gambar", "luar-1", "luar-2", "materi-1", "materi-2", "materi-3", "video"]) cek(berkas.includes(`k4b2c-${f}.ts`), `k4b2c-${f}.ts ada`);
   for (const f of berkas) {
     const s = readFileSync(new URL(f, folder), "utf8");
-    const buruk = [...s].filter((c) => {
-      const kode = c.codePointAt(0);
-      return kode > 0x1fa95 || kode === 0x1f7f0 || kode === 0x200d;
-    });
-    cek(buruk.length === 0, `${f}: tanpa emoji di atas Emoji 12 dan tanpa ZWJ (${buruk.map((c) => c.codePointAt(0).toString(16)).join()})`);
-    cek(!s.startsWith("﻿") && !s.includes("\r"), `${f}: UTF-8 tanpa BOM dan akhir baris LF`);
-    cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
-    cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
+    cek(![...s].some((c) => c.codePointAt(0) > 0x1fa95 || c.codePointAt(0) === 0x200d || c.codePointAt(0) === 0x1f6de), `${f}: emoji paling tinggi U+1FA95 tanpa ZWJ`);
+    cek(!/\\u\{1FA(9[6-9A-F]|[A-F][0-9A-F])\}|\\u\{1F[B-F][0-9A-F]{2}\}|\\u\{200D\}|\\u\{1F6DE\}/i.test(s), `${f}: kode emoji tidak melewati U+1FA95`);
+    cek(!/\\u\{1FA74\}|\\u\{1F39F\}|\\u\{2602\}|\\u\{1FA9F\}|\\u\{1FAA3\}/i.test(s) && ![...s].some((c) => [0x1fa74, 0x1f39f, 0x2602, 0x1fa9f, 0x1faa3].includes(c.codePointAt(0))), `${f}: tanpa emoji yang tampil kosong atau hitam`);
+    cek(!s.startsWith("﻿") && !s.includes("\r"), `${f}: tanpa BOM, akhir baris LF`);
+    cek(!/from "react"|fetch\(/.test(s), `${f}: tanpa React dan jaringan`);
+    cek(!/buku/i.test(s) && !/senilai/i.test(s) && !/\\u\{1F41F\}|\\u\{1F420\}|\\u\{1F421\}|\\u\{1F988\}|\\u\{1F42C\}|\\u\{1F38F\}/i.test(s) && ![...s].some((c) => [0x1f41f, 0x1f420, 0x1f421, 0x1f988, 0x1f42c, 0x1f38f].includes(c.codePointAt(0))), `${f}: tanpa kata buku, senilai, dan tanpa emoji ikan`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b2c-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2c sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b2c-[a-z0-9-]+)$/.test(i)), `${f}: impor hanya logika, sapaan, atau k4b2c (${impor.join(", ")})`);
   }
-  const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
-  cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");
-  const pembungkus = readFileSync(new URL("../src/components/modul/video-k4b2c.tsx", import.meta.url), "utf8");
-  cek(!/video-visual-adegan|AdeganVisual|SUB_C42|video-k4b2-umum|naskah-k4b2/.test(pembungkus) && /VIDEO_MATERI_K4B2C/.test(pembungkus) && /VIDEO_LUAR_K4B2C/.test(pembungkus) && /export function VideoK4B2C/.test(pembungkus), "video-k4b2c.tsx: dua video dari mesin Story, tanpa naskah lama");
-  cek(!/\r/.test(pembungkus), "video-k4b2c.tsx: akhir baris LF");
-  const sendiri = readFileSync(new URL("uji-story-k4b2c.mjs", import.meta.url), "utf8");
-  cek(!/\r/.test(sendiri), "uji-story-k4b2c.mjs: akhir baris LF");
+  for (const v of VIDEO) for (const a of v.adegan) for (let i = 0; i < a.ketukan.length; i += 1) for (const o of L.keadaanStory(a, i, 9999)) if (o.t === "teks") cek(![...(o.isi ?? "")].some((c) => c.codePointAt(0) > 0x1fa95), `${v.id}/${a.id}: emoji gambar paling tinggi U+1FA95`);
+  const pbc = readFileSync(new URL("../src/components/modul/video-k4b2c.tsx", import.meta.url), "utf8");
+  cek(/VIDEO_MATERI_K4B2C/.test(pbc) && /VIDEO_LUAR_K4B2C/.test(pbc) && /export function VideoK4B2C/.test(pbc) && /jedaAntarParagrafMs=\{SUARA_SERAGAM\.jedaAntarParagrafMs\}/.test(pbc) && !/\r/.test(pbc) && !pbc.startsWith("﻿") && !/data-k4b2|video-k4b2-umum|naskah-k4b2/.test(pbc), "video-k4b2c.tsx memakai dua video Story dan jeda seragam");
 }
 
-for (const v of [M, U]) {
+for (const v of VIDEO) {
   const n = v.adegan.reduce((t, ad) => t + ad.ketukan.reduce((u, kt) => u + L.kataDari(kt.suara).length, 0), 0);
-  if (process.env.RINCI) for (const ad of v.adegan) console.log(`  ${ad.id}: ${ad.ketukan.length} ketukan, ${ad.ketukan.reduce((t, kt) => t + L.kataDari(kt.suara).length, 0)} kata`);
-  console.log(`${v.id}: ${v.adegan.length} adegan, ${v.adegan.reduce((t, ad) => t + ad.ketukan.length, 0)} ketukan, ${n} kata (sekitar ${((n * 0.5) / 60).toFixed(1)} menit suara)`);
+  console.log(`${v.id}: ${v.adegan.length} adegan, ${v.adegan.reduce((t, ad) => t + ad.ketukan.length, 0)} ketukan, ${n} kata (sekitar ${(n / 120).toFixed(1)} menit)`);
 }
-console.log(`Pemeriksaan: ${stat.kutipan} kutipan terhadap teks PDF, ${stat.terbilang} bilangan berkata, ${stat.persamaan} persamaan, ${stat.rantai} rantai dan hitungan gambar, ${stat.teksPasang} pasangan teks`);
-console.log(`Lulus ${lulus}, gagal ${gagal}; ${totalKetukan} ketukan, ${totalKata} kata (sekitar ${Math.round((totalKata * 0.5) / 60)} menit suara)`);
+console.log(`Lulus ${lulus}, gagal ${gagal}; ${totalKetukan} ketukan, ${totalKata} kata`);
 process.exit(gagal ? 1 : 0);

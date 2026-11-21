@@ -1,48 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_AMATI_ROTI, ADEGAN_CONTOH_KOMA, ADEGAN_TIGA_BISKUIT } from "./k4b2d-materi-1";
-import { ADEGAN_BERLATIH_DUA, ADEGAN_BERLATIH_SATU, ADEGAN_BERLATIH_TIGA, ADEGAN_HATI_HATI } from "./k4b2d-materi-2";
-import { ADEGAN_CATATAN_BUKU, ADEGAN_DIFERENSIASI, ADEGAN_PERIKSA_KUNCI } from "./k4b2d-materi-3";
-import { ADEGAN_LUAR_KISI, ADEGAN_LUAR_KISI_TERAPAN, ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_TENTHS, ADEGAN_LUAR_TENTHS_TERAPAN } from "./k4b2d-luar-1";
-import { ADEGAN_LUAR_JEMBATAN, ADEGAN_LUAR_JEMBATAN_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_TEMPAT, ADEGAN_LUAR_TEMPAT_TERAPAN } from "./k4b2d-luar-2";
+import { ADEGAN_KISI, ADEGAN_METERAN, ADEGAN_SEPULUH } from "./k4b2d-materi-1";
+import { ADEGAN_MENGGULUNG, ADEGAN_PERBAIKI, ADEGAN_SALAH_NOL } from "./k4b2d-materi-2";
+import { ADEGAN_JEMBATAN, ADEGAN_PENUTUP, ADEGAN_SERATUS } from "./k4b2d-materi-3";
+import { ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_PERSEPULUH, ADEGAN_LUAR_PERSEPULUH_TERAPAN } from "./k4b2d-luar-1";
+import { ADEGAN_LUAR_JEMBATAN, ADEGAN_LUAR_JEMBATAN_TERAPAN, ADEGAN_LUAR_PERSERATUS, ADEGAN_LUAR_PERSERATUS_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k4b2d-luar-2";
 
-/** Kelas 4 Bab 2 Sub-Bab D (Pecahan Desimal Persepuluhan dan Perseratusan): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 4 Bab 2 Sub-Bab D (pecahan per sepuluh dan per seratus menjadi desimal), Sanggar Batik Kampung Mekar.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Meteran Kain Pak Bagas" (Satria, Laras, Genta, Pak Hendro, Pak Bagas, Bu Tuti).
+ * Video kedua: tiga metode global (Tenths Grid, Hundredths Grid, Fraction Decimal Bridge), terpisah.
+ */
+export const JUDUL_K4B2D = "Meteran Kain Pak Bagas";
+
 export const VIDEO_MATERI_K4B2D: VideoStory = {
   id: "k4b2d-materi",
-  judul: "Pecahan Desimal Persepuluhan dan Perseratusan",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K4B2D,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "pecahan desimal", daftar: ["Amati bagian pada gambar","Hitung angka sesudah koma","Tulis pembilang setelah koma"] }),
-    ADEGAN_AMATI_ROTI,
-    ADEGAN_TIGA_BISKUIT,
-    ADEGAN_CONTOH_KOMA,
-    ADEGAN_HATI_HATI,
-    ADEGAN_BERLATIH_SATU,
-    ADEGAN_BERLATIH_DUA,
-    ADEGAN_BERLATIH_TIGA,
-    ADEGAN_PERIKSA_KUNCI,
-    ADEGAN_DIFERENSIASI,
-    ADEGAN_CATATAN_BUKU,
+    adeganSapaan({ jenis: "materi", topik: "pecahan desimal per sepuluh dan per seratus", daftar: ["Persepuluhan", "Perseratusan", "Menulis dengan koma"] }),
+    ADEGAN_METERAN,
+    ADEGAN_SEPULUH,
+    ADEGAN_KISI,
+    ADEGAN_SALAH_NOL,
+    ADEGAN_PERBAIKI,
+    ADEGAN_MENGGULUNG,
+    ADEGAN_SERATUS,
+    ADEGAN_JEMBATAN,
+    ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K4B2D: VideoStory = {
   id: "k4b2d-luar",
-  judul: "Membaca Pecahan Desimal: Metode dari Luar",
-  subjudul: "Empat metode luar",
+  judul: JUDUL_K4B2D,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "pecahan desimal" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "pecahan desimal per sepuluh dan per seratus", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_TENTHS,
-    ADEGAN_LUAR_TENTHS_TERAPAN,
-    ADEGAN_LUAR_KISI,
-    ADEGAN_LUAR_KISI_TERAPAN,
+    ADEGAN_LUAR_PERSEPULUH,
+    ADEGAN_LUAR_PERSEPULUH_TERAPAN,
+    ADEGAN_LUAR_PERSERATUS,
+    ADEGAN_LUAR_PERSERATUS_TERAPAN,
     ADEGAN_LUAR_JEMBATAN,
     ADEGAN_LUAR_JEMBATAN_TERAPAN,
-    ADEGAN_LUAR_TEMPAT,
-    ADEGAN_LUAR_TEMPAT_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

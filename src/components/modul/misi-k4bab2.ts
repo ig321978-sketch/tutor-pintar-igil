@@ -1,98 +1,88 @@
 /**
- * Misi dan tantangan bebas Kelas 4 Bab 2 (Pecahan). Murni: tanpa React, tanpa jaringan.
+ * Misi dan tantangan bebas Kelas 4 Bab 2 (Pecahan, tema Sanggar Batik Kampung Mekar). Murni: tanpa React, tanpa jaringan.
  * Diuji di scripts/uji-lab-k4b2.mjs.
  *
- * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
- *  A Pecahan pembilang satu  : Lab Pecahan (Bagi, Banding, Garis)       + Mesin Pecahan + Pizza Tiara
- *  B Penyebut sama           : Lab Batang (Baca, Banding, Urut)         + Mesin Batang  + Kebun Slamet
- *  C Pecahan senilai         : Lab Senilai (Model, Ubah, Sederhana)     + Mesin Senilai + Cokelat Helen
- *  D Desimal                 : Lab Desimal (Persepuluhan, Perseratusan, Jembatan) + Mesin Desimal + Roti dan Biskuit Ibu
- *  E Desimal dan persen      : Lab Persen (Kisi, Ubah, Cerita)          + Mesin Persen  + Pameran Pecahan Kelas 4 (pencapaian bab)
+ * Tiap Sub-Bab satu simulasi sendiri (folder Sub-Bab).
+ * KERANGKA: agen tiap Sub-Bab mengganti MISI_X (kosong) dan menyesuaikan tipe keadaannya di union KeadaanK4Bab2.
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
-import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
-import type { KeadaanPecahanK4B2A } from "./lab-pecahan-k4b2a";
-import type { KeadaanBatangK4B2B } from "./lab-batang-k4b2b";
-import type { KeadaanSenilaiK4B2C } from "./lab-senilai-k4b2c";
-import type { KeadaanDesimalK4B2D } from "./lab-desimal-k4b2d";
-import type { KeadaanPersenK4B2E } from "./lab-persen-k4b2e";
+import type { DefMisi } from "./misi-simulasi";
 
-export type KeadaanK4Bab2 = KeadaanPecahanK4B2A | KeadaanBatangK4B2B | KeadaanSenilaiK4B2C | KeadaanDesimalK4B2D | KeadaanPersenK4B2E | KeadaanSelesai;
-export type HurufMisiK4B2 = "A" | "B" | "C" | "D" | "E";
+import type { KeadaanLipat } from "./lipat-k4b2a/logika";
+import type { KeadaanWarna } from "./warna-k4b2b/logika";
+import type { KeadaanJahit } from "./jahit-k4b2c/logika";
+import type { KeadaanMeteran } from "./meteran-k4b2d/logika";
+import type { KeadaanPameran } from "./pameran-k4b2e/logika";
 
-const selesai = (k: KeadaanK4Bab2, id: string) => k.alat === "selesai" && k.id === id;
-/** Riwayat alat tertentu memuat semua id. */
-const pernah = (k: KeadaanK4Bab2, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
+export type KeadaanK4Bab2 = { alat: "kerangka" } | KeadaanLipat | KeadaanWarna | KeadaanJahit | KeadaanMeteran | KeadaanPameran;
 
-/** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K4B2 = { A: "pizza-tiara", B: "kebun-slamet", C: "cokelat-helen", D: "roti-biskuit", E: "pameran-pecahan" } as const;
-export const ID_MESIN_K4B2 = { A: "mesin-pecahan", B: "mesin-batang", C: "mesin-senilai", D: "mesin-desimal", E: "mesin-persen" } as const;
-
+/** Sub-Bab A: Meja Lipat. Empat misi wajib dan dua tantangan bebas, id berawalan a-, tanpa skor. Diuji di scripts/uji-lipat-k4b2a.mjs. */
+const lipat = (k: KeadaanK4Bab2): k is KeadaanLipat => k.alat === "lipat";
 export const MISI_A: DefMisi<KeadaanK4Bab2>[] = [
-  { id: "a-empat", teks: "Di Bagi, potong pizza menjadi 4 bagian sama besar, lalu arsir satu bagian.", wajib: true, cek: (k) => pernah(k, "pecahan", "unit:4") },
-  { id: "a-tidak", teks: "Nyalakan potongan tidak sama besar, lalu coba arsir satu bagian. Baca penjelasan lab.", wajib: true, cek: (k) => pernah(k, "pecahan", "tidak-sama") },
-  { id: "a-banding", teks: "Di Banding, bandingkan 1/2 dan 1/4. Mana yang bagiannya lebih besar?", wajib: true, cek: (k) => pernah(k, "pecahan", "pasang:2:4") },
-  { id: "a-makin", teks: "Bandingkan 1/5 dan 1/10. Apa yang terjadi pada bagian bila penyebut makin besar?", wajib: true, cek: (k) => pernah(k, "pecahan", "pasang:5:10") },
-  { id: "a-garis", teks: "Di Garis, bagi garis menjadi 8 bagian, lalu ketuk tanda yang menunjukkan 1/8.", wajib: true, cek: (k) => pernah(k, "pecahan", "garis:8") },
-  { id: "a-mesin", teks: "Selesaikan Mesin Pecahan sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B2.A) },
-  { id: "a-skenario", teks: "Selesaikan skenario Pizza Tiara sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B2.A) },
-  { id: "a-sepuluh", teks: "Potong kue menjadi 10 bagian sama besar, lalu arsir satu bagian.", wajib: false, cek: (k) => pernah(k, "pecahan", "unit:10") },
-  { id: "a-sama", teks: "Atur kedua model dengan banyak bagian yang sama. Tanda apa yang muncul?", wajib: false, cek: (k) => pernah(k, "pecahan", "tanda:=") },
-  { id: "a-dua-belas", teks: "Bagi pizza menjadi 12 bagian sama besar, lalu arsir satu bagian.", wajib: false, cek: (k) => pernah(k, "pecahan", "unit:12") },
+  { id: "a-lipat", teks: "Bagi kain menjadi bagian sama besar sesuai pesanan, arsir satu bagian, lalu tekan Periksa.", wajib: true, cek: (k) => lipat(k) && k.lipatBenar.length >= 1 },
+  { id: "a-banding", teks: "Bandingkan dua pita, pilih tanda yang tepat, lalu tekan Periksa.", wajib: true, cek: (k) => lipat(k) && k.bandingBenar.length >= 1 },
+  { id: "a-urut", teks: "Taruh tiga kartu pecahan dari yang terkecil, lalu tekan Periksa.", wajib: true, cek: (k) => lipat(k) && k.urutBenar.length >= 1 },
+  { id: "a-garis", teks: "Bagi garis dari nol sampai satu, jepit tanda pecahan pesanan, lalu tekan Periksa.", wajib: true, cek: (k) => lipat(k) && k.garisBenar.length >= 1 },
+  { id: "a-tolak", teks: "Tekan Periksa pada kain yang belum ada bagian berarsir, dan lihat alat menolak.", wajib: false, cek: (k) => lipat(k) && k.tolak },
+  { id: "a-dua", teks: "Selesaikan dua pesanan kain dengan benar tanpa terhenti.", wajib: false, cek: (k) => lipat(k) && k.lipatBenar.length >= 2 },
 ];
 
+/** Sub-Bab B: Bak Warna. Empat misi wajib dan dua tantangan bebas, id berawalan b-, tanpa skor. Diuji di scripts/uji-warna-k4b2b.mjs. */
+const warna = (k: KeadaanK4Bab2): k is KeadaanWarna => k.alat === "warna";
 export const MISI_B: DefMisi<KeadaanK4Bab2>[] = [
-  { id: "b-baca", teks: "Di Baca, atur batang menjadi 3/8 dan baca pembilang serta penyebutnya.", wajib: true, cek: (k) => pernah(k, "batang", "baca:3/8") },
-  { id: "b-sama", teks: "Di Banding, bandingkan 2/5 dan 4/5 dengan penyebut sama.", wajib: true, cek: (k) => pernah(k, "batang", "pasang:2:4:5") },
-  { id: "b-beda", teks: "Ubah penyebut salah satu batang sehingga penyebutnya berbeda. Baca penjelasan lab.", wajib: true, cek: (k) => pernah(k, "batang", "beda-penyebut") },
-  { id: "b-urut", teks: "Di Urut, urutkan pecahan berpenyebut 5 dari yang terkecil.", wajib: true, cek: (k) => pernah(k, "batang", "urut:5:naik") },
-  { id: "b-tolak", teks: "Di Urut, ketuk pecahan yang bukan terkecil. Baca penjelasan lab.", wajib: true, cek: (k) => pernah(k, "batang", "urut-tolak") },
-  { id: "b-mesin", teks: "Selesaikan Mesin Batang sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B2.B) },
-  { id: "b-skenario", teks: "Selesaikan skenario Kebun Slamet sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B2.B) },
-  { id: "b-turun", teks: "Urutkan pecahan berpenyebut 6 dari yang terbesar.", wajib: false, cek: (k) => pernah(k, "batang", "urut:6:turun") },
-  { id: "b-pembilang-sama", teks: "Buat dua batang yang penyebut dan pembilangnya sama. Tanda apa yang muncul?", wajib: false, cek: (k) => pernah(k, "batang", "tanda:=") },
-  { id: "b-enam", teks: "Atur batang menjadi 5/6 pada Baca.", wajib: false, cek: (k) => pernah(k, "batang", "baca:5/6") },
+  { id: "b-banding", teks: "Hitung isi kedua bak, pilih tanda yang tepat, lalu tekan Periksa.", wajib: true, cek: (k) => warna(k) && k.bandBenar.length >= 1 },
+  { id: "b-isi", teks: "Isi bagian bak sebanyak pembilang pecahan sasaran, lalu tekan Periksa.", wajib: true, cek: (k) => warna(k) && k.isiBenar.length >= 1 },
+  { id: "b-urut", teks: "Geser kartu pecahan sampai berurutan dari yang terkecil, lalu tekan Periksa.", wajib: true, cek: (k) => warna(k) && k.naikBenar.length >= 1 },
+  { id: "b-garis", teks: "Geser titik pada garis ke pecahan sasaran, lalu tekan Periksa.", wajib: true, cek: (k) => warna(k) && k.garisBenar.length >= 1 },
+  { id: "b-turun", teks: "Geser kartu pecahan sampai berurutan dari yang terbesar, lalu tekan Periksa.", wajib: false, cek: (k) => warna(k) && k.turunBenar.length >= 1 },
+  { id: "b-tolak", teks: "Coba memilih tanda sebelum kedua bak dihitung, dan lihat alat menolak.", wajib: false, cek: (k) => warna(k) && k.tolak },
 ];
 
+/** Sub-Bab C: Meja Jahit. Empat misi wajib dan dua tantangan bebas, id berawalan c-, tanpa skor. Diuji di scripts/uji-jahit-k4b2c.mjs. */
+const jahit = (k: KeadaanK4Bab2): k is KeadaanJahit => k.alat === "jahit";
 export const MISI_C: DefMisi<KeadaanK4Bab2>[] = [
-  { id: "c-dua", teks: "Mulai dari 1/3, kalikan pembilang dan penyebut dengan 2. Apakah hasilnya senilai?", wajib: true, cek: (k) => pernah(k, "senilai", "bentuk:1/3:2/6") },
-  { id: "c-empat", teks: "Pilih 1/4 dan buat bentuk senilai 4/16.", wajib: true, cek: (k) => pernah(k, "senilai", "bentuk:1/4:4/16") },
-  { id: "c-satu", teks: "Dari bentuk yang senilai, ubah pembilang saja atau penyebut saja. Baca penjelasan lab.", wajib: true, cek: (k) => pernah(k, "senilai", "satu-saja") },
-  { id: "c-bagi", teks: "Pilih 6/12 dan bagi pembilang dan penyebut dengan 6.", wajib: true, cek: (k) => pernah(k, "senilai", "bagi:6/12:6") },
-  { id: "c-sederhana", teks: "Di Sederhana, sederhanakan 4/16 dengan FPB-nya.", wajib: true, cek: (k) => pernah(k, "senilai", "sederhana:4/16") },
-  { id: "c-mesin", teks: "Selesaikan Mesin Senilai sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B2.C) },
-  { id: "c-skenario", teks: "Selesaikan skenario Cokelat Helen sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B2.C) },
-  { id: "c-sudah", teks: "Pilih 3/4 lalu tekan Sederhanakan. Mengapa sudah paling sederhana?", wajib: false, cek: (k) => pernah(k, "senilai", "sudah-sederhana:3/4") },
-  { id: "c-gagal", teks: "Coba bagi dengan bilangan yang tidak membagi pembilang dan penyebut sekaligus. Baca penjelasan lab.", wajib: false, cek: (k) => pernah(k, "senilai", "bagi-gagal") },
-  { id: "c-dua-langkah", teks: "Mulai dari 1/3 dan kalikan dua kali dengan 2 sehingga menjadi 4/12.", wajib: false, cek: (k) => pernah(k, "senilai", "bentuk:1/3:4/12") },
+  { id: "c-arsir", teks: "Arsir kain bawah sampai sama panjang dengan kain atas, lalu tekan Periksa.", wajib: true, cek: (k) => jahit(k) && k.arsirBenar.length >= 1 },
+  { id: "c-kali", teks: "Pilih pengali sampai penyebutnya sesuai pesanan, lalu tekan Periksa.", wajib: true, cek: (k) => jahit(k) && k.kaliBenar.length >= 1 },
+  { id: "c-bagi", teks: "Bagi pembilang dan penyebut sampai pecahannya paling sederhana, lalu tekan Periksa.", wajib: true, cek: (k) => jahit(k) && k.bagiBenar.length >= 1 },
+  { id: "c-pasang", teks: "Pilih semua kartu yang sama besar dengan pecahan di papan, lalu tekan Periksa.", wajib: true, cek: (k) => jahit(k) && k.pasangBenar.length >= 1 },
+  { id: "c-tolak", teks: "Pilih cara tambah pada alat Kali, tekan Periksa, dan lihat alat menolak.", wajib: false, cek: (k) => jahit(k) && k.tolak },
+  { id: "c-dua", teks: "Arsir dua kain dengan benar tanpa terhenti.", wajib: false, cek: (k) => jahit(k) && k.arsirBenar.length >= 2 },
 ];
 
+/** Sub-Bab D: Meteran Kain. Empat misi wajib dan dua tantangan bebas, id berawalan d-, tanpa skor. */
+const meteran = (k: KeadaanK4Bab2): k is KeadaanMeteran => k.alat === "meteran";
 export const MISI_D: DefMisi<KeadaanK4Bab2>[] = [
-  { id: "d-tiga", teks: "Di Persepuluhan, atur batang menjadi 3/10 dan baca desimalnya.", wajib: true, cek: (k) => pernah(k, "desimal", "tenth:3") },
-  { id: "d-satu", teks: "Di Perseratusan, atur kisi menjadi 1/100 dan baca desimalnya.", wajib: true, cek: (k) => pernah(k, "desimal", "hundred:1") },
-  { id: "d-tujuh", teks: "Atur kisi menjadi 7/100. Mengapa nol setelah koma tetap ditulis?", wajib: true, cek: (k) => pernah(k, "desimal", "hundred:7", "nol-depan:7") },
-  { id: "d-dua-lima", teks: "Di Jembatan, atur 25/100 dan baca desimalnya.", wajib: true, cek: (k) => pernah(k, "desimal", "bridge:25/100") },
-  { id: "d-satu-angka", teks: "Di Jembatan, atur 5/10. Berapa angka di belakang koma?", wajib: true, cek: (k) => pernah(k, "desimal", "bridge:5/10") },
-  { id: "d-mesin", teks: "Selesaikan Mesin Desimal sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B2.D) },
-  { id: "d-skenario", teks: "Selesaikan skenario Roti dan Biskuit Ibu sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B2.D) },
-  { id: "d-sepuluh", teks: "Atur kisi menjadi 10 kotak. 0,10 sama dengan desimal apa yang lebih pendek?", wajib: false, cek: (k) => pernah(k, "desimal", "ujung-nol:10") },
-  { id: "d-sembilan", teks: "Atur kisi menjadi 99 kotak, bilangan terbesar sebelum satu keseluruhan.", wajib: false, cek: (k) => pernah(k, "desimal", "hundred:99") },
-  { id: "d-satu-sepuluh", teks: "Di Persepuluhan, atur batang menjadi 1/10.", wajib: false, cek: (k) => pernah(k, "desimal", "tenth:1") },
+  { id: "d-sepuluh", teks: "Warnai kolom kain sebanyak angka di belakang koma pada desimal, lalu tekan Periksa.", wajib: true, cek: (k) => meteran(k) && k.sepBenar.length >= 1 },
+  { id: "d-seratus", teks: "Isi baris penuh dan kotak lepas sesuai dua angka di belakang koma, lalu tekan Periksa.", wajib: true, cek: (k) => meteran(k) && k.serBenar.length >= 1 },
+  { id: "d-jembatan", teks: "Pilih desimal yang sama dengan pecahan, tekan Cek Jembatan, lalu tekan Periksa.", wajib: true, cek: (k) => meteran(k) && k.jemBenar.length >= 1 },
+  { id: "d-balik", teks: "Pilih pecahan yang sama besar dengan desimal di papan, lalu tekan Periksa.", wajib: true, cek: (k) => meteran(k) && k.balBenar.length >= 1 },
+  { id: "d-tolak", teks: "Coba menaruh sepuluh kotak lepas pada kisi seratus kotak dan lihat alat menolak.", wajib: false, cek: (k) => meteran(k) && k.tolak },
+  { id: "d-tiga", teks: "Warnai kain per sepuluh dengan benar tiga kali tanpa terhenti.", wajib: false, cek: (k) => meteran(k) && k.sepBenar.length >= 3 },
 ];
 
+/** Sub-Bab E: Papan Pameran. Empat misi wajib dan dua tantangan bebas, id berawalan e-, tanpa skor. */
+const pameran = (k: KeadaanK4Bab2): k is KeadaanPameran => k.alat === "pameran";
 export const MISI_E: DefMisi<KeadaanK4Bab2>[] = [
-  { id: "e-kisi", teks: "Di Kisi, atur 36 kotak dan baca persennya.", wajib: true, cek: (k) => pernah(k, "persen", "kisi:36") },
-  { id: "e-dua-cara", teks: "Di Ubah, ubah 0,75 menjadi persen dengan cara biasa dan cara langsung.", wajib: true, cek: (k) => pernah(k, "persen", "cara:75:biasa", "cara:75:langsung") },
-  { id: "e-lebih", teks: "Ubah 2,46 menjadi persen. Apakah boleh lebih dari 100%?", wajib: true, cek: (k) => pernah(k, "persen", "lebih:246") },
-  { id: "e-balik", teks: "Pilih arah dari persen ke desimal, lalu ubah 18% menjadi desimal.", wajib: true, cek: (k) => pernah(k, "persen", "ke-desimal:18") },
-  { id: "e-cerita", teks: "Di Cerita, ubah penyebut 20 dari 50 siswa menjadi seratus lalu baca persennya.", wajib: true, cek: (k) => pernah(k, "persen", "cerita:0") },
-  { id: "e-mesin", teks: "Selesaikan Mesin Persen sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B2.E) },
-  { id: "e-skenario", teks: "Selesaikan skenario Pameran Pecahan Kelas 4 sampai adegan akhir. Ini misi penutup bab.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B2.E) },
-  { id: "e-lima", teks: "Ubah 0,05 menjadi persen. Mengapa hasilnya hanya 5%?", wajib: false, cek: (k) => pernah(k, "persen", "ke-persen:5") },
-  { id: "e-seratus", teks: "Atur kisi sampai 100 kotak. Berapa persen dan berapa desimalnya?", wajib: false, cek: (k) => pernah(k, "persen", "kisi:100") },
-  { id: "e-cerita-lain", teks: "Ubah penyebut dua cerita lain (3 dari 20 dan 9 dari 25) menjadi persen.", wajib: false, cek: (k) => pernah(k, "persen", "cerita:1", "cerita:2") },
+  { id: "e-kisi", teks: "Warnai kotak pada kisi seratus sebanyak persen sasaran, lalu tekan Periksa.", wajib: true, cek: (k) => pameran(k) && k.kisiBenar.length >= 1 },
+  { id: "e-geser", teks: "Ubah desimal menjadi persen: geser koma, tempel tanda persen, lalu tekan Periksa.", wajib: true, cek: (k) => pameran(k) && k.geserBenar.length >= 1 },
+  { id: "e-balik", teks: "Ubah persen menjadi desimal: lepas tanda persen, geser koma, lalu tekan Periksa.", wajib: true, cek: (k) => pameran(k) && k.balikBenar.length >= 1 },
+  { id: "e-baca", teks: "Baca kisi yang berwarna, pilih persen dan desimalnya, lalu tekan Periksa.", wajib: true, cek: (k) => pameran(k) && k.bacaBenar.length >= 1 },
+  { id: "e-tolak", teks: "Coba menempel tanda persen sebelum koma sampai di ujung kanan, dan lihat alat menolak.", wajib: false, cek: (k) => pameran(k) && k.tolak },
+  { id: "e-dua", teks: "Warnai dua kisi dengan benar sampai persen sasarannya.", wajib: false, cek: (k) => pameran(k) && k.kisiBenar.length >= 2 },
 ];
 
-const DAFTAR: Record<HurufMisiK4B2, DefMisi<KeadaanK4Bab2>[]> = { A: MISI_A, B: MISI_B, C: MISI_C, D: MISI_D, E: MISI_E };
-export const daftarMisiK4Bab2 = (huruf: string): DefMisi<KeadaanK4Bab2>[] => DAFTAR[huruf as HurufMisiK4B2] ?? MISI_A;
+export const daftarMisiK4Bab2 = (sub: string): DefMisi<KeadaanK4Bab2>[] => {
+  switch (sub) {
+    case "B":
+      return MISI_B;
+    case "C":
+      return MISI_C;
+    case "D":
+      return MISI_D;
+    case "E":
+      return MISI_E;
+    default:
+      return MISI_A;
+  }
+};

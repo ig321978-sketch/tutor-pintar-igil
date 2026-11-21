@@ -1,251 +1,158 @@
 import type { AdeganStory } from "./logika-story";
-import { W, batang, emo, garis, jembatan, judul, kartu, kisi, pecahan, teks } from "./k4b2c-gambar";
-import { bersih, hapus, idx, k, tambah } from "./k4b2c-bantu";
+import { E, K, W, emo, garis, idKain, judul, kainBar, kartu, kotak, bulat, lantai, meja, mesinJahit, papanTulis, pecahan, teks, tokoh } from "./k4b2c-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b2c-bantu";
 
-export const NAMA_METODE = ["Equivalent Fractions", "Multiply Identity", "Simplify", "Fraction Wall"];
-export const NAMA_METODE_ID = ["Pecahan Senilai", "Kali dengan Bentuk Satu", "Sederhanakan", "Dinding Pecahan"];
-const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
-const IKON_METODE = ["🔎", "✖", "➗", "🧱"];
+/*
+ * Cerita orisinal IGIL "Meja Jahit Kak Sekar" (Kelas 4 Bab 2 Sub-Bab C), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b2c.md. Bagian ini: pembuka (laci Kak Sekar), Area Model Match (Cocokkan Daerah), dan terapannya.
+ */
 
-/** Kepala metode: kartu nama di bagian atas adegan konsep dan penerapan. */
-export const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
+export const NAMA_METODE = ["Area Model Match", "Multiply by One", "Divide Both"] as const;
+export const NAMA_METODE_ID = ["Cocokkan Daerah", "Kali Bentuk Satu", "Bagi Keduanya"] as const;
 
-/** Satu pasang pecahan dihubungkan panah operasi, dengan dua hitungan di bawahnya dan dua batang model. Dipakai penerapan Multiply Identity dan Simplify. */
-export function pasangan(id: string, p1: number, q1: number, p2: number, q2: number, op: string, hitungan: [string, string], y = 84, warna: string = W.hijau) {
-  return {
-    kiri: pecahan(`${id}1`, 50, y, p1, q1, 20),
-    jembatan: jembatan(`${id}j`, 50, 250, y, op, 20, warna),
-    kanan: pecahan(`${id}2`, 250, y, p2, q2, 20),
-    hit1: teks(`${id}a`, 150, y + 52, hitungan[0], 10, warna),
-    hit2: teks(`${id}b`, 150, y + 70, hitungan[1], 10, warna),
-    batangKiri: batang(`${id}m`, 20, 168, 100, 18, q1, Array.from({ length: p1 }, (_, i) => i)),
-    batangKanan: batang(`${id}n`, 180, 168, 100, 18, q2, Array.from({ length: p2 }, (_, i) => i)),
-    sama: teks(`${id}s`, 150, 182, "=", 16, W.merah),
-  };
-}
+const KUNING_KARTU = "#FEF3C7";
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana kita memastikan dua pecahan bernilai sama? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar untuk mengenali pecahan senilai.";
-const SUARA_O2 = "Empat metode itu: Equivalent Fractions, Multiply Identity, Simplify, dan Fraction Wall.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Pecahan Senilai, Kali dengan Bentuk Satu, Sederhanakan, dan Dinding Pecahan.";
-const SUARA_O4 = "Semuanya menjawab satu pertanyaan: sama atau tidak? Dengan menunjuk bagian yang sama, mengalikan, membagi, dan menyusun dinding.";
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Siang itu, di meja jahit, Kak Sekar membuka laci yang berisi cara-cara mencari pecahan yang sama besar.";
+const SUARA_O2 = "Di dalamnya ada tiga cara supaya pecahan yang sama besar mudah dikenali, tanpa tertukar.";
+const SUARA_O3 = "Tiga cara itu: Area Model Match, Multiply by One, dan Divide Both.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Cocokkan Daerah, Kali Bentuk Satu, dan Bagi Keduanya.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk pecahan senilai",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Laci meja jahit Kak Sekar",
+  sumber: "Metode global: pembuka",
+  latar: "#FEF3C7",
   ketukan: [
     k(
       SUARA_O1,
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("pecahan", ...pecahan("po1", 100, 76, 2, 6, 18), teks("po2", 150, 80, "?", 22, W.merah), ...pecahan("po3", 200, 76, 1, 3, 18)),
-      tambah("berbagai", emo("gl", 150, 140, "🌍", 40)),
-      tambah("empat", ...kartu("pk4", 60, 164, 180, 28, W.emas, ["4 metode dari luar"], 9.4)),
+      tambah(0, judul("Siang di Meja Jahit"), ...lantai("lt", 150)),
+      tambah("meja", ...meja("mj", 70, 118, 140, 24)),
+      tambah("jahit,", ...mesinJahit("ms", 76, 94)),
+      tambah("Sekar", ...tokoh("ks", 244, 184, "Kak Sekar")),
+      tambah("laci", kotak("lc", 110, 125, 70, 12, "#C99A63", W.coklat, { rx: 2, z: 3 }), bulat("lcb", 145, 131, 2, "#FACC15", W.coklat, { tebal: 0.8, z: 4 })),
+      tambah("berisi", ...[0, 1, 2].map((i) => kotak(`ks${i}`, 128 + i * 20, 106, 14, 10, KUNING_KARTU, W.coklat, { rx: 2, tebal: 1, z: 3 }))),
     ),
     k(
       SUARA_O2,
-      bersih(0),
-      tambah(0, judul("Empat metode")),
-      ...NAMA_METODE.map((m, i) => tambah(["Equivalent", "Multiply", "Simplify,", "Wall."][i], ...kartu(`m${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
+      tambah("tiga", teks("n3", 150, 40, "3 cara", 12, W.ungu)),
+      tambah("cara", ...[0, 1, 2].map((i) => kartu(`c${i}`, 96 + i * 34, 52, 28, 26, KUNING_KARTU, ["cara"], 6.4)).flat()),
+      tambah("dikenali,", emo("ok", 50, 70, E.benar, 20)),
+      tambah("tertukar.", emo("xs", 250, 70, E.salah, 20)),
     ),
     k(
       SUARA_O3,
       bersih(0),
-      tambah(0, judul("Nama dalam bahasa Indonesia")),
-      ...NAMA_METODE_ID.map((m, i) => tambah(idx(SUARA_O3, ["Senilai", "Kali", "Sederhanakan", "Dinding"][i]), ...kartu(`n${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
+      tambah(0, judul("Tiga Cara"), teks("n3", 260, 40, "3 cara", 10, W.ungu)),
+      tambah("Area", teks("m0", 112, 70, "1. Area Model Match", 10, W.biru), emo("i0", 30, 74, "\u{1F4D0}", 18)),
+      tambah("Multiply", teks("m1", 112, 120, "2. Multiply by One", 10, W.biru), emo("i1", 30, 124, "\u{1F522}", 18)),
+      tambah("Divide", teks("m2", 112, 170, "3. Divide Both", 10, W.biru), emo("i2", 30, 174, "\u{2797}", 18)),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Satu pertanyaan, empat cara")),
-      tambah("menunjuk", emo("i1", 45, 82, IKON_METODE[0], 32), teks("i1t", 45, 112, "menunjuk", 8.4, W.biru)),
-      tambah("mengalikan,", emo("i2", 112, 82, IKON_METODE[1], 32), teks("i2t", 112, 112, "mengalikan", 8.4, W.biru)),
-      tambah("membagi,", emo("i3", 188, 82, IKON_METODE[2], 32), teks("i3t", 188, 112, "membagi", 8.4, W.biru)),
-      tambah("menyusun", emo("i4", 258, 82, IKON_METODE[3], 32), teks("i4t", 258, 112, "menyusun", 8.4, W.biru)),
-      tambah("pertanyaan:", ...kartu("iq", 40, 136, 220, 30, W.emas, ["sama atau tidak?"], 9.6)),
+      tambah("Cocokkan", kotak("gk0", 190, 54, 92, 24, "#FEE2E2", W.merah, { rx: 6, z: -1 }), teks("g0", 236, 70, "Cocokkan Daerah", 9, W.merah)),
+      tambah("Kali", kotak("gk1", 190, 104, 92, 24, "#FEE2E2", W.merah, { rx: 6, z: -1 }), teks("g1", 236, 120, "Kali Bentuk Satu", 9, W.merah)),
+      tambah("Satu,", teks("bs", 236, 142, "2/2 = 1", 8, W.hijauTua)),
+      tambah("Bagi", kotak("gk2", 190, 154, 92, 24, "#FEE2E2", W.merah, { rx: 6, z: -1 }), teks("g2", 236, 170, "Bagi Keduanya", 9, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Equivalent Fractions: konsep ------------------------------ */
-const SUARA_S1 = "Metode pertama, Equivalent Fractions, atau Pecahan Senilai. Dua pecahan senilai bila menunjuk bagian yang sama dari keseluruhan yang sama, walau tulisannya berbeda.";
-const SUARA_S2 = "Syaratnya, keseluruhannya harus sama besar. Setengah dari kue besar tidak sama dengan setengah dari kue kecil, jadi bandingkan pecahan pada keseluruhan yang sama.";
-const SUARA_S3 = "Banyak bagiannya boleh berbeda. Satu bagian dari dua dan dua bagian dari empat menutupi daerah yang sama, jadi dua penulisan itu satu nilai.";
-const SUARA_S4 = "Pecahan senilai bukan satu pecahan saja, melainkan satu keluarga tanpa ujung: satu per dua, dua per empat, tiga per enam, empat per delapan, dan seterusnya.";
+/* ------------------------------ Area Model Match: konsep ------------------------------ */
+const SUARA_C1 = "Cara pertama, Area Model Match, atau Cocokkan Daerah.";
+const SUARA_C2 = "Kita menggambar dua bangun yang sama besar, lalu membaginya dengan cara berbeda.";
+const SUARA_C3 = "Bagian yang diarsir pada kedua bangun ditumpuk untuk melihat apakah luasnya sama.";
+const SUARA_C4 = "Kalau luas arsirannya sama, kedua pecahan itu sama besar.";
+const F_ATAS = pecahan("fa", 272, 76, 2, 4, 12, K.kapur);
+const F_BAWAH = pecahan("fb", 272, 120, 4, 8, 12, K.kapur);
 
-export const ADEGAN_LUAR_SENILAI: AdeganStory = {
-  id: "luar-senilai",
-  judul: "Equivalent Fractions: bagian yang sama, tulisan berbeda",
-  sumber: "Metode luar: Equivalent Fractions",
-  latar: "#F0FDF4",
+export const ADEGAN_LUAR_DAERAH: AdeganStory = {
+  id: "luar-daerah",
+  judul: "Area Model Match: Cocokkan Daerah",
+  sumber: "Metode global: Area Model Match (konsep)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
-      SUARA_S1,
-      tambah(0, judul("Metode 1 dari 4")),
-      tambah("pertama,", kepala(0)),
-      tambah("menunjuk", ...batang("sa", 90, 66, 140, 26, 2, [0]), ...batang("sb", 90, 102, 140, 26, 4, [0, 1])),
-      tambah("tulisannya", ...pecahan("sc", 50, 80, 1, 2, 13), ...pecahan("sd", 50, 116, 2, 4, 13), teks("se", 260, 102, "sama", 9, W.hijau)),
+      SUARA_C1,
+      tambah(0, judul("Cara 1: Area Model Match"), ...papanTulis("pt", 8, 28, 284, 132)),
+      tambah("Area", teks("nm", 150, 62, "Area Model Match", 13, K.kapurMerah)),
+      tambah("Cocokkan", teks("ni", 150, 84, "Cocokkan Daerah", 11, K.kapur)),
+      tambah("Daerah.", emo("ik", 150, 134, "\u{1F4D0}", 26)),
     ),
     k(
-      SUARA_S2,
-      bersih(0),
-      tambah(0, judul("Syarat: keseluruhan sama besar")),
-      tambah(0, kepala(0)),
-      tambah("besar.", ...batang("ka", 30, 70, 90, 70, 2, [0]), teks("kat", 75, 156, "kue besar", 8.8)),
-      tambah("kecil,", ...batang("kb", 190, 95, 50, 40, 2, [0]), teks("kbt", 215, 156, "kue kecil", 8.8), teks("kne", 150, 112, "≠", 20, W.merah)),
-      tambah(idx(SUARA_S2, "sama", 3), ...kartu("kk", 60, 168, 180, 28, W.emas, ["bandingkan pada keseluruhan sama"], 9)),
+      SUARA_C2,
+      hapus(0, "nm", "ni", "ik"),
+      tambah("dua", teks("n2", 150, 52, "2 bangun", 10, K.kapur)),
+      tambah("bangun", ...kainBar("r1", 60, 66, 180, 24, 1, 0), ...kainBar("r2", 60, 98, 180, 24, 1, 0)),
+      tambah("besar,", teks("sm", 150, 140, "sama besar", 10, K.kapurBiru)),
+      tambah("membaginya", ...kainBar("s1", 60, 66, 180, 24, 4, 0), ...kainBar("s2", 60, 98, 180, 24, 8, 0)),
     ),
     k(
-      SUARA_S3,
-      bersih(0),
-      tambah(0, judul("Banyak bagian boleh berbeda")),
-      tambah(0, kepala(0)),
-      tambah("Satu", ...batang("ta", 70, 74, 160, 28, 2, [0]), ...pecahan("tc", 40, 86, 1, 2, 13)),
-      tambah("empat", ...batang("tb", 70, 110, 160, 28, 4, [0, 1]), ...pecahan("td", 40, 122, 2, 4, 13)),
-      tambah("menutupi", garis("tg", 150, 66, 0, 80, W.merah, 1.6, { putus: true })),
-      tambah("nilai.", ...kartu("tk", 50, 160, 200, 30, W.emas, ["dua tulisan, satu nilai"], 9.6)),
+      SUARA_C3,
+      hapus(0, "sm", ...idKain("r1", 1), ...idKain("r2", 1)),
+      ubah("diarsir", ...idKain("s1", 2).map((id) => ({ id, warna: W.arsir })), ...idKain("s2", 4).map((id) => ({ id, warna: W.arsir }))),
+      tambah("ditumpuk", garis("gv", 150, 58, 0, 70, W.merah, 1.8, { putus: true, z: 5 })),
+      tambah("luasnya", teks("lq", 150, 142, "luas arsiran?", 10, K.kapurMerah)),
     ),
     k(
-      SUARA_S4,
-      bersih(0),
-      tambah(0, judul("Satu keluarga pecahan")),
-      tambah(0, kepala(0)),
-      tambah(idx(SUARA_S4, "dua", 1), ...pecahan("ua", 36, 100, 1, 2, 16)),
-      tambah(idx(SUARA_S4, "empat", 1), teks("ub1", 67, 104, "=", 18, W.merah), ...pecahan("ub", 98, 100, 2, 4, 16)),
-      tambah(idx(SUARA_S4, "enam", 1), teks("uc1", 129, 104, "=", 18, W.merah), ...pecahan("uc", 160, 100, 3, 6, 16)),
-      tambah(idx(SUARA_S4, "delapan", 1), teks("ud1", 191, 104, "=", 18, W.merah), ...pecahan("ud", 222, 100, 4, 8, 16)),
-      tambah("seterusnya.", teks("ue", 268, 104, "= ...", 14, W.merah), ...kartu("uf", 50, 150, 200, 30, W.emas, ["satu keluarga tanpa ujung"], 9.6)),
+      SUARA_C4,
+      hapus(0, "gv", "lq"),
+      tambah("sama,", emo("ok", 150, 148, E.benar, 20)),
+      tambah("pecahan", ...F_ATAS, ...F_BAWAH),
+      tambah("sama@2", teks("eq", 272, 100, "=", 14, K.kapurMerah)),
+      sorotkan("besar.", ...idKain("s1", 4), ...idKain("s2", 8)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Equivalent Fractions: penerapan pada coklat dan kertas ------------------------------ */
-const SUARA_T1 = "Terapkan pada coklat tadi. Satu batang dibagi enam, satu batang dibagi tiga. Dua potong dari enam dan satu potong dari tiga menutupi panjang yang sama.";
-const SUARA_T2 = "Jadi dua per enam senilai dengan satu per tiga. Bagian Putu pada kedua batang coklat sama besar, walau satu batang punya enam potong dan satu lagi tiga potong.";
-const SUARA_T3 = "Terapkan pada kertas lipat tadi. Kertas pertama punya empat bagian dengan satu bagian diwarnai. Kertas kedua punya enam belas bagian dengan empat bagian diwarnai.";
-const SUARA_T4 = "Daerah yang diwarnai sama luas, jadi satu per empat senilai dengan empat per enam belas. Dua tulisan, satu nilai yang sama.";
+/* ------------------------------ Area Model Match: terapan ------------------------------ */
+const SUARA_D1 = "Laras menggambar dua persegi panjang, satu dibagi tiga dan satu dibagi enam.";
+const SUARA_D2 = "Ia mengarsir satu bagian pada yang pertama dan dua bagian pada yang kedua, lalu keduanya cocok.";
+const SUARA_D3 = "Cocok untuk melihat dengan mata mengapa dua pecahan sama besar.";
+const SUARA_D4 = "Kurang cocok kalau pecahannya rumit, karena menggambar bagian yang banyak memakan waktu.";
+const G_SATU = pecahan("ga", 272, 76, 1, 3, 12, K.kapur);
+const G_DUA = pecahan("gb", 272, 120, 2, 6, 12, K.kapur);
 
-export const ADEGAN_LUAR_SENILAI_TERAPAN: AdeganStory = {
-  id: "luar-senilai-terapan",
-  judul: "Equivalent Fractions pada coklat dan kertas",
-  sumber: "Metode luar: Equivalent Fractions",
-  latar: "#ECFDF5",
+export const ADEGAN_LUAR_DAERAH_TERAPAN: AdeganStory = {
+  id: "luar-daerah-terapan",
+  judul: "Cocokkan Daerah: kapan cocok",
+  sumber: "Metode global: Area Model Match (terapan)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
-      SUARA_T1,
-      tambah(0, judul("Coklat: bagian Putu")),
-      tambah(0, kepala(0)),
-      tambah("enam,", ...batang("ca", 30, 70, 200, 26, 6, [0, 1], W.arsir, W.cok)),
-      tambah("tiga.", ...batang("cb", 30, 110, 200, 26, 3, [0], W.arsir, W.cok)),
-      tambah("menutupi", garis("cg", 96.7, 62, 0, 82, W.merah, 1.6, { putus: true }), teks("cq", 150, 160, "sama panjang?", 9.4, W.merah)),
+      SUARA_D1,
+      tambah(0, judul("Daerah Laras"), ...papanTulis("pt", 8, 28, 284, 132), ...tokoh("lr", 40, 184, "Laras")),
+      tambah("dua", teks("n2", 150, 50, "2 bangun", 10, K.kapur)),
+      tambah("panjang,", ...kainBar("a", 60, 60, 180, 24, 3, 0), teks("ta", 34, 76, "bangun 1", 8, K.kapurBiru)),
+      tambah("tiga", teks("ld1", 270, 76, "dibagi 3", 7, K.kapur)),
+      tambah("satu@2", ...kainBar("b", 60, 96, 180, 24, 6, 0), teks("tb", 34, 112, "bangun 2", 8, K.kapurBiru)),
+      tambah("enam.", teks("ld2", 270, 112, "dibagi 6", 7, K.kapur)),
     ),
     k(
-      SUARA_T2,
-      hapus(0, "cq"),
-      tambah("enam", ...pecahan("cc", 262, 82, 2, 6, 12)),
-      tambah("tiga", ...pecahan("cd", 262, 122, 1, 3, 12)),
-      tambah("sama", ...kartu("ce", 40, 164, 220, 28, W.emas, ["2/6 senilai 1/3"], 10)),
+      SUARA_D2,
+      hapus(0, "ld1", "ld2"),
+      ubah("satu", { id: "a-c0", warna: W.arsir }),
+      tambah("satu", teks("t1", 100, 138, "1 bagian", 9, K.kapurMerah)),
+      ubah("dua", { id: "b-c0", warna: W.arsir }, { id: "b-c1", warna: W.arsir }),
+      tambah("dua", teks("t2", 200, 138, "2 bagian", 9, K.kapurMerah)),
+      tambah("cocok.", garis("gv", 120, 54, 0, 72, W.merah, 1.8, { putus: true, z: 5 }), emo("ok", 262, 142, E.benar, 20)),
     ),
     k(
-      SUARA_T3,
+      SUARA_D3,
+      hapus(0, "t1", "t2", "gv", "ok"),
+      tambah("melihat", emo("mt", 215, 150, E.mata, 20)),
+      tambah("dua", teks("n2b", 150, 140, "2 pecahan", 10, K.kapur)),
+      tambah("pecahan", ...G_SATU, ...G_DUA),
+      tambah("besar.", teks("eq", 272, 98, "=", 14, K.kapurMerah)),
+    ),
+    k(
+      SUARA_D4,
       bersih(0),
-      tambah(0, judul("Kertas lipat: satu bagian")),
-      tambah(0, kepala(0)),
-      tambah("pertama", ...kisi("w1", 40, 64, 36, 36, 2, 2, [0]), teks("w1t", 76, 150, "4 bagian", 8.8)),
-      tambah("kedua", ...kisi("w2", 188, 64, 18, 18, 4, 4, [0, 1, 4, 5]), teks("w2t", 224, 150, "16 bagian", 8.8)),
-      tambah(idx(SUARA_T3, "diwarnai", 2), teks("w3", 150, 178, "satu potong sama dengan empat potong kecil", 8.2, W.coklat)),
+      tambah(0, judul("Daerah Laras"), ...papanTulis("pt", 8, 28, 284, 132), ...tokoh("lr", 40, 184, "Laras")),
+      tambah("rumit,", teks("ru", 150, 50, "rumit", 10, K.kapurMerah), ...kainBar("bx", 60, 58, 180, 14, 12, 7)),
+      tambah("bagian", ...kainBar("by", 60, 80, 180, 14, 15, 9)),
+      tambah("banyak", emo("kr", 80, 124, E.keringat, 20)),
+      tambah("waktu.", emo("jm", 220, 124, "\u{23F0}", 20), teks("lm", 150, 142, "lama", 10, K.kapur)),
     ),
-    k(
-      SUARA_T4,
-      hapus(0, "w3"),
-      tambah("sama", ...pecahan("w4", 76, 172, 1, 4, 13), ...pecahan("w5", 224, 172, 4, 16, 13)),
-      tambah("senilai", teks("w6", 150, 176, "=", 22, W.merah), emo("w7", 150, 116, "✅", 24)),
-    ),
-  ],
-};
-
-/* ------------------------------ 4. Multiply Identity: konsep ------------------------------ */
-const SUARA_K1 = "Metode kedua, Multiply Identity, atau Kali dengan Bentuk Satu. Bilangan apa pun dikali satu tetap sama, dan angka satu bisa ditulis sebagai dua per dua, tiga per tiga, atau empat per empat.";
-const SUARA_K2 = "Mengalikan satu per lima dengan dua per dua tidak mengubah nilai, karena sama saja dengan mengalikan satu. Yang berubah hanya tulisannya: pembilang dan penyebut sama-sama dikali dua.";
-const SUARA_K3 = "Pilih bentuk satu sesuai tujuan. Ingin penyebut tiga menjadi enam? Kalikan dua per dua. Ingin penyebut tiga menjadi sembilan? Kalikan tiga per tiga.";
-const SUARA_K4 = "Langkahnya: tentukan pengali, kalikan pembilang, lalu kalikan penyebut. Pengali yang sama untuk keduanya membuat nilai pecahan tetap.";
-
-export const ADEGAN_LUAR_KALI: AdeganStory = {
-  id: "luar-kali",
-  judul: "Multiply Identity: dikali bentuk satu",
-  sumber: "Metode luar: Multiply Identity",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      SUARA_K1,
-      tambah(0, judul("Metode 2 dari 4")),
-      tambah("kedua,", kepala(1)),
-      tambah(idx(SUARA_K1, "satu", 2), teks("ka0", 30, 94, "1", 20, W.hijau)),
-      tambah(idx(SUARA_K1, "dua", 2), teks("ka1", 58, 94, "=", 18, W.merah), ...pecahan("ka2", 90, 90, 2, 2, 16)),
-      tambah(idx(SUARA_K1, "tiga", 2), teks("ka3", 122, 94, "=", 18, W.merah), ...pecahan("ka4", 154, 90, 3, 3, 16)),
-      tambah(idx(SUARA_K1, "empat", 2), teks("ka5", 186, 94, "=", 18, W.merah), ...pecahan("ka6", 218, 90, 4, 4, 16)),
-      tambah(idx(SUARA_K1, "atau", 2), ...kartu("kak", 50, 140, 200, 30, W.emas, ["dikali 1, nilainya tetap"], 9.6)),
-    ),
-    k(
-      SUARA_K2,
-      bersih(0),
-      tambah(0, judul("Dikali dua per dua")),
-      tambah(0, kepala(1)),
-      tambah("Mengalikan", ...pecahan("kb1", 45, 96, 1, 5, 20), teks("kb2", 80, 100, "×", 18, W.biru)),
-      tambah("dua@2", ...pecahan("kb3", 115, 96, 2, 2, 20), teks("kb4", 150, 100, "=", 20, W.merah)),
-      tambah("tulisannya:", ...pecahan("kb5", 190, 96, 2, 10, 20)),
-      tambah("dikali", teks("kb6", 150, 150, "1 × 2 = 2", 10, W.hijau), teks("kb7", 150, 168, "5 × 2 = 10", 10, W.hijau)),
-    ),
-    k(
-      SUARA_K3,
-      bersih(0),
-      tambah(0, judul("Pilih bentuk satu")),
-      tambah(0, kepala(1)),
-      tambah("enam?", ...kartu("kc1", 14, 62, 272, 44, W.hijauMuda, ["penyebut 3 menjadi 6", "pakai bentuk 2/2 (3 × 2 = 6)"], 9.4)),
-      tambah("sembilan?", ...kartu("kc2", 14, 120, 272, 44, W.langit, ["penyebut 3 menjadi 9", "pakai bentuk 3/3 (3 × 3 = 9)"], 9.4)),
-    ),
-    k(
-      SUARA_K4,
-      bersih(0),
-      tambah(0, judul("Tiga langkah mengalikan")),
-      tambah(0, kepala(1)),
-      tambah("tentukan", ...kartu("kd1", 14, 62, 272, 28, W.hijauMuda, ["1. tentukan pengali"], 9.6)),
-      tambah("pembilang,", ...kartu("kd2", 14, 98, 272, 28, W.langit, ["2. kalikan pembilang"], 9.6)),
-      tambah("penyebut.", ...kartu("kd3", 14, 134, 272, 28, W.krem, ["3. kalikan penyebut"], 9.6)),
-      tambah("tetap.", ...kartu("kd4", 40, 170, 220, 26, W.emas, ["pengali sama: nilai tetap"], 9.4)),
-    ),
-  ],
-};
-
-/* ------------------------------ 5. Multiply Identity: penerapan pada pecahan senilai ------------------------------ */
-const SUARA_M1 = "Pertama: satu per tiga dikali dua per dua. Satu kali dua jadi dua, tiga kali dua jadi enam. Hasilnya dua per enam.";
-const SUARA_M2 = "Kedua: satu per dua dikali dua per dua. Satu kali dua jadi dua, dua kali dua jadi empat. Hasilnya dua per empat.";
-const SUARA_M3 = "Ketiga, pada kertas lipat: satu per empat dikali empat per empat. Satu kali empat jadi empat, empat kali empat jadi enam belas. Hasilnya empat per enam belas.";
-const SUARA_M4 = "Keempat: satu per tiga dikali tiga per tiga. Satu kali tiga jadi tiga, tiga kali tiga jadi sembilan. Hasilnya tiga per sembilan.";
-
-/** Satu ketukan penerapan: pecahan awal, bentuk satu, dua hitungan, hasil, dan dua batang model. Kalimat berpola "dikali ... jadi ... jadi ... Hasilnya". */
-function ketukanKali(suara: string, id: string, q: number, n: number) {
-  const d = pasangan(id, 1, q, n, q * n, `×${n}`, [`1 × ${n} = ${n}`, `${q} × ${n} = ${q * n}`]);
-  return k(
-    suara,
-    bersih(0),
-    tambah(0, judul(`1/${q} dikali ${n}/${n}`), ...d.kiri),
-    tambah("dikali", ...d.jembatan),
-    tambah(idx(suara, "jadi", 1), d.hit1),
-    tambah(idx(suara, "jadi", 2), d.hit2),
-    tambah("Hasilnya", ...d.kanan, ...d.batangKiri, ...d.batangKanan, d.sama),
-  );
-}
-export const ADEGAN_LUAR_KALI_TERAPAN: AdeganStory = {
-  id: "luar-kali-terapan",
-  judul: "Multiply Identity pada pecahan senilai",
-  sumber: "Metode luar: Multiply Identity",
-  latar: "#E0F2FE",
-  ketukan: [
-    ketukanKali(SUARA_M1, "ma", 3, 2),
-    ketukanKali(SUARA_M2, "mb", 2, 2),
-    ketukanKali(SUARA_M3, "mc", 4, 4),
-    ketukanKali(SUARA_M4, "md", 3, 3),
   ],
 };

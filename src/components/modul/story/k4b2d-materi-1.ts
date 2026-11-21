@@ -1,257 +1,124 @@
 import type { AdeganStory } from "./logika-story";
-import { W, WARNA_SELAI, batang, emo, judul, kartu, kisi, pecahan, roti, teks } from "./k4b2d-gambar";
-import { bersih, k, sorotkan, tambah, ubah, warnai } from "./k4b2d-bantu";
+import { E, W, emo, gulungan, ids, judul, kotak, pecah, rumput, sanggar, strip, teks, tokoh } from "./k4b2d-gambar";
+import { bersih, k, sorotkan, tambah, warnai } from "./k4b2d-bantu";
 
-/* ------------------------------ 1. Pembuka subbab, apersepsi, pemantik (Panduan Guru hlm. 104; Buku Siswa hlm. 71) ------------------------------ */
-const SUARA_P1 = "Selamat datang di subbab D bab dua, Pecahan Desimal Persepuluhan dan Perseratusan. Panduan guru meminta guru menjelaskan lebih dulu pengalaman belajar yang akan didapat murid.";
-const SUARA_P2 = "Pengalaman belajarnya: murid mampu menyatakan pecahan desimal persepuluhan dan perseratusan. Sarana yang dibutuhkan hanya satu, yaitu alat tulis.";
-const SUARA_P3 = "Apersepsi di panduan guru: pecahan desimal adalah pecahan yang penyebutnya sepuluh, seratus, seribu, dan seterusnya, yang ditulis memakai tanda koma. Subbab ini memakai sepuluh dan seratus.";
-const SUARA_P4 = "Dua pertanyaan pemantik dari panduan guru: apakah pecahan desimal itu, dan bagaimana mengubah pecahan biasa menjadi desimal? Jawabannya kita cari lewat roti dan biskuit.";
+/*
+ * Cerita orisinal IGIL "Meteran Kain Pak Bagas" (Kelas 4 Bab 2 Sub-Bab D, pecahan per sepuluh dan per seratus menjadi desimal), Sanggar Batik Kampung Mekar.
+ * Naskah suara dari naskah/story-naskah-k4b2d.md. Bagian ini: kain bermeteran, tiga per sepuluh meter, dan kisi sepuluh kolom.
+ */
+const JINGGA = "#FDBA74";
 
-export const ADEGAN_PEMBUKA: AdeganStory = {
-  id: "pembuka-subbab",
-  judul: "Pembuka Subbab D: pengalaman belajar, apersepsi, pertanyaan pemantik",
-  sumber: "Panduan Guru hlm. 104; Buku Siswa hlm. 71",
-  latar: "#FFF7ED",
-  kutipan: [
-    "D. Pecahan desimal persepuluhan dan perseratusan",
-    "Pengalaman Belajar",
-    "Setelah mempelajari sub bab ini, Peserta didik diharapkan mampu",
-    "menyatakan pecahan desimal persepuluhan dan perseratusan",
-    "Kebutuhan Sarana Prasarana dan Media",
-    "Alat Tulis",
-    "Apersepsi",
-    "Pecahan desimal adalah pecahan yang nilai penyebutnya adalah 10, 100,",
-    "1000, dan seterusnya yang ditulis dengan menggunakan tanda koma.",
-    "Pertanyaan Esensi/Pemantik:",
-    "1. apakah pecahan desimal?",
-    "2. bagaimana mengubah pecahan biasa menjadi desimal?",
-  ],
-  ketukan: [
-    k(
-      SUARA_P1,
-      tambah(0, judul("Subbab D: pecahan desimal")),
-      tambah("subbab", ...kartu("pd", 14, 34, 272, 40, W.emas, ["D. Pecahan Desimal", "Persepuluhan dan Perseratusan"], 9.4)),
-      tambah("Panduan", emo("pe", 150, 112, "📘", 34)),
-      tambah("pengalaman", ...kartu("pf", 40, 130, 220, 30, W.hijauMuda, ["pengalaman belajar murid"], 9.6)),
-    ),
-    k(
-      SUARA_P2,
-      bersih(0),
-      tambah(0, judul("Pengalaman belajar")),
-      tambah("menyatakan", ...kartu("pg", 14, 34, 272, 54, W.langit, ["murid mampu menyatakan", "pecahan desimal persepuluhan", "dan perseratusan"], 9.4)),
-      tambah("Sarana", ...kartu("ph", 40, 108, 220, 30, W.krem, ["sarana: alat tulis"], 9.6)),
-      tambah("tulis.", emo("pi", 150, 172, "✏", 28)),
-    ),
-    k(
-      SUARA_P3,
-      bersih(0),
-      tambah(0, judul("Apersepsi: pecahan desimal")),
-      tambah("penyebutnya", ...kartu("pj", 20, 34, 76, 38, W.hijauMuda, ["10"], 13), ...kartu("pk", 112, 34, 76, 38, W.langit, ["100"], 13)),
-      tambah("seribu,", ...kartu("pl", 204, 34, 76, 38, W.krem, ["1000"], 13)),
-      tambah("seterusnya,", teks("pm", 150, 92, "dan seterusnya", 9.4, W.coklat)),
-      tambah("koma.", ...kartu("pn", 40, 108, 220, 34, W.emas, ["ditulis dengan tanda koma"], 9.6)),
-      sorotkan("Subbab", "pj-k", "pk-k"),
-    ),
-    k(
-      SUARA_P4,
-      bersih(0),
-      tambah(0, judul("Dua pertanyaan pemantik")),
-      tambah("apakah", emo("po", 28, 66, "❓", 24), ...kartu("pp", 48, 46, 238, 40, W.hijauMuda, ["1. apakah pecahan", "desimal itu?"], 9.2)),
-      tambah("bagaimana", emo("pq", 28, 130, "❓", 24), ...kartu("pr", 48, 108, 238, 44, W.langit, ["2. bagaimana mengubah pecahan", "biasa menjadi desimal?"], 9.2)),
-      tambah("roti", emo("ps", 150, 184, "🍞", 24)),
-    ),
-  ],
-};
+/* ------------------------------ 1. Kain bermeteran ------------------------------ */
+const SUARA_M1 = "Pak Bagas, penjual kain meteran, memanggul gulungan kain panjang ke halaman sanggar.";
+const SUARA_M2 = "Di pinggir kainnya tercetak garis-garis kecil, tiap meter dibagi menjadi sepuluh bagian sama.";
+const SUARA_M3 = "Pak Bagas minta Satria, Laras, dan Genta menuliskan panjang potongan dengan koma.";
 
-/* ------------------------------ 2. Ayo Mengamati: sepuluh roti (Buku Siswa hlm. 71; Panduan Guru hlm. 105) ------------------------------ */
-const SUARA_R1 = "Ayo Mengamati. Ibu guru membuka pelajaran: hari ini kita akan belajar pecahan desimal. Seorang murid bertanya, pecahan desimal itu apa?";
-const SUARA_R2 = "Untuk menjawabnya, Ibu sudah menyiapkan roti yang jumlahnya sepuluh. Satu roti dilapisi selai coklat.";
-const SUARA_R3 = "Bagaimana bentuk pecahannya? Murid menjawab satu per sepuluh, karena satu dari sepuluh roti dilapisi selai.";
-const SUARA_R4 = "Jadi satu roti berselai dari sepuluh roti menandakan persepuluhan, atau satu per sepuluh, atau nol koma satu dalam pecahan desimal. Kegiatan ini boleh diganti dengan benda di sekitar kita.";
-
-export const ADEGAN_AMATI_ROTI: AdeganStory = {
-  id: "amati-roti",
-  judul: "Ayo Mengamati: sepuluh roti, satu berselai",
-  sumber: "Materi: sepuluh roti, satu berselai",
-  latar: "#FEF3C7",
-  kutipan: [
-    "Ayo Mengamati",
-    "Hari ini kita akan belajar pecahan desimal",
-    "Baik Ibu, pecahan desimal itu apa?",
-    "ibu sudah siapkan roti yang jumlahnya ada 10.",
-    "1 roti dilapisi selai coklat. Bagaimana bentuk pecahannya?",
-    "mengamati gambar 10 buah roti yang salah satu roti tersebut diberi selai coklat.",
-    "Kegiatan ini dapat diganti disesuaikan",
-    "menandakan persepuluhan atau",
-    "atau 0,1 dalam bentuk pecahan desimal.",
-  ],
-  ketukan: [
-    k(
-      SUARA_R1,
-      tambah(0, judul("Ayo Mengamati")),
-      tambah("Ibu", emo("ra", 26, 58, "👩", 26), ...kartu("rb", 48, 38, 238, 38, W.langit, ["Ibu: hari ini kita belajar", "pecahan desimal"], 9)),
-      tambah("Seorang", emo("rc", 26, 128, "🧒", 26), ...kartu("rd", 48, 98, 238, 44, W.krem, ["Murid: pecahan desimal itu apa?"], 9.2)),
-    ),
-    k(
-      SUARA_R2,
-      bersih(0),
-      tambah(0, judul("Sepuluh roti")),
-      tambah("roti", ...roti("rt", 62, 66)),
-      tambah("sepuluh.", teks("ru", 114, 132, "10 roti", 11, W.coklat)),
-      warnai("Satu", WARNA_SELAI, "rt-o0"),
-      tambah("selai", teks("rv", 114, 152, "1 roti berselai coklat", 9.4, W.coklat)),
-      sorotkan("Satu", "rt-o0"),
-    ),
-    k(
-      SUARA_R3,
-      ubah(0, { id: "rt-o0", sorot: false }),
-      tambah("Bagaimana", teks("rw", 240, 40, "bentuk pecahan?", 9, W.merah)),
-      tambah("satu", ...pecahan("rx", 240, 78, "1", "10", 22, W.biru)),
-      tambah("karena", teks("ry", 114, 172, "1 dari 10 roti", 9.4, W.hijau)),
-    ),
-    k(
-      SUARA_R4,
-      bersih(0),
-      tambah(0, judul("Satu dari sepuluh roti")),
-      tambah("persepuluhan,", ...kartu("rz1", 12, 36, 84, 40, W.hijauMuda, ["persepuluhan"], 8.4)),
-      tambah("satu@2", ...kartu("rz2", 108, 36, 78, 40, W.langit, ["1/10"], 13)),
-      tambah("nol", ...kartu("rz3", 198, 36, 90, 40, W.emas, ["0,1"], 13)),
-      tambah("diganti", ...kartu("rz4", 14, 100, 272, 34, W.krem, ["boleh diganti benda di sekitar kita"], 9)),
-      tambah("benda", emo("rz5", 150, 170, "🍎", 26)),
-    ),
-  ],
-};
-
-/* ------------------------------ 3. Tiga per sepuluh dan seratus biskuit (Buku Siswa hlm. 72) ------------------------------ */
-const SUARA_B1 = "Ibu melanjutkan: bentuk satu per sepuluh bisa dituliskan dalam bentuk desimal menjadi nol koma satu. Perhatikan tanda koma di tengahnya.";
-const SUARA_B2 = "Seorang murid bertanya, berarti tiga per sepuluh dapat dituliskan menjadi nol koma tiga, Ibu? Ibu menjawab, benar sekali.";
-const SUARA_B3 = "Selanjutnya Ibu punya seratus biskuit, dan satu biskuit dilapisi selai coklat. Bagaimana bentuk pecahannya? Murid menjawab satu per seratus.";
-const SUARA_B4 = "Ibu membenarkan: satu per seratus dituliskan dalam bentuk desimal nol koma nol satu. Perhatikan, ada dua angka di belakang koma. Apakah kalian sudah paham?";
-
-export const ADEGAN_TIGA_BISKUIT: AdeganStory = {
-  id: "tiga-persepuluh-biskuit",
-  judul: "Dari satu per sepuluh ke satu per seratus",
-  sumber: "Materi: dari persepuluhan ke perseratusan",
+export const ADEGAN_METERAN: AdeganStory = {
+  id: "meteran",
+  judul: "Pak Bagas membawa kain bermeteran",
+  sumber: "Materi: kain bermeteran",
   latar: "#F0FDF4",
-  kutipan: [
-    "bisa dituliskan",
-    "dalam bentuk desimal menjadi 0,1.",
-    "Berarti jika ada pecahan",
-    "dapat kita tuliskan",
-    "menjadi 0,3 Ibu?",
-    "Benar sekali. Selanjutnya jika kita memiliki 100 biskuit,",
-    "lalu 1 biskuit dilapisi selai coklat. Bagaimana bentuk",
-    "pecahannya?",
-    "Ya benar,",
-    "itu bisa dituliskan dalam bentuk desimal 0,01. Apakah",
-    "kalian sudah paham?",
-  ],
   ketukan: [
     k(
-      SUARA_B1,
-      tambah(0, judul("Pecahan menjadi desimal")),
-      tambah("satu", ...pecahan("ba", 80, 76, "1", "10", 22)),
-      tambah("desimal", teks("bb", 134, 86, "=", 22, W.biru)),
-      tambah("nol", teks("bc", 196, 88, "0,1", 28, W.hijau)),
-      tambah("satu@2", ...batang("bd", 40, 124, 22, 1)),
-      tambah("Perhatikan", teks("be", 150, 164, "1 dari 10 bagian sama", 9.4, W.coklat)),
-      sorotkan("tengahnya", "bc"),
+      SUARA_M1,
+      tambah(0, judul("Pak Bagas dan Kainnya"), ...rumput("rp", 150)),
+      tambah("Bagas,", ...tokoh("pb", 44, 184, "Pak Bagas")),
+      tambah("gulungan", ...gulungan("g1", 76, 150, 74, 20)),
+      tambah("sanggar.", ...sanggar("sg", 190, 80, 96, 56)),
     ),
     k(
-      SUARA_B2,
+      SUARA_M2,
       bersih(0),
-      tambah(0, judul("Tiga per sepuluh")),
-      tambah("tiga", ...pecahan("bf", 80, 70, "3", "10", 22)),
-      tambah("menjadi", teks("bg", 134, 80, "=", 22, W.biru)),
-      tambah("nol", teks("bh", 196, 82, "0,3", 28, W.hijau)),
-      tambah("tiga@2", ...batang("bi", 40, 118, 22, 3)),
-      tambah("Ibu?", teks("bj", 150, 160, "3 dari 10 bagian sama", 9.4, W.coklat)),
-      tambah("benar", emo("bk", 150, 190, "✅", 20)),
+      tambah(0, judul("Garis Meteran")),
+      tambah("pinggir", ...strip("mt", 20, 52, 260, 30)),
+      tambah("kainnya", ...gulungan("g2", 40, 130, 190, 26)),
+      tambah("meter", teks("l1", 50, 100, "1 meter", 11, W.coklat)),
+      tambah("sepuluh", teks("l2", 230, 100, "10 bagian", 11, W.ungu)),
     ),
     k(
-      SUARA_B3,
+      SUARA_M3,
       bersih(0),
-      tambah(0, judul("Seratus biskuit")),
-      tambah("seratus", ...kisi("bl", 20, 34, 12, 1)),
-      tambah("biskuit,", teks("bm", 80, 172, "100 biskuit, 1 berselai", 9.4, W.coklat)),
-      tambah("satu@2", ...pecahan("bn", 228, 80, "1", "100", 22)),
-    ),
-    k(
-      SUARA_B4,
-      tambah("membenarkan:", teks("bo", 228, 124, "=", 18, W.biru)),
-      tambah("nol", teks("bp", 228, 156, "0,01", 26, W.hijau)),
-      tambah("dua", teks("bq", 228, 174, "2 angka di belakang koma", 8, W.merah)),
-      sorotkan("dua", "bp"),
+      tambah(0, judul("Tulis dengan Koma")),
+      tambah("Pak", ...tokoh("pb", 28, 184, "Pak Bagas")),
+      tambah("Satria,", ...tokoh("st", 82, 184, "Satria")),
+      tambah("Laras,", ...tokoh("lr", 136, 184, "Laras")),
+      tambah("Genta", ...tokoh("gn", 190, 184, "Genta")),
+      tambah("menuliskan", ...tokoh("ph", 244, 184, "Pak Hendro"), kotak("pk", 96, 40, 108, 50, W.putih, W.coklat, { tebal: 2.4 }), teks("pkt", 150, 70, "tulis dengan koma", 9.6, W.biru, { z: 2 })),
+      tambah("koma.", emo("ct", 150, 112, E.catat, 20)),
     ),
   ],
 };
 
-/* ------------------------------ 4. Contoh pecahan desimal dan aturan angka di belakang koma (Buku Siswa hlm. 73) ------------------------------ */
-const SUARA_C1 = "Murid lain bertanya: jika saya punya tujuh per seratus, bisa dituliskan nol koma nol tujuh, apakah benar, Ibu? Ibu menjawab, betul sekali.";
-const SUARA_C2 = "Sekarang perhatikan contoh pecahan desimal. Contoh pertama: satu angka di belakang koma. Karena ada satu angka di belakang koma, nilai penyebutnya sepuluh. Jadi nol koma satu sama dengan satu per sepuluh.";
-const SUARA_C3 = "Contoh kedua: dua angka di belakang koma. Karena ada dua angka di belakang koma, nilai penyebutnya seratus. Jadi nol koma dua lima sama dengan dua puluh lima per seratus.";
-const SUARA_C4 = "Aturannya mudah diingat: banyak angka di belakang koma menentukan penyebutnya. Satu angka berarti sepuluh, dua angka berarti seratus.";
-const SUARA_C5 = "Coba pada contoh tadi: nol koma tiga punya satu angka, jadi tiga per sepuluh. Nol koma nol tujuh punya dua angka, jadi tujuh per seratus.";
+/* ------------------------------ 2. Tiga per sepuluh meter ------------------------------ */
+const SUARA_S1 = "Pak Bagas memotong tiga bagian dari satu meter yang dibagi sepuluh.";
+const SUARA_S2 = "Panjangnya tiga per sepuluh meter.";
+const SUARA_S3 = "Satu angka di belakang koma menunjukkan persepuluhan.";
+const KN = ids("kn", 0, 9);
 
-export const ADEGAN_CONTOH_KOMA: AdeganStory = {
-  id: "contoh-angka-koma",
-  judul: "Contoh pecahan desimal: banyak angka di belakang koma",
-  sumber: "Materi: angka di belakang koma",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Berarti jika saya punya bentuk pecahan",
-    "bisa dituliskan dalam bentuk desimal menjadi 0,07.",
-    "Apakah benar Ibu?",
-    "Betul sekali",
-    "Contoh pecahan desimal",
-    "1 angka di belakang koma",
-    "Karena terdapat 1 angka di belakang koma, maka nilai penyebut 10",
-    "2 angka di belakang koma",
-    "Karena terdapat 2 angka di belakang koma, maka nilai penyebut 100",
-  ],
+export const ADEGAN_SEPULUH: AdeganStory = {
+  id: "sepuluh",
+  judul: "Tiga per sepuluh meter",
+  sumber: "Materi: tiga per sepuluh",
+  latar: "#EEF2FF",
   ketukan: [
     k(
-      SUARA_C1,
-      tambah(0, judul("Tujuh per seratus")),
-      tambah("tujuh", ...pecahan("ca", 62, 66, "7", "100", 22)),
-      tambah("nol", teks("cb", 112, 76, "=", 22, W.biru), teks("cc", 190, 78, "0,07", 28, W.hijau)),
-      tambah("Ibu?", ...kisi("cd", 40, 112, 7, 7)),
-      tambah("betul", teks("ce", 200, 140, "7 dari 100 kotak", 9, W.coklat), emo("cf", 200, 170, "✅", 22)),
+      SUARA_S1,
+      tambah(0, judul("Satu Meter, Sepuluh Bagian"), ...strip("kn", 20, 36, 260, 28)),
+      tambah("Bagas", ...tokoh("pb", 40, 184, "Pak Bagas")),
+      tambah("memotong", emo("gt", 74, 160, E.gunting, 22)),
+      warnai("tiga", JINGGA, ...KN.slice(0, 3)),
+      tambah("tiga", teks("l3", 60, 84, "3 bagian", 11, W.merah)),
+      tambah("satu", teks("l1", 150, 84, "1 meter", 11, W.coklat)),
+      tambah("sepuluh.", teks("l10", 240, 84, "10 bagian", 11, W.ungu)),
     ),
     k(
-      SUARA_C2,
-      bersih(0),
-      tambah(0, judul("Contoh pecahan desimal")),
-      tambah("satu", ...kartu("cg", 14, 30, 272, 28, W.krem, ["1 angka di belakang koma"], 9.4)),
-      tambah("sepuluh.", teks("ch", 150, 82, "penyebut 10", 11, W.merah)),
-      tambah("nol", teks("ci", 66, 130, "0,1", 28, W.hijau), teks("cj", 116, 130, "=", 22, W.biru)),
-      tambah("satu@4", ...pecahan("ck", 176, 124, "1", "10", 22)),
+      SUARA_S2,
+      tambah("Panjangnya", ...pecah("pc", 100, 126, "3", "10", 28)),
+      sorotkan("per", "kn0", "kn1", "kn2"),
+      tambah("meter.", teks("mt", 150, 145, "meter", 14, W.coklat)),
     ),
     k(
-      SUARA_C3,
-      bersih(0),
-      tambah(0, judul("Contoh pecahan desimal")),
-      tambah("dua", ...kartu("cl", 14, 30, 272, 28, W.langit, ["2 angka di belakang koma"], 9.4)),
-      tambah("seratus.", teks("cm", 150, 82, "penyebut 100", 11, W.merah)),
-      tambah("nol", teks("cn", 62, 130, "0,25", 28, W.hijau), teks("co", 118, 130, "=", 22, W.biru)),
-      tambah("dua@4", ...pecahan("cp", 184, 124, "25", "100", 22)),
+      SUARA_S3,
+      tambah("angka", teks("a1", 230, 120, "1 angka", 12, W.merah)),
+      tambah("belakang", teks("sm", 188, 148, "=", 24, W.merah)),
+      tambah("koma", teks("dc", 230, 152, "0,3", 28, W.biru)),
+      tambah("persepuluhan.", teks("pp", 230, 176, "persepuluhan", 10, W.ungu)),
+    ),
+  ],
+};
+
+/* ------------------------------ 3. Kisi sepuluh kolom ------------------------------ */
+const SUARA_K1 = "Laras menggambar kisi dengan sepuluh kolom sama besar dan mewarnai tiga kolom.";
+const SUARA_K2 = "Tiga per sepuluh ditulis nol koma tiga, dibaca nol koma tiga.";
+const SUARA_K3 = "Angka nol di depan koma menunjukkan bahwa belum ada satu meter utuh.";
+
+export const ADEGAN_KISI: AdeganStory = {
+  id: "kisi",
+  judul: "Kisi sepuluh kolom Laras",
+  sumber: "Materi: kisi sepuluh kolom",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_K1,
+      tambah(0, judul("Kisi Laras"), ...tokoh("lr", 40, 184, "Laras")),
+      tambah("menggambar", emo("pn", 76, 160, E.catat, 20)),
+      tambah("kisi", ...strip("ks", 20, 48, 260, 40)),
+      tambah("sepuluh", teks("k10", 240, 108, "10 kolom", 11, W.ungu)),
+      warnai("mewarnai", JINGGA, "ks0", "ks1", "ks2"),
+      tambah("tiga", teks("k3", 60, 108, "3 kolom", 11, W.merah)),
     ),
     k(
-      SUARA_C4,
-      bersih(0),
-      tambah(0, judul("Aturan angka di belakang koma")),
-      tambah("Satu", ...kartu("cq", 14, 40, 272, 40, W.hijauMuda, ["1 angka  →  penyebut 10"], 11)),
-      tambah("dua", ...kartu("cr", 14, 94, 272, 40, W.langit, ["2 angka  →  penyebut 100"], 11)),
-      tambah("menentukan", emo("cs", 150, 176, "🔑", 26)),
+      SUARA_K2,
+      tambah("Tiga", ...pecah("pc", 100, 134, "3", "10", 26)),
+      tambah("ditulis", teks("sm", 150, 152, "=", 24, W.merah)),
+      tambah("nol", teks("dc", 215, 152, "0,3", 28, W.biru)),
+      tambah("dibaca", teks("br", 215, 176, "dibaca nol koma tiga", 9, W.hijauTua)),
     ),
     k(
-      SUARA_C5,
-      bersih(0),
-      tambah(0, judul("Menerapkan aturan")),
-      tambah("tiga", ...kartu("ct", 14, 34, 272, 40, W.hijauMuda, ["0,3  →  1 angka  →  3/10"], 11)),
-      tambah("tujuh", ...kartu("cu", 14, 88, 272, 40, W.langit, ["0,07  →  2 angka  →  7/100"], 11)),
-      tambah("dua", emo("cv", 150, 170, "✅", 24)),
+      SUARA_K3,
+      sorotkan("nol", "dc"),
+      tambah("depan", teks("n1", 215, 122, "belum 1 meter", 10, W.merah)),
+      tambah("belum", emo("sr", 262, 130, E.seru, 18)),
     ),
   ],
 };

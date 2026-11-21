@@ -1,219 +1,227 @@
 import type { AdeganStory } from "./logika-story";
-import { BENTUK_LATIHAN, W, barisTabel, benda, bulat, emo, garis, garisBilangan, judul, kartu, kisi, lingkaranBagi, panah, pecahan, teks } from "./k4b2a-gambar";
-import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b2a-bantu";
-import { NAMA_METODE, NAMA_METODE_ID } from "./k4b2a-luar-1";
+import { E, K, W, bagianKain, emo, garis, garisBil, jepitan, judul, kartu, panah, papanTulis, pecahan, teks, tokoh } from "./k4b2a-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah } from "./k4b2a-bantu";
 
-const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
-const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
+/*
+ * Cerita orisinal IGIL "Kain Lipat Bu Wulan" (Kelas 4 Bab 2 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b2a.md. Bagian ini: Fold the Paper (Lipat Kertas), Fraction Number Line (Garis Pecahan), dan ringkasan.
+ */
 
-/** Garis bilangan penerapan: titik 1/n untuk n = 2 sampai 5 tersembunyi (op 0) sampai disebut. */
-const GARIS_TERAPAN = garisBilangan("gt", 30, 112, 240, [2, 3, 4, 5]).map((o) => (/^gt-(k|f)[2345]$/.test(o.id) ? { ...o, op: 0 } : o));
-const munculkan = (at: string | number, ...n: number[]) => ubah(at, ...n.flatMap((m) => [{ id: `gt-k${m}`, op: 1 }, { id: `gt-f${m}`, op: 1 }]));
+/* ------------------------------ Fold the Paper: konsep ------------------------------ */
+const SUARA_L1 = "Cara kedua, Fold the Paper, atau Lipat Kertas.";
+const SUARA_L2 = "Selembar kertas kita lipat menjadi bagian sama besar, sesuai penyebut yang kita mau.";
+const SUARA_L3 = "Setelah dilipat, bagian yang kita arsir adalah pembilangnya, yaitu satu bagian.";
+const SUARA_L4 = "Lipatan membantu kita yakin bahwa semua bagian benar-benar sama besar.";
 
-/* ------------------------------ 6. Number Line Unit: konsep ------------------------------ */
-const SUARA_G1 = "Metode ketiga, Number Line Unit, atau Pecahan di Garis. Pecahan satu per n terletak antara nol dan satu pada garis bilangan. Huruf n adalah penyebutnya.";
-const SUARA_G2 = "Langkah pertama: gambar garis dari nol sampai satu. Langkah kedua: bagi garis menjadi sebanyak penyebut bagian sama panjang. Langkah ketiga: titik pertama setelah nol adalah satu per n.";
-const SUARA_G3 = "Makin jauh dari nol, makin besar pecahannya. Untuk pembilang satu, penyebut yang makin besar membuat bagian makin kecil, sehingga titiknya makin dekat dengan nol.";
+export const ADEGAN_LUAR_LIPAT: AdeganStory = {
+  id: "luar-lipat",
+  judul: "Fold the Paper: Lipat Kertas",
+  sumber: "Metode global: Fold the Paper (konsep)",
+  latar: "#F0F9FF",
+  ketukan: [
+    k(
+      SUARA_L1,
+      tambah(0, judul("Cara 2: Fold the Paper"), ...papanTulis("pt", 8, 28, 284, 132)),
+      tambah("Fold", teks("nm", 150, 56, "Fold the Paper", 13, K.kapurMerah)),
+      tambah("Lipat", teks("ni", 150, 76, "Lipat Kertas", 11, K.kapur), ...bagianKain("ky", 110, 92, 80, 50, 1, [])),
+    ),
+    k(
+      SUARA_L2,
+      tambah("lipat", ...bagianKain("ky", 110, 92, 80, 50, 3, [])),
+      sorotkan("besar,", "ky-c0", "ky-c1", "ky-c2"),
+      tambah("penyebut", teks("sy", 150, 86, "sesuai penyebut", 8, K.kapurBiru)),
+    ),
+    k(
+      SUARA_L3,
+      hapus(0, "sy"),
+      redamkan(0, "ky-c0", "ky-c1", "ky-c2"),
+      tambah("arsir", ...bagianKain("ky", 110, 92, 80, 50, 3, [0])),
+      tambah("pembilangnya,", teks("pl", 232, 104, "pembilang", 9, K.kapurMerah), panah("pa", 206, 104, -14, 0, K.kapurMerah, 1.6)),
+      tambah("satu", teks("s1", 232, 122, "1 bagian", 9, K.kapur)),
+    ),
+    k(
+      SUARA_L4,
+      tambah("membantu", emo("ok", 60, 112, E.benar, 20)),
+      sorotkan("semua", "ky-c0", "ky-c1", "ky-c2"),
+      tambah("sama", teks("sm", 60, 134, "sama besar", 9, K.kapurBiru)),
+    ),
+  ],
+};
+
+/* ------------------------------ Fold the Paper: terapan ------------------------------ */
+const SUARA_T1 = "Genta melipat kertas menjadi dua, lalu empat, lalu delapan bagian.";
+const SUARA_T2 = "Setiap lipatan membuat satu bagian menjadi setengah dari bagian sebelumnya.";
+const SUARA_T3 = "Cocok untuk memahami mengapa penyebut lebih besar membuat bagian lebih kecil.";
+const SUARA_T4 = "Kurang cocok untuk penyebut seperti tujuh, karena melipat kertas menjadi tujuh bagian sama besar itu sulit.";
+
+export const ADEGAN_LUAR_LIPAT_TERAPAN: AdeganStory = {
+  id: "luar-lipat-terapan",
+  judul: "Lipat Kertas: kapan cocok",
+  sumber: "Metode global: Fold the Paper (terapan)",
+  latar: "#F0F9FF",
+  ketukan: [
+    k(
+      SUARA_T1,
+      tambah(0, judul("Lipat Kertas Genta"), ...papanTulis("pt", 8, 28, 284, 124), ...tokoh("ge", 40, 184, "Genta")),
+      tambah("dua,", ...bagianKain("r2", 60, 44, 200, 22, 2, [0]), teks("m2", 38, 59, "2", 10, K.kapur)),
+      tambah("empat,", ...bagianKain("r4", 60, 76, 200, 22, 4, [0]), teks("m4", 38, 91, "4", 10, K.kapur)),
+      tambah("delapan", ...bagianKain("r8", 60, 108, 200, 22, 8, [0]), teks("m8", 38, 123, "8", 10, K.kapur)),
+    ),
+    k(
+      SUARA_T2,
+      tambah("lipatan", panah("a1", 274, 68, 0, 6, K.kapurMerah, 2), panah("a2", 274, 100, 0, 6, K.kapurMerah, 2)),
+      tambah("setengah", teks("sg", 150, 40, "tiap bagian jadi 1/2 dari sebelumnya", 8, K.kapurBiru)),
+      sorotkan("sebelumnya.", "r2-c0", "r4-c0", "r8-c0"),
+    ),
+    k(
+      SUARA_T3,
+      hapus(0, "sg"),
+      tambah("Cocok", emo("ok", 28, 52, E.benar, 20)),
+      tambah("penyebut", teks("pk", 150, 40, "penyebut besar, bagian kecil", 9, K.kapur)),
+      redamkan("kecil.", "r2-c0", "r4-c0"),
+    ),
+    k(
+      SUARA_T4,
+      hapus(0, "ok", "pk"),
+      tambah("Kurang", emo("xs", 280, 52, E.salah, 18)),
+      tambah("tujuh,", teks("t7", 150, 36, "penyebut 7?", 11, K.kapurMerah)),
+      tambah("melipat", emo("kr", 272, 52, E.keringat, 18)),
+      tambah("sulit.", teks("sl", 150, 144, "sulit sama besar", 9, K.kapur)),
+    ),
+  ],
+};
+
+/* ------------------------------ Fraction Number Line: konsep ------------------------------ */
+const SUARA_G1 = "Cara ketiga, Fraction Number Line, atau Garis Pecahan.";
+const SUARA_G2 = "Kita menarik garis dari nol sampai satu, lalu membaginya menjadi bagian sama panjang.";
+const SUARA_G3 = "Setiap tanda pada garis adalah sebuah pecahan, dan makin ke kanan makin besar.";
+const SUARA_G4 = "Dengan garis, kita bisa mengurutkan banyak pecahan sekaligus.";
+const GBK = garisBil("gb", 40, 116, 220, 0);
 
 export const ADEGAN_LUAR_GARIS: AdeganStory = {
   id: "luar-garis",
-  judul: "Number Line Unit: titik di antara nol dan satu",
-  sumber: "Metode luar: Number Line Unit",
-  latar: "#FFFBEB",
+  judul: "Fraction Number Line: Garis Pecahan",
+  sumber: "Metode global: Fraction Number Line (konsep)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
       SUARA_G1,
-      tambah(0, judul("Number Line Unit")),
-      tambah("ketiga,", kepala(2)),
-      tambah("satu", ...garisBilangan("gl", 30, 120, 240, [])),
-      tambah("terletak", garis("gl-kn", 90, 114, 0, 12, W.merah, 2.6), teks("gl-fn", 90, 102, "1/n", 9.6, W.merah)),
-      tambah("Huruf", teks("gl-h", 150, 166, "n = penyebut", 10, W.coklat)),
+      tambah(0, judul("Cara 3: Fraction Number Line"), ...papanTulis("pt", 8, 28, 284, 132)),
+      tambah("Fraction", teks("nm", 150, 56, "Fraction Number Line", 13, K.kapurMerah)),
+      tambah("Garis", teks("ni", 150, 76, "Garis Pecahan", 11, K.kapur)),
     ),
     k(
       SUARA_G2,
-      bersih(0),
-      tambah(0, judul("Bagi garis sama panjang")),
-      tambah("garis", ...garisBilangan("gl", 30, 120, 240, [])),
-      tambah("bagi", garis("gl-m1", 90, 114, 0, 12, W.biru, 1.6), garis("gl-m2", 150, 114, 0, 12, W.biru, 1.6), garis("gl-m3", 210, 114, 0, 12, W.biru, 1.6), teks("gl-b", 150, 84, "n bagian sama panjang", 9.2, W.biru)),
-      tambah("titik", garis("gl-kn", 90, 114, 0, 12, W.merah, 2.6), teks("gl-fn", 90, 102, "1/n", 9.6, W.merah)),
-      sorotkan("titik", "gl-fn"),
+      tambah("garis", ...GBK.slice(0, 3)),
+      tambah("nol", GBK[3]),
+      tambah("satu", GBK[4]),
+      tambah("membaginya", ...garisBil("gb", 40, 116, 220, 4)),
     ),
     k(
       SUARA_G3,
-      bersih(0),
-      tambah(0, judul("Makin jauh dari nol, makin besar")),
-      tambah(0, ...garisBilangan("gl", 30, 110, 240, [])),
-      tambah("besar", panah("gl-p", 40, 150, 220, 0, W.hijau, 2.4), teks("gl-q", 150, 170, "makin jauh dari nol: makin besar", 9, W.hijau)),
-      tambah("penyebut", ...kartu("gl-r", 20, 34, 260, 28, W.langit, ["penyebut makin besar: bagian makin kecil"], 8.8)),
-      tambah("dekat", teks("gl-s", 62, 90, "dekat nol", 9, W.merah)),
+      tambah("tanda", teks("e4", 95, 100, "1/4", 9, K.kapur), teks("e2", 150, 100, "1/2", 9, K.kapur)),
+      tambah("pecahan,", emo("tj", 272, 56, E.jari, 16)),
+      tambah("kanan", panah("ar", 70, 140, 150, 0, K.kapurMerah, 2)),
+      tambah("besar.", teks("mb", 220, 152, "makin besar", 8, K.kapurMerah)),
+    ),
+    k(
+      SUARA_G4,
+      hapus(0, "tj", "mb"),
+      tambah("mengurutkan", jepitan("jx", 95, 116), jepitan("jy", 150, 116)),
+      tambah("pecahan", emo("mt", 272, 56, E.mata, 18)),
+      tambah("sekaligus.", jepitan("jz", 205, 116), teks("bk", 150, 152, "banyak pecahan sekaligus", 8, K.kapur)),
     ),
   ],
 };
 
-/* ------------------------------ 7. Number Line Unit: penerapan dengan angka buku ------------------------------ */
-const SUARA_H1 = "Letakkan pecahan dari soal latihan pada satu garis dari nol sampai satu. Satu per dua dibuat dengan membagi garis menjadi dua bagian sama, dan titiknya tepat di tengah.";
-const SUARA_H2 = "Satu per tiga: bagi garis menjadi tiga bagian sama. Titik pertama setelah nol lebih dekat ke nol daripada satu per dua, jadi satu per tiga kurang dari satu per dua.";
-const SUARA_H3 = "Satu per empat dan satu per lima makin dekat ke nol. Dari kanan ke kiri urutannya satu per dua, satu per tiga, satu per empat, dan satu per lima, selalu dari besar ke kecil.";
-const SUARA_H4 = "Sekarang bandingkan satu per empat dan satu per lima. Titik satu per empat ada di sebelah kanan titik satu per lima, jadi satu per empat lebih dari satu per lima.";
+/* ------------------------------ Fraction Number Line: terapan ------------------------------ */
+const SUARA_N1 = "Satria menjepit tanda satu per delapan, satu per empat, dan satu per dua pada garis.";
+const SUARA_N2 = "Urutan jepitan dari kiri ke kanan adalah urutan dari yang terkecil.";
+const SUARA_N3 = "Cocok untuk mengurutkan tiga pecahan atau lebih, karena posisinya langsung terlihat.";
+const SUARA_N4 = "Kurang cocok kalau garisnya digambar sembarangan, karena bagian yang tidak sama panjang menyesatkan.";
+const GBT = garisBil("gt", 30, 100, 240, 0);
 
 export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
   id: "luar-garis-terapan",
-  judul: "Number Line Unit pada pecahan latihan",
-  sumber: "Metode luar: Number Line Unit",
-  latar: "#FEF3C7",
+  judul: "Garis Pecahan: kapan cocok",
+  sumber: "Metode global: Fraction Number Line (terapan)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
-      SUARA_H1,
-      tambah(0, judul("Pecahan di Garis: soal latihan")),
-      tambah("Letakkan", kepala(2)),
-      tambah("garis", ...GARIS_TERAPAN),
-      munculkan("tengah.", 2),
-      sorotkan("tengah.", "gt-f2"),
+      SUARA_N1,
+      tambah(0, judul("Garis Pecahan Satria"), ...papanTulis("pt", 8, 28, 284, 124), ...tokoh("sa", 40, 184, "Satria"), ...GBT),
+      tambah("delapan,", jepitan("j8", 60, 100), ...pecahan("f8", 60, 70, 8, 12, K.kapur)),
+      tambah("empat,", jepitan("j4", 90, 100), ...pecahan("f4", 90, 70, 4, 12, K.kapur)),
+      tambah("dua", jepitan("j2", 150, 100), ...pecahan("f2", 150, 70, 2, 12, K.kapur)),
     ),
     k(
-      SUARA_H2,
-      munculkan("tiga:", 3),
-      sorotkan("dekat", "gt-f3"),
-      tambah("kurang", ...kartu("gt-a", 70, 150, 160, 28, W.emas, ["1/3 kurang dari 1/2"], 9.6)),
+      SUARA_N2,
+      tambah("kiri", teks("lk", 50, 134, "kiri", 9, K.kapurBiru)),
+      tambah("kanan", teks("lr", 250, 134, "kanan", 9, K.kapurBiru), panah("ar", 70, 120, 160, 0, K.kapurMerah, 2)),
+      tambah("terkecil.", teks("tk", 150, 144, "terkecil ke terbesar", 8, K.kapur)),
     ),
     k(
-      SUARA_H3,
-      hapus(0, "gt-a-k", "gt-a-t0"),
-      munculkan("empat", 4),
-      munculkan("lima", 5),
-      tambah("kiri", panah("gt-p", 262, 192, -230, 0, W.hijau, 2), teks("gt-q", 150, 186, "kanan ke kiri: besar ke kecil", 8.2, W.hijau)),
+      SUARA_N3,
+      hapus(0, "lk", "lr", "ar", "tk"),
+      tambah("Cocok", emo("ok", 28, 52, E.benar, 20)),
+      tambah("tiga", teks("n3", 222, 46, "3 pecahan atau lebih", 8, K.kapur)),
+      sorotkan("terlihat.", "j8", "j4", "j2"),
     ),
     k(
-      SUARA_H4,
-      sorotkan("empat", "gt-f4"),
-      sorotkan("lima", "gt-f5"),
-      hapus("jadi", "gt-p", "gt-q"),
-      tambah("jadi", teks("gt-s", 150, 160, "titik kanan lebih besar: 1/4 lebih dari 1/5", 8, W.biru)),
+      SUARA_N4,
+      bersih(0),
+      tambah(0, judul("Garis Pecahan Satria"), ...papanTulis("pt", 8, 28, 284, 124), ...tokoh("sa", 40, 184, "Satria")),
+      tambah("Kurang", emo("xs", 28, 52, E.salah, 20)),
+      tambah("garisnya", garis("gu-l", 24, 100, 252, 0, K.kapur, 2.4, { z: 1 }), ...[40, 62, 128, 150, 262].map((x) => garis(`gu-t${x}`, x, 94, 0, 12, K.kapurBiru, 1.8, { z: 2 }))),
+      tambah("tidak", teks("tg", 150, 76, "bagian tidak sama panjang", 9, K.kapurMerah)),
     ),
   ],
 };
 
-/* ------------------------------ 8. Fair Sharing: konsep ------------------------------ */
-const SUARA_B1 = "Metode keempat, Fair Sharing, atau Bagi Adil. Bagikan satu benda secara adil kepada sejumlah orang. Jika ada n orang, tiap orang mendapat satu per n bagian.";
-const SUARA_B2 = "Langkah pertama: tentukan banyak orang yang berbagi. Langkah kedua: potong benda menjadi sebanyak orang itu, semua sama besar. Langkah ketiga: tiap orang mengambil satu potong.";
-const SUARA_B3 = "Makin banyak orang yang berbagi, makin kecil bagian tiap orang. Dua orang berbagi satu pizza mendapat potongan lebih besar daripada tiga orang.";
-
-export const ADEGAN_LUAR_BAGI: AdeganStory = {
-  id: "luar-bagi",
-  judul: "Fair Sharing: bagikan benda secara adil",
-  sumber: "Metode luar: Fair Sharing",
-  latar: "#FDF2F8",
-  ketukan: [
-    k(
-      SUARA_B1,
-      tambah(0, judul("Fair Sharing")),
-      tambah("keempat,", kepala(3)),
-      tambah("benda", bulat("bg0", 80, 118, 42, W.jingga, W.coklat, { tebal: 2 })),
-      tambah(idx(SUARA_B1, "orang", 1), ...benda("bgp", 170, 96, 4, 4, 24, 8, W.biruMuda, W.biru)),
-      tambah("tiap", teks("bgt", 215, 136, "n orang berbagi:", 9, W.biru), teks("bgu", 215, 150, "tiap orang 1/n", 9, W.merah)),
-    ),
-    k(
-      SUARA_B2,
-      bersih(0),
-      tambah(0, judul("Tiga langkah bagi adil")),
-      tambah("pertama:", ...kartu("bh1", 14, 36, 272, 34, W.hijauMuda, ["1. tentukan banyak orang yang berbagi"], 9)),
-      tambah("kedua:", ...kartu("bh2", 14, 80, 272, 34, W.langit, ["2. potong sebanyak orang, semua sama besar"], 9)),
-      tambah("ketiga:", ...kartu("bh3", 14, 124, 272, 34, W.krem, ["3. tiap orang mengambil satu potong"], 9)),
-      tambah("potong@2", emo("bh4", 150, 186, "✂", 22)),
-    ),
-    k(
-      SUARA_B3,
-      bersih(0),
-      tambah(0, judul("Makin banyak orang, makin kecil")),
-      tambah("Dua", ...lingkaranBagi("bq1", 70, 100, 40, 2, 1, W.jingga), ...benda("bp1", 55, 158, 2, 2, 30, 7, W.biruMuda, W.biru), teks("bl1", 70, 184, "2 orang: 1/2", 9, W.biru)),
-      tambah("tiga", ...lingkaranBagi("bq2", 220, 100, 40, 3, 1, W.jingga), ...benda("bp2", 190, 158, 3, 3, 30, 7, W.biruMuda, W.biru), teks("bl2", 220, 184, "3 orang: 1/3", 9, W.biru)),
-    ),
-  ],
-};
-
-/* ------------------------------ 9. Fair Sharing: penerapan dengan angka buku ------------------------------ */
-const SUARA_Y1 = "Pizza dibagi kepada empat siswa. Empat orang berbagi, jadi tiap siswa mendapat satu per empat pizza.";
-const SUARA_Y2 = "Sekarang dua batang sama panjang: sepuluh anak berbagi satu batang, dan lima anak berbagi batang lain yang sama panjang. Anak dalam kelompok sepuluh mendapat bagian lebih kecil, jadi satu per sepuluh kurang dari satu per lima.";
-const SUARA_Y3 = "Contoh berikutnya: satu per sebelas dan satu per tiga belas. Sebelas anak berbagi satu benda, tiga belas anak berbagi benda yang sama. Bagian anak dari tiga belas lebih kecil, jadi satu per sebelas lebih dari satu per tiga belas.";
-const SUARA_Y4 = "Terakhir: satu per delapan dan satu per dua. Dua orang berbagi, tiap orang mendapat bagian besar. Delapan orang berbagi, bagian tiap orang kecil. Jadi satu per delapan kurang dari satu per dua.";
-
-export const ADEGAN_LUAR_BAGI_TERAPAN: AdeganStory = {
-  id: "luar-bagi-terapan",
-  judul: "Fair Sharing pada soal latihan",
-  sumber: "Metode luar: Fair Sharing",
-  latar: "#FCE7F3",
-  ketukan: [
-    k(
-      SUARA_Y1,
-      tambah(0, judul("Fair Sharing: pizza empat siswa")),
-      tambah("Pizza", kepala(3)),
-      tambah("dibagi", ...lingkaranBagi("ya", 90, 124, 44, 4, 1, W.jingga)),
-      tambah("siswa.", ...benda("yp", 175, 104, 4, 2, 24, 8, W.biruMuda, W.biru), teks("yq", 187, 154, "4 siswa", 9, W.biru)),
-      tambah("satu", ...pecahan("yr", 255, 120, "1", "4", 26)),
-    ),
-    k(
-      SUARA_Y2,
-      bersih(0),
-      tambah(0, judul("Sepuluh anak lawan lima anak")),
-      tambah("sepuluh", ...kisi("yu", 20, 40, 10, 1, 18, 26, 1), ...benda("yua", 29, 96, 10, 10, 18, 5, W.biruMuda, W.biru), ...pecahan("yur", 245, 53, "1", "10", 22)),
-      tambah("lima", ...kisi("yv", 20, 116, 5, 1, 36, 26, 1), ...benda("yva", 38, 170, 5, 5, 36, 5, W.biruMuda, W.biru), ...pecahan("yvr", 245, 129, "1", "5", 22)),
-      tambah("kurang", teks("yw", 284, 112, "<", 26, W.merah)),
-    ),
-    k(
-      SUARA_Y3,
-      bersih(0),
-      tambah(0, judul("Sebelas anak lawan tiga belas anak")),
-      tambah(0, teks("yx1", 150, 56, "11 anak: tiap anak 1/11", 9, W.biru)),
-      tambah(idx(SUARA_Y3, "sebelas", 2), ...benda("yx", 24, 76, 11, 11, 22, 6, W.biruMuda, W.biru)),
-      tambah(idx(SUARA_Y3, "tiga", 2), teks("yx2", 150, 108, "13 anak: tiap anak 1/13", 9, W.biru), ...benda("yy", 20, 128, 13, 13, 20, 5.5, W.merahMuda, W.merah)),
-      tambah("lebih@2", ...kartu("yz", 60, 156, 180, 30, W.emas, ["1/11 > 1/13"], 11)),
-    ),
-    k(
-      SUARA_Y4,
-      bersih(0),
-      tambah(0, judul("Delapan orang lawan dua orang")),
-      tambah(idx(SUARA_Y4, "dua", 2), ...benda("zy", 100, 70, 2, 2, 40, 9, W.biruMuda, W.biru), teks("zy1", 230, 74, "2 orang: 1/2", 9, W.biru)),
-      tambah(idx(SUARA_Y4, "delapan", 2), ...benda("zz", 50, 120, 8, 8, 26, 7, W.merahMuda, W.merah), teks("zz1", 150, 146, "8 orang: 1/8", 9, W.biru)),
-      tambah("Jadi", ...kartu("zk", 60, 160, 180, 30, W.emas, ["1/8 < 1/2"], 11)),
-    ),
-  ],
-};
-
-/* ------------------------------ 10. Ringkasan metode luar ------------------------------ */
-const SUARA_Z1 = "Ringkasnya, empat metode: Unit Fraction untuk menghitung bagian, Area Model untuk membandingkan arsiran, Number Line Unit untuk menaruh titik di garis, dan Fair Sharing untuk membagi benda.";
-const SUARA_Z2 = "Angka yang dipakai: lima gambar bentuk pecahan, batang satu per dua lawan satu per empat, satu per sepuluh lawan satu per lima, garis dari satu per dua sampai satu per lima, dan sebelas anak lawan tiga belas anak.";
-const SUARA_Z3 = "Memilih metode: untuk membaca satu gambar, hitung bagiannya. Untuk membandingkan dua gambar, lihat arsirannya. Untuk mengurutkan, pakai garis. Untuk cerita membagi, pakai bagi adil. Selalu periksa lewat penyebutnya.";
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita lihat bersama Bu Wulan. Mana yang pas tergantung keadaan.";
+const SUARA_R2 = "Ingin membandingkan dua pecahan dengan cepat, pakai Pita Pecahan. Ingin tahu alasan bagian makin kecil, pakai Lipat Kertas.";
+const SUARA_R3 = "Ingin mengurutkan banyak pecahan, pakai Garis Pecahan. Apa pun caranya, pastikan bagian-bagiannya sama besar.";
+const SUARA_R4 = "Menurutmu, untuk mengurutkan empat potongan kain berbeda, cara mana yang paling pas?";
+const KARTU_CARA = ["Pita Pecahan", "Lipat Kertas", "Garis Pecahan"];
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode luar",
-  sumber: "Ringkasan metode luar",
-  latar: "#F0FDF4",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan metode global",
+  latar: "#FAF5FF",
   ketukan: [
     k(
-      SUARA_Z1,
-      tambah(0, judul("Ringkasan empat metode")),
-      ...["hitung bagian", "bandingkan arsiran", "titik di garis", "bagi benda"].map((t, i) => tambah(["Unit", "Area", "Number", "Fair"][i], ...kartu(`r${i}`, 12, 32 + i * 38, 276, 30, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${t}`], 8.8))),
+      SUARA_R1,
+      tambah(0, judul("Ringkasan"), teks("n3", 150, 36, "3 cara", 10, W.ungu), ...KARTU_CARA.flatMap((c, i) => kartu(`r${i}`, 14 + i * 92, 44, 88, 40, ["#DBEAFE", "#DCFCE7", "#FEF9C3"][i], [c], 9))),
+      tambah("Bu", ...tokoh("bw", 40, 184, "Bu Wulan")),
+      tambah("pas", emo("tq", 150, 140, E.tanya, 22)),
     ),
     k(
-      SUARA_Z2,
-      bersih(0),
-      tambah(0, judul("Angka yang dipakai")),
-      tambah("Angka", ...barisTabel("rt0", 14, 32, [92, 188], ["metode", "angka yang dipakai"], 24, 8.4, true)),
-      tambah("lima", ...barisTabel("rt1", 14, 56, [92, 188], ["Unit Fraction", BENTUK_LATIHAN.map(([n, a]) => `${a}/${n}`).join(", ")], 24, 8.2)),
-      tambah("batang", ...barisTabel("rt2", 14, 80, [92, 188], ["Area Model", "1/2 : 1/4, 1/10 : 1/5"], 24, 8.2)),
-      tambah("garis", ...barisTabel("rt3", 14, 104, [92, 188], ["Number Line Unit", "1/2, 1/3, 1/4, 1/5"], 24, 8.2)),
-      tambah("sebelas", ...barisTabel("rt4", 14, 128, [92, 188], ["Fair Sharing", "1/11 : 1/13"], 24, 8.2)),
+      SUARA_R2,
+      hapus(0, "tq"),
+      tambah("dua", teks("n2", 150, 112, "2 pecahan", 9, W.coklat)),
+      tambah("cepat,", emo("ok1", 58, 108, E.benar, 18)),
+      sorotkan("Pita", "r0-k"),
+      redamkan("Ingin@2", "r0-k"),
+      sorotkan("Lipat", "r1-k"),
+      tambah("Kertas.", emo("ok2", 150, 150, E.benar, 18)),
     ),
     k(
-      SUARA_Z3,
-      bersih(0),
-      tambah(0, judul("Memilih metode")),
-      tambah("membaca", ...kartu("p1", 14, 32, 272, 28, W.hijauMuda, ["satu gambar: hitung bagiannya"], 9)),
-      tambah("membandingkan", ...kartu("p2", 14, 66, 272, 28, W.langit, ["dua gambar: lihat arsirannya"], 9)),
-      tambah("mengurutkan,", ...kartu("p3", 14, 100, 272, 28, W.krem, ["urutan: pakai garis"], 9)),
-      tambah("cerita", ...kartu("p4", 14, 134, 272, 28, W.pink, ["cerita membagi: bagi adil"], 9)),
-      tambah("periksa", emo("p5", 150, 188, "✅", 22)),
+      SUARA_R3,
+      hapus(0, "n2"),
+      redamkan(0, "r1-k"),
+      sorotkan("Garis", "r2-k"),
+      tambah("Apa", emo("ok3", 242, 108, E.benar, 18)),
+      tambah("sama", teks("sb", 150, 130, "bagian sama besar", 10, W.merah)),
+    ),
+    k(
+      SUARA_R4,
+      hapus(0, "n3", "ok1", "ok2", "ok3", "sb"),
+      redamkan(0, "r2-k"),
+      tambah("empat", teks("n4", 150, 92, "4 potongan", 10, W.coklat)),
+      tambah("potongan", teks("tq2", 150, 134, "?", 40, W.merah)),
+      tambah("cara", emo("kn", 90, 128, "\u{1F9E3}", 22)),
     ),
   ],
 };

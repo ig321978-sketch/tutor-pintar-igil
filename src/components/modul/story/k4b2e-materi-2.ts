@@ -1,223 +1,116 @@
 import type { AdeganStory } from "./logika-story";
-import { W, angkaKarakter, barisTabel, daftar, emo, judul, kartu, panah, tabel, teks } from "./k4b2e-gambar";
-import { bersih, k, tambah } from "./k4b2e-bantu";
+import { E, W, emo, garis, judul, halaman, kisi, lampion, panah, papanPameran, teks, tokoh, warnai } from "./k4b2e-gambar";
+import { hapus, k, sorotkan, tambah, ubah } from "./k4b2e-bantu";
 
-/* ------------------------------ 5. Ayo Berpikir: cara biasa dan cara langsung (Buku Siswa hlm. 79-81; Panduan Guru hlm. 109) ------------------------------ */
-export const ADEGAN_LANGSUNG: AdeganStory = {
-  id: "langsung",
-  judul: "Ayo Berpikir: cara biasa dan cara langsung",
-  sumber: "Materi: cara biasa dan cara langsung",
-  latar: "#EFF6FF",
-  kutipan: [
-    "Ibu untuk mengubah pecahan desimal perseratusan menjadi bentuk persen bolehkah langsung dikalikan 100%",
-    "Ada dua cara merubah pecahan desimal perseratusan menjadi persen",
-    "Untuk mengubah pecahan desimal perseratusan menjadi bentuk persen bisa langsung mengalikannya dengan 100%",
-    "0,36 × 100% = (0,36 × 100)% = 36%",
-    "Cara Langsung : Jika terdapat desimal perseratusan yang akan diubah menjadi bentuk persen maka kita tinggal mengalikan desimal perseratusan tersebut",
-    "0,25 x 100% = (0,25 x 100)% = 25%",
-    "2,36 x 100% = (2,36 x 100)% = 236%",
-    "Guru menjelaskan cara langsung dalam mengubah perseratusan menjadi bentuk persen",
-  ],
+/*
+ * Cerita orisinal IGIL "Papan Pameran Bu Tuti" (Kelas 4 Bab 2 Sub-Bab E), akhir cerita Sanggar Batik Kampung Mekar.
+ * Naskah suara dari naskah/story-naskah-k4b2e.md. Bagian ini: salah langkah Satria (nol koma enam ditulis enam persen), kisi seratus (nol koma enam adalah enam puluh persen), dan taruhan memasang lampion.
+ */
+
+/* ------------------------------ 4. Salah langkah: enam persen ------------------------------ */
+const SUARA_S1 = "Satria menulis nol koma enam di papan, lalu berseru, ini enam persen!";
+const SUARA_S2 = "Ia hanya mengambil angka enam dan menambahkan tanda persen.";
+const SUARA_S3 = "Kalau aku salah, aku memasang semua lampion sendirian, katanya sambil menunjuk tali lampion.";
+
+export const ADEGAN_SALAH_ENAM: AdeganStory = {
+  id: "salah-enam",
+  judul: "Satria menulis enam persen",
+  sumber: "Materi: salah langkah Satria",
+  latar: "#FFF7ED",
   ketukan: [
     k(
-      "Ayo berpikir. Coba tebak, bolehkah desimal perseratusan langsung dikalikan dengan seratus persen? Boleh, karena ada dua cara mengubahnya.",
-      bersih(0),
-      tambah(0, judul("Ayo Berpikir")),
-      tambah(0, emo("l1", 40, 66, "👧", 30)),
-      tambah("bolehkah", ...kartu("l2", 70, 38, 220, 36, W.krem, ["boleh langsung dikali 100%?"], 10)),
-      tambah("karena", emo("l3", 40, 130, "👩", 30)),
-      tambah("dua", ...kartu("l4", 70, 106, 220, 36, W.hijauMuda, ["ada dua cara"], 11)),
+      SUARA_S1,
+      tambah(0, judul("Tulisan Satria"), ...halaman("hl", 150), ...tokoh("sa", 36, 184, "Satria"), ...papanPameran("pp", 90, 36, 190, 96, "PAPAN PAMERAN", 150, 10)),
+      tambah("nol", teks("d6", 185, 80, "0,6", 28, W.biru)),
+      tambah("berseru", emo("sr", 72, 132, E.seru, 20)),
+      tambah("enam@2", teks("e6", 185, 110, "6%", 28, W.merah)),
     ),
     k(
-      "Cara satu, cara biasa: ubah desimal perseratusan menjadi pecahan biasa lalu ke persen. Nol koma tujuh lima menjadi tujuh puluh lima per seratus, yaitu tujuh puluh lima persen.",
-      bersih(0),
-      tambah(0, judul("Cara 1: cara biasa")),
-      tambah("Cara", ...kartu("l5", 80, 32, 140, 26, W.krem, ["0,75 = ... %"], 11)),
-      tambah("Nol", ...kartu("l6", 12, 76, 276, 34, W.langit, ["0,75 = 75/100"], 12)),
-      tambah("yaitu", ...kartu("l7", 12, 122, 276, 34, W.hijauMuda, ["75/100 = 75%"], 12)),
+      SUARA_S2,
+      tambah("hanya", teks("hy", 185, 127, "hanya angka 6", 9, W.merah)),
+      sorotkan("angka", "d6"),
+      tambah("mengambil", panah("pa", 150, 86, 0, 14, W.merah, 2.4, { z: 4 })),
+      tambah("tanda", teks("pl", 262, 100, "+ %", 12, W.merah)),
     ),
     k(
-      "Cara dua, cara langsung: kalikan desimal perseratusan dengan seratus persen. Nol koma tujuh lima dikali seratus persen sama dengan tujuh puluh lima persen. Hasilnya sama.",
-      bersih(0),
-      tambah(0, judul("Cara 2: cara langsung")),
-      tambah("kalikan", ...kartu("l8", 12, 40, 276, 36, W.hijauMuda, ["0,75 × 100% = 75%"], 13)),
-      tambah("Hasilnya", ...kartu("l9", 30, 100, 240, 28, W.pink, ["cara 1 dan cara 2: sama, 75%"], 10.4)),
-    ),
-    k(
-      "Contoh lain, nol koma tiga enam. Cara biasa: tiga puluh enam per seratus, lalu tiga puluh enam persen. Cara langsung: nol koma tiga enam dikali seratus, lalu diberi tanda persen.",
-      bersih(0),
-      tambah(0, judul("Contoh 0,36")),
-      tambah("Contoh", ...kartu("l10", 12, 36, 132, 26, W.langit, ["cara biasa"], 10)),
-      tambah("Contoh", ...kartu("l11", 156, 36, 132, 26, W.hijauMuda, ["cara langsung"], 10)),
-      tambah("biasa:", ...kartu("l12", 12, 76, 132, 30, W.krem, ["0,36 = 36/100"], 10.4)),
-      tambah("seratus,", ...kartu("l13", 12, 116, 132, 30, W.krem, ["36/100 = 36%"], 10.4)),
-      tambah("langsung:", ...kartu("l14", 156, 76, 132, 30, W.krem, ["0,36 × 100% ="], 10.4)),
-      tambah("tanda", ...kartu("l15", 156, 116, 132, 30, W.krem, ["(0,36 × 100)% = 36%"], 9.4)),
-    ),
-    k(
-      "Ingat! Cara langsung: kalikan desimal perseratusan dengan seratus persen. Nol koma dua lima menjadi dua puluh lima persen. Dua koma tiga enam menjadi dua ratus tiga puluh enam persen.",
-      bersih(0),
-      tambah(0, judul("Ingat! Cara langsung")),
-      tambah("Cara", ...kartu("l16", 12, 34, 276, 30, W.pink, ["kalikan dengan 100%"], 11)),
-      tambah("Nol", ...kartu("l17", 12, 80, 276, 32, W.hijauMuda, ["0,25 × 100% = (0,25 × 100)% = 25%"], 9.2)),
-      tambah("Dua@3", ...kartu("l18", 12, 124, 276, 32, W.hijauMuda, ["2,36 × 100% = (2,36 × 100)% = 236%"], 9.2)),
-      tambah("ratus@3", ...kartu("l19", 30, 168, 240, 26, W.krem, ["hasilnya sama dengan cara biasa"], 8.6)),
+      SUARA_S3,
+      hapus(0, "hy", "pl", "pa"),
+      tambah("salah", emo("xs", 232, 102, E.salah, 20)),
+      tambah("memasang", emo("cp", 72, 150, E.capek, 18)),
+      tambah("lampion", ...lampion("l1", 110, 148, false), ...lampion("l2", 140, 148, false), ...lampion("l3", 170, 148, false)),
+      tambah("sendirian", teks("tr", 232, 144, "taruhan: lampion", 9, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 6. Tahukah Kalian: menggeser koma (Buku Siswa hlm. 82) ------------------------------ */
+/* ------------------------------ 5. Kisi seratus: geser ke enam puluh persen ------------------------------ */
+const SUARA_G1 = "Genta menaruh nol koma enam pada kisi seratus, dan hasilnya enam puluh kotak berwarna.";
+const SUARA_G2 = "Nol koma enam sama dengan nol koma enam nol, yaitu enam puluh per seratus.";
+const SUARA_G3 = "Jadi nol koma enam adalah enam puluh persen, bukan enam persen.";
+
 export const ADEGAN_GESER: AdeganStory = {
   id: "geser",
-  judul: "Tahukah kamu: geser koma",
-  sumber: "Materi: geser tanda koma",
-  latar: "#FEFCE8",
-  kutipan: [
-    "Tahukah Kalian",
-    "menggeser tanda koma pada bilangan desimal dua kali kekanan",
-    "Tanda koma kita geser ke kanan dua kali",
-    "0,25 x 100% = 25%",
-    "2,36 x 100% = 236%",
-  ],
-  ketukan: [
-    k(
-      "Tahukah kalian? Supaya mengalikan desimal perseratusan dengan seratus persen lebih mudah, geser tanda koma dua kali ke kanan.",
-      bersih(0),
-      tambah(0, judul("Tahukah kamu?")),
-      tambah(0, emo("g1", 150, 80, "💡", 40)),
-      tambah("geser", ...kartu("g2", 30, 104, 240, 34, W.krem, ["tanda koma: geser 2 kali ke kanan"], 10)),
-      tambah("seratus@2", ...kartu("g3", 60, 150, 180, 28, W.hijauMuda, ["× 100%"], 12)),
-    ),
-    k(
-      "Nol koma dua lima: geser tanda koma dua kali ke kanan, jadi dua puluh lima persen. Dua koma tiga enam, geser dua kali, jadi dua ratus tiga puluh enam persen.",
-      bersih(0),
-      tambah(0, judul("Koma bergeser dua kali")),
-      ...angkaKarakter("ga", 40, 70, "0,25", 16, 20).map((o) => tambah("Nol", o)),
-      tambah("geser", panah("g4", 112, 62, 50, 0, W.merah, 2)),
-      tambah("puluh", teks("g5", 200, 70, "25%", 22, W.hijau)),
-      ...angkaKarakter("gb", 40, 140, "2,36", 16, 20).map((o) => tambah("Dua@4", o)),
-      tambah("geser@2", panah("g6", 112, 132, 50, 0, W.merah, 2)),
-      tambah("tiga@2", teks("g7", 205, 140, "236%", 22, W.hijau)),
-    ),
-    k(
-      "Perhatikan: angkanya tetap, hanya letak tanda koma yang berpindah dua tempat ke kanan.",
-      bersih(0),
-      tambah(0, judul("Angka tetap, koma pindah")),
-      tambah("angkanya", ...kartu("g8", 30, 40, 240, 40, W.krem, ["0,25 → 25%"], 15)),
-      tambah("koma", ...kartu("g9", 30, 96, 240, 40, W.krem, ["2,36 → 236%"], 15)),
-      tambah("berpindah", ...kartu("g10", 30, 152, 240, 30, W.hijauMuda, ["angka sama, koma pindah 2 tempat"], 9.6)),
-    ),
-  ],
-};
-
-/* ------------------------------ 7. Ayo Berlatih: desimal ke persen (Buku Siswa hlm. 82; Panduan Guru hlm. 110) ------------------------------ */
-const TAB_LATIHAN_1 = tabel(
-  "lt",
-  35,
-  40,
-  [30, 100, 100],
-  [
-    ["", "desimal", "persen"],
-    ["a", "0,12", "12%"],
-    ["b", "1,15", "115%"],
-    ["c", "5,62", "562%"],
-    ["d", "10,55", "1055%"],
-  ],
-  22,
-  10,
-);
-export const ADEGAN_BERLATIH_1E: AdeganStory = {
-  id: "berlatih-1e",
-  judul: "Latihan 1: desimal ke persen",
-  sumber: "Materi: latihan desimal ke persen",
+  judul: "Nol koma enam adalah enam puluh persen",
+  sumber: "Materi: kisi seratus",
   latar: "#F0FDF4",
-  kutipan: [
-    "Kerjakan soal berikut pada buku tulis kalian",
-    "Ubahlah bilangan desimal perseratusan berikut menjadi bentuk persen",
-    "a. 0,12 = ... %",
-    "d. 10,55 = ... %",
-    "a. 0,12 = 12 %",
-    "b. 1,15 = 115 %",
-    "c. 5,62 = 562 %",
-    "d. 10,55 = 1055 %",
-  ],
   ketukan: [
     k(
-      "Sekarang coba kamu: ubah desimal perseratusan menjadi persen. Bagian a: nol koma satu dua, jadi dua belas persen. Bagian b: satu koma satu lima, jadi seratus lima belas persen.",
-      bersih(0),
-      tambah(0, judul("Latihan 1: ke persen")),
-      tambah("Sekarang", ...barisTabel(TAB_LATIHAN_1, "lt", 0)),
-      tambah("Bagian", ...barisTabel(TAB_LATIHAN_1, "lt", 1)),
-      tambah("Bagian@2", ...barisTabel(TAB_LATIHAN_1, "lt", 2)),
+      SUARA_G1,
+      tambah(0, judul("Nol Koma Enam di Kisi"), ...halaman("hl", 150), ...tokoh("ge", 262, 184, "Genta")),
+      tambah("nol", teks("d6", 210, 56, "0,6", 22, W.biru)),
+      tambah("kisi", ...kisi("ks", 24, 34, 0)),
+      tambah("puluh", teks("n60", 210, 92, "60 kotak", 12, W.merah)),
+      ubah("berwarna", ...warnai("ks", 0, 60)),
     ),
     k(
-      "Bagian c: lima koma enam dua, jadi lima ratus enam puluh dua persen. Bagian d: sepuluh koma lima lima, jadi seribu lima puluh lima persen.",
-      tambah("Bagian", ...barisTabel(TAB_LATIHAN_1, "lt", 3)),
-      tambah("sepuluh", ...barisTabel(TAB_LATIHAN_1, "lt", 4)),
+      SUARA_G2,
+      hapus(0, "n60"),
+      tambah("sama", teks("p1", 210, 84, "= 0,60", 20, W.merah)),
+      tambah("yaitu", teks("fa", 190, 112, "60", 16, W.biru), garis("fg", 172, 118, 36, 0, W.biru, 2), teks("fb", 190, 136, "100", 16, W.biru)),
+      tambah("seratus", teks("pr", 238, 126, "per seratus", 9, W.coklat)),
     ),
     k(
-      "Periksa hasilnya: dua belas, seratus lima belas, lima ratus enam puluh dua, dan seribu lima puluh lima persen. Cek lagi: sepuluh koma lima lima dikali seratus memang seribu lima puluh lima.",
-      bersih(0),
-      tambah(0, judul("Memeriksa hasil")),
-      tambah("Periksa", ...kartu("bt", 12, 40, 276, 32, W.hijauMuda, ["hasil: 12%, 115%, 562%, 1055%"], 10.4)),
-      tambah("Cek", ...kartu("bu", 12, 90, 276, 32, W.krem, ["periksa: 10,55 × 100 = 1055"], 10.4)),
-      tambah("memang", ...kartu("bx", 60, 140, 180, 30, W.pink, ["hasilnya benar semua"], 10.4)),
+      SUARA_G3,
+      hapus(0, "fa", "fg", "fb", "pr", "p1"),
+      tambah("adalah", teks("r60", 210, 112, "60%", 24, W.hijauTua), emo("ok", 250, 112, E.benar, 18)),
+      tambah("bukan", teks("r6", 210, 140, "6%", 18, W.merah), garis("cr", 192, 146, 36, -18, W.merah, 2.4, { z: 5 })),
     ),
   ],
 };
 
-/* ------------------------------ 8. Ayo Berlatih: persen ke desimal dan Diferensiasi (Buku Siswa hlm. 82; Panduan Guru hlm. 110) ------------------------------ */
-const TAB_LATIHAN_2 = tabel(
-  "lp",
-  35,
-  40,
-  [30, 100, 100],
-  [
-    ["", "persen", "desimal"],
-    ["a", "18%", "0,18"],
-    ["b", "65%", "0,65"],
-    ["c", "123%", "1,23"],
-    ["d", "675%", "6,75"],
-  ],
-  22,
-  10,
-);
-export const ADEGAN_BERLATIH_2E: AdeganStory = {
-  id: "berlatih-2e",
-  judul: "Latihan 2: persen ke desimal",
-  sumber: "Materi: latihan persen ke desimal",
-  latar: "#FFF7ED",
-  kutipan: [
-    "Ubahlah bentuk persen berikut menjadi bentuk pecahan desimal",
-    "a. 18% = 0,18",
-    "d. 675% = 6,75",
-    "Model pembelajaran yang disarankan untuk bab ini adalah Problem Based Learning",
-    "minta mereka mengerjakan Latihan tanpa bantuan",
-    "guru dapat mendampingi peserta didik yang mengalami kesulitan",
-  ],
+/* ------------------------------ 6. Lampion: menepati taruhan ------------------------------ */
+const SUARA_L1 = "Satria menepati taruhannya dan memasang lampion satu per satu.";
+const SUARA_L2 = "Tangga lipatnya bergoyang, dan lampion terakhir menggantung miring di atas kepalanya.";
+const SUARA_L3 = "Semua orang tertawa, dan Pak Hendro menahan tangga dengan kedua tangan.";
+
+export const ADEGAN_LAMPION: AdeganStory = {
+  id: "lampion",
+  judul: "Satria memasang lampion",
+  sumber: "Materi: menepati taruhan",
+  latar: "#FFFBEB",
   ketukan: [
     k(
-      "Sekarang kebalikannya: ubah persen menjadi desimal perseratusan. Caranya persen dibagi seratus, atau koma digeser dua kali ke kiri. Delapan belas persen menjadi nol koma satu delapan, enam puluh lima persen menjadi nol koma enam lima.",
-      bersih(0),
-      tambah(0, judul("Latihan 2: ke desimal")),
-      tambah("Sekarang", ...barisTabel(TAB_LATIHAN_2, "lp", 0)),
-      tambah("Delapan", ...barisTabel(TAB_LATIHAN_2, "lp", 1)),
-      tambah("enam@2", ...barisTabel(TAB_LATIHAN_2, "lp", 2)),
-      tambah("Caranya", ...kartu("bv", 40, 140, 220, 30, W.krem, ["bagi 100: koma ke kiri 2 kali"], 9.6)),
+      SUARA_L1,
+      tambah(0, judul("Memasang Lampion"), ...halaman("hl", 150), ...tokoh("sa", 36, 184, "Satria")),
+      tambah("memasang", garis("tl", 70, 80, 200, 0, W.coklat, 1.4, { z: 1 })),
+      tambah("satu", ...lampion("m0", 90, 90, true)),
+      tambah("per", ...lampion("m1", 130, 90, true)),
+      tambah("satu@2", ...lampion("m2", 170, 90, true), teks("sp", 130, 118, "1 per 1", 12, W.merah)),
     ),
     k(
-      "Seratus dua puluh tiga persen menjadi satu koma dua tiga. Enam ratus tujuh puluh lima persen menjadi enam koma tujuh lima. Semuanya sudah kita periksa dan benar.",
-      tambah("Seratus", ...barisTabel(TAB_LATIHAN_2, "lp", 3)),
-      tambah("Enam", ...barisTabel(TAB_LATIHAN_2, "lp", 4)),
-      tambah("periksa", ...kartu("bw", 40, 178, 220, 22, W.hijauMuda, ["semuanya sudah benar"], 9)),
+      SUARA_L2,
+      hapus(0, ...["sa", "sa-n", "sa-bj"]),
+      tambah("Tangga", garis("tg1", 206, 150, 18, -62, W.coklat, 2.6, { z: 2 }), garis("tg2", 242, 150, -18, -62, W.coklat, 2.6, { z: 2 }), garis("tr1", 211, 134, 26, 0, W.coklat, 2, { z: 2 }), garis("tr2", 216, 114, 16, 0, W.coklat, 2, { z: 2 })),
+      tambah("bergoyang", teks("gy", 266, 100, "goyang", 10, W.merah)),
+      tambah("miring", garis("mr", 190, 76, 30, 10, W.coklat, 1.4, { z: 1 }), ...lampion("m3", 196, 90, true)),
+      tambah("kepalanya", emo("sa", 224, 112, E.satria, 24, { z: 3 })),
     ),
     k(
-      "Untuk berlatih, kita belajar dalam kelompok campuran, ketuanya teman yang sudah lancar. Kalau kamu sudah cepat, kerjakan soal tambahan tanpa bantuan. Kalau masih kesulitan, ibu guru akan mendampingi.",
-      ...daftar("df", "Belajar bersama", [
-        { at: "kelompok", t: "kelompok campuran, ketua yang lancar", w: W.langit, u: 9.2 },
-        { at: "cepat", t: "sudah cepat: soal tambahan sendiri", w: W.hijauMuda, u: 9 },
-        { at: "mendampingi", t: "masih sulit: didampingi guru", w: W.krem, u: 9.6 },
-      ]),
+      SUARA_L3,
+      tambah("tertawa", teks("ha", 70, 128, "ha ha ha", 12, W.merah), emo("tw", 70, 150, E.tawa, 22)),
+      tambah("Hendro", ...tokoh("ph", 268, 184, "Pak Hendro")),
+      tambah("menahan", panah("mh", 252, 132, -12, 10, W.hijauTua, 2.4, { z: 4 })),
+      tambah("tangan", emo("tg", 252, 140, "\u{1F64C}", 16)),
     ),
   ],
 };

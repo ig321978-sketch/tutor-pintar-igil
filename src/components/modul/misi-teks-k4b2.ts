@@ -1,6 +1,7 @@
 /**
- * Teks misi dan nama simulasi Kelas 4 Bab 2. Berkas kecil tanpa impor, dipisah dari SimulasiK4Bab2.tsx
- * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen laboratorium ke bundel awal.
+ * Teks misi awal Kelas 4 Bab 2 (Sanggar Batik Kampung Mekar). Berkas kecil tanpa impor, dipisah dari SimulasiK4Bab2.tsx
+ * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen simulasi ke bundel awal.
+ * KERANGKA: agen tiap Sub-Bab mengisi barisnya sendiri dengan teks yang SAMA dengan MISI_*_TEKS di data-sim.ts folder Sub-Bab.
  */
 
 export type HurufK4B2 = "A" | "B" | "C" | "D" | "E";
@@ -9,19 +10,11 @@ const HURUF: HurufK4B2[] = ["A", "B", "C", "D", "E"];
 export const hurufK4B2 = (sub: string): HurufK4B2 => (HURUF.includes(sub as HurufK4B2) ? (sub as HurufK4B2) : "A");
 
 export const MISI_K4B2: Record<HurufK4B2, string> = {
-  A: "Di Lab Pecahan, bagi keseluruhan menjadi bagian sama besar dan arsir satu bagian, bandingkan dua pecahan berpembilang satu, dan temukan 1/n pada garis. Periksa dengan Mesin Pecahan, lalu selesaikan skenario Pizza Tiara. Selesaikan semua misi wajib, urutannya bebas.",
-  B: "Di Lab Batang, baca pecahan dari batang, bandingkan dua pecahan yang penyebutnya sama, dan urutkan pecahan. Periksa dengan Mesin Batang, lalu selesaikan skenario Kebun Slamet. Selesaikan semua misi wajib.",
-  C: "Di Lab Senilai, kalikan atau bagi pembilang dan penyebut dengan bilangan yang sama, lihat bahwa mengubah satu saja merusak nilai, dan sederhanakan dengan FPB. Periksa dengan Mesin Senilai, lalu selesaikan skenario Cokelat Helen. Selesaikan semua misi wajib.",
-  D: "Di Lab Desimal, tulis pecahan persepuluhan dan perseratusan sebagai desimal, hitung angka di belakang koma, dan jembatani pecahan ke desimal. Periksa dengan Mesin Desimal, lalu selesaikan skenario Roti dan Biskuit Ibu. Selesaikan semua misi wajib.",
-  E: "Di Lab Persen, hubungkan desimal perseratusan dengan persen lewat kisi, cara biasa dan cara langsung, ubah balik persen ke desimal, dan selesaikan cerita persen. Periksa dengan Mesin Persen, lalu tuntaskan skenario Pameran Pecahan Kelas 4. Selesaikan semua misi wajib: ini misi penutup bab.",
-};
-
-export const NAMA_SIM_K4B2: Record<HurufK4B2, string> = {
-  A: "Lab Pecahan, Mesin Pecahan, dan Pizza Tiara",
-  B: "Lab Batang, Mesin Batang, dan Kebun Slamet",
-  C: "Lab Senilai, Mesin Senilai, dan Cokelat Helen",
-  D: "Lab Desimal, Mesin Desimal, dan Roti dan Biskuit Ibu",
-  E: "Pencapaian Misi Bab: Lab Persen, Mesin Persen, dan Pameran Pecahan Kelas 4",
+  A: "Bagi kain, bandingkan dua pita, urutkan pecahan, lalu jepit pecahan pada garis. Urutannya bebas.",
+  B: "Hitung isi dua bak lalu pilih tandanya, isi bak, urutkan kartu, dan pasang titik pada garis. Urutannya bebas.",
+  C: "Arsir kain sama besar, cari pengali, sederhanakan pecahan, dan pilih kartu sama besar. Urutannya bebas.",
+  D: "Warnai kain per sepuluh dan per seratus, hubungkan pecahan ke desimal, lalu tulis baliknya. Urutannya bebas.",
+  E: "Warnai kisi seratus, geser koma ke persen dan sebaliknya, lalu baca kisi. Urutannya bebas.",
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */

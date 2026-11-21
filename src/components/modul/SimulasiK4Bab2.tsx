@@ -2,93 +2,98 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import LabBertahap, { type TabLab } from "./LabBertahap";
-import SimulasiLabPecahanK4B2 from "./SimulasiLabPecahanK4B2";
-import SimulasiLabBatangK4B2 from "./SimulasiLabBatangK4B2";
-import SimulasiLabSenilaiK4B2 from "./SimulasiLabSenilaiK4B2";
-import SimulasiLabDesimalK4B2 from "./SimulasiLabDesimalK4B2";
-import SimulasiLabPersenK4B2 from "./SimulasiLabPersenK4B2";
-import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
-import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K4B2A, SKENARIO_K4B2B, SKENARIO_K4B2C } from "./skenario-k4b2-biasa";
-import { SKENARIO_K4B2D, SKENARIO_K4B2E } from "./skenario-k4b2-desimal";
-import { MESIN_DESIMAL, MESIN_PERSEN } from "./mesin-data-k4b2-desimal";
-import { MESIN_BATANG, MESIN_PECAHAN, MESIN_SENILAI } from "./mesin-data-k4b2-biasa";
-import type { DefSkenario } from "./skenario-umum";
-import type { DefMesin } from "./mesin-bertahap-k3b1";
-import { daftarMisiK4Bab2, ID_SKENARIO_K4B2, type KeadaanK4Bab2 } from "./misi-k4bab2";
-import { laporMisi, tampilMisi } from "./misi-simulasi";
-import { MISI_K4B2, NAMA_SIM_K4B2, hurufK4B2, misiAwalK4Bab2, type HurufK4B2 } from "./misi-teks-k4b2";
+import { MISI_K4B2, hurufK4B2, misiAwalK4Bab2 } from "./misi-teks-k4b2";
+import { daftarMisiK4Bab2 as daftarMisiJahit } from "./misi-k4bab2";
+import { laporMisi as laporMisiJahit } from "./misi-simulasi";
+import SimulasiMejaJahit from "./jahit-k4b2c/SimulasiMejaJahit";
+import type { KeadaanJahit } from "./jahit-k4b2c/logika";
+import { daftarMisiK4Bab2 as daftarMisiPameran } from "./misi-k4bab2";
+import { laporMisi as laporMisiPameran } from "./misi-simulasi";
+import SimulasiPapanPameran from "./pameran-k4b2e/SimulasiPapanPameran";
+import type { KeadaanPameran } from "./pameran-k4b2e/logika";
+import { daftarMisiK4Bab2 as daftarMisiLipat } from "./misi-k4bab2";
+import { laporMisi as laporMisiLipat } from "./misi-simulasi";
+import SimulasiMejaLipat from "./lipat-k4b2a/SimulasiMejaLipat";
+import type { KeadaanLipat } from "./lipat-k4b2a/logika";
+import { daftarMisiK4Bab2 as daftarMisiWarna } from "./misi-k4bab2";
+import { laporMisi as laporMisiWarna } from "./misi-simulasi";
+import SimulasiBakWarna from "./warna-k4b2b/SimulasiBakWarna";
+import type { KeadaanWarna } from "./warna-k4b2b/logika";
+import { daftarMisiK4Bab2 as daftarMisiMeteran } from "./misi-k4bab2";
+import { laporMisi as laporMisiMeteran } from "./misi-simulasi";
+import SimulasiMeteranKain from "./meteran-k4b2d/SimulasiMeteranKain";
+import type { KeadaanMeteran } from "./meteran-k4b2d/logika";
 
 /* ======================================================================== */
-/* Simulasi Kelas 4 Bab 2 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
-/* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k4bab2.ts. */
-/*   A Pecahan pembilang satu : Lab Pecahan + Mesin Pecahan + Pizza Tiara      */
-/*   B Penyebut sama          : Lab Batang + Mesin Batang + Kebun Slamet       */
-/*   C Pecahan senilai        : Lab Senilai + Mesin Senilai + Cokelat Helen    */
-/*   D Desimal                : Lab Desimal + Mesin Desimal + Roti dan Biskuit Ibu */
-/*   E Desimal dan persen     : Lab Persen + Mesin Persen + Pameran Pecahan Kelas 4 (pencapaian bab) */
+/* Simulasi Kelas 4 Bab 2 di dalam Materi (tahap 4 SMISCPA), tema           */
+/* Sanggar Batik Kampung Mekar: A Meja Lipat sampai E Papan Pameran.      */
+/* KERANGKA: agen Sub-Bab mengisi fungsi langkah-nya (impor dari folder      */
+/* miliknya; render sekarang null) dan menambah impor yang dibutuhkan.        */
 /* ======================================================================== */
 
-const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
+/** Sub-Bab A: Meja Lipat. */
+const langkahMejaLipatA = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Meja Lipat",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K4B2.A,
+  misiDaftar: daftarMisiLipat("A").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiMejaLipat speakGuru={a.speakGuru} onKeadaan={(k: KeadaanLipat) => laporMisiLipat(daftarMisiLipat("A"), k, a.capai)} />,
+});
 
-const SKENARIO: Record<HurufK4B2, DefSkenario> = { A: SKENARIO_K4B2A, B: SKENARIO_K4B2B, C: SKENARIO_K4B2C, D: SKENARIO_K4B2D, E: SKENARIO_K4B2E };
-const MESIN: Record<HurufK4B2, DefMesin> = { A: MESIN_PECAHAN, B: MESIN_BATANG, C: MESIN_SENILAI, D: MESIN_DESIMAL, E: MESIN_PERSEN };
+/** Sub-Bab B: Bak Warna. */
+const langkahBakWarnaB = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Bak Warna",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K4B2.B,
+  misiDaftar: daftarMisiWarna("B").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiBakWarna speakGuru={a.speakGuru} onKeadaan={(k: KeadaanWarna) => laporMisiWarna(daftarMisiWarna("B"), k, a.capai)} />,
+});
 
-const COBA_MESIN: Record<HurufK4B2, string[]> = {
-  A: ["Ketuk stasiun Banding sebelum Bagi. Apa kata mesin?", "Pada 1/4 dan 1/2, pecahan mana yang bagiannya lebih besar?", "Mengapa penyebut besar membuat tiap bagian kecil?"],
-  B: ["Ketuk stasiun Urut sebelum Penyebut. Apa kata mesin?", "Pada penyebut yang sama, bagian mana yang menentukan besar kecil?", "Mengapa penyebut yang berbeda tidak boleh langsung dibandingkan pembilangnya?"],
-  C: ["Ketuk stasiun Sederhana sebelum Gambar. Apa kata mesin?", "Mengapa pembilang dan penyebut harus diubah sama-sama?", "Bagaimana FPB membantu menyederhanakan pecahan?"],
-  D: ["Ketuk stasiun Balik sebelum Pecahan. Apa kata mesin?", "Pada 0,07 dan 0,7, mana yang punya dua angka di belakang koma?", "Mengapa nol setelah koma tetap ditulis pada 7/100?"],
-  E: ["Ketuk stasiun Balik sebelum Pecahan. Apa kata mesin?", "Mengapa 2,46 menjadi 246% dan bukan 24,6%?", "Mengapa persen boleh lebih dari 100%?"],
-};
+/** Sub-Bab C: Meja Jahit. */
+const langkahMejaJahitC = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Meja Jahit",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K4B2.C,
+  misiDaftar: daftarMisiJahit("C").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiMejaJahit speakGuru={a.speakGuru} onKeadaan={(k: KeadaanJahit) => laporMisiJahit(daftarMisiJahit("C"), k, a.capai)} />,
+});
 
-const LAB: Record<HurufK4B2, { id: string; nama: string }> = {
-  A: { id: "pecahan", nama: "Lab Pecahan" },
-  B: { id: "batang", nama: "Lab Batang" },
-  C: { id: "senilai", nama: "Lab Senilai" },
-  D: { id: "desimal", nama: "Lab Desimal" },
-  E: { id: "persen", nama: "Lab Persen" },
-};
+/** Sub-Bab D: Meteran Kain. */
+const langkahMeteranKainD = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Meteran Kain",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K4B2.D,
+  misiDaftar: daftarMisiMeteran("D").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiMeteranKain speakGuru={a.speakGuru} onKeadaan={(k: KeadaanMeteran) => laporMisiMeteran(daftarMisiMeteran("D"), k, a.capai)} />,
+});
 
-function LabSub({ huruf, speakGuru, lapor }: { huruf: HurufK4B2; speakGuru: (t: string) => void; lapor: (k: KeadaanK4Bab2) => void }) {
-  if (huruf === "B") return <SimulasiLabBatangK4B2 speakGuru={speakGuru} onKeadaan={lapor} />;
-  if (huruf === "C") return <SimulasiLabSenilaiK4B2 speakGuru={speakGuru} onKeadaan={lapor} />;
-  if (huruf === "D") return <SimulasiLabDesimalK4B2 speakGuru={speakGuru} onKeadaan={lapor} />;
-  if (huruf === "E") return <SimulasiLabPersenK4B2 speakGuru={speakGuru} onKeadaan={lapor} />;
-  return <SimulasiLabPecahanK4B2 speakGuru={speakGuru} onKeadaan={lapor} />;
-}
+/** Sub-Bab E: Papan Pameran. */
+const langkahPapanPameranE = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Papan Pameran",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K4B2.E,
+  misiDaftar: daftarMisiPameran("E").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiPapanPameran speakGuru={a.speakGuru} onKeadaan={(k: KeadaanPameran) => laporMisiPameran(daftarMisiPameran("E"), k, a.capai)} />,
+});
 
 const langkahK4Bab2 = (sub: string): LangkahSim[] => {
   const huruf = hurufK4B2(sub);
-  const daftar = daftarMisiK4Bab2(huruf);
-  return [
-    {
-      metode: "PhET",
-      sub: NAMA_SIM_K4B2[huruf],
-      petunjuk: MAINKAN_DULU,
-      misi: MISI_K4B2[huruf],
-      misiDaftar: tampilMisi(daftar),
-      mode: "sentuh",
-      render: (a) => {
-        const lapor = (k: KeadaanK4Bab2) => laporMisi(daftar, k, a.capai);
-        const selesai = (id: string) => lapor({ alat: "selesai", id });
-        const lab: TabLab = { ...LAB[huruf], render: () => <LabSub huruf={huruf} speakGuru={a.speakGuru} lapor={lapor} /> };
-        const def = MESIN[huruf];
-        const mesin: TabLab = {
-          id: "mesin",
-          nama: def.judul,
-          render: () => <SimulasiMesinBertahapK3 def={def} coba={COBA_MESIN[huruf]} speakGuru={a.speakGuru} onTuntas={selesai} />,
-        };
-        const skenario: TabLab = {
-          id: "skenario",
-          nama: SKENARIO[huruf].judul,
-          render: () => <SimulasiSkenario def={SKENARIO[huruf]} speakGuru={a.speakGuru} onTuntas={() => selesai(ID_SKENARIO_K4B2[huruf])} />,
-        };
-        return <LabBertahap tab={[lab, mesin, skenario]} label="Alat laboratorium pecahan dan desimal" />;
-      },
-    },
-  ];
+  if (huruf === "A") return [langkahMejaLipatA()];
+  if (huruf === "B") return [langkahBakWarnaB()];
+  if (huruf === "C") return [langkahMejaJahitC()];
+  if (huruf === "D") return [langkahMeteranKainD()];
+  if (huruf === "E") return [langkahPapanPameranE()];
+  return [langkahMejaLipatA()];
 };
 
 export { misiAwalK4Bab2 };
@@ -107,7 +112,7 @@ export default function SimulasiK4Bab2Materi({
   const huruf = hurufK4B2(sub);
   return (
     <SimulasiAlur
-      judulBab={`Kelas 4 Bab 2 · Sub-Bab ${huruf}`}
+      judulBab={`Bab 2 · Sub-Bab ${huruf}`}
       langkah={langkahK4Bab2(sub)}
       speakGuru={speakGuru}
       onSelesai={onSelesai}

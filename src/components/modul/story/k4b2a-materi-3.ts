@@ -1,260 +1,122 @@
 import type { AdeganStory } from "./logika-story";
-import { BANDING_KUNCI, BANDING_SOAL, TIARA, W, barisTabel, emo, garis, judul, kartu, kisi, pecahan, segitigaBagi, teks } from "./k4b2a-gambar";
-import { bersih, idx, k, sorotkan, tambah, hapus, ubah } from "./k4b2a-bantu";
+import { E, W, emo, garisBil, jepitan, judul, kotak, panah, pecahan, tanah, teks, tokoh } from "./k4b2a-gambar";
+import { bersih, hapus, k, sorotkan, tambah } from "./k4b2a-bantu";
 
-/** Dua pecahan pembilang satu (penyebut a dan b) dengan tanda di antaranya; (cx, y) pusat garis pecahan. Id `${id}a`, `${id}b`, `${id}s`. */
-const pasang = (id: string, a: number, b: number, tanda: string, y: number, u = 24) => [...pecahan(`${id}a`, 70, y, "1", a, u), teks(`${id}s`, 150, y + 9, tanda, u + 4, W.merah), ...pecahan(`${id}b`, 230, y, "1", b, u)];
+/*
+ * Cerita orisinal IGIL "Kain Lipat Bu Wulan" (Kelas 4 Bab 2 Sub-Bab A), awal cerita Sanggar Batik Kampung Mekar.
+ * Naskah suara dari naskah/story-naskah-k4b2a.md. Bagian ini: garis pecahan, mengurutkan potongan, penutup (jembatan ke Sub-Bab B).
+ */
 
-/* ------------------------------ 9. Membandingkan: 1/10 dan 1/5 (Buku Siswa hlm. 61; Panduan Guru hlm. 95) ------------------------------ */
-const SUARA_E1 = "Contoh kedua: satu batang dibagi sepuluh bagian sama dengan satu bagian diarsir. Batang lain dibagi lima bagian sama dengan satu bagian diarsir. Keduanya sama panjang.";
-const SUARA_E2 = "Pertanyaan kali ini: daerah arsir mana yang lebih kecil? Arsiran satu per sepuluh lebih pendek daripada arsiran satu per lima, jadi lebih kecil.";
-const SUARA_E3 = "Maka satu per sepuluh kurang dari satu per lima, ditulis dengan tanda kurang dari. Ujung runcing tanda itu menghadap ke pecahan yang lebih kecil.";
-const SUARA_E4 = "Ringkasnya, dua pecahan dengan pembilang satu dibandingkan lewat penyebutnya. Penyebut dua melawan empat, dan penyebut lima melawan sepuluh. Penyebut yang lebih kecil memberi pecahan yang lebih besar.";
+/* ------------------------------ 7. Garis pecahan ------------------------------ */
+const SUARA_G1 = "Bu Wulan membentangkan tali dari nol sampai satu di halaman.";
+const SUARA_G2 = "Genta menjepit tanda satu per dua di tengah, lalu satu per empat, lalu satu per delapan makin dekat ke nol.";
+const SUARA_G3 = "Semakin ke kiri, semakin kecil pecahannya.";
+const GB = garisBil("gb", 30, 100, 240, 0);
 
-export const ADEGAN_BANDING_KECIL: AdeganStory = {
-  id: "banding-kecil",
-  judul: "Membandingkan: sepersepuluh dan seperlima",
-  sumber: "Materi: sepersepuluh lawan seperlima",
-  latar: "#FFFBEB",
-  kutipan: [
-    "Amati gambar di atas. Bandingkan daerah arsir antara kedua pecahan tersebut.",
-    "Daerah arsir mana yang lebih kecil?",
-    "lebih kecil dari daerah arsir",
-    "Atau dapat ditulis sebagai berikut:",
-    "Peserta didik dapat menentukan mana pecahan yang lebih besar atau lebih kecil.",
-  ],
+export const ADEGAN_GARIS: AdeganStory = {
+  id: "garis",
+  judul: "Garis pecahan di halaman",
+  sumber: "Materi: garis pecahan",
+  latar: "#FAF5FF",
   ketukan: [
     k(
-      SUARA_E1,
-      tambah(0, judul("Contoh kedua")),
-      tambah("sepuluh", ...kisi("e1", 30, 42, 10, 1, 18, 30, 1), ...pecahan("e1r", 245, 57, "1", "10", 24)),
-      tambah("lima", ...kisi("e2", 30, 112, 5, 1, 36, 30, 1), ...pecahan("e2r", 245, 127, "1", "5", 24)),
-      tambah("Keduanya", teks("esm", 105, 98, "dua batang sama panjang", 8, W.coklat)),
+      SUARA_G1,
+      tambah(0, judul("Tali dari Nol ke Satu"), ...tanah("tn", 150), ...tokoh("bw", 40, 184, "Bu Wulan")),
+      tambah("tali", GB.slice(0, 3)),
+      tambah("nol", GB[3]),
+      tambah("satu", GB[4]),
     ),
     k(
-      SUARA_E2,
-      hapus(0, "esm"),
-      tambah("daerah", garis("ek1", 30, 80, 18, 0, W.merah, 2.6), teks("et1", 39, 92, "lebih pendek", 8.2, W.merah)),
-      tambah("daripada", garis("ek2", 30, 150, 36, 0, W.merah, 2.6), teks("et2", 48, 162, "lebih panjang", 8.2, W.merah)),
-      sorotkan("kecil?", "e1-c0"),
+      SUARA_G2,
+      tambah(0, ...tokoh("ge", 140, 184, "Genta")),
+      tambah("dua", jepitan("j2", 150, 100), ...pecahan("f2", 150, 70, 2, 12)),
+      tambah("empat,", jepitan("j4", 90, 100), ...pecahan("f4", 90, 70, 4, 12)),
+      tambah("delapan", jepitan("j8", 60, 100), ...pecahan("f8", 60, 70, 8, 12)),
+      tambah("nol.", panah("ar", 200, 126, -150, 0, W.merah, 2), teks("mk", 125, 140, "makin kecil", 9, W.merah)),
     ),
     k(
-      SUARA_E3,
-      bersih(0),
-      tambah(0, judul("Kurang dari")),
-      tambah("Maka", ...pecahan("e3a", 80, 90, "1", "10", 34), ...pecahan("e3b", 220, 90, "1", "5", 34), ...kisi("e3p", 20, 152, 10, 1, 6, 18, 1), ...kisi("e3q", 190, 152, 5, 1, 12, 18, 1)),
-      tambah("tanda", teks("e3c", 150, 102, "<", 34, W.merah)),
-      tambah("Ujung", teks("e3d", 150, 142, "ujung runcing menunjuk yang kecil", 8, W.coklat)),
-    ),
-    k(
-      SUARA_E4,
-      bersih(0),
-      tambah(0, judul("Ringkas: lihat penyebutnya")),
-      tambah("Ringkasnya,", ...barisTabel("er0", 20, 32, [100, 80, 80], ["pasangan", "penyebut", "lebih besar"], 24, 8.4, true)),
-      tambah("empat,", ...barisTabel("er1", 20, 56, [100, 80, 80], ["1/2 dan 1/4", "2 dan 4", "1/2"], 24, 8.8)),
-      tambah("sepuluh.", ...barisTabel("er2", 20, 80, [100, 80, 80], ["1/5 dan 1/10", "5 dan 10", "1/5"], 24, 8.8)),
-      tambah("Penyebut@4", ...kartu("er3", 20, 124, 260, 40, W.emas, ["penyebut lebih kecil:", "pecahan lebih besar"], 9.2)),
+      SUARA_G3,
+      tambah(0, teks("tk", 150, 40, "makin ke kiri, makin kecil", 10, W.unguTua)),
+      tambah("kiri,", teks("lk", 50, 140, "kecil", 9, W.biru), teks("lb", 250, 140, "besar", 9, W.biru)),
+      sorotkan("pecahannya.", "j8", "j4", "j2"),
     ),
   ],
 };
 
-/* ------------------------------ 10. Ayo Berlatih nomor 1 sampai 3 (Buku Siswa hlm. 62; Panduan Guru hlm. 95–96) ------------------------------ */
-const SUARA_L1 = "Sekarang berlatih: isi titik-titik dengan pecahan yang sesuai gambar, dan tanda lebih dari atau kurang dari. Gambar pertama: dua segitiga sama besar, kiri dibagi dua, kanan dibagi tiga, masing-masing satu bagian diarsir.";
-const SUARA_L2 = "Jawabannya: satu per dua lebih dari satu per tiga. Penyebut dua lebih kecil daripada penyebut tiga, jadi bagian yang diarsir lebih besar.";
-const SUARA_L3 = "Gambar kedua: kiri kisi dengan dua baris dan tiga kolom, enam bagian sama, satu diarsir, jadi satu per enam. Kanan dibagi tiga, satu diarsir, jadi satu per tiga. Maka satu per enam kurang dari satu per tiga.";
-const SUARA_L4 = "Gambar terakhir memuat tiga batang yang sama panjang. Batang pertama dibagi dua, kedua dibagi tiga, ketiga dibagi empat, masing-masing satu bagian diarsir. Urutan dari besar ke kecil: satu per dua, satu per tiga, satu per empat.";
+/* ------------------------------ 8. Urutkan potongan ------------------------------ */
+const SUARA_U1 = "Bu Wulan meminta mereka mengurutkan potongan dari yang terkecil.";
+const SUARA_U2 = "Satria menyusun satu per delapan, satu per empat, lalu satu per dua.";
+const SUARA_U3 = "Bu Wulan bertepuk tangan, karena urutannya sudah benar.";
+const potongan = (id: string, y: number, w: number) => kotak(id, 40, y, w, 18, W.arsir, W.ungu, { rx: 2, tebal: 1.4, z: 2 });
 
-export const ADEGAN_BERLATIH_BANDING_SATU: AdeganStory = {
-  id: "berlatih-banding-satu",
-  judul: "Berlatih: bandingkan gambar",
-  sumber: "Materi: berlatih membandingkan gambar",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Ayo Berlatih",
-    "Isilah titik-titik di bawah ini dengan bilangan pecahan yang sesuai dengan gambar serta notasi lebih dari ( > ) atau kurang dari ( < ).",
-    "Lengkapi titik-titik di bawah ini!",
-  ],
+export const ADEGAN_URUT: AdeganStory = {
+  id: "urut",
+  judul: "Urutkan potongan kain",
+  sumber: "Materi: mengurutkan pecahan",
+  latar: "#FAF5FF",
   ketukan: [
     k(
-      SUARA_L1,
-      tambah(0, judul("Gambar pertama: dua segitiga")),
-      tambah("titik-titik", ...pecahan("n1x", 75, 160, "…", "…", 16), ...pecahan("n1y", 225, 160, "…", "…", 16), teks("n1s", 150, 166, "…", 16, W.merah)),
-      tambah("kiri", ...segitigaBagi("n1a", 25, 40, 100, 90, 2, 1)),
-      tambah("kanan", ...segitigaBagi("n1b", 175, 40, 100, 90, 3, 1)),
+      SUARA_U1,
+      tambah(0, judul("Urutkan Potongan"), ...tanah("tn", 150), ...tokoh("bw", 250, 184, "Bu Wulan")),
+      tambah("potongan", potongan("pA", 50, 60), potongan("pB", 76, 120), potongan("pC", 102, 30)),
+      tambah("terkecil.", teks("tl", 226, 60, "mulai dari", 9, W.coklat), teks("tl2", 226, 72, "yang terkecil", 9, W.coklat)),
     ),
     k(
-      SUARA_L2,
-      ubah("dua", { id: "n1x-a", isi: "1" }, { id: "n1x-b", isi: "2" }),
-      ubah("tiga.", { id: "n1y-a", isi: "1" }, { id: "n1y-b", isi: "3" }),
-      ubah("lebih", { id: "n1s", isi: ">", u: 22 }),
-      tambah("Penyebut", teks("n1t", 150, 140, "penyebut kecil: arsir besar", 8, W.coklat)),
+      SUARA_U2,
+      hapus(0, "pA", "pB", "pC", "tl", "tl2"),
+      tambah(0, ...tokoh("sa", 160, 184, "Satria")),
+      tambah("delapan,", potongan("s8", 50, 30), ...pecahan("u8", 26, 56, 8, 10)),
+      tambah("empat,", potongan("s4", 76, 60), ...pecahan("u4", 26, 82, 4, 10)),
+      tambah("dua.", potongan("s2", 102, 120), ...pecahan("u2", 26, 108, 2, 10)),
     ),
     k(
-      SUARA_L3,
-      bersih(0),
-      tambah(0, judul("Gambar kedua: kisi dan batang")),
-      tambah(idx(SUARA_L3, "kisi"), ...kisi("n2a", 20, 44, 3, 2, 28, 26, 1)),
-      tambah(idx(SUARA_L3, "jadi", 1), ...pecahan("n2ar", 62, 128, "1", "6", 22)),
-      tambah("Kanan", ...kisi("n2b", 190, 44, 3, 1, 28, 52, 1)),
-      tambah(idx(SUARA_L3, "jadi", 2), ...pecahan("n2br", 232, 128, "1", "3", 22)),
-      tambah("Maka", teks("n2s", 150, 138, "<", 26, W.merah)),
-    ),
-    k(
-      SUARA_L4,
-      bersih(0),
-      tambah(0, judul("Gambar terakhir: tiga batang")),
-      tambah("pertama", ...kisi("n3a", 20, 34, 2, 1, 48, 24, 1)),
-      tambah("kedua", ...kisi("n3b", 20, 76, 3, 1, 32, 24, 1)),
-      tambah("ketiga", ...kisi("n3c", 20, 118, 4, 1, 24, 24, 1)),
-      tambah("diarsir.", teks("n3x", 150, 51, "1/2", 12, W.biru), teks("n3y", 150, 93, "1/3", 12, W.biru), teks("n3z", 150, 135, "1/4", 12, W.biru)),
-      tambah("Urutan", ...kartu("n3o", 20, 158, 260, 30, W.emas, ["1/2 > 1/3 > 1/4"], 12)),
+      SUARA_U3,
+      tambah("bertepuk", emo("tp", 226, 142, E.tepuk, 20)),
+      tambah("urutannya", teks("ut", 232, 60, "terkecil ke terbesar", 9, W.unguTua)),
+      tambah("benar.", emo("ok", 232, 100, E.benar, 24)),
     ),
   ],
 };
 
-/* ------------------------------ 11. Ayo Berlatih nomor 4 dan 5 (Buku Siswa hlm. 62–63; Panduan Guru hlm. 96) ------------------------------ */
-const SUARA_N1 = "Sekarang isi dengan tanda lebih dari atau kurang dari. Bagian a: satu per lima dan satu per tiga. Penyebut lima lebih besar, jadi satu per lima kurang dari satu per tiga.";
-const SUARA_N2 = "Bagian b: satu per empat dan satu per lima. Penyebut empat lebih kecil, jadi satu per empat lebih dari satu per lima. Bagian c: satu per delapan dan satu per dua, jadi satu per delapan kurang dari satu per dua.";
-const SUARA_N3 = "Bagian d: satu per sepuluh dan satu per lima, jadi satu per sepuluh kurang dari satu per lima. Bagian e: satu per sebelas dan satu per tiga belas, jadi satu per sebelas lebih dari satu per tiga belas.";
-const SUARA_N4 = "Mari kita rangkum kelima bagian itu: kurang dari, lebih dari, kurang dari, kurang dari, dan lebih dari.";
-const SUARA_N5 = "Sekarang cerita Tiara. Tiara mempunyai bawang putih satu per dua kilogram dan gula satu per empat kilogram. Manakah yang lebih berat? Penyebut dua lebih kecil daripada empat, jadi satu per dua lebih besar. Jawabannya bawang putih.";
+/* ------------------------------ 9. Penutup ------------------------------ */
+const SUARA_P1 = "Pak Joyo, tukang pewarna, datang membawa bak-bak warna yang isinya berbeda-beda.";
+const SUARA_P2 = "Pecahan satu bagian tadi ternyata hanya awal cerita.";
+const SUARA_P3 = "Menurutmu, bak mana yang paling banyak isinya? Terima kasih, Satria, Laras, Genta, Pak Hendro, dan Bu Wulan!";
+const WARNA_BAK = ["#F87171", "#60A5FA", "#34D399"];
+/** Bak warna: badan `${id}` dan isi `${id}-w` setinggi `isi`. Pojok kiri-atas badan (x, 108). */
+const bak = (id: string, x: number, isi: number, i: number) => [
+  kotak(id, x, 108, 36, 40, "#E5E7EB", W.kayuTua, { rx: 3, tebal: 1.6, z: 1 }),
+  kotak(`${id}-w`, x + 3, 148 - 3 - isi, 30, isi, WARNA_BAK[i], undefined, { rx: 2, tebal: 0, z: 2 }),
+];
 
-const HURUF = ["a", "b", "c", "d", "e"] as const;
-const labelBagian = (i: number, y: number) => teks(`n4l${i}`, 16, y + 4, `${HURUF[i]}.`, 10, W.coklat);
-
-export const ADEGAN_BERLATIH_BANDING_DUA: AdeganStory = {
-  id: "berlatih-banding-dua",
-  judul: "Berlatih: tanda dan cerita Tiara",
-  sumber: "Materi: tanda lebih dari, kurang dari",
-  latar: "#F0F9FF",
-  kutipan: [
-    "Isilah titik-titik berikut dengan notasi \">\" atau \"<\"!",
-    "Tiara mempunyai bawang putih",
-    "Manakah yang lebih berat, bawang putih atau gula?",
-    "Jawab: jadi yang lebih berat adalah bawang putih",
-  ],
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Bak warna Pak Joyo",
+  sumber: "Materi: penutup dan jembatan",
+  latar: "#EFF6FF",
   ketukan: [
     k(
-      SUARA_N1,
-      tambah(0, judul("Bagian a")),
-      tambah("Bagian", labelBagian(0, 100)),
-      tambah("lima", ...pasang("n4a", BANDING_SOAL[0][0], BANDING_SOAL[0][1], "…", 100)),
-      tambah(idx(SUARA_N1, "lebih", 2), teks("n4t", 150, 160, "penyebut besar: pecahan kecil", 8.6, W.coklat)),
-      ubah(idx(SUARA_N1, "kurang", 2), { id: "n4as", isi: BANDING_KUNCI[0] }),
+      SUARA_P1,
+      tambah(0, judul("Bak Warna Pak Joyo"), ...tanah("tn", 150), ...tokoh("pj", 24, 184, "Pak Joyo")),
+      tambah("membawa", ...bak("b1", 110, 12, 0)),
+      tambah("warna", ...bak("b2", 150, 30, 1)),
+      tambah("berbeda-beda.", ...bak("b3", 190, 22, 2)),
     ),
     k(
-      SUARA_N2,
+      SUARA_P2,
+      tambah("satu", ...pecahan("pc", 250, 60, 4, 16)),
+      tambah("awal", teks("aw", 240, 100, "baru awal cerita", 9, W.coklat)),
+    ),
+    k(
+      SUARA_P3,
       bersih(0),
-      tambah(0, judul("Bagian b dan c")),
-      tambah("Bagian", labelBagian(1, 68), ...pasang("n4b", BANDING_SOAL[1][0], BANDING_SOAL[1][1], "…", 68)),
-      ubah("lebih@2", { id: "n4bs", isi: BANDING_KUNCI[1] }),
-      tambah(idx(SUARA_N2, "Bagian", 2), labelBagian(2, 144), ...pasang("n4c", BANDING_SOAL[2][0], BANDING_SOAL[2][1], "…", 144)),
-      ubah("kurang", { id: "n4cs", isi: BANDING_KUNCI[2] }),
-    ),
-    k(
-      SUARA_N3,
-      bersih(0),
-      tambah(0, judul("Bagian d dan e")),
-      tambah("Bagian", labelBagian(3, 68), ...pasang("n4d", BANDING_SOAL[3][0], BANDING_SOAL[3][1], "…", 68)),
-      ubah("kurang", { id: "n4ds", isi: BANDING_KUNCI[3] }),
-      tambah(idx(SUARA_N3, "Bagian", 2), labelBagian(4, 144), ...pasang("n4e", BANDING_SOAL[4][0], BANDING_SOAL[4][1], "…", 144)),
-      ubah("lebih", { id: "n4es", isi: BANDING_KUNCI[4] }),
-    ),
-    k(
-      SUARA_N4,
-      bersih(0),
-      tambah(0, judul("Rangkuman tanda")),
-      tambah("rangkum", ...barisTabel("nk0", 25, 30, [40, 150, 60], ["bagian", "pasangan", "tanda"], 22, 8.4, true)),
-      ...BANDING_SOAL.map(([a, b], i) => tambah(["kurang", "lebih", "kurang@2", "kurang@3", "lebih@2"][i], ...barisTabel(`nk${i + 1}`, 25, 30 + (i + 1) * 22, [40, 150, 60], [HURUF[i], `1/${a} dan 1/${b}`, BANDING_KUNCI[i]], 22, 9))),
-      tambah("kelima", emo("nkz", 150, 184, "✅", 20)),
-    ),
-    k(
-      SUARA_N5,
-      bersih(0),
-      tambah(0, judul("Cerita Tiara: bawang dan gula")),
-      tambah("bawang", ...kartu("tb", 14, 30, 130, 44, W.hijauMuda, ["bawang putih", `1/${TIARA.bawang} kg`], 9.4)),
-      tambah("gula", ...kartu("tg", 156, 30, 130, 44, W.krem, ["gula", `1/${TIARA.gula} kg`], 9.4)),
-      tambah("Penyebut", ...kisi("tbk", 14, 94, 2, 1, 65, 22, 1), ...kisi("tgk", 156, 94, 4, 1, 32.5, 22, 1)),
-      tambah("Jawabannya", ...kartu("tj", 40, 140, 220, 34, W.emas, ["bawang putih lebih berat"], 10)),
-      sorotkan("Jawabannya", "tb-k"),
-    ),
-  ],
-};
-
-/* ------------------------------ 12. Diferensiasi dan kesalahan yang sering terjadi ------------------------------ */
-const SUARA_F1 = "Setiap murid punya kecepatan dan cara belajar yang berbeda-beda, dan itu wajar. Subbab ini cocok dipelajari lewat masalah, sambil bekerja dalam kelompok.";
-const SUARA_F2 = "Kelompok dibentuk dari murid yang beragam, dan ketuanya murid yang lebih mahir. Murid yang cepat mengerjakan latihan tanpa bantuan dan boleh mendapat soal tambahan, sementara guru mendampingi murid yang masih kesulitan.";
-const SUARA_F3 = "Bila di kelompok tidak ada murid yang lebih mahir, semua anggota bekerja sama menyelesaikan soal. Bila cara itu belum cocok, kita berdiskusi tentang pecahan dengan pembilang satu.";
-const SUARA_F4 = "Hati-hati, ada kesalahan yang sering terjadi. Pertama, mengira penyebut yang lebih besar berarti pecahan yang lebih besar. Padahal satu per lima lebih kecil daripada satu per tiga, karena benda dibagi menjadi lebih banyak bagian.";
-const SUARA_F5 = "Kesalahan kedua: menyebut pecahan padahal bagiannya tidak sama besar. Ingat, pecahan hanya berlaku bila keseluruhan terbagi menjadi bagian yang sama besar.";
-const SUARA_F6 = "Kesalahan ketiga: membandingkan dua pecahan pada benda yang ukurannya berbeda. Satu per tiga pada batang pendek bisa tampak sama luas dengan satu per empat pada batang panjang. Karena itu, samakan dulu keseluruhannya.";
-
-export const ADEGAN_DIFERENSIASI: AdeganStory = {
-  id: "diferensiasi",
-  judul: "Diferensiasi dan kesalahan yang sering terjadi",
-  sumber: "Materi: diferensiasi dan kesalahan umum",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Diferensiasi",
-    "Karakteristik peserta didik di masing-masing sekolah akan berbeda-beda,",
-    "kondisi seperti ini hanya guru yang memahami.",
-    "Model pembelajaran yang disarankan untuk bab ini adalah Problem Based Learning.",
-    "ditentukan ketua kelompok adalah peserta didik dengan tingkat kemampuan tinggi",
-    "Bagi peserta didik yang kecepatan belajarnya tinggi (advanced), minta mereka mengerjakan latihan tanpa bantuan.",
-    "Guru juga dapat memberikan soal-soal tambahan.",
-    "guru dapat mendampingi peserta didik yang mengalami kesulitan.",
-    "tidak terdapat peserta didik dengan kemampuan tinggi",
-    "semua anggota kelompok dapat bekerja sama untuk menyelesaikan masalah/soal yang diberikan oleh guru.",
-    "guru dapat menerapkan metode diskusi dengan melibatkan peserta didik dalam pecahan dengan pembilang satu.",
-    "mengurutkan beberapa pecahan dengan pembilang satu",
-    "Hasil Aktivitas",
-    "1.1 membandingkan dua pecahan dengan pembilang satu",
-  ],
-  ketukan: [
-    k(
-      SUARA_F1,
-      tambah(0, judul("Diferensiasi")),
-      tambah("Setiap", emo("df1", 150, 62, "🧑", 28)),
-      tambah("berbeda-beda,", ...kartu("df2", 14, 74, 272, 34, W.hijauMuda, ["kecepatan belajar tiap murid berbeda"], 9)),
-      tambah("masalah", ...kartu("df3", 14, 118, 272, 44, W.langit, ["belajar lewat masalah dan kelompok:", "Problem Based Learning"], 9.4)),
-    ),
-    k(
-      SUARA_F2,
-      bersih(0),
-      tambah(0, judul("Kelompok dan murid cepat")),
-      tambah("beragam,", ...kartu("dg1", 14, 32, 272, 30, W.hijauMuda, ["kelompok beragam, ketua lebih mahir"], 8.6)),
-      tambah("cepat", ...kartu("dg2", 14, 70, 272, 40, W.langit, ["murid cepat: latihan tanpa bantuan,", "boleh soal tambahan"], 8.8)),
-      tambah("mendampingi", ...kartu("dg3", 14, 118, 272, 30, W.pink, ["guru mendampingi yang kesulitan"], 9)),
-    ),
-    k(
-      SUARA_F3,
-      bersih(0),
-      tambah(0, judul("Bila tidak ada murid cepat")),
-      tambah("Bila", ...kartu("dh1", 14, 32, 272, 44, W.krem, ["tanpa murid yang lebih mahir:", "semua anggota bekerja sama"], 8.8)),
-      tambah(idx(SUARA_F3, "Bila", 2), ...kartu("dh2", 14, 86, 272, 44, W.langit, ["bila cara itu belum cocok:", "diskusi pembilang satu"], 8.8)),
-    ),
-    k(
-      SUARA_F4,
-      bersih(0),
-      tambah(0, judul("Hati-hati: penyebut besar")),
-      tambah("Pertama,", ...kartu("dk1", 14, 34, 272, 36, W.merahMuda, ["keliru: penyebut besar,", "pecahan dianggap besar"], 9)),
-      tambah("Padahal", ...kartu("dk2", 14, 80, 272, 36, W.hijauMuda, ["benar: 1/5 lebih kecil", "daripada 1/3"], 9)),
-      tambah("dibagi", ...kartu("dk3", 14, 126, 272, 36, W.krem, ["bagian makin banyak,", "tiap bagian makin kecil"], 9)),
-    ),
-    k(
-      SUARA_F5,
-      bersih(0),
-      tambah(0, judul("Hati-hati: bagian harus sama")),
-      tambah("menyebut", ...kartu("dn1", 14, 32, 272, 44, W.merahMuda, ["bagian tidak sama besar:", "belum boleh disebut pecahan"], 9)),
-      tambah("Ingat,", ...kartu("dn2", 14, 90, 272, 44, W.hijauMuda, ["bagian sama besar:", "baru boleh disebut pecahan"], 8.8)),
-    ),
-    k(
-      SUARA_F6,
-      bersih(0),
-      tambah(0, judul("Hati-hati: keseluruhan berbeda")),
-      tambah("membandingkan", ...kartu("dm1", 14, 32, 272, 44, W.merahMuda, ["benda berbeda ukuran:", "arsiran tampak sama luas"], 8.8)),
-      tambah("Satu", ...kartu("dm2", 14, 86, 272, 44, W.krem, ["1/3 pada batang pendek,", "1/4 pada batang panjang"], 8.8)),
-      tambah("samakan", ...kartu("dm3", 40, 144, 220, 32, W.emas, ["samakan dulu keseluruhannya"], 9.6)),
+      tambah(0, judul("Bak Warna Pak Joyo"), ...tanah("tn", 150), ...tokoh("pj", 24, 184, "Pak Joyo"), ...bak("b1", 110, 12, 0), ...bak("b2", 150, 30, 1), ...bak("b3", 190, 22, 2)),
+      tambah("banyak", teks("tq", 168, 92, "?", 30, W.merah)),
+      tambah("Satria,", ...tokoh("sa", 70, 184, "Satria")),
+      tambah("Laras,", ...tokoh("lr", 112, 184, "Laras")),
+      tambah("Genta,", ...tokoh("ge", 152, 184, "Genta")),
+      tambah("Hendro,", ...tokoh("ph", 204, 184, "Pak Hendro")),
+      tambah("Wulan!", ...tokoh("bw", 258, 184, "Bu Wulan"), emo("lb", 258, 140, E.lambai, 20)),
     ),
   ],
 };

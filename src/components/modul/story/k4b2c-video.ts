@@ -1,49 +1,51 @@
 import type { VideoStory } from "./logika-story";
 import { adeganSapaan } from "./sapaan";
-import { ADEGAN_AKTIVITAS_ALAT, ADEGAN_AKTIVITAS_HASIL, ADEGAN_AMATI_COKLAT } from "./k4b2c-materi-1";
-import { ADEGAN_BERLATIH_SATU, ADEGAN_BERPIKIR, ADEGAN_COKLAT_JAWAB, ADEGAN_TAHUKAH } from "./k4b2c-materi-2";
-import { ADEGAN_BERLATIH_DUA, ADEGAN_BERLATIH_TIGA, ADEGAN_CATATAN, ADEGAN_DIFERENSIASI } from "./k4b2c-materi-3";
-import { ADEGAN_LUAR_KALI, ADEGAN_LUAR_KALI_TERAPAN, ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_SENILAI, ADEGAN_LUAR_SENILAI_TERAPAN } from "./k4b2c-luar-1";
-import { ADEGAN_LUAR_DINDING, ADEGAN_LUAR_DINDING_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_SEDERHANA, ADEGAN_LUAR_SEDERHANA_TERAPAN } from "./k4b2c-luar-2";
+import { ADEGAN_DUA_PER_EMPAT, ADEGAN_JAHIT, ADEGAN_SETENGAH } from "./k4b2c-materi-1";
+import { ADEGAN_KANCING, ADEGAN_PERIKSA, ADEGAN_SALAH_TAMBAH } from "./k4b2c-materi-2";
+import { ADEGAN_KALI, ADEGAN_PENUTUP, ADEGAN_SEDERHANA } from "./k4b2c-materi-3";
+import { ADEGAN_LUAR_DAERAH, ADEGAN_LUAR_DAERAH_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k4b2c-luar-1";
+import { ADEGAN_LUAR_BAGI, ADEGAN_LUAR_BAGI_TERAPAN, ADEGAN_LUAR_KALI, ADEGAN_LUAR_KALI_TERAPAN, ADEGAN_LUAR_RINGKAS } from "./k4b2c-luar-2";
 
-/** Kelas 4 Bab 2 Sub-Bab C (Pecahan Senilai): video materi kurikulum dan video metode luar, dua video terpisah. */
+/**
+ * Kelas 4 Bab 2 Sub-Bab C (pecahan yang sama besar), cerita Sanggar Batik Kampung Mekar.
+ * Video materi (sekitar tiga menit, tanpa latihan): cerita orisinal IGIL "Meja Jahit Kak Sekar" (Satria, Laras, Genta, Pak Hendro, Kak Sekar).
+ * Video kedua: tiga metode global (Area Model Match, Multiply by One, Divide Both), terpisah.
+ */
+export const JUDUL_K4B2C = "Meja Jahit Kak Sekar";
+
 export const VIDEO_MATERI_K4B2C: VideoStory = {
   id: "k4b2c-materi",
-  judul: "Pecahan Senilai",
-  subjudul: "Materi kurikulum",
+  judul: JUDUL_K4B2C,
+  subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "pecahan senilai", daftar: ["Lipat kertas dan bandingkan","Dikali bilangan sama","Dibagi bilangan sama"] }),
-    ADEGAN_AKTIVITAS_ALAT,
-    ADEGAN_AKTIVITAS_HASIL,
-    ADEGAN_AMATI_COKLAT,
-    ADEGAN_COKLAT_JAWAB,
-    ADEGAN_TAHUKAH,
-    ADEGAN_BERPIKIR,
-    ADEGAN_BERLATIH_SATU,
-    ADEGAN_BERLATIH_DUA,
-    ADEGAN_BERLATIH_TIGA,
-    ADEGAN_CATATAN,
-    ADEGAN_DIFERENSIASI,
+    adeganSapaan({ jenis: "materi", topik: "pecahan yang sama besar", daftar: ["Bagian berbeda tetapi sama besar", "Mengalikan atau membagi dengan bilangan sama", "Menyederhanakan pecahan"] }),
+    ADEGAN_JAHIT,
+    ADEGAN_SETENGAH,
+    ADEGAN_DUA_PER_EMPAT,
+    ADEGAN_SALAH_TAMBAH,
+    ADEGAN_PERIKSA,
+    ADEGAN_KANCING,
+    ADEGAN_KALI,
+    ADEGAN_SEDERHANA,
+    ADEGAN_PENUTUP,
   ],
 };
 
 export const VIDEO_LUAR_K4B2C: VideoStory = {
   id: "k4b2c-luar",
-  judul: "Pecahan Senilai: Metode dari Luar",
-  subjudul: "Empat metode luar",
+  judul: JUDUL_K4B2C,
+  subjudul: "Metode Global",
   jenis: "metode-luar",
   adegan: [
-    adeganSapaan({ jenis: "metode-luar", topik: "pecahan senilai" }),
+    adeganSapaan({ jenis: "metode-luar", topik: "pecahan yang sama besar", labelMetode: "Metode global" }),
     ADEGAN_LUAR_PEMBUKA,
-    ADEGAN_LUAR_SENILAI,
-    ADEGAN_LUAR_SENILAI_TERAPAN,
+    ADEGAN_LUAR_DAERAH,
+    ADEGAN_LUAR_DAERAH_TERAPAN,
     ADEGAN_LUAR_KALI,
     ADEGAN_LUAR_KALI_TERAPAN,
-    ADEGAN_LUAR_SEDERHANA,
-    ADEGAN_LUAR_SEDERHANA_TERAPAN,
-    ADEGAN_LUAR_DINDING,
-    ADEGAN_LUAR_DINDING_TERAPAN,
+    ADEGAN_LUAR_BAGI,
+    ADEGAN_LUAR_BAGI_TERAPAN,
     ADEGAN_LUAR_RINGKAS,
   ],
 };

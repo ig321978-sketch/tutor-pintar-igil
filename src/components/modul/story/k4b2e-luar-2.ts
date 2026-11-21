@@ -1,248 +1,231 @@
 import type { AdeganStory } from "./logika-story";
-import { W, angkaKarakter, daftar, judul, kartu, panah, teks } from "./k4b2e-gambar";
-import { bersih, k, tambah } from "./k4b2e-bantu";
+import { E, W, emo, judul, kartu, halaman, kisi, panah, teks, tokoh, warnai } from "./k4b2e-gambar";
+import { hapus, k, redamkan, sorotkan, tambah, ubah } from "./k4b2e-bantu";
 
-/* ------------------------------ 6. Decimal–Percent Link: konsep ------------------------------ */
-export const ADEGAN_LUAR_DP: AdeganStory = {
-  id: "luar-dp",
-  judul: "Decimal–Percent Link (Jembatan Desimal–Persen)",
-  sumber: "Metode luar: Decimal–Percent Link",
-  latar: "#FDF4FF",
+/*
+ * Cerita orisinal IGIL "Papan Pameran Bu Tuti" (Kelas 4 Bab 2 Sub-Bab E), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b2e.md. Bagian ini: Hundred Grid (Kisi Seratus) dan terapannya, Decimal Percent Bridge (Jembatan Persen) dan terapannya, dan ringkasan.
+ */
+
+/* ------------------------------ Hundred Grid: konsep ------------------------------ */
+const SUARA_D1 = "Cara kedua, Hundred Grid, atau Kisi Seratus.";
+const SUARA_D2 = "Kita menggambar seratus kotak kecil sama besar dalam sepuluh baris dan sepuluh kolom.";
+const SUARA_D3 = "Banyak kotak yang diwarnai adalah persennya, dan juga dua angka di belakang koma.";
+const SUARA_D4 = "Gambar membantu kita melihat bahwa seratus persen adalah satu utuh, yaitu semua kotak terwarna.";
+
+export const ADEGAN_LUAR_KISI: AdeganStory = {
+  id: "luar-kisi",
+  judul: "Hundred Grid: Kisi Seratus",
+  sumber: "Metode global: Hundred Grid (konsep)",
+  latar: "#F0FDF4",
   ketukan: [
     k(
-      "Metode ketiga, Decimal–Percent Link atau Jembatan Desimal–Persen. Desimal perseratusan dan persen adalah dua tulisan untuk bilangan yang sama. Jembatannya: kalikan seratus persen, atau geser tanda koma.",
-      bersih(0),
-      tambah(0, judul("Decimal–Percent Link")),
-      tambah("Desimal@2", ...kartu("dp1", 20, 60, 90, 44, W.langit, ["desimal", "0,25"], 11)),
-      tambah("persen@2", ...kartu("dp2", 190, 60, 90, 44, W.hijauMuda, ["persen", "25%"], 11)),
-      tambah("Jembatannya:", panah("dp3", 114, 80, 72, 0, W.merah, 2.4)),
-      tambah("kalikan", teks("dp4", 150, 72, "× 100%", 9.6, W.merah)),
-      tambah("geser", ...kartu("dp5", 40, 130, 220, 30, W.krem, ["atau geser tanda koma"], 10.4)),
+      SUARA_D1,
+      tambah(0, judul("Cara 2: Hundred Grid"), ...halaman("hl", 150)),
+      tambah("Hundred", emo("jr", 150, 104, E.palet, 36)),
+      tambah("Kisi", teks("nm", 150, 140, "Kisi Seratus", 13, W.ungu)),
     ),
     k(
-      "Dari desimal ke persen: geser tanda koma dua kali ke kanan. Nol koma dua lima menjadi dua puluh lima persen.",
-      bersih(0),
-      tambah(0, judul("Desimal ke persen")),
-      ...angkaKarakter("dq", 40, 84, "0,25", 18, 24).map((o) => tambah("Dari", o)),
-      tambah("geser", panah("dp6", 118, 76, 56, 0, W.merah, 2.4)),
-      tambah("geser", teks("dp7", 146, 62, "koma ke kanan 2", 8.6, W.merah)),
-      tambah("menjadi", teks("dp8", 232, 84, "25%", 24, W.hijau)),
-      tambah("Nol", ...kartu("dp9", 40, 128, 220, 30, W.krem, ["0,25 × 100 = 25"], 11)),
+      SUARA_D2,
+      hapus(0, "jr", "nm"),
+      tambah("seratus", teks("n100", 210, 130, "100 kotak", 12, W.merah)),
+      tambah("menggambar", ...kisi("ks", 24, 30, 0)),
+      tambah("sepuluh", teks("b10", 210, 60, "10 baris", 14, W.biru)),
+      tambah("sepuluh@2", teks("k10", 210, 92, "10 kolom", 14, W.biru)),
     ),
     k(
-      "Dari persen ke desimal: sebaliknya, geser tanda koma dua kali ke kiri. Dua puluh lima persen menjadi nol koma dua lima. Dua arah, satu jembatan.",
-      bersih(0),
-      tambah(0, judul("Persen ke desimal")),
-      tambah("Dari", teks("dp10", 60, 84, "25%", 24, W.hijau)),
-      tambah("geser", panah("dp11", 118, 76, -56, 0, W.merah, 2.4)),
-      tambah("geser", teks("dp12", 146, 62, "koma ke kiri 2", 8.6, W.merah)),
-      tambah("menjadi", teks("dp13", 232, 84, "0,25", 24, W.biru)),
-      tambah("Dua@4", ...kartu("dp14", 40, 128, 220, 30, W.krem, ["25 ÷ 100 = 0,25"], 11)),
+      SUARA_D3,
+      hapus(0, "b10", "k10"),
+      ubah("diwarnai", ...warnai("ks", 0, 45)),
+      tambah("persennya", teks("p45", 210, 66, "45%", 22, W.merah)),
+      tambah("dua", teks("n2", 210, 92, "2 angka", 12, W.merah)),
+      tambah("belakang", teks("dk", 210, 112, "0,45", 14, W.hijauTua)),
+    ),
+    k(
+      SUARA_D4,
+      hapus(0, "p45", "n2", "dk", "n100"),
+      tambah("seratus", teks("c100", 210, 70, "100%", 24, W.merah)),
+      tambah("satu", teks("c1", 210, 104, "= 1 utuh", 14, W.biru)),
+      ubah("terwarna", ...warnai("ks", 45, 100)),
     ),
   ],
 };
 
-/* ------------------------------ 7. Decimal–Percent Link: penerapan ------------------------------ */
-type Baris = { teks: string; at: string };
-type KasusJembatan = { id: string; judul: string; arah: "kanan" | "kiri"; baris: [Baris, Baris]; suara: string };
-function ketukanJembatan(c: KasusJembatan) {
-  const warna = c.arah === "kanan" ? W.hijauMuda : W.langit;
-  return k(
-    c.suara,
-    bersih(0),
-    tambah(0, judul(c.judul)),
-    tambah(c.baris[0].at, ...kartu(`${c.id}a`, 12, 40, 276, 36, warna, [c.baris[0].teks], 15)),
-    tambah(c.baris[1].at, ...kartu(`${c.id}b`, 12, 92, 276, 36, warna, [c.baris[1].teks], 15)),
-    tambah("geser", ...kartu(`${c.id}c`, 40, 148, 220, 30, W.krem, [c.arah === "kanan" ? "koma ke kanan 2 kali" : "koma ke kiri 2 kali"], 10.4)),
-  );
-}
-export const ADEGAN_LUAR_DP_TERAPAN: AdeganStory = {
-  id: "luar-dp-terapan",
-  judul: "Decimal–Percent Link diterapkan pada soal persen",
-  sumber: "Metode luar: Decimal–Percent Link",
-  latar: "#FDF4FF",
-  ketukan: [
-    ketukanJembatan({
-      id: "ja",
-      judul: "Desimal ke persen",
-      arah: "kanan",
-      baris: [
-        { teks: "0,12 → 12%", at: "Nol" },
-        { teks: "1,15 → 115%", at: "Satu@2" },
-      ],
-      suara: "Nol koma satu dua: geser tanda koma dua kali ke kanan, jadi dua belas persen. Satu koma satu lima, geser dua kali, jadi seratus lima belas persen.",
-    }),
-    ketukanJembatan({
-      id: "jb",
-      judul: "Desimal ke persen, bilangan besar",
-      arah: "kanan",
-      baris: [
-        { teks: "5,62 → 562%", at: "Lima" },
-        { teks: "10,55 → 1055%", at: "Sepuluh" },
-      ],
-      suara: "Lima koma enam dua: geser tanda koma dua kali ke kanan, jadi lima ratus enam puluh dua persen. Sepuluh koma lima lima, geser dua kali, jadi seribu lima puluh lima persen.",
-    }),
-    ketukanJembatan({
-      id: "jc",
-      judul: "Persen ke desimal",
-      arah: "kiri",
-      baris: [
-        { teks: "18% → 0,18", at: "Delapan" },
-        { teks: "65% → 0,65", at: "Enam" },
-      ],
-      suara: "Arah sebaliknya. Delapan belas persen, geser tanda koma dua kali ke kiri, jadi nol koma satu delapan. Enam puluh lima persen jadi nol koma enam lima.",
-    }),
-    ketukanJembatan({
-      id: "jd",
-      judul: "Persen ke desimal, bilangan besar",
-      arah: "kiri",
-      baris: [
-        { teks: "123% → 1,23", at: "Seratus" },
-        { teks: "675% → 6,75", at: "Enam" },
-      ],
-      suara: "Seratus dua puluh tiga persen, geser tanda koma dua kali ke kiri, jadi satu koma dua tiga. Enam ratus tujuh puluh lima persen jadi enam koma tujuh lima.",
-    }),
-  ],
-};
+/* ------------------------------ Hundred Grid: terapan ------------------------------ */
+const SUARA_E1 = "Genta mewarnai lima puluh lima kotak pada kisi seratus.";
+const SUARA_E2 = "Banyak kotak lima puluh lima berarti lima puluh lima persen, atau nol koma lima lima.";
+const SUARA_E3 = "Cocok untuk memahami arti persen, karena kita bisa melihat dan menghitungnya.";
+const SUARA_E4 = "Kurang cocok untuk angka yang banyak, karena mewarnai kotak memakan waktu.";
 
-/* ------------------------------ 8. Scale to One Hundred: konsep ------------------------------ */
-export const ADEGAN_LUAR_SB: AdeganStory = {
-  id: "luar-sb",
-  judul: "Scale to One Hundred (Skala ke Seratus)",
-  sumber: "Metode luar: Scale to One Hundred",
-  latar: "#FEFCE8",
+export const ADEGAN_LUAR_KISI_TERAPAN: AdeganStory = {
+  id: "luar-kisi-terapan",
+  judul: "Hundred Grid: terapan",
+  sumber: "Metode global: Hundred Grid (terapan)",
+  latar: "#FFFBEB",
   ketukan: [
     k(
-      "Metode keempat, Scale to One Hundred atau Skala ke Seratus. Idenya: ubah pecahan menjadi pecahan senilai yang berpenyebut seratus. Pembilang barunya langsung menjadi persen.",
-      bersih(0),
-      tambah(0, judul("Scale to One Hundred")),
-      tambah("Skala", ...kartu("sb1", 50, 30, 200, 28, W.krem, ["Skala ke Seratus"], 10)),
-      tambah("pecahan@2", teks("sb2", 60, 110, "a/b", 22, W.biru)),
-      tambah("senilai", teks("sb3", 150, 110, "→", 22, W.hitam)),
-      tambah("seratus@2", teks("sb4", 240, 110, "p/100", 22, W.hijau)),
-      tambah("Pembilang", ...kartu("sb5", 60, 142, 180, 30, W.hijauMuda, ["p/100 = p%"], 11)),
+      SUARA_E1,
+      tambah(0, judul("Lima Puluh Lima Kotak"), ...halaman("hl", 150), ...tokoh("ge", 262, 184, "Genta"), ...kisi("ks", 24, 30, 0)),
+      tambah("mewarnai", teks("n55", 210, 70, "55 kotak", 14, W.merah)),
+      ubah("kotak", ...warnai("ks", 0, 55)),
+      tambah("kisi", teks("j100", 210, 100, "dari 100", 11, W.coklat)),
     ),
     k(
-      "Cari pengalinya: seratus dibagi penyebut. Kalikan pembilang dan penyebut dengan pengali yang sama, supaya nilai pecahan tidak berubah. Pembilang baru adalah persennya.",
-      ...daftar("sc", "Tiga langkah", [
-        { at: "pengalinya:", t: "1. pengali = 100 ÷ penyebut", w: W.langit, u: 9.6 },
-        { at: "Kalikan", t: "2. kali pembilang dan penyebut", w: W.krem, u: 9.6 },
-        { at: "Pembilang@2", t: "3. pembilang baru = persen", w: W.hijauMuda, u: 9.6 },
-      ]),
+      SUARA_E2,
+      hapus(0, "n55", "j100"),
+      tambah("berarti", teks("e1", 210, 64, "55%", 24, W.merah)),
+      tambah("atau", teks("e2", 210, 92, "atau", 11, W.coklat)),
+      tambah("nol", teks("e3", 210, 118, "0,55", 22, W.hijauTua)),
     ),
     k(
-      "Cara ini cocok bila penyebut membagi seratus, misalnya sepuluh, dua puluh lima, atau lima puluh. Bila tidak, ubah dulu ke desimal, lalu kalikan seratus persen.",
-      bersih(0),
-      tambah(0, judul("Kapan cocok?")),
-      tambah("cocok", ...kartu("sd", 12, 36, 276, 40, W.hijauMuda, ["penyebut membagi 100:", "10, 25, 50, dan seterusnya"], 9.6)),
-      tambah("Bila@2", ...kartu("se", 12, 96, 276, 40, W.krem, ["penyebut tidak membagi 100:", "ubah ke desimal dulu"], 9.6)),
+      SUARA_E3,
+      tambah("Cocok", emo("ok", 262, 120, E.benar, 22)),
+      tambah("melihat", emo("lp", 172, 146, E.lupa, 22)),
+      tambah("menghitungnya", teks("hg", 210, 140, "hitung kotak", 10, W.coklat)),
+    ),
+    k(
+      SUARA_E4,
+      hapus(0, "ok", "lp", "hg"),
+      tambah(0, emo("xs", 262, 120, E.salah, 22)),
+      tambah("banyak", teks("bn", 210, 140, "angka banyak", 10, W.merah)),
+      tambah("waktu", emo("wk", 172, 146, "\u{1F552}", 20)),
     ),
   ],
 };
 
-/* ------------------------------ 9. Scale to One Hundred: penerapan ------------------------------ */
-type KasusSkala = { id: string; judul: string; asal: string; pengali: number; hasil: string; persen: string; hitung: string; suara: string; at: string[] };
-function ketukanSkala(c: KasusSkala) {
-  return k(
-    c.suara,
-    bersih(0),
-    tambah(0, judul(c.judul)),
-    tambah(c.at[0], teks(`${c.id}-a`, 62, 100, c.asal, 22, W.biru)),
-    tambah(c.at[1], teks(`${c.id}-m`, 150, 100, "=", 22, W.hitam)),
-    tambah(c.at[2], teks(`${c.id}-h`, 238, 100, c.hasil, 22, W.hijau)),
-    tambah(c.at[1], panah(`${c.id}-p1`, 88, 78, 124, 0, W.merah, 2)),
-    tambah(c.at[1], teks(`${c.id}-p1t`, 150, 70, `× ${c.pengali}`, 11, W.merah)),
-    tambah(c.at[2], panah(`${c.id}-p2`, 88, 126, 124, 0, W.merah, 2)),
-    tambah(c.at[2], teks(`${c.id}-p2t`, 150, 146, `× ${c.pengali}`, 11, W.merah)),
-    tambah(c.at[3], ...kartu(`${c.id}-c`, 12, 158, 132, 30, W.krem, [c.hitung], 9.6)),
-    tambah(c.at[4], ...kartu(`${c.id}-d`, 156, 158, 132, 30, W.pink, [c.persen], 11)),
-  );
-}
-export const ADEGAN_LUAR_SB_TERAPAN: AdeganStory = {
-  id: "luar-sb-terapan",
-  judul: "Scale to One Hundred diterapkan pada soal persen",
-  sumber: "Metode luar: Scale to One Hundred",
-  latar: "#FEFCE8",
+/* ------------------------------ Decimal Percent Bridge: konsep ------------------------------ */
+const SUARA_F1 = "Cara ketiga, Decimal Percent Bridge, atau Jembatan Persen.";
+const SUARA_F2 = "Dari desimal ke persen, geser koma dua tempat ke kanan lalu tulis tanda persen.";
+const SUARA_F3 = "Dari persen ke desimal, hilangkan tanda persen lalu geser koma dua tempat ke kiri.";
+const SUARA_F4 = "Jembatan ini bekerja ke dua arah, dan besarnya tidak berubah.";
+
+export const ADEGAN_LUAR_JEMBATAN: AdeganStory = {
+  id: "luar-jembatan",
+  judul: "Decimal Percent Bridge: Jembatan Persen",
+  sumber: "Metode global: Decimal Percent Bridge (konsep)",
+  latar: "#F5F3FF",
   ketukan: [
-    ketukanSkala({
-      id: "sa",
-      judul: "20 dari 50 siswa",
-      asal: "20/50",
-      pengali: 2,
-      hasil: "40/100",
-      persen: "40/100 = 40%",
-      hitung: "100 ÷ 50 = 2",
-      suara: "Dua puluh dari lima puluh siswa. Seratus dibagi lima puluh sama dengan dua. Dua puluh kali dua menjadi empat puluh, jadi empat puluh per seratus, yaitu empat puluh persen.",
-      at: ["Dua", "dibagi", "menjadi", "Seratus", "yaitu"],
-    }),
-    ketukanSkala({
-      id: "sb",
-      judul: "6 dari 10 pertanyaan",
-      asal: "6/10",
-      pengali: 10,
-      hasil: "60/100",
-      persen: "60/100 = 60%",
-      hitung: "100 ÷ 10 = 10",
-      suara: "Enam dari sepuluh pertanyaan dijawab benar. Seratus dibagi sepuluh sama dengan sepuluh. Enam kali sepuluh menjadi enam puluh, jadi enam puluh per seratus, yaitu enam puluh persen.",
-      at: ["Enam", "dibagi", "menjadi", "Seratus", "yaitu"],
-    }),
-    ketukanSkala({
-      id: "sc",
-      judul: "3/10 pertanyaan benar",
-      asal: "3/10",
-      pengali: 10,
-      hasil: "30/100",
-      persen: "30/100 = 30%",
-      hitung: "100 ÷ 10 = 10",
-      suara: "Tiga per sepuluh pertanyaan dijawab benar. Seratus dibagi sepuluh sama dengan sepuluh, jadi tiga kali sepuluh menjadi tiga puluh per seratus. Itu tiga puluh persen, sama dengan nol koma tiga yang dikali seratus persen.",
-      at: ["Tiga", "Seratus", "menjadi", "dibagi", "Itu"],
-    }),
-    ketukanSkala({
-      id: "sd",
-      judul: "25/10 lebih dari satu utuh",
-      asal: "25/10",
-      pengali: 10,
-      hasil: "250/100",
-      persen: "250/100 = 250%",
-      hitung: "100 ÷ 10 = 10",
-      suara: "Dua puluh lima per sepuluh. Seratus dibagi sepuluh sama dengan sepuluh. Dua puluh lima kali sepuluh menjadi dua ratus lima puluh, jadi dua ratus lima puluh persen, cocok dengan dua koma lima kali seratus persen.",
-      at: ["Dua", "dibagi", "menjadi", "Seratus", "cocok"],
-    }),
+    k(
+      SUARA_F1,
+      tambah(0, judul("Cara 3: Decimal Percent Bridge"), ...halaman("hl", 150)),
+      tambah("Decimal", emo("jr", 150, 104, E.jembatan, 36)),
+      tambah("Jembatan", teks("nm", 150, 140, "Jembatan Persen", 13, W.ungu)),
+    ),
+    k(
+      SUARA_F2,
+      hapus(0, "jr", "nm"),
+      tambah("desimal", teks("d1", 70, 78, "0,48", 22, W.biru)),
+      tambah("geser", panah("g1", 102, 88, 88, 0, W.merah, 2.4, { z: 4 })),
+      tambah("dua", teks("n2", 150, 112, "2 tempat", 12, W.merah)),
+      tambah("kanan", teks("kn", 150, 70, "ke kanan", 10, W.coklat)),
+      tambah("tulis", teks("p1", 230, 78, "48%", 22, W.hijauTua)),
+    ),
+    k(
+      SUARA_F3,
+      hapus(0, "d1", "g1", "n2", "kn", "p1"),
+      tambah("persen", teks("q1", 230, 78, "48%", 22, W.hijauTua)),
+      tambah("hilangkan", teks("hl", 150, 52, "tanda % hilang", 10, W.merah)),
+      tambah("geser", panah("g2", 190, 88, -88, 0, W.merah, 2.4, { z: 4 })),
+      tambah("dua", teks("n2b", 150, 112, "2 tempat", 12, W.merah)),
+      tambah("kiri", teks("d2", 70, 78, "0,48", 22, W.biru)),
+    ),
+    k(
+      SUARA_F4,
+      hapus(0, "q1", "hl", "g2", "n2b", "d2"),
+      tambah("Jembatan", teks("ds", 70, 92, "0,48", 22, W.biru), teks("eq", 150, 92, "=", 24, W.biru), teks("ps", 230, 92, "48%", 22, W.hijauTua)),
+      tambah("dua", teks("n2c", 150, 54, "2 arah", 14, W.ungu)),
+      tambah("besarnya", panah("ar1", 100, 112, 100, 0, W.merah, 2.4, { z: 4 }), panah("ar2", 200, 124, -100, 0, W.hijauTua, 2.4, { z: 4 })),
+      tambah("berubah", emo("ok", 150, 148, E.benar, 22)),
+    ),
   ],
 };
 
-/* ------------------------------ 10. Ringkasan ------------------------------ */
+/* ------------------------------ Decimal Percent Bridge: terapan ------------------------------ */
+const SUARA_G1 = "Satria mengubah nol koma dua lima menjadi persen dengan menggeser koma dua tempat.";
+const SUARA_G2 = "Hasilnya dua puluh lima persen, dengan tanda persen di belakangnya.";
+const SUARA_G3 = "Cocok untuk mengubah dengan cepat, terutama kalau angkanya sudah desimal.";
+const SUARA_G4 = "Kurang cocok kalau lupa arah geseran, karena hasilnya bisa seratus kali terlalu besar atau kecil.";
+
+export const ADEGAN_LUAR_JEMBATAN_TERAPAN: AdeganStory = {
+  id: "luar-jembatan-terapan",
+  judul: "Decimal Percent Bridge: terapan",
+  sumber: "Metode global: Decimal Percent Bridge (terapan)",
+  latar: "#FFF1F2",
+  ketukan: [
+    k(
+      SUARA_G1,
+      tambah(0, judul("Nol Koma Dua Lima"), ...halaman("hl", 150), ...tokoh("sa", 36, 184, "Satria")),
+      tambah("nol", teks("d1", 100, 74, "0,25", 24, W.biru)),
+      tambah("menjadi", panah("p1", 134, 82, 40, 0, W.merah, 2.4, { z: 4 })),
+      tambah("persen", teks("q1", 222, 74, "?%", 24, W.hijauTua)),
+      tambah("dua@2", teks("n2", 150, 112, "2 tempat", 12, W.merah)),
+    ),
+    k(
+      SUARA_G2,
+      ubah("persen", { id: "q1", isi: "25%" }),
+      tambah("tanda", teks("tp", 222, 100, "tanda %", 10, W.merah)),
+      tambah("belakangnya", emo("ok", 266, 76, E.benar, 20)),
+    ),
+    k(
+      SUARA_G3,
+      hapus(0, "tp", "ok"),
+      tambah("Cocok", emo("jp", 262, 128, E.jempol, 22)),
+      tambah("cepat", emo("pt", 190, 146, E.petir, 24)),
+      tambah("desimal", teks("ds", 110, 132, "sudah desimal", 10, W.hijauTua)),
+    ),
+    k(
+      SUARA_G4,
+      hapus(0, "jp", "pt", "ds"),
+      tambah(0, emo("xs", 262, 128, E.salah, 22)),
+      tambah("lupa", teks("lp", 100, 132, "arah lupa", 10, W.merah)),
+      tambah("seratus", teks("x1", 190, 132, "100 kali", 12, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita lihat bersama Bu Tuti. Mana yang pas tergantung keadaan.";
+const SUARA_R2 = "Ingin menyalin dari per seratus, pakai Persen Perseratusan. Ingin melihat artinya, pakai Kisi Seratus.";
+const SUARA_R3 = "Ingin mengubah desimal dan persen bolak-balik, pakai Jembatan Persen. Apa pun caranya, ingat persen berarti per seratus.";
+const SUARA_R4 = "Menurutmu, untuk mengubah nol koma sembilan menjadi persen, cara mana yang paling pas?";
+
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode",
-  sumber: "Metode luar: ringkasan",
-  latar: "#FFF7ED",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan: tiga cara memilih",
+  latar: "#FEF3C7",
   ketukan: [
     k(
-      "Ringkasannya. Percent as Hundredths membaca persen sebagai per seratus. Hundred Grid Percent mengarsir kotak. Decimal–Percent Link menggeser tanda koma. Scale to One Hundred mengalikan sampai penyebutnya seratus.",
-      ...daftar("rs", "Empat metode", [
-        { at: "Hundredths", t: "Percent as Hundredths: per seratus", w: W.hijauMuda, u: 9.2 },
-        { at: "Grid", t: "Hundred Grid Percent: arsir kotak", w: W.langit, u: 9.2 },
-        { at: "Link", t: "Decimal–Percent Link: geser koma", w: W.krem, u: 9.2 },
-        { at: "Scale", t: "Scale to One Hundred: kali sampai 100", w: W.pink, u: 9.2 },
-      ]),
+      SUARA_R1,
+      tambah(0, judul("Tiga Cara"), ...halaman("hl", 150), ...tokoh("bt", 262, 184, "Bu Tuti"), teks("n3", 150, 40, "3 cara", 11, W.ungu)),
+      tambah("lihat", ...kartu("r0", 14, 56, 84, 40, "#FEF3C7", ["Persen", "Perseratusan"], 9)),
+      tambah("Tuti", ...kartu("r1", 108, 56, 84, 40, W.hijauMuda, ["Kisi", "Seratus"], 9)),
+      tambah("pas", ...kartu("r2", 202, 56, 84, 40, W.pink, ["Jembatan", "Persen"], 9)),
+      tambah("keadaan", emo("tn", 150, 134, E.tanya, 22)),
     ),
     k(
-      "Keempatnya menghasilkan jawaban yang sama. Untuk nol koma tiga lima: tiga puluh lima per seratus, tiga puluh lima kotak, koma bergeser dua kali, dan pecahan yang sudah berpenyebut seratus.",
-      ...daftar("rt", "Satu bilangan: 0,35", [
-        { at: "per", t: "35 per 100", w: W.hijauMuda, u: 10 },
-        { at: "kotak,", t: "35 kotak dari 100", w: W.langit, u: 10 },
-        { at: "koma@2", t: "0,35 → 35%", w: W.krem, u: 10 },
-        { at: "pecahan", t: "35/100: penyebut sudah 100", w: W.pink, u: 10 },
-      ]),
+      SUARA_R2,
+      hapus(0, "tn"),
+      tambah("menyalin", teks("h0", 56, 112, "salin pembilang", 9, W.coklat)),
+      sorotkan("Persen", "r0-k"),
+      tambah("melihat", teks("h1", 150, 112, "lihat artinya", 9, W.coklat)),
+      redamkan("melihat", "r0-k"),
+      sorotkan("Kisi", "r1-k"),
     ),
     k(
-      "Metode luar ini membantu persen terasa masuk akal. Saat mengerjakan soal persen, tetap tuliskan langkahmu dengan rapi, dan pilih metode yang membuatmu yakin.",
-      bersih(0),
-      tambah(0, judul("Pilih yang membuatmu yakin")),
-      tambah("Metode", ...kartu("rz1", 20, 44, 260, 34, W.krem, ["metode luar: membuat persen masuk akal"], 9.6)),
-      tambah("langkah", ...kartu("rz2", 20, 94, 260, 34, W.hijauMuda, ["soal persen: tulis langkahmu"], 9.6)),
-      tambah("pilih", ...kartu("rz3", 20, 144, 260, 34, W.pink, ["pilih metode yang kamu yakini"], 9.6)),
+      SUARA_R3,
+      tambah("mengubah", teks("h2", 244, 112, "bolak-balik", 9, W.coklat)),
+      redamkan("Jembatan", "r1-k"),
+      sorotkan("Jembatan", "r2-k"),
+      tambah("ingat", teks("pp", 150, 134, "persen = per seratus", 11, W.merah)),
+    ),
+    k(
+      SUARA_R4,
+      hapus(0, "h0", "h1", "h2", "pp"),
+      tambah(0, emo("tm", 244, 136, E.tanya, 22)),
+      tambah("nol", teks("q9", 150, 124, "0,9", 26, W.biru)),
+      tambah("persen", teks("qp", 200, 124, "?%", 24, W.merah)),
+      redamkan("cara", "r2-k"),
     ),
   ],
 };

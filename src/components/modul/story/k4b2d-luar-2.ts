@@ -1,241 +1,232 @@
-import type { Aksi, AdeganStory, Obj } from "./logika-story";
-import { W, barisTabel, emo, judul, kartu, panah, tabelNilai, teks } from "./k4b2d-gambar";
-import { bersih, idx, k, tambah } from "./k4b2d-bantu";
-import { NAMA_METODE, WARNA_METODE, kepala } from "./k4b2d-luar-1";
+import type { AdeganStory } from "./logika-story";
+import { E, W, emo, ids, judul, kartu, kisi, kotak, pecah, teks, tokoh } from "./k4b2d-gambar";
+import { bersih, hapus, k, redamkan, sorotkan, tambah, ubah, warnai } from "./k4b2d-bantu";
 
-/** Baris jembatan: kartu kiri (pecahan atau desimal), kartu kanan, dan panah di antaranya. `arah`: ke kanan, ke kiri, atau dua arah. Id `${id}-k1`, `${id}-k2`, `${id}-p1`, `${id}-p2`. */
-export function jembatan(id: string, y: number, kiri: string, kanan: string, arah: "kanan" | "kiri" | "dua", warnaKiri: string = W.hijauMuda, warnaKanan: string = W.langit, tinggi = 30, u = 11): Obj[] {
-  const cy = y + tinggi / 2;
-  const out: Obj[] = [...kartu(`${id}-k1`, 14, y, 90, tinggi, warnaKiri, [kiri], u), ...kartu(`${id}-k2`, 196, y, 90, tinggi, warnaKanan, [kanan], u)];
-  if (arah === "kanan") out.push(panah(`${id}-p1`, 110, cy, 80, 0, W.biru, 2.2));
-  else if (arah === "kiri") out.push(panah(`${id}-p2`, 190, cy, -80, 0, W.merah, 2.2));
-  else out.push(panah(`${id}-p1`, 110, cy - 4, 80, 0, W.biru, 2), panah(`${id}-p2`, 190, cy + 4, -80, 0, W.merah, 2));
-  return out;
-}
+/*
+ * Cerita orisinal IGIL "Meteran Kain Pak Bagas" (Kelas 4 Bab 2 Sub-Bab D), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b2d.md. Bagian ini: Hundredths Grid (Kisi Perseratusan), Fraction Decimal Bridge (Jembatan Desimal), terapannya, dan ringkasan.
+ */
+const JINGGA = "#FDBA74";
+/** Papan besar krem untuk adegan metode global: bingkai `pt-k`, tinggi h. */
+const papan = (h = 124) => kotak("pt-k", 8, 28, 284, h, "#FFFBEB", W.coklat, { tebal: 2.4, z: 0 });
+/** Jembatan dua kotak: kotak kiri `jk-k`, kotak kanan `jn-k`, papan jembatan `pl`, tiang `pt1` dan `pt2`; pojok kiri-atas kotak (x kiri 24, x kanan 198) pada tinggi y. */
+const jembatan = (y: number, h: number) => [
+  kotak("jk-k", 24, y, 78, h, "#C7D2FE", W.biru),
+  kotak("jn-k", 198, y, 78, h, "#FCE7F3", W.biru),
+  kotak("pl", 100, y + 28, 100, 8, "#B7814A", W.coklat, { z: 2 }),
+  kotak("pt1", 104, y + 36, 6, 22, "#B7814A", W.coklat),
+  kotak("pt2", 190, y + 36, 6, 22, "#B7814A", W.coklat),
+];
 
-/* ------------------------------ 6. Fraction–Decimal Link: konsep ------------------------------ */
-const SUARA_J1 = "Metode ketiga, Fraction–Decimal Link, atau Jembatan Pecahan–Desimal. Pecahan dan desimal adalah dua tulisan untuk bilangan yang sama. Jembatan menghubungkan keduanya.";
-const SUARA_J2 = "Menyeberang dari pecahan ke desimal: pembilang menjadi angka di belakang koma, dan penyebut menentukan banyak angkanya. Penyebut sepuluh berarti satu angka, dan penyebut seratus berarti dua angka.";
-const SUARA_J3 = "Menyeberang dari desimal ke pecahan: angka di belakang koma menjadi pembilang, dan penyebutnya sepuluh atau seratus menurut banyak angka.";
-const SUARA_J4 = "Jembatan berlaku dua arah, jadi hasilnya bisa diperiksa. Dari tiga per sepuluh ke nol koma tiga, lalu kembali ke tiga per sepuluh lagi.";
+/* ------------------------------ Hundredths Grid: konsep ------------------------------ */
+const SUARA_P1 = "Cara kedua, Hundredths Grid, atau Kisi Perseratusan.";
+const SUARA_P2 = "Kita menggambar kisi sepuluh kali sepuluh, jadi ada seratus kotak kecil sama besar.";
+const SUARA_P3 = "Setiap kotak kecil adalah satu per seratus, dan sepuluh kotak dalam satu baris adalah satu per sepuluh.";
+const SUARA_P4 = "Banyak kotak yang diwarnai menjadi dua angka di belakang koma.";
+const KS = ids("ks", 0, 99);
 
-export const ADEGAN_LUAR_JEMBATAN: AdeganStory = {
-  id: "luar-jembatan",
-  judul: "Fraction–Decimal Link: jembatan dua tulisan",
-  sumber: "Metode luar: Fraction–Decimal Link",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(
-      SUARA_J1,
-      tambah(0, judul("Fraction–Decimal Link")),
-      tambah("ketiga,", kepala(2)),
-      tambah(idx(SUARA_J1, "pecahan"), ...kartu("ja", 14, 66, 90, 46, W.hijauMuda, ["pecahan", "3/10"], 10.4)),
-      tambah(idx(SUARA_J1, "desimal"), ...kartu("jb", 196, 66, 90, 46, W.langit, ["desimal", "0,3"], 10.4)),
-      tambah("Jembatan@2", panah("jc", 110, 86, 80, 0, W.biru, 2), panah("jd", 190, 94, -80, 0, W.merah, 2), emo("je", 150, 134, "🌉", 30)),
-      tambah("sama.", ...kartu("jf", 40, 148, 220, 30, W.emas, ["dua tulisan, satu bilangan"], 9.6)),
-    ),
-    k(
-      SUARA_J2,
-      bersih(0),
-      tambah(0, judul("Pecahan ke desimal")),
-      tambah(0, ...jembatan("jg", 34, "3/10", "0,3", "kanan")),
-      tambah("pembilang", ...kartu("jh", 14, 76, 272, 30, W.krem, ["pembilang 3  →  angka 3"], 9.6)),
-      tambah("Sepuluh", ...kartu("ji", 14, 114, 272, 30, W.hijauMuda, ["penyebut 10  →  1 angka"], 9.6)),
-      tambah("seratus", ...kartu("jj", 14, 152, 272, 30, W.langit, ["penyebut 100  →  2 angka"], 9.6)),
-    ),
-    k(
-      SUARA_J3,
-      bersih(0),
-      tambah(0, judul("Desimal ke pecahan")),
-      tambah(0, ...jembatan("jk", 34, "0,07", "7/100", "kiri", W.langit, W.hijauMuda)),
-      tambah("angka", ...kartu("jl", 14, 82, 272, 34, W.krem, ["angka di belakang koma  →  pembilang 7"], 9.2)),
-      tambah("banyak", ...kartu("jm", 14, 126, 272, 34, W.hijauMuda, ["2 angka  →  penyebut 100"], 9.6)),
-      tambah("seratus", ...kartu("jn", 14, 168, 272, 24, W.emas, ["penyebut 10 atau 100 menurut banyak angka"], 8.8)),
-    ),
-    k(
-      SUARA_J4,
-      bersih(0),
-      tambah(0, judul("Dua arah, bisa diperiksa")),
-      tambah("tiga", ...jembatan("jo", 50, "3/10", "0,3", "kanan")),
-      tambah("kembali", ...jembatan("jp", 100, "3/10", "0,3", "kiri")),
-      tambah("lagi.", emo("jq", 150, 168, "✅", 28)),
-    ),
-  ],
-};
-
-/* ------------------------------ 7. Fraction–Decimal Link: penerapan pada nomor 2, nomor 3, dan contoh buku (Buku Siswa hlm. 73–75) ------------------------------ */
-const SUARA_B1 = "Soal persepuluhan tadi: satu per sepuluh menyeberang menjadi nol koma satu, lima per sepuluh menjadi nol koma lima, dan sembilan per sepuluh menjadi nol koma sembilan.";
-const SUARA_B2 = "Soal perseratusan tadi: lima belas per seratus menjadi nol koma satu lima, enam puluh dua per seratus menjadi nol koma enam dua, dan delapan puluh satu per seratus menjadi nol koma delapan satu.";
-const SUARA_B3 = "Menyeberang kembali dari desimal: nol koma empat dari contoh telur menjadi empat per sepuluh, dan nol koma nol tujuh dari contoh murid menjadi tujuh per seratus.";
-const SUARA_B4 = "Hasil sebuah jembatan harus kembali ke asal. Nol koma dua lima menjadi dua puluh lima per seratus, lalu kembali menjadi nol koma dua lima.";
-
-export const ADEGAN_LUAR_JEMBATAN_TERAPAN: AdeganStory = {
-  id: "luar-jembatan-terapan",
-  judul: "Fraction–Decimal Link pada persepuluhan dan perseratusan",
-  sumber: "Metode luar: Fraction–Decimal Link",
-  latar: "#FEFCE8",
-  ketukan: [
-    k(
-      SUARA_B1,
-      tambah(0, judul("Persepuluhan")),
-      tambah(0, kepala(2)),
-      tambah("satu", ...jembatan("ba", 64, "1/10", "0,1", "kanan")),
-      tambah("lima", ...jembatan("bb", 104, "5/10", "0,5", "kanan")),
-      tambah("sembilan", ...jembatan("bc", 144, "9/10", "0,9", "kanan")),
-    ),
-    k(
-      SUARA_B2,
-      bersih(0),
-      tambah(0, judul("Perseratusan")),
-      tambah(0, kepala(2)),
-      tambah("lima", ...jembatan("bd", 64, "15/100", "0,15", "kanan")),
-      tambah("enam", ...jembatan("be", 104, "62/100", "0,62", "kanan")),
-      tambah("delapan", ...jembatan("bf", 144, "81/100", "0,81", "kanan")),
-    ),
-    k(
-      SUARA_B3,
-      bersih(0),
-      tambah(0, judul("Dari desimal kembali ke pecahan")),
-      tambah(0, kepala(2)),
-      tambah("empat", ...jembatan("bg", 74, "4/10", "0,4", "kiri", W.langit, W.hijauMuda)),
-      tambah("tujuh", ...jembatan("bh", 126, "7/100", "0,07", "kiri", W.langit, W.hijauMuda)),
-    ),
-    k(
-      SUARA_B4,
-      bersih(0),
-      tambah(0, judul("Hasil harus kembali")),
-      tambah(0, kepala(2)),
-      tambah("Nol", ...jembatan("bi", 70, "25/100", "0,25", "kanan")),
-      tambah("lalu", ...jembatan("bj", 112, "25/100", "0,25", "kiri")),
-      tambah("menjadi@2", emo("bk", 150, 176, "✅", 26)),
-    ),
-  ],
-};
-
-/* ------------------------------ 8. Place Value Chart: konsep ------------------------------ */
-const SUARA_P1 = "Metode keempat, Place Value Chart, atau Tabel Nilai Tempat. Setiap angka punya tempat: satuan, lalu koma, lalu persepuluhan, lalu perseratusan.";
-const SUARA_P2 = "Angka pertama setelah koma menempati tempat persepuluhan, dan angka kedua menempati tempat perseratusan. Karena itu satu angka berarti persepuluhan, dan dua angka berarti perseratusan.";
-const SUARA_P3 = "Nilai tiap tempat: dua di tempat persepuluhan bernilai dua per sepuluh, yaitu dua puluh per seratus. Lima di tempat perseratusan bernilai lima per seratus. Jumlahnya dua puluh lima per seratus.";
-const SUARA_P4 = "Nol di tempat persepuluhan tetap ditulis. Pada nol koma nol tujuh, tempat persepuluhan berisi nol dan tempat perseratusan berisi tujuh. Itu sebabnya tujuh per seratus bukan nol koma tujuh.";
-
-export const ADEGAN_LUAR_TEMPAT: AdeganStory = {
-  id: "luar-tempat",
-  judul: "Place Value Chart: tempat tiap angka",
-  sumber: "Metode luar: Place Value Chart",
-  latar: "#FDF2F8",
+export const ADEGAN_LUAR_PERSERATUS: AdeganStory = {
+  id: "luar-perseratus",
+  judul: "Hundredths Grid: Kisi Perseratusan",
+  sumber: "Metode global: Hundredths Grid (konsep)",
+  latar: "#F5F3FF",
   ketukan: [
     k(
       SUARA_P1,
-      tambah(0, judul("Place Value Chart")),
-      tambah("keempat,", kepala(3)),
-      tambah(idx(SUARA_P1, "tempat", 2), ...barisTabel("pch", 32, 70, [48, 24, 82, 82], ["satuan", ",", "persepuluhan", "perseratusan"], 24, 7.2, true)),
-      tambah("koma,", emo("pa", 150, 130, "📋", 30)),
-      tambah("perseratusan.", teks("pb", 150, 168, "tempat tiap angka", 10, W.coklat)),
+      tambah(0, judul("Cara 2: Hundredths Grid"), papan()),
+      tambah("Hundredths", teks("nm", 150, 66, "Hundredths Grid", 16, W.merah, { z: 2 })),
+      tambah("Kisi", teks("ni", 150, 92, "Kisi Perseratusan", 12, W.biru, { z: 2 })),
+      tambah("Perseratusan.", emo("kk", 150, 136, E.wol, 32, { z: 2 })),
     ),
     k(
       SUARA_P2,
       bersih(0),
-      tambah(0, judul("Angka dan tempatnya")),
-      tambah(0, kepala(3), ...tabelNilai("pc", 32, 64, ["0", ",", "2", "5"], true, 24, 13)),
-      tambah("pertama", panah("pd", 145, 124, 0, -14, W.merah, 2), teks("pe", 145, 142, "angka pertama", 8.6, W.merah)),
-      tambah("kedua", panah("pf", 227, 124, 0, -14, W.merah, 2), teks("pg", 227, 142, "angka kedua", 8.6, W.merah)),
-      tambah("Karena", ...kartu("ph", 14, 154, 272, 34, W.emas, ["1 angka: persepuluhan   2 angka: perseratusan"], 8.6)),
+      tambah(0, judul("Sepuluh Kali Sepuluh"), papan()),
+      tambah("menggambar", ...kisi("ks", 24, 40, 14, 9)),
+      tambah("sepuluh", teks("a10", 224, 64, "10 kali 10", 11, W.ungu, { z: 2 })),
+      tambah("seratus", teks("a100", 224, 100, "100 kotak", 12, W.merah, { z: 2 })),
     ),
     k(
       SUARA_P3,
-      bersih(0),
-      tambah(0, judul("Nilai tiap tempat")),
-      tambah(0, kepala(3), ...tabelNilai("pi", 32, 64, ["0", ",", "2", "5"], true, 24, 13)),
-      tambah("dua", ...kartu("pj", 14, 124, 128, 34, W.hijauMuda, ["2/10 = 20/100"], 10)),
-      tambah("Lima", ...kartu("pk", 158, 124, 128, 34, W.langit, ["5/100"], 10)),
-      tambah("Jumlahnya", ...kartu("pl", 14, 166, 272, 28, W.emas, ["20/100 + 5/100 = 25/100"], 10.4)),
+      hapus("Setiap", "a10", "a100"),
+      warnai("Setiap", JINGGA, "ks0"),
+      tambah("Setiap", teks("u1", 224, 60, "1 kotak = 1/100", 10, W.merah, { z: 2 })),
+      warnai("sepuluh", JINGGA, ...KS.slice(1, 10)),
+      tambah("sepuluh", teks("u2", 224, 96, "10 kotak = 1/10", 10, W.ungu, { z: 2 })),
     ),
     k(
       SUARA_P4,
-      bersih(0),
-      tambah(0, judul("Nol tetap ditulis")),
-      tambah(0, kepala(3), ...tabelNilai("pm", 32, 64, ["0", ",", "0", "7"], true, 24, 13)),
-      tambah("persepuluhan", teks("pn", 145, 130, "persepuluhan: 0", 8.6, W.merah)),
-      tambah("perseratusan", teks("po", 227, 142, "perseratusan: 7", 8.6, W.merah)),
-      tambah("sebabnya", ...kartu("pp", 14, 154, 272, 34, W.emas, ["7/100 = 0,07  (bukan 0,7)"], 10)),
+      warnai("diwarnai", JINGGA, ...KS.slice(10, 17)),
+      tambah("dua", teks("d2", 224, 146, "2 angka", 12, W.merah, { z: 2 })),
+      tambah("koma.", teks("dc", 224, 124, "0,17", 22, W.biru, { z: 2 })),
     ),
   ],
 };
 
-/* ------------------------------ 9. Place Value Chart: penerapan pada roti, biskuit, contoh, nomor 3 (Buku Siswa hlm. 71–75) ------------------------------ */
-const SUARA_Q1 = "Roti tadi: satu per sepuluh adalah nol koma satu. Tempat persepuluhan berisi satu, dan tempat perseratusan kosong.";
-const SUARA_Q2 = "Biskuit tadi: satu per seratus adalah nol koma nol satu. Tempat persepuluhan berisi nol, dan tempat perseratusan berisi satu.";
-const SUARA_Q3 = "Contoh lain: nol koma dua lima. Dua persepuluhan dan lima perseratusan, sama dengan dua puluh lima per seratus.";
-const SUARA_Q4 = "Jawaban perseratusan tadi: nol koma satu lima berarti satu persepuluhan dan lima perseratusan. Nol koma enam dua berarti enam persepuluhan dan dua perseratusan. Nol koma delapan satu berarti delapan persepuluhan dan satu perseratusan.";
+/* ------------------------------ Hundredths Grid: terapan ------------------------------ */
+const SUARA_Q1 = "Genta mewarnai tiga puluh lima kotak pada kisi seratus.";
+const SUARA_Q2 = "Tiga puluh lima per seratus ditulis nol koma tiga lima.";
+const SUARA_Q3 = "Cocok untuk pecahan per seratus, karena setiap kotak mewakili satu bagian.";
+const SUARA_Q4 = "Kurang cocok kalau mewarnai banyak kotak, karena menghitungnya agak lama.";
+const KT = ids("kt", 0, 99);
 
-/** Satu penerapan bagan: kepala, bagan satu baris, dan dua keterangan. */
-const bagan = (judulTeks: string, isi: readonly [string, string, string, string], kiri: string, kanan: string, bawah: string, at: [string, string, string]): Aksi[] => [
-  bersih(0),
-  tambah(0, judul(judulTeks)),
-  tambah(0, kepala(3), ...tabelNilai("qa", 32, 64, isi, true, 24, 13)),
-  tambah(at[0], teks("qb", 145, 128, kiri, 8.6, W.merah)),
-  tambah(at[1], teks("qc", 227, 144, kanan, 8.6, W.merah)),
-  tambah(at[2], ...kartu("qd", 14, 158, 272, 32, W.emas, [bawah], 10)),
-];
-
-export const ADEGAN_LUAR_TEMPAT_TERAPAN: AdeganStory = {
-  id: "luar-tempat-terapan",
-  judul: "Place Value Chart pada roti, biskuit, dan tiga jawaban",
-  sumber: "Metode luar: Place Value Chart",
-  latar: "#FDF2F8",
+export const ADEGAN_LUAR_PERSERATUS_TERAPAN: AdeganStory = {
+  id: "luar-perseratus-terapan",
+  judul: "Kisi Perseratusan: kapan cocok",
+  sumber: "Metode global: Hundredths Grid (terapan)",
+  latar: "#F5F3FF",
   ketukan: [
-    k(SUARA_Q1, ...bagan("Roti: 1/10", ["0", ",", "1", ""], "persepuluhan: 1", "perseratusan: kosong", "1/10 = 0,1", ["Tempat", "kosong.", "Roti"])),
-    k(SUARA_Q2, ...bagan("Biskuit: 1/100", ["0", ",", "0", "1"], "persepuluhan: 0", "perseratusan: 1", "1/100 = 0,01", ["Tempat", "berisi@2", "Biskuit"])),
-    k(SUARA_Q3, ...bagan("Contoh lain: 0,25", ["0", ",", "2", "5"], "2 persepuluhan", "5 perseratusan", "2/10 + 5/100 = 25/100", ["Dua", "lima", "sama"])),
+    k(
+      SUARA_Q1,
+      tambah(0, judul("Genta Mewarnai"), papan(112), ...tokoh("gn", 40, 184, "Genta")),
+      tambah("mewarnai", ...kisi("kt", 24, 36, 12, 8)),
+      warnai("tiga", JINGGA, ...KT.slice(0, 35)),
+      tambah("lima", teks("l35", 230, 70, "35 kotak", 12, W.merah, { z: 2 })),
+      tambah("seratus", teks("l100", 230, 100, "100 kotak", 12, W.ungu, { z: 2 })),
+    ),
+    k(
+      SUARA_Q2,
+      hapus("Tiga", "l35", "l100"),
+      tambah("Tiga", ...pecah("pc", 190, 70, "35", "100", 22)),
+      tambah("ditulis", teks("sm", 226, 88, "=", 22, W.merah)),
+      tambah("nol", teks("dc", 260, 88, "0,35", 22, W.biru)),
+    ),
+    k(
+      SUARA_Q3,
+      tambah("Cocok", emo("ok", 40, 128, E.benar, 22)),
+      tambah("satu", teks("s1", 230, 126, "1 kotak: 1 bagian", 10, W.hijauTua)),
+    ),
     k(
       SUARA_Q4,
-      bersih(0),
-      tambah(0, judul("Tiga jawaban perseratusan")),
-      tambah(0, kepala(3), ...barisTabel("qh", 32, 64, [48, 24, 82, 82], ["satuan", ",", "persepuluhan", "perseratusan"], 24, 7.2, true)),
-      tambah("satu", ...barisTabel("qe", 32, 88, [48, 24, 82, 82], ["0", ",", "1", "5"], 24, 13)),
-      tambah("enam", ...barisTabel("qf", 32, 112, [48, 24, 82, 82], ["0", ",", "6", "2"], 24, 13)),
-      tambah("delapan", ...barisTabel("qg", 32, 136, [48, 24, 82, 82], ["0", ",", "8", "1"], 24, 13)),
-      tambah("Jawaban", ...kartu("qi", 40, 168, 220, 26, W.emas, ["tiap jawaban: 2 angka, 2 tempat"], 9)),
+      hapus("Kurang", "ok", "s1"),
+      tambah("Kurang", emo("xs", 40, 128, E.salah, 22)),
+      tambah("menghitungnya", teks("lm", 230, 126, "menghitung: lama", 10, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 10. Ringkasan metode luar ------------------------------ */
-const SUARA_Z1 = "Ringkasnya, empat metode dari luar: menghitung angka menurut penyebut, mewarnai kisi seratus kotak, menyeberang lewat jembatan, dan mengisi tabel nilai tempat.";
-const SUARA_Z2 = "Angka yang dipakai tadi: satu, empat, lima, dan sembilan per sepuluh; satu, tujuh, lima belas, dua puluh lima, enam puluh dua, dan delapan puluh satu per seratus.";
-const SUARA_Z3 = "Pilih metode menurut keperluan: kisi untuk melihat bentuknya, jembatan untuk mengubah, tabel nilai tempat untuk memeriksa. Selalu cek dengan aturan: satu angka sepuluh, dua angka seratus.";
+/* ------------------------------ Fraction Decimal Bridge: konsep ------------------------------ */
+const SUARA_B1 = "Cara ketiga, Fraction Decimal Bridge, atau Jembatan Desimal.";
+const SUARA_B2 = "Kita menulis pecahan di satu sisi dan desimal di sisi lain, lalu menghubungkannya seperti jembatan.";
+const SUARA_B3 = "Penyebut sepuluh memberi satu angka di belakang koma, dan penyebut seratus memberi dua angka.";
+const SUARA_B4 = "Pembilangnya ditulis sebagai angka di belakang koma, dengan nol di depannya kalau tempatnya kurang.";
 
-const KEGUNAAN = ["hitung angka menurut penyebut", "warnai kisi 100 kotak", "seberangi jembatan", "isi tabel nilai tempat"];
+export const ADEGAN_LUAR_JEMBATAN: AdeganStory = {
+  id: "luar-jembatan",
+  judul: "Fraction Decimal Bridge: Jembatan Desimal",
+  sumber: "Metode global: Fraction Decimal Bridge (konsep)",
+  latar: "#FDF2F8",
+  ketukan: [
+    k(
+      SUARA_B1,
+      tambah(0, judul("Cara 3: Fraction Decimal Bridge"), papan()),
+      tambah("Fraction", teks("nm", 150, 66, "Fraction Decimal Bridge", 14, W.merah, { z: 2 })),
+      tambah("Jembatan", teks("ni", 150, 92, "Jembatan Desimal", 12, W.biru, { z: 2 })),
+      tambah("Desimal.", emo("kk", 150, 136, E.pita, 32, { z: 2 })),
+    ),
+    k(
+      SUARA_B2,
+      bersih(0),
+      tambah(0, judul("Dua Sisi"), papan()),
+      tambah("menulis", jembatan(56, 70)[0], teks("jk-t", 63, 70, "pecahan", 11, W.biru, { z: 2 })),
+      tambah("satu", teks("s1", 63, 48, "sisi 1", 10, W.coklat, { z: 2 })),
+      tambah("desimal", jembatan(56, 70)[1], teks("jn-t", 237, 70, "desimal", 11, W.biru, { z: 2 }), teks("s2", 237, 48, "sisi 2", 10, W.coklat, { z: 2 })),
+      tambah("jembatan.", ...jembatan(56, 70).slice(2)),
+    ),
+    k(
+      SUARA_B3,
+      tambah("Penyebut", ...pecah("p1", 63, 100, "3", "10", 16)),
+      tambah("memberi", teks("d1", 237, 108, "0,3", 22, W.biru, { z: 2 })),
+      tambah("satu", teks("n1", 150, 136, "10 → 1 angka", 10, W.merah, { z: 2 })),
+      tambah("seratus", teks("n2", 150, 148, "100 → 2 angka", 10, W.merah, { z: 2 })),
+    ),
+    k(
+      SUARA_B4,
+      hapus("Pembilangnya", "p1-a", "p1-g", "p1-b", "d1", "n1", "n2"),
+      tambah("Pembilangnya", ...pecah("p3", 63, 100, "7", "100", 16)),
+      tambah("angka", teks("d3", 237, 108, "0,07", 22, W.biru, { z: 2 })),
+      tambah("nol", teks("nk", 150, 138, "nol di depan", 10, W.merah, { z: 2 })),
+    ),
+  ],
+};
+
+/* ------------------------------ Fraction Decimal Bridge: terapan ------------------------------ */
+const SUARA_R1 = "Satria mengubah sembilan per seratus menjadi desimal.";
+const SUARA_R2 = "Penyebut seratus berarti dua angka, jadi sembilan ditulis nol sembilan, yaitu nol koma nol sembilan.";
+const SUARA_R3 = "Cocok untuk mengubah pecahan ke desimal dengan cepat tanpa menggambar.";
+const SUARA_R4 = "Kurang cocok kalau kita lupa nol penjaga tempat, karena desimalnya jadi berbeda.";
+
+export const ADEGAN_LUAR_JEMBATAN_TERAPAN: AdeganStory = {
+  id: "luar-jembatan-terapan",
+  judul: "Jembatan Desimal: kapan cocok",
+  sumber: "Metode global: Fraction Decimal Bridge (terapan)",
+  latar: "#FDF2F8",
+  ketukan: [
+    k(
+      SUARA_R1,
+      tambah(0, judul("Satria Mengubah"), papan(112), ...tokoh("st", 40, 184, "Satria")),
+      tambah("mengubah", ...jembatan(40, 70)),
+      tambah("sembilan", ...pecah("pc", 63, 78, "9", "100", 16)),
+      tambah("seratus", teks("q", 237, 86, "?", 26, W.tanya, { z: 2 })),
+    ),
+    k(
+      SUARA_R2,
+      tambah("dua", teks("n2", 150, 124, "100 → 2 angka", 10, W.merah)),
+      tambah("sembilan", teks("z", 150, 98, "09", 14, W.merah)),
+      ubah("yaitu", { id: "q", isi: "0,09", warna: W.biru, u: 22 }),
+    ),
+    k(
+      SUARA_R3,
+      tambah("Cocok", emo("ok", 40, 128, E.benar, 22)),
+      tambah("cepat", teks("cp", 237, 128, "cepat", 10, W.hijauTua)),
+    ),
+    k(
+      SUARA_R4,
+      hapus("Kurang", "ok", "cp"),
+      tambah("Kurang", emo("xs", 40, 128, E.salah, 22)),
+      ubah("lupa", { id: "q", isi: "0,9", warna: W.merah }),
+      tambah("berbeda.", teks("be", 237, 128, "jadi berbeda", 10, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_G1 = "Tiga cara sudah kita lihat bersama Pak Bagas. Mana yang pas tergantung keadaan.";
+const SUARA_G2 = "Ingin melihat persepuluhan dengan gambar, pakai Kisi Persepuluhan. Ingin dua angka di belakang koma, pakai Kisi Perseratusan.";
+const SUARA_G3 = "Ingin mengubah dengan cepat, pakai Jembatan Desimal. Apa pun caranya, hitung dulu banyak angka di belakang koma.";
+const SUARA_G4 = "Menurutmu, untuk mengubah empat puluh lima per seratus, cara mana yang paling pas?";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode luar",
-  sumber: "Ringkasan metode luar",
+  judul: "Ringkasan tiga cara",
+  sumber: "Metode global: ringkasan",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      SUARA_Z1,
-      tambah(0, judul("Ringkasan empat metode")),
-      ...NAMA_METODE.map((m, i) => tambah(["menghitung", "mewarnai", "menyeberang", "mengisi"][i], ...kartu(`r${i}`, 8, 32 + i * 40, 284, 32, WARNA_METODE[i], [`${m}: ${KEGUNAAN[i]}`], 8.2))),
+      SUARA_G1,
+      tambah(0, judul("Tiga Cara Pak Bagas"), ...kartu("r0", 14, 40, 84, 52, "#FEE2E2", ["Kisi", "Persepuluhan"], 10), teks("n3", 150, 118, "3 cara", 11, W.ungu)),
+      tambah("lihat", ...kartu("r1", 108, 40, 84, 52, "#DBEAFE", ["Kisi", "Perseratusan"], 10)),
+      tambah("Bagas.", ...tokoh("pb", 262, 184, "Pak Bagas"), ...kartu("r2", 202, 40, 84, 52, "#DCFCE7", ["Jembatan", "Desimal"], 10)),
     ),
     k(
-      SUARA_Z2,
-      bersih(0),
-      tambah(0, judul("Angka yang dipakai")),
-      tambah(0, ...barisTabel("rt0", 10, 34, [90, 190], ["jenis", "angka yang dipakai"], 24, 8.6, true)),
-      tambah("sepuluh;", ...barisTabel("rt1", 10, 58, [90, 190], ["persepuluhan", "1/10, 4/10, 5/10, 9/10"], 24, 8.4)),
-      tambah("tujuh,", ...barisTabel("rt2", 10, 82, [90, 190], ["perseratusan", "1/100, 7/100, 15/100, 25/100"], 24, 8.4)),
-      tambah("enam", ...barisTabel("rt3", 10, 106, [90, 190], ["perseratusan", "62/100, 81/100"], 24, 8.4)),
+      SUARA_G2,
+      sorotkan("persepuluhan", "r0-k"),
+      tambah("dua", teks("n2", 150, 140, "2 angka koma", 11, W.merah)),
+      redamkan("dua", "r0-k"),
+      sorotkan("Perseratusan.", "r1-k"),
     ),
     k(
-      SUARA_Z3,
-      bersih(0),
-      tambah(0, judul("Memilih metode")),
-      tambah("kisi", ...kartu("p1", 14, 34, 272, 30, W.langit, ["kisi: melihat bentuknya"], 9.2)),
-      tambah("jembatan", ...kartu("p2", 14, 70, 272, 30, W.krem, ["jembatan: mengubah"], 9.2)),
-      tambah("tabel", ...kartu("p3", 14, 106, 272, 30, W.pink, ["tabel nilai tempat: memeriksa"], 9.2)),
-      tambah("Selalu", ...kartu("p4", 14, 144, 272, 34, W.emas, ["1 angka: 10;  2 angka: 100"], 10)),
-      tambah("seratus.", emo("p5", 150, 192, "✅", 18)),
+      SUARA_G3,
+      redamkan("Jembatan", "r1-k"),
+      sorotkan("Jembatan", "r2-k"),
+      tambah("caranya,", emo("mt", 262, 130, E.penggaris, 22)),
+      tambah("hitung", teks("hk", 120, 172, "hitung angka koma", 10, W.hijauTua)),
+    ),
+    k(
+      SUARA_G4,
+      hapus("Menurutmu,", "n3", "n2", "hk", "mt"),
+      tambah("empat", ...pecah("q", 120, 118, "45", "100", 18)),
+      tambah("pas?", emo("tq", 190, 130, E.tanya, 28)),
     ),
   ],
 };

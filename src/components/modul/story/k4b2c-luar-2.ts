@@ -1,243 +1,261 @@
 import type { AdeganStory } from "./logika-story";
-import { W, barisTabel, dinding, emo, garis, jembatan, judul, kartu, kotak, panah, pecahan, teks } from "./k4b2c-gambar";
-import { bersih, hapus, idx, k, tambah } from "./k4b2c-bantu";
-import { kepala, pasangan } from "./k4b2c-luar-1";
+import { E, K, W, emo, judul, kartu, panah, papanTulis, pecahan, teks, tokoh } from "./k4b2c-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b2c-bantu";
 
-/* ------------------------------ 6. Simplify: konsep ------------------------------ */
-const SUARA_P1 = "Metode ketiga, Simplify, atau Sederhanakan. Ini kebalikan dari mengalikan: bagi pembilang dan penyebut dengan bilangan yang sama, sampai tidak bisa dibagi lagi.";
-const SUARA_P2 = "Faktor persekutuan terbesar, disingkat FPB, adalah bilangan terbesar yang membagi habis pembilang dan penyebut. Membagi dengan FPB menyederhanakan pecahan dalam satu langkah.";
-const SUARA_P3 = "Cara mencari FPB: tulis faktor pembilang dan faktor penyebut, lalu pilih yang sama dan terbesar. Untuk dua dan enam, faktor dua adalah satu dan dua. Faktor enam adalah satu, dua, tiga, dan enam. Jadi FPB-nya dua.";
-const SUARA_P4 = "Pecahan sudah sederhana bila pembilang dan penyebutnya tidak punya faktor yang sama selain satu. Satu per tiga sudah sederhana, sehingga tidak bisa dibagi lagi.";
+/*
+ * Cerita orisinal IGIL "Meja Jahit Kak Sekar" (Kelas 4 Bab 2 Sub-Bab C), video metode global.
+ * Naskah suara dari naskah/story-naskah-k4b2c.md. Bagian ini: Multiply by One (Kali Bentuk Satu), Divide Both (Bagi Keduanya), terapannya, dan ringkasan.
+ */
 
-export const ADEGAN_LUAR_SEDERHANA: AdeganStory = {
-  id: "luar-sederhana",
-  judul: "Simplify: bagi dengan FPB",
-  sumber: "Metode luar: Simplify",
-  latar: "#FEFCE8",
+/* ------------------------------ Multiply by One: konsep ------------------------------ */
+const SUARA_K1 = "Cara kedua, Multiply by One, atau Kali Bentuk Satu.";
+const SUARA_K2 = "Pecahan seperti dua per dua atau tiga per tiga besarnya sama dengan satu.";
+const SUARA_K3 = "Mengalikan sebuah pecahan dengan bentuk satu tidak mengubah besarnya.";
+const SUARA_K4 = "Hasilnya, pembilang dan penyebut sama-sama dikalikan dengan bilangan yang sama.";
+const K2A = pecahan("fa", 90, 90, 2, 2, 24, K.kapur);
+const K2B = pecahan("fb", 210, 90, 3, 3, 24, K.kapur);
+const K3A = pecahan("pa", 44, 90, 3, 5, 24, K.kapur);
+const K3B = pecahan("pb", 130, 90, 2, 2, 24, K.kapur);
+const K3C = pecahan("pc", 222, 90, 6, 10, 24, K.kapur);
+const K4A = pecahan("qa", 80, 92, 3, 5, 30, K.kapur);
+const K4B = pecahan("qc", 220, 92, 6, 10, 30, K.kapur);
+
+export const ADEGAN_LUAR_KALI: AdeganStory = {
+  id: "luar-kali",
+  judul: "Multiply by One: Kali Bentuk Satu",
+  sumber: "Metode global: Multiply by One (konsep)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
-      SUARA_P1,
-      tambah(0, judul("Metode 3 dari 4")),
-      tambah("ketiga,", kepala(2)),
-      tambah("kebalikan", ...pecahan("pa1", 60, 96, 6, 8, 20)),
-      tambah("bagi", panah("pa2", 92, 88, 116, 0, W.hijau, 2), teks("pa3", 150, 80, "÷2", 10, W.hijau), teks("pa6", 150, 122, "÷2", 10, W.hijau), panah("pa7", 92, 108, 116, 0, W.hijau, 2)),
-      tambah("sama,", ...pecahan("pa4", 240, 96, 3, 4, 20)),
-      tambah("lagi.", ...kartu("pa5", 40, 140, 220, 34, W.emas, ["tidak bisa dibagi lagi: sederhana"], 9.4)),
+      SUARA_K1,
+      tambah(0, judul("Cara 2: Multiply by One"), ...papanTulis("pt", 8, 28, 284, 132)),
+      tambah("Multiply", teks("nm", 150, 62, "Multiply by One", 13, K.kapurMerah)),
+      tambah("Kali", teks("ni", 150, 84, "Kali Bentuk Satu", 11, K.kapur)),
+      tambah("Satu.", teks("b1", 150, 118, "bentuk 1", 12, K.kapurBiru)),
     ),
     k(
-      SUARA_P2,
-      bersih(0),
-      tambah(0, judul("FPB: faktor persekutuan terbesar")),
-      tambah(0, kepala(2)),
-      tambah("disingkat", ...kartu("pb1", 30, 56, 240, 28, W.langit, ["FPB = faktor persekutuan terbesar"], 9.4)),
-      tambah("membagi@2", ...pecahan("pb2", 60, 140, 12, 18, 18), teks("pb3", 150, 102, "FPB dari 12 dan 18 = 6", 9.4, W.merah)),
-      tambah("langkah.", ...jembatan("pbj", 60, 240, 140, "÷6", 18, W.hijau, 16), ...pecahan("pb4", 240, 140, 2, 3, 18)),
+      SUARA_K2,
+      hapus(0, "nm", "ni", "b1"),
+      tambah("dua", K2A[0]),
+      tambah("per", K2A[1]),
+      tambah("dua@2", K2A[2]),
+      tambah("tiga", K2B[0]),
+      tambah("per@2", K2B[1]),
+      tambah("tiga@2", K2B[2]),
+      tambah("sama", teks("e1", 130, 96, "= 1", 16, K.kapurMerah)),
+      tambah("satu.", teks("e2", 252, 96, "= 1", 16, K.kapurMerah)),
     ),
     k(
-      SUARA_P3,
+      SUARA_K3,
       bersih(0),
-      tambah(0, judul("Mencari FPB dua dan enam")),
-      tambah(0, kepala(2)),
-      tambah(idx(SUARA_P3, "dua", 2), ...kartu("pc1", 14, 62, 272, 32, W.hijauMuda, ["faktor 2: 1, 2"], 9.6)),
-      tambah(idx(SUARA_P3, "enam", 2), ...kartu("pc2", 14, 102, 272, 32, W.langit, ["faktor 6: 1, 2, 3, 6"], 9.6)),
-      tambah("Jadi", ...kartu("pc3", 40, 146, 220, 34, W.emas, ["yang sama: 1 dan 2", "terbesar: FPB = 2"], 9.4)),
+      tambah(0, judul("Cara 2: Multiply by One"), ...papanTulis("pt", 8, 28, 284, 132), ...K3A, teks("tk", 84, 94, "×", 18, K.kapurMerah)),
+      tambah("bentuk", ...K3B, teks("lb", 130, 132, "bentuk 1", 10, K.kapurBiru)),
+      tambah("mengubah", teks("eq", 176, 94, "=", 18, K.kapurMerah), ...K3C),
+      tambah("besarnya.", emo("ok", 262, 140, E.benar, 20)),
     ),
     k(
-      SUARA_P4,
+      SUARA_K4,
       bersih(0),
-      tambah(0, judul("Pecahan yang sudah sederhana")),
-      tambah(0, kepala(2)),
-      tambah("tiga.", ...pecahan("pd1", 150, 90, 1, 3, 22)),
-      tambah("faktor", ...kartu("pd2", 14, 120, 130, 32, W.hijauMuda, ["faktor 1: 1"], 9.4), ...kartu("pd3", 156, 120, 130, 32, W.langit, ["faktor 3: 1, 3"], 9.4)),
-      tambah(idx(SUARA_P4, "sederhana", 2), teks("pd4", 150, 176, "FPB = 1: sudah sederhana", 10, W.hijau)),
+      tambah(0, judul("Kali Sama"), ...papanTulis("pt", 8, 28, 284, 132), ...K4A),
+      tambah("penyebut", panah("ar", 112, 92, 76, 0, K.kapurMerah, 2), teks("t1", 150, 64, "×2", 14, K.kapurMerah)),
+      tambah("dikalikan", teks("t2", 150, 124, "×2", 14, K.kapurMerah)),
+      tambah("sama.", ...K4B),
     ),
   ],
 };
 
-/* ------------------------------ 7. Simplify: penerapan pada pecahan senilai ------------------------------ */
-const SUARA_Q1 = "Pertama: dua per empat. FPB dua dan empat adalah dua. Dibagi dua, hasilnya satu per dua.";
-const SUARA_Q2 = "Kedua: dua per enam. FPB dua dan enam adalah dua. Dibagi dua, hasilnya satu per tiga.";
-const SUARA_Q3 = "Ketiga: tiga per sembilan. FPB tiga dan sembilan adalah tiga. Dibagi tiga, hasilnya satu per tiga.";
-const SUARA_Q4 = "Keempat, pada kertas lipat: empat per enam belas. FPB empat dan enam belas adalah empat. Dibagi empat, hasilnya satu per empat.";
+/* ------------------------------ Multiply by One: terapan ------------------------------ */
+const SUARA_L1 = "Genta mau menulis satu per tiga dalam bentuk per dua belas.";
+const SUARA_L2 = "Ia mengalikan pembilang dan penyebut dengan empat, sehingga menjadi empat per dua belas.";
+const SUARA_L3 = "Cocok untuk membuat penyebut baru yang kita inginkan.";
+const SUARA_L4 = "Kurang cocok kalau yang dikalikan hanya pembilang atau hanya penyebut, karena besarnya berubah.";
+const LA = pecahan("pa", 90, 90, 1, 3, 26, K.kapur);
+const LQ = pecahan("pq", 220, 90, "?", 12, 26, K.kapur);
+const LW = pecahan("pw", 220, 90, 4, 3, 26, K.kapur);
 
-/** Satu ketukan penerapan Simplify: kalimat berpola "... FPB ... adalah ... Dibagi ..., hasilnya ...". */
-function ketukanBagi(suara: string, id: string, p: number, q: number, n: number, kataQ: string) {
-  const d = pasangan(id, p, q, p / n, q / n, `÷${n}`, [`${p} ÷ ${n} = ${p / n}`, `${q} ÷ ${n} = ${q / n}`], 84, W.merah);
-  return k(
-    suara,
-    bersih(0),
-    tambah(0, judul(`${p}/${q} dibagi ${n}`), ...d.kiri),
-    tambah("FPB", ...kartu(`${id}f`, 100, 26, 100, 20, W.emas, [`FPB = ${n}`], 8.6)),
-    tambah("Dibagi", ...d.jembatan),
-    tambah(kataQ, d.hit1),
-    tambah("hasilnya", d.hit2, ...d.kanan, ...d.batangKiri, ...d.batangKanan, d.sama),
-  );
-}
-export const ADEGAN_LUAR_SEDERHANA_TERAPAN: AdeganStory = {
-  id: "luar-sederhana-terapan",
-  judul: "Simplify pada pecahan senilai",
-  sumber: "Metode luar: Simplify",
-  latar: "#FFFBEB",
+export const ADEGAN_LUAR_KALI_TERAPAN: AdeganStory = {
+  id: "luar-kali-terapan",
+  judul: "Kali Bentuk Satu: kapan cocok",
+  sumber: "Metode global: Multiply by One (terapan)",
+  latar: "#F0F9FF",
   ketukan: [
-    ketukanBagi(SUARA_Q1, "qa", 2, 4, 2, "adalah"),
-    ketukanBagi(SUARA_Q2, "qb", 2, 6, 2, "adalah"),
-    ketukanBagi(SUARA_Q3, "qc", 3, 9, 3, "adalah"),
-    ketukanBagi(SUARA_Q4, "qd", 4, 16, 4, "adalah"),
+    k(
+      SUARA_L1,
+      tambah(0, judul("Kali Bentuk Satu Genta"), ...papanTulis("pt", 8, 28, 284, 132), ...tokoh("ge", 40, 184, "Genta")),
+      tambah("satu", LA[0]),
+      tambah("per", LA[1]),
+      tambah("tiga", LA[2]),
+      tambah("bentuk", teks("eq", 156, 94, "=", 20, K.kapurMerah), LQ[0], LQ[1]),
+      tambah("belas.", LQ[2]),
+    ),
+    k(
+      SUARA_L2,
+      tambah("pembilang", teks("t1", 156, 66, "×4", 14, K.kapurMerah)),
+      tambah("penyebut", teks("t2", 156, 118, "×4", 14, K.kapurMerah)),
+      ubah("menjadi", { id: "pq-p", isi: "4", warna: K.kapurMerah }),
+      sorotkan("menjadi", "pq-q"),
+    ),
+    k(
+      SUARA_L3,
+      hapus(0, "t1", "t2"),
+      tambah(0, emo("ok", 262, 142, E.benar, 20)),
+      sorotkan("penyebut", "pq-q"),
+      tambah("baru", teks("pb", 150, 140, "penyebut baru", 11, K.kapurBiru)),
+    ),
+    k(
+      SUARA_L4,
+      hapus(0, "ok", "pb", "pq-p", "pq-g", "pq-q"),
+      tambah(0, emo("xs", 262, 142, E.salah, 20)),
+      tambah("pembilang", ...LW, teks("t3", 156, 66, "×4", 14, K.kapurMerah)),
+      tambah("berubah.", teks("bb", 150, 140, "besar berubah", 11, K.kapurMerah)),
+    ),
   ],
 };
 
-/* ------------------------------ 8. Fraction Wall: konsep ------------------------------ */
-const X_DINDING = 60;
-const SUARA_W1 = "Metode keempat, Fraction Wall, atau Dinding Pecahan. Susun batang pecahan berlapis seperti dinding bata: satu lapis utuh, lalu lapis yang dibagi dua, tiga, empat, enam, dan sembilan.";
-const SUARA_W2 = "Semua lapis sama panjang, jadi potongan dari lapis yang berbeda bisa dibandingkan langsung. Potongan yang ujungnya sejajar menunjukkan pecahan senilai.";
-const SUARA_W3 = "Cara membacanya: pilih satu potong, tarik garis lurus ke bawah dari ujungnya, lalu cari potongan di lapis lain yang ujungnya tepat di garis itu. Potongan itu senilai.";
-const SUARA_W4 = "Dinding menolong bila lapis yang dibutuhkan ada, jadi cocok untuk penyebut kecil. Untuk pecahan lain kita kembali ke mengalikan atau membagi.";
+/* ------------------------------ Divide Both: konsep ------------------------------ */
+const SUARA_B1 = "Cara ketiga, Divide Both, atau Bagi Keduanya.";
+const SUARA_B2 = "Kita membagi pembilang dan penyebut dengan bilangan yang sama, yang bisa membagi habis keduanya.";
+const SUARA_B3 = "Hasilnya pecahan yang lebih sederhana, dengan besar yang tetap sama.";
+const SUARA_B4 = "Kita berhenti kalau sudah tidak ada bilangan lain yang membagi habis keduanya.";
+const BA = pecahan("pa", 70, 92, 12, 16, 26, K.kapur);
+const BC = pecahan("pc", 230, 92, 3, 4, 26, K.kapur);
+const BD = pecahan("pd", 150, 92, 3, 4, 40, K.kapur);
 
-/** Sorotan sel dinding: kotak berwarna emas transparan di atas sel nomor `sel` lapis `n`. Id `${id}`. */
-const sorotSel = (id: string, x: number, y: number, n: number, sel: number, h: number) => kotak(id, x + (sel * 216) / n, y, 216 / n, h, W.merah, W.merah, { rx: 0, op: 0.45, tebal: 2 });
-
-export const ADEGAN_LUAR_DINDING: AdeganStory = {
-  id: "luar-dinding",
-  judul: "Fraction Wall: dinding pecahan",
-  sumber: "Metode luar: Fraction Wall",
-  latar: "#FDF2F8",
+export const ADEGAN_LUAR_BAGI: AdeganStory = {
+  id: "luar-bagi",
+  judul: "Divide Both: Bagi Keduanya",
+  sumber: "Metode global: Divide Both (konsep)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
-      SUARA_W1,
-      tambah(0, judul("Fraction Wall · Dinding Pecahan")),
-      tambah("utuh,", ...dinding("dd", X_DINDING, 34, [1], 20, 24)),
-      ...[2, 3, 4, 6, 9].map((n, i) => tambah(idx(SUARA_W1, ["dua,", "tiga,", "empat,", "enam,", "sembilan."][i].replace(/[^a-z]/g, "")), ...dinding("dd", X_DINDING, 34 + (i + 1) * 24, [n], 20, 24))),
+      SUARA_B1,
+      tambah(0, judul("Cara 3: Divide Both"), ...papanTulis("pt", 8, 28, 284, 132)),
+      tambah("Divide", teks("nm", 150, 62, "Divide Both", 13, K.kapurMerah)),
+      tambah("Bagi", teks("ni", 150, 84, "Bagi Keduanya", 11, K.kapur)),
+      tambah("Keduanya.", emo("ik", 150, 134, "\u{2797}", 26)),
     ),
     k(
-      SUARA_W2,
-      tambah("sejajar", garis("dg", X_DINDING + 108, 28, 0, 150, W.merah, 1.6, { putus: true })),
-      tambah("senilai.", sorotSel("hs1", X_DINDING, 58, 2, 0, 20), sorotSel("hs2", X_DINDING, 106, 4, 1, 20)),
+      SUARA_B2,
+      hapus(0, "nm", "ni", "ik"),
+      tambah(0, ...BA),
+      tambah("pembilang", teks("t1", 136, 76, "÷4", 14, K.kapurMerah)),
+      tambah("penyebut", teks("t2", 136, 118, "÷4", 14, K.kapurMerah)),
+      tambah("keduanya.", emo("ok", 150, 148, E.benar, 20)),
     ),
     k(
-      SUARA_W3,
-      hapus(0, "dg", "hs1", "hs2"),
-      tambah("tarik", garis("dh", X_DINDING + 72, 28, 0, 150, W.merah, 1.6, { putus: true })),
-      tambah("potong,", sorotSel("ht1", X_DINDING, 82, 3, 0, 20)),
-      tambah("tepat", sorotSel("ht2", X_DINDING, 130, 6, 1, 20)),
-      tambah("senilai.", teks("ht3", 150, 192, "1/3 senilai 2/6", 10, W.merah)),
+      SUARA_B3,
+      hapus(0, "ok"),
+      tambah("pecahan", panah("ar", 104, 92, 90, 0, K.kapurMerah, 2)),
+      tambah("sederhana,", ...BC),
+      tambah("besar", teks("eq", 150, 140, "besar tetap", 10, K.kapurBiru)),
+      sorotkan("sama.", "pc-p", "pc-q"),
     ),
     k(
-      SUARA_W4,
+      SUARA_B4,
       bersih(0),
-      tambah(0, judul("Kapan dinding dipakai?")),
-      tambah("menolong", emo("hw", 150, 76, "🧱", 34)),
-      tambah("kecil.", ...kartu("hk1", 14, 96, 272, 30, W.hijauMuda, ["penyebut kecil: dinding cukup"], 9.6)),
-      tambah("kembali", ...kartu("hk2", 14, 136, 272, 30, W.langit, ["pecahan lain: kali atau bagi"], 9.6)),
+      tambah(0, judul("Berhenti"), ...papanTulis("pt", 8, 28, 284, 132), ...BD),
+      tambah("berhenti", emo("st", 60, 100, E.tangan, 24)),
+      tambah("tidak", teks("tb", 150, 142, "tidak bisa dibagi lagi", 10, K.kapurMerah)),
+      tambah("keduanya.", emo("ok", 250, 100, E.benar, 24)),
     ),
   ],
 };
 
-/* ------------------------------ 9. Fraction Wall: penerapan pada pecahan senilai ------------------------------ */
-const LAPIS_TERAPAN = [2, 3, 4, 6, 9] as const;
-const X_TERAPAN = 48;
-const Y_TERAPAN = 34;
-const SUARA_V1 = "Pertama, pada dinding: ujung satu potongan lapis dua sejajar dengan ujung dua potongan lapis empat. Jadi dua per empat senilai dengan satu per dua.";
-const SUARA_V2 = "Kedua, ujung satu potongan lapis tiga sejajar dengan ujung dua potongan lapis enam. Jadi dua per enam senilai dengan satu per tiga.";
-const SUARA_V3 = "Ketiga, ujung tiga potongan lapis sembilan sejajar dengan ujung satu potongan lapis tiga. Jadi tiga per sembilan senilai dengan satu per tiga.";
-const SUARA_V4 = "Garis di tengah dinding melewati lapis dua, empat, dan enam. Di sana ada satu per dua, dua per empat, dan tiga per enam, semuanya senilai. Lapis sembilan tidak sejajar di titik itu.";
+/* ------------------------------ Divide Both: terapan ------------------------------ */
+const SUARA_M1 = "Satria menyederhanakan delapan per dua belas dengan membagi keduanya dengan empat.";
+const SUARA_M2 = "Hasilnya dua per tiga, dan angka dua serta tiga tidak bisa dibagi lagi bersama.";
+const SUARA_M3 = "Cocok untuk menulis jawaban dalam bentuk paling sederhana.";
+const SUARA_M4 = "Kurang cocok kalau kita ingin penyebut yang lebih besar, karena yang kita lakukan justru memperkecil.";
+const MA = pecahan("pa", 80, 90, 8, 12, 26, K.kapur);
+const MC = pecahan("pc", 230, 90, 2, 3, 26, K.kapur);
 
-/** Sorotan sel pada dinding terapan: lapis ke-`r` (penyebut n), sel nomor `sel` sampai `sel + banyak - 1`. */
-const sorotLapis = (id: string, n: number, sel: number, banyak = 1) => {
-  const r = LAPIS_TERAPAN.indexOf(n as (typeof LAPIS_TERAPAN)[number]);
-  return kotak(id, X_TERAPAN + (sel * 216) / n, Y_TERAPAN + r * 26, (banyak * 216) / n, 22, W.merah, W.merah, { rx: 0, op: 0.45, tebal: 2 });
-};
-
-export const ADEGAN_LUAR_DINDING_TERAPAN: AdeganStory = {
-  id: "luar-dinding-terapan",
-  judul: "Fraction Wall pada pecahan senilai",
-  sumber: "Metode luar: Fraction Wall",
-  latar: "#FCE7F3",
+export const ADEGAN_LUAR_BAGI_TERAPAN: AdeganStory = {
+  id: "luar-bagi-terapan",
+  judul: "Bagi Keduanya: kapan cocok",
+  sumber: "Metode global: Divide Both (terapan)",
+  latar: "#F0F9FF",
   ketukan: [
     k(
-      SUARA_V1,
-      tambah(0, judul("Dinding: lapis 2, 3, 4, 6, 9")),
-      tambah("Pertama,", ...dinding("dw", X_TERAPAN, Y_TERAPAN, LAPIS_TERAPAN, 22, 26)),
-      tambah("sejajar", garis("vg", X_TERAPAN + 108, 28, 0, 142, W.merah, 1.6, { putus: true })),
-      tambah("lapis", sorotLapis("v1", 2, 0)),
-      tambah("empat.", sorotLapis("v2", 4, 0, 2)),
-      tambah("Jadi", ...kartu("vk", 40, 176, 220, 24, W.emas, ["2/4 = 1/2"], 10)),
+      SUARA_M1,
+      tambah(0, judul("Bagi Keduanya Satria"), ...papanTulis("pt", 8, 28, 284, 132), ...tokoh("sa", 40, 184, "Satria")),
+      tambah("delapan", MA[0]),
+      tambah("per", MA[1]),
+      tambah("dua", MA[2]),
+      tambah("membagi", panah("ar", 112, 90, 80, 0, K.kapurMerah, 2)),
+      tambah("empat.", teks("t1", 146, 70, "÷4", 14, K.kapurMerah), teks("t2", 146, 116, "÷4", 14, K.kapurMerah)),
     ),
     k(
-      SUARA_V2,
-      hapus(0, "vg", "v1", "v2", "vk-k", "vk-t0"),
-      tambah("Kedua,", garis("vh", X_TERAPAN + 72, 28, 0, 142, W.merah, 1.6, { putus: true })),
-      tambah("lapis", sorotLapis("v3", 3, 0)),
-      tambah("enam.", sorotLapis("v4", 6, 0, 2)),
-      tambah("Jadi", ...kartu("vm", 40, 176, 220, 24, W.emas, ["2/6 = 1/3"], 10)),
+      SUARA_M2,
+      tambah("dua", MC[0]),
+      tambah("per", MC[1]),
+      tambah("tiga,", MC[2]),
+      tambah("tidak", emo("st", 262, 60, E.tangan, 20)),
+      tambah("bersama.", teks("tb", 150, 140, "tidak bisa dibagi lagi", 10, K.kapurMerah)),
     ),
     k(
-      SUARA_V3,
-      hapus(0, "vh", "v3", "v4", "vm-k", "vm-t0"),
-      tambah("Ketiga,", garis("vi", X_TERAPAN + 72, 28, 0, 142, W.merah, 1.6, { putus: true })),
-      tambah("sembilan", sorotLapis("v5", 9, 0, 3)),
-      tambah(idx(SUARA_V3, "tiga", 3), sorotLapis("v6", 3, 0)),
-      tambah("Jadi", ...kartu("vn", 40, 176, 220, 24, W.emas, ["3/9 = 1/3"], 10)),
+      SUARA_M3,
+      hapus(0, "st", "tb"),
+      tambah(0, emo("ok", 262, 140, E.benar, 20)),
+      tambah("jawaban", teks("jw", 150, 140, "jawaban akhir", 11, K.kapurBiru)),
+      sorotkan("sederhana.", "pc-p", "pc-q"),
     ),
     k(
-      SUARA_V4,
-      hapus(0, "vi", "v5", "v6", "vn-k", "vn-t0"),
-      tambah("tengah", garis("vj", X_TERAPAN + 108, 28, 0, 134, W.merah, 1.6, { putus: true })),
-      tambah("dua,", sorotLapis("v7", 2, 0)),
-      tambah("empat,", sorotLapis("v8", 4, 0, 2)),
-      tambah("enam.", sorotLapis("v9", 6, 0, 3)),
-      tambah("semuanya", ...kartu("vo", 40, 176, 220, 24, W.emas, ["1/2 = 2/4 = 3/6"], 10)),
-      tambah("sembilan", teks("vz", 150, 171, "lapis 9: ujung tidak di garis", 8.8, W.coklat)),
+      SUARA_M4,
+      hapus(0, "ok", "jw", "ar", "t1", "t2", "pa-p", "pa-g", "pa-q", "pc-p", "pc-g", "pc-q"),
+      tambah(0, emo("xs", 262, 140, E.salah, 20)),
+      tambah("penyebut", teks("pb", 150, 60, "penyebut lebih besar?", 11, K.kapur)),
+      tambah("justru", teks("tj", 150, 100, "12 jadi 3", 16, K.kapurMerah)),
+      tambah("memperkecil.", emo("tr", 150, 128, "\u{1F53B}", 20)),
     ),
   ],
 };
 
-/* ------------------------------ 10. Ringkasan ------------------------------ */
-const SUARA_R1 = "Ringkasan empat metode. Pecahan Senilai menyamakan daerah bagian. Kali dengan Bentuk Satu mengalikan atas dan bawah. Sederhanakan membagi atas dan bawah. Dinding Pecahan menyejajarkan ujung potongan.";
-const SUARA_R2 = "Pasangan senilai yang kita pakai: dua per empat dengan satu per dua, dua per enam dengan satu per tiga, tiga per sembilan dengan satu per tiga, dan satu per empat dengan empat per enam belas.";
-const SUARA_R3 = "Kapan memakai yang mana? Mengalikan bila ingin pecahan yang lebih rinci, membagi bila ingin pecahan yang lebih sederhana, dan dinding atau gambar bila ingin melihat langsung.";
-const SUARA_R4 = "Apa pun caranya, aturannya satu: pembilang dan penyebut diperlakukan dengan bilangan yang sama, sehingga nilai pecahan tetap.";
-const WARNA_R = [W.hijauMuda, W.langit, W.krem, W.pink];
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita lihat bersama Kak Sekar. Mana yang pas tergantung keadaan.";
+const SUARA_R2 = "Ingin melihat alasannya dengan gambar, pakai Cocokkan Daerah. Ingin penyebut yang lebih besar, pakai Kali Bentuk Satu.";
+const SUARA_R3 = "Ingin pecahan yang paling sederhana, pakai Bagi Keduanya. Apa pun caranya, lakukan hal yang sama pada pembilang dan penyebut.";
+const SUARA_R4 = "Menurutmu, untuk menyederhanakan sepuluh per lima belas, cara mana yang paling pas?";
+const KARTU_CARA = ["Cocokkan Daerah", "Kali Bentuk Satu", "Bagi Keduanya"];
+const RQ = pecahan("rq", 150, 80, 10, 15, 32, W.biru);
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode dari luar",
-  sumber: "Ringkasan metode luar",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan metode global",
   latar: "#FFF7ED",
   ketukan: [
     k(
       SUARA_R1,
-      tambah(0, judul("Ringkasan empat metode")),
-      tambah("Senilai", ...kartu("r1", 8, 30, 138, 66, WARNA_R[0], ["Pecahan Senilai", "samakan", "daerah bagian"], 8.8)),
-      tambah("Kali", ...kartu("r2", 154, 30, 138, 66, WARNA_R[1], ["Kali Bentuk Satu", "kali atas", "dan bawah"], 8.8)),
-      tambah("Sederhanakan", ...kartu("r3", 8, 104, 138, 66, WARNA_R[2], ["Sederhanakan", "bagi atas", "dan bawah"], 8.8)),
-      tambah("Dinding", ...kartu("r4", 154, 104, 138, 66, WARNA_R[3], ["Dinding Pecahan", "sejajarkan", "ujung potongan"], 8.8)),
+      tambah(0, judul("Ringkasan"), teks("n3", 150, 36, "3 cara", 10, W.ungu), ...KARTU_CARA.flatMap((c, i) => kartu(`r${i}`, 14 + i * 92, 44, 88, 40, ["#DBEAFE", "#DCFCE7", "#FEF9C3"][i], [c], 8))),
+      tambah("Kak", ...tokoh("ks", 40, 184, "Kak Sekar")),
+      tambah("pas", emo("tq", 150, 140, E.tanya, 22)),
     ),
     k(
       SUARA_R2,
-      bersih(0),
-      tambah(0, judul("Pasangan senilai yang dipakai")),
-      tambah("empat", ...barisTabel("rt0", 30, 34, [90, 150], ["contoh", "pasangan senilai"], 24, 9, true)),
-      tambah(idx(SUARA_R2, "dua", 2), ...barisTabel("rt1", 30, 58, [90, 150], ["Pasangan 1", "2/4 = 1/2"], 24, 9)),
-      tambah(idx(SUARA_R2, "enam", 1), ...barisTabel("rt2", 30, 82, [90, 150], ["Pasangan 2", "2/6 = 1/3"], 24, 9)),
-      tambah(idx(SUARA_R2, "sembilan", 1), ...barisTabel("rt3", 30, 106, [90, 150], ["Pasangan 3", "3/9 = 1/3"], 24, 9)),
-      tambah("belas.", ...barisTabel("rt4", 30, 130, [90, 150], ["kertas lipat", "1/4 = 4/16"], 24, 9)),
+      hapus(0, "tq"),
+      sorotkan("Cocokkan", "r0-k"),
+      tambah("Daerah.", emo("ok1", 58, 108, E.benar, 18)),
+      tambah("Kali", teks("b1", 150, 104, "bentuk 1", 9, W.hijauTua)),
+      sorotkan("Kali", "r1-k"),
+      tambah("Satu.", emo("ok2", 150, 120, E.benar, 18)),
     ),
     k(
       SUARA_R3,
-      bersih(0),
-      tambah(0, judul("Kapan memakai yang mana?")),
-      tambah("Mengalikan", ...kartu("s1", 14, 32, 272, 30, W.langit, ["kali: ingin pecahan lebih rinci"], 9.4)),
-      tambah("membagi", ...kartu("s2", 14, 70, 272, 30, W.krem, ["bagi: ingin pecahan lebih sederhana"], 9.4)),
-      tambah("dinding", ...kartu("s3", 14, 108, 272, 30, W.pink, ["dinding atau gambar: lihat langsung"], 9.4)),
-      tambah("langsung.", emo("s4", 150, 176, "👀", 28)),
+      hapus(0, "b1"),
+      ubah(0, { id: "r0-k", sorot: false }, { id: "r1-k", sorot: false }),
+      sorotkan("Bagi", "r2-k"),
+      tambah("Keduanya.", emo("ok3", 242, 108, E.benar, 18)),
+      tambah("sama", teks("sm", 150, 150, "kerjakan sama", 10, W.biru)),
+      tambah("penyebut.", teks("sk", 150, 166, "pada keduanya", 10, W.biru)),
     ),
     k(
       SUARA_R4,
       bersih(0),
-      tambah(0, judul("Satu aturan untuk semua cara")),
-      tambah("pembilang", ...pecahan("u1", 80, 80, "atas", "bawah", 14), teks("u2", 150, 84, "×  atau  ÷", 14, W.merah)),
-      tambah("bilangan", ...kartu("u3", 40, 110, 220, 32, W.emas, ["bilangan yang sama"], 10.4)),
-      tambah("tetap.", teks("u4", 150, 170, "nilai pecahan tetap", 11, W.hijau)),
+      tambah(0, judul("Pilih Satu Cara"), ...tokoh("ks", 40, 184, "Kak Sekar")),
+      tambah("sepuluh", RQ[0]),
+      tambah("per", RQ[1]),
+      tambah("lima", RQ[2]),
+      tambah("pas?", teks("tq2", 150, 150, "?", 36, W.merah)),
     ),
   ],
 };
