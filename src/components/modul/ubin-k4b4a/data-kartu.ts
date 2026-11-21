@@ -1,8 +1,9 @@
 /**
- * Data Mind-map dan Infografis Kelas 4 Bab 4 Sub-Bab A "Lantai Ubin Bu Sinta" (pola label kosong, komponen bersama peta-label/PetaLabel.tsx dan peta-label/InfoKartu.tsx).
- * Mind-map: gambar tangga satuan di tepi kolam dengan empat label kosong; anak mengetuk, judul langkah muncul dan dibacakan Guru. Isi = langkah rangkuman semua metode Sub-Bab A.
- * Infografis: dua kartu. Kartu 1 = tabel DATA luas lantai dari cerita (gambar, kata, angka, dan satuan; judul kolom tampil, isi sel kosong sampai diketuk); data bersambung dan menjadi bahan Sub-Bab B.
- * Kartu 2 = kartu acuan (baris kali kolom dan satu meter persegi sama dengan sepuluh ribu sentimeter persegi). Digital saja.
+ * Data Mind-map dan Infografis Kelas 4 Bab 4 Sub-Bab A "Lantai Ubin Bu Sinta" (dirancang ulang, tanpa komponen bersama).
+ * Mind-map: denah lantai tepi kolam Bu Sinta dengan ubin sungguhan; empat bagian denah (ubin, baris kali kolom, tulisan luas, tangga satuan) masing-masing punya label kosong
+ * yang diketuk: judul langkah muncul dan dibacakan Guru. Isi = langkah rangkuman semua metode Sub-Bab A.
+ * Infografis: dua kartu dari benda dan angka yang muncul di Story. Kartu 1 = papan jalan Bu Sinta berisi tiga denah (lantai maket 3 x 4 = 12 cm², lantai kolam 5 x 6 = 30 m², denah Genta 4 x 5 = 20 cm²);
+ * baris kali kolom dan luas (dengan satuan) kosong sampai diketuk. Kartu 2 = tangga satuan (1 m = 100 cm, 100 x 100 = 10.000, 1 m² = 10.000 cm², 2 m² = 20.000 cm²). Digital saja.
  * Suara tanpa digit: satuan dieja lewat eja-k4b4.ts. Diuji: scripts/uji-ubin-k4b4a.mjs.
  */
 import { ejaK4B4 } from "../eja-k4b4";
@@ -37,38 +38,32 @@ export const IKON_JUDUL_PETA_UBIN = "\u{1F3CA}";
 export const PETUNJUK_PETA_UBIN = "Tangga ubin di tepi kolam. Ketuk tanda tanya di tiap anak tangga untuk melihat langkahnya.";
 export const SELESAI_PETA_UBIN = "Sampai di atas! Empat langkah sudah kamu buka.";
 
-/** Tabel luas lantai kolam: tiap ubin satu meter persegi. Kontrak data Sub-Bab A dan B (tepi kolam anak 3 baris 4 kolom, ruang ganti 2 baris 5 kolom, pojok pelampung 4 baris 4 kolom). */
-export type TempatInfo = { kunci: string; nama: string; ikon: string; b: number; k: number };
-export const SATUAN_INFO = "m²";
-export const TEMPAT_UBIN: TempatInfo[] = [
-  { kunci: "tepi", nama: "Tepi kolam anak", ikon: "\u{1F3CA}", b: 3, k: 4 },
-  { kunci: "ruang", nama: "Ruang ganti", ikon: "\u{1F6AA}", b: 2, k: 5 },
-  { kunci: "pojok", nama: "Pojok pelampung", ikon: "\u{2B55}", b: 4, k: 4 },
+/** Denah di papan jalan Bu Sinta, semuanya muncul di Story (ubin satu satuan tiap petak). */
+export type DenahInfo = { kunci: string; nama: string; b: number; k: number; u: "cm²" | "m²" };
+export const DENAH_UBIN: DenahInfo[] = [
+  { kunci: "maket", nama: "Lantai maket", b: 3, k: 4, u: "cm²" },
+  { kunci: "kolam", nama: "Lantai kolam", b: 5, k: 6, u: "m²" },
+  { kunci: "genta", nama: "Denah Genta", b: 4, k: 5, u: "cm²" },
 ];
-export const luasTempat = (t: TempatInfo): number => t.b * t.k;
-export const KOLOM_INFO_UBIN = ["Tempat", "Ubin", "Baris × Kolom", "Luas"];
-
-/** Suara satu sel tabel (tanpa digit): angka dan satuan dieja. */
-export function suaraSel(t: TempatInfo, kol: 0 | 1 | 2 | 3): string {
-  const luas = luasTempat(t);
-  return kol === 0
-    ? `Tempat ini adalah ${t.nama.toLowerCase()}.`
-    : kol === 1
-      ? ejaK4B4(`Lantainya ditutup ${t.b} baris ubin, dan tiap baris berisi ${t.k} ubin.`)
-      : kol === 2
-        ? ejaK4B4(`${t.b} baris kali ${t.k} kolom.`)
-        : ejaK4B4(`Luasnya ${luas} ${SATUAN_INFO}.`);
+export const luasDenah = (d: DenahInfo): number => d.b * d.k;
+export const teksKali = (d: DenahInfo): string => `${d.b} × ${d.k}`;
+export const teksLuasDenah = (d: DenahInfo): string => `${luasDenah(d)} ${d.u}`;
+/** Suara satu kotak kosong (tanpa digit): 0 = baris kali kolom, 1 = luas dengan satuan. */
+export function suaraDenah(d: DenahInfo, kol: 0 | 1): string {
+  return kol === 0 ? ejaK4B4(`${d.b} baris kali ${d.k} kolom.`) : ejaK4B4(`${d.nama} luasnya ${luasDenah(d)} ${d.u}.`);
 }
 
-export const PETUNJUK1_INFO_UBIN = "Tabel luas lantai kolam. Ketuk tanda tanya di tiap kotak untuk melihat isinya.";
-export const PETUNJUK2_INFO_UBIN = "Kartu acuan. Luas sama dengan baris kali kolom, dan satu meter persegi sama dengan sepuluh ribu sentimeter persegi. Ketuk kalimatnya untuk mendengar.";
-export const SELESAI1_INFO_UBIN = "Tabel lengkap! Luas lantai dihitung dari baris kali kolom.";
-export const PESAN2_INFO_UBIN = "Ketuk kalimat hijau untuk mendengarnya.";
-export const ACUAN_UBIN = {
-  contoh: { b: 3, k: 4, u: "m²" as const },
-  kalimat: [
-    { teks: "Luas = banyak baris × banyak kolom", suara: "Luas sama dengan banyak baris kali banyak kolom." },
-    { teks: "3 × 4 = 12 m²", suara: ejaK4B4("3 × 4 = 12 m²") },
-    { teks: "1 m² = 10.000 cm²", suara: ejaK4B4("1 m² = 10.000 cm²") },
-  ],
-};
+/** Kartu 2: tangga satuan dari Story (kotak berlabel, isi kosong sampai diketuk). */
+export type LangkahTangga = { kunci: string; label: string; isi: string; suara: string };
+export const TANGGA_INFO: LangkahTangga[] = [
+  { kunci: "sisi", label: "Sisi 1 ubin", isi: "1 m = 100 cm", suara: ejaK4B4("1 m = 100 cm") },
+  { kunci: "kali", label: "Luas 1 ubin", isi: "100 × 100 = 10.000", suara: ejaK4B4("100 × 100 = 10.000") },
+  { kunci: "satu", label: "Satu meter persegi", isi: "1 m² = 10.000 cm²", suara: ejaK4B4("1 m² = 10.000 cm²") },
+  { kunci: "dua", label: "Dua meter persegi", isi: "2 m² = 20.000 cm²", suara: ejaK4B4("2 m² = 20.000 cm²") },
+];
+
+export const JUDUL_PAPAN_INFO = "Papan Jalan Bu Sinta";
+export const PETUNJUK1_INFO_UBIN = "Papan jalan Bu Sinta berisi tiga denah lantai. Ketuk tanda tanya untuk melihat baris kali kolom dan luasnya.";
+export const PETUNJUK2_INFO_UBIN = "Tangga satuan. Ketuk tanda tanya untuk melihat hubungan meter persegi dan sentimeter persegi.";
+export const SELESAI1_INFO_UBIN = "Papan lengkap! Luas dihitung dari baris kali kolom, dan satuannya ditulis.";
+export const SELESAI2_INFO_UBIN = "Tangga lengkap! Satu meter persegi sama dengan sepuluh ribu sentimeter persegi.";

@@ -72,7 +72,7 @@ const mlDariTeks = (t) => Number(t.replace(/[^\d]/g, ""));
 
 /* ------------------------------ Simulasi: data dan logika ------------------------------ */
 {
-  cek(DS.TUANG_SIM.length === 4 && DS.TUANG_SIM.every((t) => t.target < t.kapasitas && t.kapasitas % 1000 === 0 && t.kapasitas <= 3000 && t.target !== 2000 && !t.takar.includes(250) && new Set(t.takar).size === 3), "simulasi tuang: empat sasaran, bukan data Story, tiga ukuran gelas");
+cek(DS.TUANG_SIM.length === 4 && DS.TUANG_SIM.every((t) => t.target < t.kapasitas && t.kapasitas % 1000 === 0 && t.kapasitas <= 3000 && t.target !== 2000 && !t.takar.includes(250) && new Set(t.takar).size === 3), "simulasi tuang: empat sasaran, bukan data Story, tiga ukuran gelas");
   for (const t of DS.TUANG_SIM) {
     let sampai = new Set([0]);
     for (let i = 0; i < 40; i += 1) for (const s of [...sampai]) for (const g of t.takar) if (s + g <= t.kapasitas) sampai.add(s + g);
@@ -198,41 +198,43 @@ const mlDariTeks = (t) => Number(t.replace(/[^\d]/g, ""));
   cek(!/\b(satria|laras|genta|pak hendro|bu sinta|pak anto|kolam|pesta)\b/.test(gab), "mind-map: hanya langkah pelajaran (tanpa tokoh)");
   cek(tanpaDigit(DP.PETUNJUK_PETA + DP.SELESAI_PETA + DP.JUDUL_PETA) && bersih(DP.PETUNJUK_PETA + DP.SELESAI_PETA + DP.JUDUL_PETA) && emojiSah(DP.IKON_JUDUL_PETA), "mind-map: petunjuk dan pesan bersih");
   const pt = readFileSync(new URL("PetaEmber.tsx", folderUrl), "utf8");
-  cek(/peta-label\/PetaLabel/.test(pt) && /rupa="rak"/.test(pt) && /LANGKAH_EMBER/.test(pt) && /speakGuru/.test(pt) && /onLanjut/.test(pt) && /teksLanjut/.test(pt) && /export default function PetaEmberK4B4/.test(pt) && /export \{ PetaEmberK4B4 \}/.test(pt), "PetaEmber: pembungkus tipis peta-label/PetaLabel rupa rak, ekspor PetaEmberK4B4");
+  cek(!/peta-label|PetaLabel|CSS_LEMARI.*PetaLabel/.test(pt) && /LANGKAH_EMBER/.test(pt) && /BlokSvg/.test(pt) && /data-alat=/.test(pt) && /speakGuru/.test(pt) && /onLanjut/.test(pt) && /teksLanjut/.test(pt) && /export default function PetaEmberK4B4/.test(pt) && /export \{ PetaEmberK4B4 \}/.test(pt) && /selesai \? \(/.test(pt), "PetaEmber: rak bergambar sendiri (bukan PetaLabel), empat alat, lanjut setelah semua terbuka, ekspor PetaEmberK4B4");
+  cek(P.every((x) => ["gelas", "blok", "tangga", "kubik"].includes(x.gambar)) && new Set(P.map((x) => x.gambar)).size === 4, "mind-map: tiap langkah punya alatnya sendiri (gelas ukur, balok kubus, tangga, kubus kecil)");
   const rk = readFileSync(new URL("RakEmber.tsx", folderUrl), "utf8");
   cek(/from "\.\/PetaEmber"/.test(rk) && /export default/.test(rk) && /RakEmberK4B4/.test(rk), "RakEmber: nama dari alur, pembungkus PetaEmber");
 }
 
-/* ------------------------------ Infografis: tabel bak (data bersambung dari Sub-Bab A) dan kartu takaran ------------------------------ */
+/* ------------------------------ Infografis: deret takaran dan tangga dan kubus (dari benda dan angka Story B) ------------------------------ */
 {
-  // Data Sub-Bab A (Infografis luas lantai): Tepi kolam anak 3 x 4 = 12 m², Ruang ganti 2 x 5 = 10 m², Pojok pelampung 4 x 4 = 16 m².
-  const A = [["Tepi kolam anak", 3, 4, 12], ["Ruang ganti", 2, 5, 10], ["Pojok pelampung", 4, 4, 16]];
-  sama(DI.ALAS_BAK.map((b) => [b.nama, b.baris, b.kolom, b.baris * b.kolom]), A, "infografis: alas bak sama dengan lantai Sub-Bab A (nama, baris, kolom, luas)");
-  cek(DI.LAPIS_BAK === 2 && DI.BARIS_DATA.length === 3 && DI.KOLOM_INFO.length === 4 && new Set(DI.KOLOM_INFO).size === 4, "infografis: tiga baris, empat kolom, dua lapisan");
-  sama(DI.BARIS_DATA.map((b) => b.perLapis), [12, 10, 16], "infografis: kubus tiap lapisan sama dengan luas lantai Sub-Bab A");
-  sama(DI.BARIS_DATA.map((b) => b.volume), [24, 20, 32], "infografis: volume dua lapisan dihitung benar");
-  for (const [i, b] of DI.BARIS_DATA.entries()) {
-    const al = DI.ALAS_BAK[i];
-    cek(b.alas === `${al.baris} × ${al.kolom}` && b.lapisan === `${al.baris * al.kolom} kubus` && b.volumeTeks === `${al.baris * al.kolom * 2} cm³` && b.isiTeks === `${al.baris * al.kolom * 2} ml`, `infografis ${b.nama}: alas, kubus, volume, dan isi dihitung dari data`);
-    cek(mlDariTeks(b.volumeTeks) === mlDariTeks(b.isiTeks) && b.volumeTeks.endsWith("cm³") && b.isiTeks.endsWith("ml"), `infografis ${b.nama}: satuan tertulis, 1 cm³ = 1 ml`);
-    cek(b.nama.split(/\s+/).every((w) => w.length <= 12) && b.alas.length <= 7 && b.volumeTeks.length <= 8 && b.isiTeks.length <= 7 && emojiSah(b.ikon) && adaEmoji(b.ikon), `infografis ${b.nama}: label pendek dan ikon sah`);
-    for (const s of [b.suaraNama, b.suaraAlas, b.suaraVolume, b.suaraIsi]) cek(tanpaDigit(s) && bersih(s) && /^[A-Z]/.test(s) && !/\s[.,!?;:]/.test(s) && s.length > 6, `infografis ${b.nama}: suara tanpa digit dan kata terlarang (${s.slice(0, 40)})`);
-    cek(/mililiter/.test(b.suaraIsi) && /sentimeter kubik/.test(b.suaraVolume) && /kali/.test(b.suaraAlas + b.suaraVolume), `infografis ${b.nama}: suara mengeja satuan (mililiter, sentimeter kubik, kali)`);
+  const B = DI.BEJANA;
+  cek(B.length === 4 && B.map((b) => b.bentuk).join() === "gelas,botol,ember,balok" && B.every((b) => b.angka.length === 2), "infografis kartu 1: empat bejana (gelas, botol, ember, balok), dua angka tertutup tiap bejana");
+  cek(DI.TAKAR_GELAS === 250 && DI.SKALA_ML === 2000 && DI.KUBUS_STORY.kolom === 3 && DI.KUBUS_STORY.baris === 2 && DI.KUBUS_STORY.lapis === 2, "infografis: angka Story B (gelas 250 ml, ember 2 l, balok 3 x 2 x 2)");
+  sama(B.map((b) => b.ml), [1000, 1000, 2000, 12], "infografis: isi tiap bejana dihitung dari data (4 x 250, 1 l, 8 x 250, 3 x 2 x 2)");
+  sama(B.map((b) => b.angka.map((a) => a.teks)), [["1.000 ml", "1 l"], ["1 l", "1.000 ml"], ["2.000 ml", "2 l"], ["12 cm³", "12 ml"]], "infografis: angka tertutup bersatuan");
+  cek(B.slice(0, 3).every((b) => Math.abs(b.pecah - b.ml / DI.SKALA_ML) < 1e-9 && b.pecah > 0 && b.pecah <= 1) && B[3].pecah === 0, "infografis: tinggi air sungguh sebanding isi (ember penuh, empat gelas dan botol setengah)");
+  sama(B.map((b) => b.gelas), [4, 0, 8, 0], "infografis: banyak gelas takar yang digambar (4 gelas, 8 gelas)");
+  cek(B[0].gelas * DI.TAKAR_GELAS === B[0].ml && B[2].gelas * DI.TAKAR_GELAS === B[2].ml, "infografis: banyak gelas kali 250 ml sama dengan isi bejana");
+  {
+    const inf0 = readFileSync(new URL("InfoEmber.tsx", folderUrl), "utf8");
+    cek(/Array\.from\(\{ length: b\.gelas \}/.test(inf0) && (inf0.match(/Array\.from\(\{ length: b\.gelas \}/g) ?? []).length === 2 && /data-gelas="1"/.test(inf0) && /LapisanSvg/.test(inf0) && /data-lapisan=/.test(inf0) && /<BlokSvg kolom=\{KUBUS_STORY\.kolom\}/.test(inf0) && /data-uji="kubus-lapisan"/.test(inf0), "InfoEmber: gelas digambar sebanyak data, kartu 2 memuat satu lapisan 3 x 2 dan balok dua lapisan");
+    const pt0 = readFileSync(new URL("PetaEmber.tsx", folderUrl), "utf8");
+    cek(/3 × 2 = 6 kubus, 2 lapisan/.test(pt0) && /× 1\.000/.test(pt0) && /1\.000 ml/.test(pt0) && !/>\s*2 l\s*</.test(pt0), "PetaEmber: balok memuat kisi dan lapisan, tangga botol 1 l dikali 1.000 jadi 1.000 ml (konsisten)");
+    cek(!/fontSize=\{([0-9]|10)\}/.test(inf0 + pt0) && !/text-\[(9|10)px\]/.test(inf0 + pt0), "Infografis dan Mind-map: teks paling kecil 11 px");
   }
-  cek(DI.GRID_INFO.includes("grid-cols") && DI.KOLOM_INFO.every((k) => bersih(k) && tanpaDigit(k) && k.length <= 8), "infografis: judul kolom pendek dan bersih, grid empat kolom");
-  const R = DI.KARTU_ACUAN;
-  cek(R.length === 4 && R.every((r) => emojiSah(r.ikon) && adaEmoji(r.ikon) && tanpaDigit(r.suara) && bersih(r.suara) && /^[A-Z]/.test(r.suara) && /(ml|l|cm³)$/.test(r.teks)), "kartu acuan: empat baris dengan satuan tertulis dan suara tanpa digit");
-  const gabR = R.map((r) => r.teks).join(" | ");
-  for (const s of ["1 l = 1.000 ml", "1 cm³ = 1 ml", "1 gelas = 250 ml", "8 gelas = 2.000 ml = 2 l"]) cek(gabR.includes(s), `kartu acuan: memuat ${s}`);
-  cek(8 * 250 === 2000 && 2000 / 1000 === 2, "kartu acuan: delapan gelas dua ratus lima puluh mililiter sama dengan dua liter (hitungan benar)");
-  cek(/seribu mililiter/.test(R[2].suara) && /sentimeter kubik sama dengan satu mililiter/.test(R[3].suara) && /dua ribu mililiter/.test(R[1].suara), "kartu acuan: suara mengeja ribuan dan satuan");
-  cek(tanpaDigit(DI.PETUNJUK_INFO_1 + DI.PETUNJUK_INFO_2 + DI.SELESAI_INFO_1 + DI.PESAN_INFO_2) && bersih(DI.PETUNJUK_INFO_1 + DI.PETUNJUK_INFO_2 + DI.SELESAI_INFO_1 + DI.PESAN_INFO_2), "infografis: petunjuk dan pesan tanpa digit dan kata terlarang");
+  cek(B[0].pecah === B[1].pecah && B[2].pecah === 2 * B[0].pecah, "infografis: empat gelas sama tinggi dengan botol satu liter, ember dua kali lipat");
+  cek(B.every((b) => b.nama.split(/\s+/).every((w) => w.length <= 12) && b.nama.length <= 14 && b.angka.every((a) => a.teks.length <= 9 && tanpaDigit(a.suara) && bersih(a.suara) && /^[A-Z]/.test(a.suara) && !/\s[.,!?;:]/.test(a.suara))), "infografis: label pendek dan suara tanpa digit");
+  cek(/mililiter/.test(B[0].angka[0].suara) && /liter/.test(B[0].angka[1].suara) && /sentimeter kubik/.test(B[3].angka[0].suara) && /dua belas mililiter/.test(B[3].angka[1].suara) && /seribu mililiter/.test(B[1].angka[1].suara), "infografis: suara mengeja satuan dan ribuan");
+  const T = DI.KOTAK_TANGGA;
+  sama(T.map((t) => t.isi), ["× 1.000", "÷ 1.000", "= 1 ml", "3 × 2 = 6"], "infografis kartu 2: empat aturan tertutup (tangga turun dan naik, kubik, kubus tiap lapisan)");
+  cek(T.every((t) => t.label.length <= 14 && tanpaDigit(t.suara) && bersih(t.suara) && /^[A-Z]/.test(t.suara)) && /dikali seribu/.test(T[0].suara) && /dibagi seribu/.test(T[1].suara) && /satu sentimeter kubik sama dengan satu mililiter/i.test(T[2].suara) && /enam kubus/.test(T[3].suara), "infografis kartu 2: label pendek, suara tanpa digit");
+  cek(tanpaDigit(DI.PETUNJUK_INFO_1 + DI.PETUNJUK_INFO_2 + DI.SELESAI_INFO_1 + DI.SELESAI_INFO_2 + DI.PESAN_INFO_2_SAMA) && bersih(DI.PETUNJUK_INFO_1 + DI.PETUNJUK_INFO_2 + DI.SELESAI_INFO_1 + DI.SELESAI_INFO_2 + DI.PESAN_INFO_2_SAMA), "infografis: petunjuk dan pesan tanpa digit dan kata terlarang");
   const inf = readFileSync(new URL("InfoEmber.tsx", folderUrl), "utf8");
-  cek(/peta-label\/InfoKartu/.test(inf) && /BARIS_DATA/.test(inf) && /KARTU_ACUAN/.test(inf) && /kartu2=\{kartu2\}/.test(inf) && /speakGuru/.test(inf) && /onLanjut/.test(inf) && /teksLanjut/.test(inf) && /export default function InfoEmberK4B4/.test(inf) && /export \{ InfoEmberK4B4 \}/.test(inf), "InfoEmber: pembungkus tipis peta-label/InfoKartu dua kartu, ekspor InfoEmberK4B4");
-  cek((inf.match(/sel: \[/g) ?? []).length === 1 && (inf.match(/aria: /g) ?? []).length === 4, "InfoEmber: empat sel tiap baris (bak, alas, volume, isi air)");
+  cek(!/peta-label|InfoKartu|PetaLabel|<table|grid-cols-\[4\.6rem/.test(inf) && /BEJANA/.test(inf) && /KOTAK_TANGGA/.test(inf) && /GambarBejana/.test(inf) && /BlokSvg/.test(inf) && /speakGuru/.test(inf) && /onLanjut/.test(inf) && /teksLanjut/.test(inf) && /export default function InfoEmberK4B4/.test(inf) && /export \{ InfoEmberK4B4 \}/.test(inf), "InfoEmber: komponen sendiri (bukan InfoKartu, bukan tabel), bejana bergambar, ekspor InfoEmberK4B4");
+  cek(/data-air=\{air\}/.test(inf) && /Math\.round\(tinggi \* b\.pecah\)/.test(inf) && /kartu === 1 && selesai/.test(inf) && /kartu === 2 && selesai/.test(inf), "InfoEmber: tinggi air dari data, Berikutnya dan Lanjut hanya setelah semua kotak terbuka");
   const dk = readFileSync(new URL("DaftarEmber.tsx", folderUrl), "utf8");
   cek(/from "\.\/InfoEmber"/.test(dk) && /export default/.test(dk) && /DaftarEmberK4B4/.test(dk), "DaftarEmber: nama dari alur, pembungkus InfoEmber");
 }
+
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */
 {

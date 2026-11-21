@@ -213,26 +213,20 @@ const KATA_PENDEK = (t) => t.split(/\s+/).every((w) => w.replace(/[^a-zA-Z]/g, "
   const TEMA_IKON = [0x1f9f1, 0x1f4ca, 0x1f4cf, 0x2b07, 0x1f3ca, 0x1f6aa, 0x2b55, 0x1f4d0];
   cek(DK.LANGKAH_UBIN.every((l) => TEMA_IKON.includes(l.ikon.codePointAt(0))) && TEMA_IKON.includes(DK.IKON_JUDUL_PETA_UBIN.codePointAt(0)), "mind-map: ikon hanya benda tema kolam dan ukur");
 
-  /* Infografis: data luas lantai kolam bersambung ke Sub-Bab B. */
-  sama(DK.TEMPAT_UBIN.map((t) => [t.nama, t.b, t.k, DK.luasTempat(t)]), [["Tepi kolam anak", 3, 4, 12], ["Ruang ganti", 2, 5, 10], ["Pojok pelampung", 4, 4, 16]], "infografis: kontrak data (baris x kolom = luas)");
-  cek(DK.SATUAN_INFO === "m²" && DK.TEMPAT_UBIN.every((t) => t.b >= 1 && t.k >= 1 && t.b <= 6 && t.k <= 7), "infografis: satuan meter persegi dan kisi mini muat");
-  sama(DK.KOLOM_INFO_UBIN, ["Tempat", "Ubin", "Baris × Kolom", "Luas"], "infografis: judul kolom tampil");
-  cek(DK.TEMPAT_UBIN.every((t) => t.nama.split(/\s+/).length <= 3 && KATA_PENDEK(t.nama) && t.nama.length <= 16 && emojiSah(t.ikon) && TEMA_IKON.includes(t.ikon.codePointAt(0))), "infografis: nama tempat pendek, ikon sah dan sesuai tema");
-  for (const t of DK.TEMPAT_UBIN)
-    for (const kol of [0, 1, 2, 3]) {
-      const s = DK.suaraSel(t, kol);
-      cek(s.length > 8 && tanpaDigit(s) && bersih(s) && !BUKAN_A.test(s), `infografis ${t.kunci} kolom ${kol}: suara tanpa digit (${s})`);
-    }
-  for (const t of DK.TEMPAT_UBIN) {
-    const luas = DK.luasTempat(t);
-    cek(DK.suaraSel(t, 3) === `Luasnya ${LC.kataBil(luas)} meter persegi.`, `infografis ${t.kunci}: suara luas mengeja satuan (${DK.suaraSel(t, 3)})`);
-    cek(DK.suaraSel(t, 2) === `${LC.kataBil(t.b)} baris kali ${LC.kataBil(t.k)} kolom.`, `infografis ${t.kunci}: suara baris kali kolom`);
+  /* Infografis: papan jalan Bu Sinta dengan data dari Story (3 x 4 = 12 cm², 5 x 6 = 30 m², 4 x 5 = 20 cm²). */
+  sama(DK.DENAH_UBIN.map((d) => [d.nama, d.b, d.k, DK.luasDenah(d), d.u]), [["Lantai maket", 3, 4, 12, "cm²"], ["Lantai kolam", 5, 6, 30, "m²"], ["Denah Genta", 4, 5, 20, "cm²"]], "infografis: data dari Story (baris x kolom = luas, satuan tertulis)");
+  cek(DK.DENAH_UBIN.every((d) => d.nama.length <= 14 && KATA_PENDEK(d.nama) && DK.teksLuasDenah(d) === `${d.b * d.k} ${d.u}` && DK.teksKali(d) === `${d.b} × ${d.k}`), "infografis: nama pendek, teks kali dan luas bersatuan");
+  for (const d of DK.DENAH_UBIN) {
+    cek(DK.suaraDenah(d, 0) === `${LC.kataBil(d.b)} baris kali ${LC.kataBil(d.k)} kolom.` && tanpaDigit(DK.suaraDenah(d, 0)), `infografis ${d.kunci}: suara baris kali kolom tanpa digit`);
+    const kata = d.u === "cm²" ? "sentimeter persegi" : "meter persegi";
+    cek(DK.suaraDenah(d, 1) === `${d.nama} luasnya ${LC.kataBil(d.b * d.k)} ${kata}.` && tanpaDigit(DK.suaraDenah(d, 1)) && bersih(DK.suaraDenah(d, 1)), `infografis ${d.kunci}: suara luas mengeja satuan (${DK.suaraDenah(d, 1)})`);
   }
-  cek([DK.PETUNJUK1_INFO_UBIN, DK.PETUNJUK2_INFO_UBIN, DK.SELESAI1_INFO_UBIN, DK.PESAN2_INFO_UBIN].every((t) => tanpaDigit(t) && bersih(t) && !BUKAN_A.test(t)), "infografis: petunjuk dan pesan tanpa digit dan istilah Sub-Bab B");
-  const a = DK.ACUAN_UBIN;
-  cek(a.contoh.b * a.contoh.k === 12 && a.contoh.u === "m²" && a.kalimat.length === 3 && a.kalimat.every((x) => tanpaDigit(x.suara) && bersih(x.suara)), "infografis: kartu acuan baris kali kolom, suara tanpa digit");
-  cek(a.kalimat[2].teks === "1 m² = 10.000 cm²" && a.kalimat[2].suara === "satu meter persegi sama dengan sepuluh ribu sentimeter persegi", "infografis: kartu acuan satu meter persegi sama dengan sepuluh ribu sentimeter persegi");
-  cek(a.kalimat[1].teks === `${a.contoh.b} × ${a.contoh.k} = ${a.contoh.b * a.contoh.k} m²`, "infografis: contoh acuan cocok dengan perhitungan baris kali kolom dan satuan tertulis");
+  sama(DK.TANGGA_INFO.map((x) => x.isi), ["1 m = 100 cm", "100 × 100 = 10.000", "1 m² = 10.000 cm²", "2 m² = 20.000 cm²"], "infografis: kartu tangga satuan dari Story");
+  cek(100 * 100 === 10000 && 2 * 10000 === 20000 && DK.TANGGA_INFO.every((x) => tanpaDigit(x.suara) && bersih(x.suara) && !BUKAN_A.test(x.suara) && x.label.length <= 20), "infografis: tangga cocok dengan hitungan, suara tanpa digit");
+  sama(DK.TANGGA_INFO.map((x) => x.suara), ["satu meter sama dengan seratus sentimeter", "seratus kali seratus sama dengan sepuluh ribu", "satu meter persegi sama dengan sepuluh ribu sentimeter persegi", "dua meter persegi sama dengan dua puluh ribu sentimeter persegi"], "infografis: suara tangga");
+  cek([DK.PETUNJUK1_INFO_UBIN, DK.PETUNJUK2_INFO_UBIN, DK.SELESAI1_INFO_UBIN, DK.SELESAI2_INFO_UBIN, DK.JUDUL_PAPAN_INFO].every((x) => tanpaDigit(x) && bersih(x) && !BUKAN_A.test(x)), "infografis: petunjuk dan pesan tanpa digit dan istilah Sub-Bab B");
+  // Kotak kosong yang diketuk: tiap denah dua, tangga empat.
+  cek(DK.DENAH_UBIN.length * 2 === 6 && DK.TANGGA_INFO.length === 4, "infografis: enam kotak kosong di papan jalan, empat di tangga");
 }
 
 /* ------------------------------ CPA: tiga tahap ------------------------------ */
@@ -427,17 +421,16 @@ const TAHAP = [
   const sim = readFileSync(new URL("SimulasiLantaiUbin.tsx", folder), "utf8");
   cek(/setCatatan\(ucap \?\? ""\)/.test(sim) && /KisiUbin/.test(sim) && /terpasang=\{k\.tutupIsi\}/.test(sim), "simulasi: pesan lama dikosongkan, ubin digambar sungguh sebanyak yang dipasang");
   const mm = readFileSync(new URL("PetaUbin.tsx", folder), "utf8");
-  cek(/export default function PetaUbin/.test(mm) && /export \{ PetaUbin \}/.test(mm) && /PetaLabel/.test(mm) && /rupa="tangga"/.test(mm) && !/PetaKartu/.test(mm), "Mind-map: pembungkus tipis PetaLabel (rupa tangga) dengan ekspor default dan bernama");
+  cek(/export default function PetaUbin/.test(mm) && /export { PetaUbin }/.test(mm) && /speakGuru, onLanjut, teksLanjut/.test(mm) && !/PetaLabel|PetaKartu/.test(mm) && /LANGKAH_UBIN/.test(mm) && /gridTemplateColumns/.test(mm) && !/flex-wrap/.test(mm), "Mind-map: denah lantai sendiri (bukan PetaLabel), ubin sungguhan, ekspor default dan bernama");
+  cek(DK.LANGKAH_UBIN.length === 4 && /const B = 3;/.test(mm) && /const K = 4;/.test(mm) && /B \* K/.test(mm), "Mind-map: denah tiga baris empat kolom seperti lantai maket di Story, luas dua belas");
   const dl = readFileSync(new URL("InfoUbin.tsx", folder), "utf8");
-  cek(/export default function InfoUbin/.test(dl) && /export \{ InfoUbin \}/.test(dl) && /InfoKartu/.test(dl) && !/InfografisKartu/.test(dl) && !/flex-wrap/.test(dl) && /gridTemplateColumns/.test(dl), "Infografis: pembungkus tipis InfoKartu dengan ekspor default dan bernama, kisi tetap");
+  cek(/export default function InfoUbin/.test(dl) && /export { InfoUbin }/.test(dl) && /speakGuru, onLanjut, teksLanjut/.test(dl) && !/InfoKartu|InfografisKartu/.test(dl) && !/flex-wrap/.test(dl) && /gridTemplateColumns/.test(dl) && /DENAH_UBIN/.test(dl) && /TANGGA_INFO/.test(dl), "Infografis: papan jalan dan tangga satuan sendiri (bukan InfoKartu), kisi tetap");
   const th = readFileSync(new URL("TahapUbin.tsx", folder), "utf8");
   cek(/export default function TahapUbin/.test(th) && /poinPenting/.test(th) && /PENUTUP_A/.test(th), "Tahap: ekspor default dan Poin Penting dengan jembatan");
   cek(!/flex-wrap/.test(th), "tahap tanpa flex-wrap (kemajuan berupa kisi tetap)");
   const sa = readFileSync(new URL("../SimulasiK4Bab4.tsx", folder), "utf8");
   cek(/misiDaftar: daftarMisiUbin\("A"\)/.test(sa) && /SimulasiLantaiUbin/.test(sa) && /laporMisiUbin\(daftarMisiUbin\("A"\), k, a\.capai\)/.test(sa), "SimulasiK4Bab4: Sub-Bab A memakai misiDaftar dan laporMisi");
   cek(MT.misiAwalK4Bab4("A").includes(DS.MISI_UBIN_TEKS), "misi awal Sub-Bab A memuat teks misi");
-  // Mind-map dan Infografis memakai komponen bersama tanpa mengubahnya.
-  cek(readFileSync(new URL("../peta-label/PetaLabel.tsx", folder), "utf8").includes("rupa === \"tangga\"") && readFileSync(new URL("../peta-label/InfoKartu.tsx", folder), "utf8").includes("kartu2"), "komponen bersama PetaLabel dan InfoKartu tersedia");
 }
 
 console.log(`Uji Lantai Ubin Kelas 4 Bab 4 A: ${lulus} lulus, ${gagal} gagal`);
