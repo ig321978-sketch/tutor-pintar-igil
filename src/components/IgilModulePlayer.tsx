@@ -39,13 +39,13 @@ import InfografisRingkas from "@/components/modul/InfografisRingkas";
 import PetaLemari from "@/components/modul/lemari-k1b1a/PetaLemari";
 import TabelMainan from "@/components/modul/lemari-k1b1a/TabelMainan";
 import TahapLemari from "@/components/modul/lemari-k1b1a/TahapLemari";
-import PetaRel from "@/components/modul/banding-k1b1b/PetaRel";
-import PapanKapur from "@/components/modul/banding-k1b1b/PapanKapur";
+import PetaRak from "@/components/modul/banding-k1b1b/PetaRak";
+import InfoBanding from "@/components/modul/banding-k1b1b/InfoBanding";
 import TahapBanding from "@/components/modul/banding-k1b1b/TahapBanding";
-import PetaTangga from "@/components/modul/loteng-k1b1c/PetaTangga";
-import PapanGabus from "@/components/modul/loteng-k1b1c/PapanGabus";
+import PetaAnakTangga from "@/components/modul/loteng-k1b1c/PetaAnakTangga";
+import InfoLoteng from "@/components/modul/loteng-k1b1c/InfoLoteng";
 import TahapUrut from "@/components/modul/loteng-k1b1c/TahapUrut";
-import PetaMeja from "@/components/modul/pesta-k1b1d/PetaMeja";
+import PetaPiring from "@/components/modul/pesta-k1b1d/PetaPiring";
 import PetaKebun from "@/components/modul/kebun-k1b2a/PetaKebun";
 import TeralisCatatan from "@/components/modul/kebun-k1b2a/TeralisCatatan";
 import TahapKebun from "@/components/modul/kebun-k1b2a/TahapKebun";
@@ -122,7 +122,7 @@ import { ABSTRACT as ABSTRACT_BEKAL, CONCRETE as CONCRETE_BEKAL, PICTORIAL as PI
 import { ABSTRACT as ABSTRACT_PESANAN, CONCRETE as CONCRETE_PESANAN, PICTORIAL as PICTORIAL_PESANAN, TEMA_TAHAP as TEMA_PESANAN } from "@/components/modul/pesanan-k1b2c/data";
 import { ABSTRACT as ABSTRACT_PANEN, CONCRETE as CONCRETE_PANEN, PICTORIAL as PICTORIAL_PANEN, TEMA_TAHAP as TEMA_PANEN } from "@/components/modul/panen-k1b2b/data";
 import { ABSTRACT as ABSTRACT_KEBUN, CONCRETE as CONCRETE_KEBUN, PICTORIAL as PICTORIAL_KEBUN, TEMA_TAHAP as TEMA_KEBUN } from "@/components/modul/kebun-k1b2a/data";
-import KartuMenu from "@/components/modul/pesta-k1b1d/KartuMenu";
+import InfoPesta from "@/components/modul/pesta-k1b1d/InfoPesta";
 import TahapPesta from "@/components/modul/pesta-k1b1d/TahapPesta";
 import { ABSTRACT as ABSTRACT_PESTA, CONCRETE as CONCRETE_PESTA, PICTORIAL as PICTORIAL_PESTA, TEMA_TAHAP as TEMA_PESTA } from "@/components/modul/pesta-k1b1d/data";
 import { ABSTRACT as ABSTRACT_URUT, CONCRETE as CONCRETE_URUT, PICTORIAL as PICTORIAL_URUT, TEMA_TAHAP as TEMA_URUT } from "@/components/modul/loteng-k1b1c/data";
@@ -3167,21 +3167,21 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               onLanjut={() => handleUnlockNextSmicpa(3, infografisRef, "Pohon cerita sudah lengkap! Sekarang kita buka Infografis.")}
             />
             ) : bab === "mtk-1-bab1" && activeSubBab === "D" ? (
-            <PetaMeja
+            <PetaPiring
               key={`${bab}-${activeSubBab}-meja`}
               speakGuru={speakGuru}
               teksLanjut="LANJUTKAN KE INFOGRAFIS ⬇️"
               onLanjut={() => handleUnlockNextSmicpa(3, infografisRef, "Meja pesta sudah lengkap! Sekarang kita buka Infografis.")}
             />
             ) : bab === "mtk-1-bab1" && activeSubBab === "C" ? (
-            <PetaTangga
+            <PetaAnakTangga
               key={`${bab}-${activeSubBab}-tangga`}
               speakGuru={speakGuru}
               teksLanjut="LANJUTKAN KE INFOGRAFIS ⬇️"
               onLanjut={() => handleUnlockNextSmicpa(3, infografisRef, "Tangga belajar sudah lengkap! Sekarang kita buka Infografis.")}
             />
             ) : bab === "mtk-1-bab1" && activeSubBab === "B" ? (
-            <PetaRel
+            <PetaRak
               key={`${bab}-${activeSubBab}-rel`}
               speakGuru={speakGuru}
               teksLanjut="LANJUTKAN KE INFOGRAFIS ⬇️"
@@ -4258,7 +4258,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               }
             />
             ) : bab === "mtk-1-bab1" && activeSubBab === "D" ? (
-            <KartuMenu
+            <InfoPesta
               key={`${bab}-${activeSubBab}-menu`}
               speakGuru={speakGuru}
               teksLanjut="LANJUTKAN KE SIMULASI ⬇️"
@@ -4271,7 +4271,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               }
             />
             ) : bab === "mtk-1-bab1" && activeSubBab === "C" ? (
-            <PapanGabus
+            <InfoLoteng
               key={`${bab}-${activeSubBab}-gabus`}
               speakGuru={speakGuru}
               teksLanjut="LANJUTKAN KE SIMULASI ⬇️"
@@ -4284,7 +4284,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               }
             />
             ) : bab === "mtk-1-bab1" && activeSubBab === "B" ? (
-            <PapanKapur
+            <InfoBanding
               key={`${bab}-${activeSubBab}-papan`}
               speakGuru={speakGuru}
               teksLanjut="LANJUTKAN KE SIMULASI ⬇️"
