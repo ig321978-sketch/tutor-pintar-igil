@@ -6,7 +6,7 @@
  */
 import type { Cara } from "../lemari-k1b1a/logika";
 import { ejaK4B5, kataBilK4B5 } from "../eja-k4b5";
-import { banyakSejajar, banyakSiku, banyakSisi, bangun, beraturan, jenisBangun, kataSisiSama, namaDari, namaSegi, semuaSisiSama, type Ciri } from "./logika-bangun";
+import { banyakSejajar, banyakSiku, banyakSisi, banyakSisiSamaSegitiga, bangun, beraturan, hitungSudut, jenisBangun, jenisSegitigaSisi, jenisSegitigaSudut, kataSisiSama, namaDari, namaSegi, semuaSisiSama, type Ciri } from "./logika-bangun";
 
 export { IKON_CARA, NAMA_CARA, URUT_CARA, type Cara } from "../lemari-k1b1a/logika";
 
@@ -21,15 +21,18 @@ export const ucapkan = (t: string): string => ejaK4B5(t).replace(/\s+/g, " ").tr
 
 /* ------------------------------ Pohon keluarga bentuk ------------------------------ */
 /** Satu anak anak-tangga keluarga: bangun induk diberi satu ciri tambahan menjadi bangun anak. Tiap pasangan diuji dari koordinat. */
-export type AnakPohon = { induk: string; indukKunci: string; tambah: string; ciriTambah: Ciri; hasil: string; lain: [string, string] };
+/** `khusus`: hasilnya juga memenuhi nama lain menurut hubungan bangun (persegi juga belah ketupat), jadi soal klik meminta nama yang paling khusus. */
+export type AnakPohon = { induk: string; indukKunci: string; tambah: string; ciriTambah: Ciri; hasil: string; lain: [string, string]; khusus?: true };
 export const ANAK: AnakPohon[] = [
   { induk: "jajargenjang", indukKunci: "jajargenjang", tambah: "empat sudut siku-siku", ciriTambah: "siku-empat", hasil: "persegi-panjang", lain: ["belah ketupat", "trapesium"] },
   { induk: "jajargenjang", indukKunci: "jajargenjang", tambah: "empat sisi sama panjang", ciriTambah: "sisi-sama", hasil: "belah-ketupat", lain: ["persegi panjang", "trapesium"] },
-  { induk: "persegi panjang", indukKunci: "persegi-panjang", tambah: "empat sisi sama panjang", ciriTambah: "sisi-sama", hasil: "persegi", lain: ["belah ketupat", "jajargenjang"] },
-  { induk: "belah ketupat", indukKunci: "belah-ketupat", tambah: "empat sudut siku-siku", ciriTambah: "siku-empat", hasil: "persegi", lain: ["persegi panjang", "layang-layang"] },
+  { induk: "persegi panjang", indukKunci: "persegi-panjang", tambah: "empat sisi sama panjang", ciriTambah: "sisi-sama", hasil: "persegi", lain: ["belah ketupat", "jajargenjang"], khusus: true },
+  { induk: "belah ketupat", indukKunci: "belah-ketupat", tambah: "empat sudut siku-siku", ciriTambah: "siku-empat", hasil: "persegi", lain: ["persegi panjang", "layang-layang"], khusus: true },
   { induk: "segiempat", indukKunci: "segiempat-sembarang", tambah: "tepat sepasang sisi sejajar", ciriTambah: "sejajar-satu", hasil: "trapesium", lain: ["jajargenjang", "layang-layang"] },
   { induk: "segiempat", indukKunci: "segiempat-sembarang", tambah: "dua pasang sisi sejajar", ciriTambah: "sejajar-dua", hasil: "jajargenjang", lain: ["trapesium", "layang-layang"] },
-  { induk: "segiempat", indukKunci: "segiempat-sembarang", tambah: "dua pasang sisi bersebelahan sama panjang", ciriTambah: "sebelah-sama", hasil: "layang-layang", lain: ["belah ketupat", "trapesium"] },
+  { induk: "segiempat", indukKunci: "segiempat-sembarang", tambah: "dua pasang sisi bersebelahan sama panjang", ciriTambah: "sebelah-sama", hasil: "layang-layang", lain: ["jajargenjang", "trapesium"] },
+  /* Menurut buku, belah ketupat juga layang-layang: layang-layang yang keempat sisinya sama panjang. */
+  { induk: "layang-layang", indukKunci: "layang-layang", tambah: "empat sisi sama panjang", ciriTambah: "sisi-sama", hasil: "belah-ketupat", lain: ["persegi panjang", "trapesium"] },
 ];
 /** Ciri yang sudah dimiliki tiap bangun induk (untuk uji: bangun anak punya semua ciri induknya ditambah ciri baru). */
 export const CIRI_INDUK: Record<string, Ciri[]> = {
@@ -37,25 +40,28 @@ export const CIRI_INDUK: Record<string, Ciri[]> = {
   "persegi panjang": ["sejajar-dua", "siku-empat"],
   "belah ketupat": ["sejajar-dua", "sisi-sama"],
   segiempat: [],
+  "layang-layang": [],
 };
 
 /** Ciri tiap segiempat dalam kata (digit dieja oleh ucapkan). */
 export const CIRI_TEKS: Record<string, string> = {
   persegi: "4 sisi sama panjang dan 4 sudut siku-siku",
   "persegi panjang": "2 pasang sisi sama panjang dan 4 sudut siku-siku",
-  jajargenjang: "2 pasang sisi sejajar dan sudut yang tidak siku-siku",
-  "belah ketupat": "4 sisi sama panjang dan sudut yang tidak siku-siku",
+  jajargenjang: "2 pasang sisi sejajar dan sisi berhadapan sama panjang",
+  "belah ketupat": "4 sisi sama panjang dan 2 pasang sisi sejajar",
   "layang-layang": "2 pasang sisi bersebelahan yang sama panjang",
-  trapesium: "sepasang sisi sejajar",
+  trapesium: "tepat sepasang sisi sejajar",
+  segiempat: "tidak ada sisi yang sama panjang",
 };
 /** Bangun yang mudah tertukar dengan tiap segiempat (pilihan klik dan suara). */
 export const CAMPUR: Record<string, [string, string]> = {
   persegi: ["belah ketupat", "persegi panjang"],
-  "persegi panjang": ["jajargenjang", "persegi"],
+  "persegi panjang": ["belah ketupat", "trapesium"],
   jajargenjang: ["persegi panjang", "belah ketupat"],
-  "belah ketupat": ["layang-layang", "persegi"],
+  "belah ketupat": ["trapesium", "persegi panjang"],
   "layang-layang": ["belah ketupat", "trapesium"],
   trapesium: ["jajargenjang", "layang-layang"],
+  segiempat: ["trapesium", "layang-layang"],
 };
 
 /* ------------------------------ Jenis tugas ------------------------------ */
@@ -67,7 +73,9 @@ export type LPilah = { tipe: "pilah"; daftar: string[]; n: number };
 export type LSisi = { tipe: "sisi"; b: string; tanya: "siku" | "sejajar" };
 /** Shape Family Tree (Pohon Keluarga Bentuk): `i` nomor di ANAK; klik = nama bangun anak, kanvas = banyak pasang sisi sejajar bangun anak, suara = nama bangun induk. */
 export type LPohon = { tipe: "pohon"; i: number };
-export type LangkahDasar = LKenali | LPilah | LSisi | LPohon;
+/** Jenis segitiga menurut buku: menurut sisinya (sama sisi, sama kaki, sembarang) atau menurut sudutnya (siku-siku, lancip, tumpul). Klik dan suara = nama jenis menurut `menurut`, kanvas = banyak sudut lancip. */
+export type LJenis = { tipe: "jenis"; b: string; menurut: "sisi" | "sudut" };
+export type LangkahDasar = LKenali | LPilah | LSisi | LPohon | LJenis;
 /** Cari kesalahan: tokoh sudah menjawab dari `dasar` (klik). Anak menilai benar atau salah, memilih alasan, lalu menjawab sendiri. `jawabTokoh` adalah teks pilihan klik tokoh. */
 export type LangkahSalah = {
   tipe: "salah";
@@ -94,6 +102,10 @@ const AWALAN: Record<Metode, string> = { igil: "Metode IGIL", pilah: "Sort the T
 
 export type LangkahSoal = { metode: Metode; cara: Cara; judul: string; suara: string; langkah: Langkah };
 export type SoalMisi = { nomor: number; judul: string; cerita: string; cara: Cara; langkah: LangkahSoal[] };
+
+export const JENIS_SISI = ["sama sisi", "sama kaki", "sembarang"] as const;
+export const JENIS_SUDUT = ["siku-siku", "lancip", "tumpul"] as const;
+const jenisSegitiga = (l: LJenis): string => (l.menurut === "sisi" ? jenisSegitigaSisi(bangun(l.b).titik) : jenisSegitigaSudut(bangun(l.b).titik));
 
 export const dasarDari = (l: Langkah): LangkahDasar => (l.tipe === "salah" ? l.dasar : l);
 
@@ -133,6 +145,8 @@ export function kunciJawab(l: Langkah, cara: Cara): Kunci | null {
       const a = ANAK[l.i];
       return cara === "klik" ? nama(namaDari(a.hasil)) : cara === "kanvas" ? angka(banyakSejajar(titikDari(a.hasil))) : nama(a.induk);
     }
+    case "jenis":
+      return cara === "kanvas" ? angka(hitungSudut(titikDari(l.b)).lancip) : nama(jenisSegitiga(l));
   }
 }
 
@@ -171,6 +185,8 @@ export function pilihanKlik(l: Langkah): string[] {
       return sisipkan(k.nama, [...CAMPUR[k.nama]], nomorKatalog(d.b));
     case "pohon":
       return sisipkan(k.nama, [...ANAK[d.i].lain], d.i);
+    case "jenis":
+      return sisipkan(k.nama, unik([...(d.menurut === "sisi" ? JENIS_SISI : JENIS_SUDUT)], [k.nama]), nomorKatalog(d.b));
   }
 }
 const SEMUA_SEGI = ["segitiga", "segiempat", "segilima", "segienam"];
@@ -189,6 +205,8 @@ export function pilihanSuara(l: Langkah, cara: Cara): string[] {
       return sisipkan(k.nama, [...CAMPUR[k.nama]], nomorKatalog(d.b));
     case "pohon":
       return sisipkan(k.nama, [...ANAK[d.i].lain], d.i);
+    case "jenis":
+      return sisipkan(k.nama, unik([...(d.menurut === "sisi" ? JENIS_SISI : JENIS_SUDUT)], [k.nama]), nomorKatalog(d.b) + 1);
   }
 }
 export const teksKunciPilihan = (k: Kunci): string => (k.jenis === "nama" ? k.nama : kataBil(k.n));
@@ -231,6 +249,11 @@ export function kalimatKunci(l: Langkah, cara: Cara): string {
           ? `${kapital(namaDari(a.hasil))} memiliki ${banyakSejajar(titikDari(a.hasil))} pasang sisi sejajar.`
           : `${kapital(namaDari(a.hasil))} adalah anak dari ${a.induk}.`;
     }
+    case "jenis": {
+      const t = titikDari(d.b);
+      const jn = jenisSegitiga(d);
+      return cara === "kanvas" ? `Segitiga ini memiliki ${hitungSudut(t).lancip} sudut lancip.` : d.menurut === "sisi" ? `Menurut sisinya, segitiga ini disebut segitiga ${jn}.` : `Menurut sudutnya, segitiga ini disebut segitiga ${jn}.`;
+    }
   }
 }
 
@@ -265,11 +288,21 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): s
     case "pohon": {
       const a = ANAK[l.i];
       return cara === "klik"
-        ? `${aw}: ${a.induk} diberi tambahan ciri, yaitu ${a.tambah}. Bangun apa yang terbentuk? Pilih namanya.`
+        ? `${aw}: ${a.induk} diberi tambahan ciri, yaitu ${a.tambah}. Bangun apa yang terbentuk? ${a.khusus ? "Pilih nama yang paling khusus." : "Pilih namanya."}`
         : cara === "kanvas"
           ? `${aw}: lihat ${g} ini. ${kapital(a.induk)} diberi tambahan ciri, yaitu ${a.tambah}. Berapa pasang sisi sejajar yang dimiliki bangun yang terbentuk? Tulis satu angka di kanvas.`
           : `${aw}: lihat ${g} ini. Bangun ${namaDari(a.hasil)} adalah anak langsung dari satu bangun induk. Induk itu hanya kekurangan ${a.tambah} dibandingkan ${namaDari(a.hasil)}. Bangun induk itu disebut apa? Ucapkan nama bangun induknya.`;
     }
+    case "jenis":
+      return cara === "klik"
+        ? l.menurut === "sisi"
+          ? `${aw}: lihat ${g} ini. Segitiga digolongkan menurut sisinya. Pilih jenis segitiga ini menurut sisinya.`
+          : `${aw}: lihat ${g} ini. Segitiga digolongkan menurut sudutnya. Pilih jenis segitiga ini menurut sudutnya.`
+        : cara === "kanvas"
+          ? `${aw}: lihat ${g} ini. Berapa banyak sudut lancip pada segitiga ini? Tulis satu angka di kanvas.`
+          : l.menurut === "sisi"
+            ? `${aw}: lihat ${g} ini. Periksa panjang ketiga sisinya. Jenis segitiga ini menurut sisinya disebut apa? Ucapkan jenisnya.`
+            : `${aw}: lihat ${g} ini. Periksa ketiga sudutnya. Jenis segitiga ini menurut sudutnya disebut apa? Ucapkan jenisnya.`;
   }
 }
 
@@ -284,7 +317,9 @@ export function kalimatTanya(l: Langkah, cara: Cara): string {
     case "sisi":
       return cara === "kanvas" ? (d.tanya === "siku" ? "Berapa banyak sudut siku-siku?" : "Berapa pasang sisi yang sejajar?") : "Apa nama bangun ini?";
     case "pohon":
-      return cara === "klik" ? "Bangun apa yang terbentuk?" : cara === "kanvas" ? "Berapa pasang sisi sejajar bangun itu?" : "Apa nama bangun induknya?";
+      return cara === "klik" ? (ANAK[d.i].khusus ? "Apa nama yang paling khusus?" : "Bangun apa yang terbentuk?") : cara === "kanvas" ? "Berapa pasang sisi sejajar bangun itu?" : "Apa nama bangun induknya?";
+    case "jenis":
+      return cara === "kanvas" ? "Berapa banyak sudut lancip?" : d.menurut === "sisi" ? "Apa jenis segitiga ini menurut sisinya?" : "Apa jenis segitiga ini menurut sudutnya?";
   }
 }
 
@@ -314,13 +349,19 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
         ? l.tanya === "siku"
           ? "Periksa tiap sudut satu per satu dengan penyiku, lalu hitung yang pas."
           : "Cari sisi yang tidak akan bertemu sejauh apa pun diperpanjang, lalu hitung pasangannya."
-        : "Periksa tiap sisi dan sudutnya dengan teliti, lalu bandingkan dengan ciri enam bangun segiempat.";
+        : "Periksa tiap sisi dan sudutnya dengan teliti, lalu bandingkan dengan ciri bangun yang sudah kamu pelajari.";
     case "pohon":
       return cara === "klik"
         ? "Mulailah dari ciri bangun induk, tambahkan ciri baru, lalu cari nama yang cocok dengan semuanya."
         : cara === "kanvas"
           ? "Tentukan dulu nama bangun yang terbentuk, lalu hitung pasangan sisi yang sejajar."
           : "Bangun induk punya semua ciri anaknya kecuali satu, jadi bayangkan bangun yang lebih umum.";
+    case "jenis":
+      return cara === "kanvas"
+        ? "Periksa tiap sudut dengan penyiku, lalu hitung hanya sudut yang lebih sempit daripada sudut siku-siku."
+        : l.menurut === "sisi"
+          ? "Bandingkan panjang ketiga sisinya dengan penggaris, lalu hitung berapa yang sama panjang."
+          : "Periksa tiap sudut dengan penyiku, lalu lihat apakah ada yang pas, lebih sempit, atau lebih lebar.";
   }
 }
 
@@ -362,6 +403,16 @@ export function barisKartu(l: LangkahDasar, cara?: Cara): string[] {
         : cara === "suara"
           ? [`anak: ${namaDari(a.hasil)}`, `tambahan ciri: ${a.tambah}`, "induknya: ?"]
           : [`induk: ${a.induk}`, `tambahan ciri: ${a.tambah}`, "bangun yang terbentuk: ?"];
+    }
+    case "jenis": {
+      const t = titikDari(l.b);
+      const sd = hitungSudut(t);
+      const sm = banyakSisiSamaSegitiga(t);
+      return cara === "kanvas"
+        ? ["banyak sudut: 3", `sudut siku-siku: ${sd.siku}`, `sudut tumpul: ${sd.tumpul}`, "sudut lancip: ?"]
+        : l.menurut === "sisi"
+          ? ["banyak sisi: 3", `sisi yang sama panjang: ${sm === 0 ? "tidak ada" : sm}`, "jenis menurut sisinya: ?"]
+          : ["banyak sudut: 3", `sudut siku-siku: ${sd.siku}`, `sudut tumpul: ${sd.tumpul}`, "jenis menurut sudutnya: ?"];
     }
   }
 }

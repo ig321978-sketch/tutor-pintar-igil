@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ANAK, barisKartu, dasarDari, type Cara, type Langkah, type LangkahDasar, type Rupa } from "./logika-cpa";
-import { bagiBaris, banyakSejajar, banyakSiku, bangun, golonganSisi, muatkan, tandaSama, tandaSejajar, tandaSiku, teksTitik, type Titik } from "./logika-bangun";
+import { banyakSejajar, banyakSiku, bangun, golonganSisi, muatkan, namaDari, tandaSama, tandaSejajar, tandaSiku, teksTitik, type Titik } from "./logika-bangun";
 
 /**
  * Gambar tahap Concrete, Pictorial, dan Abstract Kelas 4 Bab 5 Sub-Bab A (ciri-ciri bangun datar):
@@ -10,7 +10,6 @@ import { bagiBaris, banyakSejajar, banyakSiku, bangun, golonganSisi, muatkan, ta
  * Abstract = kartu kata dan angka. Tiap bangun digambar dari koordinat titik sudut (logika-bangun.ts), jadi sisi, sudut, dan sisi sejajar sungguh sesuai ciri yang diuji.
  * Dipakai bersama oleh tugas CPA (LangkahEtalase) dan Simulasi Etalase Keramik.
  */
-const SVG = "mx-auto block w-full max-w-[420px] touch-none select-none rounded-2xl bg-white/90";
 
 export const WARNA_ETALASE = {
   benda: { latar: "#FFF7ED", garis: "#9A3412", angka: "#7C2D12", rak: "#B7814A", rakTua: "#6B4423" },
@@ -33,15 +32,22 @@ const GLASIR: [string, [string, string]][] = [
 ];
 export const glasirDari = (kunci: string): [string, string] => GLASIR.find(([awal]) => kunci === awal || kunci.startsWith(`${awal}-`))?.[1] ?? ["#94A3B8", "#334155"];
 
-export function Gambar({ label, judul, children, rupa = "benda", tinggi = 200 }: { label: string; judul: string; children: React.ReactNode; rupa?: Rupa; tinggi?: number }) {
+export function Gambar({ label, judul, children, rupa = "benda", tinggi = 200, keterangan = [] }: { label: string; judul: string; children: React.ReactNode; rupa?: Rupa; tinggi?: number; keterangan?: string[] }) {
+  const w = warnaEtalase(rupa);
   return (
-    <svg viewBox={`0 0 300 ${tinggi}`} className={SVG} aria-label={label} role="img">
-      <rect x={0} y={0} width={300} height={tinggi} rx={12} fill={warnaEtalase(rupa).latar} />
-      <text x={150} y={14} textAnchor="middle" fontSize={10} fontWeight={900} fill={warnaEtalase(rupa).angka}>
+    <div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl" style={{ background: w.latar }}>
+      <p className="px-2 pt-1 text-center text-[12px] font-black leading-tight" style={{ color: w.angka }}>
         {judul}
-      </text>
-      {children}
-    </svg>
+      </p>
+      <svg viewBox={`0 0 300 ${tinggi}`} className="block w-full touch-none select-none" aria-label={label} role="img">
+        {children}
+      </svg>
+      {keterangan.map((t) => (
+        <p key={t} className="px-2 pb-1 text-center text-[12px] font-black leading-tight" style={{ color: w.garis }}>
+          {t}
+        </p>
+      ))}
+    </div>
   );
 }
 
@@ -74,12 +80,6 @@ export function Keramik({ kunci, x, y, w, h, rupa, tanda = true, ukuranTanda = 6
   );
 }
 
-const Ket = ({ y, teks, rupa, ukuran = 10 }: { y: number; teks: string; rupa: Rupa; ukuran?: number }) => (
-  <text x={150} y={y} textAnchor="middle" fontSize={ukuran} fontWeight={900} fill={warnaEtalase(rupa).garis}>
-    {teks}
-  </text>
-);
-
 /** Papan rak kayu tipis di bawah baris keramik (hanya Concrete). */
 const Rak = ({ y }: { y: number }) => <rect x={10} y={y} width={280} height={5} rx={2} fill={WARNA_ETALASE.benda.rak} stroke={WARNA_ETALASE.benda.rakTua} strokeWidth={1} />;
 
@@ -99,52 +99,42 @@ export function KisiKeramik({ daftar, rupa, y0 = 24, tinggi = 120 }: { daftar: r
   );
 }
 
-/** Pohon keluarga bentuk: bangun induk, tanda tambah ciri, dan bangun anak. `sembunyi` menyatakan yang belum diketahui. */
+/**
+ * Pohon keluarga bentuk (HTML dengan gambar keramik SVG kecil): bangun induk, ciri tambahan, dan bangun anak. `sembunyi` menyatakan yang belum diketahui.
+ * Semua tulisan berupa teks HTML berukuran paling kecil 12 px.
+ */
 export function PohonKeluarga({ i, rupa, sembunyi }: { i: number; rupa: Rupa; sembunyi: "anak" | "induk" | "sejajar" }) {
   const a = ANAK[i];
   const w = warnaEtalase(rupa);
-  const baris = bagiBaris(`+ ${a.tambah}`, 17);
-  const kotakTanya = (x: number, nama: string) => (
-    <g>
-      <rect x={x} y={34} width={88} height={64} rx={8} fill="#FFFFFF" stroke={w.garis} strokeWidth={1.6} strokeDasharray="4 3" />
-      <text x={x + 44} y={74} textAnchor="middle" fontSize={26} fontWeight={900} fill="#B45309">
-        ?
-      </text>
-      <text x={x + 44} y={112} textAnchor="middle" fontSize={10} fontWeight={900} fill={w.angka}>
+  const simpul = (kunci: string | null, nama: string) => (
+    <div className="flex min-w-0 flex-col items-center">
+      {kunci === null ? (
+        <div className="flex h-[56px] w-full max-w-[84px] items-center justify-center rounded-lg border-2 border-dashed bg-white text-3xl font-black" style={{ borderColor: w.garis, color: "#B45309" }}>
+          ?
+        </div>
+      ) : (
+        <svg viewBox="0 0 90 58" className="h-[56px] w-full max-w-[90px]" aria-hidden="true">
+          <Keramik kunci={kunci} x={5} y={3} w={80} h={52} rupa={rupa} tanda={rupa === "diagram"} ukuranTanda={5} />
+        </svg>
+      )}
+      <span className="mt-0.5 text-center text-[12px] font-black leading-tight" style={{ color: w.angka }}>
         {nama}
-      </text>
-    </g>
-  );
-  const bentuk = (kunci: string, x: number, nama: string | null) => (
-    <g>
-      <Keramik kunci={kunci} x={x + 4} y={36} w={80} h={56} rupa={rupa} tanda={rupa === "diagram"} ukuranTanda={5} />
-      {nama ? (
-        <text x={x + 44} y={112} textAnchor="middle" fontSize={10} fontWeight={900} fill={w.angka}>
-          {nama}
-        </text>
-      ) : null}
-    </g>
+      </span>
+    </div>
   );
   return (
-    <g data-pohon={i}>
-      {sembunyi === "induk" ? kotakTanya(12, "induknya") : bentuk(a.indukKunci, 12, a.induk)}
-      <line x1={106} y1={72} x2={190} y2={72} stroke={w.garis} strokeWidth={2.4} />
-      <polygon points="190,66 202,72 190,78" fill={w.garis} />
-      {baris.map((b, q) => (
-        <text key={b} x={148} y={62 - (baris.length - 1 - q) * 11} textAnchor="middle" fontSize={8.6} fontWeight={900} fill="#B45309">
-          {b}
-        </text>
-      ))}
-      {sembunyi === "anak" ? kotakTanya(200, "bangun anak") : bentuk(ANAK[i].hasil, 200, sembunyi === "induk" ? ucapNama(i) : null)}
-      {sembunyi === "sejajar" ? (
-        <text x={244} y={112} textAnchor="middle" fontSize={10} fontWeight={900} fill="#B45309">
-          sisi sejajar: ?
-        </text>
-      ) : null}
-    </g>
+    <div className="grid grid-cols-[1fr_1.15fr_1fr] items-center gap-1 px-1 py-1" data-pohon={i}>
+      {simpul(sembunyi === "induk" ? null : a.indukKunci, sembunyi === "induk" ? "induknya" : a.induk)}
+      <div className="flex min-w-0 flex-col items-center text-center">
+        <span className="text-[12px] font-black leading-tight text-[#B45309]">+ {a.tambah}</span>
+        <span className="text-xl font-black leading-none" style={{ color: w.garis }} aria-hidden="true">
+          {"➜"}
+        </span>
+      </div>
+      {simpul(sembunyi === "anak" ? null : a.hasil, sembunyi === "anak" ? "bangun anak" : sembunyi === "induk" ? namaDari(a.hasil) : "sisi sejajar: ?")}
+    </div>
   );
 }
-const ucapNama = (i: number): string => bangun(ANAK[i].hasil).nama;
 
 /* ------------------------------ Kartu kata (Abstract) ------------------------------ */
 export function KartuKata({ judul, baris }: { judul?: string; baris: string[] }) {
@@ -180,6 +170,7 @@ const JUDUL_KARTU: Record<LangkahDasar["tipe"], string> = {
   pilah: "memilah keramik",
   sisi: "sisi dan sudut",
   pohon: "pohon keluarga bentuk",
+  jenis: "jenis segitiga",
 };
 
 /* ------------------------------ Tampilan satu tugas ------------------------------ */
@@ -195,43 +186,43 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
   switch (d.tipe) {
     case "kenali":
       return (
-        <Gambar rupa={rupa} label={`Keramik berbentuk ${bangun(d.b).nama}`} judul={benda ? "keramik hias di etalase" : "denah keramik"}>
-          <Keramik kunci={d.b} x={60} y={28} w={180} h={112} rupa={rupa} tanda={false} />
-          {benda ? <Rak y={146} /> : null}
-          <Ket y={166} teks={cara === "kanvas" ? "banyak sisi: ?" : cara === "suara" ? "semua sisi dan sudut sama" : "tepinya ruas garis lurus tertutup"} rupa={rupa} />
+        <Gambar rupa={rupa} label={`Keramik berbentuk ${bangun(d.b).nama}`} judul={benda ? "keramik hias di etalase" : "denah keramik"} tinggi={146} keterangan={[cara === "kanvas" ? "banyak sisi: ?" : cara === "suara" ? "semua sisi dan sudut sama" : "tepinya ruas garis lurus tertutup"]}>
+          <Keramik kunci={d.b} x={60} y={8} w={180} h={120} rupa={rupa} tanda={false} />
+          {benda ? <Rak y={134} /> : null}
         </Gambar>
       );
     case "pilah":
       return (
-        <Gambar rupa={rupa} label={`${d.daftar.length} keramik di rak`} judul={benda ? "keramik di rak etalase" : "denah keramik"} tinggi={186}>
-          <KisiKeramik daftar={d.daftar} rupa={rupa} />
-          <Ket y={160} teks="digolongkan menurut banyak sisi" rupa={rupa} ukuran={10} />
-          <Ket y={176} teks={cara === "kanvas" ? `keramik bersisi ${d.n}: ?` : cara === "suara" ? `golongan bersisi ${d.n}: ?` : "keramik tidak segolongan: ?"} rupa={rupa} ukuran={10} />
+        <Gambar
+          rupa={rupa}
+          label={`${d.daftar.length} keramik di rak`}
+          judul={benda ? "keramik di rak etalase" : "denah keramik"}
+          tinggi={132}
+          keterangan={["digolongkan menurut banyak sisi", cara === "kanvas" ? `keramik bersisi ${d.n}: ?` : cara === "suara" ? `golongan bersisi ${d.n}: ?` : "keramik tidak segolongan: ?"]}
+        >
+          <KisiKeramik daftar={d.daftar} rupa={rupa} y0={4} tinggi={120} />
         </Gambar>
       );
     case "sisi":
+    case "jenis":
       return (
-        <Gambar rupa={rupa} label={`Keramik berbentuk ${bangun(d.b).nama}`} judul={benda ? "keramik di meja Bu Dewi" : "diagram keramik"} tinggi={208}>
-          <Keramik kunci={d.b} x={50} y={26} w={200} h={104} rupa={rupa} ukuranTanda={8} />
-          {benda ? <Rak y={134} /> : null}
-          {benda ? (
-            <Ket y={156} teks="periksa dengan penyiku dan penggaris" rupa={rupa} />
-          ) : (
-            <g>
-              {legenda(d.b).map((t, i) => (
-                <Ket key={t} y={152 + i * 18} teks={t} rupa={rupa} ukuran={13.5} />
-              ))}
-            </g>
-          )}
+        <Gambar rupa={rupa} label={`Keramik berbentuk ${bangun(d.b).nama}`} judul={benda ? "keramik di meja Bu Dewi" : "diagram keramik"} tinggi={126} keterangan={benda ? ["periksa dengan penyiku dan penggaris"] : legenda(d.b)}>
+          <Keramik kunci={d.b} x={50} y={6} w={200} h={104} rupa={rupa} ukuranTanda={8} />
+          {benda ? <Rak y={114} /> : null}
         </Gambar>
       );
     case "pohon": {
       const sembunyi = cara === "kanvas" ? "sejajar" : cara === "suara" ? "induk" : "anak";
       return (
-        <Gambar rupa={rupa} label={`Pohon keluarga bentuk: ${ANAK[d.i].induk} diberi tambahan ciri`} judul={benda ? "pohon keluarga keramik" : "pohon keluarga bentuk"} tinggi={150}>
+        <div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl pb-1" style={{ background: warnaEtalase(rupa).latar }} role="img" aria-label={`Pohon keluarga bentuk: ${ANAK[d.i].induk} diberi tambahan ciri`}>
+          <p className="px-2 pt-1 text-center text-[12px] font-black leading-tight" style={{ color: warnaEtalase(rupa).angka }}>
+            {benda ? "pohon keluarga keramik" : "pohon keluarga bentuk"}
+          </p>
           <PohonKeluarga i={d.i} rupa={rupa} sembunyi={sembunyi} />
-          <Ket y={138} teks="bangun anak punya semua ciri induk" rupa={rupa} ukuran={9} />
-        </Gambar>
+          <p className="px-2 text-center text-[12px] font-black leading-tight" style={{ color: warnaEtalase(rupa).garis }}>
+            bangun anak punya semua ciri induk
+          </p>
+        </div>
       );
     }
   }

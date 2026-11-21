@@ -158,11 +158,8 @@ export default function SimulasiEtalaseKeramik({ speakGuru, onKeadaan }: { speak
 
         {k.mode === "sisi" ? (
           <div className="space-y-2">
-            <Gambar rupa="benda" label={`Keramik berbentuk ${namaDari(bs)}`} judul="keramik di meja Bu Dewi" tinggi={150}>
-              <Keramik kunci={bs} x={70} y={26} w={160} h={90} rupa="benda" />
-              <text x={150} y={138} textAnchor="middle" fontSize={10} fontWeight={900} fill="#9A3412">
-                periksa dengan penyiku dan penggaris
-              </text>
+            <Gambar rupa="benda" label={`Keramik berbentuk ${namaDari(bs)}`} judul="keramik di meja Bu Dewi" tinggi={112} keterangan={["periksa dengan penyiku dan penggaris"]}>
+              <Keramik kunci={bs} x={70} y={6} w={160} h={90} rupa="benda" />
             </Gambar>
             <p className="text-center text-xs font-black text-[#1C01A5]">Tandai ciri yang dimiliki keramik ini</p>
             <div key={`ci${k.sisiKe}`} className="mx-auto grid max-w-[420px] grid-cols-1 gap-1.5" role="group" aria-label="Pilih ciri">
@@ -183,9 +180,9 @@ export default function SimulasiEtalaseKeramik({ speakGuru, onKeadaan }: { speak
 
         {k.mode === "pohon" ? (
           <div className="space-y-2">
-            <Gambar rupa="benda" label={`Pohon keluarga bentuk: ${ANAK[np].induk} diberi tambahan ciri`} judul="pohon keluarga keramik" tinggi={130}>
+            <div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl bg-[#FFF7ED]" role="img" aria-label={`Pohon keluarga bentuk: ${ANAK[np].induk} diberi tambahan ciri`}>
               <PohonKeluarga i={np} rupa="benda" sembunyi="anak" />
-            </Gambar>
+            </div>
             <p className="text-center text-xs font-black text-[#1C01A5]">Pilih nama bangun anak</p>
             <div key={`po${k.pohonKe}`} className="mx-auto grid max-w-[420px] grid-cols-1 gap-1.5" role="group" aria-label="Pilih nama bangun">
               {opsiPohon(k).map((n, i) => (
@@ -204,11 +201,8 @@ export default function SimulasiEtalaseKeramik({ speakGuru, onKeadaan }: { speak
 
         {k.mode === "segitiga" ? (
           <div className="space-y-2">
-            <Gambar rupa="benda" label={`Keramik segitiga`} judul="keramik segitiga di etalase" tinggi={150}>
-              <Keramik kunci={bg} x={90} y={24} w={120} h={92} rupa="benda" />
-              <text x={150} y={138} textAnchor="middle" fontSize={10} fontWeight={900} fill="#9A3412">
-                periksa sisi dan sudutnya
-              </text>
+            <Gambar rupa="benda" label={`Keramik segitiga`} judul="keramik segitiga di etalase" tinggi={106} keterangan={["periksa sisi dan sudutnya"]}>
+              <Keramik kunci={bg} x={90} y={6} w={120} h={92} rupa="benda" />
             </Gambar>
             <p className="text-center text-xs font-black text-[#1C01A5]">Menurut sisinya</p>
             <div key={`ss${k.segKe}`} className="mx-auto grid max-w-[420px] grid-cols-3 gap-1.5 px-1" role="group" aria-label="Pilih jenis menurut sisi">

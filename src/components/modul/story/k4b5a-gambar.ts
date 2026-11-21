@@ -116,6 +116,7 @@ export const KOORD: Record<string, Ko[]> = {
   "belah-ketupat": [[3, 0], [6, 2], [3, 4], [0, 2]],
   "layang-layang": [[3, 0], [6, 2], [3, 7], [0, 2]],
   trapesium: [[1, 0], [4, 0], [6, 4], [0, 4]],
+  "segiempat-sembarang": [[0, 1], [5, 0], [7, 4], [1, 5]],
   "segitiga-sama-sisi": beraturanN(3, -Math.PI / 2, 4),
   "segitiga-sama-kaki": [[0, 5], [6, 5], [3, 0]],
   "segitiga-siku": [[0, 0], [0, 3], [4, 3]],

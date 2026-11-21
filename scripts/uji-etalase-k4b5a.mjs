@@ -115,7 +115,7 @@ const dekat = (a, b) => Math.abs(a - b) < 1e-6;
   cek(LC.kata === LC.kataBil, "alias kata");
   sama([LC.ucapkan("4 sisi sama panjang"), LC.ucapkan("2 pasang sisi sejajar"), LC.ucapkan("siku-siku")], ["empat sisi sama panjang", "dua pasang sisi sejajar", "siku-siku"], "ucapkan angka");
   // Pohon keluarga: tiap anak punya semua ciri induknya ditambah ciri baru, dihitung dari koordinat.
-  cek(LC.ANAK.length === 7, "pohon: tujuh pasangan induk dan anak");
+  cek(LC.ANAK.length === 8, "pohon: delapan pasangan induk dan anak (termasuk belah ketupat juga layang-layang menurut buku)");
   for (const [i, a] of LC.ANAK.entries()) {
     const induk = G.bangun(a.indukKunci).titik;
     const anak = G.bangun(a.hasil).titik;
@@ -314,7 +314,8 @@ const dekat = (a, b) => Math.abs(a - b) < 1e-6;
   cek(/Segitiga sama sisi/.test(a.kalimat[3].teks) && G.semuaSisiSama(G.bangun("segitiga-sama-sisi").titik) && /Segitiga siku-siku/.test(a.kalimat[4].teks) && G.banyakSiku(G.bangun("segitiga-siku").titik) === 1, "infografis: acuan segitiga sama sisi dan siku-siku cocok dengan koordinat");
   cek(DK.KERAMIK_INFO.length <= 6, "infografis: paling banyak enam baris supaya satu layar tanpa gulir");
   cek(a.kalimat[0].teks === "Persegi: 4 sisi sama panjang, 4 sudut siku-siku" && G.semuaSisiSama(G.bangun("persegi").titik) && G.banyakSiku(G.bangun("persegi").titik) === 4, "infografis: acuan persegi cocok dengan koordinat");
-  cek(/tidak siku-siku/.test(a.kalimat[1].teks) && G.banyakSiku(G.bangun("jajargenjang").titik) === 0, "infografis: acuan jajargenjang sudutnya tidak siku-siku cocok dengan koordinat");
+  cek(a.kalimat[1].teks === "Jajargenjang: 2 pasang sisi sejajar" && G.banyakSejajar(G.bangun("jajargenjang").titik) === 2 && !a.kalimat.some((x) => /jajargenjang[^.]*tidak siku/i.test(x.teks + x.suara)), "infografis: acuan jajargenjang dua pasang sisi sejajar (bukan pernyataan sudut tidak siku-siku yang tidak berlaku bagi persegi panjang)");
+  cek(DK.ACUAN_ETALASE.kalimat.every((x) => !/tidak siku/i.test(x.teks + x.suara)) && Object.values(LC.CIRI_TEKS).every((t) => !/tidak siku/.test(t)), "tidak ada ciri pembeda 'tidak siku-siku' yang bertentangan dengan hubungan antar bangun");
   cek(/4 sisi sama panjang/.test(a.kalimat[2].teks) && G.semuaSisiSama(G.bangun("belah-ketupat").titik), "infografis: acuan belah ketupat cocok dengan koordinat");
 }
 
@@ -350,6 +351,14 @@ const TAHAP = [
         if (cara === "kanvas") return d.tanya === "siku" ? G.indeksSiku(ptk).length : G.pasangSejajar(ptk).length;
         return G.bangun(d.b).nama;
       }
+      case "jenis": {
+        const ptk = t(d.b);
+        const sd = G.hitungSudut(ptk);
+        if (cara === "kanvas") return ptk.map((_, i) => G.sudutDalam(ptk, i)).filter((x) => x < 89.99).length;
+        const sisiJ = G.jenisSegitigaSisi(ptk);
+        const sudutJ = sd.siku === 1 ? "siku-siku" : sd.tumpul > 0 ? "tumpul" : "lancip";
+        return d.menurut === "sisi" ? sisiJ : sudutJ;
+      }
       case "pohon": {
         const a = LC.ANAK[d.i];
         return cara === "klik" ? G.bangun(a.hasil).nama : cara === "kanvas" ? G.pasangSejajar(t(a.hasil)).length : a.induk;
@@ -374,10 +383,10 @@ const TAHAP = [
         cek(q.suara === q.judul && tanpaDigit(q.suara) && bersih(q.suara) && !BUKAN_A.test(q.suara), `${nama} misi ${s.nomor} ${q.metode}: instruksi tanpa digit, kata terlarang, dan istilah Sub-Bab B`);
         cek(emojiSah(q.suara) && emojiSah(q.judul), `${nama} misi ${s.nomor}: emoji sah`);
         if (rupa === "lambang") cek(!SALAH.test(q.suara), `${nama} misi ${s.nomor} ${q.metode}: tahap Abstract tanpa menyebut gambar, petak, atau kisi`);
-        const jenisMetode = { igil: "kenali", pilah: "pilah", sisi: "sisi", pohon: "pohon" };
-        cek(d.tipe === jenisMetode[q.metode], `${nama} misi ${s.nomor}: metode ${q.metode} memakai tugas ${jenisMetode[q.metode]}`);
+        const jenisMetode = { igil: ["kenali", "jenis"], pilah: ["pilah"], sisi: ["sisi"], pohon: ["pohon"] };
+        cek(jenisMetode[q.metode].includes(d.tipe), `${nama} misi ${s.nomor}: metode ${q.metode} memakai tugas ${jenisMetode[q.metode]}`);
         // Bangun yang dipakai sah.
-        const dipakai = d.tipe === "kenali" || d.tipe === "sisi" ? [d.b] : d.tipe === "pilah" ? d.daftar : [LC.ANAK[d.i].hasil, LC.ANAK[d.i].indukKunci];
+        const dipakai = d.tipe === "kenali" || d.tipe === "sisi" || d.tipe === "jenis" ? [d.b] : d.tipe === "pilah" ? d.daftar : [LC.ANAK[d.i].hasil, LC.ANAK[d.i].indukKunci];
         cek(dipakai.every((b) => G.KATALOG.some((x) => x.kunci === b)), `${nama} misi ${s.nomor} ${q.metode}: bangun ada di katalog`);
         // Jawaban dihitung dari koordinat.
         const h = hitung(d, s.cara);
@@ -493,6 +502,79 @@ const TAHAP = [
     cek(new Set(awal).size === 1 && /^(Satria|Genta) (keliru|benar)$/.test(awal[0]), `${nama}: tiga alasan berawalan sama (${awal.join(" | ")})`);
   }
   cek(JSON.stringify(TAHAP.map(([, soal]) => soal[0].langkah.map((q) => q.langkah).find((l) => l.tipe === "salah").benar)) === "[0,2,1]", "posisi alasan benar divariasikan antar tahap");
+  // Menurut buku: jenis segitiga (menurut sisi dan menurut sudut), segiempat sembarang, dan hubungan antar segiempat.
+  const semuaTugas = TAHAP.flatMap(([, soal]) => soal.flatMap((s) => s.langkah.map((q) => ({ l: LC.dasarDari(q.langkah), cara: s.cara }))));
+  const jenisTugas = semuaTugas.filter((t) => t.l.tipe === "jenis");
+  cek(jenisTugas.length >= 4 && jenisTugas.some((t) => t.l.menurut === "sisi") && jenisTugas.some((t) => t.l.menurut === "sudut") && jenisTugas.some((t) => t.cara === "kanvas"), "buku: tugas jenis segitiga menurut sisi dan menurut sudut ada, juga satu lewat kanvas");
+  cek(semuaTugas.some((t) => t.l.tipe === "sisi" && t.l.b === "segiempat-sembarang" && t.cara === "klik"), "buku: tugas segiempat sembarang (tidak ada sisi sama panjang)");
+  cek(semuaTugas.some((t) => t.l.tipe === "pohon" && LC.ANAK[t.l.i].induk === "layang-layang" && LC.ANAK[t.l.i].hasil === "belah-ketupat"), "buku: tugas hubungan belah ketupat juga layang-layang");
+  cek(LC.ANAK.some((a2) => a2.hasil === "persegi" && a2.induk === "persegi panjang") && LC.ANAK.some((a2) => a2.hasil === "persegi-panjang" && a2.induk === "jajargenjang"), "buku: persegi juga persegi panjang dan persegi panjang juga jajargenjang");
+  cek(!G.punyaCiri(G.bangun("trapesium").titik, "sejajar-dua") && G.punyaCiri(G.bangun("trapesium").titik, "sejajar-satu"), "buku: trapesium tepat sepasang sisi sejajar, jadi bukan jajargenjang");
+  for (const t of jenisTugas) {
+    const tt = G.bangun(t.l.b).titik;
+    cek(tt.length === 3, "jenis: bangun segitiga");
+    if (t.cara === "kanvas") cek(LC.kunciJawab(t.l, "kanvas").n === G.hitungSudut(tt).lancip && G.hitungSudut(tt).lancip >= 1 && G.hitungSudut(tt).lancip <= 3, "jenis kanvas: banyak sudut lancip dari koordinat");
+  }
+  const psj = D.POIN_PENTING_SUARA.join(" ");
+  cek(/tepat sepasang sisi sejajar/.test(psj) && /segiempat sembarang: tidak ada sisi yang sama panjang/i.test(psj) && /belah ketupat juga layang-layang/.test(psj) && /trapesium bukan jajargenjang/i.test(psj), "poin penting memuat trapesium tepat sepasang, segiempat sembarang, dan hubungan antar segiempat");
+  // Satu jawaban benar menurut hubungan antar bangun di buku: pengecoh tidak boleh juga benar (persegi juga persegi panjang dan belah ketupat; persegi panjang juga jajargenjang; belah ketupat juga jajargenjang dan layang-layang).
+  const BENAR_SEBAGAI = {
+    persegi: ["persegi", "persegi panjang", "belah ketupat", "jajargenjang", "layang-layang", "segiempat"],
+    "persegi-panjang": ["persegi panjang", "jajargenjang", "segiempat"],
+    "belah-ketupat": ["belah ketupat", "jajargenjang", "layang-layang", "segiempat"],
+    jajargenjang: ["jajargenjang", "segiempat"],
+    "layang-layang": ["layang-layang", "segiempat"],
+    trapesium: ["trapesium", "segiempat"],
+    "segiempat-sembarang": ["segiempat"],
+  };
+  const SEGITIGA_BENAR = { "segitiga-sama-sisi": ["sama sisi", "sama kaki", "lancip"], "segitiga-sama-kaki": ["sama kaki", "lancip"], "segitiga-siku": ["sembarang", "siku-siku"], "segitiga-tumpul": ["sembarang", "tumpul"], "segitiga-sembarang": ["sembarang", "lancip"] };
+  for (const [nama, soal] of TAHAP)
+    for (const so of soal)
+      for (const q of so.langkah) {
+        const d = LC.dasarDari(q.langkah);
+        const ket = `${nama} misi ${so.nomor} ${q.metode}`;
+        if (d.tipe === "sisi" && so.cara !== "kanvas") {
+          const opsi = so.cara === "klik" ? LC.pilihanKlik(q.langkah) : LC.pilihanSuara(q.langkah, "suara");
+          const kunci = LC.kunciJawab(q.langkah, so.cara).nama;
+          cek(opsi.filter((x) => x !== kunci).every((x) => !BENAR_SEBAGAI[d.b].includes(x)), `${ket}: pengecoh bukan jawaban benar menurut hubungan bangun (${opsi.join(" | ")})`);
+        }
+        if (d.tipe === "pohon" && so.cara === "klik") {
+          const a2 = LC.ANAK[d.i];
+          cek(a2.khusus === true || a2.lain.every((x) => !BENAR_SEBAGAI[a2.hasil].includes(x)), `${ket}: pengecoh pohon bukan jawaban benar menurut hubungan bangun`);
+          if (a2.khusus) cek(/paling khusus/.test(q.suara) && /paling khusus/.test(LC.kalimatTanya(q.langkah, "klik")), `${ket}: soal meminta nama yang paling khusus`);
+        }
+        if (d.tipe === "pohon" && so.cara === "suara") {
+          const a2 = LC.ANAK[d.i];
+          cek(a2.khusus === true || a2.lain.every((x) => !BENAR_SEBAGAI[a2.hasil].includes(x)), `${ket}: pengecoh induk bukan induk yang benar`);
+        }
+        if (d.tipe === "jenis" && so.cara !== "kanvas") {
+          const opsi = so.cara === "klik" ? LC.pilihanKlik(q.langkah) : LC.pilihanSuara(q.langkah, "suara");
+          const kunci = LC.kunciJawab(q.langkah, so.cara).nama;
+          cek(opsi.filter((x) => x !== kunci).every((x) => !SEGITIGA_BENAR[d.b].includes(x)), `${ket}: pengecoh jenis segitiga tidak juga benar (${opsi.join(" | ")})`);
+        }
+      }
+  // Semua pasangan pohon: hasil punya ciri tambahan dan tidak ada pengecoh yang juga memenuhi hubungan (kecuali yang khusus).
+  cek(LC.ANAK.filter((a2) => a2.hasil === "persegi").every((a2) => a2.khusus === true), "pohon: semua anak persegi bertanda paling khusus");
+  // Segitiga sama kaki dibuat jelas: dua kaki jauh lebih panjang atau lebih pendek daripada alas (bukan hampir sama sisi).
+  {
+    const sk = G.bangun("segitiga-sama-kaki").titik;
+    const sisiK = sk.map((_, i) => G.panjangSisi(sk, i)).sort((x, y) => x - y);
+    cek(Math.max(sisiK[2] / sisiK[0], sisiK[0] / sisiK[0]) >= 1.5 || sisiK[1] / sisiK[0] >= 1.5, "segitiga sama kaki: alas jauh berbeda dari kaki (bukan hampir sama sisi)");
+    cek(G.jenisSegitigaSisi(sk) === "sama kaki" && Math.abs(sisiK[1] - sisiK[2]) < 1e-9 || Math.abs(sisiK[0] - sisiK[1]) < 1e-9, "segitiga sama kaki: dua kaki tepat sama");
+  }
+  // Ukuran huruf gambar: SVG tugas tanpa teks kecil (>= 14 satuan pada viewBox 300) dan teks HTML paling kecil 12 px; Infografis >= 12 satuan.
+  {
+    const gm = readFileSync(new URL("GambarEtalase.tsx", folder), "utf8");
+    const ukuranSvg = [...gm.matchAll(/fontSize=\{([\d.]+)\}/g)].map((m) => Number(m[1]));
+    cek(ukuranSvg.every((u) => u >= 14), `gambar tugas: teks SVG paling kecil 14 satuan (${ukuranSvg.join(",")})`);
+    const ukuranHtml = [...gm.matchAll(/text-\[(\d+(?:\.\d+)?)px\]/g)].map((m) => Number(m[1]));
+    cek(ukuranHtml.length > 0 && ukuranHtml.every((u) => u >= 11), `gambar tugas: teks HTML paling kecil 11 px (${ukuranHtml.join(",")})`);
+    const inf = readFileSync(new URL("InfoEtalase.tsx", folder), "utf8");
+    cek([...inf.matchAll(/fontSize=\{([\d.]+)\}/g)].every((m) => Number(m[1]) >= 12), "infografis: teks SVG paling kecil 12 satuan");
+    cek([...inf.matchAll(/text-\[(\d+(?:\.\d+)?)px\]/g)].every((m) => Number(m[1]) >= 10.5), "infografis: teks HTML paling kecil 10,5 px");
+    const lg = readFileSync(new URL("LangkahEtalase.tsx", folder), "utf8");
+    cek(/% 2 \+ 1/.test(lg) && /selalu di urutan kedua/.test(lg), "Cari kesalahan: alasan benar selalu di urutan kedua atau ketiga dan tombol benar atau salah yang benar di urutan kedua");
+  }
   // Tahap: Concrete salah (Satria), Pictorial benar (Genta), Abstract salah (Satria).
   const salahDi = (soal) => soal[0].langkah.map((q) => q.langkah).find((l) => l.tipe === "salah");
   cek(salahDi(D.CONCRETE).tokoh === "Satria" && !salahDi(D.CONCRETE).betul && salahDi(D.CONCRETE).dasar.tipe === "sisi", "Concrete: Satria keliru menyebut layang-layang belah ketupat");
@@ -510,12 +592,12 @@ const TAHAP = [
   for (const [nama, soal] of TAHAP) sama(soal.reduce((n, s) => n + s.langkah.length, 0), 12, `${nama}: dua belas tugas`);
   // Semua bangun penting muncul di tiap tahap dan ada segi banyak beraturan serta tidak beraturan.
   for (const [nama, soal] of TAHAP) {
-    const dipakai = new Set(soal.flatMap((s) => s.langkah).flatMap((q) => { const d = LC.dasarDari(q.langkah); return d.tipe === "kenali" || d.tipe === "sisi" ? [d.b] : d.tipe === "pilah" ? d.daftar : [LC.ANAK[d.i].hasil]; }));
+    const dipakai = new Set(soal.flatMap((s) => s.langkah).flatMap((q) => { const d = LC.dasarDari(q.langkah); return d.tipe === "kenali" || d.tipe === "sisi" || d.tipe === "jenis" ? [d.b] : d.tipe === "pilah" ? d.daftar : [LC.ANAK[d.i].hasil]; }));
     cek(dipakai.size >= 12, `${nama}: banyak ragam bangun (${dipakai.size})`);
     cek(["segilima-beraturan", "segienam-beraturan", "segitiga-sama-sisi", "segilima-sembarang", "segienam-sembarang"].some((b) => dipakai.has(b)), `${nama}: ada segi banyak beraturan atau tidak beraturan`);
   }
   // Poin penting dan jembatan.
-  cek(D.POIN_PENTING.length === 6 && D.POIN_PENTING_SUARA.length === 6 && D.POIN_PENTING_SUARA.every(tanpaDigit) && D.POIN_PENTING.every(bersih) && D.POIN_PENTING.every((p) => !BUKAN_A.test(p)), "poin penting: enam butir, suara tanpa digit, tanpa istilah Sub-Bab B");
+  cek(D.POIN_PENTING.length === 7 && D.POIN_PENTING_SUARA.length === 7 && D.POIN_PENTING_SUARA.every(tanpaDigit) && D.POIN_PENTING.every(bersih) && D.POIN_PENTING.every((p) => !BUKAN_A.test(p)), "poin penting: tujuh butir, suara tanpa digit, tanpa istilah Sub-Bab B");
   cek(D.POIN_PENTING.every((p) => /^[A-Z]/.test(p) && !/ [.,:;!?]/.test(p)), "poin penting: huruf kapital dan tanpa spasi sebelum tanda baca");
   const ps = D.POIN_PENTING_SUARA.join(" ");
   cek(ps.includes("paling sedikit tiga ruas garis lurus") && /beraturan/.test(ps) && /sama sisi, sama kaki, dan sembarang/.test(ps) && /siku-siku, lancip, dan tumpul/.test(ps) && ps.includes("empat sisi sama panjang dan empat sudut siku-siku") && ps.includes("dua pasang sisi sejajar") && /sepasang sisi sejajar/.test(ps) && /layang-layang/i.test(ps), `poin penting: segi banyak, segitiga, persegi, jajargenjang, layang-layang, dan trapesium diucapkan dengan kata: ${ps}`);

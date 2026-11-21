@@ -29,8 +29,8 @@ function Tombol({ teks, onClick }: { teks: string; onClick: () => void }) {
 function CariSalah({ l, rupa, cara, salah, siap, info }: PK & { l: LangkahSalah; salah: (p: string) => void; siap: (p?: string) => void; info: (p: string) => void }) {
   const [tahap, setTahap] = useState<"putus" | "alasan" | "selesai">("putus");
   const [mati, setMati] = useState<number[]>([]);
-  /** Posisi alasan benar ditentukan dari teks tugas (tetap, tanpa acak saat render) supaya tidak selalu di tombol yang sama. */
-  const posisi = Array.from(`${l.tokoh}${l.kataTokoh}${l.alasan[l.benar]}`).reduce((t, c) => t + c.charCodeAt(0), 0) % 3;
+  /** Posisi alasan benar ditentukan dari teks tugas (tetap, tanpa acak saat render): selalu urutan kedua atau ketiga, tidak pernah pertama. */
+  const posisi = Array.from(`${l.tokoh}${l.kataTokoh}${l.alasan[l.benar]}`).reduce((t, c) => t + c.charCodeAt(0), 0) % 2 + 1;
   const lain = [0, 1, 2].filter((i) => i !== l.benar);
   const urut = [...lain.slice(0, posisi), l.benar, ...lain.slice(posisi)];
   /** Arahan tanpa menyebut alasan atau hasil yang benar. */
@@ -65,8 +65,10 @@ function CariSalah({ l, rupa, cara, salah, siap, info }: PK & { l: LangkahSalah;
         <div className="space-y-1 text-center">
           <p className="text-sm font-black text-[#1C01A5]">Jawaban {l.tokoh} benar atau salah?</p>
           <div className="flex justify-center gap-2">
+            {/* Tombol jawaban yang benar selalu di urutan kedua. */}
+            {l.betul ? <Tombol teks={"\u{274C} salah"} onClick={() => putus(false)} /> : null}
             <Tombol teks={"\u{2705} benar"} onClick={() => putus(true)} />
-            <Tombol teks={"\u{274C} salah"} onClick={() => putus(false)} />
+            {l.betul ? null : <Tombol teks={"\u{274C} salah"} onClick={() => putus(false)} />}
           </div>
         </div>
       ) : tahap === "alasan" ? (

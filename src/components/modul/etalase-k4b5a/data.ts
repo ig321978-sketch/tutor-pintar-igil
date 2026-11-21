@@ -5,10 +5,10 @@
  * Concrete memakai keramik berwarna di rak etalase, Pictorial memakai diagram polos di kertas denah (tanda sudut siku-siku, panah sejajar, garis sisi sama panjang),
  * Abstract memakai kartu kata dan angka di lembar katalog Bu Dewi.
  * Jawaban beragam: memilih nama bangun (klik), menulis satu angka di kanvas, dan mengucapkan satu kata. Jawaban benar dihitung dari koordinat bangun.
- * Angka jawaban Tulis di kanvas per tahap: Concrete 5, 3, 4, 1; Pictorial 6, 4, 3, 2; Abstract 5, 4, 1, 2 (tidak kembar dalam satu tahap).
+ * Angka jawaban Tulis di kanvas per tahap: Concrete 2, 3, 4, 1; Pictorial 6, 4, 3, 2; Abstract 5, 4, 1, 2 (tidak kembar dalam satu tahap).
  * Diuji: scripts/uji-etalase-k4b5a.mjs.
  */
-import type { Cara, Langkah, LangkahSalah, LangkahSoal, LKenali, LPilah, LPohon, LSisi, Rupa, SoalMisi } from "./logika-cpa";
+import type { Cara, Langkah, LangkahSalah, LangkahSoal, LJenis, LKenali, LPilah, LPohon, LSisi, Rupa, SoalMisi } from "./logika-cpa";
 import { URUT_METODE, instruksi, ucapkan } from "./logika-cpa";
 
 export { MISI_ETALASE_TEKS } from "./data-sim";
@@ -17,6 +17,7 @@ const kenali = (b: string, tanya?: "nama"): LKenali => ({ tipe: "kenali", b, ...
 const pilah = (daftar: string[], n: number): LPilah => ({ tipe: "pilah", daftar, n });
 const sisi = (b: string, tanya: "siku" | "sejajar" = "siku"): LSisi => ({ tipe: "sisi", b, tanya });
 const pohon = (i: number): LPohon => ({ tipe: "pohon", i });
+const jenis = (b: string, menurut: "sisi" | "sudut"): LJenis => ({ tipe: "jenis", b, menurut });
 const salah = (dasar: LSisi | LPohon, tokoh: string, kataTokoh: string, jawabTokoh: string, alasan: [string, string, string], benar: number, keliru: string, betul = false): LangkahSalah => ({
   tipe: "salah",
   dasar,
@@ -62,10 +63,10 @@ export const CONCRETE: SoalMisi[] = [
       0,
       "Sisi sama panjang saja belum cukup untuk menamai bangun, jadi periksa lagi langkah Satria.",
     ),
-    pohon(0),
+    pohon(7),
   ]),
   C(3, "kanvas", "Misi Etalase 3: papan Bu Dewi", "Bu Dewi mencatat bentuk keramik di papan jalannya. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [
-    kenali("segilima-sembarang"),
+    jenis("segitiga-siku", "sudut"),
     pilah(["segitiga-sama-sisi", "persegi", "segitiga-siku", "trapesium", "segitiga-tumpul", "segilima-sembarang"], 3),
     sisi("persegi", "siku"),
     pohon(4),
@@ -82,7 +83,7 @@ export const CONCRETE: SoalMisi[] = [
 const Pi = satuMisi("diagram");
 export const PICTORIAL: SoalMisi[] = [
   Pi(5, "klik", "Misi Etalase 5: denah Genta", "Genta menyalin keramik ke kertas denah. Periksa gambarnya.", [
-    kenali("segitiga-sama-kaki"),
+    jenis("segitiga-sama-kaki", "sisi"),
     pilah(["belah-ketupat", "layang-layang", "segilima-beraturan", "persegi-panjang"], 4),
     salah(
       sisi("trapesium", "sejajar"),
@@ -107,7 +108,7 @@ export const PICTORIAL: SoalMisi[] = [
     pohon(0),
   ]),
   Pi(7, "suara", "Misi Etalase 7: lapor ke Bu Dewi", "Genta melaporkan bagannya kepada Bu Dewi. Sebutkan jawabanmu.", [
-    kenali("segienam-sembarang", "nama"),
+    jenis("segitiga-sembarang", "sisi"),
     pilah(["segilima-sembarang", "persegi", "segitiga-siku", "segilima-beraturan", "trapesium"], 5),
     sisi("jajargenjang", "sejajar"),
     pohon(6),
@@ -118,9 +119,9 @@ export const PICTORIAL: SoalMisi[] = [
 const A = satuMisi("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(8, "klik", "Misi Etalase 8: katalog Bu Dewi", "Katalog Bu Dewi hanya berisi kata dan angka.", [
-    kenali("segilima-beraturan"),
+    jenis("segitiga-tumpul", "sudut"),
     pilah(["persegi", "jajargenjang", "trapesium", "segienam-beraturan"], 4),
-    sisi("persegi-panjang", "siku"),
+    sisi("segiempat-sembarang", "siku"),
     salah(
       pohon(1),
       "Satria",
@@ -143,7 +144,7 @@ export const ABSTRACT: SoalMisi[] = [
   ]),
   A(10, "suara", "Misi Etalase 10: katalog akhir", "Katalog akhir untuk Bu Dewi. Ucapkan jawabannya.", [
     kenali("segiempat-sembarang", "nama"),
-    pilah(["segienam-beraturan", "persegi", "segilima-sembarang", "segienam-sembarang"], 6),
+    pilah(["segienam-beraturan", "segilima-beraturan", "segilima-sembarang", "segienam-sembarang"], 6),
     sisi("layang-layang", "siku"),
     pohon(3),
   ]),
@@ -155,7 +156,8 @@ export const POIN_PENTING = [
   "Menurut sisinya, segitiga ada yang sama sisi, sama kaki, dan sembarang. Menurut sudutnya: siku-siku, lancip, dan tumpul.",
   "Persegi: 4 sisi sama panjang dan 4 sudut siku-siku. Persegi panjang: 2 pasang sisi sama panjang dan 4 sudut siku-siku.",
   "Jajargenjang dan belah ketupat punya 2 pasang sisi sejajar. Belah ketupat punya 4 sisi sama panjang.",
-  "Layang-layang: 2 pasang sisi bersebelahan sama panjang. Trapesium: sepasang sisi sejajar.",
+  "Layang-layang: 2 pasang sisi bersebelahan sama panjang. Trapesium: tepat sepasang sisi sejajar. Segiempat sembarang: tidak ada sisi yang sama panjang.",
+  "Persegi juga persegi panjang, persegi panjang juga jajargenjang, dan belah ketupat juga layang-layang. Trapesium bukan jajargenjang.",
 ];
 /** Poin penting untuk suara (tanpa digit): bilangan menjadi kata. */
 export const POIN_PENTING_SUARA = POIN_PENTING.map((p) => ucapkan(p));

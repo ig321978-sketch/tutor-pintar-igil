@@ -36,7 +36,7 @@ Sapaan (bersama): topik "bangun datar"; daftar: "segi banyak", "segitiga", "segi
 7. `keluarga`
    - "Genta menata keluarga segiempat: persegi punya empat sisi sama panjang dan empat sudut siku-siku."
    - "Persegi panjang punya dua pasang sisi sama panjang, belah ketupat punya empat sisi sama panjang, dan jajargenjang punya dua pasang sisi sejajar."
-   - "Layang-layang punya dua pasang sisi bersebelahan yang sama panjang, dan trapesium punya sepasang sisi sejajar."
+   - "Layang-layang punya dua pasang sisi bersebelahan yang sama panjang, trapesium punya tepat sepasang sisi sejajar, dan segiempat sembarang tidak punya sisi yang sama panjang."
 8. `katalog`
    - "Bu Dewi menulis nama setiap bangun di katalog, lengkap dengan ciri sisi dan sudutnya."
    - "Pak Hendro berpesan, kenali bangun dari cirinya, bukan hanya dari bentuknya sekilas."
@@ -83,10 +83,12 @@ Metode: Sort the Tiles (Pilah Keramik), Sides and Corners (Sisi dan Sudut), Shap
 - `luar-pohon-terapan`:
   - "Satria menelusuri pohon dari segiempat turun ke persegi panjang, lalu ke persegi."
   - "Persegi punya semua ciri persegi panjang, ditambah keempat sisinya sama panjang."
-  - "Cocok untuk memahami keluarga bangun, karena satu ciri bisa dipakai berulang."
+  - "Cocok untuk memahami keluarga bangun, karena satu ciri bisa dipakai berulang, dan persegi juga termasuk persegi panjang."
   - "Kurang cocok kalau kita lupa ciri bangun di atasnya, karena bagannya jadi putus."
 - `luar-ringkas`:
   - "Tiga cara sudah kita pelajari bersama Bu Dewi. Mana yang pas tergantung keadaan."
   - "Ingin merapikan banyak keramik, pakai Pilah Keramik. Ingin memastikan nama bangun, pakai Sisi dan Sudut."
   - "Ingin melihat hubungan antar bangun, pakai Pohon Keluarga Bentuk. Apa pun caranya, sebut cirinya dengan jelas."
   - "Menurutmu, untuk membedakan layang-layang dan belah ketupat, cara mana yang paling pas?"
+
+Penyesuaian menurut buku (Bab 5 Sub-Bab A): ketukan terakhir adegan `keluarga` kini memuat trapesium "tepat sepasang sisi sejajar" dan segiempat sembarang (tidak ada sisi sama panjang); ketukan ketiga `luar-pohon-terapan` menambahkan "persegi juga termasuk persegi panjang".

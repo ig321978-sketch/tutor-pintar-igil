@@ -146,7 +146,7 @@ export const ADEGAN_LUAR_POHON: AdeganStory = {
 /* ------------------------------ Shape Family Tree: terapan ------------------------------ */
 const SUARA_Y1 = "Satria menelusuri pohon dari segiempat turun ke persegi panjang, lalu ke persegi.";
 const SUARA_Y2 = "Persegi punya semua ciri persegi panjang, ditambah keempat sisinya sama panjang.";
-const SUARA_Y3 = "Cocok untuk memahami keluarga bangun, karena satu ciri bisa dipakai berulang.";
+const SUARA_Y3 = "Cocok untuk memahami keluarga bangun, karena satu ciri bisa dipakai berulang, dan persegi juga termasuk persegi panjang.";
 const SUARA_Y4 = "Kurang cocok kalau kita lupa ciri bangun di atasnya, karena bagannya jadi putus.";
 const PG2 = titik(240, 70, "persegi", 8);
 
@@ -176,11 +176,12 @@ export const ADEGAN_LUAR_POHON_TERAPAN: AdeganStory = {
       redamkan(0, "n3"),
       tambah("Cocok", emo("ok", 262, 140, E.benar, 22)),
       tambah("satu", teks("sc", 240, 110, "1 ciri dipakai", 8.4, BIRU)),
-      tambah("berulang.", teks("br", 240, 124, "berulang", 8.4, BIRU)),
+      tambah("berulang,", teks("br", 240, 124, "berulang", 8.4, BIRU)),
+      tambah("termasuk", teks("tm", 230, 146, "persegi juga persegi panjang", 7.5, HIJAU)),
     ),
     k(
       SUARA_Y4,
-      hapus(0, "ok", "sc", "br", "a2"),
+      hapus(0, "ok", "sc", "br", "tm", "a2"),
       tambah("Kurang", emo("xs", 262, 140, E.salah, 22)),
       tambah("lupa", garis("p1", 130, 102, 0, 4, K.kapur, 1.6), garis("p2", 130, 118, 0, 4, K.kapur, 1.6)),
       tambah("putus.", teks("pt2", 240, 110, "bagan putus", 9, MERAH)),

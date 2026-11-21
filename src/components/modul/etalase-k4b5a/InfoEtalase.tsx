@@ -23,7 +23,7 @@ const POHON: { b: string; nama: string; x: number; y: number }[] = [
   { b: "persegi", nama: "persegi", x: 150, y: 184 },
 ];
 /** Garis keluarga: dari induk (indeks) ke anak (indeks). */
-const CABANG: [number, number][] = [[0, 1], [0, 2], [0, 3], [2, 4], [2, 5], [4, 6], [5, 6]];
+const CABANG: [number, number][] = [[0, 1], [0, 2], [0, 3], [2, 4], [2, 5], [3, 5], [4, 6], [5, 6]];
 const SEGITIGA: { b: string; nama: string; x: number }[] = [
   { b: "segitiga-sama-sisi", nama: "sama sisi", x: 38 },
   { b: "segitiga-sama-kaki", nama: "sama kaki", x: 112 },
@@ -99,18 +99,18 @@ export default function InfoEtalase({ speakGuru, onLanjut, teksLanjut }: { speak
             {POHON.map((p) => (
               <g key={p.b}>
                 <Keramik kunci={p.b} x={p.x - 20} y={p.y - 12} w={40} h={24} rupa="benda" />
-                <text x={p.x} y={p.y + 25} textAnchor="middle" fontSize={11} fontWeight={900} fill="#1C01A5" stroke="#F5F3FF" strokeWidth={3} paintOrder="stroke">
+                <text x={p.x} y={p.y + 25} textAnchor="middle" fontSize={12} fontWeight={900} fill="#1C01A5" stroke="#F5F3FF" strokeWidth={3} paintOrder="stroke">
                   {p.nama}
                 </text>
               </g>
             ))}
-            <text x={8} y={224} fontSize={11} fontWeight={900} fill="#9A3412">
+            <text x={8} y={224} fontSize={12} fontWeight={900} fill="#9A3412">
               Segitiga
             </text>
             {SEGITIGA.map((p) => (
               <g key={p.b}>
                 <Keramik kunci={p.b} x={p.x - 24} y={230} w={48} h={34} rupa="benda" />
-                <text x={p.x} y={280} textAnchor="middle" fontSize={11} fontWeight={900} fill="#1C01A5">
+                <text x={p.x} y={280} textAnchor="middle" fontSize={12} fontWeight={900} fill="#1C01A5">
                   {p.nama}
                 </text>
               </g>

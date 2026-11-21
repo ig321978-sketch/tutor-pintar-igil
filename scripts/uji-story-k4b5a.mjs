@@ -373,6 +373,9 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
     cekBentuk(o, "jg", 4, { sama: false, siku: 0, sejajar: 2 }, "keluarga jajargenjang");
     cekBentuk(o, "ll", 4, { siku: 0, sejajar: 0, sama: false }, "keluarga layang-layang");
     cekBentuk(o, "tr", 4, { siku: 0, sejajar: 1, sama: false }, "keluarga trapesium");
+    cekBentuk(o, "sm", 4, { siku: 0, sejajar: 0, sama: false }, "keluarga segiempat sembarang");
+    cek(!bentuk(o, "sm").sisi.some((x, i, arr) => arr.some((y, j) => j !== i && dekat(x, y, 1))) && isiTeks(o, "sm-n") === "segiempat" && isiTeks(o, "sm-c1") === "tidak ada sama", "keluarga: segiempat sembarang tidak punya sisi yang sama panjang");
+    cek(ada(akhirAdegan(kl, 1), "ph-sm", "tp-sm") && tidakAda(akhirAdegan(kl), "ph-sm", "tp-sm"), "keluarga: tempat segiempat sembarang kosong lalu terisi");
     const ll = bentuk(o, "ll").sisi;
     cek(dekat(ll[0], ll[3]) && dekat(ll[1], ll[2]) && !dekat(ll[0], ll[1], 1), "keluarga: layang-layang punya dua pasang sisi bersebelahan sama panjang");
     sama(["pg", "pp", "bk", "jg", "ll", "tr"].map((id) => isiTeks(o, `${id}-n`)), ["persegi", "persegi panjang", "belah ketupat", "jajargenjang", "layang-layang", "trapesium"], "keluarga: nama enam segiempat");
@@ -479,6 +482,7 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
     const p = akhirAdegan(lht, 1);
     cekBentuk(p, "pg", 4, { sama: true, siku: 4 }, "pohon terapan persegi");
     cek(banyakTanda(p, "pg", "t") === 4 && isiTeks(p, "pl") === "+ 4 sisi sama" && ketemu(p, "n3").sorot === true, "pohon terapan: persegi punya ciri persegi panjang ditambah empat sisi sama panjang");
+    cek(isiTeks(akhirAdegan(lht, 2), "tm") === "persegi juga persegi panjang" && /persegi juga termasuk persegi panjang/.test(lht.ketukan[2].suara), "pohon terapan: persegi juga termasuk persegi panjang (hubungan menurut buku)");
     cek(ada(akhirAdegan(lht, 2), "ok") && isiTeks(akhirAdegan(lht, 2), "sc") === "1 ciri dipakai" && !ketemu(akhirAdegan(lht, 2), "n3").sorot, "pohon terapan: cocok karena satu ciri dipakai berulang");
     cek(ada(akhirAdegan(lht), "xs", "p1", "p2") && tidakAda(akhirAdegan(lht), "a2", "ok") && isiTeks(akhirAdegan(lht), "pt2") === "bagan putus", "pohon terapan: kurang cocok bila lupa ciri, bagan putus");
   }

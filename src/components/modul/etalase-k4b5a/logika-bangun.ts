@@ -21,7 +21,7 @@ const beraturanN = (n: number, mulai: number, r: number): Titik[] =>
 /** Katalog keramik etalase. Koordinat y ke bawah (seperti SVG). */
 export const KATALOG: Bangun[] = [
   { kunci: "segitiga-sama-sisi", nama: "segitiga sama sisi", titik: beraturanN(3, -Math.PI / 2, 4) },
-  { kunci: "segitiga-sama-kaki", nama: "segitiga sama kaki", titik: [[0, 5], [6, 5], [3, 0]] },
+  { kunci: "segitiga-sama-kaki", nama: "segitiga sama kaki", titik: [[0, 8], [4, 8], [2, 0]] },
   { kunci: "segitiga-siku", nama: "segitiga siku-siku", titik: [[0, 0], [0, 3], [4, 3]] },
   { kunci: "segitiga-tumpul", nama: "segitiga tumpul", titik: [[0, 5], [7, 5], [2, 3]] },
   { kunci: "segitiga-sembarang", nama: "segitiga sembarang", titik: [[0, 5], [7, 5], [3, 0]] },
@@ -242,3 +242,20 @@ export function bagiBaris(teks: string, maks: number): string[] {
   if (kini) baris.push(kini);
   return baris;
 }
+
+/** Banyak sudut lancip, siku-siku, dan tumpul (dihitung dari koordinat). */
+export function hitungSudut(t: Titik[]): { lancip: number; siku: number; tumpul: number } {
+  const hasil = { lancip: 0, siku: 0, tumpul: 0 };
+  t.forEach((_, i) => {
+    const d = sudutDalam(t, i);
+    if (Math.abs(d - 90) < 1e-4) hasil.siku += 1;
+    else if (d < 90) hasil.lancip += 1;
+    else hasil.tumpul += 1;
+  });
+  return hasil;
+}
+/** Banyak sisi yang sama panjang pada segitiga: 3 (sama sisi), 2 (sama kaki), atau 0 (sembarang). */
+export const banyakSisiSamaSegitiga = (t: Titik[]): number => {
+  const s = jenisSegitigaSisi(t);
+  return s === "sama sisi" ? 3 : s === "sama kaki" ? 2 : 0;
+};

@@ -28,6 +28,11 @@ export const POLA_KATA: [string, RegExp][] = [
   ["beraturan", /\b(beraturan|ber aturan)\b/],
   ["sejajar", /\b(sejajar|se jajar)\b/],
   ["tumpul", /\btumpul\b/],
+  ["lancip", /\blancip\b/],
+  ["siku-siku", /\bsiku( siku)?\b/],
+  ["sama sisi", /\bsama sisi\b/],
+  ["sama kaki", /\bsama kaki\b/],
+  ["sembarang", /\bsembarang\b/],
 ];
 const NAMA_KATA = POLA_KATA.map(([n]) => n).join("|");
 

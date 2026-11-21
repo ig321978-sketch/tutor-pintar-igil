@@ -82,8 +82,8 @@ export const ACUAN_ETALASE = {
   contoh: "persegi",
   kalimat: [
     { teks: "Persegi: 4 sisi sama panjang, 4 sudut siku-siku", suara: ejaK4B5("Persegi punya 4 sisi sama panjang dan 4 sudut siku-siku.") },
-    { teks: "Jajargenjang: sudutnya tidak siku-siku", suara: "Jajargenjang punya dua pasang sisi sejajar, tetapi sudutnya tidak siku-siku." },
-    { teks: "Belah ketupat: 4 sisi sama panjang", suara: ejaK4B5("Belah ketupat punya 4 sisi sama panjang, tetapi sudutnya tidak siku-siku.") },
+    { teks: "Jajargenjang: 2 pasang sisi sejajar", suara: ejaK4B5("Jajargenjang punya 2 pasang sisi sejajar, dan sisi yang berhadapan sama panjang.") },
+    { teks: "Belah ketupat: 4 sisi sama panjang", suara: ejaK4B5("Belah ketupat punya 4 sisi sama panjang dan 2 pasang sisi sejajar.") },
     { teks: "Segitiga sama sisi: 3 sisi sama panjang", suara: ejaK4B5("Segitiga sama sisi punya 3 sisi sama panjang.") },
     { teks: "Segitiga siku-siku: 1 sudut siku-siku", suara: ejaK4B5("Segitiga siku-siku punya 1 sudut siku-siku.") },
   ],

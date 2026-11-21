@@ -9,8 +9,8 @@ import { bersih, hapus, k, tambah } from "./k4b5a-bantu";
 
 /** Satu kartu keluarga: bangun `${id}`, nama `${id}-n`, dan dua baris ciri `${id}-c1` dan `${id}-c2`. */
 /** Pusat enam kartu keluarga (tiga kolom, dua baris) dan bingkai putus-putus penanda tempat keramik. */
-const PUSAT: Record<string, [number, number]> = { pg: [50, 58], pp: [150, 58], bk: [250, 58], jg: [50, 138], ll: [150, 136], tr: [250, 138] };
-const tempat = (id: string) => kotak(`ph-${id}`, PUSAT[id][0] - 24, PUSAT[id][1] - 22, 48, 44, undefined, W.kayu, { rx: 4, tebal: 1.2, putus: true, z: 0 });
+const PUSAT: Record<string, [number, number]> = { pg: [38, 58], pp: [113, 58], bk: [188, 58], jg: [263, 58], ll: [38, 136], tr: [113, 138], sm: [188, 138] };
+const tempat = (id: string) => kotak(`ph-${id}`, PUSAT[id][0] - 22, PUSAT[id][1] - 22, 44, 44, undefined, W.kayu, { rx: 4, tebal: 1.2, putus: true, z: 0 });
 const kartu = (id: string, x: number, y: number, kunci: string, s: number, warna: string, nama: string, yNama: number, c1: string, c2?: string) => [
   bangun(id, x, y, kunci, s, warna),
   teks(`${id}-n`, x, yNama, nama, 9, W.coklat),
@@ -21,7 +21,7 @@ const kartu = (id: string, x: number, y: number, kunci: string, s: number, warna
 /* ------------------------------ 7. Keluarga segiempat ------------------------------ */
 const SUARA_K1 = "Genta menata keluarga segiempat: persegi punya empat sisi sama panjang dan empat sudut siku-siku.";
 const SUARA_K2 = "Persegi panjang punya dua pasang sisi sama panjang, belah ketupat punya empat sisi sama panjang, dan jajargenjang punya dua pasang sisi sejajar.";
-const SUARA_K3 = "Layang-layang punya dua pasang sisi bersebelahan yang sama panjang, dan trapesium punya sepasang sisi sejajar.";
+const SUARA_K3 = "Layang-layang punya dua pasang sisi bersebelahan yang sama panjang, trapesium punya tepat sepasang sisi sejajar, dan segiempat sembarang tidak punya sisi yang sama panjang.";
 
 export const ADEGAN_KELUARGA: AdeganStory = {
   id: "keluarga",
@@ -33,23 +33,25 @@ export const ADEGAN_KELUARGA: AdeganStory = {
       SUARA_K1,
       tambah(0, judul("Keluarga Segiempat"), ...Object.keys(PUSAT).map(tempat), ...Object.keys(PUSAT).map((id) => teks(`tp-${id}`, PUSAT[id][0], PUSAT[id][1] + 5, "?", 16, W.kayu, { z: 1 }))),
       hapus("persegi", "ph-pg", "tp-pg"),
-      tambah("persegi", ...kartu("pg", 50, 58, "persegi", 9, G.biru, "persegi", 90, "4 sisi sama", "4 siku-siku")),
+      tambah("persegi", ...kartu("pg", 38, 58, "persegi", 9, G.biru, "persegi", 90, "4 sisi sama", "4 siku-siku")),
     ),
     k(
       SUARA_K2,
       hapus("Persegi", "ph-pp", "tp-pp"),
-      tambah("Persegi", ...kartu("pp", 150, 58, "persegi-panjang", 6, G.hijau, "persegi panjang", 90, "2 pasang sama")),
+      tambah("Persegi", ...kartu("pp", 113, 58, "persegi-panjang", 6, G.hijau, "persegi panjang", 90, "2 pasang sama")),
       hapus("belah", "ph-bk", "tp-bk"),
-      tambah("belah", ...kartu("bk", 250, 58, "belah-ketupat", 9, G.pink, "belah ketupat", 90, "4 sisi sama")),
+      tambah("belah", ...kartu("bk", 188, 58, "belah-ketupat", 9, G.pink, "belah ketupat", 90, "4 sisi sama")),
       hapus("jajargenjang", "ph-jg", "tp-jg"),
-      tambah("jajargenjang", ...kartu("jg", 50, 138, "jajargenjang", 5, G.kuning, "jajargenjang", 168, "2 pasang sejajar")),
+      tambah("jajargenjang", ...kartu("jg", 263, 58, "jajargenjang", 5, G.kuning, "jajargenjang", 90, "2 pasang sejajar")),
     ),
     k(
       SUARA_K3,
       hapus("Layang-layang", "ph-ll", "tp-ll"),
-      tambah("Layang-layang", ...kartu("ll", 150, 136, "layang-layang", 5, G.ungu, "layang-layang", 168, "2 pasang sebelah")),
+      tambah("Layang-layang", ...kartu("ll", 38, 136, "layang-layang", 5, G.ungu, "layang-layang", 168, "2 pasang sebelah")),
       hapus("trapesium", "ph-tr", "tp-tr"),
-      tambah("trapesium", ...kartu("tr", 250, 138, "trapesium", 6, G.oranye, "trapesium", 168, "1 pasang sejajar")),
+      tambah("trapesium", ...kartu("tr", 113, 138, "trapesium", 6, G.oranye, "trapesium", 168, "1 pasang sejajar")),
+      hapus("segiempat", "ph-sm", "tp-sm"),
+      tambah("segiempat", ...kartu("sm", 188, 138, "segiempat-sembarang", 5, G.nila, "segiempat", 168, "tidak ada sama")),
     ),
   ],
 };
