@@ -7,22 +7,32 @@ alwaysApply: false
 # Delapan pintu pertahanan anti-kecurangan
 
 Skema: `supabase/migrations/01_igil_eight_gates_schema.sql` dan `02_parent_pin_in_app.sql`. Tidak ada tabel vektor wajah, kolom gambar, NIK, KK, atau nomor rekening di tabel IGIL.
+Keputusan pemilik (20 Nov 2026): `naskah/anti-kecurangan-keputusan.md`.  
+Spesifikasi kerja (alur, centang, kode 60 dtk, RPC): `naskah/anti-kecurangan-spesifikasi.md`.
 
 Seluruh alur verifikasi **100% In-App** (akun login):
 
 - **Zero Email & Zero WhatsApp:** tidak ada notifikasi ke email/WA orang tua.
 - **In-App Parental PIN:** 6 digit; simpan hanya bcrypt di `private.household_pins.parent_pin_hash` (bukan SHA-256). 5 gagal → kunci 15 menit. Ubah `payout_holder_name` / `gateway_payout_ref` wajib PIN.
 
+## Kebijakan pemilik (terkunci)
+
+1. **Bantuan orang tua saat belajar / Latihan / Ujian boleh.** Corong ketat hanya di uji lisan kandidat dan pencairan.
+2. **Sanksi boleh lewat AI** (blokir kandidat bulan itu + `account_notices`). Petugas bisa override. Poin belajar dan akses materi tidak dihapus.
+3. **Soal uji lisan personal** dari jawaban Praktikum anak (templat berparameter + 1 soal "kenapa"). Tanpa LLM saat anak belajar.
+4. **NISN wajib saat pencairan**, bukan saat daftar. Registrasi tetap opsional. Server hanya menyimpan HMAC.
+5. **Rp 50.000 = jual-beli langganan**, bukan iuran. Kolam beasiswa dari alokasi pendapatan (90:10). Copy UI/S&K jangan memakai kata "iuran".
+
 ## A. Berlangganan & belajar harian (server)
 
-1. **Pendaftaran minimalis + HMAC-SHA256 NISN + kode undangan rumah:** NISN tidak disimpan mentah; HMAC dengan kunci `igil.nisn_hmac_key` → `nisn_hmac UNIQUE`. Tanpa KK/NIK/rapor upload. Rekening hanya di Payment Gateway (`gateway_payout_ref` + `payout_holder_name`). Ratchet fase satu arah (lihat aturan isolasi fase).
-2. **Kunci jawaban di server:** JSON di perangkat tanpa `correct_index`/`explanation`. Latihan: explanation via RPC setelah jawab. Ujian: lembar utuh → nilai akhir saja + `cooldown_until`.
-3. **Tempo server & batas bab harian:** `now()` server; kiriman terlalu cepat ditolak; poin harian berhenti setelah batas bab wajar.
-4. **Poin sekali terbit:** UNIQUE `(student_id, chapter_id, component_type)`; satu sesi ujian aktif per anak.
-5. **Multi-paket soal ujian** dipilih server saat sesi dimulai.
+1. **Pendaftaran minimalis + HMAC-SHA256 NISN (opsional di daftar) + kode undangan rumah:** NISN tidak disimpan mentah; HMAC dengan kunci `igil.nisn_hmac_key` → `nisn_hmac UNIQUE`. Tanpa KK/NIK/rapor upload. Rekening hanya di Payment Gateway (`gateway_payout_ref` + `payout_holder_name`), dikumpulkan saat pencairan. Ratchet fase satu arah (lihat aturan isolasi fase). CAPTCHA saat buat akun; batas anak per rumah.
+2. **Kunci jawaban di server:** JSON di perangkat tanpa `correct_index`/`explanation`. Latihan: explanation via RPC setelah jawab; poin Latihan hanya bila ketepatan ≥ ambang. Ujian: lembar utuh → **Lulus / Belum** (+ topik ulang), **bukan angka skor** + `cooldown_until`; acak urutan soal/pilihan per sesi.
+3. **Tempo server & batas bab harian:** `now()` server; kiriman terlalu cepat ditolak; poin harian berhenti setelah batas bab wajar. Irama jawab = sinyal tinjauan, bukan hukuman langsung.
+4. **Poin sekali terbit:** UNIQUE `(student_id, chapter_id, component_type)`; satu sesi ujian aktif per anak. Tie-break peringkat: lulus percobaan pertama → skor Praktikum → waktu tuntas; **dilarang** undian / `order by student_id`.
+5. **Multi-paket / bank acak soal ujian** dipilih server saat sesi dimulai; pool Latihan terpisah dari pool Ujian.
 
 ## B. Pencairan beasiswa
 
-6. **Saringan pra-kalender + kalender 3 hari (slot 2 menit):** akun pabrik / 3+ akun detik sama digugurkan; calon pilih slot sendiri (1x pindah ke slot kosong); slot kosong ke peringkat berikutnya; dana tanpa penerima → rollover bulan depan.
+6. **Saringan pra-kalender + kalender 3 hari (slot 2 menit):** akun pabrik / kemiripan Praktikum / sinyal AI digugurkan dari kandidat bulan itu; calon pilih slot sendiri (1x pindah ke slot kosong); slot kosong ke peringkat berikutnya; dana tanpa penerima → rollover bulan depan.
 7. **Rapor di kamera sekali:** hanya jika `identity_verified_once = false`; 5 detik, tanpa rekam/unggah; petugas centang `nama_cocok` + `fase_kelas_cocok`. Tidak ada deteksi kamera saat belajar/ujian.
-8. **Uji lisan 1 soal + 1 cadangan:** penentu utama beasiswa bulan itu; cair lewat gateway yang cocok `payout_holder_name`.
+8. **Uji lisan personal 1 soal + 1 cadangan:** penentu utama beasiswa bulan itu; soal dari jawaban Praktikum anak. Cair lewat gateway yang cocok `payout_holder_name`. **NISN wajib di langkah ini / pencairan** (HMAC + UNIQUE). Panggilan tidak direkam.
