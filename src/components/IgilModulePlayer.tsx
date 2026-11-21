@@ -36,8 +36,8 @@ import { VideoK2B2C } from "@/components/modul/video-k2b2c";
 import { InfoSuaraGuru } from "@/components/modul/InfoSuaraGuru";
 import PetaKonsep from "@/components/modul/PetaKonsep";
 import InfografisRingkas from "@/components/modul/InfografisRingkas";
-import PetaPohon from "@/components/modul/lemari-k1b1a/PetaPohon";
-import RakTabel from "@/components/modul/lemari-k1b1a/RakTabel";
+import PetaLemari from "@/components/modul/lemari-k1b1a/PetaLemari";
+import TabelMainan from "@/components/modul/lemari-k1b1a/TabelMainan";
 import TahapLemari from "@/components/modul/lemari-k1b1a/TahapLemari";
 import PetaRel from "@/components/modul/banding-k1b1b/PetaRel";
 import PapanKapur from "@/components/modul/banding-k1b1b/PapanKapur";
@@ -3160,8 +3160,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               onLanjut={() => handleUnlockNextSmicpa(3, infografisRef, "Loker pos sudah lengkap! Sekarang kita buka Infografis.")}
             />
             ) : bab === "mtk-1-bab1" && activeSubBab === "A" ? (
-            <PetaPohon
-              key={`${bab}-${activeSubBab}-pohon`}
+            <PetaLemari
+              key={`${bab}-${activeSubBab}-lemari`}
               speakGuru={speakGuru}
               teksLanjut="LANJUTKAN KE INFOGRAFIS ⬇️"
               onLanjut={() => handleUnlockNextSmicpa(3, infografisRef, "Pohon cerita sudah lengkap! Sekarang kita buka Infografis.")}
@@ -4245,8 +4245,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               }
             />
             ) : bab === "mtk-1-bab1" && activeSubBab === "A" ? (
-            <RakTabel
-              key={`${bab}-${activeSubBab}-rak`}
+            <TabelMainan
+              key={`${bab}-${activeSubBab}-tabel`}
               speakGuru={speakGuru}
               teksLanjut="LANJUTKAN KE SIMULASI ⬇️"
               onLanjut={() =>
