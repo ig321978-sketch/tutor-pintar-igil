@@ -15,7 +15,6 @@ register(
 );
 const L = await import("../src/components/modul/dermaga-k4b1c/logika.ts");
 const DS = await import("../src/components/modul/dermaga-k4b1c/data-sim.ts");
-const DK = await import("../src/components/modul/dermaga-k4b1c/data-kartu.ts");
 const LC = await import("../src/components/modul/dermaga-k4b1c/logika-cpa.ts");
 const D = await import("../src/components/modul/dermaga-k4b1c/data.ts");
 const K = await import("../src/components/modul/dermaga-k4b1c/periksa.ts");
@@ -160,47 +159,7 @@ const urutNaik = (d) => [...d].sort((a, b) => a - b);
   sama(S.misiBaru(M, { ...a, bandBenar: [0], naikBenar: [0], turunBenar: [1], garisBenar: [0], samaBenar: true, tolak: true }, new Set()), ["c-banding", "c-urut", "c-turun", "c-garis", "c-sama", "c-tolak"], "misi C: semua misi tercapai");
 }
 
-/* ------------------------------ Mind-map: papan dermaga (sembilan kartu geser) ------------------------------ */
-{
-  const KA = DK.KARTU_DERMAGA;
-  cek(KA.length === 9, "kartu: sembilan kartu");
-  cek(KA.every((k) => k.contoh.length <= 1) && KA[0].contoh.join() === "masalah" && KA.slice(1).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di kartu pertama saja, sisanya mandiri");
-  const semua = KA.flatMap((k) => [k.masalah, k.cara, k.hasil]);
-  const label = semua.map((x) => x.label);
-  cek(new Set(label).size === label.length, "kartu: label unik");
-  cek(semua.every((x) => x.label.length >= 5 && x.label.length <= 36), `kartu: label pendek (terpanjang ${Math.max(...label.map((l) => l.length))} huruf)`);
-  cek(KA.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((l) => l.split(/\s+/).length <= 6)), "kartu: label paling banyak enam kata");
-  cek(semua.every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti) && bersih(x.label) && bersih(x.arti) && x.arti.length > 10), "kartu: label dan arti tanpa digit dan kata terlarang");
-  cek(KA.every((k) => tanpaDigit(k.judul) && bersih(k.judul) && k.judul.length > 3), "kartu: judul bersih");
-  const cara = KA.map((k) => k.cara.label).join(" | ");
-  for (const m of ["Banding dari Kiri", "Garis Bilangan", "Urut Kartu", "Dari kiri", "Lihat ke kanan", "Angka beda pertama", "Tanda kurang dari", "Diurutkan"]) cek(cara.toLowerCase().includes(m.toLowerCase()), `kartu: cara memuat ${m}`);
-  const gab = KA.map((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label, k.masalah.arti, k.cara.arti, k.hasil.arti].join(" ")).join(" ").toLowerCase();
-  for (const s of ["dari kiri", "ribuan", "ratusan", "puluhan", "satuan", "angka berbeda", "kurang dari", "lebih dari", "sama dengan", "mulut tanda", "urut", "naik", "turun", "garis", "kanan", "kartu"]) cek(gab.includes(s), `kartu: memuat poin "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|kak tiara|pak darwis|dermaga|pantai|perahu|kelapa)\\b", "i").test(gab), "kartu: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
-  cek(tanpaDigit(DK.SUARA_KARTU_DERMAGA + DK.SELESAI_KARTU_DERMAGA) && bersih(DK.SUARA_KARTU_DERMAGA + DK.SELESAI_KARTU_DERMAGA), "kartu: suara dan pesan selesai tanpa digit dan kata terlarang");
-  cek(emojiSah(DK.TEMA_KARTU_DERMAGA.ikon) && DK.TEMA_KARTU_DERMAGA.judul.length > 5, "kartu: tema sah");
-  const RG = DK.RINGKASAN_DERMAGA;
-  cek(RG.ikon.length === DK.KARTU_DERMAGA.length && new Set(RG.ikon).size === RG.ikon.length && [...RG.ikon, RG.pusat].every((e) => emojiSah(e) && !/[A-Za-z0-9]/.test(e)), "peta radial: satu gambar unik per kartu, gambar sah tanpa huruf");
-  cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
-}
-
-/* ------------------------------ Infografis: daftar dermaga (satu tabel lima baris) ------------------------------ */
-{
-  const B = DK.BARIS_INFO_DERMAGA;
-  cek(B.length === 5 && DK.KOLOM_INFO_DERMAGA.length === 3, "infografis: lima baris dan tiga kolom");
-  cek(B.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: tiap baris tiga isian, emoji sah");
-  const jumlahContoh = B.map((b) => b.contoh.length);
-  cek(jumlahContoh[0] === 3 && jumlahContoh.slice(1).every((n) => n === 0), "infografis: baris satu penuh contoh, baris dua sampai lima mandiri");
-  const semua = B.flatMap((b) => b.isi);
-  cek(B.every((b) => new Set(b.isi.map((x) => x.t)).size === 3), "infografis: tiga label tiap baris berbeda");
-  cek(new Set(semua.map((x) => x.t)).size === semua.length, "infografis: semua label unik");
-  cek(semua.every((x) => x.t.length <= 28 && x.t.split(/\s+/).length <= 5 && bersih(x.t) && bersih(x.s ?? "")), "infografis: label pendek (paling banyak lima kata) dan tanpa kata terlarang");
-  cek(semua.every((x) => tanpaDigit(x.s ?? x.t)), "infografis: ucapan label tanpa digit");
-  const gab = B.map((b) => [b.nama, ...b.isi.map((x) => x.t)].join(" ")).join(" ").toLowerCase();
-  for (const s of ["membandingkan dari kiri", "lanjut ke kanan", "memilih tanda", "garis bilangan", "mengurutkan kartu", "angka beda pertama", "kurang dari atau lebih dari", "kanan lebih besar", "naik atau turun"]) cek(gab.includes(s), `infografis: memuat "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|kak tiara)\\b", "i").test(gab), "infografis: tanpa nama tokoh");
-  cek(tanpaDigit(DK.SUARA_INFO_DERMAGA + DK.SELESAI_INFO_DERMAGA) && bersih(DK.SUARA_INFO_DERMAGA + DK.SELESAI_INFO_DERMAGA) && emojiSah(DK.TEMA_INFO_DERMAGA.ikon), "infografis: suara dan tema bersih");
-}
+/* Mind-map dan Infografis diuji di scripts/uji-visual-k4b1abc.mjs (rancangan sendiri per Sub-Bab, label kosong). */
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */
 {
@@ -416,7 +375,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
 /* ------------------------------ Berkas ------------------------------ */
 {
   const berkas = readdirSync(folderUrl).filter((f) => /\.(ts|tsx)$/.test(f));
-  for (const nama of ["logika.ts", "data-sim.ts", "data-kartu.ts", "logika-cpa.ts", "data.ts", "periksa.ts", "JawabDermaga.tsx", "LangkahDermaga.tsx", "GambarDermaga.tsx", "TahapDermaga.tsx", "SimulasiPapanDermaga.tsx", "PapanDermaga.tsx", "DaftarDermaga.tsx"]) cek(berkas.includes(nama), `berkas ${nama} ada`);
+  for (const nama of ["logika.ts", "data-sim.ts", "data-peta.ts", "data-info.ts", "logika-cpa.ts", "data.ts", "periksa.ts", "JawabDermaga.tsx", "LangkahDermaga.tsx", "GambarDermaga.tsx", "TahapDermaga.tsx", "SimulasiPapanDermaga.tsx", "PapanDermaga.tsx", "DaftarDermaga.tsx"]) cek(berkas.includes(nama), `berkas ${nama} ada`);
   for (const f of berkas) {
     const s = readFileSync(new URL(f, folderUrl), "utf8");
     cek(!s.startsWith("﻿") && !s.includes("\r"), `${f}: tanpa BOM, akhir baris LF`);
@@ -424,7 +383,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
     cek(!/\\u\{1FA(9[6-9A-F]|[A-F][0-9A-F])\}|\\u\{1F[B-F][0-9A-F]{2}\}|\\u\{200D\}|\\u\{1F6DE\}|\\u\{1FA91\}|\\u\{1FAB5\}|\\u\{1F6DF\}/i.test(s), `${f}: kode emoji tidak melewati U+1FA95 dan tanpa kursi, kayu, ban, pelampung`);
     cek(!/buku|kelompok|bernilai|tebak|nilai tempat/i.test(s), `${f}: tanpa kata buku, kelompok, bernilai, tebak, nilai tempat`);
     cek(!/\u{1F41F}|\u{1F420}|\u{1F421}|\u{1F988}|\u{1F42C}|\u{1F38F}|\\u\{1F41F\}|\\u\{1F420\}|\\u\{1F421\}|\\u\{1F988\}|\\u\{1F42C\}|\\u\{1F38F\}/iu.test(s), `${f}: tanpa emoji ikan atau 🎏`);
-    if (/^(logika|logika-cpa|periksa|data|data-sim|data-kartu)\.ts$/.test(f)) cek(!/from "react"|fetch\(/.test(s), `${f}: tanpa React dan jaringan`);
+    if (/^(logika|logika-cpa|periksa|data|data-sim|data-peta|data-info).ts$/.test(f)) cek(!/from "react"|fetch\(/.test(s), `${f}: tanpa React dan jaringan`);
     cek(!/tiket-k4b1a|handuk-k4b1b|kelapa-k4b1d|resepsi-k4b1e|sisa-k4b1f|perahu-k4b1g|jatah-k4b1h|jadwal-k4b1i|papan-k3b5a|tabel-k3b5b|SubBabK4B1|kit-k4b1|infografis-k4b1|skenario-k4b1|mesin-k4b1|dasar-k4b1|diagram-k4b1|bantu-k4b1|papan-k4b1|skala-k4b1|naskah-k4b1|data-k4b1/.test(s), `${f}: tidak memakai folder sub-bab lain atau berkas lama Bab 1`);
   }
   // Teks layar tidak memuat kata terlarang, termasuk nama berkas data.
@@ -450,7 +409,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   cek(/export default function SimulasiPapanDermaga/.test(sim) && /onKeadaan/.test(sim) && /MISI_DERMAGA_TEKS/.test(sim) && /Lihat tempat berikutnya/.test(sim) && /Alat menolak/.test(sim), "SimulasiPapanDermaga: ekspor, onKeadaan, teks misi, lihat tempat berikutnya, alat menolak");
   for (const [f, nm] of [["PapanDermaga.tsx", "PapanDermagaK4B1"], ["DaftarDermaga.tsx", "DaftarDermagaK4B1"]]) {
     const s = readFileSync(new URL(f, folderUrl), "utf8");
-    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && /peta-kartu\//.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: pembungkus tipis komponen bersama peta-kartu, ekspor ${nm}`);
+    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && !/peta-kartu\//.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: komponen sendiri tanpa peta-kartu, ekspor ${nm}`);
   }
   // Berkas bersama: Simulasi memasang Papan Dermaga.
   const sk = readFileSync(new URL("../src/components/modul/SimulasiK4Bab1.tsx", import.meta.url), "utf8");

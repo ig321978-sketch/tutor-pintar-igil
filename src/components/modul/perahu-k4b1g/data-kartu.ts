@@ -1,52 +1,77 @@
 /**
- * Mind-map Kelas 4 Bab 1 Sub-Bab G (Baris Perahu Bu Marni) berbentuk sembilan kartu geser: tiap kartu satu rantai Masalah, Cara, Hasil dengan label pendek.
- * Hanya poin pelajaran (tanpa nama tokoh atau benda cerita). Tiga metode global tampak di tiga kartu terakhir dengan nama Indonesia (Tambah Berulang, Urai Lalu Kali, Kali Susun).
- * Label tanpa digit; arti diucapkan guru saat label atau kotak diketuk. Infografis: satu tabel lima baris dari kegiatan Story.
+ * Data Mind-map dan Infografis Kelas 4 Bab 1 Sub-Bab G "Baris Perahu Bu Marni" (dirancang ulang, tanpa komponen kartu bersama).
+ * Mind-map: "Rute Perahu", lima perahu berjalan zig-zag di air; tiap perahu membawa gambar satu langkah (jumlahkan berulang, urai, kali tiap bagian, susun satuan dulu, simpanan, periksa)
+ * dan satu label kosong yang diketuk: judul langkah muncul dan dibacakan Guru.
+ * Infografis: dua kartu dari angka Story. Kartu 1 = papan penumpang (12 x 5 = 60 dan 11 x 5 = 55 dari materi, 14 x 4 = 56 dari metode global), titik penumpang digambar sebanyak datanya;
+ * kartu 2 = kartu kali susun 12 x 5 (satuan dulu, tulis dan simpan, puluhan ditambah simpanan, hasil 60, dan salah Satria 10 x 5 + 2 = 52). Digital saja.
+ * Suara tanpa digit (eja lewat eja-k4b1.ts). Diuji: scripts/uji-visual-k4b1ghi.mjs.
  */
-import type { KartuPeta, RingkasanPeta, TemaPeta } from "../peta-kartu/PetaKartu";
-import type { BarisInfo, TemaInfo } from "../peta-kartu/InfografisKartu";
+import { kataBilK4B1 } from "../eja-k4b1";
 
-const kt = (judul: string, masalah: [string, string], cara: [string, string], hasil: [string, string], contoh: KartuPeta["contoh"] = []): KartuPeta => ({
-  judul,
-  masalah: { label: masalah[0], arti: masalah[1] },
-  cara: { label: cara[0], arti: cara[1] },
-  hasil: { label: hasil[0], arti: hasil[1] },
-  contoh,
+export type LangkahPeta = { judul: string; arti: string };
+
+/** Enam langkah Mind-map: Repeated Addition, Split and Multiply, dan Column Multiply (dengan simpanan), ditutup periksa dengan cara lain. Arti dibacakan Guru (tanpa digit). */
+export const LANGKAH_PERAHU: LangkahPeta[] = [
+  {
+    judul: "Jumlahkan berulang",
+    arti: "Langkah satu. Jumlahkan bilangan yang sama berulang kali. Dua belas penumpang di tiap perahu, pada lima perahu, berarti dua belas ditambah dua belas, sampai lima kali.",
+  },
+  {
+    judul: "Urai puluhan dan satuan",
+    arti: "Langkah dua. Uraikan dua belas menjadi sepuluh dan dua. Sepuluh adalah puluhan, dua adalah satuan.",
+  },
+  {
+    judul: "Kali tiap bagian",
+    arti: "Langkah tiga. Kalikan tiap bagian dengan lima. Sepuluh kali lima sama dengan lima puluh, dua kali lima sama dengan sepuluh. Jumlahkan keduanya, hasilnya enam puluh.",
+  },
+  {
+    judul: "Susun, satuan dulu",
+    arti: "Langkah empat. Tulis bilangan ke bawah, lalu kalikan satuan lebih dulu. Dua kali lima sama dengan sepuluh. Tulis nol, simpan satu. Lalu satu kali lima sama dengan lima, ditambah simpanan satu sama dengan enam. Hasilnya enam puluh.",
+  },
+  {
+    judul: "Periksa cara lain",
+    arti: "Langkah lima. Periksa hasilnya dengan cara lain, misalnya menjumlahkan dua belas sampai lima kali. Hasilnya harus sama.",
+  },
+];
+export const JUDUL_PETA_PERAHU = "Rute Perahu Bu Marni";
+export const IKON_JUDUL_PETA_PERAHU = "\u{26F5}";
+export const PETUNJUK_PETA_PERAHU = "Ketuk tanda tanya di samping tiap perahu untuk membuka langkah.";
+export const SELESAI_PETA_PERAHU = "Semua perahu sudah sampai! Lima langkah sudah kamu buka.";
+
+/* ------------------------------ Infografis kartu 1: papan penumpang ------------------------------ */
+export type SelInfo = { label: string; isi: string; suara: string };
+export type BarisPenumpang = { kunci: string; nama: string; perahu: number; isi: number; sel: [SelInfo, SelInfo] };
+
+const kata = kataBilK4B1;
+const baris = (kunci: string, nama: string, isi: number, perahu: number): BarisPenumpang => ({
+  kunci,
+  nama,
+  perahu,
+  isi,
+  sel: [
+    { label: "Perkalian", isi: `${isi} × ${perahu}`, suara: `Perkalian. ${kata(isi)} penumpang tiap perahu, ${kata(perahu)} perahu, ditulis ${kata(isi)} dikali ${kata(perahu)}.` },
+    { label: "Jumlah", isi: `${isi * perahu}`, suara: `Jumlah penumpang seluruhnya ${kata(isi * perahu)}.` },
+  ],
 });
-
-export const KARTU_PERAHU: readonly KartuPeta[] = [
-  kt("Perkalian", ["Banyak yang sama, berapa?", "Bagaimana menghitung banyak benda dalam beberapa bagian yang sama?"], ["Jumlahkan berulang", "Bilangan yang sama dijumlahkan berkali-kali."], ["Hasil kali", "Jumlah seluruhnya disebut hasil kali."], ["masalah"]),
-  kt("Dua angka kali satu angka", ["Bilangan dua angka dikali?", "Bagaimana mengalikan bilangan dua angka dengan satu angka?"], ["Pecah jadi dua bagian", "Pecah bilangan menjadi puluhan dan satuan."], ["Puluhan dan satuan", "Setiap bagian dikalikan sendiri-sendiri."]),
-  kt("Urai puluhan dan satuan", ["Bagian mana dikali?", "Bagian mana yang harus dikalikan dengan pengali?"], ["Kalikan keduanya", "Kalikan puluhan dan kalikan satuan."], ["Jumlahkan hasilnya", "Kedua hasil kali dijumlahkan menjadi hasil akhir."]),
-  kt("Awas satuan terlewat", ["Satuan boleh dilewati?", "Apakah satuan boleh tidak dikalikan?"], ["Satuan ikut dikali", "Satuan harus dikalikan dengan pengali yang sama."], ["Hasil tidak kurang", "Hasilnya lengkap, tidak kurang dari seharusnya."]),
-  kt("Kali susun", ["Ada cara yang pendek?", "Adakah cara menulis yang lebih pendek dan rapi?"], ["Satuan dikali dulu", "Tulis bilangan ke bawah, lalu kalikan satuan lebih dulu."], ["Tulis dan simpan", "Angka satuan ditulis, angka puluhan disimpan."]),
-  kt("Simpanan", ["Simpanan dipakai ke mana?", "Ke mana simpanan dipakai?"], ["Tambah ke puluhan", "Simpanan ditambahkan pada hasil kali puluhan."], ["Hasil akhir didapat", "Hasil kali puluhan ditambah simpanan menjadi hasil akhir."]),
-  kt("Cara pintar: Tambah Berulang", ["Ingin paham maknanya?", "Bagaimana memahami arti perkalian dengan jelas?"], ["Tambah Berulang", "Jumlahkan bilangan yang sama sebanyak pengalinya."], ["Cocok untuk faktor kecil", "Cara ini cocok bila pengalinya kecil."]),
-  kt("Cara pintar: Urai Lalu Kali", ["Ingin pakai fakta hafal?", "Bagaimana memakai perkalian dasar yang sudah dihafal?"], ["Urai Lalu Kali", "Uraikan bilangan, lalu kalikan tiap bagian."], ["Dua hasil dijumlah", "Jumlahkan kedua hasil kali bagian."]),
-  kt("Cara pintar: Kali Susun", ["Ingin cepat dan rapi?", "Bagaimana mengalikan dengan cepat dan rapi?"], ["Kali Susun", "Tulis ke bawah, satuan dulu, simpan bila perlu."], ["Periksa dengan cara lain", "Hasil diperiksa dengan cara yang lain."]),
+/** Tiga baris dari Story: perahu penuh (12 x 5), perahu sebelas penumpang (11 x 5), dan contoh metode global (14 x 4). */
+export const PENUMPANG_PERAHU: BarisPenumpang[] = [
+  baris("penuh", "12 penumpang tiap perahu, 5 perahu", 12, 5),
+  baris("sebelas", "11 penumpang tiap perahu, 5 perahu", 11, 5),
+  baris("global", "14 penumpang tiap perahu, 4 perahu", 14, 4),
 ];
+export const JUDUL_PAPAN_PERAHU = "Papan penumpang";
+export const PETUNJUK1_INFO_PERAHU = "Titik biru puluhan, oranye satuan. Ketuk tanda tanya untuk melihat isinya.";
+export const SELESAI1_INFO_PERAHU = "Papan penumpang lengkap! Banyak penumpang tiap perahu dikali banyak perahu.";
 
-export const TEMA_KARTU_PERAHU: TemaPeta = { bingkai: "#0369A1", ikon: "\u{26F5}", judul: "Baris perahu", latar: "#F0F9FF", garisLatar: "#0EA5E9" };
-/** Peta radial awal (tanpa kata): perahu di tengah, satu gambar per kartu. */
-export const RINGKASAN_PERAHU: RingkasanPeta = {
-  pusat: "\u{26F5}",
-  ikon: ["\u{2795}", "\u{1F522}", "\u{2702}", "\u{1F50D}", "\u{1F4DD}", "\u{1F4E6}", "\u{1F6F6}", "\u{1F4A1}", "\u{26A1}"],
-  suara: "Ini peta baris perahu. Gambar perahu ada di tengah, dan sembilan gambar mengelilinginya. Ketuk satu gambar untuk membuka kartunya. Centang hijau berarti kartunya selesai.",
-};
-export const SUARA_KARTU_PERAHU =
-  "Ini baris perahu. Ada sembilan kartu. Tiap kartu punya tiga kotak: masalah, cara, dan hasil. Kotak bertanda contoh sudah terisi, jadi lihat dulu sebagai petunjuk. Ketuk label, lalu ketuk kotak yang cocok.";
-export const SELESAI_KARTU_PERAHU = "Semua kartu lengkap! Dari masalah, lewat cara, sampai hasil.";
-
-/* ------------------------------ Infografis: daftar perahu (satu tabel lima baris) ------------------------------ */
-export const KOLOM_INFO_PERAHU = ["Yang dikerjakan", "Hasilnya", "Katanya"] as const;
-const bi = (ikon: string, nama: string, a: string, b: string, c: string, contoh: number[]): BarisInfo => ({ ikon, nama, isi: [{ t: a }, { t: b }, { t: c }], contoh });
-export const BARIS_INFO_PERAHU: readonly BarisInfo[] = [
-  bi("\u{2795}", "Menjumlah berulang", "Bilangan sama berkali-kali", "Hasil kali", "Kali itu tambah berulang", [0, 1, 2]),
-  bi("\u{2702}", "Mengurai bilangan", "Puluhan dan satuan", "Dua hasil kecil", "Kalikan keduanya", []),
-  bi("\u{2716}", "Menyusun ke bawah", "Satuan dikali dulu", "Tulis dan simpan", "Simpanan ditambah", []),
-  bi("\u{1F4E6}", "Menjaga satuan", "Satuan ikut dikali", "Hasil tidak kurang", "Jangan terlewat", []),
-  bi("\u{1F50D}", "Memeriksa hasil", "Pakai cara lain", "Hasil sama", "Periksa dulu", []),
+/* ------------------------------ Infografis kartu 2: kartu kali susun ------------------------------ */
+export type LangkahSusun = { kunci: string; caption: string; isi: string; suara: string };
+/** Kali susun dua belas kali lima dari Story G, ditutup salah Satria (satuan terlewat). */
+export const SUSUN_PERAHU: LangkahSusun[] = [
+  { kunci: "satuan", caption: "Satuan dikali dulu", isi: "2 × 5 = 10", suara: "Satuan dikali dulu. Dua kali lima sama dengan sepuluh." },
+  { kunci: "simpan", caption: "Satuan ditulis, puluhan disimpan", isi: "tulis 0, simpan 1", suara: "Tulis nol, simpan satu." },
+  { kunci: "puluhan", caption: "Puluhan dikali, tambah simpanan", isi: "1 × 5 + 1 = 6", suara: "Satu kali lima sama dengan lima, ditambah satu simpanan sama dengan enam." },
+  { kunci: "hasil", caption: "Hasil akhir", isi: "60", suara: "Hasil akhirnya enam puluh penumpang." },
+  { kunci: "salah", caption: "Satuan terlewat jadi", isi: "10 × 5 + 2 = 52, keliru", suara: "Kalau satuan dua tidak ikut dikali lima, hasilnya lima puluh dua. Itu keliru, karena seharusnya enam puluh." },
 ];
-export const TEMA_INFO_PERAHU: TemaInfo = { bingkai: "#0F766E", latar: "#F0FDFA", aksen: "#0D9488", teduh: "#CCFBF1", ikon: "\u{1F4CB}", judul: "Daftar perahu" };
-export const SUARA_INFO_PERAHU = "Ini daftar perahu. Ada lima baris, satu baris satu kegiatan dari cerita. Isi yang dikerjakan, hasilnya, dan katanya. Baris pertama sudah terisi penuh sebagai contoh. Ketuk label, lalu ketuk kotak yang cocok.";
-export const SELESAI_INFO_PERAHU = "Daftar perahu lengkap! Tambah berulang, urai lalu kali, dan kali susun.";
+export const PETUNJUK2_INFO_PERAHU = "Ketuk tanda tanya di kanan untuk melihat tiap langkah susun.";
+export const SELESAI2_INFO_PERAHU = "Kartu kali susun lengkap! Satuan dulu, simpan, lalu puluhan.";

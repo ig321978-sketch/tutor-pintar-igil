@@ -1,52 +1,81 @@
 /**
- * Mind-map Kelas 4 Bab 1 Sub-Bab I (Papan Jadwal Kak Yoga) berbentuk sembilan kartu geser: tiap kartu satu rantai Masalah, Cara, Hasil dengan label pendek.
- * Hanya poin pelajaran (tanpa nama tokoh atau benda cerita). Tiga metode global tampak di tiga kartu terakhir dengan nama Indonesia (Pasangan Faktor, Daftar Kelipatan, Cek Bagi Habis).
- * Label tanpa digit; arti diucapkan guru saat label atau kotak diketuk. Infografis: satu tabel lima baris dari kejadian Story.
+ * Data Mind-map dan Infografis Kelas 4 Bab 1 Sub-Bab I "Papan Jadwal Kak Yoga" (dirancang ulang, tanpa komponen kartu bersama).
+ * Mind-map: "Peta Pantai", lima petak gambar di pasir (dua baris payung, empat pasangan faktor, payung sisa, jam perahu, enam gugus empat payung);
+ * tiap petak punya label kosong berupa bendera yang tertancap di atasnya, diketuk: judul langkah muncul dan dibacakan Guru.
+ * Infografis: dua kartu dari angka Story. Kartu 1 = papan payung (24 payung ditata 1 x 24, 2 x 12, 3 x 8, 4 x 6; faktor 24 = 1, 2, 3, 4, 6, 8, 12, 24);
+ * kartu 2 = jadwal perahu tiap empat jam (4, 8, 12, 16, 20, 24 = kelipatan 4) dan aturannya (tambah berulang, kali, habis dibagi, 5 bukan faktor 24). Digital saja.
+ * Suara tanpa digit (eja lewat eja-k4b1.ts). Diuji: scripts/uji-visual-k4b1ghi.mjs.
  */
-import type { KartuPeta, RingkasanPeta, TemaPeta } from "../peta-kartu/PetaKartu";
-import type { BarisInfo, TemaInfo } from "../peta-kartu/InfografisKartu";
+import { kataBilK4B1 } from "../eja-k4b1";
 
-const kt = (judul: string, masalah: [string, string], cara: [string, string], hasil: [string, string], contoh: KartuPeta["contoh"] = []): KartuPeta => ({
-  judul,
-  masalah: { label: masalah[0], arti: masalah[1] },
-  cara: { label: cara[0], arti: cara[1] },
-  hasil: { label: hasil[0], arti: hasil[1] },
-  contoh,
+export type LangkahPeta = { judul: string; arti: string };
+
+/** Lima langkah Mind-map: faktor, pasangan faktor, bukan faktor (ada sisa), kelipatan (tambah berulang), kelipatan habis dibagi. Arti dibacakan Guru (tanpa digit). */
+export const LANGKAH_JADWAL: LangkahPeta[] = [
+  {
+    judul: "Faktor bagi habis",
+    arti: "Langkah satu. Faktor adalah bilangan yang membagi habis bilangan itu, tanpa sisa. Dua puluh empat payung ditata dua baris, masing-masing dua belas. Jadi dua dan dua belas adalah faktor dua puluh empat.",
+  },
+  {
+    judul: "Pasangan faktor",
+    arti: "Langkah dua. Cari pasangan faktor mulai dari satu. Satu kali dua puluh empat, dua kali dua belas, tiga kali delapan, empat kali enam. Faktornya satu, dua, tiga, empat, enam, delapan, dua belas, dan dua puluh empat.",
+  },
+  {
+    judul: "Ada sisa, bukan faktor",
+    arti: "Langkah tiga. Kalau pembagiannya bersisa, bilangan itu bukan faktor. Dua puluh empat dibagi lima sama dengan empat sisa empat, jadi lima bukan faktor dua puluh empat.",
+  },
+  {
+    judul: "Kelipatan empat",
+    arti: "Langkah empat. Kelipatan didapat dengan menambah bilangan yang sama berulang kali. Perahu berangkat tiap empat jam, yaitu jam empat, delapan, dua belas, enam belas, dua puluh, dan dua puluh empat.",
+  },
+  {
+    judul: "Kelipatan habis dibagi",
+    arti: "Langkah lima. Setiap kelipatan empat habis dibagi empat, tanpa sisa. Dua puluh empat dibagi empat sama dengan enam.",
+  },
+];
+export const JUDUL_PETA_JADWAL = "Peta Pantai Kak Yoga";
+export const IKON_JUDUL_PETA_JADWAL = "\u{26F1}\u{FE0F}";
+export const PETUNJUK_PETA_JADWAL = "Ketuk bendera di atas tiap petak pasir untuk membuka langkah.";
+export const SELESAI_PETA_JADWAL = "Semua bendera sudah berkibar! Lima langkah sudah kamu buka.";
+
+/* ------------------------------ Infografis kartu 1: papan payung ------------------------------ */
+export type SelInfo = { isi: string; suara: string };
+const kata = kataBilK4B1;
+export const TOTAL_PAYUNG_JADWAL = 24;
+export type PasanganPayung = { kunci: string; baris: number; kolom: number; sel: SelInfo };
+const pasang = (baris: number, kolom: number): PasanganPayung => ({
+  kunci: `${baris}x${kolom}`,
+  baris,
+  kolom,
+  sel: {
+    isi: `${baris} × ${kolom}`,
+    suara: `Pasangan faktor. ${kata(baris)} baris, tiap baris ${kata(kolom)} payung, ditulis ${kata(baris)} kali ${kata(kolom)} sama dengan ${kata(baris * kolom)}.`,
+  },
 });
-
-export const KARTU_JADWAL: readonly KartuPeta[] = [
-  kt("Faktor", ["Apa itu faktor?", "Apa yang dimaksud dengan faktor suatu bilangan?"], ["Membagi habis", "Faktor adalah bilangan yang membagi habis bilangan itu."], ["Tanpa sisa", "Faktor membagi bilangan itu tanpa sisa."], ["masalah"]),
-  kt("Mencari faktor", ["Faktornya apa saja?", "Bagaimana mencari semua faktor suatu bilangan?"], ["Bagi mulai dari satu", "Bagi bilangan itu dengan satu, dua, tiga, dan seterusnya."], ["Semua faktor didapat", "Semua bilangan yang habis membagi adalah faktornya."]),
-  kt("Pasangan faktor", ["Faktor berpasangan?", "Apakah faktor bisa dicari berpasangan?"], ["Kali sama dengan bilangan", "Dua bilangan yang dikalikan menjadi bilangan itu adalah pasangan faktor."], ["Dua faktor sekaligus", "Tiap pasangan memberi dua faktor sekaligus."]),
-  kt("Kelipatan", ["Apa itu kelipatan?", "Apa yang dimaksud dengan kelipatan suatu bilangan?"], ["Kali bilangan asli", "Kelipatan adalah hasil kali bilangan itu dengan bilangan asli."], ["Daftar kelipatan", "Hasil kalinya membentuk daftar kelipatan."]),
-  kt("Faktor dan kelipatan", ["Apa hubungannya?", "Apa hubungan faktor dengan kelipatan?"], ["Bagi dan kali", "Faktor membagi habis, kelipatan adalah hasil kali."], ["Saling berhubungan", "Faktor dan kelipatan saling berhubungan lewat pembagian dan perkalian."]),
-  kt("Bukan faktor", ["Kapan bukan faktor?", "Kapan suatu bilangan bukan faktor?"], ["Bagi dan lihat sisa", "Bagi bilangan itu, lalu lihat sisanya."], ["Ada sisa, bukan faktor", "Kalau masih ada sisa, bilangan itu bukan faktor."]),
-  kt("Cara pintar: Pasangan Faktor", ["Takut ada yang terlewat?", "Bagaimana agar tidak ada faktor yang terlewat?"], ["Pasangan Faktor", "Cari dua bilangan yang dikalikan menjadi bilangan itu, mulai dari satu."], ["Berhenti saat berulang", "Berhenti kalau pasangannya sudah berulang atau bertukar."]),
-  kt("Cara pintar: Daftar Kelipatan", ["Ingin jadwal berulang?", "Bagaimana membuat daftar yang berulang dan tetap?"], ["Daftar Kelipatan", "Tulis hasil kali atau tambah berulang, lalu catat hasilnya."], ["Berhenti di batas", "Daftar berhenti kalau sudah sampai batas yang diminta."]),
-  kt("Cara pintar: Cek Bagi Habis", ["Ingin menguji satu bilangan?", "Bagaimana menguji apakah satu bilangan adalah faktor?"], ["Cek Bagi Habis", "Bagi bilangan itu dan lihat sisanya."], ["Sisa menentukan", "Tanpa sisa berarti faktor, ada sisa berarti bukan faktor."]),
-];
-
-export const TEMA_KARTU_JADWAL: TemaPeta = { bingkai: "#6D28D9", ikon: "\u{1F4C5}", judul: "Papan jadwal pantai", latar: "#F5F3FF", garisLatar: "#7C3AED" };
-/** Peta radial awal (tanpa kata): jadwal di tengah, satu gambar per kartu. */
-export const RINGKASAN_JADWAL: RingkasanPeta = {
-  pusat: "\u{1F4C5}",
-  ikon: ["\u{1F4A1}", "\u{1F50D}", "\u{1F9E9}", "\u{1F501}", "\u{1F517}", "\u{26D4}", "\u{1F3EE}", "\u{2B50}", "\u{1F50E}"],
-  suara: "Ini peta papan jadwal pantai. Gambar jadwal ada di tengah, dan sembilan gambar mengelilinginya. Ketuk satu gambar untuk membuka kartunya. Centang hijau berarti kartunya selesai.",
+/** Empat penataan dua puluh empat payung dari Story (semuanya habis, tanpa sisa). */
+export const PASANGAN_JADWAL: PasanganPayung[] = [pasang(1, 24), pasang(2, 12), pasang(3, 8), pasang(4, 6)];
+export const DAFTAR_FAKTOR_JADWAL: SelInfo = {
+  isi: "1, 2, 3, 4, 6, 8, 12, 24",
+  suara: "Semua faktor dua puluh empat: satu, dua, tiga, empat, enam, delapan, dua belas, dan dua puluh empat.",
 };
-export const SUARA_KARTU_JADWAL =
-  "Ini papan jadwal pantai. Ada sembilan kartu. Tiap kartu punya tiga kotak: masalah, cara, dan hasil. Kotak bertanda contoh sudah terisi, jadi lihat dulu sebagai petunjuk. Ketuk label, lalu ketuk kotak yang cocok.";
-export const SELESAI_KARTU_JADWAL = "Semua kartu lengkap! Dari masalah, lewat cara, sampai hasil.";
+export const JUDUL_PAPAN_JADWAL = "Papan payung";
+export const PETUNJUK1_INFO_JADWAL = "Ketuk tanda tanya untuk melihat pasangan faktor tiap susunan payung.";
+export const SELESAI1_INFO_JADWAL = "Papan payung lengkap! Semua faktor dua puluh empat sudah kamu temukan.";
 
-/* ------------------------------ Infografis: daftar jadwal (satu tabel lima baris) ------------------------------ */
-export const KOLOM_INFO_JADWAL = ["Yang dikerjakan", "Hasilnya", "Katanya"] as const;
-const bi = (ikon: string, nama: string, a: string, b: string, c: string, contoh: number[]): BarisInfo => ({ ikon, nama, isi: [{ t: a }, { t: b }, { t: c }], contoh });
-export const BARIS_INFO_JADWAL: readonly BarisInfo[] = [
-  bi("\u{1F302}", "Menyusun payung", "Baris sama banyak", "Pasangan faktor", "Kali jadi bilangan", [0, 1, 2]),
-  bi("\u{1F50D}", "Mencari faktor", "Bagi mulai satu", "Semua faktor", "Jangan ada terlewat", []),
-  bi("\u{1F3EE}", "Menulis kelipatan", "Kali atau tambah", "Daftar kelipatan", "Berhenti di batas", []),
-  bi("\u{26F5}", "Membaca jadwal", "Loncat sama besar", "Waktu berulang", "Perahu tiap kelipatan", []),
-  bi("\u{1F50E}", "Menguji faktor", "Bagi lalu lihat sisa", "Habis atau bersisa", "Cek Bagi Habis", []),
+/* ------------------------------ Infografis kartu 2: jadwal perahu ------------------------------ */
+export const JAM_PERAHU_JADWAL = [4, 8, 12, 16, 20, 24] as const;
+export const JAM_INFO_JADWAL: (SelInfo & { jam: number })[] = JAM_PERAHU_JADWAL.map((jam, i) => ({
+  jam,
+  isi: `${jam}`,
+  suara: `Perahu berangkat jam ${kata(jam)}, yaitu empat dikali ${kata(i + 1)}.`,
+}));
+export type AturanJadwal = { kunci: string; caption: string; isi: string; suara: string };
+export const ATURAN_JADWAL: AturanJadwal[] = [
+  { kunci: "tambah", caption: "Kelipatan 4 didapat dengan", isi: "menambah 4 berulang kali", suara: "Kelipatan empat didapat dengan menambah empat berulang kali." },
+  { kunci: "kali", caption: "Atau dengan mengalikan", isi: "4 × 1, 4 × 2, 4 × 3, ...", suara: "Atau dengan mengalikan empat dengan satu, dua, tiga, dan seterusnya." },
+  { kunci: "habis", caption: "Kelipatan 4 dibagi 4", isi: "habis, 24 : 4 = 6", suara: "Kelipatan empat dibagi empat habis tanpa sisa. Dua puluh empat dibagi empat sama dengan enam." },
+  { kunci: "lima", caption: "24 : 5 hasilnya", isi: "4 sisa 4, bukan faktor", suara: "Dua puluh empat dibagi lima hasilnya empat sisa empat, jadi lima bukan faktor dua puluh empat." },
 ];
-export const TEMA_INFO_JADWAL: TemaInfo = { bingkai: "#4C1D95", latar: "#F5F3FF", aksen: "#7C3AED", teduh: "#EDE9FE", ikon: "\u{1F4C5}", judul: "Daftar jadwal" };
-export const SUARA_INFO_JADWAL = "Ini daftar jadwal. Ada lima baris, satu baris satu kejadian dari cerita. Isi yang dikerjakan, hasilnya, dan katanya. Baris pertama sudah terisi penuh sebagai contoh. Ketuk label, lalu ketuk kotak yang cocok.";
-export const SELESAI_INFO_JADWAL = "Daftar jadwal lengkap! Pasangan faktor, daftar kelipatan, dan cek bagi habis.";
+export const JUDUL_JAM_JADWAL = "Jam berangkat perahu";
+export const PETUNJUK2_INFO_JADWAL = "Ketuk tanda tanya di bawah tiap perahu dan di kotak aturan.";
+export const SELESAI2_INFO_JADWAL = "Jadwal perahu lengkap! Kelipatan empat habis dibagi empat.";

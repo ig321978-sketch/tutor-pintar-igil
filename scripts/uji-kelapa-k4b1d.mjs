@@ -1,8 +1,8 @@
-// Uji Mind-map (Kios Pak Darwis), Infografis (Daftar Kios), Simulasi Kios Kelapa, dan tahap Concrete, Pictorial, Abstract Kelas 4 Bab 1 Sub-Bab D ("Kios Kelapa Pak Darwis"),
+// Uji Simulasi Kios Kelapa, dan tahap Concrete, Pictorial, Abstract Kelas 4 Bab 1 Sub-Bab D ("Kios Kelapa Pak Darwis"),
 // Penginapan Pulau Karang Indah (menyusun dan menguraikan bilangan empat angka dengan lebih dari satu cara).
 // Memeriksa: kata bilangan sampai sembilan ribu sembilan ratus sembilan puluh sembilan dan titik ribuan, tata letak gambar (rak keranjang, rak bagan, dan balok cacah SUNGGUH sebanyak angkanya, muat di kanvas),
 // logika simulasi (isi keranjang dengan alat menolak sepuluh keranjang, susun, bagan dengan Cek Bagan, tiga cara berbeda dengan alat menolak cara yang sama), misi (awal tidak memenuhi, wajib empat, bebas dua),
-// sembilan kartu geser Masalah, Cara, Hasil memuat semua metode Story, daftar kios dari kejadian Story, CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode) dengan jawaban beragam dan Cari kesalahan di tiap tahap,
+// CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode) dengan jawaban beragam dan Cari kesalahan di tiap tahap,
 // jawaban benar dihitung dari data, angka jawaban tidak kembar per tahap, tugas yang langsung siap (jebakan tombol macet), pengenal ucapan sampai ribuan, petunjuk salah, batas rupa, emoji, kata terlarang, akhir baris.
 // Jalankan: node --no-warnings scripts/uji-kelapa-k4b1d.mjs
 import { readFileSync, readdirSync } from "node:fs";
@@ -15,7 +15,6 @@ register(
 );
 const L = await import("../src/components/modul/kelapa-k4b1d/logika.ts");
 const DS = await import("../src/components/modul/kelapa-k4b1d/data-sim.ts");
-const DK = await import("../src/components/modul/kelapa-k4b1d/data-kartu.ts");
 const LC = await import("../src/components/modul/kelapa-k4b1d/logika-cpa.ts");
 const D = await import("../src/components/modul/kelapa-k4b1d/data.ts");
 const K = await import("../src/components/modul/kelapa-k4b1d/periksa.ts");
@@ -192,47 +191,7 @@ const rb = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   sama(S.misiBaru(M, { ...a, pecahBenar: [0, 1, 2], susunBenar: [0], bagBenar: [0], lainBenar: [0], tolak: true }, new Set()), ["d-pecah", "d-susun", "d-bagan", "d-lain", "d-tolak", "d-tiga"], "misi D: semua misi tercapai");
 }
 
-/* ------------------------------ Mind-map: kios Pak Darwis (sembilan kartu geser) ------------------------------ */
-{
-  const KA = DK.KARTU_KELAPA;
-  cek(KA.length === 9, "kartu: sembilan kartu");
-  cek(KA.every((k) => k.contoh.length <= 1) && KA[0].contoh.join() === "masalah" && KA.slice(1).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di kartu pertama saja, sisanya mandiri");
-  const semua = KA.flatMap((k) => [k.masalah, k.cara, k.hasil]);
-  const label = semua.map((x) => x.label);
-  cek(new Set(label).size === label.length, "kartu: label unik");
-  cek(semua.every((x) => x.label.length >= 5 && x.label.length <= 36), `kartu: label pendek (terpanjang ${Math.max(...label.map((l) => l.length))} huruf)`);
-  cek(KA.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((l) => l.split(/\s+/).length <= 6)), "kartu: label paling banyak enam kata");
-  cek(semua.every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti) && bersih(x.label) && bersih(x.arti) && x.arti.length > 10), "kartu: label dan arti tanpa digit dan kata terlarang");
-  cek(KA.every((k) => tanpaDigit(k.judul) && bersih(k.judul) && k.judul.length > 3), "kartu: judul bersih");
-  const cara = KA.map((k) => k.cara.label).join(" | ");
-  for (const m of ["Pecah Bilangan", "Susun Bilangan", "Bagan Bagian Utuh", "Digabung", "Per tempat angka", "Diisi nol", "Dibagi dua"]) cek(cara.toLowerCase().includes(m.toLowerCase()), `kartu: cara memuat ${m}`);
-  const gab = KA.map((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label, k.masalah.arti, k.cara.arti, k.hasil.arti].join(" ")).join(" ").toLowerCase();
-  for (const s of ["menyusun", "menguraikan", "tempat angka", "ribuan", "ratusan", "puluhan", "satuan", "nol", "lebih dari satu cara", "bagian", "utuh", "mengurangkan", "jumlahkan"]) cek(gab.includes(s), `kartu: memuat poin "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|pak darwis|kelapa|kios|keranjang|bu maya|bu rina)\\b", "i").test(gab), "kartu: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
-  cek(tanpaDigit(DK.SUARA_KARTU_KELAPA + DK.SELESAI_KARTU_KELAPA) && bersih(DK.SUARA_KARTU_KELAPA + DK.SELESAI_KARTU_KELAPA), "kartu: suara dan pesan selesai tanpa digit dan kata terlarang");
-  cek(emojiSah(DK.TEMA_KARTU_KELAPA.ikon) && DK.TEMA_KARTU_KELAPA.judul.length > 5, "kartu: tema sah");
-  const RG = DK.RINGKASAN_KELAPA;
-  cek(RG.ikon.length === DK.KARTU_KELAPA.length && new Set(RG.ikon).size === RG.ikon.length && [...RG.ikon, RG.pusat].every((e) => emojiSah(e) && !/[A-Za-z0-9]/.test(e)), "peta radial: satu gambar unik per kartu, gambar sah tanpa huruf");
-  cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
-}
-
-/* ------------------------------ Infografis: daftar kios (satu tabel lima baris) ------------------------------ */
-{
-  const B = DK.BARIS_INFO_KELAPA;
-  cek(B.length === 5 && DK.KOLOM_INFO_KELAPA.length === 3, "infografis: lima baris dan tiga kolom");
-  cek(B.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: tiap baris tiga isian, emoji sah");
-  const jumlahContoh = B.map((b) => b.contoh.length);
-  cek(jumlahContoh[0] === 3 && jumlahContoh.slice(1).every((n) => n === 0), "infografis: baris satu penuh contoh, baris dua sampai lima mandiri");
-  const semua = B.flatMap((b) => b.isi);
-  cek(B.every((b) => new Set(b.isi.map((x) => x.t)).size === 3), "infografis: tiga label tiap baris berbeda");
-  cek(new Set(semua.map((x) => x.t)).size === semua.length, "infografis: semua label unik");
-  cek(semua.every((x) => x.t.length <= 28 && x.t.split(/\s+/).length <= 5 && bersih(x.t) && bersih(x.s ?? "")), "infografis: label pendek (paling banyak lima kata) dan tanpa kata terlarang");
-  cek(semua.every((x) => tanpaDigit(x.s ?? x.t)), "infografis: ucapan label tanpa digit");
-  const gab = B.map((b) => [b.nama, ...b.isi.map((x) => x.t)].join(" ")).join(" ").toLowerCase();
-  for (const s of ["menguraikan bilangan", "menyusun bilangan", "mencari bagian hilang", "mencari cara lain", "memeriksa hasil", "pecah per tempat", "gabung semua bagian", "utuh dikurangi bagian", "tempat kosong diisi nol", "jumlahkan kembali"]) cek(gab.includes(s), `infografis: memuat "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|pak darwis|kelapa|kios)\\b", "i").test(gab), "infografis: tanpa nama tokoh");
-  cek(tanpaDigit(DK.SUARA_INFO_KELAPA + DK.SELESAI_INFO_KELAPA) && bersih(DK.SUARA_INFO_KELAPA + DK.SELESAI_INFO_KELAPA) && emojiSah(DK.TEMA_INFO_KELAPA.ikon), "infografis: suara dan tema bersih");
-}
+/* Mind-map dan Infografis sub-bab ini diuji di scripts/uji-visual-k4b1def.mjs (rancangan per Sub-Bab, bukan kartu geser). */
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */
 {
@@ -468,15 +427,15 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
 /* ------------------------------ Berkas ------------------------------ */
 {
   const berkas = readdirSync(folderUrl).filter((f) => /\.(ts|tsx)$/.test(f));
-  for (const nama of ["logika.ts", "data-sim.ts", "data-kartu.ts", "logika-cpa.ts", "data.ts", "periksa.ts", "tata.ts", "JawabKelapa.tsx", "LangkahKelapa.tsx", "GambarKelapa.tsx", "TahapKelapa.tsx", "SimulasiKiosKelapa.tsx", "KiosKelapa.tsx", "DaftarKelapa.tsx"]) cek(berkas.includes(nama), `berkas ${nama} ada`);
+  for (const nama of ["logika.ts", "data-sim.ts", "logika-cpa.ts", "data.ts", "periksa.ts", "tata.ts", "JawabKelapa.tsx", "LangkahKelapa.tsx", "GambarKelapa.tsx", "TahapKelapa.tsx", "SimulasiKiosKelapa.tsx", "KiosKelapa.tsx", "DaftarKelapa.tsx"]) cek(berkas.includes(nama), `berkas ${nama} ada`);
   for (const f of berkas) {
     const s = readFileSync(new URL(f, folderUrl), "utf8");
     cek(!s.startsWith("﻿") && !s.includes("\r"), `${f}: tanpa BOM, akhir baris LF`);
     cek(![...s].some((c) => c.codePointAt(0) > 0x1fa95 || c.codePointAt(0) === 0x200d || c.codePointAt(0) === 0x1f6de), `${f}: emoji paling tinggi U+1FA95 tanpa ZWJ`);
     cek(!/\\u\{1FA(9[6-9A-F]|[A-F][0-9A-F])\}|\\u\{1F[B-F][0-9A-F]{2}\}|\\u\{200D\}|\\u\{1F6DE\}/i.test(s), `${f}: kode emoji tidak melewati U+1FA95`);
     cek(!/buku|kelompok|bernilai|tebak/i.test(s), `${f}: tanpa kata buku, kelompok, bernilai, tebak`);
-    if (/^(logika|logika-cpa|periksa|data|data-sim|data-kartu|tata)\.ts$/.test(f)) cek(!/from "react"|fetch\(/.test(s), `${f}: tanpa React dan jaringan`);
-    cek(!/tiket-k4b1a|handuk-k4b1b|dermaga-k4b1c|resepsi-k4b1e|sisa-k4b1f|perahu-k4b1g|jatah-k4b1h|jadwal-k4b1i|papan-k3b5a|tabel-k3b5b|SubBabK4B1|eja-k4b1|data-k4b1|naskah-k4b1/.test(s), `${f}: tidak memakai folder Sub-Bab lain atau berkas lama Bab 1`);
+    if (/^(logika|logika-cpa|periksa|data|data-sim|tata)\.ts$/.test(f)) cek(!/from "react"|fetch\(/.test(s), `${f}: tanpa React dan jaringan`);
+    cek(!/tiket-k4b1a|handuk-k4b1b|dermaga-k4b1c|resepsi-k4b1e|sisa-k4b1f|perahu-k4b1g|jatah-k4b1h|jadwal-k4b1i|papan-k3b5a|tabel-k3b5b|SubBabK4B1|data-k4b1|naskah-k4b1/.test(s), `${f}: tidak memakai folder Sub-Bab lain atau berkas lama Bab 1`);
   }
   // Teks layar tidak memuat kata terlarang, termasuk nama berkas data.
   const layar = ["LangkahKelapa.tsx", "TahapKelapa.tsx", "SimulasiKiosKelapa.tsx", "GambarKelapa.tsx"].map((f) => readFileSync(new URL(f, folderUrl), "utf8")).join("\n");
@@ -501,7 +460,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   cek(/export default function SimulasiKiosKelapa/.test(sim) && /onKeadaan/.test(sim) && /MISI_KELAPA_TEKS/.test(sim), "SimulasiKiosKelapa: ekspor, onKeadaan, teks misi");
   for (const [f, nm] of [["KiosKelapa.tsx", "KiosKelapaK4B1"], ["DaftarKelapa.tsx", "DaftarKelapaK4B1"]]) {
     const s = readFileSync(new URL(f, folderUrl), "utf8");
-    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && /peta-kartu\//.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: pembungkus tipis komponen bersama peta-kartu, ekspor ${nm}`);
+    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && !/peta-kartu|PetaKartu|InfografisKartu/.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: komponen sendiri (bukan pembungkus peta-kartu), ekspor ${nm}`);
   }
   // Berkas bersama: Simulasi memasang Kios Kelapa.
   const sk = readFileSync(new URL("../src/components/modul/SimulasiK4Bab1.tsx", import.meta.url), "utf8");

@@ -1,8 +1,7 @@
-// Uji Mind-map (Meja Resepsi), Infografis (Daftar Resepsi), Simulasi Meja Resepsi, dan tahap Concrete, Pictorial, Abstract Kelas 4 Bab 1 Sub-Bab E ("Meja Resepsi Bu Rina"),
+// Uji Simulasi Meja Resepsi, dan tahap Concrete, Pictorial, Abstract Kelas 4 Bab 1 Sub-Bab E ("Meja Resepsi Bu Rina"),
 // lanjutan cerita Penginapan Pulau Karang Indah (penjumlahan bilangan sampai 1.000: susun ke bawah, simpan, tambah per tempat, genapkan dulu).
 // Memeriksa: logika simulasi (susun mulai dari satuan dengan alat menolak kolom lain dan hasil kolom yang belum benar, tukar sepuluh balok dengan alat menolak bila belum sepuluh,
-// genapkan dulu dengan alat menolak menyesuaikan sebelum membulatkan), misi (awal tidak memenuhi, wajib empat, bebas dua), sembilan kartu geser Masalah, Cara, Hasil memuat semua metode Story,
-// daftar resepsi dari kejadian Story, CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode) dengan jawaban beragam dan Cari kesalahan di tiap tahap, jawaban benar dihitung dari data,
+// genapkan dulu dengan alat menolak menyesuaikan sebelum membulatkan), misi (awal tidak memenuhi, wajib empat, bebas dua), CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode) dengan jawaban beragam dan Cari kesalahan di tiap tahap, jawaban benar dihitung dari data,
 // angka jawaban tidak kembar per tahap, tugas yang langsung siap (jebakan tombol macet), geometri balok cacah tepat (kotak, batang, butir sebanyak angkanya), pengenal ucapan, petunjuk salah,
 // batas rupa, emoji, kata terlarang, akhir baris.
 // Jalankan: node --no-warnings scripts/uji-resepsi-k4b1e.mjs
@@ -16,7 +15,6 @@ register(
 );
 const L = await import("../src/components/modul/resepsi-k4b1e/logika.ts");
 const DS = await import("../src/components/modul/resepsi-k4b1e/data-sim.ts");
-const DK = await import("../src/components/modul/resepsi-k4b1e/data-kartu.ts");
 const LC = await import("../src/components/modul/resepsi-k4b1e/logika-cpa.ts");
 const D = await import("../src/components/modul/resepsi-k4b1e/data.ts");
 const K = await import("../src/components/modul/resepsi-k4b1e/periksa.ts");
@@ -172,47 +170,7 @@ const STORY = new Set([245, 378, 113, 326, 259, 540, 235, 123, 99, 364, 158, 230
   cek(MT.misiAwalK4Bab1("E").includes(DS.MISI_RESEPSI_TEKS), "misi awal Simulasi memuat teks misi");
 }
 
-/* ------------------------------ Mind-map: meja resepsi (sembilan kartu geser) ------------------------------ */
-{
-  const KA = DK.KARTU_RESEPSI;
-  cek(KA.length === 9, "kartu: sembilan kartu");
-  cek(KA.every((k) => k.contoh.length <= 1) && KA[0].contoh.join() === "masalah" && KA.slice(1).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di kartu pertama saja, sisanya mandiri");
-  const semua = KA.flatMap((k) => [k.masalah, k.cara, k.hasil]);
-  const label = semua.map((x) => x.label);
-  cek(new Set(label).size === label.length, "kartu: label unik");
-  cek(semua.every((x) => x.label.length >= 5 && x.label.length <= 36), `kartu: label pendek (terpanjang ${Math.max(...label.map((l) => l.length))} huruf)`);
-  cek(KA.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((l) => l.split(/\s+/).length <= 6)), "kartu: label paling banyak enam kata");
-  cek(semua.every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti) && bersih(x.label) && bersih(x.arti) && x.arti.length > 10), "kartu: label dan arti tanpa digit dan kata terlarang");
-  cek(KA.every((k) => tanpaDigit(k.judul) && bersih(k.judul) && k.judul.length > 3), "kartu: judul bersih");
-  const cara = KA.map((k) => k.cara.label).join(" | ");
-  for (const m of ["Susun ke Bawah", "Tambah Per Tempat", "Genapkan Dulu", "Dijumlahkan", "Ditulis ke bawah", "Dari satuan", "Tulis sisa, simpan satu", "Dibulatkan"]) cek(cara.toLowerCase().includes(m.toLowerCase()), `kartu: cara memuat ${m}`);
-  const gab = KA.map((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label, k.masalah.arti, k.cara.arti, k.hasil.arti].join(" ")).join(" ").toLowerCase();
-  for (const s of ["jumlah", "bersusun", "kanan", "satuan", "puluhan", "ratusan", "simpan", "sepuluh", "bulat", "kelebihan", "hasil"]) cek(gab.includes(s), `kartu: memuat poin "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|bu rina|bu maya|pak usman|koper|penginapan|lonceng)\\b", "i").test(gab), "kartu: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
-  cek(tanpaDigit(DK.SUARA_KARTU_RESEPSI + DK.SELESAI_KARTU_RESEPSI) && bersih(DK.SUARA_KARTU_RESEPSI + DK.SELESAI_KARTU_RESEPSI), "kartu: suara dan pesan selesai tanpa digit dan kata terlarang");
-  cek(emojiSah(DK.TEMA_KARTU_RESEPSI.ikon) && DK.TEMA_KARTU_RESEPSI.judul.length > 5, "kartu: tema sah");
-  const RG = DK.RINGKASAN_RESEPSI;
-  cek(RG.ikon.length === DK.KARTU_RESEPSI.length && new Set(RG.ikon).size === RG.ikon.length && [...RG.ikon, RG.pusat].every((e) => emojiSah(e) && !/[A-Za-z0-9]/.test(e)), "peta radial: satu gambar unik per kartu, gambar sah tanpa huruf");
-  cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
-}
-
-/* ------------------------------ Infografis: daftar resepsi (satu tabel lima baris) ------------------------------ */
-{
-  const B = DK.BARIS_INFO_RESEPSI;
-  cek(B.length === 5 && DK.KOLOM_INFO_RESEPSI.length === 3, "infografis: lima baris dan tiga kolom");
-  cek(B.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: tiap baris tiga isian, emoji sah");
-  const jumlahContoh = B.map((b) => b.contoh.length);
-  cek(jumlahContoh[0] === 3 && jumlahContoh.slice(1).every((n) => n === 0), "infografis: baris satu penuh contoh, baris dua sampai lima mandiri");
-  const semua = B.flatMap((b) => b.isi);
-  cek(B.every((b) => new Set(b.isi.map((x) => x.t)).size === 3), "infografis: tiga label tiap baris berbeda");
-  cek(new Set(semua.map((x) => x.t)).size === semua.length, "infografis: semua label unik");
-  cek(semua.every((x) => x.t.length <= 28 && x.t.split(/\s+/).length <= 5 && bersih(x.t) && bersih(x.s ?? "")), "infografis: label pendek (paling banyak lima kata) dan tanpa kata terlarang");
-  cek(semua.every((x) => tanpaDigit(x.s ?? x.t)), "infografis: ucapan label tanpa digit");
-  const gab = B.map((b) => [b.nama, ...b.isi.map((x) => x.t)].join(" ")).join(" ").toLowerCase();
-  for (const s of ["menulis bersusun", "menjumlahkan", "menyimpan", "tiga bilangan", "memeriksa", "tulis ke bawah", "mulai dari kanan", "tulis sisa", "simpan satu", "bulatkan dulu"]) cek(gab.includes(s), `infografis: memuat "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|bu rina)\\b", "i").test(gab), "infografis: tanpa nama tokoh");
-  cek(tanpaDigit(DK.SUARA_INFO_RESEPSI + DK.SELESAI_INFO_RESEPSI) && bersih(DK.SUARA_INFO_RESEPSI + DK.SELESAI_INFO_RESEPSI) && emojiSah(DK.TEMA_INFO_RESEPSI.ikon), "infografis: suara dan tema bersih");
-}
+/* Mind-map dan Infografis sub-bab ini diuji di scripts/uji-visual-k4b1def.mjs (rancangan per Sub-Bab, bukan kartu geser). */
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */
 {
@@ -428,15 +386,15 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
 /* ------------------------------ Berkas ------------------------------ */
 {
   const berkas = readdirSync(folderUrl).filter((f) => /\.(ts|tsx)$/.test(f));
-  for (const nama of ["logika.ts", "data-sim.ts", "data-kartu.ts", "logika-cpa.ts", "data.ts", "periksa.ts", "balok.ts", "JawabResepsi.tsx", "LangkahResepsi.tsx", "GambarResepsi.tsx", "TahapResepsi.tsx", "SimulasiMejaResepsi.tsx", "MejaResepsi.tsx", "DaftarResepsi.tsx"]) cek(berkas.includes(nama), `berkas ${nama} ada`);
+  for (const nama of ["logika.ts", "data-sim.ts", "logika-cpa.ts", "data.ts", "periksa.ts", "balok.ts", "JawabResepsi.tsx", "LangkahResepsi.tsx", "GambarResepsi.tsx", "TahapResepsi.tsx", "SimulasiMejaResepsi.tsx", "MejaResepsi.tsx", "DaftarResepsi.tsx"]) cek(berkas.includes(nama), `berkas ${nama} ada`);
   for (const f of berkas) {
     const s = readFileSync(new URL(f, folderUrl), "utf8");
     cek(!s.startsWith("﻿") && !s.includes("\r"), `${f}: tanpa BOM, akhir baris LF`);
     cek(![...s].some((c) => c.codePointAt(0) > 0x1fa95 || c.codePointAt(0) === 0x200d || c.codePointAt(0) === 0x1f6de), `${f}: emoji paling tinggi U+1FA95 tanpa ZWJ`);
     cek(!/\\u\{1FA(9[6-9A-F]|[A-F][0-9A-F])\}|\\u\{1F[B-F][0-9A-F]{2}\}|\\u\{200D\}|\\u\{1F6DE\}/i.test(s), `${f}: kode emoji tidak melewati U+1FA95`);
     cek(!/buku|kelompok|bernilai|tebak/i.test(s), `${f}: tanpa kata buku, kelompok, bernilai, tebak`);
-    if (/^(logika|logika-cpa|periksa|data|data-sim|data-kartu|balok)\.ts$/.test(f)) cek(!/from "react"|fetch\(/.test(s), `${f}: tanpa React dan jaringan`);
-    cek(!/papan-k3b5a|tabel-k3b5b|bilah-k3b4a|sudut-k3b4b|lintasan-k3b4c|tiket-k4b1a|handuk-k4b1b|dermaga-k4b1c|kelapa-k4b1d|sisa-k4b1f|perahu-k4b1g|jatah-k4b1h|jadwal-k4b1i|SubBabK4B1|eja-k4b1|data-k4b1|naskah-k4b1/.test(s), `${f}: tidak memakai folder bab atau sub-bab lain, atau berkas lama Bab 1`);
+    if (/^(logika|logika-cpa|periksa|data|data-sim|balok)\.ts$/.test(f)) cek(!/from "react"|fetch\(/.test(s), `${f}: tanpa React dan jaringan`);
+    cek(!/papan-k3b5a|tabel-k3b5b|bilah-k3b4a|sudut-k3b4b|lintasan-k3b4c|tiket-k4b1a|handuk-k4b1b|dermaga-k4b1c|kelapa-k4b1d|sisa-k4b1f|perahu-k4b1g|jatah-k4b1h|jadwal-k4b1i|SubBabK4B1|data-k4b1|naskah-k4b1/.test(s), `${f}: tidak memakai folder bab atau sub-bab lain, atau berkas lama Bab 1`);
   }
   // Teks layar tidak memuat kata terlarang.
   const layar = ["LangkahResepsi.tsx", "TahapResepsi.tsx", "SimulasiMejaResepsi.tsx", "GambarResepsi.tsx"].map((f) => readFileSync(new URL(f, folderUrl), "utf8")).join("\n");
@@ -462,7 +420,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   cek(/export default function SimulasiMejaResepsi/.test(sim) && /onKeadaan/.test(sim) && /MISI_RESEPSI_TEKS/.test(sim), "SimulasiMejaResepsi: ekspor, onKeadaan, teks misi");
   for (const [f, nm] of [["MejaResepsi.tsx", "MejaResepsiK4B1"], ["DaftarResepsi.tsx", "DaftarResepsiK4B1"]]) {
     const s = readFileSync(new URL(f, folderUrl), "utf8");
-    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && /peta-kartu\//.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: pembungkus tipis komponen bersama peta-kartu, ekspor ${nm}`);
+    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && !/peta-kartu|PetaKartu|InfografisKartu/.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: komponen sendiri (bukan pembungkus peta-kartu), ekspor ${nm}`);
   }
   // Berkas bersama: Simulasi memasang Meja Resepsi.
   const sk = readFileSync(new URL("../src/components/modul/SimulasiK4Bab1.tsx", import.meta.url), "utf8");

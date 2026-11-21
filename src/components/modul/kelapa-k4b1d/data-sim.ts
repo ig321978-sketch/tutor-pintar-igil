@@ -1,7 +1,7 @@
 /**
  * Data Simulasi Kios Kelapa Kelas 4 Bab 1 Sub-Bab D "Kios Kelapa Pak Darwis" (menyusun dan menguraikan bilangan), Penginapan Pulau Karang Indah.
  * Data berbeda dari Story (lima ribu dua ratus tujuh puluh; empat ribu ditambah seribu dua ratus tujuh puluh; enam ribu empat ratus tiga; tiga ribu tujuh ratus lima) dan dari tugas CPA.
- * Mind-map dan Infografis memakai data kartu (data-kartu.ts). Diuji: scripts/uji-kelapa-k4b1d.mjs.
+ * Mind-map dan Infografis memakai data-peta.ts. Diuji: scripts/uji-kelapa-k4b1d.mjs dan scripts/uji-visual-k4b1def.mjs.
  */
 
 /** Pecah: bilangan ditulis di papan; anak mengisi keranjang tiap tempat (ribuan, ratusan, puluhan, satuan) sampai jumlahnya sama. */

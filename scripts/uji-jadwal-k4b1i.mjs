@@ -15,7 +15,6 @@ register(
 );
 const L = await import("../src/components/modul/jadwal-k4b1i/logika.ts");
 const DS = await import("../src/components/modul/jadwal-k4b1i/data-sim.ts");
-const DK = await import("../src/components/modul/jadwal-k4b1i/data-kartu.ts");
 const LC = await import("../src/components/modul/jadwal-k4b1i/logika-cpa.ts");
 const D = await import("../src/components/modul/jadwal-k4b1i/data.ts");
 const K = await import("../src/components/modul/jadwal-k4b1i/periksa.ts");
@@ -148,47 +147,7 @@ const adaEmoji = (s) => /\p{Extended_Pictographic}/u.test(s);
   cek(S.misiBaru(B, { ...a, salah: 9, mode: "jadwal", baris: 5, pasangCatat: [1, 5], faktorPilih: [1, 2], jadwalTanda: [7, 14], sudahBagi: true, ujiPilih: 0 }, new Set()).length === 0, "misi I: catatan, tanda, dan putusan yang belum diperiksa tidak dihitung sebagai misi");
 }
 
-/* ------------------------------ Mind-map: papan jadwal (sembilan kartu geser) ------------------------------ */
-{
-  const KA = DK.KARTU_JADWAL;
-  cek(KA.length === 9, "kartu: sembilan kartu");
-  cek(KA.every((k) => k.contoh.length <= 1) && KA[0].contoh.join() === "masalah" && KA.slice(1).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di kartu pertama saja, sisanya mandiri");
-  const semua = KA.flatMap((k) => [k.masalah, k.cara, k.hasil]);
-  const label = semua.map((x) => x.label);
-  cek(new Set(label).size === label.length, "kartu: label unik");
-  cek(semua.every((x) => x.label.length >= 5 && x.label.length <= 36), `kartu: label pendek (terpanjang ${Math.max(...label.map((l) => l.length))} huruf)`);
-  cek(KA.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((l) => l.split(/\s+/).length <= 6)), "kartu: label paling banyak enam kata");
-  cek(semua.every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti) && bersih(x.label) && bersih(x.arti) && x.arti.length > 10), "kartu: label dan arti tanpa digit dan kata terlarang");
-  cek(KA.every((k) => tanpaDigit(k.judul) && bersih(k.judul) && k.judul.length > 5), "kartu: judul bersih");
-  const cara = KA.map((k) => k.cara.label).join(" | ");
-  for (const m of ["Pasangan Faktor", "Daftar Kelipatan", "Cek Bagi Habis", "Bagi mulai dari satu", "Kali bilangan asli", "Bagi dan lihat sisa"]) cek(cara.toLowerCase().includes(m.toLowerCase()), `kartu: cara memuat ${m}`);
-  const gab = KA.map((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label, k.masalah.arti, k.cara.arti, k.hasil.arti].join(" ")).join(" ").toLowerCase();
-  for (const s of ["faktor", "membagi habis", "tanpa sisa", "pasangan", "kelipatan", "bilangan asli", "bagi", "kali", "sisa", "bukan faktor", "batas", "berulang"]) cek(gab.includes(s), `kartu: memuat poin "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|kak yoga|bu maya|payung|lentera|perahu|taruhan)\\b", "i").test(gab), "kartu: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
-  cek(tanpaDigit(DK.SUARA_KARTU_JADWAL + DK.SELESAI_KARTU_JADWAL) && bersih(DK.SUARA_KARTU_JADWAL + DK.SELESAI_KARTU_JADWAL), "kartu: suara dan pesan selesai tanpa digit dan kata terlarang");
-  cek(emojiSah(DK.TEMA_KARTU_JADWAL.ikon) && DK.TEMA_KARTU_JADWAL.judul.length > 5, "kartu: tema sah");
-  const RG = DK.RINGKASAN_JADWAL;
-  cek(RG.ikon.length === DK.KARTU_JADWAL.length && new Set(RG.ikon).size === RG.ikon.length && [...RG.ikon, RG.pusat].every((e) => emojiSah(e) && !/[A-Za-z0-9]/.test(e)), "peta radial: satu gambar unik per kartu, gambar sah tanpa huruf");
-  cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
-}
-
-/* ------------------------------ Infografis: daftar jadwal (satu tabel lima baris) ------------------------------ */
-{
-  const B = DK.BARIS_INFO_JADWAL;
-  cek(B.length === 5 && DK.KOLOM_INFO_JADWAL.length === 3, "infografis: lima baris dan tiga kolom");
-  cek(B.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: tiap baris tiga isian, emoji sah");
-  const jumlahContoh = B.map((b) => b.contoh.length);
-  cek(jumlahContoh[0] === 3 && jumlahContoh.slice(1).every((n) => n === 0), "infografis: baris satu penuh contoh, baris dua sampai lima mandiri");
-  const semua = B.flatMap((b) => b.isi);
-  cek(B.every((b) => new Set(b.isi.map((x) => x.t)).size === 3), "infografis: tiga label tiap baris berbeda");
-  cek(new Set(semua.map((x) => x.t)).size === semua.length, "infografis: semua label unik");
-  cek(semua.every((x) => x.t.length <= 28 && x.t.split(/\s+/).length <= 5 && bersih(x.t) && bersih(x.s ?? "")), "infografis: label pendek (paling banyak lima kata) dan tanpa kata terlarang");
-  cek(semua.every((x) => tanpaDigit(x.s ?? x.t)), "infografis: ucapan label tanpa digit");
-  const gab = B.map((b) => [b.nama, ...b.isi.map((x) => x.t)].join(" ")).join(" ").toLowerCase();
-  for (const s of ["menyusun payung", "mencari faktor", "menulis kelipatan", "membaca jadwal", "menguji faktor", "pasangan faktor", "daftar kelipatan", "cek bagi habis", "berhenti di batas"]) cek(gab.includes(s), `infografis: memuat "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|kak yoga|bu maya)\\b", "i").test(gab), "infografis: tanpa nama tokoh");
-  cek(tanpaDigit(DK.SUARA_INFO_JADWAL + DK.SELESAI_INFO_JADWAL) && bersih(DK.SUARA_INFO_JADWAL + DK.SELESAI_INFO_JADWAL) && emojiSah(DK.TEMA_INFO_JADWAL.ikon), "infografis: suara dan tema bersih");
-}
+/* Mind-map dan Infografis (dirancang ulang per Sub-Bab) diuji di scripts/uji-visual-k4b1ghi.mjs. */
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */
 {
@@ -370,7 +329,7 @@ const adaEmoji = (s) => /\p{Extended_Pictographic}/u.test(s);
   cek(/nama: "Uji"/.test(sim) && /2797/.test(sim) && (sim.match(/Bagi/g) ?? []).length >= 1 && !/nama: "Bagi"/.test(sim), "SimulasiPapanJadwal: tab Uji dan tombol Bagi tidak kembar");
   for (const [f, nm] of [["PapanJadwal.tsx", "PapanJadwalK4B1"], ["DaftarJadwal.tsx", "DaftarJadwalK4B1"]]) {
     const s = readFileSync(new URL(f, folderUrl), "utf8");
-    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && /peta-kartu\//.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: pembungkus tipis komponen bersama peta-kartu, ekspor ${nm}`);
+    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && !/peta-kartu\//.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: komponen sendiri (tanpa peta-kartu), ekspor ${nm}`);
   }
   // Berkas bersama: Simulasi memasang Papan Jadwal.
   const sk = readFileSync(new URL("../src/components/modul/SimulasiK4Bab1.tsx", import.meta.url), "utf8");

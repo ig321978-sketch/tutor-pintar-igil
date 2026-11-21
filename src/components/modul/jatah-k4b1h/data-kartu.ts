@@ -1,52 +1,88 @@
 /**
- * Mind-map Kelas 4 Bab 1 Sub-Bab H (Pembagian sampai Seratus) berbentuk sembilan kartu geser: tiap kartu satu rantai Masalah, Cara, Hasil dengan label pendek.
- * Hanya poin pelajaran (tanpa nama tokoh atau benda cerita). Tiga metode global tampak di tiga kartu terakhir dengan nama Indonesia (Bagi Rata, Kurang Berulang, Bagi Susun).
- * Label tanpa digit; arti diucapkan guru saat label atau kotak diketuk. Infografis: satu tabel lima baris.
+ * Data Mind-map dan Infografis Kelas 4 Bab 1 Sub-Bab H "Papan Jatah Bu Ratna" (dirancang ulang, tanpa komponen kartu bersama).
+ * Mind-map: papan tulis hijau Bu Ratna berisi pembagian bersusun 56 : 4 baris demi baris (pintu kamar, bagi puluhan, turun satuan, bagi lagi, periksa kali, sisa 59 : 4);
+ * tiap baris papan punya label kosong berupa kertas tempel yang diketuk: judul langkah muncul dan dibacakan Guru.
+ * Infografis: dua kartu dari angka Story. Kartu 1 = lorong kamar (56 : 4 = 14, 59 : 4 = 14 sisa 3 ke aula dari materi, 24 : 6 = 4 dari metode global), tamu digambar sebanyak hasil baginya;
+ * kartu 2 = kartu periksa dan sisa (14 x 4 = 56, sisa 3 kurang dari 4, salah Satria 11 karena angka 6 lupa diturunkan). Digital saja.
+ * Suara tanpa digit (kata bilangan dari logika-cpa.ts folder ini). Diuji: scripts/uji-visual-k4b1ghi.mjs.
  */
-import type { KartuPeta, RingkasanPeta, TemaPeta } from "../peta-kartu/PetaKartu";
-import type { BarisInfo, TemaInfo } from "../peta-kartu/InfografisKartu";
+import { kata } from "./logika-cpa";
 
-const kt = (judul: string, masalah: [string, string], cara: [string, string], hasil: [string, string], contoh: KartuPeta["contoh"] = []): KartuPeta => ({
-  judul,
-  masalah: { label: masalah[0], arti: masalah[1] },
-  cara: { label: cara[0], arti: cara[1] },
-  hasil: { label: hasil[0], arti: hasil[1] },
-  contoh,
-});
+export type LangkahPeta = { judul: string; arti: string };
 
-export const KARTU_JATAH: readonly KartuPeta[] = [
-  kt("Membagi", ["Bagaimana membagi rata?", "Bagaimana menaruh benda sama banyak ke tiap tempat?"], ["Bagi sama banyak", "Benda ditaruh sama banyak ke tiap tempat sampai habis."], ["Itu pembagian", "Membagi sebuah bilangan sama banyak disebut pembagian."], ["masalah"]),
-  kt("Pembagi", ["Ada berapa tempatnya?", "Berapa banyak tempat yang menerima bagian?"], ["Hitung tempatnya", "Banyaknya tempat yang menerima bagian dihitung lebih dulu."], ["Itu pembagi", "Banyaknya tempat itu dinamakan pembagi."]),
-  kt("Hasil bagi", ["Tiap tempat dapat berapa?", "Berapa benda yang diterima tiap tempat?"], ["Bagikan bergiliran", "Bagikan satu per satu ke tiap tempat, lalu hitung satu tempat."], ["Itu hasil bagi", "Banyak benda di satu tempat adalah hasil bagi."]),
-  kt("Sisa", ["Kalau ada yang lebih?", "Bagaimana kalau benda tidak habis terbagi?"], ["Hitung yang lebih", "Benda yang tidak cukup untuk satu putaran dihitung terpisah."], ["Sisa lebih kecil", "Sisa pembagian selalu lebih kecil daripada pembagi."]),
-  kt("Memeriksa", ["Yakin hasilnya benar?", "Bagaimana memastikan hasil bagi tidak keliru?"], ["Dikalikan lagi", "Kalikan hasil bagi dengan pembagi, lalu tambahkan sisa."], ["Sama dengan awal", "Hasilnya harus sama dengan bilangan yang dibagi."]),
-  kt("Pembagian bersusun", ["Bilangannya dua angka?", "Bagaimana membagi bilangan dua angka dengan rapi?"], ["Mulai dari puluhan", "Bagi angka puluhan dahulu, lalu turunkan angka satuan."], ["Hasil di atas", "Hasil bagi ditulis di atas dan sisa akhir di bawah."]),
-  kt("Cara pintar: Bagi Rata", ["Ingin melihat bendanya?", "Bagaimana membagi sambil melihat bendanya?"], ["Bagi Rata", "Bagikan benda satu per satu ke tiap wadah, bergiliran, sampai habis."], ["Cocok benda nyata", "Cocok untuk benda yang bisa dilihat dan dipegang."]),
-  kt("Cara pintar: Kurang Berulang", ["Ingin tahu maknanya?", "Bagaimana memahami arti pembagian?"], ["Kurang Berulang", "Kurangi bilangan awal dengan pembagi berkali-kali."], ["Banyak kurang", "Banyaknya pengurangan adalah hasil bagi."]),
-  kt("Cara pintar: Bagi Susun", ["Ingin cara cepat?", "Bagaimana membagi bilangan dua angka dengan cepat?"], ["Bagi Susun", "Bagi dari puluhan ke satuan, bagian demi bagian."], ["Cepat dan rapi", "Hasilnya tertulis rapi, dan sisa akhir tampak di bawah."]),
+/** Enam langkah Mind-map: Equal Sharing, Long Division (puluhan, turun satuan, bagi lagi), periksa dengan kali, dan sisa. Arti dibacakan Guru (tanpa digit). */
+export const LANGKAH_JATAH: LangkahPeta[] = [
+  {
+    judul: "Bagi tamu sama banyak",
+    arti: "Langkah satu. Bagi tamu sama banyak ke tiap kamar. Lima puluh enam tamu dibagi ke empat kamar, ditulis lima puluh enam dibagi empat.",
+  },
+  {
+    judul: "Bagi puluhan dulu",
+    arti: "Langkah dua. Mulai dari puluhan. Lima dibagi empat sama dengan satu, sisa satu.",
+  },
+  {
+    judul: "Turunkan, bagi lagi",
+    arti: "Langkah tiga. Turunkan angka satuan di samping sisa. Angka enam turun, sisa satu menjadi enam belas. Enam belas dibagi empat sama dengan empat, jadi hasilnya empat belas tamu tiap kamar.",
+  },
+  {
+    judul: "Periksa dengan kali",
+    arti: "Langkah empat. Periksa dengan perkalian. Empat belas kali empat sama dengan lima puluh enam, sama dengan jumlah tamu, jadi pembagiannya benar.",
+  },
+  {
+    judul: "Sisa kurang dari pembagi",
+    arti: "Langkah lima. Kalau ada sisa, sisanya selalu lebih kecil daripada pembagi. Lima puluh sembilan dibagi empat, hasilnya empat belas sisa tiga.",
+  },
 ];
+/** Isi papan tulis tiap baris (dua baris tulisan kapur). Angka cocok dengan Story H. */
+export const KAPUR_JATAH: [string, string][] = [
+  ["56 : 4", "tamu ke 4 kamar"],
+  ["5 : 4 = 1", "sisa 1"],
+  ["16 : 4 = 4", "hasil 14"],
+  ["14 × 4 = 56", "= jumlah tamu"],
+  ["59 : 4 = 14", "sisa 3, ke aula"],
+];
+export const JUDUL_PETA_JATAH = "Papan Tulis Bu Ratna";
+export const IKON_JUDUL_PETA_JATAH = "\u{1F6AA}";
+export const PETUNJUK_PETA_JATAH = "Ketuk kertas tempel di samping tiap baris papan.";
+export const SELESAI_PETA_JATAH = "Papan tulis penuh! Lima langkah sudah kamu buka.";
 
-export const TEMA_KARTU_JATAH: TemaPeta = { bingkai: "#92400E", ikon: "\u{1F9EE}", judul: "Papan Jatah", latar: "#FEF3C7", garisLatar: "#B45309" };
-/** Peta radial awal (tanpa kata): satu gambar per kartu. */
-export const RINGKASAN_JATAH: RingkasanPeta = {
-  pusat: "\u{1F9EE}",
-  ikon: ["\u{1F9F3}", "\u{1F4E6}", "\u{1F9FA}", "\u{2797}", "\u{2705}", "\u{1F4DD}", "\u{1F6CF}", "\u{1F501}", "\u{1F522}"],
-  suara: "Ini peta pembagian sampai seratus. Gambar hitung ada di tengah, dan sembilan gambar mengelilinginya. Ketuk satu gambar untuk membuka kartunya. Centang hijau berarti kartunya selesai.",
+/* ------------------------------ Infografis kartu 1: lorong kamar ------------------------------ */
+export type SelInfo = { label: string; isi: string; suara: string };
+export type BarisKamar = { kunci: string; nama: string; wadah: string; dibagi: number; pembagi: number; hasil: number; sisa: number; sel: [SelInfo, SelInfo] };
+
+const baris = (kunci: string, nama: string, wadah: string, benda: string, dibagi: number, pembagi: number): BarisKamar => {
+  const hasil = Math.floor(dibagi / pembagi);
+  const sisa = dibagi % pembagi;
+  return {
+    kunci,
+    nama,
+    wadah,
+    dibagi,
+    pembagi,
+    hasil,
+    sisa,
+    sel: [
+      { label: `Tiap ${wadah}`, isi: `${hasil}`, suara: `Tiap ${wadah} mendapat ${kata(hasil)} ${benda}, karena ${kata(dibagi)} dibagi ${kata(pembagi)} sama dengan ${kata(hasil)}.` },
+      sisa === 0
+        ? { label: "Sisa", isi: "0, habis", suara: "Sisanya nol, jadi semuanya habis terbagi." }
+        : { label: "Sisa", isi: `${sisa}, ke aula`, suara: `Sisanya ${kata(sisa)}, karena ${kata(sisa)} lebih kecil daripada ${kata(pembagi)}. Mereka ditempatkan di aula.` },
+    ],
+  };
 };
-export const SUARA_KARTU_JATAH =
-  "Ini papan jatah. Ada sembilan kartu. Tiap kartu punya tiga kotak: masalah, cara, dan hasil. Kotak bertanda contoh sudah terisi, jadi lihat dulu sebagai petunjuk. Ketuk label, lalu ketuk kotak yang cocok.";
-export const SELESAI_KARTU_JATAH = "Semua kartu lengkap! Dari masalah, lewat cara, sampai hasil.";
+/** Tiga baris dari Story: 56 tamu ke 4 kamar, 59 tamu ke 4 kamar (sisa ke aula), dan 24 kartu ke 6 kotak (metode global). */
+export const KAMAR_JATAH: BarisKamar[] = [baris("tamu", "56 tamu dibagi ke 4 kamar", "kamar", "tamu", 56, 4), baris("sisa", "59 tamu dibagi ke 4 kamar", "kamar", "tamu", 59, 4), baris("kartu", "24 kartu dibagi ke 6 kotak", "kotak", "kartu", 24, 6)];
+export const JUDUL_LORONG_JATAH = "Lorong kamar";
+export const PETUNJUK1_INFO_JATAH = "Ketuk tanda tanya untuk melihat hasil bagi dan sisa tiap kamar.";
+export const SELESAI1_INFO_JATAH = "Lorong kamar lengkap! Hasil bagi tiap kamar dan sisanya sudah terbuka.";
 
-/* ------------------------------ Infografis: daftar jatah (satu tabel lima baris) ------------------------------ */
-export const KOLOM_INFO_JATAH = ["Yang dikerjakan", "Hasilnya", "Katanya"] as const;
-const bi = (ikon: string, nama: string, a: string, b: string, c: string, contoh: number[]): BarisInfo => ({ ikon, nama, isi: [{ t: a }, { t: b }, { t: c }], contoh });
-export const BARIS_INFO_JATAH: readonly BarisInfo[] = [
-  bi("\u{1F9FA}", "Membagi rata", "Bagikan bergiliran", "Sama banyak", "Tiap tempat adil", [0, 1, 2]),
-  bi("\u{1F501}", "Mengurangi berulang", "Kurangi pembagi", "Hitung pengurangan", "Banyaknya hasil bagi", []),
-  bi("\u{1F4DD}", "Membagi bersusun", "Bagi lalu turunkan", "Hasil di atas", "Puluhan ke satuan", []),
-  bi("\u{2797}", "Mencari sisa", "Bagi sampai kurang", "Sisa dihitung", "Sisa lebih kecil", []),
-  bi("\u{2705}", "Memeriksa hasil", "Kalikan hasil bagi", "Tambah sisa", "Sama dengan awal", []),
+/* ------------------------------ Infografis kartu 2: kartu periksa dan sisa ------------------------------ */
+export type KotakPeriksa = { kunci: string; caption: string; isi: string; suara: string };
+export const PERIKSA_JATAH: KotakPeriksa[] = [
+  { kunci: "kali", caption: "Periksa: hasil bagi dikali pembagi", isi: "14 × 4 = 56", suara: "Empat belas dikali empat sama dengan lima puluh enam." },
+  { kunci: "sama", caption: "Hasilnya harus sama dengan", isi: "56, jumlah tamu", suara: "Hasilnya harus sama dengan yang dibagi, yaitu lima puluh enam tamu." },
+  { kunci: "sisa", caption: "Sisa dari 59 : 4 adalah", isi: "3 tamu", suara: "Lima puluh sembilan dibagi empat, hasilnya empat belas sisa tiga tamu." },
+  { kunci: "kecil", caption: "Sisa harus lebih kecil dari", isi: "pembagi, yaitu 4", suara: "Sisa harus lebih kecil daripada pembagi, yaitu empat." },
+  { kunci: "salah", caption: "Angka 6 lupa diturunkan jadi", isi: "11, keliru", suara: "Kalau angka enam lupa diturunkan, hasilnya hanya sebelas. Itu keliru, karena seharusnya empat belas." },
 ];
-export const TEMA_INFO_JATAH: TemaInfo = { bingkai: "#1E3A8A", latar: "#EFF6FF", aksen: "#1D4ED8", teduh: "#DBEAFE", ikon: "\u{1F4CB}", judul: "Daftar jatah" };
-export const SUARA_INFO_JATAH = "Ini daftar jatah. Ada lima baris, satu baris satu pekerjaan membagi. Isi yang dikerjakan, hasilnya, dan katanya. Baris pertama sudah terisi penuh sebagai contoh. Ketuk label, lalu ketuk kotak yang cocok.";
-export const SELESAI_INFO_JATAH = "Daftar jatah lengkap! Bagi rata, kurangi berulang, dan bagi bersusun.";
+export const PETUNJUK2_INFO_JATAH = "Ketuk tanda tanya untuk melihat isi tiap kertas.";
+export const SELESAI2_INFO_JATAH = "Kartu periksa lengkap! Selalu periksa dengan perkalian.";

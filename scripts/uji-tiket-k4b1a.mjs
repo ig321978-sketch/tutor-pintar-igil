@@ -15,7 +15,6 @@ register(
 );
 const L = await import("../src/components/modul/tiket-k4b1a/logika.ts");
 const DS = await import("../src/components/modul/tiket-k4b1a/data-sim.ts");
-const DK = await import("../src/components/modul/tiket-k4b1a/data-kartu.ts");
 const LC = await import("../src/components/modul/tiket-k4b1a/logika-cpa.ts");
 const D = await import("../src/components/modul/tiket-k4b1a/data.ts");
 const K = await import("../src/components/modul/tiket-k4b1a/periksa.ts");
@@ -146,45 +145,7 @@ const CERITA = [3406, 5080, 346, 7025, 6185, 725, 7250];
   sama(S.misiBaru(A, { ...a, susunBenar: [0, 1], bacaBenar: [0], nolBenar: [0], tempatBenar: [0], tolak: true }, new Set()), ["a-susun", "a-baca", "a-nol", "a-tempat", "a-tolak", "a-dua"], "misi A: semua misi tercapai");
 }
 
-/* ------------------------------ Mind-map: loket tiket (sembilan kartu geser) ------------------------------ */
-{
-  const KA = DK.KARTU_TIKET;
-  cek(KA.length === 9, "kartu: sembilan kartu");
-  cek(KA.every((k) => k.contoh.length <= 1) && KA[0].contoh.join() === "masalah" && KA.slice(1).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di kartu pertama saja, sisanya mandiri");
-  const semua = KA.flatMap((k) => [k.masalah, k.cara, k.hasil]);
-  const label = semua.map((x) => x.label);
-  cek(new Set(label).size === label.length, "kartu: label unik");
-  cek(semua.every((x) => x.label.length >= 5 && x.label.length <= 36), `kartu: label pendek (terpanjang ${Math.max(...label.map((l) => l.length))} huruf)`);
-  cek(KA.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((l) => l.split(/\s+/).length <= 6)), "kartu: label paling banyak enam kata");
-  cek(semua.every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti) && bersih(x.label) && bersih(x.arti) && x.arti.length > 10), "kartu: label dan arti tanpa digit dan kata terlarang");
-  cek(KA.every((k) => tanpaDigit(k.judul) && bersih(k.judul) && k.judul.length > 3), "kartu: judul bersih");
-  const cara = KA.map((k) => k.cara.label).join(" | ");
-  for (const m of ["Kartu Angka", "Baca Per Bagian", "Periksa Nol", "Pakai empat tempat", "Dari ribuan", "Nol dilewati", "Taruh di tempatnya"]) cek(cara.toLowerCase().includes(m.toLowerCase()), `kartu: cara memuat ${m}`);
-  cek(["Kartu Angka", "Baca Per Bagian", "Periksa Nol"].every((m, i) => KA[6 + i].cara.label === m), "kartu: tiga metode global di tiga kartu terakhir dengan nama Indonesia");
-  const gab = KA.map((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label, k.masalah.arti, k.cara.arti, k.hasil.arti].join(" ")).join(" ").toLowerCase();
-  for (const s of ["ribuan", "ratusan", "puluhan", "satuan", "dari kiri", "angka nol", "tempat", "menulis", "ucapan", "dibaca"]) cek(gab.includes(s), `kartu: memuat poin "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|bu maya|pak laode|tiket|penginapan|loket|handuk|perahu)\\b", "i").test(gab.replace("loket tiket", "")), "kartu: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
-  cek(tanpaDigit(DK.SUARA_KARTU_TIKET + DK.SELESAI_KARTU_TIKET) && bersih(DK.SUARA_KARTU_TIKET + DK.SELESAI_KARTU_TIKET), "kartu: suara dan pesan selesai tanpa digit dan kata terlarang");
-  cek(emojiSah(DK.TEMA_KARTU_TIKET.ikon) && DK.TEMA_KARTU_TIKET.judul.length > 5, "kartu: tema sah");
-  const RG = DK.RINGKASAN_TIKET;
-  cek(RG.ikon.length === DK.KARTU_TIKET.length && new Set(RG.ikon).size === RG.ikon.length && [...RG.ikon, RG.pusat].every((e) => emojiSah(e) && !/[A-Za-z0-9]/.test(e) && ![...e].some((c) => IKAN.includes(c.codePointAt(0)))), "peta radial: satu gambar unik per kartu, gambar sah tanpa huruf dan tanpa ikan");
-  cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
-}
-
-/* ------------------------------ Infografis: daftar tiket (satu tabel lima baris) ------------------------------ */
-{
-  const B = DK.BARIS_INFO_TIKET;
-  cek(B.length === 5 && DK.KOLOM_INFO_TIKET.length === 3, "infografis: lima baris dan tiga kolom");
-  cek(B.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: tiap baris tiga isian, emoji sah");
-  cek(B.map((b) => b.contoh.length).join() === "3,0,0,0,0", "infografis: baris satu penuh contoh, baris dua sampai lima mandiri");
-  const semua = B.flatMap((b) => b.isi);
-  cek(B.every((b) => new Set(b.isi.map((x) => x.t)).size === 3) && new Set(semua.map((x) => x.t)).size === semua.length, "infografis: semua label unik");
-  cek(semua.every((x) => x.t.length <= 28 && x.t.split(/\s+/).length <= 5 && bersih(x.t) && bersih(x.s ?? "") && tanpaDigit(x.s ?? x.t)), "infografis: label pendek (paling banyak lima kata), tanpa kata terlarang dan tanpa digit");
-  const gab = B.map((b) => [b.nama, ...b.isi.map((x) => x.t)].join(" ")).join(" ").toLowerCase();
-  for (const s of ["membaca bilangan", "menulis bilangan", "menjaga nol", "memeriksa tulisan", "membaca ulang", "baca dari kiri", "nol menjaga tempat", "hitung banyak angka"]) cek(gab.includes(s), `infografis: memuat "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|bu maya)\\b", "i").test(gab), "infografis: tanpa nama tokoh");
-  cek(tanpaDigit(DK.SUARA_INFO_TIKET + DK.SELESAI_INFO_TIKET) && bersih(DK.SUARA_INFO_TIKET + DK.SELESAI_INFO_TIKET) && emojiSah(DK.TEMA_INFO_TIKET.ikon), "infografis: suara dan tema bersih");
-}
+/* Mind-map dan Infografis diuji di scripts/uji-visual-k4b1abc.mjs (rancangan sendiri per Sub-Bab, label kosong). */
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */
 {
@@ -320,7 +281,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
 /* ------------------------------ Berkas: batas rupa, emoji, kata terlarang, akhir baris ------------------------------ */
 {
   const berkas = readdirSync(folder).filter((f) => /\.(ts|tsx)$/.test(f));
-  for (const f of ["data.ts", "data-kartu.ts", "data-sim.ts", "logika.ts", "logika-cpa.ts", "periksa.ts", "GambarTiket.tsx", "JawabTiket.tsx", "LangkahTiket.tsx", "TahapTiket.tsx", "SimulasiLoketTiket.tsx", "LoketTiket.tsx", "DaftarTiket.tsx"]) cek(berkas.includes(f), `${f} ada`);
+  for (const f of ["data.ts", "data-peta.ts", "data-info.ts", "data-sim.ts", "logika.ts", "logika-cpa.ts", "periksa.ts", "GambarTiket.tsx", "JawabTiket.tsx", "LangkahTiket.tsx", "TahapTiket.tsx", "SimulasiLoketTiket.tsx", "LoketTiket.tsx", "DaftarTiket.tsx"]) cek(berkas.includes(f), `${f} ada`);
   for (const f of berkas) {
     const s = readFileSync(new URL(f, folder), "utf8");
     cek(![...s].some((c) => c.codePointAt(0) > 0x1fa95 || c.codePointAt(0) === 0x200d || c.codePointAt(0) === 0x1f6de || IKAN.includes(c.codePointAt(0))), `${f}: emoji paling tinggi U+1FA95 tanpa ZWJ dan tanpa ikan`);

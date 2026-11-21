@@ -1,7 +1,7 @@
 /**
  * Data Simulasi Loket Tiket Kelas 4 Bab 1 Sub-Bab A "Loket Tiket Bu Maya", awal cerita Penginapan Pulau Karang Indah.
  * Data berbeda dari Story (tiket 3.406 dan 5.080, tulisan salah 3.46, contoh 7.025 dan 6.185) dan dari tugas CPA. Tiga bilangan empat angka tiap alat.
- * Mind-map dan Infografis memakai data kartu (data-kartu.ts). Diuji: scripts/uji-tiket-k4b1a.mjs.
+ * Mind-map dan Infografis punya data sendiri (data-peta.ts dan data-info.ts). Diuji: scripts/uji-tiket-k4b1a.mjs.
  */
 import type { Tempat } from "./logika-cpa";
 

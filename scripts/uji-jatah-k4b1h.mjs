@@ -14,7 +14,6 @@ register(
 );
 const L = await import("../src/components/modul/jatah-k4b1h/logika.ts");
 const DS = await import("../src/components/modul/jatah-k4b1h/data-sim.ts");
-const DK = await import("../src/components/modul/jatah-k4b1h/data-kartu.ts");
 const LC = await import("../src/components/modul/jatah-k4b1h/logika-cpa.ts");
 const D = await import("../src/components/modul/jatah-k4b1h/data.ts");
 const K = await import("../src/components/modul/jatah-k4b1h/periksa.ts");
@@ -180,38 +179,7 @@ const DIVIDEN_CERITA = [56, 59, 24, 36, 84];
   sama(S.misiBaru(A, a, new Set()), [], "misi H: keadaan awal tanpa misi baru");
 }
 
-/* ------------------------------ Mind-map: papan jatah (sembilan kartu geser) ------------------------------ */
-{
-  const KA = DK.KARTU_JATAH;
-  cek(KA.length === 9, "kartu: sembilan kartu");
-  cek(KA.every((k) => k.contoh.length <= 1) && KA[0].contoh.join() === "masalah" && KA.slice(1).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di kartu pertama saja");
-  const semua = KA.flatMap((k) => [k.masalah, k.cara, k.hasil]);
-  const label = semua.map((x) => x.label);
-  cek(new Set(label).size === label.length, "kartu: label unik");
-  cek(semua.every((x) => x.label.length >= 5 && x.label.length <= 36) && KA.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((l) => l.split(/\s+/).length <= 6)), `kartu: label pendek (terpanjang ${Math.max(...label.map((l) => l.length))} huruf)`);
-  cek(semua.every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti) && bersih(x.label) && bersih(x.arti) && x.arti.length > 10) && KA.every((k) => tanpaDigit(k.judul) && bersih(k.judul)), "kartu: label, arti, dan judul tanpa digit dan kata terlarang");
-  const cara = KA.map((k) => k.cara.label).join(" | ");
-  for (const m of ["Bagi Rata", "Kurang Berulang", "Bagi Susun"]) cek(cara.includes(m), `kartu: cara memuat ${m}`);
-  const gab = KA.map((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label, k.masalah.arti, k.cara.arti, k.hasil.arti].join(" ")).join(" ").toLowerCase();
-  for (const s of ["pembagian", "pembagi", "hasil bagi", "sisa", "dikalikan", "bersusun", "puluhan", "satuan", "bergiliran", "berkali-kali"]) cek(gab.includes(s), `kartu: memuat poin "${s}"`);
-  cek(!/\b(satria|laras|genta|pak hendro|bu ratna|kak yoga|penginapan|kamar|tamu|koper)\b/i.test(gab), "kartu: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
-  cek(tanpaDigit(DK.SUARA_KARTU_JATAH + DK.SELESAI_KARTU_JATAH) && bersih(DK.SUARA_KARTU_JATAH + DK.SELESAI_KARTU_JATAH) && emojiSah(DK.TEMA_KARTU_JATAH.ikon) && DK.TEMA_KARTU_JATAH.judul.length > 5, "kartu: suara dan tema bersih");
-  const RG = DK.RINGKASAN_JATAH;
-  cek(RG.ikon.length === KA.length && new Set(RG.ikon).size === RG.ikon.length && [...RG.ikon, RG.pusat].every((e) => emojiSah(e) && !/[A-Za-z0-9]/.test(e)) && !RG.ikon.includes(RG.pusat) && tanpaDigit(RG.suara) && bersih(RG.suara), "peta radial: satu gambar unik per kartu, suara bersih");
-}
-
-/* ------------------------------ Infografis: daftar jatah (satu tabel lima baris) ------------------------------ */
-{
-  const B = DK.BARIS_INFO_JATAH;
-  cek(B.length === 5 && DK.KOLOM_INFO_JATAH.length === 3 && B.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: lima baris, tiga kolom, emoji sah");
-  cek(B[0].contoh.length === 3 && B.slice(1).every((b) => b.contoh.length === 0), "infografis: baris satu penuh contoh, baris dua sampai lima mandiri");
-  const semua = B.flatMap((b) => b.isi);
-  cek(B.every((b) => new Set(b.isi.map((x) => x.t)).size === 3) && new Set(semua.map((x) => x.t)).size === semua.length, "infografis: semua label unik");
-  cek(semua.every((x) => x.t.length <= 28 && x.t.split(/\s+/).length <= 5 && bersih(x.t) && tanpaDigit(x.s ?? x.t)), "infografis: label pendek, tanpa kata terlarang, ucapan tanpa digit");
-  const gab = B.map((b) => [b.nama, ...b.isi.map((x) => x.t)].join(" ")).join(" ").toLowerCase();
-  for (const s of ["membagi rata", "mengurangi berulang", "membagi bersusun", "mencari sisa", "memeriksa hasil", "sisa lebih kecil", "sama dengan awal", "puluhan ke satuan"]) cek(gab.includes(s), `infografis: memuat "${s}"`);
-  cek(!/\b(satria|laras|genta|pak hendro|bu ratna)\b/i.test(gab) && tanpaDigit(DK.SUARA_INFO_JATAH + DK.SELESAI_INFO_JATAH) && bersih(DK.SUARA_INFO_JATAH + DK.SELESAI_INFO_JATAH) && emojiSah(DK.TEMA_INFO_JATAH.ikon), "infografis: tanpa nama tokoh, suara dan tema bersih");
-}
+/* Mind-map dan Infografis (dirancang ulang per Sub-Bab) diuji di scripts/uji-visual-k4b1ghi.mjs. */
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */
 {
@@ -429,7 +397,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
   cek(/export default function SimulasiPapanJatah/.test(sim) && /onKeadaan/.test(sim) && /MISI_JATAH_TEKS/.test(sim) && /Alat menolak/.test(sim), "SimulasiPapanJatah: ekspor, onKeadaan, teks misi, penolakan alat");
   for (const [f, nm] of [["PapanJatah.tsx", "PapanJatahK4B1"], ["DaftarJatah.tsx", "DaftarJatahK4B1"]]) {
     const s = readFileSync(new URL(f, folderUrl), "utf8");
-    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && /peta-kartu\//.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: pembungkus tipis komponen bersama peta-kartu, ekspor ${nm}`);
+    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && !/peta-kartu\//.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: komponen sendiri (tanpa peta-kartu), ekspor ${nm}`);
   }
   const sk = readFileSync(new URL("../src/components/modul/SimulasiK4Bab1.tsx", import.meta.url), "utf8");
   cek(/SimulasiPapanJatah/.test(sk) && /laporMisiJatah\(daftarMisiJatah\("H"\), k, a\.capai\)/.test(sk) && !/judulBab=\{`Kelas/.test(sk), "SimulasiK4Bab1: langkahPapanJatahH memasang Papan Jatah, judul bab tanpa kata Kelas");

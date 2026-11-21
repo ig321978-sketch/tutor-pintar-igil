@@ -1,7 +1,7 @@
 /**
  * Data Simulasi Meja Resepsi Kelas 4 Bab 1 Sub-Bab E "Meja Resepsi Bu Rina", lanjutan cerita Penginapan Pulau Karang Indah.
  * Data berbeda dari Story (245, 378, 113, 326, 259, 540, 235, 123, 99, 364, 158) dan dari tugas CPA. Hasil tiap penjumlahan tidak lebih dari 999.
- * Mind-map dan Infografis memakai data kartu (data-kartu.ts). Diuji: scripts/uji-resepsi-k4b1e.mjs.
+ * Mind-map dan Infografis memakai data-peta.ts. Diuji: scripts/uji-resepsi-k4b1e.mjs dan scripts/uji-visual-k4b1def.mjs.
  */
 
 /** Susun: dua bilangan dijumlahkan bersusun dari kolom satuan; alat menolak bila kolom lain dipilih lebih dulu atau hasil kolom belum benar. */

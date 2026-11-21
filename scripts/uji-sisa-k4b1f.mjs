@@ -1,7 +1,7 @@
-// Uji Mind-map (Papan Sisa), Infografis (Daftar Sisa), Simulasi Papan Sisa, dan tahap Concrete, Pictorial, Abstract Kelas 4 Bab 1 Sub-Bab F ("Papan Sisa Pak Usman"),
+// Uji Simulasi Papan Sisa, dan tahap Concrete, Pictorial, Abstract Kelas 4 Bab 1 Sub-Bab F ("Papan Sisa Pak Usman"),
 // cerita Penginapan Pulau Karang Indah (pengurangan bersusun sampai seribu: dari satuan ke kiri, mengambil, hitung maju, periksa dengan tambah).
 // Memeriksa: geometri balok cacah (banyak balok sesuai angka), logika simulasi (susun dengan mengambil dan alat menolak mengisi sebelum mengambil, hitung maju dengan alat menolak lompatan melewati tujuan,
-// periksa dengan tambah dengan alat menolak memutuskan sebelum menambahkan), misi (awal tidak memenuhi, wajib empat, bebas dua), sembilan kartu geser Masalah, Cara, Hasil, daftar sisa dari kejadian Story,
+// periksa dengan tambah dengan alat menolak memutuskan sebelum menambahkan), misi (awal tidak memenuhi, wajib empat, bebas dua), 
 // CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode) dengan jawaban beragam dan Cari kesalahan di tiap tahap, jawaban benar dihitung dari data, angka jawaban kanvas tidak kembar per tahap,
 // tugas yang langsung siap (jebakan tombol macet), pengenal ucapan, petunjuk salah, batas rupa, emoji, kata terlarang, akhir baris.
 // Jalankan: node --no-warnings scripts/uji-sisa-k4b1f.mjs
@@ -15,7 +15,6 @@ register(
 );
 const L = await import("../src/components/modul/sisa-k4b1f/logika.ts");
 const DS = await import("../src/components/modul/sisa-k4b1f/data-sim.ts");
-const DK = await import("../src/components/modul/sisa-k4b1f/data-kartu.ts");
 const LC = await import("../src/components/modul/sisa-k4b1f/logika-cpa.ts");
 const D = await import("../src/components/modul/sisa-k4b1f/data.ts");
 const K = await import("../src/components/modul/sisa-k4b1f/periksa.ts");
@@ -216,47 +215,7 @@ const angkaDi = (n, t) => dig(n)[t === "ratusan" ? 0 : t === "puluhan" ? 1 : 2];
   sama(S.misiBaru(M, { ...a, susunBenar: [0, 1], majuBenar: [0], cekBenar: [0], tolak: true, tangkap: 1 }, new Set()), ["f-susun", "f-ambil", "f-maju", "f-cek", "f-tolak", "f-tangkap"], "misi F: semua misi tercapai");
 }
 
-/* ------------------------------ Mind-map: papan sisa (sembilan kartu geser) ------------------------------ */
-{
-  const KA = DK.KARTU_SISA;
-  cek(KA.length === 9, "kartu: sembilan kartu");
-  cek(KA.every((k) => k.contoh.length <= 1) && KA[0].contoh.join() === "masalah" && KA.slice(1).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di kartu pertama saja, sisanya mandiri");
-  const semua = KA.flatMap((k) => [k.masalah, k.cara, k.hasil]);
-  const label = semua.map((x) => x.label);
-  cek(new Set(label).size === label.length, "kartu: label unik");
-  cek(semua.every((x) => x.label.length >= 5 && x.label.length <= 36), `kartu: label pendek (terpanjang ${Math.max(...label.map((l) => l.length))} huruf)`);
-  cek(KA.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((l) => l.split(/\s+/).length <= 6)), "kartu: label paling banyak enam kata");
-  cek(semua.every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti) && bersih(x.label) && bersih(x.arti) && x.arti.length > 10), "kartu: label dan arti tanpa digit dan kata terlarang");
-  cek(KA.every((k) => tanpaDigit(k.judul) && bersih(k.judul) && k.judul.length > 3), "kartu: judul bersih");
-  const cara = KA.map((k) => k.cara.label).join(" | ");
-  for (const m of ["Susun dan Pinjam", "Hitung Maju", "Periksa dengan Tambah", "Dikurangkan", "Tulis ke bawah", "Mulai dari satuan", "Ambil dari kiri", "Jangan dibalik"]) cek(cara.toLowerCase().includes(m.toLowerCase()), `kartu: cara memuat ${m}`);
-  const gab = KA.map((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label, k.masalah.arti, k.cara.arti, k.hasil.arti].join(" ")).join(" ").toLowerCase();
-  for (const s of ["pengurangan", "susun", "satuan", "ambil", "sepuluh", "puluhan bulat", "selisih", "lompat", "tambah", "bilangan awal", "membalik", "dua kali"]) cek(gab.includes(s), `kartu: memuat poin "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|pak usman|bu marni|dermaga|sandal|koper|perahu)\\b", "i").test(gab), "kartu: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
-  cek(tanpaDigit(DK.SUARA_KARTU_SISA + DK.SELESAI_KARTU_SISA) && bersih(DK.SUARA_KARTU_SISA + DK.SELESAI_KARTU_SISA), "kartu: suara dan pesan selesai tanpa digit dan kata terlarang");
-  cek(emojiSah(DK.TEMA_KARTU_SISA.ikon) && DK.TEMA_KARTU_SISA.judul.length > 5 && bersih(DK.TEMA_KARTU_SISA.judul), "kartu: tema sah");
-  const RG = DK.RINGKASAN_SISA;
-  cek(RG.ikon.length === DK.KARTU_SISA.length && new Set(RG.ikon).size === RG.ikon.length && [...RG.ikon, RG.pusat].every((e) => emojiSah(e) && !/[A-Za-z0-9]/.test(e)), "peta radial: satu gambar unik per kartu, gambar sah tanpa huruf");
-  cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
-}
-
-/* ------------------------------ Infografis: daftar sisa (satu tabel lima baris) ------------------------------ */
-{
-  const BI = DK.BARIS_INFO_SISA;
-  cek(BI.length === 5 && DK.KOLOM_INFO_SISA.length === 3, "infografis: lima baris dan tiga kolom");
-  cek(BI.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: tiap baris tiga isian, emoji sah");
-  const jumlahContoh = BI.map((b) => b.contoh.length);
-  cek(jumlahContoh[0] === 3 && jumlahContoh.slice(1).every((n) => n === 0), "infografis: baris satu penuh contoh, baris dua sampai lima mandiri");
-  const semua = BI.flatMap((b) => b.isi);
-  cek(BI.every((b) => new Set(b.isi.map((x) => x.t)).size === 3), "infografis: tiga label tiap baris berbeda");
-  cek(new Set(semua.map((x) => x.t)).size === semua.length, "infografis: semua label unik");
-  cek(semua.every((x) => x.t.length <= 28 && x.t.split(/\s+/).length <= 5 && bersih(x.t) && bersih(x.s ?? "")), "infografis: label pendek (paling banyak lima kata) dan tanpa kata terlarang");
-  cek(semua.every((x) => tanpaDigit(x.s ?? x.t)), "infografis: ucapan label tanpa digit");
-  const gab = BI.map((b) => [b.nama, ...b.isi.map((x) => x.t)].join(" ")).join(" ").toLowerCase();
-  for (const s of ["menyusun ke bawah", "mengambil dari kiri", "salah membalik angka", "hitung maju", "memeriksa hasil", "satu jadi sepuluh", "jumlah lompatan", "sama dengan awal", "salah langsung ketahuan"]) cek(gab.includes(s), `infografis: memuat "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|pak usman)\\b", "i").test(gab), "infografis: tanpa nama tokoh");
-  cek(tanpaDigit(DK.SUARA_INFO_SISA + DK.SELESAI_INFO_SISA) && bersih(DK.SUARA_INFO_SISA + DK.SELESAI_INFO_SISA) && emojiSah(DK.TEMA_INFO_SISA.ikon), "infografis: suara dan tema bersih");
-}
+/* Mind-map dan Infografis sub-bab ini diuji di scripts/uji-visual-k4b1def.mjs (rancangan per Sub-Bab, bukan kartu geser). */
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */
 {
@@ -429,7 +388,7 @@ const semuaTeksLangkah = (ls, rupa, cara) => [ls.judul, ls.suara, LC.instruksi(l
 /* ------------------------------ Berkas folder ------------------------------ */
 {
   const berkas = readdirSync(folderUrl).filter((f) => /\.(ts|tsx)$/.test(f));
-  for (const f of ["PapanSisa.tsx", "DaftarSisa.tsx", "TahapSisa.tsx", "SimulasiPapanSisa.tsx", "LangkahSisa.tsx", "JawabSisa.tsx", "GambarSisa.tsx", "data.ts", "data-kartu.ts", "data-sim.ts", "logika.ts", "logika-cpa.ts", "periksa.ts", "balok.ts"]) cek(berkas.includes(f), `${f} ada`);
+  for (const f of ["PapanSisa.tsx", "DaftarSisa.tsx", "TahapSisa.tsx", "SimulasiPapanSisa.tsx", "LangkahSisa.tsx", "JawabSisa.tsx", "GambarSisa.tsx", "data.ts", "data-sim.ts", "logika.ts", "logika-cpa.ts", "periksa.ts", "balok.ts"]) cek(berkas.includes(f), `${f} ada`);
   for (const f of berkas) {
     const src = readFileSync(new URL(f, folderUrl), "utf8");
     cek(!src.startsWith("﻿") && !src.includes("\r"), `${f}: tanpa BOM, akhir baris LF`);

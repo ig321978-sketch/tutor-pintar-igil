@@ -1,7 +1,7 @@
 /**
  * Data Simulasi Gudang Handuk Kelas 4 Bab 1 Sub-Bab B "Gudang Handuk Pak Laode" (tempat angka dan banyaknya tiap angka), cerita Penginapan Pulau Karang Indah.
  * Data berbeda dari Story (2.304, 3.204, 3.124, 4.162, 4.612, 5.072, 4.035) dan dari tugas CPA. Bilangan empat angka, satu angka paling banyak sembilan.
- * Mind-map dan Infografis memakai data kartu (data-kartu.ts). Diuji: scripts/uji-handuk-k4b1b.mjs.
+ * Mind-map dan Infografis punya data sendiri (data-peta.ts dan data-info.ts). Diuji: scripts/uji-handuk-k4b1b.mjs.
  */
 
 /** Isi: bilangan yang harus diisikan ke gudang (peti = ribuan, kotak = ratusan, ikat = puluhan, lembar = satuan). */
