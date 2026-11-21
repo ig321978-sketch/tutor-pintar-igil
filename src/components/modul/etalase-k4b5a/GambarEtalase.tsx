@@ -123,15 +123,15 @@ export function PohonKeluarga({ i, rupa, sembunyi }: { i: number; rupa: Rupa; se
     </div>
   );
   return (
-    <div className="grid grid-cols-[1fr_1.15fr_1fr] items-center gap-1 px-1 py-1" data-pohon={i}>
-      {simpul(sembunyi === "induk" ? null : a.indukKunci, sembunyi === "induk" ? "induknya" : a.induk)}
-      <div className="flex min-w-0 flex-col items-center text-center">
-        <span className="text-[12px] font-black leading-tight text-[#B45309]">+ {a.tambah}</span>
-        <span className="text-xl font-black leading-none" style={{ color: w.garis }} aria-hidden="true">
+    <div className="px-1 py-1" data-pohon={i}>
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-1">
+        {simpul(sembunyi === "induk" ? null : a.indukKunci, sembunyi === "induk" ? "induknya" : a.induk)}
+        <span className="text-2xl font-black leading-none" style={{ color: w.garis }} aria-hidden="true">
           {"➜"}
         </span>
+        {simpul(sembunyi === "anak" ? null : a.hasil, sembunyi === "anak" ? "bangun anak" : sembunyi === "induk" ? namaDari(a.hasil) : "sisi sejajar: ?")}
       </div>
-      {simpul(sembunyi === "anak" ? null : a.hasil, sembunyi === "anak" ? "bangun anak" : sembunyi === "induk" ? namaDari(a.hasil) : "sisi sejajar: ?")}
+      <p className="mt-0.5 text-center text-[12px] font-black leading-tight text-[#B45309]">+ {a.tambah}</p>
     </div>
   );
 }

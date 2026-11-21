@@ -575,6 +575,26 @@ const TAHAP = [
     const lg = readFileSync(new URL("LangkahEtalase.tsx", folder), "utf8");
     cek(/% 2 \+ 1/.test(lg) && /selalu di urutan kedua/.test(lg), "Cari kesalahan: alasan benar selalu di urutan kedua atau ketiga dan tombol benar atau salah yang benar di urutan kedua");
   }
+  // Simulasi pohon: tiap sasaran punya satu jawaban benar menurut hubungan bangun (anak persegi meminta nama paling khusus).
+  for (const [ke, i] of DS.TARGET_POHON.entries()) {
+    const a2 = LC.ANAK[i];
+    cek(a2.khusus === true || a2.lain.every((x) => !BENAR_SEBAGAI[a2.hasil].includes(x)), `simulasi pohon sasaran ${ke}: pengecoh bukan jawaban benar menurut hubungan bangun`);
+    const k0 = { ...L.awalEtalase(), pohonKe: ke };
+    if (a2.khusus) cek(/paling khusus/.test(L.kalimatPohon(k0)) && /paling khusus/.test(L.petunjukPohon({ ...k0, pohonPilih: 0 })), `simulasi pohon sasaran ${ke}: kalimat dan petunjuk meminta nama paling khusus`);
+  }
+  cek(/ANAK\[np\]\.khusus \? "Pilih nama yang paling khusus"/.test(readFileSync(new URL("SimulasiEtalaseKeramik.tsx", folder), "utf8")), "simulasi pohon: teks pilihan menyebut paling khusus bila perlu");
+  // Lebar kata: kata terpanjang pada gambar pohon muat kolomnya (huruf 12 px tebal sekitar 7,4 px per huruf; kolom sisi sekitar 96 px pada lebar gambar 224 px) dan tombol pilihan segitiga muat.
+  {
+    const lebarKata = (t) => Math.max(...t.split(/[\s-]+/).map((w) => w.length)) * 7.4;
+    for (const a2 of LC.ANAK) {
+      cek(lebarKata(a2.induk) <= 96 && lebarKata(G.namaDari(a2.hasil)) <= 96, `pohon ${a2.induk}: nama induk dan anak muat kolom sisi (${lebarKata(a2.induk)}, ${lebarKata(G.namaDari(a2.hasil))})`);
+      cek(lebarKata(a2.tambah) <= 216, `pohon ${a2.induk}: kata ciri tambahan muat satu baris penuh`);
+    }
+    cek(lebarKata("sisi sejajar: ?") <= 96 && lebarKata("bangun anak") <= 96, "pohon: label kosong muat kolom sisi");
+    cek([...DS.NAMA_SISI_SEGITIGA, ...DS.NAMA_SUDUT_SEGITIGA].every((n) => lebarKata(n) * (12 / 12) <= 75 - 4 - 2), "simulasi segitiga: kata tombol muat lebar tombol 75 px");
+    const gm2 = readFileSync(new URL("GambarEtalase.tsx", folder), "utf8");
+    cek(/grid-cols-\[1fr_auto_1fr\]/.test(gm2) && !/1\.15fr/.test(gm2), "gambar pohon: dua kolom sisi sama lebar dengan panah di antaranya, ciri tambahan satu baris penuh di bawah");
+  }
   // Tahap: Concrete salah (Satria), Pictorial benar (Genta), Abstract salah (Satria).
   const salahDi = (soal) => soal[0].langkah.map((q) => q.langkah).find((l) => l.tipe === "salah");
   cek(salahDi(D.CONCRETE).tokoh === "Satria" && !salahDi(D.CONCRETE).betul && salahDi(D.CONCRETE).dasar.tipe === "sisi", "Concrete: Satria keliru menyebut layang-layang belah ketupat");

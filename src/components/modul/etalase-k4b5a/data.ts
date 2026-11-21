@@ -128,7 +128,7 @@ export const ABSTRACT: SoalMisi[] = [
       "Jajargenjang yang diberi tambahan empat sisi sama panjang menjadi persegi panjang.",
       "persegi panjang",
       [
-        "Satria keliru, karena persegi panjang juga punya sisi yang sama panjang.",
+        "Satria keliru, karena persegi panjang tidak punya sudut siku-siku.",
         "Satria keliru, karena persegi panjang punya tambahan empat sudut siku-siku, bukan empat sisi sama panjang.",
         "Satria keliru, karena jajargenjang tidak bisa diberi tambahan ciri apa pun.",
       ],

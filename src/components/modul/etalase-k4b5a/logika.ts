@@ -144,11 +144,11 @@ export function periksaPohon(k: KeadaanEtalase): { k: KeadaanEtalase; ok: boolea
 }
 export function petunjukPohon(k: KeadaanEtalase): string {
   if (k.pohonPilih < 0) return "Alat menolak. Nama bangun belum dipilih. Pilih satu nama dulu, lalu tekan Periksa.";
-  return "Nama itu belum cocok. Mulailah dari ciri bangun induk, tambahkan ciri baru, lalu cocokkan dengan nama bangunnya.";
+  return ANAK[nomorPohon(k)].khusus ? "Nama itu belum paling khusus. Tambahkan ciri baru pada bangun induk, lalu pilih nama yang paling khusus." : "Nama itu belum cocok. Mulailah dari ciri bangun induk, tambahkan ciri baru, lalu cocokkan dengan nama bangunnya.";
 }
 export function kalimatPohon(k: KeadaanEtalase): string {
   if (k.pohonBenar.length > 0 && k.pohonPilih < 0) return "Betul! Ada cabang berikutnya.";
-  return k.pohonPilih < 0 ? "Lihat bangun induknya dan ciri tambahannya, lalu pilih nama bangun anaknya." : "Nama sudah dipilih. Tekan Periksa bila sudah yakin.";
+  return k.pohonPilih < 0 ? (ANAK[nomorPohon(k)].khusus ? "Lihat bangun induknya dan ciri tambahannya, lalu pilih nama yang paling khusus." : "Lihat bangun induknya dan ciri tambahannya, lalu pilih nama bangun anaknya.") : "Nama sudah dipilih. Tekan Periksa bila sudah yakin.";
 }
 
 /* ------------------------------ Golongkan segitiga ------------------------------ */

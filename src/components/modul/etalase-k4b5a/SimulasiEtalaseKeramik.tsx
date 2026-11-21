@@ -78,6 +78,7 @@ export default function SimulasiEtalaseKeramik({ speakGuru, onKeadaan }: { speak
   };
   const tombol = "min-h-[44px] rounded-full border-2 border-[#C2410C] bg-white px-3 text-sm font-black text-[#9A3412] disabled:opacity-40";
   const saklar = (nyala: boolean) => `min-h-[44px] rounded-full border-2 px-3 text-sm font-black ${nyala ? "border-[#C2410C] bg-[#C2410C] text-white" : "border-[#C2410C] bg-white text-[#C2410C]"}`;
+  const pilihanKecil = (nyala: boolean) => `min-h-[44px] w-full min-w-0 rounded-xl border-2 px-0.5 py-1 text-center text-[12px] font-black leading-tight text-[#1C01A5] ${nyala ? "border-[#DC2626] bg-[#FEF3C7]" : "border-[#FDBA74] bg-white"}`;
   const pilihan = (nyala: boolean) => `min-h-[48px] w-full min-w-0 rounded-xl border-4 px-1 py-1 text-center text-[13px] font-black leading-tight text-[#1C01A5] ${nyala ? "border-[#DC2626] bg-[#FEF3C7]" : "border-[#FDBA74] bg-white"}`;
 
   const ganti = (m: ModeEtalase) =>
@@ -183,7 +184,7 @@ export default function SimulasiEtalaseKeramik({ speakGuru, onKeadaan }: { speak
             <div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl bg-[#FFF7ED]" role="img" aria-label={`Pohon keluarga bentuk: ${ANAK[np].induk} diberi tambahan ciri`}>
               <PohonKeluarga i={np} rupa="benda" sembunyi="anak" />
             </div>
-            <p className="text-center text-xs font-black text-[#1C01A5]">Pilih nama bangun anak</p>
+            <p className="text-center text-xs font-black text-[#1C01A5]">{ANAK[np].khusus ? "Pilih nama yang paling khusus" : "Pilih nama bangun anak"}</p>
             <div key={`po${k.pohonKe}`} className="mx-auto grid max-w-[420px] grid-cols-1 gap-1.5" role="group" aria-label="Pilih nama bangun">
               {opsiPohon(k).map((n, i) => (
                 <button key={n} type="button" onClick={() => ubah(pilihPohon(k, i))} aria-pressed={k.pohonPilih === i} className={pilihan(k.pohonPilih === i)}>
@@ -205,17 +206,17 @@ export default function SimulasiEtalaseKeramik({ speakGuru, onKeadaan }: { speak
               <Keramik kunci={bg} x={90} y={6} w={120} h={92} rupa="benda" />
             </Gambar>
             <p className="text-center text-xs font-black text-[#1C01A5]">Menurut sisinya</p>
-            <div key={`ss${k.segKe}`} className="mx-auto grid max-w-[420px] grid-cols-3 gap-1.5 px-1" role="group" aria-label="Pilih jenis menurut sisi">
+            <div key={`ss${k.segKe}`} className="mx-auto grid max-w-[420px] grid-cols-3 gap-1" role="group" aria-label="Pilih jenis menurut sisi">
               {NAMA_SISI_SEGITIGA.map((n, i) => (
-                <button key={n} type="button" onClick={() => ubah(pilihSegitiga(k, "sisi", i))} aria-pressed={k.segSisi === i} className={pilihan(k.segSisi === i)}>
+                <button key={n} type="button" onClick={() => ubah(pilihSegitiga(k, "sisi", i))} aria-pressed={k.segSisi === i} className={pilihanKecil(k.segSisi === i)}>
                   {n}
                 </button>
               ))}
             </div>
             <p className="text-center text-xs font-black text-[#1C01A5]">Menurut sudutnya</p>
-            <div key={`sd${k.segKe}`} className="mx-auto grid max-w-[420px] grid-cols-3 gap-1.5 px-1" role="group" aria-label="Pilih jenis menurut sudut">
+            <div key={`sd${k.segKe}`} className="mx-auto grid max-w-[420px] grid-cols-3 gap-1" role="group" aria-label="Pilih jenis menurut sudut">
               {NAMA_SUDUT_SEGITIGA.map((n, i) => (
-                <button key={n} type="button" onClick={() => ubah(pilihSegitiga(k, "sudut", i))} aria-pressed={k.segSudut === i} className={pilihan(k.segSudut === i)}>
+                <button key={n} type="button" onClick={() => ubah(pilihSegitiga(k, "sudut", i))} aria-pressed={k.segSudut === i} className={pilihanKecil(k.segSudut === i)}>
                   {n}
                 </button>
               ))}
