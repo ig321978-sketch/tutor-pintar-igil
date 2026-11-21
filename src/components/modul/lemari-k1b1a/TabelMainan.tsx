@@ -12,7 +12,9 @@ import { CSS_LEMARI, TOMBOL_UTAMA } from "./ui";
  */
 const KOLOM = ["Mainan", "Gambar", "Kata", "Angka"] as const;
 type Kol = (typeof KOLOM)[number];
-const GRID = "grid-cols-[3.4rem_1fr_3.4rem_3.2rem]";
+/** Tabel bantu Angka dan Kata untuk bilangan materi Sub-Bab A: nol sampai sepuluh. */
+const DERET_ANGKA = Array.from({ length: 11 }, (_, i) => i);
+const GRID ="grid-cols-[3.4rem_1fr_3.4rem_3.2rem]";
 
 export default function TabelMainan({ speakGuru, onLanjut, teksLanjut }: { speakGuru: (t: string) => void; onLanjut: () => void; teksLanjut: string }) {
   const [buka, setBuka] = useState<string[]>([]);
@@ -96,6 +98,29 @@ export default function TabelMainan({ speakGuru, onLanjut, teksLanjut }: { speak
           <div key={b.jenis} className={`grid ${GRID} items-center gap-1.5 border-t-2 border-[#E8C48F] py-2`}>
             {KOLOM.map((k) => sel(b.jenis, b.n, k))}
           </div>
+        ))}
+      </div>
+
+      <div className="mx-auto w-full max-w-xl rounded-2xl border-[5px] border-[#1C01A5] bg-[#F5F3FF] p-2 shadow-[0_5px_0_rgba(28,1,165,0.3)]" data-uji="angka-kata">
+        <p className="mb-2 rounded-lg bg-[#1C01A5] py-1.5 text-center text-sm font-black text-[#FFE566]">Angka dan Kata: nol sampai sepuluh</p>
+        <div className="mb-1 grid grid-cols-2 gap-1.5">
+          {["Angka", "Kata"].map((k) => (
+            <span key={k} className="rounded-lg bg-[#78350F] py-1.5 text-center text-xs font-black text-[#FDE68A] sm:text-sm">
+              {k}
+            </span>
+          ))}
+        </div>
+        {DERET_ANGKA.map((n) => (
+          <button
+            key={n}
+            type="button"
+            onClick={() => speakGuru(`${kata(n)}.`)}
+            aria-label={`Angka ${kata(n)}`}
+            className="grid w-full grid-cols-2 gap-1.5 border-t-2 border-[#DDD6FE] py-1 active:bg-[#EDE9FE]"
+          >
+            <span className="text-center text-2xl font-black leading-tight text-[#1C01A5]">{n}</span>
+            <span className="flex items-center justify-center text-base font-black text-[#1C01A5]">{kata(n)}</span>
+          </button>
         ))}
       </div>
 
