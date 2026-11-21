@@ -53,7 +53,7 @@ export const ADEGAN_PAMERAN: AdeganStory = {
 /* ------------------------------ 2. Arti persen ------------------------------ */
 const SUARA_R1 = "Bu Tuti menjelaskan, persen berarti per seratus.";
 const SUARA_R2 = "Tujuh puluh lima persen berarti tujuh puluh lima bagian dari seratus bagian.";
-const SUARA_R3 = "Tanda persen kita tulis setelah angkanya.";
+const SUARA_R3 = "Tanda persen kita tulis setelah angkanya, jadi lima persen artinya lima per seratus.";
 
 export const ADEGAN_PERSEN: AdeganStory = {
   id: "persen",
@@ -82,6 +82,7 @@ export const ADEGAN_PERSEN: AdeganStory = {
       tambah(0, teks("tn", 210, 112, "tanda persen", 11, W.coklat)),
       tambah("tulis", teks("a75", 196, 84, "75", 30, W.biru), teks("tp", 228, 84, "%", 30, W.merah)),
       sorotkan("angkanya", "a75", "tp"),
+      tambah("artinya", teks("l5", 150, 142, "5% = 5/100", 12, W.biru)),
     ),
   ],
 };

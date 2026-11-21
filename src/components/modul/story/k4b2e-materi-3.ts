@@ -1,5 +1,5 @@
 import type { AdeganStory } from "./logika-story";
-import { E, W, emo, garis, judul, kartu, halaman, panah, papanPameran, teks, tokoh } from "./k4b2e-gambar";
+import { E, W, emo, garis, judul, kartu, halaman, kisi, panah, papanPameran, teks, tokoh } from "./k4b2e-gambar";
 import { hapus, k, sorotkan, tambah, ubah } from "./k4b2e-bantu";
 import { taliLampion } from "./k4b2e-materi-1";
 
@@ -45,37 +45,38 @@ export const ADEGAN_KEMBALI: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 8. Satria mencoba lagi ------------------------------ */
-const SUARA_U1 = "Satria mencoba lagi dan menulis nol koma enam sebagai enam puluh persen.";
-const SUARA_U2 = "Kali ini ia menggeser koma dua tempat ke kanan lalu menambahkan tanda persen.";
-const SUARA_U3 = "Bu Tuti bertepuk tangan, karena papan pameran sudah benar.";
+/* ------------------------------ 8. Cara langsung dan persen lebih dari seratus ------------------------------ */
+const SUARA_U1 = "Satria mengalikan nol koma enam dengan seratus persen, yaitu menggeser koma dua tempat, dan hasilnya enam puluh persen.";
+const SUARA_U2 = "Bu Tuti menulis satu koma dua, yaitu satu kisi penuh ditambah dua puluh kotak.";
+const SUARA_U3 = "Jadi satu koma dua adalah seratus dua puluh persen, dan persen boleh lebih dari seratus.";
 
 export const ADEGAN_ULANG: AdeganStory = {
   id: "ulang",
-  judul: "Satria menggeser koma dua tempat",
-  sumber: "Materi: geser koma dua tempat",
+  judul: "Persen boleh lebih dari seratus",
+  sumber: "Materi: cara langsung dan lebih dari seratus",
   latar: "#F0FDF4",
   ketukan: [
     k(
       SUARA_U1,
-      tambah(0, judul("Satria Mencoba Lagi"), ...halaman("hl", 150), ...tokoh("sa", 36, 184, "Satria"), ...papanPameran("pp", 80, 36, 200, 96, "PAPAN PAMERAN", 150, 10)),
-      tambah("nol", teks("d6", 130, 90, "0,6", 24, W.biru)),
-      tambah("sebagai", teks("sm", 172, 90, "=", 20, W.biru)),
-      tambah("puluh", teks("e60", 220, 90, "60%", 24, W.hijauTua)),
+      tambah(0, judul("Cara Langsung"), ...halaman("hl", 150), ...tokoh("sa", 36, 184, "Satria"), ...papanPameran("pp", 80, 36, 200, 96, "PAPAN PAMERAN", 150, 10)),
+      tambah("nol", teks("d6", 130, 98, "0,6", 24, W.biru)),
+      tambah("seratus", teks("kl", 172, 72, "× 100%", 12, W.merah), teks("sm", 172, 98, "=", 20, W.biru)),
+      tambah("menggeser", panah("gs", 112, 112, 76, 0, W.merah, 2.4, { z: 4 }), teks("n2", 150, 128, "2 tempat", 11, W.merah)),
+      tambah("hasilnya", teks("e60", 220, 98, "60%", 24, W.hijauTua)),
     ),
     k(
       SUARA_U2,
-      tambah("menggeser", panah("gs", 112, 112, 76, 0, W.merah, 2.4, { z: 4 })),
-      tambah("dua", teks("n2", 150, 130, "2 tempat", 11, W.merah)),
-      tambah("kanan", teks("kn", 150, 104, "ke kanan", 9, W.coklat)),
-      sorotkan("tanda", "e60"),
+      hapus(0, "d6", "kl", "sm", "gs", "n2", "e60"),
+      tambah("Tuti", ...tokoh("bt", 262, 184, "Bu Tuti")),
+      tambah("koma", teks("d12", 118, 124, "1,2", 14, W.biru)),
+      tambah("penuh", ...kisi("k1", 100, 58, 100, 4, 5)),
+      tambah("ditambah", ...kisi("k2", 170, 58, 20, 4, 5), teks("tb", 195, 124, "+ 20", 14, W.merah)),
     ),
     k(
       SUARA_U3,
-      hapus(0, "gs", "n2", "kn"),
-      tambah("Tuti", ...tokoh("bt", 262, 184, "Bu Tuti")),
-      tambah("bertepuk", emo("tp", 226, 150, E.tepuk, 22)),
-      tambah("benar", emo("ok", 262, 96, E.benar, 20), teks("tg", 150, 122, "papan sudah benar", 10, W.hijauTua)),
+      tambah("seratus", teks("s120", 175, 143, "120%", 16, W.hijauTua)),
+      tambah("lebih", emo("tp", 226, 150, E.tepuk, 22), emo("ok", 262, 96, E.benar, 20)),
+      sorotkan("persen", "s120"),
     ),
   ],
 };

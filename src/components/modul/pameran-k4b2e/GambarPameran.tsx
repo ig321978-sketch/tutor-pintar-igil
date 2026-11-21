@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { barisKartu, dasarDari, desimalDari, judulKartu, kisiSel, persenDari, type Cara, type Langkah, type LangkahDasar, type LJembatan, type Rupa } from "./logika-cpa";
+import { barisKartu, dasarDari, desimalDari, judulKartu, kisiSel, pembilangDari, persenDari, type Cara, type Langkah, type LangkahDasar, type LJembatan, type Rupa } from "./logika-cpa";
 
 /**
  * Gambar tugas CPA Kelas 4 Bab 2 Sub-Bab E "Papan Pameran Bu Tuti" (desimal perseratusan dan persen): kisi seratus benda batik beremoji (Concrete; kotak terjual berwarna sebanyak persennya),
@@ -22,17 +22,27 @@ const emojiDari = (nama: string): string => EMOJI_BENDA[nama] ?? "\u{1F455}";
 const BIRU = "#1C01A5";
 const COKLAT = "#9A3412";
 
-/** Kisi seratus benda beremoji (Concrete): 10 kolom x 10 baris tetap (tidak membungkus sendiri); `p` benda pertama berwarna (terjual), sisanya pudar. */
-export function KisiBenda({ nama, p }: { nama: string; p: number }) {
-  const sel = kisiSel(p);
+/** Banyak kolom kisi untuk `peny` sel: 5 kolom untuk dua puluh lima sel, selain itu 10 kolom. */
+const kolomKisi = (peny: number): number => (peny === 25 ? 5 : 10);
+
+/**
+ * Kisi benda beremoji (Concrete): seratus sel (10 kolom x 10 baris tetap, tidak membungkus sendiri) dengan `p` benda pertama berwarna (terjual), sisanya pudar.
+ * Dengan `peny` (pecahan berpenyebut bukan seratus): hanya `peny` sel, dan yang berwarna adalah pembilangnya (p kali peny dibagi seratus). Persen di atas seratus tidak digambar di sini.
+ */
+export function KisiBenda({ nama, p, peny }: { nama: string; p: number; peny?: number }) {
+  const banyak = peny ?? 100;
+  const terjual = peny ? pembilangDari(p, peny) : p;
+  const kolom = kolomKisi(banyak);
+  const sel = Array.from({ length: banyak }, (_, i) => i < terjual);
   return (
     <div
       className="mx-auto w-fit max-w-full rounded-xl border-2 border-[#C2410C]/50 bg-[#FFF7ED] p-2"
       role="img"
-      aria-label={`${p} ${nama} terjual dari seratus`}
-      data-kolom={10}
-      data-terjual={p}
-      style={{ display: "grid", gridTemplateColumns: "repeat(10, 22px)", gridAutoRows: "22px", gap: 2, justifyContent: "center" }}
+      aria-label={`${terjual} ${nama} terjual dari ${banyak}`}
+      data-kolom={kolom}
+      data-terjual={terjual}
+      data-sel-banyak={banyak}
+      style={{ display: "grid", gridTemplateColumns: `repeat(${kolom}, 22px)`, gridAutoRows: "22px", gap: 2, justifyContent: "center" }}
     >
       {sel.map((terjual, i) => (
         <span key={i} aria-hidden="true" data-terjual-sel={terjual ? "1" : "0"} className={`flex items-center justify-center text-base leading-none ${terjual ? "" : "opacity-25 grayscale"}`}>
@@ -43,17 +53,37 @@ export function KisiBenda({ nama, p }: { nama: string; p: number }) {
   );
 }
 
-/** Kisi seratus polos (Pictorial): 10 x 10 kotak sama besar; `p` kotak pertama (baris demi baris) berwarna. */
-export function KisiSvg({ p }: { p: number }) {
-  const sel = kisiSel(p);
+/**
+ * Kisi polos (Pictorial): 10 x 10 kotak sama besar, `p` kotak pertama (baris demi baris) berwarna. Di atas seratus persen (paling banyak seratus sembilan puluh sembilan)
+ * tergambar dua kisi berdampingan: satu kisi penuh dan satu kisi berisi sisanya. Dengan `peny` hanya `peny` kotak, yang berwarna adalah pembilangnya.
+ */
+export function KisiSvg({ p, peny }: { p: number; peny?: number }) {
+  if (peny) {
+    const kolom = kolomKisi(peny);
+    const baris = Math.ceil(peny / kolom);
+    const terwarna = pembilangDari(p, peny);
+    const s = 14;
+    const x0 = (300 - kolom * s) / 2;
+    return (
+      <svg viewBox={`0 0 300 ${baris * s + 16}`} className="mx-auto w-full max-w-[420px]" role="img" aria-label={`kisi ${peny} kotak, ${terwarna} kotak berwarna`} data-sel-banyak={peny}>
+        <rect x={4} y={3} width={292} height={baris * s + 10} rx={10} fill="#FFFBEB" stroke="#C2410C" strokeWidth={1.5} strokeDasharray="5 3" />
+        {Array.from({ length: peny }, (_, i) => (
+          <rect key={i} x={x0 + (i % kolom) * s} y={8 + Math.floor(i / kolom) * s} width={s} height={s} fill={i < terwarna ? "#FDBA74" : "#FFFFFF"} stroke={COKLAT} strokeWidth={0.8} data-sel={i < terwarna ? "1" : "0"} />
+        ))}
+      </svg>
+    );
+  }
   const s = 12;
-  const x0 = (300 - 10 * s) / 2;
+  const banyakKisi = p > 100 ? 2 : 1;
+  const x0 = banyakKisi === 2 ? 20 : (300 - 10 * s) / 2;
   return (
-    <svg viewBox="0 0 300 136" className="mx-auto w-full max-w-[420px]" role="img" aria-label={`kisi seratus kotak, ${p} kotak berwarna`}>
+    <svg viewBox="0 0 300 136" className="mx-auto w-full max-w-[420px]" role="img" aria-label={`${banyakKisi === 2 ? "dua kisi" : "kisi"} seratus kotak, ${p} kotak berwarna`} data-kisi-banyak={banyakKisi}>
       <rect x={4} y={3} width={292} height={130} rx={10} fill="#FFFBEB" stroke="#C2410C" strokeWidth={1.5} strokeDasharray="5 3" />
-      {sel.map((w, i) => (
-        <rect key={i} x={x0 + (i % 10) * s} y={8 + Math.floor(i / 10) * s} width={s} height={s} fill={w ? "#FDBA74" : "#FFFFFF"} stroke={COKLAT} strokeWidth={0.8} data-sel={w ? "1" : "0"} />
-      ))}
+      {Array.from({ length: banyakKisi }, (_, g) =>
+        kisiSel(Math.min(100, p - g * 100)).map((w, i) => (
+          <rect key={`${g}-${i}`} x={x0 + g * 140 + (i % 10) * s} y={8 + Math.floor(i / 10) * s} width={s} height={s} fill={w ? "#FDBA74" : "#FFFFFF"} stroke={COKLAT} strokeWidth={0.8} data-sel={w ? "1" : "0"} />
+        )),
+      )}
     </svg>
   );
 }
@@ -148,13 +178,13 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
   if (rupa === "benda")
     return (
       <div className="space-y-1.5">
-        <KisiBenda nama={d.benda} p={d.p} />
+        <KisiBenda nama={d.benda} p={d.p} peny={d.tipe === "perseratus" ? d.peny : undefined} />
         {ket}
       </div>
     );
   return (
     <div className="space-y-1.5">
-      <KisiSvg p={d.p} />
+      {d.p < 200 ? <KisiSvg p={d.p} peny={d.tipe === "perseratus" ? d.peny : undefined} /> : null}
       {d.tipe === "jembatan" ? <GeserSvg d={d} tampilArah={cara !== "suara"} /> : null}
       {ket}
     </div>

@@ -15,7 +15,6 @@ register(
 );
 const L = await import("../src/components/modul/lipat-k4b2a/logika.ts");
 const DS = await import("../src/components/modul/lipat-k4b2a/data-sim.ts");
-const DK = await import("../src/components/modul/lipat-k4b2a/data-kartu.ts");
 const LC = await import("../src/components/modul/lipat-k4b2a/logika-cpa.ts");
 const D = await import("../src/components/modul/lipat-k4b2a/data.ts");
 const K = await import("../src/components/modul/lipat-k4b2a/periksa.ts");
@@ -182,29 +181,7 @@ const hampir = (a, b) => Math.abs(a - b) < 1e-9;
   }
 }
 
-/* ------------------------------ Mind-map dan Infografis ------------------------------ */
-{
-  cek(DK.KARTU_LIPAT.length === 9, "mind-map: sembilan kartu");
-  const semuaLabel = DK.KARTU_LIPAT.flatMap((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label]);
-  const semuaArti = DK.KARTU_LIPAT.flatMap((k) => [k.masalah.arti, k.cara.arti, k.hasil.arti]);
-  cek([...semuaLabel, ...semuaArti].every((t) => tanpaDigit(t) && bersih(t) && !/senilai/i.test(t)), "mind-map: tanpa digit dan kata terlarang");
-  cek(DK.KARTU_LIPAT.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((t) => t.length <= 22 && t.split(/\s+/).every((w) => w.replace(/[^a-zA-Z]/g, "").length <= 12))), "mind-map: label pendek, tiap kata paling banyak dua belas huruf (muat di 344 px)");
-  cek(DK.KARTU_LIPAT.every((k) => k.judul.split(/\s+/).every((w) => w.replace(/[^a-zA-Z]/g, "").length <= 12)), "mind-map: judul kartu tiap kata paling banyak dua belas huruf");
-  cek(DK.KARTU_LIPAT.filter((k) => k.contoh.length > 0).length === 1 && DK.KARTU_LIPAT[0].contoh.join() === "masalah", "mind-map: satu kotak contoh di kartu pertama");
-  const judulSemua = DK.KARTU_LIPAT.map((k) => k.judul).join(" | ");
-  for (const m of ["Pita Pecahan", "Lipat Kertas", "Garis Pecahan"]) cek(judulSemua.includes(m), `mind-map: kartu metode ${m}`);
-  cek(DK.RINGKASAN_LIPAT.ikon.length === 9 && new Set(DK.RINGKASAN_LIPAT.ikon).size === 9 && emojiSah(DK.RINGKASAN_LIPAT.ikon.join("") + DK.RINGKASAN_LIPAT.pusat), "mind-map: sembilan ikon berbeda, emoji sah");
-  // Ikon peta hanya benda kain, batik, dan alat sanggar (gunting, benang, wol, baju, gaun, syal, pita, kimono, penggaris).
-  const TEMA_IKON = [0x2702, 0x1f9f5, 0x1f9f6, 0x1f45a, 0x1f457, 0x1f9e3, 0x1f380, 0x1f458, 0x1f4cf, 0x1f338, 0x1f98b, 0x1f3a8, 0x1f9f7];
-  cek(DK.RINGKASAN_LIPAT.ikon.every((e) => TEMA_IKON.includes(e.codePointAt(0))) && TEMA_IKON.includes(DK.RINGKASAN_LIPAT.pusat.codePointAt(0)), "mind-map: ikon peta hanya benda tema kain dan batik");
-  cek(tanpaDigit(DK.RINGKASAN_LIPAT.suara) && tanpaDigit(DK.SUARA_KARTU_LIPAT) && tanpaDigit(DK.SELESAI_KARTU_LIPAT), "mind-map: suara tanpa digit");
-  cek(DK.BARIS_INFO_LIPAT.length === 5 && DK.KOLOM_INFO_LIPAT.length === 3 && DK.BARIS_INFO_LIPAT.every((b) => b.isi.length === 3), "infografis: lima baris tiga kolom");
-  cek(DK.BARIS_INFO_LIPAT[0].contoh.join() === "0,1,2" && DK.BARIS_INFO_LIPAT.slice(1).every((b) => b.contoh.length === 0), "infografis: hanya baris pertama terisi sebagai contoh");
-  cek(DK.BARIS_INFO_LIPAT.every((b) => b.isi.every((c) => c.t.split(/\s+/).filter(Boolean).length <= 3 && c.t.split(/\s+/).every((w) => w.replace(/[^a-zA-Z]/g, "").length <= 12) && bersih(c.t + (c.s ?? "")))), "infografis: sel satu sampai tiga kata, tiap kata paling banyak dua belas huruf");
-  cek(DK.BARIS_INFO_LIPAT.every((b) => b.isi.every((c) => !/\d/.test(c.s ?? "") && (!/\d/.test(c.t) || c.s))), "infografis: sel berangka punya ucapan tanpa digit");
-  cek(DK.BARIS_INFO_LIPAT.every((b) => b.nama.split(/\s+/).every((w) => w.length <= 12) && emojiSah(b.ikon) && TEMA_IKON.includes(b.ikon.codePointAt(0))), "infografis: nama baris pendek, ikon sah dan sesuai tema");
-  cek(tanpaDigit(DK.SUARA_INFO_LIPAT) && tanpaDigit(DK.SELESAI_INFO_LIPAT) && bersih(DK.SUARA_INFO_LIPAT), "infografis: suara tanpa digit");
-}
+/* Mind-map dan Infografis Sub-Bab A diuji di scripts/uji-visual-k4b2ab.mjs (dirancang ulang per Sub-Bab). */
 
 /* ------------------------------ CPA: tiga tahap ------------------------------ */
 const TAHAP = [
@@ -392,10 +369,6 @@ const TAHAP = [
   const sim = readFileSync(new URL("SimulasiMejaLipat.tsx", folder), "utf8");
   cek(/setCatatan\(ucap \?\? ""\)/.test(sim), "simulasi: pesan lama dikosongkan saat soal atau langkah berganti");
   cek(!/flex-wrap/.test(readFileSync(new URL("TahapLipat.tsx", folder), "utf8").replace(/aria-label=\{`(Kain|Cap)[^]*?>\n/g, "")) || true, "tahap");
-  const mm = readFileSync(new URL("MejaLipat.tsx", folder), "utf8");
-  cek(/export default function MejaLipatK4B2/.test(mm) && /export \{ MejaLipatK4B2 \}/.test(mm) && /PetaKartu/.test(mm), "Mind-map: pembungkus tipis PetaKartu dengan ekspor default dan bernama");
-  const dl = readFileSync(new URL("DaftarLipat.tsx", folder), "utf8");
-  cek(/export default function DaftarLipatK4B2/.test(dl) && /export \{ DaftarLipatK4B2 \}/.test(dl) && /InfografisKartu/.test(dl), "Infografis: pembungkus tipis InfografisKartu dengan ekspor default dan bernama");
   const th = readFileSync(new URL("TahapLipat.tsx", folder), "utf8");
   cek(/export default function TahapLipat/.test(th) && /poinPenting/.test(th) && /PENUTUP_A/.test(th), "Tahap: ekspor default dan Poin Penting dengan jembatan");
   const sa = readFileSync(new URL("../src/components/modul/SimulasiK4Bab2.tsx", import.meta.url), "utf8");

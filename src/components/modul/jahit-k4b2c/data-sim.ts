@@ -1,7 +1,7 @@
 /**
  * Data Simulasi Meja Jahit Kelas 4 Bab 2 Sub-Bab C "Meja Jahit Kak Sekar", cerita Sanggar Batik Kampung Mekar.
  * Data berbeda dari Story (satu per dua, dua per empat, empat per delapan, tiga per empat, enam per delapan, satu per tiga, empat per dua belas, delapan per dua belas, dua per tiga, sepuluh per lima belas,
- * tiga per lima, enam per sepuluh, dua belas per enam belas). Tiga sasaran tiap alat. Mind-map dan Infografis memakai data kartu (data-kartu.ts). Diuji: scripts/uji-jahit-k4b2c.mjs.
+ * tiga per lima, enam per sepuluh, dua belas per enam belas). Tiga sasaran tiap alat. Mind-map dan Infografis punya data sendiri (data-peta.ts dan data-info.ts). Diuji: scripts/uji-jahit-k4b2c.mjs.
  */
 
 /** Arsir: kain atas berarsir p/q; kain bawah dibagi r bagian (r kelipatan q); anak mengarsir bagian kain bawah sampai sama besar. */

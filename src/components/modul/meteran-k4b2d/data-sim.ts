@@ -1,7 +1,7 @@
 /**
  * Data Simulasi Meteran Kain Kelas 4 Bab 2 Sub-Bab D "Meteran Kain Pak Bagas" (pecahan per sepuluh dan per seratus menjadi desimal), Sanggar Batik Kampung Mekar.
  * Data berbeda dari Story (tiga per sepuluh, dua puluh tujuh per seratus, nol koma nol tiga, tujuh per sepuluh, tiga puluh lima per seratus, sembilan per seratus, empat puluh lima per seratus)
- * dan dari tugas CPA. Mind-map dan Infografis memakai data kartu (data-kartu.ts). Diuji: scripts/uji-meteran-k4b2d.mjs.
+ * dan dari tugas CPA. Mind-map dan Infografis punya data sendiri (data-peta.ts dan data-info.ts). Diuji: scripts/uji-meteran-k4b2d.mjs.
  */
 
 /** Warnai: desimal berkoma ditulis di papan, anak mewarnai kolom kisi sepuluh kolom sebanyak angka di belakang koma. */

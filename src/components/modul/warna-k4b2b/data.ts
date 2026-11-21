@@ -152,7 +152,7 @@ const POIN: [string, string][] = [
   ["Penyebut menunjukkan banyak bagian seluruhnya, dan pembilang menunjukkan banyak bagian yang diambil.", "Penyebut menunjukkan banyak bagian seluruhnya, dan pembilang menunjukkan banyak bagian yang diambil."],
   ["Pecahan berpenyebut sama punya bagian yang sama besar, jadi cukup membandingkan pembilangnya.", "Pecahan berpenyebut sama punya bagian yang sama besar, jadi cukup membandingkan pembilangnya."],
   ["Pembilang yang lebih besar berarti pecahan yang lebih besar.", "Pembilang yang lebih besar berarti pecahan yang lebih besar."],
-  ["Tanda < dibaca kurang dari, tanda > dibaca lebih dari, dan tanda = dibaca sama dengan. Mulut tanda menghadap pecahan yang lebih besar.", "Tanda kurang dari, tanda lebih dari, dan tanda sama dengan punya lambang sendiri. Mulut tanda menghadap pecahan yang lebih besar."],
+  ["Tanda < dibaca kurang dari, tanda > dibaca lebih dari, dan tanda = dibaca sama dengan. Sisi tanda yang terbuka menghadap pecahan yang lebih besar.", "Tanda kurang dari, tanda lebih dari, dan tanda sama dengan punya lambang sendiri. Mulut tanda menghadap pecahan yang lebih besar."],
   ["Pecahan berpenyebut sama bisa diurutkan lewat pembilangnya, dari yang terkecil atau dari yang terbesar.", "Pecahan berpenyebut sama bisa diurutkan lewat pembilangnya, dari yang terkecil atau dari yang terbesar."],
   ["Pada garis dari 0 sampai 1, pecahan yang lebih besar ada lebih ke kanan.", "Pada garis dari nol sampai satu, pecahan yang lebih besar ada lebih ke kanan."],
   ["Banding Pembilang, Batang Pecahan, dan Urut di Garis membantu membandingkan dan mengurutkan pecahan tanpa tertukar.", "Banding Pembilang, Batang Pecahan, dan Urut di Garis membantu membandingkan dan mengurutkan pecahan tanpa tertukar."],

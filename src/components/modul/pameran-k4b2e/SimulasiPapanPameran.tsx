@@ -30,7 +30,7 @@ import {
   type ModePameran,
 } from "./logika";
 import { desimalDari } from "./logika-cpa";
-import { MISI_PAMERAN_TEKS } from "./data-sim";
+import { MISI_PAMERAN_TEKS, kisiBaca } from "./data-sim";
 
 /**
  * Simulasi Kelas 4 Bab 2 Sub-Bab E: Papan Pameran (penutup bab, tema Sanggar Batik Kampung Mekar). Data sasaran berbeda dari Story. Eksplorasi bebas tanpa skor, tiga alat:
@@ -77,6 +77,7 @@ export default function SimulasiPapanPameran({ speakGuru, onKeadaan }: { speakGu
   const tk = targetKisi(k);
   const tg = targetGeser(k);
   const tb = targetBaca(k);
+  const kb = kisiBaca(tb);
   const terwarna = new Set(k.kisiWarna);
 
   const periksaK = () => {
@@ -200,10 +201,17 @@ export default function SimulasiPapanPameran({ speakGuru, onKeadaan }: { speakGu
 
         {k.mode === "baca" ? (
           <div className="space-y-2">
-            <p className="text-center text-xs font-black text-[#7C2D12]">Kisi sudah berwarna. Pilih persen dan desimalnya.</p>
-            <div className="mx-auto grid max-w-[420px] gap-0.5 rounded-xl border-4 border-[#9A3412] bg-white p-1.5" style={{ gridTemplateColumns: "repeat(10, minmax(0, 1fr))" }} role="img" aria-label="Kisi seratus kotak yang berwarna">
-              {Array.from({ length: 100 }, (_, i) => (
-                <span key={i} data-kotak={i < tb.p ? "1" : "0"} className={`aspect-square min-h-[12px] rounded-sm border ${i < tb.p ? "border-[#9A3412] bg-[#FB923C]" : "border-[#FDBA74] bg-[#FFFBEB]"}`} />
+            <p className="text-center text-xs font-black text-[#7C2D12]">
+              {tb.peny ? `Kisi ini ${kb.jumlah} kotak, ${kb.warna} kotak berwarna. Pilih persen dan desimalnya.` : "Kisi sudah berwarna. Pilih persen dan desimalnya."}
+            </p>
+            <div
+              className={`mx-auto grid gap-0.5 rounded-xl border-4 border-[#9A3412] bg-white p-1.5 ${kb.kolom === 5 ? "max-w-[210px]" : "max-w-[420px]"}`}
+              style={{ gridTemplateColumns: `repeat(${kb.kolom}, minmax(0, 1fr))` }}
+              role="img"
+              aria-label={`Kisi ${kb.jumlah} kotak, ${kb.warna} kotak berwarna`}
+            >
+              {Array.from({ length: kb.jumlah }, (_, i) => (
+                <span key={i} data-kotak={i < kb.warna ? "1" : "0"} className={`aspect-square min-h-[12px] rounded-sm border ${i < kb.warna ? "border-[#9A3412] bg-[#FB923C]" : "border-[#FDBA74] bg-[#FFFBEB]"}`} />
               ))}
             </div>
             <p className="text-center text-xs font-black text-[#7C2D12]">Persen</p>

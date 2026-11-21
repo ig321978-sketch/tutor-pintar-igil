@@ -1,8 +1,8 @@
-// Uji Mind-map (Meteran Pak Bagas), Infografis (Daftar Meteran), Simulasi Meteran Kain, dan tahap Concrete, Pictorial, Abstract Kelas 4 Bab 2 Sub-Bab D ("Meteran Kain Pak Bagas"),
+// Uji Mind-map (Meteran Pak Bagas), Infografis (Papan Kisi dan Jembatan Desimal), Simulasi Meteran Kain, dan tahap Concrete, Pictorial, Abstract Kelas 4 Bab 2 Sub-Bab D ("Meteran Kain Pak Bagas"),
 // Sanggar Batik Kampung Mekar (pecahan per sepuluh dan per seratus menjadi desimal satu dan dua angka di belakang koma).
 // Memeriksa: kata bilangan dan desimal berkoma (ejaan "nol koma dua tujuh"), pecahan bertingkat ke ucapan, tata letak gambar (kisi sepuluh kolom dan seratus kotak SUNGGUH sebanyak bagian berwarna, muat di kanvas, tidak bertumpuk),
 // logika simulasi (warnai kolom, kisi seratus kotak dengan alat menolak sepuluh kotak lepas, jembatan dengan Cek Jembatan, balik desimal ke pecahan), misi (awal tidak memenuhi, wajib empat, bebas dua),
-// sembilan kartu geser Masalah, Cara, Hasil dengan ikon bertema meteran dan kain, daftar meteran dari kejadian Story, CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode) dengan jawaban beragam dan Cari kesalahan di tiap tahap,
+// Mind-map kain bermeteran bergambar sendiri (lima label kosong) dan Infografis dua kartu (papan kisi, jembatan desimal) dari kejadian Story, CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode) dengan jawaban beragam dan Cari kesalahan di tiap tahap,
 // jawaban benar dihitung dari data, angka jawaban tidak kembar per tahap, tugas yang langsung siap, pengenal ucapan, petunjuk salah yang tidak membocorkan, umpan balik Abstract tanpa gambar atau kisi, batas rupa, emoji, kata terlarang, akhir baris.
 // Jalankan: node --no-warnings scripts/uji-meteran-k4b2d.mjs
 import { readFileSync, readdirSync } from "node:fs";
@@ -15,7 +15,8 @@ register(
 );
 const L = await import("../src/components/modul/meteran-k4b2d/logika.ts");
 const DS = await import("../src/components/modul/meteran-k4b2d/data-sim.ts");
-const DK = await import("../src/components/modul/meteran-k4b2d/data-kartu.ts");
+const DP = await import("../src/components/modul/meteran-k4b2d/data-peta.ts");
+const DI = await import("../src/components/modul/meteran-k4b2d/data-info.ts");
 const LC = await import("../src/components/modul/meteran-k4b2d/logika-cpa.ts");
 const D = await import("../src/components/modul/meteran-k4b2d/data.ts");
 const K = await import("../src/components/modul/meteran-k4b2d/periksa.ts");
@@ -230,26 +231,74 @@ const STORY_SERATUS = [27, 35, 45, 9];
   cek(C("persepuluhan", { jenis: "nama", nama: "persepuluhan" }).cocok && !C("perseratusan", { jenis: "nama", nama: "persepuluhan" }).cocok && C("sama", { jenis: "nama", nama: "sama" }).cocok && C("empat", { jenis: "angka", n: 4 }).cocok && !C("lima", { jenis: "angka", n: 4 }).cocok, "cocok ucapan");
 }
 
-/* ------------------------------ Mind-map dan Infografis ------------------------------ */
+/* ------------------------------ Mind-map (kain bermeteran) dan Infografis (papan kisi, jembatan desimal) ------------------------------ */
 {
-  cek(DK.KARTU_METERAN.length === 9, "mind-map: sembilan kartu");
-  cek(DK.KARTU_METERAN.every((k) => ["masalah", "cara", "hasil"].every((b) => k[b].label.length > 0 && k[b].arti.length > 0)), "mind-map: tiap kartu punya masalah, cara, hasil");
-  cek(DK.KARTU_METERAN.filter((k) => k.contoh.length > 0).length === 1 && DK.KARTU_METERAN[0].contoh.length === 1, "mind-map: satu kotak contoh di kartu pertama saja");
-  const semuaLabel = DK.KARTU_METERAN.flatMap((k) => [k.masalah.label, k.cara.label, k.hasil.label]);
-  cek(new Set(semuaLabel).size === semuaLabel.length, "mind-map: label tidak kembar");
-  cek(semuaLabel.every((t) => t.split(/\s+/).every((w) => w.length <= 12) && t.length <= 24), "mind-map: kata label paling panjang dua belas huruf supaya muat di 344 px");
-  cek(DK.KARTU_METERAN.every((k) => tanpaDigit(k.judul) && [k.masalah, k.cara, k.hasil].every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti)) && bersih(JSON.stringify(k)) && !/senilai/i.test(JSON.stringify(k))), "mind-map: tanpa digit dan kata terlarang");
-  const kartuTeks = JSON.stringify(DK.KARTU_METERAN);
-  for (const m of ["Kisi Persepuluhan", "Kisi Perseratusan", "Jembatan Desimal"]) cek(kartuTeks.includes(m), `mind-map memuat metode ${m}`);
-  // Ikon peta sesuai tema meteran dan kain.
-  const TEMA_OK = new Set(["\u{1F9F5}", "\u{1F4CF}", "\u{1F9F6}", "\u{1F380}", "\u{2702}", "\u{1F9E3}", "\u{1F455}", "\u{1F457}", "\u{1F9E6}", "\u{1F9E4}"]);
-  cek(DK.RINGKASAN_METERAN.ikon.length === 9 && new Set(DK.RINGKASAN_METERAN.ikon).size === 9 && DK.RINGKASAN_METERAN.ikon.every((e) => TEMA_OK.has(e)) && TEMA_OK.has(DK.RINGKASAN_METERAN.pusat) && DK.TEMA_KARTU_METERAN.ikon === "\u{1F4CF}", "mind-map: sembilan ikon berbeda semuanya benda kain atau alat ukur, pusat benang");
-  cek(tanpaDigit(DK.RINGKASAN_METERAN.suara) && tanpaDigit(DK.SUARA_KARTU_METERAN) && tanpaDigit(DK.SELESAI_KARTU_METERAN), "mind-map: suara tanpa digit");
-  cek(DK.BARIS_INFO_METERAN.length === 5 && DK.KOLOM_INFO_METERAN.length === 3 && DK.BARIS_INFO_METERAN.filter((b) => b.contoh.length > 0).length === 1 && DK.BARIS_INFO_METERAN[0].contoh.join() === "0,1,2", "infografis: lima baris tiga kolom, satu baris contoh penuh");
-  cek(DK.BARIS_INFO_METERAN.every((b) => b.isi.every((c) => c.t.split(/\s+/).every((w) => w.length <= 12) && c.t.length <= 26) && b.nama.split(/\s+/).every((w) => w.length <= 12) && emojiSah(b.ikon) && tanpaDigit([b.nama, ...b.isi.map((c) => c.t)].join(" ")) && bersih(JSON.stringify(b))), "infografis: kata pendek muat di 344 px, emoji sah, tanpa digit dan kata terlarang");
-  const infoTeks = JSON.stringify(DK.BARIS_INFO_METERAN);
-  cek(/Nol koma tiga/.test(infoTeks) && /Nol koma dua tujuh/.test(infoTeks) && /Nol koma nol tiga/.test(infoTeks) && /Jembatan/.test(infoTeks), "infografis: memuat kejadian Story (nol koma tiga, dua tujuh, nol tiga, jembatan)");
-  cek(tanpaDigit(DK.SUARA_INFO_METERAN) && tanpaDigit(DK.SELESAI_INFO_METERAN), "infografis: suara tanpa digit");
+  const P = DP.LANGKAH_METERAN;
+  const nama = (f) => readFileSync(new URL(f, folderUrl), "utf8");
+  const pt = nama("PetaMeteran.tsx");
+  const inf = nama("InfoMeteran.tsx");
+  cek(P.length === 5 && P.length >= 3 && P.length <= 6, "mind-map: lima langkah (jumlah mengikuti materi, antara tiga dan enam)");
+  cek(new Set(P.map((x) => x.judul)).size === P.length && P.every((x) => x.judul.split(/\s+/).every((w) => w.length <= 12) && x.judul.length <= 28), "mind-map: judul unik, kata paling panjang dua belas huruf, muat di label sempit");
+  cek(P.every((x) => tanpaDigit(x.judul) && tanpaDigit(x.arti) && bersih(x.judul) && bersih(x.arti) && x.arti.length > 30 && /^Langkah (satu|dua|tiga|empat|lima)\./.test(x.arti)), "mind-map: judul dan arti tanpa digit dan kata terlarang, arti diawali nomor langkah");
+  const gab = P.map((x) => `${x.judul} ${x.arti}`).join(" ");
+  for (const m of ["Kisi Persepuluhan", "Kisi Perseratusan", "Jembatan Desimal"]) cek(gab.includes(m), `mind-map memuat metode ${m}`);
+  for (const s of ["satu angka di belakang koma", "dua angka di belakang koma", "nol penjaga", "nol koma tiga", "nol koma nol tiga", "penyebut sepuluh", "penyebut seratus"]) cek(gab.toLowerCase().includes(s), `mind-map: memuat poin "${s}"`);
+  cek(tanpaDigit(DP.PETUNJUK_PETA + DP.SELESAI_PETA + DP.JUDUL_PETA) && bersih(DP.PETUNJUK_PETA + DP.SELESAI_PETA + DP.JUDUL_PETA) && emojiSah(DP.IKON_JUDUL_PETA), "mind-map: petunjuk dan pesan bersih");
+  // Angka gambar dari Story D dan hitungan benar.
+  cek(DP.PITA.n === 10 && DP.PITA.k === 3, "gambar pita: satu meter dibagi sepuluh, tiga bagian diwarnai (Story: tiga per sepuluh)");
+  cek(DP.KISI.n === 100 && DP.KISI.k === 27, "gambar kisi: seratus kotak, dua puluh tujuh diwarnai (Story)");
+  sama(DP.JEMBATAN.map((j) => [`${j.p}/${j.den}`, j.des]), [["3/10", "0,3"], ["27/100", "0,27"]], "gambar jembatan: tiga per sepuluh ke nol koma tiga, dua puluh tujuh per seratus ke nol koma dua tujuh");
+  sama([DP.NOL.p, DP.NOL.den, DP.NOL.des], [3, 100, "0,03"], "gambar nol penjaga: tiga per seratus ditulis nol koma nol tiga");
+  cek(DP.JEMBATAN.every((j) => Number(j.des.replace(",", ".")) === j.p / j.den && j.des.split(",")[1].length === (j.den === 10 ? 1 : 2)) && Number(DP.NOL.des.replace(",", ".")) === 0.03, "gambar: desimal sama besar dengan pecahan, banyak angka di belakang koma sesuai penyebut");
+  // Kode komponen: bukan PetaKartu/PetaLabel, gambar sebanyak data, perilaku label kosong.
+  cek(!/peta-kartu|peta-label|PetaKartu|PetaLabel|InfografisKartu|InfoKartu|data-kartu/.test(pt + inf), "PetaMeteran dan InfoMeteran: komponen sendiri (bukan PetaKartu, PetaLabel, InfoKartu)");
+  cek(/Array\.from\(\{ length: PITA\.n \}/.test(pt) && /Array\.from\(\{ length: KISI\.n \}/.test(pt) && /i < PITA\.k/.test(pt) && /i < KISI\.k/.test(pt) && /JEMBATAN\.map/.test(pt) && /Array\.from\(\{ length: 100 \}/.test(pt) && /i < NOL\.p/.test(pt) && /data-penjaga=/.test(pt), "PetaMeteran: pita, kisi seratus kotak, jembatan, dan kotak nol penjaga digambar sebanyak data");
+  cek(/LANGKAH_METERAN\.map|LANGKAH_METERAN\[n\]/.test(pt) && /speakGuru\(LANGKAH_METERAN\[n\]\.arti\)/.test(pt) && /terbuka \? l\.judul : "\?"/.test(pt) && /selesai \? \(/.test(pt) && /onLanjut/.test(pt) && /teksLanjut/.test(pt) && /lb\(0\)/.test(pt) && /lb\(4\)/.test(pt), "PetaMeteran: label kosong diketuk memunculkan judul dan dibacakan, tombol lanjut setelah semua terbuka");
+  cek(/export default function PetaMeteranK4B2/.test(pt) && /export \{ PetaMeteranK4B2 \}/.test(pt) && /from "\.\/PetaMeteran"/.test(nama("MeteranKain.tsx")) && /export default function MeteranKainK4B2/.test(nama("MeteranKain.tsx")) && /export \{ MeteranKainK4B2 \}/.test(nama("MeteranKain.tsx")), "MeteranKain: nama dari alur dipertahankan, pembungkus PetaMeteran");
+  // Ukuran huruf SVG: render minimal 0,8 dari viewBox (kisi 92 dari 110, jembatan 104 dari 130, pita 272 dari 270, nol penjaga 148 dari 150), jadi efektif = font x 0,9 harus >= 10.
+  const fontPt = [...pt.matchAll(/fontSize=\{(\d+)\}/g)].map((m) => Number(m[1]));
+  cek(fontPt.length >= 5 && Math.min(...fontPt) * 0.8 >= 10, `PetaMeteran: teks SVG paling kecil ${Math.min(...fontPt)} (efektif >= 10)`);
+  cek(!/text-\[(9|10)px\]/.test(pt + inf), "PetaMeteran dan InfoMeteran: teks HTML paling kecil 11 px");
+
+  // Infografis kartu 1.
+  const G = DI.GAMBAR;
+  cek(G.length === 5 && G.every((g) => g.sel.length === 2), "infografis kartu 1: lima gambar (dua pita, tiga kisi), dua isian tertutup tiap gambar");
+  sama(G.map((g) => [g.bentuk, g.p, g.den]), [["pita", 7, 10], ["pita", 3, 10], ["kisi", 35, 100], ["kisi", 27, 100], ["kisi", 9, 100]], "infografis kartu 1: angka Story (7/10, 3/10, 35/100, 27/100, 9/100)");
+  sama(G.map((g) => g.sel.map((s) => s.t)), [["7/10", "0,7"], ["3/10", "0,3"], ["35/100", "0,35"], ["27/100", "0,27"], ["9/100", "0,09"]], "infografis kartu 1: pecahan dan desimal tertutup (nol penjaga pada 0,09)");
+  cek(G.every((g) => Number(g.sel[1].t.replace(",", ".")) === g.p / g.den && g.sel[1].t.split(",")[1].length === (g.den === 10 ? 1 : 2)), "infografis kartu 1: desimal sama besar dengan pecahan, angka di belakang koma sesuai penyebut");
+  const J = DI.JEMBATAN_INFO;
+  cek(J.length === 6, "infografis kartu 2: enam jembatan");
+  sama(J.map((j) => j.kanan.t), ["1 angka", "2 angka", "0,1", "0,07", "25/100", "3/100"], "infografis kartu 2: ujung kanan tertutup");
+  sama(J.map((j) => j.kiri.t), ["Penyebut 10", "Penyebut 100", "1/10", "7/100", "0,25", "0,03"], "infografis kartu 2: ujung kiri terlihat (aturan, pecahan ke desimal, desimal ke pecahan)");
+  cek(0.1 === 1 / 10 && 0.07 === 7 / 100 && 0.25 === 25 / 100 && 0.03 === 3 / 100, "infografis kartu 2: hitungan benar");
+  const semuaSuara = [...G.flatMap((g) => g.sel.map((s) => s.suara)), ...J.map((j) => j.kanan.suara), DI.PETUNJUK_INFO_1, DI.PETUNJUK_INFO_2, DI.SELESAI_INFO_1, DI.SELESAI_INFO_2];
+  cek(semuaSuara.every((t) => tanpaDigit(t) && bersih(t) && /^[A-Z]/.test(t) && !/\s[.,!?;:]/.test(t)), "infografis: semua suara tanpa digit dan kata terlarang, diawali huruf kapital");
+  cek(/nol koma dua tujuh/.test(G[3].sel[1].suara) && /dua angka di belakang koma/.test(G[3].sel[1].suara) && /nol koma nol sembilan/.test(G[4].sel[1].suara) && /nol koma tiga\b/.test(G[1].sel[1].suara) && /satu angka di belakang koma/.test(G[1].sel[1].suara), "infografis kartu 1: suara mengeja desimal dan banyak angka di belakang koma");
+  cek(/nol penjaga/.test(J[3].kanan.suara) && /nol koma nol tiga/i.test(J[5].kanan.suara) && /tiga per seratus/.test(J[5].kanan.suara) && /dua puluh lima per seratus/.test(J[4].kanan.suara), "infografis kartu 2: suara mengeja nol penjaga dan arah balik ke pecahan");
+  cek(!/peta-kartu|peta-label|InfoKartu|InfografisKartu|PetaLabel|<table/.test(inf) && /GAMBAR\.slice/.test(inf) && /JEMBATAN_INFO\.map/.test(inf) && /Array\.from\(\{ length: gb\.den \}/.test(inf) && (inf.match(/Array\.from\(\{ length: gb\.den \}/g) ?? []).length === 2 && /i < gb\.p/.test(inf) && /data-bagian=\{gb\.den\}/.test(inf) && /Busur/.test(inf), "InfoMeteran: komponen sendiri (bukan InfoKartu, bukan tabel), pita dan kisi digambar sebanyak kolom dan kotaknya, banyak diwarnai dari data");
+  cek(/speakGuru/.test(inf) && /onLanjut/.test(inf) && /teksLanjut/.test(inf) && /kartu === 1 && selesai/.test(inf) && /kartu === 2 && selesai/.test(inf) && /export default function InfoMeteranK4B2/.test(inf) && /export \{ InfoMeteranK4B2 \}/.test(inf), "InfoMeteran: Berikutnya dan Lanjut hanya setelah semua kotak terbuka, ekspor InfoMeteranK4B2");
+  const dk = nama("DaftarMeteran.tsx");
+  cek(/from "\.\/InfoMeteran"/.test(dk) && /export default function DaftarMeteranK4B2/.test(dk) && /export \{ DaftarMeteranK4B2 \}/.test(dk), "DaftarMeteran: nama dari alur dipertahankan, pembungkus InfoMeteran");
+  cek(!/<text/.test(inf) && !/fontSize=\{/.test(inf), "InfoMeteran: tanpa teks SVG (gambar saja, angka di kotak HTML)");
+}
+
+/* ------------------------------ Hasil ukur peramban: tinggi, kata utuh, aria, rupa jembatan ------------------------------ */
+{
+  const nama = (f) => readFileSync(new URL(f, folderUrl), "utf8");
+  const pt = nama("PetaMeteran.tsx");
+  const inf = nama("InfoMeteran.tsx");
+  const petunjuk = [DP.PETUNJUK_PETA, DI.PETUNJUK_INFO_1, DI.PETUNJUK_INFO_2];
+  cek(petunjuk.every((t) => t.length <= 66 && (t.match(/[.!?]/g) ?? []).length === 1 && tanpaDigit(t) && bersih(t)), "petunjuk: satu kalimat, paling banyak 66 huruf");
+  cek(!/rounded-lg bg-\[#[0-9A-F]+\] py-1 text-center/.test(pt + inf) && !/Kartu \{kartu\} dari 2/.test(inf) && !/JUDUL_PETA|IKON_JUDUL_PETA/.test(pt), "tanpa pill judul dan tanpa penanda Kartu x dari 2 (hemat tinggi)");
+  // Ukur peramban 344x760 sebelum perapian: Mind-map 715, Infografis kartu 2 670 (batas 640). Hemat terbukti dari kode: pill 36, petunjuk 25, penanda kartu 24, gambar kisi 112 menjadi 92 (20).
+  const kisi = Number(/max-w-\[(\d+)px\]" role="img" aria-label="kisi/.exec(pt)?.[1] ?? 112);
+  const hematPeta = 36 + 25 + (112 - kisi);
+  cek(kisi <= 92 && 715 - hematPeta <= 640 && 670 - (36 + 25 + 24) <= 640, `perkiraan tinggi: Mind-map ${715 - hematPeta}, Infografis kartu 2 ${670 - 85} (<= 640)`);
+  const kataMax = Math.max(...DP.LANGKAH_METERAN.flatMap((x) => x.judul.split(/\s+/).map((w) => w.length)));
+  cek(kataMax * 7.6 <= 86 && /px-2/.test(inf) && /6.6rem/.test(inf), `kata label terpanjang ${kataMax} huruf muat utuh di label separuh lebar (tanpa patah)`);
+  cek(/<text x=\{20\} y=\{10\}/.test(pt) && /x=\{20 \+ PITA\.n \* w\}/.test(pt) && 20 + 10 * 23 + 16 <= 270, "pita: angka nol dan satu meter punya margin di tepi svg");
+  cek(/tutup=\{`/.test(inf) && !/Isi kosong, ketuk untuk membuka/.test(inf) && /Seberang jembatan/.test(inf) && /"Pecahan" : "Desimal"/.test(inf), "aria-label sel tertutup menyebut kolom dan isinya (bukan kalimat generik)");
+  cek(/data-busur/.test(inf) && /#7DD3FC/.test(inf) && /\[4, 14\]|\[14, 24, 36, 46\]/.test(inf) && /bg-\[#E0F2FE\]/.test(inf) && /bg-\[#FEF3C7\]/.test(inf), "Infografis kartu 2: rupa sungai (jembatan berpagar, air, tepi) berbeda dari daftar sel biasa");
 }
 
 /* ------------------------------ CPA: dua belas langkah per tahap ------------------------------ */
@@ -370,7 +419,7 @@ const TAHAP = { CONCRETE: [D.CONCRETE, "benda", [2, 3, 4]], PICTORIAL: [D.PICTOR
 /* ------------------------------ Batas rupa, emoji, kata terlarang, akhir baris ------------------------------ */
 {
   const berkas = readdirSync(folderUrl).filter((f) => /\.(ts|tsx)$/.test(f));
-  for (const f of ["DaftarMeteran.tsx", "GambarMeteran.tsx", "JawabMeteran.tsx", "LangkahMeteran.tsx", "MeteranKain.tsx", "SimulasiMeteranKain.tsx", "TahapMeteran.tsx", "data-kartu.ts", "data-sim.ts", "data.ts", "logika-cpa.ts", "logika.ts", "periksa.ts", "tata.ts"]) cek(berkas.includes(f), `${f} ada`);
+  for (const f of ["DaftarMeteran.tsx", "GambarMeteran.tsx", "JawabMeteran.tsx", "LangkahMeteran.tsx", "MeteranKain.tsx", "SimulasiMeteranKain.tsx", "TahapMeteran.tsx", "data-peta.ts", "data-info.ts", "PetaMeteran.tsx", "InfoMeteran.tsx", "data-sim.ts", "data.ts", "logika-cpa.ts", "logika.ts", "periksa.ts", "tata.ts"]) cek(berkas.includes(f), `${f} ada`);
   for (const f of berkas) {
     const s = readFileSync(new URL(f, folderUrl), "utf8");
     cek(emojiSah(s), `${f}: emoji paling tinggi U+1FA95 tanpa ZWJ`);

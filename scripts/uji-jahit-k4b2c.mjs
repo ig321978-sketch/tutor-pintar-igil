@@ -1,8 +1,8 @@
-// Uji Mind-map (Meja Jahit), Infografis (Nota Pesanan), Simulasi Meja Jahit, dan tahap Concrete, Pictorial, Abstract Kelas 4 Bab 2 Sub-Bab C ("Meja Jahit Kak Sekar"),
+// Uji Mind-map (Meja Jahit), Infografis (Deret Potongan dan Kotak Jahit), Simulasi Meja Jahit, dan tahap Concrete, Pictorial, Abstract Kelas 4 Bab 2 Sub-Bab C ("Meja Jahit Kak Sekar"),
 // cerita Sanggar Batik Kampung Mekar (pecahan yang sama besar: dikali atau dibagi bilangan sama pada pembilang dan penyebut, menyederhanakan).
 // Memeriksa: logika simulasi (arsir kain bawah sungguh sebanyak bagian yang diminta, kali dengan alat menolak cara tambah, bagi dengan alat menolak pembagi yang tidak membagi habis,
-// pasang kartu yang sama besar), misi (awal tidak memenuhi, wajib empat, bebas dua, tolak hanya dari cara tambah), sembilan kartu geser Masalah, Cara, Hasil memuat semua metode Story,
-// nota pesanan dari kejadian Story, CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode) dengan jawaban beragam dan Cari kesalahan di tiap tahap, jawaban benar dihitung dari data,
+// pasang kartu yang sama besar), misi (awal tidak memenuhi, wajib empat, bebas dua, tolak hanya dari cara tambah), Mind-map meja jahit bergambar sendiri (lima label kosong memuat semua metode Story),
+// Infografis dua kartu (deret potongan kain dan kotak jahit) dari kejadian Story, CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode) dengan jawaban beragam dan Cari kesalahan di tiap tahap, jawaban benar dihitung dari data,
 // angka jawaban kanvas tidak kembar per tahap, tugas yang langsung siap, pengenal ucapan, petunjuk salah tanpa membocorkan jawaban, batas rupa, emoji, kata terlarang, akhir baris.
 // Jalankan: node --no-warnings scripts/uji-jahit-k4b2c.mjs
 import { readFileSync, readdirSync } from "node:fs";
@@ -15,7 +15,8 @@ register(
 );
 const L = await import("../src/components/modul/jahit-k4b2c/logika.ts");
 const DS = await import("../src/components/modul/jahit-k4b2c/data-sim.ts");
-const DK = await import("../src/components/modul/jahit-k4b2c/data-kartu.ts");
+const DP = await import("../src/components/modul/jahit-k4b2c/data-peta.ts");
+const DI = await import("../src/components/modul/jahit-k4b2c/data-info.ts");
 const LC = await import("../src/components/modul/jahit-k4b2c/logika-cpa.ts");
 const D = await import("../src/components/modul/jahit-k4b2c/data.ts");
 const K = await import("../src/components/modul/jahit-k4b2c/periksa.ts");
@@ -136,47 +137,82 @@ const pc = (p, q) => `${p}/${q}`;
   sama(S.misiBaru(M, { ...a, arsirBenar: [0, 1], kaliBenar: [0], bagiBenar: [0], pasangBenar: [0], tolak: true }, new Set()), ["c-arsir", "c-kali", "c-bagi", "c-pasang", "c-tolak", "c-dua"], "misi C: semua misi tercapai");
 }
 
-/* ------------------------------ Mind-map: meja jahit (sembilan kartu geser) ------------------------------ */
+/* ------------------------------ Mind-map: meja jahit (gambar sendiri, label kosong) ------------------------------ */
 {
-  const KA = DK.KARTU_JAHIT;
-  cek(KA.length === 9, "kartu: sembilan kartu");
-  cek(KA.every((k) => k.contoh.length <= 1) && KA[0].contoh.join() === "masalah" && KA.slice(1).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di kartu pertama saja, sisanya mandiri");
-  const semua = KA.flatMap((k) => [k.masalah, k.cara, k.hasil]);
-  const label = semua.map((x) => x.label);
-  cek(new Set(label).size === label.length, "kartu: label unik");
-  cek(semua.every((x) => x.label.length >= 5 && x.label.length <= 36), `kartu: label pendek (terpanjang ${Math.max(...label.map((l) => l.length))} huruf)`);
-  cek(label.every((l) => l.split(/\s+/).every((w) => w.length <= 12)) && label.every((l) => l.split(/\s+/).length <= 6), "kartu: kata label paling banyak dua belas huruf dan label paling banyak enam kata (muat di 344 piksel)");
-  cek(semua.every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti) && bersih(x.label) && bersih(x.arti) && x.arti.length > 10), "kartu: label dan arti tanpa digit dan kata terlarang");
-  cek(KA.every((k) => tanpaDigit(k.judul) && bersih(k.judul) && k.judul.length > 3), "kartu: judul bersih");
-  cek(["Cocokkan Daerah", "Kali Bentuk Satu", "Bagi Keduanya"].every((m, i) => KA[6 + i].cara.label === m), "kartu: tiga metode global di tiga kartu terakhir dengan nama Indonesia");
-  const gab = KA.map((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label, k.masalah.arti, k.cara.arti, k.hasil.arti].join(" ")).join(" ").toLowerCase();
-  for (const s of ["sama besar", "tumpuk", "menambah", "kalikan", "bagi", "sederhana", "pembilang", "penyebut", "bilangan yang sama", "arsiran"]) cek(gab.includes(s), `kartu: memuat poin "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|kak sekar|pak bagas|kancing|mesin|benang|baju|meja)\\b", "i").test(gab), "kartu: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
-  cek(tanpaDigit(DK.SUARA_KARTU_JAHIT + DK.SELESAI_KARTU_JAHIT) && bersih(DK.SUARA_KARTU_JAHIT + DK.SELESAI_KARTU_JAHIT), "kartu: suara dan pesan selesai tanpa digit dan kata terlarang");
-  cek(emojiSah(DK.TEMA_KARTU_JAHIT.ikon) && DK.TEMA_KARTU_JAHIT.judul.length > 5, "kartu: tema sah");
-  const RG = DK.RINGKASAN_JAHIT;
-  const luarTema = [0x1f6d1, 0x1f39f, 0x1fa74, 0x2602, 0x1f9a0];
-  cek(RG.ikon.length === DK.KARTU_JAHIT.length && new Set(RG.ikon).size === RG.ikon.length && [...RG.ikon, RG.pusat].every((e) => emojiSah(e) && !/[A-Za-z0-9]/.test(e) && ![...e].some((c) => IKAN.includes(c.codePointAt(0)) || luarTema.includes(c.codePointAt(0)))), "peta radial: satu gambar unik per kartu, gambar sah tanpa huruf dan tanpa ikan");
-  cek([RG.pusat, ...RG.ikon].every((e) => [...e].length === 1) && ![...RG.ikon, RG.pusat].some((e) => ["\u{2702}", "\u{2716}", "\u{2602}"].includes(e)), "peta radial: tiap gambar satu karakter emoji berwarna, tanpa yang tampil hitam");
-  cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
-  const ikonTema = new Set(["\u{1F9F5}", "\u{1F4D1}", "\u{2795}", "\u{1F522}", "\u{2797}", "\u{270B}", "\u{1F4D0}", "\u{1F380}", "\u{1F4CF}", "\u{1F457}"]);
-  cek([...RG.ikon, RG.pusat].every((e) => ikonTema.has(e)), "peta radial: ikon sesuai tema jahit, kain, dan pecahan (tanpa benda di luar tema)");
+  const P = DP.LANGKAH_JAHIT;
+  const nama = (f) => readFileSync(new URL(f, folder), "utf8");
+  const pt = nama("PetaJahit.tsx");
+  const inf = nama("InfoJahit.tsx");
+  cek(P.length === 5 && P.length >= 3 && P.length <= 6, "mind-map: lima langkah (jumlah mengikuti materi, antara tiga dan enam)");
+  cek(new Set(P.map((x) => x.judul)).size === P.length && P.every((x) => x.judul.split(/\s+/).every((w) => w.length <= 12) && x.judul.length <= 26), "mind-map: judul unik, kata paling panjang dua belas huruf, muat di label sempit");
+  cek(P.every((x) => tanpaDigit(x.judul) && tanpaDigit(x.arti) && bersih(x.judul) && bersih(x.arti) && x.arti.length > 30 && /^Langkah (satu|dua|tiga|empat|lima)\./.test(x.arti)), "mind-map: judul dan arti tanpa digit dan kata terlarang, arti diawali nomor langkah");
+  const gab = P.map((x) => `${x.judul} ${x.arti}`).join(" ").toLowerCase();
+  for (const s of ["cocokkan daerah", "kali bentuk satu", "bagi keduanya", "menambah", "tumpuk", "sama besar", "pembilang dan penyebut", "sederhana", "membagi habis"]) cek(gab.includes(s), `mind-map: memuat poin "${s}"`);
+  cek(tanpaDigit(DP.PETUNJUK_PETA + DP.SELESAI_PETA + DP.JUDUL_PETA) && bersih(DP.PETUNJUK_PETA + DP.SELESAI_PETA + DP.JUDUL_PETA) && emojiSah(DP.IKON_JUDUL_PETA), "mind-map: petunjuk dan pesan bersih");
+  // Angka gambar dari Story C dan hitungan benar.
+  sama(DP.TUMPUKAN.map((t) => pc(t.p, t.q)), ["1/2", "2/4", "4/8"], "gambar tumpuk: satu per dua, dua per empat, empat per delapan (Story)");
+  cek(DP.TUMPUKAN.every((t) => t.p * 2 === t.q), "gambar tumpuk: ketiganya sama besar (setengah)");
+  sama(pc(DP.hasilTambah().p, DP.hasilTambah().q), "3/4", "gambar tambah: satu per dua ditambah dua pada keduanya jadi tiga per empat (salah Satria)");
+  cek(DP.hasilTambah().p * 2 !== DP.hasilTambah().q, "gambar tambah: hasil tambah tidak sama besar dengan satu per dua");
+  sama(DP.rantaiKali().map((t) => pc(t.p, t.q)), ["1/2", "2/4", "4/8"], "gambar kali: rantai dikali dua dua kali (1/2, 2/4, 4/8)");
+  sama([pc(DP.BAGI_DUA.dari.p, DP.BAGI_DUA.dari.q), pc(DP.hasilBagi().p, DP.hasilBagi().q)], ["6/8", "3/4"], "gambar bagi: enam per delapan dibagi dua jadi tiga per empat (Story)");
+  cek(DP.fpbPeta(DP.hasilBagi().p, DP.hasilBagi().q) === 1, "gambar henti: tiga per empat sudah paling sederhana");
+  // Kode komponen: bukan PetaKartu/PetaLabel, gambar sebanyak data, perilaku label kosong.
+  cek(!/peta-kartu|peta-label|PetaKartu|PetaLabel|InfografisKartu|InfoKartu|data-kartu/.test(pt + inf), "PetaJahit dan InfoJahit: komponen sendiri (bukan PetaKartu, PetaLabel, InfoKartu)");
+  cek(/Array\.from\(\{ length: n \}/.test(pt) && /data-kain=/.test(pt) && /data-arsir=/.test(pt) && /<Kain /.test(pt) && /TUMPUKAN\.map/.test(pt) && /rantaiKali\(\)/.test(pt) && /hasilTambah\(\)/.test(pt) && /hasilBagi\(\)/.test(pt), "PetaJahit: potongan kain digambar sebanyak bagiannya dari data (tumpukan, tambah, rantai kali, bagi)");
+  cek(/LANGKAH_JAHIT\.map/.test(pt) && /speakGuru\(LANGKAH_JAHIT\[n\]\.arti\)/.test(pt) && /terbuka \? l\.judul : "\?"/.test(pt) && /selesai \? \(/.test(pt) && /onLanjut/.test(pt) && /teksLanjut/.test(pt), "PetaJahit: label kosong diketuk memunculkan judul dan dibacakan, tombol lanjut setelah semua terbuka");
+  cek(/export default function PetaJahitK4B2/.test(pt) && /export \{ PetaJahitK4B2 \}/.test(pt) && /from "\.\/PetaJahit"/.test(nama("MejaJahit.tsx")) && /export default function MejaJahitK4B2/.test(nama("MejaJahit.tsx")) && /export \{ MejaJahitK4B2 \}/.test(nama("MejaJahit.tsx")), "MejaJahit: nama dari alur dipertahankan, pembungkus PetaJahit");
+  // Ukuran huruf SVG: render minimal 0,8 dari viewBox (kolom gambar sekitar 134 dari 160), jadi efektif = font x 0,8 harus >= 10.
+  const fontPt = [...pt.matchAll(/fontSize=\{(\d+)\}/g)].map((m) => Number(m[1]));
+  const fsTingkat = [...pt.matchAll(/fs = (\d+)/g), ...pt.matchAll(/fs=\{(\d+)\}/g)].map((m) => Number(m[1]));
+  cek(fontPt.length >= 4 && fsTingkat.length >= 2 && Math.min(...fontPt, ...fsTingkat) * 0.75 >= 10.5, `PetaJahit: teks SVG paling kecil ${Math.min(...fontPt, ...fsTingkat)} (efektif >= 10)`);
+  cek([...pt.matchAll(/viewBox="0 0 (\d+) \d+"/g)].every((m) => Number(m[1]) <= 160) && !/text-\[(9|10)px\]/.test(pt + inf), "PetaJahit: lebar viewBox paling besar 160 (kolom gambar tidak mengecil) dan teks HTML paling kecil 11 px");
 }
 
-/* ------------------------------ Infografis: nota pesanan (satu tabel lima baris) ------------------------------ */
+/* ------------------------------ Infografis: deret potongan dan kotak jahit (dari benda dan angka Story C) ------------------------------ */
 {
-  const B = DK.BARIS_INFO_JAHIT;
-  cek(B.length === 5 && DK.KOLOM_INFO_JAHIT.length === 3, "infografis: lima baris dan tiga kolom");
-  cek(B.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: tiap baris tiga isian, emoji sah");
-  cek(B.map((b) => b.contoh.length).join() === "3,0,0,0,0", "infografis: baris satu penuh contoh, baris dua sampai lima mandiri");
-  const semua = B.flatMap((b) => b.isi);
-  cek(B.every((b) => new Set(b.isi.map((x) => x.t)).size === 3) && new Set(semua.map((x) => x.t)).size === semua.length, "infografis: semua label unik");
-  cek(semua.every((x) => x.t.length <= 28 && x.t.split(/\s+/).length <= 5 && x.t.split(/\s+/).every((w) => w.length <= 12) && bersih(x.t) && bersih(x.s ?? "") && tanpaDigit(x.s ?? x.t)), "infografis: label pendek (paling banyak lima kata, tiap kata paling banyak dua belas huruf), tanpa kata terlarang dan tanpa digit");
-  cek(B.every((b) => b.nama.split(/\s+/).every((w) => w.length <= 16)), "infografis: nama baris muat");
-  const gab = B.map((b) => [b.nama, ...b.isi.map((x) => x.t)].join(" ")).join(" ").toLowerCase();
-  for (const s of ["menumpuk potongan", "menambah angka", "mengalikan", "membagi", "sederhanakan", "pecahan sama besar", "besar berubah", "besar tetap sama", "tak bisa dibagi lagi"]) cek(gab.includes(s), `infografis: memuat "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|kak sekar)\\b", "i").test(gab), "infografis: tanpa nama tokoh");
-  cek(tanpaDigit(DK.SUARA_INFO_JAHIT + DK.SELESAI_INFO_JAHIT) && bersih(DK.SUARA_INFO_JAHIT + DK.SELESAI_INFO_JAHIT) && emojiSah(DK.TEMA_INFO_JAHIT.ikon), "infografis: suara dan tema bersih");
+  const nama = (f) => readFileSync(new URL(f, folder), "utf8");
+  const inf = nama("InfoJahit.tsx");
+  const PT = DI.POTONGAN;
+  const KT = DI.KANTONG;
+  cek(PT.length === 5 && PT.every((p) => p.sel.length === 2), "infografis kartu 1: lima potongan kain, dua isian tertutup tiap potongan");
+  sama(PT.map((p) => pc(p.p, p.q)), ["1/2", "2/4", "4/8", "6/8", "3/4"], "infografis kartu 1: potongan Story (1/2, 2/4, 4/8, 6/8, dan 3/4 hasil tambah dua)");
+  sama(PT.map((p) => p.salah), [false, false, false, false, true], "infografis kartu 1: hanya potongan hasil tambah yang keliru");
+  sama(PT.map((p) => p.sel.map((s) => s.t)), [["1/2", "awal"], ["2/4", "× 2"], ["4/8", "× 4"], ["6/8", "÷ 2 = 3/4"], ["3/4", "≠ 1/2"]], "infografis kartu 1: isian tertutup");
+  cek(PT.slice(0, 3).every((p) => p.p * 2 === p.q) && PT[0].q * 2 === PT[1].q && PT[0].q * 4 === PT[2].q && PT[3].p / PT[3].q === 0.75 && PT[4].p / PT[4].q === 0.75 && PT[4].p * 2 !== PT[4].q, "infografis kartu 1: hitungan benar (x2 dan x4 sama besar, 6/8 sama dengan 3/4, tambah dua tidak sama dengan 1/2)");
+  const semuaSuara = [...PT.flatMap((p) => p.sel.map((s) => s.suara)), ...KT.map((k) => k.suara), DI.PETUNJUK_INFO_1, DI.PETUNJUK_INFO_2, DI.SELESAI_INFO_1, DI.SELESAI_INFO_2];
+  cek(semuaSuara.every((t) => tanpaDigit(t) && bersih(t) && /^[A-Z]/.test(t) && !/\s[.,!?;:]/.test(t)), "infografis: semua suara tanpa digit dan kata terlarang, diawali huruf kapital");
+  cek(/dikali dua/.test(PT[1].sel[1].suara) && /dikali empat/.test(PT[2].sel[1].suara) && /dibagi dua/.test(PT[3].sel[1].suara) && /tiga per empat/.test(PT[3].sel[1].suara) && /keliru/.test(PT[4].sel[1].suara), "infografis kartu 1: suara mengeja kali, bagi, dan cara keliru");
+  cek(KT.length === 5 && KT.map((k) => k.label).join() === "Cocokkan Daerah,Kali Bentuk Satu,Bagi Keduanya,Berhenti,Jangan menambah", "infografis kartu 2: lima kantong (tiga metode, berhenti, jangan menambah)");
+  cek(KT.every((k) => emojiSah(k.ikon) && k.label.split(/\s+/).every((w) => w.length <= 12) && k.isi.length <= 16), "infografis kartu 2: ikon sah, label dan isi pendek");
+  sama(KT.map((k) => k.isi), ["arsiran sama", "× 4/4 = 4/12", "÷ 4 = 2/3", "tak terbagi lagi", "besar berubah"], "infografis kartu 2: isi tertutup dari video metode Story");
+  cek(KT[1].lihat.join("/") === "1/3" && 1 * 4 === 4 && 3 * 4 === 12 && KT[2].lihat.join("/") === "8/12" && 8 / 4 === 2 && 12 / 4 === 3 && KT[3].lihat.join("/") === "2/3" && fpb(2, 3) === 1, "infografis kartu 2: hitungan benar (1/3 x 4/4 = 4/12, 8/12 : 4 = 2/3, 2/3 paling sederhana)");
+  cek(KT[0].gambar.length === 2 && KT[0].gambar[0].n === 3 && KT[0].gambar[0].k === 1 && KT[0].gambar[1].n === 6 && KT[0].gambar[1].k === 2 && KT[0].gambar[0].k / KT[0].gambar[0].n === KT[0].gambar[1].k / KT[0].gambar[1].n, "infografis kartu 2: Cocokkan Daerah digambar dua potongan (sepertiga dan dua per enam) sama panjang arsirannya");
+  cek(!/peta-kartu|peta-label|InfoKartu|InfografisKartu|PetaLabel|<table/.test(inf) && /POTONGAN\.map/.test(inf) && /KANTONG\.map/.test(inf) && /Array\.from\(\{ length: n \}/.test(inf) && /Array\.from\(\{ length: s\.n \}/.test(inf) && /data-kain=/.test(inf) && /data-arsir=/.test(inf) && /DuaPotongan/.test(inf) && /KainGantung/.test(inf), "InfoJahit: komponen sendiri (bukan InfoKartu, bukan tabel), potongan kain digambar sebanyak bagiannya");
+  cek(/speakGuru/.test(inf) && /onLanjut/.test(inf) && /teksLanjut/.test(inf) && /kartu === 1 && selesai/.test(inf) && /kartu === 2 && selesai/.test(inf) && /export default function InfoJahitK4B2/.test(inf) && /export \{ InfoJahitK4B2 \}/.test(inf), "InfoJahit: Berikutnya dan Lanjut hanya setelah semua kotak terbuka, ekspor InfoJahitK4B2");
+  const dk = nama("DaftarJahit.tsx");
+  cek(/from "\.\/InfoJahit"/.test(dk) && /export default function DaftarJahitK4B2/.test(dk) && /export \{ DaftarJahitK4B2 \}/.test(dk), "DaftarJahit: nama dari alur dipertahankan, pembungkus InfoJahit");
+  cek(!/<text/.test(inf) && !/fontSize=\{/.test(inf) && !/text-\[(9|10)px\]/.test(inf), "InfoJahit: tanpa teks SVG, teks HTML paling kecil 11 px");
+  cek(!/(²|³)/.test(inf), "InfoJahit: tanpa pangkat");
+}
+
+/* ------------------------------ Hasil ukur peramban: tinggi, kata utuh, aria ------------------------------ */
+{
+  const nama = (f) => readFileSync(new URL(f, folder), "utf8");
+  const pt = nama("PetaJahit.tsx");
+  const inf = nama("InfoJahit.tsx");
+  const petunjuk = [DP.PETUNJUK_PETA, DI.PETUNJUK_INFO_1, DI.PETUNJUK_INFO_2];
+  cek(petunjuk.every((t) => t.length <= 66 && (t.match(/[.!?]/g) ?? []).length === 1 && tanpaDigit(t) && bersih(t)), "petunjuk: satu kalimat, paling banyak 66 huruf");
+  cek(!/rounded-lg bg-\[#[0-9A-F]+\] py-1 text-center/.test(pt + inf) && !/Kartu \{kartu\} dari 2/.test(inf) && !/JUDUL_PETA|IKON_JUDUL_PETA/.test(pt), "tanpa pill judul dan tanpa penanda Kartu x dari 2 (hemat tinggi)");
+  // Ukur peramban 344x760 sebelum perapian: Mind-map 694, Infografis kartu 2 702 (batas 640). Penghematan yang diklaim hanya yang terbukti dari kode: pill 36, petunjuk 25, penanda kartu 24.
+  const hemat = (pill, kartu) => (pill ? 36 : 0) + 25 + (kartu ? 24 : 0);
+  cek(694 - hemat(true, false) <= 640 && 702 - hemat(true, true) <= 640, `perkiraan tinggi: Mind-map ${694 - hemat(true, false)}, Infografis kartu 2 ${702 - hemat(true, true)} (<= 640)`);
+  cek(/_8\.5rem\]/.test(pt), "PetaJahit: kolom label 8,5 rem supaya kata utuh");
+  const lebarTeks = 136 - 6 - 12 - 20 - 6;
+  const kataMax = Math.max(...DP.LANGKAH_JAHIT.flatMap((x) => x.judul.split(/\s+/).map((w) => w.length)));
+  cek(kataMax * 7.6 <= lebarTeks, `kata label terpanjang ${kataMax} huruf muat utuh di ${lebarTeks} px (tanpa patah)`);
+  cek(DI.POTONGAN.flatMap((p) => p.sel.filter((s) => !s.pec).flatMap((s) => s.t.split(/\s+/))).every((w) => w.length * 7.4 <= 37), "sel Infografis: tiap kata muat di sel 37 px (tanpa meluap)");
+  cek(/tutup=\{`/.test(inf) && !/Isi kosong, ketuk untuk membuka/.test(inf) && /Pecahan" : "Cara"/.test(inf) && /Aturan kantong/.test(inf), "aria-label sel tertutup menyebut kolom dan isinya (bukan kalimat generik)");
 }
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */
@@ -315,7 +351,7 @@ const jawabanBenar = (d, cara) => {
 /* ------------------------------ Berkas: batas rupa, emoji, kata terlarang, akhir baris ------------------------------ */
 {
   const berkas = readdirSync(folder).filter((f) => /\.(ts|tsx)$/.test(f));
-  for (const f of ["data.ts", "data-kartu.ts", "data-sim.ts", "logika.ts", "logika-cpa.ts", "periksa.ts", "GambarJahit.tsx", "JawabJahit.tsx", "LangkahJahit.tsx", "TahapJahit.tsx", "SimulasiMejaJahit.tsx", "MejaJahit.tsx", "DaftarJahit.tsx"]) cek(berkas.includes(f), `${f} ada`);
+  for (const f of ["data.ts", "data-peta.ts", "data-info.ts", "PetaJahit.tsx", "InfoJahit.tsx", "data-sim.ts", "logika.ts", "logika-cpa.ts", "periksa.ts", "GambarJahit.tsx", "JawabJahit.tsx", "LangkahJahit.tsx", "TahapJahit.tsx", "SimulasiMejaJahit.tsx", "MejaJahit.tsx", "DaftarJahit.tsx"]) cek(berkas.includes(f), `${f} ada`);
   for (const f of berkas) {
     const s = readFileSync(new URL(f, folder), "utf8");
     cek(![...s].some((c) => c.codePointAt(0) > 0x1fa95 || c.codePointAt(0) === 0x200d || c.codePointAt(0) === 0x1f6de || IKAN.includes(c.codePointAt(0))), `${f}: emoji paling tinggi U+1FA95 tanpa ZWJ dan tanpa ikan`);

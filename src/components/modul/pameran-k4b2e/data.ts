@@ -1,20 +1,23 @@
 /**
  * Isi tahap Concrete, Pictorial, dan Abstract Kelas 4 Bab 2 Sub-Bab E "Papan Pameran Bu Tuti" (desimal perseratusan dan persen), akhir cerita Sanggar Batik Kampung Mekar.
- * Misi lanjutan "Misi Pameran" (nomor misi berlanjut dari Simulasi). Data berbeda dari Story (0,75 dan 75 persen, 0,4 dan 40 persen, 0,6 dan 60 persen, 30, 55, 25, 80, 90 persen)
+ * Misi lanjutan "Misi Pameran" (nomor misi berlanjut dari Simulasi). Data berbeda dari Story (0,75 dan 75 persen, 0,4 dan 40 persen, 0,6 dan 60 persen, 30, 55, 25, 80, 90 persen, 20 dari 50, 1,2)
  * kecuali ruang jawaban yang sempit. Concrete memakai kain dan perlengkapan pameran beremoji di halaman pameran, Pictorial memakai kisi seratus polos di kertas kisi,
  * Abstract memakai kartu kata dan angka di lembar daftar pameran. Jawaban beragam: memilih persen atau desimal, menulis satu angka di kanvas, dan mengucapkan satu kata
  * (persen, koma, seratus, kanan, kiri) atau bilangan pendek. Jawaban benar dihitung dari data.
- * Angka jawaban Tulis di kanvas per tahap: Concrete 4, 9, 5, 2; Pictorial 3, 7, 2, 8; Abstract 2, 8, 7, 1 (tidak kembar dalam satu tahap).
+ * Cakupan Sub-Bab E menurut kurikulum (bab Pecahan): persen sebagai pecahan per seratus, desimal perseratusan ke persen dan sebaliknya (cara biasa lewat pecahan dan cara langsung kali seratus persen
+ * atau geser koma dua tempat), persen di atas seratus (Pictorial: 135 dan 506; Abstract: 312 dan 450), dan pecahan berpenyebut lain menjadi persen (Concrete 18 dari 50 dan 7 dari 20,
+ * Pictorial 11 dari 25, Abstract 13 dari 20 dan 2 dari 10).
+ * Angka jawaban Tulis di kanvas per tahap: Concrete 4, 9, 5, 2; Pictorial 3, 7, 2, 5; Abstract 2, 5, 7, 4 (tidak kembar dalam satu tahap).
  * Diuji: scripts/uji-pameran-k4b2e.mjs.
  */
-import type { Cara, LJembatan, LKisi, LPerseratus, LSebut, LUbah, Langkah, LangkahSalah, LangkahSoal, Rupa, SoalMisi } from "./logika-cpa";
+import type { Cara, LJembatan, LKisi, LPerseratus, LSebut, LUbah, Langkah, LangkahSalah, LangkahSoal, Penyebut, Rupa, SoalMisi } from "./logika-cpa";
 import { URUT_METODE, instruksi, ucapkan } from "./logika-cpa";
 
 export { MISI_PAMERAN_TEKS } from "./data-sim";
 
 type S3 = [string, string, string];
 const ubah = (benda: string, p: number, pil?: S3): LUbah => ({ tipe: "ubah", benda, p, ...(pil ? { pil } : {}) });
-const perseratus = (benda: string, p: number, pil?: S3): LPerseratus => ({ tipe: "perseratus", benda, p, ...(pil ? { pil } : {}) });
+const perseratus = (benda: string, p: number, pil?: S3, peny?: Penyebut): LPerseratus => ({ tipe: "perseratus", benda, p, ...(pil ? { pil } : {}), ...(peny ? { peny } : {}) });
 const kisi = (benda: string, p: number, pil?: S3): LKisi => ({ tipe: "kisi", benda, p, ...(pil ? { pil } : {}) });
 const jembatan = (benda: string, p: number, arah: "kanan" | "kiri", pil?: S3): LJembatan => ({ tipe: "jembatan", benda, p, arah, ...(pil ? { pil } : {}) });
 const sebut = (benda: string, p: number, kata: LSebut["kata"]): LSebut => ({ tipe: "sebut", benda, p, kata });
@@ -59,7 +62,7 @@ export const CONCRETE: SoalMisi[] = [
       ],
       1,
     ),
-    perseratus("gaun", 35, ["3,5", "0,35", "0,035"]),
+    perseratus("gaun", 36, ["18%", "36%", "9%"], 50),
     kisi("tas", 48, ["52%", "84%", "48%"]),
     jembatan("pita", 56, "kanan", ["560%", "56%", "5,6%"]),
   ]),
@@ -71,7 +74,7 @@ export const CONCRETE: SoalMisi[] = [
   ]),
   C(4, "suara", "Misi Pameran 4: panggilan Pak Hendro", "Pak Hendro memanggil dari pinggir halaman. Jawab dengan suaramu.", [
     sebut("pita", 85, "persen"),
-    perseratus("kaus", 12),
+    perseratus("topi", 35, undefined, 20),
     kisi("topi", 27),
     jembatan("lampion", 33, "kanan"),
   ]),
@@ -81,7 +84,7 @@ export const CONCRETE: SoalMisi[] = [
 const Pi = satuMisi("diagram");
 export const PICTORIAL: SoalMisi[] = [
   Pi(5, "klik", "Misi Pameran 5: kertas kisi seratus", "Genta menggambar kisi seratus di kertas kisi. Periksa gambarnya.", [
-    ubah("diagram A", 15, ["150%", "15%", "1,5%"]),
+    ubah("diagram A", 135, ["13,5%", "135%", "1,35%"]),
     perseratus("diagram B", 8, ["0,8", "0,08", "8,0"]),
     salah(
       kisi("diagram C", 65, ["56%", "65%", "650%"]),
@@ -102,11 +105,11 @@ export const PICTORIAL: SoalMisi[] = [
     ubah("diagram E", 3),
     perseratus("diagram F", 7),
     kisi("diagram G", 20),
-    jembatan("diagram H", 8, "kiri"),
+    jembatan("diagram H", 506, "kiri"),
   ]),
   Pi(7, "suara", "Misi Pameran 7: lapor ke Bu Tuti", "Genta melaporkan diagramnya kepada Bu Tuti. Sebutkan jawabanmu.", [
     sebut("diagram I", 52, "koma"),
-    perseratus("diagram J", 19),
+    perseratus("diagram J", 44, undefined, 25),
     kisi("diagram K", 83),
     jembatan("diagram L", 36, "kiri"),
   ]),
@@ -116,7 +119,7 @@ export const PICTORIAL: SoalMisi[] = [
 const A = satuMisi("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(8, "klik", "Misi Pameran 8: lembar daftar pameran", "Lembar daftar pameran hanya berisi kata dan angka.", [
-    ubah("kartu satu", 5, ["50%", "5%", "500%"]),
+    ubah("kartu satu", 312, ["31,2%", "312%", "3,12%"]),
     perseratus("kartu dua", 62, ["6,2", "0,062", "0,62"]),
     kisi("kartu tiga", 28, ["72%", "28%", "2,8%"]),
     salah(
@@ -134,23 +137,25 @@ export const ABSTRACT: SoalMisi[] = [
   ]),
   A(9, "kanvas", "Misi Pameran 9: tulis di lembar", "Laras meminta kamu menulis jawaban di kanvas.", [
     ubah("kartu lima", 2),
-    perseratus("kartu enam", 8),
+    perseratus("kartu enam", 65, undefined, 20),
     kisi("kartu tujuh", 70),
-    jembatan("kartu delapan", 10, "kiri"),
+    jembatan("kartu delapan", 450, "kiri"),
   ]),
   A(10, "suara", "Misi Pameran 10: laporan akhir", "Laporan akhir pameran untuk Bu Wulan. Ucapkan jawabannya.", [
     sebut("kartu sembilan", 66, "seratus"),
-    perseratus("kartu sepuluh", 47),
+    perseratus("kartu sepuluh", 20, undefined, 10),
     kisi("kartu sebelas", 91),
     jembatan("kartu dua belas", 14, "kanan"),
   ]),
 ];
 
 export const POIN_PENTING = [
-  "Persen berarti per seratus, jadi 75% sama dengan 75/100.",
+  "Persen berarti per seratus, jadi 5% sama dengan 5/100.",
   "Desimal perseratus punya dua angka di belakang koma, misalnya 0,75 = 75/100.",
-  "Desimal ke persen: geser koma dua tempat ke kanan lalu tulis tanda persen, misalnya 0,75 = 75%.",
-  "Persen ke desimal: hilangkan tanda persen lalu geser koma dua tempat ke kiri, misalnya 75% = 0,75.",
+  "Desimal ke persen: ubah ke pecahan per seratus, atau kalikan dengan 100%. Hasilnya sama dengan menggeser koma dua tempat ke kanan, misalnya 0,75 = 75%.",
+  "Persen ke desimal: hilangkan tanda persen lalu geser koma dua tempat ke kiri, misalnya 18% = 0,18.",
+  "Persen boleh lebih dari 100%, misalnya 2,46 = 246% dan 123% = 1,23.",
+  "Pecahan berpenyebut lain: kalikan pembilang dan penyebut sampai penyebutnya 100, misalnya 20/50 = 40/100 = 40%.",
   "Nol di ujung belakang koma tidak mengubah besarnya, misalnya 0,6 = 0,60 = 60%.",
   "Kisi seratus: banyak kotak berwarna dari seratus kotak adalah persennya.",
   "Persen Perseratusan, Kisi Seratus, dan Jembatan Persen membantu menulis persen dengan teliti.",

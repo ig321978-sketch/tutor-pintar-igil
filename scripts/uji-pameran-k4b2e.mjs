@@ -1,7 +1,8 @@
 // Uji Mind-map (Papan Pameran), Infografis (Daftar Pameran), Simulasi Papan Pameran, dan tahap Concrete, Pictorial, Abstract Kelas 4 Bab 2 Sub-Bab E ("Papan Pameran Bu Tuti"),
 // akhir cerita Sanggar Batik Kampung Mekar (desimal perseratusan dan persen).
-// Memeriksa: logika simulasi (kisi seratus, geser koma dengan alat menolak menempel tanda persen terlalu dini, baca kisi), misi (awal tidak memenuhi, wajib empat, bebas dua),
-// Mind-map (sembilan kartu geser Masalah, Cara, Hasil memuat semua metode Story), Infografis dari kejadian Story, CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode)
+// Selaras buku Sub-Bab E (bab Pecahan): persen per seratus, desimal ke persen lewat pecahan, persen di atas seratus, pecahan berpenyebut lain (20 dari 50), kali seratus persen atau geser koma, persen ke desimal.
+// Memeriksa: logika simulasi (kisi seratus, geser koma termasuk di atas seratus persen dengan alat menolak menempel tanda persen terlalu dini, baca kisi seratus dan kisi dua puluh lima kotak), misi (awal tidak memenuhi, wajib empat, bebas dua),
+// Mind-map (enam langkah bergambar sendiri, label kosong), Infografis (tabel papan pameran dan kotak aturan dari angka Story), CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode)
 // dengan jawaban beragam dan Cari kesalahan di tiap tahap, jawaban benar dihitung dari data, angka jawaban tidak kembar per tahap, tugas yang langsung siap (jebakan tombol macet), pengenal ucapan,
 // petunjuk salah tanpa bocoran, gambar kisi seratus sebanyak datanya, batas rupa, emoji, kata terlarang, akhir baris.
 // Jalankan: node --no-warnings scripts/uji-pameran-k4b2e.mjs
@@ -59,6 +60,9 @@ const desimalNilai = (t) => Number(t.replace(",", "."));
   sama([LC.ucapkan("75%"), LC.ucapkan("6,5%"), LC.ucapkan("35/100")], ["tujuh puluh lima persen", "enam koma lima persen", "tiga puluh lima per seratus"], "ucapkan: persen dan pecahan");
   sama(LC.ucapkan("Hasilnya 0,35 sama dengan 35%."), "Hasilnya nol koma tiga lima sama dengan tiga puluh lima persen.", "ucapkan: tanpa spasi sebelum tanda baca");
   sama([LC.desimalDari(5), LC.desimalDari(35), LC.desimalDari(70), LC.desimalDari(70, true), LC.desimalDari(9)], ["0,05", "0,35", "0,70", "0,7", "0,09"], "desimalDari");
+  sama([LC.desimalDari(246), LC.desimalDari(312), LC.desimalDari(450), LC.desimalDari(100), LC.desimalDari(675), LC.desimalDari(2005)], ["2,46", "3,12", "4,50", "1,00", "6,75", "20,05"], "desimalDari: di atas seratus persen (buku: 2,46 sama dengan 246 persen)");
+  sama([LC.pembilangDari(40, 50), LC.pembilangDari(36, 50), LC.pembilangDari(35, 20), LC.pembilangDari(44, 25), LC.pembilangDari(20, 10), LC.pecahanDari(40, 50), LC.pecahanDari(40)], [20, 18, 7, 11, 2, "20/50", "40/100"], "pecahan berpenyebut lain: pembilang dari persen dan penyebut (buku: 20 dari 50 sama dengan 40 persen)");
+  sama([LC.angkaKanvasKiri(506), LC.angkaKanvasKiri(450), LC.angkaKanvasKiri(20), LC.angkaKanvasKiri(8)], [5, 4, 2, 8], "angka kanvas persen ke desimal: angka bulat di depan koma bila seratus persen atau lebih");
   sama([LC.persenDari(35), LC.pecahanDari(35)], ["35%", "35/100"], "persen dan pecahan tampilan");
   sama([LC.barisPenuh(50), LC.barisPenuh(27), LC.angkaBukanNol(8), LC.angkaBukanNol(20)], [5, 2, 8, 2], "baris penuh dan angka bukan nol");
   for (let p = 0; p <= 100; p += 1) {
@@ -71,8 +75,11 @@ const desimalNilai = (t) => Number(t.replace(",", "."));
 /* ------------------------------ Simulasi: data dan logika ------------------------------ */
 {
   cek(DS.KISI_SIM.length === 2 && DS.KISI_SIM.every((t) => t.p >= 10 && t.p <= 99 && !STORY.has(t.p)), "simulasi kisi: dua sasaran bukan data Story");
-  cek(DS.GESER_SIM.length === 4 && DS.GESER_SIM.map((t) => t.arah).join() === "kanan,kiri,kanan,kiri" && DS.GESER_SIM.every((t) => t.p >= 1 && t.p <= 99 && !STORY.has(t.p)), "simulasi geser: empat sasaran bergantian kanan dan kiri, bukan data Story");
+  cek(DS.GESER_SIM.length === 4 && DS.GESER_SIM.map((t) => t.arah).join() === "kanan,kiri,kanan,kiri" && DS.GESER_SIM.every((t) => t.p >= 1 && t.p <= 999 && !STORY.has(t.p)), "simulasi geser: empat sasaran bergantian kanan dan kiri, bukan data Story");
+  cek(DS.GESER_SIM.slice(0, 2).every((t) => t.p <= 99) && DS.GESER_SIM.slice(2).every((t) => t.p > 100) && DS.GESER_SIM.some((t) => t.arah === "kanan" && t.p > 100) && DS.GESER_SIM.some((t) => t.arah === "kiri" && t.p > 100), "simulasi geser: dua sasaran terakhir di atas seratus persen, satu ke kanan dan satu ke kiri (buku: 2,46 sama dengan 246 persen)");
   cek(DS.BACA_SIM.length === 2 && DS.BACA_SIM.every((t) => !STORY.has(t.p) && t.persen.includes(`${t.p}%`) && t.desimal.includes(LC.desimalDari(t.p)) && new Set(t.persen).size === 3 && new Set(t.desimal).size === 3), "simulasi baca: dua kisi, pilihan memuat jawaban benar tanpa kembar");
+  cek(DS.BACA_SIM[0].peny === undefined && DS.BACA_SIM[1].peny === 25 && DS.kisiBaca(DS.BACA_SIM[0]).jumlah === 100 && DS.kisiBaca(DS.BACA_SIM[0]).warna === 24 && DS.kisiBaca(DS.BACA_SIM[1]).jumlah === 25 && DS.kisiBaca(DS.BACA_SIM[1]).warna === 11 && DS.kisiBaca(DS.BACA_SIM[1]).kolom === 5, "simulasi baca: kisi kedua dua puluh lima kotak dengan sebelas berwarna (pecahan berpenyebut lain, sebelas dari dua puluh lima sama dengan empat puluh empat persen)");
+  cek(DS.BACA_SIM[1].persen.some((x) => x === "11%") && DS.BACA_SIM[1].persen.indexOf("44%") !== 0, "simulasi baca: pembilang jadi pengecoh persen, jawaban benar bukan pilihan pertama");
   cek(DS.BACA_SIM.every((t) => t.persen.filter((x) => parseFloat(x.replace(",", ".")) === t.p).length === 1 && t.desimal.filter((x) => desimalNilai(x) === t.p / 100).length === 1), "simulasi baca: tepat satu pilihan sama besar dengan kisi");
   cek(new Set(DS.BACA_SIM.map((t) => t.persen.indexOf(`${t.p}%`))).size >= 2, "simulasi baca: posisi persen benar bervariasi");
   cek(tanpaDigit(DS.MISI_PAMERAN_TEKS) && bersih(DS.MISI_PAMERAN_TEKS) && DS.MISI_PAMERAN_TEKS === MT.MISI_K4B2.E && D.MISI_PAMERAN_TEKS === DS.MISI_PAMERAN_TEKS && DS.MISI_PAMERAN_TEKS.length >= 10 && DS.MISI_PAMERAN_TEKS.length <= 120, "simulasi: teks misi tanpa digit dan kata terlarang, sama dengan misi-teks-k4b2");
@@ -133,15 +140,22 @@ const desimalNilai = (t) => Number(t.replace(",", "."));
   cek(L.tampilGeser(k2) === "0,57" && L.periksaGeser(k2).ok, "geser: persen ke desimal tepat nol koma lima tujuh");
   cek(!L.periksaGeser(L.geserKoma(k2, -1).k).ok && /terlalu jauh/.test(L.petunjukGeser(L.geserKoma(k2, -1).k)) && L.tampilGeser(L.geserKoma(k2, -1).k) === "0,057", "geser: koma terlalu jauh ke kiri");
   const bB = L.periksaGeser(k2);
-  cek(bB.k.balikBenar.join() === "1" && bB.k.geserBenar.join() === "0" && bB.k.geserKe === 2 && L.targetGeser(bB.k).p === 9 && L.tampilGeser(bB.k) === "0,09" && bB.k.koma === 1 && !bB.k.persen, "geser: persen ke desimal membuka sasaran kanan berikutnya (nol koma nol sembilan)");
+  cek(bB.k.balikBenar.join() === "1" && bB.k.geserBenar.join() === "0" && bB.k.geserKe === 2 && L.targetGeser(bB.k).p === 215 && L.angkaGeser(bB.k) === "0215" && L.tampilGeser(bB.k) === "2,15" && bB.k.koma === 2 && !bB.k.persen, "geser: persen ke desimal membuka sasaran kanan berikutnya di atas seratus persen (dua koma satu lima)");
   sama(S.misiBaru(MK.MISI_E, bB.k, new Set()), ["e-geser", "e-balik"], "geser: misi e-geser dan e-balik setelah dua sasaran");
   let g3 = bB.k;
   g3 = L.geserKoma(L.geserKoma(g3, 1).k, 1).k;
-  cek(L.tampilGeser(g3) === "9" && L.tampilGeser(L.tandaPersen(g3).k) === "9%" && L.periksaGeser(L.tandaPersen(g3).k).ok, "geser: nol koma nol sembilan menjadi sembilan persen");
-  cek(["kanvas"].length === 1 && L.targetGeser({ ...a, geserKe: 3 }).p === 48 && L.targetGeser({ ...a, geserKe: 4 }).p === 14, "geser: sasaran bergilir");
+  cek(L.tampilGeser(g3) === "215" && L.tampilGeser(L.tandaPersen(g3).k) === "215%" && L.periksaGeser(L.tandaPersen(g3).k).ok, "geser: dua koma satu lima menjadi dua ratus lima belas persen");
+  cek(!L.tandaPersen(L.geserKoma(bB.k, 1).k).ok && L.tandaPersen(L.geserKoma(bB.k, 1).k).k.tolak === true && L.geserKoma(L.geserKoma(L.geserKoma(bB.k, 1).k, 1).k, 1).ok === false && L.geserKoma(L.geserKoma(L.geserKoma(bB.k, 1).k, 1).k, 1).k.koma === 4, "geser: di atas seratus persen koma sampai di ujung kanan pada geseran keempat, menempel tanda persen sebelum itu ditolak");
+  cek(/Belum ada geseran/.test(L.petunjukGeser(bB.k)) && /belum sampai/.test(L.petunjukGeser(L.geserKoma(bB.k, 1).k)) && /Tanda persen belum menempel/.test(L.petunjukGeser(g3)) && tanpaDigit(L.petunjukGeser(g3)), "geser: petunjuk di atas seratus persen mengikuti letak koma");
+  const bG3 = L.periksaGeser(L.tandaPersen(g3).k);
+  cek(L.targetGeser(bG3.k).p === 126 && L.targetGeser(bG3.k).arah === "kiri" && bG3.k.koma === 4 && bG3.k.persen === true && L.tampilGeser(bG3.k) === "126%" && bG3.k.geserBenar.join() === "0,2", "geser: seratus dua puluh enam persen siap diubah ke desimal");
+  const kiri3 = L.geserKoma(L.geserKoma(L.tandaPersen(bG3.k).k, -1).k, -1).k;
+  cek(L.tampilGeser(kiri3) === "1,26" && L.periksaGeser(kiri3).ok && !L.periksaGeser(L.geserKoma(kiri3, -1).k).ok && /terlalu jauh/.test(L.petunjukGeser(L.geserKoma(kiri3, -1).k)), "geser: seratus dua puluh enam persen menjadi satu koma dua enam");
+  cek(L.targetGeser({ ...a, geserKe: 3 }).p === 126 && L.targetGeser({ ...a, geserKe: 4 }).p === 14, "geser: sasaran bergilir");
   cek(tanpaDigit(L.kalimatGeser(a)) && tanpaDigit(L.kalimatGeser(bG.k)) && /Betul/.test(L.kalimatGeser(bG.k)) && /Betul/.test(L.kalimatGeser(bB.k)), "geser: kalimat tanpa digit");
   // Baca.
   cek(L.targetBaca(a).p === 24 && L.kunciBaca(a).persen === 1 && L.kunciBaca(a).desimal === 0 && L.kunciBaca({ ...a, bacaKe: 1 }).persen === 2 && L.kunciBaca({ ...a, bacaKe: 1 }).desimal === 1, "baca: kunci pilihan dihitung dari banyak kotak");
+  cek(L.targetBaca({ ...a, bacaKe: 1 }).p === 44 && L.targetBaca({ ...a, bacaKe: 1 }).peny === 25 && /bukan seratus kotak/.test(L.petunjukBaca(L.pilihBaca(L.pilihBaca({ ...a, bacaKe: 1 }, "persen", 0), "desimal", 0))) && tanpaDigit(L.petunjukBaca(L.pilihBaca(L.pilihBaca({ ...a, bacaKe: 1 }, "persen", 0), "desimal", 0))), "baca: kisi dua puluh lima kotak, petunjuk menyuruh menyamakan penyebut menjadi seratus tanpa membocorkan");
   cek(L.pilihBaca(a, "persen", 1).bacaPersen === 1 && L.pilihBaca(a, "desimal", 2).bacaDesimal === 2 && L.pilihBaca(a, "persen", 5).bacaPersen === -1, "baca: pilih persen dan desimal, di luar pilihan diabaikan");
   cek(/Belum ada pilihan/.test(L.petunjukBaca(a)) && /Hitung kotak berwarna/.test(L.petunjukBaca(a)) && !L.periksaBaca(a).ok && L.periksaBaca(a).k.salah === 1, "baca: tanpa pilihan tidak benar, petunjuk menunjuk langkah yang belum dilakukan");
   const sP = L.pilihBaca(a, "persen", 1);
@@ -151,7 +165,7 @@ const desimalNilai = (t) => Number(t.replace(",", "."));
   const salahB = L.pilihBaca(L.pilihBaca(a, "persen", 0), "desimal", 0);
   cek(!L.periksaBaca(salahB).ok && /belum cocok/.test(L.petunjukBaca(salahB)) && tanpaDigit(L.petunjukBaca(salahB)), "baca: pilihan keliru");
   const benarB = L.periksaBaca(L.pilihBaca(L.pilihBaca(a, "persen", 1), "desimal", 0));
-  cek(benarB.ok && benarB.k.bacaBenar.join() === "0" && benarB.k.bacaKe === 1 && benarB.k.bacaPersen === -1 && benarB.k.bacaDesimal === -1 && L.targetBaca(benarB.k).p === 71, "baca: persen dan desimal tepat membuka kisi berikutnya");
+  cek(benarB.ok && benarB.k.bacaBenar.join() === "0" && benarB.k.bacaKe === 1 && benarB.k.bacaPersen === -1 && benarB.k.bacaDesimal === -1 && L.targetBaca(benarB.k).p === 44, "baca: persen dan desimal tepat membuka kisi berikutnya");
   sama(S.misiBaru(MK.MISI_E, benarB.k, new Set()), ["e-baca"], "baca: misi e-baca");
   cek(tanpaDigit(L.kalimatBaca(a)) && /Betul/.test(L.kalimatBaca(benarB.k)), "baca: kalimat tanpa digit");
   // Misi.
@@ -164,51 +178,56 @@ const desimalNilai = (t) => Number(t.replace(",", "."));
   cek(B.every((m) => !m.cek({ alat: "kerangka" })), "misi E: alat lain tidak memenuhi misi");
 }
 
-/* ------------------------------ Mind-map: papan pameran (sembilan kartu geser) ------------------------------ */
+/* ------------------------------ Mind-map: papan pameran (enam langkah bergambar, label kosong) ------------------------------ */
 {
-  const KA = DK.KARTU_PAMERAN;
-  cek(KA.length === 9, "kartu: sembilan kartu");
-  cek(KA.every((k) => k.contoh.length <= 1) && KA[0].contoh.join() === "masalah" && KA.slice(1).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di kartu pertama saja, sisanya mandiri");
-  const semua = KA.flatMap((k) => [k.masalah, k.cara, k.hasil]);
-  const label = semua.map((x) => x.label);
-  cek(new Set(label).size === label.length, "kartu: label unik");
-  cek(semua.every((x) => x.label.length >= 5 && x.label.length <= 36), `kartu: label pendek (terpanjang ${Math.max(...label.map((l) => l.length))} huruf)`);
-  cek(label.every((l) => l.split(/\s+/).every((w) => w.length <= 12)), "kartu: tiap kata label paling banyak dua belas huruf (muat di 344 px)");
-  cek(KA.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((l) => l.split(/\s+/).length <= 6)), "kartu: label paling banyak enam kata");
-  cek(semua.every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti) && bersih(x.label) && bersih(x.arti) && x.arti.length > 10), "kartu: label dan arti tanpa digit dan kata terlarang");
-  cek(KA.every((k) => tanpaDigit(k.judul) && bersih(k.judul) && k.judul.length > 5), "kartu: judul bersih");
-  const cara = KA.map((k) => k.cara.label).join(" | ");
-  for (const m of ["Persen Perseratusan", "Kisi Seratus", "Jembatan Persen", "Per seratus", "Geser koma ke kanan", "Geser koma ke kiri"]) cek(cara.toLowerCase().includes(m.toLowerCase()), `kartu: cara memuat ${m}`);
-  const gab = KA.map((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label, k.masalah.arti, k.cara.arti, k.hasil.arti].join(" ")).join(" ").toLowerCase();
-  for (const s of ["persen", "per seratus", "pecahan", "penyebut", "pembilang", "desimal", "koma", "geser", "dua tempat", "kisi", "kotak berwarna", "tanda persen", "nol di ujung", "dua arah"]) cek(gab.includes(s), `kartu: memuat poin "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|bu tuti|bu wulan|pak joyo|kak sekar|pak bagas|lampion|taruhan|sanggar|pameran)\\b", "i").test(gab), "kartu: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
-  cek(tanpaDigit(DK.SUARA_KARTU_PAMERAN + DK.SELESAI_KARTU_PAMERAN) && bersih(DK.SUARA_KARTU_PAMERAN + DK.SELESAI_KARTU_PAMERAN), "kartu: suara dan pesan selesai tanpa digit dan kata terlarang");
-  cek(emojiSah(DK.TEMA_KARTU_PAMERAN.ikon) && DK.TEMA_KARTU_PAMERAN.judul.length > 5, "kartu: tema sah");
-  const RG = DK.RINGKASAN_PAMERAN;
-  cek(RG.ikon.length === DK.KARTU_PAMERAN.length && new Set(RG.ikon).size === RG.ikon.length && [...RG.ikon, RG.pusat].every((e) => emojiSah(e) && !/[A-Za-z0-9]/.test(e)), "peta radial: satu gambar unik per kartu, gambar sah tanpa huruf");
-  cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
-  // Ikon bertema pameran batik: pakaian, pita, tas, topi, palet, lampion, balon, konfeti, tanda seratus. Bukan benda di luar tema.
-  const TEMA_OK = new Set([0x1f3a8, 0x1f4af, 0x1f455, 0x1f457, 0x1f380, 0x1f45c, 0x1f3ee, 0x1f388, 0x1f389, 0x1f452]);
-  cek([...RG.ikon, RG.pusat].every((e) => TEMA_OK.has(e.codePointAt(0))), "peta radial: semua gambar bertema pameran batik (pakaian, pita, tas, topi, palet, lampion, balon, konfeti, seratus)");
+  const LP = DK.LANGKAH_PAMERAN;
+  cek(LP.length === 6, "mind-map: enam langkah (jumlah label mengikuti isi)");
+  cek(new Set(LP.map((l) => l.gambar)).size === LP.length && LP.map((l) => l.gambar).join() === "persen,ke-persen,lain,geser,kembali,lebih", "mind-map: tiap langkah punya gambar sendiri");
+  const judul = LP.map((l) => l.judul);
+  cek(new Set(judul).size === judul.length && judul.every((j) => j.length >= 12 && j.length <= 34 && bersih(j) && j.split(/\s+/).every((w) => w.length <= 12) && j.split(/\s+/).length <= 6), `mind-map: judul langkah pendek dan bersih (terpanjang ${Math.max(...judul.map((j) => j.length))} huruf)`);
+  cek(LP.every((l) => l.arti.length > 40 && tanpaDigit(l.arti) && bersih(l.arti) && /^[A-Z]/.test(l.arti) && !/[=<>%\/×]/.test(l.arti) && !/\s[.,!?;:]/.test(l.arti) && /^Langkah (satu|dua|tiga|empat|lima|enam)\./.test(l.arti)), "mind-map: arti diucapkan tanpa digit dan lambang, diawali Langkah");
+  const gab = LP.map((l) => `${l.judul} ${l.arti}`).join(" ").toLowerCase();
+  for (const t of ["per seratus", "pecahan", "desimal", "persen", "penyebut", "pembilang", "geser koma dua tempat ke kanan", "geser koma dua tempat ke kiri", "dengan seratus persen", "lebih dari seratus", "dua puluh per lima puluh", "empat puluh per seratus", "lima per seratus", "satu kisi penuh", "dua puluh kotak"]) cek(gab.includes(t) || gab.includes(t.replace("kali", "kalikan")), `mind-map: memuat "${t}"`);
+  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|bu tuti|bu wulan|pak joyo|kak sekar|pak bagas|lampion|taruhan|sanggar)\\b", "i").test(gab), "mind-map: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
+  cek(tanpaDigit(DK.PETUNJUK_PETA + DK.SELESAI_PETA) && bersih(DK.PETUNJUK_PETA + DK.SELESAI_PETA) && emojiSah(DK.IKON_JUDUL_PETA) && DK.JUDUL_PETA.length > 5, "mind-map: petunjuk, pesan selesai, dan ikon bersih");
+  const pm = readFileSync(new URL("PapanPameran.tsx", folderUrl), "utf8");
+  cek(/LANGKAH_PAMERAN/.test(pm) && /Label kosong langkah/.test(pm) && /speakGuru\(LANGKAH_PAMERAN\[n\]\.arti\)/.test(pm) && /onLanjut/.test(pm) && /teksLanjut/.test(pm) && !/peta-kartu|peta-label|PetaKartu|PetaLabel/.test(pm), "mind-map: label kosong diketuk dibacakan, komponen sendiri (bukan PetaKartu atau PetaLabel)");
+  cek(/export default function PapanPameranK4B2/.test(pm) && /export \{ PapanPameranK4B2 \}/.test(pm) && /speakGuru: \(t: string\) => void; onLanjut: \(\) => void; teksLanjut: string/.test(pm), "mind-map: ekspor dan props speakGuru, onLanjut, teksLanjut");
+  // Gambar sesuai data: kisi 75 kotak, dua batang sama panjang, kisi penuh ditambah dua puluh.
+  cek(/<Kisi x=\{4\} y=\{5\} s=\{7\} warna=\{75\} \/>/.test(pm) && /<Kisi x=\{14\} y=\{4\} s=\{5\} warna=\{100\} \/>/.test(pm) && /<Kisi x=\{84\} y=\{4\} s=\{5\} warna=\{20\} \/>/.test(pm) && /Array\.from\(\{ length: 100 \}/.test(pm), "mind-map: kisi seratus kotak sungguhan, tujuh puluh lima, seratus, dan dua puluh berwarna");
+  cek((pm.match(/width=\{80\} height=\{18\}/g) ?? []).length === 2 && (pm.match(/width=\{32\} height=\{18\}/g) ?? []).length === 2, "mind-map: dua batang sama panjang dan sama terisi (dua puluh dari lima puluh sama dengan empat puluh dari seratus)");
+  for (const t of ["0,75", "= 75/100", "= 75%", "20/50", "40/100", "× 2", "× 100%", "2 tempat", "60%", "geser kiri", "0,40 = 0,4", "1,2 = 120%"]) cek(pm.includes(t), `mind-map: gambar memuat tulisan ${t}`);
+  // Teks gambar paling kecil sebelas satuan pada lebar seratus lima puluh (sekitar sebelas piksel di 344).
+  const ukuranTeks = [...pm.matchAll(/<Teks [^>]*\bu=\{(\d+(?:\.\d+)?)\}/g)].map((m) => Number(m[1]));
+  cek(ukuranTeks.length >= 15 && ukuranTeks.every((u) => u >= 14) && /viewBox="0 0 150 80"/.test(pm) && /max-w-\[150px\]/.test(pm), `mind-map: teks gambar paling kecil empat belas satuan pada lebar seratus lima puluh (sekitar sebelas piksel di 344) (${Math.min(...ukuranTeks)})`);
+  // Perkiraan tinggi akhir di 344 px (area gulir 648): gambar 62 + label 44 + celah 6 tiga baris, bingkai 30, petunjuk 40, status 20, tombol lanjut 56, jarak 24.
+  const tinggiPeta = 3 * (62 + 44 + 6) + 8 + 30 + 40 + 20 + 56 + 24;
+  cek(tinggiPeta <= 640 && DK.PETUNJUK_PETA.length <= 66 && !/JUDUL_PETA/.test(pm), `mind-map: perkiraan tinggi akhir ${tinggiPeta} px paling banyak 640, petunjuk satu kalimat pendek, tanpa pill judul`);
+  cek(DK.LANGKAH_PAMERAN.every((l) => l.judul.length <= 26), "mind-map: judul label paling banyak dua puluh enam huruf (dua baris)");
+  cek(/min-h-\[44px\]/.test(pm) && /text-\[13px\]/.test(pm) && /grid-cols-2/.test(pm), "mind-map: dua kolom, label setinggi sentuhan dan huruf tiga belas piksel");
 }
 
-/* ------------------------------ Infografis: daftar pameran (satu tabel lima baris) ------------------------------ */
+/* ------------------------------ Infografis: tabel papan pameran dan kotak aturan (dua kartu) ------------------------------ */
 {
-  const B = DK.BARIS_INFO_PAMERAN;
-  cek(B.length === 5 && DK.KOLOM_INFO_PAMERAN.length === 3, "infografis: lima baris dan tiga kolom");
-  cek(B.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: tiap baris tiga isian, emoji sah");
-  const jumlahContoh = B.map((b) => b.contoh.length);
-  cek(jumlahContoh[0] === 3 && jumlahContoh.slice(1).every((n) => n === 0), "infografis: baris satu penuh contoh, baris dua sampai lima mandiri");
-  const semua = B.flatMap((b) => b.isi);
-  cek(B.every((b) => new Set(b.isi.map((x) => x.t)).size === 3), "infografis: tiga label tiap baris berbeda");
-  cek(new Set(semua.map((x) => x.t)).size === semua.length, "infografis: semua label unik");
-  cek(semua.every((x) => x.t.length <= 28 && x.t.split(/\s+/).length <= 5 && x.t.split(/\s+/).every((w) => w.length <= 12) && bersih(x.t) && bersih(x.s ?? "")), "infografis: label pendek (paling banyak lima kata, tiap kata paling banyak dua belas huruf) dan tanpa kata terlarang");
-  cek(semua.every((x) => tanpaDigit(x.s ?? x.t)), "infografis: ucapan label tanpa digit");
-  cek(B.every((b) => b.nama.split(/\s+/).every((w) => w.length <= 12)), "infografis: nama baris kata pendek");
-  const gab = B.map((b) => [b.nama, ...b.isi.map((x) => x.t)].join(" ")).join(" ").toLowerCase();
-  for (const s of ["mewarnai kisi", "menulis pecahan", "desimal ke persen", "persen ke desimal", "nol di ujung", "persen perseratusan", "kisi seratus", "jembatan persen", "geser koma"]) cek(gab.includes(s), `infografis: memuat "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|bu tuti|bu wulan|pameran)\\b", "i").test(gab), "infografis: tanpa nama tokoh");
-  cek(tanpaDigit(DK.SUARA_INFO_PAMERAN + DK.SELESAI_INFO_PAMERAN) && bersih(DK.SUARA_INFO_PAMERAN + DK.SELESAI_INFO_PAMERAN) && emojiSah(DK.TEMA_INFO_PAMERAN.ikon), "infografis: suara dan tema bersih");
+  const T = DK.TABEL_PAMERAN;
+  const A = DK.KOTAK_ATURAN;
+  cek(T.length === 4 && DK.KOLOM_TABEL.join() === "Desimal,Pecahan,Persen", "infografis: empat baris dan tiga kolom desimal, pecahan, persen");
+  sama(T.map((b) => b.p), [75, 60, 40, 120], "infografis: persen dari Story (tujuh puluh lima, enam puluh, empat puluh, seratus dua puluh)");
+  cek(T.every((b) => b.persen === `${b.p}%` && b.pecahan === `${b.p}/100` && b.desimal === LC.desimalDari(b.p) && Math.abs(desimalNilai(b.desimal) * 100 - b.p) < 1e-9), "infografis: desimal, pecahan, dan persen tiap baris sama besar (dihitung dari persen)");
+  cek(T.every((b) => b.suara.length === 3 && b.suara.every((t) => tanpaDigit(t) && bersih(t) && /^[A-Z]/.test(t) && !/[=<>%\/]/.test(t) && !/\s[.,!?;:]/.test(t) && t.length > 10)), "infografis: suara tiap isi tabel tanpa digit dan lambang");
+  cek(A.length === 6 && new Set(A.map((o) => o.id)).size === 6 && A.every((o) => o.label.length >= 8 && o.label.length <= 30 && bersih(o.label) && bersih(o.isi) && o.isi.length <= 6), "infografis: enam kotak aturan, label dan isi pendek");
+  cek(A.every((o) => tanpaDigit(o.suara) && bersih(o.suara) && /^[A-Z]/.test(o.suara) && !/[=<>%\/×]/.test(o.suara) && !/\s[.,!?;:]/.test(o.suara) && o.suara.length > 20), "infografis: suara kotak aturan tanpa digit dan lambang");
+  sama(A.map((o) => o.isi), ["40", "100", "40%", "5/100", "60%", "120%"], "infografis: isi kotak aturan (dua puluh kali dua, lima puluh kali dua, empat puluh persen, lima per seratus, kali seratus persen, seratus dua puluh persen)");
+  cek(20 * 2 === 40 && 50 * 2 === 100 && 0.6 * 100 === 60 && Math.round(1.2 * 100) === 120, "infografis: hitungan kotak aturan benar");
+  cek(tanpaDigit(DK.PETUNJUK_INFO_1 + DK.PETUNJUK_INFO_2 + DK.SELESAI_INFO_1 + DK.SELESAI_INFO_2 + DK.PESAN_INFO_2) && bersih(DK.PETUNJUK_INFO_1 + DK.PETUNJUK_INFO_2 + DK.SELESAI_INFO_1 + DK.SELESAI_INFO_2 + DK.PESAN_INFO_2), "infografis: petunjuk dan pesan tanpa digit dan kata terlarang");
+  const dp = readFileSync(new URL("DaftarPameran.tsx", folderUrl), "utf8");
+  cek(/export default function DaftarPameranK4B2/.test(dp) && /export \{ DaftarPameranK4B2 \}/.test(dp) && /speakGuru: \(t: string\) => void; onLanjut: \(\) => void; teksLanjut: string/.test(dp) && !/peta-kartu|peta-label|info-kartu|InfografisKartu|InfoKartu/.test(dp), "infografis: ekspor, props speakGuru, onLanjut, teksLanjut, komponen sendiri");
+  cek(/Isi kosong, ketuk untuk membuka/.test(dp) && /speakGuru\(suara\)/.test(dp) && /Kartu \{kartu\} dari 2/.test(dp) && /setKartu\(2\)/.test(dp) && /setKartu\(1\)/.test(dp), "infografis: isi tertutup diketuk dibacakan, dua kartu dengan tombol Berikutnya dan Kembali");
+  cek(/\(Math\.min\(p, 100\) \/ 100\) \* lebar/.test(dp) && /\(\(p - 100\) \/ 100\) \* lebar/.test(dp) && /dua = p > 100/.test(dp), "infografis: batang terisi sebanyak persennya, batang kedua untuk sisa di atas seratus persen");
+  cek(/<rect x=\{10\} y=\{6\} width=\{120\} height=\{18\}/.test(dp) && /<rect x=\{10\} y=\{6\} width=\{48\} height=\{18\}/.test(dp) && /<rect x=\{10\} y=\{50\} width=\{120\} height=\{18\}/.test(dp) && /<rect x=\{10\} y=\{50\} width=\{48\} height=\{18\}/.test(dp) && 48 / 120 === 20 / 50 && 48 / 120 === 40 / 100, "infografis: dua batang sama panjang dan sama terisi, empat per sepuluh");
+  const tg = [...dp.matchAll(/fontSize=\{(\d+)\}/g)].map((m) => Number(m[1]));
+  cek(tg.length >= 3 && tg.every((u) => u >= 12) && /viewBox="0 0 220 72"/.test(dp) && /max-w-\[220px\]/.test(dp), `infografis: teks gambar paling kecil dua belas satuan pada lebar dua ratus dua puluh (${Math.min(...tg)})`);
+  cek(/min-h-\[44px\]/.test(dp) && /text-\[13px\]/.test(dp) && /grid-cols-\[64px_repeat\(3,minmax\(0,1fr\)\)\]/.test(dp) && /grid-cols-2/.test(dp), "infografis: sel setinggi sentuhan, tabel empat kolom, kotak aturan dua kolom");
 }
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */
@@ -261,10 +280,21 @@ const desimalNilai = (t) => Number(t.replace(",", "."));
         cek(LC.siapLangsung(l, rupa, s.cara) === (l.tipe !== "salah"), `${tag}: siap langsung kecuali Cari kesalahan (tombol tidak macet)`);
         for (const r of ["benda", "diagram", "lambang"]) cek(LC.siapLangsung(l, r, s.cara) === LC.siapLangsung(l, rupa, s.cara), `${tag}: siap langsung tidak bergantung rupa (${r})`);
         // Data sah dan bukan data Story.
-        cek(Number.isInteger(d.p) && d.p >= 2 && d.p <= 99 && !STORY.has(d.p), `${tag}: persen dua sampai sembilan puluh sembilan, bukan data Story (${d.p})`);
-        if (d.tipe === "ubah" || d.tipe === "perseratus") if (s.cara === "kanvas") cek(d.p >= 2 && d.p <= 9, `${tag}: kanvas ${d.tipe} memakai persen satu angka (${d.p})`);
+        cek(Number.isInteger(d.p) && d.p >= 2 && d.p <= 999 && !STORY.has(d.p), `${tag}: persen dua sampai sembilan ratus sembilan puluh sembilan, bukan data Story (${d.p})`);
+        if (d.p > 99) {
+          // Di atas seratus persen (buku: 2,46 sama dengan 246 persen): hanya tugas ubah dan jembatan, hanya Pictorial dan Abstract, Pictorial paling banyak seratus sembilan puluh sembilan bila kisinya digambar.
+          cek((d.tipe === "ubah" || d.tipe === "jembatan") && rupa !== "benda", `${tag}: persen di atas seratus hanya pada ubah atau jembatan di Pictorial atau Abstract (${d.p})`);
+          cek(d.p % 100 !== 0 && (d.tipe !== "jembatan" || d.arah === "kiri" || s.cara !== "kanvas"), `${tag}: persen di atas seratus bukan kelipatan seratus (${d.p})`);
+        } else if (rupa === "benda" || d.tipe !== "perseratus") cek(d.p <= 99, `${tag}: Concrete dan tugas selain perseratus berpenyebut lain tetap di bawah seratus persen`);
+        if (d.tipe === "perseratus" && d.peny) {
+          cek([2, 4, 5, 10, 20, 25, 50].includes(d.peny) && Number.isInteger(LC.pembilangDari(d.p, d.peny)) && LC.pembilangDari(d.p, d.peny) >= 1 && LC.pembilangDari(d.p, d.peny) < d.peny && 100 % d.peny === 0, `${tag}: pecahan berpenyebut lain ${LC.pembilangDari(d.p, d.peny)}/${d.peny} sama dengan ${d.p} persen`);
+          cek(LC.pembilangDari(d.p, d.peny) !== d.p, `${tag}: pembilang bukan persennya sendiri (jebakan menyalin pembilang)`);
+          if (s.cara === "kanvas") cek([20, 25, 50].includes(d.peny) && kunci.n === 100 / d.peny, `${tag}: kanvas berpenyebut lain menjawab pengali penyebut ke seratus (${kunci.n})`);
+          if (s.cara === "klik") cek(kunci.jenis === "nama" && kunci.nama === `${d.p}%`, `${tag}: klik berpenyebut lain memilih persen`);
+          cek(/dari/.test(ls.suara) && tanpaDigit(ls.suara) && LC.barisKartu(d, s.cara)[0] === `pecahan: ${d.pembilang ?? LC.pembilangDari(d.p, d.peny)}/${d.peny}`, `${tag}: instruksi memakai kata dari, kartu memuat pecahan`);
+        } else if ((d.tipe === "ubah" || d.tipe === "perseratus") && s.cara === "kanvas") cek(d.p >= 2 && d.p <= 9, `${tag}: kanvas ${d.tipe} memakai persen satu angka (${d.p})`);
         if (d.tipe === "kisi" && s.cara === "kanvas") cek(d.p % 10 === 0 && d.p >= 20 && d.p <= 90, `${tag}: kanvas kisi memakai kelipatan sepuluh (${d.p})`);
-        if (d.tipe === "jembatan" && s.cara === "kanvas") cek(d.arah === "kiri" && (d.p < 10 || d.p % 10 === 0), `${tag}: kanvas jembatan persen ke desimal dengan satu angka bukan nol (${d.p})`);
+        if (d.tipe === "jembatan" && s.cara === "kanvas") cek(d.arah === "kiri" && (d.p < 10 || d.p % 10 === 0 || d.p > 100), `${tag}: kanvas jembatan persen ke desimal dengan satu angka bukan nol atau angka bulat di depan koma (${d.p})`);
         if (d.tipe === "jembatan" && s.cara === "suara") cek(kunci.jenis === "nama" && kunci.nama === d.arah, `${tag}: suara jembatan menjawab arah geser`);
         if (d.tipe === "sebut") cek(s.cara === "suara" && ["persen", "koma", "seratus"].includes(d.kata) && kunci.nama === d.kata, `${tag}: sebut hanya pada suara, kata ${d.kata}`);
         if (kunci?.jenis === "angka") {
@@ -282,7 +312,7 @@ const desimalNilai = (t) => Number(t.replace(",", "."));
           cek(pil.length === 3 && new Set(pil).size === 3 && pil.includes(benar) && pil[0] !== benar, `${tag}: pilihan klik unik dan jawaban benar bukan yang pertama (${pil.join("/")})`);
           const nilai = (t) => (t.endsWith("%") ? desimalNilai(t.slice(0, -1)) : desimalNilai(t) * 100);
           cek(pil.filter((t) => Math.abs(nilai(t) - d.p) < 1e-9).length === 1, `${tag}: tepat satu pilihan sama besar dengan jawaban (${pil.join("/")})`);
-          if (d.tipe === "perseratus" || (d.tipe === "jembatan" && d.arah === "kiri")) cek(pil.every((t) => /^\d+(,\d+)?$/.test(t)) && benar === LC.desimalDari(d.p), `${tag}: pilihan desimal (${pil.join("/")})`);
+          if ((d.tipe === "perseratus" && !d.peny) || (d.tipe === "jembatan" && d.arah === "kiri")) cek(pil.every((t) => /^\d+(,\d+)?$/.test(t)) && benar === LC.desimalDari(d.p), `${tag}: pilihan desimal (${pil.join("/")})`);
           else cek(pil.every((t) => /^\d+(,\d+)?%$/.test(t)) && benar === `${d.p}%`, `${tag}: pilihan persen (${pil.join("/")})`);
           if (l.tipe === "salah") cek(pil.includes(l.jawabTokoh) && (l.betul ? l.jawabTokoh === benar : l.jawabTokoh !== benar), `${tag}: jawaban tokoh ikut sebagai pilihan (${l.jawabTokoh})`);
           posisiBenar.push(pil.indexOf(benar));
@@ -337,8 +367,18 @@ const desimalNilai = (t) => Number(t.replace(",", "."));
   cek(TAHAP.Pictorial[1][0].langkah[2].langkah.betul === true && !TAHAP.Concrete[1][0].langkah[0].langkah.betul && !TAHAP.Abstract[1][0].langkah[3].langkah.betul, "Cari kesalahan: Laras benar pada Pictorial, Satria salah pada Concrete dan Abstract");
   const kv = (nama) => TAHAP[nama][1].filter((s) => s.cara === "kanvas").flatMap((s) => s.langkah.map((l) => LC.kunciJawab(l.langkah, "kanvas").n));
   sama(kv("Concrete"), [4, 9, 5, 2], "angka kanvas Concrete");
-  sama(kv("Pictorial"), [3, 7, 2, 8], "angka kanvas Pictorial");
-  sama(kv("Abstract"), [2, 8, 7, 1], "angka kanvas Abstract");
+  sama(kv("Pictorial"), [3, 7, 2, 5], "angka kanvas Pictorial");
+  sama(kv("Abstract"), [2, 5, 7, 4], "angka kanvas Abstract");
+  // Cakupan Sub-Bab E menurut kurikulum tersebar di tiga tahap: persen di atas seratus dan pecahan berpenyebut lain.
+  const semuaDasar = Object.values(TAHAP).flatMap(([rp, soal]) => soal.flatMap((m) => m.langkah.map((l) => ({ rp, cara: m.cara, d: LC.dasarDari(l.langkah) }))));
+  const atas = semuaDasar.filter((x) => x.d.p > 100);
+  const lain = semuaDasar.filter((x) => x.d.tipe === "perseratus" && x.d.peny);
+  cek(atas.length === 4 && atas.some((x) => x.d.tipe === "ubah") && atas.some((x) => x.d.tipe === "jembatan" && x.cara === "kanvas") && new Set(atas.map((x) => x.rp)).size === 2, `persen di atas seratus: empat tugas di Pictorial dan Abstract (${atas.map((x) => x.d.p).join(", ")})`);
+  cek(lain.length === 5 && new Set(lain.map((x) => x.rp)).size === 3 && new Set(lain.map((x) => x.d.peny)).size >= 4 && lain.some((x) => x.cara === "klik") && lain.some((x) => x.cara === "kanvas") && lain.some((x) => x.cara === "suara"), `pecahan berpenyebut lain: lima tugas di tiga tahap, klik, kanvas, dan suara (${lain.map((x) => `${LC.pembilangDari(x.d.p, x.d.peny)}/${x.d.peny}`).join(", ")})`);
+  for (const [namaT, [, soal]] of Object.entries(TAHAP)) {
+    const ps = soal.flatMap((m) => m.langkah.map((l) => LC.dasarDari(l.langkah).p));
+    cek(new Set(ps).size === ps.length, `${namaT}: tiga belas tugas tidak kembar, persen tiap tugas berbeda (${ps.join(", ")})`);
+  }
   // Tugas suara bervariasi: kata dan bilangan.
   const kunciSuara = Object.values(TAHAP).flatMap(([, soal]) => soal[2].langkah.map((l) => LC.kunciJawab(l.langkah, "suara")));
   cek(kunciSuara.some((k) => k.jenis === "nama") && kunciSuara.some((k) => k.jenis === "angka"), "tugas suara: kata dan bilangan");
@@ -391,15 +431,18 @@ const desimalNilai = (t) => Number(t.replace(",", "."));
   cek(/gagalSekali/.test(jw) && /Ini jawaban yang benar|jawaban yang benar/.test(jw) && /PilihanKata/.test(jw) && /setCadangan\(true\)/.test(jw) && /e\.error === "not-allowed"/.test(jw), "JawabPameran: galat mikrofon dihitung gagal, pilihan ketuk sebagai cadangan, jawaban benar setelah tiga kali salah");
   const gm = readFileSync(new URL("GambarPameran.tsx", folderUrl), "utf8");
   cek(/export function KisiBenda/.test(gm) && /export function KisiSvg/.test(gm) && /export function GeserSvg/.test(gm) && /export function TampilDasar/.test(gm) && /rupa === "lambang"/.test(gm) && /EMOJI_BENDA/.test(gm) && /export function KartuKata/.test(gm) && /export function IsiBaris/.test(gm), "GambarPameran: kisi benda, kisi polos, geser koma, tampilan dasar, kartu untuk Abstract, pecahan bertingkat");
-  cek(/kisiSel\(p\)/.test(gm.slice(gm.indexOf("export function KisiBenda"), gm.indexOf("export function KisiSvg"))) && /repeat\(10, 22px\)/.test(gm) && !/flex-wrap/.test(gm.slice(gm.indexOf("export function KisiBenda"), gm.indexOf("export function KisiSvg"))), "KisiBenda: kisi tetap sepuluh kolom, seratus kotak dari kisiSel, tidak membungkus sendiri");
-  cek(/kisiSel\(p\)/.test(gm.slice(gm.indexOf("export function KisiSvg"), gm.indexOf("export function GeserSvg"))) && /width=\{s\} height=\{s\}/.test(gm), "KisiSvg: seratus kotak sama besar dari kisiSel");
+  const gb = gm.slice(gm.indexOf("export function KisiBenda"), gm.indexOf("export function KisiSvg"));
+  const gs = gm.slice(gm.indexOf("export function KisiSvg"), gm.indexOf("export function GeserSvg"));
+  cek(/const banyak = peny \?\? 100/.test(gb) && /pembilangDari\(p, peny\)/.test(gb) && /repeat\(\$\{kolom\}, 22px\)/.test(gb) && /kolomKisi = \(peny: number\)[^\n]*peny === 25 \? 5 : 10/.test(gm) && !/flex-wrap/.test(gb), "KisiBenda: kolom tetap (sepuluh, lima untuk dua puluh lima), seratus sel atau sebanyak penyebut dengan pembilang berwarna, tidak membungkus sendiri");
+  cek(/kisiSel\(Math\.min\(100, p - g \* 100\)\)/.test(gs) && /width=\{s\} height=\{s\}/.test(gs) && /p > 100 \? 2 : 1/.test(gs) && /pembilangDari\(p, peny\)/.test(gs) && /Array\.from\(\{ length: peny \}/.test(gs), "KisiSvg: seratus kotak sama besar dari kisiSel, dua kisi di atas seratus persen, sebanyak penyebut bila pecahan berpenyebut lain");
+  cek(/d\.p < 200 \? <KisiSvg/.test(gm) && /peny=\{d\.tipe === "perseratus" \? d\.peny : undefined\}/.test(gm), "TampilDasar: kisi digambar sampai seratus sembilan puluh sembilan persen, pecahan berpenyebut lain memakai penyebutnya");
   const sim = readFileSync(new URL("SimulasiPapanPameran.tsx", folderUrl), "utf8");
   cek(/export default function SimulasiPapanPameran/.test(sim) && /onKeadaan/.test(sim) && /MISI_PAMERAN_TEKS/.test(sim), "SimulasiPapanPameran: ekspor, onKeadaan, teks misi");
   cek(/nama: "Kisi"/.test(sim) && /nama: "Geser"/.test(sim) && /nama: "Baca"/.test(sim) && !/>\s*Baca\s*</.test(sim) && !/\} Baca\b/.test(sim.replace(/nama: "Baca"/, "")), "SimulasiPapanPameran: tab Baca tidak kembar dengan tombol");
   cek(/setCatatan\(ucap \?\? ""\)/.test(sim) && /Alat menolak/.test(sim) && /warnaiBaris/.test(sim) && /tampilGeser/.test(sim), "SimulasiPapanPameran: pesan lama dikosongkan tiap perubahan, pesan penolakan alat, baris dan geser koma");
   for (const [f, nm] of [["PapanPameran.tsx", "PapanPameranK4B2"], ["DaftarPameran.tsx", "DaftarPameranK4B2"]]) {
     const s = readFileSync(new URL(f, folderUrl), "utf8");
-    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && /peta-kartu\//.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: pembungkus tipis komponen bersama peta-kartu, ekspor ${nm}`);
+    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && !/peta-kartu\//.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: komponen sendiri (bukan pembungkus peta-kartu), ekspor ${nm}`);
   }
   // Berkas bersama: Simulasi memasang Papan Pameran dengan misiDaftar.
   const sk = readFileSync(new URL("../src/components/modul/SimulasiK4Bab2.tsx", import.meta.url), "utf8");

@@ -3,7 +3,9 @@
 Akhir cerita bab "Sanggar Batik Kampung Mekar" (lihat `naskah/alur-cerita-k4b2.md`). Tamu E: Bu Tuti (panitia pameran, berselendang). Penutup Story: semua tamu A sampai E hadir.
 Suara tanpa digit; persen diucapkan "tujuh puluh lima persen", desimal "nol koma tujuh lima", dan tampil berlambang di layar pada ketukan yang sama. Teks suara di bawah adalah NASKAH TETAP (boleh disesuaikan sedikit hanya bila uji menuntut; laporkan).
 
-Data Story E (jangan dijadikan jawaban CPA): nol koma tujuh lima = tujuh puluh lima per seratus = tujuh puluh lima persen; nol koma empat = empat puluh persen; salah Satria: nol koma enam ditulis enam persen.
+Data Story E (jangan dijadikan jawaban CPA): nol koma tujuh lima = tujuh puluh lima per seratus = tujuh puluh lima persen; lima persen = lima per seratus; nol koma empat = empat puluh persen; dua puluh dari lima puluh = empat puluh per seratus = empat puluh persen; satu koma dua = seratus dua puluh persen; salah Satria: nol koma enam ditulis enam persen.
+
+Selaras buku (Matematika SD/MI Kelas IV, Bab 2 Pecahan, Sub-Bab E "Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen"): persen = pecahan berpenyebut seratus (lima persen artinya lima per seratus); desimal perseratusan menjadi pecahan biasa lalu persen; persen di atas seratus (dua koma empat enam sama dengan dua ratus empat puluh enam persen); pecahan berpenyebut lain disamakan menjadi per seratus (dua puluh dari lima puluh sama dengan empat puluh persen); cara langsung kali seratus persen atau menggeser koma dua tempat ke kanan; persen menjadi desimal perseratusan.
 
 ## Video materi (300 sampai 400 kata termasuk sapaan, 9 adegan, 3 ketukan tiap adegan; tanpa latihan)
 
@@ -17,8 +19,8 @@ Sapaan (bersama): topik "desimal dan persen"; daftar: "persen berarti per seratu
 2. `persen`
    - "Bu Tuti menjelaskan, persen berarti per seratus."
    - "Tujuh puluh lima persen berarti tujuh puluh lima bagian dari seratus bagian."
-   - "Tanda persen kita tulis setelah angkanya."
-   Visual: kisi seratus kotak dengan tujuh puluh lima kotak terwarna; tulisan tujuh puluh lima persen dengan tanda persen disorot.
+   - "Tanda persen kita tulis setelah angkanya, jadi lima persen artinya lima per seratus."
+   Visual: kisi seratus kotak dengan tujuh puluh lima kotak terwarna; tulisan tujuh puluh lima persen dengan tanda persen disorot; tulisan "5% = 5/100".
 3. `desimal`
    - "Laras menulis tujuh puluh lima per seratus sebagai desimal, yaitu nol koma tujuh lima."
    - "Dua angka di belakang koma menunjukkan perseratusan."
@@ -34,21 +36,21 @@ Sapaan (bersama): topik "desimal dan persen"; daftar: "persen berarti per seratu
    - "Nol koma enam sama dengan nol koma enam nol, yaitu enam puluh per seratus."
    - "Jadi nol koma enam adalah enam puluh persen, bukan enam persen."
    Visual: kisi seratus dengan enam puluh kotak berwarna; nol koma enam berubah menjadi nol koma enam nol; angka enam persen dicoret merah.
-6. `lampion`
-   - "Satria menepati taruhannya dan memasang lampion satu per satu."
-   - "Tangga lipatnya bergoyang, dan lampion terakhir menggantung miring di atas kepalanya."
-   - "Semua orang tertawa, dan Pak Hendro menahan tangga dengan kedua tangan."
-   Visual: Satria di tangga lipat memasang lampion yang miring; Pak Hendro menahan tangga; Laras menunjuk lampion.
+6. `lampion` (pecahan berpenyebut lain)
+   - "Satria menepati taruhannya, dan dari lima puluh lampion, dua puluh sudah menyala di tangga."
+   - "Satria menyebutnya dua puluh persen, tetapi Genta mengalikan pembilang dan penyebut dengan dua."
+   - "Dua puluh per lima puluh sama dengan empat puluh per seratus, jadi empat puluh persen."
+   Visual: dua batang sama panjang, atas "20 dari 50" terisi empat per sepuluh, bawah "40 dari 100" terisi sama; 20% dicoret; panah kali dua; hasil 40%.
 7. `kembali`
    - "Bu Tuti menulis empat puluh persen di papan dan minta diubah menjadi desimal."
    - "Empat puluh persen berarti empat puluh per seratus, atau nol koma empat nol."
    - "Genta menulisnya nol koma empat, karena nol di ujung tidak mengubah besarnya."
    Visual: papan dengan empat puluh persen, empat puluh per seratus, dan nol koma empat; panah dari persen ke desimal.
-8. `ulang`
-   - "Satria mencoba lagi dan menulis nol koma enam sebagai enam puluh persen."
-   - "Kali ini ia menggeser koma dua tempat ke kanan lalu menambahkan tanda persen."
-   - "Bu Tuti bertepuk tangan, karena papan pameran sudah benar."
-   Visual: Satria menulis enam puluh persen dengan panah geser koma dua tempat; Bu Tuti bertepuk tangan; papan terisi.
+8. `ulang` (cara langsung dan persen lebih dari seratus)
+   - "Satria mengalikan nol koma enam dengan seratus persen, yaitu menggeser koma dua tempat, dan hasilnya enam puluh persen."
+   - "Bu Tuti menulis satu koma dua, yaitu satu kisi penuh ditambah dua puluh kotak."
+   - "Jadi satu koma dua adalah seratus dua puluh persen, dan persen boleh lebih dari seratus."
+   Visual: papan dengan nol koma enam, kali seratus persen, panah geser dua tempat, enam puluh persen; lalu satu koma dua dengan satu kisi penuh dan satu kisi berisi dua puluh kotak; seratus dua puluh persen; Bu Tuti bertepuk tangan.
 9. `penutup` (akhir cerita bab)
    - "Malam pameran tiba, dan Bu Wulan, Pak Joyo, Kak Sekar, serta Pak Bagas ikut meramaikan sanggar."
    - "Pecahan, desimal, dan persen ternyata tiga cara menulis satu hal yang sama."

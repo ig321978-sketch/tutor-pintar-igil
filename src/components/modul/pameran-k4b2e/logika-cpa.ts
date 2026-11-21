@@ -53,25 +53,39 @@ void URUTAN;
 
 /** Dua angka untuk bilangan 0 sampai 99: 5 menjadi "05". */
 export const duaAngka = (p: number): string => String(p).padStart(2, "0");
-/** Desimal perseratus dari `p` persen (1 sampai 99): 5 menjadi "0,05", 35 menjadi "0,35", 70 menjadi "0,70"; `pendek` membuang nol di ujung: "0,7". */
+/**
+ * Desimal perseratus dari `p` persen: 5 menjadi "0,05", 35 menjadi "0,35", 70 menjadi "0,70" (`pendek` membuang nol di ujung: "0,7"),
+ * dan persen di atas seratus: 312 menjadi "3,12", 450 menjadi "4,50".
+ */
 export function desimalDari(p: number, pendek = false): string {
+  if (p >= 100) return `${Math.floor(p / 100)},${duaAngka(p % 100)}`;
   return pendek && p % 10 === 0 ? `0,${p / 10}` : `0,${duaAngka(p)}`;
 }
 export const persenDari = (p: number): string => `${p}%`;
-export const pecahanDari = (p: number): string => `${p}/100`;
+/** Penyebut selain seratus yang bisa dikali menjadi seratus (contoh kurikulum: 20 dari 50 sama dengan 40 per 100). */
+export type Penyebut = 2 | 4 | 5 | 10 | 20 | 25 | 50;
+/** Pembilang pecahan berpenyebut `peny` yang sama besar dengan `p` persen (p kali peny dibagi seratus). */
+export const pembilangDari = (p: number, peny: number): number => (p * peny) / 100;
+/** Pecahan tampilan: `p`/100, atau pembilang/`peny` bila penyebutnya bukan seratus. */
+export const pecahanDari = (p: number, peny?: number): string => (peny ? `${pembilangDari(p, peny)}/${peny}` : `${p}/100`);
 /** Banyak baris penuh (sepuluh kotak) pada kisi seratus yang berwarna bila `p` kotak diwarnai baris demi baris. */
 export const barisPenuh = (p: number): number => Math.floor(p / 10);
 /** Kisi seratus (10 x 10, urut baris demi baris dari kiri-atas): kotak ke-i berwarna bila i lebih kecil dari `p`. Banyak kotak berwarna selalu sama dengan `p`. */
 export const kisiSel = (p: number): boolean[] => Array.from({ length: 100 }, (_, i) => i < Math.max(0, Math.min(100, p)));
 /** Angka yang bukan nol di belakang koma pada desimal `p` persen (hanya untuk p satu angka atau kelipatan sepuluh). */
 export const angkaBukanNol = (p: number): number => (p < 10 ? p : p / 10);
+/** Angka jawaban kanvas untuk persen ke desimal: angka bukan nol di belakang koma (di bawah seratus persen) atau angka bulat di depan koma (seratus persen atau lebih). */
+export const angkaKanvasKiri = (p: number): number => (p >= 100 ? Math.floor(p / 100) : angkaBukanNol(p));
 
 /* ------------------------------ Jenis tugas ------------------------------ */
 type Pil = [string, string, string];
 /** Ubah desimal ke persen (IGIL): klik pilih persen, kanvas satu angka (p satu angka), suara bilangan persen. */
 export type LUbah = { tipe: "ubah"; benda: string; p: number; pil?: Pil };
-/** Persen Perseratusan (Percent as Hundredths): pecahan `p` per seratus; klik pilih desimal, kanvas satu angka persen (p satu angka), suara bilangan persen. */
-export type LPerseratus = { tipe: "perseratus"; benda: string; p: number; pil?: Pil };
+/**
+ * Persen Perseratusan (Percent as Hundredths): pecahan `p` per seratus; klik pilih desimal, kanvas satu angka persen (p satu angka), suara bilangan persen.
+ * Dengan `peny` (penyebut bukan seratus, mis. 18 dari 50): klik pilih persen, kanvas pengali penyebut menjadi seratus (hanya peny 20, 25, 50), suara bilangan persen.
+ */
+export type LPerseratus = { tipe: "perseratus"; benda: string; p: number; pil?: Pil; peny?: Penyebut };
 /** Kisi Seratus (Hundred Grid): `p` kotak berwarna dari seratus; klik pilih persen, kanvas banyak baris penuh (p kelipatan sepuluh), suara bilangan persen. */
 export type LKisi = { tipe: "kisi"; benda: string; p: number; pil?: Pil };
 /** Jembatan Persen (Decimal Percent Bridge): `arah` kanan = desimal ke persen, kiri = persen ke desimal; klik pilih hasil, kanvas angka bukan nol (hanya kiri), suara arah geser koma. */
@@ -119,12 +133,13 @@ export function kunciJawab(l: Langkah, cara: Cara): Kunci | null {
     case "ubah":
       return cara === "klik" ? nama(persenDari(l.p)) : angka(l.p);
     case "perseratus":
+      if (l.peny) return cara === "klik" ? nama(persenDari(l.p)) : cara === "kanvas" ? angka(100 / l.peny) : angka(l.p);
       return cara === "klik" ? nama(desimalDari(l.p)) : angka(l.p);
     case "kisi":
       return cara === "klik" ? nama(persenDari(l.p)) : cara === "kanvas" ? angka(barisPenuh(l.p)) : angka(l.p);
     case "jembatan":
       if (cara === "klik") return nama(l.arah === "kanan" ? persenDari(l.p) : desimalDari(l.p));
-      if (cara === "kanvas") return l.arah === "kiri" ? angka(angkaBukanNol(l.p)) : null;
+      if (cara === "kanvas") return l.arah === "kiri" ? angka(angkaKanvasKiri(l.p)) : null;
       return nama(l.arah);
     case "sebut":
       return nama(l.kata);
@@ -152,7 +167,8 @@ export function pengecoh(l: Langkah, cara: Cara): number[] {
   const n = k?.jenis === "angka" ? k.n : 0;
   const p = d.p;
   const terbalik = p >= 10 ? (p % 10) * 10 + Math.floor(p / 10) : p * 10;
-  const calon = [terbalik, Math.floor(p / 10) || p + 1, n + 10, n - 10, n + 1, n - 1, n + 2];
+  const pembilang = d.tipe === "perseratus" && d.peny ? [pembilangDari(p, d.peny)] : [];
+  const calon = [...pembilang, terbalik, Math.floor(p / 10) || p + 1, n + 10, n - 10, n + 1, n - 1, n + 2];
   const hasil: number[] = [];
   for (const c of calon) if (Number.isInteger(c) && c >= 1 && c <= 99 && c !== n && !hasil.includes(c)) hasil.push(c);
   return hasil;
@@ -205,6 +221,12 @@ function kalimatKunciMentah(l: Langkah, cara: Cara): string {
     case "ubah":
       return `${desimalDari(d.p)} sama dengan ${pecahanDari(d.p)}, jadi ${persenDari(d.p)}.`;
     case "perseratus":
+      if (d.peny) {
+        const m = 100 / d.peny;
+        return cara === "kanvas"
+          ? `Penyebut ${d.peny} dikali ${m} menjadi seratus, jadi ${persenDari(d.p)}.`
+          : `${pembilangDari(d.p, d.peny)} dari ${d.peny}: pembilang dan penyebut dikali ${m} menjadi ${pecahanDari(d.p)}, jadi ${persenDari(d.p)}.`;
+      }
       return cara === "klik"
         ? `${pecahanDari(d.p)} ditulis dengan dua angka di belakang koma, jadi ${desimalDari(d.p)}.`
         : `Pembilang ${d.p} pada ${pecahanDari(d.p)} menjadi angka persen, jadi ${persenDari(d.p)}.`;
@@ -214,7 +236,10 @@ function kalimatKunciMentah(l: Langkah, cara: Cara): string {
         : `Ada ${d.p} kotak berwarna dari seratus kotak, jadi ${persenDari(d.p)}.`;
     case "jembatan":
       if (cara === "suara") return d.arah === "kanan" ? "Dari desimal ke persen, koma digeser ke kanan." : "Dari persen ke desimal, koma digeser ke kiri.";
-      if (cara === "kanvas") return `${persenDari(d.p)} menjadi ${desimalDari(d.p)}, dan angka yang bukan nol di belakang koma adalah ${angkaBukanNol(d.p)}.`;
+      if (cara === "kanvas")
+        return d.p >= 100
+          ? `${persenDari(d.p)} menjadi ${desimalDari(d.p)}, dan angka bulat di depan koma adalah ${angkaKanvasKiri(d.p)}.`
+          : `${persenDari(d.p)} menjadi ${desimalDari(d.p)}, dan angka yang bukan nol di belakang koma adalah ${angkaBukanNol(d.p)}.`;
       return d.arah === "kanan"
         ? `Koma digeser dua tempat ke kanan lalu tanda persen ditulis, jadi ${desimalDari(d.p)} menjadi ${persenDari(d.p)}.`
         : `Tanda persen dihilangkan dan koma digeser dua tempat ke kiri, jadi ${persenDari(d.p)} menjadi ${desimalDari(d.p)}.`;
@@ -237,6 +262,10 @@ function instruksiMentah(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): st
     case "ubah":
       return `${aw}: lihat desimal ${desimalDari(l.p)} pada ${g} ini. Sama dengan berapa persen? ${akhir}`;
     case "perseratus":
+      if (l.peny)
+        return cara === "kanvas"
+          ? `${aw}: lihat ${pembilangDari(l.p, l.peny)} dari ${l.peny} pada ${g} ini. Penyebutnya dikali berapa supaya menjadi seratus? ${akhir}`
+          : `${aw}: lihat ${pembilangDari(l.p, l.peny)} dari ${l.peny} pada ${g} ini. Sama dengan berapa persen? ${akhir}`;
       return cara === "klik"
         ? `${aw}: lihat pecahan ${pecahanDari(l.p)} pada ${g} ini. Sama dengan desimal yang mana? ${akhir}`
         : `${aw}: lihat pecahan ${pecahanDari(l.p)} pada ${g} ini. Sama dengan berapa persen? ${akhir}`;
@@ -245,8 +274,14 @@ function instruksiMentah(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): st
         ? `${aw}: lihat kisi seratus pada ${g} ini. Berapa baris penuh yang berwarna? ${akhir}`
         : `${aw}: lihat kisi seratus pada ${g} ini. Berapa persen kotak yang berwarna? ${akhir}`;
     case "jembatan":
-      if (cara === "klik") return l.arah === "kanan" ? `${aw}: ubah desimal ${desimalDari(l.p)} menjadi persen pada ${g} ini dengan menggeser koma. Pilih hasilnya.` : `${aw}: ubah persen ${persenDari(l.p)} menjadi desimal pada ${g} ini dengan menggeser koma. Pilih hasilnya.`;
-      if (cara === "kanvas") return `${aw}: ubah persen ${persenDari(l.p)} menjadi desimal pada ${g} ini. Tulis satu angka yang bukan nol di belakang koma.`;
+      if (cara === "klik")
+        return l.arah === "kanan"
+          ? `${aw}: ubah desimal ${desimalDari(l.p)} menjadi persen pada ${g} ini, dikali seratus persen atau geser koma. Pilih hasilnya.`
+          : `${aw}: ubah persen ${persenDari(l.p)} menjadi desimal pada ${g} ini dengan menggeser koma. Pilih hasilnya.`;
+      if (cara === "kanvas")
+        return l.p >= 100
+          ? `${aw}: ubah persen ${persenDari(l.p)} menjadi desimal pada ${g} ini. Tulis satu angka bulat di depan koma.`
+          : `${aw}: ubah persen ${persenDari(l.p)} menjadi desimal pada ${g} ini. Tulis satu angka yang bukan nol di belakang koma.`;
       return l.arah === "kanan"
         ? `${aw}: desimal diubah menjadi persen pada ${g} ini. Koma digeser ke arah mana? Ucapkan satu kata: kanan atau kiri.`
         : `${aw}: persen diubah menjadi desimal pada ${g} ini. Koma digeser ke arah mana? Ucapkan satu kata: kanan atau kiri.`;
@@ -269,12 +304,13 @@ function kalimatTanyaMentah(d: LangkahDasar, cara: Cara): string {
     case "ubah":
       return `${desimalDari(d.p)} sama dengan berapa persen?`;
     case "perseratus":
+      if (d.peny) return cara === "kanvas" ? "Penyebut dikali berapa supaya menjadi seratus?" : `${pembilangDari(d.p, d.peny)} dari ${d.peny} sama dengan berapa persen?`;
       return cara === "klik" ? `${pecahanDari(d.p)} sama dengan desimal yang mana?` : `${pecahanDari(d.p)} sama dengan berapa persen?`;
     case "kisi":
       return cara === "kanvas" ? "Berapa baris penuh yang berwarna?" : "Berapa persen kotak yang berwarna?";
     case "jembatan":
       if (cara === "suara") return "Koma digeser ke kanan atau ke kiri?";
-      if (cara === "kanvas") return `Angka bukan nol pada desimal dari ${persenDari(d.p)}?`;
+      if (cara === "kanvas") return d.p >= 100 ? `Angka bulat di depan koma pada desimal dari ${persenDari(d.p)}?` : `Angka bukan nol pada desimal dari ${persenDari(d.p)}?`;
       return d.arah === "kanan" ? `${desimalDari(d.p)} menjadi berapa persen?` : `${persenDari(d.p)} menjadi desimal berapa?`;
     case "sebut":
       return d.kata === "persen" ? "Satu bagian dari seratus bagian disebut satu apa?" : d.kata === "koma" ? "Tanda pemisah itu disebut apa?" : "Persen berarti per berapa?";
@@ -291,6 +327,10 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
     case "ubah":
       return "Persen berarti per seratus. Tulis desimal itu dengan dua angka di belakang koma, lalu lihat berapa perseratusnya.";
     case "perseratus":
+      if (l.peny)
+        return cara === "kanvas"
+          ? "Cari bilangan pengali yang membuat penyebut menjadi seratus."
+          : "Samakan dulu penyebutnya menjadi seratus: kalikan pembilang dan penyebut dengan bilangan yang sama, lalu lihat pembilang barunya.";
       return cara === "klik" ? "Pecahan per seratus ditulis dengan dua angka di belakang koma. Periksa letak nol dan koma pada tiap pilihan." : "Pada pecahan per seratus, pembilang adalah banyak bagian dari seratus bagian. Lihat pembilangnya.";
     case "kisi":
       return cara === "kanvas" ? "Satu baris penuh ada sepuluh kotak. Hitung dulu berapa baris yang penuh berwarna." : "Hitung kotak yang berwarna dari seratus kotak. Banyaknya kotak berwarna adalah persennya.";
@@ -298,7 +338,7 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
       return cara === "klik"
         ? "Jembatan ini menggeser koma dua tempat. Periksa arah geseran dan letak koma pada tiap pilihan."
         : cara === "kanvas"
-          ? "Hilangkan tanda persen, lalu geser koma dua tempat ke kiri. Cari angka yang bukan nol."
+          ? "Hilangkan tanda persen, lalu geser koma dua tempat ke kiri. Cari angka yang diminta pada desimalnya."
           : "Dari desimal ke persen koma ke satu arah, dari persen ke desimal koma ke arah sebaliknya. Lihat dulu apa yang diubah.";
     case "sebut":
       return l.kata === "persen"
@@ -317,12 +357,13 @@ export function barisKartu(l: LangkahDasar, cara?: Cara): string[] {
     case "ubah":
       return [`desimal: ${d}`, cara === "klik" ? `pilihan: ${l.pil?.join(", ") ?? ""}` : cara === "kanvas" ? "dua angka di belakang koma" : "ucapkan bilangan persennya", "persen: ?"];
     case "perseratus":
+      if (l.peny) return [`pecahan: ${pecahanDari(l.p, l.peny)}`, cara === "klik" ? `pilihan: ${l.pil?.join(", ") ?? ""}` : cara === "kanvas" ? "penyebut dikali pengali menjadi seratus" : "penyebut dijadikan seratus", cara === "kanvas" ? "pengali penyebut: ?" : "persen: ?"];
       return [`pecahan: ${pecahanDari(l.p)}`, cara === "klik" ? `pilihan: ${l.pil?.join(", ") ?? ""}` : "penyebutnya seratus", cara === "klik" ? "desimal: ?" : "persen: ?"];
     case "kisi":
       return [`kisi seratus kotak: ${l.p} berwarna`, cara === "kanvas" ? "satu baris penuh: 10 kotak" : cara === "klik" ? `pilihan: ${l.pil?.join(", ") ?? ""}` : "ucapkan bilangan persennya", cara === "kanvas" ? "baris penuh berwarna: ?" : "persen: ?"];
     case "jembatan":
       if (cara === "suara") return [l.arah === "kanan" ? `desimal: ${d}` : `persen: ${persenDari(l.p)}`, l.arah === "kanan" ? "diubah menjadi persen" : "diubah menjadi desimal", "arah geser koma: ?"];
-      if (cara === "kanvas") return [`persen: ${persenDari(l.p)}`, "diubah menjadi desimal", "angka bukan nol di belakang koma: ?"];
+      if (cara === "kanvas") return [`persen: ${persenDari(l.p)}`, "diubah menjadi desimal", l.p >= 100 ? "angka bulat di depan koma: ?" : "angka bukan nol di belakang koma: ?"];
       return l.arah === "kanan" ? [`desimal: ${d}`, `pilihan: ${l.pil?.join(", ") ?? ""}`, "persen: ?"] : [`persen: ${persenDari(l.p)}`, `pilihan: ${l.pil?.join(", ") ?? ""}`, "desimal: ?"];
     case "sebut":
       return [`desimal: ${d}`, `kisi seratus kotak: ${l.p} berwarna`, "kata yang dicari: ?"];

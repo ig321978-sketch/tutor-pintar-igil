@@ -1,5 +1,5 @@
 import type { AdeganStory } from "./logika-story";
-import { E, W, emo, garis, judul, halaman, kisi, lampion, panah, papanPameran, teks, tokoh, warnai } from "./k4b2e-gambar";
+import { E, W, emo, garis, judul, halaman, kisi, kotak, lampion, panah, papanPameran, teks, tokoh, warnai } from "./k4b2e-gambar";
 import { hapus, k, sorotkan, tambah, ubah } from "./k4b2e-bantu";
 
 /*
@@ -78,39 +78,37 @@ export const ADEGAN_GESER: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 6. Lampion: menepati taruhan ------------------------------ */
-const SUARA_L1 = "Satria menepati taruhannya dan memasang lampion satu per satu.";
-const SUARA_L2 = "Tangga lipatnya bergoyang, dan lampion terakhir menggantung miring di atas kepalanya.";
-const SUARA_L3 = "Semua orang tertawa, dan Pak Hendro menahan tangga dengan kedua tangan.";
+/* ------------------------------ 6. Lampion: dua puluh dari lima puluh menjadi persen ------------------------------ */
+const SUARA_L1 = "Satria menepati taruhannya, dan dari lima puluh lampion, dua puluh sudah menyala di tangga.";
+const SUARA_L2 = "Satria menyebutnya dua puluh persen, tetapi Genta mengalikan pembilang dan penyebut dengan dua.";
+const SUARA_L3 = "Dua puluh per lima puluh sama dengan empat puluh per seratus, jadi empat puluh persen.";
 
+/** Dua batang sama panjang (200 satuan): batang atas 50 bagian dengan 20 terisi, batang bawah 100 bagian dengan 40 terisi; keduanya terisi 80 dari 200 (empat per sepuluh). */
 export const ADEGAN_LAMPION: AdeganStory = {
   id: "lampion",
-  judul: "Satria memasang lampion",
-  sumber: "Materi: menepati taruhan",
+  judul: "Dua puluh dari lima puluh lampion",
+  sumber: "Materi: pecahan berpenyebut lain",
   latar: "#FFFBEB",
   ketukan: [
     k(
       SUARA_L1,
-      tambah(0, judul("Memasang Lampion"), ...halaman("hl", 150), ...tokoh("sa", 36, 184, "Satria")),
-      tambah("memasang", garis("tl", 70, 80, 200, 0, W.coklat, 1.4, { z: 1 })),
-      tambah("satu", ...lampion("m0", 90, 90, true)),
-      tambah("per", ...lampion("m1", 130, 90, true)),
-      tambah("satu@2", ...lampion("m2", 170, 90, true), teks("sp", 130, 118, "1 per 1", 12, W.merah)),
+      tambah(0, judul("Lampion di Tangga"), ...halaman("hl", 150), ...tokoh("sa", 36, 184, "Satria")),
+      tambah("lampion", kotak("b1", 70, 56, 200, 20, W.putih, W.biru, { rx: 3, tebal: 1.6 }), emo("lp", 52, 70, E.lampion, 16)),
+      tambah("menyala", kotak("b1f", 70, 56, 80, 20, "#FDE047", W.coklat, { rx: 3, tebal: 1.6, z: 1 }), teks("t1", 210, 70, "20 dari 50", 12, W.merah, { z: 2 })),
     ),
     k(
       SUARA_L2,
-      hapus(0, ...["sa", "sa-n", "sa-bj"]),
-      tambah("Tangga", garis("tg1", 206, 150, 18, -62, W.coklat, 2.6, { z: 2 }), garis("tg2", 242, 150, -18, -62, W.coklat, 2.6, { z: 2 }), garis("tr1", 211, 134, 26, 0, W.coklat, 2, { z: 2 }), garis("tr2", 216, 114, 16, 0, W.coklat, 2, { z: 2 })),
-      tambah("bergoyang", teks("gy", 266, 100, "goyang", 10, W.merah)),
-      tambah("miring", garis("mr", 190, 76, 30, 10, W.coklat, 1.4, { z: 1 }), ...lampion("m3", 196, 90, true)),
-      tambah("kepalanya", emo("sa", 224, 112, E.satria, 24, { z: 3 })),
+      tambah("menyebutnya", teks("s20", 215, 96, "20%", 14, W.merah), emo("xs", 250, 96, E.salah, 14)),
+      tambah("Genta", ...tokoh("ge", 262, 184, "Genta")),
+      tambah("mengalikan", panah("ar", 48, 80, 0, 22, W.hijauTua, 2.4, { z: 4 }), teks("kx", 28, 96, "× 2", 14, W.hijauTua)),
+      tambah("dua@2", kotak("b2", 70, 104, 200, 20, W.putih, W.biru, { rx: 3, tebal: 1.6 }), kotak("b2f", 70, 104, 80, 20, "#FDE047", W.coklat, { rx: 3, tebal: 1.6, z: 1 }), teks("t2", 210, 118, "40 dari 100", 12, W.merah, { z: 2 })),
     ),
     k(
       SUARA_L3,
-      tambah("tertawa", teks("ha", 70, 128, "ha ha ha", 12, W.merah), emo("tw", 70, 150, E.tawa, 22)),
-      tambah("Hendro", ...tokoh("ph", 268, 184, "Pak Hendro")),
-      tambah("menahan", panah("mh", 252, 132, -12, 10, W.hijauTua, 2.4, { z: 4 })),
-      tambah("tangan", emo("tg", 252, 140, "\u{1F64C}", 16)),
+      hapus(0, "s20", "xs"),
+      tambah("Dua", teks("fr", 150, 146, "20/50 = 40/100", 12, W.biru)),
+      sorotkan("empat", "t2"),
+      tambah("persen", teks("r40", 232, 96, "40%", 16, W.hijauTua), emo("ok", 262, 100, E.benar, 16)),
     ),
   ],
 };
