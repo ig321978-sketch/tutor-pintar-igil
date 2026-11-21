@@ -1,7 +1,7 @@
 /**
  * Data Simulasi Papan Kursi Kelas 4 Bab 3 Sub-Bab B "Barisan Kursi Pak Gunawan", akhir cerita Orkestra Angklung Kampung Senandung.
  * Data berbeda dari Story (kursi dua belas, lima belas, delapan belas dengan beda tambah tiga; nomor tampil empat puluh, tiga puluh lima, tiga puluh dengan beda kurang lima)
- * dan dari tugas CPA. Mind-map dan Infografis memakai data kartu (data-kartu.ts). Diuji: scripts/uji-kursi-k4b3b.mjs.
+ * dan dari tugas CPA. Mind-map dan Infografis memakai data-peta.ts dan data-info.ts. Diuji: scripts/uji-kursi-k4b3b.mjs.
  */
 import type { Arah } from "./logika-cpa";
 

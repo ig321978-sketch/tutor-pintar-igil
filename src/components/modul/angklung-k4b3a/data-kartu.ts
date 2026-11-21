@@ -1,53 +1,107 @@
 /**
- * Mind-map Kelas 4 Bab 3 Sub-Bab A (Pola Gambar) berbentuk sembilan kartu geser: tiap kartu satu rantai Masalah, Cara, Hasil dengan label pendek.
- * Hanya poin pelajaran (tanpa nama tokoh atau benda cerita). Tiga metode global tampak di tiga kartu terakhir dengan nama Indonesia (Gambar Berikutnya, Tabel Selisih, Susun Per Lima).
- * Label tanpa digit; arti diucapkan guru saat label atau kotak diketuk. Ikon peta memakai benda musik angklung (nada, lonceng, mik, drum, piano, partitur, biola, saksofon, terompet).
- * Infografis: satu tabel lima baris dari kejadian Story.
+ * Data Mind-map dan Infografis Kelas 4 Bab 3 Sub-Bab A "Deret Angklung Bu Ratri" (dirancang sendiri, tanpa komponen kartu bersama).
+ * Mind-map: rak angklung bertingkat di lapangan Kampung Senandung. Rak atas = deret tumbuh (dua, empat, enam, delapan, lalu sepuluh), rak bawah = deret penabuh (tujuh, lima, tiga, satu, lalu habis),
+ * satu papan kecil memuat tiga cara pintar. Enam label kosong menempel pada bagian rak yang cocok; diketuk, judul langkah muncul dan dibacakan Guru.
+ * Infografis: dua kartu. Kartu 1 = tabel selisih dua deret dari Story (dua, empat, enam, delapan, sepuluh; tujuh, lima, tiga, satu) dengan gambar angklung sungguhan sebanyak datanya.
+ * Kartu 2 = kartu pegangan Bu Ratri: enam kebiasaan pola gambar (membesar, mengecil, berhenti di nol, tiga cara pintar). Digital saja.
+ * Suara tanpa digit: bilangan dieja lewat eja-k4b3.ts. Diuji: scripts/uji-angklung-k4b3a.mjs.
  */
-import type { KartuPeta, RingkasanPeta, TemaPeta } from "../peta-kartu/PetaKartu";
-import type { BarisInfo, TemaInfo } from "../peta-kartu/InfografisKartu";
+import { ejaK4B3 } from "../eja-k4b3";
 
-const kt = (judul: string, masalah: [string, string], cara: [string, string], hasil: [string, string], contoh: KartuPeta["contoh"] = []): KartuPeta => ({
-  judul,
-  masalah: { label: masalah[0], arti: masalah[1] },
-  cara: { label: cara[0], arti: cara[1] },
-  hasil: { label: hasil[0], arti: hasil[1] },
-  contoh,
-});
+export type LangkahPeta = { judul: string; arti: string };
 
-export const KARTU_ANGKLUNG: readonly KartuPeta[] = [
-  kt("Pola gambar", ["Deret berpola?", "Bagaimana tahu susunan deret itu berpola?"], ["Lihat selisih", "Bandingkan banyak dua deret yang berurutan."], ["Pola terlihat", "Selisih yang tetap membuat susunan menjadi pola."], ["masalah"]),
-  kt("Selisih tetap", ["Ubahnya berapa?", "Berapa banyak yang berubah tiap deret?"], ["Hitung selisih", "Kurangi banyak deret berikutnya dengan banyak deret sebelumnya."], ["Selisih sama", "Selisihnya sama di setiap pasangan deret."]),
-  kt("Pola membesar", ["Makin banyak?", "Apa nama pola yang makin lama makin banyak?"], ["Selisih tambah", "Tiap deret bertambah dengan selisih yang sama."], ["Membesar", "Pola yang makin banyak disebut membesar."]),
-  kt("Pola mengecil", ["Makin sedikit?", "Apa nama pola yang makin lama makin sedikit?"], ["Selisih kurang", "Tiap deret berkurang dengan selisih yang sama."], ["Mengecil", "Pola yang makin sedikit disebut mengecil."]),
-  kt("Bukan angkanya", ["Angka besar?", "Apakah angka yang besar berarti pola membesar?"], ["Lihat arah", "Lihat arah perubahan, bukan besar angkanya."], ["Jenis benar", "Jenis pola ditentukan oleh arah perubahan."]),
-  kt("Melanjutkan deret", ["Deret berikutnya?", "Bagaimana mencari deret yang berikutnya?"], ["Tambah selisih", "Tambah atau kurangi dengan selisih yang sama."], ["Deret lanjut", "Deret berikutnya ditemukan."]),
-  kt("Cara pintar: Gambar Berikutnya", ["Sulit dibayangkan?", "Bagaimana membayangkan deret yang belum ada?"], ["Gambar Berikutnya", "Gambar deret selanjutnya dengan perubahan yang sama."], ["Terlihat jelas", "Pola tampak langsung bertambah atau berkurang."]),
-  kt("Cara pintar: Tabel Selisih", ["Yakin selisih sama?", "Bagaimana memastikan selisihnya selalu sama?"], ["Tabel Selisih", "Tulis banyak tiap deret, lalu selisihnya di bawah."], ["Selisih terbukti", "Selisih yang sama membuktikan pola."]),
-  kt("Cara pintar: Susun Per Lima", ["Terlalu banyak?", "Bagaimana menghitung benda yang banyak dengan cepat?"], ["Susun Per Lima", "Susun benda dalam baris berisi lima."], ["Cepat terbaca", "Banyaknya terbaca sekilas."]),
+/** Enam langkah Mind-map (urut): selisih, membesar, melanjutkan, mengecil, berhenti di nol, tiga cara pintar. Arti dibacakan Guru (tanpa digit). */
+export const LANGKAH_ANGKLUNG: LangkahPeta[] = [
+  {
+    judul: "Hitung selisih tiap deret",
+    arti: "Langkah satu. Bandingkan banyak angklung dua deret yang berurutan, lalu hitung selisihnya. Dua, empat, enam selisihnya selalu tambah dua. Selisih yang tetap membuat susunan gambar menjadi pola.",
+  },
+  {
+    judul: "Selisih tambah: membesar",
+    arti: "Langkah dua. Kalau tiap deret bertambah dengan selisih yang sama, polanya makin lama makin banyak. Pola itu kita sebut pola membesar.",
+  },
+  {
+    judul: "Lanjutkan deret",
+    arti: "Langkah tiga. Untuk melanjutkan deret, tambahkan selisih yang sama lagi. Dua, empat, enam, delapan, lalu sepuluh angklung.",
+  },
+  {
+    judul: "Selisih kurang: mengecil",
+    arti: "Langkah empat. Kalau tiap deret berkurang dengan selisih yang sama, polanya mengecil. Tujuh, lima, tiga selisihnya kurang dua. Lihat arah perubahan, bukan besar angkanya.",
+  },
+  {
+    judul: "Berhenti di nol",
+    arti: "Langkah lima. Kurangi dua terus, tujuh, lima, tiga, satu, lalu angklungnya habis. Pola mengecil berhenti di nol, karena benda tidak bisa kurang dari tidak ada.",
+  },
+  {
+    judul: "Pilih cara pintar",
+    arti: "Langkah enam. Pilih cara yang pas. Gambar Berikutnya untuk membayangkan deret berikutnya. Tabel Selisih untuk memastikan selisihnya sama. Susun Per Lima untuk menghitung benda yang banyak dengan cepat.",
+  },
 ];
+export const JUDUL_RAK_ATAS = "Rak deret tumbuh";
+export const JUDUL_RAK_BAWAH = "Rak deret penabuh";
+export const JUDUL_PAPAN_CARA = "Papan cara";
+export const PETUNJUK_PETA_ANGKLUNG = "Ketuk tanda tanya di rak untuk membuka langkahnya.";
+export const SELESAI_PETA_ANGKLUNG = "Rak lengkap! Enam langkah sudah kamu buka.";
 
-export const TEMA_KARTU_ANGKLUNG: TemaPeta = { bingkai: "#B45309", ikon: "\u{1F3B6}", judul: "Rak angklung", latar: "#FFFBEB", garisLatar: "#D97706" };
-/** Peta radial awal (tanpa kata): nada di tengah, satu gambar per kartu (benda musik angklung). */
-export const RINGKASAN_ANGKLUNG: RingkasanPeta = {
-  pusat: "\u{1F3B6}",
-  ikon: ["\u{1F3B5}", "\u{1F514}", "\u{1F3A4}", "\u{1F941}", "\u{1F3B9}", "\u{1F3BC}", "\u{1F3BB}", "\u{1F3B7}", "\u{1F3BA}"],
-  suara: "Ini peta pola gambar. Gambar nada ada di tengah, dan sembilan gambar mengelilinginya. Ketuk satu gambar untuk membuka kartunya. Centang hijau berarti kartunya selesai.",
+/** Baris rak: banyak angklung, selisih dari baris sebelumnya (kosong = baris pertama), hantu = belum ada (gambar putus-putus). */
+export type BarisRak = { n: number; d?: number; hantu?: boolean; habis?: boolean };
+export const RAK_ATAS: readonly BarisRak[] = [{ n: 2 }, { n: 4, d: 2 }, { n: 6, d: 2 }, { n: 8, d: 2 }, { n: 10, d: 2, hantu: true }];
+export const RAK_BAWAH: readonly BarisRak[] = [{ n: 7 }, { n: 5, d: -2 }, { n: 3, d: -2 }, { n: 1, d: -2 }, { n: 0, habis: true }];
+/** Letak tiap label pada rak: zona 0 = rak atas, 1 = rak bawah, 2 = papan cara; baris mulai dari 1 dan banyak baris yang dijangkau label. */
+export const LETAK_LABEL: readonly { zona: 0 | 1 | 2; dari: number; banyak: number }[] = [
+  { zona: 0, dari: 1, banyak: 2 },
+  { zona: 0, dari: 3, banyak: 2 },
+  { zona: 0, dari: 5, banyak: 1 },
+  { zona: 1, dari: 1, banyak: 3 },
+  { zona: 1, dari: 4, banyak: 2 },
+  { zona: 2, dari: 1, banyak: 1 },
+];
+/** Tiga gambar kecil di papan cara. */
+export const CARA_PAPAN = ["Gambar", "Tabel", "Per Lima"] as const;
+
+/* ------------------------------ Infografis kartu 1: tabel selisih ------------------------------ */
+export type DeretInfo = { kunci: string; nama: string; banyak: number[]; terlihat: number; jenis: string; suaraJenis: string };
+const kata = (t: string) => ejaK4B3(t);
+export const DERET_INFO: readonly DeretInfo[] = [
+  {
+    kunci: "a",
+    nama: "Deret angklung Bu Ratri",
+    banyak: [2, 4, 6, 8, 10],
+    terlihat: 3,
+    jenis: "Pola membesar",
+    suaraJenis: kata("Selisihnya selalu +2, jadi tiap deret makin banyak. Ini pola membesar."),
+  },
+  {
+    kunci: "b",
+    nama: "Deret penabuh",
+    banyak: [7, 5, 3, 1],
+    terlihat: 3,
+    jenis: "Pola mengecil",
+    suaraJenis: kata("Selisihnya selalu −2, jadi tiap deret makin sedikit. Ini pola mengecil, walau angka 7 terlihat besar."),
+  },
+];
+export const teksSelisih = (d: number) => (d >= 0 ? `+${d}` : `−${Math.abs(d)}`);
+/** Selisih deret ke-i (mulai 1) terhadap deret sebelumnya; kosong untuk deret pertama. */
+export const selisihKe = (banyak: readonly number[], i: number): number | null => (i <= 0 ? null : banyak[i] - banyak[i - 1]);
+export const suaraBanyak = (d: DeretInfo, i: number) =>
+  kata(`Deret ke-${i + 1} berisi ${d.banyak[i]} angklung.${i > 0 ? ` Itu ${d.banyak[i - 1]} ${d.banyak[i] > d.banyak[i - 1] ? "ditambah" : "dikurangi"} ${Math.abs(d.banyak[i] - d.banyak[i - 1])}.` : ""}`);
+export const suaraSelisih = (d: DeretInfo, i: number) => {
+  const s = selisihKe(d.banyak, i) as number;
+  return kata(`Dari ${d.banyak[i - 1]} ke ${d.banyak[i]} selisihnya ${teksSelisih(s)}. Angklungnya ${s > 0 ? "bertambah" : "berkurang"} ${Math.abs(s)}.`);
 };
-export const SUARA_KARTU_ANGKLUNG =
-  "Ini kartu rak angklung. Ada sembilan kartu. Tiap kartu punya tiga kotak: masalah, cara, dan hasil. Kotak bertanda contoh sudah terisi, jadi lihat dulu sebagai petunjuk. Ketuk label, lalu ketuk kotak yang cocok.";
-export const SELESAI_KARTU_ANGKLUNG = "Semua kartu lengkap! Dari masalah, lewat cara, sampai hasil.";
+export const PETUNJUK1_INFO_ANGKLUNG =
+  "Ketuk tanda tanya untuk membuka isinya, sampai semua terbuka.";
+export const SELESAI1_INFO_ANGKLUNG = "Tabel selisih lengkap! Selisih tetap tambah itu membesar, selisih tetap kurang itu mengecil.";
 
-/* ------------------------------ Infografis: daftar angklung (satu tabel lima baris) ------------------------------ */
-export const KOLOM_INFO_ANGKLUNG = ["Yang dikerjakan", "Hasilnya", "Katanya"] as const;
-const bi = (ikon: string, nama: string, a: { t: string; s?: string }, b: { t: string; s?: string }, c: { t: string; s?: string }, contoh: number[]): BarisInfo => ({ ikon, nama, isi: [a, b, c], contoh });
-export const BARIS_INFO_ANGKLUNG: readonly BarisInfo[] = [
-  bi("\u{1F3B5}", "Menata deret", { t: "Tata deret" }, { t: "2, 4, 6", s: "dua, empat, enam" }, { t: "Tambah dua" }, [0, 1, 2]),
-  bi("\u{1F3BC}", "Tabel selisih", { t: "Tulis selisih" }, { t: "Selisih sama" }, { t: "Pola membesar" }, []),
-  bi("\u{1F514}", "Deret penabuh", { t: "Makin sedikit" }, { t: "7, 5, 3", s: "tujuh, lima, tiga" }, { t: "Pola mengecil" }, []),
-  bi("\u{1F3A4}", "Salah kira", { t: "Angka besar" }, { t: "Dikira membesar" }, { t: "Lihat selisih" }, []),
-  bi("\u{1F941}", "Melanjutkan", { t: "Tambah selisih" }, { t: "10", s: "sepuluh" }, { t: "Deret kelima" }, []),
+/* ------------------------------ Infografis kartu 2: kartu pegangan ------------------------------ */
+export type PeganganInfo = { kunci: string; gambar: "tumbuh" | "kecil" | "habis" | "gambar" | "tabel" | "lima"; kiri: string; isi: string; suara: string };
+export const PEGANGAN_INFO: readonly PeganganInfo[] = [
+  { kunci: "tumbuh", gambar: "tumbuh", kiri: "2, 4, 6", isi: "Pola membesar", suara: kata("Selisih tetap tambah, polanya membesar. 2, 4, 6, lalu 8.") },
+  { kunci: "kecil", gambar: "kecil", kiri: "7, 5, 3", isi: "Pola mengecil", suara: kata("Selisih tetap kurang, polanya mengecil. Lihat arah perubahan, bukan besar angka 7.") },
+  { kunci: "habis", gambar: "habis", kiri: "7, 5, 3, 1, …", isi: "Berhenti di nol", suara: kata("Dikurangi 2 lagi, angklungnya habis. Pola mengecil berhenti di nol.") },
+  { kunci: "gambar", gambar: "gambar", kiri: "Gambar Berikutnya", isi: "Bayangkan deret berikutnya", suara: kata("Gambar Berikutnya: gambar deret selanjutnya dengan perubahan yang sama, supaya pola terlihat jelas.") },
+  { kunci: "tabel", gambar: "tabel", kiri: "Tabel Selisih", isi: "Pastikan selisih sama", suara: kata("Tabel Selisih: tulis banyak tiap deret, lalu selisihnya di bawah. Selisih yang sama membuktikan pola.") },
+  { kunci: "lima", gambar: "lima", kiri: "Susun Per Lima", isi: "Hitung benda banyak dengan cepat", suara: kata("Susun Per Lima: susun benda dalam baris berisi 5, jadi banyaknya terbaca sekilas.") },
 ];
-export const TEMA_INFO_ANGKLUNG: TemaInfo = { bingkai: "#B45309", latar: "#FFFBEB", aksen: "#D97706", teduh: "#FEF3C7", ikon: "\u{1F4CB}", judul: "Daftar angklung" };
-export const SUARA_INFO_ANGKLUNG = "Ini daftar angklung. Ada lima baris, satu baris satu kejadian dari cerita. Isi yang dikerjakan, hasilnya, dan katanya. Baris pertama sudah terisi penuh sebagai contoh. Ketuk label, lalu ketuk kotak yang cocok.";
-export const SELESAI_INFO_ANGKLUNG = "Daftar angklung lengkap! Tata, hitung selisih, dan lanjutkan deret.";
+export const PETUNJUK2_INFO_ANGKLUNG = "Ketuk tanda tanya untuk melihat arti gambarnya.";
+export const SELESAI2_INFO_ANGKLUNG = "Kartu pegangan lengkap! Lihat selisihnya dulu, baru tentukan polanya.";

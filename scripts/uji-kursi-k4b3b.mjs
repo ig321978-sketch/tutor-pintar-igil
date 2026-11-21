@@ -1,7 +1,7 @@
 // Uji Mind-map (Barisan Kursi), Infografis (Daftar Kursi), Simulasi Papan Kursi, dan tahap Concrete, Pictorial, Abstract Kelas 4 Bab 3 Sub-Bab B ("Barisan Kursi Pak Gunawan"),
 // akhir cerita Orkestra Angklung Kampung Senandung (pola bilangan).
 // Memeriksa: logika simulasi (rantai loncat dengan alat menolak jumlah kursi kurang dari nol, mesin aturan, tabel urutan dengan n kurang satu lompatan), misi (awal tidak memenuhi, wajib empat, bebas dua),
-// Mind-map (sembilan kartu geser Masalah, Cara, Hasil memuat semua metode Story), Infografis dari kejadian Story, CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode)
+// Mind-map (denah kursi dengan enam label menempel pada baris dan papan nomor, kursi sebanyak data), Infografis (dua kartu: daftar baris kursi dan papan nomor dengan aturan, dari Story), CPA dua belas langkah per tahap (Klik, Kanvas, Suara x empat metode)
 // dengan jawaban beragam dan Cari kesalahan di tiap tahap, jawaban benar dihitung dari data, angka jawaban tidak kembar per tahap, tugas yang langsung siap (jebakan tombol macet), pengenal ucapan,
 // petunjuk salah tanpa bocoran, gambar baris benda dan titik sebanyak datanya, batas rupa, emoji, kata terlarang, akhir baris.
 // Jalankan: node --no-warnings scripts/uji-kursi-k4b3b.mjs
@@ -15,7 +15,8 @@ register(
 );
 const L = await import("../src/components/modul/kursi-k4b3b/logika.ts");
 const DS = await import("../src/components/modul/kursi-k4b3b/data-sim.ts");
-const DK = await import("../src/components/modul/kursi-k4b3b/data-kartu.ts");
+const DP = await import("../src/components/modul/kursi-k4b3b/data-peta.ts");
+const DI = await import("../src/components/modul/kursi-k4b3b/data-info.ts");
 const LC = await import("../src/components/modul/kursi-k4b3b/logika-cpa.ts");
 const D = await import("../src/components/modul/kursi-k4b3b/data.ts");
 const K = await import("../src/components/modul/kursi-k4b3b/periksa.ts");
@@ -212,51 +213,68 @@ const nilaiAturan = (t) => Number(t.replace(MIN, "-"));
   cek(B.every((m) => !m.cek({ alat: "angklung" })), "misi B: keadaan Sub-Bab A tidak memenuhi misi");
 }
 
-/* ------------------------------ Mind-map: barisan kursi (sembilan kartu geser) ------------------------------ */
+/* ------------------------------ Mind-map: denah kursi (enam label menempel pada baris dan papan nomor) ------------------------------ */
 {
-  const KA = DK.KARTU_KURSI;
-  cek(KA.length === 9, "kartu: sembilan kartu");
-  cek(KA.every((k) => k.contoh.length <= 1) && KA[0].contoh.join() === "masalah" && KA.slice(1).every((k) => k.contoh.length === 0), "kartu: satu kotak contoh di kartu pertama saja, sisanya mandiri");
-  const semua = KA.flatMap((k) => [k.masalah, k.cara, k.hasil]);
-  const label = semua.map((x) => x.label);
-  cek(new Set(label).size === label.length, "kartu: label unik");
-  cek(semua.every((x) => x.label.length >= 5 && x.label.length <= 36), `kartu: label pendek (terpanjang ${Math.max(...label.map((l) => l.length))} huruf)`);
-  cek(label.every((l) => l.split(/\s+/).every((w) => w.length <= 12)), "kartu: tiap kata label paling banyak dua belas huruf (muat di 344 px)");
-  cek(KA.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((l) => l.split(/\s+/).length <= 6)), "kartu: label paling banyak enam kata");
-  cek(semua.every((x) => tanpaDigit(x.label) && tanpaDigit(x.arti) && bersih(x.label) && bersih(x.arti) && x.arti.length > 10), "kartu: label dan arti tanpa digit dan kata terlarang");
-  cek(KA.every((k) => tanpaDigit(k.judul) && bersih(k.judul) && k.judul.length > 3), "kartu: judul bersih");
-  const cara = KA.map((k) => k.cara.label).join(" | ");
-  for (const m of ["Rantai Loncat", "Mesin Aturan", "Tabel Urutan", "Beda tambah", "Beda kurang", "Hitung lompatan"]) cek(cara.toLowerCase().includes(m.toLowerCase()), `kartu: cara memuat ${m}`);
-  const gab = KA.map((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label, k.masalah.arti, k.cara.arti, k.hasil.arti].join(" ")).join(" ").toLowerCase();
-  for (const s of ["beda", "selisih", "membesar", "mengecil", "melanjutkan", "bilangan berikutnya", "lompatan", "nomor urutan", "nol", "rantai loncat", "mesin aturan", "tabel urutan", "tambah", "kurang"]) cek(gab.includes(s), `kartu: memuat poin "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|pak gunawan|bu ratri|kursi|angklung|konser|spanduk|panggung)\\b", "i").test(gab), "kartu: hanya poin pelajaran (tanpa tokoh dan benda cerita)");
-  cek(tanpaDigit(DK.SUARA_KARTU_KURSI + DK.SELESAI_KARTU_KURSI) && bersih(DK.SUARA_KARTU_KURSI + DK.SELESAI_KARTU_KURSI), "kartu: suara dan pesan selesai tanpa digit dan kata terlarang");
-  cek(emojiSah(DK.TEMA_KARTU_KURSI.ikon) && DK.TEMA_KARTU_KURSI.judul.length > 5, "kartu: tema sah");
-  const RG = DK.RINGKASAN_KURSI;
-  cek(RG.ikon.length === DK.KARTU_KURSI.length && new Set(RG.ikon).size === RG.ikon.length && [...RG.ikon, RG.pusat].every((e) => emojiSah(e) && !/[A-Za-z0-9]/.test(e)), "peta radial: satu gambar unik per kartu, gambar sah tanpa huruf");
-  cek(tanpaDigit(RG.suara) && bersih(RG.suara) && !RG.ikon.includes(RG.pusat), "peta radial: suara bersih dan pusat berbeda dari cabang");
-  // Ikon bertema konser angklung: not, mikrofon, drum, piano, lonceng, lampu, balon, konfeti. Bukan benda di luar tema.
-  const TEMA_OK = new Set([0x1f3bc, 0x1f3b6, 0x1f3b5, 0x1f3a4, 0x1f941, 0x1f3b9, 0x1f514, 0x1f4a1, 0x1f388, 0x1f389]);
-  cek([...RG.ikon, RG.pusat].every((e) => TEMA_OK.has(e.codePointAt(0))), "peta radial: semua gambar bertema konser (not, mikrofon, drum, piano, lonceng, lampu, balon, konfeti)");
+  const buangKomentar = (s) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  sama(DP.KURSI_BARIS, [12, 15, 18, 21, 24], "peta: lima baris kursi Story (beda tambah tiga)");
+  sama(DP.NOMOR_PAPAN, [40, 35, 30], "peta: nomor tampil Story (beda kurang lima)");
+  const LK = DP.LANGKAH_KURSI;
+  cek(LK.length >= 3 && LK.length <= 6 && LK.length === 6, "peta: enam langkah (tiga sampai enam label, mengikuti isi Story)");
+  const judul = LK.map((l) => l.judul);
+  cek(new Set(judul).size === judul.length && judul.every((j) => j.length >= 8 && j.length <= 26 && j.split(/\s+/).every((w) => w.length <= 12) && tanpaDigit(j) && bersih(j)), "peta: judul unik, pendek, tanpa digit dan kata terlarang");
+  cek(LK.every((l) => tanpaDigit(l.arti) && bersih(l.arti) && l.arti.length > 30), "peta: arti tanpa digit dan kata terlarang");
+  sama(LK.map((l) => l.baris), [0, 1, 2, 3, 4, "papan"], "peta: label menempel pada baris satu sampai lima dan papan nomor");
+  const gab = LK.map((l) => `${l.judul} ${l.arti}`).join(" ").toLowerCase();
+  for (const s of ["beda", "selisih", "berurutan", "tiap pasangan", "membesar", "mengecil", "bilangan berikutnya", "lompatan", "satu kurang dari nomor", "nol", "tambah", "kurang"]) cek(gab.includes(s), `peta: memuat poin "${s}"`);
+  cek(gab.includes("dua puluh empat") && gab.includes("empat puluh") && gab.includes("dua puluh lima"), "peta: arti memuat angka Story (dua puluh empat, empat puluh, dua puluh lima)");
+  cek(tanpaDigit(DP.PETUNJUK_PETA + DP.SELESAI_PETA + DP.JUDUL_PETA) && bersih(DP.PETUNJUK_PETA + DP.SELESAI_PETA + DP.JUDUL_PETA) && emojiSah(DP.IKON_JUDUL_PETA), "peta: petunjuk, pesan selesai, judul bersih dan emoji sah");
+  const pt = buangKomentar(readFileSync(new URL("BarisKursi.tsx", folderUrl), "utf8"));
+  cek(!/PetaKartu|peta-kartu|PetaLabel|peta-label|InfografisKartu|InfoKartu|data-kartu/.test(pt), "BarisKursi: komponen sendiri, bukan PetaKartu atau PetaLabel");
+  cek(/KURSI_BARIS\.map/.test(pt) && /Array\.from\(\{ length: n \}/.test(pt) && /data-kursi="1"/.test(pt) && /data-banyak=\{n\}/.test(pt) && /NOMOR_PAPAN/.test(pt) && /data-nomor=/.test(pt), "BarisKursi: kursi digambar sebanyak data tiap baris, nomor papan dari data");
+  cek(/LANGKAH_KURSI/.test(pt) && /speakGuru\(LANGKAH_KURSI\[n\]\.arti\)/.test(pt) && /selesai \? \(/.test(pt) && /export default function BarisKursiK4B3/.test(pt) && /export \{ BarisKursiK4B3 \}/.test(pt) && /onLanjut/.test(pt) && /teksLanjut/.test(pt), "BarisKursi: label kosong dibacakan, lanjut hanya setelah semua terbuka, ekspor BarisKursiK4B3");
+  cek(/tombol\(i, TINGGI_BARIS\)/.test(pt) && /tombol\(KURSI_BARIS\.length, 70\)/.test(pt), "BarisKursi: satu label di samping tiap baris dan satu di samping papan nomor");
+  // Teks SVG: lebar render sama dengan lebar viewBox (skala satu), jadi ukuran efektif sama dengan fontSize. Paling kecil harus 10.
+  cek(/viewBox=\{`0 0 \$\{LEBAR\} \$\{tinggi\}`\} width=\{LEBAR\}/.test(pt) && /viewBox=\{`0 0 \$\{LEBAR\} 70`\} width=\{LEBAR\}/.test(pt), "BarisKursi: lebar render sama dengan viewBox (skala satu)");
+  const ukuran = [...pt.matchAll(/fontSize=\{(\d+)\}/g)].map((m) => Number(m[1]));
+  cek(ukuran.length >= 3 && Math.min(...ukuran) >= 10, `BarisKursi: teks SVG efektif paling kecil ${Math.min(...ukuran)} px (>= 10)`);
+  cek(!/text-\[(9|10)px\]/.test(pt) && !/fontSize=\{([0-9])\}/.test(pt), "BarisKursi: tanpa teks HTML di bawah 11 px");
+  // Lebar: wadah dalam 298 px (312 dikurangi bingkai 3 + padding 4 tiap sisi); gambar 166 + celah 2 + label sisanya, tanpa lebar tetap lain.
+  const lebarGambar = Number(/const LEBAR = (\d+);/.exec(pt)?.[1]);
+  const jarakKursi = Number(/const JARAK = ([\d.]+);/.exec(pt)?.[1]);
+  const kiriGambar = Number(/const KIRI = (\d+);/.exec(pt)?.[1]);
+  cek(lebarGambar + 2 + 100 <= 298 && /grid-cols-\[166px_minmax\(0,1fr\)\]/.test(pt) && lebarGambar === 166 && kiriGambar + 24 * jarakKursi <= lebarGambar, `BarisKursi: gambar ${lebarGambar} + label (>= 100) <= 298 dan 24 kursi muat (${kiriGambar + 24 * jarakKursi})`);
+  cek(/min-w-0/.test(pt) && !/w-\[(1[7-9]\d|[2-9]\d\d)px\]/.test(pt), "BarisKursi: label min-w-0, tanpa lebar tetap melebihi gambar");
+  const tPeta = 40 + 8 + 22 + 4 + 5 * 44 + 4 + 18 + 70 + 14 + 8 + 20 + 52 + 16;
+  cek(tPeta <= 640 && !/JUDUL_PETA/.test(pt), `BarisKursi: tinggi perkiraan ${tPeta} px <= 640, tanpa pill judul`);
+  cek(DP.PETUNJUK_PETA.length <= 66, `BarisKursi: petunjuk satu kalimat pendek (${DP.PETUNJUK_PETA.length} huruf <= 66)`);
+  cek(bersih(pt) && emojiSah(pt.replace(/[^\u{1F000}-\u{1FFFF}]/gu, "")), "BarisKursi: tanpa kata terlarang di berkas, emoji sah");
 }
 
-/* ------------------------------ Infografis: daftar kursi (satu tabel lima baris) ------------------------------ */
+/* ------------------------------ Infografis: daftar baris kursi dan papan nomor (dua kartu) ------------------------------ */
 {
-  const B = DK.BARIS_INFO_KURSI;
-  cek(B.length === 5 && DK.KOLOM_INFO_KURSI.length === 3, "infografis: lima baris dan tiga kolom");
-  cek(B.every((b) => b.isi.length === 3 && emojiSah(b.ikon) && b.nama.length > 4), "infografis: tiap baris tiga isian, emoji sah");
-  const jumlahContoh = B.map((b) => b.contoh.length);
-  cek(jumlahContoh[0] === 3 && jumlahContoh.slice(1).every((n) => n === 0), "infografis: baris satu penuh contoh, baris dua sampai lima mandiri");
-  const semua = B.flatMap((b) => b.isi);
-  cek(B.every((b) => new Set(b.isi.map((x) => x.t)).size === 3), "infografis: tiga label tiap baris berbeda");
-  cek(new Set(semua.map((x) => x.t)).size === semua.length, "infografis: semua label unik");
-  cek(semua.every((x) => x.t.length <= 28 && x.t.split(/\s+/).length <= 5 && x.t.split(/\s+/).every((w) => w.length <= 12) && bersih(x.t) && bersih(x.s ?? "")), "infografis: label pendek (paling banyak lima kata, tiap kata paling banyak dua belas huruf) dan tanpa kata terlarang");
-  cek(semua.every((x) => tanpaDigit(x.s ?? x.t)), "infografis: ucapan label tanpa digit");
-  cek(B.every((b) => b.nama.split(/\s+/).every((w) => w.length <= 12)), "infografis: nama baris kata pendek");
-  const gab = B.map((b) => [b.nama, ...b.isi.map((x) => x.t)].join(" ")).join(" ").toLowerCase();
-  for (const s of ["mencari beda", "melanjutkan", "memakai mesin", "urutan jauh", "mengecil", "rantai loncat", "mesin aturan", "tabel urutan", "hitung lompatan", "kurangi beda"]) cek(gab.includes(s), `infografis: memuat "${s}"`);
-  cek(!new RegExp("\\b(satria|laras|genta|pak hendro|pak gunawan|bu ratri|konser)\\b", "i").test(gab), "infografis: tanpa nama tokoh");
-  cek(tanpaDigit(DK.SUARA_INFO_KURSI + DK.SELESAI_INFO_KURSI) && bersih(DK.SUARA_INFO_KURSI + DK.SELESAI_INFO_KURSI) && emojiSah(DK.TEMA_INFO_KURSI.ikon), "infografis: suara dan tema bersih");
+  const buangKomentar = (s) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  sama(DI.SEL_KURSI.map((s) => s.teks), ["12", "15", "18", "21", "24"], "info kartu 1: banyak kursi tiap baris dari Story");
+  cek(DI.SEL_LONCAT.length === 4 && DI.SEL_LONCAT.every((s) => s.teks === "+3"), "info kartu 1: empat loncatan, tiap loncatan tambah tiga");
+  cek(DI.SEL_NOMOR.teks === "25" && DI.NOMOR_BERIKUT === 25, "info kartu 2: nomor berikutnya dua puluh lima");
+  cek(DI.KOTAK_ATURAN.length === 5 && new Set(DI.KOTAK_ATURAN.map((k) => k.label)).size === 5, "info kartu 2: lima kotak aturan, label unik");
+  const sel = [...DI.SEL_KURSI, ...DI.SEL_LONCAT, DI.SEL_NOMOR, ...DI.KOTAK_ATURAN];
+  cek(sel.every((s) => s.suara.length > 15 && tanpaDigit(s.suara) && bersih(s.suara)), "info: ucapan semua sel tanpa digit dan kata terlarang");
+  cek(DI.KOTAK_ATURAN.every((k) => k.label.length <= 14 && k.isi.length <= 22 && bersih(k.label + k.isi)), "info: label dan isi kotak aturan pendek (muat dua kolom)");
+  const isi = DI.KOTAK_ATURAN.map((k) => `${k.label} ${k.isi} ${k.suara}`).join(" ").toLowerCase();
+  for (const s of ["beda", "selisih", "membesar", "mengecil", "lompatan", "nol", "berurutan"]) cek(isi.includes(s), `info: aturan memuat "${s}"`);
+  cek(DI.KOTAK_ATURAN.find((k) => k.id === "kelima").isi === "12 + 3 × 4 = 24", "info: kotak baris kelima 12 + 3 × 4 = 24 (empat lompatan)");
+  cek(tanpaDigit(DI.PETUNJUK_INFO_1 + DI.PETUNJUK_INFO_2 + DI.SELESAI_INFO_1 + DI.SELESAI_INFO_2 + DI.PESAN_INFO_2) && bersih(DI.PETUNJUK_INFO_1 + DI.PETUNJUK_INFO_2 + DI.SELESAI_INFO_1 + DI.SELESAI_INFO_2 + DI.PESAN_INFO_2), "info: petunjuk dan pesan tanpa digit dan kata terlarang");
+  const inf = buangKomentar(readFileSync(new URL("DaftarKursi.tsx", folderUrl), "utf8"));
+  cek(!/PetaKartu|peta-kartu|PetaLabel|peta-label|InfografisKartu|InfoKartu|data-kartu|<table/.test(inf), "DaftarKursi: komponen sendiri, bukan InfoKartu atau tabel");
+  cek(/Array\.from\(\{ length: n \}/.test(inf) && /data-baris-gambar=\{n\}/.test(inf) && /BarisGambar n=\{Number\(s\.teks\)\}/.test(inf) && /SEL_KURSI\.map/.test(inf) && /SEL_LONCAT\[i\]/.test(inf) && /NOMOR_PAPAN\.map/.test(inf) && /KOTAK_ATURAN\.map/.test(inf), "DaftarKursi: kursi digambar sebanyak data, sel dan nomor dari data");
+  cek(/grid-cols-\[44px_minmax\(0,1fr\)_46px\]/.test(inf) && /width="100%"/.test(inf) && /maxWidth: n \* JARAK/.test(inf) && /JARAK = 6\.6/.test(inf) && 24 * 6.6 <= 298 - 44 - 46 - 8 - 12, "DaftarKursi: kisi baris minmax, gambar kursi menyusut dalam wadah (tidak melebihi tepi kanan), sel 24 dan 25 diberi ruang");
+  cek(/total1 = SEL_KURSI\.length \+ SEL_LONCAT\.length/.test(inf) && /kartu === 1 && selesai/.test(inf) && /kartu === 2 && selesai/.test(inf) && /Kartu \{kartu\} dari 2/.test(inf) && /Kembali/.test(inf), "DaftarKursi: dua kartu, Berikutnya dan Lanjut hanya setelah semua kotak terbuka, ada Kembali");
+  cek(/speakGuru/.test(inf) && /onLanjut/.test(inf) && /teksLanjut/.test(inf) && /export default function DaftarKursiK4B3/.test(inf) && /export \{ DaftarKursiK4B3 \}/.test(inf), "DaftarKursi: kontrak ekspor DaftarKursiK4B3");
+  cek(!/fontSize=\{([0-9])\}/.test(inf) && !/text-\[(9|10)px\]/.test(inf), "DaftarKursi: tanpa teks di bawah 11 px");
+  cek(bersih(inf) && emojiSah(inf.replace(/[^\u{1F000}-\u{1FFFF}]/gu, "")), "DaftarKursi: tanpa kata terlarang di berkas, emoji sah");
+  // Tinggi kartu 1 (sembilan sel, ruas paling tinggi): 5 baris x 36 + 4 loncatan x 40 + judul + padding harus <= 640 setelah semua kotak terbuka (perkiraan dari kode).
+  const tinggi1 = 5 * 36 + 4 * 40 + 30 + 20 + 62 + 8 + 20 + 52 + 16 + 24;
+  cek(tinggi1 <= 640, `tinggi perkiraan kartu 1 ${tinggi1} px <= 640`);
 }
 
 /* ------------------------------ Pengenal ucapan ------------------------------ */
@@ -435,14 +453,14 @@ const nilaiAturan = (t) => Number(t.replace(MIN, "-"));
 /* ------------------------------ Berkas ------------------------------ */
 {
   const berkas = readdirSync(folderUrl).filter((f) => /\.(ts|tsx)$/.test(f));
-  for (const nama of ["logika.ts", "data-sim.ts", "data-kartu.ts", "logika-cpa.ts", "data.ts", "periksa.ts", "JawabKursi.tsx", "LangkahKursi.tsx", "GambarKursi.tsx", "TahapKursi.tsx", "SimulasiPapanKursi.tsx", "BarisKursi.tsx", "DaftarKursi.tsx"]) cek(berkas.includes(nama), `berkas ${nama} ada`);
+  for (const nama of ["logika.ts", "data-sim.ts", "data-peta.ts", "data-info.ts", "logika-cpa.ts", "data.ts", "periksa.ts", "JawabKursi.tsx", "LangkahKursi.tsx", "GambarKursi.tsx", "TahapKursi.tsx", "SimulasiPapanKursi.tsx", "BarisKursi.tsx", "DaftarKursi.tsx"]) cek(berkas.includes(nama), `berkas ${nama} ada`);
   for (const f of berkas) {
     const s = readFileSync(new URL(f, folderUrl), "utf8");
     cek(!s.startsWith("﻿") && !s.includes("\r"), `${f}: tanpa BOM, akhir baris LF`);
     cek(![...s].some((c) => c.codePointAt(0) > 0x1fa95 || c.codePointAt(0) === 0x200d || c.codePointAt(0) === 0x1f6de || c.codePointAt(0) === 0x1fa74), `${f}: emoji paling tinggi U+1FA95 tanpa ZWJ`);
     cek(!/\\u\{1FA(9[6-9A-F]|[A-F][0-9A-F])\}|\\u\{1F[B-F][0-9A-F]{2}\}|\\u\{200D\}|\\u\{1F6DE\}|\\u\{1FA74\}|\\u\{1F39F\}|\\u\{2602\}|\\u\{1FA9F\}|\\u\{1FAA3\}|\\u\{1FA91\}/i.test(s), `${f}: kode emoji tidak melewati U+1FA95 dan tidak memakai emoji yang tampil kosong`);
     cek(!/senilai|nilai|buku|kelompok|bernilai|tebak/i.test(s), `${f}: tanpa kata senilai, nilai, buku, kelompok, tebak`);
-    if (/^(logika|logika-cpa|periksa|data|data-sim|data-kartu)\.ts$/.test(f)) cek(!/from "react"|fetch\(/.test(s), `${f}: tanpa React dan jaringan`);
+    if (/^(logika|logika-cpa|periksa|data|data-sim|data-peta|data-info)\.ts$/.test(f)) cek(!/from "react"|fetch\(/.test(s), `${f}: tanpa React dan jaringan`);
     cek(!/angklung-k4b3a|SubBabK4B3|lab-pola-bilangan-k4b3b|lab-pola-gambar-k4b3a|SimulasiLabPola|kit-k4b3|infografis-k4b3|skenario-k4b3|mesin-data-k4b3/.test(s), `${f}: tidak memakai folder Sub-Bab lain atau berkas lama`);
   }
   // Teks layar tidak memuat kata terlarang, termasuk nama berkas data.
@@ -474,10 +492,6 @@ const nilaiAturan = (t) => Number(t.replace(MIN, "-"));
   cek(/export default function SimulasiPapanKursi/.test(sim) && /onKeadaan/.test(sim) && /MISI_KURSI_TEKS/.test(sim), "SimulasiPapanKursi: ekspor, onKeadaan, teks misi");
   cek(/nama: "Rantai"/.test(sim) && /nama: "Mesin"/.test(sim) && /nama: "Tabel"/.test(sim), "SimulasiPapanKursi: tiga alat Rantai, Mesin, Tabel");
   cek(/setCatatan\(ucap \?\? ""\)/.test(sim) && /Alat menolak/.test(sim) && /kurang dari nol/.test(sim) && /loncat\(k, op\)/.test(sim) && /pilihAturan/.test(sim), "SimulasiPapanKursi: pesan lama dikosongkan tiap perubahan, pesan penolakan alat menjelaskan tanpa membocorkan, loncat dan aturan");
-  for (const [f, nm] of [["BarisKursi.tsx", "BarisKursiK4B3"], ["DaftarKursi.tsx", "DaftarKursiK4B3"]]) {
-    const s = readFileSync(new URL(f, folderUrl), "utf8");
-    cek(/speakGuru/.test(s) && /onLanjut/.test(s) && /teksLanjut/.test(s) && /peta-kartu\//.test(s) && new RegExp(`export default function ${nm}`).test(s) && new RegExp(`export \\{ ${nm} \\}`).test(s), `${f}: pembungkus tipis komponen bersama peta-kartu, ekspor ${nm}`);
-  }
   // Berkas bersama: Simulasi memasang Papan Kursi dengan misiDaftar.
   const sk = readFileSync(new URL("../src/components/modul/SimulasiK4Bab3.tsx", import.meta.url), "utf8");
   cek(/SimulasiPapanKursi/.test(sk) && /laporMisiKursi\(daftarMisiKursi\("B"\), k, a\.capai\)/.test(sk) && /misiDaftar: daftarMisiKursi\("B"\)/.test(sk) && !/judulBab=\{`Kelas/.test(sk), "SimulasiK4Bab3: langkahPapanKursiB memasang Papan Kursi dengan misiDaftar, judul bab tanpa kata Kelas");

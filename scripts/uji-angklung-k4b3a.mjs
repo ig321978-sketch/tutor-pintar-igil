@@ -209,30 +209,63 @@ const BUKAN_A = /pola bilangan|barisan|\bsuku\b|\baturan\b|\bmesin\b/i;
 
 /* ------------------------------ Mind-map dan Infografis ------------------------------ */
 {
-  cek(DK.KARTU_ANGKLUNG.length === 9, "mind-map: sembilan kartu");
-  const semuaLabel = DK.KARTU_ANGKLUNG.flatMap((k) => [k.judul, k.masalah.label, k.cara.label, k.hasil.label]);
-  const semuaArti = DK.KARTU_ANGKLUNG.flatMap((k) => [k.masalah.arti, k.cara.arti, k.hasil.arti]);
-  cek([...semuaLabel, ...semuaArti].every((t) => tanpaDigit(t) && bersih(t) && !BUKAN_A.test(t)), "mind-map: tanpa digit, kata terlarang, dan istilah Sub-Bab B");
-  cek(DK.KARTU_ANGKLUNG.every((k) => [k.masalah.label, k.cara.label, k.hasil.label].every((t) => t.length <= 22 && t.split(/\s+/).every((w) => w.replace(/[^a-zA-Z]/g, "").length <= 12))), "mind-map: label pendek, tiap kata paling banyak dua belas huruf (muat di 344 px)");
-  cek(DK.KARTU_ANGKLUNG.every((k) => k.judul.split(/\s+/).every((w) => w.replace(/[^a-zA-Z]/g, "").length <= 12)), "mind-map: judul kartu tiap kata paling banyak dua belas huruf");
-  cek(DK.KARTU_ANGKLUNG.filter((k) => k.contoh.length > 0).length === 1 && DK.KARTU_ANGKLUNG[0].contoh.join() === "masalah", "mind-map: satu kotak contoh di kartu pertama");
-  const judulSemua = DK.KARTU_ANGKLUNG.map((k) => k.judul).join(" | ");
-  for (const m of ["Gambar Berikutnya", "Tabel Selisih", "Susun Per Lima"]) cek(judulSemua.includes(m), `mind-map: kartu metode ${m}`);
-  for (const m of ["Pola membesar", "Pola mengecil", "Selisih tetap", "Melanjutkan deret"]) cek(judulSemua.includes(m), `mind-map: kartu ${m}`);
-  cek(DK.RINGKASAN_ANGKLUNG.ikon.length === 9 && new Set(DK.RINGKASAN_ANGKLUNG.ikon).size === 9 && emojiSah(DK.RINGKASAN_ANGKLUNG.ikon.join("") + DK.RINGKASAN_ANGKLUNG.pusat), "mind-map: sembilan ikon berbeda, emoji sah");
-  // Ikon peta hanya benda musik angklung (nada, musik, lonceng, mik, drum, piano, partitur, biola, saksofon, terompet).
-  const TEMA_IKON = [0x1f3b5, 0x1f3b6, 0x1f514, 0x1f3a4, 0x1f941, 0x1f3b9, 0x1f3bc, 0x1f3bb, 0x1f3b7, 0x1f3ba, 0x1f4cb, 0x1f4dd];
-  cek(DK.RINGKASAN_ANGKLUNG.ikon.every((e) => TEMA_IKON.includes(e.codePointAt(0))) && TEMA_IKON.includes(DK.RINGKASAN_ANGKLUNG.pusat.codePointAt(0)), "mind-map: ikon peta hanya benda tema musik angklung");
-  cek(tanpaDigit(DK.RINGKASAN_ANGKLUNG.suara) && tanpaDigit(DK.SUARA_KARTU_ANGKLUNG) && tanpaDigit(DK.SELESAI_KARTU_ANGKLUNG), "mind-map: suara tanpa digit");
-  cek(DK.BARIS_INFO_ANGKLUNG.length === 5 && DK.KOLOM_INFO_ANGKLUNG.length === 3 && DK.BARIS_INFO_ANGKLUNG.every((b) => b.isi.length === 3), "infografis: lima baris tiga kolom");
-  cek(DK.BARIS_INFO_ANGKLUNG[0].contoh.join() === "0,1,2" && DK.BARIS_INFO_ANGKLUNG.slice(1).every((b) => b.contoh.length === 0), "infografis: hanya baris pertama terisi sebagai contoh");
-  cek(DK.BARIS_INFO_ANGKLUNG.every((b) => b.isi.every((c) => c.t.split(/\s+/).filter(Boolean).length <= 3 && c.t.split(/\s+/).every((w) => w.replace(/[^a-zA-Z]/g, "").length <= 12) && bersih(c.t + (c.s ?? "")) && !BUKAN_A.test(c.t + (c.s ?? "")))), "infografis: sel satu sampai tiga kata, tiap kata paling banyak dua belas huruf");
-  cek(DK.BARIS_INFO_ANGKLUNG.every((b) => b.isi.every((c) => !/\d/.test(c.s ?? "") && (!/\d/.test(c.t) || c.s))), "infografis: sel berangka punya ucapan tanpa digit");
-  cek(DK.BARIS_INFO_ANGKLUNG.every((b) => b.nama.split(/\s+/).every((w) => w.length <= 12) && emojiSah(b.ikon) && TEMA_IKON.includes(b.ikon.codePointAt(0))), "infografis: nama baris pendek, ikon sah dan sesuai tema");
-  cek(tanpaDigit(DK.SUARA_INFO_ANGKLUNG) && tanpaDigit(DK.SELESAI_INFO_ANGKLUNG) && bersih(DK.SUARA_INFO_ANGKLUNG), "infografis: suara tanpa digit");
-  // Kejadian Story tampak di daftar: deret dua, empat, enam; tujuh, lima, tiga; sepuluh.
-  const sel = DK.BARIS_INFO_ANGKLUNG.flatMap((b) => b.isi.map((c) => c.t)).join("|");
-  cek(sel.includes("2, 4, 6") && sel.includes("7, 5, 3") && sel.includes("10"), "infografis: deret dua, empat, enam, deret tujuh, lima, tiga, dan sepuluh dari Story");
+  /* Mind-map: rak angklung dengan label kosong, isi dari Story, rupa sendiri. */
+  const LA = DK.LANGKAH_ANGKLUNG;
+  const KATA_PENDEK = (t) => t.split(/\s+/).every((w) => w.replace(/[^a-zA-Z]/g, "").length <= 12);
+  cek(LA.length >= 3 && LA.length <= 6 && DK.LETAK_LABEL.length === LA.length, "mind-map: tiga sampai enam label, tiap label punya letak di gambar");
+  cek(LA.every((l) => tanpaDigit(l.arti) && bersih(l.judul + l.arti) && !BUKAN_A.test(l.judul + l.arti)), "mind-map: arti tanpa digit, kata terlarang, dan istilah Sub-Bab B");
+  cek(LA.every((l) => l.judul.length <= 28 && KATA_PENDEK(l.judul)), "mind-map: judul label pendek, tiap kata paling banyak dua belas huruf");
+  const semuaMM = LA.map((l) => l.judul + " " + l.arti).join(" ");
+  for (const m of ["selisih", "membesar", "mengecil", "nol", "Gambar Berikutnya", "Tabel Selisih", "Susun Per Lima", "tambah dua", "kurang dua"]) cek(semuaMM.includes(m), `mind-map: memuat ${m}`);
+  sama(DK.RAK_ATAS.slice(0, 4).map((b) => b.n), [2, 4, 6, 8], "mind-map: rak atas dua, empat, enam, delapan (Story)");
+  cek(DK.RAK_ATAS[4].n === 10 && DK.RAK_ATAS[4].hantu === true, "mind-map: deret kelima sepuluh masih putus-putus");
+  sama(DK.RAK_BAWAH.slice(0, 4).map((b) => b.n), [7, 5, 3, 1], "mind-map: rak bawah tujuh, lima, tiga, satu (Story)");
+  cek(DK.RAK_BAWAH[4].n === 0 && DK.RAK_BAWAH[4].habis === true, "mind-map: baris terakhir habis di nol");
+  cek(DK.RAK_ATAS.every((b, i) => i === 0 || b.d === b.n - DK.RAK_ATAS[i - 1].n) && DK.RAK_BAWAH.slice(0, 4).every((b, i) => i === 0 || b.d === b.n - DK.RAK_BAWAH[i - 1].n), "mind-map: selisih tiap baris cocok dengan banyaknya");
+  cek(DK.LETAK_LABEL.every((l) => l.dari >= 1 && l.banyak >= 1 && (l.zona === 2 || l.dari + l.banyak - 1 <= 5)), "mind-map: letak label di dalam baris rak");
+  for (const z of [0, 1]) {
+    const per = DK.LETAK_LABEL.filter((l) => l.zona === z).sort((p, q) => p.dari - q.dari);
+    cek(per.every((l, i) => i === 0 || l.dari >= per[i - 1].dari + per[i - 1].banyak), `mind-map: label rak ${z} tidak bertumpuk`);
+  }
+  cek(tanpaDigit(DK.PETUNJUK_PETA_ANGKLUNG) && tanpaDigit(DK.SELESAI_PETA_ANGKLUNG) && bersih(DK.PETUNJUK_PETA_ANGKLUNG + DK.SELESAI_PETA_ANGKLUNG), "mind-map: petunjuk dan penutup tanpa digit");
+  /* Infografis kartu 1: tabel selisih dari Story. */
+  const dA = DK.DERET_INFO[0];
+  const dB = DK.DERET_INFO[1];
+  sama(dA.banyak, [2, 4, 6, 8, 10], "infografis: deret angklung dua, empat, enam, delapan, sepuluh");
+  sama(dB.banyak, [7, 5, 3, 1], "infografis: deret penabuh tujuh, lima, tiga, satu");
+  cek(DK.selisihKe(dA.banyak, 0) === null && dA.banyak.slice(1).every((_, i) => DK.selisihKe(dA.banyak, i + 1) === 2) && dB.banyak.slice(1).every((_, i) => DK.selisihKe(dB.banyak, i + 1) === -2), "infografis: selisih +2 dan -2 dihitung dari data");
+  cek(DK.teksSelisih(2) === "+2" && DK.teksSelisih(-2) === "−2", "infografis: tanda selisih");
+  cek(DK.DERET_INFO.every((d) => d.terlihat >= 1 && d.terlihat < d.banyak.length) && dA.jenis === "Pola membesar" && dB.jenis === "Pola mengecil", "infografis: ada isi yang tertutup, jenis pola benar");
+  for (const d of DK.DERET_INFO) {
+    for (let i = 0; i < d.banyak.length; i += 1) {
+      cek(tanpaDigit(DK.suaraBanyak(d, i)) && bersih(DK.suaraBanyak(d, i)), `infografis: suara banyak ${d.kunci}${i} tanpa digit`);
+      if (i > 0) cek(tanpaDigit(DK.suaraSelisih(d, i)) && /tambah|kurang/.test(DK.suaraSelisih(d, i)), `infografis: suara selisih ${d.kunci}${i} tanpa digit dan menyebut tambah atau kurang`);
+    }
+    cek(tanpaDigit(d.suaraJenis) && bersih(d.suaraJenis) && bersih(d.nama), `infografis: suara jenis ${d.kunci} tanpa digit`);
+  }
+  cek(/delapan/.test(DK.suaraBanyak(dA, 3)) && /sepuluh/.test(DK.suaraBanyak(dA, 4)) && /satu/.test(DK.suaraBanyak(dB, 3)), "infografis: suara menyebut delapan, sepuluh, dan satu");
+  sama(DK.PEGANGAN_INFO.map((p) => p.gambar), ["tumbuh", "kecil", "habis", "gambar", "tabel", "lima"], "infografis: kartu pegangan enam baris (membesar, mengecil, nol, tiga cara)");
+  cek(DK.PEGANGAN_INFO.every((p) => tanpaDigit(p.suara) && bersih(p.kiri + p.isi + p.suara) && !BUKAN_A.test(p.kiri + p.isi + p.suara) && p.isi.split(/\s+/).length <= 5 && KATA_PENDEK(p.isi)), "infografis: kartu pegangan suara tanpa digit, kata terlarang, isi pendek");
+  const peg = DK.PEGANGAN_INFO.map((p) => p.kiri + " " + p.isi).join(" ");
+  for (const m of ["Gambar Berikutnya", "Tabel Selisih", "Susun Per Lima", "Pola membesar", "Pola mengecil", "nol"]) cek(peg.includes(m), `infografis: kartu pegangan memuat ${m}`);
+  cek([DK.PETUNJUK1_INFO_ANGKLUNG, DK.PETUNJUK2_INFO_ANGKLUNG, DK.SELESAI1_INFO_ANGKLUNG, DK.SELESAI2_INFO_ANGKLUNG].every((t) => tanpaDigit(t) && bersih(t) && !BUKAN_A.test(t)), "infografis: petunjuk dan penutup tanpa digit");
+  /* Kode tampilan: tanpa teks SVG kecil, teks HTML paling kecil 10 px, tanpa kata terlarang. */
+  const kodeMM = readFileSync(new URL("DeretAngklung.tsx", folder), "utf8");
+  const kodeInfo = readFileSync(new URL("DaftarAngklung.tsx", folder), "utf8");
+  const kodeGlyph = readFileSync(new URL("GlyphAngklung.tsx", folder), "utf8");
+  const layar = kodeMM + kodeInfo + readFileSync(new URL("data-kartu.ts", folder), "utf8");
+  cek(!/<text/.test(kodeMM + kodeInfo + kodeGlyph), "gambar: tidak ada teks SVG (semua teks HTML)");
+  const px = [...(kodeMM + kodeInfo).matchAll(/text-\[(\d+)px\]/g)].map((m) => Number(m[1]));
+  cek(px.length > 0 && Math.min(...px) >= 10, `teks paling kecil ${Math.min(...px)} px (minimal 10)`);
+  cek(!/\b(kelas|buku|teman|kelompok|skor|nilai|soal|tebak|kunci|latihan|senilai|ditemani)\b/i.test(DK.LANGKAH_ANGKLUNG.map((l) => l.judul + l.arti).join(" ") + peg + DK.DERET_INFO.map((d) => d.nama + d.jenis).join(" ") + DK.JUDUL_RAK_ATAS + DK.JUDUL_RAK_BAWAH + DK.JUDUL_PAPAN_CARA + DK.CARA_PAPAN.join(" ")) && !/aturan/i.test(layar), "layar: tanpa kata terlarang");
+  /* Perkiraan tinggi akhir Mind-map: dua rak + papan cara + petunjuk + penutup <= 640 px. */
+  const tinggiRak = 24 * 4 + 36 + 4 * 4 + 20;
+  const mm640 = 2 * tinggiRak + 68 + 40 + 18 + 52 + 5 * 6;
+  cek(mm640 <= 620, "mind-map: perkiraan tinggi akhir " + mm640 + " px (<= 620, batas 640 dengan tombol lanjut)");
+  const kartu1 = 2 * (11 + 52 + 40 + 3 * 4 + 44 + 20) + 40 + 18 + 52 + 3 * 6;
+  cek(kartu1 <= 620, "infografis kartu 1: perkiraan tinggi akhir " + kartu1 + " px (<= 620)");
+  cek(![DK.PETUNJUK_PETA_ANGKLUNG, DK.PETUNJUK1_INFO_ANGKLUNG, DK.PETUNJUK2_INFO_ANGKLUNG].some((t) => t.length > 66) && !/Kartu {kartu} dari/.test(kodeInfo), "petunjuk satu kalimat paling banyak 66 huruf, tanpa penanda Kartu x dari 2");
+  cek(Math.max(...DK.RAK_ATAS.map((b) => b.n), ...DK.RAK_BAWAH.map((b) => b.n)) * 11 <= 110, "mind-map: baris paling panjang muat lajur gambar (110 px)");
 }
 
 /* ------------------------------ CPA: tiga tahap ------------------------------ */
@@ -407,7 +440,7 @@ const TAHAP = [
 /* ------------------------------ Berkas folder ------------------------------ */
 {
   const berkas = readdirSync(folder).filter((f) => /\.(ts|tsx)$/.test(f));
-  for (const f of ["data.ts", "data-kartu.ts", "data-sim.ts", "logika.ts", "logika-cpa.ts", "periksa.ts", "GambarAngklung.tsx", "JawabAngklung.tsx", "LangkahAngklung.tsx", "TahapAngklung.tsx", "DeretAngklung.tsx", "DaftarAngklung.tsx", "SimulasiPanggungDeret.tsx"]) cek(berkas.includes(f), `${f} ada`);
+  for (const f of ["data.ts", "data-kartu.ts", "data-sim.ts", "logika.ts", "logika-cpa.ts", "periksa.ts", "GambarAngklung.tsx", "JawabAngklung.tsx", "LangkahAngklung.tsx", "TahapAngklung.tsx", "DeretAngklung.tsx", "DaftarAngklung.tsx", "GlyphAngklung.tsx", "SimulasiPanggungDeret.tsx"]) cek(berkas.includes(f), `${f} ada`);
   for (const f of berkas) {
     const s = readFileSync(new URL(f, folder), "utf8");
     cek(emojiSah(s) && !DILARANG.some((c) => [...s].some((x) => x.codePointAt(0) === c)) && !IKAN.some((c) => [...s].some((x) => x.codePointAt(0) === c)), `${f}: emoji paling tinggi U+1FA95, tanpa ZWJ, ikan, dan emoji yang tampil kosong`);
@@ -424,9 +457,9 @@ const TAHAP = [
   const sim = readFileSync(new URL("SimulasiPanggungDeret.tsx", folder), "utf8");
   cek(/setCatatan\(ucap \?\? ""\)/.test(sim) && !/flex-wrap gap-2">\s*<svg/.test(sim), "simulasi: pesan lama dikosongkan saat soal atau langkah berganti");
   const mm = readFileSync(new URL("DeretAngklung.tsx", folder), "utf8");
-  cek(/export default function DeretAngklungK4B3/.test(mm) && /export \{ DeretAngklungK4B3 \}/.test(mm) && /PetaKartu/.test(mm), "Mind-map: pembungkus tipis PetaKartu dengan ekspor default dan bernama");
+  cek(/export default function DeretAngklungK4B3/.test(mm) && /export { DeretAngklungK4B3 }/.test(mm) && /speakGuru, onLanjut, teksLanjut/.test(mm) && !/PetaKartu|PetaLabel/.test(mm) && /LETAK_LABEL/.test(mm) && /gridTemplateColumns/.test(mm) && !/flex-wrap/.test(mm), "Mind-map: rak sendiri (bukan PetaKartu), ekspor default dan bernama");
   const dl = readFileSync(new URL("DaftarAngklung.tsx", folder), "utf8");
-  cek(/export default function DaftarAngklungK4B3/.test(dl) && /export \{ DaftarAngklungK4B3 \}/.test(dl) && /InfografisKartu/.test(dl), "Infografis: pembungkus tipis InfografisKartu dengan ekspor default dan bernama");
+  cek(/export default function DaftarAngklungK4B3/.test(dl) && /export { DaftarAngklungK4B3 }/.test(dl) && /speakGuru, onLanjut, teksLanjut/.test(dl) && !/InfografisKartu|InfoKartu/.test(dl) && /DERET_INFO/.test(dl) && /PEGANGAN_INFO/.test(dl) && !/flex-wrap/.test(dl), "Infografis: tabel selisih dan kartu pegangan sendiri (bukan InfografisKartu), dua kartu");
   const th = readFileSync(new URL("TahapAngklung.tsx", folder), "utf8");
   cek(/export default function TahapAngklung/.test(th) && /poinPenting/.test(th) && /PENUTUP_A/.test(th), "Tahap: ekspor default dan Poin Penting dengan jembatan");
   cek(!/flex-wrap/.test(th), "tahap tanpa flex-wrap (kemajuan berupa kisi tetap)");
