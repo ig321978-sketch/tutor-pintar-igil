@@ -491,6 +491,13 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
     cek(ada(akhirAdegan(lgt, 2), "ok") && isiTeks(akhirAdegan(lgt, 2), "cp") === "cepat dan tepat", "tangga terapan: cocok untuk mengganti satuan luas");
     cek(ada(akhirAdegan(lgt), "xs") && isiTeks(akhirAdegan(lgt), "lp") === "100 × 100" && isiTeks(akhirAdegan(lgt), "sh") === "salah hitung" && tidakAda(akhirAdegan(lgt), "ok"), "tangga terapan: kurang cocok kalau lupa seratus kali seratus");
   }
+  /* Topik buku: satuan tidak baku, bangun berbeda bentuk luas sama, menduga luas. */
+  cek(isiTeks(akhirAdegan(bk), "bd2") === "bentuk beda, luas sama" && /bangun berbeda bentuk bisa sama luasnya/.test(materi), "materi: bangun berbeda bentuk bisa sama luasnya");
+  cek(isiTeks(akhirAdegan(mp, 1), "dg") === "menduga dulu" && /menduga luas lantai dengan petak itu/.test(materi) && tidakAda(akhirAdegan(mp), "dg"), "materi: Bu Sinta menduga luas lantai dengan petak satu meter persegi, lalu dihitung");
+  cek(/lembar kertas lipat yang besar/.test(materi) && isiTeks(akhirAdegan(tbk, 2), "bd") === "6 ≠ 24", "materi: satuan tidak baku memberi hasil berbeda (enam dan dua puluh empat lembar)");
+  cek(isiTeks(akhirAdegan(ltt, 1), "bb") === "bentuk beda, luas sama" && /bangun berbeda bentuk/.test(luar), "global: luas pasti bahkan untuk bangun berbeda bentuk");
+  cek(isiTeks(akhirAdegan(lbt, 1), "dg") === "duga dulu" && /menduga dulu, lalu mengalikan/.test(luar), "global: menduga dulu lalu mengalikan baris dan kolom");
+  cek(/satuan berbeda ukuran membuat hasil berbeda/.test(luar), "global: satuan berbeda ukuran membuat hasil berbeda");
   const rg = adegan(U, "luar-ringkas");
   {
     cek(["r0-t", "r1-t", "r2-t"].map((id) => isiTeks(akhirAdegan(rg, 0), id)).join("|") === "Tutup Lantai|Baris dan Kolom|Tangga Satuan" && isiTeks(akhirAdegan(rg, 0), "n3") === "3 cara" && ada(akhirAdegan(rg, 0), "bs", "pk"), "ringkasan: tiga kartu cara dan Bu Sinta");

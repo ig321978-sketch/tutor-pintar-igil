@@ -56,6 +56,7 @@ const mlDariTeks = (t) => Number(t.replace(/[^\d]/g, ""));
   cek(LC.kata === LC.kataBil, "alias kata");
   sama([LC.fmt(24), LC.fmt(1000), LC.fmt(12500), LC.fmt(900)], ["24", "1.000", "12.500", "900"], "titik ribuan");
   sama([LC.teksMl(1500), LC.teksL(3), LC.teksCm3(24)], ["1.500 ml", "3 l", "24 cm³"], "teks dengan satuan");
+  sama(LC.ucapkan("3 m³ dan 4.000 l"), "tiga meter kubik dan empat ribu liter", "ucapkan: meter kubik dan liter");
   sama([LC.ucapkan("1.000 ml"), LC.ucapkan("24 cm³"), LC.ucapkan("3 l"), LC.ucapkan("l"), LC.ucapkan("ml"), LC.ucapkan("cm²")], ["seribu mililiter", "dua puluh empat sentimeter kubik", "tiga liter", "liter", "mililiter", "sentimeter persegi"], "ucapkan: satuan dieja dengan kata");
   sama(LC.ucapkan("3 × 2 × 2 = 12 cm³."), "tiga kali dua kali dua sama dengan dua belas sentimeter kubik.", "ucapkan: tanda kali dan sama dengan, tanpa spasi sebelum tanda baca");
   sama(LC.ucapkan("Isi 2.500 ml, bukan 250 ml."), "Isi dua ribu lima ratus mililiter, bukan dua ratus lima puluh mililiter.", "ucapkan: ribuan dan ratusan");
@@ -81,7 +82,7 @@ cek(DS.TUANG_SIM.length === 4 && DS.TUANG_SIM.every((t) => t.target < t.kapasita
   cek(DS.SUSUN_SIM.length === 4 && DS.SUSUN_SIM.every((t) => t.target % (t.kolom * t.baris) === 0 && t.target / (t.kolom * t.baris) >= 2 && t.target / (t.kolom * t.baris) < t.tinggiMaks && !volStory(t.kolom, t.baris, t.target / (t.kolom * t.baris))), "simulasi susun: empat sasaran dari lapisan kali tinggi, bukan data Story, di bawah tinggi bak");
   cek(DS.TANGGA_SIM.length === 4 && DS.TANGGA_SIM.map((t) => t.arah).join() === "turun,naik,turun,naik", "simulasi tangga: empat sasaran bergantian turun dan naik");
   cek(DS.TANGGA_SIM.every((t) => new Set(t.pil).size === 3 && t.pil.includes(DS.hasilTangga(t)) && t.n >= 3 && t.n <= 9 && t.n !== 2), "simulasi tangga: tiga pilihan unik, hasil benar ikut, bukan data Story");
-  cek(DS.TANGGA_SIM.every((t) => (t.arah === "turun" ? DS.hasilTangga(t) === `${LC.fmt(t.n * 1000)} ml` : DS.hasilTangga(t) === `${t.n} l`)), "simulasi tangga: hasil benar dihitung dari data");
+  cek(DS.TANGGA_SIM.every((t) => (t.jenis === "meter" ? (t.arah === "turun" ? DS.hasilTangga(t) === `${LC.fmt(t.n * 1000)} l` : DS.hasilTangga(t) === `${t.n} m³`) : t.arah === "turun" ? DS.hasilTangga(t) === `${LC.fmt(t.n * 1000)} ml` : DS.hasilTangga(t) === `${t.n} l`)) && DS.TANGGA_SIM.some((t) => t.jenis === "meter" && t.arah === "turun") && DS.TANGGA_SIM.some((t) => t.jenis === "meter" && t.arah === "naik"), "simulasi tangga: hasil benar dihitung dari data, meter kubik dan liter ikut");
   cek(new Set(DS.TANGGA_SIM.map((t) => t.pil.indexOf(DS.hasilTangga(t)))).size >= 2, "simulasi tangga: posisi pilihan benar bervariasi");
   cek(tanpaDigit(DS.MISI_EMBER_TEKS) && bersih(DS.MISI_EMBER_TEKS) && DS.MISI_EMBER_TEKS === MT.MISI_K4B4.B && D.MISI_EMBER_TEKS === DS.MISI_EMBER_TEKS && DS.MISI_EMBER_TEKS.length >= 10 && DS.MISI_EMBER_TEKS.length <= 120, "simulasi: teks misi tanpa digit dan kata terlarang, sama dengan misi-teks-k4b4");
 
@@ -194,7 +195,7 @@ cek(DS.TUANG_SIM.length === 4 && DS.TUANG_SIM.every((t) => t.target < t.kapasita
   cek(P.every((x) => tanpaDigit(x.judul) && tanpaDigit(x.arti) && bersih(x.judul) && bersih(x.arti) && x.arti.length > 30 && /^Langkah (satu|dua|tiga|empat)\./.test(x.arti)), "mind-map: judul dan arti tanpa digit dan kata terlarang, arti diawali nomor langkah");
   cek(P.every((x) => emojiSah(x.ikon) && adaEmoji(x.ikon) && !/[A-Za-z0-9]/.test(x.ikon)), "mind-map: ikon sah (emoji lama tanpa huruf)");
   const gab = P.map((x) => `${x.judul} ${x.arti}`).join(" ").toLowerCase();
-  for (const s of ["isi dan tuang", "gelas ukur", "mililiter", "lapisan", "tinggi", "volume", "tangga liter", "seribu", "kali", "bagi", "kubik", "satuan"]) cek(gab.includes(s), `mind-map: memuat "${s}"`);
+  for (const s of ["meter kubik", "isi dan tuang", "gelas ukur", "mililiter", "lapisan", "tinggi", "volume", "tangga liter", "seribu", "kali", "bagi", "kubik", "satuan"]) cek(gab.includes(s), `mind-map: memuat "${s}"`);
   cek(!/\b(satria|laras|genta|pak hendro|bu sinta|pak anto|kolam|pesta)\b/.test(gab), "mind-map: hanya langkah pelajaran (tanpa tokoh)");
   cek(tanpaDigit(DP.PETUNJUK_PETA + DP.SELESAI_PETA + DP.JUDUL_PETA) && bersih(DP.PETUNJUK_PETA + DP.SELESAI_PETA + DP.JUDUL_PETA) && emojiSah(DP.IKON_JUDUL_PETA), "mind-map: petunjuk dan pesan bersih");
   const pt = readFileSync(new URL("PetaEmber.tsx", folderUrl), "utf8");
@@ -225,7 +226,8 @@ cek(DS.TUANG_SIM.length === 4 && DS.TUANG_SIM.every((t) => t.target < t.kapasita
   cek(B.every((b) => b.nama.split(/\s+/).every((w) => w.length <= 12) && b.nama.length <= 14 && b.angka.every((a) => a.teks.length <= 9 && tanpaDigit(a.suara) && bersih(a.suara) && /^[A-Z]/.test(a.suara) && !/\s[.,!?;:]/.test(a.suara))), "infografis: label pendek dan suara tanpa digit");
   cek(/mililiter/.test(B[0].angka[0].suara) && /liter/.test(B[0].angka[1].suara) && /sentimeter kubik/.test(B[3].angka[0].suara) && /dua belas mililiter/.test(B[3].angka[1].suara) && /seribu mililiter/.test(B[1].angka[1].suara), "infografis: suara mengeja satuan dan ribuan");
   const T = DI.KOTAK_TANGGA;
-  sama(T.map((t) => t.isi), ["× 1.000", "÷ 1.000", "= 1 ml", "3 × 2 = 6"], "infografis kartu 2: empat aturan tertutup (tangga turun dan naik, kubik, kubus tiap lapisan)");
+  sama(T.map((t) => t.isi), ["× 1.000", "÷ 1.000", "= 1 ml", "3 × 2 = 6", "= 1.000 l"], "infografis kartu 2: lima aturan tertutup (tangga turun dan naik, kubik, kubus tiap lapisan, meter kubik)");
+  cek(/meter kubik/.test(T[4].suara) && /seribu liter/.test(T[4].suara) && /berusuk satu meter/.test(T[4].suara) && T[4].label === "1 m³", "infografis kartu 2: meter kubik sama dengan seribu liter, kubus berusuk satu meter, dieja");
   cek(T.every((t) => t.label.length <= 14 && tanpaDigit(t.suara) && bersih(t.suara) && /^[A-Z]/.test(t.suara)) && /dikali seribu/.test(T[0].suara) && /dibagi seribu/.test(T[1].suara) && /satu sentimeter kubik sama dengan satu mililiter/i.test(T[2].suara) && /enam kubus/.test(T[3].suara), "infografis kartu 2: label pendek, suara tanpa digit");
   cek(tanpaDigit(DI.PETUNJUK_INFO_1 + DI.PETUNJUK_INFO_2 + DI.SELESAI_INFO_1 + DI.SELESAI_INFO_2 + DI.PESAN_INFO_2_SAMA) && bersih(DI.PETUNJUK_INFO_1 + DI.PETUNJUK_INFO_2 + DI.SELESAI_INFO_1 + DI.SELESAI_INFO_2 + DI.PESAN_INFO_2_SAMA), "infografis: petunjuk dan pesan tanpa digit dan kata terlarang");
   const inf = readFileSync(new URL("InfoEmber.tsx", folderUrl), "utf8");
@@ -258,7 +260,7 @@ cek(DS.TUANG_SIM.length === 4 && DS.TUANG_SIM.every((t) => t.target < t.kapasita
   const TAHAP = { Concrete: ["benda", D.CONCRETE], Pictorial: ["diagram", D.PICTORIAL], Abstract: ["lambang", D.ABSTRACT] };
   const cara3 = ["klik", "kanvas", "suara"];
   const NOMOR = { Concrete: [2, 3, 4], Pictorial: [5, 6, 7], Abstract: [8, 9, 10] };
-  const TIPE = { klik: ["satuan", "isi", "lapisan", "tangga"], kanvas: ["gelas", "isi", "lapisan", "tangga"], suara: ["sebut", "isi", "lapisan", "tangga"] };
+  const TIPE = { klik: [["satuan"], ["isi", "cerita"], ["lapisan"], ["tangga", "campur"]], kanvas: [["urut"], ["isi", "cerita"], ["lapisan"], ["tangga", "campur"]], suara: [["sebut"], ["isi", "cerita"], ["lapisan"], ["tangga", "campur"]] };
   const TIPE_SALAH = ["satuan", "isi", "lapisan", "tangga"];
   let jumlahSalah = 0;
   const posisiBenar = [];
@@ -275,8 +277,8 @@ cek(DS.TUANG_SIM.length === 4 && DS.TUANG_SIM.every((t) => t.target < t.kapasita
       for (let i = 0; i < 4; i += 1) {
         const l = s.langkah[i].langkah;
         const dasar = LC.dasarDari(l);
-        cek(dasar.tipe === TIPE[s.cara][i], `${namaT} ${s.nomor} langkah ${i + 1}: jenis tugas ${TIPE[s.cara][i]} (${dasar.tipe})`);
-        if (l.tipe === "salah") cek(s.cara === "klik" && TIPE_SALAH.includes(dasar.tipe) && dasar.tipe === TIPE.klik[i], `${namaT} ${s.nomor} langkah ${i + 1}: Cari kesalahan membungkus tugas klik yang sama`);
+        cek(TIPE[s.cara][i].includes(dasar.tipe), `${namaT} ${s.nomor} langkah ${i + 1}: jenis tugas ${TIPE[s.cara][i]} (${dasar.tipe})`);
+        if (l.tipe === "salah") cek(s.cara === "klik" && TIPE_SALAH.includes(dasar.tipe) && TIPE.klik[i].includes(dasar.tipe), `${namaT} ${s.nomor} langkah ${i + 1}: Cari kesalahan membungkus tugas klik yang sama`);
       }
       for (const ls of s.langkah) {
         const l = ls.langkah;
@@ -293,7 +295,14 @@ cek(DS.TUANG_SIM.length === 4 && DS.TUANG_SIM.every((t) => t.target < t.kapasita
           cek(Number.isInteger(d.takar) && d.takar % 50 === 0 && d.takar >= 100 && d.takar <= 600 && d.gelas >= 2 && d.gelas <= 9 && !(d.takar === 250 && d.gelas === 8) && LC.totalIsi(d.gelas, d.takar) <= 9000, `${tag}: isi sah, bukan data Story (${d.gelas} gelas x ${d.takar} ml)`);
           if (s.cara === "kanvas") cek(LC.totalIsi(d.gelas, d.takar) % d.takar === 0 && d.gelas >= 1 && d.gelas <= 9, `${tag}: kanvas banyak gelas satu angka`);
         }
-        if (d.tipe === "lapisan") cek([d.kolom, d.baris, d.lapis].every((x) => Number.isInteger(x) && x >= 1 && x <= 6) && !volStory(d.kolom, d.baris, d.lapis) && ![24, 20, 32].includes(LC.volumeBlok(d.kolom, d.baris, d.lapis)) || (s.cara === "kanvas" && LC.volumeBlok(d.kolom, d.baris, d.lapis) <= 9), `${tag}: balok sah, bukan data Story (${d.kolom}x${d.baris}x${d.lapis})`);
+        if (d.tipe === "lapisan") cek([d.kolom, d.baris, d.lapis].every((x) => Number.isInteger(x) && x >= 1 && x <= 6) && !volStory(d.kolom, d.baris, d.lapis) && (!d.banding || (LC.volumeBlok(d.kolom, d.baris, d.lapis) % (d.banding.kolom * d.banding.baris) === 0 && LC.lapisBanding(d) >= 1 && LC.lapisBanding(d) <= 9 && d.banding.kolom * d.banding.baris !== d.kolom * d.baris && d.kolom * d.baris * d.lapis === d.banding.kolom * d.banding.baris * LC.lapisBanding(d))) || (s.cara === "kanvas" && LC.volumeBlok(d.kolom, d.baris, d.lapis) <= 9), `${tag}: balok sah, bukan data Story (${d.kolom}x${d.baris}x${d.lapis})`);
+        if (d.tipe === "urut") {
+          const v = LC.isiUrut(d);
+          cek(s.cara === "kanvas" && v.length === 3 && new Set(v).size === 3 && v.every((x, q) => LC.mlDariTeks(d.teks[q]) === x && x >= 100 && x <= 9999) && d.teks.some((t) => /\bl\b/.test(t) && !/ml/.test(t) || /\d l \d/.test(t)) && d.teks.some((t) => /^[\d.]+ ml$/.test(t)), `${tag}: urutan tiga isi berbeda, liter dan mililiter bercampur (${d.teks.join(" | ")})`);
+          cek(kunci.jenis === "angka" && kunci.n >= 1 && kunci.n <= 3 && kunci.n === v.indexOf(d.cari === "terbanyak" ? Math.max(...v) : Math.min(...v)) + 1, `${tag}: nomor wadah ${d.cari} dihitung dari isi dalam ml`);
+        }
+        if (d.tipe === "campur") cek(LC.literPenuh(d.ml) >= 1 && LC.literPenuh(d.ml) <= 9 && LC.sisaMl(d.ml) > 0 && LC.sisaMl(d.ml) % 5 === 0 && LC.teksCampur(d.ml) === `${LC.literPenuh(d.ml)} l ${LC.sisaMl(d.ml)} ml` && LC.mlDariTeks(LC.teksCampur(d.ml)) === d.ml, `${tag}: bentuk campuran benar (${d.ml} ml = ${LC.teksCampur(d.ml)})`);
+        if (d.tipe === "cerita") cek(d.a % 50 === 0 && d.b % 50 === 0 && (d.op === "jumlah" || d.a > d.b) && LC.hasilCerita(d) === (d.op === "jumlah" ? d.a + d.b + (d.c ?? 0) : d.a - d.b) && LC.literPenuh(LC.hasilCerita(d)) <= 9 + (s.cara === "suara" ? 0 : 0) && LC.literPenuh(LC.hasilCerita(d)) >= 1 && LC.mlDariTeks(LC.teksCampur(d.a)) === d.a && LC.mlDariTeks(LC.teksCampur(d.b)) === d.b, `${tag}: cerita ${d.op} dalam ml benar (${LC.teksCampur(d.a)} dan ${LC.teksCampur(d.b)})`);
         if (d.tipe === "gelas") cek(d.kecil % d.per === 0 && d.kecil <= 18 && d.per >= 2 && d.per <= 5 && d.kecil / d.per >= 1 && d.kecil / d.per <= 9, `${tag}: gelas kecil habis dibagi isi gelas besar (${d.kecil}/${d.per})`);
         if (d.tipe === "tangga") cek(d.n >= 2 && d.n <= 99 && (d.jenis === "kubik" ? d.arah === "turun" : d.n <= 9 && d.n !== 2 && d.n !== 3), `${tag}: tangga sah, bukan data Story (${d.jenis} ${d.n} ${d.arah})`);
         if (d.tipe === "satuan") cek(KUNCI_EMOJI.includes(d.benda) || rupa !== "benda", `${tag}: benda ${d.benda} punya emoji pada Concrete`);
@@ -303,13 +312,17 @@ cek(DS.TUANG_SIM.length === 4 && DS.TUANG_SIM.every((t) => t.target < t.kapasita
             kanvasAngka.push(kunci.n);
             cek(kunci.n >= 1 && kunci.n <= 9, `${tag}: jawaban kanvas satu angka satu sampai sembilan (${kunci.n})`);
             if (d.tipe === "gelas") cek(kunci.n === d.kecil / d.per, `${tag}: kanvas gelas besar`);
+            if (d.tipe === "campur") cek(kunci.n === Math.floor(d.ml / 1000), `${tag}: kanvas liter penuh`);
+            if (d.tipe === "cerita") cek(kunci.n === Math.floor(LC.hasilCerita(d) / 1000), `${tag}: kanvas liter penuh pada hasil`);
             if (d.tipe === "isi") cek(kunci.n === d.gelas, `${tag}: kanvas banyak gelas`);
-            if (d.tipe === "lapisan") cek(kunci.n === d.kolom * d.baris * d.lapis, `${tag}: kanvas volume`);
-            if (d.tipe === "tangga") cek(d.arah === "naik" && d.jenis === "liter" && kunci.n === d.n, `${tag}: kanvas liter dari mililiter`);
+            if (d.tipe === "lapisan") cek(kunci.n === (d.banding ? d.kolom * d.baris * d.lapis / (d.banding.kolom * d.banding.baris) : d.kolom * d.baris * d.lapis), `${tag}: kanvas ${d.banding ? "lapisan balok kedua berbeda bentuk, volume sama" : "volume"}`);
+            if (d.tipe === "tangga") cek(d.arah === "naik" && d.jenis !== "kubik" && kunci.n === d.n, `${tag}: kanvas liter atau meter kubik dari satuan kecil`);
           }
           if (s.cara === "suara") {
             cek(kunci.n >= 2 && kunci.n <= 9999, `${tag}: jawaban suara bilangan (${kunci.n})`);
             if (d.tipe === "isi") cek(kunci.n === d.gelas * d.takar, `${tag}: suara isi seluruhnya`);
+            if (d.tipe === "campur") cek(kunci.n === d.ml % 1000, `${tag}: suara sisa mililiter`);
+            if (d.tipe === "cerita") cek(kunci.n === LC.hasilCerita(d), `${tag}: suara hasil dalam mililiter`);
             if (d.tipe === "lapisan") cek(kunci.n === d.kolom * d.baris * d.lapis && kunci.n >= 10, `${tag}: suara volume`);
             if (d.tipe === "tangga") cek(kunci.n === (d.jenis === "kubik" ? d.n : d.n * 1000), `${tag}: suara hasil tangga (kali seribu untuk liter, sama besar untuk kubik)`);
           }
@@ -320,13 +333,14 @@ cek(DS.TUANG_SIM.length === 4 && DS.TUANG_SIM.every((t) => t.target < t.kapasita
           const pil = LC.pilihanKlik(l);
           const benar = LC.teksKunciKlik(l);
           cek(pil.length === 3 && new Set(pil).size === 3 && pil.includes(benar) && pil[0] !== benar, `${tag}: pilihan klik unik dan jawaban benar bukan yang pertama (${pil.join("/")})`);
-          if (d.tipe === "satuan") cek(pil.every((t) => ["ml", "l", "cm²"].includes(t)) && benar === d.satuan && pil.includes("cm²") !== (d.satuan === "cm²"), `${tag}: pilihan satuan (${pil.join("/")})`);
-          else cek(pil.every((t) => /^[\d.]+ (ml|l|cm³)$/.test(t)) && benar === LC.teksHasilKlik(d), `${tag}: pilihan bilangan dengan satuan (${pil.join("/")})`);
+          if (d.tipe === "satuan") cek(pil.every((t) => ["ml", "l", "cm²", "m³"].includes(t)) && benar === d.satuan && pil.includes("cm²") !== (d.satuan === "cm²"), `${tag}: pilihan satuan (${pil.join("/")})`);
+          else cek(pil.every((t) => /^(\d+ l \d+ ml|[\d.]+ (ml|l|cm³|m³))$/.test(t)) && benar === (d.tipe === "cerita" ? LC.teksCampur(LC.hasilCerita(d)) : LC.teksHasilKlik(d)), `${tag}: pilihan bilangan dengan satuan (${pil.join("/")})`);
           if (d.tipe === "isi") {
             cek(pil.filter((t) => t === LC.teksMl(LC.totalIsi(d.gelas, d.takar))).length === 1 && pil.includes(LC.teksMl(d.gelas + d.takar)) && pil.includes(LC.teksMl(d.takar * (d.gelas - 1))), `${tag}: pilihan isi memuat jumlah dan satu gelas kurang (${pil.join("/")})`);
           }
           if (d.tipe === "lapisan") cek(pil.includes(LC.teksCm3(d.kolom + d.baris + d.lapis)) && pil.includes(LC.teksCm3(d.kolom * d.baris)) && pil.filter((t) => t === LC.teksCm3(LC.volumeBlok(d.kolom, d.baris, d.lapis))).length === 1, `${tag}: pilihan lapisan memuat jumlah dan satu lapisan (${pil.join("/")})`);
           if (d.tipe === "tangga" && d.jenis === "liter") cek(pil.includes(LC.teksMl(d.n * 100)) || pil.includes(LC.teksMl(d.n * 10)), `${tag}: pilihan tangga memuat salah satu nol (${pil.join("/")})`);
+          if (d.tipe === "tangga" && d.jenis === "meter") cek(d.arah === "naik" ? pil.includes(`${d.n * 100} m³`) || pil.includes(`${d.n * 10} m³`) : pil.includes(LC.teksL(d.n * 100)) || pil.includes(LC.teksL(d.n * 10)), `${tag}: pilihan tangga meter kubik memuat salah satu nol (${pil.join("/")})`);
           if (l.tipe === "salah") cek(pil.includes(l.jawabTokoh) && (l.betul ? l.jawabTokoh === benar : l.jawabTokoh !== benar), `${tag}: jawaban tokoh ikut sebagai pilihan (${l.jawabTokoh})`);
           posisiBenar.push(pil.indexOf(benar));
         }
@@ -405,20 +419,113 @@ cek(DS.TUANG_SIM.length === 4 && DS.TUANG_SIM.every((t) => t.target < t.kapasita
   for (const w of ["baku", "mililiter", "kubik"]) cek(kataSuara.includes(w), `tugas suara: kata ${w} muncul`);
   // Jenis jawaban klik beragam: satuan dan takaran.
   const kunciKlik = Object.values(TAHAP).flatMap(([, soal]) => soal[0].langkah.map((l) => LC.kunciJawab(l.langkah, "klik")));
+  cek(kunciKlik.some((k) => k.nama === "m³") && kunciKlik.some((k) => / m³$/.test(k.nama)), "tugas klik: meter kubik dan liter muncul (bak mandi besar, 5 m³ = 5.000 l)");
   cek(kunciKlik.some((k) => ["ml", "l"].includes(k.nama)) && kunciKlik.some((k) => /^[\d.]+ ml$/.test(k.nama)) && kunciKlik.some((k) => /^[\d.]+ cm³$/.test(k.nama)), "tugas klik: satuan, mililiter, dan sentimeter kubik");
   // Satuan baku, tidak baku, kubus, dan tangga muncul di semua tahap.
   const semuaDasar = Object.values(TAHAP).flatMap(([, soal]) => soal.flatMap((s) => s.langkah.map((l) => LC.dasarDari(l.langkah))));
-  cek(semuaDasar.some((d) => d.tipe === "tangga" && d.jenis === "kubik") && semuaDasar.some((d) => d.tipe === "tangga" && d.jenis === "liter" && d.arah === "naik") && semuaDasar.some((d) => d.tipe === "tangga" && d.jenis === "liter" && d.arah === "turun"), "tangga: liter turun, liter naik, dan kubik sama besar muncul");
+  cek(semuaDasar.some((d) => d.tipe === "tangga" && d.jenis === "liter" && d.arah === "turun") && semuaDasar.some((d) => d.tipe === "tangga" && d.jenis === "meter" && d.arah === "turun") && semuaDasar.some((d) => d.tipe === "tangga" && d.jenis === "meter" && d.arah === "naik"), "tangga: liter turun, meter kubik turun dan naik muncul");
+  // Topik buku: campuran liter dan mililiter, cerita jumlah dan selisih, urutan volume, satuan benda: tiap tahap memuat semuanya.
+  for (const [namaT, [, soal]] of Object.entries(TAHAP)) {
+    const tipe = soal.flatMap((q) => q.langkah.map((l) => LC.dasarDari(l.langkah).tipe));
+    cek(tipe.includes("campur") || soal.some((q) => q.langkah.some((l) => LC.kunciJawab(l.langkah, q.cara)?.jenis === "nama" && /^\d+ l \d+ ml$/.test(LC.kunciJawab(l.langkah, q.cara).nama))), `${namaT}: konversi campuran liter dan mililiter`);
+    cek(tipe.includes("cerita"), `${namaT}: cerita jumlah atau selisih volume`);
+    cek(tipe.includes("urut"), `${namaT}: mengurutkan atau membandingkan volume`);
+    cek(tipe.includes("satuan"), `${namaT}: satuan volume benda`);
+    cek(tipe.includes("lapisan") && tipe.includes("tangga") && soal.flatMap((q) => q.langkah).filter((l) => l.langkah.tipe !== "salah").length >= 9, `${namaT}: lapisan kubus dan tangga tetap ada`);
+  }
+  const semuaCerita = semuaDasar.filter((d) => d.tipe === "cerita");
+  cek(semuaCerita.some((d) => d.op === "jumlah") && semuaCerita.some((d) => d.op === "selisih") && semuaDasar.some((d) => d.tipe === "urut" && d.cari === "terbanyak") && semuaDasar.some((d) => d.tipe === "urut" && d.cari === "tersedikit"), "cerita jumlah dan selisih, urutan terbanyak dan tersedikit muncul");
+  sama([LC.teksCampur(9485), LC.teksCampur(75000), LC.teksCampur(3000), LC.teksCampur(900), LC.mlDariTeks("9 l 485 ml"), LC.mlDariTeks("1.450 ml"), LC.mlDariTeks("2 l"), LC.literPenuh(9485), LC.sisaMl(9485)], ["9 l 485 ml", "75 l", "3 l", "900 ml", 9485, 1450, 2000, 9, 485], "konversi campuran liter dan mililiter");
+  sama(LC.ucapkan("9.485 ml = 9 l 485 ml"), "sembilan ribu empat ratus delapan puluh lima mililiter sama dengan sembilan liter empat ratus delapan puluh lima mililiter", "ucapkan: campuran liter dan mililiter dieja");
+  cek(7500 - 3700 === 3800 && LC.teksCampur(3800) === "3 l 800 ml", "selisih 7 l 500 ml dikurangi 3 l 700 ml sama dengan 3 l 800 ml");
   // Poin penting dan penutup.
   cek(D.POIN_PENTING.length >= 6 && D.POIN_PENTING.every((p) => p.length > 20 && bersih(p)) && D.POIN_PENTING_SUARA.every((p) => tanpaDigit(p) && !/[=<>%\/+×]/.test(p) && !/\s[.,!?;:]/.test(p)), "poin penting: banyak, bersih, suara tanpa digit dan tanda");
   const poin = D.POIN_PENTING.join(" ").toLowerCase();
-  for (const m of ["1 l = 1.000 ml", "1 cm³ = 1 ml", "satuan baku", "lapisan", "dikali", "dibagi", "3 × 2 × 2 = 12 cm³ = 12 ml", "gelas", "satuan selalu ditulis"]) cek(poin.includes(m.toLowerCase()), `poin penting memuat ${m}`);
+  for (const m of ["1 l = 1.000 ml", "1 m³ = 1.000 l", "bak mandi", "berusuk 1 m", "1 cm³ = 1 ml", "satuan baku", "lapisan", "dikali", "dibagi", "3 × 2 × 2 = 12 cm³ = 12 ml", "gelas", "satuan selalu ditulis"]) cek(poin.includes(m.toLowerCase()), `poin penting memuat ${m}`);
   const poinSuara = D.POIN_PENTING_SUARA.join(" ");
-  cek(/seribu mililiter/.test(poinSuara) && /sentimeter kubik/.test(poinSuara) && /dua belas sentimeter kubik sama dengan dua belas mililiter/.test(poinSuara), "poin penting: suara mengeja satuan");
+  cek(/satu meter kubik sama dengan seribu liter/.test(poinSuara) && /seribu mililiter/.test(poinSuara) && /sentimeter kubik/.test(poinSuara) && /dua belas sentimeter kubik sama dengan dua belas mililiter/.test(poinSuara), "poin penting: suara mengeja satuan");
   cek(tanpaDigit(D.PENUTUP_B) && bersih(D.PENUTUP_B) && ["Satria", "Laras", "Genta", "Pak Hendro", "Bu Sinta", "Pak Anto", "Pesta Renang Tirta Ceria", "bab berikutnya"].every((t) => D.PENUTUP_B.includes(t)), "penutup B: perayaan akhir bab dengan kedua tamu dan semua tokoh, tanpa digit");
   cek(Object.values(D.TEMA_EMBER).every((t) => emojiSah(t.ikon) && t.nama.length >= 7 && t.cara.length > 20 && tanpaDigit(t.cara) && bersih(t.cara)), "tema tiga tahap sah");
   cek(D.TEMA_EMBER.pictorial.cara.includes("polos") && D.TEMA_EMBER.abstract.cara.includes("kartu") && /rak ember/i.test(D.TEMA_EMBER.concrete.cara), "tema: Concrete rak ember, Pictorial polos, Abstract kartu");
   cek(D.CONCRETE_EMBER === D.CONCRETE && D.PICTORIAL_EMBER === D.PICTORIAL && D.ABSTRACT_EMBER === D.ABSTRACT && D.MISI_EMBER_TEKS === DS.MISI_EMBER_TEKS, "nama ekspor untuk pemasang");
+}
+
+/* ------------------------------ Selaras buku: benda cair dan pejal, contoh takaran, bangun beda bentuk, tiga kotak susu ------------------------------ */
+{
+  const poin = D.POIN_PENTING.join(" ");
+  cek(/benda cair/i.test(poin) && /benda pejal/i.test(poin) && /kubus satuan/.test(poin) && /cm³ dan m³/.test(poin) && !/ruang yang diisi air/.test(poin), "poin penting: benda cair dan benda pejal, kubus satuan, tidak hanya ruang yang diisi air");
+  cek(/ember 10 l/.test(poin) && /tong 150 l/.test(poin) && /sendok 5 ml/.test(poin) && /cangkir 240 ml/.test(poin) && /botol 330 ml/.test(poin) && /jumlah besar/.test(poin) && /jumlah kecil/.test(poin), "poin penting: liter untuk jumlah besar, mililiter untuk jumlah kecil dengan contoh buku");
+  cek(/Cara cepat menghitung kubus satuan/.test(poin) && /bentuknya berbeda bisa punya volume sama/.test(poin) && D.POIN_PENTING.length <= 9, "poin penting: lapisan sebagai cara cepat menghitung kubus satuan, bangun beda bentuk volume sama");
+  const semua = Object.values({ c: D.CONCRETE, p: D.PICTORIAL, a: D.ABSTRACT }).flatMap((soal) => soal.flatMap((q) => q.langkah.map((l) => LC.dasarDari(l.langkah))));
+  cek(semua.some((d) => d.tipe === "satuan" && d.benda === "tong" && d.jumlah === 150 && d.satuan === "l"), "satuan benda: tong 150 l dari buku");
+  const banding = semua.find((d) => d.tipe === "lapisan" && d.banding);
+  cek(!!banding && LC.volumeBlok(banding.kolom, banding.baris, banding.lapis) === 24 && banding.banding.kolom * banding.banding.baris * LC.lapisBanding(banding) === 24 && banding.kolom * banding.baris !== banding.banding.kolom * banding.banding.baris, "bangun berbeda bentuk dengan jumlah kubus sama: 3 x 4 x 2 dan 2 x 2 x 6 sama-sama 24 kubus");
+  const tiga = semua.find((d) => d.tipe === "cerita" && d.c !== undefined);
+  cek(!!tiga && LC.hasilCerita(tiga) === 3000 && LC.ucapkan(LC.instruksi({ ...tiga }, "benda", "suara", "isi")).includes("tiga kotak susu".replace(/^./, (x) => x.toUpperCase())) , "penjumlahan tiga kotak susu: 1.250 ml + 1.000 ml + 750 ml = 3.000 ml");
+}
+
+/* ------------------------------ Perbaikan peramban: font, soal mirip, umpan balik, tempat alasan ------------------------------ */
+{
+  const gm = readFileSync(new URL("GambarEmber.tsx", folderUrl), "utf8");
+  const irisEmber = gm.slice(gm.indexOf("export function EmberSvg"), gm.indexOf("/* ------------------------------ Balok kubus"));
+  cek(!/<text/.test(irisEmber) && /data-label-ember="1"/.test(irisEmber) && /text-sm font-black/.test(irisEmber), "EmberSvg: label di luar gambar sebagai teks HTML 14 px, bukan teks SVG yang mengecil");
+  const inf = readFileSync(new URL("InfoEmber.tsx", folderUrl), "utf8");
+  const svgTangga = inf.slice(inf.indexOf("viewBox=\"0 0 300 96\""), inf.lastIndexOf("grid grid-cols-3 gap-1.5"));
+  const ukuranInfo = [...svgTangga.matchAll(/fontSize=\{(\d+)\}/g)].map((m) => Number(m[1]));
+  cek(ukuranInfo.length >= 2 && Math.min(...ukuranInfo) >= 16 && !/>\s*(turun|naik)\s*</.test(svgTangga), "InfoEmber kartu 2: huruf tangga paling kecil 16 pada viewBox 300, label turun dan naik dibuang");
+  const lg = readFileSync(new URL("LangkahEmber.tsx", folderUrl), "utf8");
+  cek(/l\.tempat \?\?/.test(lg), "LangkahEmber: tempat alasan benar bisa ditentukan");
+  const salahSemua = [D.CONCRETE, D.PICTORIAL, D.ABSTRACT].map((soal) => soal.flatMap((q) => q.langkah).map((l) => l.langkah).find((l) => l.tipe === "salah"));
+  cek(salahSemua.every((l) => [1, 2].includes(l.tempat)) && new Set(salahSemua.map((l) => l.tempat)).size >= 2 && salahSemua[1].tempat === 2, "Cari kesalahan: alasan benar tidak di tombol pertama dan tempatnya bervariasi antar tahap");
+  // Tidak ada dua tugas sejenis dalam satu tahap: jenis dan data pokok berbeda.
+  for (const [namaT, soal] of [["Concrete", D.CONCRETE], ["Pictorial", D.PICTORIAL], ["Abstract", D.ABSTRACT]]) {
+    const dasar = soal.flatMap((q) => q.langkah.map((l) => ({ cara: q.cara, d: LC.dasarDari(l.langkah) })));
+    const kunciJenis = (x) => (x.d.tipe === "tangga" ? `tangga-${x.d.jenis}-${x.d.arah}` : x.d.tipe === "lapisan" ? `lapisan-${x.d.banding ? "banding" : "biasa"}` : x.d.tipe);
+    const tang = dasar.filter((x) => x.d.tipe === "tangga").map(kunciJenis);
+    cek(new Set(tang).size === tang.length, `${namaT}: tiga tugas tangga berbeda jenis atau arah (${tang.join(", ")})`);
+    const lap = dasar.filter((x) => x.d.tipe === "lapisan").map((x) => [...[x.d.kolom, x.d.baris, x.d.lapis]].sort().join("x"));
+    cek(new Set(lap).size === lap.length, `${namaT}: bentuk balok tiap tugas berbeda (${lap.join(", ")})`);
+    const volume = dasar.filter((x) => x.d.tipe === "lapisan" && !x.d.banding).map((x) => x.d.kolom * x.d.baris * x.d.lapis);
+    cek(new Set(volume).size === volume.length, `${namaT}: volume balok tiap tugas berbeda (${volume.join(", ")})`);
+  }
+  const petunjukSusu = LC.petunjukSalah(D.CONCRETE[2].langkah[1].langkah, "suara", "x");
+  cek(!/liter|tangga/.test(petunjukSusu) && /Jumlahkan ketiga isi/.test(petunjukSusu) && tanpaDigit(petunjukSusu), "penjumlahan tiga kotak susu (semua mililiter): petunjuk khusus penjumlahan murni, tanpa menyebut liter");
+  const abstrakTangga = D.ABSTRACT.flatMap((q) => q.langkah).filter((l) => LC.dasarDari(l.langkah).tipe === "tangga");
+  cek(abstrakTangga.every((l) => !/tangga/i.test(LC.petunjukSalah(l.langkah, "klik", "x") + LC.kalimatKunci(l.langkah, "klik") + LC.kalimatKunci(l.langkah, "suara"))), "Abstract: umpan balik tangga tanpa kata tangga (netral)");
+}
+
+{
+  const pt = readFileSync(new URL("PetaEmber.tsx", folderUrl), "utf8");
+  const ukuranPeta = [...pt.matchAll(/<text[^>]*fontSize=\{(\d+)\}/g)].map((m) => Number(m[1]));
+  cek(ukuranPeta.length >= 8 && Math.min(...ukuranPeta.filter((u) => u < 20)) >= 13, "PetaEmber: semua teks SVG paling kecil 13 pada viewBox 150 (sekitar 11 px)");
+  const inf = readFileSync(new URL("InfoEmber.tsx", folderUrl), "utf8");
+  const irisBejana = inf.slice(inf.indexOf("function GambarBejana"), inf.indexOf("/** Satu lapisan kubus"));
+  const ukuranBejana = [...irisBejana.matchAll(/<text[^>]*fontSize=\{(\d+)\}/g)].map((m) => Number(m[1]));
+  cek(ukuranBejana.length >= 1 && Math.min(...ukuranBejana) >= 15, "InfoEmber kartu 1: teks SVG bejana paling kecil 15");
+  cek(/space-y-2/.test(inf) && /max-w-\[170px\]/.test(inf), "InfoEmber: jarak dan tangga dipadatkan supaya kartu 2 muat di kondisi awal");
+  const salahC = D.CONCRETE[0].langkah[3].langkah;
+  const pj = LC.petunjukSalah(salahC, "klik", salahC.jawabTokoh);
+  cek(/^Jawaban itu belum tepat\. Pikirkan lagi apa yang Satria lakukan\.$/.test(pj) && !/keliru/.test(pj), "Cari kesalahan: umpan balik jawaban tokoh netral, tanpa kata keliru");
+}
+
+/* ------------------------------ Umpan balik per pilihan dan tampilan ------------------------------ */
+{
+  const sat = { tipe: "satuan", benda: "bak", jumlah: 2, satuan: "m³", pil: ["ml", "cm²", "m³"] };
+  const pml = LC.petunjukSalah(sat, "klik", "ml");
+  const pluas = LC.petunjukSalah(sat, "klik", "cm²");
+  cek(!/luas/.test(pml) && /terlalu kecil atau terlalu besar/.test(pml) && /luas/.test(pluas) && tanpaDigit(pml + pluas) && !/meter kubik|m³/.test(pml + pluas), "satuan: umpan balik netral untuk ml (tanpa menyebut satuan luas, tanpa membocorkan), khusus untuk cm²");
+  const lap = { tipe: "lapisan", kolom: 5, baris: 3, lapis: 2, pil: ["10 cm³", "30 cm³", "15 cm³"] };
+  const ps = LC.petunjukSalah(lap, "klik", "10 cm³");
+  const pp = LC.petunjukSalah(lap, "klik", "15 cm³");
+  cek(/dijumlah/.test(ps) && /satu lapisan/.test(pp) && ps !== pp && tanpaDigit(ps + pp) && !/tiga puluh/.test(ps + pp), "lapisan: umpan balik berbeda untuk pilihan jumlah dan pilihan satu lapisan, tanpa membocorkan hasil");
+  const gm = readFileSync(new URL("GambarEmber.tsx", folderUrl), "utf8");
+  const irisTangga = gm.slice(gm.indexOf("export function TanggaSvg"), gm.indexOf("/* ------------------------------ Kartu kata"));
+  const ukuran = [...irisTangga.matchAll(/fontSize=\{([^}]+)\}/g)].flatMap((m) => (m[1].includes('?') ? m[1].split('?')[1] : m[1]).match(/\d+/g) ?? []).map(Number);
+  cek(ukuran.length >= 5 && Math.min(...ukuran) >= 14 && /x=\{75\} y=\{92\}/.test(irisTangga) && /data-kubus-rusuk="1 m"/.test(irisTangga), "TanggaSvg: huruf paling kecil 14 (sekitar 11 px), aturan di ruang kosong, kubus rusuk 1 m untuk meter kubik");
+  const sim = readFileSync(new URL("SimulasiBakEmber.tsx", folderUrl), "utf8");
+  cek(/whitespace-nowrap/.test(sim) && /text-\[15px\]/.test(sim), "SimulasiBakEmber: pilihan tidak patah dua baris");
+  const inf = readFileSync(new URL("InfoEmber.tsx", folderUrl), "utf8");
+  cek(/\{KOTAK_TANGGA\.map/.test(inf) && /grid grid-cols-3 gap-1\.5">\s*\{KOTAK_TANGGA/.test(inf), "InfoEmber kartu 2: lima kotak aturan dalam tiga kolom (lebih rendah, satu layar)");
 }
 
 /* ------------------------------ Berkas ------------------------------ */

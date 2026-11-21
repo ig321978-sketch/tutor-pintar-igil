@@ -40,11 +40,11 @@ function Bagian({ n }: { n: number }) {
   return (
     <svg viewBox="0 0 120 52" className="h-[40px] w-[96px]" role="img" aria-label="Tangga satuan: sentimeter persegi di anak tangga bawah, meter persegi di anak tangga atas">
       <rect x={4} y={26} width={52} height={22} fill="#BAE6FD" stroke="#0369A1" strokeWidth={2} />
-      <text x={30} y={41} textAnchor="middle" fontSize={11} fontWeight={900} fill="#0C4A6E">
+      <text x={30} y={43} textAnchor="middle" fontSize={14} fontWeight={900} fill="#0C4A6E">
         cm²
       </text>
       <rect x={56} y={6} width={58} height={42} fill="#E0F2FE" stroke="#0369A1" strokeWidth={2} />
-      <text x={85} y={31} textAnchor="middle" fontSize={12} fontWeight={900} fill="#0C4A6E">
+      <text x={85} y={33} textAnchor="middle" fontSize={15} fontWeight={900} fill="#0C4A6E">
         m²
       </text>
     </svg>
@@ -76,7 +76,7 @@ export default function PetaUbin({ speakGuru, onLanjut, teksLanjut }: { speakGur
           {LANGKAH_UBIN.map((l, i) => {
             const terbuka = buka.includes(i);
             return (
-              <div key={l.judul} className="grid grid-cols-[7.4rem_1fr] items-center gap-2 rounded-xl bg-white/70 p-1">
+              <div key={l.judul} className="grid grid-cols-[7.4rem_1fr] items-center gap-2 rounded-xl bg-white/70 p-0.5">
                 <div className={`flex min-h-[44px] items-center justify-center rounded-lg border-[3px] p-0.5 ${terbuka ? "border-[#15803D] bg-[#ECFDF5]" : "border-[#0369A1] bg-[#F0F9FF]"}`}>
                   <Bagian n={i} />
                 </div>

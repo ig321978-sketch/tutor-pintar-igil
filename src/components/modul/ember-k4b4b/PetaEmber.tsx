@@ -29,7 +29,7 @@ function Alat({ jenis }: { jenis: LangkahPeta["gambar"] }) {
           {[0, 1, 2].map((i) => (
             <line key={i} x1={84} y1={40 + i * 16} x2={98} y2={40 + i * 16} stroke={BIRU} strokeWidth={2} />
           ))}
-          <text x={32} y={62} textAnchor="middle" fontSize={11} fontWeight={900} fill={BIRU}>
+          <text x={32} y={62} textAnchor="middle" fontSize={14} fontWeight={900} fill={BIRU}>
             ml
           </text>
           <text x={104} y={20} fontSize={16}>
@@ -41,12 +41,12 @@ function Alat({ jenis }: { jenis: LangkahPeta["gambar"] }) {
         <g>
           <rect x={10} y={24} width={32} height={56} rx={5} fill="#DBEAFE" stroke="#0284C7" strokeWidth={2.5} />
           <rect x={20} y={14} width={12} height={12} rx={2} fill="#DBEAFE" stroke="#0284C7" strokeWidth={2} />
-          <text x={26} y={58} textAnchor="middle" fontSize={12} fontWeight={900} fill={BIRU}>
+          <text x={26} y={58} textAnchor="middle" fontSize={13} fontWeight={900} fill={BIRU}>
             1 l
           </text>
           <line x1={46} y1={52} x2={88} y2={52} stroke="#DC2626" strokeWidth={3} />
           <polygon points="88,45 98,52 88,59" fill="#DC2626" />
-          <text x={68} y={42} textAnchor="middle" fontSize={11} fontWeight={900} fill="#DC2626">
+          <text x={72} y={42} textAnchor="middle" fontSize={13} fontWeight={900} fill="#DC2626">
             × 1.000
           </text>
           <rect x={104} y={24} width={36} height={56} rx={3} fill="#FFFFFF" stroke="#0284C7" strokeWidth={2.5} />
@@ -54,25 +54,25 @@ function Alat({ jenis }: { jenis: LangkahPeta["gambar"] }) {
           {[0, 1, 2].map((i) => (
             <line key={i} x1={128} y1={36 + i * 14} x2={140} y2={36 + i * 14} stroke={BIRU} strokeWidth={1.5} />
           ))}
-          <text x={122} y={96} textAnchor="middle" fontSize={11} fontWeight={900} fill={BIRU}>
+          <text x={118} y={96} textAnchor="middle" fontSize={13} fontWeight={900} fill={BIRU}>
             1.000 ml
           </text>
         </g>
       ) : null}
       {jenis === "kubik" ? (
         <g>
-          <rect x={30} y={34} width={36} height={36} fill="#BAE6FD" stroke={BIRU} strokeWidth={2.5} />
-          <text x={48} y={58} textAnchor="middle" fontSize={12} fontWeight={900} fill={BIRU}>
-            1 cm³
+          <rect x={6} y={8} width={26} height={26} fill="#BAE6FD" stroke={BIRU} strokeWidth={2} />
+          <text x={38} y={27} fontSize={13} fontWeight={900} fill={BIRU}>
+            1 cm³ = 1 ml
           </text>
-          <text x={80} y={58} textAnchor="middle" fontSize={18} fontWeight={900} fill="#DC2626">
-            =
+          <rect x={6} y={52} width={26} height={26} fill="#BAE6FD" stroke={BIRU} strokeWidth={2.5} />
+          <polygon points="6,52 12,46 38,46 32,52" fill="#DBEAFE" stroke={BIRU} strokeWidth={2} />
+          <polygon points="32,52 38,46 38,72 32,78" fill="#7DD3FC" stroke={BIRU} strokeWidth={2} />
+          <text x={43} y={66} fontSize={13} fontWeight={900} fill={BIRU}>
+            1 m³ = 1.000 l
           </text>
-          <text x={106} y={46} fontSize={24}>
-            {"\u{1F4A7}"}
-          </text>
-          <text x={106} y={72} textAnchor="middle" fontSize={12} fontWeight={900} fill={BIRU}>
-            1 ml
+          <text x={46} y={86} fontSize={13} fontWeight={900} fill="#DC2626">
+            rusuk 1 m
           </text>
         </g>
       ) : null}

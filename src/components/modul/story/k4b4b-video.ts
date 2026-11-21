@@ -19,7 +19,7 @@ export const VIDEO_MATERI_K4B4B: VideoStory = {
   subjudul: "Metode Kurikulum",
   jenis: "materi",
   adegan: [
-    adeganSapaan({ jenis: "materi", topik: "pengukuran volume", daftar: ["Liter dan mililiter", "Sentimeter kubik", "Kubus satuan"] }),
+    adeganSapaan({ jenis: "materi", topik: "pengukuran volume", daftar: ["Liter dan mililiter", "Sentimeter kubik", "Meter kubik"] }),
     ADEGAN_EMBER,
     ADEGAN_GELAS,
     ADEGAN_LITER,

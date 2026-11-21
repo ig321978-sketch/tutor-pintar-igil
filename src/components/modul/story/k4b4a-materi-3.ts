@@ -9,7 +9,7 @@ import { bersih, hapus, k, sorotkan, tambah } from "./k4b4a-bantu";
 
 /* ------------------------------ 7. Meter persegi ------------------------------ */
 const SUARA_P1 = "Lantai kolam yang sebenarnya jauh lebih besar, jadi Bu Sinta memakai petak yang sisinya satu meter.";
-const SUARA_P2 = "Satu petak seperti ini luasnya satu meter persegi.";
+const SUARA_P2 = "Satu petak seperti ini luasnya satu meter persegi, jadi Bu Sinta menduga luas lantai dengan petak itu.";
 const SUARA_P3 = "Lantai itu terdiri dari lima baris dan enam kolom, jadi luasnya tiga puluh meter persegi.";
 
 export const ADEGAN_METER_PERSEGI: AdeganStory = {
@@ -31,11 +31,12 @@ export const ADEGAN_METER_PERSEGI: AdeganStory = {
       SUARA_P2,
       sorotkan("petak", "pt"),
       tambah("luasnya", teks("lm", 108, 74, "1 m²", 11, W.biru, { z: 3 })),
-      tambah("persegi.", teks("nm", 108, 104, "meter persegi", 8.4, W.ubinTua)),
+      tambah("persegi,", teks("nm", 108, 104, "meter persegi", 8.4, W.ubinTua)),
+      tambah("menduga", teks("dg", 225, 66, "menduga dulu", 9, W.merah)),
     ),
     k(
       SUARA_P3,
-      hapus(0, "lb"),
+      hapus(0, "lb", "dg"),
       tambah("lima", ...petak("g", 170, 44, 5, 6, 14), teks("r5", 272, 80, "5 baris", 9, W.coklat)),
       tambah("enam", teks("c6", 212, 38, "6 kolom", 9, W.coklat)),
       tambah("tiga", teks("lu", 212, 128, "30 m²", 13, W.hijauTua), emo("ok", 262, 128, E.benar, 20)),

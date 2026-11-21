@@ -29,7 +29,7 @@ function CariSalah({ l, rupa, cara, salah, siap, info }: PK & { l: LangkahSalah;
   const [tahap, setTahap] = useState<"putus" | "alasan" | "selesai">("putus");
   const [mati, setMati] = useState<number[]>([]);
   /** Posisi alasan benar ditentukan dari teks tugas (tetap, tanpa acak saat render) supaya tidak selalu di tombol yang sama. */
-  const posisi = Array.from(`${l.tokoh}${l.kataTokoh}${l.alasan[l.benar]}`).reduce((t, c) => t + c.charCodeAt(0), 0) % 3;
+  const posisi = l.tempat ?? Array.from(`${l.tokoh}${l.kataTokoh}${l.alasan[l.benar]}`).reduce((t, c) => t + c.charCodeAt(0), 0) % 3;
   const lain = [0, 1, 2].filter((i) => i !== l.benar);
   const urut = [...lain.slice(0, posisi), l.benar, ...lain.slice(posisi)];
   const putus = (benar: boolean) => {

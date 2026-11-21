@@ -99,7 +99,7 @@ export const ADEGAN_LUAR_LAPISAN_TERAPAN: AdeganStory = {
 const SUARA_L1 = "Cara ketiga, Liter Ladder, atau Tangga Liter.";
 const SUARA_L2 = "Kita menyusun satuan volume dari mililiter sampai liter seperti anak tangga.";
 const SUARA_L3 = "Satu liter sama dengan seribu mililiter, dan satu sentimeter kubik sama dengan satu mililiter.";
-const SUARA_L4 = "Naik tangga berarti membagi seribu, dan turun tangga berarti mengalikan seribu.";
+const SUARA_L4 = "Naik tangga berarti membagi seribu, dan turun tangga berarti mengalikan seribu. Sisa yang tidak habis dibagi tetap mililiter, misalnya dua ribu tiga ratus mililiter sama dengan dua liter tiga ratus mililiter.";
 
 export const ADEGAN_LUAR_TANGGA: AdeganStory = {
   id: "luar-tangga",
@@ -136,6 +136,7 @@ export const ADEGAN_LUAR_TANGGA: AdeganStory = {
       tambah("membagi", teks("dv", 70, 40, "÷ 1.000", 13, W.hijauTua)),
       tambah("turun", { id: "dn", t: "panah", x: 230, y: 60, x2: 0, y2: 60, warna: W.merah, tebal: 3.2 }),
       tambah("mengalikan", teks("kl", 230, 138, "× 1.000", 13, W.merah)),
+      tambah("misalnya", teks("cp", 150, 106, "2.300 ml = 2 l 300 ml", 10, W.coklat)),
     ),
   ],
 };
@@ -143,8 +144,8 @@ export const ADEGAN_LUAR_TANGGA: AdeganStory = {
 /* ------------------------------ Liter Ladder: terapan ------------------------------ */
 const SUARA_T1 = "Satria mengubah tiga liter menjadi mililiter dengan menuruni tangga.";
 const SUARA_T2 = "Tiga dikali seribu sama dengan tiga ribu mililiter, dan satuan mililiter ditulis di belakang bilangan itu.";
-const SUARA_T3 = "Cocok untuk mengganti satuan volume dengan cepat dan tepat, asalkan kita ingat arah tangganya.";
-const SUARA_T4 = "Kurang cocok kalau kita lupa bilangan seribu, karena hasilnya meleset jauh.";
+const SUARA_T3 = "Cocok untuk mengganti satuan volume dengan cepat dan tepat, asalkan kita ingat arah tangganya. Untuk bak mandi yang besar, satu meter kubik sama dengan seribu liter.";
+const SUARA_T4 = "Kurang cocok kalau kita lupa bilangan seribu, karena hasilnya meleset jauh. Begitu juga untuk meter kubik ke liter.";
 
 export const ADEGAN_LUAR_TANGGA_TERAPAN: AdeganStory = {
   id: "luar-tangga-terapan",
@@ -173,10 +174,12 @@ export const ADEGAN_LUAR_TANGGA_TERAPAN: AdeganStory = {
       tambah("cepat", emo("ce", 150, 130, "\u{26A1}", 22)),
       tambah("tepat", emo("tp", 190, 130, E.benar, 22)),
       tambah("arah", teks("ah", 100, 96, "turun / naik", 10, W.ungu)),
+      tambah("bak", kotak("bk", 258, 24, 20, 20, WL.kubus, W.biru, { rx: 1, tebal: 1.5, z: 2 })),
+      tambah("kubik", teks("m3", 215, 36, "1 m³ = 1.000 l", 12, W.hijauTua)),
     ),
     k(
       SUARA_T4,
-      hapus(0, "jp", "ce", "tp", "ah", "dn"),
+      hapus(0, "jp", "ce", "tp", "ah", "dn", "bk", "m3"),
       tambah("Kurang", emo("xs", 262, 140, E.salah, 22)),
       tambah("lupa", teks("lp", 150, 84, "lupa 1.000", 13, W.merah)),
       ubah("hasilnya", { id: "q", isi: "300 ml", warna: W.merah }),

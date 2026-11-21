@@ -102,9 +102,9 @@ export const ADEGAN_LUAR_ISI: AdeganStory = {
 };
 
 /* ------------------------------ Fill and Pour: terapan ------------------------------ */
-const SUARA_P1 = "Laras menuang air dari ember kecil ke gelas ukur sampai garis tiga ratus mililiter.";
+const SUARA_P1 = "Laras menuang air dari ember kecil ke gelas ukur sampai garis tiga ratus mililiter. Lalu ia menuang seratus mililiter lagi, jadi isinya empat ratus mililiter.";
 const SUARA_P2 = "Ia mencatat volumenya beserta satuannya, yaitu mililiter, dan hasilnya sama untuk semua orang yang membaca.";
-const SUARA_P3 = "Cocok untuk wadah yang tidak berbentuk kotak, karena kita hanya perlu menuang.";
+const SUARA_P3 = "Cocok untuk wadah yang tidak berbentuk kotak, karena kita hanya perlu menuang. Isi beberapa wadah juga mudah dibandingkan dan diurutkan dari yang paling sedikit.";
 const SUARA_P4 = "Kurang cocok untuk wadah sangat besar, karena gelas ukurnya terlalu kecil.";
 
 export const ADEGAN_LUAR_ISI_TERAPAN: AdeganStory = {
@@ -121,6 +121,8 @@ export const ADEGAN_LUAR_ISI_TERAPAN: AdeganStory = {
       tambah("garis", teks("t3", 232, 60, "300 ml", 13, W.merah)),
       sorotkan("tiga", "gu-s1"),
       ubah("tiga", { id: "gu-a", ...airEmber(70, 58, 0.55) }),
+      tambah("seratus", teks("jm", 150, 38, "300 ml + 100 ml = 400 ml", 11, W.hijauTua)),
+      ubah("empat", { id: "gu-a", ...airEmber(70, 58, 0.75) }),
     ),
     k(
       SUARA_P2,
@@ -136,10 +138,12 @@ export const ADEGAN_LUAR_ISI_TERAPAN: AdeganStory = {
       tambah("wadah", teks("wb", 100, 50, "wadah bulat", 11, W.coklat)),
       tambah("kotak", emo("bk", 150, 56, "\u{1F4E6}", 22)),
       tambah("menuang", panah("pp", 124, 100, 50, 0, W.ungu, 2.4)),
+      tambah("diurutkan", kotak("b1", 196, 124, 14, 14, WL.air, W.biru, { rx: 1, z: 2 }), kotak("b2", 216, 114, 14, 24, WL.air, W.biru, { rx: 1, z: 2 }), kotak("b3", 236, 104, 14, 34, WL.air, W.biru, { rx: 1, z: 2 })),
+      ubah("sedikit", { id: "b1", sorot: true }),
     ),
     k(
       SUARA_P4,
-      hapus(0, "jp", "wb", "bk", "pp"),
+      hapus(0, "jp", "wb", "bk", "pp", "b1", "b2", "b3", "jm"),
       tambah("Kurang", emo("xs", 262, 140, E.salah, 22)),
       hapus("wadah", ...idEmber("e")),
       tambah("wadah", ...ember("eg", 50, 50, 90, 90, 0.8)),

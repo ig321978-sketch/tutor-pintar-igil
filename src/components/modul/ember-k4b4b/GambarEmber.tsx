@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { barisKartu, dasarDari, fmt, judulKartu, mlDariL, mukaBlok, susunBaris, totalIsi, type Cara, type Langkah, type LangkahDasar, type LGelas, type LIsi, type LLapisan, type LSatuan, type LSebut, type LTangga, type Rupa } from "./logika-cpa";
+import { barisKartu, dasarDari, fmt, hasilCerita, isiUrut, judulKartu, mlDariL, mukaBlok, susunBaris, teksCampur, totalIsi, type Cara, type Langkah, type LangkahDasar, type LCampur, type LCerita, type LGelas, type LIsi, type LLapisan, type LSatuan, type LSebut, type LTangga, type LUrut, type Rupa } from "./logika-cpa";
 
 /**
  * Gambar tugas CPA Kelas 4 Bab 4 Sub-Bab B "Ember Pak Anto" (volume): gelas, botol, dan ember berwarna atau beremoji sebanyak datanya (Concrete),
@@ -61,15 +61,17 @@ export function EmberSvg({ isi, label, rupa, kecil = false }: { isi: number; lab
   const kiri = (y: number) => 108 + ((y - atas) / (bawah - atas)) * 10;
   const kanan = (y: number) => 192 - ((y - atas) / (bawah - atas)) * 10;
   return (
-    <svg viewBox="0 0 300 112" className={`mx-auto w-full ${kecil ? "max-w-[170px]" : "max-w-[300px]"}`} role="img" aria-label={`ember berisi ${label}`} data-isi={Math.round(isi * 100)}>
+    <div className={`mx-auto w-full ${kecil ? "max-w-[170px]" : "max-w-[300px]"}`}>
+    <svg viewBox="0 0 300 112" className="w-full" role="img" aria-label={`ember berisi ${label}`} data-isi={Math.round(isi * 100)}>
       <rect x={3} y={2} width={294} height={108} rx={10} fill={w.latar} stroke={w.garis} strokeWidth={1.2} strokeDasharray="5 3" opacity={0.5} />
       <path d="M108 22 Q150 -8 192 22" fill="none" stroke={w.wadah} strokeWidth={3} />
       {isi > 0 ? <polygon points={`${kiri(yAir)},${yAir} ${kanan(yAir)},${yAir} ${kanan(bawah)},${bawah} ${kiri(bawah)},${bawah}`} fill={w.air} stroke={rupa === "diagram" ? w.garis : "none"} strokeWidth={0.8} /> : null}
       <path d={`M108 ${atas} L192 ${atas} L182 ${bawah} L118 ${bawah} Z`} fill="none" stroke={w.wadah} strokeWidth={3.4} strokeLinejoin="round" />
-      <text x={150} y={63} textAnchor="middle" fontSize={label.length > 9 ? 14 : 17} fontWeight={900} fill={BIRU}>
-        {label}
-      </text>
     </svg>
+    <p className="text-center text-sm font-black leading-tight" style={{ color: BIRU }} data-label-ember="1">
+      {label}
+    </p>
+    </div>
   );
 }
 
@@ -115,36 +117,49 @@ export function BlokSvg({ kolom, baris, lapis, rupa }: { kolom: number; baris: n
 }
 
 /* ------------------------------ Tangga liter ------------------------------ */
-/** Tangga dua anak: satu satuan di atas dan satu di bawah, dengan panah kali atau bagi seribu (atau sama besar untuk sentimeter kubik dan mililiter). */
+/**
+ * Tangga dua anak: satu satuan di atas dan satu di bawah, dengan aturan kali atau bagi seribu (atau sama besar untuk sentimeter kubik dan mililiter).
+ * Aturan ditulis di ruang kosong di bawah anak tangga atas (tidak menimpa garis atau kotak); untuk meter kubik ada kubus rusuk 1 m di kanan atas. Huruf paling kecil 14 pada viewBox 300.
+ */
 export function TanggaSvg({ d, rupa }: { d: LTangga; rupa: RupaGambar }) {
   const w = WARNA[rupa];
-  const liter = d.jenis === "liter";
+  const liter = d.jenis !== "kubik";
+  const mtr = d.jenis === "meter";
+  const u1 = mtr ? "m³" : "l";
+  const u2 = mtr ? "l" : "ml";
   const turun = d.arah === "turun";
-  const diketahui = liter ? (turun ? `${d.n} l` : `${fmt(mlDariL(d.n))} ml`) : `${d.n} cm³`;
-  const dicari = liter ? (turun ? "? ml" : "? l") : "? ml";
+  const diketahui = liter ? (turun ? `${d.n} ${u1}` : `${fmt(mlDariL(d.n))} ${u2}`) : `${d.n} cm³`;
+  const dicari = liter ? (turun ? `? ${u2}` : `? ${u1}`) : "? ml";
   const aturan = liter ? (turun ? "× 1.000" : "÷ 1.000") : "sama besar";
   const atasTeks = liter ? (turun ? diketahui : dicari) : diketahui;
   const bawahTeks = liter ? (turun ? dicari : diketahui) : dicari;
   return (
     <svg viewBox="0 0 300 130" className="mx-auto w-full max-w-[300px]" role="img" aria-label={`tangga: ${diketahui} ke ${dicari}, ${aturan}`} data-aturan={aturan} data-jenis={d.jenis}>
       <rect x={3} y={2} width={294} height={126} rx={10} fill={w.latar} stroke={w.garis} strokeWidth={1.2} strokeDasharray="5 3" opacity={0.5} />
-      <path d="M20 54 L130 54 L130 104 L280 104" fill="none" stroke={w.garis} strokeWidth={2.4} />
+      <path d="M20 56 L130 56 L130 106 L280 106" fill="none" stroke={w.garis} strokeWidth={2.4} />
       <rect x={20} y={14} width={110} height={40} rx={8} fill="#FFFFFF" stroke={w.garis} strokeWidth={2.4} strokeDasharray={atasTeks.startsWith("?") ? "4 3" : undefined} />
-      <text x={75} y={40} textAnchor="middle" fontSize={atasTeks.length > 8 ? 15 : 19} fontWeight={900} fill={atasTeks.startsWith("?") ? "#DC2626" : BIRU}>
+      <text x={75} y={41} textAnchor="middle" fontSize={atasTeks.length > 8 ? 17 : 20} fontWeight={900} fill={atasTeks.startsWith("?") ? "#DC2626" : BIRU}>
         {atasTeks}
       </text>
       <rect x={170} y={64} width={110} height={40} rx={8} fill="#FFFFFF" stroke={w.garis} strokeWidth={2.4} strokeDasharray={bawahTeks.startsWith("?") ? "4 3" : undefined} />
-      <text x={225} y={90} textAnchor="middle" fontSize={bawahTeks.length > 8 ? 15 : 19} fontWeight={900} fill={bawahTeks.startsWith("?") ? "#DC2626" : BIRU}>
+      <text x={225} y={91} textAnchor="middle" fontSize={bawahTeks.length > 8 ? 17 : 20} fontWeight={900} fill={bawahTeks.startsWith("?") ? "#DC2626" : BIRU}>
         {bawahTeks}
       </text>
-      <text x={150} y={72} textAnchor="middle" fontSize={13} fontWeight={900} fill="#DC2626">
+      <text x={75} y={92} textAnchor="middle" fontSize={18} fontWeight={900} fill="#DC2626">
         {aturan}
       </text>
-      <text x={150} y={90} textAnchor="middle" fontSize={11} fontWeight={900} fill={w.tebal}>
-        {liter ? (turun ? "turun tangga" : "naik tangga") : "1 cm³ = 1 ml"}
-      </text>
-      <text x={150} y={122} textAnchor="middle" fontSize={11} fontWeight={900} fill={w.tebal}>
-        {liter ? "1 l = 1.000 ml" : "kubus satuan sama dengan mililiter"}
+      {mtr ? (
+        <g data-kubus-rusuk="1 m">
+          <rect x={232} y={26} width={26} height={26} fill={w.depan} stroke={w.tepi} strokeWidth={1.8} />
+          <polygon points="232,26 244,14 270,14 258,26" fill={w.atas} stroke={w.tepi} strokeWidth={1.8} />
+          <polygon points="258,26 270,14 270,40 258,52" fill={w.samping} stroke={w.tepi} strokeWidth={1.8} />
+          <text x={222} y={46} textAnchor="end" fontSize={17} fontWeight={900} fill="#DC2626">
+            1 m
+          </text>
+        </g>
+      ) : null}
+      <text x={150} y={124} textAnchor="middle" fontSize={16} fontWeight={900} fill={w.tebal}>
+        {liter ? `1 ${u1} = 1.000 ${u2}` : "1 cm³ = 1 ml"}
       </text>
     </svg>
   );
@@ -181,7 +196,7 @@ export function ketGambar(d: LangkahDasar, cara?: Cara): string[] {
   return [kartu[0], kartu[kartu.length - 1]];
 }
 
-const NAMA_KARTU: Record<LangkahDasar["tipe"], string> = { satuan: "kartu satuan", gelas: "kartu gelas", sebut: "kartu kata", isi: "kartu isi", lapisan: "kartu lapisan", tangga: "kartu tangga" };
+const NAMA_KARTU: Record<LangkahDasar["tipe"], string> = { satuan: "kartu satuan", gelas: "kartu gelas", sebut: "kartu kata", isi: "kartu isi", lapisan: "kartu lapisan", tangga: "kartu tangga", urut: "kartu urutan", campur: "kartu campuran", cerita: "kartu cerita" };
 
 function GambarSatuan({ d, rupa }: { d: LSatuan; rupa: RupaGambar }) {
   return rupa === "benda" ? (
@@ -241,12 +256,85 @@ function GambarIsi({ d, rupa, cara }: { d: LIsi; rupa: RupaGambar; cara: Cara })
 }
 
 function GambarLapisan({ d, rupa }: { d: LLapisan; rupa: RupaGambar }) {
+  if (d.banding)
+    return (
+      <div className="grid grid-cols-2 gap-2" data-banding="1">
+        <div>
+          <BlokSvg kolom={d.kolom} baris={d.baris} lapis={d.lapis} rupa={rupa} />
+          <p className="text-center text-xs font-black text-[#B91C1C]">balok pertama</p>
+        </div>
+        <div>
+          <BlokSvg kolom={d.banding.kolom} baris={d.banding.baris} lapis={1} rupa={rupa} />
+          <p className="text-center text-xs font-black text-[#B91C1C]">balok kedua: ? lapisan</p>
+        </div>
+      </div>
+    );
   return (
     <div className="space-y-1">
       <BlokSvg kolom={d.kolom} baris={d.baris} lapis={d.lapis} rupa={rupa} />
       <p className="text-center text-xs font-black text-[#B91C1C]">
         {d.lapis} lapisan, tiap lapisan {d.baris} baris × {d.kolom} kubus
       </p>
+    </div>
+  );
+}
+
+/** Tiga wadah dengan isi berbeda: tinggi air sebanding isi (ml), nomor di atas, tulisan isi di bawah (liter dan mililiter bercampur). */
+function GambarUrut({ d, rupa }: { d: LUrut; rupa: RupaGambar }) {
+  const w = WARNA[rupa];
+  const v = isiUrut(d);
+  const maks = Math.max(...v);
+  return (
+    <div className="mx-auto grid w-full max-w-[300px] grid-cols-3 gap-1.5" role="img" aria-label={`tiga wadah: ${d.teks.join(", ")}`} data-wadah={v.length}>
+      {v.map((ml, i) => {
+        const air = Math.round(54 * (ml / maks));
+        return (
+          <div key={i} className="rounded-xl border-2 border-dashed bg-white p-1 text-center" style={{ borderColor: w.garis }}>
+            <p className="text-sm font-black" style={{ color: BIRU }}>
+              {i + 1}
+            </p>
+            <svg viewBox="0 0 70 70" className="mx-auto w-full max-w-[64px]" data-air={air}>
+              <rect x={14} y={8} width={42} height={56} rx={3} fill="#FFFFFF" stroke={w.garis} strokeWidth={2.5} />
+              <rect x={16} y={62 - air} width={38} height={air} fill={w.air} />
+              {rupa === "benda" ? <rect x={28} y={2} width={14} height={8} rx={2} fill={w.wadah} /> : null}
+            </svg>
+            <p className="text-xs font-black leading-tight" style={{ color: w.tebal }}>
+              {d.teks[i]}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function GambarCampur({ d, rupa }: { d: LCampur; rupa: RupaGambar }) {
+  return (
+    <div className="space-y-1">
+      <EmberSvg isi={0.85} label={`${fmt(d.ml)} ml`} rupa={rupa} kecil />
+      <p className="text-center text-sm font-black text-[#B91C1C]">= ? l ? ml</p>
+    </div>
+  );
+}
+
+function GambarCerita({ d, rupa }: { d: LCerita; rupa: RupaGambar }) {
+  if (d.c !== undefined) return <GambarUrut d={{ tipe: "urut", teks: [`${fmt(d.a)} ml`, `${fmt(d.b)} ml`, `${fmt(d.c)} ml`], cari: "terbanyak" }} rupa={rupa} />;
+  const maks = Math.max(d.a, d.b);
+  return (
+    <div className="space-y-1">
+      <div className="flex items-end justify-center gap-2" data-hasil={hasilCerita(d)}>
+        <div className="w-1/2 max-w-[140px]">
+          <EmberSvg isi={Math.min(1, d.a / (maks * 1.05))} label={teksCampur(d.a)} rupa={rupa} kecil />
+          <p className="text-center text-xs font-black text-[#155E75]">{d.op === "jumlah" ? "wadah pertama" : "isi awal"}</p>
+        </div>
+        <span className="pb-6 text-2xl font-black text-[#DC2626]" aria-hidden="true">
+          {d.op === "jumlah" ? "+" : "−"}
+        </span>
+        <div className="w-1/2 max-w-[140px]">
+          <EmberSvg isi={Math.min(1, d.b / (maks * 1.05))} label={teksCampur(d.b)} rupa={rupa} kecil />
+          <p className="text-center text-xs font-black text-[#155E75]">{d.op === "jumlah" ? "wadah kedua" : "dipakai"}</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -266,6 +354,12 @@ function Bagian({ d, rupa, cara }: { d: LangkahDasar; rupa: RupaGambar; cara: Ca
       return <GambarLapisan d={d} rupa={rupa} />;
     case "tangga":
       return <TanggaSvg d={d} rupa={rupa} />;
+    case "urut":
+      return <GambarUrut d={d} rupa={rupa} />;
+    case "campur":
+      return <GambarCampur d={d} rupa={rupa} />;
+    case "cerita":
+      return <GambarCerita d={d} rupa={rupa} />;
   }
 }
 

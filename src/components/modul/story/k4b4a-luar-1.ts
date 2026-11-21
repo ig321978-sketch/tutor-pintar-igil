@@ -63,7 +63,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 const SUARA_C1 = "Cara pertama, Cover the Floor, atau Tutup Lantai.";
 const SUARA_C2 = "Kita menutup seluruh permukaan dengan petak sama besar, tanpa celah dan tanpa tumpang tindih.";
 const SUARA_C3 = "Banyak petak yang menutupi permukaan itulah luasnya, dan satuannya mengikuti ukuran petak.";
-const SUARA_C4 = "Petak yang dipakai harus sama besar, supaya hasilnya adil.";
+const SUARA_C4 = "Petak yang dipakai harus sama besar, supaya hasilnya adil, sebab satuan berbeda ukuran membuat hasil berbeda.";
 
 export const ADEGAN_LUAR_TUTUP: AdeganStory = {
   id: "luar-tutup",
@@ -104,7 +104,7 @@ export const ADEGAN_LUAR_TUTUP: AdeganStory = {
 
 /* ------------------------------ Cover the Floor: terapan ------------------------------ */
 const SUARA_D1 = "Laras menutup denah lantai kecil dengan petak sentimeter persegi.";
-const SUARA_D2 = "Setelah ditutup, ia menghitung petaknya dan mendapat luas yang pasti.";
+const SUARA_D2 = "Setelah ditutup, ia menghitung petaknya dan mendapat luas yang pasti, bahkan untuk bangun berbeda bentuk.";
 const SUARA_D3 = "Cocok untuk bidang kecil, karena petak mudah dihitung satu per satu.";
 const SUARA_D4 = "Kurang cocok untuk lantai yang sangat besar, karena petaknya terlalu banyak.";
 
@@ -125,7 +125,8 @@ export const ADEGAN_LUAR_TUTUP_TERAPAN: AdeganStory = {
       SUARA_D2,
       tambah("menghitung", ...nomori("g", 120, 50, 2, 3, 24, K.kapur)),
       tambah("luas", teks("ls", 156, 134, "luas 6 cm²", 11, K.kapur)),
-      sorotkan("pasti.", "ls"),
+      sorotkan("pasti,", "ls"),
+      tambah("bangun", teks("bb", 156, 150, "bentuk beda, luas sama", 8, K.kapurBiru)),
     ),
     k(
       SUARA_D3,

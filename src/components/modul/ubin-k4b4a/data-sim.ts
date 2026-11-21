@@ -18,7 +18,7 @@ export const TARGET_TUTUP: readonly LantaiSim[] = [
 /** Baris: lantai sudah tertutup; anak mengisi luasnya (baris kali kolom) dengan satuannya. */
 export const TARGET_BARIS: readonly LantaiSim[] = [
   { b: 3, k: 5, u: "cm²" },
-  { b: 2, k: 7, u: "m²" },
+  { b: 4, k: 6, u: "m²" },
   { b: 6, k: 3, u: "cm²" },
 ];
 

@@ -205,7 +205,7 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   cek(km >= 300 && km <= 400, `materi 300 sampai 400 kata (${km})`);
   cek(kataVideo(U) / 120 > 3.2, `durasi video global lebih dari tiga menit dengan margin (${(kataVideo(U) / 120).toFixed(2)} menit, ${kataVideo(U)} kata)`);
   const sapa = adegan(M_VIDEO, "sapaan");
-  cek(/pengukuran volume/.test(sapa.ketukan[0].suara) && ["Liter dan mililiter", "Sentimeter kubik", "Kubus satuan"].every((d) => teksAdegan(sapa).includes(d)), "sapaan materi: topik dan tiga hal");
+  cek(/pengukuran volume/.test(sapa.ketukan[0].suara) && ["Liter dan mililiter", "Sentimeter kubik", "Meter kubik"].every((d) => teksAdegan(sapa).includes(d)), "sapaan materi: topik dan tiga hal");
   cek(/Metode global/.test(adegan(U, "sapaan").sumber), "sapaan global berlabel Metode global");
   cek(M_VIDEO.adegan.slice(1).every((a) => a.ketukan.length === 3) && U.adegan.slice(1).every((a) => a.ketukan.length === 4), "3 ketukan tiap adegan materi, 4 ketukan tiap adegan global");
   // Naskah tetap: kalimat suara sama dengan berkas naskah.
@@ -285,9 +285,9 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   const mg = adegan(M_VIDEO, "mengepel");
   cek(ada(akhirAdegan(mg, 0), "sa", "sp", "rk", "e1", "e2", "bb0", "bb2"), "mengepel: Satria mengepel lantai di depan rak ember");
   cek(tidakAda(akhirAdegan(mg, 1), "e2", "e2-a") && ada(akhirAdegan(mg, 1), "e3", "ro", "hit", "la", "tw1", "tw2"), "mengepel: ember kosong tersenggol, menggelinding, semua tertawa");
-  cek(isiTeks(akhirAdegan(mg, 2), "ct-t0") === "1 l = 1.000 ml" && isiTeks(akhirAdegan(mg, 2), "sr") === "100 ml" && ada(akhirAdegan(mg, 2), "xs", "cat"), "mengepel: Laras mencatat satu liter seribu mililiter, bukan seratus");
+  cek(isiTeks(akhirAdegan(mg, 2), "ct-t0") === "1.450 ml" && isiTeks(akhirAdegan(mg, 2), "c2-t0") === "1 l 450 ml" && 1450 === 1000 + 450 && ada(akhirAdegan(mg, 2), "xs", "cat"), "mengepel: Laras mencatat seribu empat ratus lima puluh mililiter sama dengan satu liter empat ratus lima puluh mililiter");
   const kb = adegan(M_VIDEO, "kubus");
-  cek(isiTeks(akhirAdegan(kb, 0), "s1") === "1 cm" && ada(akhirAdegan(kb, 0), "ku", "tt", "ge"), "kubus: kubus kecil bersisi satu sentimeter");
+  cek(isiTeks(akhirAdegan(kb, 0), "s1") === "1 cm" && ada(akhirAdegan(kb, 0), "ku", "ge") && /Benda padat diukur dengan kubus satuan/.test(kb.ketukan[0].suara) && /Cara cepat menghitung kubus satuan/.test(kb.ketukan[1].suara), "kubus: benda padat dengan kubus satuan bersisi satu sentimeter, cara cepat menghitung kubus satuan");
   cacahLapisan(akhirAdegan(kb, 0), "L", 3, 2, "kubus");
   cek(isiTeks(akhirAdegan(kb, 1), "ft") === `3 ${KALI} 2` && isiTeks(akhirAdegan(kb, 1), "dl") === "2 lapisan", "kubus: tiap lapisan tiga kali dua kubus, dua lapisan");
   cacahLapisan(akhirAdegan(kb, 1), "L", 3, 2, "kubus lapisan pertama");
@@ -297,8 +297,7 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   const sm = adegan(M_VIDEO, "sama");
   cek(isiTeks(akhirAdegan(sm, 0), "s1") === "1 cm³" && isiTeks(akhirAdegan(sm, 0), "s2") === "1 ml" && ada(akhirAdegan(sm, 0), "wd", "wa", "pa"), "sama: wadah satu sentimeter kubik berisi satu mililiter");
   sama(["c1-t0", "c2-t0"].map((id) => isiTeks(akhirAdegan(sm, 1), id)), ["1 cm³ = 1 ml", "12 cm³ = 12 ml"], "sama: satu sentimeter kubik satu mililiter, dua belas sentimeter kubik dua belas mililiter");
-  cek(isiTeks(akhirAdegan(sm, 2), "vv") === "volume" && isiTeks(akhirAdegan(sm, 2), "mm") === "ml" && ada(akhirAdegan(sm, 2), "pn") && tidakAda(akhirAdegan(sm, 2), "c1-k", "c2-k"), "sama: volume dihitung dari kubus lalu diubah menjadi mililiter");
-  cacahLapisan(akhirAdegan(sm, 2), "Q", 3, 2, "sama");
+  cek(isiTeks(akhirAdegan(sm, 2), "sk") === "1 m³ = 1.000 l" && isiTeks(akhirAdegan(sm, 2), "rm") === "1 m" && ada(akhirAdegan(sm, 2), "bk", "m3", "rs") && tidakAda(akhirAdegan(sm, 2), "c1-k", "c2-k"), "sama: bak mandi besar memakai meter kubik, kubus berusuk satu meter, satu meter kubik sama dengan seribu liter");
   const pt = adegan(M_VIDEO, "penutup");
   cek(ada(akhirAdegan(pt, 0), "kl", "b1", "b3", "kf1", "kf2", "sp-p1", "sp-p2") && isiTeks(akhirAdegan(pt, 0), "sk-t") === "PESTA RENANG TIRTA CERIA", "penutup: kolam, balon, konfeti, dan spanduk Pesta Renang Tirta Ceria");
   sama(["o1", "o2", "o3", "o4", "o5", "o6"].map((id) => isiTeks(akhirAdegan(pt, 1), `${id}-n`)), ["Bu Sinta", "Pak Anto", "Pak Hendro", "Satria", "Laras", "Genta"], "penutup: kedua tamu dan keempat tokoh tampil bernama");
@@ -345,8 +344,10 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   const lr = adegan(U, "luar-tangga-terapan");
   cek(isiTeks(akhirAdegan(lr, 0), "a3") === "3 l" && isiTeks(akhirAdegan(lr, 0), "q") === "? ml" && ada(akhirAdegan(lr, 0), "sa", "st", "dn"), "Liter Ladder terapan: Satria mengubah tiga liter menjadi mililiter dengan menuruni tangga");
   cek(isiTeks(akhirAdegan(lr, 1), "hk") === `3 ${KALI} 1.000` && isiTeks(akhirAdegan(lr, 1), "q") === "3.000 ml" && 3 * 1000 === 3000, "Liter Ladder terapan: tiga kali seribu sama dengan tiga ribu mililiter");
-  cek(ada(akhirAdegan(lr, 2), "jp", "ce", "tp", "ah") && tidakAda(akhirAdegan(lr, 2), "hk"), "Liter Ladder terapan: cocok untuk mengganti satuan dengan cepat dan tepat");
+  cek(ada(akhirAdegan(lr, 2), "jp", "ce", "tp", "ah", "bk") && isiTeks(akhirAdegan(lr, 2), "m3") === "1 m³ = 1.000 l" && tidakAda(akhirAdegan(lr, 2), "hk"), "Liter Ladder terapan: cocok untuk mengganti satuan dengan cepat dan tepat, bak mandi besar satu meter kubik seribu liter");
   cek(isiTeks(akhirAdegan(lr, 3), "lp") === "lupa 1.000" && isiTeks(akhirAdegan(lr, 3), "q") === "300 ml" && ada(akhirAdegan(lr, 3), "xs", "bm") && tidakAda(akhirAdegan(lr, 3), "jp"), "Liter Ladder terapan: kurang cocok kalau lupa seribu, hasil meleset");
+  cek(isiTeks(akhirAdegan(lp, 0), "jm") === "300 ml + 100 ml = 400 ml" && 300 + 100 === 400 && ada(akhirAdegan(lp, 2), "b1", "b2", "b3") && ketemu(akhirAdegan(lp, 2), "b1").sorot === true, "cerita jumlah volume dan mengurutkan dari yang paling sedikit ada di Story global");
+  cek(isiTeks(akhirAdegan(lg, 3), "cp") === "2.300 ml = 2 l 300 ml" && 2300 === 2000 + 300 && ada(akhirAdegan(ge, 2), "u1", "u2", "u3") && ketemu(akhirAdegan(ge, 2), "u1").sorot === true, "campuran liter dan mililiter di Story global, mengurutkan volume di Story materi");
   const rk = adegan(U, "luar-ringkas");
   cek(ada(akhirAdegan(rk, 0), "r0-k", "r1-k", "r2-k", "tn", "pa") && isiTeks(akhirAdegan(rk, 0), "n3") === "3 cara", "ringkasan: tiga kartu cara dan pertanyaan");
   cek(ketemu(akhirAdegan(rk, 1), "r1-k").sorot === true && !ketemu(akhirAdegan(rk, 1), "r0-k").sorot && ada(akhirAdegan(rk, 1), "e1", "e2"), "ringkasan: Isi dan Tuang lalu Susun Lapisan");

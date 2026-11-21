@@ -1,6 +1,6 @@
 /**
  * Pengenal ucapan Kelas 4 Bab 4 Sub-Bab A (tanpa React, diuji di Node: scripts/uji-ubin-k4b4a.mjs).
- * Kata jawaban (baku, kali, tambah, kurang, banyak, sedikit, sama, besar, kecil) dikenali dengan ragam ucapan. Bilangan 0 sampai 9 dikenali dari kata atau dari angka yang ditulis mesin pengenal ("5").
+ * Kata jawaban (baku, kali, tambah, kurang, banyak, sedikit, sama, beda, besar, kecil) dikenali dengan ragam ucapan. Bilangan 0 sampai 9 dikenali dari kata atau dari angka yang ditulis mesin pengenal ("5").
  * Kata yang didahului "tidak" atau "bukan" tidak dihitung.
  */
 import type { Kunci } from "./logika-cpa";
@@ -22,6 +22,7 @@ export const POLA_KATA: [string, RegExp][] = [
   ["banyak", /\b(banyak|bnyak)\b/],
   ["sedikit", /\b(sedikit|se dikit|sdikit)\b/],
   ["sama", /\bsama\b/],
+  ["beda", /\b(beda|berbeda)\b/],
   ["besar", /\b(besar|bsar)\b/],
   ["kecil", /\b(kecil|kcil)\b/],
 ];

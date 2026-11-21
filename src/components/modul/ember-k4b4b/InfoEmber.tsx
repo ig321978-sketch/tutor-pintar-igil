@@ -44,7 +44,7 @@ function GambarBejana({ b }: { b: Bejana }) {
           <rect x={30} y={16} width={40} height={70} rx={4} fill="#FFFFFF" stroke="#0284C7" strokeWidth={2.5} />
           <rect x={32} y={yAir} width={36} height={air} fill="#7DD3FC" />
           <rect x={42} y={6} width={16} height={12} rx={3} fill="#DBEAFE" stroke="#0284C7" strokeWidth={2} />
-          <text x={50} y={56} textAnchor="middle" fontSize={13} fontWeight={900} fill={BIRU}>
+          <text x={50} y={56} textAnchor="middle" fontSize={16} fontWeight={900} fill={BIRU}>
             1 l
           </text>
         </g>
@@ -101,7 +101,7 @@ export default function InfoEmberK4B4({ speakGuru, onLanjut, teksLanjut }: { spe
   const petunjuk = kartu === 1 ? PETUNJUK_INFO_1 : PETUNJUK_INFO_2;
   const selesai = kartu === 1 ? buka1 === total1 : buka2 === total2;
   return (
-    <div className="space-y-3">
+    <div className="space-y-2">
       <style>{CSS_LEMARI}</style>
       <div className="flex items-start gap-2 rounded-2xl border-4 border-[#1C01A5] bg-[#FFF7CC] p-2">
         <button type="button" onClick={() => speakGuru(petunjuk)} className="shrink-0 rounded-full border-2 border-[#1C01A5] bg-white px-2 py-1 text-sm" aria-label="Dengar petunjuk">
@@ -142,26 +142,22 @@ export default function InfoEmberK4B4({ speakGuru, onLanjut, teksLanjut }: { spe
       ) : (
         <div className="mx-auto w-full max-w-xl rounded-2xl border-[5px] border-[#92400E] bg-[#FFF8E7] p-2 shadow-[0_5px_0_rgba(0,0,0,0.25)]" data-uji="tangga-kubus">
           <p className="mb-2 rounded-lg bg-[#92400E] py-1 text-center text-sm font-black text-[#FDE68A]">Tangga dan kubus</p>
-          <svg viewBox="0 0 300 96" className="mx-auto mb-1 w-full max-w-[240px]" role="img" aria-label="tangga dari liter turun ke mililiter">
+          <svg viewBox="0 0 300 96" className="mx-auto mb-1 w-full max-w-[170px]" role="img" aria-label="tangga dari liter turun ke mililiter">
             <path d="M20 40 L120 40 L120 76 L280 76" fill="none" stroke="#92400E" strokeWidth={4} />
             <rect x={24} y={8} width={92} height={32} rx={8} fill="#DBEAFE" stroke={BIRU} strokeWidth={2.5} />
-            <text x={70} y={30} textAnchor="middle" fontSize={16} fontWeight={900} fill={BIRU}>
+            <text x={70} y={30} textAnchor="middle" fontSize={19} fontWeight={900} fill={BIRU}>
               1 l
             </text>
             <rect x={170} y={44} width={106} height={32} rx={8} fill="#DCFCE7" stroke="#166534" strokeWidth={2.5} />
-            <text x={223} y={66} textAnchor="middle" fontSize={16} fontWeight={900} fill="#166534">
+            <text x={223} y={66} textAnchor="middle" fontSize={18} fontWeight={900} fill="#166534">
               1.000 ml
-            </text>
-            <text x={146} y={34} textAnchor="middle" fontSize={11} fontWeight={900} fill="#DC2626">
-              turun
-            </text>
-            <text x={70} y={64} textAnchor="middle" fontSize={11} fontWeight={900} fill="#DC2626">
-              naik
             </text>
           </svg>
           <div className="mb-2 grid grid-cols-2 gap-2 rounded-xl border-2 border-[#E8C48F] bg-white/80 p-1.5" data-uji="kubus-lapisan">
             <div>
-              <LapisanSvg kolom={KUBUS_STORY.kolom} baris={KUBUS_STORY.baris} />
+              <div className="mx-auto max-w-[90px]">
+                <LapisanSvg kolom={KUBUS_STORY.kolom} baris={KUBUS_STORY.baris} />
+              </div>
               <p className="text-center text-xs font-black leading-tight text-[#92400E]">1 lapisan</p>
             </div>
             <div>
@@ -169,11 +165,11 @@ export default function InfoEmberK4B4({ speakGuru, onLanjut, teksLanjut }: { spe
               <p className="text-center text-xs font-black leading-tight text-[#92400E]">{KUBUS_STORY.lapis} lapisan</p>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-3 gap-1.5">
             {KOTAK_TANGGA.map((o, i) => {
               const kunci = `t${i}`;
               return (
-                <div key={o.id} className="space-y-1 rounded-xl border-2 border-[#E8C48F] bg-white/80 p-1.5">
+                <div key={o.id} className={`rounded-xl border-2 border-[#E8C48F] bg-white/80 p-1.5 space-y-1`}>
                   <p className="text-center text-xs font-black text-[#92400E]">{o.label}</p>
                   <Rahasia terbuka={buka.includes(kunci)} teks={o.isi} aria={`${o.label}: ${o.suara}`} onKetuk={() => ketuk(kunci, o.suara)} />
                 </div>

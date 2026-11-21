@@ -9,7 +9,7 @@ export const LANGKAH_EMBER: LangkahPeta[] = [
   { judul: "Isi dan tuang ke gelas ukur", arti: "Langkah satu. Isi wadah dengan air, lalu tuang ke gelas ukur dan baca garisnya dalam mililiter.", ikon: "\u{1F95B}\u{1F4A7}", gambar: "gelas" },
   { judul: "Lapisan kali tinggi", arti: "Langkah dua. Susun kubus satuan: kubus tiap lapisan dikali banyak lapisan sama dengan volume.", ikon: "\u{1F3B2}", gambar: "blok" },
   { judul: "Tangga liter: kali atau bagi seribu", arti: "Langkah tiga. Turun tangga dari liter ke mililiter dikali seribu, dan naik tangga dari mililiter ke liter dibagi seribu.", ikon: "\u{1F522}", gambar: "tangga" },
-  { judul: "Kubik sama dengan mililiter", arti: "Langkah empat. Satu sentimeter kubik sama besar dengan satu mililiter. Tulis satuan di belakang bilangan.", ikon: "\u{1F4A7}", gambar: "kubik" },
+  { judul: "Sentimeter dan meter kubik", arti: "Langkah empat. Satu sentimeter kubik sama besar dengan satu mililiter, dan satu meter kubik sama dengan seribu liter untuk bak besar. Tulis satuan di belakang bilangan.", ikon: "\u{1F4A7}", gambar: "kubik" },
 ];
 
 export const JUDUL_PETA = "Rak Ember Pak Anto";

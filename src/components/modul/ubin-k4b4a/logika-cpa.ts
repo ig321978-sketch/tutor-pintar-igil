@@ -49,16 +49,49 @@ export function pojokKisi(k: number, sisi: number, x0: number, lebar: number, y0
   return { x: x0 + (lebar - k * sisi) / 2, y: y0 };
 }
 
+/* ------------------------------ Bangun dari persegi satuan (diuji) ------------------------------ */
+/**
+ * Bangun pada kisi persegi satuan ditulis sebagai baris-baris teks: "X" persegi satuan yang sudah ada, "o" persegi satuan yang belum digambar (garis putus-putus), "." kosong.
+ * Semua baris sama panjang. Luas bangun = banyak "X" (dan "o" bila sudah digambar).
+ */
+export type Bangun = string[];
+const hitungHuruf = (m: Bangun, h: string): number => m.join("").split("").filter((c) => c === h).length;
+export const hitungX = (m: Bangun): number => hitungHuruf(m, "X");
+export const hitungO = (m: Bangun): number => hitungHuruf(m, "o");
+export const lebarBangun = (m: Bangun): number => Math.max(0, ...m.map((r) => r.length));
+/** Luas bidang pembatas bangun (baris kali kolom terbesar): jebakan bila dikira luas bangun. */
+export const bidangBangun = (m: Bangun): number => m.length * lebarBangun(m);
+/** Banyak persegi satuan "X" pada tiap baris. */
+export const perBaris = (m: Bangun): number[] => m.map((r) => r.split("").filter((c) => c === "X").length);
+/** Sisi satu persegi satuan pada bangun: muat di daerah lebar x tinggi, paling besar `maks`. */
+export const sisiBangun = (m: Bangun, lebar: number, tinggi: number, maks: number): number => Math.min(maks, Math.floor(lebar / Math.max(lebarBangun(m), 1)), Math.floor(tinggi / Math.max(m.length, 1)));
+/** Dua bangun yang dibandingkan memakai SATU sisi persegi satuan yang sama (yang terkecil), supaya luas dinilai dari banyak persegi satuan. */
+export const sisiBersama = (a: Bangun, b: Bangun, lebar: number, tinggi: number, maks: number): number => Math.min(sisiBangun(a, lebar, tinggi, maks), sisiBangun(b, lebar, tinggi, maks));
+/** Sel bangun baris demi baris: hanya "X" dan "o" yang digambar. */
+export function selBangun(m: Bangun): { baris: number; kolom: number; ada: boolean }[] {
+  return m.flatMap((r, baris) => r.split("").flatMap((c, kolom) => (c === "X" || c === "o" ? [{ baris, kolom, ada: c === "X" }] : [])));
+}
+/** Ubin acuan untuk menduga luas: dua baris dua kolom, empat satuan. */
+export const ACUAN = { b: 2, k: 2 };
+
 /* ------------------------------ Jenis tugas ------------------------------ */
-/** Metode IGIL: satuan dan susunan lantai; klik = luas satu ubin, kanvas = banyak baris, suara = satuan yang sama untuk semua orang (baku). */
+/** Metode IGIL, satuan baku: satuan yang ukurannya sama untuk semua orang disebut satuan baku (suara = baku). */
 export type LSatuan = { tipe: "satuan"; g: Kisi };
-/** Cover the Floor (Tutup Lantai): lantai ditutup ubin sama besar, `p` ubin sudah terpasang; klik dan suara = banyak ubin seluruhnya, kanvas = banyak ubin yang belum terpasang. */
-export type LTutup = { tipe: "tutup"; g: Kisi; p: number };
-/** Rows and Columns (Baris dan Kolom): klik = luas dengan satuan, kanvas = luas satu angka, suara = kata kali. */
-export type LBaris = { tipe: "baris"; g: Kisi };
+/**
+ * Metode IGIL, satuan tidak baku (uang kertas dan kertas origami, atau lembar kecil dan lembar besar): permukaan yang sama ditutup `r` baris dan `k` kolom satuan besar,
+ * dan satu satuan besar sama dengan dua satuan kecil. `nama` = [satuan kecil, satuan besar]. klik = luas dalam satuan kecil, kanvas = banyak satuan besar.
+ */
+export type LTidakBaku = { tipe: "tidakbaku"; r: number; k: number; nama: [string, string] };
+/**
+ * Cover the Floor (Tutup Lantai), bangun dari persegi satuan: klik = luas bangun B (berbeda bentuk dari bangun A tetapi luasnya sama), kanvas = persegi satuan yang belum digambar
+ * (huruf "o") pada bangun yang luasnya ditentukan, suara = luas kedua bangun sama atau beda.
+ */
+export type LBangun = { tipe: "bangun"; a: Bangun; b: Bangun; u: Satuan };
+/** Rows and Columns (Baris dan Kolom): klik = luas dengan satuan, kanvas = luas satu angka, suara = kata kali. `duga`: duga dulu dari ubin acuan, lalu periksa dengan baris kali kolom. */
+export type LBaris = { tipe: "baris"; g: Kisi; duga?: boolean; benda?: string };
 /** Unit Square Ladder (Tangga Satuan): `m` meter persegi sama dengan `m` kali sepuluh ribu sentimeter persegi. klik = hasil perubahan sesuai arah, kanvas = banyak meter persegi dari luas sentimeter persegi, suara = lebih banyak atau lebih sedikit. */
 export type LTangga = { tipe: "tangga"; m: number; arah: "turun" | "naik" };
-export type LangkahDasar = LSatuan | LTutup | LBaris | LTangga;
+export type LangkahDasar = LSatuan | LTidakBaku | LBangun | LBaris | LTangga;
 /** Cari kesalahan: tokoh sudah menjawab dari `dasar` (klik). Anak menilai benar atau salah, memilih alasan, lalu menjawab sendiri. `jawabTokoh` adalah teks pilihan klik tokoh. */
 export type LangkahSalah = {
   tipe: "salah";
@@ -90,6 +123,9 @@ export const dasarDari = (l: Langkah): LangkahDasar => (l.tipe === "salah" ? l.d
 
 /** Hasil perubahan tangga dalam cm² (meter persegi ke sentimeter persegi). */
 export const sentiDari = (m: number): number => m * KALI_RIBU;
+/** Banyak satuan besar yang menutupi permukaan tidak baku, dan banyak satuan kecil (dua kali lipat). */
+export const besarTB = (l: LTidakBaku): number => l.r * l.k;
+export const kecilTB = (l: LTidakBaku): number => 2 * l.r * l.k;
 
 /* ------------------------------ Jawaban benar ------------------------------ */
 export type Kunci = { jenis: "angka"; n: number } | { jenis: "nama"; nama: string };
@@ -102,8 +138,10 @@ export function kunciJawab(l: Langkah, cara: Cara): Kunci | null {
   switch (l.tipe) {
     case "satuan":
       return cara === "klik" ? nama(teksLuas(1, l.g.u)) : cara === "kanvas" ? angka(l.g.b) : nama("baku");
-    case "tutup":
-      return cara === "klik" ? nama(teksLuas(luas(l.g), l.g.u)) : cara === "kanvas" ? angka(luas(l.g) - l.p) : angka(luas(l.g));
+    case "tidakbaku":
+      return cara === "klik" ? nama(`${kecilTB(l)} ${l.nama[0]}`) : cara === "kanvas" ? angka(besarTB(l)) : nama("beda");
+    case "bangun":
+      return cara === "klik" ? nama(teksLuas(hitungX(l.b), l.u)) : cara === "kanvas" ? angka(hitungO(l.b)) : nama(hitungX(l.a) === hitungX(l.b) ? "sama" : "beda");
     case "baris":
       return cara === "klik" ? nama(teksLuas(luas(l.g), l.g.u)) : cara === "kanvas" ? angka(luas(l.g)) : nama("kali");
     case "tangga":
@@ -136,10 +174,14 @@ export function pilihanKlik(l: Langkah): string[] {
       const lain = [`1 ${satuanPanjang(d.g.u)}`, teksLuas(1, satuanLain(d.g.u))];
       return sisipkan(k.nama, lain, d.g.b + d.g.k);
     }
-    case "tutup": {
-      const L = luas(d.g);
-      const calon = [L - d.p, d.p, d.g.b + d.g.k, L + 1, L - 1].filter((n) => n >= 1 && n !== L).map((n) => teksLuas(n, d.g.u));
-      return sisipkan(k.nama, unik(calon, [k.nama]).slice(0, 2), L + d.p);
+    case "tidakbaku": {
+      const lain = [`${besarTB(d)} ${d.nama[0]}`, `${kecilTB(d)} ${d.nama[1]}`];
+      return sisipkan(k.nama, lain, d.r + d.k);
+    }
+    case "bangun": {
+      const n = hitungX(d.b);
+      const calon = [bidangBangun(d.b), n - 1, n + 1, n + 2].filter((x) => x >= 1 && x !== n).map((x) => teksLuas(x, d.u));
+      return sisipkan(k.nama, unik(calon, [k.nama]).slice(0, 2), n + d.b.length);
     }
     case "baris": {
       const L = luas(d.g);
@@ -166,8 +208,9 @@ export function pilihanSuara(l: Langkah, cara: Cara): string[] {
     const lain = unik([n - 1, n + 1, n - 2, n + 2].filter((x) => x >= 1 && x <= 9), [n]).slice(0, 2).map(kataBil);
     return sisipkan(kataBil(n), lain, n + d.tipe.length);
   }
-  const semua: string[] = d.tipe === "satuan" ? ["baku", "besar", "kecil"] : d.tipe === "baris" ? ["kali", "tambah", "kurang"] : ["banyak", "sedikit", "sama"];
-  const geser = d.tipe === "tangga" ? d.m : luas(d.g);
+  const semua: string[] =
+    d.tipe === "satuan" ? ["baku", "besar", "kecil"] : d.tipe === "baris" ? ["kali", "tambah", "kurang"] : d.tipe === "bangun" ? ["sama", "beda", "mirip"] : d.tipe === "tidakbaku" ? ["beda", "sama", "mirip"] : ["banyak", "sedikit", "sama"];
+  const geser = d.tipe === "tangga" ? d.m : d.tipe === "tidakbaku" ? d.r + d.k : d.tipe === "bangun" ? hitungX(d.b) : luas(d.g);
   return sisipkan(k.nama, unik(semua, [k.nama]), geser);
 }
 export const teksKunciPilihan = (k: Kunci): string => (k.jenis === "nama" ? k.nama : kataBil(k.n));
@@ -180,7 +223,7 @@ export function teksKunciKlik(l: Langkah): string | null {
 /* ------------------------------ Kalimat ------------------------------ */
 const sebut = (rupa: Rupa): string => (rupa === "lambang" ? "kartu" : "gambar");
 
-/** Kalimat pembenaran setelah jawaban benar (diawali huruf kapital, netral terhadap rupa: hanya "ubin", tanpa menyebut gambar, petak, atau kisi). */
+/** Kalimat pembenaran setelah jawaban benar (diawali huruf kapital, netral terhadap rupa: tanpa menyebut gambar, petak, atau kisi). */
 export function kalimatKunci(l: Langkah, cara: Cara): string {
   const d = dasarDari(l);
   switch (d.tipe) {
@@ -190,14 +233,28 @@ export function kalimatKunci(l: Langkah, cara: Cara): string {
         : cara === "kanvas"
           ? `Lantai ini terdiri dari ${d.g.b} baris ubin.`
           : "Satuan yang ukurannya sama untuk semua orang disebut satuan baku.";
-    case "tutup": {
-      const L = luas(d.g);
-      return cara === "kanvas"
-        ? `Seluruh lantai butuh ${L} ubin, sudah terpasang ${d.p}, jadi tinggal ${L - d.p}.`
-        : `Seluruh lantai ditutup ${L} ubin, jadi luasnya ${teksLuas(L, d.g.u)}.`;
+    case "tidakbaku":
+      return cara === "klik"
+        ? `Satu ${d.nama[1]} sama dengan 2 ${d.nama[0]}, jadi permukaan itu luasnya ${kecilTB(d)} ${d.nama[0]}.`
+        : cara === "kanvas"
+          ? `Permukaan itu ditutup ${besarTB(d)} ${d.nama[1]}, sedangkan satuan kecil memberi bilangan yang lebih besar.`
+          : "Satuan yang ukurannya berbeda memberi hasil yang berbeda.";
+    case "bangun": {
+      const n = hitungX(d.b);
+      return cara === "klik"
+        ? `Bangun A dan bangun B berbeda bentuk, tetapi luasnya sama, yaitu ${n} ${d.u}.`
+        : cara === "kanvas"
+          ? `Luas bangun ${hitungX(d.b) + hitungO(d.b)} ${d.u}, sudah ada ${n}, jadi masih perlu ${hitungO(d.b)} persegi satuan.`
+          : hitungX(d.a) === hitungX(d.b)
+            ? "Kedua bangun berbeda bentuk, tetapi banyak persegi satuannya sama, jadi luasnya sama."
+            : "Banyak persegi satuan kedua bangun berbeda, jadi luasnya berbeda.";
     }
     case "baris":
-      return cara === "suara" ? "Luas dihitung dengan mengalikan baris dengan kolom, bukan menjumlahkannya." : `Luas dihitung dari baris kali kolom: ${d.g.b} × ${d.g.k} = ${luas(d.g)}, jadi luasnya ${teksLuas(luas(d.g), d.g.u)}.`;
+      return cara === "suara"
+        ? "Luas dihitung dengan mengalikan baris dengan kolom, bukan menjumlahkannya."
+        : d.duga
+          ? `Dugaan diperiksa dengan baris kali kolom: ${d.g.b} × ${d.g.k} = ${luas(d.g)}, jadi luasnya ${teksLuas(luas(d.g), d.g.u)}.`
+          : `Luas dihitung dari baris kali kolom: ${d.g.b} × ${d.g.k} = ${luas(d.g)}, jadi luasnya ${teksLuas(luas(d.g), d.g.u)}.`;
     case "tangga":
       return cara === "suara"
         ? d.arah === "turun"
@@ -222,19 +279,29 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): s
         ? `${aw}: lihat ${g} ini. Setiap ubin bersisi satu ${kataPanjang(l.g.u)}. Pilih luas satu ubin itu.`
         : cara === "kanvas"
           ? `${aw}: lihat ${g} ini. Lantai disusun dari ubin yang berbaris-baris. Berapa banyak baris ubin? Tulis satu angka di kanvas.`
-          : `${aw}: kertas lipat dan keping ubin bisa berbeda ukurannya, sehingga hasilnya berbeda. Satuan yang ukurannya sama untuk semua orang disebut satuan apa? Ucapkan satu kata.`;
-    case "tutup":
+          : `${aw}: uang kertas, kertas origami, dan keping ubin bisa berbeda ukurannya, sehingga hasilnya berbeda. Satuan yang ukurannya sama untuk semua orang disebut satuan apa? Ucapkan satu kata.`;
+    case "tidakbaku":
       return cara === "klik"
-        ? `${aw}: lihat ${g} ini. Lantai ditutup ubin sama besar, tanpa celah. Berapa luas seluruh lantai? Pilih jawabannya.`
+        ? `${aw}: lihat ${g} ini. Permukaan yang sama ditutup dua satuan tidak baku, yaitu ${l.nama[0]} dan ${l.nama[1]}, dan satu ${l.nama[1]} sama dengan dua ${l.nama[0]}. Berapa luas permukaan itu dengan satuan ${l.nama[0]}? Pilih jawabannya.`
         : cara === "kanvas"
-          ? `${aw}: lihat ${g} ini. Sebagian lantai sudah ditutup ubin. Berapa ubin lagi yang dibutuhkan sampai seluruh lantai tertutup? Tulis satu angka di kanvas.`
-          : `${aw}: lihat ${g} ini. Sebagian lantai sudah ditutup ubin, dan sisanya akan ditutup juga. Berapa ubin untuk seluruh lantai? Ucapkan satu bilangan.`;
+          ? `${aw}: lihat ${g} ini. Permukaan yang sama ditutup dua satuan tidak baku, yaitu ${l.nama[0]} dan ${l.nama[1]}, dan satu ${l.nama[1]} sama dengan dua ${l.nama[0]}. Berapa banyak ${l.nama[1]} yang menutupi permukaan itu? Tulis satu angka di kanvas.`
+          : `${aw}: satuan tidak baku bisa berbeda ukurannya. Luas permukaan yang sama, jika diukur dengan satuan yang berbeda, hasilnya sama atau beda? Ucapkan satu kata.`;
+    case "bangun":
+      return cara === "klik"
+        ? `${aw}: lihat ${g} ini. Bangun A dan bangun B berbeda bentuk, dan keduanya tersusun dari persegi satuan yang sama besar. Luas bangun A sudah tertulis. Berapa luas bangun B? Pilih jawabannya.`
+        : cara === "kanvas"
+          ? `${aw}: lihat ${g} ini. Sebuah bangun dibuat dengan luas yang tertulis, dan sebagian persegi satuannya sudah ada. Berapa persegi satuan lagi yang dibutuhkan? Tulis satu angka di kanvas.`
+          : `${aw}: lihat ${g} ini. Dua bangun berbeda bentuk tersusun dari persegi satuan yang sama besar. Luas kedua bangun sama atau beda? Ucapkan satu kata.`;
     case "baris":
       return cara === "klik"
-        ? `${aw}: lihat ${g} ini. Ubin tersusun dalam baris dan kolom. Berapa luas lantai? Pilih jawabannya.`
+        ? l.duga
+          ? `${aw}: lihat ${g} ini. ${l.benda ? `Satu ubin kira-kira seluas ${l.benda}. ` : ""}Duga dulu luas lantai dengan membandingkannya ke ubin acuan, lalu periksa dengan baris kali kolom. Berapa luas lantai? Pilih jawabannya.`
+          : `${aw}: lihat ${g} ini. Ubin tersusun dalam baris dan kolom. Berapa luas lantai? Pilih jawabannya.`
         : cara === "kanvas"
-          ? `${aw}: lihat ${g} ini. Ubin tersusun dalam baris dan kolom. Berapa luas lantai, dalam satuan yang tertulis? Tulis satu angka di kanvas.`
-          : `${aw}: lihat ${g} ini. Ubin tersusun dalam baris dan kolom. Luas lantai dihitung dengan baris apa kolom? Ucapkan satu kata.`;
+          ? l.duga
+            ? `${aw}: lihat ${g} ini. ${l.benda ? `Satu ubin kira-kira seluas ${l.benda}. ` : ""}Duga dulu luas lantai dengan membandingkannya ke ubin acuan, lalu periksa dengan baris kali kolom. Berapa luas lantai, dalam satuan yang tertulis? Tulis satu angka di kanvas.`
+            : `${aw}: lihat ${g} ini. Ubin tersusun dalam baris dan kolom. Berapa luas lantai, dalam satuan yang tertulis? Tulis satu angka di kanvas.`
+          : `${aw}: lihat ${g} ini. Ubin tersusun dalam baris dan kolom. Luas lantai dari baris dan kolom dihitung dengan cara apa? Ucapkan satu kata.`;
     case "tangga":
       return cara === "klik"
         ? l.arah === "turun"
@@ -254,10 +321,12 @@ export function kalimatTanya(l: Langkah, cara: Cara): string {
   switch (d.tipe) {
     case "satuan":
       return cara === "klik" ? "Berapa luas satu ubin?" : cara === "kanvas" ? "Berapa banyak baris ubin?" : "Satuan itu disebut satuan apa?";
-    case "tutup":
-      return cara === "klik" ? "Berapa luas seluruh lantai?" : cara === "kanvas" ? "Berapa ubin yang masih dibutuhkan?" : "Berapa ubin untuk seluruh lantai?";
+    case "tidakbaku":
+      return cara === "klik" ? "Berapa luas permukaan itu?" : cara === "kanvas" ? `Berapa banyak ${d.nama[1]}?` : "Hasilnya sama atau beda?";
+    case "bangun":
+      return cara === "klik" ? "Berapa luas bangun B?" : cara === "kanvas" ? "Berapa persegi satuan lagi?" : "Luas kedua bangun sama atau beda?";
     case "baris":
-      return cara === "suara" ? "Luas dihitung dengan baris apa kolom?" : "Berapa luas lantai?";
+      return cara === "suara" ? "Luas dihitung dengan cara apa?" : "Berapa luas lantai?";
     case "tangga":
       return cara === "klik" ? "Berapa hasil perubahannya?" : cara === "kanvas" ? "Berapa meter persegi?" : "Bilangannya lebih banyak atau lebih sedikit?";
   }
@@ -276,12 +345,18 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
         : cara === "kanvas"
           ? "Hitung hanya baris ubin dari atas sampai bawah, bukan banyak ubin seluruhnya."
           : "Pikirkan satuan yang ukurannya sama bagi siapa saja yang mengukur.";
-    case "tutup":
-      return cara === "kanvas"
-        ? "Hitung dulu ubin untuk seluruh lantai, lalu kurangi dengan ubin yang sudah dipasang."
-        : cara === "klik"
-          ? "Hitung semua ubin yang menutupi seluruh lantai, lalu tulis satuannya."
-          : "Hitung semua ubin untuk seluruh lantai, baris demi baris.";
+    case "tidakbaku":
+      return cara === "klik"
+        ? "Perhatikan satuan yang ditanyakan, lalu ingat hubungan satu satuan besar dengan satuan kecil."
+        : cara === "kanvas"
+          ? "Hitung hanya satuan besar yang menutupi permukaan, bukan satuan kecil."
+          : "Bandingkan ukuran kedua satuan, lalu pikirkan bilangan yang dihasilkan.";
+    case "bangun":
+      return cara === "klik"
+        ? "Hitung hanya persegi satuan yang menyusun bangun B, bukan bidang di sekelilingnya."
+        : cara === "kanvas"
+          ? "Kurangi luas yang diminta dengan persegi satuan yang sudah ada."
+          : "Bandingkan banyak persegi satuan kedua bangun, bukan bentuknya.";
     case "baris":
       return cara === "klik"
         ? "Hitung ulang banyak baris kali banyak kolom, lalu periksa satuannya."
@@ -298,6 +373,7 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
 }
 
 /* ------------------------------ Kartu kata (Abstract) ------------------------------ */
+const daftarBaris = (m: Bangun): string => perBaris(m).join(", ");
 /** Isi kartu kata untuk tahap Abstract (kata dan angka, tanpa emoji dan tanpa gambar). */
 export function barisKartu(l: LangkahDasar, cara?: Cara): string[] {
   switch (l.tipe) {
@@ -306,19 +382,23 @@ export function barisKartu(l: LangkahDasar, cara?: Cara): string[] {
         ? [`sisi satu ubin: 1 ${satuanPanjang(l.g.u)}`, "luas satu ubin: ?"]
         : cara === "kanvas"
           ? ["ubin disusun dalam baris", `banyak kolom: ${l.g.k}`, `banyak ubin seluruhnya: ${luas(l.g)}`, "banyak baris: ?"]
-          : ["kertas lipat dan keping ubin: ukuran bisa beda", "satuan yang sama untuk semua orang: ?"];
-    case "tutup": {
-      const L = luas(l.g);
-      return cara === "kanvas"
-        ? [`ubin untuk seluruh lantai: ${L}`, `sudah terpasang: ${l.p}`, "belum terpasang: ?"]
-        : cara === "klik"
-          ? ["ubin dipasang sama besar, tanpa celah", `satu baris: ${l.g.k} ubin`, `banyak baris: ${l.g.b}`, "luas seluruh lantai: ?"]
-          : [`satu baris: ${l.g.k} ubin`, `banyak baris: ${l.g.b}`, `sudah terpasang: ${l.p} ubin`, "ubin untuk seluruh lantai: ?"];
+          : ["uang kertas dan kertas origami: ukuran bisa beda", "satuan yang sama untuk semua orang: ?"];
+    case "tidakbaku":
+      return cara === "suara"
+        ? [`permukaan yang sama diukur dengan ${l.nama[0]} dan ${l.nama[1]}`, "hasilnya: sama atau beda?"]
+        : [`permukaan ditutup ${l.nama[1]}: ${l.r} baris, ${l.k} kolom`, `1 ${l.nama[1]} = 2 ${l.nama[0]}`, cara === "klik" ? `luas dalam ${l.nama[0]}: ?` : `banyak ${l.nama[1]}: ?`];
+    case "bangun": {
+      if (cara === "kanvas") return [`luas bangun yang diminta: ${hitungX(l.b) + hitungO(l.b)} ${l.u}`, `persegi satuan yang sudah ada: ${hitungX(l.b)}`, "yang masih dibutuhkan: ?"];
+      return cara === "klik"
+        ? [`luas bangun A: ${hitungX(l.a)} ${l.u}`, `bangun B, persegi satuan tiap baris: ${daftarBaris(l.b)}`, "luas bangun B: ?"]
+        : [`bangun A, persegi satuan tiap baris: ${daftarBaris(l.a)}`, `bangun B, persegi satuan tiap baris: ${daftarBaris(l.b)}`, "luas kedua bangun: sama atau beda?"];
     }
     case "baris":
       return cara === "suara"
-        ? [`banyak baris: ${l.g.b}`, `banyak kolom: ${l.g.k}`, "luas lantai: baris ... kolom?"]
-        : [`banyak baris: ${l.g.b}`, `banyak kolom: ${l.g.k}`, `satuan ubin: 1 ${l.g.u}`, "luas lantai: ?"];
+        ? [`banyak baris: ${l.g.b}`, `banyak kolom: ${l.g.k}`, "cara menghitung luas lantai: ?"]
+        : l.duga
+          ? [`ubin acuan: ${ACUAN.b} baris, ${ACUAN.k} kolom = ${ACUAN.b * ACUAN.k} ${l.g.u}`, `lantai: ${l.g.b} baris, ${l.g.k} kolom`, "duga dulu, lalu periksa: luas lantai: ?"]
+          : [`banyak baris: ${l.g.b}`, `banyak kolom: ${l.g.k}`, `satuan ubin: 1 ${l.g.u}`, "luas lantai: ?"];
     case "tangga":
       return cara === "suara"
         ? [l.arah === "turun" ? "dari m² ke cm²: turun tangga" : "dari cm² ke m²: naik tangga", "bilangannya: lebih banyak atau lebih sedikit?"]

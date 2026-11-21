@@ -9,8 +9,8 @@ import { bersih, hapus, k, tambah, ubah } from "./k4b4b-bantu";
 
 /* ------------------------------ 1. Rak ember ------------------------------ */
 const SUARA_E1 = "Pak Anto, petugas kolam berkaus biru muda, mengajak Satria, Laras, dan Genta ke rak ember.";
-const SUARA_E2 = "Kolam anak harus diisi air untuk pesta renang akhir pekan.";
-const SUARA_E3 = "Ia membawa gelas ukur dan bertanya, berapa banyak air yang muat di ember ini?";
+const SUARA_E2 = "Kolam anak harus diisi air untuk pesta renang.";
+const SUARA_E3 = "Ia membawa gelas ukur dan bertanya, berapa air yang muat di ember?";
 
 export const ADEGAN_EMBER: AdeganStory = {
   id: "ember",
@@ -34,7 +34,7 @@ export const ADEGAN_EMBER: AdeganStory = {
       tambah("diisi", kotak("kair", 216, 58, 74, 26, WL.air, undefined, { rx: 0, tebal: 0, z: 2 })),
       tambah("air", emo("tt", 236, 104, E.tetes, 20)),
       tambah("pesta", emo("bl", 262, 26, E.balon, 22)),
-      tambah("akhir", ...pelampung("pl1", 214, 114, 8)),
+      tambah("renang", ...pelampung("pl1", 214, 114, 8)),
     ),
     k(
       SUARA_E3,
@@ -49,7 +49,7 @@ export const ADEGAN_EMBER: AdeganStory = {
 /* ------------------------------ 2. Takaran dengan gelas yang berbeda ------------------------------ */
 const SUARA_G1 = "Laras menakar air dengan gelas kecil, dan ember penuh setelah delapan gelas.";
 const SUARA_G2 = "Satria memakai gelas besar, dan ember penuh setelah empat gelas.";
-const SUARA_G3 = "Gelas berbeda menghasilkan banyak berbeda, jadi kita memakai satuan baku untuk volume.";
+const SUARA_G3 = "Gelas berbeda menghasilkan banyak berbeda, jadi kita memakai satuan baku untuk volume, lalu mengurutkan dari yang paling sedikit.";
 
 export const ADEGAN_GELAS: AdeganStory = {
   id: "gelas",
@@ -79,14 +79,16 @@ export const ADEGAN_GELAS: AdeganStory = {
       tambah("satuan", ...kartu("sb", 24, 124, 110, 22, W.krem, ["satuan baku"], 10)),
       ubah("untuk", { id: "sb-k", sorot: true }),
       tambah("volume", emo("ok", 180, 136, E.benar, 22)),
+      tambah("mengurutkan", kotak("u1", 196, 118, 14, 14, WL.air, W.biru, { rx: 1, z: 2 }), kotak("u2", 216, 108, 14, 24, WL.air, W.biru, { rx: 1, z: 2 }), kotak("u3", 236, 98, 14, 34, WL.air, W.biru, { rx: 1, z: 2 })),
+      ubah("sedikit", { id: "u1", sorot: true }),
     ),
   ],
 };
 
 /* ------------------------------ 3. Botol takar satu liter ------------------------------ */
 const SUARA_L1 = "Pak Anto memperlihatkan botol takar bertanda satu liter.";
-const SUARA_L2 = "Isi satu liter dibagi menjadi seribu bagian kecil yang disebut mililiter.";
-const SUARA_L3 = "Gelas ukur yang kecil biasanya memakai mililiter, dan ember besar memakai liter.";
+const SUARA_L2 = "Satu liter dibagi menjadi seribu bagian kecil, disebut mililiter.";
+const SUARA_L3 = "Gelas ukur yang kecil memakai mililiter, dan ember besar memakai liter.";
 
 export const ADEGAN_LITER: AdeganStory = {
   id: "liter",

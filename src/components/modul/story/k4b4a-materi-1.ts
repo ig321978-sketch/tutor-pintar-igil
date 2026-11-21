@@ -47,7 +47,7 @@ export const ADEGAN_KOLAM: AdeganStory = {
 /* ------------------------------ 2. Satuan tidak baku ------------------------------ */
 const SUARA_T1 = "Satria menutup lantai maket dengan lembar kertas lipat yang besar, dan Laras memakai lembar yang kecil.";
 const SUARA_T2 = "Satria mendapat enam lembar, sedangkan Laras mendapat dua puluh empat lembar.";
-const SUARA_T3 = "Satuan yang ukurannya berbeda membuat hasil berbeda, sehingga kita perlu satuan baku.";
+const SUARA_T3 = "Satuan yang ukurannya berbeda membuat hasil berbeda, sebab makin kecil satuannya, makin banyak jumlahnya, sehingga kita perlu satuan baku.";
 const IB = Array.from({ length: 6 }, (_, i) => `bs-c${i}`);
 const IK = Array.from({ length: 24 }, (_, i) => `kc-c${i}`);
 
@@ -78,6 +78,7 @@ export const ADEGAN_TIDAK_BAKU: AdeganStory = {
       SUARA_T3,
       tambah("berbeda", teks("bd", 133, 86, "6 ≠ 24", 11, W.merah)),
       tambah("hasil", teks("hb", 133, 100, "hasil beda", 8.4, W.merah)),
+      tambah("makin", teks("mk", 133, 128, "makin kecil, makin banyak", 8, W.coklat)),
       tambah("baku.", teks("bk", 133, 140, "satuan baku", 10, W.hijauTua), emo("ok", 133, 166, E.benar, 18)),
     ),
   ],
@@ -85,8 +86,8 @@ export const ADEGAN_TIDAK_BAKU: AdeganStory = {
 
 /* ------------------------------ 3. Satuan baku ------------------------------ */
 const SUARA_B1 = "Genta menggambar petak yang sisinya satu sentimeter.";
-const SUARA_B2 = "Luas satu petak itu kita sebut satu sentimeter persegi, dan dapat dibaca siapa saja dengan sama.";
-const SUARA_B3 = "Menutup lantai dengan petak seperti ini membuat hasilnya sama untuk semua orang.";
+const SUARA_B2 = "Luas satu persegi satuan itu kita sebut satu sentimeter persegi, dan dapat dibaca siapa saja dengan sama.";
+const SUARA_B3 = "Menutup lantai dengan petak seperti ini membuat hasilnya sama untuk semua orang, dan bangun berbeda bentuk bisa sama luasnya.";
 
 export const ADEGAN_BAKU: AdeganStory = {
   id: "baku",
@@ -113,7 +114,8 @@ export const ADEGAN_BAKU: AdeganStory = {
       SUARA_B3,
       tambah("lantai", ...petak("g", 182, 56, 2, 3, 22, W.ubin, W.ubinTua)),
       tambah("hasilnya", emo("ok", 262, 78, E.benar, 20)),
-      tambah("orang.", teks("sm", 214, 118, "hasil sama", 10, W.hijauTua), emo("jp", 262, 120, E.jempol, 18)),
+      tambah("orang,", teks("sm", 214, 118, "hasil sama", 10, W.hijauTua), emo("jp", 262, 120, E.jempol, 18)),
+      tambah("bangun", teks("bd2", 214, 134, "bentuk beda, luas sama", 8.4, W.coklat)),
     ),
   ],
 };

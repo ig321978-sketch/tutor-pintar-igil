@@ -8,9 +8,9 @@ import { bersih, hapus, k, tambah, ubah } from "./k4b4b-bantu";
  */
 
 /* ------------------------------ 4. Salah langkah Satria ------------------------------ */
-const SUARA_S1 = "Genta mengisi ember dua liter, lalu Pak Anto bertanya, berapa mililiter isinya?";
+const SUARA_S1 = "Genta mengisi ember dua liter, lalu Pak Anto bertanya, berapa mililiter?";
 const SUARA_S2 = "Satria berseru, satu liter itu seratus mililiter, jadi dua ratus mililiter!";
-const SUARA_S3 = "Kalau aku salah, aku mengepel semua rak ember, katanya sambil menepuk dada.";
+const SUARA_S3 = "Kalau aku salah, aku mengepel semua rak, katanya sambil menepuk dada.";
 
 export const ADEGAN_SALAH_SERATUS: AdeganStory = {
   id: "salah-seratus",
@@ -47,7 +47,7 @@ export const ADEGAN_SALAH_SERATUS: AdeganStory = {
 };
 
 /* ------------------------------ 5. Pemeriksaan dengan empat gelas ------------------------------ */
-const SUARA_P1 = "Laras menuang satu liter ke dalam gelas ukur kecil sebanyak empat kali berturut-turut.";
+const SUARA_P1 = "Laras menuang satu liter ke gelas ukur kecil sebanyak empat kali.";
 const SUARA_P2 = "Setiap gelas berisi dua ratus lima puluh mililiter, dan empat gelas sama dengan seribu mililiter.";
 const SUARA_P3 = "Jadi satu liter sama dengan seribu mililiter, dan dua liter sama dengan dua ribu mililiter.";
 
@@ -85,8 +85,8 @@ export const ADEGAN_PERIKSA: AdeganStory = {
 
 /* ------------------------------ 6. Mengepel ------------------------------ */
 const SUARA_M1 = "Satria menepati taruhannya dan mulai mengepel lantai di depan rak ember.";
-const SUARA_M2 = "Ia menyenggol ember kosong sehingga menggelinding, dan semua orang tertawa.";
-const SUARA_M3 = "Laras mencatat, satu liter sama dengan seribu mililiter, bukan seratus.";
+const SUARA_M2 = "Ia menyenggol ember kosong sehingga menggelinding, dan semua tertawa.";
+const SUARA_M3 = "Laras mencatat, seribu empat ratus lima puluh mililiter sama dengan satu liter empat ratus lima puluh mililiter.";
 
 export const ADEGAN_MENGEPEL: AdeganStory = {
   id: "mengepel",
@@ -112,8 +112,9 @@ export const ADEGAN_MENGEPEL: AdeganStory = {
     k(
       SUARA_M3,
       tambah("mencatat", emo("cat", 232, 108, E.catat, 22)),
-      tambah("seribu", ...kartu("ct", 30, 40, 160, 30, W.krem, ["1 l = 1.000 ml"], 11)),
-      tambah("bukan", emo("xs", 232, 58, E.salah, 22), teks("sr", 232, 78, "100 ml", 12, W.merah)),
+      tambah("seribu", ...kartu("ct", 30, 40, 160, 30, W.krem, ["1.450 ml"], 13)),
+      tambah("satu", ...kartu("c2", 30, 84, 160, 30, W.hijauMuda, ["1 l 450 ml"], 13)),
+      tambah("sama", emo("xs", 232, 58, E.benar, 22)),
     ),
   ],
 };

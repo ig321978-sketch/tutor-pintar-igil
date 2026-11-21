@@ -90,6 +90,7 @@ export const KOTAK_TANGGA: Kotak2[] = [
     isi: `${KUBUS_STORY.kolom} × ${KUBUS_STORY.baris} = ${perLapisan(KUBUS_STORY.kolom, KUBUS_STORY.baris)}`,
     suara: ucapkan(`Tiap lapisan berisi ${KUBUS_STORY.kolom} × ${KUBUS_STORY.baris} = ${perLapisan(KUBUS_STORY.kolom, KUBUS_STORY.baris)} kubus.`),
   },
+  { id: "meter", label: "1 m³", isi: "= 1.000 l", suara: ucapkan("Bak mandi besar memakai meter kubik. 1 m³ sama dengan 1.000 l, yaitu kubus berusuk 1 m.") },
 ];
 
 export const PETUNJUK_INFO_1 = "Deret takaran Pak Anto. Ketuk tanda tanya di bawah tiap bejana untuk melihat angkanya.";

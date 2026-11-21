@@ -248,8 +248,13 @@ const TAHAP = [
     switch (d.tipe) {
       case "satuan":
         return cara === "klik" ? `1 ${d.g.u}` : cara === "kanvas" ? d.g.b : "baku";
-      case "tutup":
-        return cara === "klik" ? `${L2} ${d.g.u}` : cara === "kanvas" ? L2 - d.p : L2;
+      case "tidakbaku":
+        return cara === "klik" ? `${2 * d.r * d.k} ${d.nama[0]}` : cara === "kanvas" ? d.r * d.k : "beda";
+      case "bangun": {
+        const hx = (m) => m.join("").split("").filter((c) => c === "X").length;
+        const ho = (m) => m.join("").split("").filter((c) => c === "o").length;
+        return cara === "klik" ? `${hx(d.b)} ${d.u}` : cara === "kanvas" ? ho(d.b) : hx(d.a) === hx(d.b) ? "sama" : "beda";
+      }
       case "baris":
         return cara === "klik" ? `${L2} ${d.g.u}` : cara === "kanvas" ? L2 : "kali";
       case "tangga":
@@ -275,20 +280,32 @@ const TAHAP = [
         cek(emojiSah(q.suara) && emojiSah(q.judul), `${nama} misi ${s.nomor}: emoji sah`);
         if (rupa === "lambang") cek(!SALAH.test(q.suara), `${nama} misi ${s.nomor} ${q.metode}: tahap Abstract tanpa menyebut gambar, petak, atau kisi`);
         // Jenis tugas sesuai metode.
-        const jenisMetode = { igil: "satuan", tutup: "tutup", baris: "baris", tangga: "tangga" };
+        const jenisMetode = { igil: s.cara === "suara" ? "satuan" : "tidakbaku", tutup: "bangun", baris: "baris", tangga: "tangga" };
         cek(d.tipe === jenisMetode[q.metode], `${nama} misi ${s.nomor}: metode ${q.metode} memakai tugas ${jenisMetode[q.metode]}`);
         // Data berbeda dari Story pada tugas yang bukan seed Cari kesalahan.
-        if (l.tipe !== "salah") cek(d.g ? !pasangStory(d.g) : d.m !== 2, `${nama} misi ${s.nomor} ${q.metode}: bukan data Story`);
+        if (l.tipe !== "salah") cek(d.g ? !pasangStory(d.g) : d.m !== undefined ? d.m !== 2 : d.tipe === "tidakbaku" ? !(d.r === 3 && d.k === 4) : true, `${nama} misi ${s.nomor} ${q.metode}: bukan data Story`);
         if (d.g) cek(Number.isInteger(d.g.b) && Number.isInteger(d.g.k) && d.g.b >= 2 && d.g.k >= 2 && d.g.b <= 5 && d.g.k <= 7 && (d.g.u === "cm²" || d.g.u === "m²"), `${nama} misi ${s.nomor} ${q.metode}: kisi sah dan muat`);
         if (d.g && d.tipe !== "satuan") cek(d.g.b * d.g.k !== d.g.b + d.g.k, `${nama} misi ${s.nomor} ${q.metode}: kali berbeda dari jumlah`);
-        if (d.tipe === "tutup") cek(d.p >= 1 && d.p < d.g.b * d.g.k, `${nama} misi ${s.nomor}: ubin terpasang kurang dari seluruh lantai`);
+        if (d.tipe === "tidakbaku") cek(d.r >= 1 && d.k >= 2 && d.r * d.k * 2 <= 20 && d.nama.length === 2 && d.nama[0] !== d.nama[1], `${nama} misi ${s.nomor}: satuan tidak baku, satu besar sama dengan dua kecil, muat`);
+        if (d.tipe === "bangun") {
+          const ms = [d.a, d.b];
+          cek(ms.every((m) => m.length >= 2 && m.every((r) => r.length === m[0].length && /^[Xo.]+$/.test(r))), `${nama} misi ${s.nomor}: bangun berbentuk persegi panjang teks dengan huruf X, o, dan titik`);
+          const hx = LC.hitungX;
+          if (s.cara === "kanvas") cek(LC.hitungO(d.b) >= 1 && LC.hitungO(d.b) <= 9 && hx(d.b) >= 3 && hx(d.b) + LC.hitungO(d.b) <= 14, `${nama} misi ${s.nomor}: bangun yang dibuat dengan luas tertentu, sebagian sudah ada`);
+          else {
+            cek(d.a.join("|") !== d.b.join("|") && LC.bidangBangun(d.a) !== 0 && ms.every((m) => !m.join("").includes("o")), `${nama} misi ${s.nomor}: dua bangun berbeda bentuk, tanpa persegi satuan yang belum digambar`);
+            if (s.cara === "klik") cek(hx(d.a) === hx(d.b) && LC.bidangBangun(d.b) !== hx(d.b), `${nama} misi ${s.nomor}: bangun berbeda bentuk luas sama, dan bidang pembatas bukan luas`);
+            if (s.cara === "suara") cek(hx(d.a) >= 6 && hx(d.b) >= 6 && hx(d.a) <= 12, `${nama} misi ${s.nomor}: luas kedua bangun terbaca`);
+          }
+        }
         if (d.tipe === "tangga") cek(d.m >= 2 && d.m <= 9 && (d.arah === "turun" || d.arah === "naik"), `${nama} misi ${s.nomor}: tangga satu angka`);
         // Jawaban dihitung dari data (dihitung ulang tanpa memakai fungsi kunci).
         const hitung = kunciHitung(d, s.cara);
         sama(kunci, typeof hitung === "number" ? { jenis: "angka", n: hitung } : { jenis: "nama", nama: hitung }, `${nama} ${d.tipe} cara ${s.cara}: jawaban benar dihitung dari data`);
-        if (s.cara === "klik") cek(typeof hitung === "string" && /^[\d.]+ (cm²|m²)$/.test(hitung) || d.tipe === "satuan" || d.tipe === "tangga", `${nama} misi ${s.nomor} ${q.metode}: jawaban klik selalu memuat satuan (${hitung})`);
+        if (s.cara === "klik") cek(typeof hitung === "string" && (/^[\d.]+ (cm²|m²)$/.test(hitung) || (d.tipe === "tidakbaku" && /^\d+ (uang kertas|lembar kecil)$/.test(hitung))) || d.tipe === "satuan" || d.tipe === "tangga", `${nama} misi ${s.nomor} ${q.metode}: jawaban klik selalu memuat satuan (${hitung})`);
         if (d.tipe === "satuan" && s.cara === "klik") cek(/^1 (cm²|m²)$/.test(hitung), `${nama}: luas satu ubin ${hitung}`);
-        if (d.tipe === "tutup" && s.cara === "suara") cek(kunci.jenis === "angka" && kunci.n <= 9 && kunci.n >= 4, `${nama}: banyak ubin suara satu angka (${kunci.n})`);
+        if (d.tipe === "bangun" && s.cara === "suara") cek(kunci.jenis === "nama" && (kunci.nama === "sama" || kunci.nama === "beda"), `${nama}: luas kedua bangun sama atau beda`);
+        if (d.tipe === "tidakbaku" && s.cara === "klik") cek(LC.pilihanKlik(l).includes(`${d.r * d.k} ${d.nama[0]}`) && LC.pilihanKlik(l).includes(`${2 * d.r * d.k} ${d.nama[1]}`), `${nama}: pilihan memuat jebakan satuan yang tertukar`);
         // Pilihan klik.
         if (s.cara === "klik") {
           const p = LC.pilihanKlik(l);
@@ -299,7 +316,7 @@ const TAHAP = [
           if (l.tipe === "salah") cek(p.includes(l.jawabTokoh), `${nama} misi ${s.nomor}: jawaban tokoh ada di pilihan`);
           cek(p.every((x) => emojiSah(x) && bersih(x)), `${nama} misi ${s.nomor} ${q.metode}: pilihan bersih`);
           // Satuan tertulis pada tiap pilihan kecuali pilihan satuan panjang yang sengaja salah.
-          cek(p.every((x) => /^[\d.]+ (cm²|m²|cm|m)$/.test(x)), `${nama} misi ${s.nomor} ${q.metode}: tiap pilihan memuat bilangan dan satuan (${p.join(" | ")})`);
+          cek(p.every((x) => /^[\d.]+ (cm²|m²|cm|m|uang kertas|origami|lembar kecil|lembar besar)$/.test(x)), `${nama} misi ${s.nomor} ${q.metode}: tiap pilihan memuat bilangan dan satuan (${p.join(" | ")})`);
           if (d.tipe === "baris") cek(p.includes(`${d.g.b + d.g.k} ${d.g.u}`) && p.some((x) => /^[\d.]+ (cm|m)$/.test(x)), `${nama} misi ${s.nomor}: pilihan luas memuat hasil menjumlahkan dan satuan panjang yang keliru`);
         }
         if (s.cara === "suara") {
@@ -373,8 +390,72 @@ const TAHAP = [
   // Satuan baku tertulis: cm² dan m² keduanya dipakai pada pilihan klik dan tugas.
   cek(TAHAP.every(([, soal]) => soal.flatMap((s) => s.langkah).some((q) => LC.dasarDari(q.langkah).g?.u === "m²") || soal.flatMap((s) => s.langkah).some((q) => LC.dasarDari(q.langkah).tipe === "tangga")), "tiap tahap memuat meter persegi");
   cek(TAHAP.slice(1).every(([, soal]) => soal.flatMap((s) => s.langkah).some((q) => LC.dasarDari(q.langkah).g?.u === "m²")), "Pictorial dan Abstract memuat lantai bersatuan meter persegi");
+  // Topik buku di tiap tahap: satuan tidak baku (klik, kanvas), satuan baku (suara), bangun berbeda bentuk luas sama (tiga cara), menduga luas (satu tugas).
+  for (const [nama, soal] of TAHAP) {
+    const semua = soal.flatMap((s) => s.langkah.map((q) => ({ cara: s.cara, d: LC.dasarDari(q.langkah) })));
+    cek(semua.filter((x) => x.d.tipe === "tidakbaku").length === 2 && semua.filter((x) => x.d.tipe === "tidakbaku").map((x) => x.cara).join() === "klik,kanvas", `${nama}: satuan tidak baku pada tugas klik dan kanvas`);
+    cek(semua.filter((x) => x.d.tipe === "satuan").length === 1 && semua.find((x) => x.d.tipe === "satuan").cara === "suara", `${nama}: satuan baku pada tugas suara`);
+    cek(semua.filter((x) => x.d.tipe === "bangun").map((x) => x.cara).join() === "klik,kanvas,suara", `${nama}: bangun berbeda bentuk dan luas sama pada tiga cara`);
+    cek(semua.filter((x) => x.d.tipe === "baris" && x.d.duga).length === 1, `${nama}: tepat satu tugas menduga luas lalu memeriksa`);
+    cek(semua.filter((x) => x.d.tipe === "tangga").length === 3 && semua.filter((x) => x.d.tipe === "baris").length === 3, `${nama}: tangga satuan dan baris kali kolom tiga tugas`);
+    cek(JSON.stringify(semua.map((x) => JSON.stringify(x.d))).length > 0 && new Set(semua.map((x) => x.cara + JSON.stringify(x.d))).size === 12, `${nama}: tanpa tugas kembar`);
+  }
+  const tbC = D.CONCRETE[0].langkah[0].langkah;
+  cek(tbC.tipe === "tidakbaku" && tbC.r * tbC.k === 4 && 2 * tbC.r * tbC.k === 8 && tbC.nama.join() === "uang kertas,origami", "Concrete: permukaan yang sama 8 uang kertas atau 4 kertas origami (seperti buku)");
+  cek(D.PICTORIAL.flatMap((s) => s.langkah).every((q) => LC.dasarDari(q.langkah).tipe !== "tidakbaku" || LC.dasarDari(q.langkah).nama.join() === "lembar kecil,lembar besar"), "Pictorial: satuan tidak baku berupa lembar polos tanpa benda");
+  cek(["XXX", "Xoo", "ooo"].join("").length === 9 && LC.hitungX(["XXX", "Xoo", "ooo"]) === 4 && LC.hitungO(["XXX", "Xoo", "ooo"]) === 5 && LC.hitungX(["XXX", "Xoo", "ooo"]) + LC.hitungO(["XXX", "Xoo", "ooo"]) === 9, "Concrete: bangun baru dengan luas sembilan, empat sudah ada");
+  sama(LC.perBaris(["XXXXX", "XXXX."]), [5, 4], "per baris bangun");
+  sama([LC.hitungX(["XXXX", "XX.."]), LC.bidangBangun(["XXXX", "XX.."]), LC.lebarBangun(["XXXX", "XX.."])], [6, 8, 4], "bangun: luas, bidang pembatas, lebar");
+  sama(LC.selBangun(["Xo", ".X"]).map((c) => [c.baris, c.kolom, c.ada]), [[0, 0, true], [0, 1, false], [1, 1, true]], "sel bangun: hanya X dan o digambar");
+  // Selaras buku: persegi kecil lebih banyak, satuan luas, cara cepat, acuan sehari-hari.
+  const psb = D.POIN_PENTING_SUARA.join(" ");
+  cek(/makin kecil persegi satuannya, makin banyak jumlahnya/i.test(psb) && /satuan luas, yaitu persegi satuan, yang menutupi permukaan tanpa celah/.test(psb) && /cara cepat menghitung persegi satuan yang berderet rapi/.test(psb) && /kuku jari kira-kira satu sentimeter persegi dan pintu lemari kira-kira satu meter persegi/.test(psb), "poin penting: persegi kecil lebih banyak, satuan luas, cara cepat, dan acuan sehari-hari");
+  const dugaB = D.CONCRETE.flatMap((s) => s.langkah).find((q) => q.langkah.tipe === "baris" && q.langkah.duga);
+  cek(dugaB.langkah.benda === "kuku jari" && /Satu ubin kira-kira seluas kuku jari/.test(dugaB.suara) && tanpaDigit(dugaB.suara) && D.PICTORIAL.flatMap((s) => s.langkah).filter((q) => q.langkah.benda).length === 0, "Concrete: tugas menduga memakai acuan benda sehari-hari (kuku jari)");
+  // Tanpa tugas cermin dalam satu tahap: tidak baku (klik dan kanvas) dan tangga (klik, kanvas, suara, seed) memakai angka berbeda.
+  for (const [nama, soal] of TAHAP) {
+    const semua = soal.flatMap((s) => s.langkah.map((q) => ({ cara: s.cara, d: LC.dasarDari(q.langkah) })));
+    const tbs = semua.filter((x) => x.d.tipe === "tidakbaku").map((x) => x.d.r * x.d.k);
+    const tgs = semua.filter((x) => x.d.tipe === "tangga").map((x) => x.d.m);
+    cek(new Set(tbs).size === tbs.length, `${nama}: dua tugas satuan tidak baku berangka beda (${tbs.join(",")})`);
+    cek(new Set(tgs).size === tgs.length, `${nama}: tiga tugas tangga satuan berangka beda (${tgs.join(",")})`);
+  }
+  {
+    const turun = [D.CONCRETE, D.PICTORIAL, D.ABSTRACT].flatMap((tahap) => tahap.flatMap((m) => m.langkah.map((q) => LC.dasarDari(q.langkah)))).filter((x) => x.tipe === "tangga" && x.arah === "turun").map((x) => x.m);
+    cek(new Set(turun).size === turun.length && turun.length === 3, `tangga turun: tiga tugas lintas tahap berangka beda (${turun.join(",")})`);
+  }
+  // Dua bangun yang dibandingkan memakai satu sisi persegi satuan yang sama.
+  for (const [nama, soal] of TAHAP)
+    for (const s of soal)
+      for (const q of s.langkah) {
+        const d = LC.dasarDari(q.langkah);
+        if (d.tipe === "bangun" && s.cara !== "kanvas") {
+          const sb = LC.sisiBersama(d.a, d.b, 130, 90, 24);
+          cek(sb <= LC.sisiBangun(d.a, 130, 90, 24) && sb <= LC.sisiBangun(d.b, 130, 90, 24) && sb >= 14 && Math.max(d.a.length, d.b.length) * sb <= 90 && Math.max(LC.lebarBangun(d.a), LC.lebarBangun(d.b)) * sb <= 130, `${nama} misi ${s.nomor}: kedua bangun memakai satu sisi persegi satuan yang sama (${sb}) dan muat`);
+        }
+      }
+  // Pilihan cadangan sama, beda, mirip; pertanyaan cara menghitung (bukan "baris apa kolom").
+  {
+    const sd = D.CONCRETE[2].langkah.find((q) => LC.dasarDari(q.langkah).tipe === "bangun");
+    sama(LC.pilihanSuara(sd.langkah, "suara").slice().sort(), ["beda", "mirip", "sama"], "bangun suara: pengecoh wajar (sama, beda, mirip)");
+    const bs = D.CONCRETE[2].langkah.find((q) => LC.dasarDari(q.langkah).tipe === "baris");
+    cek(/dihitung dengan cara apa/.test(bs.suara) && LC.kalimatTanya(bs.langkah, "suara") === "Luas dihitung dengan cara apa?" && !/baris apa kolom/.test(bs.suara), "baris suara: ditanya cara menghitung luas");
+  }
+  // Teks gambar terbaca: font paling kecil 14 unit (sekitar 10,5 px pada lebar render 224 px; 14 x 224 / 300 = 10,5).
+  {
+    const gm = readFileSync(new URL("GambarUbin.tsx", folder), "utf8") + readFileSync(new URL("SimulasiLantaiUbin.tsx", folder), "utf8");
+    const angkaFont = [...gm.matchAll(/fontSize=\{(\d+(?:\.\d+)?)\}/g)].map((m) => Number(m[1])).concat([...gm.matchAll(/ukuran = (\d+)/g)].map((m) => Number(m[1])), [...gm.matchAll(/ukuran=\{(\d+)\}/g)].map((m) => Number(m[1])));
+    cek(angkaFont.length >= 15 && Math.min(...angkaFont) >= 14 && (Math.min(...angkaFont) * 224) / 300 >= 10, `teks SVG paling kecil 14 unit (efektif ${((Math.min(...angkaFont) * 224) / 300).toFixed(1)} px)`);
+    cek(!/fontSize=\{Math\.max\(8/.test(gm) && /s >= 25/.test(gm), "emoji tetes hanya pada ubin besar, ukuran paling kecil 14");
+  }
+  // Cari kesalahan: tombol benar tidak pernah di tempat pertama untuk jawaban yang tepat, dan alasan benar tidak di tombol pertama.
+  {
+    const lg = readFileSync(new URL("LangkahUbin.tsx", folder), "utf8");
+    cek(/% 2 \+ 1/.test(lg) && /l\.betul \? <Tombol teks=\{"\\u\{274C\} salah"\}/.test(lg), "Cari kesalahan: alasan benar di tombol kedua atau ketiga, tombol benar atau salah yang tepat di tempat kedua");
+  }
   // Poin penting dan jembatan.
-  cek(D.POIN_PENTING.length === 6 && D.POIN_PENTING_SUARA.length === 6 && D.POIN_PENTING_SUARA.every(tanpaDigit) && D.POIN_PENTING.every(bersih) && D.POIN_PENTING.every((p) => !BUKAN_A.test(p)), "poin penting: enam butir, suara tanpa digit, tanpa istilah Sub-Bab B");
+  cek(D.POIN_PENTING.length === 9 && D.POIN_PENTING_SUARA.length === 9 && D.POIN_PENTING_SUARA.every(tanpaDigit) && D.POIN_PENTING.every(bersih) && D.POIN_PENTING.every((p) => !BUKAN_A.test(p)), "poin penting: sembilan butir, suara tanpa digit, tanpa istilah Sub-Bab B");
+  cek(/uang kertas/.test(D.POIN_PENTING_SUARA.join(" ")) && /berbeda bentuk/.test(D.POIN_PENTING_SUARA.join(" ")) && /menduga luas/i.test(D.POIN_PENTING_SUARA.join(" ")), "poin penting: satuan tidak baku, bangun berbeda bentuk luas sama, dan menduga luas");
   cek(D.POIN_PENTING.every((p) => /^[A-Z]/.test(p) && !/ [.,:;!?]/.test(p)), "poin penting: huruf kapital dan tanpa spasi sebelum tanda baca");
   const ps = D.POIN_PENTING_SUARA.join(" ");
   cek(ps.includes("tiga kali empat sama dengan dua belas sentimeter persegi") && ps.includes("satu meter persegi sama dengan sepuluh ribu sentimeter persegi") && ps.includes("sentimeter persegi dan meter persegi") && /satuan baku/i.test(ps) && /tulis satuan/i.test(ps), "poin penting: perkalian, hubungan satuan, satuan baku, dan satuan ditulis, diucapkan dengan kata");
@@ -413,7 +494,7 @@ const TAHAP = [
     cek(impor.every((i) => !/SubBabK4B4|kit-k4b4|infografis-k4b4|skenario-k4b4|mesin-data-k4b4|lab-luas|lab-volume|SimulasiLabLuas|SimulasiLabVolume|peta-kartu|ember-k4b4b/.test(i)), `${f}: tidak mengimpor berkas lama Bab 4, komponen kartu lama, atau folder Sub-Bab B`);
   }
   const gambar = readFileSync(new URL("GambarUbin.tsx", folder), "utf8");
-  cek(/sisiUbin/.test(gambar) && /selKisi/.test(gambar) && /pojokKisi/.test(gambar), "gambar memakai geometri murni yang diuji (ubin sungguh sebanyak baris kali kolom)");
+  cek(/sisiUbin/.test(gambar) && /selKisi/.test(gambar) && /pojokKisi/.test(gambar) && /selBangun/.test(gambar) && /KisiLembar/.test(gambar), "gambar memakai geometri murni yang diuji (ubin sungguh sebanyak baris kali kolom)");
   cek(!/flex-wrap/.test(gambar) && !/<img/.test(gambar), "gambar tanpa flex-wrap");
   cek(!/capitalize/.test(gambar) && !berkas.some((f) => /capitalize/.test(readFileSync(new URL(f, folder), "utf8"))), "satuan tanpa CSS capitalize");
   const lang = readFileSync(new URL("LangkahUbin.tsx", folder), "utf8");
@@ -423,6 +504,12 @@ const TAHAP = [
   const mm = readFileSync(new URL("PetaUbin.tsx", folder), "utf8");
   cek(/export default function PetaUbin/.test(mm) && /export { PetaUbin }/.test(mm) && /speakGuru, onLanjut, teksLanjut/.test(mm) && !/PetaLabel|PetaKartu/.test(mm) && /LANGKAH_UBIN/.test(mm) && /gridTemplateColumns/.test(mm) && !/flex-wrap/.test(mm), "Mind-map: denah lantai sendiri (bukan PetaLabel), ubin sungguhan, ekspor default dan bernama");
   cek(DK.LANGKAH_UBIN.length === 4 && /const B = 3;/.test(mm) && /const K = 4;/.test(mm) && /B \* K/.test(mm), "Mind-map: denah tiga baris empat kolom seperti lantai maket di Story, luas dua belas");
+  {
+    const vb = Number(/viewBox="0 0 (\d+) \d+"/.exec(mm)?.[1]);
+    const lebarRender = Number(/w-\[(\d+)px\]/.exec(mm.slice(mm.indexOf("<svg")))?.[1]);
+    const fonts = [...mm.matchAll(/fontSize=\{(\d+(?:\.\d+)?)\}/g)].map((m) => Number(m[1]));
+    cek(vb > 0 && lebarRender > 0 && fonts.length >= 2 && (Math.min(...fonts) * lebarRender) / vb >= 10.5, `Mind-map: teks tangga mini efektif ${((Math.min(...fonts) * lebarRender) / vb).toFixed(1)} px (paling kecil 10,5)`);
+  }
   const dl = readFileSync(new URL("InfoUbin.tsx", folder), "utf8");
   cek(/export default function InfoUbin/.test(dl) && /export { InfoUbin }/.test(dl) && /speakGuru, onLanjut, teksLanjut/.test(dl) && !/InfoKartu|InfografisKartu/.test(dl) && !/flex-wrap/.test(dl) && /gridTemplateColumns/.test(dl) && /DENAH_UBIN/.test(dl) && /TANGGA_INFO/.test(dl), "Infografis: papan jalan dan tangga satuan sendiri (bukan InfoKartu), kisi tetap");
   const th = readFileSync(new URL("TahapUbin.tsx", folder), "utf8");

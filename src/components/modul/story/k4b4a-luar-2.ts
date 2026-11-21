@@ -11,7 +11,7 @@ import { petakKapur } from "./k4b4a-luar-1";
 /* ------------------------------ Rows and Columns: konsep ------------------------------ */
 const SUARA_T1 = "Cara kedua, Rows and Columns, atau Baris dan Kolom.";
 const SUARA_T2 = "Kita menghitung banyak petak dalam satu baris, lalu banyak baris, dan keduanya dikalikan.";
-const SUARA_T3 = "Perkalian itu mempersingkat penghitungan petak yang berderet rapi.";
+const SUARA_T3 = "Perkalian itu cara cepat menghitung persegi satuan yang berderet rapi.";
 const SUARA_T4 = "Hasilnya selalu sama dengan menghitung petak satu per satu.";
 
 export const ADEGAN_LUAR_BARIS: AdeganStory = {
@@ -37,7 +37,7 @@ export const ADEGAN_LUAR_BARIS: AdeganStory = {
     k(
       SUARA_T3,
       tambah("Perkalian", teks("pk", 240, 68, "3 × 4 = 12", 10, K.kapur)),
-      tambah("mempersingkat", emo("rk", 270, 118, E.roket, 18)),
+      tambah("cepat", emo("rk", 270, 118, E.roket, 18)),
       tambah("rapi.", emo("ok", 270, 148, E.benar, 18)),
     ),
     k(
@@ -52,7 +52,7 @@ export const ADEGAN_LUAR_BARIS: AdeganStory = {
 
 /* ------------------------------ Rows and Columns: terapan ------------------------------ */
 const SUARA_U1 = "Genta melihat denah dengan empat baris dan lima kolom petak.";
-const SUARA_U2 = "Ia mengalikan empat dengan lima dan mendapat dua puluh sentimeter persegi.";
+const SUARA_U2 = "Ia menduga dulu, lalu mengalikan empat dengan lima dan mendapat dua puluh sentimeter persegi.";
 const SUARA_U3 = "Cocok untuk bidang persegi panjang, karena barisnya sama panjang.";
 const SUARA_U4 = "Kurang cocok untuk bentuk yang bengkok, karena baris dan kolomnya tidak rata, jadi harus dipotong dulu.";
 
@@ -71,6 +71,7 @@ export const ADEGAN_LUAR_BARIS_TERAPAN: AdeganStory = {
     ),
     k(
       SUARA_U2,
+      tambah("menduga", teks("dg", 62, 128, "duga dulu", 9, K.kapurBiru)),
       tambah("mengalikan", teks("ft", 150, 128, "4 × 5 = 20", 11, K.kapurMerah)),
       tambah("dua", teks("ls", 150, 144, "20 cm²", 11, K.kapur)),
       sorotkan("persegi.", "ls"),

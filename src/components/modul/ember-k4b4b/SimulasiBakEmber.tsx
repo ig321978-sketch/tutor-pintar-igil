@@ -74,7 +74,7 @@ export default function SimulasiBakEmber({ speakGuru, onKeadaan }: { speakGuru: 
   };
   const tombol = "min-h-[44px] rounded-full border-2 border-[#1C01A5] bg-white px-3 text-sm font-black text-[#1C01A5] disabled:opacity-40";
   const saklar = (nyala: boolean) => `min-h-[44px] rounded-full border-2 px-3 text-sm font-black ${nyala ? "border-[#0E7490] bg-[#0E7490] text-white" : "border-[#0E7490] bg-white text-[#0E7490]"}`;
-  const pilihan = (nyala: boolean) => `min-h-[44px] w-full rounded-xl border-4 px-1 py-1 text-center text-base font-black leading-tight text-[#1C01A5] ${nyala ? "border-[#DC2626] bg-[#FEF3C7]" : "border-[#7DD3FC] bg-white"}`;
+  const pilihan = (nyala: boolean) => `min-h-[44px] w-full whitespace-nowrap rounded-xl border-4 px-0.5 py-1 text-center text-[15px] font-black leading-tight text-[#1C01A5] ${nyala ? "border-[#DC2626] bg-[#FEF3C7]" : "border-[#7DD3FC] bg-white"}`;
 
   const ganti = (m: ModeEmber) => {
     ubah(pilihModeEmber(k, m), m === "tuang" ? "Pilih ukuran gelas, lalu tuang sampai garis sasaran." : m === "susun" ? "Tumpuk lapisan kubus sampai volume sasaran." : "Pilih turun atau naik tangga, lalu pilih hasilnya.");
@@ -194,11 +194,11 @@ export default function SimulasiBakEmber({ speakGuru, onKeadaan }: { speakGuru: 
 
         {k.mode === "tangga" ? (
           <div className="space-y-2">
-            <p className="text-center text-xs font-black text-[#155E75]">Satu liter sama dengan seribu mililiter. Ubah satuannya.</p>
+            <p className="text-center text-xs font-black text-[#155E75]">Satu liter sama dengan seribu mililiter, dan satu meter kubik sama dengan seribu liter. Ubah satuannya.</p>
             <div className="mx-auto grid max-w-[420px] grid-cols-2 gap-1.5" role="group" aria-label="Takaran">
-              <div className="rounded-xl border-2 border-[#0E7490] bg-white px-2 py-1.5 text-center" data-diketahui={tg.arah === "turun" ? `${tg.n} l` : `${tg.n * 1000} ml`}>
+              <div className="rounded-xl border-2 border-[#0E7490] bg-white px-2 py-1.5 text-center" data-diketahui={tg.arah === "turun" ? `${tg.n} ${tg.jenis === "meter" ? "m³" : "l"}` : `${tg.n * 1000} ${tg.jenis === "meter" ? "l" : "ml"}`}>
                 <p className="text-[10px] font-black text-[#155E75]">diketahui</p>
-                <p className="text-xl font-black text-[#1C01A5]">{tg.arah === "turun" ? `${tg.n} l` : `${fmt(tg.n * 1000)} ml`}</p>
+                <p className="text-xl font-black text-[#1C01A5]">{tg.arah === "turun" ? `${tg.n} ${tg.jenis === "meter" ? "m³" : "l"}` : `${fmt(tg.n * 1000)} ${tg.jenis === "meter" ? "l" : "ml"}`}</p>
               </div>
               <div className="rounded-xl border-2 border-dashed border-[#DC2626] bg-[#FEF3C7] px-2 py-1.5 text-center">
                 <p className="text-[10px] font-black text-[#155E75]">ubah ke</p>

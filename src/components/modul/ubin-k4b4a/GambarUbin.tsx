@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { barisKartu, dasarDari, pojokKisi, selKisi, sentiDari, sisiUbin, teksRibu, type Cara, type Kisi, type Langkah, type LangkahDasar, type Rupa } from "./logika-cpa";
+import { ACUAN, barisKartu, besarTB, dasarDari, hitungO, hitungX, kecilTB, lebarBangun, pojokKisi, selBangun, sisiBangun, sisiBersama, selKisi, sentiDari, sisiUbin, teksRibu, type Cara, type Kisi, type Langkah, type LangkahDasar, type Rupa } from "./logika-cpa";
 
 /**
  * Gambar tahap Concrete, Pictorial, dan Abstract Kelas 4 Bab 4 Sub-Bab A (pengukuran luas: ubin dalam kisi, baris kali kolom, tangga satuan):
@@ -23,7 +23,7 @@ export function Gambar({ label, judul, children, rupa = "benda", tinggi = 200 }:
   return (
     <svg viewBox={`0 0 300 ${tinggi}`} className={SVG} aria-label={label} role="img">
       <rect x={0} y={0} width={300} height={tinggi} rx={12} fill={warnaUbin(rupa).latar} />
-      <text x={150} y={14} textAnchor="middle" fontSize={10} fontWeight={900} fill={warnaUbin(rupa).angka}>
+      <text x={150} y={15} textAnchor="middle" fontSize={14} fontWeight={900} fill={warnaUbin(rupa).angka}>
         {judul}
       </text>
       {children}
@@ -35,7 +35,7 @@ export function Gambar({ label, judul, children, rupa = "benda", tinggi = 200 }:
  * Kisi `b` baris dan `k` kolom ubin sama besar, rapat tanpa celah, rata di tengah daerah [x0, x0 + lebar]. `terpasang`: banyak ubin yang sudah dipasang (baris demi baris dari kiri-atas);
  * sisanya digambar putus-putus. Concrete = ubin berwarna dengan tetes air, Pictorial = petak polos.
  */
-export function KisiUbin({ b, k, terpasang, rupa, y0 = 28, x0 = 20, lebar = 260, tinggi = 112, maks = 34 }: { b: number; k: number; terpasang?: number; rupa: Rupa; y0?: number; x0?: number; lebar?: number; tinggi?: number; maks?: number }) {
+export function KisiUbin({ b, k, terpasang, rupa, y0 = 28, x0 = 20, lebar = 260, tinggi = 112, maks = 34, acuan }: { b: number; k: number; terpasang?: number; rupa: Rupa; y0?: number; x0?: number; lebar?: number; tinggi?: number; maks?: number; acuan?: { b: number; k: number } }) {
   const w = warnaUbin(rupa);
   const s = sisiUbin(b, k, lebar, tinggi, maks);
   const pos = pojokKisi(k, s, x0, lebar, y0);
@@ -47,9 +47,9 @@ export function KisiUbin({ b, k, terpasang, rupa, y0 = 28, x0 = 20, lebar = 260,
         const y = pos.y + c.baris * s;
         return (
           <g key={c.i} data-ubin="1">
-            <rect x={x} y={y} width={s} height={s} fill={c.terpasang ? w.ubin[(c.baris + c.kolom) % 2] : w.kosong} stroke={w.garis} strokeWidth={c.terpasang ? 1.2 : 1} strokeDasharray={c.terpasang ? undefined : "3 2"} />
-            {rupa === "benda" && c.terpasang ? (
-              <text x={x + s / 2} y={y + s / 2 + s * 0.2} textAnchor="middle" fontSize={Math.max(8, s * 0.55)} aria-hidden="true">
+            <rect x={x} y={y} width={s} height={s} fill={acuan && c.baris < acuan.b && c.kolom < acuan.k ? "#FDE68A" : c.terpasang ? w.ubin[(c.baris + c.kolom) % 2] : w.kosong} stroke={w.garis} strokeWidth={c.terpasang ? 1.2 : 1} strokeDasharray={c.terpasang ? undefined : "3 2"} />
+            {rupa === "benda" && s >= 25 && c.terpasang && !(acuan && c.baris < acuan.b && c.kolom < acuan.k) ? (
+              <text x={x + s / 2} y={y + s / 2 + s * 0.2} textAnchor="middle" fontSize={Math.max(14, s * 0.55)} aria-hidden="true">
                 {EMOJI_UBIN}
               </text>
             ) : null}
@@ -62,30 +62,61 @@ export function KisiUbin({ b, k, terpasang, rupa, y0 = 28, x0 = 20, lebar = 260,
 /** Tinggi kisi yang digambar (dipakai untuk menaruh keterangan di bawahnya). */
 export const tinggiKisi = (b: number, k: number, lebar = 260, tinggi = 112, maks = 34): number => b * sisiUbin(b, k, lebar, tinggi, maks);
 
-const Ket = ({ y, teks, rupa, ukuran = 10 }: { y: number; teks: string; rupa: Rupa; ukuran?: number }) => (
+const Ket = ({ y, teks, rupa, ukuran = 14 }: { y: number; teks: string; rupa: Rupa; ukuran?: number }) => (
   <text x={150} y={y} textAnchor="middle" fontSize={ukuran} fontWeight={900} fill={warnaUbin(rupa).garis}>
     {teks}
   </text>
 );
 
 /** Kisi berlabel baris dan kolom: "k kolom" di atas dan "b baris" di kiri (Rows and Columns). */
-export function KisiBerlabel({ g, rupa }: { g: Kisi; rupa: Rupa }) {
+export function KisiBerlabel({ g, rupa, acuan }: { g: Kisi; rupa: Rupa; acuan?: { b: number; k: number } }) {
   const w = warnaUbin(rupa);
   const lebar = 200;
   const s = sisiUbin(g.b, g.k, lebar, 100, 34);
   const pos = pojokKisi(g.k, s, 50, lebar, 40);
   return (
     <g>
-      <text x={pos.x + (g.k * s) / 2} y={34} textAnchor="middle" fontSize={11} fontWeight={900} fill={w.angka} data-label="kolom">
+      <text x={pos.x + (g.k * s) / 2} y={34} textAnchor="middle" fontSize={14} fontWeight={900} fill={w.angka} data-label="kolom">
         {g.k} kolom
       </text>
-      <text x={pos.x - 6} y={pos.y + (g.b * s) / 2 + 4} textAnchor="end" fontSize={11} fontWeight={900} fill={w.angka} data-label="baris">
+      <text x={pos.x - 6} y={pos.y + (g.b * s) / 2 + 4} textAnchor="end" fontSize={14} fontWeight={900} fill={w.angka} data-label="baris">
         {g.b} baris
       </text>
-      <KisiUbin b={g.b} k={g.k} rupa={rupa} y0={40} x0={50} lebar={lebar} tinggi={100} />
+      <KisiUbin b={g.b} k={g.k} rupa={rupa} y0={40} x0={50} lebar={lebar} tinggi={100} acuan={acuan} />
     </g>
   );
 }
+
+/**
+ * Lembar satuan tidak baku: `baris` x `kolom` sel berukuran cw x ch, rata di tengah daerah [x0, x0 + lebar]. Satuan besar bersel persegi, satuan kecil bersel separuh tinggi (dua kali lebih banyak),
+ * jadi kedua susunan menutupi permukaan yang sama luasnya.
+ */
+export function KisiLembar({ baris, kolom, cw, ch, x0, lebar, y0, warna, garis }: { baris: number; kolom: number; cw: number; ch: number; x0: number; lebar: number; y0: number; warna: string; garis: string }) {
+  const x = x0 + (lebar - kolom * cw) / 2;
+  return (
+    <g data-lembar="1" data-baris={baris} data-kolom={kolom} data-lebar-sel={cw} data-tinggi-sel={ch}>
+      {Array.from({ length: baris * kolom }, (_, i) => (
+        <rect key={i} x={x + (i % kolom) * cw} y={y0 + Math.floor(i / kolom) * ch} width={cw} height={ch} fill={warna} stroke={garis} strokeWidth={1} />
+      ))}
+    </g>
+  );
+}
+
+/** Bangun dari persegi satuan: "X" digambar penuh, "o" putus-putus (belum digambar), "." kosong. Sungguh sebanyak huruf pada bangun. */
+export function BangunUbin({ mask, x0, lebar, y0, tinggi, maks, rupa, sisi }: { mask: string[]; x0: number; lebar: number; y0: number; tinggi: number; maks: number; rupa: Rupa; sisi?: number }) {
+  const w = warnaUbin(rupa);
+  const s = sisi ?? sisiBangun(mask, lebar, tinggi, maks);
+  const x = x0 + (lebar - lebarBangun(mask) * s) / 2;
+  return (
+    <g data-bangun="1" data-luas={hitungX(mask)} data-belum={hitungO(mask)} data-sisi={s}>
+      {selBangun(mask).map((c) => (
+        <rect key={`${c.baris}-${c.kolom}`} x={x + c.kolom * s} y={y0 + c.baris * s} width={s} height={s} fill={c.ada ? (rupa === "benda" ? "#BAE6FD" : "#FFFFFF") : "none"} stroke={w.garis} strokeWidth={c.ada ? 1.3 : 1.1} strokeDasharray={c.ada ? undefined : "3 2"} data-sel={c.ada ? "ada" : "belum"} />
+      ))}
+    </g>
+  );
+}
+/** Tinggi bangun yang digambar. */
+export const tinggiBangun = (mask: string[], lebar: number, tinggi: number, maks: number): number => mask.length * sisiBangun(mask, lebar, tinggi, maks);
 
 /* ------------------------------ Tangga satuan ------------------------------ */
 /**
@@ -99,24 +130,24 @@ export function TanggaSatuan({ m, arah, rupa, isi = "?" }: { m: number; arah: "t
   return (
     <g data-tangga={arah}>
       <rect x={30} y={96} width={110} height={40} rx={4} fill={w.ubin[0]} stroke={w.garis} strokeWidth={1.6} />
-      <text x={85} y={121} textAnchor="middle" fontSize={arah === "naik" ? 11 : 12} fontWeight={900} fill={arah === "naik" ? w.angka : "#DC2626"} data-sel="kecil">
+      <text x={85} y={122} textAnchor="middle" fontSize={14} fontWeight={900} fill={arah === "naik" ? w.angka : "#DC2626"} data-sel="kecil">
         {kecilIsi}
       </text>
-      <text x={85} y={150} textAnchor="middle" fontSize={9} fontWeight={900} fill={w.garis}>
-        anak tangga kecil: cm²
+      <text x={85} y={150} textAnchor="middle" fontSize={14} fontWeight={900} fill={w.garis}>
+        kecil: cm²
       </text>
       <rect x={140} y={56} width={110} height={80} rx={4} fill={w.ubin[1]} stroke={w.garis} strokeWidth={1.6} />
-      <text x={195} y={100} textAnchor="middle" fontSize={13} fontWeight={900} fill={arah === "turun" ? w.angka : "#DC2626"} data-sel="besar">
+      <text x={195} y={101} textAnchor="middle" fontSize={15} fontWeight={900} fill={arah === "turun" ? w.angka : "#DC2626"} data-sel="besar">
         {besarIsi}
       </text>
-      <text x={195} y={150} textAnchor="middle" fontSize={9} fontWeight={900} fill={w.garis}>
-        anak tangga besar: m²
+      <text x={195} y={150} textAnchor="middle" fontSize={14} fontWeight={900} fill={w.garis}>
+        besar: m²
       </text>
       <line x1={arah === "turun" ? 150 : 130} y1={arah === "turun" ? 40 : 54} x2={arah === "turun" ? 130 : 150} y2={arah === "turun" ? 54 : 40} stroke={arah === "turun" ? "#DC2626" : "#15803D"} strokeWidth={2.4} />
-      <text x={150} y={32} textAnchor="middle" fontSize={11} fontWeight={900} fill={arah === "turun" ? "#DC2626" : "#15803D"}>
+      <text x={150} y={32} textAnchor="middle" fontSize={14} fontWeight={900} fill={arah === "turun" ? "#DC2626" : "#15803D"}>
         {arah === "turun" ? "turun tangga" : "naik tangga"}
       </text>
-      <text x={150} y={176} textAnchor="middle" fontSize={11} fontWeight={900} fill={w.angka}>
+      <text x={150} y={176} textAnchor="middle" fontSize={14} fontWeight={900} fill={w.angka}>
         1 m² = 10.000 cm²
       </text>
     </g>
@@ -144,7 +175,8 @@ export const PapanInfo = ({ children }: { children: React.ReactNode }) => (
 
 const JUDUL_KARTU: Record<LangkahDasar["tipe"], string> = {
   satuan: "satuan dan susunan lantai",
-  tutup: "menutup lantai dengan ubin",
+  tidakbaku: "satuan tidak baku",
+  bangun: "bangun dari persegi satuan",
   baris: "baris kali kolom",
   tangga: "tangga satuan",
 };
@@ -171,13 +203,13 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
           <Gambar rupa={rupa} label="Lantai yang sama ditutup lembar besar dan lembar kecil" judul={benda ? "lantai maket di tepi kolam" : "lantai maket"}>
             <KisiUbin b={d.g.b} k={d.g.k} rupa={rupa} x0={xb} lebar={120} tinggi={90} maks={sb} y0={44} />
             <KisiUbin b={d.g.b * 2} k={d.g.k * 2} rupa={rupa} x0={xk} lebar={120} tinggi={90} maks={sk} y0={44} />
-            <text x={xb + 60} y={44 + d.g.b * sb + 18} textAnchor="middle" fontSize={10} fontWeight={900} fill={warnaUbin(rupa).angka}>
+            <text x={xb + 60} y={44 + d.g.b * sb + 18} textAnchor="middle" fontSize={14} fontWeight={900} fill={warnaUbin(rupa).angka}>
               {d.g.b * d.g.k} lembar besar
             </text>
-            <text x={xk + 60} y={44 + d.g.b * sb + 18} textAnchor="middle" fontSize={10} fontWeight={900} fill={warnaUbin(rupa).angka}>
+            <text x={xk + 60} y={44 + d.g.b * sb + 18} textAnchor="middle" fontSize={14} fontWeight={900} fill={warnaUbin(rupa).angka}>
               {d.g.b * d.g.k * 4} lembar kecil
             </text>
-            <Ket y={176} teks="ukuran lembar beda, hasil beda" rupa={rupa} />
+            <Ket y={180} teks="ukuran lembar beda, hasil beda" rupa={rupa} />
           </Gambar>
         );
       }
@@ -186,17 +218,64 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
         <Gambar rupa={rupa} label={`Lantai ${d.g.b} baris ${d.g.k} kolom ubin`} judul={benda ? "lantai ubin tepi kolam" : "lantai berpetak"}>
           <KisiUbin b={d.g.b} k={d.g.k} rupa={rupa} />
           <Ket y={28 + tinggiG + 20} teks={cara === "klik" ? `sisi satu ubin: 1 ${d.g.u === "cm²" ? "cm" : "m"}` : `tiap baris berisi ${d.g.k} ubin`} rupa={rupa} />
-          <Ket y={28 + tinggiG + 36} teks={cara === "klik" ? "luas satu ubin: ?" : "banyak baris: ?"} rupa={rupa} ukuran={11} />
+          <Ket y={28 + tinggiG + 40} teks={cara === "klik" ? "luas satu ubin: ?" : "banyak baris: ?"} rupa={rupa} />
         </Gambar>
       );
     }
-    case "tutup": {
-      const tinggiG = tinggiKisi(d.g.b, d.g.k);
+    case "tidakbaku": {
+      const cw = Math.min(30, Math.floor(130 / d.k));
+      const warnaK = benda ? "#BBF7D0" : "#FFFFFF";
+      const garisK = benda ? "#15803D" : "#334155";
+      const warnaB = benda ? "#FBCFE8" : "#F1F5F9";
+      const garisB = benda ? "#BE185D" : "#334155";
+      const tinggiG = d.r * cw;
+      const yl = 52 + tinggiG + 18;
+      const labelK = cara === "kanvas" ? `${kecilTB(d)} ${d.nama[0]}` : "? " + d.nama[0];
+      const labelB = cara === "klik" ? `${besarTB(d)} ${d.nama[1]}` : "? " + d.nama[1];
       return (
-        <Gambar rupa={rupa} label={`Lantai ${d.g.b} baris ${d.g.k} kolom, ${d.p} ubin sudah terpasang`} judul={benda ? "lantai tepi kolam ditutup ubin" : "denah lantai ditutup ubin"}>
-          <KisiUbin b={d.g.b} k={d.g.k} terpasang={d.p} rupa={rupa} />
-          <Ket y={28 + tinggiG + 20} teks={`sudah terpasang ${d.p} ubin`} rupa={rupa} />
-          <Ket y={28 + tinggiG + 36} teks="ubin putus-putus belum dipasang" rupa={rupa} ukuran={9} />
+        <Gambar rupa={rupa} label={`Permukaan yang sama ditutup ${d.nama[0]} dan ${d.nama[1]}`} judul={benda ? "permukaan meja ditutup lembar" : "permukaan ditutup lembar"}>
+          <text x={79} y={44} textAnchor="middle" fontSize={14} fontWeight={900} fill={warnaUbin(rupa).angka}>
+            {d.nama[0]}
+          </text>
+          <text x={221} y={44} textAnchor="middle" fontSize={14} fontWeight={900} fill={warnaUbin(rupa).angka}>
+            {d.nama[1]}
+          </text>
+          <KisiLembar baris={2 * d.r} kolom={d.k} cw={cw} ch={cw / 2} x0={14} lebar={130} y0={52} warna={warnaK} garis={garisK} />
+          <KisiLembar baris={d.r} kolom={d.k} cw={cw} ch={cw} x0={156} lebar={130} y0={52} warna={warnaB} garis={garisB} />
+          <text x={79} y={yl} textAnchor="middle" fontSize={14} fontWeight={900} fill={cara === "kanvas" ? warnaUbin(rupa).angka : "#DC2626"} data-label="kecil">
+            {labelK}
+          </text>
+          <text x={221} y={yl} textAnchor="middle" fontSize={14} fontWeight={900} fill={cara === "klik" ? warnaUbin(rupa).angka : "#DC2626"} data-label="besar">
+            {labelB}
+          </text>
+          <Ket y={yl + 22} teks={`${d.nama[1]} = 2 ${d.nama[0]}`} rupa={rupa} />
+        </Gambar>
+      );
+    }
+    case "bangun": {
+      if (cara === "kanvas") {
+        const tg = tinggiBangun(d.b, 260, 90, 26);
+        return (
+          <Gambar rupa={rupa} label={`Bangun dengan luas ${hitungX(d.b) + hitungO(d.b)} ${d.u}, ${hitungO(d.b)} persegi satuan belum digambar`} judul={benda ? "bangun baru di tepi kolam" : "bangun baru"}>
+            <BangunUbin mask={d.b} x0={20} lebar={260} y0={36} tinggi={90} maks={26} rupa={rupa} />
+            <Ket y={36 + tg + 22} teks={`luas bangun: ${hitungX(d.b) + hitungO(d.b)} ${d.u}`} rupa={rupa} />
+            <Ket y={36 + tg + 40} teks="putus-putus: belum digambar" rupa={rupa} />
+          </Gambar>
+        );
+      }
+      const sb = sisiBersama(d.a, d.b, 130, 90, 24);
+      const tg = Math.max(d.a.length, d.b.length) * sb;
+      return (
+        <Gambar rupa={rupa} label="Dua bangun berbeda bentuk dari persegi satuan yang sama besar" judul={benda ? "dua bangun di tepi kolam" : "dua bangun"}>
+          <BangunUbin mask={d.a} x0={14} lebar={130} y0={40} tinggi={90} maks={24} rupa={rupa} sisi={sb} />
+          <BangunUbin mask={d.b} x0={156} lebar={130} y0={40} tinggi={90} maks={24} rupa={rupa} sisi={sb} />
+          <text x={79} y={40 + tg + 18} textAnchor="middle" fontSize={14} fontWeight={900} fill={warnaUbin(rupa).angka}>
+            {cara === "klik" ? `bangun A: ${hitungX(d.a)} ${d.u}` : "bangun A"}
+          </text>
+          <text x={221} y={40 + tg + 18} textAnchor="middle" fontSize={14} fontWeight={900} fill={cara === "klik" ? "#DC2626" : warnaUbin(rupa).angka}>
+            {cara === "klik" ? "bangun B: ?" : "bangun B"}
+          </text>
+          <Ket y={40 + tg + 42} teks="persegi satuan sama besar" rupa={rupa} />
         </Gambar>
       );
     }
@@ -204,9 +283,9 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
       const s = sisiUbin(d.g.b, d.g.k, 200, 100, 34);
       return (
         <Gambar rupa={rupa} label={`Lantai ${d.g.b} baris ${d.g.k} kolom ubin`} judul={benda ? "lantai ubin tepi kolam" : "lantai berpetak"}>
-          <KisiBerlabel g={d.g} rupa={rupa} />
-          <Ket y={40 + d.g.b * s + 22} teks={`satu ubin = 1 ${d.g.u}`} rupa={rupa} />
-          <Ket y={40 + d.g.b * s + 38} teks="luas lantai: ?" rupa={rupa} ukuran={11} />
+          <KisiBerlabel g={d.g} rupa={rupa} acuan={d.duga ? ACUAN : undefined} />
+          <Ket y={40 + d.g.b * s + 22} teks={d.duga ? (d.benda ? `kuning = acuan, 1 ubin ≈ ${d.benda}` : `kuning = acuan: ${ACUAN.b * ACUAN.k} ${d.g.u}`) : `satu ubin = 1 ${d.g.u}`} rupa={rupa} />
+          <Ket y={40 + d.g.b * s + 40} teks="luas lantai: ?" rupa={rupa} />
         </Gambar>
       );
     }

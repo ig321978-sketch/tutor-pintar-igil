@@ -1,7 +1,7 @@
 # Naskah Story Kelas 4 Bab 4 Sub-Bab A "Lantai Ubin Bu Sinta" (ditulis sesi utama, sesuai naskah/pedoman-mutu-modul.md)
 
 Awal cerita bab "Kolam Renang Tirta Ceria" (lihat `naskah/alur-cerita-k4b4.md`). Tamu A: Bu Sinta (pengelola kolam, bertopi putih, papan jalan).
-Suara tanpa digit; satuan diucapkan "sentimeter persegi" dan "meter persegi", dan tampil sebagai cm² dan m² di layar pada ketukan yang sama. Teks suara di bawah adalah NASKAH TETAP (boleh disesuaikan sedikit hanya bila uji menuntut; laporkan). Disesuaikan oleh agen Sub-Bab A: tiga kalimat video metode global diperpanjang (luar-tutup ketukan 3, luar-baris-terapan ketukan 4, luar-tangga-terapan ketukan 3) supaya durasi lebih dari tiga menit dengan margin.
+Suara tanpa digit; satuan diucapkan "sentimeter persegi" dan "meter persegi", dan tampil sebagai cm² dan m² di layar pada ketukan yang sama. Teks suara di bawah adalah NASKAH TETAP (boleh disesuaikan sedikit hanya bila uji menuntut; laporkan). Disesuaikan oleh agen Sub-Bab A (tambahan agar selaras buku: satuan tidak baku sudah ada, bangun berbeda bentuk luas sama di baku ketukan 3 dan luar-tutup-terapan, menduga luas di meter-persegi ketukan 2 dan luar-baris-terapan, satuan berbeda ukuran di luar-tutup ketukan 4): tiga kalimat video metode global diperpanjang (luar-tutup ketukan 3, luar-baris-terapan ketukan 4, luar-tangga-terapan ketukan 3) supaya durasi lebih dari tiga menit dengan margin.
 
 Data Story A (jangan dijadikan jawaban CPA): lantai maket tiga baris empat kolom = dua belas sentimeter persegi; satu meter persegi = sepuluh ribu sentimeter persegi (seratus kali seratus); salah Satria: tiga baris empat kolom luasnya tujuh karena tiga ditambah empat.
 
@@ -16,11 +16,11 @@ Sapaan (bersama): topik "pengukuran luas"; daftar: "satuan tidak baku", "sentime
 2. `tidak-baku`
    - "Satria menutup lantai maket dengan lembar kertas lipat yang besar, dan Laras memakai lembar yang kecil."
    - "Satria mendapat enam lembar, sedangkan Laras mendapat dua puluh empat lembar."
-   - "Satuan yang ukurannya berbeda membuat hasil berbeda, sehingga kita perlu satuan baku."
+   - "Satuan yang ukurannya berbeda membuat hasil berbeda, sebab makin kecil satuannya, makin banyak jumlahnya, sehingga kita perlu satuan baku."
 3. `baku`
    - "Genta menggambar petak yang sisinya satu sentimeter."
-   - "Luas satu petak itu kita sebut satu sentimeter persegi, dan dapat dibaca siapa saja dengan sama."
-   - "Menutup lantai dengan petak seperti ini membuat hasilnya sama untuk semua orang."
+   - "Luas satu persegi satuan itu kita sebut satu sentimeter persegi, dan dapat dibaca siapa saja dengan sama."
+   - "Menutup lantai dengan petak seperti ini membuat hasilnya sama untuk semua orang, dan bangun berbeda bentuk bisa sama luasnya."
 4. `salah-tambah` (salah langkah, taruhan, momen lucu)
    - "Genta menyusun petak menjadi tiga baris, dan tiap baris berisi empat petak."
    - "Satria berseru, luasnya tujuh, karena tiga ditambah empat!"
@@ -35,7 +35,7 @@ Sapaan (bersama): topik "pengukuran luas"; daftar: "satuan tidak baku", "sentime
    - "Laras mencatat, luas persegi panjang dihitung dari baris kali kolom, bukan dijumlah."
 7. `meter-persegi`
    - "Lantai kolam yang sebenarnya jauh lebih besar, jadi Bu Sinta memakai petak yang sisinya satu meter."
-   - "Satu petak seperti ini luasnya satu meter persegi."
+   - "Satu petak seperti ini luasnya satu meter persegi, jadi Bu Sinta menduga luas lantai dengan petak itu."
    - "Lantai itu terdiri dari lima baris dan enam kolom, jadi luasnya tiga puluh meter persegi."
 8. `ubah`
    - "Genta menggambar petak satu meter persegi, dan sisinya seratus sentimeter."
@@ -59,20 +59,20 @@ Metode: Cover the Floor (Tutup Lantai), Rows and Columns (Baris dan Kolom), Unit
   - "Cara pertama, Cover the Floor, atau Tutup Lantai."
   - "Kita menutup seluruh permukaan dengan petak sama besar, tanpa celah dan tanpa tumpang tindih."
   - "Banyak petak yang menutupi permukaan itulah luasnya, dan satuannya mengikuti ukuran petak."
-  - "Petak yang dipakai harus sama besar, supaya hasilnya adil."
+  - "Petak yang dipakai harus sama besar, supaya hasilnya adil, sebab satuan berbeda ukuran membuat hasil berbeda."
 - `luar-tutup-terapan`:
   - "Laras menutup denah lantai kecil dengan petak sentimeter persegi."
-  - "Setelah ditutup, ia menghitung petaknya dan mendapat luas yang pasti."
+  - "Setelah ditutup, ia menghitung petaknya dan mendapat luas yang pasti, bahkan untuk bangun berbeda bentuk."
   - "Cocok untuk bidang kecil, karena petak mudah dihitung satu per satu."
   - "Kurang cocok untuk lantai yang sangat besar, karena petaknya terlalu banyak."
 - `luar-baris` (konsep Rows and Columns):
   - "Cara kedua, Rows and Columns, atau Baris dan Kolom."
   - "Kita menghitung banyak petak dalam satu baris, lalu banyak baris, dan keduanya dikalikan."
-  - "Perkalian itu mempersingkat penghitungan petak yang berderet rapi."
+  - "Perkalian itu cara cepat menghitung persegi satuan yang berderet rapi."
   - "Hasilnya selalu sama dengan menghitung petak satu per satu."
 - `luar-baris-terapan`:
   - "Genta melihat denah dengan empat baris dan lima kolom petak."
-  - "Ia mengalikan empat dengan lima dan mendapat dua puluh sentimeter persegi."
+  - "Ia menduga dulu, lalu mengalikan empat dengan lima dan mendapat dua puluh sentimeter persegi."
   - "Cocok untuk bidang persegi panjang, karena barisnya sama panjang."
   - "Kurang cocok untuk bentuk yang bengkok, karena baris dan kolomnya tidak rata, jadi harus dipotong dulu."
 - `luar-tangga` (konsep Unit Square Ladder):

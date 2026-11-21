@@ -148,10 +148,10 @@ export function periksaTangga(k: KeadaanEmber): { k: KeadaanEmber; ok: boolean }
 export function petunjukTangga(k: KeadaanEmber): string {
   const t = targetTangga(k);
   if (k.arah === null && k.pilih < 0) return "Belum ada pilihan. Lihat satuan yang diketahui, pilih turun atau naik tangga, lalu pilih hasilnya.";
-  if (k.arah === null) return "Arah tangga belum dipilih. Dari liter ke mililiter kamu menuruni tangga, dan sebaliknya kamu menaikinya.";
-  if (k.arah !== t.arah) return "Arah tangga belum cocok. Dari liter ke mililiter kamu menuruni tangga, dan dari mililiter ke liter kamu menaikinya.";
+  if (k.arah === null) return "Arah tangga belum dipilih. Dari satuan besar ke satuan kecil kamu menuruni tangga, dan sebaliknya kamu menaikinya.";
+  if (k.arah !== t.arah) return "Arah tangga belum cocok. Dari satuan besar ke satuan kecil kamu menuruni tangga, dan dari satuan kecil ke satuan besar kamu menaikinya.";
   if (k.pilih < 0) return "Hasilnya belum dipilih. Kalikan atau bagi dengan seribu sesuai arah tangga.";
-  return "Hasil belum cocok. Ingat satu liter sama dengan seribu mililiter, dan periksa jumlah nolnya.";
+  return "Hasil belum cocok. Ingat satu liter sama dengan seribu mililiter dan satu meter kubik sama dengan seribu liter, lalu periksa jumlah nolnya.";
 }
 export function kalimatTangga(k: KeadaanEmber): string {
   if (k.tanggaBenar.length > 0 && k.arah === null && k.pilih < 0) return "Betul! Ada tangga berikutnya untuk dilalui.";

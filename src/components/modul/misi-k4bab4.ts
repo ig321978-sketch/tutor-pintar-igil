@@ -30,8 +30,8 @@ const ember = (k: KeadaanK4Bab4): k is KeadaanEmber => k.alat === "ember";
 export const MISI_B: DefMisi<KeadaanK4Bab4>[] = [
   { id: "b-tuang", teks: "Tuang gelas takar ke ember sampai tepat di garis sasaran, lalu tekan Periksa.", wajib: true, cek: (k) => ember(k) && k.tuangBenar.length >= 1 },
   { id: "b-susun", teks: "Susun lapisan kubus sampai volumenya sama dengan sasaran, lalu tekan Periksa.", wajib: true, cek: (k) => ember(k) && k.susunBenar.length >= 1 },
-  { id: "b-turun", teks: "Turuni tangga dari liter ke mililiter dan pilih hasilnya, lalu tekan Periksa.", wajib: true, cek: (k) => ember(k) && k.tanggaBenar.some((i) => i % 2 === 0) },
-  { id: "b-naik", teks: "Naiki tangga dari mililiter ke liter dan pilih hasilnya, lalu tekan Periksa.", wajib: true, cek: (k) => ember(k) && k.tanggaBenar.some((i) => i % 2 === 1) },
+  { id: "b-turun", teks: "Turuni tangga dari satuan besar ke satuan kecil dan pilih hasilnya, lalu tekan Periksa.", wajib: true, cek: (k) => ember(k) && k.tanggaBenar.some((i) => i % 2 === 0) },
+  { id: "b-naik", teks: "Naiki tangga dari satuan kecil ke satuan besar dan pilih hasilnya, lalu tekan Periksa.", wajib: true, cek: (k) => ember(k) && k.tanggaBenar.some((i) => i % 2 === 1) },
   { id: "b-tolak", teks: "Coba menuang sampai ember meluap, dan lihat alat menolak.", wajib: false, cek: (k) => ember(k) && k.tolak },
   { id: "b-dua", teks: "Isi dua ember sasaran dengan tepat.", wajib: false, cek: (k) => ember(k) && k.tuangBenar.length >= 2 },
 ];

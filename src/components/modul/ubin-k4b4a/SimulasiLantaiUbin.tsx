@@ -137,8 +137,8 @@ export default function SimulasiLantaiUbin({ speakGuru, onKeadaan }: { speakGuru
             <p className="rounded-xl border-2 border-dashed border-[#0284C7] bg-white px-2 py-1 text-center text-sm font-black text-[#075985]">Bu Sinta meminta lantai ditutup ubin sampai pas</p>
             <Gambar rupa="benda" label={`Lantai ${gt.b} baris ${gt.k} kolom, ${k.tutupIsi} ubin sudah terpasang`} judul="lantai tepi kolam" tinggi={176}>
               <KisiUbin b={gt.b} k={gt.k} terpasang={k.tutupIsi} rupa="benda" y0={26} tinggi={100} />
-              <text x={150} y={26 + tinggiKisi(gt.b, gt.k, 260, 100) + 20} textAnchor="middle" fontSize={10} fontWeight={900} fill="#0369A1">
-                ubin yang putus-putus belum dipasang
+              <text x={150} y={26 + tinggiKisi(gt.b, gt.k, 260, 100) + 20} textAnchor="middle" fontSize={14} fontWeight={900} fill="#0369A1">
+                putus-putus: belum dipasang
               </text>
             </Gambar>
             <div className="grid grid-cols-2 gap-2">
@@ -162,7 +162,7 @@ export default function SimulasiLantaiUbin({ speakGuru, onKeadaan }: { speakGuru
           <div className="space-y-2">
             <Gambar rupa="benda" label={`Lantai ${gb.b} baris ${gb.k} kolom ubin`} judul="lantai ubin tepi kolam" tinggi={176}>
               <KisiBerlabel g={{ b: gb.b, k: gb.k, u: gb.u }} rupa="benda" />
-              <text x={150} y={168} textAnchor="middle" fontSize={11} fontWeight={900} fill="#0369A1">
+              <text x={150} y={168} textAnchor="middle" fontSize={14} fontWeight={900} fill="#0369A1">
                 satu ubin = 1 {gb.u}
               </text>
             </Gambar>
@@ -215,10 +215,10 @@ export default function SimulasiLantaiUbin({ speakGuru, onKeadaan }: { speakGuru
               ) : (
                 <rect x={127} y={50} width={46} height={32} rx={3} fill="#FFFFFF" stroke="#0369A1" strokeWidth={2} data-ukuran="kecil" />
               )}
-              <text x={150} y={bs.u === "m²" ? 76 : 108} textAnchor="middle" fontSize={11} fontWeight={900} fill="#0C4A6E">
+              <text x={150} y={bs.u === "m²" ? 76 : 108} textAnchor="middle" fontSize={14} fontWeight={900} fill="#0C4A6E">
                 {bs.benda}
               </text>
-              <text x={150} y={124} textAnchor="middle" fontSize={10} fontWeight={900} fill="#0369A1">
+              <text x={150} y={124} textAnchor="middle" fontSize={14} fontWeight={900} fill="#0369A1">
                 pilih satuan luasnya
               </text>
             </Gambar>

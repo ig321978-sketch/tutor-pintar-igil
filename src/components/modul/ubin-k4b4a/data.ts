@@ -1,21 +1,25 @@
 /**
  * Isi tahap Concrete, Pictorial, dan Abstract Kelas 4 Bab 4 Sub-Bab A "Lantai Ubin Bu Sinta" (pengukuran luas: satuan baku, menutup lantai dengan ubin, baris kali kolom, meter persegi dan sentimeter persegi),
  * awal cerita Kolam Renang Tirta Ceria. Misi lanjutan "Misi Ubin" (nomor misi berlanjut dari Simulasi). Data berbeda dari Story (tiga baris empat kolom, empat baris lima kolom, lima baris enam kolom, dua meter persegi),
- * kecuali seed Cari kesalahan dari alur (dua baris lima kolom dijumlah menjadi tujuh). Concrete memakai ubin berwarna beremoji di tepi kolam, Pictorial memakai petak dan tangga polos di kertas denah,
+ * kecuali seed Cari kesalahan dari alur (dua baris lima kolom dijumlah menjadi tujuh). Concrete memakai uang kertas, origami, dan ubin berwarna di tepi kolam, Pictorial memakai lembar, petak, dan tangga polos di kertas denah,
  * Abstract memakai kartu kata dan angka di daftar Bu Sinta.
  * Jawaban beragam: memilih luas, satuan, atau hasil perubahan (klik, selalu dengan satuan), menulis satu angka di kanvas, dan mengucapkan satu kata atau bilangan. Jawaban benar dihitung dari data.
- * Angka jawaban Tulis di kanvas per tahap: Concrete 4, 5, 9, 3; Pictorial 5, 3, 8, 7; Abstract 3, 7, 6, 4 (tidak kembar dalam satu tahap).
+ * Angka jawaban Tulis di kanvas per tahap: Concrete 2, 5, 9, 6; Pictorial 4, 3, 8, 7; Abstract 3, 7, 6, 4 (tidak kembar dalam satu tahap).
  * Diuji: scripts/uji-ubin-k4b4a.mjs.
  */
-import type { Cara, Kisi, Langkah, LangkahSalah, LangkahSoal, LBaris, LSatuan, LTangga, LTutup, Rupa, Satuan, SoalMisi } from "./logika-cpa";
+import type { Bangun, Cara, Kisi, Langkah, LangkahSalah, LangkahSoal, LBangun, LBaris, LSatuan, LTangga, LTidakBaku, Rupa, Satuan, SoalMisi } from "./logika-cpa";
 import { URUT_METODE, instruksi, ucapkan } from "./logika-cpa";
 
 export { MISI_UBIN_TEKS } from "./data-sim";
 
 const kisi = (b: number, k: number, u: Satuan): Kisi => ({ b, k, u });
 const satuan = (b: number, k: number, u: Satuan = "cm²"): LSatuan => ({ tipe: "satuan", g: kisi(b, k, u) });
-const tutup = (b: number, k: number, p: number, u: Satuan = "cm²"): LTutup => ({ tipe: "tutup", g: kisi(b, k, u), p });
-const baris = (b: number, k: number, u: Satuan = "cm²"): LBaris => ({ tipe: "baris", g: kisi(b, k, u) });
+const tb = (r: number, k: number, nama: [string, string]): LTidakBaku => ({ tipe: "tidakbaku", r, k, nama });
+const bangun = (a: Bangun, b: Bangun, u: Satuan = "cm²"): LBangun => ({ tipe: "bangun", a, b, u });
+const baris = (b: number, k: number, u: Satuan = "cm²", duga = false, benda?: string): LBaris => ({ tipe: "baris", g: kisi(b, k, u), ...(duga ? { duga } : {}), ...(benda ? { benda } : {}) });
+/** Satuan tidak baku: [satuan kecil, satuan besar]; satu satuan besar sama dengan dua satuan kecil. Concrete dan Abstract memakai uang kertas dan kertas origami, Pictorial memakai lembar polos. */
+const NAMA_BENDA: [string, string] = ["uang kertas", "origami"];
+const NAMA_POLOS: [string, string] = ["lembar kecil", "lembar besar"];
 const tangga = (m: number, arah: "turun" | "naik"): LTangga => ({ tipe: "tangga", m, arah });
 const salah = (dasar: LBaris | LTangga, tokoh: string, kataTokoh: string, jawabTokoh: string, alasan: [string, string, string], benar: number, keliru: string, betul = false): LangkahSalah => ({
   tipe: "salah",
@@ -46,9 +50,9 @@ const satuMisi =
 /* ------------------------------ Concrete: ubin berwarna di lantai tepi kolam ------------------------------ */
 const C = satuMisi("benda");
 export const CONCRETE: SoalMisi[] = [
-  C(2, "klik", "Misi Ubin 2: tepi kolam", "Bu Sinta memasang ubin di tepi kolam anak. Periksa gambarnya.", [
-    satuan(2, 3),
-    tutup(3, 3, 4),
+  C(2, "klik", "Misi Ubin 2: tepi kolam", "Bu Sinta mengukur meja kolam dan lantai tepi kolam. Periksa gambarnya.", [
+    tb(1, 4, NAMA_BENDA),
+    bangun(["XXX", "XXX"], ["XXXX", "XX.."]),
     salah(
       baris(2, 5),
       "Satria",
@@ -64,16 +68,16 @@ export const CONCRETE: SoalMisi[] = [
     ),
     tangga(3, "turun"),
   ]),
-  C(3, "kanvas", "Misi Ubin 3: papan jalan", "Bu Sinta mencatat ubin di papan jalannya. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [satuan(4, 2), tutup(2, 4, 3), baris(3, 3), tangga(3, "naik")]),
-  C(4, "suara", "Misi Ubin 4: panggilan Bu Sinta", "Bu Sinta memanggil dari tepi kolam. Jawab dengan suaramu.", [satuan(2, 3), tutup(2, 4, 2), baris(2, 3), tangga(5, "turun")]),
+  C(3, "kanvas", "Misi Ubin 3: papan jalan", "Bu Sinta mencatat ubin di papan jalannya. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [tb(1, 2, NAMA_BENDA), bangun(["XXX", "XXX"], ["XXX", "Xoo", "ooo"]), baris(3, 3, "cm²", true, "kuku jari"), tangga(6, "naik")]),
+  C(4, "suara", "Misi Ubin 4: panggilan Bu Sinta", "Bu Sinta memanggil dari tepi kolam. Jawab dengan suaramu.", [satuan(2, 3), bangun(["XXX", "XXX", "XXX"], ["XXXXXX", "XXX..."]), baris(2, 3), tangga(5, "turun")]),
 ];
 
 /* ------------------------------ Pictorial: kertas denah dengan petak dan tangga polos ------------------------------ */
 const Pi = satuMisi("diagram");
 export const PICTORIAL: SoalMisi[] = [
   Pi(5, "klik", "Misi Ubin 5: denah Genta", "Genta menyalin lantai ke kertas denah. Periksa gambarnya.", [
-    satuan(3, 2, "m²"),
-    tutup(4, 2, 3),
+    tb(3, 3, NAMA_POLOS),
+    bangun(["XXXX", "XXXX"], ["XXX", "XXX", "XX."]),
     salah(
       baris(3, 5),
       "Genta",
@@ -90,22 +94,22 @@ export const PICTORIAL: SoalMisi[] = [
     ),
     tangga(5, "naik"),
   ]),
-  Pi(6, "kanvas", "Misi Ubin 6: bagan Laras", "Laras menggambar bagan lantai kolam. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [satuan(5, 2), tutup(3, 3, 6), baris(2, 4, "m²"), tangga(7, "naik")]),
-  Pi(7, "suara", "Misi Ubin 7: lapor ke Bu Sinta", "Genta melaporkan denahnya kepada Bu Sinta. Sebutkan jawabanmu.", [satuan(2, 2), tutup(2, 3, 2), baris(4, 2, "m²"), tangga(4, "naik")]),
+  Pi(6, "kanvas", "Misi Ubin 6: bagan Laras", "Laras menggambar bagan lantai kolam. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [tb(1, 4, NAMA_POLOS), bangun(["XXXX", "XXXX"], ["XXXX", "XXoo", "Xo.."]), baris(2, 4, "m²", true), tangga(7, "naik")]),
+  Pi(7, "suara", "Misi Ubin 7: lapor ke Bu Sinta", "Genta melaporkan denahnya kepada Bu Sinta. Sebutkan jawabanmu.", [satuan(2, 2), bangun(["XXX", "XXX"], ["XXXX", "XXX."]), baris(4, 2, "m²"), tangga(4, "naik")]),
 ];
 
 /* ------------------------------ Abstract: daftar Bu Sinta dengan kartu kata dan angka ------------------------------ */
 const A = satuMisi("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(8, "klik", "Misi Ubin 8: daftar Bu Sinta", "Daftar Bu Sinta hanya berisi kata dan angka.", [
-    satuan(2, 3, "m²"),
-    tutup(2, 7, 5),
-    baris(4, 6),
+    tb(2, 3, NAMA_BENDA),
+    bangun(["XXX", "XXX", "XXX"], ["XXXXX", "XXXX."]),
+    baris(4, 6, "cm²", true),
     salah(
-      tangga(3, "turun"),
+      tangga(8, "turun"),
       "Satria",
-      "Satu meter persegi sama dengan seratus sentimeter persegi, jadi tiga meter persegi sama dengan tiga ratus sentimeter persegi.",
-      "300 cm²",
+      "Satu meter persegi sama dengan seratus sentimeter persegi, jadi delapan meter persegi sama dengan delapan ratus sentimeter persegi.",
+      "800 cm²",
       [
         "Satria keliru: sisi satu meter persegi adalah seratus sentimeter, jadi luasnya seratus kali seratus sentimeter persegi.",
         "Satria benar, karena satu meter sama dengan seratus sentimeter.",
@@ -115,16 +119,19 @@ export const ABSTRACT: SoalMisi[] = [
       "Hubungan satuan luas tidak sama dengan hubungan satuan panjang, jadi periksa lagi langkah Satria.",
     ),
   ]),
-  A(9, "kanvas", "Misi Ubin 9: tulis di daftar", "Bu Sinta meminta kamu menulis jawaban di kanvas.", [satuan(3, 6), tutup(3, 3, 2), baris(2, 3, "m²"), tangga(4, "naik")]),
-  A(10, "suara", "Misi Ubin 10: daftar akhir", "Daftar akhir untuk Bu Sinta. Ucapkan jawabannya.", [satuan(5, 2, "m²"), tutup(3, 3, 5), baris(3, 2, "m²"), tangga(6, "naik")]),
+  A(9, "kanvas", "Misi Ubin 9: tulis di daftar", "Bu Sinta meminta kamu menulis jawaban di kanvas.", [tb(1, 3, NAMA_BENDA), bangun(["XXX", "XXX"], ["XXXXX", "ooooo", "oo..."]), baris(2, 3, "m²"), tangga(4, "naik")]),
+  A(10, "suara", "Misi Ubin 10: daftar akhir", "Daftar akhir untuk Bu Sinta. Ucapkan jawabannya.", [satuan(5, 2, "m²"), bangun(["XXXX", "XXXX", "X..."], ["XXX", "XXX", "XXX"]), baris(3, 2, "m²"), tangga(6, "naik")]),
 ];
 
 export const POIN_PENTING = [
-  "Luas adalah banyak ubin satuan yang menutupi seluruh lantai.",
-  "Satuan tidak baku, seperti kertas lipat atau keping ubin, bisa memberi hasil yang berbeda.",
+  "Luas adalah banyak satuan luas, yaitu persegi satuan, yang menutupi permukaan tanpa celah.",
+  "Satuan tidak baku, seperti uang kertas, kertas origami, atau keping ubin, bisa memberi hasil yang berbeda untuk permukaan yang sama.",
   "Satuan baku, yaitu sentimeter persegi dan meter persegi, memberi hasil yang sama untuk semua orang.",
-  "Luas persegi panjang sama dengan banyak baris kali banyak kolom. Contoh: 3 × 4 = 12 cm².",
+  "Makin kecil persegi satuannya, makin banyak jumlahnya untuk luas yang sama.",
+  "Baris kali kolom adalah cara cepat menghitung persegi satuan yang berderet rapi. Contoh: 3 × 4 = 12 cm².",
   "Rumusnya: 1 m² = 10.000 cm².",
+  "Bangun yang berbeda bentuk bisa memiliki luas yang sama, asalkan persegi satuannya sama besar.",
+  "Menduga luas: bandingkan dengan satuan acuan, misalnya kuku jari kira-kira 1 cm² dan pintu lemari kira-kira 1 m², lalu periksa dengan menghitung.",
   "Selalu tulis satuan di belakang bilangan luas.",
 ];
 /** Poin penting untuk suara (tanpa digit): bilangan, tanda, dan satuan menjadi kata. */

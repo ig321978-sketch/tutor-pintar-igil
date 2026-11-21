@@ -30,7 +30,7 @@ function CariSalah({ l, rupa, cara, salah, siap, info }: PK & { l: LangkahSalah;
   const [tahap, setTahap] = useState<"putus" | "alasan" | "selesai">("putus");
   const [mati, setMati] = useState<number[]>([]);
   /** Posisi alasan benar ditentukan dari teks tugas (tetap, tanpa acak saat render) supaya tidak selalu di tombol yang sama. */
-  const posisi = Array.from(`${l.tokoh}${l.kataTokoh}${l.alasan[l.benar]}`).reduce((t, c) => t + c.charCodeAt(0), 0) % 3;
+  const posisi = Array.from(`${l.tokoh}${l.kataTokoh}${l.alasan[l.benar]}`).reduce((t, c) => t + c.charCodeAt(0), 0) % 2 + 1;
   const lain = [0, 1, 2].filter((i) => i !== l.benar);
   const urut = [...lain.slice(0, posisi), l.benar, ...lain.slice(posisi)];
   /** Arahan tanpa menyebut alasan atau hasil yang benar. */
@@ -65,8 +65,9 @@ function CariSalah({ l, rupa, cara, salah, siap, info }: PK & { l: LangkahSalah;
         <div className="space-y-1 text-center">
           <p className="text-sm font-black text-[#1C01A5]">Jawaban {l.tokoh} benar atau salah?</p>
           <div className="flex justify-center gap-2">
-            <Tombol teks={"\u{2705} benar"} onClick={() => putus(true)} />
-            <Tombol teks={"\u{274C} salah"} onClick={() => putus(false)} />
+            {/* Jawaban yang tepat tidak pernah di tombol pertama: tokoh yang keliru, tombol salah kedua; tokoh yang benar, tombol benar kedua. */}
+            {l.betul ? <Tombol teks={"\u{274C} salah"} onClick={() => putus(false)} /> : <Tombol teks={"\u{2705} benar"} onClick={() => putus(true)} />}
+            {l.betul ? <Tombol teks={"\u{2705} benar"} onClick={() => putus(true)} /> : <Tombol teks={"\u{274C} salah"} onClick={() => putus(false)} />}
           </div>
         </div>
       ) : tahap === "alasan" ? (

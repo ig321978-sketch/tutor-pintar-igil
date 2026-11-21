@@ -1,5 +1,5 @@
 import type { AdeganStory } from "./logika-story";
-import { E, W, WL, emo, idKain, idKartu, idTiang, judul, kain, kartu, kotak, kubus, lapisanKubus, idLapisan, lantai, panah, teks, tiang, tokoh } from "./k4b4b-gambar";
+import { E, W, WL, emo, idKain, idKartu, idTiang, judul, kain, kartu, kotak, kubus, lapisanKubus, idLapisan, lantai, teks, tiang, tokoh } from "./k4b4b-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b4b-bantu";
 
 /*
@@ -8,8 +8,8 @@ import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b4b-bantu";
  */
 
 /* ------------------------------ 7. Kubus air ------------------------------ */
-const SUARA_K1 = "Genta menyusun kubus kecil yang sisinya satu sentimeter menjadi sebuah balok air.";
-const SUARA_K2 = "Tiap lapisan berisi tiga kali dua kubus, dan ada dua lapisan.";
+const SUARA_K1 = "Benda padat diukur dengan kubus satuan, jadi Genta menyusun kubus yang sisinya satu sentimeter menjadi sebuah balok.";
+const SUARA_K2 = "Cara cepat menghitung kubus satuan: tiap lapisan berisi tiga kali dua kubus, dan ada dua lapisan.";
 const SUARA_K3 = "Jadi balok itu berisi dua belas kubus, dan volumenya dua belas sentimeter kubik.";
 
 export const ADEGAN_KUBUS: AdeganStory = {
@@ -22,14 +22,13 @@ export const ADEGAN_KUBUS: AdeganStory = {
       SUARA_K1,
       tambah(0, judul("Kubus Satuan"), ...lantai("lt", 150), ...tokoh("ge", 36, 184, "Genta")),
       tambah("kubus", kubus("ku", 70, 100, 22)),
-      tambah("satu", teks("s1", 81, 92, "1 cm", 11, W.merah)),
+      tambah("satu@2", teks("s1", 81, 92, "1 cm", 11, W.merah)),
       tambah("balok", ...lapisanKubus("L", 120, 90, 3, 2, 16)),
-      tambah("air", emo("tt", 212, 104, E.tetes, 24)),
     ),
     k(
       SUARA_K2,
       tambah("tiga", teks("ft", 144, 62, "3 × 2", 14, W.biru)),
-      sorotkan("kubus", ...idLapisan("L", 3, 2)),
+      sorotkan("kubus@2", ...idLapisan("L", 3, 2)),
       tambah("lapisan@2", ...lapisanKubus("M", 128, 81, 3, 2, 16), teks("dl", 230, 100, "2 lapisan", 12, W.coklat)),
     ),
     k(
@@ -44,7 +43,7 @@ export const ADEGAN_KUBUS: AdeganStory = {
 /* ------------------------------ 8. Satu sentimeter kubik sama dengan satu mililiter ------------------------------ */
 const SUARA_C1 = "Pak Anto menuang air ke wadah sebesar satu sentimeter kubik, dan isinya satu mililiter.";
 const SUARA_C2 = "Satu sentimeter kubik sama dengan satu mililiter, sehingga dua belas sentimeter kubik sama dengan dua belas mililiter.";
-const SUARA_C3 = "Dengan begitu kita tahu bahwa volume bisa dihitung dari kubus, lalu diubah menjadi mililiter.";
+const SUARA_C3 = "Bak mandi besar memakai meter kubik, yaitu kubus berusuk satu meter, dan satu meter kubik sama dengan seribu liter.";
 
 export const ADEGAN_SAMA: AdeganStory = {
   id: "sama",
@@ -73,10 +72,10 @@ export const ADEGAN_SAMA: AdeganStory = {
     k(
       SUARA_C3,
       hapus(0, ...idKartu("c1", 1), ...idKartu("c2", 1), "ar", "ok"),
-      tambah("volume", teks("vv", 60, 70, "volume", 14, W.biru)),
-      tambah("kubus", ...lapisanKubus("Q", 50, 86, 3, 2, 14)),
-      tambah("diubah", panah("pn", 110, 100, 60, 0, W.ungu, 2.4)),
-      tambah("mililiter", teks("mm", 220, 100, "ml", 18, W.hijauTua)),
+      tambah("bak", kotak("bk", 24, 70, 130, 70, WL.air, WL.airGaris, { rx: 6, tebal: 2, z: 0 })),
+      tambah("kubik", kotak("m3", 176, 84, 56, 56, WL.kubus, W.biru, { rx: 2, tebal: 2, z: 1 })),
+      tambah("berusuk", { id: "rs", t: "garis", x: 176, y: 76, x2: 56, y2: 0, warna: W.merah, tebal: 2.4 }, teks("rm", 204, 66, "1 m", 12, W.merah)),
+      tambah("sama", teks("sk", 150, 44, "1 m³ = 1.000 l", 14, W.hijauTua)),
     ),
   ],
 };
@@ -84,7 +83,7 @@ export const ADEGAN_SAMA: AdeganStory = {
 /* ------------------------------ 9. Penutup: Pesta Renang Tirta Ceria ------------------------------ */
 const SUARA_T1 = "Sore itu, kolam penuh balon, spanduk, dan konfeti untuk Pesta Renang Tirta Ceria.";
 const SUARA_T2 = "Bu Sinta, Pak Anto, Pak Hendro, Satria, Laras, dan Genta berdiri di tepi kolam yang berkilau.";
-const SUARA_T3 = "Menurutmu, apa lagi yang bisa kita ukur luas dan volumenya di sekitar rumah? Terima kasih, Satria, Laras, Genta, Pak Hendro, Bu Sinta, dan Pak Anto!";
+const SUARA_T3 = "Apa lagi yang bisa kita ukur luas dan volumenya di sekitar rumah? Terima kasih, Satria, Laras, Genta, Pak Hendro, Bu Sinta, dan Pak Anto!";
 const X_TOKOH = [28, 78, 128, 178, 228, 278] as const;
 
 export const ADEGAN_PENUTUP: AdeganStory = {

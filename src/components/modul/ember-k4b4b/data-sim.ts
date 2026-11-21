@@ -23,15 +23,15 @@ export const SUSUN_SIM: readonly SasaranSusun[] = [
   { kolom: 2, baris: 4, target: 32, tinggiMaks: 6 },
 ];
 
-/** Tangga: ubah `n` liter menjadi mililiter (turun) atau mililiter yang sama menjadi liter (naik); tiga pilihan hasil memuat satu hasil yang benar. Arah bergantian turun dan naik. */
-export type SasaranTangga = { n: number; arah: "turun" | "naik"; pil: [string, string, string] };
+/** Tangga: ubah `n` liter menjadi mililiter (turun) atau mililiter yang sama menjadi liter (naik), dan `n` meter kubik menjadi liter (turun) atau liter yang sama menjadi meter kubik (naik) pada dua sasaran terakhir; tiga pilihan hasil memuat satu hasil yang benar. Arah bergantian turun dan naik. */
+export type SasaranTangga = { jenis: "liter" | "meter"; n: number; arah: "turun" | "naik"; pil: [string, string, string] };
 export const TANGGA_SIM: readonly SasaranTangga[] = [
-  { n: 6, arah: "turun", pil: ["60 ml", "6.000 ml", "600 ml"] },
-  { n: 8, arah: "naik", pil: ["80 l", "800 l", "8 l"] },
-  { n: 8, arah: "turun", pil: ["800 ml", "8.000 ml", "80 ml"] },
-  { n: 6, arah: "naik", pil: ["60 l", "6 l", "600 l"] },
+  { jenis: "liter", n: 6, arah: "turun", pil: ["60 ml", "6.000 ml", "600 ml"] },
+  { jenis: "liter", n: 8, arah: "naik", pil: ["80 l", "800 l", "8 l"] },
+  { jenis: "meter", n: 4, arah: "turun", pil: ["400 l", "4.000 l", "40 l"] },
+  { jenis: "meter", n: 5, arah: "naik", pil: ["50 m³", "5 m³", "500 m³"] },
 ];
 /** Hasil benar tangga sebagai teks pilihan. */
-export const hasilTangga = (t: SasaranTangga): string => (t.arah === "turun" ? teksMl(t.n * 1000) : teksL(t.n));
+export const hasilTangga = (t: SasaranTangga): string => (t.jenis === "meter" ? (t.arah === "turun" ? teksL(t.n * 1000) : `${t.n} m³`) : t.arah === "turun" ? teksMl(t.n * 1000) : teksL(t.n));
 
 export const MISI_EMBER_TEKS = "Tuang gelas takar ke ember, susun lapisan kubus, dan turuni atau naiki tangga liter. Urutannya bebas.";
