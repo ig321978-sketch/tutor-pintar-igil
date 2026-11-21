@@ -1,17 +1,17 @@
 import type { AdeganStory, Obj } from "./logika-story";
 import { E, W, bulat, deret, emo, garis, judul, kotak, panah, panggung, rakAngklung, tanah, teks, tokoh } from "./k4b3a-gambar";
-import { bersih, hapus, k, sorotkan, tambah } from "./k4b3a-bantu";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b3a-bantu";
 
 /*
  * Cerita orisinal IGIL "Deret Angklung Bu Ratri" (Kelas 4 Bab 3 Sub-Bab A, pola gambar), awal cerita Orkestra Angklung Kampung Senandung.
- * Naskah suara dari naskah/story-naskah-k4b3a.md. Bagian ini: melanjutkan deret, pola mengecil berhenti di nol, penutup (jembatan ke Sub-Bab B).
+ * Naskah suara dari naskah/story-naskah-k4b3a.md. Bagian ini: melanjutkan deret, deret ketujuh lewat tabel uraian, kotak kosong yang dilengkapi, pola mengecil sembilan sampai satu, berhenti di nol, penutup (jembatan ke Sub-Bab B).
  */
 
 /** Ubin bilangan: kotak `${id}-k`, bilangan `${id}-t`, dan keterangan `${id}-l` di bawahnya. Pojok kiri-atas (x, y). */
-const ubin = (id: string, x: number, y: number, w: number, isi: string, ket?: string): Obj[] => [
+const ubin = (id: string, x: number, y: number, w: number, isi: string, ket?: string, ukKet = 8): Obj[] => [
   kotak(`${id}-k`, x, y, w, 36, "#FEF3C7", W.bambuTua, { rx: 6, tebal: 1.6, z: 1 }),
   teks(`${id}-t`, x + w / 2, y + 25, isi, 16, W.biru, { z: 2 }),
-  ...(ket ? [teks(`${id}-l`, x + w / 2, y + 50, ket, 8, W.coklat)] : []),
+  ...(ket ? [teks(`${id}-l`, x + w / 2, y + 50, ket, ukKet, W.coklat)] : []),
 ];
 
 /* ------------------------------ 7. Melanjutkan deret ------------------------------ */
@@ -50,6 +50,63 @@ export const ADEGAN_LANJUT: AdeganStory = {
       tambah("tiga,", ...ubin("v3", 130, 50, 46, "3")),
       tambah("kurangi", panah("ak", 182, 68, 34, 0, W.merah, 2.4), teks("kk", 200, 60, "−2", 11, W.merah)),
       tambah("satu.", ...ubin("v4", 222, 50, 56, "1"), ...deret("d6", 250, 134, 1, 14, 26)),
+    ),
+  ],
+};
+
+/* ------------------------------ 7b. Deret ketujuh, kotak kosong, mengecil dari sembilan ------------------------------ */
+const SUARA_J1 = "Bu Ratri menulis tabel uraian sampai deret ketujuh, dua ditambah dua terus, jadi empat belas.";
+const SUARA_J2 = "Genta menyusun empat kotak, satu kosong, lalu memilih gambar pelengkap.";
+const SUARA_J3 = "Sembilan, tujuh, lima, tiga, satu: mengecil boleh dimulai dari angka besar.";
+/** Kolom tabel uraian: urutan, banyak, uraian. Baris ke-i (mulai 1) berada di y 54 + 14 * (i - 1). */
+const KOL = { urut: 90, banyak: 160, uraian: 236 };
+const yBaris = (i: number): number => 54 + 14 * (i - 1);
+const barisUraian = (i: number, banyak: string, uraian: string): Obj[] => [
+  teks(`r${i}n`, KOL.urut, yBaris(i), String(i), 11, W.coklat, { z: 6 }),
+  teks(`r${i}b`, KOL.banyak, yBaris(i), banyak, 11, banyak === "?" ? W.merah : W.biru, { z: 6 }),
+  teks(`r${i}u`, KOL.uraian, yBaris(i), uraian, 11, uraian === "-" ? W.abu : W.hijauTua, { z: 6 }),
+];
+/** Kotak kumpulan `${id}` berisi n titik `${id}-c{i}` (kisi tiga kolom, jarak 12). Pojok kiri-atas (x, y), lebar 56, tinggi 46. */
+const kumpulan = (id: string, x: number, y: number, n: number): Obj[] => [
+  kotak(id, x, y, 56, 46, "#FEF3C7", W.bambuTua, { rx: 5, tebal: 1.6, z: 1 }),
+  ...Array.from({ length: n }, (_, i) => bulat(`${id}-c${i}`, x + 28 + ((i % 3) - (Math.min(3, n) - 1) / 2) * 13, y + 23 + (Math.floor(i / 3) - (Math.ceil(n / 3) - 1) / 2) * 13, 4, W.bambu, W.bambuTua, { tebal: 1, z: 2 })),
+];
+
+export const ADEGAN_KETUJUH: AdeganStory = {
+  id: "ketujuh",
+  judul: "Deret ketujuh, kotak kosong, dan sembilan sampai satu",
+  sumber: "Materi: deret ketujuh dan kotak kosong",
+  latar: "#FFFBEB",
+  ketukan: [
+    k(
+      SUARA_J1,
+      tambah(0, judul("Tabel Uraian Sampai Deret Ketujuh"), ...tanah("tn", 150), ...tokoh("br", 30, 184, "Bu Ratri"), kotak("tb", 64, 24, 222, 124, W.putih, W.coklat, { rx: 4, tebal: 1.8, z: 1 })),
+      tambah("tabel", teks("h1", KOL.urut, 38, "deret", 11, W.coklat, { z: 6 }), teks("h2", KOL.banyak, 38, "banyak", 11, W.coklat, { z: 6 }), teks("h3", KOL.uraian, 38, "uraian", 11, W.coklat, { z: 6 })),
+      tambah("uraian", ...barisUraian(1, "2", "-"), ...barisUraian(2, "4", "2 + 2"), ...barisUraian(3, "6", "4 + 2")),
+      tambah("ketujuh,", ...barisUraian(4, "?", "? + 2"), ...barisUraian(5, "?", "? + 2"), ...barisUraian(6, "?", "? + 2"), ...barisUraian(7, "?", "? + 2")),
+      sorotkan("ditambah", "r7u"),
+      ubah("belas.", { id: "r7b", isi: "14", warna: W.hijauTua }),
+    ),
+    k(
+      SUARA_J2,
+      bersih(0),
+      tambah(0, judul("Kotak yang Kosong"), ...tanah("tn", 150), ...tokoh("ge", 30, 184, "Genta")),
+      tambah("kotak", ...kumpulan("q1", 16, 28, 2), ...kumpulan("q2", 82, 28, 4), ...kumpulan("q4", 214, 28, 8), teks("m1", 44, 90, "deret 1", 11, W.coklat), teks("m2", 110, 90, "deret 2", 11, W.coklat), teks("m4", 242, 90, "deret 4", 11, W.coklat)),
+      tambah("kosong,", kotak("q3", 148, 28, 56, 46, undefined, W.merah, { rx: 5, tebal: 1.6, z: 1 }), teks("q3t", 176, 60, "?", 24, W.merah, { z: 6 }), teks("m3", 176, 90, "deret 3", 11, W.coklat)),
+      tambah("memilih", ...kumpulan("o1", 70, 98, 5), ...kumpulan("o2", 134, 98, 6), ...kumpulan("o3", 198, 98, 7)),
+      tambah("pelengkap.", kotak("pk", 130, 94, 64, 54, undefined, W.hijau, { rx: 6, tebal: 2.4, z: 4 }), emo("ok", 206, 140, E.benar, 20)),
+    ),
+    k(
+      SUARA_J3,
+      bersih(0),
+      tambah(0, judul("Mengecil dari Sembilan"), ...tanah("tn", 150), ...tokoh("br", 30, 184, "Bu Ratri")),
+      tambah("Sembilan,", ...ubin("w1", 24, 50, 44, "9", "deret 1", 11)),
+      tambah("tujuh,", ...ubin("w2", 76, 50, 44, "7", "deret 2", 11)),
+      tambah("lima,", ...ubin("w3", 128, 50, 44, "5", "deret 3", 11)),
+      tambah("tiga,", ...ubin("w4", 180, 50, 44, "3", "deret 4", 11)),
+      tambah("satu:", ...ubin("w5", 232, 50, 44, "1", "deret 5", 11)),
+      tambah("mengecil", teks("mc", 150, 114, "mengecil −2", 11, W.merah)),
+      tambah("besar.", teks("bs", 220, 140, "angka besar pun bisa", 11, W.hijauTua), emo("tp", 262, 174, E.tepuk, 20)),
     ),
   ],
 };

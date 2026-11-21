@@ -52,16 +52,30 @@ export function titikLima(n: number, x0: number, y0: number, dx: number, dy: num
   return Array.from({ length: n }, (_, i) => ({ x: x0 + (i % 5) * dx, y: y0 + Math.floor(i / 5) * dy, baris: Math.floor(i / 5), kolom: i % 5 }));
 }
 
+/** Isi satu kotak kumpulan: n benda dalam kisi paling banyak tiga kolom, rata di tengah kotak [x0, x0 + w] x [y0, y0 + h]. Sel selebar dx dan setinggi dy. */
+export function titikKumpulan(n: number, x0: number, y0: number, w: number, h: number, dx: number, dy: number): { x: number; y: number }[] {
+  const kolom = Math.min(3, Math.max(n, 1));
+  const baris = Math.max(1, Math.ceil(n / 3));
+  const kiri = x0 + (w - kolom * dx) / 2 + dx / 2;
+  const atas = y0 + (h - baris * dy) / 2 + dy / 2;
+  return Array.from({ length: n }, (_, i) => ({ x: kiri + (i % 3) * dx, y: atas + Math.floor(i / 3) * dy }));
+}
+
 /* ------------------------------ Jenis tugas ------------------------------ */
 /** Metode IGIL: tiga deret berurutan; klik = jenis pola, kanvas = selisih, suara = tambah atau kurang. */
 export type LJenis = { tipe: "jenis"; p: Pola };
 /** Draw the Next (Gambar Berikutnya): tiga deret, deret keempat belum ada; klik dan kanvas = banyaknya, suara = lebih banyak atau lebih sedikit. */
 export type LGambar = { tipe: "gambar"; p: Pola };
-/** Difference Table (Tabel Selisih): klik = selisih bertanda, kanvas = banyak deret kelima, suara = membesar atau mengecil. */
-export type LTabel = { tipe: "tabel"; p: Pola };
+/**
+ * Difference Table (Tabel Selisih): klik = selisih bertanda, kanvas = banyak deret kelima, suara = membesar atau mengecil.
+ * Dengan `ke` (hanya klik): tabel uraian (urutan, banyak, uraian) sampai deret ke-`ke` (paling jauh ketujuh); klik = banyak pada deret ke-`ke`.
+ */
+export type LTabel = { tipe: "tabel"; p: Pola; ke?: number };
+/** Melengkapi pola (hanya klik): empat kotak deret berurutan, kotak ke-`kosong` (1 sampai 4) kosong; klik = gambar (banyak) yang melengkapinya. */
+export type LLengkapi = { tipe: "lengkapi"; p: Pola; kosong: number };
 /** Group by Five (Susun Per Lima): deret ke-k disusun per lima; klik dan suara = banyak seluruhnya, kanvas = sisa pada baris terakhir. */
 export type LLima = { tipe: "lima"; p: Pola; k: number };
-export type LangkahDasar = LJenis | LGambar | LTabel | LLima;
+export type LangkahDasar = LJenis | LGambar | LTabel | LLima | LLengkapi;
 /** Cari kesalahan: tokoh sudah menjawab dari `dasar` (Gambar Berikutnya, klik). Anak menilai benar atau salah, memilih alasan, lalu menjawab sendiri. `jawabTokoh` adalah teks pilihan klik tokoh. */
 export type LangkahSalah = {
   tipe: "salah";
@@ -108,7 +122,10 @@ export function kunciJawab(l: Langkah, cara: Cara): Kunci | null {
     case "gambar":
       return cara === "suara" ? nama(l.p.d > 0 ? "banyak" : "sedikit") : cara === "klik" ? nama(String(banyakKe(l.p, 4))) : angka(banyakKe(l.p, 4));
     case "tabel":
+      if (l.ke !== undefined) return nama(String(banyakKe(l.p, l.ke)));
       return cara === "klik" ? nama(teksBeda(l.p.d)) : cara === "kanvas" ? angka(banyakKe(l.p, 5)) : nama(jenisPola(l.p.d));
+    case "lengkapi":
+      return nama(String(banyakKe(l.p, l.kosong)));
     case "lima": {
       const n = banyakLima(l);
       return cara === "klik" ? nama(String(n)) : cara === "kanvas" ? angka(n % 5) : angka(n);
@@ -131,6 +148,8 @@ function sisipkan<T>(benar: T, lain: T[], geser: number): T[] {
 }
 const unik = <T,>(daftar: T[], buang: T[]): T[] => daftar.filter((x, i, a) => !buang.includes(x) && a.indexOf(x) === i);
 const banyakSah = (n: number): boolean => n >= 1 && n <= 20;
+/** Paling banyak benda dalam satu kotak gambar pelengkap (kisi tiga kolom, empat baris). */
+export const BANYAK_KOTAK_MAKS = 12;
 
 /** Tiga pilihan untuk tugas klik: jawaban benar tidak pernah di tombol pertama, dan jawaban tokoh (Cari kesalahan) selalu ikut. */
 export function pilihanKlik(l: Langkah): string[] {
@@ -149,6 +168,11 @@ export function pilihanKlik(l: Langkah): string[] {
       return sisipkan(k.nama, unik(calon, [k.nama]).slice(0, 2), d.p.a + n4);
     }
     case "tabel": {
+      if (d.ke !== undefined) {
+        const n = banyakKe(d.p, d.ke);
+        const calon = [banyakKe(d.p, d.ke - 1), banyakKe(d.p, d.ke + 1), n + 1, n + 2, n - 1].filter(banyakSah).map(String);
+        return sisipkan(k.nama, unik(calon, [k.nama]).slice(0, 2), d.p.a + n);
+      }
       const calon = [teksBeda(-d.p.d), teksBeda(d.p.d + 1), teksBeda(d.p.d - 1), teksBeda(d.p.d + 2)].filter((t) => t !== "+0" && t !== "−0");
       return sisipkan(k.nama, unik(calon, [k.nama]).slice(0, 2), d.p.a);
     }
@@ -156,6 +180,11 @@ export function pilihanKlik(l: Langkah): string[] {
       const n = banyakLima(d);
       const calon = [n - 5, n + 1, n - 1, n + 5].filter(banyakSah).map(String);
       return sisipkan(k.nama, unik(calon, [k.nama]).slice(0, 2), n + 1);
+    }
+    case "lengkapi": {
+      const n = banyakKe(d.p, d.kosong);
+      const calon = [n + 1, n - 1, n + 2, n - 2, n + 3].filter((x) => x >= 1 && x <= BANYAK_KOTAK_MAKS).map(String);
+      return sisipkan(k.nama, unik(calon, [k.nama]).slice(0, 2), d.p.a + n);
     }
   }
 }
@@ -207,12 +236,15 @@ export function kalimatKunci(l: Langkah, cara: Cara): string {
     }
     case "tabel": {
       const b = Math.abs(d.p.d);
+      if (d.ke !== undefined) return `Deret ${urutan(d.ke)} berisi ${banyakKe(d.p, d.ke)}, karena ${d.p.a} ${d.p.d > 0 ? "ditambah" : "dikurangi"} ${b} sebanyak ${kataBil(d.ke - 1)} kali.`;
       return cara === "klik"
         ? `Selisih tiap dua deret berurutan selalu ${teksBeda(d.p.d)}.`
         : cara === "kanvas"
           ? `Deret kelima berisi ${banyakKe(d.p, 5)}, karena ${d.p.a} ${d.p.d > 0 ? "ditambah" : "dikurangi"} ${b} sebanyak empat kali.`
           : `Selisih bertanda ${d.p.d > 0 ? "tambah" : "kurang"}, jadi polanya ${jenisPola(d.p.d)}.`;
     }
+    case "lengkapi":
+      return `Deret ${urutan(d.kosong)} berisi ${banyakKe(d.p, d.kosong)}, karena selisih tiap dua deret berurutan selalu ${teksBeda(d.p.d)}.`;
     case "lima": {
       const n = banyakLima(d);
       const penuh = Math.floor(n / 5);
@@ -241,7 +273,13 @@ export function instruksi(l: Langkah, rupa: Rupa, cara: Cara, metode: Metode): s
         : cara === "kanvas"
           ? `${aw}: lihat ${g} ini. Ada tiga deret, dan deret keempat belum ada. Berapa banyak pada deret keempat? Tulis satu angka di kanvas.`
           : `${aw}: lihat ${g} ini. Ada tiga deret, dan deret keempat belum ada. Deret keempat lebih banyak atau lebih sedikit daripada deret ketiga? Ucapkan satu kata.`;
+    case "lengkapi":
+      return rupa === "lambang"
+        ? `${aw}: lihat ${g} ini. Empat deret disusun menurut pola, dan satu kartu masih kosong. Pilih banyak yang melengkapi kartu kosong.`
+        : `${aw}: lihat ${g} ini. Empat deret disusun menurut pola, dan satu kotak masih kosong. Pilih gambar yang melengkapi kotak kosong.`;
     case "tabel":
+      if (l.ke !== undefined)
+        return `${aw}: lihat ${g} ini. Tabel uraian memuat urutan, banyak, dan uraian tiap deret, dan baris terakhir belum diisi. Berapa banyak pada deret ${urutan(l.ke)}? Pilih jawabannya.`;
       return cara === "klik"
         ? `${aw}: lihat ${g} ini. Tabel memuat banyak tiap deret, dan selisihnya belum diisi. Berapa selisih tiap dua deret berurutan? Pilih jawabannya.`
         : cara === "kanvas"
@@ -264,7 +302,10 @@ export function kalimatTanya(l: Langkah, cara: Cara): string {
       return cara === "klik" ? "Pola apa yang terbentuk?" : cara === "kanvas" ? "Berapa selisih tiap deret?" : "Banyaknya kita tambah atau kita kurang?";
     case "gambar":
       return cara === "suara" ? "Deret keempat lebih banyak atau lebih sedikit?" : "Berapa banyak pada deret keempat?";
+    case "lengkapi":
+      return "Mana yang melengkapi pola?";
     case "tabel":
+      if (d.ke !== undefined) return `Berapa banyak pada deret ${urutan(d.ke)}?`;
       return cara === "klik" ? "Berapa selisih tiap dua deret?" : cara === "kanvas" ? "Berapa banyak pada deret kelima?" : "Pola itu membesar atau mengecil?";
     case "lima":
       return cara === "kanvas" ? "Berapa sisa pada baris terakhir?" : "Berapa banyak seluruhnya?";
@@ -288,7 +329,10 @@ export function petunjukSalah(l: Langkah, cara: Cara, jawab: string | number): s
       return cara === "suara"
         ? "Bandingkan deret pertama dengan deret kedua, lalu pikirkan arah polanya."
         : "Cari selisih dua deret yang berdekatan, lalu pakai selisih yang sama pada deret ketiga.";
+    case "lengkapi":
+      return "Cari selisih dua deret yang berdekatan, lalu pakai selisih yang sama untuk mengisi deret yang kosong.";
     case "tabel":
+      if (l.ke !== undefined) return "Isi uraian baris demi baris: tiap deret sama dengan deret sebelumnya ditambah atau dikurangi selisih yang sama.";
       return cara === "klik"
         ? "Bandingkan banyak deret kedua dengan deret pertama, lalu perhatikan tandanya."
         : cara === "kanvas"
@@ -313,7 +357,17 @@ export function barisKartu(l: LangkahDasar, cara?: Cara): string[] {
       const [x, y, z] = deretKe(l.p, 3);
       return [`deret pertama: ${x}`, `deret kedua: ${y}`, `deret ketiga: ${z}`, cara === "suara" ? "deret keempat dibanding ketiga: ?" : "deret keempat: ?"];
     }
+    case "lengkapi": {
+      const nilai = deretKe(l.p, 4);
+      return nilai.map((v, i) => `deret ${i + 1}: ${i + 1 === l.kosong ? "?" : v}`);
+    }
     case "tabel": {
+      if (l.ke !== undefined) {
+        const [x, y, z] = deretKe(l.p, 3);
+        const op = l.p.d > 0 ? "+" : "−";
+        const b = Math.abs(l.p.d);
+        return [`deret 1: ${x}`, `deret 2: ${x} ${op} ${b} = ${y}`, `deret 3: ${y} ${op} ${b} = ${z}`, ...Array.from({ length: l.ke - 3 }, (_, i) => `deret ${i + 4}: ?`)];
+      }
       const [x, y, z] = deretKe(l.p, 3);
       const ada = `banyak tiap deret: ${x}, ${y}, ${z}`;
       return cara === "klik" ? [ada, "selisih tiap dua deret: ?"] : cara === "kanvas" ? [ada, `selisih: ${teksBeda(l.p.d)}`, "deret kelima: ?"] : [ada, `selisih: ${teksBeda(l.p.d)}`, "polanya: ?"];

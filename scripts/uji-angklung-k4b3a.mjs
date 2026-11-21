@@ -66,6 +66,12 @@ const BUKAN_A = /pola bilangan|barisan|\bsuku\b|\baturan\b|\bmesin\b/i;
     cek(t.length === n && t.every((p, i) => p.kolom === i % 5 && p.baris === Math.floor(i / 5) && p.x === 70 + (i % 5) * 40 && p.y === 56 + Math.floor(i / 5) * 38), `titik per lima ${n}: sebanyak data dan kisi tetap`);
     cek(b.every((isi, r) => t.filter((p) => p.baris === r).length === isi), `titik per lima ${n}: tiap baris sebanyak barisLima`);
   }
+  for (let n = 1; n <= LC.BANYAK_KOTAK_MAKS; n += 1) {
+    const t = LC.titikKumpulan(n, 2, 2, 66, 66, 18, 15);
+    cek(t.length === n && new Set(t.map((p) => `${p.x},${p.y}`)).size === n, `kumpulan ${n}: sebanyak data dan tiap titik berbeda`);
+    cek(t.every((p) => p.x - 7 >= 2 && p.x + 7 <= 68 && p.y - 7 >= 2 && p.y + 7 <= 68), `kumpulan ${n}: semua benda di dalam kotak`);
+    cek(t.every((p, i) => i === 0 || Math.abs(p.x - t[0].x) % 18 < 1e-9), `kumpulan ${n}: kisi tiga kolom berjarak sama`);
+  }
   sama(LC.barisLima(12), [5, 5, 2], "susun per lima dua belas");
   sama(LC.barisLima(10), [5, 5], "susun per lima sepuluh");
 }
@@ -231,7 +237,7 @@ const BUKAN_A = /pola bilangan|barisan|\bsuku\b|\baturan\b|\bmesin\b/i;
   /* Infografis kartu 1: tabel selisih dari Story. */
   const dA = DK.DERET_INFO[0];
   const dB = DK.DERET_INFO[1];
-  sama(dA.banyak, [2, 4, 6, 8, 10], "infografis: deret angklung dua, empat, enam, delapan, sepuluh");
+  sama(dA.banyak, [2, 4, 6, 8, 10, 12, 14], "infografis: deret angklung dua sampai empat belas (deret ketujuh)");
   sama(dB.banyak, [7, 5, 3, 1], "infografis: deret penabuh tujuh, lima, tiga, satu");
   cek(DK.selisihKe(dA.banyak, 0) === null && dA.banyak.slice(1).every((_, i) => DK.selisihKe(dA.banyak, i + 1) === 2) && dB.banyak.slice(1).every((_, i) => DK.selisihKe(dB.banyak, i + 1) === -2), "infografis: selisih +2 dan -2 dihitung dari data");
   cek(DK.teksSelisih(2) === "+2" && DK.teksSelisih(-2) === "−2", "infografis: tanda selisih");
@@ -243,6 +249,8 @@ const BUKAN_A = /pola bilangan|barisan|\bsuku\b|\baturan\b|\bmesin\b/i;
     }
     cek(tanpaDigit(d.suaraJenis) && bersih(d.suaraJenis) && bersih(d.nama), `infografis: suara jenis ${d.kunci} tanpa digit`);
   }
+  cek(/empat belas/.test(DK.suaraBanyak(dA, 6)) && /ketujuh/.test(DK.suaraBanyak(dA, 6)) && tanpaDigit(DK.suaraBanyak(dA, 6)) && dA.terlihat < 7, "infografis: deret ketujuh empat belas, suara tanpa digit, isinya tertutup");
+  cek(semuaMM.includes("deret ketujuh") && semuaMM.includes("empat belas") && semuaMM.includes("kotak yang kosong"), "mind-map: deret ketujuh dan kotak yang kosong");
   cek(/delapan/.test(DK.suaraBanyak(dA, 3)) && /sepuluh/.test(DK.suaraBanyak(dA, 4)) && /satu/.test(DK.suaraBanyak(dB, 3)), "infografis: suara menyebut delapan, sepuluh, dan satu");
   sama(DK.PEGANGAN_INFO.map((p) => p.gambar), ["tumbuh", "kecil", "habis", "gambar", "tabel", "lima"], "infografis: kartu pegangan enam baris (membesar, mengecil, nol, tiga cara)");
   cek(DK.PEGANGAN_INFO.every((p) => tanpaDigit(p.suara) && bersih(p.kiri + p.isi + p.suara) && !BUKAN_A.test(p.kiri + p.isi + p.suara) && p.isi.split(/\s+/).length <= 5 && KATA_PENDEK(p.isi)), "infografis: kartu pegangan suara tanpa digit, kata terlarang, isi pendek");
@@ -301,14 +309,14 @@ const TAHAP = [
         cek(emojiSah(q.suara) && emojiSah(q.judul), `${nama} misi ${s.nomor}: emoji sah`);
         if (rupa === "lambang") cek(!SALAH.test(q.suara), `${nama} misi ${s.nomor} ${q.metode}: tahap Abstract tanpa menyebut gambar, titik, atau kotak`);
         // Jenis dan jawaban sesuai metode.
-        if (q.metode === "igil" && l.tipe !== "salah") cek(l.tipe === "jenis", `${nama} misi ${s.nomor}: IGIL membaca jenis pola dari tiga deret`);
+        if (q.metode === "igil" && l.tipe !== "salah") cek(l.tipe === "jenis" || (l.tipe === "lengkapi" && s.cara === "klik"), `${nama} misi ${s.nomor}: IGIL membaca jenis pola dari tiga deret atau melengkapi pola (hanya Klik)`);
         if (q.metode === "gambar") cek(d.tipe === "gambar", `${nama} misi ${s.nomor}: Draw the Next menggambar deret berikutnya`);
         if (q.metode === "tabel") cek(d.tipe === "tabel", `${nama} misi ${s.nomor}: Difference Table memakai tabel selisih`);
         if (q.metode === "lima") cek(d.tipe === "lima", `${nama} misi ${s.nomor}: Group by Five menyusun per lima`);
         // Data berbeda dari Story pada tugas yang bukan seed Cari kesalahan.
         if (l.tipe !== "salah") cek(!dataStory(d.p), `${nama} misi ${s.nomor} ${q.metode}: bukan data Story`);
         // Pola sah: selisih bukan nol, deret ke-1 sampai ke-4 positif.
-        const tampil = d.tipe === "gambar" ? 4 : d.tipe === "tabel" ? (s.cara === "kanvas" ? 5 : 3) : d.tipe === "lima" ? d.k : 3;
+        const tampil = d.tipe === "gambar" || d.tipe === "lengkapi" ? 4 : d.tipe === "tabel" ? (d.ke ?? (s.cara === "kanvas" ? 5 : 3)) : d.tipe === "lima" ? d.k : 3;
         cek(Number.isInteger(d.p.a) && Number.isInteger(d.p.d) && d.p.d !== 0 && LC.deretKe(d.p, tampil).every((n) => n >= 1), `${nama} misi ${s.nomor} ${q.metode}: deret sah, tidak sampai nol atau negatif`);
         if (rupa !== "lambang") cek((d.tipe === "lima" ? [LC.banyakLima(d)] : LC.deretKe(d.p, 3)).every((n) => n <= 14), `${nama} misi ${s.nomor} ${q.metode}: gambar muat satu baris (paling banyak empat belas)`);
         // Jawaban dihitung dari data.
@@ -324,8 +332,18 @@ const TAHAP = [
           if (s.cara === "kanvas") sama(kunci, { jenis: "angka", n: n4 }, `${nama} gambar ${d.p.a},${d.p.d}: banyak deret keempat kanvas`);
           if (s.cara === "suara") sama(kunci, { jenis: "nama", nama: d.p.d > 0 ? "banyak" : "sedikit" }, `${nama} gambar ${d.p.a},${d.p.d}: lebih banyak atau lebih sedikit`);
         }
+        if (d.tipe === "lengkapi") {
+          sama(kunci, { jenis: "nama", nama: String(d.p.a + (d.kosong - 1) * d.p.d) }, `${nama} lengkapi ${d.p.a},${d.p.d},${d.kosong}: banyak pada kotak kosong (n - 1 lompatan)`);
+          cek(s.cara === "klik" && q.cara === "klik" && d.kosong >= 1 && d.kosong <= 4, `${nama} lengkapi: hanya Klik, kotak kosong salah satu dari empat`);
+          cek(LC.deretKe(d.p, 4).every((n) => n >= 1 && n <= LC.BANYAK_KOTAK_MAKS), `${nama} lengkapi ${d.p.a},${d.p.d}: empat kotak berisi satu sampai dua belas (muat kisi tiga kolom)`);
+          cek(LC.pilihanKlik(l).every((n) => Number(n) >= 1 && Number(n) <= LC.BANYAK_KOTAK_MAKS), `${nama} lengkapi: gambar pilihan muat kisi`);
+          cek(!/gambar|petak|kisi|titik|kotak/i.test(LC.barisKartu(d, "klik").join(" ")), `${nama} lengkapi: kartu kata tanpa menyebut gambar`);
+        }
         if (d.tipe === "tabel") {
-          if (s.cara === "klik") sama(kunci, { jenis: "nama", nama: LC.teksBeda(d.p.d) }, `${nama} tabel ${d.p.a},${d.p.d}: selisih bertanda klik`);
+          if (s.cara === "klik" && d.ke !== undefined) {
+            sama(kunci, { jenis: "nama", nama: String(d.p.a + (d.ke - 1) * d.p.d) }, `${nama} tabel uraian ${d.p.a},${d.p.d},ke-${d.ke}: banyak pada deret ke-n (n - 1 lompatan)`);
+            cek(d.ke >= 5 && d.ke <= 7, `${nama} tabel uraian: deret kelima sampai ketujuh`);
+          } else if (s.cara === "klik") sama(kunci, { jenis: "nama", nama: LC.teksBeda(d.p.d) }, `${nama} tabel ${d.p.a},${d.p.d}: selisih bertanda klik`);
           if (s.cara === "kanvas") sama(kunci, { jenis: "angka", n: d.p.a + 4 * d.p.d }, `${nama} tabel ${d.p.a},${d.p.d}: deret kelima (empat lompatan)`);
           if (s.cara === "suara") sama(kunci, { jenis: "nama", nama: d.p.d > 0 ? "membesar" : "mengecil" }, `${nama} tabel ${d.p.a},${d.p.d}: jenis dari tanda selisih`);
         }
@@ -413,6 +431,16 @@ const TAHAP = [
   const sc = salahDi(D.CONCRETE);
   cek(/dua belas, sembilan, enam/.test(sc.kataTokoh) && /menambah tiga/.test(sc.kataTokoh) && sc.jawabTokoh === "9" && sc.dasar.p.a === 12 && sc.dasar.p.d === -3, "seed Concrete: deret dua belas, sembilan, enam dilanjutkan menjadi sembilan karena menambah tiga");
   cek(/makin sedikit/.test(salahDi(D.PICTORIAL).kataTokoh) && /mengurangi selisih yang sama/.test(salahDi(D.PICTORIAL).kataTokoh), "seed Pictorial: gambar makin sedikit dilanjutkan dengan mengurangi selisih yang sama");
+  // Selaras buku: tiap tahap Klik memuat Melengkapi pola dan tabel uraian sampai deret ke-n; pola mengecil sembilan, tujuh, lima, tiga, satu ada di Pictorial.
+  for (const [nama, soal] of TAHAP) {
+    const lk = soal[0].langkah.map((q) => q.langkah);
+    cek(lk.filter((l) => l.tipe === "lengkapi").length === 1 && lk.filter((l) => l.tipe === "tabel" && l.ke !== undefined).length === 1, `${nama}: satu Melengkapi pola dan satu tabel uraian di misi Klik`);
+  }
+  const ketiga = TAHAP.map(([, soal]) => soal[0].langkah.map((q) => q.langkah).find((l) => l.tipe === "lengkapi"));
+  sama(ketiga.map((l) => l.kosong), [3, 1, 2], "Melengkapi pola: kotak kosong di tempat berbeda tiap tahap (ketiga, pertama, kedua)");
+  cek(new Set(ketiga.map((l) => `${l.p.a},${l.p.d}`)).size === 3 && ketiga.some((l) => l.p.d > 0) && ketiga.some((l) => l.p.d < 0), "Melengkapi pola: tiga pola berbeda, ada yang membesar dan ada yang mengecil");
+  const uraian = TAHAP.map(([, soal]) => soal[0].langkah.map((q) => q.langkah).find((l) => l.tipe === "tabel"));
+  sama(uraian.map((l) => LC.deretKe(l.p, l.ke)), [[3, 5, 7, 9, 11, 13, 15], [9, 7, 5, 3, 1], [36, 31, 26, 21, 16, 11, 6]], "tabel uraian: deret ketujuh membesar, sembilan tujuh lima tiga satu, dan tiga puluh enam sampai enam");
   // Dua belas tugas per tahap.
   for (const [nama, soal] of TAHAP) sama(soal.reduce((n, s) => n + s.langkah.length, 0), 12, `${nama}: dua belas tugas`);
   // Poin penting dan jembatan.

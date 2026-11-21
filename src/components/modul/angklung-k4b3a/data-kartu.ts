@@ -2,7 +2,7 @@
  * Data Mind-map dan Infografis Kelas 4 Bab 3 Sub-Bab A "Deret Angklung Bu Ratri" (dirancang sendiri, tanpa komponen kartu bersama).
  * Mind-map: rak angklung bertingkat di lapangan Kampung Senandung. Rak atas = deret tumbuh (dua, empat, enam, delapan, lalu sepuluh), rak bawah = deret penabuh (tujuh, lima, tiga, satu, lalu habis),
  * satu papan kecil memuat tiga cara pintar. Enam label kosong menempel pada bagian rak yang cocok; diketuk, judul langkah muncul dan dibacakan Guru.
- * Infografis: dua kartu. Kartu 1 = tabel selisih dua deret dari Story (dua, empat, enam, delapan, sepuluh; tujuh, lima, tiga, satu) dengan gambar angklung sungguhan sebanyak datanya.
+ * Infografis: dua kartu. Kartu 1 = tabel selisih dua deret dari Story (dua, empat, enam, delapan, sepuluh, dua belas, empat belas sampai deret ketujuh; tujuh, lima, tiga, satu) dengan gambar angklung sungguhan sebanyak datanya.
  * Kartu 2 = kartu pegangan Bu Ratri: enam kebiasaan pola gambar (membesar, mengecil, berhenti di nol, tiga cara pintar). Digital saja.
  * Suara tanpa digit: bilangan dieja lewat eja-k4b3.ts. Diuji: scripts/uji-angklung-k4b3a.mjs.
  */
@@ -22,7 +22,7 @@ export const LANGKAH_ANGKLUNG: LangkahPeta[] = [
   },
   {
     judul: "Lanjutkan deret",
-    arti: "Langkah tiga. Untuk melanjutkan deret, tambahkan selisih yang sama lagi. Dua, empat, enam, delapan, lalu sepuluh angklung.",
+    arti: "Langkah tiga. Untuk melanjutkan deret, tambahkan selisih yang sama lagi. Dua, empat, enam, delapan, lalu sepuluh angklung. Sampai deret ketujuh, hasilnya empat belas.",
   },
   {
     judul: "Selisih kurang: mengecil",
@@ -34,7 +34,7 @@ export const LANGKAH_ANGKLUNG: LangkahPeta[] = [
   },
   {
     judul: "Pilih cara pintar",
-    arti: "Langkah enam. Pilih cara yang pas. Gambar Berikutnya untuk membayangkan deret berikutnya. Tabel Selisih untuk memastikan selisihnya sama. Susun Per Lima untuk menghitung benda yang banyak dengan cepat.",
+    arti: "Langkah enam. Pilih cara yang pas. Gambar Berikutnya untuk membayangkan deret berikutnya, atau mengisi kotak yang kosong. Tabel Selisih untuk memastikan selisihnya sama. Susun Per Lima untuk menghitung benda yang banyak dengan cepat.",
   },
 ];
 export const JUDUL_RAK_ATAS = "Rak deret tumbuh";
@@ -66,7 +66,7 @@ export const DERET_INFO: readonly DeretInfo[] = [
   {
     kunci: "a",
     nama: "Deret angklung Bu Ratri",
-    banyak: [2, 4, 6, 8, 10],
+    banyak: [2, 4, 6, 8, 10, 12, 14],
     terlihat: 3,
     jenis: "Pola membesar",
     suaraJenis: kata("Selisihnya selalu +2, jadi tiap deret makin banyak. Ini pola membesar."),
@@ -99,7 +99,7 @@ export const PEGANGAN_INFO: readonly PeganganInfo[] = [
   { kunci: "tumbuh", gambar: "tumbuh", kiri: "2, 4, 6", isi: "Pola membesar", suara: kata("Selisih tetap tambah, polanya membesar. 2, 4, 6, lalu 8.") },
   { kunci: "kecil", gambar: "kecil", kiri: "7, 5, 3", isi: "Pola mengecil", suara: kata("Selisih tetap kurang, polanya mengecil. Lihat arah perubahan, bukan besar angka 7.") },
   { kunci: "habis", gambar: "habis", kiri: "7, 5, 3, 1, …", isi: "Berhenti di nol", suara: kata("Dikurangi 2 lagi, angklungnya habis. Pola mengecil berhenti di nol.") },
-  { kunci: "gambar", gambar: "gambar", kiri: "Gambar Berikutnya", isi: "Bayangkan deret berikutnya", suara: kata("Gambar Berikutnya: gambar deret selanjutnya dengan perubahan yang sama, supaya pola terlihat jelas.") },
+  { kunci: "gambar", gambar: "gambar", kiri: "Gambar Berikutnya", isi: "Bayangkan deret berikutnya", suara: kata("Gambar Berikutnya: gambar deret selanjutnya dengan perubahan yang sama, supaya pola terlihat jelas. Kotak yang kosong juga diisi dengan selisih yang sama.") },
   { kunci: "tabel", gambar: "tabel", kiri: "Tabel Selisih", isi: "Pastikan selisih sama", suara: kata("Tabel Selisih: tulis banyak tiap deret, lalu selisihnya di bawah. Selisih yang sama membuktikan pola.") },
   { kunci: "lima", gambar: "lima", kiri: "Susun Per Lima", isi: "Hitung benda banyak dengan cepat", suara: kata("Susun Per Lima: susun benda dalam baris berisi 5, jadi banyaknya terbaca sekilas.") },
 ];

@@ -5,7 +5,7 @@ Suara tanpa digit; bilangan dan tambah atau kurang diucapkan dengan kata, dan ta
 
 Data Story A (jangan dijadikan jawaban CPA): deret angklung dua, empat, enam (tambah dua, membesar; deret keempat delapan, deret kelima sepuluh); deret penabuh tujuh, lima, tiga (kurang dua, mengecil; berikutnya satu lalu habis); salah Satria: tujuh, lima, tiga membesar karena angka tujuh itu besar.
 
-## Video materi (300 sampai 400 kata termasuk sapaan, 9 adegan, 3 ketukan tiap adegan; tanpa latihan)
+## Video materi (300 sampai 400 kata termasuk sapaan, 10 adegan, 3 ketukan tiap adegan; tanpa latihan)
 
 Sapaan (bersama): topik "pola gambar"; daftar: "pola membesar", "pola mengecil", "selisih tetap".
 
@@ -37,6 +37,10 @@ Sapaan (bersama): topik "pola gambar"; daftar: "pola membesar", "pola mengecil",
    - "Bu Ratri meminta deret angklung dilanjutkan, dua, empat, enam, delapan, lalu sepuluh."
    - "Deret kelima berisi sepuluh angklung, dan Genta menyusunnya satu per satu."
    - "Untuk pola mengecil, tujuh, lima, tiga, kita kurangi dua lagi sehingga tinggal satu."
+7b. `ketujuh` (selaras buku: deret ketujuh lewat tabel uraian, kotak kosong yang dilengkapi, pola mengecil dari sembilan; jawaban buku: tabel uraian 2 + 2 sampai 14, "pilih gambar pelengkap", permen 9, 7, 5, 3, 1)
+   - "Bu Ratri menulis tabel uraian sampai deret ketujuh, dua ditambah dua terus, jadi empat belas."
+   - "Genta menyusun empat kotak, satu kosong, lalu memilih gambar pelengkap."
+   - "Sembilan, tujuh, lima, tiga, satu: mengecil boleh dimulai dari angka besar."
 8. `habis`
    - "Satria bertanya, kalau dikurangi dua lagi, hasilnya berapa?"
    - "Bu Ratri tersenyum, angklungnya sudah habis, jadi polanya berhenti di nol."

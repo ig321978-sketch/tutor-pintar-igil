@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import { JawabTulis } from "../lemari-k1b1a/Jawab";
 import { kalimatKunci, kalimatTanya, kunciJawab, petunjukSalah, pilihanKlik, pilihanSuara, siapLangsung, teksKunciKlik, ucapkan, type Cara, type Langkah, type LangkahSalah, type LangkahSoal, type Rupa } from "./logika-cpa";
-import { JawabSuaraAngklung, PilihanKata } from "./JawabAngklung";
-import { TampilDasar } from "./GambarAngklung";
+import { JawabSuaraAngklung, PilihanGambar, PilihanKata } from "./JawabAngklung";
+import { TampilDasar, simbolBenda } from "./GambarAngklung";
 
 /**
  * Satu tugas CPA Kelas 4 Bab 3 Sub-Bab A: metode IGIL (jenis pola, selisih, tambah atau kurang dari tiga deret), Draw the Next (Gambar Berikutnya: banyak deret keempat),
@@ -140,6 +140,8 @@ export function LangkahAngklung({ ls, rupa, bicara, onBenar }: P) {
             <JawabTulis kunci={kunci.n} onBenar={(t) => jawab(kunci.n, true, "", t)} onSalah={salah} />
           ) : cara === "suara" ? (
             <JawabSuaraAngklung kunci={kunci} pilihan={pilihan} mati={mati} onJawab={(t, benar, terdengar, tunjuk) => jawab(t, benar, terdengar && !benar ? `Terdengar ${t}. ` : "", tunjuk)} onPesan={setPesan} />
+          ) : l.tipe === "lengkapi" && rupa !== "lambang" ? (
+            <PilihanGambar pilihan={pilihan} mati={mati} rupa={rupa} simbol={simbolBenda(l.p)} onPilih={(n) => jawab(n, cocokKlik(n))} />
           ) : (
             <PilihanKata pilihan={pilihan} mati={mati} onPilih={(n) => jawab(n, cocokKlik(n))} />
           )}

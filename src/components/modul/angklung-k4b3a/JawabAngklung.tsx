@@ -3,7 +3,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { hentikanSuaraGuruModul } from "@/lib/suara-guru-modul";
 import { BATAS_SALAH } from "../lemari-k1b1a/Jawab";
-import { kata, type Kunci } from "./logika-cpa";
+import { kata, type Kunci, type Rupa } from "./logika-cpa";
+import { GambarPilihan } from "./GambarAngklung";
 import { cocokUcapan } from "./periksa";
 
 /**
@@ -25,6 +26,26 @@ export function PilihanKata({ pilihan, mati, onPilih, lebar = false }: { pilihan
           className="min-h-[52px] min-w-[96px] rounded-2xl border-4 border-[#1C01A5] bg-[#FFE566] px-3 text-base font-black text-[#1C01A5] shadow-[0_4px_0_rgba(28,1,165,0.3)] disabled:opacity-30"
         >
           {n}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/** Pilihan gambar (tugas melengkapi pola): tiap tombol memuat satu kotak berisi benda sebanyak pilihannya. Pilihan berupa bilangan dalam teks. */
+export function PilihanGambar({ pilihan, mati, onPilih, rupa, simbol }: { pilihan: string[]; mati: string[]; onPilih: (nama: string) => void; rupa: Rupa; simbol: string }) {
+  return (
+    <div className="mx-auto grid max-w-[420px] grid-cols-3 gap-2" role="group" aria-label="Pilih gambar yang melengkapi">
+      {pilihan.map((n) => (
+        <button
+          key={n}
+          type="button"
+          disabled={mati.includes(n)}
+          onClick={() => onPilih(n)}
+          aria-label={`Gambar berisi ${n}`}
+          className="flex min-h-[84px] items-center justify-center rounded-2xl border-4 border-[#1C01A5] bg-white p-1 shadow-[0_4px_0_rgba(28,1,165,0.3)] disabled:opacity-30"
+        >
+          <GambarPilihan n={Number(n)} rupa={rupa} simbol={simbol} />
         </button>
       ))}
     </div>

@@ -195,7 +195,7 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
   }
   cek(M_VIDEO.subjudul === "Metode Kurikulum" && U.subjudul === "Metode Global" && M_VIDEO.judul === "Deret Angklung Bu Ratri" && U.judul === M_VIDEO.judul && V.JUDUL_K4B3A === M_VIDEO.judul, "judul dan subjudul");
   cek(M_VIDEO.id === "k4b3a-materi" && U.id === "k4b3a-luar" && M_VIDEO.jenis === "materi" && U.jenis === "metode-luar", "id dan jenis video");
-  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,lapangan,deret-tumbuh,tabel,salah-mengecil,kurang,mengangkat,lanjut,habis,penutup", "urutan adegan materi");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,lapangan,deret-tumbuh,tabel,salah-mengecil,kurang,mengangkat,lanjut,ketujuh,habis,penutup", "urutan adegan materi");
   cek(U.adegan.map((a) => a.id).join() === "sapaan,luar-pembuka,luar-gambar,luar-gambar-terapan,luar-tabel,luar-tabel-terapan,luar-lima,luar-lima-terapan,luar-ringkas", "urutan adegan metode global");
   cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 52) && U.adegan.every((a) => /Metode global|Ringkasan|ringkasan/i.test(a.sumber) && a.sumber.length <= 52), "label sumber");
   const TERLARANG = /(kelas|buku|teman|kelompok|mengelompokkan|skor|nilai|soal|tebak|kunci|latihan|senilai|ditemani)/i;
@@ -349,6 +349,22 @@ for (const v of VIDEO) for (const a of v.adegan) a.ketukan.forEach((_, i) => { f
     sama(["v1", "v2", "v3", "v4"].map((id) => isiTeks(q, `${id}-t`)), ["7", "5", "3", "1"], "lanjut: tujuh, lima, tiga, lalu satu");
     cek(isiTeks(q, "kk") === "−2" && 3 - 2 === 1 && ada(q, "ak", "br") && tidakAda(q, "d5-c0"), "lanjut: pola mengecil dikurangi dua lagi tinggal satu");
     deretBenar(q, "d6", 1, "lanjut tinggal satu");
+  }
+  const kj = adegan(M_VIDEO, "ketujuh");
+  {
+    const o = akhirAdegan(kj, 0);
+    const banyakBaris = [1, 2, 3, 7].map((i) => isiTeks(o, `r${i}b`));
+    sama(banyakBaris, ["2", "4", "6", "14"], "ketujuh: tabel uraian, deret pertama sampai ketiga dan deret ketujuh empat belas");
+    sama([2, 3].map((i) => isiTeks(o, `r${i}u`)), ["2 + 2", "4 + 2"], "ketujuh: uraian dua ditambah dua dan empat ditambah dua");
+    sama([1, 2, 3, 4, 5, 6, 7].map((i) => isiTeks(o, `r${i}n`)), ["1", "2", "3", "4", "5", "6", "7"], "ketujuh: tujuh baris urutan");
+    cek(2 + 6 * 2 === 14 && ketemu(o, "r7u").sorot === true, "ketujuh: dua ditambah dua sebanyak enam kali sama dengan empat belas");
+    const p = akhirAdegan(kj, 1);
+    const hitung = (id) => p.filter((x) => x.id.startsWith(`${id}-c`) && /^\d+$/.test(x.id.slice(id.length + 2))).length;
+    sama([hitung("q1"), hitung("q2"), hitung("q4"), hitung("o1"), hitung("o2"), hitung("o3")], [2, 4, 8, 5, 6, 7], "ketujuh: kotak kosong, titik sungguh sebanyak data (dua, empat, delapan, dan tiga pilihan)");
+    cek(ada(p, "q3", "q3t", "pk", "ok") && hitung("q3") === 0 && 2 + 2 * 2 === 6 && hitung("o2") === 6, "ketujuh: kotak ketiga kosong, gambar enam yang melengkapi (dua, empat, enam, delapan)");
+    const q = akhirAdegan(kj, 2);
+    sama(["w1", "w2", "w3", "w4", "w5"].map((id) => isiTeks(q, `${id}-t`)), ["9", "7", "5", "3", "1"], "ketujuh: pola mengecil sembilan, tujuh, lima, tiga, satu");
+    selisihTetap(["w1", "w2", "w3", "w4", "w5"].map((id) => Number(isiTeks(q, `${id}-t`))), -2, "ketujuh: sembilan sampai satu");
   }
   const hb = adegan(M_VIDEO, "habis");
   {

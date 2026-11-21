@@ -5,16 +5,19 @@
  * Abstract memakai kartu kata dan angka di daftar Bu Ratri.
  * Jawaban beragam: memilih jenis pola, selisih, atau banyaknya, menulis satu angka di kanvas, dan mengucapkan satu kata atau bilangan. Jawaban benar dihitung dari data.
  * Angka jawaban Tulis di kanvas per tahap: Concrete 3, 7, 6, 2; Pictorial 3, 6, 2, 4; Abstract 7, 9, 8, 3 (tidak kembar dalam satu tahap).
+ * Selaras buku (Pola Gambar hlm 86-101): misi Klik membuka dengan tugas Melengkapi pola (pilih gambar yang melengkapi kotak kosong; Concrete kotak ketiga, Pictorial kotak pertama, Abstract kartu kedua)
+ * dan Tabel Selisih Klik berupa tabel uraian sampai deret ke-n (Concrete deret ketujuh 15, Pictorial deret kelima 1 dari sembilan, tujuh, lima, tiga, satu yang mengecil, Abstract deret ketujuh 6).
  * Diuji: scripts/uji-angklung-k4b3a.mjs.
  */
-import type { Cara, Langkah, LangkahSalah, LangkahSoal, LGambar, LJenis, LLima, LTabel, Rupa, SoalMisi } from "./logika-cpa";
+import type { Cara, Langkah, LangkahSalah, LangkahSoal, LGambar, LJenis, LLengkapi, LLima, LTabel, Rupa, SoalMisi } from "./logika-cpa";
 import { URUT_METODE, instruksi, ucapkan } from "./logika-cpa";
 
 export { MISI_ANGKLUNG_TEKS } from "./data-sim";
 
 const jenis = (a: number, d: number): LJenis => ({ tipe: "jenis", p: { a, d } });
 const gambar = (a: number, d: number): LGambar => ({ tipe: "gambar", p: { a, d } });
-const tabel = (a: number, d: number): LTabel => ({ tipe: "tabel", p: { a, d } });
+const tabel = (a: number, d: number, ke?: number): LTabel => ({ tipe: "tabel", p: { a, d }, ...(ke ? { ke } : {}) });
+const lengkapi = (a: number, d: number, kosong: number): LLengkapi => ({ tipe: "lengkapi", p: { a, d }, kosong });
 const lima = (a: number, d: number, k: number): LLima => ({ tipe: "lima", p: { a, d }, k });
 const salah = (dasar: LGambar, tokoh: string, kataTokoh: string, jawabTokoh: string, alasan: [string, string, string], benar: number, keliru: string, betul = false): LangkahSalah => ({
   tipe: "salah",
@@ -46,7 +49,7 @@ const satuMisi =
 const C = satuMisi("benda");
 export const CONCRETE: SoalMisi[] = [
   C(2, "klik", "Misi Deret 2: rak angklung", "Bu Ratri menata deret angklung di rak lapangan. Periksa gambarnya.", [
-    jenis(4, 3),
+    lengkapi(2, 3, 3),
     salah(
       gambar(12, -3),
       "Satria",
@@ -60,7 +63,7 @@ export const CONCRETE: SoalMisi[] = [
       1,
       "Deret yang makin sedikit dilanjutkan dengan mengurangi selisih yang sama, bukan menambahnya.",
     ),
-    tabel(9, -3),
+    tabel(3, 2, 7),
     lima(3, 3, 4),
   ]),
   C(3, "kanvas", "Misi Deret 3: papan catatan", "Laras mencatat deret angklung di papan catatan. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [jenis(10, -3), gambar(1, 2), tabel(2, 1), lima(4, 4, 3)]),
@@ -71,7 +74,7 @@ export const CONCRETE: SoalMisi[] = [
 const Pi = satuMisi("diagram");
 export const PICTORIAL: SoalMisi[] = [
   Pi(5, "klik", "Misi Deret 5: kertas pola", "Genta menyalin deret angklung ke kertas pola. Periksa gambarnya.", [
-    jenis(2, 4),
+    lengkapi(12, -3, 1),
     salah(
       gambar(10, -2),
       "Genta",
@@ -86,7 +89,7 @@ export const PICTORIAL: SoalMisi[] = [
       "Jawaban Genta benar: deret yang makin sedikit dilanjutkan dengan mengurangi selisih yang sama.",
       true,
     ),
-    tabel(5, 3),
+    tabel(9, -2, 5),
     lima(2, 4, 4),
   ]),
   Pi(6, "kanvas", "Misi Deret 6: bagan Laras", "Laras menggambar bagan deret angklung. Periksa gambarnya, lalu tulis jawabanmu di kanvas.", [jenis(11, -3), gambar(3, 1), tabel(10, -2), lima(3, 3, 3)]),
@@ -97,7 +100,7 @@ export const PICTORIAL: SoalMisi[] = [
 const A = satuMisi("lambang");
 export const ABSTRACT: SoalMisi[] = [
   A(8, "klik", "Misi Deret 8: daftar Bu Ratri", "Daftar Bu Ratri hanya berisi kata dan angka.", [
-    jenis(3, 5),
+    lengkapi(3, 3, 2),
     salah(
       gambar(11, -3),
       "Satria",
@@ -111,7 +114,7 @@ export const ABSTRACT: SoalMisi[] = [
       0,
       "Arah pola ditentukan oleh perubahan banyaknya, bukan oleh besar angkanya.",
     ),
-    tabel(2, 6),
+    tabel(36, -5, 7),
     lima(4, 5, 3),
   ]),
   A(9, "kanvas", "Misi Deret 9: tulis di daftar", "Laras meminta kamu menulis jawaban di kanvas.", [jenis(2, 7), gambar(3, 2), tabel(4, 1), lima(5, 4, 3)]),
@@ -124,7 +127,7 @@ export const POIN_PENTING = [
   "Kalau tiap deret berkurang dengan selisih yang sama, polanya mengecil. Contoh: 7, 5, 3 dengan selisih −2.",
   "Jenis pola ditentukan oleh arah perubahannya, bukan oleh besar kecilnya angka.",
   "Pola mengecil berhenti di nol, karena benda tidak bisa kurang dari tidak ada.",
-  "Gambar Berikutnya, Tabel Selisih, dan Susun Per Lima membantu melanjutkan pola tanpa salah hitung.",
+  "Gambar Berikutnya, Tabel Selisih, dan Susun Per Lima membantu melanjutkan pola sampai deret ketujuh dan mengisi kotak yang kosong.",
 ];
 /** Poin penting untuk suara (tanpa digit): bilangan dan tanda selisih menjadi kata. */
 export const POIN_PENTING_SUARA = POIN_PENTING.map((p) => ucapkan(p));

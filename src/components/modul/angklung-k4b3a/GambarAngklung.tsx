@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { banyakKe, barisKartu, barisLima, dasarDari, deretKe, teksBeda, titikBaris, titikLima, urutan, type Cara, type Langkah, type LangkahDasar, type Pola, type Rupa } from "./logika-cpa";
+import { banyakKe, barisKartu, barisLima, dasarDari, deretKe, teksBeda, titikBaris, titikKumpulan, titikLima, urutan, type Cara, type Langkah, type LangkahDasar, type Pola, type Rupa } from "./logika-cpa";
 
 /**
  * Gambar tahap Concrete, Pictorial, dan Abstract Kelas 4 Bab 3 Sub-Bab A (pola gambar: deret berselisih tetap, tabel selisih, susunan per lima):
@@ -28,7 +28,7 @@ export function Gambar({ label, judul, children, rupa = "benda", tinggi = 200 }:
   return (
     <svg viewBox={`0 0 300 ${tinggi}`} className={SVG} aria-label={label} role="img">
       <rect x={0} y={0} width={300} height={tinggi} rx={12} fill={warnaAngklung(rupa).latar} />
-      <text x={150} y={14} textAnchor="middle" fontSize={10} fontWeight={900} fill={warnaAngklung(rupa).angka}>
+      <text x={150} y={14} textAnchor="middle" fontSize={13} fontWeight={900} fill={warnaAngklung(rupa).angka}>
         {judul}
       </text>
       {children}
@@ -148,6 +148,86 @@ export function TabelSelisih({ p, rupa, kolom, tampil, selisih, simbol, teksSel 
   );
 }
 
+/** Tabel uraian (urutan, banyak, uraian) sampai deret ke-`ke` (paling jauh ketujuh): tiga baris pertama terisi, sisanya tanda tanya yang harus dihitung satu per satu. */
+export function TabelUraian({ p, rupa, ke, simbol }: { p: Pola; rupa: Rupa; ke: number; simbol: string }) {
+  const w = warnaAngklung(rupa);
+  const nilai = deretKe(p, 3);
+  const op = p.d > 0 ? "+" : "−";
+  const b = Math.abs(p.d);
+  const y0 = 56;
+  const dy = 17;
+  const tinggi = 24 + ke * dy;
+  return (
+    <g data-tabel="uraian">
+      <rect x={6} y={30} width={288} height={tinggi + 6} rx={6} fill={w.isi} stroke={w.garis} strokeWidth={1.8} />
+      <text x={32} y={y0 - 16} textAnchor="middle" fontSize={13.5} fontWeight={900} fill={w.angka}>
+        urutan
+      </text>
+      <text x={118} y={y0 - 16} textAnchor="middle" fontSize={13.5} fontWeight={900} fill={w.angka}>
+        banyak
+      </text>
+      <text x={250} y={y0 - 16} textAnchor="middle" fontSize={13.5} fontWeight={900} fill={w.angka}>
+        uraian
+      </text>
+      <line x1={6} y1={y0 - 10} x2={294} y2={y0 - 10} stroke={w.garis} strokeWidth={1} />
+      {Array.from({ length: ke }, (_, i) => {
+        const y = y0 + i * dy;
+        const tahu = i < 3;
+        const sebelum = i > 0 && tahu ? nilai[i - 1] : null;
+        const butir = tahu ? titikBaris(Math.min(nilai[i], 10), 88, 90, 8.6) : [];
+        return (
+          <g key={i} data-baris-uraian={i + 1}>
+            <text x={32} y={y + 4} textAnchor="middle" fontSize={13.5} fontWeight={900} fill={w.garis}>
+              {i + 1}
+            </text>
+            <text x={66} y={y + 4} textAnchor="middle" fontSize={i === ke - 1 ? 15 : 13.5} fontWeight={900} fill={tahu ? w.angka : "#DC2626"} data-sel={tahu ? "isi" : "tanya"}>
+              {tahu ? nilai[i] : "?"}
+            </text>
+            {butir.map((t, q) => (
+              <Butir key={q} x={t.x} y={y} langkah={Math.min(t.langkah, 8.6)} rupa={rupa} simbol={simbol} bentuk="titik" />
+            ))}
+            <text x={250} y={y + 4} textAnchor="middle" fontSize={13.5} fontWeight={900} fill={tahu ? "#15803D" : "#DC2626"} data-sel={tahu ? "selisih" : "tanya"}>
+              {i === 0 ? "–" : tahu ? `${sebelum} ${op} ${b}` : `? ${op} ${b}`}
+            </text>
+          </g>
+        );
+      })}
+    </g>
+  );
+}
+
+/** Satu kotak kumpulan: n benda dalam kisi tiga kolom (kisi tetap, benda sungguh sebanyak data). `kosong` menandai kotak yang belum ada. */
+function KotakKumpulan({ x, y, n, rupa, simbol, kosong = false, nomor, ukuran = 66 }: { x: number; y: number; n: number; rupa: Rupa; simbol: string; kosong?: boolean; nomor?: string; ukuran?: number }) {
+  const w = warnaAngklung(rupa);
+  const titik = kosong ? [] : titikKumpulan(n, x, y, ukuran, ukuran, 18, 15);
+  return (
+    <g data-kumpulan={kosong ? "kosong" : n}>
+      <rect x={x} y={y} width={ukuran} height={ukuran} rx={6} fill={kosong ? "none" : w.isi} stroke={w.garis} strokeWidth={1.6} strokeDasharray={kosong ? "5 3" : undefined} />
+      {kosong ? (
+        <text x={x + ukuran / 2} y={y + ukuran / 2 + 9} textAnchor="middle" fontSize={26} fontWeight={900} fill="#DC2626">
+          ?
+        </text>
+      ) : (
+        titik.map((t, i) => <Butir key={i} x={t.x} y={t.y} langkah={15} rupa={rupa} simbol={simbol} bentuk="titik" />)
+      )}
+      {nomor ? (
+        <text x={x + ukuran / 2} y={y + ukuran + 15} textAnchor="middle" fontSize={13.5} fontWeight={900} fill={w.angka}>
+          {nomor}
+        </text>
+      ) : null}
+    </g>
+  );
+}
+
+/** Pilihan gambar untuk tugas melengkapi pola: satu kotak berisi n benda, dipakai di dalam tombol. */
+export function GambarPilihan({ n, rupa, simbol }: { n: number; rupa: Rupa; simbol: string }) {
+  return (
+    <svg viewBox="0 0 70 70" width={70} height={70} role="img" aria-label={`Gambar berisi ${n}`} data-pilihan-gambar={n}>
+      <KotakKumpulan x={2} y={2} n={n} rupa={rupa} simbol={simbol} />
+    </svg>
+  );
+}
+
 /* ------------------------------ Kartu kata (Abstract) ------------------------------ */
 export function KartuKata({ judul, baris }: { judul?: string; baris: string[] }) {
   return (
@@ -172,6 +252,7 @@ const JUDUL_KARTU: Record<LangkahDasar["tipe"], string> = {
   gambar: "melanjutkan deret",
   tabel: "tabel selisih",
   lima: "susunan per lima",
+  lengkapi: "melengkapi pola",
 };
 
 /* ------------------------------ Tampilan satu tugas ------------------------------ */
@@ -210,7 +291,26 @@ export function TampilDasar({ l, rupa, cara }: { l: Langkah; rupa: Rupa; cara: C
         </Gambar>
       );
     }
+    case "lengkapi": {
+      const nilai = deretKe(d.p, 4);
+      return (
+        <Gambar rupa={rupa} label={`Empat kotak berurutan, kotak ${urutan(d.kosong)} kosong`} judul={benda ? "empat kotak di rak" : "empat kotak berurutan"} tinggi={128}>
+          {nilai.map((v, i) => (
+            <KotakKumpulan key={i} x={9 + i * 72} y={24} n={v} rupa={rupa} simbol={simbol} kosong={i + 1 === d.kosong} nomor={`deret ${i + 1}`} />
+          ))}
+          <text x={150} y={121} textAnchor="middle" fontSize={13.5} fontWeight={900} fill={warnaAngklung(rupa).garis}>
+            pilih gambar untuk kotak kosong
+          </text>
+        </Gambar>
+      );
+    }
     case "tabel": {
+      if (d.ke !== undefined)
+        return (
+          <Gambar rupa={rupa} label={`Tabel uraian sampai deret ${urutan(d.ke)}`} judul={benda ? "papan tabel uraian" : "tabel uraian"}>
+            <TabelUraian p={d.p} rupa={rupa} ke={d.ke} simbol={simbol} />
+          </Gambar>
+        );
       const kolom = cara === "kanvas" ? 5 : 3;
       return (
         <Gambar rupa={rupa} label="Tabel banyak tiap deret dan selisihnya" judul={benda ? "papan tabel selisih" : "tabel selisih"}>
