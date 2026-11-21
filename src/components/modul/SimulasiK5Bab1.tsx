@@ -2,87 +2,87 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import LabBertahap, { type TabLab } from "./LabBertahap";
-import SimulasiLabTempatK5B1 from "./SimulasiLabTempatK5B1";
-import SimulasiLabBandingK5B1 from "./SimulasiLabBandingK5B1";
-import SimulasiLabSusunK5B1 from "./SimulasiLabSusunK5B1";
-import SimulasiLabOperasiK5B1 from "./SimulasiLabOperasiK5B1";
-import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
-import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K5B1A, SKENARIO_K5B1B, SKENARIO_K5B1C, SKENARIO_K5B1D } from "./skenario-k5b1";
-import { MESIN_BANDING, MESIN_OPERASI, MESIN_TEMPAT, MESIN_URAIAN } from "./mesin-data-k5b1";
-import { ejaK5B1 } from "./eja-k5b1";
-import type { DefSkenario } from "./skenario-umum";
-import type { DefMesin } from "./mesin-bertahap-k3b1";
-import { daftarMisiK5Bab1, ID_SKENARIO_K5B1, type KeadaanK5Bab1 } from "./misi-k5bab1";
-import { laporMisi, tampilMisi } from "./misi-simulasi";
-import { MISI_K5B1, NAMA_SIM_K5B1, hurufK5B1, misiAwalK5Bab1, type HurufK5B1 } from "./misi-teks-k5b1";
+import { MISI_K5B1, hurufK5B1, misiAwalK5Bab1 } from "./misi-teks-k5b1";
+import { daftarMisiK5Bab1 as daftarMisiTribun } from "./misi-k5bab1";
+import { laporMisi as laporMisiTribun } from "./misi-simulasi";
+import SimulasiTabelTribun from "./tribun-k5b1a/SimulasiTabelTribun";
+import type { KeadaanTribun } from "./tribun-k5b1a/logika";
+import { daftarMisiK5Bab1 as daftarMisiUrutan } from "./misi-k5bab1";
+import { laporMisi as laporMisiUrutan } from "./misi-simulasi";
+import SimulasiGarisUrutan from "./urutan-k5b1b/SimulasiGarisUrutan";
+import type { KeadaanUrutan } from "./urutan-k5b1b/logika";
+import { daftarMisiK5Bab1 as daftarMisiBundel } from "./misi-k5bab1";
+import { laporMisi as laporMisiBundel } from "./misi-simulasi";
+import SimulasiTukarBundel from "./bundel-k5b1c/SimulasiTukarBundel";
+import type { KeadaanBundel } from "./bundel-k5b1c/logika";
+import { daftarMisiK5Bab1 as daftarMisiHitung } from "./misi-k5bab1";
+import { laporMisi as laporMisiHitung } from "./misi-simulasi";
+import SimulasiSusunHitung from "./hitung-k5b1d/SimulasiSusunHitung";
+import type { KeadaanHitung } from "./hitung-k5b1d/logika";
 
 /* ======================================================================== */
-/* Simulasi Kelas 5 Bab 1 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
-/* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k5bab1.ts. */
-/*   A Nilai tempat : Lab Nilai Tempat + Mesin Nilai Tempat + Papan Data Desa */
-/*   B Banding-urut : Lab Banding + Mesin Banding + Lomba Dakon              */
-/*   C Urai-susun   : Lab Susun Bilangan + Mesin Uraian + Uang Asep dan Komang */
-/*   D Operasi      : Lab Operasi + Mesin Operasi + Bakti Sosial Nisa (pencapaian bab) */
+/* Simulasi Kelas 5 Bab 1 di dalam Materi (tahap 4 SMISCPA), tema           */
+/* Hari Pertandingan di Stadion Kota: A Tabel Tribun, B Garis Urutan,        */
+/* C Tukar Bundel, D Susun Hitung.                                           */
+/* KERANGKA: agen Sub-Bab mengisi fungsi langkah-nya (impor dari folder      */
+/* miliknya; render sekarang null) dan menambah impor yang dibutuhkan.        */
 /* ======================================================================== */
 
-const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
+type Void = void;
+const _tipe: [KeadaanTribun?, KeadaanUrutan?, KeadaanBundel?, KeadaanHitung?, Void?] = [];
+void _tipe;
 
-const SKENARIO: Record<HurufK5B1, DefSkenario> = { A: SKENARIO_K5B1A, B: SKENARIO_K5B1B, C: SKENARIO_K5B1C, D: SKENARIO_K5B1D };
-const MESIN: Record<HurufK5B1, DefMesin> = { A: MESIN_TEMPAT, B: MESIN_BANDING, C: MESIN_URAIAN, D: MESIN_OPERASI };
+/** Sub-Bab A: Tabel Tribun. */
+const langkahTabelTribunA = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Tabel Tribun",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K5B1.A,
+  misiDaftar: daftarMisiTribun("A").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiTabelTribun speakGuru={a.speakGuru} onKeadaan={(k: KeadaanTribun) => laporMisiTribun(daftarMisiTribun("A"), k, a.capai)} />,
+});
 
-const COBA_MESIN: Record<HurufK5B1, string[]> = {
-  A: ["Ketuk stasiun Baca sebelum Tulis. Apa kata mesin?", "Mengapa nol tidak boleh dihapus dari bilangan?", "Apa beda digit dan nilai digit?"],
-  B: ["Ketuk stasiun Urut sebelum Sejajar. Apa kata mesin?", "Mengapa membandingkan dimulai dari tempat terbesar?", "Apa beda urut naik dan urut turun?"],
-  C: ["Ketuk stasiun Cek sebelum Urai. Apa kata mesin?", "Mengapa jumlah tidak berubah saat kartu ditukar?", "Apa beda digit dan suku nilai tempat?"],
-  D: ["Ketuk stasiun Cek sebelum Perkiraan. Apa kata mesin?", "Mengapa perkiraan dibuat sebelum menghitung teliti?", "Mengapa hasil pembagian dicek dengan perkalian?"],
-};
+/** Sub-Bab B: Garis Urutan. */
+const langkahGarisUrutanB = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Garis Urutan",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K5B1.B,
+  misiDaftar: daftarMisiUrutan("B").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiGarisUrutan speakGuru={a.speakGuru} onKeadaan={(k: KeadaanUrutan) => laporMisiUrutan(daftarMisiUrutan("B"), k, a.capai)} />,
+});
 
-const LAB: Record<HurufK5B1, { id: string; nama: string }> = {
-  A: { id: "nilai-tempat", nama: "Lab Nilai Tempat" },
-  B: { id: "banding", nama: "Lab Banding" },
-  C: { id: "susun", nama: "Lab Susun Bilangan" },
-  D: { id: "operasi", nama: "Lab Operasi" },
-};
+/** Sub-Bab C: Tukar Bundel. */
+const langkahTukarBundelC = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Tukar Bundel",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K5B1.C,
+  misiDaftar: daftarMisiBundel("C").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiTukarBundel speakGuru={a.speakGuru} onKeadaan={(k: KeadaanBundel) => laporMisiBundel(daftarMisiBundel("C"), k, a.capai)} />,
+});
 
-function LabSub({ huruf, speakGuru, lapor }: { huruf: HurufK5B1; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab1) => void }) {
-  if (huruf === "B") return <SimulasiLabBandingK5B1 speakGuru={speakGuru} onKeadaan={lapor} />;
-  if (huruf === "C") return <SimulasiLabSusunK5B1 speakGuru={speakGuru} onKeadaan={lapor} />;
-  if (huruf === "D") return <SimulasiLabOperasiK5B1 speakGuru={speakGuru} onKeadaan={lapor} />;
-  return <SimulasiLabTempatK5B1 speakGuru={speakGuru} onKeadaan={lapor} />;
-}
+/** Sub-Bab D: Susun Hitung. */
+const langkahSusunHitungD = (): LangkahSim => ({
+  metode: "PhET",
+  sub: "Susun Hitung",
+  petunjuk: "Mainkan dulu simulasinya, ya.",
+  misi: MISI_K5B1.D,
+  misiDaftar: daftarMisiHitung("D").map(({ id, teks, wajib }) => ({ id, teks, wajib })),
+  mode: "sentuh",
+  render: (a) => <SimulasiSusunHitung speakGuru={a.speakGuru} onKeadaan={(k: KeadaanHitung) => laporMisiHitung(daftarMisiHitung("D"), k, a.capai)} />,
+});
 
 const langkahK5Bab1 = (sub: string): LangkahSim[] => {
   const huruf = hurufK5B1(sub);
-  const daftar = daftarMisiK5Bab1(huruf);
-  return [
-    {
-      metode: "PhET",
-      sub: NAMA_SIM_K5B1[huruf],
-      petunjuk: MAINKAN_DULU,
-      misi: MISI_K5B1[huruf],
-      misiDaftar: tampilMisi(daftar),
-      mode: "sentuh",
-      render: (a) => {
-        const lapor = (k: KeadaanK5Bab1) => laporMisi(daftar, k, a.capai);
-        const selesai = (id: string) => lapor({ alat: "selesai", id });
-        const lab: TabLab = { ...LAB[huruf], render: () => <LabSub huruf={huruf} speakGuru={a.speakGuru} lapor={lapor} /> };
-        const def = MESIN[huruf];
-        const mesin: TabLab = {
-          id: "mesin",
-          nama: def.judul,
-          render: () => <SimulasiMesinBertahapK3 def={def} coba={COBA_MESIN[huruf]} speakGuru={a.speakGuru} onTuntas={selesai} eja={ejaK5B1} />,
-        };
-        const skenario: TabLab = {
-          id: "skenario",
-          nama: SKENARIO[huruf].judul,
-          render: () => <SimulasiSkenario def={SKENARIO[huruf]} speakGuru={a.speakGuru} onTuntas={() => selesai(ID_SKENARIO_K5B1[huruf])} />,
-        };
-        return <LabBertahap tab={[lab, mesin, skenario]} label="Alat laboratorium bilangan" />;
-      },
-    },
-  ];
+  if (huruf === "A") return [langkahTabelTribunA()];
+  if (huruf === "B") return [langkahGarisUrutanB()];
+  if (huruf === "C") return [langkahTukarBundelC()];
+  if (huruf === "D") return [langkahSusunHitungD()];
+  return [langkahTabelTribunA()];
 };
 
 export { misiAwalK5Bab1 };
@@ -101,7 +101,7 @@ export default function SimulasiK5Bab1Materi({
   const huruf = hurufK5B1(sub);
   return (
     <SimulasiAlur
-      judulBab={`Kelas 5 Bab 1 · Sub-Bab ${huruf}`}
+      judulBab={`Bab 1 · Sub-Bab ${huruf}`}
       langkah={langkahK5Bab1(sub)}
       speakGuru={speakGuru}
       onSelesai={onSelesai}

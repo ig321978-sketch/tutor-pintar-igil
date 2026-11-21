@@ -1,273 +1,250 @@
 import type { AdeganStory } from "./logika-story";
-import { NILAI_TEMPAT, W, angkaTabel, emo, judul, kartu, lambang, panah, tabelTempat, teks, tumpukBlok } from "./k5b1a-gambar";
-import { bersih, idx, k, sorotkan, tambah } from "./k5b1a-bantu";
+import { E, G5, W, angka, bulat, emo, judul, kolom, kotak, loket, tabelKosong, tanah, teks, tokoh } from "./k5b1a-gambar";
+import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k5b1a-bantu";
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const NAMA_METODE = ["Place-Value Chart", "Extended Dienes", "Number Reading", "Period Grouping"];
-const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
-const IKON_METODE = ["📊", "🧱", "🗣", "🔢"];
-const SUARA_O1 = "Bagaimana kita membaca dan menulis bilangan besar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari cerita sehari-hari.";
-const SUARA_O2 = "Empat metode itu: Place-Value Chart, Extended Dienes, Number Reading, dan Period Grouping.";
-const SUARA_O3 = "Semuanya menjawab pertanyaan yang sama, yaitu bagaimana mengenali bilangan lima angka. Caranya berbeda: memakai tabel, balok, kata, atau titik pemisah.";
-const SUARA_O4 = "Angkanya dari tiga cerita tadi: empat belas ribu lima ratus, enam puluh enam ribu lima ratus, dan dua puluh enam ribu sembilan ratus tiga puluh dua.";
+/*
+ * Cerita orisinal IGIL "Tiket Tribun Bu Ningsih" (Kelas 5 Bab 1 Sub-Bab A), video metode global.
+ * Naskah suara dari naskah/story-naskah-k5b1a.md. Bagian ini: pembuka (catatan penonton yang menumpuk), Fill the Slots (Isi Kotak Tempat) dan terapannya,
+ * Guard the Zero (Jaga Nol) dan terapannya.
+ */
+
+export const NAMA_METODE = ["Fill the Slots", "Guard the Zero", "Read by Period"] as const;
+export const NAMA_METODE_ID = ["Isi Kotak Tempat", "Jaga Nol", "Baca per Periode"] as const;
+
+export const KP = { merah: "#FCA5A5", biru: "#BAE6FD", kapur: "#FEF9C3", hijau: "#86EFAC" };
+
+/** Kolom ke-j tabel G5 muncul pada kata `kata` (kemunculan ke-n) dalam kalimat `suara`. */
+const kolomKata = (id: string, suara: string, kata: string, j: number, n = 1) => tambah(idx(suara, kata, n), ...kolom(id, j, G5));
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_O1 = "Sore itu, di loket Bu Ningsih, catatan penonton menumpuk dan harus ditulis dengan benar.";
+const SUARA_O2 = "Ada tiga cara supaya bilangan besar tidak salah tulis dan tidak salah baca.";
+const SUARA_O3 = "Tiga cara itu: Fill the Slots, Guard the Zero, dan Read by Period.";
+const SUARA_O4 = "Nama dalam bahasa Indonesia: Isi Kotak Tempat, Jaga Nol, dan Baca per Periode.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk membaca dan menulis bilangan besar",
-  sumber: "Metode luar: pembuka",
-  latar: "#FFF7ED",
+  judul: "Catatan Bu Ningsih",
+  sumber: "Metode global: pembuka",
+  latar: "#E0F2FE",
   ketukan: [
     k(
       SUARA_O1,
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("bilangan", ...kartu("pb", 40, 40, 100, 44, W.krem, ["14.500"], 14)),
-      tambah("berbagai", emo("gl", 215, 78, "🌍", 46)),
-      tambah("angka", teks("pa", 150, 136, "bilangan lima angka", 9.4, W.biru), teks("pc", 150, 154, "sampai 100.000", 9.4, W.biru)),
+      tambah(0, judul("Sore di Loket"), ...tanah("tn", 150)),
+      tambah("loket", ...loket("lk", 170, 70, 100, 76), teks("lkt", 220, 79, "LOKET", 8, W.putih, { z: 4 })),
+      tambah("Bu", ...tokoh("bn", 60, 184, "Bu Ningsih")),
+      tambah("menumpuk", kotak("c1", 100, 134, 46, 8, W.putih, W.coklat, { rx: 1, tebal: 1.2, z: 1 }), kotak("c2", 104, 126, 46, 8, W.krem, W.coklat, { rx: 1, tebal: 1.2, z: 2 }), kotak("c3", 98, 118, 46, 8, W.putih, W.coklat, { rx: 1, tebal: 1.2, z: 3 })),
+      tambah("catatan", teks("ct", 122, 108, "catatan penonton", 8, W.coklat)),
+      tambah("benar.", emo("bn2", 220, 118, E.catat, 20, { z: 5 })),
     ),
     k(
       SUARA_O2,
       bersih(0),
-      tambah(0, judul("Empat metode")),
-      ...NAMA_METODE.map((m, i) => tambah(idx(SUARA_O2, ["Place-Value", "Extended", "Number", "Period"][i]), ...kartu(`m${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
+      tambah(0, judul("Tiga Cara"), ...tanah("tn", 150), teks("n3", 260, 40, "3 cara", 10, W.merah)),
+      tambah("cara", ...[0, 1, 2].flatMap((i) => [kotak(`c${i}-k`, 20 + i * 92, 56, 80, 36, "#FDE68A", W.coklat, { rx: 4 }), teks(`c${i}-t`, 60 + i * 92, 79, "cara", 9, W.coklat)])),
+      tambah("tidak", emo("x1", 60, 126, E.salah, 18), emo("x2", 240, 126, E.salah, 18)),
+      tambah("baca.", emo("ok", 150, 126, E.benar, 22)),
     ),
     k(
       SUARA_O3,
-      bersih(0),
-      tambah(0, judul("Satu pertanyaan, empat cara")),
-      tambah("tabel,", emo("i1", 45, 80, IKON_METODE[0], 34), teks("i1t", 45, 112, "tabel", 8.6, W.biru)),
-      tambah("balok,", emo("i2", 112, 80, IKON_METODE[1], 34), teks("i2t", 112, 112, "balok", 8.6, W.biru)),
-      tambah("kata,", emo("i3", 188, 80, IKON_METODE[2], 34), teks("i3t", 188, 112, "kata", 8.6, W.biru)),
-      tambah("titik", emo("i4", 255, 80, IKON_METODE[3], 34), teks("i4t", 255, 112, "titik", 8.6, W.biru)),
+      tambah("Fill", teks("m0", 120, 118, "1. Fill the Slots", 10, W.hijauTua), emo("i0", 40, 118, E.catat, 16)),
+      tambah("Guard", teks("m1", 120, 138, "2. Guard the Zero", 10, W.hijauTua), emo("i1", 40, 138, E.kuat, 16)),
+      tambah("Read", teks("m2", 120, 158, "3. Read by Period", 10, W.hijauTua), emo("i2", 40, 158, E.mata, 16)),
     ),
     k(
       SUARA_O4,
-      bersih(0),
-      tambah(0, judul("Angka dari cerita tadi")),
-      tambah("belas", ...kartu("a1", 14, 34, 272, 32, W.hijauMuda, ["14.500: harga pensil Yohana"], 9.6)),
-      tambah("enam@2", ...kartu("a2", 14, 76, 272, 32, W.langit, ["66.500: harga obat batuk"], 9.6)),
-      tambah("dua@2", ...kartu("a3", 14, 118, 272, 32, W.krem, ["26.932: penduduk Kayu Tanam"], 9.6)),
+      hapus(0, "x1", "x2", "ok"),
+      tambah("Nama", kotak("bk", 190, 100, 104, 70, "#14532D", W.putih, { rx: 6, tebal: 1, z: -1 })),
+      tambah("Isi", teks("g0", 242, 118, "Isi Kotak Tempat", 8, W.sorot)),
+      tambah("Jaga", teks("g1", 242, 138, "Jaga Nol", 9, W.sorot)),
+      tambah("Baca", teks("g2", 242, 158, "Baca per Periode", 8, W.sorot)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Place-Value Chart: konsep ------------------------------ */
-export const TB_PV = { x: 20, y: 44, cw: 52, o: { ch: 30, u: 9 } };
-const KOSONG5 = [["", "", "", "", ""]];
-const OTAB5 = { ch: 30, u: 16 };
-const nilaiPV = (j: number) => angkaTabel("pv", TB_PV.x, TB_PV.y, TB_PV.cw, 0, j, lambang(NILAI_TEMPAT[j]), TB_PV.o, W.coklat);
-const SUARA_PV1 = "Metode pertama, Place-Value Chart, atau tabel nilai tempat. Gambar tabel dengan lima kolom: puluh ribuan, ribuan, ratusan, puluhan, dan satuan.";
-const SUARA_PV2 = "Tiap kolom punya nilai satu angka. Dari kanan ke kiri, satu angka bernilai satu, sepuluh, seratus, seribu, dan sepuluh ribu, makin ke kiri makin besar.";
-const SUARA_PV4 = "Keuntungan tabel: nilai angka tergantung kolomnya. Angka lima di ratusan bernilai lima ratus, tetapi angka lima di satuan hanya bernilai lima.";
-const SUARA_PV3 = "Cara memakainya tiga langkah: dengarkan bilangannya, isi angka tiap kolom dari kiri, dan isi nol pada kolom yang kosong supaya angka lain tidak bergeser.";
+/* ------------------------------ Fill the Slots: konsep ------------------------------ */
+const SUARA_I1 = "Cara pertama, Fill the Slots, atau Isi Kotak Tempat.";
+const SUARA_I2 = "Kita menggambar kotak untuk satuan, puluhan, ratusan, ribuan, dan puluh ribuan, lalu mengisinya satu angka satu kotak.";
+const SUARA_I3 = "Bilangan yang diucapkan kita pecah dulu menjadi bagian ribu, ratus, puluh, dan satuan.";
+const SUARA_I4 = "Kotak yang tidak disebut harus diisi nol, supaya tidak ada tempat yang kosong.";
 
-export const ADEGAN_LUAR_PV: AdeganStory = {
-  id: "luar-pv",
-  judul: "Place-Value Chart: tabel nilai tempat",
-  sumber: "Metode luar: Place-Value Chart",
-  latar: "#F0FDF4",
+export const ADEGAN_LUAR_ISI: AdeganStory = {
+  id: "luar-isi",
+  judul: "Fill the Slots: Isi Kotak",
+  sumber: "Metode global: Fill the Slots (konsep)",
+  latar: "#E0F2FE",
   ketukan: [
     k(
-      SUARA_PV1,
-      tambah(0, judul("Place-Value Chart")),
-      tambah(idx(SUARA_PV1, "Gambar"), ...tabelTempat("pv", TB_PV.x, TB_PV.y, TB_PV.cw, KOSONG5, TB_PV.o)),
-      tambah("lima", ...kartu("pq", 40, 118, 220, 30, W.krem, ["5 kolom, 5 nilai tempat"], 10)),
+      SUARA_I1,
+      tambah(0, judul("Cara 1: Fill the Slots"), kotak("pt", 8, 32, 284, 120, "#1E293B", "#0F172A", { rx: 6, tebal: 1.4, z: -1 })),
+      tambah("Fill", teks("nm", 150, 74, "Fill the Slots", 14, KP.merah, { z: 3 })),
+      tambah("Isi", teks("ni", 150, 96, "Isi Kotak Tempat", 10, KP.kapur, { z: 3 })),
+      tambah("Tempat.", emo("ik", 150, 134, E.catat, 24, { z: 3 })),
     ),
     k(
-      SUARA_PV2,
-      tambah(idx(SUARA_PV2, "satu", 3), nilaiPV(4)),
-      tambah(idx(SUARA_PV2, "sepuluh", 1), nilaiPV(3)),
-      tambah(idx(SUARA_PV2, "seratus"), nilaiPV(2)),
-      tambah(idx(SUARA_PV2, "seribu"), nilaiPV(1)),
-      tambah(idx(SUARA_PV2, "sepuluh", 2), nilaiPV(0)),
-      tambah("makin", panah("pw", 250, 160, -200, 0, W.merah, 2), teks("pz", 150, 178, "makin ke kiri makin besar", 9.6, W.merah)),
-    ),
-    k(
-      SUARA_PV3,
+      SUARA_I2,
       bersih(0),
-      tambah(0, judul("Tiga langkah")),
-      tambah(idx(SUARA_PV3, "dengarkan"), ...kartu("l1", 14, 34, 272, 32, W.hijauMuda, ["1. dengarkan bilangannya"], 9.6)),
-      tambah(idx(SUARA_PV3, "isi", 1), ...kartu("l2", 14, 76, 272, 32, W.langit, ["2. isi angka tiap kolom dari kiri"], 9.6)),
-      tambah(idx(SUARA_PV3, "isi", 2), ...kartu("l3", 14, 118, 272, 32, W.krem, ["3. kolom kosong diisi 0"], 9.6)),
+      tambah(0, judul("Menggambar Kotak"), ...tanah("tn", 150)),
+      kolomKata("tb", SUARA_I2, "satuan", 4),
+      kolomKata("tb", SUARA_I2, "puluhan", 3),
+      kolomKata("tb", SUARA_I2, "ratusan", 2),
+      kolomKata("tb", SUARA_I2, "ribuan", 1),
+      kolomKata("tb", SUARA_I2, "puluh", 0),
+      tambah("mengisinya", teks("sk", 150, 128, "1 angka = 1 kotak", 9, W.merah, { z: 3 })),
     ),
     k(
-      SUARA_PV4,
-      bersih(0),
-      tambah(0, judul("Nilai tergantung kolom")),
-      tambah(0, ...tabelTempat("pr", TB_PV.x, 34, TB_PV.cw, KOSONG5, OTAB5), ...tabelTempat("ps", TB_PV.x, 106, TB_PV.cw, KOSONG5, OTAB5)),
-      tambah(idx(SUARA_PV4, "ratusan"), angkaTabel("pr", TB_PV.x, 34, TB_PV.cw, 0, 2, "5", OTAB5), teks("pra", 150, 100, "5 di ratusan: nilainya 500", 10, W.merah)),
-      tambah(idx(SUARA_PV4, "satuan"), angkaTabel("ps", TB_PV.x, 106, TB_PV.cw, 0, 4, "5", OTAB5), teks("psa", 150, 172, "5 di satuan: nilainya 5", 10, W.merah)),
+      SUARA_I3,
+      hapus(0, "sk"),
+      tambah("diucapkan", emo("mg", 40, 40, E.megafon, 22, { z: 3 })),
+      tambah("ribu,", teks("b1", 98, 126, "ribu", 8.4, W.merah, { z: 3 })),
+      tambah("ratus,", teks("b2", 150, 126, "ratus", 8.4, W.merah, { z: 3 })),
+      tambah("puluh,", teks("b3", 202, 126, "puluh", 8.4, W.merah, { z: 3 })),
+      tambah("satuan.", teks("b4", 254, 126, "satuan", 8.4, W.merah, { z: 3 })),
+    ),
+    k(
+      SUARA_I4,
+      hapus(0, "mg", "b1", "b2", "b3", "b4"),
+      tambah("tidak", teks("td", 150, 128, "tidak disebut: isi 0", 9, W.merah, { z: 3 })),
+      tambah("nol,", angka("tb", 3, "0", G5, W.merah), angka("tb", 4, "0", G5, W.merah)),
+      sorotkan("nol,", "tb-c3", "tb-c4"),
+      tambah("kosong.", emo("ok", 262, 142, E.benar, 20)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Place-Value Chart: penerapan pada 26.932 dan 14.500 ------------------------------ */
-const OTAB = { ch: 30, u: 16 };
-const angkaPV = (id: string, j: number, d: string) => angkaTabel(id, TB_PV.x, TB_PV.y, TB_PV.cw, 0, j, d, OTAB);
-const SUARA_PT1 = "Terapkan pada penduduk Kayu Tanam, dua puluh enam ribu sembilan ratus tiga puluh dua. Isi tabel dari kiri: dua, enam, sembilan, tiga, dua.";
-const SUARA_PT2 = "Angka dua muncul dua kali, tetapi tempatnya berbeda. Dua di puluh ribuan bernilai dua puluh ribu, sedangkan dua di satuan hanya bernilai dua.";
-const SUARA_PT3 = "Sekarang empat belas ribu lima ratus. Ratusan berisi lima, puluhan nol, satuan nol, dan dua nol itu menjaga agar angka lima tidak bergeser.";
-const SUARA_PT4 = "Cek dengan membaca ulang dari kiri ke kanan: dua puluh enam ribu sembilan ratus tiga puluh dua. Bacaan itu harus sama dengan bilangan yang diucapkan.";
+/* ------------------------------ Fill the Slots: terapan ------------------------------ */
+const SUARA_T1 = "Bima mendapat catatan: lima puluh dua ribu tiga ratus tujuh penonton.";
+const SUARA_T2 = "Lima masuk puluh ribuan, dua masuk ribuan, tiga masuk ratusan, nol masuk puluhan, tujuh masuk satuan.";
+const SUARA_T3 = "Cocok untuk menulis bilangan yang diucapkan, karena tiap bagian punya kotaknya sendiri.";
+const SUARA_T4 = "Kurang cocok untuk bilangan yang sudah tertulis panjang, karena menggambar kotaknya memakan waktu.";
 
-export const ADEGAN_LUAR_PV_TERAPAN: AdeganStory = {
-  id: "luar-pv-terapan",
-  judul: "Place-Value Chart pada 26.932 dan 14.500",
-  sumber: "Metode luar: Place-Value Chart",
-  latar: "#F0FDF4",
+export const ADEGAN_LUAR_ISI_TERAPAN: AdeganStory = {
+  id: "luar-isi-terapan",
+  judul: "Isi Kotak: kapan cocok",
+  sumber: "Metode global: Fill the Slots (terapan)",
+  latar: "#E0F2FE",
   ketukan: [
     k(
-      SUARA_PT1,
-      tambah(0, judul("26.932 di tabel")),
-      tambah(0, ...tabelTempat("pt", TB_PV.x, TB_PV.y, TB_PV.cw, KOSONG5, OTAB)),
-      tambah("Kayu", teks("pb", 150, 140, "26.932", 26, W.merah)),
-      tambah(idx(SUARA_PT1, "dua", 3), angkaPV("pt", 0, "2")),
-      tambah(idx(SUARA_PT1, "enam", 2), angkaPV("pt", 1, "6")),
-      tambah(idx(SUARA_PT1, "sembilan", 2), angkaPV("pt", 2, "9")),
-      tambah(idx(SUARA_PT1, "tiga", 2), angkaPV("pt", 3, "3")),
-      tambah(idx(SUARA_PT1, "dua", 4), angkaPV("pt", 4, "2")),
+      SUARA_T1,
+      tambah(0, judul("Catatan Bima"), ...tanah("tn", 150), ...tabelKosong("tb", G5)),
+      tambah("Bima", ...tokoh("bm", 40, 184, "Bima")),
+      tambah("lima", teks("bl", 150, 40, "52.307", 16, W.merah, { z: 3 })),
+      tambah("penonton.", emo("ct", 262, 140, E.catat, 20)),
     ),
     k(
-      SUARA_PT2,
-      sorotkan(idx(SUARA_PT2, "dua", 3), "pt-c0-0"),
-      tambah(idx(SUARA_PT2, "ribu"), teks("n1", 46, 110, "20.000", 11, W.merah)),
-      sorotkan(idx(SUARA_PT2, "dua", 5), "pt-c0-4"),
-      tambah(idx(SUARA_PT2, "dua", 6), teks("n2", 254, 110, "2", 11, W.merah)),
+      SUARA_T2,
+      hapus(0, "ct"),
+      tambah(idx(SUARA_T2, "Lima"), angka("tb", 0, "5")),
+      tambah(idx(SUARA_T2, "dua"), angka("tb", 1, "2")),
+      tambah(idx(SUARA_T2, "tiga"), angka("tb", 2, "3")),
+      tambah(idx(SUARA_T2, "nol"), angka("tb", 3, "0")),
+      tambah(idx(SUARA_T2, "tujuh"), angka("tb", 4, "7")),
     ),
     k(
-      SUARA_PT3,
-      bersih(0),
-      tambah(0, judul("14.500 di tabel")),
-      tambah(0, ...tabelTempat("pu", TB_PV.x, TB_PV.y, TB_PV.cw, KOSONG5, OTAB)),
-      tambah("Sekarang", teks("pb2", 150, 140, "14.500", 26, W.merah)),
-      tambah(idx(SUARA_PT3, "empat"), angkaPV("pu", 0, "1")),
-      tambah(idx(SUARA_PT3, "belas"), angkaPV("pu", 1, "4")),
-      tambah(idx(SUARA_PT3, "lima", 2), angkaPV("pu", 2, "5")),
-      tambah(idx(SUARA_PT3, "nol", 1), angkaPV("pu", 3, "0")),
-      tambah(idx(SUARA_PT3, "nol", 2), angkaPV("pu", 4, "0")),
-      tambah("menjaga", ...kartu("pj", 40, 160, 220, 28, W.emas, ["dua nol menjaga tempat"], 9.6)),
+      SUARA_T3,
+      tambah("Cocok", emo("ok", 262, 138, E.benar, 22, { z: 3 })),
+      tambah("diucapkan,", teks("jd", 150, 132, "menulis dari ucapan", 9, W.hijauTua, { z: 3 })),
+      sorotkan("kotaknya", "tb-c0", "tb-c1", "tb-c2", "tb-c3", "tb-c4"),
     ),
     k(
-      SUARA_PT4,
-      bersih(0),
-      tambah(0, judul("Baca ulang dan cocokkan")),
-      tambah("Cek", teks("c1", 150, 70, "26.932", 30, W.merah)),
-      tambah("dua@1", teks("c2", 150, 106, "dua puluh enam ribu", 11, W.biru), teks("c3", 150, 124, "sembilan ratus tiga puluh dua", 11, W.biru)),
-      tambah("Bacaan", ...kartu("c4", 70, 146, 160, 30, W.hijauMuda, ["bacaan sama dengan bilangan"], 8.8), emo("c5", 252, 168, "✔", 22, { warna: W.hijau })),
+      SUARA_T4,
+      hapus(0, "ok", "jd"),
+      tambah("Kurang", emo("xs", 262, 138, E.salah, 22, { z: 3 })),
+      tambah("tertulis", teks("tp", 150, 132, "sudah tertulis panjang", 9, W.merah, { z: 3 })),
+      tambah("waktu.", emo("wk", 200, 160, E.pikir, 20, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 4. Extended Dienes: konsep ------------------------------ */
-export const CX = [38, 94, 150, 206, 262];
-export const NAMA_KECIL = ["puluh ribuan", "ribuan", "ratusan", "puluhan", "satuan"];
-const SUARA_DN1 = "Metode kedua, Extended Dienes, atau balok nilai tempat. Dienes biasanya punya balok satuan, puluhan, ratusan, dan ribuan; di sini diperluas dengan satu balok lagi untuk puluh ribuan.";
-const SUARA_DN2 = "Satu balok pada satu tingkat bernilai sepuluh kali balok di tingkat sebelah kanannya. Sepuluh balok ribuan, misalnya, dapat ditukar dengan satu balok puluh ribuan.";
-const SUARA_DN4 = "Keuntungan balok: besarnya bilangan bisa dilihat. Satu balok puluh ribuan bernilai sepuluh ribu satuan, jauh lebih besar daripada satu balok satuan.";
-const SUARA_DN3 = "Cara memakainya: hitung banyak balok pada tiap tingkat, tulis angkanya dari kiri ke kanan, dan tingkat yang tidak punya balok ditulis nol.";
-const kolomBlok = (j: number) => [teks(`dn${j}n`, CX[j], 114, NAMA_KECIL[j], 6.8, W.biru), teks(`dn${j}v`, CX[j], 130, lambang(NILAI_TEMPAT[j]), 9, W.coklat), ...tumpukBlok(`dn${j}`, CX[j], 60, j, 1)];
+/* ------------------------------ Guard the Zero: konsep ------------------------------ */
+const SUARA_N1 = "Cara kedua, Guard the Zero, atau Jaga Nol.";
+const SUARA_N2 = "Nol bukan angka kosong; ia menjaga supaya angka lain tetap berada di kolom yang benar.";
+const SUARA_N3 = "Setiap kali ada kolom yang tidak disebut, kita menaruh nol di sana, lalu menghitung banyak angkanya.";
+const SUARA_N4 = "Banyak angka harus sama dengan banyak kolom, sehingga tidak ada nol yang hilang.";
 
-export const ADEGAN_LUAR_DIENES: AdeganStory = {
-  id: "luar-dienes",
-  judul: "Extended Dienes: balok nilai tempat",
-  sumber: "Metode luar: Extended Dienes",
-  latar: "#EFF6FF",
+export const ADEGAN_LUAR_NOL: AdeganStory = {
+  id: "luar-nol",
+  judul: "Guard the Zero: Jaga Nol",
+  sumber: "Metode global: Guard the Zero (konsep)",
+  latar: "#E0F2FE",
   ketukan: [
     k(
-      SUARA_DN1,
-      tambah(0, judul("Extended Dienes")),
-      tambah(idx(SUARA_DN1, "satuan,"), ...kolomBlok(4)),
-      tambah(idx(SUARA_DN1, "puluhan,"), ...kolomBlok(3)),
-      tambah(idx(SUARA_DN1, "ratusan,"), ...kolomBlok(2)),
-      tambah(idx(SUARA_DN1, "ribuan", 1), ...kolomBlok(1)),
-      tambah(idx(SUARA_DN1, "puluh"), ...kolomBlok(0)),
+      SUARA_N1,
+      tambah(0, judul("Cara 2: Guard the Zero"), kotak("pt", 8, 32, 284, 120, "#1E293B", "#0F172A", { rx: 6, tebal: 1.4, z: -1 })),
+      tambah("Guard", teks("nm", 150, 74, "Guard the Zero", 14, KP.merah, { z: 3 })),
+      tambah("Jaga", teks("ni", 150, 96, "Jaga Nol", 10, KP.kapur, { z: 3 })),
+      tambah("Nol.", bulat("zb", 150, 128, 14, "#FDE68A", "#F59E0B", { tebal: 2, z: 3 }), teks("z0", 150, 135, "0", 20, W.merah, { z: 4 })),
     ),
     k(
-      SUARA_DN2,
+      SUARA_N2,
       bersih(0),
-      tambah(0, judul("Tukar sepuluh balok")),
-      tambah(0, ...tumpukBlok("tk", 90, 44, 1, 10)),
-      tambah(idx(SUARA_DN2, "Sepuluh", 2), teks("tl", 90, 150, "10 balok ribuan", 9, W.biru)),
-      tambah("ditukar", panah("tp", 140, 90, 40, 0, W.merah, 2)),
-      tambah(idx(SUARA_DN2, "satu", 3), ...tumpukBlok("tm", 210, 70, 0, 1), teks("tn", 210, 150, "1 balok puluh ribuan", 9, W.biru)),
+      tambah(0, judul("Nol Penjaga"), ...tanah("tn", 150), ...tabelKosong("tb", G5)),
+      tambah("Nol", teks("z1", 254, 124, "0 bukan kosong", 8.4, W.merah, { z: 3 })),
+      tambah("angka@2", angka("tb", 2, "5", G5, W.biru)),
+      tambah("menjaga", angka("tb", 3, "0", G5, W.merah), angka("tb", 4, "0", G5, W.merah)),
+      sorotkan("menjaga", "tb-c3", "tb-c4"),
+      tambah("benar.", teks("pj", 150, 142, "nol menjaga angka lain", 9, W.hijauTua, { z: 3 })),
     ),
     k(
-      SUARA_DN3,
-      bersih(0),
-      tambah(0, judul("Tiga langkah")),
-      tambah(idx(SUARA_DN3, "hitung"), ...kartu("d1", 14, 34, 272, 32, W.hijauMuda, ["1. hitung balok tiap tingkat"], 9.6)),
-      tambah(idx(SUARA_DN3, "tulis"), ...kartu("d2", 14, 76, 272, 32, W.langit, ["2. tulis angkanya dari kiri"], 9.6)),
-      tambah(idx(SUARA_DN3, "tingkat", 2), ...kartu("d3", 14, 118, 272, 32, W.krem, ["3. tanpa balok ditulis 0"], 9.6)),
+      SUARA_N3,
+      hapus(0, "z1", "pj", "tb-t2", "tb-t3", "tb-t4"),
+      tambah("tidak", teks("td", 150, 128, "tidak disebut: isi 0", 9, W.merah, { z: 3 })),
+      tambah(idx(SUARA_N3, "nol"), angka("tb", 1, "0", G5, W.merah), angka("tb", 3, "0", G5, W.merah), angka("tb", 4, "0", G5, W.merah)),
+      tambah("angkanya.", angka("tb", 0, "4", G5), angka("tb", 2, "5", G5)),
     ),
     k(
-      SUARA_DN4,
-      bersih(0),
-      tambah(0, judul("Besar bilangan terlihat")),
-      tambah(idx(SUARA_DN4, "puluh"), ...tumpukBlok("bp", 100, 70, 0, 1), teks("bpn", 100, 124, "10.000", 11, W.coklat)),
-      tambah(idx(SUARA_DN4, "sepuluh"), ...kartu("bq", 20, 140, 120, 28, W.jingga, ["1 balok = 10.000"], 9)),
-      tambah(idx(SUARA_DN4, "satuan", 2), ...tumpukBlok("bs", 220, 85, 4, 1), teks("bsn", 220, 124, "1", 11, W.coklat)),
-      tambah("jauh", ...kartu("br", 160, 140, 120, 28, W.emas, ["1 balok = 1"], 9)),
+      SUARA_N4,
+      hapus(0, "td"),
+      tambah("Banyak", teks("sm", 150, 130, "5 angka = 5 kolom", 10, W.hijauTua, { z: 3 })),
+      tambah("hilang.", emo("ok", 262, 142, E.benar, 22, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 5. Extended Dienes: penerapan pada 14.500 dan 13.578 ------------------------------ */
-/** Baris cek mandiri: banyak balok dikali nilai tempat (kiri) dan hasilnya (kanan). */
-export const NILAI_BARIS = [
-  ["1 × 10.000", "10.000"],
-  ["3 × 1.000", "3.000"],
-  ["5 × 100", "500"],
-  ["7 × 10", "70"],
-  ["8 × 1", "8"],
-];
-const kepalaKolom = () => NAMA_KECIL.map((n, j) => teks(`eh${j}`, CX[j], 34, n, 6.8, W.biru));
-const blokKolom = (id: string, j: number, jumlah: number) => tumpukBlok(`${id}${j}`, CX[j], 46, j, jumlah);
-const cacah = (id: string, j: number, d: string) => teks(`${id}${j}c`, CX[j], 118, d, 16, W.merah);
-const SUARA_ET1 = "Wujudkan empat belas ribu lima ratus dengan balok. Satu balok puluh ribuan, empat balok ribuan, lima balok ratusan, tanpa balok puluhan dan satuan.";
-const SUARA_ET2 = "Hitung banyak balok pada tiap tingkat: satu, empat, lima, nol, dan nol. Ditulis berderet, jadi empat belas ribu lima ratus.";
-const SUARA_ET4 = "Cek mandiri nilai balok: satu kali sepuluh ribu, tiga kali seribu, lima kali seratus, tujuh kali sepuluh, dan delapan kali satu. Semuanya membentuk tiga belas ribu lima ratus tujuh puluh delapan.";
-const SUARA_ET3 = "Sekarang tiga belas ribu lima ratus tujuh puluh delapan, penduduk perempuan Kayu Tanam. Balok yang dipakai: satu, tiga, lima, tujuh, dan delapan.";
+/* ------------------------------ Guard the Zero: terapan ------------------------------ */
+const SUARA_Z1 = "Citra menulis empat puluh ribu lima ratus, dan ia memeriksa kolom ribuan, puluhan, serta satuan yang tidak disebut.";
+const SUARA_Z2 = "Jadi tulisannya empat, nol, lima, nol, nol, yaitu lima angka dengan tiga nol penjaga.";
+const SUARA_Z3 = "Cocok untuk bilangan yang banyak nolnya, karena mudah memeriksa tempat yang tidak disebut.";
+const SUARA_Z4 = "Kurang cocok kalau bilangannya tanpa nol, karena pemeriksaan itu terasa berlebihan.";
 
-export const ADEGAN_LUAR_DIENES_TERAPAN: AdeganStory = {
-  id: "luar-dienes-terapan",
-  judul: "Extended Dienes pada 14.500 dan 13.578",
-  sumber: "Metode luar: Extended Dienes",
-  latar: "#EFF6FF",
+export const ADEGAN_LUAR_NOL_TERAPAN: AdeganStory = {
+  id: "luar-nol-terapan",
+  judul: "Jaga Nol: kapan cocok",
+  sumber: "Metode global: Guard the Zero (terapan)",
+  latar: "#E0F2FE",
   ketukan: [
     k(
-      SUARA_ET1,
-      tambah(0, judul("Balok untuk 14.500")),
-      tambah(0, ...kepalaKolom()),
-      tambah("Wujudkan", teks("eb", 150, 160, "14.500", 26, W.merah)),
-      tambah(idx(SUARA_ET1, "Satu"), ...blokKolom("ea", 0, 1)),
-      tambah(idx(SUARA_ET1, "empat", 2), ...blokKolom("ea", 1, 4)),
-      tambah(idx(SUARA_ET1, "lima", 2), ...blokKolom("ea", 2, 5)),
-      tambah("tanpa", teks("en", 206, 70, "tidak ada", 7.6, W.abu), teks("en2", 262, 70, "tidak ada", 7.6, W.abu)),
+      SUARA_Z1,
+      tambah(0, judul("Catatan Citra"), ...tanah("tn", 150), ...tabelKosong("tb", G5)),
+      tambah("Citra", ...tokoh("ct", 40, 184, "Citra")),
+      tambah("menulis", teks("bl", 150, 40, "40.500", 16, W.merah, { z: 3 })),
+      tambah(idx(SUARA_Z1, "empat"), angka("tb", 0, "4")),
+      tambah(idx(SUARA_Z1, "lima"), angka("tb", 2, "5")),
+      sorotkan(idx(SUARA_Z1, "ribuan"), "tb-c1"),
+      sorotkan(idx(SUARA_Z1, "puluhan"), "tb-c3"),
+      sorotkan(idx(SUARA_Z1, "satuan"), "tb-c4"),
     ),
     k(
-      SUARA_ET2,
-      tambah(idx(SUARA_ET2, "satu"), cacah("ea", 0, "1")),
-      tambah(idx(SUARA_ET2, "empat"), cacah("ea", 1, "4")),
-      tambah(idx(SUARA_ET2, "lima"), cacah("ea", 2, "5")),
-      tambah(idx(SUARA_ET2, "nol", 1), cacah("ea", 3, "0")),
-      tambah(idx(SUARA_ET2, "nol", 2), cacah("ea", 4, "0")),
+      SUARA_Z2,
+      tambah(idx(SUARA_Z2, "nol", 1), angka("tb", 1, "0", G5, W.merah)),
+      tambah(idx(SUARA_Z2, "nol", 2), angka("tb", 3, "0", G5, W.merah)),
+      tambah(idx(SUARA_Z2, "nol", 3), angka("tb", 4, "0", G5, W.merah)),
+      tambah("angka", teks("a5", 90, 128, "5 angka", 9, W.hijauTua, { z: 3 })),
+      tambah("tiga", teks("n3", 212, 128, "3 nol penjaga", 9, W.merah, { z: 3 })),
     ),
     k(
-      SUARA_ET3,
-      bersih(0),
-      tambah(0, judul("Balok untuk 13.578")),
-      tambah(0, ...kepalaKolom()),
-      tambah("Sekarang", teks("eb2", 150, 160, "13.578", 26, W.merah)),
-      tambah(idx(SUARA_ET3, "satu"), ...blokKolom("eb", 0, 1), cacah("eb", 0, "1")),
-      tambah(idx(SUARA_ET3, "tiga", 2), ...blokKolom("eb", 1, 3), cacah("eb", 1, "3")),
-      tambah(idx(SUARA_ET3, "lima", 2), ...blokKolom("eb", 2, 5), cacah("eb", 2, "5")),
-      tambah(idx(SUARA_ET3, "tujuh", 2), ...blokKolom("eb", 3, 7), cacah("eb", 3, "7")),
-      tambah(idx(SUARA_ET3, "delapan", 2), ...blokKolom("eb", 4, 8), cacah("eb", 4, "8")),
+      SUARA_Z3,
+      tambah("Cocok", emo("ok", 262, 142, E.benar, 22, { z: 3 })),
+      tambah("nolnya,", teks("bn", 150, 146, "banyak nol", 9, W.hijauTua, { z: 3 })),
+      tambah("memeriksa", emo("mt", 224, 160, E.mata, 20, { z: 3 })),
     ),
     k(
-      SUARA_ET4,
-      bersih(0),
-      tambah(0, judul("Nilai semua balok 13.578")),
-      ...NILAI_BARIS.map((r, i) => tambah(idx(SUARA_ET4, "kali", i + 1), teks(`ev${i}a`, 140, 42 + i * 24, r[0], 12, W.biru, { anchor: "end" }), teks(`ev${i}b`, 210, 42 + i * 24, r[1], 12, W.merah))),
-      tambah("Semuanya", teks("evt", 150, 178, "13.578", 26, W.merah)),
+      SUARA_Z4,
+      hapus(0, "ok", "bn", "mt", "n3", "a5"),
+      ubah(0, { id: "bl", isi: "12.345" }, { id: "tb-t0", isi: "1", warna: W.biru }, { id: "tb-t1", isi: "2", warna: W.biru }, { id: "tb-t2", isi: "3", warna: W.biru }, { id: "tb-t3", isi: "4", warna: W.biru }, { id: "tb-t4", isi: "5", warna: W.biru }),
+      tambah("Kurang", emo("xs", 262, 142, E.salah, 22, { z: 3 })),
+      tambah("tanpa", teks("tn0", 150, 146, "tanpa nol", 9, W.merah, { z: 3 })),
+      tambah("berlebihan.", emo("pk", 224, 160, E.pikir, 20, { z: 3 })),
     ),
   ],
 };

@@ -1,235 +1,242 @@
 import type { AdeganStory } from "./logika-story";
-import { W, barisUang, bingkai, emo, isiSel, judul, kartu, panah, satuUang, teks } from "./k5b1c-gambar";
-import { bersih, hapus, k, tambah } from "./k5b1c-bantu";
-import { CARA_KOMANG, G_CARA, LABEL_CARA } from "./k5b1c-materi-3";
+import { E, W, angkaSlot, bundel, emo, idSlot, judul, kartu, kotak, lantai, panah, slotKolom, teks, tokoh } from "./k5b1c-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k5b1c-bantu";
 
-/** Teks rumus di tengah kanvas. */
-const rumus = (id: string, y: number, isi: string, u = 10, warna: string = W.coklat) => teks(id, 150, y, isi, u, warna);
-const kiri = (id: string, y: number, isi: string) => teks(id, 14, y + 8, isi, 9, W.biru, { anchor: "start" });
+/*
+ * Cerita orisinal IGIL "Bundel Tiket Bu Lestari" (Kelas 5 Bab 1 Sub-Bab C), video metode global.
+ * Naskah suara dari naskah/story-naskah-k5b1c.md. Bagian ini: Swap Bundles (Tukar Bundel), Build It Back (Susun Kembali), dan ringkasan.
+ */
 
-/* ------------------------------ 6. Standard Form Return: konsep ------------------------------ */
-export const ADEGAN_LUAR_LAZIM: AdeganStory = {
-  id: "luar-lazim",
-  judul: "Metode luar 3: Standard Form Return",
-  sumber: "Metode luar: Standard Form Return",
-  latar: "#FEFCE8",
+/* ------------------------------ Swap Bundles: konsep ------------------------------ */
+const SUARA_W1 = "Cara kedua, Swap Bundles, atau Tukar Bundel.";
+const SUARA_W2 = "Sepuluh bundel kecil ditukar dengan satu bundel di kolom sebelah kiri, atau sebaliknya.";
+const SUARA_W3 = "Banyak bundelnya berubah, tetapi jumlah seluruhnya tidak berubah sedikit pun.";
+const SUARA_W4 = "Cara ini membuat bilangan yang sama bisa disusun dengan beberapa susunan.";
+
+export const ADEGAN_LUAR_TUKAR: AdeganStory = {
+  id: "luar-tukar",
+  judul: "Swap Bundles: Tukar",
+  sumber: "Metode global: Swap Bundles (konsep)",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Metode ketiga, Standard Form Return, atau kembali ke bentuk lazim. Setelah menguraikan atau menukar, kita periksa dengan menulis kembali bilangannya.",
-      tambah(0, judul("Standard Form Return")),
-      tambah("menguraikan", ...kartu("l1", 20, 56, 110, 46, W.krem, ["uraian", "atau tukaran"], 10)),
-      tambah("kembali", panah("la", 134, 79, 32, 0, W.merah, 2.4), ...kartu("l2", 170, 56, 110, 46, W.hijauMuda, ["bentuk lazim", "satu bilangan"], 10)),
-      tambah("periksa", emo("le", 150, 150, "🔍", 32)),
+      SUARA_W1,
+      tambah(0, judul("Cara 2"), ...lantai("lt", 150)),
+      tambah("Swap", teks("m1", 150, 60, "Swap Bundles", 14, W.merah, { z: 3 })),
+      tambah("Tukar", teks("m2", 150, 84, "Tukar Bundel", 11, W.hijauTua, { z: 3 })),
+      tambah("Bundel", ...bundel("bd", 90, 124, "dus", 2, 26), ...bundel("bp", 190, 124, "pak", 5, 16)),
     ),
     k(
-      "Contoh Cara tiga: tiga puluh ribu, lima belas ribu, dan enam ratus.",
+      SUARA_W2,
       bersih(0),
-      tambah(0, judul("Periksa Cara 3")),
-      tambah("Cara", ...kartu("lc", 70, 40, 160, 30, W.pink, ["Cara 3: 3, 15, 6"], 10)),
-      tambah("tiga", rumus("lr", 112, "30.000 + 15.000 + 600", 14, W.coklat)),
+      tambah(0, judul("Sepuluh jadi satu"), ...lantai("lt", 150), ...bundel("pa", 40, 60, "pak", 5, 16), ...bundel("pb", 40, 76, "pak", 5, 16), teks("tl", 70, 106, "10 bundel kecil", 8.6, W.coklat, { z: 3 })),
+      tambah("ditukar", panah("a1", 112, 66, 84, 0, W.biru, 2.4, { z: 2 })),
+      tambah("satu", ...bundel("dd", 240, 68, "dus", 1), teks("tr", 240, 106, "1 bundel kiri", 9, W.coklat, { z: 3 })),
+      tambah("sebaliknya", panah("a2", 196, 82, -84, 0, W.merah, 2.4, { z: 2 })),
     ),
     k(
-      "Tiga puluh ribu dan lima belas ribu menjadi empat puluh lima ribu. Ditambah enam ratus, hasilnya empat puluh lima ribu enam ratus.",
-      tambah("menjadi", rumus("ls", 142, "45.000 + 600", 12, W.coklat)),
-      tambah("hasilnya", rumus("lt", 170, "45.600", 20, W.hijau)),
-    ),
-    k(
-      "Bilangan lazim ini sama dengan harga peralatan sekolah Komang. Jadi Cara tiga benar.",
+      SUARA_W3,
       bersih(0),
-      tambah(0, judul("Hasilnya cocok")),
-      tambah("harga", ...kartu("lh", 50, 50, 200, 44, W.krem, ["harga Komang", "Rp45.600"], 11)),
-      tambah("benar", emo("lv", 150, 140, "✅", 36)),
+      tambah(0, judul("Jumlah tidak berubah"), ...lantai("lt", 150), teks("bb", 150, 60, "banyak bundel: berubah", 11, W.merah, { z: 3 })),
+      tambah("jumlah", teks("jt", 150, 100, "jumlah: tetap 1.000", 11, W.biru, { z: 3 })),
+      tambah("pun", emo("ok", 150, 136, E.benar, 28, { z: 3 })),
     ),
     k(
-      "Cara memeriksa seperti ini berguna setiap kali kita menguraikan atau menukar bilangan.",
-      tambah("menguraikan", ...kartu("lw", 40, 158, 220, 30, W.hijauMuda, ["uraikan atau tukar, lalu periksa"], 9.4)),
+      SUARA_W4,
+      bersih(0),
+      tambah(0, judul("Banyak susunan"), ...lantai("lt", 150)),
+      tambah("bilangan", teks("tb", 150, 44, "bilangan 3.500", 12, W.merah, { z: 3 })),
+      tambah("disusun", kotak("s0", 30, 56, 240, 26, W.langit, W.biru, { rx: 6, tebal: 1.4, z: 1 }), teks("x0", 150, 73, "3 dus + 5 pak", 10, W.biru, { z: 3 })),
+      tambah("beberapa", kotak("s1", 30, 88, 240, 26, W.rumput, W.hijau, { rx: 6, tebal: 1.4, z: 1 }), teks("x1", 150, 105, "2 dus + 15 pak", 10, W.hijauTua, { z: 3 })),
+      tambah("susunan", kotak("s2", 30, 120, 240, 26, W.pink, W.merah, { rx: 6, tebal: 1.4, z: 1 }), teks("x2", 150, 137, "35 pak", 10, W.merah, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 7. Standard Form Return: penerapan ------------------------------ */
-export const ADEGAN_LUAR_LAZIM_TERAPAN: AdeganStory = {
-  id: "luar-lazim-terapan",
-  judul: "Standard Form Return pada Cara 2, uang Asep, dan uang Lukas",
-  sumber: "Metode luar: Standard Form Return, penerapan",
-  latar: "#FEFCE8",
+/* ------------------------------ Swap Bundles: terapan ------------------------------ */
+const SUARA_X1 = "Fajar punya tiga dus dan lima pak, lalu menukar satu dus dengan sepuluh pak.";
+const SUARA_X2 = "Sekarang ia punya dua dus dan lima belas pak, dan totalnya tetap tiga ribu lima ratus.";
+const SUARA_X3 = "Cocok untuk persiapan mengurangi, karena kolom yang kekurangan bisa dipinjami.";
+const SUARA_X4 = "Kurang cocok untuk menulis bilangan biasa, karena satu kolom bisa berisi lebih dari sembilan.";
+
+export const ADEGAN_LUAR_TUKAR_TERAPAN: AdeganStory = {
+  id: "luar-tukar-terapan",
+  judul: "Tukar Bundel: kapan cocok",
+  sumber: "Metode global: Swap Bundles (terapan)",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Periksa Cara dua: empat puluh ribu, empat ribu, dan seribu enam ratus.",
-      tambah(0, judul("Periksa Cara 2")),
-      tambah("Periksa", ...kartu("pa", 70, 40, 160, 30, W.hijauMuda, ["Cara 2: 4, 4, 16"], 10)),
-      tambah("empat", rumus("pr", 112, "40.000 + 4.000 + 1.600", 14, W.coklat)),
+      SUARA_X1,
+      tambah(0, judul("Fajar menukar bundel"), ...lantai("lt", 150), ...tokoh("fj", 40, 184, "Fajar")),
+      tambah("tiga", ...bundel("ra", 112, 52, "dus", 3, 22), teks("l1", 62, 56, "3 dus", 9.4, W.coklat, { z: 3 })),
+      tambah("lima", ...bundel("rb", 112, 82, "pak", 5, 15), teks("l2", 62, 86, "5 pak", 9.4, W.coklat, { z: 3 })),
+      tambah("satu", teks("tk", 150, 114, "tukar 1 dus", 10, W.merah, { z: 3 })),
+      tambah("sepuluh", teks("sp", 150, 132, "= 10 pak", 10, W.merah, { z: 3 })),
     ),
     k(
-      "Empat puluh ribu dan empat ribu menjadi empat puluh empat ribu. Ditambah seribu enam ratus, hasilnya empat puluh lima ribu enam ratus. Cocok juga.",
-      tambah("menjadi", rumus("pu", 142, "44.000 + 1.600", 12, W.coklat)),
-      tambah("hasilnya", rumus("pv", 170, "45.600", 20, W.hijau)),
-    ),
-    k(
-      "Sekarang periksa uang Asep. Tiga puluh ribu, delapan ribu, dan enam ratus kembali menjadi tiga puluh delapan ribu enam ratus.",
+      SUARA_X2,
       bersih(0),
-      tambah(0, judul("Periksa uang Asep")),
-      tambah("Tiga", rumus("pw", 80, "30.000 + 8.000 + 600", 14, W.coklat)),
-      tambah("kembali", rumus("px", 126, "38.600", 24, W.hijau)),
-      tambah("kembali", ...kartu("py", 60, 150, 180, 34, W.hijauMuda, ["sama dengan bilangan Asep"], 9.6)),
+      tambah(0, judul("Sesudah ditukar"), ...lantai("lt", 150), ...tokoh("fj", 40, 184, "Fajar")),
+      tambah("dua", ...bundel("rc", 112, 52, "dus", 2, 22), teks("l3", 62, 56, "2 dus", 9.4, W.coklat, { z: 3 })),
+      tambah("lima", ...bundel("rd", 112, 80, "pak", 8, 15), ...bundel("re", 112, 94, "pak", 7, 15), teks("l4", 62, 88, "15 pak", 9.4, W.coklat, { z: 3 })),
+      tambah("tiga", teks("tt", 150, 124, "= 3.500", 16, W.biru, { z: 3 })),
     ),
     k(
-      "Terakhir periksa uang Lukas. Enam puluh ribu, tiga ribu, dan lima ratus kembali menjadi enam puluh tiga ribu lima ratus.",
+      SUARA_X3,
       bersih(0),
-      tambah(0, judul("Periksa uang Lukas")),
-      tambah("Terakhir", ...kartu("q1", 30, 40, 240, 34, W.pink, ["Lukas: 6 lembar, 3 lembar, 5 keping"], 9.4)),
-      tambah("Enam", rumus("q2", 100, "60.000 + 3.000 + 500", 12, W.coklat)),
-      tambah("menjadi", rumus("q3", 128, "63.500", 18, W.hijau)),
-      tambah("kembali", ...kartu("q4", 30, 146, 240, 34, W.hijauMuda, ["sama dengan bilangan Lukas"], 10)),
+      tambah(0, judul("Persiapan mengurangi"), ...lantai("lt", 150), emo("ok", 262, 60, E.benar, 28, { z: 3 })),
+      tambah("kolom", teks("kk", 130, 70, "kolom yang kurang", 11, W.merah, { z: 3 })),
+      tambah("dipinjami", teks("pj", 130, 100, "pinjam dari kolom kiri", 11, W.hijauTua, { z: 3 })),
+    ),
+    k(
+      SUARA_X4,
+      bersih(0),
+      tambah(0, judul("Tidak untuk bilangan biasa"), ...lantai("lt", 150), emo("xx", 262, 60, E.salah, 28, { z: 3 })),
+      tambah("satu", teks("s1", 130, 70, "1 kolom bisa berisi", 11, W.merah, { z: 3 })),
+      tambah("sembilan", teks("s9", 130, 100, "lebih dari 9", 13, W.coklat, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 8. Money Composition: konsep ------------------------------ */
-const labelBaris = (awal: string, p: number, r: number, s: number) => [kiri(`${awal}tp`, 52, `10.000: ${p} lembar`), kiri(`${awal}tr`, 92, `1.000: ${r} lembar`), kiri(`${awal}ts`, 132, `100: ${s} keping`)];
+/* ------------------------------ Build It Back: konsep ------------------------------ */
+const SUARA_B1 = "Cara ketiga, Build It Back, atau Susun Kembali.";
+const SUARA_B2 = "Kita menaruh tiap bagian ke kolomnya, mengisi nol di kolom yang kosong, lalu menulis angkanya berurutan.";
+const SUARA_B3 = "Hasilnya adalah bentuk lazim, yaitu bilangan yang biasa kita tulis dan baca.";
+const SUARA_B4 = "Terakhir kita periksa apakah banyak angkanya sama dengan banyak kolom yang dipakai.";
 
-export const ADEGAN_LUAR_UANG: AdeganStory = {
-  id: "luar-uang",
-  judul: "Metode luar 4: Money Composition",
-  sumber: "Metode luar: Money Composition",
-  latar: "#FDF2F8",
+export const ADEGAN_LUAR_SUSUN: AdeganStory = {
+  id: "luar-susun",
+  judul: "Build It Back: Susun",
+  sumber: "Metode global: Build It Back (konsep)",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Metode keempat, Money Composition, atau menyusun dari uang. Mulai dari pecahan terbesar, ambil sebanyak yang dibutuhkan, lalu lanjut ke pecahan yang lebih kecil.",
-      tambah(0, judul("Money Composition")),
-      tambah("terbesar", satuUang("ma", 40, 54, "p"), ...kartu("mak", 16, 68, 76, 36, W.lembarP, ["terbesar"], 9)),
-      tambah("lanjut", panah("mp1", 96, 86, 20, 0, W.merah, 2.2), satuUang("mb", 142, 54, "r"), ...kartu("mbk", 120, 68, 76, 36, W.lembarR, ["lanjut"], 9)),
-      tambah("kecil", panah("mp2", 200, 86, 20, 0, W.merah, 2.2), satuUang("mc", 246, 54, "s"), ...kartu("mck", 224, 68, 64, 36, W.keping, ["kecil"], 9)),
-      tambah("kecil", emo("me", 150, 150, "💵", 32)),
+      SUARA_B1,
+      tambah(0, judul("Cara 3"), ...lantai("lt", 150)),
+      tambah("Build", teks("m1", 150, 52, "Build It Back", 14, W.merah, { z: 3 })),
+      tambah("Susun", teks("m2", 150, 76, "Susun Kembali", 11, W.hijauTua, { z: 3 })),
+      tambah("Back", ...slotKolom("sl", 96)),
     ),
     k(
-      "Contoh uang Asep: tiga lembar sepuluh ribuan, delapan lembar seribuan, enam keping seratusan. Susun uangnya dari yang terbesar.",
+      SUARA_B2,
       bersih(0),
-      tambah(0, judul("Uang Asep disusun")),
-      tambah("tiga", ...labelBaris("x", 3, 8, 6)),
-      tambah("tiga", ...barisUang("xp", 130, 52, 3, "p")),
-      tambah("delapan", ...barisUang("xr", 130, 92, 8, "r")),
-      tambah("enam", ...barisUang("xs", 130, 132, 6, "s")),
+      tambah(0, judul("Taruh ke kolomnya"), ...lantai("lt", 150), ...slotKolom("sl", 70)),
+      tambah("bagian", angkaSlot("sl", 0, 70, "6"), angkaSlot("sl", 2, 70, "2"), angkaSlot("sl", 4, 70, "5")),
+      tambah("nol", angkaSlot("sl", 1, 70, "0", W.hijauTua), angkaSlot("sl", 3, 70, "0", W.hijauTua)),
+      tambah("berurutan", teks("hs", 150, 146, "60.205", 16, W.biru, { z: 3 })),
     ),
     k(
-      "Nilainya dihitung dari pecahan terbesar: tiga puluh ribu, lalu delapan ribu, lalu enam ratus. Jadi tiga puluh delapan ribu enam ratus.",
-      bersih(0),
-      tambah(0, judul("Nilai dari yang terbesar")),
-      tambah("tiga", ...kartu("v1", 30, 40, 240, 30, W.lembarP, ["3 lembar 10.000 = 30.000"], 9.4)),
-      tambah("delapan", ...kartu("v2", 30, 80, 240, 30, W.lembarR, ["8 lembar 1.000 = 8.000"], 9.4)),
-      tambah("enam", ...kartu("v3", 30, 120, 240, 30, W.keping, ["6 keping 100 = 600"], 9.4)),
-      tambah("Jadi", rumus("v4", 176, "jumlah 38.600", 14, W.hijau)),
+      SUARA_B3,
+      tambah("bentuk", teks("lz", 150, 126, "bentuk lazim", 10, W.coklat, { z: 3 })),
+      ubah("biasa", { id: "hs", warna: W.hijau }),
+      tambah("baca", emo("ok", 262, 142, E.benar, 24, { z: 3 })),
     ),
     k(
-      "Uang Lukas disusun dengan cara yang sama: enam lembar, tiga lembar, dan lima keping, sehingga bernilai enam puluh tiga ribu lima ratus.",
-      bersih(0),
-      tambah(0, judul("Uang Lukas disusun")),
-      tambah("enam", ...kartu("w1", 30, 40, 240, 30, W.lembarP, ["6 lembar 10.000 = 60.000"], 9.4)),
-      tambah("tiga", ...kartu("w2", 30, 80, 240, 30, W.lembarR, ["3 lembar 1.000 = 3.000"], 9.4)),
-      tambah("lima", ...kartu("w3", 30, 120, 240, 30, W.keping, ["5 keping 100 = 500"], 9.4)),
-      tambah("bernilai", rumus("w4", 176, "jumlah 63.500", 14, W.hijau)),
-    ),
-    k(
-      "Metode ini cocok saat uang yang tersedia terbatas, seperti uang Komang, karena kita tahu apa yang bisa diambil lebih dulu.",
-      bersih(0),
-      tambah(0, judul("Cocok untuk uang terbatas")),
-      tambah("terbatas", emo("ut", 150, 80, "💰", 36)),
-      tambah("Komang", ...kartu("uk", 40, 100, 220, 44, W.krem, ["uang Komang terbatas", "ambil dari yang terbesar"], 10)),
+      SUARA_B4,
+      sorotkan("periksa", ...idSlot("sl").filter((i) => i.endsWith("-k"))),
+      tambah("angkanya", teks("a5", 80, 172, "5 angka", 11, W.merah, { z: 3 })),
+      tambah("sama", teks("sm", 125, 172, "=", 11, W.merah, { z: 3 })),
+      tambah("kolom", teks("k5", 170, 172, "5 kolom", 11, W.merah, { z: 3 })),
+      tambah("dipakai", emo("ok2", 232, 170, E.benar, 22, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 9. Money Composition: penerapan pada batas uang Komang ------------------------------ */
-export const ADEGAN_LUAR_UANG_TERAPAN: AdeganStory = {
-  id: "luar-uang-terapan",
-  judul: "Money Composition pada uang Komang",
-  sumber: "Metode luar: Money Composition, penerapan",
-  latar: "#FDF2F8",
+/* ------------------------------ Build It Back: terapan ------------------------------ */
+const SUARA_Y1 = "Citra mendapat uraian tujuh puluh ribu ditambah lima ratus ditambah delapan puluh.";
+const SUARA_Y2 = "Kolom ribuan dan satuan kosong, jadi ia mengisi nol, dan hasilnya tujuh puluh ribu lima ratus delapan puluh.";
+const SUARA_Y3 = "Cocok untuk mengubah uraian menjadi bilangan biasa tanpa kehilangan nol.";
+const SUARA_Y4 = "Kurang cocok kalau uraiannya tidak berurutan, karena kita harus menyusunnya dulu menurut kolom.";
+
+export const ADEGAN_LUAR_SUSUN_TERAPAN: AdeganStory = {
+  id: "luar-susun-terapan",
+  judul: "Susun Kembali: kapan cocok",
+  sumber: "Metode global: Build It Back (terapan)",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Sekarang bayar empat puluh lima ribu enam ratus dengan uang Komang. Mulai dari sepuluh ribuan: lima lembar berarti lima puluh ribu, terlalu banyak. Jadi ambil empat lembar, empat puluh ribu.",
-      tambah(0, judul("Bayar Rp45.600")),
-      tambah("sepuluh", ...kartu("o1", 16, 36, 268, 30, W.lembarP, ["mulai dari 10.000"], 9.4)),
-      tambah("lima", ...kartu("o2", 16, 76, 268, 30, W.merahMuda, ["5 lembar: 50.000, terlalu banyak"], 9.4)),
-      tambah("empat@2", ...kartu("o3", 16, 116, 268, 30, W.hijauMuda, ["4 lembar: 40.000, boleh"], 9.4)),
+      SUARA_Y1,
+      tambah(0, judul("Citra mendapat uraian"), ...lantai("lt", 150), ...tokoh("ct", 40, 184, "Citra")),
+      tambah("tujuh", teks("u1", 90, 64, "70.000", 12, W.biru, { z: 3 })),
+      tambah("lima", teks("u2", 150, 64, "+ 500", 12, W.biru, { z: 3 })),
+      tambah("delapan", teks("u3", 205, 64, "+ 80", 12, W.biru, { z: 3 })),
     ),
     k(
-      "Sisanya lima ribu enam ratus. Seribuan Komang ada lima belas lembar, jadi ambil lima lembar.",
-      bersih(0),
-      tambah(0, judul("Sisa dibayar seribuan")),
-      tambah("Sisanya", ...kartu("o4", 16, 40, 268, 30, W.krem, ["sisa 5.600"], 10)),
-      tambah("Seribuan", ...kartu("o5", 16, 82, 268, 30, W.lembarR, ["1.000: ada 15 lembar"], 9.4)),
-      tambah("ambil", ...kartu("o6", 16, 124, 268, 30, W.hijauMuda, ["ambil 5 lembar"], 9.4)),
+      SUARA_Y2,
+      tambah(0, ...slotKolom("sl", 84)),
+      tambah("mengisi", angkaSlot("sl", 0, 84, "7"), angkaSlot("sl", 1, 84, "0", W.hijauTua), angkaSlot("sl", 2, 84, "5"), angkaSlot("sl", 3, 84, "8"), angkaSlot("sl", 4, 84, "0", W.hijauTua)),
+      tambah("tujuh", teks("hs", 150, 146, "70.580", 16, W.biru, { z: 3 })),
     ),
     k(
-      "Sisa enam ratus, ambil enam keping seratusan. Selesai, itulah Cara satu.",
-      tambah("Sisa", ...kartu("o7", 16, 160, 268, 30, W.keping, ["sisa 600 = 6 keping 100"], 9.4)),
-      hapus("ambil", "o4-k", "o4-t0"),
+      SUARA_Y3,
+      tambah(0, emo("ok", 270, 44, E.benar, 26, { z: 3 })),
+      sorotkan("tanpa", "sl1-k", "sl4-k"),
+      tambah("nol", teks("tn", 190, 170, "tanpa kehilangan nol", 9, W.hijauTua, { z: 3 })),
     ),
     k(
-      "Batas uang Komang penting. Misalnya setelah empat lembar sepuluh ribuan, kalau hanya tiga lembar seribuan, sisanya dua ribu enam ratus harus dibayar dengan dua puluh enam keping seratusan. Komang hanya punya enam belas keping, jadi tidak bisa.",
-      bersih(0),
-      tambah(0, judul("Batas uang Komang", W.merah)),
-      tambah("Misalnya", ...kartu("b1", 16, 36, 268, 28, W.hijauMuda, ["4 lembar 10.000"], 9)),
-      tambah("tiga", ...kartu("b2", 16, 70, 268, 28, W.lembarR, ["3 lembar 1.000, sisa 2.600"], 9)),
-      tambah("dua@2", ...kartu("b3", 16, 104, 268, 28, W.keping, ["perlu 26 keping 100"], 9)),
-      tambah("enam@2", ...kartu("b4", 16, 138, 268, 28, W.merahMuda, ["Komang hanya punya 16 keping"], 9)),
-      tambah("bisa", emo("b5", 150, 190, "🚫", 16)),
-    ),
-    k(
-      "Dengan memeriksa batas ini, hanya ada empat cara, dan keempatnya sudah kita temukan.",
-      bersih(0),
-      tambah(0, judul("Hanya ada 4 cara")),
-      tambah("empat", bingkai("ot", G_CARA, 4, LABEL_CARA)),
-      ...[0, 1, 2, 3].map((i) => tambah("keempatnya", ...CARA_KOMANG[i].map((v, j) => isiSel("ot", G_CARA, i, j, String(v))), isiSel("ot", G_CARA, i, 3, "0"), isiSel("ot", G_CARA, i, 4, "0"))),
-      tambah("temukan", ...kartu("og", 60, 148, 180, 34, W.hijauMuda, ["semua tepat Rp45.600"], 10)),
+      SUARA_Y4,
+      hapus(0, "ok", "tn", "u1", "u2", "u3"),
+      tambah(0, emo("xx", 270, 44, E.salah, 26, { z: 3 })),
+      tambah("tidak", teks("ac", 150, 64, "80 + 70.000 + 500", 12, W.merah, { z: 3 })),
+      tambah("menyusunnya", teks("sd", 190, 170, "urutkan dulu menurut kolom", 9, W.coklat, { z: 3 })),
     ),
   ],
 };
 
-/* ------------------------------ 10. Ringkasan ------------------------------ */
+/* ------------------------------ Ringkasan ------------------------------ */
+const SUARA_R1 = "Tiga cara sudah kita pelajari bersama Bu Lestari, dan masing-masing punya saat yang tepat.";
+const SUARA_R2 = "Memeriksa angka, pakai Urai Bilangan. Menyusun dengan banyak cara, pakai Tukar Bundel. Menulis bilangan biasa, pakai Susun Kembali.";
+const SUARA_R3 = "Apa pun caranya, jumlah seluruhnya tidak boleh berubah.";
+const SUARA_R4 = "Menurutmu, kalau satu bundel hilang, di cara mana kita paling cepat menyadarinya?";
+
+const BARIS_RINGKAS: { kiri: string; kanan: string; at: string }[] = [
+  { kiri: "Memeriksa angka", kanan: "Urai Bilangan", at: "Memeriksa" },
+  { kiri: "Banyak cara", kanan: "Tukar Bundel", at: "Menyusun" },
+  { kiri: "Menulis biasa", kanan: "Susun Kembali", at: "Menulis" },
+];
+
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode dari luar",
-  sumber: "Ringkasan metode luar",
-  latar: "#F5F3FF",
+  judul: "Ringkasan tiga cara",
+  sumber: "Ringkasan metode global",
+  latar: "#F1F5F9",
   ketukan: [
     k(
-      "Ringkasan: satu bilangan, empat sudut pandang. Expanded Form menguraikan bilangan menjadi nilai tiap angka. Flexible Grouping menukar antar tempat nilai.",
-      tambah(0, judul("Ringkasan: 1 bilangan, 4 sudut pandang")),
-      tambah("Expanded", ...kartu("r1", 16, 40, 268, 40, W.hijauMuda, ["Expanded Form", "uraikan nilai tiap angka"], 9.4)),
-      tambah("Flexible", ...kartu("r2", 16, 92, 268, 40, W.langit, ["Flexible Grouping", "tukar antar tempat nilai"], 9.4)),
+      SUARA_R1,
+      tambah(0, judul("Tiga cara"), ...lantai("lt", 150), teks("n3", 170, 44, "3 cara", 14, W.merah, { z: 3 })),
+      tambah("Lestari", ...tokoh("bu", 40, 184, "Bu Lestari")),
+      tambah("masing", ...kartu("c0", 80, 70, 66, 30, W.langit, "Urai Bilangan", 8), ...kartu("c1", 150, 70, 66, 30, W.rumput, "Tukar Bundel", 8), ...kartu("c2", 220, 70, 66, 30, W.pink, "Susun Kembali", 8)),
+      tambah("tepat", emo("ok", 170, 124, E.benar, 28, { z: 3 })),
     ),
     k(
-      "Standard Form Return mengumpulkan kembali nilainya untuk memeriksa. Money Composition menyusun dari uang, mulai dari pecahan terbesar.",
-      tambah("Standard", ...kartu("r3", 16, 144, 268, 40, W.krem, ["Standard Form Return", "kumpulkan kembali, periksa"], 9.4)),
-      hapus("Money", "r1-k", "r1-t0", "r1-t1"),
-      tambah("Money", ...kartu("r4", 16, 40, 268, 40, W.pink, ["Money Composition", "susun dari uang terbesar"], 9.4)),
-    ),
-    k(
-      "Uang Asep tiga puluh delapan ribu enam ratus, uang Lukas enam puluh tiga ribu lima ratus, dan Komang punya empat cara untuk empat puluh lima ribu enam ratus.",
+      SUARA_R2,
       bersih(0),
-      tambah(0, judul("Angka yang dipakai")),
-      tambah("Asep", ...kartu("s1", 16, 50, 84, 52, W.langit, ["Asep", "38.600"], 10)),
-      tambah("Lukas", ...kartu("s2", 108, 50, 84, 52, W.pink, ["Lukas", "63.500"], 10)),
-      tambah("Komang", ...kartu("s3", 200, 50, 84, 52, W.hijauMuda, ["Komang", "45.600"], 10)),
-      tambah("empat", teks("s4", 150, 134, "4 cara untuk uang Komang", 9.4, W.ungu)),
+      tambah(0, judul("Pilih cara yang tepat"), ...lantai("lt", 150)),
+      ...BARIS_RINGKAS.map((b, i) =>
+        tambah(
+          b.at,
+          kotak(`r${i}-k`, 10, 40 + i * 36, 280, 28, W.putih, W.biru, { rx: 6, tebal: 1.2, z: 1 }),
+          teks(`r${i}-a`, 78, 58 + i * 36, b.kiri, 8.6, W.coklat, { z: 3 }),
+          panah(`r${i}-p`, 124, 54 + i * 36, 44, 0, W.biru, 2, { z: 2 }),
+          teks(`r${i}-b`, 230, 58 + i * 36, b.kanan, 9.4, W.hijauTua, { z: 3 }),
+        ),
+      ),
     ),
     k(
-      "Pilih metode sesuai soal: uraikan untuk membaca nilai, tukar untuk mencari cara lain, periksa kembali untuk memastikan, dan susun dari uang bila uangnya terbatas.",
+      SUARA_R3,
       bersih(0),
-      tambah(0, judul("Pilih sesuai soal")),
-      tambah("uraikan", ...kartu("y1", 16, 40, 128, 40, W.hijauMuda, ["uraikan", "baca nilai"], 9.4)),
-      tambah("tukar", ...kartu("y2", 156, 40, 128, 40, W.langit, ["tukar", "cari cara lain"], 9.4)),
-      tambah("periksa", ...kartu("y3", 16, 92, 128, 40, W.krem, ["periksa kembali", "pastikan"], 9.4)),
-      tambah("susun", ...kartu("y4", 156, 92, 128, 40, W.pink, ["susun dari uang", "uang terbatas"], 9.4)),
+      tambah(0, judul("Jumlah tetap"), ...lantai("lt", 150)),
+      tambah("jumlah", teks("jt", 150, 66, "jumlah tidak boleh berubah", 12, W.merah, { z: 3 })),
+      tambah("seluruhnya", teks("bl", 150, 104, "24.350", 18, W.biru, { z: 3 })),
+      tambah("berubah", emo("ok", 150, 140, E.benar, 28, { z: 3 })),
     ),
     k(
-      "Hati-hati, angka harus ditulis di kolom yang tepat. Metode periksa kembali tadi membantu kita menemukan angka yang salah tempat.",
+      SUARA_R4,
       bersih(0),
-      tambah(0, judul("Hati-hati", W.merah)),
-      tambah("angka", ...kartu("t1", 30, 50, 240, 44, W.merahMuda, ["tulis angka di kolom", "yang tepat"], 10)),
-      tambah("periksa", emo("t2", 150, 134, "🔍", 34)),
+      tambah(0, judul("Satu bundel hilang?"), ...lantai("lt", 150), ...tokoh("bu", 40, 184, "Bu Lestari")),
+      tambah("satu", teks("s1", 170, 52, "1 bundel hilang", 13, W.merah, { z: 3 })),
+      tambah("cara", ...kartu("c0", 100, 76, 56, 24, W.langit, "Urai", 8.6), ...kartu("c1", 160, 76, 56, 24, W.rumput, "Tukar", 8.6), ...kartu("c2", 220, 76, 56, 24, W.pink, "Susun", 8.6)),
+      tambah("menyadarinya", emo("qq", 190, 140, E.tanya, 34, { z: 3 })),
     ),
   ],
 };

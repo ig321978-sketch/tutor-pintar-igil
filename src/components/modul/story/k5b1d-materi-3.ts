@@ -1,280 +1,164 @@
 import type { AdeganStory } from "./logika-story";
-import { W, emo, judul, kalimat, kartu, kolomSusun, susun, tabel, tabelNilaiTempat, teks } from "./k5b1d-gambar";
-import { bersih, k, tambah, ubah } from "./k5b1d-bantu";
+import {
+  E,
+  JUMLAH,
+  KOSONG,
+  KURSI,
+  W,
+  Y,
+  angkaDi,
+  bulat,
+  digitBaris,
+  emo,
+  fmt,
+  garis,
+  garisHitung,
+  judul,
+  kartu,
+  kotak,
+  labelBaris,
+  lajurKolom,
+  lantai,
+  panah,
+  papanHitung,
+  rumus,
+  teks,
+  tokoh,
+} from "./k5b1d-gambar";
+import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k5b1d-bantu";
 
-/* ------------------------------ 9. Panduan Guru untuk sub-bab D (Panduan Guru hlm. 33 sampai 34) ------------------------------ */
-export const ADEGAN_GURU: AdeganStory = {
-  id: "panduan-guru-d",
-  judul: "Panduan Guru: peran guru, respons, miskonsepsi, diferensiasi",
-  sumber: "Panduan Guru hlm. 33–34",
-  latar: "#F5F3FF",
-  kutipan: [
-    "Tabel 1.5 Peran Guru dan Respons Peserta Didik terhadap Pembelajaran Operasi Bilangan",
-    "Guru menjadi fasilitator.",
-    "Peserta didik dengan tingkat pemahaman yang baik akan dapat melakukan operasi bilangan dengan baik.",
-    "Mungkin ada peserta didik yang hanya mampu untuk melakukan operasi bilangan",
-    "peserta didik kurang dapat mengimplementasikan soal cerita menggunakan operasi bilangan yang digunakan",
-    "kurang dapat menggunakan teknik perkalian dan pembagian dalam bilangan cacah dengan angka yang besar",
-    "kurangnya dalam pemahaman teknik menyimpan serta ketelitian",
-    "Bagi peserta didik dengan kecepatan belajarnya tinggi (advanced)",
-    "minta mereka mengerjakan eksplorasi tanpa bantuan",
-    "pertanyaan releksi nomor 5, 6, dan 7 pada tabel releksi di Buku Siswa",
-    "Aku dapat menghitung operasi bilangan cacah sampai 100.000.",
-  ],
-  ketukan: [
-    k(
-      "Panduan Guru menyajikan peran guru dan respons peserta didik pada Tabel satu titik lima. Guru menjadi fasilitator: menyampaikan tujuan, berkeliling, memeriksa hasil kelompok. Yang belum tepat dibimbing.",
-      tambah(0, judul("Tabel 1.5: peran guru")),
-      tambah("fasilitator:", ...kartu("g1", 14, 34, 272, 40, W.langit, ["guru: fasilitator", "tujuan jelas, berkeliling, memeriksa"], 9)),
-      tambah("Yang", ...kartu("g2", 14, 96, 272, 34, W.krem, ["belum tepat: beri bimbingan"], 9.6)),
-    ),
-    k(
-      "Yang pemahamannya baik dapat melakukan operasi bilangan dengan baik. Ada yang hanya mampu operasi biasa, tetapi sulit pada menyimpan, perkalian, dan pembagian.",
-      bersih(0),
-      tambah(0, judul("Kemungkinan respons")),
-      tambah("baik.", ...kartu("g3", 14, 40, 272, 40, W.hijauMuda, ["pemahaman baik", "operasi bilangan lancar"], 9)),
-      tambah("sulit", ...kartu("g4", 14, 100, 272, 40, W.merahMuda, ["sulit: teknik menyimpan,", "perkalian, dan pembagian"], 9)),
-    ),
-    k(
-      "Miskonsepsi ada tiga: soal cerita belum diterjemahkan ke operasi yang tepat, perkalian dan pembagian angka besar belum dikuasai, serta menyimpan dan ketelitian kurang.",
-      bersih(0),
-      tambah(0, judul("Tiga miskonsepsi")),
-      tambah("soal", ...kartu("g5", 14, 32, 272, 34, W.krem, ["soal cerita ke operasi yang tepat"], 9.4)),
-      tambah("perkalian", ...kartu("g6", 14, 80, 272, 34, W.langit, ["kali dan bagi angka besar"], 9.4)),
-      tambah("serta", ...kartu("g7", 14, 128, 272, 34, W.pink, ["menyimpan dan ketelitian"], 9.4)),
-    ),
-    k(
-      "Diferensiasi: peserta didik yang cepat mengerjakan eksplorasi tanpa bantuan dan dengan berbagai cara. Catatan guru: Panduan Guru menyebut Refleksi nomor lima, enam, tujuh, tetapi operasi hitung ada di nomor delapan Buku Siswa.",
-      bersih(0),
-      tambah(0, judul("Diferensiasi dan Refleksi")),
-      tambah("Diferensiasi:", ...kartu("g8", 14, 32, 272, 34, W.hijauMuda, ["cepat: tanpa bantuan, banyak cara"], 9.4)),
-      tambah("Panduan", ...kartu("g9", 14, 80, 272, 34, W.merahMuda, ["Panduan Guru: Refleksi nomor 5, 6, 7"], 9.4)),
-      tambah("delapan", ...kartu("g10", 14, 128, 272, 40, W.krem, ["Buku Siswa: nomor 8", "aku dapat menghitung operasi bilangan"], 9)),
-    ),
-  ],
-};
+/*
+ * Cerita orisinal IGIL "Hitungan Penonton Pak Darmo" (Kelas 5 Bab 1 Sub-Bab D), akhir cerita Hari Pertandingan di Stadion Kota.
+ * Naskah suara dari naskah/story-naskah-k5b1d.md. Bagian ini: bagi per kolom (uang kas 64.000 : 4), cek dengan operasi kebalikan, dan perayaan penutup bab.
+ */
 
-/* ------------------------------ 10. Uji Kompetensi 1 sampai 4 (Buku Siswa hlm. 26 sampai 27; Panduan Guru hlm. 36) ------------------------------ */
-const S4A = susun("s4a", 108, 62, "+", 76598, 12456);
-const S4B = susun("s4b", 108, 62, "−", 67987, 13453);
-const LANGKAH_4A = ["8 + 6 = 14", "9 + 5 + 1 = 15", "5 + 4 + 1 = 10", "6 + 2 + 1 = 9", "7 + 1 = 8"];
-export const ADEGAN_UK_1: AdeganStory = {
-  id: "uk-1",
-  judul: "Uji 1 sampai 4: menulis, membaca, menyusun, dan menghitung",
-  sumber: "Materi: menulis, membaca, dan menghitung",
-  latar: "#ECFEFF",
-  kutipan: [
-    "Uji Kompetensi",
-    "Nyatakan bilangan berikut dengan angka.",
-    "Lima puluh ribu tiga ratus tiga rupiah.",
-    "Tiga puluh tiga ribu empat ratus tiga rupiah.",
-    "Bacalah bilangan berikut.",
-    "Jumlah penduduk Kepulauan Sitaro tahun 2021 adalah 72.135 jiwa.",
-    "Jarak kota Sibolga ke kota New York adalah 15.229 km.",
-    "Tuliskan bilangan berikut angka dan bacalah.",
-    "Bilangan yang merupakan jumlah dari 3 lembar sepuluh ribuan, 7 lembar seribuan, dan 10 keping seratusan.",
-    "Tentukan hasil dan nilai tempat dari operasi bilangan berikut.",
-    "76.598 + 12.456 =",
-    "67.987 – 13.453 =",
-    "67.032 : 147 =",
-    "567 × 98 =",
-    "567 x 107 =",
-    "a. 50.303",
-    "b. 33.403",
-    "a. 89.054",
-    "b. 54.534",
-    "d. 55.566",
-  ],
-  ketukan: [
-    k(
-      "Uji satu: tulis dengan angka. Lima puluh ribu tiga ratus tiga rupiah, dan tiga puluh tiga ribu empat ratus tiga rupiah. Nol di puluhan tetap ditulis.",
-      tambah(0, judul("Uji 1: tulis angka")),
-      tambah("Lima", teks("n1", 75, 44, "a. Rp50.303", 11, W.merah)),
-      tambah("dan", teks("n2", 225, 44, "b. Rp33.403", 11, W.hijau)),
-      tambah("Nol", ...tabelNilaiTempat("u1", 6, 60, [["a", 50303], ["b", 33403]])),
-      tambah("ditulis.", ...kartu("n3", 40, 132, 220, 36, W.krem, ["nol menjaga nilai tempat"], 9.6)),
-    ),
-    k(
-      "Uji dua: bacalah bilangan. Penduduk Kepulauan Sitaro tahun dua ribu dua puluh satu adalah tujuh puluh dua ribu seratus tiga puluh lima jiwa. Jarak Sibolga ke New York lima belas ribu dua ratus dua puluh sembilan kilometer.",
-      bersih(0),
-      tambah(0, judul("Uji 2: baca")),
-      tambah("Penduduk", ...kartu("n4", 14, 40, 272, 50, W.langit, ["72.135 jiwa", "Kepulauan Sitaro, tahun 2021"], 10.4)),
-      tambah("Jarak", ...kartu("n5", 14, 110, 272, 50, W.hijauMuda, ["15.229 km", "Sibolga ke New York"], 10.4)),
-    ),
-    k(
-      "Uji tiga: sepuluh ribuan, seribuan, dan seratusan dijumlahkan. Bagian a tiga puluh delapan ribu, bagian b tiga puluh empat ribu, bagian c sembilan puluh tujuh ribu lima ratus.",
-      bersih(0),
-      tambah(0, judul("Uji 3: susun uang")),
-      tambah("Bagian@1", teks("t1", 150, 56, "3 × 10.000 + 7 × 1.000 + 10 × 100 = 38.000", 9.4, W.biru)),
-      tambah("Bagian@2", teks("t2", 150, 96, "3 × 10.000 + 4 × 1.000 = 34.000", 9.4, W.biru)),
-      tambah("Bagian@3", teks("t3", 150, 136, "9 × 10.000 + 7 × 1.000 + 5 × 100 = 97.500", 9.4, W.biru)),
-      tambah("sembilan", ...kartu("t4", 60, 156, 180, 30, W.hijauMuda, ["bagian c paling besar"], 9.4)),
-    ),
-    k(
-      "Uji empat, bagian a: tujuh puluh enam ribu lima ratus sembilan puluh delapan ditambah dua belas ribu empat ratus lima puluh enam. Hitung dari satuan, puluhan, ratusan, ribuan, puluh ribuan, sambil menyimpan.",
-      bersih(0),
-      tambah(0, judul("Uji 4a: bersusun")),
-      tambah(0, ...[...S4A.atas, ...S4A.bawah, ...S4A.alat]),
-      tambah("satuan,", ...kolomSusun(S4A, 0), teks("l4", 232, 78, LANGKAH_4A[0], 9, W.merah)),
-      tambah("puluhan,", ...kolomSusun(S4A, 1)),
-      ubah("puluhan,", { id: "l4", isi: LANGKAH_4A[1] }),
-      tambah("ratusan,", ...kolomSusun(S4A, 2)),
-      ubah("ratusan,", { id: "l4", isi: LANGKAH_4A[2] }),
-      tambah("ribuan@1", ...kolomSusun(S4A, 3)),
-      ubah("ribuan@1", { id: "l4", isi: LANGKAH_4A[3] }),
-      tambah("ribuan@2", ...kolomSusun(S4A, 4)),
-      ubah("ribuan@2", { id: "l4", isi: LANGKAH_4A[4] }),
-      tambah("menyimpan.", kalimat("k4", 232, 130, 76598, "+", 12456, 89054, 6)),
-    ),
-    k(
-      "Uji empat, bagian b: enam puluh tujuh ribu sembilan ratus delapan puluh tujuh dikurangi tiga belas ribu empat ratus lima puluh tiga, hasilnya lima puluh empat ribu lima ratus tiga puluh empat.",
-      bersih(0),
-      tambah(0, judul("Uji 4b: bersusun")),
-      tambah(0, ...[...S4B.atas, ...S4B.bawah, ...S4B.alat]),
-      tambah("hasilnya", ...kolomSusun(S4B, 0, 4)),
-      tambah("hasilnya", kalimat("k5", 232, 100, 67987, "−", 13453, 54534, 6, W.hijau)),
-    ),
-    k(
-      "Uji empat, bagian c: enam puluh tujuh ribu tiga puluh dua dibagi seratus empat puluh tujuh sama dengan empat ratus lima puluh enam. Periksa dengan perkalian, hasilnya kembali ke bilangan semula.",
-      bersih(0),
-      tambah(0, judul("Uji 4c: pembagian")),
-      tambah("Uji", teks("d1", 150, 74, "67.032 ÷ 147 = 456", 17, W.hijau)),
-      tambah("Periksa", teks("d2", 150, 118, "456 × 147 = 67.032", 14, W.coklat)),
-      tambah("semula", ...kartu("d3", 50, 140, 200, 34, W.krem, ["hasil periksa sama dengan soal"], 9.4)),
-    ),
-    k(
-      "Uji empat, bagian d: lima ratus enam puluh tujuh dikali sembilan puluh delapan sama dengan lima puluh lima ribu lima ratus enam puluh enam. Periksa dengan pembagian, hasilnya kembali ke lima ratus enam puluh tujuh.",
-      bersih(0),
-      tambah(0, judul("Uji 4d: perkalian")),
-      tambah("Uji", teks("e1", 150, 66, "567 × 98 = 55.566", 17, W.hijau)),
-      tambah("Periksa", teks("e2", 150, 112, "55.566 ÷ 98 = 567", 15, W.coklat)),
-      tambah("kembali", ...kartu("e3", 50, 140, 200, 34, W.krem, ["hasil kembali ke soal"], 9.6)),
-    ),
-  ],
-};
+/* ------------------------------ 7. Bagi per kolom ------------------------------ */
+const SUARA_BAGI1 = "Pak Darmo punya uang kas enam puluh empat ribu rupiah untuk dibagi rata ke empat tribun.";
+const SUARA_BAGI2 = "Citra membagi per kolom: enam puluh empat ribu dibagi empat sama dengan enam belas ribu.";
+const SUARA_BAGI3 = "Jadi tiap tribun menerima enam belas ribu rupiah.";
 
-/* ------------------------------ 11. Uji Kompetensi 5 dan 6 (Buku Siswa hlm. 27 sampai 28; Panduan Guru hlm. 36) ------------------------------ */
-export const ADEGAN_UK_2: AdeganStory = {
-  id: "uk-2",
-  judul: "Uji 5 dan 6: komposisi uang dan paket makan siang",
-  sumber: "Materi: komposisi uang dan paket makan",
+const NAMA_TRIBUN = ["Utara", "Selatan", "Timur", "Barat"];
+const Y_BAGI = 88;
+const KARTU_TRIBUN = NAMA_TRIBUN.flatMap((n, i) => kartu(`tb${i}`, 12 + i * 58, 100, 52, 30, "#DCFCE7", [n, "?"], 8));
+
+export const ADEGAN_BAGI: AdeganStory = {
+  id: "bagi",
+  judul: "Uang kas dibagi rata",
+  sumber: "Materi: bagi per kolom dan hasilnya",
   latar: "#FFFBEB",
-  kutipan: [
-    "Ibu Saga berbelanja di pasar sebesar Rp59.000,00.",
-    "berapa komposisi cara membayar yang mungkin dilakukan?",
-    "Cermatilah tabel berikut",
-    "Zafran dan Ula sedang memilih makanan untuk makan siang.",
-    "Paket A",
-    "Paket B",
-    "Rp27.500,00",
-    "Jika Zafran dan Ula masing-masing membeli 1 porsi paket A, berapakah jumlah uang yang dibayarkan?",
-    "Jika kamu menjadi Zafran dan Ula, paket mana yang akan kamu pilih?",
-    "Jika Zafran dan Ula masing-masing memiliki uang Rp35.000,00 dan mereka membeli Paket B, berapakah sisa uang masing-masing?",
-    "5. 2 Cara",
-    "a. 55.000",
-    "b. Paket B",
-    "c. 8.500",
-  ],
   ketukan: [
     k(
-      "Uji lima: Ibu Saga berbelanja lima puluh sembilan ribu rupiah dengan dua lembar dua puluh ribuan, tiga sepuluh ribuan, dua lima ribuan, dan lima dua ribuan. Jumlah ganjil, jadi satu lembar lima ribuan.",
-      tambah(0, judul("Uji 5: komposisi uang"), ...kartu("m0", 90, 26, 120, 24, W.krem, ["bayar Rp59.000"], 10)),
-      tambah("dua@1", ...kartu("m1", 14, 62, 130, 30, W.merahMuda, ["2 lembar Rp20.000"], 9)),
-      tambah("tiga", ...kartu("m2", 156, 62, 130, 30, W.hijauMuda, ["3 lembar Rp10.000"], 9)),
-      tambah("lima@3", ...kartu("m3", 14, 100, 130, 30, W.langit, ["2 lembar Rp5.000"], 9)),
-      tambah("dua@4", ...kartu("m4", 156, 100, 130, 30, W.pink, ["5 lembar Rp2.000"], 9)),
-      tambah("ganjil,", ...kartu("m5", 30, 146, 240, 36, W.jingga, ["jumlah ganjil: satu lembar", "Rp5.000"], 9.4)),
+      SUARA_BAGI1,
+      tambah(0, judul("Uang Kas untuk Tribun"), ...lantai("lt", 150), papanHitung(), ...lajurKolom(), ...tokoh("pd", 266, 184, "Pak Darmo")),
+      tambah("enam", emo("uk", 268, 76, "\u{1F4B0}", 22), labelBaris("kb-l", Y.r[0] + 3, "Kas 64.000"), ...digitBaris("kb", Y.r[0], 64000)),
+      tambah("dibagi", labelBaris("bp-l", Y.r[1] + 3, ": 4 tribun"), ...digitBaris("bp", Y.r[1], 4), garisHitung("gh", 77)),
+      tambah("tribun", ...KARTU_TRIBUN),
     ),
     k(
-      "Cara pertama: dua dua puluh ribuan, satu sepuluh ribuan, satu lima ribuan, dua dua ribuan. Cara kedua: satu dua puluh ribuan, tiga sepuluh ribuan, lainnya sama. Keduanya benar.",
-      bersih(0),
-      tambah(0, judul("Dua cara membayar Rp59.000")),
-      tambah("pertama:", teks("c1l", 150, 44, "cara 1", 8.8, W.coklat), teks("c1", 150, 62, "40.000 + 10.000 + 5.000 + 4.000 = 59.000", 9.4, W.merah)),
-      tambah("kedua:", teks("c2l", 150, 92, "cara 2", 8.8, W.coklat), teks("c2", 150, 110, "20.000 + 30.000 + 5.000 + 4.000 = 59.000", 9.4, W.hijau)),
-      tambah("Keduanya", ...kartu("c3", 60, 134, 180, 34, W.krem, ["dua cara, keduanya benar"], 10)),
+      SUARA_BAGI2,
+      tambah("Citra", ...tokoh("ci", 222, 184, "Citra")),
+      tambah("membagi", rumus("rm", "6 : 4 = 1 sisa 2", 139, 124, 8.5, W.krem)),
+      ubah("dibagi", { id: "rm", isi: "6 : 4 = 1 sisa 2; 24 : 4 = 6" }),
+      tambah("sama", ...[1, 6, 0, 0, 0].map((d, i) => angkaDi(`hb${4 - i}`, 4 - i, Y_BAGI, d, 11, W.emas))),
+      tambah("belas", teks("hs", 268, Y_BAGI, "= 16.000", 11, W.merah)),
     ),
     k(
-      "Uji enam: paket A dua puluh tujuh ribu lima ratus rupiah, paket B lima puluh tiga ribu rupiah untuk dua porsi. Dua orang membeli paket A masing-masing: dua kali dua puluh tujuh ribu lima ratus, lima puluh lima ribu.",
-      bersih(0),
-      tambah(0, judul("Uji 6: paket makan")),
-      tambah("paket@1", ...kartu("p1", 14, 28, 130, 66, W.merahMuda, ["Paket A", "1 ayam, 1 nasi, 1 teh", "Rp27.500"], 8.4)),
-      tambah("paket@2", ...kartu("p2", 156, 28, 130, 66, W.hijauMuda, ["Paket B", "2 ayam, 2 nasi, 2 teh", "Rp53.000"], 8.4)),
-      tambah("kali", teks("p3", 150, 128, "2 × 27.500 = 55.000", 15, W.hitam)),
-      tambah("lima@4", ...kartu("p4", 50, 148, 200, 34, W.krem, ["jumlahnya: Rp55.000"], 10)),
-    ),
-    k(
-      "Paket B lima puluh tiga ribu lebih murah daripada dua paket A. Berdua punya tujuh puluh ribu, dikurangi lima puluh tiga ribu, sisa tujuh belas ribu, jadi masing-masing delapan ribu lima ratus.",
-      bersih(0),
-      tambah(0, judul("Uji 6: pilihan dan sisa uang")),
-      tambah("Paket", teks("q1", 150, 48, "53.000 < 55.000", 14, W.hijau), teks("q2", 150, 66, "pilih paket B", 9.4, W.biru)),
-      tambah("Berdua", teks("q3", 150, 98, "35.000 × 2 = 70.000", 12, W.biru)),
-      tambah("dikurangi", teks("q4", 150, 124, "70.000 − 53.000 = 17.000", 12, W.merah)),
-      tambah("masing-masing", teks("q5", 150, 150, "17.000 ÷ 2 = 8.500", 12, W.hijau), ...kartu("q6", 60, 160, 180, 30, W.krem, ["sisa tiap orang: Rp8.500"], 9.6)),
+      SUARA_BAGI3,
+      ubah("tiap", { id: "tb0-t1", isi: "16.000" }),
+      ubah("tribun", { id: "tb1-t1", isi: "16.000" }),
+      ubah("menerima", { id: "tb2-t1", isi: "16.000" }),
+      ubah("enam", { id: "tb3-t1", isi: "16.000" }),
+      tambah("rupiah", emo("ok", 268, 108, E.benar, 20)),
     ),
   ],
 };
 
-/* ------------------------------ 12. Rubrik, remedial, pengayaan, interaksi orang tua, dan penutup bab (Panduan Guru hlm. 37 sampai 42) ------------------------------ */
-const RUBRIK = tabel("rb", 35, 28, [40, 190], [["Skor", "Arti penilaian"], ["0", "tidak menjawab sama sekali"], ["1", "jawaban benar tanpa alur runtut"], ["2", "jawaban benar, penjelasan tidak runtut"], ["3", "alur benar, jawaban akhir salah"], ["4", "alur runtut, jawaban dan kesimpulan tepat"]], 22, 7.6);
-const barisRubrik = (r: number) => RUBRIK.filter((o) => new RegExp(`^rb-[st]${r}\\d$`).test(o.id));
-export const ADEGAN_PENUTUP_D: AdeganStory = {
-  id: "penutup-d",
-  judul: "Rubrik, remedial, pengayaan, interaksi orang tua, dan penutup bab",
-  sumber: "Panduan Guru hlm. 37–42",
-  latar: "#F0F9FF",
-  kutipan: [
-    "Tabel 1.6 Rubrik Penilaian Uji Kompetensi Bab 1",
-    "Peserta didik tidak menjawab sama sekali.",
-    "Peserta didik memberikan jawaban akhir benar tanpa ada alur pengerjaan yang runtut.",
-    "Panduan Remedial",
-    "Bimbingan individu",
-    "Bimbingan kelompok",
-    "Pembelajaran ulang dengan menggunakan metode dan media yang berbeda",
-    "Panduan Pengayaan",
-    "Kegiatan pengayaan dapat diberikan proyek untuk mengaplikasikan uang Rp100.000,00 dalam kehidupan di rumah.",
-    "Jika pada nota pembelian tertulis Rp56.900,00",
-    "Bagaimana komposisi uang yang mungkin digunakan Ibunya Lukas untuk membayarnya?",
-    "Interaksi dengan Orang Tua",
-    "peserta didik dapat diberi tugas untuk berkreasi membelanjakan sejumlah uang untuk keperluan rumah masing-masing",
-    "Aku dapat menghitung operasi bilangan cacah sampai 100.000.",
-  ],
+/* ------------------------------ 8. Cek dengan kebalikan ------------------------------ */
+const SUARA_CEK1 = "Pak Darmo mengecek dengan kebalikannya: enam belas ribu dikali empat sama dengan enam puluh empat ribu.";
+const SUARA_CEK2 = "Kursi kosong ditambah penonton juga tepat sembilan puluh ribu, jadi pengurangan tadi benar.";
+const SUARA_CEK3 = "Mengecek dengan operasi kebalikan membuat kita yakin sebelum mengumumkan angka.";
+
+const Y_HASIL_CEK = 91;
+export const ADEGAN_CEK: AdeganStory = {
+  id: "cek",
+  judul: "Cek dengan kebalikannya",
+  sumber: "Materi: cek dengan operasi kebalikan",
+  latar: "#F5F3FF",
   ketukan: [
     k(
-      "Rubrik memberi skor nol sampai empat: nol tidak menjawab, satu jawaban benar tanpa alur, dua alur tidak runtut, tiga alur benar jawaban salah, empat semuanya tepat.",
-      tambah(0, ...RUBRIK.filter((o) => o.id.startsWith("rb-s0") || o.id.startsWith("rb-t0"))),
-      tambah("nol@2", ...barisRubrik(1)),
-      tambah("satu", ...barisRubrik(2)),
-      tambah("dua", ...barisRubrik(3)),
-      tambah("tiga", ...barisRubrik(4)),
-      tambah("empat@2", ...barisRubrik(5)),
+      SUARA_CEK1,
+      tambah(0, judul("Pak Darmo Mengecek"), ...lantai("lt", 150), papanHitung(), ...lajurKolom(), ...tokoh("pd", 266, 184, "Pak Darmo")),
+      tambah("enam", labelBaris("a0-l", Y.r[0] + 3, "Bagian 16.000"), ...digitBaris("a0", Y.r[0], 16000)),
+      tambah("dikali", labelBaris("a1-l", Y.r[1] + 3, "× 4 tribun"), ...digitBaris("a1", Y.r[1], 4), garisHitung("gh", 77)),
+      tambah("sama", angkaDi("cr4", 4, Y.atas, 2, 9, W.oranye), labelBaris("a2-l", Y_HASIL_CEK + 3, "Hasil 64.000"), ...digitBaris("a2", Y_HASIL_CEK, 64000, { warna: W.emas })),
+      tambah("empat@2", emo("ok", 268, 94, E.benar, 18)),
     ),
     k(
-      "Remedial: bimbingan individu, bimbingan kelompok, atau pembelajaran ulang dengan metode dan media berbeda. Pengayaan: proyek uang seratus ribu rupiah di rumah, dengan soal nota lima puluh enam ribu sembilan ratus rupiah.",
+      SUARA_CEK2,
       bersih(0),
-      tambah(0, judul("Remedial dan pengayaan")),
-      tambah("individu,", ...kartu("r1", 14, 30, 272, 26, W.merahMuda, ["bimbingan individu: kesulitan berbeda"], 8.8)),
-      tambah("kelompok,", ...kartu("r2", 14, 62, 272, 26, W.krem, ["bimbingan kelompok: kesulitan sama"], 8.8)),
-      tambah("pembelajaran", ...kartu("r3", 14, 94, 272, 26, W.langit, ["pembelajaran ulang: metode dan media berbeda"], 8.6)),
-      tambah("Pengayaan:", ...kartu("r4", 14, 132, 272, 28, W.hijauMuda, ["pengayaan: proyek uang Rp100.000"], 9)),
-      tambah("nota", ...kartu("r5", 14, 166, 272, 26, W.pink, ["soal nota Rp56.900"], 9)),
+      tambah(0, judul("Cek Kursi Kosong"), ...lantai("lt", 150), papanHitung(), ...lajurKolom(), ...tokoh("pd", 266, 184, "Pak Darmo")),
+      tambah("Kursi", labelBaris("b0-l", Y.r[0] + 3, `Kosong ${fmt(KOSONG)}`), ...digitBaris("b0", Y.r[0], KOSONG)),
+      tambah("ditambah", labelBaris("b1-l", Y.r[1] + 3, `+ Penonton ${fmt(JUMLAH)}`), ...digitBaris("b1", Y.r[1], JUMLAH), garisHitung("gh", 77)),
+      tambah("tepat", ...[1, 2, 3, 4].map((c) => angkaDi(`cs${c}`, c, Y.atas, 1, 9, W.oranye))),
+      tambah("sembilan", angkaDi("h4", 4, Y_HASIL_CEK, 9, 11, W.emas), ...[0, 1, 2, 3].map((c) => angkaDi(`h${c}`, c, Y_HASIL_CEK, 0, 11, W.emas))),
+      tambah("puluh", teks("jm", 268, Y_HASIL_CEK, fmt(KURSI), 12, W.merah)),
+      tambah("benar", emo("ok", 268, 116, E.benar, 20)),
     ),
     k(
-      "Kunci pengayaan memberi dua cara untuk empat ratus rupiah terakhir: empat koin seratus, atau dua koin dua ratus. Catatan guru: ada cara ketiga, satu koin dua ratus dan dua koin seratus.",
+      SUARA_CEK3,
       bersih(0),
-      tambah(0, judul("Soal pengayaan: tiga cara"), teks("v0", 150, 44, "40.000 + 10.000 + 5.000 + 1.000 + 500 = 56.500", 9, W.biru)),
-      tambah("Kunci", teks("v1l", 14, 78, "kunci 1", 8.6, W.coklat, { anchor: "start" }), teks("v1", 214, 78, "4 × 100 = 400", 11, W.merah)),
-      tambah("atau", teks("v2l", 14, 104, "kunci 2", 8.6, W.coklat, { anchor: "start" }), teks("v2", 214, 104, "2 × 200 = 400", 11, W.hijau)),
-      tambah("Catatan", teks("v3l", 14, 130, "cara 3 (catatan guru)", 8.6, W.coklat, { anchor: "start" }), teks("v3", 214, 130, "200 + 2 × 100 = 400", 11, W.biru)),
-      tambah("ketiga,", teks("v4", 150, 170, "56.500 + 400 = 56.900", 13, W.hijau)),
+      tambah(0, judul("Hitung, Cek, Umumkan"), ...lantai("lt", 150), ...kartu("t1", 8, 50, 86, 44, "#DBEAFE", ["1", "hitung"], 10), ...kartu("t2", 107, 50, 86, 44, "#FEF9C3", ["2", "cek balik"], 10), ...kartu("t3", 206, 50, 86, 44, "#DCFCE7", ["3", "umumkan"], 10), ...tokoh("pd", 150, 184, "Pak Darmo")),
+      tambah("operasi", panah("ar1", 96, 72, 9, 0, W.biru, 1.8), panah("ar2", 195, 72, 9, 0, W.biru, 1.8)),
+      sorotkan("kebalikan", "t2-k"),
+      tambah("yakin", emo("jm", 196, 168, E.jempol, 20)),
+      tambah("mengumumkan", emo("cr", 236, 168, E.corong, 20), teks("an", 236, 148, "angka!", 8, W.merah)),
+    ),
+  ],
+};
+
+/* ------------------------------ 9. Perayaan penutup bab ------------------------------ */
+const SUARA_PENUTUP1 = "Peluit berbunyi, dan penonton di Stadion Kota bersorak menyambut pertandingan.";
+const SUARA_PENUTUP2 = "Para tamu berdiri bersama Bima, Citra, Fajar, dan Pak Arif di tengah lapangan.";
+const SUARA_PENUTUP3 = "Menurutmu, angka mana dari bab ini yang paling berkesan? Terima kasih, semuanya, selamat menonton!";
+
+const BAND = [
+  { id: "bu", nama: "Tribun Utara", warna: "#FCA5A5" },
+  { id: "bs", nama: "Tribun Selatan", warna: "#93C5FD" },
+  { id: "bt", nama: "Tribun Timur", warna: "#86EFAC" },
+  { id: "bb", nama: "Tribun Barat", warna: "#FDE68A" },
+];
+const IDS_BAND = BAND.flatMap((b) => [b.id, `${b.id}-t`]);
+const BENDERA = [0, 1, 2, 3, 4].map((i) => emo(`bd${i}`, 36 + i * 57, 40, E.bendera, 15));
+
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Hari Pertandingan Stadion Kota",
+  sumber: "Materi: perayaan akhir bab bersama semua tokoh",
+  latar: "#FEFCE8",
+  ketukan: [
+    k(
+      SUARA_PENUTUP1,
+      tambah(0, judul("Hari Pertandingan"), ...lantai("lt", 150)),
+      tambah("Peluit", emo("pl", 24, 34, E.corong, 18)),
+      tambah("penonton", ...BAND.flatMap((b, i) => [kotak(b.id, 10, 50 + i * 24, 280, 20, b.warna, W.coklat, { rx: 4, tebal: 1.4, z: 0 }), teks(`${b.id}-t`, 150, 63 + i * 24, b.nama, 8, W.biru, { z: 1 })])),
+      tambah("bersorak", emo("t1", 40, 138, E.tangan, 16), emo("t2", 110, 138, E.tangan, 16), emo("t3", 190, 138, E.tangan, 16), emo("t4", 260, 138, E.tangan, 16)),
+      tambah("menyambut", ...BENDERA, emo("ba", 150, 40, E.balon, 16)),
     ),
     k(
-      "Interaksi dengan orang tua: peserta didik membelanjakan uang di warung sesuai perintah orang tua, lalu mendaftar jumlah dan uangnya. Dengan itu Bab satu selesai: bilangan cacah sampai seratus ribu dibaca, dibandingkan, disusun, dan dihitung.",
-      bersih(0),
-      tambah(0, judul("Penutup Bab 1")),
-      tambah("Interaksi", ...kartu("z1", 14, 30, 272, 32, W.krem, ["orang tua: belanja di warung, catat uangnya"], 9)),
-      tambah("Dengan@2", ...kartu("z2", 14, 76, 272, 32, W.hijauMuda, ["Refleksi 8: aku dapat menghitung operasi bilangan"], 8.4)),
-      tambah("bilangan", ...kartu("z3", 14, 122, 272, 34, W.langit, ["bilangan cacah sampai 100.000"], 10)),
-      tambah("dihitung.", emo("z4", 150, 184, "🎉", 24)),
+      SUARA_PENUTUP2,
+      hapus("Para", ...IDS_BAND, "t1", "t2", "t3", "t4", "ba", "pl"),
+      tambah("Para", kotak("pt", 6, 40, 288, 108, "#4ADE80", W.hijauTua, { rx: 6, tebal: 2, z: -2 }), garis("tg", 150, 42, 0, 104, W.putih, 1.6, { z: -1 }), bulat("tb", 150, 94, 16, undefined, W.putih, { tebal: 1.6, z: -1 })),
+      tambah("tamu", ...tokoh("bn", 45, 82, "Bu Ningsih"), ...tokoh("ph", 110, 82, "Pak Hasto"), ...tokoh("bl", 190, 82, "Bu Lestari"), ...tokoh("pd", 255, 82, "Pak Darmo")),
+      tambah("Bima", ...tokoh("bi", 110, 138, "Bima")),
+      tambah("Citra", ...tokoh("ci", 190, 138, "Citra")),
+      tambah("Fajar", ...tokoh("fa", 255, 138, "Fajar")),
+      tambah("Arif", ...tokoh("pa", 45, 138, "Pak Arif")),
+    ),
+    k(
+      SUARA_PENUTUP3,
+      tambah("angka", teks("g1", 52, 52, fmt(JUMLAH), 11, W.merah), teks("g2", 150, 52, fmt(KOSONG), 11, W.biru), teks("g3", 248, 52, fmt(KURSI), 11, W.hijauTua), teks("tn", 150, 112, "?", 18, W.ungu)),
+      tambah("Terima", emo("kf1", 24, 62, E.konfeti, 18), emo("kf2", 276, 62, E.konfeti, 18)),
+      tambah("selamat", emo("bl", 150, 150, E.bola, 16), emo("pi", 150, 66, E.piala, 16)),
     ),
   ],
 };

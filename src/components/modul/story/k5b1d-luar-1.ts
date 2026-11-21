@@ -1,214 +1,157 @@
 import type { AdeganStory } from "./logika-story";
-import { W, bulat, emo, judul, kalimat, kartu, kolomSusun, panah, susun, teks } from "./k5b1d-gambar";
-import { bersih, k, tambah, ubah } from "./k5b1d-bantu";
+import { E, W, Y, angkaDi, digitBaris, emo, fmt, garisHitung, judul, kartu, kotak, labelBaris, lajurKolom, lantai, panah, papanHitung, rumus, sorotKolom, teks, tokoh } from "./k5b1d-gambar";
+import { bersih, hapus, k, tambah, ubah } from "./k5b1d-bantu";
 
-/* ------------------------------ 1. Pembuka metode luar ------------------------------ */
+/*
+ * Cerita orisinal IGIL "Hitungan Penonton Pak Darmo" (Kelas 5 Bab 1 Sub-Bab D), akhir cerita Hari Pertandingan di Stadion Kota.
+ * Video kedua: tiga metode global (Stack and Trade, Split and Multiply, Share and Check), terpisah dari video materi.
+ * Naskah suara dari naskah/story-naskah-k5b1d.md. Bagian ini: pembuka di ruang panitia dan Stack and Trade (konsep dan terapan Citra).
+ */
+
+/** Nama tiga metode global (Inggris) dan nama Indonesianya; dipakai juga oleh uji Story. */
+export const NAMA_METODE = ["Stack and Trade", "Split and Multiply", "Share and Check"];
+export const NAMA_METODE_ID = ["Susun dan Tukar", "Pisah dan Kali", "Bagi dan Cek"];
+const X_KARTU = [8, 107, 206];
+const Y_HASIL = 91;
+
+/* ------------------------------ Pembuka ------------------------------ */
+const SUARA_PEMBUKA1 = "Sore itu, di ruang panitia, Pak Darmo menumpuk catatan penonton, uang kas, dan kotak minuman yang harus dihitung.";
+const SUARA_PEMBUKA2 = "Ada tiga cara menghitung bilangan besar supaya tidak meleset.";
+const SUARA_PEMBUKA3 = "Tiga cara itu: Stack and Trade, Split and Multiply, dan Share and Check.";
+const SUARA_PEMBUKA4 = "Nama dalam bahasa Indonesia: Susun dan Tukar, Pisah dan Kali, dan Bagi dan Cek.";
+
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Empat metode dari luar untuk operasi hitung bilangan besar",
-  sumber: "Metode luar: pembuka",
+  judul: "Sore di ruang panitia",
+  sumber: "Metode global: pembuka di ruang panitia",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana kita menghitung penjumlahan, pengurangan, perkalian, dan pembagian bilangan besar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka-angka dari pelajaran kita.",
-      tambah(0, judul("Empat metode dari luar")),
-      tambah("berbagai", emo("gl", 150, 100, "🌍", 56)),
-      tambah("empat", ...kartu("pa", 40, 140, 220, 34, W.krem, ["operasi bilangan sampai 100.000"], 9.6)),
+      SUARA_PEMBUKA1,
+      tambah(0, judul("Sore di Ruang Panitia"), ...lantai("lt", 150)),
+      tambah("ruang", kotak("ms", 14, 112, 200, 8, W.kayu, W.kayuTua, { rx: 2, tebal: 1.6, z: 1 }), kotak("m1", 22, 120, 3, 30, W.kayuTua, W.kayuTua, { rx: 0, z: 0 }), kotak("m2", 203, 120, 3, 30, W.kayuTua, W.kayuTua, { rx: 0, z: 0 })),
+      tambah("Darmo", ...tokoh("pd", 256, 184, "Pak Darmo")),
+      tambah("catatan", emo("n1", 50, 108, E.papanJepit, 24)),
+      tambah("uang", emo("n2", 112, 108, "\u{1F4B0}", 24)),
+      tambah("kotak", emo("n3", 174, 108, "\u{1F4E6}", 24)),
     ),
     k(
-      "Empat metode itu: Standard Algorithm, Regrouping, Estimate First, dan Inverse Check.",
+      SUARA_PEMBUKA2,
       bersih(0),
-      tambah(0, judul("Empat metode")),
-      tambah("Standard", ...kartu("m1", 12, 34, 276, 30, W.hijauMuda, ["1. Standard Algorithm"], 9.6)),
-      tambah("Regrouping,", ...kartu("m2", 12, 72, 276, 30, W.langit, ["2. Regrouping"], 9.6)),
-      tambah("Estimate", ...kartu("m3", 12, 110, 276, 30, W.krem, ["3. Estimate First"], 9.6)),
-      tambah("Inverse", ...kartu("m4", 12, 148, 276, 30, W.pink, ["4. Inverse Check"], 9.6)),
+      tambah(0, judul("Tiga Cara Menghitung"), ...lantai("lt", 150), ...tokoh("pd", 150, 184, "Pak Darmo")),
+      tambah("tiga", ...X_KARTU.flatMap((x, i) => kartu(`c${i + 1}`, x, 40, 86, 64, "#E5E7EB", ["?"], 20))),
+      tambah("tidak", teks("tc", 150, 124, "3 cara", 13, W.ungu), emo("ms", 150, 140, E.kilat, 14)),
     ),
     k(
-      "Semuanya menjawab dua pertanyaan: berapa hasilnya, dan apakah hasilnya benar? Caranya berbeda: hitung per kolom, tukar nilai tempat, perkirakan dulu, atau periksa dengan operasi kebalikan.",
-      bersih(0),
-      tambah(0, judul("Satu tujuan, empat cara")),
-      tambah("kolom,", emo("i1", 45, 80, "🧮", 34), teks("i1t", 45, 112, "per kolom", 8.6, W.biru)),
-      tambah("tukar", emo("i2", 112, 80, "🔁", 34), teks("i2t", 112, 112, "tukar", 8.6, W.biru)),
-      tambah("perkirakan", emo("i3", 188, 80, "🎯", 34), teks("i3t", 188, 112, "perkiraan", 8.6, W.biru)),
-      tambah("kebalikan.", emo("i4", 255, 80, "✅", 34), teks("i4t", 255, 112, "periksa", 8.6, W.biru)),
+      SUARA_PEMBUKA3,
+      ubah("Stack", { id: "c1-t0", isi: NAMA_METODE[0], u: 9 }, { id: "c1-k", warna: "#DCFCE7" }),
+      ubah("Split", { id: "c2-t0", isi: NAMA_METODE[1], u: 9 }, { id: "c2-k", warna: "#DBEAFE" }),
+      ubah("Share", { id: "c3-t0", isi: NAMA_METODE[2], u: 9 }, { id: "c3-k", warna: "#FEF9C3" }),
     ),
     k(
-      "Angka-angkanya dari pelajaran tadi: uang bakti sosial Nisa, sisa uang Lukas, angpau Yohana, dan hitungan Uji. Semua sudah kita kerjakan bersama.",
-      bersih(0),
-      tambah(0, judul("Angka dari pelajaran tadi")),
-      tambah("bakti", ...kartu("a1", 20, 34, 260, 30, W.hijauMuda, ["57.500 + 22.000"], 10.4)),
-      tambah("Lukas,", ...kartu("a2", 20, 72, 260, 30, W.merahMuda, ["47.900 − 45.750"], 10.4)),
-      tambah("angpau", ...kartu("a3", 20, 110, 260, 30, W.krem, ["12 × 5.000 dan 64.000 ÷ 4"], 10.4)),
-      tambah("Uji", ...kartu("a4", 20, 148, 260, 30, W.langit, ["76.598 + 12.456 dan 67.032 ÷ 147"], 10.4)),
+      SUARA_PEMBUKA4,
+      hapus("Nama", "tc", "ms"),
+      tambah("Susun", teks("c1-i", 51, 90, NAMA_METODE_ID[0], 8, W.coklat)),
+      tambah("Pisah", teks("c2-i", 150, 90, NAMA_METODE_ID[1], 8, W.coklat)),
+      tambah("Bagi", teks("c3-i", 249, 90, NAMA_METODE_ID[2], 8, W.coklat)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Standard Algorithm: konsep ------------------------------ */
-const LA = susun("la", 150, 64, "+", 57500, 22000);
-export const ADEGAN_LUAR_SA: AdeganStory = {
-  id: "luar-sa",
-  judul: "Metode 1: Standard Algorithm (algoritma bersusun)",
-  sumber: "Metode luar: Standard Algorithm",
+/* ------------------------------ Stack and Trade: konsep ------------------------------ */
+const SUARA_SUSUN1 = "Cara pertama, Stack and Trade, atau Susun dan Tukar.";
+const SUARA_SUSUN2 = "Kita menyusun bilangan ke bawah dengan kolom lurus, lalu menghitung dari satuan ke kiri.";
+const SUARA_SUSUN3 = "Kalau satu kolom berjumlah sepuluh atau lebih, sepuluhnya kita simpan ke kolom sebelah kiri.";
+const SUARA_SUSUN4 = "Kalau angka atas terlalu kecil, kita meminjam satu dari kolom kiri dan menukarnya menjadi sepuluh.";
+
+export const ADEGAN_LUAR_SUSUN: AdeganStory = {
+  id: "luar-susun",
+  judul: "Cara kedua: susun dan tukar",
+  sumber: "Metode global: Stack and Trade, konsep",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Metode pertama, Standard Algorithm atau algoritma bersusun. Tulis kedua bilangan lurus menurut nilai tempat, satuan di bawah satuan, puluhan di bawah puluhan, lalu hitung dari kolom paling kanan.",
-      tambah(0, judul("Standard Algorithm")),
-      tambah("Tulis", ...LA.atas, ...LA.bawah, ...LA.alat),
-      tambah("satuan@2", teks("sat", 176, 124, "satuan", 8.4, W.coklat)),
+      SUARA_SUSUN1,
+      tambah(0, judul("Stack and Trade"), ...lantai("lt", 150), ...tokoh("pd", 262, 184, "Pak Darmo")),
+      tambah("pertama", emo("tg", 40, 74, "\u{2795}", 26), teks("n1", 40, 96, "cara 1", 9, W.coklat)),
+      tambah("Stack", ...kartu("m", 70, 44, 190, 64, "#DCFCE7", [NAMA_METODE[0], NAMA_METODE_ID[0]], 12)),
+      tambah("Susun", emo("sa", 150, 130, E.kilat, 16)),
     ),
     k(
-      "Mulai dari satuan, lalu bergerak ke kiri satu kolom demi satu kolom. Setiap kolom hanya menghasilkan satu angka, jadi pekerjaan besar dipecah menjadi langkah kecil.",
-      tambah("Mulai", panah("ar", 214, 140, -130, 0, W.merah, 2.2), teks("art", 150, 158, "mulai dari kanan", 9.4, W.merah)),
-      tambah("kolom@3", teks("kl", 150, 180, "satu kolom, satu angka", 9.4, W.biru)),
-    ),
-    k(
-      "Keuntungannya: angka yang dijumlahkan selalu sejajar dengan nilai tempatnya, sehingga mudah diperiksa. Cara yang sama berlaku untuk bilangan kecil maupun bilangan sampai seratus ribu.",
+      SUARA_SUSUN2,
       bersih(0),
-      tambah(0, judul("Mengapa bersusun?")),
-      tambah("Keuntungannya:", ...kartu("k1", 20, 34, 260, 36, W.hijauMuda, ["angka sejajar nilai tempat"], 10)),
-      tambah("mudah", ...kartu("k2", 20, 84, 260, 36, W.langit, ["mudah diperiksa"], 10)),
-      tambah("seratus", ...kartu("k3", 20, 134, 260, 36, W.krem, ["berlaku sampai 100.000"], 10)),
+      tambah(0, judul("Susun Lurus ke Bawah"), ...lantai("lt", 150), ...tokoh("pd", 262, 184, "Pak Darmo"), papanHitung()),
+      tambah("menyusun", ...lajurKolom()),
+      tambah("bawah", labelBaris("s0-l", Y.r[0] + 3, "24.350"), ...digitBaris("s0", Y.r[0], 24350), labelBaris("s1-l", Y.r[1] + 3, "+ 18.705"), ...digitBaris("s1", Y.r[1], 18705), garisHitung("gh", 77)),
+      tambah("satuan", sorotKolom("sk", 0), teks("sl", 214, 141, "satuan", 8, W.emas, { z: 3 })),
+      tambah("kiri", panah("pk", 232, 100, -130, 0, W.emas, 1.8, { z: 3 })),
     ),
     k(
-      "Metode ini cocok untuk penjumlahan dan pengurangan, dan menjadi dasar perkalian dan pembagian bersusun. Syaratnya satu: rapikan kolom sebelum mulai menghitung.",
+      SUARA_SUSUN3,
+      hapus("Kalau", "sk", "sl", "pk"),
+      tambah("kolom", sorotKolom("sk3", 3), rumus("rm", "4 + 8 = 12", Y.rumus, 124, 10, W.krem)),
+      tambah("sepuluh", teks("tk", 268, 70, "10 atau lebih", 8, W.merah)),
+      tambah("simpan", angkaDi("cr4", 4, Y.atas, 1, 9, W.oranye), angkaDi("hb3", 3, Y_HASIL, 2, 11, W.emas), panah("pc", 124, 38, -16, 0, W.oranye, 1.6, { z: 3 })),
+    ),
+    k(
+      SUARA_SUSUN4,
       bersih(0),
-      tambah(0, judul("Dasar empat operasi")),
-      tambah("penjumlahan", bulat("o1", 60, 90, 20, W.hijauMuda), teks("o1s", 60, 97.5, "+", 22, W.biru)),
-      tambah("pengurangan,", bulat("o2", 120, 90, 20, W.merahMuda), teks("o2s", 120, 97.5, "−", 22, W.biru)),
-      tambah("perkalian", bulat("o3", 180, 90, 20, W.krem), teks("o3s", 180, 97.5, "×", 22, W.biru)),
-      tambah("pembagian", bulat("o4", 240, 90, 20, W.pink), teks("o4s", 240, 97.5, "÷", 22, W.biru)),
-      tambah("rapikan", ...kartu("o5", 40, 138, 220, 34, W.jingga, ["rapikan kolom dulu"], 10)),
+      tambah(0, judul("Meminjam dan Menukar"), ...lantai("lt", 150), ...tokoh("pd", 262, 184, "Pak Darmo"), papanHitung(), ...lajurKolom()),
+      tambah("atas", angkaDi("u2", 2, Y.r[0], 3, 12, W.kapur), angkaDi("u1", 1, Y.r[0], 2, 12, W.kapur), angkaDi("v2", 2, Y.r[1], 1, 12, W.kapur), angkaDi("v1", 1, Y.r[1], 5, 12, W.kapur), garisHitung("gh", 77)),
+      tambah("kecil", sorotKolom("sk1", 1)),
+      tambah("meminjam", panah("pj", 158, 44, 22, 0, W.oranye, 1.8, { z: 3 })),
+      ubah("meminjam", { id: "u2", isi: "2", warna: W.oranye }),
+      ubah("menukarnya", { id: "u1", isi: "12", warna: W.oranye }),
+      tambah("sepuluh", rumus("rm", "1 ratusan = 10 puluhan", Y.rumus, 124, 9, W.krem)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Standard Algorithm: penerapan ------------------------------ */
-const SA1 = susun("sa", 108, 62, "+", 57500, 22000);
-const SA2 = susun("sb", 108, 62, "+", 76598, 12456);
-const LANGKAH_SA = ["0 + 0 = 0", "0 + 0 = 0", "5 + 0 = 5", "7 + 2 = 9", "5 + 2 = 7"];
-export const ADEGAN_LUAR_SA_TERAPAN: AdeganStory = {
-  id: "luar-sa-terapan",
-  judul: "Standard Algorithm pada uang bakti sosial dan Uji 4a",
-  sumber: "Metode luar: Standard Algorithm",
-  latar: "#ECFDF5",
+/* ------------------------------ Stack and Trade: terapan Citra ------------------------------ */
+const SUARA_SUSUNT1 = "Citra mengurangkan dua puluh ribu tiga ratus dari empat puluh ribu, dan ia meminjam dari puluh ribuan.";
+const SUARA_SUSUNT2 = "Pinjaman itu bergulir ke kanan sampai ratusan bisa dikurangi tiga, dan hasilnya sembilan belas ribu tujuh ratus.";
+const SUARA_SUSUNT3 = "Cocok untuk bilangan besar dengan banyak kolom, karena tiap kolom dihitung satu per satu.";
+const SUARA_SUSUNT4 = "Kurang cocok untuk hitungan mudah seperti sepuluh ribu dikurangi lima ribu, karena terlalu panjang.";
+
+export const ADEGAN_LUAR_SUSUN_TERAPAN: AdeganStory = {
+  id: "luar-susun-terapan",
+  judul: "Citra mengurangkan bersusun",
+  sumber: "Metode global: Stack and Trade, terapan Citra",
+  latar: "#FFF7ED",
   ketukan: [
     k(
-      "Terapkan pada uang Nisa: lima puluh tujuh ribu lima ratus ditambah dua puluh dua ribu. Tulis lurus menurut nilai tempat: lima, tujuh, lima, nol, nol, dan dua, dua, nol, nol, nol.",
-      tambah(0, judul("Uang bakti sosial Nisa")),
-      tambah("Terapkan", kalimat("kal", 232, 100, 57500, "+", 22000, undefined, 6.4, W.hitam)),
-      tambah("Tulis", ...SA1.atas, ...SA1.bawah, ...SA1.alat),
+      SUARA_SUSUNT1,
+      tambah(0, judul("Citra Mengurangkan"), ...lantai("lt", 150), ...tokoh("ci", 262, 184, "Citra")),
+      tambah("mengurangkan", papanHitung(), ...lajurKolom()),
+      tambah("dua", labelBaris("a1-l", Y.r[1] + 3, "− 20.300"), ...digitBaris("a1", Y.r[1], 20300), garisHitung("gh", 77)),
+      tambah("empat", labelBaris("a0-l", Y.r[0] + 3, "40.000"), ...digitBaris("a0", Y.r[0], 40000)),
+      tambah("puluh@3", sorotKolom("sk", 4), panah("pj", 102, 38, 0, 12, W.oranye, 1.8, { z: 3 })),
     ),
     k(
-      "Satuan nol, puluhan nol, ratusan lima, ribuan tujuh ditambah dua, sembilan, puluh ribuan lima ditambah dua, tujuh. Tidak ada kolom yang melebihi sembilan, jadi tidak perlu menyimpan.",
-      tambah("Satuan", ...kolomSusun(SA1, 0), teks("st", 232, 78, LANGKAH_SA[0], 9, W.merah)),
-      tambah("puluhan", ...kolomSusun(SA1, 1)),
-      ubah("puluhan", { id: "st", isi: LANGKAH_SA[1] }),
-      tambah("ratusan", ...kolomSusun(SA1, 2)),
-      ubah("ratusan", { id: "st", isi: LANGKAH_SA[2] }),
-      tambah("ribuan@1", ...kolomSusun(SA1, 3)),
-      ubah("ribuan@1", { id: "st", isi: LANGKAH_SA[3] }),
-      tambah("ribuan@2", ...kolomSusun(SA1, 4)),
-      ubah("ribuan@2", { id: "st", isi: LANGKAH_SA[4] }),
+      SUARA_SUSUNT2,
+      tambah("bergulir", angkaDi("p4", 4, Y.atas, 3, 9, W.oranye), angkaDi("p3", 3, Y.atas, 9, 9, W.oranye)),
+      tambah("ratusan", angkaDi("p2", 2, Y.atas, 10, 9, W.oranye)),
+      tambah("hasilnya", ...[1, 9, 7, 0, 0].map((d, i) => angkaDi(`h${4 - i}`, 4 - i, Y_HASIL, d, 11, W.emas))),
+      tambah("sembilan", teks("jm", 268, Y_HASIL, fmt(19700), 12, W.merah)),
     ),
     k(
-      "Hasilnya tujuh puluh sembilan ribu lima ratus rupiah, sama dengan hasil cara Yohana dan cara Lukas tadi.",
-      ubah("Hasilnya", { id: "kal", isi: "57.500 + 22.000 = 79.500", warna: W.hijau, u: 6.6 }),
-      tambah("sama", ...kartu("cy", 160, 140, 130, 26, W.merahMuda, ["cara Yohana: 79.500"], 8.4), ...kartu("cl", 160, 172, 130, 26, W.hijauMuda, ["cara Lukas: 79.500"], 8.4)),
+      SUARA_SUSUNT3,
+      tambah("Cocok", teks("lb", 268, 66, "cocok", 12, W.hijauTua), emo("ok", 268, 130, E.benar, 20)),
+      tambah("bilangan", sorotKolom("z4", 4)),
+      tambah("banyak", sorotKolom("z3", 3), sorotKolom("z2", 2)),
+      tambah("tiap", sorotKolom("z1", 1)),
+      tambah("satu", sorotKolom("z0", 0)),
     ),
     k(
-      "Contoh kedua, Uji empat a: tujuh puluh enam ribu lima ratus sembilan puluh delapan ditambah dua belas ribu empat ratus lima puluh enam sama dengan delapan puluh sembilan ribu lima puluh empat. Angka merah kecil adalah simpanan.",
+      SUARA_SUSUNT4,
       bersih(0),
-      tambah(0, judul("Uji 4a")),
-      tambah(0, ...SA2.atas, ...SA2.bawah, ...SA2.alat),
-      tambah("sama", ...kolomSusun(SA2, 0, 4)),
-      tambah("delapan@2", kalimat("kb", 232, 100, 76598, "+", 12456, 89054, 6, W.hijau)),
+      tambah(0, judul("Citra Mengurangkan"), ...lantai("lt", 150), ...tokoh("ci", 262, 184, "Citra")),
+      tambah("Kurang", teks("lb", 150, 46, "kurang cocok", 15, W.merah)),
+      tambah("sepuluh", teks("m1", 96, 82, "10.000", 14, W.biru)),
+      tambah("lima", teks("m2", 196, 82, "− 5.000", 14, W.biru)),
+      tambah("karena", emo("x1", 150, 112, E.salah, 20)),
+      tambah("terlalu", teks("pn", 150, 132, "terlalu panjang", 11, W.merah)),
     ),
   ],
 };
 
-/* ------------------------------ 4. Regrouping: konsep ------------------------------ */
-export const ADEGAN_LUAR_RG: AdeganStory = {
-  id: "luar-rg",
-  judul: "Metode 2: Regrouping (menyimpan dan meminjam)",
-  sumber: "Metode luar: Regrouping",
-  latar: "#EFF6FF",
-  ketukan: [
-    k(
-      "Metode kedua, Regrouping, menyimpan dan meminjam. Prinsipnya: sepuluh di satu tempat sama dengan satu di tempat berikutnya. Sepuluh satuan menjadi satu puluhan, sepuluh puluhan menjadi satu ratusan.",
-      tambah(0, judul("Regrouping: tukar nilai tempat")),
-      tambah("Sepuluh@2", ...kartu("g1", 14, 50, 110, 36, W.krem, ["10 satuan"], 10.4), panah("g1a", 128, 68, 44, 0, W.merah, 2), ...kartu("g2", 176, 50, 110, 36, W.hijauMuda, ["1 puluhan"], 10.4)),
-      tambah("sepuluh@3", ...kartu("g3", 14, 110, 110, 36, W.krem, ["10 puluhan"], 10.4), panah("g3a", 128, 128, 44, 0, W.merah, 2), ...kartu("g4", 176, 110, 110, 36, W.hijauMuda, ["1 ratusan"], 10.4)),
-    ),
-    k(
-      "Pada penjumlahan, kalau satu kolom berjumlah sepuluh atau lebih, tulis angka satuannya dan simpan satu ke kolom kiri. Contoh: delapan ditambah enam sama dengan empat belas, tulis empat, simpan satu.",
-      bersih(0),
-      tambah(0, judul("Menyimpan pada penjumlahan")),
-      tambah("Contoh:", teks("rs", 150, 66, "8 + 6 = 14", 22, W.hitam)),
-      tambah("tulis@2", ...kartu("rt", 20, 92, 120, 34, W.hijauMuda, ["tulis 4"], 11)),
-      tambah("simpan@2", ...kartu("ry", 160, 92, 120, 34, W.merahMuda, ["simpan 1"], 11), panah("ry1", 220, 128, 0, 24, W.merah, 2)),
-      tambah("kolom@2", teks("ryk", 220, 176, "ke kolom kiri", 9, W.merah)),
-    ),
-    k(
-      "Pada pengurangan, kalau angka atas lebih kecil, pinjam satu dari kolom kiri. Satu di kiri menjadi sepuluh di kolom ini. Contoh: nol kurang lima, pinjam, sepuluh kurang lima sama dengan lima.",
-      bersih(0),
-      tambah(0, judul("Meminjam pada pengurangan")),
-      tambah("Contoh:", teks("pa", 150, 62, "0 − 5 tidak cukup", 14, W.merah)),
-      tambah("pinjam,", ...kartu("pb", 20, 84, 260, 32, W.krem, ["pinjam 1 dari kiri: jadi +10"], 10)),
-      tambah("sepuluh@2", teks("pc", 150, 150, "10 − 5 = 5", 20, W.hijau)),
-    ),
-    k(
-      "Menyimpan dan meminjam adalah pertukaran yang adil: nilai bilangan tidak berubah, hanya cara menuliskannya. Itu sebabnya hasil akhirnya tetap benar.",
-      bersih(0),
-      tambah(0, judul("Nilai tidak berubah")),
-      tambah("pertukaran", emo("tu", 150, 70, "🔁", 36)),
-      tambah("nilai", ...kartu("nv", 30, 90, 240, 34, W.langit, ["1 ratusan = 10 puluhan"], 10.4)),
-      tambah("hasil", ...kartu("hv", 30, 138, 240, 34, W.hijauMuda, ["hasil akhir tetap benar"], 10.4)),
-    ),
-  ],
-};
-
-/* ------------------------------ 5. Regrouping: penerapan ------------------------------ */
-const RA = susun("ra", 108, 62, "+", 76598, 12456);
-const RB = susun("rb", 108, 62, "−", 70000, 53000);
-export const ADEGAN_LUAR_RG_TERAPAN: AdeganStory = {
-  id: "luar-rg-terapan",
-  judul: "Regrouping pada Uji 4a dan uang Zafran dan Ula",
-  sumber: "Metode luar: Regrouping",
-  latar: "#F0F9FF",
-  ketukan: [
-    k(
-      "Terapkan pada tujuh puluh enam ribu lima ratus sembilan puluh delapan ditambah dua belas ribu empat ratus lima puluh enam. Satuan delapan tambah enam empat belas: tulis empat, simpan satu.",
-      tambah(0, judul("Menyimpan: 76.598 + 12.456")),
-      tambah(0, ...RA.atas, ...RA.bawah, ...RA.alat),
-      tambah("Satuan", ...kolomSusun(RA, 0), teks("ls", 232, 78, "8 + 6 = 14", 9, W.merah)),
-    ),
-    k(
-      "Puluhan sembilan tambah lima tambah satu simpanan lima belas: tulis lima, simpan satu. Ratusan lima tambah empat tambah satu sepuluh: tulis nol, simpan satu.",
-      tambah("Puluhan", ...kolomSusun(RA, 1)),
-      ubah("Puluhan", { id: "ls", isi: "9 + 5 + 1 = 15" }),
-      tambah("Ratusan", ...kolomSusun(RA, 2)),
-      ubah("Ratusan", { id: "ls", isi: "5 + 4 + 1 = 10" }),
-    ),
-    k(
-      "Ribuan enam tambah dua tambah satu sembilan, puluh ribuan tujuh tambah satu delapan. Jumlahnya delapan puluh sembilan ribu lima puluh empat, dengan tiga kali menyimpan.",
-      tambah("Ribuan", ...kolomSusun(RA, 3)),
-      ubah("Ribuan", { id: "ls", isi: "6 + 2 + 1 = 9" }),
-      tambah("ribuan@2", ...kolomSusun(RA, 4)),
-      ubah("ribuan@2", { id: "ls", isi: "7 + 1 = 8" }),
-      tambah("Jumlahnya", kalimat("lk", 232, 130, 76598, "+", 12456, 89054, 6, W.hijau)),
-    ),
-    k(
-      "Sekarang meminjam: tujuh puluh ribu dikurangi lima puluh tiga ribu. Ribuan nol kurang tiga tidak cukup, pinjam satu puluh ribuan: sepuluh kurang tiga tujuh, lalu enam kurang lima satu. Hasilnya tujuh belas ribu.",
-      bersih(0),
-      tambah(0, judul("Meminjam: 70.000 − 53.000")),
-      tambah(0, ...RB.atas, ...RB.bawah, ...RB.alat),
-      tambah("Ribuan", ...kolomSusun(RB, 0, 2), ...kolomSusun(RB, 3), teks("lp", 232, 78, "10 − 3 = 7", 9, W.merah)),
-      tambah("lalu", ...kolomSusun(RB, 4)),
-      ubah("lalu", { id: "lp", isi: "7 − 1 − 5 = 1" }),
-      tambah("Hasilnya", kalimat("lq", 232, 130, 70000, "−", 53000, 17000, 6, W.hijau)),
-    ),
-  ],
-};

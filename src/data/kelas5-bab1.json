@@ -5,7 +5,7 @@
   "grade": 5,
   "subjectLabel": "MATEMATIKA - KELAS 5 SD",
   "title": "BAB 1: BILANGAN CACAH SAMPAI 100.000",
-  "silabusElemen": "🌈 Fase C • Elemen Bilangan: Membaca–Menulis, Nilai Tempat, Membandingkan–Mengurutkan, Komposisi–Dekomposisi, serta Operasi Hitung Bilangan Cacah sampai 100.000 (Kelas 5 SD/MI)",
+  "silabusElemen": "🌈 Fase C • Elemen Bilangan: Membaca dan Menulis, Tempat Bilangan, Membandingkan dan Mengurutkan, Komposisi dan Dekomposisi, serta Operasi Hitung Bilangan Cacah sampai 100.000 (SD/MI)",
   "suaraPerangkatSaja": true,
   "suaraLaju": 0.7,
   "suaraNada": 1,
@@ -17,51 +17,49 @@
   "subBabs": {
     "A": {
       "id": "A",
-      "codeTitle": "Sub-Bab A (Membaca, Menulis, Nilai Tempat)",
-      "fullTitle": "Sub-Bab A: Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya",
-      "targetDescription": "Siswa membaca, menulis, dan menentukan nilai tempat bilangan cacah sampai 100.000 dengan tabel nilai tempat dan perluasan balok Dienes sesuai Buku Siswa Kelas V Bab 1 Sub-Bab A.",
+      "codeTitle": "Sub-Bab A (Membaca, Menulis, Tempat Bilangan)",
+      "fullTitle": "Sub-Bab A: Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Tempat Tiap Angkanya",
+      "targetDescription": "Di Stadion Kota, kita membaca dan menulis banyak penonton tiap tribun sampai seratus ribu, memakai tabel tempat, nol penjaga, baca per periode, dan uraian tiap angka.",
       "secondaryBg": "#FFEDD5",
       "secondaryBorder": "#EA580C",
       "secondaryText": "#7C2D12",
       "silabus": {
-        "teksSuara": "Kita naik ke bilangan sampai seratus ribu. Tiap digit punya nilai menurut tempatnya: satuan, puluhan, ratusan, ribuan, puluh ribuan, ratusan ribu. Nol menjaga tempat agar nilai tidak bergeser. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa membaca, menulis, dan menentukan nilai tempat bilangan sampai 100.000.",
-        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 1 Sub-Bab A)."
+        "teksSuara": "Kita belajar bilangan besar di Stadion Kota. Tiap angka punya tempat: satuan, puluhan, ratusan, ribuan, dan puluh ribuan. Nol menjaga tempat supaya angka lain tidak bergeser. Titik memisahkan ribuan, dan kita membaca per periode. Kita memakai isi kotak tempat, jaga nol, dan baca per periode. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa membaca, menulis, dan menguraikan bilangan cacah sampai 100.000 menurut tempat tiap angkanya.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase C, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Place-Value Chart",
-          "namaId": "Tabel Nilai Tempat",
-          "asal": "Base-ten pedagogy",
-          "ringkas": "Setiap digit punya nilai menurut tempatnya dari satuan sampai ratusan ribu.",
+          "nama": "Fill the Slots",
+          "namaId": "Isi Kotak Tempat",
+          "asal": "IGIL",
+          "ringkas": "Pecah bilangan yang diucapkan, lalu isi satu angka satu kotak tempat dari kiri.",
           "tahap": [
             "Story",
-            "Mind",
+            "Concrete",
             "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Extended Dienes",
-          "namaId": "Balok Dienes Perluas",
-          "asal": "Dienes base-ten blocks",
-          "ringkas": "Model fisik/gambar untuk ratusan ribu membantu melihat bundel sepuluh.",
+          "nama": "Guard the Zero",
+          "namaId": "Jaga Nol",
+          "asal": "IGIL",
+          "ringkas": "Isi nol di kotak yang tidak disebut, lalu cocokkan banyak angka dengan banyak kotak.",
           "tahap": [
-            "Story",
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Number Reading",
-          "namaId": "Membaca Bilangan Besar",
-          "asal": "Language of number",
-          "ringkas": "Baca per periode: ratusan ribu, lalu ribuan, lalu satuan.",
+          "nama": "Read by Period",
+          "namaId": "Baca per Periode",
+          "asal": "IGIL",
+          "ringkas": "Beri titik tiap tiga angka dari kanan, lalu baca bagian ribuan dan bagian sisanya.",
           "tahap": [
-            "Story",
-            "Infografis",
+            "Picture",
             "Abstract"
           ]
         }
@@ -771,49 +769,48 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Membandingkan dan Mengurutkan)",
       "fullTitle": "Sub-Bab B: Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000",
-      "targetDescription": "Siswa membandingkan dan mengurutkan bilangan sampai 100.000 dengan membandingkan digit per tempat dari kiri serta garis bilangan dan bilangan acuan sesuai Buku Siswa Kelas V Bab 1 Sub-Bab B.",
+      "targetDescription": "Di Stadion Kota, kita membandingkan dan mengurutkan banyak penonton tiap tribun sampai seratus ribu, dari kiri, dengan tanda, garis bilangan, dan bilangan patokan.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
       "silabus": {
-        "teksSuara": "Kita membandingkan bilangan besar dari kiri: tempat terbesar dulu. Jika digit sama, geser ke kanan. Garis bilangan dan bilangan acuan membantu mengurutkan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "teksSuara": "Kita membandingkan bilangan besar di Stadion Kota. Kita mulai dari kolom paling kiri, dan bergeser ke kanan kalau angkanya sama. Bilangan yang angkanya lebih banyak pasti lebih besar. Garis bilangan dan patokan membantu mengurutkan dari kecil ke besar atau sebaliknya. Kita memakai kiri dulu, letakkan di garis, dan pilih patokan. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
         "cp": "Siswa membandingkan dan mengurutkan bilangan cacah sampai 100.000.",
-        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 1 Sub-Bab B)."
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase C, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Leftmost Compare",
-          "namaId": "Banding Digit per Tempat",
-          "asal": "Place-value comparison",
-          "ringkas": "Bandingkan dari tempat terbesar; baru geser ke kanan jika sama.",
+          "nama": "Left First",
+          "namaId": "Kiri Dulu",
+          "asal": "IGIL",
+          "ringkas": "Sejajarkan dua bilangan, banding dari kolom paling kiri, dan geser ke kanan bila angkanya sama.",
           "tahap": [
             "Story",
-            "Mind",
+            "Concrete",
             "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Number Line Order",
-          "namaId": "Urutan di Garis Bilangan",
-          "asal": "Measurement sense",
-          "ringkas": "Bilangan lebih kanan lebih besar.",
+          "nama": "Line It Up",
+          "namaId": "Letakkan di Garis",
+          "asal": "IGIL",
+          "ringkas": "Taruh tiap bilangan di garis bilangan; makin ke kanan makin besar.",
           "tahap": [
-            "Story",
-            "Picture",
-            "Concrete"
+            "Concrete",
+            "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Benchmark Numbers",
-          "namaId": "Bilangan Acuan",
-          "asal": "Number sense",
-          "ringkas": "Pakai 10.000, 50.000, 100.000 sebagai patokan perkiraan.",
+          "nama": "Pick a Marker",
+          "namaId": "Pilih Patokan",
+          "asal": "IGIL",
+          "ringkas": "Bandingkan tiap bilangan dengan patokan bulat terdekat untuk memperkirakan urutan.",
           "tahap": [
-            "Story",
-            "Infografis"
+            "Picture",
+            "Abstract"
           ]
         }
       ],
@@ -1522,49 +1519,47 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Komposisi dan Dekomposisi)",
       "fullTitle": "Sub-Bab C: Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000",
-      "targetDescription": "Siswa mengurai dan menyusun kembali bilangan sampai 100.000 dengan bentuk uraian nilai tempat serta pengelompokan fleksibel sesuai Buku Siswa Kelas V Bab 1 Sub-Bab C.",
+      "targetDescription": "Di gudang tiket Stadion Kota, kita menguraikan dan menyusun kembali bilangan sampai seratus ribu dengan uraian, tukar bundel, dan bentuk biasa dengan nol penjaga.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#16A34A",
       "secondaryText": "#14532D",
       "silabus": {
-        "teksSuara": "Kita memecah bilangan menjadi jumlah nilai tempat, lalu menyusunnya kembali. Boleh mengelompokkan ulang selama total sama. Itu komposisi dan dekomposisi. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa melakukan komposisi dan dekomposisi bilangan sampai 100.000.",
-        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 1 Sub-Bab C)."
+        "teksSuara": "Kita menguraikan bilangan di gudang tiket Stadion Kota. Bilangan bisa ditulis sebagai jumlah tiap angka menurut kolomnya. Sepuluh bundel kecil bisa ditukar dengan satu bundel besar tanpa mengubah jumlah. Kita bisa menyusun bilangan kembali, dan nol menjaga kolom yang kosong. Kita memakai urai bilangan, tukar bundel, dan susun kembali. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa melakukan komposisi dan dekomposisi bilangan cacah sampai 100.000.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase C, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Expanded Form",
-          "namaId": "Bentuk Uraian",
-          "asal": "Place-value expanded notation",
-          "ringkas": "Tulis bilangan sebagai jumlah nilai tiap digit.",
+          "nama": "Break It Apart",
+          "namaId": "Urai Bilangan",
+          "asal": "IGIL",
+          "ringkas": "Tulis bilangan sebagai jumlah tiap angka menurut kolomnya, lalu cek jumlahnya.",
           "tahap": [
             "Story",
-            "Mind",
+            "Concrete",
             "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Flexible Grouping",
-          "namaId": "Susun Ulang Nilai Tempat",
-          "asal": "Number flexibility",
-          "ringkas": "Tukar sepuluh di satu tempat menjadi satu di tempat di atasnya, atau sebaliknya.",
+          "nama": "Swap Bundles",
+          "namaId": "Tukar Bundel",
+          "asal": "IGIL",
+          "ringkas": "Tukar sepuluh bundel kecil dengan satu bundel di kolom kiri tanpa mengubah jumlah.",
           "tahap": [
-            "Story",
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Standard Form Return",
-          "namaId": "Kembali ke Bentuk Lazim",
-          "asal": "Notation fluency",
-          "ringkas": "Setelah mengurai atau menyusun ulang, tulis kembali bentuk biasa.",
+          "nama": "Build It Back",
+          "namaId": "Susun Kembali",
+          "asal": "IGIL",
+          "ringkas": "Taruh tiap bagian ke kolomnya, isi nol di kolom kosong, lalu tulis bilangan biasa.",
           "tahap": [
-            "Story",
-            "Infografis",
+            "Picture",
             "Abstract"
           ]
         }
@@ -1759,7 +1754,7 @@
           "voiceGuide": "Bentuk Uraian. Mainkan dengan teliti."
         },
         {
-          "title": "Cerita Asep Lukas Komang",
+          "title": "Cerita Bima Citra Fajar",
           "emoji": "📖",
           "targetCount": 6,
           "voiceGuide": "Bentuk Uraian. Mainkan dengan teliti."
@@ -1999,7 +1994,7 @@
           "gameNumber": 9,
           "stage": "Concrete",
           "gameType": "story-komposisi",
-          "title": "Cerita Asep Lukas Komang",
+          "title": "Cerita Bima Citra Fajar",
           "bookReference": "Buku Siswa hlm. 15–17",
           "objective": "Soal cerita.. Ingat Bentuk Uraian. (Bentuk Uraian)",
           "mechanicDescription": "Tiga ronde. Gunakan Bentuk Uraian.",
@@ -2274,49 +2269,47 @@
       "id": "D",
       "codeTitle": "Sub-Bab D (Operasi Hitung)",
       "fullTitle": "Sub-Bab D: Operasi Hitung pada Bilangan Cacah Sampai 100.000",
-      "targetDescription": "Siswa melakukan operasi hitung bilangan sampai 100.000 dengan algoritma bersusun, menyimpan/meminjam, dan perkiraan terlebih dahulu sesuai Buku Siswa Kelas V Bab 1 Sub-Bab D.",
+      "targetDescription": "Di ruang panitia Stadion Kota, kita menjumlahkan, mengurangkan, mengalikan, dan membagi bilangan sampai seratus ribu dengan cara bersusun, menyimpan, meminjam, memisah pengali, dan mengecek dengan operasi kebalikan.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
       "silabus": {
-        "teksSuara": "Kita menjumlahkan dan mengurangkan bilangan besar dengan bersusun. Perkiraan dulu agar tahu hasil kira-kira. Menyimpan dan meminjam adalah tukar sepuluh antar tempat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa melakukan operasi hitung pada bilangan cacah sampai 100.000.",
-        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 1 Sub-Bab D)."
+        "teksSuara": "Kita menghitung penonton, kursi, dan uang kas di Stadion Kota. Kita menyusun bilangan, menyimpan kalau kolom berjumlah sepuluh atau lebih, dan meminjam kalau angka atas terlalu kecil. Kita mengalikan dengan memisah pengali menurut kolomnya, dan membagi kolom demi kolom. Terakhir kita cek dengan operasi kebalikan. Kita memakai susun dan tukar, pisah dan kali, dan bagi dan cek. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, simbol, dan simulasi.",
+        "cp": "Siswa melakukan operasi hitung penjumlahan, pengurangan, perkalian, dan pembagian bilangan cacah sampai 100.000.",
+        "referensi": "Capaian Pembelajaran Matematika Kurikulum Merdeka, Fase C, Elemen Bilangan."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Standard Algorithm",
-          "namaId": "Algoritma Bersusun",
-          "asal": "Written computation",
-          "ringkas": "Hitung per kolom dari satuan ke kiri.",
+          "nama": "Stack and Trade",
+          "namaId": "Susun dan Tukar",
+          "asal": "IGIL",
+          "ringkas": "Susun kolom lurus, hitung dari satuan, simpan sepuluhnya atau pinjam dari kolom kiri.",
           "tahap": [
             "Story",
-            "Abstract",
-            "Mind"
+            "Concrete",
+            "Abstract"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Regrouping",
-          "namaId": "Menyimpan dan Meminjam",
-          "asal": "Place-value regrouping",
-          "ringkas": "Sepuluh di satu tempat ditukar menjadi satu di tempat berikutnya.",
+          "nama": "Split and Multiply",
+          "namaId": "Pisah dan Kali",
+          "asal": "IGIL",
+          "ringkas": "Pisah pengali menurut kolomnya, kalikan tiap bagian, lalu jumlahkan hasilnya.",
           "tahap": [
-            "Story",
             "Concrete",
             "Picture"
           ]
         },
         {
           "label": "METODE LUAR",
-          "nama": "Estimate First",
-          "namaId": "Perkiraan Dulu",
-          "asal": "Computational estimation",
-          "ringkas": "Bulatkan lalu hitung kasar sebelum bersusun teliti.",
+          "nama": "Share and Check",
+          "namaId": "Bagi dan Cek",
+          "asal": "IGIL",
+          "ringkas": "Bagi kolom demi kolom dari kiri, lalu cek dengan mengalikan hasil dengan pembagi.",
           "tahap": [
-            "Story",
-            "Infografis",
+            "Picture",
             "Abstract"
           ]
         }

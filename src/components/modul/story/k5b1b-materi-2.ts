@@ -1,200 +1,130 @@
 import type { AdeganStory } from "./logika-story";
-import { DAKON, W, emo, judul, kartu, selKolom, tabelTempat, tabelUrut, teks } from "./k5b1b-gambar";
-import { bersih, hapus, k, tambah, ubah, warnai } from "./k5b1b-bantu";
+import { E, TABEL, W, WT, barisTabel, emo, garis, idBaris, idKepala, judul, kepalaTabel, kotak, panah, rumput, teks, tokoh } from "./k5b1b-gambar";
+import { hapus, k, sorotkan, tambah, warnai } from "./k5b1b-bantu";
 
-/* ------------------------------ 5. Tabel nilai tempat harga papan dakon (hitungan mandiri dari Buku Siswa hlm. 11–12) ------------------------------ */
-const TP = tabelTempat("tp", 10, 34, DAKON.map((d) => ({ nama: d.nama, n: d.harga })));
-const kepalaTP = TP.filter((o) => o.id.startsWith("tp-h"));
-const barisTP = (i: number) => TP.filter((o) => o.id.startsWith(`tp-r${i}`));
+/*
+ * Cerita orisinal IGIL "Urutan Tribun Pak Hasto" (Kelas 5 Bab 1 Sub-Bab B), Hari Pertandingan di Stadion Kota.
+ * Naskah suara dari naskah/story-naskah-k5b1b.md. Bagian ini: salah langkah Fajar (angka pertama padahal kolomnya berbeda), pemeriksaan banyak angka oleh Citra, dan bergeser ke kanan.
+ */
 
-export const ADEGAN_TABEL: AdeganStory = {
-  id: "tabel-nilai-tempat",
-  judul: "Tabel nilai tempat harga papan dakon",
-  sumber: "Materi: tabel nilai tempat",
-  latar: "#F5F3FF",
-  kutipan: ["Kartu 1 : …. diperoleh nama : ….", "Kartu 2 : …. diperoleh nama : ….", "Nilai Tempat"],
+/* ------------------------------ 4. Salah langkah: angka pertama ------------------------------ */
+const SUARA_S1 = "Fajar membandingkan Tribun Timur, sembilan ribu enam puluh, dengan Tribun Selatan.";
+const SUARA_S2 = "Ia berseru, sembilan lebih besar dari satu, jadi Tribun Timur lebih ramai!";
+const SUARA_S3 = "Kalau aku salah, aku menyanyikan lagu klub di depan semua tribun, janjinya.";
+
+export const ADEGAN_SALAH_BANDING: AdeganStory = {
+  id: "salah-banding",
+  judul: "Fajar membandingkan terburu-buru",
+  sumber: "Materi: salah langkah membandingkan angka pertama",
+  latar: "#FFF1F2",
   ketukan: [
     k(
-      "Kita isi tabel nilai tempat dari harga papan dakon. Papan a, lima puluh enam ribu lima ratus enam puluh. Puluh ribuannya lima, ribuannya enam, ratusannya lima, puluhannya enam, satuannya nol.",
-      tambah(0, judul("Tabel nilai tempat")),
-      tambah(0, ...kepalaTP),
-      tambah("Papan", ...barisTP(0)),
-      tambah("Papan", teks("bc", 150, 160, "dibaca: lima puluh enam ribu lima ratus enam puluh", 8.2, W.coklat)),
+      SUARA_S1,
+      tambah(0, judul("Fajar Salah Membandingkan"), ...rumput("rp", 150), ...tokoh("fa", 36, 184, "Fajar"), ...kepalaTabel("kh")),
+      tambah("Timur", ...barisTabel("r0", TABEL, 0, "Timur", 9060)),
+      tambah("Selatan", ...barisTabel("r1", TABEL, 1, "Selatan", 18705)),
     ),
     k(
-      "Papan b, enam puluh lima ribu tujuh ratus lima puluh. Puluh ribuannya enam, ribuannya lima, ratusannya tujuh, puluhannya lima, satuannya nol.",
-      ubah(0, { id: "bc", isi: "dibaca: enam puluh lima ribu tujuh ratus lima puluh" }),
-      tambah("Papan", ...barisTP(1)),
+      SUARA_S2,
+      tambah("berseru", emo("sr", 36, 140, E.seru, 14)),
+      warnai("sembilan", W.merahMuda, "r0-c1"),
+      sorotkan("sembilan", "r0-d1"),
+      warnai("satu", W.merahMuda, "r1-c0"),
+      sorotkan("satu", "r1-d0"),
+      tambah("besar", teks("bd", 270, 70, "9 > 1?", 11, W.merah, { z: 3 })),
+      tambah("dari", garis("sl", 142, 70, -28, 20, W.merah, 1.4, { putus: true, z: 5 })),
+      tambah("ramai", teks("tl1", 270, 96, "Timur", 8, W.merah, { z: 3 }), teks("tl2", 270, 106, "ramai?", 8, W.merah, { z: 3 }), emo("tn", 270, 128, E.tanya, 20)),
     ),
     k(
-      "Papan c, lima puluh tujuh ribu. Puluh ribuannya lima, ribuannya tujuh, dan ratusan, puluhan, serta satuannya nol semua.",
-      ubah(0, { id: "bc", isi: "dibaca: lima puluh tujuh ribu" }),
-      tambah("Papan", ...barisTP(2)),
-    ),
-    k(
-      "Papan d, tujuh puluh lima ribu tiga ratus enam puluh. Puluh ribuannya tujuh, ribuannya lima, ratusannya tiga, puluhannya enam, satuannya nol.",
-      ubah(0, { id: "bc", isi: "dibaca: tujuh puluh lima ribu tiga ratus enam puluh" }),
-      tambah("Papan", ...barisTP(3)),
-    ),
-    k(
-      "Tabel ini menjadi alat membandingkan. Bandingkan dulu angka di tempat paling kiri, yaitu puluh ribuan. Kalau sama, geser ke tempat berikutnya di sebelah kanan.",
-      hapus(0, "bc"),
-      warnai("ribuan.", W.emas, ...selKolom("tp", 0, 4)),
-      tambah("geser", teks("pg", 150, 158, "sama? geser ke kanan →", 11, W.merah)),
+      SUARA_S3,
+      hapus(0, ...idBaris("r0", 9060), ...idBaris("r1", 18705), ...idKepala("kh"), "sr", "bd", "sl", "tl1", "tl2", "tn"),
+      tambah("salah", teks("tr", 150, 40, "taruhan", 10, W.merah, { z: 3 })),
+      tambah("menyanyikan", emo("mk", 62, 158, E.mikrofon, 20), emo("n1", 84, 130, E.musik, 18)),
+      tambah("lagu", emo("n2", 122, 142, E.musik, 18)),
+      tambah("klub", emo("bd2", 98, 156, E.bendera, 20)),
+      tambah("tribun", ...[0, 1, 2, 3].flatMap((i) => [kotak(`st${i}`, 13 + i * 70, 52, 64, 52, WT[i], W.biru, { rx: 4, tebal: 1.4, z: 1 }), teks(`sn${i}`, 45 + i * 70, 82, ["Timur", "Selatan", "Utara", "Barat"][i], 9, W.biru, { z: 3 })])),
+      tambah("janjinya", emo("kf", 220, 150, E.tertawa, 22)),
     ),
   ],
 };
 
-/* ------------------------------ 6. Ayo Menyimak Percakapan (Buku Siswa hlm. 12 dan 13; jawaban dihitung mandiri) ------------------------------ */
-const TP2 = tabelTempat("tq", 10, 34, DAKON.map((d) => ({ nama: d.nama, n: d.harga })));
+/* ------------------------------ 5. Periksa: banyak angka ------------------------------ */
+const SUARA_P1 = "Citra menghitung banyak angkanya: sembilan ribu enam puluh punya empat angka, Tribun Selatan lima angka.";
+const SUARA_P2 = "Bilangan yang angkanya lebih banyak pasti lebih besar, jadi Tribun Selatan lebih ramai.";
+const SUARA_P3 = "Fajar menyanyi dengan suara sumbang sampai penjual kacang di tribun ikut menutup telinga.";
 
-export const ADEGAN_PERCAKAPAN: AdeganStory = {
-  id: "percakapan",
-  judul: "Ayo Menyimak Percakapan",
-  sumber: "Materi: puluh ribuan dan ribuan",
-  latar: "#FFF7ED",
-  kutipan: [
-    "Ayo Menyimak Percakapan",
-    "Harga papan dakon mana yang angka puluh ribuannya paling kecil?",
-    "Jika nilai puluh ribuan dua papan dakon tersebut sama, papan dakon mana yang angka ribuannya lebih besar?",
-  ],
+export const ADEGAN_PERIKSA_PANJANG: AdeganStory = {
+  id: "periksa-panjang",
+  judul: "Citra menghitung banyak angka",
+  sumber: "Materi: lebih banyak angka berarti lebih besar",
+  latar: "#F0F9FF",
   ketukan: [
     k(
-      "Ayo Menyimak Percakapan. Seorang anak bertanya, harga papan dakon mana yang angka puluh ribuannya paling kecil? Jawaban teman bicaranya masih kosong, kita isi bersama.",
-      tambah(0, judul("Ayo Menyimak Percakapan")),
-      tambah("Seorang", emo("c1", 40, 76, "🧒", 34), ...kartu("q1", 70, 44, 216, 56, W.krem, ["Harga papan dakon mana yang", "angka puluh ribuannya", "paling kecil?"], 9.4)),
-      tambah("kosong", ...kartu("j1", 14, 114, 216, 40, W.langit, ["......................."], 10), emo("c2", 262, 138, "🙋", 34)),
+      SUARA_P1,
+      tambah(0, judul("Citra Menghitung Angka"), ...rumput("rp", 150), ...tokoh("ci", 36, 184, "Citra"), ...kepalaTabel("kh")),
+      tambah("sembilan", ...barisTabel("r0", TABEL, 0, "Timur", 9060)),
+      tambah("empat", teks("c4", 270, 67, "4 angka", 8, W.merah, { z: 3 })),
+      tambah("Selatan", ...barisTabel("r1", TABEL, 1, "Selatan", 18705)),
+      tambah("lima", teks("c5", 270, 93, "5 angka", 8, W.merah, { z: 3 })),
     ),
     k(
-      "Kita jawab lewat tabel. Lihat kolom puluh ribuan: papan a lima, papan b enam, papan c lima, papan d tujuh. Angka paling kecil adalah lima, dimiliki papan a dan papan c.",
-      bersih(0),
-      tambah(0, judul("Puluh ribuan paling kecil")),
-      tambah(0, ...TP2),
-      warnai("kolom", W.emas, ...selKolom("tq", 0, 4)),
-      warnai("lima,", W.hijauPita, "tq-r0c0", "tq-r2c0"),
-      tambah("kecil", teks("pk", 150, 158, "paling kecil: 5, papan a dan papan c", 10, W.hijau)),
+      SUARA_P2,
+      sorotkan("banyak", "r1-d0"),
+      warnai("pasti", W.merahMuda, "r0-c0"),
+      tambah("besar", teks("lb1", 270, 118, "lebih banyak", 7.5, W.hijauTua, { z: 3 }), teks("lb2", 270, 127, "angka", 7.5, W.hijauTua, { z: 3 })),
+      warnai("Selatan", W.hijauMuda, ...[0, 1, 2, 3, 4].map((j) => `r1-c${j}`)),
+      tambah("ramai", emo("jp", 270, 150, E.jempol, 18)),
     ),
     k(
-      "Pertanyaan berikutnya: jika nilai puluh ribuan dua papan sama, papan mana yang angka ribuannya lebih besar? Papan a dan papan c sama-sama lima puluh ribuan.",
-      bersih(0),
-      tambah(0, judul("Puluh ribuan sama, lihat ribuan")),
-      tambah(0, ...TP2),
-      warnai("papan", W.hijauPita, "tq-r0c0", "tq-r2c0"),
-      tambah("ribuannya", teks("rb", 150, 158, "bandingkan ribuannya", 11, W.merah)),
-    ),
-    k(
-      "Ribuan papan a adalah enam, ribuan papan c adalah tujuh. Tujuh lebih besar dari enam, jadi papan c lebih besar. Lima puluh tujuh ribu lebih besar daripada lima puluh enam ribu lima ratus enam puluh.",
-      warnai("Ribuan", W.emas, "tq-r0c1", "tq-r2c1"),
-      ubah(0, { id: "rb", isi: "6 < 7, jadi 56.560 < 57.000", warna: W.hijau }),
-      tambah("Lima", teks("rc", 150, 180, "papan c lebih besar daripada papan a", 10, W.coklat)),
+      SUARA_P3,
+      hapus(0, ...idBaris("r0", 9060), ...idBaris("r1", 18705), ...idKepala("kh"), "c4", "c5", "lb1", "lb2", "jp"),
+      tambah(0, ...tokoh("fa", 110, 184, "Fajar")),
+      tambah("suara", emo("mk", 134, 158, E.mikrofon, 20), emo("n1", 150, 126, E.musik, 18)),
+      tambah("sumbang", emo("n2", 172, 108, E.musik, 18), emo("n3", 194, 130, E.musik, 18)),
+      tambah("penjual", emo("pj", 232, 160, E.pak, 26), teks("pjn", 232, 176, "penjual kacang", 7.5, W.hijauTua, { z: 3 })),
+      tambah("kacang", emo("kc", 206, 160, E.kacang, 20)),
+      tambah("tribun", kotak("st", 14, 34, 272, 62, W.abu, W.biru, { rx: 4, tebal: 1.4, z: -1 }), teks("sn", 150, 52, "Tribun Selatan", 9, W.biru, { z: 3 })),
+      tambah("menutup", emo("tl", 262, 138, E.telinga, 22)),
     ),
   ],
 };
 
-/* ------------------------------ 7. Mengurutkan harga: termurah dan termahal (Buku Siswa hlm. 13) ------------------------------ */
-const MURAH = [DAKON[0], DAKON[2], DAKON[1], DAKON[3]].map((d) => ({ nama: d.nama, harga: d.harga }));
-const MAHAL = [DAKON[3], DAKON[1], DAKON[2], DAKON[0]].map((d) => ({ nama: d.nama, harga: d.harga }));
-const TM = tabelUrut("tm", 10, 40, MURAH);
-const TH = tabelUrut("th", 158, 40, MAHAL);
-const kepalaTM = TM.filter((o) => o.id.startsWith("tm-h"));
-const kepalaTH = TH.filter((o) => o.id.startsWith("th-h"));
-const barisTM = (i: number) => TM.filter((o) => o.id.startsWith(`tm-r${i}`));
-const barisTH = (i: number) => TH.filter((o) => o.id.startsWith(`th-r${i}`));
+/* ------------------------------ 6. Bergeser ke kanan ------------------------------ */
+const SUARA_G1 = "Tribun Utara minggu ini dua puluh empat ribu tiga ratus lima puluh, minggu lalu dua puluh empat ribu tiga ratus lima.";
+const SUARA_G2 = "Dua, empat, dan tiga sama, jadi Bima terus bergeser ke kanan sampai angkanya berbeda.";
+const SUARA_G3 = "Di puluhan, lima lebih besar dari nol, sehingga minggu ini lebih ramai.";
 
-export const ADEGAN_URUT: AdeganStory = {
-  id: "urut-harga",
-  judul: "Mengurutkan harga papan dakon",
-  sumber: "Materi: mengurutkan harga",
-  latar: "#F0FDF4",
-  kutipan: [
-    "Ayo kita cari tahu bersama dengan mengurutkan harganya.",
-    "Ayo sekarang urutkan harga dari yang paling murah.",
-    "Ayo sekarang urutkan harga dari yang paling mahal.",
-    "No. Papan Dakon Harga Dakon",
-  ],
+export const ADEGAN_GESER: AdeganStory = {
+  id: "geser",
+  judul: "Bima bergeser ke kanan",
+  sumber: "Materi: bergeser bila angka sama",
+  latar: "#FEFCE8",
   ketukan: [
     k(
-      "Menurutmu, papan dakon mana yang paling murah dan paling mahal? Ayo kita cari tahu bersama dengan mengurutkan harganya.",
-      tambah(0, judul("Termurah dan termahal?")),
-      tambah("Menurutmu,", emo("um", 60, 100, "🤔", 40)),
-      tambah("murah", teks("u1", 190, 80, "paling murah?", 13, W.hijau)),
-      tambah("mahal?", teks("u2", 190, 116, "paling mahal?", 13, W.merah)),
-      tambah("mengurutkan", teks("u3", 150, 170, "caranya: urutkan harganya", 11, W.ungu)),
+      SUARA_G1,
+      tambah(0, judul("Bima Bergeser ke Kanan"), ...rumput("rp", 150), ...tokoh("bi", 36, 184, "Bima"), ...kepalaTabel("kh")),
+      tambah("ini", ...barisTabel("r0", TABEL, 0, "Minggu ini", 24350)),
+      tambah("lalu", ...barisTabel("r1", TABEL, 1, "Minggu lalu", 24305)),
     ),
     k(
-      "Ayo sekarang urutkan harga dari yang paling murah. Nomor satu papan a, lima puluh enam ribu lima ratus enam puluh. Nomor dua papan c, lima puluh tujuh ribu.",
-      bersih(0),
-      tambah(0, judul("Urutan dari termurah")),
-      tambah(0, ...kepalaTM),
-      tambah("satu", ...barisTM(0)),
-      tambah("dua", ...barisTM(1)),
+      SUARA_G2,
+      warnai(0, W.hijauMuda, "r0-c0", "r1-c0"),
+      warnai("empat", W.hijauMuda, "r0-c1", "r1-c1"),
+      warnai("tiga", W.hijauMuda, "r0-c2", "r1-c2"),
+      tambah("sama", teks("sm", 270, 70, "sama", 9, W.hijauTua, { z: 3 })),
+      tambah("bergeser", panah("pg", 114, 124, 84, 0, W.merah, 2.4, { z: 6 })),
+      warnai("berbeda", W.merahMuda, "r0-c3", "r1-c3"),
+      tambah("berbeda", teks("bb", 270, 96, "beda", 9, W.merah, { z: 3 })),
     ),
     k(
-      "Nomor tiga papan b, enam puluh lima ribu tujuh ratus lima puluh. Nomor empat papan d, tujuh puluh lima ribu tiga ratus enam puluh.",
-      tambah("tiga", ...barisTM(2)),
-      tambah("empat", ...barisTM(3)),
-    ),
-    k(
-      "Sekarang urutkan dari yang paling mahal. Susunannya kebalikannya: papan d, lalu papan b, lalu papan c, dan terakhir papan a.",
-      ubah(0, { id: "jud", isi: "Termurah dan termahal" }),
-      tambah("paling", ...kepalaTH),
-      tambah("papan", ...barisTH(0)),
-      tambah("papan@2", ...barisTH(1)),
-      tambah("papan@3", ...barisTH(2)),
-      tambah("papan@4", ...barisTH(3)),
-    ),
-    k(
-      "Jadi papan a paling murah dan papan d paling mahal. Papan c satu tingkat di atas papan a, dan papan b satu tingkat di bawah papan d.",
-      tambah("murah", teks("kt1", 76, 156, "termurah: papan a", 9.6, W.hijau)),
-      tambah("mahal.", teks("kt2", 224, 156, "termahal: papan d", 9.6, W.merah)),
-    ),
-  ],
-};
-
-/* ------------------------------ 8. Ayo Berpikir Kritis (Buku Siswa hlm. 14; Panduan Guru hlm. 27) ------------------------------ */
-export const ADEGAN_KRITIS: AdeganStory = {
-  id: "berpikir-kritis",
-  judul: "Berpikir kritis: mainan A atau mainan B",
-  sumber: "Materi: berpikir kritis",
-  latar: "#FEF2F2",
-  kutipan: [
-    "Ayo Berpikir Kritis",
-    "Terdapat 2 jenis mainan, yaitu mainan A dan mainan B.",
-    "Mainan A harganya lebih murah daripada mainan B.",
-    "Namun, mainan A lebih cepat rusak daripada mainan B.",
-    "Mainan manakah yang akan kalian pilih? Apa alasannya?",
-    "bisa saja siswa membeli mainan dengan",
-    "harga murah walaupun kualitas lebih rendah.",
-    "Ajaklah mereka untuk dapat mengambil keputusan secara tepat.",
-  ],
-  ketukan: [
-    k(
-      "Berpikir kritis. Ada dua jenis mainan, yaitu mainan A dan mainan B.",
-      tambah(0, judul("Mainan A atau mainan B?")),
-      tambah("mainan@2", emo("ma0", 70, 100, "🧸", 40), teks("ma1", 70, 140, "mainan A", 11, W.coklat)),
-      tambah("mainan@3", emo("mb0", 230, 100, "🚗", 40), teks("mb1", 230, 140, "mainan B", 11, W.biru)),
-    ),
-    k(
-      "Mainan A harganya lebih murah daripada mainan B, namun mainan A lebih cepat rusak.",
-      bersih(0),
-      tambah(0, judul("Mainan A atau mainan B?")),
-      tambah("Mainan", ...kartu("ma", 14, 46, 128, 70, W.krem, ["mainan A", "lebih murah", "lebih cepat rusak"], 9.4)),
-      tambah("mainan@2", ...kartu("mb", 158, 46, 128, 70, W.hijauMuda, ["mainan B", "lebih mahal", "tidak secepat A rusak"], 9)),
-    ),
-    k(
-      "Mainan manakah yang akan kalian pilih, dan apa alasannya? Tuliskan jawabanmu dan alasannya.",
-      bersih(0),
-      tambah(0, judul("Pilih yang mana?")),
-      tambah(0, emo("mq", 150, 100, "🤔", 44)),
-      tambah("alasannya?", teks("mr", 150, 160, "pilih yang mana, dan mengapa?", 10.4, W.merah)),
-    ),
-    k(
-      "Hati-hati dalam memilih: kamu bisa saja tergoda membeli mainan murah walaupun kualitasnya lebih rendah. Ambillah keputusan secara tepat. Harga yang lebih kecil belum tentu pilihan terbaik.",
-      bersih(0),
-      tambah(0, judul("Pesan guru")),
-      tambah("Hati-hati", ...kartu("g1", 24, 44, 252, 44, W.krem, ["murah tetapi kualitas lebih rendah", "bisa saja tergoda membeli"], 9.4)),
-      tambah("Ambillah", ...kartu("g2", 24, 104, 252, 44, W.hijauMuda, ["ambil keputusan", "secara tepat"], 9.4)),
-      tambah("Harga", teks("g3", 150, 182, "harga kecil belum tentu terbaik", 10.4, W.merah)),
+      SUARA_G3,
+      hapus(0, "sm", "bb"),
+      sorotkan("puluhan", "r0-c3", "r1-c3"),
+      sorotkan("lima", "r0-d3"),
+      tambah("besar", teks("lg", 270, 70, "5 > 0", 11, W.merah, { z: 3 })),
+      sorotkan("nol", "r1-d3"),
+      warnai("sehingga", W.hijauMuda, "r0-c3"),
+      tambah("ramai", teks("lm1", 270, 96, "Minggu ini", 8, W.hijauTua, { z: 3 }), teks("lm2", 270, 106, "lebih ramai", 8, W.hijauTua, { z: 3 }), emo("jp", 270, 128, E.jempol, 18)),
     ),
   ],
 };
